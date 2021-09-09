@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Heranca>SVRS.xml</Heranca>
+  <Servicos ID="NFCe">
+    <Autorizacao versao="4.00">
+      <UrlQrCodeHomologacao>http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>http://www.nfce.sefin.ro.gov.br/consultanfce/consulta.jsp</UrlQrCodeProducao>
+      <UrlChaveHomologacao>www.sefin.ro.gov.br/nfce/consulta</UrlChaveHomologacao>
+      <UrlChaveProducao>www.sefin.ro.gov.br/nfce/consulta</UrlChaveProducao>
+    </Autorizacao>
+  </Servicos>
+</Configuracoes>

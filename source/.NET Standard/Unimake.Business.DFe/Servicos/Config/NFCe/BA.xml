@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Heranca>SVRS.xml</Heranca>
+  <Servicos ID="NFCe">
+    <Autorizacao versao="4.00">
+      <UrlQrCodeHomologacao>http://hnfe.sefaz.ba.gov.br/servicos/nfce/qrcode.aspx</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>http://nfe.sefaz.ba.gov.br/servicos/nfce/qrcode.aspx</UrlQrCodeProducao>
+      <UrlChaveHomologacao>http://hinternet.sefaz.ba.gov.br/nfce/consulta</UrlChaveHomologacao>
+      <UrlChaveProducao>www.sefaz.ba.gov.br/nfce/consulta</UrlChaveProducao>
+    </Autorizacao>
+  </Servicos>
+</Configuracoes>

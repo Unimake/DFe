@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Unimake.Security.Platform": {
+      "commandName": "Executable",
+      "executablePath": "..\\..\\..\\..\\Unimake.DFe\\Interop\\VB6\\Unimake.DFe_InteropTest.exe"
+    }
+  }
+}

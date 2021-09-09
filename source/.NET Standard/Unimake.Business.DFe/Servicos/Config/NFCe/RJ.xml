@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Heranca>SVRS.xml</Heranca>
+  <Servicos ID="NFCe">
+    <Autorizacao versao="4.00">
+      <UrlQrCodeHomologacao>http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>http://www4.fazenda.rj.gov.br/consultaNFCe/QRCode</UrlQrCodeProducao>
+      <UrlChaveHomologacao>www.fazenda.rj.gov.br/nfce/consulta</UrlChaveHomologacao>
+      <UrlChaveProducao>www.fazenda.rj.gov.br/nfce/consulta</UrlChaveProducao>
+    </Autorizacao>
+  </Servicos>
+</Configuracoes>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup Label="Globals">
+		<SccProjectName>SAK</SccProjectName>
+		<SccProvider>SAK</SccProvider>
+		<SccAuxPath>SAK</SccAuxPath>
+		<SccLocalPath>SAK</SccLocalPath>
+	</PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net472</TargetFrameworks>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<Deterministic>false</Deterministic>
+		<Configurations>Debug;Release;INTEROP_Release</Configurations>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\Unimake.DFe\Compilacao\</OutputPath>
+		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Unimake.Security.Platform.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\Unimake.DFe\Compilacao\Release</OutputPath>
+		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Release\Unimake.Security.Platform.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='INTEROP_Release|AnyCPU'">
+		<OutputPath>..\..\Unimake.DFe\Compilacao\INTEROP_Release</OutputPath>
+		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|netstandard2.0|AnyCPU'">
+		<DefineConstants>TRACE;INTEROP</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
+	  <DefineConstants>TRACE</DefineConstants>
+	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|net462|AnyCPU'">
+	  <DocumentationFile>..\..\Unimake.DFe\Compilacao\INTEROP_Release\Unimake.Security.Platform.xml</DocumentationFile>
+	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+	  <DefineConstants>TRACE;INTEROP</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+	</PropertyGroup>
+	<ItemGroup>
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Security" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Net.Http" />
+		<Reference Include="System.Xml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <SVC>SVCAN</SVC>
+  <Heranca>SVRS.xml</Heranca>
+</Configuracoes>

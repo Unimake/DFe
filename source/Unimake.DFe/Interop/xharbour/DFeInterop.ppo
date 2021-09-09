@@ -1,0 +1,63 @@
+Function Main()
+
+
+   CertificadoVencido()
+
+   QOut( "Terminou..." )
+   Inkey(0)
+Return
+
+Function CertificadoVencido()
+   Local cCertA1Normal := "S:\Contabil\Certificado Digital\Unimake PV.pfx"
+   Local cCertA1Vencido := "D:\Wandrey - Casa\Certificados\CEFAC.pfx"
+   Local cSenhaCertA1 := "123456"
+   Local cSenhaCertA1Vencido := "12345678"
+
+
+   oDLL     := LwGetObject("Unimake.Security.Platform.CertificadoDigital")
+
+
+   oCert    := oDLL:CarregarCertificadoDigitalA1(cCertA1Normal, cSenhaCertA1)
+   lVencido := oDLL:Vencido(oCert)
+
+   If ! lVencido
+      QOut( "Certificado não está vencido..." )
+   Else
+      QOut( "Certificado está vencido..." )
+   Endif
+
+
+   oCert    := oDLL:CarregarCertificadoDigitalA1(cCertA1Vencido, cSenhaCertA1Vencido)
+   lVencido := oDLL:Vencido(oCert)
+
+   If ! lVencido
+      QOut( "Certificado não está vencido..." )
+   Else
+      QOut( "Certificado está vencido..." )
+   Endif
+Return
+
+
+
+PROCEDURE LwGetObject( cObject, lMostraErro )
+   LOCAL oObj, oErr
+
+   If lMostraErro = NIL
+      lMostraErro := .T.
+   EndIf
+
+   TRY
+      oObj := GetActiveObject( cObject )
+   CATCH
+      TRY
+         oObj := CreateObject( cObject )
+      CATCH oErr
+         If lMostraErro
+            Alert( "ERRO! " + cObject + " não disponível. [" + Ole2TxtError()+ "]" )
+         Else
+            Throw( oErr )
+            RETURN NIL
+         EndIf
+      END
+   END
+RETURN oObj

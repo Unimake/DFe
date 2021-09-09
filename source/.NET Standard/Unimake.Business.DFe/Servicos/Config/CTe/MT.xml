@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="CTe">
+    <StatusServico versao="3.00">
+      <Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews/services/CteStatusServico</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews/services/CteStatusServico</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionProducao>
+      <WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
+      <SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </StatusServico>
+    <ConsultaProtocolo versao="3.00">
+      <Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews/services/CteConsulta</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews/services/CteConsulta</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionProducao>
+      <WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
+      <SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </ConsultaProtocolo>
+    <Inutilizacao versao="3.00">
+      <Descricao>Inutilização de números do conhecimento de transporte eletrônico</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews/services/CteInutilizacao</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews/services/CteInutilizacao</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteInutilizacao</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteInutilizacao</WebActionProducao>
+      <WebTagRetorno>cteInutilizacaoCTResult</WebTagRetorno>
+      <SchemaArquivo>inutCTe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura>inutCTe</TagAssinatura>
+      <TagAtributoID>infInut</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </Inutilizacao>
+	  <ConsultaCadastro versao="2.00">
+		  <Descricao>Consulta cadastro do contribuinte</Descricao>
+		  <WebEnderecoHomologacao>https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro4</WebEnderecoHomologacao>
+		  <WebEnderecoProducao>https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro4</WebEnderecoProducao>
+		  <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4/consultaCadastro</WebActionHomologacao>
+		  <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4/consultaCadastro</WebActionProducao>
+		  <SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
+		  <TagAssinatura></TagAssinatura>
+		  <TagAtributoID></TagAtributoID>
+		  <TagLoteAssinatura></TagLoteAssinatura>
+		  <TagLoteAtributoID></TagLoteAtributoID>
+	  </ConsultaCadastro>
+    <RecepcaoEvento versao="3.00">
+      <Descricao>Recepcao de eventos</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CteRecepcaoEvento?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CteRecepcaoEvento?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionProducao>
+      <WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+      <SchemaArquivo></SchemaArquivo>
+      <SchemasEspecificos>
+        <Tipo>
+          <ID>110111</ID>
+          <SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>evCancCTe_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110180</ID>
+          <SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>evCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110181</ID>
+          <SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>evCancCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110110</ID>
+          <SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>610110</ID>
+          <SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+      </SchemasEspecificos>
+      <TagAssinatura>eventoCTe</TagAssinatura>
+      <TagAtributoID>infEvento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </RecepcaoEvento>
+    <Autorizacao versao="3.00">
+      <Descricao>Autorização do CTe</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews/services/CteRecepcao</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews/services/CteRecepcao</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcao</WebActionProducao>
+      <WebTagRetorno>cteRecepcaoLoteResult</WebTagRetorno>
+      <SchemasEspecificos>
+        <Tipo>
+          <ID>1</ID>
+          <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>cteModalRodoviarioOS_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>2</ID>
+          <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>cteModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>3</ID>
+          <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>cteModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>4</ID>
+          <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>cteModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>5</ID>
+          <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>cteModalDutoviario_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>6</ID>
+          <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>cteMultiModal_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+      </SchemasEspecificos>
+      <TagAssinatura>CTe</TagAssinatura>
+      <TagAtributoID>infCte</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+    </Autorizacao>
+    <RetAutorizacao versao="3.00">
+      <Descricao>Consulta recibo do conhecimento de transporte eletrônico</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews/services/CteRetRecepcao</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews/services/CteRetRecepcao</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRetRecepcao</WebActionProducao>
+      <WebTagRetorno>cteRetRecepcaoResult</WebTagRetorno>
+      <SchemaArquivo>consReciCTe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </RetAutorizacao>
+  </Servicos>
+</Configuracoes>

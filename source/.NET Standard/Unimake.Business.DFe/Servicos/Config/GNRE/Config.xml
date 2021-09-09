@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigPadrao>
+  <Versao ID="1.00">
+    <WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+    <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:gnr="{ActionWeb}"><soap:Header><gnr:gnreCabecMsg xmlns="{ActionWeb}"><versaoDados>{versaoDados}</versaoDados></gnr:gnreCabecMsg></soap:Header><soap:Body><gnr:gnreDadosMsg xmlns="{ActionWeb}">{xmlBody}</gnr:gnreDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+    <WebTagRetorno>gnreRespostaMsg</WebTagRetorno>
+    <WebSoapVersion>soap12</WebSoapVersion>
+    <SchemaVersao>1.00</SchemaVersao>
+    <TargetNS>http://www.gnre.pe.gov.br</TargetNS>
+  </Versao>
+  <Versao ID="2.00">
+    <WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+    <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:gnr="{ActionWeb}"><soap:Header><gnr:gnreCabecMsg xmlns="{ActionWeb}"><versaoDados>{versaoDados}</versaoDados></gnr:gnreCabecMsg></soap:Header><soap:Body><gnr:gnreDadosMsg xmlns="{ActionWeb}">{xmlBody}</gnr:gnreDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+    <WebTagRetorno>gnreRespostaMsg</WebTagRetorno>
+    <WebSoapVersion>soap12</WebSoapVersion>
+    <SchemaVersao>2.00</SchemaVersao>
+    <TargetNS>http://www.gnre.pe.gov.br</TargetNS>
+  </Versao>
+</ConfigPadrao>

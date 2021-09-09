@@ -1,0 +1,1173 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
+		<LangVersion>7.3</LangVersion>
+		<AssemblyVersion>2021.09.08.1026</AssemblyVersion>
+		<FileVersion>2021.09.08.1026</FileVersion>
+		<RunPostBuildEvent>Always</RunPostBuildEvent>
+		<Configurations>Debug;Release;INTEROP_Release</Configurations>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\Unimake.DFe\Compilacao\</OutputPath>
+		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Unimake.Business.DFe.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\Unimake.DFe\Compilacao\Release</OutputPath>
+		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Release\Unimake.Business.DFe.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='INTEROP_Release|AnyCPU'">
+		<OutputPath>..\..\Unimake.DFe\Compilacao\INTEROP_Release</OutputPath>
+		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\INTEROP_Release\Unimake.Business.DFe.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|netstandard2.0|AnyCPU'">
+		<DefineConstants>TRACE;INTEROP</DefineConstants>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\INTEROP_Release\Unimake.Business.DFe.xml</DocumentationFile>
+		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Servicos\Config\CTeOS\AC.xml" />
+		<None Remove="Servicos\Config\CTeOS\AL.xml" />
+		<None Remove="Servicos\Config\CTeOS\AM.xml" />
+		<None Remove="Servicos\Config\CTeOS\AP.xml" />
+		<None Remove="Servicos\Config\CTeOS\BA.xml" />
+		<None Remove="Servicos\Config\CTeOS\CE.xml" />
+		<None Remove="Servicos\Config\CTeOS\Config.xml" />
+		<None Remove="Servicos\Config\CTeOS\DF.xml" />
+		<None Remove="Servicos\Config\CTeOS\ES.xml" />
+		<None Remove="Servicos\Config\CTeOS\GO.xml" />
+		<None Remove="Servicos\Config\CTeOS\MA.xml" />
+		<None Remove="Servicos\Config\CTeOS\MG.xml" />
+		<None Remove="Servicos\Config\CTeOS\MS.xml" />
+		<None Remove="Servicos\Config\CTeOS\MT.xml" />
+		<None Remove="Servicos\Config\CTeOS\PA.xml" />
+		<None Remove="Servicos\Config\CTeOS\PB.xml" />
+		<None Remove="Servicos\Config\CTeOS\PE.xml" />
+		<None Remove="Servicos\Config\CTeOS\PI.xml" />
+		<None Remove="Servicos\Config\CTeOS\PR.xml" />
+		<None Remove="Servicos\Config\CTeOS\RJ.xml" />
+		<None Remove="Servicos\Config\CTeOS\RN.xml" />
+		<None Remove="Servicos\Config\CTeOS\RO.xml" />
+		<None Remove="Servicos\Config\CTeOS\RR.xml" />
+		<None Remove="Servicos\Config\CTeOS\RS.xml" />
+		<None Remove="Servicos\Config\CTeOS\SC.xml" />
+		<None Remove="Servicos\Config\CTeOS\SE.xml" />
+		<None Remove="Servicos\Config\CTeOS\SP.xml" />
+		<None Remove="Servicos\Config\CTeOS\SVRS.xml" />
+		<None Remove="Servicos\Config\CTeOS\SVSP.xml" />
+		<None Remove="Servicos\Config\CTeOS\TO.xml" />
+		<None Remove="Servicos\Config\CTe\AC.xml" />
+		<None Remove="Servicos\Config\CTe\AL.xml" />
+		<None Remove="Servicos\Config\CTe\AM.xml" />
+		<None Remove="Servicos\Config\CTe\AN.xml" />
+		<None Remove="Servicos\Config\CTe\AP.xml" />
+		<None Remove="Servicos\Config\CTe\BA.xml" />
+		<None Remove="Servicos\Config\CTe\CE.xml" />
+		<None Remove="Servicos\Config\CTe\Config.xml" />
+		<None Remove="Servicos\Config\CTe\DF.xml" />
+		<None Remove="Servicos\Config\CTe\ES.xml" />
+		<None Remove="Servicos\Config\CTe\GO.xml" />
+		<None Remove="Servicos\Config\CTe\MA.xml" />
+		<None Remove="Servicos\Config\CTe\MG.xml" />
+		<None Remove="Servicos\Config\CTe\MS.xml" />
+		<None Remove="Servicos\Config\CTe\MT.xml" />
+		<None Remove="Servicos\Config\CTe\PA.xml" />
+		<None Remove="Servicos\Config\CTe\PB.xml" />
+		<None Remove="Servicos\Config\CTe\PE.xml" />
+		<None Remove="Servicos\Config\CTe\PI.xml" />
+		<None Remove="Servicos\Config\CTe\PR.xml" />
+		<None Remove="Servicos\Config\CTe\RJ.xml" />
+		<None Remove="Servicos\Config\CTe\RN.xml" />
+		<None Remove="Servicos\Config\CTe\RO.xml" />
+		<None Remove="Servicos\Config\CTe\RR.xml" />
+		<None Remove="Servicos\Config\CTe\RS.xml" />
+		<None Remove="Servicos\Config\CTe\SC.xml" />
+		<None Remove="Servicos\Config\CTe\SE.xml" />
+		<None Remove="Servicos\Config\CTe\SP.xml" />
+		<None Remove="Servicos\Config\CTe\SVRS.xml" />
+		<None Remove="Servicos\Config\CTe\SVSP.xml" />
+		<None Remove="Servicos\Config\CTe\TO.xml" />
+		<None Remove="Servicos\Config\GNRE\AC.xml" />
+		<None Remove="Servicos\Config\GNRE\AL.xml" />
+		<None Remove="Servicos\Config\GNRE\AM.xml" />
+		<None Remove="Servicos\Config\GNRE\AP.xml" />
+		<None Remove="Servicos\Config\GNRE\BA.xml" />
+		<None Remove="Servicos\Config\GNRE\CE.xml" />
+		<None Remove="Servicos\Config\GNRE\Config.xml" />
+		<None Remove="Servicos\Config\GNRE\DF.xml" />
+		<None Remove="Servicos\Config\GNRE\ES.xml" />
+		<None Remove="Servicos\Config\GNRE\GNRE.xml" />
+		<None Remove="Servicos\Config\GNRE\GO.xml" />
+		<None Remove="Servicos\Config\GNRE\MA.xml" />
+		<None Remove="Servicos\Config\GNRE\MG.xml" />
+		<None Remove="Servicos\Config\GNRE\MS.xml" />
+		<None Remove="Servicos\Config\GNRE\MT.xml" />
+		<None Remove="Servicos\Config\GNRE\PA.xml" />
+		<None Remove="Servicos\Config\GNRE\PB.xml" />
+		<None Remove="Servicos\Config\GNRE\PE.xml" />
+		<None Remove="Servicos\Config\GNRE\PI.xml" />
+		<None Remove="Servicos\Config\GNRE\PR.xml" />
+		<None Remove="Servicos\Config\GNRE\RJ.xml" />
+		<None Remove="Servicos\Config\GNRE\RN.xml" />
+		<None Remove="Servicos\Config\GNRE\RO.xml" />
+		<None Remove="Servicos\Config\GNRE\RR.xml" />
+		<None Remove="Servicos\Config\GNRE\RS.xml" />
+		<None Remove="Servicos\Config\GNRE\SC.xml" />
+		<None Remove="Servicos\Config\GNRE\SE.xml" />
+		<None Remove="Servicos\Config\GNRE\SP.xml" />
+		<None Remove="Servicos\Config\GNRE\TO.xml" />
+		<None Remove="Servicos\Config\MDFe\AC.xml" />
+		<None Remove="Servicos\Config\MDFe\AL.xml" />
+		<None Remove="Servicos\Config\MDFe\AM.xml" />
+		<None Remove="Servicos\Config\MDFe\AP.xml" />
+		<None Remove="Servicos\Config\MDFe\BA.xml" />
+		<None Remove="Servicos\Config\MDFe\CE.xml" />
+		<None Remove="Servicos\Config\MDFe\Config.xml" />
+		<None Remove="Servicos\Config\MDFe\DF.xml" />
+		<None Remove="Servicos\Config\MDFe\ES.xml" />
+		<None Remove="Servicos\Config\MDFe\GO.xml" />
+		<None Remove="Servicos\Config\MDFe\MA.xml" />
+		<None Remove="Servicos\Config\MDFe\MG.xml" />
+		<None Remove="Servicos\Config\MDFe\MS.xml" />
+		<None Remove="Servicos\Config\MDFe\MT.xml" />
+		<None Remove="Servicos\Config\MDFe\PB.xml" />
+		<None Remove="Servicos\Config\MDFe\PE.xml" />
+		<None Remove="Servicos\Config\MDFe\PI.xml" />
+		<None Remove="Servicos\Config\MDFe\PR.xml" />
+		<None Remove="Servicos\Config\MDFe\RJ.xml" />
+		<None Remove="Servicos\Config\MDFe\RN.xml" />
+		<None Remove="Servicos\Config\MDFe\RO.xml" />
+		<None Remove="Servicos\Config\MDFe\RR.xml" />
+		<None Remove="Servicos\Config\MDFe\RS.xml" />
+		<None Remove="Servicos\Config\MDFe\SC.xml" />
+		<None Remove="Servicos\Config\MDFe\SE.xml" />
+		<None Remove="Servicos\Config\MDFe\SP.xml" />
+		<None Remove="Servicos\Config\MDFe\SVRS.xml" />
+		<None Remove="Servicos\Config\MDFe\TO.xml" />
+		<None Remove="Servicos\Config\NFCe\AC.xml" />
+		<None Remove="Servicos\Config\NFCe\AL.xml" />
+		<None Remove="Servicos\Config\NFCe\AM.xml" />
+		<None Remove="Servicos\Config\NFCe\AN.xml" />
+		<None Remove="Servicos\Config\NFCe\Ap.xml" />
+		<None Remove="Servicos\Config\NFCe\BA.xml" />
+		<None Remove="Servicos\Config\NFCe\CE.xml" />
+		<None Remove="Servicos\Config\NFCe\Config.xml" />
+		<None Remove="Servicos\Config\NFCe\DF.xml" />
+		<None Remove="Servicos\Config\NFCe\ES.xml" />
+		<None Remove="Servicos\Config\NFCe\GO.xml" />
+		<None Remove="Servicos\Config\NFCe\MA.xml" />
+		<None Remove="Servicos\Config\NFCe\MG.xml" />
+		<None Remove="Servicos\Config\NFCe\MS.xml" />
+		<None Remove="Servicos\Config\NFCe\MT.xml" />
+		<None Remove="Servicos\Config\NFCe\PB.xml" />
+		<None Remove="Servicos\Config\NFCe\PE.xml" />
+		<None Remove="Servicos\Config\NFCe\PI.xml" />
+		<None Remove="Servicos\Config\NFCe\PR.xml" />
+		<None Remove="Servicos\Config\NFCe\RJ.xml" />
+		<None Remove="Servicos\Config\NFCe\RN.xml" />
+		<None Remove="Servicos\Config\NFCe\RO.xml" />
+		<None Remove="Servicos\Config\NFCe\RR.xml" />
+		<None Remove="Servicos\Config\NFCe\RS.xml" />
+		<None Remove="Servicos\Config\NFCe\SC.xml" />
+		<None Remove="Servicos\Config\NFCe\SE.xml" />
+		<None Remove="Servicos\Config\NFCe\SP.xml" />
+		<None Remove="Servicos\Config\NFCe\SVRS.xml" />
+		<None Remove="Servicos\Config\NFCe\TO.xml" />
+		<None Remove="Servicos\Config\NFe\AC.xml" />
+		<None Remove="Servicos\Config\NFe\AL.xml" />
+		<None Remove="Servicos\Config\NFe\AM.xml" />
+		<None Remove="Servicos\Config\NFe\AN.xml" />
+		<None Remove="Servicos\Config\NFe\AP.xml" />
+		<None Remove="Servicos\Config\NFe\BA.xml" />
+		<None Remove="Servicos\Config\NFe\CE.xml" />
+		<None Remove="Servicos\Config\NFe\Config.xml" />
+		<None Remove="Servicos\Config\NFe\DF.xml" />
+		<None Remove="Servicos\Config\NFe\ES.xml" />
+		<None Remove="Servicos\Config\NFe\GO.xml" />
+		<None Remove="Servicos\Config\NFe\MA.xml" />
+		<None Remove="Servicos\Config\NFe\MG.xml" />
+		<None Remove="Servicos\Config\NFe\MS.xml" />
+		<None Remove="Servicos\Config\NFe\MT.xml" />
+		<None Remove="Servicos\Config\NFe\PB.xml" />
+		<None Remove="Servicos\Config\NFe\PE.xml" />
+		<None Remove="Servicos\Config\NFe\PI.xml" />
+		<None Remove="Servicos\Config\NFe\PR.xml" />
+		<None Remove="Servicos\Config\NFe\RJ.xml" />
+		<None Remove="Servicos\Config\NFe\RN.xml" />
+		<None Remove="Servicos\Config\NFe\RO.xml" />
+		<None Remove="Servicos\Config\NFe\RR.xml" />
+		<None Remove="Servicos\Config\NFe\RS.xml" />
+		<None Remove="Servicos\Config\NFe\SC.xml" />
+		<None Remove="Servicos\Config\NFe\SE.xml" />
+		<None Remove="Servicos\Config\NFe\SP.xml" />
+		<None Remove="Servicos\Config\NFe\SVAN.xml" />
+		<None Remove="Servicos\Config\NFe\SVCAN.xml" />
+		<None Remove="Servicos\Config\NFe\SVCRS.xml" />
+		<None Remove="Servicos\Config\NFe\SVRS.xml" />
+		<None Remove="Servicos\Config\NFe\TO.xml" />
+		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
+		<None Remove="Servicos\Config\NFSe\Betha.xml" />
+		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
+		<None Remove="Servicos\Config\NFSe\Config.xml" />
+		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\Template.xml" />
+		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retGTVe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\cabecMsg_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\config_uf_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\consulta_config_uf_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\dados_gnre_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\dados_gnre_v2.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_consulta_guia_v2.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_consulta_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_recibo_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_result_consulta_v2.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_result_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_result_v2.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\lote_gnre_v2.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\tiposBasicoGNRE_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\tiposBasicoGNRE_v2.00.xsd" />
+		<None Remove="Xml\Schemas\CCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\confRecebto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\consCad_v2.00.xsd" />
+		<None Remove="Xml\Schemas\consReciNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\consSitNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\consStatServ_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cancCTeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consCad_v2.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consReciCTeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consReciCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consSitCTeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consSitCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consStatServCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\consStatServTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteModalAereo_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteModalAquaviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteModalDutoviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteModalFerroviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteModalRodoviarioOS_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteModalRodoviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteMultiModal_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteOS_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cte_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\distDFeInt_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\enviCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCancCECTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCancCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCCeCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evCECTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\eventoCTeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\eventoCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evEPECCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evGTV_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evPrestDesacordo_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\evRegMultimodal_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\inutCTeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\inutCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\leiauteConsultaCadastro_v2.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procCTeOS_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procEventoCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procInutCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retConsCad_v2.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retConsReciCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retConsSitCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retConsStatServCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retCTeOS_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retDistDFeInt_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retEnviCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retEventoCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retInutCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\tiposBasico_v1.03.xsd" />
+		<None Remove="Xml\Schemas\CTe\tiposDistDFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\tiposGeralCTe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\xmldsig-core-schema_v1.01.xsd" />
+		<None Remove="Xml\Schemas\distDFeInt_v1.01.xsd" />
+		<None Remove="Xml\Schemas\e110110_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e110111_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e110112_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e111500_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e111501_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e111502_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e111503_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e210200_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e210210_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e210220_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e210240_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e411500_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e411501_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e411502_v1.00.xsd" />
+		<None Remove="Xml\Schemas\e411503_v1.00.xsd" />
+		<None Remove="Xml\Schemas\envCCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\envConfRecebto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\envEventoCancNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\envEventoCancSubst_v1.00.xsd" />
+		<None Remove="Xml\Schemas\enviNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\envRemIndus_v1.00.xsd" />
+		<None Remove="Xml\Schemas\eventoCancNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\eventoCancSubst_v1.00.xsd" />
+		<None Remove="Xml\Schemas\eventoRemIndus_v1.00.xsd" />
+		<None Remove="Xml\Schemas\inutNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteCCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteConfRecebto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteConsSitNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteConsStatServ_v4.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteConsultaCadastro_v2.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteEventoCancNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteEventoCancSubst_v1.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteInutNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\leiauteRemIndus_v1.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consMDFeNaoEncTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consMDFeNaoEnc_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consReciMDFeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consReciMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consSitMDFeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consSitMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consStatServMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\consStatServTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\distMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\enviMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evCancMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evEncMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\eventoMDFeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\eventoMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evIncCondutorMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evInclusaoDFeMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evPagtoOperMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\leiauteDistMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeConsultaDFeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeConsultaDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeModalAereo_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeModalAquaviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeModalFerroviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeModalRodoviario_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfeTiposBasico_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\mdfe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\procEventoMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\procMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retConsMDFeNaoEnc_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retConsReciMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retConsSitMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retConsStatServMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retDistMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retEnviMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retEventoMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retMDFeConsultaDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\retMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\tiposGeralMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\xmldsig-core-schema_v1.01.xsd" />
+		<None Remove="Xml\Schemas\NFe\e110130_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\e110131_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\e110140_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\envEPEC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\envEventoCancEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\envEventoEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\EPEC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\EventoCancEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\EventoEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\eventoEPEC_v0.01.xsd" />
+		<None Remove="Xml\Schemas\NFe\leiauteEPEC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\leiauteEventoCancEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\leiauteEventoEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\procEPEC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\procEventoCancEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\procEventoEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\retEnvEPEC_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\retEventoCancEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\retEventoEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
+		<None Remove="Xml\Schemas\nfe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\nfse_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\nfse_v202.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_lote_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_lote_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_situacao_lote_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_consultar_situacao_lote_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_enviar_lote_rps_envio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\servico_enviar_lote_rps_resposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\TiposNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\procConfRecebtoNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\procEventoCancNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\procEventoCancSubst_v1.00.xsd" />
+		<None Remove="Xml\Schemas\procEventoNFe_v99.99.xsd" />
+		<None Remove="Xml\Schemas\procInutNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\procNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\procRemIndus_v1.00.xsd" />
+		<None Remove="Xml\Schemas\resEvento_v1.01.xsd" />
+		<None Remove="Xml\Schemas\resNFe_v1.01.xsd" />
+		<None Remove="Xml\Schemas\retConsCad_v2.00.xsd" />
+		<None Remove="Xml\Schemas\retConsReciNFe_v2.00.xsd" />
+		<None Remove="Xml\Schemas\retConsReciNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\retConsSitNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\retConsStatServ_v4.00.xsd" />
+		<None Remove="Xml\Schemas\retDistDFeInt_v1.01.xsd" />
+		<None Remove="Xml\Schemas\retEnvCCe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\retEnvConfRecebto_v1.00.xsd" />
+		<None Remove="Xml\Schemas\retEnvEventoCancNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\retEnvEventoCancSubst_v1.00.xsd" />
+		<None Remove="Xml\Schemas\retEnviNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\retEnvRemIndus_v1.00.xsd" />
+		<None Remove="Xml\Schemas\retInutNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\tiposBasico_v1.03.xsd" />
+		<None Remove="Xml\Schemas\tiposBasico_v4.00.xsd" />
+		<None Remove="Xml\Schemas\tiposDistDFe_v1.01.xsd" />
+		<None Remove="Xml\Schemas\xmldsig-core-schema_v1.01.xsd" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\AC.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\AL.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\AM.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\AP.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\BA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\CE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\DF.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\ES.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\GO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\MG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\MS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\MT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\PA.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\PB.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\PE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\PI.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\PR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\RJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\RN.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\RO.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\RR.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\RS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\SE.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTeOS\SP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\SVRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\SVSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTeOS\TO.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\AP.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\MS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\PA.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\AC.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\AL.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\AM.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\AN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\BA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\CE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\DF.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\ES.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\GO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\PB.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\PE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\PI.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\RJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\RN.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\RO.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\RR.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\MT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\MG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\RS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\SE.xml" />
+		<EmbeddedResource Include="Servicos\Config\CTe\SP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\SVSP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\SVRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\PR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CTe\TO.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\GNRE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\GNRE\AL.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\AP.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\AM.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\BA.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\CE.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\DF.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\ES.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\GO.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\MT.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\MS.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\MG.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\PA.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\PB.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\PE.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\PI.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\RJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\RN.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\RS.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\TO.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\SE.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\SP.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\RR.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\RO.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\AC.xml" />
+		<EmbeddedResource Include="Servicos\Config\GNRE\PR.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\AC.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\AL.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\AM.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\AP.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\BA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\CE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\DF.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\ES.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\GO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\MG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\MS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\MT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\PB.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\PE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\PI.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\PR.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\RJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\RN.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\RO.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\RR.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\RS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\SE.xml" />
+		<EmbeddedResource Include="Servicos\Config\MDFe\SP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\SVRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\TO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFCe\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFCe\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFCe\RJ.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFCe\TO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\SE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\RR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\RO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\RN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\PI.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\PB.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\ES.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\DF.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\AP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\AL.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\AM.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\AC.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\BA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\CE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\GO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\MG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\MS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\MT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\PE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\PR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\RS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\SP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFCe\SVRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\AC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\AL.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\AM.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\AP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\BA.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\CE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\Config.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\DF.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\ES.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\GO.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\MG.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\MS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\MT.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\PB.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\PE.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\AN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\PI.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\PR.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\RJ.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\RN.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\RO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\RR.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\RS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\SC.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\SE.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFe\SP.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\SVAN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\SVCAN.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\SVCRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\SVRS.xml">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\TO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\BarretosSP.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\NilopolisRJ.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\NovaFriburgoRJ.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\Template.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\Betha.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CianortePR.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\Config.xml" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\cabecMsg_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\config_uf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\consulta_config_uf_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\dados_gnre_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\dados_gnre_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_consulta_guia_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_consulta_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_recibo_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_result_consulta_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_result_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_result_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\lote_gnre_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\tiposBasicoGNRE_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\GNRE\tiposBasicoGNRE_v2.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cancCTeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consCad_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\CTe\consReciCTeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consReciCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consSitCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consStatServCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\consStatServTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalAereo_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalAquaviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalDutoviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalFerroviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviarioOS_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteMultiModal_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteOS_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cte_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\distDFeInt_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\enviCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancCECTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCancCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCCeCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCECTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\eventoCTeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\eventoCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evEPECCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evGTV_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evPrestDesacordo_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evRegMultimodal_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\leiauteConsultaCadastro_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procInutCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retConsCad_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\CTe\retConsReciCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retConsSitCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retConsStatServCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retCTeOS_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retDistDFeInt_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retEnviCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retEventoCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\retInutCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\tiposBasico_v1.03.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\CTe\tiposDistDFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\tiposGeralCTe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\xmldsig-core-schema_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consMDFeNaoEncTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consMDFeNaoEnc_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consReciMDFeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consReciMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consSitMDFeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consSitMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consStatServMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\consStatServTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\distMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\enviMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evCancMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evEncMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\eventoMDFeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\eventoMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evIncCondutorMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evInclusaoDFeMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evPagtoOperMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\leiauteDistMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeConsultaDFeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeConsultaDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeModalAereo_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeModalAquaviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeModalFerroviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeModalRodoviario_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfeTiposBasico_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\mdfe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\procEventoMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\procMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retConsMDFeNaoEnc_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retConsReciMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retConsSitMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retConsStatServMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retDistMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retEnviMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retEventoMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retMDFeConsultaDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\retMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\tiposGeralMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\xmldsig-core-schema_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\CCe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\confRecebto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\consCad_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\consReciNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\consSitNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\consStatServ_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\distDFeInt_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110110_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110111_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110112_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110130_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110131_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e110140_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e111500_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e111501_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e111502_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e111503_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e210200_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e210210_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e210220_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e210240_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\e411500_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e411501_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e411502_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\e411503_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\envCCe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\envConfRecebto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEPEC_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancNFe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoCancSubst_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\envEventoEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\enviNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\envRemIndus_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\EPEC_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\EventoCancEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\eventoCancNFe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\eventoCancSubst_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\EventoEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\eventoEPEC_v0.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\eventoRemIndus_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\inutNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteCCe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConfRecebto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConsSitNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConsStatServ_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteConsultaCadastro_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEPEC_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancNFe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoCancSubst_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteEventoEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteInutNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\leiauteRemIndus_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\nfe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procCCeNFe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procConfRecebtoNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEPEC_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancNFe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoCancSubst_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\procEventoNFe_v99.99.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procInutNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\procRemIndus_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\resEvento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\resNFe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retConsCad_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retConsReciNFe_v2.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retConsReciNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retConsSitNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retConsStatServ_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retDistDFeInt_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvCCe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvConfRecebto_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEPEC_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoCancNFe_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvEventoCancSubst_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnviNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEnvRemIndus_v1.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEntregaNFe_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\retInutNFe_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\tiposBasico_v1.03.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\tiposBasico_v4.00.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFe\tiposDistDFe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\xmldsig-core-schema_v1.01.xsd">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\nfse_v202.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_envio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_resposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_lote_rps_envio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_lote_rps_resposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_envio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_resposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_rps_envio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_nfse_rps_resposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_situacao_lote_rps_envio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_consultar_situacao_lote_rps_resposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_enviar_lote_rps_envio_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_enviar_lote_rps_resposta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\TiposNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="5.0.0" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="$(SolutionDir)Build_INTEROP.bat $(TargetPath) $(SolutionDir)" IgnoreExitCode="true" />
+	</Target>
+
+</Project>

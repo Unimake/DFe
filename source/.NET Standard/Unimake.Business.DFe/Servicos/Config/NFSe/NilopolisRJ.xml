@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <GerarNfse versao="0.00">
+      <Descricao>Envio de NFSe Síncrono</Descricao>
+      <WebEnderecoHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php#GerarNota</WebActionHomologacao>
+      <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#GerarNota</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>0.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="0.00">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php#CancelarNfse</WebActionHomologacao>
+      <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>0.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <ConsultarNotaValida versao="0.00">
+      <Descricao>Consulta nota fiscal de serviço válida</Descricao>
+      <WebEnderecoHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php#ConsultarNotaValida</WebActionHomologacao>
+      <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>0.00</SchemaVersao>
+      <TargetNS></TargetNS>   
+    </ConsultarNotaValida>
+    <ConsultarNotaPrestador versao="0.00">
+      <Descricao>Consulta nota fiscal de serviço do prestador</Descricao>
+      <WebEnderecoHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://nilopolis.sigiss.com.br:443/testenilopolis/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionHomologacao>
+      <WebActionProducao>https://nilopolis.sigiss.com.br:443/nilopolis/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>0.00</SchemaVersao>
+      <TargetNS></TargetNS>   
+    </ConsultarNotaPrestador>
+  </Servicos>
+</Configuracoes>

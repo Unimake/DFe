@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigPadrao>
+  <Versao ID="3.00">
+    <WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+    <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header><cteCabecMsg xmlns="{ActionWeb}"><cUF>{cUF}</cUF><versaoDados>{versaoDados}</versaoDados></cteCabecMsg></soap:Header><soap:Body><cteDadosMsg xmlns="{ActionWeb}">{xmlBody}</cteDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+    <WebTagRetorno></WebTagRetorno>
+    <WebSoapVersion>soap12</WebSoapVersion>
+    <SchemaVersao>3.00</SchemaVersao>
+    <TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+  </Versao>
+  <Versao ID="2.00">
+    <WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+    <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><nfeDadosMsg xmlns="{ActionWeb}">{xmlBody}</nfeDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+    <WebTagRetorno>nfeResultMsg</WebTagRetorno>
+    <WebSoapVersion>soap12</WebSoapVersion>
+    <SchemaVersao>2.00</SchemaVersao>
+    <TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+  </Versao>
+  <Versao ID="1.00">
+    <WebContentType>text/xml;charset=utf-8;</WebContentType>
+    <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><cteDistDFeInteresse xmlns="http://www.portalfiscal.inf.br/cte/wsdl/CTeDistribuicaoDFe"><cteDadosMsg>{xmlBody}</cteDadosMsg></cteDistDFeInteresse></soap:Body></soap:Envelope>]]></WebSoapString>
+    <WebTagRetorno>cteDistDFeInteresseResult</WebTagRetorno>
+    <WebSoapVersion>soap12</WebSoapVersion>
+    <SchemaVersao>1.00</SchemaVersao>
+    <TargetNS>http://www.portalfiscal.inf.br/cte</TargetNS>
+  </Versao>
+</ConfigPadrao>

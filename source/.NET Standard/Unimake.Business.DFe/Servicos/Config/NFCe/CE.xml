@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFCe">
+    <StatusServico versao="4.00">
+      <Descricao>Consulta situação do serviço da nota fiscal consumidor eletrônica</Descricao>
+      <WebEnderecoHomologacao>https://nfceh.sefaz.ce.gov.br/nfce4/services/NFeStatusServico4</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfce.sefaz.ce.gov.br/nfce4/services/NFeStatusServico4</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4</WebActionProducao>
+      <SchemaArquivo>consStatServ_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </StatusServico>
+    <ConsultaProtocolo versao="4.00">
+      <Descricao>Consulta situação da nota fiscal consumidor eletrônica</Descricao>
+      <WebEnderecoHomologacao>https://nfceh.sefaz.ce.gov.br/nfce4/services/NFeConsultaProtocolo4</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfce.sefaz.ce.gov.br/nfce4/services/NFeConsultaProtocolo4</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeConsultaProtocolo4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeConsultaProtocolo4</WebActionProducao>
+      <SchemaArquivo>consSitNFe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </ConsultaProtocolo>
+    <Inutilizacao versao="4.00">
+      <Descricao>Inutilização de números da nota fiscal consumidor eletrônica</Descricao>
+      <WebEnderecoHomologacao>https://nfceh.sefaz.ce.gov.br/nfce4/services/NFeInutilizacao4</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfce.sefaz.ce.gov.br/nfce4/services/NFeInutilizacao4</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4</WebActionProducao>
+      <SchemaArquivo>inutNFe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura>inutNFe</TagAssinatura>
+      <TagAtributoID>infInut</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </Inutilizacao>
+    <ConsultaCadastro versao="2.00">
+      <Descricao>Consulta cadastro do contribuinte</Descricao>
+      <WebEnderecoHomologacao>https://nfeh.sefaz.ce.gov.br/nfe4/services/CadConsultaCadastro4</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sefaz.ce.gov.br/nfe4/services/CadConsultaCadastro4?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionProducao>
+      <SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </ConsultaCadastro>
+    <RecepcaoEvento versao="1.00">
+      <Descricao>Recepcao de eventos</Descricao>
+      <WebEnderecoHomologacao>https://nfceh.sefaz.ce.gov.br/nfce4/services/NFeRecepcaoEvento4?WSDL</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfce.sefaz.ce.gov.br/nfce4/services/NFeRecepcaoEvento4?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <SchemasEspecificos>
+        <Tipo>
+          <ID>110111</ID>
+          <SchemaArquivo>envEventoCancNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110111_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110112</ID>
+          <SchemaArquivo>envEventoCancSubst_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110112_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>110110</ID>
+          <SchemaArquivo>envCCe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+      </SchemasEspecificos>
+      <TagAssinatura>evento</TagAssinatura>
+      <TagAtributoID>infEvento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </RecepcaoEvento>
+    <Autorizacao versao="4.00">
+      <Descricao>Autorização da NFCe</Descricao>
+      <WebEnderecoHomologacao>https://nfceh.sefaz.ce.gov.br/nfce4/services/NFeAutorizacao4</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfce.sefaz.ce.gov.br/nfce4/services/NFeAutorizacao4</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeAutorizacao4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeAutorizacao4</WebActionProducao>
+      <SchemaArquivo>enviNFe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura>NFe</TagAssinatura>
+      <TagAtributoID>infNFe</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <UrlQrCodeHomologacao>http://nfceh.sefaz.ce.gov.br/pages/ShowNFCe.html</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>http://nfce.sefaz.ce.gov.br/pages/ShowNFCe.html</UrlQrCodeProducao>
+      <UrlChaveHomologacao>www.sefaz.ce.gov.br/nfce/consulta</UrlChaveHomologacao>
+      <UrlChaveProducao>www.sefaz.ce.gov.br/nfce/consulta</UrlChaveProducao>
+    </Autorizacao>
+    <RetAutorizacao versao="4.00">
+      <Descricao>Consulta recibo da nota fiscal consumidor eletrônica</Descricao>
+      <WebEnderecoHomologacao>https://nfceh.sefaz.ce.gov.br/nfce4/services/NFeRetAutorizacao4</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfce.sefaz.ce.gov.br/nfce4/services/NFeRetAutorizacao4</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionProducao>
+      <SchemaArquivo>consReciNFe_v{0}.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </RetAutorizacao>
+  </Servicos>
+</Configuracoes>

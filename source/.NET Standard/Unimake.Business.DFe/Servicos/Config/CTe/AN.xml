@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="CTe">
+    <DistribuicaoDFe versao="1.00">
+      <Descricao>Consulta da relação de documentos fiscais eletrônicos destinados - CTe</Descricao>
+      <WebEnderecoHomologacao>https://hom1.cte.fazenda.gov.br/CTeDistribuicaoDFe/CTeDistribuicaoDFe.asmx</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www1.cte.fazenda.gov.br/CTeDistribuicaoDFe/CTeDistribuicaoDFe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeDistribuicaoDFe/cteDistDFeInteresse</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeDistribuicaoDFe/cteDistDFeInteresse</WebActionProducao>
+      <SchemaArquivo>distDFeInt_v{0}.xsd</SchemaArquivo>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+    </DistribuicaoDFe>
+  </Servicos>
+</Configuracoes>
