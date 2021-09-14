@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -985,6 +986,71 @@ namespace Unimake.Business.DFe.Utility
             {
                 content = xmlElement.GetElementsByTagName(tagName)[0].InnerText;
             }
+
+            return content;
+        }
+
+        /// <summary>
+        /// Tratar caracteres especiais existentes na string substituindo por escape. 
+        /// Caracteres substituidos: <![CDATA[  & < > \ ' ]]>
+        /// Escapes utilizados: <![CDATA[  &amp; &lt; &gt; &quot; &#39; ]]>
+        /// </summary>
+        /// <param name="content">String a ser tratada</param>
+        /// <returns>string com os caracteres especiais substituidos pelos seus escapes</returns>
+        /// <example>
+        /// var texto = "Dias \ Dias";
+        /// texto = XMLUtility.TratarCaracterEspecial(texto);
+        /// MessageBox.Show(texto); // Retorno será: "Dias &quot; Dias"
+        /// </example>
+        /// <seealso cref="XMLUtility.LimparEspacoDesnecessario(string)"/>
+        public static string TratarCaracterEspecial(string content)
+        {
+            content = content.Replace("&", "&amp;");
+            content = content.Replace("<", "&lt;");
+            content = content.Replace(">", "&gt;");
+            content = content.Replace("\"", "&quot;");
+            content = content.Replace("\\", "&quot;");
+            content = content.Replace("'", "&#39;");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
+        /// </summary>
+        /// <returns>Retorna string sem os espaços denecessários</returns>
+        /// <example>
+        /// var texto = " Eu    vou   ao    supermercado comprar alimentos.    ";
+        /// texto = XMLUtility.LimparEspacoDesnecessario(texto);
+        /// MessageBox.Show(texto); // Retorno será: "Eu vou ao supermercado comprar alimentos."
+        /// </example>
+        /// <seealso cref="XMLUtility.TratarCaracterEspecial(string)"/>
+        public static string LimparEspacoDesnecessario(string content)
+        {
+            var regex = new Regex(@"\s{2,}");
+            content = regex.Replace(content, " ");
+            content = content.Trim();
+
+            return content;
+        }
+
+        /// <summary>
+        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
+        /// Tratar caracteres especiais existentes na string substituindo por escape.
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns>Conteudo sem os espaços desnecessários e com os caracteres especiais substituidos por escapes.</returns>
+        /// <example>
+        /// var texto = @"   Dias \ Dias     de ir em     casa   .   ";
+        /// texto = XMLUtility.LimparEspacoTratarCaracterEspecial(texto);
+        /// MessageBox.Show(texto); // Retorno será: "Dias &quot; Dias de ir em casa ."
+        /// </example>
+        /// <seealso cref="XMLUtility.LimparEspacoDesnecessario(string)"/>
+        /// <seealso cref="XMLUtility.TratarCaracterEspecial(string)"/>
+        public static string TratarConteudoString(string content)
+        {
+            content = LimparEspacoDesnecessario(content);
+            content = TratarCaracterEspecial(content);
 
             return content;
         }
