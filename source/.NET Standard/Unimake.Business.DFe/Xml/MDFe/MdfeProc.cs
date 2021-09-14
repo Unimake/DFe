@@ -20,16 +20,16 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("protMDFe")]
         public ProtMDFe ProtMDFe { get; set; }
 
-        [XmlElement("ipTransmissor")]
+        [XmlAttribute("ipTransmissor")]
         public string IpTransmissor { get; set; }
 
-        [XmlElement("nPortaCon")]
+        [XmlAttribute("nPortaCon")]
         public int NPortaCon { get; set; }
 
         [XmlIgnore]
         public DateTime DhConexao { get; set; }
 
-        [XmlElement("dhConexao")]
+        [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
             get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");

@@ -724,7 +724,13 @@ namespace Unimake.Business.DFe.Servicos
         /// Registro de Passagem CT-e (310620)
         /// </summary>
         [XmlEnum("310620")]
-        RegistroPassagem = 310620
+        RegistroPassagem = 310620,
+
+        /// <summary>
+        /// MDFe cancelado (310611) (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("310611")]
+        MDFeCancelado = 310611
     }
 
     #endregion

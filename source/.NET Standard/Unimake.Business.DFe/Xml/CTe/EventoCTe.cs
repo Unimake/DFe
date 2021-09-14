@@ -8,7 +8,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Contract.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
@@ -16,7 +15,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 {
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCanc : EventoDetalhe
+    public class DetEventoCanc: EventoDetalhe
     {
         #region Public Properties
 
@@ -50,7 +49,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoPrestDesacordo : EventoDetalhe
+    public class DetEventoPrestDesacordo: EventoDetalhe
     {
         #region Public Properties
 
@@ -84,7 +83,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCancCompEntrega : EventoDetalhe
+    public class DetEventoCancCompEntrega: EventoDetalhe
     {
         #region Public Properties
 
@@ -118,7 +117,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [XmlRoot(ElementName = "detEvento")]
     [XmlInclude(typeof(EventoDetalhe))]
-    public class DetEventoCCE : EventoDetalhe
+    public class DetEventoCCE: EventoDetalhe
     {
         #region Private Fields
 
@@ -215,7 +214,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [XmlInclude(typeof(EventoDetalhe))]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoEPEC : EventoDetalhe
+    public class DetEventoEPEC: EventoDetalhe
     {
         private EvEPECCTe _evEPECCTe;
 
@@ -410,7 +409,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [XmlRoot(ElementName = "evEPECCTe")]
     [XmlInclude(typeof(EventoDetalhe))]
-    public class EvEPECCTe : Contract.Serialization.IXmlSerializable
+    public class EvEPECCTe: Contract.Serialization.IXmlSerializable
     {
         [XmlElement("descEvento", Order = 0)]
         public string DescEvento { get; set; } = "EPEC";
@@ -540,7 +539,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [XmlInclude(typeof(EventoDetalhe))]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCompEntrega : EventoDetalhe
+    public class DetEventoCompEntrega: EventoDetalhe
     {
         #region Private Fields
 
@@ -694,7 +693,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class EventoCCeCTe : EventoDetalhe
+    public class EventoCCeCTe: EventoDetalhe
     {
         #region Private Fields
 
@@ -736,7 +735,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [XmlRoot(ElementName = "evCECTe")]
     [XmlInclude(typeof(EventoDetalhe))]
-    public class EventoCECTe : EventoDetalhe
+    public class EventoCECTe: EventoDetalhe
     {
         #region Public Properties
 
@@ -803,7 +802,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [Serializable()]
     [XmlRoot("eventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class EventoCTe : XMLBase
+    public class EventoCTe: XMLBase
     {
         #region Private Methods
 
@@ -892,7 +891,8 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(DetEventoCompEntrega))]
     [XmlInclude(typeof(EventoCECTe))]
     [XmlInclude(typeof(DetEventoPrestDesacordo))]
-    public class EventoDetalhe : System.Xml.Serialization.IXmlSerializable
+    [XmlInclude(typeof(DetEventoFiscoMDFeCancelado))]
+    public class EventoDetalhe: System.Xml.Serialization.IXmlSerializable
     {
         #region Private Fields
 
@@ -1164,6 +1164,10 @@ namespace Unimake.Business.DFe.Xml.CTe
                         _detEvento = new DetEventoEPEC();
                         break;
 
+                    case TipoEventoCTe.MDFeCancelado:
+                        _detEvento = new DetEventoFiscoMDFeCancelado();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -1199,4 +1203,109 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #endregion Public Methods
     }
+
+    #region Eventos exclusivos do fisco (Gerados pelo fisco)
+
+    [XmlInclude(typeof(EventoDetalhe))]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoFiscoMDFeCancelado: EventoDetalhe
+    {
+        private EvCTeCanceladoMDFe _evCTeCanceladoMDFe;
+
+        internal override void SetValue(PropertyInfo pi)
+        {
+            if(pi?.Name == nameof(MDFe))
+            {
+                XmlReader.Read();
+
+                MDFe = new EvCTeCanceladoMDFeMDFe();
+                MDFe.ChMDFe = XmlReader.GetValue<string>(nameof(MDFe.ChMDFe));
+                MDFe.NProtCanc = XmlReader.GetValue<string>(nameof(MDFe.NProtCanc));
+
+                return;
+            }
+
+            base.SetValue(pi);
+        }
+
+        [XmlElement(ElementName = "evCTeCanceladoMDFe", Order = 0)]
+        public EvCTeCanceladoMDFe EvCTeCanceladoMDFe
+        {
+            get => _evCTeCanceladoMDFe ?? (_evCTeCanceladoMDFe = new EvCTeCanceladoMDFe());
+            set => _evCTeCanceladoMDFe = value;
+        }
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EvCTeCanceladoMDFe.DescEvento;
+            set => EvCTeCanceladoMDFe.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public EvCTeCanceladoMDFeMDFe MDFe
+        {
+            get => EvCTeCanceladoMDFe.MDFe;
+            set => EvCTeCanceladoMDFe.MDFe = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evCTeCanceladoMDFe>";
+
+            writeRaw += $@"<descEvento>{DescEvento}</descEvento>";
+            writeRaw += $@"<MDFe>";
+            writeRaw += $@"<chMDFe>{EvCTeCanceladoMDFe.MDFe.ChMDFe}</chMDFe>";
+            writeRaw += $@"<nProtCanc>{EvCTeCanceladoMDFe.MDFe.NProtCanc}</nProtCanc>";
+            writeRaw += $@"</MDFe>";
+
+            writeRaw += $@"</evCTeCanceladoMDFe>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+    [XmlRoot(ElementName = "evCTeCanceladoMDFe")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EvCTeCanceladoMDFe: Contract.Serialization.IXmlSerializable
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public string DescEvento { get; set; } = "MDF-e Cancelado";
+
+        [XmlElement("MDFe", Order = 6)]
+        public EvCTeCanceladoMDFeMDFe MDFe { get; set; }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na deserialização
+        /// </summary>
+        ///<param name="reader">Reader XML recebido durante o processo de deserialização</param>
+        public void ReadXml(XmlDocument document)
+        {
+
+        }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na serialização
+        /// </summary>
+        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        public void WriteXml(System.IO.StringWriter writer)
+        {
+
+        }
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class EvCTeCanceladoMDFeMDFe
+    {
+        [XmlElement("chMDFe", Order = 0)]
+        public string ChMDFe { get; set; }
+
+        [XmlElement("nProtCanc", Order = 1)]
+        public string NProtCanc { get; set; }
+    }
+
+    #endregion
 }

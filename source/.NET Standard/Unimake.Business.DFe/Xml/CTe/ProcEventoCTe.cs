@@ -10,7 +10,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 {
     [Serializable()]
     [XmlRoot("procEventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class ProcEventoCTe : XMLBase
+    public class ProcEventoCTe: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -47,15 +47,15 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             var xmlDocument = base.GerarXML();
 
-            XmlRootAttribute attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
+            var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
 
-            XmlElement xmlElementEvento = (XmlElement)xmlDocument.GetElementsByTagName("eventoCTe")[0];
+            var xmlElementEvento = (XmlElement)xmlDocument.GetElementsByTagName("eventoCTe")[0];
             xmlElementEvento.SetAttribute("xmlns", attribute.Namespace);
 
-            XmlElement xmlElementRetEvento = (XmlElement)xmlDocument.GetElementsByTagName("retEventoCTe")[0];
+            var xmlElementRetEvento = (XmlElement)xmlDocument.GetElementsByTagName("retEventoCTe")[0];
             xmlElementRetEvento.SetAttribute("xmlns", attribute.Namespace);
 
-            XmlElement xmlElementRetEventoInfEvento = (XmlElement)xmlElementRetEvento.GetElementsByTagName("infEvento")[0];
+            var xmlElementRetEventoInfEvento = (XmlElement)xmlElementRetEvento.GetElementsByTagName("infEvento")[0];
             xmlElementRetEventoInfEvento.SetAttribute("xmlns", attribute.Namespace);
 
             return xmlDocument;
@@ -80,7 +80,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                         EventoCTe.Signature = reader.ToSignature();
                         break;
 
-                    case "retEvento":
+                    case "retEventoCTe":
                         var versao = reader.GetAttribute("versao");
                         var infEvento = reader.DeserializeTo<RetEventoCTeInfEvento>();
 
@@ -93,5 +93,9 @@ namespace Unimake.Business.DFe.Xml.CTe
                 }
             }
         }
+
+        public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
+        public bool ShouldSerializeNPortaCon() => NPortaCon > 0;
+        public bool ShouldSerializeIpTransmissor() => !string.IsNullOrWhiteSpace(IpTransmissor);
     }
 }

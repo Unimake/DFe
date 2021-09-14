@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2021.09.14.1135</AssemblyVersion>
-		<FileVersion>2021.09.14.1135</FileVersion>
+		<AssemblyVersion>2021.09.14.1742</AssemblyVersion>
+		<FileVersion>2021.09.14.1742</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -232,6 +232,7 @@
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
+		<None Remove="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retGTVe_v3.00.xsd" />
@@ -821,6 +822,7 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Config.xml" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v3.00.xsd" />
