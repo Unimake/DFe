@@ -7,9 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Framework", ".Net Fram
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Standard", ".Net Standard", "{73AEAFDD-DB25-4B98-B91F-42707D9B23B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.Security.Platform", "..\.NET Framework\Unimake.Security.Platform\Unimake.Security.Platform.csproj", "{C57F555F-3C39-45D3-B759-8091C9304882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.Security.Platform", ".NET Framework\Unimake.Security.Platform\Unimake.Security.Platform.csproj", "{C57F555F-3C39-45D3-B759-8091C9304882}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.Business.DFe", "..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj", "{4CCF76AA-892C-4357-8A7C-2375BEEBD86A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.Business.DFe", ".NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj", "{4CCF76AA-892C-4357-8A7C-2375BEEBD86A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F53F2154-FB3B-4161-916E-A64654A6ACBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unimake.DFe.Test", "Unimake.DFe.Test\Unimake.DFe.Test.csproj", "{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,12 @@ Global
 		{4CCF76AA-892C-4357-8A7C-2375BEEBD86A}.INTEROP_Release|Any CPU.Build.0 = INTEROP_Release|Any CPU
 		{4CCF76AA-892C-4357-8A7C-2375BEEBD86A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CCF76AA-892C-4357-8A7C-2375BEEBD86A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.INTEROP_Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.INTEROP_Release|Any CPU.Build.0 = Release|Any CPU
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +47,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C57F555F-3C39-45D3-B759-8091C9304882} = {566DA3AD-AD01-4C87-B77B-8FE8837C2B6D}
 		{4CCF76AA-892C-4357-8A7C-2375BEEBD86A} = {73AEAFDD-DB25-4B98-B91F-42707D9B23B7}
+		{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B} = {F53F2154-FB3B-4161-916E-A64654A6ACBA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B785A409-3157-4CD9-9DFA-E6F647FB490D}

@@ -1005,6 +1005,11 @@ namespace Unimake.Business.DFe.Utility
         /// <seealso cref="XMLUtility.LimparEspacoDesnecessario(string)"/>
         public static string TratarCaracterEspecial(string content)
         {
+            if(string.IsNullOrWhiteSpace(content))
+            {
+                return content;
+            }
+
             content = content.Replace("&", "&amp;");
             content = content.Replace("<", "&lt;");
             content = content.Replace(">", "&gt;");
@@ -1027,6 +1032,11 @@ namespace Unimake.Business.DFe.Utility
         /// <seealso cref="XMLUtility.TratarCaracterEspecial(string)"/>
         public static string LimparEspacoDesnecessario(string content)
         {
+            if(string.IsNullOrWhiteSpace(content))
+            {
+                return content;
+            }
+
             var regex = new Regex(@"\s{2,}");
             content = regex.Replace(content, " ");
             content = content.Trim();
@@ -1039,7 +1049,7 @@ namespace Unimake.Business.DFe.Utility
         /// Tratar caracteres especiais existentes na string substituindo por escape.
         /// </summary>
         /// <param name="content"></param>
-        /// <returns>Conteudo sem os espaços desnecessários e com os caracteres especiais substituidos por escapes.</returns>
+        /// <returns>Conteúdo sem os espaços desnecessários e com os caracteres especiais substituídos por escapes.</returns>
         /// <example>
         /// var texto = @"   Dias \ Dias     de ir em     casa   .   ";
         /// texto = XMLUtility.LimparEspacoTratarCaracterEspecial(texto);
@@ -1049,6 +1059,11 @@ namespace Unimake.Business.DFe.Utility
         /// <seealso cref="XMLUtility.TratarCaracterEspecial(string)"/>
         public static string TratarConteudoString(string content)
         {
+            if(string.IsNullOrWhiteSpace(content))
+            {
+                return content;
+            }
+
             content = LimparEspacoDesnecessario(content);
             content = TratarCaracterEspecial(content);
 

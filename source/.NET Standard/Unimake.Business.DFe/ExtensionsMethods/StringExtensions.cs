@@ -15,7 +15,7 @@
         /// <returns>Retorna uma string truncada até o máximo definido no parâmetro see cfref="maxLength"</returns>
         public static string Truncate(this string value, int maxLength)
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 return value;
             }
