@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2021.09.14.1742</AssemblyVersion>
-		<FileVersion>2021.09.14.1742</FileVersion>
+		<AssemblyVersion>2021.09.21.1431</AssemblyVersion>
+		<FileVersion>2021.09.21.1431</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -228,6 +228,7 @@
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
@@ -424,6 +425,8 @@
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
@@ -812,6 +815,9 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\NovaFriburgoRJ.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\ItambacuriMG.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Template.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -1159,6 +1165,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 	</ItemGroup>

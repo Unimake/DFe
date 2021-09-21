@@ -5571,7 +5571,13 @@ namespace Unimake.Business.DFe.Servicos
         /// EL - Produções de Software
         /// </summary>
         [Description("EL - Produções de Software")]
-        EL
+        EL,
+
+        /// <summary>
+        /// NOTAINTELIGENTE
+        /// </summary>
+        [Description("Nota Inteligente")]
+        NOTAINTELIGENTE
     }
 
     #endregion

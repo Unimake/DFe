@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.02">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
+      <WebActionHomologacao>RecepcionarLoteRps</WebActionHomologacao>
+      <WebActionProducao>RecepcionarLoteRps</WebActionProducao>
+      <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRps>
+    <GerarNfse versao="2.02">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
+      <WebActionHomologacao>GerarNfse</WebActionHomologacao>
+      <WebActionProducao>GerarNfse</WebActionProducao>
+      <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.02">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
+      <WebActionHomologacao>CancelarNfse</WebActionHomologacao>
+      <WebActionProducao>CancelarNfse</WebActionProducao>
+      <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="2.02">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
+      <WebActionHomologacao>SubstituirNfse</WebActionHomologacao>
+      <WebActionProducao>SubstituirNfse</WebActionProducao>
+      <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS></TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.02">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
+      <WebActionHomologacao>ConsultarLoteRps</WebActionHomologacao>
+      <WebActionProducao>ConsultarLoteRps</WebActionProducao>
+      <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarLoteRps>
+  </Servicos>
+</Configuracoes>

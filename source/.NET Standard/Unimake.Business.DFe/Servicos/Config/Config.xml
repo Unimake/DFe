@@ -412,4 +412,10 @@
     <ArqConfig>NovaFriburgoRJ.xml</ArqConfig>
     <PadraoNFSe>EL</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="3132701">
+    <Nome>Itambacuri - MG</Nome>
+    <UF>MG</UF>
+    <ArqConfig>ItambacuriMG.xml</ArqConfig>
+    <PadraoNFSe>NOTAINTELIGENTE</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

@@ -98,7 +98,7 @@ namespace Unimake.Business.DFe
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
             httpWebRequest.ClientCertificates.Add(certificado);
-            httpWebRequest.ContentLength = buffer2.Length;
+            httpWebRequest.ContentLength = buffer2.Length;            
 
             //Definir dados para conexão com proxy
             if(soap.Proxy != null)
@@ -110,7 +110,16 @@ namespace Unimake.Business.DFe
             postData.Write(buffer2, 0, buffer2.Length);
             postData.Close();
 
-            var responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
+            WebResponse responsePost = null;
+            try
+            {
+                responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                responsePost = ex.Response;
+            }
+
             var streamPost = responsePost.GetResponseStream();
 
             var encoding = Encoding.GetEncoding(soap.EncodingRetorno);
@@ -124,7 +133,9 @@ namespace Unimake.Business.DFe
             {
                 if(retornoXml.GetElementsByTagName(soap.TagRetorno)[0] == null)
                 {
-                    throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.");
+                    throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n"+
+                        "Conteúdo retornado pelo servidor:\r\n\r\n"+
+                        retornoXml.InnerXml);
                 }
 
                 if(TratarScape)

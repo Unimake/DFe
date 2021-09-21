@@ -40,7 +40,7 @@
       <TargetNS></TargetNS>
     </RecepcionarLoteRpsSincrono>
     <GerarNfse versao="1.00">
-      <Descricao></Descricao>
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
@@ -78,7 +78,7 @@
       <TargetNS></TargetNS>
     </CancelarNfse>
     <SubstituirNfse versao="1.00">
-      <Descricao></Descricao>
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
