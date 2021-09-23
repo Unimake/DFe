@@ -103,7 +103,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>
         /// Implementa um StringWriter para gravar informações em uma cadeia de caracteres. As informações são armazenadas em um StringBuilder subjacente.
         /// </summary>
-        public class Utf8StringWriter: StringWriter
+        public class Utf8StringWriter : StringWriter
         {
             #region Public Properties
 
@@ -1009,6 +1009,51 @@ namespace Unimake.Business.DFe.Utility
             {
                 return content;
             }
+
+            /*
+             
+	           There is always a solution
+	
+			           ,;~;,
+			              /\_
+			             (  /
+			             ((),     ;,;
+			             |  \\  ,;;'(
+		             __ _(  )'~;;'   \
+		           /'  '\'()/~' \ /'\.)
+	            ,;(      )||     |
+	           ,;' \    /-(.;,   )
+		            ) /       ) /
+		           //         ||
+	              (_\         (_\
+	
+	           go horse <3
+             
+               Aqui detectamos o seguinte:
+               Se o amiguinho(a) desenvolvedor(a) já passar convertido com &amp;, 
+               o replace abaixo vai trocar o primeiro & para &amp; e vai ficar &amp;amp;, 
+               e isso irá gerar erro na emissão do DF-e.
+               Sim, a gente poderia usar Regex, validar e tudo mais, mas assim é mais rápido.
+            
+
+                            Table Flip ...
+
+                            (╯°□°）╯︵ ┻━┻
+            
+            */
+
+            content = content.Replace("&amp;", "&");
+            content = content.Replace("&lt;", "<");
+            content = content.Replace("&gt;", ">");
+            content = content.Replace("&quot;", "\"");
+            content = content.Replace("&quot;", "\\");
+            content = content.Replace("&#39;", "'");
+
+            /* 
+                ... Put the table back 
+
+                ┬─┬﻿ ノ(゜-゜ノ)
+             */
 
             content = content.Replace("&", "&amp;");
             content = content.Replace("<", "&lt;");
