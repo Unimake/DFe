@@ -56,7 +56,7 @@ namespace Unimake.DFe.Test.NFe
 
                     if(distribuicaoDFe.Result.CStat.Equals(138)) //Documentos localizados
                     {
-                        //Preciso, de alguma forma, testar os arquivos gravados para ver se deu certo.
+                        //TODO: WANDREY - Preciso, de alguma forma, testar os arquivos gravados para ver se deu certo.
                         //var folder = @"c:\testenfe\doczip";
 
                         //if(Environment.MachineName == "MARCELO-PC")
