@@ -10,14 +10,14 @@ namespace Unimake.DFe.Test.NFe
     /// <summary>
     /// Testar o serviço de consulta protocolo da NFe
     /// </summary>
-    public class ConsultaProtocoloTest
+    public class RetAutorizacaoTest
     {
         /// <summary>
-        /// Consultar uma chave de NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Consultar o status do serviço da NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta situação</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta situação</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta status</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta status</param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
@@ -74,15 +74,15 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void ConsultarProtocoloNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void ConsultarRecibo(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             try
             {
-                var xml = new ConsSitNFe
+                var xml = new ConsReciNFe
                 {
                     Versao = "4.00",
                     TpAmb = tipoAmbiente,
-                    ChNFe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
+                    NRec = ((int)ufBrasil).ToString() + "1210140351219"
                 };
 
                 var configuracao = new Configuracao
@@ -92,14 +92,18 @@ namespace Unimake.DFe.Test.NFe
                     CertificadoDigital = PropConfig.CertificadoDigital
                 };
 
-                var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
-                consultaProtocolo.Executar();
+                var retAutorizacao = new RetAutorizacao(xml, configuracao);
+                retAutorizacao.Executar();
 
                 Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Debug.Assert(consultaProtocolo.Result.ChNFe.Equals(xml.ChNFe), "Webservice retornou uma chave da NFe diferente da enviada na consulta.");
+                Debug.Assert(retAutorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Debug.Assert(retAutorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                if(retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000")
+                {
+                    Debug.Assert(retAutorizacao.Result.NRec.Equals(xml.NRec), "Webservice retornou um número diferente do informado no XML da consulta." + xml.NRec);
+                }
+                //Debug.Assert(retAutorizacao.Result.CStat.Equals(106), "Status está diferente de \"106-Recibo pesquisado não foi encontrado\". Analise!!!");
             }
             catch(Exception ex)
             {

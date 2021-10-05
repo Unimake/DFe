@@ -21,7 +21,7 @@ namespace Unimake.DFe.Test.NFe
         [Trait("DFe", "NFe")]
         [InlineData(TipoAmbiente.Homologacao)]
         [InlineData(TipoAmbiente.Producao)]
-        public void ConsultaDFeDestinado(TipoAmbiente tipoAmbiente)
+        public void ConsultarDFeDestinado(TipoAmbiente tipoAmbiente)
         {
             try
             {

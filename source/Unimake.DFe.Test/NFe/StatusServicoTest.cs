@@ -74,7 +74,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void ConsultaStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             try
             {
