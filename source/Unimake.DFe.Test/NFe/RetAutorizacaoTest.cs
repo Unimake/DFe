@@ -8,16 +8,16 @@ using Xunit;
 namespace Unimake.DFe.Test.NFe
 {
     /// <summary>
-    /// Testar o serviço de consulta protocolo da NFe
+    /// Testar o serviço de consulta recibo da NFe
     /// </summary>
     public class RetAutorizacaoTest
     {
         /// <summary>
-        /// Consultar o status do serviço da NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Consultar o recibo da NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta status</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta status</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta recibo</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta recibo</param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
