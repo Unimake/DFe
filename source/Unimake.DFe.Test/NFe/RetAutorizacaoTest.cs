@@ -8,16 +8,16 @@ using Xunit;
 namespace Unimake.DFe.Test.NFe
 {
     /// <summary>
-    /// Testar o serviço de consulta protocolo da NFe
+    /// Testar o serviço de consulta recibo da NFe
     /// </summary>
-    public class StatusServicoTest
+    public class RetAutorizacaoTest
     {
         /// <summary>
-        /// Consultar o status do serviço da NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Consultar o recibo da NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta status</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta status</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta recibo</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta recibo</param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
@@ -74,15 +74,15 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void ConsultarRecibo(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             try
             {
-                var xml = new ConsStatServ
+                var xml = new ConsReciNFe
                 {
                     Versao = "4.00",
-                    CUF = ufBrasil,
-                    TpAmb = tipoAmbiente
+                    TpAmb = tipoAmbiente,
+                    NRec = ((int)ufBrasil).ToString() + "1210140351219"
                 };
 
                 var configuracao = new Configuracao
@@ -92,14 +92,18 @@ namespace Unimake.DFe.Test.NFe
                     CertificadoDigital = PropConfig.CertificadoDigital
                 };
 
-                var statusServico = new StatusServico(xml, configuracao);
-                statusServico.Executar();
+                var retAutorizacao = new RetAutorizacao(xml, configuracao);
+                retAutorizacao.Executar();
 
                 Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Debug.Assert(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Debug.Assert(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação");
+                Debug.Assert(retAutorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Debug.Assert(retAutorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                if(retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000")
+                {
+                    Debug.Assert(retAutorizacao.Result.NRec.Equals(xml.NRec), "Webservice retornou um número diferente do informado no XML da consulta." + xml.NRec);
+                }
+                //Debug.Assert(retAutorizacao.Result.CStat.Equals(106), "Status está diferente de \"106-Recibo pesquisado não foi encontrado\". Analise!!!");
             }
             catch(Exception ex)
             {
