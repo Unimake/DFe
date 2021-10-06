@@ -157,7 +157,7 @@
 	<Arquivo ID="4118402">
 		<Nome>Paranavaí - PR</Nome>
 		<UF>PR</UF>
-		<ArqConfig>ParanavaiPR.xml</ArqConfig>
+		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4209300">
@@ -427,6 +427,12 @@
 	<Arquivo ID="4309100">
 		<Nome>Gramado - RS</Nome>
 		<UF>RS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4202800">
+		<Nome>Braço do Norte - SC</Nome>
+		<UF>SC</UF>
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
