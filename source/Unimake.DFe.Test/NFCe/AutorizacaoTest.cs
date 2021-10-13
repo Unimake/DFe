@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.NFe;
+using Unimake.Business.DFe.Servicos.NFCe;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
-namespace Unimake.DFe.Test.NFe
+namespace Unimake.DFe.Test.NFCe
 {
     /// <summary>
     /// Testar o serviço de envio da NFe
@@ -20,7 +20,7 @@ namespace Unimake.DFe.Test.NFe
         /// <param name="ufBrasil">UF para onde deve ser enviado a NFe</param>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a NFe</param>
         [Theory]
-        [Trait("DFe", "NFe")]
+        [Trait("DFe", "NFCe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
@@ -30,11 +30,11 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.DF, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PE, TipoAmbiente.Homologacao)]
@@ -57,11 +57,11 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.DF, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PE, TipoAmbiente.Producao)]
@@ -75,14 +75,8 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void EnviarNFeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void EnviarNFCeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            //Estados que não tem envio Sincrono para NFe
-            if(ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.BA)
-            {
-                return;
-            }
-
             try
             {
                 var xml = new EnviNFe
@@ -310,9 +304,11 @@ namespace Unimake.DFe.Test.NFe
 
                 var configuracao = new Configuracao
                 {
-                    TipoDFe = TipoDFe.NFe,
+                    TipoDFe = TipoDFe.NFCe,
                     TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
+                    CertificadoDigital = PropConfig.CertificadoDigital,
+                    CSC = "121233",
+                    CSCIDToken = 1
                 };
 
                 var autorizacao = new Autorizacao(xml, configuracao);
@@ -322,12 +318,6 @@ namespace Unimake.DFe.Test.NFe
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
                 Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if(autorizacao.Result.CStat.Equals(104))
-                {
-                    Debug.Assert(autorizacao.Result.CStat.Equals(104), "Lote não foi processado");
-                    Debug.Assert(autorizacao.Result.ProtNFe.InfProt != null, "Não teve retorno do processamento no envio síncrono");
-                    Debug.Assert(autorizacao.Result.ProtNFe.InfProt.ChNFe.Equals(xml.NFe[0].InfNFe[0].Chave), "Não teve retorno do processamento no envio síncrono");
-                }
             }
             catch(Exception ex)
             {
@@ -352,11 +342,11 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.DF, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PE, TipoAmbiente.Homologacao)]
@@ -379,11 +369,11 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.DF, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PE, TipoAmbiente.Producao)]
@@ -397,7 +387,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void EnviarNFeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void EnviarNFCeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             try
             {
@@ -626,9 +616,11 @@ namespace Unimake.DFe.Test.NFe
 
                 var configuracao = new Configuracao
                 {
-                    TipoDFe = TipoDFe.NFe,
+                    TipoDFe = TipoDFe.NFCe,
                     TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
+                    CertificadoDigital = PropConfig.CertificadoDigital,
+                    CSC = "121233",
+                    CSCIDToken = 1
                 };
 
                 var autorizacao = new Autorizacao(xml, configuracao);
@@ -638,8 +630,6 @@ namespace Unimake.DFe.Test.NFe
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
                 Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Debug.Assert(autorizacao.Result.CStat.Equals(103), "Lote não foi processado");
-                Debug.Assert(!string.IsNullOrWhiteSpace(autorizacao.Result.InfRec.NRec), "Não retornou o número do recibo no envio da NFe");
             }
             catch(Exception ex)
             {

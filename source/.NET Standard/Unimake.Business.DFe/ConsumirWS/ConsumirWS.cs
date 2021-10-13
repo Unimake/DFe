@@ -118,6 +118,11 @@ namespace Unimake.Business.DFe
             catch (WebException ex)
             {
                 responsePost = ex.Response;
+
+                if (responsePost == null)
+                {
+                    throw (ex);
+                }
             }
 
             var streamPost = responsePost.GetResponseStream();
