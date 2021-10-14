@@ -2474,6 +2474,12 @@ namespace Unimake.Business.DFe.Servicos
         Servico1104 = 1104,
 
         /// <summary>
+        /// Serviço 11.05
+        /// </summary>
+        [XmlEnum("11.05")]
+        Servico1105 = 1105,
+
+        /// <summary>
         /// Serviço 12.01
         /// </summary>
         [XmlEnum("12.01")]
