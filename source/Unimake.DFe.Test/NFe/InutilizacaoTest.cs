@@ -16,8 +16,8 @@ namespace Unimake.DFe.Test.NFe
         /// Tenta inutilizar números de NFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua uma inutilização por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta situação</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta situação</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a inutilizacao</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a inutilizacao</param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]

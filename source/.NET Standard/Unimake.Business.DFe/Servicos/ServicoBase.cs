@@ -249,6 +249,19 @@ namespace Unimake.Business.DFe.Servicos
                 }
             }
 
+            if (Configuracoes.Servico == Servico.NFeConsultaCadastro)
+            {
+                //Estados que não disponibilizam a coinsulta cadastro e que usam SVRS, como SVRS tem a consulta mas não para estes estados, tenho que tratar a exceção manualmente, conforma baixo.
+                if (Configuracoes.CodigoUF.Equals(14) || Configuracoes.CodigoUF.Equals(16) ||
+                    Configuracoes.CodigoUF.Equals(33) || Configuracoes.CodigoUF.Equals(11) ||
+                    Configuracoes.CodigoUF.Equals(15) || Configuracoes.CodigoUF.Equals(22) ||
+                    Configuracoes.CodigoUF.Equals(27) || Configuracoes.CodigoUF.Equals(18) ||
+                    Configuracoes.CodigoUF.Equals(17))
+                {
+                    throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de "+(Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
+                }
+            }
+
             if(Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(Configuracoes.WebEnderecoHomologacao))
             {
                 throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de homologação.");
