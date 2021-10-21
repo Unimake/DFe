@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="GNRE">
-		<ConsultaConfigUF versao="1.00">
+		<ConsultaConfigUF versao="2.00">
 			<Descricao>Consulta configurações da UF para GNRE</Descricao>
 			<WebEnderecoHomologacao>https://www.testegnre.pe.gov.br/gnreWS/services/GnreConfigUF</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://www.gnre.pe.gov.br/gnreWS/services/GnreConfigUF</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.gnre.pe.gov.br/webservice/GnreConfigUF</WebActionHomologacao>
 			<WebActionProducao>http://www.gnre.pe.gov.br/webservice/GnreConfigUF</WebActionProducao>
-			<SchemaArquivo>consulta_config_uf_v{0}.xsd</SchemaArquivo>
+			<SchemaArquivo>consulta_config_uf_v1.00.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

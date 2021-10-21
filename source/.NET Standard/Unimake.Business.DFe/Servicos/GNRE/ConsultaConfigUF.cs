@@ -26,7 +26,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 Configuracoes.Servico = Servico.GNREConsultaConfigUF;
                 Configuracoes.CodigoUF = (int)xml.UF;
                 Configuracoes.TipoAmbiente = xml.Ambiente;
-                Configuracoes.SchemaVersao = "1.00";
+                Configuracoes.SchemaVersao = "2.00";
 
                 base.DefinirConfiguracao();
             }
