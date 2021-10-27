@@ -607,6 +607,41 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class ValePed
     {
+        [XmlElement("disp")]
+        public List<Disp> Disp { get; set; }
+
+        [XmlElement("categCombVeic")]
+        public CategoriaCombinacaoVeicular? CategCombVeic { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCategCombVeic() => CategCombVeic != null;
+
+        #endregion
+
+        #region Add (List - Interop)
+
+#if INTEROP
+
+        public void AddDisp(Disp disp)
+        {
+            if (Disp == null)
+            {
+                Disp = new List<Disp>();
+            }
+
+            Disp.Add(disp);
+        }
+
+#endif
+
+        #endregion
+    }
+
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    public class Disp
+    {
         [XmlElement("CNPJForn")]
         public string CNPJForn { get; set; }
 
@@ -632,24 +667,20 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("tpValePed")]
         public TipoValePedagio? TpValePed { get; set; }
 
-        [XmlElement("categCombVeic")]
-        public CategoriaCombinacaoVeicular? CategCombVeic { get; set; }
-
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJPg() => !string.IsNullOrWhiteSpace(CNPJPg);
 
         public bool ShouldSerializeCPFPg() => !string.IsNullOrWhiteSpace(CPFPg);
 
-        public bool ShouldSerializeNCompra() => (!string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg)) && !string.IsNullOrWhiteSpace(NCompra);
+        public bool ShouldSerializeNCompra() => (!string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg) || !string.IsNullOrWhiteSpace(CNPJForn)) && !string.IsNullOrWhiteSpace(NCompra);
 
-        public bool ShouldSerializeVValePedField() => !string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg);
+        public bool ShouldSerializeVValePedField() => !string.IsNullOrWhiteSpace(CNPJForn);
 
         public bool ShouldSerializeTpValePed() => TpValePed != null;
 
-        public bool ShouldSerializeCategCombVeic() => CategCombVeic != null;
-
         #endregion
+
     }
 
     [Serializable()]
