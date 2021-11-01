@@ -2894,7 +2894,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => QTotProd = Utility.Converter.ToDouble(value);
         }
 
-        [XmlElement("UnidadeMedidaArtigoPerigoso")]
+        [XmlElement("uniAP")]
         public UnidadeMedidaArtigoPerigoso UniAP { get; set; }
     }
 
