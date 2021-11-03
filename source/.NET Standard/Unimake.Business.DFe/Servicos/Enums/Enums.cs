@@ -5587,4 +5587,50 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    #region Tipos de Compoenentes da GTVe para CTeOS
+
+    /// <summary>
+    /// Tipos de componentes da GTVe para CTeOS
+    /// </summary>
+    public enum TipoComponenteGTVe
+    {
+        /// <summary>
+        /// 1 - Custódia
+        /// </summary>
+        [XmlEnum("1")]
+        Custodia = 1,
+
+        /// <summary>
+        /// 2 - Embarque
+        /// </summary>
+        [XmlEnum("2")]
+        Embarque = 2,
+
+        /// <summary>
+        /// 3 - Tempo de espera
+        /// </summary>
+        [XmlEnum("3")]
+        TempoEspera = 3,
+
+        /// <summary>
+        /// 4 - Malote
+        /// </summary>
+        [XmlEnum("4")]
+        Malote = 4,
+
+        /// <summary>
+        /// 5 - Ad Valorem
+        /// </summary>
+        [XmlEnum("5")]
+        AdValorem = 5,
+
+        /// <summary>
+        /// 6 - Outros
+        /// </summary>
+        [XmlEnum("6")]
+        Outros = 6
+    }
+
+    #endregion
 }

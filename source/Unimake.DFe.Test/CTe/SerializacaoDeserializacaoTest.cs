@@ -24,7 +24,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(@"..\..\..\CTe\Resources\enviCTe_ModalFerroviario.xml")]
         [InlineData(@"..\..\..\CTe\Resources\enviCTe_ModalMultiModal.xml")]
         [InlineData(@"..\..\..\CTe\Resources\enviCTe_ModalRodoviario.xml")]
-        public void SerializacaoDeserializacaoEnviMDFe(string arqXML)
+        public void SerializacaoDeserializacaoEnviCTe(string arqXML)
         {
             Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 

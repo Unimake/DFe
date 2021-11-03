@@ -244,17 +244,17 @@
         <chCTe>chCTe1</chCTe>
         <Comp>
           <tpComp>1</tpComp>
-          <vComp>vComp1</vComp>
+          <vComp>0.00</vComp>
           <xComp>xComp1</xComp>
         </Comp>
         <Comp>
           <tpComp>2</tpComp>
-          <vComp>vComp2</vComp>
+          <vComp>0.00</vComp>
           <xComp>xComp2</xComp>
         </Comp>
         <Comp>
           <tpComp>3</tpComp>
-          <vComp>vComp3</vComp>
+          <vComp>0.00</vComp>
           <xComp>xComp3</xComp>
         </Comp>
       </infGTVe>
@@ -262,17 +262,17 @@
         <chCTe>chCTe2</chCTe>
         <Comp>
           <tpComp>4</tpComp>
-          <vComp>4</vComp>
+          <vComp>4.00</vComp>
           <xComp>xComp4</xComp>
         </Comp>
         <Comp>
           <tpComp>5</tpComp>
-          <vComp>5</vComp>
+          <vComp>5.00</vComp>
           <xComp>xComp5</xComp>
         </Comp>
         <Comp>
           <tpComp>6</tpComp>
-          <vComp>6</vComp>
+          <vComp>6.00</vComp>
           <xComp>xComp6</xComp>
         </Comp>
       </infGTVe>
@@ -280,17 +280,17 @@
         <chCTe>chCTe3</chCTe>
         <Comp>
           <tpComp>1</tpComp>
-          <vComp>7</vComp>
+          <vComp>7.00</vComp>
           <xComp>xComp7</xComp>
         </Comp>
         <Comp>
           <tpComp>2</tpComp>
-          <vComp>8</vComp>
+          <vComp>8.00</vComp>
           <xComp>xComp8</xComp>
         </Comp>
         <Comp>
           <tpComp>3</tpComp>
-          <vComp>9</vComp>
+          <vComp>9.00</vComp>
           <xComp>xComp9</xComp>
         </Comp>
       </infGTVe>
