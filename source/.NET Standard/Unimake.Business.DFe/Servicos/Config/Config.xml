@@ -466,4 +466,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+  <Arquivo ID="4314407">
+    <Nome>Pelotas - RS</Nome>
+    <UF>RS</UF>
+    <ArqConfig>PelotasRS.xml</ArqConfig>
+    <PadraoNFSe>AVMB</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

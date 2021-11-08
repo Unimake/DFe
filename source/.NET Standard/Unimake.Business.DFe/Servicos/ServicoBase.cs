@@ -572,7 +572,14 @@ namespace Unimake.Business.DFe.Servicos
                         
                         if(XMLUtility.TagExist(elementArquivos, "PadraoNFSe"))
                         {
-                            Configuracoes.PadraoNFSe = (PadraoNFSe)Enum.Parse(typeof(PadraoNFSe), XMLUtility.TagRead(elementArquivos, "PadraoNFSe"));
+                            try
+                            {
+                                Configuracoes.PadraoNFSe = (PadraoNFSe)Enum.Parse(typeof(PadraoNFSe), XMLUtility.TagRead(elementArquivos, "PadraoNFSe"));
+                            }
+                            catch(Exception)
+                            {
+                                throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo "+XMLUtility.TagRead(elementArquivos, "PadraoNFSe")+" e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
+                            }
                         }
 
                         LerXmlConfigEspecifico(GetConfigFile(elementArquivos.GetElementsByTagName("ArqConfig")[0].InnerText));

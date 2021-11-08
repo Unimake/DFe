@@ -231,6 +231,7 @@
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
@@ -405,6 +406,8 @@
 		<None Remove="Xml\Schemas\NFe\retEventoEntregaNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
 		<None Remove="Xml\Schemas\nfe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\AVMB\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\AVMB\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\nfse_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\nfse_v202.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_envio_v01.xsd" />
@@ -803,6 +806,9 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\BarretosSP.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PelotasRS.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -1147,6 +1153,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFe\xmldsig-core-schema_v1.01.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\AVMB\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\AVMB\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\nfse_v202.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_envio_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\servico_cancelar_nfse_resposta_v01.xsd" />
