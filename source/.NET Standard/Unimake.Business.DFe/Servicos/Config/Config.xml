@@ -466,4 +466,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5205109">
+		<Nome>Catalão - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>CatalaoGO.xml</ArqConfig>
+		<PadraoNFSe>PRODATA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
