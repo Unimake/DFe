@@ -88,6 +88,8 @@
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
+      <TagExtraAssinatura></TagExtraAssinatura>
+      <TagExtraAtributoID></TagExtraAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString></WebSoapString>
       <WebTagRetorno></WebTagRetorno>
@@ -154,7 +156,7 @@
       <TargetNS></TargetNS>
     </ConsultarNfsePorRps>
     <ConsultarNfseServicoPrestado versao="1.00">
-      <Descricao></Descricao>
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
@@ -173,7 +175,7 @@
       <TargetNS></TargetNS>
     </ConsultarNfseServicoPrestado>
     <ConsultarNfseServicoTomado versao="1.00">
-      <Descricao></Descricao>
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>

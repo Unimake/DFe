@@ -5583,7 +5583,13 @@ namespace Unimake.Business.DFe.Servicos
         /// NOTAINTELIGENTE
         /// </summary>
         [Description("Nota Inteligente")]
-        NOTAINTELIGENTE
+        NOTAINTELIGENTE,
+
+        /// <summary>
+        /// AVMB Soluções em TI
+        /// </summary>
+        [Description("AVMB Soluções em TI")]
+        AVMB
     }
 
     #endregion

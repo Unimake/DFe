@@ -466,10 +466,17 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	
 	<Arquivo ID="5205109">
 		<Nome>Catalão - GO</Nome>
 		<UF>GO</UF>
 		<ArqConfig>CatalaoGO.xml</ArqConfig>
 		<PadraoNFSe>PRODATA</PadraoNFSe>
 	</Arquivo>
+  <Arquivo ID="4314407">
+    <Nome>Pelotas - RS</Nome>
+    <UF>RS</UF>
+    <ArqConfig>PelotasRS.xml</ArqConfig>
+    <PadraoNFSe>AVMB</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

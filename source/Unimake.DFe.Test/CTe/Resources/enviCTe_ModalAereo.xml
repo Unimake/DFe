@@ -653,7 +653,7 @@
           <fat>
             <nFat>nFat1</nFat>
             <vOrig>0.00</vOrig>
-            <vDesc>0.00</vDesc>
+            <vDesc>1.00</vDesc>
             <vLiq>0.00</vLiq>
           </fat>
           <dup>
@@ -1366,7 +1366,7 @@
           <fat>
             <nFat>nFat2</nFat>
             <vOrig>0.00</vOrig>
-            <vDesc>0.00</vDesc>
+            <vDesc>1.00</vDesc>
             <vLiq>0.00</vLiq>
           </fat>
           <dup>
@@ -2079,7 +2079,7 @@
           <fat>
             <nFat>nFat3</nFat>
             <vOrig>0.00</vOrig>
-            <vDesc>0.00</vDesc>
+            <vDesc>1.00</vDesc>
             <vLiq>0.00</vLiq>
           </fat>
           <dup>
