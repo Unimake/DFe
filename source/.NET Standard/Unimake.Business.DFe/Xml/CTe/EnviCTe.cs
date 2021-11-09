@@ -374,7 +374,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xJust")]
         public string XJust { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeIndGlobalizado() => IndGlobalizado == SimNao.Sim;
 
@@ -382,7 +382,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeXJust() => !string.IsNullOrWhiteSpace(XJust);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -452,7 +452,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -466,7 +466,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -503,7 +503,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -513,7 +513,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -592,7 +592,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeXObs() => !string.IsNullOrWhiteSpace(XObs);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -635,7 +635,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeXDest() => !string.IsNullOrWhiteSpace(XDest);
         public bool ShouldSerializeXRota() => !string.IsNullOrWhiteSpace(XRota);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -645,11 +645,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPass")]
         public string XPass { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeXPass() => !string.IsNullOrWhiteSpace(XPass);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -914,7 +914,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("enderEmit")]
         public EnderEmit EnderEmit { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeIEST() => !string.IsNullOrWhiteSpace(IEST);
 
@@ -922,7 +922,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -956,7 +956,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("fone")]
         public string Fone { get; set; }
 
-#region ShouldSerialize               
+        #region ShouldSerialize               
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -964,7 +964,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -995,7 +995,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1009,7 +1009,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1046,7 +1046,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1056,7 +1056,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1084,7 +1084,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1096,7 +1096,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1133,7 +1133,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1143,7 +1143,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1171,7 +1171,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1183,7 +1183,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1220,7 +1220,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1230,7 +1230,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1261,7 +1261,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1273,7 +1273,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1310,7 +1310,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1320,7 +1320,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1411,13 +1411,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("ICMSUFFim")]
         public ICMSUFFim ICMSUFFim { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
 
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1603,11 +1603,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVCredField() => VCred > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1667,13 +1667,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializePRedBCField() => PRedBC > 0;
 
         public bool ShouldSerializeVCredField() => VCred > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1723,11 +1723,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VICMSOutraUF = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializePRedBCOutraUFField() => PRedBCOutraUF > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -1930,7 +1930,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeXOutCat() => !string.IsNullOrWhiteSpace(XOutCat);
         public bool ShouldSerializeVCargaAverbField() => VCargaAverb > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2163,7 +2163,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializePIN() => !string.IsNullOrWhiteSpace(PIN);
         public bool ShouldSerializeDPrevField() => DPrev > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2211,7 +2211,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeQtdRatField() => QtdRat > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2248,7 +2248,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => QtdRat = Utility.Converter.ToDouble(value);
         }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddLacUnidTransp(LacUnidTransp lacUnidTransp)
         {
@@ -2270,13 +2270,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             InfUnidCarga.Add(infUnidCarga);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeQtdRatField() => QtdRat > 0;
 
-#endregion
+        #endregion
 
     }
 
@@ -2310,7 +2310,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("infUnidTransp")]
         public List<InfUnidTransp> InfUnidTransp { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
@@ -2332,14 +2332,14 @@ namespace Unimake.Business.DFe.Xml.CTe
             InfUnidTransp.Add(infUnidTransp);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializePIN() => !string.IsNullOrWhiteSpace(PIN);
         public bool ShouldSerializeDPrevField() => DPrev > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2391,7 +2391,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("infUnidTransp")]
         public List<InfUnidTransp> InfUnidTransp { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
@@ -2413,9 +2413,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             InfUnidTransp.Add(infUnidTransp);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeDescOutros() => !string.IsNullOrWhiteSpace(DescOutros);
         public bool ShouldSerializeNDoc() => !string.IsNullOrWhiteSpace(NDoc);
@@ -2423,7 +2423,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeVDocFiscField() => VDocFisc > 0;
         public bool ShouldSerializeDPrevField() => DPrev > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2433,7 +2433,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("emiDocAnt")]
         public List<EmiDocAnt> EmiDocAnt { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddEmiDocAnt(EmiDocAnt emiDocAnt)
         {
@@ -2445,7 +2445,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             EmiDocAnt.Add(emiDocAnt);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2470,7 +2470,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("idDocAnt")]
         public List<IdDocAnt> IdDocAnt { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddIdDocAnt(IdDocAnt idDocAnt)
         {
@@ -2482,15 +2482,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             IdDocAnt.Add(idDocAnt);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2503,7 +2503,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("idDocAntPap")]
         public List<IdDocAntPap> IdDocAntPap { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddIdDocAntEle(IdDocAntEle idDocAntEle)
         {
@@ -2525,7 +2525,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             IdDocAntPap.Add(idDocAntPap);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2554,11 +2554,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DEmi = DateTime.Parse(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeSubser() => !string.IsNullOrWhiteSpace(Subser);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2605,7 +2605,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("occ")]
         public List<Occ> Occ { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddOcc(Occ occ)
         {
@@ -2617,7 +2617,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             Occ.Add(occ);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2643,11 +2643,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("emiOcc")]
         public EmiOcc EmiOcc { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeSerie() => !string.IsNullOrWhiteSpace(Serie);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2669,12 +2669,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("fone")]
         public string Fone { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2750,11 +2750,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DFim = DateTime.Parse(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVTarField() => VTar > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2786,7 +2786,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("peri")]
         public List<Peri> Peri { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddPeri(Peri peri)
         {
@@ -2798,14 +2798,14 @@ namespace Unimake.Business.DFe.Xml.CTe
             Peri.Add(peri);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeNMinu() => !string.IsNullOrWhiteSpace(NMinu);
         public bool ShouldSerializeNOCA() => !string.IsNullOrWhiteSpace(NOCA);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2818,7 +2818,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("cInfManu")]
         public List<InformacaoManuseioCTe> CInfManu { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddCInfManu(InformacaoManuseioCTe cInfManu)
         {
@@ -2830,13 +2830,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             CInfManu.Add(cInfManu);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeXDime() => !string.IsNullOrWhiteSpace(XDime);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2859,11 +2859,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VTar = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCTar() => !string.IsNullOrWhiteSpace(CTar);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2943,7 +2943,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("tpNav")]
         public TipoNavegacao? TpNav { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddBalsa(Balsa balsa)
         {
@@ -2965,14 +2965,14 @@ namespace Unimake.Business.DFe.Xml.CTe
             DetCont.Add(detCont);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeNViag() => !string.IsNullOrWhiteSpace(NViag);
         public bool ShouldSerializeTpNav() => TpNav != null && TpNav != TipoNavegacao.NaoDefinido;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -2996,7 +2996,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("infDoc")]
         public DetContInfDoc InfDoc { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddLacre(Lacre lacre)
         {
@@ -3008,7 +3008,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             Lacre.Add(lacre);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3029,7 +3029,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("infNFe")]
         public List<DetContInfDocInfNFe> InfNFe { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddInfNF(DetContInfDocInfNF infNF)
         {
@@ -3051,7 +3051,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             InfNFe.Add(infNFe);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3074,11 +3074,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => UnidRat = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeUnidRatField() => UnidRat > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3098,11 +3098,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => UnidRat = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeUnidRatField() => UnidRat > 0;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3145,7 +3145,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("ferroEnv")]
         public List<FerroEnv> FerroEnv { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddFerroEnv(FerroEnv ferroEnv)
         {
@@ -3157,13 +3157,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             FerroEnv.Add(ferroEnv);
         }
 
-#endregion
+        #endregion
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeChCTeFerroOrigem() => !string.IsNullOrWhiteSpace(ChCTeFerroOrigem);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3185,12 +3185,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("enderFerro")]
         public EnderFerro EnderFerro { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
         public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
 
-#endregion
+        #endregion
 
     }
 
@@ -3222,7 +3222,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("UF")]
         public UFBrasil UF { get; set; }
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeNro() => !string.IsNullOrWhiteSpace(Nro);
 
@@ -3230,7 +3230,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeXBairro() => !string.IsNullOrWhiteSpace(XBairro);
 
-#endregion
+        #endregion
 
     }
 
@@ -3281,7 +3281,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("dup")]
         public List<Dup> Dup { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddDup(Dup dup)
         {
@@ -3293,7 +3293,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             Dup.Add(dup);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3332,6 +3332,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => VLiq.ToString("F2", CultureInfo.InvariantCulture);
             set => VLiq = Utility.Converter.ToDouble(value);
         }
+
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVDescField() => VDesc > 0;
+
+        #endregion
     }
 
     [Serializable()]
@@ -3386,12 +3393,12 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => IndAlteraToma = (SimNao)Enum.Parse(typeof(SimNao), value.ToString());
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeRefCteAnu() => !string.IsNullOrWhiteSpace(RefCteAnu);
         public bool ShouldSerializeIndAlteraTomaField() => IndAlteraToma == SimNao.Sim;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3407,12 +3414,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("refCte")]
         public string RefCte { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeRefNFe() => !string.IsNullOrWhiteSpace(RefNFe);
         public bool ShouldSerializeRefCte() => !string.IsNullOrWhiteSpace(RefCte);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3472,13 +3479,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DEmi = DateTime.Parse(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeSubserie() => !string.IsNullOrWhiteSpace(Subserie);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3514,7 +3521,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("infCTeMultimodal")]
         public List<InfCTeMultimodal> InfCTeMultimodal { get; set; }
 
-#region Add (List - Interop)
+        #region Add (List - Interop)
 
         public void AddInfCTeMultimodal(InfCTeMultimodal infCTeMultimodal)
         {
@@ -3526,7 +3533,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             InfCTeMultimodal.Add(infCTeMultimodal);
         }
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3600,12 +3607,12 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
@@ -3630,13 +3637,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("hashCSRT", DataType = "base64Binary")]
         public byte[] HashCSRT { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
         public bool ShouldSerializeHashCSRT() => HashCSRT != null;
 
-#endregion
+        #endregion
     }
 
     [Serializable()]
