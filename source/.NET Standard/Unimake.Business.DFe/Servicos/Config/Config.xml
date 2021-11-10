@@ -478,4 +478,10 @@
     <ArqConfig>PelotasRS.xml</ArqConfig>
     <PadraoNFSe>AVMB</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="5213806">
+    <Nome>Morrinhos - GO</Nome>
+    <UF>GO</UF>
+    <ArqConfig>MorrinhosGO.xml</ArqConfig>
+    <PadraoNFSe>PRODATA</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>
