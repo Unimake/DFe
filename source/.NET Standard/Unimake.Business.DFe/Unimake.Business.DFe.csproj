@@ -230,6 +230,7 @@
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
+		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
@@ -805,6 +806,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFe\TO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\BarretosSP.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\MorrinhosGO.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\PelotasRS.xml">
