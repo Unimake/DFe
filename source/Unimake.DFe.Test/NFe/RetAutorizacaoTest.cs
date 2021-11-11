@@ -99,7 +99,7 @@ namespace Unimake.DFe.Test.NFe
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
                 Debug.Assert(retAutorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Debug.Assert(retAutorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if(retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000")
+                if(retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000" && retAutorizacao.Result.NRec != "0")
                 {
                     Debug.Assert(retAutorizacao.Result.NRec.Equals(xml.NRec), "Webservice retornou um número diferente do informado no XML da consulta." + xml.NRec);
                 }
