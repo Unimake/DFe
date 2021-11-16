@@ -488,6 +488,6 @@
     <Nome>Itabaiana - SE</Nome>
     <UF>SE</UF>
     <ArqConfig>ItabaianaSE.xml</ArqConfig>
-    <PadraoNFSe>WEBISS_202</PadraoNFSe>
+    <PadraoNFSe>WEBISS</PadraoNFSe>
   </Arquivo>
 </Configuracoes>

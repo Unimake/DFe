@@ -5595,7 +5595,13 @@ namespace Unimake.Business.DFe.Servicos
         /// WebISS
         /// </summary>
         [Description("WebISS")]
-        WEBISS_202
+        WEBISS,
+
+        /// <summary>
+        /// SIMPLISS Sistema de Informação LTDA
+        /// </summary>
+        [Description("SIMPLISS Sistema de Informação LTDA")]
+        SIMPLISS
     }
 
     #endregion
