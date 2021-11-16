@@ -44,7 +44,12 @@
           <ID>110131</ID>
           <SchemaArquivo>envEventoCancEntregaNFe_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e110131_v{0}.xsd</SchemaArquivoEspecifico>
-        </Tipo>        
+        </Tipo>
+        <Tipo>
+          <ID>110111</ID>
+          <SchemaArquivo>envEventoCancNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110111_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
       </SchemasEspecificos>
       <TagAssinatura>evento</TagAssinatura>
       <TagAtributoID>infEvento</TagAtributoID>
