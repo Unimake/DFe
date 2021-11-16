@@ -99,7 +99,7 @@ namespace Unimake.DFe.Test.NFe
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
                 Debug.Assert(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Debug.Assert(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação");
+                Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
             }
             catch(Exception ex)
             {

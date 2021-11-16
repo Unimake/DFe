@@ -19,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 {
     [Serializable()]
     [XmlRoot("enviNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class EnviNFe : XMLBase
+    public class EnviNFe: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -896,11 +896,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Retirada : LocalBase { }
+    public class Retirada: LocalBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Entrega : LocalBase { }
+    public class Entrega: LocalBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
@@ -1091,6 +1091,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("infProdNFF")]
         public InfProdNFF InfProdNFF { get; set; }
+
+        [XmlElement("infProdEmb")]
+        public InfProdEmb InfProdEmb { get; set; }
 
         [XmlElement("arma")]
         public List<Arma> Arma { get; set; }
@@ -1336,7 +1339,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion
     }
 
-
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class InfProdNFF
@@ -1357,6 +1359,35 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QVolEmbField
         {
             get => QVolEmb.ToString("F2", CultureInfo.InvariantCulture);
+            set => QVolEmb = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlElement("uEmb")]
+        public string UEmb { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeXEmb() => !string.IsNullOrWhiteSpace(XEmb);
+        public bool ShouldSerializeQVolEmbField() => !string.IsNullOrWhiteSpace(XEmb);
+        public bool ShouldSerializeUEmb() => !string.IsNullOrWhiteSpace(XEmb);
+
+        #endregion
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class InfProdEmb
+    {
+        [XmlElement("xEmb")]
+        public string XEmb { get; set; }
+
+        [XmlIgnore]
+        public double QVolEmb { get; set; }
+
+        [XmlElement("qVolEmb")]
+        public string QVolEmbField
+        {
+            get => QVolEmb.ToString("F3", CultureInfo.InvariantCulture);
             set => QVolEmb = Utility.Converter.ToDouble(value);
         }
 
@@ -2895,7 +2926,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class ICMS90 : ICMS70
+    public class ICMS90: ICMS70
     {
         [XmlElement("CST")]
         public override string CST { get; set; } = "90";
@@ -5658,11 +5689,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class VeicTransp : VeiculoBase { }
+    public class VeicTransp: VeiculoBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Reboque : VeiculoBase { }
+    public class Reboque: VeiculoBase { }
 
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
@@ -6206,7 +6237,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => Qtde = Utility.Converter.ToDouble(value);
         }
 
-        [XmlElement("dia")]
+        [XmlAttribute(AttributeName = "dia")]
         public int Dia { get; set; }
     }
 
