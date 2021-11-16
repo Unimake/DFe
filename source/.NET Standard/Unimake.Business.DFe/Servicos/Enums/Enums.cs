@@ -5589,7 +5589,13 @@ namespace Unimake.Business.DFe.Servicos
         /// AVMB Soluções em TI
         /// </summary>
         [Description("AVMB Soluções em TI")]
-        AVMB
+        AVMB,
+
+        /// <summary>
+        /// WebISS
+        /// </summary>
+        [Description("WebISS")]
+        WEBISS_202
     }
 
     #endregion

@@ -484,4 +484,10 @@
     <ArqConfig>MorrinhosGO.xml</ArqConfig>
     <PadraoNFSe>PRODATA</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="2802908">
+    <Nome>Itabaiana - SE</Nome>
+    <UF>SE</UF>
+    <ArqConfig>ItabaianaSE.xml</ArqConfig>
+    <PadraoNFSe>WEBISS_202</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>
