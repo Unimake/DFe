@@ -435,8 +435,8 @@
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
-		<None Remove="Xml\Schemas\NFSe\WEBISS_202\nfse_v2_02.xsd" />
-		<None Remove="Xml\Schemas\NFSe\WEBISS_202\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\procConfRecebtoNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\procEventoCancNFe_v1.00.xsd" />
@@ -1191,8 +1191,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS_202\nfse_v2_02.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS_202\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
