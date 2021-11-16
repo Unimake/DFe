@@ -16,7 +16,7 @@ namespace Unimake.DFe.Test.NFe
         /// Testar a serialização e deserialização do XML EnviNFe
         /// </summary>
         [Theory]
-        [Trait("DFe", "NFe")]
+        [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\enviNFe.xml")]
         public void SerializacaoDeserializacaoEnviNFe(string arqXML)
         {
