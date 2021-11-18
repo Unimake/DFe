@@ -968,18 +968,18 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string IE { get; set; }
 
         [XmlElement("UF")]
-        public UFBrasil UF { get; set; }
+        public UFBrasil? UF { get; set; }
 
         [XmlElement("tpProp")]
-        public TipoProprietarioMDFe TpProp { get; set; }
+        public TipoProprietarioMDFe? TpProp { get; set; }
 
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
-        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido && !string.IsNullOrWhiteSpace(IE);
-        public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && !string.IsNullOrWhiteSpace(IE);
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido && UF != null;
+        public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && TpProp != null;
 
         #endregion
     }
