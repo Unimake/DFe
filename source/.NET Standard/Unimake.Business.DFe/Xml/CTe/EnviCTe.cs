@@ -507,7 +507,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
-        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais) && CPais > 0;
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -1050,7 +1050,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
-        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais) && CPais > 0;
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -1137,7 +1137,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
-        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais) && CPais > 0;
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -1224,7 +1224,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
-        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais) && CPais > 0;
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -1314,7 +1314,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
-        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais) && CPais > 0;
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
