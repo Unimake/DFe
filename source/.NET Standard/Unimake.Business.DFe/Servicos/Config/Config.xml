@@ -490,4 +490,10 @@
     <ArqConfig>ItabaianaSE.xml</ArqConfig>
     <PadraoNFSe>WEBISS</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="4217600">
+    <Nome>Siderópolis - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>SideropolisSC.xml</ArqConfig>
+    <PadraoNFSe>WEBISS</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

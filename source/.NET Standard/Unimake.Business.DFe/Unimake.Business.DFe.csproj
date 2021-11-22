@@ -236,6 +236,7 @@
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\SideropolisSC.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
@@ -809,6 +810,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFe\TO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\BarretosSP.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SideropolisSC.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MorrinhosGO.xml">
