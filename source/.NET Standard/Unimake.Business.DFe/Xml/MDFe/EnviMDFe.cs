@@ -977,7 +977,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
-        public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
         public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido && UF != null;
         public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && TpProp != null;
 
