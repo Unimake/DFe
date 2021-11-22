@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
@@ -145,28 +144,88 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     switch(xml.CTe[i].InfCTe.Ide.Modal)
                     {
                         case ModalidadeTransporteCTe.Rodoviario:
-                            xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo).OuterXml);
-                            goto default;
+                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            {
+                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                {
+                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo != null)
+                                    {
+                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo).OuterXml);
+                                        goto default;
+                                    }
+                                }
+                            }
+                            break;
 
                         case ModalidadeTransporteCTe.Aereo:
-                            xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo).OuterXml);
-                            goto default;
+                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            {
+                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                {
+                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo != null)
+                                    {
+                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo).OuterXml);
+                                        goto default;
+                                    }
+                                }
+                            }
+                            break;
 
                         case ModalidadeTransporteCTe.Aquaviario:
-                            xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav).OuterXml);
-                            goto default;
+                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            {
+                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                {
+                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav != null)
+                                    {
+                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav).OuterXml);
+                                        goto default;
+                                    }
+                                }
+                            }
+                            break;
 
                         case ModalidadeTransporteCTe.Ferroviario:
-                            xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov).OuterXml);
-                            goto default;
+                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            {
+                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                {
+                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov != null)
+                                    {
+                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov).OuterXml);
+                                        goto default;
+                                    }
+                                }
+                            }
+                            break;
 
                         case ModalidadeTransporteCTe.Dutoviario:
-                            xmlEspecifico.LoadXml(XMLUtility.Serializar<Duto>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto).OuterXml);
-                            goto default;
+                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            {
+                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                {
+                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto != null)
+                                    {
+                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Duto>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto).OuterXml);
+                                        goto default;
+                                    }
+                                }
+                            }
+                            break;
 
                         case ModalidadeTransporteCTe.Multimodal:
-                            xmlEspecifico.LoadXml(XMLUtility.Serializar<MultiModal>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal).OuterXml);
-                            goto default;
+                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            {
+                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                {
+                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal != null)
+                                    {
+                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<MultiModal>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal).OuterXml);
+                                        goto default;
+                                    }
+                                }
+                            }
+                            break;
 
                         default:
                             ValidarXMLCTe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
@@ -174,7 +233,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     }
 
                     #endregion Validar a parte específica de cada evento
-
                 }
             }
         }
