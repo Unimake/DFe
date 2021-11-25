@@ -1812,5 +1812,11 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => DhViagem.ToString("yyyy-MM-ddTHH:mm:sszzz");
             set => DhViagem = DateTime.Parse(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDhViagemField() => DhViagem > DateTime.MinValue;
+
+        #endregion
     }
 }
