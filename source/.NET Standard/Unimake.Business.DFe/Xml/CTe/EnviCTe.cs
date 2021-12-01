@@ -151,7 +151,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 ChaveField = ((int)Ide.CUF).ToString() +
                     Ide.DhEmi.ToString("yyMM") +
-                    Emit.CNPJ.PadLeft(14, '0') +
+                    (string.IsNullOrWhiteSpace(Emit.CNPJ) ? Emit.CPF?.PadLeft(14, '0') : Emit.CNPJ.PadLeft(14, '0')) +
                     ((int)Ide.Mod).ToString().PadLeft(2, '0') +
                     Ide.Serie.ToString().PadLeft(3, '0') +
                     Ide.NCT.ToString().PadLeft(9, '0') +
