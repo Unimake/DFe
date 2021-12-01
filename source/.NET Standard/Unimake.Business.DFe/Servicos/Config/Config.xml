@@ -496,4 +496,10 @@
     <ArqConfig>SideropolisSC.xml</ArqConfig>
     <PadraoNFSe>WEBISS</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="3127701">
+    <Nome>Governador Valadares - MG</Nome>
+    <UF>MG</UF>
+    <ArqConfig>GovernadorValadaresMG.xml</ArqConfig>
+    <PadraoNFSe>SIGCORP</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>
