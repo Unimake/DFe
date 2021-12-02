@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.CTe;
-using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Servicos.MDFe;
+using Unimake.Business.DFe.Xml.MDFe;
 using Xunit;
 
-namespace Unimake.DFe.Test.CTe
+namespace Unimake.DFe.Test.MDFe
 {
     /// <summary>
-    /// Testar o serviço de recepção de eventos da CTe
+    /// Testar o serviço de recepção de eventos do MDFe
     /// </summary>
     public class RecepcaoEventoTest
     {
         /// <summary>
-        /// Enviar um evento de da CTe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Enviar um evento do MDFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Enviar um evento por estado + ambiente para garantir que todos estão funcionando.
         /// Evento utilizado no teste é o cancelamento, pois tem em todos estados e também no ambiente nacional.
         /// </summary>
         /// <param name="ufBrasil">UF para onde deve ser enviado xml</param>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
         [Theory]
-        [Trait("DFe", "CTe")]
+        [Trait("DFe", "MDFe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
@@ -79,21 +79,21 @@ namespace Unimake.DFe.Test.CTe
         {
             try
             {
-                var xml = new EventoCTe
+                var xml = new EventoMDFe
                 {
                     Versao = "3.00",
-                    InfEvento = new Unimake.Business.DFe.Xml.CTe.InfEvento(new Unimake.Business.DFe.Xml.CTe.DetEventoCanc
+                    InfEvento = new InfEvento(new DetEventoCanc
                     {
                         NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.PR) + "0000000000000",
                         VersaoEvento = "3.00",
-                        XJust = "Justificativa para cancelamento da CTe de teste"
+                        XJust = "Justificativa para cancelamento do MDFe de teste"
                     })
                     {
                         COrgao = ufBrasil,
-                        ChCTe = (int)ufBrasil + "200206117473000150570010000005671227070615",
+                        ChMDFe = (int)ufBrasil + "200206117473000150570010000005671227070615",
                         CNPJ = "06117473000150",
                         DhEvento = DateTime.Now,
-                        TpEvento = TipoEventoCTe.Cancelamento,
+                        TpEvento = TipoEventoMDFe.Cancelamento,
                         NSeqEvento = 1,
                         TpAmb = tipoAmbiente
                     }
@@ -101,7 +101,7 @@ namespace Unimake.DFe.Test.CTe
 
                 var configuracao = new Configuracao
                 {
-                    TipoDFe = TipoDFe.CTe,
+                    TipoDFe = TipoDFe.MDFe,
                     TipoEmissao = TipoEmissao.Normal,
                     CertificadoDigital = PropConfig.CertificadoDigital
                 };

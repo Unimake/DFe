@@ -332,7 +332,7 @@ namespace Unimake.DFe.Test.NFCe
         /// <param name="ufBrasil">UF para onde deve ser enviado a NFe</param>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a NFe</param>
         [Theory]
-        [Trait("DFe", "NFe")]
+        [Trait("DFe", "NFCe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]

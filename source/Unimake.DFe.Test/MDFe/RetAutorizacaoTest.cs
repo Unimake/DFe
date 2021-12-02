@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.CTe;
-using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Servicos.MDFe;
+using Unimake.Business.DFe.Xml.MDFe;
 using Xunit;
 
-namespace Unimake.DFe.Test.CTe
+namespace Unimake.DFe.Test.MDFe
 {
     /// <summary>
-    /// Testar o serviço de recepção de eventos da CTe
+    /// Testar o serviço de consulta recibo do MDFe
     /// </summary>
-    public class RecepcaoEventoTest
+    public class RetAutorizacaoTest
     {
         /// <summary>
-        /// Enviar um evento de da CTe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
-        /// Enviar um evento por estado + ambiente para garantir que todos estão funcionando.
-        /// Evento utilizado no teste é o cancelamento, pois tem em todos estados e também no ambiente nacional.
+        /// Consultar o recibo do MDFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado xml</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta recibo</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta recibo</param>
         [Theory]
-        [Trait("DFe", "CTe")]
+        [Trait("DFe", "MDFe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
@@ -75,54 +74,36 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void RecepcaoEventoEstados(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void ConsultarRecibo(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             try
             {
-                var xml = new EventoCTe
+                var xml = new ConsReciMDFe
                 {
                     Versao = "3.00",
-                    InfEvento = new Unimake.Business.DFe.Xml.CTe.InfEvento(new Unimake.Business.DFe.Xml.CTe.DetEventoCanc
-                    {
-                        NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.PR) + "0000000000000",
-                        VersaoEvento = "3.00",
-                        XJust = "Justificativa para cancelamento da CTe de teste"
-                    })
-                    {
-                        COrgao = ufBrasil,
-                        ChCTe = (int)ufBrasil + "200206117473000150570010000005671227070615",
-                        CNPJ = "06117473000150",
-                        DhEvento = DateTime.Now,
-                        TpEvento = TipoEventoCTe.Cancelamento,
-                        NSeqEvento = 1,
-                        TpAmb = tipoAmbiente
-                    }
+                    TpAmb = tipoAmbiente,
+                    NRec = ((int)ufBrasil).ToString() + "9210140351219"
                 };
 
                 var configuracao = new Configuracao
                 {
-                    TipoDFe = TipoDFe.CTe,
+                    TipoDFe = TipoDFe.MDFe,
                     TipoEmissao = TipoEmissao.Normal,
                     CertificadoDigital = PropConfig.CertificadoDigital
                 };
 
-                var recepcaoEvento = new RecepcaoEvento(xml, configuracao);
-                recepcaoEvento.Executar();
+                var retAutorizacao = new RetAutorizacao(xml, configuracao);
+                retAutorizacao.Executar();
 
                 Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-
-                //if(ufBrasil == UFBrasil.MA)
-                //{
-                //    Debug.Assert(recepcaoEvento.Result.InfEvento.COrgao.Equals(UFBrasil.DF), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                //}
-                //else
-                //{
-                Debug.Assert(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                //}
-
-                Debug.Assert(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Debug.Assert(recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
+                Debug.Assert(retAutorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Debug.Assert(retAutorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                if(retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000" && retAutorizacao.Result.NRec != "0")
+                {
+                    Debug.Assert(retAutorizacao.Result.NRec.Equals(xml.NRec), "Webservice retornou um número diferente do informado no XML da consulta." + xml.NRec);
+                }
+                //Debug.Assert(retAutorizacao.Result.CStat.Equals(106), "Status está diferente de \"106-Recibo pesquisado não foi encontrado\". Analise!!!");
             }
             catch(Exception ex)
             {

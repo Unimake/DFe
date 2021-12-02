@@ -8,7 +8,7 @@ using Xunit;
 namespace Unimake.DFe.Test.CTe
 {
     /// <summary>
-    /// Testar o serviço de consulta protocolo da NFe
+    /// Testar o serviço de consulta protocolo do MDFe
     /// </summary>
     public class ConsultaProtocoloTest
     {

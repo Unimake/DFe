@@ -75,9 +75,9 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         /// <param name="doc">Documento XML</param>
         /// <param name="arqConfig">Nome do arquivo de configuração</param>
-        private void LerConfig(XmlDocument doc, string arqConfig)
+        private void LerConfig(XmlDocument doc, string arqConfig, bool lerConfigPadrao)
         {
-            if(doc.GetElementsByTagName("Servicos")[0] != null)
+            if(lerConfigPadrao && doc.GetElementsByTagName("Servicos")[0] != null)
             {
                 LerConfigPadrao();
             }
@@ -249,30 +249,32 @@ namespace Unimake.Business.DFe.Servicos
                 }
             }
 
-            if (Configuracoes.Servico == Servico.NFeConsultaCadastro)
-            {
-                //Estados que não disponibilizam a coinsulta cadastro e que usam SVRS, como SVRS tem a consulta mas não para estes estados, tenho que tratar a exceção manualmente, conforma baixo.
-                if (Configuracoes.CodigoUF.Equals(14) || Configuracoes.CodigoUF.Equals(16) ||
-                    Configuracoes.CodigoUF.Equals(33) || Configuracoes.CodigoUF.Equals(11) ||
-                    Configuracoes.CodigoUF.Equals(15) || Configuracoes.CodigoUF.Equals(22) ||
-                    Configuracoes.CodigoUF.Equals(27) || Configuracoes.CodigoUF.Equals(18) ||
-                    Configuracoes.CodigoUF.Equals(17))
-                {
-                    throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de "+(Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
-                }
-            }
-
-            if(Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(Configuracoes.WebEnderecoHomologacao))
-            {
-                throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de homologação.");
-            }
-            else if(Configuracoes.TipoAmbiente == TipoAmbiente.Producao && string.IsNullOrWhiteSpace(Configuracoes.WebEnderecoProducao))
-            {
-                throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de produção.");
-            }
-            else if(!achouConfigVersao)
+            if(!achouConfigVersao)
             {
                 throw new Exception("Não foi localizado as configurações para a versão de schema " + Configuracoes.SchemaVersao + " no arquivo de configuração do serviço de " + Configuracoes.TipoDFe.ToString() + ".\r\n\r\n" + arqConfig);
+            }
+            else
+            {
+                if(Configuracoes.Servico == Servico.NFeConsultaCadastro)
+                {
+                    //Estados que não disponibilizam a coinsulta cadastro e que usam SVRS, como SVRS tem a consulta mas não para estes estados, tenho que tratar a exceção manualmente, conforma baixo.
+                    if(Configuracoes.CodigoUF.Equals(14) || Configuracoes.CodigoUF.Equals(16) ||
+                        Configuracoes.CodigoUF.Equals(33) || Configuracoes.CodigoUF.Equals(11) ||
+                        Configuracoes.CodigoUF.Equals(15) || Configuracoes.CodigoUF.Equals(22) ||
+                        Configuracoes.CodigoUF.Equals(27) || Configuracoes.CodigoUF.Equals(18) ||
+                        Configuracoes.CodigoUF.Equals(17))
+                    {
+                        throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de " + (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
+                    }
+                }
+                else if(Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(Configuracoes.WebEnderecoHomologacao))
+                {
+                    throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de homologação.");
+                }
+                else if(Configuracoes.TipoAmbiente == TipoAmbiente.Producao && string.IsNullOrWhiteSpace(Configuracoes.WebEnderecoProducao))
+                {
+                    throw new Exception(Configuracoes.Nome + " não disponibiliza o serviço de " + Configuracoes.Servico.GetAttributeDescription() + " para o ambiente de produção.");
+                }
             }
         }
 
@@ -388,7 +390,7 @@ namespace Unimake.Business.DFe.Servicos
                     if(svc)
                     {
                         doc.Load(LoadXmlConfig(arqConfigSVC));
-                        LerConfig(doc, arqConfigSVC);
+                        LerConfig(doc, arqConfigSVC, true);
                     }
                     break;
             }
@@ -408,7 +410,7 @@ namespace Unimake.Business.DFe.Servicos
                     temHeranca = true;
 
                     doc.Load(LoadXmlConfig(arqConfigHeranca));
-                    LerConfig(doc, arqConfigHeranca);
+                    LerConfig(doc, arqConfigHeranca, true);
 
                     doc.Load(LoadXmlConfig(xmlConfigEspecifico));
                 }
@@ -417,7 +419,7 @@ namespace Unimake.Business.DFe.Servicos
 
                 try
                 {
-                    LerConfig(doc, xmlConfigEspecifico);
+                    LerConfig(doc, xmlConfigEspecifico, ! temHeranca);
                 }
                 catch
                 {
@@ -569,7 +571,7 @@ namespace Unimake.Business.DFe.Servicos
                         Configuracoes.Nome = elementArquivos.GetElementsByTagName("Nome")[0].InnerText;
                         Configuracoes.NomeUF = elementArquivos.GetElementsByTagName("UF")[0].InnerText;
                         Configuracoes.PadraoNFSe = PadraoNFSe.None;
-                        
+
                         if(XMLUtility.TagExist(elementArquivos, "PadraoNFSe"))
                         {
                             try
@@ -578,7 +580,7 @@ namespace Unimake.Business.DFe.Servicos
                             }
                             catch(Exception)
                             {
-                                throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo "+XMLUtility.TagRead(elementArquivos, "PadraoNFSe")+" e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
+                                throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo " + XMLUtility.TagRead(elementArquivos, "PadraoNFSe") + " e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
                             }
                         }
 

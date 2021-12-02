@@ -26,7 +26,7 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AM, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.AN, TipoAmbiente.Homologacao)] //Ambiente nacional
+        //[InlineData(UFBrasil.AN, TipoAmbiente.Homologacao)] //Ambiente nacional
         [InlineData(UFBrasil.BA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.CE, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.DF, TipoAmbiente.Homologacao)]
@@ -54,7 +54,7 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.AL, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.AP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.AM, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.AN, TipoAmbiente.Producao)] //Ambiente nacional
+        //[InlineData(UFBrasil.AN, TipoAmbiente.Producao)] //Ambiente nacional
         [InlineData(UFBrasil.BA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.CE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.DF, TipoAmbiente.Producao)]
@@ -98,7 +98,7 @@ namespace Unimake.DFe.Test.NFCe
                             })
                             {
                                 COrgao = ufBrasil,
-                                ChNFe = (int)ufBrasil + "190806117473000150550010000579131943463890",
+                                ChNFe = (int)ufBrasil + "190806117473000150650010000579131943463890",
                                 CNPJ = "06117473000150",
                                 DhEvento = DateTime.Now,
                                 TpEvento = TipoEventoNFe.Cancelamento,
@@ -122,16 +122,7 @@ namespace Unimake.DFe.Test.NFCe
 
                 Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-
-                if(ufBrasil == UFBrasil.MA)
-                {
-                    Debug.Assert(recepcaoEvento.Result.COrgao.Equals(UFBrasil.DF), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                }
-                else
-                {
-                    Debug.Assert(recepcaoEvento.Result.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                }
-
+                Debug.Assert(recepcaoEvento.Result.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Debug.Assert(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
                 Debug.Assert(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
             }
