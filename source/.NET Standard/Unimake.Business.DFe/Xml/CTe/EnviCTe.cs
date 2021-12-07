@@ -1497,7 +1497,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("pRedBC")]
         public string PRedBCField
         {
-            get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
+            get => PRedBC.ToString("F2", CultureInfo.InvariantCulture);
             set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
