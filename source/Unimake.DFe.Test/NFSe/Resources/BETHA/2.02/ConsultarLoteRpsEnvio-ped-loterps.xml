@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio xmlns="http://www.betha.com.br/e-nota-contribuinte-ws">
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>45111111111100</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>123498</InscricaoMunicipal>
+  </Prestador>
+  <Protocolo>141542179222170</Protocolo>
+</ConsultarLoteRpsEnvio>

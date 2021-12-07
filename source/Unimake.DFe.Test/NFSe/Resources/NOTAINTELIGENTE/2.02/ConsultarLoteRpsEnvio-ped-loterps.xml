@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio xmlns="https://notainteligente.com" versao="2.02">
+  <Protocolo>20141201135224</Protocolo>
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>27438151000182</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>43252138</InscricaoMunicipal>
+  </Prestador>
+</ConsultarLoteRpsEnvio>
