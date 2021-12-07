@@ -3333,7 +3333,6 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VLiq = Utility.Converter.ToDouble(value);
         }
 
-
         #region ShouldSerialize
 
         public bool ShouldSerializeVDescField() => VDesc > 0;

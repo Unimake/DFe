@@ -1513,6 +1513,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => VLiq.ToString("F2", CultureInfo.InvariantCulture);
             set => VLiq = Utility.Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVDescField() => VDesc > 0;
+
+        #endregion
     }
 
     [Serializable()]
