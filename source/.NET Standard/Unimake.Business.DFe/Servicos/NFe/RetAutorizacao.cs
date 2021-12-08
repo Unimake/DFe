@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -11,6 +12,64 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// </summary>
     public class RetAutorizacao: ServicoBase, IInteropService<ConsReciNFe>
     {
+        #region Private Methods
+
+        /// <summary>
+        /// Mudar o conteúdo da tag xMotivo caso a nota tenha sido rejeitada por problemas nos itens/produtos da nota. Assim vamos retornar na xMotivo algumas informações a mais para facilitar o entendimento para o usuário.
+        /// </summary>
+        private void MudarConteudoTagRetornoXMotivo()
+        {
+            if(EnviNFe != null)
+            {
+                try
+                {
+                    var alterouXMotivo = false;
+
+                    var retConsReciNFeList = RetornoWSXML.GetElementsByTagName("retConsReciNFe");
+                    foreach(var retConsReciNFeNode in retConsReciNFeList)
+                    {
+                        var retConsReciNFeElement = (XmlElement)retConsReciNFeNode;
+
+                        var protNFeList = retConsReciNFeElement.GetElementsByTagName("protNFe");
+                        foreach(var protNFeNode in protNFeList)
+                        {
+                            var protNFeElement = (XmlElement)protNFeNode;
+
+                            if(protNFeElement.GetElementsByTagName("xMotivo") != null)
+                            {
+                                var xMotivo = protNFeElement.GetElementsByTagName("xMotivo")[0].InnerText;
+
+                                if(xMotivo.Contains("[nItem:"))
+                                {
+                                    var nItem = Convert.ToInt32((xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Substring(0, (xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Length - 1));
+                                    protNFeElement.GetElementsByTagName("xMotivo")[0].InnerText = xMotivo + "[cProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.CProd + "][xProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.XProd + "]";
+                                    alterouXMotivo = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if(alterouXMotivo)
+                    {
+                        RetornoWSString = RetornoWSXML.OuterXml;
+                    }
+                }
+                catch { }
+            }
+        }
+
+        #endregion
+
+        #region Protected Fields
+
+        /// <summary>
+        /// Objeto do XML da NFe/NFCe
+        /// É importante carregar o conteúdo deste objeto, com isso temos como resgatar informações da NFe na hora de gerar o XML com rejeição, caso ocorra, para o ERP, pois fazemos pequenas mudanças na xMotivo para facilitar o entendimento para o usuário da rejeição.
+        /// </summary>
+        public EnviNFe EnviNFe { get; set; }
+
+        #endregion
+
         #region Protected Methods
 
         /// <summary>
@@ -78,6 +137,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
         #region Public Methods
 
+        /// <summary>
+        /// Executar o serviço
+        /// </summary>
+        [ComVisible(false)]
+        public override void Executar()
+        {
+            if(!Configuracoes.Definida)
+            {
+                DefinirConfiguracao();
+            }
+
+            base.Executar();
+
+            MudarConteudoTagRetornoXMotivo();
+        }
+
 #if INTEROP
 
         /// <summary>
@@ -101,7 +176,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         /// <param name="conteudoXML">Conteúdo do XML</param>
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) =>
-            throw new Exception("Não existe XML de distribuição para consulta do recibo de lote.");
+                    throw new Exception("Não existe XML de distribuição para consulta do recibo de lote.");
 
         #endregion Public Methods
     }
