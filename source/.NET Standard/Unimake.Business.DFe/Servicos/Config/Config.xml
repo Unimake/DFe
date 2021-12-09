@@ -502,4 +502,10 @@
     <ArqConfig>GovernadorValadaresMG.xml</ArqConfig>
     <PadraoNFSe>SIGCORP</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="5107909">
+    <Nome>Sinop - MT</Nome>
+    <UF>MT</UF>
+    <ArqConfig>SinopMT.xml</ArqConfig>
+    <PadraoNFSe>COPLAN</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

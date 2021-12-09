@@ -5601,7 +5601,13 @@ namespace Unimake.Business.DFe.Servicos
         /// SIMPLISS Sistema de Informação LTDA
         /// </summary>
         [Description("SIMPLISS Sistema de Informação LTDA")]
-        SIMPLISS
+        SIMPLISS,
+
+        /// <summary>
+        /// COPLAN
+        /// </summary>
+        [Description("Coplan")]
+        COPLAN
     }
 
     #endregion
