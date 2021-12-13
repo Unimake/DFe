@@ -13,7 +13,7 @@ namespace Unimake.DFe.Test.NFSe
         /// Prepara uma Lista de parâmetros para montagem dos cenários que devem ser testados para os serviços da NFSe
         /// </summary>
         /// <returns></returns>
-        public static List<object[]> PreparaDadosCenario()
+        public static List<object[]> PreparaDadosCenario(string servico)
         {
             var dados = new List<object[]>();
 
@@ -58,7 +58,7 @@ namespace Unimake.DFe.Test.NFSe
                                     var codMunicipio = Convert.ToInt32(arquivoElement.GetAttribute("ID"));
                                     var nomeMunicipio = arquivoElement.GetElementsByTagName("Nome")[0].InnerText;
 
-                                    var ambientesVersoesSchema = TestUtility.BuscarDadosConfigNFSe(pastaConfigNFSe + "\\" + arquivoElement.GetElementsByTagName("ArqConfig")[0].InnerText);
+                                    var ambientesVersoesSchema = TestUtility.BuscarDadosConfigNFSe(pastaConfigNFSe + "\\" + arquivoElement.GetElementsByTagName("ArqConfig")[0].InnerText, servico);
 
                                     foreach(var ambienteVersaoSchema in ambientesVersoesSchema)
                                     {
@@ -86,7 +86,7 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
         /// <param name="arqConfigMunicipio">Nome do arquivo de configuração específico do município</param>
         /// <returns>Lista com dados das configurações da NFSe</returns>
-        public static List<DadosConfigNFSe> BuscarDadosConfigNFSe(string arqConfigMunicipio)
+        public static List<DadosConfigNFSe> BuscarDadosConfigNFSe(string arqConfigMunicipio, string servico)
         {
             Debug.Assert(File.Exists(arqConfigMunicipio), "Arquivo " + arqConfigMunicipio + " não foi localizado.");
 
@@ -108,7 +108,7 @@ namespace Unimake.DFe.Test.NFSe
 
                     if(servicosElement.GetAttribute("ID").ToLower() == "nfse")
                     {
-                        var consultarLoteRpsList = servicosElement.GetElementsByTagName("ConsultarLoteRps");
+                        var consultarLoteRpsList = servicosElement.GetElementsByTagName(servico);
 
                         foreach(var consultarLoteRpsNode in consultarLoteRpsList)
                         {

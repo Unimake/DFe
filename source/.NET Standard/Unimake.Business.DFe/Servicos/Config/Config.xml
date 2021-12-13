@@ -400,17 +400,12 @@
     <ArqConfig>BarretosSP.xml</ArqConfig>
     <PadraoNFSe>SIGCORP</PadraoNFSe>
   </Arquivo>
+	
   <Arquivo ID="3305109">
     <Nome>São João de Meriti - RJ</Nome>
     <UF>RJ</UF>
     <ArqConfig>SaoJoaoDeMeritiRJ.xml</ArqConfig>
     <PadraoNFSe>SIGCORP</PadraoNFSe>
-  </Arquivo>
-  <Arquivo ID="3303401">
-    <Nome>Nova Friburgo - RJ</Nome>
-    <UF>RJ</UF>
-    <ArqConfig>NovaFriburgoRJ.xml</ArqConfig>
-    <PadraoNFSe>EL</PadraoNFSe>
   </Arquivo>
   <Arquivo ID="3132701">
     <Nome>Itambacuri - MG</Nome>

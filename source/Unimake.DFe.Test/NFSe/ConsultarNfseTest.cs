@@ -10,25 +10,25 @@ using Xunit;
 namespace Unimake.DFe.Test.NFSe
 {
     /// <summary>
-    /// Testar o serviço: ConsultarLoteRps
+    /// Testar o serviço: ConsultarNFse
     /// </summary>
-    public class ConsultarLoteRpsTest
+    public class ConsultarNseTest
     {
         /// <summary>
         /// Monta o parâmetros, de forma dinâmica, para o cenário de testes
         /// </summary>
-        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarLoteRps");
+        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarNfse");
 
         /// <summary>
-        /// Consultar Lote Rps para saber se a conexão com o webservice está ocorrendo corretamente.
+        /// Consultar Situação para saber se a conexão com o webservice está ocorrendo corretamente.
         /// </summary>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o XML</param>
         [Theory]
         [Trait("DFe", "NFSe")]
         [MemberData(nameof(Parametros))]
         public void Consultar(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
-        {
-            var nomeXMLEnvio = "ConsultarLoteRpsEnvio-ped-loterps.xml";
+        {          
+            var nomeXMLEnvio = "ConsultarNfseEnvio-ped-sitnfse.xml"; 
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
 
             Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
@@ -44,12 +44,12 @@ namespace Unimake.DFe.Test.NFSe
                     CertificadoDigital = PropConfig.CertificadoDigital,
                     TipoAmbiente = tipoAmbiente,
                     CodigoMunicipio = codMunicipio,
-                    Servico = Servico.NFSeConsultarLoteRps,
+                    Servico = Servico.NFSeConsultarNfse,
                     SchemaVersao = versaoSchema
                 };
 
-                var consultarLoteRps = new ConsultarLoteRps(conteudoXML, configuracao);
-                consultarLoteRps.Executar();
+                var consultarNfse = new ConsultarNfse(conteudoXML, configuracao);
+                consultarNfse.Executar();
             }
             catch(Exception ex)
             {

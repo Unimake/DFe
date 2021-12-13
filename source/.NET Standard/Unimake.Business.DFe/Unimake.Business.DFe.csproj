@@ -235,7 +235,6 @@
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
-		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SideropolisSC.xml" />
@@ -839,9 +838,6 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\NovaFriburgoRJ.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\ItambacuriMG.xml">
