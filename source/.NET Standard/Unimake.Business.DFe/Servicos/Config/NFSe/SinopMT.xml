@@ -29,7 +29,7 @@
       <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
       <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
 	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><nfse_web_service.RECEPCIONARLOTERPSSINCRONO xmlns="Tributario"><Recepcionarloterpssincronorequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.01"><versaoDados>2.01</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></Recepcionarloterpssincronorequest></nfse_web_service.RECEPCIONARLOTERPSSINCRONO></soap:Body></soap:Envelope>]]]]></WebSoapString>
@@ -118,7 +118,7 @@
       <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
     </ConsultarNfsePorRps>
     <ConsultarNfseFaixa versao="2.02">
-      <Descricao></Descricao>
+      <Descricao>Consulta NFSe por Faixa</Descricao>
       <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
