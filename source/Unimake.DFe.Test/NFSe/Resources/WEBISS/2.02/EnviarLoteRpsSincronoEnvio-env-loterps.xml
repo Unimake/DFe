@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="LOTE2256" versao="2.02">
+    <NumeroLote>2256</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>10882131000608</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>9004828</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="ID225631">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>2256</Numero>
+              <Serie>3</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2017-08-23</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2017-08-23</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>30.00</ValorServicos>
+              <ValorPis>0.00</ValorPis>
+              <ValorCofins>0.00</ValorCofins>
+              <ValorInss>0.00</ValorInss>
+              <ValorIr>0.00</ValorIr>
+              <ValorCsll>0.00</ValorCsll>
+              <ValorIss>1.50</ValorIss>
+              <Aliquota>0.0500</Aliquota>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ItemListaServico>14.04</ItemListaServico>
+            <CodigoCnae>4530702</CodigoCnae>
+            <Discriminacao>MAO DE OBRA ALINHAMENTO COMPUT. VEICULO LINHA1 TESTE TESATE TETETE LINHA2 TESTE TETE TETE TE TE LINHA3 FDSSD DS DSDSSD DS DS</Discriminacao>
+            <CodigoMunicipio>3300308</CodigoMunicipio>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>3300308</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>10882131000608</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>9004828</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>00762375752</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>MARCOS MARTINS</RazaoSocial>
+            <Endereco>
+              <Endereco>RUA MAURILIO GOMES DA SILVEIRATTTTTTTT  550</Endereco>
+              <Numero>550</Numero>
+              <Bairro>MONTE CASTELO</Bairro>
+              <CodigoMunicipio>3306305</CodigoMunicipio>
+              <Uf>RJ</Uf>
+              <Cep>27253120</Cep>
+            </Endereco>
+          </Tomador>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsSincronoEnvio>
