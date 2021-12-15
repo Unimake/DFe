@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="Lote532526430004311001133" versao="2.02">
+    <NumeroLote>133</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>99999999999999</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>1234</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="Rps13331">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>133</Numero>
+              <Serie>3</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>0001-01-01</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2014-03-17</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>400.00</ValorServicos>
+              <ValorIss>8.00</ValorIss>
+              <Aliquota>0.0200</Aliquota>
+            </Valores>
+            <IssRetido>1</IssRetido>
+            <ItemListaServico>1401</ItemListaServico>
+            <Discriminacao>Discriminacao do servico</Discriminacao>
+            <CodigoMunicipio>3100401</CodigoMunicipio>
+            <ExigibilidadeISS>3</ExigibilidadeISS>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>12345678912345</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1234</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cnpj>12345678912345</Cnpj>
+              </CpfCnpj>
+              <InscricaoMunicipal>1234</InscricaoMunicipal>
+            </IdentificacaoTomador>
+            <RazaoSocial>TOMADOR</RazaoSocial>
+            <Endereco>
+              <Endereco>TESTE</Endereco>
+              <Numero>441</Numero>
+              <Bairro>TESTE</Bairro>
+              <CodigoMunicipio>3100401</CodigoMunicipio>
+              <Uf>MG</Uf>
+              <Cep>35438000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>3433333333</Telefone>
+              <Email>teste@dominiodoemail.com</Email>
+            </Contato>
+          </Tomador>
+          <RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>
