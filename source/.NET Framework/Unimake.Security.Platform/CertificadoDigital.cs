@@ -82,9 +82,6 @@ namespace Unimake.Security.Platform
         /// <param name="senha">Senha utilizada para instalar o certificado, será usada para carga do mesmo</param>
         /// <returns>Certificado Digital</returns>
         [ComVisible(false)] // *** ATENÇÃO ***
-                            // Se passar este método para visible true, 
-                            // tem que renomear o segundo método, pois o interop não aceita sobrecarga
-                            // em algumas linguagens
         public X509Certificate2 CarregarCertificadoDigitalA1(byte[] bytes, string senha) => new X509Certificate2(bytes, senha);
 
         /// <summary>
@@ -126,6 +123,19 @@ namespace Unimake.Security.Platform
         }
 
         /// <summary>
+        /// Converte a string Base64 no certificado
+        /// </summary>
+        /// <param name="base64">String base64 convertida pelo método <see cref="ToBase64(string)"/></param>
+        /// <param name="password">Senha do certificado</param>
+        /// <returns>Base64</returns>
+        [return: MarshalAs(UnmanagedType.IDispatch)]
+        public X509Certificate2 FromBase64(string base64, string password)
+        {
+            var buffer = Convert.FromBase64String(base64);
+            return new X509Certificate2(buffer, password);
+        }
+
+        /// <summary>
         /// Executa tela com os certificados digitais instalados para seleção do usuário
         /// </summary>
         /// <returns>Retorna o certificado digital (null se nenhum certificado foi selecionado ou se o certificado selecionado está com alguma falha)</returns>
@@ -140,6 +150,27 @@ namespace Unimake.Security.Platform
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Converte o arquivo do certificado em base664 e retorna
+        /// </summary>
+        /// <param name="arquivo">Nome do arquivo</param>
+        /// <returns>Base64</returns>
+        public string ToBase64(string arquivo)
+        {
+            byte[] result = null;
+
+            using(Stream responseStream = new FileStream(arquivo, FileMode.Open))
+            {
+                using(var memoryStream = new MemoryStream())
+                {
+                    responseStream.CopyTo(memoryStream);
+                    result = memoryStream.ToArray();
+                }
+            }
+
+            return Convert.ToBase64String(result);
         }
 
         /// <summary>
@@ -171,6 +202,7 @@ namespace Unimake.Security.Platform
 #if INTEROP
         public bool Vencido([MarshalAs(UnmanagedType.IDispatch)] X509Certificate2 certificado)
 #else
+
         public bool Vencido(X509Certificate2 certificado)
 #endif
         {
@@ -189,6 +221,6 @@ namespace Unimake.Security.Platform
             return retorna;
         }
 
-#endregion Public Methods
+        #endregion Public Methods
     }
 }

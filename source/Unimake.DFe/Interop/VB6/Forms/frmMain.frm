@@ -40,7 +40,7 @@ Begin VB.Form frmMain
       BackStyle       =   0  'Transparent
       Caption         =   "LOG"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Arial"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -195,6 +195,9 @@ Begin VB.Form frmMain
       Begin VB.Menu mnuCertificadoSelecionarArquivo 
          Caption         =   "Selecionar de Arquivo"
       End
+      Begin VB.Menu mnuCertificadoSelecionarBase64 
+         Caption         =   "Selecionar de Base64"
+      End
    End
 End
 Attribute VB_Name = "frmMain"
@@ -222,6 +225,8 @@ Public Sub ClearLog()
 txtLog.Text = ""
 End Sub
 
+
+
 Private Sub mnuCertificadoSelecionar_Click()
 Dim certificado
 Set certificado = SelecionarCertificado.SelecionarCertificado
@@ -236,6 +241,10 @@ MsgBox "Certificado selecionado", vbInformation + vbOKOnly, "Aviso"
 Exit Sub
 erro:
 MsgBox Err.Description, vbCritical + vbOKOnly, "Erro ao selecionar o certificado"
+End Sub
+
+Private Sub mnuCertificadoSelecionarBase64_Click()
+SelecionarCertificado.SelecionarDeBase64
 End Sub
 
 Private Sub mnuCTe_ConsultaCadastroContribuinte_Click()
