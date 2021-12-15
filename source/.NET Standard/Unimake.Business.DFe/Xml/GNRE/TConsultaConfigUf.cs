@@ -14,9 +14,6 @@ namespace Unimake.Business.DFe.Xml.GNRE
     [XmlRoot("TConsultaConfigUf", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
     public class TConsultaConfigUf: XMLBase
     {
-        [XmlIgnore]
-        public string Versao { get; set; } = "1.00";
-
         [XmlElement("ambiente")]
         public TipoAmbiente Ambiente { get; set; }
 

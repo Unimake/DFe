@@ -32,4 +32,20 @@
     <SchemaVersao>2.02</SchemaVersao>
     <TargetNS></TargetNS>
   </Versao>
+  <Versao ID="2.03">
+    <WebContentType></WebContentType>
+    <WebSoapString></WebSoapString>
+    <WebTagRetorno></WebTagRetorno>
+    <WebSoapVersion></WebSoapVersion>
+    <SchemaVersao>2.03</SchemaVersao>
+    <TargetNS></TargetNS>
+  </Versao>
+  <Versao ID="2.04">
+    <WebContentType></WebContentType>
+    <WebSoapString></WebSoapString>
+    <WebTagRetorno></WebTagRetorno>
+    <WebSoapVersion></WebSoapVersion>
+    <SchemaVersao>2.04</SchemaVersao>
+    <TargetNS></TargetNS>
+  </Versao>
 </ConfigPadrao>

@@ -118,6 +118,11 @@ namespace Unimake.Business.DFe
             catch (WebException ex)
             {
                 responsePost = ex.Response;
+
+                if (responsePost == null)
+                {
+                    throw (ex);
+                }
             }
 
             var streamPost = responsePost.GetResponseStream();
@@ -125,9 +130,10 @@ namespace Unimake.Business.DFe
             var encoding = Encoding.GetEncoding(soap.EncodingRetorno);
 
             var streamReaderResponse = new StreamReader(streamPost, encoding);
+            var conteudoRetorno = streamReaderResponse.ReadToEnd();
 
             var retornoXml = new XmlDocument();
-            retornoXml.LoadXml(streamReaderResponse.ReadToEnd());
+            retornoXml.LoadXml(conteudoRetorno);
 
             if(soap.TagRetorno.ToLower() != "prop:innertext")
             {

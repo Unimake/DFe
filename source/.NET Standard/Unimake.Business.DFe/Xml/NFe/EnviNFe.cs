@@ -19,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 {
     [Serializable()]
     [XmlRoot("enviNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class EnviNFe : XMLBase
+    public class EnviNFe: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -53,6 +53,8 @@ namespace Unimake.Business.DFe.Xml.NFe
             return xmlDoc;
         }
 
+#if INTEROP
+
         public void AddNFe(NFe nfe)
         {
             if(NFe == null)
@@ -62,6 +64,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             NFe.Add(nfe);
         }
+
+#endif
     }
 
     [Serializable()]
@@ -78,6 +82,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
 
+#if INTEROP
+
         public void AddInfNFe(InfNFe infNFe)
         {
             if(InfNFe == null)
@@ -87,6 +93,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             InfNFe.Add(infNFe);
         }
+
+#endif
 
         public NFe LoadFromFile(string filename)
         {
@@ -201,6 +209,8 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => throw new Exception("Não é permitido atribuir valor para a propriedade Chave. Ela é calculada automaticamente.");
         }
 
+#if INTEROP
+
         public void AddDet(Det det)
         {
             if(Det == null)
@@ -210,6 +220,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             Det.Add(det);
         }
+
+#endif
     }
 
     [Serializable()]
@@ -402,34 +414,189 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class NFref
     {
+        [XmlElement("refNFe")]
+        public string RefNFe { get; set; }
+
+        [XmlElement("refNF")]
+        public RefNF RefNF { get; set; }
+
+        [XmlElement("refNFP")]
+        public RefNFP RefNFP { get; set; }
+
         [XmlElement("refCTe")]
         public string RefCTe { get; set; }
 
         [XmlElement("refECF")]
-        public string RefECF { get; set; }
-
-        [XmlElement("refNF")]
-        public string RefNF { get; set; }
-
-        [XmlElement("refNFP")]
-        public string RefNFP { get; set; }
-
-        [XmlElement("refNFe")]
-        public string RefNFe { get; set; }
+        public RefECF RefECF { get; set; }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeRefCTe() => !string.IsNullOrWhiteSpace(RefCTe);
-
-        public bool ShouldSerializeRefECF() => !string.IsNullOrWhiteSpace(RefECF);
-
-        public bool ShouldSerializeRefNF() => !string.IsNullOrWhiteSpace(RefNF);
-
-        public bool ShouldSerializeRefNFP() => !string.IsNullOrWhiteSpace(RefNFP);
-
         public bool ShouldSerializeRefNFe() => !string.IsNullOrWhiteSpace(RefNFe);
 
+        public bool ShouldSerializeRefCTe() => !string.IsNullOrWhiteSpace(RefCTe);
+
         #endregion
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class RefNF
+    {
+        private string ModField;
+        private string AAMMField;
+
+        [XmlIgnore]
+        public UFBrasil CUF { get; set; }
+
+        [XmlElement("cUF")]
+        public int CUFField
+        {
+            get => (int)CUF;
+            set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
+
+        [XmlElement("AAMM")]
+        public string AAMM
+        {
+            get => AAMMField;
+            set
+            {
+                var mesesValidos = "01-02-03-04-05-06-07-08-09-10-11-12";
+
+                if(!mesesValidos.Contains(value.Substring(2)))
+                {
+                    throw new Exception("Conteúdo da TAG <AAMM> da <refNF> inválido! Mês informado deve estar entre 01 e 12.");
+                }
+
+                AAMMField = value;
+            }
+        }
+
+        [XmlElement("CNPJ")]
+        public string CNPJ { get; set; }
+
+        [XmlElement("mod")]
+        public string Mod
+        {
+            get => ModField;
+            set
+            {
+                if(value != "01" && value != "02")
+                {
+                    throw new Exception("Conteúdo da TAG <mod> da <refNF> inválido! Valores aceitos: 01 e 02.");
+                }
+
+                ModField = value;
+            }
+        }
+
+        [XmlElement("serie")]
+        public int Serie { get; set; }
+
+        [XmlElement("nNF")]
+        public int NNF { get; set; }
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class RefNFP
+    {
+        private string ModField;
+        private string AAMMField;
+
+        [XmlIgnore]
+        public UFBrasil CUF { get; set; }
+
+        [XmlElement("cUF")]
+        public int CUFField
+        {
+            get => (int)CUF;
+            set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
+
+        [XmlElement("AAMM")]
+        public string AAMM
+        {
+            get => AAMMField;
+            set
+            {
+                var mesesValidos = "01-02-03-04-05-06-07-08-09-10-11-12";
+
+                if(!mesesValidos.Contains(value.Substring(2)))
+                {
+                    throw new Exception("Conteúdo da TAG <AAMM> da <refNFP> inválido! Mês informado deve estar entre 01 e 12.");
+                }
+
+                AAMMField = value;
+            }
+        }
+
+        [XmlElement("CNPJ")]
+        public string CNPJ { get; set; }
+
+        [XmlElement("CPF")]
+        public string CPF { get; set; }
+
+        [XmlElement("IE")]
+        public string IE { get; set; }
+
+        [XmlElement("mod")]
+        public string Mod
+        {
+            get => ModField;
+            set
+            {
+                if(value != "01" && value != "04")
+                {
+                    throw new Exception("Conteúdo da TAG <mod> da <refNF> inválido! Valores aceitos: 01 e 04.");
+                }
+
+                ModField = value;
+            }
+        }
+
+        [XmlElement("serie")]
+        public int Serie { get; set; }
+
+        [XmlElement("nNF")]
+        public int NNF { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+
+        public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
+
+        #endregion
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class RefECF
+    {
+        private string ModField;
+
+        [XmlElement("mod")]
+        public string Mod
+        {
+            get => ModField;
+            set
+            {
+                if(value != "2B" && value != "2C" && value != "2D")
+                {
+                    throw new Exception("Conteúdo da TAG <mod> da <refECF> inválido! Valores aceitos: 2B, 2C e 2D.");
+                }
+
+                ModField = value;
+            }
+        }
+
+        [XmlElement("nECF")]
+        public int NECF { get; set; }
+
+        [XmlElement("nCOO")]
+        public int NCOO { get; set; }
+
     }
 
     [Serializable()]
@@ -896,11 +1063,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Retirada : LocalBase { }
+    public class Retirada: LocalBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Entrega : LocalBase { }
+    public class Entrega: LocalBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
@@ -1091,6 +1258,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("infProdNFF")]
         public InfProdNFF InfProdNFF { get; set; }
+
+        [XmlElement("infProdEmb")]
+        public InfProdEmb InfProdEmb { get; set; }
 
         [XmlElement("arma")]
         public List<Arma> Arma { get; set; }
@@ -1336,7 +1506,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion
     }
 
-
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class InfProdNFF
@@ -1357,6 +1526,35 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QVolEmbField
         {
             get => QVolEmb.ToString("F2", CultureInfo.InvariantCulture);
+            set => QVolEmb = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlElement("uEmb")]
+        public string UEmb { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeXEmb() => !string.IsNullOrWhiteSpace(XEmb);
+        public bool ShouldSerializeQVolEmbField() => !string.IsNullOrWhiteSpace(XEmb);
+        public bool ShouldSerializeUEmb() => !string.IsNullOrWhiteSpace(XEmb);
+
+        #endregion
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class InfProdEmb
+    {
+        [XmlElement("xEmb")]
+        public string XEmb { get; set; }
+
+        [XmlIgnore]
+        public double QVolEmb { get; set; }
+
+        [XmlElement("qVolEmb")]
+        public string QVolEmbField
+        {
+            get => QVolEmb.ToString("F3", CultureInfo.InvariantCulture);
             set => QVolEmb = Utility.Converter.ToDouble(value);
         }
 
@@ -1697,6 +1895,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("ICMSUFDest")]
         public ICMSUFDest ICMSUFDest { get; set; }
 
+#if INTEROP
+
         public void AddICMS(ICMS icms)
         {
             if(ICMS == null)
@@ -1706,6 +1906,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             ICMS.Add(icms);
         }
+
+#endif
 
         #region ShouldSerialize
 
@@ -2895,7 +3097,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class ICMS90 : ICMS70
+    public class ICMS90: ICMS70
     {
         [XmlElement("CST")]
         public override string CST { get; set; } = "90";
@@ -5501,6 +5703,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #endregion
 
+#if INTEROP
+
         public void AddReboque(Reboque reboque)
         {
             if(Reboque == null)
@@ -5520,6 +5724,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             Vol.Add(vol);
         }
+
+#endif
     }
 
     [Serializable()]
@@ -5658,11 +5864,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class VeicTransp : VeiculoBase { }
+    public class VeicTransp: VeiculoBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Reboque : VeiculoBase { }
+    public class Reboque: VeiculoBase { }
 
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
@@ -5750,6 +5956,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("dup")]
         public List<Dup> Dup { get; set; } = new List<Dup>();
 
+#if INTEROP
 
         public void AddDup(Dup dup)
         {
@@ -5760,6 +5967,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             Dup.Add(dup);
         }
+
+#endif
     }
 
     [Serializable()]
@@ -5858,6 +6067,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #endregion ShouldSerialize
 
+#if INTEROP
+
         public void AddDetPag(DetPag detPag)
         {
             if(DetPag == null)
@@ -5867,6 +6078,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             DetPag.Add(detPag);
         }
+
+#endif
     }
 
     [Serializable()]
@@ -6206,7 +6419,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => Qtde = Utility.Converter.ToDouble(value);
         }
 
-        [XmlElement("dia")]
+        [XmlAttribute(AttributeName = "dia")]
         public int Dia { get; set; }
     }
 

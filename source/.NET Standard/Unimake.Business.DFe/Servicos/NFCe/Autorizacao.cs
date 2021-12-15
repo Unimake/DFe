@@ -22,6 +22,16 @@ namespace Unimake.Business.DFe.Servicos.NFCe
 
                 if(EnviNFe.NFe[i].InfNFeSupl == null)
                 {
+                    if (string.IsNullOrWhiteSpace(Configuracoes.CSC))
+                    {
+                        throw new Exception("Para montagem do QRCode é necessario informar o conteúdo da propriedade \"Configuracao.CSC\"");
+                    }
+
+                    if (Configuracoes.CSCIDToken <= 0)
+                    {
+                        throw new Exception("Para montagem do QRCode é necessario informar o conteúdo da propriedade \"Configuracao.CSCIDToken\"");
+                    }
+
                     EnviNFe.NFe[i].InfNFeSupl = new InfNFeSupl();
 
                     var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);

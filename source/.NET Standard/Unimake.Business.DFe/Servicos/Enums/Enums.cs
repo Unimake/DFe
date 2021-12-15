@@ -2474,6 +2474,12 @@ namespace Unimake.Business.DFe.Servicos
         Servico1104 = 1104,
 
         /// <summary>
+        /// Serviço 11.05
+        /// </summary>
+        [XmlEnum("11.05")]
+        Servico1105 = 1105,
+
+        /// <summary>
         /// Serviço 12.01
         /// </summary>
         [XmlEnum("12.01")]
@@ -5577,7 +5583,77 @@ namespace Unimake.Business.DFe.Servicos
         /// NOTAINTELIGENTE
         /// </summary>
         [Description("Nota Inteligente")]
-        NOTAINTELIGENTE
+        NOTAINTELIGENTE,
+
+        /// <summary>
+        /// AVMB Soluções em TI
+        /// </summary>
+        [Description("AVMB Soluções em TI")]
+        AVMB,
+
+        /// <summary>
+        /// WebISS
+        /// </summary>
+        [Description("WebISS")]
+        WEBISS,
+
+        /// <summary>
+        /// SIMPLISS Sistema de Informação LTDA
+        /// </summary>
+        [Description("SIMPLISS Sistema de Informação LTDA")]
+        SIMPLISS,
+
+        /// <summary>
+        /// COPLAN
+        /// </summary>
+        [Description("Coplan")]
+        COPLAN
+    }
+
+    #endregion
+
+    #region Tipos de Compoenentes da GTVe para CTeOS
+
+    /// <summary>
+    /// Tipos de componentes da GTVe para CTeOS
+    /// </summary>
+    public enum TipoComponenteGTVe
+    {
+        /// <summary>
+        /// 1 - Custódia
+        /// </summary>
+        [XmlEnum("1")]
+        Custodia = 1,
+
+        /// <summary>
+        /// 2 - Embarque
+        /// </summary>
+        [XmlEnum("2")]
+        Embarque = 2,
+
+        /// <summary>
+        /// 3 - Tempo de espera
+        /// </summary>
+        [XmlEnum("3")]
+        TempoEspera = 3,
+
+        /// <summary>
+        /// 4 - Malote
+        /// </summary>
+        [XmlEnum("4")]
+        Malote = 4,
+
+        /// <summary>
+        /// 5 - Ad Valorem
+        /// </summary>
+        [XmlEnum("5")]
+        AdValorem = 5,
+
+        /// <summary>
+        /// 6 - Outros
+        /// </summary>
+        [XmlEnum("6")]
+        Outros = 6
     }
 
     #endregion

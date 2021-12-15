@@ -58,25 +58,6 @@
       <SchemaVersao>2.01</SchemaVersao>
       <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
     </ConsultarLoteRps>
-    <ConsultarNfseFaixa versao="2.01">
-      <Descricao>Consulta NFSe por faixa</Descricao>
-      <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://prodata.cubatao.sp.gov.br/prodataws/services/NfseWSService</WebEnderecoProducao>
-      <WebActionHomologacao></WebActionHomologacao>
-      <WebActionProducao>http://services.nfse/ConsultarNfsePorFaixa</WebActionProducao>
-      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorFaixaRequest xmlns="http://services.nfse"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorFaixaRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-      <WebTagRetorno>outputXML</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap11</WebSoapVersion>
-      <SchemaVersao>2.01</SchemaVersao>
-      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-    </ConsultarNfseFaixa>
     <ConsultarNfsePDF versao="2.01">
       <Descricao>Consulta/Download do PDF da NFSe</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>

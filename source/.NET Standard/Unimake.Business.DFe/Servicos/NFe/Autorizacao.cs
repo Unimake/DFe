@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -18,6 +19,40 @@ namespace Unimake.Business.DFe.Servicos.NFe
         private Dictionary<string, NfeProc> NfeProcs = new Dictionary<string, NfeProc>();
 
         #endregion Private Fields
+
+        #region Private Methods
+
+        /// <summary>
+        /// Mudar o conteúdo da tag xMotivo caso a nota tenha sido rejeitada por problemas nos itens/produtos da nota. Assim vamos retornar na xMotivo algumas informações a mais para facilitar o entendimento para o usuário.
+        /// </summary>
+        private void MudarConteudoTagRetornoXMotivo()
+        {
+            if(EnviNFe.IndSinc == SimNao.Sim)
+            {
+
+                try
+                {
+                    if(RetornoWSXML.GetElementsByTagName("xMotivo") != null)
+                    {
+                        var xMotivo = RetornoWSXML.GetElementsByTagName("xMotivo")[0].InnerText;
+                        if(xMotivo.Contains("[nItem:"))
+                        {
+                            var nItem = Convert.ToInt32((xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Substring(0, (xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Length - 1));
+                            RetornoWSString = RetornoWSString.Replace(xMotivo, xMotivo + " [cProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.CProd + "] [xProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.XProd + "]");
+
+                            RetornoWSXML = new XmlDocument
+                            {
+                                PreserveWhitespace = false
+                            };
+                            RetornoWSXML.LoadXml(RetornoWSString);
+                        }
+                    }
+                }
+                catch { }
+            }
+        }
+
+        #endregion
 
         #region Protected Properties
 
@@ -284,6 +319,8 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
 
             base.Executar();
+
+            MudarConteudoTagRetornoXMotivo();
         }
 
 #if INTEROP

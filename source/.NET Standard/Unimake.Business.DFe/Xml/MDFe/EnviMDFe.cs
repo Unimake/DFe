@@ -121,7 +121,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 ChaveField = ((int)Ide.CUF).ToString() +
                     Ide.DhEmi.ToString("yyMM") +
-                    Emit.CNPJ.PadLeft(14, '0') +
+                    (string.IsNullOrWhiteSpace(Emit.CNPJ) ? Emit.CPF?.PadLeft(14, '0') : Emit.CNPJ.PadLeft(14, '0')) +
                     ((int)Ide.Mod).ToString().PadLeft(2, '0') +
                     Ide.Serie.ToString().PadLeft(3, '0') +
                     Ide.NMDF.ToString().PadLeft(9, '0') +
@@ -607,6 +607,41 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class ValePed
     {
+        [XmlElement("disp")]
+        public List<Disp> Disp { get; set; }
+
+        [XmlElement("categCombVeic")]
+        public CategoriaCombinacaoVeicular? CategCombVeic { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCategCombVeic() => CategCombVeic != null;
+
+        #endregion
+
+        #region Add (List - Interop)
+
+#if INTEROP
+
+        public void AddDisp(Disp disp)
+        {
+            if (Disp == null)
+            {
+                Disp = new List<Disp>();
+            }
+
+            Disp.Add(disp);
+        }
+
+#endif
+
+        #endregion
+    }
+
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    public class Disp
+    {
         [XmlElement("CNPJForn")]
         public string CNPJForn { get; set; }
 
@@ -632,24 +667,20 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("tpValePed")]
         public TipoValePedagio? TpValePed { get; set; }
 
-        [XmlElement("categCombVeic")]
-        public CategoriaCombinacaoVeicular? CategCombVeic { get; set; }
-
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJPg() => !string.IsNullOrWhiteSpace(CNPJPg);
 
         public bool ShouldSerializeCPFPg() => !string.IsNullOrWhiteSpace(CPFPg);
 
-        public bool ShouldSerializeNCompra() => (!string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg)) && !string.IsNullOrWhiteSpace(NCompra);
+        public bool ShouldSerializeNCompra() => (!string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg) || !string.IsNullOrWhiteSpace(CNPJForn)) && !string.IsNullOrWhiteSpace(NCompra);
 
-        public bool ShouldSerializeVValePedField() => !string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg);
+        public bool ShouldSerializeVValePedField() => !string.IsNullOrWhiteSpace(CNPJForn);
 
         public bool ShouldSerializeTpValePed() => TpValePed != null;
 
-        public bool ShouldSerializeCategCombVeic() => CategCombVeic != null;
-
         #endregion
+
     }
 
     [Serializable()]
@@ -937,18 +968,17 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string IE { get; set; }
 
         [XmlElement("UF")]
-        public UFBrasil UF { get; set; }
+        public UFBrasil? UF { get; set; }
 
         [XmlElement("tpProp")]
-        public TipoProprietarioMDFe TpProp { get; set; }
+        public TipoProprietarioMDFe? TpProp { get; set; }
 
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
-        public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
-        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido && !string.IsNullOrWhiteSpace(IE);
-        public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && !string.IsNullOrWhiteSpace(IE);
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido && UF != null;
+        public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && TpProp != null;
 
         #endregion
     }

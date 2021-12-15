@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.w3.org/2001/XMLSchema">
+  <LoteRps Id="ID4" versao="2.02">
+    <NumeroLote>4</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>09115315000159</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>2320</InscricaoMunicipal>
+    <QuantidadeRps>3</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="ID1">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>1</Numero>
+              <Serie>1</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2014-01-21</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2014-01-01</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>3500.00</ValorServicos>
+              <ValorDeducoes>3.50</ValorDeducoes>
+              <ValorPis>12.35</ValorPis>
+              <ValorCofins>15.00</ValorCofins>
+              <ValorInss>100.00</ValorInss>
+              <ValorIr>123.33</ValorIr>
+              <ValorCsll>1.00</ValorCsll>
+              <OutrasRetencoes>1.00</OutrasRetencoes>
+              <ValorIss>2.50</ValorIss>
+              <Aliquota>5.00</Aliquota>
+              <DescontoIncondicionado>3.00</DescontoIncondicionado>
+              <DescontoCondicionado>1.00</DescontoCondicionado>
+            </Valores>
+            <IssRetido>1</IssRetido>
+            <ResponsavelRetencao>1</ResponsavelRetencao>
+            <ItemListaServico>1.01</ItemListaServico>
+            <CodigoCnae>6202300</CodigoCnae>
+            <CodigoTributacaoMunicipio>asdfghjkl1234567890m</CodigoTributacaoMunicipio>
+            <Discriminacao>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Discriminacao>
+            <CodigoMunicipio>2504009</CodigoMunicipio>
+            <CodigoPais>1234</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>1234567</MunicipioIncidencia>
+            <NumeroProcesso>123456789012345678901234567890</NumeroProcesso>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>27438151000182</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>43252138</InscricaoMunicipal>
+          </Prestador>
+          <TomadorServico>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cnpj>88585162000180</Cnpj>
+              </CpfCnpj>
+              <InscricaoMunicipal>123456780594321</InscricaoMunicipal>
+            </IdentificacaoTomador>
+            <RazaoSocial>Tomador de notas Ltda.</RazaoSocial>
+            <Endereco>
+              <Endereco>Rua Não sei o nome</Endereco>
+              <Numero>123</Numero>
+              <Complemento>Lj 321A</Complemento>
+              <Bairro>Jardim das Flores</Bairro>
+              <CodigoMunicipio>2504009</CodigoMunicipio>
+              <Uf>PB</Uf>
+              <CodigoPais>1234</CodigoPais>
+              <Cep>12345678</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>3137737733</Telefone>
+              <Email>tomador@email.com.br</Email>
+            </Contato>
+          </TomadorServico>
+          <Intermediario>
+            <IdentificacaoIntermediario>
+              <CpfCnpj>
+                <Cpf>20653801440</Cpf>
+              </CpfCnpj>
+              <InscricaoMunicipal>12345678</InscricaoMunicipal>
+            </IdentificacaoIntermediario>
+            <RazaoSocial>Intermediario SA.</RazaoSocial>
+          </Intermediario>
+          <ConstrucaoCivil>
+            <CodigoObra>hjk12345</CodigoObra>
+            <Art>92833</Art>
+          </ConstrucaoCivil>
+          <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+        <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+          <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+            <Reference URI="#R1">
+              <Transforms>
+                <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+              </Transforms>
+              <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+              <DigestValue>pyuIXFAqQ0hwr+3cH2taKy0CGjk=</DigestValue>
+            </Reference>
+          </SignedInfo>
+          <SignatureValue>iHkS2259HxU7nFnJr1qnRA1YFuDPFH94k/TbqcXxOCISFL5vTeBY5AaV0fuUwY78/O1rczSv0pc+dNUTV2LexsSmplyyvlyDboXhPpR29Cvd2UWasAUAl4um1BLzKH322ustSNpKePbmhsMpkAIhZC3MVaCpUt4netvToveHrVA=</SignatureValue>
+          <KeyInfo>
+            <X509Data>
+              <X509Certificate>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</X509Certificate>
+            </X509Data>
+          </KeyInfo>
+        </Signature>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#R1">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>pyuIXFAqQ0hwr+3cH2taKy0CGjk=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>iHkS2259HxU7nFnJr1qnRA1YFuDPFH94k/TbqcXxOCISFL5vTeBY5AaV0fuUwY78/O1rczSv0pc+dNUTV2LexsSmplyyvlyDboXhPpR29Cvd2UWasAUAl4um1BLzKH322ustSNpKePbmhsMpkAIhZC3MVaCpUt4netvToveHrVA=</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>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</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</EnviarLoteRpsEnvio>

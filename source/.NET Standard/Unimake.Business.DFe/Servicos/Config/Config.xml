@@ -157,7 +157,7 @@
   <Arquivo ID="4118402">
     <Nome>Paranavaí - PR</Nome>
     <UF>PR</UF>
-    <ArqConfig>ParanavaiPR.xml</ArqConfig>
+    <ArqConfig>Betha.xml</ArqConfig>
     <PadraoNFSe>BETHA</PadraoNFSe>
   </Arquivo>
   <Arquivo ID="4209300">
@@ -400,22 +400,107 @@
     <ArqConfig>BarretosSP.xml</ArqConfig>
     <PadraoNFSe>SIGCORP</PadraoNFSe>
   </Arquivo>
+	
   <Arquivo ID="3305109">
     <Nome>São João de Meriti - RJ</Nome>
     <UF>RJ</UF>
     <ArqConfig>SaoJoaoDeMeritiRJ.xml</ArqConfig>
     <PadraoNFSe>SIGCORP</PadraoNFSe>
   </Arquivo>
-  <Arquivo ID="3303401">
-    <Nome>Nova Friburgo - RJ</Nome>
-    <UF>RJ</UF>
-    <ArqConfig>NovaFriburgoRJ.xml</ArqConfig>
-    <PadraoNFSe>EL</PadraoNFSe>
-  </Arquivo>
   <Arquivo ID="3132701">
     <Nome>Itambacuri - MG</Nome>
     <UF>MG</UF>
     <ArqConfig>ItambacuriMG.xml</ArqConfig>
     <PadraoNFSe>NOTAINTELIGENTE</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4217402">
+    <Nome>Schroeder - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4309100">
+    <Nome>Gramado - RS</Nome>
+    <UF>RS</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4202800">
+    <Nome>Braço do Norte - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4218707">
+    <Nome>Tubarão - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4212403">
+    <Nome>Pedras Grandes - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4211702">
+    <Nome>Orleans - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4205456">
+    <Nome>Forquilhinha - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4120408">
+    <Nome>Presidente Castelo Branco - PR</Nome>
+    <UF>PR</UF>
+    <ArqConfig>Betha.xml</ArqConfig>
+    <PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="5205109">
+    <Nome>Catalão - GO</Nome>
+    <UF>GO</UF>
+    <ArqConfig>CatalaoGO.xml</ArqConfig>
+    <PadraoNFSe>PRODATA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4314407">
+    <Nome>Pelotas - RS</Nome>
+    <UF>RS</UF>
+    <ArqConfig>PelotasRS.xml</ArqConfig>
+    <PadraoNFSe>AVMB</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="5213806">
+    <Nome>Morrinhos - GO</Nome>
+    <UF>GO</UF>
+    <ArqConfig>MorrinhosGO.xml</ArqConfig>
+    <PadraoNFSe>PRODATA</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="2802908">
+    <Nome>Itabaiana - SE</Nome>
+    <UF>SE</UF>
+    <ArqConfig>ItabaianaSE.xml</ArqConfig>
+    <PadraoNFSe>WEBISS</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="4217600">
+    <Nome>Siderópolis - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>SideropolisSC.xml</ArqConfig>
+    <PadraoNFSe>WEBISS</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="3127701">
+    <Nome>Governador Valadares - MG</Nome>
+    <UF>MG</UF>
+    <ArqConfig>GovernadorValadaresMG.xml</ArqConfig>
+    <PadraoNFSe>SIGCORP</PadraoNFSe>
+  </Arquivo>
+  <Arquivo ID="5107909">
+    <Nome>Sinop - MT</Nome>
+    <UF>MT</UF>
+    <ArqConfig>SinopMT.xml</ArqConfig>
+    <PadraoNFSe>COPLAN</PadraoNFSe>
   </Arquivo>
 </Configuracoes>

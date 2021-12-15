@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseFaixaEnvio xmlns:ns="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>02221150000150</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>123</InscricaoMunicipal>
+    <Token>141JQHhSH814YXP0rwhAt10ihg</Token>
+  </Prestador>
+  <Faixa>
+    <NumeroNfseInicial>1</NumeroNfseInicial>
+    <NumeroNfseFinal>20</NumeroNfseFinal>
+  </Faixa>
+  <Pagina>1</Pagina>
+</ConsultarNfseFaixaEnvio>
