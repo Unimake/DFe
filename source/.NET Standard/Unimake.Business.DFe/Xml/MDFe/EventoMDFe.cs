@@ -284,7 +284,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
-        [ComVisible(true)]
+        [System.Runtime.InteropServices.ComVisible(true)]
         public void AddInfDoc(InfDoc item)
         {
             if(InfDoc == null)
@@ -1017,7 +1017,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
-        [ComVisible(true)]
+        [System.Runtime.InteropServices.ComVisible(true)]
         public void AddInfPag(PagtoOperMDFeInfPag infPag)
         {
             if(InfPag == null)
@@ -1089,7 +1089,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
-        [ComVisible(true)]
+        [System.Runtime.InteropServices.ComVisible(true)]
         public void AddComp(Comp comp)
         {
             if(Comp == null)
@@ -1100,7 +1100,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Comp.Add(comp);
         }
 
-        [ComVisible(true)]
+        [System.Runtime.InteropServices.ComVisible(true)]
         public void AddInfPrazo(InfPrazo infPrazo)
         {
             if(InfPrazo == null)

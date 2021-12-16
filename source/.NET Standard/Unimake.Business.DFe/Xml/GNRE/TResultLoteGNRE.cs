@@ -52,16 +52,6 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string PDFGuias { get; set; }
 
 #if INTEROP
-        public void AddMotivosRejeicao(MotivosRejeicao motivosRejeicao)
-        {
-            if(MotivosRejeicao == null)
-            {
-                MotivosRejeicao = new List<MotivosRejeicao>();
-            }
-
-            MotivosRejeicao.Add(motivosRejeicao);
-        }
-
         public void AddGuia(Guia guia)
         {
             if(Guia == null)
