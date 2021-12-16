@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNotaPrestador>
+  <DadosPrestador>
+    <ccm>1</ccm>
+    <cnpj>1</cnpj>
+    <senha>1</senha>
+    <crc>1</crc>
+    <crc_estado>1</crc_estado>
+    <aliquota_simples>1</aliquota_simples>
+  </DadosPrestador>
+  <Nota>1</Nota>
+</ConsultarNotaPrestador>
