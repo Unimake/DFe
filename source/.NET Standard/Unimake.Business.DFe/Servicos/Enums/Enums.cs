@@ -5607,7 +5607,13 @@ namespace Unimake.Business.DFe.Servicos
         /// COPLAN
         /// </summary>
         [Description("Coplan")]
-        COPLAN
+        COPLAN,
+
+        /// <summary>
+        /// Próprio Joinville SC 
+        /// </summary>
+        [Description("Próprio Joinville SC")]
+        PROPRIOJOINVILLESC
     }
 
     #endregion

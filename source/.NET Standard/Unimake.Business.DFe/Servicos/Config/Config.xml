@@ -503,4 +503,10 @@
     <ArqConfig>SinopMT.xml</ArqConfig>
     <PadraoNFSe>COPLAN</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="4209102">
+    <Nome>Joinville - SC</Nome>
+    <UF>SC</UF>
+    <ArqConfig>JoinvilleSC.xml</ArqConfig>
+    <PadraoNFSe>PROPRIOJOINVILLESC</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

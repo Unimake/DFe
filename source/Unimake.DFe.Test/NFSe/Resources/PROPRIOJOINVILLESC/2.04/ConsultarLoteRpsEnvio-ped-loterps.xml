@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio xmlns="http://nfewshomologacao.joinville.sc.gov.br">
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>99999999999999</Cnpj>
+    </CpfCnpj>
+  </Prestador>
+  <Protocolo>999999999</Protocolo>
+</ConsultarLoteRpsEnvio>
