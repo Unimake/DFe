@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNotaValida>
+  <DadosConsultaNota>
+    <nota>1</nota>
+    <serie>1</serie>
+    <valor>1</valor>
+    <prestador_ccm>1</prestador_ccm>
+    <prestador_cnpj>1</prestador_cnpj>
+    <autenticidade>1</autenticidade>
+  </DadosConsultaNota>
+</ConsultarNotaValida>
