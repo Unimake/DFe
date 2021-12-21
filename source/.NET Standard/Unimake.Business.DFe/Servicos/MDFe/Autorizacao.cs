@@ -38,9 +38,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                     "?chMDFe=" + EnviMDFe.MDFe.InfMDFe.Chave +
                     "&tpAmb=" + ((int)EnviMDFe.MDFe.InfMDFe.Ide.TpAmb).ToString();
 
-                if(EnviMDFe.MDFe.InfMDFe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || EnviMDFe.MDFe.InfMDFe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
+                if(EnviMDFe.MDFe.InfMDFe.Ide.TpEmis == TipoEmissao.ContingenciaFSIA)
                 {
-                    paramLinkQRCode = "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviMDFe.MDFe.InfMDFe.Chave);
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviMDFe.MDFe.InfMDFe.Chave);
                 }
 
                 EnviMDFe.MDFe.InfMDFeSupl.QrCodMDFe = paramLinkQRCode.Trim();
