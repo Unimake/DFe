@@ -1247,7 +1247,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XPed { get; set; }
 
         [XmlElement("nItemPed")]
-        public int NItemPed { get; set; }
+        public int? NItemPed { get; set; }
 
         [XmlElement("nFCI")]
         public string NFCI { get; set; }
@@ -1299,7 +1299,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeXPed() => !string.IsNullOrWhiteSpace(XPed);
 
-        public bool ShouldSerializeNItemPed() => NItemPed > 0;
+        public bool ShouldSerializeNItemPed() => NItemPed != null;
 
         public bool ShouldSerializeNFCI() => !string.IsNullOrWhiteSpace(NFCI);
 
