@@ -1040,7 +1040,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
-        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+        public bool ShouldSerializeCNPJ() => string.IsNullOrWhiteSpace(CPF); //Se não tiver o CPF tenho que colocar a tag de CNPJ em branco ou gera erro de schema
 
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
@@ -1048,9 +1048,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-        public bool ShouldSerializeCPais() => CPais > 0;
+        public bool ShouldSerializeCPais() => CPais > 0 && CPais != 1058;
 
-        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais);
+        public bool ShouldSerializeXPais() => !string.IsNullOrWhiteSpace(XPais) && XPais.ToUpper() != "BRASIL";
 
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
@@ -3784,7 +3784,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlIgnore]
         public double VBCFCPSTRet { get; set; }
-
+                     
         [XmlElement("vBCFCPSTRet")]
         public string VBCFCPSTRetField
         {
@@ -3859,9 +3859,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVICMSSubstitutoField() => VICMSSubstituto != null;
         public bool ShouldSerializeVICMSSTRetField() => VICMSSTRet != null;
 
-        public bool ShouldSerializeVBCFCPSTRetField() => VBCFCPSTRet > 0;
-        public bool ShouldSerializePFCPSTRetField() => PFCPSTRet > 0;
-        public bool ShouldSerializeVFCPSTRetField() => VFCPSTRet > 0;
+        public bool ShouldSerializeVBCFCPSTRetField() => VBCFCPSTRet > 0 || PFCPSTRet > 0 || VFCPSTRet > 0;
+        public bool ShouldSerializePFCPSTRetField() => PFCPSTRet > 0 || VBCFCPSTRet > 0 || VFCPSTRet > 0;
+        public bool ShouldSerializeVFCPSTRetField() => VFCPSTRet > 0 || PFCPSTRet > 0 || VBCFCPSTRet > 0;
 
         public bool ShouldSerializePRedBCEfetField() => VBCEfet > 0;
         public bool ShouldSerializeVBCEfetField() => VBCEfet > 0;
