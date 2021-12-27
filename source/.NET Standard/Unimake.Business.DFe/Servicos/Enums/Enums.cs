@@ -3919,7 +3919,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoAutor
     {
         /// <summary>
-        /// 1 - Empresa Emitente
+        /// 1 - Empresa Emitente/Pessoa Física
         /// </summary>
         [XmlEnum("1")]
         EmpresaEmitente = 1,
