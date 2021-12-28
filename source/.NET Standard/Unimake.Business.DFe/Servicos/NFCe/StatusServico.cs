@@ -1,5 +1,6 @@
 ﻿using System;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFCe
 {
@@ -37,7 +38,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
 
             if(!validar.Success)
             {
-                throw new Exception(validar.ErrorMessage);
+                throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
     }

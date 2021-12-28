@@ -52,7 +52,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             if(!validar.Success)
             {
-                throw new ExceptionValidacaoXML(validar.ErrorMessage);
+                throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
 

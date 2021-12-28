@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTeOS
 {
@@ -37,7 +38,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
             if(!validar.Success)
             {
-                throw new Exception(validar.ErrorMessage);
+                throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
     }

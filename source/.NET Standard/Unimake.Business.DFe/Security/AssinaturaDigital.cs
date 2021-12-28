@@ -42,7 +42,7 @@ namespace Unimake.Business.DFe.Security
                     {
                         if(x509Cert == null)
                         {
-                            throw new ExceptionCertificadoDigital();
+                            throw new CertificadoDigitalException();
                         }
 
                         if(conteudoXML.GetElementsByTagName(tagAssinatura).Count == 0)
