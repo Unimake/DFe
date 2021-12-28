@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -51,7 +52,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             if(!validar.Success)
             {
-                throw new Exception(validar.ErrorMessage);
+                throw new ExceptionValidacaoXML(validar.ErrorMessage);
             }
         }
 
