@@ -8,10 +8,10 @@
       <WebActionHomologacao>RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>RecepcionarLoteRps</WebActionProducao>
       <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
@@ -27,8 +27,8 @@
       <WebActionHomologacao>GerarNfse</WebActionHomologacao>
       <WebActionProducao>GerarNfse</WebActionProducao>
       <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
@@ -46,8 +46,8 @@
       <WebActionHomologacao>CancelarNfse</WebActionHomologacao>
       <WebActionProducao>CancelarNfse</WebActionProducao>
       <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
@@ -65,10 +65,12 @@
       <WebActionHomologacao>SubstituirNfse</WebActionHomologacao>
       <WebActionProducao>SubstituirNfse</WebActionProducao>
       <SchemaArquivo>nfse v2 02.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+      <TagExtraAssinatura>Pedido</TagExtraAssinatura>
+      <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
       <WebContentType></WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
