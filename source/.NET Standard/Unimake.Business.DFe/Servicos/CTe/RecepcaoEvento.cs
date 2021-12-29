@@ -5,6 +5,7 @@ using System.Xml;
 using Unimake.Business.DFe.Contract.Serialization;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTe
 {
@@ -35,7 +36,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
             if(!validar.Success)
             {
-                throw new Exception(validar.ErrorMessage);
+                throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
 

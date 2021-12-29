@@ -6,6 +6,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.MDFe
 {
@@ -63,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
             if(!validar.Success)
             {
-                throw new Exception(validar.ErrorMessage);
+                throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
 
