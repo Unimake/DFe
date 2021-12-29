@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="https://homologacao.notainteligente.com/nfse_v2.02.xsd">
+  <Rps>
+    <InfDeclaracaoPrestacaoServico Id="lote1">
+      <Competencia>2014-12-02</Competencia>
+      <Servico>
+        <Valores>
+          <ValorServicos>20</ValorServicos>
+          <ValorDeducoes>0</ValorDeducoes>
+          <ValorPis>0</ValorPis>
+          <ValorCofins>0</ValorCofins>
+          <ValorInss>0</ValorInss>
+          <ValorIr>0</ValorIr>
+          <ValorCsll>0</ValorCsll>
+          <OutrasRetencoes>0</OutrasRetencoes>
+          <ValorIss>0</ValorIss>
+          <Aliquota>2</Aliquota>
+          <DescontoIncondicionado>0</DescontoIncondicionado>
+          <DescontoCondicionado>0</DescontoCondicionado>
+        </Valores>
+        <IssRetido>2</IssRetido>
+        <ResponsavelRetencao>1</ResponsavelRetencao>
+        <ItemListaServico>4.03</ItemListaServico>
+        <CodigoCnae>0</CodigoCnae>
+        <CodigoTributacaoMunicipio>8630503</CodigoTributacaoMunicipio>
+        <Discriminacao>Audiometria - (1x20.00=20.00) Nota Fiscal Referente a Apuracao do Mes/Ano 12/2021 Vencimento: 31/12/2021 - TESTE WS  - Valor Aproximado dos Impostos conf LEI 12741/2012 : R$ 3,69(18,45%)</Discriminacao>
+        <CodigoMunicipio>3132701</CodigoMunicipio>
+        <CodigoPais>1058</CodigoPais>
+        <ExigibilidadeISS>1</ExigibilidadeISS>
+        <MunicipioIncidencia>3132701</MunicipioIncidencia>
+      </Servico>
+      <Prestador>
+        <CpfCnpj>
+          <Cpf>43109227000182</Cpf>
+        </CpfCnpj>
+      </Prestador>
+      <Tomador>
+        <IdentificacaoTomador>
+          <CpfCnpj>
+            <Cpf>35027943000192</Cpf>
+          </CpfCnpj>
+          <InscricaoMunicipal>54002930</InscricaoMunicipal>
+        </IdentificacaoTomador>
+        <RazaoSocial>Acesso Informática Eireli</RazaoSocial>
+        <Endereco>
+          <Endereco>Avenida Alfredo Sá</Endereco>
+          <Numero>2221</Numero>
+          <Complemento>Complemento1</Complemento>
+          <Bairro>Jardim das Acácias</Bairro>
+          <CodigoMunicipio>3168606</CodigoMunicipio>
+          <Uf>MG</Uf>
+          <CodigoPais>1058</CodigoPais>
+          <Cep>39801112</Cep>
+        </Endereco>
+        <Contato>
+          <Telefone>03335224291</Telefone>
+          <Email>thiago@amaralinfo.com.br</Email>
+        </Contato>
+      </Tomador>
+      <OptanteSimplesNacional>2</OptanteSimplesNacional>
+      <IncentivoFiscal>2</IncentivoFiscal>
+    </InfDeclaracaoPrestacaoServico>
+  </Rps>
+</GerarNfseEnvio>

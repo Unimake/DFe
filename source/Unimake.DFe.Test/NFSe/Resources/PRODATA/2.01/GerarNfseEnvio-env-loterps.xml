@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+      <Rps>
+        <InfDeclaracaoPrestacaoServico>
+          <Rps Id="rps9UNICA">
+            <IdentificacaoRps>
+              <Numero>9</Numero>
+              <Serie>UNICA</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2014-10-21</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2014-10-21</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>1.00</ValorServicos>
+              <ValorPis>0.00</ValorPis>
+              <ValorCofins>0.00</ValorCofins>
+              <ValorInss>0.00</ValorInss>
+              <ValorIr>0.00</ValorIr>
+              <ValorCsll>0.00</ValorCsll>
+              <Aliquota>5.00</Aliquota>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ResponsavelRetencao>1</ResponsavelRetencao>
+            <ItemListaServico>9.01</ItemListaServico>
+            <CodigoTributacaoMunicipio>901</CodigoTributacaoMunicipio>
+            <Discriminacao>DIARIA 3 1,00</Discriminacao>
+            <CodigoMunicipio>5217302</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>5217302</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>04054421000237</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1052</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>28450230497</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>GILVAN FERREIRA TESTE</RazaoSocial>
+            <Endereco>
+              <Endereco>RUA INDEPENDENCIA,322</Endereco>
+              <Bairro>VILA SUZANO</Bairro>
+              <CodigoMunicipio>4304408</CodigoMunicipio>
+              <Uf>RS</Uf>
+              <Cep>95680000</Cep>
+            </Endereco>
+            <Contato>
+              <Email>gilfgfilho@gmail.com</Email>
+            </Contato>
+          </Tomador>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+</GerarNfseEnvio>
