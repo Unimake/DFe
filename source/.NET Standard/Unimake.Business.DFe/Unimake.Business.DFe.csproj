@@ -443,6 +443,8 @@
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
@@ -1212,6 +1214,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 	</ItemGroup>
