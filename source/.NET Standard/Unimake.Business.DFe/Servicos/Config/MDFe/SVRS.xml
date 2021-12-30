@@ -80,7 +80,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
     </RecepcaoEvento>
     <Autorizacao versao="3.00">
-      <Descricao>Autorização do MDFe</Descricao>
+      <Descricao>Autorização do MDFe em Lote (Assíncrono)</Descricao>
       <WebEnderecoHomologacao>https://mdfe-homologacao.svrs.rs.gov.br/ws/MDFeRecepcao/MDFeRecepcao.asmx</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://mdfe.svrs.rs.gov.br/ws/MDFeRecepcao/MDFeRecepcao.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/mdfe/wsdl/MDFeRecepcao</WebActionHomologacao>
@@ -141,5 +141,43 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
     </ConsNaoEnc>
+    <AutorizacaoSinc versao="3.00">
+      <Descricao>Autorização do MDFe Síncrono</Descricao>
+      <WebEnderecoHomologacao>https://mdfe-homologacao.svrs.rs.gov.br/ws/MDFeRecepcaoSinc/MDFeRecepcaoSinc.asmx</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://mdfe.svrs.rs.gov.br/ws/MDFeRecepcaoSinc/MDFeRecepcaoSinc.asmx</WebEnderecoProducao>
+      <WebActionHomologacao>http://www.portalfiscal.inf.br/mdfe/wsdl/MDFeRecepcaoSinc</WebActionHomologacao>
+      <WebActionProducao>http://www.portalfiscal.inf.br/mdfe/wsdl/MDFeRecepcaoSinc</WebActionProducao>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><mdfeDadosMsg xmlns="{ActionWeb}">{xmlBody}</mdfeDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+      <GZIPCompress>true</GZIPCompress>
+      <WebTagRetorno>mdfeRecepcaoResult</WebTagRetorno>
+      <SchemasEspecificos>
+        <Tipo>
+          <ID>1</ID>
+          <SchemaArquivo>mdfe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>mdfeModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>2</ID>
+          <SchemaArquivo>mdfe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>mdfeModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>3</ID>
+          <SchemaArquivo>mdfe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>mdfeModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
+          <ID>4</ID>
+          <SchemaArquivo>mdfe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>mdfeModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+      </SchemasEspecificos>
+      <TagAssinatura>MDFe</TagAssinatura>
+      <TagAtributoID>infMDFe</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/mdfe/qrCode</UrlQrCodeProducao>
+    </AutorizacaoSinc>
   </Servicos>
 </Configuracoes>

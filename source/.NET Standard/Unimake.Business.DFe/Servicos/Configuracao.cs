@@ -145,6 +145,11 @@ namespace Unimake.Business.DFe.Servicos
                                 WebSoapString = XMLUtility.TagRead(elementPropriedades, "WebSoapString");
                             }
 
+                            if(XMLUtility.TagExist(elementPropriedades, "GZIPCompress"))
+                            {
+                                GZIPCompress = (XMLUtility.TagRead(elementPropriedades, "GZIPCompress").ToLower() == "true" ? true : false);
+                            }
+
                             if(XMLUtility.TagExist(elementPropriedades, "WebSoapVersion"))
                             {
                                 WebSoapVersion = XMLUtility.TagRead(elementPropriedades, "WebSoapVersion");
@@ -416,6 +421,11 @@ namespace Unimake.Business.DFe.Servicos
                         if(XMLUtility.TagExist(elementVersao, "WebSoapString"))
                         {
                             WebSoapString = XMLUtility.TagRead(elementVersao, "WebSoapString");
+                        }
+
+                        if(XMLUtility.TagExist(elementVersao, "GZIPCompress"))
+                        {
+                            GZIPCompress = (XMLUtility.TagRead(elementVersao, "GZIPCompress").ToLower() == "true" ? true : false);
                         }
 
                         if(XMLUtility.TagExist(elementVersao, "WebTagRetorno"))
@@ -702,6 +712,11 @@ namespace Unimake.Business.DFe.Servicos
         ///    Deixe o conteúdo em branco para utilizar um soap padrão.
         /// </example>
         public string WebSoapString { get; set; }
+
+        /// <summary>
+        /// Compactar a mensagem (XML) com GZIP para ser enviado ao webservice?
+        /// </summary>
+        public bool GZIPCompress { get; set; } = false;
 
         /// <summary>
         /// Versão do SOAP utilizada pelo webservice

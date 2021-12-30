@@ -209,6 +209,7 @@ namespace Unimake.Business.DFe.Servicos
                 ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
                 TagRetorno = Configuracoes.WebTagRetorno,
                 EncodingRetorno = Configuracoes.WebEncodingRetorno,
+                GZIPCompress = Configuracoes.GZIPCompress,
                 VersaoSoap = Configuracoes.WebSoapVersion,
                 SoapString = Configuracoes.WebSoapString,
                 ContentType = Configuracoes.WebContentType,

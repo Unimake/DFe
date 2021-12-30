@@ -47,7 +47,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     [XmlRoot("MDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
-    public class MDFe
+    public class MDFe : XMLBase
     {
         [XmlElement("infMDFe")]
         public InfMDFe InfMDFe { get; set; }

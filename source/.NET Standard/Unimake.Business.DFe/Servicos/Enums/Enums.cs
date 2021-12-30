@@ -133,10 +133,16 @@ namespace Unimake.Business.DFe.Servicos
         MDFeConsultaNaoEnc,
 
         /// <summary>
-        /// Envio do XML de MDFe
+        /// Envio do XML de MDFe em lote no modo assíncrono
         /// </summary>
         [Description("Autorização do MDFe")]
         MDFeAutorizacao,
+
+        /// <summary>
+        /// Envio do XML de MDFe no modo síncrono
+        /// </summary>
+        [Description("Autorização do MDFe")]
+        MDFeAutorizacaoSinc,
 
         #endregion
 

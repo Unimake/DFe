@@ -11,13 +11,13 @@ using Unimake.Security.Exceptions;
 namespace Unimake.Business.DFe.Servicos.MDFe
 {
     /// <summary>
-    /// Enviar o XML de MDFe para o webservice no modo assíncrono
+    /// Enviar o XML de MDFe para o webservice no modo síncrono
     /// </summary>
-    public class Autorizacao: ServicoBase, IInteropService<EnviMDFe>
+    public class AutorizacaoSinc: ServicoBase, IInteropService<Xml.MDFe.MDFe>
     {
         #region Private Fields
 
-        private EnviMDFe _enviMDFe;
+        private Xml.MDFe.MDFe _MDFe;
 
         private Dictionary<string, MdfeProc> MdfeProcs = new Dictionary<string, MdfeProc>();
 
@@ -27,28 +27,28 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
         private void MontarQrCode()
         {
-            EnviMDFe = new EnviMDFe().LerXML<EnviMDFe>(ConteudoXML);
+            MDFe = new Xml.MDFe.MDFe().LerXML<Xml.MDFe.MDFe>(ConteudoXML);
 
-            if(EnviMDFe.MDFe.InfMDFeSupl == null)
+            if(MDFe.InfMDFeSupl == null)
             {
-                EnviMDFe.MDFe.InfMDFeSupl = new InfMDFeSupl();
+                MDFe.InfMDFeSupl = new InfMDFeSupl();
 
                 var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
 
                 var paramLinkQRCode = urlQrCode +
-                    "?chMDFe=" + EnviMDFe.MDFe.InfMDFe.Chave +
-                    "&tpAmb=" + ((int)EnviMDFe.MDFe.InfMDFe.Ide.TpAmb).ToString();
+                    "?chMDFe=" + MDFe.InfMDFe.Chave +
+                    "&tpAmb=" + ((int)MDFe.InfMDFe.Ide.TpAmb).ToString();
 
-                if(EnviMDFe.MDFe.InfMDFe.Ide.TpEmis == TipoEmissao.ContingenciaFSIA)
+                if(MDFe.InfMDFe.Ide.TpEmis == TipoEmissao.ContingenciaFSIA)
                 {
-                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviMDFe.MDFe.InfMDFe.Chave);
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, MDFe.InfMDFe.Chave);
                 }
 
-                EnviMDFe.MDFe.InfMDFeSupl.QrCodMDFe = paramLinkQRCode.Trim();
+                MDFe.InfMDFeSupl.QrCodMDFe = paramLinkQRCode.Trim();
             }
 
             //Atualizar a propriedade do XML do MDFe novamente com o conteúdo atual já a tag de QRCode e link de consulta
-            ConteudoXML = EnviMDFe.GerarXML();
+            ConteudoXML = MDFe.GerarXML();
         }
 
         /// <summary>
@@ -86,22 +86,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if(EnviMDFe == null)
+            if(MDFe == null)
             {
                 Configuracoes.Definida = false;
                 return;
             }
 
-            var xml = EnviMDFe;
+            var xml = MDFe;
 
             if(!Configuracoes.Definida)
             {
-                Configuracoes.Servico = Servico.MDFeAutorizacao;
-                Configuracoes.CodigoUF = (int)xml.MDFe.InfMDFe.Ide.CUF;
-                Configuracoes.TipoAmbiente = xml.MDFe.InfMDFe.Ide.TpAmb;
-                Configuracoes.Modelo = xml.MDFe.InfMDFe.Ide.Mod;
-                Configuracoes.TipoEmissao = xml.MDFe.InfMDFe.Ide.TpEmis;
-                Configuracoes.SchemaVersao = xml.Versao;
+                Configuracoes.Servico = Servico.MDFeAutorizacaoSinc;
+                Configuracoes.CodigoUF = (int)xml.InfMDFe.Ide.CUF;
+                Configuracoes.TipoAmbiente = xml.InfMDFe.Ide.TpAmb;
+                Configuracoes.Modelo = xml.InfMDFe.Ide.Mod;
+                Configuracoes.TipoEmissao = xml.InfMDFe.Ide.TpEmis;
+                Configuracoes.SchemaVersao = xml.InfMDFe.Versao;
 
                 base.DefinirConfiguracao();
             }
@@ -123,10 +123,10 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Objeto do XML do MDFe
         /// </summary>
-        public EnviMDFe EnviMDFe
+        public Xml.MDFe.MDFe MDFe
         {
-            get => _enviMDFe ?? (_enviMDFe = new EnviMDFe().LerXML<EnviMDFe>(ConteudoXML));
-            protected set => _enviMDFe = value;
+            get => _MDFe ?? (_MDFe = new Xml.MDFe.MDFe().LerXML<Xml.MDFe.MDFe>(ConteudoXML));
+            protected set => _MDFe = value;
         }
 
         /// <summary>
@@ -136,46 +136,38 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         {
             get
             {
-                if(RetConsReciMDFe == null && RetConsSitMDFe.Count <= 0)
+                if(Result.ProtMDFe != null)
                 {
-                    throw new Exception("Defina o conteúdo da Propriedade RetConsReciMDFe ou RetConsSitMDFe, sem a definição de uma delas não é possível obter o conteúdo da MDFeProcResults.");
-                }
-
-                ProtMDFe protMDFe = null;
-
-                if(RetConsReciMDFe != null && RetConsReciMDFe.ProtMDFe != null)
-                {
-                    #region Resultado do envio do CT-e através da consulta recibo
-
-                    if(RetConsReciMDFe.CStat == 104) //Lote Processado
+                    if(MdfeProcs.ContainsKey(MDFe.InfMDFe.Chave))
                     {
-                        foreach(var item in RetConsReciMDFe.ProtMDFe)
+                        MdfeProcs[MDFe.InfMDFe.Chave].ProtMDFe = Result.ProtMDFe;
+                    }
+                    else
+                    {
+                        MdfeProcs.Add(MDFe.InfMDFe.Chave, new MdfeProc
                         {
-                            if(item.InfProt.ChMDFe == EnviMDFe.MDFe.InfMDFe.Chave)
-                            {
-                                switch(item.InfProt.CStat)
-                                {
-                                    case 100: //MDFe Autorizado
-                                        protMDFe = item;
-                                        break;
-                                }
-
-                                break;
-                            }
-                        }
+                            Versao = MDFe.InfMDFe.Versao,
+                            MDFe = MDFe,
+                            ProtMDFe = Result.ProtMDFe
+                        });
+                    }
+                }
+                else
+                {
+                    if(RetConsSitMDFe.Count <= 0)
+                    {
+                        throw new Exception("Defina o conteúdo da Propriedade RetConsSitMDFe, sem a definição dela não é possível obter o conteúdo da MDFeProcResults.");
                     }
 
-                    #endregion Resultado do envio do CT-e através da consulta recibo
-                }
-                else if(RetConsSitMDFe.Count > 0)
-                {
-                    #region Resultado do envio do CT-e através da consulta situação
+                    ProtMDFe protMDFe = null;
+
+                    #region Resultado do envio do MDFe através da consulta situação
 
                     foreach(var item in RetConsSitMDFe)
                     {
                         if(item != null && item.ProtMDFe != null)
                         {
-                            if(item.ProtMDFe.InfProt.ChMDFe == EnviMDFe.MDFe.InfMDFe.Chave)
+                            if(item.ProtMDFe.InfProt.ChMDFe == MDFe.InfMDFe.Chave)
                             {
                                 switch(item.ProtMDFe.InfProt.CStat)
                                 {
@@ -187,29 +179,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                         }
                     }
 
-                    #endregion Resultado do envio do CT-e através da consulta situação
-                }
-
-                if(MdfeProcs.ContainsKey(EnviMDFe.MDFe.InfMDFe.Chave))
-                {
-                    MdfeProcs[EnviMDFe.MDFe.InfMDFe.Chave].ProtMDFe = protMDFe;
-                }
-                else
-                {
-                    //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
-                    if(EnviMDFe.MDFe.Signature == null)
+                    if(MdfeProcs.ContainsKey(MDFe.InfMDFe.Chave))
                     {
-                        ConteudoXML = ConteudoXMLAssinado;
-                        AjustarXMLAposAssinado();
+                        MdfeProcs[MDFe.InfMDFe.Chave].ProtMDFe = protMDFe;
+                    }
+                    else
+                    {
+                        MdfeProcs.Add(MDFe.InfMDFe.Chave,
+                            new MdfeProc
+                            {
+                                Versao = MDFe.InfMDFe.Versao,
+                                MDFe = MDFe,
+                                ProtMDFe = protMDFe
+                            });
                     }
 
-                    MdfeProcs.Add(EnviMDFe.MDFe.InfMDFe.Chave,
-                        new MdfeProc
-                        {
-                            Versao = EnviMDFe.Versao,
-                            MDFe = EnviMDFe.MDFe,
-                            ProtMDFe = protMDFe
-                        });
+                    #endregion
                 }
 
                 return MdfeProcs;
@@ -219,27 +204,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Conteúdo retornado pelo webservice depois do envio do XML
         /// </summary>
-        public RetEnviMDFe Result
+        public RetMDFe Result
         {
             get
             {
                 if(!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetEnviMDFe>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetMDFe>(RetornoWSXML);
                 }
 
-                return new RetEnviMDFe
+                return new RetMDFe
                 {
                     CStat = 0,
                     XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
                 };
             }
         }
-
-        /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta recibo
-        /// </summary>
-        public RetConsReciMDFe RetConsReciMDFe { get; set; }
 
         #endregion Public Properties
 
@@ -248,16 +228,16 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao()
+        public AutorizacaoSinc()
             : base() => MdfeProcs.Clear();
 
         /// <summary>
         /// Construtor
         /// </summary>
-        /// <param name="enviMDFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="mdfe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Autorizacao(EnviMDFe enviMDFe, Configuracao configuracao)
-            : base(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao)
+        public AutorizacaoSinc(Xml.MDFe.MDFe mdfe, Configuracao configuracao)
+            : base(mdfe?.GerarXML() ?? throw new ArgumentNullException(nameof(mdfe)), configuracao)
         {
             Inicializar();
 
@@ -276,9 +256,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         {
             if(!Configuracoes.Definida)
             {
-                if(EnviMDFe == null)
+                if(MDFe == null)
                 {
-                    throw new NullReferenceException($"{nameof(EnviMDFe)} não pode ser nulo.");
+                    throw new NullReferenceException($"{nameof(MDFe)} não pode ser nulo.");
                 }
 
                 DefinirConfiguracao();
@@ -292,14 +272,14 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = EnviMDFe;
+            var xml = MDFe;
 
             var schemaArquivo = string.Empty;
             var schemaArquivoEspecifico = string.Empty;
 
             if(Configuracoes.SchemasEspecificos.Count > 0)
             {
-                var modal = (int)xml.MDFe.InfMDFe.Ide.Modal;
+                var modal = (int)xml.InfMDFe.Ide.Modal;
 
                 schemaArquivo = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivo;
                 schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivoEspecifico;
@@ -314,22 +294,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             #region Validar a parte específica de modal do MDFe
 
             var xmlEspecifico = new XmlDocument();
-            switch(xml.MDFe.InfMDFe.Ide.Modal)
+            switch(xml.InfMDFe.Ide.Modal)
             {
                 case ModalidadeTransporteMDFe.Rodoviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.MDFe.InfMDFe.InfModal.Rodo).OuterXml);
+                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.InfMDFe.InfModal.Rodo).OuterXml);
                     goto default;
 
                 case ModalidadeTransporteMDFe.Aereo:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.MDFe.InfMDFe.InfModal.Aereo).OuterXml);
+                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.InfMDFe.InfModal.Aereo).OuterXml);
                     goto default;
 
                 case ModalidadeTransporteMDFe.Aquaviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.MDFe.InfMDFe.InfModal.Aquav).OuterXml);
+                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.InfMDFe.InfModal.Aquav).OuterXml);
                     goto default;
 
                 case ModalidadeTransporteMDFe.Ferroviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.MDFe.InfMDFe.InfModal.Ferrov).OuterXml);
+                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.InfMDFe.InfModal.Ferrov).OuterXml);
                     goto default;
 
                 default:
@@ -345,12 +325,12 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o webservice
         /// </summary>
-        /// <param name="enviMDFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="mdfe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
         [ComVisible(true)]
-        public void Executar(EnviMDFe enviMDFe, Configuracao configuracao)
+        public void Executar(Xml.MDFe.MDFe mdfe, Configuracao configuracao)
         {
-            PrepararServico(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
+            PrepararServico(mdfe?.GerarXML() ?? throw new ArgumentNullException(nameof(mdfe)), configuracao);
             Executar();
         }
 

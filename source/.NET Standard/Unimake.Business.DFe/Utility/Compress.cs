@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.IO.Compression;
+using System.Text;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -8,21 +12,48 @@ namespace Unimake.Business.DFe.Utility
     public static class Compress
     {
         /// <summary>
-        /// Descompactador padrão GZIP
+        /// Compactar XMLDocument com GZIP
+        /// </summary>
+        /// <param name="conteudoXML">XML a ser compactado</param>
+        /// <returns>String do conteúdo compactado</returns>
+        public static string GZIPCompress(XmlDocument conteudoXML) => GZIPCompress(conteudoXML.InnerXml);
+
+        /// <summary>
+        /// Compactar string com GZIP
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo a ser compactado</param>
+        /// <returns>String do conteúdo compactado</returns>
+        public static string GZIPCompress(string conteudoXML)
+        {
+            var value = conteudoXML;
+
+            var buffer = Encoding.UTF8.GetBytes(value);
+            var ms = new MemoryStream();
+            using(var zip = new GZipStream(ms, CompressionMode.Compress))
+            {
+                zip.Write(buffer, 0, buffer.Length);
+            }
+
+            return Convert.ToBase64String(ms.GetBuffer());
+        }
+
+
+        /// <summary>
+        /// Descompactador string padrão GZIP
         /// </summary>
         /// <param name="input">Conteúdo a ser descompactado</param>
-        /// <returns>Retorna o conteúdo descompactado</returns>
+        /// <returns>Retorna uma string com o conteúdo descompactado</returns>
         public static string GZIPDecompress(string input)
         {
-            var enc = input.ToCharArray();
-            var dec = Convert.FromBase64CharArray(enc, 0, enc.Length);
+            //var enc = input.ToCharArray();
+            //var dec = Convert.FromBase64CharArray(enc, 0, enc.Length);
 
             var encodedDataAsBytes = Convert.FromBase64String(input);
-            using (System.IO.Stream comp = new System.IO.MemoryStream(encodedDataAsBytes))
+            using(Stream comp = new MemoryStream(encodedDataAsBytes))
             {
-                using (System.IO.Stream decomp = new System.IO.Compression.GZipStream(comp, System.IO.Compression.CompressionMode.Decompress, false))
+                using(Stream decomp = new GZipStream(comp, CompressionMode.Decompress, false))
                 {
-                    using (var sr = new System.IO.StreamReader(decomp))
+                    using(var sr = new StreamReader(decomp))
                     {
                         return sr.ReadToEnd();
                     }

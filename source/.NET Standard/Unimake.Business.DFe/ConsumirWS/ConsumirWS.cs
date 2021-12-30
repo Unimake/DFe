@@ -5,6 +5,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe
 {
@@ -33,6 +34,11 @@ namespace Unimake.Business.DFe
         /// <returns>string do envelope (soap)</returns>
         private static string EnveloparXML(WSSoap soap, string xmlBody)
         {
+            if (soap.GZIPCompress)
+            {
+                xmlBody = Compress.GZIPCompress(xmlBody);
+            }
+
             if(xmlBody.IndexOf("?>") >= 0)
             {
                 xmlBody = xmlBody.Substring(xmlBody.IndexOf("?>") + 2);

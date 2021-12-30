@@ -16,6 +16,7 @@ namespace Unimake.Business.DFe
         private string _TagRetorno;
         private string _EncodingRetorno;
         private string _VersaoSoap;
+        private bool _GZIPCompress;
         private IWebProxy _Proxy;
 
         #endregion Private Fields
@@ -92,6 +93,15 @@ namespace Unimake.Business.DFe
         {
             get => string.IsNullOrWhiteSpace(_EncodingRetorno) ? (_EncodingRetorno = "UTF-8") : _EncodingRetorno;
             set => _EncodingRetorno = value;
+        }
+
+        /// <summary>
+        /// Definir se a mensagem enviada para o webservice deve ser compactada com GZIP ou não.
+        /// </summary>
+        public bool GZIPCompress
+        {
+            get => _GZIPCompress;
+            set => _GZIPCompress = value;
         }
 
         #endregion Public Properties
