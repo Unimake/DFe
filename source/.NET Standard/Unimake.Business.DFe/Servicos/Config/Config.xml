@@ -508,4 +508,10 @@
     <ArqConfig>JoinvilleSC.xml</ArqConfig>
     <PadraoNFSe>PROPRIOJOINVILLESC</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="4321501">
+		<Nome>Torres - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>
