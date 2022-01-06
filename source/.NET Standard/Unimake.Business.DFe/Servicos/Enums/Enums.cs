@@ -5618,7 +5618,13 @@ namespace Unimake.Business.DFe.Servicos
         /// Próprio Joinville SC 
         /// </summary>
         [Description("Próprio Joinville SC")]
-        PROPRIOJOINVILLESC
+        PROPRIOJOINVILLESC,
+
+        /// <summary>
+        /// Sonner - Sistemas integrados, governos inteligentes (Antigo GOVDIGITAL)
+        /// </summary>
+        [Description("SONNER - Sistemas integrados")]
+        SONNER
     }
 
     #endregion
