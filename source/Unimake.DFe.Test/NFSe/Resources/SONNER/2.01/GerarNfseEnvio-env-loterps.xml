@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <Rps>
+    <InfDeclaracaoPrestacaoServico Id="Rps77">
+      <Rps>
+        <IdentificacaoRps>
+          <Numero>77</Numero>
+          <Serie>A</Serie>
+          <Tipo>1</Tipo>
+        </IdentificacaoRps>
+        <DataEmissao>2015-02-23</DataEmissao>
+        <Status>1</Status>
+      </Rps>
+      <Competencia>2015-02-23</Competencia>
+      <Servico>
+        <Valores>
+          <ValorServicos>5190.00</ValorServicos>
+          <ValorPis>33.74</ValorPis>
+          <ValorCofins>155.70</ValorCofins>
+          <ValorIr>77.85</ValorIr>
+          <ValorCsll>51.90</ValorCsll>
+          <ValorIss>103.80</ValorIss>
+          <Aliquota>2.0000</Aliquota>
+        </Valores>
+        <IssRetido>1</IssRetido>
+        <ResponsavelRetencao>1</ResponsavelRetencao>
+        <ItemListaServico>1.01</ItemListaServico>
+        <CodigoCnae>6202300</CodigoCnae>
+        <Discriminacao>ENC. MENSAL SOFT. READER IMPR.</Discriminacao>
+        <CodigoMunicipio>2111003</CodigoMunicipio>
+        <CodigoPais>1058</CodigoPais>
+        <ExigibilidadeISS>1</ExigibilidadeISS>
+        <MunicipioIncidencia>2111003</MunicipioIncidencia>
+      </Servico>
+      <Prestador>
+        <CpfCnpj>
+          <Cnpj>01646956000128</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>18715</InscricaoMunicipal>
+      </Prestador>
+      <Tomador>
+        <IdentificacaoTomador>
+          <CpfCnpj>
+            <Cnpj>07585406000122</Cnpj>
+          </CpfCnpj>
+        </IdentificacaoTomador>
+        <RazaoSocial>SISAM - SAO JOAO BATISTA</RazaoSocial>
+        <Endereco>
+          <Endereco>RUA LINO BORATTI</Endereco>
+          <Numero>69</Numero>
+          <Bairro>69</Bairro>
+          <CodigoMunicipio>2111003</CodigoMunicipio>
+          <Uf>SC</Uf>
+          <CodigoPais>1058</CodigoPais>
+          <Cep>88240000</Cep>
+        </Endereco>
+        <Contato>
+          <Telefone>4832652808</Telefone>
+        </Contato>
+      </Tomador>
+      <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+      <OptanteSimplesNacional>2</OptanteSimplesNacional>
+      <IncentivoFiscal>2</IncentivoFiscal>
+    </InfDeclaracaoPrestacaoServico>
+  </Rps>
+</GerarNfseEnvio>
