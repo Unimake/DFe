@@ -514,4 +514,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="3132404">
+    <Nome>Itajubá - MG</Nome>
+    <UF>MG</UF>
+    <ArqConfig>ItajubaMG.xml</ArqConfig>
+    <PadraoNFSe>SONNER</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>

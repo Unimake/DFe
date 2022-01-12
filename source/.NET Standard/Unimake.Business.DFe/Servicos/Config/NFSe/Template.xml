@@ -194,7 +194,7 @@
       <TargetNS></TargetNS>
     </ConsultarNfseServicoTomado>
     <ConsultarNfseFaixa versao="1.00">
-      <Descricao></Descricao>
+      <Descricao>Consulta NFSe por Faixa</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao></WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
