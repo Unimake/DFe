@@ -13,7 +13,7 @@
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
       <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType></WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="https://homologacao.notainteligente.com/api/wsdl"><soapenv:Body><RecepcionarLoteRps><Body><![CDATA[{xmlBody}]]]]><![CDATA[></Body></RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno></WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
@@ -32,7 +32,7 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="https://homologacao.notainteligente.com/api/wsdl"><soapenv:Body><GerarNfse><Body><![CDATA[{xmlBody}]]]]><![CDATA[></Body></GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno></WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
@@ -51,7 +51,7 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="https://homologacao.notainteligente.com/api/wsdl"><soapenv:Body><CancelarNfse><Body><![CDATA[{xmlBody}]]]]><![CDATA[></Body></CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno></WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
@@ -72,7 +72,7 @@
       <TagExtraAssinatura>Pedido</TagExtraAssinatura>
       <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
       <WebContentType></WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="https://homologacao.notainteligente.com/api/wsdl"><soapenv:Body><SubstituirNfse><Body><![CDATA[{xmlBody}]]]]><![CDATA[></Body></SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno></WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
@@ -91,7 +91,7 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType></WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><Body>{xmlBody}</Body></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="https://homologacao.notainteligente.com/api/wsdl"><soapenv:Body><ConsultarLoteRps><Body><![CDATA[{xmlBody}]]]]><![CDATA[></Body></ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
       <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno></WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
