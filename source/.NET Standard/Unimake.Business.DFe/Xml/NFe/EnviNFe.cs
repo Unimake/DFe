@@ -1385,7 +1385,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVAFRMM() => VAFRMM > 0;
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
-                
+
         public bool ShouldSerializeUFTerceiro() => UFTerceiro != null && UFTerceiro != UFBrasil.NaoDefinido;
 
         #endregion
@@ -1960,15 +1960,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("ICMSSN102")]
         public ICMSSN102 ICMSSN102 { get; set; }
-
-        //[XmlElement("ICMSSN102")]
-        //public ICMSSN103 ICMSSN103 { get; set; }
-
-        //[XmlElement("ICMSSN102")]
-        //public ICMSSN300 ICMSSN300 { get; set; }
-
-        //[XmlElement("ICMSSN102")]
-        //public ICMSSN400 ICMSSN400 { get; set; }
 
         [XmlElement("ICMSSN201")]
         public ICMSSN201 ICMSSN201 { get; set; }
@@ -2831,9 +2822,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVICMSSubstitutoField() => VICMSSubstituto != null;
         public bool ShouldSerializeVICMSSTRetField() => VICMSSTRet != null;
 
-        public bool ShouldSerializeVBCFCPSTRetField() => VBCFCPSTRet > 0;
-        public bool ShouldSerializePFCPSTRetField() => VBCFCPSTRet > 0;
-        public bool ShouldSerializeVFCPSTRetField() => VBCFCPSTRet > 0;
+        public bool ShouldSerializeVBCFCPSTRetField() => VBCFCPSTRet > 0 || PFCPSTRet > 0 || VFCPSTRet > 0;
+        public bool ShouldSerializePFCPSTRetField() => PFCPSTRet > 0 || VBCFCPSTRet > 0 || VFCPSTRet > 0;
+        public bool ShouldSerializeVFCPSTRetField() => VFCPSTRet > 0 || PFCPSTRet > 0 || VBCFCPSTRet > 0;
 
         public bool ShouldSerializePRedBCEfetField() => VBCEfet > 0;
         public bool ShouldSerializeVBCEfetField() => VBCEfet > 0;
@@ -2851,7 +2842,264 @@ namespace Unimake.Business.DFe.Xml.NFe
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CST")]
-        public virtual string CST { get; set; } = "70";
+        public string CST { get; set; } = "70";
+
+        [XmlElement("modBC")]
+        public ModalidadeBaseCalculoICMS? ModBC { get; set; }
+
+        [XmlIgnore]
+        public double PRedBC { get; set; }
+
+        [XmlElement("pRedBC")]
+        public string PRedBCField
+        {
+            get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedBC = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMS { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMSField
+        {
+            get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMS = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMSField
+        {
+            get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMS = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCFCP { get; set; }
+
+        [XmlElement("vBCFCP")]
+        public string VBCFCPField
+        {
+            get => VBCFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCFCP = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCP { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCPField
+        {
+            get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCP = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        private ModalidadeBaseCalculoICMSST? ModBCSTField { get; set; }
+
+        [XmlElement("modBCST")]
+        public ModalidadeBaseCalculoICMSST? ModBCST
+        {
+            get => ModBCSTField;
+
+            set
+            {
+                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                {
+                    ModBCSTField = value;
+                }
+                else
+                {
+                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMS" + CST + "> inválido! Valores aceitos: 0 a 5.");
+                }
+            }
+        }
+
+        [XmlIgnore]
+        public double PMVAST { get; set; }
+
+        [XmlElement("pMVAST")]
+        public string PMVASTField
+        {
+            get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PMVAST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PRedBCST { get; set; }
+
+        [XmlElement("pRedBCST")]
+        public string PRedBCSTField
+        {
+            get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCST { get; set; }
+
+        [XmlElement("vBCST")]
+        public string VBCSTField
+        {
+            get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMSST { get; set; }
+
+        [XmlElement("pICMSST")]
+        public string PICMSSTField
+        {
+            get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMSST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSST { get; set; }
+
+        [XmlElement("vICMSST")]
+        public string VICMSSTField
+        {
+            get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCFCPST { get; set; }
+
+        [XmlElement("vBCFCPST")]
+        public string VBCFCPSTField
+        {
+            get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCPST { get; set; }
+
+        [XmlElement("pFCPST")]
+        public string PFCPSTField
+        {
+            get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCPST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCPST { get; set; }
+
+        [XmlElement("vFCPST")]
+        public string VFCPSTField
+        {
+            get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCPST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlElement("motDesICMS")]
+        public MotivoDesoneracaoICMS? MotDesICMS { get; set; }
+
+        [XmlIgnore]
+        public double VICMSSTDeson { get; set; }
+
+        [XmlElement("vICMSSTDeson")]
+        public string VICMSSTDesonField
+        {
+            get => VICMSSTDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSSTDeson = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlElement("motDesICMSST")]
+        public MotivoDesoneracaoICMS MotDesICMSST { get; set; }
+
+        #region ShouldSerialize
+
+        public virtual bool ShouldSerializeVBCField() => ModBC != null;
+
+        public virtual bool ShouldSerializePRedBCField() => ModBC != null && PRedBC > 0;
+
+        public virtual bool ShouldSerializePICMSField() => ModBC != null;
+
+        public virtual bool ShouldSerializeVICMSField() => ModBC != null;
+
+        public virtual bool ShouldSerializeVBCFCPField() => ModBC != null && (VBCFCP + PFCP + VFCP) > 0;
+
+        public virtual bool ShouldSerializePFCPField() => ModBC != null && (VBCFCP + PFCP + VFCP) > 0;
+
+        public virtual bool ShouldSerializeVFCPField() => ModBC != null && (VBCFCP + PFCP + VFCP) > 0;
+
+        public virtual bool ShouldSerializePMVASTField() => ModBCST != null && PMVAST > 0;
+
+        public virtual bool ShouldSerializePRedBCSTField() => ModBCST != null && PRedBCST > 0;
+
+        public virtual bool ShouldSerializeVBCSTField() => ModBCST != null;
+
+        public virtual bool ShouldSerializePICMSSTField() => ModBCST != null;
+
+        public virtual bool ShouldSerializeVICMSSTField() => ModBCST != null;
+
+        public virtual bool ShouldSerializeVBCFCPSTField() => ModBCST != null && (VBCFCPST + PFCPST + VFCPST) > 0;
+
+        public virtual bool ShouldSerializePFCPSTField() => ModBCST != null && (VBCFCPST + PFCPST + VFCPST) > 0;
+
+        public virtual bool ShouldSerializeVFCPSTField() => ModBCST != null && (VBCFCPST + PFCPST + VFCPST) > 0;
+
+        public virtual bool ShouldSerializeVICMSDesonField() => MotDesICMS != null;
+
+        public virtual bool ShouldSerializeModBC() => ModBC != null;
+
+        public virtual bool ShouldSerializeModBCST() => ModBCST != null;
+
+        public virtual bool ShouldSerializeMotDesICMS() => MotDesICMS != null && VICMSDeson > 0;
+
+        public virtual bool ShouldSerializeVICMSSTDesonField() => VICMSSTDeson > 0;
+
+        public virtual bool ShouldSerializeMotDesICMSST() => VICMSSTDeson > 0;
+
+        #endregion ShouldSerialize
+    }
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ICMS90
+    {
+        [XmlElement("orig")]
+        public OrigemMercadoria Orig { get; set; }
+
+        [XmlElement("CST")]
+        public string CST { get; set; } = "90";
 
         [XmlElement("modBC")]
         public ModalidadeBaseCalculoICMS? ModBC { get; set; }
@@ -3102,14 +3350,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class ICMS90: ICMS70
-    {
-        [XmlElement("CST")]
-        public override string CST { get; set; } = "90";
-    }
-
-    [Serializable()]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSPart
     {
         private string CSTField;
@@ -3346,78 +3586,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
-    //[Serializable()]
-    //[XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    //public class ICMSSN103: ICMSSN102
-    //{
-    //    private string CSOSNField = "103";
-
-    //    [XmlElement("CSOSN")]
-    //    public override string CSOSN
-    //    {
-    //        get => CSOSNField;
-    //        set
-    //        {
-    //            if(value.Equals("103"))
-    //            {
-    //                CSOSNField = value;
-    //            }
-    //            else
-    //            {
-    //                throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN102> inválido! Valor aceito: 103.");
-    //            }
-    //        }
-    //    }
-    //}
-
-    //[Serializable()]
-    //[XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    //public class ICMSSN300: ICMSSN102
-    //{
-    //    private string CSOSNField = "300";
-
-    //    [XmlElement("CSOSN")]
-    //    public override string CSOSN
-    //    {
-    //        get => CSOSNField;
-    //        set
-    //        {
-    //            if(value.Equals("300"))
-    //            {
-    //                CSOSNField = value;
-    //            }
-    //            else
-    //            {
-    //                throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN102> inválido! Valor aceito: 300.");
-    //            }
-    //        }
-    //    }
-    //}
-
-    //[Serializable()]
-    //[XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    //public class ICMSSN400: ICMSSN102
-    //{
-    //    private string CSOSNField = "400";
-
-    //    [XmlElement("CSOSN")]
-    //    public override string CSOSN
-    //    {
-    //        get => CSOSNField;
-    //        set
-    //        {
-    //            if(value.Equals("400"))
-    //            {
-    //                CSOSNField = value;
-    //            }
-    //            else
-    //            {
-    //                throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN102> inválido! Valor aceito: 400.");
-    //            }
-    //        }
-    //    }
-    //}
-
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN201
@@ -3546,22 +3714,22 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
-        public double PCredSN { get; set; }
+        public double? PCredSN { get; set; }
 
         [XmlElement("pCredSN")]
         public string PCredSNField
         {
-            get => PCredSN.ToString("F4", CultureInfo.InvariantCulture);
+            get => PCredSN?.ToString("F4", CultureInfo.InvariantCulture);
             set => PCredSN = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double VCredICMSSN { get; set; }
+        public double? VCredICMSSN { get; set; }
 
         [XmlElement("vCredICMSSN")]
         public string VCredICMSSNField
         {
-            get => VCredICMSSN.ToString("F2", CultureInfo.InvariantCulture);
+            get => VCredICMSSN?.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredICMSSN = Utility.Converter.ToDouble(value);
         }
 
@@ -3575,8 +3743,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializePFCPSTField() => (VBCFCPST + PFCPST + VFCPST) > 0;
         public bool ShouldSerializeVFCPSTField() => (VBCFCPST + PFCPST + VFCPST) > 0;
 
-        public bool ShouldSerializePCredSNField() => (PCredSN + VCredICMSSN) > 0;
-        public bool ShouldSerializeVCredICMSSNField() => (PCredSN + VCredICMSSN) > 0;
+        public bool ShouldSerializePCredSNField() => PCredSN != null;
+        public bool ShouldSerializeVCredICMSSNField() => VCredICMSSN != null || PCredSN != null;
 
         #endregion
     }
@@ -4096,9 +4264,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeVFCPSTField() => VBCFCPST > 0; // Se tiver base é obrigatório ter algo nesta tag
 
-        public bool ShouldSerializePCredSNField() => PCredSN > 0;
-
-        public bool ShouldSerializeVCredICMSSNField() => PCredSN > 0; // Se tiver percentual PCredSN, tem que ter a tag de valor.
+        public bool ShouldSerializePCredSNField() => PCredSN != null;
+        public bool ShouldSerializeVCredICMSSNField() => VCredICMSSN != null || PCredSN != null;
 
         #endregion
     }
@@ -4140,6 +4307,26 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
+        public double? PST { get; set; }
+
+        [XmlElement("pST")]
+        public string PSTField
+        {
+            get => PST?.ToString("F4", CultureInfo.InvariantCulture);
+            set => PST = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double? VICMSSubstituto { get; set; }
+
+        [XmlElement("vICMSSubstituto")]
+        public string VICMSSubstitutoField
+        {
+            get => VICMSSubstituto?.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSSubstituto = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
         public double VICMSSTRet { get; set; }
 
         [XmlElement("vICMSSTRet")]
@@ -4151,6 +4338,36 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlIgnore]
         public double VBCSTDest { get; set; }
+
+        [XmlIgnore]
+        public double VBCFCPSTRet { get; set; }
+
+        [XmlElement("vBCFCPSTRet")]
+        public string VBCFCPSTRetField
+        {
+            get => VBCFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCFCPSTRet = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCPSTRet { get; set; }
+
+        [XmlElement("pFCPSTRet")]
+        public string PFCPSTRetField
+        {
+            get => PFCPSTRet.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCPSTRet = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCPSTRet { get; set; }
+
+        [XmlElement("vFCPSTRet")]
+        public string VFCPSTRetField
+        {
+            get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCPSTRet = Utility.Converter.ToDouble(value);
+        }
 
         [XmlElement("vBCSTDest")]
         public string VBCSTDestField
@@ -4168,6 +4385,62 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VICMSSTDest.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSSTDest = Utility.Converter.ToDouble(value);
         }
+
+        [XmlIgnore]
+        public double PRedBCEfet { get; set; }
+
+        [XmlElement("pRedBCEfet")]
+        public string PRedBCEfetField
+        {
+            get => PRedBCEfet.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedBCEfet = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCEfet { get; set; }
+
+        [XmlElement("vBCEfet")]
+        public string VBCEfetField
+        {
+            get => VBCEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCEfet = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMSEfet { get; set; }
+
+        [XmlElement("pICMSEfet")]
+        public string PICMSEfetField
+        {
+            get => PICMSEfet.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMSEfet = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSEfet { get; set; }
+
+        [XmlElement("vICMSEfet")]
+        public string VICMSEfetField
+        {
+            get => VICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSEfet = Utility.Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializePSTField() => PST != null;
+        public bool ShouldSerializeVICMSSubstitutoField() => VICMSSubstituto != null;
+
+        public bool ShouldSerializeVBCFCPSTRetField() => VBCFCPSTRet > 0 || PFCPSTRet > 0 || VFCPSTRet > 0;
+        public bool ShouldSerializePFCPSTRetField() => PFCPSTRet > 0 || VBCFCPSTRet > 0 || VFCPSTRet > 0;
+        public bool ShouldSerializeVFCPSTRetField() => VFCPSTRet > 0 || PFCPSTRet > 0 || VBCFCPSTRet > 0;
+
+        public bool ShouldSerializePRedBCEfetField() => VBCEfet > 0;
+        public bool ShouldSerializeVBCEfetField() => VBCEfet > 0;
+        public bool ShouldSerializePICMSEfetField() => VBCEfet > 0;
+        public bool ShouldSerializeVICMSEfetField() => VBCEfet > 0;
+
+        #endregion
     }
 
     [Serializable()]
