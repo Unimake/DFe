@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="1.00">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="1.00">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="1.00">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="1.00">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="1.00">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <TagExtraAssinatura></TagExtraAssinatura>
+      <TagExtraAtributoID></TagExtraAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.03">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://wshomologacaoabrasf1.simplissweb.com.br/nfseservice.svc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://wsvoltaredonda.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarLoteRps</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarLoteRps</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Protocolo</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soap:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNotaValida versao="1.00">
+      <Descricao></Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNotaValida>
+    <ConsultarNfsePorRps versao="1.00">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="1.00">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="1.00">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="1.00">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseFaixa>
+    <ConsultarNotaPrestador versao="1.00">
+      <Descricao></Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNotaPrestador>
+    <ConsultarNfse versao="1.00">
+      <Descricao></Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfse>
+    <ConsultarNfsePDF versao="1.00">
+      <Descricao>Consulta/Download do PDF da NFSe</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfsePDF>
+  </Servicos>
+</Configuracoes>
