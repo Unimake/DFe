@@ -852,7 +852,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
-        public bool ShouldSerializeIdEstrangeiro() => !string.IsNullOrWhiteSpace(IdEstrangeiro);
+        public bool ShouldSerializeIdEstrangeiro() => !string.IsNullOrWhiteSpace(IdEstrangeiro) || (string.IsNullOrWhiteSpace(CNPJ) && string.IsNullOrWhiteSpace(CPF) && !string.IsNullOrWhiteSpace(XNome));
 
         public bool ShouldSerializeXNome() => !string.IsNullOrWhiteSpace(XNome);
 
@@ -1319,7 +1319,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class DI
     {
         [XmlElement("nDI")]
-        public ulong NDI { get; set; }
+        public string NDI { get; set; }
 
         [XmlIgnore]
         public DateTime DDI { get; set; }
