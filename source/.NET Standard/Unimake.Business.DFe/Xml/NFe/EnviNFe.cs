@@ -1366,8 +1366,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+#if INTEROP
         [XmlElement("UFTerceiro")]
         public UFBrasil UFTerceiro { get; set; }
+#else
+        [XmlElement("UFTerceiro")]
+        public UFBrasil? UFTerceiro { get; set; }
+#endif
 
         [XmlElement("cExportador")]
         public string CExportador { get; set; }
@@ -1380,8 +1385,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVAFRMM() => VAFRMM > 0;
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
-
-        public bool ShouldSerializeUFTerceiro() => Enum.IsDefined(typeof(UFBrasil), UFTerceiro);
+                
+        public bool ShouldSerializeUFTerceiro() => UFTerceiro != null && UFTerceiro != UFBrasil.NaoDefinido;
 
         #endregion
     }
@@ -3784,7 +3789,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlIgnore]
         public double VBCFCPSTRet { get; set; }
-                     
+
         [XmlElement("vBCFCPSTRet")]
         public string VBCFCPSTRetField
         {
