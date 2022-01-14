@@ -520,4 +520,10 @@
     <ArqConfig>ItajubaMG.xml</ArqConfig>
     <PadraoNFSe>SONNER</PadraoNFSe>
   </Arquivo>
+  <Arquivo ID="3306305">
+    <Nome>Volta Redonda - RJ</Nome>
+    <UF>RJ</UF>
+    <ArqConfig>VoltaRedondaRJ.xml</ArqConfig>
+    <PadraoNFSe>SIMPLISS</PadraoNFSe>
+  </Arquivo>
 </Configuracoes>
