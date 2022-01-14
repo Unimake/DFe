@@ -34,7 +34,7 @@ namespace Unimake.Business.DFe
         /// <returns>string do envelope (soap)</returns>
         private static string EnveloparXML(WSSoap soap, string xmlBody)
         {
-            if (soap.GZIPCompress)
+            if(soap.GZIPCompress)
             {
                 xmlBody = Compress.GZIPCompress(xmlBody);
             }
@@ -104,7 +104,7 @@ namespace Unimake.Business.DFe
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
             httpWebRequest.ClientCertificates.Add(certificado);
-            httpWebRequest.ContentLength = buffer2.Length;            
+            httpWebRequest.ContentLength = buffer2.Length;
 
             //Definir dados para conexão com proxy
             if(soap.Proxy != null)
@@ -116,16 +116,18 @@ namespace Unimake.Business.DFe
             postData.Write(buffer2, 0, buffer2.Length);
             postData.Close();
 
+            WebException webException = null;
             WebResponse responsePost = null;
             try
             {
                 responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
             }
-            catch (WebException ex)
+            catch(WebException ex)
             {
+                webException = ex;
                 responsePost = ex.Response;
 
-                if (responsePost == null)
+                if(ex.Response == null)
                 {
                     throw (ex);
                 }
@@ -139,14 +141,30 @@ namespace Unimake.Business.DFe
             var conteudoRetorno = streamReaderResponse.ReadToEnd();
 
             var retornoXml = new XmlDocument();
-            retornoXml.LoadXml(conteudoRetorno);
+            try
+            {
+                retornoXml.LoadXml(conteudoRetorno);
+            }
+            catch(XmlException ex)
+            {
+                if(webException != null)
+                {
+                    throw (webException);
+                }
+
+                throw (ex);
+            }
+            catch(Exception ex)
+            {
+                throw (ex);
+            }
 
             if(soap.TagRetorno.ToLower() != "prop:innertext")
             {
                 if(retornoXml.GetElementsByTagName(soap.TagRetorno)[0] == null)
                 {
-                    throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n"+
-                        "Conteúdo retornado pelo servidor:\r\n\r\n"+
+                    throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
+                        "Conteúdo retornado pelo servidor:\r\n\r\n" +
                         retornoXml.InnerXml);
                 }
 
@@ -167,6 +185,15 @@ namespace Unimake.Business.DFe
                 }
 
                 RetornoServicoString = retornoXml.InnerText;
+
+                //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
+                if(RetornoServicoString.IndexOf("?>") >= 0)
+                {
+                    RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
+                }
+
+                //Remover quebras de linhas
+                RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
             }
 
             RetornoServicoXML = new XmlDocument

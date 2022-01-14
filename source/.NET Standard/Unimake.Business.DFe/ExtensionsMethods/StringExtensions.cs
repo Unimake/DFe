@@ -20,7 +20,7 @@
                 return value;
             }
 
-            return value.Length <= maxLength ? value : value.Substring(0, maxLength);
+            return (value.Length <= maxLength ? value : value.Substring(0, maxLength))?.Trim();
         }
 
         #endregion Public Methods

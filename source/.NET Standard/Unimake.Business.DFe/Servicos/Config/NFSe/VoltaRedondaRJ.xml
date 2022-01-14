@@ -98,24 +98,24 @@
       <SchemaVersao></SchemaVersao>
       <TargetNS></TargetNS>
     </SubstituirNfse>
-    <ConsultarLoteRps versao="1.00">
+    <ConsultarLoteRps versao="2.03">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao></WebEnderecoProducao>
-      <WebActionHomologacao></WebActionHomologacao>
-      <WebActionProducao></WebActionProducao>
+      <WebEnderecoHomologacao>https://wshomologacaoabrasf1.simplissweb.com.br/nfseservice.svc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://wsvoltaredonda.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarLoteRps</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarLoteRps</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Protocolo</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType></WebContentType>
-      <WebSoapString></WebSoapString>
-      <WebTagRetorno></WebTagRetorno>
-      <WebEncodingRetorno></WebEncodingRetorno>
-      <WebSoapVersion></WebSoapVersion>
-      <SchemaVersao></SchemaVersao>
-      <TargetNS></TargetNS>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soap:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
     </ConsultarLoteRps>
     <ConsultarNotaValida versao="1.00">
       <Descricao></Descricao>
