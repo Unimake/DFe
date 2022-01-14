@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.Business.DFe", ".NE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F53F2154-FB3B-4161-916E-A64654A6ACBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unimake.DFe.Test", "Unimake.DFe.Test\Unimake.DFe.Test.csproj", "{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unimake.DFe.Test", "Unimake.DFe.Test\Unimake.DFe.Test.csproj", "{BC73CE2A-3CEE-4D49-AB87-D1F2E6B9B08B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D4588714-E52F-4FED-8F62-23B3EF202DD2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
