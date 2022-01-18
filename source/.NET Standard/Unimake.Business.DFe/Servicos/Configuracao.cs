@@ -42,7 +42,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <returns>Objeto do certificado digital</returns>
         private X509Certificate2 GetX509Certificate()
         {
-            if(_certificadoDigital != null ||
+            if (_certificadoDigital != null ||
                string.IsNullOrWhiteSpace(CertificadoSenha) ||
                string.IsNullOrWhiteSpace(CertificadoArquivo))
             {
@@ -55,7 +55,7 @@ namespace Unimake.Business.DFe.Servicos
             var fi = new FileInfo(CertificadoArquivo);
             _certificadoDigital = new X509Certificate2();
 
-            using(var fs = fi.OpenRead())
+            using (var fs = fi.OpenRead())
             {
                 var buffer = new byte[fs.Length];
                 fs.Read(buffer, 0, buffer.Length);
@@ -87,7 +87,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="lerConfigPadrao">Efetua a leitura do XML que contem as configurações padrões?</param>
         private void LerConfig(XmlDocument doc, string arqConfig, bool lerConfigPadrao)
         {
-            if(lerConfigPadrao && doc.GetElementsByTagName("Servicos")[0] != null)
+            if (lerConfigPadrao && doc.GetElementsByTagName("Servicos")[0] != null)
             {
                 LerConfigPadrao();
             }
@@ -95,153 +95,153 @@ namespace Unimake.Business.DFe.Servicos
             var achouConfigVersao = false;
 
             var listServicos = doc.GetElementsByTagName("Servicos");
-            foreach(var nodeServicos in listServicos)
+            foreach (var nodeServicos in listServicos)
             {
                 var elementServicos = (XmlElement)nodeServicos;
 
-                if(elementServicos.GetAttribute("ID") == TipoDFe.ToString())
+                if (elementServicos.GetAttribute("ID") == TipoDFe.ToString())
                 {
                     var listPropriedades = elementServicos.GetElementsByTagName(NomeTagServico);
 
-                    foreach(var nodePropridades in listPropriedades)
+                    foreach (var nodePropridades in listPropriedades)
                     {
                         var elementPropriedades = (XmlElement)nodePropridades;
-                        if(elementPropriedades.GetAttribute("versao") == SchemaVersao)
+                        if (elementPropriedades.GetAttribute("versao") == SchemaVersao)
                         {
                             achouConfigVersao = true;
 
-                            if(XMLUtility.TagExist(elementPropriedades, "Descricao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "Descricao"))
                             {
                                 Descricao = XMLUtility.TagRead(elementPropriedades, "Descricao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebActionHomologacao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebActionHomologacao"))
                             {
                                 WebActionHomologacao = XMLUtility.TagRead(elementPropriedades, "WebActionHomologacao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebActionProducao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebActionProducao"))
                             {
                                 WebActionProducao = XMLUtility.TagRead(elementPropriedades, "WebActionProducao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebEnderecoHomologacao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebEnderecoHomologacao"))
                             {
                                 WebEnderecoHomologacao = XMLUtility.TagRead(elementPropriedades, "WebEnderecoHomologacao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebEnderecoProducao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebEnderecoProducao"))
                             {
                                 WebEnderecoProducao = XMLUtility.TagRead(elementPropriedades, "WebEnderecoProducao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebContentType"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebContentType"))
                             {
                                 WebContentType = XMLUtility.TagRead(elementPropriedades, "WebContentType");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebSoapString"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebSoapString"))
                             {
                                 WebSoapString = XMLUtility.TagRead(elementPropriedades, "WebSoapString");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "GZIPCompress"))
+                            if (XMLUtility.TagExist(elementPropriedades, "GZIPCompress"))
                             {
                                 GZIPCompress = (XMLUtility.TagRead(elementPropriedades, "GZIPCompress").ToLower() == "true" ? true : false);
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebSoapVersion"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebSoapVersion"))
                             {
                                 WebSoapVersion = XMLUtility.TagRead(elementPropriedades, "WebSoapVersion");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebTagRetorno"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebTagRetorno"))
                             {
                                 WebTagRetorno = XMLUtility.TagRead(elementPropriedades, "WebTagRetorno");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "WebEncodingRetorno"))
+                            if (XMLUtility.TagExist(elementPropriedades, "WebEncodingRetorno"))
                             {
                                 WebEncodingRetorno = XMLUtility.TagRead(elementPropriedades, "WebEncodingRetorno");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TargetNS"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TargetNS"))
                             {
                                 TargetNS = XMLUtility.TagRead(elementPropriedades, "TargetNS");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "SchemaVersao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "SchemaVersao"))
                             {
                                 SchemaVersao = XMLUtility.TagRead(elementPropriedades, "SchemaVersao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "SchemaArquivo"))
+                            if (XMLUtility.TagExist(elementPropriedades, "SchemaArquivo"))
                             {
                                 SchemaArquivo = XMLUtility.TagRead(elementPropriedades, "SchemaArquivo").Replace("{0}", SchemaVersao);
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TagAssinatura"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TagAssinatura"))
                             {
                                 TagAssinatura = XMLUtility.TagRead(elementPropriedades, "TagAssinatura");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TagAtributoID"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TagAtributoID"))
                             {
                                 TagAtributoID = XMLUtility.TagRead(elementPropriedades, "TagAtributoID");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TagExtraAssinatura"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TagExtraAssinatura"))
                             {
                                 TagExtraAssinatura = XMLUtility.TagRead(elementPropriedades, "TagExtraAssinatura");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TagExtraAtributoID"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TagExtraAtributoID"))
                             {
                                 TagExtraAtributoID = XMLUtility.TagRead(elementPropriedades, "TagExtraAtributoID");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TagLoteAssinatura"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TagLoteAssinatura"))
                             {
                                 TagLoteAssinatura = XMLUtility.TagRead(elementPropriedades, "TagLoteAssinatura");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "TagLoteAtributoID"))
+                            if (XMLUtility.TagExist(elementPropriedades, "TagLoteAtributoID"))
                             {
                                 TagLoteAtributoID = XMLUtility.TagRead(elementPropriedades, "TagLoteAtributoID");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "UrlQrCodeHomologacao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlQrCodeHomologacao"))
                             {
                                 UrlQrCodeHomologacao = XMLUtility.TagRead(elementPropriedades, "UrlQrCodeHomologacao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "UrlQrCodeProducao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlQrCodeProducao"))
                             {
                                 UrlQrCodeProducao = XMLUtility.TagRead(elementPropriedades, "UrlQrCodeProducao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "UrlChaveHomologacao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlChaveHomologacao"))
                             {
                                 UrlChaveHomologacao = XMLUtility.TagRead(elementPropriedades, "UrlChaveHomologacao");
                             }
 
-                            if(XMLUtility.TagExist(elementPropriedades, "UrlChaveProducao"))
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlChaveProducao"))
                             {
                                 UrlChaveProducao = XMLUtility.TagRead(elementPropriedades, "UrlChaveProducao");
                             }
 
                             //Verificar se existem schemas específicos de validação
-                            if(XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
+                            if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
                                 var listSchemasEspecificios = elementPropriedades.GetElementsByTagName("SchemasEspecificos");
 
-                                foreach(var nodeSchemasEspecificos in listSchemasEspecificios)
+                                foreach (var nodeSchemasEspecificos in listSchemasEspecificios)
                                 {
                                     var elemenSchemasEspecificos = (XmlElement)nodeSchemasEspecificos;
 
                                     var listTipo = elemenSchemasEspecificos.GetElementsByTagName("Tipo");
 
-                                    foreach(var nodeTipo in listTipo)
+                                    foreach (var nodeTipo in listTipo)
                                     {
                                         var elementTipo = (XmlElement)nodeTipo;
                                         var idSchemaEspecifico = elementTipo.GetElementsByTagName("ID")[0].InnerText;
@@ -262,16 +262,16 @@ namespace Unimake.Business.DFe.Servicos
                 }
             }
 
-            if(!achouConfigVersao)
+            if (!achouConfigVersao)
             {
                 throw new Exception("Não foi localizado as configurações para a versão de schema " + SchemaVersao + " no arquivo de configuração do serviço de " + TipoDFe.ToString() + ".\r\n\r\n" + arqConfig);
             }
             else
             {
-                if(Servico == Servico.NFeConsultaCadastro)
+                if (Servico == Servico.NFeConsultaCadastro)
                 {
                     //Estados que não disponibilizam a coinsulta cadastro e que usam SVRS, como SVRS tem a consulta mas não para estes estados, tenho que tratar a exceção manualmente, conforma baixo.
-                    if(CodigoUF.Equals(14) || CodigoUF.Equals(16) ||
+                    if (CodigoUF.Equals(14) || CodigoUF.Equals(16) ||
                         CodigoUF.Equals(33) || CodigoUF.Equals(11) ||
                         CodigoUF.Equals(15) || CodigoUF.Equals(22) ||
                         CodigoUF.Equals(27) || CodigoUF.Equals(18) ||
@@ -280,11 +280,11 @@ namespace Unimake.Business.DFe.Servicos
                         throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de " + (TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
                     }
                 }
-                else if(TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(WebEnderecoHomologacao))
+                else if (TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(WebEnderecoHomologacao))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de homologação.");
                 }
-                else if(TipoAmbiente == TipoAmbiente.Producao && string.IsNullOrWhiteSpace(WebEnderecoProducao))
+                else if (TipoAmbiente == TipoAmbiente.Producao && string.IsNullOrWhiteSpace(WebEnderecoProducao))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de produção.");
                 }
@@ -304,7 +304,7 @@ namespace Unimake.Business.DFe.Servicos
             var svc = false;
             var arqConfigSVC = string.Empty;
 
-            switch(TipoEmissao)
+            switch (TipoEmissao)
             {
                 case TipoEmissao.ContingenciaSVCRS:
                     svc = true;
@@ -322,7 +322,7 @@ namespace Unimake.Business.DFe.Servicos
                     goto default;
 
                 default:
-                    if(svc)
+                    if (svc)
                     {
                         doc.Load(LoadXmlConfig(arqConfigSVC));
                         LerConfig(doc, arqConfigSVC, true);
@@ -332,13 +332,13 @@ namespace Unimake.Business.DFe.Servicos
 
             #endregion
 
-            if(!svc)
+            if (!svc)
             {
                 #region Leitura do XML herdado, quando tem herança.
 
                 var temHeranca = false;
 
-                if(doc.GetElementsByTagName("Heranca")[0] != null)
+                if (doc.GetElementsByTagName("Heranca")[0] != null)
                 {
                     var arqConfigHeranca = NamespaceConfig + doc.GetElementsByTagName("Heranca")[0].InnerText;
 
@@ -358,7 +358,7 @@ namespace Unimake.Business.DFe.Servicos
                 }
                 catch
                 {
-                    if(!temHeranca) //Se tem herança pode ser que não encontre configuração específica, então não pode retornar a exceção lançada neste ponto.
+                    if (!temHeranca) //Se tem herança pode ser que não encontre configuração específica, então não pode retornar a exceção lançada neste ponto.
                     {
                         throw;
                     }
@@ -388,7 +388,7 @@ namespace Unimake.Business.DFe.Servicos
             var xmlDoc = new XmlDocument();
 
             var stream = LoadXmlConfig(arqConfig);
-            if(stream != null)
+            if (stream != null)
             {
                 xmlDoc.Load(stream);
             }
@@ -400,55 +400,55 @@ namespace Unimake.Business.DFe.Servicos
             var achouConfigVersao = false;
             var listConfigPadrao = xmlDoc.GetElementsByTagName("ConfigPadrao");
 
-            foreach(var nodeConfigPadrao in listConfigPadrao)
+            foreach (var nodeConfigPadrao in listConfigPadrao)
             {
                 var elementConfigPadrao = (XmlElement)nodeConfigPadrao;
 
                 var listVersao = xmlDoc.GetElementsByTagName("Versao");
 
-                foreach(var nodeVersao in listVersao)
+                foreach (var nodeVersao in listVersao)
                 {
                     var elementVersao = (XmlElement)nodeVersao;
 
-                    if(elementVersao.GetAttribute("ID") == SchemaVersao)
+                    if (elementVersao.GetAttribute("ID") == SchemaVersao)
                     {
                         achouConfigVersao = true;
-                        if(XMLUtility.TagExist(elementVersao, "WebContentType"))
+                        if (XMLUtility.TagExist(elementVersao, "WebContentType"))
                         {
                             WebContentType = XMLUtility.TagRead(elementVersao, "WebContentType");
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "WebSoapString"))
+                        if (XMLUtility.TagExist(elementVersao, "WebSoapString"))
                         {
                             WebSoapString = XMLUtility.TagRead(elementVersao, "WebSoapString");
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "GZIPCompress"))
+                        if (XMLUtility.TagExist(elementVersao, "GZIPCompress"))
                         {
                             GZIPCompress = (XMLUtility.TagRead(elementVersao, "GZIPCompress").ToLower() == "true" ? true : false);
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "WebTagRetorno"))
+                        if (XMLUtility.TagExist(elementVersao, "WebTagRetorno"))
                         {
                             WebTagRetorno = XMLUtility.TagRead(elementVersao, "WebTagRetorno");
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "WebEncodingRetorno"))
+                        if (XMLUtility.TagExist(elementVersao, "WebEncodingRetorno"))
                         {
                             WebEncodingRetorno = XMLUtility.TagRead(elementVersao, "WebEncodingRetorno");
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "WebSoapVersion"))
+                        if (XMLUtility.TagExist(elementVersao, "WebSoapVersion"))
                         {
                             WebSoapVersion = XMLUtility.TagRead(elementVersao, "WebSoapVersion");
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "SchemaVersao"))
+                        if (XMLUtility.TagExist(elementVersao, "SchemaVersao"))
                         {
                             SchemaVersao = XMLUtility.TagRead(elementVersao, "SchemaVersao");
                         }
 
-                        if(XMLUtility.TagExist(elementVersao, "TargetNS"))
+                        if (XMLUtility.TagExist(elementVersao, "TargetNS"))
                         {
                             TargetNS = XMLUtility.TagRead(elementVersao, "TargetNS");
                         }
@@ -458,7 +458,7 @@ namespace Unimake.Business.DFe.Servicos
                 }
             }
 
-            if(!achouConfigVersao)
+            if (!achouConfigVersao)
             {
                 throw new Exception("Não foi localizado as configurações para a versão de schema " + SchemaVersao + " no arquivo de configuração padrão do serviço de " + TipoDFe.ToString() + ".\r\n\r\n" + arqConfig);
             }
@@ -745,23 +745,23 @@ namespace Unimake.Business.DFe.Servicos
         {
             NomeTagServico = nomeTagServico;
 
-            if(CodigoConfig != 0)
+            if (CodigoConfig != 0)
             {
                 var doc = new XmlDocument();
                 doc.Load(LoadXmlConfig(Configuration.ArquivoConfigGeral));
 
                 var listConfiguracoes = doc.GetElementsByTagName("Configuracoes");
 
-                foreach(XmlNode nodeConfiguracoes in listConfiguracoes)
+                foreach (XmlNode nodeConfiguracoes in listConfiguracoes)
                 {
                     var elementConfiguracoes = (XmlElement)nodeConfiguracoes;
                     var listArquivos = elementConfiguracoes.GetElementsByTagName("Arquivo");
 
-                    foreach(var nodeArquivos in listArquivos)
+                    foreach (var nodeArquivos in listArquivos)
                     {
                         var elementArquivos = (XmlElement)nodeArquivos;
 
-                        if(elementArquivos.GetAttribute("ID") != CodigoConfig.ToString())
+                        if (elementArquivos.GetAttribute("ID") != CodigoConfig.ToString())
                         {
                             continue;
                         }
@@ -770,13 +770,13 @@ namespace Unimake.Business.DFe.Servicos
                         NomeUF = elementArquivos.GetElementsByTagName("UF")[0].InnerText;
                         PadraoNFSe = PadraoNFSe.None;
 
-                        if(XMLUtility.TagExist(elementArquivos, "PadraoNFSe"))
+                        if (XMLUtility.TagExist(elementArquivos, "PadraoNFSe"))
                         {
                             try
                             {
                                 PadraoNFSe = (PadraoNFSe)Enum.Parse(typeof(PadraoNFSe), XMLUtility.TagRead(elementArquivos, "PadraoNFSe"));
                             }
-                            catch(Exception)
+                            catch (Exception)
                             {
                                 throw new Exception("Caro desenvolvedor, você esqueceu de definir no enumerador \"PadraoNFSe\" o tipo " + XMLUtility.TagRead(elementArquivos, "PadraoNFSe") + " e eu não tenho como resolver esta encrenca. Por favor, va lá e defina.");
                             }
@@ -786,6 +786,11 @@ namespace Unimake.Business.DFe.Servicos
 
                         break;
                     }
+                }
+
+                if (string.IsNullOrWhiteSpace(Nome))
+                {
+                    throw new Exception((CodigoConfig.ToString().Length <= 2 ? "Unidade Federativa" : "Município") + " (" + CodigoConfig + ") não está implementado na DLL Unimake.DFe. Entre em contato com o suporte para solicitar a implementação.");
                 }
             }
         }
