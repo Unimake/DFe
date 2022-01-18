@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Utility
         #region Public Structs
 
         /// <summary>
-        /// Estrutura para recuperar o conteúdo separadamente da chave do DFe (NFe, CTe, NFCe, MDfe, etc...)
+        /// Estrutura para recuperar o conteúdo separadamento da chave do DFe (NFe, CTe, NFCe, MDfe, etc...)
         /// </summary>
         public struct ConteudoChaveDFe
         {
@@ -34,7 +34,7 @@ namespace Unimake.Business.DFe.Utility
             public string CNPJEmissor { get; set; }
 
             /// <summary>
-            /// Código numérico do documento fiscal
+            /// Código numérido do documento fiscal
             /// </summary>
             public string CodigoNumerico { get; set; }
 
@@ -108,7 +108,7 @@ namespace Unimake.Business.DFe.Utility
             #region Public Properties
 
             /// <summary>
-            /// Sobrescrever o Encoding para deixar como padrão o UTF8
+            /// Sobrecrever o Encoding para deixar como padrão o UTF8
             /// </summary>
             public override Encoding Encoding => Encoding.UTF8;
 
@@ -302,34 +302,10 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
-        /// </summary>
-        /// <returns>Retorna string sem os espaços desnecessários</returns>
-        /// <example>
-        /// var texto = " Eu    vou   ao    supermercado comprar alimentos.    ";
-        /// texto = XMLUtility.LimparEspacoDesnecessario(texto);
-        /// MessageBox.Show(texto); // Retorno será: "Eu vou ao supermercado comprar alimentos."
-        /// </example>
-        /// <seealso cref="UnescapeReservedCharacters(string)"/>
-        public static string ClearExtraSpaces(string content)
-        {
-            if(string.IsNullOrWhiteSpace(content))
-            {
-                return content;
-            }
-
-            var regex = new Regex(@"\s{2,}");
-            content = regex.Replace(content, " ");
-            content = content.Trim();
-
-            return content;
-        }
-
-        /// <summary>
         /// Deserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="xml">XML a ser deserializado</param>
+        /// <param name="xml">XML a ser deserilizado</param>
         /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
         public static T Deserializar<T>(string xml)
             where T : new()
@@ -353,7 +329,7 @@ namespace Unimake.Business.DFe.Utility
         /// Deserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="doc">Conteúdo do XML a ser deserializado</param>
+        /// <param name="doc">Conteúdo do XML a ser deserilizado</param>
         /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
         public static T Deserializar<T>(XmlDocument doc)
             where T : new() => Deserializar<T>(doc.OuterXml);
@@ -537,7 +513,7 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Detectar qual o tipo de evento do documento fiscal eletrônico do XML
+        /// Detectar qual o tipo de evento do dodocumento fiscal eletrônico do XML
         /// </summary>
         /// <param name="xml">XML a ser analisado</param>
         /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
@@ -626,32 +602,6 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
-        /// Tratar caracteres especiais existentes na string substituindo por escape.
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns>Conteúdo sem os espaços desnecessários e com os caracteres especiais substituídos por escapes.</returns>
-        /// <example>
-        /// var texto = @"   Dias \ Dias     de ir em     casa   .   ";
-        /// texto = XMLUtility.LimparEspacoTratarCaracterEspecial(texto);
-        /// MessageBox.Show(texto); // Retorno será: "Dias &quot; Dias de ir em casa ."
-        /// </example>
-        /// <seealso cref="ClearExtraSpaces(string)"/>
-        /// <seealso cref="UnescapeReservedCharacters(string)"/>
-        public static string EnsureStringContent(string content)
-        {
-            if(string.IsNullOrWhiteSpace(content))
-            {
-                return content;
-            }
-
-            content = ClearExtraSpaces(content);
-            content = UnescapeReservedCharacters(content);
-
-            return content;
-        }
-
-        /// <summary>
         /// Extrair conteúdo da chave do documento fiscal eletrônico (NFe, NFCe, CTe, MDFe, etc...) com elementos separados.
         /// </summary>
         /// <param name="chave">Chave do DFe para extrair o conteúdo</param>
@@ -692,7 +642,7 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, etc...
+        /// Gera um número randômico para ser utilizado no Codigo Numérico da NFe, NFCe, CTe, MDFe, etc...
         /// </summary>
         /// <param name="numeroNF">Número da NF, CT ou MDF</param>
         /// <returns>Código numérico</returns>
@@ -759,14 +709,14 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Busca o número da chave do evento do CT-e
+        /// Busca o número da chave do do evento do CT-e
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <returns>Chave do evento do CT-e</returns>
         public static string GetChaveEventoCTe(string xml) => GetChaveEventoCTe(xml, DetectEventoCTeType(xml));
 
         /// <summary>
-        /// Busca o número da chave do evento do CT-e
+        /// Busca o número da chave do do evento do CT-e
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <param name="typeEventoCTe">Tipo de evento do CTe</param>
@@ -813,14 +763,14 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Busca o número da chave do evento do MDF-e
+        /// Busca o número da chave do do evento do MDF-e
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <returns>Chave do evento do MDF-e</returns>
         public static string GetChaveEventoMDFe(string xml) => GetChaveEventoMDFe(xml, DetectEventoMDFeType(xml));
 
         /// <summary>
-        /// Busca o número da chave do evento do MDF-e
+        /// Busca o número da chave do do evento do MDF-e
         /// </summary>
         /// <param name="xml">Conteúdo do XML para busca da chave</param>
         /// <param name="typeEventoMDFe">Tipo do evento do MDFe</param>
@@ -1041,19 +991,19 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Tratar caracteres especiais existentes na string substituindo por escape.
-        /// Caracteres substituídos: <![CDATA[  & < > \ ' ]]>
+        /// Tratar caracteres especiais existentes na string substituindo por escape. 
+        /// Caracteres substituidos: <![CDATA[  & < > \ ' ]]>
         /// Escapes utilizados: <![CDATA[  &amp; &lt; &gt; &quot; &#39; ]]>
         /// </summary>
         /// <param name="content">String a ser tratada</param>
-        /// <returns>string com os caracteres especiais substituídos pelos seus escapes</returns>
+        /// <returns>string com os caracteres especiais substituidos pelos seus escapes</returns>
         /// <example>
         /// var texto = "Dias \ Dias";
         /// texto = XMLUtility.TratarCaracterEspecial(texto);
         /// MessageBox.Show(texto); // Retorno será: "Dias &quot; Dias"
         /// </example>
-        /// <seealso cref="ClearExtraSpaces(string)"/>
-        public static string UnescapeReservedCharacters(string content)
+        /// <seealso cref="XMLUtility.LimparEspacoDesnecessario(string)"/>
+        public static string TratarCaracterEspecial(string content)
         {
             if(string.IsNullOrWhiteSpace(content))
             {
@@ -1061,9 +1011,9 @@ namespace Unimake.Business.DFe.Utility
             }
 
             /*
-
+             
 	           There is always a solution
-
+	
 			           ,;~;,
 			              /\_
 			             (  /
@@ -1076,21 +1026,20 @@ namespace Unimake.Business.DFe.Utility
 		            ) /       ) /
 		           //         ||
 	              (_\         (_\
-
+	
 	           go horse <3
-
+             
                Aqui detectamos o seguinte:
-               Se o amiguinho(a) desenvolvedor(a) já passar convertido com &amp;,
-                o replace abaixo ajusta para &
-               Este problema só acontece quando se usa o objeto direto, não acontece quando
-                serializa ou deserializa
-
+               Se o amiguinho(a) desenvolvedor(a) já passar convertido com &amp;, 
+               o replace abaixo vai trocar o primeiro & para &amp; e vai ficar &amp;amp;, 
+               e isso irá gerar erro na emissão do DF-e.
                Sim, a gente poderia usar Regex, validar e tudo mais, mas assim é mais rápido.
+            
 
                             Table Flip ...
 
                             (╯°□°）╯︵ ┻━┻
-
+            
             */
 
             content = content.Replace("&amp;", "&");
@@ -1100,11 +1049,68 @@ namespace Unimake.Business.DFe.Utility
             content = content.Replace("&quot;", "\\");
             content = content.Replace("&#39;", "'");
 
-            /*
-                ... Put the table back
+            /* 
+                ... Put the table back 
 
                 ┬─┬﻿ ノ(゜-゜ノ)
              */
+
+            content = content.Replace("&", "&amp;");
+            content = content.Replace("<", "&lt;");
+            content = content.Replace(">", "&gt;");
+            content = content.Replace("\"", "&quot;");
+            content = content.Replace("\\", "&quot;");
+            content = content.Replace("'", "&#39;");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
+        /// </summary>
+        /// <returns>Retorna string sem os espaços denecessários</returns>
+        /// <example>
+        /// var texto = " Eu    vou   ao    supermercado comprar alimentos.    ";
+        /// texto = XMLUtility.LimparEspacoDesnecessario(texto);
+        /// MessageBox.Show(texto); // Retorno será: "Eu vou ao supermercado comprar alimentos."
+        /// </example>
+        /// <seealso cref="XMLUtility.TratarCaracterEspecial(string)"/>
+        public static string LimparEspacoDesnecessario(string content)
+        {
+            if(string.IsNullOrWhiteSpace(content))
+            {
+                return content;
+            }
+
+            var regex = new Regex(@"\s{2,}");
+            content = regex.Replace(content, " ");
+            content = content.Trim();
+
+            return content;
+        }
+
+        /// <summary>
+        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
+        /// Tratar caracteres especiais existentes na string substituindo por escape.
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns>Conteúdo sem os espaços desnecessários e com os caracteres especiais substituídos por escapes.</returns>
+        /// <example>
+        /// var texto = @"   Dias \ Dias     de ir em     casa   .   ";
+        /// texto = XMLUtility.LimparEspacoTratarCaracterEspecial(texto);
+        /// MessageBox.Show(texto); // Retorno será: "Dias &quot; Dias de ir em casa ."
+        /// </example>
+        /// <seealso cref="XMLUtility.LimparEspacoDesnecessario(string)"/>
+        /// <seealso cref="XMLUtility.TratarCaracterEspecial(string)"/>
+        public static string TratarConteudoString(string content)
+        {
+            if(string.IsNullOrWhiteSpace(content))
+            {
+                return content;
+            }
+
+            content = LimparEspacoDesnecessario(content);
+            content = TratarCaracterEspecial(content);
 
             return content;
         }

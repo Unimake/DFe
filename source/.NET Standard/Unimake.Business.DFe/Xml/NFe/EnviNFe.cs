@@ -19,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 {
     [Serializable()]
     [XmlRoot("enviNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class EnviNFe : XMLBase
+    public class EnviNFe: XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -100,7 +100,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
-            return XMLUtility.Deserializar<NFe>(doc);
+            return Utility.XMLUtility.Deserializar<NFe>(doc);
         }
     }
 
@@ -200,7 +200,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                     ((int)Ide.TpEmis).ToString() +
                     Ide.CNF.PadLeft(8, '0');
 
-                Ide.CDV = XMLUtility.CalcularDVChave(ChaveField);
+                Ide.CDV = Utility.XMLUtility.CalcularDVChave(ChaveField);
 
                 ChaveField += Ide.CDV.ToString();
 
@@ -255,7 +255,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         throw new Exception("Defina antes o conteúdo da TAG <nNF>, pois o mesmo é utilizado como base para calcular o código numérico.");
                     }
 
-                    retorno = XMLUtility.GerarCodigoNumerico(NNF).ToString("00000000");
+                    retorno = Utility.XMLUtility.GerarCodigoNumerico(NNF).ToString("00000000");
                 }
                 else
                 {
@@ -1063,11 +1063,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Retirada : LocalBase { }
+    public class Retirada: LocalBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Entrega : LocalBase { }
+    public class Entrega: LocalBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
@@ -1176,7 +1176,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VProdField
         {
             get => VProd.ToString("F2", CultureInfo.InvariantCulture);
-            set => VProd = Converter.ToDouble(value);
+            set => VProd = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("cEANTrib")]
@@ -1201,7 +1201,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFreteField
         {
             get => VFrete.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFrete = Converter.ToDouble(value);
+            set => VFrete = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1211,7 +1211,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VSegField
         {
             get => VSeg.ToString("F2", CultureInfo.InvariantCulture);
-            set => VSeg = Converter.ToDouble(value);
+            set => VSeg = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1221,7 +1221,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescField
         {
             get => VDesc.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDesc = Converter.ToDouble(value);
+            set => VDesc = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1231,7 +1231,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VOutroField
         {
             get => VOutro.ToString("F2", CultureInfo.InvariantCulture);
-            set => VOutro = Converter.ToDouble(value);
+            set => VOutro = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("indTot")]
@@ -1357,7 +1357,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VAFRMMField
         {
             get => VAFRMM.ToString("F2", CultureInfo.InvariantCulture);
-            set => VAFRMM = Converter.ToDouble(value);
+            set => VAFRMM = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("tpIntermedio")]
@@ -1411,7 +1411,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescDIField
         {
             get => VDescDI.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDescDI = Converter.ToDouble(value);
+            set => VDescDI = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("nDraw")]
@@ -1460,7 +1460,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QExportField
         {
             get => QExport.ToString("F4", CultureInfo.InvariantCulture);
-            set => QExport = Converter.ToDouble(value);
+            set => QExport = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -1478,7 +1478,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QLoteField
         {
             get => QLote.ToString("F2", CultureInfo.InvariantCulture);
-            set => QLote = Converter.ToDouble(value);
+            set => QLote = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1531,7 +1531,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QVolEmbField
         {
             get => QVolEmb.ToString("F2", CultureInfo.InvariantCulture);
-            set => QVolEmb = Converter.ToDouble(value);
+            set => QVolEmb = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("uEmb")]
@@ -1560,7 +1560,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QVolEmbField
         {
             get => QVolEmb.ToString("F3", CultureInfo.InvariantCulture);
-            set => QVolEmb = Converter.ToDouble(value);
+            set => QVolEmb = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("uEmb")]
@@ -1615,7 +1615,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PGLPField
         {
             get => PGLP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PGLP = Converter.ToDouble(value);
+            set => PGLP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1625,7 +1625,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PGNnField
         {
             get => PGNn.ToString("F4", CultureInfo.InvariantCulture);
-            set => PGNn = Converter.ToDouble(value);
+            set => PGNn = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1635,7 +1635,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PGNiField
         {
             get => PGNi.ToString("F4", CultureInfo.InvariantCulture);
-            set => PGNi = Converter.ToDouble(value);
+            set => PGNi = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1645,7 +1645,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPartField
         {
             get => VPart.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPart = Converter.ToDouble(value);
+            set => VPart = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("CODIF")]
@@ -1658,7 +1658,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QTempField
         {
             get => QTemp.ToString("F4", CultureInfo.InvariantCulture);
-            set => QTemp = Converter.ToDouble(value);
+            set => QTemp = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("UFCons")]
@@ -1701,7 +1701,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VAliqProdField
         {
             get => VAliqProd.ToString("F4", CultureInfo.InvariantCulture);
-            set => VAliqProd = Converter.ToDouble(value);
+            set => VAliqProd = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1711,7 +1711,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCIDEField
         {
             get => VCIDE.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCIDE = Converter.ToDouble(value);
+            set => VCIDE = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -1735,7 +1735,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VEncIniField
         {
             get => VEncIni.ToString("F3", CultureInfo.InvariantCulture);
-            set => VEncIni = Converter.ToDouble(value);
+            set => VEncIni = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1745,7 +1745,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VEncFinField
         {
             get => VEncFin.ToString("F3", CultureInfo.InvariantCulture);
-            set => VEncFin = Converter.ToDouble(value);
+            set => VEncFin = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -1778,7 +1778,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPMCField
         {
             get => VPMC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPMC = Converter.ToDouble(value);
+            set => VPMC = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -1870,7 +1870,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VTotTribField
         {
             get => VTotTrib.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTotTrib = Converter.ToDouble(value);
+            set => VTotTrib = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("ICMS")]
@@ -1997,7 +1997,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2007,7 +2007,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2017,7 +2017,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2027,7 +2027,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPField
         {
             get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCP = Converter.ToDouble(value);
+            set => PFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2037,7 +2037,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -2069,7 +2069,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2079,7 +2079,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2089,7 +2089,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2099,7 +2099,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPField
         {
             get => VBCFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCP = Converter.ToDouble(value);
+            set => VBCFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2109,7 +2109,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPField
         {
             get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCP = Converter.ToDouble(value);
+            set => PFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2119,7 +2119,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("modBCST")]
@@ -2132,7 +2132,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2142,7 +2142,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2152,7 +2152,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2162,7 +2162,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2172,7 +2172,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2182,7 +2182,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2192,7 +2192,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2202,7 +2202,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2212,7 +2212,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTDesonField
         {
             get => VICMSSTDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTDeson = Converter.ToDouble(value);
+            set => VICMSSTDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMSST")]
@@ -2263,7 +2263,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCField
         {
             get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBC = Converter.ToDouble(value);
+            set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2273,7 +2273,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2283,7 +2283,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2293,7 +2293,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2303,7 +2303,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPField
         {
             get => VBCFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCP = Converter.ToDouble(value);
+            set => VBCFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2313,7 +2313,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPField
         {
             get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCP = Converter.ToDouble(value);
+            set => PFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2323,7 +2323,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2333,7 +2333,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDesonField
         {
             get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDeson = Converter.ToDouble(value);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMS")]
@@ -2374,7 +2374,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2384,7 +2384,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2394,7 +2394,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2404,7 +2404,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2414,7 +2414,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2424,7 +2424,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2434,7 +2434,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2444,7 +2444,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2454,7 +2454,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDesonField
         {
             get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDeson = Converter.ToDouble(value);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMS")]
@@ -2512,7 +2512,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDesonField
         {
             get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDeson = Converter.ToDouble(value);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMS")]
@@ -2547,7 +2547,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCField
         {
             get => PRedBC?.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBC = Converter.ToDouble(value);
+            set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2557,7 +2557,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2567,7 +2567,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2577,7 +2577,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSOpField
         {
             get => VICMSOp.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSOp = Converter.ToDouble(value);
+            set => VICMSOp = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2587,7 +2587,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PDifField
         {
             get => PDif.ToString("F4", CultureInfo.InvariantCulture);
-            set => PDif = Converter.ToDouble(value);
+            set => PDif = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2597,7 +2597,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDifField
         {
             get => VICMSDif.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDif = Converter.ToDouble(value);
+            set => VICMSDif = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2607,7 +2607,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2617,7 +2617,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPField
         {
             get => VBCFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCP = Converter.ToDouble(value);
+            set => VBCFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2627,7 +2627,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPField
         {
             get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCP = Converter.ToDouble(value);
+            set => PFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2637,7 +2637,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2647,7 +2647,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPDifField
         {
             get => PFCPDif.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPDif = Converter.ToDouble(value);
+            set => PFCPDif = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2657,7 +2657,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPDifField
         {
             get => VFCPDif.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPDif = Converter.ToDouble(value);
+            set => VFCPDif = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2667,7 +2667,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPEfetField
         {
             get => VFCPEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPEfet = Converter.ToDouble(value);
+            set => VFCPEfet = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -2712,7 +2712,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTRetField
         {
             get => VBCSTRet?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCSTRet = Converter.ToDouble(value);
+            set => VBCSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2722,7 +2722,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PSTField
         {
             get => PST?.ToString("F4", CultureInfo.InvariantCulture);
-            set => PST = Converter.ToDouble(value);
+            set => PST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2732,7 +2732,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSubstitutoField
         {
             get => VICMSSubstituto?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSubstituto = Converter.ToDouble(value);
+            set => VICMSSubstituto = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2742,7 +2742,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTRetField
         {
             get => VICMSSTRet?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTRet = Converter.ToDouble(value);
+            set => VICMSSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2752,7 +2752,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTRetField
         {
             get => VBCFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPSTRet = Converter.ToDouble(value);
+            set => VBCFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2762,7 +2762,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTRetField
         {
             get => PFCPSTRet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPSTRet = Converter.ToDouble(value);
+            set => PFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2772,7 +2772,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTRetField
         {
             get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPSTRet = Converter.ToDouble(value);
+            set => VFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2782,7 +2782,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCEfetField
         {
             get => PRedBCEfet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCEfet = Converter.ToDouble(value);
+            set => PRedBCEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2792,7 +2792,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCEfetField
         {
             get => VBCEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCEfet = Converter.ToDouble(value);
+            set => VBCEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2802,7 +2802,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSEfetField
         {
             get => PICMSEfet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSEfet = Converter.ToDouble(value);
+            set => PICMSEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2812,7 +2812,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSEfetField
         {
             get => VICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSEfet = Converter.ToDouble(value);
+            set => VICMSEfet = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -2854,7 +2854,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCField
         {
             get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBC = Converter.ToDouble(value);
+            set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2864,7 +2864,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2874,7 +2874,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2884,7 +2884,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2894,7 +2894,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPField
         {
             get => VBCFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCP = Converter.ToDouble(value);
+            set => VBCFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2904,7 +2904,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPField
         {
             get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCP = Converter.ToDouble(value);
+            set => PFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2914,7 +2914,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2945,7 +2945,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2955,7 +2955,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2965,7 +2965,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2975,7 +2975,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2985,7 +2985,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -2995,7 +2995,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3005,7 +3005,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3015,7 +3015,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3025,7 +3025,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDesonField
         {
             get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDeson = Converter.ToDouble(value);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMS")]
@@ -3038,7 +3038,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTDesonField
         {
             get => VICMSSTDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTDeson = Converter.ToDouble(value);
+            set => VICMSSTDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMSST")]
@@ -3111,7 +3111,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3121,7 +3121,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCField
         {
             get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBC = Converter.ToDouble(value);
+            set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3131,7 +3131,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3141,7 +3141,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3151,7 +3151,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPField
         {
             get => VBCFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCP = Converter.ToDouble(value);
+            set => VBCFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3161,7 +3161,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPField
         {
             get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCP = Converter.ToDouble(value);
+            set => PFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3171,7 +3171,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3202,7 +3202,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3212,7 +3212,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3222,7 +3222,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3232,7 +3232,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3242,7 +3242,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3252,7 +3252,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3262,7 +3262,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3272,7 +3272,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3282,7 +3282,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDesonField
         {
             get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDeson = Converter.ToDouble(value);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMS")]
@@ -3295,7 +3295,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTDesonField
         {
             get => VICMSSTDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTDeson = Converter.ToDouble(value);
+            set => VICMSSTDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("motDesICMSST")]
@@ -3384,7 +3384,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3394,7 +3394,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCField
         {
             get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBC = Converter.ToDouble(value);
+            set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3404,7 +3404,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3414,7 +3414,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3445,7 +3445,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3455,7 +3455,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3465,7 +3465,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3475,7 +3475,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3485,7 +3485,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3495,7 +3495,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PBCOpField
         {
             get => PBCOp.ToString("F4", CultureInfo.InvariantCulture);
-            set => PBCOp = Converter.ToDouble(value);
+            set => PBCOp = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("UFST")]
@@ -3545,7 +3545,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PCredSNField
         {
             get => PCredSN.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCredSN = Converter.ToDouble(value);
+            set => PCredSN = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3555,7 +3555,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCredICMSSNField
         {
             get => VCredICMSSN.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredICMSSN = Converter.ToDouble(value);
+            set => VCredICMSSN = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -3640,7 +3640,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3650,7 +3650,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3660,7 +3660,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3670,7 +3670,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3680,7 +3680,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3690,7 +3690,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3700,7 +3700,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3710,7 +3710,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3720,7 +3720,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PCredSNField
         {
             get => PCredSN?.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCredSN = Converter.ToDouble(value);
+            set => PCredSN = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3730,7 +3730,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCredICMSSNField
         {
             get => VCredICMSSN?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredICMSSN = Converter.ToDouble(value);
+            set => VCredICMSSN = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -3803,7 +3803,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3813,7 +3813,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3823,7 +3823,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3833,7 +3833,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3843,7 +3843,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3853,7 +3853,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3863,7 +3863,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3873,7 +3873,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -3922,7 +3922,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTRetField
         {
             get => VBCSTRet?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCSTRet = Converter.ToDouble(value);
+            set => VBCSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3932,7 +3932,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PSTField
         {
             get => PST?.ToString("F4", CultureInfo.InvariantCulture);
-            set => PST = Converter.ToDouble(value);
+            set => PST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3942,7 +3942,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSubstitutoField
         {
             get => VICMSSubstituto?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSubstituto = Converter.ToDouble(value);
+            set => VICMSSubstituto = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3952,7 +3952,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTRetField
         {
             get => VICMSSTRet?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTRet = Converter.ToDouble(value);
+            set => VICMSSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3962,7 +3962,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTRetField
         {
             get => VBCFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPSTRet = Converter.ToDouble(value);
+            set => VBCFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3972,7 +3972,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTRetField
         {
             get => PFCPSTRet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPSTRet = Converter.ToDouble(value);
+            set => PFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3982,7 +3982,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTRetField
         {
             get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPSTRet = Converter.ToDouble(value);
+            set => VFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -3992,7 +3992,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCEfetField
         {
             get => PRedBCEfet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCEfet = Converter.ToDouble(value);
+            set => PRedBCEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4002,7 +4002,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCEfetField
         {
             get => VBCEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCEfet = Converter.ToDouble(value);
+            set => VBCEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4012,7 +4012,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSEfetField
         {
             get => PICMSEfet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSEfet = Converter.ToDouble(value);
+            set => PICMSEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4022,7 +4022,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSEfetField
         {
             get => VICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSEfet = Converter.ToDouble(value);
+            set => VICMSEfet = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -4080,7 +4080,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4090,7 +4090,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCField
         {
             get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBC = Converter.ToDouble(value);
+            set => PRedBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4100,7 +4100,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSField
         {
             get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMS = Converter.ToDouble(value);
+            set => PICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4110,7 +4110,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4141,7 +4141,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PMVASTField
         {
             get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PMVAST = Converter.ToDouble(value);
+            set => PMVAST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4151,7 +4151,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCSTField
         {
             get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCST = Converter.ToDouble(value);
+            set => PRedBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4161,7 +4161,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4171,7 +4171,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSSTField
         {
             get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSST = Converter.ToDouble(value);
+            set => PICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4181,7 +4181,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTField
         {
             get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSST = Converter.ToDouble(value);
+            set => VICMSST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4191,7 +4191,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTField
         {
             get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPST = Converter.ToDouble(value);
+            set => VBCFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4201,7 +4201,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTField
         {
             get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPST = Converter.ToDouble(value);
+            set => PFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4211,7 +4211,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4221,7 +4221,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PCredSNField
         {
             get => PCredSN.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCredSN = Converter.ToDouble(value);
+            set => PCredSN = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4231,7 +4231,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCredICMSSNField
         {
             get => VCredICMSSN.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCredICMSSN = Converter.ToDouble(value);
+            set => VCredICMSSN = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -4303,7 +4303,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTRetField
         {
             get => VBCSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCSTRet = Converter.ToDouble(value);
+            set => VBCSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4313,7 +4313,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PSTField
         {
             get => PST?.ToString("F4", CultureInfo.InvariantCulture);
-            set => PST = Converter.ToDouble(value);
+            set => PST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4323,7 +4323,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSubstitutoField
         {
             get => VICMSSubstituto?.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSubstituto = Converter.ToDouble(value);
+            set => VICMSSubstituto = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4333,7 +4333,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTRetField
         {
             get => VICMSSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTRet = Converter.ToDouble(value);
+            set => VICMSSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4346,7 +4346,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPSTRetField
         {
             get => VBCFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPSTRet = Converter.ToDouble(value);
+            set => VBCFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4356,7 +4356,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPSTRetField
         {
             get => PFCPSTRet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPSTRet = Converter.ToDouble(value);
+            set => PFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4366,14 +4366,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTRetField
         {
             get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPSTRet = Converter.ToDouble(value);
+            set => VFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("vBCSTDest")]
         public string VBCSTDestField
         {
             get => VBCSTDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCSTDest = Converter.ToDouble(value);
+            set => VBCSTDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4383,7 +4383,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSSTDestField
         {
             get => VICMSSTDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSSTDest = Converter.ToDouble(value);
+            set => VICMSSTDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4393,7 +4393,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PRedBCEfetField
         {
             get => PRedBCEfet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PRedBCEfet = Converter.ToDouble(value);
+            set => PRedBCEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4403,7 +4403,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCEfetField
         {
             get => VBCEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCEfet = Converter.ToDouble(value);
+            set => VBCEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4413,7 +4413,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSEfetField
         {
             get => PICMSEfet.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSEfet = Converter.ToDouble(value);
+            set => PICMSEfet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4423,7 +4423,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSEfetField
         {
             get => VICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSEfet = Converter.ToDouble(value);
+            set => VICMSEfet = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -4454,7 +4454,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4464,7 +4464,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDespAduField
         {
             get => VDespAdu.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDespAdu = Converter.ToDouble(value);
+            set => VDespAdu = Utility.Converter.ToDouble(value);
         }
 
 
@@ -4475,7 +4475,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIIField
         {
             get => VII.ToString("F2", CultureInfo.InvariantCulture);
-            set => VII = Converter.ToDouble(value);
+            set => VII = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4485,7 +4485,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIOFField
         {
             get => VIOF.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIOF = Converter.ToDouble(value);
+            set => VIOF = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -4580,7 +4580,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4590,7 +4590,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PIPIField
         {
             get => PIPI.ToString("F4", CultureInfo.InvariantCulture);
-            set => PIPI = Converter.ToDouble(value);
+            set => PIPI = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4600,7 +4600,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QUnidField
         {
             get => QUnid.ToString("F4", CultureInfo.InvariantCulture);
-            set => QUnid = Converter.ToDouble(value);
+            set => QUnid = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4610,7 +4610,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VUnidField
         {
             get => VUnid.ToString("F4", CultureInfo.InvariantCulture);
-            set => VUnid = Converter.ToDouble(value);
+            set => VUnid = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4620,7 +4620,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIPIField
         {
             get => VIPI.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIPI = Converter.ToDouble(value);
+            set => VIPI = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -4647,7 +4647,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4657,7 +4657,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VAliqField
         {
             get => VAliq.ToString("F4", CultureInfo.InvariantCulture);
-            set => VAliq = Converter.ToDouble(value);
+            set => VAliq = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4667,7 +4667,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VISSQNField
         {
             get => VISSQN.ToString("F2", CultureInfo.InvariantCulture);
-            set => VISSQN = Converter.ToDouble(value);
+            set => VISSQN = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("cMunFG")]
@@ -4683,7 +4683,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDeducaoField
         {
             get => VDeducao.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDeducao = Converter.ToDouble(value);
+            set => VDeducao = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4693,7 +4693,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VOutroField
         {
             get => VOutro.ToString("F2", CultureInfo.InvariantCulture);
-            set => VOutro = Converter.ToDouble(value);
+            set => VOutro = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4703,7 +4703,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescIncondField
         {
             get => VDescIncond.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDescIncond = Converter.ToDouble(value);
+            set => VDescIncond = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4713,7 +4713,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescCondField
         {
             get => VDescCond.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDescCond = Converter.ToDouble(value);
+            set => VDescCond = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4723,7 +4723,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VISSRetField
         {
             get => VISSRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VISSRet = Converter.ToDouble(value);
+            set => VISSRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("indISS")]
@@ -4814,7 +4814,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4824,7 +4824,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PPISField
         {
             get => PPIS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PPIS = Converter.ToDouble(value);
+            set => PPIS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4834,7 +4834,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPISField
         {
             get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPIS = Converter.ToDouble(value);
+            set => VPIS = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -4895,7 +4895,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4905,7 +4905,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PPISField
         {
             get => PPIS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PPIS = Converter.ToDouble(value);
+            set => PPIS = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("qBCProd")]
@@ -4921,7 +4921,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPISField
         {
             get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPIS = Converter.ToDouble(value);
+            set => VPIS = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -4972,7 +4972,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPISField
         {
             get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPIS = Converter.ToDouble(value);
+            set => VPIS = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -4987,7 +4987,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -4997,7 +4997,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PPISField
         {
             get => PPIS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PPIS = Converter.ToDouble(value);
+            set => PPIS = Utility.Converter.ToDouble(value);
         }
 
 
@@ -5014,7 +5014,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPISField
         {
             get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPIS = Converter.ToDouble(value);
+            set => VPIS = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("indSomaPISST")]
@@ -5082,7 +5082,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5092,7 +5092,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PCOFINSField
         {
             get => PCOFINS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCOFINS = Converter.ToDouble(value);
+            set => PCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5102,7 +5102,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCOFINSField
         {
             get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCOFINS = Converter.ToDouble(value);
+            set => VCOFINS = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -5163,7 +5163,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5173,7 +5173,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PCOFINSField
         {
             get => PCOFINS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCOFINS = Converter.ToDouble(value);
+            set => PCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("qBCProd")]
@@ -5189,7 +5189,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCOFINSField
         {
             get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCOFINS = Converter.ToDouble(value);
+            set => VCOFINS = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -5240,7 +5240,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCOFINSField
         {
             get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCOFINS = Converter.ToDouble(value);
+            set => VCOFINS = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -5255,7 +5255,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5265,7 +5265,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PCOFINSField
         {
             get => PCOFINS.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCOFINS = Converter.ToDouble(value);
+            set => PCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("qBCProd")]
@@ -5281,7 +5281,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCOFINSField
         {
             get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCOFINS = Converter.ToDouble(value);
+            set => VCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("indSomaCOFINSST")]
@@ -5313,7 +5313,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCUFDestField
         {
             get => VBCUFDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCUFDest = Converter.ToDouble(value);
+            set => VBCUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5323,7 +5323,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCFCPUFDestField
         {
             get => VBCFCPUFDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCFCPUFDest = Converter.ToDouble(value);
+            set => VBCFCPUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5333,7 +5333,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PFCPUFDestField
         {
             get => PFCPUFDest.ToString("F4", CultureInfo.InvariantCulture);
-            set => PFCPUFDest = Converter.ToDouble(value);
+            set => PFCPUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5343,7 +5343,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSUFDestField
         {
             get => PICMSUFDest.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSUFDest = Converter.ToDouble(value);
+            set => PICMSUFDest = Utility.Converter.ToDouble(value);
         }
 
         private double PICMSInterField2;
@@ -5369,7 +5369,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSInterField
         {
             get => PICMSInter.ToString("F2", CultureInfo.InvariantCulture);
-            set => PICMSInter = Converter.ToDouble(value);
+            set => PICMSInter = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5379,7 +5379,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSInterPartField
         {
             get => PICMSInterPart.ToString("F4", CultureInfo.InvariantCulture);
-            set => PICMSInterPart = Converter.ToDouble(value);
+            set => PICMSInterPart = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5389,7 +5389,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPUFDestField
         {
             get => VFCPUFDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPUFDest = Converter.ToDouble(value);
+            set => VFCPUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5399,7 +5399,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSUFDestField
         {
             get => VICMSUFDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSUFDest = Converter.ToDouble(value);
+            set => VICMSUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5409,7 +5409,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSUFRemetField
         {
             get => VICMSUFRemet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSUFRemet = Converter.ToDouble(value);
+            set => VICMSUFRemet = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -5434,7 +5434,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PDevolField
         {
             get => PDevol.ToString("F2", CultureInfo.InvariantCulture);
-            set => PDevol = Converter.ToDouble(value);
+            set => PDevol = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("IPI")]
@@ -5452,7 +5452,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIPIDevolField
         {
             get => VIPIDevol.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIPIDevol = Converter.ToDouble(value);
+            set => VIPIDevol = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -5481,7 +5481,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5490,7 +5490,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Converter.ToDouble(value);
+            set => VICMS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5499,7 +5499,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSDesonField
         {
             get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSDeson = Converter.ToDouble(value);
+            set => VICMSDeson = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5508,7 +5508,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPUFDestField
         {
             get => VFCPUFDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPUFDest = Converter.ToDouble(value);
+            set => VFCPUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5517,7 +5517,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSUFDestField
         {
             get => VICMSUFDest.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSUFDest = Converter.ToDouble(value);
+            set => VICMSUFDest = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5526,7 +5526,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSUFRemetField
         {
             get => VICMSUFRemet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSUFRemet = Converter.ToDouble(value);
+            set => VICMSUFRemet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5535,7 +5535,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPField
         {
             get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCP = Converter.ToDouble(value);
+            set => VFCP = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5544,7 +5544,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCSTField
         {
             get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCST = Converter.ToDouble(value);
+            set => VBCST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5553,7 +5553,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VSTField
         {
             get => VST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VST = Converter.ToDouble(value);
+            set => VST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5562,7 +5562,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTField
         {
             get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPST = Converter.ToDouble(value);
+            set => VFCPST = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5571,7 +5571,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFCPSTRetField
         {
             get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFCPSTRet = Converter.ToDouble(value);
+            set => VFCPSTRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5580,7 +5580,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VProdField
         {
             get => VProd.ToString("F2", CultureInfo.InvariantCulture);
-            set => VProd = Converter.ToDouble(value);
+            set => VProd = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5589,7 +5589,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VFreteField
         {
             get => VFrete.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFrete = Converter.ToDouble(value);
+            set => VFrete = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5598,7 +5598,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VSegField
         {
             get => VSeg.ToString("F2", CultureInfo.InvariantCulture);
-            set => VSeg = Converter.ToDouble(value);
+            set => VSeg = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5607,7 +5607,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescField
         {
             get => VDesc.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDesc = Converter.ToDouble(value);
+            set => VDesc = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5616,7 +5616,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIIField
         {
             get => VII.ToString("F2", CultureInfo.InvariantCulture);
-            set => VII = Converter.ToDouble(value);
+            set => VII = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5625,7 +5625,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIPIField
         {
             get => VIPI.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIPI = Converter.ToDouble(value);
+            set => VIPI = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5634,7 +5634,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIPIDevolField
         {
             get => VIPIDevol.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIPIDevol = Converter.ToDouble(value);
+            set => VIPIDevol = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5643,7 +5643,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPISField
         {
             get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPIS = Converter.ToDouble(value);
+            set => VPIS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5652,7 +5652,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCOFINSField
         {
             get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCOFINS = Converter.ToDouble(value);
+            set => VCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5661,7 +5661,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VOutroField
         {
             get => VOutro.ToString("F2", CultureInfo.InvariantCulture);
-            set => VOutro = Converter.ToDouble(value);
+            set => VOutro = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5670,7 +5670,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VNFField
         {
             get => VNF.ToString("F2", CultureInfo.InvariantCulture);
-            set => VNF = Converter.ToDouble(value);
+            set => VNF = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5679,7 +5679,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VTotTribField
         {
             get => VTotTrib.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTotTrib = Converter.ToDouble(value);
+            set => VTotTrib = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -5706,7 +5706,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VServField
         {
             get => VServ.ToString("F2", CultureInfo.InvariantCulture);
-            set => VServ = Converter.ToDouble(value);
+            set => VServ = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5716,7 +5716,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Converter.ToDouble(value);
+            set => VBC = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5726,7 +5726,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VISSField
         {
             get => VISS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VISS = Converter.ToDouble(value);
+            set => VISS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5736,7 +5736,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPISField
         {
             get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPIS = Converter.ToDouble(value);
+            set => VPIS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5746,7 +5746,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VCOFINSField
         {
             get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VCOFINS = Converter.ToDouble(value);
+            set => VCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5766,7 +5766,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDeducaoField
         {
             get => VDeducao.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDeducao = Converter.ToDouble(value);
+            set => VDeducao = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5776,7 +5776,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VOutroField
         {
             get => VOutro.ToString("F2", CultureInfo.InvariantCulture);
-            set => VOutro = Converter.ToDouble(value);
+            set => VOutro = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5786,7 +5786,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescIncondField
         {
             get => VDescIncond.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDescIncond = Converter.ToDouble(value);
+            set => VDescIncond = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5796,7 +5796,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescCondField
         {
             get => VDescCond.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDescCond = Converter.ToDouble(value);
+            set => VDescCond = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5806,7 +5806,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VISSRetField
         {
             get => VISSRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VISSRet = Converter.ToDouble(value);
+            set => VISSRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("cRegTrib")]
@@ -5851,7 +5851,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VRetPISField
         {
             get => VRetPIS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VRetPIS = Converter.ToDouble(value);
+            set => VRetPIS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5861,7 +5861,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VRetCOFINSField
         {
             get => VRetCOFINS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VRetCOFINS = Converter.ToDouble(value);
+            set => VRetCOFINS = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5871,7 +5871,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VRetCSLLField
         {
             get => VRetCSLL.ToString("F2", CultureInfo.InvariantCulture);
-            set => VRetCSLL = Converter.ToDouble(value);
+            set => VRetCSLL = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5881,7 +5881,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCIRRFField
         {
             get => VBCIRRF.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCIRRF = Converter.ToDouble(value);
+            set => VBCIRRF = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5891,7 +5891,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VIRRFField
         {
             get => VIRRF.ToString("F2", CultureInfo.InvariantCulture);
-            set => VIRRF = Converter.ToDouble(value);
+            set => VIRRF = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5901,7 +5901,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCRetPrevField
         {
             get => VBCRetPrev.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCRetPrev = Converter.ToDouble(value);
+            set => VBCRetPrev = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -5911,7 +5911,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VRetPrevField
         {
             get => VRetPrev.ToString("F2", CultureInfo.InvariantCulture);
-            set => VRetPrev = Converter.ToDouble(value);
+            set => VRetPrev = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -6082,7 +6082,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VServField
         {
             get => VServ.ToString("F2", CultureInfo.InvariantCulture);
-            set => VServ = Converter.ToDouble(value);
+            set => VServ = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6092,7 +6092,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VBCRetField
         {
             get => VBCRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBCRet = Converter.ToDouble(value);
+            set => VBCRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6102,7 +6102,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PICMSRetField
         {
             get => PICMSRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => PICMSRet = Converter.ToDouble(value);
+            set => PICMSRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6112,7 +6112,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VICMSRetRetField
         {
             get => VICMSRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSRet = Converter.ToDouble(value);
+            set => VICMSRet = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("CFOP")]
@@ -6142,11 +6142,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class VeicTransp : VeiculoBase { }
+    public class VeicTransp: VeiculoBase { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class Reboque : VeiculoBase { }
+    public class Reboque: VeiculoBase { }
 
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
@@ -6182,7 +6182,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PesoLField
         {
             get => PesoL.ToString("F3", CultureInfo.InvariantCulture);
-            set => PesoL = Converter.ToDouble(value);
+            set => PesoL = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6192,7 +6192,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string PesoBField
         {
             get => PesoB.ToString("F3", CultureInfo.InvariantCulture);
-            set => PesoB = Converter.ToDouble(value);
+            set => PesoB = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("lacres")]
@@ -6263,7 +6263,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VOrigField
         {
             get => VOrig.ToString("F2", CultureInfo.InvariantCulture);
-            set => VOrig = Converter.ToDouble(value);
+            set => VOrig = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6273,7 +6273,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDescField
         {
             get => VDesc.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDesc = Converter.ToDouble(value);
+            set => VDesc = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6283,7 +6283,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VLiqField
         {
             get => VLiq.ToString("F2", CultureInfo.InvariantCulture);
-            set => VLiq = Converter.ToDouble(value);
+            set => VLiq = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -6318,7 +6318,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDupField
         {
             get => VDup.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDup = Converter.ToDouble(value);
+            set => VDup = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -6336,7 +6336,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VTrocoField
         {
             get => VTroco.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTroco = Converter.ToDouble(value);
+            set => VTroco = Utility.Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
@@ -6386,7 +6386,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VPagField
         {
             get => VPag.ToString("F2", CultureInfo.InvariantCulture);
-            set => VPag = Converter.ToDouble(value);
+            set => VPag = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("card")]
@@ -6626,7 +6626,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QTotMesField
         {
             get => QTotMes.ToString("F10", CultureInfo.InvariantCulture);
-            set => QTotMes = Converter.ToDouble(value);
+            set => QTotMes = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6636,7 +6636,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QTotAntField
         {
             get => QTotAnt.ToString("F10", CultureInfo.InvariantCulture);
-            set => QTotAnt = Converter.ToDouble(value);
+            set => QTotAnt = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6646,7 +6646,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QTotGerField
         {
             get => QTotGer.ToString("F10", CultureInfo.InvariantCulture);
-            set => QTotGer = Converter.ToDouble(value);
+            set => QTotGer = Utility.Converter.ToDouble(value);
         }
 
         [XmlElement("deduc")]
@@ -6659,7 +6659,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VForField
         {
             get => VFor.ToString("F2", CultureInfo.InvariantCulture);
-            set => VFor = Converter.ToDouble(value);
+            set => VFor = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6669,7 +6669,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VTotDedField
         {
             get => VTotDed.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTotDed = Converter.ToDouble(value);
+            set => VTotDed = Utility.Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -6679,7 +6679,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VLiqForField
         {
             get => VLiqFor.ToString("F2", CultureInfo.InvariantCulture);
-            set => VLiqFor = Converter.ToDouble(value);
+            set => VLiqFor = Utility.Converter.ToDouble(value);
         }
     }
 
@@ -6694,7 +6694,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string QtdeField
         {
             get => Qtde.ToString("F10", CultureInfo.InvariantCulture);
-            set => Qtde = Converter.ToDouble(value);
+            set => Qtde = Utility.Converter.ToDouble(value);
         }
 
         [XmlAttribute(AttributeName = "dia")]
@@ -6721,7 +6721,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VDedField
         {
             get => VDed.ToString("F2", CultureInfo.InvariantCulture);
-            set => VDed = Converter.ToDouble(value);
+            set => VDed = Utility.Converter.ToDouble(value);
         }
     }
 

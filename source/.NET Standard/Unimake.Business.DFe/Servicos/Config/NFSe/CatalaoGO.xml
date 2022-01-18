@@ -70,8 +70,8 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.notapdf"><soapenv:Header/><soapenv:Body><ser:ConsultarNotapdfRequest><notapdfCabecMsg>&lt;cabecalho&gt;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</notapdfCabecMsg><notapdfDadosMsg>{xmlBodyScape}</notapdfDadosMsg></ser:ConsultarNotapdfRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>outputXML</WebTagRetorno>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.notapdf"><soapenv:Header/><soapenv:Body><ser:ConsultarNotapdfRequest><notapdfCabecMsg>&lt;cabecalho&gt;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</notapdfCabecMsg><notapdfDadosMsg>{xmlBodyScape}</notapdfDadosMsg></ser:ConsultarNotapdfRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>outputXML</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.01</SchemaVersao>
