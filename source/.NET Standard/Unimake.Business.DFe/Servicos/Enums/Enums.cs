@@ -832,6 +832,29 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region SimNao
+
+    /// <summary>
+    /// Sim ou Não (1 ou 2)
+    /// </summary>
+    public enum SimNao12
+    {
+        /// <summary>
+        /// Sim (1)
+        /// </summary>
+        [XmlEnum("1")]
+        Sim = 1,
+
+        /// <summary>
+        /// Não (2)
+        /// </summary>
+        [XmlEnum("2")]
+        Nao = 2
+    }
+
+    #endregion
+
+
     #region TipoOperacao
 
     /// <summary>

@@ -4742,7 +4742,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string NProcesso { get; set; }
 
         [XmlElement("indIncentivo")]
-        public SimNao IndIncentivo { get; set; }
+        public SimNao12 IndIncentivo { get; set; }
 
         #region ShouldSerialize
 
@@ -4760,7 +4760,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeCMun() => CMun > 0;
 
-        public bool ShouldSerializeCPais() => CPais > 0;
+        public bool ShouldSerializeCPais() => CPais > 0 && CPais != 1058;
 
         public bool ShouldSerializeNProcesso() => string.IsNullOrWhiteSpace(NProcesso);
 
