@@ -271,7 +271,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string NatOp
         {
             get => _natOp;
-            set => _natOp = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => _natOp = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("mod")]
@@ -364,7 +364,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XJust
         {
             get => XJustField;
-            set => XJustField = XMLUtility.EnsureStringContent(value).Truncate(256);
+            set => XJustField = XMLUtility.UnescapeReservedCharacters(value).Truncate(256);
         }
 
         [XmlElement("NFref")]
@@ -616,14 +616,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XNome
         {
             get => XNomeField;
-            set => XNomeField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XNomeField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xFant")]
         public string XFant
         {
             get => XFantField;
-            set => XFantField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XFantField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("enderEmit")]
@@ -672,28 +672,28 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XLgr
         {
             get => XLgrField;
-            set => XLgrField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XLgrField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("nro")]
         public string Nro
         {
             get => NroField;
-            set => NroField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => NroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xCpl")]
         public string XCpl
         {
             get => XCplField;
-            set => XCplField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XCplField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xBairro")]
         public string XBairro
         {
             get => XBairroField;
-            set => XBairroField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XBairroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("cMun")]
@@ -703,7 +703,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XMun
         {
             get => XMunField;
-            set => XMunField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XMunField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("UF")]
@@ -719,7 +719,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XPais
         {
             get => XPaisField;
-            set => XPaisField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XPaisField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("fone")]
@@ -825,7 +825,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XNome
         {
             get => XNomeField;
-            set => XNomeField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XNomeField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("enderDest")]
@@ -882,28 +882,28 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XLgr
         {
             get => XLgrField;
-            set => XLgrField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XLgrField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("nro")]
         public string Nro
         {
             get => NroField;
-            set => NroField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => NroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xCpl")]
         public string XCpl
         {
             get => XCplField;
-            set => XCplField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XCplField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xBairro")]
         public string XBairro
         {
             get => XBairroField;
-            set => XBairroField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XBairroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("cMun")]
@@ -913,7 +913,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XMun
         {
             get => XMunField;
-            set => XMunField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XMunField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("UF")]
@@ -929,7 +929,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XPais
         {
             get => XPaisField;
-            set => XPaisField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XPaisField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("fone")]
@@ -970,35 +970,35 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XNome
         {
             get => XNomeField;
-            set => XNomeField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XNomeField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xLgr")]
         public string XLgr
         {
             get => XLgrField;
-            set => XLgrField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XLgrField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("nro")]
         public string Nro
         {
             get => NroField;
-            set => NroField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => NroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xCpl")]
         public string XCpl
         {
             get => XCplField;
-            set => XCplField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XCplField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xBairro")]
         public string XBairro
         {
             get => XBairroField;
-            set => XBairroField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XBairroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("cMun")]
@@ -1008,7 +1008,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XMun
         {
             get => XMunField;
-            set => XMunField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XMunField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("UF")]
@@ -1024,7 +1024,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XPais
         {
             get => XPaisField;
-            set => XPaisField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XPaisField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("fone")]
@@ -1110,7 +1110,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string InfAdProd
         {
             get => string.IsNullOrWhiteSpace(InfAdProdField) ? null : InfAdProdField;
-            set => InfAdProdField = XMLUtility.EnsureStringContent(value).Truncate(500);
+            set => InfAdProdField = XMLUtility.UnescapeReservedCharacters(value).Truncate(500);
         }
     }
 
@@ -1133,7 +1133,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XProd
         {
             get => XProdField;
-            set => XProdField = XMLUtility.EnsureStringContent(value).Truncate(120);
+            set => XProdField = XMLUtility.UnescapeReservedCharacters(value).Truncate(120);
         }
 
         [XmlElement("NCM")]
@@ -1594,7 +1594,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Descr
         {
             get => DescrField;
-            set => DescrField = XMLUtility.EnsureStringContent(value).Truncate(256);
+            set => DescrField = XMLUtility.UnescapeReservedCharacters(value).Truncate(256);
         }
     }
 
@@ -1768,7 +1768,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XMotivoIsencao
         {
             get => XMotivoIsencaoField;
-            set => XMotivoIsencaoField = XMLUtility.EnsureStringContent(value).Truncate(255);
+            set => XMotivoIsencaoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(255);
         }
 
         [XmlIgnore]
@@ -5960,14 +5960,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Vagao
         {
             get => VagaoField;
-            set => VagaoField = XMLUtility.EnsureStringContent(value).Truncate(20);
+            set => VagaoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(20);
         }
 
         [XmlElement("balsa")]
         public string Balsa
         {
             get => BalsaField;
-            set => BalsaField = XMLUtility.EnsureStringContent(value).Truncate(20);
+            set => BalsaField = XMLUtility.UnescapeReservedCharacters(value).Truncate(20);
         }
 
         [XmlElement("vol")]
@@ -6024,7 +6024,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XNome
         {
             get => XNomeField;
-            set => XNomeField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XNomeField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("IE")]
@@ -6034,14 +6034,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XEnder
         {
             get => XEnderField;
-            set => XEnderField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XEnderField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xMun")]
         public string XMun
         {
             get => XMunField;
-            set => XMunField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XMunField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
 #if INTEROP
@@ -6162,14 +6162,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Esp
         {
             get => EspField;
-            set => EspField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => EspField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("marca")]
         public string Marca
         {
             get => MarcaField;
-            set => MarcaField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => MarcaField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("nVol")]
@@ -6376,7 +6376,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XPag
         {
             get => XPagField;
-            set => XPagField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XPagField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlIgnore]
@@ -6460,14 +6460,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string InfAdFisco
         {
             get => InfAdFiscoField;
-            set => InfAdFiscoField = XMLUtility.EnsureStringContent(value).Truncate(2000);
+            set => InfAdFiscoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(2000);
         }
 
         [XmlElement("infCpl")]
         public string InfCpl
         {
             get => InfCplField;
-            set => InfCplField = XMLUtility.EnsureStringContent(value).Truncate(5000);
+            set => InfCplField = XMLUtility.UnescapeReservedCharacters(value).Truncate(5000);
         }
 
         [XmlElement("obsCont")]
@@ -6501,7 +6501,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XTexto
         {
             get => XTextoField;
-            set => XTextoField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XTextoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlAttribute(AttributeName = "xCampo")]
@@ -6518,7 +6518,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XTexto
         {
             get => XTextoField;
-            set => XTextoField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XTextoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlAttribute(AttributeName = "xCampo")]
@@ -6565,14 +6565,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XLocExporta
         {
             get => XLocExportaField;
-            set => XLocExportaField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XLocExportaField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("xLocDespacho")]
         public string XLocDespacho
         {
             get => XLocDespachoField;
-            set => XLocDespachoField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XLocDespachoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         #region ShouldSerialize
@@ -6711,7 +6711,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XDed
         {
             get => XDedField;
-            set => XDedField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XDedField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlIgnore]
@@ -6738,7 +6738,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XContato
         {
             get => XContatoField;
-            set => XContatoField = XMLUtility.EnsureStringContent(value).Truncate(60);
+            set => XContatoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
         [XmlElement("email")]
