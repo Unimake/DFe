@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.betha.com.br/e-nota-contribuinte-ws">
+  <Rps>
+    <InfDeclaracaoPrestacaoServico Id="lote1">
+      <Competencia>2014-12-02</Competencia>
+      <Servico>
+        <Valores>
+          <ValorServicos>110</ValorServicos>
+        </Valores>
+        <IssRetido>2</IssRetido>
+        <ItemListaServico>0702</ItemListaServico>
+        <Discriminacao>Prog.</Discriminacao>
+        <CodigoMunicipio>4204608</CodigoMunicipio>
+        <ExigibilidadeISS>1</ExigibilidadeISS>
+        <MunicipioIncidencia>4204608</MunicipioIncidencia>
+      </Servico>
+      <Prestador>
+        <CpfCnpj>
+          <Cnpj>45111111111100</Cnpj>
+        </CpfCnpj>
+      </Prestador>
+      <OptanteSimplesNacional>2</OptanteSimplesNacional>
+      <IncentivoFiscal>2</IncentivoFiscal>
+    </InfDeclaracaoPrestacaoServico>
+  </Rps>
+</GerarNfseEnvio>

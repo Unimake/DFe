@@ -550,4 +550,10 @@
 		<ArqConfig>MogiGuacuSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5105606">
+		<Nome>Matupá - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>MatupaMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
