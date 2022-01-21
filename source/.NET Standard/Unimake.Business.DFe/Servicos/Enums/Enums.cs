@@ -1024,6 +1024,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 8=Contingência SVC-SP (SEFAZ Virtual de Contingência de SP);
         /// </summary>
+        [XmlEnum("8")]
         ContingenciaSVCSP = 8,
 
         /// <summary>
