@@ -14,6 +14,7 @@ namespace Unimake.Business.DFe.Utility
     /// </summary>
     public static class XMLUtility
     {
+
         #region Public Structs
 
         /// <summary>
@@ -21,6 +22,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         public struct ConteudoChaveDFe
         {
+
             #region Public Properties
 
             /// <summary>
@@ -74,6 +76,7 @@ namespace Unimake.Business.DFe.Utility
             public UFBrasil UFEmissor { get; set; }
 
             #endregion Public Properties
+
         }
 
         #endregion Public Structs
@@ -85,6 +88,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         public class TNameSpace
         {
+
             #region Public Properties
 
             /// <summary>
@@ -98,6 +102,7 @@ namespace Unimake.Business.DFe.Utility
             public string Prefix { get; set; }
 
             #endregion Public Properties
+
         }
 
         /// <summary>
@@ -105,6 +110,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         public class Utf8StringWriter : StringWriter
         {
+
             #region Public Properties
 
             /// <summary>
@@ -113,6 +119,7 @@ namespace Unimake.Business.DFe.Utility
             public override Encoding Encoding => Encoding.UTF8;
 
             #endregion Public Properties
+
         }
 
         #endregion Public Classes
@@ -626,6 +633,136 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
+        /// De acordo com os dados do XML será detectado de qual tipo ele é: XML de NFe, CTe, Consulta Status, Consulta Situação, Evento, etc...
+        /// </summary>
+        public static TipoXML DetectXMLType(XmlDocument xmlDoc)
+        {
+            TipoXML tipoXML = TipoXML.NaoIdentificado;
+            switch (xmlDoc.DocumentElement.Name)
+            {
+                #region XML NFe
+
+                case "consStatServ":
+                    tipoXML = TipoXML.NFeStatusServico;
+                    break;
+
+                case "consSitNFe":
+                    tipoXML = TipoXML.NFeConsultaSituacao;
+                    break;
+
+                case "consReciNFe":
+                    tipoXML = TipoXML.NFeConsultaRecibo;
+                    break;
+
+                case "ConsCad":
+                    tipoXML = TipoXML.NFeConsultaCadastro;
+                    break;
+
+                case "distDFeInt":
+                    if (xmlDoc.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower().Contains("/nfe"))
+                    {
+                        tipoXML = TipoXML.NFeDistribuicaoDFe;
+                    }
+                    else if (xmlDoc.GetElementsByTagName("distDFeInt")[0].NamespaceURI.ToLower().Contains("/cte"))
+                    {
+                        tipoXML = TipoXML.CTeDistribuicaoDFe;
+                    }
+                    break;
+
+                case "envEvento":
+                    tipoXML = TipoXML.NFeEnvioEvento;
+                    break;
+
+                case "inutNFe":
+                    tipoXML = TipoXML.NFeInutilizacao;
+                    break;
+
+                case "NFe":
+                    tipoXML = TipoXML.NFe;
+                    break;
+
+                case "enviNFe":
+                    tipoXML = TipoXML.NFeEnvioEmLote;
+                    break;
+
+                #endregion
+
+                #region XML CTe 
+
+                case "consStatServCte":
+                    tipoXML = TipoXML.CTeStatusServico;
+                    break;
+
+                case "consSitCTe":
+                    tipoXML = TipoXML.CTeConsultaSituacao;
+                    break;
+
+                case "consReciCTe":
+                    tipoXML = TipoXML.CTeConsultaRecibo;
+                    break;
+
+                case "eventoCTe":
+                    tipoXML = TipoXML.CTeEnvioEvento;
+                    break;
+
+                case "inutCTe":
+                    tipoXML = TipoXML.CTeInutilizacao;
+                    break;
+
+                case "CTe":
+                    tipoXML = TipoXML.NFe;
+                    break;
+
+                case "enviCTe":
+                    tipoXML = TipoXML.NFeEnvioEmLote;
+                    break;
+
+                case "CTeOS":
+                    tipoXML = TipoXML.CTeOS;
+                    break;
+
+                #endregion
+
+                #region XML do MDFe
+
+                case "consStatServMDFe":
+                    tipoXML = TipoXML.MDFeStatusServico;
+                    break;
+
+                case "consSitMDFe":
+                    tipoXML = TipoXML.MDFeConsultaSituacao;
+                    break;
+
+                case "consReciMDFe":
+                    tipoXML = TipoXML.MDFeConsultaRecibo;
+                    break;
+
+                case "eventoMDFe":
+                    tipoXML = TipoXML.MDFeEnvioEvento;
+                    break;
+
+                case "MDFe":
+                    tipoXML = TipoXML.MDFe;
+                    break;
+
+                case "enviMDFe":
+                    tipoXML = TipoXML.MDFeEnvioEmLote;
+                    break;
+
+                case "consMDFeNaoEnc":
+                    tipoXML = TipoXML.MDFeConsultaNaoEncerrado;
+                    break;
+
+                #endregion
+
+                default:
+                    break;
+            }
+
+            return tipoXML;
+        }
+
+        /// <summary>
         /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
         /// Tratar caracteres especiais existentes na string substituindo por escape.
         /// </summary>
@@ -1107,129 +1244,6 @@ namespace Unimake.Business.DFe.Utility
              */
 
             return content;
-        }
-
-        /// <summary>
-        /// De acordo com os dados do XML será detectado de qual tipo ele é: XML de NFe, CTe, Consulta Status, Consulta Situação, Evento, etc...
-        /// </summary>
-        public static TipoXML DetectXMLType(XmlDocument xmlDoc)
-        {
-            TipoXML tipoXML = TipoXML.NaoIdentificado;
-            switch (xmlDoc.DocumentElement.Name)
-            {
-                #region XML NFe
-
-                case "consStatServ":
-                    tipoXML = TipoXML.NFeStatusServico;
-                    break;
-
-                case "consSitNFe":
-                    tipoXML = TipoXML.NFeConsultaSituacao;
-                    break;
-
-                case "consReciNFe":
-                    tipoXML = TipoXML.NFeConsultaRecibo;
-                    break;
-
-                case "ConsCad":
-                    tipoXML = TipoXML.NFeConsultaCadastro;
-                    break;
-
-                case "distDFeInt":
-                    tipoXML = TipoXML.NFeDistribuicaoDFe;
-                    break;
-
-                case "envEvento":
-                    tipoXML = TipoXML.NFeEnvioEvento;
-                    break;
-
-                case "inutNFe":
-                    tipoXML = TipoXML.NFeInutilizacao;
-                    break;
-
-                case "NFe":
-                    tipoXML = TipoXML.NFe;
-                    break;
-
-                case "enviNFe":
-                    tipoXML = TipoXML.NFeEnvioEmLote;
-                    break;
-
-                #endregion
-
-                #region XML CTe 
-
-                case "consStatServCte":
-                    tipoXML = TipoXML.CTeStatusServico;
-                    break;
-
-                case "consSitCTe":
-                    tipoXML = TipoXML.CTeConsultaSituacao;
-                    break;
-
-                case "consReciCTe":
-                    tipoXML = TipoXML.CTeConsultaRecibo;
-                    break;
-
-                case "eventoCTe":
-                    tipoXML = TipoXML.CTeEnvioEvento;
-                    break;
-
-                case "inutCTe":
-                    tipoXML = TipoXML.CTeInutilizacao;
-                    break;
-
-                case "CTe":
-                    tipoXML = TipoXML.NFe;
-                    break;
-
-                case "enviCTe":
-                    tipoXML = TipoXML.NFeEnvioEmLote;
-                    break;
-
-                case "CTeOS":
-                    tipoXML = TipoXML.CTeOS;
-                    break;
-
-                #endregion
-
-                #region XML do MDFe
-
-                case "consStatServMDFe":
-                    tipoXML = TipoXML.MDFeStatusServico;
-                    break;
-
-                case "consSitMDFe":
-                    tipoXML = TipoXML.MDFeConsultaSituacao;
-                    break;
-
-                case "consReciMDFe":
-                    tipoXML = TipoXML.MDFeConsultaRecibo;
-                    break;
-
-                case "eventoMDFe":
-                    tipoXML = TipoXML.MDFeEnvioEvento;
-                    break;
-
-                case "MDFe":
-                    tipoXML = TipoXML.MDFe;
-                    break;
-
-                case "enviMDFe":
-                    tipoXML = TipoXML.MDFeEnvioEmLote;
-                    break;
-
-                case "consMDFeNaoEnc":
-                    tipoXML = TipoXML.MDFeConsultaNaoEncerrado;
-                    break;
-
-                #endregion
-
-                default:
-                    break;
-            }
-
-            return tipoXML;
         }
 
         #endregion Public Methods
