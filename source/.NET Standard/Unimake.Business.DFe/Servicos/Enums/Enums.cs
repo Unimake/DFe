@@ -242,7 +242,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Enviar o XML de consulta NFSe por RPS para a prefeitura
         /// </summary>
-        [Description("Consulta NFSe por RPS")] 
+        [Description("Consulta NFSe por RPS")]
         NFSeConsultarNfsePorRps,
 
         /// <summary>
@@ -832,7 +832,7 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region SimNao
+    #region SimNao12
 
     /// <summary>
     /// Sim ou Não (1 ou 2)
@@ -853,7 +853,6 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
-
 
     #region TipoOperacao
 
@@ -5695,6 +5694,153 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("6")]
         Outros = 6
+    }
+
+    #endregion
+
+    #region TipoXML
+
+    /// <summary>
+    /// Tipos de XML
+    /// </summary>
+    public enum TipoXML
+    {
+        #region NFe
+
+        /// <summary>
+        /// XML de consulta status do serviço da NFe
+        /// </summary>
+        NFeStatusServico,
+
+        /// <summary>
+        /// XML de consulta situação da NFe
+        /// </summary>
+        NFeConsultaSituacao,
+
+        /// <summary>
+        /// XML de consulta do recibo do lote da NFe
+        /// </summary>
+        NFeConsultaRecibo,
+
+        /// <summary>
+        /// XML de consulta cadastro do contribuinte da NFe
+        /// </summary>
+        NFeConsultaCadastro,
+
+        /// <summary>
+        /// XML de consulta dos documentos fiscais eletrônicos distribuídos da NFe
+        /// </summary>
+        NFeDistribuicaoDFe,
+
+        /// <summary>
+        /// XML de envio de evento da NFe
+        /// </summary>
+        NFeEnvioEvento,
+
+        /// <summary>
+        /// XML de Inutilização da NFe
+        /// </summary>
+        NFeInutilizacao,
+
+        /// <summary>
+        /// XML individual da NFe
+        /// </summary>
+        NFe,
+
+        /// <summary>
+        /// XML de envio em lote da NFe
+        /// </summary>
+        NFeEnvioEmLote,
+
+        #endregion 
+
+        #region CTe
+
+        /// <summary>
+        /// XML de consulta status do serviço do CTe
+        /// </summary>
+        CTeStatusServico,
+
+        /// <summary>
+        /// XML de consulta situação do CTe
+        /// </summary>
+        CTeConsultaSituacao,
+
+        /// <summary>
+        /// XML de consulta do recibo do lote do CTe
+        /// </summary>
+        CTeConsultaRecibo,
+
+        /// <summary>
+        /// XML de envio de evento do CTe
+        /// </summary>
+        CTeEnvioEvento,
+
+        /// <summary>
+        /// XML de Inutilização do CTe
+        /// </summary>
+        CTeInutilizacao,
+
+        /// <summary>
+        /// XML individual do CTe
+        /// </summary>
+        CTe,
+
+        /// <summary>
+        /// XML de envio em lote do CTe
+        /// </summary>
+        CTeEnvioEmLote,
+
+        /// <summary>
+        /// XML do CTeOS
+        /// </summary>
+        CTeOS,
+
+        #endregion 
+
+        #region MDFe
+
+        /// <summary>
+        /// XML de consulta status do serviço do MDFe
+        /// </summary>
+        MDFeStatusServico,
+
+        /// <summary>
+        /// XML de consulta situação do MDFe
+        /// </summary>
+        MDFeConsultaSituacao,
+
+        /// <summary>
+        /// XML de consulta do recibo do lote do MDFe
+        /// </summary>
+        MDFeConsultaRecibo,
+
+        /// <summary>
+        /// XML de envio de evento do MDFe
+        /// </summary>
+        MDFeEnvioEvento,
+
+        /// <summary>
+        /// XML individual do MDFe
+        /// </summary>
+        MDFe,
+
+        /// <summary>
+        /// XML de envio em lote do MDFe
+        /// </summary>
+        MDFeEnvioEmLote,
+
+        /// <summary>
+        /// XML de consulta dos MDFe´s não encerrados
+        /// </summary>
+        MDFeConsultaNaoEncerrado,
+
+        #endregion 
+
+        /// <summary>
+        /// Não foi possível identificar o tipo do XML
+        /// </summary>
+        NaoIdentificado
     }
 
     #endregion
