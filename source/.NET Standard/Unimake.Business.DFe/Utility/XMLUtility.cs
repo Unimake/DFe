@@ -710,11 +710,11 @@ namespace Unimake.Business.DFe.Utility
                     break;
 
                 case "CTe":
-                    tipoXML = TipoXML.NFe;
+                    tipoXML = TipoXML.CTe;
                     break;
 
                 case "enviCTe":
-                    tipoXML = TipoXML.NFeEnvioEmLote;
+                    tipoXML = TipoXML.CTeEnvioEmLote;
                     break;
 
                 case "CTeOS":
