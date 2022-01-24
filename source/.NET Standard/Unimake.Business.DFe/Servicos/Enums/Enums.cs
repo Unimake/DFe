@@ -5705,50 +5705,50 @@ namespace Unimake.Business.DFe.Servicos
     /// </summary>
     public enum TipoXML
     {
-        #region NFe
+        #region NFe/NFCe
 
         /// <summary>
-        /// XML de consulta status do serviço da NFe
+        /// XML de consulta status do serviço da NFe/NFCe
         /// </summary>
         NFeStatusServico,
 
         /// <summary>
-        /// XML de consulta situação da NFe
+        /// XML de consulta situação da NFe/NFCe
         /// </summary>
         NFeConsultaSituacao,
 
         /// <summary>
-        /// XML de consulta do recibo do lote da NFe
+        /// XML de consulta do recibo do lote da NFe/NFCe
         /// </summary>
         NFeConsultaRecibo,
 
         /// <summary>
-        /// XML de consulta cadastro do contribuinte da NFe
+        /// XML de consulta cadastro do contribuinte da NFe/NFCe
         /// </summary>
         NFeConsultaCadastro,
 
         /// <summary>
-        /// XML de consulta dos documentos fiscais eletrônicos distribuídos da NFe
+        /// XML de consulta dos documentos fiscais eletrônicos distribuídos da NFe/NFCe
         /// </summary>
         NFeDistribuicaoDFe,
 
         /// <summary>
-        /// XML de envio de evento da NFe
+        /// XML de envio de evento da NFe/NFCe
         /// </summary>
         NFeEnvioEvento,
 
         /// <summary>
-        /// XML de Inutilização da NFe
+        /// XML de Inutilização da NFe/NFCe
         /// </summary>
         NFeInutilizacao,
 
         /// <summary>
-        /// XML individual da NFe
+        /// XML individual da NFe/NFCe
         /// </summary>
         NFe,
 
         /// <summary>
-        /// XML de envio em lote da NFe
+        /// XML de envio em lote da NFe/NFCe
         /// </summary>
         NFeEnvioEmLote,
 
@@ -5795,6 +5795,11 @@ namespace Unimake.Business.DFe.Servicos
         /// XML do CTeOS
         /// </summary>
         CTeOS,
+
+        /// <summary>
+        /// XML de consulta dos documentos fiscais eletrônicos distribuídos do CTe
+        /// </summary>
+        CTeDistribuicaoDFe,
 
         #endregion 
 
