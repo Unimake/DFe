@@ -1,0 +1,22 @@
+* ---------------------------------------------------------------------------------
+* Consumindo o serviço de consulta status da NFe
+* ---------------------------------------------------------------------------------
+
+* Criar configuraçao básica para consumir o serviço
+
+InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+InicializarConfiguracao.CertificadoSenha = "XXXXX"
+InicializarConfiguracao.CertificadoArquivo = "D:\Temp\Certificado.pfx"
+
+* Criar XML
+consStatServ= CreateObject("Unimake.Business.DFe.Xml.NFe.ConsStatServ")
+consStatServ.Versao = "4.00"
+consStatServ.CUF = 35
+consStatServ.TpAmb = 2
+
+* Consumir o serviço
+statusServico = CreateObject("Unimake.Business.DFe.Servicos.NFe.StatusServico")
+statusServico.Executar(consStatServ,InicializarConfiguracao)
+
+MESSAGEBOX(statusServico.RetornoWSString)
+MESSAGEBOX(statusServico.Result.XMotivo)

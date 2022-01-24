@@ -1,0 +1,39 @@
+* ---------------------------------------------------------------------------------
+* Consumindo o serviço de inutilização de números da NFe
+* ---------------------------------------------------------------------------------
+
+* Criar configuraçao básica para consumir o serviço
+InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+InicializarConfiguracao.CertificadoSenha = "XXXXX"
+InicializarConfiguracao.CertificadoArquivo = "D:\Temp\Certificado.pfx"
+
+
+* Criar XML
+InutNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFe")
+InutNFeInfInut = CreateObject("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")
+
+InutNFeInfInut.Ano = "19"
+InutNFeInfInut.CNPJ = "06117473000150"
+InutNFeInfInut.CUF = 41
+InutNFeInfInut.Mod = 55
+InutNFeInfInut.NNFIni = 57919
+InutNFeInfInut.NNFFin = 57919
+InutNFeInfInut.Serie = 1
+InutNFeInfInut.TpAmb = 2
+InutNFeInfInut.XJust = "Justificativa da inutilizacao de teste"
+InutNFe.Versao = "4.00"
+InutNFe.InfInut = InutNFeInfInut
+
+* Consumir o serviço
+Inutilizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")
+Inutilizacao.Executar(InutNFe,InicializarConfiguracao)
+
+MESSAGEBOX(Inutilizacao.RetornoWSString)
+MESSAGEBOX(Inutilizacao.result.InfInut.XMotivo) 
+
+* 102 Inutilizacao homologada
+DO CASE 
+  CASE Inutilizacao.result.InfInut.CStat = 102
+    inutilizacao.GravarXmlDistribuicao("c:\testenfe\")    
+    
+ENDCASE

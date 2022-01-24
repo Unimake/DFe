@@ -1,0 +1,24 @@
+* ---------------------------------------------------------------------------------
+* Consumindo o serviço de consulta do cadastro de contribuinte
+* ---------------------------------------------------------------------------------
+
+* Criar configuraçao básica para consumir o serviço
+InicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+InicializarConfiguracao.CertificadoSenha = "XXXXX"
+InicializarConfiguracao.CertificadoArquivo = "D:\Temp\Certificado.pfx"
+
+* Criar XML
+ConsCad = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsCad")
+InfCons = CreateObject("Unimake.Business.DFe.Xml.NFe.InfCons")
+
+InfCons.CNPJ = "06117473000150"
+InfCons.UF = 35
+ConsCad.Versao = "2.00"
+ConsCad.InfCons = InfCons
+
+* Consumir o serviço
+ConsultaCadastro = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaCadastro")
+ConsultaCadastro.Executar(ConsCad,InicializarConfiguracao) 
+
+MESSAGEBOX(ConsultaCadastro.result.InfCons.XMotivo)
+MESSAGEBOX(ConsultaCadastro.RetornoWSString)

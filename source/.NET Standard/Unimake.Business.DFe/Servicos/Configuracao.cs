@@ -292,6 +292,53 @@ namespace Unimake.Business.DFe.Servicos
         }
 
         /// <summary>
+        /// Ler configurações específicas para sobrepor algumas no caso de estar emitindo em contingência. Exemplo: Carrega a contingência SVCRS e tenho que sobrepor as URLs de QRCode com as do estado, para os que tem.
+        /// </summary>
+        /// <param name="doc">Documento XML</param>
+        private void LerConfigEspecifica(XmlDocument doc)
+        {
+            var listServicos = doc.GetElementsByTagName("Servicos");
+            foreach (var nodeServicos in listServicos)
+            {
+                var elementServicos = (XmlElement)nodeServicos;
+
+                if (elementServicos.GetAttribute("ID") == TipoDFe.ToString())
+                {
+                    var listPropriedades = elementServicos.GetElementsByTagName(NomeTagServico);
+
+                    foreach (var nodePropridades in listPropriedades)
+                    {
+                        var elementPropriedades = (XmlElement)nodePropridades;
+                        if (elementPropriedades.GetAttribute("versao") == SchemaVersao)
+                        {
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlQrCodeHomologacao"))
+                            {
+                                UrlQrCodeHomologacao = XMLUtility.TagRead(elementPropriedades, "UrlQrCodeHomologacao");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlQrCodeProducao"))
+                            {
+                                UrlQrCodeProducao = XMLUtility.TagRead(elementPropriedades, "UrlQrCodeProducao");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlChaveHomologacao"))
+                            {
+                                UrlChaveHomologacao = XMLUtility.TagRead(elementPropriedades, "UrlChaveHomologacao");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "UrlChaveProducao"))
+                            {
+                                UrlChaveProducao = XMLUtility.TagRead(elementPropriedades, "UrlChaveProducao");
+                            }
+                        }
+                    }
+
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Efetua a leitura do XML que contem configurações específicas de cada webservice e atribui o conteúdo nas propriedades do objeto "Configuracoes"
         /// </summary>
         private void LerXmlConfigEspecifico(string xmlConfigEspecifico)
@@ -326,6 +373,10 @@ namespace Unimake.Business.DFe.Servicos
                     {
                         doc.Load(LoadXmlConfig(arqConfigSVC));
                         LerConfig(doc, arqConfigSVC, true);
+
+                        //Sobrepor algumas configurações do SVC com os do estado, tais como a URL de QRCode. Isso para os estados que tem.
+                        doc.Load(LoadXmlConfig(xmlConfigEspecifico));
+                        LerConfigEspecifica(doc);
                     }
                     break;
             }

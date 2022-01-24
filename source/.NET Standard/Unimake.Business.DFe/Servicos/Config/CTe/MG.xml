@@ -137,7 +137,7 @@
       <TagAtributoID>infCte</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
-      <UrlQrCodeHomologacao>https://hcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+      <UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
       <UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
     </Autorizacao>
     <RetAutorizacao versao="3.00">
