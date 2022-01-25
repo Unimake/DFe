@@ -1,6 +1,8 @@
-﻿using System;
-using System.IO;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.IO;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
@@ -74,7 +76,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
             if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
@@ -100,7 +104,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <param name="pasta">Pasta onde deve ser gravado o XML no HD</param>
         /// <param name="nomeArquivo">Nome do arquivo a ser gravado no HD</param>
         /// <param name="conteudoXML">String contendo o conteúdo do XML a ser gravado no HD</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
             StreamWriter streamWriter = null;
@@ -127,7 +133,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <param name="value">Conteúdo a ser gravado no stream</param>
         /// <param name="stream">Stream que vai receber o conteúdo do XML</param>
         /// <param name="encoding">Define o encodingo do stream, caso não informado ,será usado o UTF8</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public virtual void GravarXmlDistribuicao(Stream stream,
                                                   string value,
                                                   Encoding encoding = null)

@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
@@ -8,7 +10,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Enviar o XML de consulta status do serviço do MDFe para o webservice
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public class StatusServico: ServicoBase, IInteropService<ConsStatServMDFe>
     {
         #region Protected Methods

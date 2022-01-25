@@ -1,8 +1,10 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -199,7 +201,9 @@ namespace Unimake.Business.DFe
         /// //Validar arquivos de MDFe
         /// Validar(xmlDocument, "MDFe.consStatServ_v4.00.xsd")
         /// </example>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public void Validar(XmlDocument conteudoXML, string arqSchema, string targetNS = "", Servicos.PadraoNFSe padraoNFSe = Servicos.PadraoNFSe.None)
         {
             if(string.IsNullOrEmpty(arqSchema))

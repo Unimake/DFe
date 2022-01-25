@@ -1,7 +1,10 @@
 ﻿using System;
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -271,7 +274,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
             if(!Configuracoes.Definida)
@@ -384,7 +389,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// Grava o XML de distribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public void GravarXmlDistribuicao(Stream stream)
         {
             foreach(var item in MDFeProcResults)

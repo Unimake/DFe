@@ -1,5 +1,7 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Security.Exceptions;
 
@@ -8,8 +10,10 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Envio do XML de consulta status do serviço do CTeOS para o WebService
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
-    public class StatusServico: CTe.StatusServico
+#endif
+    public class StatusServico : CTe.StatusServico
     {
         #region Public Constructors
 
@@ -38,7 +42,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.CTe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }

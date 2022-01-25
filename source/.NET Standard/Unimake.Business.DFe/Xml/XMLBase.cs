@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System.Collections.Generic;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
@@ -10,7 +12,9 @@ namespace Unimake.Business.DFe.Xml
     /// <summary>
     /// Classe Base para criação de classes de serialização de XML
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public abstract class XMLBase : Contract.Serialization.IXmlSerializable
     {
         #region Protected Properties
@@ -52,7 +56,9 @@ namespace Unimake.Business.DFe.Xml
         /// <typeparam name="T">Tipo do objeto</typeparam>
         /// <param name="doc">Conteúdo do XML a ser deserilizado</param>
         /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public virtual T LerXML<T>(XmlDocument doc)
             where T : new() => XMLUtility.Deserializar<T>(doc);
 

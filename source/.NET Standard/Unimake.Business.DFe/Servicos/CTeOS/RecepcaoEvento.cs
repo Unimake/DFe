@@ -1,5 +1,7 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Security.Exceptions;
 
@@ -8,10 +10,12 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Envio do XML de eventos do CTeOS para o WebService
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public class RecepcaoEvento: CTe.RecepcaoEvento
     {
-        #region Public Constructors
+#region Public Constructors
 
         /// <summary>
         /// Construtor
@@ -26,7 +30,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// </summary>
         public RecepcaoEvento() { }
 
-        #endregion
+#endregion
 
         /// <summary>
         /// Validar o XML

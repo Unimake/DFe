@@ -1,15 +1,23 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
+
     /// <summary>
     /// Enviar o XML de consulta status do serviço da NFe para o webservice
     /// </summary>
-    public class StatusServico: ServicoBase, IInteropService<ConsStatServ>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.StatusServico")]
+    [ComVisible(true)]
+#endif
+    public class StatusServico : ServicoBase, IInteropService<ConsStatServ>
     {
         #region Protected Methods
 
@@ -21,7 +29,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var xml = new ConsStatServ();
             xml = xml.LerXML<ConsStatServ>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeStatusServico;
                 Configuracoes.CodigoUF = (int)xml.CUF;
@@ -43,7 +51,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsStatServ>(RetornoWSXML);
                 }
@@ -92,16 +100,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             PrepararServico(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 
-        /// <summary>
-        /// Grava o XML de Distribuição em uma pasta definida - (Para este serviço não tem XML de distribuição).
-        /// </summary>
-        /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
-        /// <param name="nomeArquivo">Nome para o arquivo XML</param>
-        /// <param name="conteudoXML">Conteúdo do XML</param>
+        /// <inheritdoc />
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new System.Exception("Não existe XML de distribuição para consulta status do serviço.");
 
         #endregion Public Methods

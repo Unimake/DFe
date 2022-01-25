@@ -4215,22 +4215,22 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
-        public double PCredSN { get; set; }
+        public double? PCredSN { get; set; }
 
         [XmlElement("pCredSN")]
         public string PCredSNField
         {
-            get => PCredSN.ToString("F4", CultureInfo.InvariantCulture);
+            get => PCredSN?.ToString("F4", CultureInfo.InvariantCulture);
             set => PCredSN = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double VCredICMSSN { get; set; }
+        public double? VCredICMSSN { get; set; }
 
         [XmlElement("vCredICMSSN")]
         public string VCredICMSSNField
         {
-            get => VCredICMSSN.ToString("F2", CultureInfo.InvariantCulture);
+            get => VCredICMSSN?.ToString("F2", CultureInfo.InvariantCulture);
             set => VCredICMSSN = Converter.ToDouble(value);
         }
 

@@ -1,6 +1,8 @@
-﻿using System;
-using System.IO;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.IO;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
@@ -11,7 +13,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Classe base para os serviços da NFe
     /// </summary>
-    public abstract class ServicoBase: Servicos.ServicoBase
+    public abstract class ServicoBase : Servicos.ServicoBase
     {
         #region Protected Constructors
 
@@ -50,7 +52,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, Configuracoes.TipoDFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
@@ -67,11 +69,13 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
         /// <summary>
         /// Executar o serviço
-        /// </summary>
+        /// </summary>       
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
-            if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) &&
+            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) &&
                !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
             {
                 AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
@@ -90,7 +94,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde deve ser gravado o XML no HD</param>
         /// <param name="nomeArquivo">Nome do arquivo a ser gravado no HD</param>
         /// <param name="conteudoXML">String contendo o conteúdo do XML a ser gravado no HD</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
             StreamWriter streamWriter = null;
@@ -104,7 +110,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             finally
             {
-                if(streamWriter != null)
+                if (streamWriter != null)
                 {
                     streamWriter.Close();
                 }
@@ -117,22 +123,24 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="value">Conteúdo a ser gravado no stream</param>
         /// <param name="stream">Stream que vai receber o conteúdo do XML</param>
         /// <param name="encoding">Define o encodingo do stream, caso não informado ,será usado o UTF8</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public virtual void GravarXmlDistribuicao(Stream stream,
                                                   string value,
                                                   Encoding encoding = null)
         {
-            if(stream is null)
+            if (stream is null)
             {
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            if(string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            if(encoding == null)
+            if (encoding == null)
             {
                 encoding = Encoding.UTF8;
             }

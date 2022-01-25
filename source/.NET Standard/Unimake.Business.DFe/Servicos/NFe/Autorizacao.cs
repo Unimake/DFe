@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -305,7 +307,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
             if(!Configuracoes.Definida)
@@ -343,7 +347,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Gravar o XML de distribuição em uma pasta no HD
         /// </summary>
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
+#if INTEROP
         [ComVisible(true)]
+#endif
         public void GravarXmlDistribuicao(string pasta)
         {
             foreach(var item in NfeProcResults)
@@ -359,7 +365,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Grava o XML de dsitribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
             foreach(var item in NfeProcResults)

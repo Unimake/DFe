@@ -1,5 +1,7 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
@@ -10,7 +12,9 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Classe base abstrata para elaboração dos serviços dos documentos fiscais eletrônicos (NFe, NFCe, MDFe, NFSe, CTe, GNRE, etc...)
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public abstract class ServicoBase
     {
         #region Private Fields
@@ -126,9 +130,11 @@ namespace Unimake.Business.DFe.Servicos
         #region Protected Internal Methods
 
         /// <summary>
-        /// Inicializa configurações, parmâtros e propriedades para execução do serviço.
+        /// Inicializa configurações, parâmetros e propriedades para execução do serviço.
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         protected internal void Inicializar()
         {
             if(!Configuracoes.Definida)
@@ -191,7 +197,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Executar o serviço para consumir o webservice
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public virtual void Executar()
         {
             if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
@@ -231,7 +239,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="pasta">Pasta onde deve ser gravado o XML no HD</param>
         /// <param name="nomeArquivo">Nome do arquivo a ser gravado no HD</param>
         /// <param name="conteudoXML">String contendo o conteúdo do XML a ser gravado no HD</param>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public abstract void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML);
 
         #endregion Public Methods

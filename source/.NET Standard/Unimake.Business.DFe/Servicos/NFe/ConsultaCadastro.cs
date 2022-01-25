@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -86,7 +88,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o webservice
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
             base.Executar();

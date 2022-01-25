@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.MDFe
@@ -6,7 +8,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Classe base para os servidos de MDFe
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public abstract class ServicoBase : NFe.ServicoBase
     {
         #region Public Constructors

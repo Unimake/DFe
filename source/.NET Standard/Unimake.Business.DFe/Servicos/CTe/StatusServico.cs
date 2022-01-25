@@ -1,5 +1,7 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
@@ -9,8 +11,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de consulta status do serviço do CTe para o WebService
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
-    public class StatusServico: ServicoBase, IInteropService<ConsStatServCte>
+#endif
+    public class StatusServico : ServicoBase, IInteropService<ConsStatServCte>
     {
         #region Protected Methods
 
@@ -22,7 +26,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var xml = new ConsStatServCte();
             xml = xml.LerXML<ConsStatServCte>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeStatusServico;
                 Configuracoes.TipoAmbiente = xml.TpAmb;
@@ -43,7 +47,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsStatServCte>(RetornoWSXML);
                 }

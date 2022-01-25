@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
@@ -11,13 +13,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Envio do XML de CTeOS para webservice
     /// </summary>
-    public class Autorizacao: ServicoBase, IInteropService<Xml.CTeOS.CTeOS>
+    public class Autorizacao : ServicoBase, IInteropService<Xml.CTeOS.CTeOS>
     {
         private void MontarQrCode()
         {
             CTeOS = new Xml.CTeOS.CTeOS().LerXML<Xml.CTeOS.CTeOS>(ConteudoXML);
 
-            if(CTeOS.InfCTeSupl == null)
+            if (CTeOS.InfCTeSupl == null)
             {
                 CTeOS.InfCTeSupl = new Xml.CTeOS.InfCTeSupl();
 
@@ -27,7 +29,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
                     "?chCTe=" + CTeOS.InfCTe.Chave +
                     "&tpAmb=" + ((int)CTeOS.InfCTe.Ide.TpAmb).ToString();
 
-                if(CTeOS.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || CTeOS.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
+                if (CTeOS.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || CTeOS.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
                 {
                     paramLinkQRCode = "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, CTeOS.InfCTe.Chave);
                 }
@@ -66,7 +68,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if(CTeOS == null)
+            if (CTeOS == null)
             {
                 Configuracoes.Definida = false;
                 return;
@@ -74,7 +76,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
             var xml = CTeOS;
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeAutorizacaoOS;
                 Configuracoes.CodigoUF = (int)xml.InfCTe.Ide.CUF;
@@ -112,9 +114,9 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         {
             get
             {
-                if(Result.ProtCTe != null)
+                if (Result.ProtCTe != null)
                 {
-                    if(CteOSProcs.ContainsKey(CTeOS.InfCTe.Chave))
+                    if (CteOSProcs.ContainsKey(CTeOS.InfCTe.Chave))
                     {
                         CteOSProcs[CTeOS.InfCTe.Chave].ProtCTe = Result.ProtCTe;
                     }
@@ -131,7 +133,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
                 }
                 else
                 {
-                    if(RetConsSitCTes.Count <= 0)
+                    if (RetConsSitCTes.Count <= 0)
                     {
                         throw new Exception("Defina o conteúdo da Propriedade RetConsSitCte, sem a definição dela não é possível obter o conteúdo da CteOSProcResults.");
                     }
@@ -140,13 +142,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
                     #region Resultado do envio do CTeOS através da consulta situação
 
-                    foreach(var item in RetConsSitCTes)
+                    foreach (var item in RetConsSitCTes)
                     {
-                        if(item != null && item.ProtCTe != null)
+                        if (item != null && item.ProtCTe != null)
                         {
-                            if(item.ProtCTe.InfProt.ChCTe == CTeOS.InfCTe.Chave)
+                            if (item.ProtCTe.InfProt.ChCTe == CTeOS.InfCTe.Chave)
                             {
-                                switch(item.ProtCTe.InfProt.CStat)
+                                switch (item.ProtCTe.InfProt.CStat)
                                 {
                                     case 100: //CTe Autorizado
                                     case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
@@ -163,7 +165,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
                         }
                     }
 
-                    if(CteOSProcs.ContainsKey(CTeOS.InfCTe.Chave))
+                    if (CteOSProcs.ContainsKey(CTeOS.InfCTe.Chave))
                     {
                         CteOSProcs[CTeOS.InfCTe.Chave].ProtCTe = protCTe;
                     }
@@ -192,7 +194,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetCTeOS>(RetornoWSXML);
                 }
@@ -230,17 +232,19 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
         #endregion Public Constructors
 
-        #region Public Methods
+#region Public Methods
 
-        /// <summary>
-        /// Executar o serviço
-        /// </summary>
+/// <summary>
+/// Executar o serviço
+/// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
-                if(CTeOS == null)
+                if (CTeOS == null)
                 {
                     throw new NullReferenceException($"{nameof(CTeOS)} não pode ser nulo.");
                 }
@@ -273,9 +277,9 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         public void GravarXmlDistribuicao(string pasta)
         {
-            foreach(var item in CteOSProcResults)
+            foreach (var item in CteOSProcResults)
             {
-                if(item.Value.ProtCTe != null)
+                if (item.Value.ProtCTe != null)
                 {
                     GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
                 }
@@ -288,15 +292,15 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
-            foreach(var item in CteOSProcResults)
+            foreach (var item in CteOSProcResults)
             {
-                if(item.Value.ProtCTe != null)
+                if (item.Value.ProtCTe != null)
                 {
                     GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
                 }
             }
         }
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 }

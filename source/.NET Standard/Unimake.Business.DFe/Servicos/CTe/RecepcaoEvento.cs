@@ -1,6 +1,8 @@
-﻿using System;
-using System.IO;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Contract.Serialization;
 using Unimake.Business.DFe.Utility;
@@ -12,8 +14,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de eventos do CTe para o WebService
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
-    public class RecepcaoEvento: ServicoBase
+#endif
+    public class RecepcaoEvento : ServicoBase
     {
         #region Private Fields
         private EventoCTe EventoCTe => new EventoCTe().LerXML<EventoCTe>(ConteudoXML);
@@ -34,7 +38,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var validar = new ValidarSchema();
             validar.Validar(xml, Configuracoes.TipoDFe.ToString() + "." + schemaArquivo, targetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
@@ -52,7 +56,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var xml = new EventoCTe();
             xml = xml.LerXML<EventoCTe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.CodigoUF = (int)xml.InfEvento.COrgao;
                 Configuracoes.TipoAmbiente = xml.InfEvento.TpAmb;
@@ -72,7 +76,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var schemaArquivo = string.Empty;
             var schemaArquivoEspecifico = string.Empty;
 
-            if(Configuracoes.SchemasEspecificos.Count > 0)
+            if (Configuracoes.SchemasEspecificos.Count > 0)
             {
                 var tpEvento = ((int)xml.InfEvento.TpEvento);
 
@@ -95,7 +99,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
             #region Validar a parte específica de cada evento
 
-            if(ConteudoXML.GetElementsByTagName("detEvento")[0] != null)
+            if (ConteudoXML.GetElementsByTagName("detEvento")[0] != null)
             {
                 var xmlEspecifico = new XmlDocument();
                 xmlEspecifico.LoadXml(ConteudoXML.GetElementsByTagName(ConteudoXML.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
@@ -131,7 +135,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetEventoCTe>(RetornoWSXML);
                 }
@@ -174,7 +178,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar() => base.Executar();
 
 #if INTEROP

@@ -1,14 +1,20 @@
 ﻿#pragma warning disable CS1591
 
-using System;
+#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsStatServ")]
     [ComVisible(true)]
+#endif
     [XmlRoot("consStatServ", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class ConsStatServ: XMLBase
     {

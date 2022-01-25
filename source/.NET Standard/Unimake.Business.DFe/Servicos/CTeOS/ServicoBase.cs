@@ -1,5 +1,7 @@
-﻿using System;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Xml;
 using Unimake.Security.Exceptions;
 
@@ -8,10 +10,12 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Classe base para consumo dos webservices do CTeOS
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public abstract class ServicoBase: NFe.ServicoBase
     {
-        #region Public Constructors
+#region Public Constructors
 
         /// <summary>
         /// Construtor
@@ -29,7 +33,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         {
         }
 
-        #endregion Public Constructors
+#endregion Public Constructors
 
         /// <summary>
         /// Validar o XML

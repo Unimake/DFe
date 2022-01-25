@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -12,15 +14,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de lote de CTe para o WebService
     /// </summary>
-    public class Autorizacao: ServicoBase, IInteropService<EnviCTe>
+    public class Autorizacao : ServicoBase, IInteropService<EnviCTe>
     {
         private void MontarQrCode()
         {
             EnviCTe = new EnviCTe().LerXML<EnviCTe>(ConteudoXML);
 
-            for(var i = 0; i < EnviCTe.CTe.Count; i++)
+            for (var i = 0; i < EnviCTe.CTe.Count; i++)
             {
-                if(EnviCTe.CTe[i].InfCTeSupl == null)
+                if (EnviCTe.CTe[i].InfCTeSupl == null)
                 {
                     EnviCTe.CTe[i].InfCTeSupl = new InfCTeSupl();
 
@@ -30,7 +32,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                         "?chCTe=" + EnviCTe.CTe[i].InfCTe.Chave +
                         "&tpAmb=" + ((int)EnviCTe.CTe[i].InfCTe.Ide.TpAmb).ToString();
 
-                    if(EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
+                    if (EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
                     {
                         paramLinkQRCode = "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviCTe.CTe[i].InfCTe.Chave);
                     }
@@ -54,7 +56,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var validar = new ValidarSchema();
             validar.Validar(xml, Configuracoes.TipoDFe.ToString() + "." + schemaArquivo, targetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
@@ -87,7 +89,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if(EnviCTe == null)
+            if (EnviCTe == null)
             {
                 Configuracoes.Definida = false;
                 return;
@@ -95,7 +97,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
             var xml = EnviCTe;
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeAutorizacao;
                 Configuracoes.CodigoUF = (int)xml.CTe[0].InfCTe.Ide.CUF;
@@ -124,9 +126,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             var xml = EnviCTe;
 
-            if(Configuracoes.SchemasEspecificos.Count > 0)
+            if (Configuracoes.SchemasEspecificos.Count > 0)
             {
-                for(var i = 0; i < xml.CTe.Count; i++)
+                for (var i = 0; i < xml.CTe.Count; i++)
                 {
                     var modal = (int)xml.CTe[i].InfCTe.Ide.Modal;
 
@@ -142,14 +144,14 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     #region Validar a parte específica de modal do CTe
 
                     var xmlEspecifico = new XmlDocument();
-                    switch(xml.CTe[i].InfCTe.Ide.Modal)
+                    switch (xml.CTe[i].InfCTe.Ide.Modal)
                     {
                         case ModalidadeTransporteCTe.Rodoviario:
-                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
                             {
-                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
                                 {
-                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo != null)
+                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo != null)
                                     {
                                         xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo).OuterXml);
                                         goto default;
@@ -159,11 +161,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                             break;
 
                         case ModalidadeTransporteCTe.Aereo:
-                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
                             {
-                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
                                 {
-                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo != null)
+                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo != null)
                                     {
                                         xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo).OuterXml);
                                         goto default;
@@ -173,11 +175,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                             break;
 
                         case ModalidadeTransporteCTe.Aquaviario:
-                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
                             {
-                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
                                 {
-                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav != null)
+                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav != null)
                                     {
                                         xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav).OuterXml);
                                         goto default;
@@ -187,11 +189,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                             break;
 
                         case ModalidadeTransporteCTe.Ferroviario:
-                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
                             {
-                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
                                 {
-                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov != null)
+                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov != null)
                                     {
                                         xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov).OuterXml);
                                         goto default;
@@ -201,11 +203,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                             break;
 
                         case ModalidadeTransporteCTe.Dutoviario:
-                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
                             {
-                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
                                 {
-                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto != null)
+                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto != null)
                                     {
                                         xmlEspecifico.LoadXml(XMLUtility.Serializar<Duto>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto).OuterXml);
                                         goto default;
@@ -215,11 +217,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                             break;
 
                         case ModalidadeTransporteCTe.Multimodal:
-                            if(xml.CTe[i].InfCTe.InfCTeNorm != null)
+                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
                             {
-                                if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
+                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
                                 {
-                                    if(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal != null)
+                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal != null)
                                     {
                                         xmlEspecifico.LoadXml(XMLUtility.Serializar<MultiModal>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal).OuterXml);
                                         goto default;
@@ -259,26 +261,26 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if(RetConsReciCTe == null && RetConsSitCTes.Count <= 0)
+                if (RetConsReciCTe == null && RetConsSitCTes.Count <= 0)
                 {
                     throw new Exception("Defina o conteúdo da Propriedade RetConsReciCTe ou RetConsSitCte, sem a definição de uma delas não é possível obter o conteúdo da CteProcResults.");
                 }
 
-                for(var i = 0; i < EnviCTe.CTe.Count; i++)
+                for (var i = 0; i < EnviCTe.CTe.Count; i++)
                 {
                     ProtCTe protCTe = null;
 
-                    if(RetConsReciCTe != null && RetConsReciCTe.ProtCTe != null)
+                    if (RetConsReciCTe != null && RetConsReciCTe.ProtCTe != null)
                     {
                         #region Resultado do envio do CT-e através da consulta recibo
 
-                        if(RetConsReciCTe.CStat == 104) //Lote Processado
+                        if (RetConsReciCTe.CStat == 104) //Lote Processado
                         {
-                            foreach(var item in RetConsReciCTe.ProtCTe)
+                            foreach (var item in RetConsReciCTe.ProtCTe)
                             {
-                                if(item.InfProt.ChCTe == EnviCTe.CTe[i].InfCTe.Chave)
+                                if (item.InfProt.ChCTe == EnviCTe.CTe[i].InfCTe.Chave)
                                 {
-                                    switch(item.InfProt.CStat)
+                                    switch (item.InfProt.CStat)
                                     {
                                         case 100: //CTe Autorizado
                                         case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
@@ -298,17 +300,17 @@ namespace Unimake.Business.DFe.Servicos.CTe
                         }
                         #endregion
                     }
-                    else if(RetConsSitCTes.Count > 0)
+                    else if (RetConsSitCTes.Count > 0)
                     {
                         #region Resultado do envio do CT-e através da consulta situação
 
-                        foreach(var item in RetConsSitCTes)
+                        foreach (var item in RetConsSitCTes)
                         {
-                            if(item != null && item.ProtCTe != null)
+                            if (item != null && item.ProtCTe != null)
                             {
-                                if(item.ProtCTe.InfProt.ChCTe == EnviCTe.CTe[i].InfCTe.Chave)
+                                if (item.ProtCTe.InfProt.ChCTe == EnviCTe.CTe[i].InfCTe.Chave)
                                 {
-                                    switch(item.ProtCTe.InfProt.CStat)
+                                    switch (item.ProtCTe.InfProt.CStat)
                                     {
                                         case 100: //CTe Autorizado
                                         case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
@@ -328,14 +330,14 @@ namespace Unimake.Business.DFe.Servicos.CTe
                         #endregion
                     }
 
-                    if(CteProcs.ContainsKey(EnviCTe.CTe[i].InfCTe.Chave))
+                    if (CteProcs.ContainsKey(EnviCTe.CTe[i].InfCTe.Chave))
                     {
                         CteProcs[EnviCTe.CTe[i].InfCTe.Chave].ProtCTe = protCTe;
                     }
                     else
                     {
                         //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
-                        if(EnviCTe.CTe[i].Signature == null)
+                        if (EnviCTe.CTe[i].Signature == null)
                         {
                             ConteudoXML = ConteudoXMLAssinado;
                             AjustarXMLAposAssinado();
@@ -362,7 +364,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetEnviCTe>(RetornoWSXML);
                 }
@@ -405,12 +407,14 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar()
         {
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
-                if(EnviCTe == null)
+                if (EnviCTe == null)
                 {
                     throw new NullReferenceException($"{nameof(EnviCTe)} não pode ser nulo.");
                 }
@@ -443,9 +447,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         public void GravarXmlDistribuicao(string pasta)
         {
-            foreach(var item in CteProcResults)
+            foreach (var item in CteProcResults)
             {
-                if(item.Value.ProtCTe != null)
+                if (item.Value.ProtCTe != null)
                 {
                     GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
                 }
@@ -458,9 +462,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
-            foreach(var item in CteProcResults)
+            foreach (var item in CteProcResults)
             {
-                if(item.Value.ProtCTe != null)
+                if (item.Value.ProtCTe != null)
                 {
                     GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
                 }

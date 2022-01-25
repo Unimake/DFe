@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Servicos.Interop
@@ -16,7 +18,9 @@ namespace Unimake.Business.DFe.Servicos.Interop
         /// <summary>
         /// Realiza a execução da consulta com a Sefaz
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         void Executar();
 
 #if INTEROP

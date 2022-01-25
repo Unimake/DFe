@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
+using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Unimake.Security.Platform.Exceptions;
 
@@ -9,12 +9,14 @@ namespace Unimake.Security.Platform
     /// <summary>
     /// Trabalhar com certificado digital
     /// </summary>
+#if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Security.Platform.CertificadoDigital")]
     [ComVisible(true)]
+#endif
     public class CertificadoDigital
     {
-        #region Public Constructors
+#region Public Constructors
 
         /// <summary>
         /// Trabalhar com certificado digital
@@ -23,9 +25,9 @@ namespace Unimake.Security.Platform
         {
         }
 
-        #endregion Public Constructors
+#endregion Public Constructors
 
-        #region Public Methods
+#region Public Methods
 
         /// <summary>
         /// Abre a tela de dialogo do windows para seleção do certificado digital
@@ -81,7 +83,9 @@ namespace Unimake.Security.Platform
         /// <param name="bytes">Bytes do certificado para carga do mesmo</param>
         /// <param name="senha">Senha utilizada para instalar o certificado, será usada para carga do mesmo</param>
         /// <returns>Certificado Digital</returns>
+#if INTEROP
         [ComVisible(false)] // *** ATENÇÃO ***
+#endif
         public X509Certificate2 CarregarCertificadoDigitalA1(byte[] bytes, string senha) => new X509Certificate2(bytes, senha);
 
         /// <summary>
@@ -221,6 +225,6 @@ namespace Unimake.Security.Platform
             return retorna;
         }
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 }

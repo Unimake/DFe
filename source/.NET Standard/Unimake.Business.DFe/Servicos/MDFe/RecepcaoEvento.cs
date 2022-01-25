@@ -1,6 +1,8 @@
-﻿using System;
-using System.IO;
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+using System;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
@@ -11,7 +13,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Enviar o XML de eventos do MDFe para o webservice
     /// </summary>
+#if INTEROP
     [ComVisible(true)]
+#endif
     public class RecepcaoEvento: ServicoBase
     {
         #region Private Fields
@@ -210,7 +214,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
         [ComVisible(false)]
+#endif
         public override void Executar() => base.Executar();
 
 #if INTEROP
