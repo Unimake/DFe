@@ -1,11 +1,19 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DistDFeInt")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("distDFeInt", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DistDFeInt : XMLBase
     {
@@ -57,6 +65,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsChNFe")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ConsChNFe
     {
@@ -64,6 +77,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string ChNFe { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsNSU")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public partial class ConsNSU
     {
@@ -71,6 +89,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string NSU { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DistNSU")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public partial class DistNSU
     {

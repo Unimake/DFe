@@ -49,6 +49,14 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
 	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
+	  <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|net472|AnyCPU'">
+	  <DefineConstants>TRACE;INTEROP</DefineConstants>
+	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="System" />
 		<Reference Include="System.Core" />

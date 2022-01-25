@@ -16,7 +16,7 @@ namespace Unimake.Security.Platform
 #endif
     public class CertificadoDigital
     {
-#region Public Constructors
+        #region Public Constructors
 
         /// <summary>
         /// Trabalhar com certificado digital
@@ -25,9 +25,9 @@ namespace Unimake.Security.Platform
         {
         }
 
-#endregion Public Constructors
+        #endregion Public Constructors
 
-#region Public Methods
+        #region Public Methods
 
         /// <summary>
         /// Abre a tela de dialogo do windows para seleção do certificado digital
@@ -61,12 +61,12 @@ namespace Unimake.Security.Platform
 
             //Primeiro tento encontrar pelo thumbprint
             var collection3 = collection2.Find(X509FindType.FindByThumbprint, serialNumberOrThumbPrint, false);
-            if(collection3.Count <= 0)
+            if (collection3.Count <= 0)
             {
                 //Se não encontrou pelo thumbprint tento pelo SerialNumber pegando o mesmo thumbprint que veio no arquivo de configurações para ver se não encontro.
                 collection3 = collection2.Find(X509FindType.FindBySerialNumber, serialNumberOrThumbPrint, false);
 
-                if(collection3.Count <= 0)
+                if (collection3.Count <= 0)
                 {
                     throw new Exception("Certificado digital informado não foi localizado no repositório do windows.");
                 }
@@ -97,26 +97,26 @@ namespace Unimake.Security.Platform
         [return: MarshalAs(UnmanagedType.IDispatch)]
         public X509Certificate2 CarregarCertificadoDigitalA1(string caminho, string senha)
         {
-            if(string.IsNullOrWhiteSpace(caminho))
+            if (string.IsNullOrWhiteSpace(caminho))
             {
                 throw new CarregarCertificadoException("O caminho do arquivo é requerido");
             }
 
             var fi = new FileInfo(caminho);
 
-            if(!fi.Exists)
+            if (!fi.Exists)
             {
                 throw new CarregarCertificadoException($"O arquivo '{caminho}' não pode ser acessado ou não existe.");
             }
 
-            if(string.IsNullOrWhiteSpace(senha))
+            if (string.IsNullOrWhiteSpace(senha))
             {
                 throw new CarregarCertificadoException("A senha é requerida");
             }
 
             var x509Cert = new X509Certificate2();
 
-            using(var fs = fi.OpenRead())
+            using (var fs = fi.OpenRead())
             {
                 var buffer = new byte[fs.Length];
                 fs.Read(buffer, 0, buffer.Length);
@@ -148,7 +148,7 @@ namespace Unimake.Security.Platform
         {
             var scollection = AbrirTelaSelecao();
 
-            if(scollection.Count > 0)
+            if (scollection.Count > 0)
             {
                 return scollection[0];
             }
@@ -165,9 +165,9 @@ namespace Unimake.Security.Platform
         {
             byte[] result = null;
 
-            using(Stream responseStream = new FileStream(arquivo, FileMode.Open))
+            using (Stream responseStream = new FileStream(arquivo, FileMode.Open))
             {
-                using(var memoryStream = new MemoryStream())
+                using (var memoryStream = new MemoryStream())
                 {
                     responseStream.CopyTo(memoryStream);
                     result = memoryStream.ToArray();
@@ -186,9 +186,9 @@ namespace Unimake.Security.Platform
         {
             byte[] result = null;
 
-            using(Stream responseStream = new FileStream(arquivo, FileMode.Open))
+            using (Stream responseStream = new FileStream(arquivo, FileMode.Open))
             {
-                using(var memoryStream = new MemoryStream())
+                using (var memoryStream = new MemoryStream())
                 {
                     responseStream.CopyTo(memoryStream);
                     result = memoryStream.ToArray();
@@ -212,12 +212,12 @@ namespace Unimake.Security.Platform
         {
             var retorna = false;
 
-            if(certificado == null)
+            if (certificado == null)
             {
                 throw new CertificadoDigitalException();
             }
 
-            if(DateTime.Compare(DateTime.Now, certificado.NotAfter) > 0)
+            if (DateTime.Compare(DateTime.Now, certificado.NotAfter) > 0)
             {
                 retorna = true;
             }
@@ -225,6 +225,6 @@ namespace Unimake.Security.Platform
             return retorna;
         }
 
-#endregion Public Methods
+        #endregion Public Methods
     }
 }

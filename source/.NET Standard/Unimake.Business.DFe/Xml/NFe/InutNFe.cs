@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml;
 using System.Xml.Serialization;
@@ -7,6 +10,11 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("inutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class InutNFe : XMLBase
     {
@@ -20,6 +28,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public Signature Signature { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ComVisible(true)]
+#endif
     public class InutNFeInfInut
     {
         private string IdField;

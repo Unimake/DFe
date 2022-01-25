@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.IO;
 using System.Reflection;
@@ -8,6 +11,11 @@ using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ProcEventoNFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlRoot("procEventoNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class ProcEventoNFe : XMLBase

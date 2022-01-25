@@ -1,17 +1,28 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsCad")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("ConsCad", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class ConsCad : ConsCadBase
     {
     }
 
-    public class ConsCadBase : XMLBase
+#if INTEROP
+    [ComVisible(false)]
+#endif
+    public abstract class ConsCadBase : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -20,6 +31,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public InfCons InfCons = new InfCons();
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.InfCons")]
+    [ComVisible(true)]
+#endif
     public class InfCons
     {
         [XmlElement("xServ")]
