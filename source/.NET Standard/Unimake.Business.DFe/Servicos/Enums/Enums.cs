@@ -5710,46 +5710,55 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// XML de consulta status do serviço da NFe/NFCe
         /// </summary>
+        [Description("XML de consulta status do serviço da NFe/NFCe")]
         NFeStatusServico,
 
         /// <summary>
         /// XML de consulta situação da NFe/NFCe
         /// </summary>
+        [Description("XML de consulta situação da NFe/NFCe")]
         NFeConsultaSituacao,
 
         /// <summary>
         /// XML de consulta do recibo do lote da NFe/NFCe
         /// </summary>
+        [Description("XML de consulta do recibo do lote da NFe/NFCe")]
         NFeConsultaRecibo,
 
         /// <summary>
         /// XML de consulta cadastro do contribuinte da NFe/NFCe
         /// </summary>
+        [Description("XML de consulta cadastro do contribuinte da NFe/NFCe")]
         NFeConsultaCadastro,
 
         /// <summary>
         /// XML de consulta dos documentos fiscais eletrônicos distribuídos da NFe/NFCe
         /// </summary>
+        [Description("XML de consulta dos documentos fiscais eletrônicos distribuídos da NFe/NFCe")]
         NFeDistribuicaoDFe,
 
         /// <summary>
         /// XML de envio de evento da NFe/NFCe
         /// </summary>
+        [Description("XML de envio de evento da NFe/NFCe")]
         NFeEnvioEvento,
 
         /// <summary>
         /// XML de Inutilização da NFe/NFCe
         /// </summary>
+        [Description("XML de Inutilização da NFe/NFCe")]
         NFeInutilizacao,
 
         /// <summary>
         /// XML individual da NFe/NFCe
         /// </summary>
+        [Description("XML individual da NFe/NFCe")]
         NFe,
 
         /// <summary>
         /// XML de envio em lote da NFe/NFCe
         /// </summary>
+        [Description("XML de envio em lote da NFe/NFCe")]
         NFeEnvioEmLote,
 
         #endregion 
@@ -5759,46 +5768,55 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// XML de consulta status do serviço do CTe
         /// </summary>
+        [Description("XML de consulta status do serviço do CTe")]
         CTeStatusServico,
 
         /// <summary>
         /// XML de consulta situação do CTe
         /// </summary>
+        [Description("XML de consulta situação do CTe")]
         CTeConsultaSituacao,
 
         /// <summary>
         /// XML de consulta do recibo do lote do CTe
         /// </summary>
+        [Description("XML de consulta do recibo do lote do CTe")]
         CTeConsultaRecibo,
 
         /// <summary>
         /// XML de envio de evento do CTe
         /// </summary>
+        [Description("XML de envio de evento do CTe")]
         CTeEnvioEvento,
 
         /// <summary>
         /// XML de Inutilização do CTe
         /// </summary>
+        [Description("XML de Inutilização do CTe")]
         CTeInutilizacao,
 
         /// <summary>
         /// XML individual do CTe
         /// </summary>
+        [Description("XML individual do CTe")]
         CTe,
 
         /// <summary>
         /// XML de envio em lote do CTe
         /// </summary>
+        [Description("XML de envio em lote do CTe")]
         CTeEnvioEmLote,
 
         /// <summary>
         /// XML do CTeOS
         /// </summary>
+        [Description("XML do CTeOS")]
         CTeOS,
 
         /// <summary>
         /// XML de consulta dos documentos fiscais eletrônicos distribuídos do CTe
         /// </summary>
+        [Description("XML de consulta dos documentos fiscais eletrônicos distribuídos do CTe")]
         CTeDistribuicaoDFe,
 
         #endregion 
@@ -5808,36 +5826,43 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// XML de consulta status do serviço do MDFe
         /// </summary>
+        [Description("XML de consulta status do serviço do MDFe")]
         MDFeStatusServico,
 
         /// <summary>
         /// XML de consulta situação do MDFe
         /// </summary>
+        [Description("XML de consulta situação do MDFe")]
         MDFeConsultaSituacao,
 
         /// <summary>
         /// XML de consulta do recibo do lote do MDFe
         /// </summary>
+        [Description("XML de consulta do recibo do lote do MDFe")]
         MDFeConsultaRecibo,
 
         /// <summary>
         /// XML de envio de evento do MDFe
         /// </summary>
+        [Description("XML de envio de evento do MDFe")]
         MDFeEnvioEvento,
 
         /// <summary>
         /// XML individual do MDFe
         /// </summary>
+        [Description("XML individual do MDFe")]
         MDFe,
 
         /// <summary>
         /// XML de envio em lote do MDFe
         /// </summary>
+        [Description("XML de envio em lote do MDFe")]
         MDFeEnvioEmLote,
 
         /// <summary>
         /// XML de consulta dos MDFe´s não encerrados
         /// </summary>
+        [Description("XML de consulta dos MDFe´s não encerrados")]
         MDFeConsultaNaoEncerrado,
 
         #endregion 
@@ -5845,6 +5870,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Não foi possível identificar o tipo do XML
         /// </summary>
+        [Description("Não foi possível identificar o tipo do XML")]
         NaoIdentificado
     }
 
