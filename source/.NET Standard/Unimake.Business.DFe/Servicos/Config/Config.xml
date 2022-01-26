@@ -559,7 +559,7 @@
 	<Arquivo ID="2933307">
 		<Nome>Vitória da Conquista - BA</Nome>
 		<UF>BA</UF>
-		<ArqConfig>VitoriaDaConquista.xml</ArqConfig>
+		<ArqConfig>VitoriaDaConquistaBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
