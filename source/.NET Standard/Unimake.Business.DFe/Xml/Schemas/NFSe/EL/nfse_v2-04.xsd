@@ -1352,8 +1352,7 @@
 		</xsd:complexType>
 	</xsd:element>
 
-	<xsd:element name="CompNfse" type="tcCompNfse" 
-		minOccurs="1" maxOccurs="1"/>
+	<xsd:element name="CompNfse" type="tcCompNfse" />
 
 		<!-- definition of complex elements (webservice) -->
 		

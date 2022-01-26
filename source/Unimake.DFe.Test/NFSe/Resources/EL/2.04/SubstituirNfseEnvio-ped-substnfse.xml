@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <SubstituicaoNfse Id="ID0908989">
+    <Pedido xmlns="http://www.abrasf.org.br/nfse.xsd">
+      <InfPedidoCancelamento Id="ID200900000000428">
+        <IdentificacaoNfse>
+          <Numero>200900000000428</Numero>
+          <CpfCnpj>
+            <Cnpj>99999999000191</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>1733160024</InscricaoMunicipal>
+          <CodigoMunicipio>3106200</CodigoMunicipio>
+        </IdentificacaoNfse>
+        <CodigoCancelamento>2</CodigoCancelamento>
+      </InfPedidoCancelamento>
+    </Pedido>
+    <Rps xmlns="http://www.abrasf.org.br/nfse.xsd">
+      <InfDeclaracaoPrestacaoServico Id="ID999999990001911733160024200900000000001">
+        <Rps Id="RPS6">
+          <IdentificacaoRps>
+            <Numero>6</Numero>
+            <Serie>A123</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2017-12-09</DataEmissao>
+          <Status>1</Status>
+        </Rps>
+        <Competencia>2017-12-09</Competencia>
+        <Servico>
+          <Valores>
+            <ValorServicos>121.12</ValorServicos>
+            <ValorDeducoes>12.22</ValorDeducoes>
+            <ValorPis>1.20</ValorPis>
+            <ValorCofins>1.20</ValorCofins>
+            <ValorInss>0.00</ValorInss>
+            <ValorIr>1.20</ValorIr>
+            <ValorCsll>1.20</ValorCsll>
+            <OutrasRetencoes>0.00</OutrasRetencoes>
+            <ValTotTributos>0.00</ValTotTributos>
+            <ValorIss>0.00</ValorIss>
+            <Aliquota>2.79</Aliquota>
+            <DescontoIncondicionado>0.00</DescontoIncondicionado>
+            <DescontoCondicionado>0.00</DescontoCondicionado>
+          </Valores>
+          <IssRetido>2</IssRetido>
+          <ItemListaServico>01.01</ItemListaServico>
+          <CodigoCnae>4930202</CodigoCnae>
+          <CodigoNbs>101</CodigoNbs>
+          <Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
+          <CodigoMunicipio>3202405</CodigoMunicipio>
+          <ExigibilidadeISS>6</ExigibilidadeISS>
+          <IdentifNaoExigibilidade>ABC</IdentifNaoExigibilidade>
+          <MunicipioIncidencia>3202405</MunicipioIncidencia>
+          <NumeroProcesso>457487854</NumeroProcesso>
+        </Servico>
+        <Prestador>
+          <CpfCnpj>
+            <Cnpj>22636916000175</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>281302</InscricaoMunicipal>
+        </Prestador>
+        <TomadorServico>
+          <IdentificacaoTomador>
+            <CpfCnpj>
+              <Cpf>32934636810</Cpf>
+            </CpfCnpj>
+          </IdentificacaoTomador>
+          <RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>
+          <Endereco>
+            <Endereco>RUA AURORA</Endereco>
+            <Numero>446</Numero>
+            <Complemento>CJ 1</Complemento>
+            <Bairro>VILA TIBERIO</Bairro>
+            <CodigoMunicipio>3543402</CodigoMunicipio>
+            <Uf>SP</Uf>
+            <Cep>14030530</Cep>
+          </Endereco>
+          <Contato>
+            <Telefone>17981707756</Telefone>
+            <Email>tomador@dominio.com</Email>
+          </Contato>
+        </TomadorServico>
+        <RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+        <OptanteSimplesNacional>1</OptanteSimplesNacional>
+        <IncentivoFiscal>2</IncentivoFiscal>
+        <Evento>
+          <IdentificacaoEvento>IDENTEVENTO</IdentificacaoEvento>
+          <DescricaoEvento>DESCRICAO EVENTO</DescricaoEvento>
+        </Evento>
+        <InformacoesComplementares>INFORMACAO EXTRA BLA BLA BLA
+				</InformacoesComplementares>
+      </InfDeclaracaoPrestacaoServico>
+    </Rps>
+  </SubstituicaoNfse>
+</SubstituirNfseEnvio>

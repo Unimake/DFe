@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="LOTE45454" versao="2.04">
+    <NumeroLote>45454</NumeroLote>
+    <Prestador>
+      <CpfCnpj>
+        <Cpf>55555555555</Cpf>
+      </CpfCnpj>
+    </Prestador>
+    <QuantidadeRps>5</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="ID999999990001911733160024200900000000001">
+          <Rps Id="RPS343443">
+            <IdentificacaoRps>
+              <Numero>343443</Numero>
+              <Serie>A123</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2017-11-07</DataEmissao>
+            <Status>2</Status>
+          </Rps>
+          <Competencia>2017-11-07</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>121.12</ValorServicos>
+            </Valores>
+            <IssRetido>1</IssRetido>
+            <ItemListaServico>01.01</ItemListaServico>
+            <CodigoTributacaoMunicipio>2</CodigoTributacaoMunicipio>
+            <Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
+            <CodigoMunicipio>5007307</CodigoMunicipio>
+            <ExigibilidadeISS>6</ExigibilidadeISS>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cpf>55555555555</Cpf>
+            </CpfCnpj>
+          </Prestador>
+          <TomadorServico>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>32934636810</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>
+            <Endereco>
+              <Endereco>RUA AURORA</Endereco>
+              <Numero>446</Numero>
+              <Bairro>VILA TIBERIO</Bairro>
+              <CodigoMunicipio>5007307</CodigoMunicipio>
+              <Uf>SP</Uf>
+              <Cep>14030530</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>17981707756</Telefone>
+              <Email>ALANFRNK@GMAIL.COM</Email>
+            </Contato>
+          </TomadorServico>
+          <OptanteSimplesNacional>1</OptanteSimplesNacional>
+          <IncentivoFiscal>1</IncentivoFiscal>
+          <InformacoesComplementares>INFORMACAO EXTRA BLA BLA BLA</InformacoesComplementares>
+          <!--Opcional-->
+          <Deducao>
+            <TipoDeducao>3</TipoDeducao>
+            <DescricaoDeducao>DEDUCAO DE TESTE</DescricaoDeducao>
+            <IdentificacaoDocumentoDeducao>
+              <IdentificacaoNfse>
+                <CodigoMunicipioGerador>5007307</CodigoMunicipioGerador>
+                <NumeroNfse>123457784</NumeroNfse>
+                <CodigoVerificacao>AHGH84378</CodigoVerificacao>
+              </IdentificacaoNfse>
+            </IdentificacaoDocumentoDeducao>
+            <DadosFornecedor>
+              <IdentificacaoFornecedor>
+                <CpfCnpj>
+                  <Cpf>32934636810</Cpf>
+                </CpfCnpj>
+              </IdentificacaoFornecedor>
+            </DadosFornecedor>
+            <DataEmissao>2017-11-07</DataEmissao>
+            <ValorDedutivel>20.00</ValorDedutivel>
+            <ValorUtilizadoDeducao>10.00</ValorUtilizadoDeducao>
+          </Deducao>
+        </InfDeclaracaoPrestacaoServico>
+		  <Signature Id="ID1" xmlns="http://www.w3.org/2000/09/xmldsig#">
+			  <SignedInfo Id="ID2">
+				  <CanonicalizationMethod Algorithm="http://uri1">text</CanonicalizationMethod>
+				  <SignatureMethod Algorithm="http://uri1">
+					  text<HMACOutputLength>1</HMACOutputLength>
+				  </SignatureMethod>
+				  <Reference Id="ID3" URI="http://uri1" Type="http://uri1">
+					  <Transforms>
+						  <Transform Algorithm="http://uri1">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath1</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri2">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath2</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri3">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath3</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+					  </Transforms>
+					  <DigestMethod Algorithm="http://uri1">text</DigestMethod>
+					  <DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				  </Reference>
+				  <Reference Id="ID4" URI="http://uri2" Type="http://uri2">
+					  <Transforms>
+						  <Transform Algorithm="http://uri4">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath4</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri5">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath5</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri6">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath6</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+					  </Transforms>
+					  <DigestMethod Algorithm="http://uri2">text</DigestMethod>
+					  <DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				  </Reference>
+				  <Reference Id="ID5" URI="http://uri3" Type="http://uri3">
+					  <Transforms>
+						  <Transform Algorithm="http://uri7">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath7</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri8">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath8</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri9">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath9</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+					  </Transforms>
+					  <DigestMethod Algorithm="http://uri3">text</DigestMethod>
+					  <DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				  </Reference>
+			  </SignedInfo>
+			  <SignatureValue Id="ID6">AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
+			  <KeyInfo Id="ID7">
+				  text<KeyName>KeyName1</KeyName><KeyValue>
+					  text<DSAKeyValue>
+						  <P>AAECAwQFBgcICQoLDA0ODw==</P>
+						  <Q>AAECAwQFBgcICQoLDA0ODw==</Q>
+						  <G>AAECAwQFBgcICQoLDA0ODw==</G>
+						  <Y>AAECAwQFBgcICQoLDA0ODw==</Y>
+						  <J>AAECAwQFBgcICQoLDA0ODw==</J>
+						  <Seed>AAECAwQFBgcICQoLDA0ODw==</Seed>
+						  <PgenCounter>AAECAwQFBgcICQoLDA0ODw==</PgenCounter>
+					  </DSAKeyValue>
+				  </KeyValue><RetrievalMethod URI="http://uri1" Type="http://uri1" />
+			  </KeyInfo>
+			  <Object Id="ID8" MimeType="MimeType1" Encoding="http://uri1">
+				  text<any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element>
+			  </Object>
+			  <Object Id="ID9" MimeType="MimeType2" Encoding="http://uri2">
+				  text<any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element>
+			  </Object>
+			  <Object Id="ID10" MimeType="MimeType3" Encoding="http://uri3">
+				  text<any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element>
+			  </Object>
+		  </Signature>
+      </Rps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="ID999999990001911733160024200900000000001">
+          <Rps Id="RPS9334444440001">
+            <IdentificacaoRps>
+              <Numero>343443</Numero>
+              <Serie>A123</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2017-11-07</DataEmissao>
+            <Status>2</Status>
+          </Rps>
+          <Competencia>2017-11-07</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>121.12</ValorServicos>
+            </Valores>
+            <IssRetido>1</IssRetido>
+            <ItemListaServico>01.01</ItemListaServico>
+            <CodigoTributacaoMunicipio>2</CodigoTributacaoMunicipio>
+            <!--Opcional-->
+            <Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
+            <CodigoMunicipio>5007307</CodigoMunicipio>
+            <ExigibilidadeISS>6</ExigibilidadeISS>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cpf>55555555555</Cpf>
+            </CpfCnpj>
+          </Prestador>
+          <TomadorServico>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>32934636810</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>
+            <Endereco>
+              <Endereco>RUA AURORA</Endereco>
+              <Numero>446</Numero>
+              <Bairro>VILA TIBERIO</Bairro>
+              <CodigoMunicipio>5007307</CodigoMunicipio>
+              <Uf>SP</Uf>
+              <Cep>14030530</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>17981707756</Telefone>
+              <Email>ALANFRNK@GMAIL.COM</Email>
+            </Contato>
+          </TomadorServico>
+          <OptanteSimplesNacional>1</OptanteSimplesNacional>
+          <IncentivoFiscal>1</IncentivoFiscal>
+          <InformacoesComplementares>INFORMACAO EXTRA BLA BLA BLA</InformacoesComplementares>
+          <!--Opcional-->
+          <Deducao>
+            <TipoDeducao>3</TipoDeducao>
+            <DescricaoDeducao>DEDUCAO DE TESTE</DescricaoDeducao>
+            <IdentificacaoDocumentoDeducao>
+              <IdentificacaoNfse>
+                <CodigoMunicipioGerador>5007307</CodigoMunicipioGerador>
+                <NumeroNfse>123457784</NumeroNfse>
+                <CodigoVerificacao>AHGH84378</CodigoVerificacao>
+              </IdentificacaoNfse>
+            </IdentificacaoDocumentoDeducao>
+            <DadosFornecedor>
+              <IdentificacaoFornecedor>
+                <CpfCnpj>
+                  <Cpf>55555555555</Cpf>
+                </CpfCnpj>
+              </IdentificacaoFornecedor>
+            </DadosFornecedor>
+            <DataEmissao>2017-11-07</DataEmissao>
+            <ValorDedutivel>20.00</ValorDedutivel>
+            <ValorUtilizadoDeducao>10.00</ValorUtilizadoDeducao>
+          </Deducao>
+        </InfDeclaracaoPrestacaoServico>
+		  <Signature Id="ID21" xmlns="http://www.w3.org/2000/09/xmldsig#">
+			  <SignedInfo Id="ID22">
+				  <CanonicalizationMethod Algorithm="http://uri3">text</CanonicalizationMethod>
+				  <SignatureMethod Algorithm="http://uri3">
+					  text<HMACOutputLength>79228162514264337593543950335</HMACOutputLength>
+				  </SignatureMethod>
+				  <Reference Id="ID23" URI="http://uri7" Type="http://uri7">
+					  <Transforms>
+						  <Transform Algorithm="http://uri19">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath19</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri20">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath20</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri21">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath21</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+					  </Transforms>
+					  <DigestMethod Algorithm="http://uri7">text</DigestMethod>
+					  <DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				  </Reference>
+				  <Reference Id="ID24" URI="http://uri8" Type="http://uri8">
+					  <Transforms>
+						  <Transform Algorithm="http://uri22">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath22</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri23">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath23</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri24">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath24</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+					  </Transforms>
+					  <DigestMethod Algorithm="http://uri8">text</DigestMethod>
+					  <DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				  </Reference>
+				  <Reference Id="ID25" URI="http://uri9" Type="http://uri9">
+					  <Transforms>
+						  <Transform Algorithm="http://uri25">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath25</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri26">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath26</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+						  <Transform Algorithm="http://uri27">
+							  text<any_element xmlns="otherNS">anyType</any_element><XPath>XPath27</XPath><any_element xmlns="otherNS">anyType</any_element>
+						  </Transform>
+					  </Transforms>
+					  <DigestMethod Algorithm="http://uri9">text</DigestMethod>
+					  <DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
+				  </Reference>
+			  </SignedInfo>
+			  <SignatureValue Id="ID26">AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
+			  <KeyInfo Id="ID27">
+				  text<KeyName>KeyName3</KeyName><KeyValue>
+					  text<DSAKeyValue>
+						  <P>AAECAwQFBgcICQoLDA0ODw==</P>
+						  <Q>AAECAwQFBgcICQoLDA0ODw==</Q>
+						  <G>AAECAwQFBgcICQoLDA0ODw==</G>
+						  <Y>AAECAwQFBgcICQoLDA0ODw==</Y>
+						  <J>AAECAwQFBgcICQoLDA0ODw==</J>
+						  <Seed>AAECAwQFBgcICQoLDA0ODw==</Seed>
+						  <PgenCounter>AAECAwQFBgcICQoLDA0ODw==</PgenCounter>
+					  </DSAKeyValue>
+				  </KeyValue><RetrievalMethod URI="http://uri3" Type="http://uri3" />
+			  </KeyInfo>
+			  <Object Id="ID28" MimeType="MimeType7" Encoding="http://uri7">
+				  text<any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element>
+			  </Object>
+			  <Object Id="ID29" MimeType="MimeType8" Encoding="http://uri8">
+				  text<any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element>
+			  </Object>
+			  <Object Id="ID30" MimeType="MimeType9" Encoding="http://uri9">
+				  text<any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element><any_element xmlns="http://www.abrasf.org.br/nfse.xsd">anyType</any_element>
+			  </Object>
+		  </Signature>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>
