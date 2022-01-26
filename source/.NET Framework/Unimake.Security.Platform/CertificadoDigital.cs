@@ -203,12 +203,7 @@ namespace Unimake.Security.Platform
         /// </summary>
         /// <param name="certificado">Certificado digital</param>
         /// <returns>true = Certificado vencido</returns>
-#if INTEROP
-        public bool Vencido([MarshalAs(UnmanagedType.IDispatch)] X509Certificate2 certificado)
-#else
-
         public bool Vencido(X509Certificate2 certificado)
-#endif
         {
             var retorna = false;
 
