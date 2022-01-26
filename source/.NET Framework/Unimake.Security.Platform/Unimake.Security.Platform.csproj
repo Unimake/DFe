@@ -39,7 +39,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
 	  <DefineConstants>TRACE</DefineConstants>
 	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
-      <DefineConstants>TRACE;INTEROP</DefineConstants>
+      <DefineConstants>TRACE;</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|net462|AnyCPU'">
