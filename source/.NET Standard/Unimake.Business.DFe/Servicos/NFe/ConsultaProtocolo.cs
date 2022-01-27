@@ -105,7 +105,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         /// <param name="conteudoXML">Conteúdo do XML</param>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new System.Exception("Não existe XML de distribuição para consulta de protocolo.");
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Não existe XML de distribuição para consulta de protocolo.");
 
         #endregion Public Methods
     }

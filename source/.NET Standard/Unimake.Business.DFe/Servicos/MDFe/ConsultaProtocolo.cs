@@ -66,17 +66,19 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Construtor
         /// </summary>
-        /// <param name="consSitMDFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaProtocolo(ConsSitMDFe consSitMDFe, Configuracao configuracao)
-            : base(consSitMDFe.GerarXML(), configuracao) { }
+        public ConsultaProtocolo()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaProtocolo()
-        {
-        }
+        /// <param name="consSitMDFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
+        public ConsultaProtocolo(ConsSitMDFe consSitMDFe, Configuracao configuracao)
+            : base(consSitMDFe.GerarXML() ?? throw new ArgumentNullException(nameof(consSitMDFe)), configuracao) { }
+
 
         #endregion Public Constructors
 
