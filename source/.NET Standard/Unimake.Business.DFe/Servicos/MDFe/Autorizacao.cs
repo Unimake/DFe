@@ -2,7 +2,6 @@
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
-
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
@@ -16,6 +15,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Enviar o XML de MDFe para o webservice no modo assíncrono
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.Autorizacao")]
+    [ComVisible(true)]
+#endif
     public class Autorizacao: ServicoBase, IInteropService<EnviMDFe>
     {
         #region Private Fields

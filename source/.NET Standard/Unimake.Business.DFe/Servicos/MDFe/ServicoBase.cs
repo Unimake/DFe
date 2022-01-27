@@ -9,6 +9,8 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// Classe base para os servidos de MDFe
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.ServicoBase")]
     [ComVisible(true)]
 #endif
     public abstract class ServicoBase : NFe.ServicoBase

@@ -14,6 +14,8 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// Enviar o XML de eventos do MDFe para o webservice
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento")]
     [ComVisible(true)]
 #endif
     public class RecepcaoEvento: ServicoBase

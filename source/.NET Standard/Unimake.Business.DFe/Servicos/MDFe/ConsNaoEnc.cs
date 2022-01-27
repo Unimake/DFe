@@ -11,6 +11,8 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// Envio do XML de consulta MDFe´s não encerrados o WebService
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.ConsNaoEnc")]
     [ComVisible(true)]
 #endif
     public class ConsNaoEnc : ServicoBase, IInteropService<ConsMDFeNaoEnc>

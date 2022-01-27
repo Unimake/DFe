@@ -11,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Enviar o XML de consulta recibo do lote de MDFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao")]
+    [ComVisible(true)]
+#endif
     public class RetAutorizacao : ServicoBase
     {
         #region Private Constructors

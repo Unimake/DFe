@@ -11,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Enviar o XML de consulta protocolo do MDFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")]
+    [ComVisible(true)]
+#endif
     public class ConsultaProtocolo: ServicoBase, IInteropService<ConsSitMDFe>
     {
         #region Protected Methods

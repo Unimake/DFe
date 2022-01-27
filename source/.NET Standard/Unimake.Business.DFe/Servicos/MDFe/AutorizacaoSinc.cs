@@ -15,6 +15,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// <summary>
     /// Enviar o XML de MDFe para o webservice no modo síncrono
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.AutorizacaoSinc")]
+    [ComVisible(true)]
+#endif
     public class AutorizacaoSinc: ServicoBase, IInteropService<Xml.MDFe.MDFe>
     {
         #region Private Fields

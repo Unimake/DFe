@@ -11,6 +11,8 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     /// Enviar o XML de consulta status do serviço do MDFe para o webservice
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.MDFe.StatusServico")]
     [ComVisible(true)]
 #endif
     public class StatusServico: ServicoBase, IInteropService<ConsStatServMDFe>
