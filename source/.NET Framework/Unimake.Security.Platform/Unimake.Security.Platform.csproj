@@ -29,7 +29,6 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='INTEROP_Release|AnyCPU'">
 		<OutputPath>..\..\Unimake.DFe\Compilacao\INTEROP_Release</OutputPath>
 		<GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-		<DefineConstants>TRACE;INTEROP</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|netstandard2.0|AnyCPU'">
@@ -37,27 +36,18 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
-	  <DefineConstants>TRACE</DefineConstants>
-	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
-      <DefineConstants>TRACE;</DefineConstants>
+		<DefineConstants>TRACE</DefineConstants>
+		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|net462|AnyCPU'">
-	  <DocumentationFile>..\..\Unimake.DFe\Compilacao\INTEROP_Release\Unimake.Security.Platform.xml</DocumentationFile>
-	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
-	  <DefineConstants>TRACE;INTEROP</DefineConstants>
+		<DocumentationFile>..\..\Unimake.DFe\Compilacao\INTEROP_Release\Unimake.Security.Platform.xml</DocumentationFile>
+		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+		<DefineConstants>TRACE;INTEROP</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
-	  <WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
-	  <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='INTEROP_Release|net472|AnyCPU'">
-	  <DefineConstants>TRACE;INTEROP</DefineConstants>
+		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="System" />
@@ -71,6 +61,6 @@
 		<Reference Include="System.Xml" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Properties\" />
+		<Folder Include="Properties\" />
 	</ItemGroup>
 </Project>

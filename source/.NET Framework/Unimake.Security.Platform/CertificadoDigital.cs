@@ -9,11 +9,9 @@ namespace Unimake.Security.Platform
     /// <summary>
     /// Trabalhar com certificado digital
     /// </summary>
-#if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Security.Platform.CertificadoDigital")]
     [ComVisible(true)]
-#endif
     public class CertificadoDigital
     {
         #region Public Constructors
@@ -83,9 +81,7 @@ namespace Unimake.Security.Platform
         /// <param name="bytes">Bytes do certificado para carga do mesmo</param>
         /// <param name="senha">Senha utilizada para instalar o certificado, será usada para carga do mesmo</param>
         /// <returns>Certificado Digital</returns>
-#if INTEROP
         [ComVisible(false)] // *** ATENÇÃO ***
-#endif
         public X509Certificate2 CarregarCertificadoDigitalA1(byte[] bytes, string senha) => new X509Certificate2(bytes, senha);
 
         /// <summary>
@@ -203,7 +199,12 @@ namespace Unimake.Security.Platform
         /// </summary>
         /// <param name="certificado">Certificado digital</param>
         /// <returns>true = Certificado vencido</returns>
+#if INTEROP
+        public bool Vencido([MarshalAs(UnmanagedType.IDispatch)] X509Certificate2 certificado)
+#else
+
         public bool Vencido(X509Certificate2 certificado)
+#endif
         {
             var retorna = false;
 
