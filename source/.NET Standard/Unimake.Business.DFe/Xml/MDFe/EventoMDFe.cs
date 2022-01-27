@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,6 +17,11 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoCanc")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoCanc: EventoDetalhe
@@ -48,6 +56,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoIncCondutor")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEventoIncCondutorMDFe")]
     public class DetEventoIncCondutor: EventoDetalhe
@@ -114,6 +127,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoIncCondutor")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEventoIncCondutorMDFe")]
     public class EventoIncCondutor: EventoDetalhe
@@ -140,6 +158,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.CondutorMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class CondutorMDFe
@@ -151,6 +174,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string CPF { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoIncDFeMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEventoIncDFeMDFe")]
     public class DetEventoIncDFeMDFe: EventoDetalhe
@@ -257,6 +285,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoIncDFeMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEventoIncDFeMDFe")]
     public class EventoIncDFeMDFe: EventoDetalhe
@@ -300,6 +333,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.InfDoc")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "infDoc")]
     public class InfDoc: EventoDetalhe
@@ -314,6 +352,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string ChNFe { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoEncMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoEncMDFe: EventoDetalhe
@@ -369,6 +412,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlRoot("eventoMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
     public class EventoMDFe: XMLBase
@@ -623,6 +671,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoDetalhe")]
+    [ComVisible(true)]
+#endif
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoIncCondutor))]
     [XmlInclude(typeof(DetEventoIncDFeMDFe))]
@@ -744,6 +797,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.InfEvento")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfEvento
@@ -863,6 +921,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoPagtoOperMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEventoPagtoOperMDFe")]
     public class DetEventoPagtoOperMDFe: EventoDetalhe
@@ -993,6 +1056,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoPagtoOperMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEventoPagtoOperMDFe")]
     public class EventoPagtoOperMDFe: EventoDetalhe
@@ -1033,6 +1101,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.InfViagens")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "infViagens")]
     public class InfViagens
@@ -1044,6 +1117,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int NroViagem { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.PagtoOperMDFeInfPag")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "infPag")]
     public class PagtoOperMDFeInfPag: InfContratante

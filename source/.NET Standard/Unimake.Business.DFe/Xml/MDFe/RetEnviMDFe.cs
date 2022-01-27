@@ -1,11 +1,19 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.RetEnviMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     [XmlRoot("retEnviMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
@@ -40,6 +48,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public RetEnviMDFeInfRec InfRec { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.RetEnviMDFeInfRec")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class RetEnviMDFeInfRec
