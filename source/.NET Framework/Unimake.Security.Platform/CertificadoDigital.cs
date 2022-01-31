@@ -85,6 +85,16 @@ namespace Unimake.Security.Platform
         public X509Certificate2 CarregarCertificadoDigitalA1(byte[] bytes, string senha) => new X509Certificate2(bytes, senha);
 
         /// <summary>
+        /// Carrega o certificado digital pelos bytes do certificado
+        /// </summary>
+        /// <param name="bytes">Bytes do certificado para carga do mesmo</param>
+        /// <param name="senha">Senha utilizada para instalar o certificado, será usada para carga do mesmo</param>
+        /// <param name="keyStorageFlags">Define onde e como importar a chave privada de um certificado X.509. (Uma combinação bit a bit dos valores de enumeração que controlam onde e como importar o certificado.)</param>
+        /// <returns>Certificado Digital</returns>
+        [ComVisible(false)] // *** ATENÇÃO ***
+        public X509Certificate2 CarregarCertificadoDigitalA1(byte[] bytes, string senha, X509KeyStorageFlags keyStorageFlags) => new X509Certificate2(bytes, senha, keyStorageFlags);
+
+        /// <summary>
         /// Carrega o certificado digital A1 direto do arquivo .PFX
         /// </summary>
         /// <param name="caminho">Caminho do certificado digital. Ex. c:\certificados\certificado.pfx</param>
@@ -123,16 +133,69 @@ namespace Unimake.Security.Platform
         }
 
         /// <summary>
+        /// Carrega o certificado digital A1 direto do arquivo .PFX
+        /// </summary>
+        /// <param name="caminho">Caminho do certificado digital. Ex. c:\certificados\certificado.pfx</param>
+        /// <param name="senha">Senha utilizada para instalar o arquivo .pfx</param>
+        /// <param name="keyStorageFlags">Define onde e como importar a chave privada de um certificado X.509. (Uma combinação bit a bit dos valores de enumeração que controlam onde e como importar o certificado.)</param>
+        /// <returns>Certificado Digital</returns>
+        [return: MarshalAs(UnmanagedType.IDispatch)]
+        public X509Certificate2 CarregarCertificadoDigitalA1(string caminho, string senha, X509KeyStorageFlags keyStorageFlags)
+        {
+            if (string.IsNullOrWhiteSpace(caminho))
+            {
+                throw new CarregarCertificadoException("O caminho do arquivo é requerido");
+            }
+
+            var fi = new FileInfo(caminho);
+
+            if (!fi.Exists)
+            {
+                throw new CarregarCertificadoException($"O arquivo '{caminho}' não pode ser acessado ou não existe.");
+            }
+
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                throw new CarregarCertificadoException("A senha é requerida");
+            }
+
+            var x509Cert = new X509Certificate2();
+
+            using (var fs = fi.OpenRead())
+            {
+                var buffer = new byte[fs.Length];
+                fs.Read(buffer, 0, buffer.Length);
+                x509Cert = new X509Certificate2(buffer, senha, keyStorageFlags);
+            }
+
+            return x509Cert;
+        }
+
+        /// <summary>
         /// Converte a string Base64 no certificado
         /// </summary>
         /// <param name="base64">String base64 convertida pelo método <see cref="ToBase64(string)"/></param>
         /// <param name="password">Senha do certificado</param>
-        /// <returns>Base64</returns>
+        /// <returns>Certificado digital</returns>
         [return: MarshalAs(UnmanagedType.IDispatch)]
         public X509Certificate2 FromBase64(string base64, string password)
         {
             var buffer = Convert.FromBase64String(base64);
             return new X509Certificate2(buffer, password);
+        }
+
+        /// <summary>
+        /// Converte a string Base64 no certificado
+        /// </summary>
+        /// <param name="base64">String base64 convertida pelo método <see cref="ToBase64(string)"/></param>
+        /// <param name="password">Senha do certificado</param>
+        /// <param name="keyStorageFlags">Define onde e como importar a chave privada de um certificado X.509. (Uma combinação bit a bit dos valores de enumeração que controlam onde e como importar o certificado.)</param>
+        /// <returns>Certificado digital</returns>
+        [return: MarshalAs(UnmanagedType.IDispatch)]
+        public X509Certificate2 FromBase64(string base64, string password, X509KeyStorageFlags keyStorageFlags)
+        {
+            var buffer = Convert.FromBase64String(base64);
+            return new X509Certificate2(buffer, password, keyStorageFlags);
         }
 
         /// <summary>
