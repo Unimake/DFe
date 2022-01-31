@@ -562,4 +562,10 @@
 		<ArqConfig>VitoriaDaConquistaBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5105259">
+		<Nome>Lucas do Rio Verde - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
