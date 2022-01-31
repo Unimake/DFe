@@ -1,0 +1,19 @@
+FUNCTION Uni_consultaMdfe
+PARAMETERS cChaveNfe
+   InicializarConfiguracao = Createobject("Unimake.Business.DFe.Servicos.Configuracao")
+   InicializarConfiguracao.CertificadoSenha = "1234"
+   InicializarConfiguracao.CertificadoArquivo = "F:\pontovenda\certificado\certtesteminas.pfx"
+   inicializarConfiguracao.tIPODFE = 4
+   inicializarConfiguracao.CodigoUF = 35
+   consSitMDFe = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe")
+   consSitMDFe.Versao = "3.00"
+   consSitMDFe.TpAmb = 1
+   consSitMDFe.ChMDFe = cChaveNfe
+   consultaMDFe = Createobject("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
+   consultaMDFe.Executar(consSitMDFe,InicializarConfiguracao)
+    && STRTOFILE(consultaMDFe.RetornoWSString,"c:\"+alltrim(consSitMDFe.ChMDFe)+".xml") salvar na pasta de retornos de xml
+	MESSAGEBOX("xmotivo "+consultaMDFe.Result.xMotivo)
+	MESSAGEBOX("numero do protocolo "+consultaMDFe.Result.ProtMDFe.InfProt.NProt)
+	MESSAGEBOX("data e hora recebto "+TTOC(consultaMDFe.Result.ProtMDFe.InfProt.DhRecbto))
+	MESSAGEBOX("Numero do cStat = "+ALLTRIM(STR(consultaMDFe.Result.cStat)))
+ENDFUNC 
