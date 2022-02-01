@@ -453,6 +453,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 {
                     GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
                 }
+                else
+                {
+                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                }
             }
         }
 
@@ -467,6 +471,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 if (item.Value.ProtCTe != null)
                 {
                     GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                }
+                else
+                {
+                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
                 }
             }
         }

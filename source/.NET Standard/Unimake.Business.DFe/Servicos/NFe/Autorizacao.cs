@@ -13,12 +13,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de NFe para o webservice
     /// </summary>
-    public class Autorizacao: ServicoBase, IInteropService<EnviNFe>
+    public class Autorizacao : ServicoBase, IInteropService<EnviNFe>
     {
         #region Private Fields
 
         private EnviNFe _enviNFe;
-        private Dictionary<string, NfeProc> NfeProcs = new Dictionary<string, NfeProc>();
+        private readonly Dictionary<string, NfeProc> NfeProcs = new Dictionary<string, NfeProc>();
 
         #endregion Private Fields
 
@@ -29,15 +29,15 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         private void MudarConteudoTagRetornoXMotivo()
         {
-            if(EnviNFe.IndSinc == SimNao.Sim)
+            if (EnviNFe.IndSinc == SimNao.Sim)
             {
 
                 try
                 {
-                    if(RetornoWSXML.GetElementsByTagName("xMotivo") != null)
+                    if (RetornoWSXML.GetElementsByTagName("xMotivo") != null)
                     {
                         var xMotivo = RetornoWSXML.GetElementsByTagName("xMotivo")[0].InnerText;
-                        if(xMotivo.Contains("[nItem:"))
+                        if (xMotivo.Contains("[nItem:"))
                         {
                             var nItem = Convert.ToInt32((xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Substring(0, (xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Length - 1));
                             RetornoWSString = RetornoWSString.Replace(xMotivo, xMotivo + " [cProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.CProd + "] [xProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.XProd + "]");
@@ -76,7 +76,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if(EnviNFe == null)
+            if (EnviNFe == null)
             {
                 Configuracoes.Definida = false;
                 return;
@@ -84,7 +84,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             var xml = EnviNFe;
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeAutorizacao;
                 Configuracoes.CodigoUF = (int)xml.NFe[0].InfNFe[0].Ide.CUF;
@@ -100,7 +100,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Efetuar ajustes diversos no XML após o mesmo ter sido assinado.
         /// </summary>
-        protected override void AjustarXMLAposAssinado() => EnviNFe = new EnviNFe().LerXML<EnviNFe>(ConteudoXML);
+        protected override void AjustarXMLAposAssinado()
+        {
+            EnviNFe = new EnviNFe().LerXML<EnviNFe>(ConteudoXML);
+        }
 
         #endregion Protected Methods
 
@@ -123,9 +126,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(EnviNFe.IndSinc == SimNao.Sim && Result.ProtNFe != null) //Envio síncrono
+                if (EnviNFe.IndSinc == SimNao.Sim && Result.ProtNFe != null) //Envio síncrono
                 {
-                    if(NfeProcs.ContainsKey(EnviNFe.NFe[0].InfNFe[0].Chave))
+                    if (NfeProcs.ContainsKey(EnviNFe.NFe[0].InfNFe[0].Chave))
                     {
                         NfeProcs[EnviNFe.NFe[0].InfNFe[0].Chave].ProtNFe = Result.ProtNFe;
                     }
@@ -142,26 +145,26 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 }
                 else
                 {
-                    if(RetConsReciNFe == null && RetConsSitNFes.Count <= 0)
+                    if (RetConsReciNFe == null && RetConsSitNFes.Count <= 0)
                     {
                         throw new Exception("Defina o conteúdo da Propriedade RetConsReciNFe ou RetConsSitNFe, sem a definição de uma delas não é possível obter o conteúdo da NFeProcResults.");
                     }
 
-                    for(var i = 0; i < EnviNFe.NFe.Count; i++)
+                    for (var i = 0; i < EnviNFe.NFe.Count; i++)
                     {
                         ProtNFe protNFe = null;
 
-                        if(RetConsReciNFe != null && RetConsReciNFe.ProtNFe != null)
+                        if (RetConsReciNFe != null && RetConsReciNFe.ProtNFe != null)
                         {
                             #region Resultado do envio do CT-e através da consulta recibo
 
-                            if(RetConsReciNFe.CStat == 104) //Lote Processado
+                            if (RetConsReciNFe.CStat == 104) //Lote Processado
                             {
-                                foreach(var item in RetConsReciNFe.ProtNFe)
+                                foreach (var item in RetConsReciNFe.ProtNFe)
                                 {
-                                    if(item.InfProt.ChNFe == EnviNFe.NFe[i].InfNFe[0].Chave)
+                                    if (item.InfProt.ChNFe == EnviNFe.NFe[i].InfNFe[0].Chave)
                                     {
-                                        switch(item.InfProt.CStat)
+                                        switch (item.InfProt.CStat)
                                         {
                                             case 100: //Autorizado o uso da NF-e
                                             case 110: //Uso Denegado
@@ -180,17 +183,17 @@ namespace Unimake.Business.DFe.Servicos.NFe
                             }
                             #endregion
                         }
-                        else if(RetConsSitNFes.Count > 0)
+                        else if (RetConsSitNFes.Count > 0)
                         {
                             #region Resultado do envio do NF-e através da consulta situação
 
-                            foreach(var item in RetConsSitNFes)
+                            foreach (var item in RetConsSitNFes)
                             {
-                                if(item != null && item.ProtNFe != null)
+                                if (item != null && item.ProtNFe != null)
                                 {
-                                    if(item.ProtNFe.InfProt.ChNFe == EnviNFe.NFe[i].InfNFe[0].Chave)
+                                    if (item.ProtNFe.InfProt.ChNFe == EnviNFe.NFe[i].InfNFe[0].Chave)
                                     {
-                                        switch(item.ProtNFe.InfProt.CStat)
+                                        switch (item.ProtNFe.InfProt.CStat)
                                         {
                                             case 100: //Autorizado o uso da NF-e
                                             case 110: //Uso Denegado
@@ -209,14 +212,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
                             #endregion
                         }
 
-                        if(NfeProcs.ContainsKey(EnviNFe.NFe[i].InfNFe[0].Chave))
+                        if (NfeProcs.ContainsKey(EnviNFe.NFe[i].InfNFe[0].Chave))
                         {
                             NfeProcs[EnviNFe.NFe[i].InfNFe[0].Chave].ProtNFe = protNFe;
                         }
                         else
                         {
                             //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
-                            if(EnviNFe.NFe[i].Signature == null)
+                            if (EnviNFe.NFe[i].Signature == null)
                             {
                                 ConteudoXML = ConteudoXMLAssinado;
                                 AjustarXMLAposAssinado();
@@ -244,7 +247,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(EnviNFe.IndSinc == SimNao.Sim) //Envio síncrono
+                if (EnviNFe.IndSinc == SimNao.Sim) //Envio síncrono
                 {
                     return new NfeProc
                     {
@@ -267,7 +270,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetEnviNFe>(RetornoWSXML);
                 }
@@ -298,7 +301,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
         public Autorizacao(EnviNFe enviNFe, Configuracao configuracao)
-            : base(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao) => Inicializar();
+            : base(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao)
+        {
+            Inicializar();
+        }
 
         #endregion Public Constructors
 
@@ -312,9 +318,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public override void Executar()
         {
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
-                if(EnviNFe == null)
+                if (EnviNFe == null)
                 {
                     throw new NullReferenceException($"{nameof(EnviNFe)} não pode ser nulo.");
                 }
@@ -352,17 +358,21 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public void GravarXmlDistribuicao(string pasta)
         {
-            foreach(var item in NfeProcResults)
+            foreach (var item in NfeProcResults)
             {
-                if(item.Value.ProtNFe != null)
+                if (item.Value.ProtNFe != null)
                 {
                     GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                }
+                else
+                {
+                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
                 }
             }
         }
 
         /// <summary>
-        /// Grava o XML de dsitribuição no stream
+        /// Grava o XML de distribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
 #if INTEROP
@@ -370,11 +380,15 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
-            foreach(var item in NfeProcResults)
+            foreach (var item in NfeProcResults)
             {
-                if(item.Value.ProtNFe != null)
+                if (item.Value.ProtNFe != null)
                 {
                     GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                }
+                else
+                {
+                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
                 }
             }
         }
