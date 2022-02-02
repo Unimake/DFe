@@ -568,4 +568,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3201209">
+		<Nome>Cachoeiro de Itapemirim - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>CachoeirodeItapemirimES.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
