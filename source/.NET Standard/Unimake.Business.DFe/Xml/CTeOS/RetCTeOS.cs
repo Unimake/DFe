@@ -37,6 +37,6 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public string XMotivo { get; set; }
 
         [XmlElement("protCTe")]
-        public Xml.CTe.ProtCTe ProtCTe { get; set; }
+        public CTe.ProtCTe ProtCTe { get; set; }
     }
 }

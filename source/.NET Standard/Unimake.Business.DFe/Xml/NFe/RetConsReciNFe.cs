@@ -72,10 +72,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 #if INTEROP
 
         /// <summary>
-        /// Retorna o elemento da lista ProtNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtNFe
+        /// Retorna o elemento da lista ProtNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtNFe)
         /// </summary>
         /// <param name="element"></param>
-        /// <returns></returns>
+        /// <returns>Conteúdo da ProtNFe do elemento passado por parâmetro</returns>
         public ProtNFe GetProtNFe(int element)
         {
             return ProtNFe[element];
@@ -88,6 +88,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get { return ProtNFe.Count; }
         }
+
 #endif
     }
 }
