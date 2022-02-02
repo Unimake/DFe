@@ -9,16 +9,18 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTeOS
 {
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     [XmlRoot("CTeOS", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class CTeOS: XMLBase
+    public class CTeOS : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -36,7 +38,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         {
             var xmlDoc = base.GerarXML();
 
-            foreach(var nodeCTe in xmlDoc.GetElementsByTagName("CTe"))
+            foreach (var nodeCTe in xmlDoc.GetElementsByTagName("CTe"))
             {
                 var elemCTe = (XmlElement)nodeCTe;
 
@@ -45,6 +47,18 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             }
 
             return xmlDoc;
+        }
+
+        /// <summary>
+        /// Deserializar o XML no objeto CTeOS
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML</param>
+        /// <returns>Objeto do CTeOS</returns>
+        public CTeOS LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<CTeOS>(doc);
         }
     }
 
@@ -132,7 +146,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddAutXML(AutXML autxml)
         {
-            if(AutXML == null)
+            if (AutXML == null)
             {
                 AutXML = new List<AutXML>();
             }
@@ -169,9 +183,9 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get
             {
                 string retorno;
-                if(string.IsNullOrWhiteSpace(CCTField))
+                if (string.IsNullOrWhiteSpace(CCTField))
                 {
-                    if(NCT == 0)
+                    if (NCT == 0)
                     {
                         throw new Exception("Defina antes o conteudo da TAG <nCT>, pois o mesmo é utilizado como base para calcular o código numérico.");
                     }
@@ -222,7 +236,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => TpEmisField;
             set
             {
-                if(value == TipoEmissao.ContingenciaFSIA ||
+                if (value == TipoEmissao.ContingenciaFSIA ||
                     value == TipoEmissao.ContingenciaEPEC ||
                     value == TipoEmissao.RegimeEspecialNFF ||
                     value == TipoEmissao.ContingenciaOffLine ||
@@ -250,7 +264,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => ProcEmiField;
             set
             {
-                if(value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
+                if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
                     throw new Exception("Conteúdo da tag <procEmi> inválido! Valores aceitos: 0 e 3.");
@@ -280,7 +294,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => ModalField;
             set
             {
-                if(value == ModalidadeTransporteCTe.Dutoviario ||
+                if (value == ModalidadeTransporteCTe.Dutoviario ||
                     value == ModalidadeTransporteCTe.Multimodal)
                 {
                     throw new Exception("Conteúdo da tag <Modal> inválido! Valores aceitos: 01, 02, 03 e 04.");
@@ -346,7 +360,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddInfPercurso(InfPercurso infPercurso)
         {
-            if(InfPercurso == null)
+            if (InfPercurso == null)
             {
                 InfPercurso = new List<InfPercurso>();
             }
@@ -414,7 +428,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddObsCont(ObsCont obsCont)
         {
-            if(ObsCont == null)
+            if (ObsCont == null)
             {
                 ObsCont = new List<ObsCont>();
             }
@@ -424,7 +438,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddObsFisco(ObsFisco obsFisco)
         {
-            if(ObsFisco == null)
+            if (ObsFisco == null)
             {
                 ObsFisco = new List<ObsFisco>();
             }
@@ -669,7 +683,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddComp(Comp comp)
         {
-            if(Comp == null)
+            if (Comp == null)
             {
                 Comp = new List<Comp>();
             }
@@ -857,7 +871,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => CSTField;
             set
             {
-                if(value.Equals("40") || value.Equals("41") || value.Equals("51"))
+                if (value.Equals("40") || value.Equals("41") || value.Equals("51"))
                 {
                     CSTField = value;
                 }
@@ -1174,7 +1188,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddInfDocRef(InfDocRef infDocRef)
         {
-            if(InfDocRef == null)
+            if (InfDocRef == null)
             {
                 InfDocRef = new List<InfDocRef>();
             }
@@ -1184,7 +1198,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddSeg(Seg seg)
         {
-            if(Seg == null)
+            if (Seg == null)
             {
                 Seg = new List<Seg>();
             }
@@ -1194,7 +1208,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddInfGTVe(InfGTVe infGTVe)
         {
-            if(InfGTVe == null)
+            if (InfGTVe == null)
             {
                 InfGTVe = new List<InfGTVe>();
             }
@@ -1408,7 +1422,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddDup(Dup dup)
         {
-            if(Dup == null)
+            if (Dup == null)
             {
                 Dup = new List<Dup>();
             }
@@ -1437,7 +1451,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public void AddComp(InfGTVeComp comp)
         {
-            if(Comp == null)
+            if (Comp == null)
             {
                 Comp = new List<InfGTVeComp>();
             }
@@ -1588,7 +1602,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => CNPJField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(CPFField))
+                if (!string.IsNullOrWhiteSpace(CPFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -1603,7 +1617,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => CPFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(CNPJField))
+                if (!string.IsNullOrWhiteSpace(CNPJField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -1683,7 +1697,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => TAFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(NroRegEstadualField))
+                if (!string.IsNullOrWhiteSpace(NroRegEstadualField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -1698,7 +1712,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => NroRegEstadualField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(TAFField))
+                if (!string.IsNullOrWhiteSpace(TAFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -1757,7 +1771,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => TAFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(NroRegEstadualField))
+                if (!string.IsNullOrWhiteSpace(NroRegEstadualField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -1772,7 +1786,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => NroRegEstadualField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(TAFField))
+                if (!string.IsNullOrWhiteSpace(TAFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }

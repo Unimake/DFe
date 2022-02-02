@@ -461,7 +461,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         }
 
         /// <summary>
-        /// Grava o XML de dsitribuição no stream
+        /// Grava o XML de distribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(System.IO.Stream stream)

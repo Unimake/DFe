@@ -10,6 +10,8 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
+using System.Text;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -20,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlRoot("enviMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
-    public class EnviMDFe: XMLBase
+    public class EnviMDFe : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -35,11 +37,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         {
             var xmlDoc = base.GerarXML();
 
-            foreach(var nodeEnvMDFe in xmlDoc.GetElementsByTagName("enviMDFe"))
+            foreach (var nodeEnvMDFe in xmlDoc.GetElementsByTagName("enviMDFe"))
             {
                 var elemEnvMDFe = (XmlElement)nodeEnvMDFe;
 
-                foreach(var nodeMDFe in elemEnvMDFe.GetElementsByTagName("MDFe"))
+                foreach (var nodeMDFe in elemEnvMDFe.GetElementsByTagName("MDFe"))
                 {
                     var elemMDFe = (XmlElement)nodeMDFe;
 
@@ -70,6 +72,18 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Deserializar o XML no objeto MDFe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML</param>
+        /// <returns>Objeto do MDFe</returns>
+        public MDFe LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<MDFe>(doc);
+        }
     }
 
 #if INTEROP
@@ -231,9 +245,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get
             {
                 string retorno;
-                if(string.IsNullOrWhiteSpace(CMDFField))
+                if (string.IsNullOrWhiteSpace(CMDFField))
                 {
-                    if(NMDF == 0)
+                    if (NMDF == 0)
                     {
                         throw new Exception("Defina antes o conteudo da TAG <nMDF>, pois o mesmo é utilizado como base para calcular o código numérico.");
                     }
@@ -272,7 +286,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => TpEmisField;
             set
             {
-                if(value != TipoEmissao.Normal &&
+                if (value != TipoEmissao.Normal &&
                     value != TipoEmissao.RegimeEspecialNFF &&
                     value != TipoEmissao.ContingenciaFSIA)
                 {
@@ -289,7 +303,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => ProcEmiField;
             set
             {
-                if(value != ProcessoEmissao.AplicativoContribuinte)
+                if (value != ProcessoEmissao.AplicativoContribuinte)
                 {
                     throw new Exception("Conteúdo da tag <procEmi> inválido! Valor aceito: 0.");
                 }
@@ -539,7 +553,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddVeicReboque(VeicReboque veicreboque)
         {
-            if(VeicReboque == null)
+            if (VeicReboque == null)
             {
                 VeicReboque = new List<VeicReboque>();
             }
@@ -549,7 +563,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddLacRodo(LacRodo lacrodo)
         {
-            if(LacRodo == null)
+            if (LacRodo == null)
             {
                 LacRodo = new List<LacRodo>();
             }
@@ -797,7 +811,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
-    public class InfPag: InfContratante
+    public class InfPag : InfContratante
     {
         private int IndAltoDesempField;
 
@@ -820,7 +834,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => IndAltoDesempField;
             set
             {
-                if(value != 1)
+                if (value != 1)
                 {
                     throw new Exception("Conteúdo da tag <indAltoDesemp> inválido! Valores aceitos: 1 ou não informe a tag.");
                 }
@@ -861,7 +875,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddComp(Comp comp)
         {
-            if(Comp == null)
+            if (Comp == null)
             {
                 Comp = new List<Comp>();
             }
@@ -871,7 +885,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfPrazo(InfPrazo infprazo)
         {
-            if(InfPrazo == null)
+            if (InfPrazo == null)
             {
                 InfPrazo = new List<InfPrazo>();
             }
@@ -1160,7 +1174,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
-    public class LacRodo: Lacre { }
+    public class LacRodo : Lacre { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1181,7 +1195,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddVag(Vag vag)
         {
-            if(Vag == null)
+            if (Vag == null)
             {
                 Vag = new List<Vag>();
             }
@@ -1380,7 +1394,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfTermCarreg(InfTermCarreg infTermCarreg)
         {
-            if(InfTermCarreg == null)
+            if (InfTermCarreg == null)
             {
                 InfTermCarreg = new List<InfTermCarreg>();
             }
@@ -1390,7 +1404,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfTermDescarreg(InfTermDescarreg infTermDescarreg)
         {
-            if(InfTermDescarreg == null)
+            if (InfTermDescarreg == null)
             {
                 InfTermDescarreg = new List<InfTermDescarreg>();
             }
@@ -1400,7 +1414,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfEmbComb(InfEmbComb infEmbComb)
         {
-            if(InfEmbComb == null)
+            if (InfEmbComb == null)
             {
                 InfEmbComb = new List<InfEmbComb>();
             }
@@ -1410,7 +1424,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfUnidCargaVazia(InfUnidCargaVazia infUnidCargaVazia)
         {
-            if(InfUnidCargaVazia == null)
+            if (InfUnidCargaVazia == null)
             {
                 InfUnidCargaVazia = new List<InfUnidCargaVazia>();
             }
@@ -1420,7 +1434,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfUnidTranspVazia(InfUnidTranspVazia infUnidTranspVazia)
         {
-            if(InfUnidTranspVazia == null)
+            if (InfUnidTranspVazia == null)
             {
                 InfUnidTranspVazia = new List<InfUnidTranspVazia>();
             }
@@ -1522,7 +1536,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => TpUnidTranspVaziaField;
             set
             {
-                if(value != TipoUnidadeTransporte.RodoviarioTracao && value != TipoUnidadeTransporte.RodoviarioReboque)
+                if (value != TipoUnidadeTransporte.RodoviarioTracao && value != TipoUnidadeTransporte.RodoviarioReboque)
                 {
                     throw new Exception("Conteúdo da TAG <tpUnidTranspVazia> da <infUnidTranspVazia> inválido! Valores aceitos: 1 e 2.");
                 }
@@ -1664,7 +1678,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if(InfUnidTransp == null)
+            if (InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -1674,7 +1688,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddPeri(Peri peri)
         {
-            if(Peri == null)
+            if (Peri == null)
             {
                 Peri = new List<Peri>();
             }
@@ -1727,7 +1741,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddLacUnidTransp(LacUnidTransp lacUnidTransp)
         {
-            if(LacUnidTransp == null)
+            if (LacUnidTransp == null)
             {
                 LacUnidTransp = new List<LacUnidTransp>();
             }
@@ -1737,7 +1751,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if(InfUnidCarga == null)
+            if (InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -1755,7 +1769,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
-    public class LacUnidTransp: Lacre { }
+    public class LacUnidTransp : Lacre { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1795,7 +1809,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddLacUnidCarga(LacUnidCarga lacUnidCarga)
         {
-            if(LacUnidCarga == null)
+            if (LacUnidCarga == null)
             {
                 LacUnidCarga = new List<LacUnidCarga>();
             }
@@ -1813,7 +1827,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
-    public class LacUnidCarga: Lacre { }
+    public class LacUnidCarga : Lacre { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1917,7 +1931,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if(InfUnidTransp == null)
+            if (InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -1927,7 +1941,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddPeri(Peri peri)
         {
-            if(Peri == null)
+            if (Peri == null)
             {
                 Peri = new List<Peri>();
             }
@@ -1973,7 +1987,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if(InfUnidTransp == null)
+            if (InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -1983,7 +1997,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddPeri(Peri peri)
         {
-            if(Peri == null)
+            if (Peri == null)
             {
                 Peri = new List<Peri>();
             }
@@ -2019,7 +2033,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public void AddNAver(string naver)
         {
-            if(NAver == null)
+            if (NAver == null)
             {
                 NAver = new List<string>();
             }
@@ -2154,7 +2168,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
-    public class InfLocalDescarrega: InfLocalCarrega { }
+    public class InfLocalDescarrega : InfLocalCarrega { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -2237,7 +2251,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => CNPJField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(CPFField))
+                if (!string.IsNullOrWhiteSpace(CPFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -2252,7 +2266,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => CPFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(CNPJField))
+                if (!string.IsNullOrWhiteSpace(CNPJField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }

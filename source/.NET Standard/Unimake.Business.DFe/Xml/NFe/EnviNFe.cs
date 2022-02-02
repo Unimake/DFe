@@ -108,7 +108,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
 #endif
-
+        /// <summary>
+        /// Deserializar o XML no objeto MDFe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML</param>
+        /// <returns>Objeto do MDFe</returns>
         public NFe LoadFromFile(string filename)
         {
             var doc = new XmlDocument();

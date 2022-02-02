@@ -4,15 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
     [Serializable()]
     [XmlRoot("enviCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class EnviCTe: XMLBase
+    public class EnviCTe : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -27,11 +29,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             var xmlDoc = base.GerarXML();
 
-            foreach(var nodeEnvCTe in xmlDoc.GetElementsByTagName("enviCTe"))
+            foreach (var nodeEnvCTe in xmlDoc.GetElementsByTagName("enviCTe"))
             {
                 var elemEnvCTe = (XmlElement)nodeEnvCTe;
 
-                foreach(var nodeCTe in elemEnvCTe.GetElementsByTagName("CTe"))
+                foreach (var nodeCTe in elemEnvCTe.GetElementsByTagName("CTe"))
                 {
                     var elemCTe = (XmlElement)nodeCTe;
 
@@ -55,7 +57,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             CTe.Add(cte);
-        } 
+        }
 
 #endif
 
@@ -75,6 +77,18 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Deserializar o XML no objeto CTe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML</param>
+        /// <returns>Objeto do CTe</returns>
+        public CTe LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<CTe>(doc);
+        }
     }
 
     [Serializable()]
@@ -179,7 +193,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             AutXML.Add(autxml);
-        } 
+        }
 
 #endif
 
@@ -210,9 +224,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             get
             {
                 string retorno;
-                if(string.IsNullOrWhiteSpace(CCTField))
+                if (string.IsNullOrWhiteSpace(CCTField))
                 {
-                    if(NCT == 0)
+                    if (NCT == 0)
                     {
                         throw new Exception("Defina antes o conteudo da TAG <nCT>, pois o mesmo é utilizado como base para calcular o código numérico.");
                     }
@@ -263,7 +277,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpEmisField;
             set
             {
-                if(value == TipoEmissao.ContingenciaFSIA ||
+                if (value == TipoEmissao.ContingenciaFSIA ||
                    value == TipoEmissao.ContingenciaOffLine ||
                    value == TipoEmissao.RegimeEspecialNFF ||
                    value == TipoEmissao.ContingenciaSVCAN)
@@ -290,7 +304,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => ProcEmiField;
             set
             {
-                if(value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
+                if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
                     throw new Exception("Conteúdo da tag <procEmi> inválido! Valores aceitos: 0 e 3.");
@@ -397,7 +411,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TomaField;
             set
             {
-                if(value == TomadorServicoCTe.Outros)
+                if (value == TomadorServicoCTe.Outros)
                 {
                     throw new Exception("Conteúdo da tag <toma> filha da tag <toma3> inválido! Valores aceitos: 0, 1, 2, 3.");
                 }
@@ -419,7 +433,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TomadorServicoCTe.Outros;
             set
             {
-                if(value != TomadorServicoCTe.Outros)
+                if (value != TomadorServicoCTe.Outros)
                 {
                     throw new Exception("Conteúdo da tag <toma> filha da tag <toma4> inválido! Valores aceitos: 4.");
                 }
@@ -572,7 +586,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             ObsFisco.Add(obsFisco);
-        } 
+        }
 
 #endif
 
@@ -687,7 +701,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoPeriodoEntregaCTe.SemDataDefinida;
             set
             {
-                if(value != TipoPeriodoEntregaCTe.SemDataDefinida)
+                if (value != TipoPeriodoEntregaCTe.SemDataDefinida)
                 {
                     throw new Exception("Conteúdo da tag <tpPer> filha da tag <semData><Entrega> inválido! Valores aceitos: 0.");
                 }
@@ -709,7 +723,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpPerField;
             set
             {
-                if(value == TipoPeriodoEntregaCTe.SemDataDefinida || value == TipoPeriodoEntregaCTe.NoPeriodo)
+                if (value == TipoPeriodoEntregaCTe.SemDataDefinida || value == TipoPeriodoEntregaCTe.NoPeriodo)
                 {
                     throw new Exception("Conteúdo da tag <tpPer> filha da tag <comData><Entrega> inválido! Valores aceitos: 1, 2 ou 3.");
                 }
@@ -741,7 +755,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoPeriodoEntregaCTe.NoPeriodo;
             set
             {
-                if(value != TipoPeriodoEntregaCTe.NoPeriodo)
+                if (value != TipoPeriodoEntregaCTe.NoPeriodo)
                 {
                     throw new Exception("Conteúdo da tag <tpPer> filha da tag <noPeriodo><Entrega> inválido! Valores aceitos: 4.");
                 }
@@ -783,7 +797,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoHoraEntregaCTe.SemHoraDefinida;
             set
             {
-                if(value != TipoHoraEntregaCTe.SemHoraDefinida)
+                if (value != TipoHoraEntregaCTe.SemHoraDefinida)
                 {
                     throw new Exception("Conteúdo da tag <tpHor> filha da tag <semHora><Entrega> inválido! Valores aceitos: 0.");
                 }
@@ -805,7 +819,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpHorField;
             set
             {
-                if(value == TipoHoraEntregaCTe.SemHoraDefinida || value == TipoHoraEntregaCTe.NoIntervaloTempo)
+                if (value == TipoHoraEntregaCTe.SemHoraDefinida || value == TipoHoraEntregaCTe.NoIntervaloTempo)
                 {
                     throw new Exception("Conteúdo da tag <tpHor> filha da tag <comHora><Entrega> inválido! Valores aceitos: 1, 2 ou 3.");
                 }
@@ -837,7 +851,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoHoraEntregaCTe.NoIntervaloTempo;
             set
             {
-                if(value != TipoHoraEntregaCTe.NoIntervaloTempo)
+                if (value != TipoHoraEntregaCTe.NoIntervaloTempo)
                 {
                     throw new Exception("Conteúdo da tag <tpHor> filha da tag <noInter><Entrega> inválido! Valores aceitos: 4.");
                 }
@@ -1362,7 +1376,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             Comp.Add(comp);
-        } 
+        }
 
 #endif
 
@@ -1544,7 +1558,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => CSTField;
             set
             {
-                if(value.Equals("40") || value.Equals("41") || value.Equals("51"))
+                if (value.Equals("40") || value.Equals("41") || value.Equals("51"))
                 {
                     CSTField = value;
                 }
@@ -1859,7 +1873,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             VeicNovos.Add(veicNovos);
-        } 
+        }
 
 #endif
 
@@ -1918,7 +1932,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             InfQ.Add(infq);
-        } 
+        }
 
 #endif
 
@@ -1999,7 +2013,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             InfOutros.Add(infoutros);
-        } 
+        }
 
 #endif
 
@@ -2149,7 +2163,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             InfUnidTransp.Add(infUnidTransp);
-        } 
+        }
 
 #endif
 
@@ -2201,7 +2215,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             LacUnidCarga.Add(lacUnidCarga);
-        } 
+        }
 
 #endif
 
@@ -2252,7 +2266,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddLacUnidTransp(LacUnidTransp lacUnidTransp)
         {
-            if(LacUnidTransp == null)
+            if (LacUnidTransp == null)
             {
                 LacUnidTransp = new List<LacUnidTransp>();
             }
@@ -2262,7 +2276,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if(InfUnidCarga == null)
+            if (InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -2282,7 +2296,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class LacUnidTransp: LacUnidCarga { }
+    public class LacUnidTransp : LacUnidCarga { }
 
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
@@ -2314,7 +2328,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if(InfUnidCarga == null)
+            if (InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -2324,7 +2338,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if(InfUnidTransp == null)
+            if (InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -2395,7 +2409,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if(InfUnidCarga == null)
+            if (InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -2405,7 +2419,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if(InfUnidTransp == null)
+            if (InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -2437,7 +2451,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddEmiDocAnt(EmiDocAnt emiDocAnt)
         {
-            if(EmiDocAnt == null)
+            if (EmiDocAnt == null)
             {
                 EmiDocAnt = new List<EmiDocAnt>();
             }
@@ -2474,7 +2488,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddIdDocAnt(IdDocAnt idDocAnt)
         {
-            if(IdDocAnt == null)
+            if (IdDocAnt == null)
             {
                 IdDocAnt = new List<IdDocAnt>();
             }
@@ -2507,7 +2521,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddIdDocAntEle(IdDocAntEle idDocAntEle)
         {
-            if(IdDocAntEle == null)
+            if (IdDocAntEle == null)
             {
                 IdDocAntEle = new List<IdDocAntEle>();
             }
@@ -2517,7 +2531,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddIdDocAntPap(IdDocAntPap idDocAntPap)
         {
-            if(IdDocAntPap == null)
+            if (IdDocAntPap == null)
             {
                 IdDocAntPap = new List<IdDocAntPap>();
             }
@@ -2609,7 +2623,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddOcc(Occ occ)
         {
-            if(Occ == null)
+            if (Occ == null)
             {
                 Occ = new List<Occ>();
             }
@@ -2790,7 +2804,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddPeri(Peri peri)
         {
-            if(Peri == null)
+            if (Peri == null)
             {
                 Peri = new List<Peri>();
             }
@@ -2822,7 +2836,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddCInfManu(InformacaoManuseioCTe cInfManu)
         {
-            if(CInfManu == null)
+            if (CInfManu == null)
             {
                 CInfManu = new List<InformacaoManuseioCTe>();
             }
@@ -2947,7 +2961,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddBalsa(Balsa balsa)
         {
-            if(Balsa == null)
+            if (Balsa == null)
             {
                 Balsa = new List<Balsa>();
             }
@@ -2957,7 +2971,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddDetCont(DetCont detCont)
         {
-            if(DetCont == null)
+            if (DetCont == null)
             {
                 DetCont = new List<DetCont>();
             }
@@ -3000,7 +3014,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddLacre(Lacre lacre)
         {
-            if(Lacre == null)
+            if (Lacre == null)
             {
                 Lacre = new List<Lacre>();
             }
@@ -3033,7 +3047,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfNF(DetContInfDocInfNF infNF)
         {
-            if(InfNF == null)
+            if (InfNF == null)
             {
                 InfNF = new List<DetContInfDocInfNF>();
             }
@@ -3043,7 +3057,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfNFe(DetContInfDocInfNFe infNFe)
         {
-            if(InfNFe == null)
+            if (InfNFe == null)
             {
                 InfNFe = new List<DetContInfDocInfNFe>();
             }
@@ -3149,7 +3163,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddFerroEnv(FerroEnv ferroEnv)
         {
-            if(FerroEnv == null)
+            if (FerroEnv == null)
             {
                 FerroEnv = new List<FerroEnv>();
             }
@@ -3285,7 +3299,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddDup(Dup dup)
         {
-            if(Dup == null)
+            if (Dup == null)
             {
                 Dup = new List<Dup>();
             }
@@ -3440,7 +3454,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             set
             {
                 var permitido = "01,1B,02,2D,2E,04,06,07,08,8B,09,10,11,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28 e 55";
-                if(!permitido.Contains(value))
+                if (!permitido.Contains(value))
                 {
                     throw new Exception("Conteúdo da tag <mod> filha da tag <infCteSub><tomaICMS><RefNF> inválido! Valores aceitos: " + permitido + ".");
                 }
@@ -3499,11 +3513,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => XObsField;
             set
             {
-                if(value.Length < 15)
+                if (value.Length < 15)
                 {
                     throw new Exception("Conteúdo da tag <xObs> filha da tag <infGlobalizado> inválido! O conteúdo deve ter no mínimo 15 caracteres.");
                 }
-                else if(value.Length > 256)
+                else if (value.Length > 256)
                 {
                     throw new Exception("Conteúdo da tag <xObs> filha da tag <infGlobalizado> inválido! O conteúdo deve ter no máximo 256 caracteres.");
                 }
@@ -3524,7 +3538,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public void AddInfCTeMultimodal(InfCTeMultimodal infCTeMultimodal)
         {
-            if(InfCTeMultimodal == null)
+            if (InfCTeMultimodal == null)
             {
                 InfCTeMultimodal = new List<InfCTeMultimodal>();
             }
@@ -3582,7 +3596,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => CNPJField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(CPFField))
+                if (!string.IsNullOrWhiteSpace(CPFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
@@ -3597,7 +3611,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => CPFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(CNPJField))
+                if (!string.IsNullOrWhiteSpace(CNPJField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
                 }
