@@ -2,7 +2,8 @@
   "profiles": {
     "Unimake.Business.DFe": {
       "commandName": "Executable",
-      "executablePath": "..\\..\\..\\..\\Unimake.DFe\\Interop\\VB6\\Unimake.DFe_InteropTest.exe",
+      "executablePath": "C:\\Windows\\System32\\cscript.exe",
+      "commandLineArgs": "/X \"C:\\projetos\\github\\Unimake.DFe\\source\\Unimake.DFe\\Interop\\VBS\\EnviarNFeSincrono.vbs\"",
       "nativeDebugging": false
     }
   }
