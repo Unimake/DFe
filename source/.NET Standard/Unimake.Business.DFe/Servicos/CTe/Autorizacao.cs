@@ -145,7 +145,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                         modal = itemIde.GetElementsByTagName("modal")[0].InnerText;
                     }
 
-                    foreach (XmlElement itemInfModal in ConteudoXMLAssinado.GetElementsByTagName("infModal"))
+                    foreach (XmlElement itemInfModal in itemCTe.GetElementsByTagName("infModal"))
                     {
                         var xmlEspecifico = new XmlDocument();
                         xmlEspecifico.LoadXml(itemInfModal.InnerXml);
