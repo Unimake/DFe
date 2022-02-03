@@ -108,7 +108,7 @@
         <Tipo>
           <ID>1</ID>
           <SchemaArquivo>enviCTe_v{0}.xsd</SchemaArquivo>
-          <SchemaArquivoEspecifico>cteModalRodoviarioOS_v{0}.xsd</SchemaArquivoEspecifico>
+          <SchemaArquivoEspecifico>cteModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
           <ID>2</ID>

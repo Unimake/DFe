@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         #region Private Fields
 
         private EnviCTe _enviCTe;
-        private Dictionary<string, CteProc> CteProcs = new Dictionary<string, CteProc>();
+        private readonly Dictionary<string, CteProc> CteProcs = new Dictionary<string, CteProc>();
 
         #endregion Private Fields
 
@@ -124,119 +124,38 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = EnviCTe;
-
             if (Configuracoes.SchemasEspecificos.Count > 0)
             {
-                for (var i = 0; i < xml.CTe.Count; i++)
+                var schemaArquivo = Configuracoes.SchemasEspecificos["1"].SchemaArquivo; //De qualquer modal o xml de validação da parte geral é o mesmo, então vou pegar do número 1, pq tanto faz.
+
+                #region Validar o XML geral
+
+                ValidarXMLCTe(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
+
+                #endregion Validar o XML geral
+
+                #region Validar a parte específica de modal do CTe
+
+                foreach (XmlElement itemCTe in ConteudoXMLAssinado.GetElementsByTagName("CTe"))
                 {
-                    var modal = (int)xml.CTe[i].InfCTe.Ide.Modal;
+                    var modal = string.Empty;
 
-                    var schemaArquivo = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivo;
-                    var schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivoEspecifico;
-
-                    #region Validar o XML geral
-
-                    ValidarXMLCTe(ConteudoXML, schemaArquivo, Configuracoes.TargetNS);
-
-                    #endregion Validar o XML geral
-
-                    #region Validar a parte específica de modal do CTe
-
-                    var xmlEspecifico = new XmlDocument();
-                    switch (xml.CTe[i].InfCTe.Ide.Modal)
+                    foreach (XmlElement itemIde in itemCTe.GetElementsByTagName("ide"))
                     {
-                        case ModalidadeTransporteCTe.Rodoviario:
-                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
-                            {
-                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
-                                {
-                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo != null)
-                                    {
-                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Rodo).OuterXml);
-                                        goto default;
-                                    }
-                                }
-                            }
-                            break;
-
-                        case ModalidadeTransporteCTe.Aereo:
-                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
-                            {
-                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
-                                {
-                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo != null)
-                                    {
-                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aereo).OuterXml);
-                                        goto default;
-                                    }
-                                }
-                            }
-                            break;
-
-                        case ModalidadeTransporteCTe.Aquaviario:
-                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
-                            {
-                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
-                                {
-                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav != null)
-                                    {
-                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Aquav).OuterXml);
-                                        goto default;
-                                    }
-                                }
-                            }
-                            break;
-
-                        case ModalidadeTransporteCTe.Ferroviario:
-                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
-                            {
-                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
-                                {
-                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov != null)
-                                    {
-                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Ferrov).OuterXml);
-                                        goto default;
-                                    }
-                                }
-                            }
-                            break;
-
-                        case ModalidadeTransporteCTe.Dutoviario:
-                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
-                            {
-                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
-                                {
-                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto != null)
-                                    {
-                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<Duto>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.Duto).OuterXml);
-                                        goto default;
-                                    }
-                                }
-                            }
-                            break;
-
-                        case ModalidadeTransporteCTe.Multimodal:
-                            if (xml.CTe[i].InfCTe.InfCTeNorm != null)
-                            {
-                                if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal != null)
-                                {
-                                    if (xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal != null)
-                                    {
-                                        xmlEspecifico.LoadXml(XMLUtility.Serializar<MultiModal>(xml.CTe[i].InfCTe.InfCTeNorm.InfModal.MultiModal).OuterXml);
-                                        goto default;
-                                    }
-                                }
-                            }
-                            break;
-
-                        default:
-                            ValidarXMLCTe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                            break;
+                        modal = itemIde.GetElementsByTagName("modal")[0].InnerText;
                     }
 
-                    #endregion Validar a parte específica de cada evento
+                    foreach (XmlElement itemInfModal in ConteudoXMLAssinado.GetElementsByTagName("infModal"))
+                    {
+                        var xmlEspecifico = new XmlDocument();
+                        xmlEspecifico.LoadXml(itemInfModal.InnerXml);
+                        var schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.Substring(1,1)].SchemaArquivoEspecifico;
+
+                        ValidarXMLCTe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
+                    }
                 }
+
+                #endregion Validar a parte específica de cada evento
             }
         }
 
@@ -250,12 +169,12 @@ namespace Unimake.Business.DFe.Servicos.CTe
         public RetConsReciCTe RetConsReciCTe { get; set; }
 
         /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta situção do CTe
+        /// Propriedade com o conteúdo retornado da consulta situação do CTe
         /// </summary>
         public List<RetConsSitCTe> RetConsSitCTes = new List<RetConsSitCTe>();
 
         /// <summary>
-        /// Propriedade contendo o XML da CTe com o protocolo de autorização anexado - Envio Assincrono
+        /// Propriedade contendo o XML da CTe com o protocolo de autorização anexado - Envio Assíncrono
         /// </summary>
         public Dictionary<string, CteProc> CteProcResults
         {
@@ -385,7 +304,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Construtor
         /// </summary>
         public Autorizacao()
-            : base() => CteProcs.Clear();
+            : base()
+        {
+            CteProcs.Clear();
+        }
 
         /// <summary>
         /// Construtor
@@ -437,7 +359,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             PrepararServico(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

@@ -26,7 +26,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
         private EnviMDFe _enviMDFe;
 
-        private Dictionary<string, MdfeProc> MdfeProcs = new Dictionary<string, MdfeProc>();
+        private readonly Dictionary<string, MdfeProc> MdfeProcs = new Dictionary<string, MdfeProc>();
 
         #endregion Private Fields
 
@@ -256,7 +256,10 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// Construtor
         /// </summary>
         public Autorizacao()
-            : base() => MdfeProcs.Clear();
+            : base()
+        {
+            MdfeProcs.Clear();
+        }
 
         /// <summary>
         /// Construtor
@@ -323,28 +326,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             #region Validar a parte específica de modal do MDFe
 
             var xmlEspecifico = new XmlDocument();
-            switch (xml.MDFe.InfMDFe.Ide.Modal)
+            foreach (XmlElement item in ConteudoXMLAssinado.GetElementsByTagName("infModal"))
             {
-                case ModalidadeTransporteMDFe.Rodoviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.MDFe.InfMDFe.InfModal.Rodo).OuterXml);
-                    goto default;
-
-                case ModalidadeTransporteMDFe.Aereo:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.MDFe.InfMDFe.InfModal.Aereo).OuterXml);
-                    goto default;
-
-                case ModalidadeTransporteMDFe.Aquaviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.MDFe.InfMDFe.InfModal.Aquav).OuterXml);
-                    goto default;
-
-                case ModalidadeTransporteMDFe.Ferroviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.MDFe.InfMDFe.InfModal.Ferrov).OuterXml);
-                    goto default;
-
-                default:
-                    ValidarXMLMDFe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    break;
+                xmlEspecifico.LoadXml(item.InnerXml);
             }
+            ValidarXMLMDFe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
 
             #endregion Validar a parte específica de modal do MDFe
         }
@@ -369,8 +355,10 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         /// <param name="item">Item que será adicionado</param>
         [ComVisible(true)]
-        public void AddRetConsSitMDFe(RetConsSitMDFe item) =>
+        public void AddRetConsSitMDFe(RetConsSitMDFe item)
+        {
             (RetConsSitMDFe ?? (RetConsSitMDFe = new List<RetConsSitMDFe>())).Add(item);
+        }
 
 #endif
 

@@ -144,7 +144,7 @@ namespace Unimake.Business.DFe
         /// <param name="settings">Parâmetros para validação</param>
         private void ValidateXMLAgainstSchema(XmlDocument conteudoXML, XmlReaderSettings settings)
         {
-            using(var xmlReader = XmlReader.Create(new StringReader(conteudoXML.OuterXml), settings))
+            using (var xmlReader = XmlReader.Create(new StringReader(conteudoXML.OuterXml), settings))
             {
                 ErroValidacao = "";
 
