@@ -20,9 +20,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     }
 
 #if INTEROP
-    [ComVisible(false)]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ConsCadBase")]
+    [ComVisible(true)]
 #endif
-    public abstract class ConsCadBase : XMLBase
+    public class ConsCadBase : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -55,18 +57,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCNPJ()
-        {
-            return !string.IsNullOrWhiteSpace(CNPJ);
-        }
-        public bool ShouldSerializeCPF()
-        {
-            return !string.IsNullOrWhiteSpace(CPF);
-        }
-        public bool ShouldSerializeIE()
-        {
-            return !string.IsNullOrWhiteSpace(IE);
-        }
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+        public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
+        public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
 
         #endregion
     }
