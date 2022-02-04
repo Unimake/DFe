@@ -43,19 +43,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
-        [XmlIgnore]
-        public DateTime DhRecbto { get; set; }
-
-        [XmlElement("dhRecbto")]
-        public string DhRecbtoField
-        {
-            get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhRecbto = DateTime.Parse(value);
-        }
-
-        [XmlElement("chMDFe")]
-        public string ChMDFe { get; set; }
-
         [XmlElement("protMDFe")]
         public ProtMDFe ProtMDFe { get; set; }
 
