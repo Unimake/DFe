@@ -193,6 +193,16 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Seg.Add(seg);
         }
 
+        public void AddLacres(Lacre lacre)
+        {
+            if (Lacres == null)
+            {
+                Lacres = new List<Lacre>();
+            }
+
+            Lacres.Add(lacre);
+        }
+
 #endif
 
         #endregion
