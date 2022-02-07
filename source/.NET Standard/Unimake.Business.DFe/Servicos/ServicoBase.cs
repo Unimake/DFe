@@ -31,9 +31,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="tagAssinatura">Tag de assinatura</param>
         private void VerificarAssinarXML(string tagAssinatura)
         {
-            if(!string.IsNullOrWhiteSpace(tagAssinatura))
+            if (!string.IsNullOrWhiteSpace(tagAssinatura))
             {
-                if(AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
+                if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
                     AjustarXMLAposAssinado();
                 }
@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Servicos
             get => _conteudoXML;
             set
             {
-                if(ConteudoXMLOriginal == null)
+                if (ConteudoXMLOriginal == null)
                 {
                     ConteudoXMLOriginal = new XmlDocument();
                     ConteudoXMLOriginal.LoadXml(value?.OuterXml);
@@ -137,7 +137,7 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         protected internal void Inicializar()
         {
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 DefinirConfiguracao();
             }
@@ -156,7 +156,7 @@ namespace Unimake.Business.DFe.Servicos
         public Configuracao Configuracoes { get; set; }
 
         /// <summary>
-        /// Conteúdo do XML assinado, quando o mesmo possui assinatura, caso contrário, o conteúdo será o mesmo da propriedade ConteudoXMLOriginal.
+        /// Conteúdo do XML assinado.
         /// </summary>
         public XmlDocument ConteudoXMLAssinado
         {
@@ -168,6 +168,15 @@ namespace Unimake.Business.DFe.Servicos
                 return ConteudoXML;
             }
         }
+
+#if INTEROP
+
+        /// <summary>
+        /// Conteúdo do XML assinado no formato string.
+        /// </summary>
+        public string GetConteudoXMLAssinado() => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.OuterXml : "");
+
+#endif
 
         /// <summary>
         /// Conteúdo do XML original, para os que tem assinatura este está sem. Original conforme foi criado.
@@ -202,9 +211,9 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         public virtual void Executar()
         {
-            if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
             {
-                if(!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
+                if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
                 {
                     AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
                     AjustarXMLAposAssinado();
