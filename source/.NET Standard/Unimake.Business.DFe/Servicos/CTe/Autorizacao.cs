@@ -34,7 +34,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
                     if (EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
                     {
-                        paramLinkQRCode = "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviCTe.CTe[i].InfCTe.Chave);
+                        paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviCTe.CTe[i].InfCTe.Chave);
                     }
 
                     EnviCTe.CTe[i].InfCTeSupl.QrCodCTe = paramLinkQRCode.Trim();
