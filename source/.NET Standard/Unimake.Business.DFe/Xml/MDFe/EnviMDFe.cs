@@ -238,7 +238,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public TipoEmitenteMDFe TpEmit { get; set; }
 
         [XmlElement("tpTransp")]
+#if INTEROP
+        public TipoTransportadorMDFe TpTransp { get; set; } = (TipoTransportadorMDFe)(-1);
+#else
         public TipoTransportadorMDFe? TpTransp { get; set; }
+#endif
 
         [XmlElement("mod")]
         public ModeloDFe Mod { get; set; }
@@ -358,7 +362,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public bool ShouldSerializeIndCanalVerde() => IndCanalVerde == SimNao.Sim;
         public bool ShouldSerializeIndCarregaPosterior() => IndCarregaPosterior == SimNao.Sim;
         public bool ShouldSerializeDhIniViagemField() => DhIniViagem > DateTime.MinValue;
+#if INTEROP
+        public bool ShouldSerializeTpTransp() => TpTransp != (TipoTransportadorMDFe)(-1);
+#else
         public bool ShouldSerializeTpTransp() => TpTransp != null;
+#endif
 
         #endregion
 
@@ -587,7 +595,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public bool ShouldSerializeCodAgPorto() => !string.IsNullOrWhiteSpace(CodAgPorto);
 
-        #endregion        
+        #endregion
     }
 
 #if INTEROP
@@ -703,11 +711,18 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public List<Disp> Disp { get; set; }
 
         [XmlElement("categCombVeic")]
+#if INTEROP
+        public CategoriaCombinacaoVeicular CategCombVeic { get; set; } = (CategoriaCombinacaoVeicular)(-1);
+#else
         public CategoriaCombinacaoVeicular? CategCombVeic { get; set; }
+#endif
 
         #region ShouldSerialize
-
+#if INTEROP
+        public bool ShouldSerializeCategCombVeic() => CategCombVeic != (CategoriaCombinacaoVeicular)(-1);
+#else
         public bool ShouldSerializeCategCombVeic() => CategCombVeic != null;
+#endif
 
         #endregion
 
@@ -762,7 +777,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
 
         [XmlElement("tpValePed")]
+#if INTEROP
+        public TipoValePedagio TpValePed { get; set; } = (TipoValePedagio)(-1);
+#else
         public TipoValePedagio? TpValePed { get; set; }
+#endif
 
         #region ShouldSerialize
 
@@ -774,7 +793,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public bool ShouldSerializeVValePedField() => !string.IsNullOrWhiteSpace(CNPJForn);
 
+#if INTEROP
+        public bool ShouldSerializeTpValePed() => TpValePed != (TipoValePedagio)(-1);
+#else
         public bool ShouldSerializeTpValePed() => TpValePed != null;
+#endif
 
         #endregion
 
@@ -1044,11 +1067,17 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public TipoCarroceriaMDFe TpCar { get; set; }
 
         [XmlElement("UF")]
-        public UFBrasil? UF { get; set; }
-
-        #region Add (List - Interop)
 
 #if INTEROP
+        public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
+#else
+        public UFBrasil? UF { get; set; }
+#endif
+
+
+#if INTEROP
+
+        #region Add (List - Interop)
 
         public void AddCondutor(Condutor condutor)
         {
@@ -1060,9 +1089,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Condutor.Add(condutor);
         }
 
-#endif
-
         #endregion
+
+#endif
 
         #region ShouldSerialize
 
@@ -1070,7 +1099,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
         public bool ShouldSerializeCapM3() => CapM3 > 0;
         public bool ShouldSerializeCapKG() => CapKG > 0;
-        public bool ShouldSerializeUF() => UF != null;
+
+#if INTEROP
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
+#else
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
+#endif
 
         #endregion
     }
@@ -1099,18 +1133,32 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("IE")]
         public string IE { get; set; }
 
+
         [XmlElement("UF")]
+#if INTEROP
+        public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
+#else
         public UFBrasil? UF { get; set; }
+#endif
 
         [XmlElement("tpProp")]
+#if INTEROP
+        public TipoProprietarioMDFe TpProp { get; set; } = TipoProprietarioMDFe.NaoDefinido;
+#else
         public TipoProprietarioMDFe? TpProp { get; set; }
+#endif
 
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
-        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido && UF != null;
+#if INTEROP
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
+        public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido;
+#else
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
         public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && TpProp != null;
+#endif
 
         #endregion
     }
@@ -1165,14 +1213,22 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public TipoCarroceriaMDFe TpCar { get; set; }
 
         [XmlElement("UF")]
+#if INTEROP
+        public UFBrasil UF { get; set; }
+#else
         public UFBrasil? UF { get; set; }
+#endif
 
         #region ShouldSerialize
 
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
         public bool ShouldSerializeCapM3() => CapM3 > 0;
-        public bool ShouldSerializeUF() => UF != null;
+#if INTEROP
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
+#else
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
+#endif
 
         #endregion
     }

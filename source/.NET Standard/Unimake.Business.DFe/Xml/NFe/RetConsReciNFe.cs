@@ -76,18 +76,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         /// <param name="element"></param>
         /// <returns>Conteúdo da ProtNFe do elemento passado por parâmetro</returns>
-        public ProtNFe GetProtNFe(int element)
-        {
-            return ProtNFe[element];
-        }
+        public ProtNFe GetProtNFe(int element) => ProtNFe[element];
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProtNFe
         /// </summary>
-        public int GetProtNFeCount
-        {
-            get { return ProtNFe.Count; }
-        }
+        public int GetProtNFeCount => (ProtNFe != null ? ProtNFe.Count : 0);
 
 #endif
     }

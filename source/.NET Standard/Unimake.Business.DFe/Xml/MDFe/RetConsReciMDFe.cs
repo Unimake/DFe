@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlRoot("retConsReciMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
-    public class RetConsReciMDFe: XMLBase
+    public class RetConsReciMDFe : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -56,7 +56,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
             set
             {
-                if(!string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
                     DhRecbto = DateTime.Parse(value);
                 }
@@ -65,5 +65,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement("protMDFe")]
         public List<ProtMDFe> ProtMDFe { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista ProtMDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtMDFe)
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns>Conteúdo da ProtMDFe do elemento passado por parâmetro</returns>
+        public ProtMDFe GetProtMDFe(int element) => ProtMDFe[element];
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ProtMDFe
+        /// </summary>
+        public int GetProtMDFeCount => (ProtMDFe != null ? ProtMDFe.Count : 0);
+
+#endif
     }
 }

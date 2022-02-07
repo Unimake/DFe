@@ -68,18 +68,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// </summary>
         /// <param name="element"></param>
         /// <returns>Conteúdo da ProtCTe do elemento passado por parâmetro</returns>
-        public ProtCTe GetProtCTe(int element)
-        {
-            return ProtCTe[element];
-        }
+        public ProtCTe GetProtCTe(int element) => ProtCTe[element];
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProtCTe
         /// </summary>
-        public int GetProtCTeCount
-        {
-            get { return ProtCTe.Count; }
-        }
+        public int GetProtCTeCount => (ProtCTe != null ? ProtCTe.Count : 0);
 
 #endif
     }
