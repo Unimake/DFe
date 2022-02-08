@@ -66,9 +66,17 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <summary>
         /// Retorna o elemento da lista ProtCTe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtCTe)
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns>Conteúdo da ProtCTe do elemento passado por parâmetro</returns>
-        public ProtCTe GetProtCTe(int element) => ProtCTe[element];
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProtCTe</returns>
+        public ProtCTe GetProtCTe(int index)
+        {
+            if ((ProtCTe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProtCTe[index];
+        }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProtCTe

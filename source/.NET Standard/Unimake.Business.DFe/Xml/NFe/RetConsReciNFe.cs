@@ -74,9 +74,17 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Retorna o elemento da lista ProtNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtNFe)
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns>Conteúdo da ProtNFe do elemento passado por parâmetro</returns>
-        public ProtNFe GetProtNFe(int element) => ProtNFe[element];
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProtNFe</returns>
+        public ProtNFe GetProtNFe(int index)
+        {
+            if ((ProtNFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProtNFe[index];
+        }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProtNFe

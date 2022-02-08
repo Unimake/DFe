@@ -49,15 +49,31 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
-        public RetEvento GetEvento(int index)
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista ProtNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtNFe)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RetEvento</returns>
+        public RetEvento GetRetEvento(int index)
         {
-            if((RetEvento?.Count ?? 0) == 0)
+            if ((RetEvento?.Count ?? 0) == 0)
             {
                 return default;
             }
 
             return RetEvento[index];
         }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RetEvento
+        /// </summary>
+        public int GetProtNFeCount => (RetEvento != null ? RetEvento.Count : 0);
+
+#endif
+
     }
 
 #if INTEROP

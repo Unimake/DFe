@@ -71,9 +71,17 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// <summary>
         /// Retorna o elemento da lista ProtMDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista ProtMDFe)
         /// </summary>
-        /// <param name="element"></param>
-        /// <returns>Conteúdo da ProtMDFe do elemento passado por parâmetro</returns>
-        public ProtMDFe GetProtMDFe(int element) => ProtMDFe[element];
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProtMDFe</returns>
+        public ProtMDFe GetProtMDFe(int index)
+        {
+            if ((ProtMDFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProtMDFe[index];
+        }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProtMDFe
