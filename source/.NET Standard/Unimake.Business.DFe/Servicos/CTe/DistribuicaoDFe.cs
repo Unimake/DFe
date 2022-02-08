@@ -12,6 +12,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de consulta dos CTe´s destinados para o WebService
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.DistribuicaoDFe")]
+    [ComVisible(true)]
+#endif
     public class DistribuicaoDFe: ServicoBase, IInteropService<DistDFeInt>
     {
         #region Protected Methods

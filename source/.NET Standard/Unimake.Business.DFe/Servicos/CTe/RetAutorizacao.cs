@@ -11,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de consulta recibo do lote de CTe para o WebService
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.RetAutorizacao")]
+    [ComVisible(true)]
+#endif
     public class RetAutorizacao: ServicoBase
     {
         #region Private Constructors

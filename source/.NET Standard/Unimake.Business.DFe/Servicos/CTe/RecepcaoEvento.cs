@@ -15,6 +15,8 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// Envio do XML de eventos do CTe para o WebService
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento")]
     [ComVisible(true)]
 #endif
     public class RecepcaoEvento : ServicoBase

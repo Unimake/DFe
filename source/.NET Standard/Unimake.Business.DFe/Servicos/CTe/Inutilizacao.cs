@@ -1,4 +1,7 @@
-﻿using Unimake.Business.DFe.Servicos.Interop;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 
@@ -7,6 +10,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de inutilização de CTe para o WebService
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.Inutilizacao")]
+    [ComVisible(true)]
+#endif
     public class Inutilizacao: ServicoBase, IInteropService<InutCTe>
     {
         #region Protected Methods

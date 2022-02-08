@@ -45,11 +45,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             var xmlDoc = base.GerarXML();
 
-            foreach(var nodeEnvNFe in xmlDoc.GetElementsByTagName("enviNFe"))
+            foreach (var nodeEnvNFe in xmlDoc.GetElementsByTagName("enviNFe"))
             {
                 var elemEnvNFe = (XmlElement)nodeEnvNFe;
 
-                foreach(var nodeNFe in elemEnvNFe.GetElementsByTagName("NFe"))
+                foreach (var nodeNFe in elemEnvNFe.GetElementsByTagName("NFe"))
                 {
                     var elemNFe = (XmlElement)nodeNFe;
 
@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddNFe(NFe nfe)
         {
-            if(NFe == null)
+            if (NFe == null)
             {
                 NFe = new List<NFe>();
             }
@@ -99,7 +99,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddInfNFe(InfNFe infNFe)
         {
-            if(InfNFe == null)
+            if (InfNFe == null)
             {
                 InfNFe = new List<InfNFe>();
             }
@@ -235,7 +235,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddDet(Det det)
         {
-            if(Det == null)
+            if (Det == null)
             {
                 Det = new List<Det>();
             }
@@ -275,9 +275,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             get
             {
                 string retorno;
-                if(string.IsNullOrWhiteSpace(CNFField))
+                if (string.IsNullOrWhiteSpace(CNFField))
                 {
-                    if(NNF == 0)
+                    if (NNF == 0)
                     {
                         throw new Exception("Defina antes o conteúdo da TAG <nNF>, pois o mesmo é utilizado como base para calcular o código numérico.");
                     }
@@ -407,11 +407,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             var retorna = false;
 
-            if(IndIntermed != (IndicadorIntermediario)(-1))
+            if (IndIntermed != (IndicadorIntermediario)(-1))
             {
-                if(IndIntermed != null)
+                if (IndIntermed != null)
                 {
-                    if(IndPres != IndicadorPresenca.NaoSeAplica && IndPres != IndicadorPresenca.PresencialForaEstabelecimento)
+                    if (IndPres != IndicadorPresenca.NaoSeAplica && IndPres != IndicadorPresenca.PresencialForaEstabelecimento)
                     {
                         retorna = true;
                     }
@@ -426,7 +426,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             // ~\uninfe\doc\NFCe e NFe 3.10\NT2012.004_v1.2_NFCe.pdf
             // Página 06 item #14
             // Nota: Para a NFC-e este campo não deve existir
-            if(Mod == ModeloDFe.NFCe)
+            if (Mod == ModeloDFe.NFCe)
             {
                 return false;
             }
@@ -500,7 +500,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 var mesesValidos = "01-02-03-04-05-06-07-08-09-10-11-12";
 
-                if(!mesesValidos.Contains(value.Substring(2)))
+                if (!mesesValidos.Contains(value.Substring(2)))
                 {
                     throw new Exception("Conteúdo da TAG <AAMM> da <refNF> inválido! Mês informado deve estar entre 01 e 12.");
                 }
@@ -518,7 +518,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => ModField;
             set
             {
-                if(value != "01" && value != "02")
+                if (value != "01" && value != "02")
                 {
                     throw new Exception("Conteúdo da TAG <mod> da <refNF> inválido! Valores aceitos: 01 e 02.");
                 }
@@ -564,7 +564,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 var mesesValidos = "01-02-03-04-05-06-07-08-09-10-11-12";
 
-                if(!mesesValidos.Contains(value.Substring(2)))
+                if (!mesesValidos.Contains(value.Substring(2)))
                 {
                     throw new Exception("Conteúdo da TAG <AAMM> da <refNFP> inválido! Mês informado deve estar entre 01 e 12.");
                 }
@@ -588,7 +588,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => ModField;
             set
             {
-                if(value != "01" && value != "04")
+                if (value != "01" && value != "04")
                 {
                     throw new Exception("Conteúdo da TAG <mod> da <refNF> inválido! Valores aceitos: 01 e 04.");
                 }
@@ -629,7 +629,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => ModField;
             set
             {
-                if(value != "2B" && value != "2C" && value != "2D")
+                if (value != "2B" && value != "2C" && value != "2D")
                 {
                     throw new Exception("Conteúdo da TAG <mod> da <refECF> inválido! Valores aceitos: 2B, 2C e 2D.");
                 }
@@ -874,7 +874,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             set
             {
-                if(value.Length <= 11)
+                if (value.Length <= 11)
                 {
                     CPF = value;
                 }
@@ -1288,8 +1288,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("qTrib")]
         public double QTrib { get; set; }
 
+        private string VUnTribField { get; set; }
+
         [XmlElement("vUnTrib")]
-        public double VUnTrib { get; set; }
+        public double VUnTrib
+        {
+            get => double.Parse(VUnTribField) * Math.Pow(10, -15) * Math.Pow(10, 15);
+            set => VUnTribField = value.ToString();
+        }
 
         [XmlIgnore]
         public double VFrete { get; set; }
@@ -2061,7 +2067,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddICMS(ICMS icms)
         {
-            if(ICMS == null)
+            if (ICMS == null)
             {
                 ICMS = new List<ICMS>();
             }
@@ -2681,7 +2687,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("40") || value.Equals("41") || value.Equals("50"))
+                if (value.Equals("40") || value.Equals("41") || value.Equals("50"))
                 {
                     CSTField = value;
                 }
@@ -3129,7 +3135,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             set
             {
-                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
                 {
                     ModBCSTField = value;
                 }
@@ -3391,7 +3397,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             set
             {
-                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
                 {
                     ModBCSTField = value;
                 }
@@ -3575,7 +3581,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("10") || value.Equals("90"))
+                if (value.Equals("10") || value.Equals("90"))
                 {
                     CSTField = value;
                 }
@@ -3639,7 +3645,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             set
             {
-                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
                 {
                     ModBCSTField = value;
                 }
@@ -3744,7 +3750,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("101"))
+                if (value.Equals("101"))
                 {
                     CSOSNField = value;
                 }
@@ -3796,7 +3802,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("102") || value.Equals("103") || value.Equals("300") || value.Equals("400"))
+                if (value.Equals("102") || value.Equals("103") || value.Equals("300") || value.Equals("400"))
                 {
                     CSOSNField = value;
                 }
@@ -3828,7 +3834,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("201"))
+                if (value.Equals("201"))
                 {
                     CSOSNField = value;
                 }
@@ -3849,7 +3855,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             set
             {
-                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
                 {
                     ModBCSTField = value;
                 }
@@ -3996,7 +4002,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("202") || value.Equals("203"))
+                if (value.Equals("202") || value.Equals("203"))
                 {
                     CSOSNField = value;
                 }
@@ -4017,7 +4023,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             set
             {
-                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
                 {
                     ModBCSTField = value;
                 }
@@ -4141,7 +4147,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("500"))
+                if (value.Equals("500"))
                 {
                     CSOSNField = value;
                 }
@@ -4301,7 +4307,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("900"))
+                if (value.Equals("900"))
                 {
                     CSOSNField = value;
                 }
@@ -4365,7 +4371,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             set
             {
-                if(value != ModalidadeBaseCalculoICMSST.ValorOperacao)
+                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
                 {
                     ModBCSTField = value;
                 }
@@ -4532,7 +4538,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("41") || value.Equals("60"))
+                if (value.Equals("41") || value.Equals("60"))
                 {
                     CSTField = value;
                 }
@@ -4796,7 +4802,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("01") || value.Equals("02") || value.Equals("03") ||
+                if (value.Equals("01") || value.Equals("02") || value.Equals("03") ||
                     value.Equals("04") || value.Equals("05") || value.Equals("51") ||
                     value.Equals("52") || value.Equals("53") || value.Equals("54") ||
                     value.Equals("55"))
@@ -4828,7 +4834,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("00") || value.Equals("49") || value.Equals("50") ||
+                if (value.Equals("00") || value.Equals("49") || value.Equals("50") ||
                     value.Equals("99"))
                 {
                     CSTField = value;
@@ -5078,7 +5084,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("01") || value.Equals("02"))
+                if (value.Equals("01") || value.Equals("02"))
                 {
                     CSTField = value;
                 }
@@ -5139,7 +5145,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 _cstField = string.Empty;
 
-                if(!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
+                if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
                 {
                     throw new Exception("Conteúdo da TAG <CST> da <PISNT> inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
                 }
@@ -5166,7 +5172,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
+                if (value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
                     value.Equals("55") || value.Equals("56") || value.Equals("60") || value.Equals("61") || value.Equals("62") || value.Equals("63") ||
                     value.Equals("64") || value.Equals("65") || value.Equals("66") || value.Equals("67") || value.Equals("70") || value.Equals("71") ||
                     value.Equals("72") || value.Equals("73") || value.Equals("74") || value.Equals("75") || value.Equals("98") || value.Equals("99"))
@@ -5245,7 +5251,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("03"))
+                if (value.Equals("03"))
                 {
                     CSTField = value;
                 }
@@ -5376,7 +5382,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("01") || value.Equals("02"))
+                if (value.Equals("01") || value.Equals("02"))
                 {
                     CSTField = value;
                 }
@@ -5437,7 +5443,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 _cstField = string.Empty;
 
-                if(!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
+                if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
                 {
                     throw new Exception("Conteúdo da TAG <CST> da <COFINSNT> inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
                 }
@@ -5464,7 +5470,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
+                if (value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
                     value.Equals("55") || value.Equals("56") || value.Equals("60") || value.Equals("61") || value.Equals("62") || value.Equals("63") ||
                     value.Equals("64") || value.Equals("65") || value.Equals("66") || value.Equals("67") || value.Equals("70") || value.Equals("71") ||
                     value.Equals("72") || value.Equals("73") || value.Equals("74") || value.Equals("75") || value.Equals("98") || value.Equals("99"))
@@ -5543,7 +5549,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("03"))
+                if (value.Equals("03"))
                 {
                     CSTField = value;
                 }
@@ -5691,7 +5697,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => PICMSInterField2;
             set
             {
-                if(value == 4 || value == 7 || value == 12)
+                if (value == 4 || value == 7 || value == 12)
                 {
                     PICMSInterField2 = value;
                 }
@@ -6357,7 +6363,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddReboque(Reboque reboque)
         {
-            if(Reboque == null)
+            if (Reboque == null)
             {
                 Reboque = new List<Reboque>();
             }
@@ -6367,7 +6373,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddVol(Vol vol)
         {
-            if(Vol == null)
+            if (Vol == null)
             {
                 Vol = new List<Vol>();
             }
@@ -6645,7 +6651,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddDup(Dup dup)
         {
-            if(Dup == null)
+            if (Dup == null)
             {
                 Dup = new List<Dup>();
             }
@@ -6771,7 +6777,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddDetPag(DetPag detPag)
         {
-            if(DetPag == null)
+            if (DetPag == null)
             {
                 DetPag = new List<DetPag>();
             }
@@ -6876,7 +6882,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => IdCadIntTranField;
             set
             {
-                if(value.Length < 2 || value.Length > 60)
+                if (value.Length < 2 || value.Length > 60)
                 {
                     throw new Exception("Conteúdo da tag <idCadIntTran> filha da tag <infIntermed> deve ter entre 2 até 60 caracteres.");
                 }
@@ -7012,7 +7018,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => UFSaidaPaisField;
             set
             {
-                if(value == UFBrasil.EX || value == UFBrasil.AN)
+                if (value == UFBrasil.EX || value == UFBrasil.AN)
                 {
                     throw new Exception("Conteúdo da TAG <UFSaidaPais> inválido. Não pode ser informado EX ou AN.");
                 }

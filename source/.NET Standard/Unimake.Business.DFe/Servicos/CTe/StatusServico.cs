@@ -12,6 +12,8 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// Envio do XML de consulta status do serviço do CTe para o WebService
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.StatusServico")]
     [ComVisible(true)]
 #endif
     public class StatusServico : ServicoBase, IInteropService<ConsStatServCte>

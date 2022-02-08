@@ -14,6 +14,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
     /// <summary>
     /// Envio do XML de lote de CTe para o WebService
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.Autorizacao")]
+    [ComVisible(true)]
+#endif
     public class Autorizacao : ServicoBase, IInteropService<EnviCTe>
     {
         private void MontarQrCode()
