@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Security.Exceptions;
 
@@ -7,6 +10,11 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     /// <summary>
     /// Enviar o XML da consulta recibo do lote da NFCe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFCe.RetAutorizacao")]
+    [ComVisible(true)]
+#endif
     public class RetAutorizacao: NFe.RetAutorizacao
     {
         #region Public Constructors

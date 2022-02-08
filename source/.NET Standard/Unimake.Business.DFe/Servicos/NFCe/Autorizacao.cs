@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Security.Exceptions;
@@ -8,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     /// <summary>
     /// Enviar o XML de NFCe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")]
+    [ComVisible(true)]
+#endif
     public class Autorizacao: NFe.Autorizacao
     {
         #region Private Methods
