@@ -248,6 +248,15 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         public RetConsReciMDFe RetConsReciMDFe { get; set; }
 
+#if INTEROP
+
+        /// <summary>
+        /// Atribuir null para a propriedade RetConsReciMDFe. (Em FOXPRO não conseguimos atribuir NULL diretamente na propriedade, dá erro de OLE)
+        /// </summary>
+        public void SetNullRetConsReciMDFe() => RetConsReciMDFe = null;
+
+#endif
+
         #endregion Public Properties
 
         #region Public Constructors
@@ -256,10 +265,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// Construtor
         /// </summary>
         public Autorizacao()
-            : base()
-        {
-            MdfeProcs.Clear();
-        }
+            : base() => MdfeProcs.Clear();
 
         /// <summary>
         /// Construtor
@@ -355,10 +361,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         /// <param name="item">Item que será adicionado</param>
         [ComVisible(true)]
-        public void AddRetConsSitMDFe(RetConsSitMDFe item)
-        {
-            (RetConsSitMDFe ?? (RetConsSitMDFe = new List<RetConsSitMDFe>())).Add(item);
-        }
+        public void AddRetConsSitMDFe(RetConsSitMDFe item) => (RetConsSitMDFe ?? (RetConsSitMDFe = new List<RetConsSitMDFe>())).Add(item);
 
 #endif
 

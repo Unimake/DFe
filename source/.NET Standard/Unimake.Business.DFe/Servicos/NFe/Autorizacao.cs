@@ -119,6 +119,16 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         public RetConsReciNFe RetConsReciNFe { get; set; }
 
+#if INTEROP
+
+        /// <summary>
+        /// Atribuir null para a propriedade RetConsReciNFe. (Em FOXPRO não conseguimos atribuir NULL diretamente na propriedade, dá erro de OLE)
+        /// </summary>
+        public void SetNullRetConsReciNFe() => RetConsReciNFe = null;
+
+#endif
+
+
         /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situção do NFe
         /// </summary>

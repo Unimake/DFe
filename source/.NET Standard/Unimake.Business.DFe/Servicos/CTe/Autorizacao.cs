@@ -173,6 +173,16 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         public RetConsReciCTe RetConsReciCTe { get; set; }
 
+#if INTEROP
+
+        /// <summary>
+        /// Atribuir null para a propriedade RetConsReciCTe. (Em FOXPRO não conseguimos atribuir NULL diretamente na propriedade, dá erro de OLE)
+        /// </summary>
+        public void SetNullRetConsReciCTe() => RetConsReciCTe= null;
+
+#endif
+
+
         /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situação do CTe
         /// </summary>
