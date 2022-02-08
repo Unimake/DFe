@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
@@ -9,6 +12,11 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Envio do XML de Inutilização do CTeOS para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTeOS.Inutilizacao")]
+    [ComVisible(true)]
+#endif
     public class Inutilizacao: CTe.Inutilizacao
     {
         #region Public Constructors

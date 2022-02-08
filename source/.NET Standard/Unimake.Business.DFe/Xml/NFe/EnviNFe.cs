@@ -1288,14 +1288,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("qTrib")]
         public double QTrib { get; set; }
 
-        private string VUnTribField { get; set; }
-
         [XmlElement("vUnTrib")]
-        public double VUnTrib
-        {
-            get => double.Parse(VUnTribField) * Math.Pow(10, -15) * Math.Pow(10, 15);
-            set => VUnTribField = value.ToString();
-        }
+        private double VUnTrib { get; set; }
 
         [XmlIgnore]
         public double VFrete { get; set; }

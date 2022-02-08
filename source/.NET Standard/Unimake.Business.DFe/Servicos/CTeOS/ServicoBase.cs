@@ -11,11 +11,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// Classe base para consumo dos webservices do CTeOS
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTeOS.ServicoBase")]
     [ComVisible(true)]
 #endif
-    public abstract class ServicoBase: NFe.ServicoBase
+    public abstract class ServicoBase : NFe.ServicoBase
     {
-#region Public Constructors
+        #region Public Constructors
 
         /// <summary>
         /// Construtor
@@ -33,7 +35,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         {
         }
 
-#endregion Public Constructors
+        #endregion Public Constructors
 
         /// <summary>
         /// Validar o XML
@@ -43,7 +45,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.CTe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }

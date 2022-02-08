@@ -13,6 +13,11 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Envio do XML de CTeOS para webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTeOS.Autorizacao")]
+    [ComVisible(true)]
+#endif
     public class Autorizacao : ServicoBase, IInteropService<Xml.CTeOS.CTeOS>
     {
         private void MontarQrCode()
@@ -232,11 +237,11 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
         #endregion Public Constructors
 
-#region Public Methods
+        #region Public Methods
 
-/// <summary>
-/// Executar o serviço
-/// </summary>
+        /// <summary>
+        /// Executar o serviço
+        /// </summary>
 #if INTEROP
         [ComVisible(false)]
 #endif
@@ -309,6 +314,6 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             }
         }
 
-#endregion Public Methods
+        #endregion Public Methods
     }
 }

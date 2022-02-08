@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Security.Exceptions;
 
@@ -7,6 +10,11 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// <summary>
     /// Envio do XML de Consulta Cadastro do Contribuinte para o Webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTeOS.ConsultaCadastro")]
+    [ComVisible(true)]
+#endif
     public class ConsultaCadastro: NFe.ConsultaCadastro
     {
         #region Public Constructors

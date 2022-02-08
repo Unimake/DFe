@@ -11,11 +11,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     /// Envio do XML de eventos do CTeOS para o WebService
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.CTeOS.RecepcaoEvento")]
     [ComVisible(true)]
 #endif
-    public class RecepcaoEvento: CTe.RecepcaoEvento
+    public class RecepcaoEvento : CTe.RecepcaoEvento
     {
-#region Public Constructors
+        #region Public Constructors
 
         /// <summary>
         /// Construtor
@@ -30,7 +32,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// </summary>
         public RecepcaoEvento() { }
 
-#endregion
+        #endregion
 
         /// <summary>
         /// Validar o XML
@@ -40,7 +42,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.CTe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
