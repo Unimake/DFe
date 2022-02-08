@@ -10,6 +10,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de consulta cadastro do contribuinte para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.ConsultaCadastro")]
+    [ComVisible(true)]
+#endif
     public class ConsultaCadastro: ServicoBase, IInteropService<ConsCadBase>
     {
         #region Protected Methods

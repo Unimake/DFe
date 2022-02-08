@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
@@ -12,6 +15,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de eventos da NFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")]
+    [ComVisible(true)]
+#endif
     public class RecepcaoEvento: ServicoBase, IInteropService<EnvEvento>
     {
         #region Private Properties

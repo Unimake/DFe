@@ -11,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de consulta protocolo da NFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")]
+    [ComVisible(true)]
+#endif
     public class ConsultaProtocolo: ServicoBase, IInteropService<ConsSitNFe>
     {
         #region Protected Methods

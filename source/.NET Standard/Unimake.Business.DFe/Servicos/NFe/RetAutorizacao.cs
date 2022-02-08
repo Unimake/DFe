@@ -12,6 +12,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de consulta recibo do lote de NFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")]
+    [ComVisible(true)]
+#endif
     public class RetAutorizacao: ServicoBase, IInteropService<ConsReciNFe>
     {
         #region Private Methods

@@ -10,6 +10,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de inutilização de NFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")]
+    [ComVisible(true)]
+#endif
     public class Inutilizacao: ServicoBase, IInteropService<InutNFe>
     {
         #region Private Properties

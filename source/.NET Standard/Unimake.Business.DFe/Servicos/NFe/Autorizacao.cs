@@ -13,6 +13,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de NFe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.Autorizacao")]
+    [ComVisible(true)]
+#endif
     public class Autorizacao : ServicoBase, IInteropService<EnviNFe>
     {
         #region Private Fields

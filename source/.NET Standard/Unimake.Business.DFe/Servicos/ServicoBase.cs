@@ -13,6 +13,8 @@ namespace Unimake.Business.DFe.Servicos
     /// Classe base abstrata para elaboração dos serviços dos documentos fiscais eletrônicos (NFe, NFCe, MDFe, NFSe, CTe, GNRE, etc...)
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.ServicoBase")]
     [ComVisible(true)]
 #endif
     public abstract class ServicoBase

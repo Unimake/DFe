@@ -12,6 +12,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
     /// <summary>
     /// Enviar o XML de consulta documentos fiscais eletrônicos destinados para o webservice (NFe)
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFe.DistribuicaoDFe")]
+    [ComVisible(true)]
+#endif
     public class DistribuicaoDFe: ServicoBase, IInteropService<DistDFeInt>
     {
         #region Protected Methods
