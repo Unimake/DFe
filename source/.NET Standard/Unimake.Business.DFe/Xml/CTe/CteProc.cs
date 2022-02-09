@@ -2,8 +2,10 @@
 
 using System;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -74,6 +76,18 @@ namespace Unimake.Business.DFe.Xml.CTe
             return xmlDocument;
         }
 
+        /// <summary>
+        /// Deserializar o XML no objeto CteProc
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML de distribuição do CTe</param>
+        /// <returns>Objeto do XML de distribuição do CTe</returns>
+        public CteProc LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<CteProc>(doc);
+        }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeIpTransmissor() => !string.IsNullOrWhiteSpace(IpTransmissor);
@@ -81,6 +95,5 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
 
         #endregion
-
     }
 }

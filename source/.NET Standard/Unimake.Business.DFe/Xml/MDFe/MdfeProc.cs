@@ -7,6 +7,8 @@ using System;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Text;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -17,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
     [Serializable()]
     [XmlRoot("mdfeProc", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
-    public class MdfeProc: XMLBase
+    public class MdfeProc : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -52,7 +54,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         {
             get
             {
-                switch(ProtMDFe.InfProt.CStat)
+                switch (ProtMDFe.InfProt.CStat)
                 {
                     case 110: //Uso Denegado
                     case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
@@ -80,6 +82,18 @@ namespace Unimake.Business.DFe.Xml.MDFe
             xmlElementProtMDFe.SetAttribute("xmlns", attribute.Namespace);
 
             return xmlDocument;
+        }
+
+        /// <summary>
+        /// Deserializar o XML no objeto MdfeProc
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML de distribuição do MDFe</param>
+        /// <returns>Objeto do XML de distribuição do MDFe</returns>
+        public MdfeProc LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<MdfeProc>(doc);
         }
     }
 }

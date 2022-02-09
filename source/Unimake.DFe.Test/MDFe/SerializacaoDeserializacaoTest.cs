@@ -41,5 +41,27 @@ namespace Unimake.DFe.Test.MDFe
 
             Debug.Assert(doc.InnerText == autorizacao.ConteudoXMLOriginal.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+
+        /// <summary>
+        /// Testar a serialização e deserialização do XML MdfeProc
+        /// </summary>
+        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        [Theory]
+        [Trait("DFe", "MDFe")]
+        [InlineData(@"..\..\..\MDFe\Resources\99999999999999999999999999999999999999999999-procMDFe.xml")]
+        public void SerializacaoDeserializacaoMdfeProc(string arqXML)
+        {
+            Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = new MdfeProc();
+            xml = xml.LoadFromFile(arqXML);
+            var xmlSerializado = xml.GerarXML();
+
+            Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
     }
 }

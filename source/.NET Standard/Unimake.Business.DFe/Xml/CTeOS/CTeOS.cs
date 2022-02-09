@@ -52,7 +52,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <summary>
         /// Deserializar o XML no objeto CTeOS
         /// </summary>
-        /// <param name="filename">Localização do arquivo XML</param>
+        /// <param name="filename">Localização do arquivo XML do CTeOS</param>
         /// <returns>Objeto do CTeOS</returns>
         public CTeOS LoadFromFile(string filename)
         {

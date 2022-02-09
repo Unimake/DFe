@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Xml.CTeOS;
 
 namespace Unimake.Business.DFe.Contract.Serialization
 {

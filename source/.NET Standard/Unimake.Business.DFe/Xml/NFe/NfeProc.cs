@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -67,11 +68,16 @@ namespace Unimake.Business.DFe.Xml.NFe
             return xmlDocument;
         }
 
+        /// <summary>
+        /// Deserializar o XML no objeto NfeProc
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML de distribuição do NFe</param>
+        /// <returns>Objeto do XML de distribuição do NFe</returns>
         public NfeProc LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
-            return Utility.XMLUtility.Deserializar<NfeProc>(doc);
+            return XMLUtility.Deserializar<NfeProc>(doc);
         }
     }
 }

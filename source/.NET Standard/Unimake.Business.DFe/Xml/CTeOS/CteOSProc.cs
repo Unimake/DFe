@@ -2,14 +2,16 @@
 
 using System;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTeOS
 {
     [Serializable()]
     [XmlRoot("cteOSProc", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class CteOSProc: XMLBase
+    public class CteOSProc : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -44,7 +46,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         {
             get
             {
-                switch(ProtCTe.InfProt.CStat)
+                switch (ProtCTe.InfProt.CStat)
                 {
                     case 110: //Uso Denegado
                     case 301: //Uso Denegado: Irregularidade fiscal do emitente
@@ -69,6 +71,18 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             xmlElementProtCTe.SetAttribute("xmlns", attribute.Namespace);
 
             return xmlDocument;
+        }
+
+        /// <summary>
+        /// Deserializar o XML no objeto CteOSProc
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML de distribuição do CTeOS</param>
+        /// <returns>Objeto do XML de distribuição do CTeOS</returns>
+        public CteOSProc LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<CteOSProc>(doc);
         }
     }
 }
