@@ -70,7 +70,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista RetEvento
         /// </summary>
-        public int GetProtNFeCount => (RetEvento != null ? RetEvento.Count : 0);
+        public int GetRetEventoCount => (RetEvento != null ? RetEvento.Count : 0);
 
 #endif
 
