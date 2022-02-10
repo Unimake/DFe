@@ -109,40 +109,8 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                     var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
                     if(elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
                     {
-                        var tpEvento = elementInfEvento.GetElementsByTagName("tpEvento")[0].InnerText;
-
-                        var tipoEventoMDFe = (TipoEventoMDFe)Enum.Parse(typeof(TipoEventoMDFe), tpEvento);
-
                         var xmlEspecifico = new XmlDocument();
-                        switch(tipoEventoMDFe)
-                        {
-                            //case TipoEventoMDFe.CartaCorrecao:
-                            //    xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCCE>((DetEventoCCE)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                            //    break;
-
-                            case TipoEventoMDFe.Cancelamento:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCanc>((DetEventoCanc)xml.InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoMDFe.InclusaoCondutor:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoIncCondutor>((DetEventoIncCondutor)xml.InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoMDFe.InclusaoDFe:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoIncDFeMDFe>((DetEventoIncDFeMDFe)xml.InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoMDFe.Encerramento:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoEncMDFe>((DetEventoEncMDFe)xml.InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoMDFe.PagamentoOperacao:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoPagtoOperMDFe>((DetEventoPagtoOperMDFe)xml.InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            default:
-                                throw new Exception("Não foi possível identificar o tipo de evento.");
-                        }
+                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName(elementInfEvento.GetElementsByTagName("detEvento")[0].FirstChild.Name)[0].OuterXml);
 
                         ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
                     }

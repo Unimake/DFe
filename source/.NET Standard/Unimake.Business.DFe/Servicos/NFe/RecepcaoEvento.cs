@@ -101,58 +101,8 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
                     if(elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
                     {
-                        var tpEvento = elementInfEvento.GetElementsByTagName("tpEvento")[0].InnerText;
-
-                        var tipoEventoNFe = (TipoEventoNFe)Enum.Parse(typeof(TipoEventoNFe), tpEvento);
-
                         var xmlEspecifico = new XmlDocument();
-                        switch(tipoEventoNFe)
-                        {
-                            case TipoEventoNFe.CartaCorrecao:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCCE>((DetEventoCCE)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.Cancelamento:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCanc>((DetEventoCanc)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.CancelamentoPorSubstituicao:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCancSubst>((DetEventoCancSubst)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.EPEC:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoEPEC>((DetEventoEPEC)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.PedidoProrrogacaoPrazo1:
-                            case TipoEventoNFe.PedidoProrrogacaoPrazo2:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoPedidoProrrogPrazoICMS>((DetEventoPedidoProrrogPrazoICMS)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo1:
-                            case TipoEventoNFe.CancelamentoPedidoProrrogacaoPrazo2:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCancPedidoProrrogPrazoICMS>((DetEventoCancPedidoProrrogPrazoICMS)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.ManifestacaoConfirmacaoOperacao:
-                            case TipoEventoNFe.ManifestacaoCienciaOperacao:
-                            case TipoEventoNFe.ManifestacaoDesconhecimentoOperacao:
-                            case TipoEventoNFe.ManifestacaoOperacaoNaoRealizada:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoManif>((DetEventoManif)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.ComprovanteEntregaNFe:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCompEntregaNFe>((DetEventoCompEntregaNFe)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-                            case TipoEventoNFe.CancelamentoComprovanteEntregaNFe:
-                                xmlEspecifico.LoadXml(XMLUtility.Serializar<DetEventoCancCompEntregaNFe>((DetEventoCancCompEntregaNFe)xml.Evento[i].InfEvento.DetEvento).OuterXml);
-                                break;
-
-
-                            default:
-                                throw new Exception("Não foi possível identificar o tipo de evento.");
-                        }
+                        xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].OuterXml);
 
                         ValidarXMLEvento(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
                     }

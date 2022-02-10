@@ -1,0 +1,182 @@
+InicializarConfiguracao = Createobject("Unimake.Business.DFe.Servicos.Configuracao")
+InicializarConfiguracao.CertificadoSenha = "1234"
+InicializarConfiguracao.CertificadoArquivo = "F:\pontovenda\certificado\batista2022.pfx"
+InicializarConfiguracao.TipoDFe = 4
+inicializarConfiguracao.CodigoUF = 35
+
+enviMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.EnviMDFe")
+enviMDFe.Versao = "3.00"
+enviMDFe.IdLote = "000000000000001"
+oXmlMDFE = gerar_XML_MDFE_Dll()
+enviMDFe.MDFe   = oXmlMDFE 
+
+autorizacao = CREATEOBJECT("Unimake.Business.DFe.Servicos.MDFe.Autorizacao")
+autorizacao.Executar(enviMDFe,InicializarConfiguracao)
+
+xmlRec = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.ConsReciMDFe")
+xmlRec.Versao = "3.00"
+xmlRec.tpamb = 2
+xmlRec.NRec = autorizacao.Result.InfRec.NRec
+
+retAutorizacao = CREATEOBJECT("Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao")
+retAutorizacao.Executar(xmlRec,inicializarConfiguracao)
+MESSAGEBOX(retAutorizacao.retornowsstring)
+autorizacao.RetConsReciMDFe = retAutorizacao.Result
+autorizacao.GravarXmlDistribuicao("f:\")
+
+****************************************************************************************************************************
+FUNCTION gerar_XML_MDFE_Dll
+&& Preencher os campos para emitir mdfe 
+&& Atenção com as regras dos campos (String e Numeros)
+&& A Função irá retornar o Objeto MDFE pronto para enviar para Sefaz
+&& Elaborado por Fernando Matrella em 04/02/2021
+****************************************************************************************************************************
+****************************************************************************************************************************
+oIde = Createobject("Unimake.Business.DFe.Xml.MDFe.Ide")
+If !Used("dd_emp2")
+	Use BOXNOTA!dd_emp2 Shared In 0
+Endif
+
+With oIde
+	.cUF     = 
+	.tpAmb   = 
+	.tpEmit  = 
+	.Mod     = 
+	.serie   = 
+	.nMDF    = 
+	.cMDF    = 
+	.cDV     = 
+	.Modal   = 
+	.dhEmi   = 
+	.tpEmis  = 
+	.procEmi = 
+	.verProc = 
+	.UFIni   = 
+	.UFFim   = 
+Endwith
+
+oInfMunCarrega = Createobject("Unimake.Business.DFe.Xml.MDFe.InfMunCarrega")
+With oInfMunCarrega
+	.cMunCarrega = 
+	.xMunCarrega = 
+Endwith
+oIde.AddInfMunCarrega(oInfMunCarrega)
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+oEmit = Createobject("Unimake.Business.DFe.Xml.MDFe.Emit")
+WITH oEmit
+	.CNPJ  = 
+	.IE    = 
+	.xNome = 
+    	.xFant = 
+ENDWITH 
+	oEnderEmit = Createobject("Unimake.Business.DFe.Xml.MDFe.enderEmit")
+		WITH oEnderEmit 
+			.xLgr           = 
+			.nro	  	= 
+			.xBairro        = 
+			.cMun		= 
+			.xMun		= 
+			.CEP		= 
+			.UF		= 
+			.fone		= 
+		ENDWITH 
+		oemit.EnderEmit = oEnderEmit 
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+oinfModal = Createobject("Unimake.Business.DFe.Xml.MDFe.infModal")				
+	oRodo = Createobject("Unimake.Business.DFe.Xml.MDFe.rodo")				
+    	oinfANTT = Createobject("Unimake.Business.DFe.Xml.MDFe.infANTT")				
+      		WITH oinfANTT
+        	 .RNTRC =
+		ENDWITH 
+	oRodo.infANTT = oinfANTT 
+	
+	oveicTracao = Createobject("Unimake.Business.DFe.Xml.MDFe.veicTracao")	
+		 WITH oveicTracao    	
+			.placa = 
+			.tara  = 
+		 ENDWITH 		
+		 oCondutor = Createobject("Unimake.Business.DFe.Xml.MDFe.Condutor")	
+		 WITH oCondutor
+	 	   .xNome  = 
+		   .CPF   = 
+	 	ENDWITH 
+		oveicTracao.AddCondutor(oCondutor)
+		WITH oveicTracao    
+			.tpRod = 
+			.tpCar = 
+			&&.UF  = VAL(acha_numero_uf(Alltrim(cuveiculo.Uf))) informar bug uninfe
+		ENDWITH 
+  	oRodo.veicTracao = oveicTracao 
+  	oRodo.codAgPorto = 
+	oinfModal.rodo = oRodo
+	oinfModal.VersaoModal = "3.00"
+
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+oinfDoc = Createobject("Unimake.Business.DFe.Xml.MDFe.InfDocInfMDFe")				
+	oinfMunDescarga = Createobject("Unimake.Business.DFe.Xml.MDFe.InfMunDescarga")
+	WITH oinfMunDescarga 
+		.cMunDescarga = 
+		.xMunDescarga = 
+	ENDWITH 
+	cMunDescarga_ = 
+	oinfDoc.addinfMunDescarga(oinfMunDescarga) 
+	   oinfNFe = Createobject("Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfNFe")
+		WITH oinfNFe
+		     .chNFe = 
+		ENDWITH 
+			oinfUnidTransp = Createobject("Unimake.Business.DFe.Xml.MDFe.infUnidTransp")
+			 WITH oinfUnidTransp 
+			 	 .tpUnidTransp = 
+				 .idUnidTransp = 
+			 ENDWITH 
+		  		olacUnidTransp = Createobject("Unimake.Business.DFe.Xml.MDFe.lacUnidTransp")
+		         WITH olacUnidTransp
+		         	 .nLacre = 
+		         ENDWITH 
+		  oinfUnidTransp.addlacUnidTransp(olacUnidTransp)         
+		 oinfNFe.addinfUnidTransp(oinfUnidTransp)
+       oinfMunDescarga.addinfNFe(oinfNFe)
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+oTot = Createobject("Unimake.Business.DFe.Xml.MDFe.tot")		
+WITH oTot
+	.qNFe   = 
+	.vCarga = 
+	.cUnid  = 
+	.qCarga = 
+ENDWITH 
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+oLacres = Createobject("Unimake.Business.DFe.Xml.MDFe.lacre")		
+WITH oLacres
+	.nLacre = 
+ENDWITH 
+****************************************************************************************************************************
+****************************************************************************************************************************
+oinfAdic = Createobject("Unimake.Business.DFe.Xml.MDFe.infAdic")	 
+WITH oinfAdic 
+	.infCpl = 
+ENDWITH 
+****************************************************************************************************************************
+oMdfe = Createobject("Unimake.Business.DFe.Xml.MDFe.MDFe")
+oInfMDFe = Createobject("Unimake.Business.DFe.Xml.MDFe.InfMDFe")
+WITH oInfMDFe
+	.Versao = "3.00"
+	.Ide = oIde
+	.Emit = oEmit
+	.InfModal = oInfModal
+	.InfDoc = oInfDoc
+	.Tot = oTot
+	.InfAdic = oInfAdic
+ENDWITH 
+oInfMDFe.AddLacres(oLacres)
+oMdfe.InfMDFe = oInfMDFe 
+RETURN oMdfe 
