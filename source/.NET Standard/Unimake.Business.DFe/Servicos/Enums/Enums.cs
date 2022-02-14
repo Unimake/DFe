@@ -5647,7 +5647,13 @@ namespace Unimake.Business.DFe.Servicos
         /// Sonner - Sistemas integrados, governos inteligentes (Antigo GOVDIGITAL)
         /// </summary>
         [Description("SONNER - Sistemas integrados")]
-        SONNER
+        SONNER,
+
+        /// <summary>
+        /// SMARAPD
+        /// </summary>
+        [Description("SMARAPD")]
+        SMARAPD
     }
 
     #endregion

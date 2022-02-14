@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SubstituirNfseEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <SubstituicaoNfse Id="Sub_1">
+    <Pedido>
+      <InfPedidoCancelamento>
+        <IdentificacaoNfse>
+          <Numero>201800000000001</Numero>
+          <CpfCnpj>
+            <Cnpj>08373108000131</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>999999999</InscricaoMunicipal>
+          <CodigoMunicipio>3303302</CodigoMunicipio>
+        </IdentificacaoNfse>
+        <CodigoCancelamento>2</CodigoCancelamento>
+      </InfPedidoCancelamento>
+    </Pedido>
+    <Rps>
+      <InfDeclaracaoPrestacaoServico xmlns="http://www.abrasf.org.br/nfse.xsd" Id="RPS_1">
+        <Rps>
+          <IdentificacaoRps>
+            <Numero>12348</Numero>
+            <Serie>14698</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2018-05-18</DataEmissao>
+          <Status>1</Status>
+          <RpsSubstituido>
+            <Numero>12347</Numero>
+            <Serie>14698</Serie>
+            <Tipo>1</Tipo>
+          </RpsSubstituido>
+        </Rps>
+        <Competencia>2018-05-18</Competencia>
+        <Servico>
+          <Valores>
+            <ValorServicos>20000.00</ValorServicos>
+          </Valores>
+          <IssRetido>2</IssRetido>
+          <ItemListaServico>06.01</ItemListaServico>
+          <CodigoCnae>8690904</CodigoCnae>
+          <CodigoTributacaoMunicipio>06.01</CodigoTributacaoMunicipio>
+          <Discriminacao>Discriminação de Serviços</Discriminacao>
+          <CodigoMunicipio>3303302</CodigoMunicipio>
+          <ExigibilidadeISS>1</ExigibilidadeISS>
+          <MunicipioIncidencia>3303302</MunicipioIncidencia>
+        </Servico>
+        <Prestador>
+          <CpfCnpj>
+            <Cnpj>08373108000131</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>999999999</InscricaoMunicipal>
+        </Prestador>
+        <Tomador>
+          <IdentificacaoTomador>
+            <CpfCnpj>
+              <Cpf>61435662083</Cpf>
+            </CpfCnpj>
+          </IdentificacaoTomador>
+        </Tomador>
+        <OptanteSimplesNacional>2</OptanteSimplesNacional>
+        <IncentivoFiscal>2</IncentivoFiscal>
+      </InfDeclaracaoPrestacaoServico>
+    </Rps>
+  </SubstituicaoNfse>
+</SubstituirNfseEnvio>
