@@ -1,11 +1,19 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ProtCTe")]
+    [ComVisible(true)]
+#endif
     public class ProtCTe
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
@@ -18,6 +26,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public InfFisco InfFisco { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfProt")]
+    [ComVisible(true)]
+#endif
     public class InfProt
     {
         [XmlAttribute(AttributeName = "Id", DataType = "ID")]
@@ -55,6 +68,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string XMotivo { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfFisco")]
+    [ComVisible(true)]
+#endif
     public class InfFisco
     {
         [XmlElement("cMsg")]

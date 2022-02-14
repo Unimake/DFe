@@ -1,11 +1,19 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.RetEventoCTe")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("retEventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class RetEventoCTe
     {
@@ -16,6 +24,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string Versao { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.RetEventoCTeInfEvento")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class RetEventoCTeInfEvento

@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -7,6 +10,11 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.RetDistDFeInt")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("retDistDFeInt", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class RetDistDFeInt : XMLBase
     {
@@ -46,6 +54,11 @@ namespace Unimake.Business.DFe.Xml.CTe
     }
 
     /// <remarks/>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.LoteDistDFeInt")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class LoteDistDFeInt
     {
@@ -53,8 +66,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         public List<DocZip> DocZip { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DocZip")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public partial class DocZip
+    public class DocZip
     {
         [XmlAttribute("NSU", DataType = "token")]
         public string NSU { get; set; }

@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,6 +16,11 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCanc")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoCanc: EventoDetalhe
@@ -47,6 +55,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoPrestDesacordo")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoPrestDesacordo: EventoDetalhe
@@ -81,6 +94,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCancCompEntrega")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoCancCompEntrega: EventoDetalhe
@@ -115,6 +133,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCCE")]
+    [ComVisible(true)]
+#endif
     [XmlRoot(ElementName = "detEvento")]
     [XmlInclude(typeof(EventoDetalhe))]
     public class DetEventoCCE: EventoDetalhe
@@ -212,6 +235,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoEPEC")]
+    [ComVisible(true)]
+#endif
     [XmlInclude(typeof(EventoDetalhe))]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoEPEC: EventoDetalhe
@@ -407,6 +435,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvEPECCTe")]
+    [ComVisible(true)]
+#endif
     [XmlRoot(ElementName = "evEPECCTe")]
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvEPECCTe: Contract.Serialization.IXmlSerializable
@@ -501,6 +534,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvEPECCTeToma4")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EvEPECCTeToma4
@@ -537,6 +575,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCompEntrega")]
+    [ComVisible(true)]
+#endif
     [XmlInclude(typeof(EventoDetalhe))]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoCompEntrega: EventoDetalhe
@@ -691,6 +734,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoCCeCTe")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
     public class EventoCCeCTe: EventoDetalhe
@@ -733,6 +781,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoCECTe")]
+    [ComVisible(true)]
+#endif
     [XmlRoot(ElementName = "evCECTe")]
     [XmlInclude(typeof(EventoDetalhe))]
     public class EventoCECTe: EventoDetalhe
@@ -800,6 +853,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoCTe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlRoot("eventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class EventoCTe: XMLBase
@@ -885,6 +943,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoDetalhe")]
+    [ComVisible(true)]
+#endif
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoCCE))]
     [XmlInclude(typeof(DetEventoCancCompEntrega))]
@@ -1021,6 +1084,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCorrecao")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCorrecao
@@ -1048,6 +1116,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfEntrega")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfEntrega
@@ -1078,6 +1151,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Properties
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfEvento")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfEvento
@@ -1206,6 +1284,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     #region Eventos exclusivos do fisco (Gerados pelo fisco)
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoFiscoMDFeCancelado")]
+    [ComVisible(true)]
+#endif
     [XmlInclude(typeof(EventoDetalhe))]
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoFiscoMDFeCancelado: EventoDetalhe
@@ -1267,6 +1350,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeCanceladoMDFe")]
+    [ComVisible(true)]
+#endif
     [XmlRoot(ElementName = "evCTeCanceladoMDFe")]
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeCanceladoMDFe: Contract.Serialization.IXmlSerializable
@@ -1296,6 +1384,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeCanceladoMDFeMDFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EvCTeCanceladoMDFeMDFe

@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +12,11 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.RetConsSitCTe")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("retConsSitCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class RetConsSitCTe : XMLBase
     {

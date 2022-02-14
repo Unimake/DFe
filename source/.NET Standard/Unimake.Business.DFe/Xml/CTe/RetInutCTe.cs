@@ -1,12 +1,19 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
-
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.RetInutCTe")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("retInutCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class RetInutCTe : XMLBase
     {
@@ -17,6 +24,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public InfInut InfInut = new InfInut();
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfInut")]
+    [ComVisible(true)]
+#endif
     public class InfInut
     {
         [XmlElement("tpAmb")]
