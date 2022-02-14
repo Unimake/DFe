@@ -1,5 +1,8 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,6 +15,11 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnviCTe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlRoot("enviCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class EnviCTe : XMLBase
@@ -64,6 +72,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.CTe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     [XmlRoot("CTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
@@ -91,6 +104,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCTe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCTe
@@ -200,6 +218,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Ide")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Ide
@@ -399,6 +422,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Toma3")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Toma3
@@ -421,6 +449,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Toma4")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Toma4
@@ -483,6 +516,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderToma")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderToma
@@ -530,6 +568,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Compl")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Compl
@@ -609,6 +652,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Fluxo")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Fluxo
@@ -652,6 +700,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Pass")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Pass
@@ -666,6 +719,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Entrega")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Entrega
@@ -689,6 +747,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public NoInter NoInter { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.SemData")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class SemData
@@ -711,6 +774,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ComData")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ComData
@@ -743,6 +811,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.NoPeriodo")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class NoPeriodo
@@ -785,6 +858,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.SemHora")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class SemHora
@@ -807,6 +885,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ComHora")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ComHora
@@ -839,6 +922,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.NoInter")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class NoInter
@@ -881,6 +969,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ObsCont")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ObsCont
@@ -892,6 +985,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string XCampo { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ObsFisco")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ObsFisco
@@ -903,6 +1001,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string XCampo { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Emit")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Emit
@@ -939,6 +1042,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderEmit")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderEmit
@@ -981,6 +1089,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Rem")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Rem
@@ -1026,6 +1139,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderReme")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderReme
@@ -1073,6 +1191,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Exped")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Exped
@@ -1113,6 +1236,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderExped")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderExped
@@ -1160,6 +1288,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Receb")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Receb
@@ -1200,6 +1333,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderReceb")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderReceb
@@ -1247,6 +1385,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Dest")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Dest
@@ -1290,6 +1433,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderDest")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderDest
@@ -1337,6 +1485,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.VPrest")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class VPrest
@@ -1384,6 +1537,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Comp")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Comp
@@ -1402,6 +1560,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Imp")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Imp
@@ -1434,6 +1597,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS
@@ -1460,6 +1628,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public ICMSSN ICMSSN { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS00")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS00
@@ -1498,6 +1671,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS20")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS20
@@ -1546,6 +1724,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS45")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS45
@@ -1570,6 +1753,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS60")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS60
@@ -1624,6 +1812,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS90")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS90
@@ -1690,6 +1883,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMSOutraUF")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMSOutraUF
@@ -1744,6 +1942,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMSSN")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMSSN
@@ -1755,6 +1958,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public SimNao IndSN { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMSUFFim")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMSUFFim
@@ -1830,6 +2038,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCTeNorm")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCTeNorm
@@ -1887,6 +2100,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCarga")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCarga
@@ -1947,6 +2165,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfQ")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfQ
@@ -1968,6 +2191,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfDoc")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfDoc
@@ -2020,6 +2248,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfNF")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfNF
@@ -2180,6 +2413,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfUnidCarga")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfUnidCarga
@@ -2228,6 +2466,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.LacUnidCarga")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class LacUnidCarga
@@ -2236,6 +2479,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string NLacre { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfUnidTransp")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfUnidTransp
@@ -2294,10 +2542,20 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.LacUnidTransp")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class LacUnidTransp : LacUnidCarga { }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfNFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfNFe
@@ -2356,6 +2614,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfOutros")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfOutros
@@ -2440,6 +2703,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DocAnt")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class DocAnt
@@ -2462,6 +2730,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EmiDocAnt")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EmiDocAnt
@@ -2507,6 +2780,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.IdDocAnt")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class IdDocAnt
@@ -2542,6 +2820,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.IdDocAntPap")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class IdDocAntPap
@@ -2575,6 +2858,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.IdDocAntEle")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class IdDocAntEle
@@ -2583,6 +2871,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string ChCTe { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfModal")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfModal
@@ -2609,6 +2902,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public Ferrov Ferrov { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Rodo")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Rodo
@@ -2634,6 +2932,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Occ")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Occ
@@ -2664,6 +2967,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EmiOcc")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EmiOcc
@@ -2691,6 +2999,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.MultiModal")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class MultiModal
@@ -2705,6 +3018,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public Seg Seg { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Seg")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Seg
@@ -2719,6 +3037,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string NAver { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfSeg")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfSeg
@@ -2730,6 +3053,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string CNPJ { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Duto")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Duto
@@ -2771,6 +3099,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Aereo")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Aereo
@@ -2822,6 +3155,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.NatCarga")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class NatCarga
@@ -2853,6 +3191,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Tarifa")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Tarifa
@@ -2880,6 +3223,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Peri")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Peri
@@ -2894,6 +3242,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public InfTotAP InfTotAP { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfTotAP")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfTotAP
@@ -2912,6 +3265,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public UnidadeMedidaArtigoPerigoso UniAP { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Aquav")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Aquav
@@ -2989,6 +3347,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Balsa")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Balsa
@@ -2997,6 +3360,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string XBalsa { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetCont")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class DetCont
@@ -3025,6 +3393,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Lacre")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Lacre
@@ -3033,6 +3406,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string NLacre { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetContInfDoc")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class DetContInfDoc
@@ -3068,6 +3446,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetContInfDocInfNF")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class DetContInfDocInfNF
@@ -3095,6 +3478,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetContInfDocInfNFe")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class DetContInfDocInfNFe
@@ -3119,6 +3507,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Ferrov")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Ferrov
@@ -3133,6 +3526,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string Fluxo { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.TrafMut")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class TrafMut
@@ -3180,6 +3578,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.FerroEnv")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class FerroEnv
@@ -3208,6 +3611,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EnderFerro")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EnderFerro
@@ -3248,6 +3656,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.VeicNovos")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class VeicNovos
@@ -3285,6 +3698,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Cobr")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Cobr
@@ -3310,6 +3728,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Fat")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Fat
@@ -3354,6 +3777,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.Dup")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Dup
@@ -3382,6 +3810,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCteSub")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCteSub
@@ -3414,6 +3847,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.TomaICMS")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class TomaICMS
@@ -3435,6 +3873,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.RefNF")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class RefNF
@@ -3501,6 +3944,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfGlobalizado")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfGlobalizado
@@ -3527,6 +3975,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfServVinc")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfServVinc
@@ -3549,6 +4002,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCTeMultimodal")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCTeMultimodal
@@ -3557,6 +4015,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string ChCTeMultimodal { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCteComp")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCteComp
@@ -3565,6 +4028,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string ChCTe { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCteAnu")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCteAnu
@@ -3583,6 +4051,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.AutXML")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class AutXML
@@ -3628,6 +4101,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfRespTec")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfRespTec
@@ -3659,6 +4137,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfSolicNFF")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfSolicNFF
@@ -3667,6 +4150,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string XSolic { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCTeSupl")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCTeSupl

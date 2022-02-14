@@ -1,11 +1,19 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DistDFeInt")]
+    [ComVisible(true)]
+#endif
     [XmlRoot("distDFeInt", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class DistDFeInt : XMLBase
     {
@@ -54,15 +62,25 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.ConsNSU")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public partial class ConsNSU
+    public class ConsNSU
     {
         [XmlElement("NSU", DataType = "token")]
         public string NSU { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DistNSU")]
+    [ComVisible(true)]
+#endif
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public partial class DistNSU
+    public class DistNSU
     {
         [XmlElement("ultNSU", DataType = "token")]
         public string UltNSU { get; set; }
