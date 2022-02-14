@@ -1,10 +1,18 @@
-﻿using System.Xml;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
     /// Enviar o XML de NFSe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFSe.RecepcionarLoteRps")]
+    [ComVisible(true)]
+#endif
     public class RecepcionarLoteRps: GerarNfse
     {
         /// <summary>

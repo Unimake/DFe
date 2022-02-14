@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -11,6 +14,11 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Classe das configurações para conexão e envio dos XMLs para os webservices
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.Configuracao")]
+    [ComVisible(true)]
+#endif
     public class Configuracao
     {
         #region Private Fields

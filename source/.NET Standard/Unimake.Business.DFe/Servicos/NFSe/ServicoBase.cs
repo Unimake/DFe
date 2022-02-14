@@ -13,6 +13,11 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     /// <summary>
     /// Classe base para os serviços da NFSe
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFSe.ServicoBase")]
+    [ComVisible(true)]
+#endif
     public abstract class ServicoBase: Servicos.ServicoBase
     {
         #region Protected Constructors

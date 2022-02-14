@@ -20,10 +20,29 @@ xmlRec.NRec = autorizacao.Result.InfRec.NRec
 
 retAutorizacao = CREATEOBJECT("Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao")
 retAutorizacao.Executar(xmlRec,inicializarConfiguracao)
-MESSAGEBOX(retAutorizacao.retornowsstring)
+oProtMDFe = m.retautorizacao.Result.GetProtMDFe(0)
 autorizacao.RetConsReciMDFe = retAutorizacao.Result
-autorizacao.GravarXmlDistribuicao("f:\")
+cStat    =	ALLTRIM(STR(oProtMDFe.InfProt.cStat))    
+cDhRec   =	TTOC(oProtMDFe.InfProt.DhRecbto)
+cxMotivo =	oProtMDFe.InfProt.xMotivo
+cnProt   =  ALLTRIM(STR(nz(oProtMDFe.InfProt.nProt)))
 
+DO CASE
+CASE oProtMDFe.infprot.cStat = 100 
+    autorizacao.GravarXmlDistribuicao("f:\")
+CASE oProtMDFe.infprot.cStat = 228    &&Data de Emissão muito atrasada
+     messagebox("Arrume a data e tente novamente")
+
+CASE oProtMDFe.infprot.cStat = 204 OR oProtMDFe.infprot.cStat = 609 && Duplicidade de nota
+LOCAL cStatCons,xMotivoCons,nProtcons 
+cStatCons = 0
+xMotivoCons = "" 
+nProtcons = ""
+  	  consulta_Aut_MDFE_Dll(autorizacao,InicializarConfiguracao,cChavenfe_,@cStatCons,@xMotivoCons,@nProtcons)
+  	  autorizacao.GravarXmlDistribuicao("f:\")
+OTHERWISE
+	messagebox("Não catalogado pegar o cstat e xmotivo inserir no docase")
+ENDCASE
 ****************************************************************************************************************************
 FUNCTION gerar_XML_MDFE_Dll
 && Preencher os campos para emitir mdfe 
@@ -180,3 +199,29 @@ ENDWITH
 oInfMDFe.AddLacres(oLacres)
 oMdfe.InfMDFe = oInfMDFe 
 RETURN oMdfe 
+****************************************************************************************************************************
+******************************
+******************************
+******************************
+FUNCTION consulta_Aut_MDFE_Dll
+PARAMETERS oAutorizacao,oConfig,cChave,cStatCons,xMotivoCons,cProtcons
+
+oAutorizacao.SetNullRetConsReciMDFe()
+
+oxmlSit = CREATEOBJECT("Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe")
+oxmlSit.Versao = "3.00"
+oxmlSit.TpAmb = Val(Alltrim(dd_emp2.tpAmb))
+oxmlSit.ChMDFe = cChave
+
+consultaProtocolo = CREATEOBJECT("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")
+		consultaProtocolo.Executar(oxmlSit,oConfig)
+
+cStatCons = consultaProtocolo.Result.CStat 
+xMotivoCons =  consultaProtocolo.Result.xMotivo
+cProtcons = m.consultaprotocolo.Result.ProtMDFe.InfProt.nprot
+IF cStatCons= 100 OR cStatCons= 132
+	oAutorizacao.AddRetConsSitMDFe(consultaProtocolo.Result)
+    RETURN oAutorizacao 
+ELSE
+    RETURN .f.
+endif 

@@ -1,12 +1,20 @@
-﻿using System.IO;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
-    /// Enviar o XML de Consulta/Downloa do PDF da NFSe para o webservice
+    /// Enviar o XML de Consulta/Download do PDF da NFSe para o webservice
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePDF")]
+    [ComVisible(true)]
+#endif
     public class ConsultarNfsePDF: ConsultarNfse
     {
         /// <summary>
