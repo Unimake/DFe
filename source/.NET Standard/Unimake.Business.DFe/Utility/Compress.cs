@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -9,6 +12,11 @@ namespace Unimake.Business.DFe.Utility
     /// <summary>
     /// Classe para compactação e descompactação de objetos, strings, etc...
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Utility.Compress")]
+    [ComVisible(true)]
+#endif
     public static class Compress
     {
         /// <summary>

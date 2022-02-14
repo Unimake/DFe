@@ -13,6 +13,8 @@ namespace Unimake.Business.DFe.Xml
     /// Classe Base para criação de classes de serialização de XML
     /// </summary>
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.XMLBase")]
     [ComVisible(true)]
 #endif
     public abstract class XMLBase : Contract.Serialization.IXmlSerializable

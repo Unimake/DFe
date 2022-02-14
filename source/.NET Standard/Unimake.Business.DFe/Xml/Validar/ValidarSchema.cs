@@ -13,6 +13,11 @@ namespace Unimake.Business.DFe
     /// <summary>
     /// Validador de schemas de XML (XML x XSD)
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.ValidarSchema")]
+    [ComVisible(true)]
+#endif
     public class ValidarSchema
     {
         #region Private Properties

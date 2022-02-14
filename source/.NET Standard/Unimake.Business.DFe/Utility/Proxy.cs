@@ -1,10 +1,18 @@
-﻿using System.Net;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System.Net;
 
 namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
     /// Definições para conexão com servidor de proxy
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Utility.Proxy")]
+    [ComVisible(true)]
+#endif
     public static class Proxy
     {
         /// <summary>

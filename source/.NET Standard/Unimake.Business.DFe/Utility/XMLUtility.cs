@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,6 +15,11 @@ namespace Unimake.Business.DFe.Utility
     /// <summary>
     /// Utilitários diversos para trabalhar com XML
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Utility.XMLUtility")]
+    [ComVisible(true)]
+#endif
     public static class XMLUtility
     {
 

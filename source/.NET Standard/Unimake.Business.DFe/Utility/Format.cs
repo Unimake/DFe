@@ -1,8 +1,19 @@
-﻿using System.ComponentModel;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System.ComponentModel;
 
 namespace Unimake.Business.DFe.Utility
 {
-    internal static class Format
+    /// <summary>
+    /// Formatar/Definir máscara de valores
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Utility.Format")]
+    [ComVisible(true)]
+#endif
+    public static class Format
     {
         /// <summary>
         /// Formatar a string da chave da NFe, MDFe, CTe, CTeOS em um formato com uma máscara

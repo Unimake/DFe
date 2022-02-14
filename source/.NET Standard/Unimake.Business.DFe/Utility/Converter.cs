@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -12,6 +15,11 @@ namespace Unimake.Business.DFe.Utility
     /// <summary>
     /// Classe para conversão de objetos
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Utility.Converter")]
+    [ComVisible(true)]
+#endif
     public static class Converter
     {
         #region Private Methods
