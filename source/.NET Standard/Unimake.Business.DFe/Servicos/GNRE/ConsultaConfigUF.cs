@@ -11,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.GNRE
     /// <summary>
     /// Envio do XML de consulta configurações da GNRE por UF para o WebService 
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.GNRE.ConsultaConfigUF")]
+    [ComVisible(true)]
+#endif
     public class ConsultaConfigUF: ServicoBase, IInteropService<TConsultaConfigUf>
     {
         #region Protected Methods

@@ -11,6 +11,11 @@ namespace Unimake.Business.DFe.Servicos.GNRE
     /// <summary>
     /// Envio do XML de lote da GNRE para o WebService
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Servicos.GNRE.LoteRecepcao")]
+    [ComVisible(true)]
+#endif
     public class LoteRecepcao : ServicoBase, IInteropService<TLoteGNRE>
     {
         #region Protected Methods
