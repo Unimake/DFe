@@ -574,4 +574,16 @@
 		<ArqConfig>CachoeirodeItapemirimES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3506003">
+		<Nome>Bauru - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BauruSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4218905">
+		<Nome>Urubici - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
