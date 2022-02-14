@@ -13,6 +13,8 @@ using Unimake.Business.DFe.Servicos;
 namespace Unimake.Business.DFe.Xml.GNRE
 {
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TLoteGNRE")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -26,6 +28,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public Guias Guias { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Guias")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Guias
@@ -50,6 +57,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TDadosGNRE")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class TDadosGNRE
@@ -96,6 +108,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.ContribuinteEmitente")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class ContribuinteEmitente
@@ -128,6 +145,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Identificacao")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Identificacao
@@ -150,6 +172,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.ItensGNRE")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class ItensGNRE
@@ -174,6 +201,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Item")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Item
@@ -241,6 +273,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.DocumentoOrigem")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class DocumentoOrigem
@@ -252,6 +289,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Value { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Referencia")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Referencia
@@ -292,6 +334,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         #endregion
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Valor")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Valor
@@ -343,6 +390,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.ContribuinteDestinatario")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class ContribuinteDestinatario
@@ -357,6 +409,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Municipio { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.CamposExtras")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class CamposExtras
@@ -381,6 +438,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.CampoExtra")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class CampoExtra

@@ -12,6 +12,8 @@ using Unimake.Business.DFe.Servicos;
 namespace Unimake.Business.DFe.Xml.GNRE
 {
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TResultLoteGNRE")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -31,6 +33,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public Resultado Resultado { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.SituacaoProcess")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class SituacaoProcess
@@ -42,6 +49,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Descricao { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Resultado")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Resultado
@@ -68,6 +80,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Guia")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Guia
@@ -91,6 +108,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public MotivosRejeicao MotivosRejeicao { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.MotivosRejeicao")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class MotivosRejeicao
@@ -111,6 +133,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Motivo")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Motivo
