@@ -11,6 +11,8 @@ using Unimake.Business.DFe.Servicos;
 namespace Unimake.Business.DFe.Xml.GNRE
 {
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TRetLoteGNRE")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -27,6 +29,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public Recibo Recibo { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.SituacaoRecepcao")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class SituacaoRecepcao
@@ -41,6 +48,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public int GuiaErro { get; set; }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Recibo")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class Recibo

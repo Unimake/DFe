@@ -11,6 +11,8 @@ using Unimake.Business.DFe.Servicos;
 namespace Unimake.Business.DFe.Xml.GNRE
 {
 #if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TConsLoteGNRE")]
     [ComVisible(true)]
 #endif
     [Serializable()]
