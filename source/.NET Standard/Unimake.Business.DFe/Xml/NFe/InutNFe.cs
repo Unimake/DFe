@@ -12,7 +12,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.InutNFe")]
     [ComVisible(true)]
 #endif
     [XmlRoot("inutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
@@ -30,7 +30,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")]
     [ComVisible(true)]
 #endif
     public class InutNFeInfInut

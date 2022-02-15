@@ -15,49 +15,49 @@ namespace Unimake.Business.DFe.Servicos
         /// Consulta status serviço NFe/NFCe
         /// </summary>
         [Description("Consulta status do serviço da NFe/NFCe")]
-        NFeStatusServico,
+        NFeStatusServico = 0,
 
         /// <summary>
         /// Consulta protocolo da NFe/NFCe
         /// </summary>
         [Description("Consulta situação da NFe/NFCe")]
-        NFeConsultaProtocolo,
+        NFeConsultaProtocolo = 1,
 
         /// <summary>
         /// Consulta recibo NFe/NFCe
         /// </summary>
         [Description("Consulta recibo da NFe/NFCe")]
-        NFeConsultaRecibo,
+        NFeConsultaRecibo = 2,
 
         /// <summary>
         /// Inutilização de números da nota fiscal eletrônica
         /// </summary>
         [Description("Inutilização de números da NFe/NFCE")]
-        NFeInutilizacao,
+        NFeInutilizacao = 3,
 
         /// <summary>
         /// Consulta cadastro do contribuinte
         /// </summary>
         [Description("Consulta cadastro de contribuinte")]
-        NFeConsultaCadastro,
+        NFeConsultaCadastro = 4,
 
         /// <summary>
         /// Envio de Eventos (Cancelamento, CCe, EPEC, etc...)
         /// </summary>
         [Description("Envio de eventos da NFe/NFCe")]
-        NFeRecepcaoEvento,
+        NFeRecepcaoEvento = 5,
 
         /// <summary>
         /// Envio do XML de lote de NFe/NFCe
         /// </summary>
         [Description("Autorização da NFe/NFCe")]
-        NFeAutorizacao,
+        NFeAutorizacao = 6,
 
         /// <summary>
         /// Envio do XML de consulta dos documentos fiscais eletrônicos destinados - NFe
         /// </summary>
         [Description("Distribuição de documentos fiscais eletrônicos da NFe")]
-        NFeDistribuicaoDFe,
+        NFeDistribuicaoDFe = 7,
 
         #endregion
 
@@ -67,43 +67,44 @@ namespace Unimake.Business.DFe.Servicos
         /// Consulta status serviço CTe
         /// </summary>
         [Description("Consulta status do serviço do CTe")]
-        CTeStatusServico,
+        CTeStatusServico = 8,
 
         /// <summary>
         /// Consulta protocolo do CTe
         /// </summary>
         [Description("Consulta situação do CTe")]
-        CTeConsultaProtocolo,
+        CTeConsultaProtocolo = 9,
 
         /// <summary>
         /// Inutilização de números do Conhecimetno de Transporte Eletrônico (CTe)
         /// </summary>
         [Description("Inutilização de números do CTe")]
-        CTeInutilizacao,
+        CTeInutilizacao = 10,
 
         /// <summary>
         /// Envio do XML de consulta dos documentos fiscais eletrônicos destinados - CTe
         /// </summary>
         [Description("Distribuição de documentos fiscais eletrônicos do CTe")]
-        CTeDistribuicaoDFe,
+        CTeDistribuicaoDFe = 11,
 
         /// <summary>
         /// Consulta recibo CTe
         /// </summary>
         [Description("Consulta recibo do CTe")]
-        CTeConsultaRecibo,
+        CTeConsultaRecibo = 12,
 
         /// <summary>
         /// Envio do XML de CTe
         /// </summary>
         [Description("Autorização do CTe")]
-        CTeAutorizacao,
+        CTeAutorizacao = 13,
 
         /// <summary>
         /// Envio do XML de CTeOS
         /// </summary>
         [Description("Autorização do CTeOS")]
-        CTeAutorizacaoOS,
+        CTeAutorizacaoOS = 14,
+
         #endregion
 
         #region MDFe
@@ -112,56 +113,59 @@ namespace Unimake.Business.DFe.Servicos
         /// Consulta status serviço MDFe
         /// </summary>
         [Description("Consulta status do serviço do MDFe")]
-        MDFeStatusServico,
+        MDFeStatusServico = 15,
 
         /// <summary>
         /// Consulta protocolo do MDFe
         /// </summary>
         [Description("Consulta situação do MDFe")]
-        MDFeConsultaProtocolo,
+        MDFeConsultaProtocolo = 16,
 
         /// <summary>
         /// Consulta recibo MDFe
         /// </summary>
         [Description("Consulta recibo do MDFe")]
-        MDFeConsultaRecibo,
+        MDFeConsultaRecibo = 17,
 
         /// <summary>
         /// Consulta MDFe não encerrado
         /// </summary>
         [Description("Consulta de MDFe´s não encerrados")]
-        MDFeConsultaNaoEnc,
+        MDFeConsultaNaoEnc = 18,
 
         /// <summary>
         /// Envio do XML de MDFe em lote no modo assíncrono
         /// </summary>
         [Description("Autorização do MDFe")]
-        MDFeAutorizacao,
+        MDFeAutorizacao = 19,
 
         /// <summary>
         /// Envio do XML de MDFe no modo síncrono
         /// </summary>
         [Description("Autorização do MDFe")]
-        MDFeAutorizacaoSinc,
+        MDFeAutorizacaoSinc = 20,
 
         #endregion
 
         #region GNRE
+
         /// <summary>
         /// GNRE - Consultar Configurações da UF
         /// </summary>
         [Description("GNRE - Consultar Configurações da UF")]
-        GNREConsultaConfigUF,
+        GNREConsultaConfigUF = 21,
+
         /// <summary>
         /// GNRE - Consultar Resultado do Lote de GNRE enviado
         /// </summary>
         [Description("Consultar Resultado do Lote de GNRE enviado")]
-        GNREConsultaResultadoLote,
+        GNREConsultaResultadoLote = 22,
+
         /// <summary>
         /// GNRE - Enviar Lote de GNRE
         /// </summary>
         [Description("Enviar Lote de GNRE")]
-        GNRELoteRecepcao,
+        GNRELoteRecepcao = 23,
 
         #endregion
 
@@ -171,85 +175,85 @@ namespace Unimake.Business.DFe.Servicos
         /// Enviar o XML de cancelamento da NFS-e para prefeiutura
         /// </summary>
         [Description("Cancelamento da NFS-e")]
-        NFSeCancelarNfse,
+        NFSeCancelarNfse = 24,
 
         /// <summary>
         /// Enviar o XML de consulta NFS-e do prestador para a prefeitura
         /// </summary>
         [Description("Consulta NFS-e do prestador")]
-        NFSeConsultarNotaPrestador,
+        NFSeConsultarNotaPrestador = 25,
 
         /// <summary>
         /// Enviar o XML de consulta NFS-e valida para a prefeitura
         /// </summary>
         [Description("Consulta NFS-e valida")]
-        NFSeConsultarNotaValida,
+        NFSeConsultarNotaValida = 26,
 
         /// <summary>
         /// Enviar o XML da NFS-e para a prefeitura
         /// </summary>
         [Description("Envio da NFS-e")]
-        NFSeGerarNfse,
+        NFSeGerarNfse = 27,
 
         /// <summary>
         /// Enviar o XML do Lote de RPS para gerar NFSe para a prefeitura
         /// </summary>
         [Description("Envio do lote RPS para gerar NFSe")]
-        NFSeRecepcionarLoteRps,
+        NFSeRecepcionarLoteRps = 28,
 
         /// <summary>
         /// Enviar o XML do Lote de RPS no modo síncrono para gerar NFSe para a prefeitura
         /// </summary>
         [Description("Envio do lote RPS no modo síncrono para gerar NFSe")]
-        NFSeRecepcionarLoteRpsSincrono,
+        NFSeRecepcionarLoteRpsSincrono = 29,
 
         /// <summary>
         /// Enviar o XML para Substituir NFSe
         /// </summary>
         [Description("Envio da substituição da NFS-e")]
-        NFSeSubstituirNfse,
+        NFSeSubstituirNfse = 30,
 
         /// <summary>
         /// Enviar o XML de consulta lote RPS para a prefeitura
         /// </summary>
         [Description("Consulta lote RPS")]
-        NFSeConsultarLoteRps,
+        NFSeConsultarLoteRps = 31,
 
         /// <summary>
         /// Enviar o XML de consulta NFSe para a prefeitura
         /// </summary>
         [Description("Consulta NFSe")]
-        NFSeConsultarNfse,
+        NFSeConsultarNfse = 32,
 
         /// <summary>
         /// Enviar o XML de consulta NFSe serviço prestado para a prefeitura
         /// </summary>
         [Description("Consulta NFSe serviço prestado")]
-        NFSeConsultarNfseServicoPrestado,
+        NFSeConsultarNfseServicoPrestado = 33,
 
         /// <summary>
         /// Enviar o XML de consulta NFSe serviço tomado para a prefeitura
         /// </summary>
         [Description("Consulta NFSe serviço tomado")]
-        NFSeConsultarNfseServicoTomado,
+        NFSeConsultarNfseServicoTomado = 34,
 
         /// <summary>
         /// Enviar o XML de consulta NFSe por faixa para a prefeitura
         /// </summary>
         [Description("Consulta NFSe por Faixa")]
-        NFSeConsultarNfseFaixa,
+        NFSeConsultarNfseFaixa = 35,
 
         /// <summary>
         /// Enviar o XML de consulta NFSe por RPS para a prefeitura
         /// </summary>
         [Description("Consulta NFSe por RPS")]
-        NFSeConsultarNfsePorRps,
+        NFSeConsultarNfsePorRps = 36,
 
         /// <summary>
         /// Enviar o XML de consulta/download do PDF NFSe para a prefeitura
         /// </summary>
         [Description("Consulta/Download do PDF da NFSe")]
-        NFSeConsultarNfsePDF,
+        NFSeConsultarNfsePDF = 37,
 
         #endregion
 
@@ -258,7 +262,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Serviço não definido
         /// </summary>
-        Nulo
+        Nulo = 9999
 
         #endregion
     }

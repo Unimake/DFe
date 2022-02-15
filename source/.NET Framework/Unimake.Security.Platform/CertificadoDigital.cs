@@ -1,6 +1,6 @@
-﻿using System.Runtime.InteropServices;
-using System;
+﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Unimake.Security.Platform.Exceptions;
 
@@ -283,6 +283,41 @@ namespace Unimake.Security.Platform
 
             return retorna;
         }
+
+        /// <summary>
+        /// Retorna o Thumbprint (impressão digital, ID) do certificado digital
+        /// </summary>
+        /// <param name="certificado">Certificado que é para pegar a informação</param>
+        /// <returns>Retorna o Thumbprint</returns>
+        public string GetThumbprint(X509Certificate2 certificado) => certificado.Thumbprint;
+
+        /// <summary>
+        /// Retorna Subject (dados do proprietário) do certificado digital
+        /// </summary>
+        /// <param name="certificado">Certificado que é para pegar a informação</param>
+        /// <returns>Retorna o Subject</returns>
+        public string GetSubject(X509Certificate2 certificado) => certificado.Subject;
+
+        /// <summary>
+        /// Retorna o SerialNumber (Número de série, ID) do certificado digital
+        /// </summary>
+        /// <param name="certificado">Certificado que é para pegar a informação</param>
+        /// <returns>Retorna o SerialNumber</returns>
+        public string GetSerialNumber(X509Certificate2 certificado) => certificado.SerialNumber;
+
+        /// <summary>
+        /// Retorna o Not After (Data de vencimento final do certificado digital) do certificado digital
+        /// </summary>
+        /// <param name="certificado">Certificado que é para pegar a informação</param>
+        /// <returns>Retorna o Not AfterThumbprint</returns>
+        public string GetNotAfter(X509Certificate2 certificado) => certificado.NotAfter.ToString("dd/MM/yyyy HH:mm:ss");
+
+        /// <summary>
+        /// Retorna o Not Before (Data de vencimento inicial do certificado digital) do certificado digital
+        /// </summary>
+        /// <param name="certificado">Certificado que é para pegar a informação</param>
+        /// <returns>Retorna o NotBefore</returns>
+        public string GetNotBefore(X509Certificate2 certificado) => certificado.NotBefore.ToString("dd/MM/yyyy HH:mm:ss");
 
         #endregion Public Methods
     }
