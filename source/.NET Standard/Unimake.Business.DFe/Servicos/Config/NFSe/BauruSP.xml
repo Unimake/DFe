@@ -149,8 +149,8 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=utf-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoPrestado><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns2:consultarNfseServicoPrestadoResponse</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
       <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
