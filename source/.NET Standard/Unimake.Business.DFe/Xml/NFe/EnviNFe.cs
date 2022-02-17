@@ -4362,18 +4362,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST? ModBCST
         {
             get => ModBCSTField;
-
-            set
-            {
-                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
-                {
-                    ModBCSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMSSN900> inválido! Valores aceitos: 0 a 5.");
-                }
-            }
+            set => ModBCSTField = value;
         }
 
         [XmlIgnore]
@@ -5624,7 +5613,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeVBCField() => VBC > 0 || PCOFINS > 0;
         public bool ShouldSerializePCOFINSField() => VBC > 0 || PCOFINS > 0;
-        public bool ShouldSerializeQBCProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0; 
+        public bool ShouldSerializeQBCProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
         public bool ShouldSerializeVAliqProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
         public bool ShouldSerializeVCOFINSField() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
         public bool ShouldSerializeIndSomaCOFINSST() => IndSomaCOFINSST != null;
