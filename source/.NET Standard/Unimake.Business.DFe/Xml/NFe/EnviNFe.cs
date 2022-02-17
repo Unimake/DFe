@@ -5207,11 +5207,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializePPISField() => PPIS > 0 || VBC > 0;
-        public bool ShouldSerializeVBCField() => PPIS > 0 || VBC > 0;
-        public bool ShouldSerializeQBCProd() => QBCProd > 0 || VAliqProd > 0 || VPIS > 0;
-        public bool ShouldSerializeVAliqProd() => QBCProd > 0 || VAliqProd > 0 || VPIS > 0;
-        public bool ShouldSerializeVPISField() => QBCProd > 0 || VAliqProd > 0 || VPIS > 0;
+        public bool ShouldSerializePPISField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
+        public bool ShouldSerializeVBCField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
+        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VPIS > 0);
+        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VPIS > 0);
+        public bool ShouldSerializeVPISField() => (QBCProd + VAliqProd + VPIS > 0) || (PPIS + VBC >= 0);
 
         #endregion
     }
@@ -5315,11 +5315,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBCField() => VBC > 0 || PPIS > 0;
-        public bool ShouldSerializePPISField() => VBC > 0 || PPIS > 0;
-        public bool ShouldSerializeQBCProd() => QBCProd > 0 || VAliqProd > 0 || VPIS > 0;
-        public bool ShouldSerializeVAliqProd() => QBCProd > 0 || VAliqProd > 0 || VPIS > 0;
-        public bool ShouldSerializeVPISField() => QBCProd > 0 || VAliqProd > 0 || VPIS > 0;
+        public bool ShouldSerializePPISField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
+        public bool ShouldSerializeVBCField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
+        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VPIS > 0);
+        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VPIS > 0);
+        public bool ShouldSerializeVPISField() => (QBCProd + VAliqProd + VPIS > 0) || (PPIS + VBC >= 0);
         public bool ShouldSerializeIndSomaPISST() => IndSomaPISST != null;
 
         #endregion
@@ -5504,11 +5504,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBCField() => PCOFINS > 0 || VBC > 0;
-        public bool ShouldSerializePCOFINSField() => PCOFINS > 0 || VBC > 0;
-        public bool ShouldSerializeQBCProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
-        public bool ShouldSerializeVAliqProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
-        public bool ShouldSerializeVCOFINSField() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
+        public bool ShouldSerializeVBCField() => (PCOFINS+VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
+        public bool ShouldSerializePCOFINSField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
+        public bool ShouldSerializeQBCProd() => (QBCProd+VAliqProd+VCOFINS > 0);
+        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VCOFINS > 0);
+        public bool ShouldSerializeVCOFINSField() => (QBCProd + VAliqProd + VCOFINS > 0) || (PCOFINS + VBC >= 0);
 
         #endregion
     }
@@ -5611,11 +5611,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBCField() => VBC > 0 || PCOFINS > 0;
-        public bool ShouldSerializePCOFINSField() => VBC > 0 || PCOFINS > 0;
-        public bool ShouldSerializeQBCProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
-        public bool ShouldSerializeVAliqProd() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
-        public bool ShouldSerializeVCOFINSField() => QBCProd > 0 || VAliqProd > 0 || VCOFINS > 0;
+        public bool ShouldSerializeVBCField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
+        public bool ShouldSerializePCOFINSField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
+        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VCOFINS > 0);
+        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VCOFINS > 0);
+        public bool ShouldSerializeVCOFINSField() => (QBCProd + VAliqProd + VCOFINS > 0) || (PCOFINS + VBC >= 0);
         public bool ShouldSerializeIndSomaCOFINSST() => IndSomaCOFINSST != null;
 
         #endregion
