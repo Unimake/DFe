@@ -3126,18 +3126,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST? ModBCST
         {
             get => ModBCSTField;
-
-            set
-            {
-                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
-                {
-                    ModBCSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMS" + CST + "> inválido! Valores aceitos: 0 a 5.");
-                }
-            }
+            set => ModBCSTField = value;
         }
 
         [XmlIgnore]
@@ -3388,18 +3377,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST? ModBCST
         {
             get => ModBCSTField;
-
-            set
-            {
-                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
-                {
-                    ModBCSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMS" + CST + "> inválido! Valores aceitos: 0 a 5.");
-                }
-            }
+            set => ModBCSTField = value;
         }
 
         [XmlIgnore]
@@ -3636,18 +3614,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST ModBCST
         {
             get => ModBCSTField;
-
-            set
-            {
-                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
-                {
-                    ModBCSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMSPart> inválido! Valores aceitos: 0 a 5.");
-                }
-            }
+            set => ModBCSTField = value;
         }
 
         [XmlIgnore]
@@ -3846,18 +3813,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST ModBCST
         {
             get => ModBCSTField;
-
-            set
-            {
-                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
-                {
-                    ModBCSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMSSN201> inválido! Valores aceitos: 0 a 5.");
-                }
-            }
+            set => ModBCSTField = value;
         }
 
         [XmlIgnore]
@@ -4014,18 +3970,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST ModBCST
         {
             get => ModBCSTField;
-
-            set
-            {
-                if (value != ModalidadeBaseCalculoICMSST.ValorOperacao)
-                {
-                    ModBCSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <ModBCST> da <ICMSSN202> inválido! Valores aceitos: 0 a 5.");
-                }
-            }
+            set => ModBCSTField = value;
         }
 
         [XmlIgnore]
@@ -5504,9 +5449,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBCField() => (PCOFINS+VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
+        public bool ShouldSerializeVBCField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
         public bool ShouldSerializePCOFINSField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
-        public bool ShouldSerializeQBCProd() => (QBCProd+VAliqProd+VCOFINS > 0);
+        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VCOFINS > 0);
         public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VCOFINS > 0);
         public bool ShouldSerializeVCOFINSField() => (QBCProd + VAliqProd + VCOFINS > 0) || (PCOFINS + VBC >= 0);
 
