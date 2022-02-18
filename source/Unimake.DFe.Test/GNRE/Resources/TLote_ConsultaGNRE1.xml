@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TLote_ConsultaGNRE versao="versao1" xmlns="http://www.gnre.pe.gov.br">
+  <consulta>
+    <uf>AC</uf>
+    <emitenteId>
+      <CNPJ>67411125000185</CNPJ>
+      <CPF>12400815020</CPF>
+      <IE>905545290</IE>
+    </emitenteId>
+    <codBarras>12345678</codBarras>
+    <numControle>123</numControle>
+    <docOrigem tipo="tipo1">10</docOrigem>
+    <idConsulta>3</idConsulta>
+    <tipoConsulta>C</tipoConsulta>
+  </consulta>
+  <consulta>
+    <uf>AL</uf>
+    <emitenteId>
+      <CNPJ>86940953000155</CNPJ>
+      <CPF>52311773003</CPF>
+      <IE>833800574</IE>
+    </emitenteId>
+    <codBarras>12345679</codBarras>
+    <numControle>321</numControle>
+    <docOrigem tipo="tipo2">12</docOrigem>
+    <idConsulta>4</idConsulta>
+    <tipoConsulta>N</tipoConsulta>
+  </consulta>
+  <consulta>
+    <uf>AM</uf>
+    <emitenteId>
+      <CNPJ>35036254000144</CNPJ>
+      <CPF>28153783025</CPF>
+      <IE>839516410</IE>
+    </emitenteId>
+    <codBarras>12345671</codBarras>
+    <numControle>456</numControle>
+    <docOrigem tipo="tipo3">14</docOrigem>
+    <idConsulta>5</idConsulta>
+    <tipoConsulta>D</tipoConsulta>
+  </consulta>
+</TLote_ConsultaGNRE>

@@ -5885,4 +5885,28 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    /// <summary>
+    /// Tipos de Consultas da GNRE
+    /// </summary>
+    public enum TipoConsultaGNRE
+    {
+        /// <summary>
+        /// C - Consulta por código de barras.
+        /// </summary>
+        [XmlEnum("C")]
+        ConsultaPorCodigoBarra = 0,
+
+        /// <summary>
+        /// N - Consulta por Número de Controle da GNRE.
+        /// </summary>
+        [XmlEnum("N")]
+        ConsultaPorNumeroControleGNRE = 1,
+
+        /// <summary>
+        /// D - Consulta por Documento de Origem.
+        /// </summary>
+        [XmlEnum("D")]
+        ConsultaPorDocumentOrigem = 2,
+    }
 }

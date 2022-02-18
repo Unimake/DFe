@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TLote_ConsultaGNRE versao="versao1" xmlns="http://www.gnre.pe.gov.br">
+  <consulta>
+    <uf>PR</uf>
+    <emitenteId>
+      <CNPJ>12548209000173</CNPJ>
+    </emitenteId>
+    <codBarras>12345678</codBarras>
+    <numControle>123</numControle>
+    <docOrigem tipo="tipo1">12</docOrigem>
+    <idConsulta>10</idConsulta>
+    <tipoConsulta>C</tipoConsulta>
+  </consulta>
+</TLote_ConsultaGNRE>
