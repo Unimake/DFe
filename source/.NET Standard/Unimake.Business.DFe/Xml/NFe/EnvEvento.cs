@@ -23,12 +23,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable()]
     [XmlRoot("envEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
-    public class EnvEvento: XMLBase
+    public class EnvEvento : XMLBase
     {
         private void SignEvent(Evento evento, XmlElement xmlEl)
         {
             var signature = xmlEl.GetElementsByTagName("Signature")[0];
-            if(signature != null)
+            if (signature != null)
             {
                 var signatureEvento = new XmlDocument();
 
@@ -50,7 +50,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             base.ReadXml(document);
 
-            switch(document.GetElementsByTagName("tpEvento")[0].InnerText)
+            switch (document.GetElementsByTagName("tpEvento")[0].InnerText)
             {
                 case "111500":
                 case "111501":
@@ -58,18 +58,17 @@ namespace Unimake.Business.DFe.Xml.NFe
                     break;
             }
         }
-
         public void PreparaItemPedido(XmlDocument xmlDoc)
         {
             var itensPedidos = xmlDoc.GetElementsByTagName("itemPedido");
 
-            foreach(var evento in Evento)
+            foreach (var evento in Evento)
             {
-                if(evento.InfEvento.DetEvento is DetEventoPedidoProrrogPrazoICMS detEvento)
+                if (evento.InfEvento.DetEvento is DetEventoPedidoProrrogPrazoICMS detEvento)
                 {
                     detEvento.ItemPedido = new List<ItemPedidoProrrogPrazoICMS>();
 
-                    foreach(var nodeItemPedido in itensPedidos)
+                    foreach (var nodeItemPedido in itensPedidos)
                     {
                         var elementItemPedido = (XmlElement)nodeItemPedido;
 
@@ -84,15 +83,39 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
 #if INTEROP
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="evento">Elemento</param>
         public void AddEvento(Evento evento)
         {
-            if(Evento == null)
+            if (Evento == null)
             {
                 Evento = new List<Evento>();
             }
 
             Evento.Add(evento);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Evento (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Evento</returns>
+        public Evento GetEvento(int index)
+        {
+            if ((Evento?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Evento[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Evento
+        /// </summary>
+        public int GetEventoCount => (Evento != null ? Evento.Count : 0);
 #endif
 
         public override XmlDocument GerarXML()
@@ -103,7 +126,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
 
-            for(var i = 0; i < xmlDocument.GetElementsByTagName("evento").Count; i++)
+            for (var i = 0; i < xmlDocument.GetElementsByTagName("evento").Count; i++)
             {
                 var xmlElement = (XmlElement)xmlDocument.GetElementsByTagName("evento")[i];
                 xmlElement.SetAttribute("xmlns", attribute.Namespace);
@@ -116,7 +139,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public override T LerXML<T>(XmlDocument doc)
         {
-            if(typeof(T) != typeof(EnvEvento))
+            if (typeof(T) != typeof(EnvEvento))
             {
                 throw new InvalidCastException($"Cannot cast type '{typeof(T).Name}' into type '{typeof(EnvEvento).Name}'.");
             }
@@ -125,11 +148,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             var eventos = doc.GetElementsByTagName("evento");
 
-            if((eventos?.Count ?? 0) > 0)
+            if ((eventos?.Count ?? 0) > 0)
             {
                 retornar.Evento = new List<Evento>();
 
-                foreach(XmlElement xmlEl in eventos)
+                foreach (XmlElement xmlEl in eventos)
                 {
                     var xml = new StringBuilder();
                     xml.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -208,7 +231,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => _detEvento;
             set
             {
-                switch(TpEvento)
+                switch (TpEvento)
                 {
                     case 0:
                         _detEvento = value;
@@ -322,7 +345,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoCCE))]
     [XmlInclude(typeof(DetEventoCancSubst))]
-    public class EventoDetalhe: IXmlSerializable
+    public class EventoDetalhe : IXmlSerializable
     {
         #region Internal Properties
 
@@ -343,25 +366,25 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         internal virtual void ProcessReader()
         {
-            if(XmlReader == null)
+            if (XmlReader == null)
             {
                 return;
             }
 
             var type = GetType();
 
-            if(XmlReader.HasAttributes)
+            if (XmlReader.HasAttributes)
             {
-                if(XmlReader.GetAttribute("versao") != "")
+                if (XmlReader.GetAttribute("versao") != "")
                 {
                     var pi = type.GetProperty("versao", BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
                     pi?.SetValue(this, XmlReader.GetAttribute("versao"));
                 }
             }
 
-            while(XmlReader.Read())
+            while (XmlReader.Read())
             {
-                if(XmlReader.NodeType != XmlNodeType.Element)
+                if (XmlReader.NodeType != XmlNodeType.Element)
                 {
                     continue;
                 }
@@ -374,7 +397,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             var pi = GetPropertyInfo(type);
 
-            if(pi == null)
+            if (pi == null)
             {
                 return;
             }
@@ -423,7 +446,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCanc: EventoDetalhe
+    public class DetEventoCanc : EventoDetalhe
     {
         #region Public Properties
 
@@ -460,7 +483,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCancSubst: EventoDetalhe
+    public class DetEventoCancSubst : EventoDetalhe
     {
         #region Public Properties
 
@@ -519,7 +542,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCCE: EventoDetalhe
+    public class DetEventoCCE : EventoDetalhe
     {
         #region Public Properties
 
@@ -553,7 +576,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoManif: EventoDetalhe
+    public class DetEventoManif : EventoDetalhe
     {
         #region Public Properties
 
@@ -568,7 +591,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => DescEventoField;
             set
             {
-                if(!value.Equals("Ciencia da Operacao") &&
+                if (!value.Equals("Ciencia da Operacao") &&
                     !value.Equals("Confirmacao da Operacao") &&
                     !value.Equals("Desconhecimento da Operacao") &&
                     !value.Equals("Operacao nao Realizada"))
@@ -593,7 +616,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             base.WriteXml(writer);
 
-            if(string.IsNullOrWhiteSpace(XJust) ||
+            if (string.IsNullOrWhiteSpace(XJust) ||
                 DescEvento.Equals("Ciencia da Operacao") ||
                 DescEvento.Equals("Confirmacao da Operacao"))
             {
@@ -615,11 +638,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoEPEC: EventoDetalhe
+    public class DetEventoEPEC : EventoDetalhe
     {
         internal override void SetValue(PropertyInfo pi)
         {
-            if(pi.Name == nameof(Dest))
+            if (pi.Name == nameof(Dest))
             {
                 XmlReader.Read();
                 Dest = new DetEventoEPECDest();
@@ -690,19 +713,19 @@ namespace Unimake.Business.DFe.Xml.NFe
             linha += $@"<dest>";
 
             linha += $@"<UF>{Dest.UF}</UF>";
-            if(!string.IsNullOrWhiteSpace(Dest.CNPJ))
+            if (!string.IsNullOrWhiteSpace(Dest.CNPJ))
             {
                 linha += $@"<CNPJ>{Dest.CNPJ}</CNPJ>";
             }
-            if(!string.IsNullOrWhiteSpace(Dest.CPF))
+            if (!string.IsNullOrWhiteSpace(Dest.CPF))
             {
                 linha += $@"<CPF>{Dest.CPF}</CPF>";
             }
-            if(!string.IsNullOrWhiteSpace(Dest.IdEstrangeiro))
+            if (!string.IsNullOrWhiteSpace(Dest.IdEstrangeiro))
             {
                 linha += $@"<idEstrangeiro>{Dest.IdEstrangeiro}</idEstrangeiro>";
             }
-            if(!string.IsNullOrWhiteSpace(Dest.IE))
+            if (!string.IsNullOrWhiteSpace(Dest.IE))
             {
                 linha += $@"<IE>{Dest.IE}</IE>";
             }
@@ -790,7 +813,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCompEntregaNFe: EventoDetalhe
+    public class DetEventoCompEntregaNFe : EventoDetalhe
     {
         #region Public Properties
 
@@ -816,7 +839,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => (int)TpAutor;
             set
             {
-                if(value != (int)TipoAutor.EmpresaEmitente)
+                if (value != (int)TipoAutor.EmpresaEmitente)
                 {
                     throw new Exception("Conteúdo da TAG <tpAutor> inválido. Valor aceito 1-Empresa emitente.");
                 }
@@ -895,7 +918,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCancCompEntregaNFe: EventoDetalhe
+    public class DetEventoCancCompEntregaNFe : EventoDetalhe
     {
         #region Public Properties
 
@@ -921,7 +944,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => (int)TpAutor;
             set
             {
-                if(value != (int)TipoAutor.EmpresaEmitente)
+                if (value != (int)TipoAutor.EmpresaEmitente)
                 {
                     throw new Exception("Conteúdo da TAG <tpAutor> inválido. Valor aceito 1-Empresa emitente.");
                 }
@@ -962,7 +985,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoPedidoProrrogPrazoICMS: EventoDetalhe
+    public class DetEventoPedidoProrrogPrazoICMS : EventoDetalhe
     {
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Pedido de Prorrogacao";
@@ -981,7 +1004,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             <descEvento>{DescEvento}</descEvento>
             <nProt>{NProt}</nProt>";
 
-            foreach(var item in ItemPedido)
+            foreach (var item in ItemPedido)
             {
                 linha += $@"<itemPedido numItem=" + "\"" + item.NumItem + "\">";
                 linha += $@"<qtdeItem>{Convert.ToString(item.QtdeItem, CultureInfo.InvariantCulture)}</qtdeItem>";
@@ -990,6 +1013,45 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             writer.WriteRaw(linha);
         }
+
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="itemPedido">Elemento</param>
+        public void AddItemPedido(ItemPedidoProrrogPrazoICMS itemPedido)
+        {
+            if (ItemPedido == null)
+            {
+                ItemPedido = new List<ItemPedidoProrrogPrazoICMS>();
+            }
+
+            ItemPedido.Add(itemPedido);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ItemPedido (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ItemPedido</returns>
+        public ItemPedidoProrrogPrazoICMS GetItemPedido(int index)
+        {
+            if ((ItemPedido?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ItemPedido[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ItemPedido
+        /// </summary>
+        public int GetItemPedidoCount => (ItemPedido != null ? ItemPedido.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -1015,7 +1077,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlRoot(ElementName = "detEvento")]
-    public class DetEventoCancPedidoProrrogPrazoICMS: EventoDetalhe
+    public class DetEventoCancPedidoProrrogPrazoICMS : EventoDetalhe
     {
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento de Pedido de Prorrogacao";

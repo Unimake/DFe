@@ -63,6 +63,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="nfe">Elemento</param>
         public void AddNFe(NFe nfe)
         {
             if (NFe == null)
@@ -72,6 +76,26 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             NFe.Add(nfe);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista NFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da NFe</returns>
+        public NFe GetNFe(int index)
+        {
+            if ((NFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return NFe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista NFe
+        /// </summary>
+        public int GetNFeCount => (NFe != null ? NFe.Count : 0);
 
 #endif
     }
@@ -97,6 +121,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infNFe">Elemento</param>
         public void AddInfNFe(InfNFe infNFe)
         {
             if (InfNFe == null)
@@ -106,6 +134,26 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             InfNFe.Add(infNFe);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfNFe</returns>
+        public InfNFe GetInfNFe(int index)
+        {
+            if ((InfNFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfNFe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfNFe
+        /// </summary>
+        public int GetInfNFeCount => (InfNFe != null ? InfNFe.Count : 0);
 
 #endif
         /// <summary>
@@ -233,6 +281,24 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="autXML">Elemento</param>
+        public void AddAutXml(AutXML autXML)
+        {
+            if (AutXML == null)
+            {
+                AutXML = new List<AutXML>();
+            }
+
+            AutXML.Add(autXML);
+        }
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="det">Elemento</param>
         public void AddDet(Det det)
         {
             if (Det == null)
@@ -242,6 +308,46 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             Det.Add(det);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista AutXML (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
+        public AutXML GetAutXML(int index)
+        {
+            if ((AutXML?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return AutXML[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista AutXML
+        /// </summary>
+        public int GetAutXMLCount => (AutXML != null ? AutXML.Count : 0);
+
+        /// <summary>
+        /// Retorna o elemento da lista Det (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Det</returns>
+        public Det GetDet(int index)
+        {
+            if ((Det?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Det[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Det
+        /// </summary>
+        public int GetDetCount => (Det != null ? Det.Count : 0);
 
 #endif
     }
@@ -435,6 +541,44 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="nFref">Elemento</param>
+        public void AddNFref(NFref nFref)
+        {
+            if (NFref == null)
+            {
+                NFref = new List<NFref>();
+            }
+
+            NFref.Add(nFref);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista NFref (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da NFref</returns>
+        public NFref GetNFref(int index)
+        {
+            if ((NFref?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return NFref[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista NFref
+        /// </summary>
+        public int GetNFrefCount => (NFref != null ? NFref.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -1409,6 +1553,282 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCBarraTrib() => !string.IsNullOrWhiteSpace(CBarraTrib);
 
         #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="nVE">Elemento</param>
+        public void AddNVE(string nVE)
+        {
+            if (NVE == null)
+            {
+                NVE = new List<string>();
+            }
+
+            NVE.Add(nVE);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista NVE (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da NVE</returns>
+        public string GetNVE(int index)
+        {
+            if ((NVE?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return NVE[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista NVE
+        /// </summary>
+        public int GetNVECount => (NVE != null ? NVE.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="di">Elemento</param>
+        public void AddEvento(DI di)
+        {
+            if (DI == null)
+            {
+                DI = new List<DI>();
+            }
+
+            DI.Add(di);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DI (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DI</returns>
+        public DI GetDI(int index)
+        {
+            if ((DI?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DI[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DI
+        /// </summary>
+        public int GetDICount => (DI != null ? DI.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="detExport">Elemento</param>
+        public void AddDetExport(DetExport detExport)
+        {
+            if (DetExport == null)
+            {
+                DetExport = new List<DetExport>();
+            }
+
+            DetExport.Add(detExport);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DetExport (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DetExport</returns>
+        public DetExport GetDetExport(int index)
+        {
+            if ((DetExport?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DetExport[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DetExport
+        /// </summary>
+        public int GetDetExportCount => (DetExport != null ? DetExport.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="rastro">Elemento</param>
+        public void AddRastro(Rastro rastro)
+        {
+            if (Rastro == null)
+            {
+                Rastro = new List<Rastro>();
+            }
+
+            Rastro.Add(rastro);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Rastro (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Rastro</returns>
+        public Rastro GetRastro(int index)
+        {
+            if ((Rastro?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Rastro[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Rastro
+        /// </summary>
+        public int GetRastroCount => (Rastro != null ? Rastro.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="arma">Elemento</param>
+        public void AddArma(Arma arma)
+        {
+            if (Arma == null)
+            {
+                Arma = new List<Arma>();
+            }
+
+            Arma.Add(arma);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Arma (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Arma</returns>
+        public Arma GetArma(int index)
+        {
+            if ((Arma?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Arma[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Arma
+        /// </summary>
+        public int GetArmaCount => (Arma != null ? Arma.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="comb">Elemento</param>
+        public void AddComb(Comb comb)
+        {
+            if (Comb == null)
+            {
+                Comb = new List<Comb>();
+            }
+
+            Comb.Add(comb);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Comb (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Comb</returns>
+        public Comb GetComb(int index)
+        {
+            if ((Comb?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Comb[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Comb
+        /// </summary>
+        public int GetCombCount => (Comb != null ? Comb.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="med">Elemento</param>
+        public void AddMed(Med med)
+        {
+            if (Med == null)
+            {
+                Med = new List<Med>();
+            }
+
+            Med.Add(med);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Med (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Med</returns>
+        public Med GetMed(int index)
+        {
+            if ((Med?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Med[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Med
+        /// </summary>
+        public int GetMedCount => (Med != null ? Med.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="veicProd">Elemento</param>
+        public void AddVeicProd(VeicProd veicProd)
+        {
+            if (VeicProd == null)
+            {
+                VeicProd = new List<VeicProd>();
+            }
+
+            VeicProd.Add(veicProd);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista VeicProd (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da VeicProd</returns>
+        public VeicProd GetVeicProd(int index)
+        {
+            if ((VeicProd?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return VeicProd[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista VeicProd
+        /// </summary>
+        public int GetVeicProdCount => (VeicProd != null ? VeicProd.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -1491,6 +1911,44 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeUFTerceiro() => UFTerceiro != null && UFTerceiro != UFBrasil.NaoDefinido;
 
         #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="adi">Elemento</param>
+        public void AddAdi(Adi adi)
+        {
+            if (Adi == null)
+            {
+                Adi = new List<Adi>();
+            }
+
+            Adi.Add(adi);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Adi (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Adi</returns>
+        public Adi GetAdi(int index)
+        {
+            if ((Adi?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Adi[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Adi
+        /// </summary>
+        public int GetAdiCount => (Adi != null ? Adi.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -2059,6 +2517,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="icms">Elemento</param>
         public void AddICMS(ICMS icms)
         {
             if (ICMS == null)
@@ -2068,6 +2530,94 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             ICMS.Add(icms);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista ICMS (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ICMS</returns>
+        public ICMS GetICMS(int index)
+        {
+            if ((ICMS?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ICMS[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ICMS
+        /// </summary>
+        public int GetICMSCount => (ICMS != null ? ICMS.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="ii">Elemento</param>
+        public void AddII(II ii)
+        {
+            if (II == null)
+            {
+                II = new List<II>();
+            }
+
+            II.Add(ii);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista II (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da II</returns>
+        public II GetII(int index)
+        {
+            if ((II?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return II[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista II
+        /// </summary>
+        public int GetIICount => (II != null ? II.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="issQN">Elemento</param>
+        public void AddISSQN(ISSQN issQN)
+        {
+            if (ISSQN == null)
+            {
+                ISSQN = new List<ISSQN>();
+            }
+
+            ISSQN.Add(issQN);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ISSQN (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ISSQN</returns>
+        public ISSQN GetISSQN(int index)
+        {
+            if ((ISSQN?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ISSQN[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ISSQN
+        /// </summary>
+        public int GetISSQNCount => (ISSQN != null ? ISSQN.Count : 0);
 
 #endif
 
@@ -6287,6 +6837,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="reboque">Elemento</param>
         public void AddReboque(Reboque reboque)
         {
             if (Reboque == null)
@@ -6297,6 +6851,30 @@ namespace Unimake.Business.DFe.Xml.NFe
             Reboque.Add(reboque);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista Reboque (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Reboque</returns>
+        public Reboque GetReboque(int index)
+        {
+            if ((Reboque?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Reboque[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Reboque
+        /// </summary>
+        public int GetReboqueCount => (Reboque != null ? Reboque.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="vol">Elemento</param>
         public void AddVol(Vol vol)
         {
             if (Vol == null)
@@ -6306,6 +6884,26 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             Vol.Add(vol);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Vol (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Vol</returns>
+        public Vol GetVol(int index)
+        {
+            if ((Vol?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Vol[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Vol
+        /// </summary>
+        public int GetVolCount => (Vol != null ? Vol.Count : 0);
 
 #endif
     }
@@ -6543,6 +7141,43 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #endregion
 
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="lacres">Elemento</param>
+        public void AddLacres(Lacres lacres)
+        {
+            if (Lacres == null)
+            {
+                Lacres = new List<Lacres>();
+            }
+
+            Lacres.Add(lacres);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Lacres (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Lacres</returns>
+        public Lacres GetLacres(int index)
+        {
+            if ((Lacres?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Lacres[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Lacres
+        /// </summary>
+        public int GetLacresCount => (Lacres != null ? Lacres.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -6575,6 +7210,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="dup">Elemento</param>
+
         public void AddDup(Dup dup)
         {
             if (Dup == null)
@@ -6584,6 +7224,26 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             Dup.Add(dup);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Dup (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Dup</returns>
+        public Dup GetDup(int index)
+        {
+            if ((Dup?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Dup[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Dup
+        /// </summary>
+        public int GetDupCount => (Dup != null ? Dup.Count : 0);
 
 #endif
     }
@@ -6701,6 +7361,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="detPag">Elemento</param>
         public void AddDetPag(DetPag detPag)
         {
             if (DetPag == null)
@@ -6710,6 +7374,26 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             DetPag.Add(detPag);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista DetPag (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DetPag</returns>
+        public DetPag GetDetPag(int index)
+        {
+            if ((DetPag?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DetPag[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DetPag
+        /// </summary>
+        public int GetDetPagCount => (DetPag != null ? DetPag.Count : 0);
 
 #endif
     }
@@ -6863,6 +7547,112 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeInfCpl() => !string.IsNullOrWhiteSpace(InfCpl);
 
         #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="obsCont">Elemento</param>
+        public void AddObsCont(ObsCont obsCont)
+        {
+            if (ObsCont == null)
+            {
+                ObsCont = new List<ObsCont>();
+            }
+
+            ObsCont.Add(obsCont);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ObsCont (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
+        public ObsCont GetObsCont(int index)
+        {
+            if ((ObsCont?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ObsCont[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ObsCont
+        /// </summary>
+        public int GetObsContCount => (ObsCont != null ? ObsCont.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="obsFisco">Elemento</param>
+        public void AddObsFisco(ObsFisco obsFisco)
+        {
+            if (ObsFisco == null)
+            {
+                ObsFisco = new List<ObsFisco>();
+            }
+
+            ObsFisco.Add(obsFisco);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ObsFisco (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
+        public ObsFisco GetObsFisco(int index)
+        {
+            if ((ObsFisco?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ObsFisco[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ObsFisco
+        /// </summary>
+        public int GetObsFiscoCount => (ObsFisco != null ? ObsFisco.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="procRef">Elemento</param>
+        public void AddProcRef(ProcRef procRef)
+        {
+            if (ProcRef == null)
+            {
+                ProcRef = new List<ProcRef>();
+            }
+
+            ProcRef.Add(procRef);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ProcRef (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProcRef</returns>
+        public ProcRef GetProcRef(int index)
+        {
+            if ((ProcRef?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProcRef[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ProcRef
+        /// </summary>
+        public int GetProcRefCount => (ProcRef != null ? ProcRef.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -7085,6 +7875,78 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VLiqFor.ToString("F2", CultureInfo.InvariantCulture);
             set => VLiqFor = Converter.ToDouble(value);
         }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="forDia">Elemento</param>
+        public void AddForDia(ForDia forDia)
+        {
+            if (ForDia == null)
+            {
+                ForDia = new List<ForDia>();
+            }
+
+            ForDia.Add(forDia);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ForDia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ForDia</returns>
+        public ForDia GetForDia(int index)
+        {
+            if ((ForDia?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ForDia[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ForDia
+        /// </summary>
+        public int GetForDiaCount => (ForDia != null ? ForDia.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="deduc">Elemento</param>
+        public void AddDeduc(Deduc deduc)
+        {
+            if (Deduc == null)
+            {
+                Deduc = new List<Deduc>();
+            }
+
+            Deduc.Add(deduc);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Deduc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Deduc</returns>
+        public Deduc GetDeduc(int index)
+        {
+            if ((Deduc?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Deduc[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Deduc
+        /// </summary>
+        public int GetDeducCount => (Deduc != null ? Deduc.Count : 0);
+
+#endif
     }
 
 #if INTEROP
