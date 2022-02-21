@@ -91,8 +91,8 @@
       <TagAtributoID>infNFe</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
-      <UrlQrCodeHomologacao>https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
-      <UrlQrCodeProducao>https://nfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>
+      <UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>
       <UrlChaveHomologacao>http://hnfce.fazenda.mg.gov.br/portalnfce</UrlChaveHomologacao>
       <UrlChaveProducao>http://nfce.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
     </Autorizacao>
