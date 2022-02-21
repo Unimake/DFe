@@ -150,8 +150,32 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
         public void AddCondutor(CondutorMDFe item) =>
             (Condutor ?? (Condutor = new List<CondutorMDFe>())).Add(item ?? throw new ArgumentNullException(nameof(item)));
+
+        /// <summary>
+        /// Retorna o elemento da lista Condutor (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Condutor</returns>
+        public CondutorMDFe GetCondutor(int index)
+        {
+            if ((Condutor?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Condutor[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Condutor
+        /// </summary>
+        public int GetCondutorCount => (Condutor != null ? Condutor.Count : 0);
 
 #endif
 
@@ -316,8 +340,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #region Public Methods
 
 #if INTEROP
-
-        [System.Runtime.InteropServices.ComVisible(true)]
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
         public void AddInfDoc(InfDoc item)
         {
             if (InfDoc == null)
@@ -327,6 +353,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             InfDoc.Add(item);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfDoc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfDoc</returns>
+        public InfDoc GetInfDoc(int index)
+        {
+            if ((InfDoc?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfDoc[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfDoc
+        /// </summary>
+        public int GetInfDocCount => (InfDoc != null ? InfDoc.Count : 0);
+
 
 #endif
 
@@ -1089,7 +1136,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
-        [System.Runtime.InteropServices.ComVisible(true)]
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infPag">Elemento</param>
         public void AddInfPag(PagtoOperMDFeInfPag infPag)
         {
             if (InfPag == null)
@@ -1099,6 +1149,26 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             InfPag.Add(infPag);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfPag (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfPag</returns>
+        public PagtoOperMDFeInfPag GetInfPag(int index)
+        {
+            if ((InfPag?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfPag[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfPag
+        /// </summary>
+        public int GetInfPagCount => (InfPag != null ? InfPag.Count : 0);
 
 #endif
 
@@ -1171,7 +1241,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
-        [System.Runtime.InteropServices.ComVisible(true)]
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="comp">Elemento</param>
         public void AddComp(Comp comp)
         {
             if (Comp == null)
@@ -1182,7 +1255,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Comp.Add(comp);
         }
 
-        [System.Runtime.InteropServices.ComVisible(true)]
+        /// <summary>
+        /// Retorna o elemento da lista Comp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
+        public Comp GetComp(int index)
+        {
+            if ((Comp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Comp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Comp
+        /// </summary>
+        public int GetCompCount => (Comp != null ? Comp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infPrazo">Elemento</param>
         public void AddInfPrazo(InfPrazo infPrazo)
         {
             if (InfPrazo == null)
@@ -1192,6 +1288,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             InfPrazo.Add(infPrazo);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfPrazo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfPrazo</returns>
+        public InfPrazo GetInfPrazo(int index)
+        {
+            if ((InfPrazo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfPrazo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfPrazo
+        /// </summary>
+        public int GetInfPrazoCount => (InfPrazo != null ? InfPrazo.Count : 0);
+
 
 #endif
     }

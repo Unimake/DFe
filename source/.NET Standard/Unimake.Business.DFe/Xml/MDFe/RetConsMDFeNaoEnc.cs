@@ -46,19 +46,29 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("infMDFe")]
         public List<RetConsMDFeNaoEncInfMDFe> InfMDFe { get; set; }
 
-        #region Add (List - Interop)
+#if INTEROP
 
-        public void AddInfMDFe(RetConsMDFeNaoEncInfMDFe infMDFe)
+        /// <summary>
+        /// Retorna o elemento da lista InfMDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfMDFe</returns>
+        public RetConsMDFeNaoEncInfMDFe GetInfMDFe(int index)
         {
-            if(InfMDFe == null)
+            if ((InfMDFe?.Count ?? 0) == 0)
             {
-                InfMDFe = new List<RetConsMDFeNaoEncInfMDFe>();
-            }
+                return default;
+            };
 
-            InfMDFe.Add(infMDFe);
+            return InfMDFe[index];
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfMDFe
+        /// </summary>
+        public int GetInfMDFeCount => (InfMDFe != null ? InfMDFe.Count : 0);
+
+#endif
     }
 
 #if INTEROP

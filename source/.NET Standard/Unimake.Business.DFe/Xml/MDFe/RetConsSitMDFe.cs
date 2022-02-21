@@ -48,5 +48,28 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement("procEventoMDFe")]
         public List<ProcEventoMDFe> ProcEventoMDFe { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista ProcEventoMDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProcEventoMDFe</returns>
+        public ProcEventoMDFe GetProcEventoMDFe(int index)
+        {
+            if ((ProcEventoMDFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProcEventoMDFe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ProcEventoMDFe
+        /// </summary>
+        public int GetProcEventoMDFeCount => (ProcEventoMDFe != null ? ProcEventoMDFe.Count : 0);
+#endif
     }
 }
