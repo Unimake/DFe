@@ -286,7 +286,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             var schemaArquivo = string.Empty;
             var schemaArquivoEspecifico = string.Empty;
 
-            if(Configuracoes.SchemasEspecificos.Count > 0)
+            if (Configuracoes.SchemasEspecificos.Count > 0)
             {
                 var modal = (int)xml.InfMDFe.Ide.Modal;
 
@@ -303,28 +303,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             #region Validar a parte específica de modal do MDFe
 
             var xmlEspecifico = new XmlDocument();
-            switch(xml.InfMDFe.Ide.Modal)
+            foreach (XmlElement item in ConteudoXMLAssinado.GetElementsByTagName("infModal"))
             {
-                case ModalidadeTransporteMDFe.Rodoviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Rodo>(xml.InfMDFe.InfModal.Rodo).OuterXml);
-                    goto default;
-
-                case ModalidadeTransporteMDFe.Aereo:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aereo>(xml.InfMDFe.InfModal.Aereo).OuterXml);
-                    goto default;
-
-                case ModalidadeTransporteMDFe.Aquaviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Aquav>(xml.InfMDFe.InfModal.Aquav).OuterXml);
-                    goto default;
-
-                case ModalidadeTransporteMDFe.Ferroviario:
-                    xmlEspecifico.LoadXml(XMLUtility.Serializar<Ferrov>(xml.InfMDFe.InfModal.Ferrov).OuterXml);
-                    goto default;
-
-                default:
-                    ValidarXMLMDFe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
-                    break;
+                xmlEspecifico.LoadXml(item.InnerXml);
             }
+            ValidarXMLMDFe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
 
             #endregion Validar a parte específica de modal do MDFe
         }
