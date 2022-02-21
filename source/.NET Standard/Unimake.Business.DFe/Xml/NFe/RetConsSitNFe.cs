@@ -61,5 +61,29 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("procEventoNFe")]
         public List<ProcEventoNFe> ProcEventoNFe { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista ProcEventoNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProcEventoNFe</returns>
+        public ProcEventoNFe GetProcEventoNFe(int index)
+        {
+            if ((ProcEventoNFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProcEventoNFe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ProcEventoNFe
+        /// </summary>
+        public int GetProcEventoNFeCount => (ProcEventoNFe != null ? ProcEventoNFe.Count : 0);
+
+#endif
     }
 }
