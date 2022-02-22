@@ -57,16 +57,6 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Methods
 
-        public void AddProcEventoCTe(ProcEventoCTe procEventoCTe)
-        {
-            if(ProcEventoCTe == null)
-            {
-                ProcEventoCTe = new List<ProcEventoCTe>();
-            }
-
-            ProcEventoCTe.Add(procEventoCTe);
-        }
-
         public override void ReadXml(XmlDocument document)
         {
             base.ReadXml(document);
@@ -86,5 +76,29 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         #endregion Public Methods
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista ProcEventoCTe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProcEventoCTe</returns>
+        public ProcEventoCTe GetProcEventoCTe(int index)
+        {
+            if ((ProcEventoCTe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProcEventoCTe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ProcEventoCTe
+        /// </summary>
+        public int GetProcEventoCTeCount => (ProcEventoCTe != null ? ProcEventoCTe.Count : 0);
+
+#endif
     }
 }

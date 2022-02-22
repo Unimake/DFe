@@ -64,6 +64,30 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         [XmlElement("docZip")]
         public List<DocZip> DocZip { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista DocZip (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DocZip</returns>
+        public DocZip GetDocZip(int index)
+        {
+            if ((DocZip?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DocZip[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DocZip
+        /// </summary>
+        public int GetDocZipCount => (DocZip != null ? DocZip.Count : 0);
+
+#endif
     }
 
 #if INTEROP
