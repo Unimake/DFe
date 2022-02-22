@@ -68,6 +68,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string PDFGuias { get; set; }
 
 #if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="guia">Elemento</param>
         public void AddGuia(Guia guia)
         {
             if(Guia == null)
@@ -77,6 +82,27 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
             Guia.Add(guia);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Guia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Guia</returns>
+        public Guia GetGuia(int index)
+        {
+            if ((Guia?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Guia[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Guia
+        /// </summary>
+        public int GetGuiaCount => (Guia != null ? Guia.Count : 0);
+
 #endif
     }
 
@@ -121,6 +147,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public List<Motivo> Motivo { get; set; }
 
 #if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="motivo">Elemento</param>
         public void AddMotivo(Motivo motivo)
         {
             if(Motivo == null)
@@ -130,6 +161,27 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
             Motivo.Add(motivo);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Motivo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Motivo</returns>
+        public Motivo GetMotivo(int index)
+        {
+            if ((Motivo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Motivo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Motivo
+        /// </summary>
+        public int GetMotivoCount => (Motivo != null ? Motivo.Count : 0);
+
 #endif
     }
 

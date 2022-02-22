@@ -41,8 +41,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public List<TDadosGNRE> TDadosGNRE { get; set; }
 
 #if INTEROP
-        #region Add - Interop
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="tdadosGNRE">Elemento</param>
         public void AddTDadosGNRE(TDadosGNRE tdadosGNRE)
         {
             if(TDadosGNRE == null)
@@ -53,7 +56,26 @@ namespace Unimake.Business.DFe.Xml.GNRE
             TDadosGNRE.Add(tdadosGNRE);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista TDadosGNRE (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TDadosGNRE</returns>
+        public TDadosGNRE GetTDadosGNRE(int index)
+        {
+            if ((TDadosGNRE?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TDadosGNRE[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TDadosGNRE
+        /// </summary>
+        public int GetTDadosGNRECount => (TDadosGNRE != null ? TDadosGNRE.Count : 0);
+
 #endif
     }
 
@@ -185,8 +207,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public List<Item> Item { get; set; }
 
 #if INTEROP
-        #region Add - Interop
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
         public void AddItem(Item item)
         {
             if(Item == null)
@@ -197,7 +222,26 @@ namespace Unimake.Business.DFe.Xml.GNRE
             Item.Add(item);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Item (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Item</returns>
+        public Item GetItem(int index)
+        {
+            if ((Item?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Item[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Item
+        /// </summary>
+        public int GetItemCount => (Item != null ? Item.Count : 0);
+
 #endif
     }
 
@@ -248,8 +292,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public CamposExtras CamposExtras { get; set; }
 
 #if INTEROP
-        #region Add - Interop
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="valor">Elemento</param>
         public void AddValor(Valor valor)
         {
             if(Valor == null)
@@ -260,7 +307,26 @@ namespace Unimake.Business.DFe.Xml.GNRE
             Valor.Add(valor);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Valor (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Valor</returns>
+        public Valor GetValor(int index)
+        {
+            if ((Valor?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Valor[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Valor
+        /// </summary>
+        public int GetValorCount => (Valor != null ? Valor.Count : 0);
+
 #endif
 
         #region ShouldSerialize
@@ -422,8 +488,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public List<CampoExtra> CampoExtra { get; set; }
 
 #if INTEROP
-        #region Add - Interop
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="campoExtra">Elemento</param>
         public void AddCampoExtra(CampoExtra campoExtra)
         {
             if(CampoExtra == null)
@@ -434,7 +503,26 @@ namespace Unimake.Business.DFe.Xml.GNRE
             CampoExtra.Add(campoExtra);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista CampoExtra (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da CampoExtra</returns>
+        public CampoExtra GetCampoExtra(int index)
+        {
+            if ((CampoExtra?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return CampoExtra[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista CampoExtra
+        /// </summary>
+        public int GetCampoExtraCount => (CampoExtra != null ? CampoExtra.Count : 0);
+
 #endif
     }
 

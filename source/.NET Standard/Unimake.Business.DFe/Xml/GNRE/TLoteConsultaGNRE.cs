@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -30,15 +29,41 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public List<Consulta> Consulta { get; set; }
 
 #if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="consulta">Elemento</param>
         public void AddConsulta(Consulta consulta)
         {
-            if(Consulta == null)
+            if (Consulta == null)
             {
                 Consulta = new List<Consulta>();
             }
 
             Consulta.Add(consulta);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Consulta (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Consulta</returns>
+        public Consulta GetConsulta(int index)
+        {
+            if ((Consulta?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Consulta[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Consulta
+        /// </summary>
+        public int GetConsultaCount => (Consulta != null ? Consulta.Count : 0);
+
 #endif
     }
 

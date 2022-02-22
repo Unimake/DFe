@@ -38,8 +38,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("receitas")]
         public List<Receitas> Receitas { get; set; }
 
-        #region Add - Interop
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="receitas">Elemento</param>
         public void AddReceitas(Receitas receitas)
         {
             if(Receitas == null)
@@ -50,7 +54,27 @@ namespace Unimake.Business.DFe.Xml.GNRE
             Receitas.Add(receitas);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Receitas (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Receitas</returns>
+        public Receitas GetReceitas(int index)
+        {
+            if ((Receitas?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Receitas[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Receitas
+        /// </summary>
+        public int GetReceitasCount => (Receitas != null ? Receitas.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -183,8 +207,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("camposAdicionais ")]
         public List<CamposAdicionais> CamposAdicionais { get; set; }
 
-        #region Add - Interop
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="produtos">Elemento</param>
         public void AddProdutos(Produtos produtos)
         {
             if(Produtos == null)
@@ -195,6 +223,30 @@ namespace Unimake.Business.DFe.Xml.GNRE
             Produtos.Add(produtos);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista Produtos (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Produtos</returns>
+        public Produtos GetProdutos(int index)
+        {
+            if ((Produtos?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Produtos[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Produtos
+        /// </summary>
+        public int GetProdutosCount => (Produtos != null ? Produtos.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="periodosApuracao">Elemento</param>
         public void AddPeriodosApuracao(PeriodosApuracao periodosApuracao)
         {
             if(PeriodosApuracao == null)
@@ -206,6 +258,30 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista PeriodosApuracao (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da PeriodosApuracao</returns>
+        public PeriodosApuracao GetPeriodosApuracao(int index)
+        {
+            if ((PeriodosApuracao?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return PeriodosApuracao[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista PeriodosApuracao
+        /// </summary>
+        public int GetPeriodosApuracaoCount => (PeriodosApuracao != null ? PeriodosApuracao.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="versoesXmlDocOrigem">Elemento</param>
         public void AddVersoesXmlDocOrigem(VersoesXmlDocOrigem versoesXmlDocOrigem)
         {
             if(VersoesXmlDocOrigem == null)
@@ -216,6 +292,30 @@ namespace Unimake.Business.DFe.Xml.GNRE
             VersoesXmlDocOrigem.Add(versoesXmlDocOrigem);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista VersoesXmlDocOrigem (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da VersoesXmlDocOrigem</returns>
+        public VersoesXmlDocOrigem GetVersoesXmlDocOrigem(int index)
+        {
+            if ((VersoesXmlDocOrigem?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return VersoesXmlDocOrigem[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista VersoesXmlDocOrigem
+        /// </summary>
+        public int GetVersoesXmlDocOrigemCount => (VersoesXmlDocOrigem != null ? VersoesXmlDocOrigem.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="camposAdicionais">Elemento</param>
         public void AddCamposAdicionais(CamposAdicionais camposAdicionais)
         {
             if(CamposAdicionais == null)
@@ -226,7 +326,27 @@ namespace Unimake.Business.DFe.Xml.GNRE
             CamposAdicionais.Add(camposAdicionais);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista CamposAdicionais (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da CamposAdicionais</returns>
+        public CamposAdicionais GetCamposAdicionais(int index)
+        {
+            if ((CamposAdicionais?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return CamposAdicionais[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista CamposAdicionais
+        /// </summary>
+        public int GetCamposAdicionaisCount => (CamposAdicionais != null ? CamposAdicionais.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -394,8 +514,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("tipoDocumentoOrigem")]
         public List<TipoDocumentoOrigem> TipoDocumentoOrigem { get; set; }
 
-        #region Add - Interop
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="tipoDocumentoOrigem">Elemento</param>
         public void AddPeriodosApuracao(TipoDocumentoOrigem tipoDocumentoOrigem)
         {
             if(TipoDocumentoOrigem == null)
@@ -404,10 +528,29 @@ namespace Unimake.Business.DFe.Xml.GNRE
             }
 
             TipoDocumentoOrigem.Add(tipoDocumentoOrigem);
-
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista TipoDocumentoOrigem (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TipoDocumentoOrigem</returns>
+        public TipoDocumentoOrigem GetTipoDocumentoOrigem(int index)
+        {
+            if ((TipoDocumentoOrigem?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TipoDocumentoOrigem[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TipoDocumentoOrigem
+        /// </summary>
+        public int GetTipoDocumentoOrigemCount => (TipoDocumentoOrigem != null ? TipoDocumentoOrigem.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -560,8 +703,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("versoesXmlCampoAdicional")]
         public List<VersoesXmlCampoAdicional> VersoesXmlCampoAdicional { get; set; }
 
-        #region Add - Interop
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="versoesXmlCampoAdicional">Elemento</param>
         public void AddVersoesXmlCampoAdicional(VersoesXmlCampoAdicional versoesXmlCampoAdicional)
         {
             if(VersoesXmlCampoAdicional == null)
@@ -572,7 +719,27 @@ namespace Unimake.Business.DFe.Xml.GNRE
             VersoesXmlCampoAdicional.Add(versoesXmlCampoAdicional);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista VersoesXmlCampoAdicional (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da VersoesXmlCampoAdicional</returns>
+        public VersoesXmlCampoAdicional GetVersoesXmlCampoAdicional(int index)
+        {
+            if ((VersoesXmlCampoAdicional?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return VersoesXmlCampoAdicional[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista VersoesXmlCampoAdicional
+        /// </summary>
+        public int GetVersoesXmlCampoAdicionalCount => (VersoesXmlCampoAdicional != null ? VersoesXmlCampoAdicional.Count : 0);
+
+#endif
     }
 
 #if INTEROP
