@@ -169,10 +169,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => throw new Exception("Não é permitido atribuir valor para a propriedade Chave. Ela é calculada automaticamente.");
         }
 
-        #region Add (List - Interop)
-
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="autxml">Elemento</param>
         public void AddAutXML(AutXML autxml)
         {
             if (AutXML == null)
@@ -183,6 +185,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             AutXML.Add(autxml);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista AutXML (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
+        public AutXML GetAutXML(int index)
+        {
+            if ((AutXML?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return AutXML[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista AutXML
+        /// </summary>
+        public int GetAutXMLCount => (AutXML != null ? AutXML.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="seg">Elemento</param>
         public void AddSeg(Seg seg)
         {
             if (Seg == null)
@@ -193,6 +219,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Seg.Add(seg);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista Seg (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Seg</returns>
+        public Seg GetSeg(int index)
+        {
+            if ((Seg?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Seg[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Seg
+        /// </summary>
+        public int GetSegCount => (Seg != null ? Seg.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="lacre">Elemento</param>
         public void AddLacres(Lacre lacre)
         {
             if (Lacres == null)
@@ -203,9 +253,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Lacres.Add(lacre);
         }
 
-#endif
+        /// <summary>
+        /// Retorna o elemento da lista Lacres (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Lacres</returns>
+        public Lacre GetLacres(int index)
+        {
+            if ((Lacres?.Count ?? 0) == 0)
+            {
+                return default;
+            };
 
-        #endregion
+            return Lacres[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Lacres
+        /// </summary>
+        public int GetLacresCount => (Lacres != null ? Lacres.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -370,10 +438,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
-
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infmuncarrega">Elemento</param>
         public void AddInfMunCarrega(InfMunCarrega infmuncarrega)
         {
             if (InfMunCarrega == null)
@@ -384,6 +454,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfMunCarrega.Add(infmuncarrega);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfMunCarrega (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfMunCarrega</returns>
+        public InfMunCarrega GetInfMunCarrega(int index)
+        {
+            if ((InfMunCarrega?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfMunCarrega[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfMunCarrega
+        /// </summary>
+        public int GetInfMunCarregaCount => (InfMunCarrega != null ? InfMunCarrega.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infpercurso">Elemento</param>
         public void AddInfPercurso(InfPercurso infpercurso)
         {
             if (InfPercurso == null)
@@ -394,9 +488,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfPercurso.Add(infpercurso);
         }
 
-#endif
+        /// <summary>
+        /// Retorna o elemento da lista InfPercurso (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfPercurso</returns>
+        public InfPercurso GetInfPercurso(int index)
+        {
+            if ((InfPercurso?.Count ?? 0) == 0)
+            {
+                return default;
+            };
 
-        #endregion
+            return InfPercurso[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfPercurso
+        /// </summary>
+        public int GetInfPercursoCount => (InfPercurso != null ? InfPercurso.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -567,8 +679,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("lacRodo")]
         public List<LacRodo> LacRodo { get; set; }
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="veicreboque">Elemento</param>
         public void AddVeicReboque(VeicReboque veicreboque)
         {
             if (VeicReboque == null)
@@ -579,6 +695,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             VeicReboque.Add(veicreboque);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista VeicReboque (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da VeicReboque</returns>
+        public VeicReboque GetVeicReboque(int index)
+        {
+            if ((VeicReboque?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return VeicReboque[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista VeicReboque
+        /// </summary>
+        public int GetVeicReboqueCount => (VeicReboque != null ? VeicReboque.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="lacrodo">Elemento</param>
         public void AddLacRodo(LacRodo lacrodo)
         {
             if (LacRodo == null)
@@ -589,7 +729,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             LacRodo.Add(lacrodo);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista LacRodo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da LacRodo</returns>
+        public LacRodo GetLacRodo(int index)
+        {
+            if ((LacRodo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return LacRodo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista LacRodo
+        /// </summary>
+        public int GetLacRodoCount => (LacRodo != null ? LacRodo.Count : 0);
+
+#endif
 
         #region ShouldSerialize
 
@@ -626,6 +786,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infciot">Elemento</param>
         public void AddInfCIOT(InfCIOT infciot)
         {
             if (InfCIOT == null)
@@ -636,6 +800,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfCIOT.Add(infciot);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfCIOT (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfCIOT</returns>
+        public InfCIOT GetInfCIOT(int index)
+        {
+            if ((InfCIOT?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfCIOT[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfCIOT
+        /// </summary>
+        public int GetInfCIOTCount => (InfCIOT != null ? InfCIOT.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="valeped">Elemento</param>
         public void AdValePed(ValePed valeped)
         {
             if (ValePed == null)
@@ -646,6 +834,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             ValePed.Add(valeped);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista ValePed (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ValePed</returns>
+        public ValePed GetValePed(int index)
+        {
+            if ((ValePed?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ValePed[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ValePed
+        /// </summary>
+        public int GetValePedCount => (ValePed != null ? ValePed.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infcontratante">Elemento</param>
         public void AddInfContratante(InfContratante infcontratante)
         {
             if (InfContratante == null)
@@ -656,6 +868,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfContratante.Add(infcontratante);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfContratante (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfContratante</returns>
+        public InfContratante GetInfContratante(int index)
+        {
+            if ((InfContratante?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfContratante[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfContratante
+        /// </summary>
+        public int GetInfContratanteCount => (InfContratante != null ? InfContratante.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infpag">Elemento</param>
         public void AddInfPag(InfPag infpag)
         {
             if (InfPag == null)
@@ -665,6 +901,26 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             InfPag.Add(infpag);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfPag (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfPag</returns>
+        public InfPag GetInfPag(int index)
+        {
+            if ((InfPag?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfPag[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfPag
+        /// </summary>
+        public int GetInfPagCount => (InfPag != null ? InfPag.Count : 0);
 
 #endif
 
@@ -726,10 +982,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
-
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="disp">Elemento</param>
         public void AddDisp(Disp disp)
         {
             if (Disp == null)
@@ -740,9 +998,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Disp.Add(disp);
         }
 
-#endif
+        /// <summary>
+        /// Retorna o elemento da lista Disp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Disp</returns>
+        public Disp GetDisp(int index)
+        {
+            if ((Disp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
 
-        #endregion
+            return Disp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Disp
+        /// </summary>
+        public int GetDispCount => (Disp != null ? Disp.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -904,8 +1180,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion
 
 #if INTEROP
-        #region Add (List - Interop)
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="comp">Elemento</param>
         public void AddComp(Comp comp)
         {
             if (Comp == null)
@@ -916,6 +1195,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Comp.Add(comp);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista Comp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
+        public Comp GetComp(int index)
+        {
+            if ((Comp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Comp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Comp
+        /// </summary>
+        public int GetCompCount => (Comp != null ? Comp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infprazo">Elemento</param>
         public void AddInfPrazo(InfPrazo infprazo)
         {
             if (InfPrazo == null)
@@ -926,7 +1229,26 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfPrazo.Add(infprazo);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista InfPrazo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfPrazo</returns>
+        public InfPrazo GetInfPrazo(int index)
+        {
+            if ((InfPrazo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfPrazo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfPrazo
+        /// </summary>
+        public int GetInfPrazoCount => (InfPrazo != null ? InfPrazo.Count : 0);
+
 #endif
     }
 
@@ -1077,8 +1399,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="condutor">Elemento</param>
         public void AddCondutor(Condutor condutor)
         {
             if (Condutor == null)
@@ -1089,7 +1413,25 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Condutor.Add(condutor);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Condutor (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Condutor</returns>
+        public Condutor GetCondutor(int index)
+        {
+            if ((Condutor?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Condutor[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Condutor
+        /// </summary>
+        public int GetCondutorCount => (Condutor != null ? Condutor.Count : 0);
 
 #endif
 
@@ -1259,6 +1601,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region Add (List - Interop)
 
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="vag">Elemento</param>
         public void AddVag(Vag vag)
         {
             if (Vag == null)
@@ -1268,6 +1616,29 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             Vag.Add(vag);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Vag (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Vag</returns>
+        public Vag GetVag(int index)
+        {
+            if ((Vag?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Vag[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Vag
+        /// </summary>
+        public int GetVagCount => (Vag != null ? Vag.Count : 0);
+
+
+#endif
 
         #endregion
     }
@@ -1456,8 +1827,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public List<InfUnidTranspVazia> InfUnidTranspVazia { get; set; }
 
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infTermCarreg">Elemento</param>
         public void AddInfTermCarreg(InfTermCarreg infTermCarreg)
         {
             if (InfTermCarreg == null)
@@ -1468,6 +1843,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfTermCarreg.Add(infTermCarreg);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfTermCarreg (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfTermCarreg</returns>
+        public InfTermCarreg GetInfTermCarreg(int index)
+        {
+            if ((InfTermCarreg?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfTermCarreg[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfTermCarreg
+        /// </summary>
+        public int GetInfTermCarregCount => (InfTermCarreg != null ? InfTermCarreg.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infTermDescarreg">Elemento</param>
         public void AddInfTermDescarreg(InfTermDescarreg infTermDescarreg)
         {
             if (InfTermDescarreg == null)
@@ -1478,6 +1877,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfTermDescarreg.Add(infTermDescarreg);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfTermDescarreg (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfTermDescarreg</returns>
+        public InfTermDescarreg GetInfTermDescarreg(int index)
+        {
+            if ((InfTermDescarreg?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfTermDescarreg[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfTermDescarreg
+        /// </summary>
+        public int GetInfTermDescarregCount => (InfTermDescarreg != null ? InfTermDescarreg.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infEmbComb">Elemento</param>
         public void AddInfEmbComb(InfEmbComb infEmbComb)
         {
             if (InfEmbComb == null)
@@ -1488,6 +1911,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfEmbComb.Add(infEmbComb);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfEmbComb (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfEmbComb</returns>
+        public InfEmbComb GetInfEmbComb(int index)
+        {
+            if ((InfEmbComb?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfEmbComb[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfEmbComb
+        /// </summary>
+        public int GetInfEmbCombCount => (InfEmbComb != null ? InfEmbComb.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidCargaVazia">Elemento</param>
         public void AddInfUnidCargaVazia(InfUnidCargaVazia infUnidCargaVazia)
         {
             if (InfUnidCargaVazia == null)
@@ -1498,6 +1945,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfUnidCargaVazia.Add(infUnidCargaVazia);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidCargaVazia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidCargaVazia</returns>
+        public InfUnidCargaVazia GetInfUnidCargaVazia(int index)
+        {
+            if ((InfUnidCargaVazia?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidCargaVazia[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidCargaVazia
+        /// </summary>
+        public int GetInfUnidCargaVaziaCount => (InfUnidCargaVazia != null ? InfUnidCargaVazia.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidTranspVazia">Elemento</param>
         public void AddInfUnidTranspVazia(InfUnidTranspVazia infUnidTranspVazia)
         {
             if (InfUnidTranspVazia == null)
@@ -1508,7 +1979,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfUnidTranspVazia.Add(infUnidTranspVazia);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidTranspVazia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidTranspVazia</returns>
+        public InfUnidTranspVazia GetInfUnidTranspVazia(int index)
+        {
+            if ((InfUnidTranspVazia?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidTranspVazia[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidTranspVazia
+        /// </summary>
+        public int GetInfUnidTranspVaziaCount => (InfUnidTranspVazia != null ? InfUnidTranspVazia.Count : 0);
+
+#endif
 
         #region ShouldSerialize
 
@@ -1628,6 +2119,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infmundescarga">Elemento</param>
         public void AddInfMunDescarga(InfMunDescarga infmundescarga)
         {
             if (InfMunDescarga == null)
@@ -1637,6 +2132,26 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             InfMunDescarga.Add(infmundescarga);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfMunDescarga (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfMunDescarga</returns>
+        public InfMunDescarga GetInfMunDescarga(int index)
+        {
+            if ((InfMunDescarga?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfMunDescarga[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfMunDescarga
+        /// </summary>
+        public int GetInfMunDescargaCount => (InfMunDescarga != null ? InfMunDescarga.Count : 0);
 
 #endif
 
@@ -1671,6 +2186,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
 #if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infMDFeTransp">Elemento</param>
         public void AddInfMDFeTransp(InfMunDescargaInfMDFeTransp infMDFeTransp)
         {
             if (InfMDFeTransp == null)
@@ -1681,6 +2200,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfMDFeTransp.Add(infMDFeTransp);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfMDFeTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfMDFeTransp</returns>
+        public InfMunDescargaInfMDFeTransp GetInfMDFeTransp(int index)
+        {
+            if ((InfMDFeTransp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfMDFeTransp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfMDFeTransp
+        /// </summary>
+        public int GetInfMDFeTranspCount => (InfMDFeTransp != null ? InfMDFeTransp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infNFe">Elemento</param>
         public void AddInfNFe(InfMunDescargaInfNFe infNFe)
         {
             if (InfNFe == null)
@@ -1691,6 +2234,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfNFe.Add(infNFe);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfNFe</returns>
+        public InfMunDescargaInfNFe GetInfNFe(int index)
+        {
+            if ((InfNFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfNFe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfNFe
+        /// </summary>
+        public int GetInfNFeCount => (InfNFe != null ? InfNFe.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infCTe">Elemento</param>
         public void AddInfCTe(InfMunDescargaInfCTe infCTe)
         {
             if (InfCTe == null)
@@ -1700,6 +2267,26 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             InfCTe.Add(infCTe);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfCTe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfCTe</returns>
+        public InfMunDescargaInfCTe GetInfCTe(int index)
+        {
+            if ((InfCTe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfCTe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfCTe
+        /// </summary>
+        public int GetInfCTeCount => (InfCTe != null ? InfCTe.Count : 0);
 
 #endif
 
@@ -1740,8 +2327,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidTransp">Elemento</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
             if (InfUnidTransp == null)
@@ -1752,6 +2343,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfUnidTransp.Add(infUnidTransp);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
+        public InfUnidTransp GetInfUnidTransp(int index)
+        {
+            if ((InfUnidTransp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidTransp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidTransp
+        /// </summary>
+        public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="peri">Elemento</param>
         public void AddPeri(Peri peri)
         {
             if (Peri == null)
@@ -1762,7 +2377,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Peri.Add(peri);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Peri (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Peri</returns>
+        public Peri GetPeri(int index)
+        {
+            if ((Peri?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Peri[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Peri
+        /// </summary>
+        public int GetPeriCount => (Peri != null ? Peri.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -1803,8 +2438,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="lacUnidTransp">Elemento</param>
         public void AddLacUnidTransp(LacUnidTransp lacUnidTransp)
         {
             if (LacUnidTransp == null)
@@ -1815,6 +2454,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             LacUnidTransp.Add(lacUnidTransp);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista LacUnidTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da LacUnidTransp</returns>
+        public LacUnidTransp GetLacUnidTransp(int index)
+        {
+            if ((LacUnidTransp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return LacUnidTransp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista LacUnidTransp
+        /// </summary>
+        public int GetLacUnidTranspCount => (LacUnidTransp != null ? LacUnidTransp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidCarga">Elemento</param>
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
             if (InfUnidCarga == null)
@@ -1825,7 +2488,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfUnidCarga.Add(infUnidCarga);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidCarga (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidCarga</returns>
+        public InfUnidCarga GetInfUnidCarga(int index)
+        {
+            if ((InfUnidCarga?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidCarga[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidCarga
+        /// </summary>
+        public int GetInfUnidCargaCount => (InfUnidCarga != null ? InfUnidCarga.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -1871,8 +2554,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="lacUnidCarga">Elemento</param>
         public void AddLacUnidCarga(LacUnidCarga lacUnidCarga)
         {
             if (LacUnidCarga == null)
@@ -1883,7 +2570,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             LacUnidCarga.Add(lacUnidCarga);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista LacUnidCarga (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da LacUnidCarga</returns>
+        public LacUnidCarga GetLacUnidCarga(int index)
+        {
+            if ((LacUnidCarga?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return LacUnidCarga[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista LacUnidCarga
+        /// </summary>
+        public int GetLacUnidCargaCount => (LacUnidCarga != null ? LacUnidCarga.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -1993,8 +2700,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidTransp">Elemento</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
             if (InfUnidTransp == null)
@@ -2005,6 +2716,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfUnidTransp.Add(infUnidTransp);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
+        public InfUnidTransp GetInfUnidTransp(int index)
+        {
+            if ((InfUnidTransp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidTransp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidTransp
+        /// </summary>
+        public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="peri">Elemento</param>
         public void AddPeri(Peri peri)
         {
             if (Peri == null)
@@ -2015,7 +2750,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Peri.Add(peri);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Peri (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Peri</returns>
+        public Peri GetPeri(int index)
+        {
+            if ((Peri?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Peri[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Peri
+        /// </summary>
+        public int GetPeriCount => (Peri != null ? Peri.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -2049,8 +2804,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #endregion
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidTransp">Elemento</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
             if (InfUnidTransp == null)
@@ -2061,6 +2820,30 @@ namespace Unimake.Business.DFe.Xml.MDFe
             InfUnidTransp.Add(infUnidTransp);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
+        public InfUnidTransp GetInfUnidTransp(int index)
+        {
+            if ((InfUnidTransp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidTransp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidTransp
+        /// </summary>
+        public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="peri">Elemento</param>
         public void AddPeri(Peri peri)
         {
             if (Peri == null)
@@ -2071,7 +2854,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             Peri.Add(peri);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Peri (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Peri</returns>
+        public Peri GetPeri(int index)
+        {
+            if ((Peri?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Peri[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Peri
+        /// </summary>
+        public int GetPeriCount => (Peri != null ? Peri.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -2095,8 +2898,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("nAver")]
         public List<string> NAver { get; set; }
 
-        #region Add (List - Interop)
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="naver">Elemento</param>
         public void AddNAver(string naver)
         {
             if (NAver == null)
@@ -2107,7 +2914,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             NAver.Add(naver);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista NAver (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da NAver</returns>
+        public string GetNAver(int index)
+        {
+            if ((NAver?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return NAver[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista NAver
+        /// </summary>
+        public int GetNAverCount => (NAver != null ? NAver.Count : 0);
+
+#endif
     }
 
 #if INTEROP
