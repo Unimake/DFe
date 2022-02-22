@@ -153,8 +153,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="autxml">Elemento</param>
         public void AddAutXML(AutXML autxml)
         {
             if (AutXML == null)
@@ -165,7 +167,25 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             AutXML.Add(autxml);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista AutXML (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
+        public AutXML GetAutXML(int index)
+        {
+            if ((AutXML?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return AutXML[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista AutXML
+        /// </summary>
+        public int GetAutXMLCount => (AutXML != null ? AutXML.Count : 0);
 
 #endif
     }
@@ -372,8 +392,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infPercurso">Elemento</param>
         public void AddInfPercurso(InfPercurso infPercurso)
         {
             if (InfPercurso == null)
@@ -384,7 +406,26 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             InfPercurso.Add(infPercurso);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista InfPercurso (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfPercurso</returns>
+        public InfPercurso GetInfPercurso(int index)
+        {
+            if ((InfPercurso?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfPercurso[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfPercurso
+        /// </summary>
+        public int GetInfPercursoCount => (InfPercurso != null ? InfPercurso.Count : 0);
+
 #endif
 
         #region ShouldSerialize
@@ -450,8 +491,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="obsCont">Elemento</param>
         public void AddObsCont(ObsCont obsCont)
         {
             if (ObsCont == null)
@@ -462,6 +505,30 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             ObsCont.Add(obsCont);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista ObsCont (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
+        public ObsCont GetObsCont(int index)
+        {
+            if ((ObsCont?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ObsCont[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ObsCont
+        /// </summary>
+        public int GetObsContCount => (ObsCont != null ? ObsCont.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="obsFisco">Elemento</param>
         public void AddObsFisco(ObsFisco obsFisco)
         {
             if (ObsFisco == null)
@@ -472,7 +539,25 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             ObsFisco.Add(obsFisco);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista ObsFisco (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
+        public ObsFisco GetObsFisco(int index)
+        {
+            if ((ObsFisco?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ObsFisco[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ObsFisco
+        /// </summary>
+        public int GetObsFiscoCount => (ObsFisco != null ? ObsFisco.Count : 0);
 
 #endif
 
@@ -740,8 +825,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="comp">Elemento</param>
         public void AddComp(Comp comp)
         {
             if (Comp == null)
@@ -752,7 +839,25 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             Comp.Add(comp);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Comp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
+        public Comp GetComp(int index)
+        {
+            if ((Comp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Comp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Comp
+        /// </summary>
+        public int GetCompCount => (Comp != null ? Comp.Count : 0);
 
 #endif
 
@@ -1305,8 +1410,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infDocRef">Elemento</param>
         public void AddInfDocRef(InfDocRef infDocRef)
         {
             if (InfDocRef == null)
@@ -1317,6 +1424,30 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             InfDocRef.Add(infDocRef);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista InfDocRef (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfDocRef</returns>
+        public InfDocRef GetInfDocRef(int index)
+        {
+            if ((InfDocRef?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfDocRef[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfDocRef
+        /// </summary>
+        public int GetInfDocRefCount => (InfDocRef != null ? InfDocRef.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="seg">Elemento</param>
         public void AddSeg(Seg seg)
         {
             if (Seg == null)
@@ -1327,6 +1458,30 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             Seg.Add(seg);
         }
 
+        /// <summary>
+        /// Retorna o elemento da lista Seg (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Seg</returns>
+        public Seg GetSeg(int index)
+        {
+            if ((Seg?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Seg[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Seg
+        /// </summary>
+        public int GetSegCount => (Seg != null ? Seg.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infGTVe">Elemento</param>
         public void AddInfGTVe(InfGTVe infGTVe)
         {
             if (InfGTVe == null)
@@ -1337,7 +1492,25 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             InfGTVe.Add(infGTVe);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista InfGTVe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfGTVe</returns>
+        public InfGTVe GetInfGTVe(int index)
+        {
+            if ((InfGTVe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfGTVe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfGTVe
+        /// </summary>
+        public int GetInfGTVeCount => (InfGTVe != null ? InfGTVe.Count : 0);
 
 #endif
 
@@ -1579,8 +1752,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="dup">Elemento</param>
         public void AddDup(Dup dup)
         {
             if (Dup == null)
@@ -1591,7 +1766,25 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             Dup.Add(dup);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Dup (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Dup</returns>
+        public Dup GetDup(int index)
+        {
+            if ((Dup?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Dup[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Dup
+        /// </summary>
+        public int GetDupCount => (Dup != null ? Dup.Count : 0);
 
 #endif
     }
@@ -1613,8 +1806,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
 
-        #region Add (List - Interop)
-
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="comp">Elemento</param>
         public void AddComp(InfGTVeComp comp)
         {
             if (Comp == null)
@@ -1625,7 +1820,25 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             Comp.Add(comp);
         }
 
-        #endregion
+        /// <summary>
+        /// Retorna o elemento da lista Comp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
+        public InfGTVeComp GetComp(int index)
+        {
+            if ((Comp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Comp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Comp
+        /// </summary>
+        public int GetCompCount => (Comp != null ? Comp.Count : 0);
 
 #endif
     }
