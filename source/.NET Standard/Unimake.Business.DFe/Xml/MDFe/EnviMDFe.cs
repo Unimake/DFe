@@ -1441,12 +1441,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
         public bool ShouldSerializeCapM3() => CapM3 > 0;
         public bool ShouldSerializeCapKG() => CapKG > 0;
-
-#if INTEROP
-        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
-#else
         public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
-#endif
 
         #endregion
     }
@@ -1556,7 +1551,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement("UF")]
 #if INTEROP
-        public UFBrasil UF { get; set; }
+        public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
 #else
         public UFBrasil? UF { get; set; }
 #endif
