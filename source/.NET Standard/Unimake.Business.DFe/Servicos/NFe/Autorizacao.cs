@@ -105,10 +105,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Efetuar ajustes diversos no XML após o mesmo ter sido assinado.
         /// </summary>
-        protected override void AjustarXMLAposAssinado()
-        {
-            EnviNFe = new EnviNFe().LerXML<EnviNFe>(ConteudoXML);
-        }
+        protected override void AjustarXMLAposAssinado() => EnviNFe = new EnviNFe().LerXML<EnviNFe>(ConteudoXML);
 
         #endregion Protected Methods
 
@@ -255,6 +252,26 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
+#if INTEROP
+
+        /// <summary>
+        /// Recupera o XML de distribuição da NFe no formato string
+        /// </summary>
+        /// <param name="chaveDFe">Chave da NFe que é para retornar o XML de distribuição</param>
+        /// <returns>XML de distribuição da NFe</returns>
+        public string GetNFeProcResults(string chaveDFe)
+        {
+            var retornar = "";
+            if (NfeProcResults.Count > 0)
+            {
+                retornar = NfeProcResults[chaveDFe].GerarXML().OuterXml;
+            }
+
+            return retornar;
+        }
+
+#endif
+
         /// <summary>
         /// Propriedade contendo o XML da NFe com o protocolo de autorização anexado - Funciona somente para envio síncrono
         /// </summary>
@@ -279,7 +296,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         }
 
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetEnviNFe Result
         {
@@ -316,10 +333,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
         public Autorizacao(EnviNFe enviNFe, Configuracao configuracao)
-            : base(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao)
-        {
-            Inicializar();
-        }
+            : base(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao) => Inicializar();
 
         #endregion Public Constructors
 
@@ -360,7 +374,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             PrepararServico(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 
