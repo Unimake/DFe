@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RecepcionarLoteRps xmlns="https://portoseguro-ba.issintegra.com.br/webservices/abrasf/api">
+	<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+		<LoteRps Id="ID1" versao="1.00">
+			<NumeroLote>1</NumeroLote>
+			<Cnpj>38947884000169</Cnpj>
+			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+			<QuantidadeRps>1</QuantidadeRps>
+			<ListaRps>
+				<Rps>
+					<InfRps>
+						<IdentificacaoRps>
+							<Numero>1</Numero>
+							<Serie>A</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2022-02-04</DataEmissao>
+						<NaturezaOperacao>1</NaturezaOperacao>
+						<RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+						<OptanteSimplesNacional>1</OptanteSimplesNacional>
+						<IncentivadorCultural>2</IncentivadorCultural>
+						<Servico>
+							<Valores>
+								<ValorServicos>0.01</ValorServicos>
+								<IssRetido>2</IssRetido>
+								<BaseCalculo>0.01</BaseCalculo>
+								<Aliquota>0.05</Aliquota>
+								<ValorLiquidoNfse>0.01</ValorLiquidoNfse>
+							</Valores>
+							<ItemListaServico>1701</ItemListaServico>
+							<CodigoCnae>8299799</CodigoCnae>
+							<Discriminacao>NOTA TESTE WS</Discriminacao>
+							<CodigoMunicipio>2925303</CodigoMunicipio>
+						</Servico>
+						<Prestador>
+							<Cnpj>38947884000169</Cnpj>
+							<InscricaoMunicipal>192285001</InscricaoMunicipal>
+						</Prestador>
+						<Tomador>
+							<IdentificacaoTomador>
+								<CpfCnpj>
+									<Cpf>86425048972</Cpf>
+								</CpfCnpj>
+							</IdentificacaoTomador>
+							<RazaoSocial>TOMADOR TESTE</RazaoSocial>
+							<Endereco>
+								<Endereco>TESTE</Endereco>
+								<Numero>0</Numero>
+								<Complemento>TESTE</Complemento>
+								<Bairro>TESTE</Bairro>
+								<CodigoMunicipio>2925303</CodigoMunicipio>
+								<Uf>BA</Uf>
+								<Cep>45810000</Cep>
+							</Endereco>
+						</Tomador>
+					</InfRps>
+				</Rps>
+			</ListaRps>
+		</LoteRps>
+	</EnviarLoteRpsEnvio>
+</RecepcionarLoteRps>

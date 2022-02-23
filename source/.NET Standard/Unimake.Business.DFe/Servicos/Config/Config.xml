@@ -586,4 +586,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2925303">
+		<Nome>Porto Seguro - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>PortoSeguroBA.xml</ArqConfig>
+		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

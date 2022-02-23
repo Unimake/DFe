@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ConsultarNfse xmlns="https://portoseguro-ba.issintegra.com.br/webservices/abrasf/api">
+	<ConsultarNfseEnvio xmlns="http:/www.abrasf.org.br/nfse.xsd">
+		<Prestador>
+			<Cnpj>38947884000169</Cnpj>
+			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+		</Prestador>
+		<NumeroNfse>1</NumeroNfse>
+		<PeriodoEmissao>
+			<DataInicial>2022-02-21</DataInicial>
+			<DataFinal>2022-02-21</DataFinal>
+		</PeriodoEmissao>
+		<Tomador>
+			<CpfCnpj>
+				<Cpf>86425048972</Cpf>
+			</CpfCnpj>
+			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+		</Tomador>
+		<IntermediarioServico>
+			<RazaoSocial>Teste</RazaoSocial>
+			<CpfCnpj>
+				<Cpf>86425048972</Cpf>
+			</CpfCnpj>
+			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+		</IntermediarioServico>
+	</ConsultarNfseEnvio>
+</ConsultarNfse>

@@ -96,7 +96,7 @@ namespace Unimake.DFe.Test.NFCe
                                     {
                                         CUF = ufBrasil,
                                         NatOp = "VENDA PRODUC.DO ESTABELEC",
-                                        Mod = ModeloDFe.NFe,
+                                        Mod = ModeloDFe.NFCe,
                                         Serie = 16,
                                         NNF = 57962,
                                         DhEmi = DateTime.Now,
@@ -408,7 +408,7 @@ namespace Unimake.DFe.Test.NFCe
                                     {
                                         CUF = ufBrasil,
                                         NatOp = "VENDA PRODUC.DO ESTABELEC",
-                                        Mod = ModeloDFe.NFe,
+                                        Mod = ModeloDFe.NFCe,
                                         Serie = 16,
                                         NNF = 57962,
                                         DhEmi = DateTime.Now,

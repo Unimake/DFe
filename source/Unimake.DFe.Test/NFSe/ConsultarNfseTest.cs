@@ -28,8 +28,20 @@ namespace Unimake.DFe.Test.NFSe
         [MemberData(nameof(Parametros))]
         public void Consultar(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
         {          
-            var nomeXMLEnvio = "ConsultarNfseEnvio-ped-sitnfse.xml"; 
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            var nomeXMLEnvio = "ConsultarNfseEnvio-ped-sitnfse.xml";
+            
+            string arqXML;
+
+            switch (padraoNFSe)
+            {
+                case PadraoNFSe.NOBESISTEMAS:
+                    arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + tipoAmbiente.ToString() + "\\" + nomeXMLEnvio;
+                    break;
+
+                default:
+                    arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+                    break;
+            }
 
             Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfse xmlns="https://portoseguro-ba.issintegra.com.br/webservices/abrasf/api">
+	<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+		<Pedido>
+			<InfPedidoCancelamento Id="Id1">
+				<IdentificacaoNfse>
+					<Numero>1</Numero>
+					<Cnpj>38947884000169</Cnpj>
+					<InscricaoMunicipal>192285001</InscricaoMunicipal>
+					<CodigoMunicipio>2925303</CodigoMunicipio>
+				</IdentificacaoNfse>
+				<CodigoCancelamento>1</CodigoCancelamento>
+			</InfPedidoCancelamento>
+		</Pedido>
+	</CancelarNfseEnvio>
+</CancelarNfse>
