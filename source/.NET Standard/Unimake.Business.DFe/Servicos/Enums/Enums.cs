@@ -5657,7 +5657,13 @@ namespace Unimake.Business.DFe.Servicos
         /// SMARAPD
         /// </summary>
         [Description("SMARAPD")]
-        SMARAPD
+        SMARAPD,
+
+        /// <summary>
+        /// NobeSistemas - Software de gestão integrada
+        /// </summary>
+        [Description("NOBESISTEMAS")]
+        NOBESISTEMAS
     }
 
     #endregion
