@@ -46,17 +46,25 @@ namespace Unimake.Business.DFe.Xml
 
         #region Public Methods
 
+#if INTEROP
         /// <summary>
-        /// Serializar o objeto (Converte o objeto para XML)
+        /// Serializa o objeto (Converte o objeto para XML e resgata no formato string)
         /// </summary>
-        /// <returns>String contendo o XML</returns>
+        /// <returns>Conteúdo do XML</returns>
+        public virtual string GerarXMLString() => GerarXML().OuterXml;
+#endif
+
+        /// <summary>
+        /// Serializa o objeto (Converte o objeto para XML)
+        /// </summary>
+        /// <returns>Conteúdo do XML</returns>
         public virtual XmlDocument GerarXML() => XMLUtility.Serializar(this, NameSpaces);
 
         /// <summary>
         /// Deserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="doc">Conteúdo do XML a ser deserilizado</param>
+        /// <param name="doc">Conteúdo do XML a ser deserializado</param>
         /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
 #if INTEROP
         [ComVisible(false)]

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
