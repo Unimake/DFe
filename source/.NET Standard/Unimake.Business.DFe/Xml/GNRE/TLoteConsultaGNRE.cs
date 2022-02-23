@@ -77,7 +77,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class Consulta
     {
         [XmlElement("uf")]
-        public UFBrasil? Uf { get; set; }
+        public UFBrasil Uf { get; set; }
 
         [XmlElement("emitenteId")]
         public EmitenteId EmitenteId { get; set; }
@@ -97,15 +97,14 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("tipoConsulta")]
         public TipoConsultaGNRE TipoConsulta { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCodBarras() => !string.IsNullOrWhiteSpace(CodBarras);
         public bool ShouldSerializeNumControle() => !string.IsNullOrWhiteSpace(NumControle);
         public bool ShouldSerializeDocOrigem() => !string.IsNullOrWhiteSpace(DocOrigem);
-
         public bool ShouldSerializeIdConsulta() => !string.IsNullOrWhiteSpace(IdConsulta);
 
-        #endregion
+#endregion
 
     }
 
@@ -127,12 +126,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("IE")]
         public string IE { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
 
-        #endregion
+#endregion
     }
 }
