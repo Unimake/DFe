@@ -1487,8 +1487,32 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("xPed")]
         public string XPed { get; set; }
 
+        private int? NItemPedField;
+
         [XmlElement("nItemPed")]
-        public int? NItemPed { get; set; }
+#if INTEROP
+        public object NItemPed
+        {
+            get => NItemPedField;
+            set
+            {
+                if (value == null)
+                {
+                    NItemPedField = null;
+                }
+                else
+                {
+                    NItemPedField = Convert.ToInt32(value);
+                }
+            }
+        }
+#else
+        public int? NItemPed
+        {
+            get => NItemPedField;
+            set => NItemPedField = value;
+        }
+#endif
 
         [XmlElement("nFCI")]
         public string NFCI { get; set; }
@@ -5240,8 +5264,32 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("cSelo")]
         public string CSelo { get; set; }
 
+        private int? QSeloField { get; set; }
+
         [XmlElement("qSelo")]
-        public int? QSelo { get; set; }
+#if INTEROP
+        public object QSelo
+        {
+            get => QSeloField;
+            set
+            {
+                if (value == null)
+                {
+                    QSeloField = null;
+                }
+                else
+                {
+                    QSeloField = Convert.ToInt32(value);
+                }
+            }
+        }
+#else
+        public int? QSelo
+        {
+            get => QSeloField;
+            set => QSeloField = value;
+        }
+#endif
 
         [XmlElement("cEnq")]
         public string CEnq { get; set; }
