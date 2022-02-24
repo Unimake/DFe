@@ -167,6 +167,18 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Enviar Lote de GNRE")]
         GNRELoteRecepcao = 23,
 
+        /// <summary>
+        /// GNRE - Consultar Lote Recepção Consulta
+        /// </summary>
+        [Description("Consultar Lote Recepção Consulta")]
+        GNREConsultaLoteRecepcao = 24,
+
+        /// <summary>
+        /// GNRE - Consultar Resultado do Lote da Consulta de GNRE enviado
+        /// </summary>
+        [Description("Consultar Resultado do Lote da Consulta de GNRE")]
+        GNREConsultaResultadoLoteConsulta = 25,
+
         #endregion
 
         #region NFSe

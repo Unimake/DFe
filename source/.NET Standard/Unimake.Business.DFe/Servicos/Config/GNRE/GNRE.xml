@@ -38,5 +38,30 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</LoteRecepcao>
+		<ConsultaLoteRecepcao versao="2.00">
+			<Descricao>Consulta Lote Recepção da GNRE</Descricao>
+			<WebEnderecoHomologacao>https://www.testegnre.pe.gov.br/gnreWS/services/GnreLoteRecepcaoConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gnre.pe.gov.br/gnreWS/services/GnreLoteRecepcaoConsulta</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.gnre.pe.gov.br/webservice/GnreLoteRecepcaoConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.gnre.pe.gov.br/webservice/GnreLoteRecepcaoConsulta</WebActionProducao>
+			<SchemaArquivo>lote_consulta_guia_v2.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebTagRetorno>consultarResponse</WebTagRetorno>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaLoteRecepcao>
+		<ConsultaResultadoLoteConsulta versao="2.00">
+			<Descricao>Consulta processamento de Lote de consulta de GNRE</Descricao>
+			<WebEnderecoHomologacao>https://www.testegnre.pe.gov.br/gnreWS/services/GnreResultadoLoteConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gnre.pe.gov.br/gnreWS/services/GnreResultadoLoteConsulta</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.gnre.pe.gov.br/webservice/GnreResultadoLoteConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.gnre.pe.gov.br/webservice/GnreResultadoLoteConsulta</WebActionProducao>
+			<SchemaArquivo>lote_gnre_consulta_v1.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaResultadoLoteConsulta>
 	</Servicos>
 </Configuracoes>
