@@ -38,5 +38,18 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</LoteRecepcao>
+		<ConsultaLoteRecepcao versao="2.00">
+			<Descricao>Consulta Lote Recepção da GNRE</Descricao>
+			<WebEnderecoHomologacao>https://www.testegnre.pe.gov.br/gnreWS/services/GnreLoteRecepcaoConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gnre.pe.gov.br/gnreWS/services/GnreLoteRecepcaoConsulta</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.gnre.pe.gov.br/webservice/GnreLoteRecepcaoConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.gnre.pe.gov.br/webservice/GnreLoteRecepcaoConsulta</WebActionProducao>
+			<SchemaArquivo>lote_consulta_guia_v2.00.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebTagRetorno>consultarResponse</WebTagRetorno>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaLoteRecepcao>
 	</Servicos>
 </Configuracoes>
