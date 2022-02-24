@@ -1553,10 +1553,46 @@ namespace Unimake.Business.DFe.Servicos
     public enum MotivoDesoneracaoICMS
     {
         /// <summary>
+        /// 1=Táxi
+        /// </summary>
+        [XmlEnum("1")]
+        Taxi = 1,       
+
+        /// <summary>
         /// 3=Uso na agropecuária
         /// </summary>
         [XmlEnum("3")]
         UsoAgropecuaria = 3,
+
+        /// <summary>
+        /// 4=Frotista/Locadora
+        /// </summary>
+        [XmlEnum("4")]
+        FrotistaLocadora = 4,
+
+        /// <summary>
+        /// 5=Diplomático/Consular
+        /// </summary>
+        [XmlEnum("5")]
+        DiplomaticoConsular = 5,
+
+        /// <summary>
+        /// 6=Utilitários e Motocicletas da Amazônia Ocidental e Áreas de Livre Comércio (Resolução 714/88 e 790/94 – CONTRAN e suas alterações)
+        /// </summary>
+        [XmlEnum("6")]
+        UtilitariosMotocicletas = 6,
+
+        /// <summary>
+        /// 7=SUFRAMA
+        /// </summary>
+        [XmlEnum("7")]
+        SUFRAMA = 7,
+
+        /// <summary>
+        /// 8=Venda a órgão Público
+        /// </summary>
+        [XmlEnum("8")]
+        VendaOrgaoPublico = 8,
 
         /// <summary>
         /// 9=Outros
@@ -1565,10 +1601,34 @@ namespace Unimake.Business.DFe.Servicos
         Outro = 9,
 
         /// <summary>
+        /// 10=Deficiente Condutor
+        /// </summary>
+        [XmlEnum("10")]
+        DeficienteCondutor = 10,
+
+        /// <summary>
+        /// 11=Deficiente não condutor
+        /// </summary>
+        [XmlEnum("11")]
+        DeficienteNaoCondutor = 11,
+
+        /// <summary>
         /// 12=Órgão de fomento e desenvolvimento agropecuário
         /// </summary>
         [XmlEnum("12")]
-        OrgaoFomentoDesenvolvimentoAgropecuario = 12
+        OrgaoFomentoDesenvolvimentoAgropecuario = 12,
+
+        /// <summary>
+        /// 16=Olimpíadas Rio 2016
+        /// </summary>
+        [XmlEnum("16")]
+        OlimpiadasRio2016 = 16,
+
+        /// <summary>
+        /// 90=Solicitado pelo Fisco
+        /// </summary>
+        [XmlEnum("90")]
+        SolicitadoPeloFisco = 90
     }
 
     #endregion
