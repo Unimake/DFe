@@ -592,4 +592,10 @@
 		<ArqConfig>PortoSeguroBA.xml</ArqConfig>
 		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4202305">
+		<Nome>Biguaçu - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>Betha.xml</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
