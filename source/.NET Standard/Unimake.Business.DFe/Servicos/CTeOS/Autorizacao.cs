@@ -192,8 +192,29 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             }
         }
 
+#if INTEROP
+
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Recupera o XML de distribuição do CTeOS no formato string
+        /// </summary>
+        /// <param name="chaveDFe">Chave do CTeOS que é para retornar o XML de distribuição</param>
+        /// <returns>XML de distribuição do CTeOS</returns>
+        public string GetCteOSProcResults(string chaveDFe)
+        {
+            var retornar = "";
+            if (CteOSProcResults.Count > 0)
+            {
+                retornar = CteOSProcResults[chaveDFe].GerarXML().OuterXml;
+            }
+
+            return retornar;
+        }
+
+#endif
+
+
+        /// <summary>
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetCTeOS Result
         {

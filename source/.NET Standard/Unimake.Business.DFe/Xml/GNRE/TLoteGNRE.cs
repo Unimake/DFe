@@ -19,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlRoot("TLote_GNRE", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
-    public class TLoteGNRE: XMLBase
+    public class TLoteGNRE : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; } = "2.00";
@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// <param name="tdadosGNRE">Elemento</param>
         public void AddTDadosGNRE(TDadosGNRE tdadosGNRE)
         {
-            if(TDadosGNRE == null)
+            if (TDadosGNRE == null)
             {
                 TDadosGNRE = new List<TDadosGNRE>();
             }
@@ -114,18 +114,18 @@ namespace Unimake.Business.DFe.Xml.GNRE
         }
 
         [XmlIgnore]
-        public DateTime? DataPagamento { get; set; }
+        public DateTime DataPagamento { get; set; }
 
         [XmlElement("dataPagamento")]
         public string DataPagamentoField
         {
-            get => DataPagamento?.ToString("yyyy-MM-dd");
+            get => DataPagamento.ToString("yyyy-MM-dd");
             set => DataPagamento = DateTime.Parse(value);
         }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDataPagamentoField() => DataPagamento != null;
+        public bool ShouldSerializeDataPagamentoField() => DataPagamento > DateTime.MinValue;
 
         #endregion
     }
@@ -152,7 +152,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Municipio { get; set; }
 
         [XmlElement("uf")]
+#if INTEROP
+        public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
+#else
         public UFBrasil? UF { get; set; }
+#endif
 
         [XmlElement("cep")]
         public string CEP { get; set; }
@@ -162,7 +166,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeUF() => UF != null;
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 
         #endregion
     }
@@ -214,7 +218,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// <param name="item">Elemento</param>
         public void AddItem(Item item)
         {
-            if(Item == null)
+            if (Item == null)
             {
                 Item = new List<Item>();
             }
@@ -270,12 +274,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public Referencia Referencia { get; set; }
 
         [XmlIgnore]
-        public DateTime? DataVencimento { get; set; }
+        public DateTime DataVencimento { get; set; }
 
         [XmlElement("dataVencimento")]
         public string DataVencimentoField
         {
-            get => DataVencimento?.ToString("yyyy-MM-dd");
+            get => DataVencimento.ToString("yyyy-MM-dd");
             set => DataVencimento = DateTime.Parse(value);
         }
 
@@ -299,7 +303,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// <param name="valor">Elemento</param>
         public void AddValor(Valor valor)
         {
-            if(Valor == null)
+            if (Valor == null)
             {
                 Valor = new List<Valor>();
             }
@@ -333,7 +337,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         public bool ShouldSerializeDetalhamentoReceita() => !string.IsNullOrWhiteSpace(DetalhamentoReceita);
         public bool ShouldSerializeProduto() => !string.IsNullOrWhiteSpace(Produto);
-        public bool ShouldSerializeDataVencimentoField() => DataVencimento != null;
+        public bool ShouldSerializeDataVencimentoField() => DataVencimento > DateTime.MinValue;
         public bool ShouldSerializeConvenio() => !string.IsNullOrWhiteSpace(Convenio);
 
         #endregion
@@ -372,7 +376,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
             get => PeriodoField;
             set
             {
-                if(value < 0 || value > 5)
+                if (value < 0 || value > 5)
                 {
                     throw new Exception("Conteúdo da tag <periodo> da tag <referencia> inválido! Conteúdos aceitos: 0 a 5.");
                 }
@@ -382,7 +386,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
         }
 
         [XmlElement("mes")]
+#if INTEROP
+        public Meses Mes { get; set; } = (Meses)(-1);
+#else
         public Meses? Mes { get; set; }
+#endif
 
         [XmlElement("ano")]
         public string Ano { get; set; }
@@ -390,14 +398,14 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("parcela")]
         public string Parcela { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializePeriodo() => Periodo != null;
-        public bool ShouldSerializeMes() => Mes != null;
-        public bool ShouldSerializeAno() => !string.IsNullOrWhiteSpace(Ano) && Mes != null;
+        public bool ShouldSerializeMes() => Mes != null && Mes != (Meses)(-1);
+        public bool ShouldSerializeAno() => !string.IsNullOrWhiteSpace(Ano) && Mes != null && Mes != (Meses)(-1);
         public bool ShouldSerializeParcela() => !string.IsNullOrWhiteSpace(Parcela);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -495,7 +503,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// <param name="campoExtra">Elemento</param>
         public void AddCampoExtra(CampoExtra campoExtra)
         {
-            if(CampoExtra == null)
+            if (CampoExtra == null)
             {
                 CampoExtra = new List<CampoExtra>();
             }

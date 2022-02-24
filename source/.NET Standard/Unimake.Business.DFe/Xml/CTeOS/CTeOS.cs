@@ -354,7 +354,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
         [XmlElement("UFIni")]
-        public UFBrasil UFIni { get; set; }
+        public UFBrasil UFIni { get; set; } = UFBrasil.NaoDefinido;
 #else
         [XmlElement("UFIni")]
         public UFBrasil? UFIni { get; set; }
@@ -368,7 +368,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #if INTEROP
         [XmlElement("UFFim")]
-        public UFBrasil UFFim { get; set; }
+        public UFBrasil UFFim { get; set; } = UFBrasil.NaoDefinido;
 #else
         [XmlElement("UFFim")]
         public UFBrasil? UFFim { get; set; }
@@ -434,13 +434,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeXMunIni() => !string.IsNullOrWhiteSpace(XMunIni);
 
-        public bool ShouldSerializeUFIni() => UFIni != null;
+        public bool ShouldSerializeUFIni() => UFIni != null && UFIni != UFBrasil.NaoDefinido;
 
         public bool ShouldSerializeCMunFim() => !string.IsNullOrWhiteSpace(CMunFim);
 
         public bool ShouldSerializeXMunFim() => !string.IsNullOrWhiteSpace(XMunFim);
 
-        public bool ShouldSerializeUFFim() => UFFim != null;
+        public bool ShouldSerializeUFFim() => UFFim != null && UFFim != UFBrasil.NaoDefinido;
 
         public bool ShouldSerializeDhContField() => DhCont > DateTime.MinValue;
 
@@ -2176,14 +2176,18 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public Prop Prop { get; set; }
 
         [XmlElement("UF")]
+#if INTEROP
+        public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
+#else
         public UFBrasil? UF { get; set; }
+#endif
 
         #region ShouldSerialize
 
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
-        public bool ShouldSerializeUF() => UF != null;
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2246,13 +2250,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("tpProp")]
         public TipoProprietarioMDFe TpProp { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2277,10 +2281,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => DhViagem = DateTime.Parse(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeDhViagemField() => DhViagem > DateTime.MinValue;
 
-        #endregion
+#endregion
     }
 }

@@ -154,7 +154,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     {
                         var xmlEspecifico = new XmlDocument();
                         xmlEspecifico.LoadXml(itemInfModal.InnerXml);
-                        var schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.Substring(1,1)].SchemaArquivoEspecifico;
+                        var schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.Substring(1, 1)].SchemaArquivoEspecifico;
 
                         ValidarXMLCTe(xmlEspecifico, schemaArquivoEspecifico, Configuracoes.TargetNS);
                     }
@@ -178,7 +178,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Atribuir null para a propriedade RetConsReciCTe. (Em FOXPRO não conseguimos atribuir NULL diretamente na propriedade, dá erro de OLE)
         /// </summary>
-        public void SetNullRetConsReciCTe() => RetConsReciCTe= null;
+        public void SetNullRetConsReciCTe() => RetConsReciCTe = null;
 
 #endif
 
@@ -291,8 +291,28 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
+#if INTEROP
+
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Recupera o XML de distribuição do CTe no formato string
+        /// </summary>
+        /// <param name="chaveDFe">Chave do CTe que é para retornar o XML de distribuição</param>
+        /// <returns>XML de distribuição do CTe</returns>
+        public string GetCteProcResults(string chaveDFe)
+        {
+            var retornar = "";
+            if (CteProcResults.Count > 0)
+            {
+                retornar = CteProcResults[chaveDFe].GerarXML().OuterXml;
+            }
+
+            return retornar;
+        }
+
+#endif
+
+        /// <summary>
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetEnviCTe Result
         {
@@ -319,16 +339,13 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Construtor
         /// </summary>
         public Autorizacao()
-            : base()
-        {
-            CteProcs.Clear();
-        }
+            : base() => CteProcs.Clear();
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public Autorizacao(EnviCTe enviCTe, Configuracao configuracao)
             : base(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao)
         {
@@ -365,10 +382,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
         public void Executar(EnviCTe enviCTe, Configuracao configuracao)
         {

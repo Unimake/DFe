@@ -203,7 +203,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                 }
                 else
                 {
-                    //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
+                    //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação do MDFe, caso tenha perdido na tentativa do primeiro envio.
                     if (EnviMDFe.MDFe.Signature == null)
                     {
                         ConteudoXML = ConteudoXMLAssinado;
@@ -222,6 +222,26 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                 return MdfeProcs;
             }
         }
+
+#if INTEROP
+
+        /// <summary>
+        /// Recupera o XML de distribuição do MDFe no formato string
+        /// </summary>
+        /// <param name="chaveDFe">Chave do MDFe que é para retornar o XML de distribuição</param>
+        /// <returns>XML de distribuição do MDFe</returns>
+        public string GetMDFeProcResults(string chaveDFe)
+        {
+            var retornar = "";
+            if (MDFeProcResults.Count > 0)
+            {
+                retornar = MDFeProcResults[chaveDFe].GerarXML().OuterXml;
+            }
+
+            return retornar;
+        }
+
+#endif
 
         /// <summary>
         /// Conteúdo retornado pelo webservice depois do envio do XML
