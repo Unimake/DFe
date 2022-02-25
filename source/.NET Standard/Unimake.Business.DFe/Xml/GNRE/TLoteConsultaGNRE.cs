@@ -149,12 +149,5 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlText()]
         public string Value { get; set; }
 
-
     }
-
-
-
-
-
-
 }
