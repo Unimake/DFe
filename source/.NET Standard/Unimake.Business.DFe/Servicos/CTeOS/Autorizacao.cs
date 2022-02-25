@@ -110,13 +110,10 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 #if INTEROP
 
         /// <summary>
-        /// Adicionar o retorno da consulta situação do CTeOS na lista dos retornos para elaboração do XML de distribuição
+        /// Adicionar o retorno da consulta situação do CTeOS na lista dos retornos para elaboração do XML de Distribuição
         /// </summary>
-        /// <param name="retConsSitCTe"></param>
-        public void AddRetConsSitCTe(RetConsSitCTe retConsSitCTe)
-        {
-            RetConsSitCTes.Add(retConsSitCTe);
-        }
+        /// <param name="item">Resultado da consulta situação do CTe</param>
+        public void AddRetConsSitCTes(RetConsSitCTe item) => (RetConsSitCTes ?? (RetConsSitCTes = new List<RetConsSitCTe>())).Add(item);
 
 #endif
 

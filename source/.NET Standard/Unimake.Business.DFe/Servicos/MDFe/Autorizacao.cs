@@ -118,19 +118,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
         #region Public Fields
 
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar o retorno da consulta situação do MDFe na lista dos retornos para elaboração do XML de distribuição
-        /// </summary>
-        /// <param name="retConsSitMDFe"></param>
-        public void AddRetConsSitMDFe(RetConsSitMDFe retConsSitMDFe)
-        {
-            RetConsSitMDFe.Add(retConsSitMDFe);
-        }
-
-#endif
-
         /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situação do MDFe
         /// </summary>
@@ -389,11 +376,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         }
 
         /// <summary>
-        /// Adiciona um retorno da consulta situação da MDF-e.
-        /// Este método está disponível apenas para interop
+        /// Adicionar o retorno da consulta situação da CTe na lista dos retornos para elaboração do XML de Distribuição
         /// </summary>
-        /// <param name="item">Item que será adicionado</param>
-        [ComVisible(true)]
+        /// <param name="item">Resultado da consulta situação do MDFe</param>
         public void AddRetConsSitMDFe(RetConsSitMDFe item) => (RetConsSitMDFe ?? (RetConsSitMDFe = new List<RetConsSitMDFe>())).Add(item);
 
 #endif
