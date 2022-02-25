@@ -9,7 +9,7 @@ namespace Unimake.Business.DFe.Servicos
     /// </summary>
     public enum Servico
     {
-        #region NFe
+        #region Serviço
 
         /// <summary>
         /// Consulta status serviço NFe/NFCe
@@ -59,10 +59,6 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Distribuição de documentos fiscais eletrônicos da NFe")]
         NFeDistribuicaoDFe = 7,
 
-        #endregion
-
-        #region CTe
-
         /// <summary>
         /// Consulta status serviço CTe
         /// </summary>
@@ -105,10 +101,6 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização do CTeOS")]
         CTeAutorizacaoOS = 14,
 
-        #endregion
-
-        #region MDFe
-
         /// <summary>
         /// Consulta status serviço MDFe
         /// </summary>
@@ -145,10 +137,6 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização do MDFe")]
         MDFeAutorizacaoSinc = 20,
 
-        #endregion
-
-        #region GNRE
-
         /// <summary>
         /// GNRE - Consultar Configurações da UF
         /// </summary>
@@ -166,22 +154,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("Enviar Lote de GNRE")]
         GNRELoteRecepcao = 23,
-
-        /// <summary>
-        /// GNRE - Consultar Lote Recepção Consulta
-        /// </summary>
-        [Description("Consultar Lote Recepção Consulta")]
-        GNREConsultaLoteRecepcao = 24,
-
-        /// <summary>
-        /// GNRE - Consultar Resultado do Lote da Consulta de GNRE enviado
-        /// </summary>
-        [Description("Consultar Resultado do Lote da Consulta de GNRE")]
-        GNREConsultaResultadoLoteConsulta = 25,
-
-        #endregion
-
-        #region NFSe
 
         /// <summary>
         /// Enviar o XML de cancelamento da NFS-e para prefeiutura
@@ -266,6 +238,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("Consulta/Download do PDF da NFSe")]
         NFSeConsultarNfsePDF = 37,
+
+        /// <summary>
+        /// GNRE - Consultar Lote Recepção Consulta
+        /// </summary>
+        [Description("Consultar Lote Recepção Consulta")]
+        GNREConsultaLoteRecepcao = 38,
+
+        /// <summary>
+        /// GNRE - Consultar Resultado do Lote da Consulta de GNRE enviado
+        /// </summary>
+        [Description("Consultar Resultado do Lote da Consulta de GNRE")]
+        GNREConsultaResultadoLoteConsulta = 39,
 
         #endregion
 
@@ -1568,7 +1552,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 1=Táxi
         /// </summary>
         [XmlEnum("1")]
-        Taxi = 1,       
+        Taxi = 1,
 
         /// <summary>
         /// 3=Uso na agropecuária
