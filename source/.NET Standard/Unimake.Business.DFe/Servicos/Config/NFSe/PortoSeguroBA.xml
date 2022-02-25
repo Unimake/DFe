@@ -14,7 +14,7 @@
       <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ii:EnviarLoteRpsResposta</WebTagRetorno>
+      <WebTagRetorno>env:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap12</WebSoapVersion>
       <SchemaVersao>1.00</SchemaVersao>
@@ -33,7 +33,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ii:CancelarNfseResposta</WebTagRetorno>
+      <WebTagRetorno>env:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap12</WebSoapVersion>
       <SchemaVersao>1.00</SchemaVersao>
@@ -51,12 +51,12 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ii:ConsultarLoteRpsResposta</WebTagRetorno>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>env:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap12</WebSoapVersion>
       <SchemaVersao>1.00</SchemaVersao>
-      <TargetNS></TargetNS>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
     </ConsultarLoteRps>
     <ConsultarNfsePorRps versao="1.00">
       <Descricao>Consulta NFSe por RPS</Descricao>
@@ -71,7 +71,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ii:ConsultarNfseRpsResposta</WebTagRetorno>
+      <WebTagRetorno>env:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap12</WebSoapVersion>
       <SchemaVersao>1.00</SchemaVersao>
@@ -90,7 +90,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ii:ConsultarNfseResposta</WebTagRetorno>
+      <WebTagRetorno>env:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap12</WebSoapVersion>
       <SchemaVersao>1.00</SchemaVersao>
