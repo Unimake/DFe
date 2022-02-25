@@ -123,11 +123,20 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         public void SetNullRetConsReciNFe() => RetConsReciNFe = null;
 
+        /// <summary>
+        /// Adicionar o retorno da consulta situação da NFe na lista dos retornos para elaboração do XML de Distribuição
+        /// </summary>
+        /// <param name="retConsSitNFe"></param>
+        public void AddRetConsSitNFes(RetConsSitNFe retConsSitNFe)
+        {
+            RetConsSitNFes.Add(retConsSitNFe);
+        }
+
 #endif
 
 
         /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta situção do NFe
+        /// Lista com o conteúdo retornado das consultas situação do NFes enviadas
         /// </summary>
         public List<RetConsSitNFe> RetConsSitNFes = new List<RetConsSitNFe>();
 

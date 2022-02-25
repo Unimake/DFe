@@ -118,8 +118,21 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
         #region Public Fields
 
+#if INTEROP
+
         /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta situção do MDFe
+        /// Adicionar o retorno da consulta situação do MDFe na lista dos retornos para elaboração do XML de distribuição
+        /// </summary>
+        /// <param name="retConsSitMDFe"></param>
+        public void AddRetConsSitMDFe(RetConsSitMDFe retConsSitMDFe)
+        {
+            RetConsSitMDFe.Add(retConsSitMDFe);
+        }
+
+#endif
+
+        /// <summary>
+        /// Propriedade com o conteúdo retornado da consulta situação do MDFe
         /// </summary>
         public List<RetConsSitMDFe> RetConsSitMDFe = new List<RetConsSitMDFe>();
 

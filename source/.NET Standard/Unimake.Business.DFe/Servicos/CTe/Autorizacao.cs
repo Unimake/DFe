@@ -180,6 +180,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         public void SetNullRetConsReciCTe() => RetConsReciCTe = null;
 
+        /// <summary>
+        /// Adicionar o retorno da consulta situação da CTe na lista dos retornos para elaboração do XML de Distribuição
+        /// </summary>
+        /// <param name="retConsSitCTe"></param>
+        public void AddRetConsSitCTes(RetConsSitCTe retConsSitCTe)
+        {
+            RetConsSitCTes.Add(retConsSitCTe);
+        }
+
 #endif
 
 

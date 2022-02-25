@@ -95,7 +95,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         }
 
         /// <summary>
-        /// Efetuar um Ajustse no XML da NFCe logo depois de assinado
+        /// Efetuar um Ajustes no XML da NFCe logo depois de assinado
         /// </summary>
         protected override void AjustarXMLAposAssinado()
         {
@@ -107,13 +107,26 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 
         #region Public Properties
 
+#if INTEROP
+
         /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta situção do CTe
+        /// Adicionar o retorno da consulta situação do CTeOS na lista dos retornos para elaboração do XML de distribuição
+        /// </summary>
+        /// <param name="retConsSitCTe"></param>
+        public void AddRetConsSitCTe(RetConsSitCTe retConsSitCTe)
+        {
+            RetConsSitCTes.Add(retConsSitCTe);
+        }
+
+#endif
+
+        /// <summary>
+        /// Propriedade com o conteúdo retornado da consulta situação do CTe
         /// </summary>
         public List<RetConsSitCTe> RetConsSitCTes = new List<RetConsSitCTe>();
 
         /// <summary>
-        /// Propriedade contendo o XML da CTe com o protocolo de autorização anexado - Envio Assincrono
+        /// Propriedade contendo o XML da CTe com o protocolo de autorização anexado - Envio Assíncrono
         /// </summary>
         public Dictionary<string, CteOSProc> CteOSProcResults
         {
