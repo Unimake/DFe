@@ -61,6 +61,25 @@ namespace Unimake.Business.DFe.Xml.NFe
             return xmlDoc;
         }
 
+        /// <summary>
+        /// Deserializar o XML EnviNFe no objeto EnviNFe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML EnviNFe</param>
+        /// <returns>Objeto do EnviNFe</returns>
+        public EnviNFe LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<EnviNFe>(doc);
+        }
+
+        /// <summary>
+        /// Deserializar o XML EnviNFe no objeto EnviNFe
+        /// </summary>
+        /// <param name="xml">string do XML EnviNFe</param>
+        /// <returns>Objeto da EnviNFe</returns>
+        public EnviNFe LoadFromXML(string xml) => XMLUtility.Deserializar<EnviNFe>(xml);
+
 #if INTEROP
 
         /// <summary>
@@ -157,16 +176,23 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #endif
         /// <summary>
-        /// Deserializar o XML no objeto MDFe
+        /// Deserializar o XML NFe no objeto NFe
         /// </summary>
-        /// <param name="filename">Localização do arquivo XML</param>
-        /// <returns>Objeto do MDFe</returns>
+        /// <param name="filename">Localização do arquivo XML NFe</param>
+        /// <returns>Objeto da NFe</returns>
         public NFe LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<NFe>(doc);
         }
+
+        /// <summary>
+        /// Deserializar o XML NFe no objeto NFe
+        /// </summary>
+        /// <param name="xml">string do XML NFe</param>
+        /// <returns>Objeto da NFe</returns>
+        public NFe LoadFromXML(string xml) => XMLUtility.Deserializar<NFe>(xml);
     }
 
 #if INTEROP
