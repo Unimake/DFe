@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resEvento versao="1.01" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <cOrgao>91</cOrgao>
+  <CNPJ>06117473000150</CNPJ>
+  <chNFe>190806117473000150550010000579131943463890</chNFe>
+  <dhEvento>2022-03-02T15:17:44-03:00</dhEvento>
+  <tpEvento>110111</tpEvento>
+  <nSeqEvento>1</nSeqEvento>
+  <xEvento>Descrição do evento</xEvento>
+  <dhRecbto>2022-03-02T15:27:44-03:00</dhRecbto>
+  <nProt>341221234567890</nProt>
+</resEvento>
