@@ -5751,48 +5751,48 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double? VBC { get; set; }
 
         [XmlElement("vBC")]
         public string VBCField
         {
-            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            get => VBC?.ToString("F2", CultureInfo.InvariantCulture);
             set => VBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PPIS { get; set; }
+        public double? PPIS { get; set; }
 
         [XmlElement("pPIS")]
         public string PPISField
         {
-            get => PPIS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PPIS?.ToString("F4", CultureInfo.InvariantCulture);
             set => PPIS = Converter.ToDouble(value);
         }
 
         [XmlElement("qBCProd")]
-        public double QBCProd { get; set; }
+        public double? QBCProd { get; set; }
 
         [XmlElement("vAliqProd")]
-        public double VAliqProd { get; set; }
+        public double? VAliqProd { get; set; }
 
         [XmlIgnore]
-        public double VPIS { get; set; }
+        public double? VPIS { get; set; }
 
         [XmlElement("vPIS")]
         public string VPISField
         {
-            get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
+            get => VPIS?.ToString("F2", CultureInfo.InvariantCulture);
             set => VPIS = Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializePPISField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
-        public bool ShouldSerializeVBCField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
-        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VPIS > 0);
-        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VPIS > 0);
-        public bool ShouldSerializeVPISField() => (QBCProd + VAliqProd + VPIS > 0) || (PPIS + VBC >= 0);
+        public bool ShouldSerializePPISField() => PPIS != null;
+        public bool ShouldSerializeVBCField() => VBC != null;
+        public bool ShouldSerializeQBCProd() => QBCProd != null;
+        public bool ShouldSerializeVAliqProd() => VAliqProd != null;
+        public bool ShouldSerializeVPISField() => VPIS != null;
 
         #endregion
     }
@@ -5855,39 +5855,39 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class PISST
     {
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double? VBC { get; set; }
 
         [XmlElement("vBC")]
         public string VBCField
         {
-            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            get => VBC?.ToString("F2", CultureInfo.InvariantCulture);
             set => VBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PPIS { get; set; }
+        public double? PPIS { get; set; }
 
         [XmlElement("pPIS")]
         public string PPISField
         {
-            get => PPIS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PPIS?.ToString("F4", CultureInfo.InvariantCulture);
             set => PPIS = Converter.ToDouble(value);
         }
 
 
         [XmlElement("qBCProd")]
-        public double QBCProd { get; set; }
+        public double? QBCProd { get; set; }
 
         [XmlElement("vAliqProd")]
-        public double VAliqProd { get; set; }
+        public double? VAliqProd { get; set; }
 
         [XmlIgnore]
-        public double VPIS { get; set; }
+        public double? VPIS { get; set; }
 
         [XmlElement("vPIS")]
         public string VPISField
         {
-            get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
+            get => VPIS?.ToString("F2", CultureInfo.InvariantCulture);
             set => VPIS = Converter.ToDouble(value);
         }
 
@@ -5900,11 +5900,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializePPISField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
-        public bool ShouldSerializeVBCField() => (PPIS + VBC >= 0) && (QBCProd + VAliqProd + VPIS <= 0);
-        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VPIS > 0);
-        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VPIS > 0);
-        public bool ShouldSerializeVPISField() => (QBCProd + VAliqProd + VPIS > 0) || (PPIS + VBC >= 0);
+        public bool ShouldSerializePPISField() => PPIS != null;
+        public bool ShouldSerializeVBCField() => VBC != null;
+        public bool ShouldSerializeQBCProd() => QBCProd != null;
+        public bool ShouldSerializeVAliqProd() => VAliqProd != null;
+        public bool ShouldSerializeVPISField() => VPIS != null;
         public bool ShouldSerializeIndSomaPISST() => IndSomaPISST != null && IndSomaPISST != (IndicaSomaPISST)(-1);
 
         #endregion
@@ -6052,48 +6052,48 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double? VBC { get; set; }
 
         [XmlElement("vBC")]
         public string VBCField
         {
-            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            get => VBC?.ToString("F2", CultureInfo.InvariantCulture);
             set => VBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PCOFINS { get; set; }
+        public double? PCOFINS { get; set; }
 
         [XmlElement("pCOFINS")]
         public string PCOFINSField
         {
-            get => PCOFINS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PCOFINS?.ToString("F4", CultureInfo.InvariantCulture);
             set => PCOFINS = Converter.ToDouble(value);
         }
 
         [XmlElement("qBCProd")]
-        public double QBCProd { get; set; }
+        public double? QBCProd { get; set; }
 
         [XmlElement("vAliqProd")]
-        public double VAliqProd { get; set; }
+        public double? VAliqProd { get; set; }
 
         [XmlIgnore]
-        public double VCOFINS { get; set; }
+        public double? VCOFINS { get; set; }
 
         [XmlElement("vCOFINS")]
         public string VCOFINSField
         {
-            get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
+            get => VCOFINS?.ToString("F2", CultureInfo.InvariantCulture);
             set => VCOFINS = Converter.ToDouble(value);
         }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBCField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
-        public bool ShouldSerializePCOFINSField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
-        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VCOFINS > 0);
-        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VCOFINS > 0);
-        public bool ShouldSerializeVCOFINSField() => (QBCProd + VAliqProd + VCOFINS > 0) || (PCOFINS + VBC >= 0);
+        public bool ShouldSerializeVBCField() => VBC != null;
+        public bool ShouldSerializePCOFINSField() => PCOFINS != null;
+        public bool ShouldSerializeQBCProd() => QBCProd != null;
+        public bool ShouldSerializeVAliqProd() => VAliqProd != null;
+        public bool ShouldSerializeVCOFINSField() => VCOFINS != null;
 
         #endregion
     }
@@ -6156,38 +6156,38 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class COFINSST
     {
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double? VBC { get; set; }
 
         [XmlElement("vBC")]
         public string VBCField
         {
-            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            get => VBC?.ToString("F2", CultureInfo.InvariantCulture);
             set => VBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PCOFINS { get; set; }
+        public double? PCOFINS { get; set; }
 
         [XmlElement("pCOFINS")]
         public string PCOFINSField
         {
-            get => PCOFINS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PCOFINS?.ToString("F4", CultureInfo.InvariantCulture);
             set => PCOFINS = Converter.ToDouble(value);
         }
 
         [XmlElement("qBCProd")]
-        public double QBCProd { get; set; }
+        public double? QBCProd { get; set; }
 
         [XmlElement("vAliqProd")]
-        public double VAliqProd { get; set; }
+        public double? VAliqProd { get; set; }
 
         [XmlIgnore]
-        public double VCOFINS { get; set; }
+        public double? VCOFINS { get; set; }
 
         [XmlElement("vCOFINS")]
         public string VCOFINSField
         {
-            get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
+            get => VCOFINS?.ToString("F2", CultureInfo.InvariantCulture);
             set => VCOFINS = Converter.ToDouble(value);
         }
 
@@ -6200,11 +6200,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVBCField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
-        public bool ShouldSerializePCOFINSField() => (PCOFINS + VBC >= 0) && (QBCProd + VAliqProd + VCOFINS <= 0);
-        public bool ShouldSerializeQBCProd() => (QBCProd + VAliqProd + VCOFINS > 0);
-        public bool ShouldSerializeVAliqProd() => (QBCProd + VAliqProd + VCOFINS > 0);
-        public bool ShouldSerializeVCOFINSField() => (QBCProd + VAliqProd + VCOFINS > 0) || (PCOFINS + VBC >= 0);
+        public bool ShouldSerializeVBCField() => VBC != null;
+        public bool ShouldSerializePCOFINSField() => PCOFINS != null;
+        public bool ShouldSerializeQBCProd() => QBCProd != null;
+        public bool ShouldSerializeVAliqProd() => VAliqProd != null;
+        public bool ShouldSerializeVCOFINSField() => VCOFINS != null;
         public bool ShouldSerializeIndSomaCOFINSST() => IndSomaCOFINSST != null && IndSomaCOFINSST != (IndicaSomaCOFINSST)(-1);
 
         #endregion
