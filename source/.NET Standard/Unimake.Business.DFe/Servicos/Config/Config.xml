@@ -598,4 +598,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3303955">
+		<Nome>Pinheiral - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
