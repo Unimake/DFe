@@ -239,6 +239,7 @@
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
+		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
@@ -843,6 +844,7 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiGuacuSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SideropolisSC.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>

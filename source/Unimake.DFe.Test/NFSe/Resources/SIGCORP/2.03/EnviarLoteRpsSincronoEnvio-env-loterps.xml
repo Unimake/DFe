@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="ID2" versao="2.03">
+    <NumeroLote>2</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>99999999999999</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>9999999</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="RPS_21">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>21</Numero>
+              <Serie>NFRJ</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2018-08-30</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2018-08-30</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>1.00</ValorServicos>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ItemListaServico>01.01</ItemListaServico>
+            <CodigoCnae>4930201</CodigoCnae>
+            <CodigoTributacaoMunicipio>16.02</CodigoTributacaoMunicipio>
+            <Discriminacao>TESTE</Discriminacao>
+            <CodigoMunicipio>3303302</CodigoMunicipio>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>3303302</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>05747016000186</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1245091</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cnpj>99999999999999</Cnpj>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>MOINHOS CRUZEIRO DO SUL SA</RazaoSocial>
+            <Endereco>
+              <Endereco>RUA BENEDITO OTTONI</Endereco>
+              <Numero>24</Numero>
+              <Bairro>SAO CRISTOVAO</Bairro>
+              <CodigoMunicipio>3304557</CodigoMunicipio>
+              <Uf>RJ</Uf>
+              <Cep>20940180</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>2138789000</Telefone>
+              <Email>nfe@teste.com.br</Email>
+            </Contato>
+          </Tomador>
+          <OptanteSimplesNacional>1</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsSincronoEnvio>

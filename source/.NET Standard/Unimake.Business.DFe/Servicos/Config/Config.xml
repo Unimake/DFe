@@ -604,4 +604,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3530805">
+		<Nome>Mogi Mirim - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MogiMirimSP.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
