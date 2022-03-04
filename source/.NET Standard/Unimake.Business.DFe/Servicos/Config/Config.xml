@@ -610,4 +610,10 @@
 		<ArqConfig>MogiMirimSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2610004">
+		<Nome>Palmares - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>PalmaresPE.xml</ArqConfig>
+		<PadraoNFSe>TRIBUTUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

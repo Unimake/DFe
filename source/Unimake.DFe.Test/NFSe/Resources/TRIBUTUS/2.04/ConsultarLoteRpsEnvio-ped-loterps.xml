@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>41448070000194</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>31001042</InscricaoMunicipal>
+	</Prestador>
+	<Protocolo>UP7IKF16UA6FL</Protocolo>
+</ConsultarLoteRpsEnvio>

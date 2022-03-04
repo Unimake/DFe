@@ -242,6 +242,7 @@
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
@@ -464,6 +465,8 @@
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
@@ -893,6 +896,9 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\PortoSeguroBA.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\PalmaresPE.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -1268,6 +1274,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 	</ItemGroup>

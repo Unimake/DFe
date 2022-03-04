@@ -5719,7 +5719,13 @@ namespace Unimake.Business.DFe.Servicos
         /// NobeSistemas - Software de gestão integrada
         /// </summary>
         [Description("NOBESISTEMAS")]
-        NOBESISTEMAS
+        NOBESISTEMAS,
+
+        /// <summary>
+        /// TRIBUTUS - Gestão integrada
+        /// </summary>
+        [Description("TRIBUTUS")]
+        TRIBUTUS
     }
 
     #endregion

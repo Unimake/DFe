@@ -424,14 +424,20 @@ namespace Unimake.Business.DFe.Servicos
                 }
             }
 
-            SubstituirValorSoapString();
+            SubstituirValorPropriedadeVariavel();
         }
 
         /// <summary>
-        /// Substituir alguns valores do da configuração do SoapString (Configuracao.WebSoapString)
+        /// Substituir alguns valores de algumas propriedades que possuem variáveis
         /// </summary>
-        private void SubstituirValorSoapString()
+        private void SubstituirValorPropriedadeVariavel()
         {
+            if (!string.IsNullOrWhiteSpace(MunicipioToken))
+            {
+                WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
+                WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
+            }
+
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
@@ -791,6 +797,21 @@ namespace Unimake.Business.DFe.Servicos
         /// Encoding do XML retornado pelo webservice (Padrão é UTF-8, mas tem webservices que retornam em encodings diferentes, para estes tem que definir para que os caracteres fiquem corretos.)
         /// </summary>
         public string WebEncodingRetorno { get; set; }
+
+        /// <summary>
+        /// Token de acesso ao webservice/api do município
+        /// </summary>
+        public string MunicipioToken { get; set; }
+
+        /// <summary>
+        /// Usuário de acesso ao webservice/api do município
+        /// </summary>
+        public string MunicipioUsuario { get; set; }
+
+        /// <summary>
+        /// Senha de acesso ao webservice/api do município
+        /// </summary>
+        public string MunicipioSenha { get; set; }
 
         #endregion Public Properties
 
