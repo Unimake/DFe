@@ -616,4 +616,10 @@
 		<ArqConfig>PalmaresPE.xml</ArqConfig>
 		<PadraoNFSe>TRIBUTUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3131307">
+		<Nome>Ipatinga - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>IpatingaMG.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

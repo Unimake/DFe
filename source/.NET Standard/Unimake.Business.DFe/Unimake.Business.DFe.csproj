@@ -233,6 +233,7 @@
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
+		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajubaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
@@ -847,6 +848,7 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiGuacuSP.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\SideropolisSC.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
