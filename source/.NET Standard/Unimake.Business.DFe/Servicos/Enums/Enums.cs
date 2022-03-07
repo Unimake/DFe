@@ -5954,6 +5954,9 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+
+    #region Tipos de Consultas da GNRE
+
     /// <summary>
     /// Tipos de Consultas da GNRE
     /// </summary>
@@ -5977,4 +5980,34 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("D")]
         ConsultaPorDocumentOrigem = 2,
     }
+
+    #endregion
+
+    #region Tipos de ato concessório
+
+    /// <summary>
+    /// Tipos do ato concessório
+    /// </summary>
+    public enum TipoAtoConcessorio
+    {
+        /// <summary>
+        /// 08 - Termo de Acordo
+        /// </summary>
+        [XmlEnum("08")]
+        TermoDeAcordo = 08,
+
+        /// <summary>
+        /// 10 - Regime Especial
+        /// </summary>
+        [XmlEnum("10")]
+        RegimeEspecial = 10,
+
+        /// <summary>
+        /// 12 = Autorização Específica
+        /// </summary>
+        [XmlEnum("12")]
+        AutorizacaoEspecifica = 12
+    }
+
+    #endregion
 }

@@ -1374,6 +1374,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => string.IsNullOrWhiteSpace(InfAdProdField) ? null : InfAdProdField;
             set => InfAdProdField = XMLUtility.UnescapeReservedCharacters(value).Truncate(500);
         }
+
+        [XmlElement("obsItem")]
+        public ObsItem ObsItem { get; set; }
     }
 
 #if INTEROP
@@ -4289,6 +4292,36 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
+        public double VBCFCPST { get; set; }
+
+        [XmlElement("vBCFCPST")]
+        public string VBCFCPSTField
+        {
+            get => VBCFCPST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCFCPST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCPST { get; set; }
+
+        [XmlElement("pFCPST")]
+        public string PFCPSTField
+        {
+            get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCPST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCPST { get; set; }
+
+        [XmlElement("vFCPST")]
+        public string VFCPSTField
+        {
+            get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCPST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
         public double PBCOp { get; set; }
 
         [XmlElement("pBCOp")]
@@ -4308,6 +4341,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializePRedBCSTField() => PRedBCST > 0;
 
         public bool ShouldSerializePMVASTField() => PMVAST > 0;
+
+        public bool ShouldSerializeVBCFCPSTField() => VBCFCPST > 0;
+
+        public bool ShouldSerializePFCPSTField() => PFCPST > 0;
+
+        public bool ShouldSerializeVFCPSTField() => VFCPST > 0;
 
         #endregion
     }
@@ -6361,6 +6400,94 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ObsItem")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ObsItem
+    {
+        [XmlElement("obsCont")]
+        public List<ObsCont> ObsCont { get; set; }
+
+        [XmlElement("obsFisco")]
+        public List<ObsFisco> ObsFisco { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="obsCont">Elemento</param>
+        public void AddObsCont(ObsCont obsCont)
+        {
+            if (ObsCont == null)
+            {
+                ObsCont = new List<ObsCont>();
+            }
+
+            ObsCont.Add(obsCont);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ObsCont (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
+        public ObsCont GetObsCont(int index)
+        {
+            if ((ObsCont?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ObsCont[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ObsCont
+        /// </summary>
+        public int GetObsContCount => (ObsCont != null ? ObsCont.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="obsFisco">Elemento</param>
+        public void AddObsFisco(ObsFisco obsFisco)
+        {
+            if (ObsFisco == null)
+            {
+                ObsFisco = new List<ObsFisco>();
+            }
+
+            ObsFisco.Add(obsFisco);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ObsFisco (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
+        public ObsFisco GetObsFisco(int index)
+        {
+            if ((ObsFisco?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ObsFisco[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ObsFisco
+        /// </summary>
+        public int GetObsFiscoCount => (ObsFisco != null ? ObsFisco.Count : 0);
+
+#endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.IPIDevol")]
     [ComVisible(true)]
 #endif
@@ -7815,6 +7942,21 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("indProc")]
         public IndicadorOrigemProcesso IndProc { get; set; }
+
+#if INTEROP
+        [XmlElement("tpAto")]
+        public TipoAtoConcessorio TpAto { get; set; } = (TipoAtoConcessorio)(-1);
+
+#else
+        [XmlElement("tpAto")]
+        public TipoAtoConcessorio? TpAto { get; set; }
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIndEscala() => TpAto != null && TpAto != (TipoAtoConcessorio)(-1);
+
+        #endregion
     }
 
 #if INTEROP
