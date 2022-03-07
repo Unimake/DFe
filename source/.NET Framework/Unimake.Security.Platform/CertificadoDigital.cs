@@ -36,8 +36,8 @@ namespace Unimake.Security.Platform
             var store = new X509Store("MY", StoreLocation.CurrentUser);
             store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
             var collection = store.Certificates;
-            _ = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-            var collection2 = collection.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
+            var collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+            var collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
             var scollection = X509Certificate2UI.SelectFromCollection(collection2, "Certificado(s) digital(is) disponível(is)", "Selecione o certificado digital para uso no aplicativo", X509SelectionFlag.SingleSelection);
 
             return scollection;
@@ -50,7 +50,6 @@ namespace Unimake.Security.Platform
         /// <returns>Certificado digital</returns>
         public X509Certificate2 BuscarCertificadoDigital(string serialNumberOrThumbPrint)
         {
-            var x509Cert = new X509Certificate2();
             var store = new X509Store("MY", StoreLocation.CurrentUser);
             store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
             var collection = store.Certificates;
@@ -70,9 +69,7 @@ namespace Unimake.Security.Platform
                 }
             }
 
-            x509Cert = collection3[0];
-
-            return x509Cert;
+            return collection3[0];
         }
 
         /// <summary>

@@ -344,7 +344,7 @@ namespace Unimake.Business.DFe.Utility
         /// Deserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="xml">XML a ser deserializado</param>
+        /// <param name="xml">String do XML a ser deserializado</param>
         /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
         public static T Deserializar<T>(string xml)
             where T : new()

@@ -5641,91 +5641,91 @@ namespace Unimake.Business.DFe.Servicos
         /// Não definido / Nenhum
         /// </summary>
         [Description("Nenhum")]
-        None,
+        None = 0,
 
         /// <summary>
         /// BETHA Sistemas
         /// </summary>
         [Description("BETHA Sistemas")]
-        BETHA,
+        BETHA = 1,
 
         /// <summary>
         /// SIGCORP - Tecnologia da informação
         /// </summary>
         [Description("SIGCORP - Tecnologia da informação")]
-        SIGCORP,
+        SIGCORP = 2,
 
         /// <summary>
         /// PRODATA - Gestão Estratégica
         /// </summary>
         [Description("PRODATA - Gestão Estratégica")]
-        PRODATA,
+        PRODATA = 3,
 
         /// <summary>
         /// EL - Produções de Software
         /// </summary>
         [Description("EL - Produções de Software")]
-        EL,
+        EL = 4,
 
         /// <summary>
         /// NOTAINTELIGENTE
         /// </summary>
         [Description("Nota Inteligente")]
-        NOTAINTELIGENTE,
+        NOTAINTELIGENTE = 5,
 
         /// <summary>
         /// AVMB Soluções em TI
         /// </summary>
         [Description("AVMB Soluções em TI")]
-        AVMB,
+        AVMB = 6,
 
         /// <summary>
         /// WebISS
         /// </summary>
         [Description("WebISS")]
-        WEBISS,
+        WEBISS = 7,
 
         /// <summary>
         /// SIMPLISS Sistema de Informação LTDA
         /// </summary>
         [Description("SIMPLISS Sistema de Informação LTDA")]
-        SIMPLISS,
+        SIMPLISS = 8,
 
         /// <summary>
         /// COPLAN
         /// </summary>
         [Description("Coplan")]
-        COPLAN,
+        COPLAN = 9,
 
         /// <summary>
         /// Próprio Joinville SC 
         /// </summary>
         [Description("Próprio Joinville SC")]
-        PROPRIOJOINVILLESC,
+        PROPRIOJOINVILLESC = 10,
 
         /// <summary>
         /// Sonner - Sistemas integrados, governos inteligentes (Antigo GOVDIGITAL)
         /// </summary>
         [Description("SONNER - Sistemas integrados")]
-        SONNER,
+        SONNER = 11,
 
         /// <summary>
         /// SMARAPD
         /// </summary>
         [Description("SMARAPD")]
-        SMARAPD,
+        SMARAPD = 12,
 
         /// <summary>
         /// NobeSistemas - Software de gestão integrada
         /// </summary>
         [Description("NOBESISTEMAS")]
-        NOBESISTEMAS,
+        NOBESISTEMAS = 13,
 
         /// <summary>
         /// TRIBUTUS - Gestão integrada
         /// </summary>
         [Description("TRIBUTUS")]
-        TRIBUTUS
+        TRIBUTUS = 14
     }
 
     #endregion
