@@ -16,11 +16,15 @@ Function Main()
    AAdd(aOpcoes, "2-Consulta Status Nfe")
    AAdd(aOpcoes, "3-Consulta Situacao Nfe")
    AAdd(aOpcoes, "4-Inutilizar Numero Nfe")
+   AAdd(aOpcoes, "5-Consulta Recibo Nfe")
+   AAdd(aOpcoes, "6-Enviar Nfe - Assincrono")
    
    Do While .T.
       Cls
+
+      @ 1,2 Say "Unimake.Dfe DLL"
 	  
-      nOpcao := Achoice( 2, 2, 20, 30, aOpcoes)
+      nOpcao := Achoice( 3, 2, 20, 30, aOpcoes)
 
       Cls
 
@@ -39,6 +43,12 @@ Function Main()
 
          case nOpcao = 4
               InutilizarNumeroNfe()
+
+         case nOpcao = 5
+              ConsultaReciboNfe()
+
+         case nOpcao = 6
+              EnviarNfeAssincrono()
       endcase
    EndDo
 Return
