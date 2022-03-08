@@ -1,7 +1,8 @@
-﻿#if INTEROP
+﻿using System;
+using System.Collections.Generic;
+#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -17,7 +18,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     [ProgId("Unimake.Business.DFe.Servicos.NFe.DistribuicaoDFe")]
     [ComVisible(true)]
 #endif
-    public class DistribuicaoDFe: ServicoBase, IInteropService<DistDFeInt>
+    public class DistribuicaoDFe : ServicoBase, IInteropService<DistDFeInt>
     {
         #region Protected Methods
 
@@ -29,7 +30,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var xml = new DistDFeInt();
             xml = xml.LerXML<DistDFeInt>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeDistribuicaoDFe;
                 Configuracoes.CodigoUF = (int)xml.COrgao;
@@ -51,7 +52,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetDistDFeInt>(RetornoWSXML);
                 }
@@ -99,6 +100,23 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             PrepararServico(distDFeInt?.GerarXML() ?? throw new ArgumentNullException(nameof(distDFeInt)), configuracao);
             Executar();
+
+            //Adicionar os XMLs retornados em suas respectivas listas para que possam ser resgatados em formato de objeto
+            if (Result != null && Result.LoteDistDFeInt != null)
+            {
+                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                {
+                    var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
+
+                    var docXML = new XmlDocument();
+                    docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
+
+                    if (item.Schema.StartsWith("resEvento"))
+                    {
+                        ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
+                    }
+                }
+            }
         }
 
 #endif
@@ -118,7 +136,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="saveXMLResumo">Salvar os arquivos de resumo da NFe e Eventos da NFe?</param>
         public void GravarXMLDocZIP(string folder, bool saveXMLResumo)
         {
-            foreach(var item in Result.LoteDistDFeInt.DocZip)
+            foreach (var item in Result.LoteDistDFeInt.DocZip)
             {
                 var save = true;
                 var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
@@ -127,35 +145,62 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 var docXML = new XmlDocument();
                 docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
 
-                if(item.Schema.StartsWith("resEvento"))
+                if (item.Schema.StartsWith("resEvento"))
                 {
                     nomeArquivo = item.NSU + "-resEvento.xml";
                     save = saveXMLResumo;
                 }
-                else if(item.Schema.StartsWith("procEventoNFe"))
+                else if (item.Schema.StartsWith("procEventoNFe"))
                 {
                     var chNFe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "chNFe");
                     var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
                     var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
                     nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
                 }
-                else if(item.Schema.StartsWith("procNFe"))
+                else if (item.Schema.StartsWith("procNFe"))
                 {
                     var chave = ((XmlElement)docXML.GetElementsByTagName("infNFe")[0]).GetAttribute("Id").Substring(3, 44);
                     nomeArquivo = chave + "-procNFe.xml";
                 }
-                else if(item.Schema.StartsWith("resNFe"))
+                else if (item.Schema.StartsWith("resNFe"))
                 {
                     nomeArquivo = item.NSU + "-resNFe.xml";
                     save = saveXMLResumo;
                 }
 
-                if(save && !string.IsNullOrEmpty(nomeArquivo))
+                if (save && !string.IsNullOrEmpty(nomeArquivo))
                 {
                     base.GravarXmlDistribuicao(folder, nomeArquivo, conteudoXML);
                 }
             }
         }
+
+        /// <summary>
+        /// Resgatar a lista dos resumos de eventos retornados pelo serviço de distribuição de DFe
+        /// </summary>
+        public List<ResEvento> ResEventos { get; private set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o quantidade de elementos na lista com os Resumos de Eventos
+        /// </summary>
+        public int GetResEventosCount()
+        {
+            return ResEventos.Count;
+        }
+
+        /// <summary>
+        /// Retorna o resumo do evento (ResEvento) do elemento informado por parâmetro
+        /// </summary>
+        /// <param name="elemento">Elemento a ser retornado</param>
+        /// <returns>Resumo do evento (ResEvento)</returns>
+        public ResEvento GetResEvento(int elemento)
+        {
+            return ResEventos[elemento];
+        }
+
+#endif
 
         #endregion Public Methods
     }

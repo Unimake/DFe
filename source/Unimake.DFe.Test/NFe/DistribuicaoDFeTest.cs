@@ -66,6 +66,11 @@ namespace Unimake.DFe.Test.NFe
 
                         ////Salvar os XMLs do docZIP no HD
                         //distribuicaoDFe.GravarXMLDocZIP(folder, true);
+
+                        foreach (var item in distribuicaoDFe.ResEventos)
+                        {
+                            Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
+                        }
                     }
 
                     nsu = distribuicaoDFe.Result.UltNSU;
