@@ -349,7 +349,10 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 /source/Unimake.DFe/Compilacao
-/source/Unimake.DFe/docfx
+/source/Unimake.DFe/docfx/_site
+/source/Unimake.DFe/docfx/obj
+/source/Unimake.DFe/docfx/api/*.yml
+/source/Unimake.DFe/docfx/api/*.manifest
 /docfx
 /source/Unimake.DFe/Interop/VB6.rar
 /source/Unimake.DFe/Interop/VB6.zip
