@@ -3640,12 +3640,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
 
         [XmlIgnore]
-        public double PRedBC { get; set; }
+        public double? PRedBC { get; set; }
 
         [XmlElement("pRedBC")]
         public string PRedBCField
         {
-            get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
+            get => PRedBC?.ToString("F4", CultureInfo.InvariantCulture);
             set => PRedBC = Converter.ToDouble(value);
         }
 
@@ -3844,7 +3844,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public virtual bool ShouldSerializeVBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1);
 
-        public virtual bool ShouldSerializePRedBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1) && PRedBC > 0;
+        public virtual bool ShouldSerializePRedBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1) && PRedBC != null;
 
         public virtual bool ShouldSerializePICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1);
 
