@@ -1994,13 +1994,13 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorPagamento
     {
         /// <summary>
-        /// Pagamento à Vista
+        /// 0=Pagamento à Vista
         /// </summary>
         [XmlEnum("0")]
         PagamentoVista = 0,
 
         /// <summary>
-        /// Pagamento à Prazo
+        /// 1=Pagamento à Prazo
         /// </summary>
         [XmlEnum("1")]
         PagamentoPrazo = 1

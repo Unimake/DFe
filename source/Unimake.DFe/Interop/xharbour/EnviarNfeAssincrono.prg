@@ -5,7 +5,12 @@ Function EnviarNfeAssincrono()
    Local oInicializarConfiguracao
    Local oXml, oNfe, oInfNFe, oIde, oEmit, oEnderEmit, oDest, oEnderDest
    Local oDet, oProd
-   Local oImposto, oICMS, oICMSSN101, oPIS, oPISOutr
+   Local oImposto, oICMS, oICMSSN101, oPIS, oPISOutr, oCOFINS, oCOFINSOutr
+   Local oTotal, oICMSTot
+   Local oTransp, oVol
+   Local oCobr, oFat, oDup
+   Local oPag, oDetPag
+   Local oInfAdic, oInfRespTec
    Local oRetAutorizacao
    Local I
 
@@ -166,6 +171,22 @@ Function EnviarNfeAssincrono()
     // adicionar a tag Pis dentro da tag Imposto
        oImposto:PIS = oPIS
 
+    // criar tag COFINS
+       oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+
+    // criar tag COFINSOutr
+       oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+       oCOFINSOutr:CST     = "99"
+       oCOFINSOutr:VBC     = 0.00
+       oCOFINSOutr:PCOFINS = 0.00
+       oCOFINSOutr:VCOFINS = 0.00
+
+    // adicionar a COFINSOutr dentro da tag COFINS
+       oCOFINS:COFINSOutr = oCOFINSOutr
+
+    // adicionar a tag COFINS dentro da tag Imposto
+       oImposto:COFINS = oCOFINS
+
     // adicionar a tag Imposto dentro da tag Det
        oDet:Imposto = oImposto
 
@@ -173,278 +194,129 @@ Function EnviarNfeAssincrono()
        oInfNfe:AddDet(oDet)
    Next I
 
-/*
-                        COFINS = new Unimake.Business.DFe.Xml.NFe.COFINS
-                        {
-                            COFINSOutr = new Unimake.Business.DFe.Xml.NFe.COFINSOutr
-                            {
-                                CST = "99",
-                                VBC = 0.00,
-                                PCOFINS = 0.00,
-                                VCOFINS = 0.00
-                            }
-                        }
-                    }
+// Criar tag Total
+   oTotal = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
 
-                });
-            }
+// Criar tag ICMSTot
+   oICMSTot = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSTot")
+   oICMSTot:VBC = 0
+   oICMSTot:VICMS = 0
+   oICMSTot:VICMSDeson = 0
+   oICMSTot:VFCP = 0
+   oICMSTot:VBCST = 0
+   oICMSTot:VST = 0
+   oICMSTot:VFCPST = 0
+   oICMSTot:VFCPSTRet = 0
+   oICMSTot:VProd = 254.70
+   oICMSTot:VFrete = 0
+   oICMSTot:VSeg = 0
+   oICMSTot:VDesc = 0
+   oICMSTot:VII = 0
+   oICMSTot:VIPI = 0
+   oICMSTot:VIPIDevol = 0
+   oICMSTot:VPIS = 0
+   oICMSTot:VCOFINS = 0
+   oICMSTot:VOutro = 0
+   oICMSTot:VNF = 254.70
+   oICMSTot:VTotTrib = 37.89
 
-            return dets;
-*/
+// adicionar a tag ICMSTot dentro da tag Total
+   oTotal:ICMSTot = oICMSTot
 
-   // adicionar a tag InfNfe dentro da tag Nfe 
+// adicionar a tag Total dentro da tag InfNfe
+   oInfNfe:Total = oTotal
+
+// Criar a tag Transp  
+   oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
+   oTransp:ModFrete = 0 // ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
+
+// Criar a tag Vol
+   oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+   oVol:QVol  = 1
+   oVol:Esp   = "LU"
+   oVol:Marca = "UNIMAKE"
+   oVol:PesoL = 0.000
+   oVol:PesoB = 0.000
+
+   // adicionar a tag Vol na tag Transp
+   oTransp:AddVol(oVol)
+
+   // adicionar a tag Transp dentro da tag InfNfe
+   oInfNfe:Transp = oTransp
+
+   // Criar tag Cobr 
+   oCobr = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
+
+   // Criar tag Fat 
+   oFat  = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
+   oFat:NFat = "057910"
+   oFat:VOrig = 254.70
+   oFat:VDesc = 0
+   oFat:VLiq = 254.70
+
+   // Criar tag Dup (parcela 1)
+   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup:NDup  = "001"
+   oDup:DVenc = StoD(TtoS(Date() + 30))
+   oDup:VDup  = 127.35
+
+   // adicionar a tag Dup dentro da tag Cobr
+   OCobr:AddDup(oDup)
+
+   // Criar tag Dup (parcela 2)
+   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+   oDup:NDup  = "002"
+   oDup:DVenc = StoD(TtoS(Date() + 60))
+   oDup:VDup  = 127.35
+
+   // adicionar a tag Dup dentro da tag Cobr
+   OCobr:AddDup(oDup)
+
+   // adicionar a tag Fat dentro da tag Cobr
+   oCobr:Fat = oFat
+   
+   // adicionar a tag Cobr dentro da tag InfNfe
+   oInfNfe:Cobr = oCobr
+
+   // criar tag Pag
+   oPag = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
+
+   // criar tag DetPag (pode ter mais que uma, só foi criada uma como exemplo)
+   oDetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+   oDetPag:IndPag = 0 // IndicadorPagamento.PagamentoVista
+   oDetPag:TPag   = 1 // MeioPagamento.Dinheiro
+   oDetPag:VPag   = 254.70
+ 
+   // adicionar a tag DetPag dentro da tag Tag
+   oPag:AddDetPag(oDetPag)
+
+   // adicionar a tag Pag dentro da InfNfe
+   oInfNFe:Pag = oPag
+
+   // criar tag InfAdic
+   oInfAdic = CreateObject("Unimake.Business.DFe.Xml.NFe.InfAdic")
+   oInfAdic:InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;"
+
+   // adicionar a tag InfAdic dentro da tag InfNfe
+   oInfNFe:InfAdic = oInfAdic
+
+   // criar tag InfRespTec
+   oInfRespTec = CreateObject("Unimake.Business.DFe.Xml.NFe.InfRespTec")
+   oInfRespTec:CNPJ     = "06117473000150"
+   oInfRespTec:XContato = "Ze das Couves"
+   oInfRespTec:Email    = "zedascouves@gmail.com"
+   oInfRespTec:Fone     = "04430000000"
+
+   // adicionar a tag InfRespTec dentro da tag InfNfe
+   oInfNfe:InfRespTec = oInfRespTec
+
+   // adicionar a tag InfNfe dentro da tag Nfe
    oNfe:AddInfNFe(oInfNFe)
 
    // adiconar a tag nfe dentro da tag EnviNfe 
    oXml:AddNfe(oNfe)
 
 /*
-                                },
-                                Det = CriarDet(),
-                                Total = new Unimake.Business.DFe.Xml.NFe.Total
-                                {
-                                    ICMSTot = new Unimake.Business.DFe.Xml.NFe.ICMSTot
-                                    {
-                                        VBC = 0,
-                                        VICMS = 0,
-                                        VICMSDeson = 0,
-                                        VFCP = 0,
-                                        VBCST = 0,
-                                        VST = 0,
-                                        VFCPST = 0,
-                                        VFCPSTRet = 0,
-                                        VProd = 169.80,
-                                        VFrete = 0,
-                                        VSeg = 0,
-                                        VDesc = 0,
-                                        VII = 0,
-                                        VIPI = 0,
-                                        VIPIDevol = 0,
-                                        VPIS = 0,
-                                        VCOFINS = 0,
-                                        VOutro = 0,
-                                        VNF = 169.80,
-                                        VTotTrib = 25.26
-                                    }
-                                },
-                                Transp = new Unimake.Business.DFe.Xml.NFe.Transp
-                                {
-                                    ModFrete = ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF,
-                                    Vol = new List<Unimake.Business.DFe.Xml.NFe.Vol>
-                                    {
-                                        new Unimake.Business.DFe.Xml.NFe.Vol
-                                        {
-                                            QVol = 1,
-                                            Esp = "LU",
-                                            Marca = "UNIMAKE",
-                                            PesoL = 0.000,
-                                            PesoB = 0.000
-                                        }
-                                    }
-                                },
-                                Cobr = new Unimake.Business.DFe.Xml.NFe.Cobr()
-                                {
-                                    Fat = new Unimake.Business.DFe.Xml.NFe.Fat
-                                    {
-                                        NFat = "057910",
-                                        VOrig = 169.80,
-                                        VDesc = 0,
-                                        VLiq = 169.80
-                                    },
-                                    Dup = new List<Unimake.Business.DFe.Xml.NFe.Dup>
-                                    {
-                                        new Unimake.Business.DFe.Xml.NFe.Dup
-                                        {
-                                            NDup = "001",
-                                            DVenc = DateTime.Now,
-                                            VDup = 169.80
-                                        }
-                                    }
-                                },
-                                Pag = new Unimake.Business.DFe.Xml.NFe.Pag
-                                {
-                                    DetPag = new List<Unimake.Business.DFe.Xml.NFe.DetPag>
-                                    {
-                                        new Unimake.Business.DFe.Xml.NFe.DetPag
-                                        {
-                                            IndPag = IndicadorPagamento.PagamentoVista,
-                                            TPag = MeioPagamento.Dinheiro,
-                                            VPag = 169.80
-                                        }
-                                    }
-                                },
-                                InfAdic = new Unimake.Business.DFe.Xml.NFe.InfAdic
-                                {
-                                    InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;",
-                                },
-                                InfRespTec = new Unimake.Business.DFe.Xml.NFe.InfRespTec
-                                {
-                                    CNPJ = "06117473000150",
-                                    XContato = "Wandrey Mundin Ferreira",
-                                    Email = "wandrey@unimake.com.br",
-                                    Fone = "04431414900"
-                                }
-                            }
-                        }
-                    },
-                    new Unimake.Business.DFe.Xml.NFe.NFe
-                    {
-                        InfNFe = new List<Unimake.Business.DFe.Xml.NFe.InfNFe>
-                        {
-                            new Unimake.Business.DFe.Xml.NFe.InfNFe
-                            {
-                                Versao = "4.00",
-                                Ide = new Unimake.Business.DFe.Xml.NFe.Ide
-                                {
-                                    CUF = UFBrasil.PR,
-                                    NatOp = "VENDA PRODUC.DO ESTABELEC",
-                                    Mod = ModeloDFe.NFe,
-                                    Serie = 1,
-                                    NNF = 57980,
-                                    DhEmi = DateTime.Now,
-                                    DhSaiEnt = DateTime.Now,
-                                    TpNF = TipoOperacao.Saida,
-                                    IdDest = DestinoOperacao.OperacaoInterestadual,
-                                    CMunFG = 4118402,
-                                    TpImp = FormatoImpressaoDANFE.NormalRetrato,
-                                    TpEmis = TipoEmissao.Normal,
-                                    TpAmb = TipoAmbiente.Homologacao,
-                                    FinNFe = FinalidadeNFe.Normal,
-                                    IndFinal = SimNao.Sim,
-                                    IndPres = IndicadorPresenca.OperacaoPresencial,
-                                    ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                                    VerProc = "TESTE 1.00"
-                                },
-                                Emit = new Unimake.Business.DFe.Xml.NFe.Emit
-                                {
-                                    CNPJ = "06117473000150",
-                                    XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA",
-                                    XFant = "UNIMAKE - PARANAVAI",
-                                    EnderEmit = new Unimake.Business.DFe.Xml.NFe.EnderEmit
-                                    {
-                                        XLgr = "RUA ANTONIO FELIPE",
-                                        Nro = "1500",
-                                        XBairro = "CENTRO",
-                                        CMun = 4118402,
-                                        XMun = "PARANAVAI",
-                                        UF = UFBrasil.PR,
-                                        CEP = "87704030",
-                                        Fone = "04431414900"
-                                    },
-                                    IE = "9032000301",
-                                    IM = "14018",
-                                    CNAE = "6202300",
-                                    CRT = CRT.SimplesNacional
-                                },
-                                Dest = new Unimake.Business.DFe.Xml.NFe.Dest
-                                {
-                                    CNPJ = "04218457000128",
-                                    XNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                                    EnderDest = new Unimake.Business.DFe.Xml.NFe.EnderDest
-                                    {
-                                        XLgr = "AVENIDA DA SAUDADE",
-                                        Nro = "1555",
-                                        XBairro = "CAMPOS ELISEOS",
-                                        CMun = 3543402,
-                                        XMun = "RIBEIRAO PRETO",
-                                        UF = UFBrasil.SP,
-                                        CEP = "14080000",
-                                        Fone = "01639611500"
-                                    },
-                                    IndIEDest = IndicadorIEDestinatario.ContribuinteICMS,
-                                    IE = "582614838110",
-                                    Email = "janelaorp@janelaorp.com.br"
-                                },
-                                Det = CriarDet(),
-                                Total = new Unimake.Business.DFe.Xml.NFe.Total
-                                {
-                                    ICMSTot = new Unimake.Business.DFe.Xml.NFe.ICMSTot
-                                    {
-                                        VBC = 0,
-                                        VICMS = 0,
-                                        VICMSDeson = 0,
-                                        VFCP = 0,
-                                        VBCST = 0,
-                                        VST = 0,
-                                        VFCPST = 0,
-                                        VFCPSTRet = 0,
-                                        VProd = 169.80,
-                                        VFrete = 0,
-                                        VSeg = 0,
-                                        VDesc = 0,
-                                        VII = 0,
-                                        VIPI = 0,
-                                        VIPIDevol = 0,
-                                        VPIS = 0,
-                                        VCOFINS = 0,
-                                        VOutro = 0,
-                                        VNF = 169.80,
-                                        VTotTrib = 25.26
-                                    }
-                                },
-                                Transp = new Unimake.Business.DFe.Xml.NFe.Transp
-                                {
-                                    ModFrete = ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF,
-                                    Vol = new List<Unimake.Business.DFe.Xml.NFe.Vol>
-                                    {
-                                        new Unimake.Business.DFe.Xml.NFe.Vol
-                                        {
-                                            QVol = 1,
-                                            Esp = "LU",
-                                            Marca = "UNIMAKE",
-                                            PesoL = 0.000,
-                                            PesoB = 0.000
-                                        }
-                                    }
-                                },
-                                Cobr = new Unimake.Business.DFe.Xml.NFe.Cobr()
-                                {
-                                    Fat = new Unimake.Business.DFe.Xml.NFe.Fat
-                                    {
-                                        NFat = "057910",
-                                        VOrig = 169.80,
-                                        VDesc = 0,
-                                        VLiq = 169.80
-                                    },
-                                    Dup = new List<Unimake.Business.DFe.Xml.NFe.Dup>
-                                    {
-                                        new Unimake.Business.DFe.Xml.NFe.Dup
-                                        {
-                                            NDup = "001",
-                                            DVenc = DateTime.Now,
-                                            VDup = 169.80
-                                        }
-                                    }
-                                },
-                                Pag = new Unimake.Business.DFe.Xml.NFe.Pag
-                                {
-                                    DetPag = new List<Unimake.Business.DFe.Xml.NFe.DetPag>
-                                    {
-                                        new Unimake.Business.DFe.Xml.NFe.DetPag
-                                        {
-                                            IndPag = IndicadorPagamento.PagamentoVista,
-                                            TPag = MeioPagamento.Dinheiro,
-                                            VPag = 169.80
-                                        }
-                                    }
-                                },
-                                InfAdic = new Unimake.Business.DFe.Xml.NFe.InfAdic
-                                {
-                                    InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;",
-                                },
-                                InfRespTec = new Unimake.Business.DFe.Xml.NFe.InfRespTec
-                                {
-                                    CNPJ = "06117473000150",
-                                    XContato = "Wandrey Mundin Ferreira",
-                                    Email = "wandrey@unimake.com.br",
-                                    Fone = "04431414900"
-                                }
-                            }
-                        }
-                    }
-                }
-            };
-
 ok          var autorizacao = new ServicoNFe.Autorizacao(xml, configuracao);
 ok          autorizacao.Executar();
 
@@ -552,8 +424,69 @@ ok          autorizacao.Executar();
        ?? "",oTagDet:Imposto:Pis:PISOutr:VBC
        ?? "",oTagDet:Imposto:Pis:PISOutr:PPIS
        ?? "",oTagDet:Imposto:Pis:PISOutr:VPIS
+
+       // dados do COFINS
+       ?? "",oTagDet:Imposto:COFINS:COFINSOutr:CST
+       ?? "",oTagDet:Imposto:COFINS:COFINSOutr:VBC
+       ?? "",oTagDet:Imposto:COFINS:COFINSOutr:PCOFINS
+       ?? "",oTagDet:Imposto:COFINS:COFINSOutr:VCOFINS
     Next I    
-   ?
-   Wait
+
+ // dados do total
+    ? "Total" 
+    ? "ICMSTot.VNF      = ",oTagInfNfe:Total:ICMSTot:VNF
+    ? "ICMSTot.VTotTrib = ",oTagInfNfe:Total:ICMSTot:VTotTrib
+
+ // dados da Transp  
+    ? "Transp.ModFrete  = ",oTagInfNfe:Transp:ModFrete
+
+ // dados do volume
+    FOR I = 1 TO oTagInfNfe:Transp:GetVolCount()
+       oTagVol = oTagInfNfe:Transp:GetVol(I-1)
+       ? Space(7) + "Vol.QVol  = ",oTagVol:QVol
+       ? Space(7) + "Vol.Esp   = ",oTagVol:Esp
+       ? Space(7) + "Vol.Marca = ",oTagVol:Marca
+       ? Space(7) + "Vol.PesoL = ",oTagVol:PesoL
+       ? Space(7) + "Vol.PesoB = ",oTagVol:PesoB
+    Next I
+    ?
+
+ // dados da cobrança
+    ? "Fat.NFat  = ",oTagInfNfe:Cobr:Fat:NFat
+    ? "Fat.VOrig = ",oTagInfNfe:Cobr:Fat:VOrig
+    ? "Fat.VDesc = ",oTagInfNfe:Cobr:Fat:VDesc
+    ? "Fat.VLiq  = ",oTagInfNfe:Cobr:Fat:VLiq
+    ?
+    // Dados das duplicatas
+    ? "Duplicatas:"
+    FOR I = 1 To oTagInfNfe:Cobr:GetDupCount()
+        oTagDup = oTagInfNfe:Cobr:GetDup(I-1)
+        ? "  Dup.NDup  = ",oTagDup:NDup
+        ?? " Dup.DVenc = ",oTagDup:DVenc
+        ?? " Dup.VDup  = ",oTagDup:VDup
+    Next I   
+    ?
+    // Informações das Formas de Pagamento
+    ? "Formas de pagamento:"
+    FOR I = 1 To oTagInfNfe:Pag:GetDetPagCount()
+        oTagDetPag = oTagInfNfe:Pag:GetDetPag(I-1)
+        ? "  DetPag.IndPag  = ",oDetPag:IndPag
+        ?? " DetPag.TPag    = ",oDetPag:TPag
+        ?? " DetPag.VPag    = ",oDetPag:VPag
+    Next I   
+    ?
+    // Informacoes Adicionais
+    ? "Informacoes Adicionais"
+    ? "    InfAdic = ",oTagInfNfe:InfAdic:InfCpl
+    ? 
+ 
+    // Informacoes do responsavel tecnico
+    ? "Informacoes do responsavel tecnico"
+    ? "    CNPJ     = ",oTagInfNfe:InfRespTec:CNPJ
+    ? "    XContato = ",oTagInfNfe:InfRespTec:XContato
+    ? "    Email    = ",oTagInfNfe:InfRespTec:Email
+    ? "    Fone     = ",oTagInfNfe:InfRespTec:Fone
+    ?
+    Wait
 Return
 
