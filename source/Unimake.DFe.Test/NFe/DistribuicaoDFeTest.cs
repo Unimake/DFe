@@ -71,6 +71,10 @@ namespace Unimake.DFe.Test.NFe
                         {
                             Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
                         }
+                        foreach (var item in distribuicaoDFe.ResNFes)
+                        {
+                            Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
+                        }
                     }
 
                     nsu = distribuicaoDFe.Result.UltNSU;

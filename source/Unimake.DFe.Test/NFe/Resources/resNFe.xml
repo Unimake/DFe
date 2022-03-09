@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resNFe versao="1.01" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <chNFe>1908061174730001505500100005791319434638900</chNFe>
+  <CNPJ>06117473000150</CNPJ>
+  <xNome>Teste resNFe</xNome>
+  <IE>4804611857</IE>
+  <dhEmi>2022-03-02T15:17:44-03:00</dhEmi>
+  <tpNF>1</tpNF>
+  <vNF>1000</vNF>
+  <digVal>4308019034784000232355000000</digVal>
+  <dhRecbto>2022-03-02T15:27:44-03:00</dhRecbto>
+  <nProt>430801903478400</nProt>
+  <cSitNFe>1</cSitNFe>
+</resNFe>

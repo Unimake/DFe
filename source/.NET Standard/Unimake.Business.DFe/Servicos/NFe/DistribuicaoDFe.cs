@@ -115,6 +115,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     {
                         ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
                     }
+                    else if (item.Schema.StartsWith("resNFe"))
+                    {
+                        ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
+                    }
                 }
             }
         }
@@ -180,6 +184,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         public List<ResEvento> ResEventos { get; private set; }
 
+        /// <summary>
+        /// Resgatar a lista com o conjunto de informações resumidas da NF-e retornados pelo serviço de distribuição de DFe
+        /// </summary>
+        public List<ResNFe> ResNFes { get; private set; }
+
 #if INTEROP
 
         /// <summary>
@@ -198,6 +207,24 @@ namespace Unimake.Business.DFe.Servicos.NFe
         public ResEvento GetResEvento(int elemento)
         {
             return ResEventos[elemento];
+        }
+
+        /// <summary>
+        /// Retorna o quantidade de elementos na lista com os Resumos de NF-e
+        /// </summary>
+        public int GetResNFeCount()
+        {
+            return ResNFes.Count;
+        }
+
+        /// <summary>
+        /// Retorna o resumo de NFe (ResNFe) do elemento informado por parâmetro
+        /// </summary>
+        /// <param name="elemento">Elemento a ser retornado</param>
+        /// <returns>Resumo de NF-e (ResNFe)</returns>
+        public ResNFe GetResNFe(int elemento)
+        {
+            return ResNFes[elemento];
         }
 
 #endif
