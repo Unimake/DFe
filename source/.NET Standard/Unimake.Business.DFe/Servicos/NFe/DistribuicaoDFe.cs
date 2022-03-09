@@ -88,18 +88,15 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
         #region Public Methods
 
-#if INTEROP
-
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o webservice
         /// </summary>
-        /// <param name="distDFeInt">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
-        [ComVisible(true)]
-        public void Executar(DistDFeInt distDFeInt, Configuracao configuracao)
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public void Executar()
         {
-            PrepararServico(distDFeInt?.GerarXML() ?? throw new ArgumentNullException(nameof(distDFeInt)), configuracao);
-            Executar();
+            base.Executar();
 
             //Adicionar os XMLs retornados em suas respectivas listas para que possam ser resgatados em formato de objeto
             if (Result != null && Result.LoteDistDFeInt != null)
@@ -121,6 +118,20 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     }
                 }
             }
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// </summary>
+        /// <param name="distDFeInt">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        [ComVisible(true)]
+        public void Executar(DistDFeInt distDFeInt, Configuracao configuracao)
+        {
+            PrepararServico(distDFeInt?.GerarXML() ?? throw new ArgumentNullException(nameof(distDFeInt)), configuracao);
+            Executar();
         }
 
 #endif
