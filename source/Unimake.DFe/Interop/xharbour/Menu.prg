@@ -18,6 +18,7 @@ Function Main()
    AAdd(aOpcoes, "4-Inutilizar Numero Nfe")
    AAdd(aOpcoes, "5-Consulta Recibo Nfe")
    AAdd(aOpcoes, "6-Enviar Nfe - Assincrono")
+   AAdd(aOpcoes, "7-Cancelar Nfe")
    
    Do While .T.
       Cls
@@ -49,6 +50,9 @@ Function Main()
 
          case nOpcao = 6
               EnviarNfeAssincrono()
-      endcase
+
+         case nOpcao = 7
+              CancelarNfe()
+       endcase
    EndDo
 Return

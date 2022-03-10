@@ -11,8 +11,8 @@ Function EnviarNfeAssincrono()
    Local oCobr, oFat, oDup
    Local oPag, oDetPag
    Local oInfAdic, oInfRespTec
-   Local oRetAutorizacao
-   Local I
+   Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
+   Local I, oErro
 
  * Criar configuraçao básica para consumir o serviço
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
@@ -317,60 +317,66 @@ Function EnviarNfeAssincrono()
    oXml:AddNfe(oNfe)
 
 /*
-ok          var autorizacao = new ServicoNFe.Autorizacao(xml, configuracao);
-ok          autorizacao.Executar();
-
             var configSit = new Configuracao
             {
                 TipoDFe = TipoDFe.NFe,
                 CertificadoDigital = CertificadoSelecionado
             };
-
-            if (autorizacao.Result != null)
-            {
-                if (autorizacao.Result.CStat == 103) //103 = Lote Recebido com Sucesso
-                {
-                    #region Finalizar através da consulta do recibo.
-
-                    var xmlRec = new Unimake.Business.DFe.Xml.NFe.ConsReciNFe
-                    {
-                        Versao = "4.00",
-                        TpAmb = TipoAmbiente.Homologacao,
-                        NRec = autorizacao.Result.InfRec.NRec
-                    };
-
-                    var configRec = new Configuracao
-                    {
-                        TipoDFe = TipoDFe.NFe,
-                        CertificadoDigital = CertificadoSelecionado
-                    };
-
-                    var retAutorizacao = new ServicoNFe.RetAutorizacao(xmlRec, configRec);
-                    retAutorizacao.Executar();
-
-                    autorizacao.RetConsReciNFe = retAutorizacao.Result;
-
-                    autorizacao.GravarXmlDistribuicao(@"c:\testenfe");
-
-                    #endregion Finalizar através da consulta do recibo.
-                }
-            }
-
 */            
+ * Consumir o serviço (Enviar NFE para SEFAZ)
+   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao:Executar(oXml,oInicializarConfiguracao)
+   ? oAutorizacao:GetConteudoXMLAssinado() // por enquanto só consegue pegar depois de executar, ainda vai ser resolvido isso
 
-/*   
-   * Consumir o serviço
-     autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
-    ? autorizacao:GetConteudoXMLAssinado()
-
-  autorizacao:Executar(xml,InicializarConfiguracao)
    ? "XML Retornado pela SEFAZ"
    ? "========================"
-   ? retAutorizacao:RetornoWSString
+   ? oAutorizacao:RetornoWSString
    ?
    ? "Codigo de Status e Motivo"
    ? "========================="
-   ? AllTrim(Str(retAutorizacao:Result:CStat,5)),retAutorizacao:Result:XMotivo
+   ? AllTrim(Str(oAutorizacao:Result:CStat,5)),oAutorizacao:Result:XMotivo
+
+ * Consultar o Recibo retornado no envio da nota para saber se a mesma foi autorizada  
+   if oAutorizacao:Result <> NIL
+      if oAutorizacao:Result:CStat == 103 //103 = Lote Recebido com Sucesso
+         oXmlRec        = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
+         oXmlRec:Versao = "4.00"
+         oXmlRec:TpAmb  = 2 // TipoAmbiente.Homologacao,
+         oXmlRec:NRec   = oAutorizacao:Result:InfRec:NRec
+
+         oConfigRec                    = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+         oConfigRec:TipoDFe            = 0 // TipoDFe.NFe
+         oConfigRec:CertificadoSenha   = "12345678"
+         oConfigRec:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
+         
+         oRetAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")
+         oRetAutorizacao:Executar(oXmlRec, oConfigRec)
+  
+         If oRetAutorizacao:Result <> NIL
+            oAutorizacao:RetConsReciNFe = oRetAutorizacao:Result
+
+          * Modelo para buscar o resultado de cada nota do lote enviado  
+            ? "Codigo de Status e Motivo"
+            ? "========================="
+            For I = 1 TO oRetAutorizacao:Result:GetProtNfeCount()
+                oProtNfe = oRetAutorizacao:Result:GetProtNfe(I-1)
+                ? AllTrim(Str(oProtNfe:InfProt:CStat,5)),oProtNfe:InfProt:XMotivo
+            Next I
+
+          * salvar XML de distribuicao das notas enviadas na pasta informada  
+            Try
+               oAutorizacao:GravarXmlDistribuicao(".\tmp")
+            Catch oErro
+               ? "ERRO"
+               ? "===="
+               ? "Nao foi possivel gravar o XML de distribuicao, pois nao foi localizado o protocolo de autorizacao (NOTA NAO FOI AUTORIZADA)"
+               ? oErro:Description
+               ? oErro:Operation
+            End
+         EndIf
+      EndIf   
+   EndIf         
+   Wait
 */
  * ---------------------------------
  * Recuperando informações do objeto
