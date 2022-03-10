@@ -45,7 +45,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlElement("tpNF")]
-        public string TpNF { get; set; }
+        public TipoOperacao TpNF { get; set; }
 
         [XmlElement("vNF")]
         public string VNF { get; set; }

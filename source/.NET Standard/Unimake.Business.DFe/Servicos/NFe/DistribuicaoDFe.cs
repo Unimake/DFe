@@ -196,7 +196,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         public List<ResEvento> ResEventos { get; private set; }
 
         /// <summary>
-        /// Resgatar a lista com o conjunto de informações resumidas da NF-e retornados pelo serviço de distribuição de DFe
+        /// Resgatar a lista dos resumos das notas fiscais retornadas pelo serviço de distribuição de DFe
         /// </summary>
         public List<ResNFe> ResNFes { get; private set; }
 
