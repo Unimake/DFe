@@ -7,9 +7,9 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarNfsePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -83,9 +83,9 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
@@ -102,11 +102,11 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:RecepcionarLoteRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -121,11 +121,11 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:RecepcionarLoteRpsSincrono><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
@@ -140,11 +140,13 @@
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:SubstituirNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
