@@ -1438,7 +1438,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string UCom { get; set; }
 
         [XmlElement("qCom")]
-        public double QCom { get; set; }
+        public decimal QCom { get; set; }
 
         [XmlElement("vUnCom")]
         public decimal VUnCom { get; set; }
@@ -1463,7 +1463,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string UTrib { get; set; }
 
         [XmlElement("qTrib")]
-        public double QTrib { get; set; }
+        public decimal QTrib { get; set; }
 
         [XmlElement("vUnTrib")]
         public decimal VUnTrib { get; set; }
