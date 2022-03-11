@@ -14,7 +14,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:CancelarNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultarLoteRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -52,7 +52,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultarNfsePorFaixa><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfsePorFaixaResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -71,7 +71,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultarNfsePorRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -90,7 +90,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:GerarNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>GerarNfseResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -109,7 +109,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:RecepcionarLoteRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -128,7 +128,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:RecepcionarLoteRpsSincrono><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
@@ -149,7 +149,7 @@
 			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:SubstituirNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
