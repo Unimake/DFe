@@ -101,6 +101,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
             //Adicionar os XMLs retornados em suas respectivas listas para que possam ser resgatados em formato de objeto
             if (Result != null && Result.LoteDistDFeInt != null)
             {
+                ResNFes = new List<ResNFe>();
+                ResEventos = new List<ResEvento>();
+
                 foreach (var item in Result.LoteDistDFeInt.DocZip)
                 {
                     var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
