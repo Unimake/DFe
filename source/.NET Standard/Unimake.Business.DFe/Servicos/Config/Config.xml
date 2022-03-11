@@ -63,7 +63,7 @@
 	<Arquivo ID="15">
 		<Nome>Pará</Nome>
 		<UF>PA</UF>
-		<ArqConfig>SVRS.xml</ArqConfig>
+		<ArqConfig>PA.xml</ArqConfig>
 	</Arquivo>
 	<Arquivo ID="12">
 		<Nome>Acre</Nome>

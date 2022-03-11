@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2022.03.09.1732</AssemblyVersion>
-		<FileVersion>2022.03.09.1732</FileVersion>
+		<AssemblyVersion>2022.03.11.1020</AssemblyVersion>
+		<FileVersion>2022.03.11.1020</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -177,6 +177,7 @@
 		<None Remove="Servicos\Config\NFCe\MG.xml" />
 		<None Remove="Servicos\Config\NFCe\MS.xml" />
 		<None Remove="Servicos\Config\NFCe\MT.xml" />
+		<None Remove="Servicos\Config\NFCe\PA.xml" />
 		<None Remove="Servicos\Config\NFCe\PB.xml" />
 		<None Remove="Servicos\Config\NFCe\PE.xml" />
 		<None Remove="Servicos\Config\NFCe\PI.xml" />
@@ -207,6 +208,7 @@
 		<None Remove="Servicos\Config\NFe\MG.xml" />
 		<None Remove="Servicos\Config\NFe\MS.xml" />
 		<None Remove="Servicos\Config\NFe\MT.xml" />
+		<None Remove="Servicos\Config\NFe\PA.xml" />
 		<None Remove="Servicos\Config\NFe\PB.xml" />
 		<None Remove="Servicos\Config\NFe\PE.xml" />
 		<None Remove="Servicos\Config\NFe\PI.xml" />
@@ -698,6 +700,9 @@
 		<EmbeddedResource Include="Servicos\Config\MDFe\TO.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFCe\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFCe\MA.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFCe\PA.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFCe\RJ.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -805,6 +810,7 @@
 		<EmbeddedResource Include="Servicos\Config\NFe\MT.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFe\PA.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFe\PB.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFe\PE.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
