@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Author:			    Anvisa/Gaesi-USP
+	Updated:		    2020-12-04
+	Layout Version:	    0.01
+	XSD File Revision:  1 (v0.01-R1)
+	Reference:		    MANUAL DE PADRÕES E INTERFACES DO SNCM - v0.1.11
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://sncm.anvisa.gov.br/"
+    targetNamespace="http://sncm.anvisa.gov.br/"
+    elementFormDefault="qualified"
+    version="0.01">
+    
+    <xsd:include schemaLocation="sncmTypes.xsd"/>
+    
+    <xsd:element name="msgMbtAgtMgmt">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="docId" type="UniqueId"/>
+                <xsd:element name="ccTime" type="UtcOnlyDateTime"/>
+                <xsd:element name="ver" type="Version"/>
+                <xsd:element name="lc" type="Locale"/>
+                <xsd:element name="env" type="Environment"/>
+                <xsd:element name="declarant" type="StakeholderId"/>
+                <xsd:element name="mbrAgt" type="Cnpj" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="usrAgt" type="Microtext"/>
+                <xsd:element name="mbrAgts">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="comnd" type="Command"/>
+                            <xsd:element name="cnpj" type="Cnpj"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:any namespace="http://www.w3.org/2000/09/xmldsig#" minOccurs="0" maxOccurs="1" processContents="lax"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

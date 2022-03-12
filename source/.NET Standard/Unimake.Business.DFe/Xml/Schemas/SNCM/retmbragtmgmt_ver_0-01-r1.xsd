@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Author:			    Anvisa/Gaesi-USP
+	Updated:		    2020-12-04
+	Layout Version:	    0.01
+	XSD File Revision:  1 (v0.01-R1)
+	Reference:		    MANUAL DE PADRÕES E INTERFACES DO SNCM - v0.1.11
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://sncm.anvisa.gov.br/"
+    targetNamespace="http://sncm.anvisa.gov.br/"
+    elementFormDefault="qualified"
+    version="0.01">
+    
+    <xsd:include schemaLocation="sncmTypes.xsd"/>
+    
+    <xsd:element name="retMbtAgtMgmt">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="docId" type="UniqueId"/>
+                <xsd:element name="crTime" type="UtcOnlyDateTime"/>
+                <xsd:element name="ver" type="Version"/>
+                <xsd:element name="lc" type="Locale"/>
+                <xsd:element name="env" type="Environment"/>
+                <xsd:element name="backOff" type="BackOfficeId"/>
+                <xsd:element name="list" minOccurs="0" maxOccurs="1">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="cnpj" type="Cnpj" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="rets">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="ret" type="WebServiceReturn" minOccurs="1" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="anom" type="Boolean"/>
+                <xsd:element name="notif" type="Boolean"/>
+                <xsd:element name="action" type="Boolean"/>
+                <xsd:any namespace="http://www.w3.org/2000/09/xmldsig#" minOccurs="0" maxOccurs="1" processContents="lax"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

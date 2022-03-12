@@ -4,8 +4,9 @@ using System.Xml.Serialization;
 namespace Unimake.Business.DFe.Servicos
 {
     #region Servico
+
     /// <summary>
-    /// Serviços disponíveis
+    /// Serviços disponíveis na DLL para integração com os documentos fiscais eletrônicos
     /// </summary>
     public enum Servico
     {
@@ -262,9 +263,11 @@ namespace Unimake.Business.DFe.Servicos
 
         #endregion
     }
+
     #endregion
 
     #region DFE
+
     /// <summary>
     /// Tipos de DFe´s existentes
     /// </summary>
@@ -309,8 +312,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// GNRE - Guia Nacional de Recolhimento de Tributos Estaduais
         /// </summary>
-        GNRE = 8
+        GNRE = 8,
+        /// <summary>
+        /// SNCM - Sistema Nacional de Controle de Medicamentos
+        /// </summary>
+        SNCM = 9
     }
+
     #endregion       
 
     #region UF

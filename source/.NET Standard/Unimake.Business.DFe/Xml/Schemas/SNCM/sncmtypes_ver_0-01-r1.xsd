@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Author:			    Anvisa/Gaesi-USP
+	Updated:		    2020-12-04
+	Layout Version:	    0.01
+	XSD File Revision:  1 (v0.01-R1)
+	Reference:		    MANUAL DE PADRÕES E INTERFACES DO SNCM - v0.1.11
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://sncm.anvisa.gov.br/"
+    targetNamespace="http://sncm.anvisa.gov.br/"
+    elementFormDefault="qualified"
+    version="0.01">
+<!-- 
+	=============== SIMPLE TYPES ===============
+-->
+	<xsd:simpleType name="Boolean">
+		<xsd:restriction base="xsd:boolean">
+			<xsd:pattern value="false|true"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Microtext">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="140"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Cpf">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="11"/>
+			<xsd:pattern value="[0-9]{11}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Cnpj">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="14"/>
+			<xsd:pattern value="[0-9]{14}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Cnes">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="7"/>
+			<xsd:pattern value="[0-9]{7}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ProfessionalRegistrationCode">
+		<xsd:restriction base="xsd:token">
+			<xsd:minLength value="2"/>
+			<xsd:maxLength value="20"/>
+			<xsd:pattern value="[0-9A-Z]+[\-]{0,1}[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="BusinessTransactionId">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="140"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Date">
+		<xsd:annotation>
+			<xsd:documentation>Format: yyyy-mm-dd.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:date">
+			<xsd:pattern value="[0-9]{4}\-(0[1-9]{1}|1[0-2]{1})\-(0[1-9]{1}|[1-2]{1}[0-9]{1}|3[0-1]{1})"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="YearMonth">
+		<xsd:annotation>
+			<xsd:documentation>Year-month combination. Format: yyyy-mm.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:gYearMonth">
+			<xsd:pattern value="[0-9]{4}\-(0[1-9]{1}|1[0-2]{1})"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Icd">
+		<xsd:annotation>
+			<xsd:documentation>International Classification of Diseases (ICD), without decimal point. Alphanumeric characters only.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="3"/>
+			<xsd:maxLength value="6"/>
+			<xsd:pattern value="[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Gtin">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="14"/>
+			<xsd:pattern value="[0-9]{14}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ProductUnitSerialCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="20"/>
+			<xsd:pattern value="[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Lot">
+		<xsd:restriction base="xsd:token">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="20"/>
+			<xsd:pattern value="[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Sscc">
+		<xsd:annotation>
+			<xsd:documentation>Serial Shipping Container Code.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="18"/>
+			<xsd:pattern value="[0-9]{18}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="GtinWithSn">
+		<xsd:annotation>
+			<xsd:documentation>GTIN + serial number.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="15"/>
+			<xsd:maxLength value="34"/>
+			<xsd:pattern value="[0-9]{14}[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="AdHocTransportationPackageSerialCode">
+		<xsd:annotation>
+			<xsd:documentation>GS1 standard non-compliant TransportationPackageId.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="38"/>
+			<xsd:pattern value="[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Environment">
+		<xsd:restriction base="xsd:int">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Version">
+		<xsd:annotation>
+			<xsd:documentation>Format: NN.NN</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{1,2}\.[0-9]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="UtcOnlyDateTime">
+		<xsd:annotation>
+			<xsd:documentation>A strict subset of the XSD standard dateTime type (ISO 8601), accepting only dateTime values conforming to the format "yyyy-mm-ddThh:mm:ssZ".</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:dateTime">
+			<xsd:pattern value=".*:[0-9]{2}Z"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ReturnCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="5"/>
+			<xsd:pattern value="[0-9]{5}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="UniqueId">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="20"/>
+			<xsd:pattern value="[0-9A-Z]{20}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Status">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="2"/>
+			<xsd:enumeration value="OK"/>
+			<xsd:enumeration value="NO"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="BackOfficeId">
+		<xsd:restriction base="xsd:int">
+			<xsd:pattern value="[0-9]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="AnomCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="7"/>
+			<xsd:pattern value="anom[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="NotificationCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+			<xsd:pattern value="notif[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActionCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="9"/>
+			<xsd:pattern value="action[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Locale">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="5"/>
+			<xsd:pattern value="[a-z]{2}\-[A-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="Command">
+		<xsd:restriction base="xsd:int">
+			<xsd:pattern value="[0-9]{1}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="RegAnvisa">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{13}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ReturnEffect">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="3"/>
+			<xsd:enumeration value="SUC"/>
+			<xsd:enumeration value="WNG"/>
+			<xsd:enumeration value="REJ"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="AtcWHOCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="7"/>
+			<xsd:pattern value="[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="AtcEphMRACode">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="7"/>
+			<xsd:pattern value="[0-9A-Z]+"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="RegClass">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="5"/>
+			<xsd:pattern value="CR[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="InterruptReason">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="5"/>
+			<xsd:pattern value="IR[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="PrescriptionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="5"/>
+			<xsd:pattern value="NR[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+<!-- 
+	=============== COMPLEX TYPES ===============
+-->
+	<xsd:complexType name="StakeholderId">
+		<xsd:choice>
+			<xsd:element name="cpf" type="Cpf"/>
+			<xsd:element name="cnpj" type="Cnpj"/>
+			<xsd:element name="cnes" type="Cnes"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	<xsd:complexType name="StakeholderData">
+		<xsd:sequence>
+			<xsd:element name="stkHolder" type="StakeholderId" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="addr" type="Microtext" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="city" type="Microtext" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="state" type="Microtext" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Dui">
+		<xsd:annotation>
+			<xsd:documentation>Drug unit identifier.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="gtin" type="Gtin"/>
+			<xsd:element name="serl" type="ProductUnitSerialCode"/>
+			<xsd:element name="exp" type="YearMonth"/>
+			<xsd:element name="lot" type="Lot"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="CompositeDuiComponents">
+		<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+			<xsd:element name="dui" type="Dui"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="CompositeDui">
+		<xsd:sequence>
+			<xsd:element name="dui" type="Dui"/>
+			<xsd:element name="compnts" type="CompositeDuiComponents"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="AdHocTransportationPackageId">
+		<xsd:annotation>
+			<xsd:documentation>GS1 standard non-compliant TransportationPackageId.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="shipper" type="StakeholderId"/>
+			<xsd:element name="tpSerl" type="AdHocTransportationPackageSerialCode"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TransportationPackageId">
+		<xsd:choice>
+			<xsd:element name="sscc" type="Sscc"/>
+			<xsd:element name="gtinSn" type="GtinWithSn"/>
+			<xsd:element name="adHocTpi" type="AdHocTransportationPackageId"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	<xsd:complexType name="TransportationPackageWithContents">
+		<xsd:sequence>
+			<xsd:element name="tpi" type="TransportationPackageId"/>
+			<xsd:choice>
+				<xsd:element name="pld" type="Payload"/>
+				<xsd:sequence>
+					<xsd:element name="unvPld" type="Boolean"/>
+					<xsd:element name="supdPld" type="Payload" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Payload">
+		<xsd:choice minOccurs="1" maxOccurs="unbounded">
+			<xsd:element name="tp" type="TransportationPackageWithContents"/>
+			<xsd:element name="dui" type="Dui"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	<xsd:complexType name="RevokedEventInstanceId">
+		<xsd:sequence>
+			<xsd:element name="origEvtId" type="UniqueId"/>
+			<xsd:element name="desc" type="Microtext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="CarrierSequence">
+		<xsd:sequence>
+			<xsd:element name="car" type="StakeholderId" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="BusinessTransaction">
+		<xsd:sequence>
+			<xsd:element name="bizTransId" type="BusinessTransactionId"/>
+			<xsd:element name="bizTransType" type="Microtext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="UnitSealBreak">
+		<xsd:sequence>
+			<xsd:element name="dui" type="Dui"/>
+			<xsd:element name="desc" type="Microtext" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="SealBreak">
+		<xsd:sequence>
+			<xsd:element name="s" type="UnitSealBreak" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="UnitDispensation">
+		<xsd:complexContent>
+			<xsd:extension base="UnitSealBreak">
+				<xsd:sequence>
+					<xsd:element name="cons" type="Cpf" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="UnitDispensationWithPrescription">
+		<xsd:complexContent>
+			<xsd:extension base="UnitSealBreak">
+				<xsd:sequence>
+					<xsd:element name="presCode" type="ProfessionalRegistrationCode"/>
+					<xsd:element name="presDate" type="Date"/>
+					<xsd:element name="phcistMgr" type="Cpf" minOccurs="0" maxOccurs="1"/>
+					<xsd:choice>
+						<xsd:element name="pnn" type="Microtext"/>
+						<xsd:element name="pnnSNCR" type="Microtext"/>
+					</xsd:choice>
+					<xsd:choice>
+						<xsd:sequence>
+							<xsd:element name="cons" type="Cpf"/>
+							<xsd:element name="pat" type="Cpf"/>
+						</xsd:sequence>
+						<xsd:element name="pat" type="Cpf"/>
+					</xsd:choice>
+					<xsd:element name="icd" type="Icd" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Dispensation">
+		<xsd:sequence>
+			<xsd:choice minOccurs="1" maxOccurs="unbounded">
+				<xsd:element name="d" type="UnitDispensation" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element name="dwp" type="UnitDispensationWithPrescription" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Disposal">
+		<xsd:sequence>
+			<xsd:element name="dui" type="Dui" minOccurs="1" maxOccurs="unbounded"/>
+			<xsd:element name="desc" type="Microtext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Exportation">
+		<xsd:sequence>
+			<xsd:element name="pld" type="Payload"/>
+			<xsd:element name="receiver" type="Microtext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="UncontrolledFinalization">
+		<xsd:sequence>
+			<xsd:element name="pld" type="Payload"/>
+			<xsd:element name="but" type="Payload" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="desc" type="Microtext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType abstract="true" name="Event">
+		<xsd:annotation>
+			<xsd:documentation>Common data elements to all event types.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="evtNotifId" type="UniqueId"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType abstract="true" name="ReplaceableEvent">
+		<xsd:complexContent>
+			<xsd:extension base="Event">
+				<xsd:choice>
+					<xsd:element name="realTime" type="Boolean"/>
+					<xsd:sequence>
+						<xsd:element name="pastTime" type="UtcOnlyDateTime"/>
+						<xsd:element name="replacing" type="RevokedEventInstanceId" minOccurs="0" maxOccurs="1"/>
+					</xsd:sequence>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Activation">
+		<xsd:complexContent>
+			<xsd:extension base="ReplaceableEvent">
+				<xsd:sequence>
+					<xsd:element name="import" type="Boolean"/>
+					<xsd:choice minOccurs="1" maxOccurs="unbounded">
+						<xsd:element name="dui" type="Dui"/>
+						<xsd:element name="compDui" type="CompositeDui"/>
+					</xsd:choice>
+					<xsd:element name="outsrc" type="StakeholderId" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Move">
+		<xsd:complexContent>
+			<xsd:extension base="ReplaceableEvent">
+				<xsd:sequence>
+					<xsd:element name="fit" type="Boolean"/>
+					<xsd:element name="prtnr" type="StakeholderId"/>
+					<xsd:element name="carrs" type="CarrierSequence"/>
+					<xsd:element name="pld" type="Payload"/>
+					<xsd:element name="bizTrans" type="BusinessTransaction" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Finalization">
+		<xsd:complexContent>
+			<xsd:extension base="ReplaceableEvent">
+				<xsd:sequence>
+					<xsd:choice>
+						<xsd:element name="dispn" type="Dispensation"/>
+						<xsd:element name="sealBrk" type="SealBreak"/>
+						<xsd:element name="xport" type="Exportation"/>
+						<xsd:element name="destroy" type="Disposal"/>
+						<xsd:element name="damage" type="UncontrolledFinalization"/>
+						<xsd:element name="disapp" type="UncontrolledFinalization"/>
+						<xsd:element name="robry" type="UncontrolledFinalization"/>
+						<xsd:element name="seizure" type="UncontrolledFinalization"/>
+						<xsd:element name="snvs" type="UncontrolledFinalization"/>
+						<xsd:element name="military" type="UncontrolledFinalization"/>
+						<xsd:element name="quality" type="UncontrolledFinalization"/>
+					</xsd:choice>
+					<xsd:element name="bizTrans" type="BusinessTransaction" minOccurs="0" maxOccurs="1"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Revocation">
+		<xsd:complexContent>
+			<xsd:extension base="Event">
+				<xsd:sequence>
+					<xsd:element name="revoking" type="RevokedEventInstanceId"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="Events">
+		<xsd:choice minOccurs="1" maxOccurs="unbounded">
+			<xsd:element name="activ" type="Activation"/>
+			<xsd:element name="shpt" type="Move"/>
+			<xsd:element name="rec" type="Move"/>
+			<xsd:element name="final" type="Finalization"/>
+			<xsd:element name="evtRvctn" type="Revocation"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	<xsd:complexType name="WebServiceReturn">
+		<xsd:sequence>
+			<xsd:element name="code" type="ReturnCode"/>
+			<xsd:element name="effect" type="ReturnEffect"/>
+			<xsd:element name="desc" type="Microtext"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+</xsd:schema>

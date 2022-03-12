@@ -495,6 +495,15 @@
 		<None Remove="Xml\Schemas\retEnviNFe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\retEnvRemIndus_v1.00.xsd" />
 		<None Remove="Xml\Schemas\retInutNFe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\SNCM\msgevtin_ver_0-01.xsd" />
+		<None Remove="Xml\Schemas\SNCM\msgmbragtmgmt_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\msgmdatamah_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\msgparam_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\retevtin_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\retmbragtmgmt_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\sncmtypes_ver_0-01-r1.xsd" />
 		<None Remove="Xml\Schemas\tiposBasico_v1.03.xsd" />
 		<None Remove="Xml\Schemas\tiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\tiposDistDFe_v1.01.xsd" />
@@ -1286,6 +1295,15 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\msgevtin_ver_0-01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\msgmbragtmgmt_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\msgmdatamah_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\msgparam_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\retevtin_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\retmbragtmgmt_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\sncmtypes_ver_0-01-r1.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
