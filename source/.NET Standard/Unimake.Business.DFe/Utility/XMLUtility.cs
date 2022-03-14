@@ -225,12 +225,12 @@ namespace Unimake.Business.DFe.Utility
             #region Verificar se o modelo da chave é válido
 
             var modeloDFe = Convert.ToInt32(chave.Substring(20, 2));
-            var tipoEnum = typeof(ModeloDFe);
+            Type tipoEnum = typeof(ModeloDFe);
             if (!Enum.IsDefined(tipoEnum, modeloDFe))
             {
                 var modeloPermitido = string.Empty;
 
-                foreach (var item in tipoEnum.GetFields())
+                foreach (System.Reflection.FieldInfo item in tipoEnum.GetFields())
                 {
                     if (Attribute.GetCustomAttribute(item, typeof(XmlEnumAttribute)) is XmlEnumAttribute attribute)
                     {
@@ -256,7 +256,7 @@ namespace Unimake.Business.DFe.Utility
             {
                 var tipoPermitido = string.Empty;
 
-                foreach (var item in tipoEnum.GetFields())
+                foreach (System.Reflection.FieldInfo item in tipoEnum.GetFields())
                 {
                     if (Attribute.GetCustomAttribute(item, typeof(XmlEnumAttribute)) is XmlEnumAttribute attribute)
                     {
@@ -387,7 +387,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o tipo do documento eletrônico</returns>
         public static TipoDFe DetectDFeType(string xml)
         {
-            var tipoDFe = TipoDFe.Desconhecido;
+            TipoDFe tipoDFe = TipoDFe.Desconhecido;
 
             if (xml.Contains("<mod>55</mod>"))
             {
@@ -424,7 +424,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns></returns>
         public static TipoDFe DetectEventByDFeType(string xml)
         {
-            var tipoDFe = TipoDFe.Desconhecido;
+            TipoDFe tipoDFe = TipoDFe.Desconhecido;
             var tagId = "<infEvento Id=\"ID";
 
             if (!xml.Contains(tagId))
@@ -476,7 +476,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o tipo do evento do CT-e</returns>
         public static TipoEventoCTe DetectEventoCTeType(string xml)
         {
-            var tipoEventoCTe = TipoEventoCTe.Desconhecido;
+            TipoEventoCTe tipoEventoCTe = TipoEventoCTe.Desconhecido;
 
             if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
@@ -524,7 +524,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o tipo do evento do MDF-e</returns>
         public static TipoEventoMDFe DetectEventoMDFeType(string xml)
         {
-            var tipoEventoMDFe = TipoEventoMDFe.Desconhecido;
+            TipoEventoMDFe tipoEventoMDFe = TipoEventoMDFe.Desconhecido;
 
             if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
@@ -565,7 +565,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o tipo do evento do documento eletrônico</returns>
         public static TipoEventoNFe DetectEventoNFeType(string xml)
         {
-            var tipoEventoNFe = TipoEventoNFe.Desconhecido;
+            TipoEventoNFe tipoEventoNFe = TipoEventoNFe.Desconhecido;
 
             if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
             {
@@ -1152,15 +1152,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="xmlElement">Elemento do XML onde será pesquisado o Nome da TAG</param>
         /// <param name="tagName">Nome da Tag que será pesquisado</param>
         /// <returns>Conteúdo da tag</returns>
-        public static bool TagExist(XmlElement xmlElement, string tagName)
-        {
-            if (xmlElement is null)
-            {
-                throw new ArgumentNullException(nameof(xmlElement));
-            }
-
-            return xmlElement.GetElementsByTagName(tagName).Count != 0;
-        }
+        public static bool TagExist(XmlElement xmlElement, string tagName) => XmlHelper.TagExist(xmlElement, tagName);
 
         /// <summary>
         /// Busca o nome de uma determinada TAG em um Elemento do XML para ver se existe, se existir retorna seu conteúdo da TAG.
@@ -1168,22 +1160,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="xmlElement">Elemento do XML onde será pesquisado o Nome da TAG</param>
         /// <param name="tagName">Nome da Tag que será pesquisado</param>
         /// <returns>Conteúdo da tag</returns>
-        public static string TagRead(XmlElement xmlElement, string tagName)
-        {
-            if (xmlElement is null)
-            {
-                throw new ArgumentNullException(nameof(xmlElement));
-            }
-
-            var content = string.Empty;
-
-            if (xmlElement.GetElementsByTagName(tagName).Count != 0)
-            {
-                content = xmlElement.GetElementsByTagName(tagName)[0].InnerText;
-            }
-
-            return content;
-        }
+        public static string TagRead(XmlElement xmlElement, string tagName) => XmlHelper.ReadTagValue(xmlElement, tagName);
 
         /// <summary>
         /// Tratar caracteres especiais existentes na string substituindo por escape.
