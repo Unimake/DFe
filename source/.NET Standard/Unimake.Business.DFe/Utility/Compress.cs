@@ -1,10 +1,7 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
-using System.IO;
-using System.IO.Compression;
-using System.Text;
+using Unimake.Compression;
 using System.Xml;
 
 namespace Unimake.Business.DFe.Utility
@@ -17,7 +14,7 @@ namespace Unimake.Business.DFe.Utility
     [ProgId("Unimake.Business.DFe.Utility.Compress")]
     [ComVisible(true)]
 #endif
-    public static class Compress
+    public class Compress
     {
         /// <summary>
         /// Compactar XMLDocument com GZIP
@@ -31,19 +28,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="conteudoXML">Conteúdo a ser compactado</param>
         /// <returns>String do conteúdo compactado</returns>
-        public static string GZIPCompress(string conteudoXML)
-        {
-            var value = conteudoXML;
-
-            var buffer = Encoding.UTF8.GetBytes(value);
-            var ms = new MemoryStream();
-            using(var zip = new GZipStream(ms, CompressionMode.Compress))
-            {
-                zip.Write(buffer, 0, buffer.Length);
-            }
-
-            return Convert.ToBase64String(ms.GetBuffer());
-        }
+        public static string GZIPCompress(string conteudoXML) => CompressionHelper.GZIPCompress(conteudoXML);
 
 
         /// <summary>
@@ -51,22 +36,6 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="input">Conteúdo a ser descompactado</param>
         /// <returns>Retorna uma string com o conteúdo descompactado</returns>
-        public static string GZIPDecompress(string input)
-        {
-            //var enc = input.ToCharArray();
-            //var dec = Convert.FromBase64CharArray(enc, 0, enc.Length);
-
-            var encodedDataAsBytes = Convert.FromBase64String(input);
-            using(Stream comp = new MemoryStream(encodedDataAsBytes))
-            {
-                using(Stream decomp = new GZipStream(comp, CompressionMode.Decompress, false))
-                {
-                    using(var sr = new StreamReader(decomp))
-                    {
-                        return sr.ReadToEnd();
-                    }
-                }
-            }
-        }
+        public static string GZIPDecompress(string input) => CompressionHelper.GZIPDecompress(input);
     }
 }
