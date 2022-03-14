@@ -2,13 +2,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.ComponentModel;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
+using Unimake.Cryptography;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -30,77 +27,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="value">Para qual tipo converter o conteúdo do objeto</param>
         /// <param name="expectedType">Para qual tipo converter o conteúdo do objeto</param>
         /// <returns>Conteúdo do objeto convertido para o tipo informado</returns>
-        private static object ChangeType(object value, Type expectedType)
-        {
-            if(value == null)
-            {
-                return null;
-            }
-
-            object result = null;
-
-            try
-            {
-                if(expectedType.IsEnum)
-                {
-                    if(int.TryParse(value.ToString(), out var i))
-                    {
-                        result = (from enun in Enum.GetValues(expectedType).Cast<int>()
-                                  where enun == i
-                                  select enun).First();
-                    }
-                }
-                else if(expectedType == typeof(TimeSpan) ||
-                        expectedType == typeof(TimeSpan?))
-                {
-                    var timeDate = new DateTime();
-
-                    if(DateTime.TryParse(value.ToString(), out timeDate))
-                    {
-                        result = new TimeSpan(timeDate.Ticks);
-                    }
-                }
-                else if(expectedType == typeof(bool) ||
-                         expectedType == typeof(bool?))
-                {
-                    bool.TryParse(value?.ToString(), out var b);
-                    result = b;
-                }
-                else
-                {
-                    if(!ConvertFromTypeDescriptor(value, expectedType, ref result))
-                    {
-                        result = Convert.ChangeType(value, expectedType);
-                    }
-                }
-            }
-            catch
-            {
-                ConvertFromTypeDescriptor(value, expectedType, ref result);
-            }
-
-            return result;
-        }
-
-        private static bool ConvertFromTypeDescriptor(object value, Type expectedType, ref object result)
-        {
-            var conv = TypeDescriptor.GetConverter(expectedType);
-
-            if(!(conv?.CanConvertFrom(value.GetType()) ?? false))
-            {
-                return false;
-            }
-
-            try
-            {
-                result = conv.ConvertFrom(value);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        private static object ChangeType(object value, Type expectedType) => UConvert.ChangeType(value, expectedType);
 
         #endregion Private Methods
 
@@ -111,15 +38,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="contentConvert">Conteúdo a ser convertido</param>
         /// <returns>Conteúdo convertido para MemoryStrem com UTF8 Encoding</returns>
-        public static MemoryStream StringToStreamUTF8(string contentConvert)
-        {
-            var encoding = new System.Text.UTF8Encoding();
-            var byteArray = encoding.GetBytes(contentConvert);
-            var memoryStream = new MemoryStream(byteArray);
-            memoryStream.Seek(0, SeekOrigin.Begin);
-
-            return memoryStream;
-        }
+        public static MemoryStream StringToStreamUTF8(string contentConvert) => UConvert.ToMemoryStream(contentConvert, System.Text.Encoding.UTF8);
 
         /// <summary>
         /// Tenta converter qualquer objeto passado em value para o tipo esperado em T
@@ -135,41 +54,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="expectedType">Para qual tipo converter o conteúdo do objeto</param>
         /// <param name="value">Conteúdo do objeto a ser convertido</param>
         /// <returns>Conteúdo do objeto convertido para o tipo informado</returns>
-        public static object ToAny(object value, Type expectedType)
-        {
-            var result = default(object);
-
-            expectedType = Nullable.GetUnderlyingType(expectedType) ?? expectedType;
-
-            if(value != null && value != DBNull.Value)
-            {
-                try
-                {
-                    if(expectedType.IsEnum)
-                    {
-                        result = Enum.Parse(expectedType, value.ToString());
-                    }
-                    else if(expectedType.FullName.Equals(typeof(string).FullName))
-                    {
-                        result = value.ToString();
-                    }
-                    else if(expectedType.FullName.Equals(typeof(double).FullName))
-                    {
-                        result = double.Parse(value.ToString(), CultureInfo.InvariantCulture);
-                    }
-                    else
-                    {
-                        result = ChangeType(value, expectedType);
-                    }
-                }
-                catch
-                {
-                    result = default;
-                }
-            }
-
-            return result;
-        }
+        public static object ToAny(object value, Type expectedType) => ChangeType(value, expectedType);
 
         /// <summary>
         /// Converte um valor do objeto em double
@@ -178,7 +63,7 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Valor convertido para double</returns>
         public static double ToDouble(object value)
         {
-            if(value == null)
+            if (value == null)
             {
                 //TODO: Marcelo >>> Vai retornar zero por padrão mesmo?
                 return 0;
@@ -204,21 +89,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="input">Valor a ser convertido</param>
         /// <returns>Valor convertido em hexadecimal</returns>
-        public static string ToHexadecimal(string input)
-        {
-            var hexOutput = "";
-            var values = input.ToCharArray();
-            foreach(var letter in values)
-            {
-                // Get the integral value of the character.
-                var value = Convert.ToInt32(letter);
-
-                // Convert the decimal value to a hexadecimal value in string form.
-                hexOutput += string.Format("{0:x}", value);
-            }
-
-            return hexOutput;
-        }
+        public static string ToHexadecimal(string input) => UConvert.ToHexadecimal(input);
 
         /// <summary>
         /// Criptografa uma string com RSA-SHA1 e retorna o conteúdo convertido para Base64String
@@ -226,92 +97,32 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="certificado">certificado utilizado na criptografia</param>
         /// <param name="value">Conteúdo a ser criptografado</param>
         /// <returns>Retorna a string assinada com RSA SHA1 e convertida para Base64String</returns>
-        public static string ToRSASHA1(X509Certificate2 certificado, string value)
-        {
-            // Converter a cadeia de caracteres ASCII para bytes.
-            var asciiEncoding = new ASCIIEncoding();
-            var asciiBytes = asciiEncoding.GetBytes(value);
-
-            // Gerar o HASH (array de bytes) utilizando SHA1
-            var sha1 = new SHA1CryptoServiceProvider();
-            var sha1Hash = sha1.ComputeHash(asciiBytes);
-
-            // Assinar o HASH (array de bytes) utilizando RSA-SHA1.
-            var rsa = certificado.PrivateKey as RSACryptoServiceProvider;
-            asciiBytes = rsa.SignHash(sha1Hash, "SHA1");
-            var result = Convert.ToBase64String(asciiBytes);
-
-            return result;
-        }
+        public static string ToRSASHA1(X509Certificate2 certificado, string value) => SHA1Helper.ToRSASHA1(certificado, value);
 
         /// <summary>
         /// Converte conteúdo para HSA1HashData
         /// </summary>
-        /// <param name="data">Conteudo a ser convertido</param>
+        /// <param name="data">Conteúdo a ser convertido</param>
         /// <returns>Conteúdo convertido para SH1HashData</returns>
         public static string ToSHA1HashData(string data) => ToSHA1HashData(data, false);
 
         /// <summary>
         /// Converte conteúdo para HSA1HashData
         /// </summary>
-        /// <param name="data">Conteudo a ser convertido</param>
+        /// <param name="data">Conteúdo a ser convertido</param>
         /// <param name="toUpper">Resultado todo em maiúsculo?</param>
         /// <returns>Conteúdo convertido para SH1HashData</returns>
-        public static string ToSHA1HashData(string data, bool toUpper)
-        {
-            using(HashAlgorithm algorithm = new SHA1CryptoServiceProvider())
-            {
-                var buffer = algorithm.ComputeHash(Encoding.ASCII.GetBytes(data));
-                var builder = new StringBuilder(buffer.Length);
-                foreach(var num in buffer)
-                {
-                    if(toUpper)
-                    {
-                        builder.Append(num.ToString("X2"));
-                    }
-                    else
-                    {
-                        builder.Append(num.ToString("x2"));
-                    }
-                }
-
-                return builder.ToString();
-            }
-        }
+        public static string ToSHA1HashData(string data, bool toUpper) => SHA1Helper.ToSHA1HashData(data, toUpper);
 
         /// <summary>
-        /// Converte uma string Base64 para um arquivo PDF
+        /// Escreve uma string base64 em um arquivo PDF.
+        /// <para>A string já deve ser um PDF válido. Este método apenas escreve o arquivo</para>
         /// </summary>
-        /// <param name="contentBase64">Conteúdo Base64 a ser convertido para PDF</param>
-        /// <param name="arqPDF">Pasta e nome do arquivo onde deve ser gravado o PDF</param>
-        public static void Base64ToPDF(string contentBase64, string arqPDF)
-        {
-            BinaryWriter writer = null;
-
-            try
-            {
-                var sPDFDecoded = Convert.FromBase64String(contentBase64);
-
-                if (File.Exists(arqPDF))
-                {
-                    File.Delete(arqPDF);
-                }
-
-                writer = new BinaryWriter(File.Open(arqPDF, FileMode.CreateNew));
-                writer.Write(sPDFDecoded);
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                if(writer != null)
-                {
-                    writer.Close();
-                }
-            }
-        }
+        /// <param name="content">Conteúdo que será escrito no arquivo</param>
+        /// <param name="path">Pasta e nome do arquivo onde deve ser gravado o PDF</param>
+        /// <exception cref="ArgumentNullException">Se o <paramref name="content"/> for nulo</exception>
+        /// <exception cref="ArgumentException">Se o <paramref name="path"/> for nulo, vazio ou espaços</exception>
+        public static void Base64ToPDF(string content, string path) => PDFHelper.WriteBase64ToPDFFile(content, path);
 
         #endregion Public Methods
     }
