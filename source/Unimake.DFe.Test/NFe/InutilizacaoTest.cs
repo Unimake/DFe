@@ -107,11 +107,14 @@ namespace Unimake.DFe.Test.NFe
 
                 Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Debug.Assert(inutilizacao.Result.InfInut.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Debug.Assert(inutilizacao.Result.InfInut.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if(inutilizacao.Result.InfInut.Id != null)
+                if (inutilizacao.Result != null)
                 {
-                    Debug.Assert(inutilizacao.Result.InfInut.Id.Equals(xml.InfInut.Id), "Webservice retornou uma chave da NFe diferente da enviada na consulta.");
+                    Debug.Assert(inutilizacao.Result.InfInut.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                    Debug.Assert(inutilizacao.Result.InfInut.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                    if (inutilizacao.Result.InfInut.Id != null)
+                    {
+                        Debug.Assert(inutilizacao.Result.InfInut.Id.Equals(xml.InfInut.Id), "Webservice retornou uma chave da NFe diferente da enviada na consulta.");
+                    }
                 }
             }
             catch(Exception ex)
