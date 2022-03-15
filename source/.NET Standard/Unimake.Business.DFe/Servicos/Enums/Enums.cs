@@ -6018,4 +6018,26 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    #region IdentificacaoAmbiente
+
+    /// <summary>
+    /// Identificação do ambiente (Produção ou Teste) - SNCM
+    /// </summary>
+    public enum IdentificacaoAmbiente
+    {
+        /// <summary>
+        /// 0-Produção
+        /// </summary>
+        [XmlEnum("0")]
+        Producao = 0,
+
+        /// <summary>
+        /// 1-Teste
+        /// </summary>
+        [XmlEnum("1")]
+        Teste = 1
+    }
+
+    #endregion
 }

@@ -504,7 +504,7 @@
 		<None Remove="Xml\Schemas\SNCM\retmbragtmgmt_ver_0-01-r1.xsd" />
 		<None Remove="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
 		<None Remove="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
-		<None Remove="Xml\Schemas\SNCM\sncmtypes_ver_0-01-r1.xsd" />
+		<None Remove="Xml\Schemas\SNCM\sncmtypes.xsd" />
 		<None Remove="Xml\Schemas\tiposBasico_v1.03.xsd" />
 		<None Remove="Xml\Schemas\tiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\tiposDistDFe_v1.01.xsd" />
@@ -1305,7 +1305,7 @@
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retmbragtmgmt_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retmdatamah_ver_0-01-r1.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\retparam_ver_0-01-r1.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\SNCM\sncmtypes_ver_0-01-r1.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\SNCM\sncmtypes.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
