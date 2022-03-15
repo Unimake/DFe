@@ -148,6 +148,7 @@
 		<None Remove="Servicos\Config\MDFe\MG.xml" />
 		<None Remove="Servicos\Config\MDFe\MS.xml" />
 		<None Remove="Servicos\Config\MDFe\MT.xml" />
+		<None Remove="Servicos\Config\MDFe\PA.xml" />
 		<None Remove="Servicos\Config\MDFe\PB.xml" />
 		<None Remove="Servicos\Config\MDFe\PE.xml" />
 		<None Remove="Servicos\Config\MDFe\PI.xml" />
@@ -685,6 +686,7 @@
 		<EmbeddedResource Include="Servicos\Config\MDFe\MT.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\MDFe\PA.xml" />
 		<EmbeddedResource Include="Servicos\Config\MDFe\PB.xml" />
 		<EmbeddedResource Include="Servicos\Config\MDFe\PE.xml">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -1310,7 +1312,7 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.0" />
 		<PackageReference Include="Unimake.Cryptography" Version="2022.3.11.1344" />
-		<PackageReference Include="Unimake.Utils" Version="2022.3.11.1344" />
+		<PackageReference Include="Unimake.Utils" Version="2022.3.14.1557" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
