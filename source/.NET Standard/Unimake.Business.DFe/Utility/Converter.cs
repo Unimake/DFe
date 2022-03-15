@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Globalization;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Unimake.Cryptography;
@@ -61,20 +60,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="value">valor a ser convertido</param>
         /// <returns>Valor convertido para double</returns>
-        public static double ToDouble(object value)
-        {
-            if (value == null)
-            {
-                //TODO: Marcelo >>> Vai retornar zero por padrão mesmo?
-                return 0;
-            }
-
-            double.TryParse(value.ToString(),
-                            NumberStyles.Number,
-                            CultureInfo.InvariantCulture,
-                            out var result);
-            return result;
-        }
+        public static double ToDouble(object value) => UConvert.ToDouble(value, true);
 
         /// <summary>
         /// Converter STRING para ENUM

@@ -764,32 +764,6 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Limpar espaços desnecessários da string, por exemplo: Espaços duplos no meio da sentença, espaços no inicio ou final da sentença.
-        /// Tratar caracteres especiais existentes na string substituindo por escape.
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns>Conteúdo sem os espaços desnecessários e com os caracteres especiais substituídos por escapes.</returns>
-        /// <example>
-        /// var texto = @"   Dias \ Dias     de ir em     casa   .   ";
-        /// texto = XMLUtility.LimparEspacoTratarCaracterEspecial(texto);
-        /// MessageBox.Show(texto); // Retorno será: "Dias &quot; Dias de ir em casa ."
-        /// </example>
-        /// <seealso cref="ClearExtraSpaces(string)"/>
-        /// <seealso cref="UnescapeReservedCharacters(string)"/>
-        public static string EnsureStringContent(string content)
-        {
-            if(string.IsNullOrWhiteSpace(content))
-            {
-                return content;
-            }
-
-            content = ClearExtraSpaces(content);
-            content = UnescapeReservedCharacters(content);
-
-            return content;
-        }
-
-        /// <summary>
         /// Extrair conteúdo da chave do documento fiscal eletrônico (NFe, NFCe, CTe, MDFe, etc...) com elementos separados.
         /// </summary>
         /// <param name="chave">Chave do DFe para extrair o conteúdo</param>
