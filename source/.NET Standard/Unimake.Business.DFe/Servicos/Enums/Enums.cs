@@ -252,6 +252,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar Resultado do Lote da Consulta de GNRE")]
         GNREConsultaResultadoLoteConsulta = 39,
 
+        /// <summary>
+        /// Enviar o XML de consulta situação lote RPS para a prefeitura
+        /// </summary>
+        [Description("Consultar Situacao Lote Rps")]
+        NFSeConsultarSituacaoLoteRps = 40,
+
         #endregion
 
         #region Gerais
