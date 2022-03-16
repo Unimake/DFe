@@ -660,6 +660,30 @@ namespace Unimake.Business.DFe.Servicos
         ManifestacaoOperacaoNaoRealizada = 210240,
 
         /// <summary>
+        /// SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo". (400200)
+        /// </summary>
+        [XmlEnum("400200")]
+        DocumentoFiscalInidoneo = 400200,
+
+        /// <summary>
+        /// Cancelamento do evento 400200 (400201)
+        /// </summary>
+        [XmlEnum("400201")]
+        CancelamentoEventoFisco400200 = 400201,
+
+        /// <summary>
+        /// Possibilita que a SEFAZ marque uma NF-e emitida em função de uma situação específica prevista em legislação, ex.: transferência de crédito, ressarcimento. (400300)
+        /// </summary>
+        [XmlEnum("400300")]
+        VistoEletronicoDoFisco = 400300,
+
+        /// <summary>
+        /// O evento da Nota Fiscal Referenciada é gerado sempre que uma nova NF-e referenciar uma ou mais outras Notas Fiscais Eletrônicas. Não serão gerados eventos de "NF-e Referenciada" para os documentos diferentes do Modelo 55. (410300)
+        /// </summary>
+        [XmlEnum("410300")]
+        NFeReferenciada = 410300,
+
+        /// <summary>
         /// Resposta ao pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (411500) - 1o Prazo (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("411500")]
@@ -681,7 +705,115 @@ namespace Unimake.Business.DFe.Servicos
         /// Resposta ao cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (411503) - 2o Prazo (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("411503")]
-        RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503
+        RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
+
+        /// <summary>
+        /// Registro de Passagem da NF-e no Posto Fiscal (610500)
+        /// </summary>
+        [XmlEnum("610500")]
+        RegistroPassagemNFe = 610500,
+
+        /// <summary>
+        /// Cancelamento do evento 610500 (610501)
+        /// </summary>
+        [XmlEnum("610501")]
+        CancelamentoRegistroPassagemNFe = 610501,
+
+        /// <summary>
+        /// Registro de Passagem do MDF-e no Posto Fiscal, propagado pelo Sistema MDF-e. (610510)
+        /// </summary>
+        [XmlEnum("610510")]
+        RegistroDePassagemMDFe = 610510,
+
+        /// <summary>
+        /// Cancelamento do evento 610511 (610511)
+        /// </summary>
+        [XmlEnum("610511")]
+        CancelamentoRegistroDePassagemMDFe = 610511,
+
+        /// <summary>
+        /// Registro de Passagem do MDF-e no Posto Fiscal, propagado pelo Ambiente Nacional. Nota: A Chave de Acesso da NF-e está vinculada a um CT-e citado no MDF-e. (610514)
+        /// </summary>
+        [XmlEnum("610514")]
+        RegistroDePassagemMDFeComCTe = 610514,
+
+        /// <summary>
+        /// Cancelamento do evento 610514. (610515)
+        /// </summary>
+        [XmlEnum("610515")]
+        CancelamentoRegistroDePassagemMDFeComCTe = 610515,
+
+        /// <summary>
+        /// Registro de Passagem do MDF-e, capturado por antenas do Projeto Brasil ID. Evento eliminado (BT 2017.002), substituído pelo Registro de Passagem Automático MDF-e. (610550)
+        /// </summary>
+        [XmlEnum("610550")]
+        RegistroPassagemNFeBRId = 610550,
+
+        /// <summary>
+        /// Registro de Passagem do MDF-e capturado de forma automática (antena, leitura de placa por OCR, etc.), propagado pelo Sistema MDFe. Nota: A Chave de Acesso da NF-e está citada no MDF-e. (610552)
+        /// </summary>
+        [XmlEnum("610552")]
+        RegistroDePassagemAutomaticoMDFe = 610552,
+
+        /// <summary>
+        /// Cancelamento do evento 610552 (610554)
+        /// </summary>
+        [XmlEnum("610554")]
+        RegistroDePassagemAutomaticoMDFeComCTe = 610554,
+
+        /// <summary>
+        /// Documenta na NF-e a ocorrência de CT-e autorizado, no momento do compartilhamento do CT-e com o Ambiente Nacional. Nota: A Chave de Acesso da NF-e está citada no CTe. (610600)
+        /// </summary>
+        [XmlEnum("610600")]
+        CTeAutorizado = 610600,
+
+        /// <summary>
+        /// Documenta na NF-e a ocorrência de cancelamento de CT-e autorizado, no momento do compartilhamento do evento com o Ambiente Nacional. Nota: A Chave de Acesso da NF-e está citada no CT-e. (610601)
+        /// </summary>
+        [XmlEnum("610601")]
+        CTeCancelado = 610601,
+
+        /// <summary>
+        /// Evento que documenta na NF-e a ocorrência de MDF-e autorizado.Nota: A Chave de Acesso da NF-e está citada no MDF-e. (610610)
+        /// </summary>
+        [XmlEnum("610610")]
+        MDFeAutorizado = 610610,
+
+        /// <summary>
+        /// Cancelamento do MDF-e (610611)
+        /// </summary>
+        [XmlEnum("610611")]
+        MDFeCancelado = 610611,
+
+        /// <summary>
+        /// Evento que documenta na NF-e a ocorrência de MDF-e autorizado. Nota: A Chave de Acesso da NF-e está vinculada a um CT-e citado no MDF-e. (610614)
+        /// </summary>
+        [XmlEnum("610614")]
+        MDFeAutorizadoComCTe = 610614,
+
+        /// <summary>
+        /// Cancelamento do evento 610614. (610615)
+        /// </summary>
+        [XmlEnum("610615")]
+        CancelamentoDoMDFeAutorizadoComCTe = 610615,
+
+        /// <summary>
+        /// Evento que indica a quantidade de mercadoria na unidade tributável que foi efetivamente embarcada para o exterior referente a um certo item de uma NF-e. Gerado e enviado pelo sistema Portal Único do Comércio Exterior (PUCOMEX) Receita Federal do Brasil (RFB) para o Ambiente Nacional da NF-e (790700)
+        /// </summary>
+        [XmlEnum("790700")]
+        AverbacaoDeExportacao = 790700,
+
+        /// <summary>
+        /// Registro da ocorrência da Vistoria do processo de internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA. (990900)
+        /// </summary>
+        [XmlEnum("990900")]
+        VistoriaSUFRAMA = 990900,
+
+        /// <summary>
+        /// Confirmação da internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA. (990910)
+        /// </summary>
+        [XmlEnum("990910")]
+        InternalizacaoSUFRAMA = 990910
     }
 
     #endregion
