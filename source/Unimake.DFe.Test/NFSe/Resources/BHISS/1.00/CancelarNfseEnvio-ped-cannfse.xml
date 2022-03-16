@@ -1,0 +1,64 @@
+<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Pedido xmlns="http://www.abrasf.org.br/nfse.xsd">
+		<InfPedidoCancelamento
+			Id="pedidoCancelamento_999999990001911733160024200900000000001">
+			<IdentificacaoNfse>
+				<Numero>200900000000428</Numero>
+				<Cnpj>99999999000191</Cnpj>
+				<InscricaoMunicipal>1733160024</InscricaoMunicipal>
+				<CodigoMunicipio>3106200</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>2</CodigoCancelamento>
+		</InfPedidoCancelamento>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="Ass_Cancelamento">
+			<SignedInfo>
+				<CanonicalizationMethod
+					Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"></CanonicalizationMethod>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></SignatureMethod>
+				<Reference
+					URI="#pedidoCancelamento_999999990001911733160024200900000000001">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></Transform>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"></DigestMethod>
+					<DigestValue>bjEVrcywD6ygsSH2x9J1/a8M7Lo=
+					</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>
+				ftSu3Uo19veysJyeAChloqc3xakMdGexqbD/VOv7WnbMc2h3NDBf+ddiGN1bWLi4MFrlkWuJGB3g
+				RgOPn8/ZxjZC0oMR9Jw9ILbpokV99d5kTm8ONHj2USsRAhuu4tdxr/eAxgJ5eETVRI9IAzbPlf4J
+				ahSPGgltYYOLBIGbuFg=
+</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>
+						MIIE7DCCA9SgAwIBAgIQZMlLC9ZEsHWsnvJNdMI2yzANBgkqhkiG9w0BAQUFADBqMQswCQYDVQQG
+						EwJCUjETMBEGA1UEChMKSUNQLUJyYXNpbDEsMCoGA1UECxMjU2VjcmV0YXJpYSBkYSBSZWNlaXRh
+						IEZlZGVyYWwgLSBTUkYxGDAWBgNVBAMTD0FDIFBST0RFTUdFIFNSRjAeFw0wNzEwMzEwMDAwMDBa
+						Fw0xMDEwMzAyMzU5NTlaMIGQMQswCQYDVQQGEwJCUjETMBEGA1UEChQKSUNQLUJyYXNpbDEqMCgG
+						A1UECxQhU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwtU1JGMRIwEAYDVQQLFAlTUkYgZS1D
+						UEYxLDAqBgNVBAMTI0VER0FSIERPIENBUk1PIEZFUlJFSVJBOjQzMjYwMTUyNjg3MIGfMA0GCSqG
+						SIb3DQEBAQUAA4GNADCBiQKBgQC6M+9XT5KLQN3IH8mAr+S6vxiochY/EwF8EhtNoxPTYl+zr0Dh
+						+eZsRG31bN410nr2OrwncrRorMK8Ngq+j3FnNF0nIMigaaa5NAEfIk3Yy4kuqrTUZBpqUJvCqc3m
+						kF3C3XD0MTmtbVTWCvYIk+qn3t5ShHyMnQcuah5Q0ItSbQIDAQABo4IB6TCCAeUwgZUGA1UdEQSB
+						jTCBiqA9BgVgTAEDAaA0BDIyMTAzMTk2NDQzMjYwMTUyNjg3MDAwMDAwMDAwMDAwMDAwMDBNLTI4
+						ODQwODVTU1BNR6AXBgVgTAEDBqAOBAwwMDAwMDAwMDAwMDCgHgYFYEwBAwWgFQQTMDAwMDAwMDAw
+						MDAwMDAwMDAwMIEQZWRnYXJAcGJoLmdvdi5icjAJBgNVHRMEAjAAMF8GA1UdHwRYMFYwVKBSoFCG
+						Tmh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDUFJP
+						REVNR0VTUkYvTGF0ZXN0Q1JMLmNybDAfBgNVHSMEGDAWgBTdO9vtjZcRRUMBQ020Ev0O7niacDAO
+						BgNVHQ8BAf8EBAMCBeAwVQYDVR0gBE4wTDBKBgZgTAECAxQwQDA+BggrBgEFBQcCARYyaHR0cDov
+						L2ljcC1icmFzaWwuY2VydGlzaWduLmNvbS5ici9yZXBvc2l0b3Jpby9kcGMwHQYDVR0lBBYwFAYI
+						KwYBBQUHAwQGCCsGAQUFBwMCMDgGCCsGAQUFBwEBBCwwKjAoBggrBgEFBQcwAYYcaHR0cDovL29j
+						c3AuY2VydGlzaWduLmNvbS5icjANBgkqhkiG9w0BAQUFAAOCAQEAYFcjZj4lGVEREHBaHtcRletW
+						S6/mvpkxmodwj3ele5yXsxuqSZd7ebHbKewXx7gkyaWFkFAxFanQhls2tYKjg6haqt2b0AO1Fsit
+						VIHkMcxRwkU9G+1ec8yfdxymra2VdXazkxuvqKABgxkqKnaFdHjje7cjWDgwparymH64mTlHkSQz
+						59GutJW0xfwBHcMGx0/9/iIug6pfMQivWf0NMVpFNzxO5ZNPEuOeBhVDxQr4+KB+4B9xDai/3J6f
+						42UNbSy+z3xuB0K8/7V7BsFUYOYFSNnBrXhvbvXtZOtteX65V0r1+RJJX5OK+PAPhZ57T1LEmHMg
+						gdo5kli3Nr1KFQ==
+</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</Pedido>
+</CancelarNfseEnvio>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="Id1" versao="1.00">
+		<NumeroLote>1</NumeroLote>
+		<Cnpj>11402643000188</Cnpj>
+		<InscricaoMunicipal>1111</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfRps Id="ID1">
+					<IdentificacaoRps>
+						<Numero>1</Numero>
+						<Serie>F</Serie>
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2010-01-15T09:00:40.22625-02:00</DataEmissao>
+					<NaturezaOperacao>1</NaturezaOperacao>
+					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivadorCultural>1</IncentivadorCultural>
+					<Status>1</Status>
+					<Servico>
+						<Valores>
+							<ValorServicos>1000.00</ValorServicos>
+							<ValorDeducoes>0</ValorDeducoes>
+							<ValorPis>0</ValorPis>
+							<ValorCofins>0</ValorCofins>
+							<ValorInss>0</ValorInss>
+							<ValorIr>0</ValorIr>
+							<ValorCsll>0</ValorCsll>
+							<IssRetido>2</IssRetido>
+							<ValorIss>50.00</ValorIss>
+							<ValorIssRetido>0</ValorIssRetido>
+							<OutrasRetencoes>0</OutrasRetencoes>
+							<BaseCalculo>1000.00</BaseCalculo>
+							<Aliquota>5.00</Aliquota>
+							<ValorLiquidoNfse>950.00</ValorLiquidoNfse>
+							<DescontoIncondicionado>0</DescontoIncondicionado>
+							<DescontoCondicionado>0</DescontoCondicionado>
+						</Valores>
+						<ItemListaServico>1401</ItemListaServico>
+						<CodigoCnae>1</CodigoCnae>
+						<CodigoTributacaoMunicipio>5208707</CodigoTributacaoMunicipio>
+						<Discriminacao>Servico de Manutencao em Software</Discriminacao>
+						<CodigoMunicipio>1</CodigoMunicipio>
+					</Servico>
+					<Prestador>
+						<Cnpj>11402643000188</Cnpj>
+						<InscricaoMunicipal>1111</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>16605944054</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>Tomador de Serviços</RazaoSocial>
+						<Endereco>
+							<Endereco>Rua Sem Nome</Endereco>
+							<Numero>1</Numero>
+							<Complemento>Apto 1</Complemento>
+							<Bairro>Centro</Bairro>
+							<Uf>MG</Uf>
+							<Cep>74000000</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>00000</Telefone>
+							<Email>tomador@seuprovedor.com.br</Email>
+						</Contato>
+					</Tomador>
+				</InfRps>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

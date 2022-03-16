@@ -5733,7 +5733,13 @@ namespace Unimake.Business.DFe.Servicos
         /// TRIBUTUS - Gestão integrada
         /// </summary>
         [Description("TRIBUTUS")]
-        TRIBUTUS = 14
+        TRIBUTUS = 14,
+
+        /// <summary>
+        /// BHISS Digital
+        /// </summary>
+        [Description("BHISS")]
+        BHISS = 15
     }
 
     #endregion

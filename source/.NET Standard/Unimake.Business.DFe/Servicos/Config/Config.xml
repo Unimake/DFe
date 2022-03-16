@@ -634,4 +634,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3106200">
+		<Nome>Belo Horizonte - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>BeloHorizonteMG.xml</ArqConfig>
+		<PadraoNFSe>BHISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

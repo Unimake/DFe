@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<IdentificacaoRps>
+		<Numero>1</Numero>
+		<Serie>ABYDZ</Serie>
+		<Tipo>1</Tipo>
+	</IdentificacaoRps>
+	<Prestador>
+		<Cnpj>99999999000191</Cnpj>
+		<InscricaoMunicipal>1733160024</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>
