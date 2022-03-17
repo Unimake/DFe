@@ -31,16 +31,21 @@ namespace Unimake.Security.Platform
         /// Abre a tela de dialogo do windows para seleção do certificado digital
         /// </summary>
         /// <returns>Retorna a coleção de certificados digitais</returns>
-        public X509Certificate2Collection AbrirTelaSelecao()
+        public X509Certificate2 AbrirTelaSelecao()
         {
             var store = new X509Store("MY", StoreLocation.CurrentUser);
             store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-            var collection = store.Certificates;
-            var collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-            var collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
-            var scollection = X509Certificate2UI.SelectFromCollection(collection2, "Certificado(s) digital(is) disponível(is)", "Selecione o certificado digital para uso no aplicativo", X509SelectionFlag.SingleSelection);
+            X509Certificate2Collection collection = store.Certificates;
+            X509Certificate2Collection collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+            X509Certificate2Collection collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
+            X509Certificate2Collection scollection = X509Certificate2UI.SelectFromCollection(collection2, "Certificado(s) digital(is) disponível(is)", "Selecione o certificado digital para uso no aplicativo", X509SelectionFlag.SingleSelection);
 
-            return scollection;
+            if (scollection.Count == 0) 
+            {
+                return null;
+            }
+
+            return scollection[0]; //Apesar de ser uma coleção, a tela de seleção sempre retorna somente 1 certificado, que foi o selecionado pelo usuário, por isso pegamos sempre o index 0
         }
 
         /// <summary>
@@ -52,12 +57,12 @@ namespace Unimake.Security.Platform
         {
             var store = new X509Store("MY", StoreLocation.CurrentUser);
             store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-            var collection = store.Certificates;
-            var collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-            var collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
+            X509Certificate2Collection collection = store.Certificates;
+            X509Certificate2Collection collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+            X509Certificate2Collection collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
 
             //Primeiro tento encontrar pelo thumbprint
-            var collection3 = collection2.Find(X509FindType.FindByThumbprint, serialNumberOrThumbPrint, false);
+            X509Certificate2Collection collection3 = collection2.Find(X509FindType.FindByThumbprint, serialNumberOrThumbPrint, false);
             if (collection3.Count <= 0)
             {
                 //Se não encontrou pelo thumbprint tento pelo SerialNumber pegando o mesmo thumbprint que veio no arquivo de configurações para ver se não encontro.
@@ -119,7 +124,7 @@ namespace Unimake.Security.Platform
 
             var x509Cert = new X509Certificate2();
 
-            using (var fs = fi.OpenRead())
+            using (FileStream fs = fi.OpenRead())
             {
                 var buffer = new byte[fs.Length];
                 fs.Read(buffer, 0, buffer.Length);
@@ -158,7 +163,7 @@ namespace Unimake.Security.Platform
 
             var x509Cert = new X509Certificate2();
 
-            using (var fs = fi.OpenRead())
+            using (FileStream fs = fi.OpenRead())
             {
                 var buffer = new byte[fs.Length];
                 fs.Read(buffer, 0, buffer.Length);
@@ -202,14 +207,9 @@ namespace Unimake.Security.Platform
         [return: MarshalAs(UnmanagedType.IDispatch)]
         public X509Certificate2 Selecionar()
         {
-            var scollection = AbrirTelaSelecao();
+            X509Certificate2 scollection = AbrirTelaSelecao();
 
-            if (scollection.Count > 0)
-            {
-                return scollection[0];
-            }
-
-            return null;
+            return scollection;
         }
 
         /// <summary>
