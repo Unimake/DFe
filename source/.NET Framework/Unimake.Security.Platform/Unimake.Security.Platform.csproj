@@ -12,8 +12,8 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<Deterministic>false</Deterministic>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
-		<AssemblyVersion>2022.03.11.1020</AssemblyVersion>
-		<FileVersion>2022.03.11.1020</FileVersion>
+		<AssemblyVersion>2022.03.17.1710</AssemblyVersion>
+		<FileVersion>2022.03.17.1710</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\Unimake.DFe\Compilacao\</OutputPath>
