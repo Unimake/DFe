@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retMbtAgtMgmt xmlns="http://sncm.anvisa.gov.br/">
+	<docId>1A2B3C4D5E6F7G8H9I0J</docId>
+	<crTime>2022-03-15T16:05:00-03:00</crTime>
+	<ver>0.01</ver>
+	<lc>pt-BR</lc>
+	<env>1</env>
+	<backOff>01</backOff>
+	<list>
+		<cnpj>00000000000000</cnpj>
+		<cnpj>11111111111111</cnpj>
+		<cnpj>22222222222222</cnpj>
+	</list>
+	<rets>
+		<ret>
+			<code>code1</code>
+			<effect>SUC</effect>
+			<desc>desc1</desc>
+		</ret>
+		<ret>
+			<code>code2</code>
+			<effect>WNG</effect>
+			<desc>desc2</desc>
+		</ret>
+		<ret>
+			<code>code3</code>
+			<effect>REJ</effect>
+			<desc>desc3</desc>
+		</ret>
+	</rets>
+	<anom>true</anom>
+	<notif>true</notif>
+	<action>true</action>
+</retMbtAgtMgmt>
