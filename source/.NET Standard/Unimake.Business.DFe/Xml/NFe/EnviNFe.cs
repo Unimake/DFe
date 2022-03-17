@@ -3331,62 +3331,62 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
-        public double VBC { get; set; }
+        public double? VBC { get; set; }
 
         [XmlElement("vBC")]
         public string VBCField
         {
-            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            get => VBC?.ToString("F2", CultureInfo.InvariantCulture);
             set => VBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PICMS { get; set; }
+        public double? PICMS { get; set; }
 
         [XmlElement("pICMS")]
         public string PICMSField
         {
-            get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
+            get => PICMS?.ToString("F4", CultureInfo.InvariantCulture);
             set => PICMS = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double VICMSOp { get; set; }
+        public double? VICMSOp { get; set; }
 
         [XmlElement("vICMSOp")]
         public string VICMSOpField
         {
-            get => VICMSOp.ToString("F2", CultureInfo.InvariantCulture);
+            get => VICMSOp?.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSOp = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PDif { get; set; }
+        public double? PDif { get; set; }
 
         [XmlElement("pDif")]
         public string PDifField
         {
-            get => PDif.ToString("F4", CultureInfo.InvariantCulture);
+            get => PDif?.ToString("F4", CultureInfo.InvariantCulture);
             set => PDif = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double VICMSDif { get; set; }
+        public double? VICMSDif { get; set; }
 
         [XmlElement("vICMSDif")]
         public string VICMSDifField
         {
-            get => VICMSDif.ToString("F2", CultureInfo.InvariantCulture);
+            get => VICMSDif?.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSDif = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double VICMS { get; set; }
+        public double? VICMS { get; set; }
 
         [XmlElement("vICMS")]
         public string VICMSField
         {
-            get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
+            get => VICMS?.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMS = Converter.ToDouble(value);
         }
 
@@ -3453,14 +3453,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         #region ShouldSerialize
 
         public bool ShouldSerializeModBC() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1);
-        public bool ShouldSerializePRedBCField() => PRedBC != null && PRedBC > 0;
-        public bool ShouldSerializeVBCField() => (VBC + PICMS + VICMSOp) > 0;
-        public bool ShouldSerializPICMSeField() => (VBC + PICMS + VICMSOp) > 0;
-        public bool ShouldSerializeVICMSOpField() => (VBC + PICMS + VICMSOp) > 0;
+        public bool ShouldSerializePRedBCField() => PRedBC != null;
+        public bool ShouldSerializeVBCField() => VBC != null;
+        public bool ShouldSerializPICMSeField() => PICMS != null;
+        public bool ShouldSerializeVICMSOpField() => VICMSOp != null;
 
-        public bool ShouldSerializePDifField() => (PDif + VICMSDif + VICMS) > 0;
-        public bool ShouldSerializeVICMSDifField() => (PDif + VICMSDif + VICMS) > 0;
-        public bool ShouldSerializeVICMSField() => (VBC + VICMSDif + VICMS) > 0;
+        public bool ShouldSerializePDifField() => PDif != null;
+        public bool ShouldSerializeVICMSDifField() => VICMSDif != null;
+        public bool ShouldSerializeVICMSField() => VICMS != null;
 
         public bool ShouldSerializeVBCFCPField() => (VBCFCP + VFCP + PFCP) > 0;
         public bool ShouldSerializePFCPField() => (VBCFCP + VFCP + PFCP) > 0;
