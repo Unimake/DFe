@@ -25,13 +25,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
     public class RetMbtAgtMgmt : XMLBase
     {
         /// <summary>
-        /// Identificador de controle da comunicação com o SNCM, gerado pelo Sistema Cliente.
+        /// Identificador de controle da comunicação do SNCM.
         /// </summary>
         [XmlElement("docId")]
         public string DocId { get; set; }
 
         /// <summary>
-        /// Carimbo de tempo realizado pelo Sistema Cliente no instante da comunicação com o SNCM.
+        /// Data e horário da recepção da mensagem de entrada
         /// </summary>
         [XmlIgnore]
         public DateTime CrTime { get; set; }
@@ -50,7 +50,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Ver { get; set; } = "0.01";
 
         /// <summary>
-        /// Idioma desejado para as mensagens descritivas de retorno. Na atual versão, o SNCMoferece suporte apenas a pt-BR.
+        /// Idioma desejado para as mensagens descritivas de retorno. Padrão: pt-BR.
         /// </summary>
         [XmlElement("lc")]
         public string Lc { get; set; } = "pt-BR";

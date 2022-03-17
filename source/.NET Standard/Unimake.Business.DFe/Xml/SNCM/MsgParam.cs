@@ -49,7 +49,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Ver { get; set; } = "0.01";
 
         /// <summary>
-        /// Idioma desejado para as mensagens descritivas de retorno. Na atual versão, o SNCMoferece suporte apenas a pt-BR.
+        /// Idioma desejado para as mensagens descritivas de retorno. Padrão: pt-BR.
         /// </summary>
         [XmlElement("lc")]
         public string Lc { get; set; } = "pt-BR";
