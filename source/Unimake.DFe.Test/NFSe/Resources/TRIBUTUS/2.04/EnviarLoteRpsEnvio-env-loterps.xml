@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps id="lote:3421">
+		<NumeroLote>3421</NumeroLote>
+		<Prestador>
+			<CpfCnpj>
+				<Cnpj>49122386000101</Cnpj>
+			</CpfCnpj>
+			<InscricaoMunicipal>3411</InscricaoMunicipal>
+		</Prestador>
+		<InscricaoMunicipal>3411</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfRps id="rps:653">
+					<IdentificacaoRps>
+						<Numero>653</Numero>
+						<Serie>AAB</Serie>
+						<Tipo>0</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2011-06-01T09:40:11</DataEmissao>
+					<NaturezaOperacao>1</NaturezaOperacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivadorCultural>2</IncentivadorCultural>
+					<Status>1</Status>
+					<Servico>
+						<Valores>
+							<ValorServicos>1255.20</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<IssRetido>2</IssRetido>
+							<ValorIss>37.65</ValorIss>
+							<ValorIssRetido>0.00</ValorIssRetido>
+							<OutrasRetencoes>0.00</OutrasRetencoes>
+							<BaseCalculo>1255.20</BaseCalculo>
+							<Aliquota>0.0300</Aliquota>
+							<ValorLiquidoNfse>1255.20</ValorLiquidoNfse>
+							<DescontoIncondicionado>0.00</DescontoIncondicionado>
+							<DescontoCondicionado>0.00</DescontoCondicionado>
+						</Valores>
+						<ItemListaServico>15.03</ItemListaServico>
+						<Discriminacao>Prestação de um serviço específico aqui descrito.</Discriminacao>
+						<CodigoMunicipio>2925303</CodigoMunicipio>
+					</Servico>
+					<Prestador>
+						<Cnpj>94499233000124</Cnpj>
+						<InscricaoMunicipal>3411</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cnpj>49122386000101</Cnpj>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>Marcenaria do Marcinho</RazaoSocial>
+						<Endereco>
+							<Endereco>Rua 7 de Setembro</Endereco>
+							<Numero>231</Numero>
+							<Complemento/>
+							<Bairro>Centro</Bairro>
+							<CodigoMunicipio>2925303</CodigoMunicipio>
+							<Uf>BA</Uf>
+							<Cep>12312333</Cep>
+						</Endereco>
+					</Tomador>
+				</InfRps>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

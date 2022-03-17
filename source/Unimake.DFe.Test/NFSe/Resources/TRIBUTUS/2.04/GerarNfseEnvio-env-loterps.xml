@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico id="Rps_5">
+			<Rps id="Rps_5">
+				<IdentificacaoRps>
+					<Numero>0</Numero>
+					<Serie>A5</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2001-03-10</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2015-03-01</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>10000.00</ValorServicos>
+					<ValorDeducoes>10.00</ValorDeducoes>
+					<ValorPis>40.00</ValorPis>
+					<ValorCofins>50.00</ValorCofins>
+					<ValorInss>60.00</ValorInss>
+					<ValorIr>70.00</ValorIr>
+					<ValorCsll>80.00</ValorCsll>
+					<OutrasRetencoes>30.00</OutrasRetencoes>
+					<ValorIss>299.40</ValorIss>
+					<Aliquota>3.00</Aliquota>
+					<DescontoIncondicionado>10.00</DescontoIncondicionado>
+					<DescontoCondicionado>20.00</DescontoCondicionado>
+				</Valores>
+				<IssRetido>1</IssRetido>
+				<ResponsavelRetencao>1</ResponsavelRetencao>
+				<ItemListaServico>14.01</ItemListaServico>
+				<CodigoCnae>4520001</CodigoCnae>
+				<CodigoTributacaoMunicipio>4520001</CodigoTributacaoMunicipio>
+				<Discriminacao>teste</Discriminacao>
+				<CodigoMunicipio>3106200</CodigoMunicipio>
+				<CodigoPais>1058</CodigoPais>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>3106200</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>49122386000101</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>9.9.99999999</InscricaoMunicipal>
+			</Prestador>
+			<TomadorServico>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>94499233000124</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>100000000005</InscricaoMunicipal>
+				</IdentificacaoTomador>
+				<RazaoSocial>Razao Social do Tomador</RazaoSocial>
+				<Endereco>
+					<Endereco>Endereco do Tomador</Endereco>
+					<Numero>1720</Numero>
+					<Bairro>Centro</Bairro>
+					<CodigoMunicipio>3106200</CodigoMunicipio>
+					<Uf>MG</Uf>
+					<Cep>54400200</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>5499999999</Telefone>
+					<Email>email_do_tomador@gmail.com</Email>
+				</Contato>
+			</TomadorServico>
+			<Intermediario>
+				<IdentificacaoIntermediario>
+					<CpfCnpj>
+						<Cnpj>49122386000101</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>22252</InscricaoMunicipal>
+				</IdentificacaoIntermediario>
+				<RazaoSocial>CONSTRUTORA TERRA FIRME</RazaoSocial>
+				<CodigoMunicipio>2</CodigoMunicipio>
+			</Intermediario>
+			<ConstrucaoCivil>
+				<CodigoObra>142</CodigoObra>
+				<Art>1/2014</Art>
+			</ConstrucaoCivil>
+			<RegimeEspecialTributacao>3</RegimeEspecialTributacao>
+			<OptanteSimplesNacional>1</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

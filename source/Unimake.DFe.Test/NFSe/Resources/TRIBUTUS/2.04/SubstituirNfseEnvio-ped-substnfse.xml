@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<SubstituicaoNfse id="subst" >
+		<Pedido>
+			<InfPedidoCancelamento id="canc">
+				<IdentificacaoNfse>
+					<Numero>190000000001028</Numero>
+					<CpfCnpj>
+						<Cnpj>49122386000101</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>8472</InscricaoMunicipal>
+					<CodigoMunicipio>4300034</CodigoMunicipio>
+				</IdentificacaoNfse>
+				<CodigoCancelamento>4</CodigoCancelamento>
+			</InfPedidoCancelamento>
+		</Pedido>
+		<Rps>
+			<InfDeclaracaoPrestacaoServico id="rpd" >
+				<Rps id="rpd">
+					<IdentificacaoRps>
+						<Numero>997</Numero>
+						<Serie>A2</Serie>
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2014-12-06</DataEmissao>
+					<Status>1</Status>
+				</Rps>
+				<Competencia>2015-12-01</Competencia>
+				<Servico>
+					<Valores>
+						<ValorServicos>100</ValorServicos>
+						<ValorDeducoes>0</ValorDeducoes>
+						<ValorPis>0</ValorPis>
+						<ValorCofins>0</ValorCofins>
+						<ValorInss>0</ValorInss>
+						<ValorIr>0</ValorIr>
+						<ValorCsll>0</ValorCsll>
+						<OutrasRetencoes>0</OutrasRetencoes>
+						<DescontoIncondicionado>0</DescontoIncondicionado>
+						<DescontoCondicionado>0</DescontoCondicionado>
+					</Valores>
+					<IssRetido>2</IssRetido>
+					<ItemListaServico>07.02</ItemListaServico>
+					<CodigoTributacaoMunicipio>3106200</CodigoTributacaoMunicipio>
+					<Discriminacao>Prog.</Discriminacao>
+					<CodigoMunicipio>4204608</CodigoMunicipio>
+					<ExigibilidadeISS>1</ExigibilidadeISS>
+					<MunicipioIncidencia>3106200</MunicipioIncidencia>
+				</Servico>
+				<Prestador>
+					<CpfCnpj>
+						<Cnpj>94499233000124</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>123498</InscricaoMunicipal>
+				</Prestador>
+				<TomadorServico>
+					<IdentificacaoTomador>
+						<CpfCnpj>
+							<Cnpj>94499233000124</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>8.8.88888888</InscricaoMunicipal>
+					</IdentificacaoTomador>
+					<RazaoSocial>Razao Social do Tomador</RazaoSocial>
+					<Endereco>
+						<Endereco>Endereco do Tomador</Endereco>
+						<Numero>1720</Numero>
+						<Bairro>Centro</Bairro>
+						<CodigoMunicipio>3106200</CodigoMunicipio>
+						<Uf>MG</Uf>
+						<Cep>37950000</Cep>
+					</Endereco>
+					<Contato>
+						<Email>email_do_tomador@gmail.com</Email>
+					</Contato>
+				</TomadorServico>
+				<ConstrucaoCivil>
+					<CodigoObra>142</CodigoObra>
+					<Art>1/2014</Art>
+				</ConstrucaoCivil>
+				<RegimeEspecialTributacao>3</RegimeEspecialTributacao>
+				<OptanteSimplesNacional>2</OptanteSimplesNacional>
+				<IncentivoFiscal>2</IncentivoFiscal>
+			</InfDeclaracaoPrestacaoServico>
+		</Rps>
+	</SubstituicaoNfse>
+</SubstituirNfseEnvio>
