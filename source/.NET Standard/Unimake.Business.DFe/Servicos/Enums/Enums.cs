@@ -272,7 +272,7 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region DFE
+    #region TipoDFe
 
     /// <summary>
     /// Tipos de DFe´s existentes
@@ -280,47 +280,47 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoDFe
     {
         /// <summary>
-        /// Evento desconhecido
+        /// -1 - Evento desconhecido
         /// </summary>
         Desconhecido = -1,
         /// <summary>
-        /// NF-e - Nota Fiscal Eletrônica
+        /// 0 - NF-e - Nota Fiscal Eletrônica 
         /// </summary>
         NFe = 0,
         /// <summary>
-        /// NFC-e - Nota Fiscal de Venda a Consumidor Eletrônica
+        /// 1 - NFC-e - Nota Fiscal de Venda a Consumidor Eletrônica
         /// </summary>
         NFCe = 1,
         /// <summary>
-        /// CT-e - Conhecimento de Transporte Eletrônico
+        /// 2 - CT-e - Conhecimento de Transporte Eletrônico
         /// </summary>
         CTe = 2,
         /// <summary>
-        /// CT-e - Conhecimento de Transporte Eletrônico para Outros Serviços
+        /// 3 - CT-e - Conhecimento de Transporte Eletrônico para Outros Serviços
         /// </summary>
         CTeOS = 3,
         /// <summary>
-        /// MDF-e - Manifesto Eletrônico de Documentos Fiscais
+        /// 4 - MDF-e - Manifesto Eletrônico de Documentos Fiscais
         /// </summary>
         MDFe = 4,
         /// <summary>
-        /// Nota Fiscal de Serviço Eletrônica
+        /// 5 - Nota Fiscal de Serviço Eletrônica
         /// </summary>
         NFSe = 5,
         /// <summary>
-        /// CFe-SAT - Sistema Autenticador e Transmissor de Cupons Fiscais Eletrônicos
+        /// 6 - CFe-SAT - Sistema Autenticador e Transmissor de Cupons Fiscais Eletrônicos
         /// </summary>
         SAT = 6,
         /// <summary>
-        /// Cupom Fiscal Eletrônico
+        /// 7 - Cupom Fiscal Eletrônico
         /// </summary>
         CFe = 7,
         /// <summary>
-        /// GNRE - Guia Nacional de Recolhimento de Tributos Estaduais
+        /// 8 - GNRE - Guia Nacional de Recolhimento de Tributos Estaduais
         /// </summary>
         GNRE = 8,
         /// <summary>
-        /// SNCM - Sistema Nacional de Controle de Medicamentos
+        /// 9 - SNCM - Sistema Nacional de Controle de Medicamentos
         /// </summary>
         SNCM = 9
     }
