@@ -19,13 +19,14 @@ Function Main()
    AAdd(aOpcoes, "5-Consulta Recibo Nfe")
    AAdd(aOpcoes, "6-Enviar Nfe - Assincrono")
    AAdd(aOpcoes, "7-Cancelar Nfe")
+   Aadd(aOpcoes, "8-Teste diversos com certificado digital")
    
    Do While .T.
       Cls
 
       @ 1,2 Say "Unimake.Dfe DLL"
 	  
-      nOpcao := Achoice( 3, 2, 20, 30, aOpcoes)
+      nOpcao := Achoice( 3, 2, 20, 50, aOpcoes)
 
       Cls
 
@@ -53,6 +54,9 @@ Function Main()
 
          case nOpcao = 7
               CancelarNfe()
+			  
+         case nOpcao = 8
+              TesteDiversoCertificado()
        endcase
    EndDo
 Return
