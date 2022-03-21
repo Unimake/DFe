@@ -378,7 +378,9 @@
 		<None Remove="Xml\Schemas\MDFe\consStatServTiposBasico_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\distMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\enviMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evAlteracaoPagtoServMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\evCancMDFe_v3.00.xsd" />
+		<None Remove="Xml\Schemas\MDFe\evConfirmaServMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\evEncMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\eventoMDFeTiposBasico_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\eventoMDFe_v3.00.xsd" />
@@ -1028,7 +1030,9 @@
 		<EmbeddedResource Include="Xml\Schemas\MDFe\consStatServTiposBasico_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\distMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\enviMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evAlteracaoPagtoServMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\evCancMDFe_v3.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\MDFe\evConfirmaServMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\evEncMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\eventoMDFeTiposBasico_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\MDFe\eventoMDFe_v3.00.xsd" />

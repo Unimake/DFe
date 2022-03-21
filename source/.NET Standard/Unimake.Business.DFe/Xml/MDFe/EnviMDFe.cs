@@ -1100,6 +1100,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("idEstrangeiro")]
         public string IdEstrangeiro { get; set; }
 
+        /// <summary>
+        /// Grupo de informações do contrato entre transportador e contratante
+        /// </summary>
+        [XmlElement("infContrato")]
+        public InfContrato InfContrato { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
@@ -1111,6 +1117,38 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public bool ShouldSerializeIdEstrangeiro() => !string.IsNullOrWhiteSpace(IdEstrangeiro);
 
         #endregion
+    }
+
+    /// <summary>
+    /// Grupo de informações do contrato entre transportador e contratante
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.InfContrato")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    public class InfContrato
+    {
+        /// <summary>
+        /// Número do contrato do transportador com o contratante quando este existir para prestações continuadas
+        /// </summary>
+        [XmlElement("NroContrato")]
+        public string NroContrato { get; set; }
+
+        /// <summary>
+        /// Valor Global do Contrato. Utilizar somente no pagamento a prazo.
+        /// </summary>
+        [XmlIgnore]
+        public double VContratoGlobal { get; set; }
+
+        [XmlElement("vContratoGlobal")]
+        public string VContratoGlobalField
+        {
+            get => VContratoGlobal.ToString("F2", CultureInfo.InvariantCulture);
+            set => VContratoGlobal = Utility.Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -1165,8 +1203,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VAdiant = Utility.Converter.ToDouble(value);
         }
 
+        private int? IndAntecipaAdiantField;
+
+        /// <summary>
+        /// Indicador de declaração de concordância em antecipar o adiantamento. Informar a tag somente se for autorizado antecipar o adiantamento. Operação de transporte com utilização de veículos de frotas dedicadas ou fidelizadas. Preencher com “1” para indicar operação de transporte de alto desempenho, demais casos não informar a tag.
+        /// </summary>
+        [XmlElement("indAntecipaAdiant")]
+        public int? IndAntecipaAdiant
+        {
+            get => IndAntecipaAdiantField;
+            set
+            {
+                if (value != 1 && value != 0 && value != null)
+                {
+                    throw new Exception("A tag <indAntecipaAdiant> só pode ser preenchida com o valor \"1\" para indicar operação de transporte de alto desempenho, demais casos preencha com 0 ou null para não informar a tag.");
+                }
+
+                IndAntecipaAdiantField = value;
+            }
+        }
+
         [XmlElement("infPrazo")]
         public List<InfPrazo> InfPrazo { get; set; }
+
+        /// <summary>
+        /// Tipo de Permissão em relação a antecipação das parcelas
+        /// </summary>
+        [XmlElement("tpAntecip")]
+#if INTEROP
+        public TipoPermissaoAtencipacaoParcela TpAntecip { get; set; } = (TipoPermissaoAtencipacaoParcela)(-1);
+#else
+
+        public TipoPermissaoAtencipacaoParcela? TpAntecip { get; set; }
+#endif
 
         [XmlElement("infBanc")]
         public InfBanc InfBanc { get; set; }
@@ -1176,6 +1245,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public bool ShouldSerializeIndAltoDesemp() => IndAltoDesemp == 1;
 
         public bool ShouldSerializeVAdiantField() => VAdiant > 0;
+
+        public bool ShouldSerializeIndAntecipaAdiantField() => IndAntecipaAdiant == 1;
+
+#if INTEROP
+        public bool ShouldSerializeTpAntecip() => TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1);
+#else
+        public bool ShouldSerializeTpAntecip() => TpAntecip != null;
+#endif
 
         #endregion
 

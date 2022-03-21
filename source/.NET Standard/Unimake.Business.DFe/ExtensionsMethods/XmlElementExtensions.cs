@@ -19,14 +19,14 @@ namespace System.Xml
         /// <returns></returns>
         public static T GetValue<T>(this XmlElement element, string name)
         {
-            var value = element.Cast<XmlElement>().Where(el => el.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            XmlElement value = element.Cast<XmlElement>().Where(el => el.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 
             if (value == null)
             {
                 return default;
             }
 
-            return ToAny<T>(value.InnerText) ;
+            return ToAny<T>(value.InnerText);
         }
 
         #endregion Public Methods

@@ -6106,7 +6106,6 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-
     #region Tipos de Consultas da GNRE
 
     /// <summary>
@@ -6181,6 +6180,34 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Teste = 1
+    }
+
+    #endregion
+
+    #region Tipo de permissão em relação a antecipação das parcelas referente ao pagamento de transportes - MDFe
+
+    /// <summary>
+    /// Tipo de permissão em relação a antecipação das parcelas referente a pagamento de transportes
+    /// </summary>
+    public enum TipoPermissaoAtencipacaoParcela
+    {
+        /// <summary>
+        /// 0 - Não permite antecipar parcelas
+        /// </summary>
+        [XmlEnum("0")]
+        NaoPermiteAnteciparParcelas = 0,
+
+        /// <summary>
+        /// 1 - Permite antecipar Parcelas
+        /// </summary>
+        [XmlEnum("1")]
+        PermiteAnteciparParcelas = 1,
+
+        /// <summary>
+        /// 2 - Permite antecipar as parcelas mediante confirmação
+        /// </summary>
+        [XmlEnum("2")]
+        PermiteAnteciparParcelasMedianteConfirmacao = 2
     }
 
     #endregion
