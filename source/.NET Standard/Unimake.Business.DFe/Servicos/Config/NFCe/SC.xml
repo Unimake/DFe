@@ -3,10 +3,10 @@
 	<Heranca>SVRS.xml</Heranca>
 	<Servicos ID="NFCe">
 		<Autorizacao versao="4.00">
-			<UrlQrCodeHomologacao>http://hom.sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeHomologacao>
-			<UrlQrCodeProducao>http://sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeProducao>
-			<UrlChaveHomologacao>http://hom.sat.sef.sc.gov.br/nfce/consulta</UrlChaveHomologacao>
-			<UrlChaveProducao>http://sat.sef.sc.gov.br/nfce/consulta</UrlChaveProducao>
+			<UrlQrCodeHomologacao>https://hom.sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://sat.sef.sc.gov.br/nfce/consulta</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://hom.sat.sef.sc.gov.br/nfce/consulta</UrlChaveHomologacao>
+			<UrlChaveProducao>https://sat.sef.sc.gov.br/nfce/consulta</UrlChaveProducao>
 		</Autorizacao>
 	</Servicos>
 </configuracoes>
