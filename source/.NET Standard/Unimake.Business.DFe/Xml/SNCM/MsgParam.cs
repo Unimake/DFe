@@ -120,7 +120,11 @@ namespace Unimake.Business.DFe.Xml.SNCM
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
-    public class Declarant
+    public class Declarant : StakeholderId
+    {
+    }
+
+    public abstract class StakeholderId
     {
         /// <summary>
         /// Número no Cadastro de Pessoas Físicas.
