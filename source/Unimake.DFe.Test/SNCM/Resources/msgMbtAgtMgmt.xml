@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<msgMbtAgtMgmt xmlns="http://sncm.anvisa.gov.br/">
+	<docId>1A2B3C4D5E6F7G8H9I0J</docId>
+	<ccTime>2022-03-23T08:31:00-03:00</ccTime>
+	<ver>0.01</ver>
+	<lc>pt-BR</lc>
+	<env>1</env>
+	<declarant>
+		<cpf>00000000000</cpf>
+	</declarant>
+	<mbrAgt>00000000000000</mbrAgt>
+	<usrAgt>teste da tag</usrAgt>
+	<mbrAgts>
+		<comnd>1</comnd>
+		<cnpj>00000000000000</cnpj>
+	</mbrAgts>
+</msgMbtAgtMgmt>
