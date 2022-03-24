@@ -9,7 +9,7 @@
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
 	  <TagAssinatura>Rps</TagAssinatura>
-	  <TagAtributoID>InfRps</TagAtributoID>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 	  <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 	  <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
