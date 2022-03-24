@@ -930,6 +930,12 @@ namespace Unimake.Business.DFe.Servicos
         PagamentoOperacao = 110116,
 
         /// <summary>
+        /// Alteração Pagamento Serviço MDFe = 110118
+        /// </summary>
+        [XmlEnum("110118")]
+        AlteracaoPagamentoServico = 110118,
+
+        /// <summary>
         /// EncerramentoFisco (Evento exclusivo do fisco) (310112)
         /// </summary>
         [XmlEnum("310112")]
