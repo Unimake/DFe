@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS1591
-
-#if INTEROP
+﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
 using System;
@@ -35,6 +33,9 @@ namespace Unimake.Business.DFe.Xml.SNCM
         [XmlIgnore]
         public DateTime CcTime { get; set; }
 
+        /// <summary>
+        /// Auxiliar da propriedade "CcTime" - utilize a propriedade "CcTime" para atribuir valor.
+        /// </summary>
         [XmlElement("ccTime")]
         public string CcTimeField
         {
@@ -85,17 +86,17 @@ namespace Unimake.Business.DFe.Xml.SNCM
         }
 
         /// <summary>
-        /// Identificação do procurador que assina a comunicação (CNPJ).
+        /// Grupo com informações sobre inclusão e exclusão de procuradores.
         /// </summary>
         [XmlElement("mbrAgts")]
         public MbrAgts MbrAgts { get; set; }
 
-    /// <summary>
-    /// Deserializar o XML msgMbtAgtMgmt no objeto MsgMbtAgtMgmt.
-    /// </summary>
-    /// <param name="filename">Localização do arquivo XML msgMbtAgtMgmt</param>
-    /// <returns>Objeto do MsgMbtAgtMgmt</returns>
-    public MsgMbtAgtMgmt LoadFromFile(string filename)
+        /// <summary>
+        /// Deserializar o XML msgMbtAgtMgmt no objeto MsgMbtAgtMgmt.
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML msgMbtAgtMgmt</param>
+        /// <returns>Objeto do MsgMbtAgtMgmt</returns>
+        public MsgMbtAgtMgmt LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
@@ -111,11 +112,18 @@ namespace Unimake.Business.DFe.Xml.SNCM
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Só gera a tag "mbrAgt" se a propriedade "MbrAgt" tiver conteúdo.
+        /// </summary>
+        /// <returns>Retorna se é ou não para gerar a tag "mbrAgt"</returns>
         public bool ShouldSerializeMbrAgt() => !string.IsNullOrWhiteSpace(MbrAgt);
 
         #endregion
     }
 
+    /// <summary>
+    /// Grupo com informações sobre inclusão e exclusão de procuradores.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.SNCM.MbrAgts")]
@@ -126,7 +134,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
     public class MbrAgts
     {
         /// <summary>
-        /// Número no Cadastro de Pessoas Físicas.
+        /// Comando a ser executado para inclusão, exclusão ou listar procuradores cadastrados.
         /// </summary>
         [XmlElement("comnd")]
         public string Comnd { get; set; }
@@ -142,6 +150,5 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// </summary>
         [XmlElement("cnpj")]
         public string CNPJ { get; set; }
-
     }
 }
