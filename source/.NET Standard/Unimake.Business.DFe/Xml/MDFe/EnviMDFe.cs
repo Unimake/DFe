@@ -1246,7 +1246,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         public bool ShouldSerializeVAdiantField() => VAdiant > 0;
 
-        public bool ShouldSerializeIndAntecipaAdiantField() => IndAntecipaAdiant == 1;
+        public bool ShouldSerializeIndAntecipaAdiant() => IndAntecipaAdiant == 1;
 
 #if INTEROP
         public bool ShouldSerializeTpAntecip() => TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1);
