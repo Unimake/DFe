@@ -43,7 +43,7 @@ Function EnviarNfeAssincrono()
    oIde:Mod      = 55 // NFe
    oIde:Serie    = 1
    oIde:NNF      = 57980
-   oIde:DhEmi    = DateTime() // Transform(DtoS(Date()),"@R 9999-99-99") + " " + Time() + ".0-03")
+   oIde:DhEmi    = DateTime() 
    oIde:DhSaiEnt = DateTime()
    oIde:TpNF     = 1 // Saida
    oIde:IdDest   = 2 // OperacaoInterestadual

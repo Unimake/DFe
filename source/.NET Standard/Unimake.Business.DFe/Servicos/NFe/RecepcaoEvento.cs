@@ -262,7 +262,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
-        [System.Runtime.InteropServices.ComVisible(true)]
+        [ComVisible(true)]
         public void Executar(EnvEvento envEvento, Configuracao configuracao)
         {
             PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
