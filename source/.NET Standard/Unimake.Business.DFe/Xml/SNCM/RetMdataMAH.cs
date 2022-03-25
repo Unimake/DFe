@@ -78,7 +78,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Grupo com informações sobre a vinculação do número de registro do medicamento com os Metadados.Só informado quando o comando executado for Consultar Metadados.
         /// </summary>
         [XmlElement("mdata")]
-        public MData MData { get; set; }
+        public MDataRet MData { get; set; }
 
         /// <summary>
         /// Grupo de mensagens de retorno do Web Service.
@@ -129,12 +129,63 @@ namespace Unimake.Business.DFe.Xml.SNCM
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.SNCM.MData")]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.RetMData")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
-    public class MData
+    public class MDataRet : MDataBase
+    {
+        /// <summary>
+        /// Data da interrupção da comercialização.
+        /// </summary>
+        [XmlIgnore]
+        public DateTime BreakDate { get; set; }
+
+        /// <summary>
+        /// Auxiliar de serialização da tag "breakDate" - Use a propriedade "BreakDate" para atribuir o valor.
+        /// </summary>
+        [XmlElement("breakDate")]
+        public string BreakDateField
+        {
+            get => BreakDate.ToString("yyyy-MM-dd");
+            set => BreakDate = DateTime.Parse(value);
+        }
+
+        private string ReasonField { get; set; }
+
+        /// <summary>
+        /// Razão da interrupção da comercialização.
+        /// </summary>
+        [XmlElement("reason")]
+        public string Reason
+        {
+            get => ReasonField;
+            set => ReasonField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
+        }
+
+        /// <summary>
+        /// Só gera a tag "breakDate" se a propriedade "BreakDate" tiver conteúdo.
+        /// </summary>
+        /// <returns>Retorna se é ou não para gerar a tag "breakDate"</returns>
+        public bool ShouldSerializeBreakDateField() => BreakDate > DateTime.MinValue;
+
+        /// <summary>
+        /// Só gera a tag "reason" se a propriedade "Reason" tiver conteúdo.
+        /// </summary>
+        /// <returns>Retorna se é ou não para gerar a tag "reason"</returns>
+        public bool ShouldSerializeReason() => !string.IsNullOrWhiteSpace(Reason);
+    }
+
+    /// <summary>
+    /// Grupo com informações sobre a vinculação do número de registro do medicamento com os Metadados.Só informado quando o comando executado for Consultar Metadados.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.MDataBase")]
+    [ComVisible(true)]
+#endif
+    public abstract class MDataBase
     {
         /// <summary>
         /// Código de Classificação ATC, mantido pela Organização Mundial de Saúde(OMS).
@@ -209,34 +260,6 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// </summary>
         [XmlElement("gtin")]
         public List<string> Gtin { get; set; }
-
-        /// <summary>
-        /// Data da interrupção da comercialização.
-        /// </summary>
-        [XmlIgnore]
-        public DateTime BreakDate { get; set; }
-
-        /// <summary>
-        /// Auxiliar de serialização da tag "breakDate" - Use a propriedade "BreakDate" para atribuir o valor.
-        /// </summary>
-        [XmlElement("breakDate")]
-        public string BreakDateField
-        {
-            get => BreakDate.ToString("yyyy-MM-dd");
-            set => BreakDate = DateTime.Parse(value);
-        }
-
-        private string ReasonField { get; set; }
-
-        /// <summary>
-        /// Razão da interrupção da comercialização.
-        /// </summary>
-        [XmlElement("reason")]
-        public string Reason
-        {
-            get => ReasonField;
-            set => ReasonField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
-        }
 
 #if INTEROP
 
@@ -319,18 +342,6 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// </summary>
         /// <returns>Retorna se é ou não para gerar a tag "finalDate"</returns>
         public bool ShouldSerializeFinalDateField() => FinalDate > DateTime.MinValue;
-
-        /// <summary>
-        /// Só gera a tag "breakDate" se a propriedade "BreakDate" tiver conteúdo.
-        /// </summary>
-        /// <returns>Retorna se é ou não para gerar a tag "breakDate"</returns>
-        public bool ShouldSerializeBreakDateField() => BreakDate > DateTime.MinValue;
-
-        /// <summary>
-        /// Só gera a tag "reason" se a propriedade "Reason" tiver conteúdo.
-        /// </summary>
-        /// <returns>Retorna se é ou não para gerar a tag "reason"</returns>
-        public bool ShouldSerializeReason() => !string.IsNullOrWhiteSpace(Reason);
 
         #endregion
     }

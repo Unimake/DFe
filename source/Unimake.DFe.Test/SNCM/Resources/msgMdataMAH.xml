@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<msgMdataMAH xmlns="http://sncm.anvisa.gov.br/">
+  <docId>1A2B3C4D5E6F7G8H9I0J</docId>
+  <ccTime>2022-03-24T08:31:00-03:00</ccTime>
+  <ver>0.01</ver>
+  <lc>pt-BR</lc>
+  <env>1</env>
+  <declarant>
+    <cpf>00000000000</cpf>
+  </declarant>
+  <mbrAgt>00000000000000</mbrAgt>
+  <usrAgt>teste da tag</usrAgt>
+  <comnd>1</comnd>
+  <regAnvisa>regAnvisa1</regAnvisa>
+  <mdata>
+    <atcWho>atcWho1</atcWho>
+    <atcDDD>atcDDD1</atcDDD>
+    <atcEph>atcEph1</atcEph>
+    <regClass>regC1</regClass>
+    <initDate>2022-03-22</initDate>
+    <presType>pres1</presType>
+    <finalDate>2022-03-23</finalDate>
+    <gtin>gtin_________1</gtin>
+    <interrupt>
+      <breakDate>2022-03-24</breakDate>
+      <reason>reas1</reason>
+    </interrupt>
+  </mdata>
+</msgMdataMAH>
