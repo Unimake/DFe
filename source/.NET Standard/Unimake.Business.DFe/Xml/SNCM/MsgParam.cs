@@ -13,7 +13,7 @@ using Unimake.Business.DFe.Utility;
 namespace Unimake.Business.DFe.Xml.SNCM
 {
     /// <summary>
-    /// XML para o serviço para recepção e/ou atualização dos parâmetros do SNCM necessários para o Sistema Cliente funcionar
+    /// XML para o serviço param recepção e/ou atualização dos parâmetros do SNCM necessários para o Sistema Cliente funcionar
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
