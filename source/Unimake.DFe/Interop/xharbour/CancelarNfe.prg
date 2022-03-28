@@ -1,75 +1,93 @@
 * ---------------------------------------------------------------------------------
-* Carregando certificado A1
+* Evento de cancelamento da NFe
 * ---------------------------------------------------------------------------------
 Function CancelarNfe()
- Local oCertificado, oCertificadoSelecionado
+ Local oConfiguracao
+ Local oEnvEvento, oEvento, oDetEventoCanc, oInfEvento
 
-* Criar objeto com Certificado A1 informado
- oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigital")
- oCertificadoSelecionado = oCertificado:CarregarCertificadoDigitalA1("C:\Projetos\certificados\UnimakePV.pfx","12345678")
+* Criar configuraçao básica para consumir o serviço
+ oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+ oConfiguracao:TipoDfe = 0 // 0=nfe
+ oConfiguracao:Servico = 5 // 5=Envio de evento
+ oConfiguracao:CertificadoSenha = "12345678"
+ oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
- ? "ID do Certificado....: ", oCertificado:GetThumbPrint(oCertificadoSelecionado)
- ? 
- ? ">>> EM CONSTRUCAO <<<"
+ * Criar tag EnvEvento
+ oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+ oEnvEvento:Versao = "1.00"
+ oEnvEvento:IdLote = "000000000000001"
 
- /*
-var xml = new EnvEvento
-{
-    Versao = "1.00",
-    IdLote = "000000000000001",
-    Evento = new List<Evento> {
-        new Evento
-        {
-            Versao = "1.00",
-            InfEvento = new Unimake.Business.DFe.Xml.NFe.InfEvento(new Unimake.Business.DFe.Xml.NFe.DetEventoCanc
-            {
-                NProt = "141190000660363",
-                Versao = "1.00",
-                XJust = "Justificativa para cancelamento da NFe de teste"
-            })
-            {
-                COrgao = UFBrasil.PR,
-                ChNFe = "41190806117473000150550010000579131943463890",
-                CNPJ = "06117473000150",
-                DhEvento = DateTime.Now,
-                TpEvento = TipoEventoNFe.Cancelamento,
-                NSeqEvento = 1,
-                VerEvento = "1.00",
-                TpAmb = TipoAmbiente.Homologacao
-            }
-        }
-    }
-};
+ * =================================================
+ * EVENTO NÚMERO 1
+ * =================================================
+ * Criar tag Evento
+ oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+ oEvento:Versao = "1.00"
+ 
+ * Criar tag DetEventoCCE
+ oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")
+ oDetEventoCanc:Versao = "1.00"
+ oDetEventoCanc:NProt = "141190000660363"
+ oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
 
-var configuracao = new Configuracao
-{
-    CertificadoDigital = CertificadoSelecionado
-};
+ * Criar tag InfEvento
+ oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+ 
+ * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
+ oInfEvento:DetEvento = oDetEventoCanc
+ 
+ * Atualizar propriedades da oInfEvento
+ * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+ oInfEvento:COrgao = 41 // UFBrasil.PR
+ oInfEvento:ChNFe = "41191006117473000150550010000579281779843610"
+ oInfEvento:CNPJ = "06117473000150"
+ oInfEvento:DhEvento = DateTime()
+ oInfEvento:TpEvento = 110111 // TipoEventoNFe.Cancelamento
+ oInfEvento:NSeqEvento = 1
+ oInfEvento:VerEvento = "1.00"
+ oInfEvento:TpAmb = 2 // TipoAmbiente.Homologacao
 
-var recepcaoEvento = new RecepcaoEvento(xml, configuracao);
-recepcaoEvento.Executar();
+ * Adicionar a tag InfEvento dentro da tag Evento
+ oEvento:InfEvento = oInfEvento
 
-MessageBox.Show(recepcaoEvento.RetornoWSString);
-MessageBox.Show(recepcaoEvento.Result.XMotivo);
+ * Adicionar a tag Evento dentro da tag EnvEvento
+ oEnvEvento:AddEvento(oEvento)
 
-//Gravar o XML de distribuição se a inutilização foi homologada
-if (recepcaoEvento.Result.CStat == 128) //128 = Lote de evento processado com sucesso
-{
-    switch (recepcaoEvento.Result.RetEvento[0].InfEvento.CStat)
-    {
-        case 135: //Evento homologado com vinculação da respectiva NFe
-        case 136: //Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
-        case 155: //Evento de Cancelamento homologado fora do prazo permitido para cancelamento
-            recepcaoEvento.GravarXmlDistribuicao(@"c:\testenfe\");
-            break;
+ ? oEnvEvento:Versao, oEnvEvento:IdLote
+ ? "Qde eventos:", oEnvEvento:GetEventoCount()
+  
+ For I = 1 To oEnvEvento:GetEventoCount()
+     oTagEvento := oEnvEvento:GetEvento(I - 1) 
+     ? I, oTagEvento:InfEvento:NSeqEvento, oTagEvento:InfEvento:COrgao
+ Next I     
 
-        default: //Evento rejeitado
-            recepcaoEvento.GravarXmlDistribuicao(@"c:\testenfe\");
-            break;
-    }
-}
-*/
+ * Enviar carta de correcao
+ oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+ oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 
+ ? "CStat do Lote Retornado:", oRecepcaoEvento:Result:CStat, "- XMotivo:", oRecepcaoEvento:Result:XMotivo
+ 
+ if oRecepcaoEvento:Result:CStat == 128 //128 = Lote de evento processado com sucesso.
+  * Como pode existir vários eventos de correção, 
+  * é necessário fazer um loop para ver a autorização de cada um deles
+    For I = 1 To oRecepcaoEvento:Result:GetRetEventoCount()
+        oRetEvento = oRecepcaoEvento:Result:GetRetEvento(I - 1)
+        SWITCH oRetEvento:InfEvento:CStat
+          CASE 135 //Evento homologado com vinculação da respectiva NFe
+          CASE 136 //Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
+          CASE 155 //Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
+               oRecepcaoEvento:GravarXmlDistribuicao("tmp\testenfe") //Grava o XML de distribuição
+               Exit
+			   
+          default
+               // Evento rejeitado
+               // Realizar as ações necessárias
+               Exit
+        END
+		
+        ? "CStat do evento", AllTrim(Str(I,10)), "retornado:", oRetEvento:InfEvento:CStat, "- xMotivo:", oRetEvento:InfEvento:XMotivo
+    Next
+ EndIf 
 
  Wait
 RETURN

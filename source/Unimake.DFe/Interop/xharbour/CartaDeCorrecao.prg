@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Carregando certificado A1
+* Evento de carta de correção eletrônica da NFe
 * ---------------------------------------------------------------------------------
 Function CartaDeCorrecao()
  Local oConfiguracao
@@ -22,10 +22,21 @@ Function CartaDeCorrecao()
  * =================================================
  * Criar tag Evento
  oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
- oEvento:Versao = "1.0"
+ oEvento:Versao = "1.00"
+ 
+ * Criar tag DetEventoCCE
+ oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
+ oDetEventoCCE:Versao = "1.00"
+ oDetEventoCCE:XCorrecao = "CFOP errada, segue CFOP correta. teste."
 
  * Criar tag InfEvento
  oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+ 
+ * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
+ oInfEvento:DetEvento = oDetEventoCCE
+ 
+ * Atualizar propriedades da oInfEvento
+ * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o ODetEventoCCE para que funcione sem erro
  oInfEvento:COrgao = 41 // UFBrasil.PR
  oInfEvento:ChNFe = "41191006117473000150550010000579281779843610"
  oInfEvento:CNPJ = "06117473000150"
@@ -34,14 +45,6 @@ Function CartaDeCorrecao()
  oInfEvento:NSeqEvento = 1
  oInfEvento:VerEvento = "1.00"
  oInfEvento:TpAmb = 2 // TipoAmbiente.Homologacao
- 
- * Criar tag DetEventoCCE
- oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
- oDetEventoCCE:Versao = "1.0"
- oDetEventoCCE:XCorrecao = "CFOP errada, segue CFOP correta. teste."
-
- * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
- oInfEvento:DetEvento = oDetEventoCCE
 
  * Adicionar a tag InfEvento dentro da tag Evento
  oEvento:InfEvento = oInfEvento
@@ -49,16 +52,26 @@ Function CartaDeCorrecao()
  * Adicionar a tag Evento dentro da tag EnvEvento
  oEnvEvento:AddEvento(oEvento)
 
-/*
  * =================================================
  * EVENTO NÚMERO 2
  * =================================================
  * Criar tag Evento
  oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
- oEvento:Versao = "1.0"
+ oEvento:Versao = "1.00"
+ 
+ * Criar tag DetEventoCCE
+ oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
+ oDetEventoCCE:Versao    = "1.00"
+ oDetEventoCCE:XCorrecao = "Transportador errado. teste."
 
  * Criar tag InfEvento
  oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+ 
+ * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
+ oInfEvento:DetEvento = oDetEventoCCE
+
+ * Atualizar propriedades da oInfEvento
+ * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o ODetEventoCCE para que funcione sem erro
  oInfEvento:COrgao     = 41 // UFBrasil.PR
  oInfEvento:ChNFe      = "41191006117473000150550010000579281779843610"
  oInfEvento:CNPJ       = "06117473000150"
@@ -67,32 +80,27 @@ Function CartaDeCorrecao()
  oInfEvento:NSeqEvento = 2
  oInfEvento:VerEvento  = "1.00"
  oInfEvento:TpAmb      = 2 // TipoAmbiente.Homologacao
- 
- * Criar tag DetEventoCCE
- oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
- oDetEventoCCE:Versao    = "1.0"
- oDetEventoCCE:XCorrecao = "Transportador errado. teste."
-
- * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
- oInfEvento:DetEvento = oDetEventoCCE
 
  * Adicionar a tag InfEvento dentro da tag Evento
  oEvento:InfEvento = oInfEvento
 
  * Adicionar a tag Evento dentro da tag EnvEvento
  oEnvEvento:AddEvento(oEvento)
-*/
 
  ? oEnvEvento:Versao, oEnvEvento:IdLote
+ ? "Qde eventos:", oEnvEvento:GetEventoCount()
   
  For I = 1 To oEnvEvento:GetEventoCount()
      oTagEvento := oEnvEvento:GetEvento(I - 1) 
-     ? I, oTagEvento:InfEvento:NSeqEvento,oTagEvento:InfEvento:COrgao
+     ? I, oTagEvento:InfEvento:NSeqEvento, oTagEvento:InfEvento:COrgao
  Next I     
 
  * Enviar carta de correcao
  oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
  oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
+
+ ? "CStat do Lote Retornado:", oRecepcaoEvento:Result:CStat, "- XMotivo:", oRecepcaoEvento:Result:XMotivo
+ 
  if oRecepcaoEvento:Result:CStat == 128 //128 = Lote de evento processado com sucesso.
   * Como pode existir vários eventos de correção, 
   * é necessário fazer um loop para ver a autorização de cada um deles
@@ -104,11 +112,14 @@ Function CartaDeCorrecao()
           CASE 155 //Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
                oRecepcaoEvento:GravarXmlDistribuicao("tmp\testenfe") //Grava o XML de distribuição
                Exit
+			   
           default
                // Evento rejeitado
                // Realizar as ações necessárias
                Exit
         END
+		
+        ? "CStat do evento", AllTrim(Str(I,10)), "retornado:", oRetEvento:InfEvento:CStat, "- xMotivo:", oRetEvento:InfEvento:XMotivo
     Next
  EndIf 
 
