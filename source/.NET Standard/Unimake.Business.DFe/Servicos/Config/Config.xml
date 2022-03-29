@@ -640,4 +640,10 @@
 		<ArqConfig>BeloHorizonteMG.xml</ArqConfig>
 		<PadraoNFSe>BHISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3550308">
+		<Nome>São Paulo - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoPauloSP.xml</ArqConfig>
+		<PadraoNFSe>PAULISTANA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

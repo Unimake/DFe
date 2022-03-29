@@ -258,6 +258,54 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar Situacao Lote Rps")]
         NFSeConsultarSituacaoLoteRps = 40,
 
+        /// <summary>
+        /// Enviar o XML de consulta nfse recebidas para a prefeitura
+        /// </summary>
+        [Description("Consulta NFSe Recebidas")]
+        NFSeConsultaNFeRecebidas = 41,
+
+        /// <summary>
+        /// Enviar o XML de consulta nfse emitidas para a prefeitura
+        /// </summary>
+        [Description("Consulta NFSe Emitidas")]
+        NFSeConsultaNFeEmitidas = 42,
+
+        /// <summary>
+        /// Enviar o XML de teste envio lote rps para a prefeitura
+        /// </summary>
+        [Description("Teste Envio Lote RPS")]
+        NFSeTesteEnvioLoteRps = 43,
+
+        /// <summary>
+        /// Enviar o XML de envio lote rps para a prefeitura
+        /// </summary>
+        [Description("Envio Lote RPS")]
+        NFSeEnvioLoteRps = 44,
+
+        /// <summary>
+        /// Enviar o XML deenvio rps para a prefeitura
+        /// </summary>
+        [Description("Envio RPS")]
+        NFSeEnvioRps = 45,
+
+        /// <summary>
+        /// Enviar o XML de cancelamento nfse para a prefeitura
+        /// </summary>
+        [Description("Cancelamento NFSe")]
+        NFSeCancelamentoNfe = 46,
+
+        /// <summary>
+        /// Enviar o XML de consulta informações lote para a prefeitura
+        /// </summary>
+        [Description("Consulta Informações Lote")]
+        NFSeConsultaInformacoesLote = 47,
+
+        /// <summary>
+        /// Enviar o XML de consulta lote para a prefeitura
+        /// </summary>
+        [Description("Consulta Lote")]
+        NFSeConsultaLote = 48,
+
         #endregion
 
         #region Gerais
@@ -5883,7 +5931,13 @@ namespace Unimake.Business.DFe.Servicos
         /// BHISS Digital
         /// </summary>
         [Description("BHISS")]
-        BHISS = 15
+        BHISS = 15,
+
+        /// <summary>
+        /// PAULISTANA
+        /// </summary>
+        [Description("PAULISTANA")]
+        PAULISTANA = 16
     }
 
     #endregion

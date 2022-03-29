@@ -269,5 +269,157 @@
       <SchemaVersao></SchemaVersao>
       <TargetNS></TargetNS>
     </ConsultarNfsePDF>
-  </Servicos>
+	<EnvioLoteRps versao="1.00">
+	  <Descricao>Envio Lote Rps</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </EnvioLoteRps>
+	<TesteEnvioLoteRps versao="1.00">
+	  <Descricao>Teste Envio Lote Rps</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </TesteEnvioLoteRps>
+	<EnvioRps versao="1.00">
+	  <Descricao>Envio Rps</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </EnvioRps>
+	<CancelamentoNfe versao="1.00">
+	<Descricao>Cancelamento Nfe</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelamentoNfe>
+	<ConsultaLote versao="1.00">
+	  <Descricao>Consulta lote</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultaLote>
+	<ConsultaInformacoesLote versao="1.00">
+	  <Descricao>Consulta Informações Lote</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultaInformacoesLote>
+	<ConsultaNFeRecebidas versao="1.00">
+	  <Descricao>Consulta NFSe Recebidas</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultaNFeRecebidas>
+	<ConsultaNFeEmitidas versao="1.00">
+	  <Descricao>Consulta NFSe Emitidas</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultaNFeEmitidas> 
+</Servicos>
 </Configuracoes>

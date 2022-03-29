@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PedidoConsultaLote xmlns="http://www.prefeitura.sp.gov.br/nfe">
+	<Cabecalho Versao="1" xmlns="">
+		<CPFCNPJRemetente>
+			<CNPJ>44073893000170</CNPJ>
+		</CPFCNPJRemetente>
+		<NumeroLote>1</NumeroLote>
+	</Cabecalho>
+</PedidoConsultaLote>

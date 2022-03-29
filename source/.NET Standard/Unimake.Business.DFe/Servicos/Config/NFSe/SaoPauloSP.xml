@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+	<EnvioLoteRps versao="2.00">
+      <Descricao>Envio Lote Rps</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/envioLoteRPS</WebActionProducao>
+      <SchemaArquivo>PedidoEnvioLoteRPS_v01.xsd</SchemaArquivo>
+      <TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnvioLoteRPSRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></EnvioLoteRPSRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </EnvioLoteRps>
+	<TesteEnvioLoteRps versao="2.00">
+      <Descricao>Envio Lote RPS Teste</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio</WebActionProducao>
+      <SchemaArquivo>PedidoEnvioLoteRPS_v01.xsd</SchemaArquivo>
+      <TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><TesteEnvioLoteRPSRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></TesteEnvioLoteRPSRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </TesteEnvioLoteRps>
+    <EnvioRps versao="2.00">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/envioRPS</WebActionProducao>
+      <SchemaArquivo>PedidoEnvioRPS_v01.xsd</SchemaArquivo>
+      <TagAssinatura>PedidoEnvioRPS</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnvioRPSRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></EnvioRPSRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </EnvioRps>
+    <CancelamentoNfe versao="2.00">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe</WebActionProducao>
+      <SchemaArquivo>PedidoCancelamentoNFe_v01.xsd</SchemaArquivo>
+      <TagAssinatura>PedidoCancelamentoNFe</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelamentoNFeRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></CancelamentoNFeRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </CancelamentoNfe>
+	<ConsultaLote versao="2.00">
+      <Descricao>Consulta lote</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote</WebActionProducao>
+      <SchemaArquivo>PedidoConsultaLote_v01.xsd</SchemaArquivo>
+      <TagAssinatura>PedidoConsultaLote</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaLoteRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></ConsultaLoteRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </ConsultaLote>
+	<ConsultaInformacoesLote versao="2.00">
+      <Descricao>Consulta Informações Lote</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote</WebActionProducao>
+      <SchemaArquivo>PedidoInformacoesLote_v01.xsd</SchemaArquivo>
+      <TagAssinatura>p1:PedidoInformacoesLote</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaInformacoesLoteRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></ConsultaInformacoesLoteRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </ConsultaInformacoesLote>
+    <ConsultarNfse versao="2.00">
+      <Descricao>Consultar Nfse</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe</WebActionProducao>
+      <SchemaArquivo>PedidoConsultaNFe_v01.xsd</SchemaArquivo>
+      <TagAssinatura>p1:PedidoConsultaNFe</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaNFeRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></ConsultaNFeRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </ConsultarNfse>
+	<ConsultaNFeRecebidas versao="2.00">
+      <Descricao>Consulta NFSe Recebidas</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas</WebActionProducao>
+      <SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
+      <TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaNFeRecebidasRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></ConsultaNFeRecebidasRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </ConsultaNFeRecebidas>
+	<ConsultaNFeEmitidas versao="2.00">
+      <Descricao>Consulta NFSe Emitidas</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas</WebActionProducao>
+      <SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
+      <TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
+      <TagAtributoID>Cabecalho</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultaNFeEmitidasRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></ConsultaNFeEmitidasRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>RetornoXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
+    </ConsultaNFeEmitidas>
+  </Servicos>
+</Configuracoes>

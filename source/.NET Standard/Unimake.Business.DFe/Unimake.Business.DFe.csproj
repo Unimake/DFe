@@ -251,6 +251,7 @@
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SideropolisSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
@@ -462,6 +463,23 @@
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaCNPJ_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFePeriodo_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioLoteRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\PedidoInformacoesLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoCancelamentoNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoConsultaCNPJ_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoConsulta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioLoteRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioRPS_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
@@ -926,6 +944,9 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\BeloHorizonteMG.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPauloSP.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -1293,6 +1314,23 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoCancelamentoNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaCNPJ_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFePeriodo_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoConsultaNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioLoteRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoEnvioRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\PedidoInformacoesLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoCancelamentoNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoConsultaCNPJ_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoConsulta_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioLoteRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoEnvioRPS_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\RetornoInformacoesLote_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\TiposNFe_v01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PAULISTANA\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PedidoEnvioLoteRPS xmlns="http://www.prefeitura.sp.gov.br/nfe">
+  <Cabecalho Versao="1" xmlns="">
+    <CPFCNPJRemetente>
+      <CNPJ>04642554000143</CNPJ>
+    </CPFCNPJRemetente>
+    <transacao>false</transacao>
+    <dtInicio>2007-01-20</dtInicio>
+    <dtFim>2007-01-20</dtFim>
+    <QtdRPS>2</QtdRPS>
+    <ValorTotalServicos>2000</ValorTotalServicos>
+    <ValorTotalDeducoes>200</ValorTotalDeducoes>
+  </Cabecalho>
+  <RPS xmlns="">
+	  <Assinatura>IkLB0qfZLDuTNXNB83tXXsZ2TFNK9X0l7gq8jRCOcwhit059iF5gNHfmuM4NoUhyhZ+rC6UGn9lSMv1A35lofsplIuWUJO13yPtHsxaY6/rP9DTB4Ve3ihzwrEkpenANoEU1C5wLenX0lRtYc1k3fWeDmZUvv+b/M81pwoPBL8k=</Assinatura>
+    <ChaveRPS>
+      <InscricaoPrestador>31000000</InscricaoPrestador>
+      <SerieRPS>LLLLL</SerieRPS>
+      <NumeroRPS>1</NumeroRPS>
+    </ChaveRPS>
+    <TipoRPS>RPS-M</TipoRPS>
+    <DataEmissao>2007-01-20</DataEmissao>
+    <StatusRPS>N</StatusRPS>
+    <TributacaoRPS>T</TributacaoRPS>
+    <ValorServicos>1000</ValorServicos>
+    <ValorDeducoes>100</ValorDeducoes>
+    <CodigoServico>2658</CodigoServico>
+    <AliquotaServicos>0.05</AliquotaServicos>
+    <ISSRetido>false</ISSRetido>
+    <CPFCNPJTomador>
+      <CPF>18564071878</CPF>
+    </CPFCNPJTomador>
+    <RazaoSocialTomador>PATRICIA TUPYNAMBA</RazaoSocialTomador>
+    <EnderecoTomador>
+      <TipoLogradouro>R</TipoLogradouro>
+      <Logradouro>Guararapes</Logradouro>
+      <NumeroEndereco>495 A</NumeroEndereco>
+      <ComplementoEndereco>ap 102</ComplementoEndereco>
+      <Bairro>BROOKLIN PAULISTA</Bairro>
+      <Cidade>3550308</Cidade>
+      <UF>SP</UF>
+      <CEP>4561000</CEP>
+    </EnderecoTomador>
+    <EmailTomador>ptupynamba@prodam.sp.gov.br</EmailTomador>
+    <Discriminacao>Desenvolvimento de Web Site Pessoal</Discriminacao>
+  </RPS>
+</PedidoEnvioLoteRPS>
