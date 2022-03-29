@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigPadrao>
+  <Versao ID="0.01">
+    <WebContentType></WebContentType>
+    <WebSoapString></WebSoapString>
+    <WebTagRetorno></WebTagRetorno>
+    <WebSoapVersion>soap12</WebSoapVersion>
+    <SchemaVersao>0.01</SchemaVersao>
+    <TargetNS>http://sncm.anvisa.gov.br/</TargetNS>
+  </Versao>
+</ConfigPadrao>

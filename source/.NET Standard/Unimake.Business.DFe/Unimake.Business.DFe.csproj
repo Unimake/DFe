@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2022.03.25.1006</AssemblyVersion>
-		<FileVersion>2022.03.25.1006</FileVersion>
+		<AssemblyVersion>2022.03.29.1510</AssemblyVersion>
+		<FileVersion>2022.03.29.1510</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -257,6 +257,8 @@
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
+		<None Remove="Servicos\Config\SNCM\Config.xml" />
+		<None Remove="Servicos\Config\SNCM\SNCM.xml" />
 		<None Remove="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
@@ -945,7 +947,7 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaoPauloSP.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -963,6 +965,10 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\SNCM\Config.xml" />
+		<EmbeddedResource Include="Servicos\Config\SNCM\SNCM.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
