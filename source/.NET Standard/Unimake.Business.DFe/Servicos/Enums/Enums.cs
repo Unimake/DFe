@@ -978,6 +978,12 @@ namespace Unimake.Business.DFe.Servicos
         PagamentoOperacao = 110116,
 
         /// <summary>
+        /// Confirmação do Serviço de Transporte (110117)
+        /// </summary>
+        [XmlEnum("110117")]
+        ConfirmacaoServicoTransporte = 110117,
+
+        /// <summary>
         /// Alteração Pagamento Serviço MDFe = 110118
         /// </summary>
         [XmlEnum("110118")]

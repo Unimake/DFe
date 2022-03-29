@@ -74,6 +74,11 @@
 					<SchemaArquivoEspecifico>evPagtoOperMDFe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>110117</ID>
+					<SchemaArquivo>eventoMDFe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evConfirmaServMDFe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>110118</ID>
 					<SchemaArquivo>eventoMDFe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evAlteracaoPagtoServMDFe_v{0}.xsd</SchemaArquivoEspecifico>
