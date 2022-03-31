@@ -429,6 +429,8 @@
 		<None Remove="Xml\Schemas\NFe\procEPEC_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\procEventoCancEntregaNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\procEventoEntregaNFe_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\resEvento_v1.35.xsd" />
+		<None Remove="Xml\Schemas\NFe\resNFe_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\retDistDFeInt_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\retEnvEPEC_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\retEventoCancEntregaNFe_v1.00.xsd" />
@@ -1241,7 +1243,9 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\NFe\resEvento_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\resEvento_v1.35.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\resNFe_v1.01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFe\resNFe_v1.35.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFe\retConsCad_v2.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>

@@ -4,8 +4,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -68,5 +66,39 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("cSitNFe")]
         public string CSitNFe { get; set; }
+
+        private string CSitConfField;
+
+        /// <summary>
+        /// Situação da Manifestação do Destinatário:
+        /// 0=Sem Manifestação do Destinatário;
+        /// 1=Confirmada Operação;
+        /// 2=Desconhecida;
+        /// 3=Operação não Realizada;
+        /// 4=Ciência.
+        /// Esta propriedade só terá conteúdo no retorno da consulta com o schema versão 1.35. Na versão 1.01 a SEFAZ não retorna esta tag.
+        /// </summary>
+        [XmlElement("cSitConf")]
+        public string CSitConf
+        {
+            get => CSitConfField;
+            set
+            {
+                if (Versao == "1.35")
+                {
+                    CSitConfField = value;
+                }
+                else
+                {
+                    CSitConfField = string.Empty;
+                }
+            }
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCSitConf() => !string.IsNullOrWhiteSpace(CSitConf);
+
+        #endregion
     }
 }

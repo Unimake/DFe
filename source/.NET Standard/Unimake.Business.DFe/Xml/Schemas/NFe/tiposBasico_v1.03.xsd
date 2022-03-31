@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2008 (http://www.altova.com) by sas-softwares@procergs.rs.gov.br (PROCERGS) -->
-<!-- PL_006u - 21/07/14 - Inclusão do tipo Básico TPlaca // v2.0-->
-<!-- PL_006u - 06/05/14 - Alterações Fuso-Horario // v2.0-->
 <!-- PL_006h - 13/05/11 - correções da NT 2011/004  // v2.0-->
 <!-- PL_006f - 29/05/10 - correcao do tipo TDec_1504 para limitar a quantidade de decimais para 4  // v2.0-->
 <!-- PL_006f - 09/05/10 - eliminação da possibilidade informar a Inscrição produtor rural na IEDest  // v2.0-->
@@ -10,6 +7,14 @@
 <!-- PL_005d - 11/08/09 - alteração no enumeration do tpais para nova tabela de paises do BACEN-->
 <!-- PL_005b - 24/10/08 - acrescentado a tabela do tpais   e outras alterações para eliminar os brancos no início e fim do campo   -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nfe="http://www.portalfiscal.inf.br/nfe" targetNamespace="http://www.portalfiscal.inf.br/nfe" elementFormDefault="qualified" attributeFormDefault="unqualified">
+ 	<xs:simpleType name="TNSU">
+	    <xs:annotation>
+	      <xs:documentation>Tipo número sequencial único</xs:documentation>
+	    </xs:annotation>
+	    <xs:restriction base="xs:token">
+	      <xs:pattern value="[0-9]{15}"/>
+	    </xs:restriction>
+  	</xs:simpleType>
 	<xs:simpleType name="TCodUfIBGE">
 		<xs:annotation>
 			<xs:documentation>Tipo Código da UF da tabela do IBGE</xs:documentation>
@@ -63,6 +68,15 @@
 			<xs:pattern value="[0-9]{44}"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="TVerDistDFe">
+    <xs:annotation>
+      <xs:documentation>Tipo Versão dos leiautes do Web Service NFeDistribuicaoDFe</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:enumeration value="1.35"/>
+    </xs:restriction>
+  </xs:simpleType>
 	<xs:simpleType name="TProt">
 		<xs:annotation>
 			<xs:documentation>Tipo Número do Protocolo de Status</xs:documentation>
