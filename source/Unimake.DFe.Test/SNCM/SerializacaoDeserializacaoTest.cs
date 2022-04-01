@@ -150,5 +150,25 @@ namespace Unimake.DFe.Test.SNCM
 
             Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        /// <summary>
+        /// Testar a serialização e deserialização do XML MsgEvtIn
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "SNCM")]
+        [InlineData(@"..\..\..\SNCM\Resources\msgEvtIn-RegEvento.xml")]
+        public void SerializacaoDeserializacaoMsgEvtIn(string arqXML)
+        {
+            Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = new MsgEvtIn();
+            xml = xml.LoadFromFile(arqXML);
+            XmlDocument xmlSerializado = xml.GerarXML();
+
+            Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
     }
 }

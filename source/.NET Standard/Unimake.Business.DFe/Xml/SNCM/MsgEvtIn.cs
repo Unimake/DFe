@@ -92,6 +92,12 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public Evts Evts { get; set; }
 
         /// <summary>
+        /// Assinatura digital da mensagem XML.
+        /// </summary>
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public Signature Signature { get; set; }
+
+        /// <summary>
         /// Deserializar o XML msgEvtIn no objeto MsgEvtIn.
         /// </summary>
         /// <param name="filename">Localização do arquivo XML msgEvtIn</param>
@@ -378,6 +384,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// </summary>
         [XmlElement("bizTrans")]
         public BizTrans BizTrans { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializePastTimeField() => PastTime > DateTime.MinValue;
+
+        #endregion
+
     }
 
     /// <summary>
@@ -467,17 +480,76 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public Replacing Replacing { get; set; }
 
         /// <summary>
-        /// 
+        /// Finalização por dispensação
         /// </summary>
         [XmlElement("dispn")]
         public Dispn Dispn { get; set; }
 
-        //***TO AQUI
-        //public sealBrk sealBrk { get; set; }
-        //public xport xport { get; set; }
+        /// <summary>
+        /// Finalização por deslacre
+        /// </summary>
+        [XmlElement("sealBrk")]
+        public SealBrk SealBrk { get; set; }
 
-        //public destroy destroy { get; set; }
+        /// <summary>
+        /// Finalização por exportação
+        /// </summary>
+        [XmlElement("xport")]
+        public XPort XPort { get; set; }
 
+        /// <summary>
+        /// Finalização por descarte/destruição.
+        /// </summary>
+        [XmlElement("destroy")]
+        public Destroy Destroy { get; set; }
+
+        /// <summary>
+        /// Finalização por avaria, quando o descarte apropriado não é possível
+        /// </summary>
+        [XmlElement("damage")]
+        public Damage Damage { get; set; }
+
+        /// <summary>
+        /// Finalização por extravio.
+        /// </summary>
+        [XmlElement("disapp")]
+        public Disapp Disapp { get; set; }
+
+        /// <summary>
+        /// Finalização por roubo.
+        /// </summary>
+        [XmlElement("robry")]
+        public Robry Robry { get; set; }
+
+        /// <summary>
+        /// Finalização por confisco.
+        /// </summary>
+        [XmlElement("seizure")]
+        public Seizure Seizure { get; set; }
+
+        /// <summary>
+        /// Finalização pela vigilância sanitária.
+        /// </summary>
+        [XmlElement("snvs")]
+        public Snvs Snvs { get; set; }
+
+        /// <summary>
+        /// Finalização para destinação às Forças Armadas.
+        /// </summary>
+        [XmlElement("military")]
+        public Military Military { get; set; }
+
+        /// <summary>
+        /// Finalização para controle de qualidade
+        /// </summary>
+        [XmlElement("quality")]
+        public Quality Quality { get; set; }
+
+        /// <summary>
+        /// Dados do documento de transação negocial relacionado com a movimentação, como NF-e, CF-e, NFC-e, etc.
+        /// </summary>
+        [XmlElement("bizTrans")]
+        public BizTrans BizTrans { get; set; }
     }
 
     /// <summary>
@@ -784,20 +856,35 @@ namespace Unimake.Business.DFe.Xml.SNCM
     [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
     public class EvtRvctn
     {
+        /// <summary>
+        /// Identificador da notificação da instância de evento, gerado localmente pelo sistema cliente.
+        /// </summary>
+        [XmlElement("evtNotifId")]
+        public string EvtNotifId { get; set; }
 
+        /// <summary>
+        /// Instância de evento a ser tornada sem efeito.
+        /// </summary>
+        [XmlElement("revoking")]
+        public Revoking Revoking { get; set; }
     }
 
     /// <summary>
-    /// Instância de evento sendo substituída por esta instância de evento.
+    /// Instância de evento a ser tornada sem efeito.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.SNCM.Replacing")]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Revoking")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
-    public class Replacing
+    public class Revoking : RevokedEventInstanceId { }
+
+    /// <summary>
+    /// Grupo que define a instância de evento a ser tornada sem efeito
+    /// </summary>
+    public abstract class RevokedEventInstanceId
     {
         /// <summary>
         /// Identificador global da instância de evento a ser substituída.
@@ -817,6 +904,17 @@ namespace Unimake.Business.DFe.Xml.SNCM
         }
     }
 
+    /// <summary>
+    /// Instância de evento sendo substituída por esta instância de evento.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Replacing")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Replacing : RevokedEventInstanceId { }
 
     /// <summary>
     /// Grupo de informações que formam o Identificador Único de Medicamento (IUM).
@@ -1052,13 +1150,85 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Grupo que informa uma embalagem de transporte de medicamentos.
         /// </summary>
         [XmlElement("tp")]
-        public Tp Tp { get; set; }
+        public List<Tp> Tp { get; set; }
 
         /// <summary>
         /// Identificador Único de Medicamento (IUM)
         /// </summary>
         [XmlElement("dui")]
-        public Dui Dui { get; set; }
+        public List<Dui> Dui { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddTp(Tp item)
+        {
+            if (Tp == null)
+            {
+                Tp = new List<Tp>();
+            }
+
+            Tp.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Tp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Tp</returns>
+        public Tp GetTp(int index)
+        {
+            if ((Tp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Tp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Tp
+        /// </summary>
+        public int GetTpCount => (Tp != null ? Tp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDui(Dui item)
+        {
+            if (Dui == null)
+            {
+                Dui = new List<Dui>();
+            }
+
+            Dui.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Dui (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Dui</returns>
+        public Dui GetDui(int index)
+        {
+            if ((Dui?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Dui[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Dui
+        /// </summary>
+        public int GetDuiCount => (Dui != null ? Dui.Count : 0);
+
+#endif
     }
 
     /// <summary>
@@ -1071,9 +1241,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
-    public class Pld : Payload
-    {
-    }
+    public class Pld : Payload { }
 
     /// <summary>
     /// Grupo que informa uma embalagem de transporte de medicamentos.
@@ -1093,7 +1261,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         [XmlElement("tpi")]
         public Tpi Tpi { get; set; }
 
-        [XmlElement("")]
+        [XmlElement("pld")]
         public Pld Pld { get; set; }
 
         /// <summary>
@@ -1176,5 +1344,304 @@ namespace Unimake.Business.DFe.Xml.SNCM
         [XmlElement("tpSerl")]
         public string TpSerl { get; set; }
     }
+
+    /// <summary>
+    /// Grupo que define uma finalização de um ou vários IUMs por deslacre
+    /// </summary>
+    public abstract class SealBreak
+    {
+        /// <summary>
+        /// Finalização de um IUM por deslacre.
+        /// </summary>
+        [XmlElement("s")]
+        public UnitSealBreak S { get; set; }
+    }
+
+    /// <summary>
+    /// Grupo que define uma finalização de um IUM por deslacre
+    /// </summary>
+    public abstract class UnitSealBreak
+    {
+        /// <summary>
+        /// Identificador Único de Medicamento(IUM);
+        /// </summary>
+        [XmlElement("dui")]
+        public Dui Dui { get; set; }
+
+        private string DescField { get; set; }
+
+        /// <summary>
+        /// Motivação para finalização
+        /// </summary>
+        [XmlElement("desc")]
+        public string Desc
+        {
+            get => DescField;
+            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
+        }
+
+        #region ShouldSerialize
+
+        /// <summary>
+        /// Só gera a tag "desc" se a propriedade "Desc" tiver conteúdo.
+        /// </summary>
+        /// <returns>Retorna se é ou não para gerar a tag "desc"</returns>
+        public bool ShouldSerializeDesc() => !string.IsNullOrWhiteSpace(Desc);
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Finalização por deslacre
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.SealBrk")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class SealBrk : SealBreak { }
+
+    /// <summary>
+    /// Grupo que define a finalização de um ou vários IUMs por descarte
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.XPort")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class XPort
+    {
+        /// <summary>
+        /// Identificador Único de Medicamento(IUM).
+        /// </summary>
+        [XmlElement("pld")]
+        public Pld Pld { get; set; }
+
+        private string ReceiverField { get; set; }
+
+        /// <summary>
+        /// Justificativa da Finalização por descarte.
+        /// </summary>
+        [XmlElement("receiver")]
+        public string Receiver
+        {
+            get => ReceiverField;
+            set => ReceiverField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
+        }
+    }
+
+    /// <summary>
+    /// Grupo que define a finalização de um ou vários IUMs por descarte
+    /// </summary>
+    public abstract class Disposal
+    {
+        /// <summary>
+        /// Identificador Único de Medicamento(IUM);
+        /// </summary>
+        [XmlElement("dui")]
+        public List<Dui> Dui { get; set; }
+
+        private string DescField { get; set; }
+
+        /// <summary>
+        /// Justificativa da Finalização por descarte.
+        /// </summary>
+        [XmlElement("desc")]
+        public string Desc
+        {
+            get => DescField;
+            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
+        }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDui(Dui item)
+        {
+            if (Dui == null)
+            {
+                Dui = new List<Dui>();
+            }
+
+            Dui.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Dui (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Dui</returns>
+        public Dui GetDui(int index)
+        {
+            if ((Dui?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Dui[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Dui
+        /// </summary>
+        public int GetDuiCount => (Dui != null ? Dui.Count : 0);
+
+#endif
+
+        #region ShouldSerialize
+
+        /// <summary>
+        /// Só gera a tag "desc" se a propriedade "Desc" tiver conteúdo.
+        /// </summary>
+        /// <returns>Retorna se é ou não para gerar a tag "desc"</returns>
+        public bool ShouldSerializeDesc() => !string.IsNullOrWhiteSpace(Desc);
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Grupo que define a finalização de um ou vários IUMs por descarte
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Destroy")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Destroy : Disposal { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET
+    /// </summary>
+    public abstract class UncontrolledFinalization
+    {
+        /// <summary>
+        /// Identificador Único de Medicamento(IUM).
+        /// </summary>
+        [XmlElement("pld")]
+        public Pld Pld { get; set; }
+
+        /// <summary>
+        /// Carga de medicamentos que deverá ser desconsiderada na finalização.
+        /// </summary>
+        [XmlElement("but")]
+        public But But { get; set; }
+
+        private string DescField { get; set; }
+
+        /// <summary>
+        /// Justificativa da Finalização não controlada.
+        /// </summary>
+        [XmlElement("desc")]
+        public string Desc
+        {
+            get => DescField;
+            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
+        }
+    }
+
+    /// <summary>
+    /// Carga de medicamentos que deverá ser desconsiderada na finalização.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.But")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class But : Payload { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização por avaria, quando o descarte apropriado não é possível.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Damage")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Damage : UncontrolledFinalization { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização por extravio
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Disapp")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Disapp : UncontrolledFinalization { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização por roubo.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Robry")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Robry : UncontrolledFinalization { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização por confisco.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Seizure")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Seizure : UncontrolledFinalization { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização pela vigilância sanitária.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Snvs")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Snvs : UncontrolledFinalization { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização para destinação às Forças Armadas.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Military")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Military : UncontrolledFinalization { }
+
+    /// <summary>
+    /// Grupo que define a finalização não controlada de IUM e/ou IET - Finalização para controle de qualidade
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.SNCM.Quality")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://sncm.anvisa.gov.br/")]
+    public class Quality : UncontrolledFinalization { }
 }
 
