@@ -1683,7 +1683,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #region Public Properties
 
         [XmlElement("descEvento", Order = 0)]
-        public override string DescEvento { get; set; } = "Alteracao Pagamento Servico MDFe ";
+        public override string DescEvento { get; set; } = "Alteracao Pagamento Servico MDFe";
 
         [XmlElement("nProt", Order = 1)]
         public string NProt { get; set; }
