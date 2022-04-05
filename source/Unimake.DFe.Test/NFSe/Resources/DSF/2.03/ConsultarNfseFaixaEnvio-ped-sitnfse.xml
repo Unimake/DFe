@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConsultarNfseFaixaEnvio>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>0</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+	</Prestador>
+	<Faixa>
+		<NumeroNfseInicial>63</NumeroNfseInicial>
+	</Faixa>
+	<Pagina>1</Pagina>
+</ConsultarNfseFaixaEnvio>

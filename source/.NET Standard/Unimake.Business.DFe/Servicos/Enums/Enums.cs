@@ -5943,7 +5943,13 @@ namespace Unimake.Business.DFe.Servicos
         /// PAULISTANA
         /// </summary>
         [Description("PAULISTANA")]
-        PAULISTANA = 16
+        PAULISTANA = 16,
+
+        /// <summary>
+        /// DSF - Desenvolvimento de Sistemas Fiscais Ltda
+        /// </summary>
+        [Description("DSF")]
+        DSF = 17,
     }
 
     #endregion

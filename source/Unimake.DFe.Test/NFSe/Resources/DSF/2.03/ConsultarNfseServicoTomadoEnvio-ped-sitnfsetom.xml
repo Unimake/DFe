@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseServicoTomadoEnvio>
+	<Consulente>
+		<CpfCnpj>
+			<Cnpj>11402643000188</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>12345</InscricaoMunicipal>
+	</Consulente>
+	<NumeroNfse>1</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2022-04-04</DataInicial>
+		<DataFinal>2022-04-04</DataFinal>
+	</PeriodoEmissao>
+	<PeriodoCompetencia>
+		<DataInicial>2022-04-03</DataInicial>
+		<DataFinal>2022-04-04</DataFinal>
+	</PeriodoCompetencia>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>11402643000188</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>12345</InscricaoMunicipal>
+	</Prestador>
+	<Tomador>
+		<CpfCnpj>
+			<Cnpj>?</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Tomador>
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoTomadoEnvio>

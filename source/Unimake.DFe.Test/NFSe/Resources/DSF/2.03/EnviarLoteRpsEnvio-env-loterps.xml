@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio>
+	<LoteRps Id="Lote_1145825" versao="2.03">
+		<NumeroLote>1145825</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="Dec_26299">
+					<Rps>
+						<IdentificacaoRps>
+							<Numero>262</Numero>
+							<Serie>99</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2022-01-25</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2022-01-25</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>30.00</ValorServicos>
+							<ValorIss>1.50</ValorIss>
+							<Aliquota>5.00</Aliquota>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ResponsavelRetencao>1</ResponsavelRetencao>
+						<ItemListaServico>14.12</ItemListaServico>
+						<CodigoCnae>0</CodigoCnae>
+						<CodigoTributacaoMunicipio>1412</CodigoTributacaoMunicipio>
+						<Discriminacao>1634209 PRESTACAO DE SERVICOS;;;ALIQUOTAS DOS TRIBUTOS INCIDENTES - REF. A LEI 12.741 DE 08/12/2012;PERC. ISS: 5.00% VALOR ISS: R$ 1.50 PERC. PIS: 0.65% VALOR PIS: R$ 0.20 PERC. COFINS: 3.00% VALOR COFINS: R$ 0.90</Discriminacao>
+						<CodigoMunicipio>3552205</CodigoMunicipio>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>0</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>0</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>0</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>TESTE</RazaoSocial>
+						<Endereco>
+							<Endereco>TESTE</Endereco>
+							<Numero>S/N</Numero>
+							<Bairro>TESTE</Bairro>
+							<CodigoMunicipio>3540606</CodigoMunicipio>
+							<Uf>SP</Uf>
+							<Cep>0</Cep>
+						</Endereco>
+						<Contato>
+							<Email>teste@teste.com.br</Email>
+						</Contato>
+					</Tomador>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

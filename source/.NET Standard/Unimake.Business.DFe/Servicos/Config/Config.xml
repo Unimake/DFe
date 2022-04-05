@@ -646,4 +646,10 @@
 		<ArqConfig>SaoPauloSP.xml</ArqConfig>
 		<PadraoNFSe>PAULISTANA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3552205">
+		<Nome>Sorocaba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SorocabaSP.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

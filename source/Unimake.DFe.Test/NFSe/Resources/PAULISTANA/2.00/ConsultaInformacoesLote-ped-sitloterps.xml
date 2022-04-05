@@ -4,6 +4,7 @@
     <CPFCNPJRemetente>
       <CNPJ>44073893000170</CNPJ>
     </CPFCNPJRemetente>
+	  <NumeroLote>1</NumeroLote>
     <InscricaoPrestador>31000000</InscricaoPrestador>
   </Cabecalho>
 </p1:PedidoInformacoesLote>
