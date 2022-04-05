@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2022.03.31.1538</AssemblyVersion>
-		<FileVersion>2022.03.31.1538</FileVersion>
+		<AssemblyVersion>2022.04.05.1026</AssemblyVersion>
+		<FileVersion>2022.04.05.1026</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
