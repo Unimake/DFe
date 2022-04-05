@@ -79,7 +79,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         #region Public Methods
 
         /// <summary>
-        /// Executar o serviço
+        /// Executa o serviço: Assina o XML, valida e envia para o webservice
         /// </summary>
 #if INTEROP
         [ComVisible(false)]
@@ -102,6 +102,26 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             base.Executar();
         }
+
+#if INTEROP
+
+        /// <summary>
+        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
+        /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
+        public void Executar(string conteudoXML, Configuracao configuracao)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(conteudoXML);
+
+            PrepararServico(xmlDoc, configuracao);
+
+            Executar();
+        }
+
+#endif
+
 
         /// <summary>
         /// Gravar o XML de distribuição em uma pasta no HD
