@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2022.04.08.1754</AssemblyVersion>
-		<FileVersion>2022.04.08.1754</FileVersion>
+		<AssemblyVersion>2022.04.08.1935</AssemblyVersion>
+		<FileVersion>2022.04.08.1935</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1379,8 +1379,8 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.0" />
-		<PackageReference Include="Unimake.Cryptography" Version="2022.3.22.32" />
-		<PackageReference Include="Unimake.Utils" Version="2022.3.22.32" />
+		<PackageReference Include="Unimake.Cryptography" Version="2022.4.6.2301" />
+		<PackageReference Include="Unimake.Utils" Version="2022.4.6.2301" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
