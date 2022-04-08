@@ -91,10 +91,10 @@
       <TagAtributoID>infNFe</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
-      <UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
-      <UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>
+      <UrlQrCodeHomologacao>http://hnfce.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>		
       <UrlChaveHomologacao>http://hnfce.fazenda.mg.gov.br/portalnfce</UrlChaveHomologacao>
-      <UrlChaveProducao>http://nfce.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
+	  <UrlChaveProducao>http://nfce.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
     </Autorizacao>
     <RetAutorizacao versao="4.00">
       <Descricao>Consulta recibo da nota fiscal consumidor eletrônica</Descricao>
