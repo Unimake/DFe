@@ -409,7 +409,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 string retorno;
                 if (string.IsNullOrWhiteSpace(CNFField))
                 {
-                    if (NNF == 0)
+                    if (NNF < 0)
                     {
                         throw new Exception("Defina antes o conteúdo da TAG <nNF>, pois o mesmo é utilizado como base para calcular o código numérico.");
                     }
