@@ -4935,12 +4935,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
-        public double PRedBC { get; set; }
+        public double? PRedBC { get; set; }
 
         [XmlElement("pRedBC")]
         public string PRedBCField
         {
-            get => PRedBC.ToString("F4", CultureInfo.InvariantCulture);
+            get => PRedBC?.ToString("F4", CultureInfo.InvariantCulture);
             set => PRedBC = Converter.ToDouble(value);
         }
 
@@ -4986,22 +4986,22 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
 
         [XmlIgnore]
-        public double PMVAST { get; set; }
+        public double? PMVAST { get; set; }
 
         [XmlElement("pMVAST")]
         public string PMVASTField
         {
-            get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
+            get => PMVAST?.ToString("F4", CultureInfo.InvariantCulture);
             set => PMVAST = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
-        public double PRedBCST { get; set; }
+        public double? PRedBCST { get; set; }
 
         [XmlElement("pRedBCST")]
         public string PRedBCSTField
         {
-            get => PRedBCST.ToString("F4", CultureInfo.InvariantCulture);
+            get => PRedBCST?.ToString("F4", CultureInfo.InvariantCulture);
             set => PRedBCST = Converter.ToDouble(value);
         }
 
@@ -5091,7 +5091,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeVBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta tag
 
-        public bool ShouldSerializePRedBCField() => PRedBC > 0;
+        public bool ShouldSerializePRedBCField() => PRedBC != null;
 
         public bool ShouldSerializePICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta tag
 
@@ -5099,9 +5099,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeModBCST() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1);
 
-        public bool ShouldSerializePMVASTField() => PMVAST > 0;
+        public bool ShouldSerializePMVASTField() => PMVAST != null;
 
-        public bool ShouldSerializePRedBCSTField() => PRedBCST > 0;
+        public bool ShouldSerializePRedBCSTField() => PRedBCST != null;
 
         public bool ShouldSerializeVBCSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta tag
 
