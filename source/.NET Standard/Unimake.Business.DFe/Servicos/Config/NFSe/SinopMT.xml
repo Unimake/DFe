@@ -7,7 +7,7 @@
       <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPS</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPS</WebActionProducao>
-      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
       <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPSSINCRONO</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPSSINCRONO</WebActionProducao>
-      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
