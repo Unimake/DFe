@@ -11,39 +11,40 @@ Function TesteDiversoCertificado()
    oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigital")
 
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- * Certificado A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que está instalado no repositório do windows
+ * Certificado A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que esta instalado no repositorio do windows
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   ? "A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que está instalado no repositorio do windows"
    oCertSel1 = oCertificado:AbrirTelaSelecao()
    
-   //Você pode salvar o Thumbprint ou SerialNumber do certificado para salvar em sua base de dados para resgatar ele no futuro no repositório do windows sem precisar abrir tela para selecionar novamente.
+   //Voce pode salvar o Thumbprint ou SerialNumber do certificado para salvar em sua base de dados para resgatar ele no futuro no repositório do windows sem precisar abrir tela para selecionar novamente.
    
    thumbprint = oCertificado:GetThumbPrint(oCertSel1)
    serialNumber = oCertificado:GetSerialNumber(oCertSel1)
-
    MostrarDados(oCertificado, oCertSel1)   
    
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  * Somente certificado A1 - Carregar o certificado digital direto do arquivo .PFX.
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   oCertSel2 = oCertificado:CarregarCertificadoDigitalA1("d:\projetos\UnimakePV.pfx", "12345678")
-   
+   ? "A1 - Carregar o certificado digital direto do arquivo .PFX."
+   oCertSel2 = oCertificado:CarregarCertificadoDigitalA1("C:\Projetos\certificados\UnimakePV.pfx", "12345678")
    MostrarDados(oCertificado, oCertSel1)   
    
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- * Certificado A1 e A3 - Buscar o certificado digital, instalado no repositório do windows, pelo Serial Number
+ * Certificado A1 e A3 - Buscar o certificado digital, instalado no repositorio do windows, pelo Serial Number
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   ? "A1 e A3 - Buscar o certificado digital, instalado no repositorio do windows, pelo Serial Number"
    oCertSel3 = oCertificado:BuscarCertificadoDigital(serialNumber)
 
    MostrarDados(oCertificado, oCertSel3)   
 
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- * Certificado A1 e A3 - Buscar o certificado digital, instalado no repositório do windows, pelo ThumbPrint
+ * Certificado A1 e A3 - Buscar o certificado digital, instalado no repositorio do windows, pelo ThumbPrint
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   ? "A1 e A3 - Buscar o certificado digital, instalado no repositorio do windows, pelo ThumbPrint"
    oCertSel4 = oCertificado:BuscarCertificadoDigital(thumbprint)
 
    MostrarDados(oCertificado, oCertSel4)
 RETURN
-
 
 Function MostrarDados(oCert, oCertSel)
    ?
@@ -55,4 +56,5 @@ Function MostrarDados(oCert, oCertSel)
    ? "Certificado vencido?.: ", oCert:Vencido(oCertSel)
    ?
    Wait
+   Cls
 Return

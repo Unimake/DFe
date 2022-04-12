@@ -1,0 +1,19 @@
+#
+# $Id: menu.hbp 00001 2022-04-12 11:21:00Z unimake $
+#
+
+-lhbwin
+
+menu.prg
+CancelarNfe.prg
+CarregarCertificadoA1.prg
+CartaDeCorrecao.prg
+ConsultaReciboNfe.prg
+ConsultaSituacaoNFe.prg
+ConsultaStatusNfe.prg
+EnviarNfeAssincrono.prg
+InutilizarNumeroNFe.prg
+TesteDiversoCertificado.prg
+hb30compat.prg
+
+-nulrdd

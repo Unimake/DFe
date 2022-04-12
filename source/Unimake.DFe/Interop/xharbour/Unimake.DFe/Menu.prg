@@ -21,11 +21,11 @@ Function Main()
    AAdd(aOpcoes, "7-Cancelar Nfe")
    Aadd(aOpcoes, "8-Teste diversos com certificado digital")
    Aadd(aOpcoes, "9-Carta de Correcao")
-   
+    
    Do While .T.
       Cls
 
-      @ 1,2 Say "Unimake.Dfe DLL"
+      @ 1,2 Say "Unimake.Dfe DLL for " + Version()
 	  
       nOpcao := Achoice( 3, 2, 20, 50, aOpcoes)
 
@@ -65,3 +65,5 @@ Function Main()
           endcase
    EndDo
 Return
+
+       

@@ -1,0 +1,11 @@
+#
+# $Id: menu.hbp 00001 2022-04-12 11:21:00Z unimake $
+#
+
+-lhbwin
+
+menu.prg
+ImprimirDFE.prg
+TelaConfiguracao.prg
+
+-nulrdd

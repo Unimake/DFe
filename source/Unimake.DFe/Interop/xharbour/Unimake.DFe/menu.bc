@@ -1,0 +1,92 @@
+#BCC
+VERSION=BCB.01
+CC_DIR =c:\bcc582
+HB_DIR =c:\xharbour
+RECURSE= NO 
+ 
+SHELL = 
+COMPRESS = NO
+EXTERNALLIB = NO
+XFWH = NO
+FILESTOADD =  5
+WARNINGLEVEL =  0
+USERDEFINE = 
+USERINCLUDE = c:\bcc582\include
+USERLIBS = 
+EDITOR = notepad
+CGI = NO
+GUI = NO
+MT = NO
+SRC02 = obj-org
+PROJECT = menu.exe $(PR) 
+OBJFILES = //
+ $(SRC02)\menu.obj //
+ $(SRC02)\CancelarNfe.obj //
+ $(SRC02)\CarregarCertificadoA1.obj //
+ $(SRC02)\CartaDeCorrecao.obj //
+ $(SRC02)\ConsultaReciboNfe.obj //
+ $(SRC02)\ConsultaSituacaoNFe.obj //
+ $(SRC02)\ConsultaStatusNfe.obj //
+ $(SRC02)\EnviarNfeAssincrono.obj //
+ $(SRC02)\InutilizarNumeroNFe.obj //
+ $(SRC02)\TesteDiversoCertificado.obj //
+ $(OB) 
+PRGFILES = //
+ menu.PRG //
+ CancelarNfe.prg //
+ CarregarCertificadoA1.prg //
+ CartaDeCorrecao.prg //
+ ConsultaReciboNfe.prg //
+ ConsultaSituacaoNFe.prg //
+ ConsultaStatusNfe.prg //
+ EnviarNfeAssincrono.prg //
+ InutilizarNumeroNFe.prg //
+ TesteDiversoCertificado.prg //
+ $(PS)
+OBJCFILES = $(OBC) 
+CFILES = $(CF)
+RESFILES = 
+RESDEPEN = 
+TOPMODULE = menu.PRG
+LIBFILES = lang.lib vm.lib rtl.lib rdd.lib macro.lib pp.lib dbfntx.lib dbfcdx.lib dbffpt.lib common.lib gtwin.lib codepage.lib ct.lib tip.lib pcrepos.lib hsx.lib hbsix.lib zlib.lib
+EXTLIBFILES =
+DEFFILE = 
+HARBOURFLAGS =  -w0
+CFLAG1 =  -OS $(SHELL)  $(CFLAGS) -d -c -L$(HB_DIR)\lib 
+CFLAG2 =  -Ic:\bcc582\include
+RFLAGS = 
+LFLAGS = -Lc:\bcc582\lib\obj;c:\bcc582\lib;$(HB_DIR)\lib -Gn -M -m -s -Tpe -x -ap
+IFLAGS = 
+LINKER = ilink32
+ 
+ALLOBJ = c0x32.obj $(OBJFILES) $(OBJCFILES)
+ALLRES = $(RESDEPEN)
+ALLLIB = $(USERLIBS) $(LIBFILES) import32.lib cw32.lib
+.autodepend
+ 
+#DEPENDS
+ 
+#COMMANDS
+.cpp.obj:
+$(CC_DIR)\BIN\bcc32 $(CFLAG1) $(CFLAG2) -o$* $**
+ 
+.c.obj:
+$(CC_DIR)\BIN\bcc32 -I$(HB_DIR)\include $(CFLAG1) $(CFLAG2) -o$* $**
+ 
+.prg.obj:
+$(HB_DIR)\bin\harbour -D__EXPORT__ -n -go -I$(HB_DIR)\include;c:\bcc582\include $(HARBOURFLAGS) -o$* $**
+ 
+.rc.res:
+$(CC_DIR)\BIN\brcc32 $(RFLAGS) $<
+ 
+#BUILD
+ 
+$(PROJECT): $(CFILES) $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(CC_DIR)\BIN\$(LINKER) @&&!  
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES) 
+!

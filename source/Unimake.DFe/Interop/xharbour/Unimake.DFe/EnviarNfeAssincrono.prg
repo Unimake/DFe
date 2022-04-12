@@ -1,6 +1,12 @@
 * ---------------------------------------------------------------------------------
 * Enviar Nfe de forma assincrona
 * ---------------------------------------------------------------------------------
+
+#IfNdef __XHARBOUR__
+   #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
+   #xcommand CATCH [<!oErr!>] => RECOVER [USING <oErr>] <-oErr->
+#endif
+ 
 Function EnviarNfeAssincrono()
    Local oInicializarConfiguracao
    Local oXml, oNfe, oInfNFe, oIde, oEmit, oEnderEmit, oDest, oEnderDest

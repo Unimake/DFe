@@ -1,9 +1,9 @@
 * ---------------------------------------------------------------------------------
-* Evento de carta de correção eletrônica da NFe
+* Evento de cancelamento da NFe
 * ---------------------------------------------------------------------------------
-Function CartaDeCorrecao()
+Function CancelarNfe()
  Local oConfiguracao
- Local oEnvEvento, oEvento, oDetEventoCCE, oInfEvento
+ Local oEnvEvento, oEvento, oDetEventoCanc, oInfEvento
 
 * Criar configuraçao básica para consumir o serviço
  oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
@@ -25,61 +25,27 @@ Function CartaDeCorrecao()
  oEvento:Versao = "1.00"
  
  * Criar tag DetEventoCCE
- oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
- oDetEventoCCE:Versao = "1.00"
- oDetEventoCCE:XCorrecao = "CFOP errada, segue CFOP correta. teste."
+ oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")
+ oDetEventoCanc:Versao = "1.00"
+ oDetEventoCanc:NProt = "141190000660363"
+ oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
 
  * Criar tag InfEvento
  oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
  
  * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
- oInfEvento:DetEvento = oDetEventoCCE
+ oInfEvento:DetEvento = oDetEventoCanc
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o ODetEventoCCE para que funcione sem erro
+ * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
  oInfEvento:COrgao = 41 // UFBrasil.PR
  oInfEvento:ChNFe = "41191006117473000150550010000579281779843610"
  oInfEvento:CNPJ = "06117473000150"
  oInfEvento:DhEvento = DateTime()
- oInfEvento:TpEvento = 110110 // TipoEventoNFe.CartaCorrecao
+ oInfEvento:TpEvento = 110111 // TipoEventoNFe.Cancelamento
  oInfEvento:NSeqEvento = 1
  oInfEvento:VerEvento = "1.00"
  oInfEvento:TpAmb = 2 // TipoAmbiente.Homologacao
-
- * Adicionar a tag InfEvento dentro da tag Evento
- oEvento:InfEvento = oInfEvento
-
- * Adicionar a tag Evento dentro da tag EnvEvento
- oEnvEvento:AddEvento(oEvento)
-
- * =================================================
- * EVENTO NÚMERO 2
- * =================================================
- * Criar tag Evento
- oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
- oEvento:Versao = "1.00"
- 
- * Criar tag DetEventoCCE
- oDetEventoCCE = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")
- oDetEventoCCE:Versao    = "1.00"
- oDetEventoCCE:XCorrecao = "Transportador errado. teste."
-
- * Criar tag InfEvento
- oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
- 
- * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
- oInfEvento:DetEvento = oDetEventoCCE
-
- * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o ODetEventoCCE para que funcione sem erro
- oInfEvento:COrgao     = 41 // UFBrasil.PR
- oInfEvento:ChNFe      = "41191006117473000150550010000579281779843610"
- oInfEvento:CNPJ       = "06117473000150"
- oInfEvento:DhEvento   = DateTime()
- oInfEvento:TpEvento   = 110110 // TipoEventoNFe.CartaCorrecao
- oInfEvento:NSeqEvento = 2
- oInfEvento:VerEvento  = "1.00"
- oInfEvento:TpAmb      = 2 // TipoAmbiente.Homologacao
 
  * Adicionar a tag InfEvento dentro da tag Evento
  oEvento:InfEvento = oInfEvento
@@ -113,7 +79,11 @@ Function CartaDeCorrecao()
                oRecepcaoEvento:GravarXmlDistribuicao("tmp\testenfe") //Grava o XML de distribuição
                Exit
 			   
-          default
+       #Ifdef __XHARBOUR__
+          DEFAULT
+       #Else
+          OTHERWISE    
+       #endif
                // Evento rejeitado
                // Realizar as ações necessárias
                Exit

@@ -1,0 +1,1 @@
+set path=c:\xharbour\bin;c:\bcc582\bin;c:\windows
