@@ -633,7 +633,20 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("enderEmit")]
         public EnderEmit EnderEmit { get; set; }
 
+        [XmlElement("CRT")]
+#if INTEROP
+        public CRT CRT { get; set; } = (CRT)(-1);
+#else
+        public CRT? CRT { get; set; }
+#endif
+
         #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeCRT() => CRT != (CRT)(-1);
+#else
+        public bool ShouldSerializeCRT() => CRT != null;
+#endif
 
         public bool ShouldSerializeIEST() => !string.IsNullOrWhiteSpace(IEST);
 
