@@ -7954,7 +7954,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndEscala() => TpAto != null && TpAto != (TipoAtoConcessorio)(-1);
+        public bool ShouldSerializeTpAto() => TpAto != null && TpAto != (TipoAtoConcessorio)(-1);
 
         #endregion
     }
