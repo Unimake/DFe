@@ -67,6 +67,10 @@ namespace Unimake.Business.DFe
                     stringXSD = reader.ReadToEnd();
                     files.Add(stringXSD);
                 }
+                else
+                {
+                    throw new Exception("Arquivo de schema informado (" + arqSchema + ") não foi localizado nos recursos da DLL.");
+                }
             }
 
             var pesquisar = ".";
