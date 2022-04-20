@@ -145,7 +145,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         /// <param name="conteudoXML">Conteúdo do XML</param>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Não existe XML de distribuição para consulta de documentos fiscais eletrônicos destinados.");
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Este método não está disponível para consulta de documentos fiscais eletrônicos destinados. Utilize o GravarXMLDocZIP(string folder, bool saveXMLResumo).");
 
         /// <summary>
         /// Gravar os XML contidos no DocZIP da consulta em uma pasta no HD
