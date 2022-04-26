@@ -2090,7 +2090,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("qLote")]
         public string QLoteField
         {
-            get => QLote.ToString("F2", CultureInfo.InvariantCulture);
+            get => QLote.ToString("F3", CultureInfo.InvariantCulture);
             set => QLote = Converter.ToDouble(value);
         }
 
