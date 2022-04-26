@@ -241,6 +241,12 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             return retornar;
         }
 
+        /// <summary>
+        /// Recupera o conteúdo o único MDFe, assinado, existente no lote gerado de MDFe´s
+        /// </summary>
+        /// <returns>Retorna o conteúdo do MDFe, assinado, existente no lote gerado de MDFe´s</returns>
+        public string GetConteudoMDFeAssinado() => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.GetElementsByTagName("MDFe")[0].OuterXml : "");
+
 #endif
 
         /// <summary>

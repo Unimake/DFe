@@ -276,6 +276,13 @@ namespace Unimake.Business.DFe.Servicos.NFe
             return retornar;
         }
 
+        /// <summary>
+        /// Recupera o conteúdo de uma NFe específica, assinada, existente no lote gerado de NFe´s
+        /// </summary>
+        /// <param name="index">Index da NFe existe no lote (Se no lote de NFe tem 3 notas, pode ser 0, 1 ou 2, por exemplo.)</param>
+        /// <returns>Retorna o conteúdo de uma NFe específica, assinada, existente no lote gerado de NFe´s</returns>
+        public string GetConteudoNFeAssinada(int index) => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.GetElementsByTagName("NFe")[index].OuterXml : "");
+
 #endif
 
         /// <summary>

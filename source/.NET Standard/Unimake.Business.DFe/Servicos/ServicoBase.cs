@@ -174,8 +174,9 @@ namespace Unimake.Business.DFe.Servicos
 #if INTEROP
 
         /// <summary>
-        /// Conteúdo do XML assinado no formato string.
+        /// Recupera o conteúdo do XML assinado.
         /// </summary>
+        /// <returns>Retorna conteúdo do XML assinado</returns>
         public string GetConteudoXMLAssinado() => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.OuterXml : "");
 
 #endif

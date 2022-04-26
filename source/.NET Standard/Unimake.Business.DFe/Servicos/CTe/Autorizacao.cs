@@ -315,6 +315,13 @@ namespace Unimake.Business.DFe.Servicos.CTe
             return retornar;
         }
 
+        /// <summary>
+        /// Recupera o conteúdo de um CTe específico, assinado, existente no lote gerado de CTe´s
+        /// </summary>
+        /// <param name="index">Index do CTe existe no lote (Se no lote de CTe tem 3 CTe´s, pode ser 0, 1 ou 2, por exemplo.)</param>
+        /// <returns>Retorna o conteúdo de um CTe específico, assinado, existente no lote gerado de CTe´s</returns>
+        public string GetConteudoCTeAssinado(int index) => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.GetElementsByTagName("CTe")[index].OuterXml : "");
+
 #endif
 
         /// <summary>
