@@ -15,7 +15,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
     [ProgId("Unimake.Business.DFe.Servicos.CTe.Inutilizacao")]
     [ComVisible(true)]
 #endif
-    public class Inutilizacao: ServicoBase, IInteropService<InutCTe>
+    public class Inutilizacao : ServicoBase, IInteropService<InutCTe>
     {
         #region Protected Methods
 
@@ -27,7 +27,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var xml = new InutCTe();
             xml = xml.LerXML<InutCTe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeInutilizacao;
                 Configuracoes.CodigoUF = (int)xml.InfInut.CUF;
@@ -71,7 +71,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetInutCTe>(RetornoWSXML);
                 }
@@ -113,15 +113,22 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="inutCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         public void Executar(InutCTe inutCTe, Configuracao configuracao)
         {
             PrepararServico(inutCTe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutCTe)), configuracao);
             Executar();
-        } 
+        }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="inutCTe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(InutCTe inutCTe, Configuracao configuracao) => PrepararServico(inutCTe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutCTe)), configuracao);
 
 #endif
 

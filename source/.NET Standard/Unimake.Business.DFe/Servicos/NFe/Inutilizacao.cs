@@ -15,7 +15,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     [ProgId("Unimake.Business.DFe.Servicos.NFe.Inutilizacao")]
     [ComVisible(true)]
 #endif
-    public class Inutilizacao: ServicoBase, IInteropService<InutNFe>
+    public class Inutilizacao : ServicoBase, IInteropService<InutNFe>
     {
         #region Private Properties
 
@@ -33,7 +33,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var xml = new InutNFe();
             xml = xml.LerXML<InutNFe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeInutilizacao;
                 Configuracoes.CodigoUF = (int)xml.InfInut.CUF;
@@ -67,7 +67,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetInutNFe>(RetornoWSXML);
                 }
@@ -118,7 +118,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             PrepararServico(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
             Executar();
-        } 
+        }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="inutNFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(InutNFe inutNFe, Configuracao configuracao) => PrepararServico(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
 
 #endif
 

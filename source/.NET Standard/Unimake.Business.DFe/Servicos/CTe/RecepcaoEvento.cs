@@ -180,18 +180,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Executar o serviço
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar() => base.Executar();
 
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
         public void Executar(EventoCTe envEvento, Configuracao configuracao)
         {
@@ -203,7 +200,14 @@ namespace Unimake.Business.DFe.Servicos.CTe
             PrepararServico(envEvento.GerarXML(), configuracao);
 
             Executar();
-        } 
+        }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(EventoCTe envEvento, Configuracao configuracao) => PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
 
 #endif
 

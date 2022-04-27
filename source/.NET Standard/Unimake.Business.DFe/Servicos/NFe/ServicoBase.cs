@@ -75,9 +75,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Executar o serviço
         /// </summary>       
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar()
         {
             if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) &&

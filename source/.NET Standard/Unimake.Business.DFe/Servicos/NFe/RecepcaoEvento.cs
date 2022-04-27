@@ -269,6 +269,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
             Executar();
         }
 
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(EnvEvento envEvento, Configuracao configuracao) => PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
 
         /// <summary>
         /// Retorna o <see cref="ProcEventoNFe"/> pelo índice ou nulo, se não existir

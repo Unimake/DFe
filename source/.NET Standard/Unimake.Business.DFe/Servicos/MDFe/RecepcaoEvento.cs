@@ -184,9 +184,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar() => base.Executar();
 
 #if INTEROP
@@ -208,6 +205,14 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
             Executar();
         }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(EventoMDFe envEvento, Configuracao configuracao) => PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+
 
 #endif
 

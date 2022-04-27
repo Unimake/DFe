@@ -273,9 +273,6 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <summary>
         /// Executar o serviço
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar()
         {
             if (!Configuracoes.Definida)
@@ -294,16 +291,23 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="cteOS">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
         public void Executar(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao)
         {
             PrepararServico(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
             Executar();
-        } 
+        }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="cteOS">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao) => PrepararServico(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
 
 #endif
 

@@ -278,9 +278,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar()
         {
             if (!Configuracoes.Definida)
@@ -335,16 +332,23 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="mdfe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
         public void Executar(Xml.MDFe.MDFe mdfe, Configuracao configuracao)
         {
             PrepararServico(mdfe?.GerarXML() ?? throw new ArgumentNullException(nameof(mdfe)), configuracao);
             Executar();
         }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="mdfe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(Xml.MDFe.MDFe mdfe, Configuracao configuracao) => PrepararServico(mdfe?.GerarXML() ?? throw new ArgumentNullException(nameof(mdfe)), configuracao);
 
         /// <summary>
         /// Adiciona um retorno da consulta situação da MDF-e.

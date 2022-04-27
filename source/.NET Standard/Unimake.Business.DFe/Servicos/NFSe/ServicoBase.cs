@@ -81,9 +81,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o webservice
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar()
         {
             if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))

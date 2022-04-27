@@ -374,9 +374,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Executar o serviço
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar()
         {
             if (!Configuracoes.Definida)
@@ -405,6 +402,13 @@ namespace Unimake.Business.DFe.Servicos.CTe
             PrepararServico(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
             Executar();
         }
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao(EnviCTe enviCTe, Configuracao configuracao) => PrepararServico(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
 
 #endif
 

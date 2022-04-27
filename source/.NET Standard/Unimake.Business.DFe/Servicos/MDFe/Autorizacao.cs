@@ -313,9 +313,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
         public override void Executar()
         {
             if (!Configuracoes.Definida)
@@ -386,6 +383,13 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         /// <param name="item">Resultado da consulta situação do MDFe</param>
         public void AddRetConsSitMDFe(RetConsSitMDFe item) => (RetConsSitMDFe ?? (RetConsSitMDFe = new List<RetConsSitMDFe>())).Add(item);
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="enviMDFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o self-service</param>
+        public void SetXMLConfiguracao(EnviMDFe enviMDFe, Configuracao configuracao) => PrepararServico(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
 
 #endif
 
