@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ConsultarNfseServicoPrestadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>201100000000001</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2011-01-01</DataInicial>
+		<DataFinal>2011-06-06</DataFinal>
+	</PeriodoEmissao>
+	<!--
+	<PeriodoCompetencia>
+		<DataInicial>2010-01-01</DataInicial>
+		<DataFinal>2010-02-03</DataFinal>
+	</PeriodoCompetencia>	
+	
+	<Tomador>
+		<CpfCnpj>
+			<Cpf>00354564005</Cpf>
+		</CpfCnpj>
+	</Tomador>-->
+	<!--
+	<Intermediario>
+		<CpfCnpj>
+			<Cpf>05088935935</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal></InscricaoMunicipal
+	</Intermediario>
+	-->	
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoPrestadoEnvio>

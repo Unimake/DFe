@@ -664,4 +664,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4310009">
+		<Nome>Ibirubá - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>IbirubaRS.xml</ArqConfig>
+		<PadraoNFSe>DIGIFRED</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

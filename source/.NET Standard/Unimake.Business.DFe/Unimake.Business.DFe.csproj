@@ -237,6 +237,7 @@
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
+		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajubaMG.xml" />
@@ -462,6 +463,8 @@
 		<None Remove="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\DIGIFRED\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
@@ -957,6 +960,9 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\SorocabaSP.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\IbirubaRS.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -1324,6 +1330,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\DIGIFRED\xmldsig-core-schema_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\DSF\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />

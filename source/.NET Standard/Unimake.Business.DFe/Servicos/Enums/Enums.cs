@@ -5950,6 +5950,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DSF")]
         DSF = 17,
+
+        /// <summary>
+        /// Digifred - Soluções em Tecnologia para a Gestão Pública
+        /// </summary>
+        [Description("DIGIFRED")]
+        DIGIFRED = 18,
     }
 
     #endregion

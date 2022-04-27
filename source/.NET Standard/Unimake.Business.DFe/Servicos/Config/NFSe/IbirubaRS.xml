@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.00">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="2.00">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="2.00">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.00">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="2.00">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura>Rps</TagLoteAssinatura>
+      <TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+      <TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+      <TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfseRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.00">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="2.00">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="2.00">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="2.00">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="2.00">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao>https://sim.digifred.net.br/ibiruba_homolog/nfse/ws/principal</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://sim.digifred.net.br/ibiruba/nfse/ws/principal</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixaRequest><nfseCabecMsg>&lt;cabecalho versao=&quot;2.00&quot; xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot;&gt;&lt;versaoDados&gt;2.00&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfsePorFaixaRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.00</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfseFaixa>
+</Servicos>
+</Configuracoes>
