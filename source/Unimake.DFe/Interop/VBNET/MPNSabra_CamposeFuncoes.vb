@@ -36,9 +36,13 @@
         EX = 99
         NaoDefinido = 0
     End Enum
-
+    Public Enum SimNao
+        Sim = 1
+        Nao = 0
+    End Enum
     Public Enum TipoEventoMDFe
         Desconhecido = 0
+        CartaCorrecao = 110110
         Cancelamento = 110111
         Encerramento = 110112
         InclusaoCondutor = 110114
@@ -189,6 +193,40 @@
     Public Serie As String
     Public TipoNF As Integer
     Public TPAmb As Integer
+
+    Public Autorizacao
+    Public Resposta As String = ""
+    Public Espera As String = ""
+    Public Mensagem As String = (Chr(10) & "Erro na Execução ou a Resposta do Servidor Está Com Tempo Maior Que o Esperado." & Chr(10) & Chr(10) & "Deseja Continuar Com a Espera ? " & Chr(10))
+
+    Function TestarAutorizacao()
+        Espera = ""
+        Resposta = ""
+
+        While Trim(Espera) = ""
+            Try
+                Autorizacao.Executar
+                Espera = "Foi"
+
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+                Beep()
+
+                Resposta = CStr(MsgBox(Mensagem, 292))
+
+                If Resposta = "6" Then
+
+                Else
+                    Espera = "Foi"
+                End If
+
+            End Try
+
+        End While
+
+        TestarAutorizacao = Resposta
+
+    End Function
 
     Function CriarEvento(ByVal XCorrecao As String, ByVal NSeqEvento As Integer)
         ' Não Utilizei
@@ -370,19 +408,23 @@
 
 
     Public Sub Configurar()
-        If TipoNF = 55 Then
-            Configuracao.TipoDFe = TipoDFe.NFe
-        Else
-            Configuracao.TipoDFe = TipoDFe.NFCe
-        End If
+
 
         Configuracao.CodigoUF = CUF
-        Configuracao.servico = 0
+        Configuracao.Servico = 0
         Configuracao.CertificadoSenha = Trim(MPNSabra.TSenhaPFX.Text)
         Configuracao.CertificadoDigital = oCertificado
         Configuracao.CertificadoArquivo = Trim(MPNSabra.TLocalPFX.Text)
         Configuracao.TipoEMissao = TipoEmissao.Normal
-
+        Configuracao.TipoAmbiente = TPAmb
+        Configuracao.SchemaVersao = Versao
+        If TipoNF = 55 Then
+            Configuracao.Modelo = ModeloDFe.NFe
+            Configuracao.TipoDfe = TipoDFe.NFe
+        Else
+            Configuracao.Modelo = ModeloDFe.NFCe
+            Configuracao.TipoDfe = TipoDFe.NFCe
+        End If
         ' configuracao.TpEmiss = "1"
         '  configuracao.xServ = "STATUS"
     End Sub

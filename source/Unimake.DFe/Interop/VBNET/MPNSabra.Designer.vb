@@ -42,12 +42,13 @@ Partial Class MPNSabra
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(675, 379)
+        Me.Button1.Location = New System.Drawing.Point(341, 467)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 40)
         Me.Button1.TabIndex = 0
@@ -70,7 +71,7 @@ Partial Class MPNSabra
         '
         Me.Button2.Location = New System.Drawing.Point(31, 379)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 46)
+        Me.Button2.Size = New System.Drawing.Size(75, 58)
         Me.Button2.TabIndex = 4
         Me.Button2.Text = "Estado do Serviço"
         Me.Button2.UseVisualStyleBackColor = True
@@ -113,7 +114,7 @@ Partial Class MPNSabra
         '
         Me.Inutilização.Location = New System.Drawing.Point(160, 380)
         Me.Inutilização.Name = "Inutilização"
-        Me.Inutilização.Size = New System.Drawing.Size(75, 45)
+        Me.Inutilização.Size = New System.Drawing.Size(75, 57)
         Me.Inutilização.TabIndex = 9
         Me.Inutilização.Text = "Inutilização"
         Me.Inutilização.UseVisualStyleBackColor = True
@@ -167,7 +168,7 @@ Partial Class MPNSabra
         Me.ChaveNF.Name = "ChaveNF"
         Me.ChaveNF.Size = New System.Drawing.Size(282, 20)
         Me.ChaveNF.TabIndex = 15
-        Me.ChaveNF.Text = "33220329359981000140550550000005311810007820"
+        Me.ChaveNF.Text = "sabra-nfe.xml"
         '
         'GroupBox1
         '
@@ -206,7 +207,7 @@ Partial Class MPNSabra
         '
         Me.Button3.Location = New System.Drawing.Point(297, 380)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(95, 45)
+        Me.Button3.Size = New System.Drawing.Size(95, 57)
         Me.Button3.TabIndex = 20
         Me.Button3.Text = "Consultar Situação NF"
         Me.Button3.UseVisualStyleBackColor = True
@@ -215,7 +216,7 @@ Partial Class MPNSabra
         '
         Me.Button4.Location = New System.Drawing.Point(410, 382)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 40)
+        Me.Button4.Size = New System.Drawing.Size(75, 55)
         Me.Button4.TabIndex = 21
         Me.Button4.Text = "Enviar Nf"
         Me.Button4.UseVisualStyleBackColor = True
@@ -224,16 +225,26 @@ Partial Class MPNSabra
         '
         Me.Button5.Location = New System.Drawing.Point(509, 382)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(52, 35)
+        Me.Button5.Size = New System.Drawing.Size(52, 55)
         Me.Button5.TabIndex = 22
         Me.Button5.Text = "Enviar XML"
         Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(577, 380)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(62, 57)
+        Me.Button6.TabIndex = 23
+        Me.Button6.Text = "Enviar Evento CCe"
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'MPNSabra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(800, 533)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -254,7 +265,7 @@ Partial Class MPNSabra
         Me.Controls.Add(Me.Button1)
         Me.Name = "MPNSabra"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Exemplo de Uso da DLL - DFe Unimake"
+        Me.Text = "Exemplos de Uso da DLL Unimake      "
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
@@ -282,4 +293,5 @@ Partial Class MPNSabra
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
 End Class

@@ -24,37 +24,34 @@
 
         '* Consumir o serviço
 
-        Dim Inutilizacao
+        '    Dim Inutilizacao
         If TipoNF = 55 Then
-            Inutilizacao = New Unimake.Business.DFe.Servicos.NFe.Inutilizacao(InutNFe, Configuracao)
+            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.Inutilizacao(InutNFe, Configuracao)
 
         Else
-            Inutilizacao = New Unimake.Business.DFe.Servicos.NFCe.Inutilizacao(InutNFe, Configuracao)
+            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.Inutilizacao(InutNFe, Configuracao)
         End If
 
-        Try
+        Resposta = TestarAutorizacao()
 
-            Inutilizacao.Executar()
-
-
-            MsgBox(Inutilizacao.RetornoWSString)
-            MsgBox(Inutilizacao.result.InfInut.CStat & " - " & Inutilizacao.result.InfInut.XMotivo)
-
-            '* 102 Inutilizacao homologada
-
-            If Inutilizacao.result.InfInut.CStat = 102 Then
-                Inutilizacao.GravarXmlDistribuicao("c:\mpnsabra\retorno\")
-            Else
-                ' Erro na Inutilização
-                Inutilizacao.GravarXmlDistribuicao("c:\mpnsabra\erro\")
-            End If
+        If Resposta = "7" Then
+            Exit Sub
+        End If
 
 
-        Catch EX As Exception
 
-            MsgBox(EX.ToString)
+        MsgBox(Autorizacao.RetornoWSString)
+        MsgBox(Autorizacao.result.InfInut.CStat & " - " & Autorizacao.result.InfInut.XMotivo)
 
-        End Try
+        '* 102 Inutilizacao homologada
+
+        If Autorizacao.result.InfInut.CStat = 102 Then
+            Autorizacao.GravarXmlDistribuicao("c:\mpnsabra\retorno\")
+        Else
+            ' Erro na Inutilização
+            Autorizacao.GravarXmlDistribuicao("c:\mpnsabra\erro\")
+        End If
+
 
 
     End Sub

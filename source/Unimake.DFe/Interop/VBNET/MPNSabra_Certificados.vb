@@ -28,32 +28,28 @@
 
             Configuracao.CertificadoDigital = oCertificado
 
-            Dim StatusServico
+            '            Dim StatusServico
             If TipoNF = 55 Then
-
-                StatusServico = New Unimake.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
+                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
             Else
-                StatusServico = New Unimake.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
+                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
 
             End If
 
 
-
-            Try
-                StatusServico.Executar()
-
-                ' Após sistema testado , pode comentar os 2 comandos abaixo
-                If JaFeito = 2 Then
-                    MessageBox.Show("Certificado Instalado " & StatusServico.RetornoWSString)
-                    MessageBox.Show(StatusServico.result.cstat & " - " & StatusServico.Result.XMotivo)
-                End If
-
-            Catch EX As Exception
-
-                MsgBox(EX.ToString)
+            Resposta = TestarAutorizacao()
+            If Resposta = "7" Then
+                MPNSabra.Text = TextoTela & " Sem Certificado Instalado"
+                Exit Sub
+            End If
 
 
-            End Try
+            ' Após sistema testado , pode comentar os 2 comandos abaixo
+            If JaFeito = 2 Then
+                MessageBox.Show("Certificado Instalado " & Autorizacao.RetornoWSString)
+                MessageBox.Show(Autorizacao.result.cstat & " - " & Autorizacao.Result.XMotivo)
+            End If
+
 
 
         End If
@@ -138,29 +134,28 @@
         ' Xml.TpEmiss = "1"
         Xml.xServ = "STATUS"
 
-        Dim StatusServico
+        '      Dim StatusServico
         If TipoNF = 55 Then
 
-            StatusServico = New Unimake.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
+            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.StatusServico(Xml, Configuracao)
         Else
-            StatusServico = New Unimake.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
+            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.StatusServico(Xml, Configuracao)
 
         End If
-        Try
 
-            StatusServico.Executar()
+        Resposta = TestarAutorizacao()
+        If Resposta = "7" Then
+            MPNSabra.Text = TextoTela & " Sem Certificado Instalado"
+            Exit Sub
+        End If
 
-            ' Após sistema testado , pode comentar os 2 comandos seguinte.
-            If JaFeito = 2 Then
-                MessageBox.Show("Certificado .PFX : " & StatusServico.RetornoWSString)
-                MessageBox.Show(StatusServico.result.cstat & " - " & StatusServico.Result.XMotivo)
-            End If
+        ' Após sistema testado , pode comentar os 2 comandos seguinte.
+        If JaFeito = 2 Then
+            MessageBox.Show("Certificado .PFX : " & Autorizacao.RetornoWSString)
+            MessageBox.Show(Autorizacao.result.cstat & " - " & Autorizacao.Result.XMotivo)
+        End If
 
-        Catch EX As Exception
 
-            MsgBox(EX.ToString)
-
-        End Try
 
     End Sub
 

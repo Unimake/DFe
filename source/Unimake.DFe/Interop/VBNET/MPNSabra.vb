@@ -108,10 +108,15 @@ Public Class MPNSabra
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        EnviarXMLNF()
+        EnviarNFe()
+
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        EnviarNFe()
+        AutorizarPorArquivoNFe()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        EnviarEventoCCe()
     End Sub
 End Class

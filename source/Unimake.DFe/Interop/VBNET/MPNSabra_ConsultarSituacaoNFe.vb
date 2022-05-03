@@ -15,26 +15,26 @@
 
         Configuracao.TipoEmissao = TipoEmissao.Normal
 
-        Dim ConsultaProtocolo
+        '  Dim ConsultaProtocolo
         If TipoNF = 55 Then
-            ConsultaProtocolo = New Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo(Xml, Configuracao)
         Else
-            ConsultaProtocolo = New Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
+            Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo(Xml, Configuracao)
         End If
 
-        Try
+        Resposta = TestarAutorizacao()
 
-            ConsultaProtocolo.Executar()
+        If Resposta = "7" Then
+            Exit Sub
+        End If
 
-            MessageBox.Show(ConsultaProtocolo.RetornoWSString)
-            MessageBox.Show(ConsultaProtocolo.result.cstat & " - " & ConsultaProtocolo.Result.XMotivo)
 
 
-        Catch EX As Exception
 
-            MsgBox(EX.ToString)
+        MessageBox.Show(Autorizacao.RetornoWSString)
+        MessageBox.Show(Autorizacao.result.cstat & " - " & Autorizacao.Result.XMotivo)
 
-        End Try
+
 
 
     End Sub

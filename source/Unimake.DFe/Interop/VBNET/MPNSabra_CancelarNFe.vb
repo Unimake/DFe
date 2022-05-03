@@ -45,25 +45,29 @@
 
         Try
 
-            Dim RecepcaoEvento
+            '       Dim RecepcaoEvento
             If TipoNF = 55 Then
-                RecepcaoEvento = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
+                Autorizacao = New Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(EnvEvento, Configuracao)
 
             Else
-                RecepcaoEvento = New Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
+                Autorizacao = New Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento(EnvEvento, Configuracao)
 
             End If
 
+            Resposta = TestarAutorizacao()
 
-            RecepcaoEvento.Executar()
+            If Resposta = "7" Then
+                Exit Sub
+            End If
 
 
-            MsgBox(RecepcaoEvento.RetornoWSString)
-            MsgBox(RecepcaoEvento.Result.RetEvento(0).InfEvento.CStat & " - " & RecepcaoEvento.Result.RetEvento(0).InfEvento.XMotivo)
+
+            MsgBox(Autorizacao.RetornoWSString)
+            MsgBox(Autorizacao.Result.RetEvento(0).InfEvento.CStat & " - " & Autorizacao.Result.RetEvento(0).InfEvento.XMotivo)
 
             '  Gravar o XML de distribuição se a inutilização foi homologada
-            If RecepcaoEvento.result.CStat = 128 Then ''128 = Lote de evento processado com sucesso
-                Dim CStatr As String = RecepcaoEvento.Result.RetEvento(0).InfEvento.CStat
+            If Autorizacao.result.CStat = 128 Then ''128 = Lote de evento processado com sucesso
+                Dim CStatr As String = Autorizacao.Result.RetEvento(0).InfEvento.CStat
 
 
                 '' 135: Evento homologado com vinculação da respectiva NFe
@@ -73,15 +77,15 @@
 
                 If CStatr = 135 Or CStatr = 136 Or CStatr = 155 Then
 
-                    RecepcaoEvento.GravarXmlDistribuicao("C:\mpnsabra\retorno\")
+                    Autorizacao.GravarXmlDistribuicao("C:\mpnsabra\retorno\")
 
                 Else ''Evento rejeitado
 
-                    RecepcaoEvento.GravarXmlDistribuicao("c:\mpnsabra\erro\")
+                    Autorizacao.GravarXmlDistribuicao("c:\mpnsabra\erro\")
 
                 End If
             Else
-                MsgBox("Lote não processado. Stat = " & RecepcaoEvento.result.CStat)
+                MsgBox("Lote não processado. Stat = " & Autorizacao.result.CStat)
             End If
 
         Catch EX As Exception
