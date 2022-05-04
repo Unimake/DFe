@@ -676,4 +676,10 @@
 		<ArqConfig>TeofiloOtoniMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321667">
+		<Nome>Três Cachoeiras - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>	
 </Configuracoes>
