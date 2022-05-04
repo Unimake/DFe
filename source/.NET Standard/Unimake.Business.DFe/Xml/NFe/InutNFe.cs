@@ -70,11 +70,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                 if (AnoField.Length > 2)
                 {
-                    throw new Exception("Tag ano deve ter somente os dois últimos algarismos, exemplo: Para o ano de 2019 informe somente 19, ou para 2001 informe 01.");
+                    throw new Exception("TAG ano deve ter somente os dois últimos algarismos, exemplo: Para o ano de 2019 informe somente 19, ou para 2001 informe 01.");
                 }
                 else if (AnoField.Length < 2)
                 {
-                    throw new Exception("Tag ano deve ter dois 2 algarismos. Exemplo: Para o ano 2001 informe 01, ou para 2019 informe 19.");
+                    throw new Exception("TAG ano deve ter dois 2 algarismos. Exemplo: Para o ano 2001 informe 01, ou para 2019 informe 19.");
                 }
             }
         }

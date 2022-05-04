@@ -223,7 +223,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
                 {
                     if (NCT == 0)
                     {
-                        throw new Exception("Defina antes o conteudo da TAG <nCT>, pois o mesmo é utilizado como base para calcular o código numérico.");
+                        throw new Exception("Defina antes o conteúdo da TAG <nCT>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
 
                     retorno = Utility.XMLUtility.GerarCodigoNumerico(NCT).ToString("00000000");
@@ -278,7 +278,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
                     value == TipoEmissao.ContingenciaOffLine ||
                     value == TipoEmissao.ContingenciaSVCAN)
                 {
-                    throw new Exception("Conteúdo da tag <tpEmis> inválido! Valores aceitos: 1, 5, 7 ou 8.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 5, 7 ou 8.");
                 }
 
                 TpEmisField = value;
@@ -303,7 +303,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
                 if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
-                    throw new Exception("Conteúdo da tag <procEmi> inválido! Valores aceitos: 0 e 3.");
+                    throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0 e 3.");
                 }
 
                 ProcEmiField = value;
@@ -333,7 +333,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
                 if (value == ModalidadeTransporteCTe.Dutoviario ||
                     value == ModalidadeTransporteCTe.Multimodal)
                 {
-                    throw new Exception("Conteúdo da tag <Modal> inválido! Valores aceitos: 01, 02, 03 e 04.");
+                    throw new Exception("Conteúdo da TAG <Modal> inválido! Valores aceitos: 01, 02, 03 e 04.");
                 }
 
                 ModalField = value;
@@ -2026,7 +2026,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             {
                 if (!string.IsNullOrWhiteSpace(CPFField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
 
                 CNPJField = value;
@@ -2041,7 +2041,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             {
                 if (!string.IsNullOrWhiteSpace(CNPJField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
 
                 CPFField = value;
@@ -2141,7 +2141,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             {
                 if (!string.IsNullOrWhiteSpace(NroRegEstadualField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <rodoOS>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
 
                 TAFField = value;
@@ -2156,7 +2156,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             {
                 if (!string.IsNullOrWhiteSpace(TAFField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <rodoOS>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
 
                 NroRegEstadualField = value;
@@ -2229,7 +2229,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             {
                 if (!string.IsNullOrWhiteSpace(NroRegEstadualField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <prop>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
 
                 TAFField = value;
@@ -2244,7 +2244,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             {
                 if (!string.IsNullOrWhiteSpace(TAFField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade TAF e NroRegEstadual (da classe rodoOS) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <prop>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
 
                 NroRegEstadualField = value;

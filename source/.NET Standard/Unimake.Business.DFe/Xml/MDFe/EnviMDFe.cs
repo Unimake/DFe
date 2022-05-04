@@ -331,7 +331,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 {
                     if (NMDF == 0)
                     {
-                        throw new Exception("Defina antes o conteudo da TAG <nMDF>, pois o mesmo é utilizado como base para calcular o código numérico.");
+                        throw new Exception("Defina o conteúdo da TAG <nMDF>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
 
                     retorno = Utility.XMLUtility.GerarCodigoNumerico(NMDF).ToString("00000000");
@@ -372,7 +372,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
                     value != TipoEmissao.RegimeEspecialNFF &&
                     value != TipoEmissao.ContingenciaFSIA)
                 {
-                    throw new Exception("Conteúdo da tag <tpEmis> inválido! Valores aceitos: 1, 2 ou 3.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 2 ou 3.");
                 }
 
                 TpEmisField = value;
@@ -387,7 +387,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (value != ProcessoEmissao.AplicativoContribuinte)
                 {
-                    throw new Exception("Conteúdo da tag <procEmi> inválido! Valor aceito: 0.");
+                    throw new Exception("Conteúdo da TAG <procEmi> inválido! Valor aceito: 0.");
                 }
 
                 ProcEmiField = value;
@@ -1183,7 +1183,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (value != 1)
                 {
-                    throw new Exception("Conteúdo da tag <indAltoDesemp> inválido! Valores aceitos: 1 ou não informe a tag.");
+                    throw new Exception("Conteúdo da TAG <indAltoDesemp> inválido! Valores aceitos: 1 ou não informe a TAG.");
                 }
 
                 IndAltoDesempField = value;
@@ -1206,7 +1206,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         private int? IndAntecipaAdiantField;
 
         /// <summary>
-        /// Indicador de declaração de concordância em antecipar o adiantamento. Informar a tag somente se for autorizado antecipar o adiantamento. Operação de transporte com utilização de veículos de frotas dedicadas ou fidelizadas. Preencher com “1” para indicar operação de transporte de alto desempenho, demais casos não informar a tag.
+        /// Indicador de declaração de concordância em antecipar o adiantamento. Informar a TAG somente se for autorizado antecipar o adiantamento. Operação de transporte com utilização de veículos de frotas dedicadas ou fidelizadas. Preencher com “1” para indicar operação de transporte de alto desempenho, demais casos não informar a TAG.
         /// </summary>
         [XmlElement("indAntecipaAdiant")]
         public int? IndAntecipaAdiant
@@ -1216,7 +1216,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (value != 1 && value != 0 && value != null)
                 {
-                    throw new Exception("A tag <indAntecipaAdiant> só pode ser preenchida com o valor \"1\" para indicar operação de transporte de alto desempenho, demais casos preencha com 0 ou null para não informar a tag.");
+                    throw new Exception("A TAG <indAntecipaAdiant> só pode ser preenchida com o valor \"1\" para indicar operação de transporte de alto desempenho, demais casos preencha com 0 ou null para não informar a TAG.");
                 }
 
                 IndAntecipaAdiantField = value;
@@ -2167,7 +2167,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (value != TipoUnidadeTransporte.RodoviarioTracao && value != TipoUnidadeTransporte.RodoviarioReboque)
                 {
-                    throw new Exception("Conteúdo da TAG <tpUnidTranspVazia> da <infUnidTranspVazia> inválido! Valores aceitos: 1 e 2.");
+                    throw new Exception("Conteúdo da TAG <tpUnidTranspVazia>, filha da TAG <infUnidTranspVazia>, inválido! Valores aceitos: 1 e 2.");
                 }
 
                 TpUnidTranspVaziaField = value;
@@ -3218,7 +3218,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (!string.IsNullOrWhiteSpace(CPFField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
 
                 CNPJField = value;
@@ -3233,7 +3233,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (!string.IsNullOrWhiteSpace(CNPJField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
 
                 CPFField = value;

@@ -378,7 +378,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
             {
                 if (value < 0 || value > 5)
                 {
-                    throw new Exception("Conteúdo da tag <periodo> da tag <referencia> inválido! Conteúdos aceitos: 0 a 5.");
+                    throw new Exception("Conteúdo da TAG <periodo>, filha da TAG <referencia>, inválido! Conteúdos aceitos: 0 a 5.");
                 }
 
                 PeriodoField = value;

@@ -216,7 +216,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public Emit Emit { get; set; }
 
         /// <summary>
-        /// Esta tag é de uso exclusivo do FISCO, não precisa gerar nada, só temos ela para caso de alguma necessidade de deserialização.
+        /// Esta TAG é de uso exclusivo do FISCO, não precisa gerar nada, só temos ela para caso de alguma necessidade de deserialização.
         /// </summary>
         [XmlElement("avulsa")]
         public Avulsa Avulsa { get; set; }
@@ -411,7 +411,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 {
                     if (NNF < 0)
                     {
-                        throw new Exception("Defina antes o conteúdo da TAG <nNF>, pois o mesmo é utilizado como base para calcular o código numérico.");
+                        throw new Exception("Defina o conteúdo da TAG <nNF>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
 
                     retorno = XMLUtility.GerarCodigoNumerico(NNF).ToString("00000000");
@@ -672,7 +672,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                 if (!mesesValidos.Contains(value.Substring(2)))
                 {
-                    throw new Exception("Conteúdo da TAG <AAMM> da <refNF> inválido! Mês informado deve estar entre 01 e 12.");
+                    throw new Exception("Conteúdo da TAG <AAMM>, filha da TAG <refNF>, inválido! Mês informado deve estar entre 01 e 12.");
                 }
 
                 AAMMField = value;
@@ -690,7 +690,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 if (value != "01" && value != "02")
                 {
-                    throw new Exception("Conteúdo da TAG <mod> da <refNF> inválido! Valores aceitos: 01 e 02.");
+                    throw new Exception("Conteúdo da TAG <mod>, filha da TAG da <refNF>, inválido! Valores aceitos: 01 e 02.");
                 }
 
                 ModField = value;
@@ -736,7 +736,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                 if (!mesesValidos.Contains(value.Substring(2)))
                 {
-                    throw new Exception("Conteúdo da TAG <AAMM> da <refNFP> inválido! Mês informado deve estar entre 01 e 12.");
+                    throw new Exception("Conteúdo da TAG <AAMM>, filha da TAG <refNFP>, inválido! Mês informado deve estar entre 01 e 12.");
                 }
 
                 AAMMField = value;
@@ -760,7 +760,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 if (value != "01" && value != "04")
                 {
-                    throw new Exception("Conteúdo da TAG <mod> da <refNF> inválido! Valores aceitos: 01 e 04.");
+                    throw new Exception("Conteúdo da TAG <mod>, filha da TAG <refNF>, inválido! Valores aceitos: 01 e 04.");
                 }
 
                 ModField = value;
@@ -801,7 +801,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 if (value != "2B" && value != "2C" && value != "2D")
                 {
-                    throw new Exception("Conteúdo da TAG <mod> da <refECF> inválido! Valores aceitos: 2B, 2C e 2D.");
+                    throw new Exception("Conteúdo da TAG <mod>, filha da TAG <refECF>, inválido! Valores aceitos: 2B, 2C e 2D.");
                 }
 
                 ModField = value;
@@ -1282,7 +1282,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
-        public bool ShouldSerializeCNPJ() => string.IsNullOrWhiteSpace(CPF); //Se não tiver o CPF tenho que colocar a tag de CNPJ em branco ou gera erro de schema
+        public bool ShouldSerializeCNPJ() => string.IsNullOrWhiteSpace(CPF); //Se não tiver o CPF tenho que colocar a TAG de CNPJ em branco ou gera erro de schema
 
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
@@ -3270,7 +3270,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <ICMS40> inválido! Valores aceitos: 40, 41 ou 50.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <ICMS40>, inválido! Valores aceitos: 40, 41 ou 50.");
                 }
             }
         }
@@ -4183,7 +4183,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <ICMSPart> inválido! Valores aceitos: 10 ou 90.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <ICMSPart>, inválido! Valores aceitos: 10 ou 90.");
                 }
             }
         }
@@ -4377,7 +4377,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN101> inválido! Valor aceito: 101.");
+                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN101>, inválido! Valor aceito: 101.");
                 }
             }
         }
@@ -4429,7 +4429,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN102> inválido! Valores aceitos: 102, 103, 300 ou 400.");
+                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN102>, inválido! Valores aceitos: 102, 103, 300 ou 400.");
                 }
             }
         }
@@ -4461,7 +4461,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN201> inválido! Valor aceito: 201.");
+                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN201>, inválido! Valor aceito: 201.");
                 }
             }
         }
@@ -4618,7 +4618,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN202> inválido! Valores aceitos: 202 ou 203.");
+                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN202>, inválido! Valores aceitos: 202 ou 203.");
                 }
             }
         }
@@ -4752,7 +4752,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN500> inválido! Valor aceito: 500.");
+                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN500>, inválido! Valor aceito: 500.");
                 }
             }
         }
@@ -4912,7 +4912,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CSOSN> da <ICMSSN900> inválido! Valor aceito: 900.");
+                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN900>, inválido! Valor aceito: 900.");
                 }
             }
         }
@@ -5089,13 +5089,13 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeModBC() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1);
 
-        public bool ShouldSerializeVBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta tag
+        public bool ShouldSerializeVBCField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta TAG
 
         public bool ShouldSerializePRedBCField() => PRedBC != null;
 
-        public bool ShouldSerializePICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta tag
+        public bool ShouldSerializePICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta TAG
 
-        public bool ShouldSerializeVICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta tag
+        public bool ShouldSerializeVICMSField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1); //Se a modalidade for informada tem que ir esta TAG
 
         public bool ShouldSerializeModBCST() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1);
 
@@ -5103,17 +5103,17 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializePRedBCSTField() => PRedBCST != null;
 
-        public bool ShouldSerializeVBCSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta tag
+        public bool ShouldSerializeVBCSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta TAG
 
-        public bool ShouldSerializePICMSSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta tag
+        public bool ShouldSerializePICMSSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta TAG
 
-        public bool ShouldSerializeVICMSSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta tag
+        public bool ShouldSerializeVICMSSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1); //Se a modalidade for informada tem que ir esta TAG
 
         public bool ShouldSerializeVBCFCPSTField() => VBCFCPST > 0;
 
-        public bool ShouldSerializePFCPSTField() => VBCFCPST > 0; // Se tiver base é obrigatório ter algo nesta tag
+        public bool ShouldSerializePFCPSTField() => VBCFCPST > 0; // Se tiver base é obrigatório ter algo nesta TAG
 
-        public bool ShouldSerializeVFCPSTField() => VBCFCPST > 0; // Se tiver base é obrigatório ter algo nesta tag
+        public bool ShouldSerializeVFCPSTField() => VBCFCPST > 0; // Se tiver base é obrigatório ter algo nesta TAG
 
         public bool ShouldSerializePCredSNField() => PCredSN != null;
         public bool ShouldSerializeVCredICMSSNField() => VCredICMSSN != null || PCredSN != null;
@@ -5147,7 +5147,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <ICMSST> inválido! Valores aceitos: 41 ou 60.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <ICMSST>, inválido! Valores aceitos: 41 ou 60.");
                 }
             }
         }
@@ -5414,7 +5414,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <IPINT> inválido! Valores aceitos: 01, 02, 03, 04, 05, 51, 52, 53, 54 ou 55.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <IPINT>, inválido! Valores aceitos: 01, 02, 03, 04, 05, 51, 52, 53, 54 ou 55.");
                 }
             }
         }
@@ -5444,7 +5444,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <IPITrib> inválido! Valores aceitos: 00, 49, 50 ou 99.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <IPITrib>, inválido! Valores aceitos: 00, 49, 50 ou 99.");
                 }
             }
         }
@@ -5693,7 +5693,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <PISAliq> inválido! Valores aceitos: 01 ou 02.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISAliq>, inválido! Valores aceitos: 01 ou 02.");
                 }
             }
         }
@@ -5750,7 +5750,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                 if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <PISNT> inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISNT>, inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
                 }
 
                 _cstField = cst.ToString();
@@ -5784,7 +5784,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <PISOutr> inválido! Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISOutr>, inválido! Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99.");
                 }
             }
         }
@@ -5862,7 +5862,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <PISQtde> inválido! Valor aceito: 03");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISQtde>, inválido! Valor aceito: 03");
                 }
             }
         }
@@ -5994,7 +5994,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <COFINSAliq> inválido! Valores aceitos: 01 ou 02.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSAliq>, inválido! Valores aceitos: 01 ou 02.");
                 }
             }
         }
@@ -6051,7 +6051,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                 if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <COFINSNT> inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSNT>, inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
                 }
 
                 _cstField = cst.ToString();
@@ -6085,7 +6085,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <COFINSOutr> inválido! Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99.");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSOutr>, inválido! Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99.");
                 }
             }
         }
@@ -6163,7 +6163,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <CST> da <COFINSQtde> inválido! Valor aceito: 03");
+                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSQtde>, inválido! Valor aceito: 03");
                 }
             }
         }
@@ -6312,7 +6312,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    throw new Exception("Conteúdo da TAG <PICMSInter> da tag <ICMSUFDest> inválido! Valores aceitos: 4, 7 ou 12.");
+                    throw new Exception("Conteúdo da TAG <PICMSInter>, filha da TAG <ICMSUFDest>, inválido! Valores aceitos: 4, 7 ou 12.");
                 }
             }
         }
@@ -7723,7 +7723,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 if (value.Length < 2 || value.Length > 60)
                 {
-                    throw new Exception("Conteúdo da tag <idCadIntTran> filha da tag <infIntermed> deve ter entre 2 até 60 caracteres.");
+                    throw new Exception("Conteúdo da TAG <idCadIntTran> filha da TAG <infIntermed> deve ter entre 2 até 60 caracteres.");
                 }
 
                 IdCadIntTranField = value;

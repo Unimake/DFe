@@ -569,7 +569,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
             {
                 if(value != "2.00" || value != "1.00")
                 {
-                    throw new Exception("Conteúdo da tag <versoesXmlDocOrigem><versao> incorreta! Valores aceitos: 1.00 e 2.00");
+                    throw new Exception("Conteúdo da TAG <versao>, filha da TAG <versoesXmlDocOrigem>, incorreta! Valores aceitos: 1.00 e 2.00");
                 }
 
                 VersaoField = value;

@@ -299,7 +299,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 {
                     if (NCT == 0)
                     {
-                        throw new Exception("Defina antes o conteudo da TAG <nCT>, pois o mesmo é utilizado como base para calcular o código numérico.");
+                        throw new Exception("Defina o conteúdo da TAG <nCT>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
 
                     retorno = Utility.XMLUtility.GerarCodigoNumerico(NCT).ToString("00000000");
@@ -353,7 +353,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                    value == TipoEmissao.RegimeEspecialNFF ||
                    value == TipoEmissao.ContingenciaSVCAN)
                 {
-                    throw new Exception("Conteúdo da tag <tpEmis> inválido! Valores aceitos: 1, 4, 5, 7 ou 8.");
+                    throw new Exception("Conteúdo da TAG <tpEmis> inválido! Valores aceitos: 1, 4, 5, 7 ou 8.");
                 }
 
                 TpEmisField = value;
@@ -378,7 +378,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
-                    throw new Exception("Conteúdo da tag <procEmi> inválido! Valores aceitos: 0 e 3.");
+                    throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0 e 3.");
                 }
 
                 ProcEmiField = value;
@@ -489,7 +489,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value == TomadorServicoCTe.Outros)
                 {
-                    throw new Exception("Conteúdo da tag <toma> filha da tag <toma3> inválido! Valores aceitos: 0, 1, 2, 3.");
+                    throw new Exception("Conteúdo da TAG <toma>, filha da TAG <toma3>, inválido! Valores aceitos: 0, 1, 2, 3.");
                 }
 
                 TomaField = value;
@@ -516,7 +516,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value != TomadorServicoCTe.Outros)
                 {
-                    throw new Exception("Conteúdo da tag <toma> filha da tag <toma4> inválido! Valores aceitos: 4.");
+                    throw new Exception("Conteúdo da TAG <toma>, filha da TAG <toma4>, inválido! Valores aceitos: 4.");
                 }
 
                 //TomaField = value;
@@ -882,7 +882,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value != TipoPeriodoEntregaCTe.SemDataDefinida)
                 {
-                    throw new Exception("Conteúdo da tag <tpPer> filha da tag <semData><Entrega> inválido! Valores aceitos: 0.");
+                    throw new Exception("Conteúdo da TAG <tpPer>, filha da TAG <semData><Entrega>, inválido! Valores aceitos: 0.");
                 }
 
                 //TpPerField = value;
@@ -909,7 +909,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value == TipoPeriodoEntregaCTe.SemDataDefinida || value == TipoPeriodoEntregaCTe.NoPeriodo)
                 {
-                    throw new Exception("Conteúdo da tag <tpPer> filha da tag <comData><Entrega> inválido! Valores aceitos: 1, 2 ou 3.");
+                    throw new Exception("Conteúdo da TAG <tpPer>, filha da TAG <comData><Entrega>, inválido! Valores aceitos: 1, 2 ou 3.");
                 }
 
                 TpPerField = value;
@@ -946,7 +946,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value != TipoPeriodoEntregaCTe.NoPeriodo)
                 {
-                    throw new Exception("Conteúdo da tag <tpPer> filha da tag <noPeriodo><Entrega> inválido! Valores aceitos: 4.");
+                    throw new Exception("Conteúdo da TAG <tpPer>, filha da TAG <noPeriodo><Entrega>, inválido! Valores aceitos: 4.");
                 }
 
                 //TpPerField = value;
@@ -993,7 +993,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value != TipoHoraEntregaCTe.SemHoraDefinida)
                 {
-                    throw new Exception("Conteúdo da tag <tpHor> filha da tag <semHora><Entrega> inválido! Valores aceitos: 0.");
+                    throw new Exception("Conteúdo da TAG <tpHor>, filha da TAG <semHora><Entrega>, inválido! Valores aceitos: 0.");
                 }
 
                 //TpHorField = value;
@@ -1020,7 +1020,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value == TipoHoraEntregaCTe.SemHoraDefinida || value == TipoHoraEntregaCTe.NoIntervaloTempo)
                 {
-                    throw new Exception("Conteúdo da tag <tpHor> filha da tag <comHora><Entrega> inválido! Valores aceitos: 1, 2 ou 3.");
+                    throw new Exception("Conteúdo da TAG <tpHor>, filha da TAG <comHora><Entrega>, inválido! Valores aceitos: 1, 2 ou 3.");
                 }
 
                 TpHorField = value;
@@ -1057,7 +1057,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value != TipoHoraEntregaCTe.NoIntervaloTempo)
                 {
-                    throw new Exception("Conteúdo da tag <tpHor> filha da tag <noInter><Entrega> inválido! Valores aceitos: 4.");
+                    throw new Exception("Conteúdo da TAG <tpHor>, filha da TAG <noInter><Entrega>, inválido! Valores aceitos: 4.");
                 }
 
                 //TpHorField = value;
@@ -4703,7 +4703,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 var permitido = "01,1B,02,2D,2E,04,06,07,08,8B,09,10,11,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28 e 55";
                 if (!permitido.Contains(value))
                 {
-                    throw new Exception("Conteúdo da tag <mod> filha da tag <infCteSub><tomaICMS><RefNF> inválido! Valores aceitos: " + permitido + ".");
+                    throw new Exception("Conteúdo da TAG <mod>, filha da TAG <infCteSub><tomaICMS><RefNF>, inválido! Valores aceitos: " + permitido + ".");
                 }
 
                 ModField = value;
@@ -4767,11 +4767,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (value.Length < 15)
                 {
-                    throw new Exception("Conteúdo da tag <xObs> filha da tag <infGlobalizado> inválido! O conteúdo deve ter no mínimo 15 caracteres.");
+                    throw new Exception("Conteúdo da TAG <xObs>, filha da TAG <infGlobalizado>, inválido! O conteúdo deve ter no mínimo 15 caracteres.");
                 }
                 else if (value.Length > 256)
                 {
-                    throw new Exception("Conteúdo da tag <xObs> filha da tag <infGlobalizado> inválido! O conteúdo deve ter no máximo 256 caracteres.");
+                    throw new Exception("Conteúdo da TAG <xObs>, filha da TAG <infGlobalizado>, inválido! O conteúdo deve ter no máximo 256 caracteres.");
                 }
 
                 XObsField = value;
@@ -4899,7 +4899,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (!string.IsNullOrWhiteSpace(CPFField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
 
                 CNPJField = value;
@@ -4914,7 +4914,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             {
                 if (!string.IsNullOrWhiteSpace(CNPJField))
                 {
-                    throw new Exception("Não é permitido informar conteúdo na propriedade CPF e CNPJ (da classe AuxXML) ao mesmo tempo no mesmo objeto, somente uma delas pode ter conteúdo.");
+                    throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
 
                 CPFField = value;
