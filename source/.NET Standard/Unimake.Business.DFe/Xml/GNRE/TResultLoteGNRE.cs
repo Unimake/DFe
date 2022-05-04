@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlRoot("TResultLote_GNRE", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
-    public class TResultLoteGNRE: XMLBase
+    public class TResultLoteGNRE : XMLBase
     {
         [XmlElement("ambiente")]
         public TipoAmbiente Ambiente { get; set; }
@@ -64,8 +64,23 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("guia")]
         public List<Guia> Guia { get; set; }
 
+        /// <summary>
+        /// PDF com as Guias processadas com sucesso, no formato "String base64".
+        /// </summary>
         [XmlElement("pdfGuias")]
         public string PDFGuias { get; set; }
+
+        /// <summary>
+        /// Arquivo de pagamento das Guias do Lote
+        /// </summary>
+        [XmlElement("arquivoPagamento")]
+        public string ArquivoPagamento { get; set; }
+
+        /// <summary>
+        /// Campo pai das notícias vigentes publicadas no Portal GNRE.
+        /// </summary>
+        [XmlElement("noticias")]
+        public Noticias Noticias { get; set; }
 
 #if INTEROP
 
@@ -202,5 +217,103 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         [XmlElement("campo")]
         public string Campo { get; set; }
+    }
+
+    /// <summary>
+    /// Notícias vigentes publicadas no Portal GNRE.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Noticias")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class Noticias
+    {
+        /// <summary>
+        /// Notícia vigente publicada no Portal GNRE
+        /// </summary>
+        [XmlElement("noticia")]
+        public List<Noticia> Noticia { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddNoticia(Noticia item)
+        {
+            if(Noticia == null)
+            {
+                Noticia = new List<Noticia>();
+            }
+
+            Noticia.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Noticia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Noticia</returns>
+        public Noticia GetNoticia(int index)
+        {
+            if ((Noticia?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Noticia[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Noticia
+        /// </summary>
+        public int GetNoticiaCount => (Noticia != null ? Noticia.Count : 0);
+
+#endif
+    }
+
+    /// <summary>
+    /// Notícia vigente publicada no Portal GNRE.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.Noticia")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class Noticia
+    {
+        /// <summary>
+        /// Data/hora de publicação da notícia.
+        /// </summary>
+        [XmlIgnore]
+        public DateTime DhPublicacao { get; set; }
+
+        /// <summary>
+        /// Data/hora de publicação da notícia. - Utilize a propriedade dhPublicacao
+        /// </summary>
+        [XmlElement("dhPublicacao")]
+        public string DhPublicacaoField
+        {
+            get => DhPublicacao.ToString("yyyy-MM-dd HH:mm:ss");
+            set => DhPublicacao = DateTime.Parse(value);
+        }
+
+        /// <summary>
+        /// Título da notícia
+        /// </summary>
+        [XmlElement("titulo")]
+        public string Titulo { get; set; }
+
+        /// <summary>
+        /// Texto da notícia
+        /// </summary>
+        [XmlElement("texto")]
+        public string Texto { get; set; }
     }
 }

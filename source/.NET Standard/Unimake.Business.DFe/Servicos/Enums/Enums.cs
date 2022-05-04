@@ -5122,10 +5122,40 @@ namespace Unimake.Business.DFe.Servicos
         c05_referencia,
 
         /// <summary>
+        /// ufFavorecida
+        /// </summary>
+        [XmlEnum("ufFavorecida")]
+        ufFavorecida,
+
+        /// <summary>
+        /// receita
+        /// </summary>
+        [XmlEnum("receita")]
+        receita,
+
+        /// <summary>
+        /// detalhamentoReceita
+        /// </summary>
+        [XmlEnum("detalhamentoReceita")]
+        detalhamentoReceita,
+
+        /// <summary>
         /// periodo
         /// </summary>
         [XmlEnum("periodo")]
         periodo,
+
+        /// <summary>
+        /// produto
+        /// </summary>
+        [XmlEnum("produto")]
+        produto,
+
+        /// <summary>
+        /// referencia
+        /// </summary>
+        [XmlEnum("referencia")]
+        referencia,
 
         /// <summary>
         /// mes
@@ -5144,6 +5174,36 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("parcela")]
         parcela,
+
+        /// <summary>
+        /// documentoOrigem
+        /// </summary>
+        [XmlEnum("documentoOrigem")]
+        documentoOrigem,
+
+        /// <summary>
+        /// dataVencimento
+        /// </summary>
+        [XmlEnum("dataVencimento")]
+        dataVencimento,
+
+        /// <summary>
+        /// dataPagamento
+        /// </summary>
+        [XmlEnum("dataPagamento")]
+        dataPagamento,
+
+        /// <summary>
+        /// convenio
+        /// </summary>
+        [XmlEnum("convenio")]
+        convenio,
+
+        /// <summary>
+        /// camposExtras
+        /// </summary>
+        [XmlEnum("camposExtras")]
+        camposExtras,
 
         /// <summary>
         /// c39_campoExtra1
@@ -5444,7 +5504,11 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// linhaDigitavel
         /// </summary>        
-        linhaDigitavel
+        linhaDigitavel,
+        /// <summary>
+        /// valor
+        /// </summary>
+        valor
     }
 
     #endregion

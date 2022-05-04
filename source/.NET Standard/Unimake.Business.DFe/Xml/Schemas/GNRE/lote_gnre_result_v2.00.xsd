@@ -262,6 +262,27 @@
 									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
+							<xs:element name="pdfGuias" minOccurs="0" maxOccurs="1" type="xs:string" />								
+							<xs:element name="arquivoPagamento" minOccurs="0" maxOccurs="1" type="xs:string" />
+							<xs:element name="noticias" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="noticia" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="dhPublicacao" type="TDataHora" maxOccurs="1" minOccurs="1">
+						                                <xs:annotation>
+						                                	<xs:documentation>Data e Hora da publicacao da noticia</xs:documentation>
+						                                </xs:annotation>			                                
+													</xs:element>
+													<xs:element name="titulo" minOccurs="1" maxOccurs="1" type="xs:string" />
+													<xs:element name="texto" minOccurs="1" maxOccurs="1" type="xs:string" />			
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
 						</xs:sequence>
     				</xs:complexType>
     			</xs:element>

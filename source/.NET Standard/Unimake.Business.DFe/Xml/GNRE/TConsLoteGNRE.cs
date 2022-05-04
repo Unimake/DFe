@@ -45,5 +45,11 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         [XmlElement("incluirArquivoPagamento")]
         public SimNaoLetra IncluirArquivoPagamento { get; set; }
+
+        /// <summary>
+        /// Indica se as notícias vigentes publicadas no Portal GNRE devem ser incluídas no retorno da consulta do Lote.
+        /// </summary>
+        [XmlElement("incluirNoticias")] 
+        public SimNaoLetra IncluirNoticias { get; set; }
     }
 }

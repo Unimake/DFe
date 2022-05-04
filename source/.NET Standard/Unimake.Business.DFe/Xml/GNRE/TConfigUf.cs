@@ -359,10 +359,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeDetalhamentoReceita
     {
         [XmlAttribute("campo")]
-        public virtual CamposGNRE Campo { get; set; } = CamposGNRE.c25_detalhamentoReceita;
-
-        [XmlAttribute("campo2_00")]
-        public virtual CamposGNRE2 Campo_00 { get; set; } = CamposGNRE2.item_detalhamentoReceita;
+        public virtual CamposGNRE Campo { get; set; } = CamposGNRE.detalhamentoReceita;
 
         [XmlText()]
         public SimNaoLetra Value { get; set; }
@@ -378,10 +375,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeProduto: ExigeDetalhamentoReceita
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c26_produto;
-
-        [XmlAttribute("campo2_00")]
-        public override CamposGNRE2 Campo_00 { get; set; } = CamposGNRE2.item_produto;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.produto;
     }
 
 #if INTEROP
@@ -416,7 +410,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigePeriodoReferencia: ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c05_referencia;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.referencia;
     }
 
 #if INTEROP
@@ -430,9 +424,6 @@ namespace Unimake.Business.DFe.Xml.GNRE
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.periodo;
-
-        [XmlAttribute("campo2_00")]
-        public override CamposGNRE2 Campo_00 { get; set; } = CamposGNRE2.item_referencia_periodo;
     }
 
 #if INTEROP
@@ -493,10 +484,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeDocumentoOrigem: ExigeDetalhamentoReceita
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c04_docOrigem;
-
-        [XmlAttribute("campo2_00")]
-        public override CamposGNRE2 Campo_00 { get; set; } = CamposGNRE2.item_documentoOrigem;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.documentoOrigem;
     }
 
 #if INTEROP
@@ -509,7 +497,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class TiposDocumentosOrigem
     {
         [XmlAttribute("campo")]
-        public CamposGNRE Campo { get; set; } = CamposGNRE.c28_tipoDocOrigem;
+        public CamposGNRE Campo { get; set; } = CamposGNRE.documentoOrigem;
 
         [XmlElement("tipoDocumentoOrigem")]
         public List<TipoDocumentoOrigem> TipoDocumentoOrigem { get; set; }
@@ -599,7 +587,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeDataVencimento: ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c14_dataVencimento;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.dataVencimento;
     }
 
 #if INTEROP
@@ -612,7 +600,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeDataPagamento: ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c33_dataPagamento;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.dataPagamento;
     }
 
 #if INTEROP
@@ -625,7 +613,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeConvenio: ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c15_convenio;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.convenio;
     }
 
 #if INTEROP
@@ -638,7 +626,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeValorFecp
     {
         [XmlAttribute("campo")]
-        public virtual CamposGNRE2 Campo { get; set; } = CamposGNRE2.item_valorPrincipalFecp;
+        public virtual CamposGNRE2 Campo { get; set; } = CamposGNRE2.valor;
 
         [XmlText()]
         public SimNaoOpcionalLetra Value { get; set; }
@@ -654,7 +642,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class ExigeCamposAdicionais: ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; } = CamposGNRE.c39_camposExtras;
+        public override CamposGNRE Campo { get; set; } = CamposGNRE.camposExtras;
     }
 
 #if INTEROP
@@ -702,6 +690,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         [XmlElement("versoesXmlCampoAdicional")]
         public List<VersoesXmlCampoAdicional> VersoesXmlCampoAdicional { get; set; }
+
+        [XmlElement("qtdeMaximas")]
+        public QtdeMaximas QtdeMaximas { get; set; }
 
 #if INTEROP
 
@@ -782,4 +773,26 @@ namespace Unimake.Business.DFe.Xml.GNRE
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class VersoesXmlCampoAdicional: VersoesXmlDocOrigem { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.QtdeMaximas")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class QtdeMaximas
+    {
+        [XmlElement("guiasPorLote")]
+        public string GuiasPorLote { get; set; }
+
+        [XmlElement("itensPorGuia")]
+        public string ItensPorGuia { get; set; }
+
+        [XmlElement("itensPorLote")]
+        public string ItensPorLote { get; set; }
+
+        [XmlElement("qtdConsultas")]
+        public string QtdConsultas { get; set; }
+    }
 }

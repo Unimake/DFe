@@ -66,6 +66,7 @@
 			<xs:enumeration value="item_valorMultaFecp" />
 			<xs:enumeration value="item_valorTotal" />
 			<xs:enumeration value="item_valorTotalFecp" />
+			<xs:enumeration value="valor" />
 			<xs:enumeration value="item_convenio" />
 			<xs:enumeration value="item_contribuinteDestinatario" />			
 			<xs:enumeration value="item_contribuinteDestinatario_identificacao" />
