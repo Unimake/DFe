@@ -509,8 +509,8 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
                 detEvento.InfViagens = new InfViagens
                 {
-                    QtdViagens = infViagensElement.GetValue<int>(nameof(InfViagens.QtdViagens)),
-                    NroViagem = infViagensElement.GetValue<int>(nameof(InfViagens.NroViagem))
+                    QtdViagens = infViagensElement.GetValue<string>(nameof(InfViagens.QtdViagens)),
+                    NroViagem = infViagensElement.GetValue<string>(nameof(InfViagens.NroViagem))
                 };
             }
         }
@@ -1221,10 +1221,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
     public class InfViagens
     {
         [XmlElement("qtdViagens", Order = 0)]
-        public int QtdViagens { get; set; }
+        public string QtdViagens { get; set; }
 
         [XmlElement("nroViagem", Order = 1)]
-        public int NroViagem { get; set; }
+        public string NroViagem { get; set; }
     }
 
 #if INTEROP
