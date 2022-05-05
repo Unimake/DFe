@@ -318,8 +318,11 @@ namespace Unimake.DFe.Test.NFe
                 Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
                 Diag.Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Diag.Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CStat.Equals(103), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
-                Diag.Debug.Assert(!string.IsNullOrWhiteSpace(autorizacao.Result.InfRec.NRec), "Não retornou o número do recibo no envio da NFe");
+                Diag.Debug.Assert(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(656), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
+                if (autorizacao.Result.InfRec != null)
+                {
+                    Diag.Debug.Assert(!string.IsNullOrWhiteSpace(autorizacao.Result.InfRec.NRec), "Não retornou o número do recibo no envio da NFe");
+                }
             }
             catch (Exception ex)
             {

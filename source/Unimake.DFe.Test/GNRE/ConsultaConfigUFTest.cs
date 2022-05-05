@@ -24,20 +24,18 @@ namespace Unimake.DFe.Test.GNRE
             {
                 Ambiente = tipoAmbiente,
                 UF = UFBrasil.RS,
-                //Receita = new Receita
-                //{
-                //    Courier = SimNaoLetra.Sim,
-                //    Value = 100012
-                //}
+                Receita = new Receita
+                {
+                    Courier = SimNaoLetra.Sim,
+                    Value = 100012
+                }
             };
 
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.GNRE,
                 TipoAmbiente = tipoAmbiente,
-                //CertificadoDigital = PropConfig.CertificadoDigital,
-                CertificadoArquivo = @"d:\testenfe\testegnre1234.pfx",
-                CertificadoSenha = "1234",
+                CertificadoDigital = PropConfig.CertificadoDigital,
                 TipoEmissao = TipoEmissao.Normal,
                 CodigoUF = 41,
                 Servico = Servico.GNREConsultaConfigUF

@@ -300,21 +300,21 @@
 					<nFCI>nFCI1</nFCI>
 					<rastro>
 						<nLote>nLote1</nLote>
-						<qLote>1.00</qLote>
+						<qLote>1.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg1</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote2</nLote>
-						<qLote>2.00</qLote>
+						<qLote>2.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg2</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote3</nLote>
-						<qLote>3.00</qLote>
+						<qLote>3.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg3</cAgreg>
@@ -604,21 +604,21 @@
 					<nFCI>nFCI2</nFCI>
 					<rastro>
 						<nLote>nLote4</nLote>
-						<qLote>4.00</qLote>
+						<qLote>4.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg4</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote5</nLote>
-						<qLote>5.00</qLote>
+						<qLote>5.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg5</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote6</nLote>
-						<qLote>6.00</qLote>
+						<qLote>6.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg6</cAgreg>
@@ -900,21 +900,21 @@
 					<nFCI>nFCI3</nFCI>
 					<rastro>
 						<nLote>nLote7</nLote>
-						<qLote>7.00</qLote>
+						<qLote>7.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg7</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote8</nLote>
-						<qLote>8.00</qLote>
+						<qLote>8.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg8</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote9</nLote>
-						<qLote>9.00</qLote>
+						<qLote>9.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg9</cAgreg>
@@ -1631,21 +1631,21 @@
 					<nFCI>nFCI4</nFCI>
 					<rastro>
 						<nLote>nLote10</nLote>
-						<qLote>10.00</qLote>
+						<qLote>10.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg10</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote11</nLote>
-						<qLote>11.00</qLote>
+						<qLote>11.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg11</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote12</nLote>
-						<qLote>12.00</qLote>
+						<qLote>12.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg12</cAgreg>
@@ -1927,21 +1927,21 @@
 					<nFCI>nFCI5</nFCI>
 					<rastro>
 						<nLote>nLote13</nLote>
-						<qLote>13.00</qLote>
+						<qLote>13.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg13</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote14</nLote>
-						<qLote>14.00</qLote>
+						<qLote>14.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg14</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote15</nLote>
-						<qLote>15.00</qLote>
+						<qLote>15.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg15</cAgreg>
@@ -2223,21 +2223,21 @@
 					<nFCI>nFCI6</nFCI>
 					<rastro>
 						<nLote>nLote16</nLote>
-						<qLote>16.00</qLote>
+						<qLote>16.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg16</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote17</nLote>
-						<qLote>17.00</qLote>
+						<qLote>17.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg17</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote18</nLote>
-						<qLote>18.00</qLote>
+						<qLote>18.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg18</cAgreg>
@@ -2954,21 +2954,21 @@
 					<nFCI>nFCI7</nFCI>
 					<rastro>
 						<nLote>nLote19</nLote>
-						<qLote>19.00</qLote>
+						<qLote>19.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg19</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote20</nLote>
-						<qLote>20.00</qLote>
+						<qLote>20.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg20</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote21</nLote>
-						<qLote>21.00</qLote>
+						<qLote>21.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg21</cAgreg>
@@ -3250,21 +3250,21 @@
 					<nFCI>nFCI8</nFCI>
 					<rastro>
 						<nLote>nLote22</nLote>
-						<qLote>22.00</qLote>
+						<qLote>22.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg22</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote23</nLote>
-						<qLote>23.00</qLote>
+						<qLote>23.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg23</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote24</nLote>
-						<qLote>24.00</qLote>
+						<qLote>24.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg24</cAgreg>
@@ -3546,21 +3546,21 @@
 					<nFCI>nFCI9</nFCI>
 					<rastro>
 						<nLote>nLote25</nLote>
-						<qLote>25.00</qLote>
+						<qLote>25.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg25</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote26</nLote>
-						<qLote>26.00</qLote>
+						<qLote>26.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg26</cAgreg>
 					</rastro>
 					<rastro>
 						<nLote>nLote27</nLote>
-						<qLote>27.00</qLote>
+						<qLote>27.000</qLote>
 						<dFab>2021-11-11</dFab>
 						<dVal>2021-11-11</dVal>
 						<cAgreg>cAgreg27</cAgreg>
