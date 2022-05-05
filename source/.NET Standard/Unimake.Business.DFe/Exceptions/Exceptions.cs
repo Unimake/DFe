@@ -27,4 +27,25 @@ namespace Unimake.Security.Exceptions
         public ValidarXMLException(string message)
             : base(message) { }
     }
+
+#if INTEROP
+
+    /// <summary>
+    /// Classe para capturar dados da exception para disponibilizar a outras linguagens de programação, que não .NET, com tipos simples.
+    /// </summary>
+    public class InteropException
+    {
+        /// <summary>
+        /// Código do erro
+        /// </summary>
+        public string ErrorCode { get; internal set; }
+
+        /// <summary>
+        /// Mensagem da exceção gerada
+        /// </summary>
+        public string Message { get; internal set; }
+    }
+
+#endif
+
 }

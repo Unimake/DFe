@@ -49,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         #region Private Fields
 
         private Xml.CTeOS.CTeOS _cteOS;
-        private Dictionary<string, CteOSProc> CteOSProcs = new Dictionary<string, CteOSProc>();
+        private readonly Dictionary<string, CteOSProc> CteOSProcs = new Dictionary<string, CteOSProc>();
 
         #endregion Private Fields
 
@@ -250,20 +250,21 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao()
-            : base() => CteOSProcs.Clear();
+        public Autorizacao() : base() => CteOSProcs.Clear();
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="cteOS">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Autorizacao(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao)
-            : base(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao)
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Autorizacao(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao) : this()
         {
-            Inicializar();
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-            CteOSProcs.Clear();
+            Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
         }
 
         #endregion Public Constructors
@@ -298,7 +299,12 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         [ComVisible(true)]
         public void Executar(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao)
         {
-            PrepararServico(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
             Executar();
         }
 
@@ -307,7 +313,15 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// </summary>
         /// <param name="cteOS">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao) => PrepararServico(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
+        public void SetXMLConfiguracao(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
+        }
 
 #endif
 

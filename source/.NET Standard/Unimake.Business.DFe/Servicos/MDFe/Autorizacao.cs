@@ -290,20 +290,21 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao()
-            : base() => MdfeProcs.Clear();
+        public Autorizacao() : base() => MdfeProcs.Clear();
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="enviMDFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Autorizacao(EnviMDFe enviMDFe, Configuracao configuracao)
-            : base(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao)
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Autorizacao(EnviMDFe enviMDFe, Configuracao configuracao) : this()
         {
-            Inicializar();
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-            MdfeProcs.Clear();
+            Inicializar(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
         }
 
         #endregion Public Constructors
@@ -374,7 +375,12 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         [ComVisible(true)]
         public void Executar(EnviMDFe enviMDFe, Configuracao configuracao)
         {
-            PrepararServico(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
             Executar();
         }
 
@@ -389,7 +395,15 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         /// <param name="enviMDFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o self-service</param>
-        public void SetXMLConfiguracao(EnviMDFe enviMDFe, Configuracao configuracao) => PrepararServico(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
+        public void SetXMLConfiguracao(EnviMDFe enviMDFe, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(enviMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviMDFe)), configuracao);
+        }
 
 #endif
 

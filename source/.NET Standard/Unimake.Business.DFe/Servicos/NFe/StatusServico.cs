@@ -71,18 +71,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public StatusServico()
-            : base()
-        {
-        }
+        public StatusServico() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public StatusServico(ConsStatServ consStatServ, Configuracao configuracao)
-                    : base(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public StatusServico(ConsStatServ consStatServ, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -98,7 +102,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(ConsStatServ consStatServ, Configuracao configuracao)
         {
-            PrepararServico(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
             Executar();
         }
 

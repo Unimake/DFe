@@ -1,6 +1,8 @@
 ﻿#if INTEROP
+using System;
 using System.Runtime.InteropServices;
 #endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
@@ -94,17 +96,22 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Construtor
         /// </summary>
-        public Inutilizacao()
-        {
-        }
+        public Inutilizacao() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="inutCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Inutilizacao(InutCTe inutCTe, Configuracao configuracao)
-                    : base(inutCTe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutCTe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Inutilizacao(InutCTe inutCTe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -119,7 +126,12 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         public void Executar(InutCTe inutCTe, Configuracao configuracao)
         {
-            PrepararServico(inutCTe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutCTe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
             Executar();
         }
 
@@ -128,7 +140,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         /// <param name="inutCTe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(InutCTe inutCTe, Configuracao configuracao) => PrepararServico(inutCTe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutCTe)), configuracao);
+        public void SetXMLConfiguracao(InutCTe inutCTe, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
+        }
 
 #endif
 

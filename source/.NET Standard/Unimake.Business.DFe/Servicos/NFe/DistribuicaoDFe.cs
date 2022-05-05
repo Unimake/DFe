@@ -73,16 +73,21 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Construtor
         /// </summary>
         /// <param name="distDFeInt">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public DistribuicaoDFe(DistDFeInt distDFeInt, Configuracao configuracao)
-                    : base(distDFeInt.GerarXML(), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public DistribuicaoDFe(DistDFeInt distDFeInt, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(distDFeInt?.GerarXML() ?? throw new ArgumentNullException(nameof(distDFeInt)), configuracao);
+        }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public DistribuicaoDFe()
-        {
-        }
+        public DistribuicaoDFe() : base() { }
 
         #endregion Public Constructors
 
@@ -133,7 +138,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(DistDFeInt distDFeInt, Configuracao configuracao)
         {
-            PrepararServico(distDFeInt?.GerarXML() ?? throw new ArgumentNullException(nameof(distDFeInt)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(distDFeInt?.GerarXML() ?? throw new ArgumentNullException(nameof(distDFeInt)), configuracao);
             Executar();
         }
 
@@ -208,38 +218,26 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Retorna o quantidade de elementos na lista com os Resumos de Eventos
         /// </summary>
-        public int GetResEventosCount()
-        {
-            return ResEventos.Count;
-        }
+        public int GetResEventosCount() => ResEventos.Count;
 
         /// <summary>
         /// Retorna o resumo do evento (ResEvento) do elemento informado por parâmetro
         /// </summary>
         /// <param name="elemento">Elemento a ser retornado</param>
         /// <returns>Resumo do evento (ResEvento)</returns>
-        public ResEvento GetResEvento(int elemento)
-        {
-            return ResEventos[elemento];
-        }
+        public ResEvento GetResEvento(int elemento) => ResEventos[elemento];
 
         /// <summary>
         /// Retorna o quantidade de elementos na lista com os Resumos de NF-e
         /// </summary>
-        public int GetResNFeCount()
-        {
-            return ResNFes.Count;
-        }
+        public int GetResNFeCount() => ResNFes.Count;
 
         /// <summary>
         /// Retorna o resumo de NFe (ResNFe) do elemento informado por parâmetro
         /// </summary>
         /// <param name="elemento">Elemento a ser retornado</param>
         /// <returns>Resumo de NF-e (ResNFe)</returns>
-        public ResNFe GetResNFe(int elemento)
-        {
-            return ResNFes[elemento];
-        }
+        public ResNFe GetResNFe(int elemento) => ResNFes[elemento];
 
 #endif
 

@@ -6,6 +6,7 @@ using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -78,17 +79,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Construtor
         /// </summary>
-        protected ServicoBase()
-        {
-        }
-
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        /// <param name="conteudoXML">Conteúdo do XML a ser enviado para o webservice</param>
-        /// <param name="configuracao">Configurações a serem utilizadas para conexão e envio do XML para o webservice</param>
-        protected ServicoBase(XmlDocument conteudoXML, Configuracao configuracao)
-                    : this() => PrepararServico(conteudoXML, configuracao);
+        protected ServicoBase() { }
 
         #endregion Protected Constructors
 
@@ -103,19 +94,6 @@ namespace Unimake.Business.DFe.Servicos
         /// Defini o valor das propriedades do objeto "Configuracoes"
         /// </summary>
         protected abstract void DefinirConfiguracao();
-
-        /// <summary>
-        /// Preparar o ambiente para consumir o serviço
-        /// </summary>
-        /// <param name="conteudoXML">XML que será enviado para o webservice</param>
-        /// <param name="configuracao">Configurações que serão utilizadas para conexão e envio do XML para o webservice</param>
-        protected void PrepararServico(XmlDocument conteudoXML, Configuracao configuracao)
-        {
-            Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
-            ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
-            Inicializar();
-            System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
-        }
 
         /// <summary>
         /// Validar o schema do XML
@@ -134,11 +112,16 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Inicializa configurações, parâmetros e propriedades para execução do serviço.
         /// </summary>
+        /// <param name="conteudoXML">Conteúdo do XML a ser enviado para o web-service</param>
+        /// <param name="configuracao">Configurações a serem utilizadas para conexão e envio do XML para o web-service</param>
 #if INTEROP
         [ComVisible(false)]
 #endif
-        protected internal void Inicializar()
+        protected internal void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
+            Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
+            ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
+
             if (!Configuracoes.Definida)
             {
                 DefinirConfiguracao();
@@ -146,6 +129,8 @@ namespace Unimake.Business.DFe.Servicos
 
             //Esta linha tem que ficar fora do if acima, pois tem que carregar esta parte, independente, pois o que é carregado sempre é automático. Mudar isso, vai gerar falha no UNINFE, principalmente no envio dos eventos, onde eu defino as configurações manualmente. Wandrey 07/12/2020
             Configuracoes.Load(GetType().Name);
+
+            System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
         }
 
         #endregion Protected Internal Methods
@@ -195,6 +180,15 @@ namespace Unimake.Business.DFe.Servicos
         /// XML retornado pelo Webservice
         /// </summary>
         public XmlDocument RetornoWSXML { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Classe para retorno de exceptions para outras linguagens de programação que não são .NET
+        /// </summary>
+        public InteropException InteropException { get; protected set; }
+
+#endif
 
         #endregion Public Properties
 

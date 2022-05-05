@@ -335,18 +335,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao()
-            : base()
-        {
-        }
+        public Autorizacao() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Autorizacao(EnviNFe enviNFe, Configuracao configuracao)
-            : base(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao) => Inicializar();
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Autorizacao(EnviNFe enviNFe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -379,10 +383,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
-        [ComVisible(true)]
         public void Executar(EnviNFe enviNFe, Configuracao configuracao)
         {
-            PrepararServico(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+            Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+
             Executar();
         }
 
@@ -391,7 +395,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(EnviNFe enviNFe, Configuracao configuracao) => PrepararServico(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+        public void SetXMLConfiguracao(EnviNFe enviNFe, Configuracao configuracao) => Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
 
 #endif
 

@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
     [ProgId("Unimake.Business.DFe.Servicos.CTe.ConsultaProtocolo")]
     [ComVisible(true)]
 #endif
-    public class ConsultaProtocolo: ServicoBase, IInteropService<ConsSitCTe>
+    public class ConsultaProtocolo : ServicoBase, IInteropService<ConsSitCTe>
     {
         #region Protected Methods
 
@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var xml = new ConsSitCTe();
             xml = xml.LerXML<ConsSitCTe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeConsultaProtocolo;
                 Configuracoes.CodigoUF = Convert.ToInt32(xml.ChCTe.Substring(0, 2));
@@ -51,7 +51,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsSitCTe>(RetornoWSXML);
                 }
@@ -72,16 +72,13 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Construtor
         /// </summary>
         /// <param name="consSitCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaProtocolo(ConsSitCTe consSitCTe, Configuracao configuracao)
-            : base(consSitCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitCTe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaProtocolo(ConsSitCTe consSitCTe, Configuracao configuracao) : this() => Inicializar(consSitCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitCTe)), configuracao);
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaProtocolo()
-        {
-        }
+        public ConsultaProtocolo() : base() { }
 
         #endregion Public Constructors
 
@@ -90,15 +87,21 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="consSitCTe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
         public void Executar(ConsSitCTe consSitCTe, Configuracao configuracao)
         {
-            PrepararServico(consSitCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitCTe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consSitCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitCTe)), configuracao);
+
             Executar();
-        } 
+        }
 
 #endif
 

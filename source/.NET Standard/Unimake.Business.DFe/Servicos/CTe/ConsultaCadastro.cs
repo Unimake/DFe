@@ -13,7 +13,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
     [ProgId("Unimake.Business.DFe.Servicos.CTe.ConsultaCadastro")]
     [ComVisible(true)]
 #endif
-    public class ConsultaCadastro: NFe.ConsultaCadastro
+    public class ConsultaCadastro : NFe.ConsultaCadastro
     {
         #region Public Constructors
 
@@ -21,16 +21,13 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Construtor
         /// </summary>
         /// <param name="consCad">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaCadastro(ConsCadBase consCad, Configuracao configuracao)
-            : base(consCad, configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaCadastro(ConsCadBase consCad, Configuracao configuracao) : base(consCad, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaCadastro()
-        {
-        }
+        public ConsultaCadastro() : base() { }
 
         #endregion Public Constructors
     }

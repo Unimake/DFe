@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     [ProgId("Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo")]
     [ComVisible(true)]
 #endif
-    public class ConsultaProtocolo: ServicoBase, IInteropService<ConsSitMDFe>
+    public class ConsultaProtocolo : ServicoBase, IInteropService<ConsSitMDFe>
     {
         #region Protected Methods
 
@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             var xml = new ConsSitMDFe();
             xml = xml.LerXML<ConsSitMDFe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.MDFeConsultaProtocolo;
                 Configuracoes.CodigoUF = Convert.ToInt32(xml.ChMDFe.Substring(0, 2));
@@ -51,7 +51,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsSitMDFe>(RetornoWSXML);
                 }
@@ -71,18 +71,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaProtocolo()
-            : base()
-        {
-        }
+        public ConsultaProtocolo() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="consSitMDFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaProtocolo(ConsSitMDFe consSitMDFe, Configuracao configuracao)
-            : base(consSitMDFe.GerarXML() ?? throw new ArgumentNullException(nameof(consSitMDFe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaProtocolo(ConsSitMDFe consSitMDFe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consSitMDFe.GerarXML() ?? throw new ArgumentNullException(nameof(consSitMDFe)), configuracao);
+        }
 
 
         #endregion Public Constructors
@@ -96,12 +100,16 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         /// <param name="consSitMDFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
-        [ComVisible(true)]
         public void Executar(ConsSitMDFe consSitMDFe, Configuracao configuracao)
         {
-            PrepararServico(consSitMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitMDFe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consSitMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitMDFe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

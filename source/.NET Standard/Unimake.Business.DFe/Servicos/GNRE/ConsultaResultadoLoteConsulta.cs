@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.IO;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
@@ -29,7 +28,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsLoteConsGNRE();
             xml = xml.LerXML<TConsLoteConsGNRE>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.GNREConsultaResultadoLoteConsulta;
                 Configuracoes.TipoAmbiente = xml.Ambiente;
@@ -51,7 +50,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<TResultLoteGNRE>(RetornoWSXML);
                 }
@@ -74,18 +73,22 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaResultadoLoteConsulta()
-            : base()
-        {
-        }
+        public ConsultaResultadoLoteConsulta() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="tConsLoteConsGNRE">Objeto contendo o XML da consulta do lote da GNRE</param>
         /// <param name="configuracao">Objeto contendo as configurações a serem utilizadas na consulta do lote da GNRE</param>
-        public ConsultaResultadoLoteConsulta(TConsLoteConsGNRE tConsLoteConsGNRE, Configuracao configuracao)
-                    : base(tConsLoteConsGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteConsGNRE)), configuracao) { }
+        public ConsultaResultadoLoteConsulta(TConsLoteConsGNRE tConsLoteConsGNRE, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(tConsLoteConsGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteConsGNRE)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -101,9 +104,14 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         [ComVisible(true)]
         public void Executar(TConsLoteConsGNRE tConsLoteConsGNRE, Configuracao configuracao)
         {
-            PrepararServico(tConsLoteConsGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteConsGNRE)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(tConsLoteConsGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteConsGNRE)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 
@@ -121,7 +129,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         public void GravarXmlDistribuicao(string pasta, string nomeArquivo)
         {
-            if(!string.IsNullOrWhiteSpace(RetornoWSString))
+            if (!string.IsNullOrWhiteSpace(RetornoWSString))
             {
                 GravarXmlDistribuicao(pasta, nomeArquivo, RetornoWSString);
             }

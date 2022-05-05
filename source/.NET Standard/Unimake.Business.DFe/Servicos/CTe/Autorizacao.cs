@@ -351,20 +351,21 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao()
-            : base() => CteProcs.Clear();
+        public Autorizacao() : base() => CteProcs.Clear();
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public Autorizacao(EnviCTe enviCTe, Configuracao configuracao)
-            : base(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao)
+        public Autorizacao(EnviCTe enviCTe, Configuracao configuracao) : this()
         {
-            Inicializar();
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-            CteProcs.Clear();
+            Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
         }
 
         #endregion Public Constructors
@@ -399,7 +400,12 @@ namespace Unimake.Business.DFe.Servicos.CTe
         [ComVisible(true)]
         public void Executar(EnviCTe enviCTe, Configuracao configuracao)
         {
-            PrepararServico(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
             Executar();
         }
 
@@ -408,7 +414,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(EnviCTe enviCTe, Configuracao configuracao) => PrepararServico(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+        public void SetXMLConfiguracao(EnviCTe enviCTe, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+        }
 
 #endif
 

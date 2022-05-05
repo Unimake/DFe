@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Xml;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 
@@ -16,14 +15,16 @@ namespace Unimake.Business.DFe.Servicos.CTe
     [ProgId("Unimake.Business.DFe.Servicos.CTe.RetAutorizacao")]
     [ComVisible(true)]
 #endif
-    public class RetAutorizacao: ServicoBase
+    public class RetAutorizacao : ServicoBase
     {
-        #region Private Constructors
+        #region Public Constructors
 
-        private RetAutorizacao(XmlDocument conteudoXML, Configuracao configuracao)
-                            : base(conteudoXML, configuracao) { }
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public RetAutorizacao() : base() { }
 
-        #endregion Private Constructors
+        #endregion 
 
         #region Protected Methods
 
@@ -35,7 +36,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             var xml = new ConsReciCTe();
             xml = xml.LerXML<ConsReciCTe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeConsultaRecibo;
                 Configuracoes.TipoAmbiente = xml.TpAmb;
@@ -50,13 +51,13 @@ namespace Unimake.Business.DFe.Servicos.CTe
         #region Public Properties
 
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetConsReciCTe Result
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsReciCTe>(RetornoWSXML);
                 }
@@ -77,9 +78,16 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Construtor
         /// </summary>
         /// <param name="consReciCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public RetAutorizacao(ConsReciCTe consReciCTe, Configuracao configuracao)
-            : this(consReciCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciCTe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RetAutorizacao(ConsReciCTe consReciCTe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consReciCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciCTe)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -88,11 +96,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="consReciCTe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
-        [ComVisible(true)]
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         public void Executar(ConsReciCTe consReciCTe, Configuracao configuracao)
         {
             if (configuracao is null)
@@ -100,9 +107,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            PrepararServico(consReciCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciCTe)), configuracao);
+            Inicializar(consReciCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciCTe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

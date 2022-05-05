@@ -23,16 +23,13 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// Construtor
         /// </summary>
         /// <param name="consReciNFe">Objeto do XML da consulta recibo da NFCe</param>
-        /// <param name="configuracao">Configurações a serem utilizadas para conexão e envio do XML para o webservice</param>
-        public RetAutorizacao(ConsReciNFe consReciNFe, Configuracao configuracao)
-            : base(consReciNFe, configuracao) { }
+        /// <param name="configuracao">Configurações a serem utilizadas para conexão e envio do XML para o web-service</param>
+        public RetAutorizacao(ConsReciNFe consReciNFe, Configuracao configuracao) : base(consReciNFe, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public RetAutorizacao()
-        {
-        }
+        public RetAutorizacao() : base() { }
 
         #endregion Public Constructors
 

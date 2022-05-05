@@ -18,25 +18,14 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.ServicoBase")]
     [ComVisible(true)]
 #endif
-    public abstract class ServicoBase: Servicos.ServicoBase
+    public abstract class ServicoBase : Servicos.ServicoBase
     {
         #region Protected Constructors
 
         /// <summary>
         /// Construtor
         /// </summary>
-        protected ServicoBase()
-            : base()
-        {
-        }
-
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
-        /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        protected ServicoBase(XmlDocument conteudoXML, Configuracao configuracao)
-            : base(conteudoXML, configuracao) { }
+        protected ServicoBase() : base() { }
 
         #endregion Protected Constructors
 
@@ -54,7 +43,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             XmlValidarConteudo(); // Efetuar a validação antes de validar schema para evitar alguns erros que não ficam claros para o desenvolvedor.
 
-            if(!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.SchemaArquivo))
             {
                 var validar = new ValidarSchema();
                 validar.Validar(ConteudoXML,
@@ -62,7 +51,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     Configuracoes.TargetNS,
                     Configuracoes.PadraoNFSe);
 
-                if(!validar.Success)
+                if (!validar.Success)
                 {
                     throw new ValidarXMLException(validar.ErrorMessage);
                 }
@@ -83,12 +72,12 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         public override void Executar()
         {
-            if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
             {
                 AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
             }
 
-            if(!string.IsNullOrWhiteSpace(Configuracoes.TagLoteAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagLoteAssinatura))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.TagLoteAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagLoteAssinatura))
             {
                 AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
             }
@@ -103,16 +92,21 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
         public void Executar(string conteudoXML, Configuracao configuracao)
         {
-            XmlDocument xmlDoc = new XmlDocument();
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(conteudoXML);
 
-            PrepararServico(xmlDoc, configuracao);
+            Inicializar(xmlDoc, configuracao);
 
             Executar();
         }
@@ -142,7 +136,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             }
             finally
             {
-                if(streamWriter != null)
+                if (streamWriter != null)
                 {
                     streamWriter.Close();
                 }
@@ -162,17 +156,17 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                                                   string value,
                                                   Encoding encoding = null)
         {
-            if(stream is null)
+            if (stream is null)
             {
                 throw new ArgumentNullException(nameof(stream));
             }
 
-            if(string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value))
             {
                 throw new ArgumentNullException(nameof(value));
             }
 
-            if(encoding == null)
+            if (encoding == null)
             {
                 encoding = Encoding.UTF8;
             }

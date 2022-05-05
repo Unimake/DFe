@@ -1,7 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Security.Exceptions;
 
@@ -15,7 +14,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     [ProgId("Unimake.Business.DFe.Servicos.NFCe.ConsultaProtocolo")]
     [ComVisible(true)]
 #endif
-    public class ConsultaProtocolo: NFe.ConsultaProtocolo
+    public class ConsultaProtocolo : NFe.ConsultaProtocolo
     {
         #region Public Constructors
 
@@ -24,15 +23,12 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// </summary>
         /// <param name="consSitNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaProtocolo(ConsSitNFe consSitNFe, Configuracao configuracao)
-            : base(consSitNFe, configuracao) { }
+        public ConsultaProtocolo(ConsSitNFe consSitNFe, Configuracao configuracao) : base(consSitNFe, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaProtocolo()
-        {
-        }
+        public ConsultaProtocolo() : base() { }
 
         #endregion Public Constructors
 
@@ -44,7 +40,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.NFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }

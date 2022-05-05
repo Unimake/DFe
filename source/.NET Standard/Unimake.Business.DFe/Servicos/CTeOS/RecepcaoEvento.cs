@@ -1,7 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Security.Exceptions;
 
@@ -23,14 +22,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// Construtor
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public RecepcaoEvento(EventoCTe envEvento, Configuracao configuracao)
-            : base(envEvento, configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RecepcaoEvento(EventoCTe envEvento, Configuracao configuracao) : base(envEvento, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public RecepcaoEvento() { }
+        public RecepcaoEvento() : base() { }
 
         #endregion
 

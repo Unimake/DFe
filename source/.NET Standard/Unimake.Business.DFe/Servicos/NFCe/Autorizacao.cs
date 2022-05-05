@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     [ProgId("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")]
     [ComVisible(true)]
 #endif
-    public class Autorizacao: NFe.Autorizacao
+    public class Autorizacao : NFe.Autorizacao
     {
         #region Private Methods
 
@@ -25,11 +25,11 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// </summary>
         private void MontarQrCode()
         {
-            for(var i = 0; i < EnviNFe.NFe.Count; i++)
+            for (var i = 0; i < EnviNFe.NFe.Count; i++)
             {
                 EnviNFe = new EnviNFe().LerXML<EnviNFe>(ConteudoXML);
 
-                if(EnviNFe.NFe[i].InfNFeSupl == null)
+                if (EnviNFe.NFe[i].InfNFeSupl == null)
                 {
                     if (string.IsNullOrWhiteSpace(Configuracoes.CSC))
                     {
@@ -47,7 +47,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
                     var urlChave = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlChaveHomologacao : Configuracoes.UrlChaveProducao);
                     string paramLinkQRCode;
 
-                    if(EnviNFe.NFe[i].InfNFe[0].Ide.TpEmis == TipoEmissao.ContingenciaOffLine)
+                    if (EnviNFe.NFe[i].InfNFe[0].Ide.TpEmis == TipoEmissao.ContingenciaOffLine)
                     {
                         paramLinkQRCode = EnviNFe.NFe[i].InfNFe[0].Chave + "|" +
                             "2" + "|" +
@@ -97,7 +97,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.NFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
@@ -111,18 +111,13 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// Construtor
         /// </summary>
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Autorizacao(EnviNFe enviNFe, Configuracao configuracao)
-                                      : base(enviNFe, configuracao)
-        {
-        }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Autorizacao(EnviNFe enviNFe, Configuracao configuracao) : base(enviNFe, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao()
-        {
-        }
+        public Autorizacao() : base() { }
 
         #endregion Public Constructors
     }

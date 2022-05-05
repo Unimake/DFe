@@ -1,6 +1,8 @@
 ﻿#if INTEROP
+using System;
 using System.Runtime.InteropServices;
 #endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -91,16 +93,21 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Construtor
         /// </summary>
         /// <param name="inutNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public Inutilizacao(InutNFe inutNFe, Configuracao configuracao)
-                    : base(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Inutilizacao(InutNFe inutNFe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
+            Inicializar(inutNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutNFe)), configuracao);
+
+        }
         /// <summary>
         /// Construtor
         /// </summary>
-        public Inutilizacao()
-        {
-        }
+        public Inutilizacao() : base() { }
 
         #endregion Public Constructors
 
@@ -116,7 +123,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(InutNFe inutNFe, Configuracao configuracao)
         {
-            PrepararServico(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(inutNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutNFe)), configuracao);
             Executar();
         }
 
@@ -125,7 +137,15 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="inutNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(InutNFe inutNFe, Configuracao configuracao) => PrepararServico(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
+        public void SetXMLConfiguracao(InutNFe inutNFe, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
+        }
 
 #endif
 

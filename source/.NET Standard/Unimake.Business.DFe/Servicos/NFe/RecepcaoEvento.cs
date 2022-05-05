@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     [ProgId("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")]
     [ComVisible(true)]
 #endif
-    public class RecepcaoEvento: ServicoBase, IInteropService<EnvEvento>
+    public class RecepcaoEvento : ServicoBase, IInteropService<EnvEvento>
     {
         #region Private Properties
 
@@ -35,7 +35,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var validar = new ValidarSchema();
             validar.Validar(xml, (Configuracoes.TipoDFe == TipoDFe.NFCe ? TipoDFe.NFe : Configuracoes.TipoDFe).ToString() + "." + schemaArquivo, targetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
@@ -53,7 +53,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var xml = new EnvEvento();
             xml = xml.LerXML<EnvEvento>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.CodigoUF = (int)xml.Evento[0].InfEvento.COrgao;
                 Configuracoes.TipoAmbiente = xml.Evento[0].InfEvento.TpAmb;
@@ -75,7 +75,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var schemaArquivo = string.Empty;
             var schemaArquivoEspecifico = string.Empty;
 
-            if(Configuracoes.SchemasEspecificos.Count > 0)
+            if (Configuracoes.SchemasEspecificos.Count > 0)
             {
                 var tpEvento = ((int)xml.Evento[0].InfEvento.TpEvento);
 
@@ -92,14 +92,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
             #region Validar a parte específica de cada evento
 
             var listEvento = ConteudoXML.GetElementsByTagName("evento");
-            for(var i = 0; i < listEvento.Count; i++)
+            for (var i = 0; i < listEvento.Count; i++)
             {
                 var elementEvento = (XmlElement)listEvento[i];
 
-                if(elementEvento.GetElementsByTagName("infEvento")[0] != null)
+                if (elementEvento.GetElementsByTagName("infEvento")[0] != null)
                 {
                     var elementInfEvento = (XmlElement)elementEvento.GetElementsByTagName("infEvento")[0];
-                    if(elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
+                    if (elementInfEvento.GetElementsByTagName("tpEvento")[0] != null)
                     {
                         var xmlEspecifico = new XmlDocument();
                         xmlEspecifico.LoadXml(elementInfEvento.GetElementsByTagName("detEvento")[0].OuterXml);
@@ -126,11 +126,11 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var msgException = "Conteúdo da tag <descEvento> deve ser igual a \"$\", pois foi este o conteudo informado na tag <tpEvento>.";
             string descEvento;
 
-            switch(tpEvento)
+            switch (tpEvento)
             {
                 case TipoEventoNFe.ManifestacaoCienciaOperacao:
                     descEvento = "Ciencia da Operacao";
-                    if(!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
+                    if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
                     }
@@ -138,7 +138,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ManifestacaoConfirmacaoOperacao:
                     descEvento = "Confirmacao da Operacao";
-                    if(!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
+                    if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
                     }
@@ -146,7 +146,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ManifestacaoDesconhecimentoOperacao:
                     descEvento = "Desconhecimento da Operacao";
-                    if(!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
+                    if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
                     }
@@ -154,7 +154,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ManifestacaoOperacaoNaoRealizada:
                     descEvento = "Operacao nao Realizada";
-                    if(!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
+                    if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
                     }
@@ -162,7 +162,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ComprovanteEntregaNFe:
                     descEvento = "Comprovante de Entrega da NF-e";
-                    if(!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
+                    if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
                     }
@@ -170,14 +170,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.CancelamentoComprovanteEntregaNFe:
                     descEvento = "Cancelamento Comprovante de Entrega da NF-e";
-                    if(!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
+                    if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
                     }
                     goto case TipoEventoNFe.EPEC;
 
                 case TipoEventoNFe.EPEC:
-                    if(xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
+                    if (xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
                     {
                         throw new Exception("Conteúdo da tag <cOrgao> inválido. Para eventos de manifestação do destinatário o conteúdo da tag <cOrgao> deve igual a 91.");
                     }
@@ -198,7 +198,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 var retorno = new List<ProcEventoNFe>();
 
-                for(var i = 0; i < EnvEvento.Evento.Count; i++)
+                for (var i = 0; i < EnvEvento.Evento.Count; i++)
                 {
                     retorno.Add(new ProcEventoNFe
                     {
@@ -219,7 +219,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetEnvEvento>(RetornoWSXML);
                 }
@@ -240,16 +240,21 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Construtor
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public RecepcaoEvento(EnvEvento envEvento, Configuracao configuracao)
-            : base(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RecepcaoEvento(EnvEvento envEvento, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+        }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public RecepcaoEvento()
-        {
-        }
+        public RecepcaoEvento() : base() { }
 
         #endregion Public Constructors
 
@@ -265,7 +270,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(EnvEvento envEvento, Configuracao configuracao)
         {
-            PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
             Executar();
         }
 
@@ -274,7 +284,15 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(EnvEvento envEvento, Configuracao configuracao) => PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+        public void SetXMLConfiguracao(EnvEvento envEvento, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+        }
 
         /// <summary>
         /// Retorna o <see cref="ProcEventoNFe"/> pelo índice ou nulo, se não existir
@@ -302,7 +320,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         public void GravarXmlDistribuicao(string pasta)
         {
-            for(var i = 0; i < Result.RetEvento.Count; i++)
+            for (var i = 0; i < Result.RetEvento.Count; i++)
             {
                 GravarXmlDistribuicao(pasta, ProcEventoNFeResult[i].NomeArquivoDistribuicao, ProcEventoNFeResult[i].GerarXML().OuterXml);
             }
@@ -314,7 +332,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(Stream stream)
         {
-            for(var i = 0; i < Result.RetEvento.Count; i++)
+            for (var i = 0; i < Result.RetEvento.Count; i++)
             {
                 GravarXmlDistribuicao(stream, ProcEventoNFeResult[i].GerarXML().OuterXml);
             }

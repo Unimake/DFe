@@ -23,16 +23,13 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// Construtor
         /// </summary>
         /// <param name="consCad">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaCadastro(ConsCad consCad, Configuracao configuracao)
-            : base(consCad, configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaCadastro(ConsCad consCad, Configuracao configuracao) : base(consCad, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaCadastro()
-        {
-        }
+        public ConsultaCadastro() : base() { }
 
         #endregion Public Constructors
 

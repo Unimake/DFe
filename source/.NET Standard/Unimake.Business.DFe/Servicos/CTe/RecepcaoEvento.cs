@@ -26,13 +26,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
         #endregion Private Fields
 
-        #region Private Constructors
-
-        private RecepcaoEvento(XmlDocument conteudoXML, Configuracao configuracao)
-            : base(conteudoXML, configuracao) { }
-
-        #endregion Private Constructors
-
         #region Private Methods
 
         private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
@@ -162,16 +155,21 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Construtor
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public RecepcaoEvento(EventoCTe envEvento, Configuracao configuracao)
-            : this(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RecepcaoEvento(EventoCTe envEvento, Configuracao configuracao) : this() 
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+        }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public RecepcaoEvento()
-        {
-        }
+        public RecepcaoEvento() : base() { }
 
         #endregion Public Constructors
 
@@ -192,12 +190,12 @@ namespace Unimake.Business.DFe.Servicos.CTe
         [ComVisible(true)]
         public void Executar(EventoCTe envEvento, Configuracao configuracao)
         {
-            if (envEvento == null)
+            if (configuracao == null)
             {
-                throw new ArgumentNullException(nameof(envEvento));
+                throw new ArgumentNullException(nameof(configuracao));
             }
 
-            PrepararServico(envEvento.GerarXML(), configuracao);
+            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
 
             Executar();
         }
@@ -207,7 +205,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(EventoCTe envEvento, Configuracao configuracao) => PrepararServico(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+        public void SetXMLConfiguracao(EventoCTe envEvento, Configuracao configuracao)
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+        }
 
 #endif
 

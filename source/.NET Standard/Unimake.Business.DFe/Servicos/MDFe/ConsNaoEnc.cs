@@ -1,6 +1,7 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
@@ -68,16 +69,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsNaoEnc()
-            : base() { }
+        public ConsNaoEnc() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="consMDFeNaoEnc">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsNaoEnc(ConsMDFeNaoEnc consMDFeNaoEnc, Configuracao configuracao)
-            : base(consMDFeNaoEnc?.GerarXML() ?? throw new System.ArgumentNullException(nameof(consMDFeNaoEnc)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsNaoEnc(ConsMDFeNaoEnc consMDFeNaoEnc, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consMDFeNaoEnc?.GerarXML() ?? throw new ArgumentNullException(nameof(consMDFeNaoEnc)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -86,15 +93,20 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="consMDFeNaoEnc">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
         public void Executar(ConsMDFeNaoEnc consMDFeNaoEnc, Configuracao configuracao)
         {
-            PrepararServico(consMDFeNaoEnc?.GerarXML() ?? throw new System.ArgumentNullException(nameof(consMDFeNaoEnc)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consMDFeNaoEnc?.GerarXML() ?? throw new ArgumentNullException(nameof(consMDFeNaoEnc)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

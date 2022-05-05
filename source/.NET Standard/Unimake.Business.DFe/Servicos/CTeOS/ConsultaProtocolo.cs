@@ -1,9 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
-using Unimake.Business.DFe.Servicos.Interop;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Security.Exceptions;
 
@@ -17,7 +14,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
     [ProgId("Unimake.Business.DFe.Servicos.CTeOS.ConsultaProtocolo")]
     [ComVisible(true)]
 #endif
-    public class ConsultaProtocolo: CTe.ConsultaProtocolo
+    public class ConsultaProtocolo : CTe.ConsultaProtocolo
     {
         #region Public Constructors
 
@@ -25,16 +22,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// Construtor
         /// </summary>
         /// <param name="consSitNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaProtocolo(ConsSitCTe consSitNFe, Configuracao configuracao)
-            : base(consSitNFe, configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaProtocolo(ConsSitCTe consSitNFe, Configuracao configuracao) : base(consSitNFe, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaProtocolo()
-        {
-        }
+        public ConsultaProtocolo() : base() { }
 
         #endregion Public Constructors
 
@@ -46,7 +40,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.CTe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }

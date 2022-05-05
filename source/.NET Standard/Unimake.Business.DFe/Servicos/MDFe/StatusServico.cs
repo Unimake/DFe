@@ -1,6 +1,8 @@
 ﻿#if INTEROP
+using System;
 using System.Runtime.InteropServices;
 #endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
@@ -15,7 +17,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     [ProgId("Unimake.Business.DFe.Servicos.MDFe.StatusServico")]
     [ComVisible(true)]
 #endif
-    public class StatusServico: ServicoBase, IInteropService<ConsStatServMDFe>
+    public class StatusServico : ServicoBase, IInteropService<ConsStatServMDFe>
     {
         #region Protected Methods
 
@@ -27,7 +29,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             var xml = new ConsStatServMDFe();
             xml = xml.LerXML<ConsStatServMDFe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.MDFeStatusServico;
                 Configuracoes.TipoAmbiente = xml.TpAmb;
@@ -48,7 +50,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsStatServMDFe>(RetornoWSXML);
                 }
@@ -68,16 +70,22 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public StatusServico()
-            : base() { }
+        public StatusServico() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="consStatServMDFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public StatusServico(ConsStatServMDFe consStatServMDFe, Configuracao configuracao)
-            : base(consStatServMDFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(consStatServMDFe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public StatusServico(ConsStatServMDFe consStatServMDFe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consStatServMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServMDFe)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -92,9 +100,14 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
         public void Executar(ConsStatServMDFe consStatServMDFe, Configuracao configuracao)
         {
-            PrepararServico(consStatServMDFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(consStatServMDFe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consStatServMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServMDFe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     [ProgId("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")]
     [ComVisible(true)]
 #endif
-    public class ConsultaProtocolo: ServicoBase, IInteropService<ConsSitNFe>
+    public class ConsultaProtocolo : ServicoBase, IInteropService<ConsSitNFe>
     {
         #region Protected Methods
 
@@ -28,7 +28,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var xml = new ConsSitNFe();
             xml = xml.LerXML<ConsSitNFe>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeConsultaProtocolo;
                 Configuracoes.CodigoUF = Convert.ToInt32(xml.ChNFe.Substring(0, 2));
@@ -51,7 +51,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsSitNFe>(RetornoWSXML);
                 }
@@ -71,18 +71,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaProtocolo()
-            : base()
-        {
-        }
+        public ConsultaProtocolo() : base() { }
 
         /// <summary>
         /// Construtor
         /// </summary>
         /// <param name="consSitNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaProtocolo(ConsSitNFe consSitNFe, Configuracao configuracao)
-            : base(consSitNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaProtocolo(ConsSitNFe consSitNFe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consSitNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFe)), configuracao);
+        }
 
         #endregion Public Constructors
 
@@ -98,9 +102,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(ConsSitNFe consSitNFe, Configuracao configuracao)
         {
-            PrepararServico(consSitNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFe)), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consSitNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

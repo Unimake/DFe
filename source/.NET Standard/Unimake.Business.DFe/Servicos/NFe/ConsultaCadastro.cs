@@ -1,6 +1,8 @@
 ﻿#if INTEROP
+using System;
 using System.Runtime.InteropServices;
 #endif
+using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
@@ -15,7 +17,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
     [ProgId("Unimake.Business.DFe.Servicos.NFe.ConsultaCadastro")]
     [ComVisible(true)]
 #endif
-    public class ConsultaCadastro: ServicoBase, IInteropService<ConsCadBase>
+    public class ConsultaCadastro : ServicoBase, IInteropService<ConsCadBase>
     {
         #region Protected Methods
 
@@ -27,7 +29,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var xml = new ConsCad();
             xml = xml.LerXML<ConsCad>(ConteudoXML);
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.NFeConsultaCadastro;
                 Configuracoes.CodigoUF = (int)xml.InfCons.UF;
@@ -51,7 +53,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             get
             {
-                if(!string.IsNullOrWhiteSpace(RetornoWSString))
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
                     return XMLUtility.Deserializar<RetConsCad>(RetornoWSXML);
                 }
@@ -75,23 +77,28 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Construtor
         /// </summary>
         /// <param name="consCad">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public ConsultaCadastro(ConsCadBase consCad, Configuracao configuracao)
-                    : base(consCad.GerarXML(), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaCadastro(ConsCadBase consCad, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consCad?.GerarXML() ?? throw new ArgumentNullException(nameof(consCad)), configuracao);
+        }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public ConsultaCadastro()
-        {
-        }
+        public ConsultaCadastro() : base() { }
 
         #endregion Public Constructors
 
         #region Public Methods
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
 #if INTEROP
         [ComVisible(false)]
@@ -101,9 +108,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
             base.Executar();
 
             //Mato Grosso do Sul está retornando o XML da consulta cadastro fora do padrão, vou ter que intervir neste ponto para fazer a correção
-            if(Configuracoes.CodigoUF == (int)UFBrasil.MT)
+            if (Configuracoes.CodigoUF == (int)UFBrasil.MT)
             {
-                if(RetornoWSXML.GetElementsByTagName("retConsCad")[0] != null)
+                if (RetornoWSXML.GetElementsByTagName("retConsCad")[0] != null)
                 {
                     RetornoWSString = RetornoWSXML.GetElementsByTagName("retConsCad")[0].OuterXml;
                     RetornoWSXML.LoadXml(RetornoWSString);
@@ -121,9 +128,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(ConsCadBase consCad, Configuracao configuracao)
         {
-            PrepararServico(consCad.GerarXML(), configuracao);
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            Inicializar(consCad?.GerarXML() ?? throw new ArgumentNullException(nameof(consCad)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

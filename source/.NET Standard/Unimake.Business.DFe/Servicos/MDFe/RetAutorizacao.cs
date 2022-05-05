@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Xml;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
 
@@ -18,13 +17,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 #endif
     public class RetAutorizacao : ServicoBase
     {
-        #region Private Constructors
-
-        private RetAutorizacao(XmlDocument conteudoXML, Configuracao configuracao)
-                            : base(conteudoXML, configuracao) { }
-
-        #endregion Private Constructors
-
         #region Protected Methods
 
         /// <summary>
@@ -77,19 +69,21 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// Construtor
         /// </summary>
         /// <param name="consReciMDFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public RetAutorizacao(ConsReciMDFe consReciMDFe, Configuracao configuracao)
-            : this(consReciMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciMDFe)), configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RetAutorizacao(ConsReciMDFe consReciMDFe, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-#if INTEROP
+            Inicializar(consReciMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciMDFe)), configuracao);
+        }
+
         /// <summary>
         /// Inicia uma instância desta classe
         /// </summary>
-        public RetAutorizacao()
-        {
-        }
-
-#endif
+        public RetAutorizacao() : base() { }
 
         #endregion Public Constructors
 
@@ -110,9 +104,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            PrepararServico(consReciMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciMDFe)), configuracao);
+            Inicializar(consReciMDFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciMDFe)), configuracao);
             Executar();
-        } 
+        }
 
 #endif
 

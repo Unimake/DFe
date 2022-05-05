@@ -25,18 +25,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Construtor
         /// </summary>
-        protected ServicoBase()
-            : base()
-        {
-        }
-
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
-        /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        protected ServicoBase(XmlDocument conteudoXML, Configuracao configuracao)
-            : base(conteudoXML, configuracao) { }
+        protected ServicoBase() : base() { }
 
         #endregion Protected Constructors
 

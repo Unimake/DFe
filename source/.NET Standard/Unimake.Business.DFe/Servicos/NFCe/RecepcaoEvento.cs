@@ -1,7 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
 using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Servicos.NFCe
@@ -14,7 +13,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     [ProgId("Unimake.Business.DFe.Servicos.NFCe.RecepcaoEvento")]
     [ComVisible(true)]
 #endif
-    public class RecepcaoEvento: NFe.RecepcaoEvento
+    public class RecepcaoEvento : NFe.RecepcaoEvento
     {
         #region Public Constructors
 
@@ -22,16 +21,13 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// Construtor
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
-        public RecepcaoEvento(EnvEvento envEvento, Configuracao configuracao)
-                    : base(envEvento, configuracao) { }
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RecepcaoEvento(EnvEvento envEvento, Configuracao configuracao) : base(envEvento, configuracao) { }
 
         /// <summary>
         /// Construtor
         /// </summary>
-        public RecepcaoEvento()
-        {
-        }
+        public RecepcaoEvento() : base() { }
 
         #endregion Public Constructors
     }
