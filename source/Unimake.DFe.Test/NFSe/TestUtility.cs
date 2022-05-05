@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Diag = System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -21,7 +21,7 @@ namespace Unimake.DFe.Test.NFSe
             var pastaConfigNFSe = pastaConfigGeral + "\\NFSe";
             var arqConfigGeral = pastaConfigGeral + "\\Config.xml"; //Arquivo de configuração que contem os municípios implementados
 
-            Debug.Assert(File.Exists(arqConfigGeral), "Arquivo de configuração geral (" + arqConfigGeral + ") não foi localizado.");
+            Diag.Debug.Assert(File.Exists(arqConfigGeral), "Arquivo de configuração geral (" + arqConfigGeral + ") não foi localizado.");
 
             try
             {
@@ -75,7 +75,7 @@ namespace Unimake.DFe.Test.NFSe
             }
             catch(Exception ex)
             {
-                Debug.Assert(false, ex.Message, ex.StackTrace);
+                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
 
             return dados;
@@ -88,7 +88,7 @@ namespace Unimake.DFe.Test.NFSe
         /// <returns>Lista com dados das configurações da NFSe</returns>
         public static List<DadosConfigNFSe> BuscarDadosConfigNFSe(string arqConfigMunicipio, string servico)
         {
-            Debug.Assert(File.Exists(arqConfigMunicipio), "Arquivo " + arqConfigMunicipio + " não foi localizado.");
+            Diag.Debug.Assert(File.Exists(arqConfigMunicipio), "Arquivo " + arqConfigMunicipio + " não foi localizado.");
 
             var retornar = new List<DadosConfigNFSe>();
 

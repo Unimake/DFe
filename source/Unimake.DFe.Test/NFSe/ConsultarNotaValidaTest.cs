@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Diag = System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -31,7 +31,7 @@ namespace Unimake.DFe.Test.NFSe
             var nomeXMLEnvio = "ConsultarNotaValida-ped-loterps.xml";
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
 
-            Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
             try
             {
@@ -53,7 +53,7 @@ namespace Unimake.DFe.Test.NFSe
             }
             catch(Exception ex)
             {
-                Debug.Assert(false, "Falha na hora de consumir o serviço: " + nomeMunicipio + " - IBGE: " + codMunicipio + " - Padrão: " + padraoNFSe.ToString() + " - Versão schema: " + versaoSchema + "\r\nExceção: " + ex.Message, ex.StackTrace);
+                Diag.Debug.Assert(false, "Falha na hora de consumir o serviço: " + nomeMunicipio + " - IBGE: " + codMunicipio + " - Padrão: " + padraoNFSe.ToString() + " - Versão schema: " + versaoSchema + "\r\nExceção: " + ex.Message, ex.StackTrace);
             }
         }
     }

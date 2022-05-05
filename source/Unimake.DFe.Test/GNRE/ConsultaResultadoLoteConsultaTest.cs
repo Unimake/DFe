@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using Diag = System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -42,8 +42,8 @@ namespace Unimake.DFe.Test.GNRE
             var consultaResultadoLoteConsulta = new ConsultaResultadoLoteConsulta(xml, configuracao);
             consultaResultadoLoteConsulta.Executar();
 
-            Debug.Assert(consultaResultadoLoteConsulta.Result != null);
-            Debug.Assert(consultaResultadoLoteConsulta.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Diag.Debug.Assert(consultaResultadoLoteConsulta.Result != null);
+            Diag.Debug.Assert(consultaResultadoLoteConsulta.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
         }
     }
 }

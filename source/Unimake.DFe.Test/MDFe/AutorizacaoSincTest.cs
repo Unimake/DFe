@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.MDFe;
 using Unimake.Business.DFe.Xml.MDFe;
@@ -336,15 +336,15 @@ namespace Unimake.DFe.Test.MDFe
                 var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
                 autorizacaoSinc.Executar();
 
-                Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Debug.Assert(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Debug.Assert(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Debug.Assert(autorizacaoSinc.Result.CStat.Equals(744), "Falha no envio do MDFe - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+                Diag.Debug.Assert(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Diag.Debug.Assert(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                Diag.Debug.Assert(autorizacaoSinc.Result.CStat.Equals(744), "Falha no envio do MDFe - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
             }
             catch(Exception ex)
             {
-                Debug.Assert(false, ex.Message, ex.StackTrace);
+                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
         }
     }

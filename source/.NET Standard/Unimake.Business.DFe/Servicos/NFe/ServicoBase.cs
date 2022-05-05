@@ -112,7 +112,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="value">Conteúdo a ser gravado no stream</param>
         /// <param name="stream">Stream que vai receber o conteúdo do XML</param>
-        /// <param name="encoding">Define o encodingo do stream, caso não informado ,será usado o UTF8</param>
+        /// <param name="encoding">Define o encoding do stream, caso não informado ,será usado o UTF8</param>
 #if INTEROP
         [ComVisible(false)]
 #endif

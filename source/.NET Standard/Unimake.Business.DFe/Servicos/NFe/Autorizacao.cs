@@ -7,7 +7,6 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -368,30 +367,31 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 MudarConteudoTagRetornoXMotivo();
             }
+#if INTEROP
             catch (ValidarXMLException ex)
             {
-#if INTEROP
                 InteropException.SetException(ex);
-#endif
 
                 throw;
             }
             catch (CertificadoDigitalException ex)
             {
-#if INTEROP
                 InteropException.SetException(ex);
-#endif
 
                 throw;
             }
             catch (Exception ex)
             {
-#if INTEROP
                 InteropException.SetException(ex);
-#endif
 
                 throw;
             }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
         }
 
 #if INTEROP

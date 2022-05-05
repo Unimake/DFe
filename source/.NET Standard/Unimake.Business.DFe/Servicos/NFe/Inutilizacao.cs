@@ -1,12 +1,11 @@
 ﻿#if INTEROP
-using System;
 using System.Runtime.InteropServices;
+using Unimake.Security.Exceptions;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {

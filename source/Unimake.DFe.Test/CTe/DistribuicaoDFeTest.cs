@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
@@ -49,9 +49,9 @@ namespace Unimake.DFe.Test.CTe
                     var distribuicaoDFe = new DistribuicaoDFe(xml, configuracao);
                     distribuicaoDFe.Executar();
 
-                    Debug.Assert(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91-Ambiente Nacional.");
-                    Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                    Debug.Assert(distribuicaoDFe.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                    Diag.Debug.Assert(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91-Ambiente Nacional.");
+                    Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+                    Diag.Debug.Assert(distribuicaoDFe.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
 
                     if(distribuicaoDFe.Result.CStat.Equals(138)) //Documentos localizados
                     {
@@ -77,7 +77,7 @@ namespace Unimake.DFe.Test.CTe
             }
             catch(Exception ex)
             {
-                Debug.Assert(false, ex.Message, ex.StackTrace);
+                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
         }
     }

@@ -1,14 +1,10 @@
-﻿#if INTEROP
-using System.Runtime.InteropServices;
-#endif
-using System;
+﻿using System;
 
 namespace Unimake.Security.Exceptions
 {
     /// <summary>
     /// Classe de exceção quando o certificado digital não é localizado ou está com falha
     /// </summary>
-    [ComVisible(false)]
     public class CertificadoDigitalException : Exception
     {
         /// <summary>
@@ -22,7 +18,6 @@ namespace Unimake.Security.Exceptions
     /// <summary>
     /// Classe de exceção quando ocorre erros na validação dos XML
     /// </summary>
-    [ComVisible(false)]
     public class ValidarXMLException : Exception
     {
         /// <summary>

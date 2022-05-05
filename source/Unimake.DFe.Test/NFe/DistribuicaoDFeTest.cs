@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
 using Unimake.Business.DFe.Xml.NFe;
@@ -49,10 +49,10 @@ namespace Unimake.DFe.Test.NFe
                     var distribuicaoDFe = new DistribuicaoDFe(xml, configuracao);
                     distribuicaoDFe.Executar();
 
-                    Debug.Assert(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91-Ambiente Nacional." );
-                    Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                    Debug.Assert(distribuicaoDFe.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                    //Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação");
+                    Diag.Debug.Assert(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91-Ambiente Nacional." );
+                    Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+                    Diag.Debug.Assert(distribuicaoDFe.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                    //Diag.Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação");
 
                     if(distribuicaoDFe.Result.CStat.Equals(138)) //Documentos localizados
                     {
@@ -69,11 +69,11 @@ namespace Unimake.DFe.Test.NFe
 
                         foreach (var item in distribuicaoDFe.ResEventos)
                         {
-                            Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
+                            Diag.Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
                         }
                         foreach (var item in distribuicaoDFe.ResNFes)
                         {
-                            Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
+                            Diag.Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
                         }
                     }
 
@@ -87,7 +87,7 @@ namespace Unimake.DFe.Test.NFe
             }
             catch(Exception ex)
             {
-                Debug.Assert(false, ex.Message, ex.StackTrace);
+                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
         }
     }

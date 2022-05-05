@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using Diag = System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -23,7 +23,7 @@ namespace Unimake.DFe.Test.GNRE
 
         public void SerializacaoDeserializacao(string arqXML)
         {
-            Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -32,7 +32,7 @@ namespace Unimake.DFe.Test.GNRE
             var doc2 = xml.GerarXML();
 
 
-            Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Unimake.DFe.Test.GNRE
         [InlineData(@"..\..\..\GNRE\Resources\TConsLote_GNRE.xml")]
         public void SerializacaoDeserializacaoTConsLoteConsGNRE(string arqXML)
         {
-            Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -52,7 +52,7 @@ namespace Unimake.DFe.Test.GNRE
             var doc2 = xml.GerarXML();
 
 
-            Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }
 }

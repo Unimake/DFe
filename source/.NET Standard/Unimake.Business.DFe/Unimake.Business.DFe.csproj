@@ -44,6 +44,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Exceptions\Exceptions.cs~RF1e809dd.TMP" />
 		<None Remove="Servicos\Config\CTeOS\AC.xml" />
 		<None Remove="Servicos\Config\CTeOS\AL.xml" />
 		<None Remove="Servicos\Config\CTeOS\AM.xml" />

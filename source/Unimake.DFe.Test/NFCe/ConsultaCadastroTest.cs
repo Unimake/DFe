@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFCe;
 using Unimake.Business.DFe.Xml.NFe;
@@ -71,32 +71,32 @@ namespace Unimake.DFe.Test.NFCe
                 var consultaCadastro = new ConsultaCadastro(xml, configuracao);
                 consultaCadastro.Executar();
 
-                Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Debug.Assert(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+                Diag.Debug.Assert(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
 
                 switch(consultaCadastro.Result.InfCons.CStat)
                 {
                     case 259: // Rejeição: CNPJ da consulta não cadastrado como contribuinte na UF
-                        Debug.Assert(false, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
+                        Diag.Debug.Assert(false, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
                         break;
 
                     case 111: // Consulta cadastro com ocorrencia
-                        Debug.Assert(consultaCadastro.Result.InfCons.InfCad != null, "Objeto com o retorno do cadastro não foi retornado.");
+                        Diag.Debug.Assert(consultaCadastro.Result.InfCons.InfCad != null, "Objeto com o retorno do cadastro não foi retornado.");
                         break;
 
                     default:
                         if(ufBrasil != UFBrasil.MT) //MT está retornando problema de schema, não faz sentido, eles estão validando algo errado no webservice deles.
                         {
-                            Debug.Assert(false, "cStat: " + consultaCadastro.Result.InfCons.CStat + " - xMotivo: " + consultaCadastro.Result.InfCons.XMotivo);
+                            Diag.Debug.Assert(false, "cStat: " + consultaCadastro.Result.InfCons.CStat + " - xMotivo: " + consultaCadastro.Result.InfCons.XMotivo);
                         }
                         break;
                 }
 
-                //Debug.Assert(consultaCadastro.Result.InfCons.CNPJ.Equals(xml.InfCons.CNPJ), "Webservice retornou uma chave da NFCe diferente da enviada na consulta.");
+                //Diag.Debug.Assert(consultaCadastro.Result.InfCons.CNPJ.Equals(xml.InfCons.CNPJ), "Webservice retornou uma chave da NFCe diferente da enviada na consulta.");
             }
             catch(Exception ex)
             {
-                Debug.Assert(false, ex.Message, ex.StackTrace);
+                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
         }
     }

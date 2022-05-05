@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-#if INTEROP
+﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Security.Exceptions;
 #endif
+using System;
+using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -100,7 +100,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #if INTEROP
         [ComVisible(false)]
 #endif
-        public void Executar()
+        public override void Executar()
         {
             base.Executar();
 
