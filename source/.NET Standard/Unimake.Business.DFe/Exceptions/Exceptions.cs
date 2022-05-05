@@ -33,7 +33,6 @@ namespace Unimake.Security.Exceptions
     /// <summary>
     /// Classe para capturar dados da exception para disponibilizar a outras linguagens de programação, que não .NET, com tipos simples.
     /// </summary>
-    [ComVisible(false)]
     public class InteropException
     {
         /// <summary>

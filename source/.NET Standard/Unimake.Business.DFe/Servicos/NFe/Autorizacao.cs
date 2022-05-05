@@ -1,5 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Security.Exceptions;
 #endif
 using System;
 using System.Collections.Generic;
