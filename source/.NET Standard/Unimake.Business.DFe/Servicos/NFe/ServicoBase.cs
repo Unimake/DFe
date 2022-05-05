@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Text;
-using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Security.Exceptions;
 

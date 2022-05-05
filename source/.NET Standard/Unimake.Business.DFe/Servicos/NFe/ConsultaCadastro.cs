@@ -1,11 +1,11 @@
 ﻿#if INTEROP
-using System;
 using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -128,13 +128,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(ConsCadBase consCad, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(consCad?.GerarXML() ?? throw new ArgumentNullException(nameof(consCad)), configuracao);
-            Executar();
+                Inicializar(consCad?.GerarXML() ?? throw new ArgumentNullException(nameof(consCad)), configuracao);
+                Executar();
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
 #endif

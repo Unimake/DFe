@@ -6,6 +6,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -123,13 +124,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(InutNFe inutNFe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(inutNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutNFe)), configuracao);
-            Executar();
+                Inicializar(inutNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutNFe)), configuracao);
+                Executar();
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -139,12 +149,21 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao(InutNFe inutNFe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
+                Inicializar(inutNFe?.GerarXML() ?? throw new System.ArgumentNullException(nameof(inutNFe)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
 #endif

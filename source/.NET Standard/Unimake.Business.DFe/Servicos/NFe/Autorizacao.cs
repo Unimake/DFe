@@ -7,6 +7,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Security.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -361,19 +362,36 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         public override void Executar()
         {
-            if (!Configuracoes.Definida)
+            try
             {
-                if (EnviNFe == null)
-                {
-                    throw new NullReferenceException($"{nameof(EnviNFe)} não pode ser nulo.");
-                }
+                base.Executar();
 
-                DefinirConfiguracao();
+                MudarConteudoTagRetornoXMotivo();
             }
+            catch (ValidarXMLException ex)
+            {
+#if INTEROP
+                InteropException.SetException(ex);
+#endif
 
-            base.Executar();
+                throw;
+            }
+            catch (CertificadoDigitalException ex)
+            {
+#if INTEROP
+                InteropException.SetException(ex);
+#endif
 
-            MudarConteudoTagRetornoXMotivo();
+                throw;
+            }
+            catch (Exception ex)
+            {
+#if INTEROP
+                InteropException.SetException(ex);
+#endif
+
+                throw;
+            }
         }
 
 #if INTEROP
@@ -385,9 +403,18 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         public void Executar(EnviNFe enviNFe, Configuracao configuracao)
         {
-            Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+            try
+            {
+                Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
 
-            Executar();
+                Executar();
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -395,7 +422,24 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(EnviNFe enviNFe, Configuracao configuracao) => Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+        public void SetXMLConfiguracao(EnviNFe enviNFe, Configuracao configuracao)
+        {
+            try
+            {
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
+
+                Inicializar(enviNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviNFe)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
+        }
 
 #endif
 

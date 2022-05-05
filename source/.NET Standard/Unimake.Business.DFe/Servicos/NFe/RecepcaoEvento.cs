@@ -270,13 +270,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(EnvEvento envEvento, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
-            Executar();
+                Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+                Executar();
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -286,12 +295,21 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao(EnvEvento envEvento, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+                Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
         /// <summary>

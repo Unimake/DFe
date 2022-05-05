@@ -1392,7 +1392,8 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.0" />
 		<PackageReference Include="Unimake.Cryptography" Version="20220427.1430.58" />
-		<PackageReference Include="Unimake.Utils" Version="20220427.1430.58" />
+		<PackageReference Include="Unimake.Extensions" Version="20220427.1430.58" />
+		<PackageReference Include="Unimake.Utils" Version="20220505.1556.59" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

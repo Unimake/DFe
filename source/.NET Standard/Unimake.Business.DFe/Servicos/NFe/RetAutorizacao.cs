@@ -157,11 +157,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public override void Executar()
         {
-            if (!Configuracoes.Definida)
-            {
-                DefinirConfiguracao();
-            }
-
             base.Executar();
 
             MudarConteudoTagRetornoXMotivo();
@@ -177,13 +172,22 @@ namespace Unimake.Business.DFe.Servicos.NFe
         [ComVisible(true)]
         public void Executar(ConsReciNFe consReciNFe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(consReciNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciNFe)), configuracao);
-            Executar();
+                Inicializar(consReciNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consReciNFe)), configuracao);
+                Executar();
+            }
+            catch (Exception ex)
+            {
+                InteropException.SetException(ex);
+
+                throw;
+            }
         }
 
 #endif
