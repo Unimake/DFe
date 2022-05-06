@@ -10,7 +10,7 @@ using Unimake.Business.DFe.Xml.NFe;
 namespace Unimake.Business.DFe.Servicos.NFe
 {
     /// <summary>
-    /// Enviar o XML de consulta recibo do lote de NFe para o webservice
+    /// Enviar o XML de consulta recibo do lote de NFe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -102,7 +102,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         #region Public Properties
 
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetConsReciNFe Result
         {
@@ -165,10 +165,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="consReciNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
         public void Executar(ConsReciNFe consReciNFe, Configuracao configuracao)
         {

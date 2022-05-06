@@ -7,7 +7,7 @@ using Unimake.Security.Exceptions;
 namespace Unimake.Business.DFe.Servicos.NFCe
 {
     /// <summary>
-    /// Enviar o XML de consulta protocolo da NFCe para o webservice
+    /// Enviar o XML de consulta protocolo da NFCe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// Construtor
         /// </summary>
         /// <param name="consSitNFe">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public ConsultaProtocolo(ConsSitNFe consSitNFe, Configuracao configuracao) : base(consSitNFe, configuracao) { }
 
         /// <summary>

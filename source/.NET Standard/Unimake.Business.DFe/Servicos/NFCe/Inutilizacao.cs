@@ -7,7 +7,7 @@ using Unimake.Security.Exceptions;
 namespace Unimake.Business.DFe.Servicos.NFCe
 {
     /// <summary>
-    /// Enviar o XML de inutilização de NFCe para o webservice
+    /// Enviar o XML de inutilização de NFCe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

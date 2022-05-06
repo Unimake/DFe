@@ -12,7 +12,7 @@ using Unimake.Business.DFe.Xml.NFe;
 namespace Unimake.Business.DFe.Servicos.NFe
 {
     /// <summary>
-    /// Enviar o XML de NFe para o webservice
+    /// Enviar o XML de NFe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

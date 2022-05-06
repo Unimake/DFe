@@ -6,7 +6,7 @@ using Unimake.Business.DFe.Xml.NFe;
 namespace Unimake.Business.DFe.Servicos.NFCe
 {
     /// <summary>
-    /// Enviar o XML de eventos da NFCe para o webservice
+    /// Enviar o XML de eventos da NFCe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

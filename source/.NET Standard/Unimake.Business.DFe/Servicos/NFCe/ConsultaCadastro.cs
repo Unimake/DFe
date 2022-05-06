@@ -8,7 +8,7 @@ using Unimake.Security.Exceptions;
 namespace Unimake.Business.DFe.Servicos.NFCe
 {
     /// <summary>
-    /// Enviar o XML de consulta cadastro do contribuinte para o webservice
+    /// Enviar o XML de consulta cadastro do contribuinte para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

@@ -13,7 +13,7 @@ using Unimake.Security.Exceptions;
 namespace Unimake.Business.DFe.Servicos.NFe
 {
     /// <summary>
-    /// Enviar o XML de eventos da NFe para o webservice
+    /// Enviar o XML de eventos da NFe para o web-service
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -213,7 +213,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         }
 
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetEnvEvento Result
         {
@@ -263,10 +263,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #if INTEROP
 
         /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
         /// <param name="envEvento">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o webservice</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
         public void Executar(EnvEvento envEvento, Configuracao configuracao)
         {
