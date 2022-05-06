@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Unimake.Security.Exceptions
+namespace Unimake.Exceptions
 {
     /// <summary>
     /// Classe de exceção quando o certificado digital não é localizado ou está com falha
@@ -33,18 +33,23 @@ namespace Unimake.Security.Exceptions
     /// <summary>
     /// Classe para capturar dados da exception para disponibilizar a outras linguagens de programação, que não .NET, com tipos simples.
     /// </summary>
-    public class InteropException
+    public class ThrowHelper
     {
         /// <summary>
         /// Mensagem da exceção gerada
         /// </summary>
-        public string Message { get; private set; }
+        public static string Message { get; set; }
 
         /// <summary>
         /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade
         /// </summary>
         /// <param name="ex">Exception</param>
-        public void SetException(Exception ex) => Message = ex.GetLastException().Message;
+        public static void Throw(Exception ex) => Message = ex.GetLastException().Message;
+
+        /// <summary>
+        /// Recuperar o conteúdo da mensagem de exceção
+        /// </summary>
+        public string GetMessage() => ThrowHelper.Message;
     }
 
 #endif

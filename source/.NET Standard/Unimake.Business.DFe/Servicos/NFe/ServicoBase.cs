@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Text;
 using Unimake.Business.DFe.Security;
-using Unimake.Security.Exceptions;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {

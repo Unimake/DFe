@@ -6,7 +6,7 @@ using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
-using Unimake.Security.Exceptions;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -177,18 +177,9 @@ namespace Unimake.Business.DFe.Servicos
         public string RetornoWSString { get; set; }
 
         /// <summary>
-        /// XML retornado pelo Webservice
+        /// XML retornado pelo Web-service
         /// </summary>
         public XmlDocument RetornoWSXML { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Classe para retorno de exceptions para outras linguagens de programação que não são .NET
-        /// </summary>
-        public InteropException InteropException { get; protected set; }
-
-#endif
 
         #endregion Public Properties
 
@@ -201,7 +192,7 @@ namespace Unimake.Business.DFe.Servicos
         #region Public Methods
 
         /// <summary>
-        /// Executar o serviço para consumir o webservice
+        /// Executar o serviço para consumir o web-service
         /// </summary>
         public virtual void Executar()
         {

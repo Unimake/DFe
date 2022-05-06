@@ -8,7 +8,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Security.Exceptions;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -282,7 +282,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }
@@ -306,7 +306,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }

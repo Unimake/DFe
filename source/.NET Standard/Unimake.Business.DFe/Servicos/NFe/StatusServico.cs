@@ -1,10 +1,12 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Exceptions;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
+
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -114,7 +116,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }

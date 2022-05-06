@@ -1,6 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
-using Unimake.Security.Exceptions;
+using Unimake.Exceptions;
 #endif
 using System;
 using System.Collections.Generic;
@@ -371,19 +371,19 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #if INTEROP
             catch (ValidarXMLException ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }
             catch (CertificadoDigitalException ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }
             catch (Exception ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }
@@ -412,7 +412,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }
@@ -436,7 +436,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                InteropException.SetException(ex);
+                ThrowHelper.Throw(ex);
 
                 throw;
             }

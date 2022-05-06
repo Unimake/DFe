@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.MDFe;
-using Unimake.Security.Exceptions;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.MDFe
 {
