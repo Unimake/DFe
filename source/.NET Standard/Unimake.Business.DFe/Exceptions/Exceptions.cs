@@ -27,40 +27,4 @@ namespace Unimake.Exceptions
         public ValidarXMLException(string message)
             : base(message) { }
     }
-
-#if INTEROP
-
-    /// <summary>
-    /// Classe para capturar dados da exception para disponibilizar a outras linguagens de programação, que não .NET, com tipos simples.
-    /// </summary>
-    public class ThrowHelper
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public static ThrowHelper Instance => _instance ?? (_instance = new ThrowHelper());
-
-        /// <summary>
-        /// 
-        /// </summary>
-        static ThrowHelper _instance;
-
-        /// <summary>
-        /// Mensagem da exceção gerada
-        /// </summary>
-        public string Message { get; private set; }
-
-        /// <summary>
-        /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade
-        /// </summary>
-        /// <param name="ex">Exception</param>
-        public void Throw(Exception ex) => Instance.Message = ex.GetLastException().Message;
-
-        /// <summary>
-        /// Recuperar o conteúdo da mensagem de exceção
-        /// </summary>
-        public string GetMessage() => Instance.Message;
-    }
-
-#endif
 }
