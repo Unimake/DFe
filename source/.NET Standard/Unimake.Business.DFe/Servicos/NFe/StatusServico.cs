@@ -111,12 +111,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
+                throw new Exception("Exceção gerada para teste pelo Wandrey");
+
                 Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
                 Executar();
             }
             catch (Exception ex)
             {
-                ThrowHelper.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
 
                 throw;
             }

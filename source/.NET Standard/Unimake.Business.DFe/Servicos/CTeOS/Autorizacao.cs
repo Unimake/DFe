@@ -274,6 +274,9 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public override void Executar()
         {
             if (!Configuracoes.Definida)

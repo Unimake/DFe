@@ -282,7 +282,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
 
                 throw;
             }
@@ -306,7 +306,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
 
                 throw;
             }

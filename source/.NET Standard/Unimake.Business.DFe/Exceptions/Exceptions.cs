@@ -36,20 +36,30 @@ namespace Unimake.Exceptions
     public class ThrowHelper
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public static ThrowHelper Instance => _instance ?? (_instance = new ThrowHelper());
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static ThrowHelper _instance;
+
+        /// <summary>
         /// Mensagem da exceção gerada
         /// </summary>
-        public static string Message { get; set; }
+        public string Message { get; private set; }
 
         /// <summary>
         /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade
         /// </summary>
         /// <param name="ex">Exception</param>
-        public static void Throw(Exception ex) => Message = ex.GetLastException().Message;
+        public void Throw(Exception ex) => Instance.Message = ex.GetLastException().Message;
 
         /// <summary>
         /// Recuperar o conteúdo da mensagem de exceção
         /// </summary>
-        public string GetMessage() => ThrowHelper.Message;
+        public string GetMessage() => Instance.Message;
     }
 
 #endif

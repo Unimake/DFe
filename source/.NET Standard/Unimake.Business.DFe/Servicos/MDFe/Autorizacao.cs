@@ -314,6 +314,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public override void Executar()
         {
             if (!Configuracoes.Definida)

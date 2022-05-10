@@ -194,6 +194,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Executar o serviço para consumir o web-service
         /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public virtual void Executar()
         {
             if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))

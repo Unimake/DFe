@@ -360,39 +360,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <summary>
         /// Executar o serviço
         /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public override void Executar()
         {
-            try
-            {
-                base.Executar();
+            base.Executar();
 
-                MudarConteudoTagRetornoXMotivo();
-            }
-#if INTEROP
-            catch (ValidarXMLException ex)
-            {
-                ThrowHelper.Throw(ex);
-
-                throw;
-            }
-            catch (CertificadoDigitalException ex)
-            {
-                ThrowHelper.Throw(ex);
-
-                throw;
-            }
-            catch (Exception ex)
-            {
-                ThrowHelper.Throw(ex);
-
-                throw;
-            }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
+            MudarConteudoTagRetornoXMotivo();
         }
 
 #if INTEROP
@@ -412,7 +387,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
 
                 throw;
             }
@@ -436,7 +411,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
 
                 throw;
             }
