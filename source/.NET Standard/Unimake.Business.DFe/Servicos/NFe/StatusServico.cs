@@ -111,7 +111,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                throw new Exception("Exceção gerada para teste pelo Wandrey");
+                //throw new Exception("Exceção gerada para teste pelo Wandrey");
 
                 Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
                 Executar();
@@ -127,7 +127,25 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
 
         /// <inheritdoc />
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new System.Exception("Não existe XML de distribuição para consulta status do serviço.");
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
+        {
+            try
+            {
+                throw new Exception("Não existe XML de distribuição para consulta status do serviço.");
+            }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
+        }
 
         #endregion Public Methods
     }

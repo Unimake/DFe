@@ -428,17 +428,32 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public void GravarXmlDistribuicao(string pasta)
         {
-            foreach (var item in NfeProcResults)
+            try
             {
-                if (item.Value.ProtNFe != null)
+                foreach (var item in NfeProcResults)
                 {
-                    GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
-                }
-                else
-                {
-                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    if (item.Value.ProtNFe != null)
+                    {
+                        GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    }
                 }
             }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
         }
 
         /// <summary>
@@ -450,17 +465,32 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
-            foreach (var item in NfeProcResults)
+            try
             {
-                if (item.Value.ProtNFe != null)
+                foreach (var item in NfeProcResults)
                 {
-                    GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
-                }
-                else
-                {
-                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    if (item.Value.ProtNFe != null)
+                    {
+                        GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    }
                 }
             }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
         }
 
         #endregion Public Methods

@@ -1,5 +1,4 @@
 ﻿#if INTEROP
-using System;
 using System.Runtime.InteropServices;
 #endif
 using System;

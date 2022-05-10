@@ -165,7 +165,25 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         /// <param name="conteudoXML">Conteúdo do XML</param>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Este método não está disponível para consulta de documentos fiscais eletrônicos destinados. Utilize o GravarXMLDocZIP(string folder, bool saveXMLResumo).");
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
+        {
+            try
+            {
+                throw new Exception("Este método não está disponível para consulta de documentos fiscais eletrônicos destinados. Utilize o GravarXMLDocZIP(string folder, bool saveXMLResumo).");
+            }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
+        }
 
         /// <summary>
         /// Gravar os XML contidos no DocZIP da consulta em uma pasta no HD
@@ -174,43 +192,58 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="saveXMLResumo">Salvar os arquivos de resumo da NFe e Eventos da NFe?</param>
         public void GravarXMLDocZIP(string folder, bool saveXMLResumo)
         {
-            foreach (var item in Result.LoteDistDFeInt.DocZip)
+            try
             {
-                var save = true;
-                var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
-                var nomeArquivo = string.Empty;
+                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                {
+                    var save = true;
+                    var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
+                    var nomeArquivo = string.Empty;
 
-                var docXML = new XmlDocument();
-                docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
+                    var docXML = new XmlDocument();
+                    docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
 
-                if (item.Schema.StartsWith("resEvento"))
-                {
-                    nomeArquivo = item.NSU + "-resEvento.xml";
-                    save = saveXMLResumo;
-                }
-                else if (item.Schema.StartsWith("procEventoNFe"))
-                {
-                    var chNFe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "chNFe");
-                    var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
-                    var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
-                    nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
-                }
-                else if (item.Schema.StartsWith("procNFe"))
-                {
-                    var chave = ((XmlElement)docXML.GetElementsByTagName("infNFe")[0]).GetAttribute("Id").Substring(3, 44);
-                    nomeArquivo = chave + "-procNFe.xml";
-                }
-                else if (item.Schema.StartsWith("resNFe"))
-                {
-                    nomeArquivo = item.NSU + "-resNFe.xml";
-                    save = saveXMLResumo;
-                }
+                    if (item.Schema.StartsWith("resEvento"))
+                    {
+                        nomeArquivo = item.NSU + "-resEvento.xml";
+                        save = saveXMLResumo;
+                    }
+                    else if (item.Schema.StartsWith("procEventoNFe"))
+                    {
+                        var chNFe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "chNFe");
+                        var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
+                        var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
+                        nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
+                    }
+                    else if (item.Schema.StartsWith("procNFe"))
+                    {
+                        var chave = ((XmlElement)docXML.GetElementsByTagName("infNFe")[0]).GetAttribute("Id").Substring(3, 44);
+                        nomeArquivo = chave + "-procNFe.xml";
+                    }
+                    else if (item.Schema.StartsWith("resNFe"))
+                    {
+                        nomeArquivo = item.NSU + "-resNFe.xml";
+                        save = saveXMLResumo;
+                    }
 
-                if (save && !string.IsNullOrEmpty(nomeArquivo))
-                {
-                    base.GravarXmlDistribuicao(folder, nomeArquivo, conteudoXML);
+                    if (save && !string.IsNullOrEmpty(nomeArquivo))
+                    {
+                        base.GravarXmlDistribuicao(folder, nomeArquivo, conteudoXML);
+                    }
                 }
             }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
         }
 
         /// <summary>

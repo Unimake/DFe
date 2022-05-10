@@ -378,3 +378,7 @@ MigrationBackup/
 /source/Unimake.DFe/Interop/xharbour/Menu.ppo
 /source/Unimake.DFe/Interop/xharbour/TesteDiversoCertificado.ppo
 /source/Unimake.DFe/Interop/xharbour/TesteDiversoCertificado.c
+*.c
+*.ppo
+*.MAP
+*.exe

@@ -171,13 +171,49 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Gravar o XML de distribuição em uma pasta no HD
         /// </summary>
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
-        public void GravarXmlDistribuicao(string pasta) => GravarXmlDistribuicao(pasta, ProcInutNFeResult.NomeArquivoDistribuicao, ProcInutNFeResult.GerarXML().OuterXml);
+        public void GravarXmlDistribuicao(string pasta)
+        {
+            try
+            {
+                GravarXmlDistribuicao(pasta, ProcInutNFeResult.NomeArquivoDistribuicao, ProcInutNFeResult.GerarXML().OuterXml);
+            }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
+        }
 
         /// <summary>
-        /// Grava o XML de dsitribuição no stream
+        /// Grava o XML de distribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
-        public void GravarXmlDistribuicao(System.IO.Stream stream) => GravarXmlDistribuicao(stream, ProcInutNFeResult.GerarXML().OuterXml);
+        public void GravarXmlDistribuicao(System.IO.Stream stream)
+        {
+            try
+            {
+                GravarXmlDistribuicao(stream, ProcInutNFeResult.GerarXML().OuterXml);
+            }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
+        }
 
         #endregion Public Methods
     }

@@ -119,9 +119,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #if INTEROP
         [ComVisible(false)]
 #endif
-        public virtual void GravarXmlDistribuicao(Stream stream,
-                                                  string value,
-                                                  Encoding encoding = null)
+        public virtual void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null)
         {
             if (stream is null)
             {

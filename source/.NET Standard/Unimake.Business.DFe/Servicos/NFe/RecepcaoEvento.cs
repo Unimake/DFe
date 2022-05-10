@@ -338,10 +338,25 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         public void GravarXmlDistribuicao(string pasta)
         {
-            for (var i = 0; i < Result.RetEvento.Count; i++)
+            try
             {
-                GravarXmlDistribuicao(pasta, ProcEventoNFeResult[i].NomeArquivoDistribuicao, ProcEventoNFeResult[i].GerarXML().OuterXml);
+                for (var i = 0; i < Result.RetEvento.Count; i++)
+                {
+                    GravarXmlDistribuicao(pasta, ProcEventoNFeResult[i].NomeArquivoDistribuicao, ProcEventoNFeResult[i].GerarXML().OuterXml);
+                }
             }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
         }
 
         /// <summary>
@@ -350,10 +365,25 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(Stream stream)
         {
-            for (var i = 0; i < Result.RetEvento.Count; i++)
+            try
             {
-                GravarXmlDistribuicao(stream, ProcEventoNFeResult[i].GerarXML().OuterXml);
+                for (var i = 0; i < Result.RetEvento.Count; i++)
+                {
+                    GravarXmlDistribuicao(stream, ProcEventoNFeResult[i].GerarXML().OuterXml);
+                }
             }
+#if INTEROP
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+                throw;
+            }
+#else
+            catch
+            {
+                throw;
+            }
+#endif
         }
 
         #endregion Public Methods
