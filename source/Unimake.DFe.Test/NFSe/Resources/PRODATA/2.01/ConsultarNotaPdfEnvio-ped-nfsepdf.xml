@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ConsultarNotaPdfEnvio>
+	<IdentificacaoNfse>
+		<Numero>32192</Numero>
+	</IdentificacaoNfse>
+	<Prestador>
+		<Cnpj>99999999999</Cnpj>
+		<InscricaoMunicipal>11111111</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNotaPdfEnvio>
