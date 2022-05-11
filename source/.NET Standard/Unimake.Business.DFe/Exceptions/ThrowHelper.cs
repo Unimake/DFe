@@ -36,7 +36,7 @@ namespace Unimake.Exceptions
         /// <summary>
         /// Recuperar o conteúdo da mensagem de exceção
         /// </summary>
-        public string GetMessage() => Instance.Message;
+        public string GetMessage() => Instance.Message ?? "";
 
         /// <summary>
         /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade

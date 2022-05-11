@@ -3,7 +3,8 @@
     "Unimake.Business.DFe": {
       "commandName": "Executable",
       "executablePath": "C:\\Windows\\System32\\cscript.exe",
-      "commandLineArgs": "/X \"C:\\projetos\\github\\Unimake.DFe\\source\\Unimake.DFe\\Interop\\VBS\\ConsultarStatusNFe.vbs\"",
+      "commandLineArgs": "/X \"..\\..\\..\\source\\Unimake.DFe\\Interop\\VBS\\ConsultarStatusNFe.vbs\"",
+      "workingDirectory": ".",
       "nativeDebugging": false
     }
   }

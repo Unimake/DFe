@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
 		<AssemblyVersion>2022.05.06.1202</AssemblyVersion>
 		<FileVersion>2022.05.06.1202</FileVersion>
@@ -1417,7 +1418,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="$(SolutionDir)Build_INTEROP.bat $(TargetPath) $(SolutionDir)" IgnoreExitCode="true" />
+	  <Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir)" IgnoreExitCode="true" />
 	</Target>
 
 </Project>
