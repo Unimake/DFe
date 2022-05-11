@@ -813,6 +813,20 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public string MunicipioSenha { get; set; }
 
+        private int _TimeOutWebServiceConnect;
+
+        /// <summary>
+        /// Tempo, em mile segundos, para aguardar resposta dos WebServices. (default = 60000)
+        /// </summary>
+        public int TimeOutWebServiceConnect
+        {
+            get
+            {
+                return _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
+            }
+            set => _TimeOutWebServiceConnect = value;
+        }
+
         #endregion Public Properties
 
         #region Public Methods

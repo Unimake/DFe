@@ -218,6 +218,7 @@ namespace Unimake.Business.DFe.Servicos
                 VersaoSoap = Configuracoes.WebSoapVersion,
                 SoapString = Configuracoes.WebSoapString,
                 ContentType = Configuracoes.WebContentType,
+                TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
                 Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                         Configuracoes.ProxyUser,
                                                                         Configuracoes.ProxyPassword) : null)

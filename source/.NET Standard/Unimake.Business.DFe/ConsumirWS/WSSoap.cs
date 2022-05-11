@@ -18,6 +18,7 @@ namespace Unimake.Business.DFe
         private string _VersaoSoap;
         private bool _GZIPCompress;
         private IWebProxy _Proxy;
+        private int _TimeOutWebServiceConnect;
 
         #endregion Private Fields
 
@@ -102,6 +103,18 @@ namespace Unimake.Business.DFe
         {
             get => _GZIPCompress;
             set => _GZIPCompress = value;
+        }
+
+        /// <summary>
+        /// Tempo, em mile segundos, para aguardar resposta dos WebServices. (default = 60000)
+        /// </summary>
+        public int TimeOutWebServiceConnect 
+        { 
+            get
+            {
+                return _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
+            }
+            set => _TimeOutWebServiceConnect = value;
         }
 
         #endregion Public Properties

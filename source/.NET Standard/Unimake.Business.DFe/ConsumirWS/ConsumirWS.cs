@@ -100,7 +100,7 @@ namespace Unimake.Business.DFe
             var httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(urlpost);
             httpWebRequest.Headers.Add("SOAPAction: " + soap.ActionWeb);
             httpWebRequest.CookieContainer = cookies;
-            httpWebRequest.Timeout = 60000;
+            httpWebRequest.Timeout = soap.TimeOutWebServiceConnect;
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
             httpWebRequest.ClientCertificates.Add(certificado);
