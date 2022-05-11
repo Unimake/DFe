@@ -25,30 +25,35 @@ Function ConsultaStatusNfe()
    consStatServ:TpAmb  = 2 // Homologação
    consStatServ:CUF    = 41 // PR
 
+   //Criar objeto para pegar exceção do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
-   ? "Exceção do CSHARP: ", oExceptionInterop:GetMessage()
-   wait
 
    Try
     * Consumir o serviço
       statusServico = CreateObject("Unimake.Business.DFe.Servicos.NFe.StatusServico")
       statusServico:Executar(consStatServ, InicializarConfiguracao)
+
+      ? "XML Retornado pela SEFAZ"
+      ? "========================"
+      ? statusServico:RetornoWSString
+      ?
+      ? "Codigo de Status e Motivo"
+      ? "========================="
+      ? AllTrim(Str(statusServico:Result:CStat,5)),statusServico:Result:XMotivo
+      ?
+
    Catch oErro
 	  ? "ERRO"
 	  ? "===="
-	  ? "Falha ao tentar consultar o status do serviço."
+	  ? "Falha ao tentar consultar o status do servico."
       ? oErro:Description
       ? oErro:Operation
-      ? "Exceção do CSHARP: ", oExceptionInterop:GetMessage()
+	  
+	  //Demonstrar a exceção do CSHARP
+	  ?
+      ? "Excecao do CSHARP: ", oExceptionInterop:GetMessage()
+      ?
    End	  
 
-   ? "XML Retornado pela SEFAZ"
-   ? "========================"
-   ? statusServico:RetornoWSString
-   ?
-   ? "Codigo de Status e Motivo"
-   ? "========================="
-   ? AllTrim(Str(statusServico:Result:CStat,5)),statusServico:Result:XMotivo
-   ?
    Wait
 Return

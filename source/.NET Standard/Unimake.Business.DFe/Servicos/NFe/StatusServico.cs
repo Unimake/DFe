@@ -1,6 +1,5 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
-using Unimake.Exceptions;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
@@ -111,14 +110,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                throw new Exception("Exceção gerada para teste pelo Wandrey");
-
                 Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
                 Executar();
             }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);                
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
