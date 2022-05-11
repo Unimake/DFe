@@ -32,14 +32,14 @@ Function ConsultaStatusNfe()
    Try
     * Consumir o serviço
       statusServico = CreateObject("Unimake.Business.DFe.Servicos.NFe.StatusServico")
-      statusServico:Executar(consStatServ,InicializarConfiguracao)
+      statusServico:Executar(consStatServ, InicializarConfiguracao)
    Catch oErro
 	  ? "ERRO"
 	  ? "===="
-	  ? "Nao foi possivel gravar o XML de distribuicao, pois nao foi localizado o protocolo de autorizacao (NOTA NAO FOI AUTORIZADA)"
+	  ? "Falha ao tentar consultar o status do serviço."
       ? oErro:Description
       ? oErro:Operation
-      ? "Exceção do CSHARP: " + oExceptionInterop:GetMessage()
+      ? "Exceção do CSHARP: ", oExceptionInterop:GetMessage()
    End	  
 
    ? "XML Retornado pela SEFAZ"

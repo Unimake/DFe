@@ -140,9 +140,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -160,18 +158,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 throw new Exception("Não existe XML de distribuição para consulta cadastro do contribuinte.");
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         #endregion Public Methods

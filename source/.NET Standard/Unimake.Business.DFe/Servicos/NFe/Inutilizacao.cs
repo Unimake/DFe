@@ -135,9 +135,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -159,9 +157,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -177,18 +173,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 GravarXmlDistribuicao(pasta, ProcInutNFeResult.NomeArquivoDistribuicao, ProcInutNFeResult.GerarXML().OuterXml);
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         /// <summary>
@@ -201,18 +189,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 GravarXmlDistribuicao(stream, ProcInutNFeResult.GerarXML().OuterXml);
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         #endregion Public Methods

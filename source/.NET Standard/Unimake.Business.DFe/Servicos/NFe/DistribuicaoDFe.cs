@@ -151,9 +151,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -171,18 +169,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 throw new Exception("Este método não está disponível para consulta de documentos fiscais eletrônicos destinados. Utilize o GravarXMLDocZIP(string folder, bool saveXMLResumo).");
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         /// <summary>
@@ -232,18 +222,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     }
                 }
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         /// <summary>

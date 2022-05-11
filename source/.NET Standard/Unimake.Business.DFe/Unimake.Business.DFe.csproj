@@ -12,7 +12,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\Unimake.DFe\Compilacao\</OutputPath>
-		<DefineConstants>TRACE;DEBUG</DefineConstants>
+		<DefineConstants>TRACE;DEBUG;INTEROP</DefineConstants>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Unimake.Business.DFe.xml</DocumentationFile>
 	</PropertyGroup>
@@ -1399,6 +1399,21 @@
 		<PackageReference Include="Unimake.Cryptography" Version="20220427.1430.58" />
 		<PackageReference Include="Unimake.Extensions" Version="20220427.1430.58" />
 		<PackageReference Include="Unimake.Utils" Version="20220505.1556.59" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

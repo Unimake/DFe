@@ -13,9 +13,6 @@ namespace Unimake.Exceptions
     {
         #region Private Fields
 
-        /// <summary>
-        ///
-        /// </summary>
         private static ThrowHelper _instance;
 
         #endregion Private Fields
@@ -23,7 +20,7 @@ namespace Unimake.Exceptions
         #region Public Properties
 
         /// <summary>
-        ///
+        /// Instancia estática da ThrowHelper para receber a mensagem original da exceção
         /// </summary>
         public static ThrowHelper Instance => _instance ?? (_instance = new ThrowHelper());
 

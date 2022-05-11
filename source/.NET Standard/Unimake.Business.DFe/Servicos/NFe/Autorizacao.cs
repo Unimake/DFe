@@ -387,7 +387,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -409,9 +409,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -440,18 +438,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     }
                 }
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         /// <summary>
@@ -477,18 +467,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     }
                 }
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         #endregion Public Methods

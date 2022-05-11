@@ -282,9 +282,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -306,9 +304,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -345,22 +341,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     GravarXmlDistribuicao(pasta, ProcEventoNFeResult[i].NomeArquivoDistribuicao, ProcEventoNFeResult[i].GerarXML().OuterXml);
                 }
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         /// <summary>
-        /// Grava o XML de dsitribuição no stream
+        /// Grava o XML de distribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(Stream stream)
@@ -372,18 +360,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     GravarXmlDistribuicao(stream, ProcEventoNFeResult[i].GerarXML().OuterXml);
                 }
             }
-#if INTEROP
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
-                throw;
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
-#else
-            catch
-            {
-                throw;
-            }
-#endif
         }
 
         #endregion Public Methods
