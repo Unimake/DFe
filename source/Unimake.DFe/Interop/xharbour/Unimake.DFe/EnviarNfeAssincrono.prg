@@ -18,7 +18,7 @@ Function EnviarNfeAssincrono()
    Local oPag, oDetPag
    Local oInfAdic, oInfRespTec
    Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
-   Local I, oErro
+   Local I, oErro, notaAssinada
 
  * Criar configuraçao básica para consumir o serviço
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
@@ -331,7 +331,12 @@ Function EnviarNfeAssincrono()
 */            
  * Consumir o serviço (Enviar NFE para SEFAZ)
    oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao:SetXMLConfiguracao(oXml,oInicializarConfiguracao)
+   notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
+   ? notaAssinada
+   Wait
    oAutorizacao:Executar(oXml,oInicializarConfiguracao)
+   
    ? oAutorizacao:GetConteudoXMLAssinado() // por enquanto só consegue pegar depois de executar, ainda vai ser resolvido isso
 
    ? "XML Retornado pela SEFAZ"
