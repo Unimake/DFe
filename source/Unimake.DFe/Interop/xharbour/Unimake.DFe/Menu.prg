@@ -21,6 +21,7 @@ Function Main()
    AAdd(aOpcoes, "7-Cancelar Nfe")
    Aadd(aOpcoes, "8-Teste diversos com certificado digital")
    Aadd(aOpcoes, "9-Carta de Correcao")
+   Aadd(aOpcoes, "A-Envio da NFSe (GerarNfse)")
     
    Do While .T.
       Cls
@@ -62,7 +63,9 @@ Function Main()
          case nOpcao = 9
               CartaDeCorrecao()
  
-          endcase
+         case nOpcao = 10
+		      EnviarNfseGerarNfse() 
+      endcase
    EndDo
 Return
 

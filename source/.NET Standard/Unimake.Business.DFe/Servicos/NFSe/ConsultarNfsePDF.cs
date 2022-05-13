@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
+using System;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -15,7 +16,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePDF")]
     [ComVisible(true)]
 #endif
-    public class ConsultarNfsePDF: ConsultarNfse
+    public class ConsultarNfsePDF : ConsultarNfse
     {
         /// <summary>
         /// Construtor
@@ -39,13 +40,20 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <param name="nomeTagPDF">Nome da tag que tem o conteúdo do PDF em BASE64</param>
         public void ExtrairPDF(string pasta, string nomePDF, string nomeTagPDF)
         {
-            if(RetornoWSXML.GetElementsByTagName(nomeTagPDF)[0] != null)
+            try
             {
-                Converter.Base64ToPDF(RetornoWSXML.GetElementsByTagName("Base64Pdf")[0].InnerText, Path.Combine(pasta, nomePDF));
+                if (RetornoWSXML.GetElementsByTagName(nomeTagPDF)[0] != null)
+                {
+                    Converter.Base64ToPDF(RetornoWSXML.GetElementsByTagName("Base64Pdf")[0].InnerText, Path.Combine(pasta, nomePDF));
+                }
+                else
+                {
+                    throw new System.Exception("Não foi possível localizar a TAG com o conteúdo do PDF no XML retornado pela prefeitura.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                throw new System.Exception("Não foi possível localizar a TAG com o conteúdo do PDF no XML retornado pela prefeitura.");
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
     }

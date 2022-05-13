@@ -70,6 +70,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o webservice
         /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
         public override void Executar()
         {
             if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
@@ -96,19 +99,27 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
+        [ComVisible(true)]
         public void Executar(string conteudoXML, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
+
+                var xmlDoc = new XmlDocument();
+                xmlDoc.LoadXml(conteudoXML);
+
+                Inicializar(xmlDoc, configuracao);
+
+                Executar();
             }
-
-            var xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(conteudoXML);
-
-            Inicializar(xmlDoc, configuracao);
-
-            Executar();
+            catch (Exception ex)
+            {
+                Exceptions.ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif
