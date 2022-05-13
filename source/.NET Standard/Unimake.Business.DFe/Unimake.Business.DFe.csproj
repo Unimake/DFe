@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2022.05.11.1535</AssemblyVersion>
-		<FileVersion>2022.05.11.1535</FileVersion>
+		<AssemblyVersion>2022.05.13.1457</AssemblyVersion>
+		<FileVersion>2022.05.13.1457</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -1397,9 +1397,9 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.0" />
-		<PackageReference Include="Unimake.Cryptography" Version="20220427.1430.58" />
-		<PackageReference Include="Unimake.Extensions" Version="20220427.1430.58" />
-		<PackageReference Include="Unimake.Utils" Version="20220505.1556.59" />
+		<PackageReference Include="Unimake.Cryptography" Version="20220513.1447.7" />
+		<PackageReference Include="Unimake.Extensions" Version="20220513.1447.7" />
+		<PackageReference Include="Unimake.Utils" Version="20220513.1447.7" />
 	</ItemGroup>
 
 	<ItemGroup>
