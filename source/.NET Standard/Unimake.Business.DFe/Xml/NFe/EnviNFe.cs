@@ -3133,12 +3133,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public ModalidadeBaseCalculoICMSST ModBCST { get; set; }
 
         [XmlIgnore]
-        public double PMVAST { get; set; }
+        public double? PMVAST { get; set; }
 
         [XmlElement("pMVAST")]
         public string PMVASTField
         {
-            get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
+            get => PMVAST?.ToString("F4", CultureInfo.InvariantCulture);
             set => PMVAST = Converter.ToDouble(value);
         }
 
@@ -3227,7 +3227,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializePMVASTField() => PMVAST > 0;
+        public bool ShouldSerializePMVASTField() => PMVAST != null;
 
         public bool ShouldSerializePRedBCSTField() => PRedBCST > 0;
 
