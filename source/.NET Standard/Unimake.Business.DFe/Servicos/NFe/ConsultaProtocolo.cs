@@ -113,9 +113,17 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 Inicializar(consSitNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(consSitNFe)), configuracao);
                 Executar();
             }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 

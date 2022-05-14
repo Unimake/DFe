@@ -403,13 +403,28 @@ namespace Unimake.Business.DFe.Servicos.CTe
         [ComVisible(true)]
         public void Executar(EnviCTe enviCTe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
-            Executar();
+                Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
         /// <summary>
@@ -419,12 +434,19 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao(EnviCTe enviCTe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+                Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif
@@ -435,16 +457,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         public void GravarXmlDistribuicao(string pasta)
         {
-            foreach (var item in CteProcResults)
+            try
             {
-                if (item.Value.ProtCTe != null)
+                foreach (var item in CteProcResults)
                 {
-                    GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                    if (item.Value.ProtCTe != null)
+                    {
+                        GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    }
                 }
-                else
-                {
-                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
-                }
+            }
+            catch (Exception ex)
+            {
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -454,16 +483,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
-            foreach (var item in CteProcResults)
+            try
             {
-                if (item.Value.ProtCTe != null)
+                foreach (var item in CteProcResults)
                 {
-                    GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                    if (item.Value.ProtCTe != null)
+                    {
+                        GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    }
                 }
-                else
-                {
-                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
-                }
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 

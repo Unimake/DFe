@@ -133,9 +133,17 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 Inicializar(inutNFe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutNFe)), configuracao);
                 Executar();
             }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -157,7 +165,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -175,7 +183,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -191,7 +199,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 

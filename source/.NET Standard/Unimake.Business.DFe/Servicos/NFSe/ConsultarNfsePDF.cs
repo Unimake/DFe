@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 }
                 else
                 {
-                    throw new System.Exception("Não foi possível localizar a TAG com o conteúdo do PDF no XML retornado pela prefeitura.");
+                    throw new Exception("Não foi possível localizar a TAG com o conteúdo do PDF no XML retornado pela prefeitura.");
                 }
             }
             catch (Exception ex)

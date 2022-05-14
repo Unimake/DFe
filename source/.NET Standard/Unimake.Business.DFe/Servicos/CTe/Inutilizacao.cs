@@ -5,6 +5,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTe
 {
@@ -125,13 +126,28 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         public void Executar(InutCTe inutCTe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
-            Executar();
+                Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
         /// <summary>
@@ -141,12 +157,19 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao(InutCTe inutCTe, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
+                Inicializar(inutCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(inutCTe)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif
@@ -155,7 +178,17 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Gravar o XML de distribuição em uma pasta no HD
         /// </summary>
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
-        public void GravarXmlDistribuicao(string pasta) => GravarXmlDistribuicao(pasta, ProcInutCTeResult.NomeArquivoDistribuicao, ProcInutCTeResult.GerarXML().OuterXml);
+        public void GravarXmlDistribuicao(string pasta)
+        {
+            try
+            {
+                GravarXmlDistribuicao(pasta, ProcInutCTeResult.NomeArquivoDistribuicao, ProcInutCTeResult.GerarXML().OuterXml);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
 
         #endregion Public Methods
     }

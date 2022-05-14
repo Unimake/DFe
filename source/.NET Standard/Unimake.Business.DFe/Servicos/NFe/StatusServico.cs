@@ -5,7 +5,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
-
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
@@ -113,9 +113,17 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 Inicializar(consStatServ?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServ)), configuracao);
                 Executar();
             }
-            catch (Exception ex)
+            catch (ValidarXMLException ex)
             {
                 Exceptions.ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
@@ -130,7 +138,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
             catch (Exception ex)
             {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
