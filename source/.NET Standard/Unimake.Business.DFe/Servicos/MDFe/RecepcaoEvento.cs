@@ -191,13 +191,28 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         [ComVisible(true)]
         public void Executar(EventoMDFe envEvento, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
-            Executar();
+                Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
         /// <summary>
@@ -207,12 +222,19 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao(EventoMDFe envEvento, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+                Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                Exceptions.ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 
@@ -222,13 +244,33 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// Gravar o XML de distribuição em uma pasta no HD
         /// </summary>
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
-        public void GravarXmlDistribuicao(string pasta) => GravarXmlDistribuicao(pasta, ProcEventoMDFeResult.NomeArquivoDistribuicao, ProcEventoMDFeResult.GerarXML().OuterXml);
+        public void GravarXmlDistribuicao(string pasta)
+        {
+            try
+            {
+                GravarXmlDistribuicao(pasta, ProcEventoMDFeResult.NomeArquivoDistribuicao, ProcEventoMDFeResult.GerarXML().OuterXml);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
 
         /// <summary>
         /// Grava o XML de dsitribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
-        public void GravarXmlDistribuicao(Stream stream) => GravarXmlDistribuicao(stream, ProcEventoMDFeResult.GerarXML().OuterXml);
+        public void GravarXmlDistribuicao(Stream stream)
+        {
+            try
+            {
+                GravarXmlDistribuicao(stream, ProcEventoMDFeResult.GerarXML().OuterXml);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
 
         #endregion Public Methods
     }
