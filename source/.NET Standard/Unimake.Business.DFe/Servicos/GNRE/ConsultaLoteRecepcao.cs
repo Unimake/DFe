@@ -5,6 +5,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.GNRE
 {
@@ -103,13 +104,28 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         [ComVisible(true)]
         public void Executar(TLoteConsultaGNRE TLoteConsultaGNRE, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(TLoteConsultaGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(TLoteConsultaGNRE)), configuracao);
-            Executar();
+                Inicializar(TLoteConsultaGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(TLoteConsultaGNRE)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif
@@ -128,9 +144,16 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         public void GravarXmlDistribuicao(string pasta, string nomeArquivo)
         {
-            if (!string.IsNullOrWhiteSpace(RetornoWSString))
+            try
             {
-                GravarXmlDistribuicao(pasta, nomeArquivo, RetornoWSString);
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    GravarXmlDistribuicao(pasta, nomeArquivo, RetornoWSString);
+                }
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
         #endregion Public Methods

@@ -5,6 +5,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.GNRE
 {
@@ -104,13 +105,28 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         [ComVisible(true)]
         public void Executar(TConsLoteConsGNRE tConsLoteConsGNRE, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(tConsLoteConsGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteConsGNRE)), configuracao);
-            Executar();
+                Inicializar(tConsLoteConsGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteConsGNRE)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif

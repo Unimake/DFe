@@ -5,6 +5,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.GNRE
 {
@@ -104,13 +105,28 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         [ComVisible(true)]
         public void Executar(TConsultaConfigUf tConsultaConfigUf, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(tConsultaConfigUf?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsultaConfigUf)), configuracao);
-            Executar();
+                Inicializar(tConsultaConfigUf?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsultaConfigUf)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif
@@ -121,7 +137,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="pasta">Pasta onde é para ser gravado do XML</param>
         /// <param name="nomeArquivo">Nome para o arquivo XML</param>
         /// <param name="conteudoXML">Conteúdo do XML</param>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new System.Exception("Não existe XML de distribuição para consulta status do serviço.");
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => ThrowHelper.Instance.Throw(new Exception("Não existe XML de distribuição para consulta status do serviço."));
 
         #endregion Public Methods
     }
