@@ -7,6 +7,7 @@ using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.CTeOS;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.CTeOS
 {
@@ -302,13 +303,28 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         [ComVisible(true)]
         public void Executar(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
-            Executar();
+                Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
         /// <summary>
@@ -318,12 +334,19 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao(Xml.CTeOS.CTeOS cteOS, Configuracao configuracao)
         {
-            if (configuracao is null)
+            try
             {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
 
-            Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
+                Inicializar(cteOS?.GerarXML() ?? throw new ArgumentNullException(nameof(cteOS)), configuracao);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
 #endif
@@ -334,35 +357,49 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <param name="pasta">Pasta onde deve ser gravado o XML</param>
         public void GravarXmlDistribuicao(string pasta)
         {
-            foreach (var item in CteOSProcResults)
+            try
             {
-                if (item.Value.ProtCTe != null)
+                foreach (var item in CteOSProcResults)
                 {
-                    GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                    if (item.Value.ProtCTe != null)
+                    {
+                        GravarXmlDistribuicao(pasta, item.Value.NomeArquivoDistribuicao, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    }
                 }
-                else
-                {
-                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
-                }
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
         /// <summary>
-        /// Grava o XML de dsitribuição no stream
+        /// Grava o XML de distribuição no stream
         /// </summary>
         /// <param name="stream">Stream que vai receber o XML de distribuição</param>
         public void GravarXmlDistribuicao(System.IO.Stream stream)
         {
-            foreach (var item in CteOSProcResults)
+            try
             {
-                if (item.Value.ProtCTe != null)
+                foreach (var item in CteOSProcResults)
                 {
-                    GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                    if (item.Value.ProtCTe != null)
+                    {
+                        GravarXmlDistribuicao(stream, item.Value.GerarXML().OuterXml);
+                    }
+                    else
+                    {
+                        throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
+                    }
                 }
-                else
-                {
-                    throw new Exception("Não foi localizado no retorno da consulta o protocolo da chave, abaixo, para a elaboração do arquivo de distribuição. Verifique se a chave ou recibo consultado estão de acordo com a informada na sequencia:\r\n\r\n" + Format.ChaveDFe(item.Key));
-                }
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
 
