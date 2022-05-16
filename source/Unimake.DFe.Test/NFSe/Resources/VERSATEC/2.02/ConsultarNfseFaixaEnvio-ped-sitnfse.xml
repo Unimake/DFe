@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<ConsultarNfseFaixaEnvio xmlns="http://nfse.cataguases.mg.gov.br/webservices/2.02/nfse_v202.xsd">
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>38543146000156</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+	</Prestador>
+	<Faixa>
+		<NumeroNfseInicial>201600000000130</NumeroNfseInicial>
+		<NumeroNfseFinal>201600000000139</NumeroNfseFinal>
+	</Faixa>
+	<Pagina>1</Pagina>
+</ConsultarNfseFaixaEnvio>

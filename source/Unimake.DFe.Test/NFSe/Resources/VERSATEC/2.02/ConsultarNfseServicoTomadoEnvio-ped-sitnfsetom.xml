@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<ConsultarNfseServicoTomadoEnvio xmlns="http://nfse.cataguases.mg.gov.br/webservices/2.02/nfse_v202.xsd">
+	<Consulente>
+		<CpfCnpj>
+			<Cnpj>08373108000131</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>...</InscricaoMunicipal>
+	</Consulente>
+	<PeriodoEmissao>
+		<DataInicial>2018-05-01</DataInicial>
+		<DataFinal>2018-05-30</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj>
+			<Cnpj>08373108000131</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>999999999</InscricaoMunicipal>
+	</Tomador>
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoTomadoEnvio>

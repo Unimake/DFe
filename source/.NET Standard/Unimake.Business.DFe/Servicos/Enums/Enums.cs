@@ -6020,6 +6020,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DIGIFRED")]
         DIGIFRED = 18,
+
+        /// <summary>
+        /// VersaTEC – Tecnologia, Educação e Comunicação
+        /// </summary>
+        [Description("VERSATEC")]
+        VERSATEC = 19,
     }
 
     #endregion

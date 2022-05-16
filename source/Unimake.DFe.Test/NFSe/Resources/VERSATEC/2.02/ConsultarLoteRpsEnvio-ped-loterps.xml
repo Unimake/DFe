@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio xmlns="http://nfse.cataguases.mg.gov.br/webservices/2.02/nfse_v202.xsd">
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>38543146000156</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>10973</InscricaoMunicipal>
+	</Prestador>
+	<Protocolo>408562</Protocolo>
+</ConsultarLoteRpsEnvio>

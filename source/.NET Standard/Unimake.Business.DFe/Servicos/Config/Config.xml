@@ -688,4 +688,10 @@
 		<ArqConfig>ItaquaquecetubaSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3115300">
+		<Nome>Cataguases - MG</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CataguasesMG.xml</ArqConfig>
+		<PadraoNFSe>VERSATEC</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
