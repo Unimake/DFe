@@ -9,7 +9,6 @@ using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
 {
-
     /// <summary>
     /// Enviar o XML de consulta status do serviço da NFe para o web-service
     /// </summary>
