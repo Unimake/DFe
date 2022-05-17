@@ -536,9 +536,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
                         CNPJ = elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.CNPJ)),
                         CPF = elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.CPF)),
                         IdEstrangeiro = elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.IdEstrangeiro)),
-                        VContrato = elementInfPag.GetValue<double>(nameof(PagtoOperMDFeInfPag.VContrato)),
+                        VContrato = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.VContrato)), true),
                         IndPag = elementInfPag.GetValue<IndicadorPagamento>(nameof(PagtoOperMDFeInfPag.IndPag)),
-                        VAdiant = elementInfPag.GetValue<double>(nameof(PagtoOperMDFeInfPag.VAdiant)),
+                        VAdiant = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.VAdiant)), true),
                         IndAntecipaAdiant = elementInfPag.GetValue<int>(nameof(PagtoOperMDFeInfPag.IndAntecipaAdiant)),
                         TpAntecip = elementInfPag.GetValue<TipoPermissaoAtencipacaoParcela>(nameof(PagtoOperMDFeInfPag.TpAntecip))
                     });

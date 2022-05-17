@@ -651,9 +651,9 @@ namespace Unimake.Business.DFe.Xml.NFe
                 Dest.CPF = XmlReader.GetValue<string>(nameof(Dest.CPF));
                 Dest.IdEstrangeiro = XmlReader.GetValue<string>(nameof(Dest.IdEstrangeiro));
                 Dest.IE = XmlReader.GetValue<string>(nameof(Dest.IE));
-                Dest.VNF = XmlReader.GetValue<double>(nameof(Dest.VNF));
-                Dest.VICMS = XmlReader.GetValue<double>(nameof(Dest.VICMS));
-                Dest.VST = XmlReader.GetValue<double>(nameof(Dest.VST));
+                Dest.VNF = UConvert.ToDouble(XmlReader.GetValue<string>(nameof(Dest.VNF)), true);
+                Dest.VICMS = UConvert.ToDouble(XmlReader.GetValue<string>(nameof(Dest.VICMS)), true);
+                Dest.VST = UConvert.ToDouble(XmlReader.GetValue<string>(nameof(Dest.VST)), true);
                 return;
             }
 

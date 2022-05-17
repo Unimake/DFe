@@ -100,5 +100,26 @@ namespace Unimake.DFe.Test.NFe
 
             Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        /// <summary>
+        /// Testar a serialização e deserialização do XML EnvEvento
+        /// </summary>
+        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\EnvEventoEPEC.xml")]
+        public void SerializacaoDeserializacaoEnvEvento(string arqXML)
+        {
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<EnvEvento>(doc);
+            var doc2 = xml.GerarXML();
+
+            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+
+        }
     }
 }
