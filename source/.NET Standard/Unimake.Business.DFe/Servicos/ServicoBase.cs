@@ -32,7 +32,8 @@ namespace Unimake.Business.DFe.Servicos
         /// Verifica se o XML está assinado, se não estiver assina. Só faz isso para XMLs que tem tag de assinatura, demais ele mantem como está, sem assinar.
         /// </summary>
         /// <param name="tagAssinatura">Tag de assinatura</param>
-        private void VerificarAssinarXML(string tagAssinatura)
+        /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
+        private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
             if (!string.IsNullOrWhiteSpace(tagAssinatura))
             {
@@ -42,7 +43,7 @@ namespace Unimake.Business.DFe.Servicos
                 }
                 else
                 {
-                    AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id", true);
+                    AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id", true);
 
                     AjustarXMLAposAssinado();
                 }
@@ -149,8 +150,8 @@ namespace Unimake.Business.DFe.Servicos
         {
             get
             {
-                VerificarAssinarXML(Configuracoes.TagAssinatura);
-                VerificarAssinarXML(Configuracoes.TagLoteAssinatura);
+                VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
+                VerificarAssinarXML(Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID);
 
                 return ConteudoXML;
             }
