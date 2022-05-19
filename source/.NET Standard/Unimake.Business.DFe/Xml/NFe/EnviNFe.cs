@@ -1393,8 +1393,40 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("cProd")]
         public string CProd { get; set; }
 
+        private string CEANField = "";
+
         [XmlElement("cEAN")]
-        public string CEAN { get; set; } = "";
+        public string CEAN
+        {
+            get => CEANField;
+            set
+            {
+                if (value.ToUpper().Trim() != "SEM GTIN")
+                {
+                    if (!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
+                    {
+                        throw new Exception("Código EAN (código de barra) informado (" + value + ") no produto de código " + CProd + " está incorreto. EAN deve ter 0,8,12,13 ou 14 de tamanho e somente números, ou seja, não pode conter letras.");
+                    }
+
+                    for (var i = 0; i < value.Length; i++)
+                    {
+                        if (!"0123456789".Contains(value.Substring(i, 1)))
+                        {
+                            throw new Exception("Código EAN (código de barra) informado (" + value + ") no produto de código " + CProd + " está incorreto. Não pode conter letras, somente números.");
+                        }
+                    }
+                }
+                else
+                {
+                    if (value != "SEM GTIN")
+                    {
+                        throw new Exception("Código EAN (código de barra) informado (" + "\"" + value + "\") tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença.");
+                    }
+                }
+
+                CEANField = value;
+            }
+        }
 
         [XmlElement("cBarra")]
         public string CBarra { get; set; } = "";
@@ -1453,8 +1485,40 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VProd = Converter.ToDouble(value);
         }
 
+        private string CEANTribField = "";
+
         [XmlElement("cEANTrib")]
-        public string CEANTrib { get; set; } = "";
+        public string CEANTrib
+        {
+            get => CEANTribField;
+            set
+            {
+                if (value.ToUpper().Trim() != "SEM GTIN")
+                {
+                    if (!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
+                    {
+                        throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + value + ") no produto de código " + CProd + " está incorreto. EAN deve ter 0,8,12,13 ou 14 de tamanho e somente números, ou seja, não pode conter letras.");
+                    }
+
+                    for (var i = 0; i < value.Length; i++)
+                    {
+                        if (!"0123456789".Contains(value.Substring(i, 1)))
+                        {
+                            throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + value + ") no produto de código " + CProd + " está incorreto. Não pode conter letras, somente números.");
+                        }
+                    }
+                }
+                else
+                {
+                    if (value != "SEM GTIN")
+                    {
+                        throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + "\"" + value + "\") tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença.");
+                    }
+                }
+
+                CEANTribField = value;
+            }
+        }
 
         [XmlElement("cBarraTrib")]
         public string CBarraTrib { get; set; } = "";
