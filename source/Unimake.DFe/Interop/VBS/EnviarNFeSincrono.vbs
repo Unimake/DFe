@@ -9,9 +9,9 @@ Dim ProtNFe
 'Definir configurações básicas
 '----------------------------------------------------
 Set config = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
-config.CertificadoSenha = "12345678"
-config.CertificadoArquivo = "d:\projetos\UnimakePV.pfx"
 config.TipoDfe = 0
+config.CertificadoArquivo = "d:\projetos\UnimakePV.pfx"
+config.CertificadoSenha = "12345678"
 
 '----------------------------------------------------
 'Montar o XML da NFe
@@ -23,14 +23,20 @@ enviNFe.IdLote = "000000000000001"
 enviNFe.IndSinc = 0
 enviNFe.AddNFe (GetFromFileNFe())
 
+MsgBox "1) Carregou o XML"
+
 '----------------------------------------------------
 'Enviar a NFe
 '----------------------------------------------------
-'Set autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
-'autorizacao.Executar (enviNFe), (config)
+Set autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+autorizacao.SetXMLConfiguracao (enviNFe), (config)
 
-'******** Preciso resolver o cara abaixo
-'MsgBox "1) " + autorizacao.ConteudoXMLAssinado.OuterXml
+MsgBox "2) Setou o XML e Config" 
+MsgBox "3) XML assinado" + autorizacao.GetConteudoNFeAssinada(0)
+
+autorizacao.Executar (enviNFe), (config)
+
+MsgBox "4) Enviou o XML" 
 
 '----------------------------------------------------
 'Consultar recibo
@@ -39,7 +45,7 @@ Set consReciNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
 consReciNFe.Versao = "4.00"
 consReciNFe.TpAmb = 1
 consReciNFe.NRec = "411001723503442" 'autorizacao.Result.InfRec.NRec
-'MsgBox autorizacao.Result.InfRec.NRec
+MsgBox autorizacao.Result.InfRec.NRec
 
 Set retAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")
 retAutorizacao.Executar (consReciNFe), (config)
@@ -56,12 +62,12 @@ else
    MsgBox retAutorizacao.Result.CStat + " " + retAutorizacao.Result.XMotivo
 End if   
 
-'MsgBox retAutorizacao.Result.GetProtNFe
+MsgBox retAutorizacao.Result.GetProtNFe
 
 '----------------------------------------------------
 'Serializar o XML da NFe
 '----------------------------------------------------
 Function GetFromFileNFe()
    Dim NFe: Set NFe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
-   Set GetFromFileNFe = NFe.LoadFromFile("C:\Users\Wandrey\Downloads\41220206117473000150550010000715851002755300-nfe.xml")
+   Set GetFromFileNFe = NFe.LoadFromFile("C:\Users\Wandrey\Downloads\Telegram Desktop\35220564968613000108550010001348351512572804-nfe.xml")
 End Function

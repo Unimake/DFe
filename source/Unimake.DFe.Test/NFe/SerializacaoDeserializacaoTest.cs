@@ -1,10 +1,10 @@
-﻿using Diag = System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
+using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.NFe
 {
@@ -120,6 +120,31 @@ namespace Unimake.DFe.Test.NFe
 
             Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
 
+        }
+
+        /// <summary>
+        /// Testar a serialização e deserialização do XML DistDFeInt
+        /// </summary>
+        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_ChNFe.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_CNPJ.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_CPF.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_ComUFAutor.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_NSU.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_SemUFAutor.xml")]
+        public void SerializacaoDeserializacaoDistDFeInt(string arqXML)
+        {
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<DistDFeInt>(doc);
+            var doc2 = xml.GerarXML();
+
+            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }
 }

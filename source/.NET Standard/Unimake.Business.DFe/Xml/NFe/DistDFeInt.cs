@@ -24,7 +24,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public TipoAmbiente TpAmb { get; set; }
 
         [XmlIgnore]
-        public UFBrasil CUFAutor { get; set; }
+#if INTEROP
+        public UFBrasil CUFAutor { get; set; } = (UFBrasil)(-1);
+#else
+        public UFBrasil? CUFAutor { get; set; }
+#endif
 
         [XmlElement("cUFAutor")]
         public int CUFAutorField
@@ -53,14 +57,14 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCNPJ()
-        {
-            return !string.IsNullOrWhiteSpace(CNPJ);
-        }
-        public bool ShouldSerializeCPF()
-        {
-            return !string.IsNullOrWhiteSpace(CPF);
-        }
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+        public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
+
+#if INTEROP
+        public bool ShouldSerializeCUFAutorField() => CUFAutor != (UFBrasil)(-1);
+#else
+        public bool ShouldSerializeCUFAutorField() => CUFAutor != null;
+#endif
 
         #endregion
     }

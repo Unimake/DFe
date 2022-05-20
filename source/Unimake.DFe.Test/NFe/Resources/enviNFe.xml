@@ -142,7 +142,7 @@
 			<det nItem="1">
 				<prod>
 					<cProd>cProd1</cProd>
-					<cEAN>cEAN1</cEAN>
+					<cEAN>SEM GTIN</cEAN>
 					<cBarra>cBarra1</cBarra>
 					<xProd>xProd1</xProd>
 					<NCM>NCM1</NCM>
@@ -159,7 +159,7 @@
 					<qCom>1</qCom>
 					<vUnCom>1</vUnCom>
 					<vProd>1.00</vProd>
-					<cEANTrib>cEANTrib1</cEANTrib>
+					<cEANTrib></cEANTrib>
 					<cBarraTrib>cBarraTrib1</cBarraTrib>
 					<uTrib>uTrib1</uTrib>
 					<qTrib>1</qTrib>
@@ -446,7 +446,7 @@
 			<det nItem="2">
 				<prod>
 					<cProd>cProd2</cProd>
-					<cEAN>cEAN2</cEAN>
+					<cEAN>12345678</cEAN>
 					<cBarra>cBarra2</cBarra>
 					<xProd>xProd2</xProd>
 					<NCM>NCM2</NCM>
@@ -463,7 +463,7 @@
 					<qCom>2</qCom>
 					<vUnCom>2</vUnCom>
 					<vProd>2.00</vProd>
-					<cEANTrib>cEANTrib2</cEANTrib>
+					<cEANTrib>123456789012</cEANTrib>
 					<cBarraTrib>cBarraTrib2</cBarraTrib>
 					<uTrib>uTrib2</uTrib>
 					<qTrib>2</qTrib>
@@ -742,7 +742,7 @@
 			<det nItem="3">
 				<prod>
 					<cProd>cProd3</cProd>
-					<cEAN>cEAN3</cEAN>
+					<cEAN>1234567890123</cEAN>
 					<cBarra>cBarra3</cBarra>
 					<xProd>xProd3</xProd>
 					<NCM>NCM3</NCM>
@@ -759,7 +759,7 @@
 					<qCom>3</qCom>
 					<vUnCom>3</vUnCom>
 					<vProd>3.00</vProd>
-					<cEANTrib>cEANTrib3</cEANTrib>
+					<cEANTrib>12345678901234</cEANTrib>
 					<cBarraTrib>cBarraTrib3</cBarraTrib>
 					<uTrib>uTrib3</uTrib>
 					<qTrib>3</qTrib>
@@ -1473,7 +1473,7 @@
 			<det nItem="4">
 				<prod>
 					<cProd>cProd4</cProd>
-					<cEAN>cEAN4</cEAN>
+					<cEAN>12345678</cEAN>
 					<cBarra>cBarra4</cBarra>
 					<xProd>xProd4</xProd>
 					<NCM>NCM4</NCM>
@@ -1490,7 +1490,7 @@
 					<qCom>4</qCom>
 					<vUnCom>4</vUnCom>
 					<vProd>4.00</vProd>
-					<cEANTrib>cEANTrib4</cEANTrib>
+					<cEANTrib>SEM GTIN</cEANTrib>
 					<cBarraTrib>cBarraTrib4</cBarraTrib>
 					<uTrib>uTrib4</uTrib>
 					<qTrib>4</qTrib>
@@ -1769,7 +1769,7 @@
 			<det nItem="5">
 				<prod>
 					<cProd>cProd5</cProd>
-					<cEAN>cEAN5</cEAN>
+					<cEAN>123456789012</cEAN>
 					<cBarra>cBarra5</cBarra>
 					<xProd>xProd5</xProd>
 					<NCM>NCM5</NCM>
@@ -1786,7 +1786,7 @@
 					<qCom>5</qCom>
 					<vUnCom>5</vUnCom>
 					<vProd>5.00</vProd>
-					<cEANTrib>cEANTrib5</cEANTrib>
+					<cEANTrib>12345678</cEANTrib>
 					<cBarraTrib>cBarraTrib5</cBarraTrib>
 					<uTrib>uTrib5</uTrib>
 					<qTrib>5</qTrib>
@@ -2065,7 +2065,7 @@
 			<det nItem="6">
 				<prod>
 					<cProd>cProd6</cProd>
-					<cEAN>cEAN6</cEAN>
+					<cEAN>1234567890123</cEAN>
 					<cBarra>cBarra6</cBarra>
 					<xProd>xProd6</xProd>
 					<NCM>NCM6</NCM>
@@ -2082,7 +2082,7 @@
 					<qCom>6</qCom>
 					<vUnCom>6</vUnCom>
 					<vProd>6.00</vProd>
-					<cEANTrib>cEANTrib6</cEANTrib>
+					<cEANTrib>12345678901234</cEANTrib>
 					<cBarraTrib>cBarraTrib6</cBarraTrib>
 					<uTrib>uTrib6</uTrib>
 					<qTrib>6</qTrib>
@@ -2796,7 +2796,7 @@
 			<det nItem="7">
 				<prod>
 					<cProd>cProd7</cProd>
-					<cEAN>cEAN7</cEAN>
+					<cEAN>12345678901234</cEAN>
 					<cBarra>cBarra7</cBarra>
 					<xProd>xProd7</xProd>
 					<NCM>NCM7</NCM>
@@ -2813,7 +2813,7 @@
 					<qCom>7</qCom>
 					<vUnCom>7</vUnCom>
 					<vProd>7.00</vProd>
-					<cEANTrib>cEANTrib7</cEANTrib>
+					<cEANTrib>1234567890123</cEANTrib>
 					<cBarraTrib>cBarraTrib7</cBarraTrib>
 					<uTrib>uTrib7</uTrib>
 					<qTrib>7</qTrib>
@@ -3092,7 +3092,7 @@
 			<det nItem="8">
 				<prod>
 					<cProd>cProd8</cProd>
-					<cEAN>cEAN8</cEAN>
+					<cEAN>12345678</cEAN>
 					<cBarra>cBarra8</cBarra>
 					<xProd>xProd8</xProd>
 					<NCM>NCM8</NCM>
@@ -3109,7 +3109,7 @@
 					<qCom>8</qCom>
 					<vUnCom>8</vUnCom>
 					<vProd>8.00</vProd>
-					<cEANTrib>cEANTrib8</cEANTrib>
+					<cEANTrib>123456789012</cEANTrib>
 					<cBarraTrib>cBarraTrib8</cBarraTrib>
 					<uTrib>uTrib8</uTrib>
 					<qTrib>8</qTrib>
@@ -3388,7 +3388,7 @@
 			<det nItem="9">
 				<prod>
 					<cProd>cProd9</cProd>
-					<cEAN>cEAN9</cEAN>
+					<cEAN>SEM GTIN</cEAN>
 					<cBarra>cBarra9</cBarra>
 					<xProd>xProd9</xProd>
 					<NCM>NCM9</NCM>
@@ -3405,7 +3405,7 @@
 					<qCom>9</qCom>
 					<vUnCom>9</vUnCom>
 					<vProd>9.00</vProd>
-					<cEANTrib>cEANTrib9</cEANTrib>
+					<cEANTrib>SEM GTIN</cEANTrib>
 					<cBarraTrib>cBarraTrib9</cBarraTrib>
 					<uTrib>uTrib9</uTrib>
 					<qTrib>9</qTrib>
