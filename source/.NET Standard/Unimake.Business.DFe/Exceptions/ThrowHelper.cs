@@ -29,6 +29,11 @@ namespace Unimake.Exceptions
         /// </summary>
         public string Message { get; private set; }
 
+        /// <summary>
+        /// Código de erro específico da exceção gerada
+        /// </summary>
+        public int ErrorCode { get; private set; } = 0;
+
         #endregion Public Properties
 
         #region Public Methods
@@ -39,12 +44,19 @@ namespace Unimake.Exceptions
         public string GetMessage() => Instance.Message ?? "";
 
         /// <summary>
+        /// Recuperar o conteúdo do código do erro de exceções específicas da DLL
+        /// </summary>
+        /// <returns>Código do erro</returns>
+        public int GetErrorCode() => Instance.ErrorCode;
+
+        /// <summary>
         /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade
         /// </summary>
         /// <param name="ex">Exception</param>
         public void Throw(Exception ex)
         {
             Instance.Message = ex.GetLastException().Message;
+            Instance.ErrorCode = ex.GetLastException().HResult;
             throw ex;
         }
 
