@@ -2858,7 +2858,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializePFCPField() => PFCP > 0;
 
-        public bool ShouldSerializeVFCPField() => VFCP > 0;
+        public bool ShouldSerializeVFCPField() => PFCP > 0 || VFCP > 0;
 
         #endregion
     }
@@ -4065,12 +4065,12 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
 
         [XmlIgnore]
-        public double PMVAST { get; set; }
+        public double? PMVAST { get; set; }
 
         [XmlElement("pMVAST")]
         public string PMVASTField
         {
-            get => PMVAST.ToString("F4", CultureInfo.InvariantCulture);
+            get => PMVAST?.ToString("F4", CultureInfo.InvariantCulture);
             set => PMVAST = Converter.ToDouble(value);
         }
 
@@ -4190,7 +4190,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public virtual bool ShouldSerializeVFCPField() => ModBC != null && ModBC != (ModalidadeBaseCalculoICMS)(-1) && (VBCFCP + PFCP + VFCP) > 0;
 
-        public virtual bool ShouldSerializePMVASTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1) && PMVAST > 0;
+        public virtual bool ShouldSerializePMVASTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1) && PMVAST != null;
 
         public virtual bool ShouldSerializePRedBCSTField() => ModBCST != null && ModBCST != (ModalidadeBaseCalculoICMSST)(-1) && PRedBCST > 0;
 
