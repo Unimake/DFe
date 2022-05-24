@@ -116,7 +116,7 @@
 			<TargetNS></TargetNS>
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.03">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<Descricao>Recepcionar Lote RPS Síncrono</Descricao>
 			<WebEnderecoHomologacao>https://testeabrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionHomologacao>
