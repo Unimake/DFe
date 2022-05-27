@@ -694,4 +694,10 @@
 		<ArqConfig>CataguasesMG.xml</ArqConfig>
 		<PadraoNFSe>VERSATEC</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5108600">
+		<Nome>Vila Rica - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
