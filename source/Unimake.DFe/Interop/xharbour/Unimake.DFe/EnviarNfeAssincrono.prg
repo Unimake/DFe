@@ -19,6 +19,7 @@ Function EnviarNfeAssincrono()
    Local oInfAdic, oInfRespTec
    Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
    Local I, oErro, notaAssinada
+   Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuraçao básica para consumir o serviço
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
@@ -347,8 +348,10 @@ Function EnviarNfeAssincrono()
    ? "========================="
    ? AllTrim(Str(oAutorizacao:Result:CStat,5)),oAutorizacao:Result:XMotivo
 
- * Consultar o Recibo retornado no envio da nota para saber se a mesma foi autorizada  
+
    if oAutorizacao:Result <> NIL
+     
+    * Consultar o Recibo retornado no envio da nota para saber se a mesma foi autorizada  
       if oAutorizacao:Result:CStat == 103 //103 = Lote Recebido com Sucesso
          oXmlRec        = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
          oXmlRec:Versao = "4.00"
@@ -386,6 +389,47 @@ Function EnviarNfeAssincrono()
             End
          EndIf
       EndIf   
+	  
+	  
+	  Wait
+    * Modelo de código de como finalizar a nota pela consulta situação da NFe via chave
+	  Cls
+	  
+	  ? "Consultando a situação da chave da NFe..."
+
+    * Abrir um for no XML da NFe para ver nota a nota que tem no lote
+      For I = 1 TO oAutorizacao:EnviNFe:GetNFeCount	
+	     oConteudoNFe = oAutorizacao:EnviNFe:GetNFe(i-1)
+         oConteudoInfNFe = oConteudoNFe:GetInfNFe(0)
+		 chaveNFe = oConteudoInfNFe:Chave
+		 
+		 ? "Chave consultada:", chaveNFe
+		 
+	     oXmlConsSitNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsSitNFe")	  
+	     oXmlConsSitNFe:Versao = "4.00"
+	     oXmlConsSitNFe:TpAmb = 2 // TipoAmbiente.Homologacao
+	     oXmlConsSitNFe:ChNFe = chaveNFe
+		 
+         oConfigConsSitNFe = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+         oConfigConsSitNFe:TipoDFe            = 0 // TipoDFe.NFe
+         oConfigConsSitNFe:CertificadoSenha   = "12345678"
+         oConfigConsSitNFe:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
+
+         oConsultaProtocolo = CreateObject("Unimake.Business.DFe.Servicos.NFe.ConsultaProtocolo")
+         oConsultaProtocolo:Executar(oXmlConsSitNFe, oConfigConsSitNFe)
+		 
+		 ? "Xml Retornado na consulta: "
+		 ? oConsultaProtocolo:RetornoWSString		 		 
+		
+		 if oConsultaProtocolo:Result:CStat == 100 //Nota autorizada
+		    oAutorizacao:SetNullRetConsReciNFe()
+			oAutorizacao:AddRetConsSitNFes(oConsultaProtocolo:Result)
+		
+            oAutorizacao:GravarXmlDistribuicao(".\tmp")
+		 else
+		    //Nota rejeitada, fazer devidos tratamentos
+		 Endif
+      Next I
    EndIf         
    Wait
 */
