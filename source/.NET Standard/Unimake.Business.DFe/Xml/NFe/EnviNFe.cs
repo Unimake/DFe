@@ -1148,8 +1148,36 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => XBairroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
+        #region cMun
+
+        private int _CMun;
+
+        [XmlIgnore]
+        public int CMun
+        {
+            get => _CMun;
+            set
+            {
+                if (value <= 0 || value == null)
+                {
+                    throw new Exception("Código do município do destinatário (tag <cMun> da <enderDest>) está sem conteúdo. É obrigatório informar o código IBGE do município.");
+                }
+
+                _CMun = value;
+            }
+        }
+
         [XmlElement("cMun")]
-        public int CMun { get; set; }
+        public string CMunField
+        {
+            get => CMun.ToString();
+            set
+            {
+                CMun = Convert.ToInt32(string.IsNullOrWhiteSpace(value) ? "0" : value);
+            }
+        }
+
+        #endregion
 
         [XmlElement("xMun")]
         public string XMun
@@ -1243,8 +1271,36 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => XBairroField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
+        #region cMun
+
+        private int _CMun;
+
+        [XmlIgnore]
+        public int CMun
+        {
+            get => _CMun;
+            set
+            {
+                if (value <= 0 || value == null)
+                {
+                    throw new Exception("Código do município do local de " + GetType().Name.ToLower() + " (tag <cMun> da <" + GetType().Name.ToLower() + ">) está sem conteúdo. É obrigatório informar o código IBGE do município.");
+                }
+
+                _CMun = value;
+            }
+        }
+
         [XmlElement("cMun")]
-        public int CMun { get; set; }
+        public string CMunField
+        {
+            get => CMun.ToString();
+            set
+            {
+                CMun = Convert.ToInt32(string.IsNullOrWhiteSpace(value) ? "0" : value);
+            }
+        }
+
+        #endregion
 
         [XmlElement("xMun")]
         public string XMun
