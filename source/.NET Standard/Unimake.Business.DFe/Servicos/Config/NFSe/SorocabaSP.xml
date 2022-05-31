@@ -14,7 +14,7 @@
 	  <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
 	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps>{xmlBody}</nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:RecepcionarLoteRpsResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -33,7 +33,7 @@
       <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincrono>{xmlBody}</nfse:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -52,7 +52,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfse>{xmlBody}</nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-	  <WebTagRetorno>ns3:GerarNfseResponse</WebTagRetorno>
+	  <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -71,7 +71,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse>{xmlBody}</nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-	  <WebTagRetorno>ns3:CancelarNfseResponse</WebTagRetorno>
+	  <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -92,7 +92,7 @@
 	  <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfse>{xmlBody}</nfse:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:SubstituirNfseResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -111,7 +111,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRps>{xmlBody}</nfse:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:ConsultarLoteRpsResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -130,7 +130,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRps>{xmlBody}</nfse:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:ConsultarNfsePorRpsResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -149,7 +149,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado>{xmlBody}</nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -168,7 +168,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado>{xmlBody}</nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
@@ -187,7 +187,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
       <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseFaixa>{xmlBody}</nfse:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>ns3:ConsultarNfseFaixaResponse</WebTagRetorno>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.03</SchemaVersao>
