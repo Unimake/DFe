@@ -1,0 +1,633 @@
+referenciar os componentes
+
+msxml5.dll ou msxml6.dll
+mscomctl.ocx treeview
+
+
+
+Private Sub Cmd_Consultasituacaonfe_Click()
+    'consulta chave de uma nfe
+    Dim strxml
+    Dim nomearq
+    
+    nomearq = "c:\xml\" & protocolo & "-ped-sit.xml"
+    strxml = "<?xml version='1.0' encoding='utf-8'?>" + vbNewLine
+
+    Dim objElementocons As IXMLDOMElement
+    Dim objElementoconsf As IXMLDOMElement
+    Dim mVersaoConsulta As String
+    Dim objDocumento As New DOMDocument
+    mVersaoConsulta = "2.00"
+
+    strxml = strxml & "<consSitNFe xmlns=" & Chr(34) & "http://www.portalfiscal.inf.br/nfe" & Chr(34) + vbNewLine
+    strxml = strxml & " versao='" & mVersaoConsulta & "' " & ">" + vbNewLine
+    strxml = strxml & "</consSitNFe>"
+
+    objDocumento.loadXML strxml
+    objDocumento.save (nomearq)
+    objDocumento.Load (nomearq)
+
+    mCampo = rs_confnf.fields("ambienteNfe")
+
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "tpAmb", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    objDocumento.documentElement.appendChild noTemp
+
+    mCampo = "CONSULTAR"
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "xServ", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    objDocumento.documentElement.appendChild noTemp
+
+    mCampo = rs_nota.fields("tiponfe").Value
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "tpEmis", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    objDocumento.documentElement.appendChild noTemp
+    mCampo = rs_nota.fields("chaveacesso")
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "chNFe", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    objDocumento.documentElement.appendChild noTemp
+
+    objDocumento.save (nomearq)
+
+    ' aqui uso um componente treeview  que é alimentado com os dados retornados pela receita no arquivo NomeArq
+
+    Call F_XMLOnTreeView(treeviewFonteXML, nomearq)
+
+End Sub
+
+Private Sub geraxml_Click()
+    'referenciar
+
+    'msxml5.dll ou msxml6.dll
+    'referenciar o componente
+    'mscomctl.ocx TreeView
+
+    'gerar o xml da nfe
+    'abaixo tem a função que fiz para gerar a tag ide
+    'abaixo tem a função que fiz para gerar a tag notas referenciadas que é chamada ao gerar a tag ide
+    'por estes 2 exemplos acredito  que vc vai entender como criar uma tag dentro da outra.
+    
+
+    
+    
+    public objDocumento As New DOMDocument
+    public no_ide As IXMLDOMNode
+    public objElemento As IXMLDOMElement
+    public objElementof As IXMLDOMElement
+    public objElementoT As IXMLDOMElement
+    public objElementoT2 As IXMLDOMElement
+    public objFilho As IXMLDOMElement
+    
+    
+    Dim strxml
+    strxml = "<?xml version='1.0' encoding='utf-8'?>"
+    strxml = strxml & "<NFe xmlns=" & Chr(34) & "http://www.portalfiscal.inf.br/nfe" & Chr(34) & ">"
+    strxml = strxml & "</NFe>"
+
+    arquivo = "c:\xml\" & chaveacesso & "-nfe.xml"
+
+    objDocumento.loadXML strxml
+        
+    objDocumento.save (arquivo)
+
+    objDocumento.Load (arquivol)
+
+    Set objElemento = objDocumento.createNode(NODE_ELEMENT, "infNFe", "http://www.portalfiscal.inf.br/nfe")
+    mchaveacessogravar = chaveacesso
+    marquivogerado = chaveacesso & "-nfe.xml"
+    mchaveacesso = "NFe" & mchaveacesso
+
+ 
+    objElemento.setAttribute "versao", "4.00"
+
+
+    objElemento.setAttribute "Id", mchaveacesso
+    objDocumento.documentElement.appendChild objElemento
+    mindEstg = ""
+    'funcão esta abaixo
+    mTeste = F_Gera_ide_nova(BANCONFCE, mufide, mdv, mCNPJ, mnatop, mibgeide, objElemento, mchaveacesso, rs_confnf, rs_nota, notaverificar, finalconsumidor)
+
+
+    ' gera emitente da nfe
+    mTeste = F_Gera_emit_nova(mCNPJ, "000" & mCPF, mRazEmit, mRegime, mFanEmit, mibgeide, objElemento, rs_confnf, rs_nota)
+    'gera destino da nfe
+    mdet = F_Gera_dest_nova(mindEstg, objElemento, rs_confnf, rs_nota, rs_nota.fields("cod_cli"), mcpfcnpjD)
+    'gera local de retirada
+    mretirada = F_Gera_entrega(BANCONFCE, objElemento, "R", rs_confnf, rs_nota)
+    'gera local de entrega
+    mentrega = F_Gera_entrega(BANCONFCE, objElemento, "E", rs_confnf, rs_nota)
+    'gera quem esta autorizado a baixar o xml
+    mAutoriza = F_Gera_Autorizacao(objElemento, mCNPJ, mcpfcnpjD)
+    ' gera detalhes dos produtos
+    mdet = F_Gera_Det(BANCONFCE, mindEstg, objElemento, rs_confnf, rs_nota, mPedidosAImprimir, GtotalDescPer, Gtotalipidevolvido, GtotalBaseSTAnt, GtotalSTAnt, finalconsumidor)
+    ' gera o total da nfce
+    mTotal = F_Gera_Total(objElemento, rs_confnf, rs_nota, Gtotalufdest, Gtotalufreme, Gtotalpobreza, GtotalDescPer, GtotalpfcN, GtotalpfcST, Gtotalipidevolvido)
+    ' gera a tag de transporte
+    mtransp = F_Gera_Transp(objElemento, rs_confnf, rs_nota)
+    ' gera forma de pagamentos
+    mdupl = F_Gera_Dupl(BANCONFCE, objElemento, rs_confnf, rs_nota)
+    mPagXML = F_Gera_Pag(objElemento, rs_nota, rs_nota.fields("numnot_sai"))
+    ' gera observacoes danota
+    mobsadic = F_Gera_obsadic(BANCONFCE, mindEstg, objElemento, rs_confnf, rs_nota, mPedidosAImprimir, Gtotalufdest, Gtotalufreme, Gtotalpobreza, GtotalpfcST, Gtotalipidevolvido, GtotalBaseSTAnt, GtotalSTAnt)
+    mobsadic = F_Gera_exportaZA01(objElemento, rs_confnf, rs_nota)
+    ' gera tag dos pedidos de compra
+    mCompras = F_Gera_Compras(objElemento, rs_confnf, rs_nota)
+    'responsavel tecnico
+    mobsadic = F_Gera_ZDRespTec(objElemento, "http://www.portalfiscal.inf.br/nfe")
+    objDocumento.save (arquivo)
+
+
+End Sub
+
+
+Public Function F_Gera_ide_nova(BANCONFCE As Boolean, mufide As String, mdv As String, mCNPJ As String, mnatop As String, mibgeide As String, Node As IXMLDOMNode, mch As String, rs_confnf As DAO.Recordset, rs_nota As DAO.Recordset, Optional mnotaverificar As String, Optional finalconsumidor As String) As String
+
+    Dim mCampo As String
+
+    mCampo = StrZero(Format("" & rs_nota.fields("Data_Emis").Value, "YYYY-MM-DD"), 10)
+
+    Set no_ide = objDocumento.createNode(NODE_ELEMENT, "ide", "http://www.portalfiscal.inf.br/nfe")
+    Node.appendChild no_ide
+    mCampo = mufide
+
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "cUF", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    mCampo = CDbl(rs_nota.fields("Numnot_sai"))
+
+
+    mCampo = StrZero(CDbl(rs_nota.fields("Numnot_sai")), 8)
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "cNF", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    Set Rs_Cfop = db.OpenRecordset("Select descricao from codfiscal where codigo='" & rs_nota.fields("Codfiscal_sai") & "'")
+    If Rs_Cfop.RecordCount > 0 Then
+        mnatop = "" & Trim(Rs_Cfop.fields("Descricao"))
+    End If
+
+
+    If rs_nota.fields("Estorno") = True Then
+        mCampo = "999 - Estorno de NF-e não cancelado no prazo normal"
+    ElseIf rs_nota.fields("ressarST") = True Then
+        mCampo = "Ressarcimento de ICMS-ST"
+    Else
+        mCampo = mnatop
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "natOp", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    If rs_nota.fields("PrazoVista") = "V" Then
+        mCampo = "0"
+    ElseIf rs_nota.fields("PrazoVista") = "P" Then
+        mCampo = "1"
+    Else
+        mCampo = "2"
+    End If
+
+    If rs_confnf.fields("VersaoXML") = "3.1" Then
+        Set noTemp = objDocumento.createNode(NODE_ELEMENT, "indPag", "http://www.portalfiscal.inf.br/nfe")
+        noTemp.Text = mCampo
+        no_ide.appendChild noTemp
+    End If
+
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "mod", "http://www.portalfiscal.inf.br/nfe")
+    'vivaldo 11-02-19
+    'noTemp.Text = "55"
+    noTemp.Text = rs_nota.fields("modelo")
+    no_ide.appendChild noTemp
+
+    If IsNumeric(rs_nota.fields("Serie")) Then
+        If CInt(rs_nota.fields("Serie")) > 0 Then
+            mCampo = CInt(rs_nota.fields("Serie"))
+        Else
+            mCampo = "0"
+        End If
+    Else
+        mCampo = "0"
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "serie", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    If mnotaverificar <> Empty Then
+        mCampo = CDbl(mnotaverificar)
+    Else
+        mCampo = CDbl(rs_nota.fields("Nota_Fiscal"))
+    End If
+
+    'nota_fiscal
+
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "nNF", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+
+    no_ide.appendChild noTemp
+
+    'hora_emis
+    mCampo = StrZero(Format("" & rs_nota.fields("Data_Emis").Value, "YYYY-MM-DD"), 10) & "T" & StrZero(Format(rs_nota.fields("Hora_Emis"), "hh:mm:ss"), 8) & IIf(rs_confnf.fields("HorarioVerao") = True, "-02:00", "-03:00")
+
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "dhEmi", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    If IsDate(rs_nota.fields("Data_Entrega").Value) Then
+        mCampo = StrZero(Format("" & rs_nota.fields("Data_Entrega").Value, "YYYY-MM-DD"), 10) & "T" & StrZero(Format(rs_nota.fields("Hora_Sai"), "hh:mm:ss"), 8) & IIf(rs_confnf.fields("HorarioVerao") = True, "-02:00", "-03:00")
+        Set noTemp = objDocumento.createNode(NODE_ELEMENT, "dhSaiEnt", "http://www.portalfiscal.inf.br/nfe")
+        noTemp.Text = mCampo
+        no_ide.appendChild noTemp
+    End If
+
+    If CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 4)) > 5000 Then
+        mCampo = "1"
+    Else
+        mCampo = "0"
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "tpNF", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    If CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 1)) = 1 Or CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 1)) = 5 Then
+        mCampo = "1"
+    ElseIf CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 1)) = 2 Or CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 1)) = 6 Then
+        mCampo = "2"
+    ElseIf CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 1)) = 3 Or CInt(Mid(SoNumero(rs_nota.fields("Codfis_imp")), 1, 1)) = 7 Then
+        mCampo = "3"
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "idDest", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    mCampo = Trim(mibgeide)
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "cMunFG", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+    If rs_nota.fields("Modelo") = "65" Then
+        mCampo = "4"    '& rs_confnf.Fields("danfeimp")
+    Else
+        mCampo = "" & rs_confnf.fields("danfeimp")
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "tpImp", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+    If rs_nota.fields("Modelo") = "65" Then
+        If rs_nota.fields("Tiponfe") <> "" Then
+            mCampo = "" & rs_nota.fields("tiponfe")
+        Else
+
+            mCampo = "" & rs_confnf.fields("tpEmisnfce")
+        End If
+
+    Else
+        If rs_nota.fields("Tiponfe") <> "" Then
+            mCampo = "" & rs_nota.fields("tiponfe")
+        Else
+            mCampo = "" & rs_confnf.fields("tpEmis")
+        End If
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "tpEmis", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    mCampo = Right(mch, 1)
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "cDV", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    If mEnviaXML = "1" Then
+        If mSimularDanfe Then
+            mCampo = "2"
+        Else
+            mCampo = "" & rs_confnf.fields("ambienteNfe")
+        End If
+    Else
+        mCampo = "" & rs_confnf.fields("ambienteNfe")
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "tpAmb", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    If rs_nota.fields("Credito_Presu") = True Or rs_nota.fields("Imobilizado") = True Or rs_nota.fields("Icmsservtrans") = True Or rs_nota.fields("ressarST") = True Or rs_nota.fields("Estorno") = True Then
+        mCampo = "3"
+    ElseIf rs_nota.fields("Compl_Preco") = True Or rs_nota.fields("Compl_ICMS") = True Then
+
+        Set Rs_Cfop = db.OpenRecordset("Select devolucaonfe,sit_est from codfiscal where codigo='" & rs_nota.fields("Codfiscal_sai") & "'")
+        If Rs_Cfop.RecordCount > 0 Then
+            If Rs_Cfop.fields("devolucaonfe") = True Then
+                mCampo = "4"
+            Else
+                If Rs_Cfop.fields("sit_est") = "DEV. -" Or Rs_Cfop.fields("sit_est") = "DEV. +" Then
+                    mCampo = "4"
+                Else
+                    mCampo = "2"
+                End If
+            End If
+        Else
+            mCampo = "2"
+        End If
+
+
+
+    Else
+        Set Rs_Cfop = db.OpenRecordset("Select devolucaonfe,sit_est from codfiscal where codigo='" & rs_nota.fields("Codfiscal_sai") & "'")
+        If Rs_Cfop.RecordCount > 0 Then
+            If Rs_Cfop.fields("devolucaonfe") = True Then
+                mCampo = "4"
+            Else
+                If Rs_Cfop.fields("sit_est") = "DEV. -" Or Rs_Cfop.fields("sit_est") = "DEV. +" Then
+                    mCampo = "4"
+                Else
+                    mCampo = "1"
+                End If
+            End If
+        Else
+            mCampo = "1"
+        End If
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "finNFe", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+    mFinNFE = mCampo
+
+    Dim mcampoant As String
+    mcampoant = mCampo
+    Dim rs_cliTMP As DAO.Recordset
+
+    Set rs_cliTMP = db.OpenRecordset("SELECT cod_cli, consumidorfinal FROM clientes WHERE cod_cli=" & rs_nota.fields("cod_cli"))
+    If rs_cliTMP.RecordCount > 0 Then
+        If rs_cliTMP.fields("consumidorfinal") = True Then
+            mCampo = "1"
+        Else
+            mCampo = "0"
+        End If
+    Else
+        mCampo = "0"
+    End If
+    rs_cliTMP.Close: Set rs_cliTMP = Nothing
+    'nfce
+    If TiraNull(rs_nota.fields("modelo").Value) = "65" Then
+        mCampo = "1"
+    End If
+    finalconsumidor = mCampo
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "indFinal", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+    ' M indica venda por markplace que equivale a indpres="2"
+    If rs_nota.fields("IndPres").Value = "M" Then
+        mCampo = "2"    'TiraNull(rs_nota.Fields("IndPres").value, "S")
+    Else
+        mCampo = TiraNull(rs_nota.fields("IndPres").Value, "S")
+    End If
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "indPres", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    'Inclusão do campo de indicativo da operação com intermediador/marketplace, que será obrigatório
+    'informar quando o indicador de presença for 2=Operação não presencial, pela Internet; 3=Operação
+    'não presencial, Teleatendimento; 4=NFC-e em operação com entrega a domicílio; ou 9=Operação não
+    'presencial, outros.
+    '2 ambiente de homologacao
+    If rs_confnf.fields("ambienteNfe") = "2" Or rs_nota.fields("Data_Emis").Value >= CDate("05/04/2021") Then
+        If mCampo = "2" Then
+
+            mCampo = "1"
+            mIndicaPres = "1"
+
+
+
+            Set noTemp = objDocumento.createNode(NODE_ELEMENT, "indIntermed", "http://www.portalfiscal.inf.br/nfe")
+            noTemp.Text = mCampo
+            no_ide.appendChild noTemp
+        Else
+
+
+            If mCampo = "0" Then
+            Else
+                mCampo = "0"
+                mIndicaPres = "0"
+                '09-02-21 nota tecnica 2020-006
+
+                'mCampo = TiraNull(rs_nota.Fields("indIntermed").value, "S")
+                Set noTemp = objDocumento.createNode(NODE_ELEMENT, "indIntermed", "http://www.portalfiscal.inf.br/nfe")
+                noTemp.Text = mCampo
+                no_ide.appendChild noTemp
+            End If
+        End If
+    End If
+
+    mCampo = "0"
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "procEmi", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+
+    mCampo = App.Major & "." & App.Minor & "." & App.Revision
+    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "verProc", "http://www.portalfiscal.inf.br/nfe")
+    noTemp.Text = mCampo
+    no_ide.appendChild noTemp
+    Dim mconting As String
+    If rs_nota.fields("Modelo") = "65" Then
+        If rs_nota.fields("Tiponfe") <> "" Then
+            mconting = rs_nota.fields("tiponfe")
+        Else
+            mconting = rs_confnf.fields("tpEmisnfce")
+        End If
+    Else
+        mconting = rs_confnf.fields("tpEmis")
+    End If
+
+    'If rs_confnf.Fields("tpEmis") <> "1" Then
+    If rs_nota.fields("Modelo") = "65" Then
+        If mconting = "9" Then
+            If rs_nota.fields("Data_emis") < rs_confnf.fields("Datanfce").Value Then
+                mCampo = StrZero(Format("" & rs_nota.fields("Data_emis").Value, "YYYY-MM-DD"), 10) & "T" & StrZero(Format("" & rs_nota.fields("Hora_sai").Value, "hh:mm:ss"), 8) & IIf(rs_nota.fields("Hora_sai") = True, "-02:00", "-03:00")
+            Else
+                mCampo = StrZero(Format("" & rs_confnf.fields("Datanfce").Value, "YYYY-MM-DD"), 10) & "T" & StrZero(Format("" & rs_confnf.fields("Horanfce").Value, "hh:mm:ss"), 8) & IIf(rs_confnf.fields("HorarioVerao") = True, "-02:00", "-03:00")
+            End If
+            Set noTemp = objDocumento.createNode(NODE_ELEMENT, "dhCont", "http://www.portalfiscal.inf.br/nfe")
+            noTemp.Text = mCampo
+            no_ide.appendChild noTemp
+
+            mCampo = "" & rs_confnf.fields("Justificativanfce").Value
+            Set noTemp = objDocumento.createNode(NODE_ELEMENT, "xJust", "http://www.portalfiscal.inf.br/nfe")
+            noTemp.Text = mCampo
+            no_ide.appendChild noTemp
+        End If
+
+    Else
+        If mconting <> "1" Then
+            mCampo = StrZero(Format("" & rs_confnf.fields("Data").Value, "YYYY-MM-DD"), 10) & "T" & StrZero(Format("" & rs_confnf.fields("Hora").Value, "hh:mm:ss"), 8) & IIf(rs_confnf.fields("HorarioVerao") = True, "-02:00", "-03:00")
+            Set noTemp = objDocumento.createNode(NODE_ELEMENT, "dhCont", "http://www.portalfiscal.inf.br/nfe")
+            noTemp.Text = mCampo
+            no_ide.appendChild noTemp
+
+            mCampo = "" & rs_confnf.fields("Justificativa").Value
+            Set noTemp = objDocumento.createNode(NODE_ELEMENT, "xJust", "http://www.portalfiscal.inf.br/nfe")
+            noTemp.Text = mCampo
+            no_ide.appendChild noTemp
+        End If
+    End If
+    '28-10-21
+    Dim rs_notref As DAO.Recordset
+    If BANCONFCE = True Then
+        Set rs_notref = dbnfce.OpenRecordset("SELECT * FROM notfis_sairef WHERE numnot_sai='" & rs_nota.fields("numnot_sai") & "' ORDER BY grid")
+    Else
+        Set rs_notref = db.OpenRecordset("SELECT * FROM notfis_sairef WHERE numnot_sai='" & rs_nota.fields("numnot_sai") & "' ORDER BY grid")
+    End If
+    Call F_CriaNFEReferenciada(rs_nota, rs_notref, no_ide, rs_confnf)
+    rs_notref.Close: Set rs_notref = Nothing
+
+End Function
+
+Public Sub F_CriaNFEReferenciada(rs_nota As DAO.Recordset, rs_notref As DAO.Recordset, no_ide As IXMLDOMNode, rs_confnf As DAO.Recordset)   '23/09/2015 - Eliezer
+    If rs_notref.RecordCount > 0 Then
+        Dim mGrid As String
+        Dim no_Referen As IXMLDOMNode
+        Dim mcoduf As String
+
+        rs_notref.MoveFirst
+
+        mGrid = "" & rs_notref.fields("grid")
+
+        'mcoduf = (F_UFibge((rs_notref.Fields("UF"))))
+        mcoduf = (F_UFibge(TiraNull(rs_notref.fields("UF"))))
+
+        Do While Not rs_notref.EOF
+
+            If rs_notref.fields("grid") = mGrid Then
+                Set no_Referen = objDocumento.createNode(NODE_ELEMENT, "NFref", "http://www.portalfiscal.inf.br/nfe")
+                no_ide.appendChild no_Referen
+
+                If mGrid = "1" Or (mGrid = "2" And rs_notref.fields("chaveacesso") <> "") Then    'nf própria
+                    mCampo = "" & rs_notref.fields("chaveacesso")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "refNFe", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_Referen.appendChild noTemp
+                End If
+
+                If mGrid = "2" And rs_notref.fields("chaveacesso") = "" Then
+                    Dim no_ReferenNF As IXMLDOMNode
+
+                    Set no_ReferenNF = objDocumento.createNode(NODE_ELEMENT, "refNF", "http://www.portalfiscal.inf.br/nfe")
+                    no_Referen.appendChild no_ReferenNF
+
+                    mCampo = mcoduf    '"31"
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "cUF", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_ReferenNF.appendChild noTemp
+
+                    mCampo = "" & Mid(rs_notref.fields("AnoMes"), 6, 2) & Mid(rs_notref.fields("AnoMes"), 1, 2)
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "AAMM", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_ReferenNF.appendChild noTemp
+
+                    mCampo = "" & SoNumero(rs_notref.fields("cpfcgc"))
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "CNPJ", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_ReferenNF.appendChild noTemp
+
+                    If rs_confnf.fields("VersaoXML") = "3.1" Then
+                        mCampo = "01"
+                    Else  '4.0
+                        mCampo = "" & StrZero(CDbl(rs_notref.fields("modelo")), 2)    '01 ou 02
+                    End If
+
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "mod", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_ReferenNF.appendChild noTemp
+
+                    mCampo = "" & IIf(rs_notref.fields("serie") <> "", rs_notref.fields("serie"), "0")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "serie", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_ReferenNF.appendChild noTemp
+
+                    mCampo = "" & CDbl(rs_notref.fields("numeroNFE"))
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "nNF", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_ReferenNF.appendChild noTemp
+                End If
+
+                If mGrid = "3" Then    'nf produtor
+                    Dim no_referenNFP As IXMLDOMNode
+
+                    Set no_referenNFP = objDocumento.createNode(NODE_ELEMENT, "refNFP", "http://www.portalfiscal.inf.br/nfe")
+                    no_Referen.appendChild no_referenNFP
+
+                    mCampo = "" & mcoduf    'rs_notref.Fields("UF")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "cUF", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+
+                    mCampo = "" & Right(rs_notref.fields("AnoMes"), 2) & Left(rs_notref.fields("AnoMes"), 2)
+
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "AAMM", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+
+                    mCampo = "" & SoNumero(rs_notref.fields("cpfcgc"))
+                    If Len(SoNumero(mCampo)) = 11 Then
+                        Set noTemp = objDocumento.createNode(NODE_ELEMENT, "CPF", "http://www.portalfiscal.inf.br/nfe")
+                    Else
+                        Set noTemp = objDocumento.createNode(NODE_ELEMENT, "CNPJ", "http://www.portalfiscal.inf.br/nfe")
+                    End If
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+
+                    mCampo = "" & rs_notref.fields("IE")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "IE", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+
+                    mCampo = "" & rs_notref.fields("modelo")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "mod", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+
+                    mCampo = "" & rs_notref.fields("serie")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "serie", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+
+                    mCampo = "" & CDbl(rs_notref.fields("numeroNFE"))
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "nNF", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenNFP.appendChild noTemp
+                End If
+
+                If mGrid = "4" Then    'cupom
+                    Dim no_referenECF As IXMLDOMNode
+
+                    Set no_referenECF = objDocumento.createNode(NODE_ELEMENT, "refECF", "http://www.portalfiscal.inf.br/nfe")
+                    no_Referen.appendChild no_referenECF
+
+                    mCampo = "" & rs_notref.fields("modelo")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "mod", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenECF.appendChild noTemp
+
+                    mCampo = "" & rs_notref.fields("numeroNFE")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "nECF", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenECF.appendChild noTemp
+
+                    mCampo = "" & rs_notref.fields("sequenciaRef")
+                    Set noTemp = objDocumento.createNode(NODE_ELEMENT, "nCOO", "http://www.portalfiscal.inf.br/nfe")
+                    noTemp.Text = mCampo
+                    no_referenECF.appendChild noTemp
+                End If
+
+            Else
+                Exit Do
+            End If
+
+            rs_notref.MoveNext
+        Loop
+    End If
+
+End Sub
+
+
+
+
+
+
