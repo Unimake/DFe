@@ -85,3 +85,8 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[EnviarMDFeAssincrono.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 

@@ -80,7 +80,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         #region Protected Methods
 
         /// <summary>
-        /// Efetuar um Ajustse no XML da NFCe logo depois de assinado
+        /// Efetuar ajustes no XML da NFCe logo depois de assinado
         /// </summary>
         protected override void AjustarXMLAposAssinado()
         {
@@ -250,7 +250,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 #endif
 
         /// <summary>
-        /// Conteúdo retornado pelo webservice depois do envio do XML
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetEnviMDFe Result
         {

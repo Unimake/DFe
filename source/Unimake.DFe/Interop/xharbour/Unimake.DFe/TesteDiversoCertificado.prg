@@ -27,7 +27,7 @@ Function TesteDiversoCertificado()
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    ? "A1 - Carregar o certificado digital direto do arquivo .PFX."
    oCertSel2 = oCertificado:CarregarCertificadoDigitalA1("C:\Projetos\certificados\UnimakePV.pfx", "12345678")
-   MostrarDados(oCertificado, oCertSel1)   
+   MostrarDados(oCertificado, oCertSel2)   
    
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  * Certificado A1 e A3 - Buscar o certificado digital, instalado no repositorio do windows, pelo Serial Number
@@ -42,11 +42,14 @@ Function TesteDiversoCertificado()
  * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    ? "A1 e A3 - Buscar o certificado digital, instalado no repositorio do windows, pelo ThumbPrint"
    oCertSel4 = oCertificado:BuscarCertificadoDigital(thumbprint)
+ 
 
    MostrarDados(oCertificado, oCertSel4)
 RETURN
 
 Function MostrarDados(oCert, oCertSel)
+   Local oVerificarA3
+   
    ?
    ? "ID do Certificado....: ", oCert:GetThumbPrint(oCertSel)
    ? "Dados do proprietario: ", oCert:GetSubject(oCertSel)
@@ -54,7 +57,17 @@ Function MostrarDados(oCert, oCertSel)
    ? "Validade Inicial.....: ", oCert:GetNotBefore(oCertSel)
    ? "Validade Final.......: ", oCert:GetNotAfter(oCertSel)
    ? "Certificado vencido?.: ", oCert:Vencido(oCertSel)
+   
+ * Verificar se o certificado é A1 ou A3
+   oVerificarA3 = CreateObject("Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop")
+   If oVerificarA3:IsA3(oCertSel)
+      ? "Tipo do certificado digital e A3."
+   Else
+      ? "Tipo do certificado digital e A1."
+   Endif
+   
    ?
+   
    Wait
    Cls
 Return

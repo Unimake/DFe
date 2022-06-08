@@ -23,6 +23,7 @@ Function Main()
    Aadd(aOpcoes, "9-Carta de Correcao")
    Aadd(aOpcoes, "A-Envio da NFSe (GerarNfse)")
    Aadd(aOpcoes, "B-Envio NFe - Sincrono")
+   Aadd(aOpcoes, "C-Envio MDFe - Assincrono")
     
    Do While .T.
       Cls
@@ -69,7 +70,10 @@ Function Main()
 			  
          case nOpcao = 11
 			  EnviarNFeSincrono()
-      endcase
+
+         case nOpcao = 12
+			  EnviarMDFeAssincrono()      
+	  endcase
    EndDo
 Return
 
