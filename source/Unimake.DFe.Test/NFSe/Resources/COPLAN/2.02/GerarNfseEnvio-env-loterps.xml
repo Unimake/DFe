@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<GerarNfseEnvio xmlns="http://www.betha.com.br/e-nota-contribuinte-ws">
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Rps>
     <InfDeclaracaoPrestacaoServico Id="lote1">
       <Competencia>2014-12-02</Competencia>

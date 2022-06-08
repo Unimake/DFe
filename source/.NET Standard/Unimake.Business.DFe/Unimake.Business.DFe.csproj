@@ -466,6 +466,7 @@
 		<None Remove="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BHISS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
@@ -1344,6 +1345,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BETHA\xmldsig-core-schema_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BHISS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\BHISS\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
