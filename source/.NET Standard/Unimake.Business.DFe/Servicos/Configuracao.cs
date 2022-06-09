@@ -816,7 +816,7 @@ namespace Unimake.Business.DFe.Servicos
         private int _TimeOutWebServiceConnect;
 
         /// <summary>
-        /// Tempo, em mile segundos, para aguardar resposta dos WebServices. (default = 60000)
+        /// Tempo, em milissegundos, para aguardar resposta dos WebServices. (default = 60000)
         /// </summary>
         public int TimeOutWebServiceConnect
         {
