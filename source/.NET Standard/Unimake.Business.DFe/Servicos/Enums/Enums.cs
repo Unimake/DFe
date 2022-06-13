@@ -6026,6 +6026,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("VERSATEC")]
         VERSATEC = 19,
+
+        /// <summary>
+        /// GINFES – Gestão Inteligente da Nota Fiscal de Serviço Eletrônica
+        /// </summary>
+        [Description("GINFES")]
+        GINFES = 20,
     }
 
     #endregion

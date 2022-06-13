@@ -153,6 +153,16 @@ namespace Unimake.Business.DFe.Servicos
                                 WebSoapString = XMLUtility.TagRead(elementPropriedades, "WebSoapString");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "WebSoapStringProducao"))
+                            {
+                                WebSoapStringProducao = XMLUtility.TagRead(elementPropriedades, "WebSoapStringProducao");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "WebSoapStringHomologacao"))
+                            {
+                                WebSoapStringHomologacao = XMLUtility.TagRead(elementPropriedades, "WebSoapStringHomologacao");
+                            }
+
                             if (XMLUtility.TagExist(elementPropriedades, "GZIPCompress"))
                             {
                                 GZIPCompress = (XMLUtility.TagRead(elementPropriedades, "GZIPCompress").ToLower() == "true" ? true : false);
@@ -438,6 +448,15 @@ namespace Unimake.Business.DFe.Servicos
                 WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
             }
 
+            if (TipoAmbiente == TipoAmbiente.Homologacao)
+            {
+                WebSoapString = WebSoapStringHomologacao;
+            }
+            else
+            {
+                WebSoapString = WebSoapStringProducao;
+            }
+
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
@@ -486,6 +505,16 @@ namespace Unimake.Business.DFe.Servicos
                         if (XMLUtility.TagExist(elementVersao, "WebSoapString"))
                         {
                             WebSoapString = XMLUtility.TagRead(elementVersao, "WebSoapString");
+                        }
+
+                        if (XMLUtility.TagExist(elementVersao, "WebSoapStringProducao"))
+                        {
+                            WebSoapStringProducao = XMLUtility.TagRead(elementVersao, "WebSoapStringProducao");
+                        }
+
+                        if (XMLUtility.TagExist(elementVersao, "WebSoapStringHomologacao"))
+                        {
+                            WebSoapStringHomologacao = XMLUtility.TagRead(elementVersao, "WebSoapStringHomologacao");
                         }
 
                         if (XMLUtility.TagExist(elementVersao, "GZIPCompress"))
@@ -770,13 +799,83 @@ namespace Unimake.Business.DFe.Servicos
         ///
         ///    <![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header>{xmlHeader}</soap:Header><soap:Body><nfeDadosMsg xmlns="{ActionWeb}">{xmlBody}</nfeDadosMsg></soap:Body></soap:Envelope>]]>
         ///
-        ///    Onde estiver {xmlHeader} o conteúdo será substituido pelo XML do header em tempo de execução
-        ///    Onde estiver {ActionWeb} o conteúdo será substituido pelo WebAction em tempo de execução
-        ///    Onde estiver {xmlBody} o conteúdo será substituido pelo XML do Body em tempo de execução
+        ///    Onde estiver {xmlHeader} o conteúdo será substituído pelo XML do header em tempo de execução
+        ///    Onde estiver {ActionWeb} o conteúdo será substituído pelo WebAction em tempo de execução
+        ///    Onde estiver {xmlBody} o conteúdo será substituído pelo XML do Body em tempo de execução
         ///
         ///    Deixe o conteúdo em branco para utilizar um soap padrão.
         /// </example>
         public string WebSoapString { get; set; }
+
+        private string _webSoapStringHomologacao;
+
+        /// <summary>
+        /// String do Soap para envio para o webservice;
+        /// </summary>
+        /// <example>
+        /// Exemplo de conteúdo que deve ser inserido nesta propriedade:
+        ///
+        ///    <![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header>{xmlHeader}</soap:Header><soap:Body><nfeDadosMsg xmlns="{ActionWeb}">{xmlBody}</nfeDadosMsg></soap:Body></soap:Envelope>]]>
+        ///
+        ///    Onde estiver {xmlHeader} o conteúdo será substituído pelo XML do header em tempo de execução
+        ///    Onde estiver {ActionWeb} o conteúdo será substituído pelo WebAction em tempo de execução
+        ///    Onde estiver {xmlBody} o conteúdo será substituído pelo XML do Body em tempo de execução
+        ///
+        ///    Deixe o conteúdo em branco para utilizar um soap padrão.
+        /// </example>
+        public string WebSoapStringHomologacao
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_webSoapStringHomologacao))
+                {
+                    return WebSoapString;
+                }
+                else
+                {
+                    return _webSoapStringHomologacao;
+                }
+            }
+            set
+            {
+                _webSoapStringHomologacao = value;
+            }
+        }
+
+        private string _webSoapStringProducao;
+
+        /// <summary>
+        /// String do Soap para envio para o webservice;
+        /// </summary>
+        /// <example>
+        /// Exemplo de conteúdo que deve ser inserido nesta propriedade:
+        ///
+        ///    <![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header>{xmlHeader}</soap:Header><soap:Body><nfeDadosMsg xmlns="{ActionWeb}">{xmlBody}</nfeDadosMsg></soap:Body></soap:Envelope>]]>
+        ///
+        ///    Onde estiver {xmlHeader} o conteúdo será substituído pelo XML do header em tempo de execução
+        ///    Onde estiver {ActionWeb} o conteúdo será substituído pelo WebAction em tempo de execução
+        ///    Onde estiver {xmlBody} o conteúdo será substituído pelo XML do Body em tempo de execução
+        ///
+        ///    Deixe o conteúdo em branco para utilizar um soap padrão.
+        /// </example>
+        public string WebSoapStringProducao
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_webSoapStringProducao))
+                {
+                    return WebSoapString;
+                }
+                else
+                {
+                    return _webSoapStringProducao;
+                }
+            }
+            set
+            {
+                _webSoapStringProducao = value;
+            }
+        }
 
         /// <summary>
         /// Compactar a mensagem (XML) com GZIP para ser enviado ao webservice?
