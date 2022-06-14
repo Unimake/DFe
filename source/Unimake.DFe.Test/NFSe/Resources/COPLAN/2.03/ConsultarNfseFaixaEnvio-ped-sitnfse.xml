@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+<ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Prestador>
     <CpfCnpj>
       <Cnpj>19900819000133</Cnpj>
@@ -10,5 +10,5 @@
     <NumeroNfseInicial>91</NumeroNfseInicial>
     <NumeroNfseFinal>91</NumeroNfseFinal>
   </Faixa>
-  <Pagina>0</Pagina>
+  <Pagina>1</Pagina>
 </ConsultarNfseFaixaEnvio>

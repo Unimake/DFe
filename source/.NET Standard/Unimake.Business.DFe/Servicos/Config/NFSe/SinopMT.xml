@@ -3,8 +3,8 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="2.03">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPS</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPS</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -22,8 +22,8 @@
     </RecepcionarLoteRps>
     <RecepcionarLoteRpsSincrono versao="2.03">
       <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPSSINCRONO</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPSSINCRONO</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -41,8 +41,8 @@
     </RecepcionarLoteRpsSincrono>
 	<GerarNfse versao="2.03">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-	  <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-	  <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+	  <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+	  <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.GERARNFSE</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.GERARNFSE</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -60,8 +60,8 @@
     </GerarNfse>
     <CancelarNfse versao="2.03">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CANCELARNFSE</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CANCELARNFSE</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -79,8 +79,8 @@
     </CancelarNfse>
     <SubstituirNfse versao="2.03">
       <Descricao>Substituir nota fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.SUBSTITUIRNFSE</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.SUBSTITUIRNFSE</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -100,8 +100,8 @@
     </SubstituirNfse>
     <ConsultarLoteRps versao="2.03">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARLOTERPS</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARLOTERPS</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -119,8 +119,8 @@
     </ConsultarLoteRps>
     <ConsultarNfsePorRps versao="2.03">
       <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEPORRPS</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEPORRPS</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -138,8 +138,8 @@
     </ConsultarNfsePorRps>
 	<ConsultarNfseServicoPrestado versao="2.03">
       <Descricao>Consulta NFSe de serviços prestados</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOPRESTADO</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOPRESTADO</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -157,8 +157,8 @@
     </ConsultarNfseServicoPrestado>
     <ConsultarNfseServicoTomado versao="2.03">
       <Descricao>Consulta NFSe de serviços tomados</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOTOMADO</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOTOMADO</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -176,8 +176,8 @@
     </ConsultarNfseServicoTomado>
     <ConsultarNfseFaixa versao="2.03">
       <Descricao>Consulta NFSe por Faixa</Descricao>
-      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario_homologacao/servlet/anfse_web_service</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://www.gp.srv.br/tributario_sinop/servlet/anfse_web_service</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.gp.srv.br/tributario/sinop/anfse_web_service</WebEnderecoProducao>
       <WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEFAIXA</WebActionHomologacao>
       <WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEFAIXA</WebActionProducao>
       <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
