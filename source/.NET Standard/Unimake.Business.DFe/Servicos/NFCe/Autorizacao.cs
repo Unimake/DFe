@@ -33,12 +33,12 @@ namespace Unimake.Business.DFe.Servicos.NFCe
                 {
                     if (string.IsNullOrWhiteSpace(Configuracoes.CSC))
                     {
-                        throw new Exception("Para montagem do QRCode é necessario informar o conteúdo da propriedade \"Configuracao.CSC\"");
+                        throw new Exception("Para montagem do QRCode é necessário informar o conteúdo da propriedade \"Configuracao.CSC\"");
                     }
 
                     if (Configuracoes.CSCIDToken <= 0)
                     {
-                        throw new Exception("Para montagem do QRCode é necessario informar o conteúdo da propriedade \"Configuracao.CSCIDToken\"");
+                        throw new Exception("Para montagem do QRCode é necessário informar o conteúdo da propriedade \"Configuracao.CSCIDToken\"");
                     }
 
                     EnviNFe.NFe[i].InfNFeSupl = new InfNFeSupl();
