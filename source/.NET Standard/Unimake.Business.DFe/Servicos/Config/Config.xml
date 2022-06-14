@@ -706,4 +706,10 @@
 		<ArqConfig>ItaquaquecetubaSP.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5107602">
+		<Nome>Rondonópolis - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>RondonopolisMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
