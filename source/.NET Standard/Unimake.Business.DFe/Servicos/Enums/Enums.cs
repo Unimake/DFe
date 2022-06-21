@@ -306,6 +306,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consulta Lote")]
         NFSeConsultaLote = 48,
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Description("Consulta Centralizada de Código GTIN (CCG)")]
+        CCGConsGTIN = 49,
+
         #endregion
 
         #region Gerais
@@ -370,7 +376,11 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 9 - SNCM - Sistema Nacional de Controle de Medicamentos
         /// </summary>
-        SNCM = 9
+        SNCM = 9,
+        /// <summary>
+        /// 10 - CCG - Consulta Centralizada de GTIN
+        /// </summary>
+        CCG = 10
     }
 
     #endregion       

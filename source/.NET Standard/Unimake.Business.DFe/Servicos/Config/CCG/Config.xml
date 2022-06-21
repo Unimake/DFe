@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigPadrao>
+	<Versao ID="1.00">
+		<WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+		<WebSoapString><![CDATA[<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"><soap12:Body><ccgConsGTIN xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/ccgConsGtin"><nfeDadosMsg>{xmlBody}</nfeDadosMsg></ccgConsGTIN></soap12:Body></soap12:Envelope>]]></WebSoapString>	
+		<WebTagRetorno>nfeResultMsg</WebTagRetorno>
+		<WebSoapVersion>soap12</WebSoapVersion>
+		<SchemaVersao>1.00</SchemaVersao>
+		<TargetNS>http://www.portalfiscal.inf.br/nfe</TargetNS>
+	</Versao>
+</ConfigPadrao>

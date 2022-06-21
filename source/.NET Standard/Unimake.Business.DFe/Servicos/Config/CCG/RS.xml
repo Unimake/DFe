@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="CCG">
+		<CcgConsGTIN versao="1.00">
+			<Descricao>Consulta códigos de GTIN</Descricao>
+			<WebEnderecoHomologacao>https://dfe-servico.svrs.rs.gov.br/ws/ccgConsGTIN/ccgConsGTIN.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://dfe-servico.svrs.rs.gov.br/ws/ccgConsGTIN/ccgConsGTIN.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/ccgConsGtin</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/ccgConsGtin</WebActionProducao>
+			<SchemaArquivo>consGTIN_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</CcgConsGTIN>
+	</Servicos>
+</Configuracoes>

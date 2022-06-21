@@ -46,6 +46,8 @@
 
 	<ItemGroup>
 		<None Remove="Exceptions\Exceptions.cs~RF1e809dd.TMP" />
+		<None Remove="Servicos\CCG\RS.xml" />
+		<None Remove="Servicos\Config\CCG\Config.xml" />
 		<None Remove="Servicos\Config\CTeOS\AC.xml" />
 		<None Remove="Servicos\Config\CTeOS\AL.xml" />
 		<None Remove="Servicos\Config\CTeOS\AM.xml" />
@@ -268,6 +270,10 @@
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
 		<None Remove="Servicos\Config\SNCM\Config.xml" />
 		<None Remove="Servicos\Config\SNCM\SNCM.xml" />
+		<None Remove="Xml\Schemas\CCG\consGTIN_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CCG\leiauteCcgConsGTIN_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CCG\retConsGTIN_v1.00.xsd" />
+		<None Remove="Xml\Schemas\CCG\tiposBasicosCcgConsGTIN_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
@@ -573,6 +579,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="Servicos\Config\CCG\RS.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\CCG\Config.xml" />
 		<EmbeddedResource Include="Servicos\Config\CTeOS\AC.xml" />
 		<EmbeddedResource Include="Servicos\Config\CTeOS\AL.xml" />
 		<EmbeddedResource Include="Servicos\Config\CTeOS\AM.xml">
@@ -1026,6 +1036,10 @@
 		<EmbeddedResource Include="Servicos\Config\SNCM\SNCM.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\CCG\consGTIN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CCG\leiauteCcgConsGTIN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CCG\retConsGTIN_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CCG\tiposBasicosCcgConsGTIN_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evCTeCanceladoMDFe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
@@ -1471,10 +1485,6 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Servicos\CCG\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
