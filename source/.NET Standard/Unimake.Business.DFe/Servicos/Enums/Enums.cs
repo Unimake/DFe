@@ -6365,4 +6365,34 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    /// <summary>
+    /// Tipos de códigos GTIN
+    /// </summary>
+    public enum TipoCodigoGTIN
+    {
+        /// <summary>
+        /// 8 - GTIN8 (é codificado no código de barras EAN-8)
+        /// </summary>
+        [XmlEnum("8")]
+        GTIN8 = 8,
+
+        /// <summary>
+        /// 12 - GTIN12 (é mais utilizado no código de barras UPC-A)
+        /// </summary>
+        [XmlEnum("12")]
+        GTIN12 = 12,
+
+        /// <summary>
+        /// 13 - GTIN13 (é codificado no EAN-13)
+        /// </summary>
+        [XmlEnum("13")]
+        GTIN13 = 13,
+
+        /// <summary>
+        /// 14 - GTIN14 (é codificado no ITF-14)
+        /// </summary>
+        [XmlEnum("14")]
+        GTIN14 = 14
+    }
 }

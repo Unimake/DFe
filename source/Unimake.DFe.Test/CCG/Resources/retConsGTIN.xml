@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsGTIN versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <verAplic>verAplic1</verAplic>
+  <cStat>9490</cStat>
+  <xMotivo>Consulta realizada com sucesso</xMotivo>
+  <dhResp>2022-05-16T10:25:38-03:00</dhResp>
+  <GTIN>0070847022015</GTIN>
+  <tpGTIN>13</tpGTIN>
+  <xProd>MONSTER</xProd>
+  <NCM>NCM1</NCM>
+  <CEST>CEST1</CEST>
+  <CEST>CEST2</CEST>
+  <CEST>CEST3</CEST>
+</retConsGTIN>
