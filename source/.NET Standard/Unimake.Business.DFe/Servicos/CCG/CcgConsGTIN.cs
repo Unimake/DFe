@@ -112,6 +112,8 @@ namespace Unimake.Business.DFe.Servicos.CCG
             }
         }
 
+#endif
+
         /// <inheritdoc />
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
@@ -124,7 +126,5 @@ namespace Unimake.Business.DFe.Servicos.CCG
                 ThrowHelper.Instance.Throw(ex);
             }
         }
-
-#endif
     }
 }

@@ -1,8 +1,8 @@
 ﻿#if INTEROP
-using System;
 using System.Runtime.InteropServices;
-using System.Text;
 #endif
+using System.Text;
+using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;

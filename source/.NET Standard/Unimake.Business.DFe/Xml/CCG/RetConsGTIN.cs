@@ -1,9 +1,9 @@
 ﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Text;
-#endif
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
