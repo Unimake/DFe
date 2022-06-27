@@ -84,6 +84,13 @@ namespace Unimake.Business.DFe.Xml.MDFe
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<MDFe>(doc);
         }
+
+        /// <summary>
+        /// Deserializar o XML MDFe no objeto MDFe
+        /// </summary>
+        /// <param name="xml">string do XML MDFe</param>
+        /// <returns>Objeto da MDFe</returns>
+        public MDFe LoadFromXML(string xml) => XMLUtility.Deserializar<MDFe>(xml);
     }
 
 #if INTEROP

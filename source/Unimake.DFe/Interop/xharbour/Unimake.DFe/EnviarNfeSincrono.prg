@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar Nfe de forma assincrona
+* Enviar Nfe de forma síncrona
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
@@ -48,7 +48,7 @@ Function EnviarNfeSincrono()
    oIde:NatOp = "VENDA PRODUC.DO ESTABELEC"
    oIde:Mod = 55 //NFe
    oIde:Serie    = 1
-   oIde:NNF      = 58009
+   oIde:NNF      = 58015
    oIde:DhEmi    = DateTime() 
    oIde:DhSaiEnt = DateTime()
    oIde:TpNF     = 1 // Saida

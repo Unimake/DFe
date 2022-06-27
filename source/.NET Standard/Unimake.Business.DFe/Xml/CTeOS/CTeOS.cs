@@ -66,6 +66,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<CTeOS>(doc);
         }
+
+        /// <summary>
+        /// Deserializar o XML CTeOS no objeto CTeOS
+        /// </summary>
+        /// <param name="xml">string do XML CTeOS</param>
+        /// <returns>Objeto da CTeOS</returns>
+        public CTeOS LoadFromXML(string xml) => XMLUtility.Deserializar<CTeOS>(xml);
     }
 
 #if INTEROP

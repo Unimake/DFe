@@ -9,7 +9,7 @@ Autores:
 
 */
 Function Main()
-   Local aOpcoes
+   Local aOpcoes, nOpcao
    
    aOpcoes := {}
    AAdd(aOpcoes, "1-Carregar Certificado A1")
@@ -24,6 +24,7 @@ Function Main()
    Aadd(aOpcoes, "A-Envio da NFSe (GerarNfse)")
    Aadd(aOpcoes, "B-Envio NFe - Sincrono")
    Aadd(aOpcoes, "C-Envio MDFe - Assincrono")
+   AAdd(aOpcoes, "D-Enviar NFe - Deserializando o XML")                               
     
    Do While .T.
       Cls
@@ -72,7 +73,10 @@ Function Main()
 			  EnviarNFeSincrono()
 
          case nOpcao = 12
-			  EnviarMDFeAssincrono()      
+			  EnviarMDFeAssincrono()
+
+         Case nOpcao = 13
+              EnviarNfeDeserializando()			        
 	  endcase
    EndDo
 Return

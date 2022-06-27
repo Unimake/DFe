@@ -168,6 +168,25 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             return (T)(object)retornar;
         }
+
+        /// <summary>
+        /// Deserializar o XML no objeto EnvEvento
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML do envEvento</param>
+        /// <returns>Objeto do EnvEvento</returns>
+        public EnvEvento LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<EnvEvento>(doc);
+        }
+
+        /// <summary>
+        /// Deserializar o XML envEvento no objeto EnvEvento
+        /// </summary>
+        /// <param name="xml">string do XML envEvento</param>
+        /// <returns>Objeto da EnvEvento</returns>
+        public EnvEvento LoadFromXML(string xml) => XMLUtility.Deserializar<EnvEvento>(xml);
     }
 
 #if INTEROP

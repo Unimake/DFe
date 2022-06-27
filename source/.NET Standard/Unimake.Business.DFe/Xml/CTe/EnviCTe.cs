@@ -125,7 +125,14 @@ namespace Unimake.Business.DFe.Xml.CTe
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<CTe>(doc);
-        }
+        }        
+
+        /// <summary>
+        /// Deserializar o XML CTe no objeto CTe
+        /// </summary>
+        /// <param name="xml">string do XML CTe</param>
+        /// <returns>Objeto da CTe</returns>
+        public CTe LoadFromXML(string xml) => XMLUtility.Deserializar<CTe>(xml);
     }
 
 #if INTEROP
