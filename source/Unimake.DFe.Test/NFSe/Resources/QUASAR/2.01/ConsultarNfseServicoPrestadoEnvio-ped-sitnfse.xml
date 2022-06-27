@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseServicoPrestadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>1570790</InscricaoMunicipal>
+		<Senha>12345678</Senha>
+		<FraseSecreta>123444sd654asd</FraseSecreta>
+	</Prestador>
+	<PeriodoEmissao>
+		<DataInicial>2009-12-01</DataInicial>
+		<DataFinal>2009-12-31</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+	</Tomador>
+	<Intermediario>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+	</Intermediario>
+	<Pagina>000001</Pagina>
+</ConsultarNfseServicoPrestadoEnvio>

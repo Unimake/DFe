@@ -712,4 +712,10 @@
 		<ArqConfig>RondonopolisMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3147105">
+		<Nome>Pará de Minas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ParaDeMinasMG.xml</ArqConfig>
+		<PadraoNFSe>QUASAR</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

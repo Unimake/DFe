@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="ID618" versao="2.01">
+		<NumeroLote>618</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>24629230000182</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>1167700</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="rps626211">
+					<Rps>
+						<IdentificacaoRps>
+							<Numero>62621</Numero>
+							<Serie>1</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2016-05-02</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2016-05-02</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>450.00</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<OutrasRetencoes>0.00</OutrasRetencoes>
+							<ValorIss>22.50</ValorIss>
+							<Aliquota>5.00</Aliquota>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ItemListaServico>11.04</ItemListaServico>
+						<CodigoCnae>123</CodigoCnae>
+						<Discriminacao> Serv.Exp(Arm/Seg): ELQ5155 Cesv: 336748 Nro.Recebimento.: 00575450 11 ESTADIA 297,00 01 MOVTO/SEGURO/ROD. 253,00 01 PERIG. 120,00 Impostos nesta NF: Federais: PIS 0,65%: 4,36 COFINS 3,00%: 20,10 IR 4,80%: 32,16 CSLL 2,88%: 19,30 Municipais: ISS 5,00%: 33,50</Discriminacao>
+						<CodigoMunicipio>5003207</CodigoMunicipio>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>5003207</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>24629230000182</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>1167700</InscricaoMunicipal>
+						<Senha>12345678</Senha>
+						<FraseSecreta>123444sd654asd</FraseSecreta>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cnpj>02446899000104</Cnpj>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>TRANSPORTES BORGO S/A.</RazaoSocial>
+						<Endereco>
+							<Endereco>AV. FAGUNDES FILHO, 141 - 1 ANDAR</Endereco>
+							<Numero>123</Numero>
+							<Bairro>SAO JUDAS</Bairro>
+							<CodigoMunicipio>3550308</CodigoMunicipio>
+							<Uf>SP</Uf>
+							<CodigoPais>1058</CodigoPais>
+							<Cep>87707010</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>.</Telefone>
+							<Email>.</Email>
+						</Contato>
+					</Tomador>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+					<Producao>1</Producao>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsSincronoEnvio>

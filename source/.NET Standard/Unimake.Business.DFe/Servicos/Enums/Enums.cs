@@ -6042,6 +6042,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("GINFES")]
         GINFES = 20,
+
+        /// <summary>
+        /// QUASAR - Sistemas Inteligentes de Gestão
+        /// </summary>
+        [Description("QUASAR")]
+        QUASAR = 21,
     }
 
     #endregion
