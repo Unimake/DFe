@@ -6161,6 +6161,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("XML de envio em lote da NFe/NFCe")]
         NFeEnvioEmLote,
 
+        /// <summary>
+        /// XML de distribuição da NFe com protocolo de autorização anexado
+        /// </summary>
+        [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
+        NFeDistribuicao,
+
         #endregion 
 
         #region CTe
@@ -6219,6 +6225,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("XML de consulta dos documentos fiscais eletrônicos distribuídos do CTe")]
         CTeDistribuicaoDFe,
 
+        /// <summary>
+        /// XML de distribuição da NFe com protocolo de autorização anexado
+        /// </summary>
+        [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
+        CTeDistribuicao,
+
         #endregion 
 
         #region MDFe
@@ -6264,6 +6276,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("XML de consulta dos MDFe´s não encerrados")]
         MDFeConsultaNaoEncerrado,
+
+        /// <summary>
+        /// XML de distribuição da NFe com protocolo de autorização anexado
+        /// </summary>
+        [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
+        MDFeDistribuicao,
 
         #endregion 
 

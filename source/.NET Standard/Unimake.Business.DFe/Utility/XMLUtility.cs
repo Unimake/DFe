@@ -686,6 +686,10 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.NFeEnvioEmLote;
                     break;
 
+                case "nfeProc":
+                    tipoXML = TipoXML.NFeDistribuicao;
+                    break;
+
                 #endregion XML NFe
 
                 #region XML CTe
@@ -722,6 +726,10 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.CTeOS;
                     break;
 
+                case "cteProc":
+                    tipoXML = TipoXML.CTeDistribuicao;
+                    break;
+
                 #endregion XML CTe
 
                 #region XML do MDFe
@@ -753,6 +761,11 @@ namespace Unimake.Business.DFe.Utility
                 case "consMDFeNaoEnc":
                     tipoXML = TipoXML.MDFeConsultaNaoEncerrado;
                     break;
+
+                case "mdfeProc":
+                    tipoXML = TipoXML.MDFeDistribuicao;
+                    break;
+
 
                 #endregion XML do MDFe
 
