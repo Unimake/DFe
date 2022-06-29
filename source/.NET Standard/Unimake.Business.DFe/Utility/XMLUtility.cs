@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Validator;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -128,6 +129,12 @@ namespace Unimake.Business.DFe.Utility
 
         #endregion Public Classes
 
+        #region Private Methods
+
+        private static bool Validate(string xml) => ValidatorFactory.BuidValidator(xml)?.Validate() ?? true;
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
@@ -172,12 +179,9 @@ namespace Unimake.Business.DFe.Utility
                     Digito = -1;
                 }
 
-                if(Digito == -1)
-                {
-                    throw new Exception(string.Format("Erro no cálculo do dígito verificador da chave [{0}].", chave) + Environment.NewLine);
-                }
-
-                return Digito;
+                return Digito == -1
+                    ? throw new Exception(string.Format("Erro no cálculo do dígito verificador da chave [{0}].", chave) + Environment.NewLine)
+                    : Digito;
             }
         }
 
@@ -345,6 +349,11 @@ namespace Unimake.Business.DFe.Utility
         public static T Deserializar<T>(string xml)
             where T : new()
         {
+            if(!Validate(xml))
+            {
+                return default;
+            }
+
             var result = XmlHelper.Deserialize<T>(xml);
 
             if(result is Contract.Serialization.IXmlSerializable serializable)
@@ -766,7 +775,6 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.MDFeDistribuicao;
                     break;
 
-
                 #endregion XML do MDFe
 
                 default:
@@ -875,12 +883,7 @@ namespace Unimake.Business.DFe.Utility
 
             var pedacinhos = xml.Split(new string[] { $"Id=\"{typeString}" }, StringSplitOptions.None);
 
-            if(pedacinhos.Length < 1)
-            {
-                return default;
-            }
-
-            return pedacinhos[1].Substring(0, 44);
+            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
         }
 
         /// <summary>
@@ -929,12 +932,7 @@ namespace Unimake.Business.DFe.Utility
 
             var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
 
-            if(pedacinhos.Length < 1)
-            {
-                return default;
-            }
-
-            return pedacinhos[1].Substring(0, 44);
+            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
         }
 
         /// <summary>
@@ -975,12 +973,7 @@ namespace Unimake.Business.DFe.Utility
 
             var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
 
-            if(pedacinhos.Length < 1)
-            {
-                return default;
-            }
-
-            return pedacinhos[1].Substring(0, 44);
+            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
         }
 
         /// <summary>
@@ -1069,12 +1062,7 @@ namespace Unimake.Business.DFe.Utility
 
             var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
 
-            if(pedacinhos.Length < 1)
-            {
-                return default;
-            }
-
-            return pedacinhos[1].Substring(0, 44);
+            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
         }
 
         /// <summary>
@@ -1085,7 +1073,11 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="namespaces">Namespaces a serem adicionados no XML</param>
         /// <returns>XML</returns>
         public static XmlDocument Serializar<T>(T objeto, List<TNameSpace> namespaces = null)
-            where T : new() => XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
+            where T : new()
+        {
+            var xml = XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
+            return !Validate(xml.InnerXml) ? default : xml;
+        }
 
         /// <summary>
         /// Serializar o objeto (Converte o objeto para XML)
@@ -1093,8 +1085,11 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="objeto">Objeto a ser serializado</param>
         /// <param name="namespaces">Namespaces a serem adicionados no XML</param>
         /// <returns>XML</returns>
-        public static XmlDocument Serializar(object objeto, List<TNameSpace> namespaces = null) =>
-            XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
+        public static XmlDocument Serializar(object objeto, List<TNameSpace> namespaces = null)
+        {
+            var xml = XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
+            return !Validate(xml.InnerXml) ? default : xml;
+        }
 
         /// <summary>
         /// Busca o nome de uma determinada TAG em um Elemento do XML para ver se existe, se existir retorna seu conteúdo da TAG.

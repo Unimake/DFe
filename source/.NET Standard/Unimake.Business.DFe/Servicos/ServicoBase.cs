@@ -7,6 +7,7 @@ using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
+using Unimake.Business.DFe.Validator;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -35,9 +36,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
         private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
-            if (!string.IsNullOrWhiteSpace(tagAssinatura))
+            if(!string.IsNullOrWhiteSpace(tagAssinatura))
             {
-                if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
+                if(AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
                     AjustarXMLAposAssinado();
                 }
@@ -63,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos
             get => _conteudoXML;
             set
             {
-                if (ConteudoXMLOriginal == null)
+                if(ConteudoXMLOriginal == null)
                 {
                     ConteudoXMLOriginal = new XmlDocument();
                     ConteudoXMLOriginal.LoadXml(value?.OuterXml);
@@ -123,7 +124,7 @@ namespace Unimake.Business.DFe.Servicos
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
 
-            if (!Configuracoes.Definida)
+            if(!Configuracoes.Definida)
             {
                 DefinirConfiguracao();
             }
@@ -200,9 +201,14 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         public virtual void Executar()
         {
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
+            if(!(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
             {
-                if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
+                return;
+            }
+
+            if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
+            {
+                if(!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
                 {
                     AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
                     AjustarXMLAposAssinado();

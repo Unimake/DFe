@@ -37,11 +37,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             var xmlDoc = base.GerarXML();
 
-            foreach (var nodeEnvCTe in xmlDoc.GetElementsByTagName("enviCTe"))
+            foreach(var nodeEnvCTe in xmlDoc.GetElementsByTagName("enviCTe"))
             {
                 var elemEnvCTe = (XmlElement)nodeEnvCTe;
 
-                foreach (var nodeCTe in elemEnvCTe.GetElementsByTagName("CTe"))
+                foreach(var nodeCTe in elemEnvCTe.GetElementsByTagName("CTe"))
                 {
                     var elemCTe = (XmlElement)nodeCTe;
 
@@ -63,7 +63,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="cte">Elemento</param>
         public void AddCTe(CTe cte)
         {
-            if (CTe == null)
+            if(CTe == null)
             {
                 CTe = new List<CTe>();
             }
@@ -78,7 +78,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da CTe</returns>
         public CTe GetCTe(int index)
         {
-            if ((CTe?.Count ?? 0) == 0)
+            if((CTe?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -125,7 +125,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<CTe>(doc);
-        }        
+        }
 
         /// <summary>
         /// Deserializar o XML CTe no objeto CTe
@@ -240,7 +240,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="autxml">Elemento</param>
         public void AddAutXML(AutXML autxml)
         {
-            if (AutXML == null)
+            if(AutXML == null)
             {
                 AutXML = new List<AutXML>();
             }
@@ -255,7 +255,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
         public AutXML GetAutXML(int index)
         {
-            if ((AutXML?.Count ?? 0) == 0)
+            if((AutXML?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -302,9 +302,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             get
             {
                 string retorno;
-                if (string.IsNullOrWhiteSpace(CCTField))
+                if(string.IsNullOrWhiteSpace(CCTField))
                 {
-                    if (NCT == 0)
+                    if(NCT == 0)
                     {
                         throw new Exception("Defina o conteúdo da TAG <nCT>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
@@ -355,7 +355,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpEmisField;
             set
             {
-                if (value == TipoEmissao.ContingenciaFSIA ||
+                if(value == TipoEmissao.ContingenciaFSIA ||
                    value == TipoEmissao.ContingenciaOffLine ||
                    value == TipoEmissao.RegimeEspecialNFF ||
                    value == TipoEmissao.ContingenciaSVCAN)
@@ -382,7 +382,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => ProcEmiField;
             set
             {
-                if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
+                if(value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
                     throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0 e 3.");
@@ -494,7 +494,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TomaField;
             set
             {
-                if (value == TomadorServicoCTe.Outros)
+                if(value == TomadorServicoCTe.Outros)
                 {
                     throw new Exception("Conteúdo da TAG <toma>, filha da TAG <toma3>, inválido! Valores aceitos: 0, 1, 2, 3.");
                 }
@@ -521,7 +521,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TomadorServicoCTe.Outros;
             set
             {
-                if (value != TomadorServicoCTe.Outros)
+                if(value != TomadorServicoCTe.Outros)
                 {
                     throw new Exception("Conteúdo da TAG <toma>, filha da TAG <toma4>, inválido! Valores aceitos: 4.");
                 }
@@ -672,7 +672,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="obsCont">Elemento</param>
         public void AddObsCont(ObsCont obsCont)
         {
-            if (ObsCont == null)
+            if(ObsCont == null)
             {
                 ObsCont = new List<ObsCont>();
             }
@@ -687,7 +687,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
         public ObsCont GetObsCont(int index)
         {
-            if ((ObsCont?.Count ?? 0) == 0)
+            if((ObsCont?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -706,7 +706,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="obsFisco">Elemento</param>
         public void AddObsFisco(ObsFisco obsFisco)
         {
-            if (ObsFisco == null)
+            if(ObsFisco == null)
             {
                 ObsFisco = new List<ObsFisco>();
             }
@@ -721,7 +721,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
         public ObsFisco GetObsFisco(int index)
         {
-            if ((ObsFisco?.Count ?? 0) == 0)
+            if((ObsFisco?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -784,7 +784,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="pass">Elemento</param>
         public void AddPass(Pass pass)
         {
-            if (Pass == null)
+            if(Pass == null)
             {
                 Pass = new List<Pass>();
             }
@@ -799,7 +799,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Pass</returns>
         public Pass GetPass(int index)
         {
-            if ((Pass?.Count ?? 0) == 0)
+            if((Pass?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -887,7 +887,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoPeriodoEntregaCTe.SemDataDefinida;
             set
             {
-                if (value != TipoPeriodoEntregaCTe.SemDataDefinida)
+                if(value != TipoPeriodoEntregaCTe.SemDataDefinida)
                 {
                     throw new Exception("Conteúdo da TAG <tpPer>, filha da TAG <semData><Entrega>, inválido! Valores aceitos: 0.");
                 }
@@ -914,7 +914,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpPerField;
             set
             {
-                if (value == TipoPeriodoEntregaCTe.SemDataDefinida || value == TipoPeriodoEntregaCTe.NoPeriodo)
+                if(value == TipoPeriodoEntregaCTe.SemDataDefinida || value == TipoPeriodoEntregaCTe.NoPeriodo)
                 {
                     throw new Exception("Conteúdo da TAG <tpPer>, filha da TAG <comData><Entrega>, inválido! Valores aceitos: 1, 2 ou 3.");
                 }
@@ -951,7 +951,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoPeriodoEntregaCTe.NoPeriodo;
             set
             {
-                if (value != TipoPeriodoEntregaCTe.NoPeriodo)
+                if(value != TipoPeriodoEntregaCTe.NoPeriodo)
                 {
                     throw new Exception("Conteúdo da TAG <tpPer>, filha da TAG <noPeriodo><Entrega>, inválido! Valores aceitos: 4.");
                 }
@@ -998,7 +998,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoHoraEntregaCTe.SemHoraDefinida;
             set
             {
-                if (value != TipoHoraEntregaCTe.SemHoraDefinida)
+                if(value != TipoHoraEntregaCTe.SemHoraDefinida)
                 {
                     throw new Exception("Conteúdo da TAG <tpHor>, filha da TAG <semHora><Entrega>, inválido! Valores aceitos: 0.");
                 }
@@ -1025,7 +1025,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TpHorField;
             set
             {
-                if (value == TipoHoraEntregaCTe.SemHoraDefinida || value == TipoHoraEntregaCTe.NoIntervaloTempo)
+                if(value == TipoHoraEntregaCTe.SemHoraDefinida || value == TipoHoraEntregaCTe.NoIntervaloTempo)
                 {
                     throw new Exception("Conteúdo da TAG <tpHor>, filha da TAG <comHora><Entrega>, inválido! Valores aceitos: 1, 2 ou 3.");
                 }
@@ -1062,7 +1062,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => TipoHoraEntregaCTe.NoIntervaloTempo;
             set
             {
-                if (value != TipoHoraEntregaCTe.NoIntervaloTempo)
+                if(value != TipoHoraEntregaCTe.NoIntervaloTempo)
                 {
                     throw new Exception("Conteúdo da TAG <tpHor>, filha da TAG <noInter><Entrega>, inválido! Valores aceitos: 4.");
                 }
@@ -1175,7 +1175,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1214,7 +1214,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("fone")]
         public string Fone { get; set; }
 
-#region ShouldSerialize               
+        #region ShouldSerialize               
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -1222,7 +1222,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1258,7 +1258,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1272,7 +1272,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1314,7 +1314,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1324,7 +1324,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1357,7 +1357,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1369,7 +1369,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1411,7 +1411,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1421,7 +1421,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1454,7 +1454,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1466,7 +1466,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1508,7 +1508,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1518,7 +1518,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1554,7 +1554,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("email")]
         public string Email { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -1566,7 +1566,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1608,7 +1608,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -1618,7 +1618,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1661,7 +1661,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="comp">Elemento</param>
         public void AddComp(Comp comp)
         {
-            if (Comp == null)
+            if(Comp == null)
             {
                 Comp = new List<Comp>();
             }
@@ -1676,7 +1676,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
         public Comp GetComp(int index)
         {
-            if ((Comp?.Count ?? 0) == 0)
+            if((Comp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1743,13 +1743,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("ICMSUFFim")]
         public ICMSUFFim ICMSUFFim { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
 
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -1896,7 +1896,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => CSTField;
             set
             {
-                if (value.Equals("40") || value.Equals("41") || value.Equals("51"))
+                if(value.Equals("40") || value.Equals("41") || value.Equals("51"))
                 {
                     CSTField = value;
                 }
@@ -1960,11 +1960,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVCredField() => VCred > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2029,13 +2029,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializePRedBCField() => PRedBC > 0;
 
         public bool ShouldSerializeVCredField() => VCred > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2090,11 +2090,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VICMSOutraUF = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializePRedBCOutraUFField() => PRedBCOutraUF > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2237,7 +2237,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="veicNovos">Elemento</param>
         public void AddVeicNovos(VeicNovos veicNovos)
         {
-            if (VeicNovos == null)
+            if(VeicNovos == null)
             {
                 VeicNovos = new List<VeicNovos>();
             }
@@ -2252,7 +2252,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da VeicNovos</returns>
         public VeicNovos GetVeicNovos(int index)
         {
-            if ((VeicNovos?.Count ?? 0) == 0)
+            if((VeicNovos?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2267,11 +2267,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         //public bool ShouldSerialize() => !string.IsNullOrWhiteSpace();
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2320,7 +2320,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infq">Elemento</param>
         public void AddInfQ(InfQ infq)
         {
-            if (InfQ == null)
+            if(InfQ == null)
             {
                 InfQ = new List<InfQ>();
             }
@@ -2335,7 +2335,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfQ</returns>
         public InfQ GetInfQ(int index)
         {
-            if ((InfQ?.Count ?? 0) == 0)
+            if((InfQ?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2350,13 +2350,13 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVCargaField() => VCarga > 0;
         public bool ShouldSerializeXOutCat() => !string.IsNullOrWhiteSpace(XOutCat);
         public bool ShouldSerializeVCargaAverbField() => VCargaAverb > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2411,7 +2411,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infnf">Elemento</param>
         public void AddInfNF(InfNF infnf)
         {
-            if (InfNF == null)
+            if(InfNF == null)
             {
                 InfNF = new List<InfNF>();
             }
@@ -2426,7 +2426,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfNF</returns>
         public InfNF GetInfNF(int index)
         {
-            if ((InfNF?.Count ?? 0) == 0)
+            if((InfNF?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2445,7 +2445,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infnfe">Elemento</param>
         public void AddInfNFe(InfNFe infnfe)
         {
-            if (InfNFe == null)
+            if(InfNFe == null)
             {
                 InfNFe = new List<InfNFe>();
             }
@@ -2460,7 +2460,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfNFe</returns>
         public InfNFe GetInfNFe(int index)
         {
-            if ((InfNFe?.Count ?? 0) == 0)
+            if((InfNFe?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2479,7 +2479,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infoutros">Elemento</param>
         public void AddInfOutros(InfOutros infoutros)
         {
-            if (InfOutros == null)
+            if(InfOutros == null)
             {
                 InfOutros = new List<InfOutros>();
             }
@@ -2494,7 +2494,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfOutros</returns>
         public InfOutros GetInfOutros(int index)
         {
-            if ((InfOutros?.Count ?? 0) == 0)
+            if((InfOutros?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2644,7 +2644,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidCarga">Elemento</param>
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if (InfUnidCarga == null)
+            if(InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -2659,7 +2659,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidCarga</returns>
         public InfUnidCarga GetInfUnidCarga(int index)
         {
-            if ((InfUnidCarga?.Count ?? 0) == 0)
+            if((InfUnidCarga?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2678,7 +2678,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidTransp">Elemento</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if (InfUnidTransp == null)
+            if(InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -2693,7 +2693,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
         public InfUnidTransp GetInfUnidTransp(int index)
         {
-            if ((InfUnidTransp?.Count ?? 0) == 0)
+            if((InfUnidTransp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2708,7 +2708,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeNRoma() => !string.IsNullOrWhiteSpace(NRoma);
         public bool ShouldSerializeNPed() => !string.IsNullOrWhiteSpace(NPed);
@@ -2716,7 +2716,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializePIN() => !string.IsNullOrWhiteSpace(PIN);
         public bool ShouldSerializeDPrevField() => DPrev > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2755,7 +2755,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="lacUnidCarga">Elemento</param>
         public void AddLacUnidCarga(LacUnidCarga lacUnidCarga)
         {
-            if (LacUnidCarga == null)
+            if(LacUnidCarga == null)
             {
                 LacUnidCarga = new List<LacUnidCarga>();
             }
@@ -2770,7 +2770,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da LacUnidCarga</returns>
         public LacUnidCarga GetLacUnidCarga(int index)
         {
-            if ((LacUnidCarga?.Count ?? 0) == 0)
+            if((LacUnidCarga?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2785,11 +2785,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeQtdRatField() => QtdRat > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -2845,7 +2845,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="lacUnidTransp">Elemento</param>
         public void AddLacUnidTransp(LacUnidTransp lacUnidTransp)
         {
-            if (LacUnidTransp == null)
+            if(LacUnidTransp == null)
             {
                 LacUnidTransp = new List<LacUnidTransp>();
             }
@@ -2860,7 +2860,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da LacUnidTransp</returns>
         public LacUnidTransp GetLacUnidTransp(int index)
         {
-            if ((LacUnidTransp?.Count ?? 0) == 0)
+            if((LacUnidTransp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2879,7 +2879,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidCarga">Elemento</param>
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if (InfUnidCarga == null)
+            if(InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -2894,7 +2894,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidCarga</returns>
         public InfUnidCarga GetInfUnidCarga(int index)
         {
-            if ((InfUnidCarga?.Count ?? 0) == 0)
+            if((InfUnidCarga?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2909,11 +2909,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeQtdRatField() => QtdRat > 0;
 
-#endregion
+        #endregion
 
     }
 
@@ -2965,7 +2965,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidCarga">Elemento</param>
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if (InfUnidCarga == null)
+            if(InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -2980,7 +2980,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidCarga</returns>
         public InfUnidCarga GetInfUnidCarga(int index)
         {
-            if ((InfUnidCarga?.Count ?? 0) == 0)
+            if((InfUnidCarga?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2999,7 +2999,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidTransp">Elemento</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if (InfUnidTransp == null)
+            if(InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -3014,7 +3014,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
         public InfUnidTransp GetInfUnidTransp(int index)
         {
-            if ((InfUnidTransp?.Count ?? 0) == 0)
+            if((InfUnidTransp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3029,12 +3029,12 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializePIN() => !string.IsNullOrWhiteSpace(PIN);
         public bool ShouldSerializeDPrevField() => DPrev > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3099,7 +3099,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidCarga">Elemento</param>
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
-            if (InfUnidCarga == null)
+            if(InfUnidCarga == null)
             {
                 InfUnidCarga = new List<InfUnidCarga>();
             }
@@ -3114,7 +3114,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidCarga</returns>
         public InfUnidCarga GetInfUnidCarga(int index)
         {
-            if ((InfUnidCarga?.Count ?? 0) == 0)
+            if((InfUnidCarga?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3133,7 +3133,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infUnidTransp">Elemento</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
-            if (InfUnidTransp == null)
+            if(InfUnidTransp == null)
             {
                 InfUnidTransp = new List<InfUnidTransp>();
             }
@@ -3148,7 +3148,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
         public InfUnidTransp GetInfUnidTransp(int index)
         {
-            if ((InfUnidTransp?.Count ?? 0) == 0)
+            if((InfUnidTransp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3163,7 +3163,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeDescOutros() => !string.IsNullOrWhiteSpace(DescOutros);
         public bool ShouldSerializeNDoc() => !string.IsNullOrWhiteSpace(NDoc);
@@ -3171,7 +3171,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeVDocFiscField() => VDocFisc > 0;
         public bool ShouldSerializeDPrevField() => DPrev > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3194,7 +3194,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="emiDocAnt">Elemento</param>
         public void AddEmiDocAnt(EmiDocAnt emiDocAnt)
         {
-            if (EmiDocAnt == null)
+            if(EmiDocAnt == null)
             {
                 EmiDocAnt = new List<EmiDocAnt>();
             }
@@ -3209,7 +3209,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da EmiDocAnt</returns>
         public EmiDocAnt GetEmiDocAnt(int index)
         {
-            if ((EmiDocAnt?.Count ?? 0) == 0)
+            if((EmiDocAnt?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3260,7 +3260,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="idDocAnt">Elemento</param>
         public void AddIdDocAnt(IdDocAnt idDocAnt)
         {
-            if (IdDocAnt == null)
+            if(IdDocAnt == null)
             {
                 IdDocAnt = new List<IdDocAnt>();
             }
@@ -3275,7 +3275,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da IdDocAnt</returns>
         public IdDocAnt GetIdDocAnt(int index)
         {
-            if ((IdDocAnt?.Count ?? 0) == 0)
+            if((IdDocAnt?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3290,13 +3290,13 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3322,7 +3322,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="idDocAntEle">Elemento</param>
         public void AddIdDocAntEle(IdDocAntEle idDocAntEle)
         {
-            if (IdDocAntEle == null)
+            if(IdDocAntEle == null)
             {
                 IdDocAntEle = new List<IdDocAntEle>();
             }
@@ -3337,7 +3337,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da IdDocAntEle</returns>
         public IdDocAntEle GetIdDocAntEle(int index)
         {
-            if ((IdDocAntEle?.Count ?? 0) == 0)
+            if((IdDocAntEle?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3356,7 +3356,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="idDocAntPap">Elemento</param>
         public void AddIdDocAntPap(IdDocAntPap idDocAntPap)
         {
-            if (IdDocAntPap == null)
+            if(IdDocAntPap == null)
             {
                 IdDocAntPap = new List<IdDocAntPap>();
             }
@@ -3371,7 +3371,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da IdDocAntPap</returns>
         public IdDocAntPap GetIdDocAntPap(int index)
         {
-            if ((IdDocAntPap?.Count ?? 0) == 0)
+            if((IdDocAntPap?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3418,11 +3418,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DEmi = DateTime.Parse(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeSubser() => !string.IsNullOrWhiteSpace(Subser);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3492,7 +3492,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="occ">Elemento</param>
         public void AddOcc(Occ occ)
         {
-            if (Occ == null)
+            if(Occ == null)
             {
                 Occ = new List<Occ>();
             }
@@ -3507,7 +3507,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Occ</returns>
         public Occ GetOcc(int index)
         {
-            if ((Occ?.Count ?? 0) == 0)
+            if((Occ?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3551,11 +3551,11 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("emiOcc")]
         public EmiOcc EmiOcc { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeSerie() => !string.IsNullOrWhiteSpace(Serie);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3582,12 +3582,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("fone")]
         public string Fone { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3683,11 +3683,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DFim = DateTime.Parse(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVTarField() => VTar > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3732,7 +3732,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="peri">Elemento</param>
         public void AddPeri(Peri peri)
         {
-            if (Peri == null)
+            if(Peri == null)
             {
                 Peri = new List<Peri>();
             }
@@ -3747,7 +3747,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Peri</returns>
         public Peri GetPeri(int index)
         {
-            if ((Peri?.Count ?? 0) == 0)
+            if((Peri?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3762,12 +3762,12 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeNMinu() => !string.IsNullOrWhiteSpace(NMinu);
         public bool ShouldSerializeNOCA() => !string.IsNullOrWhiteSpace(NOCA);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3793,7 +3793,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="cInfManu">Elemento</param>
         public void AddCInfManu(InformacaoManuseioCTe cInfManu)
         {
-            if (CInfManu == null)
+            if(CInfManu == null)
             {
                 CInfManu = new List<InformacaoManuseioCTe>();
             }
@@ -3808,7 +3808,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da CInfManu</returns>
         public InformacaoManuseioCTe GetCInfManu(int index)
         {
-            if ((CInfManu?.Count ?? 0) == 0)
+            if((CInfManu?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3823,11 +3823,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeXDime() => !string.IsNullOrWhiteSpace(XDime);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3855,11 +3855,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VTar = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCTar() => !string.IsNullOrWhiteSpace(CTar);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -3966,7 +3966,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="balsa">Elemento</param>
         public void AddBalsa(Balsa balsa)
         {
-            if (Balsa == null)
+            if(Balsa == null)
             {
                 Balsa = new List<Balsa>();
             }
@@ -3981,7 +3981,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Balsa</returns>
         public Balsa GetBalsa(int index)
         {
-            if ((Balsa?.Count ?? 0) == 0)
+            if((Balsa?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4000,7 +4000,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="detCont">Elemento</param>
         public void AddDetCont(DetCont detCont)
         {
-            if (DetCont == null)
+            if(DetCont == null)
             {
                 DetCont = new List<DetCont>();
             }
@@ -4015,7 +4015,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da DetCont</returns>
         public DetCont GetDetCont(int index)
         {
-            if ((DetCont?.Count ?? 0) == 0)
+            if((DetCont?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4030,12 +4030,12 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeNViag() => !string.IsNullOrWhiteSpace(NViag);
         public bool ShouldSerializeTpNav() => TpNav != null && TpNav != TipoNavegacao.NaoDefinido;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4077,7 +4077,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="lacre">Elemento</param>
         public void AddLacre(Lacre lacre)
         {
-            if (Lacre == null)
+            if(Lacre == null)
             {
                 Lacre = new List<Lacre>();
             }
@@ -4092,7 +4092,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Lacre</returns>
         public Lacre GetLacre(int index)
         {
-            if ((Lacre?.Count ?? 0) == 0)
+            if((Lacre?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4144,7 +4144,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infNF">Elemento</param>
         public void AddInfNF(DetContInfDocInfNF infNF)
         {
-            if (InfNF == null)
+            if(InfNF == null)
             {
                 InfNF = new List<DetContInfDocInfNF>();
             }
@@ -4159,7 +4159,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfNF</returns>
         public DetContInfDocInfNF GetInfNF(int index)
         {
-            if ((InfNF?.Count ?? 0) == 0)
+            if((InfNF?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4178,7 +4178,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infNFe">Elemento</param>
         public void AddInfNFe(DetContInfDocInfNFe infNFe)
         {
-            if (InfNFe == null)
+            if(InfNFe == null)
             {
                 InfNFe = new List<DetContInfDocInfNFe>();
             }
@@ -4193,7 +4193,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfNFe</returns>
         public DetContInfDocInfNFe GetInfNFe(int index)
         {
-            if ((InfNFe?.Count ?? 0) == 0)
+            if((InfNFe?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4234,11 +4234,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => UnidRat = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeUnidRatField() => UnidRat > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4263,11 +4263,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => UnidRat = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeUnidRatField() => UnidRat > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4328,7 +4328,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="ferroEnv">Elemento</param>
         public void AddFerroEnv(FerroEnv ferroEnv)
         {
-            if (FerroEnv == null)
+            if(FerroEnv == null)
             {
                 FerroEnv = new List<FerroEnv>();
             }
@@ -4343,7 +4343,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da FerroEnv</returns>
         public FerroEnv GetFerroEnv(int index)
         {
-            if ((FerroEnv?.Count ?? 0) == 0)
+            if((FerroEnv?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4358,11 +4358,11 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeChCTeFerroOrigem() => !string.IsNullOrWhiteSpace(ChCTeFerroOrigem);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4389,12 +4389,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("enderFerro")]
         public EnderFerro EnderFerro { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
         public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
 
-#endregion
+        #endregion
 
     }
 
@@ -4431,7 +4431,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("UF")]
         public UFBrasil UF { get; set; }
 
-#region ShouldSerialize 
+        #region ShouldSerialize 
 
         public bool ShouldSerializeNro() => !string.IsNullOrWhiteSpace(Nro);
 
@@ -4439,7 +4439,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public bool ShouldSerializeXBairro() => !string.IsNullOrWhiteSpace(XBairro);
 
-#endregion
+        #endregion
 
     }
 
@@ -4508,7 +4508,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="dup">Elemento</param>
         public void AddDup(Dup dup)
         {
-            if (Dup == null)
+            if(Dup == null)
             {
                 Dup = new List<Dup>();
             }
@@ -4523,7 +4523,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da Dup</returns>
         public Dup GetDup(int index)
         {
-            if ((Dup?.Count ?? 0) == 0)
+            if((Dup?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4581,11 +4581,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VLiq = Utility.Converter.ToDouble(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVDescField() => VDesc > 0;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4650,12 +4650,12 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => IndAlteraToma = (SimNao)Enum.Parse(typeof(SimNao), value.ToString());
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeRefCteAnu() => !string.IsNullOrWhiteSpace(RefCteAnu);
         public bool ShouldSerializeIndAlteraTomaField() => IndAlteraToma == SimNao.Sim;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4676,12 +4676,12 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("refCte")]
         public string RefCte { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeRefNFe() => !string.IsNullOrWhiteSpace(RefNFe);
         public bool ShouldSerializeRefCte() => !string.IsNullOrWhiteSpace(RefCte);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4705,16 +4705,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string Mod
         {
             get => ModField;
-            set
-            {
-                var permitido = "01,1B,02,2D,2E,04,06,07,08,8B,09,10,11,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28 e 55";
-                if (!permitido.Contains(value))
-                {
-                    throw new Exception("Conteúdo da TAG <mod>, filha da TAG <infCteSub><tomaICMS><RefNF>, inválido! Valores aceitos: " + permitido + ".");
-                }
-
-                ModField = value;
-            }
+            set => ModField = value;
         }
 
         [XmlElement("serie")]
@@ -4746,13 +4737,13 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DEmi = DateTime.Parse(value);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeSubserie() => !string.IsNullOrWhiteSpace(Subserie);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4772,11 +4763,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => XObsField;
             set
             {
-                if (value.Length < 15)
+                if(value.Length < 15)
                 {
                     throw new Exception("Conteúdo da TAG <xObs>, filha da TAG <infGlobalizado>, inválido! O conteúdo deve ter no mínimo 15 caracteres.");
                 }
-                else if (value.Length > 256)
+                else if(value.Length > 256)
                 {
                     throw new Exception("Conteúdo da TAG <xObs>, filha da TAG <infGlobalizado>, inválido! O conteúdo deve ter no máximo 256 caracteres.");
                 }
@@ -4806,7 +4797,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <param name="infCTeMultimodal">Elemento</param>
         public void AddInfCTeMultimodal(InfCTeMultimodal infCTeMultimodal)
         {
-            if (InfCTeMultimodal == null)
+            if(InfCTeMultimodal == null)
             {
                 InfCTeMultimodal = new List<InfCTeMultimodal>();
             }
@@ -4821,7 +4812,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Conteúdo do index passado por parâmetro da InfCTeMultimodal</returns>
         public InfCTeMultimodal GetInfCTeMultimodal(int index)
         {
-            if ((InfCTeMultimodal?.Count ?? 0) == 0)
+            if((InfCTeMultimodal?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -4904,7 +4895,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => CNPJField;
             set
             {
-                if (!string.IsNullOrWhiteSpace(CPFField))
+                if(!string.IsNullOrWhiteSpace(CPFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
@@ -4919,7 +4910,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             get => CPFField;
             set
             {
-                if (!string.IsNullOrWhiteSpace(CNPJField))
+                if(!string.IsNullOrWhiteSpace(CNPJField))
                 {
                     throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
                 }
@@ -4928,12 +4919,12 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -4963,13 +4954,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("hashCSRT", DataType = "base64Binary")]
         public byte[] HashCSRT { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
         public bool ShouldSerializeHashCSRT() => HashCSRT != null;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
