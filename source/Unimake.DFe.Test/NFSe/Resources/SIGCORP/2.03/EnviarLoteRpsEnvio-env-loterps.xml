@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EnviarLoteRpsEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <LoteRps Id="LT1234" versao="2.03">
+  <LoteRps Id="Lote1234" versao="2.03">
     <NumeroLote>1234</NumeroLote>
     <CpfCnpj>
       <Cnpj>08373108000131</Cnpj>

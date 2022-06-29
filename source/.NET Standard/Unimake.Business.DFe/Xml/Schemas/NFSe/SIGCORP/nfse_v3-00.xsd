@@ -1,0 +1,115 @@
+<xsd:schema xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://iss.londrina.pr.gov.br/ws/v1_03" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema" targetNamespace="http://iss.londrina.pr.gov.br/ws/v1_03">
+	<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+	<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+	<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+	<xsd:complexType name="tcDescricaoRps">
+		<xsd:all>
+			<xsd:element name="ccm" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cnpj" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="senha" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="aliquota" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="servico" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="codigo_obra" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="obra_art" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="situacao" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="valor" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="base" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="ir" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="pis" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cofins" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="csll" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="inss" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="retencao_iss" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="incentivo_fiscal" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="cod_municipio_prestacao_servico" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="cod_pais_prestacao_servico" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="cod_municipio_incidencia" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="descricaoNF" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_tipo" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_cnpj" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_email" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_ie" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_im" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_razao" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_endereco" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_numero" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_complemento" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_bairro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_CEP" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_cod_cidade" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_fone" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_ramal" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="tomador_fax" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="rps_num" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rps_serie" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rps_tipo" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rps_dia" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rps_mes" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rps_ano" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="nfse_substituida" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="rps_substituido" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="tcRetornoNota">
+		<xsd:all>
+			<xsd:element name="Resultado" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Nota" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="autenticidade" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LinkImpressao" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="tcDescricaoCancelaNota">
+		<xsd:all>
+			<xsd:element name="ccm" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cnpj" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="senha" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="nota" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cod_cancelamento" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="email" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="tcConsultarNfseServicoPrestadoEnvio">
+		<xsd:sequence>
+			<xsd:element name="ccm" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cnpj" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="senha" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="numero_nfse" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcConsultarRpsServicoPrestadoEnvio">
+		<xsd:sequence>
+			<xsd:element name="ccm" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cnpj" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="senha" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="numero_rps" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="dia_rps" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="mes_rps" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="ano_rps" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcEstruturaDescricaoErros">
+		<xsd:all>
+			<xsd:element name="id" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="DescricaoProcesso" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="DescricaoErro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="tcListaErrosAlertas">
+		<xsd:sequence>
+			<xsd:element name="item" type="tns:tcEstruturaDescricaoErros" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="tcConsultarCadastroContribuinteEnvio">
+		<xsd:sequence>
+			<xsd:element name="ccm" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cnpj" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cpf" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="senha" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="cnpj_cpf_cadastro" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNota>
+	<DescricaoRps>
+		<ccm>000000</ccm>
+		<cnpj>0000000000000</cnpj>
+		<senha>00000000</senha>
+		<aliquota_simples>5,00</aliquota_simples>
+		<id_sis_legado>58464</id_sis_legado>
+		<servico>1401</servico>
+		<situacao>tp</situacao>
+		<valor>1,0000</valor>
+		<base>1,0000</base>
+		<descricaoNF>SERVIÇO DE TIRAR VAZAMENTO DE AR Qtd:1,00 Unt:R$ 1,00 SubTot:R$ 1,00 Desc:R$ 0,00 Tot:R$ 1,00VOLVO NH PLACA DQS 5705 KM 463761</descricaoNF>
+		<tomador_tipo>4</tomador_tipo>
+		<tomador_cnpj>00.000.000/0000-00</tomador_cnpj>
+		<tomador_email>xxxxx.xxxxxxxxxxxx@gmail.com</tomador_email>
+		<tomador_im/>
+		<tomador_ie>0000000000</tomador_ie>
+		<tomador_razao>XXXXXXXXXXXXXXXXX XXXX</tomador_razao>
+		<tomador_fantasia>XXXXX XXXXXXXXXXX</tomador_fantasia>
+		<tomador_endereco>AV XXXXXX</tomador_endereco>
+		<tomador_numero>1111</tomador_numero>
+		<tomador_complemento/>
+		<tomador_bairro>XXX XXXXX</tomador_bairro>
+		<tomador_CEP>89999-000</tomador_CEP>
+		<tomador_cod_cidade>111111111</tomador_cod_cidade>
+		<tomador_fone>(041) 3333-3333</tomador_fone>
+		<tomador_ramal/>
+		<tomador_fax/>
+		<outro_municipio>0</outro_municipio>
+		<cod_outro_municipio>0</cod_outro_municipio>
+		<retencao_iss/>
+		<pis>0,00</pis>
+		<cofins>0,00</cofins>
+		<inss>0,00</inss>
+		<irrf>0,00</irrf>
+		<csll>0,00</csll>
+		<dia_prest_servico>25</dia_prest_servico>
+		<mes_prest_servico>5</mes_prest_servico>
+		<ano_prest_servico>2021</ano_prest_servico>
+	</DescricaoRps>
+</GerarNota>

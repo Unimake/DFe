@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EnviarLoteRpsSincronoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <LoteRps Id="LT2" versao="2.03">
+  <LoteRps Id="ID2" versao="2.03">
     <NumeroLote>2</NumeroLote>
     <CpfCnpj>
       <Cnpj>99999999999999</Cnpj>
@@ -9,7 +9,7 @@
     <QuantidadeRps>1</QuantidadeRps>
     <ListaRps>
       <Rps>
-        <InfDeclaracaoPrestacaoServico Id="RPS21">
+        <InfDeclaracaoPrestacaoServico Id="RPS_21">
           <Rps>
             <IdentificacaoRps>
               <Numero>21</Numero>

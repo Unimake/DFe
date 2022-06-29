@@ -531,6 +531,7 @@
 		<None Remove="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
@@ -1450,6 +1451,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
