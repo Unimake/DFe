@@ -718,4 +718,10 @@
 		<ArqConfig>ParaDeMinasMG.xml</ArqConfig>
 		<PadraoNFSe>QUASAR</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3303401">
+		<Nome>Nova Friburgo - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>NovaFriburgoRJ.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
