@@ -24,7 +24,8 @@ Function Main()
    Aadd(aOpcoes, "A-Envio da NFSe (GerarNfse)")
    Aadd(aOpcoes, "B-Envio NFe - Sincrono")
    Aadd(aOpcoes, "C-Envio MDFe - Assincrono")
-   AAdd(aOpcoes, "D-Enviar NFe - Deserializando o XML")                               
+   AAdd(aOpcoes, "D-Enviar NFe - Deserializando o XML") 
+                              
     
    Do While .T.
       Cls
