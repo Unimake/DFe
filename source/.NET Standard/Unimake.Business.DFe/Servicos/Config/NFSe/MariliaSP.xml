@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <GerarNfse versao="3.00">
+      <Descricao>Envio de NFSe Síncrono</Descricao>
+      <WebEnderecoHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php#GerarNota</WebActionHomologacao>
+      <WebActionProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php#GerarNota</WebActionProducao>
+      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="3.00">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php#CancelarNfse</WebActionHomologacao>
+      <WebActionProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
+      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <ConsultarNotaValida versao="3.00">
+      <Descricao>Consulta nota fiscal de serviço válida</Descricao>
+      <WebEnderecoHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php#ConsultarNotaValida</WebActionHomologacao>
+      <WebActionProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
+      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>   
+    </ConsultarNotaValida>
+    <ConsultarNotaPrestador versao="3.00">
+      <Descricao>Consulta nota fiscal de serviço do prestador</Descricao>
+      <WebEnderecoHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php</WebEnderecoProducao>
+      <WebActionHomologacao>https://testemarilia.sigiss.com.br/testemarilia/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionHomologacao>
+      <WebActionProducao>https://marilia.sigiss.com.br:443/marilia/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
+      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap12</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>   
+    </ConsultarNotaPrestador>
+  </Servicos>
+</Configuracoes>

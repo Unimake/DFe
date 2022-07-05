@@ -724,4 +724,10 @@
 		<ArqConfig>NovaFriburgoRJ.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3529005">
+		<Nome>Marília - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MariliaSP.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
