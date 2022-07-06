@@ -990,6 +990,25 @@ namespace Unimake.Business.DFe.Xml.CTe
             return (T)(object)retornar;
         }
 
+        /// <summary>
+        /// Deserializar o XML no objeto EventoCTe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML do eventoCTe</param>
+        /// <returns>Objeto do EventoCTe</returns>
+        public EventoCTe LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<EventoCTe>(doc);
+        }
+
+        /// <summary>
+        /// Deserializar o XML eventoCTe no objeto EventoCTe
+        /// </summary>
+        /// <param name="xml">string do XML eventoCTe</param>
+        /// <returns>Objeto da EventoCTe</returns>
+        public EventoCTe LoadFromXML(string xml) => XMLUtility.Deserializar<EventoCTe>(xml);
+
         #endregion Public Methods
     }
 

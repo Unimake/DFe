@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <idLote>000000000000001</idLote>
+  <evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+    <infEvento Id="ID1101114119100611747300015055001000057928177984361001">
+      <cOrgao>41</cOrgao>
+      <tpAmb>2</tpAmb>
+      <CNPJ>06117473000150</CNPJ>
+      <chNFe>41191006117473000150550010000579281779843610</chNFe>
+      <dhEvento>2022-07-06T08:06:00-03:00</dhEvento>
+      <tpEvento>110111</tpEvento>
+      <nSeqEvento>1</nSeqEvento>
+      <verEvento>1.00</verEvento>
+      <detEvento versao="1.00">
+        <descEvento>Cancelamento</descEvento>
+        <nProt>010101010101010</nProt>
+        <xJust>Justificativa do cancelamento</xJust>
+      </detEvento>
+    </infEvento>
+  </evento>
+</envEvento>

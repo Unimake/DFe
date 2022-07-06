@@ -48,7 +48,7 @@ Function EnviarNfeAssincrono()
    oIde:NatOp = "VENDA PRODUC.DO ESTABELEC"
    oIde:Mod = 55 //NFe
    oIde:Serie    = 1
-   oIde:NNF      = 58010
+   oIde:NNF      = 58026
    oIde:DhEmi    = DateTime() 
    oIde:DhSaiEnt = DateTime()
    oIde:TpNF     = 1 // Saida
@@ -389,11 +389,52 @@ Function EnviarNfeAssincrono()
 			    oProtNfe = oRetAutorizacao:Result:GetProtNfe(I-1)
 				
 				? AllTrim(Str(oProtNfe:InfProt:CStat,5)), oProtNfe:InfProt:XMotivo
+				?
+				? "Proximo passo eh gravar o XML de distribuicao"
+				?
+				?
+				
+				Wait
 				
               * Salvar XML de distribuicao das notas enviadas na pasta informada  
 			    Try
                    if oProtNFe:InfProt:CStat == 100 //100=NFe Autorizada				
 				      oAutorizacao:GravarXmlDistribuicao("d:\testenfe")
+				
+				      ? oRetAutorizacao:RetornoWSString
+					  ?
+					  ?
+					  
+			          //Como gravar o XML de distribuição com outro nome
+					  ? oProtNFe:InfProt:chNFe
+					  ?
+					  ?
+					  Wait					  
+				  
+		              docProcNFe = oAutorizacao:GetNFeProcResults(oProtNFe:InfProt:chNFe)
+		
+			          ? docProcNFe			
+			          ?
+			          ?
+			          wait
+
+			          // Nome do XML de distribuição gerado pela DLL segue o o seguinte padrão:
+			          //    41220606117473000150550010000580151230845956-procnfe.xml
+			          //
+			          // Vamos mudar e deixar ele assim:
+			          //    NFe41220606117473000150550010000580151230845956-ProcNFe.xml
+		              //
+			          NomeArqDistribuicao = "D:\testenfe\NFe" + oProtNFe:InfProt:chNFe + "-ProcNFe.xml"
+                      ?
+					  ?
+					  ? NomeArqDistribuicao
+					  ?
+					  ?
+					  Wait
+					  
+					  nHandle := fCreate(NomeArqDistribuicao)
+					  FWrite(nHandle, docProcNFe)
+					  FClose(nHandle)
 				   else
                       //NFe rejeitada, fazer devidos tratamentos				   
 				   endif

@@ -12,27 +12,22 @@ Function Main()
    Local aOpcoes, nOpcao
    
    aOpcoes := {}
-   AAdd(aOpcoes, "1-Carregar Certificado A1")
-   AAdd(aOpcoes, "2-Consulta Status Nfe")
-   AAdd(aOpcoes, "3-Consulta Situacao Nfe")
-   AAdd(aOpcoes, "4-Inutilizar Numero Nfe")
-   AAdd(aOpcoes, "5-Consulta Recibo Nfe")
-   AAdd(aOpcoes, "6-Enviar Nfe - Assincrono")
-   AAdd(aOpcoes, "7-Cancelar Nfe")
-   Aadd(aOpcoes, "8-Teste diversos com certificado digital")
-   Aadd(aOpcoes, "9-Carta de Correcao")
-   Aadd(aOpcoes, "A-Envio da NFSe (GerarNfse)")
-   Aadd(aOpcoes, "B-Envio NFe - Sincrono")
-   Aadd(aOpcoes, "C-Envio MDFe - Assincrono")
-   AAdd(aOpcoes, "D-Enviar NFe - Deserializando o XML") 
-                              
+   AAdd(aOpcoes, "Consultar Status NFe")
+   AAdd(aOpcoes, "Consultar Situacao NFe")
+   AAdd(aOpcoes, "Enviar NFe - Modo sincrono")
+   AAdd(aOpcoes, "Enviar NFe - Modo assincrono")
+   AAdd(aOpcoes, "Enviar NFe - Desserializando o XML")                               
+   AAdd(aOpcoes, "Testes diversos com certificado digital")  
+   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe")  
+   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe - Desserializando o XML")
+   Aadd(aOpcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL")
     
    Do While .T.
       Cls
 
       @ 1,2 Say "Unimake.Dfe DLL for " + Version()
 	  
-      nOpcao := Achoice( 3, 2, 20, 50, aOpcoes)
+      nOpcao := Achoice( 3, 2, 20, 80, aOpcoes)
 
       Cls
 
@@ -41,45 +36,31 @@ Function Main()
               Exit
 
          case nOpcao = 1
-              CarregarCertificadoA1()
-
-         case nOpcao = 2
               ConsultaStatusNfe()
 
-         case nOpcao = 3
+         case nOpcao = 2
               ConsultaSituacaoNfe()
-
+			  
+         case nOpcao = 3
+              EnviarNfeSincrono()			  
+			  
          case nOpcao = 4
-              InutilizarNumeroNfe()
-
-         case nOpcao = 5
-              ConsultaReciboNfe()
-
-         case nOpcao = 6
               EnviarNfeAssincrono()
-
+			  
+         case nOpcao = 5
+              EnviarNfeDeserializando()			  			  
+			  
+         case nOpcao = 6
+			  TesteDiversoCertificado()
+			  
          case nOpcao = 7
-              CancelarNfe()
+		      CancelarNFe()
 			  
          case nOpcao = 8
-              TesteDiversoCertificado()
-
-         case nOpcao = 9
-              CartaDeCorrecao()
- 
-         case nOpcao = 10
-		      EnviarNfseGerarNfse() 
-			  
-         case nOpcao = 11
-			  EnviarNFeSincrono()
-
-         case nOpcao = 12
-			  EnviarMDFeAssincrono()
-
-         Case nOpcao = 13
-              EnviarNfeDeserializando()			        
-	  endcase
+		      CancelarNFeDesserializando()
+		 
+		 case nOpcao = 9
+		      GerarXmlDistribuicaoNomeDif()
+      endcase
    EndDo
-Return
-
-       
+Return       

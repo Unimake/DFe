@@ -95,3 +95,14 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[CancelarNFeDesserializando.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[GerarXmlDistribuicaoNomeDif.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
