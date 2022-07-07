@@ -21,6 +21,8 @@ Function Main()
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe")  
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe - Desserializando o XML")
    Aadd(aOpcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL")
+   Aadd(aOpcoes, "Enviar carta de correcao CTe")
+   Aadd(aOpcoes, "Enviar carta de correcao CTe - Desserializando o XML")
     
    Do While .T.
       Cls
@@ -61,6 +63,12 @@ Function Main()
 		 
 		 case nOpcao = 9
 		      GerarXmlDistribuicaoNomeDif()
+			  
+         case nOpcao = 10
+		      EnviarCCeCTe() 
+
+         case nOpcao = 11
+		      EnviarCCeCTeDesserializacao() 
       endcase
    EndDo
 Return       

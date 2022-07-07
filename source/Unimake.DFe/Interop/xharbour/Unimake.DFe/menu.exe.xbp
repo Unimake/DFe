@@ -106,3 +106,12 @@ MYC_FLAGS =
 MYDEFINES = 
 MYPRG_FLAGS = 
 
+[EnviarCCeCTe.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[EnviarCCeCTeDesserializacao.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
