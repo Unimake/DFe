@@ -1,97 +1,132 @@
 * ---------------------------------------------------------------------------------
-* Evento de cancelamento da NFe
+* Enviar evento de cancelamento da NFe
 * ---------------------------------------------------------------------------------
-Function CancelarNfe()
- Local oConfiguracao
- Local oEnvEvento, oEvento, oDetEventoCanc, oInfEvento
-
-* Criar configuraÁao b·sica para consumir o serviÁo
- oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
- oConfiguracao:TipoDfe = 0 // 0=nfe
- oConfiguracao:Servico = 5 // 5=Envio de evento
- oConfiguracao:CertificadoSenha = "12345678"
- oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
+#IfNdef __XHARBOUR__
+   #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
+   #xcommand CATCH [<!oErr!>] => RECOVER [USING <oErr>] <-oErr->
+#endif
+ 
+Function CancelarNFe()
+   Local oErro, oExceptionInterop
+   Local oConfiguracao
+   Local oEnvEvento, oEvento, oDetEventoCanc, oInfEvento
+   
+ * Criar configura√ßao b√°sica para consumir o servi√ßo
+   oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfiguracao:TipoDfe = 0 // 0=nfe
+   oConfiguracao:Servico = 5 // 5=Envio de evento
+   oConfiguracao:CertificadoSenha = "12345678"
+   oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
  * Criar tag EnvEvento
- oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
- oEnvEvento:Versao = "1.00"
- oEnvEvento:IdLote = "000000000000001"
+   oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
+   oEnvEvento:Versao = "1.00"
+   oEnvEvento:IdLote = "000000000000001"
 
- * =================================================
- * EVENTO N⁄MERO 1
- * =================================================
+ * -------------------------------------------------
+ * Criar tags do evento sequencia 1
+ * -------------------------------------------------
  * Criar tag Evento
- oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
- oEvento:Versao = "1.00"
+   oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
+   oEvento:Versao = "1.00"
  
- * Criar tag DetEventoCCE
- oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")
- oDetEventoCanc:Versao = "1.00"
- oDetEventoCanc:NProt = "141190000660363"
- oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
+ * Criar tag DetEventoCanc
+   oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")
+   oDetEventoCanc:Versao = "1.00"
+   oDetEventoCanc:NProt = "141190000660363"
+   oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
 
  * Criar tag InfEvento
- oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
+   oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
  
- * Adicionar a tag DetEventoCCE dentro da Tag DetEvento
- oInfEvento:DetEvento = oDetEventoCanc
+ * Adicionar a tag DetEventoCanc dentro da Tag DetEvento
+   oInfEvento:DetEvento = oDetEventoCanc
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: AtualizaÁ„o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
- oInfEvento:COrgao = 41 // UFBrasil.PR
- oInfEvento:ChNFe = "41191006117473000150550010000579281779843610"
- oInfEvento:CNPJ = "06117473000150"
- oInfEvento:DhEvento = DateTime()
- oInfEvento:TpEvento = 110111 // TipoEventoNFe.Cancelamento
- oInfEvento:NSeqEvento = 1
- oInfEvento:VerEvento = "1.00"
- oInfEvento:TpAmb = 2 // TipoAmbiente.Homologacao
+ * IMPORTANTE: Atualiza√ß√£o da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+   oInfEvento:COrgao = 41 // UFBrasil.PR
+   oInfEvento:ChNFe = "41191006117473000150550010000579281779843610"
+   oInfEvento:CNPJ = "06117473000150"
+   oInfEvento:DhEvento = DateTime()
+   oInfEvento:TpEvento = 110111 // TipoEventoNFe.Cancelamento
+   oInfEvento:NSeqEvento = 1
+   oInfEvento:VerEvento = "1.00"
+   oInfEvento:TpAmb = 2 // TipoAmbiente.Homologacao
 
  * Adicionar a tag InfEvento dentro da tag Evento
- oEvento:InfEvento = oInfEvento
+   oEvento:InfEvento = oInfEvento
 
  * Adicionar a tag Evento dentro da tag EnvEvento
- oEnvEvento:AddEvento(oEvento)
+   oEnvEvento:AddEvento(oEvento)
 
- ? oEnvEvento:Versao, oEnvEvento:IdLote
- ? "Qde eventos:", oEnvEvento:GetEventoCount()
+ * Resgatando alguns dados do objeto do XML do evento
+   ? oEnvEvento:Versao, oEnvEvento:IdLote
+   ? "Qde eventos:", oEnvEvento:GetEventoCount()
   
- For I = 1 To oEnvEvento:GetEventoCount()
-     oTagEvento := oEnvEvento:GetEvento(I - 1) 
-     ? I, oTagEvento:InfEvento:NSeqEvento, oTagEvento:InfEvento:COrgao
- Next I     
+   For I = 1 To oEnvEvento:GetEventoCount()
+       oTagEvento := oEnvEvento:GetEvento(I - 1) 
+       ? I, oTagEvento:InfEvento:NSeqEvento, oTagEvento:InfEvento:COrgao
+   Next I    
 
- * Enviar carta de correcao
- oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
- oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
+   ?
+   ?
+   Wait   
+   
+   // Criar objeto para pegar exce√ß√£o do lado do CSHARP
+   oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
+   
+   Try 
+    * Enviar evento
+      oRecepcaoEvento = CreateObject("Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento")
+      oRecepcaoEvento:Executar(oEnvEvento,  oConfiguracao)
 
- ? "CStat do Lote Retornado:", oRecepcaoEvento:Result:CStat, "- XMotivo:", oRecepcaoEvento:Result:XMotivo
+      ? "CStat do Lote Retornado:", oRecepcaoEvento:Result:CStat, "- XMotivo:", oRecepcaoEvento:Result:XMotivo
  
- if oRecepcaoEvento:Result:CStat == 128 //128 = Lote de evento processado com sucesso.
-  * Como pode existir v·rios eventos de correÁ„o, 
-  * È necess·rio fazer um loop para ver a autorizaÁ„o de cada um deles
-    For I = 1 To oRecepcaoEvento:Result:GetRetEventoCount()
-        oRetEvento = oRecepcaoEvento:Result:GetRetEvento(I - 1)
-        SWITCH oRetEvento:InfEvento:CStat
-          CASE 135 //Evento homologado com vinculaÁ„o da respectiva NFe
-          CASE 136 //Evento homologado sem vinculaÁ„o com a respectiva NFe (SEFAZ n„o encontrou a NFe na base dela)
-          CASE 155 //Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
-               oRecepcaoEvento:GravarXmlDistribuicao("tmp\testenfe") //Grava o XML de distribuiÁ„o
-               Exit
-			   
-       #Ifdef __XHARBOUR__
-          DEFAULT
-       #Else
-          OTHERWISE    
-       #endif
-               // Evento rejeitado
-               // Realizar as aÁıes necess·rias
-               Exit
-        END
-		
-        ? "CStat do evento", AllTrim(Str(I,10)), "retornado:", oRetEvento:InfEvento:CStat, "- xMotivo:", oRetEvento:InfEvento:XMotivo
-    Next
- EndIf 
+      if oRecepcaoEvento:Result:CStat == 128 //128 = Lote de evento processado com sucesso.
+       * Como pode existir v√°rios eventos no XML (Caso da carta de corre√ß√£o que posso enviar v√°rias sequencias de evento)
+       * √© necess√°rio fazer um loop para ver a autoriza√ß√£o de cada um deles
+         For I = 1 To oRecepcaoEvento:Result:GetRetEventoCount()
+             oRetEvento = oRecepcaoEvento:Result:GetRetEvento(I - 1)
+   		  
+             SWITCH oRetEvento:InfEvento:CStat
+               CASE 135 //Evento homologado com vincula√ß√£o da respectiva NFe
+               CASE 136 //Evento homologado sem vincula√ß√£o com a respectiva NFe (SEFAZ n√£o encontrou a NFe na base dela)
+               CASE 155 //Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
+                    oRecepcaoEvento:GravarXmlDistribuicao("tmp\testenfe") //Grava o XML de distribui√ß√£o
+                    Exit
+   				 
+              #Ifdef __XHARBOUR__
+               DEFAULT
+              #Else
+               OTHERWISE    
+              #endif
+                    // Evento rejeitado
+                    // Realizar as a√ß√µes necess√°rias
+                    Exit
+             END
+   		
+             ? "CStat do evento", AllTrim(Str(I,10)), "retornado:", oRetEvento:InfEvento:CStat, "- xMotivo:", oRetEvento:InfEvento:XMotivo
+         Next
+      EndIf 
+	  ?
+	  ?
+	  Wait
 
- Wait
-RETURN
+   Catch oErro
+      //Demonstrar exce√ß√µes geradas no proprio Harbour, se existir.
+	  ? "ERRO"
+	  ? "===="
+	  ? "Falha ao tentar consultar o status do servico."
+      ? oErro:Description
+      ? oErro:Operation
+	  
+      //Demonstrar a exce√ß√£o do CSHARP
+	  ?
+      ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
+      ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()
+      ?     
+	  
+	  Wait
+	  cls   
+   End	   
+Return
