@@ -22,10 +22,10 @@
     </EnvioLoteRps>
 	<TesteEnvioLoteRps versao="2.00">
       <Descricao>Envio Lote RPS Teste</Descricao>
-      <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
-      <WebActionHomologacao></WebActionHomologacao>
-      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio</WebActionProducao>
+      <WebEnderecoHomologacao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao>http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio</WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
       <SchemaArquivo>PedidoEnvioLoteRPS_v01.xsd</SchemaArquivo>
       <TagAssinatura>PedidoEnvioLoteRPS</TagAssinatura>
       <TagAtributoID>Cabecalho</TagAtributoID>
@@ -40,7 +40,7 @@
       <TargetNS>http://www.prefeitura.sp.gov.br/nfe</TargetNS>
     </TesteEnvioLoteRps>
     <EnvioRps versao="2.00">
-      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <Descricao>Envio Rps</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
@@ -158,7 +158,7 @@
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
-      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas</WebActionProducao>
+      <WebActionProducao>http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas</WebActionProducao>
       <SchemaArquivo>PedidoConsultaNFePeriodo_v01.xsd</SchemaArquivo>
       <TagAssinatura>p1:PedidoConsultaNFePeriodo</TagAssinatura>
       <TagAtributoID>Cabecalho</TagAtributoID>
