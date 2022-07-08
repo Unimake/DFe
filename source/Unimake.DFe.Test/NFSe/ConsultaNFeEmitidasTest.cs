@@ -28,7 +28,7 @@ namespace Unimake.DFe.Test.NFSe
         [MemberData(nameof(Parametros))]
         public void ConsultaNFeEmitidas(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
         {
-            var nomeXMLEnvio = "ConsultaNFeEmitidas-ped-sitnfserec.xml";
+            var nomeXMLEnvio = "ConsultaNFeEmitidas-ped-nfseemit.xml";
 
             string arqXML;
 
