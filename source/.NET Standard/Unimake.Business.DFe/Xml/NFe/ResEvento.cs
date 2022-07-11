@@ -4,8 +4,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -42,13 +40,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string ChNFe { get; set; }
 
         [XmlIgnore]
-        public DateTime DhEvento { get; set; }
+        public DateTimeOffset DhEvento { get; set; }
 
         [XmlElement("dhEvento")]
         public string DhEventoField
         {
             get => DhEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEvento = DateTime.Parse(value);
+            set => DhEvento = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("tpEvento")]
@@ -61,13 +59,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XEvento { get; set; }
 
         [XmlIgnore]
-        public DateTime DhRecbto { get; set; }
+        public DateTimeOffset DhRecbto { get; set; }
 
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
             get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhRecbto = DateTime.Parse(value);
+            set => DhRecbto = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("nProt")]

@@ -31,7 +31,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Carimbo de tempo realizado pelo Sistema Cliente no instante da comunicação com o SNCM.
         /// </summary>
         [XmlIgnore]
-        public DateTime CcTime { get; set; }
+        public DateTimeOffset CcTime { get; set; }
 
         /// <summary>
         /// Auxiliar da propriedade "CcTime" - utilize a propriedade "CcTime" para atribuir valor.
@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string CcTimeField
         {
             get => CcTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => CcTime = DateTime.Parse(value);
+            set => CcTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>

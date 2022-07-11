@@ -45,11 +45,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             var xmlDoc = base.GerarXML();
 
-            foreach(var nodeEnvNFe in xmlDoc.GetElementsByTagName("enviNFe"))
+            foreach (var nodeEnvNFe in xmlDoc.GetElementsByTagName("enviNFe"))
             {
                 var elemEnvNFe = (XmlElement)nodeEnvNFe;
 
-                foreach(var nodeNFe in elemEnvNFe.GetElementsByTagName("NFe"))
+                foreach (var nodeNFe in elemEnvNFe.GetElementsByTagName("NFe"))
                 {
                     var elemNFe = (XmlElement)nodeNFe;
 
@@ -88,7 +88,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="nfe">Elemento</param>
         public void AddNFe(NFe nfe)
         {
-            if(NFe == null)
+            if (NFe == null)
             {
                 NFe = new List<NFe>();
             }
@@ -103,7 +103,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da NFe</returns>
         public NFe GetNFe(int index)
         {
-            if((NFe?.Count ?? 0) == 0)
+            if ((NFe?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -146,7 +146,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="infNFe">Elemento</param>
         public void AddInfNFe(InfNFe infNFe)
         {
-            if(InfNFe == null)
+            if (InfNFe == null)
             {
                 InfNFe = new List<InfNFe>();
             }
@@ -161,7 +161,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da InfNFe</returns>
         public InfNFe GetInfNFe(int index)
         {
-            if((InfNFe?.Count ?? 0) == 0)
+            if ((InfNFe?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -313,7 +313,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="autXML">Elemento</param>
         public void AddAutXml(AutXML autXML)
         {
-            if(AutXML == null)
+            if (AutXML == null)
             {
                 AutXML = new List<AutXML>();
             }
@@ -327,7 +327,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="det">Elemento</param>
         public void AddDet(Det det)
         {
-            if(Det == null)
+            if (Det == null)
             {
                 Det = new List<Det>();
             }
@@ -342,7 +342,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
         public AutXML GetAutXML(int index)
         {
-            if((AutXML?.Count ?? 0) == 0)
+            if ((AutXML?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -362,7 +362,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Det</returns>
         public Det GetDet(int index)
         {
-            if((Det?.Count ?? 0) == 0)
+            if ((Det?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -407,9 +407,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             get
             {
                 string retorno;
-                if(string.IsNullOrWhiteSpace(CNFField))
+                if (string.IsNullOrWhiteSpace(CNFField))
                 {
-                    if(NNF < 0)
+                    if (NNF < 0)
                     {
                         throw new Exception("Defina o conteúdo da TAG <nNF>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
@@ -443,23 +443,23 @@ namespace Unimake.Business.DFe.Xml.NFe
         public int NNF { get; set; }
 
         [XmlIgnore]
-        public DateTime DhEmi { get; set; }
+        public DateTimeOffset DhEmi { get; set; }
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEmi = DateTime.Parse(value);
+            set => DhEmi = DateTimeOffset.Parse(value);
         }
 
         [XmlIgnore]
-        public DateTime DhSaiEnt { get; set; }
+        public DateTimeOffset DhSaiEnt { get; set; }
 
         [XmlElement("dhSaiEnt")]
         public string DhSaiEntField
         {
             get => DhSaiEnt.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhSaiEnt = DateTime.Parse(value);
+            set => DhSaiEnt = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("tpNF")]
@@ -510,13 +510,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VerProc { get; set; }
 
         [XmlIgnore]
-        public DateTime DhCont { get; set; }
+        public DateTimeOffset DhCont { get; set; }
 
         [XmlElement("dhCont")]
         public string DhContField
         {
             get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhCont = DateTime.Parse(value);
+            set => DhCont = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("xJust")]
@@ -539,11 +539,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             var retorna = false;
 
-            if(IndIntermed != (IndicadorIntermediario)(-1))
+            if (IndIntermed != (IndicadorIntermediario)(-1))
             {
-                if(IndIntermed != null)
+                if (IndIntermed != null)
                 {
-                    if(IndPres != IndicadorPresenca.NaoSeAplica && IndPres != IndicadorPresenca.PresencialForaEstabelecimento)
+                    if (IndPres != IndicadorPresenca.NaoSeAplica && IndPres != IndicadorPresenca.PresencialForaEstabelecimento)
                     {
                         retorna = true;
                     }
@@ -558,7 +558,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             // ~\uninfe\doc\NFCe e NFe 3.10\NT2012.004_v1.2_NFCe.pdf
             // Página 06 item #14
             // Nota: Para a NFC-e este campo não deve existir
-            if(Mod == ModeloDFe.NFCe)
+            if (Mod == ModeloDFe.NFCe)
             {
                 return false;
             }
@@ -576,7 +576,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="nFref">Elemento</param>
         public void AddNFref(NFref nFref)
         {
-            if(NFref == null)
+            if (NFref == null)
             {
                 NFref = new List<NFref>();
             }
@@ -591,7 +591,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da NFref</returns>
         public NFref GetNFref(int index)
         {
-            if((NFref?.Count ?? 0) == 0)
+            if ((NFref?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -670,7 +670,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 var mesesValidos = "01-02-03-04-05-06-07-08-09-10-11-12";
 
-                if(!mesesValidos.Contains(value.Substring(2)))
+                if (!mesesValidos.Contains(value.Substring(2)))
                 {
                     throw new Exception("Conteúdo da TAG <AAMM>, filha da TAG <refNF>, inválido! Mês informado deve estar entre 01 e 12.");
                 }
@@ -688,7 +688,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => ModField;
             set
             {
-                if(value != "01" && value != "02")
+                if (value != "01" && value != "02")
                 {
                     throw new Exception("Conteúdo da TAG <mod>, filha da TAG da <refNF>, inválido! Valores aceitos: 01 e 02.");
                 }
@@ -734,7 +734,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 var mesesValidos = "01-02-03-04-05-06-07-08-09-10-11-12";
 
-                if(!mesesValidos.Contains(value.Substring(2)))
+                if (!mesesValidos.Contains(value.Substring(2)))
                 {
                     throw new Exception("Conteúdo da TAG <AAMM>, filha da TAG <refNFP>, inválido! Mês informado deve estar entre 01 e 12.");
                 }
@@ -758,7 +758,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => ModField;
             set
             {
-                if(value != "01" && value != "04")
+                if (value != "01" && value != "04")
                 {
                     throw new Exception("Conteúdo da TAG <mod>, filha da TAG <refNF>, inválido! Valores aceitos: 01 e 04.");
                 }
@@ -799,7 +799,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => ModField;
             set
             {
-                if(value != "2B" && value != "2C" && value != "2D")
+                if (value != "2B" && value != "2C" && value != "2D")
                 {
                     throw new Exception("Conteúdo da TAG <mod>, filha da TAG <refECF>, inválido! Valores aceitos: 2B, 2C e 2D.");
                 }
@@ -1044,7 +1044,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             set
             {
-                if(value.Length <= 11)
+                if (value.Length <= 11)
                 {
                     CPF = value;
                 }
@@ -1158,7 +1158,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => _CMun;
             set
             {
-                if(value <= 0 || value == null)
+                if (value <= 0 || value == null)
                 {
                     throw new Exception("Código do município do destinatário (tag <cMun> da <enderDest>) está sem conteúdo. É obrigatório informar o código IBGE do município.");
                 }
@@ -1171,10 +1171,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CMunField
         {
             get => CMun.ToString();
-            set
-            {
-                CMun = Convert.ToInt32(string.IsNullOrWhiteSpace(value) ? "0" : value);
-            }
+            set => CMun = Convert.ToInt32(string.IsNullOrWhiteSpace(value) ? "0" : value);
         }
 
         #endregion
@@ -1281,7 +1278,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => _CMun;
             set
             {
-                if(value <= 0 || value == null)
+                if (value <= 0 || value == null)
                 {
                     throw new Exception("Código do município do local de " + GetType().Name.ToLower() + " (tag <cMun> da <" + GetType().Name.ToLower() + ">) está sem conteúdo. É obrigatório informar o código IBGE do município.");
                 }
@@ -1294,10 +1291,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CMunField
         {
             get => CMun.ToString();
-            set
-            {
-                CMun = Convert.ToInt32(string.IsNullOrWhiteSpace(value) ? "0" : value);
-            }
+            set => CMun = Convert.ToInt32(string.IsNullOrWhiteSpace(value) ? "0" : value);
         }
 
         #endregion
@@ -1523,16 +1517,16 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CEANTribField;
             set
             {
-                if(value.ToUpper().Trim() != "SEM GTIN")
+                if (value.ToUpper().Trim() != "SEM GTIN")
                 {
-                    if(!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
+                    if (!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
                     {
                         throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + value + ") no produto de código " + CProd + " está incorreto. EAN deve ter 0,8,12,13 ou 14 de tamanho e somente números, ou seja, não pode conter letras.");
                     }
 
-                    for(var i = 0; i < value.Length; i++)
+                    for (var i = 0; i < value.Length; i++)
                     {
-                        if(!"0123456789".Contains(value.Substring(i, 1)))
+                        if (!"0123456789".Contains(value.Substring(i, 1)))
                         {
                             throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + value + ") no produto de código " + CProd + " está incorreto. Não pode conter letras, somente números.");
                         }
@@ -1540,7 +1534,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
                 else
                 {
-                    if(value != "SEM GTIN")
+                    if (value != "SEM GTIN")
                     {
                         throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + "\"" + value + "\") tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença.");
                     }
@@ -1689,7 +1683,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="nVE">Elemento</param>
         public void AddNVE(string nVE)
         {
-            if(NVE == null)
+            if (NVE == null)
             {
                 NVE = new List<string>();
             }
@@ -1704,7 +1698,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da NVE</returns>
         public string GetNVE(int index)
         {
-            if((NVE?.Count ?? 0) == 0)
+            if ((NVE?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1723,7 +1717,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="di">Elemento</param>
         public void AddEvento(DI di)
         {
-            if(DI == null)
+            if (DI == null)
             {
                 DI = new List<DI>();
             }
@@ -1738,7 +1732,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da DI</returns>
         public DI GetDI(int index)
         {
-            if((DI?.Count ?? 0) == 0)
+            if ((DI?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1757,7 +1751,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="detExport">Elemento</param>
         public void AddDetExport(DetExport detExport)
         {
-            if(DetExport == null)
+            if (DetExport == null)
             {
                 DetExport = new List<DetExport>();
             }
@@ -1772,7 +1766,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da DetExport</returns>
         public DetExport GetDetExport(int index)
         {
-            if((DetExport?.Count ?? 0) == 0)
+            if ((DetExport?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1791,7 +1785,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="rastro">Elemento</param>
         public void AddRastro(Rastro rastro)
         {
-            if(Rastro == null)
+            if (Rastro == null)
             {
                 Rastro = new List<Rastro>();
             }
@@ -1806,7 +1800,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Rastro</returns>
         public Rastro GetRastro(int index)
         {
-            if((Rastro?.Count ?? 0) == 0)
+            if ((Rastro?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1825,7 +1819,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="arma">Elemento</param>
         public void AddArma(Arma arma)
         {
-            if(Arma == null)
+            if (Arma == null)
             {
                 Arma = new List<Arma>();
             }
@@ -1840,7 +1834,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Arma</returns>
         public Arma GetArma(int index)
         {
-            if((Arma?.Count ?? 0) == 0)
+            if ((Arma?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1859,7 +1853,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="comb">Elemento</param>
         public void AddComb(Comb comb)
         {
-            if(Comb == null)
+            if (Comb == null)
             {
                 Comb = new List<Comb>();
             }
@@ -1874,7 +1868,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Comb</returns>
         public Comb GetComb(int index)
         {
-            if((Comb?.Count ?? 0) == 0)
+            if ((Comb?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1893,7 +1887,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="med">Elemento</param>
         public void AddMed(Med med)
         {
-            if(Med == null)
+            if (Med == null)
             {
                 Med = new List<Med>();
             }
@@ -1908,7 +1902,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Med</returns>
         public Med GetMed(int index)
         {
-            if((Med?.Count ?? 0) == 0)
+            if ((Med?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1927,7 +1921,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="veicProd">Elemento</param>
         public void AddVeicProd(VeicProd veicProd)
         {
-            if(VeicProd == null)
+            if (VeicProd == null)
             {
                 VeicProd = new List<VeicProd>();
             }
@@ -1942,7 +1936,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da VeicProd</returns>
         public VeicProd GetVeicProd(int index)
         {
-            if((VeicProd?.Count ?? 0) == 0)
+            if ((VeicProd?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2047,7 +2041,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="adi">Elemento</param>
         public void AddAdi(Adi adi)
         {
-            if(Adi == null)
+            if (Adi == null)
             {
                 Adi = new List<Adi>();
             }
@@ -2062,7 +2056,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Adi</returns>
         public Adi GetAdi(int index)
         {
-            if((Adi?.Count ?? 0) == 0)
+            if ((Adi?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2650,7 +2644,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="icms">Elemento</param>
         public void AddICMS(ICMS icms)
         {
-            if(ICMS == null)
+            if (ICMS == null)
             {
                 ICMS = new List<ICMS>();
             }
@@ -2665,7 +2659,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ICMS</returns>
         public ICMS GetICMS(int index)
         {
-            if((ICMS?.Count ?? 0) == 0)
+            if ((ICMS?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2684,7 +2678,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="ii">Elemento</param>
         public void AddII(II ii)
         {
-            if(II == null)
+            if (II == null)
             {
                 II = new List<II>();
             }
@@ -2699,7 +2693,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da II</returns>
         public II GetII(int index)
         {
-            if((II?.Count ?? 0) == 0)
+            if ((II?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2718,7 +2712,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="issQN">Elemento</param>
         public void AddISSQN(ISSQN issQN)
         {
-            if(ISSQN == null)
+            if (ISSQN == null)
             {
                 ISSQN = new List<ISSQN>();
             }
@@ -2733,7 +2727,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ISSQN</returns>
         public ISSQN GetISSQN(int index)
         {
-            if((ISSQN?.Count ?? 0) == 0)
+            if ((ISSQN?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -3358,7 +3352,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("40") || value.Equals("41") || value.Equals("50"))
+                if (value.Equals("40") || value.Equals("41") || value.Equals("50"))
                 {
                     CSTField = value;
                 }
@@ -4271,7 +4265,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("10") || value.Equals("90"))
+                if (value.Equals("10") || value.Equals("90"))
                 {
                     CSTField = value;
                 }
@@ -4465,7 +4459,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("101"))
+                if (value.Equals("101"))
                 {
                     CSOSNField = value;
                 }
@@ -4517,7 +4511,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("102") || value.Equals("103") || value.Equals("300") || value.Equals("400"))
+                if (value.Equals("102") || value.Equals("103") || value.Equals("300") || value.Equals("400"))
                 {
                     CSOSNField = value;
                 }
@@ -4549,7 +4543,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("201"))
+                if (value.Equals("201"))
                 {
                     CSOSNField = value;
                 }
@@ -4706,7 +4700,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("202") || value.Equals("203"))
+                if (value.Equals("202") || value.Equals("203"))
                 {
                     CSOSNField = value;
                 }
@@ -4840,7 +4834,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("500"))
+                if (value.Equals("500"))
                 {
                     CSOSNField = value;
                 }
@@ -5000,7 +4994,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSOSNField;
             set
             {
-                if(value.Equals("900"))
+                if (value.Equals("900"))
                 {
                     CSOSNField = value;
                 }
@@ -5235,7 +5229,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("41") || value.Equals("60"))
+                if (value.Equals("41") || value.Equals("60"))
                 {
                     CSTField = value;
                 }
@@ -5499,7 +5493,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("01") || value.Equals("02") || value.Equals("03") ||
+                if (value.Equals("01") || value.Equals("02") || value.Equals("03") ||
                     value.Equals("04") || value.Equals("05") || value.Equals("51") ||
                     value.Equals("52") || value.Equals("53") || value.Equals("54") ||
                     value.Equals("55"))
@@ -5531,7 +5525,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("00") || value.Equals("49") || value.Equals("50") ||
+                if (value.Equals("00") || value.Equals("49") || value.Equals("50") ||
                     value.Equals("99"))
                 {
                     CSTField = value;
@@ -5781,7 +5775,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("01") || value.Equals("02"))
+                if (value.Equals("01") || value.Equals("02"))
                 {
                     CSTField = value;
                 }
@@ -5842,7 +5836,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 _cstField = string.Empty;
 
-                if(!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
+                if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
                 {
                     throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISNT>, inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
                 }
@@ -5869,7 +5863,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
+                if (value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
                     value.Equals("55") || value.Equals("56") || value.Equals("60") || value.Equals("61") || value.Equals("62") || value.Equals("63") ||
                     value.Equals("64") || value.Equals("65") || value.Equals("66") || value.Equals("67") || value.Equals("70") || value.Equals("71") ||
                     value.Equals("72") || value.Equals("73") || value.Equals("74") || value.Equals("75") || value.Equals("98") || value.Equals("99"))
@@ -5947,7 +5941,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("03"))
+                if (value.Equals("03"))
                 {
                     CSTField = value;
                 }
@@ -6079,7 +6073,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("01") || value.Equals("02"))
+                if (value.Equals("01") || value.Equals("02"))
                 {
                     CSTField = value;
                 }
@@ -6140,7 +6134,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 _cstField = string.Empty;
 
-                if(!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
+                if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
                 {
                     throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSNT>, inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
                 }
@@ -6167,7 +6161,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
+                if (value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
                     value.Equals("55") || value.Equals("56") || value.Equals("60") || value.Equals("61") || value.Equals("62") || value.Equals("63") ||
                     value.Equals("64") || value.Equals("65") || value.Equals("66") || value.Equals("67") || value.Equals("70") || value.Equals("71") ||
                     value.Equals("72") || value.Equals("73") || value.Equals("74") || value.Equals("75") || value.Equals("98") || value.Equals("99"))
@@ -6245,7 +6239,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => CSTField;
             set
             {
-                if(value.Equals("03"))
+                if (value.Equals("03"))
                 {
                     CSTField = value;
                 }
@@ -6394,7 +6388,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => PICMSInterField2;
             set
             {
-                if(value == 4 || value == 7 || value == 12)
+                if (value == 4 || value == 7 || value == 12)
                 {
                     PICMSInterField2 = value;
                 }
@@ -6509,7 +6503,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="obsCont">Elemento</param>
         public void AddObsCont(ObsCont obsCont)
         {
-            if(ObsCont == null)
+            if (ObsCont == null)
             {
                 ObsCont = new List<ObsCont>();
             }
@@ -6524,7 +6518,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
         public ObsCont GetObsCont(int index)
         {
-            if((ObsCont?.Count ?? 0) == 0)
+            if ((ObsCont?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -6543,7 +6537,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="obsFisco">Elemento</param>
         public void AddObsFisco(ObsFisco obsFisco)
         {
-            if(ObsFisco == null)
+            if (ObsFisco == null)
             {
                 ObsFisco = new List<ObsFisco>();
             }
@@ -6558,7 +6552,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
         public ObsFisco GetObsFisco(int index)
         {
-            if((ObsFisco?.Count ?? 0) == 0)
+            if ((ObsFisco?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7152,7 +7146,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="reboque">Elemento</param>
         public void AddReboque(Reboque reboque)
         {
-            if(Reboque == null)
+            if (Reboque == null)
             {
                 Reboque = new List<Reboque>();
             }
@@ -7167,7 +7161,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Reboque</returns>
         public Reboque GetReboque(int index)
         {
-            if((Reboque?.Count ?? 0) == 0)
+            if ((Reboque?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7186,7 +7180,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="vol">Elemento</param>
         public void AddVol(Vol vol)
         {
-            if(Vol == null)
+            if (Vol == null)
             {
                 Vol = new List<Vol>();
             }
@@ -7201,7 +7195,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Vol</returns>
         public Vol GetVol(int index)
         {
-            if((Vol?.Count ?? 0) == 0)
+            if ((Vol?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7458,7 +7452,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="lacres">Elemento</param>
         public void AddLacres(Lacres lacres)
         {
-            if(Lacres == null)
+            if (Lacres == null)
             {
                 Lacres = new List<Lacres>();
             }
@@ -7473,7 +7467,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Lacres</returns>
         public Lacres GetLacres(int index)
         {
-            if((Lacres?.Count ?? 0) == 0)
+            if ((Lacres?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7526,7 +7520,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public void AddDup(Dup dup)
         {
-            if(Dup == null)
+            if (Dup == null)
             {
                 Dup = new List<Dup>();
             }
@@ -7541,7 +7535,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Dup</returns>
         public Dup GetDup(int index)
         {
-            if((Dup?.Count ?? 0) == 0)
+            if ((Dup?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7676,7 +7670,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="detPag">Elemento</param>
         public void AddDetPag(DetPag detPag)
         {
-            if(DetPag == null)
+            if (DetPag == null)
             {
                 DetPag = new List<DetPag>();
             }
@@ -7691,7 +7685,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da DetPag</returns>
         public DetPag GetDetPag(int index)
         {
-            if((DetPag?.Count ?? 0) == 0)
+            if ((DetPag?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7809,7 +7803,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => IdCadIntTranField;
             set
             {
-                if(value.Length < 2 || value.Length > 60)
+                if (value.Length < 2 || value.Length > 60)
                 {
                     throw new Exception("Conteúdo da TAG <idCadIntTran> filha da TAG <infIntermed> deve ter entre 2 até 60 caracteres.");
                 }
@@ -7873,7 +7867,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="obsCont">Elemento</param>
         public void AddObsCont(ObsCont obsCont)
         {
-            if(ObsCont == null)
+            if (ObsCont == null)
             {
                 ObsCont = new List<ObsCont>();
             }
@@ -7888,7 +7882,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
         public ObsCont GetObsCont(int index)
         {
-            if((ObsCont?.Count ?? 0) == 0)
+            if ((ObsCont?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7907,7 +7901,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="obsFisco">Elemento</param>
         public void AddObsFisco(ObsFisco obsFisco)
         {
-            if(ObsFisco == null)
+            if (ObsFisco == null)
             {
                 ObsFisco = new List<ObsFisco>();
             }
@@ -7922,7 +7916,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
         public ObsFisco GetObsFisco(int index)
         {
-            if((ObsFisco?.Count ?? 0) == 0)
+            if ((ObsFisco?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -7941,7 +7935,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="procRef">Elemento</param>
         public void AddProcRef(ProcRef procRef)
         {
-            if(ProcRef == null)
+            if (ProcRef == null)
             {
                 ProcRef = new List<ProcRef>();
             }
@@ -7956,7 +7950,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ProcRef</returns>
         public ProcRef GetProcRef(int index)
         {
-            if((ProcRef?.Count ?? 0) == 0)
+            if ((ProcRef?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -8066,7 +8060,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => UFSaidaPaisField;
             set
             {
-                if(value == UFBrasil.EX || value == UFBrasil.AN)
+                if (value == UFBrasil.EX || value == UFBrasil.AN)
                 {
                     throw new Exception("Conteúdo da TAG <UFSaidaPais> inválido. Não pode ser informado EX ou AN.");
                 }
@@ -8216,7 +8210,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="forDia">Elemento</param>
         public void AddForDia(ForDia forDia)
         {
-            if(ForDia == null)
+            if (ForDia == null)
             {
                 ForDia = new List<ForDia>();
             }
@@ -8231,7 +8225,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da ForDia</returns>
         public ForDia GetForDia(int index)
         {
-            if((ForDia?.Count ?? 0) == 0)
+            if ((ForDia?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -8250,7 +8244,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="deduc">Elemento</param>
         public void AddDeduc(Deduc deduc)
         {
-            if(Deduc == null)
+            if (Deduc == null)
             {
                 Deduc = new List<Deduc>();
             }
@@ -8265,7 +8259,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da Deduc</returns>
         public Deduc GetDeduc(int index)
         {
-            if((Deduc?.Count ?? 0) == 0)
+            if ((Deduc?.Count ?? 0) == 0)
             {
                 return default;
             };

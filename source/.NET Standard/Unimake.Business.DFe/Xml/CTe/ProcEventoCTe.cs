@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
     [Serializable()]
     [XmlRoot("procEventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class ProcEventoCTe: XMLBase
+    public class ProcEventoCTe : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -36,13 +36,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         public int NPortaCon { get; set; }
 
         [XmlIgnore]
-        public DateTime DhConexao { get; set; }
+        public DateTimeOffset DhConexao { get; set; }
 
         [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
             get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhConexao = DateTime.Parse(value);
+            set => DhConexao = DateTimeOffset.Parse(value);
         }
 
         /// <summary>
@@ -75,14 +75,14 @@ namespace Unimake.Business.DFe.Xml.CTe
 
             var reader = XmlReader.Create(new StringReader(document.InnerXml));
 
-            while(reader.Read())
+            while (reader.Read())
             {
-                if(reader.NodeType != XmlNodeType.Element)
+                if (reader.NodeType != XmlNodeType.Element)
                 {
                     continue;
                 }
 
-                switch(reader.Name)
+                switch (reader.Name)
                 {
                     case "Signature":
                         EventoCTe.Signature = reader.ToSignature();

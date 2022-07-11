@@ -149,13 +149,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string EmailDest { get; set; }
 
         [XmlIgnore]
-        public DateTime DhRegEvento { get; set; }
+        public DateTimeOffset DhRegEvento { get; set; }
 
         [XmlElement("dhRegEvento", Order = 12)]
         public string DhRegEventoField
         {
             get => DhRegEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhRegEvento = DateTime.Parse(value);
+            set => DhRegEvento = DateTimeOffset.Parse(value);
         }
 
         [XmlElementAttribute("nProt", Order = 13)]
