@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using System.Globalization;
 
 namespace Unimake.Business.DFe.Xml.CCG
 {
@@ -50,7 +51,7 @@ namespace Unimake.Business.DFe.Xml.CCG
         /// Data e hora da resposta
         /// </summary>
         [XmlIgnore]
-        public DateTime DhResp { get; set; }
+        public DateTimeOffset DhResp { get; set; }
 
         /// <summary>
         /// Data e hora da resposta (Obs: Utilize a propriedade DhResp para atribuir o valor)
@@ -58,8 +59,8 @@ namespace Unimake.Business.DFe.Xml.CCG
         [XmlElement("dhResp")]
         public string DhRespField
         {
-            get => DhResp.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhResp = DateTime.Parse(value);
+            get => DhResp.ToString("yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture);
+            set => DhResp = DateTimeOffset.Parse(value);
         }
 
         private string GTINField;

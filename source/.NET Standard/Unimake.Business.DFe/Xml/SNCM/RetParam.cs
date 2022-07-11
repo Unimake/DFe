@@ -31,7 +31,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e horário da recepção da mensagem de entrada
         /// </summary>
         [XmlIgnore]
-        public DateTime CrTime { get; set; }
+        public DateTimeOffset CrTime { get; set; }
 
         /// <summary>
         /// Auxiliar de serialização da tag "crTime" - Use a propriedade "CrTime" para atribuir o valor.
@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string CrTimeField
         {
             get => CrTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => CrTime = DateTime.Parse(value);
+            set => CrTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>

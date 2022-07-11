@@ -69,18 +69,18 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement("nSeqEvento", Order = 8)]
         public int NSeqEvento { get; set; }
-     
+
         [XmlIgnore]
-        public DateTime DhRegEvento { get; set; }
+        public DateTimeOffset DhRegEvento { get; set; }
 
         [XmlElement("dhRegEvento", Order = 12)]
         public string DhRegEventoField
         {
             get => DhRegEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhRegEvento = DateTime.Parse(value);
+            set => DhRegEvento = DateTimeOffset.Parse(value);
         }
 
         [XmlElementAttribute("nProt", Order = 13)]
-        public string NProt { get; set; }     
+        public string NProt { get; set; }
     }
 }

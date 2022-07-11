@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     [XmlRoot("retEnviCte", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class RetEnviCTe: XMLBase
+    public class RetEnviCTe : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
@@ -59,13 +59,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string NRec { get; set; }
 
         [XmlIgnore]
-        public DateTime DhRecbto { get; set; }
+        public DateTimeOffset DhRecbto { get; set; }
 
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
             get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhRecbto = DateTime.Parse(value);
+            set => DhRecbto = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("tMed")]
