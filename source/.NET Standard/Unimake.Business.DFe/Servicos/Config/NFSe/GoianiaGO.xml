@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <GerarNfse versao="2.01">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://nfse.goiania.go.gov.br/ws/nfse.asmx</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.goiania.go.gov.br/ws/nfse.asmx</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.goiania.go.gov.br/ws/GerarNfse</WebActionHomologacao>
+      <WebActionProducao>http://nfse.goiania.go.gov.br/ws/GerarNfse</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfse xmlns="http://nfse.goiania.go.gov.br/ws/"><ArquivoXML>{xmlBodyScape}</ArquivoXML></GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://nfse.goiania.go.gov.br/xsd/nfse_gyn_v02.xsd</TargetNS>
+    </GerarNfse>
+    <ConsultarNfsePorRps versao="2.01">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfse.goiania.go.gov.br/ws/nfse.asmx</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.goiania.go.gov.br/ws/nfse.asmx</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.goiania.go.gov.br/ws/ConsultarNfseRps</WebActionHomologacao>
+      <WebActionProducao>http://nfse.goiania.go.gov.br/ws/ConsultarNfseRps</WebActionProducao>
+      <SchemaArquivo>nfse_v02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRps xmlns="http://nfse.goiania.go.gov.br/ws/"><ArquivoXML>{xmlBodyScape}</ArquivoXML></ConsultarNfseRps></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://nfse.goiania.go.gov.br/xsd/nfse_gyn_v02.xsd</TargetNS>
+    </ConsultarNfsePorRps>
+</Servicos>
+</Configuracoes>

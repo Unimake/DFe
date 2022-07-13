@@ -6048,6 +6048,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("QUASAR")]
         QUASAR = 21,
+
+        /// <summary>
+        /// Próprio Goiânia GO
+        /// </summary>
+        [Description("Próprio Goiânia GO")]
+        PROPRIOGOIANIA = 22,
     }
 
     #endregion
