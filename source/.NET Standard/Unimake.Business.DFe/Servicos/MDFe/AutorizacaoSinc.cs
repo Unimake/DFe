@@ -398,6 +398,13 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         public void AddRetConsSitMDFe(RetConsSitMDFe item) =>
             (RetConsSitMDFe ?? (RetConsSitMDFe = new List<RetConsSitMDFe>())).Add(item);
 
+
+        /// <summary>
+        /// Recupera o conteúdo o único MDFe, assinado, existente no lote gerado de MDFe´s
+        /// </summary>
+        /// <returns>Retorna o conteúdo do MDFe, assinado, existente no lote gerado de MDFe´s</returns>
+        public string GetConteudoMDFeAssinado() => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.OuterXml : "");
+
 #endif
 
         /// <summary>

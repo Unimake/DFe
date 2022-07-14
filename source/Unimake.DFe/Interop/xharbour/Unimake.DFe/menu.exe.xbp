@@ -36,47 +36,7 @@ MYC_FLAGS =
 MYDEFINES = 
 MYPRG_FLAGS = 
 
-[CarregarCertificadoA1.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
 [ConsultaSituacaoNFe.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[InutilizarNumeroNFe.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[ConsultaReciboNfe.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[EnviarNfeAssincrono.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[CancelarNfe.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[TesteDiversoCertificado.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[CartaDeCorrecao.prg]
-MYC_FLAGS = 
-MYDEFINES = 
-MYPRG_FLAGS = 
-
-[EnviarNfseGerarNfse.prg]
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
@@ -86,12 +46,22 @@ MYC_FLAGS =
 MYDEFINES = 
 MYPRG_FLAGS = 
 
-[EnviarMDFeAssincrono.prg]
+[EnviarNfeAssincrono.prg]
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
 
 [EnviarNfeDeserializando.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[TesteDiversoCertificado.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CancelarNFe.prg]
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
@@ -106,12 +76,12 @@ MYC_FLAGS =
 MYDEFINES = 
 MYPRG_FLAGS = 
 
-[EnviarCCeCTe.prg]
+[ConsultaStatusMDFe.prg]
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
 
-[EnviarCCeCTeDesserializacao.prg]
+[EnviarMDFeAssincrono.prg]
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
