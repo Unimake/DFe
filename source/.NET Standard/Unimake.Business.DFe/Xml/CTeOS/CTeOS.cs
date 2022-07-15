@@ -44,7 +44,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         {
             var xmlDoc = base.GerarXML();
 
-            foreach(var nodeCTe in xmlDoc.GetElementsByTagName("CTe"))
+            foreach (var nodeCTe in xmlDoc.GetElementsByTagName("CTe"))
             {
                 var elemCTe = (XmlElement)nodeCTe;
 
@@ -166,7 +166,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="autxml">Elemento</param>
         public void AddAutXML(AutXML autxml)
         {
-            if(AutXML == null)
+            if (AutXML == null)
             {
                 AutXML = new List<AutXML>();
             }
@@ -181,7 +181,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
         public AutXML GetAutXML(int index)
         {
-            if((AutXML?.Count ?? 0) == 0)
+            if ((AutXML?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -226,9 +226,9 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get
             {
                 string retorno;
-                if(string.IsNullOrWhiteSpace(CCTField))
+                if (string.IsNullOrWhiteSpace(CCTField))
                 {
-                    if(NCT == 0)
+                    if (NCT == 0)
                     {
                         throw new Exception("Defina antes o conteúdo da TAG <nCT>, pois a mesma é utilizada como base para calcular o código numérico.");
                     }
@@ -261,13 +261,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public int NCT { get; set; }
 
         [XmlIgnore]
-        public DateTime DhEmi { get; set; }
+        public DateTimeOffset DhEmi { get; set; }
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEmi = DateTime.Parse(value);
+            set => DhEmi = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("tpImp")]
@@ -279,7 +279,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => TpEmisField;
             set
             {
-                if(value == TipoEmissao.ContingenciaFSIA ||
+                if (value == TipoEmissao.ContingenciaFSIA ||
                     value == TipoEmissao.ContingenciaEPEC ||
                     value == TipoEmissao.RegimeEspecialNFF ||
                     value == TipoEmissao.ContingenciaOffLine ||
@@ -307,7 +307,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => ProcEmiField;
             set
             {
-                if(value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
+                if (value == ProcessoEmissao.AvulsaPeloContribuinteSiteFisco ||
                     value == ProcessoEmissao.AvulsaPeloFisco)
                 {
                     throw new Exception("Conteúdo da TAG <procEmi> inválido! Valores aceitos: 0 e 3.");
@@ -337,7 +337,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => ModalField;
             set
             {
-                if(value == ModalidadeTransporteCTe.Dutoviario ||
+                if (value == ModalidadeTransporteCTe.Dutoviario ||
                     value == ModalidadeTransporteCTe.Multimodal)
                 {
                     throw new Exception("Conteúdo da TAG <Modal> inválido! Valores aceitos: 01, 02, 03 e 04.");
@@ -385,13 +385,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public List<InfPercurso> InfPercurso { get; set; }
 
         [XmlIgnore]
-        public DateTime DhCont { get; set; }
+        public DateTimeOffset DhCont { get; set; }
 
         [XmlElement("dhCont")]
         public string DhContField
         {
             get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhCont = DateTime.Parse(value);
+            set => DhCont = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("xJust")]
@@ -405,7 +405,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="infPercurso">Elemento</param>
         public void AddInfPercurso(InfPercurso infPercurso)
         {
-            if(InfPercurso == null)
+            if (InfPercurso == null)
             {
                 InfPercurso = new List<InfPercurso>();
             }
@@ -420,7 +420,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da InfPercurso</returns>
         public InfPercurso GetInfPercurso(int index)
         {
-            if((InfPercurso?.Count ?? 0) == 0)
+            if ((InfPercurso?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -504,7 +504,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="obsCont">Elemento</param>
         public void AddObsCont(ObsCont obsCont)
         {
-            if(ObsCont == null)
+            if (ObsCont == null)
             {
                 ObsCont = new List<ObsCont>();
             }
@@ -519,7 +519,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
         public ObsCont GetObsCont(int index)
         {
-            if((ObsCont?.Count ?? 0) == 0)
+            if ((ObsCont?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -538,7 +538,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="obsFisco">Elemento</param>
         public void AddObsFisco(ObsFisco obsFisco)
         {
-            if(ObsFisco == null)
+            if (ObsFisco == null)
             {
                 ObsFisco = new List<ObsFisco>();
             }
@@ -553,7 +553,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
         public ObsFisco GetObsFisco(int index)
         {
-            if((ObsFisco?.Count ?? 0) == 0)
+            if ((ObsFisco?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -851,7 +851,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="comp">Elemento</param>
         public void AddComp(Comp comp)
         {
-            if(Comp == null)
+            if (Comp == null)
             {
                 Comp = new List<Comp>();
             }
@@ -866,7 +866,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
         public Comp GetComp(int index)
         {
-            if((Comp?.Count ?? 0) == 0)
+            if ((Comp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1087,7 +1087,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => CSTField;
             set
             {
-                if(value.Equals("40") || value.Equals("41") || value.Equals("51"))
+                if (value.Equals("40") || value.Equals("41") || value.Equals("51"))
                 {
                     CSTField = value;
                 }
@@ -1436,7 +1436,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="infDocRef">Elemento</param>
         public void AddInfDocRef(InfDocRef infDocRef)
         {
-            if(InfDocRef == null)
+            if (InfDocRef == null)
             {
                 InfDocRef = new List<InfDocRef>();
             }
@@ -1451,7 +1451,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da InfDocRef</returns>
         public InfDocRef GetInfDocRef(int index)
         {
-            if((InfDocRef?.Count ?? 0) == 0)
+            if ((InfDocRef?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1470,7 +1470,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="seg">Elemento</param>
         public void AddSeg(Seg seg)
         {
-            if(Seg == null)
+            if (Seg == null)
             {
                 Seg = new List<Seg>();
             }
@@ -1485,7 +1485,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da Seg</returns>
         public Seg GetSeg(int index)
         {
-            if((Seg?.Count ?? 0) == 0)
+            if ((Seg?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1504,7 +1504,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="infGTVe">Elemento</param>
         public void AddInfGTVe(InfGTVe infGTVe)
         {
-            if(InfGTVe == null)
+            if (InfGTVe == null)
             {
                 InfGTVe = new List<InfGTVe>();
             }
@@ -1519,7 +1519,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da InfGTVe</returns>
         public InfGTVe GetInfGTVe(int index)
         {
-            if((InfGTVe?.Count ?? 0) == 0)
+            if ((InfGTVe?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1778,7 +1778,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="dup">Elemento</param>
         public void AddDup(Dup dup)
         {
-            if(Dup == null)
+            if (Dup == null)
             {
                 Dup = new List<Dup>();
             }
@@ -1793,7 +1793,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da Dup</returns>
         public Dup GetDup(int index)
         {
-            if((Dup?.Count ?? 0) == 0)
+            if ((Dup?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1832,7 +1832,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <param name="comp">Elemento</param>
         public void AddComp(InfGTVeComp comp)
         {
-            if(Comp == null)
+            if (Comp == null)
             {
                 Comp = new List<InfGTVeComp>();
             }
@@ -1847,7 +1847,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
         public InfGTVeComp GetComp(int index)
         {
-            if((Comp?.Count ?? 0) == 0)
+            if ((Comp?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -2130,7 +2130,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => TAFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(NroRegEstadualField))
+                if (!string.IsNullOrWhiteSpace(NroRegEstadualField))
                 {
                     throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <rodoOS>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
@@ -2145,7 +2145,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => NroRegEstadualField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(TAFField))
+                if (!string.IsNullOrWhiteSpace(TAFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <rodoOS>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
@@ -2218,7 +2218,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => TAFField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(NroRegEstadualField))
+                if (!string.IsNullOrWhiteSpace(NroRegEstadualField))
                 {
                     throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <prop>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
@@ -2233,7 +2233,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             get => NroRegEstadualField;
             set
             {
-                if(!string.IsNullOrWhiteSpace(TAFField))
+                if (!string.IsNullOrWhiteSpace(TAFField))
                 {
                     throw new Exception("Não é permitido informar conteúdo da TAG <TAF> e <NroRegEstadual>, filhas da TAG <prop>, ao mesmo tempo, somente uma delas pode ter conteúdo.");
                 }
@@ -2276,13 +2276,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public TipoFretamentoCTeOS TpFretamento { get; set; }
 
         [XmlIgnore]
-        public DateTime DhViagem { get; set; }
+        public DateTimeOffset DhViagem { get; set; }
 
         [XmlElement("dhViagem")]
         public string DhViagemField
         {
             get => DhViagem.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhViagem = DateTime.Parse(value);
+            set => DhViagem = DateTimeOffset.Parse(value);
         }
 
         #region ShouldSerialize

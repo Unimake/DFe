@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlRoot("TRetLote_GNRE", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
-    public class TRetLoteGNRE: XMLBase
+    public class TRetLoteGNRE : XMLBase
     {
         [XmlElement("ambiente")]
         public TipoAmbiente Ambiente { get; set; }
@@ -61,13 +61,13 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Numero { get; set; }
 
         [XmlIgnore]
-        public DateTime DataHoraRecibo { get; set; }
+        public DateTimeOffset DataHoraRecibo { get; set; }
 
         [XmlElement("dataHoraRecibo")]
         public string DataHoraReciboField
         {
             get => DataHoraRecibo.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DataHoraRecibo = DateTime.Parse(value);
+            set => DataHoraRecibo = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("tempoEstimadoProc")]

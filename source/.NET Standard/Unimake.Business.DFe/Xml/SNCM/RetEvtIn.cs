@@ -4,7 +4,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -34,13 +33,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e horário da recepção da mensagem de entrada
         /// </summary>
         [XmlIgnore]
-        public DateTime CrTime { get; set; }
+        public DateTimeOffset CrTime { get; set; }
 
         [XmlElement("crTime")]
         public string CrTimeField
         {
             get => CrTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => CrTime = DateTime.Parse(value);
+            set => CrTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>

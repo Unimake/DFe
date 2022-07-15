@@ -945,13 +945,13 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
 
         [XmlIgnore]
-        public DateTime DhEvento { get; set; }
+        public DateTimeOffset DhEvento { get; set; }
 
         [XmlElement("dhEvento", Order = 6)]
         public string DhEventoField
         {
             get => DhEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEvento = DateTime.Parse(value);
+            set => DhEvento = DateTimeOffset.Parse(value);
         }
 
         [XmlAttribute(DataType = "ID")]

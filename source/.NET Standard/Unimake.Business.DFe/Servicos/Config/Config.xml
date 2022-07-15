@@ -730,4 +730,10 @@
 		<ArqConfig>MariliaSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5208707">
+		<Nome>Goiânia - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>GoianiaGO.xml</ArqConfig>
+		<PadraoNFSe>PROPRIOGOIANIA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

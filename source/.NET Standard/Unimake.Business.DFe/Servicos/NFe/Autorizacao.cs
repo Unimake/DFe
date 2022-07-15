@@ -37,7 +37,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
         {
             if (EnviNFe.IndSinc == SimNao.Sim)
             {
-
                 try
                 {
                     if (RetornoWSXML.GetElementsByTagName("xMotivo") != null)

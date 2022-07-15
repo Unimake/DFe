@@ -373,7 +373,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlIgnore]
-        public DateTime DhEmi
+        public DateTimeOffset DhEmi
         {
             get => EvEPECCTe.DhEmi;
             set => EvEPECCTe.DhEmi = value;
@@ -506,13 +506,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         public TipoCTe TpCTe { get; set; }
 
         [XmlIgnore]
-        public DateTime DhEmi { get; set; }
+        public DateTimeOffset DhEmi { get; set; }
 
         [XmlElement("dhEmi", Order = 11)]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEmi = DateTime.Parse(value);
+            set => DhEmi = DateTimeOffset.Parse(value);
         }
 
         /// <summary>
@@ -619,7 +619,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlIgnore]
-        public DateTime DhEntrega
+        public DateTimeOffset DhEntrega
         {
             get => EventoCECTe.DhEntrega;
             set => EventoCECTe.DhEntrega = value;
@@ -633,7 +633,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlIgnore]
-        public DateTime DhHashEntrega
+        public DateTimeOffset DhHashEntrega
         {
             get => EventoCECTe.DhHashEntrega;
             set => EventoCECTe.DhHashEntrega = value;
@@ -820,23 +820,23 @@ namespace Unimake.Business.DFe.Xml.CTe
         public override string DescEvento { get; set; } = "Comprovante de Entrega do CT-e";
 
         [XmlIgnore]
-        public DateTime DhEntrega { get; set; }
+        public DateTimeOffset DhEntrega { get; set; }
 
         [XmlElement("dhEntrega", Order = 2)]
         public string DhEntregaField
         {
             get => DhEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEntrega = DateTime.Parse(value);
+            set => DhEntrega = DateTimeOffset.Parse(value);
         }
 
         [XmlIgnore]
-        public DateTime DhHashEntrega { get; set; }
+        public DateTimeOffset DhHashEntrega { get; set; }
 
         [XmlElement("dhHashEntrega", Order = 8)]
         public string DhHashEntregaField
         {
             get => DhHashEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhHashEntrega = DateTime.Parse(value);
+            set => DhHashEntrega = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("hashEntrega", Order = 7)]
@@ -1260,13 +1260,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string ChCTe { get; set; }
 
         [XmlIgnore]
-        public DateTime DhEvento { get; set; }
+        public DateTimeOffset DhEvento { get; set; }
 
         [XmlElement("dhEvento", Order = 5)]
         public string DhEventoField
         {
             get => DhEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhEvento = DateTime.Parse(value);
+            set => DhEvento = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("tpEvento", Order = 6)]

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://nfse.goiania.go.gov.br/xsd/nfse_gyn_v02.xsd">
+  <Rps>
+    <InfDeclaracaoPrestacaoServico>
+      <Rps Id="rps638TESTE">
+        <IdentificacaoRps>
+          <Numero>18</Numero>
+          <Serie>UNICA</Serie>
+          <Tipo>1</Tipo>
+        </IdentificacaoRps>
+        <DataEmissao>2011-11-16T00:00:00</DataEmissao>
+        <Status>1</Status>
+      </Rps>
+      <Competencia>2017-05-31T00:00:00</Competencia>
+      <Servico>
+        <Valores>
+          <ValorServicos>2000.00</ValorServicos>
+          <ValorPis>40.50</ValorPis>
+          <ValorCofins>20.00</ValorCofins>
+          <ValorInss>10.50</ValorInss>
+          <ValorCsll>30.00</ValorCsll>
+        </Valores>
+        <CodigoTributacaoMunicipio>551080100</CodigoTributacaoMunicipio>
+        <Discriminacao>TESTE DE WEBSERVICE RETIDO</Discriminacao>
+        <CodigoMunicipio>2530000</CodigoMunicipio>
+        <CodigoPais>1058</CodigoPais>
+      </Servico>
+      <Prestador>
+        <CpfCnpj>
+          <Cpf>24329550130</Cpf>
+        </CpfCnpj>
+        <InscricaoMunicipal>1300687</InscricaoMunicipal>
+      </Prestador>
+      <Tomador>
+        <IdentificacaoTomador>
+          <CpfCnpj>
+            <Cnpj>06926334000177</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>2118513</InscricaoMunicipal>
+        </IdentificacaoTomador>
+        <RazaoSocial>GRAMADO EMPREENDIMENTOS</RazaoSocial>
+        <Endereco>
+          <Endereco>RUA 3</Endereco>
+          <Numero>1003</Numero>
+          <Complemento>1003</Complemento>
+          <Bairro>CAPUAVA</Bairro>
+          <CodigoMunicipio>2530000</CodigoMunicipio>
+          <Uf>GO</Uf>
+          <CodigoPais>1058</CodigoPais>
+          <Cep>76280000</Cep>
+        </Endereco>
+        <Contato>
+          <Telefone>6232513735</Telefone>
+        </Contato>
+      </Tomador>
+      <RegimeEspecialTributacao>5</RegimeEspecialTributacao>
+    </InfDeclaracaoPrestacaoServico>
+  </Rps>
+</GerarNfseEnvio>

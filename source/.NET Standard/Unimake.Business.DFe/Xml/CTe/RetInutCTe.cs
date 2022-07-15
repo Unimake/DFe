@@ -79,13 +79,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string NNFFin { get; set; }
 
         [XmlIgnore]
-        public DateTime DhRecbto { get; set; }
+        public DateTimeOffset DhRecbto { get; set; }
 
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
             get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhRecbto = DateTime.Parse(value);
+            set => DhRecbto = DateTimeOffset.Parse(value);
         }
 
         [XmlElement("nProt")]

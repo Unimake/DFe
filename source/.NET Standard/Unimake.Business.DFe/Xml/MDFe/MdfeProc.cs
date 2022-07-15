@@ -37,13 +37,13 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int NPortaCon { get; set; }
 
         [XmlIgnore]
-        public DateTime DhConexao { get; set; }
+        public DateTimeOffset DhConexao { get; set; }
 
         [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
             get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => DhConexao = DateTime.Parse(value);
+            set => DhConexao = DateTimeOffset.Parse(value);
         }
 
         /// <summary>

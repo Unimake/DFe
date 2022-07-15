@@ -34,13 +34,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Carimbo de tempo realizado pelo Sistema Cliente no instante da comunicação com o SNCM.
         /// </summary>
         [XmlIgnore]
-        public DateTime CcTime { get; set; }
+        public DateTimeOffset CcTime { get; set; }
 
         [XmlElement("ccTime")]
         public string CcTimeField
         {
             get => CcTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => CcTime = DateTime.Parse(value);
+            set => CcTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>
@@ -194,13 +194,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e horário em que a instância de evento ocorreu.
         /// </summary>
         [XmlIgnore]
-        public DateTime PastTime { get; set; }
+        public DateTimeOffset PastTime { get; set; }
 
         [XmlElement("pastTime")]
         public string PastTimeField
         {
             get => PastTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => PastTime = DateTime.Parse(value);
+            set => PastTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>
@@ -340,13 +340,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e hora da ocorrência da instância de evento.Sempre anterior à data e hora da comunicação.
         /// </summary>
         [XmlIgnore]
-        public DateTime PastTime { get; set; }
+        public DateTimeOffset PastTime { get; set; }
 
         [XmlElement("pastTime")]
         public string PastTimeField
         {
             get => PastTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => PastTime = DateTime.Parse(value);
+            set => PastTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>
@@ -464,13 +464,13 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e hora da ocorrência da instância de evento.Sempre anterior à data e hora da comunicação.
         /// </summary>
         [XmlIgnore]
-        public DateTime PastTime { get; set; }
+        public DateTimeOffset PastTime { get; set; }
 
         [XmlElement("pastTime")]
         public string PastTimeField
         {
             get => PastTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set => PastTime = DateTime.Parse(value);
+            set => PastTime = DateTimeOffset.Parse(value);
         }
 
         /// <summary>
