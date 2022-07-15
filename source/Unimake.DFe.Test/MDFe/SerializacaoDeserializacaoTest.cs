@@ -97,13 +97,13 @@ namespace Unimake.DFe.Test.MDFe
         {
             Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
-            var doc = new XmlDocument();
+            var doc = new XmlDocument();    
             doc.Load(arqXML);
 
             var xml = XMLUtility.Deserializar<RetConsSitMDFe>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Diag.Debug.Assert(doc.InnerXml == doc2.InnerXml, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }
 }

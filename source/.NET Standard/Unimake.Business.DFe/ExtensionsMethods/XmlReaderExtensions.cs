@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using System.Xml;
 using System.Xml.Linq;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using static Unimake.Business.DFe.Utility.Converter;
 
-namespace Unimake.Business.DFe
+namespace System.Xml
 {
     /// <summary>
     ///
@@ -20,12 +20,7 @@ namespace Unimake.Business.DFe
                                                               BindingFlags.FlattenHierarchy |
                                                               BindingFlags.IgnoreCase);
 
-            if(!(result?.CanWrite ?? false))
-            {
-                return null;
-            }
-
-            return result;
+            return !(result?.CanWrite ?? false) ? null : result;
         }
 
         #endregion Private Methods
@@ -74,13 +69,13 @@ namespace Unimake.Business.DFe
 
             if(reader.NodeType == XmlNodeType.EndElement)
             {
-                reader.Read();
+                _ = reader.Read();
             }
 
             do
             {
-                if(reader.NodeType == XmlNodeType.Element &&
-                   !reader.Name.Equals(name, System.StringComparison.InvariantCultureIgnoreCase) ||
+                if((reader.NodeType == XmlNodeType.Element &&
+                   !reader.Name.Equals(name, System.StringComparison.InvariantCultureIgnoreCase)) ||
                    reader.NodeType == XmlNodeType.EndElement)
                 {
                     return result;
@@ -88,20 +83,13 @@ namespace Unimake.Business.DFe
 
                 if(reader.HasValue)
                 {
-                    if(propertyInfo != null)
-                    {
-                        result = (T)ToAny(reader.Value, propertyInfo.PropertyType);
-                    }
-                    else
-                    {
-                        result = ToAny<T>(reader.Value);
-                    }
+                    result = propertyInfo != null ? (T)ToAny(reader.Value, propertyInfo.PropertyType) : ToAny<T>(reader.Value);
 
                     break;
                 }
             } while(reader.Read());
 
-            reader.Read();
+            _ = reader.Read();
             return result;
         }
 
@@ -119,7 +107,7 @@ namespace Unimake.Business.DFe
                         {reader.ReadInnerXml()}
                         </{tag}>";
 
-            var result = Utility.XMLUtility.Deserializar<Signature>(xml);
+            var result = XMLUtility.Deserializar<Signature>(xml);
             result.Xmlns = ns;
             return result;
         }
