@@ -261,13 +261,21 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public int NCT { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpImp")]
@@ -385,13 +393,21 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public List<InfPercurso> InfPercurso { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhCont { get; set; }
+#else
         public DateTimeOffset DhCont { get; set; }
+#endif
 
         [XmlElement("dhCont")]
         public string DhContField
         {
             get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhCont = DateTime.Parse(value);
+#else
             set => DhCont = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("xJust")]
@@ -435,7 +451,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #endif
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCMunIni() => !string.IsNullOrWhiteSpace(CMunIni);
 
@@ -453,7 +469,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeXJust() => !string.IsNullOrWhiteSpace(XJust);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -568,7 +584,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #endif
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeXCaracAd() => !string.IsNullOrWhiteSpace(XCaracAd);
 
@@ -578,7 +594,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeXObs() => !string.IsNullOrWhiteSpace(XObs);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -647,7 +663,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public CRT? CRT { get; set; }
 #endif
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
 #if INTEROP
         public bool ShouldSerializeCRT() => CRT != (CRT)(-1);
@@ -659,7 +675,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -698,7 +714,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("fone")]
         public string Fone { get; set; }
 
-        #region ShouldSerialize               
+#region ShouldSerialize               
 
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
@@ -706,7 +722,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -742,7 +758,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("email")]
         public string Email { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
@@ -756,7 +772,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -798,7 +814,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("xPais")]
         public string XPais { get; set; } = "BRASIL";
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCPais() => CPais > 0;
 
@@ -808,7 +824,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -937,13 +953,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("infTribFed")]
         public InfTribFed InfTribFed { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
 
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1161,13 +1177,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializePRedBCField() => PRedBC > 0;
 
         public bool ShouldSerializeVCredField() => VCred > 0;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1222,11 +1238,11 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => VICMSOutraUF = Utility.Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializePRedBCOutraUFField() => PRedBCOutraUF > 0;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1384,7 +1400,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => VCSLL = Utility.Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeVPISField() => VPIS > 0;
         public bool ShouldSerializeVCOFINSField() => VCOFINS > 0;
@@ -1392,7 +1408,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public bool ShouldSerializeVINSSField() => VINSS > 0;
         public bool ShouldSerializeVCSLLField() => VCSLL > 0;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1534,11 +1550,11 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
 #endif
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeRefCTeCanc() => !string.IsNullOrWhiteSpace(RefCTeCanc);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1618,13 +1634,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => VDoc = Utility.Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeSerie() => !string.IsNullOrWhiteSpace(Serie);
         public bool ShouldSerializeSubserie() => !string.IsNullOrWhiteSpace(Subserie);
         public bool ShouldSerializeVDocField() => VDoc > 0;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1646,12 +1662,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public string NApol { get; set; }
 
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeXSeg() => !string.IsNullOrWhiteSpace(XSeg);
         public bool ShouldSerializeNApol() => !string.IsNullOrWhiteSpace(NApol);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1673,11 +1689,11 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("tomaICMS")]
         public TomaICMS TomaICMS { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeRefCteAnu() => !string.IsNullOrWhiteSpace(RefCteAnu);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1746,13 +1762,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => DEmi = DateTime.Parse(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeSubserie() => !string.IsNullOrWhiteSpace(Subserie);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1888,11 +1904,11 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("xComp")]
         public string XComp { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeXComp() => !string.IsNullOrWhiteSpace(XComp);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1937,11 +1953,11 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => VLiq = Utility.Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeVDescField() => VDesc > 0;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2039,12 +2055,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             set => CPFField = value;
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2074,13 +2090,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("hashCSRT", DataType = "base64Binary")]
         public byte[] HashCSRT { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
         public bool ShouldSerializeHashCSRT() => HashCSRT != null;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2186,12 +2202,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public UFBrasil? UF { get; set; }
 #endif
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
         public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2254,13 +2270,13 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("tpProp")]
         public TipoProprietarioMDFe TpProp { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
         public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -2276,19 +2292,27 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         public TipoFretamentoCTeOS TpFretamento { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhViagem { get; set; }
+#else
         public DateTimeOffset DhViagem { get; set; }
+#endif
 
         [XmlElement("dhViagem")]
         public string DhViagemField
         {
             get => DhViagem.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhViagem = DateTime.Parse(value);
+#else
             set => DhViagem = DateTimeOffset.Parse(value);
+#endif
         }
 
         #region ShouldSerialize
 
         public bool ShouldSerializeDhViagemField() => DhViagem > DateTime.MinValue;
 
-        #endregion
+#endregion
     }
 }

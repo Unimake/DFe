@@ -48,7 +48,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhRecbto { get; set; }
+#else
         public DateTimeOffset DhRecbto { get; set; }
+#endif
 
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
@@ -58,7 +62,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
+#if INTEROP
+                    DhRecbto = DateTime.Parse(value);
+#else
                     DhRecbto = DateTimeOffset.Parse(value);
+#endif
                 }
             }
         }

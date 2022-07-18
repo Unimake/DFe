@@ -34,13 +34,21 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Carimbo de tempo realizado pelo Sistema Cliente no instante da comunicação com o SNCM.
         /// </summary>
         [XmlIgnore]
+#if INTEROP
+        public DateTime CcTime { get; set; }
+#else
         public DateTimeOffset CcTime { get; set; }
+#endif
 
         [XmlElement("ccTime")]
         public string CcTimeField
         {
             get => CcTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => CcTime = DateTime.Parse(value);
+#else
             set => CcTime = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>
@@ -194,13 +202,21 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e horário em que a instância de evento ocorreu.
         /// </summary>
         [XmlIgnore]
+#if INTEROP
+        public DateTime PastTime { get; set; }
+#else
         public DateTimeOffset PastTime { get; set; }
+#endif
 
         [XmlElement("pastTime")]
         public string PastTimeField
         {
             get => PastTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => PastTime = DateTime.Parse(value);
+#else
             set => PastTime = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>
@@ -340,13 +356,21 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e hora da ocorrência da instância de evento.Sempre anterior à data e hora da comunicação.
         /// </summary>
         [XmlIgnore]
+#if INTEROP
+        public DateTime PastTime { get; set; }
+#else
         public DateTimeOffset PastTime { get; set; }
+#endif
 
         [XmlElement("pastTime")]
         public string PastTimeField
         {
             get => PastTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => PastTime = DateTime.Parse(value);
+#else
             set => PastTime = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>
@@ -464,13 +488,21 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Data e hora da ocorrência da instância de evento.Sempre anterior à data e hora da comunicação.
         /// </summary>
         [XmlIgnore]
+#if INTEROP
+        public DateTime PastTime { get; set; }
+#else
         public DateTimeOffset PastTime { get; set; }
+#endif
 
         [XmlElement("pastTime")]
         public string PastTimeField
         {
             get => PastTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => PastTime = DateTime.Parse(value);
+#else
             set => PastTime = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>

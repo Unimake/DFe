@@ -51,7 +51,11 @@ namespace Unimake.Business.DFe.Xml.CCG
         /// Data e hora da resposta
         /// </summary>
         [XmlIgnore]
+#if INTEROP        
+        public DateTime DhResp { get; set; }
+#else
         public DateTimeOffset DhResp { get; set; }
+#endif
 
         /// <summary>
         /// Data e hora da resposta (Obs: Utilize a propriedade DhResp para atribuir o valor)
@@ -60,7 +64,11 @@ namespace Unimake.Business.DFe.Xml.CCG
         public string DhRespField
         {
             get => DhResp.ToString("yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture);
+#if INTEROP        
+            set => DhResp = DateTime.Parse(value);
+#else
             set => DhResp = DateTimeOffset.Parse(value);
+#endif
         }
 
         private string GTINField;

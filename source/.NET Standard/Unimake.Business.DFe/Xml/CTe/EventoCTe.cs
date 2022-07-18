@@ -373,11 +373,20 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi
+        {
+            get => EvEPECCTe.DhEmi;
+            set => EvEPECCTe.DhEmi = value;
+        }
+#else
         public DateTimeOffset DhEmi
         {
             get => EvEPECCTe.DhEmi;
             set => EvEPECCTe.DhEmi = value;
         }
+#endif
+
 
         [XmlIgnore]
         public string DhEmiField
@@ -506,13 +515,22 @@ namespace Unimake.Business.DFe.Xml.CTe
         public TipoCTe TpCTe { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
+
 
         [XmlElement("dhEmi", Order = 11)]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>
@@ -619,11 +637,19 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEntrega
+        {
+            get => EventoCECTe.DhEntrega;
+            set => EventoCECTe.DhEntrega = value;
+        }
+#else
         public DateTimeOffset DhEntrega
         {
             get => EventoCECTe.DhEntrega;
             set => EventoCECTe.DhEntrega = value;
         }
+#endif
 
         [XmlIgnore]
         public string DhEntregaField
@@ -633,11 +659,19 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhHashEntrega
+        {
+            get => EventoCECTe.DhHashEntrega;
+            set => EventoCECTe.DhHashEntrega = value;
+        }
+#else
         public DateTimeOffset DhHashEntrega
         {
             get => EventoCECTe.DhHashEntrega;
             set => EventoCECTe.DhHashEntrega = value;
         }
+#endif
 
         [XmlIgnore]
         public string DhHashEntregaField
@@ -702,9 +736,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.XNome = value;
         }
 
-        #endregion Public Properties
+#endregion Public Properties
 
-        #region Public Methods
+#region Public Methods
 
         public override void WriteXml(XmlWriter writer)
         {
@@ -731,7 +765,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             writer.WriteRaw(writeRaw);
         }
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 
 #if INTEROP
@@ -743,13 +777,13 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot(ElementName = "detEvento")]
     public class EventoCCeCTe : EventoDetalhe
     {
-        #region Private Fields
+#region Private Fields
 
         private string XCondUsoField = "A Carta de Correcao e disciplinada pelo Art. 58-B do CONVENIO/SINIEF 06/89: Fica permitida a utilizacao de carta de correcao, para regularizacao de erro ocorrido na emissao de documentos fiscais relativos a prestacao de servico de transporte, desde que o erro nao esteja relacionado com: I - as variaveis que determinam o valor do imposto tais como: base de calculo, aliquota, diferenca de preco, quantidade, valor da prestacao;II - a correcao de dados cadastrais que implique mudanca do emitente, tomador, remetente ou do destinatario;III - a data de emissao ou de saida.";
 
-        #endregion Private Fields
+#endregion Private Fields
 
-        #region Public Properties
+#region Public Properties
 
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Carta de Correcao";
@@ -764,7 +798,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => XCondUsoField = value;
         }
 
-        #endregion Public Properties
+#endregion Public Properties
 
 #if INTEROP
 
@@ -814,29 +848,45 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EventoCECTe : EventoDetalhe
     {
-        #region Public Properties
+#region Public Properties
 
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Comprovante de Entrega do CT-e";
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEntrega { get; set; }
+#else
         public DateTimeOffset DhEntrega { get; set; }
+#endif
 
         [XmlElement("dhEntrega", Order = 2)]
         public string DhEntregaField
         {
             get => DhEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEntrega = DateTime.Parse(value);
+#else
             set => DhEntrega = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhHashEntrega { get; set; }
+#else
         public DateTimeOffset DhHashEntrega { get; set; }
+#endif
 
         [XmlElement("dhHashEntrega", Order = 8)]
         public string DhHashEntregaField
         {
             get => DhHashEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhHashEntrega = DateTime.Parse(value);
+#else
             set => DhHashEntrega = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("hashEntrega", Order = 7)]
@@ -860,7 +910,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xNome", Order = 4)]
         public string XNome { get; set; }
 
-        #endregion Public Properties
+#endregion Public Properties
 
 #if INTEROP
 
@@ -912,7 +962,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("eventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class EventoCTe : XMLBase
     {
-        #region Private Methods
+#region Private Methods
 
         private void SignEvent(EventoCTe evento, XmlElement xmlEl)
         {
@@ -926,9 +976,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
-        #endregion Private Methods
+#endregion Private Methods
 
-        #region Public Properties
+#region Public Properties
 
         [XmlElement("infEvento", Order = 0)]
         public InfEvento InfEvento { get; set; }
@@ -939,15 +989,15 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
-        #endregion Public Properties
+#endregion Public Properties
 
-        #region Public Methods
+#region Public Methods
 
         public override XmlDocument GerarXML()
         {
             var xmlDocument = base.GerarXML();
 
-            #region Adicionar o atributo de namespace que falta nas tags "evento"
+#region Adicionar o atributo de namespace que falta nas tags "evento"
 
             var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
 
@@ -957,7 +1007,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 xmlElement.SetAttribute("xmlns", attribute.Namespace);
             }
 
-            #endregion Adicionar o atributo de namespace que falta nas tags "evento"
+#endregion Adicionar o atributo de namespace que falta nas tags "evento"
 
             return xmlDocument;
         }
@@ -1009,7 +1059,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// <returns>Objeto da EventoCTe</returns>
         public EventoCTe LoadFromXML(string xml) => XMLUtility.Deserializar<EventoCTe>(xml);
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 
 #if INTEROP
@@ -1026,7 +1076,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(DetEventoFiscoMDFeCancelado))]
     public class EventoDetalhe : System.Xml.Serialization.IXmlSerializable
     {
-        #region Private Fields
+#region Private Fields
 
         private static readonly BindingFlags bindingFlags = BindingFlags.Public |
                                                             BindingFlags.Instance |
@@ -1047,9 +1097,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             "DhEmi"
         };
 
-        #endregion Private Fields
+#endregion Private Fields
 
-        #region Private Methods
+#region Private Methods
 
         private bool SetLocalValue(Type type)
         {
@@ -1079,9 +1129,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
-        #endregion Private Methods
+#endregion Private Methods
 
-        #region Protected Internal Methods
+#region Protected Internal Methods
 
         protected internal PropertyInfo GetPropertyInfo(Type type)
         {
@@ -1091,15 +1141,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             return pi;
         }
 
-        #endregion Protected Internal Methods
+#endregion Protected Internal Methods
 
-        #region Internal Properties
+#region Internal Properties
 
         internal XmlReader XmlReader { get; set; }
 
-        #endregion Internal Properties
+#endregion Internal Properties
 
-        #region Internal Methods
+#region Internal Methods
 
         internal virtual void ProcessReader()
         {
@@ -1130,9 +1180,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         internal virtual void SetValue(PropertyInfo pi) => pi?.SetValue(this, XmlReader.GetValue<object>(XmlReader.Name));
 
-        #endregion Internal Methods
+#endregion Internal Methods
 
-        #region Public Properties
+#region Public Properties
 
         [XmlElement("descEvento", Order = 0)]
         public virtual string DescEvento { get; set; }
@@ -1140,9 +1190,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlAttribute(AttributeName = "versaoEvento")]
         public virtual string VersaoEvento { get; set; }
 
-        #endregion Public Properties
+#endregion Public Properties
 
-        #region Public Methods
+#region Public Methods
 
         public XmlSchema GetSchema() => default;
 
@@ -1150,7 +1200,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versaoEvento", VersaoEvento);
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 
 #if INTEROP
@@ -1162,7 +1212,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCorrecao
     {
-        #region Public Properties
+#region Public Properties
 
         [XmlElement("campoAlterado", Order = 1)]
         public string CampoAlterado { get; set; }
@@ -1176,13 +1226,13 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("valorAlterado", Order = 2)]
         public string ValorAlterado { get; set; }
 
-        #endregion Public Properties
+#endregion Public Properties
 
-        #region Public Methods
+#region Public Methods
 
         public bool ShouldSerializeNroItemAlterado() => !string.IsNullOrWhiteSpace(NroItemAlterado);
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 
 #if INTEROP
@@ -1194,13 +1244,13 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfEntrega
     {
-        #region Private Fields
+#region Private Fields
 
         private string ChNFeField;
 
-        #endregion Private Fields
+#endregion Private Fields
 
-        #region Public Properties
+#region Public Properties
 
         [XmlElement("chNFe", Order = 0)]
         public string ChNFe
@@ -1217,7 +1267,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
-        #endregion Public Properties
+#endregion Public Properties
     }
 
 #if INTEROP
@@ -1229,13 +1279,13 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfEvento
     {
-        #region Private Fields
+#region Private Fields
 
         private EventoDetalhe _detEvento;
 
-        #endregion Private Fields
+#endregion Private Fields
 
-        #region Public Properties
+#region Public Properties
 
         [XmlIgnore]
         public UFBrasil COrgao { get; set; }
@@ -1260,13 +1310,21 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string ChCTe { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEvento { get; set; }
+#else
         public DateTimeOffset DhEvento { get; set; }
+#endif
 
         [XmlElement("dhEvento", Order = 5)]
         public string DhEventoField
         {
             get => DhEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEvento = DateTime.Parse(value);
+#else
             set => DhEvento = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpEvento", Order = 6)]
@@ -1334,24 +1392,24 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => _ = value;
         }
 
-        #endregion Public Properties
+#endregion Public Properties
 
-        #region Public Constructors
+#region Public Constructors
 
         public InfEvento() { }
 
         public InfEvento(EventoDetalhe detEvento) => DetEvento = detEvento ?? throw new ArgumentNullException(nameof(detEvento));
 
-        #endregion Public Constructors
+#endregion Public Constructors
 
-        #region Public Methods
+#region Public Methods
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
-        #endregion Public Methods
+#endregion Public Methods
     }
 
-    #region Eventos exclusivos do fisco (Gerados pelo fisco)
+#region Eventos exclusivos do fisco (Gerados pelo fisco)
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1469,5 +1527,5 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string NProtCanc { get; set; }
     }
 
-    #endregion
+#endregion
 }

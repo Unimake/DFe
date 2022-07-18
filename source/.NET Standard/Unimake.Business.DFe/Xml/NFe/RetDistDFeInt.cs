@@ -34,13 +34,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XMotivo { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhResp { get; set; }
+#else
         public DateTimeOffset DhResp { get; set; }
+#endif
 
         [XmlElement("dhResp")]
         public string DhRespField
         {
             get => DhResp.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhResp = DateTime.Parse(value);
+#else
             set => DhResp = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("ultNSU", DataType = "token")]

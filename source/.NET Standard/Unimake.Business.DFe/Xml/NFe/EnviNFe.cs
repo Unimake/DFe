@@ -443,23 +443,39 @@ namespace Unimake.Business.DFe.Xml.NFe
         public int NNF { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhSaiEnt { get; set; }
+#else
         public DateTimeOffset DhSaiEnt { get; set; }
+#endif
 
         [XmlElement("dhSaiEnt")]
         public string DhSaiEntField
         {
             get => DhSaiEnt.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhSaiEnt = DateTime.Parse(value);
+#else
             set => DhSaiEnt = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpNF")]
@@ -510,13 +526,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VerProc { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhCont { get; set; }
+#else
         public DateTimeOffset DhCont { get; set; }
+#endif
 
         [XmlElement("dhCont")]
         public string DhContField
         {
             get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhCont = DateTime.Parse(value);
+#else
             set => DhCont = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("xJust")]

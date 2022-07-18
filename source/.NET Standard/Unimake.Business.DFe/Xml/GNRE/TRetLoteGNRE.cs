@@ -61,13 +61,21 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public string Numero { get; set; }
 
         [XmlIgnore]
+#if INTEROP        
+        public DateTime DataHoraRecibo { get; set; }
+#else
         public DateTimeOffset DataHoraRecibo { get; set; }
+#endif
 
         [XmlElement("dataHoraRecibo")]
         public string DataHoraReciboField
         {
             get => DataHoraRecibo.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DataHoraRecibo = DateTime.Parse(value);
+#else
             set => DataHoraRecibo = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tempoEstimadoProc")]

@@ -33,13 +33,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string IE { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpNF")]
@@ -52,13 +60,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string DigVal { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhRecbto { get; set; }
+#else
         public DateTimeOffset DhRecbto { get; set; }
+#endif
 
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
             get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhRecbto = DateTime.Parse(value);
+#else
             set => DhRecbto = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("nProt")]

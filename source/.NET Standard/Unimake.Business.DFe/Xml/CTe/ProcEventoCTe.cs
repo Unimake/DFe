@@ -36,13 +36,21 @@ namespace Unimake.Business.DFe.Xml.CTe
         public int NPortaCon { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhConexao { get; set; }
+#else
         public DateTimeOffset DhConexao { get; set; }
+#endif
 
         [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
             get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhConexao = DateTime.Parse(value);
+#else
             set => DhConexao = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>

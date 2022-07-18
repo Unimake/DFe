@@ -33,13 +33,21 @@ namespace Unimake.Business.DFe.Xml.SNCM
         /// Carimbo de tempo realizado pelo Sistema Cliente no instante da comunicação com o SNCM.
         /// </summary>
         [XmlIgnore]
+#if INTEROP
+        public DateTime CcTime { get; set; }
+#else
         public DateTimeOffset CcTime { get; set; }
+#endif
 
         [XmlElement("ccTime")]
         public string CcTimeField
         {
             get => CcTime.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => CcTime = DateTime.Parse(value);
+#else
             set => CcTime = DateTimeOffset.Parse(value);
+#endif
         }
 
         /// <summary>

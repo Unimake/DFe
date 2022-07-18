@@ -337,13 +337,21 @@ namespace Unimake.Business.DFe.Xml.CTe
         public int NCT { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpImp")]
@@ -454,13 +462,21 @@ namespace Unimake.Business.DFe.Xml.CTe
         public Toma4 Toma4 { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhCont { get; set; }
+#else
         public DateTimeOffset DhCont { get; set; }
+#endif
 
         [XmlElement("dhCont")]
         public string DhContField
         {
             get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhCont = DateTime.Parse(value);
+#else
             set => DhCont = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("xJust")]

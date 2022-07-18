@@ -360,13 +360,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public ModalidadeTransporteMDFe Modal { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
 
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpEmis")]
@@ -417,13 +425,22 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public List<InfPercurso> InfPercurso { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhIniViagem { get; set; }
+#else
         public DateTimeOffset DhIniViagem { get; set; }
+#endif
+
 
         [XmlElement("dhIniViagem")]
         public string DhIniViagemField
         {
             get => DhIniViagem.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhIniViagem = DateTime.Parse(value);
+#else
             set => DhIniViagem = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("indCanalVerde")]
@@ -1735,13 +1752,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string XPref { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhTrem { get; set; }
+#else
         public DateTimeOffset DhTrem { get; set; }
+#endif
 
         [XmlElement("dhTrem")]
         public string DhTremField
         {
             get => DhTrem.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhTrem = DateTime.Parse(value);
+#else
             set => DhTrem = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("xOri")]

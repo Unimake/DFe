@@ -307,13 +307,22 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEvento { get; set; }
+#else
         public DateTimeOffset DhEvento { get; set; }
+#endif
 
         [XmlElement("dhEvento", Order = 5)]
         public string DhEventoField
         {
             get => DhEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEvento = DateTime.Parse(value);
+#else
             set => DhEvento = DateTimeOffset.Parse(value);
+#endif
+
         }
 
         [XmlAttribute(DataType = "ID")]
@@ -699,13 +708,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VerAplic { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
         public DateTimeOffset DhEmi { get; set; }
+#endif
 
         [XmlElement("dhEmi", Order = 4)]
         public string DhEmiField
         {
             get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
             set => DhEmi = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tpNF", Order = 5)]
@@ -871,13 +888,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VerAplic { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhEntrega { get; set; }
+#else
         public DateTimeOffset DhEntrega { get; set; }
+#endif
 
         [XmlElement("dhEntrega", Order = 4)]
         public string DhEntregaField
         {
             get => DhEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEntrega = DateTime.Parse(value);
+#else
             set => DhEntrega = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("nDoc", Order = 5)]
@@ -896,13 +921,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string HashComprovante { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhHashComprovante { get; set; }
+#else
         public DateTimeOffset DhHashComprovante { get; set; }
+#endif
 
         [XmlElement("dhHashComprovante", Order = 10)]
         public string DhHashComprovanteField
         {
             get => DhHashComprovante.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhHashComprovante = DateTime.Parse(value);
+#else
             set => DhHashComprovante = DateTimeOffset.Parse(value);
+#endif
         }
 
         #endregion Public Properties

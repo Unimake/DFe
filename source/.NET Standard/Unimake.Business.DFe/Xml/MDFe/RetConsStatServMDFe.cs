@@ -45,26 +45,42 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhRecbto { get; set; }
+#else
         public DateTimeOffset DhRecbto { get; set; }
+#endif
 
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
             get => DhRecbto.ToString(FormatDate);
+#if INTEROP
+            set => DhRecbto = DateTime.Parse(value);
+#else
             set => DhRecbto = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("tMed")]
         public int TMed { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhRetorno { get; set; }
+#else
         public DateTimeOffset DhRetorno { get; set; }
+#endif
 
         [XmlElement("dhRetorno")]
         public string DhRetornoField
         {
             get => DhRetorno.ToString(FormatDate);
+#if INTEROP
+            set => DhRetorno = DateTime.Parse(value);
+#else
             set => DhRetorno = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlElement("xObs")]

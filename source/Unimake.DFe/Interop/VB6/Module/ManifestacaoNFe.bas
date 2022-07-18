@@ -41,7 +41,7 @@ RecepcaoEvento.Executar (EnvEvento), (Config.InicializarConfiguracao(TipoDFe.NFe
 
 ''Gravar o XML de distribuição se a inutilização foi homologada
 If (RecepcaoEvento.result.CStat = 128) Then ''128 = Lote de evento processado com sucesso
-    CStat = RecepcaoEvento.result.GetEvento(0).InfEvento.CStat
+    CStat = RecepcaoEvento.result.GetRetEvento(0).InfEvento.CStat
     
     '' 135: Evento homologado com vinculação da respectiva NFe
     '' 136: Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)

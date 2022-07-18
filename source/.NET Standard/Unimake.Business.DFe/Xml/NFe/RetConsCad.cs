@@ -60,13 +60,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CPF { get; set; }
 
         [XmlIgnore]
+#if INTEROP
+        public DateTime DhCons { get; set; }
+#else
         public DateTimeOffset DhCons { get; set; }
+#endif
 
         [XmlElement("dhCons")]
         public string DhConsField
         {
             get => DhCons.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhCons = DateTime.Parse(value);
+#else
             set => DhCons = DateTimeOffset.Parse(value);
+#endif
         }
 
         [XmlIgnore]
