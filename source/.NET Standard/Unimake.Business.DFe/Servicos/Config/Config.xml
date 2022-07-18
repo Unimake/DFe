@@ -736,4 +736,10 @@
 		<ArqConfig>GoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>PROPRIOGOIANIA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4204004">
+		<Nome>Catanduvas - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
