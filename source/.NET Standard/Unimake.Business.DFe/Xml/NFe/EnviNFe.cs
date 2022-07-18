@@ -7791,20 +7791,28 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CNPJ { get; set; }
 
         [XmlElement("tBand")]
-        public BandeiraOperadoraCartao TBand { get; set; }
+#if INTEROP
+        public BandeiraOperadoraCartao TBand { get; set; } = (BandeiraOperadoraCartao)(-1);
+#else
+        public BandeiraOperadoraCartao? TBand { get; set; }
+#endif
 
         [XmlElement("cAut")]
         public string CAut { get; set; }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCNPJ() => TpIntegra == TipoIntegracaoPagamento.PagamentoIntegrado;
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
-        public bool ShouldSerializeTBand() => TpIntegra == TipoIntegracaoPagamento.PagamentoIntegrado;
+#if INTEROP
+        public bool ShouldSerializeTBand() => TBand != (BandeiraOperadoraCartao)(-1);
+#else
+        public bool ShouldSerializeTBand() => TBand != null;
+#endif
 
-        public bool ShouldSerializeCAut() => TpIntegra == TipoIntegracaoPagamento.PagamentoIntegrado;
+        public bool ShouldSerializeCAut() => !string.IsNullOrWhiteSpace(CAut);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -7875,13 +7883,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("procRef")]
         public List<ProcRef> ProcRef { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
         public bool ShouldSerializeInfCpl() => !string.IsNullOrWhiteSpace(InfCpl);
 
-        #endregion
+#endregion
 
 #if INTEROP
 
@@ -8058,11 +8066,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public TipoAtoConcessorio? TpAto { get; set; }
 #endif
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeTpAto() => TpAto != null && TpAto != (TipoAtoConcessorio)(-1);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -8109,11 +8117,11 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => XLocDespachoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeXLocDespacho() => !string.IsNullOrWhiteSpace(XLocDespacho);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -8134,7 +8142,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("xCont")]
         public string XCont { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeXNEmp() => !string.IsNullOrWhiteSpace(XNEmp);
 
@@ -8142,7 +8150,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeXCont() => !string.IsNullOrWhiteSpace(XCont);
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -8384,13 +8392,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("hashCSRT", DataType = "base64Binary")]
         public byte[] HashCSRT { get; set; }
 
-        #region ShouldSerialize
+#region ShouldSerialize
 
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
         public bool ShouldSerializeHashCSRT() => HashCSRT != null;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
