@@ -710,15 +710,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Mod
         {
             get => ModField;
-            set
-            {
-                if (value != "01" && value != "02")
-                {
-                    throw new Exception("Conteúdo da TAG <mod>, filha da TAG da <refNF>, inválido! Valores aceitos: 01 e 02.");
-                }
-
-                ModField = value;
-            }
+            set => ModField = value;
         }
 
         [XmlElement("serie")]
@@ -1539,33 +1531,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CEANTrib
         {
             get => CEANTribField;
-            set
-            {
-                if (value.ToUpper().Trim() != "SEM GTIN")
-                {
-                    if (!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
-                    {
-                        throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + value + ") no produto de código " + CProd + " está incorreto. EAN deve ter 0,8,12,13 ou 14 de tamanho e somente números, ou seja, não pode conter letras.");
-                    }
-
-                    for (var i = 0; i < value.Length; i++)
-                    {
-                        if (!"0123456789".Contains(value.Substring(i, 1)))
-                        {
-                            throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + value + ") no produto de código " + CProd + " está incorreto. Não pode conter letras, somente números.");
-                        }
-                    }
-                }
-                else
-                {
-                    if (value != "SEM GTIN")
-                    {
-                        throw new Exception("Código EAN (código de barra) da unidade tributável informado (" + "\"" + value + "\") tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença.");
-                    }
-                }
-
-                CEANTribField = value;
-            }
+            set => CEANTribField = value;
         }
 
         [XmlElement("cBarraTrib")]
@@ -7812,7 +7778,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeCAut() => !string.IsNullOrWhiteSpace(CAut);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -7883,13 +7849,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("procRef")]
         public List<ProcRef> ProcRef { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
 
         public bool ShouldSerializeInfCpl() => !string.IsNullOrWhiteSpace(InfCpl);
 
-#endregion
+        #endregion
 
 #if INTEROP
 
@@ -8066,11 +8032,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         public TipoAtoConcessorio? TpAto { get; set; }
 #endif
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeTpAto() => TpAto != null && TpAto != (TipoAtoConcessorio)(-1);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -8117,11 +8083,11 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => XLocDespachoField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60);
         }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeXLocDespacho() => !string.IsNullOrWhiteSpace(XLocDespacho);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -8142,7 +8108,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("xCont")]
         public string XCont { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeXNEmp() => !string.IsNullOrWhiteSpace(XNEmp);
 
@@ -8150,7 +8116,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeXCont() => !string.IsNullOrWhiteSpace(XCont);
 
-#endregion
+        #endregion
     }
 
 #if INTEROP
@@ -8392,13 +8358,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("hashCSRT", DataType = "base64Binary")]
         public byte[] HashCSRT { get; set; }
 
-#region ShouldSerialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
         public bool ShouldSerializeHashCSRT() => HashCSRT != null;
 
-#endregion
+        #endregion
     }
 
 #if INTEROP

@@ -1076,7 +1076,8 @@ namespace Unimake.Business.DFe.Utility
             where T : new()
         {
             var xml = XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
-            return !Validate(xml.InnerXml) ? default : xml;
+
+            return xml;
         }
 
         /// <summary>
@@ -1088,7 +1089,8 @@ namespace Unimake.Business.DFe.Utility
         public static XmlDocument Serializar(object objeto, List<TNameSpace> namespaces = null)
         {
             var xml = XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
-            return !Validate(xml.InnerXml) ? default : xml;
+            
+            return xml;
         }
 
         /// <summary>
