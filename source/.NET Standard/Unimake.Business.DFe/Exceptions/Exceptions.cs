@@ -15,7 +15,19 @@ namespace Unimake.Exceptions
     }
 
     /// <summary>
-    /// Classe de exceção quando ocorre erros na validação dos XML
+    /// Classe de exceção quando ocorre erros de validação de regras do DFe (NFe, CTe, MDFe, NFCe, etc...)
+    /// </summary>
+    public class ValidatorDFeException : Exception
+    {
+        /// <summary>
+        /// Exceção quando ocorre erros na validação de regras do DFe (NFe, CTe, MDFe, NFCe, etc...)
+        /// </summary>
+        /// <param name="message">Mensagem para exceção</param>
+        public ValidatorDFeException(string message) : base(message) => HResult = (int)ErrorCodes.ValidatorDFe;
+    }
+
+    /// <summary>
+    /// Classe de exceção quando ocorre erros na validação dos XML contra schema (arquivo XSD)
     /// </summary>
     public class ValidarXMLException : Exception
     {
@@ -40,6 +52,11 @@ namespace Unimake.Exceptions
         /// <summary>
         /// Erro de validação do XML contra o schema (arquivo XSD)
         /// </summary>
-        ValidacaoSchemaXML = 2
+        ValidacaoSchemaXML = 2,
+
+        /// <summary>
+        /// Erro de validação de diversas das regras dos documentos fiscais eletrônicos (NFe, CTe, MDFe, NFCe, etc...). Validação realizada pelo Validator da DLL Unimake.DFe.
+        /// </summary>
+        ValidatorDFe = 3,
     }
 }

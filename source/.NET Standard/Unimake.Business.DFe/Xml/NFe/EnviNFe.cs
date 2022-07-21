@@ -6370,24 +6370,8 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => PICMSUFDest = Converter.ToDouble(value);
         }
 
-        private double PICMSInterField2;
-
         [XmlIgnore]
-        public double PICMSInter
-        {
-            get => PICMSInterField2;
-            set
-            {
-                if (value == 4 || value == 7 || value == 12)
-                {
-                    PICMSInterField2 = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <PICMSInter>, filha da TAG <ICMSUFDest>, inválido! Valores aceitos: 4, 7 ou 12.");
-                }
-            }
-        }
+        public double PICMSInter { get; set; }
 
         [XmlElement("pICMSInter")]
         public string PICMSInterField

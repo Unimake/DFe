@@ -4,6 +4,7 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator.Abstractions;
 using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator.NFe
 {
@@ -22,7 +23,7 @@ namespace Unimake.Business.DFe.Validator.NFe
             {
                 if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
                 {
-                    throw new Exception("Código do município do destinatário da nota está sem conteúdo. É obrigatório informar o código IBGE do município. [TAG: <cMun> do grupo de tag <dest><enderDest>]");
+                    throw new ValidatorDFeException("Código do município do destinatário da nota está sem conteúdo. É obrigatório informar o código IBGE do município. [TAG: <cMun> do grupo de tag <dest><enderDest>]");
                 }
             }).ValidateTag(element => element.NameEquals("CEAN"), Tag =>
             {
@@ -35,7 +36,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     if (!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
                     {
-                        throw new Exception("Código EAN (código de barra) \"" + value + "\" informado no produto está incorreto. EAN deve ter 0, 8, 12, 13 ou 14 de tamanho e somente números, ou seja, não pode conter letras." +
+                        throw new ValidatorDFeException("Código EAN (código de barra) \"" + value + "\" informado no produto está incorreto. EAN deve ter 0, 8, 12, 13 ou 14 de tamanho e somente números, ou seja, não pode conter letras." +
                             " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cEAN> do grupo de tag <det><prod>]");
                     }
 
@@ -43,7 +44,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     {
                         if (!"0123456789".Contains(value.Substring(i, 1)))
                         {
-                            throw new Exception("Código EAN (código de barra) \"" + value + "\" informado no produto está incorreto. Não pode conter letras, somente números." +
+                            throw new ValidatorDFeException("Código EAN (código de barra) \"" + value + "\" informado no produto está incorreto. Não pode conter letras, somente números." +
                                 " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cEAN> do grupo de tag <det><prod>]");
                         }
                     }
@@ -52,7 +53,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     if (value != "SEM GTIN")
                     {
-                        throw new Exception("Código EAN (código de barra) \"" + value + "\" informado no produto tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença." +
+                        throw new ValidatorDFeException("Código EAN (código de barra) \"" + value + "\" informado no produto tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença." +
                             " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cEAN> do grupo de tag <det><prod>]");
                     }
                 }
@@ -67,7 +68,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     if (!string.IsNullOrWhiteSpace(value) && value.Length != 0 && value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
                     {
-                        throw new Exception("Código EAN Tributável (código de barra) \"" + value + "\" informado no produto está incorreto. EAN deve ter 0, 8, 12, 13 ou 14 de tamanho e somente números, ou seja, não pode conter letras." +
+                        throw new ValidatorDFeException("Código EAN Tributável (código de barra) \"" + value + "\" informado no produto está incorreto. EAN deve ter 0, 8, 12, 13 ou 14 de tamanho e somente números, ou seja, não pode conter letras." +
                             " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cEANTrib> do grupo de tag <det><prod>]");
                     }
 
@@ -75,7 +76,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     {
                         if (!"0123456789".Contains(value.Substring(i, 1)))
                         {
-                            throw new Exception("Código EAN Tributável (código de barra) \"" + value + "\" informado no produto está incorreto. Não pode conter letras, somente números." +
+                            throw new ValidatorDFeException("Código EAN Tributável (código de barra) \"" + value + "\" informado no produto está incorreto. Não pode conter letras, somente números." +
                                 " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cEANTrib> do grupo de tag <det><prod>]");
                         }
                     }
@@ -84,7 +85,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     if (value != "SEM GTIN")
                     {
-                        throw new Exception("Código EAN Tributável (código de barra) \"" + value + "\" informado no produto tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença." +
+                        throw new ValidatorDFeException("Código EAN Tributável (código de barra) \"" + value + "\" informado no produto tem que ser igual a \"SEM GTIN\", ou seja, tudo maiúsculo e sem espaços no final ou inicio da sentença." +
                             " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cEANTrib> do grupo de tag <det><prod>]");
                     }
                 }
@@ -94,7 +95,7 @@ namespace Unimake.Business.DFe.Validator.NFe
 
                 if (value != "01" && value != "02")
                 {
-                    throw new Exception("O modelo do documento fiscal informado nos documentos referenciados está incorreto. Valor informado foi " + value + ", mas, só é permitido informar 01 ou 02. [TAG: <mod> do grupo de tag <NFref><refNF>]");
+                    throw new ValidatorDFeException("O modelo do documento fiscal informado nos documentos referenciados está incorreto. Valor informado foi " + value + ", mas, só é permitido informar 01 ou 02. [TAG: <mod> do grupo de tag <NFref><refNF>]");
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ISSQN.CListServ)) && element.Parent.NameEquals(nameof(ISSQN)), Tag =>
             {
@@ -105,12 +106,12 @@ namespace Unimake.Business.DFe.Validator.NFe
 
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new Exception("Código do item da lista de serviços não foi informado. Em caso de serviços é obrigatório informar este conteúdo." +
+                    throw new ValidatorDFeException("Código do item da lista de serviços não foi informado. Em caso de serviços é obrigatório informar este conteúdo." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cListServ> do grupo de tag <det><imposto><ISSQN>]");
                 }
                 else if (value.Length != 5 || value.Substring(2, 1) != ".")
                 {
-                    throw new Exception("Código do item da lista de serviços informado está com o formato incorreto. O formato deve ser 99.99, ou seja, 2 dígitos seguidos de um ponto e mais 2 dígitos. Valor informado: " + value + "." +
+                    throw new ValidatorDFeException("Código do item da lista de serviços informado está com o formato incorreto. O formato deve ser 99.99, ou seja, 2 dígitos seguidos de um ponto e mais 2 dígitos. Valor informado: " + value + "." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cListServ> do grupo de tag <det><imposto><ISSQN>]");
                 }
                 else
@@ -121,7 +122,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     }
                     catch
                     {
-                        throw new Exception("Código do item da lista de serviços informado não existe na tabela da ABRASF. Valor informado: " + value + "." +
+                        throw new ValidatorDFeException("Código do item da lista de serviços informado não existe na tabela da ABRASF. Valor informado: " + value + "." +
                             " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <cListServ> do grupo de tag <det><imposto><ISSQN>]");
                     }
                 }
@@ -134,7 +135,7 @@ namespace Unimake.Business.DFe.Validator.NFe
 
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new Exception("É obrigatório informar o indicador da exigibilidade do ISS para itens de prestação de serviços e o mesmo não foi informado." +
+                    throw new ValidatorDFeException("É obrigatório informar o indicador da exigibilidade do ISS para itens de prestação de serviços e o mesmo não foi informado." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <indISS> do grupo de tag <det><imposto><ISSQN>]");
                 }
                 else
@@ -145,9 +146,21 @@ namespace Unimake.Business.DFe.Validator.NFe
                     }
                     catch
                     {
-                        throw new Exception("O indicador de exigibilidade do ISS informado no item de prestação de serviço está incorreto. Valor informado: " + value + " - Valores aceitos: 1, 2, 3, 4, 5, 6 e 7." +
+                        throw new ValidatorDFeException("O indicador de exigibilidade do ISS informado no item de prestação de serviço está incorreto. Valor informado: " + value + " - Valores aceitos: 1, 2, 3, 4, 5, 6 e 7." +
                             " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <indISS> do grupo de tag <det><imposto><ISSQN>]");
                     }
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(ICMSUFDest.PICMSInter)) && element.Parent.NameEquals(nameof(ICMSUFDest)), Tag =>
+            {
+                var value = Converter.ToDouble(Tag.Value);
+                var cProd = Tag.Parent.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (value != 4 && value != 7 && value != 12)
+                {
+                    throw new ValidatorDFeException("A alíquota de ICMS interestadual das UF envolvidas informada está incorreta. Valor informado: " + Tag.Value + " - Valores aceitos: 4.00, 7.00 ou 12.00." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <pICMSInter> do grupo de tag <det><imposto><ICMSUFDest>]");
                 }
             });
 
