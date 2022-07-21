@@ -23,8 +23,7 @@ namespace Unimake.Business.DFe.Validator.CTeOS
         /// <inheritdoc cref="XmlValidatorBase"/>
         /// </summary>
         public CTeOSValidator() =>
-        ValidateTag(element => element.NameEquals(nameof(AutXML.CNPJ)) ||
-                               element.NameEquals(nameof(AutXML.CPF)), Tag =>
+        ValidateTag(element => (element.NameEquals(nameof(AutXML.CNPJ)) || element.NameEquals(nameof(AutXML.CPF))) && element.Parent.NameEquals(nameof(AutXML)), Tag =>
         {
             var cpf = Tag.Parent.GetValue("CPF");
             var cnpj = Tag.Parent.GetValue("CNPJ");
@@ -35,7 +34,7 @@ namespace Unimake.Business.DFe.Validator.CTeOS
                 throw new Exception("Não é permitido informar conteúdo na TAG <CPF> e <CNPJ>, filhas da TAG <auxXML>, ao mesmo tempo. Somente uma delas pode ter conteúdo.");
             }
         })
-        .ValidateTag(element => element.NameEquals(nameof(RefNF.Mod)), Tag =>
+        .ValidateTag(element => element.NameEquals(nameof(RefNF.Mod)) && element.Parent.NameEquals(nameof(RefNF)), Tag =>
         {
             if(!permitidos.Contains(Tag.Value))
             {
