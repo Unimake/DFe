@@ -23,6 +23,8 @@ Function Main()
    Aadd(aOpcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL")
    Aadd(aOpcoes, "Consultar Status MDFe")
    Aadd(aOpcoes, "Enviar MDFe - Modo assincrono")
+   Aadd(aOpcoes, "Enviar MDFe - Modo assincrono - Desserializando o XML")
+   Aadd(aOpcoes, "Enviar NFCe - Modo sincrono")
     
    Do While .T.
       Cls
@@ -69,6 +71,12 @@ Function Main()
 			  
          case nOpcao = 11
 		      EnviarMDFeAssincrono()
+
+         case nOpcao = 12
+		      EnviarMDFeAssincronoDesserializando()
+			  
+         case nOpcao = 13
+              EnviarNfceSincrono()			  
       endcase
    EndDo
 Return       

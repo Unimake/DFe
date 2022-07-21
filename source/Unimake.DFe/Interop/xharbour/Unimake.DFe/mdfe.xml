@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MDFe xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<infMDFe versao="3.00" Id="MDFe41220706117473000150580010000008611017220673">
+		<ide>
+			<cUF>41</cUF>
+			<tpAmb>2</tpAmb>
+			<tpEmit>1</tpEmit>
+			<mod>58</mod>
+			<serie>1</serie>
+			<nMDF>861</nMDF>
+			<cMDF>01722067</cMDF>
+			<cDV>3</cDV>
+			<modal>1</modal>
+			<dhEmi>2022-07-20T17:57:31-03:00</dhEmi>
+			<tpEmis>1</tpEmis>
+			<procEmi>0</procEmi>
+			<verProc>UNICO V8.0</verProc>
+			<UFIni>PR</UFIni>
+			<UFFim>SP</UFFim>
+			<infMunCarrega>
+				<cMunCarrega>4118402</cMunCarrega>
+				<xMunCarrega>PARANAVAI</xMunCarrega>
+			</infMunCarrega>
+			<dhIniViagem>2022-07-20T17:57:31-03:00</dhIniViagem>
+		</ide>
+		<emit>
+			<CNPJ>06117473000150</CNPJ>
+			<IE>9456656656</IE>
+			<xNome>XXXXXX XXXXXX XXXXXX</xNome>
+			<xFant>XXXXXX XXXXXX</xFant>
+			<enderEmit>
+				<xLgr>RUA XXXXXXX X. XX XXXXX</xLgr>
+				<nro>01112</nro>
+				<xBairro>VILA XXXXXXXXX</xBairro>
+				<cMun>4118402</cMun>
+				<xMun>PARANAVAI</xMun>
+				<CEP>87706000</CEP>
+				<UF>PR</UF>
+				<fone>04433333333</fone>
+			</enderEmit>
+		</emit>
+		<infModal versaoModal="3.00">
+			<rodo>
+				<infANTT>
+					<RNTRC>44556666</RNTRC>
+					<infContratante>
+						<CNPJ>06117473000150</CNPJ>
+					</infContratante>
+					<infContratante>
+						<CNPJ>06117473000150</CNPJ>
+					</infContratante>
+				</infANTT>
+				<veicTracao>
+					<cInt>AXF0000</cInt>
+					<placa>AXF0000</placa>
+					<tara>0</tara>
+					<capKG>5000</capKG>
+					<prop>
+						<CNPJ>06117443000150</CNPJ>
+						<RNTRC>44556666</RNTRC>
+						<xNome>XXXXXX XXXXXX XXXXXX</xNome>
+						<IE>5545546656</IE>
+						<UF>PR</UF>
+						<tpProp>2</tpProp>
+					</prop>
+					<condutor>
+						<xNome>XXXXXXXXX XXXXX XX XXXXX</xNome>
+						<CPF>02133333333</CPF>
+					</condutor>
+					<tpRod>02</tpRod>
+					<tpCar>02</tpCar>
+					<UF>PR</UF>
+				</veicTracao>
+			</rodo>
+		</infModal>
+		<infDoc>
+			<infMunDescarga>
+				<cMunDescarga>3505708</cMunDescarga>
+				<xMunDescarga>BARUERI</xMunDescarga>
+				<infCTe>
+					<chCTe>41000000000000000000000000000000000000000006</chCTe>
+				</infCTe>
+				<infCTe>
+					<chCTe>41000000000000000000000000000000000000000004</chCTe>
+				</infCTe>
+				<infNFe>
+					<chNFe>12345678901234567890123456789012345678901234</chNFe>
+					<infUnidTransp>
+						<tpUnidTransp>2</tpUnidTransp>
+						<idUnidTransp>122</idUnidTransp>
+						<lacUnidTransp>
+							<nLacre>12334</nLacre>
+						</lacUnidTransp>
+						<infUnidCarga>
+							<tpUnidCarga>1</tpUnidCarga>
+							<idUnidCarga>123</idUnidCarga>
+							<lacUnidCarga>
+								<nLacre>3333333</nLacre>
+							</lacUnidCarga>
+						</infUnidCarga>
+					</infUnidTransp>
+				</infNFe>
+			</infMunDescarga>
+			<infMunDescarga>
+				<cMunDescarga>3550308</cMunDescarga>
+				<xMunDescarga>SAO PAULO</xMunDescarga>
+				<infCTe>
+					<chCTe>41000000000000000000000000000000000000000000</chCTe>
+				</infCTe>
+			</infMunDescarga>
+		</infDoc>
+		<seg>
+			<infResp>
+				<respSeg>1</respSeg>
+				<CNPJ>06117473000150</CNPJ>
+			</infResp>
+			<infSeg>
+				<xSeg>PORTO SEGURO</xSeg>
+				<CNPJ>06117473000150</CNPJ>
+			</infSeg>
+			<nApol>033666565656</nApol>
+			<nAver>0000000000000000000000000000000000000000</nAver>
+			<nAver>0000000000000000000000000000000000000000</nAver>
+		</seg>
+		<prodPred>
+			<tpCarga>05</tpCarga>
+			<xProd>TESTE DE PRODUTO PREDOMINANTE</xProd>
+			<infLotacao>
+				<infLocalCarrega>
+					<CEP>87302080</CEP>
+				</infLocalCarrega>
+				<infLocalDescarrega>
+					<CEP>25650208</CEP>
+				</infLocalDescarrega>
+			</infLotacao>
+		</prodPred>
+		<tot>
+			<qCTe>3</qCTe>
+			<vCarga>56599.09</vCarga>
+			<cUnid>01</cUnid>
+			<qCarga>2879.0000</qCarga>
+		</tot>
+		<lacres>
+			<nLacre>1111111</nLacre>
+		</lacres>
+		<lacres>
+			<nLacre>2222222</nLacre>
+		</lacres>
+		<infAdic>
+			<infCpl>DATA/HORA PREVISTA PARA O INICO DA VIAGEM: 10/08/2020 as 08:00</infCpl>
+		</infAdic>
+		<infRespTec>
+			<CNPJ>99999999999999</CNPJ>
+			<xContato>Teste de Responsavel Tecnico</xContato>
+			<email>testey@teste.com.br</email>
+			<fone>04431414900</fone>
+		</infRespTec>
+	</infMDFe>
+</MDFe>

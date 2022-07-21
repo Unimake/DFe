@@ -6,11 +6,11 @@
    #xcommand CATCH [<!oErr!>] => RECOVER [USING <oErr>] <-oErr->
 #endif
  
-Function EnviarNfeSincrono()
-   Local oInicializarConfiguracao
+Function EnviarNfceSincrono()
+   Local oConfig
    Local oXml, oNfe, oInfNFe, oIde, oEmit, oEnderEmit, oDest, oEnderDest
    Local oDet, oProd
-   Local oImposto, oICMS, oICMSSN101, oPIS, oPISOutr, oCOFINS, oCOFINSOutr
+   Local oImposto, oICMS, oICMSSN102, oPIS, oPISOutr, oCOFINS, oCOFINSOutr
    Local oTotal, oICMSTot
    Local oTransp, oVol
    Local oCobr, oFat, oDup
@@ -21,14 +21,13 @@ Function EnviarNfeSincrono()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
 
  * Criar configuraçao básica para consumir o serviço
-
-   oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
-   
-   oInicializarConfiguracao:TipoDfe = 0 // 0=nfe
-   oInicializarConfiguracao:Servico = 6 // 6=Autorização Nfe
-   oInicializarConfiguracao:TipoEmissao = 1 // 1=Normal
-   oInicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
-   oInicializarConfiguracao:CertificadoSenha = "12345678"
+   oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
+   oConfig:TipoDfe = 1 // 1=nfce
+   oConfig:TipoEmissao = 1 // 1=Normal
+   oConfig:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
+   oConfig:CertificadoSenha = "12345678"
+   oConfig:CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG"
+   oConfig:CSCIDToken = 2   
    
  * Criar XML   
    oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
@@ -44,21 +43,21 @@ Function EnviarNfeSincrono()
 
    // cria tag Ide
    oIde = CreateObject("Unimake.Business.DFe.Xml.NFe.Ide")
-   oIde:CUF = 41 //Brasil.PR
-   oIde:NatOp = "VENDA PRODUC.DO ESTABELEC"
-   oIde:Mod = 55 //NFe
+   oIde:CUF      = 41 //Brasil.PR
+   oIde:NatOp    = "VENDA DE MERCADORIAS"
+   oIde:Mod      = 65 //NFCe
    oIde:Serie    = 1
-   oIde:NNF      = 58015
+   oIde:NNF      = 58016
    oIde:DhEmi    = DateTime()
    oIde:DhSaiEnt = DateTime()
    oIde:TpNF     = 1 // Saida
-   oIde:IdDest   = 2 // OperacaoInterestadual
+   oIde:IdDest   = 1 // DestinoOperacao.OperacaoInterna ###
    oIde:CMunFG   = 4118402
-   oIde:TpImp    = 1 // FormatoImpressaoDANFE.NormalRetrato
+   oIde:TpImp    = 4 // FormatoImpressaoDANFE.NFCe ###
    oIde:TpEmis   = 1 // TipoEmissao.Normal
    oIde:TpAmb    = 2 // TipoAmbiente.Homologacao
-   oIde:FinNFe   = 1 // FinalidadeNFe.Normal
-   oIde:IndFinal = 1 // SimNao.Sim
+   oIde:FinNFe   = 1 // FinalidadeNFe.Normal ###
+   oIde:IndFinal = 1 // SimNao.Sim ###
    oIde:IndPres  = 1 // IndicadorPresenca.OperacaoPresencial
    oIde:ProcEmi  = 0 // ProcessoEmissao.AplicativoContribuinte
    oIde:VerProc  = "TESTE 1.00"
@@ -93,11 +92,10 @@ Function EnviarNfeSincrono()
    oInfNfe:Emit = oEmit
    
    // criar tag Dest
-   oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
+   oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest") //###
    oDest:CNPJ      = "04218457000128"
    oDest:XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
-   oDest:IndIEDest = 1 // IndicadorIEDestinatario.ContribuinteICMS,
-   oDest:IE        = "582614838110"
+   oDest:IndIEDest = 9 // IndicadorIEDestinatario.NaoContribuinte,
    oDest:Email     = "janelaorp@janelaorp.com.br"
    
    oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
@@ -124,9 +122,9 @@ Function EnviarNfeSincrono()
        oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
        oProd:CProd    = StrZero(I,5)
        oProd:CEAN     = "SEM GTIN"
-       oProd:XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+       oProd:XProd    = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
        oProd:NCM      = "84714900"
-       oProd:CFOP     = "6101"
+       oProd:CFOP     = "5102"
        oProd:UCom     = "LU"
        oProd:QCom     = 1.00
        oProd:VUnCom   = 84.90
@@ -149,14 +147,13 @@ Function EnviarNfeSincrono()
     // criar tag Icms
        oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
 	   
-    // criar tag ICMSSN101
-       oICMSSN101            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
-       oICMSSN101:Orig       = 0 // OrigemMercadoria.Nacional
-       oICMSSN101:PCredSN     = 2.8255
-       oICMSSN101:VCredICMSSN = 2.40
+    // criar tag ICMSSN102
+       oICMSSN102            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN102")
+       oICMSSN102:Orig       = 0 // OrigemMercadoria.Nacional
+       oICMSSN102:CSOSN      = "102" // OrigemMercadoria.Nacional
 	   
-    // adicionar a tag ICMSSN101 dentro da tag ICMS
-       oICMS:ICMSSN101 = oICMSSN101
+    // adicionar a tag ICMSSN102 dentro da tag ICMS
+       oICMS:ICMSSN102 = oICMSSN102
 	   
     // adicionar a tag ICMS dentro da tag Imposto
        oImposto:AddIcms(oICMS)
@@ -234,55 +231,10 @@ Function EnviarNfeSincrono()
    
 // Criar a tag Transp  
    oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
-   oTransp:ModFrete = 0 // ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
-
-// Criar a tag Vol
-   oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
-   oVol:QVol  = 1
-   oVol:Esp   = "LU"
-   oVol:Marca = "UNIMAKE"
-   oVol:PesoL = 0.000
-   oVol:PesoB = 0.000
-
-   // adicionar a tag Vol na tag Transp
-   oTransp:AddVol(oVol)
+   oTransp:ModFrete = 9 // ModalidadeFrete.SemOcorrenciaTransporte 
 
    // adicionar a tag Transp dentro da tag InfNfe
    oInfNfe:Transp = oTransp
-
-   // Criar tag Cobr 
-   oCobr = CreateObject("Unimake.Business.DFe.Xml.NFe.Cobr")
-
-   // Criar tag Fat 
-   oFat  = CreateObject("Unimake.Business.DFe.Xml.NFe.Fat")
-   oFat:NFat = "057910"
-   oFat:VOrig = 254.70
-   oFat:VDesc = 0
-   oFat:VLiq = 254.70
-
-   // Criar tag Dup (parcela 1)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-   oDup:NDup  = "001"
-   oDup:DVenc = StoD(TtoS(Date() + 30))
-   oDup:VDup  = 127.35
-
-   // adicionar a tag Dup dentro da tag Cobr
-   OCobr:AddDup(oDup)
-
-   // Criar tag Dup (parcela 2)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-   oDup:NDup  = "002"
-   oDup:DVenc = StoD(TtoS(Date() + 60))
-   oDup:VDup  = 127.35
-
-   // adicionar a tag Dup dentro da tag Cobr
-   oCobr:AddDup(oDup)
-
-   // adicionar a tag Fat dentro da tag Cobr
-   oCobr:Fat = oFat
-   
-   // adicionar a tag Cobr dentro da tag InfNfe
-   oInfNfe:Cobr = oCobr
 
    // criar tag Pag
    oPag = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
@@ -332,22 +284,22 @@ Function EnviarNfeSincrono()
    Cls
 
  * Consumir o serviço (Enviar NFE para SEFAZ)
-   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
+   oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao") //###
    
    // Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try
-      oAutorizacao:SetXMLConfiguracao(oXml, oInicializarConfiguracao)      
+      oAutorizacao:SetXMLConfiguracao(oXml, oConfig)
 	  
       // Pode-se gravar o conteudo do XML assinado na base de dados antes do envio, caso queira recuperar para futuro tratamento, isso da garantias
-	  notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
+      notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0) //###
       ? notaAssinada //Demonstrar o XML da nota assinada na tela
 	  
       Wait
 	  cls
 	  
-	  oAutorizacao:Executar(oXml, oInicializarConfiguracao) 
+	  oAutorizacao:Executar(oXml, oConfig) 
 	  
 	  ? "XML Retornado pela SEFAZ"
       ? "========================"
@@ -394,4 +346,3 @@ Function EnviarNfeSincrono()
 	  cls   
    End
 Return
-
