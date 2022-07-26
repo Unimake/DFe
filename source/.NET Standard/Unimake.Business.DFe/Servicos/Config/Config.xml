@@ -742,4 +742,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5105200">
+		<Nome>Juscimeira - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>JuscimeiraMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
