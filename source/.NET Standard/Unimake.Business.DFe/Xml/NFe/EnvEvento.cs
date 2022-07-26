@@ -591,7 +591,16 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             base.WriteXml(writer);
 
-            writer.WriteRaw($@"<descEvento>{DescEvento}</descEvento><xCorrecao>{XCorrecao}</xCorrecao><xCondUso>{XCondUso}</xCondUso>");
+            var xcorrecao = XCorrecao;
+
+            xcorrecao = xcorrecao.Replace("&", "&amp;");
+            xcorrecao = xcorrecao.Replace("<", "&lt;");
+            xcorrecao = xcorrecao.Replace(">", "&gt;");
+            xcorrecao = xcorrecao.Replace("\"", "&quot;");
+            xcorrecao = xcorrecao.Replace("\\", "&quot;");
+            xcorrecao = xcorrecao.Replace("'", "&#39;");
+
+            writer.WriteRaw($@"<descEvento>{DescEvento}</descEvento><xCorrecao>{xcorrecao}</xCorrecao><xCondUso>{XCondUso}</xCondUso>");
         }
 
         #endregion Public Methods
