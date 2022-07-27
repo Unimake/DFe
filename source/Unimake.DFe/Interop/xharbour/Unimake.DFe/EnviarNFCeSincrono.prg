@@ -96,20 +96,20 @@ Function EnviarNfceSincrono()
    oDest:CNPJ      = "04218457000128"
    oDest:XNome     = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
    oDest:IndIEDest = 9 // IndicadorIEDestinatario.NaoContribuinte,
-   oDest:Email     = "janelaorp@janelaorp.com.br"
+*  oDest:Email     = "janelaorp@janelaorp.com.br"
    
-   oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
-   oEnderDest:XLgr    = "AVENIDA DA SAUDADE"
-   oEnderDest:Nro     = "1555"
-   oEnderDest:XBairro = "CAMPOS ELISEOS"
-   oEnderDest:CMun    = 3543402
-   oEnderDest:XMun    = "RIBEIRAO PRETO"
-   oEnderDest:UF      = 35 // UFBrasil.SP
-   oEnderDest:CEP     = "14080000"
-   oEnderDest:Fone    = "01639611500"
+*  oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
+*  oEnderDest:XLgr    = "AVENIDA DA SAUDADE"
+*  oEnderDest:Nro     = "1555"
+*  oEnderDest:XBairro = "CAMPOS ELISEOS"
+*  oEnderDest:CMun    = 3543402
+*  oEnderDest:XMun    = "RIBEIRAO PRETO"
+*  oEnderDest:UF      = 35 // UFBrasil.SP
+*  oEnderDest:CEP     = "14080000"
+*  oEnderDest:Fone    = "01639611500"
 
    // adicionar a tag EnderDest dentro da tag Dest 
-   oDest:EnderDest = oEnderDest
+*  oDest:EnderDest = oEnderDest
 
    // adicionar a tag Emit dentro da tag InfNfe
    oInfNfe:Dest = oDest

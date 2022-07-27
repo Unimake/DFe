@@ -63,6 +63,27 @@ Function EnviarNfeAssincrono()
    oIde:ProcEmi  = 0 // ProcessoEmissao.AplicativoContribuinte
    oIde:VerProc  = "TESTE 1.00"
    
+   //Criar o grupo de tag <NFRef>
+   oNFref = CreateObject("Unimake.Business.DFe.Xml.NFe.NFref")
+   
+   //Criar a tag RefNFe
+   oNFRef:RefNFe = "00000000000000000000000chavenfedevolvida00000000000000"
+   
+   //Criar a tag <refNF>
+   oRefNF = CreateObject("Unimake.Business.DFe.Xml.NFe.RefNF")
+   oRefNF:cUF = 41 //UFBrasil.PR
+   oRefNF:AAMM = "2212"
+   oRefNF:CNPJ = "00000000000000"
+   oRefNF:Mod = "01"
+   oRefNF:Serie = 1
+   oRefNF:NNF = 102
+   
+   //adicionar o grupo de tag <refNF> dentro da tag <NFRef>
+   oNFRef:RefNF = oRefNF
+   
+   //adicionar o grupo de tag <NFRef> dentro da tag <ide>
+   oIde:AddNFRef(oNFRef)
+   
    //adicionar a tag Ide dentro da tag InfDfe
    oInfNFe:Ide = oIde
 
