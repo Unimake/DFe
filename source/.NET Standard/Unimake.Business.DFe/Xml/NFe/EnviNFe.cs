@@ -2134,7 +2134,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class ExportInd
     {
         [XmlElement("nRE")]
-        public ulong NRE { get; set; }
+        public string NRE { get; set; }
 
         [XmlElement("chNFe")]
         public string ChNFe { get; set; }

@@ -37,10 +37,11 @@ Function EnviarNFCeSincronoDesserializando()
    
  * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
    onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
-   oXml:AddNFe(oNFe:LoadFromFile("D:\testenfe\notateste-nfce.xml"))
    
+   oXml:AddNFe(oNFe:LoadFromFile("D:\testenfe\notateste-nfce.xml")) 
+
    //Como deserializar partindo da string do XML
-   //oXml:AddNFe(oNFe:LoadFromXML("asldkjaslkdjasldjaslkdjasldkjasldksjadas"))
+   //oXml:AddNFe(oNFe:LoadFromXML("asldkjaslkdjasldjaslkdjasldkjasldksjadas"))   
    
  * Recuperar a chave da NFe:
    oConteudoNFe = oXml:GetNFe(0)
