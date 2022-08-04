@@ -59,9 +59,9 @@ namespace Unimake.Business.DFe
             var resources = assembly.GetManifestResourceNames();
             var arquivoResource = Configuration.NamespaceSchema + arqSchema;
             var stringXSD = "";
-            using(var stm = assembly.GetManifestResourceStream(arquivoResource))
+            using (var stm = assembly.GetManifestResourceStream(arquivoResource))
             {
-                if(stm != null)
+                if (stm != null)
                 {
                     var reader = new StreamReader(stm);
                     stringXSD = reader.ReadToEnd();
@@ -74,7 +74,7 @@ namespace Unimake.Business.DFe
             }
 
             var pesquisar = ".";
-            if(padraoNFSe != Servicos.PadraoNFSe.None)
+            if (padraoNFSe != Servicos.PadraoNFSe.None)
             {
                 pesquisar += padraoNFSe.ToString() + ".";
             }
@@ -104,15 +104,15 @@ namespace Unimake.Business.DFe
                 return retorna;
             });
 
-            while((attrib = getAttrib()) != null)
+            while ((attrib = getAttrib()) != null)
             {
                 var schemaFile = attrib.Value;
 
                 var schemaInterno = arquivoResource.Replace(schemaPrincipal, schemaFile);
                 var conteudoSchemaInterno = "";
-                using(var stm = assembly.GetManifestResourceStream(schemaInterno))
+                using (var stm = assembly.GetManifestResourceStream(schemaInterno))
                 {
-                    if(stm != null)
+                    if (stm != null)
                     {
                         var reader = new StreamReader(stm);
                         conteudoSchemaInterno = reader.ReadToEnd();
@@ -122,16 +122,16 @@ namespace Unimake.Business.DFe
 
                 keys.Add(schemaFile);
 
-                if(getAttrib() == null)
+                if (getAttrib() == null)
                 {
-                    if(!string.IsNullOrWhiteSpace(conteudoSchemaInterno))
+                    if (!string.IsNullOrWhiteSpace(conteudoSchemaInterno))
                     {
                         doc.LoadXml(conteudoSchemaInterno);
                     }
                 }
             }
 
-            foreach(var file in files)
+            foreach (var file in files)
             {
                 var result = XmlSchema.Read(GenerateStreamFromString(file), null);
                 yield return result;
@@ -159,9 +159,9 @@ namespace Unimake.Business.DFe
 
                 try
                 {
-                    while(xmlReader.Read()) { }
+                    while (xmlReader.Read()) { }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     ErroValidacao = ex.Message;
                 }
@@ -215,7 +215,7 @@ namespace Unimake.Business.DFe
 #endif
         public void Validar(XmlDocument conteudoXML, string arqSchema, string targetNS = "", Servicos.PadraoNFSe padraoNFSe = Servicos.PadraoNFSe.None)
         {
-            if(string.IsNullOrEmpty(arqSchema))
+            if (string.IsNullOrEmpty(arqSchema))
             {
                 throw new Exception("Arquivo de schema (XSD), necessário para validação do XML, não foi informado.");
             }
@@ -240,9 +240,9 @@ namespace Unimake.Business.DFe
                 };
                 settings.XmlResolver = resolver;
 
-                if(!string.IsNullOrWhiteSpace(targetNS))
+                if (!string.IsNullOrWhiteSpace(targetNS))
                 {
-                    foreach(var schema in ExtractSchemasResource(arqSchema, padraoNFSe))
+                    foreach (var schema in ExtractSchemasResource(arqSchema, padraoNFSe))
                     {
                         settings.Schemas.Add(schema);
                     }
@@ -252,12 +252,12 @@ namespace Unimake.Business.DFe
 
                 ValidateXMLAgainstSchema(conteudoXML, settings);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErroValidacao = ex.Message + "\r\n";
             }
 
-            if(ErroValidacao != "")
+            if (ErroValidacao != "")
             {
                 Success = false;
                 ErrorCode = 1;
@@ -286,6 +286,26 @@ namespace Unimake.Business.DFe
         {
             var doc = new XmlDocument();
             doc.Load(path);
+            Validar(doc, arqSchema, targetNS);
+        }
+
+        /// <summary>
+        /// Método responsável por validar a estrutura do XML de acordo com o schema passado por parâmetro
+        /// </summary>
+        /// <param name="xml">String do XML a ser validado</param>
+        /// <param name="arqSchema">Arquivo de schema para validação do XML (XSD) contido nos recursos da DLL.</param>
+        /// <param name="targetNS">Target Name Space, se existir, para validação</param>
+        /// <example>
+        /// //Validar arquivos de NFe
+        /// Validar("string do xml a ser validado", "NFe.consStatServCTe_v3.00.xsd")
+        ///
+        /// //Validar arquivos de MDFe
+        /// Validar("string do xml a ser validado", "MDFe.consStatServ_v4.00.xsd")
+        /// </example>
+        public void ValidarString(string xml, string arqSchema, string targetNS = "")
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(xml);
             Validar(doc, arqSchema, targetNS);
         }
 
