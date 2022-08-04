@@ -27,7 +27,10 @@ Function Main()
    Aadd(aOpcoes, "Enviar NFCe - Modo sincrono")
    Aadd(aOpcoes, "Enviar NFCe - Modo sincrono - Desserializando o XML")
    Aadd(aOpcoes, "Enviar MDFe - Modo sincrono")
-    
+   
+   Aadd(aOpcoes, "Validar XML")
+   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFCe")  
+       
    Do While .T.
       Cls
 
@@ -85,6 +88,12 @@ Function Main()
 			  
          case nOpcao = 15
               EnviarMDFeSincrono()
+			  
+         case nOpcao = 16
+		      ValidarXML()
+			  
+         case nOpcao = 17
+		      CancelarNFCe()
       endcase
    EndDo
 Return       
