@@ -748,4 +748,10 @@
 		<ArqConfig>JuscimeiraMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3554102">
+		<Nome>Taubate - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TaubateSP.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
