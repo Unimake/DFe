@@ -27,16 +27,19 @@ Function Main()
    Aadd(aOpcoes, "Enviar NFCe - Modo sincrono")
    Aadd(aOpcoes, "Enviar NFCe - Modo sincrono - Desserializando o XML")
    Aadd(aOpcoes, "Enviar MDFe - Modo sincrono")
-   
    Aadd(aOpcoes, "Validar XML")
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFCe")  
-       
+   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFCe")     
+   Aadd(aOpcoes, "Consultar GTIN")
+   Aadd(aOpcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFe")
+   Aadd(aOpcoes, "Executar telas do UniDANFe")
+   AAdd(aOpcoes, "Enviar Evento de cancelamento do MDFe")
+   
    Do While .T.
       Cls
 
       @ 1,2 Say "Unimake.Dfe DLL for " + Version()
 	  
-      nOpcao := Achoice( 3, 2, 20, 80, aOpcoes)
+      nOpcao := Achoice( 3, 2, 30, 80, aOpcoes)
 
       Cls
 
@@ -94,6 +97,18 @@ Function Main()
 			  
          case nOpcao = 17
 		      CancelarNFCe()
+			  
+	     case nOpcao = 18
+		      ConsultarGTIN()
+			  
+	     case nOpcao = 19
+		      ImprimirDANFe()
+		 
+	     case nOpcao = 20
+		      ExecutarTelaUniDANFe()
+			  
+	     case nOpcao = 21
+		      CancelarMDFe()		 
       endcase
    EndDo
 Return       
