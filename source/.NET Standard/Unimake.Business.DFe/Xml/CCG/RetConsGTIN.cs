@@ -146,5 +146,29 @@ namespace Unimake.Business.DFe.Xml.CCG
         /// <param name="xml">string do XML retConsGTIN</param>
         /// <returns>Objeto do RetConsGTIN</returns>
         public RetConsGTIN LoadFromXML(string xml) => XMLUtility.Deserializar<RetConsGTIN>(xml);
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista CEST (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da CEST</returns>
+        public string GetCEST(int index)
+        {
+            if ((CEST?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return CEST[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista CEST
+        /// </summary>
+        public int GetCESTCount => (CEST != null ? CEST.Count : 0);
+
+#endif
     }
 }
