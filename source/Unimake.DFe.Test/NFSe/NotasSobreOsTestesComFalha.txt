@@ -5,3 +5,6 @@ Siderópolis - SC: Alteraram o padrão para BETHA;
 Catalão - GO : Aguardando retorno da prefeitura se foi alterado o endereço do wsdl de produção;
 Cubatão - SP: Alteraram o padrão para SMARAPD;
 Morrinhos - GO: Aguardar se o wsdl do serviço de Consultar NFSe PDF voltará a funcionar;
+
+***************** 10/08/2022 - Everson diz:
+SIGCORP: Os serviços Consultar Lote RPS e Consultar NFSe Por Faixa estão retornando vazio;

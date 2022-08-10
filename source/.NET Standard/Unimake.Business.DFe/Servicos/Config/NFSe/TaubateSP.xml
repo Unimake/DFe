@@ -39,7 +39,7 @@
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarLoteRps>
-		<ConsultarNfsePorFaixa versao="2.03">
+		<ConsultarNfseFaixa versao="2.03">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoHomologacao>https://testetaubate.meumunicipio.digital/abrasf/servico.asmx?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://taubateabrasf.meumunicipio.digital/?wsdl</WebEnderecoProducao>
@@ -57,7 +57,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS></TargetNS>
-		</ConsultarNfsePorFaixa>
+		</ConsultarNfseFaixa>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://testetaubate.meumunicipio.digital/abrasf/servico.asmx?wsdl</WebEnderecoHomologacao>
