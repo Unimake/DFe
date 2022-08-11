@@ -19,11 +19,11 @@ Function CancelarMDFe()
 
  * Criar tag EnvEvento
    oEnvEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.EnvEvento")
-   oEnvEvento:Versao = "1.00"
+   oEnvEvento:Versao = "3.00"
    oEnvEvento:IdLote = "000000000000001"
 
  * -------------------------------------------------
- * Criar tags do evento sequencia 1
+ * Criar tags do evento sequencia
  * -------------------------------------------------
  * Criar tag Evento
    oEventoMDFe = CreateObject("Unimake.Business.DFe.Xml.MDFe.EventoMDFe")
