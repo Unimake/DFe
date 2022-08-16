@@ -754,4 +754,10 @@
 		<ArqConfig>TaubateSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4217006">
+		<Nome>São Ludgero - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
