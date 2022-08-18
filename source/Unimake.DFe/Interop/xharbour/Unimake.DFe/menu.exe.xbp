@@ -135,3 +135,13 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[FinalizarNFePelaConsultaSituacao.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[EncerramentoMDFe.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 

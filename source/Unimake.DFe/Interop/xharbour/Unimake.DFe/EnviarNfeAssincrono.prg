@@ -18,7 +18,7 @@ Function EnviarNfeAssincrono()
    Local oInfAdic, oInfRespTec
    Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
    Local I, oErro, notaAssinada, oErro2
-   Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo
+   Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo, nHandle
 
  * Criar configuraçao básica para consumir o serviço
 
@@ -364,6 +364,12 @@ Function EnviarNfeAssincrono()
       // Pode-se gravar o conteudo do XML assinado na base de dados antes do envio, caso queira recuperar para futuro tratamento, isso da garantias
 	  notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
       ? notaAssinada //Demonstrar o XML da nota assinada na tela
+	  
+	  //NEW - É importante salvar o conteúdo da variável "notaAssinada" na base de dados ou no HD antes de enviar o XML.
+	  //Tem que salvar antes de chamar o método "oAutorizacao:Executar()", caso não consiga pegar o retorno, temos o XML integro, com assinatura para podermos finalizar por uma consulta situação
+      nHandle := fCreate("d:\testenfe\" + chaveNFe + "-nfe.xml")
+ 	  FWrite(nHandle, notaAssinada)
+	  FClose(nHandle)
 	  
       Wait
 	  cls

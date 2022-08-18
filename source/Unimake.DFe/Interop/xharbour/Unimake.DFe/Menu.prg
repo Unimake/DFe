@@ -14,11 +14,11 @@ Function Main()
    aOpcoes := {}
    AAdd(aOpcoes, "Consultar Status NFe")
    AAdd(aOpcoes, "Consultar Situacao NFe")
-   AAdd(aOpcoes, "Enviar NFe - Modo sincrono")
-   AAdd(aOpcoes, "Enviar NFe - Modo assincrono")
+   AAdd(aOpcoes, "Enviar NFe - Modo sincrono")   
+   AAdd(aOpcoes, "Enviar NFe - Modo assincrono")   
    AAdd(aOpcoes, "Enviar NFe - Desserializando o XML")                               
    AAdd(aOpcoes, "Testes diversos com certificado digital")  
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe")  
+   AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe")
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe - Desserializando o XML")
    Aadd(aOpcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL")
    Aadd(aOpcoes, "Consultar Status MDFe")
@@ -32,7 +32,8 @@ Function Main()
    Aadd(aOpcoes, "Consultar GTIN")
    Aadd(aOpcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFe")
    Aadd(aOpcoes, "Executar telas do UniDANFe")
-   AAdd(aOpcoes, "Enviar Evento de cancelamento do MDFe")
+   AAdd(aOpcoes, "Enviar Evento de cancelamento do MDFe")   
+   Aadd(aOpcoes, "Finalizar a nota pela consulta situacao da NFe") 
    
    Do While .T.
       Cls
@@ -109,6 +110,12 @@ Function Main()
 			  
 	     case nOpcao = 21
 		      CancelarMDFe()		 
+			  
+	     case nOpcao = 22
+		      EncerramentoMDFe()
+			  
+	     case nOpcao = 23
+		      FinalizarNFePelaConsultaSituacao()
       endcase
    EndDo
 Return       
