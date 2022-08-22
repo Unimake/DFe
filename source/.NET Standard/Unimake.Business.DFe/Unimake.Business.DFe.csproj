@@ -266,7 +266,6 @@
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
-		<None Remove="Servicos\Config\NFSe\SideropolisSC.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
@@ -977,9 +976,6 @@
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MogiMirimSP.xml" />
-		<EmbeddedResource Include="Servicos\Config\NFSe\SideropolisSC.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\MorrinhosGO.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
