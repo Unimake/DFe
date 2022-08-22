@@ -298,12 +298,6 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3531308">
-		<Nome>Monte Alto - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4114104">
 		<Nome>Mandaguaçú - PR</Nome>
 		<UF>PR</UF>
