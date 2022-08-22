@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Validator.Contract;
 
@@ -29,7 +30,7 @@ namespace Unimake.Business.DFe.Validator
 
         private static Dictionary<string, IXmlValidator> LoadXmlValidators()
         {
-            if(xmlsValidators != null)
+            if (xmlsValidators != null)
             {
                 return xmlsValidators;
             }
@@ -42,7 +43,7 @@ namespace Unimake.Business.DFe.Validator
                                             typeof(IXmlValidator).IsAssignableFrom(w))
                                 .ToList();
 
-            foreach(var type in types)
+            foreach (var type in types)
             {
                 var validator = Activator.CreateInstance(type) as IXmlValidator;
                 var key = type.FullName;
@@ -71,24 +72,39 @@ namespace Unimake.Business.DFe.Validator
         /// <returns></returns>
         public static IXmlValidator BuidValidator(string xml)
         {
-            if(xml is null)
+            if (xml is null)
             {
                 throw new ArgumentNullException(nameof(xml));
             }
 
-            //localiza o validador do objeto XML
-            var validators = LoadXmlValidators();
-            var validator = validators.FirstOrDefault(w => w.Value.CanValidate(XDocument.Parse(xml).Root)).Value;
-
-            if(validator.IsNullOrEmpty())
+            try
             {
-                return default;
-            }
+                //localiza o validador do objeto XML
+                var validators = LoadXmlValidators();
+                var validator = validators.FirstOrDefault(w => w.Value.CanValidate(XDocument.Parse(xml).Root)).Value;
 
-            validator.Xml = xml;
-            return validator;
+                if (validator.IsNullOrEmpty())
+                {
+                    return default;
+                }
+
+                validator.Xml = xml;
+
+                return validator;
+            }
+            catch (Exception ex)
+            {
+                if (ex.GetLastException().GetType() == typeof(XmlException))
+                {
+                    var exception = (XmlException)ex.GetLastException();
+
+                    Utility.XMLUtility.ImproveInvalidCharacterExceptionInXML(xml, exception);
+                }
+
+                throw;
+            }
         }
 
-        #endregion Public Methods
+        #endregion Public Methods        
     }
 }
