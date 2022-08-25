@@ -31,9 +31,11 @@ Function Main()
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFCe")     
    Aadd(aOpcoes, "Consultar GTIN")
    Aadd(aOpcoes, "Imprimir DANFe/DACTe/DAMDFe via DLL UniDANFe")
-   Aadd(aOpcoes, "Executar telas do UniDANFe")
+   Aadd(aOpcoes, "Executar telas do UniDANFe")                              
    AAdd(aOpcoes, "Enviar Evento de cancelamento do MDFe")   
+   AAdd(aOpcoes, "Enviar Evento de encerramento do MDFe")   
    Aadd(aOpcoes, "Finalizar a nota pela consulta situacao da NFe") 
+   AAdd(aOpcoes, "Gerando a NFCe em contingencia OffLine")
    
    Do While .T.
       Cls
@@ -116,6 +118,9 @@ Function Main()
 			  
 	     case nOpcao = 23
 		      FinalizarNFePelaConsultaSituacao()
+			  
+		 case nOpcao = 24
+		      EnviarNFCeSincronoOffline()
       endcase
    EndDo
 Return       

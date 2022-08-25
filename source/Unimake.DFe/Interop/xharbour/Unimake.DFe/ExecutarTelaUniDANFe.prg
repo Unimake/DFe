@@ -13,8 +13,8 @@ Function ExecutarTelaUniDANFe()
    
    aOpcoes := {}
    AAdd(aOpcoes, "Executar tela de configuracoes do UniDANFe")
-*  AAdd(aOpcoes, "Executar tela de gerenciamento de emails do UniDANFe")
-*  AAdd(aOpcoes, "Executar tela de gerenciamento de licencas do UniDANFe")
+   AAdd(aOpcoes, "Executar tela de gerenciamento de emails do UniDANFe")
+   AAdd(aOpcoes, "Executar tela de gerenciamento de licencas do UniDANFe")
 
    Do While .T.   
       nOpcao := Achoice( 3, 2, 30, 80, aOpcoes)
@@ -29,10 +29,10 @@ Function ExecutarTelaUniDANFe()
               oDANFe:ShowConfigurationScreen()
 		 
 	     Case nOpcao == 2
-*             oDANFe:ShowEmailScreen()
+		      oDANFe:ShowEmailScreen()
 		 
 	     Case nOpcao == 3
-*             oDANFe:ShowLicencaScreen()
+		      oDANFe:ShowLicencaScreen()
       EndCase		 
    Enddo
 Return

@@ -145,3 +145,8 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[EnviarNFCeSincronoOffline.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
