@@ -297,6 +297,14 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoCancPedidoProrrogPrazoICMS();
                         break;
 
+                    case TipoEventoNFe.CTeAutorizado:
+                        _detEvento = new DetEventoSEFAZ();
+                        break;
+
+                    case TipoEventoNFe.MDFeAutorizadoComCTe:
+                        _detEvento = new DetEventoSEFAZ();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -1158,5 +1166,18 @@ namespace Unimake.Business.DFe.Xml.NFe
             <idPedidoCancelado>{IdPedidoCancelado}</idPedidoCancelado>
             <nProt>{NProt}</nProt>");
         }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoSEFAZ")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoSEFAZ : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; }
     }
 }
