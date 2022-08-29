@@ -241,6 +241,7 @@
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
@@ -939,6 +940,9 @@
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFe\TO.xml" />
+		<EmbeddedResource Include="Servicos\Config\NFSe\FeiraDeSantanaBA.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TaubateSP.xml" />
 		<EmbeddedResource Include="Servicos\Config\NFSe\MariliaSP.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>

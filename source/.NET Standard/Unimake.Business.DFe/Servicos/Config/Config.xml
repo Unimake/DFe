@@ -754,4 +754,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2910800">
+		<Nome>Feira de Santana - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>FeiraDeSantanaBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
