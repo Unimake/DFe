@@ -3331,27 +3331,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMS40
     {
-        private string CSTField;
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("40") || value.Equals("41") || value.Equals("50"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <ICMS40>, inválido! Valores aceitos: 40, 41 ou 50.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double VICMSDeson { get; set; }
@@ -4244,27 +4228,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSPart
     {
-        private string CSTField;
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("10") || value.Equals("90"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <ICMSPart>, inválido! Valores aceitos: 10 ou 90.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlElement("modBC")]
         public ModalidadeBaseCalculoICMS ModBC { get; set; }
@@ -4438,27 +4406,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN101
     {
-        private string CSOSNField = "101";
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CSOSN")]
-        public string CSOSN
-        {
-            get => CSOSNField;
-            set
-            {
-                if (value.Equals("101"))
-                {
-                    CSOSNField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN101>, inválido! Valor aceito: 101.");
-                }
-            }
-        }
+        public string CSOSN { get; set; } = "101";
 
         [XmlIgnore]
         public double PCredSN { get; set; }
@@ -4490,27 +4442,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN102
     {
-        private string CSOSNField;
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CSOSN")]
-        public virtual string CSOSN
-        {
-            get => CSOSNField;
-            set
-            {
-                if (value.Equals("102") || value.Equals("103") || value.Equals("300") || value.Equals("400"))
-                {
-                    CSOSNField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN102>, inválido! Valores aceitos: 102, 103, 300 ou 400.");
-                }
-            }
-        }
+        public virtual string CSOSN { get; set; }
     }
 
 #if INTEROP
@@ -4522,27 +4458,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN201
     {
-        private string CSOSNField = "201";
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CSOSN")]
-        public string CSOSN
-        {
-            get => CSOSNField;
-            set
-            {
-                if (value.Equals("201"))
-                {
-                    CSOSNField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN201>, inválido! Valor aceito: 201.");
-                }
-            }
-        }
+        public string CSOSN { get; set; } = "201";
 
         [XmlIgnore]
         public ModalidadeBaseCalculoICMSST ModBCSTField { get; set; }
@@ -4679,27 +4599,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN202
     {
-        private string CSOSNField;
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CSOSN")]
-        public string CSOSN
-        {
-            get => CSOSNField;
-            set
-            {
-                if (value.Equals("202") || value.Equals("203"))
-                {
-                    CSOSNField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN202>, inválido! Valores aceitos: 202 ou 203.");
-                }
-            }
-        }
+        public string CSOSN { get; set; }
 
         [XmlIgnore]
         public ModalidadeBaseCalculoICMSST ModBCSTField { get; set; }
@@ -4813,27 +4717,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN500
     {
-        private string CSOSNField = "500";
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CSOSN")]
-        public string CSOSN
-        {
-            get => CSOSNField;
-            set
-            {
-                if (value.Equals("500"))
-                {
-                    CSOSNField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN500>, inválido! Valor aceito: 500.");
-                }
-            }
-        }
+        public string CSOSN { get; set; } = "500";
 
         [XmlIgnore]
         public double? VBCSTRet { get; set; }
@@ -4973,27 +4861,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSSN900
     {
-        private string CSOSNField = "900";
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CSOSN")]
-        public string CSOSN
-        {
-            get => CSOSNField;
-            set
-            {
-                if (value.Equals("900"))
-                {
-                    CSOSNField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CSOSN>, filha da TAG <ICMSSN900>, inválido! Valor aceito: 900.");
-                }
-            }
-        }
+        public string CSOSN { get; set; } = "900";
 
         [XmlElement("modBC")]
 #if INTEROP
@@ -5208,27 +5080,11 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class ICMSST
     {
-        private string CSTField;
-
         [XmlElement("orig")]
         public OrigemMercadoria Orig { get; set; }
 
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("41") || value.Equals("60"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <ICMSST>, inválido! Valores aceitos: 41 ou 60.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double VBCSTRet { get; set; }
@@ -5475,27 +5331,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class IPINT
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("01") || value.Equals("02") || value.Equals("03") ||
-                    value.Equals("04") || value.Equals("05") || value.Equals("51") ||
-                    value.Equals("52") || value.Equals("53") || value.Equals("54") ||
-                    value.Equals("55"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <IPINT>, inválido! Valores aceitos: 01, 02, 03, 04, 05, 51, 52, 53, 54 ou 55.");
-                }
-            }
-        }
+        public string CST { get; set; }
     }
 
 #if INTEROP
@@ -5507,25 +5344,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class IPITrib
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("00") || value.Equals("49") || value.Equals("50") ||
-                    value.Equals("99"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <IPITrib>, inválido! Valores aceitos: 00, 49, 50 ou 99.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double VBC { get; set; }
@@ -5757,24 +5577,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class PISAliq
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("01") || value.Equals("02"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISAliq>, inválido! Valores aceitos: 01 ou 02.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double VBC { get; set; }
@@ -5816,24 +5620,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class PISNT
     {
-        private string _cstField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => _cstField?.PadLeft(2, '0');
-            set
-            {
-                _cstField = string.Empty;
-
-                if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISNT>, inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
-                }
-
-                _cstField = cst.ToString();
-            }
-        }
+        public string CST { get; set; }
     }
 
 #if INTEROP
@@ -5845,27 +5633,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class PISOutr
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
-                    value.Equals("55") || value.Equals("56") || value.Equals("60") || value.Equals("61") || value.Equals("62") || value.Equals("63") ||
-                    value.Equals("64") || value.Equals("65") || value.Equals("66") || value.Equals("67") || value.Equals("70") || value.Equals("71") ||
-                    value.Equals("72") || value.Equals("73") || value.Equals("74") || value.Equals("75") || value.Equals("98") || value.Equals("99"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISOutr>, inválido! Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double? VBC { get; set; }
@@ -5923,24 +5692,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class PISQtde
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("03"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <PISQtde>, inválido! Valor aceito: 03");
-                }
-            }
-        }
+        public string CST { get; set; } = "03";
 
         [XmlElement("qBCProd")]
         public double QBCProd { get; set; }
@@ -6055,24 +5808,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class COFINSAliq
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("01") || value.Equals("02"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSAliq>, inválido! Valores aceitos: 01 ou 02.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double VBC { get; set; }
@@ -6114,24 +5851,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class COFINSNT
     {
-        private string _cstField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => _cstField?.PadLeft(2, '0');
-            set
-            {
-                _cstField = string.Empty;
-
-                if (!int.TryParse(value, out var cst) || cst < 4 || cst > 9)
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSNT>, inválido! Valores aceitos: 04, 05, 06, 07, 08 ou 09.");
-                }
-
-                _cstField = cst.ToString();
-            }
-        }
+        public string CST { get; set; }
     }
 
 #if INTEROP
@@ -6143,27 +5864,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class COFINSOutr
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("49") || value.Equals("50") || value.Equals("51") || value.Equals("52") || value.Equals("53") || value.Equals("54") ||
-                    value.Equals("55") || value.Equals("56") || value.Equals("60") || value.Equals("61") || value.Equals("62") || value.Equals("63") ||
-                    value.Equals("64") || value.Equals("65") || value.Equals("66") || value.Equals("67") || value.Equals("70") || value.Equals("71") ||
-                    value.Equals("72") || value.Equals("73") || value.Equals("74") || value.Equals("75") || value.Equals("98") || value.Equals("99"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSOutr>, inválido! Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99.");
-                }
-            }
-        }
+        public string CST { get; set; }
 
         [XmlIgnore]
         public double? VBC { get; set; }
@@ -6221,24 +5923,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class COFINSQtde
     {
-        private string CSTField;
-
         [XmlElement("CST")]
-        public string CST
-        {
-            get => CSTField;
-            set
-            {
-                if (value.Equals("03"))
-                {
-                    CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST>, filha da TAG <COFINSQtde>, inválido! Valor aceito: 03");
-                }
-            }
-        }
+        public string CST { get; set; } = "03";
 
         [XmlElement("qBCProd")]
         public double QBCProd { get; set; }
