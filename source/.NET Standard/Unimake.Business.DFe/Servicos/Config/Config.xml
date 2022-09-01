@@ -760,4 +760,10 @@
 		<ArqConfig>FeiraDeSantanaBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3545209">
+		<Nome>Salto - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaltoSP.xml</ArqConfig>
+		<PadraoNFSe>OBARATEC</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

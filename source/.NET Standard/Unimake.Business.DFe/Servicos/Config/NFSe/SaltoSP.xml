@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+	  <EmissaoNota versao="1.00">
+      <Descricao>Emissão Nota</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>http://wssalto.meumunicipio.digital/WSNFESalto/WsIntegration</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://nfe.obaratec.com.br/WsIntegration/runResponse</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><nfse:run xmlns:nfse="http://nfe.obaratec.com.br/"><token>{TokenSoap}</token><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:run></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>S:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS>http://nfe.obaratec.com.br/</TargetNS>
+    </EmissaoNota>
+	  <CancelaNota versao="1.00">
+      <Descricao>Cancela Nota</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao>http://wssalto.meumunicipio.digital/WSNFESalto/WsIntegration</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao>http://nfe.obaratec.com.br/WsIntegration/runResponse</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><nfse:run xmlns:nfse="http://nfe.obaratec.com.br/"><token>{TokenSoap}</token><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:run></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>S:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS>http://nfe.obaratec.com.br/</TargetNS>
+    </CancelaNota>   
+</Servicos>
+</Configuracoes>

@@ -448,6 +448,11 @@ namespace Unimake.Business.DFe.Servicos
                 WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
             }
 
+            if(!string.IsNullOrWhiteSpace(TokenSoap))
+            {
+                WebSoapString = WebSoapString.Replace("{TokenSoap}", TokenSoap);
+            }
+
             if (TipoAmbiente == TipoAmbiente.Homologacao)
             {
                 WebSoapString = WebSoapStringHomologacao;
@@ -901,6 +906,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Token de acesso ao webservice/api do município
         /// </summary>
         public string MunicipioToken { get; set; }
+
+        /// <summary>
+        /// Token de acesso ao soap do município
+        /// </summary>
+        public string TokenSoap { get; set; }
 
         /// <summary>
         /// Usuário de acesso ao webservice/api do município

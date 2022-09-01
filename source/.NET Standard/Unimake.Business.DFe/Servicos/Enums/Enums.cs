@@ -312,6 +312,18 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consulta Centralizada de Código GTIN (CCG)")]
         CCGConsGTIN = 49,
 
+        /// <summary>
+        /// Enviar o XML de cancelamento da NFS-e para prefeiutura
+        /// </summary>
+        [Description("Cancela NFS-e")]
+        NFSeCancelaNota = 50,
+
+        /// <summary>
+        /// Enviar o XML de emissão da NFS-e para prefeiutura
+        /// </summary>
+        [Description("Emissão NFS-e")]
+        NFSeEmissaoNota = 51,
+
         #endregion
 
         #region Gerais
@@ -6054,6 +6066,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("Próprio Goiânia GO")]
         PROPRIOGOIANIA = 22,
+
+        /// <summary>
+        /// OBARATEC
+        /// </summary>
+        [Description("OBARATEC")]
+        OBARATEC = 23,
     }
 
     #endregion
