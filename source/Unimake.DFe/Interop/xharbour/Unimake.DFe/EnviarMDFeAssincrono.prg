@@ -361,7 +361,7 @@ Function EnviarMDFeAssincrono()
 
 	  //O conteúdo do XML assinado deve ser gravado na base de dados para ser recuperado 
 	  //caso seja necessário. Imagine que de um problema no envio do MDFe e vc precise resgatar para enviar novamente.
-	  ? "Demonstrar o XML do MDFe assinadom: "
+	  ? "Demonstrar o XML do MDFe assinado: "
 	  ?
 	  ? oAutorizacao:GetConteudoMDFeAssinado()
 	  ?
