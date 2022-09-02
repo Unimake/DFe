@@ -133,7 +133,7 @@ namespace Unimake.DFe.Test.NFe
                 }
 
                 Diag.Debug.Assert(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
+                Diag.Debug.Assert(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
             }
             catch(Exception ex)
             {
