@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlRoot("TConfigUf", Namespace = "http://www.gnre.pe.gov.br", IsNullable = false)]
-    public class TConfigUf
+    public class TConfigUf : XMLBase
     {
         [XmlElement("ambiente")]
         public TipoAmbiente Ambiente { get; set; }
@@ -38,6 +38,12 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("receitas")]
         public List<Receitas> Receitas { get; set; }
 
+        [XmlElement("versoesXml")]
+        public List<VersaoXml> VersoesXml { get; set; }
+
+        [XmlElement("qtdMaximas")]
+        public QtdMaximas QtdMaximas { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -46,7 +52,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// <param name="receitas">Elemento</param>
         public void AddReceitas(Receitas receitas)
         {
-            if(Receitas == null)
+            if (Receitas == null)
             {
                 Receitas = new List<Receitas>();
             }
@@ -73,6 +79,40 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// Retorna a quantidade de elementos existentes na lista Receitas
         /// </summary>
         public int GetReceitasCount => (Receitas != null ? Receitas.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddVersoesXml(VersaoXml item)
+        {
+            if (VersoesXml == null)
+            {
+                VersoesXml = new List<VersaoXml>();
+            }
+
+            VersoesXml.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista VersoesXml (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da VersoesXml</returns>
+        public VersaoXml GetVersoesXml(int index)
+        {
+            if ((Receitas?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return VersoesXml[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista VersoesXml
+        /// </summary>
+        public int GetVersoesXmlCount => (VersoesXml != null ? VersoesXml.Count : 0);
 
 #endif
     }
@@ -116,7 +156,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeReceita: ExigeUfFavorecida
+    public class ExigeReceita : ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.c02_receita;
@@ -147,6 +187,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlAttribute("codigo")]
         public string Codigo { get; set; }
 
+        [XmlAttribute("courier")]
+        public SimNaoLetra Courier { get; set; }
+
         [XmlAttribute("descricao")]
         public string Descricao { get; set; }
 
@@ -156,11 +199,14 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("exigeDetalhamentoReceita")]
         public ExigeDetalhamentoReceita ExigeDetalhamentoReceita { get; set; }
 
+        [XmlElement("detalhamentosReceita")]
+        public DetalhamentosReceita DetalhamentosReceita { get; set; }
+
         [XmlElement("exigeProduto")]
         public ExigeProduto ExigeProduto { get; set; }
 
         [XmlElement("produtos")]
-        public List<Produtos> Produtos { get; set; }
+        public Produtos Produtos { get; set; }
 
         [XmlElement("exigePeriodoReferencia")]
         public ExigePeriodoReferencia ExigePeriodoReferencia { get; set; }
@@ -169,7 +215,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public ExigePeriodoApuracao ExigePeriodoApuracao { get; set; }
 
         [XmlElement("periodosApuracao")]
-        public List<PeriodosApuracao> PeriodosApuracao { get; set; }
+        public PeriodosApuracao PeriodosApuracao { get; set; }
 
         [XmlElement("exigeParcela")]
         public ExigeParcela ExigeParcela { get; set; }
@@ -184,7 +230,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public TiposDocumentosOrigem TiposDocumentosOrigem { get; set; }
 
         [XmlElement("versoesXmlDocOrigem")]
-        public List<VersoesXmlDocOrigem> VersoesXmlDocOrigem { get; set; }
+        public VersoesXmlDocOrigem VersoesXmlDocOrigem { get; set; }
 
         [XmlElement("exigeContribuinteDestinatario")]
         public SimNaoLetra ExigeContribuinteDestinatario { get; set; }
@@ -204,149 +250,15 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("exigeCamposAdicionais")]
         public ExigeCamposAdicionais ExigeCamposAdicionais { get; set; }
 
-        [XmlElement("camposAdicionais ")]
-        public List<CamposAdicionais> CamposAdicionais { get; set; }
+        [XmlElement("camposAdicionais")]
+        public CamposAdicionais CamposAdicionais { get; set; }
 
-#if INTEROP
+        #region ShouldSerialize
 
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="produtos">Elemento</param>
-        public void AddProdutos(Produtos produtos)
-        {
-            if(Produtos == null)
-            {
-                Produtos = new List<Produtos>();
-            }
+        public bool ShouldSerializeCourier() => Courier == SimNaoLetra.Sim;
 
-            Produtos.Add(produtos);
-        }
+        #endregion
 
-        /// <summary>
-        /// Retorna o elemento da lista Produtos (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Produtos</returns>
-        public Produtos GetProdutos(int index)
-        {
-            if ((Produtos?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return Produtos[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista Produtos
-        /// </summary>
-        public int GetProdutosCount => (Produtos != null ? Produtos.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="periodosApuracao">Elemento</param>
-        public void AddPeriodosApuracao(PeriodosApuracao periodosApuracao)
-        {
-            if(PeriodosApuracao == null)
-            {
-                PeriodosApuracao = new List<PeriodosApuracao>();
-            }
-
-            PeriodosApuracao.Add(periodosApuracao);
-
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista PeriodosApuracao (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da PeriodosApuracao</returns>
-        public PeriodosApuracao GetPeriodosApuracao(int index)
-        {
-            if ((PeriodosApuracao?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return PeriodosApuracao[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista PeriodosApuracao
-        /// </summary>
-        public int GetPeriodosApuracaoCount => (PeriodosApuracao != null ? PeriodosApuracao.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="versoesXmlDocOrigem">Elemento</param>
-        public void AddVersoesXmlDocOrigem(VersoesXmlDocOrigem versoesXmlDocOrigem)
-        {
-            if(VersoesXmlDocOrigem == null)
-            {
-                VersoesXmlDocOrigem = new List<VersoesXmlDocOrigem>();
-            }
-
-            VersoesXmlDocOrigem.Add(versoesXmlDocOrigem);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista VersoesXmlDocOrigem (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da VersoesXmlDocOrigem</returns>
-        public VersoesXmlDocOrigem GetVersoesXmlDocOrigem(int index)
-        {
-            if ((VersoesXmlDocOrigem?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return VersoesXmlDocOrigem[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista VersoesXmlDocOrigem
-        /// </summary>
-        public int GetVersoesXmlDocOrigemCount => (VersoesXmlDocOrigem != null ? VersoesXmlDocOrigem.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="camposAdicionais">Elemento</param>
-        public void AddCamposAdicionais(CamposAdicionais camposAdicionais)
-        {
-            if(CamposAdicionais == null)
-            {
-                CamposAdicionais = new List<CamposAdicionais>();
-            }
-
-            CamposAdicionais.Add(camposAdicionais);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista CamposAdicionais (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da CamposAdicionais</returns>
-        public CamposAdicionais GetCamposAdicionais(int index)
-        {
-            if ((CamposAdicionais?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return CamposAdicionais[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista CamposAdicionais
-        /// </summary>
-        public int GetCamposAdicionaisCount => (CamposAdicionais != null ? CamposAdicionais.Count : 0);
-
-#endif
     }
 
 #if INTEROP
@@ -372,7 +284,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeProduto: ExigeDetalhamentoReceita
+    public class ExigeProduto : ExigeDetalhamentoReceita
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.produto;
@@ -388,7 +300,45 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class Produtos
     {
         [XmlElement("produto")]
-        public Produto Produto { get; set; }
+        public List<Produto> Produto { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddProduto(Produto item)
+        {
+            if (Produto == null)
+            {
+                Produto = new List<Produto>();
+            }
+
+            Produto.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Produto (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Produto</returns>
+        public Produto GetProduto(int index)
+        {
+            if ((Produto?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Produto[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Produto
+        /// </summary>
+        public int GetProdutoCount => (Produto != null ? Produto.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -398,7 +348,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class Produto: SituacaoConsulta { }
+    public class Produto : SituacaoConsulta { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -407,7 +357,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigePeriodoReferencia: ExigeUfFavorecida
+    public class ExigePeriodoReferencia : ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.referencia;
@@ -420,7 +370,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigePeriodoApuracao: ExigeDetalhamentoReceita
+    public class ExigePeriodoApuracao : ExigeDetalhamentoReceita
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.periodo;
@@ -436,7 +386,45 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class PeriodosApuracao
     {
         [XmlElement("periodoApuracao")]
-        public PeriodoApuracao PeriodoApuracao { get; set; }
+        public List<PeriodoApuracao> PeriodoApuracao { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddPeriodoApuracao(PeriodoApuracao item)
+        {
+            if (PeriodoApuracao == null)
+            {
+                PeriodoApuracao = new List<PeriodoApuracao>();
+            }
+
+            PeriodoApuracao.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista PeriodoApuracao (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da PeriodoApuracao</returns>
+        public PeriodoApuracao GetPeriodoApuracao(int index)
+        {
+            if ((PeriodoApuracao?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return PeriodoApuracao[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista PeriodoApuracao
+        /// </summary>
+        public int GetPeriodoApuracaoCount => (PeriodoApuracao != null ? PeriodoApuracao.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -446,7 +434,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class PeriodoApuracao: SituacaoConsulta { }
+    public class PeriodoApuracao : SituacaoConsulta { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -455,7 +443,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeParcela: ExigeUfFavorecida
+    public class ExigeParcela : ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.parcela;
@@ -468,10 +456,13 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ValorExigido: ExigeUfFavorecida
+    public class ValorExigido
     {
         [XmlAttribute("campo")]
-        public override CamposGNRE Campo { get; set; }
+        public virtual CamposGNRE Campo { get; set; }
+
+        [XmlText()]
+        public string Value { get; set; }
     }
 
 #if INTEROP
@@ -481,7 +472,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeDocumentoOrigem: ExigeDetalhamentoReceita
+    public class ExigeDocumentoOrigem : ExigeDetalhamentoReceita
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.documentoOrigem;
@@ -508,9 +499,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="tipoDocumentoOrigem">Elemento</param>
-        public void AddPeriodosApuracao(TipoDocumentoOrigem tipoDocumentoOrigem)
+        public void AddTipoDocumentoOrigem(TipoDocumentoOrigem tipoDocumentoOrigem)
         {
-            if(TipoDocumentoOrigem == null)
+            if (TipoDocumentoOrigem == null)
             {
                 TipoDocumentoOrigem = new List<TipoDocumentoOrigem>();
             }
@@ -548,7 +539,16 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class TipoDocumentoOrigem: SituacaoConsulta { }
+    public class TipoDocumentoOrigem : SituacaoConsulta { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.VersaoXml")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class VersaoXml : VersoesXmlDocOrigem { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -559,22 +559,46 @@ namespace Unimake.Business.DFe.Xml.GNRE
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class VersoesXmlDocOrigem
     {
-        private string VersaoField;
-
         [XmlElement("versao")]
-        public string Versao
-        {
-            get => VersaoField;
-            set
-            {
-                if(value != "2.00" || value != "1.00")
-                {
-                    throw new Exception("Conteúdo da TAG <versao>, filha da TAG <versoesXmlDocOrigem>, incorreta! Valores aceitos: 1.00 e 2.00");
-                }
+        public List<string> Versao { get; set; }
 
-                VersaoField = value;
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddVersao(string item)
+        {
+            if (Versao == null)
+            {
+                Versao = new List<string>();
             }
+
+            Versao.Add(item);
         }
+
+        /// <summary>
+        /// Retorna o elemento da lista Versao (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro</returns>
+        public string GetVersao(int index)
+        {
+            if ((Versao?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Versao[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Versao
+        /// </summary>
+        public int GetVersaoCount => (Versao != null ? Versao.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -584,7 +608,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeDataVencimento: ExigeUfFavorecida
+    public class ExigeDataVencimento : ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.dataVencimento;
@@ -597,7 +621,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeDataPagamento: ExigeUfFavorecida
+    public class ExigeDataPagamento : ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.dataPagamento;
@@ -610,7 +634,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeConvenio: ExigeUfFavorecida
+    public class ExigeConvenio : ValorExigido
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.convenio;
@@ -639,7 +663,7 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class ExigeCamposAdicionais: ExigeUfFavorecida
+    public class ExigeCamposAdicionais : ExigeUfFavorecida
     {
         [XmlAttribute("campo")]
         public override CamposGNRE Campo { get; set; } = CamposGNRE.camposExtras;
@@ -655,7 +679,45 @@ namespace Unimake.Business.DFe.Xml.GNRE
     public class CamposAdicionais
     {
         [XmlElement("campoAdicional")]
-        public CampoAdicional CampoAdicional { get; set; }
+        public List<CampoAdicional> CampoAdicional { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddCampoAdicional(CampoAdicional item)
+        {
+            if (CampoAdicional == null)
+            {
+                CampoAdicional = new List<CampoAdicional>();
+            }
+
+            CampoAdicional.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista CampoAdicional (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da CampoAdicional</returns>
+        public CampoAdicional GetCampoAdicional(int index)
+        {
+            if ((CampoAdicional?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return CampoAdicional[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista CampoAdicional
+        /// </summary>
+        public int GetCampoAdicionalCount => (CampoAdicional != null ? CampoAdicional.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -680,57 +742,22 @@ namespace Unimake.Business.DFe.Xml.GNRE
         public Tipo Tipo { get; set; }
 
         [XmlElement("tamanho")]
-        public int Tamanho { get; set; }
+        public int? Tamanho { get; set; }
 
         [XmlElement("casasDecimais")]
-        public int CasasDecimais { get; set; }
+        public int? CasasDecimais { get; set; }
 
         [XmlElement("titulo")]
         public string Titulo { get; set; }
 
         [XmlElement("versoesXmlCampoAdicional")]
-        public List<VersoesXmlCampoAdicional> VersoesXmlCampoAdicional { get; set; }
+        public VersoesXmlCampoAdicional VersoesXmlCampoAdicional { get; set; }
 
-        [XmlElement("qtdeMaximas")]
-        public QtdeMaximas QtdeMaximas { get; set; }
+        #region ShouldSerialize
 
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="versoesXmlCampoAdicional">Elemento</param>
-        public void AddVersoesXmlCampoAdicional(VersoesXmlCampoAdicional versoesXmlCampoAdicional)
-        {
-            if(VersoesXmlCampoAdicional == null)
-            {
-                VersoesXmlCampoAdicional = new List<VersoesXmlCampoAdicional>();
-            }
-
-            VersoesXmlCampoAdicional.Add(versoesXmlCampoAdicional);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista VersoesXmlCampoAdicional (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da VersoesXmlCampoAdicional</returns>
-        public VersoesXmlCampoAdicional GetVersoesXmlCampoAdicional(int index)
-        {
-            if ((VersoesXmlCampoAdicional?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return VersoesXmlCampoAdicional[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista VersoesXmlCampoAdicional
-        /// </summary>
-        public int GetVersoesXmlCampoAdicionalCount => (VersoesXmlCampoAdicional != null ? VersoesXmlCampoAdicional.Count : 0);
-
-#endif
+        public bool ShouldSerializeCasasDecimais() => CasasDecimais != null;
+        public bool ShouldSerializeTamanho() => Tamanho != null;
+        #endregion
     }
 
 #if INTEROP
@@ -772,16 +799,16 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class VersoesXmlCampoAdicional: VersoesXmlDocOrigem { }
+    public class VersoesXmlCampoAdicional : VersoesXmlDocOrigem { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.GNRE.QtdeMaximas")]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.QtdMaximas")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
-    public class QtdeMaximas
+    public class QtdMaximas
     {
         [XmlElement("guiasPorLote")]
         public string GuiasPorLote { get; set; }
@@ -795,4 +822,65 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("qtdConsultas")]
         public string QtdConsultas { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.DetalhamentosReceita")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class DetalhamentosReceita
+    {
+        [XmlElement("detalhamentoReceita")]
+        public List<DetalhamentoReceita> DetalhamentoReceita { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDetalhamentoReceita(DetalhamentoReceita item)
+        {
+            if (DetalhamentoReceita == null)
+            {
+                DetalhamentoReceita = new List<DetalhamentoReceita>();
+            }
+
+            DetalhamentoReceita.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DetalhamentoReceita (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DetalhamentoReceita</returns>
+        public DetalhamentoReceita GetDetalhamentoReceita(int index)
+        {
+            if ((DetalhamentoReceita?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DetalhamentoReceita[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DetalhamentoReceita
+        /// </summary>
+        public int GetDetalhamentoReceitaCount => (DetalhamentoReceita != null ? DetalhamentoReceita.Count : 0);
+
+
+#endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.DetalhamentoReceita")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class DetalhamentoReceita : SituacaoConsulta { }
 }

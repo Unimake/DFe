@@ -44,7 +44,7 @@ namespace Unimake.DFe.Test.GNRE
 
             Diag.Debug.Assert(consultaResultadoLote.Result != null);
             Diag.Debug.Assert(consultaResultadoLote.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Diag.Debug.Assert(consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("100") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("102"), "Código de retorno diferente de 100 e 102.");  //Lote de consulta de guia recebido com sucesso!
+            Diag.Debug.Assert(consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("100") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("102") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("602"), "Código retornado não era esperado: " + consultaResultadoLote.Result.SituacaoProcess.Codigo + "-" + consultaResultadoLote.Result.SituacaoProcess.Descricao);
         }
     }
 }
