@@ -36,7 +36,8 @@ Function Main()
    AAdd(aOpcoes, "Enviar Evento de encerramento do MDFe")   
    Aadd(aOpcoes, "Finalizar a nota pela consulta situacao da NFe") 
    AAdd(aOpcoes, "Gerando a NFCe em contingencia OffLine")
-   AAdd(aOpcoes, "Enviar CTe - Modo Assincrono")
+   AAdd(aOpcoes, "Enviar CTe - Modo Assincrono") 
+   AAdd(aOpcoes, "Enviar Lote RPS (NFSe) - Assincrono")
    
    Do While .T.
       Cls
@@ -125,6 +126,9 @@ Function Main()
 			  
          case nOpcao = 25
 		      EnviarCTeAssincrono()
+          		
+		 case nOpcao = 26
+              EnviarLoteRPSAssincrono() 		 
       endcase
    EndDo
 Return       

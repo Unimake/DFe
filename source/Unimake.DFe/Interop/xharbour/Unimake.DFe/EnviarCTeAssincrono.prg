@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Enviar Nfe de forma assincrona
+* Enviar CTe de forma assincrona
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
