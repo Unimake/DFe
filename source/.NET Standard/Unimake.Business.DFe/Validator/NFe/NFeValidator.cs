@@ -385,9 +385,9 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
                 var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
 
-                if (value != "01" && value != "02" && value != "03" && value != "04" && value != "51" && value != "52" && value != "53")
+                if (value != "01" && value != "02" && value != "03" && value != "04" && value != "05" && value != "51" && value != "52" && value != "53" && value != "54" && value != "55")
                 {
-                    throw new ValidatorDFeException("O CST do grupo de tributação do IPI não tributado está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 01, 02, 03, 04, 51, 52 ou 53." +
+                    throw new ValidatorDFeException("O CST do grupo de tributação do IPI não tributado está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 01, 02, 03, 04, 05, 51, 52, 53, 54 ou 55." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><IPI><IPINT>]");
                 }
             }).ValidateTag(element => element.NameEquals(nameof(PISAliq.CST)) && element.Parent.NameEquals(nameof(PISAliq)), Tag =>
