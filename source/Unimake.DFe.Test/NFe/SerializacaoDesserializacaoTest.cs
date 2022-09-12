@@ -9,19 +9,19 @@ using Diag = System.Diagnostics;
 namespace Unimake.DFe.Test.NFe
 {
     /// <summary>
-    /// Testar a serialização e deserialização dos XMLs do NFe
+    /// Testar a serialização e desserialização dos XMLs do NFe
     /// </summary>
-    public class SerializacaoDeserializacaoTest
+    public class SerializacaoDesserializacaoTest
     {
         /// <summary>
-        /// Testar a serialização e deserialização do XML EnviNFe
+        /// Testar a serialização e desserialização do XML EnviNFe
         /// </summary>
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\enviNFe.xml")]
-        public void SerializacaoDeserializacaoEnviNFe(string arqXML)
+        public void SerializacaoDesserializacaoEnviNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -41,15 +41,15 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML NfeProc
+        /// Testar a serialização e desserialização do XML NfeProc
         /// </summary>
-        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\99999999999999999999999999999999999999999999-procNFe.xml")]
-        public void SerializacaoDeserializacaoNfeProc(string arqXML)
+        public void SerializacaoDesserializacaoNfeProc(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -62,15 +62,15 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML ResEvento
+        /// Testar a serialização e desserialização do XML ResEvento
         /// </summary>
-        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\resEvento.xml")]
-        public void SerializacaoDeserializacaoResEvento(string arqXML)
+        public void SerializacaoDesserializacaoResEvento(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -82,15 +82,15 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML ResNFe
+        /// Testar a serialização e desserialização do XML ResNFe
         /// </summary>
-        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
         [InlineData(@"..\..\..\NFe\Resources\resNFe.xml")]
-        public void SerializacaoDeserializacaoResNFe(string arqXML)
+        public void SerializacaoDesserializacaoResNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -102,15 +102,15 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML EnvEvento
+        /// Testar a serialização e desserialização do XML EnvEvento
         /// </summary>
-        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\EnvEventoEPEC.xml")]
-        public void SerializacaoDeserializacaoEnvEvento(string arqXML)
+        public void SerializacaoDesserializacaoEnvEvento(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -123,9 +123,9 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML DistDFeInt
+        /// Testar a serialização e desserialização do XML DistDFeInt
         /// </summary>
-        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_ChNFe.xml")]
@@ -134,14 +134,33 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_ComUFAutor.xml")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_NSU.xml")]
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_SemUFAutor.xml")]
-        public void SerializacaoDeserializacaoDistDFeInt(string arqXML)
+        public void SerializacaoDesserializacaoDistDFeInt(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = XMLUtility.Deserializar<DistDFeInt>(doc);
+            var doc2 = xml.GerarXML();
+
+            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+        
+        /// <summary>
+        /// Testar a serialização e desserialização do XML RetConsSitNFe
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe.xml")]
+        public void SerializacaoDesserializacaoRetConsSitNFe(string arqXML)
+        {
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<RetConsSitNFe>(doc);
             var doc2 = xml.GerarXML();
 
             Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");

@@ -1,0 +1,285 @@
+<retConsSitNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+	<tpAmb>1</tpAmb>
+	<verAplic>AM4.00</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>Autorizado o uso da NF-e</xMotivo>
+	<cUF>13</cUF>
+	<dhRecbto>2022-08-16T15:24:42-04:00</dhRecbto>
+	<chNFe>13220809365007000181550010000304141201747566</chNFe>
+	<protNFe versao="4.00">
+		<infProt>
+			<tpAmb>1</tpAmb>
+			<verAplic>AM4.00</verAplic>
+			<chNFe>13220809365007000181550010000304141201747566</chNFe>
+			<dhRecbto>2022-08-16T15:24:42-04:00</dhRecbto>
+			<nProt>113222151253174</nProt>
+			<digVal>fIHMYB3rcnRvkelF/ONp/sXUNHY=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso da NF-e</xMotivo>
+		</infProt>
+	</protNFe>
+	<procEventoNFe versao="1.00">
+		<evento versao="1.00">
+			<infEvento Id="ID6106001322080936500700018155001000030414120174756601">
+				<cOrgao>91</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>33683111000107</CNPJ>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<dhEvento>2022-08-17T21:51:41-03:00</dhEvento>
+				<tpEvento>610600</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<verEvento>1.00</verEvento>
+				<detEvento versao="1.00">
+					<descEvento>CT-e Autorizado</descEvento>
+					<CTe>
+						<chCTe>13220807756378000320570010002830261660209743</chCTe>
+						<modal>01</modal>
+						<dhEmi>2022-08-17T19:47:00-03:00</dhEmi>
+						<nProt>313220005841657</nProt>
+						<dhRecbto>2022-08-17T19:51:17</dhRecbto>
+					</CTe>
+					<emit>
+						<CNPJ>07756378000320</CNPJ>
+						<IE>042899788</IE>
+						<xNome>WEBCARGO LOGISTICA E TRANSPORTES EIRELI</xNome>
+					</emit>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID6106001322080936500700018155001000030414120174756601">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>JV9xTW+ASpQnqLbMRdC8x3FZFZc=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>Vt+PWDD+N6BVOOt1w3vLJ0XMUrEFtPGpmnVrsETfj9ygy2B99CzbrNrPewPZe+rVeyGwoVm4ePeWCHpJd1ePC61PBO/Mo69XPfpZ3FXVGNjPZWhQI+tqKnLbknOlZogFloSdXaXYQVOuFQTTgELw0xKdLqsYqBZVsYyp5Pxttsrykm2xW6XrWR4vOoNgq7Gg6FoRu4R0EFugcLPQLOXKAcZuFNbH/ybN/8lk76JQkN3G0hXZMnQ82nUaRlQlRZA4OnIPJljn9FoAdEiLGwNgCZLRK2qNPp40J17x3X881exOvNGkDLXg0TCtkK4K0QYOdxBn7qk4M9vXCouKeX850g==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>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</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</evento>
+		<retEvento versao="1.00">
+			<infEvento Id="ID891224146751093">
+				<tpAmb>1</tpAmb>
+				<verAplic>AN_1.4.0</verAplic>
+				<cOrgao>91</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<tpEvento>610600</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<CNPJDest>33683111000107</CNPJDest>
+				<dhRegEvento>2022-08-17T21:51:41-03:00</dhRegEvento>
+				<nProt>891224146751093</nProt>
+			</infEvento>
+		</retEvento>
+	</procEventoNFe>
+	<procEventoNFe versao="1.00">
+		<evento versao="1.00">
+			<infEvento Id="ID6106141322080936500700018155001000030414120174756601">
+				<cOrgao>91</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>33683111000107</CNPJ>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<dhEvento>2022-08-22T11:28:07-03:00</dhEvento>
+				<tpEvento>610614</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<verEvento>1.00</verEvento>
+				<detEvento versao="1.00">
+					<descEvento>MDF-e Autorizado com CT-e</descEvento>
+					<cOrgaoAutor>91</cOrgaoAutor>
+					<tpAutor>5</tpAutor>
+					<verAplic>1.5.1</verAplic>
+					<MDFe>
+						<chMDFe>35220807756378000169580010000062171582595101</chMDFe>
+						<chCTe>13220807756378000320570010002830261660209743</chCTe>
+						<modal>01</modal>
+						<dhEmi>2022-08-22T09:01:00-03:00</dhEmi>
+						<nProt>935220021903513</nProt>
+						<dhRecbto>2022-08-22T10:34:37-03:00</dhRecbto>
+					</MDFe>
+					<emit>
+						<CNPJ>07756378000169</CNPJ>
+						<IE>336562163114</IE>
+						<xNome>WEBCARGO LOGISTICA E TRANSPORTES EIRELI</xNome>
+					</emit>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID6106141322080936500700018155001000030414120174756601">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>HyXwegT/i5IuTp4YQ/HWeN+9mTQ=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>q8HwRSUEJ/nzqIP9ayTMro1za1Vc41SVwpReyr6L15y/Ml927elngh6Y4QmZqpw0H4uRaf8qjC/uo79NBA7qgUdmUevSWvh1QyOoz2aOOFgN2mgNuknIRufbETXUY8JbomrdHe28+wQhhq3KuSx9mj4OTv3LdGJwpu31c60WKR0Q+ECCs0MkdeDTLwl+wW3F6sRoQDC/uVWYIgEIpBjkgrCg88gu/DRFapFD1MfjU4BJ2gX2qbllZlmaX218YtyLjiwQSCBwJcbR1lsL1KPHNDA3oEmsEr3k3Lag4HVs39iQpkwput+oL2E5aLo1KSG3VPCufe9GvBkHDoPUsOySfA==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>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</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</evento>
+		<retEvento versao="1.00">
+			<infEvento Id="ID891224224279829">
+				<tpAmb>1</tpAmb>
+				<verAplic>AN_1.4.0</verAplic>
+				<cOrgao>91</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<tpEvento>610614</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<CNPJDest>33683111000107</CNPJDest>
+				<dhRegEvento>2022-08-22T11:28:07-03:00</dhRegEvento>
+				<nProt>891224224279829</nProt>
+			</infEvento>
+		</retEvento>
+	</procEventoNFe>
+	<procEventoNFe versao="1.00">
+		<evento versao="1.00">
+			<infEvento Id="ID6106001322080936500700018155001000030414120174756602">
+				<cOrgao>91</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>33683111000107</CNPJ>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<dhEvento>2022-08-22T15:39:55-03:00</dhEvento>
+				<tpEvento>610600</tpEvento>
+				<nSeqEvento>2</nSeqEvento>
+				<verEvento>1.00</verEvento>
+				<detEvento versao="1.00">
+					<descEvento>CT-e Autorizado</descEvento>
+					<CTe>
+						<chCTe>35220844914992001371570010101393921101393921</chCTe>
+						<modal>01</modal>
+						<dhEmi>2022-08-22T13:49:53-03:00</dhEmi>
+						<nProt>135225971754681</nProt>
+						<dhRecbto>2022-08-22T13:50:20</dhRecbto>
+					</CTe>
+					<emit>
+						<CNPJ>44914992001371</CNPJ>
+						<IE>112782533118</IE>
+						<xNome>RODONAVES TRANSPORTES E ENCOMENDAS LTDA</xNome>
+					</emit>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID6106001322080936500700018155001000030414120174756602">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>NHSAmst/DAuhqo+78Z16bK2eavA=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>nbNM/pqVXADZixkqfBgfQxcAuyiDSXuNM9iSfcGf8eB1VpNhxlyxEIjVItIpv4A+rWD2H0a+kh7REFPYUPZqGXGqTMeUxnv23yF4dsN01KGLmhmghhzw0Trf5377l0bPMYUQumhAizf3Aq01Dn0tkPV5DWfU7PfZww84k1yt/Q6/5ZE6M+KSvWr8joNO2ySp8aRrMbNwJB4pTiBZq76zFGHWWQJEVfWMPKglbWvPSjPXk1DEZTXZr83lfHHvS1lq496eQh+DTkF5LULnq6qu7aXQPorOc+puLpEbnIzENN6UyzvfepQfQfYoaWJX2cHVOnSJ+fOZB1+EHvxL4vmRNg==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>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</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</evento>
+		<retEvento versao="1.00">
+			<infEvento Id="ID891224229290130">
+				<tpAmb>1</tpAmb>
+				<verAplic>AN_1.4.0</verAplic>
+				<cOrgao>91</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<tpEvento>610600</tpEvento>
+				<nSeqEvento>2</nSeqEvento>
+				<CNPJDest>33683111000107</CNPJDest>
+				<dhRegEvento>2022-08-22T15:39:55-03:00</dhRegEvento>
+				<nProt>891224229290130</nProt>
+			</infEvento>
+		</retEvento>
+	</procEventoNFe>
+	<procEventoNFe versao="1.00">
+		<evento versao="1.00">
+			<infEvento Id="ID6106141322080936500700018155001000030414120174756602">
+				<cOrgao>91</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>33683111000107</CNPJ>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<dhEvento>2022-08-23T10:55:02-03:00</dhEvento>
+				<tpEvento>610614</tpEvento>
+				<nSeqEvento>2</nSeqEvento>
+				<verEvento>1.00</verEvento>
+				<detEvento versao="1.00">
+					<descEvento>MDF-e Autorizado com CT-e</descEvento>
+					<cOrgaoAutor>91</cOrgaoAutor>
+					<tpAutor>5</tpAutor>
+					<verAplic>1.5.1</verAplic>
+					<MDFe>
+						<chMDFe>31220842846634000100580010001920911172288267</chMDFe>
+						<chCTe>35220844914992001371570010101393921101393921</chCTe>
+						<modal>01</modal>
+						<dhEmi>2022-08-23T10:37:00-03:00</dhEmi>
+						<nProt>931220012199538</nProt>
+						<dhRecbto>2022-08-23T10:37:07-03:00</dhRecbto>
+					</MDFe>
+					<emit>
+						<CNPJ>42846634000100</CNPJ>
+						<IE>169014440020</IE>
+						<xNome>PAULINERIS TRANSPORTES E ENCOMENDAS LT</xNome>
+					</emit>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID6106141322080936500700018155001000030414120174756602">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>jmSQ9b24wzvQnjwPQZqayLXfbsE=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>nsWI3jnxjwQPV0YcvaYFXhEFCurMKEPSixETZMB8CnvSwzA5pmtsPRC5E/rqS8GhsKv+PId5fhnXmRmQ5G+F8HVmlUDDlQ0vFfVvMJtPhk5onC+7Zr7wpa4GwTJJbzcQJPuoI4taobv9ZFtspZLpSj0DRRXoomga+0VyuvyJnUv9mzybeCDSfJeSKuv4gxK6KUe12yTo0KDyJMaRvw+3kws6Fm+wd0xymJkZYa/aA6hYNjlHNP4S7PjZXCqHbKNd9uqZilCrwNSbCYc83oso8+2cEdvRQttV16x5E6HUY3G4S2Jy9PdNnF5On3Ca7/wIEdQXsX4OLzKm26peQRMeRA==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>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</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</evento>
+		<retEvento versao="1.00">
+			<infEvento Id="ID891224248582276">
+				<tpAmb>1</tpAmb>
+				<verAplic>AN_1.4.0</verAplic>
+				<cOrgao>91</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+				<chNFe>13220809365007000181550010000304141201747566</chNFe>
+				<tpEvento>610614</tpEvento>
+				<nSeqEvento>2</nSeqEvento>
+				<CNPJDest>33683111000107</CNPJDest>
+				<dhRegEvento>2022-08-23T10:55:02-03:00</dhRegEvento>
+				<nProt>891224248582276</nProt>
+			</infEvento>
+		</retEvento>
+	</procEventoNFe>
+</retConsSitNFe>
