@@ -58,6 +58,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                     break;
             }
         }
+
         public void PreparaItemPedido(XmlDocument xmlDoc)
         {
             var itensPedidos = xmlDoc.GetElementsByTagName("itemPedido");
@@ -170,7 +171,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Deserializar o XML no objeto EnvEvento
+        /// Desserializar o XML no objeto EnvEvento
         /// </summary>
         /// <param name="filename">Localização do arquivo XML do envEvento</param>
         /// <returns>Objeto do EnvEvento</returns>
@@ -182,7 +183,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Deserializar o XML envEvento no objeto EnvEvento
+        /// Desserializar o XML envEvento no objeto EnvEvento
         /// </summary>
         /// <param name="xml">string do XML envEvento</param>
         /// <returns>Objeto da EnvEvento</returns>
@@ -298,7 +299,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         break;
 
                     case TipoEventoNFe.CTeAutorizado:
-                        _detEvento = new DetEventoSEFAZ();
+                        _detEvento = new DetEventoCTeAutorizado();
                         break;
 
                     case TipoEventoNFe.MDFeAutorizadoComCTe:
@@ -1179,5 +1180,128 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCTeAutorizado")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+
+    public class DetEventoCTeAutorizado : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "CT-e Autorizado";
+
+        private DetEventoCTeAutorizadoCTe CTeField;
+
+        [XmlElement("CTe", Order = 1)]
+        public DetEventoCTeAutorizadoCTe CTe
+        {
+            get
+            {
+                return CTeField;
+            }
+            set
+            {
+                if (CTeField == null)
+                {
+                    CTeField = new DetEventoCTeAutorizadoCTe();
+                }
+
+                CTeField = value;
+            }
+        }
+
+        [XmlElement("emit", Order = 2)]
+        public DetEventoCTeAutorizadoEmit Emit { get; set; }
+
+        //public override void ReadXml(XmlReader reader)
+        //{
+        //    base.ReadXml(reader);
+        //}
+
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            //writer.WriteRaw($@"
+            //    <descEvento>{DescEvento}</descEvento>
+            //    <CTe>
+            //        <chCTe>{CTe.ChCTe}</chCTe>
+            //        <modal>{CTe.Modal}</modal>
+            //        <dhEmi>{CTe.DhEmi}</dhEmi>
+            //        <nProt>{CTe.NProt}</nProt>
+            //        <dhRecbto>{CTe.DhRecbto}</dhRecbto>
+            //    </CTe>
+            //    <emit>
+            //        <CNPJ>{Emit.CNPJ}</CNPJ>
+            //        <IE>{Emit.IE}</IE>
+            //        <xNome>{Emit.XNome}</xNome>
+            //    </emit>");
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCTeAutorizadoCTe")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCTeAutorizadoCTe
+    {
+        [XmlElement("chCTe")]
+        public string ChCTe { get; set; }
+
+        [XmlElement("modal")]
+        public string Modal { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmi { get; set; }
+#else
+        public DateTimeOffset DhEmi { get; set; }
+#endif
+
+        [XmlElement("dhEmi")]
+        public string DhEmiField
+        {
+            get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmi = DateTime.Parse(value);
+#else
+            set => DhEmi = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        [XmlElement("dhRecbto")]
+        public string DhRecbto { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCTeAutorizadoEmit")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+
+    public class DetEventoCTeAutorizadoEmit
+    {
+        [XmlElement("CNPJ")]
+        public string CNPJ { get; set; }
+
+        [XmlElement("IE")]
+        public string IE { get; set; }
+
+        [XmlElement("xNome")]
+        public string XNome { get; set; }
     }
 }

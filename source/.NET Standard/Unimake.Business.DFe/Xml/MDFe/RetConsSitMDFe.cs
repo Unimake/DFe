@@ -57,23 +57,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("procEventoMDFe")]
         public List<ProcEventoMDFe> ProcEventoMDFe { get; set; }
 
-#if INTEROP
-
-        /// <summary>
-        /// Retorna o elemento da lista ProcEventoMDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da ProcEventoMDFe</returns>
-        public ProcEventoMDFe GetProcEventoMDFe(int index)
-        {
-            if((ProcEventoMDFe?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return ProcEventoMDFe[index];
-        }
-
         public override void ReadXml(XmlDocument document)
         {
             base.ReadXml(document);
@@ -85,7 +68,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
             var retEventos = nodes.Where(w => w.Name.LocalName.Equals(nameof(RetEventoMDFe), StringComparison.InvariantCultureIgnoreCase))
                                   .FirstOrDefault();
 
-            if(retEventos != null)
+            if (retEventos != null)
             {
                 ProcEventoMDFe[0].Versao = nodes.Where(w => w.Name.LocalName == "procEventoMDFe" &&
                                                             w.GetAttributeValue("versao") != null)
@@ -112,14 +95,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 };
             }
 
-            while(reader.Read())
+            while (reader.Read())
             {
-                if(reader.NodeType != XmlNodeType.Element)
+                if (reader.NodeType != XmlNodeType.Element)
                 {
                     continue;
                 }
 
-                if(reader.Name != "Signature")
+                if (reader.Name != "Signature")
                 {
                     continue;
                 }
@@ -128,6 +111,23 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 break;
             }
         }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o elemento da lista ProcEventoMDFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProcEventoMDFe</returns>
+        public ProcEventoMDFe GetProcEventoMDFe(int index)
+        {
+            if((ProcEventoMDFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProcEventoMDFe[index];
+        }        
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProcEventoMDFe
