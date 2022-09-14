@@ -61,11 +61,11 @@ namespace Unimake.Business.DFe.Xml
         public virtual XmlDocument GerarXML() => XMLUtility.Serializar(this, NameSpaces);
 
         /// <summary>
-        /// Deserializar XML (Converte o XML para um objeto)
+        /// Desserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="doc">Conteúdo do XML a ser deserializado</param>
-        /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
+        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
 #if INTEROP
         [ComVisible(false)]
 #endif
@@ -73,9 +73,9 @@ namespace Unimake.Business.DFe.Xml
             where T : new() => XMLUtility.Deserializar<T>(doc);
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na deserialização
+        /// Executa o processamento do XMLReader recebido na desserialização
         /// </summary>
-        ///<param name="document">XML recebido durante o processo de deserialização</param>
+        ///<param name="document">XML recebido durante o processo de desserialização</param>
         public virtual void ReadXml(XmlDocument document)
         {
         }

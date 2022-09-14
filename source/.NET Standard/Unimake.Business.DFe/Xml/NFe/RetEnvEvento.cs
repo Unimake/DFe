@@ -83,7 +83,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public class RetEvento
+    [XmlRoot("retEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class RetEvento : XMLBase
     {
         [XmlElement("infEvento", Order = 0)]
         public InfEventoRetEvento InfEvento { get; set; }

@@ -8,6 +8,8 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -61,33 +63,22 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public override void ReadXml(XmlDocument document)
         {
-            base.ReadXml(document);
-            var reader = XmlReader.Create(new StringReader(document.InnerXml));
+            var nodeListEvento = document.GetElementsByTagName("evento");
 
-            while (reader.Read())
+            if (nodeListEvento != null)
             {
-                if(reader.NodeType != XmlNodeType.Element)
+                Evento = XMLUtility.Deserializar<Evento>(((XmlElement)nodeListEvento[0]).OuterXml);
+                var nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature");
+                if (nodeListEventoSignature != null)
                 {
-                    continue;
+                    Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
                 }
+            }
 
-                switch(reader.Name)
-                {
-                    case "Signature":
-                        Evento.Signature = reader.ToSignature();
-                        break;
-
-                    case "retEvento":
-                        var versao = reader.GetAttribute("versao");
-                        var infEvento = reader.DeserializeTo<InfEventoRetEvento>();
-
-                        RetEvento = new RetEvento
-                        {
-                            Versao = versao,
-                            InfEvento = infEvento
-                        };
-                        break;
-                }
+            var nodeListRetEvento = document.GetElementsByTagName("retEvento");
+            if (nodeListRetEvento != null)
+            {
+                RetEvento = XMLUtility.Deserializar<RetEvento>(((XmlElement)nodeListRetEvento[0]).OuterXml);
             }
         }
 
