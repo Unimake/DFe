@@ -324,6 +324,24 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Emissão NFS-e")]
         NFSeEmissaoNota = 51,
 
+        /// <summary>
+        /// Cancela o XML de emissão da NFS-e para prefeiutura
+        /// </summary>
+        [Description("Cancela NFS-e")]
+        NFSeCancelarNotaFiscal = 52,
+
+        /// <summary>
+        /// Consulta o XML de emissão da NFS-e para prefeiutura
+        /// </summary>
+        [Description("Consulta NFS-e")]
+        NFSeConsultaNotaFiscal = 53,
+
+        /// <summary>
+        /// Envia o lote de XML da NFS-e para prefeiutura
+        /// </summary>
+        [Description("Envia o lote NFS-e")]
+        NFSeEnviarLoteNotas = 54,
+
         #endregion
 
         #region Gerais
@@ -6072,6 +6090,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("OBARATEC")]
         OBARATEC = 23,
+
+        /// <summary>
+        /// GIF
+        /// </summary>
+        [Description("GIF")]
+        GIF = 24,
     }
 
     #endregion

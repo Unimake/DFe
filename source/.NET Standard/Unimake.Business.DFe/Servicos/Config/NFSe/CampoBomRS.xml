@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <cancelarLote versao="1.00">
+      <Descricao>cancelar o Lote</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </cancelarLote>
+    <cancelarNotaFiscal versao="1.00">
+      <Descricao>Cancelar Nota Fiscal</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura>pedConsultaTrans</TagAssinatura>
+      <TagAtributoID>CNPJ</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><cancelarNotaFiscalRequest>{xmlBoby}</cancelarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+    </cancelarNotaFiscal>
+    <consultarNotaFiscal versao="1.00">
+      <Descricao>consultar a Nota Fiscal</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura>pedConsultaTrans</TagAssinatura>
+      <TagAtributoID>CNPJ</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><consultarNotaFiscalRequest>{xmlBoby}</consultarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+    </consultarNotaFiscal>
+    <enviarLoteNotas versao="1.00">
+      <Descricao>enviar Lote de Notas</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura>envioLote</TagAssinatura>
+      <TagAtributoID>NFS-e</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><enviarLoteNotasRequest>{xmlBoby}</enviarLoteNotasRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+    </enviarLoteNotas>
+    <inutilizacao versao="1.00">
+      <Descricao>inutilizar</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <TagExtraAssinatura></TagExtraAssinatura>
+      <TagExtraAtributoID></TagExtraAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </inutilizacao>
+    <obterLoteNotaFiscal versao="1.00">
+      <Descricao>obte o Lote Nota Fiscal</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </obterLoteNotaFiscal>
+	  <obterLoteNotaFiscalXML versao="1.00">
+      <Descricao>obter o Lote Nota Fiscal em XML </Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </obterLoteNotaFiscalXML>
+	  <obterLoteNotasEmPDF versao="1.00">
+      <Descricao>obtem o Lote de Notas Em PDF</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </obterLoteNotasEmPDF>
+	  <obterLoteNotasEmPNG versao="1.00">
+      <Descricao>obter o Lote de Notas Em PNG</Descricao>
+      <WebEnderecoHomologacao>https://campobom-gif4homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfse.campobom.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>NFSe-Infisc-v1.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao>1.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </obterLoteNotasEmPNG>
+</Servicos>
+</Configuracoes>

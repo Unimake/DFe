@@ -766,4 +766,12 @@
 		<ArqConfig>SaltoSP.xml</ArqConfig>
 		<PadraoNFSe>OBARATEC</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4303905">
+		<Nome>Campo Bom - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CampoBomRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
+	
+	
 </Configuracoes>

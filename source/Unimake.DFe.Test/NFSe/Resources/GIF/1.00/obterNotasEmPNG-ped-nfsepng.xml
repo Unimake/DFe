@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pedidoNFSePNG versao="1.0">
+  <CNPJ>49454600000119</CNPJ>
+  <notaInicial>1001</notaInicial>
+  <notaFinal>1001</notaFinal>
+  <emissaoInicial>2012-05-05</emissaoInicial>
+  <emissaoFinal>2012-05-07</emissaoFinal>
+  <serieNotaFiscal>PS</serieNotaFiscal>
+</pedidoNFSePNG>

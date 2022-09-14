@@ -236,6 +236,7 @@
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
+		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
@@ -490,6 +491,8 @@
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
+		<None Remove="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\cabecalho_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_cancelar_nfse_envio_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\servico_cancelar_nfse_envio_v03.xsd" />
@@ -588,6 +591,11 @@
 		<None Remove="Xml\Schemas\tiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\tiposDistDFe_v1.01.xsd" />
 		<None Remove="Xml\Schemas\xmldsig-core-schema_v1.01.xsd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -976,6 +984,9 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\SaltoSP.xml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Servicos\Config\NFSe\CampoBomRS.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\TeofiloOtoniMG.xml">

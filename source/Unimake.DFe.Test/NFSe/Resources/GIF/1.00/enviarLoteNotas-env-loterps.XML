@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<envioLote versao="1.0">
+  <CNPJ>93419380000184</CNPJ>
+  <dhTrans>2013-06-25T10:01:09</dhTrans>
+  <NFS-e>
+    <InfNFSe versao="1.00">
+      <Id>
+        <cNFS-e>808989235</cNFS-e>
+        <natOp>PRESTACAO DE SERVICO</natOp>
+        <mod>55</mod>
+        <serie>T</serie>
+        <nNFS-e>78</nNFS-e>
+        <dEmi>2013-06-25</dEmi>
+        <hEmi>10:01</hEmi>
+        <tpNF>1</tpNF>
+        <cMunFG>4304606</cMunFG>
+        <refNF>439341938000018455T00000000078808989235</refNF>
+        <tpImp>1</tpImp>
+        <tpEmis>N</tpEmis>
+        <anulada>N</anulada>
+        <notadebito>N</notadebito>
+      </Id>
+      <emit>
+        <CNPJ>93419380000184</CNPJ>
+        <xNome>RECH CAMPO BOM TESTE</xNome>
+        <xFant>RECH CAMPO BOM TESTE</xFant>
+        <IM>34219</IM>
+        <end>
+          <xLgr>RUA TUPANCIRETA</xLgr>
+          <nro>000460</nro>
+          <xBairro>IDEAL</xBairro>
+          <cMun>4303905</cMun>
+          <xMun>CAMPO BOM</xMun>
+          <UF>RS</UF>
+          <CEP>93334480</CEP>
+          <cPais>1058</cPais>
+          <xPais>BRASIL</xPais>
+          <fone>5135824001</fone>
+          <IE>086/0284336</IE>
+        </end>
+      </emit>
+      <TomS>
+        <CPF>02920232002</CPF>
+        <xNome>CANOAS FISICA</xNome>
+        <ender>
+          <xLgr>DSDSDD</xLgr>
+          <nro>000000</nro>
+          <xBairro>SASASAS</xBairro>
+          <cMun>4304606</cMun>
+          <xMun>CANOAS</xMun>
+          <UF>RS</UF>
+          <CEP>54800000</CEP>
+        </ender>
+        <xEmail>santos@rech.com.br</xEmail>
+      </TomS>
+      <det>
+        <nItem>1</nItem>
+        <serv>
+          <cServ>50001</cServ>
+          <xServ>ANALISE DE SISTEMAS.</xServ>
+          <uTrib>TN</uTrib>
+          <qTrib>2.00</qTrib>
+          <vUnit>56565.00</vUnit>
+          <vServ>113130.00</vServ>
+          <vBCISS>113130.00</vBCISS>
+          <pISS>3.00</pISS>
+          <vISS>3393.90</vISS>
+        </serv>
+      </det>
+      <total>
+        <vServ>113130.00</vServ>
+        <vDesc>0.00</vDesc>
+        <vOutro>0.00</vOutro>
+        <vtNF>113130.00</vtNF>
+        <vtLiq>113130.00</vtLiq>
+        <fat>
+          <nFat>78</nFat>
+          <vOrig>113130.00</vOrig>
+          <vLiq>113130.00</vLiq>
+        </fat>
+        <ISS>
+          <vBCISS>113130.00</vBCISS>
+          <vISS>3393.90</vISS>
+        </ISS>
+      </total>
+      <cobr>
+        <dup>
+          <nDup>1</nDup>
+          <dVenc>2013-06-25</dVenc>
+          <vDup>113130.00</vDup>
+        </dup>
+      </cobr>
+      <infAdic>Pedido: 61</infAdic>
+      <infAdic>Cod.cliente: 12</infAdic>
+      <infAdic>Valor aproximado dos tributos ( 16,70%): R$ 18.892,71 Fonte: IBPT</infAdic>
+    </InfNFSe>
+  </NFS-e>
+</envioLote>
