@@ -13,7 +13,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.CancelarNotaFiscal")]
     [ComVisible(true)]
 #endif
-    public class CancelarNotaFiscal : ServicoBase
+    public class CancelarNotaFiscal : CancelarNfse
     {
         /// <summary>
         /// Construtor
@@ -25,33 +25,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
-        public CancelarNotaFiscal(XmlDocument conteudoXML, Configuracao configuracao) : this() => Inicializar(conteudoXML, configuracao);
+        public CancelarNotaFiscal(XmlDocument conteudoXML, Configuracao configuracao) : base(conteudoXML, configuracao)
+        { }
 
-        /// <summary>
-        /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
-        /// </summary>
-        protected override void DefinirConfiguracao()
-        {
-            if (!Configuracoes.Definida)
-            {
-                base.DefinirConfiguracao();
-            }
-        }
-
-        /// <summary>
-        /// Executar o serviço
-        /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public override void Executar()
-        {
-            if (!Configuracoes.Definida)
-            {
-                DefinirConfiguracao();
-            }
-
-            base.Executar();
-        }
     }
 }

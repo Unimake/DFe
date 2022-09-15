@@ -17,7 +17,7 @@ namespace Unimake.DFe.Test.NFSe
         /// <summary>
         /// Monta o parâmetros, de forma dinâmica, para o cenário de testes
         /// </summary>
-        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarNfse");
+        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("ConsultarNotaFiscal");
 
         /// <summary>
         /// Consultar Situação para saber se a conexão com o webservice está ocorrendo corretamente.
@@ -60,7 +60,7 @@ namespace Unimake.DFe.Test.NFSe
                     SchemaVersao = versaoSchema
                 };
 
-                var consultaNotaFiscal = new ConsultarNfse(conteudoXML, configuracao);
+                var consultaNotaFiscal = new ConsultarNotaFiscal(conteudoXML, configuracao);
                 consultaNotaFiscal.Executar();
             }
             catch(Exception ex)
