@@ -38,6 +38,8 @@ Function Main()
    AAdd(aOpcoes, "Gerando a NFCe em contingencia OffLine")
    AAdd(aOpcoes, "Enviar CTe - Modo Assincrono") 
    AAdd(aOpcoes, "Enviar Lote RPS (NFSe) - Assincrono")
+   AAdd(aOpcoes, "Enviar Consulta Lote RPS (NFSe)")
+   AAdd(aOpcoes, "Enviar Cancelamento da NFSe")
    
    Do While .T.
       Cls
@@ -129,6 +131,12 @@ Function Main()
           		
 		 case nOpcao = 26
               EnviarLoteRPSAssincrono() 		 
+			  
+		 case nOpcao = 27
+              EnviarConsultaLoteRPS() 		 
+			  
+		 case nOpcao = 28
+              EnviarCancelamentoNFSe() 		 
       endcase
    EndDo
 Return       

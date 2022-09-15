@@ -1,21 +1,21 @@
 * ---------------------------------------------------------------------------------
-* Enviar NFSe para prefeitura
+* Enviar Cancelamento NFSe para prefeitura
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
    #xcommand CATCH [<!oErr!>] => RECOVER [USING <oErr>] <-oErr->
 #endif
  
-Function EnviarLoteRPSAssincrono()
+Function EnviarCancelamentoNFSe()
    Local oExceptionInterop, oErro, oConfiguracao
-   Local oEnvioRps, cArqXML, cStr
+   Local oCancelamentoNfe, cArqXML, cStr
    
  * Criar o objeto de configuração mínima
    oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 5 //5=NFSe
    oConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao:CertificadoSenha = "12345678"
-   oConfiguracao:Servico = 45 //Servico.NFSeEnvioRps
+   oConfiguracao:Servico = 46 //Servico.NFSeCancelamentoNfe
    oConfiguracao:CodigoMunicipio = 3550308 //São Paulo  
    oConfiguracao:SchemaVersao = "2.00"
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
@@ -24,7 +24,7 @@ Function EnviarLoteRPSAssincrono()
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try         
-      cArqXML := "D:\testenfe\xharbour\Unimake.DFe\EnviarLoteRpsEnvio-env-loterps.xml"
+      cArqXML := "D:\testenfe\xharbour\Unimake.DFe\CancelamentoNfe-ped-cannfse.xml"
 	  cStr := Memoread(cArqXML)
 	  cStr := SubStr(cStr, 4)
 	  
@@ -37,10 +37,10 @@ Function EnviarLoteRPSAssincrono()
 	  wait
 	  cls 
     
-	  oEnvioRPS := CreateObject("Unimake.Business.DFe.Servicos.NFSe.EnvioRps")
-      oEnvioRPS:Executar(cStr, oConfiguracao)
+	  oCancelamentoNfe := CreateObject("Unimake.Business.DFe.Servicos.NFSe.CancelamentoNfe")
+      oCancelamentoNfe:Executar(cStr, oConfiguracao)
 	  
-	  ? oEnvioRPS:RetornoWSString
+	  ? oCancelamentoNfe:RetornoWSString
 	  ?
 	  ?
 	  Wait

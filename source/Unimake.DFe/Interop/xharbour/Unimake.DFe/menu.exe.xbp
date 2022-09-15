@@ -160,3 +160,13 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[EnviarConsultaLoteRPS.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[EnviarCancelamentoNFSe.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
