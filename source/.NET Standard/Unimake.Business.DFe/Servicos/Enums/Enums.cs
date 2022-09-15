@@ -924,6 +924,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("0")]
         Desconhecido = 0,
+
         /// <summary>
         /// Carta de Correção CTe (110110)
         /// </summary>
@@ -937,7 +938,7 @@ namespace Unimake.Business.DFe.Servicos
         Cancelamento = 110111,
 
         /// <summary>
-        /// EPEC = Evento Previo da Emissão em Contingência do CTe (110113)
+        /// EPEC = Evento Prévio da Emissão em Contingência do CTe (110113)
         /// </summary>
         [XmlEnum("110113")]
         EPEC = 110113,
@@ -961,7 +962,13 @@ namespace Unimake.Business.DFe.Servicos
         PrestDesacordo = 610110,
 
         /// <summary>
-        /// Registro de Passagem CT-e (310620)
+        /// MDFe Autorizado (310610) (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("310610")]
+        MDFeAutorizado = 310610,
+
+        /// <summary>
+        /// Registro de Passagem CT-e (310620) (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("310620")]
         RegistroPassagem = 310620,

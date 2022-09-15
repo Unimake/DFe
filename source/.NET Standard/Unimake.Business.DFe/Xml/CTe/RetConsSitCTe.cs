@@ -9,6 +9,8 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -59,19 +61,13 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public override void ReadXml(XmlDocument document)
         {
-            base.ReadXml(document);
-            var reader = XmlReader.Create(new StringReader(document.InnerXml));
+            ProcEventoCTe.Clear();
 
-            while (reader.Read())
+            var nodeListProcEventoCTe = document.GetElementsByTagName("procEventoCTe");
+
+            foreach (var item in nodeListProcEventoCTe)
             {
-                if(reader.NodeType != XmlNodeType.Element ||
-                   reader.Name != "Signature")
-                {
-                    continue;
-                }
-
-                ProcEventoCTe[0].EventoCTe.Signature = reader.ToSignature();
-                break;
+                ProcEventoCTe.Add(XMLUtility.Deserializar<ProcEventoCTe>(((XmlElement)item).OuterXml));
             }
         }
 

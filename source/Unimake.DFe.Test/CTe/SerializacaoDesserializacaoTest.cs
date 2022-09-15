@@ -5,16 +5,17 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.CTeOS;
 using Xunit;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.DFe.Test.CTe
 {
     /// <summary>
-    /// Testar a serialização e deserialização dos XMLs do CTe
+    /// Testar a serialização e desserialização dos XMLs do CTe
     /// </summary>
-    public class SerializacaoDeserializacaoTest
+    public class SerializacaoDesserializacaoTest
     {
         /// <summary>
-        /// Testar a serialização e deserialização do XML EnviCTe
+        /// Testar a serialização e desserialização do XML EnviCTe
         /// </summary>
         [Theory]
         [Trait("DFe", "CTe")]
@@ -24,9 +25,9 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(@"..\..\..\CTe\Resources\enviCTe_ModalFerroviario.xml")]
         [InlineData(@"..\..\..\CTe\Resources\enviCTe_ModalMultiModal.xml")]
         [InlineData(@"..\..\..\CTe\Resources\enviCTe_ModalRodoviario.xml")]
-        public void SerializacaoDeserializacaoEnviCTe(string arqXML)
+        public void SerializacaoDesserializacaoEnviCTe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -46,14 +47,14 @@ namespace Unimake.DFe.Test.CTe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML CTeOS
+        /// Testar a serialização e desserialização do XML CTeOS
         /// </summary>
         [Theory]
         [Trait("DFe", "CTe")]
         [InlineData(@"..\..\..\CTe\Resources\CTeOS_ModalRodoOS.xml")]
-        public void SerializacaoDeserializacaoCTeOS(string arqXML)
+        public void SerializacaoDesserializacaoCTeOS(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -73,21 +74,41 @@ namespace Unimake.DFe.Test.CTe
         }
 
         /// <summary>
-        /// Testar a serialização e deserialização do XML CteProc
+        /// Testar a serialização e desserialização do XML CteProc
         /// </summary>
-        /// <param name="arqXML">Arquivo a ser deserializado</param>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "CTe")]
         [InlineData(@"..\..\..\CTe\Resources\99999999999999999999999999999999999999999999-procCTe.xml")]
-        public void SerializacaoDeserializacaoCTeProc(string arqXML)
+        public void SerializacaoDesserializacaoCTeProc(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new CteProc();
             xml = xml.LoadFromFile(arqXML);
+            var xmlSerializado = xml.GerarXML();
+
+            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do XML retConsSitCTe
+        /// </summary>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(@"..\..\..\CTe\Resources\retConsSitCTe.xml")]
+        public void SerializacaoDesserializacaoRetConsSitCTe(string arqXML)
+        {
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<RetConsSitCTe>(doc);
             var xmlSerializado = xml.GerarXML();
 
             Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
