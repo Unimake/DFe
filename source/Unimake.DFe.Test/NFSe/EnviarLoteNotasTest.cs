@@ -17,7 +17,7 @@ namespace Unimake.DFe.Test.NFSe
         /// <summary>
         /// Monta o parâmetros, de forma dinâmica, para o cenário de testes
         /// </summary>
-        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("enviarLoteNotas");
+        public static IEnumerable<object[]> Parametros => TestUtility.PreparaDadosCenario("EnviarLoteNotas");
 
         /// <summary>
         /// Recepcionar Lote Rps para saber se a conexão com o webservice está ocorrendo corretamente.
