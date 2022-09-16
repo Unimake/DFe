@@ -771,5 +771,11 @@
 		<UF>RS</UF>
 		<ArqConfig>CampoBomRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
-	</Arquivo>	
+	</Arquivo>
+	<Arquivo ID="5102637">
+		<Nome>Campo Novo do Parecis - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>CampoNovoParecisMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

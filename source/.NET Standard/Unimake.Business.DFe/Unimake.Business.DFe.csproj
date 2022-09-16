@@ -237,6 +237,7 @@
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
+		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
@@ -595,6 +596,9 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoBomRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoNovoParecisMT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
