@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="3.00">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://producao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>servico_enviar_lote_rps_envio_v03.xsd</SchemaArquivo>
+      <TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>LoteRps</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:RecepcionarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:RecepcionarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+	  <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:RecepcionarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+	  <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS>http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd</TargetNS>
+    </RecepcionarLoteRps>   
+    <CancelarNfse versao="3.00">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://producao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>servico_cancelar_nfse_envio_v03.xsd</SchemaArquivo>
+      <TagAssinatura>CancelarNfseEnvio</TagAssinatura>
+      <TagAtributoID>Pedido</TagAtributoID>
+      <TagLoteAssinatura>Pedido</TagLoteAssinatura>
+      <TagLoteAtributoID>InfPedidoCancelamento</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:CancelarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:CancelarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+	  <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:CancelarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+	  <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS>http://www.ginfes.com.br/servico_cancelar_nfse_envio</TargetNS>
+    </CancelarNfse>
+    <ConsultarLoteRps versao="3.00">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://producao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>servico_consultar_lote_rps_envio_v03.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Protocolo</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+	  <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+	  <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS>http://www.ginfes.com.br/servico_consultar_lote_rps_envio_v03.xsd</TargetNS>  
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="3.00">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://producao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>servico_consultar_nfse_rps_envio_v03.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarNfsePorRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarNfsePorRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+	  <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarNfsePorRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+	  <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS>http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd</TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfse versao="3.00">
+      <Descricao>Consulta de NFSe por Data</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://producao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>servico_consultar_nfse_envio_v03.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+	  <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+	  <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS>http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd</TargetNS>
+    </ConsultarNfse>
+	<ConsultarSituacaoLoteRps versao="3.00">
+      <Descricao>Consultar Situação Lote Rps</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://producao.ginfes.com.br//ServiceGinfesImpl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v03.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Protocolo</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarSituacaoLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarSituacaoLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+	  <WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarSituacaoLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarSituacaoLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+	  <WebTagRetorno>env:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS>http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd</TargetNS>
+    </ConsultarSituacaoLoteRps>	  
+</Servicos>
+</Configuracoes>
