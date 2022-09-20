@@ -354,6 +354,11 @@
 						<lota>1</lota>
 						<tpRest>0</tpRest>
 					</veicProd>
+					<med>
+						<cProdANVISA>123456</cProdANVISA>
+						<xMotivoIsencao>teste de texto de isenção</xMotivoIsencao>
+						<vPMC>0.00</vPMC>
+					</med>
 				</prod>
 				<imposto>
 					<vTotTrib>1.00</vTotTrib>

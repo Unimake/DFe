@@ -1614,20 +1614,20 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("infProdEmb")]
         public InfProdEmb InfProdEmb { get; set; }
 
+        [XmlElement("veicProd")]
+        public List<VeicProd> VeicProd { get; set; }
+
+        [XmlElement("med")]
+        public Med Med { get; set; }
+
         [XmlElement("arma")]
         public List<Arma> Arma { get; set; }
 
         [XmlElement("comb")]
         public List<Comb> Comb { get; set; }
 
-        [XmlElement("med")]
-        public List<Med> Med { get; set; }
-
         [XmlElement("nRECOPI")]
         public string NRECOPI { get; set; }
-
-        [XmlElement("veicProd")]
-        public List<VeicProd> VeicProd { get; set; }
 
         #region ShouldSerialize
 
@@ -1870,40 +1870,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Retorna a quantidade de elementos existentes na lista Comb
         /// </summary>
         public int GetCombCount => (Comb != null ? Comb.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="med">Elemento</param>
-        public void AddMed(Med med)
-        {
-            if (Med == null)
-            {
-                Med = new List<Med>();
-            }
-
-            Med.Add(med);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista Med (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Med</returns>
-        public Med GetMed(int index)
-        {
-            if ((Med?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return Med[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista Med
-        /// </summary>
-        public int GetMedCount => (Med != null ? Med.Count : 0);
 
         /// <summary>
         /// Adicionar novo elemento a lista
