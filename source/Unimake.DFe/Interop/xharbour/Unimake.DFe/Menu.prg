@@ -40,6 +40,8 @@ Function Main()
    AAdd(aOpcoes, "Enviar Lote RPS (NFSe) - Assincrono")
    AAdd(aOpcoes, "Enviar Consulta Lote RPS (NFSe)")
    AAdd(aOpcoes, "Enviar Cancelamento da NFSe")
+   AAdd(aOpcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS")
+   AAdd(aOpcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS")
    
    Do While .T.
       Cls
@@ -136,7 +138,13 @@ Function Main()
               EnviarConsultaLoteRPS() 		 
 			  
 		 case nOpcao = 28
-              EnviarCancelamentoNFSe() 		 
+              EnviarCancelamentoNFSe() 	
+
+		 case nOpcao = 29
+              EnviarNFeContigenciaSVC()
+
+		 case nOpcao = 30
+              EnviarCTeContigenciaSVC()
       endcase
    EndDo
 Return       

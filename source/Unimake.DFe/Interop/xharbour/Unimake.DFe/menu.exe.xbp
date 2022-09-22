@@ -170,3 +170,13 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[EnviarCTeContigenciaSVC.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[EnviarNFeContigenciaSVC.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
