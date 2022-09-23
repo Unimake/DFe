@@ -691,7 +691,7 @@
 	<Arquivo ID="3523107">
 		<Nome>Itaquaquecetuba - SP</Nome>
 		<UF>SP</UF>
-		<ArqConfig>ItaquaquecetubaSP.xml</ArqConfig>
+		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5107602">
@@ -781,7 +781,7 @@
 	<Arquivo ID="3143906">
 		<Nome>Muriae - MG</Nome>
 		<UF>MG</UF>
-		<ArqConfig>MuriaeMG.xml</ArqConfig>
+		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
