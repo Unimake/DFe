@@ -784,4 +784,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4307054">
+		<Nome>Ernestina - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ErnestinaRS.xml</ArqConfig>
+		<PadraoNFSe>DIGIFRED</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
