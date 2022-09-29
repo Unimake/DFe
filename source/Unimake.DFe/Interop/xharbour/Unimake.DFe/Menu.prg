@@ -42,6 +42,11 @@ Function Main()
    AAdd(aOpcoes, "Enviar Cancelamento da NFSe")
    AAdd(aOpcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS")
    AAdd(aOpcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS")
+   AAdd(aOpcoes, "Como encriptar a tag <Assinatura> NFSe Sao Paulo")
+   //EPEC
+   AAdd(aOpcoes, "EPEC NFe - Gerar XML NFe em contingencia EPEC")
+   AAdd(aOpcoes, "EPEC NFe - Enviar Evento de EPEC da NFe")     
+   AAdd(aOpcoes, "EPEC NFe - Enviar o XML da NFe")
    
    Do While .T.
       Cls
@@ -145,6 +150,18 @@ Function Main()
 
 		 case nOpcao = 30
               EnviarCTeContigenciaSVC()
+			  
+		 case nOpcao = 31	  
+			  EncriptarAssinaturaSP()
+			  
+		 case nOpcao = 32
+		      EPECGerarXMLNFe()
+			  
+		 case nOpcao = 33	  
+		      EPECEnviarEventoEPEC()
+			  
+		 case nOpcao = 34	  
+		      EPECEnviarXMLNFe()
       endcase
    EndDo
 Return       
