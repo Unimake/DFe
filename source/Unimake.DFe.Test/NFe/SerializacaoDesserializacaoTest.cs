@@ -153,6 +153,7 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe.xml")]
+        //[InlineData(@"..\..\..\NFe\Resources\retConsSitNFe2.xml")] //XML retornado pela SEFAZ MG com falha na tag Signature, vou manter este teste, só para garantir o funcionamento para este estado. Eles estão fugindo o padrão.
         public void SerializacaoDesserializacaoRetConsSitNFe(string arqXML)
         {
             Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

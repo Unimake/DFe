@@ -1,0 +1,76 @@
+<retConsSitNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+	<tpAmb>2</tpAmb>
+	<verAplic>14.4.78-OR3</verAplic>
+	<cStat>101</cStat>
+	<xMotivo>Cancelamento de NF-e homologado</xMotivo>
+	<cUF>31</cUF>
+	<dhRecbto>2022-08-24T16:30:25-03:00</dhRecbto>
+	<chNFe>31220807400075000109550090000001391343361946</chNFe>
+	<protNFe versao="4.00">
+		<infProt Id="ID131220146814773">
+			<tpAmb>2</tpAmb>
+			<verAplic>14.4.78-OR3</verAplic>
+			<chNFe>31220807400075000109550090000001391343361946</chNFe>
+			<dhRecbto>2022-08-24T16:30:25-03:00</dhRecbto>
+			<nProt>131220146814773</nProt>
+			<digVal>omdJGK7L7mqQ75jRUZEQKeS7JhE=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso da NF-e</xMotivo>
+		</infProt>
+	</protNFe>
+	<procEventoNFe versao="1.00">
+		<evento versao="1.00">
+			<infEvento Id="ID1101113122080740007500010955009000000139134336194601">
+				<cOrgao>31</cOrgao>
+				<tpAmb>2</tpAmb>
+				<CNPJ>07400075000109</CNPJ>
+				<chNFe>31220807400075000109550090000001391343361946</chNFe>
+				<dhEvento>2022-08-24T16:30:53-03:00</dhEvento>
+				<tpEvento>110111</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<verEvento>1.00</verEvento>
+				<detEvento versao="1.00">
+					<descEvento>Cancelamento</descEvento>
+					<nProt>131220146814773</nProt>
+					<xJust>TESTE NO CANCELAMENTO DA NFE</xJust>
+				</detEvento>
+			</infEvento>
+			<Signature:Signature xmlns:Signature="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID1101113122080740007500010955009000000139134336194601">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>tiIp5VPt9vn6tejUHV6MGrc5sto=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>Ojrn9J743Vg6tVcKf3grRou0KypC3lhsSV7BDT1e2b1rgbTFDPZ+no2BZS+2mtK23E1wqwlpFhJ81U70iC3CbjsMuQWLtvqI9M1QUHoMrCQHfoUL6qVzb028yil1x99EB91g6mzA4quB6qHHxMLZ90LDtckbJ9wbFm+oWj+bjD2qvx6EgiQo3hUd6kf4jwx7fTQFTquC5acdyfLejicDaM8cBPtST3jSxZGuFpdBkq4BSMkd6Al/J3laQ8fuS2vUK491TIpkwL8SA8Qpkj41bWrUMIoiiXMGaQg5/xgVj5ARBsgEkDEwY6enQN3HbdsYFbwxmIHabrtS3q3QYgbVNg==</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>MIIHwjCCBaqgAwIBAgIITjumSyDxgIEwDQYJKoZIhvcNAQELBQAwczELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEXMBUGA1UEAxMOQUMgTElOSyBSRkIgdjIwHhcNMjEwOTI3MTQzNjU1WhcNMjIwOTI3MTQzNjU1WjCB+zELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxCzAJBgNVBAgTAk1HMRYwFAYDVQQHEw1QQVI/IERFIE1JTkFTMRcwFQYDVQQLEw4yNjIxOTg4ODAwMDE0MTE2MDQGA1UECxMtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRYwFAYDVQQLEw1SRkIgZS1DTlBKIEExMRkwFwYDVQQLExB2aWRlb2NvbmZlcmVuY2lhMS4wLAYDVQQDEyVMU09GVCBTSVNURU1BUyBMVERBIE1FOjA3NDAwMDc1MDAwMTA5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvWPXt0eAIg/pRaVx+HnZSMxDkQDXU7kEqYZnb9a99xKLUBzNY2fFbEKG9RZOnc/jePPWGpdWQxrws4oE/9Xa7ew9bNpL3Od+g9BmFgnPLfHSWPC0WgAs8tLHR+sAORsXnHQJ2Uk/SFD+ft3O7fFFcTDoPQiAUvc0KnvGovMLG5Ej7oPgZxN3iZMqY0kTQtGy1DG9Tah+8+7QdjGJyYROW/++g56m+xreFqh69qLeRJhirNiTWPVQ2qcx3mHUAg/zYiqR81qIqmOcINZkOfVdQ+uj6TrSpFzqIWoYMUg/JPPRVtZVipCyMzFnzk3C50wbWQ8LY2alcRKJ2mW2jokiUQIDAQABo4ICzzCCAsswHwYDVR0jBBgwFoAUDd/WR/QTTuUiWDIsZqbnLuRXvAIwDgYDVR0PAQH/BAQDAgXgMG4GA1UdIARnMGUwYwYGYEwBAgE7MFkwVwYIKwYBBQUHAgEWS2h0dHA6Ly9yZXBvc2l0b3Jpby5saW5rY2VydGlmaWNhY2FvLmNvbS5ici9hYy1saW5rcmZiL2FjLWxpbmstcmZiLXBjLWExLnBkZjCBsAYDVR0fBIGoMIGlMFCgTqBMhkpodHRwOi8vcmVwb3NpdG9yaW8ubGlua2NlcnRpZmljYWNhby5jb20uYnIvYWMtbGlua3JmYi9sY3ItYWMtbGlua3JmYnY1LmNybDBRoE+gTYZLaHR0cDovL3JlcG9zaXRvcmlvMi5saW5rY2VydGlmaWNhY2FvLmNvbS5ici9hYy1saW5rcmZiL2xjci1hYy1saW5rcmZidjUuY3JsMIGVBggrBgEFBQcBAQSBiDCBhTBSBggrBgEFBQcwAoZGaHR0cDovL3JlcG9zaXRvcmlvLmxpbmtjZXJ0aWZpY2FjYW8uY29tLmJyL2FjLWxpbmtyZmIvYWMtbGlua3JmYnY1LnA3YjAvBggrBgEFBQcwAYYjaHR0cDovL29jc3AubGlua2NlcnRpZmljYWNhby5jb20uYnIwgbIGA1UdEQSBqjCBp4ESTFNPRlRATFNPRlQuQ09NLkJSoCMGBWBMAQMCoBoTGExFT05BUkRPIE5PR1VFSVJBIERVQVJURaAZBgVgTAEDA6AQEw4wNzQwMDA3NTAwMDEwOaA4BgVgTAEDBKAvEy0yMDAxMTk4MTA0NjM4MzMzNjgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDCgFwYFYEwBAwegDhMMMDAwMDAwMDAwMDAwMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDAJBgNVHRMEAjAAMA0GCSqGSIb3DQEBCwUAA4ICAQCEip+iihosQbZrnI1RWP1LYkgCHHY9DhhKyIf90m1TYMArYhmv2sAYB0CwZlxTa8oHdX44LR2eWPoW/S28dsvbnndgH1sjquFb6BMaflb1SUtCX9caZ0m6MKltUTptzibILm9n+aK0uTEJEJ+S3vw5ti6TFzlqM/Q4kzYByfbVzWfoevfA1r5eRbghqa6tH1QrB90Q+oRtlOqJP3XVrwYoMRkqFtmfJZPU6oSgAKpvIRCbaT07KGl0P1rxk/Cr5k/fKDEjuxoXwWY0pscVxhFexClEOsAlZCDQTUYO2Z5es7OV5RwMoxW3iHpMAQ7adivzAgBbL+cYbgBVSlqHAMYsbVPje+UfuhBbYYAXVMpSjI6c8CAqChLE+THDoEJWmJ6MZC3VwzBdC1Ucmrm6PEkHJgW0ICWv4L/rhay+zjsHxYGNgQ6ZWpGYnl2bto16Jd/iIA/kv0AHoogXX/vgcp3F7iY197x1zMwIiJt/4pgfi2FlNeVVizWrC5nRcBBc5bgZmtPq9xW4s3NAxHNNyJKJmp4kvNY6o/lAKgG3aqfgd3bhWdmt3cMQZ7x5VR+Bg5EZjDLpr+vjhAp281zHk1UKM0MmIpiShmOWSCODZ3FXV80IIh0lkHi17Vfdbnuz96LGKvAAf+4Ig5U6TcyNf0ZKaVzDLn1tew3pgywPBMl0XA==</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature:Signature>
+		</evento>
+		<retEvento versao="1.00">
+			<infEvento Id="ID131220146814780">
+				<tpAmb>2</tpAmb>
+				<verAplic>14.4.78</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado a NF-e.</xMotivo>
+				<chNFe>31220807400075000109550090000001391343361946</chNFe>
+				<tpEvento>110111</tpEvento>
+				<xEvento>CANCELAMENTO</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<CPFDest>06095877652</CPFDest>
+				<dhRegEvento>2022-08-24T16:30:54-03:00</dhRegEvento>
+				<nProt>131220146814780</nProt>
+			</infEvento>
+		</retEvento>
+	</procEventoNFe>
+</retConsSitNFe>

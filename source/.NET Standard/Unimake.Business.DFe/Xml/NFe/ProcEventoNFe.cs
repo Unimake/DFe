@@ -4,12 +4,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.IO;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -71,7 +69,25 @@ namespace Unimake.Business.DFe.Xml.NFe
                 var nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature");
                 if (nodeListEventoSignature != null)
                 {
-                    Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                    //SEFAZ MG está retornando o nome da tag signature da seguinte forma <Signature:Signature> e o correto é somente <Signature>
+                    //Até que eles façam a correção, já solicitamos abertura de chamado na SEFAZ MG, vamos manter este código para evitar erro de objeto não reconhecido.
+                    if (Evento.InfEvento.COrgao == Servicos.UFBrasil.MG)
+                    {
+                        nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature:Signature");
+
+                        if (((XmlElement)nodeListEventoSignature[0]).OuterXml.Contains("Signature:Signature"))
+                        {
+                            Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml.Replace("Signature:Signature", "Signature").Replace("xmlns:Signature=\"http://www.w3.org/2000/09/xmldsig#\"", ""));
+                        }
+                        else
+                        {
+                            Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                        }
+                    }
+                    else
+                    {
+                        Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                    }
                 }
             }
 
