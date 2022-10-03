@@ -790,4 +790,16 @@
 		<ArqConfig>ErnestinaRS.xml</ArqConfig>
 		<PadraoNFSe>DIGIFRED</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4126256">
+		<Nome>Sarandi - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>SarandiPR.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1702109">
+		<Nome>Araguaína - TO</Nome>
+		<UF>TO</UF>
+		<ArqConfig>AraguainaTO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
