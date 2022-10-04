@@ -174,7 +174,6 @@
       <SchemaVersao>2.02</SchemaVersao>
       <TargetNS>http://nfse.abrasf.org.br</TargetNS>
     </ConsultarNfseServicoPrestado>
-  </Servicos>
   <ConsultarNfseFaixa versao="2.02">
       <Descricao>Consulta NFSe por Faixa</Descricao>
 	  <WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
@@ -194,4 +193,5 @@
 	  <SchemaVersao>2.02</SchemaVersao>
 	  <TargetNS>http://nfse.abrasf.org.br</TargetNS>
     </ConsultarNfseFaixa>
+  </Servicos>
 </Configuracoes>
