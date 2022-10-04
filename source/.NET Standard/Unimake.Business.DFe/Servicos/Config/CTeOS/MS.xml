@@ -53,7 +53,7 @@
       <TagLoteAtributoID></TagLoteAtributoID>
     </ConsultaCadastro>
     <RecepcaoEvento versao="3.00">
-      <Descricao>Recepcao de eventos</Descricao>
+      <Descricao>Recepção de eventos</Descricao>
       <WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CteRecepcaoEvento</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://producao.cte.ms.gov.br/ws/CteRecepcaoEvento</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
@@ -98,7 +98,7 @@
       <WebEnderecoProducao>https://producao.cte.ms.gov.br/ws/CteRecepcaoOS</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionProducao>
-      <WebTagRetorno>cteRecepcaoOSResult</WebTagRetorno>
+      <WebTagRetorno>cteOSRecepcaoResult</WebTagRetorno>
       <SchemaArquivo>cteOS_v{0}.xsd</SchemaArquivo>
       <TagAssinatura>CTeOS</TagAssinatura>
       <TagAtributoID>infCte</TagAtributoID>
