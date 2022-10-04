@@ -77,6 +77,27 @@
       <SchemaVersao>2.02</SchemaVersao>
       <TargetNS>http://nfse.abrasf.org.br</TargetNS>
     </CancelarNfse>
+	<SubstituirNfse versao="2.02">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://araguainato.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
+      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+	  <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+	  <TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+	  <TagExtraAssinatura>Pedido</TagExtraAssinatura>
+	  <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SubstituirNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></SubstituirNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS>http://nfse.abrasf.org.br</TargetNS>
+    </SubstituirNfse>
     <ConsultarLoteRps versao="2.02">
       <Descricao>Consulta lote RPS</Descricao>
       <WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
@@ -115,6 +136,25 @@
       <SchemaVersao>2.02</SchemaVersao>
       <TargetNS>http://nfse.abrasf.org.br</TargetNS>
     </ConsultarNfsePorRps>
+	<ConsultarNfseServicoTomado versao="2.02">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+	  <WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
+	  <WebEnderecoProducao>https://araguainato.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
+      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoTomadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoTomadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>outputXML</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.02</SchemaVersao>
+      <TargetNS>http://nfse.abrasf.org.br</TargetNS>
+    </ConsultarNfseServicoTomado>
 	 <ConsultarNfseServicoPrestado versao="2.02">
       <Descricao>Consulta NFSe de serviços prestados</Descricao>
 	  <WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
@@ -134,5 +174,24 @@
       <SchemaVersao>2.02</SchemaVersao>
       <TargetNS>http://nfse.abrasf.org.br</TargetNS>
     </ConsultarNfseServicoPrestado>
+   <ConsultarNfseFaixa versao="2.02">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+	  <WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
+	  <WebEnderecoProducao>https://araguainato.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
+	  <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
+	  <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
+	  <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+	  <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorFaixaRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorFaixaRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>outputXML</WebTagRetorno>
+	  <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+	  <WebSoapVersion>soap11</WebSoapVersion>
+	  <SchemaVersao>2.02</SchemaVersao>
+	  <TargetNS>http://nfse.abrasf.org.br</TargetNS>
+    </ConsultarNfseFaixa>
   </Servicos>
 </Configuracoes>
