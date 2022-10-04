@@ -73,15 +73,24 @@ namespace Unimake.Business.DFe.Xml.NFe
                     //Até que eles façam a correção, já solicitamos abertura de chamado na SEFAZ MG, vamos manter este código para evitar erro de objeto não reconhecido.
                     if (Evento.InfEvento.COrgao == Servicos.UFBrasil.MG)
                     {
-                        nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature:Signature");
+                        var nodeListSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature:Signature");
 
-                        if (((XmlElement)nodeListEventoSignature[0]).OuterXml.Contains("Signature:Signature"))
+                        if (nodeListSignature.Count > 0)
                         {
-                            Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml.Replace("Signature:Signature", "Signature").Replace("xmlns:Signature=\"http://www.w3.org/2000/09/xmldsig#\"", ""));
+                            nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature:Signature");
+
+                            if (nodeListEventoSignature.Count > 0 && (((XmlElement)nodeListEventoSignature[0]).OuterXml.Contains("Signature:Signature")))
+                            {
+                                Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml.Replace("Signature:Signature", "Signature").Replace("xmlns:Signature=\"http://www.w3.org/2000/09/xmldsig#\"", ""));
+                            }
                         }
                         else
                         {
-                            Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                            var signature = ((XmlElement)nodeListEventoSignature[0]).OuterXml;
+
+                            signature = signature.Replace("<Signature xmlns=\"http://www.portalfiscal.inf.br/nfe\">", "<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\">");
+
+                            Evento.Signature = XMLUtility.Deserializar<Signature>(signature);
                         }
                     }
                     else
