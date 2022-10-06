@@ -47,6 +47,7 @@ Function Main()
    AAdd(aOpcoes, "EPEC NFe - Gerar XML NFe em contingencia EPEC")
    AAdd(aOpcoes, "EPEC NFe - Enviar Evento de EPEC da NFe")     
    AAdd(aOpcoes, "EPEC NFe - Enviar o XML da NFe")
+   Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
    
    Do While .T.
       Cls
@@ -162,6 +163,9 @@ Function Main()
 			  
 		 case nOpcao = 34	  
 		      EPECEnviarXMLNFe()
+			  
+         case nOpcao = 35
+		      EnviarCTeAssincronoDesserializando()
       endcase
    EndDo
 Return       
