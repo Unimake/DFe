@@ -802,4 +802,10 @@
 		<ArqConfig>AraguainaTO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+<Arquivo ID="4308607">
+		<Nome>Garibaldi - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GaribaldiRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
