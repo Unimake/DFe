@@ -496,6 +496,21 @@
 												</sequence>
 											</complexType>
 										</element>
+										<element name="tiposGnre" minOccurs="0" maxOccurs="1">
+											<complexType>
+												<sequence>
+													<element name="tipoGnre" minOccurs="1" maxOccurs="3">
+														<simpleType>
+															<restriction base="byte">
+																<enumeration value="0"></enumeration>
+																<enumeration value="1"></enumeration>
+																<enumeration value="2"></enumeration>
+															</restriction>
+														</simpleType>
+													</element>
+												</sequence>
+											</complexType>
+										</element>
 									</sequence>
 									<attribute name="codigo"
 										use="required">
@@ -545,6 +560,21 @@
 							<element name="itensPorGuia" type="tns:TString" maxOccurs="1" minOccurs="0" />
 							<element name="itensPorLote" type="tns:TString" maxOccurs="1" minOccurs="0" />
 							<element name="qtdConsultas" type="tns:TString" maxOccurs="1" minOccurs="0" />
+						</sequence>
+					</complexType>
+				</element>
+				<element name="tiposGnreDaUF" minOccurs="0" maxOccurs="1">
+					<complexType>
+						<sequence>
+							<element name="tipoGnre" minOccurs="1" maxOccurs="3">
+								<simpleType>
+									<restriction base="byte">
+										<enumeration value="0"></enumeration>
+										<enumeration value="1"></enumeration>
+										<enumeration value="2"></enumeration>
+									</restriction>
+								</simpleType>
+							</element>
 						</sequence>
 					</complexType>
 				</element>

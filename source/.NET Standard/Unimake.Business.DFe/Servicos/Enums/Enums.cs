@@ -6484,4 +6484,28 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("14")]
         GTIN14 = 14
     }
+
+    /// <summary>
+    /// Tipos de GNRE
+    /// </summary>
+    public enum TiposDeGNRE
+    {
+        /// <summary>
+        /// 0 - GNRE Simples
+        /// </summary>
+        [XmlEnum("0")]
+        Simples = 0,
+
+        /// <summary>
+        /// 1 - GNRE Múltiplos Documentos
+        /// </summary>
+        [XmlEnum("1")]
+        MultiplosDocumentos = 1,
+
+        /// <summary>
+        /// 2 - GNRE Múltiplas Receitas
+        /// </summary>
+        [XmlEnum("2")]
+        MultiplasReceitas = 2
+    }
 }

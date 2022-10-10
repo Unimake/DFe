@@ -28,6 +28,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         [XmlElement("receita")]
         public Receita Receita { get; set; }
+
+        [XmlElement("tiposGnre")]
+        public SimNaoLetra TiposGnre { get; set; }
     }
 
 #if INTEROP

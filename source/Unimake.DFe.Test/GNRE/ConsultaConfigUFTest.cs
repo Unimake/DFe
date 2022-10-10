@@ -33,7 +33,8 @@ namespace Unimake.DFe.Test.GNRE
                 {
                     Courier = courier,
                     Value = receita
-                }
+                },
+                TiposGnre=SimNaoLetra.Sim
             };
 
             var configuracao = new Configuracao
