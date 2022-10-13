@@ -433,10 +433,10 @@ namespace Unimake.Business.DFe.Validator.NFe
                 var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
                 var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
 
-                if (value != "49" && 
-                value != "50" && value != "51" && value != "52" && value != "53" && value != "54" && value != "55" && value != "56" && 
-                value != "60" && value != "61" && value != "62" && value != "63" && value != "64" && value != "65" && value != "66" && value != "67" && 
-                value != "70" && value != "71" && value != "72" && value != "73" && value != "74" && value != "75" && 
+                if (value != "49" &&
+                value != "50" && value != "51" && value != "52" && value != "53" && value != "54" && value != "55" && value != "56" &&
+                value != "60" && value != "61" && value != "62" && value != "63" && value != "64" && value != "65" && value != "66" && value != "67" &&
+                value != "70" && value != "71" && value != "72" && value != "73" && value != "74" && value != "75" &&
                 value != "98" && value != "99")
                 {
                     throw new ValidatorDFeException("O CST do grupo de tributação do PIS outras operações está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99." +

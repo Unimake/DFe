@@ -1808,8 +1808,24 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS00
     {
+        private string CSTField = "00";
+
         [XmlElement("CST")]
-        public string CST { get; set; } = "00";
+        public string CST
+        {
+            get
+            {
+                return CSTField;
+            }
+            set
+            {
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    CSTField = value;
+                }
+            }
+        }
 
         [XmlIgnore]
         public double VBC { get; set; }
@@ -1851,8 +1867,24 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS20
     {
+        private string CSTField = "20";
+
         [XmlElement("CST")]
-        public string CST { get; set; } = "20";
+        public string CST
+        {
+            get
+            {
+                return CSTField;
+            }
+            set
+            {
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    CSTField = value;
+                }
+            }
+        }
 
         [XmlIgnore]
         public double PRedBC { get; set; }
@@ -1904,21 +1936,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS45
     {
-        private string CSTField;
+        private string CSTField = "";
 
         [XmlElement("CST")]
         public string CST
         {
-            get => CSTField;
+            get
+            {
+                return CSTField;
+            }
             set
             {
-                if (value.Equals("40") || value.Equals("41") || value.Equals("51"))
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
                 {
                     CSTField = value;
-                }
-                else
-                {
-                    throw new Exception("Conteúdo da TAG <CST> da <ICMS45> inválido! Valores aceitos: 40, 41 ou 51.");
                 }
             }
         }
@@ -1933,8 +1965,24 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS60
     {
+        private string CSTField = "60";
+
         [XmlElement("CST")]
-        public string CST { get; set; } = "60";
+        public string CST
+        {
+            get
+            {
+                return CSTField;
+            }
+            set
+            {
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    CSTField = value;
+                }
+            }
+        }
 
         [XmlIgnore]
         public double VBCSTRet { get; set; }
@@ -1992,8 +2040,24 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMS90
     {
+        private string CSTField = "90";
+
         [XmlElement("CST")]
-        public string CST { get; set; } = "90";
+        public string CST
+        {
+            get
+            {
+                return CSTField;
+            }
+            set
+            {
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    CSTField = value;
+                }
+            }
+        }
 
         [XmlIgnore]
         public double PRedBC { get; set; }
@@ -2063,8 +2127,24 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMSOutraUF
     {
+        private string CSTField = "90";
+
         [XmlElement("CST")]
-        public string CST { get; set; } = "90";
+        public string CST
+        {
+            get
+            {
+                return CSTField;
+            }
+            set
+            {
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    CSTField = value;
+                }
+            }
+        }
 
         [XmlIgnore]
         public double PRedBCOutraUF { get; set; }
@@ -2122,8 +2202,24 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class ICMSSN
     {
+        private string CSTField = "90";
+
         [XmlElement("CST")]
-        public string CST { get; set; } = "90";
+        public string CST
+        {
+            get
+            {
+                return CSTField;
+            }
+            set
+            {
+                CSTField = "";
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    CSTField = value;
+                }
+            }
+        }
 
         [XmlElement("indSN")]
         public SimNao IndSN { get; set; }

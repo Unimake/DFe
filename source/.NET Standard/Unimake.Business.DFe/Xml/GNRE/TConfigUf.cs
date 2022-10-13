@@ -44,6 +44,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("qtdMaximas")]
         public QtdMaximas QtdMaximas { get; set; }
 
+        [XmlElement("tiposGnreDaUF")]
+        public TiposGnreDaUF TiposGnreDaUF { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -253,12 +256,14 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("camposAdicionais")]
         public CamposAdicionais CamposAdicionais { get; set; }
 
+        [XmlElement("tiposGnre")]
+        public TiposGnre TiposGnre { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeCourier() => Courier == SimNaoLetra.Sim;
 
         #endregion
-
     }
 
 #if INTEROP
@@ -883,4 +888,68 @@ namespace Unimake.Business.DFe.Xml.GNRE
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
     public class DetalhamentoReceita : SituacaoConsulta { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TiposGnre")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class TiposGnre
+    {
+        [XmlElement("tipoGnre")]
+        public TiposDeGNRE TipoGnre { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.GNRE.TiposGnreDaUF")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.gnre.pe.gov.br")]
+    public class TiposGnreDaUF
+    {
+        [XmlElement("TipoGnre")]
+        private List<TiposDeGNRE> TipoGnre { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddReceitas(TiposDeGNRE item)
+        {
+            if (TipoGnre == null)
+            {
+                TipoGnre = new List<TiposDeGNRE>();
+            }
+
+            TipoGnre.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista TipoGnre (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TipoGnre</returns>
+        public TiposDeGNRE GetReceitas(int index)
+        {
+            if ((TipoGnre?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TipoGnre[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TipoGnre
+        /// </summary>
+        public int GetReceitasCount => (TipoGnre != null ? TipoGnre.Count : 0);
+
+#endif
+    }
 }
