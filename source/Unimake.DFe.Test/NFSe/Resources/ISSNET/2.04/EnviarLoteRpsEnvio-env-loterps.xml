@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="LOTE1" versao="2.04">
+		<NumeroLote>1</NumeroLote>
+		<Prestador>
+			<CpfCnpj>
+				<Cnpj>08578958000176</Cnpj>
+			</CpfCnpj>
+		</Prestador>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico>
+					<Rps>
+						<IdentificacaoRps>
+							<Numero>1</Numero>
+							<Serie>12</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2022-10-06</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2022-10-06</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>120.57</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<ValTotTributos>0.00</ValTotTributos>
+							<ValorIss>2.41</ValorIss>
+							<Aliquota>2.0000</Aliquota>
+							<DescontoIncondicionado>0.00</DescontoIncondicionado>
+							<DescontoCondicionado>0.00</DescontoCondicionado>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ItemListaServico>07.02</ItemListaServico>
+						<CodigoCnae>4399199</CodigoCnae>
+						<Discriminacao>TESTE BRASILIA</Discriminacao>
+						<CodigoMunicipio>5300108</CodigoMunicipio>
+						<CodigoPais>1844</CodigoPais>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>5300108</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>08578958000176</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>0748352200137</InscricaoMunicipal>
+					</Prestador>
+					<TomadorServico>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cnpj>12768972000100</Cnpj>
+							</CpfCnpj>
+							<InscricaoMunicipal>0755717600175</InscricaoMunicipal>
+						</IdentificacaoTomador>
+						<RazaoSocial>M A B CAVALCANTE GS.DATA</RazaoSocial>
+						<Endereco>
+							<Endereco>TR 03. BLOCO A, SALA 104</Endereco>
+							<Numero>S/N</Numero>
+							<Complemento>SETOR DE IND BERNADO SAYAO</Complemento>
+							<Bairro>NUCLEO BANDEIRANTE</Bairro>
+							<CodigoMunicipio>5300108</CodigoMunicipio>
+							<Uf>DF</Uf>
+							<Cep>71736301</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>6130388483</Telefone>
+						</Contato>
+					</TomadorServico>
+					<RegimeEspecialTributacao>6</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>1</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

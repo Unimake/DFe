@@ -814,4 +814,10 @@
 		<ArqConfig>CaboFrioRJ.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5300108">
+		<Nome>Brasília - DF</Nome>
+		<UF>TO</UF>
+		<ArqConfig>BrasiliaDF.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

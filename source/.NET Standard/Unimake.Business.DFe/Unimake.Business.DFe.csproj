@@ -236,6 +236,7 @@
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
+		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
@@ -515,6 +516,8 @@
 		<None Remove="Xml\Schemas\NFSe\GINFES\tipos_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
@@ -611,6 +614,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ErnestinaRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BrasiliaDF.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
@@ -1470,6 +1476,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\tipos_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema20020212_v03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />

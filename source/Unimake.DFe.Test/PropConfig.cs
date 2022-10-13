@@ -13,7 +13,7 @@ namespace Unimake.DFe.Test
         /// <summary>
         /// Caminho do certificado digital A1
         /// </summary>
-        private static string PathCertificadoDigital { get; set; } = @"C:\projetos\Unimake_PV.pfx";
+        private static string PathCertificadoDigital { get; set; } = @"C:\Users\Fernanda\Desktop\Dados - Brasilia\CERTIFICADO CONE CONCRETOS 2022.pfx";
 
         /// <summary>
         /// Senha de uso do certificado digital A1
