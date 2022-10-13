@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="LOTE45454" versao="2.04">
+		<NumeroLote>45454</NumeroLote>
+		<Prestador>
+			<CpfCnpj>
+				<Cpf>55555555555</Cpf>
+			</CpfCnpj>
+		</Prestador>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="ID999999990001911733160024200900000000001">
+					<Rps Id="RPS343443">
+						<IdentificacaoRps>
+							<Numero>343443</Numero>
+							<Serie>A123</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2017-11-07</DataEmissao>
+						<Status>2</Status>
+					</Rps>
+					<Competencia>2017-11-07</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>121.12</ValorServicos>
+						</Valores>
+						<IssRetido>1</IssRetido>
+						<ItemListaServico>01.01</ItemListaServico>
+						<CodigoTributacaoMunicipio>2</CodigoTributacaoMunicipio>
+						<Discriminacao>TTESTE DE DISCRIMINACAO</Discriminacao>
+						<CodigoMunicipio>5007307</CodigoMunicipio>
+						<ExigibilidadeISS>6</ExigibilidadeISS>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cpf>55555555555</Cpf>
+						</CpfCnpj>
+					</Prestador>
+					<TomadorServico>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>32934636810</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>
+						<Endereco>
+							<Endereco>RUA AURORA</Endereco>
+							<Numero>446</Numero>
+							<Bairro>VILA TIBERIO</Bairro>
+							<CodigoMunicipio>5007307</CodigoMunicipio>
+							<Uf>SP</Uf>
+							<Cep>14030530</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>17981707756</Telefone>
+							<Email>ALANFRNK@GMAIL.COM</Email>
+						</Contato>
+					</TomadorServico>
+					<OptanteSimplesNacional>1</OptanteSimplesNacional>
+					<IncentivoFiscal>1</IncentivoFiscal>
+					<InformacoesComplementares>INFORMACAO EXTRA BLA BLA BLA</InformacoesComplementares>
+					<!--Opcional-->
+					<Deducao>
+						<TipoDeducao>3</TipoDeducao>
+						<DescricaoDeducao>DEDUCAO DE TESTE</DescricaoDeducao>
+						<IdentificacaoDocumentoDeducao>
+							<IdentificacaoNfse>
+								<CodigoMunicipioGerador>5007307</CodigoMunicipioGerador>
+								<NumeroNfse>123457784</NumeroNfse>
+								<CodigoVerificacao>AHGH84378</CodigoVerificacao>
+							</IdentificacaoNfse>
+						</IdentificacaoDocumentoDeducao>
+						<DadosFornecedor>
+							<IdentificacaoFornecedor>
+								<CpfCnpj>
+									<Cpf>32934636810</Cpf>
+								</CpfCnpj>
+							</IdentificacaoFornecedor>
+						</DadosFornecedor>
+						<DataEmissao>2017-11-07</DataEmissao>
+						<ValorDedutivel>20.00</ValorDedutivel>
+						<ValorUtilizadoDeducao>10.00</ValorUtilizadoDeducao>
+					</Deducao>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsSincronoEnvio>

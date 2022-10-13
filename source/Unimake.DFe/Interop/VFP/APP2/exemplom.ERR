@@ -1,0 +1,4 @@
+Funciona bien en modo diseño , pero al compilar y usar desde el .exe  me sale el error de :
+Error in line 85: Unrecognized command verb.
+.SendEmailUsingCDO()  solo en modo de red y no local
+Error in line 89: Syntax error.

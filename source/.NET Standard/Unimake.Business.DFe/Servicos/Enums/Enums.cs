@@ -6103,6 +6103,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("GIF")]
         GIF = 24,
+
+        /// <summary>
+        /// ISSNET
+        /// </summary>
+        [Description("ISSNET")]
+        ISSNET = 25,
     }
 
     #endregion

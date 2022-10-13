@@ -1,0 +1,6 @@
+// match
+Error in line 6: Unrecognized command verb.
+// nomatch
+Error in line 8: Unrecognized command verb.
+// no password entered
+Error in line 10: Unrecognized command verb.

@@ -1,0 +1,87 @@
+//PROCEDURE uninfedll_inutilizacao_nfe(sRecebe_certificado_arquivo is string="",sRecebe_certificado_senha is string="", ...
+              sRecebe_Thumbprint is string="",sRecebe_sErialnumber is string="",sRecebe_caminho_xml is string="", ...
+              nRECEBE_TIPO_AMBIENTE is int=0,sRecebe_cnpj is string="",nRecebe_cuf is int=0,nRecebe_modelo is int=0, ... 
+              nUmero_inicial is int=0,nUmero_final int=0,nRecebe_serie is int=0,sRecebe_justificativa is string="",
+              recebe_caminho_retorno is string="")
+              
+sretorno_xml is string=""
+sXml_assinado is string=""
+sXml_transmitido is string=""
+sRetorno_erro is string=""
+sLocalizacao_xml is string=""
+Retorno_protocolo_cStat is string=""
+Retorno_protocolo_cstat_obs is string=""
+Retorno_protocolo_nProt is string=""
+sNome_arquivo is string=""
+
+dAta_hoje is Date=DateSys()
+sAno is string=dAta_hoje..Year
+                   
+O_CONFIGURACAO is Configuracao
+IF sRecebe_certificado_arquivo="" THEN
+	IF sRecebe_Thumbprint="" AND sRecebe_sErialnumber="" THEN
+		vEr_certificado is Variant=SELECIONA_CERTIFICADO()
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+	ELSE
+		o_CertificadoDigital is CertificadoDigital
+		vEr_certificado is Variant=o_CertificadoDigital.BuscarCertificadoDigital(sRecebe_sErialnumber)
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
+		IF busca_token<>"ok" THEN
+			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
+			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
+		END
+	END
+ELSE	
+	O_CONFIGURACAO.CertificadoArquivo=sRecebe_certificado_arquivo//"D:\erpmatos\certificados\FABIANE.pfx"
+	O_CONFIGURACAO.CertificadoSenha=sRecebe_certificado_senha//
+END
+
+O_CONFIGURACAO.TipoDFe=0 // 0=nfe 1-nfce
+O_CONFIGURACAO.Servico=3 // 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
+
+O_InutNFe is Unimake.Business.DFe.Xml.NFe.InutNFe() 
+O_InutNFe.Versao = "4.00"
+
+O_InutNFeInfInut is Unimake.Business.DFe.Xml.NFe.InutNFeInfInut() 
+O_InutNFeInfInut:TpAmb=nRECEBE_TIPO_AMBIENTE // 1-produto 2-Homologação
+O_InutNFeInfInut:Ano=sAno[[3 TO 4]] // somente 2 ultimos digitos "19"
+O_InutNFeInfInut:CNPJ=sRecebe_cnpj
+O_InutNFeInfInut:CUF=nRecebe_cuf // 43-RS
+O_InutNFeInfInut:Mod = nRecebe_modelo // 55 // Modelo NFe
+O_InutNFeInfInut:NNFIni = nUmero_inicial //57919
+O_InutNFeInfInut:NNFFin = nUmero_final // 57919
+O_InutNFeInfInut:Serie = nRecebe_serie // 1
+O_InutNFeInfInut:XJust = sRecebe_justificativa // "Justificativa da inutilizacao de teste"   
+
+O_InutNFe.InfInut=O_InutNFeInfInut
+
+WHEN EXCEPTION IN 
+	O_inutilizacao is Unimake.Business.DFe.Servicos.NFe.Inutilizacao(O_InutNFe,O_CONFIGURACAO) // 
+	O_inutilizacao.Executar(O_InutNFe,O_CONFIGURACAO)
+	
+	sretorno_xml=O_inutilizacao.RetornoWSString
+	//AllTrim(Str(inutilizacao:Result:InfInut:CStat,5)),inutilizacao:Result:InfInut:XMotivo
+	sXml_assinado=O_inutilizacao.GetConteudoXMLAssinado()
+	xml_inut is a xmlDocument = XMLOpen (sXml_assinado,fromString)
+	sChave is string	= xml_inut.inutNFe.infInut..Attribut[1]
+	sChave=Replace(sChave,"ID","")
+	sNome_arquivo=sChave+"-procInutNFe.xml"
+	O_inutilizacao.GravarXmlDistribuicao(recebe_caminho_retorno)
+	sXml_transmitido=fLoadText(recebe_caminho_retorno+sNome_arquivo)
+	XMLDocument("Xml_transmitido",sXml_transmitido)
+	Retorno_protocolo_cStat = XMLRead("Xml_transmitido","/procInutNFe/retInutNFe/infInut/cStat")
+	Retorno_protocolo_cstat_obs = XMLRead("Xml_transmitido","/procInutNFe/retInutNFe/infInut/xMotivo")
+	Retorno_protocolo_nProt = XMLRead("Xml_transmitido","/procInutNFe/retInutNFe/infInut/nProt")
+	XMLClose("Xml_transmitido")
+	IF Retorno_protocolo_nProt<>"" THEN
+		O_inutilizacao.GravarXmlDistribuicao(sRecebe_caminho_xml);
+		sXml_transmitido=fLoadText(sRecebe_caminho_xml+sNome_arquivo)
+	END
+DO
+	sRetorno_erro="ERRO:"+ExceptionInfo(errFullDetails)
+END
+
+RESULT (sretorno_xml,sXml_assinado,sXml_transmitido,sRetorno_erro,Retorno_protocolo_cStat, ... 
+            Retorno_protocolo_cstat_obs,Retorno_protocolo_nProt,sNome_arquivo)

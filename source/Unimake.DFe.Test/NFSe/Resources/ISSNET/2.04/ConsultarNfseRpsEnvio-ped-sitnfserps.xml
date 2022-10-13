@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_rps_envio.xsd" xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd" xmlns:ts="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd">
+  <IdentificacaoRps>
+    <tc:Numero>210</tc:Numero>
+    <tc:Serie>10</tc:Serie>
+    <tc:Tipo>1</tc:Tipo>
+  </IdentificacaoRps>
+  <Prestador>
+    <tc:CpfCnpj>
+      <tc:Cpf>08578958000176</tc:Cpf>
+    </tc:CpfCnpj>
+    <tc:InscricaoMunicipal>0748352200137</tc:InscricaoMunicipal>
+  </Prestador>
+</ConsultarNfseRpsEnvio>

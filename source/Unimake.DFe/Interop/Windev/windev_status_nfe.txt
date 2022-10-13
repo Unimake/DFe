@@ -1,0 +1,59 @@
+//PROCEDURE STATUS_SERVICO(RECEBE_VERSAO is string="",RECEBE_CUF is int=0,RECEBE_TIPO_AMBIENTE is int=0, ... 
+						sRecebe_certificado_arquivo is string="",sRecebe_certificado_senha is string="",... 
+						sRecebe_Thumbprint is string="",sRecebe_sErialnumber is string="")
+
+
+EDT_tpAmb_ is int=0
+EDT_cUF_ is int=0
+EDT_cStat_ is string=""
+EDT_xMotivo_ is string=""
+
+retorno_xml is string=""
+
+O_CONFIGURACAO is Configuracao
+IF sRecebe_certificado_arquivo="" THEN
+	IF sRecebe_Thumbprint="" AND sRecebe_sErialnumber="" THEN
+		vEr_certificado is Variant=SELECIONA_CERTIFICADO()
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+	ELSE
+		o_CertificadoDigital is CertificadoDigital
+		vEr_certificado is Variant=o_CertificadoDigital.BuscarCertificadoDigital(sRecebe_sErialnumber)
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
+		IF busca_token<>"ok" THEN
+			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3.SetPinPrivateKey(vEr_certificado,sRecebe_certificado_senha)		
+			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
+		END
+	END
+ELSE	
+	O_CONFIGURACAO.CertificadoArquivo=sRecebe_certificado_arquivo//"D:\erpmatos\certificados\FABIANE.pfx"
+	O_CONFIGURACAO.CertificadoSenha=sRecebe_certificado_senha//
+END
+
+o_ConsStatServ is ConsStatServ
+o_ConsStatServ.VERSAO=RECEBE_VERSAO // "4.00"
+o_ConsStatServ.CUF=RECEBE_CUF // 43
+o_ConsStatServ.TpAmb=RECEBE_TIPO_AMBIENTE // 2 // 1-PRODUCAO 2-HOMOLOGACAO
+
+WHEN EXCEPTION IN
+	///olhe um detalhe..                              .NFCE.. nesse deu certo..
+	clO_StatusServico is Unimake.Business.DFe.Servicos.NFce.StatusServico()
+	clO_StatusServico.Executar(o_ConsStatServ,O_CONFIGURACAO)
+//uma observacao
+//o que mudei no status.. tirei de cima e coloquei em executar.. Sem problema... pode ser tbm.
+	retorno_xml=clO_StatusServico.RetornoWSString
+	
+	EDT_tpAmb_=clO_StatusServico.result.tpAmb
+	EDT_cUF_=clO_StatusServico.result.cUF
+	EDT_cStat_=clO_StatusServico.result.cStat
+	EDT_xMotivo_=clO_StatusServico.result.xMotivo
+	
+DO
+	Info(ExceptionInfo(errFullDetails))
+	retorno_xml="ERRO:"+ExceptionInfo(errFullDetails)
+	
+END
+
+RESULT (retorno_xml,EDT_tpAmb_,EDT_cUF_,EDT_cStat_,EDT_xMotivo_)
+

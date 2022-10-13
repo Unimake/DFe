@@ -1,0 +1,129 @@
+//PROCEDURE uninfedll_cancelamento_nfe(sRecebe_NProt is string="",sRecebe_justificativa is string="",nRecebe_numero_lote is int=0, ... 
+                    nrecebe_COrgao_cuf is int=0,sRecebe_ChNFe is string="",sRecebe_CNPJ is string="", ...
+					nRecebe_tipo_ambiente is int=0,recebe_tipo_evento is int=0,... 
+					recebe_sequencia_evento is int=0,recebe_caminho_xml is string="", ... 
+					sRecebe_certificado_arquivo is string="",sRecebe_certificado_senha is string="",... 
+					sRecebe_Thumbprint is string="",sRecebe_sErialnumber is string="")
+                           
+retorno_xml is string=""
+Retorno_erro is string=""
+Retorno_protocolo_cstat is string=""
+Retorno_protocolo_motivo is string=""
+Retorno_protocolo_nProt is string=""
+Retorno_protocolo_cstat_obs is string=""
+Localizacao_xml_retornado is string=""
+Retorno_xml_transmitido is string=""
+Retorno_protocolo_chNFe is string=""
+sXml_assinado is string=""
+
+
+O_CONFIGURACAO is Configuracao
+IF sRecebe_certificado_arquivo="" THEN
+	IF sRecebe_Thumbprint="" AND sRecebe_sErialnumber="" THEN
+		vEr_certificado is Variant=SELECIONA_CERTIFICADO()
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+	ELSE
+		o_CertificadoDigital is CertificadoDigital
+		vEr_certificado is Variant=o_CertificadoDigital.BuscarCertificadoDigital(sRecebe_sErialnumber)
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
+		IF busca_token<>"ok" THEN
+			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
+			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
+		END
+	END
+ELSE	
+	O_CONFIGURACAO.CertificadoArquivo=sRecebe_certificado_arquivo//"D:\erpmatos\certificados\FABIANE.pfx"
+	O_CONFIGURACAO.CertificadoSenha=sRecebe_certificado_senha//
+END
+
+O_CONFIGURACAO.TipoDFe=0 // 0=nfe 1-nfce
+O_CONFIGURACAO.Servico=5 // 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
+
+O_EnvEvento is Unimake.Business.DFe.Xml.nFe.EnvEvento() //O_EnvEvento is EnvEvento
+O_EnvEvento.Versao = "1.00"
+O_EnvEvento.IdLote = NumToString(nRecebe_numero_lote,"015d") // "000000000000001"
+
+O_Evento is Unimake.Business.DFe.Xml.nFe.Evento()
+O_Evento.Versao = "1.00"
+
+O_DetEventoCanc is Unimake.Business.DFe.Xml.nFe.DetEventoCanc()
+O_DetEventoCanc.Versao = "1.00"
+O_DetEventoCanc.NProt=sRecebe_NProt
+O_DetEventoCanc.XJust=sRecebe_justificativa
+
+o_InfEvento  is Unimake.Business.DFe.Xml.nFe.InfEvento()
+//o_InfEvento=O_DetEventoCanc
+o_InfEvento.DetEvento=O_DetEventoCanc
+
+data_transmissao is DateTime=""
+dDate is Date = DateSys()
+hora is Time=Now()
+data_transmissao..Day=dDate..Day
+data_transmissao..Month=dDate..Month
+data_transmissao..Year=dDate..Year
+data_transmissao..Hour=hora..Hour
+data_transmissao..Minute=hora..Minute
+data_transmissao..Second=hora..Second
+
+o_InfEvento.COrgao = nrecebe_COrgao_cuf //43
+o_InfEvento.ChNFe = sRecebe_ChNFe  
+o_InfEvento.CNPJ = sRecebe_CNPJ
+o_InfEvento.DhEvento = data_transmissao
+o_InfEvento.TpEvento = recebe_tipo_evento // 110111 // cancelamento
+o_InfEvento.NSeqEvento = recebe_sequencia_evento // 1
+o_InfEvento.VerEvento = "1.00"
+o_InfEvento.TpAmb = nRecebe_tipo_ambiente// 2 = homologacao  
+
+O_Evento.InfEvento=o_InfEvento
+
+O_EnvEvento.AddEvento(O_Evento)
+
+WHEN EXCEPTION IN 
+	O_RecepcaoEvento is Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(O_EnvEvento,O_CONFIGURACAO) // 
+	O_RecepcaoEvento.Executar(O_EnvEvento,O_CONFIGURACAO)
+	retorno_xml=O_RecepcaoEvento.RetornoWSString
+	sXml_assinado=O_RecepcaoEvento.GetConteudoXMLAssinado()
+	XMLDocument("xml_protocolo",retorno_xml)
+	IF Contains(retorno_xml,"procEventoNFe") THEN
+		Retorno_protocolo_cstat	= XMLRead("xml_protocolo","/procEventoNFe/retEvento/infEvento/cStat")
+		Retorno_protocolo_motivo= XMLRead("xml_protocolo","/procEventoNFe/retEvento/infEvento/xMotivo")
+		Retorno_protocolo_nProt=XMLRead("xml_protocolo","/procEventoNFe/retEvento/infEvento/nProt")
+		Retorno_protocolo_chNFe = XMLRead("xml_protocolo","/procEventoNFe/retEvento/infEvento/chNFe")
+	ELSE IF Contains(retorno_xml,"retEnvEvento") THEN
+		Retorno_protocolo_cstat	= XMLRead("xml_protocolo","/retEnvEvento/retEvento/infEvento/cStat")
+		Retorno_protocolo_motivo= XMLRead("xml_protocolo","/retEnvEvento/retEvento/infEvento/xMotivo")
+		Retorno_protocolo_nProt=XMLRead("xml_protocolo","/retEnvEvento/retEvento/infEvento/nProt")
+		Retorno_protocolo_chNFe = XMLRead("xml_protocolo","/retEnvEvento/retEvento/infEvento/chNFe")
+	END
+	
+	XMLClose("xml_protocolo")
+	IF Retorno_protocolo_nProt<>"" THEN
+		O_RecepcaoEvento.GravarXmlDistribuicao(recebe_caminho_xml);
+		
+		Localizacao_xml_retornado=recebe_caminho_xml+Retorno_protocolo_chNFe+"_"+recebe_tipo_evento+"_"+NumToString(recebe_sequencia_evento,"02d")+"-proceventonfe.xml"
+		Retorno_xml_transmitido=fLoadText(Localizacao_xml_retornado)
+	END
+	SWITCH Retorno_protocolo_cstat
+		CASE "128"
+			Retorno_protocolo_cstat_obs="128 - LOTE PROCESSADO COM SUCESSO"
+		CASE "135"
+			Retorno_protocolo_cstat_obs="135 - Evento homologado com vinculação da respectiva NFe"
+		CASE "136"		
+			Retorno_protocolo_cstat_obs="136 - Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)"
+		CASE "155"
+			Retorno_protocolo_cstat_obs="155 - Evento de Cancelamento homologado fora do prazo permitido para cancelamento"
+		CASE "573"
+			Retorno_protocolo_cstat_obs="573 - Rejeicao: Duplicidade de Evento"
+		OTHER CASE
+			Retorno_protocolo_cstat_obs="Evento rejeitado"
+	END
+DO
+	Retorno_erro="ERRO:"+ExceptionInfo(errFullDetails)
+END
+
+RESULT(Retorno_xml_transmitido,retorno_xml,sXml_assinado,Retorno_protocolo_cstat, ... 
+       Retorno_protocolo_motivo,Retorno_protocolo_nProt, ... 
+       Localizacao_xml_retornado,Retorno_protocolo_chNFe, ...
+       Retorno_protocolo_cstat_obs,Retorno_erro)

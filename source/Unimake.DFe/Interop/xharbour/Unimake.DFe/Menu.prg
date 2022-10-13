@@ -43,11 +43,11 @@ Function Main()
    AAdd(aOpcoes, "Enviar NFe em contingencia SVC-AN e SVC-RS")
    AAdd(aOpcoes, "Enviar CTe em contingencia SVC-SP e SVC-RS")
    AAdd(aOpcoes, "Como encriptar a tag <Assinatura> NFSe Sao Paulo")
-   //EPEC
    AAdd(aOpcoes, "EPEC NFe - Gerar XML NFe em contingencia EPEC")
    AAdd(aOpcoes, "EPEC NFe - Enviar Evento de EPEC da NFe")     
    AAdd(aOpcoes, "EPEC NFe - Enviar o XML da NFe")
    Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
+   Aadd(aOpcoes, "Enviar MDFe - Modo sincrono - Desserializando o XML")
    
    Do While .T.
       Cls
@@ -166,6 +166,9 @@ Function Main()
 			  
          case nOpcao = 35
 		      EnviarCTeAssincronoDesserializando()
+			  
+         case nOpcao = 36
+		      EnviarMDFeSincronoDesserializando()
       endcase
    EndDo
 Return       
