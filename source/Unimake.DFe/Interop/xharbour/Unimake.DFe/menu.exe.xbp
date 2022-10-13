@@ -205,3 +205,8 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[EnviarMDFeSincronoDesserializando.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 

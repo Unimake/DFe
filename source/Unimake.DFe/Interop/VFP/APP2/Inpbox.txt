@@ -1,0 +1,289 @@
+*---------------------------------------------------------------------
+procedure INPBOX
+parameters Msg, Wtitle, padrao, Mask, sele1, maxim
+*----------------------------------------
+set talk off
+
+ktabinp = ALIAS()
+SET CLASSLIB TO (LOCFILE("vfpcalendar.vcx")) Additive
+*-- Msg is the only required parameter
+if parameters() < 6
+	maxim = 0
+endif
+if parameters() < 5
+	sele1 = 0
+endif
+if parameters() < 4
+	Mask = ''
+endif
+if parameters() < 3
+	padrao = ''
+endif
+if parameters() < 2
+	Wtitle = ''
+endif
+if empty(Wtitle)
+	Wtitle = 'Note:'
+endif
+
+data1 = 0
+IF TYPE("padrao") = "D"
+	padrao = DTOC(padrao)
+	data1  = 1
+	mask   = "99/99/9999"
+ENDIF
+
+*-- Custom buttons, have to create our own messagebox
+*-- Break message into lines
+local MaxLen, NumLines, MsgArray, Center
+m.MaxLen = 0                 && maximum line length
+OldMemo = set("memowidth")
+IF LEN(alltr(Msg)) > 60
+	set memowidth to 60
+	NumLines = memlines(Msg)
+	for I = 1 to NumLines
+		MaxLen = max(MaxLen, len(mline(Msg, I)))
+	endfor
+	*-- now stuff CR on end of each line
+	T2 = ''
+	for L = 1 to memlines(Msg)
+		T2 = T2 + mline(Msg, L) + chr(13)
+	endfor
+	Msg = left(T2, len(T2)-1)   && strip off last chr(13)
+	*-- and reset the memowidth
+	set memowidth to (OldMemo)
+ELSE
+	NumLines = 1
+	MaxLen   = LEN(alltr(Msg))
+	IF TYPE("maxim") = "N" AND maxim > 0
+		MaxLen = maxim
+	ENDIF 
+ENDIF
+
+*-- Create the form and set the editbox size
+oBox = createobject("frmInputBox")
+with oBox
+	*-- Size the form and the edit box
+	.edtMessage.Width  = m.MaxLen * 8
+	.edtMessage.Height = m.NumLines * 20
+	.Width    = 440
+	.Height   = .edtMessage.Height + 110
+	.Caption  = Wtitle
+	.cMessage = Msg               && the message text
+endwith
+
+*-- Parse buttons and calculate longest
+NumBtns = 2
+Buttons = "OK;Cancela"
+
+*-- Separa os Captions dos botões
+dimension aButtons[m.NumBtns]
+Remain = Buttons
+MaxWidth = 0
+for I = 1 to m.NumBtns
+	Break = at(';', m.Remain)
+	if m.Break > 0
+		aButtons[I] = left(m.Remain, m.Break - 1)
+		m.Remain = substr(m.Remain, m.Break + 1)
+	else
+		aButtons[I] = m.Remain
+	endif
+	*-- get length of buttons without escape chars
+	Temp = strtran(aButtons[I], '\', '')
+	Temp = strtran(Temp, '<', '')
+	MaxWidth = max(MaxWidth, len(Temp))
+endfor
+BtnWidth = MaxWidth * 9  + 10     && Pixels
+BtnWidth = max(BtnWidth, 80)      && Don't make 'em too small
+Gap      = 10
+kret     = padrao
+BtnTotal = BtnWidth * NumBtns + Gap * (NumBtns-1)
+if BtnTotal > oBox.Width
+	with oBox
+		.Width = BtnTotal + 20
+		.edtMessage.Width = BtnTotal - 24
+	endwith
+ENDIF
+
+IF data1 = 1
+	oBox.txtMessage.visible = .F.
+	oBox.txtData.Top   = oBox.Height - 80
+	oBox.txtData.value = CTOD(padrao)
+ELSE
+	oBox.txtData.visible = .F.
+ENDIF
+
+*-- Now put the buttons on the form
+*-- And delete the ones not used
+with oBox
+	*-- Calculate the gap between buttons
+	Bleft = (.Width - BtnTotal) - 27
+	for I = 1 to NumBtns
+		CmdName = "Command"+str(I,1)
+		*-- Pass the button number as a parameter
+		*-- On click, the button will set Action to this number
+		with oBox.&CmdName
+			.Top = oBox.Height - 40
+			.Left = Bleft
+			.Width = BtnWidth
+			.Caption = aButtons[I]
+			.Visible = .T.
+		endwith
+		Bleft = Bleft + BtnWidth + Gap
+	ENDFOR
+	with oBox.txtMessage
+		.Top              = oBox.Height - 80
+		IF Mask = "!"
+			.format       = Mask
+		ELSE
+			.inputmask    = Mask
+		ENDIF		
+		.Value            = padrao
+		.setfocus
+		IF maxim > 0
+			.maxlength = maxim
+		ENDIF
+		IF LEN(alltr(mask)) < 2 OR sele1 = 1
+			KEYBOARD '{CTRL+A}'
+		ENDIF
+	ENDWITH
+ENDWITH
+
+*-- Display the window
+Action = 0                   && default
+oBox.AutoCenter = .T.
+oBox.Show()                  && Sets Action on exit
+
+IF LEN(alltrim(ktabinp)) > 0 AND ktabinp <> ALIAS()
+   SELECT &ktabinp
+ENDIF 
+
+RETURN kret
+
+*---------------------------------------------------------------------
+DEFINE CLASS frmInputBox AS form
+	borderStyle = 1
+	Top = 0
+	Left = 0
+	Height = 300
+	Width = 400
+	DoCreate = .T.
+	Caption = "Note:"
+	WindowType = 1            && modal
+	MaxButton  = .F.
+	MinButton  = .F.
+	Closable   = .F.
+	ControlBox = .F.
+	ShowTips   = .T.
+	cMessage   = ' '            && the message itself
+	Name = "frmInputBox"
+	
+	ADD OBJECT icomsg AS image WITH ;
+		BackStyle = 0, ;       && transparent
+		picture = "ico32.bmp", ;
+		Height = 34, ;
+		Left = 10, ;           && leave margin at left
+		Top = 12, ;
+		Width = 41, ;
+		Name = "icoMessage"
+
+	ADD OBJECT edtmessage AS editbox WITH ;
+		BackStyle = 0, ;       && transparent
+		BorderStyle = 0, ;     && none
+		ControlSource = "thisform.cMessage", ;
+		Height = 192, ;
+		Left = 65, ;           && leave margin at left
+		FontSize = 10, ;
+		enabled  = .F., ;
+		ScrollBars = 0, ;      && none
+		TabIndex = 6, ;
+		disabledbackcolor = RGB(255,255,255), ;
+		disabledforecolor = RGB(0,0,0), ;
+		Top = 12, ;
+		Width = 348, ;
+		Name = "edtMessage"
+	
+	ADD OBJECT txtmessage AS textbox WITH ;
+		Height = 23, ;
+		Left = 65, ;           && leave margin at left
+		FontSize = 10, ;
+		TabIndex = 1, ;
+		Top = 216, ;
+		Width = 348, ;
+		visible = .T., ;
+		Name = "txtMessage"
+		
+	ADD OBJECT txtData as caldatepicker with;
+		Left = 115, ;           && leave margin at left
+		TabIndex = 1, ;
+		Top = 216, ;
+		visible = .T., ;
+		Name = "txtData"	
+
+   *-- Up to 6 command buttons, we'll remove the ones not used
+   *-- (Code turns out to be easier than adding new ones.)
+	ADD OBJECT command1 AS commandbutton WITH ;
+		Top = 216, ;
+		Left = 12, ;
+		Height = 28, ;
+		Width = 60, ;
+		FontSize = 10, ;
+		Caption = "Cmd1", ;    && will be set by caller
+		TabIndex = 2, ;
+		Name = "Command1"
+
+	ADD OBJECT command2 AS commandbutton WITH ;
+		Top = 216, ;
+		Left = 84, ;
+		Height = 28, ;
+		Width = 60, ;
+		FontSize = 10, ;
+		Caption = "cmd1", ;
+		TabIndex = 3, ;
+		Name = "Command2"
+	
+	PROCEDURE KeyPress
+		LPARAMETERS nKeyCode, nShiftAltCtrl
+		IF nKeyCode = 13
+			thisform.command1.Click
+		ENDIF
+	ENDPROC
+	
+	PROCEDURE txtMessage.KeyPress
+		LPARAMETERS nKeyCode, nShiftAltCtrl
+		IF nKeyCode = 127
+		   IF (this.SelStart = 0 AND this.SelLength = 0)
+		      NODEFAULT 
+		   ENDIF
+		ENDIF
+		IF nKeyCode = 19
+		   IF (this.SelStart = 0)
+		      NODEFAULT 
+		   ENDIF
+		ENDIF
+	ENDPROC
+
+   *-- Buttons set the Action memvar, then exit
+	PROCEDURE command1.Click
+		kret   = thisform.txtMessage.value
+		IF m.data1 = 0
+			Action = 1
+			thisform.Release()
+		ELSE
+			kret = thisform.txtData.value
+			Action = 1
+			thisform.Release()
+		ENDIF
+	ENDPROC
+
+	PROCEDURE command2.Click
+		IF m.data1 = 0
+			kret = ""
+		ELSE
+			kret = CTOD(m.padrao)
+		ENDIF
+		m.Action = 2
+		thisform.Release()
+	ENDPROC
+ENDDEFINE
+*---------------------------------------------------------------------

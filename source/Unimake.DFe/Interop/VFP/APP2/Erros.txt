@@ -1,0 +1,621 @@
+
+Data/Hora.: 25/05/2022 01:21:56 AM
+Número de error: 107
+Menssage do error: Operator/operand type mismatch.
+Línha do código com error: IF TIPO_VD#2
+Número da línha do erro : 239
+Data/Hora.: 25/05/2022 01:23:27 AM
+Número de error: 107
+Menssage do error: Operator/operand type mismatch.
+Línha do código com error: IF TIPO_VD#2
+Número da línha do erro : 239
+Data/Hora.: 25/05/2022 01:31:37 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO top
+Número da línha do erro : 128
+Data/Hora.: 25/05/2022 01:38:29 AM
+Número de error: 9
+Menssage do error: Data type mismatch.
+Línha do código com error: SET KEY TO chave,chave
+Número da línha do erro : 5
+Data/Hora.: 25/05/2022 01:38:33 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO TOP
+Número da línha do erro : 6
+Data/Hora.: 25/05/2022 01:41:55 AM
+Número de error: 3
+Menssage do error: File is in use.
+Línha do código com error: USE drive+"cad_01"  INDEX drive+"cad_cod",drive+"cad_nome" &&,drive+"cad_cpf",drive+"cad_cgc",drive+"cad_vend"
+Número da línha do erro : 132
+Data/Hora.: 25/05/2022 01:48:51 AM
+Número de error: 3
+Menssage do error: File is in use.
+Línha do código com error: USE drive+"cad_01"  INDEX drive+"cad_cod",drive+"cad_nome" &&,drive+"cad_cpf",drive+"cad_cgc",drive+"cad_vend"
+Número da línha do erro : 132
+Data/Hora.: 25/05/2022 01:48:54 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO TOP
+Número da línha do erro : 133
+Data/Hora.: 25/05/2022 02:26:22 AM
+Número de error: 12
+Menssage do error: Variable 'MMESCOLHA' is not found.
+Línha do código com error: CASE mmescolha=3
+Número da línha do erro : 185
+Data/Hora.: 25/05/2022 02:26:25 AM
+Número de error: 12
+Menssage do error: Variable 'MMESCOLHA' is not found.
+Línha do código com error: CASE mmescolha=4
+Número da línha do erro : 187
+Data/Hora.: 25/05/2022 02:48:36 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO TOP
+Número da línha do erro : 38
+Data/Hora.: 25/05/2022 02:49:12 AM
+Número de error: 12
+Menssage do error: Variable 'XOME' is not found.
+Línha do código com error: THISFORM.TEXT5.Value = XOME
+Número da línha do erro : 40
+Data/Hora.: 25/05/2022 02:49:13 AM
+Número de error: 12
+Menssage do error: Variable 'XCNPJ' is not found.
+Línha do código com error: THISFORM.TEXT2.Value = XCNPJ
+Número da línha do erro : 41
+Data/Hora.: 25/05/2022 02:49:13 AM
+Número de error: 1734
+Menssage do error: Property VALEU is not found.
+Línha do código com error: THISFORM.TEXT6.VALEU  = "Em Digitacao"
+Número da línha do erro : 42
+Data/Hora.: 25/05/2022 02:49:52 AM
+Número de error: 12
+Menssage do error: Variable 'XCNPJ' is not found.
+Línha do código com error: THISFORM.TEXT2.Value = XCNPJ
+Número da línha do erro : 41
+Data/Hora.: 25/05/2022 02:49:54 AM
+Número de error: 1734
+Menssage do error: Property VALEU is not found.
+Línha do código com error: THISFORM.TEXT6.VALEU  = "Em Digitacao"
+Número da línha do erro : 42
+Data/Hora.: 25/05/2022 02:50:36 AM
+Número de error: 12
+Menssage do error: Variable 'XCNPJ' is not found.
+Línha do código com error: THISFORM.TEXT2.Value = XCNPJ
+Número da línha do erro : 41
+Data/Hora.: 25/05/2022 03:53:51 AM
+Número de error: 12
+Menssage do error: Variable 'NUMERO' is not found.
+Línha do código com error: thisform.text1.value = numero
+Número da línha do erro : 44
+Data/Hora.: 25/05/2022 03:57:29 AM
+Número de error: 1925
+Menssage do error: Unknown member COMMAND32.
+Línha do código com error: THISFORM.COMMAND32.Enabled = .F.
+Número da línha do erro : 36
+Data/Hora.: 25/05/2022 05:32:35 AM
+Número de error: 107
+Menssage do error: Operator/operand type mismatch.
+Línha do código com error: IF VD#2
+Número da línha do erro : 18
+Data/Hora.: 25/05/2022 05:32:39 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SEEK vcod
+Número da línha do erro : 21
+Data/Hora.: 25/05/2022 05:32:39 AM
+Número de error: 12
+Menssage do error: Variable 'CLAS_FISC' is not found.
+Línha do código com error: vncm=clas_fisc
+Número da línha do erro : 23
+Data/Hora.: 25/05/2022 05:32:40 AM
+Número de error: 12
+Menssage do error: Variable 'CEST' is not found.
+Línha do código com error: vcest=cest
+Número da línha do erro : 24
+Data/Hora.: 25/05/2022 05:32:40 AM
+Número de error: 12
+Menssage do error: Variable 'UNID' is not found.
+Línha do código com error: vunid=unid
+Número da línha do erro : 25
+Data/Hora.: 25/05/2022 05:32:40 AM
+Número de error: 12
+Menssage do error: Variable 'CFOP' is not found.
+Línha do código com error: VCFOP=CFOP
+Número da línha do erro : 26
+Data/Hora.: 25/05/2022 05:32:41 AM
+Número de error: 12
+Menssage do error: Variable 'CST' is not found.
+Línha do código com error: VCST=CST
+Número da línha do erro : 27
+Data/Hora.: 25/05/2022 05:32:41 AM
+Número de error: 12
+Menssage do error: Variable 'TIPO_PIS' is not found.
+Línha do código com error: VPIS=TIPO_PIS
+Número da línha do erro : 28
+Data/Hora.: 25/05/2022 05:32:41 AM
+Número de error: 12
+Menssage do error: Variable 'TIPO_CONFI' is not found.
+Línha do código com error: VCOF=TIPO_CONFI
+Número da línha do erro : 29
+Data/Hora.: 25/05/2022 05:32:41 AM
+Número de error: 12
+Menssage do error: Variable 'VUNID' is not found.
+Línha do código com error: IF VUNID=" "
+Número da línha do erro : 36
+Data/Hora.: 25/05/2022 05:32:41 AM
+Número de error: 12
+Menssage do error: Variable 'VCFOP' is not found.
+Línha do código com error: SEEK VCFOP
+Número da línha do erro : 40
+Data/Hora.: 25/05/2022 05:32:42 AM
+Número de error: 12
+Menssage do error: Variable 'NATOPE' is not found.
+Línha do código com error: replace natope WITH DESCRICAO
+Número da línha do erro : 42
+Data/Hora.: 07/06/2022 02:16:29 AM
+Número de error: 12
+Menssage do error: Variable 'EMAIL' is not found.
+Línha do código com error: replace  EMAIL   WITH cad_01.email
+Número da línha do erro : 238
+Data/Hora.: 25/06/2022 08:38:01 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\cadagua.dbf' does not exist.
+Línha do código com error: USE drive+"CADAGUA" &&INDEX drive+"CADAGUA",drive+"CADAGUA1"
+Número da línha do erro : 25
+Data/Hora.: 25/06/2022 08:42:58 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\venda01.dbf' does not exist.
+Línha do código com error: USE DRIVE+"VENDA01"
+Número da línha do erro : 34
+Data/Hora.: 25/06/2022 08:46:14 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\acumv01.dbf' does not exist.
+Línha do código com error: use drive+"acumv01"
+Número da línha do erro : 75
+Data/Hora.: 25/06/22 09:08:05 AM
+Número de error: 12
+Menssage do error: Variable 'DRIVENFE' is not found.
+Línha do código com error: USE driveNFE+"tabmunic" INDEX driveNFE+"tabmunic"
+Número da línha do erro : 2
+Data/Hora.: 25/06/22 09:46:37 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\frm_cli_nfe.scx' does not exist.
+Línha do código com error: DO FORM FRM_CLI_NFE
+Número da línha do erro : 3
+Data/Hora.: 25/06/22 09:50:23 AM
+Número de error: 1683
+Menssage do error: Index tag is not found.
+Línha do código com error: SET ORDER TO 3
+Número da línha do erro : 7
+Data/Hora.: 25/06/22 09:51:29 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\cademp01.dbf' does not exist.
+Línha do código com error: use drive+"cademp01"
+Número da línha do erro : 6
+Data/Hora.: 25/06/22 09:53:24 AM
+Número de error: 1925
+Menssage do error: Unknown member NOME1.
+Línha do código com error: thisform.NOME1.setfocus
+Número da línha do erro : 19
+Data/Hora.: 25/06/2022 09:54:40 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\cadrepre.dbf' does not exist.
+Línha do código com error: USE DRIVE+"CADrepre"
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 09:56:04 AM
+Número de error: 1960
+Menssage do error: Illegal redefinition of variable VNIVEL.
+Línha do código com error: PUBLIC VNIVEL
+Número da línha do erro : 2
+Data/Hora.: 25/06/2022 09:56:20 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\tabcst.dbf' does not exist.
+Línha do código com error: use drive+"tabcst"
+Número da línha do erro : 3
+Data/Hora.: 25/06/2022 09:56:22 AM
+Número de error: 107
+Menssage do error: Operator/operand type mismatch.
+Línha do código com error: IF VREGIME="1"
+Número da línha do erro : 4
+Data/Hora.: 25/06/2022 09:56:26 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET FILTER TO branco="1"
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 09:56:29 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: LOCATE FOR codigo=ZZ
+Número da línha do erro : 9
+Data/Hora.: 25/06/2022 09:56:30 AM
+Número de error: 12
+Menssage do error: Variable 'DESCRICAO' is not found.
+Línha do código com error: ZZ1=DESCRICAO
+Número da línha do erro : 10
+Data/Hora.: 25/06/2022 09:56:31 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: REPLACE situacao with zz
+Número da línha do erro : 37
+Data/Hora.: 25/06/2022 09:56:32 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace desc_situa WITH zz1
+Número da línha do erro : 38
+Data/Hora.: 25/06/2022 09:56:33 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: thisform.refresh
+Número da línha do erro : 39
+Data/Hora.: 25/06/2022 09:56:33 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: DO FORM frm_menusis
+Número da línha do erro : 1
+Data/Hora.: 25/06/2022 09:56:33 AM
+Número de error: 12
+Menssage do error: Variable 'SITUACAO' is not found.
+Línha do código com error: ZZ=situacao
+Número da línha do erro : 1
+Data/Hora.: 25/06/2022 09:56:33 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\tabcst.dbf' does not exist.
+Línha do código com error: use drive+"tabcst"
+Número da línha do erro : 3
+Data/Hora.: 25/06/2022 09:56:34 AM
+Número de error: 107
+Menssage do error: Operator/operand type mismatch.
+Línha do código com error: IF VREGIME="1"
+Número da línha do erro : 4
+Data/Hora.: 25/06/2022 09:56:35 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET FILTER TO branco="1"
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 09:56:38 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: LOCATE FOR codigo=ZZ
+Número da línha do erro : 9
+Data/Hora.: 25/06/2022 09:56:39 AM
+Número de error: 12
+Menssage do error: Variable 'DESCRICAO' is not found.
+Línha do código com error: ZZ1=DESCRICAO
+Número da línha do erro : 10
+Data/Hora.: 25/06/2022 09:56:43 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: REPLACE situacao with zz
+Número da línha do erro : 37
+Data/Hora.: 25/06/2022 09:56:46 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace desc_situa WITH zz1
+Número da línha do erro : 38
+Data/Hora.: 25/06/2022 09:56:48 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: thisform.refresh
+Número da línha do erro : 39
+Data/Hora.: 25/06/2022 09:56:52 AM
+Número de error: 12
+Menssage do error: Variable 'SITUACAO' is not found.
+Línha do código com error: ZZ=situacao
+Número da línha do erro : 1
+Data/Hora.: 25/06/2022 09:56:53 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\tabcst.dbf' does not exist.
+Línha do código com error: use drive+"tabcst"
+Número da línha do erro : 3
+Data/Hora.: 25/06/2022 09:56:54 AM
+Número de error: 107
+Menssage do error: Operator/operand type mismatch.
+Línha do código com error: IF VREGIME="1"
+Número da línha do erro : 4
+Data/Hora.: 25/06/2022 09:56:56 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET FILTER TO branco="1"
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 09:56:58 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: LOCATE FOR codigo=ZZ
+Número da línha do erro : 9
+Data/Hora.: 25/06/2022 09:56:58 AM
+Número de error: 12
+Menssage do error: Variable 'DESCRICAO' is not found.
+Línha do código com error: ZZ1=DESCRICAO
+Número da línha do erro : 10
+Data/Hora.: 25/06/2022 09:56:59 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: REPLACE situacao with zz
+Número da línha do erro : 37
+Data/Hora.: 25/06/2022 09:57:00 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace desc_situa WITH zz1
+Número da línha do erro : 38
+Data/Hora.: 25/06/2022 09:57:00 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: thisform.refresh
+Número da línha do erro : 39
+Data/Hora.: 25/06/2022 09:59:12 AM
+Número de error: 1960
+Menssage do error: Illegal redefinition of variable VNIVEL.
+Línha do código com error: PUBLIC VNIVEL
+Número da línha do erro : 2
+Data/Hora.: 25/06/2022 09:59:17 AM
+Número de error: 1
+Menssage do error: File 'c:\nfevfp\retagua\tabcst.dbf' does not exist.
+Línha do código com error: use drive+"tabcst"
+Número da línha do erro : 3
+Data/Hora.: 25/06/2022 09:59:20 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: LOCATE FOR codigo=ZZ
+Número da línha do erro : 4
+Data/Hora.: 25/06/2022 09:59:21 AM
+Número de error: 12
+Menssage do error: Variable 'DESCRICAO' is not found.
+Línha do código com error: ZZ1=DESCRICAO
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 09:59:22 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: REPLACE situacao with zz
+Número da línha do erro : 32
+Data/Hora.: 25/06/2022 09:59:25 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace desc_situa WITH zz1
+Número da línha do erro : 33
+Data/Hora.: 25/06/2022 09:59:25 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: thisform.refresh
+Número da línha do erro : 34
+Data/Hora.: 25/06/2022 09:59:25 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: DO FORM frm_menusis
+Número da línha do erro : 1
+Data/Hora.: 25/06/2022 09:59:25 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: DO FORM FRM_MENUNFEw
+Número da línha do erro : 52
+Data/Hora.: 25/06/2022 10:00:50 AM
+Número de error: 1
+Menssage do error: File does not exist.
+Línha do código com error: USE TABNCM INDEX TABNCM,tabncMd
+Número da línha do erro : 4
+Data/Hora.: 25/06/2022 10:00:52 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO top
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 10:00:54 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET KEY TO
+Número da línha do erro : 6
+Data/Hora.: 25/06/2022 10:00:55 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET KEY TO vncm,vncmd
+Número da línha do erro : 7
+Data/Hora.: 25/06/2022 10:00:56 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO TOP
+Número da línha do erro : 8
+Data/Hora.: 25/06/2022 10:00:59 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace ESTOQ01.cest WITH TABNCM.CEST
+Número da línha do erro : 10
+Data/Hora.: 25/06/2022 10:01:06 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace ESTOQ01.CLAS_FISC WITH TABNCM.NCM
+Número da línha do erro : 11
+Data/Hora.: 25/06/2022 10:01:07 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: thisform.Refresh
+Número da línha do erro : 22
+Data/Hora.: 25/06/2022 10:01:08 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: DO FORM frm_menusis
+Número da línha do erro : 1
+Data/Hora.: 25/06/2022 10:02:52 AM
+Número de error: 1
+Menssage do error: File does not exist.
+Línha do código com error: USE TABNCM INDEX TABNCM,tabncMd
+Número da línha do erro : 4
+Data/Hora.: 25/06/2022 10:02:56 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO top
+Número da línha do erro : 5
+Data/Hora.: 25/06/2022 10:02:57 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET KEY TO
+Número da línha do erro : 6
+Data/Hora.: 25/06/2022 10:02:58 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: SET KEY TO vncm,vncmd
+Número da línha do erro : 7
+Data/Hora.: 25/06/2022 10:03:00 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: GOTO TOP
+Número da línha do erro : 8
+Data/Hora.: 25/06/2022 10:03:01 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace ESTOQ01.cest WITH TABNCM.CEST
+Número da línha do erro : 10
+Data/Hora.: 25/06/2022 10:03:02 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: replace ESTOQ01.CLAS_FISC WITH TABNCM.NCM
+Número da línha do erro : 11
+Data/Hora.: 25/06/2022 10:03:04 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: thisform.Refresh
+Número da línha do erro : 22
+Data/Hora.: 25/06/2022 10:03:04 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: DO FORM frm_menusis
+Número da línha do erro : 1
+Data/Hora.: 25/06/2022 10:05:14 AM
+Número de error: 9
+Menssage do error: Data type mismatch.
+Línha do código com error: SEEK vcod
+Número da línha do erro : 13
+Data/Hora.: 30/06/2022 02:47:06 PM
+Número de error: 12
+Menssage do error: Variable 'F_J' is not found.
+Línha do código com error: IF F_J=1
+Número da línha do erro : 216
+Data/Hora.: 30/06/2022 02:57:18 PM
+Número de error: 12
+Menssage do error: Variable 'P_J' is not found.
+Línha do código com error: IF p_j = 1
+Número da línha do erro : 4
+Data/Hora.: 30/06/2022 03:07:36 PM
+Número de error: 12
+Menssage do error: Variable 'ZZ' is not found.
+Línha do código com error: LOCATE FOR codigo=ZZ
+Número da línha do erro : 327
+Data/Hora.: 14/07/2022 11:25:44 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: REPLACE cprod WITH estoq01.codigo
+Número da línha do erro : 34
+Data/Hora.: 14/07/2022 11:25:46 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: replace xprod WITH estoq01.produto
+Número da línha do erro : 35
+Data/Hora.: 14/07/2022 11:25:47 AM
+Número de error: 13
+Menssage do error: Alias 'ESTOQ01' is not found.
+Línha do código com error: replace ncm WITH ESTOQ01.CLAS_FISCC
+Número da línha do erro : 36
+Data/Hora.: 14/07/2022 11:28:54 AM
+Número de error: 12
+Menssage do error: Variable 'CLAS_FISCC' is not found.
+Línha do código com error: replace ncm WITH ESTOQ01.CLAS_FISCC
+Número da línha do erro : 36
+Data/Hora.: 14/07/2022 11:30:31 AM
+Número de error: 1426
+Menssage do error: OLE error code 0x80004002: Não há suporte para esta interface.
+Línha do código com error: result.cUF="33"
+Número da línha do erro : 190
+Data/Hora.: 14/07/2022 11:30:32 AM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.AAMM="2203"
+Número da línha do erro : 191
+Data/Hora.: 14/07/2022 11:30:33 AM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.CNPJ="08744753000385"
+Número da línha do erro : 192
+Data/Hora.: 14/07/2022 11:30:35 AM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.IE="79219711"
+Número da línha do erro : 193
+Data/Hora.: 14/07/2022 11:30:36 AM
+Número de error: 1426
+Menssage do error: OLE error code 0x80004002: Não há suporte para esta interface.
+Línha do código com error: result.mod="01"
+Número da línha do erro : 194
+Data/Hora.: 14/07/2022 11:33:48 AM
+Número de error: 3
+Menssage do error: File is in use.
+Línha do código com error: USE drive+"estoq01"
+Número da línha do erro : 2
+Data/Hora.: 14/07/2022 11:33:52 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: BROWSE
+Número da línha do erro : 3
+Data/Hora.: 14/07/2022 11:59:33 AM
+Número de error: 3
+Menssage do error: File is in use.
+Línha do código com error: USE drive+"estoq01"
+Número da línha do erro : 2
+Data/Hora.: 14/07/2022 11:59:35 AM
+Número de error: 52
+Menssage do error: No table is open in the current work area.
+Línha do código com error: BROWSE
+Número da línha do erro : 3
+Data/Hora.: 14/07/2022 12:00:21 PM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.refNFe="43151099999999999999551100000009001000541399"
+Número da línha do erro : 190
+Data/Hora.: 14/07/2022 02:54:29 PM
+Número de error: 1733
+Menssage do error: Class definition UNIMAKE.BUSINESS.DFE.XML.NFE.NFRET is not found.
+Línha do código com error: nfret = CreateObject("Unimake.Business.DFe.Xml.NFe.nfret") &&esse
+Número da línha do erro : 190
+Data/Hora.: 14/07/2022 04:23:21 PM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.AddNFref(oNFref)
+Número da línha do erro : 194
+Data/Hora.: 14/07/2022 04:25:29 PM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.AddNFref(oNFref)
+Número da línha do erro : 194
+Data/Hora.: 14/07/2022 04:26:43 PM
+Número de error: 3
+Menssage do error: File is in use.
+Línha do código com error: USE drive+"estoq01"
+Número da línha do erro : 2
+Data/Hora.: 14/07/2022 04:32:51 PM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.AddNFref(oNFref)
+Número da línha do erro : 193
+Data/Hora.: 14/07/2022 04:34:35 PM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.AddNFref(oNFref)
+Número da línha do erro : 193
+Data/Hora.: 14/07/2022 04:37:33 PM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: result.AddNFref(oNFref)
+Número da línha do erro : 193
+Data/Hora.: 15/07/2022 11:37:54 AM
+Número de error: 1426
+Menssage do error: OLE error code 0x80020006: Nome desconhecido.
+Línha do código com error: oNFref.AddNFref(oNFref)
+Número da línha do erro : 194
+Data/Hora.: 18/07/2022 06:53:10 PM
+Número de error: 3
+Menssage do error: File is in use.
+Línha do código com error: USE drive+"estoq01"
+Número da línha do erro : 2
+Data/Hora.: 18/07/2022 06:54:37 PM
+Número de error: 1
+Menssage do error: File 'igetref.prg' does not exist.
+Línha do código com error: infnfe.ref = IGetREF()
+Número da línha do erro : 134

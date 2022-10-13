@@ -1,0 +1,216 @@
+//PROCEDURE uninfedll_envio_nfce(somente_validar is boolean=False,recebe_xml is string="", ... 
+						recebe_caminho_xml is string="",recebe_tipo_emissao is int=0, ...
+						sRecebe_CSC is string="",nRecebe_CSCIDToken is int=0, ... 
+						nRecebe_numero_lote is int=0,... 
+						sRecebe_certificado_arquivo is string="",sRecebe_certificado_senha is string="",...
+						sRecebe_Thumbprint is string="",sRecebe_sErialnumber is string="", ... 
+						srecebe_caminho_retorno is string="", ... 
+						sRecebe_chave_chNFe is string="",sRecebe_numero_nota is string="",tipo_ambiente is int=0)
+
+IF recebe_xml<>"" THEN
+	fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-nfe_enviado.xml",recebe_xml)							
+END
+
+dtData_ is DateTime=""
+retorno_xml_assinado is string=""
+retorno_xml_protocolo is string=""
+Retorno_xml_transmitido is string=""
+Localizacao_xml_retornado is string=""
+sRetorno_tpAmb is string=""
+sRetorno_cstat is string=""
+sRetorno_xmotivo is string=""
+Retorno_protocolo_tpAmb is string=""
+Retorno_protocolo_chNFe is string=""
+Retorno_protocolo_nProt is string=""
+Retorno_protocolo_cstat is string=""
+Retorno_protocolo_motivo is string=""
+Retorno_protocolo_cstat_obs is string=""
+
+Retorno_erro is string=""
+sRetorno_erro_validacao is string=""
+
+
+O_CONFIGURACAO is Configuracao
+IF sRecebe_certificado_arquivo="" THEN
+	IF sRecebe_Thumbprint="" AND sRecebe_sErialnumber="" THEN
+		vEr_certificado is Variant=SELECIONA_CERTIFICADO()
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+	ELSE
+		o_CertificadoDigital is CertificadoDigital
+		vEr_certificado is Variant=o_CertificadoDigital.BuscarCertificadoDigital(sRecebe_sErialnumber)
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
+		IF busca_token<>"ok" THEN
+			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
+			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
+		END
+	END
+ELSE	
+	O_CONFIGURACAO.CertificadoArquivo=sRecebe_certificado_arquivo//"D:\erpmatos\certificados\FABIANE.pfx"
+	O_CONFIGURACAO.CertificadoSenha=sRecebe_certificado_senha//
+END
+
+O_CONFIGURACAO.TipoDFe=1 // 0=nfe 1-nfce
+O_CONFIGURACAO.Servico=6 // 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
+O_CONFIGURACAO.TipoEmissao=recebe_tipo_emissao // 1//1=normal
+O_CONFIGURACAO.CSC=sRecebe_CSC//"94071DB6-E321-4BCE-9C6D-9AEF2808C2CA"
+O_CONFIGURACAO.CSCIDToken=nRecebe_CSCIDToken//2
+
+//O_CONFIGURACAO.CertificadoArquivo="pfx"
+//O_CONFIGURACAO.Certificadosenha=""
+
+//
+O_Xml is Unimake.Business.DFe.Xml.NFe.EnviNFe()
+O_Xml.Versao="4.00"
+O_Xml.IdLote=NumToString(nRecebe_numero_lote,"015d") //"000000000000001" //mesmo numero da nota--numero qualquer
+O_Xml.IndSinc = 1 // 1=Sincronomo 0=Nao sincronomo Sao paulo
+
+//vamos desirializar esse xml dentro do objeto
+WHEN EXCEPTION IN 
+	o_nfe is Unimake.Business.DFe.Xml.NFe.NFe()
+	O_Xml.AddNFe(o_nfe.loadFromXml(recebe_xml)) // O_Xml.AddNFe(o_nfe.loadFromFile("c:\temp\xmla.xml"))//quando pegar pelo arquivo
+	
+	O_Autorizacao is Unimake.Business.DFe.Servicos.NFCe.Autorizacao(O_Xml, O_CONFIGURACAO)
+	retorno_xml_assinado=O_Autorizacao.GetConteudoNFeAssinada(0)
+	
+	IF retorno_xml_assinado<>"" THEN
+		fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-"+sRecebe_numero_nota+"-nfe_env_ret_assinado.xml",retorno_xml_assinado)
+	END
+	
+	bValidado_correto is boolean=True    
+	sRetorno_erro_validacao=""
+	IF Contains(retorno_xml_assinado,"validação") THEN
+		bValidado_correto=False
+		sRetorno_erro_validacao+=retorno_xml_assinado
+	END	  
+	IF bValidado_correto=True THEN
+		O_validarSchema is Unimake.Business.DFe.ValidarSchema() 
+		sSChema         is string = "NFe.nfe_v4.00.xsd" 
+		O_validarSchema.ValidarString(retorno_xml_assinado,sSChema,"http://www.portalfiscal.inf.br/nfe")
+		IF O_validarSchema.Success THEN  
+		ELSE
+			sRetorno_erro_validacao=""
+			sRetorno_erro_validacao+=O_validarSchema.get_ErrorMessage()+CR
+			bValidado_correto=False    
+		END
+	END
+	IF bValidado_correto=True THEN
+		IF somente_validar=True THEN
+			Retorno_protocolo_cstat_obs="Xml apenas Validado - Com Sucesso"
+		ELSE
+			O_Autorizacao.Executar()
+			retorno_xml_protocolo=O_Autorizacao.RetornoWSString // xml retornado pelo Sefaz
+			
+			IF retorno_xml_protocolo<>"" THEN
+				fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-proc-rec.xml",retorno_xml_protocolo)
+			END
+			
+			XMLDocument("xml_protocolo",retorno_xml_protocolo)
+			Retorno_protocolo_tpAmb = XMLRead("xml_protocolo","/retEnviNFe/protNFe/infProt/tpAmb")
+			Retorno_protocolo_chNFe = XMLRead("xml_protocolo","/retEnviNFe/protNFe/infProt/chNFe")
+			Retorno_protocolo_nProt= XMLRead("xml_protocolo","/retEnviNFe/protNFe/infProt/nProt")
+			Retorno_protocolo_cstat	= XMLRead("xml_protocolo","/retEnviNFe/protNFe/infProt/cStat")
+			Retorno_protocolo_motivo= XMLRead("xml_protocolo","/retEnviNFe/protNFe/infProt/xMotivo")
+			XMLClose("xml_protocolo")
+			IF Retorno_protocolo_nProt<>"" THEN
+				//Retorno_protocolo_cstat=O_Autorizacao.Result.ProtNFe.InfProt.CStat
+				//Retorno_protocolo_motivo=O_Autorizacao.Result.ProtNFe.InfProt.XMotivo
+				O_Autorizacao.GravarXmlDistribuicao(recebe_caminho_xml)
+				Localizacao_xml_retornado=O_Autorizacao.NfeProcResult.get_NomeArquivoDistribuicao()
+				Retorno_xml_transmitido=O_Autorizacao.NfeProcResult.GerarXMLString()
+				IF Retorno_xml_transmitido="" THEN
+					Localizacao_xml_retornado=recebe_caminho_xml+Retorno_protocolo_chNFe+"-procnfe.xml"
+					Retorno_xml_transmitido=fLoadText(Localizacao_xml_retornado)
+				END
+				Localizacao_xml_retornado=srecebe_caminho_retorno+Retorno_protocolo_chNFe+"-procnfe.xml"
+				IF fFileExist(Localizacao_xml_retornado)=True THEN
+					dtData_retonado is DateTime=DateSys()
+					Localizacao_xml_retornado_novo is string=srecebe_caminho_retorno+Retorno_protocolo_chNFe+"-"+dtData_retonado+"-procnfe.xml"
+					fRename(Localizacao_xml_retornado,Localizacao_xml_retornado_novo)
+				END
+				O_Autorizacao.GravarXmlDistribuicao(srecebe_caminho_retorno)
+				
+				retornos_cstat()
+			ELSE
+				O_Autorizacao.GravarXmlDistribuicao(srecebe_caminho_retorno)
+				IF Retorno_protocolo_motivo="" THEN
+					Localizacao_xml_retornado=recebe_caminho_xml+Retorno_protocolo_chNFe+"-procnfe.xml"
+					sRetorno_erro_transmitido is string=fLoadText(Localizacao_xml_retornado)
+					traz_protocolo is string= XMLExtractString(sRetorno_erro_transmitido,"infProt")
+					Retorno_protocolo_cstat= XMLExtractString(traz_protocolo,"cStat")
+					Retorno_protocolo_motivo= XMLExtractString(traz_protocolo,"xMotivo")
+				ELSE
+					sRetorno_erro_validacao+=retorno_xml_protocolo
+				END
+				
+			END
+		END
+		
+	END
+DO
+	Retorno_erro="Deu erro Vou conferir a conexao internet:"+CR
+	b_resultado_conexao is boolean=False
+	b_resultado_conexao  = InternetConnected()
+	IF b_resultado_conexao=True THEN
+		Retorno_erro+="Conexao Internet deu ok "+CR
+	ELSE
+		Retorno_erro+="Falha na Conexão na internet"+CR
+	END
+	Retorno_erro+=ExceptionInfo(errFullDetails)
+END
+
+	INTERNAL PROCEDURE retornos_cstat()
+	
+	SWITCH Retorno_protocolo_cstat
+		CASE "100"
+			Retorno_protocolo_cstat_obs="100 - Autorizado o uso da NF-e"
+		CASE "110"
+			Retorno_protocolo_cstat_obs="110 - Uso Denegado"
+		CASE "150"		
+			Retorno_protocolo_cstat_obs="150 - Autorizado o uso da NF-e, autorização fora de prazo"
+		CASE "205"
+			Retorno_protocolo_cstat_obs="205 - NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]"
+		CASE "301"
+			Retorno_protocolo_cstat_obs="301 - Uso Denegado: Irregularidade fiscal do emitente"
+		CASE "302"
+			Retorno_protocolo_cstat_obs="302 - Uso Denegado: Irregularidade fiscal do destinatário"
+		CASE "303"
+			Retorno_protocolo_cstat_obs="303 - Uso Denegado: Destinatário não habilitado a operar na UF"
+		OTHER CASE
+			Retorno_protocolo_cstat_obs="Nfe rejeitado["+Retorno_protocolo_cstat+"]"
+	END
+	END
+
+sAuditoria_string is string=""
+sAuditoria_string="tpAmb Enviado="+tipo_ambiente+CR
+sAuditoria_string="tpAmb Retorno="+Retorno_protocolo_tpAmb+CR
+sAuditoria_string+="Recebe chave nfe="+sRecebe_chave_chNFe+CR
+sAuditoria_string+="chNFe="+Retorno_protocolo_chNFe+CR
+sAuditoria_string+="nProt="+Retorno_protocolo_nProt+CR
+sAuditoria_string+="cstat="+Retorno_protocolo_cstat+CR
+sAuditoria_string+="xMotivo="+Retorno_protocolo_motivo+CR
+sAuditoria_string+="Numero Lote="+nRecebe_numero_lote+CR
+sAuditoria_string+="Tipo Emissao="+recebe_tipo_emissao+CR
+sAuditoria_string+="Localizacao xml Retornado="+Localizacao_xml_retornado+CR
+sAuditoria_string+="Localizacao xml autorizado="+recebe_caminho_xml+CR
+sAuditoria_string+="Localizacao xml retorno="+srecebe_caminho_retorno+CR
+sAuditoria_string+="Numero Nota="+sRecebe_numero_nota+CR
+fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-"+sRecebe_numero_nota+"-auditoria.txt",sAuditoria_string)
+IF sRetorno_erro_validacao<>"" THEN
+	fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-"+sRecebe_numero_nota+"-erro_validacao.xml",sRetorno_erro_validacao)
+END
+IF Retorno_protocolo_cstat_obs<>"" THEN
+	fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-"+sRecebe_numero_nota+"-retorno_obs_cstat.txt",Retorno_protocolo_cstat_obs)
+END
+IF Retorno_erro<>"" THEN
+	fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-"+sRecebe_numero_nota+"-retorno_erro.txt",Retorno_erro)	
+END
+IF nRecebe_numero_lote<>0 THEN
+	fSaveText(srecebe_caminho_retorno+sRecebe_chave_chNFe+"-"+nRecebe_numero_lote+"-numero_lote.txt",nRecebe_numero_lote)	
+END
+
+RESULT(retorno_xml_assinado,retorno_xml_protocolo,Retorno_xml_transmitido, ... 
+	  Retorno_protocolo_tpAmb,Retorno_protocolo_chNFe,Retorno_protocolo_nProt, ... 
+	  Retorno_protocolo_cstat,Retorno_protocolo_motivo,Localizacao_xml_retornado, ...
+	  Retorno_protocolo_cstat_obs,Retorno_erro,sRetorno_erro_validacao)

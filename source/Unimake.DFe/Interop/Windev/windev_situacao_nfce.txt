@@ -1,0 +1,63 @@
+//PROCEDURE uninfedll_situacao_nota_nfce(sRecebe_certificado_arquivo is string="",sRecebe_certificado_senha is string="", ...
+sRecebe_Thumbprint is string="",sRecebe_sErialnumber is string="",nRECEBE_TIPO_AMBIENTE is int=0, ... 
+sRecebe_ChNFe is string="",numero_lote is int=0,sRecebe_caminho_xml is string="", ... 
+recebe_caminho_retorno is string="",recebe_xml_base is string="")
+
+
+sretorno_xml is string=""
+sRetorno_erro is string=""
+sRetorno_xml_protocolo is string=""
+
+O_CONFIGURACAO is Configuracao
+IF sRecebe_certificado_arquivo="" THEN
+	IF sRecebe_Thumbprint="" AND sRecebe_sErialnumber="" THEN
+		vEr_certificado is Variant=SELECIONA_CERTIFICADO()
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+	ELSE
+		o_CertificadoDigital is CertificadoDigital
+		vEr_certificado is Variant=o_CertificadoDigital.BuscarCertificadoDigital(sRecebe_sErialnumber)
+		O_CONFIGURACAO.CertificadoDigital=vEr_certificado
+		busca_token is string =INIRead("certificado","token","",fExeDir()+"\certtoken.ini")
+		IF busca_token<>"ok" THEN
+			o_CertA3 is Unimake.Business.DFe.Security.ClsX509Certificate2ExtensionInterop()	
+			o_CertA3.SetPinPrivateKey(O_CONFIGURACAO,sRecebe_certificado_senha)		
+			INIWrite("certificado","token","ok",fExeDir()+"\certtoken.ini") 
+		END
+	END
+ELSE	
+	O_CONFIGURACAO.CertificadoArquivo=sRecebe_certificado_arquivo//"D:\erpmatos\certificados\FABIANE.pfx"
+	O_CONFIGURACAO.CertificadoSenha=sRecebe_certificado_senha//
+END
+
+O_CONFIGURACAO.TipoDFe=1 // 0=nfe 1-nfce
+O_CONFIGURACAO.Servico=1 // 1-situacao da nfe 3-Inutilizacao Nfe 5=envio evento 6 // autorizacao nfe
+// criar xml
+
+O_ConsSitNfe is Unimake.Business.DFe.Xml.NFe.ConsSitNfe() 
+O_ConsSitNfe.Versao = "4.00"
+O_ConsSitNfe.TpAmb=nRECEBE_TIPO_AMBIENTE
+O_ConsSitNfe.ChNFe=sRecebe_ChNFe
+
+WHEN EXCEPTION IN 
+	O_ConsultaProtocolo is Unimake.Business.DFe.Servicos.NFce.ConsultaProtocolo(O_ConsSitNfe,O_CONFIGURACAO) // 
+	O_ConsultaProtocolo.Executar(O_ConsSitNfe,O_CONFIGURACAO)
+	sretorno_xml=O_ConsultaProtocolo.RetornoWSString
+	//caso for 100 
+	O_Xml is Unimake.Business.DFe.Xml.NFe.EnviNFe()
+	O_Xml.Versao="4.00"
+	O_Xml.IdLote=NumToString(numero_lote,"015d") //"000000000000001" //mesmo numero da nota--numero qualquer
+	O_Xml.IndSinc = 1 // 1=Sincronomo 0=Nao sincronomo Sao paulo	
+	o_nfe is Unimake.Business.DFe.Xml.NFe.NFe()
+	O_Xml.AddNFe(o_nfe.loadFromXml(recebe_xml_base)) // O_Xml.AddNFe(o_nfe.loadFromFile("c:\temp\xmla.xml"))//quando pegar pelo arquivo
+	O_Autorizacao is Unimake.Business.DFe.Servicos.NFCe.Autorizacao(O_Xml, O_CONFIGURACAO)
+	O_Autorizacao.AddRetConsSitNFes(O_ConsultaProtocolo.result)
+	O_Autorizacao.GravarXmlDistribuicao(sRecebe_caminho_xml)
+	O_Autorizacao.GravarXmlDistribuicao(recebe_caminho_retorno)	
+	sRetorno_xml_protocolo=fLoadText(sRecebe_caminho_xml+sRecebe_ChNFe+"-procnfe.xml")
+	//
+	
+DO
+	sRetorno_erro="ERRO:"+ExceptionInfo(errFullDetails)
+END
+
+RESULT(sretorno_xml,sRetorno_xml_protocolo,sRetorno_erro)

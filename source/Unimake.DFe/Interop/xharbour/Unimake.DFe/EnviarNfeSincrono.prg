@@ -158,6 +158,70 @@ Function EnviarNfeSincrono()
     // adicionar a tag ICMSSN101 dentro da tag ICMS
        oICMS:ICMSSN101 = oICMSSN101
 	   
+	// criar tag ICMS00   
+       oICMS00 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS00")
+       oICMS00:CST = "00"
+       oICMS00:Orig = 0 //OrigemMercadoria.Nacional
+       oICMS00:ModBC = 3 //ModalidadeBaseCalculoICMS.ValorOperacao
+       oICMS00:VBC = 0.00
+       oICMS00:PICMS = 0.00
+       oICMS00:VICMS = 0.00
+       oICMS00:PFCP = 0.00
+       oICMS00:VFCP = 0.00
+
+    // adicionar a tag ICMS00 dentro da tag ICMS
+ 	   oICMS:ICMS00 = oICMS00
+
+	// criar tag ICMS40
+       oICMS40 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS40")
+       oICMS40:CST = "40"
+       oICMS40:MotDesICMS = 7 //MotivoDesoneracaoICMS.SUFRAMA
+       oICMS40:Orig = 0 //OrigemMercadoria.Nacional
+       oICMS40:VICMSDeson = 0.00
+
+    // adicionar a tag ICMS40 dentro da tag ICMS
+ 	   oICMS:ICMS40 = oICMS40
+
+	// criar tag ICMS20
+       oICMS20 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS20")
+       oICMS20:CST = "20"
+       oICMS20:ModBC = 3 //ModalidadeBaseCalculoICMS.ValorOperacao
+       oICMS20:MotDesICMS = 7 //MotivoDesoneracaoICMS.SUFRAMA
+       oICMS20:Orig = 0 //OrigemMercadoria.Nacional
+       oICMS20:PFCP = 0.00
+       oICMS20:PICMS = 0.00
+       oICMS20:PRedBC = 0.00
+       oICMS20:VBC = 0.00
+       oICMS20:VBCFCP = 0.00
+       oICMS20:VFCP = 0.00
+       oICMS20:VICMS = 0.00
+       oICMS20:VICMSDeson = 0.00                                                           
+
+    // adicionar a tag ICMS20 dentro da tag ICMS
+ 	   oICMS:ICMS20 = oICMS20
+	   
+	// criar tag ICMS51
+       oICMS51 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS51")
+       oICMS51:CST = "51"
+       oICMS51:ModBC = 3 //ModalidadeBaseCalculoICMS.ValorOperacao
+       oICMS51:Orig = 0 //OrigemMercadoria.Nacional
+       oICMS51:PDif = 100.00
+       oICMS51:PFCP = 0.00
+       oICMS51:PFCPDif = 0.00
+       oICMS51:PICMS = 0.00
+       oICMS51:PRedBC = 0.00
+       oICMS51:VBC = 0.00
+       oICMS51:VBCFCP = 0.00
+       oICMS51:VFCP = 0.00
+       oICMS51:VFCPDif = 0.00
+       oICMS51:VFCPEfet = 0.00
+       oICMS51:VICMS = 0.00
+       oICMS51:VICMSDif = 0.00
+       oICMS51:VICMSOp = 0.00
+
+    // adicionar a tag ICMS51 dentro da tag ICMS
+ 	   oICMS:ICMS51 = oICMS51
+	   
     // adicionar a tag ICMS dentro da tag Imposto
        oImposto:AddIcms(oICMS)
 	   
