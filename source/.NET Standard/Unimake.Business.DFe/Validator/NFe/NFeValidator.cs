@@ -23,8 +23,16 @@ namespace Unimake.Business.DFe.Validator.NFe
             {
                 if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
                 {
-                    throw new ValidatorDFeException("Código do município do destinatário da nota está sem conteúdo. É obrigatório informar o código IBGE do município. [TAG: <cMun> do grupo de tag <dest><enderDest>]");
+                    throw new ValidatorDFeException("Código do município do destinatário está sem conteúdo. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <dest><enderDest>]");
                 }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município do destinatário está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <dest><enderDest>]");
+                }
+
             }).ValidateTag(element => element.NameEquals("CEAN"), Tag =>
             {
                 var value = Tag.Value;
@@ -493,6 +501,76 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     throw new ValidatorDFeException("O CST do grupo de tributação do COFINS outras operações está incorreto. Valor informado: " + Tag.Value + " - Valores aceitos: 49, 50, 51, 52, 53, 54, 55, 56, 60, 61, 62, 63, 64, 65, 66, 67, 70, 71, 72, 73, 74, 75, 98 ou 99." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><COFINS><COFINSOutr>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunFG)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município de ocorrência do fato gerador está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMunFG> do grupo de tag <ide>]");
+
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderEmit.CMun)) && element.Parent.NameEquals(nameof(EnderEmit)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município do emitente está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <emit><enderEmit>]");
+
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Retirada.CMun)) && element.Parent.NameEquals(nameof(Retirada)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município do local de retirada está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <retirada>]");
+
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Entrega.CMun)), Tag => // && element.Parent.NameEquals(nameof(Entrega)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município do local de entrega está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <entrega>]");
+
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(ISSQN.CMunFG)) && element.Parent.NameEquals(nameof(ISSQN)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município de ocorrência do fato gerador do ISSQN está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMunFG> do grupo de tag <ISSQN>]");
+
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(ISSQN.CMun)) && element.Parent.NameEquals(nameof(ISSQN)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município de incidência do imposto ISSQN está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <ISSQN>]");
+
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(RetTransp.CMunFG)) && element.Parent.NameEquals(nameof(RetTransp)), Tag =>
+            {
+                var value = Tag.Value;
+
+                if (value.Length != 7)
+                {
+                    throw new ValidatorDFeException("O código do município de ocorrência do fato gerador do ICMS de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMunFG> do grupo de tag <transp><retTransp>]");
+
                 }
             });
 
