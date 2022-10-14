@@ -532,7 +532,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                         " [TAG: <cMun> do grupo de tag <retirada>]");
 
                 }
-            }).ValidateTag(element => element.NameEquals(nameof(Entrega.CMun)), Tag => // && element.Parent.NameEquals(nameof(Entrega)), Tag =>
+            }).ValidateTag(element => element.NameEquals(nameof(Entrega.CMun)) && element.Parent.NameEquals(nameof(Entrega)), Tag =>
             {
                 var value = Tag.Value;
 
