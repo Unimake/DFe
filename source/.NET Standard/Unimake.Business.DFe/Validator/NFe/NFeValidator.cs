@@ -572,6 +572,19 @@ namespace Unimake.Business.DFe.Validator.NFe
                         " [TAG: <cMunFG> do grupo de tag <transp><retTransp>]");
 
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(Comb.UFCons)) && element.Parent.NameEquals(nameof(Comb)) && element.Parent.Parent.NameEquals(nameof(Prod)), Tag =>
+            {
+                var value = Tag.Value;
+                var cProd = Tag.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (string.IsNullOrWhiteSpace(value.Trim()))
+                {
+                    throw new ValidatorDFeException("A sigla da UF de consumo das informações específicas para combustíveis líquidos e lubrificantes está em branco e é obrigatória." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <UFCons> do grupo de tag <det><prod><comb>]");
+
+                }
             });
 
         #endregion Public Constructors
