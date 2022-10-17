@@ -15,7 +15,7 @@
     <CpfCnpj>
       <Cpf>00000000000</Cpf>
     </CpfCnpj>
-    <InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
+    <InscricaoMunicipal>12345</InscricaoMunicipal>
   </Tomador>
   <Intermediario>
     <CpfCnpj>

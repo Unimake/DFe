@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.03">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:recepcionarLoteRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="2.03">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:recepcionarLoteRpsSincrono><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:recepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="2.03">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:gerarNfse><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.03">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:cancelarNfse><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="2.03">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura>Rps</TagLoteAssinatura>
+      <TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+      <TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+      <TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:substituirNfse><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:substituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.03">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarLoteRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="2.03">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="2.03">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=utf-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoPrestado><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="2.03">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoTomado><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="2.03">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao>https://servicos.mogidascruzes.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://servicos.mogidascruzes.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
+      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionHomologacao>
+      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorFaixa><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+    </ConsultarNfseFaixa>
+  </Servicos>
+</Configuracoes>

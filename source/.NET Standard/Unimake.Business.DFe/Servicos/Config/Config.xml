@@ -820,4 +820,10 @@
 		<ArqConfig>BrasiliaDF.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3530607">
+		<Nome>Mogi das Cruzes - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MogiDasCruzesSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
