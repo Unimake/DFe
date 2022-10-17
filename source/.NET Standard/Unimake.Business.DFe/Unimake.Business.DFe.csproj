@@ -253,6 +253,7 @@
 		<None Remove="Servicos\Config\NFSe\Ginfes.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
+		<None Remove="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
@@ -617,6 +618,7 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
