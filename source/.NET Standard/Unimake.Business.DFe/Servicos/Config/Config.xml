@@ -826,4 +826,10 @@
 		<ArqConfig>MogiDasCruzesSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3504503">
+		<Nome>Avaré - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>AvareSP.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
