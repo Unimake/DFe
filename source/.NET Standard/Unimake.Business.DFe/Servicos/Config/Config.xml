@@ -850,4 +850,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5100201">
+		<Nome>Água Boa - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>AguaBoaMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

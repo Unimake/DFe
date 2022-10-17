@@ -231,6 +231,7 @@
 		<None Remove="Servicos\Config\NFe\SVCRS.xml" />
 		<None Remove="Servicos\Config\NFe\SVRS.xml" />
 		<None Remove="Servicos\Config\NFe\TO.xml" />
+		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
@@ -615,6 +616,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
