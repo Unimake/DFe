@@ -838,4 +838,10 @@
 		<ArqConfig>RioGrandeRS.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3554805">
+		<Nome>Tremembé - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TremembeSP.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

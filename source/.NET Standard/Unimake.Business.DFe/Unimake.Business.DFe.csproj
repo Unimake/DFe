@@ -282,6 +282,7 @@
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
+		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
 		<None Remove="Servicos\Config\SNCM\Config.xml" />
@@ -614,6 +615,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SarandiPR.xml">
