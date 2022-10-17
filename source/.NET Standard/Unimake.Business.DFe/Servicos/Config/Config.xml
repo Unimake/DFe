@@ -844,4 +844,10 @@
 		<ArqConfig>TremembeSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3306107">
+		<Nome>Valença - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
