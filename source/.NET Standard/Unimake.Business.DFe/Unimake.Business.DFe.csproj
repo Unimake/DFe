@@ -237,6 +237,7 @@
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
+		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
@@ -247,6 +248,7 @@
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Ginfes.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
@@ -610,6 +612,8 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguainaTO.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SarandiPR.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

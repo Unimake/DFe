@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
+			<WebEnderecoProducao>http://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
