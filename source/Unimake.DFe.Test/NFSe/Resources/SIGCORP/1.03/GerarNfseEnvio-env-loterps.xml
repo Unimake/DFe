@@ -1,0 +1,41 @@
+﻿<GerarNota xmlns="http://iss.londrina.pr.gov.br/ws/v1_03">
+  <DescricaoRps xmlns="">
+    <ccm>2149052</ccm>
+    <cnpj>22143384000134</cnpj>
+    <cpf>50545132991</cpf>
+    <senha>takmar01</senha>
+    <aliquota>3,80000</aliquota>
+    <servico>1102</servico>
+    <situacao>tp</situacao>
+    <valor>90,00</valor>
+    <base>90,00</base>
+    <cod_municipio_prestacao_servico>4113700</cod_municipio_prestacao_servico>
+    <cod_municipio_incidencia>4113700</cod_municipio_incidencia>
+    <descricaoNF>Acesso</descricaoNF>
+    <tomador_tipo>2</tomador_tipo>
+    <tomador_cnpj>07176219958</tomador_cnpj>
+    <tomador_email>mauro.londritrack@gmail.com</tomador_email>
+    <tomador_ie />
+    <tomador_im />
+    <tomador_razao>MAURO FAVERO</tomador_razao>
+    <tomador_fantasia>MAURO FAVERO</tomador_fantasia>
+    <tomador_endereco>Rua Antonio Cotarelli</tomador_endereco>
+    <tomador_numero>250</tomador_numero>
+    <tomador_complemento>bl 11 apto 02</tomador_complemento>
+    <tomador_bairro>Conjunto Habitacional Jose Garcia Molina</tomador_bairro>
+    <tomador_CEP>86080545</tomador_CEP>
+    <tomador_cod_cidade>4113700</tomador_cod_cidade>
+    <tomador_fone>43 30262727</tomador_fone>
+    <rps_num>1</rps_num>
+    <rps_tipo>1</rps_tipo>
+    <rps_serie />
+    <rps_dia>19</rps_dia>
+    <rps_mes>6</rps_mes>
+    <rps_ano>2018</rps_ano>
+    <rps_numSpecified>true</rps_numSpecified>
+    <rps_tipoSpecified>true</rps_tipoSpecified>
+    <rps_diaSpecified>true</rps_diaSpecified>
+    <rps_mesSpecified>true</rps_mesSpecified>
+    <rps_anoSpecified>true</rps_anoSpecified>
+  </DescricaoRps>
+</GerarNota>

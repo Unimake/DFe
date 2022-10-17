@@ -1,0 +1,10 @@
+<ConsultarRpsServicoPrestadoEnvio xmlns="http://iss.londrina.pr.gov.br/ws/v1_03">>
+	<ccm>2149052</ccm>
+	<cnpj>22143384000134</cnpj>
+	<cpf>50545132991</cpf>
+	<senha>takmar01</senha>
+	<numero_rps>1</numero_rps>
+	<dia_rps>17</dia_rps>
+	<mes_rps>10</mes_rps>
+	<ano_rps>2022</ano_rps>
+</ConsultarRpsServicoPrestadoEnvio>

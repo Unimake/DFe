@@ -421,5 +421,24 @@
       <SchemaVersao></SchemaVersao>
       <TargetNS></TargetNS>
     </ConsultaNFeEmitidas> 
+	<ConsultarRpsServicoPrestado versao="1.00">
+	  <Descricao>Consultar Rps Serviço Prestado</Descricao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
+      <WebEnderecoProducao></WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString></WebSoapString>
+      <WebTagRetorno></WebTagRetorno>
+      <WebEncodingRetorno></WebEncodingRetorno>
+      <WebSoapVersion></WebSoapVersion>
+      <SchemaVersao></SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarRpsServicoPrestado> 
 </Servicos>
 </Configuracoes>

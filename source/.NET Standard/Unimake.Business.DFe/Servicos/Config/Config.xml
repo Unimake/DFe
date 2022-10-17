@@ -862,4 +862,10 @@
 		<ArqConfig>GuarantaDoNorteMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4113700">
+		<Nome>Londrina - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>LondrinaPR.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -342,6 +342,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Envia o lote NFS-e")]
         NFSeEnviarLoteNotas = 54,
 
+        /// <summary>
+        /// Consultar Rps Serviço Prestado da NFS-e para prefeiutura
+        /// </summary>
+        [Description("Consultar Rps Serviço Prestado")]
+        NFSeConsultarRpsServicoPrestado = 55,
+
         #endregion
 
         #region Gerais

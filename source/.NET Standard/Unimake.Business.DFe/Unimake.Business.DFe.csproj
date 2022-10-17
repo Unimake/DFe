@@ -261,6 +261,7 @@
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
@@ -607,6 +608,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LondrinaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoBomRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

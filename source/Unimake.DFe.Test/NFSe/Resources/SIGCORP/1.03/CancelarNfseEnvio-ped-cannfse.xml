@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNota>
+  <DescricaoCancelaNota>
+    <ccm>1</ccm>
+    <cnpj>1</cnpj>
+    <senha>1</senha>
+    <nota>1</nota>
+    <cod_cancelamento>1</cod_cancelamento>
+    <email>a@q.com</email>
+  </DescricaoCancelaNota>
+</CancelarNota>
