@@ -232,7 +232,6 @@
 		<None Remove="Servicos\Config\NFe\SVRS.xml" />
 		<None Remove="Servicos\Config\NFe\TO.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
-		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
@@ -262,7 +261,6 @@
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
-		<None Remove="Servicos\Config\NFSe\MogiDasCruzesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
@@ -273,6 +271,7 @@
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
+		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SaltoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
@@ -605,10 +604,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoBomRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -619,6 +614,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SarandiPR.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

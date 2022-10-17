@@ -832,4 +832,10 @@
 		<ArqConfig>AvareSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4315602">
+		<Nome>Rio Grande - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>RioGrandeRS.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
