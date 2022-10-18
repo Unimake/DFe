@@ -68,6 +68,136 @@ namespace Unimake.Business.DFe.Validator.CTe
                     throw new ValidatorDFeException("O CST do grupo de tributação de ICMSSN está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 90." +
                         " [TAG: <CST> do grupo de tag <infCTe><Imp><ICMS><ICMSSN>]");
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunEnv)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município de envio do CT-e (de onde o documento foi transmitido) não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMunEnv> do grupo de tag <infCte><ide>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município de envio do CT-e (de onde o documento foi transmitido) está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMunEnv> do grupo de tag <infCte><ide>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunIni)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município de início da prestação do serviço de transporte não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMunIni> do grupo de tag <infCte><ide>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município de início da prestação de serviço de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMunIni> do grupo de tag <infCte><ide>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunFim)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município de término da prestação do serviço de transporte não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMunFim> do grupo de tag <infCte><ide>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município de término da prestação de serviço de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMunFim> do grupo de tag <infCte><ide>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderToma.CMun)) && element.Parent.NameEquals(nameof(EnderToma)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município do tomador do serviço não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município do tomador do serviço está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderEmit.CMun)) && element.Parent.NameEquals(nameof(EnderEmit)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município do emitente não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><emit><enderEmit>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município do emitente está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><emit><enderEmit>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderReme.CMun)) && element.Parent.NameEquals(nameof(EnderReme)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município do remetente das mercadorias transportadas não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><rem><enderReme>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município do remetente das mercadorias transportadas está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><rem><enderReme>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderExped.CMun)) && element.Parent.NameEquals(nameof(EnderExped)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município do expedidor da carga não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><exped><enderExped>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município do expedidor da carga está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><exped><enderExped>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderReceb.CMun)) && element.Parent.NameEquals(nameof(EnderReceb)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município do recebedor da carga não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><receb><enderReceb>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município do recebedor da carga está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><receb><enderReceb>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderDest.CMun)) && element.Parent.NameEquals(nameof(EnderDest)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município do destinatário do CTe não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><dest><enderDest>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município do destinatário do CTe está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><dest><enderDest>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(EnderFerro.CMun)) && element.Parent.NameEquals(nameof(EnderFerro)), Tag =>
+            {
+                if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
+                {
+                    throw new ValidatorDFeException("Código do município das ferrovias envolvidas não foi informado. É obrigatório informar o código IBGE do município." +
+                        " [TAG: <cMun> do grupo de tag <infCte><infCTeNorm><infModal><ferrov><trafMut><ferroEnv><enderFerro>]");
+                }
+
+                if (Tag.Value.Length != 7)
+                {
+                    throw new ValidatorDFeException("Código do município das ferrovias envolvidas está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                        " [TAG: <cMun> do grupo de tag <infCte><infCTeNorm><infModal><ferrov><trafMut><ferroEnv><enderFerro>]");
+                }
             });
 
         #endregion Public Constructors
