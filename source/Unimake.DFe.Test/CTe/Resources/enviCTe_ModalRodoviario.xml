@@ -20,15 +20,15 @@
 				<procEmi>0</procEmi>
 				<verProc>verProc1</verProc>
 				<indGlobalizado>1</indGlobalizado>
-				<cMunEnv>0000000</cMunEnv>
+				<cMunEnv>1234567</cMunEnv>
 				<xMunEnv>xMunEnv1</xMunEnv>
 				<UFEnv>AC</UFEnv>
 				<modal>01</modal>
 				<tpServ>0</tpServ>
-				<cMunIni>0000000</cMunIni>
+				<cMunIni>1234567</cMunIni>
 				<xMunIni>xMunIni1</xMunIni>
 				<UFIni>AC</UFIni>
-				<cMunFim>0000000</cMunFim>
+				<cMunFim>1234567</cMunFim>
 				<xMunFim>xMunFim1</xMunFim>
 				<UFFim>AC</UFFim>
 				<retira>0</retira>
@@ -99,7 +99,7 @@
 					<nro>nro1</nro>
 					<xCpl>xCpl1</xCpl>
 					<xBairro>xBairro1</xBairro>
-					<cMun>1</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun1</xMun>
 					<CEP>CEP1</CEP>
 					<UF>AC</UF>
@@ -117,7 +117,7 @@
 					<nro>nro1</nro>
 					<xCpl>xCpl1</xCpl>
 					<xBairro>xBairro1</xBairro>
-					<cMun>1</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun1</xMun>
 					<CEP>CEP1</CEP>
 					<UF>AC</UF>
@@ -137,7 +137,7 @@
 					<nro>nro1</nro>
 					<xCpl>xCpl1</xCpl>
 					<xBairro>xBairro1</xBairro>
-					<cMun>1</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun1</xMun>
 					<CEP>CEP1</CEP>
 					<UF>AC</UF>
@@ -156,7 +156,7 @@
 					<nro>nro1</nro>
 					<xCpl>xCpl1</xCpl>
 					<xBairro>xBairro1</xBairro>
-					<cMun>1</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun1</xMun>
 					<CEP>CEP1</CEP>
 					<UF>AC</UF>
@@ -175,7 +175,7 @@
 					<nro>nro1</nro>
 					<xCpl>xCpl1</xCpl>
 					<xBairro>xBairro1</xBairro>
-					<cMun>1</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun1</xMun>
 					<CEP>CEP1</CEP>
 					<UF>AC</UF>
@@ -195,7 +195,7 @@
 					<nro>nro1</nro>
 					<xCpl>xCpl1</xCpl>
 					<xBairro>xBairro1</xBairro>
-					<cMun>1</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun1</xMun>
 					<CEP>CEP1</CEP>
 					<UF>AC</UF>
@@ -752,15 +752,15 @@
 				<procEmi>3</procEmi>
 				<verProc>verProc2</verProc>
 				<indGlobalizado>1</indGlobalizado>
-				<cMunEnv>0000002</cMunEnv>
+				<cMunEnv>1234567</cMunEnv>
 				<xMunEnv>xMunEnv2</xMunEnv>
 				<UFEnv>AL</UFEnv>
 				<modal>02</modal>
 				<tpServ>1</tpServ>
-				<cMunIni>0000002</cMunIni>
+				<cMunIni>1234567</cMunIni>
 				<xMunIni>xMunIni2</xMunIni>
 				<UFIni>AL</UFIni>
-				<cMunFim>0000002</cMunFim>
+				<cMunFim>1234567</cMunFim>
 				<xMunFim>xMunFim2</xMunFim>
 				<UFFim>AL</UFFim>
 				<retira>1</retira>
@@ -831,7 +831,7 @@
 					<nro>nro2</nro>
 					<xCpl>xCpl2</xCpl>
 					<xBairro>xBairro2</xBairro>
-					<cMun>2</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun2</xMun>
 					<CEP>CEP2</CEP>
 					<UF>AL</UF>
@@ -849,7 +849,7 @@
 					<nro>nro2</nro>
 					<xCpl>xCpl2</xCpl>
 					<xBairro>xBairro2</xBairro>
-					<cMun>2</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun2</xMun>
 					<CEP>CEP2</CEP>
 					<UF>AL</UF>
@@ -868,7 +868,7 @@
 					<nro>nro2</nro>
 					<xCpl>xCpl2</xCpl>
 					<xBairro>xBairro2</xBairro>
-					<cMun>2</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun2</xMun>
 					<CEP>CEP2</CEP>
 					<UF>AL</UF>
@@ -887,7 +887,7 @@
 					<nro>nro2</nro>
 					<xCpl>xCpl2</xCpl>
 					<xBairro>xBairro2</xBairro>
-					<cMun>2</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun2</xMun>
 					<CEP>CEP2</CEP>
 					<UF>AL</UF>
@@ -907,7 +907,7 @@
 					<nro>nro2</nro>
 					<xCpl>xCpl2</xCpl>
 					<xBairro>xBairro2</xBairro>
-					<cMun>2</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun2</xMun>
 					<CEP>CEP2</CEP>
 					<UF>AL</UF>
@@ -1464,15 +1464,15 @@
 				<procEmi>0</procEmi>
 				<verProc>verProc3</verProc>
 				<indGlobalizado>1</indGlobalizado>
-				<cMunEnv>0000003</cMunEnv>
+				<cMunEnv>1234567</cMunEnv>
 				<xMunEnv>xMunEnv3</xMunEnv>
 				<UFEnv>AM</UFEnv>
 				<modal>03</modal>
 				<tpServ>2</tpServ>
-				<cMunIni>0000003</cMunIni>
+				<cMunIni>1234567</cMunIni>
 				<xMunIni>xMunIni3</xMunIni>
 				<UFIni>AM</UFIni>
-				<cMunFim>0000003</cMunFim>
+				<cMunFim>1234567</cMunFim>
 				<xMunFim>xMunFim3</xMunFim>
 				<UFFim>AM</UFFim>
 				<retira>0</retira>
@@ -1543,7 +1543,7 @@
 					<nro>nro3</nro>
 					<xCpl>xCpl3</xCpl>
 					<xBairro>xBairro3</xBairro>
-					<cMun>3</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun3</xMun>
 					<CEP>CEP3</CEP>
 					<UF>AM</UF>
@@ -1561,7 +1561,7 @@
 					<nro>nro3</nro>
 					<xCpl>xCpl3</xCpl>
 					<xBairro>xBairro3</xBairro>
-					<cMun>3</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun3</xMun>
 					<CEP>CEP3</CEP>
 					<UF>AM</UF>
@@ -1580,7 +1580,7 @@
 					<nro>nro3</nro>
 					<xCpl>xCpl3</xCpl>
 					<xBairro>xBairro3</xBairro>
-					<cMun>3</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun3</xMun>
 					<CEP>CEP3</CEP>
 					<UF>AM</UF>
@@ -1599,7 +1599,7 @@
 					<nro>nro3</nro>
 					<xCpl>xCpl3</xCpl>
 					<xBairro>xBairro3</xBairro>
-					<cMun>3</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun3</xMun>
 					<CEP>CEP3</CEP>
 					<UF>AM</UF>
@@ -1619,7 +1619,7 @@
 					<nro>nro3</nro>
 					<xCpl>xCpl3</xCpl>
 					<xBairro>xBairro3</xBairro>
-					<cMun>3</cMun>
+					<cMun>1234567</cMun>
 					<xMun>xMun3</xMun>
 					<CEP>CEP3</CEP>
 					<UF>AM</UF>

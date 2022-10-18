@@ -17,16 +17,16 @@
       <tpCTe>0</tpCTe>
       <procEmi>0</procEmi>
       <verProc>verProc1</verProc>
-      <cMunEnv>1</cMunEnv>
+      <cMunEnv>1234567</cMunEnv>
       <xMunEnv>xMunEnv1</xMunEnv>
       <UFEnv>AC</UFEnv>
       <modal>01</modal>
       <tpServ>6</tpServ>
       <indIEToma>1</indIEToma>
-      <cMunIni>1</cMunIni>
+      <cMunIni>1234567</cMunIni>
       <xMunIni>xMunIni1</xMunIni>
       <UFIni>AC</UFIni>
-      <cMunFim>1</cMunFim>
+      <cMunFim>1234567</cMunFim>
       <xMunFim>xMunFim1</xMunFim>
       <UFFim>AC</UFFim>
       <infPercurso>
@@ -76,7 +76,7 @@
         <nro>nro1</nro>
         <xCpl>xCpl1</xCpl>
         <xBairro>xBairro1</xBairro>
-        <cMun>1</cMun>
+        <cMun>1234567</cMun>
         <xMun>xMun1</xMun>
         <CEP>CEP1</CEP>
         <UF>AC</UF>
@@ -94,7 +94,7 @@
         <nro>nro1</nro>
         <xCpl>xCpl1</xCpl>
         <xBairro>xBairro1</xBairro>
-        <cMun>1</cMun>
+        <cMun>1234567</cMun>
         <xMun>xMun1</xMun>
         <CEP>CEP1</CEP>
         <UF>AC</UF>
