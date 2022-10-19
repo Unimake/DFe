@@ -55,7 +55,7 @@
           <nro>00000</nro>
           <xCpl>xCpl1</xCpl>
           <xBairro>xBairro1</xBairro>
-          <cMun>0</cMun>
+          <cMun>1234567</cMun>
           <xMun>xMun1</xMun>
           <CEP>87700000</CEP>
           <UF>AC</UF>
@@ -75,7 +75,7 @@
       </infModal>
       <infDoc>
         <infMunDescarga>
-          <cMunDescarga>0</cMunDescarga>
+          <cMunDescarga>1234567</cMunDescarga>
           <xMunDescarga>TESTE</xMunDescarga>
           <infCTe>
             <chCTe>chCTe1</chCTe>
@@ -1861,7 +1861,7 @@
           </infMDFeTransp>
         </infMunDescarga>
         <infMunDescarga>
-          <cMunDescarga>2</cMunDescarga>
+          <cMunDescarga>1234567</cMunDescarga>
           <xMunDescarga>xMunDescarga2</xMunDescarga>
           <infCTe>
             <chCTe>chCTe4</chCTe>
@@ -3647,7 +3647,7 @@
           </infMDFeTransp>
         </infMunDescarga>
         <infMunDescarga>
-          <cMunDescarga>3</cMunDescarga>
+          <cMunDescarga>1234567</cMunDescarga>
           <xMunDescarga>xMunDescarga3</xMunDescarga>
           <infCTe>
             <chCTe>chCTe7</chCTe>
