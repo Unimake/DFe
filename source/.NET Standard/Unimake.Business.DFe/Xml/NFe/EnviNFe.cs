@@ -1599,7 +1599,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XPed { get; set; }
 
         [XmlElement("nItemPed")]
-        public int? NItemPed { get; set; }
+        public string NItemPed { get; set; }
 
         [XmlElement("nFCI")]
         public string NFCI { get; set; }
