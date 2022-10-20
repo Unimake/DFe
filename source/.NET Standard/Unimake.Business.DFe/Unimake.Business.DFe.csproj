@@ -233,6 +233,7 @@
 		<None Remove="Servicos\Config\NFe\TO.xml" />
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
+		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
@@ -264,6 +265,7 @@
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
+		<None Remove="Servicos\Config\NFSe\MogiDasCruzesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
@@ -621,6 +623,12 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioGrandeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GaribaldiRS.xml" />

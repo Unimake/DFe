@@ -4,7 +4,7 @@
   	<CancelarNfse versao="2.03">
   	  <Descricao>Cancelar Nota Fiscal de Serviço</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/CancelarNfse</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -23,7 +23,7 @@
   	<ConsultarLoteRps versao="2.03">
   	  <Descricao>Consulta Lote RPS</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/ConsultarLoteRps</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/ConsultarLoteRps</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -42,7 +42,7 @@
   	<ConsultarNfsePorFaixa versao="2.03">
   	  <Descricao>Consulta NFSe por Faixa</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/ConsultarNfsePorFaixa</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/ConsultarNfsePorFaixa</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -61,7 +61,7 @@
   	<ConsultarNfsePorRps versao="2.03">
   	  <Descricao>Consulta NFSe por RPS</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/ConsultarNfsePorRps</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/ConsultarNfsePorRps</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -80,7 +80,7 @@
   	<GerarNfse versao="2.03">
   	  <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/GerarNfse</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/GerarNfse</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -99,7 +99,7 @@
   	<RecepcionarLoteRps versao="2.03">
   	  <Descricao>Recepcionar Lote RPS</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/RecepcionarLoteRps</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -118,7 +118,7 @@
   	<RecepcionarLoteRpsSincrono versao="2.03">
   	  <Descricao>Recepcionar Lote RPS Síncrono</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -137,7 +137,7 @@
   	<SubstituirNfse versao="2.03">
   	  <Descricao>Substituir nota fiscal de Serviço</Descricao>
   	  <WebEnderecoHomologacao>https://abrasfavareteste.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-  	  <WebEnderecoProducao>http://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
+  	  <WebEnderecoProducao>https://abrasfavare.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
   	  <WebActionHomologacao>http://tempuri.org/SubstituirNfse</WebActionHomologacao>
   	  <WebActionProducao>http://tempuri.org/SubstituirNfse</WebActionProducao>
   	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
