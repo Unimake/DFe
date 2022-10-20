@@ -174,7 +174,7 @@ namespace Unimake.DFe.Test.NFCe
                                                 VUnTrib = 84.9000000000M,
                                                 IndTot = SimNao.Sim,
                                                 XPed = "300474",
-                                                NItemPed = 1
+                                                NItemPed = "1"
                                             },
                                             Imposto = new Imposto
                                             {
@@ -486,7 +486,7 @@ namespace Unimake.DFe.Test.NFCe
                                                 VUnTrib = 84.9000000000M,
                                                 IndTot = SimNao.Sim,
                                                 XPed = "300474",
-                                                NItemPed = 1
+                                                NItemPed = "001"
                                             },
                                             Imposto = new Imposto
                                             {
