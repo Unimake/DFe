@@ -13,337 +13,337 @@ namespace Unimake.Business.DFe.Servicos
         #region Serviço
 
         /// <summary>
-        /// Consulta status serviço NFe/NFCe
+        /// 0 - Consulta status serviço NFe/NFCe
         /// </summary>
         [Description("Consulta status do serviço da NFe/NFCe")]
         NFeStatusServico = 0,
 
         /// <summary>
-        /// Consulta protocolo da NFe/NFCe
+        /// 1 - Consulta protocolo da NFe/NFCe
         /// </summary>
         [Description("Consulta situação da NFe/NFCe")]
         NFeConsultaProtocolo = 1,
 
         /// <summary>
-        /// Consulta recibo NFe/NFCe
+        /// 2 - Consulta recibo NFe/NFCe
         /// </summary>
         [Description("Consulta recibo da NFe/NFCe")]
         NFeConsultaRecibo = 2,
 
         /// <summary>
-        /// Inutilização de números da nota fiscal eletrônica
+        /// 3 - Inutilização de números da nota fiscal eletrônica
         /// </summary>
         [Description("Inutilização de números da NFe/NFCE")]
         NFeInutilizacao = 3,
 
         /// <summary>
-        /// Consulta cadastro do contribuinte
+        /// 4 - Consulta cadastro do contribuinte
         /// </summary>
         [Description("Consulta cadastro de contribuinte")]
         NFeConsultaCadastro = 4,
 
         /// <summary>
-        /// Envio de Eventos (Cancelamento, CCe, EPEC, etc...)
+        /// 5 - Envio de Eventos (Cancelamento, CCe, EPEC, etc...)
         /// </summary>
         [Description("Envio de eventos da NFe/NFCe")]
         NFeRecepcaoEvento = 5,
 
         /// <summary>
-        /// Envio do XML de lote de NFe/NFCe
+        /// 6 - Envio do XML de lote de NFe/NFCe
         /// </summary>
         [Description("Autorização da NFe/NFCe")]
         NFeAutorizacao = 6,
 
         /// <summary>
-        /// Envio do XML de consulta dos documentos fiscais eletrônicos destinados - NFe
+        /// 7 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - NFe
         /// </summary>
         [Description("Distribuição de documentos fiscais eletrônicos da NFe")]
         NFeDistribuicaoDFe = 7,
 
         /// <summary>
-        /// Consulta status serviço CTe
+        /// 8 - Consulta status serviço CTe
         /// </summary>
         [Description("Consulta status do serviço do CTe")]
         CTeStatusServico = 8,
 
         /// <summary>
-        /// Consulta protocolo do CTe
+        /// 9 - Consulta protocolo do CTe
         /// </summary>
         [Description("Consulta situação do CTe")]
         CTeConsultaProtocolo = 9,
 
         /// <summary>
-        /// Inutilização de números do Conhecimetno de Transporte Eletrônico (CTe)
+        /// 10 - Inutilização de números do Conhecimento de Transporte Eletrônico (CTe)
         /// </summary>
         [Description("Inutilização de números do CTe")]
         CTeInutilizacao = 10,
 
         /// <summary>
-        /// Envio do XML de consulta dos documentos fiscais eletrônicos destinados - CTe
+        /// 11 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - CTe
         /// </summary>
         [Description("Distribuição de documentos fiscais eletrônicos do CTe")]
         CTeDistribuicaoDFe = 11,
 
         /// <summary>
-        /// Consulta recibo CTe
+        /// 12 - Consulta recibo CTe
         /// </summary>
         [Description("Consulta recibo do CTe")]
         CTeConsultaRecibo = 12,
 
         /// <summary>
-        /// Envio do XML de CTe
+        /// 13 - Envio do XML de CTe
         /// </summary>
         [Description("Autorização do CTe")]
         CTeAutorizacao = 13,
 
         /// <summary>
-        /// Envio do XML de CTeOS
+        /// 14 - Envio do XML de CTeOS
         /// </summary>
         [Description("Autorização do CTeOS")]
         CTeAutorizacaoOS = 14,
 
         /// <summary>
-        /// Consulta status serviço MDFe
+        /// 15 - Consulta status serviço MDFe
         /// </summary>
         [Description("Consulta status do serviço do MDFe")]
         MDFeStatusServico = 15,
 
         /// <summary>
-        /// Consulta protocolo do MDFe
+        /// 16 - Consulta protocolo do MDFe
         /// </summary>
         [Description("Consulta situação do MDFe")]
         MDFeConsultaProtocolo = 16,
 
         /// <summary>
-        /// Consulta recibo MDFe
+        /// 17 - Consulta recibo MDFe
         /// </summary>
         [Description("Consulta recibo do MDFe")]
         MDFeConsultaRecibo = 17,
 
         /// <summary>
-        /// Consulta MDFe não encerrado
+        /// 18 - Consulta MDFe não encerrado
         /// </summary>
         [Description("Consulta de MDFe´s não encerrados")]
         MDFeConsultaNaoEnc = 18,
 
         /// <summary>
-        /// Envio do XML de MDFe em lote no modo assíncrono
+        /// 19 - Envio do XML de MDFe em lote no modo assíncrono
         /// </summary>
         [Description("Autorização do MDFe")]
         MDFeAutorizacao = 19,
 
         /// <summary>
-        /// Envio do XML de MDFe no modo síncrono
+        /// 20 - Envio do XML de MDFe no modo síncrono
         /// </summary>
         [Description("Autorização do MDFe")]
         MDFeAutorizacaoSinc = 20,
 
         /// <summary>
-        /// GNRE - Consultar Configurações da UF
+        /// 21 - GNRE - Consultar Configurações da UF
         /// </summary>
         [Description("GNRE - Consultar Configurações da UF")]
         GNREConsultaConfigUF = 21,
 
         /// <summary>
-        /// GNRE - Consultar Resultado do Lote de GNRE enviado
+        /// 22 - GNRE - Consultar Resultado do Lote de GNRE enviado
         /// </summary>
         [Description("Consultar Resultado do Lote de GNRE enviado")]
         GNREConsultaResultadoLote = 22,
 
         /// <summary>
-        /// GNRE - Enviar Lote de GNRE
+        /// 23 - GNRE - Enviar Lote de GNRE
         /// </summary>
         [Description("Enviar Lote de GNRE")]
         GNRELoteRecepcao = 23,
 
         /// <summary>
-        /// Enviar o XML de cancelamento da NFS-e para prefeiutura
+        /// 24 - Enviar o XML de cancelamento da NFS-e para prefeitura
         /// </summary>
         [Description("Cancelamento da NFS-e")]
         NFSeCancelarNfse = 24,
 
         /// <summary>
-        /// Enviar o XML de consulta NFS-e do prestador para a prefeitura
+        /// 25 - Enviar o XML de consulta NFS-e do prestador para a prefeitura
         /// </summary>
         [Description("Consulta NFS-e do prestador")]
         NFSeConsultarNotaPrestador = 25,
 
         /// <summary>
-        /// Enviar o XML de consulta NFS-e valida para a prefeitura
+        /// 26 - Enviar o XML de consulta NFS-e valida para a prefeitura
         /// </summary>
         [Description("Consulta NFS-e valida")]
         NFSeConsultarNotaValida = 26,
 
         /// <summary>
-        /// Enviar o XML da NFS-e para a prefeitura
+        /// 27 - Enviar o XML da NFS-e para a prefeitura
         /// </summary>
         [Description("Envio da NFS-e")]
         NFSeGerarNfse = 27,
 
         /// <summary>
-        /// Enviar o XML do Lote de RPS para gerar NFSe para a prefeitura
+        /// 28 - Enviar o XML do Lote de RPS para gerar NFSe para a prefeitura
         /// </summary>
         [Description("Envio do lote RPS para gerar NFSe")]
         NFSeRecepcionarLoteRps = 28,
 
         /// <summary>
-        /// Enviar o XML do Lote de RPS no modo síncrono para gerar NFSe para a prefeitura
+        /// 29 - Enviar o XML do Lote de RPS no modo síncrono para gerar NFSe para a prefeitura
         /// </summary>
         [Description("Envio do lote RPS no modo síncrono para gerar NFSe")]
         NFSeRecepcionarLoteRpsSincrono = 29,
 
         /// <summary>
-        /// Enviar o XML para Substituir NFSe
+        /// 30 - Enviar o XML para Substituir NFSe
         /// </summary>
         [Description("Envio da substituição da NFS-e")]
         NFSeSubstituirNfse = 30,
 
         /// <summary>
-        /// Enviar o XML de consulta lote RPS para a prefeitura
+        /// 31 - Enviar o XML de consulta lote RPS para a prefeitura
         /// </summary>
         [Description("Consulta lote RPS")]
         NFSeConsultarLoteRps = 31,
 
         /// <summary>
-        /// Enviar o XML de consulta NFSe para a prefeitura
+        /// 32 - Enviar o XML de consulta NFSe para a prefeitura
         /// </summary>
         [Description("Consulta NFSe")]
         NFSeConsultarNfse = 32,
 
         /// <summary>
-        /// Enviar o XML de consulta NFSe serviço prestado para a prefeitura
+        /// 33 - Enviar o XML de consulta NFSe serviço prestado para a prefeitura
         /// </summary>
         [Description("Consulta NFSe serviço prestado")]
         NFSeConsultarNfseServicoPrestado = 33,
 
         /// <summary>
-        /// Enviar o XML de consulta NFSe serviço tomado para a prefeitura
+        /// 34 - Enviar o XML de consulta NFSe serviço tomado para a prefeitura
         /// </summary>
         [Description("Consulta NFSe serviço tomado")]
         NFSeConsultarNfseServicoTomado = 34,
 
         /// <summary>
-        /// Enviar o XML de consulta NFSe por faixa para a prefeitura
+        /// 35 - Enviar o XML de consulta NFSe por faixa para a prefeitura
         /// </summary>
         [Description("Consulta NFSe por Faixa")]
         NFSeConsultarNfseFaixa = 35,
 
         /// <summary>
-        /// Enviar o XML de consulta NFSe por RPS para a prefeitura
+        /// 36 - Enviar o XML de consulta NFSe por RPS para a prefeitura
         /// </summary>
         [Description("Consulta NFSe por RPS")]
         NFSeConsultarNfsePorRps = 36,
 
         /// <summary>
-        /// Enviar o XML de consulta/download do PDF NFSe para a prefeitura
+        /// 37 - Enviar o XML de consulta/download do PDF NFSe para a prefeitura
         /// </summary>
         [Description("Consulta/Download do PDF da NFSe")]
         NFSeConsultarNfsePDF = 37,
 
         /// <summary>
-        /// GNRE - Consultar Lote Recepção Consulta
+        /// 38 - GNRE - Consultar Lote Recepção Consulta
         /// </summary>
         [Description("Consultar Lote Recepção Consulta")]
         GNREConsultaLoteRecepcao = 38,
 
         /// <summary>
-        /// GNRE - Consultar Resultado do Lote da Consulta de GNRE enviado
+        /// 39 - GNRE - Consultar Resultado do Lote da Consulta de GNRE enviado
         /// </summary>
         [Description("Consultar Resultado do Lote da Consulta de GNRE")]
         GNREConsultaResultadoLoteConsulta = 39,
 
         /// <summary>
-        /// Enviar o XML de consulta situação lote RPS para a prefeitura
+        /// 40 - Enviar o XML de consulta situação lote RPS para a prefeitura
         /// </summary>
-        [Description("Consultar Situacao Lote Rps")]
+        [Description("Consultar Situação Lote Rps")]
         NFSeConsultarSituacaoLoteRps = 40,
 
         /// <summary>
-        /// Enviar o XML de consulta nfse recebidas para a prefeitura
+        /// 41 - Enviar o XML de consulta NFS-e recebidas para a prefeitura
         /// </summary>
         [Description("Consulta NFSe Recebidas")]
         NFSeConsultaNFeRecebidas = 41,
 
         /// <summary>
-        /// Enviar o XML de consulta nfse emitidas para a prefeitura
+        /// 42 - Enviar o XML de consulta NFS-e emitidas para a prefeitura
         /// </summary>
         [Description("Consulta NFSe Emitidas")]
         NFSeConsultaNFeEmitidas = 42,
 
         /// <summary>
-        /// Enviar o XML de teste envio lote rps para a prefeitura
+        /// 43 - Enviar o XML de teste envio lote rps para a prefeitura
         /// </summary>
         [Description("Teste Envio Lote RPS")]
         NFSeTesteEnvioLoteRps = 43,
 
         /// <summary>
-        /// Enviar o XML de envio lote rps para a prefeitura
+        /// 44 - Enviar o XML de envio lote rps para a prefeitura
         /// </summary>
         [Description("Envio Lote RPS")]
         NFSeEnvioLoteRps = 44,
 
         /// <summary>
-        /// Enviar o XML deenvio rps para a prefeitura
+        /// 45 - Enviar o XML de envio rps para a prefeitura
         /// </summary>
         [Description("Envio RPS")]
         NFSeEnvioRps = 45,
 
         /// <summary>
-        /// Enviar o XML de cancelamento nfse para a prefeitura
+        /// 46 - Enviar o XML de cancelamento NFS-e para a prefeitura
         /// </summary>
         [Description("Cancelamento NFSe")]
         NFSeCancelamentoNfe = 46,
 
         /// <summary>
-        /// Enviar o XML de consulta informações lote para a prefeitura
+        /// 47 - Enviar o XML de consulta informações lote para a prefeitura
         /// </summary>
         [Description("Consulta Informações Lote")]
         NFSeConsultaInformacoesLote = 47,
 
         /// <summary>
-        /// Enviar o XML de consulta lote para a prefeitura
+        /// 48 - Enviar o XML de consulta lote para a prefeitura
         /// </summary>
         [Description("Consulta Lote")]
         NFSeConsultaLote = 48,
 
         /// <summary>
-        /// 
+        /// 49 - Consulta Centralizada de Código GTIN (CCG)
         /// </summary>
         [Description("Consulta Centralizada de Código GTIN (CCG)")]
         CCGConsGTIN = 49,
 
         /// <summary>
-        /// Enviar o XML de cancelamento da NFS-e para prefeiutura
+        /// 50 - Enviar o XML de cancelamento da NFS-e para prefeitura
         /// </summary>
         [Description("Cancela NFS-e")]
         NFSeCancelaNota = 50,
 
         /// <summary>
-        /// Enviar o XML de emissão da NFS-e para prefeiutura
+        /// 51 - Enviar o XML de emissão da NFS-e para prefeitura
         /// </summary>
         [Description("Emissão NFS-e")]
         NFSeEmissaoNota = 51,
 
         /// <summary>
-        /// Cancela o XML de emissão da NFS-e para prefeiutura
+        /// 52 - Cancela o XML de emissão da NFS-e para prefeitura
         /// </summary>
         [Description("Cancela NFS-e")]
         NFSeCancelarNotaFiscal = 52,
 
         /// <summary>
-        /// Consulta o XML de emissão da NFS-e para prefeiutura
+        /// 53 - Consulta o XML de emissão da NFS-e para prefeitura
         /// </summary>
         [Description("Consulta NFS-e")]
         NFSeConsultaNotaFiscal = 53,
 
         /// <summary>
-        /// Envia o lote de XML da NFS-e para prefeiutura
+        /// 54 - Envia o lote de XML da NFS-e para prefeitura
         /// </summary>
         [Description("Envia o lote NFS-e")]
         NFSeEnviarLoteNotas = 54,
 
         /// <summary>
-        /// Consultar Rps Serviço Prestado da NFS-e para prefeiutura
+        /// 55 - Consultar Rps Serviço Prestado da NFS-e para prefeitura
         /// </summary>
         [Description("Consultar Rps Serviço Prestado")]
         NFSeConsultarRpsServicoPrestado = 55,
@@ -353,7 +353,7 @@ namespace Unimake.Business.DFe.Servicos
         #region Gerais
 
         /// <summary>
-        /// Serviço não definido
+        /// 9999 - Serviço não definido
         /// </summary>
         Nulo = 9999
 
