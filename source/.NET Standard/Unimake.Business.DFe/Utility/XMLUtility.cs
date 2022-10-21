@@ -12,6 +12,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Validator;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -341,11 +342,11 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Deserializar XML (Converte o XML para um objeto)
+        /// Desserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="xml">String do XML a ser deserializado</param>
-        /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
+        /// <param name="xml">String do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
         public static T Deserializar<T>(string xml)
             where T : new()
         {
@@ -376,7 +377,8 @@ namespace Unimake.Business.DFe.Utility
                     ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
 
-                throw;
+                ThrowHelper.Instance.Throw(ex.GetLastException());
+                throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
             }
         }
 
@@ -409,11 +411,11 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Deserializar XML (Converte o XML para um objeto)
+        /// Desserializar XML (Converte o XML para um objeto)
         /// </summary>
         /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="doc">Conteúdo do XML a ser deserializado</param>
-        /// <returns>Retorna o objeto com o conteúdo do XML deserializado</returns>
+        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
         public static T Deserializar<T>(XmlDocument doc)
         where T : new() => Deserializar<T>(doc.OuterXml);
 
