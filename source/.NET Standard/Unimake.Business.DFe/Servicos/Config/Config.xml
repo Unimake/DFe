@@ -880,4 +880,10 @@
 		<ArqConfig>NovaMutumMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3145208">
+		<Nome>Nova Serrana - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>NovaSerranaMG.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
