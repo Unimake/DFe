@@ -874,4 +874,10 @@
 		<ArqConfig>PeixotodeAzevedoMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5106224">
+		<Nome>Nova Mutum - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>NovaMutumMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
