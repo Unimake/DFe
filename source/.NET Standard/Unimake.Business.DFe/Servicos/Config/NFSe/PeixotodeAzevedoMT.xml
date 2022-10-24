@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPS</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.RECEPCIONARLOTERPS><trib:Recepcionarloterpsrequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Recepcionarloterpsrequest></trib:nfse_web_service.RECEPCIONARLOTERPS></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.03">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPSSINCRONO</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.RECEPCIONARLOTERPSSINCRONO</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.RECEPCIONARLOTERPSSINCRONO><trib:Recepcionarloterpssincronorequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Recepcionarloterpssincronorequest></trib:nfse_web_service.RECEPCIONARLOTERPSSINCRONO></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.03">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.GERARNFSE</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.GERARNFSE</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.GERARNFSE><trib:Gerarnfserequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Gerarnfserequest></trib:nfse_web_service.GERARNFSE></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.03">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CANCELARNFSE</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CANCELARNFSE</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CANCELARNFSE><trib:Cancelarnfserequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Cancelarnfserequest></trib:nfse_web_service.CANCELARNFSE></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.03">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.SUBSTITUIRNFSE</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.SUBSTITUIRNFSE</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.SUBSTITUIRNFSE><trib:Substituirnfserequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Substituirnfserequest></trib:nfse_web_service.SUBSTITUIRNFSE></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.03">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARLOTERPS</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARLOTERPS</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARLOTERPS><trib:Consultarloterpsrequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarloterpsrequest></trib:nfse_web_service.CONSULTARLOTERPS></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.03">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEPORRPS</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEPORRPS</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSEPORRPS><trib:Consultarnfseporrpsrequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseporrpsrequest></trib:nfse_web_service.CONSULTARNFSEPORRPS></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.03">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOPRESTADO</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOPRESTADO</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSESERVICOPRESTADO><trib:Consultarnfseservicoprestadorequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseservicoprestadorequest></trib:nfse_web_service.CONSULTARNFSESERVICOPRESTADO></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.03">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOTOMADO</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSESERVICOTOMADO</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSESERVICOTOMADO><trib:Consultarnfseservicotomadorequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseservicotomadorequest></trib:nfse_web_service.CONSULTARNFSESERVICOTOMADO></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.03">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://www.gp.srv.br/tributario/homologacao/anfse_web_service</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.gp.srv.br/tributario/peixotodeazevedo/anfse_web_service</WebEnderecoProducao>
+			<WebActionHomologacao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEFAIXA</WebActionHomologacao>
+			<WebActionProducao>Tributarioaction/ANFSE_WEB_SERVICE.CONSULTARNFSEFAIXA</WebActionProducao>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:trib="Tributario" xmlns:trib1="Tributario_PRD_Oficial"><soapenv:Header/><soapenv:Body><trib:nfse_web_service.CONSULTARNFSEFAIXA><trib:Consultarnfseporfaixarequest><trib1:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></trib1:nfseCabecMsg><trib1:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></trib1:nfseDadosMsg></trib:Consultarnfseporfaixarequest></trib:nfse_web_service.CONSULTARNFSEFAIXA></soapenv:Body></soapenv:Envelope>]]]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>

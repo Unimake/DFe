@@ -868,4 +868,10 @@
 		<ArqConfig>LondrinaPR.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5106422">
+		<Nome>Peixoto de Azevedo - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>PeixotodeAzevedoMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
