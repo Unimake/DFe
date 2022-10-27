@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoCTe versao="3.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<infEvento Id="ID1101114119100611747300015055001000057928177984361001">
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>06117473000150</CNPJ>
+		<chCTe>41191006117473000150550010000579281779843610</chCTe>
+		<dhEvento>2022-10-27T08:15:44-03:00</dhEvento>
+		<tpEvento>110111</tpEvento>
+		<nSeqEvento>1</nSeqEvento>
+		<detEvento versaoEvento="3.00">
+			<evCancCTe>
+				<descEvento>Cancelamento</descEvento>
+				<nProt>141190000660363</nProt>
+				<xJust>Justificativa para cancelamento da NFe de teste</xJust>
+			</evCancCTe>
+		</detEvento>
+	</infEvento>
+</eventoCTe>

@@ -370,6 +370,8 @@ Function EnviarCTeAssincrono()
 			   For I = 1 TO oRetAutorizacao:Result:GetProtCteCount()
 			       oProtCte = oRetAutorizacao:Result:GetProtCte(I-1)
 				   
+				   
+				   
 				   ? AllTrim(Str(oProtCte:InfProt:CStat,5)), oProtCte:InfProt:XMotivo
 				   ?
 				   ?
@@ -393,6 +395,8 @@ Function EnviarCTeAssincrono()
 				   
 				 * Salvar XML de distribuicao das notas enviadas na pasta informada  
 				   if oProtCTe:InfProt:CStat == 100 //100=CTe Autorizada 
+				      oAutorizacao:GetCteProcResults(oProtCte:InfProt:ChCte)
+				   
 				      oAutorizacao:GravarXmlDistribuicao("d:\testenfe")					  
 				   else
                        //CTe rejeitado, fazer devidos tratamentos

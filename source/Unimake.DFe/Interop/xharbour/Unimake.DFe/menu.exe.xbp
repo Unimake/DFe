@@ -215,3 +215,13 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[CancelarCTe.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[CancelarCTeDesserializando.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
