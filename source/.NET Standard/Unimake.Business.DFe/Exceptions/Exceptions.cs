@@ -12,6 +12,13 @@ namespace Unimake.Exceptions
         /// </summary>
         public CertificadoDigitalException()
             : base("Certificado digital não localizado ou o mesmo está com falha.") => HResult = (int)ErrorCodes.CertificadoDigitalNaoLocalizado;
+
+        /// <summary>
+        /// Exceção quando o certificado digital não é localizado ou está com falha
+        /// </summary>
+        /// <param name="message">Mensagem de exceção</param>
+        public CertificadoDigitalException(string message)
+            : base(message) => HResult = (int)ErrorCodes.CertificadoDigitalNaoLocalizado;
     }
 
     /// <summary>
