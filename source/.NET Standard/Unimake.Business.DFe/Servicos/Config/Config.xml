@@ -886,4 +886,10 @@
 		<ArqConfig>NovaSerranaMG.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3158300">
+		<Nome>Santana da Vargem - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
