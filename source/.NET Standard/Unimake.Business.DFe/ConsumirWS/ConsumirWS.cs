@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
 {
@@ -86,6 +87,11 @@ namespace Unimake.Business.DFe
         /// <param name="certificado">Certificado digital a ser utilizado na conexão com os serviços</param>
         public void ExecutarServico(XmlDocument xml, object servico, X509Certificate2 certificado)
         {
+            if (certificado == null)
+            {
+                throw new CertificadoDigitalException();
+            }
+
             var soap = (WSSoap)servico;
             TratarScape = soap.SoapString.IndexOf("{xmlBodyScape}") > 0;
 
