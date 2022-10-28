@@ -24,7 +24,7 @@ namespace Unimake.Business.DFe.Servicos
         #region Private Fields
 
         private X509Certificate2 _certificadoDigital;
-        private Assembly _assembly = Assembly.GetExecutingAssembly();
+        private readonly Assembly _assembly = Assembly.GetExecutingAssembly();
 
         #endregion Private Fields
 
@@ -50,25 +50,69 @@ namespace Unimake.Business.DFe.Servicos
         /// <returns>Objeto do certificado digital</returns>
         private X509Certificate2 GetX509Certificate()
         {
-            if (_certificadoDigital != null ||
-               string.IsNullOrWhiteSpace(CertificadoSenha) ||
-               string.IsNullOrWhiteSpace(CertificadoArquivo))
+            //Se já tem certificado digital informado
+            if (_certificadoDigital != null)
             {
                 return _certificadoDigital;
             }
 
-            //tentar carregar o certificado pelas informações passadas.
-            // Não vou validar as informações, vou deixar o certificado dar o erro.
+            #region Tenta carregar certificado A1 apontando direto o caminho do .PFX
 
-            var fi = new FileInfo(CertificadoArquivo);
-            _certificadoDigital = new X509Certificate2();
-
-            using (var fs = fi.OpenRead())
+            if (!string.IsNullOrWhiteSpace(CertificadoArquivo) && !string.IsNullOrWhiteSpace(CertificadoSenha))
             {
-                var buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, buffer.Length);
+                var fi = new FileInfo(CertificadoArquivo);
+                _certificadoDigital = new X509Certificate2();
+
+                using (var fs = fi.OpenRead())
+                {
+                    var buffer = new byte[fs.Length];
+                    fs.Read(buffer, 0, buffer.Length);
+                    _certificadoDigital = new X509Certificate2(buffer, CertificadoSenha);
+                }
+            }
+
+            #endregion
+
+            #region Tenta carregar o certificado A1 de um base64
+
+            else if (!string.IsNullOrWhiteSpace(CertificadoBase64) && !string.IsNullOrWhiteSpace(CertificadoSenha))
+            {
+                var buffer = Convert.FromBase64String(CertificadoBase64);
+
                 _certificadoDigital = new X509Certificate2(buffer, CertificadoSenha);
             }
+
+            #endregion
+
+            #region Tenta encontrar o certificado digital no repositório do windows via SerialNumber ou Thumbprint
+
+            else if (!string.IsNullOrWhiteSpace(CertificadoSerialNumberOrThumbPrint))
+            {
+                var store = new X509Store("MY", StoreLocation.CurrentUser);
+                store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+                var collection = store.Certificates;
+                var collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+                var collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
+
+                //Primeiro tento encontrar pelo thumbprint
+                var collection3 = collection2.Find(X509FindType.FindByThumbprint, CertificadoSerialNumberOrThumbPrint, false);
+                if (collection3.Count > 0)
+                {
+                    _certificadoDigital = collection3[0];
+                }
+                else
+                {
+                    //Se não encontrou pelo thumbprint tento pelo SerialNumber pegando o mesmo thumbprint que veio no arquivo de configurações para ver se não encontro.
+                    collection3 = collection2.Find(X509FindType.FindBySerialNumber, CertificadoSerialNumberOrThumbPrint, false);
+
+                    if (collection3.Count > 0)
+                    {
+                        _certificadoDigital = collection3[0];
+                    }
+                }
+            }
+
+            #endregion
 
             return _certificadoDigital;
         }
@@ -448,7 +492,7 @@ namespace Unimake.Business.DFe.Servicos
                 WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
             }
 
-            if(!string.IsNullOrWhiteSpace(TokenSoap))
+            if (!string.IsNullOrWhiteSpace(TokenSoap))
             {
                 WebSoapString = WebSoapString.Replace("{TokenSoap}", TokenSoap);
             }
@@ -577,9 +621,24 @@ namespace Unimake.Business.DFe.Servicos
         #region Public Properties
 
         /// <summary>
-        /// Caminho completo do certificado digital
+        /// SerialNumber ou ThumbPrint do Certificado Digital
+        /// </summary>
+        public string CertificadoSerialNumberOrThumbPrint { get; set; }
+
+        /// <summary>
+        /// BASE64 do certificado digital A1
+        /// </summary>
+        public string CertificadoBase64 { get; set; }
+
+        /// <summary>
+        /// Caminho completo do certificado digital A1
         /// </summary>
         public string CertificadoArquivo { get; set; }
+
+        /// <summary>
+        /// Senha de instalação/uso do certificado digital A1
+        /// </summary>
+        public string CertificadoSenha { get; set; }
 
         /// <summary>
         /// Certificado digital
@@ -589,11 +648,6 @@ namespace Unimake.Business.DFe.Servicos
             get => GetX509Certificate();
             set => _certificadoDigital = value;
         }
-
-        /// <summary>
-        /// Senha do certificado digital
-        /// </summary>
-        public string CertificadoSenha { get; set; }
 
         /// <summary>
         /// Código da configuração
@@ -841,10 +895,7 @@ namespace Unimake.Business.DFe.Servicos
                     return _webSoapStringHomologacao;
                 }
             }
-            set
-            {
-                _webSoapStringHomologacao = value;
-            }
+            set => _webSoapStringHomologacao = value;
         }
 
         private string _webSoapStringProducao;
@@ -876,10 +927,7 @@ namespace Unimake.Business.DFe.Servicos
                     return _webSoapStringProducao;
                 }
             }
-            set
-            {
-                _webSoapStringProducao = value;
-            }
+            set => _webSoapStringProducao = value;
         }
 
         /// <summary>
@@ -929,10 +977,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public int TimeOutWebServiceConnect
         {
-            get
-            {
-                return _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
-            }
+            get => _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
             set => _TimeOutWebServiceConnect = value;
         }
 
