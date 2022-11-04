@@ -48,10 +48,11 @@ Function Main()
    AAdd(aOpcoes, "EPEC NFe - Enviar o XML da NFe")
    Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
    Aadd(aOpcoes, "Enviar MDFe - Modo sincrono - Desserializando o XML")
-   Aadd(aOpcoes, "Gerar XML da NFSe")
-   
+   Aadd(aOpcoes, "Gerar XML da NFSe") 
    AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe")
    AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe - Desserializando XML")
+   
+   AAdd(aOpcoes, "Desserializar XML NFe compra p/dar entrada no ERP (B2B)")
    
    Do While .T.
       Cls
@@ -182,6 +183,9 @@ Function Main()
 			  
          case nOpcao = 39
 			  EnviarCancCTeDesserializando()
+			  
+	     case nOpcao = 40
+              DesserializarXMLNFeCompra()
       endcase
    EndDo
 Return       

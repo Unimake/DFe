@@ -1,0 +1,286 @@
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infNFe Id="NFe35190999999999999999550010000022221111111115" versao="4.00">
+			<ide>
+				<cUF>35</cUF>
+				<cNF>11111111</cNF>
+				<natOp>Venda</natOp>
+				<mod>55</mod>
+				<serie>1</serie>
+				<nNF>2222</nNF>
+				<dhEmi>2019-09-26T09:10:46-03:00</dhEmi>
+				<dhSaiEnt>2019-09-26T09:10:46-03:00</dhSaiEnt>
+				<tpNF>1</tpNF>
+				<idDest>1</idDest>
+				<cMunFG>3550308</cMunFG>
+				<tpImp>1</tpImp>
+				<tpEmis>1</tpEmis>
+				<cDV>5</cDV>
+				<tpAmb>1</tpAmb>
+				<finNFe>1</finNFe>
+				<indFinal>0</indFinal>
+				<indPres>1</indPres>
+				<procEmi>0</procEmi>
+				<verProc>1.0</verProc>
+			</ide>
+			<emit>
+				<CNPJ>99999999999999</CNPJ>
+				<xNome>X X X COMERCIO DE ALIMENTOS</xNome>
+				<xFant>XXXX DOCES</xFant>
+				<enderEmit>
+					<xLgr>Rua Teste do teste</xLgr>
+					<nro>1</nro>
+					<xBairro>Barra Funda</xBairro>
+					<cMun>3550308</cMun>
+					<xMun>Sao Paulo</xMun>
+					<UF>SP</UF>
+					<CEP>01111000</CEP>
+					<cPais>1058</cPais>
+					<xPais>BRASIL</xPais>
+					<fone>11999999999</fone>
+				</enderEmit>
+				<IE>123456789012</IE>
+				<CRT>1</CRT>
+			</emit>
+			<dest>
+				<CNPJ>88888888888888</CNPJ>
+				<xNome>TESTE DESTINATARIO RESTAURANTE LTDA</xNome>
+				<enderDest>
+					<xLgr>Rua teste 2 dest</xLgr>
+					<nro>33</nro>
+					<xCpl>- de 2222 ao fim - lado impar</xCpl>
+					<xBairro>Itaim Bibi</xBairro>
+					<cMun>3550308</cMun>
+					<xMun>Sao Paulo</xMun>
+					<UF>SP</UF>
+					<CEP>01111123</CEP>
+					<cPais>1058</cPais>
+					<xPais>BRASIL</xPais>
+					<fone>1144444444</fone>
+				</enderDest>
+				<indIEDest>1</indIEDest>
+				<IE>323232323232</IE>
+				<email>teste@gmail.com</email>
+			</dest>
+			<autXML>
+				<CNPJ>66666666666666</CNPJ>
+			</autXML>
+			<autXML>
+				<CPF>11111111111</CPF>
+			</autXML>
+			<det nItem="1">
+				<prod>
+					<cProd>036</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>Petit Gateau Chocolate Meio Amargo</xProd>
+					<NCM>18063210</NCM>
+					<CEST>1700300</CEST>
+					<CFOP>5405</CFOP>
+					<uCom>qt</uCom>
+					<qCom>48.0000</qCom>
+					<vUnCom>4.4000000000</vUnCom>
+					<vProd>211.20</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>qt</uTrib>
+					<qTrib>48.0000</qTrib>
+					<vUnTrib>4.4000000000</vUnTrib>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMSSN202>
+							<orig>0</orig>
+							<CSOSN>202</CSOSN>
+							<modBCST>4</modBCST>
+							<vBCST>0.00</vBCST>
+							<pICMSST>0.00</pICMSST>
+							<vICMSST>0.00</vICMSST>
+						</ICMSSN202>
+					</ICMS>
+					<IPI>
+						<cEnq>999</cEnq>
+						<IPITrib>
+							<CST>99</CST>
+							<vBC>0.00</vBC>
+							<pIPI>0.0000</pIPI>
+							<vIPI>0.00</vIPI>
+						</IPITrib>
+					</IPI>
+					<PIS>
+						<PISOutr>
+							<CST>49</CST>
+							<vBC>0.00</vBC>
+							<pPIS>0.0000</pPIS>
+							<vPIS>0.00</vPIS>
+						</PISOutr>
+					</PIS>					
+					<COFINS>
+						<COFINSOutr>
+							<CST>49</CST>
+							<vBC>0.00</vBC>
+							<pCOFINS>0.0000</pCOFINS>
+							<vCOFINS>0.00</vCOFINS>
+						</COFINSOutr>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="2">
+				<prod>
+					<cProd>007</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>Brownie 15 Nozes</xProd>
+					<NCM>17049090</NCM>
+					<CEST>1700800</CEST>
+					<CFOP>5405</CFOP>
+					<uCom>qt</uCom>
+					<qCom>2.0000</qCom>
+					<vUnCom>48.0000000000</vUnCom>
+					<vProd>96.00</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>qt</uTrib>
+					<qTrib>2.0000</qTrib>
+					<vUnTrib>48.0000000000</vUnTrib>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMSSN202>
+							<orig>0</orig>
+							<CSOSN>202</CSOSN>
+							<modBCST>4</modBCST>
+							<vBCST>0.00</vBCST>
+							<pICMSST>0.00</pICMSST>
+							<vICMSST>0.00</vICMSST>
+						</ICMSSN202>
+					</ICMS>
+					<IPI>
+						<cEnq>999</cEnq>
+						<IPITrib>
+							<CST>99</CST>
+							<vBC>0.00</vBC>
+							<pIPI>0.0000</pIPI>
+							<vIPI>0.00</vIPI>
+						</IPITrib>
+					</IPI>
+					<PIS>
+						<PISOutr>
+							<CST>49</CST>
+							<vBC>0.00</vBC>
+							<pPIS>0.0000</pPIS>
+							<vPIS>0.00</vPIS>
+						</PISOutr>
+					</PIS>
+					<COFINS>
+						<COFINSOutr>
+							<CST>49</CST>
+							<vBC>0.00</vBC>
+							<pCOFINS>0.0000</pCOFINS>
+							<vCOFINS>0.00</vCOFINS>
+						</COFINSOutr>
+					</COFINS>
+				</imposto>
+			</det>
+			<total>
+				<ICMSTot>
+					<vBC>0.00</vBC>
+					<vICMS>0.00</vICMS>
+					<vICMSDeson>0.00</vICMSDeson>
+					<vFCP>0.00</vFCP>
+					<vBCST>0.00</vBCST>
+					<vST>0.00</vST>
+					<vFCPST>0.00</vFCPST>
+					<vFCPSTRet>0.00</vFCPSTRet>
+					<vProd>307.20</vProd>
+					<vFrete>0.00</vFrete>
+					<vSeg>0.00</vSeg>
+					<vDesc>0.00</vDesc>
+					<vII>0.00</vII>
+					<vIPI>0.00</vIPI>
+					<vIPIDevol>0.00</vIPIDevol>
+					<vPIS>0.00</vPIS>
+					<vCOFINS>0.00</vCOFINS>
+					<vOutro>0.00</vOutro>
+					<vNF>307.20</vNF>
+				</ICMSTot>
+			</total>
+			<transp>
+				<modFrete>9</modFrete>
+				<vol>
+					<pesoL>0.000</pesoL>
+					<pesoB>0.000</pesoB>
+				</vol>
+			</transp>
+			<cobr>
+				<fat>
+					<nFat>1172</nFat>
+					<vOrig>307.20</vOrig>
+					<vDesc>0.00</vDesc>
+					<vLiq>307.20</vLiq>
+				</fat>
+				<dup>
+					<nDup>001</nDup>
+					<dVenc>2019-09-26</dVenc>
+					<vDup>307.20</vDup>
+				</dup>
+				<dup>
+					<nDup>002</nDup>
+					<dVenc>2019-10-26</dVenc>
+					<vDup>307.20</vDup>
+				</dup>
+			</cobr>
+			<pag>
+				<detPag>
+					<indPag>0</indPag>
+					<tPag>99</tPag>
+					<vPag>307.20</vPag>
+				</detPag>
+				<detPag>
+					<indPag>1</indPag>
+					<tPag>99</tPag>
+					<vPag>307.20</vPag>
+				</detPag>
+			</pag>
+			<infAdic>
+				<infCpl>DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL.#NAO GERA DIREITO A CREDITO FISCAL DE IPI.</infCpl>
+			</infAdic>
+			<infRespTec>
+				<CNPJ>33333333333333</CNPJ>
+				<xContato>teste xContato</xContato>
+				<email>testeprg@gmail.com</email>
+				<fone>66666666666</fone>
+			</infRespTec>
+		</infNFe>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#NFe35190999999999999999550010000022221111111115">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>xm07as/asadasasdAgasJsdBssY=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>CyPqS3W9YSwPjTunLheqWk03yO+QFB/zyTTU7SAZQ4reuVhV/JwjdFHzJ1/OzZAP5Em6M5Jh59Q97CmGjJW0ERsc16AsLRI5n3FuQln2eNRig+HDIsJGAgoTKOURejZmsy9cid7Pqezx0EasdasdKyunKf/apspd6VxAAYWuvMU7Fj5tHV9asdasdasd2Rp1eKrPavcRV+AspE22Nl4yk0DT1XNaeAUgc34EiY89cKvuWc/sPNsMqQRZWYwaDWaKiigQx0fZaAM8FMefvGTBZ1fOgapurgO6EyXLmQ3oRuc2B2CLBz8kCgZMJve7FxTtOjuersBhAvG7wfmOIRQg9w==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</NFe>
+	<protNFe versao="4.00">
+		<infProt Id="Id135163636456598">
+			<tpAmb>1</tpAmb>
+			<verAplic>SP_NFE_PL009_V4</verAplic>
+			<chNFe>35190999999999999999550010000022221111111115</chNFe>
+			<dhRecbto>2019-09-26T09:16:30-03:00</dhRecbto>
+			<nProt>135163636456598</nProt>
+			<digVal>xm07as/asadasasdAgasJsdBssY=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso da NF-e</xMotivo>
+		</infProt>
+	</protNFe>
+</nfeProc>
