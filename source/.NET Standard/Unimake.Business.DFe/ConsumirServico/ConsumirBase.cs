@@ -11,9 +11,9 @@ using Unimake.Exceptions;
 namespace Unimake.Business.DFe
 {
     /// <summary>
-    /// Classe para consumir webservices
+    /// Classe para consumir webservices e API´s
     /// </summary>
-    public class ConsumirWS
+    public abstract class ConsumirBase
     {
         #region Private Fields
 
@@ -33,7 +33,7 @@ namespace Unimake.Business.DFe
         /// <param name="soap">Soap</param>
         /// <param name="xmlBody">string do XML a ser enviado no corpo do soap</param>
         /// <returns>string do envelope (soap)</returns>
-        private static string EnveloparXML(WSSoap soap, string xmlBody)
+        private string EnveloparXML(WSSoap soap, string xmlBody)
         {
             if(soap.GZIPCompress)
             {
@@ -68,12 +68,12 @@ namespace Unimake.Business.DFe
         /// <summary>
         /// Conteudo retornado pelo WebService consumido (formato string)
         /// </summary>
-        public string RetornoServicoString { get; private set; }
+        public string RetornoServicoString { get; protected set; }
 
         /// <summary>
         /// Conteudo retornado pelo WebService consumido (formato XmlDocument)
         /// </summary>
-        public XmlDocument RetornoServicoXML { get; private set; }
+        public XmlDocument RetornoServicoXML { get; protected set; }
 
         #endregion Public Properties
 

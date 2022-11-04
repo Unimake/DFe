@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.centi.com.br/files/nfse.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IdentificacaoRps>
+    <Numero>12076</Numero>
+    <Serie>A1</Serie>
+    <Tipo>1</Tipo>
+  </IdentificacaoRps>
+  <Prestador>
+    <Cnpj>89811142000142</Cnpj>
+    <InscricaoMunicipal>87600576</InscricaoMunicipal>
+  </Prestador>
+</ConsultarNfseRpsEnvio>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GerarNfseEnvio xmlns="http://www.centi.com.br/files/nfse.xsd">
+   <Rps>
+      <InfDeclaracaoPrestacaoServico>
+         <Rps Id="R2431">
+            <IdentificacaoRps>
+               <Numero>2431</Numero>
+               <Serie>U</Serie>
+               <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2016-09-15T05:49:46</DataEmissao>
+            <Status>1</Status>
+         </Rps>
+         <Competencia>2016-09-15T05:49:46</Competencia>
+         <Servico>
+            <Valores>
+               <ValorServicos>210.00</ValorServicos>
+               <ValorDeducoes>0.00</ValorDeducoes>
+               <ValorPis>0.00</ValorPis>
+               <ValorCofins>0.00</ValorCofins>
+               <ValorInss>0.00</ValorInss>
+               <ValorIr>0.00</ValorIr>
+               <ValorCsll>0.00</ValorCsll>
+               <OutrasRetencoes>0.00</OutrasRetencoes>
+               <ValorIss>6.30</ValorIss>
+               <Aliquota>3.00</Aliquota>
+               <DescontoIncondicionado>0.00</DescontoIncondicionado>
+               <DescontoCondicionado>0.00</DescontoCondicionado>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ResponsavelRetencao>1</ResponsavelRetencao>
+            <ItemListaServico>6</ItemListaServico>
+            <CodigoCnae>4541203</CodigoCnae>
+            <CodigoTributacaoMunicipio>1402</CodigoTributacaoMunicipio>
+            <Discriminacao>DESCRICAO DO SERVICO</Discriminacao>
+            <CodigoMunicipio>5200258</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>5200258</MunicipioIncidencia>
+         </Servico>
+         <Prestador>
+            <CpfCnpj>
+               <Cnpj>11111111111111</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1111111111</InscricaoMunicipal>
+         </Prestador>
+         <Tomador>
+            <IdentificacaoTomador>
+               <CpfCnpj>
+                  <Cpf>22222222222</Cpf>
+               </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>RAZAO TOMADOR</RazaoSocial>
+            <Endereco>
+               <Endereco>QUA 01</Endereco>
+               <Numero>S/N</Numero>
+               <Bairro>MANSOES AGUAS LINDAS</Bairro>
+               <CodigoMunicipio>5200258</CodigoMunicipio>
+               <Uf>GO</Uf>
+               <CodigoPais>1058</CodigoPais>
+               <Cep>72910000</Cep>
+            </Endereco>
+            <Contato>
+               <Telefone>616135893</Telefone>
+               <Email />
+            </Contato>
+         </Tomador>
+         <OptanteSimplesNacional>2</OptanteSimplesNacional>
+         <IncentivoFiscal>2</IncentivoFiscal>
+      </InfDeclaracaoPrestacaoServico>
+   </Rps>
+</GerarNfseEnvio>

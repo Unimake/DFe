@@ -6115,6 +6115,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ISSNET")]
         ISSNET = 25,
+
+        /// <summary>
+        /// CENTI
+        /// </summary>
+        [Description("CENTI")]
+        CENTI = 26,
     }
 
     #endregion

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns="http://www.centi.com.br/files/nfse.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Pedido>
+    <InfPedidoCancelamento>
+      <IdentificacaoNfse>
+        <Id>11e1e1c1-10f0-1d11-ac11-11d1a11a11a1</Id>
+        <Numero>11111</Numero>
+        <CpfCnpj>
+          <Cnpj>11111111111111</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>224</InscricaoMunicipal>
+        <CodigoMunicipio>5218</CodigoMunicipio>
+        <CodigoVerificacao>991c2</CodigoVerificacao>
+        <DescricaoCancelamento>Descrição do motivo de cancelamento</DescricaoCancelamento>
+      </IdentificacaoNfse>
+      <CodigoCancelamento>1</CodigoCancelamento>
+    </InfPedidoCancelamento>
+  </Pedido>
+</CancelarNfseEnvio>

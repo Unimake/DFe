@@ -248,6 +248,7 @@
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
@@ -260,6 +261,7 @@
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajubaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
+		<None Remove="Servicos\Config\NFSe\ItumbiaraGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
@@ -613,6 +615,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItumbiaraGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSerranaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaMutumMT.xml" />
@@ -1565,10 +1569,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
-		<PackageReference Include="Unimake.Cryptography" Version="20221006.1745.32" />
-		<PackageReference Include="Unimake.Extensions" Version="20221006.1745.32" />
-		<PackageReference Include="Unimake.Utils" Version="20221006.1745.32" />
+		<PackageReference Include="Unimake.Cryptography" Version="20221021.1426.51" />
+		<PackageReference Include="Unimake.Extensions" Version="20221021.1426.51" />
+		<PackageReference Include="Unimake.Utils" Version="20221021.1426.51" />
 	</ItemGroup>
 
 	<ItemGroup>

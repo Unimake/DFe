@@ -36,9 +36,9 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
         private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
-            if(!string.IsNullOrWhiteSpace(tagAssinatura))
+            if (!string.IsNullOrWhiteSpace(tagAssinatura))
             {
-                if(AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
+                if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
                     AjustarXMLAposAssinado();
                 }
@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Servicos
             get => _conteudoXML;
             set
             {
-                if(ConteudoXMLOriginal == null)
+                if (ConteudoXMLOriginal == null)
                 {
                     ConteudoXMLOriginal = new XmlDocument();
                     ConteudoXMLOriginal.LoadXml(value?.OuterXml);
@@ -124,7 +124,7 @@ namespace Unimake.Business.DFe.Servicos
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
 
-            if(!Configuracoes.Definida)
+            if (!Configuracoes.Definida)
             {
                 DefinirConfiguracao();
             }
@@ -201,41 +201,60 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         public virtual void Executar()
         {
-            if(!(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
+            if (!(ValidatorFactory.BuidValidator(ConteudoXML.InnerXml)?.Validate() ?? true))
             {
                 return;
             }
 
-            if(!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
             {
-                if(!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
+                if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
                 {
                     AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
                     AjustarXMLAposAssinado();
                 }
             }
 
-            var soap = new WSSoap
+            if (Configuracoes.IsAPI)
             {
-                EnderecoWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao),
-                ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
-                TagRetorno = Configuracoes.WebTagRetorno,
-                EncodingRetorno = Configuracoes.WebEncodingRetorno,
-                GZIPCompress = Configuracoes.GZIPCompress,
-                VersaoSoap = Configuracoes.WebSoapVersion,
-                SoapString = Configuracoes.WebSoapString,
-                ContentType = Configuracoes.WebContentType,
-                TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
-                Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
-                                                                        Configuracoes.ProxyUser,
-                                                                        Configuracoes.ProxyPassword) : null)
-            };
+                var apiConfig = new APIConfig
+                {
+                    ContentType = Configuracoes.WebContentType,
+                    RequestURI = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao),
+                    TagRetorno = Configuracoes.WebTagRetorno,
+                    GZipCompress = Configuracoes.GZIPCompress,
+                };
 
-            var consumirWS = new ConsumirWS();
-            consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
+                var consumirAPI = new ConsumirAPI();
+                consumirAPI.ExecutarServico(ConteudoXML, apiConfig, Configuracoes.CertificadoDigital);
 
-            RetornoWSString = consumirWS.RetornoServicoString;
-            RetornoWSXML = consumirWS.RetornoServicoXML;
+                RetornoWSString = consumirAPI.RetornoServicoString;
+                RetornoWSXML = consumirAPI.RetornoServicoXML;
+            }
+            else
+            {
+                var soap = new WSSoap
+                {
+                    EnderecoWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao),
+                    ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
+                    TagRetorno = Configuracoes.WebTagRetorno,
+                    EncodingRetorno = Configuracoes.WebEncodingRetorno,
+                    GZIPCompress = Configuracoes.GZIPCompress,
+                    VersaoSoap = Configuracoes.WebSoapVersion,
+                    SoapString = Configuracoes.WebSoapString,
+                    ContentType = Configuracoes.WebContentType,
+                    TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
+                    Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
+                                                                            Configuracoes.ProxyUser,
+                                                                            Configuracoes.ProxyPassword) : null)
+                };
+
+                var consumirWS = new ConsumirWS();
+                consumirWS.ExecutarServico(ConteudoXML, soap, Configuracoes.CertificadoDigital);
+
+                RetornoWSString = consumirWS.RetornoServicoString;
+                RetornoWSXML = consumirWS.RetornoServicoXML;
+            }
         }
 
         /// <summary>

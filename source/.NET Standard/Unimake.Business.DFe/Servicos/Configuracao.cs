@@ -292,6 +292,16 @@ namespace Unimake.Business.DFe.Servicos
                                 UrlChaveProducao = XMLUtility.TagRead(elementPropriedades, "UrlChaveProducao");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "RequestURIProducao"))
+                            {
+                                RequestURIProducao = XMLUtility.TagRead(elementPropriedades, "RequestURIProducao");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "RequestURIHomologacao"))
+                            {
+                                RequestURIHomologacao = XMLUtility.TagRead(elementPropriedades, "RequestURIHomologacao");
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -342,11 +352,11 @@ namespace Unimake.Business.DFe.Servicos
                         throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de " + (TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
                     }
                 }
-                else if (TipoAmbiente == TipoAmbiente.Homologacao && string.IsNullOrWhiteSpace(WebEnderecoHomologacao))
+                else if (TipoAmbiente == TipoAmbiente.Homologacao && (string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIProducao)))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de homologação.");
                 }
-                else if (TipoAmbiente == TipoAmbiente.Producao && string.IsNullOrWhiteSpace(WebEnderecoProducao))
+                else if (TipoAmbiente == TipoAmbiente.Producao && (string.IsNullOrWhiteSpace(WebEnderecoProducao) && string.IsNullOrWhiteSpace(RequestURIProducao)))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de produção.");
                 }
@@ -486,7 +496,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private void SubstituirValorPropriedadeVariavel()
         {
-            if (!string.IsNullOrWhiteSpace(MunicipioToken))
+            if (!string.IsNullOrWhiteSpace(MunicipioToken) && (!string.IsNullOrEmpty(WebEnderecoHomologacao) || !string.IsNullOrEmpty(WebEnderecoHomologacao)))
             {
                 WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
                 WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
@@ -509,6 +519,7 @@ namespace Unimake.Business.DFe.Servicos
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
+
         }
 
         /// <summary>
@@ -594,6 +605,16 @@ namespace Unimake.Business.DFe.Servicos
                         if (XMLUtility.TagExist(elementVersao, "TargetNS"))
                         {
                             TargetNS = XMLUtility.TagRead(elementVersao, "TargetNS");
+                        }
+
+                        if (XMLUtility.TagExist(elementVersao, "RequestURIProducao"))
+                        {
+                            RequestURIProducao = XMLUtility.TagRead(elementVersao, "RequestURIProducao");
+                        }
+
+                        if (XMLUtility.TagExist(elementVersao, "RequestURIHomologacao"))
+                        {
+                            RequestURIHomologacao = XMLUtility.TagRead(elementVersao, "RequestURIHomologacao");
                         }
 
                         break;
@@ -849,6 +870,47 @@ namespace Unimake.Business.DFe.Servicos
         /// Endereço WebService do ambiente de produção
         /// </summary>
         public string WebEnderecoProducao { get; set; }
+
+        private string _RequestURIHomologacao;
+        /// <summary>
+        /// Endereco para consumo de API - no ambiente de homologação
+        /// </summary>
+        public string RequestURIHomologacao
+        {
+            get => _RequestURIHomologacao;
+            set 
+            {
+                _RequestURIHomologacao = value;
+                IsAPI = false;
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    IsAPI = true;
+                }
+            }
+        }
+
+        private string _RequestURIProducao;
+        /// <summary>
+        /// Endereco para consumo de API - no ambiente de producao
+        /// </summary>
+        public string RequestURIProducao 
+        { 
+            get => _RequestURIProducao;
+            set
+            {
+                _RequestURIProducao = value;
+                IsAPI = false;
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    IsAPI = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// O serviço consome API? true ou false
+        /// </summary>
+        public bool IsAPI { get; set; }
 
         /// <summary>
         /// String do Soap para envio para o webservice;

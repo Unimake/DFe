@@ -892,4 +892,16 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5211503">
+		<Nome>Itumbiara - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>ItumbiaraGO.xml</ArqConfig>
+		<PadraoNFSe>CENTI</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5207402">
+		<Nome>	Edéia - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>EdeiaGO.xml</ArqConfig>
+		<PadraoNFSe>CENTI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
