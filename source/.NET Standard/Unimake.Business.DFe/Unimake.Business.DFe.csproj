@@ -238,6 +238,7 @@
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
+		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
@@ -649,6 +650,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BrasiliaDF.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />

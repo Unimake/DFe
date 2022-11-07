@@ -904,4 +904,10 @@
 		<ArqConfig>EdeiaGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4202404">
+		<Nome>Blumenau - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>BlumenauSC.xml</ArqConfig>
+		<PadraoNFSe>SIMPLISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
