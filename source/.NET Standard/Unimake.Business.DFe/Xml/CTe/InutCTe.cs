@@ -7,6 +7,8 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Text;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -26,6 +28,25 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Desserializar o XML no objeto InutCTe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML</param>
+        /// <returns>Objeto do InutCTe</returns>
+        public InutCTe LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<InutCTe>(doc);
+        }
+
+        /// <summary>
+        /// Desserializar o XML inutCTe no objeto InutCTe
+        /// </summary>
+        /// <param name="xml">string do XML inutCTe</param>
+        /// <returns>Objeto da InutCTe</returns>
+        public InutCTe LoadFromXML(string xml) => XMLUtility.Deserializar<InutCTe>(xml);
     }
 
 #if INTEROP
