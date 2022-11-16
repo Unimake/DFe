@@ -39,25 +39,6 @@
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarLoteRps>
-		<ConsultarNfsePorFaixa versao="2.03">
-			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/ConsultarNfsePorFaixa</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/ConsultarNfsePorFaixa</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultarNfsePorFaixa><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:ConsultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-		</ConsultarNfsePorFaixa>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://testeabrasfipatinga.sigbancos.com.br/servico.asmx</WebEnderecoHomologacao>
