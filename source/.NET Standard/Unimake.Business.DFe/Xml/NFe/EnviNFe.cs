@@ -6762,6 +6762,30 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeBalsa() => !string.IsNullOrWhiteSpace(Balsa);
 
+        public bool ShouldSerializeVol()
+        {
+            if (Vol.Count <= 0)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < Vol.Count; i++)
+            {
+
+                if (Vol[i].QVol > 0 ||
+                    !string.IsNullOrWhiteSpace(Vol[i].Esp) ||
+                    !string.IsNullOrWhiteSpace(Vol[i].Marca) ||
+                    !string.IsNullOrWhiteSpace(Vol[i].NVol) ||
+                    Vol[i].PesoL > 0 ||
+                    Vol[i].PesoB > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         #endregion
 
 #if INTEROP

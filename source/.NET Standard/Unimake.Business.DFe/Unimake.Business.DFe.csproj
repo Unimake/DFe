@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2022.10.31.1630</AssemblyVersion>
-		<FileVersion>2022.10.31.1630</FileVersion>
+		<AssemblyVersion>2022.11.09.1143</AssemblyVersion>
+		<FileVersion>2022.11.09.1143</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -238,6 +238,7 @@
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
+		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
@@ -649,6 +650,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BrasiliaDF.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
