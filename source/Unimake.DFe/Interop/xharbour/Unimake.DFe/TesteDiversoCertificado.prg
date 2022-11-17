@@ -1,5 +1,5 @@
 * ---------------------------------------------------------------------------------
-* Testes diversos com certificado digital
+* Testes diversos com certificado digital no xHarbour pago ou versão free (BBC)
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }

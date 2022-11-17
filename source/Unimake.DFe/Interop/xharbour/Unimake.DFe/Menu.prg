@@ -17,7 +17,7 @@ Function Main()
    AAdd(aOpcoes, "Enviar NFe - Modo sincrono")   
    AAdd(aOpcoes, "Enviar NFe - Modo assincrono")   
    AAdd(aOpcoes, "Enviar NFe - Desserializando o XML")                               
-   AAdd(aOpcoes, "Testes diversos com certificado digital")  
+   AAdd(aOpcoes, "Testes diversos com certificado digital no xHarbour pago ou free (BBC)")  
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe")
    AAdd(aOpcoes, "Enviar Evento de Cancelamento da NFe - Desserializando o XML")
    Aadd(aOpcoes, "Gerar XML de distribuicao com um nome diferente do padrao da DLL")
@@ -50,9 +50,12 @@ Function Main()
    Aadd(aOpcoes, "Enviar MDFe - Modo sincrono - Desserializando o XML")
    Aadd(aOpcoes, "Gerar XML da NFSe") 
    AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe")
-   AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe - Desserializando XML")
-   
+   AAdd(aOpcoes, "Enviar Evento de Cancelamento do CTe - Desserializando XML")   
    AAdd(aOpcoes, "Desserializar XML NFe compra p/dar entrada no ERP (B2B)")
+   
+   AAdd(aOpcoes, "Testes diversos com certificado digital no Harbour 3.x")  
+   AAdd(aOpcoes, "Enviar XML de Inutirlizacao do CTe")  
+   AAdd(aOpcoes, "Enviar XML de Inutirlizacao do CTe - Com Desserializacao")  
    
    Do While .T.
       Cls
@@ -186,6 +189,15 @@ Function Main()
 			  
 	     case nOpcao = 40
               DesserializarXMLNFeCompra()
+			  
+	     case nOpcao = 41
+			  TesteDiversoCertificadoHarbour3x()
+			  
+         case nOpcao = 42
+		      EnviarInutCTe()
+			  
+         case nOpcao = 43
+			  EnviarInutCTeDesserializacao()	  
       endcase
    EndDo
 Return       
