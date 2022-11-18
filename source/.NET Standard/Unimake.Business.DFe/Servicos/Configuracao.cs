@@ -302,6 +302,11 @@ namespace Unimake.Business.DFe.Servicos
                                 RequestURIHomologacao = XMLUtility.TagRead(elementPropriedades, "RequestURIHomologacao");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "MetodoAPI"))
+                            {
+                                MetodoAPI = XMLUtility.TagRead(elementPropriedades, "MetodoAPI");
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -496,10 +501,22 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private void SubstituirValorPropriedadeVariavel()
         {
-            if (!string.IsNullOrWhiteSpace(MunicipioToken) && (!string.IsNullOrEmpty(WebEnderecoHomologacao) || !string.IsNullOrEmpty(WebEnderecoHomologacao)))
+            if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoHomologacao))
             {
-                WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
+                WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);         
+            }
+            else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIHomologacao))
+            {
+                RequestURIHomologacao = RequestURIHomologacao.Replace("{MunicipioToken}", MunicipioToken);
+            }
+
+            if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoProducao))
+            {
                 WebEnderecoProducao = WebEnderecoProducao.Replace("{MunicipioToken}", MunicipioToken);
+            }
+            else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIProducao))
+            {
+                RequestURIProducao = RequestURIProducao.Replace("{MunicipioToken}", MunicipioToken);
             }
 
             if (!string.IsNullOrWhiteSpace(TokenSoap))
@@ -615,6 +632,11 @@ namespace Unimake.Business.DFe.Servicos
                         if (XMLUtility.TagExist(elementVersao, "RequestURIHomologacao"))
                         {
                             RequestURIHomologacao = XMLUtility.TagRead(elementVersao, "RequestURIHomologacao");
+                        }
+
+                        if (XMLUtility.TagExist(elementVersao, "MetodoAPI"))
+                        {
+                            MetodoAPI = XMLUtility.TagRead(elementVersao, "MetodoAPI");
                         }
 
                         break;
@@ -911,6 +933,11 @@ namespace Unimake.Business.DFe.Servicos
         /// O serviço consome API? true ou false
         /// </summary>
         public bool IsAPI { get; set; }
+
+        /// <summary>
+        /// Método de solicitação da API
+        /// </summary>
+        public string MetodoAPI{ get; set; }
 
         /// <summary>
         /// String do Soap para envio para o webservice;

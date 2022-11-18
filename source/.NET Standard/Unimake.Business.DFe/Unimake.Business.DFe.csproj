@@ -239,6 +239,7 @@
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
+		<None Remove="Servicos\Config\NFSe\BonfimRR.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
@@ -252,6 +253,7 @@
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Ginfes.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
@@ -533,6 +535,7 @@
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
@@ -616,7 +619,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BonfimRR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItumbiaraGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSerranaMG.xml" />
@@ -1514,6 +1519,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />

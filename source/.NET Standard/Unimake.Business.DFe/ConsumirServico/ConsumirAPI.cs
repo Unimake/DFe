@@ -1,10 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
+using System.Buffers;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Security;
-using System.Runtime.CompilerServices;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
@@ -17,9 +21,8 @@ namespace Unimake.Business.DFe
     /// <summary>{
     /// Classe para consumir API
     /// </summary>
-    public class ConsumirAPI : ConsumirBase 
+    public class ConsumirAPI : ConsumirBase
     {
-        private static Configuracao Configuracoes { get; set; }
 
         /// <summary>
         /// Estabelece conexão com o Webservice e faz o envio do XML e recupera o retorno. Conteúdo retornado pelo webservice pode ser recuperado através das propriedades RetornoServicoXML ou RetornoServicoString.
@@ -34,27 +37,44 @@ namespace Unimake.Business.DFe
                 throw new CertificadoDigitalException();
             }
 
+            var Url = apiConfig.RequestURI;
+            var Content = EnveloparXML(apiConfig, xml);
 
-            var urlpost = new Uri(apiConfig.RequestURI);
-            var json = EnveloparXML(apiConfig, xml.OuterXml);
+            var Handler = new HttpClientHandler
+            {
+                ClientCertificateOptions = ClientCertificateOption.Automatic,                       // verificar se o modo automático atende a necessidade
+
+                //TODO: Mauricio - Precisamos definir a possibilidade de haver proxy no consumo das APIs
+                //if(apiConfig.Proxy)                                                              // configurar o proxy já dentro do hadler
+                //{
+                //    prox = apiConfig.proxy,
+                //}
+                //PreAuthenticate = Authorization;                                                  //authorization de APIs à serem implementadas futuramente
+            };
+
+
+            var httpWebRequest = new HttpClient(Handler)
+            {
+                BaseAddress = new Uri(Url),
+            };
+
 
             ServicePointManager.Expect100Continue = false;
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-                        
-            var httpWebRequest = new HttpClient();
 
-            //TODO: Mauricio - Precisamos definir a possibilidade de haver proxy no consumo das APIs
-            //Definir dados para conexão com proxy
-            //if (apiConfig.Proxy != null)
-            //{
-            //    httpWebRequest.Proxy = apiConfig.Proxy;
-            //}
-            
-            var postData = httpWebRequest.PostAsync(apiConfig.RequestURI, new StringContent(json, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
+            var postData = new HttpResponseMessage();
+            if (apiConfig.MetodoAPI.ToLower() == "get")
+            {
+                postData = httpWebRequest.GetAsync("").GetAwaiter().GetResult();
+            }
+            else
+            {
+                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, new StringContent(Content, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
+            }
 
             WebException webException = null;
-            var responsePost = "";
+            var responsePost = string.Empty;
             try
             {
                 responsePost = postData.Content.ReadAsStringAsync().Result;
@@ -72,107 +92,154 @@ namespace Unimake.Business.DFe
             }
 
             //TODO: Mauricio - Pensar numa maneira melhor de tratar o retorno com erro das APIs, 
-            if (!postData.IsSuccessStatusCode)                        //code 200 = sucesso na comunicação com o servidor
+            //Cancelar NFSe, padrão CENTI, sem tagRetorno, estamos na espera de um usuário/senha para testar ela
+            XmlDocument resultadoRetorno = new XmlDocument();
+            if (postData.IsSuccessStatusCode)
             {
-                RetornoServicoString = responsePost.Substring(responsePost.IndexOf("message"));
+                switch (postData.Content.Headers.ContentType.MediaType)
+                {
+                    case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                        resultadoRetorno.LoadXml(responsePost);
+                        break;
+
+                    case "application/json": //Retorno JSON -> Vamos ter que converter para XML
+                        resultadoRetorno = JsonConvert.DeserializeXmlNode(responsePost, apiConfig.TagRetorno);
+                        break;
+                }
             }
             else
             {
-                var retornoXml = new XmlDocument();
-                try
+                switch (postData.Content.Headers.ContentType.MediaType)
                 {
-                    retornoXml.LoadXml(responsePost);
+                    case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                        break;
+
+                    case "application/json": //Retorno JSON -> Vamos ter que converter para XML
+                        resultadoRetorno = JsonConvert.DeserializeXmlNode(responsePost, apiConfig.TagRetorno);
+                        break;
+
+                    case "text/html": //Retorno HTML -> Entendemos que sempre será erro
+                        resultadoRetorno.LoadXml(responsePost);
+                        break;
+                }
+            }
+
+            var retornoXml = new XmlDocument();
+            try
+            {
+                retornoXml = resultadoRetorno;
+
+            }
+            catch (XmlException)
+            {
+                if (webException != null)
+                {
+                    throw (webException);
                 }
 
-                catch (XmlException ex)
-                {
-                    if (webException != null)
-                    {
-                        throw (webException);
-                    }
+                throw new Exception(responsePost);
+            }
+            catch
+            {
+                throw new Exception(responsePost);
+            }
 
-                    throw (ex);
-                }
-                catch (Exception ex)
-                {
-                    throw (ex);
-                }
-
+            if (apiConfig.TagRetorno.ToLower() != "prop:innertext")
+            {
                 if (retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0] == null)
                 {
-                    throw new Exception("Não foi possível localizar a tag <" + apiConfig.TagRetorno + "> no XML retornado pela API.\r\n\r\n" +
+                    throw new Exception("Não foi possível localizar a tag <" + apiConfig.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
                         "Conteúdo retornado pelo servidor:\r\n\r\n" +
                         retornoXml.InnerXml);
                 }
-                else
+
+                RetornoServicoString = retornoXml.GetElementsByTagName(apiConfig.TagRetorno)[0].OuterXml;
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
                 {
-                    if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
-                    {
-                        throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
-                    }
-
-                    RetornoServicoString = retornoXml.InnerText;
-
-                    //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
-                    if (RetornoServicoString.IndexOf("?>") >= 0)
-                    {
-                        RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
-                    }
-
-                    //Remover quebras de linhas
-                    RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
+                    throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
                 }
 
-                RetornoServicoXML = new XmlDocument
+                RetornoServicoString = retornoXml.InnerText;
+
+                //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
+                if (RetornoServicoString.IndexOf("?>") >= 0)
                 {
-                    PreserveWhitespace = false
-                };
-                RetornoServicoXML.LoadXml(retornoXml.InnerXml);
+                    RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
+                }
+
+                //Remover quebras de linhas
+                RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
             }
+
+            RetornoServicoXML = new XmlDocument
+            {
+                PreserveWhitespace = false
+            };
+            RetornoServicoXML.LoadXml(retornoXml.InnerXml);
         }
 
         /// <summary>
-        /// 
+        /// Método para envolopar o XML, formando o JSON para comunicação com a API
         /// </summary>
-        /// <param name="apiConfig"></param>
-        /// <param name="xmlBody"></param>
+        /// <param name="apiConfig"></param>    Configurações básicas para consumo da API
+        /// <param name="xml"></param>          Arquivo XML que será enviado
         /// <returns></returns>
-        private string EnveloparXML(APIConfig apiConfig, string xmlBody)
+        private string EnveloparXML(APIConfig apiConfig, XmlDocument xml)
         {
+            var xmlBody = xml.OuterXml;
             if (apiConfig.GZipCompress)
             {
                 xmlBody = Compress.GZIPCompress(xmlBody);
             }
-
-            ///TODO: Mauricio - Precisamos ajeitar como que irá resgatar o municipio usuário/senha, declarei essas propriedades dentro de APIConfig de modo genérico
-            var json = new
+            else if (apiConfig.B64)
             {
-                usuario = "",
-                senha = "",
-                xml = xmlBody,
-            };
+                xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
+            }
 
-            var result = Newtonsoft.Json.JsonConvert.SerializeObject(json);
-            return result;
-        }
 
-        private object TratarRetorno(HttpResponseMessage httpClient)
-        {
-            #region Objeto de resposta
-            //Objeto para tratar resposta de erro da CENTI (cancelar nfse)
-            var objetoResposta = new
+            var n = apiConfig.WebSoapString.CountChars('{');
+            var dicionario = new Dictionary<string, string>();
+            var posicaoInicial = 0;
+
+            while (n > 0)
             {
-                statusCode = (int)httpClient.StatusCode,
-                message = httpClient.Content.ReadAsStringAsync().Status,
-            };
+                try
+                {
+                    var InicioTag = apiConfig.WebSoapString.IndexOf('{', posicaoInicial);
+                    var FimTag = apiConfig.WebSoapString.IndexOf('}', posicaoInicial);
+                    var tag = apiConfig.WebSoapString.Substring(InicioTag + 1, (FimTag - InicioTag) - 1);
+                    posicaoInicial = FimTag + 1;
 
-            #endregion
+                    switch (tag)
+                    {
+                        case "MunicipioUsuario":
+                            dicionario.Add("usuario", apiConfig.MunicipioUsuario);
+                            break;
+
+                        case "MunicipioSenha":
+                            dicionario.Add("senha", apiConfig.MunicipioSenha);
+                            break;
+
+                        case "xml":
+                            dicionario.Add((apiConfig.WebAction == "" ? "xml" : apiConfig.WebAction), xmlBody);
+
+                            break;
+                        default:
+                            throw new Exception($"Não foi encontrado a Tag {tag} encontrada no WebSoapString - Xml de configução do Município");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                n--;
+            }
 
 
-
-
-
-            var result = objetoResposta;
+            var result = JsonConvert.SerializeObject(dicionario);
             return result;
         }
     }

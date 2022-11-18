@@ -7,8 +7,10 @@
 			<WebEnderecoProducao>1</WebEnderecoProducao>
 			<RequestURIProducao>https://api.centi.com.br/nfe/gerar/go/edeia</RequestURIProducao>
 			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/edeia</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString>{"usuario":{MunicipioUsuario},"senha":{MunicipioSenha},"xml":"{xmlBody}"}</WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
@@ -19,8 +21,10 @@
 			<WebEnderecoProducao>1</WebEnderecoProducao>
 			<RequestURIProducao>https://api.centi.com.br/nfe/cancelar/go/edeia</RequestURIProducao>
 			<RequestURIHomologacao>https://api.centi.com.br/nfe/cancelar/homologacao/go/edeia</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<WebSoapString>{"usuario":{MunicipioUsuario},"senha":{MunicipioSenha},"xml":"{xmlBody}"}</WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno></WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
@@ -31,8 +35,10 @@
 			<WebEnderecoProducao>1</WebEnderecoProducao>
 			<RequestURIProducao>https://api.centi.com.br/nfe/consultar/rps/go/edeia</RequestURIProducao>
 			<RequestURIHomologacao>https://api.centi.com.br/nfe/consultar/homologacao/rps/go/edeia</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
+			<WebSoapString>{"usuario":{MunicipioUsuario},"senha":{MunicipioSenha},"xml":"{xmlBody}"}</WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>

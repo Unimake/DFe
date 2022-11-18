@@ -6121,6 +6121,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("CENTI")]
         CENTI = 26,
+
+        /// <summary>
+        /// NACIONAL
+        /// </summary>
+        [Description("NACIONAL")]
+        NACIONAL = 27,
     }
 
     #endregion

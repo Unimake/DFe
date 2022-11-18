@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="2.00">
 			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>https://api.centi.com.br/nfe/gerar/go/itumbiara</RequestURIProducao>
-			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/itumbiara</RequestURIHomologacao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/gerar/go/formosa</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/formosa</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
@@ -17,8 +17,8 @@
 		</GerarNfse>
 		<CancelarNfse versao="2.00">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao>https://api.centi.com.br/nfe/cancelar/go/itumbiara</RequestURIProducao>
-			<RequestURIHomologacao>https://api.centi.com.br/nfe/cancelar/homologacao/go/itumbiara</RequestURIHomologacao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/cancelar/go/formosa</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/cancelar/homologacao/go/formosa</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Pedido</TagAssinatura>
@@ -31,15 +31,15 @@
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="2.00">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://api.centi.com.br/nfe/consultar/rps/go/itumbiara</RequestURIProducao>
-			<RequestURIHomologacao>https://api.centi.com.br/nfe/consultar/homologacao/rps/go/itumbiara</RequestURIHomologacao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/consultar/rps/go/formosa</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/consultar/homologacao/rps/go/formosa</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString>{MunicipioUsuario}{MunicipioSenha}{xml}</WebSoapString>
-			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
+			<WebContentType>GerarNfseResposta</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 		</ConsultarNfsePorRps>

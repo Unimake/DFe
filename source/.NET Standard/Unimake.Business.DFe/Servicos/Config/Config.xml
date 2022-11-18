@@ -904,6 +904,18 @@
 		<ArqConfig>EdeiaGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1400159">
+		<Nome>Bonfim - RR</Nome>
+		<UF>RR</UF>
+		<ArqConfig>BonfimRR.xml</ArqConfig>
+		<PadraoNFSe>NACIONAL</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5208004">
+		<Nome>Formosa - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>FormosaGO.xml</ArqConfig>
+		<PadraoNFSe>CENTI</PadraoNFSe>
+	</Arquivo>
 	<Arquivo ID="4202404">
 		<Nome>Blumenau - SC</Nome>
 		<UF>SC</UF>
