@@ -57,6 +57,31 @@ namespace Unimake.Business.DFe.Validator.MDFe
                     throw new ValidatorDFeException("Código do município de descarregamento está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
                         " [TAG: <cMunDescarga> do grupo de tag <infMDFe><infDoc><infMunDescarga>]");
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(VeicTracao.Tara)) && element.Parent.NameEquals(nameof(VeicTracao)), Tag =>
+            {
+                if (string.IsNullOrWhiteSpace(Tag.Value))
+                {
+                    throw new ValidatorDFeException("O peso da Tara em KG dos Dados do Veículo com a Tração, placa " + Tag.Parent.GetValue("placa") + ", não foi informado." +
+                        " [TAG: <tara> do grupo de tag <infMDFe><infModal><rodo><veicTracao>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(VeicReboque.Tara)) && element.Parent.NameEquals(nameof(VeicReboque)), Tag =>
+            {
+                if (string.IsNullOrWhiteSpace(Tag.Value))
+                {
+                    var cPlaca = Tag.Parent.GetValue("placa");
+
+                    throw new ValidatorDFeException("O peso da Tara em KG dos Dados do Reboque, placa " + Tag.Parent.GetValue("placa") + ", não foi informado." +
+                        " [TAG: <tara> do grupo de tag <infMDFe><infModal><rodo><veicReboque>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(VeicReboque.CapKG)) && element.Parent.NameEquals(nameof(VeicReboque)), Tag =>
+            {
+                if (string.IsNullOrWhiteSpace(Tag.Value))
+                {
+                    var cPlaca = Tag.Parent.GetValue("placa");
+
+                    throw new ValidatorDFeException("O peso da Capacidade em KG dos Dados do Reboque, placa " + Tag.Parent.GetValue("placa") + ", não foi informado." +
+                        " [TAG: <capKG> do grupo de tag <infMDFe><infModal><rodo><veicReboque>]");
+                }
             });
 
         #endregion Public Constructors
