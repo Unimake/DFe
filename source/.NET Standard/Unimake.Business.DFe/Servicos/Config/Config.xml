@@ -763,8 +763,8 @@
 	<Arquivo ID="3545209">
 		<Nome>Salto - SP</Nome>
 		<UF>SP</UF>
-		<ArqConfig>SaltoSP.xml</ArqConfig>
-		<PadraoNFSe>OBARATEC</PadraoNFSe>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4303905">
 		<Nome>Campo Bom - RS</Nome>
