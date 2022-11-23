@@ -392,6 +392,8 @@ Function EnviarMDFeSincrono()
 			   ?
 			   ?
   	           oAutorizacao:GravarXmlDistribuicao("d:\testenfe")			   			   
+			   
+			   stringXmlDistribuicao = oAutorizacao:GetMDFeProcResults(oMDFe:InfMDFe:Chave)
 			Else   
                //Rejeitado, fazer devidos tratamentos
 			Endif
