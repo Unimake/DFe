@@ -139,6 +139,64 @@ Function EnviarNfeSincrono()
        oProd:XPed = "300474"
        oProd:NItemPed = 1
 	   
+	// criar a tag <DI> - tem como ter mais de uma tag DI, vou criar duas para ficar de exemplo, esta é a primeira
+	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+	   oDI:CExportador = ""
+       oDI:CNPJ = ""
+       oDI:DDesemb = DateTime()
+       oDI:DDI = DateTime()
+	   oDI:TpViaTransp = 7 //ViaTransporteInternacional.Rodoviaria
+	   oDI:TpIntermedio = 2 //FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
+	   oDI:NDI = "1222"
+	   
+	// Criar tag <adi>
+       oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+       oAdi:CFabricante = ""
+       oAdi:NDraw = "12344"
+
+    // Adicionar a tag <adi> dentro do grupo de tag <DI>
+	   oDI:AddAdi(oAdi)
+
+	// Criar tag <adi> -> Posso ter mais de uma tag <adi> então vou criar uma segunda vez para ficar o exemplo
+       oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+       oAdi:CFabricante = ""
+       oAdi:NDraw = "12344"
+
+    // Adicionar a tag <adi> dentro do grupo de tag <DI>
+	   oDI:AddAdi(oAdi)
+	   
+	// Adicionar a tag <DI> dentro do grupo de tag <prod>   
+	   oProd:AddDI(oDI)
+
+	// criar a tag <DI> - Segunda tag <DI>
+	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
+	   oDI:CExportador = ""
+       oDI:CNPJ = ""
+       oDI:DDesemb = DateTime()
+       oDI:DDI = DateTime()
+	   oDI:TpViaTransp = 7 //ViaTransporteInternacional.Rodoviaria
+	   oDI:TpIntermedio = 2 //FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
+	   oDI:NDI = "1222"
+	   
+	// Criar tag <adi>
+       oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+       oAdi:CFabricante = ""
+       oAdi:NDraw = "12344"
+
+    // Adicionar a tag <adi> dentro do grupo de tag <DI>
+	   oDI:AddAdi(oAdi)
+
+	// Criar tag <adi> -> Posso ter mais de uma tag <adi> então vou criar uma segunda vez para ficar o exemplo
+       oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+       oAdi:CFabricante = ""
+       oAdi:NDraw = "12344"
+
+    // Adicionar a tag <adi> dentro do grupo de tag <DI>
+	   oDI:AddAdi(oAdi)
+	   
+	// Adicionar a tag <DI> dentro do grupo de tag <prod>   
+	   oProd:AddDI(oDI)	
+	   
     // adicionar a tag Prod dentro da tag Det
        oDet:Prod = oProd
 	   

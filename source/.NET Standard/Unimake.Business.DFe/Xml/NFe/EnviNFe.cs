@@ -1705,7 +1705,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="di">Elemento</param>
-        public void AddEvento(DI di)
+        public void AddDI(DI di)
         {
             if (DI == null)
             {
