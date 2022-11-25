@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseEnvio xmlns="http://nfe.sjp.pr.gov.br/servico_consultar_nfse_envio_v03.xsd" xmlns:tipos="http://nfe.sjp.pr.gov.br/tipos_v03.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Prestador>
+    <tipos:Cnpj>01234567890123</tipos:Cnpj>
+    <tipos:InscricaoMunicipal>12345</tipos:InscricaoMunicipal>
+  </Prestador>
+  <NumeroNfse>1</NumeroNfse>
+  <PeriodoEmissao>
+    <DataInicial>2015-03-06</DataInicial>
+    <DataFinal>2015-03-06</DataFinal>
+  </PeriodoEmissao>
+</ConsultarNfseEnvio>

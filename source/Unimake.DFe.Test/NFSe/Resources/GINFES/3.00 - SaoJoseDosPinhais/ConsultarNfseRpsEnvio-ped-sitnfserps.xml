@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://nfe.sjp.pr.gov.br/servico_consultar_nfse_rps_envio_v03.xsd" xmlns:tipos="http://nfe.sjp.pr.gov.br/tipos_v03.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IdentificacaoRps>
+    <tipos:Numero>2</tipos:Numero>
+    <tipos:Serie>22</tipos:Serie>
+    <tipos:Tipo>1</tipos:Tipo>
+  </IdentificacaoRps>
+  <Prestador>
+    <tipos:Cnpj>01234567890123</tipos:Cnpj>
+    <tipos:InscricaoMunicipal>12345</tipos:InscricaoMunicipal>
+  </Prestador>
+</ConsultarNfseRpsEnvio>

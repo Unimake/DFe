@@ -922,4 +922,76 @@
 		<ArqConfig>BlumenauSC.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1500800">
+		<Nome>Ananindeua - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3503208">
+		<Nome>Araraquara - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3506359">
+		<Nome>Bertioga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3106705">
+		<Nome>Betim - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3301009">
+		<Nome>Campos dos Goytacazes - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3510401">
+		<Nome>Capivari - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3513801">
+		<Nome>Diadema - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2304400">
+		<Nome>Fortaleza - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3516200">
+		<Nome>Franca - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3518800">
+		<Nome>Guarulhos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3519071">
+		<Nome>Hortolândia - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4125506">
+		<Nome>São José dos Pinhais - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>SaoJoseDosPinhais.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

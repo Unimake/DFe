@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://nfe.sjp.pr.gov.br/servico_enviar_lote_rps_envio_v03.xsd">
+  <LoteRps Id="LOTE1">
+    <NumeroLote xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">1</NumeroLote>
+    <Cnpj xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">01234567890123</Cnpj>
+    <InscricaoMunicipal xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">12345</InscricaoMunicipal>
+    <QuantidadeRps xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">1</QuantidadeRps>
+    <ListaRps xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">
+      <Rps>
+        <InfRps Id="RPS1">
+          <IdentificacaoRps>
+            <Numero>1</Numero>
+            <Serie>A</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2015-02-06T17:01:42</DataEmissao>
+          <NaturezaOperacao>1</NaturezaOperacao>
+          <RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+          <OptanteSimplesNacional>1</OptanteSimplesNacional>
+          <IncentivadorCultural>2</IncentivadorCultural>
+          <Status>1</Status>
+          <Servico>
+            <Valores>
+              <ValorServicos>1.00</ValorServicos>
+              <ValorCsll>1.00</ValorCsll>
+              <IssRetido>2</IssRetido>
+              <ValorIss>0.02</ValorIss>
+              <ValorIssRetido>1.00</ValorIssRetido>
+              <OutrasRetencoes>0</OutrasRetencoes>
+              <BaseCalculo>1.00</BaseCalculo>
+              <Aliquota>0.02</Aliquota>
+              <ValorLiquidoNfse>1.00</ValorLiquidoNfse>
+            </Valores>
+            <ItemListaServico>0103</ItemListaServico>
+            <CodigoTributacaoMunicipio>631940001</CodigoTributacaoMunicipio>
+            <Discriminacao>TESTE ### Valor Aproximado dos Tributos: R$ 0,17</Discriminacao>
+            <CodigoMunicipio>4125506</CodigoMunicipio>
+          </Servico>
+          <Prestador>
+            <Cnpj>01234567890123</Cnpj>
+            <InscricaoMunicipal>12345</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>12345678901</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>PEDRO</RazaoSocial>
+            <Endereco>
+              <Endereco>Rua Teste</Endereco>
+              <Numero>1</Numero>
+              <Bairro>Centro</Bairro>
+              <CodigoMunicipio>4106902</CodigoMunicipio>
+              <Uf>PR</Uf>
+              <Cep>81800000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>41123456789</Telefone>
+              <Email>teste@teste.com.br</Email>
+            </Contato>
+          </Tomador>
+        </InfRps>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

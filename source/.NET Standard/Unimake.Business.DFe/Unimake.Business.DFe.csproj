@@ -287,6 +287,7 @@
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhais.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
@@ -621,6 +622,9 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BonfimRR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhais.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItumbiaraGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaSerranaMG.xml" />

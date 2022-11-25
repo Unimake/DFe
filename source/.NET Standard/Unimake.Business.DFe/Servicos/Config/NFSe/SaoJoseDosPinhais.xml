@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="3.00">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/homologacao/ws/index.php?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/ws/index.php?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>LoteRps</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://nfe.sjp.pr.gov.br"><soapenv:Header/><soapenv:Body><nfe:RecepcionarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://nfe.sjp.pr.gov.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></nfe:RecepcionarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRps>   
+    <ConsultarLoteRps versao="3.00">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/homologacao/ws/index.php?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/ws/index.php?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Protocolo</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://nfe.sjp.pr.gov.br"><soapenv:Header/><soapenv:Body><nfe:ConsultarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://nfe.sjp.pr.gov.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></nfe:ConsultarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>  
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="3.00">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/homologacao/ws/index.php?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/ws/index.php?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://nfe.sjp.pr.gov.br"><soapenv:Header/><soapenv:Body><nfe:ConsultarNfsePorRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://nfe.sjp.pr.gov.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></nfe:ConsultarNfsePorRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfse versao="3.00">
+      <Descricao>Consulta de NFSe por Data</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/homologacao/ws/index.php?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/ws/index.php?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://nfe.sjp.pr.gov.br"><soapenv:Header/><soapenv:Body><nfe:ConsultarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://nfe.sjp.pr.gov.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></nfe:ConsultarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfse>
+	<ConsultarSituacaoLoteRps versao="3.00">
+      <Descricao>Consultar Situação Lote Rps</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/homologacao/ws/index.php?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sjp.pr.gov.br/servicos/issOnline2/ws/index.php?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Protocolo</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://nfe.sjp.pr.gov.br"><soapenv:Header/><soapenv:Body><nfe:ConsultarSituacaoLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://nfe.sjp.pr.gov.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></nfe:ConsultarSituacaoLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>3.00</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarSituacaoLoteRps>	  
+</Servicos>
+</Configuracoes>
