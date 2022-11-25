@@ -994,4 +994,10 @@
 		<ArqConfig>SaoJoseDosPinhais.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4212205">
+		<Nome>Papanduva - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
