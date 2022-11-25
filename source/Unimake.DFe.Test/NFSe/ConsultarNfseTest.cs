@@ -32,15 +32,22 @@ namespace Unimake.DFe.Test.NFSe
             
             string arqXML;
 
-            switch (padraoNFSe)
+            if (codMunicipio == 4125506)
             {
-                case PadraoNFSe.NOBESISTEMAS:
-                    arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + tipoAmbiente.ToString() + "\\" + nomeXMLEnvio;
-                    break;
+                arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\3.00 - SaoJoseDosPinhais\\" + nomeXMLEnvio;
+            }
+            else
+            {
+                switch (padraoNFSe)
+                {
+                    case PadraoNFSe.NOBESISTEMAS:
+                        arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + tipoAmbiente.ToString() + "\\" + nomeXMLEnvio;
+                        break;
 
-                default:
-                    arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
-                    break;
+                    default:
+                        arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+                        break;
+                }
             }
 
             Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");

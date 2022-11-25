@@ -29,8 +29,18 @@ namespace Unimake.DFe.Test.NFSe
         public void ConsultaLote(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
         {
             var nomeXMLEnvio = "ConsultaLote-ped-loterps.xml";
-            var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            
+            string arqXML;
 
+            if (codMunicipio == 4125506)
+            {
+                arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\3.00 - SaoJoseDosPinhais\\" + nomeXMLEnvio;
+            }
+            else
+            {
+                arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
+            }
+            
             Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
             try
