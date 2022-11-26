@@ -583,7 +583,28 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     throw new ValidatorDFeException("A sigla da UF de consumo das informações específicas para combustíveis líquidos e lubrificantes está em branco e é obrigatória." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <UFCons> do grupo de tag <det><prod><comb>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Rastro.DFab)) && element.Parent.NameEquals(nameof(Rastro)) && element.Parent.Parent.NameEquals(nameof(Prod)), Tag =>
+            {
+                var cProd = Tag.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.GetAttributeValue("nItem");
 
+                if (!ValidDate(Tag.Value))
+                {
+                    throw new ValidatorDFeException("O conteúdo da data de fabricação/produção do detalhamento de produto sujeito a rastreabilidade está incorreta. Conteúdo informado: " + Tag.Value + "." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <dFab> do grupo de tag <infNFe><det><prod><rastro>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Rastro.DVal)) && element.Parent.NameEquals(nameof(Rastro)) && element.Parent.Parent.NameEquals(nameof(Prod)), Tag =>
+            {
+                var cProd = Tag.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (!ValidDate(Tag.Value))
+                {
+                    throw new ValidatorDFeException("O conteúdo da data de validade do detalhamento de produto sujeito a rastreabilidade está incorreta. Conteúdo informado: " + Tag.Value + "." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <dVal> do grupo de tag <infNFe><det><prod><rastro>]");
                 }
             });
 
@@ -599,5 +620,25 @@ namespace Unimake.Business.DFe.Validator.NFe
         public override bool CanValidate(XElement element) => XMLUtility.DetectDFeType(element.ToString()) == TipoDFe.NFe || XMLUtility.DetectDFeType(element.ToString()) == TipoDFe.NFCe;
 
         #endregion Public Methods
+
+        /// <summary>
+        /// Validação de campos do tipo data
+        /// </summary>
+        /// <param name="value">Data a ser validada</param>
+        /// <returns>Se a data está ok, ou não.</returns>
+        private bool ValidDate(string value)
+        {
+            try
+            {
+                DateTime.Parse(value);
+            }
+            catch
+            {
+                return false;
+
+            }
+
+            return true;
+        }
     }
 }
