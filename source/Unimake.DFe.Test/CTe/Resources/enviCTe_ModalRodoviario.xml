@@ -106,26 +106,6 @@
 					<fone>fone1</fone>
 				</enderEmit>
 			</emit>
-			<toma>
-				<CNPJ>00000000000000</CNPJ>
-				<IE>IE1</IE>
-				<xNome>xNome1</xNome>
-				<xFant>xFant1</xFant>
-				<fone>fone1</fone>
-				<enderToma>
-					<xLgr>xLgr1</xLgr>
-					<nro>nro1</nro>
-					<xCpl>xCpl1</xCpl>
-					<xBairro>xBairro1</xBairro>
-					<cMun>1234567</cMun>
-					<xMun>xMun1</xMun>
-					<CEP>CEP1</CEP>
-					<UF>AC</UF>
-					<cPais>1058</cPais>
-					<xPais>xPais1</xPais>
-				</enderToma>
-				<email>email1</email>
-			</toma>
 			<rem>
 				<CNPJ>00000000000000</CNPJ>
 				<IE>IE1</IE>
