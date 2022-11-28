@@ -14,7 +14,7 @@ namespace Unimake.DFe.Test.CTe
     public class AutorizacaoTest
     {
         /// <summary>
-        /// Enviar uma CTe no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Enviar uma CTe no modo assíncrono somente para saber se a conexão com o web-service está ocorrendo corretamente e se quem está respondendo é o webservice correto.
         /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
         /// <param name="ufBrasil">UF para onde deve ser enviado a CTe</param>
@@ -77,12 +77,6 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarCTeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            //Estados que não tem envio Sincrono para CTe
-            if(ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.BA)
-            {
-                return;
-            }
-
             try
             {
                 #region CriarCTe

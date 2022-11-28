@@ -104,7 +104,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     [XmlRoot("CTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class CTe
+    public class CTe : XMLBase
     {
         [XmlElement("infCte")]
         public InfCTe InfCTe { get; set; }
@@ -116,7 +116,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public Signature Signature { get; set; }
 
         /// <summary>
-        /// Deserializar o XML no objeto CTe
+        /// Desserializar o XML no objeto CTe
         /// </summary>
         /// <param name="filename">Localização do arquivo XML</param>
         /// <returns>Objeto do CTe</returns>

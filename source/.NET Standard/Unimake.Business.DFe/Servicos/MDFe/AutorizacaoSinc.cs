@@ -119,7 +119,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         #region Public Fields
 
         /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta situção do MDFe
+        /// Propriedade com o conteúdo retornado da consulta situação do MDFe
         /// </summary>
         public List<RetConsSitMDFe> RetConsSitMDFe = new List<RetConsSitMDFe>();
 
