@@ -170,8 +170,8 @@
 			<Descricao>Autorização do CTe - Síncrono</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.fazenda.pr.gov.br/cte/CteRecepcaoSinc</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.fazenda.pr.gov.br/cte/CteRecepcaoSinc</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSinc/</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSinc/</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSinc</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSinc</WebActionProducao>
 			<GZIPCompress>true</GZIPCompress>
 			<WebTagRetorno>cteRecepcaoSincResult</WebTagRetorno>
 			<SchemasEspecificos>

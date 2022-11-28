@@ -31,8 +31,8 @@ namespace Unimake.DFe.Test.CTe
         //[InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
         //[InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
         //[InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
-        //[InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
-        //[InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
         //[InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
         //[InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
         //[InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
@@ -58,8 +58,8 @@ namespace Unimake.DFe.Test.CTe
         //[InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
         //[InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
         //[InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
-        //[InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
-        //[InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
         //[InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
         //[InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
         //[InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
@@ -77,8 +77,8 @@ namespace Unimake.DFe.Test.CTe
         //[InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarCTeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            ////Estados que não tem envio Sincrono para CTe
-            //if(ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.BA)
+            //Estados que nos testes não funcionaram o retorno
+            //if (ufBrasil == UFBrasil.MS)
             //{
             //    return;
             //}
@@ -290,7 +290,7 @@ namespace Unimake.DFe.Test.CTe
                 Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
                 Diag.Debug.Assert(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
                 Diag.Debug.Assert(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacaoSinc.Result.CStat.Equals(539), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+                Diag.Debug.Assert(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
             }
             catch(Exception ex)
             {
