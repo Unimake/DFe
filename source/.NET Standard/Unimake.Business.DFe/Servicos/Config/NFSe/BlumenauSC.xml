@@ -7,7 +7,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/RecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/GerarNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/GerarNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/CancelarNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/CancelarNfse</WebActionProducao>
-	  <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+	  <SchemaArquivo></SchemaArquivo>
 	  <TagAssinatura>Pedido</TagAssinatura>
 	  <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 	  <TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/SubstituirNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/SubstituirNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Pedido</TagAssinatura>
       <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
       <TagLoteAssinatura>Rps</TagLoteAssinatura>
@@ -85,7 +85,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
       <TagAtributoID>Protocolo</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -104,7 +104,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseRps</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
       <TagAtributoID>Prestador</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -123,7 +123,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseServicoPrestado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseServicoPrestado</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
       <TagAtributoID>Prestador</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -142,7 +142,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseServicoTomado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseServicoTomado</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
       <TagAtributoID>Pagina</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -161,7 +161,7 @@
       <WebEnderecoProducao>https://wsblumenau1.simplissweb.com.br/nfseservice.svc</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseFaixa</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/INfseService/ConsultarNfseFaixa</WebActionProducao>
-      <SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
       <TagAtributoID>Prestador</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
