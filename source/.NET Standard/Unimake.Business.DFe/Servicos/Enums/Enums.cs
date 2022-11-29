@@ -354,6 +354,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização do CTe")]
         CTeAutorizacaoSinc = 56,
 
+        /// <summary>
+        /// 57 - Obter Critica Lote de XML da NFS-e para prefeitura
+        /// </summary>
+        [Description("Obter Critica Lote")]
+        NFSeObterCriticaLote = 57,
+
         #endregion
 
         #region Gerais
