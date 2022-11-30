@@ -40,28 +40,27 @@ namespace Unimake.Business.DFe
             var Url = apiConfig.RequestURI;
             var Content = EnveloparXML(apiConfig, xml);
 
+            #region Conexão API
             var Handler = new HttpClientHandler
             {
                 ClientCertificateOptions = ClientCertificateOption.Automatic,                       // verificar se o modo automático atende a necessidade
-
-                //TODO: Mauricio - Precisamos definir a possibilidade de haver proxy no consumo das APIs
-                //if(apiConfig.Proxy)                                                              // configurar o proxy já dentro do hadler
-                //{
-                //    prox = apiConfig.proxy,
-                //}
-                //PreAuthenticate = Authorization;                                                  //authorization de APIs à serem implementadas futuramente
             };
-
 
             var httpWebRequest = new HttpClient(Handler)
             {
                 BaseAddress = new Uri(Url),
             };
 
+            if (apiConfig.Token != null)
+            {
+                httpWebRequest.DefaultRequestHeaders.Add("Authorization", apiConfig.Token);
+            }
 
             ServicePointManager.Expect100Continue = false;
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+            #endregion
 
             var postData = new HttpResponseMessage();
             if (apiConfig.MetodoAPI.ToLower() == "get")
@@ -91,8 +90,7 @@ namespace Unimake.Business.DFe
                 }
             }
 
-            //TODO: Mauricio - Pensar numa maneira melhor de tratar o retorno com erro das APIs, 
-            //Cancelar NFSe, padrão CENTI, sem tagRetorno, estamos na espera de um usuário/senha para testar ela
+            //TODO: Mauricio - Ainda há o que melhorar no retorno com erro das APIs
             XmlDocument resultadoRetorno = new XmlDocument();
             if (postData.IsSuccessStatusCode)
             {
@@ -105,6 +103,10 @@ namespace Unimake.Business.DFe
                     case "application/json": //Retorno JSON -> Vamos ter que converter para XML
                         resultadoRetorno = JsonConvert.DeserializeXmlNode(responsePost, apiConfig.TagRetorno);
                         break;
+
+                    case "application/xml": //Retorno xml
+                        resultadoRetorno.LoadXml(responsePost);
+                        break;
                 }
             }
             else
@@ -112,6 +114,9 @@ namespace Unimake.Business.DFe
                 switch (postData.Content.Headers.ContentType.MediaType)
                 {
                     case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                        break;
+
+                    case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                         break;
 
                     case "application/json": //Retorno JSON -> Vamos ter que converter para XML
@@ -189,7 +194,7 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         private string EnveloparXML(APIConfig apiConfig, XmlDocument xml)
         {
-            var xmlBody = xml.OuterXml;
+             var xmlBody = xml.OuterXml;
             if (apiConfig.GZipCompress)
             {
                 xmlBody = Compress.GZIPCompress(xmlBody);
@@ -213,20 +218,24 @@ namespace Unimake.Business.DFe
                     var tag = apiConfig.WebSoapString.Substring(InicioTag + 1, (FimTag - InicioTag) - 1);
                     posicaoInicial = FimTag + 1;
 
-                    switch (tag)
+                    switch (tag.ToLower())
                     {
-                        case "MunicipioUsuario":
+                        case "usuario":
                             dicionario.Add("usuario", apiConfig.MunicipioUsuario);
                             break;
 
-                        case "MunicipioSenha":
+                        case "senha":
                             dicionario.Add("senha", apiConfig.MunicipioSenha);
                             break;
 
                         case "xml":
-                            dicionario.Add((apiConfig.WebAction == "" ? "xml" : apiConfig.WebAction), xmlBody);
-
+                            dicionario.Add((apiConfig.WebAction == null ? "xml" : apiConfig.WebAction), xmlBody);
                             break;
+
+                        case "token":
+                            apiConfig.Token = "31931-P4STI3FJ9JQM74TOY9IF4YJL727SHMZH";     //temporário  teste GIAP Authorization: 31931-P4STI3FJ9JQM74TOY9IF4YJL727SHMZH
+                            break;
+
                         default:
                             throw new Exception($"Não foi encontrado a Tag {tag} encontrada no WebSoapString - Xml de configução do Município");
                     }
@@ -238,8 +247,14 @@ namespace Unimake.Business.DFe
                 n--;
             }
 
-
-            var result = JsonConvert.SerializeObject(dicionario);
+            var result = "";
+            if (apiConfig.ContentType == "application/json")
+            {
+                result = JsonConvert.SerializeObject(dicionario);
+            } else
+            {
+                result = xmlBody;
+            }
             return result;
         }
     }

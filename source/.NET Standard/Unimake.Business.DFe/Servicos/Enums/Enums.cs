@@ -6127,6 +6127,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("NACIONAL")]
         NACIONAL = 27,
+
+        /// <summary>
+        /// GIAP
+        /// </summary>
+        [Description("GIAP")]
+        GIAP = 28,
     }
 
     #endregion

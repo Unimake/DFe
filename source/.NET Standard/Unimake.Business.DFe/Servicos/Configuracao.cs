@@ -357,7 +357,7 @@ namespace Unimake.Business.DFe.Servicos
                         throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de " + (TipoAmbiente == TipoAmbiente.Homologacao ? "homologação." : "produção."));
                     }
                 }
-                else if (TipoAmbiente == TipoAmbiente.Homologacao && (string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIProducao)))
+                else if (TipoAmbiente == TipoAmbiente.Homologacao && (string.IsNullOrWhiteSpace(WebEnderecoHomologacao) && string.IsNullOrWhiteSpace(RequestURIHomologacao)))
                 {
                     throw new Exception(Nome + " não disponibiliza o serviço de " + Servico.GetAttributeDescription() + " para o ambiente de homologação.");
                 }
@@ -893,46 +893,31 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public string WebEnderecoProducao { get; set; }
 
-        private string _RequestURIHomologacao;
         /// <summary>
         /// Endereco para consumo de API - no ambiente de homologação
         /// </summary>
-        public string RequestURIHomologacao
-        {
-            get => _RequestURIHomologacao;
-            set 
-            {
-                _RequestURIHomologacao = value;
-                IsAPI = false;
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    IsAPI = true;
-                }
-            }
-        }
+        public string RequestURIHomologacao { get; set; }
 
-        private string _RequestURIProducao;
         /// <summary>
         /// Endereco para consumo de API - no ambiente de producao
         /// </summary>
-        public string RequestURIProducao 
-        { 
-            get => _RequestURIProducao;
-            set
-            {
-                _RequestURIProducao = value;
-                IsAPI = false;
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    IsAPI = true;
-                }
-            }
-        }
+        public string RequestURIProducao { get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false
         /// </summary>
-        public bool IsAPI { get; set; }
+        public bool IsAPI
+        {
+            get
+            { 
+                if (!string.IsNullOrWhiteSpace(RequestURIProducao) || !string.IsNullOrWhiteSpace(RequestURIHomologacao))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
 
         /// <summary>
         /// Método de solicitação da API

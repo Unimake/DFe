@@ -223,6 +223,10 @@ namespace Unimake.Business.DFe.Servicos
                     RequestURI = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao),
                     TagRetorno = Configuracoes.WebTagRetorno,
                     GZipCompress = Configuracoes.GZIPCompress,
+                    WebSoapString = Configuracoes.WebSoapString,
+                    MetodoAPI = Configuracoes.MetodoAPI,
+                    Token = Configuracoes.MunicipioToken,
+
                 };
 
                 var consumirAPI = new ConsumirAPI();

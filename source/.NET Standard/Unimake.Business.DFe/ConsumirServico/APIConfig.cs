@@ -23,6 +23,16 @@ namespace Unimake.Business.DFe
         private Servico _Servico;
         private string _WebActionProducao;
         private IWebProxy _Proxy;
+        private string _Token;
+
+        /// <summary>
+        /// Token 
+        /// </summary>
+        public string Token
+        {
+            get => _Token;
+            set => _Token = value;
+        }
 
         /// <summary>
         /// Configuracões de proxy

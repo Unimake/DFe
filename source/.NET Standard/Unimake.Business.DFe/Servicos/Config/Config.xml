@@ -802,7 +802,7 @@
 		<ArqConfig>AraguainaTO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-<Arquivo ID="4308607">
+	<Arquivo ID="4308607">
 		<Nome>Garibaldi - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>GaribaldiRS.xml</ArqConfig>
@@ -999,5 +999,11 @@
 		<UF>SC</UF>
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3510609">
+		<Nome>Carapicuíba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CarapicuibaSP.xml</ArqConfig>
+		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
