@@ -13,8 +13,8 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
-	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnvioLoteRPSRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML>{xmlBodyScape}</MensagemXML></EnvioLoteRPSRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-      <WebTagRetorno>RetornoXML</WebTagRetorno>
+	  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnvioLoteRPSRequest xmlns="http://www.prefeitura.sp.gov.br/nfe"><VersaoSchema>1</VersaoSchema><MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></MensagemXML></EnvioLoteRPSRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
       <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
       <WebSoapVersion>soap11</WebSoapVersion>
       <SchemaVersao>2.00</SchemaVersao>

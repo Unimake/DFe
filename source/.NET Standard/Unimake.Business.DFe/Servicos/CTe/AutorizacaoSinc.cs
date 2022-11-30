@@ -12,49 +12,46 @@ using Unimake.Exceptions;
 namespace Unimake.Business.DFe.Servicos.CTe
 {
     /// <summary>
-    /// Envio do XML de lote de CTe para o WebService - Envio assíncrono
+    /// Envio do XML de CTe para o WebService - Envio síncrono
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.CTe.Autorizacao")]
+    [ProgId("Unimake.Business.DFe.Servicos.CTe.AutorizacaoSinc")]
     [ComVisible(true)]
 #endif
-    public class Autorizacao : ServicoBase, IInteropService<EnviCTe>
+    public class AutorizacaoSinc : ServicoBase, IInteropService<Xml.CTe.CTe>
     {
         private void MontarQrCode()
         {
-            EnviCTe = new EnviCTe().LerXML<EnviCTe>(ConteudoXML);
+            CTe = new Xml.CTe.CTe().LerXML<Xml.CTe.CTe>(ConteudoXML);
 
-            for (var i = 0; i < EnviCTe.CTe.Count; i++)
+            if (CTe.InfCTeSupl == null)
             {
-                if (EnviCTe.CTe[i].InfCTeSupl == null)
+                CTe.InfCTeSupl = new InfCTeSupl();
+
+                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
+
+                var paramLinkQRCode = urlQrCode +
+                    "?chCTe=" + CTe.InfCTe.Chave +
+                    "&tpAmb=" + ((int)CTe.InfCTe.Ide.TpAmb).ToString();
+
+                if (CTe.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || CTe.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
                 {
-                    EnviCTe.CTe[i].InfCTeSupl = new InfCTeSupl();
-
-                    var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
-
-                    var paramLinkQRCode = urlQrCode +
-                        "?chCTe=" + EnviCTe.CTe[i].InfCTe.Chave +
-                        "&tpAmb=" + ((int)EnviCTe.CTe[i].InfCTe.Ide.TpAmb).ToString();
-
-                    if (EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || EnviCTe.CTe[i].InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
-                    {
-                        paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, EnviCTe.CTe[i].InfCTe.Chave);
-                    }
-
-                    EnviCTe.CTe[i].InfCTeSupl.QrCodCTe = paramLinkQRCode.Trim();
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, CTe.InfCTe.Chave);
                 }
+
+                CTe.InfCTeSupl.QrCodCTe = paramLinkQRCode.Trim();
             }
 
             //Atualizar a propriedade do XML do CTe novamente com o conteúdo atual já a tag de QRCode e link de consulta
-            ConteudoXML = EnviCTe.GerarXML();
+            ConteudoXML = CTe.GerarXML();
         }
 
         /// <summary>
         /// Validar o XML do CTe e também o Modal específico
         /// </summary>
         /// <param name="xml">XML a ser validado</param>
-        /// <param name="schemaArquivo">Nome do arquivo de schemas para ser utilizado na validação</param>
+        /// <param name="schemaArquivo">Nome do arquivo de schema's para ser utilizado na validação</param>
         /// <param name="targetNS">Namespace a ser utilizado na validação</param>
         private void ValidarXMLCTe(XmlDocument xml, string schemaArquivo, string targetNS)
         {
@@ -69,7 +66,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
         #region Private Fields
 
-        private EnviCTe _enviCTe;
+        private Xml.CTe.CTe _CTe;
         private readonly Dictionary<string, CteProc> CteProcs = new Dictionary<string, CteProc>();
 
         #endregion Private Fields
@@ -79,10 +76,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Objeto do XML do CTe
         /// </summary>
-        public EnviCTe EnviCTe
+        public Xml.CTe.CTe CTe
         {
-            get => _enviCTe ?? (_enviCTe = new EnviCTe().LerXML<EnviCTe>(ConteudoXML));
-            protected set => _enviCTe = value;
+            get => _CTe ?? (_CTe = new Xml.CTe.CTe().LerXML<Xml.CTe.CTe>(ConteudoXML));
+            protected set => _CTe = value;
         }
 
         #endregion Protected Properties
@@ -94,22 +91,22 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if (EnviCTe == null)
+            if (CTe == null)
             {
                 Configuracoes.Definida = false;
                 return;
             }
 
-            var xml = EnviCTe;
+            var xml = CTe;
 
             if (!Configuracoes.Definida)
             {
-                Configuracoes.Servico = Servico.CTeAutorizacao;
-                Configuracoes.CodigoUF = (int)xml.CTe[0].InfCTe.Ide.CUF;
-                Configuracoes.TipoAmbiente = xml.CTe[0].InfCTe.Ide.TpAmb;
-                Configuracoes.Modelo = xml.CTe[0].InfCTe.Ide.Mod;
-                Configuracoes.TipoEmissao = xml.CTe[0].InfCTe.Ide.TpEmis;
-                Configuracoes.SchemaVersao = xml.Versao;
+                Configuracoes.Servico = Servico.CTeAutorizacaoSinc;
+                Configuracoes.CodigoUF = (int)xml.InfCTe.Ide.CUF;
+                Configuracoes.TipoAmbiente = xml.InfCTe.Ide.TpAmb;
+                Configuracoes.Modelo = xml.InfCTe.Ide.Mod;
+                Configuracoes.TipoEmissao = xml.InfCTe.Ide.TpEmis;
+                Configuracoes.SchemaVersao = xml.InfCTe.Versao;
 
                 base.DefinirConfiguracao();
             }
@@ -169,30 +166,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         #region Public Properties
 
         /// <summary>
-        /// Propriedade com o conteúdo retornado da consulta recibo
-        /// </summary>
-        public RetConsReciCTe RetConsReciCTe { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Atribuir null para a propriedade RetConsReciCTe. (Em FOXPRO não conseguimos atribuir NULL diretamente na propriedade, dá erro de OLE)
-        /// </summary>
-        public void SetNullRetConsReciCTe() => RetConsReciCTe = null;
-
-        /// <summary>
-        /// Adicionar o retorno da consulta situação do CTe na lista dos retornos para elaboração do XML de Distribuição
-        /// </summary>
-        /// <param name="item">Resultado da consulta situação do CTe</param>
-        public void AddRetConsSitCTes(RetConsSitCTe item) => (RetConsSitCTes ?? (RetConsSitCTes = new List<RetConsSitCTe>())).Add(item);
-
-#endif
-
-
-        /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situação do CTe
         /// </summary>
-        public List<RetConsSitCTe> RetConsSitCTes = new List<RetConsSitCTe>();
+        public List<RetConsSitCTe> RetConsSitCTe = new List<RetConsSitCTe>();
 
         /// <summary>
         /// Propriedade contendo o XML da CTe com o protocolo de autorização anexado - Envio Assíncrono
@@ -201,93 +177,69 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             get
             {
-                if (RetConsReciCTe == null && RetConsSitCTes.Count <= 0)
+                if (Result.ProtCTe != null)
                 {
-                    throw new Exception("Defina o conteúdo da Propriedade RetConsReciCTe ou RetConsSitCte, sem a definição de uma delas não é possível obter o conteúdo da CteProcResults.");
-                }
-
-                for (var i = 0; i < EnviCTe.CTe.Count; i++)
-                {
-                    ProtCTe protCTe = null;
-
-                    if (RetConsReciCTe != null && RetConsReciCTe.ProtCTe != null)
+                    if (CteProcs.ContainsKey(CTe.InfCTe.Chave))
                     {
-                        #region Resultado do envio do CT-e através da consulta recibo
-
-                        if (RetConsReciCTe.CStat == 104) //Lote Processado
-                        {
-                            foreach (var item in RetConsReciCTe.ProtCTe)
-                            {
-                                if (item.InfProt.ChCTe == EnviCTe.CTe[i].InfCTe.Chave)
-                                {
-                                    switch (item.InfProt.CStat)
-                                    {
-                                        case 100: //CTe Autorizado
-                                        case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
-                                        case 301: //CTe Denegado - Irregularidade fiscal do emitente
-                                        case 302: //CTe Denegado - Irregularidade fiscal do remetente
-                                        case 303: //CTe Denegado - Irregularidade fiscal do destinatário
-                                        case 304: //CTe Denegado - Irregularidade fiscal do expedidor
-                                        case 305: //CTe Denegado - Irregularidade fiscal do recebedor
-                                        case 306: //CTe Denegado - Irregularidade fiscal do tomador
-                                            protCTe = item;
-                                            break;
-                                    }
-
-                                    break;
-                                }
-                            }
-                        }
-                        #endregion
-                    }
-                    else if (RetConsSitCTes.Count > 0)
-                    {
-                        #region Resultado do envio do CT-e através da consulta situação
-
-                        foreach (var item in RetConsSitCTes)
-                        {
-                            if (item != null && item.ProtCTe != null)
-                            {
-                                if (item.ProtCTe.InfProt.ChCTe == EnviCTe.CTe[i].InfCTe.Chave)
-                                {
-                                    switch (item.ProtCTe.InfProt.CStat)
-                                    {
-                                        case 100: //CTe Autorizado
-                                        case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
-                                        case 301: //CTe Denegado - Irregularidade fiscal do emitente
-                                        case 302: //CTe Denegado - Irregularidade fiscal do remetente
-                                        case 303: //CTe Denegado - Irregularidade fiscal do destinatário
-                                        case 304: //CTe Denegado - Irregularidade fiscal do expedidor
-                                        case 305: //CTe Denegado - Irregularidade fiscal do recebedor
-                                        case 306: //CTe Denegado - Irregularidade fiscal do tomador
-                                            protCTe = item.ProtCTe;
-                                            break;
-                                    }
-                                }
-                            }
-                        }
-
-                        #endregion
-                    }
-
-                    if (CteProcs.ContainsKey(EnviCTe.CTe[i].InfCTe.Chave))
-                    {
-                        CteProcs[EnviCTe.CTe[i].InfCTe.Chave].ProtCTe = protCTe;
+                        CteProcs[CTe.InfCTe.Chave].ProtCTe = Result.ProtCTe;
                     }
                     else
                     {
-                        //Se por algum motivo não tiver assinado, só vou forçar atualizar o ConteudoXML para ficar correto na hora de gerar o arquivo de distribuição. Pode estar sem assinar no caso do desenvolvedor estar forçando gerar o XML já autorizado a partir de uma consulta situação da NFe, caso tenha perdido na tentativa do primeiro envio.
-                        if (EnviCTe.CTe[i].Signature == null)
+                        CteProcs.Add(CTe.InfCTe.Chave, new CteProc
                         {
-                            ConteudoXML = ConteudoXMLAssinado;
-                            AjustarXMLAposAssinado();
-                        }
+                            Versao = CTe.InfCTe.Versao,
+                            CTe = CTe,
+                            ProtCTe = Result.ProtCTe
+                        });
+                    }
+                }
+                else
+                {
+                    if (RetConsSitCTe == null || RetConsSitCTe.Count <= 0)
+                    {
+                        throw new Exception("Defina o conteúdo da Propriedade RetConsSitCTe, sem a definição não é possível obter o conteúdo da CteProcResults.");
+                    }
 
-                        CteProcs.Add(EnviCTe.CTe[i].InfCTe.Chave,
+                    ProtCTe protCTe = null;
+
+                    #region Resultado do envio do CT-e através da consulta situação
+
+                    foreach (var item in RetConsSitCTe)
+                    {
+                        if (item != null && item.ProtCTe != null)
+                        {
+                            if (item.ProtCTe.InfProt.ChCTe == CTe.InfCTe.Chave)
+                            {
+                                switch (item.ProtCTe.InfProt.CStat)
+                                {
+                                    case 100: //CTe Autorizado
+                                    case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
+                                    case 301: //CTe Denegado - Irregularidade fiscal do emitente
+                                    case 302: //CTe Denegado - Irregularidade fiscal do remetente
+                                    case 303: //CTe Denegado - Irregularidade fiscal do destinatário
+                                    case 304: //CTe Denegado - Irregularidade fiscal do expedidor
+                                    case 305: //CTe Denegado - Irregularidade fiscal do recebedor
+                                    case 306: //CTe Denegado - Irregularidade fiscal do tomador
+                                        protCTe = item.ProtCTe;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
+                    #endregion
+
+                    if (CteProcs.ContainsKey(CTe.InfCTe.Chave))
+                    {
+                        CteProcs[CTe.InfCTe.Chave].ProtCTe = protCTe;
+                    }
+                    else
+                    {
+                        CteProcs.Add(CTe.InfCTe.Chave,
                             new CteProc
                             {
-                                Versao = EnviCTe.Versao,
-                                CTe = EnviCTe.CTe[i],
+                                Versao = CTe.InfCTe.Versao,
+                                CTe = CTe,
                                 ProtCTe = protCTe
                             });
                     }
@@ -327,16 +279,16 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public RetEnviCTe Result
+        public RetCTe Result
         {
             get
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetEnviCTe>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetCTe>(RetornoWSXML);
                 }
 
-                return new RetEnviCTe
+                return new RetCTe
                 {
                     CStat = 0,
                     XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
@@ -351,21 +303,21 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Construtor
         /// </summary>
-        public Autorizacao() : base() => CteProcs.Clear();
+        public AutorizacaoSinc() : base() => CteProcs.Clear();
 
         /// <summary>
         /// Construtor
         /// </summary>
-        /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="cte">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public Autorizacao(EnviCTe enviCTe, Configuracao configuracao) : this()
+        public AutorizacaoSinc(Xml.CTe.CTe cte, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+            Inicializar(cte?.GerarXML() ?? throw new ArgumentNullException(nameof(cte)), configuracao);
         }
 
         #endregion Public Constructors
@@ -382,9 +334,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         {
             if (!Configuracoes.Definida)
             {
-                if (EnviCTe == null)
+                if (CTe == null)
                 {
-                    throw new NullReferenceException($"{nameof(EnviCTe)} não pode ser nulo.");
+                    throw new NullReferenceException($"{nameof(CTe)} não pode ser nulo.");
                 }
 
                 DefinirConfiguracao();
@@ -398,10 +350,10 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="cte">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
-        public void Executar(EnviCTe enviCTe, Configuracao configuracao)
+        public void Executar(Xml.CTe.CTe cte, Configuracao configuracao)
         {
             try
             {
@@ -410,7 +362,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+                Inicializar(cte?.GerarXML() ?? throw new ArgumentNullException(nameof(cte)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
@@ -430,9 +382,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <summary>
         /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
         /// </summary>
-        /// <param name="enviCTe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="cte">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public void SetXMLConfiguracao(EnviCTe enviCTe, Configuracao configuracao)
+        public void SetXMLConfiguracao(Xml.CTe.CTe cte, Configuracao configuracao)
         {
             try
             {
@@ -441,13 +393,22 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(enviCTe?.GerarXML() ?? throw new ArgumentNullException(nameof(enviCTe)), configuracao);
+                Inicializar(cte?.GerarXML() ?? throw new ArgumentNullException(nameof(cte)), configuracao);
             }
             catch (Exception ex)
             {
                 ThrowHelper.Instance.Throw(ex);
             }
         }
+
+        /// <summary>
+        /// Adiciona um retorno da consulta situação da MDF-e.
+        /// Este método está disponível apenas para interop
+        /// </summary>
+        /// <param name="item">Item que será adicionado</param>
+        [ComVisible(true)]
+        public void AddRetConsSitCTe(RetConsSitCTe item) =>
+            (RetConsSitCTe ?? (RetConsSitCTe = new List<RetConsSitCTe>())).Add(item);
 
 #endif
 

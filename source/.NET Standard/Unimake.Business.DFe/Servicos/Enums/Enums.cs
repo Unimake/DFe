@@ -91,7 +91,7 @@ namespace Unimake.Business.DFe.Servicos
         CTeConsultaRecibo = 12,
 
         /// <summary>
-        /// 13 - Envio do XML de CTe
+        /// 13 - Envio do lote de XML de CTe - Assíncrono
         /// </summary>
         [Description("Autorização do CTe")]
         CTeAutorizacao = 13,
@@ -347,6 +347,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("Consultar Rps Serviço Prestado")]
         NFSeConsultarRpsServicoPrestado = 55,
+
+        /// <summary>
+        /// 56 - Envio do XML de CTe - Síncrono
+        /// </summary>
+        [Description("Autorização do CTe")]
+        CTeAutorizacaoSinc = 56,
+
+        /// <summary>
+        /// 57 - Obter Critica Lote de XML da NFS-e para prefeitura
+        /// </summary>
+        [Description("Obter Critica Lote")]
+        NFSeObterCriticaLote = 57,
 
         #endregion
 

@@ -151,5 +151,52 @@
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
     </RetAutorizacao>
+	  <AutorizacaoSinc versao="3.00">
+		  <Descricao>Autorização do CTe - Síncrono</Descricao>
+		  <WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CteRecepcaoSinc</WebEnderecoHomologacao>
+		  <WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CteRecepcaoSinc</WebEnderecoProducao>
+		  <WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSinc</WebActionHomologacao>
+		  <WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSinc</WebActionProducao>
+		  <GZIPCompress>true</GZIPCompress>
+		  <WebTagRetorno>ns1:cteRecepcaoSincResult</WebTagRetorno>
+		  <SchemasEspecificos>
+			  <Tipo>
+				  <ID>1</ID>
+				  <SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+				  <SchemaArquivoEspecifico>cteModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
+			  </Tipo>
+			  <Tipo>
+				  <ID>2</ID>
+				  <SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+				  <SchemaArquivoEspecifico>cteModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+			  </Tipo>
+			  <Tipo>
+				  <ID>3</ID>
+				  <SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+				  <SchemaArquivoEspecifico>cteModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+			  </Tipo>
+			  <Tipo>
+				  <ID>4</ID>
+				  <SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+				  <SchemaArquivoEspecifico>cteModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+			  </Tipo>
+			  <Tipo>
+				  <ID>5</ID>
+				  <SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+				  <SchemaArquivoEspecifico>cteModalDutoviario_v{0}.xsd</SchemaArquivoEspecifico>
+			  </Tipo>
+			  <Tipo>
+				  <ID>6</ID>
+				  <SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+				  <SchemaArquivoEspecifico>cteMultiModal_v{0}.xsd</SchemaArquivoEspecifico>
+			  </Tipo>
+		  </SchemasEspecificos>
+		  <TagAssinatura>CTe</TagAssinatura>
+		  <TagAtributoID>infCte</TagAtributoID>
+		  <TagLoteAssinatura></TagLoteAssinatura>
+		  <TagLoteAtributoID></TagLoteAtributoID>
+		  <UrlQrCodeHomologacao>https://homologacao.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+		  <UrlQrCodeProducao>https://www.sefaz.mt.gov.br/cte/qrcode</UrlQrCodeProducao>
+	  </AutorizacaoSinc>
   </Servicos>
 </Configuracoes>
