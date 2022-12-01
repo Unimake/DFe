@@ -1006,4 +1006,82 @@
 		<ArqConfig>CarapicuibaSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4128104">
+		<Nome>Umuarama - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3549805">
+		<Nome>São José do Rio Preto - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548807">
+		<Nome>São Caetano do Sul - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548708">
+		<Nome>São Bernardo do Campo - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548500">
+		<Nome>Santos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3547809">
+		<Nome>Santo André - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3542602">
+		<Nome>Registro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3536505">
+		<Nome>Paulínia - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3533908">
+		<Nome>Olímpia - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3529401">
+		<Nome>Mauá - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2704708">
+		<Nome>Marechal Deodoro - AL</Nome>
+		<UF>AL</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3525904">
+		<Nome>Jundiaí - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3523909">
+		<Nome>Itu - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
