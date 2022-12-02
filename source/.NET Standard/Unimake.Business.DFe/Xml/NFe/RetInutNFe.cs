@@ -4,6 +4,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Runtime.ConstrainedExecution;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -29,6 +30,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ProgId("Unimake.Business.DFe.Xml.NFe.InfInut")]
     [ComVisible(true)]
 #endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class InfInut
     {
         [XmlElement("tpAmb")]

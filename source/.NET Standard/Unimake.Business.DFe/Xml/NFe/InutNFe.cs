@@ -33,6 +33,8 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ProgId("Unimake.Business.DFe.Xml.NFe.InutNFeInfInut")]
     [ComVisible(true)]
 #endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class InutNFeInfInut
     {
         private string IdField;
