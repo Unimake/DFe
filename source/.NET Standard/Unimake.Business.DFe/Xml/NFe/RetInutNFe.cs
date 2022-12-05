@@ -4,7 +4,6 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Runtime.ConstrainedExecution;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -15,14 +14,15 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ProgId("Unimake.Business.DFe.Xml.NFe.RetInutNFe")]
     [ComVisible(true)]
 #endif
+    [Serializable()]
     [XmlRoot("retInutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class RetInutNFe : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
-        [XmlElement(ElementName = "infInut")]
-        public InfInut InfInut = new InfInut();
+        [XmlElement("infInut")]
+        public InfInut InfInut { get; set; }
     }
 
 #if INTEROP
@@ -31,7 +31,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    [XmlType("infInut", AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class InfInut
     {
         [XmlElement("tpAmb")]
