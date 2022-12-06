@@ -1084,4 +1084,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5101803">
+		<Nome>Barra do Garças - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>BarraDoGarcasMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
