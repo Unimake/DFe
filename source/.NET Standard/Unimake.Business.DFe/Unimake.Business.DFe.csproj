@@ -234,6 +234,7 @@
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
@@ -620,6 +621,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CarapicuibaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BonfimRR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
