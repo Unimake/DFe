@@ -1090,4 +1090,10 @@
 		<ArqConfig>BarraDoGarcasMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3170107">
+		<Nome>Uberaba - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>UberabaMG.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -298,6 +298,7 @@
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
+		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
 		<None Remove="Servicos\Config\SNCM\Config.xml" />
@@ -621,6 +622,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\UberabaMG.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CarapicuibaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BonfimRR.xml" />
