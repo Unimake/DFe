@@ -188,7 +188,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
 #endif
 
-
         /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situação do CTe
         /// </summary>

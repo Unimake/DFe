@@ -133,6 +133,9 @@ namespace Unimake.Business.DFe.Servicos
             Configuracoes.Load(GetType().Name);
 
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
+
+            //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
+            _ = ConteudoXMLAssinado;
         }
 
         #endregion Protected Internal Methods
