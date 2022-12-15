@@ -89,7 +89,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string UsrAgt
         {
             get => UsrAgtField;
-            set => UsrAgtField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140);
+            set => UsrAgtField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
         }
 
         /// <summary>
