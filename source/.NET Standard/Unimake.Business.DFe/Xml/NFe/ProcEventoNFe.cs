@@ -71,7 +71,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 {
                     //SEFAZ MG está retornando o nome da tag signature da seguinte forma <Signature:Signature> e o correto é somente <Signature>
                     //Até que eles façam a correção, já solicitamos abertura de chamado na SEFAZ MG, vamos manter este código para evitar erro de objeto não reconhecido.
-                    if (Evento.InfEvento.COrgao == Servicos.UFBrasil.MG)
+                    if (Evento.InfEvento.ChNFe.Substring(0, 2) == "31")
                     {
                         var nodeListSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature:Signature");
 
