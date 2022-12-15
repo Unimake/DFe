@@ -154,12 +154,6 @@
 		<ArqConfig>NilopolisRJ.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4118402">
-		<Nome>Paranavaí - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4209300">
 		<Nome>Lages - SC</Nome>
 		<UF>SC</UF>
@@ -1095,5 +1089,11 @@
 		<UF>MG</UF>
 		<ArqConfig>UberabaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4216909">
+		<Nome>São Lourenço do Oeste - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
