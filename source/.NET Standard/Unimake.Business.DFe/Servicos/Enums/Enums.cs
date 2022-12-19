@@ -6145,6 +6145,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("GIAP")]
         GIAP = 28,
+
+        /// <summary>
+        /// EQUIPLANO 
+        /// </summary>
+        [Description("EQUIPLANO ")]
+        EQUIPLANO = 29,
     }
 
     #endregion

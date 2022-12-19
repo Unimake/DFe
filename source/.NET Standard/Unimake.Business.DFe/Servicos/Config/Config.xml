@@ -1096,4 +1096,88 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4127700">
+		<Nome>Toledo - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4102307">
+		<Nome>Balsa Nova - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4103453">
+		<Nome>Cafelândia - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4104428">
+		<Nome>Candói - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4107207">
+		<Nome>Dois Vizinhos - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4108403">
+		<Nome>Francisco Beltrão - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4109708">
+		<Nome>Ibaiti - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4110102">
+		<Nome>Imbituva - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4113304">
+		<Nome>Laranjeiras do Sul - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4116059">
+		<Nome>Missal - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4120606">
+		<Nome>Prudentópolis - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4122008">
+		<Nome>Rio Azul - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4124400">
+		<Nome>Santo Antônio do Sudoeste - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4126306">
+		<Nome>Sengés - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
