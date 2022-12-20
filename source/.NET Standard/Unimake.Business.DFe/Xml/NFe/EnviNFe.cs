@@ -2566,16 +2566,16 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlElement("ICMS")]
-        public List<ICMS> ICMS { get; set; }
+        public ICMS ICMS { get; set; }
 
         [XmlElement("IPI")]
         public IPI IPI { get; set; }
 
         [XmlElement("II")]
-        public List<II> II { get; set; }
+        public II II { get; set; }
 
         [XmlElement("ISSQN")]
-        public List<ISSQN> ISSQN { get; set; }
+        public ISSQN ISSQN { get; set; }
 
         [XmlElement("PIS")]
         public PIS PIS { get; set; }
@@ -2591,112 +2591,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("ICMSUFDest")]
         public ICMSUFDest ICMSUFDest { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="icms">Elemento</param>
-        public void AddICMS(ICMS icms)
-        {
-            if (ICMS == null)
-            {
-                ICMS = new List<ICMS>();
-            }
-
-            ICMS.Add(icms);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista ICMS (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da ICMS</returns>
-        public ICMS GetICMS(int index)
-        {
-            if ((ICMS?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return ICMS[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista ICMS
-        /// </summary>
-        public int GetICMSCount => (ICMS != null ? ICMS.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="ii">Elemento</param>
-        public void AddII(II ii)
-        {
-            if (II == null)
-            {
-                II = new List<II>();
-            }
-
-            II.Add(ii);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista II (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da II</returns>
-        public II GetII(int index)
-        {
-            if ((II?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return II[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista II
-        /// </summary>
-        public int GetIICount => (II != null ? II.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="issQN">Elemento</param>
-        public void AddISSQN(ISSQN issQN)
-        {
-            if (ISSQN == null)
-            {
-                ISSQN = new List<ISSQN>();
-            }
-
-            ISSQN.Add(issQN);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista ISSQN (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da ISSQN</returns>
-        public ISSQN GetISSQN(int index)
-        {
-            if ((ISSQN?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return ISSQN[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista ISSQN
-        /// </summary>
-        public int GetISSQNCount => (ISSQN != null ? ISSQN.Count : 0);
-
-#endif
 
         #region ShouldSerialize
 
