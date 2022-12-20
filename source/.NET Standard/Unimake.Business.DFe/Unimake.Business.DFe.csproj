@@ -253,6 +253,7 @@
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
@@ -516,6 +517,20 @@
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsResposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseEnvio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsEnvio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsResposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseResposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsEnvio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsResposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsEnvio_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsResposta_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\TiposEsnfs_v01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\GINFES\cabecalho_v03.xsd" />
@@ -622,6 +637,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\Equiplano.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\UberabaMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -671,6 +689,20 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsResposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseEnvio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsEnvio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfsePorRpsResposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarNfseResposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsEnvio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarSituacaoLoteRpsResposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsEnvio_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esRecepcionarLoteRpsResposta_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\TiposEsnfs_v01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\xmldsig-core-schema_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\NFSe-Infisc-v1.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\GIF\xmldsig-core-schema_v1.01.xsd" />
 	</ItemGroup>

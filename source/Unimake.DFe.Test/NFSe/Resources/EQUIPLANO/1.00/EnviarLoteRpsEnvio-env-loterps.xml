@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<es:enviarLoteRpsEnvio xmlns:es="http://www.equiplano.com.br/esnfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.equiplano.com.br/enfs esRecepcionarLoteRpsEnvio_v01.xsd">
+  <lote>
+    <nrLote>1</nrLote>
+    <qtRps>1</qtRps>
+    <nrVersaoXml>1</nrVersaoXml>
+    <prestador>
+      <nrCnpj>99999999999999</nrCnpj>
+      <nrInscricaoMunicipal>123456</nrInscricaoMunicipal>
+      <isOptanteSimplesNacional>2</isOptanteSimplesNacional>
+      <idEntidade>136</idEntidade>
+    </prestador>
+    <listaRps>
+      <rps>
+        <nrRps>4</nrRps>
+        <nrEmissorRps>1</nrEmissorRps>
+        <dtEmissaoRps>2009-06-15T10:00:00</dtEmissaoRps>
+        <stRps>1</stRps>
+        <tpTributacao>1</tpTributacao>
+        <isIssRetido>2</isIssRetido>
+        <tomador>
+          <nmTomador>TOMADOR ESTRANGEIRO 1 SEM DOCUMENTO</nmTomador>
+          <dsEmail>contato@gancho.com.br</dsEmail>
+          <nrInscricaoEstadual>19518744</nrInscricaoEstadual>
+          <dsEndereco>R dos Navegantes 123, 321</dsEndereco>
+          <nrEndereco>123</nrEndereco>
+          <dsComplemento>321</dsComplemento>
+          <nmBairro>Boa Viagem</nmBairro>
+          <nmCidadeEstrangeira>Nova York</nmCidadeEstrangeira>
+          <nmPais>Estados Unidos</nmPais>
+          <nrTelefone>41 99999999</nrTelefone>
+        </tomador>
+        <listaServicos>
+          <servico>
+            <nrServicoItem>36</nrServicoItem>
+            <nrServicoSubItem>1</nrServicoSubItem>
+            <vlServico>1100.32</vlServico>
+            <vlAliquota>0.05</vlAliquota>
+            <deducao>
+              <vlDeducao>1.0</vlDeducao>
+              <dsJustificativaDeducao>teste</dsJustificativaDeducao>
+            </deducao>
+            <vlBaseCalculo>1100.00</vlBaseCalculo>
+            <vlIssServico>55.02</vlIssServico>
+            <dsDiscriminacaoServico>
+							Teste de RPS - Discriminação do serviço (permite caracteres especiais)
+						</dsDiscriminacaoServico>
+          </servico>
+        </listaServicos>
+        <vlTotalRps>1100.32</vlTotalRps>
+        <vlLiquidoRps>1100.32</vlLiquidoRps>
+        <retencoes>
+          <vlCofins>20</vlCofins>
+          <vlCsll>50</vlCsll>
+          <vlInss>30</vlInss>
+          <vlIrrf>40</vlIrrf>
+          <vlPis>10</vlPis>
+          <vlIss>10</vlIss>
+          <vlAliquotaCofins>2.0</vlAliquotaCofins>
+          <vlAliquotaCsll>3.0</vlAliquotaCsll>
+          <vlAliquotaInss>4.0</vlAliquotaInss>
+          <vlAliquotaIrrf>5.0</vlAliquotaIrrf>
+          <vlAliquotaPis>6.0</vlAliquotaPis>
+        </retencoes>
+      </rps>
+    </listaRps>
+  </lote>
+</es:enviarLoteRpsEnvio>
