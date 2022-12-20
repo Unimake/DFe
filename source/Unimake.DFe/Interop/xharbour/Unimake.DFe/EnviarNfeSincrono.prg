@@ -11,7 +11,7 @@ Function EnviarNfeSincrono()
    Local oXml, oNfe, oInfNFe, oIde, oEmit, oEnderEmit, oDest, oEnderDest
    Local oDet, oProd
    Local oImposto, oICMS, oICMSSN101, oPIS, oPISOutr, oCOFINS, oCOFINSOutr
-   Local oTotal, oICMSTot
+   Local oTotal, oICMSTot, oImpostoDevol
    Local oTransp, oVol
    Local oCobr, oFat, oDup
    Local oPag, oDetPag
@@ -138,7 +138,8 @@ Function EnviarNfeSincrono()
        oProd:IndTot = 1 // SimNao.Sim
        oProd:XPed = "300474"
        oProd:NItemPed = 1
-	   
+
+/*	   
 	// criar a tag <DI> - tem como ter mais de uma tag DI, vou criar duas para ficar de exemplo, esta é a primeira
 	   oDI = CreateObject("Unimake.Business.DFe.Xml.NFe.DI")
 	   oDI:CExportador = ""
@@ -187,15 +188,16 @@ Function EnviarNfeSincrono()
 	   oDI:AddAdi(oAdi)
 
 	// Criar tag <adi> -> Posso ter mais de uma tag <adi> então vou criar uma segunda vez para ficar o exemplo
-       oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
-       oAdi:CFabricante = ""
-       oAdi:NDraw = "12344"
+        oAdi = CreateObject("Unimake.Business.DFe.Xml.NFe.Adi")
+        oAdi:CFabricante = ""
+        oAdi:NDraw = "12344"
 
     // Adicionar a tag <adi> dentro do grupo de tag <DI>
-	   oDI:AddAdi(oAdi)
+ 	   oDI:AddAdi(oAdi)
 	   
 	// Adicionar a tag <DI> dentro do grupo de tag <prod>   
-	   oProd:AddDI(oDI)	
+ 	   oProd:AddDI(oDI)	
+*/	   
 	   
     // adicionar a tag Prod dentro da tag Det
        oDet:Prod = oProd
@@ -216,6 +218,7 @@ Function EnviarNfeSincrono()
     // adicionar a tag ICMSSN101 dentro da tag ICMS
        oICMS:ICMSSN101 = oICMSSN101
 	   
+/*	   
 	// criar tag ICMS00   
        oICMS00 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS00")
        oICMS00:CST = "00"
@@ -279,6 +282,7 @@ Function EnviarNfeSincrono()
 
     // adicionar a tag ICMS51 dentro da tag ICMS
  	   oICMS:ICMS51 = oICMS51
+*/
 	   
     // adicionar a tag ICMS dentro da tag Imposto
        oImposto:AddIcms(oICMS)
@@ -317,6 +321,20 @@ Function EnviarNfeSincrono()
 	   
     // adicionar a tag Imposto dentro da tag Det
        oDet:Imposto = oImposto
+	   
+	// Criar tag <impostoDevol>
+	   oImpostoDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.ImpostoDevol")
+	   oImpostoDevol:PDevol = 0.00
+	   
+	// Criar tag <IPI>
+       oIPIDevol = CreateObject("Unimake.Business.DFe.Xml.NFe.IPIDevol")
+	   oIPIDevol:VIPIDevol = 0.00
+	   
+	// Adicionar o grupo de tag <IPI> dentro do grupo <impostoDevol>
+	   oImpostoDevol:IPI = oIPIDevol 
+	   
+	// Adicionar o grupo de tag <impostoDevol> dentro do grupo <det>
+	   oDet:ImpostoDevol = oImpostoDevol	   
 	  
     // adicionar a tag Det dentro da tag InfNfe 
        oInfNfe:AddDet(oDet)	  
@@ -465,6 +483,10 @@ Function EnviarNfeSincrono()
       // Pode-se gravar o conteudo do XML assinado na base de dados antes do envio, caso queira recuperar para futuro tratamento, isso da garantias
 	  notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
       ? notaAssinada //Demonstrar o XML da nota assinada na tela
+	  
+	  nHandle := fCreate("d:\testenfe\wandreyteste.xml")
+	  fwrite(nHandle, notaAssinada)
+      fClose(nHandle)
 	  
       Wait
 	  cls
