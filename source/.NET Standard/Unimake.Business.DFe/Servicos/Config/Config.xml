@@ -1180,4 +1180,10 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4120358">
+		<Nome>Pranchita - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
