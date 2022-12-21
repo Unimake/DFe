@@ -20,7 +20,8 @@ A seguir envio um código em C# demonstrando como era e como ficou.
 
 **Como era antes da alteração:**
 
-```Imposto = new XmlNFe.Imposto
+```
+Imposto = new XmlNFe.Imposto
 {
    VTotTrib = 12.63,
    ICMS = new List<XmlNFe.ICMS>
@@ -38,11 +39,13 @@ A seguir envio um código em C# demonstrando como era e como ficou.
    ...
    ...
    ...
-},```
+},
+```
 
 **Como ficou depois da alteração:**
 
-```Imposto = new XmlNFe.Imposto
+```
+Imposto = new XmlNFe.Imposto
 {
    VTotTrib = 12.63,
    ICMS = new XmlNFe.ICMS
@@ -57,4 +60,5 @@ A seguir envio um código em C# demonstrando como era e como ficou.
    ...
    ...
    ...
-},```
+},
+```
