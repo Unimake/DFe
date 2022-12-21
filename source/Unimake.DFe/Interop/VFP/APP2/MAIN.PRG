@@ -571,19 +571,19 @@ waitCenter("GetDet")
                ICMSSN101.PCredSN = 0 &&2.8255
                ICMSSN101.VCredICMSSN = 0 &&2.4
                ICMS.ICMSSN101 = ICMSSN101
-               Imposto.AddICMS(ICMS)
+               Imposto.ICMS = ICMS
           CASE Xicms="500"
                ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
                ICMSSN500 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN500")
                ICMSSN500.Orig = 0
                ICMS.ICMSSN500 = ICMSSN500
-               Imposto.AddICMS(ICMS)
+               Imposto.ICMS = ICMS
           CASE Xicms="060"
                ICMS = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
                ICMS60 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS60")
                ICMS60.Orig = 0
                ICMS.ICMS60 = ICMS60
-               Imposto.AddICMS(ICMS)
+               Imposto.ICMS = ICMS
          
        ENDCASE
        PIS = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")

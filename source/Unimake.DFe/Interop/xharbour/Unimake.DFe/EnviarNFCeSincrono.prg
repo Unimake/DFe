@@ -156,7 +156,7 @@ Function EnviarNfceSincrono()
        oICMS:ICMSSN102 = oICMSSN102
 	   
     // adicionar a tag ICMS dentro da tag Imposto
-       oImposto:AddIcms(oICMS)
+       oImposto:Icms = oICMS
 	   
     // criar tag PIS
        oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")

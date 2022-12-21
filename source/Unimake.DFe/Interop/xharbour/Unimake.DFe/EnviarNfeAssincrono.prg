@@ -180,7 +180,7 @@ Function EnviarNfeAssincrono()
        oICMS:ICMSSN101 = oICMSSN101
 	   
     // adicionar a tag ICMS dentro da tag Imposto
-       oImposto:AddIcms(oICMS)
+       oImposto:ICMS = oICMS
 	   
     // criar tag PIS
        oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
@@ -493,8 +493,8 @@ Function EnviarNfeAssincrono()
 	  ? "ERRO"
 	  ? "===="
 	  ? "Falha ao tentar consultar o status do servico."
-      ? oErro:Description
-      ? oErro:Operation
+      ? oErro2:Description
+      ? oErro2:Operation
 	  
       //Demonstrar a exceção do CSHARP
 	  ?

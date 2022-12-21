@@ -296,7 +296,7 @@ With ICMSSN102
 End With
 
 Set ICMS.ICMSSN102 = ICMSSN102
-Imposto.AddICMS (ICMS)
+Set Imposto.ICMS = ICMS
                                                     
 Set PIS = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
 Set PISOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")

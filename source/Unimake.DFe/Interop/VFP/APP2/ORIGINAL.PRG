@@ -358,7 +358,7 @@ FUNCTION GetDet()
     ICMSSN101.PCredSN = 2.8255
     ICMSSN101.VCredICMSSN = 2.4
     ICMS.ICMSSN101 = ICMSSN101
-    Imposto.AddICMS(ICMS)
+    Imposto.ICMS = ICMS
                                                                           
 	PIS = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
 	PISOutr = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
