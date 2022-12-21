@@ -7,7 +7,7 @@
       <WebEnderecoProducao>https://uberabamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
       <WebEnderecoProducao>https://uberabamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
-      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
@@ -45,7 +45,7 @@
       <WebEnderecoProducao>https://uberabamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -83,7 +83,7 @@
       <WebEnderecoProducao>https://uberabamg.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
 	  <TagAssinatura>Rps</TagAssinatura>
 	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 	  <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
