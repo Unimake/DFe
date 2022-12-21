@@ -94,7 +94,7 @@
 			<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>			                      
 			<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>			                   
 			<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnfce</UrlChaveHomologacao>
-			<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
+			<UrlChaveProducao>http://nfce.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
 		</Autorizacao>
 		<RetAutorizacao versao="4.00">
 			<Descricao>Consulta recibo da nota fiscal consumidor eletrônica</Descricao>
