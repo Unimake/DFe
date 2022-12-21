@@ -181,15 +181,13 @@ namespace Unimake.DFe.Test.NFe
                                             Imposto = new Imposto
                                             {
                                                 VTotTrib = 12.63,
-                                                ICMS = new List<ICMS> {
-                                                    new ICMS
+                                                ICMS = new ICMS
+                                                {
+                                                    ICMSSN101 = new ICMSSN101
                                                     {
-                                                        ICMSSN101 = new ICMSSN101
-                                                        {
-                                                            Orig = OrigemMercadoria.Nacional,
-                                                            PCredSN = 2.8255,
-                                                            VCredICMSSN = 2.40
-                                                        }
+                                                        Orig = OrigemMercadoria.Nacional,
+                                                        PCredSN = 2.8255,
+                                                        VCredICMSSN = 2.40
                                                     }
                                                 },
                                                 PIS = new PIS
@@ -502,15 +500,13 @@ namespace Unimake.DFe.Test.NFe
                                             Imposto = new Imposto
                                             {
                                                 VTotTrib = 12.63,
-                                                ICMS = new List<ICMS> {
-                                                    new ICMS
+                                                ICMS = new ICMS
+                                                {
+                                                    ICMSSN101 = new ICMSSN101
                                                     {
-                                                        ICMSSN101 = new ICMSSN101
-                                                        {
-                                                            Orig = OrigemMercadoria.Nacional,
-                                                            PCredSN = 2.8255,
-                                                            VCredICMSSN = 2.40
-                                                        }
+                                                        Orig = OrigemMercadoria.Nacional,
+                                                        PCredSN = 2.8255,
+                                                        VCredICMSSN = 2.40
                                                     }
                                                 },
                                                 PIS = new PIS
