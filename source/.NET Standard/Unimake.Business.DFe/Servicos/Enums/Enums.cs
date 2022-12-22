@@ -6149,8 +6149,14 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// EQUIPLANO 
         /// </summary>
-        [Description("EQUIPLANO ")]
+        [Description("EQUIPLANO")]
         EQUIPLANO = 29,
+
+        /// <summary>
+        /// MEMORY 
+        /// </summary>
+        [Description("MEMORY")]
+        MEMORY = 30,
     }
 
     #endregion

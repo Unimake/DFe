@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns:xs="http://www.nfsebrasil.net.br/nfse/rps/xsd/rps.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LoteRps codMunicipio="1234567" versao="1" Id="1">
+    <NumeroLote>1</NumeroLote>
+    <Cnpj>22927612000167</Cnpj>
+    <InscricaoMunicipal>1234567890</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfRps Id="1">
+          <IdentificacaoRps>
+            <Numero>12</Numero>
+            <Serie></Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2012-01-01T10:00:00</DataEmissao>
+          <NaturezaOperacao>1</NaturezaOperacao>
+          <Status>1</Status>
+          <Servico>
+            <Valores>
+              <ValorServicos>100.99</ValorServicos>
+              <ValorDeducoes>0.00</ValorDeducoes>
+              <ValorPis>0.00</ValorPis>
+              <ValorCofins>0.00</ValorCofins>
+              <ValorInss>0.00</ValorInss>
+              <ValorIr>0.00</ValorIr>
+              <ValorCsll>0.00</ValorCsll>
+              <IssRetido>2</IssRetido>
+              <ValorIss>1.99</ValorIss>
+              <OutrasRetencoes>0.00</OutrasRetencoes>
+              <Aliquota>3.00</Aliquota>
+              <DescontoIncondicionado>0.00</DescontoIncondicionado>
+              <DescontoCondicionado>0.00</DescontoCondicionado>
+            </Valores>
+            <CodigoTributacaoMunicipio>07.05</CodigoTributacaoMunicipio>
+            <CodigoCnae>123456</CodigoCnae>
+            <Discriminacao>SERVICOS PRESTADOS</Discriminacao>
+            <CodigoMunicipio>1234567</CodigoMunicipio>
+          </Servico>
+          <Prestador>
+            <Cnpj>19778587000192</Cnpj>
+            <InscricaoMunicipal>0987654321</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cnpj>25472186315</Cnpj>
+              </CpfCnpj>
+              <InscricaoMunicipal></InscricaoMunicipal>
+            </IdentificacaoTomador>
+            <RazaoSocial>Razão Social Ltda.</RazaoSocial>
+            <Endereco>
+              <Endereco>RUA GONÇALVES DIAS</Endereco>
+              <Numero>100</Numero>
+              <Complemento>101</Complemento>
+              <Bairro>Bairro Lourdes</Bairro>
+              <CodigoMunicipio>3106200</CodigoMunicipio>
+              <Uf>MG</Uf>
+              <Cep>31500000</Cep>
+            </Endereco>
+            <Email>email@memory.com.br</Email>
+            <Telefone>3185647892</Telefone>
+          </Tomador>
+          <IntermediarioServico>
+            <RazaoSocial>Razão Social SA.</RazaoSocial>
+            <CpfCnpj>
+              <Cnpj>28652752000156</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>5678901234</InscricaoMunicipal>
+          </IntermediarioServico>
+          <ConstrucaoCivil>
+            <CodigoObra>1234567890</CodigoObra>
+            <Art>1234567890</Art>
+          </ConstrucaoCivil>
+        </InfRps>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

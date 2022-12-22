@@ -1186,4 +1186,28 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3120904">
+		<Nome>Curvelo - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Memory.xml</ArqConfig>
+		<PadraoNFSe>MEMORY</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3141108">
+		<Nome>Matozinhos - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Memory.xml</ArqConfig>
+		<PadraoNFSe>MEMORY</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3152105">
+		<Nome>Ponte Nova- MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Memory.xml</ArqConfig>
+		<PadraoNFSe>MEMORY</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3157005">
+		<Nome>Salinas- MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Memory.xml</ArqConfig>
+		<PadraoNFSe>MEMORY</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
