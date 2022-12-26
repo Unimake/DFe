@@ -1210,4 +1210,10 @@
 		<ArqConfig>Memory.xml</ArqConfig>
 		<PadraoNFSe>MEMORY</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4204202">
+		<Nome>Chapecó - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>ChapecoSC.xml</ArqConfig>
+		<PadraoNFSe>SIGCORP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

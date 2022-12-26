@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.04">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#CancelarNfse</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScape}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<GerarNfse versao="2.04">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#GerarNfse</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScape}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#SubstituirNfse</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:SubstituirNfse><xml>{xmlBodyScape}</xml></ws:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScape}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScape}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.04">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScape}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.04">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScape}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.04">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://testechapeco.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScape}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>
