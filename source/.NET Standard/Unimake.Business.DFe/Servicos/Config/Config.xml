@@ -1270,4 +1270,10 @@
 		<ArqConfig>Abase.xml</ArqConfig>
 		<PadraoNFSe>ABASE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2606408">
+		<Nome>Gravatá - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>GravataPE.xml</ArqConfig>
+		<PadraoNFSe>TRIBUTUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

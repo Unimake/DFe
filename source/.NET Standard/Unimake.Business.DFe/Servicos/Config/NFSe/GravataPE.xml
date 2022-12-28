@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.04">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+	  <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+	  <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="2.04">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+	  <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+	  <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="2.04">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.04">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+	  <TagAssinatura>Pedido</TagAssinatura>
+	  <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="2.04">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+	  <TagAssinatura>Pedido</TagAssinatura>
+	  <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+	  <TagLoteAssinatura>Rps</TagLoteAssinatura>
+	  <TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+	  <TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+	  <TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfseRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.04">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="2.04">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="2.04">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="2.04">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="2.04">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://www.tributosmunicipais.com.br/nfse/api/?tokenAuth={MunicipioToken}</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse v2-04.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixaRequest><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfsePorFaixaRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseFaixa>
+  </Servicos>
+</Configuracoes>
