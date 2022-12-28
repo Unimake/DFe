@@ -6157,6 +6157,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("MEMORY")]
         MEMORY = 30,
+
+        /// <summary>
+        /// ABASE Sistemas
+        /// </summary>
+        [Description("ABASE")]
+        ABASE = 31,
     }
 
     #endregion

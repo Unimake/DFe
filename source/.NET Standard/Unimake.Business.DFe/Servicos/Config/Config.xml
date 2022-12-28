@@ -1216,4 +1216,58 @@
 		<ArqConfig>ChapecoSC.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4303301">
+		<Nome>Caibaté - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4305207">
+		<Nome>Cerro Largo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4309001">
+		<Nome>Giruá - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4306734">
+		<Nome>Mauricio Cardoso - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4315107">
+		<Nome>Porto Xavier - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4317509">
+		<Nome>Santo Ângelo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4317707">
+		<Nome>Santo Antônio das Missões - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4318903">
+		<Nome>São Luiz Gonzaga - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4321808">
+		<Nome>Três de Maio - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

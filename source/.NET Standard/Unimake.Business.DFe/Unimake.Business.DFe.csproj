@@ -231,6 +231,7 @@
 		<None Remove="Servicos\Config\NFe\SVCRS.xml" />
 		<None Remove="Servicos\Config\NFe\SVRS.xml" />
 		<None Remove="Servicos\Config\NFe\TO.xml" />
+		<None Remove="Servicos\Config\NFSe\Abase.xml" />
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
@@ -488,6 +489,8 @@
 		<None Remove="Xml\Schemas\NFe\retEventoEntregaNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
 		<None Remove="Xml\Schemas\nfe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\AVMB\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\AVMB\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\nfse_v01.xsd" />
@@ -646,6 +649,9 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Equiplano.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\Abase.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\UberabaMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -695,6 +701,8 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BlumenauSC.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />

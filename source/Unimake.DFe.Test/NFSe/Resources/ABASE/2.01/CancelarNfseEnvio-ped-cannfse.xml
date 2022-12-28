@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns="http://nfse.abase.com.br/nfse.xsd">
+  <Pedido>
+    <InfPedidoCancelamento Id="ID49">
+      <IdentificacaoNfse>
+        <Numero>49</Numero>
+        <CpfCnpj>
+          <Cpf>06783956911</Cpf>
+        </CpfCnpj>
+        <InscricaoMunicipal>4214805</InscricaoMunicipal>
+        <CodigoMunicipio>4214805</CodigoMunicipio>
+      </IdentificacaoNfse>
+      <CodigoCancelamento>1</CodigoCancelamento>
+    </InfPedidoCancelamento>
+  </Pedido>
+</CancelarNfseEnvio>

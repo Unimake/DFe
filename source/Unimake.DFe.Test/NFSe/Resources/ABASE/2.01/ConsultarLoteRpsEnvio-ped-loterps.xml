@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarLoteRpsEnvio xmlns="http://nfse.abase.com.br/nfse.xsd">
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>04642554000143</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>1570790</InscricaoMunicipal>
+  </Prestador>
+  <Protocolo>750</Protocolo>
+</ConsultarLoteRpsEnvio>

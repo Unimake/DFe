@@ -23,6 +23,8 @@ namespace Unimake.Business.DFe
         private readonly CookieContainer cookies = new CookieContainer();
         private static bool TratarScape { get; set; }
 
+        private static bool TratarScapeSoap { get; set; }
+
         #endregion Private Fields
 
         #region Private Methods
@@ -52,6 +54,12 @@ namespace Unimake.Business.DFe
                 xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
 
                 retorna += soap.SoapString.Replace("{xmlBodyScape}", xmlBody);
+            }
+            else if(TratarScapeSoap)
+            {
+                xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
+
+                retorna += soap.SoapString.Replace("{xmlScapeSoap}", xmlBody);
             }
             else
             {
@@ -94,6 +102,7 @@ namespace Unimake.Business.DFe
 
             var soap = (WSSoap)servico;
             TratarScape = soap.SoapString.IndexOf("{xmlBodyScape}") > 0;
+            TratarScapeSoap = soap.SoapString.IndexOf("{xmlScapeSoap}") > 0;
 
             var urlpost = new Uri(soap.EnderecoWeb);
             var soapXML = EnveloparXML(soap, xml.OuterXml);
@@ -177,6 +186,10 @@ namespace Unimake.Business.DFe
                 if(TratarScape)
                 {
                     RetornoServicoString = retornoXml.GetElementsByTagName(soap.TagRetorno)[0].ChildNodes[0].InnerText;
+                }
+                else if(TratarScapeSoap)
+                {
+                    RetornoServicoString = retornoXml.GetElementsByTagName(soap.TagRetorno)[0].ChildNodes[0].OuterXml;
                 }
                 else
                 {
