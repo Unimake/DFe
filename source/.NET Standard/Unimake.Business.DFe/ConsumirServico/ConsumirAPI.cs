@@ -51,7 +51,7 @@ namespace Unimake.Business.DFe
                 BaseAddress = new Uri(Url),
             };
 
-            if (apiConfig.Token != null)
+            if (!string.IsNullOrWhiteSpace(apiConfig.Token))
             {
                 httpWebRequest.DefaultRequestHeaders.Add("Authorization", apiConfig.Token);
             }
@@ -110,14 +110,14 @@ namespace Unimake.Business.DFe
                 }
             }
             else
-            {
+            {              
                 switch (postData.Content.Headers.ContentType.MediaType)
                 {
                     case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                         break;
 
                     case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
-                        resultadoRetorno.LoadXml(responsePost);
+                        resultadoRetorno.LoadXml(responsePost);                        
                         break;
 
                     case "application/json": //Retorno JSON -> Vamos ter que converter para XML
@@ -234,7 +234,6 @@ namespace Unimake.Business.DFe
                             break;
 
                         case "token":
-                            apiConfig.Token = "31931-P4STI3FJ9JQM74TOY9IF4YJL727SHMZH";     //temporário  teste GIAP Authorization: 31931-P4STI3FJ9JQM74TOY9IF4YJL727SHMZH
                             break;
 
                         default:

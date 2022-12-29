@@ -229,7 +229,6 @@ namespace Unimake.Business.DFe.Servicos
                     WebSoapString = Configuracoes.WebSoapString,
                     MetodoAPI = Configuracoes.MetodoAPI,
                     Token = Configuracoes.MunicipioToken,
-
                 };
 
                 var consumirAPI = new ConsumirAPI();
