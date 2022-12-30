@@ -1276,4 +1276,10 @@
 		<ArqConfig>GravataPE.xml</ArqConfig>
 		<PadraoNFSe>TRIBUTUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4317905">
+		<Nome>Santo Cristo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
