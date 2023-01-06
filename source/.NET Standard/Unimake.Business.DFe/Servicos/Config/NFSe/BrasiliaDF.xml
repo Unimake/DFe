@@ -124,8 +124,8 @@
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+      <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -143,8 +143,8 @@
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
       <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+      <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -162,8 +162,8 @@
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
       <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+      <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -181,8 +181,8 @@
       <WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
       <SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
+      <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+      <TagAtributoID>Pedido</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
       <TagLoteAtributoID></TagLoteAtributoID>
       <WebContentType>text/xml;charset=UTF-8</WebContentType>
