@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-  <LoteRps Id="LOTE45454" versao="2.04">
-    <NumeroLote>45454</NumeroLote>
+	<LoteRps Id="Lote2515974" versao="2.04">
+		<NumeroLote>2515974</NumeroLote>
 		<Prestador>
 			<CpfCnpj>
 				<Cnpj>11006293000130</Cnpj>
@@ -11,20 +11,20 @@
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
 			<Rps>
-        <InfDeclaracaoPrestacaoServico Id="ID999999990001911733160024200900000000001">
-          <Rps Id="RPS343443">
+				<InfDeclaracaoPrestacaoServico Id="ID1">
+					<Rps>
 						<IdentificacaoRps>
-							<Numero>1</Numero>
+							<Numero>202611515</Numero>
 							<Serie>1</Serie>
 							<Tipo>1</Tipo>
 						</IdentificacaoRps>
-						<DataEmissao>2022-06-27</DataEmissao>
+						<DataEmissao>2022-11-30</DataEmissao>
 						<Status>1</Status>
 					</Rps>
-					<Competencia>2022-06-27</Competencia>
+					<Competencia>2022-11-30</Competencia>
 					<Servico>
 						<Valores>
-							<ValorServicos>10.28</ValorServicos>
+							<ValorServicos>500.72</ValorServicos>
 							<ValorDeducoes>0</ValorDeducoes>
 							<ValorPis>0</ValorPis>
 							<ValorCofins>0</ValorCofins>
@@ -34,17 +34,17 @@
 							<OutrasRetencoes>0</OutrasRetencoes>
 							<ValTotTributos>0</ValTotTributos>
 							<ValorIss>0</ValorIss>
-							<Aliquota>2.7</Aliquota>
+							<Aliquota>3</Aliquota>
 							<DescontoIncondicionado>0</DescontoIncondicionado>
 							<DescontoCondicionado>0</DescontoCondicionado>
 						</Valores>
-						<IssRetido>1</IssRetido>
+						<IssRetido>2</IssRetido>
 						<ResponsavelRetencao>1</ResponsavelRetencao>
-						<ItemListaServico>01.02</ItemListaServico>
+						<ItemListaServico>17.08</ItemListaServico>
 						<CodigoCnae>1234567</CodigoCnae>
-						<Discriminacao>sdasdadasda ajksdb asjkdbab skdba ksdb</Discriminacao>
+						<Discriminacao>81</Discriminacao>
 						<CodigoMunicipio>2925808</CodigoMunicipio>
-						<CodigoPais>2373</CodigoPais>
+						<CodigoPais>1058</CodigoPais>
 						<ExigibilidadeISS>1</ExigibilidadeISS>
 						<MunicipioIncidencia>2925808</MunicipioIncidencia>
 					</Servico>
@@ -60,25 +60,25 @@
 								<Cnpj>11177786000133</Cnpj>
 							</CpfCnpj>
 						</IdentificacaoTomador>
-						<RazaoSocial>Razao Social Tomador Numero 1</RazaoSocial>
+						<RazaoSocial>TESTE TESTE</RazaoSocial>
 						<Endereco>
-							<Endereco>Rua teste</Endereco>
-							<Numero>1</Numero>
-							<Complemento>casa</Complemento>
-							<Bairro>centro</Bairro>
-							<CodigoMunicipio>2925808</CodigoMunicipio>
-							<Uf>BA</Uf>
-							<Cep>48895000</Cep>
+							<Endereco>AV. TESTE</Endereco>
+							<Numero>222</Numero>
+							<Complemento>nda</Complemento>
+							<Bairro>VIVENDAS PARAISO</Bairro>
+							<CodigoMunicipio>5200258</CodigoMunicipio>
+							<Uf>GO</Uf>
+							<Cep>22925000</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>75 9 9999-9999</Telefone>
-							<Email>tomador@teste.com</Email>
+							<Telefone>00 0 0000-0000</Telefone>
+							<Email>teste@teste.com</Email>
 						</Contato>
 					</TomadorServico>
 					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
-					<OptanteSimplesNacional>1</OptanteSimplesNacional>
-					<IncentivoFiscal>1</IncentivoFiscal>
-					<InformacoesComplementares>Informação Complementar Solicitada</InformacoesComplementares>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+					<InformacoesComplementares>81</InformacoesComplementares>
 				</InfDeclaracaoPrestacaoServico>
 			</Rps>
 		</ListaRps>
