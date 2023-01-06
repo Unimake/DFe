@@ -8,10 +8,10 @@
 			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>https://abrasfchapeco.meumunicipio.online/ws#RecepcionarLoteRps"</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfchapeco.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
@@ -28,10 +28,10 @@
 			<WebActionHomologacao>https://testechapecoabrasf.meumunicipio.online/ws#RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>https://abrasfchapeco.meumunicipio.online/ws#RecepcionarLoteRpsSincrono</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testechapecoabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfchapeco.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScape}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
