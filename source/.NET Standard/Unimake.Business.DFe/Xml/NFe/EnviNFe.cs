@@ -929,7 +929,17 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XCpl
         {
             get => XCplField;
-            set => XCplField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+            set
+            {
+                if (value == null)
+                {
+                    XCplField = value;
+                }
+                else
+                {
+                    XCplField = XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim();
+                }
+            }
         }
 
         [XmlElement("xBairro")]
@@ -6663,7 +6673,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                 return false;
             }
 
-            for (int i = 0; i < Vol.Count; i++)
+            for (var i = 0; i < Vol.Count; i++)
             {
 
                 if (Vol[i].QVol > 0 ||
