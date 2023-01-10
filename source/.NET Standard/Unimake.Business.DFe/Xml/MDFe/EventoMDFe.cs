@@ -538,20 +538,8 @@ namespace Unimake.Business.DFe.Xml.MDFe
                         IdEstrangeiro = elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.IdEstrangeiro)),
                         VContrato = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.VContrato)), true),
                         IndPag = elementInfPag.GetValue<IndicadorPagamento>(nameof(PagtoOperMDFeInfPag.IndPag)),
-                        VAdiant = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.VAdiant)), true),
-                        IndAntecipaAdiant = elementInfPag.GetValue<int>(nameof(PagtoOperMDFeInfPag.IndAntecipaAdiant)),
-                        TpAntecip = elementInfPag.GetValue<TipoPermissaoAtencipacaoParcela>(nameof(PagtoOperMDFeInfPag.TpAntecip))
+                        VAdiant = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(PagtoOperMDFeInfPag.VAdiant)), true)
                     });
-
-                    //Forçar o null, porque no GetValue ele retornou um valor default, se não existir a tag, tenho que manter null para não ir a tag
-                    if (elementInfPag.GetElementsByTagName("tpAntecip").Count == 0)
-                    {
-#if INTEROP
-                        detEvento.InfPag[0].TpAntecip = (TipoPermissaoAtencipacaoParcela)(-1);
-#else
-                        detEvento.InfPag[0].TpAntecip = null;
-#endif
-                    }
 
                     PrepararComp(elementInfPag);
                     PrepararInfPrazo(elementInfPag);
@@ -1095,11 +1083,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
                                <indPag>{infPag.IndPagField}</indPag>
                                <vAdiant>{infPag.VAdiantField}</vAdiant>";
 
-                if (infPag.IndAntecipaAdiant == 1)
-                {
-                    writeRaw += $@"<indAntecipaAdiant>{infPag.IndAntecipaAdiant}</indAntecipaAdiant>";
-                }
-
                 foreach (var infPrazo in infPag.InfPrazo)
                 {
                     writeRaw += $@"<infPrazo>
@@ -1108,18 +1091,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
                                    <vParcela>{infPrazo.VParcelaField}</vParcela>
                                    </infPrazo>";
                 }
-
-#if INTEROP
-                if (infPag.TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1))
-                {
-                    writeRaw += $@"<tpAntecip>{(int)infPag.TpAntecip}</tpAntecip>";
-                }
-#else
-                if (infPag.TpAntecip != null)
-                {
-                    writeRaw += $@"<tpAntecip>{(int)infPag.TpAntecip}</tpAntecip>";
-                }
-#endif
 
                 writeRaw += $@"<infBanc>";
 
@@ -1277,39 +1248,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VAdiant = Converter.ToDouble(value);
         }
 
-        private int? IndAntecipaAdiantField;
-
-        /// <summary>
-        /// Indicador de declaração de concordância em antecipar o adiantamento. Informar a tag somente se for autorizado antecipar o adiantamento. Operação de transporte com utilização de veículos de frotas dedicadas ou fidelizadas. Preencher com “1” para indicar operação de transporte de alto desempenho, demais casos não informar a tag.
-        /// </summary>
-        [XmlElement("indAntecipaAdiant")]
-        public int? IndAntecipaAdiant
-        {
-            get => IndAntecipaAdiantField;
-            set
-            {
-                if (value != 1 && value != 0 && value != null)
-                {
-                    throw new Exception("A tag <indAntecipaAdiant> só pode ser preenchida com o valor \"1\" para indicar operação de transporte de alto desempenho, demais casos preencha com 0 ou null para não informar a tag.");
-                }
-
-                IndAntecipaAdiantField = value;
-            }
-        }
-
         [XmlElement("infPrazo")]
         public List<InfPrazo> InfPrazo { get; set; }
 
-        /// <summary>
-        /// Tipo de Permissão em relação a antecipação das parcelas
-        /// </summary>
-        [XmlElement("tpAntecip")]
-#if INTEROP
-        public TipoPermissaoAtencipacaoParcela TpAntecip { get; set; } = (TipoPermissaoAtencipacaoParcela)(-1);
-#else
-
-        public TipoPermissaoAtencipacaoParcela? TpAntecip { get; set; }
-#endif
 
         [XmlElement("infBanc")]
         public InfBanc InfBanc { get; set; }
@@ -1623,11 +1564,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
                                <indPag>{infPag.IndPagField}</indPag>
                                <vAdiant>{infPag.VAdiantField}</vAdiant>";
 
-                if (infPag.IndAntecipaAdiant == 1)
-                {
-                    writeRaw += $@"<indAntecipaAdiant>{infPag.IndAntecipaAdiant}</indAntecipaAdiant>";
-                }
-
                 foreach (var infPrazo in infPag.InfPrazo)
                 {
                     writeRaw += $@"<infPrazo>
@@ -1636,18 +1572,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
                                    <vParcela>{infPrazo.VParcelaField}</vParcela>
                                    </infPrazo>";
                 }
-
-#if INTEROP
-                if (infPag.TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1))
-                {
-                    writeRaw += $@"<tpAntecip>{(int)infPag.TpAntecip}</tpAntecip>";
-                }
-#else
-                if (infPag.TpAntecip != null)
-                {
-                    writeRaw += $@"<tpAntecip>{(int)infPag.TpAntecip}</tpAntecip>";
-                }
-#endif
 
                 writeRaw += $@"<infBanc>";
 
