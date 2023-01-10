@@ -19,6 +19,7 @@ Function EnviarNfeAssincrono()
    Local oAutorizacao, oRetAutorizacao, oXmlRec, oConfigRec
    Local I, oErro, notaAssinada, oErro2
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo, nHandle
+   Local oEntrega
 
  * Criar configuraçao básica para consumir o serviço
 
@@ -136,6 +137,25 @@ Function EnviarNfeAssincrono()
 
    // adicionar a tag Emit dentro da tag InfNfe
    oInfNfe:Dest = oDest
+   
+   // Criar tag <entrega>
+   oEntrega = CreateObject("Unimake.Business.DFe.Xml.NFe.Entrega")
+   oEntrega:CEP = "1408000"
+   oEntrega:CMun = 3543402
+   oEntrega:CNPJ = "00000000000000"
+   oEntrega:Email = "teste@teste.com.br"
+   oEntrega:Fone = "4433334455"
+   oEntrega:XBairro = "teste bairro"
+   oEntrega:XCpl = "teste complemento"
+   oEntrega:XLgr = "teste logradouro"
+   oEntrega:XMun = "teste municipio"
+   oEntrega:UF = 41 //UFBrasil.PR
+   oEntrega:XNome = "teste nome"
+   oEntrega:Nro = "S/N"
+   oEntrega:IE = "0022336699"
+   
+   //Adicionar a tag <entrega> dentro da tag <infNFe>
+   oInfNFe:Entrega = oEntrega
    
    For I = 1 To 3 // 3 produtos para teste    
        // criar tag Det
@@ -256,6 +276,26 @@ Function EnviarNfeAssincrono()
 // Criar a tag Transp  
    oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
    oTransp:ModFrete = 0 // ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
+   
+// Criar tag <transporta>
+   oTransporta = CreateObject("Unimake.Business.DFe.Xml.NFe.Transporta")
+   oTransporta:CNPJ = "00000000000000"
+   oTransporta:IE = "00000000"
+   oTransporta:XEnder = "Rua bla bla bla"
+   oTransporta:XMun = "Sao Paulo"
+   oTransporta:XNome = "transportadora ltda"   
+   
+// Adicionar a tag <transporta> dentro da tag <transp>
+   oTransp:Transporta = oTransporta
+   
+// Criar tag <veicTransp>
+   oVeicTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.VeicTransp")
+   oVeicTransp:Placa = "asdasdas"
+   oVeicTransp:UF = 41 //UFBrasil.SP
+   oVeicTransp:RNTC = "123343"   
+   
+// Adicionar a tag <veicTransp> dentro da tag <transp>
+   oTransp:VeicTransp = oVeicTransp
 
 // Criar a tag Vol
    oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
