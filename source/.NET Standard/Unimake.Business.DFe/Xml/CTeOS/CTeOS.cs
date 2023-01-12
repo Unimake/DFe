@@ -1630,7 +1630,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("vDoc")]
         public string VDocField
         {
-            get => VDoc.ToString("F4", CultureInfo.InvariantCulture);
+            get => VDoc.ToString("F2", CultureInfo.InvariantCulture);
             set => VDoc = Utility.Converter.ToDouble(value);
         }
 
