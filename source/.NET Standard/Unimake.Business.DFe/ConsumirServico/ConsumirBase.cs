@@ -21,9 +21,9 @@ namespace Unimake.Business.DFe
         /// Objeto para leitura de cookies
         /// </summary>
         private readonly CookieContainer cookies = new CookieContainer();
-        private static bool TratarScape { get; set; }
 
-        private static bool TratarScapeSoap { get; set; }
+        private static bool TratarScapeEnvio { get; set; }
+        private static bool TratarScapeRetorno { get; set; }
 
         #endregion Private Fields
 
@@ -37,29 +37,30 @@ namespace Unimake.Business.DFe
         /// <returns>string do envelope (soap)</returns>
         private string EnveloparXML(WSSoap soap, string xmlBody)
         {
-            if(soap.GZIPCompress)
+            if (soap.GZIPCompress)
             {
                 xmlBody = Compress.GZIPCompress(xmlBody);
             }
 
-            if(xmlBody.IndexOf("?>") >= 0)
+            if (xmlBody.IndexOf("?>") >= 0)
             {
                 xmlBody = xmlBody.Substring(xmlBody.IndexOf("?>") + 2);
             }
 
             var retorna = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
-            if(TratarScape)
+            if (TratarScapeEnvio)
             {
                 xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
 
-                retorna += soap.SoapString.Replace("{xmlBodyScape}", xmlBody);
-            }
-            else if(TratarScapeSoap)
-            {
-                xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
-
-                retorna += soap.SoapString.Replace("{xmlScapeSoap}", xmlBody);
+                if (soap.SoapString.IndexOf("{xmlBodyScape}") > 0)
+                {
+                    retorna += soap.SoapString.Replace("{xmlBodyScape}", xmlBody);
+                }
+                else if (soap.SoapString.IndexOf("{xmlBodyScapeEnvio}") > 0)
+                {
+                    retorna += soap.SoapString.Replace("{xmlBodyScapeEnvio}", xmlBody);
+                }                
             }
             else
             {
@@ -101,8 +102,22 @@ namespace Unimake.Business.DFe
             }
 
             var soap = (WSSoap)servico;
-            TratarScape = soap.SoapString.IndexOf("{xmlBodyScape}") > 0;
-            TratarScapeSoap = soap.SoapString.IndexOf("{xmlScapeSoap}") > 0;
+
+            if (soap.SoapString.IndexOf("{xmlBodyScape}") > 0)
+            {
+                TratarScapeEnvio = true;
+                TratarScapeRetorno = true;
+            }
+            else if (soap.SoapString.IndexOf("{xmlBodyScapeEnvio}") > 0)
+            {
+                TratarScapeEnvio = true;
+                TratarScapeRetorno = false;
+            }
+            else if (soap.SoapString.IndexOf("{xmlBodyScapeRetorno}") > 0)
+            {
+                TratarScapeEnvio = false;
+                TratarScapeRetorno = true;
+            }
 
             var urlpost = new Uri(soap.EnderecoWeb);
             var soapXML = EnveloparXML(soap, xml.OuterXml);
@@ -122,7 +137,7 @@ namespace Unimake.Business.DFe
             httpWebRequest.ContentLength = buffer2.Length;
 
             //Definir dados para conexão com proxy
-            if(soap.Proxy != null)
+            if (soap.Proxy != null)
             {
                 httpWebRequest.Proxy = soap.Proxy;
             }
@@ -137,12 +152,12 @@ namespace Unimake.Business.DFe
             {
                 responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
             }
-            catch(WebException ex)
+            catch (WebException ex)
             {
                 webException = ex;
                 responsePost = ex.Response;
 
-                if(ex.Response == null)
+                if (ex.Response == null)
                 {
                     throw (ex);
                 }
@@ -160,36 +175,32 @@ namespace Unimake.Business.DFe
             {
                 retornoXml.LoadXml(conteudoRetorno);
             }
-            catch(XmlException ex)
+            catch (XmlException ex)
             {
-                if(webException != null)
+                if (webException != null)
                 {
                     throw (webException);
                 }
 
                 throw (ex);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw (ex);
             }
 
-            if(soap.TagRetorno.ToLower() != "prop:innertext")
+            if (soap.TagRetorno.ToLower() != "prop:innertext")
             {
-                if(retornoXml.GetElementsByTagName(soap.TagRetorno)[0] == null)
+                if (retornoXml.GetElementsByTagName(soap.TagRetorno)[0] == null)
                 {
                     throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
                         "Conteúdo retornado pelo servidor:\r\n\r\n" +
                         retornoXml.InnerXml);
                 }
 
-                if(TratarScape)
+                if (TratarScapeRetorno)
                 {
                     RetornoServicoString = retornoXml.GetElementsByTagName(soap.TagRetorno)[0].ChildNodes[0].InnerText;
-                }
-                else if(TratarScapeSoap)
-                {
-                    RetornoServicoString = retornoXml.GetElementsByTagName(soap.TagRetorno)[0].ChildNodes[0].OuterXml;
                 }
                 else
                 {
@@ -198,7 +209,7 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                if(string.IsNullOrWhiteSpace(retornoXml.InnerText))
+                if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
                 {
                     throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
                 }
@@ -206,7 +217,7 @@ namespace Unimake.Business.DFe
                 RetornoServicoString = retornoXml.InnerText;
 
                 //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
-                if(RetornoServicoString.IndexOf("?>") >= 0)
+                if (RetornoServicoString.IndexOf("?>") >= 0)
                 {
                     RetornoServicoString = RetornoServicoString.Substring(RetornoServicoString.IndexOf("?>") + 2);
                 }
