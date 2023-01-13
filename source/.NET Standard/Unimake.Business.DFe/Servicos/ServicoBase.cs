@@ -119,7 +119,7 @@ namespace Unimake.Business.DFe.Servicos
 #if INTEROP
         [ComVisible(false)]
 #endif
-        protected internal void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
+        protected virtual void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
@@ -229,6 +229,7 @@ namespace Unimake.Business.DFe.Servicos
                     WebSoapString = Configuracoes.WebSoapString,
                     MetodoAPI = Configuracoes.MetodoAPI,
                     Token = Configuracoes.MunicipioToken,
+                    WebAction = Configuracoes.WebActionProducao,
                 };
 
                 var consumirAPI = new ConsumirAPI();

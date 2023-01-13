@@ -59,6 +59,31 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         /// <summary>
+        /// Inicializa configurações, parâmetros e propriedades para execução do serviço.
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo do XML a ser enviado para o web-service</param>
+        /// <param name="configuracao">Configurações a serem utilizadas para conexão e envio do XML para o web-service</param>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
+        {
+            base.Inicializar(conteudoXML, configuracao);
+
+            if (configuracao.PadraoNFSe == PadraoNFSe.NACIONAL)
+            {
+                try
+                {
+                    var startIndex = conteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+                    var endIndex = conteudoXML.OuterXml.IndexOf("\"", startIndex);
+
+                    Configuracoes.ChaveAcesso = conteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                }
+                catch { }
+            }
+        }
+
+        /// <summary>
         /// Validar, o conteúdo das tags do XML, alguns validações manuais que o schema não faz. Vamos implementando novas regras na medida da necessidade de cada serviço.
         /// </summary>
         protected override void XmlValidarConteudo() { }

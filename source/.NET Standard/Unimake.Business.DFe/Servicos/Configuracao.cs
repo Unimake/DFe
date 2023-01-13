@@ -537,6 +537,15 @@ namespace Unimake.Business.DFe.Servicos
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
 
+            if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIHomologacao) && TipoAmbiente == TipoAmbiente.Homologacao)
+            {
+                RequestURIHomologacao = RequestURIHomologacao.Replace("{ChaveAcesso}", ChaveAcesso);
+            }
+            else if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIProducao) && TipoAmbiente == TipoAmbiente.Producao)
+            {
+                RequestURIProducao= RequestURIProducao.Replace("{ChaveAcesso}", ChaveAcesso);
+            }
+
         }
 
         /// <summary>
@@ -902,6 +911,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Endereco para consumo de API - no ambiente de producao
         /// </summary>
         public string RequestURIProducao { get; set; }
+
+        /// <summary>
+        /// Chave de acesso utilizada nos URLs do padrão NACIONAL *(quando se necessita fazer o replace na url)
+        /// </summary>
+        public string ChaveAcesso { get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false

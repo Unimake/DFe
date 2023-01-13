@@ -1,18 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
-using System.Buffers;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
+using System.Xml.Linq;
 using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
 
@@ -43,7 +37,7 @@ namespace Unimake.Business.DFe
             #region Conexão API
             var Handler = new HttpClientHandler
             {
-                ClientCertificateOptions = ClientCertificateOption.Automatic,                       // verificar se o modo automático atende a necessidade
+                ClientCertificateOptions = ClientCertificateOption.Automatic,
             };
 
             var httpWebRequest = new HttpClient(Handler)
@@ -52,7 +46,7 @@ namespace Unimake.Business.DFe
             };
 
             if (!string.IsNullOrWhiteSpace(apiConfig.Token))
-            {
+            {       //TODO: LEMBRAR DE RETIRAR
                 httpWebRequest.DefaultRequestHeaders.Add("Authorization", apiConfig.Token);
             }
 
@@ -69,7 +63,7 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, new StringContent(Content, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
+                postData = httpWebRequest.PostAsync(Url, new StringContent(Content, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
             }
 
             WebException webException = null;
@@ -110,14 +104,14 @@ namespace Unimake.Business.DFe
                 }
             }
             else
-            {              
+            {
                 switch (postData.Content.Headers.ContentType.MediaType)
                 {
                     case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                         break;
 
                     case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
-                        resultadoRetorno.LoadXml(responsePost);                        
+                        resultadoRetorno.LoadXml(responsePost);
                         break;
 
                     case "application/json": //Retorno JSON -> Vamos ter que converter para XML
@@ -195,16 +189,13 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         private string EnveloparXML(APIConfig apiConfig, XmlDocument xml)
         {
-             var xmlBody = xml.OuterXml;
+            var xmlBody = xml.OuterXml;
             if (apiConfig.GZipCompress)
             {
                 xmlBody = Compress.GZIPCompress(xmlBody);
-            }
-            else if (apiConfig.B64)
-            {
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
             }
-
+            //if (apiConfig.B64) {  }
 
             var n = apiConfig.WebSoapString.CountChars('{');
             var dicionario = new Dictionary<string, string>();
@@ -247,15 +238,63 @@ namespace Unimake.Business.DFe
                 n--;
             }
 
+
             var result = "";
+            #region EM CONSTRUÇÃO --- 13/01/2023  -> MAURICIO
+            /*
+
+            if (!string.IsNullOrWhiteSpace(apiConfig.WebAction))
+            {
+                var newxml = new XDocument(new XElement(apiConfig.WebAction, xmlBody));
+                b.LoadXml(newxml.ToString());
+
+            }
+
+
+            var result = "";
+
+            apiConfig.MunicipioUsuario = "shig";
+            apiConfig.MunicipioSenha = "123";
+
+            var Xml2J = new XDocument();
+
+            if (apiConfig.WebSoapString.IndexOf("MunicipioUsuario") > 0)
+            {
+                //apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{MunicipioUsuario}", apiConfig.MunicipioUsuario);
+                XElement element = new XElement("usuario", apiConfig.MunicipioUsuario);
+                Xml2J.Add(element);
+            }
+            if (apiConfig.WebSoapString.IndexOf("MunicipioSenha") > 0)
+            {
+                //apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{MunicipioSenha}", apiConfig.MunicipioSenha);
+                XElement element = new XElement("senha", apiConfig.MunicipioSenha);
+                Xml2J.AddFirst(element);
+            }
+            if (apiConfig.WebSoapString.IndexOf("xml") > 0)
+            {
+                //apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xmlBody}", xmlBody);
+                XElement element = new XElement("xml", xmlBody);
+                Xml2J.AddAfterSelf(element);
+            }
+
+            //Xml2J.ReplaceWith(apiConfig.WebSoapString);
+            var b = new XmlDocument();
+            b.LoadXml(Xml2J.ToString());
+
+            #endregion EM CONSTRUÇÃO --- 13/01/2023
+            */
+            #endregion  
+
             if (apiConfig.ContentType == "application/json")
             {
                 result = JsonConvert.SerializeObject(dicionario);
-            } else
+            }
+            else
             {
-                result = xmlBody;
+                //result = xmlBody;
             }
             return result;
         }
+
     }
 }
