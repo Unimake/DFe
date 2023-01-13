@@ -1,0 +1,30 @@
+* Seta Ambiente
+SET DATE TO BRITISH 
+SET DEFAULT TO FULLPATH(CURDIR())
+SET PATH TO PROGS;MENU;FULLPATH(CURDIR())
+
+*PUBLIC Aplicativo
+*Aplicativo= CREATEOBJECT("Custom")
+
+*Aplicativo.AddObject("CertificadoSelecionado","Custom")
+*Aplicativo.CertificadoSelecionado.AddProperty("Selecionado")
+*Aplicativo.CertificadoSelecionado.AddProperty("Vencido")
+
+*Aplicativo.AddObject("Configuracao","Custom")
+*Aplicativo.Configuracao.AddProperty("Inicializar")
+
+*pastaRetorno = FULLPATH(CURDIR())+'Retorno'             
+*If NOT DIRECTORY(pastaRetorno) 
+*	MKDIR(pastaRetorno)
+*ENDIF
+        
+* Configuraçõoes UI
+ACTIVATE WINDOW SCREEN
+_SCREEN.WINDOWSTATE = 2
+PUSH MENU _MSYSMENU 
+DO .\MENU\MENU.MPR
+ON SHUTDOWN QUIT
+
+READ EVENTS
+RELEASE ALL	
+
