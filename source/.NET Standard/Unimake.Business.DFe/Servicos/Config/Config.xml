@@ -1288,4 +1288,10 @@
 		<ArqConfig>CariacicaES.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3503901">
+		<Nome>Arujá - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ArujaSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
