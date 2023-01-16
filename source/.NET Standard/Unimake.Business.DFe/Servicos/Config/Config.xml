@@ -1282,4 +1282,10 @@
 		<ArqConfig>Abase.xml</ArqConfig>
 		<PadraoNFSe>ABASE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3201308">
+		<Nome>Cariacica - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>CariacicaES.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
