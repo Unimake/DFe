@@ -252,6 +252,7 @@
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
+		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ChapecoSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
@@ -655,6 +656,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ChapecoSC.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Memory.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Equiplano.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

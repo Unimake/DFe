@@ -1294,4 +1294,10 @@
 		<ArqConfig>ArujaSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4305108">
+		<Nome>Caxias do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CaxiasDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
