@@ -416,12 +416,45 @@ namespace Unimake.Business.DFe.Servicos
         }
 
         /// <summary>
-        /// Efetua a leitura do XML que contem configurações específicas de cada webservice e atribui o conteúdo nas propriedades do objeto "Configuracoes"
+        /// Busca o arquivo de configuração específica da SEFAZ, Receita Federal ou Prefeitura. Analisa se é para pegar o arquivo de configuração embutido na DLL ou um que esteja em uma pasta.
         /// </summary>
-        private void LerXmlConfigEspecifico(string xmlConfigEspecifico)
+        /// <param name="xmlConfigEspecifico">Nome do XML de configuração específica embutido na DLL</param>
+        /// <returns>XML de configuração</returns>
+        private XmlDocument BuscarArquivoConfiguracao(string xmlConfigEspecifico)
         {
             var doc = new XmlDocument();
-            doc.Load(LoadXmlConfig(xmlConfigEspecifico));
+
+            switch (BuscarConfiguracaoPastaBase)
+            {
+                case true:
+                    var arqConfig = Path.Combine(PastaArquivoConfiguracao, xmlConfigEspecifico.Substring(NamespaceConfig.Length));
+
+                    if (File.Exists(arqConfig))
+                    {
+                        doc.Load(arqConfig);
+                    }
+                    else
+                    {
+                        goto default;
+                    }
+
+                    break;
+
+                default:
+                    doc.Load(LoadXmlConfig(xmlConfigEspecifico));
+                    break;
+            }
+
+            return doc;
+        }
+
+        /// <summary>
+        /// Efetua a leitura do XML que contem configurações específicas de cada web-service e atribui o conteúdo nas propriedades do objeto "Configuracoes"
+        /// </summary>
+        /// <param name="xmlConfigEspecifico">Nome do XML de configuração específica embutido na DLL</param>
+        private void LerXmlConfigEspecifico(string xmlConfigEspecifico)
+        {
+            var doc = BuscarArquivoConfiguracao(xmlConfigEspecifico);
 
             #region Leitura do XML do SVC - Sistema Virtual de Contingência
 
@@ -448,11 +481,11 @@ namespace Unimake.Business.DFe.Servicos
                 default:
                     if (svc)
                     {
-                        doc.Load(LoadXmlConfig(arqConfigSVC));
+                        doc = BuscarArquivoConfiguracao(arqConfigSVC);
                         LerConfig(doc, arqConfigSVC, true);
 
                         //Sobrepor algumas configurações do SVC com os do estado, tais como a URL de QRCode. Isso para os estados que tem.
-                        doc.Load(LoadXmlConfig(xmlConfigEspecifico));
+                        doc = BuscarArquivoConfiguracao(xmlConfigEspecifico);
                         LerConfigEspecifica(doc);
                     }
                     break;
@@ -472,10 +505,10 @@ namespace Unimake.Business.DFe.Servicos
 
                     temHeranca = true;
 
-                    doc.Load(LoadXmlConfig(arqConfigHeranca));
+                    doc = BuscarArquivoConfiguracao(arqConfigHeranca);
                     LerConfig(doc, arqConfigHeranca, true);
 
-                    doc.Load(LoadXmlConfig(xmlConfigEspecifico));
+                    doc = BuscarArquivoConfiguracao(xmlConfigEspecifico);
                 }
 
                 #endregion Leitura do XML herdado, quando tem herança.
@@ -503,7 +536,7 @@ namespace Unimake.Business.DFe.Servicos
         {
             if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(WebEnderecoHomologacao))
             {
-                WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);         
+                WebEnderecoHomologacao = WebEnderecoHomologacao.Replace("{MunicipioToken}", MunicipioToken);
             }
             else if (!string.IsNullOrWhiteSpace(MunicipioToken) && !string.IsNullOrEmpty(RequestURIHomologacao))
             {
@@ -543,7 +576,7 @@ namespace Unimake.Business.DFe.Servicos
             }
             else if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIProducao) && TipoAmbiente == TipoAmbiente.Producao)
             {
-                RequestURIProducao= RequestURIProducao.Replace("{ChaveAcesso}", ChaveAcesso);
+                RequestURIProducao = RequestURIProducao.Replace("{ChaveAcesso}", ChaveAcesso);
             }
 
         }
@@ -923,7 +956,7 @@ namespace Unimake.Business.DFe.Servicos
         public bool IsAPI
         {
             get
-            { 
+            {
                 if (!string.IsNullOrWhiteSpace(RequestURIProducao) || !string.IsNullOrWhiteSpace(RequestURIHomologacao))
                 {
                     return true;
@@ -936,7 +969,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Método de solicitação da API
         /// </summary>
-        public string MetodoAPI{ get; set; }
+        public string MetodoAPI { get; set; }
 
         /// <summary>
         /// String do Soap para envio para o webservice;
@@ -1067,6 +1100,36 @@ namespace Unimake.Business.DFe.Servicos
         {
             get => _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
             set => _TimeOutWebServiceConnect = value;
+        }
+
+        /// <summary>
+        /// Buscar o arquivo de configuração na pasta base definida na propriedade "PastaDLL"? (true or false)
+        /// Se existir o arquivo de configuração, da SEFAZ ou Prefeitura, na pasta definida na propriedade "PastaDLL", a DLL vai priorizar buscar as informações deste arquivo. 
+        /// Muito útil quando a SEFAZ ou Prefeitura muda as configurações dos web-services sem aviso prévio, com isso podemos fazer os ajustes no XML de configuração rapidamente e 
+        /// colocar o arquivo na pasta em questão que a DLL assuma as novas orientações sem precisar atualizar a DLL.
+        /// Ativar esta configuração pode deixar a rotina, fração de segundos, mais lenta, pois vai fazer um acesso ao HD em busca do arquivo.
+        /// Quando não ativamos esta propriedade a DLL continua buscando o arquivo de configuração somente nos recursos embutidos da mesma, e isso é muito rápido pois trabalha unicamente na memória.
+        /// </summary>
+        public bool BuscarConfiguracaoPastaBase { get; set; }
+
+        private string _PastaDLL = string.Empty;
+
+        /// <summary>
+        /// Por padrão é a pasta base onde a DLL está instalada de onde está sendo executada, mas o desenvolvedor pode mudar esta pasta definindo a que lhe for melhor.
+        /// </summary>
+        public string PastaArquivoConfiguracao
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_PastaDLL))
+                {
+                    _PastaDLL = System.IO.Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+                }
+
+                return _PastaDLL;
+            }
+
+            set => _PastaDLL = value;
         }
 
         #endregion Public Properties
