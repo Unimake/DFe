@@ -90,7 +90,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string UsrAgt
         {
             get => UsrAgtField;
-            set => UsrAgtField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => UsrAgtField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string BizTransType
         {
             get => BizTransTypeField;
-            set => BizTransTypeField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => BizTransTypeField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
     }
 
@@ -707,7 +707,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
@@ -743,7 +743,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Pnn
         {
             get => PnnField;
-            set => PnnField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => PnnField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         private string PnnSNCRField { get; set; }
@@ -755,7 +755,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string PnnSNCR
         {
             get => PnnSNCRField;
-            set => PnnSNCRField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => PnnSNCRField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
@@ -932,7 +932,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
     }
 
@@ -1409,7 +1409,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         #region ShouldSerialize
@@ -1462,7 +1462,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Receiver
         {
             get => ReceiverField;
-            set => ReceiverField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => ReceiverField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
     }
 
@@ -1486,7 +1486,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
 #if INTEROP
@@ -1576,7 +1576,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
     }
 

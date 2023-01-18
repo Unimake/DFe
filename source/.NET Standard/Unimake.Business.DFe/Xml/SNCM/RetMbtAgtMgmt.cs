@@ -273,7 +273,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Desc
         {
             get => DescField;
-            set => DescField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => DescField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
     }
 }

@@ -169,7 +169,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string Reason
         {
             get => ReasonField;
-            set => ReasonField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => ReasonField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace Unimake.Business.DFe.Xml.SNCM
         public string AtcDDD
         {
             get => AtcDDDField;
-            set => AtcDDDField = XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim();
+            set => AtcDDDField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(140).Trim());
         }
 
         /// <summary>
