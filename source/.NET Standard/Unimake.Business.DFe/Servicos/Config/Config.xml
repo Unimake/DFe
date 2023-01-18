@@ -1300,4 +1300,10 @@
 		<ArqConfig>CaxiasDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5007109">
+		<Nome>Ribas do Rio Pardo - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>RibasDoRioPardoMS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

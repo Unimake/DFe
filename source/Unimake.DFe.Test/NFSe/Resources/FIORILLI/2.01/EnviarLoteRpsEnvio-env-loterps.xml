@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="lote_20130807412" versao="2.01">
+    <NumeroLote>20130807412</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>14414973000181</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>0000000001</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="inf_0051924">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>86462</Numero>
+              <Serie>A</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2013-07-30</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2013-07-30</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>2488.36</ValorServicos>
+              <ValorDeducoes>0.00</ValorDeducoes>
+              <ValorPis>0.00</ValorPis>
+              <ValorCofins>0.00</ValorCofins>
+              <ValorInss>0.00</ValorInss>
+              <ValorIr>0.00</ValorIr>
+              <ValorCsll>0.00</ValorCsll>
+              <OutrasRetencoes>0</OutrasRetencoes>
+              <ValorIss>74.65</ValorIss>
+              <DescontoIncondicionado>0</DescontoIncondicionado>
+              <DescontoCondicionado>0</DescontoCondicionado>
+            </Valores>
+            <IssRetido>1</IssRetido>
+            <ResponsavelRetencao>1</ResponsavelRetencao>
+            <ItemListaServico>712</ItemListaServico>
+            <CodigoTributacaoMunicipio>0</CodigoTributacaoMunicipio>
+            <Discriminacao>VOLUME A PARTIR DE 0.00 M3 200.00000 M3 3,31 662,00||CARGA DBO A PARTIR DE 0.00 KG 125.84000 KG 7,06 888,43||CARGA DE MS A PARTIR DE 0.00 KG 72.26000 KG 12,98 937,93||Tratamento de Efluentes Liquidos Organicos - Servico de Coleta, transporte e disposicao final de efluentes organicos, atraves de tubulacoes|Periodo de referencia: julho/2013.||OC: 28492||BRADESCO - 12393-5 Agencia: 2864-9 Conta Corrente: 12393-5</Discriminacao>
+            <CodigoMunicipio>2905701</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>2905701</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>14414973000181</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>0000000001</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cnpj>42278291001791</Cnpj>
+              </CpfCnpj>
+              <InscricaoMunicipal>0017833001</InscricaoMunicipal>
+            </IdentificacaoTomador>
+            <RazaoSocial>LOG-IN - LOGISTICA INTERMODAL S/A</RazaoSocial>
+            <Endereco>
+              <Endereco>VIA DE LIGACAO</Endereco>
+              <Numero>0</Numero>
+              <Complemento>PARTE - COPEC</Complemento>
+              <Bairro>POLO PETROQUIMICO</Bairro>
+              <CodigoMunicipio>2905701</CodigoMunicipio>
+              <Uf>BA</Uf>
+              <Cep>42810000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>00034936415</Telefone>
+              <Email>nfe.material@loginlogistica.com.br</Email>
+            </Contato>
+          </Tomador>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

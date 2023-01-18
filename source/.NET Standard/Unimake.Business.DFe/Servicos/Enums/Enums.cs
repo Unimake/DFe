@@ -6163,6 +6163,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ABASE")]
         ABASE = 31,
+
+        /// <summary>
+        /// FIORILLI
+        /// </summary>
+        [Description("FIORILLI")]
+        FIORILLI = 32,
     }
 
     #endregion

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <LoteRps Id="Lote_01001001000113" versao="1.00">
+    <NumeroLote>1</NumeroLote>
+    <CpfCnpj>
+      <Cnpj>01001001000113</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>1.000.10</InscricaoMunicipal>
+    <QuantidadeRps>2</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="rps000000000000018729">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>18729</Numero>
+              <Serie>A</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2016-08-04</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2016-08-04</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>100.00</ValorServicos>
+              <Aliquota>2.00</Aliquota>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ItemListaServico>01.05</ItemListaServico>
+            <Discriminacao>TESTE</Discriminacao>
+            <CodigoMunicipio>3504800</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>3504800</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>01001001000113</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1.000.10</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>27600930854</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>Ivan Moraes</RazaoSocial>
+            <Endereco>
+              <Endereco>Av Jose Goncalves</Endereco>
+              <Numero>93</Numero>
+              <Complemento>Casa</Complemento>
+              <Bairro>Santa Rosa</Bairro>
+              <CodigoMunicipio>3505203</CodigoMunicipio>
+              <Uf>SP</Uf>
+              <Cep>17250000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>36620000</Telefone>
+              <Email>ivantgm@gmail.com</Email>
+            </Contato>
+          </Tomador>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+      <Rps>
+        <InfDeclaracaoPrestacaoServico Id="rps000000000000018730">
+          <Rps>
+            <IdentificacaoRps>
+              <Numero>18730</Numero>
+              <Serie>A</Serie>
+              <Tipo>1</Tipo>
+            </IdentificacaoRps>
+            <DataEmissao>2016-08-04</DataEmissao>
+            <Status>1</Status>
+          </Rps>
+          <Competencia>2016-08-04</Competencia>
+          <Servico>
+            <Valores>
+              <ValorServicos>100.00</ValorServicos>
+              <Aliquota>2.00</Aliquota>
+            </Valores>
+            <IssRetido>2</IssRetido>
+            <ItemListaServico>01.05</ItemListaServico>
+            <Discriminacao>TESTE</Discriminacao>
+            <CodigoMunicipio>3504800</CodigoMunicipio>
+            <CodigoPais>1058</CodigoPais>
+            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <MunicipioIncidencia>3504800</MunicipioIncidencia>
+          </Servico>
+          <Prestador>
+            <CpfCnpj>
+              <Cnpj>01001001000113</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>1.000.10</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cpf>27600930854</Cpf>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>Ivan Moraes</RazaoSocial>
+            <Endereco>
+              <Endereco>Av Jose Goncalves</Endereco>
+              <Numero>93</Numero>
+              <Complemento>Casa</Complemento>
+              <Bairro>Santa Rosa</Bairro>
+              <CodigoMunicipio>3505203</CodigoMunicipio>
+              <Uf>SP</Uf>
+              <Cep>17250000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>36620000</Telefone>
+              <Email>ivantgm@gmail.com</Email>
+            </Contato>
+          </Tomador>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivoFiscal>2</IncentivoFiscal>
+        </InfDeclaracaoPrestacaoServico>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsSincronoEnvio>
