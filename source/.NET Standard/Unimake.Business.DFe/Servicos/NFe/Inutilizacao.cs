@@ -85,6 +85,23 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
+        /// <summary>
+        /// Validar o XML
+        /// </summary>
+        protected override void XmlValidar()
+        {
+            if (InutNFe.InfInut.CUF != UFBrasil.MT && !string.IsNullOrWhiteSpace(InutNFe.InfInut.CPF))
+            {
+                throw new Exception("TAG CPF da inutilização só pode ser utilizada para envios a SEFAZ do Mato Grosso (MT), demais estados só permitem inutilização para CNPJ.");
+            }
+
+            //Se for SEFAZ do MT e for CPF, não pode validar, pois não existe CPF no pacote de Schema padrão nacional. Somente o MT está permitindo enviar CPF no XML de inutilização.
+            if (InutNFe.InfInut.CUF != UFBrasil.MT || string.IsNullOrWhiteSpace(InutNFe.InfInut.CPF))
+            {
+                base.XmlValidar();
+            }
+        }
+
         #endregion Public Properties
 
         #region Public Constructors
