@@ -81,46 +81,6 @@
         <OptanteSimplesNacional>2</OptanteSimplesNacional>
         <IncentivoFiscal>2</IncentivoFiscal>
       </InfDeclaracaoPrestacaoServico>
-      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-        <SignedInfo>
-          <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
-          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
-          <Reference URI="#RPS1">
-            <Transforms>
-              <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
-              <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
-            </Transforms>
-            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-            <DigestValue>ssJJr6yiaDH37DE3rbGo7c9nCeI=</DigestValue>
-          </Reference>
-        </SignedInfo>
-        <SignatureValue>sgFzEbyqc3ob3LfIKAzFHNRsHK4yfwt1ajPepogoBoqIbqTfl2Ls2k77GMe4GdcTRE1myoNI+v5Xl9SgyoXv2gcnUG41iEHBdOr4yNhnpuEYulen6I5prD1fiOv/qqJxOXZN7mhCCjC1tGFUKvP1AaY4Kt8QzcHvT0EMh0JjrY0=</SignatureValue>
-        <KeyInfo>
-          <X509Data>
-            <X509Certificate>MIICVTCCAb4CCQD3A3l4B6OnbTANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJCUjELMAkGA1UECAwCTUcxCzAJBgNVBAcMAkJIMQwwCgYDVQQKDANSUFAxCzAJBgNVBAsMAlRJMQwwCgYDVQQDDANBVkExHTAbBgkqhkiG9w0BCQEWDmF2YUBycHAuY29tLmJyMB4XDTE0MTIwMjEyNTU0MloXDTE1MTIwMjEyNTU0MlowbzELMAkGA1UEBhMCQlIxCzAJBgNVBAgMAk1HMQswCQYDVQQHDAJCSDEMMAoGA1UECgwDUlBQMQswCQYDVQQLDAJUSTEMMAoGA1UEAwwDQVZBMR0wGwYJKoZIhvcNAQkBFg5hdmFAcnBwLmNvbS5icjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAtJ98TqJNetG7QTT5j/oV/9LUf+BnNe3I9L097xGy19WbMJikUo+FvQ3o/eL0m/tCTY6zeMAZeuafQqhDaz4duz7+WTJ6BBKy5ZX2lu39bl3S7bbAIm3vwNaKKf2PIEHPKe3zg2dLGh6p6UeLq4ULu4JZG11++lA8Mf1m8c5hN2UCAwEAATANBgkqhkiG9w0BAQsFAAOBgQCgJ8rS8Yq28tS5SM0ovAD6GMoRJpHqi6bj+nvzy6EB8XQvyK80bX84wBVFjWYccIayHICpz27sckFgd70kNDWs2biFVNj9FeCx8qpazL9/i+cgHLRf6tSKOkdlKNeBiD20OnpnKlPiMPqYEVdfQUfNWp0ru8ylBHS4J+lS5oeRlA==</X509Certificate>
-          </X509Data>
-        </KeyInfo>
-      </Signature>
     </Rps>
   </SubstituicaoNfse>
-  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-    <SignedInfo>
-      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
-      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
-      <Reference URI="#SNF1">
-        <Transforms>
-          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
-          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
-        </Transforms>
-        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <DigestValue>YYjYNVWYfM0DMG81VfwdP5bsfF0=</DigestValue>
-      </Reference>
-    </SignedInfo>
-    <SignatureValue>foR/kErMw5luF7S1O8ir5ODPikLGR4iDeoT3SpKSg1hakk/SLq/tt3CO83C+29RIHpuzrovMBxmq/o11aIK6KQyORt0k7APhSfDYbvxYtrHd5VYOg7BSBlM4HiAf8+GACFOANbJuiE/UKhYHscE9mV1+xrfLdVsMq6KdT7Ve8Us=</SignatureValue>
-    <KeyInfo>
-      <X509Data>
-        <X509Certificate>MIICVTCCAb4CCQD3A3l4B6OnbTANBgkqhkiG9w0BAQsFADBvMQswCQYDVQQGEwJCUjELMAkGA1UECAwCTUcxCzAJBgNVBAcMAkJIMQwwCgYDVQQKDANSUFAxCzAJBgNVBAsMAlRJMQwwCgYDVQQDDANBVkExHTAbBgkqhkiG9w0BCQEWDmF2YUBycHAuY29tLmJyMB4XDTE0MTIwMjEyNTU0MloXDTE1MTIwMjEyNTU0MlowbzELMAkGA1UEBhMCQlIxCzAJBgNVBAgMAk1HMQswCQYDVQQHDAJCSDEMMAoGA1UECgwDUlBQMQswCQYDVQQLDAJUSTEMMAoGA1UEAwwDQVZBMR0wGwYJKoZIhvcNAQkBFg5hdmFAcnBwLmNvbS5icjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAtJ98TqJNetG7QTT5j/oV/9LUf+BnNe3I9L097xGy19WbMJikUo+FvQ3o/eL0m/tCTY6zeMAZeuafQqhDaz4duz7+WTJ6BBKy5ZX2lu39bl3S7bbAIm3vwNaKKf2PIEHPKe3zg2dLGh6p6UeLq4ULu4JZG11++lA8Mf1m8c5hN2UCAwEAATANBgkqhkiG9w0BAQsFAAOBgQCgJ8rS8Yq28tS5SM0ovAD6GMoRJpHqi6bj+nvzy6EB8XQvyK80bX84wBVFjWYccIayHICpz27sckFgd70kNDWs2biFVNj9FeCx8qpazL9/i+cgHLRf6tSKOkdlKNeBiD20OnpnKlPiMPqYEVdfQUfNWp0ru8ylBHS4J+lS5oeRlA==</X509Certificate>
-      </X509Data>
-    </KeyInfo>
-  </Signature>
 </SubstituirNfseEnvio>
