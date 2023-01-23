@@ -1330,4 +1330,10 @@
 		<ArqConfig>CorumbaMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3205200">
+		<Nome>Vila Velha - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>VilaVelhaES.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
