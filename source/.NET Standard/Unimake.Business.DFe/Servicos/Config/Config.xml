@@ -1318,4 +1318,10 @@
 		<ArqConfig>CatanduvaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1502152">
+		<Nome>Canaã dos Carajás - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>CanaaDosCarajasPA.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
