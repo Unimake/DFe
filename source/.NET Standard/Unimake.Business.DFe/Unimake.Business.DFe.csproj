@@ -253,6 +253,7 @@
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
+		<None Remove="Servicos\Config\NFSe\CatanduvaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ChapecoSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
@@ -651,6 +652,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CatanduvaSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ArujaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

@@ -1312,4 +1312,10 @@
 		<ArqConfig>AguasDeLindoiaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3511102">
+		<Nome>Catanduva - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CatanduvaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
