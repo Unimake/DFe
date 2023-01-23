@@ -1336,4 +1336,10 @@
 		<ArqConfig>VilaVelhaES.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3504008">
+		<Nome>Assis - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>AssisSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
