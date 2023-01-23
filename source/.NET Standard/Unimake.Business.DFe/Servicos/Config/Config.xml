@@ -1324,4 +1324,10 @@
 		<ArqConfig>CanaaDosCarajasPA.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5003207">
+		<Nome>Corumba - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>CorumbaMS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
