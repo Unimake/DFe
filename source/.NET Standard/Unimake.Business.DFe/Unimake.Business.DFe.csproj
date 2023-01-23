@@ -233,6 +233,7 @@
 		<None Remove="Servicos\Config\NFe\TO.xml" />
 		<None Remove="Servicos\Config\NFSe\Abase.xml" />
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
+		<None Remove="Servicos\Config\NFSe\AguasDeLindoiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
@@ -668,6 +669,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GravataPE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AguasDeLindoiaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RibasDoRioPardoMS.xml">
