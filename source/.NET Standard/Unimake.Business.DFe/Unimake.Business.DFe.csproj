@@ -244,7 +244,6 @@
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
-		<None Remove="Servicos\Config\NFSe\BonfimRR.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
@@ -289,6 +288,7 @@
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
+		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
@@ -702,7 +702,7 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CarapicuibaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BonfimRR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\NACIONAL.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhais.xml">

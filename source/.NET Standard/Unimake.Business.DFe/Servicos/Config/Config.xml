@@ -898,10 +898,10 @@
 		<ArqConfig>EdeiaGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="1400159">
-		<Nome>Bonfim - RR</Nome>
-		<UF>RR</UF>
-		<ArqConfig>BonfimRR.xml</ArqConfig>
+	<Arquivo ID="1001058">
+		<Nome>NACIONAL</Nome>
+		<UF>BR</UF>
+		<ArqConfig>NACIONAL.xml</ArqConfig>
 		<PadraoNFSe>NACIONAL</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5208004">
