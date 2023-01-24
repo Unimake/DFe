@@ -187,8 +187,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Gravar os XML contidos no DocZIP da consulta em uma pasta no HD
         /// </summary>
         /// <param name="folder">Nome da pasta onde é para salvar os XML</param>
-        /// <param name="saveXMLResumo">Salvar os arquivos de resumo da NFe e Eventos da NFe?</param>
-        public void GravarXMLDocZIP(string folder, bool saveXMLResumo)
+        /// <param name="saveXMLSummary">Salvar os arquivos de resumo da NFe e Eventos?</param>
+        /// <param name="fileNameWithNSU">true=Salva os arquivos da NFe e seus eventos com o NSU no nome do arquivo / false=Salva os arquivos da NFe e seus eventos com o CHAVE da NFe no nome do arquivo</param>
+        public void GravarXMLDocZIP(string folder, bool saveXMLSummary, bool fileNameWithNSU = false)
         {
             try
             {
@@ -204,24 +205,40 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     if (item.Schema.StartsWith("resEvento"))
                     {
                         nomeArquivo = item.NSU + "-resEvento.xml";
-                        save = saveXMLResumo;
+                        save = saveXMLSummary;
                     }
                     else if (item.Schema.StartsWith("procEventoNFe"))
                     {
                         var chNFe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "chNFe");
                         var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
                         var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
-                        nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
+
+                        if (fileNameWithNSU)
+                        {
+                            nomeArquivo = item.NSU + "-procEventoNFe.xml";
+                        }
+                        else
+                        {
+                            nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
+                        }
                     }
                     else if (item.Schema.StartsWith("procNFe"))
                     {
                         var chave = ((XmlElement)docXML.GetElementsByTagName("infNFe")[0]).GetAttribute("Id").Substring(3, 44);
-                        nomeArquivo = chave + "-procNFe.xml";
+
+                        if (fileNameWithNSU)
+                        {
+                            nomeArquivo = item.NSU + "-procNFe.xml";
+                        }
+                        else
+                        {
+                            nomeArquivo = chave + "-procNFe.xml";
+                        }
                     }
                     else if (item.Schema.StartsWith("resNFe"))
                     {
                         nomeArquivo = item.NSU + "-resNFe.xml";
-                        save = saveXMLResumo;
+                        save = saveXMLSummary;
                     }
 
                     if (save && !string.IsNullOrEmpty(nomeArquivo))
