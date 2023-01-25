@@ -1,0 +1,149 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Net.Http;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
+
+namespace Unimake.Business.DFe
+{
+    /// <summary>
+    /// Classe para tratar o retorno específicamente de API (tratamento de JSON)
+    /// </summary>
+    public class TratarRetornoAPI
+    {
+        #region Private Property
+        private APIConfig config;
+        private HttpResponseMessage response;
+        #endregion Private Property
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public TratarRetornoAPI(APIConfig apiConfig, HttpResponseMessage message)
+        {
+            config = apiConfig;
+            response = message;
+        }
+
+        /// <summary>
+        /// Classifica, faz o tratamento e retorna um XML (caso a comunicação tenha retorno)
+        /// </summary>
+        /// <returns></returns>
+        public XmlDocument ReceberRetorno()
+        {
+
+            var ResponseString = response.Content.ReadAsStringAsync().Result;
+            var resultadoRetorno = new XmlDocument();
+
+            switch (response.Content.Headers.ContentType.MediaType)
+            {
+                case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                    try
+                    {
+                        resultadoRetorno.LoadXml(ResponseString);
+                    }
+                    catch
+                    {
+                        resultadoRetorno.LoadXml(StringToXml(ResponseString));
+                    }
+                    break;
+
+                case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                    try
+                    {
+                        resultadoRetorno.LoadXml(ResponseString);
+                    }
+                    catch
+                    {
+                        resultadoRetorno.LoadXml(StringToXml(ResponseString));
+                    }
+                    break;
+
+                case "application/json": //Retorno JSON -> Vamos ter que converter para XML
+                    resultadoRetorno.LoadXml(BuscarXML(ResponseString));
+                    break;
+
+                case "text/html": //Retorno HTML -> Entendemos que sempre será erro
+                    ResponseString = HtmlToPlainText(ResponseString);
+                    resultadoRetorno.LoadXml(StringToXml(ResponseString));
+                    break;
+            }
+
+            return resultadoRetorno;
+        }
+
+        private string BuscarXML(string content)
+        {
+            string result = "";
+            string temp = "";
+            XmlDocument xml = JsonConvert.DeserializeXmlNode(content, "temp");
+            XmlNode node;
+
+            try
+            {
+                node = xml.GetElementsByTagName(config.TagRetorno)[0];         //tag retorno
+                if (node != null)
+                {
+                    temp = node.OuterXml;
+                    temp = Compress.GZIPDecompress(temp);
+                    result = Encoding.UTF8.GetString(Convert.FromBase64String(temp));
+                    return result;
+                }
+            }
+            finally
+            {
+                result = xml.OuterXml;
+                //throw new Exception("Problema ao buscar o XML dentro do JSON :" + ex.Message);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Método para "limpar" o HTML, deixando apenas a string com conteúdo
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        private static string HtmlToPlainText(string html)
+        {
+            const string tagWhiteSpace = @"(>|$)(\W|\n|\r)+<";//matches one or more (white space or line breaks) between '>' and '<'
+            const string stripFormatting = @"<[^>]*(>|$)";//match any character between '<' and '>', even when end tag is missing
+            const string lineBreak = @"<(br|BR)\s{0,1}\/{0,1}>";//matches: <br>,<br/>,<br />,<BR>,<BR/>,<BR />
+            var lineBreakRegex = new Regex(lineBreak, RegexOptions.Multiline);
+            var stripFormattingRegex = new Regex(stripFormatting, RegexOptions.Multiline);
+            var tagWhiteSpaceRegex = new Regex(tagWhiteSpace, RegexOptions.Multiline);
+
+            var text = html;
+            //Decode html specific characters
+            text = System.Net.WebUtility.HtmlDecode(text);
+            //Remove tag whitespace/line breaks
+            text = tagWhiteSpaceRegex.Replace(text, "><");
+            //Replace <br /> with line breaks
+            text = lineBreakRegex.Replace(text, Environment.NewLine);
+            //Strip formatting
+            text = stripFormattingRegex.Replace(text, string.Empty);
+
+            return text;
+        }
+
+        /// <summary>
+        /// Classe para serializar a string, para que seja realizado a leitura em XML
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string StringToXml(string str)
+        {
+            XmlSerializer xml = new XmlSerializer(str.GetType());
+            StringWriter retorno = new StringWriter();
+            xml.Serialize(retorno, str);
+
+            return retorno.ToString();
+        }
+    }
+}
