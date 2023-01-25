@@ -9,7 +9,7 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<WebSoapString>{MunicipioUsuario}{MunicipioSenha}{xml}</WebSoapString>
+			<WebSoapString>{usuario}{senha}{xml}</WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
@@ -23,7 +23,7 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<WebSoapString>{MunicipioUsuario}{MunicipioSenha}{xml}</WebSoapString>
+			<WebSoapString>{usuario}{senha}{xml}</WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
@@ -37,8 +37,8 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{MunicipioUsuario}{MunicipioSenha}{xml}</WebSoapString>
-			<WebContentType>GerarNfseResposta</WebContentType>
+			<WebSoapString>{usuario}{senha}{xml}</WebSoapString>
+			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
