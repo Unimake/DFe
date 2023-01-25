@@ -57,6 +57,8 @@ Function Main()
    AAdd(aOpcoes, "Enviar XML de Inutirlizacao do CTe")  
    AAdd(aOpcoes, "Enviar XML de Inutirlizacao do CTe - Com Desserializacao")  
    
+   AAdd(aOpcoes, "Enviar Evento de CCE da NFe")  
+   
    Do While .T.
       Cls
 
@@ -198,6 +200,9 @@ Function Main()
 			  
          case nOpcao = 43
 			  EnviarInutCTeDesserializacao()	  
+			  
+         case nOpcao = 44
+			  EnviarEventoCCeNFe()	  
       endcase
    EndDo
 Return       

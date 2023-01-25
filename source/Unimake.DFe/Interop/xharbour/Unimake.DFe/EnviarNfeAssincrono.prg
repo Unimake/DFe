@@ -283,7 +283,8 @@ Function EnviarNfeAssincrono()
    oTransporta:IE = "00000000"
    oTransporta:XEnder = "Rua bla bla bla"
    oTransporta:XMun = "Sao Paulo"
-   oTransporta:XNome = "transportadora ltda"   
+   oTransporta:XNome = "transportadora ltda"  
+   oTransporta:UF = 31   
    
 // Adicionar a tag <transporta> dentro da tag <transp>
    oTransp:Transporta = oTransporta
