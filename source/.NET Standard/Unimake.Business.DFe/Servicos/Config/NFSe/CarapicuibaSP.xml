@@ -9,7 +9,7 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{token}{xml}</WebSoapString>
+			<WebSoapString>{xml}</WebSoapString>
 			<WebContentType>application/xml</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
@@ -23,7 +23,7 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{token}{xml}</WebSoapString>
+			<WebSoapString>{xml}</WebSoapString>
 			<WebContentType>application/xml</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
