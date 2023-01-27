@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.04">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="2.04">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="2.04">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.04">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <ConsultarLoteRps versao="2.04">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="2.04">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="2.04">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=utf-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="2.04">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="2.04">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao>https://nfe.sertaozinho.sp.gov.br:8443/tbhomolog/services/nfseSOAP?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://nfe.sertaozinho.sp.gov.br:8443/tbw/services/nfseSOAP?wsdl</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo></SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorFaixaRequest><nfseCabecMsg><![CDATA[<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd%22%3E<versaoDados>2.04</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></nfse:ConsultarNfsePorFaixaRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>prop:innertext</WebTagRetorno>
+      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.04</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseFaixa>
+  </Servicos>
+</Configuracoes>

@@ -1306,7 +1306,7 @@
 		<ArqConfig>RibasDoRioPardoMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3500501">
+	<Arquivo ID="4303806">
 		<Nome>Águas de Lindóia - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>AguasDeLindoiaSP.xml</ArqConfig>
@@ -1348,10 +1348,18 @@
 		<ArqConfig>SapucaiaDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
+<<<<<<< HEAD
 	<Arquivo ID="2930709">
 		<Nome>Simões Filho - BA</Nome>
 		<UF>BA</UF>
 		<ArqConfig>SimoesFilhoBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
+=======
+	<Arquivo ID="3551702">
+		<Nome>Sertãozinho - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SertaozinhoSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+>>>>>>> Implementado o município de Sertãozinho - SP, padrão SMARAPD. ID #151885
 	</Arquivo>
 </Configuracoes>
