@@ -306,6 +306,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhais.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
+		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
@@ -659,6 +660,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AssisSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VilaVelhaES.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

@@ -1342,4 +1342,10 @@
 		<ArqConfig>AssisSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4320008">
+		<Nome>Sapucaia do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SapucaiaDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
