@@ -606,11 +606,6 @@ namespace Unimake.Business.DFe.Servicos
         EX = 99,
 
         /// <summary>
-        /// Brasil
-        /// </summary>
-        BR = 55,
-
-        /// <summary>
         /// Não definido (0)
         /// </summary>
         NaoDefinido = 0
