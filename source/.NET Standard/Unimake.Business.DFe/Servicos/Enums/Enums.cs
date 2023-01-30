@@ -585,13 +585,15 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         AN = 91,
 
+        //Existe um código 92, mas como não sei o que é e não encontrei nada na internet que identifique, não criei ainda este código no ENUM. Wandrey 30/01/2023
+
         /// <summary>
-        /// SVCRS - Servico Virtual de Contingência do Rio Grande do Sul (94)
+        /// SVCRS - Serviço Virtual de Contingência do Rio Grande do Sul (94)
         /// </summary>
         SVCRS = 94,
 
         /// <summary>
-        /// SVCRS - Servico Virtual de Contingência de São Paulo (95)
+        /// SVCRS - Serviço Virtual de Contingência de São Paulo (95)
         /// </summary>
         SVCSP = 95,
 
