@@ -1372,4 +1372,10 @@
 		<ArqConfig>FernandopolisSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3514502">
+		<Nome>Duartina - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>DuartinaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
