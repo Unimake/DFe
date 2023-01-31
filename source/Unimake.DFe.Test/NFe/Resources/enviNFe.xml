@@ -30,9 +30,11 @@
 				<xJust>xJust_________1</xJust>
 				<NFref>
 					<refNFe>refNFe1</refNFe>
+					<refNFeSig>refNFeSig1</refNFeSig>
 				</NFref>
 				<NFref>
 					<refNFe>refNFe2</refNFe>
+					<refNFeSig>refNFeSig2</refNFeSig>
 				</NFref>
 				<NFref>
 					<refNFe>refNFe3</refNFe>

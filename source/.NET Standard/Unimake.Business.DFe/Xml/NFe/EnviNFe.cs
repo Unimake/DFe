@@ -17,6 +17,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -640,8 +641,17 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public class NFref
     {
+        /// <summary>
+        /// Referencia uma NF-e (modelo 55) emitida anteriormente, vinculada a NF-e atual, ou uma NFC-e(modelo 65)
+        /// </summary>
         [XmlElement("refNFe")]
         public string RefNFe { get; set; }
+
+        /// <summary>
+        /// Referencia uma NF-e (modelo 55) emitida anteriormente pela sua Chave de Acesso com código numérico zerado, permitindo manter o sigilo da NF-e referenciada.
+        /// </summary>
+        [XmlElement("refNFeSig")]
+        public string RefNFeSig { get; set; }
 
         [XmlElement("refNF")]
         public RefNF RefNF { get; set; }
@@ -658,6 +668,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         #region ShouldSerialize
 
         public bool ShouldSerializeRefNFe() => !string.IsNullOrWhiteSpace(RefNFe);
+
+        public bool ShouldSerializeRefNFeSig() => !string.IsNullOrWhiteSpace(RefNFeSig);
 
         public bool ShouldSerializeRefCTe() => !string.IsNullOrWhiteSpace(RefCTe);
 
