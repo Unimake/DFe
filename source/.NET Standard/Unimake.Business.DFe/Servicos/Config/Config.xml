@@ -1366,4 +1366,10 @@
 		<ArqConfig>BiriguiSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3515509">
+		<Nome>Fernandópolis - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>FernandopolisSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
