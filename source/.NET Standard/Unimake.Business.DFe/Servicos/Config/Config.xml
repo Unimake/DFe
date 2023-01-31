@@ -1378,4 +1378,10 @@
 		<ArqConfig>DuartinaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3512902">
+		<Nome>Cosmorama - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CosmoramaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

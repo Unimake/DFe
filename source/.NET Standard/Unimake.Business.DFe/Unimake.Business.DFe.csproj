@@ -261,6 +261,7 @@
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
+		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
@@ -662,6 +663,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CosmoramaSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\DuartinaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
