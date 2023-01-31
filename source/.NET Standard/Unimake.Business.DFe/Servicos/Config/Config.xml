@@ -1360,4 +1360,10 @@
 		<ArqConfig>SertaozinhoSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3506508">
+		<Nome>Birigui - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BiriguiSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
