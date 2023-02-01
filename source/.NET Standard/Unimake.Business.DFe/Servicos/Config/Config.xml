@@ -1384,4 +1384,16 @@
 		<ArqConfig>CosmoramaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+		<Arquivo ID="2604106">
+		<Nome>Caruaru - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3118601">
+		<Nome>Contagem - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
