@@ -26,7 +26,7 @@ Function EnviarNfeAssincrono()
    oEnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
-   oEnviNFe.IndSinc = 0 && 1=Sim 0=Nao   **DIFERENTE AQUI
+   oEnviNFe.IndSinc = 0 && 1=Sim 0=Nao   **DIFERENTE AQUI 1 PARA 0
    
  * Criar a tag <NFe>  
    oNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
@@ -484,7 +484,7 @@ Function EnviarNfeAssincrono()
     * Codigo de Status e Motivo
       MessageBox(AllTrim(Str(oAutorizacao.Result.CStat,5)) + " " +oAutorizacao.Result.XMotivo)
 	  
-	  if oAutorizacao.Result.CStat == 103 && 103 = Lote Recebido com Sucesso   **DIFERENTE AQUI
+	  if oAutorizacao.Result.CStat == 103 && 103 = Lote Recebido com Sucesso   **DIFERENTE AQUI 104 para 103
 	   * Criar o objeto de configuração mínimo para consumir o serviço de consulta recibo
          oConfigRec                    = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
          oConfigRec.TipoDFe            = 0 && TipoDFe.NFe
@@ -522,6 +522,7 @@ Function EnviarNfeAssincrono()
 				      oAutorizacao.GravarXmlDistribuicao("d:\testenfe")				      
 				  
                     * Demonstrar a chave da NFe pegando do protocolo retornado
+                      MESSAGEBOX(oProtNFe.InfProt.NProt)
 				      MESSAGEBOX(oProtNFe.InfProt.chNFe)
 				  
    		            * Pegar a string do XML de distribuição para gravar na base de dados
