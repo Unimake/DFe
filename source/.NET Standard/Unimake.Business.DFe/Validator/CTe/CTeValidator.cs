@@ -200,14 +200,14 @@ namespace Unimake.Business.DFe.Validator.CTe
                 }
             }).ValidateTag(element => element.NameEquals(nameof(Dest.IE)) && element.Parent.NameEquals(nameof(Dest)) && element.Parent.Parent.NameEquals(nameof(InfCTe)), Tag =>
             {
-                if (!string.IsNullOrWhiteSpace(Tag.Parent.GetValue("CPF")))
-                {
-                    if (!string.IsNullOrWhiteSpace(Tag.Value) && Tag.Value != "ISENTO")
-                    {
-                        throw new ValidatorDFeException("O destinatário do CT-e informado é uma pessoa física. Neste caso o conteúdo da TAG de inscrição estadual do destinatário deve ser ISENTO ou em branco." +
-                            " [TAG: <IE> do grupo de tag <infCte><dest>]");
-                    }
-                }
+                //if (!string.IsNullOrWhiteSpace(Tag.Parent.GetValue("CPF")))
+                //{
+                //    if (!string.IsNullOrWhiteSpace(Tag.Value) && Tag.Value != "ISENTO")
+                //    {
+                //        throw new ValidatorDFeException("O destinatário do CT-e informado é uma pessoa física. Neste caso o conteúdo da TAG de inscrição estadual do destinatário deve ser ISENTO ou em branco." +
+                //            " [TAG: <IE> do grupo de tag <infCte><dest>]");
+                //    }
+                //}
             });
 
         #endregion Public Constructors
