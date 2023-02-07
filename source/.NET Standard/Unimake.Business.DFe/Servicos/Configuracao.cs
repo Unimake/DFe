@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
+using System.Text;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -583,10 +584,17 @@ namespace Unimake.Business.DFe.Servicos
             if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIHomologacao) && TipoAmbiente == TipoAmbiente.Homologacao)
             {
                 RequestURIHomologacao = RequestURIHomologacao.Replace("{ChaveAcesso}", ChaveAcesso);
+                RequestURIHomologacao = RequestURIHomologacao.Replace("&amp;", "&");
             }
             else if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIProducao) && TipoAmbiente == TipoAmbiente.Producao)
             {
                 RequestURIProducao = RequestURIProducao.Replace("{ChaveAcesso}", ChaveAcesso);
+                RequestURIProducao = RequestURIProducao.Replace("&amp;", "&");
+            }
+
+            if (PadraoNFSe == PadraoNFSe.IPM && IsAPI)
+            {
+                MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{MunicipioUsuario}:{MunicipioSenha}"));
             }
 
         }

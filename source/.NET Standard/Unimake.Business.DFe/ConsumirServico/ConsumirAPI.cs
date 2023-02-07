@@ -31,10 +31,8 @@ namespace Unimake.Business.DFe
                 throw new CertificadoDigitalException();
             }
 
-            var Url = apiConfig.RequestURI;
             var Content = EnveloparXML(apiConfig, xml);
 
-            #region Conexão API
             var Handler = new HttpClientHandler
             {
                 ClientCertificateOptions = ClientCertificateOption.Automatic,
@@ -42,7 +40,7 @@ namespace Unimake.Business.DFe
 
             var httpWebRequest = new HttpClient(Handler)
             {
-                BaseAddress = new Uri(Url),
+                BaseAddress = new Uri(apiConfig.RequestURI),
             };
 
             if (!string.IsNullOrWhiteSpace(apiConfig.Token))
@@ -54,8 +52,7 @@ namespace Unimake.Business.DFe
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-            #endregion
-
+  
             var postData = new HttpResponseMessage();
             if (apiConfig.MetodoAPI.ToLower() == "get")
             {
@@ -63,7 +60,7 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                postData = httpWebRequest.PostAsync(Url, new StringContent(Content, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
+                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, new StringContent(Content, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
             }
 
             WebException webException = null;
@@ -116,12 +113,12 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(retornoXml.OuterXml))
+                if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
                 {
                     throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
                 }
 
-                RetornoServicoString = retornoXml.OuterXml;
+                RetornoServicoString = retornoXml.InnerText;
 
                 //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
                 if (RetornoServicoString.IndexOf("?>") >= 0)
@@ -206,6 +203,5 @@ namespace Unimake.Business.DFe
             }
             return result;
         }
-
     }
 }

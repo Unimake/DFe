@@ -1,75 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigPadrao>
-  <Versao ID="0.00">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>0.00</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="1.00">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>1.00</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="1.03">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>1.03</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="2.00">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>2.00</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="2.01">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>2.01</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="2.02">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>2.02</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="2.03">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>2.03</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="2.04">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>2.04</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
-  <Versao ID="3.00">
-    <WebContentType></WebContentType>
-    <WebSoapString></WebSoapString>
-    <WebTagRetorno></WebTagRetorno>
-    <WebSoapVersion></WebSoapVersion>
-    <SchemaVersao>3.00</SchemaVersao>
-    <TargetNS></TargetNS>
-  </Versao>
+	<Versao ID="0.00">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>0.00</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="1.00">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>1.00</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="1.03">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>1.03</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="1.20">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>1.20</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="2.00">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>2.00</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="2.01">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>2.01</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="2.02">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>2.02</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="2.03">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>2.03</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="2.04">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>2.04</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
+	<Versao ID="3.00">
+		<WebContentType></WebContentType>
+		<WebSoapString></WebSoapString>
+		<WebTagRetorno></WebTagRetorno>
+		<WebSoapVersion></WebSoapVersion>
+		<SchemaVersao>3.00</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
 </ConfigPadrao>
