@@ -1402,4 +1402,10 @@
 		<ArqConfig>OuroFinoMG.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3516705">
+		<Nome>Garça - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>GarcaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
