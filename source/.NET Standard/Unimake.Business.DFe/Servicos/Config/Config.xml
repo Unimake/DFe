@@ -1420,4 +1420,10 @@
 		<ArqConfig>ParanavaiPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3522802">
+		<Nome>Itaporanga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItaporangaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
