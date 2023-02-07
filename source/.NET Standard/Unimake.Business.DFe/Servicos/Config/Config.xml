@@ -1396,4 +1396,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3146008">
+		<Nome>Ouro Fino - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>OuroFinoMG.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
