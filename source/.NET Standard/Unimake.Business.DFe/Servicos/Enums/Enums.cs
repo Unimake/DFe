@@ -6189,6 +6189,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("FIORILLI")]
         FIORILLI = 32,
+
+        /// <summary>
+        /// IPM
+        /// </summary>
+        [Description("IPM")]
+        IPM = 33,
     }
 
     #endregion

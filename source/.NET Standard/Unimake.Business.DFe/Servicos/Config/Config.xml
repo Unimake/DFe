@@ -1408,4 +1408,10 @@
 		<ArqConfig>GarcaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4118402">
+		<Nome>Paranavaí - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ParanavaiPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

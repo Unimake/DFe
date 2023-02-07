@@ -2,24 +2,22 @@
 using System;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe
 {
     /// <summary>
-    /// Classe para tratar o retorno específicamente de API (tratamento de JSON)
+    /// Classe para tratar o retornos das comunicações por API
     /// </summary>
     public class TratarRetornoAPI
     {
         #region Private Property
-        private APIConfig config;
-        private HttpResponseMessage response;
+        private APIConfig Config;
+        private HttpResponseMessage Response;
         #endregion Private Property
 
         /// <summary>
@@ -27,8 +25,8 @@ namespace Unimake.Business.DFe
         /// </summary>
         public TratarRetornoAPI(APIConfig apiConfig, HttpResponseMessage message)
         {
-            config = apiConfig;
-            response = message;
+            Config = apiConfig;
+            Response = message;
         }
 
         /// <summary>
@@ -37,23 +35,13 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         public XmlDocument ReceberRetorno()
         {
-
-            var ResponseString = response.Content.ReadAsStringAsync().Result;
+            var ResponseString = Response.Content.ReadAsStringAsync().Result;
             var resultadoRetorno = new XmlDocument();
 
-            switch (response.Content.Headers.ContentType.MediaType)
+            //  response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação
+            switch (Config.ContentType)
             {
                 case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
-                    try
-                    {
-                        resultadoRetorno.LoadXml(ResponseString);
-                    }
-                    catch
-                    {
-                        resultadoRetorno.LoadXml(StringToXml(ResponseString));
-                    }
-                    break;
-
                 case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                     try
                     {
@@ -66,18 +54,32 @@ namespace Unimake.Business.DFe
                     break;
 
                 case "application/json": //Retorno JSON -> Vamos ter que converter para XML
-                    resultadoRetorno.LoadXml(BuscarXML(ResponseString));
+                    try
+                    {
+                        resultadoRetorno.LoadXml(BuscarXML(ResponseString));
+                    }
+                    catch
+                    {
+                        resultadoRetorno.LoadXml(ResponseString);
+                    }
+
                     break;
 
                 case "text/html": //Retorno HTML -> Entendemos que sempre será erro
                     ResponseString = HtmlToPlainText(ResponseString);
-                    resultadoRetorno.LoadXml(StringToXml(ResponseString));
                     break;
             }
 
             return resultadoRetorno;
         }
 
+        #region Private Methods
+
+        /// <summary>
+        /// Método para desserealizar e buscar o XML dentro de um JSON
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
         private string BuscarXML(string content)
         {
             string result = "";
@@ -87,7 +89,7 @@ namespace Unimake.Business.DFe
 
             try
             {
-                node = xml.GetElementsByTagName(config.TagRetorno)[0];         //tag retorno
+                node = xml.GetElementsByTagName(Config.TagRetorno)[0];         //tag retorno
                 if (node != null)
                 {
                     temp = node.OuterXml;
@@ -133,7 +135,7 @@ namespace Unimake.Business.DFe
         }
 
         /// <summary>
-        /// Classe para serializar a string, para que seja realizado a leitura em XML
+        /// Método para serializar a string, para que seja realizado a leitura em XML
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -145,5 +147,7 @@ namespace Unimake.Business.DFe
 
             return retorno.ToString();
         }
+
+        #endregion Private Methods
     }
 }

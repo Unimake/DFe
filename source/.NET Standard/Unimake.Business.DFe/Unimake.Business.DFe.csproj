@@ -301,6 +301,7 @@
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
+		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PederneirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
@@ -671,6 +672,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroFinoMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanavaiPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CosmoramaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
