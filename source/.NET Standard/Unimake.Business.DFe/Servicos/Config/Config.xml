@@ -1408,4 +1408,10 @@
 		<ArqConfig>GarcaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1503606">
+		<Nome>Itaituba - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>ItaitubaPA.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
