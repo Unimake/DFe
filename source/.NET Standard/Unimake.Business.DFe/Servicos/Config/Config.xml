@@ -1426,4 +1426,10 @@
 		<ArqConfig>ItaporangaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3524501">
+		<Nome>Jaci - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>JaciSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
