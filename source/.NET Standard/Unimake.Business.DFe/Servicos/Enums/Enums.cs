@@ -360,6 +360,24 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Obter Critica Lote")]
         NFSeObterCriticaLote = 57,
 
+        /// <summary>
+        /// 58 - Consultar URL da NFS-e para prefeitura
+        /// </summary>
+        [Description("Consultar Url Nfse")]
+        NFSeConsultarUrlNfse = 58,
+
+        /// <summary>
+        /// 59 - Consultar dados cadastrais da NFS-e
+        /// </summary>
+        [Description("Consultar Dados Cadastrais")]
+        NFSeConsultarDadosCadastrais = 59,
+
+        /// <summary>
+        /// 60 - Consultar RPS Disponivel
+        /// </summary>
+        [Description("Consulta RPS Disponivel")]
+        NFSeConsultarRpsDisponivel = 60,
+
         #endregion
 
         #region Gerais
