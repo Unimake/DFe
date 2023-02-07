@@ -13,12 +13,12 @@ namespace Unimake.DFe.Test
         /// <summary>
         /// Caminho do certificado digital A1
         /// </summary>
-        private static string PathCertificadoDigital { get; set; } = @"C:\Users\Unimake Software\Desktop\CERTIFICADO Instituto Rosi 2022.pfx";
+        private static string PathCertificadoDigital { get; set; } = @"C:\Projetos\Unimake_PV.pfx";
 
         /// <summary>
         /// Senha de uso do certificado digital A1
         /// </summary>
-        private static string SenhaCertificadoDigital { get; set; } = "certi2022";
+        private static string SenhaCertificadoDigital { get; set; } = "12345678";
 
         private static X509Certificate2 CertificadoDigitalField;
 
