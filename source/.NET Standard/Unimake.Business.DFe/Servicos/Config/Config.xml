@@ -1434,8 +1434,14 @@
 	</Arquivo>
 	<Arquivo ID="1100122">
 		<Nome>Ji-Paraná - RO</Nome>
-		<UF>SP</UF>
+		<UF>RO</UF>
 		<ArqConfig>JiParanaRO.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1100122">
+		<Nome>Mirassolândia - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MirassolandiaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
