@@ -1474,4 +1474,10 @@
 		<ArqConfig>SerafinaCorreaGO.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3553807">
+		<Nome>Taquarituba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>TaquaritubaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

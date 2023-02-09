@@ -328,6 +328,7 @@
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
@@ -708,6 +709,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SerafinaCorreaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
