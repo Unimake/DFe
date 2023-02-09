@@ -1486,4 +1486,10 @@
 		<ArqConfig>TresLagoasMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4323804">
+		<Nome>Xangri-Lá - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>XangriLaRS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
