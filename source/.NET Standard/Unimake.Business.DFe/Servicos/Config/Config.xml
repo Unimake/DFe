@@ -1450,4 +1450,10 @@
 		<ArqConfig>MonteAltoSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3540804">
+		<Nome>Potirendaba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PotirendabaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

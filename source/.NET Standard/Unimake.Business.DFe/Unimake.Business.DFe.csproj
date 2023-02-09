@@ -312,6 +312,7 @@
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
+		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
@@ -704,6 +705,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SertaozinhoSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
