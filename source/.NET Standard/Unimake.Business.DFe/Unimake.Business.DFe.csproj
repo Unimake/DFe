@@ -296,6 +296,7 @@
 		<None Remove="Servicos\Config\NFSe\MogiDasCruzesSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiGuacuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MogiMirimSP.xml" />
+		<None Remove="Servicos\Config\NFSe\MonteAltoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
@@ -685,6 +686,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GarcaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteAltoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroFinoMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

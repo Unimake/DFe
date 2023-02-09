@@ -1444,4 +1444,10 @@
 		<ArqConfig>MirassolandiaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3531308">
+		<Nome>Monte Alto - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MonteAltoSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
