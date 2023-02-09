@@ -1480,4 +1480,10 @@
 		<ArqConfig>TaquaritubaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5008305">
+		<Nome>Três Lagoas - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>TresLagoasMS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

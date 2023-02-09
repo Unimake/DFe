@@ -333,6 +333,7 @@
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
 		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VilaVelhaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
@@ -709,6 +710,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TresLagoasMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SerafinaCorreaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
