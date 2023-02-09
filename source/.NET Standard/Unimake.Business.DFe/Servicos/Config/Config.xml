@@ -1468,4 +1468,10 @@
 		<ArqConfig>SenadorCanedoGO.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4320404">
+		<Nome>Serafina Corrêa - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>SerafinaCorreaGO.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
