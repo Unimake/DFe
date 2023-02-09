@@ -322,6 +322,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
+		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\SertaozinhoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
@@ -706,6 +707,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SertaozinhoSP.xml">

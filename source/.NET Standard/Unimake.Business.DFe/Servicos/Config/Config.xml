@@ -1462,4 +1462,10 @@
 		<ArqConfig>RioDasPedrasSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3540804">
+		<Nome>Senador Canedo - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>SenadorCanedoGO.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
