@@ -1492,4 +1492,10 @@
 		<ArqConfig>XangriLaRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4323804">
+		<Nome>Xaxim - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>XaximSC.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
