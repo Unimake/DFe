@@ -1495,7 +1495,7 @@
 	<Arquivo ID="4323804">
 		<Nome>Xaxim - SC</Nome>
 		<UF>SC</UF>
-		<ArqConfig>XaximSC.xml</ArqConfig>
+		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
