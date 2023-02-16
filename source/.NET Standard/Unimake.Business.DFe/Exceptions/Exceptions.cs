@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Unimake.Exceptions
 {
     /// <summary>
     /// Classe de exceção quando o certificado digital não é localizado ou está com falha
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Exceptions.CertificadoDigitalException")]
+    [ComVisible(true)]
+#endif
     public class CertificadoDigitalException : Exception
     {
         /// <summary>
@@ -65,5 +71,29 @@ namespace Unimake.Exceptions
         /// Erro de validação de diversas das regras dos documentos fiscais eletrônicos (NFe, CTe, MDFe, NFCe, etc...). Validação realizada pelo Validator da DLL Unimake.DFe.
         /// </summary>
         ValidatorDFe = 3,
+    }
+
+    /// <summary>
+    /// Exceção ao carregar o certificado digital
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Exceptions.CarregarCertificadoException")]
+    [ComVisible(true)]
+#endif
+    public class CarregarCertificadoException : Exception
+    {
+        #region Public Constructors
+
+        /// <summary>
+        /// Falha ao carregar certificado digital
+        /// </summary>
+        /// <param name="message">Mensagem da exceção</param>
+        public CarregarCertificadoException(string message)
+            : base(message)
+        {
+        }
+
+        #endregion Public Constructors
     }
 }
