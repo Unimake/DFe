@@ -1384,7 +1384,7 @@
 		<ArqConfig>CosmoramaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-		<Arquivo ID="2604106">
+	<Arquivo ID="2604106">
 		<Nome>Caruaru - PE</Nome>
 		<UF>PE</UF>
 		<ArqConfig>Ginfes.xml</ArqConfig>
@@ -1497,5 +1497,18 @@
 		<UF>SC</UF>
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4104303">
+		<Nome>Campo Mourão - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CampoMouraoPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+		<CodigoTom>7483</CodigoTom>
+	</Arquivo>
+	<Arquivo ID="3543907">
+		<Nome>Rio Claro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
