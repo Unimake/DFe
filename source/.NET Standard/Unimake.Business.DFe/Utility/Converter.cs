@@ -5,6 +5,8 @@ using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Unimake.Cryptography;
+using Unimake.Business.Security;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -128,6 +130,29 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="value">Conteúdo a ser criptografado</param>
         /// <returns>Retorna a string assinada com RSA SHA1 e convertida para Base64String</returns>
         public string ToRSASHA1(X509Certificate2 certificado, string value) => Converter.ToRSASHA1(certificado, value);
+
+        /// <summary>
+        /// Criptografa uma string com RSA-SHA1 e retorna o conteúdo convertido para Base64String
+        /// </summary>
+        /// <param name="serialNumberOrThumbPrint">Serial Number ou Thumbprint do certificado a ser utilizado na criptografia</param>
+        /// <param name="value">Conteúdo a ser criptografado</param>
+        /// <returns>Retorna a string assinada com RSA SHA1 e convertida para Base64String</returns>
+        public string ToRSASHA1SerialNumber(string serialNumberOrThumbPrint, string value)
+        {
+            var retorno = string.Empty;
+            try
+            {
+                var certificado = new CertificadoDigital().BuscarCertificadoDigital(serialNumberOrThumbPrint);
+
+                retorno = ToRSASHA1(certificado, value);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+
+            return retorno;
+        }
 
         /// <summary>
         /// Escreve uma string base64 em um arquivo PDF.
