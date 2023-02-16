@@ -17,7 +17,7 @@ Function EnviarNfCeSincrono()
 
  * Criar configuracao basica para consumir o servico
    oConfig = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
-   oConfig.TipoDfe = 1 && 0=nfce     ###
+   oConfig.TipoDfe = 1 && 1=nfce     ###
    oConfig.TipoEmissao = 1 && 1=Normal
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"  
@@ -29,6 +29,15 @@ Function EnviarNfCeSincrono()
    oEnviNFe.Versao = "4.00"
    oEnviNFe.IdLote = "000000000000001"
    oEnviNFe.IndSinc = 1 && 1=Sim 0=Nao ###
+  
+  
+ * Criar a tag NFe e deserializar o XML já gravado no HD para já preencher o objeto para envio
+*  onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
+   
+*  oEnviNFe.AddNFe(oNFe.LoadFromFile("D:\testenfe\41230206117473000150550010000590081999182930-nfe.xml")) 
+
+ * Como deserializar partindo da string do XML
+   && oEnviNFe.AddNFe(oNFe.LoadFromXML("asldkjaslkdjasldjaslkdjasldkjasldksjadas"))    
    
  * Criar a tag <NFe>  
    oNfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
@@ -43,7 +52,7 @@ Function EnviarNfCeSincrono()
    oIde.NatOp = "VENDA "
    oIde.Mod = 65 && NFCe ###
    oIde.Serie    = 1
-   oIde.NNF      = 59005
+   oIde.NNF      = 59006
    oIde.DhEmi    = DateTime()
    oIde.DhSaiEnt = DateTime()
    oIde.TpNF     = 1 && Saida
