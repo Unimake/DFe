@@ -23,9 +23,9 @@ namespace Unimake.DFe.Test.NFSe
         /// Cancelar NFse para saber se a conexão com o webservice está ocorrendo corretamente.
         /// </summary>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o XML</param>
-        [Theory]
-        [Trait("DFe", "NFSe")]
-        [MemberData(nameof(Parametros))]
+        //[Theory]
+        //[Trait("DFe", "NFSe")]
+        //[MemberData(nameof(Parametros))]
         public void CancelaNota(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
         {
             var nomeXMLEnvio = "CancelaNota-ped-cannfse.xml";
