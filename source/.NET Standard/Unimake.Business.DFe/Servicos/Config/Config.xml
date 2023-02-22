@@ -1498,17 +1498,17 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3543907">
+		<Nome>Rio Claro - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 	<Arquivo ID="4104303">
 		<Nome>Campo Mourão - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>CampoMouraoPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 		<CodigoTom>7483</CodigoTom>
-	</Arquivo>
-	<Arquivo ID="3543907">
-		<Nome>Rio Claro - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
