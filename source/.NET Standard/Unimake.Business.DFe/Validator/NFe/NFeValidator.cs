@@ -606,6 +606,18 @@ namespace Unimake.Business.DFe.Validator.NFe
                     throw new ValidatorDFeException("O conteúdo da data de validade do detalhamento de produto sujeito a rastreabilidade está incorreta. Conteúdo informado: " + Tag.Value + "." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <dVal> do grupo de tag <infNFe><det><prod><rastro>]");
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(NFe)), Tag =>
+            {
+                if (Tag.GetAttributeValue("xmlns") == null)
+                {
+                    throw new ValidatorDFeException("TAG <NFe> deve possuir o atributo de namespace, conforme a seguir: <NFe xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(InfNFe)) && element.Parent.NameEquals(nameof(NFe)), Tag =>
+            {                
+                if (Tag.GetAttributeValue("xmlns") != null)
+                {
+                    throw new ValidatorDFeException("Não pode existir o atributo de namespace na tag <infNFe>. Remova o conteúdo xmlns=\"http://www.portalfiscal.inf.br/nfe\" da tag <infNFe>. [TAG: <infNFe> do grupo de tag <NFe>]");
+                }
             });
 
         #endregion Public Constructors
