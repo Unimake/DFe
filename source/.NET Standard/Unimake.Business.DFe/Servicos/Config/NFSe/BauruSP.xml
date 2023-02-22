@@ -3,7 +3,7 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="2.03">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionProducao>
@@ -22,7 +22,7 @@
     </RecepcionarLoteRps>
     <RecepcionarLoteRpsSincrono versao="2.03">
       <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionProducao>
@@ -41,7 +41,7 @@
     </RecepcionarLoteRpsSincrono>
     <GerarNfse versao="2.03">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionProducao>
@@ -60,7 +60,7 @@
     </GerarNfse>
     <CancelarNfse versao="2.03">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionProducao>
@@ -79,7 +79,7 @@
     </CancelarNfse>
     <SubstituirNfse versao="2.03">
       <Descricao>Substituir nota fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionProducao>
@@ -100,7 +100,7 @@
     </SubstituirNfse>
     <ConsultarLoteRps versao="2.03">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionProducao>
@@ -119,7 +119,7 @@
     </ConsultarLoteRps>
     <ConsultarNfsePorRps versao="2.03">
       <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
@@ -138,7 +138,7 @@
     </ConsultarNfsePorRps>
     <ConsultarNfseServicoPrestado versao="2.03">
       <Descricao>Consulta NFSe de serviços prestados</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionProducao>
@@ -157,7 +157,7 @@
     </ConsultarNfseServicoPrestado>
     <ConsultarNfseServicoTomado versao="2.03">
       <Descricao>Consulta NFSe de serviços tomados</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionProducao>
@@ -176,7 +176,7 @@
     </ConsultarNfseServicoTomado>
     <ConsultarNfseFaixa versao="2.03">
       <Descricao>Consulta NFSe por Faixa</Descricao>
-      <WebEnderecoHomologacao>http://tbhomologacao.bauru.sp.gov.br/services/Abrasf23</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbbauru/services/Abrasf23?wsdl</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://tributario.bauru.sp.gov.br/services/Abrasf23</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionProducao>

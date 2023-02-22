@@ -1504,11 +1504,4 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4104303">
-		<Nome>Campo Mourão - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>CampoMouraoPR.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
-		<CodigoTom>7483</CodigoTom>
-	</Arquivo>
 </Configuracoes>
