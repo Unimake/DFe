@@ -1510,4 +1510,10 @@
 		<ArqConfig>PiratiningaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4313409">
+		<Nome>Novo Hamburgo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>NovoHamburgoRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

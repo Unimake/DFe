@@ -304,6 +304,7 @@
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSerranaMG.xml" />
+		<None Remove="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
@@ -703,6 +704,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\OuroFinoMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ParanavaiPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CosmoramaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
