@@ -661,8 +661,8 @@
 	<Arquivo ID="4321667">
 		<Nome>Três Cachoeiras - RS</Nome>
 		<UF>RS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
+		<ArqConfig>TresCachoeirasRS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3115300">
 		<Nome>Cataguases - MG</Nome>

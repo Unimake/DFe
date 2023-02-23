@@ -334,6 +334,7 @@
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TresCachoeirasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
 		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VilaVelhaES.xml" />
@@ -715,6 +716,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BiriguiSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\XangriLaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresLagoasMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />
