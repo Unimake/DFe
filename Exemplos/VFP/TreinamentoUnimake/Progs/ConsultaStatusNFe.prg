@@ -12,6 +12,13 @@ Function ConsultaStatusNfe()
    oConfig.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfig.CertificadoSenha = "12345678"
    
+*   oConfig.CertificadoDigital = oCertSel3
+
+*   oConfig.CertificadoSerialNumberOrThumbPrint = serialNumber
+
+*   oConfig.CertificadoBase64 = certBase64
+*   oConfig.CertificadoSenha = "12345678"
+
  * Criar XML   
    oConsStatServ = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsStatServ")
    oConsStatServ.Versao = "4.00"
