@@ -961,7 +961,7 @@
 	<Arquivo ID="2304400">
 		<Nome>Fortaleza - CE</Nome>
 		<UF>CE</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
+		<ArqConfig>FortalezaCE.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3516200">
