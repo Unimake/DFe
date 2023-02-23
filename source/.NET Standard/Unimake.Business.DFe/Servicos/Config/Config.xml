@@ -1504,4 +1504,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3539400">
+		<Nome>Piratininga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PiratiningaSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
