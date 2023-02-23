@@ -3,83 +3,117 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="3.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>servico_cancelar_nfse_envio_v03.xsd</SchemaArquivo>
+			<SchemaArquivo>servico_enviar_lote_rps_envio_v03.xsd</SchemaArquivo>
 			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>LoteRps</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><RecepcionarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><EnviarLoteRpsEnvio xmlns="">{xmlBodyScape}</EnviarLoteRpsEnvio></RecepcionarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><RecepcionarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><EnviarLoteRpsEnvio xmlns="">{xmlBodyScape}</EnviarLoteRpsEnvio></RecepcionarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><EnviarLoteRpsEnvio xmlns="">{xmlBodyScape}</EnviarLoteRpsEnvio></RecepcionarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd</TargetNS>
+			<TargetNS></TargetNS>
 		</RecepcionarLoteRps>
-		<ConsultarNfse versao="3.00">
-			<Descricao>Consulta de NFSe por Data</Descricao>
-			<WebEnderecoHomologacao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService?wsdl</WebEnderecoProducao>
+		<CancelarNfse versao="2.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>servico_cancelar_nfse_envio_v03.xsd</SchemaArquivo>
-			<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
-			<TagAtributoID>Prestador</TagAtributoID>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
+			<TagAtributoID>NumeroNfse</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><ConsultarNfseEnvio xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseEnvio xmlns="">{xmlBodyScape}</ConsultarNfseEnvio></ConsultarNfseEnvio></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><ConsultarNfseEnvio xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseEnvio xmlns="">{xmlBodyScape}</ConsultarNfseEnvio></ConsultarNfseEnvio></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://producao.issfortaleza.com.br"><CancelarNfseEnvio xmlns="">{xmlBodyScape}</CancelarNfseEnvio></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd</TargetNS>
-		</ConsultarNfse>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
 		<ConsultarLoteRps versao="3.00">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>servico_cancelar_nfse_envio_v03.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>Protocolo</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><ConsultarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><ConsultarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsV3 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.ginfes.com.br/servico_consultar_lote_rps_envio_v03.xsd</TargetNS>
+			<TargetNS></TargetNS>
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="3.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>servico_cancelar_nfse_envio_v03.xsd</SchemaArquivo>
+			<SchemaArquivo>servico_consultar_nfse_rps_envio_v03.xsd</SchemaArquivo>
 			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><ConsultarNfsePorRpsV3 xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfsePorRpsV3 xmlns="">{xmlBodyScape}</ConsultarNfsePorRpsV3></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema%22%3E<soap:Body><ConsultarNfsePorRpsV3 xmlns="http://producao.issfortaleza.com.br/%22%3E<Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd%22&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfsePorRpsV3 xmlns="">{xmlBodyScape}</ConsultarNfsePorRpsV3></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsV3 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseRpsEnvio xmlns="">{xmlBodyScape}</ConsultarNfseRpsEnvio></ConsultarNfsePorRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS>http://www.ginfes.com.br/servico_consultar_nfse_rps_envio_v03.xsd</TargetNS>
+			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="3.00">
+			<Descricao>Consulta de NFSe por Data</Descricao>
+			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>servico_consultar_nfse_envio_v03.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarNfseEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseV3 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarNfseEnvio xmlns="">{xmlBodyScape}</ConsultarNfseEnvio></ConsultarNfseV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="3.00">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao>http://isshomo.sefin.fortaleza.ce.gov.br:80/grpfor-iss/ServiceGinfesImplService</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://iss.fortaleza.ce.gov.br/grpfor-iss/ServiceGinfesImplService</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>servico_consultar_situacao_lote_rps_envio_v03.xsd</SchemaArquivo>
+			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Protocolo</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsV3 xmlns="http://producao.issfortaleza.com.br"><Cabecalho xmlns="">&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</Cabecalho><ConsultarSituacaoLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarSituacaoLoteRpsEnvio></ConsultarSituacaoLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarSituacaoLoteRps>
 	</Servicos>
 </Configuracoes>
