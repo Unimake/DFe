@@ -1516,4 +1516,10 @@
 		<ArqConfig>NovoHamburgoRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322707">
+		<Nome>Vera Cruz - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>VeraCruzRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
