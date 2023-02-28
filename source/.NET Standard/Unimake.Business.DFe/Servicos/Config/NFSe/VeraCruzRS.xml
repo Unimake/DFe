@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.20">
 			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>http://srvwebveracruz.ddns.com.br:8086/nfse.portal.integracao/services.svc</RequestURIProducao>
-			<RequestURIHomologacao>http://srvwebveracruz.ddns.com.br:8086/nfse.portal.integracao.teste/services.svc</RequestURIHomologacao>
+			<RequestURIProducao>https://veracruz.atende.net/atende.php?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -17,8 +17,8 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.20">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
-			<RequestURIProducao>http://srvwebveracruz.ddns.com.br:8086/nfse.portal.integracao/services.svc</RequestURIProducao>
-			<RequestURIHomologacao>http://srvwebveracruz.ddns.com.br:8086/nfse.portal.integracao.teste/services.svc</RequestURIHomologacao>
+			<RequestURIProducao>https://veracruz.atende.net/atende.php?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -31,8 +31,8 @@
 		</CancelarNfse>
 		<ConsultarNfse versao="1.20">
 			<Descricao>Consulta da NFSe</Descricao>
-			<RequestURIProducao>http://srvwebveracruz.ddns.com.br:8086/nfse.portal.integracao/services.svc</RequestURIProducao>
-			<RequestURIHomologacao>http://srvwebveracruz.ddns.com.br:8086/nfse.portal.integracao.teste/services.svc</RequestURIHomologacao>
+			<RequestURIProducao>https://veracruz.atende.net/atende.php?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
