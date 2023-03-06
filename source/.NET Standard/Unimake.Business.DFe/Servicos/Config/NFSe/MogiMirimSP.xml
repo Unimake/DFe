@@ -1,140 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<CancelarNfse versao="2.03">
-			<Descricao>Cancelar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.04">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#RecepcionarLoteRpsSincrono</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#CancelarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:CancelarNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</CancelarNfse>
-		<ConsultarLoteRps versao="2.03">
-			<Descricao>Consulta Lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultarLoteRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.03">
-			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:ConsultarNfsePorRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-		</ConsultarNfsePorRps>
-		<GerarNfse versao="2.03">
+		<GerarNfse versao="2.04">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/GerarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:GerarNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-		</GerarNfse>
-		<RecepcionarLoteRps versao="2.03">
-			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:RecepcionarLoteRps><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-		</RecepcionarLoteRps>
-		<RecepcionarLoteRpsSincrono versao="2.03">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:RecepcionarLoteRpsSincrono><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
-		</RecepcionarLoteRpsSincrono>
-		<SubstituirNfse versao="2.03">
-			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfmogimirim.sigbancos.com.br/servico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/SubstituirNfse</WebActionProducao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#GerarNfse</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#GerarNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
-			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
-			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:SubstituirNfse><tem:nfseCabecMsg><![CDATA[<cabecalho versao="2.03" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.03</versaoDados></cabecalho>]]]]><![CDATA[></tem:nfseCabecMsg><tem:nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></tem:nfseDadosMsg></tem:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
-			<TargetNS></TargetNS>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#SubstituirNfse</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#SubstituirNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:SubstituirNfse><xml>{xmlBodyScapeEnvio}</xml></ws:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:SubstituirNfse><xml>{xmlBodyScapeEnvio}</xml></ws:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>https://abrasfmogimirim.meumunicipio.online/ws#ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.04">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#ConsultarNfseServicoPrestado</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.04">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#ConsultarNfseServicoTomado</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.04">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#ConsultarNfseFaixa</WebActionHomologacao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#ConsultarNfseFaixa</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>
