@@ -10,7 +10,7 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
@@ -24,7 +24,7 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
@@ -38,7 +38,7 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
