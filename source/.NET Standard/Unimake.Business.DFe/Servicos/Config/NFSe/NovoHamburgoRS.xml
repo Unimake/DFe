@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.20">
 			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>https://novohamburgo.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
 			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo&amp;wsdl</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -17,7 +17,7 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.20">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
-			<RequestURIProducao>https://novohamburgo.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
 			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo&amp;wsdl</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
@@ -31,7 +31,7 @@
 		</CancelarNfse>
 		<ConsultarNfse versao="1.20">
 			<Descricao>Consulta da NFSe</Descricao>
-			<RequestURIProducao>https://novohamburgo.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
 			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo&amp;wsdl</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
