@@ -17,7 +17,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -2364,6 +2363,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("encerrante")]
         public Encerrante Encerrante { get; set; }
 
+        /// <summary>
+        /// Percentual do índice de mistura do Biodiesel (B100) no Óleo Diesel B instituído pelo órgão regulamentador
+        /// </summary>
+        [XmlElement("pBio")]
+        public double PBio { get; set; }
+
+        /// <summary>
+        /// Grupo indicador da origem do combustível
+        /// </summary>
+        [XmlElement("origComb")]
+        public List<OrigComb> OrigComb { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializePGLPField() => PGLP > 0;
@@ -2379,6 +2390,44 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeQTempField() => QTemp > 0;
 
         #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddOrigComb(OrigComb item)
+        {
+            if (OrigComb == null)
+            {
+                OrigComb = new List<OrigComb>();
+            }
+
+            OrigComb.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista OrigComb (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da OrigComb</returns>
+        public OrigComb GetOrigComb(int index)
+        {
+            if ((OrigComb?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return OrigComb[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista OrigComb
+        /// </summary>
+        public int GetOrigCombCount => (OrigComb != null ? OrigComb.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -2457,6 +2506,41 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeNBomba() => NBomba > 0;
 
         #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.OrigComb")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class OrigComb
+    {
+        /// <summary>
+        /// Indicador de importação
+        /// </summary>
+        [XmlElement("indImport")]
+        public IndicadorImportacao IndImport { get; set; }
+
+        /// <summary>
+        /// UF de origem do produtor ou do importado
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil CUFOrig { get; set; }
+
+        [XmlElement("cUFOrig")]
+        public int CUFOrigField
+        {
+            get => (int)CUFOrig;
+            set => CUFOrig = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
+
+        /// <summary>
+        /// Percentual do índice de mistura do Biodiesel (B100) no Óleo Diesel B instituído pelo órgão regulamentador
+        /// </summary>
+        [XmlElement("pOrig")]
+        public double POrig { get; set; }
     }
 
 #if INTEROP
@@ -2633,8 +2717,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("ICMS00")]
         public ICMS00 ICMS00 { get; set; }
 
+        [XmlElement("ICMS02")]
+        public ICMS02 ICMS02 { get; set; }
+
         [XmlElement("ICMS10")]
         public ICMS10 ICMS10 { get; set; }
+
+        [XmlElement("ICMS15")]
+        public ICMS15 ICMS15 { get; set; }
 
         [XmlElement("ICMS20")]
         public ICMS20 ICMS20 { get; set; }
@@ -2648,8 +2738,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("ICMS51")]
         public ICMS51 ICMS51 { get; set; }
 
+        [XmlElement("ICMS53")]
+        public ICMS53 ICMS53 { get; set; }
+
         [XmlElement("ICMS60")]
         public ICMS60 ICMS60 { get; set; }
+
+        [XmlElement("ICMS61")]
+        public ICMS61 ICMS61 { get; set; }
 
         [XmlElement("ICMS70")]
         public ICMS70 ICMS70 { get; set; }
@@ -2757,6 +2853,54 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVFCPField() => PFCP > 0 || VFCP > 0;
 
         #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ICMS02")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ICMS02
+    {
+        /// <summary>
+        /// Origem da mercadoria
+        /// </summary>
+        [XmlElement("orig")]
+        public OrigemMercadoria Orig { get; set; }
+
+        /// <summary>
+        /// CST - Código da situação tributária
+        /// </summary>
+        [XmlElement("CST")]
+        public string CST { get; set; } = "02";
+
+        /// <summary>
+        /// Alíquota ad rem do imposto.
+        /// </summary>
+        [XmlIgnore]
+        public double AdRemICMS { get; set; }
+
+        [XmlElement("adRemICMS")]
+        public string AdRemICMSField
+        {
+            get => AdRemICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => AdRemICMS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS próprio
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMono { get; set; }
+
+        [XmlElement("vICMSMono")]
+        public string VICMSMonoField
+        {
+            get => VICMSMono.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMono = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -2956,6 +3100,80 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeMotDesICMSST() => VICMSSTDeson > 0;
 
         #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ICMS15")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ICMS15
+    {
+        /// <summary>
+        /// Origem da mercadoria
+        /// </summary>
+        [XmlElement("orig")]
+        public OrigemMercadoria Orig { get; set; }
+
+        /// <summary>
+        /// CST - Código da situação tributária
+        /// </summary>
+        [XmlElement("CST")]
+        public string CST { get; set; } = "15";
+
+        /// <summary>
+        /// Alíquota ad rem do imposto.
+        /// </summary>
+        [XmlIgnore]
+        public double AdRemICMS { get; set; }
+
+        [XmlElement("adRemICMS")]
+        public string AdRemICMSField
+        {
+            get => AdRemICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => AdRemICMS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS próprio
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMono { get; set; }
+
+        [XmlElement("vICMSMono")]
+        public string VICMSMonoField
+        {
+            get => VICMSMono.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMono = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Alíquota ad rem do imposto com retenção
+        /// </summary>
+        [XmlIgnore]
+        public double AdRemICMSReten { get; set; }
+
+        [XmlElement("adRemICMSReten")]
+        public string AdRemICMSRetenField
+        {
+            get => AdRemICMSReten.ToString("F4", CultureInfo.InvariantCulture);
+            set => AdRemICMSReten = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS próprio com retenção
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoReten { get; set; }
+
+        [XmlElement("vICMSMonoReten")]
+        public string VICMSMonoRetenField
+        {
+            get => VICMSMonoReten.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoReten = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -3419,6 +3637,54 @@ namespace Unimake.Business.DFe.Xml.NFe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ICMS53")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ICMS53
+    {
+        /// <summary>
+        /// Origem da mercadoria
+        /// </summary>
+        [XmlElement("orig")]
+        public OrigemMercadoria Orig { get; set; }
+
+        /// <summary>
+        /// CST - Código da situação tributária
+        /// </summary>
+        [XmlElement("CST")]
+        public string CST { get; set; } = "53";
+
+        /// <summary>
+        /// Alíquota ad rem do imposto diferido
+        /// </summary>
+        [XmlIgnore]
+        public double AdRemICMSDif { get; set; }
+
+        [XmlElement("adRemICMSDif")]
+        public string AdRemICMSDifField
+        {
+            get => AdRemICMSDif.ToString("F4", CultureInfo.InvariantCulture);
+            set => AdRemICMSDif = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS próprio
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoDif { get; set; }
+
+        [XmlElement("vICMSMonoDif")]
+        public string VICMSMonoDifField
+        {
+            get => VICMSMonoDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoDif = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ICMS60")]
     [ComVisible(true)]
 #endif
@@ -3559,6 +3825,54 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVICMSEfetField() => VBCEfet > 0;
 
         #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.ICMS61")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class ICMS61
+    {
+        /// <summary>
+        /// Origem da mercadoria
+        /// </summary>
+        [XmlElement("orig")]
+        public OrigemMercadoria Orig { get; set; }
+
+        /// <summary>
+        /// CST - Código da situação tributária
+        /// </summary>
+        [XmlElement("CST")]
+        public string CST { get; set; } = "61";
+
+        /// <summary>
+        /// Alíquota ad rem do imposto retido anteriormente
+        /// </summary>
+        [XmlIgnore]
+        public double AdRemICMSRet { get; set; }
+
+        [XmlElement("adRemICMSRet")]
+        public string AdRemICMSRetField
+        {
+            get => AdRemICMSRet.ToString("F4", CultureInfo.InvariantCulture);
+            set => AdRemICMSRet = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS retido anteriormente
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoRet { get; set; }
+
+        [XmlElement("vICMSMonoRet")]
+        public string VICMSMonoRetField
+        {
+            get => VICMSMonoRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoRet = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -6256,6 +6570,47 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
             set => VFCPSTRet = Converter.ToDouble(value);
+        }
+
+
+
+        /// <summary>
+        /// Valor total do ICMS monofásico próprio
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMono { get; set; }
+
+        [XmlElement("vICMSMono")]
+        public string VICMSMonoField
+        {
+            get => VICMSMono.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMono = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor total do ICMS monofásico sujeito a retenção
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoReten { get; set; }
+
+        [XmlElement("vICMSMonoReten")]
+        public string VICMSMonoRetenField
+        {
+            get => VICMSMonoReten.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoReten = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS monofásico retido anteriormente
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoRet { get; set; }
+
+        [XmlElement("vICMSMonoRet")]
+        public string VICMSMonoRetField
+        {
+            get => VICMSMonoRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoRet = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
