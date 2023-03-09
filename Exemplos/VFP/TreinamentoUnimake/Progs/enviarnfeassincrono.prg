@@ -277,7 +277,14 @@ Function EnviarNfeAssincrono()
        oImposto.Icms = oICMS
 	   
      * criar tag PIS
-       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
+       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")       
+       
+*     * crirar tag PISNT
+*       oPISNT = CREATEOBJECT("Unimake.Business.DFe.Xml.NFe.PISNT")  
+*       oPISNT.CST = "07" && Pode ser CST 04 ou 07
+       
+*     * adicionar a tag PISNT dentro da tag PIS
+*       oPIS.PISNT = oPISNT         
 
      * criar tag PISOutr
        oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
