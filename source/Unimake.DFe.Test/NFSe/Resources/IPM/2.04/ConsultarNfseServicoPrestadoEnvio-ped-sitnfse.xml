@@ -1,27 +1,23 @@
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende">
-	<soapenv:Header/>
-	<soapenv:Body>
-		<ConsultarNfseServicoPrestadoEnvio>
-			<Prestador>
-				<CpfCnpj>
-					<Cnpj>11402405000172</Cnpj>
-				</CpfCnpj>
-				<InscricaoMunicipal>29</InscricaoMunicipal>
-			</Prestador>
-			<NumeroNfse>1</NumeroNfse>
-			<Tomador>
-				<CpfCnpj>
-					<Cpf>11111111111</Cpf>
-				</CpfCnpj>
-				<InscricaoMunicipal>1</InscricaoMunicipal>
-			</Tomador>
-			<Intermediario>
-				<CpfCnpj>
-					<Cpf>11111111111</Cpf>
-				</CpfCnpj>
-				<InscricaoMunicipal>1</InscricaoMunicipal>
-			</Intermediario>
-			<Pagina>2</Pagina>
-		</ConsultarNfseServicoPrestadoEnvio>
-	</soapenv:Body>
-</soapenv:Envelope>
+<ConsultarNfseServicoPrestadoEnvio>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>11402405000172</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>29</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>1</NumeroNfse>
+	<Tomador>
+		<CpfCnpj>
+			<Cpf>11111111111</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal>1</InscricaoMunicipal>
+	</Tomador>
+	<Intermediario>
+		<CpfCnpj>
+			<Cpf>11111111111</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal>1</InscricaoMunicipal>
+	</Intermediario>
+	<Pagina>2</Pagina>
+</ConsultarNfseServicoPrestadoEnvio>
+

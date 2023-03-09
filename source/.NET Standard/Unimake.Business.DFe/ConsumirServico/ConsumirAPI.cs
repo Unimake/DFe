@@ -151,6 +151,13 @@ namespace Unimake.Business.DFe
                 xmlBody = Compress.GZIPCompress(xmlBody);
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
             }
+            if (apiConfig.WebSoapString.IndexOf("soapenv") > 0)
+            {
+                apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xml}", xmlBody);
+                return apiConfig.WebSoapString;
+            }
+
+
             if (apiConfig.B64) {  }
 
             var n = apiConfig.WebSoapString.CountChars('{');
