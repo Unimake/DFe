@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ConsultarLoteRpsEnvio>
+         <Prestador>
+            <CpfCnpj>
+               <Cnpj>13498672000110</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>29</InscricaoMunicipal>
+         </Prestador>
+         <Protocolo>1292682</Protocolo>
+      </ConsultarLoteRpsEnvio>
+   </soapenv:Body>
+</soapenv:Envelope>

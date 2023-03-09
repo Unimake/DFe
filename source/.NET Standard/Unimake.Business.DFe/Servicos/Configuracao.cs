@@ -592,7 +592,7 @@ namespace Unimake.Business.DFe.Servicos
                 RequestURIProducao = RequestURIProducao.Replace("&amp;", "&");
             }
 
-            if (PadraoNFSe == PadraoNFSe.IPM && IsAPI)
+            if (PadraoNFSe == PadraoNFSe.IPM && IsAPI && (SchemaVersao == "1.20" || SchemaVersao == "2.04"))
             {
                 MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{MunicipioUsuario}:{MunicipioSenha}"));
             }

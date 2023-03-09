@@ -1,47 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<GerarNfse versao="1.20">
+		<GerarNfse versao="2.04">
 			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
-			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo&amp;wsdl</RequestURIHomologacao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura></TagAssinatura>
+			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
+			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 		</GerarNfse>
-		<CancelarNfse versao="1.20">
-			<Descricao>Evento de cancelamento da NFSe</Descricao>
-			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
-			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo&amp;wsdl</RequestURIHomologacao>
+		<RecepcionarLoteRpsSincrono versao="2.04">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+		</RecepcionarLoteRpsSincrono>
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+		</RecepcionarLoteRps>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
+			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
-		</CancelarNfse>
-		<ConsultarNfse versao="1.20">
-			<Descricao>Consulta da NFSe</Descricao>
-			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao&amp;wsdl</RequestURIProducao>
-			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo&amp;wsdl</RequestURIHomologacao>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
+			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
-		</ConsultarNfse>
+		</ConsultarLoteRps>
+		<ConsultarNfseServicoPrestado versao="2.04">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseFaixa versao="2.04">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<RequestURIProducao>https://novohamburgo.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://treinamento.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=treina_novohamburgo</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>
