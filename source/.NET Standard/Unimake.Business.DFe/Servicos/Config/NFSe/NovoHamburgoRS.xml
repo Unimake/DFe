@@ -8,7 +8,7 @@
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebContentType>text/plain</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -22,7 +22,7 @@
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebContentType>text/plain</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -36,7 +36,7 @@
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebContentType>text/plain</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
