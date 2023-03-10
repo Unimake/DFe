@@ -182,6 +182,18 @@ namespace Unimake.Business.DFe.Validator.NFe
                     throw new ValidatorDFeException("O CST do grupo de tributação de ICMS00 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 00." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS00>]");
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(ICMS02.CST)) && element.Parent.NameEquals(nameof(ICMS02)), Tag =>
+            {
+                var value = Tag.Value;
+                var cProd = Tag.Parent.Parent.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (value != "02")
+                {
+                    throw new ValidatorDFeException("O CST do grupo de tributação de ICMS02 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 02." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS02>]");
+                }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS10.CST)) && element.Parent.NameEquals(nameof(ICMS10)), Tag =>
             {
                 var value = Tag.Value;
@@ -193,6 +205,18 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     throw new ValidatorDFeException("O CST do grupo de tributação de ICMS10 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 10." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS10>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(ICMS15.CST)) && element.Parent.NameEquals(nameof(ICMS15)), Tag =>
+            {
+                var value = Tag.Value;
+                var cProd = Tag.Parent.Parent.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (value != "15")
+                {
+                    throw new ValidatorDFeException("O CST do grupo de tributação de ICMS15 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 15." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS15>]");
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS20.CST)) && element.Parent.NameEquals(nameof(ICMS20)), Tag =>
             {
@@ -242,6 +266,18 @@ namespace Unimake.Business.DFe.Validator.NFe
                     throw new ValidatorDFeException("O CST do grupo de tributação de ICMS51 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 51." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS51>]");
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(ICMS53.CST)) && element.Parent.NameEquals(nameof(ICMS53)), Tag =>
+            {
+                var value = Tag.Value;
+                var cProd = Tag.Parent.Parent.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (value != "53")
+                {
+                    throw new ValidatorDFeException("O CST do grupo de tributação de ICMS53 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 53." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS53>]");
+                }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS60.CST)) && element.Parent.NameEquals(nameof(ICMS60)), Tag =>
             {
                 var value = Tag.Value;
@@ -253,6 +289,18 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     throw new ValidatorDFeException("O CST do grupo de tributação de ICMS60 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 60." +
                         " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS60>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(ICMS61.CST)) && element.Parent.NameEquals(nameof(ICMS61)), Tag =>
+            {
+                var value = Tag.Value;
+                var cProd = Tag.Parent.Parent.Parent.Parent.GetValue("cProd");
+                var xProd = Tag.Parent.Parent.Parent.Parent.GetValue("xProd");
+                var nItem = Tag.Parent.Parent.Parent.Parent.GetAttributeValue("nItem");
+
+                if (value != "61")
+                {
+                    throw new ValidatorDFeException("O CST do grupo de tributação de ICMS61 está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 61." +
+                        " [Item: " + nItem + "] [cProd: " + cProd + "] [xProd: " + xProd + "] [TAG: <CST> do grupo de tag <det><imposto><ICMS><ICMS61>]");
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMS70.CST)) && element.Parent.NameEquals(nameof(ICMS70)), Tag =>
             {
@@ -613,7 +661,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                     throw new ValidatorDFeException("TAG <NFe> deve possuir o atributo de namespace, conforme a seguir: <NFe xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
                 }
             }).ValidateTag(element => element.NameEquals(nameof(InfNFe)) && element.Parent.NameEquals(nameof(NFe)), Tag =>
-            {                
+            {
                 if (Tag.GetAttributeValue("xmlns") != null)
                 {
                     throw new ValidatorDFeException("Não pode existir o atributo de namespace na tag <infNFe>. Remova o conteúdo xmlns=\"http://www.portalfiscal.inf.br/nfe\" da tag <infNFe>. [TAG: <infNFe> do grupo de tag <NFe>]");

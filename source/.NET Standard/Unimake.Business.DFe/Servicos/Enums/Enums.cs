@@ -6600,4 +6600,22 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("2")]
         MultiplasReceitas = 2
     }
+
+    /// <summary>
+    /// Indicador de Importação
+    /// </summary>
+    public enum IndicadorImportacao
+    {
+        /// <summary>
+        /// 0 - Nacional
+        /// </summary>
+        [XmlEnum("0")]
+        Nacional = 0,
+
+        /// <summary>
+        /// 1 - Importado
+        /// </summary>
+        [XmlEnum("1")]
+        Importado = 1            
+    }        
 }
