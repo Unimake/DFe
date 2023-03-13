@@ -656,9 +656,13 @@ namespace Unimake.Business.DFe.Validator.NFe
                 }
             }).ValidateTag(element => element.NameEquals(nameof(NFe)), Tag =>
             {
-                if (Tag.GetAttributeValue("xmlns") == null)
+                //Só vou validar namespace, por hora, se não for arquivo de distribuição, pois tem estados que estão aceitando a tag NFe sem o namespace e naturalmente o arquivo está sendo distribuindo sem e teremos que aceitar.
+                if (Tag.Parent.Name.LocalName != "nfeProc")
                 {
-                    throw new ValidatorDFeException("TAG <NFe> deve possuir o atributo de namespace, conforme a seguir: <NFe xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
+                    if (Tag.GetAttributeValue("xmlns") == null)
+                    {
+                        throw new ValidatorDFeException("TAG <NFe> deve possuir o atributo de namespace, conforme a seguir: <NFe xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
+                    }
                 }
             }).ValidateTag(element => element.NameEquals(nameof(InfNFe)) && element.Parent.NameEquals(nameof(NFe)), Tag =>
             {
