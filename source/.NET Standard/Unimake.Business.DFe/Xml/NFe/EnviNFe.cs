@@ -6572,8 +6572,6 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VFCPSTRet = Converter.ToDouble(value);
         }
 
-
-
         /// <summary>
         /// Valor total do ICMS monofásico próprio
         /// </summary>
@@ -6730,6 +6728,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeVICMSUFRemetField() => VICMSUFRemet > 0;
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
+
+        public bool ShouldSerializeVICMSMonoField() => VICMSMono > 0;
+
+        public bool ShouldSerializeVICMSMonoRetenField() => VICMSMonoReten > 0;
+
+        public bool ShoudSerializeVICMSMonoRetField() => VICMSMonoRet > 0;
 
         #endregion
     }
