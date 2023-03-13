@@ -6733,7 +6733,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeVICMSMonoRetenField() => VICMSMonoReten > 0;
 
-        public bool ShoudSerializeVICMSMonoRetField() => VICMSMonoRet > 0;
+        public bool ShouldSerializeVICMSMonoRetField() => VICMSMonoRet > 0;
 
         #endregion
     }
