@@ -657,7 +657,7 @@ namespace Unimake.Business.DFe.Validator.NFe
             }).ValidateTag(element => element.NameEquals(nameof(NFe)), Tag =>
             {
                 //Só vou validar namespace, por hora, se não for arquivo de distribuição, pois tem estados que estão aceitando a tag NFe sem o namespace e naturalmente o arquivo está sendo distribuindo sem e teremos que aceitar.
-                if (Tag.Parent.Name.LocalName != "nfeProc")
+                if (Tag.Parent == null || Tag.Parent.Name.LocalName != "nfeProc")
                 {
                     if (Tag.GetAttributeValue("xmlns") == null)
                     {
