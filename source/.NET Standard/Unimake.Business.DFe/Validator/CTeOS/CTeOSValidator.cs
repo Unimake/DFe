@@ -103,6 +103,50 @@ namespace Unimake.Business.DFe.Validator.CTeOS
                 throw new ValidatorDFeException("Código do município do tomador do serviço está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
                     " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]");
             }
+        }).ValidateTag(element => element.NameEquals(nameof(Ide)), Tag =>
+        {
+            var tpCte = Tag.GetValue("tpCTe"); // Tipo do CTe
+            var tpServ = Tag.GetValue("tpServ"); //Transporte de pessoas
+            var modal = Tag.GetValue("modal"); //Rodoviário
+
+            //0=Normal 3=Substituição | 6=Transporte de pessoas | 01=Modal Rodoviário
+            if ((tpCte == "0" || tpCte == "3") && tpServ == "6" && modal == "01")
+            {
+                var UFIni = Tag.GetValue("UFIni"); //UF inicial do transporte
+                var UFFim = Tag.GetValue("UFFim"); //UF Final do transporte
+
+                if (UFIni != "EX" && UFFim != "EX")
+                {
+                    if (UFIni != UFFim) //Operação Interestadual
+                    {
+                        if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
+                        {
+                            throw new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
+                                " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("NroRegEstadual")))
+                        {
+                            throw new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
+                                " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                        }
+                    }
+                    else //Operação Estadual
+                    {
+                        if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("NroRegEstadual")))
+                        {
+                            throw new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
+                                " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
+                        {
+                            throw new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
+                                " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                        }
+                    }
+                }
+            }
         });
 
         #endregion Public Constructors
