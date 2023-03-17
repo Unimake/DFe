@@ -15,9 +15,10 @@ Function EncriptarAssinaturaSP()
    
    Try   
     * Carregar o certificado digital a ser utilizado na encriptação
-	  oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigital")
+	  oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigitalInterop")
 	  
-      certificadoSelecionado = oCertificado:CarregarCertificadoDigitalA1("c:\projetos\certificados\UnimakePV.pfx", "12345678")
+      oCertificado:CarregarCertificadoDigitalA1("c:\projetos\certificados\UnimakePV.pfx", "12345678")
+	  cSerialNumber = oCertificado:GetSerialNumber()
    
     * Criar objetoda classe de encriptação
       oConverterInterop = CreateObject("Unimake.Business.DFe.Utility.ConverterInterop")
@@ -29,9 +30,14 @@ Function EncriptarAssinaturaSP()
       ?
       ?
       wait
+	  
+	  ? cSerialNumber
+	  ?
+	  ?
+	  Wait
    
     * Encriptar
-      assinaturaEncriptada = oConverterInterop:ToRSASHA1(certificadoSelecionado, assinatura)
+      assinaturaEncriptada = oConverterInterop:ToRSASHA1SerialNumber(cSerialNumber, assinatura)
    
       ?
 	  ?

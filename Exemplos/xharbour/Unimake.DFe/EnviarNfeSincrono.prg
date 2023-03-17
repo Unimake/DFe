@@ -138,6 +138,41 @@ Function EnviarNfeSincrono()
        oProd:IndTot = 1 // SimNao.Sim
        oProd:XPed = "300474"
        oProd:NItemPed = 1
+	   
+	// Criar tag <comb>
+       oComb = CreateObject("Unimake.Business.DFe.Xml.NFe.Comb")	
+	   oComb:CODIF = ""
+       oComb:CProdANP = ""
+	   oComb:DescANP = ""
+	   oComb:PGLP = 0
+	   oComb:PGNi = 0
+	   oComb:PGNn = 0
+	   oComb:QTemp = 0
+	   oComb:UFCons = 41 // UFBrasil.PR
+	   oComb:VPart = 0
+	   
+	// Criar tag <encerrante>
+       oEncerrante = CreateObject("Unimake.Business.DFe.Xml.NFe.Encerrante")
+       oEncerrante:NBico  = 0
+       oEncerrante:NBomba = 0
+       oEncerrante:NTanque = 0
+       oEncerrante:VEncIni = 0
+       oEncerrante:VEncFin = 0
+	   
+	// Adicionar a tag <encerrante> dentro da tag <comb>
+	   oComb:Encerrante = oEncerrante
+
+    // Criar tag <CIDE>
+       oCIDE = CreateObject("Unimake.Business.DFe.Xml.NFe.CIDE")
+       oCIDE:QBCProd = 0
+       oCIDE:VAliqProd = 0
+       oCIDE:VCIDE = 0	   
+	   
+	// Adicionar a tag <CIDE> dentro da tag <comb>
+       oComb:CIDE = oCIDE	
+	   
+	// Adicionar a tag <comb> dentro da tag <prod>
+       oProd:AddComb(oComb)	
 
 /*	   
 	// criar a tag <DI> - tem como ter mais de uma tag DI, vou criar duas para ficar de exemplo, esta é a primeira
