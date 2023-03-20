@@ -6616,6 +6616,23 @@ namespace Unimake.Business.DFe.Servicos
         /// 1 - Importado
         /// </summary>
         [XmlEnum("1")]
-        Importado = 1            
-    }        
+        Importado = 1
+    }
+
+    /// <summary>
+    /// Motivos da redução do adrem do ICMS
+    /// </summary>
+    public enum MotivoReducaoAdRem
+    {
+        /// <summary>
+        /// 1 - Transporte coletivo de passageiros
+        /// </summary>
+        [XmlEnum("1")]
+        TransporteColetivoDePassageiros = 1,
+        /// <summary>
+        /// 9 = Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
 }

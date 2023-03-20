@@ -2366,8 +2366,15 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Percentual do índice de mistura do Biodiesel (B100) no Óleo Diesel B instituído pelo órgão regulamentador
         /// </summary>
-        [XmlElement("pBio")]
+        [XmlIgnore]
         public double PBio { get; set; }
+
+        [XmlElement("pBio")]
+        public string PBioField
+        {
+            get => PBio.ToString("F4", CultureInfo.InvariantCulture);
+            set => PBio = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Grupo indicador da origem do combustível
@@ -2539,8 +2546,16 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Percentual do índice de mistura do Biodiesel (B100) no Óleo Diesel B instituído pelo órgão regulamentador
         /// </summary>
-        [XmlElement("pOrig")]
+        [XmlIgnore]
         public double POrig { get; set; }
+
+        [XmlElement("pOrig")]
+        public string POrigField
+        {
+            get => POrig.ToString("F4", CultureInfo.InvariantCulture);
+            set => POrig = Converter.ToDouble(value);
+        }
+
     }
 
 #if INTEROP
@@ -2877,7 +2892,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CST { get; set; } = "02";
 
         /// <summary>
-        /// Alíquota ad rem do imposto.
+        /// Quantidade tributada - Informar a BC do ICMS próprio em quantidade conforme unidade de medida estabelecida na legislação para o produto.
+        /// </summary>
+        [XmlElement("qBCMono")]
+        public double QBCMono { get; set; }
+
+        /// <summary>
+        /// Alíquota ad rem do imposto. Alíquota ad rem do ICMS, estabelecida na legislação para o produto.
         /// </summary>
         [XmlIgnore]
         public double AdRemICMS { get; set; }
@@ -2890,7 +2911,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Valor do ICMS próprio
+        /// Valor do ICMS próprio - O valor do ICMS é obtido pela multiplicação da alíquota ad rem pela quantidade do produto conforme unidade de medida estabelecida na legislação.
         /// </summary>
         [XmlIgnore]
         public double VICMSMono { get; set; }
@@ -2901,6 +2922,12 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VICMSMono.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSMono = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQBCMono() => QBCMono > 0;
+
+        #endregion
     }
 
 #if INTEROP
@@ -3124,6 +3151,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CST { get; set; } = "15";
 
         /// <summary>
+        /// Quantidade tributada - Informar a BC do ICMS próprio em quantidade conforme unidade de medida estabelecida na legislação para o produto.
+        /// </summary>
+        [XmlElement("qBCMono")]
+        public double QBCMono { get; set; }
+
+        /// <summary>
         /// Alíquota ad rem do imposto.
         /// </summary>
         [XmlIgnore]
@@ -3150,6 +3183,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
+        /// Quantidade tributada sujeita a retenção - Informar a BC do ICMS sujeito a retenção em quantidade conforme unidade de medida estabelecida na legislação para o produto.
+        /// </summary>
+        [XmlElement("qBCMonoReten")]
+        public double QBCMonoReten { get; set; }
+
+        /// <summary>
         /// Alíquota ad rem do imposto com retenção
         /// </summary>
         [XmlIgnore]
@@ -3174,6 +3213,34 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VICMSMonoReten.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSMonoReten = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Percentual de redução do valor da alíquota ad rem do ICMS
+        /// </summary>
+        [XmlIgnore]
+        public double PRedAdRem { get; set; }
+
+        [XmlElement("pRedAdRem")]
+        public string PRedAdRemField
+        {
+            get => PRedAdRem.ToString("F2", CultureInfo.InvariantCulture);
+            set => PRedAdRem = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Motivo da redução do adrem do ICMS. Só preencher se o pRedAdRem for maior que zero.
+        /// </summary>
+        [XmlElement("motRedAdRem")]
+        public MotivoReducaoAdRem MotRedAdRem { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQBCMono() => QBCMono > 0;
+        public bool ShouldSerializeQBCMonoReten() => QBCMonoReten > 0;
+        public bool ShouldSerializePRedAdRemField() => PRedAdRem > 0;
+        public bool ShouldSerializeMotRedAdRem() => PRedAdRem > 0;
+
+        #endregion
     }
 
 #if INTEROP
@@ -3657,6 +3724,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CST { get; set; } = "53";
 
         /// <summary>
+        /// Quantidade tributada diferida - Informar a BC do ICMS diferido em quantidade conforme unidade de medida estabelecida na legislação para o produto.
+        /// </summary>
+        [XmlElement("qBCMonoDif")]
+        public double QBCMonoDif { get; set; }
+
+        /// <summary>
         /// Alíquota ad rem do imposto diferido
         /// </summary>
         [XmlIgnore]
@@ -3681,6 +3754,14 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VICMSMonoDif.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSMonoDif = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQBCMonoDif() => QBCMonoDif > 0;
+        public bool ShouldSerializeAdRemICMSDifField() => AdRemICMSDif > 0;
+        public bool ShouldSerializeVICMSMonoDifField() => VICMSMonoDif > 0;
+
+        #endregion
     }
 
 #if INTEROP
@@ -3849,6 +3930,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CST { get; set; } = "61";
 
         /// <summary>
+        /// Quantidade tributada retida anteriormente - Informar a BC do ICMS em quantidade conforme unidade de medida estabelecida na legislação.
+        /// </summary>
+        [XmlElement("qBCMonoRet")]
+        public double QBCMonoRet { get; set; }
+
+        /// <summary>
         /// Alíquota ad rem do imposto retido anteriormente
         /// </summary>
         [XmlIgnore]
@@ -3873,6 +3960,12 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => VICMSMonoRet.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSMonoRet = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQBCMonoRet() => QBCMonoRet > 0;
+
+        #endregion
     }
 
 #if INTEROP
@@ -6573,6 +6666,19 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
+        /// Valor total da quantidade tributada do ICMS monofásico próprio
+        /// </summary>
+        [XmlIgnore]
+        public double QBCMono { get; set; }
+
+        [XmlElement("qBCMono")]
+        public string QBCMonoField
+        {
+            get => QBCMono.ToString("F2", CultureInfo.InvariantCulture);
+            set => QBCMono = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Valor total do ICMS monofásico próprio
         /// </summary>
         [XmlIgnore]
@@ -6586,6 +6692,19 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
+        /// Valor total da quantidade tributada do ICMS monofásico sujeito a retenção
+        /// </summary>
+        [XmlIgnore]
+        public double QBCMonoReten { get; set; }
+
+        [XmlElement("qBCMonoReten")]
+        public string QBCMonoRetenField
+        {
+            get => QBCMonoReten.ToString("F2", CultureInfo.InvariantCulture);
+            set => QBCMonoReten = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Valor total do ICMS monofásico sujeito a retenção
         /// </summary>
         [XmlIgnore]
@@ -6596,6 +6715,20 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             get => VICMSMonoReten.ToString("F2", CultureInfo.InvariantCulture);
             set => VICMSMonoReten = Converter.ToDouble(value);
+        }
+
+
+        /// <summary>
+        /// Valor total da quantidade tributada do ICMS monofásico retido anteriormente
+        /// </summary>
+        [XmlIgnore]
+        public double QBCMonoRet { get; set; }
+
+        [XmlElement("qBCMonoRet")]
+        public string QBCMonoRetField
+        {
+            get => QBCMonoRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => QBCMonoRet = Converter.ToDouble(value);
         }
 
         /// <summary>
@@ -6729,11 +6862,17 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
 
+        public bool ShouldSerializeQBCMonoField() => QBCMono > 0;
+
         public bool ShouldSerializeVICMSMonoField() => VICMSMono > 0;
+
+        public bool ShouldSerializeQBCMonoRetenField() => QBCMonoReten > 0;
 
         public bool ShouldSerializeVICMSMonoRetenField() => VICMSMonoReten > 0;
 
         public bool ShouldSerializeVICMSMonoRetField() => VICMSMonoRet > 0;
+
+        public bool ShouldSerializeQBCMonoRetField() => QBCMonoRet > 0;
 
         #endregion
     }
