@@ -1522,4 +1522,10 @@
 		<ArqConfig>VeraCruzRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2914802">
+		<Nome>Itabuna - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>ItabunaBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
