@@ -6,7 +6,7 @@
 			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
 			<WebEnderecoProducao>http://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#RecepcionarLoteRps</WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
+			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>EnviarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>LoteRps</TagAtributoID>
@@ -14,7 +14,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBody}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -34,7 +34,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRpsSincrono><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -54,7 +54,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:CancelarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -74,7 +74,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:GerarNfse><xml>{xmlBodyScapeEnvio}</xml></ws:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -96,7 +96,7 @@
 			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:SubstituirNfse><xml>{xmlBodyScapeEnvio}</xml></ws:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:SubstituirNfse><xml>{xmlBodyScapeEnvio}</xml></ws:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:SubstituirNfse><xml>{xmlBodyScapeEnvio}</xml></ws:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -116,7 +116,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -136,7 +136,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -156,7 +156,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoPrestado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -176,7 +176,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseServicoTomado><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -196,7 +196,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://mogimirim.meumunicipio.online/abrasf/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:ConsultarNfseFaixa><xml>{xmlBodyScapeEnvio}</xml></ws:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
