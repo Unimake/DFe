@@ -1528,4 +1528,10 @@
 		<ArqConfig>ItabunaBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2928703">
+		<Nome>Santo Antonio de Jesus - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>SantoAntonioDeJesusBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
