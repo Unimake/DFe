@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+	<infNFe versao="4.00" Id="NFe41230200000000000000550010001111111001111114">
+		<ide>
+			<cUF>41</cUF>
+			<cNF>00111111</cNF>
+			<natOp>SAIDA POR VENDAS</natOp>
+			<mod>55</mod>
+			<serie>1</serie>
+			<nNF>111111</nNF>
+			<dhEmi>2023-02-01T15:17:21-03:00</dhEmi>
+			<dhSaiEnt>2023-02-01T15:17:21-03:00</dhSaiEnt>
+			<tpNF>1</tpNF>
+			<idDest>1</idDest>
+			<cMunFG>4104303</cMunFG>
+			<tpImp>1</tpImp>
+			<tpEmis>1</tpEmis>
+			<cDV>4</cDV>
+			<tpAmb>1</tpAmb>
+			<finNFe>1</finNFe>
+			<indFinal>1</indFinal>
+			<indPres>1</indPres>
+			<procEmi>0</procEmi>
+			<verProc>UNICO V8.0</verProc>
+		</ide>
+		<emit>
+			<CNPJ>00000000000000</CNPJ>
+			<xNome>XXXXXXX XXXXXX LTDA</xNome>
+			<xFant>XXXXXXX XXXXXX LTDA</xFant>
+			<enderEmit>
+				<xLgr>XXXXXXXXXX XXXXXXXX XXXXXXXXX</xLgr>
+				<nro>00000</nro>
+				<xBairro>XXXXXXXX</xBairro>
+				<cMun>4104303</cMun>
+				<xMun>XXXXXXXXXXXX</xMun>
+				<UF>PR</UF>
+				<CEP>88888888</CEP>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+				<fone>00000000000</fone>
+			</enderEmit>
+			<IE>9999999999</IE>
+			<CRT>3</CRT>
+		</emit>
+		<dest>
+			<CPF>00000000000</CPF>
+			<xNome>XXXX XXXXXXX XX XXXXX</xNome>
+			<enderDest>
+				<xLgr>XXXXX XXXXX XXXXXXXX</xLgr>
+				<nro>0</nro>
+				<xBairro>XXXX XXX XXXX</xBairro>
+				<cMun>4122503</cMun>
+				<xMun>XXXXXXXX</xMun>
+				<UF>PR</UF>
+				<CEP>87777777</CEP>
+				<cPais>1058</cPais>
+				<xPais>BRASIL</xPais>
+				<fone>000000000000</fone>
+			</enderDest>
+			<indIEDest>1</indIEDest>
+			<IE>9999999999</IE>
+			<email>xxxxx.xxxxxxx@xxxxxxx.com</email>
+		</dest>
+		<autXML>
+			<CPF>99999999999</CPF>
+		</autXML>
+		<det nItem="1">
+			<prod>
+				<cProd>00012</cProd>
+				<cEAN>SEM GTIN</cEAN>
+				<xProd>OLEO DIESEL B S500</xProd>
+				<NCM>27101921</NCM>
+				<CEST>0600400</CEST>
+				<CFOP>5656</CFOP>
+				<uCom>LT</uCom>
+				<qCom>500</qCom>
+				<vUnCom>5.6700000000</vUnCom>
+				<vProd>2835.00</vProd>
+				<cEANTrib>SEM GTIN</cEANTrib>
+				<uTrib>LT</uTrib>
+				<qTrib>500</qTrib>
+				<vUnTrib>5.6700000000</vUnTrib>
+				<indTot>1</indTot>
+				<comb>
+					<cProdANP>820101012</cProdANP>
+					<descANP>OLEO DIESEL B S500 - COMUM</descANP>
+					<qTemp>500.0000</qTemp>
+					<UFCons>PR</UFCons>
+					<CIDE>
+						<qBCProd>0</qBCProd>
+						<vAliqProd>0.0000</vAliqProd>
+						<vCIDE>0.00</vCIDE>
+					</CIDE>
+					<pBio>0.0000</pBio>
+				</comb>
+			</prod>
+			<imposto>
+				<vTotTrib>340.20</vTotTrib>
+				<ICMS>
+					<ICMS61>
+						<orig>0</orig>
+						<CST>61</CST>
+						<qBCMonoRet>500</qBCMonoRet>
+						<adRemICMSRet>12.0000</adRemICMSRet>
+						<vICMSMonoRet>340.20</vICMSMonoRet>
+					</ICMS61>
+				</ICMS>
+				<PIS>
+					<PISNT>
+						<CST>08</CST>
+					</PISNT>
+				</PIS>
+				<COFINS>
+					<COFINSNT>
+						<CST>08</CST>
+					</COFINSNT>
+				</COFINS>
+			</imposto>
+			<infAdProd>N ONU 1202 - OLEO DIESEL 3 III - COMBUSTIVEL PARA MOTORES - SUBSTITUICAO TRIBUTARIA CONFORME ARTIGO 482 DO DECRETO N 2736/96.</infAdProd>
+		</det>
+		<total>
+			<ICMSTot>
+				<vBC>0.00</vBC>
+				<vICMS>0.00</vICMS>
+				<vICMSDeson>0.00</vICMSDeson>
+				<vFCP>0.00</vFCP>
+				<vBCST>0.00</vBCST>
+				<vST>0.00</vST>
+				<vFCPST>0.00</vFCPST>
+				<vFCPSTRet>0.00</vFCPSTRet>
+				<qBCMonoRet>500.00</qBCMonoRet>
+				<vICMSMonoRet>340.20</vICMSMonoRet>
+				<vProd>2835.00</vProd>
+				<vFrete>0.00</vFrete>
+				<vSeg>0.00</vSeg>
+				<vDesc>0.00</vDesc>
+				<vII>0.00</vII>
+				<vIPI>0.00</vIPI>
+				<vIPIDevol>0.00</vIPIDevol>
+				<vPIS>0.00</vPIS>
+				<vCOFINS>0.00</vCOFINS>
+				<vOutro>0.00</vOutro>
+				<vNF>2835.00</vNF>
+				<vTotTrib>340.20</vTotTrib>
+			</ICMSTot>
+		</total>
+		<transp>
+			<modFrete>3</modFrete>
+			<transporta>
+				<CNPJ>00000000000000</CNPJ>
+				<xNome>XXXXXXX XXXXXX LTDA</xNome>
+				<IE>9999999999</IE>
+				<xEnder>XXXXXXXXXX XXXXXXXX XXXXXXXX</xEnder>
+				<xMun>XXXXX XXXXXX</xMun>
+				<UF>PR</UF>
+			</transporta>
+			<veicTransp>
+				<placa>AUS2592</placa>
+				<UF>PR</UF>
+			</veicTransp>
+			<vol>
+				<qVol>500</qVol>
+				<pesoL>417.500</pesoL>
+				<pesoB>417.500</pesoB>
+			</vol>
+		</transp>
+		<cobr>
+			<fat>
+				<nFat>191889</nFat>
+				<vOrig>2835.00</vOrig>
+				<vDesc>0.00</vDesc>
+				<vLiq>2835.00</vLiq>
+			</fat>
+			<dup>
+				<nDup>001</nDup>
+				<dVenc>2023-02-08</dVenc>
+				<vDup>2835.00</vDup>
+			</dup>
+		</cobr>
+		<pag>
+			<detPag>
+				<indPag>1</indPag>
+				<tPag>05</tPag>
+				<vPag>2835.00</vPag>
+			</detPag>
+		</pag>
+		<infAdic>
+			<infCpl>Base de Calculo de Icms Sub. Tributaria: 2.835,00;Valor de Icms Sub. Tributaria..........: 340,20;INFORMACOES ADICIONAIS DE INTERESSE DO FISCO: Declaramos que os produtos ;constantes nesta nota fiscal estao devidamente acondicionados para suportar os riscos;normais de carregamento transporte e descarregamento conforme a legislacao em vigor.;Voce pagou aproximadamente: R$ 0,00 trib. federais / R$ 340,20 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 22.2.C 3E8D48;</infCpl>
+			<obsCont xCampo="veicTransp">
+				<xTexto>AAA9999|PR||XXXXX XXXXXXXX</xTexto>
+			</obsCont>
+		</infAdic>
+		<infRespTec>
+			<CNPJ>00000000000000</CNPJ>
+			<xContato>teste xcontato</xContato>
+			<email>teste@teste.com.br</email>
+			<fone>04433333334</fone>
+		</infRespTec>
+	</infNFe>
+</NFe>

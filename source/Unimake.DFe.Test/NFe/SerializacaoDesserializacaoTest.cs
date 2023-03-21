@@ -41,6 +41,41 @@ namespace Unimake.DFe.Test.NFe
         }
 
         /// <summary>
+        /// Testar a serialização e desserialização do XML NFe
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NFe"), Trait("DFe", "NFCe")]
+        [InlineData(@"..\..\..\NFe\Resources\NFe1.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\NFe2.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\NFe3.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\NFe4.xml")]
+        public void SerializacaoDesserializacaoNFe(string arqXML)
+        {
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var enviNFe = new EnviNFe();
+            enviNFe.IdLote = "000000000000001";
+            enviNFe.Versao = "4.00";
+            enviNFe.NFe = new System.Collections.Generic.List<Business.DFe.Xml.NFe.NFe>
+            {
+                XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc.OuterXml)
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacao = new Business.DFe.Servicos.NFe.Autorizacao(enviNFe, configuracao);
+
+            Diag.Debug.Assert(doc.InnerText == autorizacao.ConteudoXMLOriginal.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização do XML NfeProc
         /// </summary>
         /// <param name="arqXML">Arquivo a ser desserializado</param>
@@ -146,7 +181,7 @@ namespace Unimake.DFe.Test.NFe
 
             Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
-        
+
         /// <summary>
         /// Testar a serialização e desserialização do XML RetConsSitNFe
         /// </summary>
