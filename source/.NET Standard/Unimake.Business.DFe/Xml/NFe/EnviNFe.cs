@@ -2396,6 +2396,8 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeQTempField() => QTemp > 0;
 
+        public bool ShouldSerializePBioField() => PBio > 0;
+
         #endregion
 
 #if INTEROP
