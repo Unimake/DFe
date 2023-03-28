@@ -154,33 +154,8 @@ namespace Unimake.Business.DFe
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
             }
 
-
             if (apiConfig.B64) {  }
-            if (apiConfig.ContentType == "multipart/form-data")
-            {
-                var path = xml.BaseURI.Substring(8, xml.BaseURI.Length - 8);
-                var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-
-                #region ENVIO EM BYTES
-                byte[] xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
-                ByteArrayContent xmlContent = new ByteArrayContent(xmlBytes);
-                xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
-                xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "f1",
-                    FileName = path,
-
-                };
-                #endregion ENVIO EM BYTES
-
-                HttpContent MultiPart = new MultipartContent("form-data", boundary)
-                {
-                    xmlContent,
-                };
-                return MultiPart;
-            }
-
+ 
             switch(apiConfig.PadraoNFSe)
             {
                 case PadraoNFSe.NACIONAL:
