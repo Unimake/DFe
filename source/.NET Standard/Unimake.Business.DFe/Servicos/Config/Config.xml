@@ -1534,4 +1534,10 @@
 		<ArqConfig>SantoAntonioDeJesusBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4307906">
+		<Nome>Farroupilha - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>FarroupilhaRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
