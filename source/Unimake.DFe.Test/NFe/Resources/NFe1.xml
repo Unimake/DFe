@@ -92,6 +92,16 @@
 						<vCIDE>0.00</vCIDE>
 					</CIDE>
 					<pBio>0.0000</pBio>
+					<origComb>
+						<indImport>0</indImport>
+						<cUFOrig>41</cUFOrig>
+						<pOrig>50.0000</pOrig>
+					</origComb>
+					<origComb>
+						<indImport>1</indImport>
+						<cUFOrig>41</cUFOrig>
+						<pOrig>50.0000</pOrig>
+					</origComb>
 				</comb>
 			</prod>
 			<imposto>
