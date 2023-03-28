@@ -9,30 +9,32 @@
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
 			<TagAssinatura>DPS</TagAssinatura>
 			<TagAtributoID>infDPS</TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
+			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>nfseXmlGZipB64</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</GerarNfse>
 		<CancelarNfse versao="1.00">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse/{ChaveAcesso}/eventos</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse/{ChaveAcesso}/eventos</RequestURIHomologacao>
+			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
+			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>eventoXmlGZipB64</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/dps/{ChaveAcesso}</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/dps/{ChaveAcesso}</RequestURIHomologacao>
+			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -42,11 +44,12 @@
 			<WebTagRetorno>idDps</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</ConsultarNfsePorRps>
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse/{ChaveAcesso}</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse/{ChaveAcesso}</RequestURIHomologacao>
+			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -56,6 +59,7 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>

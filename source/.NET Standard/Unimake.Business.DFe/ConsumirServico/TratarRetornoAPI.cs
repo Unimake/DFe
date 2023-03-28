@@ -38,8 +38,8 @@ namespace Unimake.Business.DFe
             var ResponseString = Response.Content.ReadAsStringAsync().Result;
             var resultadoRetorno = new XmlDocument();
 
-            //  response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação
-            switch (Config.ContentType)
+            //  Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação     ||     (Config.ContentType)
+            switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
             {
                 case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                 case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum

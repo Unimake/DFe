@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
-using System.Xml.Linq;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
 
@@ -37,6 +37,7 @@ namespace Unimake.Business.DFe
             var Handler = new HttpClientHandler
             {
                 ClientCertificateOptions = ClientCertificateOption.Automatic,
+                Credentials = CredentialCache.DefaultCredentials
             };
 
             var httpWebRequest = new HttpClient(Handler)
@@ -152,11 +153,6 @@ namespace Unimake.Business.DFe
                 xmlBody = Compress.GZIPCompress(xmlBody);
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
             }
-            if (apiConfig.WebSoapString.IndexOf("soapenv") > 0)
-            {
-                apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xml}", xmlBody);
-                return new StringContent(apiConfig.WebSoapString, Encoding.UTF8, apiConfig.ContentType);
-            }
 
 
             if (apiConfig.B64) {  }
@@ -185,57 +181,85 @@ namespace Unimake.Business.DFe
                 return MultiPart;
             }
 
-            var n = apiConfig.WebSoapString.CountChars('{');
-            var dicionario = new Dictionary<string, string>();
-            var posicaoInicial = 0;
-
-            while (n > 0)
+            switch(apiConfig.PadraoNFSe)
             {
-                try
-                {
-                    var InicioTag = apiConfig.WebSoapString.IndexOf('{', posicaoInicial);
-                    var FimTag = apiConfig.WebSoapString.IndexOf('}', posicaoInicial);
-                    var tag = apiConfig.WebSoapString.Substring(InicioTag + 1, (FimTag - InicioTag) - 1);
-                    posicaoInicial = FimTag + 1;
+                case PadraoNFSe.NACIONAL:
+                        var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
+                        var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
+                        var chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
+                    break;
 
-                    switch (tag.ToLower())
-                    {
-                        case "usuario":
-                            dicionario.Add("usuario", apiConfig.MunicipioUsuario);
-                            break;
+                case PadraoNFSe.IPM:
+                    apiConfig.Token = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{apiConfig.MunicipioUsuario}:{apiConfig.MunicipioSenha}"));
+                    break;
 
-                        case "senha":
-                            dicionario.Add("senha", apiConfig.MunicipioSenha);
-                            break;
+                default:
+                    break;
 
-                        case "xml":
-                            dicionario.Add((apiConfig.WebAction == null ? "xml" : apiConfig.WebAction), xmlBody);
-                            break;
-
-                        default:
-                            throw new Exception($"Não foi encontrado a Tag {tag} encontrada no WebSoapString - Xml de configução do Município");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                n--;
             }
 
-            var result = "";
+            //No momento, somente IPM 2.04 está utilizando WebSoapString em comunicação API, ele precisa o login acima
+            if (!string.IsNullOrWhiteSpace(apiConfig.WebSoapString))
+            {
+                apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xml}", xmlBody);
+                HttpContent temp = new StringContent(apiConfig.WebSoapString, Encoding.UTF8, apiConfig.ContentType);
+                return temp;
+            }
 
             if (apiConfig.ContentType == "application/json")
             {
-                result = JsonConvert.SerializeObject(dicionario);
-            }
-            else
-            {
-                result = xmlBody;
+                var Json = "";
+                var dicionario = new Dictionary<string, string>();
+
+                if (apiConfig.LoginConexao)
+                {
+                    dicionario.Add("usuario", apiConfig.MunicipioUsuario);
+                    dicionario.Add("senha", apiConfig.MunicipioSenha);
+                }
+
+                dicionario.Add((string.IsNullOrWhiteSpace(apiConfig.WebAction) ? "xml" : apiConfig.WebAction), xmlBody);
+
+                Json = JsonConvert.SerializeObject(dicionario);
+
+                HttpContent temp = new StringContent(Json, Encoding.UTF8, apiConfig.ContentType);
+
+                return temp;
             }
 
-            HttpContent temp = new StringContent(result, Encoding.UTF8, apiConfig.ContentType);
-            return temp;
+            if (apiConfig.ContentType == "multipart/form-data")
+            {
+                var path = xml.BaseURI.Substring(8, xml.BaseURI.Length - 8);
+                var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+
+                #region ENVIO EM BYTES
+                byte[] xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
+                ByteArrayContent xmlContent = new ByteArrayContent(xmlBytes);
+                xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
+                xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "f1",
+                    FileName = path,
+
+                };
+                #endregion ENVIO EM BYTES
+
+                HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
+                {
+                    xmlContent,
+                };
+
+                //if (apiConfig.LoginConexao)               SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
+                //{
+                //    //var usuario = new StringContent() { }
+                //    //var senha = new stringcontent () {}
+                //}
+
+                return MultiPartContent;
+            }
+
+            return new StringContent(xmlBody, Encoding.UTF8, apiConfig.ContentType);
         }
     }
 }

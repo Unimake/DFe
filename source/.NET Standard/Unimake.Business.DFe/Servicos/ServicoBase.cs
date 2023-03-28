@@ -230,6 +230,10 @@ namespace Unimake.Business.DFe.Servicos
                     MetodoAPI = Configuracoes.MetodoAPI,
                     Token = Configuracoes.MunicipioToken,
                     WebAction = Configuracoes.WebActionProducao,
+                    MunicipioSenha = Configuracoes.MunicipioSenha,
+                    MunicipioUsuario = Configuracoes.MunicipioUsuario,
+                    PadraoNFSe = Configuracoes.PadraoNFSe,
+                    LoginConexao = Configuracoes.LoginConexao,
                 };
 
                 var consumirAPI = new ConsumirAPI();

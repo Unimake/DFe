@@ -70,17 +70,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             base.Inicializar(conteudoXML, configuracao);
 
-            if (configuracao.PadraoNFSe == PadraoNFSe.NACIONAL)
-            {
-                try
-                {
-                    var startIndex = conteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-                    var endIndex = conteudoXML.OuterXml.IndexOf("\"", startIndex);
-
-                    Configuracoes.ChaveAcesso = conteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                }
-                catch { }
-            }
         }
 
         /// <summary>

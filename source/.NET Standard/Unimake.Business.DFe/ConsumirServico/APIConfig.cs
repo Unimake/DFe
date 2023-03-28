@@ -1,5 +1,6 @@
 ﻿using System.Dynamic;
 using System.Net;
+using System.Net.Http;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe
@@ -24,6 +25,16 @@ namespace Unimake.Business.DFe
         private string _WebActionProducao;
         private IWebProxy _Proxy;
         private string _Token;
+        private bool _LoginConexao;
+
+        /// <summary>
+        /// Utilizar os dados de login (usuário e senha)
+        /// </summary>
+        public bool LoginConexao
+        {
+            get => _LoginConexao;
+            set => _LoginConexao = value;
+        }
 
         /// <summary>
         /// Token 
@@ -91,7 +102,7 @@ namespace Unimake.Business.DFe
         /// <summary>
         /// Padrão selecionado da API, necessário para tratar configurações exclusivas de cada API
         /// </summary>
-        public PadraoNFSe PadraoNFSeAPI
+        public PadraoNFSe PadraoNFSe
         {
             get => _PadraoNFSe;
             set => _PadraoNFSe = value;

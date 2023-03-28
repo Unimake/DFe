@@ -9,11 +9,12 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</GerarNfse>
 		<CancelarNfse versao="1.20">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
@@ -23,11 +24,12 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</CancelarNfse>
 		<ConsultarNfse versao="1.20">
 			<Descricao>Consulta da NFSe</Descricao>
@@ -37,11 +39,12 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/xml</WebContentType>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>

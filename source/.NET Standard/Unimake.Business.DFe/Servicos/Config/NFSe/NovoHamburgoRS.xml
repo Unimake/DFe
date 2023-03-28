@@ -14,6 +14,7 @@
 			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</GerarNfse>
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
@@ -28,6 +29,7 @@
 			<WebTagRetorno>EnviarLoteRpsSincronoResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</RecepcionarLoteRpsSincrono>
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
@@ -42,6 +44,7 @@
 			<WebTagRetorno>EnviarLoteRpsResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</RecepcionarLoteRps>
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
@@ -56,6 +59,7 @@
 			<WebTagRetorno>SubstituirNfseResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
@@ -70,6 +74,7 @@
 			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</ConsultarLoteRps>
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
@@ -84,6 +89,7 @@
 			<WebTagRetorno>ConsultarNfseServicoPrestadoResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
@@ -98,6 +104,7 @@
 			<WebTagRetorno>ConsultarNfseFaixaResposta</WebTagRetorno>
 			<SchemaVersao>2.04</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>

@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
-using System.Text;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -308,6 +307,11 @@ namespace Unimake.Business.DFe.Servicos
                                 MetodoAPI = XMLUtility.TagRead(elementPropriedades, "MetodoAPI");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "LoginConexao"))
+                            {
+                                LoginConexao = XMLUtility.TagRead(elementPropriedades, "LoginConexao").ToLower() == "true" ? true : false; 
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -580,23 +584,6 @@ namespace Unimake.Business.DFe.Servicos
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
-
-            if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIHomologacao) && TipoAmbiente == TipoAmbiente.Homologacao)
-            {
-                RequestURIHomologacao = RequestURIHomologacao.Replace("{ChaveAcesso}", ChaveAcesso);
-                RequestURIHomologacao = RequestURIHomologacao.Replace("&amp;", "&");
-            }
-            else if (!string.IsNullOrWhiteSpace(ChaveAcesso) && !string.IsNullOrEmpty(RequestURIProducao) && TipoAmbiente == TipoAmbiente.Producao)
-            {
-                RequestURIProducao = RequestURIProducao.Replace("{ChaveAcesso}", ChaveAcesso);
-                RequestURIProducao = RequestURIProducao.Replace("&amp;", "&");
-            }
-
-            if (PadraoNFSe == PadraoNFSe.IPM && IsAPI && (SchemaVersao == "1.20" || SchemaVersao == "2.04"))
-            {
-                MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{MunicipioUsuario}:{MunicipioSenha}"));
-            }
-
         }
 
         /// <summary>
@@ -983,6 +970,11 @@ namespace Unimake.Business.DFe.Servicos
                 return false;
             }
         }
+
+        /// <summary>
+        /// Propriedade para habilitar o uso de usuário e senha para consumo pela API
+        /// </summary>
+        public bool LoginConexao { get; set; }
 
         /// <summary>
         /// Método de solicitação da API

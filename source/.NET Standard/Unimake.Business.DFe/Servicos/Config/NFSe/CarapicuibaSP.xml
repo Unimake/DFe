@@ -9,11 +9,12 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
+			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</GerarNfse>
 		<CancelarNfse versao="2.00">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
@@ -23,11 +24,12 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
+			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</CancelarNfse>
 		<ConsultarNfse versao="2.00">
 			<Descricao>Consulta da NFSe</Descricao>
@@ -37,11 +39,12 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
+			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>2.00</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
 		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
