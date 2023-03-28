@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
@@ -60,7 +61,7 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, new StringContent(Content, Encoding.UTF8, apiConfig.ContentType)).GetAwaiter().GetResult();
+                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, Content).GetAwaiter().GetResult();
             }
 
             WebException webException = null;
@@ -143,7 +144,7 @@ namespace Unimake.Business.DFe
         /// <param name="apiConfig"></param>    Configurações básicas para consumo da API
         /// <param name="xml"></param>          Arquivo XML que será enviado
         /// <returns></returns>
-        private string EnveloparXML(APIConfig apiConfig, XmlDocument xml)
+        private HttpContent EnveloparXML(APIConfig apiConfig, XmlDocument xml)
         {
             var xmlBody = xml.OuterXml;
             if (apiConfig.GZipCompress)
@@ -154,11 +155,35 @@ namespace Unimake.Business.DFe
             if (apiConfig.WebSoapString.IndexOf("soapenv") > 0)
             {
                 apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xml}", xmlBody);
-                return apiConfig.WebSoapString;
+                return new StringContent(apiConfig.WebSoapString, Encoding.UTF8, apiConfig.ContentType);
             }
 
 
             if (apiConfig.B64) {  }
+            if (apiConfig.ContentType == "multipart/form-data")
+            {
+                var path = xml.BaseURI.Substring(8, xml.BaseURI.Length - 8);
+                var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+
+                #region ENVIO EM BYTES
+                byte[] xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
+                ByteArrayContent xmlContent = new ByteArrayContent(xmlBytes);
+                xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
+                xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "f1",
+                    FileName = path,
+
+                };
+                #endregion ENVIO EM BYTES
+
+                HttpContent MultiPart = new MultipartContent("form-data", boundary)
+                {
+                    xmlContent,
+                };
+                return MultiPart;
+            }
 
             var n = apiConfig.WebSoapString.CountChars('{');
             var dicionario = new Dictionary<string, string>();
@@ -208,7 +233,9 @@ namespace Unimake.Business.DFe
             {
                 result = xmlBody;
             }
-            return result;
+
+            HttpContent temp = new StringContent(result, Encoding.UTF8, apiConfig.ContentType);
+            return temp;
         }
     }
 }
