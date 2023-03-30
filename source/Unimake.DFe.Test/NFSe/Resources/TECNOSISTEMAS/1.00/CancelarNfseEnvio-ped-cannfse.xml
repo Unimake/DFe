@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <Pedido>
+    <InfPedidoCancelamento Id="ID14006801009999000000281">
+      <IdentificacaoNfse>
+        <Numero>271</Numero>
+        <CpfCnpj>
+          <Cnpj>14006801009999</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>8899</InscricaoMunicipal>
+        <CodigoMunicipio>4322806</CodigoMunicipio>
+      </IdentificacaoNfse>
+      <CodigoCancelamento>1</CodigoCancelamento>
+      <MotivoCancelamento>Problema na geração da nota</MotivoCancelamento>
+      <Id>14006801009999000000281</Id>
+    </InfPedidoCancelamento>
+  </Pedido>
+</CancelarNfseEnvio>

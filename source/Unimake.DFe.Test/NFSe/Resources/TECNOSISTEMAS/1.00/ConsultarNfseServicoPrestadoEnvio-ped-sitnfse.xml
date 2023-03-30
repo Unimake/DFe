@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding ="utf-8"?>
+<ConsultarNfseServicoPrestadoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>91593376000102</Cnpj>
+    </CpfCnpj>
+    <RazaoSocial>TECNOSISTEMAS INFORMATICA LTDA.</RazaoSocial>
+    <InscricaoMunicipal>31001042</InscricaoMunicipal>
+  </Prestador>
+  <NumeroNfse>5</NumeroNfse>
+  <Tomador>
+    <CpfCnpj>
+      <Cpf>64193454053</Cpf>                                       
+    </CpfCnpj>
+    <InscricaoMunicipal>0</InscricaoMunicipal>                     
+  </Tomador>
+  <Intermediario>                                                  
+    <CpfCnpj>
+      <Cpf />
+    </CpfCnpj>
+    <InscricaoMunicipal />
+  </Intermediario>
+  <Pagina>000000</Pagina>                                          
+</ConsultarNfseServicoPrestadoEnvio>

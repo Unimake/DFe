@@ -6195,6 +6195,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("IPM")]
         IPM = 33,
+
+        /// <summary>
+        /// TECNOSISTEMAS
+        /// </summary>
+        [Description("TECNOSISTEMAS")]
+        TECNOSISTEMAS = 34,
     }
 
     #endregion

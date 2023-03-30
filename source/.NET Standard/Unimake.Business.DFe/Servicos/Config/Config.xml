@@ -1540,4 +1540,10 @@
 		<ArqConfig>FarroupilhaRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314035">
+		<Nome>Pareci Novo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PareciNovoRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

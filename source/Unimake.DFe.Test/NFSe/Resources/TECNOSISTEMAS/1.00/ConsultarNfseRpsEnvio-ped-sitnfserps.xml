@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <IdentificacaoRps>
+    <Numero>7</Numero>                                              
+    <!--número de identificação do RPS  base para consulta das notas fiscais-->
+    <Serie>UNICA</Serie>                                            
+    <!--série do RPS base para consulta das notas fiscais-->
+    <Tipo>1</Tipo>                                                  
+    <!--tipo do RPS base para consulta das notas fiscais-->
+  </IdentificacaoRps>
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>91593376000102</Cnpj>                                  
+      <!-- número do CPF/CNPJ do prestador do serviço para consulta-->
+    </CpfCnpj>
+    <RazaoSocial>TECNOSISTEMAS INFORMÁTICA LTDA.</RazaoSocial>      
+    <!--razão social do prestador do serviço para consulta-->
+    <InscricaoMunicipal>31001042</InscricaoMunicipal>               
+    <!--número da inscrição municipal do prestador do serviço para consulta-->
+  </Prestador>
+</ConsultarNfseRpsEnvio>
