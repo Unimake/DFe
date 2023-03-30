@@ -670,6 +670,20 @@ namespace Unimake.Business.DFe.Validator.NFe
                 {
                     throw new ValidatorDFeException("Não pode existir o atributo de namespace na tag <infNFe>. Remova o conteúdo xmlns=\"http://www.portalfiscal.inf.br/nfe\" da tag <infNFe>. [TAG: <infNFe> do grupo de tag <NFe>]");
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(AutXML.CPF)) && element.Parent.NameEquals(nameof(AutXML)) && element.Parent.Parent.NameEquals(nameof(InfNFe)), Tag =>
+            {
+                if (Tag.Value.Trim() == "00000000000" || string.IsNullOrWhiteSpace(Tag.Value.Trim()))
+                {
+                    throw new ValidatorDFeException("O conteúdo da tag <CPF> das pessoas autorizadas a acessar o XML não é válido. Conteúdo informado: " + Tag.Value + "." +
+                        " [TAG: <CPF> do grupo de tag <NFe><infNFe><autXML>]");
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(AutXML.CNPJ)) && element.Parent.NameEquals(nameof(AutXML)) && element.Parent.Parent.NameEquals(nameof(InfNFe)), Tag =>
+            {
+                if (Tag.Value.Trim() == "00000000000000" || string.IsNullOrWhiteSpace(Tag.Value.Trim()))
+                {
+                    throw new ValidatorDFeException("O conteúdo da tag <CNPJ> das pessoas autorizadas a acessar o XML não é válido. Conteúdo informado: " + Tag.Value + "." +
+                        " [TAG: <CNPJ> do grupo de tag <NFe><infNFe><autXML>]");
+                }
             });
 
         #endregion Public Constructors
