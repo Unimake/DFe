@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<GerarNfse versao="1.00">
 			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse</RequestURIHomologacao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.nfse.gov.br/sefinnacional/nfse</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
 			<TagAssinatura>DPS</TagAssinatura>
@@ -18,8 +18,8 @@
 		</GerarNfse>
 		<CancelarNfse versao="1.00">
 			<Descricao>Envio do cancelamento de NFSe</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}/eventos</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}/eventos</RequestURIHomologacao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}/eventos</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -33,8 +33,8 @@
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/dps/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/dps/{Chave}</RequestURIHomologacao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.nfse.gov.br/sefinnacional/dps/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -48,8 +48,8 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consultar NFSe</Descricao>
-			<RequestURIProducao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}</RequestURIProducao>
-			<RequestURIHomologacao>https://www.nfse.gov.br/API/SefinNacional/nfse/{Chave}</RequestURIHomologacao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.nfse.gov.br/sefinnacional/nfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>

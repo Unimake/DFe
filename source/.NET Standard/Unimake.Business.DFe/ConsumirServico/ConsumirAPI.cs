@@ -150,8 +150,8 @@ namespace Unimake.Business.DFe
             var xmlBody = xml.OuterXml;
             if (apiConfig.GZipCompress)
             {
-                xmlBody = Compress.GZIPCompress(xmlBody);
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
+                xmlBody = Compress.GZIPCompress(xml);
             }
 
             if (apiConfig.B64) {  }

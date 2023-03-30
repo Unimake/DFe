@@ -2543,6 +2543,14 @@ namespace TreinamentoDLL
                                 Orig = OrigemMercadoria.Nacional,
                                 PCredSN = 2.8255,
                                 VCredICMSSN = 2.40
+                            },
+                            ICMS02 = new XmlNFe.ICMS02
+                            {
+                                Orig = OrigemMercadoria.Nacional,
+                                CST = "02",
+                                QBCMono = 500,
+                                AdRemICMS = 1.1234,
+                                VICMSMono = 9.999
                             }
                         },
                         PIS = new XmlNFe.PIS
