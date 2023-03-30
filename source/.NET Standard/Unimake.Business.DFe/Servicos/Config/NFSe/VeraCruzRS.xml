@@ -9,8 +9,8 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/json</WebContentType>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
@@ -23,8 +23,8 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/json</WebContentType>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
@@ -37,8 +37,8 @@
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString>{xml}</WebSoapString>
-			<WebContentType>application/json</WebContentType>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
