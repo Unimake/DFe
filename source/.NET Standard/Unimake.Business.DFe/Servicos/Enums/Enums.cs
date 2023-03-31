@@ -378,6 +378,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consulta RPS Disponivel")]
         NFSeConsultarRpsDisponivel = 60,
 
+        /// <summary>
+        /// 61 - Consultar sequencia lote nota RPS
+        /// </summary>
+        [Description("Consultar sequencia lote nota RPS")]
+        NFSeConsultarSequenciaLoteNotaRPS = 61,
+
         #endregion
 
         #region Gerais
