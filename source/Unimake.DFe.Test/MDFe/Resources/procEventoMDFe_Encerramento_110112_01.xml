@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<procEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infEvento Id="ID1101124199999999999999999999999999999999999999999901">
+			<cOrgao>41</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>99999999999999</CNPJ>
+			<chMDFe>41999999999999999999999999999999999999999999</chMDFe>
+			<dhEvento>2023-03-03T14:42:16-03:00</dhEvento>
+			<tpEvento>110112</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<detEvento versaoEvento="3.00">
+				<evEncMDFe>
+					<descEvento>Encerramento</descEvento>
+					<nProt>941230001219027</nProt>
+					<dtEnc>2023-03-03</dtEnc>
+					<cUF>29</cUF>
+					<cMun>2907103</cMun>
+				</evEncMDFe>
+			</detEvento>
+		</infEvento>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+				<Reference URI="#ID1101124199999999999999999999999999999999999999999901">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+					<DigestValue>Ee1asd8asadasd4asd4asd8asdos</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>Pgaasadsa5sdbasdIasddaspdas5daszdasMdapsdlasdGasdmasdvasMdasPdasYdas6daTsdpasdTasdKasdHasdbasadasd8asdl1T+X4D89mXU6zsTUiXXfaluBpZhjhPXu31Z8iG5rOEU/asdasd1asdhasd9MSgsad19eoUZsadQHjF7Z8BY/GP5Ub5tNVkFLusPmFj1XqMx74VwEf5IL2W6DK/TPnMeXI2bn2L7wKrgiENuziB5fgqx/QF2RT7Deo0I/99ASEReq0EOJFsdmR6DLh1Lp9ddwNxGaLY4+5MMWE7282TLDeVS80P2nQpjWijgSrhqWrFlqBpQ==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</eventoMDFe>
+	<retEventoMDFe xmlns="http://www.portalfiscal.inf.br/mdfe" versao="3.00">
+		<infEvento Id="ID999999999999999">
+			<tpAmb>1</tpAmb>
+			<verAplic>RS20220905131833</verAplic>
+			<cOrgao>41</cOrgao>
+			<cStat>135</cStat>
+			<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+			<chMDFe>41999999999999999999999999999999999999999999</chMDFe>
+			<tpEvento>110112</tpEvento>
+			<xEvento>Encerramento</xEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<dhRegEvento>2023-03-03T14:39:56-03:00</dhRegEvento>
+			<nProt>949999999999999</nProt>
+		</infEvento>
+	</retEventoMDFe>
+</procEventoMDFe>

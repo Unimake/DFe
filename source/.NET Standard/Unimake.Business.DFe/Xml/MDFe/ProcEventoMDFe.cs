@@ -7,6 +7,8 @@ using System;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -50,6 +52,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
             xmlElementRetEventoInfEvento.SetAttribute("xmlns", attribute.Namespace);
 
             return xmlDocument;
+        }
+
+        public override void ReadXml(XmlDocument document)
+        {
+            var nodeListEvento = document.GetElementsByTagName("eventoMDFe");
+
+            if (nodeListEvento != null)
+            {
+                EventoMDFe = XMLUtility.Deserializar<EventoMDFe>(((XmlElement)nodeListEvento[0]).OuterXml);
+                var nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature");
+                if (nodeListEventoSignature != null)
+                {
+                    EventoMDFe.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                }
+            }
+
+            var nodeListRetEvento = document.GetElementsByTagName("retEventoMDFe");
+            if (nodeListRetEvento != null)
+            {
+                RetEventoMDFe = XMLUtility.Deserializar<RetEventoMDFe>(((XmlElement)nodeListRetEvento[0]).OuterXml);
+            }
         }
     }
 }
