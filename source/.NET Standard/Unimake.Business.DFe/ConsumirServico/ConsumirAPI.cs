@@ -120,7 +120,7 @@ namespace Unimake.Business.DFe
                     throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
                 }
 
-                RetornoServicoString = retornoXml.InnerText;
+                RetornoServicoString = retornoXml.OuterXml;
 
                 //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
                 if (RetornoServicoString.IndexOf("?>") >= 0)
