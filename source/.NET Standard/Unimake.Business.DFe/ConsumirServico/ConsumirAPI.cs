@@ -171,9 +171,7 @@ namespace Unimake.Business.DFe
 
                 case PadraoNFSe.BAUHAUS:        //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5731e4948f";
                     string chave = "";
-                    //temp
-                    apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5731e4948f";
-                    //
+
                     if (apiConfig.RequestURI.IndexOf("NumeroRps") > 0)
                     {
                         chave = xml.GetElementsByTagName("NumeroRps")[0].InnerText;
