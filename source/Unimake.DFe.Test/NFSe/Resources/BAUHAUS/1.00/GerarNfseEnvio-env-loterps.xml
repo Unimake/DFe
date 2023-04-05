@@ -1,0 +1,61 @@
+<DadosNota xmlns:json='http://james.newtonking.com/projects/json'>
+	<MunicipioPrestacao>1506138</MunicipioPrestacao>
+	<NaturezaOperacao>1</NaturezaOperacao>
+	<IssRetido>N</IssRetido>
+	<Observacoes>Teste de integração NFS-e</Observacoes>
+	<Atividade>
+		<Codigo>100988</Codigo>
+		<CodigoCnae>6319400</CodigoCnae>
+		<CodigoLc116>0108</CodigoLc116>
+	</Atividade>
+	<Prestador>
+		<InscricaoMunicipal>670</InscricaoMunicipal>
+	</Prestador>
+	<Tomador>
+		<TipoPessoa>J</TipoPessoa>
+		<NrDocumento>18412726000105</NrDocumento>
+		<RazaoSocial>RAZAO SOCIAL DO TOMADOR DE SERVICO</RazaoSocial>
+		<Endereco>
+			<Logradouro>RUA TESTE</Logradouro>
+			<Numero>111</Numero>
+			<Complemento>AP 89</Complemento>
+			<Bairro>CENTRO</Bairro>
+			<Municipio>4207007</Municipio>
+			<Cep>88802400</Cep>
+		</Endereco>
+		<Contato>
+			<Telefone>48 99999-9999</Telefone>
+			<Email>emailtomador@provedor.com</Email>
+		</Contato>
+	</Tomador>
+	<Rps>
+		<Numero>2543</Numero>
+		<Serie>2543</Serie>
+		<Tipo>1</Tipo>
+		<DataEmissao>2022-10-06</DataEmissao>
+	</Rps>
+	<Servicos json:Array='true'>
+		<Unidade>UN</Unidade>
+		<Quantidade>1</Quantidade>
+		<Descricao>TESTE</Descricao>
+		<ValorUnitario>1.00</ValorUnitario>
+	</Servicos>
+	<Valores>
+		<ValorServicos>1.00</ValorServicos>
+		<ValorDeducoes>0.</ValorDeducoes>
+		<ValorOutrasDeducoes>0</ValorOutrasDeducoes>
+		<ValorPis>0</ValorPis>
+		<ValorCofins>0</ValorCofins>
+		<ValorInss>0</ValorInss>
+		<ValorIr>0</ValorIr>
+		<ValorCsll>0</ValorCsll>
+		<OutrasRetencoes>0</OutrasRetencoes>
+		<DescontoIncondicionado>0</DescontoIncondicionado>
+		<DescontoCondicionado>0</DescontoCondicionado>
+		<BaseCalculo>1.00</BaseCalculo>
+		<Aliquota>4</Aliquota>
+		<ValorIss>0.04</ValorIss>
+		<ValorCredito>0</ValorCredito>
+		<ValorTotalNota>1.00</ValorTotalNota>
+	</Valores>
+</DadosNota>

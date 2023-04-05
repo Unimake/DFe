@@ -6207,6 +6207,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("TECNOSISTEMAS")]
         TECNOSISTEMAS = 34,
+
+        /// <summary>
+        /// BAUHAUS - Prefeitura Moderna
+        /// </summary>
+        [Description("BAUHAUS")]
+        BAUHAUS = 35,
     }
 
     #endregion

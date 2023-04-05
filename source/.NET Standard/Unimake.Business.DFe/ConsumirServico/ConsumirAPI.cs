@@ -54,7 +54,7 @@ namespace Unimake.Business.DFe
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-  
+
             var postData = new HttpResponseMessage();
             if (apiConfig.MetodoAPI.ToLower() == "get")
             {
@@ -154,20 +154,38 @@ namespace Unimake.Business.DFe
                 xmlBody = Compress.GZIPCompress(xml);
             }
 
-            if (apiConfig.B64) {  }
- 
-            switch(apiConfig.PadraoNFSe)
+            if (apiConfig.B64) { }
+
+            switch (apiConfig.PadraoNFSe)
             {
                 case PadraoNFSe.NACIONAL:
-                        var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
-                        var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
-                        var chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
+                    var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
+                    var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
+                    var Chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                    apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", Chave);
                     break;
 
                 case PadraoNFSe.IPM:
                     apiConfig.Token = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{apiConfig.MunicipioUsuario}:{apiConfig.MunicipioSenha}"));
                     break;
+
+                case PadraoNFSe.BAUHAUS:        //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5731e4948f";
+                    string chave = "";
+                    //temp
+                    apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5731e4948f";
+                    //
+                    if (apiConfig.RequestURI.IndexOf("NumeroRps") > 0)
+                    {
+                        chave = xml.GetElementsByTagName("NumeroRps")[0].InnerText;
+                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
+                    }
+                    else if (apiConfig.RequestURI.IndexOf("NumeroNfse") > 0)
+                    {
+                        chave = xml.GetElementsByTagName("NumeroNfse")[0].InnerText;
+                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
+                    } 
+                    
+                    return new StringContent(JsonConvert.SerializeXmlNode(xml), Encoding.UTF8, apiConfig.ContentType);
 
                 default:
                     break;
