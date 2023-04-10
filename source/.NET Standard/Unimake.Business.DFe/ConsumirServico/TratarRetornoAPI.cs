@@ -43,6 +43,7 @@ namespace Unimake.Business.DFe
             {
                 case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                 case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
+                case "text/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                     try
                     {
                         resultadoRetorno.LoadXml(ResponseString);
