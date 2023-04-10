@@ -1546,6 +1546,12 @@
 		<ArqConfig>PareciNovoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3303906">
+		<Nome>Petrópolis - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>PetropolisRJ.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 	<Arquivo ID="4205209">
 		<Nome>Erval Velho - SC</Nome>
 		<UF>SC</UF>
