@@ -1375,44 +1375,44 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorPresenca
     {
         /// <summary>
-        /// 0=Não se aplica (por exemplo, Nota Fiscal complementar ou de ajuste)
+        /// 0 - Não se aplica (por exemplo, Nota Fiscal complementar ou de ajuste)
         /// </summary>
         [XmlEnum("0")]
         NaoSeAplica = 0,
 
         /// <summary>
-        /// 1=Operação presencial
+        /// 1 - Operação presencial
         /// </summary>
         [XmlEnum("1")]
         OperacaoPresencial = 1,
 
         /// <summary>
-        /// 2=Operação não presencial, pela Internet
+        /// 2 - Operação não presencial, pela Internet
         /// </summary>
         [XmlEnum("2")]
         OperacaoInternet = 2,
 
         /// <summary>
-        /// 3=Operação não presencial, Teleatendimento
+        /// 3 - Operação não presencial, Teleatendimento
         /// </summary>
         [XmlEnum("3")]
         OperacaoTeleAtendimento = 3,
 
         /// <summary>
-        /// 4=NFC-e em operação com entrega a domicílio
+        /// 4 - NFC-e em operação com entrega a domicílio
         /// </summary>
         [XmlEnum("4")]
         NFCeEntregaDomicilio = 4,
 
         /// <summary>
-        /// Operação presencial, fora do estabelecimento
+        /// 5 - Operação presencial, fora do estabelecimento
         /// </summary>
         [XmlEnum("5")]
         [Description("Operação presencial, fora do estabelecimento")]
         PresencialForaEstabelecimento = 5,
 
         /// <summary>
-        /// 9=Operação não presencial, outros
+        /// 9 - Operação não presencial, outros
         /// </summary>
         [XmlEnum("9")]
         OperacaoOutros = 9
@@ -1428,25 +1428,25 @@ namespace Unimake.Business.DFe.Servicos
     public enum ProcessoEmissao
     {
         /// <summary>
-        /// 0=Emissão de NF-e com aplicativo do contribuinte
+        /// 0 - Emissão de NF-e com aplicativo do contribuinte
         /// </summary>
         [XmlEnum("0")]
         AplicativoContribuinte = 0,
 
         /// <summary>
-        /// 1=Emissão de NF-e avulsa pelo Fisco;
+        /// 1 - Emissão de NF-e avulsa pelo Fisco;
         /// </summary>
         [XmlEnum("1")]
         AvulsaPeloFisco = 1,
 
         /// <summary>
-        /// 2=Emissão de NF-e avulsa, pelo contribuinte com seu certificado digital, através do site do Fisco;
+        /// 2 - Emissão de NF-e avulsa, pelo contribuinte com seu certificado digital, através do site do Fisco;
         /// </summary>
         [XmlEnum("2")]
         AvulsaPeloContribuinteSiteFisco = 2,
 
         /// <summary>
-        /// 3=Emissão NF-e pelo contribuinte com aplicativo fornecido pelo Fisco.
+        /// 3 - Emissão NF-e pelo contribuinte com aplicativo fornecido pelo Fisco.
         /// </summary>
         [XmlEnum("3")]
         AplicativoFisco = 3
@@ -1462,19 +1462,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum CRT
     {
         /// <summary>
-        /// 1=Simples Nacional
+        /// 1 - Simples Nacional
         /// </summary>
         [XmlEnum("1")]
         SimplesNacional = 1,
 
         /// <summary>
-        /// 2=Simples Nacional, excesso sublimite de receita bruta
+        /// 2 - Simples Nacional, excesso sublimite de receita bruta
         /// </summary>
         [XmlEnum("2")]
         SimplesNacionalExcessoSublimite = 2,
 
         /// <summary>
-        /// 3=Regime Normal
+        /// 3 - Regime Normal
         /// </summary>
         [XmlEnum("3")]
         RegimeNormal = 3
@@ -1491,19 +1491,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorIEDestinatario
     {
         /// <summary>
-        /// 1=Contribuinte ICMS (informar a IE do destinatário)
+        /// 1 - Contribuinte ICMS (informar a IE do destinatário)
         /// </summary>
         [XmlEnum("1")]
         ContribuinteICMS = 1,
 
         /// <summary>
-        /// 2=Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS
+        /// 2 - Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS
         /// </summary>
         [XmlEnum("2")]
         ContribuinteIsento = 2,
 
         /// <summary>
-        /// 9=Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS
+        /// 9 - Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS
         /// </summary>
         [XmlEnum("9")]
         NaoContribuinte = 9
@@ -1541,31 +1541,31 @@ namespace Unimake.Business.DFe.Servicos
     public enum ViaTransporteInternacional
     {
         /// <summary>
-        /// 1=Marítima
+        /// 1 - Marítima
         /// </summary>
         [XmlEnum("1")]
         Maritima = 1,
 
         /// <summary>
-        /// 2=Fluvial
+        /// 2 - Fluvial
         /// </summary>
         [XmlEnum("2")]
         Fluvial = 2,
 
         /// <summary>
-        /// 3=Lacustre
+        /// 3 - Lacustre
         /// </summary>
         [XmlEnum("3")]
         Lacustre = 3,
 
         /// <summary>
-        /// 4=Aérea
+        /// 4 - Aérea
         /// </summary>
         [XmlEnum("4")]
         Aerea = 4,
 
         /// <summary>
-        /// 5=Postal
+        /// 5 - Postal
         /// </summary>
         [XmlEnum("5")]
         Postal = 5,
@@ -1577,43 +1577,43 @@ namespace Unimake.Business.DFe.Servicos
         Ferroviaria = 6,
 
         /// <summary>
-        /// 7=Rodoviária
+        /// 7 - Rodoviária
         /// </summary>
         [XmlEnum("7")]
         Rodoviaria = 7,
 
         /// <summary>
-        /// 8=Conduto / Rede Transmissão
+        /// 8 - Conduto / Rede Transmissão
         /// </summary>
         [XmlEnum("8")]
         CondutoRedeTransmissao = 8,
 
         /// <summary>
-        /// 9=Meios Próprios
+        /// 9 - Meios Próprios
         /// </summary>
         [XmlEnum("9")]
         MeiosProprios = 9,
 
         /// <summary>
-        /// 10=Entrada / Saída ficta
+        /// 10 - Entrada / Saída ficta
         /// </summary>
         [XmlEnum("10")]
         EntradaSaidaFicta = 10,
 
         /// <summary>
-        /// 11=Courier
+        /// 11 - Courier
         /// </summary>
         [XmlEnum("11")]
         Courier = 11,
 
         /// <summary>
-        /// 12=Em Mãos
+        /// 12 - Em Mãos
         /// </summary>
         [XmlEnum("12")]
         EmMaos = 12,
 
         /// <summary>
-        /// 13=Por Reboque
+        /// 13 - Por Reboque
         /// </summary>
         [XmlEnum("13")]
         PorReboque = 13
@@ -1629,19 +1629,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum FormaImportacaoIntermediacao
     {
         /// <summary>
-        /// 1=Importação por conta própria
+        /// 1 - Importação por conta própria
         /// </summary>
         [XmlEnum("1")]
         ImportacaoPorContaPropria = 1,
 
         /// <summary>
-        /// 2=Importação por conta e ordem
+        /// 2 - Importação por conta e ordem
         /// </summary>
         [XmlEnum("2")]
         ImportacaoPorContaOrdem = 2,
 
         /// <summary>
-        /// 3=Importação por encomenda
+        /// 3 - Importação por encomenda
         /// </summary>
         [XmlEnum("3")]
         ImportacaoPorEncomenda = 3
@@ -1721,25 +1721,25 @@ namespace Unimake.Business.DFe.Servicos
     public enum ModalidadeBaseCalculoICMS
     {
         /// <summary>
-        /// 0=Margem Valor Agregado (%)
+        /// 0 - Margem Valor Agregado (%)
         /// </summary>
         [XmlEnum("0")]
         MargemValorAgregado = 0,
 
         /// <summary>
-        /// 1=Pauta (Valor)
+        /// 1 - Pauta (Valor)
         /// </summary>
         [XmlEnum("1")]
         Pauta = 1,
 
         /// <summary>
-        /// 2=Preço Tabelado Máx. (valor)
+        /// 2 - Preço Tabelado Máx. (valor)
         /// </summary>
         [XmlEnum("2")]
         PrecoTabeladoMaximo = 2,
 
         /// <summary>
-        /// 3=Valor da operação
+        /// 3 - Valor da operação
         /// </summary>
         [XmlEnum("3")]
         ValorOperacao = 3
@@ -1755,43 +1755,43 @@ namespace Unimake.Business.DFe.Servicos
     public enum ModalidadeBaseCalculoICMSST
     {
         /// <summary>
-        /// 0=Preço tabelado ou máximo sugerido
+        /// 0 - Preço tabelado ou máximo sugerido
         /// </summary>
         [XmlEnum("0")]
         PrecoTabeladoMaximoSugerido = 0,
 
         /// <summary>
-        /// 1=Lista Negativa (valor)
+        /// 1 - Lista Negativa (valor)
         /// </summary>
         [XmlEnum("1")]
         ListaNegativa = 1,
 
         /// <summary>
-        /// 2=Lista Positiva (valor)
+        /// 2 - Lista Positiva (valor)
         /// </summary>
         [XmlEnum("2")]
         ListaPositiva = 2,
 
         /// <summary>
-        /// 3=Lista Neutra (valor)
+        /// 3 - Lista Neutra (valor)
         /// </summary>
         [XmlEnum("3")]
         ListaNeutra = 3,
 
         /// <summary>
-        /// 4=Margem Valor Agregado (%)
+        /// 4 - Margem Valor Agregado (%)
         /// </summary>
         [XmlEnum("4")]
         MargemValorAgregado = 4,
 
         /// <summary>
-        /// 5=Pauta (valor)
+        /// 5 - Pauta (valor)
         /// </summary>
         [XmlEnum("5")]
         Pauta = 5,
 
         /// <summary>
-        /// 6=Valor da Operação
+        /// 6 - Valor da Operação
         /// </summary>
         [XmlEnum("6")]
         ValorOperacao = 6
@@ -1807,31 +1807,31 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorOrigemProcesso
     {
         /// <summary>
-        /// 0=SEFAZ
+        /// 0 - SEFAZ
         /// </summary>
         [XmlEnum("0")]
         SEFAZ = 0,
 
         /// <summary>
-        /// 1=Justiça Federal
+        /// 1 - Justiça Federal
         /// </summary>
         [XmlEnum("1")]
         JusticaFederal = 1,
 
         /// <summary>
-        /// 2=Justiça Estadual
+        /// 2 - Justiça Estadual
         /// </summary>
         [XmlEnum("2")]
         JusticaEstadual = 2,
 
         /// <summary>
-        /// 3=Secex/RFB
+        /// 3 - Secex/RFB
         /// </summary>
         [XmlEnum("3")]
         SecexRFB = 3,
 
         /// <summary>
-        /// 9=Outros
+        /// 9 - Outros
         /// </summary>
         [XmlEnum("9")]
         Outros = 9
