@@ -38,7 +38,7 @@ namespace Unimake.Business.DFe
             var ResponseString = Response.Content.ReadAsStringAsync().Result;
             var resultadoRetorno = new XmlDocument();
 
-            //  Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação     ||     (Config.ContentType)
+            //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
             {
                 case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
@@ -67,7 +67,14 @@ namespace Unimake.Business.DFe
                     break;
 
                 case "text/html": //Retorno HTML -> Entendemos que sempre será erro
-                    ResponseString = HtmlToPlainText(ResponseString);
+                    try
+                    {
+                        resultadoRetorno.LoadXml(BuscarXML(ResponseString));
+                    }
+                    catch
+                    {
+                        resultadoRetorno.LoadXml(HtmlToPlainText(ResponseString));
+                    }
                     break;
             }
 
