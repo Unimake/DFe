@@ -62,6 +62,10 @@ namespace Unimake.Business.DFe
                     retorna += soap.SoapString.Replace("{xmlBodyScapeEnvio}", xmlBody);
                 }                
             }
+            else if (TratarScapeRetorno)
+            {
+                retorna += soap.SoapString.Replace("{xmlBodyScapeRetorno}", xmlBody);
+            }
             else
             {
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
