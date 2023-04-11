@@ -1,65 +1,66 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <nfse>
 	<nfse_teste>1</nfse_teste>
-    <nf>
-        <valor_total>1,00</valor_total>
-        <valor_desconto>0,00</valor_desconto>
-        <valor_ir>0,00</valor_ir>
-        <valor_inss>0,00</valor_inss>
-        <valor_contribuicao_social>0,00</valor_contribuicao_social>
-        <valor_rps/>
-        <valor_pis>0,00</valor_pis>
-        <valor_cofins>0,00</valor_cofins>
-        <observacao>Observação da NFS-e</observacao>
-    </nf>
-    <prestador>
-        <cpfcnpj>88888888883239</cpfcnpj>
-        <cidade>8233</cidade>
-    </prestador>
-    <tomador>
-        <tipo>F</tipo>
-        <cpfcnpj>99999999999</cpfcnpj>
-        <ie/>
-        <nome_razao_social>empresa teste</nome_razao_social>
-        <sobrenome_nome_fantasia/>
-        <logradouro>ENGENHEIRO ODEBRECHT, 99</logradouro>
-        <email/>
-        <complemento/>
-        <ponto_referencia/>
-        <bairro>BUDAG</bairro>
-        <cidade>RIO DO SUL</cidade>
-        <cep>89165412</cep>
-        <ddd_fone_comercial>47</ddd_fone_comercial>
-        <fone_comercial>47</fone_comercial>
-        <ddd_fone_residencial/>
-        <fone_residencial/>
-        <ddd_fax/>
-        <fone_fax/>
-    </tomador>
-    <itens>
-        <lista>
-            <codigo_local_prestacao_servico>8233</codigo_local_prestacao_servico>
-            <codigo_item_lista_servico>702</codigo_item_lista_servico>
-            <descritivo>Descritivo do Item da NFS-e</descritivo>
-            <aliquota_item_lista_servico>3,00</aliquota_item_lista_servico>
-            <situacao_tributaria>0</situacao_tributaria>
-            <valor_tributavel>1,00</valor_tributavel>
-            <valor_deducao>0,00</valor_deducao>
-            <valor_issrf>0,00</valor_issrf>
-            <tributa_municipio_prestador>N</tributa_municipio_prestador>
-            <unidade_codigo>7</unidade_codigo>
-            <unidade_quantidade>1,00</unidade_quantidade>
-            <unidade_valor_unitario>1,00</unidade_valor_unitario>
-        </lista>
-    </itens>
-    <forma_pagamento>
-        <tipo_pagamento>2</tipo_pagamento>
-        <parcelas>
-            <parcela>
-                <numero>1</numero>
-                <valor>1,00</valor>
-                <data_vencimento>09/10/2017</data_vencimento>
-            </parcela>
-        </parcelas>
-    </forma_pagamento>
+	<nf>
+		<serie_nfse>1</serie_nfse>
+		<valor_total>0,10</valor_total>
+		<valor_desconto>0,00</valor_desconto>
+		<valor_ir>0,00</valor_ir>
+		<valor_inss>0,00</valor_inss>
+		<valor_contribuicao_social>0,00</valor_contribuicao_social>
+		<valor_rps>0,00</valor_rps>
+		<valor_pis>0,00</valor_pis>
+		<valor_cofins>0,00</valor_cofins>
+		<observacao/>
+	</nf>
+	<prestador>
+		<cpfcnpj>06117473000150</cpfcnpj>
+		<cidade>7749</cidade>
+	</prestador>
+	<tomador>
+		<tipo>F</tipo>
+		<cpfcnpj>77988006037</cpfcnpj>
+		<ie/>
+		<nome_razao_social>EMPRESA TESTE</nome_razao_social>
+		<sobrenome_nome_fantasia>EMPRESA TESTE</sobrenome_nome_fantasia>
+		<logradouro>KM47</logradouro>
+		<email/>
+		<complemento/>
+		<ponto_referencia/>
+		<bairro>RURAL</bairro>
+		<cidade>7829</cidade>
+		<cep>87800000</cep>
+		<ddd_fone_comercial>044</ddd_fone_comercial>
+		<fone_comercial>36721722</fone_comercial>
+		<ddd_fone_residencial/>
+		<fone_residencial/>
+		<ddd_fax/>
+		<fone_fax/>
+	</tomador>
+	<itens>
+		<lista>
+			<codigo_local_prestacao_servico>7749</codigo_local_prestacao_servico>
+			<codigo_item_lista_servico>0101</codigo_item_lista_servico>
+			<descritivo>SERVICO DESENVOLVIMENTO DE SISTEMAS</descritivo>
+			<aliquota_item_lista_servico>2,00</aliquota_item_lista_servico>
+			<situacao_tributaria>0</situacao_tributaria>
+			<valor_tributavel>0,10</valor_tributavel>
+			<valor_deducao>0,00</valor_deducao>
+			<valor_issrf>0,00</valor_issrf>
+			<tributa_municipio_prestador>N</tributa_municipio_prestador>
+			<unidade_codigo/>
+			<unidade_quantidade/>
+			<unidade_valor_unitario/>
+		</lista>
+	</itens>
+	<forma_pagamento>
+		<tipo_pagamento>2</tipo_pagamento>
+		<parcelas>
+			<parcela>
+				<numero>1</numero>
+				<valor>0,10</valor>
+				<data_vencimento>10/04/2023</data_vencimento>
+			</parcela>
+		</parcelas>
+	</forma_pagamento>
 </nfse>

@@ -465,174 +465,174 @@ namespace Unimake.Business.DFe.Servicos
     public enum UFBrasil
     {
         /// <summary>
-        /// Acre - AC (12)
+        /// 12 - Acre - AC
         /// </summary>
         AC = 12,
 
         /// <summary>
-        /// Alagoas - AL (27)
+        /// 27 - Alagoas - AL
         /// </summary>
         AL = 27,
 
         /// <summary>
-        /// Amapá - AP (16)
+        /// 16 - Amapá - AP
         /// </summary>
         AP = 16,
 
         /// <summary>
-        /// Amazonas - AM (13)
+        /// 13 - Amazonas - AM
         /// </summary>
         AM = 13,
 
         /// <summary>
-        /// Bahia - BA (29)
+        /// 29 - Bahia - BA
         /// </summary>
         BA = 29,
 
         /// <summary>
-        /// Ceará - CE (23)
+        /// 23 - Ceará - CE
         /// </summary>
         CE = 23,
 
         /// <summary>
-        /// Distrito Federal - DF (53)
+        /// 53 - Distrito Federal - DF
         /// </summary>
         DF = 53,
 
         /// <summary>
-        /// Espírito Santo - ES (32)
+        /// 32 - Espírito Santo - ES
         /// </summary>
         ES = 32,
 
         /// <summary>
-        /// Goiás - GO (52)
+        /// 52 - Goiás - GO
         /// </summary>
         GO = 52,
 
         /// <summary>
-        /// Maranhão - MA (21)
+        /// 21 - Maranhão - MA
         /// </summary>
         MA = 21,
 
         /// <summary>
-        /// Mato Grosso - MT (51)
+        /// 51 - Mato Grosso - MT
         /// </summary>
         MT = 51,
 
         /// <summary>
-        /// Mato Grosso do Sul - MS (50)
+        /// 50 - Mato Grosso do Sul - MS
         /// </summary>
         MS = 50,
 
         /// <summary>
-        /// Minas Gerais - MG (31)
+        /// 31 - Minas Gerais - MG
         /// </summary>
         MG = 31,
 
         /// <summary>
-        /// Pará - PA (15)
+        /// 15 - Pará - PA
         /// </summary>
         PA = 15,
 
         /// <summary>
-        /// Paraíba - PB (25)
+        /// 25 - Paraíba - PB
         /// </summary>
         PB = 25,
 
         /// <summary>
-        /// Paraná - PR (41)
+        /// 41 - Paraná - PR
         /// </summary>
         PR = 41,
 
         /// <summary>
-        /// Pernambuco - PE (26)
+        /// 26 - Pernambuco - PE
         /// </summary>
         PE = 26,
 
         /// <summary>
-        /// Piauí - PI (22)
+        /// 22 - Piauí - PI
         /// </summary>
         PI = 22,
 
         /// <summary>
-        /// Rio de Janeiro - RJ (33)
+        /// 33 - Rio de Janeiro - RJ
         /// </summary>
         RJ = 33,
 
         /// <summary>
-        /// Rio Grande do Norte - RN (24)
+        /// 24 - Rio Grande do Norte - RN
         /// </summary>
         RN = 24,
 
         /// <summary>
-        /// Rio Grande do Sul - RS (43)
+        /// 43 - Rio Grande do Sul - RS
         /// </summary>
         RS = 43,
 
         /// <summary>
-        /// Rondônia - RO (11)
+        /// 11 - Rondônia - RO
         /// </summary>
         RO = 11,
 
         /// <summary>
-        /// Roraima - RR (14)
+        /// 14 - Roraima - RR
         /// </summary>
         RR = 14,
 
         /// <summary>
-        /// Santa Catarina - SC (42)
+        /// 42 - Santa Catarina - SC
         /// </summary>
         SC = 42,
 
         /// <summary>
-        /// São Paulo - SP (35)
+        /// 35 - São Paulo - SP
         /// </summary>
         SP = 35,
 
         /// <summary>
-        /// Sergipe - SE (28)
+        /// 28 - Sergipe - SE
         /// </summary>
         SE = 28,
 
         /// <summary>
-        /// Tocantins - TO (17)
+        /// 17 - Tocantins - TO
         /// </summary>
         TO = 17,
 
         ///<summary>
-        /// SUFRAMA (90)
+        /// 90 - SUFRAMA
         /// </summary>
         SUFRAMA = 90,
 
         /// <summary>
-        /// RFB - Ambiente Nacional - AN (91)
+        /// 91 - RFB - Ambiente Nacional - AN
         /// </summary>
         AN = 91,
 
         //Existe um código 92, mas como não sei o que é e não encontrei nada na internet que identifique, não criei ainda este código no ENUM. Wandrey 30/01/2023
 
         /// <summary>
-        /// SVCRS - Serviço Virtual de Contingência do Rio Grande do Sul (94)
+        /// 94 - SVCRS - Serviço Virtual de Contingência do Rio Grande do Sul
         /// </summary>
         SVCRS = 94,
 
         /// <summary>
-        /// SVCRS - Serviço Virtual de Contingência de São Paulo (95)
+        /// 95 - SVCRS - Serviço Virtual de Contingência de São Paulo
         /// </summary>
         SVCSP = 95,
 
         /// <summary>
-        /// Sincronização de chaves do estado do Rio Grande do Sul com o Sistema Virtual de São Paulo (96)
+        /// 96 - Sincronização de chaves do estado do Rio Grande do Sul com o Sistema Virtual de São Paulo
         /// </summary>
         SincChavesRSparaSVSP = 96,
 
         /// <summary>
-        /// Exportação
+        /// 99 - Exportação
         /// </summary>
         EX = 99,
 
         /// <summary>
-        /// Não definido (0)
+        /// 0 - Não definido
         /// </summary>
         NaoDefinido = 0
     }
@@ -647,12 +647,12 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoAmbiente
     {
         /// <summary>
-        /// Ambiente de Produção
+        /// 1 - Ambiente de Produção
         /// </summary>
         [XmlEnum("1")]
         Producao = 1,
         /// <summary>
-        /// Ambiente de Homologação
+        /// 2 - Ambiente de Homologação
         /// </summary>
         [XmlEnum("2")]
         Homologacao = 2
@@ -708,7 +708,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoNFe
     {
         /// <summary>
-        /// Evento desconhecido
+        /// Evento desconhecido (0)
         /// </summary>
         [XmlEnum("0")]
         Desconhecido = 0,
@@ -964,7 +964,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoCTe
     {
         /// <summary>
-        /// Evento desconhecido
+        /// Evento desconhecido (0)
         /// </summary>
         [XmlEnum("0")]
         Desconhecido = 0,
@@ -1034,7 +1034,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoMDFe
     {
         /// <summary>
-        /// Evento desconhecido
+        /// Evento desconhecido (0)
         /// </summary>
         [XmlEnum("0")]
         Desconhecido = 0,
@@ -1115,13 +1115,13 @@ namespace Unimake.Business.DFe.Servicos
     public enum SimNao
     {
         /// <summary>
-        /// Não (0)
+        /// 0 - Não
         /// </summary>
         [XmlEnum("0")]
         Nao = 0,
 
         /// <summary>
-        /// Sim (1)
+        /// 1 - Sim
         /// </summary>
         [XmlEnum("1")]
         Sim = 1
@@ -1137,13 +1137,13 @@ namespace Unimake.Business.DFe.Servicos
     public enum SimNao12
     {
         /// <summary>
-        /// Sim (1)
+        /// 1 - Sim
         /// </summary>
         [XmlEnum("1")]
         Sim = 1,
 
         /// <summary>
-        /// Não (2)
+        /// 2 - Não
         /// </summary>
         [XmlEnum("2")]
         Nao = 2
@@ -1159,12 +1159,13 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoOperacao
     {
         /// <summary>
-        /// Operação de entrada
+        /// 0 - Operação de entrada
         /// </summary>
         [XmlEnum("0")]
         Entrada = 0,
+
         /// <summary>
-        /// Operação de saída
+        /// 1 - Operação de saída
         /// </summary>
         [XmlEnum("1")]
         Saida = 1
@@ -1180,19 +1181,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum DestinoOperacao
     {
         /// <summary>
-        /// Operação interna, ou seja, dentro do estado de origem
+        /// 1 - Operação interna, ou seja, dentro do estado de origem
         /// </summary>
         [XmlEnum("1")]
         OperacaoInterna = 1,
 
         /// <summary>
-        /// Operação interestadual, ou seja, estado diferente do de origem
+        /// 2 - Operação interestadual, ou seja, estado diferente do de origem
         /// </summary>
         [XmlEnum("2")]
         OperacaoInterestadual = 2,
 
         /// <summary>
-        /// Operação com o exterior, ou seja, fora do país de origem
+        /// 3 - Operação com o exterior, ou seja, fora do país de origem
         /// </summary>
         [XmlEnum("3")]
         OperacaoExterior = 3
@@ -1208,37 +1209,37 @@ namespace Unimake.Business.DFe.Servicos
     public enum FormatoImpressaoDANFE
     {
         /// <summary>
-        /// 0=Sem geração de DANFE
+        /// 0 - Sem geração de DANFE
         /// </summary>
         [XmlEnum("0")]
         SemGeracao = 0,
 
         /// <summary>
-        /// 1=DANFE normal, Retrato
+        /// 1 - DANFE normal, Retrato
         /// </summary>
         [XmlEnum("1")]
         NormalRetrato = 1,
 
         /// <summary>
-        /// 2=DANFE normal, Paisagem
+        /// 2 - DANFE normal, Paisagem
         /// </summary>
         [XmlEnum("2")]
         NormalPaisagem = 2,
 
         /// <summary>
-        /// 3=DANFE Simplificado
+        /// 3 - DANFE Simplificado
         /// </summary>
         [XmlEnum("3")]
         Simplificado = 3,
 
         /// <summary>
-        /// 4=DANFE NFC-e
+        /// 4 - DANFE NFC-e
         /// </summary>
         [XmlEnum("4")]
         NFCe = 4,
 
         /// <summary>
-        /// 5=DANFE NFC-e em mensagem eletrônica
+        /// 5 - DANFE NFC-e em mensagem eletrônica
         /// </summary>
         [XmlEnum("5")]
         NFCeMensagemEletronica = 5
@@ -1254,13 +1255,13 @@ namespace Unimake.Business.DFe.Servicos
     public enum FormatoImpressaoDACTE
     {
         /// <summary>
-        /// 1=Retrato
+        /// 1 - Retrato
         /// </summary>
         [XmlEnum("1")]
         NormalRetrato = 1,
 
         /// <summary>
-        /// 2=Paisagem
+        /// 2 - Paisagem
         /// </summary>
         [XmlEnum("2")]
         NormalPaisagem = 2
@@ -1276,55 +1277,55 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEmissao
     {
         /// <summary>
-        /// 1=Emissão normal (não em contingência)
+        /// 1 - Emissão normal (não em contingência)
         /// </summary>
         [XmlEnum("1")]
         Normal = 1,
 
         /// <summary>
-        /// 2=Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe é impressão em formulário branco (sulfite)
+        /// 2 - Contingência FS-IA, com impressão do DANFE em formulário de segurança ou Para MDFe é impressão em formulário branco (sulfite)
         /// </summary>
         [XmlEnum("2")]
         ContingenciaFSIA = 2,
 
         /// <summary>
-        /// 3=Regime Especial NFF (Nota Fiscal Fácil)
+        /// 3 - Regime Especial NFF (Nota Fiscal Fácil)
         /// </summary>
         [XmlEnum("3")]
         RegimeEspecialNFF,
 
         /// <summary>
-        /// 4=Contingência EPEC (Evento Prévio de Emissão em Contingência)
+        /// 4 - Contingência EPEC (Evento Prévio de Emissão em Contingência)
         /// </summary>
         [XmlEnum("4")]
         ContingenciaEPEC = 4,
 
         /// <summary>
-        /// 5=Contingência FS-DA, com impressão do DANFE em formulário de segurança;
+        /// 5 - Contingência FS-DA, com impressão do DANFE em formulário de segurança;
         /// </summary>
         [XmlEnum("5")]
         ContingenciaFSDA = 5,
 
         /// <summary>
-        /// 6=Contingência SVC-AN (SEFAZ Virtual de Contingência do AN);
+        /// 6 - Contingência SVC-AN (SEFAZ Virtual de Contingência do AN);
         /// </summary>
         [XmlEnum("6")]
         ContingenciaSVCAN = 6,
 
         /// <summary>
-        /// 7=Contingência SVC-RS (SEFAZ Virtual de Contingência do RS);
+        /// 7 - Contingência SVC-RS (SEFAZ Virtual de Contingência do RS);
         /// </summary>
         [XmlEnum("7")]
         ContingenciaSVCRS = 7,
 
         /// <summary>
-        /// 8=Contingência SVC-SP (SEFAZ Virtual de Contingência de SP);
+        /// 8 - Contingência SVC-SP (SEFAZ Virtual de Contingência de SP);
         /// </summary>
         [XmlEnum("8")]
         ContingenciaSVCSP = 8,
 
         /// <summary>
-        /// 9=Contingência off-line da NFC-e
+        /// 9 - Contingência off-line da NFC-e
         /// </summary>
         [XmlEnum("9")]
         ContingenciaOffLine = 9
@@ -1340,25 +1341,25 @@ namespace Unimake.Business.DFe.Servicos
     public enum FinalidadeNFe
     {
         /// <summary>
-        /// 1=NF-e normal
+        /// 1 - NF-e normal
         /// </summary>
         [XmlEnum("1")]
         Normal = 1,
 
         /// <summary>
-        /// 2=NF-e complementar
+        /// 2 - NF-e complementar
         /// </summary>
         [XmlEnum("2")]
         Complementar = 2,
 
         /// <summary>
-        /// 3=NF-e de ajuste
+        /// 3 - NF-e de ajuste
         /// </summary>
         [XmlEnum("3")]
         Auste = 3,
 
         /// <summary>
-        /// 4=Devolução de mercadoria
+        /// 4 - Devolução de mercadoria
         /// </summary>
         [XmlEnum("4")]
         Devolucao = 4
@@ -1374,44 +1375,44 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorPresenca
     {
         /// <summary>
-        /// 0=Não se aplica (por exemplo, Nota Fiscal complementar ou de ajuste)
+        /// 0 - Não se aplica (por exemplo, Nota Fiscal complementar ou de ajuste)
         /// </summary>
         [XmlEnum("0")]
         NaoSeAplica = 0,
 
         /// <summary>
-        /// 1=Operação presencial
+        /// 1 - Operação presencial
         /// </summary>
         [XmlEnum("1")]
         OperacaoPresencial = 1,
 
         /// <summary>
-        /// 2=Operação não presencial, pela Internet
+        /// 2 - Operação não presencial, pela Internet
         /// </summary>
         [XmlEnum("2")]
         OperacaoInternet = 2,
 
         /// <summary>
-        /// 3=Operação não presencial, Teleatendimento
+        /// 3 - Operação não presencial, Teleatendimento
         /// </summary>
         [XmlEnum("3")]
         OperacaoTeleAtendimento = 3,
 
         /// <summary>
-        /// 4=NFC-e em operação com entrega a domicílio
+        /// 4 - NFC-e em operação com entrega a domicílio
         /// </summary>
         [XmlEnum("4")]
         NFCeEntregaDomicilio = 4,
 
         /// <summary>
-        /// Operação presencial, fora do estabelecimento
+        /// 5 - Operação presencial, fora do estabelecimento
         /// </summary>
         [XmlEnum("5")]
         [Description("Operação presencial, fora do estabelecimento")]
         PresencialForaEstabelecimento = 5,
 
         /// <summary>
-        /// 9=Operação não presencial, outros
+        /// 9 - Operação não presencial, outros
         /// </summary>
         [XmlEnum("9")]
         OperacaoOutros = 9
@@ -1427,25 +1428,25 @@ namespace Unimake.Business.DFe.Servicos
     public enum ProcessoEmissao
     {
         /// <summary>
-        /// 0=Emissão de NF-e com aplicativo do contribuinte
+        /// 0 - Emissão de NF-e com aplicativo do contribuinte
         /// </summary>
         [XmlEnum("0")]
         AplicativoContribuinte = 0,
 
         /// <summary>
-        /// 1=Emissão de NF-e avulsa pelo Fisco;
+        /// 1 - Emissão de NF-e avulsa pelo Fisco;
         /// </summary>
         [XmlEnum("1")]
         AvulsaPeloFisco = 1,
 
         /// <summary>
-        /// 2=Emissão de NF-e avulsa, pelo contribuinte com seu certificado digital, através do site do Fisco;
+        /// 2 - Emissão de NF-e avulsa, pelo contribuinte com seu certificado digital, através do site do Fisco;
         /// </summary>
         [XmlEnum("2")]
         AvulsaPeloContribuinteSiteFisco = 2,
 
         /// <summary>
-        /// 3=Emissão NF-e pelo contribuinte com aplicativo fornecido pelo Fisco.
+        /// 3 - Emissão NF-e pelo contribuinte com aplicativo fornecido pelo Fisco.
         /// </summary>
         [XmlEnum("3")]
         AplicativoFisco = 3
@@ -1461,19 +1462,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum CRT
     {
         /// <summary>
-        /// 1=Simples Nacional
+        /// 1 - Simples Nacional
         /// </summary>
         [XmlEnum("1")]
         SimplesNacional = 1,
 
         /// <summary>
-        /// 2=Simples Nacional, excesso sublimite de receita bruta
+        /// 2 - Simples Nacional, excesso sublimite de receita bruta
         /// </summary>
         [XmlEnum("2")]
         SimplesNacionalExcessoSublimite = 2,
 
         /// <summary>
-        /// 3=Regime Normal
+        /// 3 - Regime Normal
         /// </summary>
         [XmlEnum("3")]
         RegimeNormal = 3
@@ -1490,19 +1491,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorIEDestinatario
     {
         /// <summary>
-        /// 1=Contribuinte ICMS (informar a IE do destinatário)
+        /// 1 - Contribuinte ICMS (informar a IE do destinatário)
         /// </summary>
         [XmlEnum("1")]
         ContribuinteICMS = 1,
 
         /// <summary>
-        /// 2=Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS
+        /// 2 - Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS
         /// </summary>
         [XmlEnum("2")]
         ContribuinteIsento = 2,
 
         /// <summary>
-        /// 9=Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS
+        /// 9 - Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS
         /// </summary>
         [XmlEnum("9")]
         NaoContribuinte = 9
@@ -1540,31 +1541,31 @@ namespace Unimake.Business.DFe.Servicos
     public enum ViaTransporteInternacional
     {
         /// <summary>
-        /// 1=Marítima
+        /// 1 - Marítima
         /// </summary>
         [XmlEnum("1")]
         Maritima = 1,
 
         /// <summary>
-        /// 2=Fluvial
+        /// 2 - Fluvial
         /// </summary>
         [XmlEnum("2")]
         Fluvial = 2,
 
         /// <summary>
-        /// 3=Lacustre
+        /// 3 - Lacustre
         /// </summary>
         [XmlEnum("3")]
         Lacustre = 3,
 
         /// <summary>
-        /// 4=Aérea
+        /// 4 - Aérea
         /// </summary>
         [XmlEnum("4")]
         Aerea = 4,
 
         /// <summary>
-        /// 5=Postal
+        /// 5 - Postal
         /// </summary>
         [XmlEnum("5")]
         Postal = 5,
@@ -1576,43 +1577,43 @@ namespace Unimake.Business.DFe.Servicos
         Ferroviaria = 6,
 
         /// <summary>
-        /// 7=Rodoviária
+        /// 7 - Rodoviária
         /// </summary>
         [XmlEnum("7")]
         Rodoviaria = 7,
 
         /// <summary>
-        /// 8=Conduto / Rede Transmissão
+        /// 8 - Conduto / Rede Transmissão
         /// </summary>
         [XmlEnum("8")]
         CondutoRedeTransmissao = 8,
 
         /// <summary>
-        /// 9=Meios Próprios
+        /// 9 - Meios Próprios
         /// </summary>
         [XmlEnum("9")]
         MeiosProprios = 9,
 
         /// <summary>
-        /// 10=Entrada / Saída ficta
+        /// 10 - Entrada / Saída ficta
         /// </summary>
         [XmlEnum("10")]
         EntradaSaidaFicta = 10,
 
         /// <summary>
-        /// 11=Courier
+        /// 11 - Courier
         /// </summary>
         [XmlEnum("11")]
         Courier = 11,
 
         /// <summary>
-        /// 12=Em Mãos
+        /// 12 - Em Mãos
         /// </summary>
         [XmlEnum("12")]
         EmMaos = 12,
 
         /// <summary>
-        /// 13=Por Reboque
+        /// 13 - Por Reboque
         /// </summary>
         [XmlEnum("13")]
         PorReboque = 13
@@ -1628,19 +1629,19 @@ namespace Unimake.Business.DFe.Servicos
     public enum FormaImportacaoIntermediacao
     {
         /// <summary>
-        /// 1=Importação por conta própria
+        /// 1 - Importação por conta própria
         /// </summary>
         [XmlEnum("1")]
         ImportacaoPorContaPropria = 1,
 
         /// <summary>
-        /// 2=Importação por conta e ordem
+        /// 2 - Importação por conta e ordem
         /// </summary>
         [XmlEnum("2")]
         ImportacaoPorContaOrdem = 2,
 
         /// <summary>
-        /// 3=Importação por encomenda
+        /// 3 - Importação por encomenda
         /// </summary>
         [XmlEnum("3")]
         ImportacaoPorEncomenda = 3
@@ -1720,25 +1721,25 @@ namespace Unimake.Business.DFe.Servicos
     public enum ModalidadeBaseCalculoICMS
     {
         /// <summary>
-        /// 0=Margem Valor Agregado (%)
+        /// 0 - Margem Valor Agregado (%)
         /// </summary>
         [XmlEnum("0")]
         MargemValorAgregado = 0,
 
         /// <summary>
-        /// 1=Pauta (Valor)
+        /// 1 - Pauta (Valor)
         /// </summary>
         [XmlEnum("1")]
         Pauta = 1,
 
         /// <summary>
-        /// 2=Preço Tabelado Máx. (valor)
+        /// 2 - Preço Tabelado Máx. (valor)
         /// </summary>
         [XmlEnum("2")]
         PrecoTabeladoMaximo = 2,
 
         /// <summary>
-        /// 3=Valor da operação
+        /// 3 - Valor da operação
         /// </summary>
         [XmlEnum("3")]
         ValorOperacao = 3
@@ -1754,43 +1755,43 @@ namespace Unimake.Business.DFe.Servicos
     public enum ModalidadeBaseCalculoICMSST
     {
         /// <summary>
-        /// 0=Preço tabelado ou máximo sugerido
+        /// 0 - Preço tabelado ou máximo sugerido
         /// </summary>
         [XmlEnum("0")]
         PrecoTabeladoMaximoSugerido = 0,
 
         /// <summary>
-        /// 1=Lista Negativa (valor)
+        /// 1 - Lista Negativa (valor)
         /// </summary>
         [XmlEnum("1")]
         ListaNegativa = 1,
 
         /// <summary>
-        /// 2=Lista Positiva (valor)
+        /// 2 - Lista Positiva (valor)
         /// </summary>
         [XmlEnum("2")]
         ListaPositiva = 2,
 
         /// <summary>
-        /// 3=Lista Neutra (valor)
+        /// 3 - Lista Neutra (valor)
         /// </summary>
         [XmlEnum("3")]
         ListaNeutra = 3,
 
         /// <summary>
-        /// 4=Margem Valor Agregado (%)
+        /// 4 - Margem Valor Agregado (%)
         /// </summary>
         [XmlEnum("4")]
         MargemValorAgregado = 4,
 
         /// <summary>
-        /// 5=Pauta (valor)
+        /// 5 - Pauta (valor)
         /// </summary>
         [XmlEnum("5")]
         Pauta = 5,
 
         /// <summary>
-        /// 6=Valor da Operação
+        /// 6 - Valor da Operação
         /// </summary>
         [XmlEnum("6")]
         ValorOperacao = 6
@@ -1806,31 +1807,31 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndicadorOrigemProcesso
     {
         /// <summary>
-        /// 0=SEFAZ
+        /// 0 - SEFAZ
         /// </summary>
         [XmlEnum("0")]
         SEFAZ = 0,
 
         /// <summary>
-        /// 1=Justiça Federal
+        /// 1 - Justiça Federal
         /// </summary>
         [XmlEnum("1")]
         JusticaFederal = 1,
 
         /// <summary>
-        /// 2=Justiça Estadual
+        /// 2 - Justiça Estadual
         /// </summary>
         [XmlEnum("2")]
         JusticaEstadual = 2,
 
         /// <summary>
-        /// 3=Secex/RFB
+        /// 3 - Secex/RFB
         /// </summary>
         [XmlEnum("3")]
         SecexRFB = 3,
 
         /// <summary>
-        /// 9=Outros
+        /// 9 - Outros
         /// </summary>
         [XmlEnum("9")]
         Outros = 9
