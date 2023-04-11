@@ -36,6 +36,8 @@ namespace Unimake.Business.DFe.Security
         {
             if (!string.IsNullOrEmpty(tagAssinatura))
             {
+                AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
                 if (!verificaAssinatura || !EstaAssinado(conteudoXML, tagAssinatura))
                 {
                     try
@@ -142,7 +144,7 @@ namespace Unimake.Business.DFe.Security
                                     }
                                 }
 
-                                if (tagEhAMesma) 
+                                if (tagEhAMesma)
                                 {
                                     break;
                                 }
@@ -184,6 +186,8 @@ namespace Unimake.Business.DFe.Security
         {
             if (!string.IsNullOrEmpty(tagAssinatura))
             {
+                AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
                 if (!verificaAssinatura || !EstaAssinado(conteudoXML, tagAssinatura))
                 {
                     try
@@ -200,7 +204,7 @@ namespace Unimake.Business.DFe.Security
                         else
                         {
                             var nodes = conteudoXML.GetElementsByTagName(tagAssinatura)[0];
-                            XmlNode childNodes = nodes;
+                            var childNodes = nodes;
 
                             // Create a reference to be signed
                             var reference = new Reference
