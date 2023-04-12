@@ -77,5 +77,24 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
 		</ObterCriticaLote>
+		<ObterNotaFiscalXml versao="1.00">
+			<Descricao>Obter Nota Fiscal Xml</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomol.caxias.rs.gov.br/portal/Servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.caxias.rs.gov.br/portal/Servicos</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoNFSe</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotaFiscalXml><xml>{xmlBody}</xml></ws:obterNotaFiscalXml></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ObterNotaFiscalXml>
 	</Servicos>
 </Configuracoes>

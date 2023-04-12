@@ -384,6 +384,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consultar sequencia lote nota RPS")]
         NFSeConsultarSequenciaLoteNotaRPS = 61,
 
+        /// <summary>
+        /// 62 - Obter Nota Fiscal Xml da NFS-e
+        /// </summary>
+        [Description("Obter Nota Fiscal Xml")]
+        NFSeObterNotaFiscalXml = 62,
+
         #endregion
 
         #region Gerais
