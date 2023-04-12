@@ -100,9 +100,12 @@
 					<ICMS53>
 						<orig>0</orig>
 						<CST>53</CST>
-						<qBCMonoDif>500</qBCMonoDif>
-						<adRemICMSDif>12.0000</adRemICMSDif>
-						<vICMSMonoDif>340.20</vICMSMonoDif>
+						<qBCMono>500</qBCMono>
+						<adRemICMS>12.0000</adRemICMS>
+						<vICMSMonoOp>340.20</vICMSMonoOp>
+						<pDif>33.33</pDif>
+						<vICMSMonoDif>113.38</vICMSMonoDif>
+						<vICMSMono>226.82</vICMSMono>
 					</ICMS53>
 				</ICMS>
 				<PIS>

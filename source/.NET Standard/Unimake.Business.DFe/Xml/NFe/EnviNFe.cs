@@ -3726,6 +3726,77 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string CST { get; set; } = "53";
 
         /// <summary>
+        /// Quantidade tributada - Informar a BC do ICMS em quantidade conforme unidade de medida estabelecida na legislação para o produto.
+        /// </summary>
+        [XmlElement("qBCMono")]
+        public double QBCMono { get; set; }
+
+        /// <summary>
+        /// Alíquota ad rem do ICMS estabelecida na legislação para o produto.
+        /// </summary>
+        [XmlIgnore]
+        public double AdRemICMS { get; set; }
+
+        [XmlElement("adRemICMS")]
+        public string AdRemICMSField
+        {
+            get => AdRemICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => AdRemICMS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS da operação - O valor do ICMS é obtido pela multiplicação da alíquota ad rem pela quantidade do produto conforme unidade de medida estabelecida em legislação, como se não houvesse o diferimento
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoOp { get; set; }
+
+        [XmlElement("vICMSMonoOp")]
+        public string VICMSMonoOpField
+        {
+            get => VICMSMonoOp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoOp = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Percentual do diferimento - No caso de diferimento total, informar o percentual de diferimento "100".
+        /// </summary>
+        [XmlIgnore]
+        public double PDif { get; set; }
+
+        [XmlElement("pDif")]
+        public string PDifField
+        {
+            get => PDif.ToString("F4", CultureInfo.InvariantCulture);
+            set => PDif = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS próprio
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMonoDif { get; set; }
+
+        [XmlElement("vICMSMonoDif")]
+        public string VICMSMonoDifField
+        {
+            get => VICMSMonoDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMonoDif = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do ICMS próprio devido - O valor do ICMS próprio devido é o resultado do valor do ICMS da operação menos valor do ICMS diferido.
+        /// </summary>
+        [XmlIgnore]
+        public double VICMSMono { get; set; }
+
+        [XmlElement("vICMSMono")]
+        public string VICMSMonoField
+        {
+            get => VICMSMono.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSMono = Converter.ToDouble(value);
+        }
+
+        /// <summary>
         /// Quantidade tributada diferida - Informar a BC do ICMS diferido em quantidade conforme unidade de medida estabelecida na legislação para o produto.
         /// </summary>
         [XmlElement("qBCMonoDif")]
@@ -3744,24 +3815,16 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => AdRemICMSDif = Converter.ToDouble(value);
         }
 
-        /// <summary>
-        /// Valor do ICMS próprio
-        /// </summary>
-        [XmlIgnore]
-        public double VICMSMonoDif { get; set; }
-
-        [XmlElement("vICMSMonoDif")]
-        public string VICMSMonoDifField
-        {
-            get => VICMSMonoDif.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMSMonoDif = Converter.ToDouble(value);
-        }
-
         #region ShouldSerialize
 
+        public bool ShouldSerializeQBCMono() => QBCMono > 0;
+        public bool ShouldSerializeAdRemICMSField() => AdRemICMS > 0;
+        public bool ShouldSerializeVICMSMonoOpField() => VICMSMonoOp > 0;
+        public bool ShouldSerializePDifField() => PDif > 0;
+        public bool ShouldSerializeVICMSMonoDifField() => VICMSMonoDif > 0;
+        public bool ShouldSerializeVICMSMonoField() => VICMSMono > 0;
         public bool ShouldSerializeQBCMonoDif() => QBCMonoDif > 0;
         public bool ShouldSerializeAdRemICMSDifField() => AdRemICMSDif > 0;
-        public bool ShouldSerializeVICMSMonoDifField() => VICMSMonoDif > 0;
 
         #endregion
     }
