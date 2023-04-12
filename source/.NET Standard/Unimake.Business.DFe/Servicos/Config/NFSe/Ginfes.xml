@@ -53,7 +53,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><arg0>{xmlBodyScape}</arg0></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><arg0>{xmlBodyScape}</arg0></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><arg0>{xmlBodyScape}</arg0></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>env:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
