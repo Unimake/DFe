@@ -255,6 +255,7 @@ namespace Unimake.Business.DFe.Servicos
                     SoapString = Configuracoes.WebSoapString,
                     ContentType = Configuracoes.WebContentType,
                     TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
+                    PadraoNFSe = Configuracoes.PadraoNFSe,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)

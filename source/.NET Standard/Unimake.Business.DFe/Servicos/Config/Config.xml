@@ -1558,4 +1558,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2503209">
+		<Nome>Cabedelo - PB</Nome>
+		<UF>PB</UF>
+		<ArqConfig>CabedeloPB.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

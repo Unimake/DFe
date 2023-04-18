@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe
 {
@@ -19,6 +20,7 @@ namespace Unimake.Business.DFe
         private bool _GZIPCompress;
         private IWebProxy _Proxy;
         private int _TimeOutWebServiceConnect;
+        private PadraoNFSe _PadraoNFSe;
 
         #endregion Private Fields
 
@@ -31,6 +33,15 @@ namespace Unimake.Business.DFe
         {
             get => _ActionWeb;
             set => _ActionWeb = value;
+        }
+
+        /// <summary>
+        /// Define o padrão utilizado
+        /// </summary>
+        public PadraoNFSe PadraoNFSe
+        {
+            get => _PadraoNFSe;
+            set => _PadraoNFSe = value;
         }
 
         /// <summary>

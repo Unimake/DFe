@@ -5,7 +5,12 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using System.Xml.XPath;
+using Unimake.Business.DFe.Properties;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -60,7 +65,7 @@ namespace Unimake.Business.DFe
                 else if (soap.SoapString.IndexOf("{xmlBodyScapeEnvio}") > 0)
                 {
                     retorna += soap.SoapString.Replace("{xmlBodyScapeEnvio}", xmlBody);
-                }                
+                }
             }
             else if (TratarScapeRetorno)
             {
@@ -68,9 +73,20 @@ namespace Unimake.Business.DFe
             }
             else
             {
+                if (soap.PadraoNFSe == PadraoNFSe.TINUS)
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(xmlBody);
+                    xmlBody = "";
+
+                    foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
+                    {
+                        xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
+                    }
+                }
+
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
-
             return retorna;
         }
 

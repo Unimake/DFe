@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.tinus.com.br">
+  <LoteRps id="LOTE1">
+    <NumeroLote>1</NumeroLote>
+    <Cnpj>99999999999999</Cnpj>
+    <InscricaoMunicipal>9999999</InscricaoMunicipal>
+    <QuantidadeRps>1</QuantidadeRps>
+    <ListaRps>
+      <Rps>
+        <InfRps id="ID1">
+          <IdentificacaoRps>
+            <Numero>1</Numero>
+            <Serie>F</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2017-10-05T11:00:00.22625-02:00</DataEmissao>
+          <NaturezaOperacao>1</NaturezaOperacao>
+          <RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+          <OptanteSimplesNacional>2</OptanteSimplesNacional>
+          <IncentivadorCultural>1</IncentivadorCultural>
+          <Status>1</Status>
+          <Servico>
+            <Valores>
+              <ValorServicos>1000.00</ValorServicos>
+              <ValorDeducoes>0</ValorDeducoes>
+              <ValorPis>0</ValorPis>
+              <ValorCofins>0</ValorCofins>
+              <ValorInss>0</ValorInss>
+              <ValorIr>0</ValorIr>
+              <ValorCsll>0</ValorCsll>
+              <IssRetido>2</IssRetido>
+              <ValorIss>50.00</ValorIss>
+              <ValorIssRetido>0</ValorIssRetido>
+              <OutrasRetencoes>0</OutrasRetencoes>
+              <BaseCalculo>1000.00</BaseCalculo>
+              <Aliquota>5.00</Aliquota>
+              <ValorLiquidoNfse>950.00</ValorLiquidoNfse>
+              <DescontoIncondicionado>0</DescontoIncondicionado>
+              <DescontoCondicionado>0</DescontoCondicionado>
+            </Valores>
+            <CodigoCnae>4399104</CodigoCnae>
+            <Discriminacao>Teste de envio de lote de RPS</Discriminacao>
+            <CodigoMunicipio>9999999</CodigoMunicipio>
+          </Servico>
+          <Prestador>
+            <Cnpj>99999999999999</Cnpj>
+            <InscricaoMunicipal>9999999</InscricaoMunicipal>
+          </Prestador>
+          <Tomador>
+            <IdentificacaoTomador>
+              <CpfCnpj>
+                <Cnpj>99999999999999</Cnpj>
+              </CpfCnpj>
+            </IdentificacaoTomador>
+            <RazaoSocial>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</RazaoSocial>
+            <Endereco>
+              <Endereco>XXXXXXXXXXX</Endereco>
+              <Numero>123</Numero>
+              <Complemento>SALA 1</Complemento>
+              <Bairro>XXXXXXXXXXXXXXXX</Bairro>
+              <Uf>XX</Uf>
+              <Cep>99999999</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>99999999999</Telefone>
+              <Email>xxxxxxxxx@gmail.com</Email>
+            </Contato>
+          </Tomador>
+        </InfRps>
+      </Rps>
+    </ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns="http://www.tinus.com.br">
+	<Pedido>
+		<InfPedidoCancelamento id="ID49">
+			<IdentificacaoNfse>
+				<Numero>49</Numero>
+				<Cnpj>99999999999999</Cnpj>
+				<InscricaoMunicipal>9999999</InscricaoMunicipal>
+				<CodigoMunicipio>9999999</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>1</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>

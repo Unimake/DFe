@@ -6220,6 +6220,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("BAUHAUS")]
         BAUHAUS = 35,
+
+        /// <summary>
+        /// TINUS
+        /// </summary>
+        [Description("TINUS")]
+        TINUS = 36,
     }
 
     #endregion
