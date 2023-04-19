@@ -59,6 +59,7 @@ Function Main()
    Aadd(aOpcoes, "Enviar CTe - Modo Assincrono - Desserializando o XML")
    
    Aadd(aOpcoes, "Consulta de documentos fiscais eletronicos destinados")
+   AAdd(aOpcoes, "Consultar Status CTe")
    
    Do While .T.
       Cls
@@ -210,6 +211,9 @@ Function Main()
 			  
 		 case nOpcao = 46
 		      ConsultaDFe()
+			  
+         case nOpcao = 47
+		      ConsultaStatusCTe()
       endcase
    EndDo
 Return       

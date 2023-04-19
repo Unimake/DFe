@@ -5,12 +5,8 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
-using System.Xml.XPath;
-using Unimake.Business.DFe.Properties;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -75,7 +71,7 @@ namespace Unimake.Business.DFe
             {
                 if (soap.PadraoNFSe == PadraoNFSe.TINUS)
                 {
-                    XmlDocument doc = new XmlDocument();
+                    var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
                     xmlBody = "";
 

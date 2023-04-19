@@ -322,6 +322,28 @@ Function EnviarNfeSincrono()
     // adicionar a tag ICMS dentro da tag Imposto
        oImposto:Icms = oICMS
 	   
+	// Criar a tag IPI   
+	   oIPI = CreateObject("Unimake.Business.DFe.Xml.NFe.IPI")
+	   oIPI:CEnq = ""
+       oIPI:CNPJProd = ""
+       oIPI:CSelo = ""
+       oIPI:QSelo = 000000000000
+	   
+	// Criar tag IPITrib
+       oIPITrib = CreateObject("Unimake.Business.DFe.Xml.NFe.IPITrib")
+	   oIPITrib:CST = "50"
+       oIPITrib:VBC = 0.00
+       oIPITrib:PIPI = 0.0000
+       oIPITrib:QUnid = 0.0000
+       oIPITrib:VUnid = 0.0000
+       oIPITrib:VIPI = 0.00
+	   
+	// Adicionar a tag IPITrib dentro da IPI
+       oIPI:IPITrib = oIPITrib	
+
+    // Adicionar a tag IPI dentro da tag Imposto
+       oImposto:IPI = oIPI 	
+	   
     // criar tag PIS
        oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
 
@@ -334,6 +356,16 @@ Function EnviarNfeSincrono()
 
     // adicionar a PisOutr dentro da tag Pis
        oPIS:PISOutr = oPISOutr   
+	   
+	// criar tag PISAliq   
+       oPISAliq      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISAliq")
+       oPISAliq:CST  = "01"
+       oPISAliq:VBC  = 0.00
+       oPISAliq:PPIS = 0.0000
+       oPISAliq:VPIS = 0.00
+
+    // adicionar a PisAliq dentro da tag Pis
+       oPIS:PISAliq = oPISAliq
 
     // adicionar a tag Pis dentro da tag Imposto
        oImposto:PIS = oPIS
@@ -350,6 +382,16 @@ Function EnviarNfeSincrono()
 
     // adicionar a COFINSOutr dentro da tag COFINS
        oCOFINS:COFINSOutr = oCOFINSOutr
+	   
+    // criar tag COFINSAliq   
+       oCOFINSAliq      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSAliq")
+       oCOFINSAliq:CST  = "01"
+       oCOFINSAliq:VBC  = 0.00
+       oCOFINSAliq:PPIS = 0.0000
+       oCOFINSAliq:VPIS = 0.00
+ 
+    // adicionar a PisAliq dentro da tag Pis
+       oCOFINS:COFINSAliq = oCOFINSAliq	   
 
     // adicionar a tag COFINS dentro da tag Imposto
        oImposto:COFINS = oCOFINS
