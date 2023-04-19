@@ -260,3 +260,8 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[consultastatuscte.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
