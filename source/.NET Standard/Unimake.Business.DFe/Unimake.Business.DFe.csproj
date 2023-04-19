@@ -246,6 +246,7 @@
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
+		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
@@ -643,6 +644,7 @@
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
@@ -739,6 +741,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PareciNovoRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CabedeloPB.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">
@@ -1759,6 +1764,7 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\nfse v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
