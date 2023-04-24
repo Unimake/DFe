@@ -26,7 +26,7 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/cabedelo/WSNFSE.ConsultarSituacaoLoteRps.cls</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfsetempuri.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/cabedelo/WSNFSE.ConsultarLoteRps.cls</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfsetempuri.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
@@ -62,7 +62,7 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/cabedelo/WSNFSE.ConsultarNfsePorRps.cls</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfsetempuri.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -81,7 +81,7 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/cabedelo/WSNFSE.ConsultarNfse.cls</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfsetempuri.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -100,7 +100,7 @@
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/cabedelo/WSNFSE.CancelarNfse.cls</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>nfsetempuri.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
