@@ -62,7 +62,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Deserializar o XML EnviNFe no objeto EnviNFe
+        /// Desserializar o XML EnviNFe no objeto EnviNFe
         /// </summary>
         /// <param name="filename">Localização do arquivo XML EnviNFe</param>
         /// <returns>Objeto do EnviNFe</returns>
@@ -74,7 +74,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Deserializar o XML EnviNFe no objeto EnviNFe
+        /// Desserializar o XML EnviNFe no objeto EnviNFe
         /// </summary>
         /// <param name="xml">string do XML EnviNFe</param>
         /// <returns>Objeto da EnviNFe</returns>

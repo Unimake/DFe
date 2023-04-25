@@ -69,7 +69,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Deserializar o XML no objeto NfeProc
+        /// Desserializar o XML no objeto NfeProc
         /// </summary>
         /// <param name="filename">Localização do arquivo XML de distribuição do NFe</param>
         /// <returns>Objeto do XML de distribuição do NFe</returns>
@@ -79,5 +79,12 @@ namespace Unimake.Business.DFe.Xml.NFe
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<NfeProc>(doc);
         }
+
+        /// <summary>
+        /// Desserializar o XML NfeProc no objeto EnviNFe
+        /// </summary>
+        /// <param name="xml">string do XML NfeProc</param>
+        /// <returns>Objeto da NfeProc</returns>
+        public NfeProc LoadFromXML(string xml) => XMLUtility.Deserializar<NfeProc>(xml);
     }
 }
