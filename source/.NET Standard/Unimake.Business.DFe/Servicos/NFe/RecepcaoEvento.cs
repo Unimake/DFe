@@ -334,6 +334,25 @@ namespace Unimake.Business.DFe.Servicos.NFe
             return list[index].GerarXML().InnerXml;
         }
 
+
+        /// <summary>
+        /// Retorna o <see cref="ProcEventoNFe"/> pelo índice ou nulo, se não existir
+        /// </summary>
+        /// <param name="index">Índice em que deve ser recuperado o evento e convertido para XML</param>
+        /// <returns></returns>
+        public ProcEventoNFe GetProcEventoNFeResult(int index)
+        {
+            var list = ProcEventoNFeResult;
+
+            if (list.Count == 0 ||
+                index >= list.Count)
+            {
+                return null;
+            }
+
+            return list[index];
+        }
+
 #endif
 
         /// <summary>
