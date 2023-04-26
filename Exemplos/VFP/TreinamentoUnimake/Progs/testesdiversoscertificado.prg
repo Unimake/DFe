@@ -4,7 +4,7 @@
 Function TestesDiversosCertificado()
    Local oCertificado, oCertSel1, oCertSel2, oCertSel3, oCertSel4, oCertSel5, oCertA3
    Local thumbprint, serialNumber
-   Local oErro, oExceptionInterop
+   Local oErro, oExceptionInterop, oErro2
    
  * Criar objeto para pegar excecao do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")
@@ -14,6 +14,7 @@ Function TestesDiversosCertificado()
 	 * Criar objeto para trabalhar com certificados digitais
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
        oCertificado = CreateObject("Unimake.Security.Platform.CertificadoDigital")
+       
 	   
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	 * Certificado A1 e A3 - Abrir tela para selecionar o certificado digital que eu desejo trabalhar, certificado que esta instalado no repositorio do windows
@@ -31,13 +32,26 @@ Function TestesDiversosCertificado()
        MESSAGEBOX("Serial Number: " + serialNumber)
 	   
 	   MostrarDados(oCertificado, oCertSel1)
+	   
+	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 * Somente certificado A1 - Testar a senha do certificado A1
+	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 * Tentar carregar o certificado A1 do Path e pegar a exceção
+	 
+	   TRY
+          oCertificado.CarregarCertificadoDigitalA1("c:\projetos\certificados\UnimakePV.pfx", "12345678")
+	   CATCH TO oErro2
+   	    * Deu algum erro na hora de carregar o certificado A1, dentre eles, se for a senha incorreta, a mensagem será bem clara para o usuário.
+	   	  MessageBox(oErro2.Message) 
+	   ENDTRY
+	   
 		   
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	 * Somente certificado A1 - Carregar o certificado digital direto do arquivo .PFX.
 	 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	   MESSAGEBOX("A1 - Carregar o certificado digital direto do arquivo .PFX.")
-	   
-	   oCertSel2 = oCertificado.CarregarCertificadoDigitalA1("c:\projetos\certificados\UnimakePV.pfx", "12345678")
+
+       oCertSel2 = oCertificado.CarregarCertificadoDigitalA1("c:\projetos\certificados\UnimakePV.pfx", "12345678")
 	   
 	   MostrarDados(oCertificado, oCertSel2)	   
 	   

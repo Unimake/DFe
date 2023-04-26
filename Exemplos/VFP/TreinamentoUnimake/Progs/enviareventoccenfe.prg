@@ -118,13 +118,17 @@ Function EnviarEventoCCeNFe()
        * é necessário fazer um loop para ver a autorização de cada um deles
          For I = 1 To oRecepcaoEvento.Result.GetRetEventoCount()
              oRetEvento = oRecepcaoEvento.Result.GetRetEvento(I - 1)
-   		  
+             
              DO CASE
                 CASE oRetEvento.InfEvento.CStat = 135 && Evento homologado com vinculação da respectiva NFe
                 CASE oRetEvento.InfEvento.CStat = 136 && Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
                 CASE oRetEvento.InfEvento.CStat = 155 && Evento de Cancelamento homologado fora do prazo permitido para cancelamento 
                      oRecepcaoEvento.GravarXmlDistribuicao("tmp\testenfe") && Grava o XML de distribuição
    				 
+                   * Como pegar o nome do arquivo de distribuição
+                     oProcEventoNFe = oRecepcaoEvento.GetProcEventoNFeResult(0)
+                     MESSAGEBOX(oProcEventoNFe.NomeArquivoDistribuicao)
+   		  
                OTHERWISE    
                     * Evento rejeitado
                     * Realizar as ações necessárias
