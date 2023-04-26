@@ -25,6 +25,14 @@ namespace Unimake.Exceptions
         /// <param name="message">Mensagem de exceção</param>
         public CertificadoDigitalException(string message)
             : base(message) => HResult = (int)ErrorCodes.CertificadoDigitalNaoLocalizado;
+
+        /// <summary>
+        /// Exceção quando o certificado digital não é localizado ou está com falha
+        /// </summary>
+        /// <param name="message">Mensagem de exceção</param>
+        /// <param name="errorCode">Erro ocorrido</param>
+        public CertificadoDigitalException(string message, ErrorCodes errorCode)
+            : base(message) => HResult = (int)errorCode;
     }
 
     /// <summary>
@@ -71,6 +79,11 @@ namespace Unimake.Exceptions
         /// Erro de validação de diversas das regras dos documentos fiscais eletrônicos (NFe, CTe, MDFe, NFCe, etc...). Validação realizada pelo Validator da DLL Unimake.DFe.
         /// </summary>
         ValidatorDFe = 3,
+
+        /// <summary>
+        /// Senha do certificado digital está incorreta
+        /// </summary>
+        SenhaCertificadoIncorreta = 4
     }
 
     /// <summary>

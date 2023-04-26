@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Unimake.Security.Platform.Exceptions;
 
@@ -182,11 +183,22 @@ namespace Unimake.Security.Platform
 
             var x509Cert = new X509Certificate2();
 
-            using (var fs = fi.OpenRead())
+            try
             {
-                var buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, buffer.Length);
-                x509Cert = new X509Certificate2(buffer, senha);
+                using (var fs = fi.OpenRead())
+                {
+                    var buffer = new byte[fs.Length];
+                    fs.Read(buffer, 0, buffer.Length);
+                    x509Cert = new X509Certificate2(buffer, senha);
+                }
+            }
+            catch (CryptographicException)
+            {
+                throw new CertificadoDigitalException("Senha do certificado digital está incorreta.", ErrorCodes.SenhaCertificadoIncorreta);
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return x509Cert;
@@ -227,11 +239,22 @@ namespace Unimake.Security.Platform
 
             var x509Cert = new X509Certificate2();
 
-            using (var fs = fi.OpenRead())
+            try
             {
-                var buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, buffer.Length);
-                x509Cert = new X509Certificate2(buffer, senha, keyStorageFlags);
+                using (var fs = fi.OpenRead())
+                {
+                    var buffer = new byte[fs.Length];
+                    fs.Read(buffer, 0, buffer.Length);
+                    x509Cert = new X509Certificate2(buffer, senha, keyStorageFlags);
+                }
+            }
+            catch (CryptographicException)
+            {
+                throw new CertificadoDigitalException("Senha do certificado digital está incorreta.", ErrorCodes.SenhaCertificadoIncorreta);
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return x509Cert;

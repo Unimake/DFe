@@ -10,10 +10,10 @@ namespace Unimake.Security.Platform.Exceptions
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ProgId("Unimake.Security.Platform.Exceptions.CarregarCertificadoException")]
     [ComVisible(true)]
 #endif
-    public class CarregarCertificadoException: Exception
+    public class CarregarCertificadoException : Exception
     {
         #region Public Constructors
 
@@ -30,25 +30,53 @@ namespace Unimake.Security.Platform.Exceptions
     }
 
     /// <summary>
-    /// Exceção ao trabalhar com certificado digital
+    /// Classe de exceção quando o certificado digital não é localizado ou está com falha
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ProgId("Unimake.Security.Platform.Exceptions.CertificadoDigitalException")]
     [ComVisible(true)]
 #endif
-    public class CertificadoDigitalException: Exception
+    public class CertificadoDigitalException : Exception
     {
-        #region Public Constructors
-
         /// <summary>
-        /// Certificado digital não localizado ou com falhas
+        /// Exceção quando o certificado digital não é localizado ou está com falha
         /// </summary>
         public CertificadoDigitalException()
-            : base("Certificado digital não localizado ou o mesmo está com falha.")
-        {
-        }
+            : base("Certificado digital não localizado ou o mesmo está com falha.") => HResult = (int)ErrorCodes.CertificadoDigitalNaoLocalizado;
 
-        #endregion Public Constructors
+        /// <summary>
+        /// Exceção quando o certificado digital não é localizado ou está com falha
+        /// </summary>
+        /// <param name="message">Mensagem de exceção</param>
+        /// <param name="errorCode">Erro ocorrido</param>
+        public CertificadoDigitalException(string message, ErrorCodes errorCode)
+            : base(message) => HResult = (int)errorCode;
+    }
+
+    /// <summary>
+    /// Códigos de erros das exceções geradas na DLL. Útil para outras linguagens (INTEROP)
+    /// </summary>
+    public enum ErrorCodes
+    {
+        /// <summary>
+        /// Certificado digital não localizado ou o mesmo está com falha
+        /// </summary>
+        CertificadoDigitalNaoLocalizado = 1,
+
+        /// <summary>
+        /// Erro de validação do XML contra o schema (arquivo XSD)
+        /// </summary>
+        ValidacaoSchemaXML = 2,
+
+        /// <summary>
+        /// Erro de validação de diversas das regras dos documentos fiscais eletrônicos (NFe, CTe, MDFe, NFCe, etc...). Validação realizada pelo Validator da DLL Unimake.DFe.
+        /// </summary>
+        ValidatorDFe = 3,
+
+        /// <summary>
+        /// Senha do certificado digital está incorreta
+        /// </summary>
+        SenhaCertificadoIncorreta = 4
     }
 }

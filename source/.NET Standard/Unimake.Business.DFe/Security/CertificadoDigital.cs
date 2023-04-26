@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Unimake.Exceptions;
 
@@ -29,35 +30,35 @@ namespace Unimake.Business.Security
 
         #region ** NÃO É COMPATÍVEL COM .NET Standard
 
-/*
-        /// <summary>
-        /// Abre a tela de dialogo do windows para seleção do certificado digital
-        /// </summary>
-        /// <returns>Retorna o certificado digital selecionado</returns>
-        /// <example>
-        /// <code>
-        /// var certificado = new CertificadoDigital();
-        /// var certificadoSelecionado = certificado.AbrirTelaSelecao();
-        /// MessageBox.Show(certificadoSelecionado.Subject);
-        /// </code>
-        /// </example>
-        public X509Certificate2 AbrirTelaSelecao()
-        {
-            var store = new X509Store("MY", StoreLocation.CurrentUser);
-            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-            var collection = store.Certificates;
-            var collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
-            var collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
-            var scollection = X509Certificate2UI.SelectFromCollection(collection2, "Certificado(s) digital(is) disponível(is)", "Selecione o certificado digital para uso no aplicativo", X509SelectionFlag.SingleSelection);
+        /*
+                /// <summary>
+                /// Abre a tela de dialogo do windows para seleção do certificado digital
+                /// </summary>
+                /// <returns>Retorna o certificado digital selecionado</returns>
+                /// <example>
+                /// <code>
+                /// var certificado = new CertificadoDigital();
+                /// var certificadoSelecionado = certificado.AbrirTelaSelecao();
+                /// MessageBox.Show(certificadoSelecionado.Subject);
+                /// </code>
+                /// </example>
+                public X509Certificate2 AbrirTelaSelecao()
+                {
+                    var store = new X509Store("MY", StoreLocation.CurrentUser);
+                    store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+                    var collection = store.Certificates;
+                    var collection1 = collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+                    var collection2 = collection1.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
+                    var scollection = X509Certificate2UI.SelectFromCollection(collection2, "Certificado(s) digital(is) disponível(is)", "Selecione o certificado digital para uso no aplicativo", X509SelectionFlag.SingleSelection);
 
-            if (scollection.Count == 0)
-            {
-                return null;
-            }
+                    if (scollection.Count == 0)
+                    {
+                        return null;
+                    }
 
-            return scollection[0]; //Apesar de ser uma coleção, a tela de seleção sempre retorna somente 1 certificado, que foi o selecionado pelo usuário, por isso pegamos sempre o index 0
-        }
-*/
+                    return scollection[0]; //Apesar de ser uma coleção, a tela de seleção sempre retorna somente 1 certificado, que foi o selecionado pelo usuário, por isso pegamos sempre o index 0
+                }
+        */
 
         #endregion
 
@@ -188,11 +189,22 @@ namespace Unimake.Business.Security
 
             var x509Cert = new X509Certificate2();
 
-            using (var fs = fi.OpenRead())
+            try
             {
-                var buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, buffer.Length);
-                x509Cert = new X509Certificate2(buffer, senha);
+                using (var fs = fi.OpenRead())
+                {
+                    var buffer = new byte[fs.Length];
+                    fs.Read(buffer, 0, buffer.Length);
+                    x509Cert = new X509Certificate2(buffer, senha);
+                }
+            }
+            catch (CryptographicException)
+            {
+                throw new CertificadoDigitalException("Senha do certificado digital está incorreta.", ErrorCodes.SenhaCertificadoIncorreta);
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return x509Cert;
@@ -233,11 +245,23 @@ namespace Unimake.Business.Security
 
             var x509Cert = new X509Certificate2();
 
-            using (var fs = fi.OpenRead())
+            try
             {
-                var buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, buffer.Length);
-                x509Cert = new X509Certificate2(buffer, senha, keyStorageFlags);
+
+                using (var fs = fi.OpenRead())
+                {
+                    var buffer = new byte[fs.Length];
+                    fs.Read(buffer, 0, buffer.Length);
+                    x509Cert = new X509Certificate2(buffer, senha, keyStorageFlags);
+                }
+            }
+            catch (CryptographicException)
+            {
+                throw new CertificadoDigitalException("Senha do certificado digital está incorreta.", ErrorCodes.SenhaCertificadoIncorreta);
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return x509Cert;
@@ -300,22 +324,22 @@ namespace Unimake.Business.Security
 
         #region ** NÃO É COMPATÍVEL COM .NET Standard
 
-/*
+        /*
 
-        /// <summary>
-        /// Abre a tela de dialogo do windows para seleção do certificado digital
-        /// </summary>
-        /// <returns>Retorna o certificado digital selecionado</returns>
-        /// <example>
-        /// <code>
-        /// var certificado = new CertificadoDigital();
-        /// var certificadoSelecionado = certificado.AbrirTelaSelecao();
-        /// MessageBox.Show(certificadoSelecionado.Subject);
-        /// </code>
-        /// </example>
-        [return: MarshalAs(UnmanagedType.IDispatch)]
-        public X509Certificate2 Selecionar() => AbrirTelaSelecao();
-*/
+                /// <summary>
+                /// Abre a tela de dialogo do windows para seleção do certificado digital
+                /// </summary>
+                /// <returns>Retorna o certificado digital selecionado</returns>
+                /// <example>
+                /// <code>
+                /// var certificado = new CertificadoDigital();
+                /// var certificadoSelecionado = certificado.AbrirTelaSelecao();
+                /// MessageBox.Show(certificadoSelecionado.Subject);
+                /// </code>
+                /// </example>
+                [return: MarshalAs(UnmanagedType.IDispatch)]
+                public X509Certificate2 Selecionar() => AbrirTelaSelecao();
+        */
 
         #endregion
 
@@ -506,12 +530,12 @@ namespace Unimake.Business.Security
 
         #region ** NÃO É COMPATÍVEL COM .NET Standard
 
-/*
-        /// <summary>
-        /// Abre a tela para selecionar o certificado digital
-        /// </summary>
-        public void AbrirTelaSelecao() => CertificadoSelecionado = Certificado.AbrirTelaSelecao();
-*/
+        /*
+                /// <summary>
+                /// Abre a tela para selecionar o certificado digital
+                /// </summary>
+                public void AbrirTelaSelecao() => CertificadoSelecionado = Certificado.AbrirTelaSelecao();
+        */
 
         #endregion
 
