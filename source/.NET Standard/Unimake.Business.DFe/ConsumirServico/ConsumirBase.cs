@@ -118,6 +118,8 @@ namespace Unimake.Business.DFe
             }
 
             var soap = (WSSoap)servico;
+            TratarScapeEnvio = false;
+            TratarScapeRetorno = false;
 
             if (soap.SoapString.IndexOf("{xmlBodyScape}") > 0)
             {
