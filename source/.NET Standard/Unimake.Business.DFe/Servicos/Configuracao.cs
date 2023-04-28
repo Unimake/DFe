@@ -311,6 +311,10 @@ namespace Unimake.Business.DFe.Servicos
                             {
                                 LoginConexao = XMLUtility.TagRead(elementPropriedades, "LoginConexao").ToLower() == "true" ? true : false; 
                             }
+                            if (XMLUtility.TagExist(elementPropriedades, "ResponseMediaType"))
+                            {
+                                ResponseMediaType = XMLUtility.TagRead(elementPropriedades, "ResponseMediaType");
+                            }
 
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
@@ -866,6 +870,12 @@ namespace Unimake.Business.DFe.Servicos
         /// Nome da tag que tem o atributo de identificador único a ser utilizado no Reference.URI da assinatura
         /// </summary>
         public string TagExtraAtributoID { get; set; }
+
+
+        /// <summary>
+        /// Nome da tag onde você escolhe como deseja que seja tratado o retorno.
+        /// </summary>
+        public string ResponseMediaType { get; set; } 
 
         /// <summary>
         /// Namespace do XML para validação de schema

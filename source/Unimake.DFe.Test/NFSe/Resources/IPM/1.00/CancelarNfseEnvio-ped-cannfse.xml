@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nfse>
+  <nf>
+    <numero>1438</numero>
+    <situacao>C</situacao>
+    <valor_total>000000006860,00</valor_total>
+    <valor_desconto>000000000000,00</valor_desconto>
+    <valor_ir>000000000000,00</valor_ir>
+    <valor_inss>000000000000,00</valor_inss>
+    <valor_contribuicao_social>000000000000,00</valor_contribuicao_social>
+    <observacao>Série 1 Nr. 0000090 | Invoice Number 114 </observacao>
+  </nf>
+  <prestador>
+    <cpfcnpj>21948242000181</cpfcnpj>
+    <cidade>8003</cidade>
+  </prestador>
+  <tomador>
+    <tipo>E</tipo>
+    <identificador>10122</identificador>
+    <nome_razao_social>RODRIGO MARCOLA</nome_razao_social>
+    <cidade>cidade</cidade>
+    <estado>estado</estado>
+    <pais>Itália</pais>
+    <cpfcnpj>00622793942</cpfcnpj>
+    <ie></ie>
+    <logradouro>R VERBO DIVINO</logradouro>
+    <email>email@dominio.com.br</email>
+    <numero_residencia>1547</numero_residencia>
+    <complemento>CJT 1001</complemento>
+    <ponto_referencia></ponto_referencia>
+    <bairro></bairro>
+    <cep>89160000</cep>
+    <ddd_fone_comercial></ddd_fone_comercial>
+    <fone_comercial></fone_comercial>
+    <ddd_fone_residencial></ddd_fone_residencial>
+    <fone_residencial></fone_residencial>
+    <ddd_fax></ddd_fax>
+    <fone_fax></fone_fax>
+  </tomador>
+  <itens>
+    <lista>
+      <tributa_municipio_prestador>N</tributa_municipio_prestador>
+      <codigo_local_prestacao_servico>8003</codigo_local_prestacao_servico>
+      <codigo_item_lista_servico>2001</codigo_item_lista_servico>
+      <descritivo>Servicos de porto discriminados abaixo</descritivo>
+      <aliquota_item_lista_servico>000000000003,00</aliquota_item_lista_servico>
+      <situacao_tributaria>0</situacao_tributaria>
+      <valor_tributavel>000000006860,00</valor_tributavel>
+      <valor_deducao>000000000000,00</valor_deducao>
+      <valor_issrf>000000000000,00</valor_issrf>
+    </lista>
+  </itens>
+  <genericos>
+    <linha>
+      <titulo>CARREGAMENTO DE CONTEINERES</titulo>
+      <descricao>&amp;lt;table width="875" border="0" cellpadding="0" cellspacing="0"&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;C&amp;oacute;digo&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;Descri&amp;ccedil;&amp;atilde;o&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;Valor Unit&amp;aacute;rio&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;Quantidade&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;Valor Total&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800002&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;EMBARQUE VAZIO&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;238,50&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;3&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;715,50&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800003&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;DESCARGA CHEIO&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;503,50&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;503,50&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800004&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;DESCARGA VAZIO&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;238,50&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;238,50&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800015&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;REMOCAO DE TAMPA (HATCH COVER)&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;503,50&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;503,50&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800017 &amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;DESCARGA DE CHEIO OVERSIZE&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;755,25&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;755,25&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800021 &amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;755,25&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;3&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;2.265,75&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800025 &amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;XYZ&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;530,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;530,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800029 &amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;XYQ&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;371,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;371,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800042 &amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;XYQ00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;265,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;265,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800800046 &amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;XYQ77&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;212,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;212,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800810001&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;LEVANTE DE CONTAINER CHEIO&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;40,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;40,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800810005&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;POSICIONAMENTO PARA VISTORIA MAPA&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;125,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;125,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800810006&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;POSICIONAMENTO PARA VISTORIA ANVISA&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;100,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;100,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800810009&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;POSICIONAMENTO PARA EXPURGO&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;100,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;100,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td width="99"&amp;gt;800820011&amp;lt;/td&amp;gt;
+    &amp;lt;td width="454"&amp;gt;ENERGIA + MONITORAMENTO REEFER TRANSBORDO&amp;lt;/td&amp;gt;
+    &amp;lt;td width="98" align="right"&amp;gt;135,00&amp;lt;/td&amp;gt;
+    &amp;lt;td width="87" align="right"&amp;gt;1&amp;lt;/td&amp;gt;
+    &amp;lt;td width="127" align="right"&amp;gt;135,00&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;</descricao>
+    </linha>
+  </genericos>
+</nfse>

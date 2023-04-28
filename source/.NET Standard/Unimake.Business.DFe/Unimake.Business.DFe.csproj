@@ -250,6 +250,7 @@
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
+		<None Remove="Servicos\Config\NFSe\CampoMouraoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CanaaDosCarajasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\CarapicuibaSP.xml" />
@@ -697,6 +698,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FarroupilhaRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoMouraoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

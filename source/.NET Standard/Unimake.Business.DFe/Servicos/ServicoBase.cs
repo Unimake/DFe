@@ -234,6 +234,7 @@ namespace Unimake.Business.DFe.Servicos
                     MunicipioUsuario = Configuracoes.MunicipioUsuario,
                     PadraoNFSe = Configuracoes.PadraoNFSe,
                     LoginConexao = Configuracoes.LoginConexao,
+                    ResponseMediaType = Configuracoes.ResponseMediaType,
                 };
 
                 var consumirAPI = new ConsumirAPI();

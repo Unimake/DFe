@@ -26,6 +26,7 @@ namespace Unimake.Business.DFe
         private IWebProxy _Proxy;
         private string _Token;
         private bool _LoginConexao;
+        private string _ResponseMediaType;
 
         /// <summary>
         /// Utilizar os dados de login (usuário e senha)
@@ -34,6 +35,15 @@ namespace Unimake.Business.DFe
         {
             get => _LoginConexao;
             set => _LoginConexao = value;
+        }
+        
+        /// <summary>
+        /// Escolher a forma de tratar o retorno API
+        /// </summary>
+        public string ResponseMediaType
+        {
+            get => _ResponseMediaType;
+            set => _ResponseMediaType = value;
         }
 
         /// <summary>

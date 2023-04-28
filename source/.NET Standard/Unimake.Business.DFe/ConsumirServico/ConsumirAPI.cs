@@ -9,6 +9,7 @@ using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -54,7 +55,7 @@ namespace Unimake.Business.DFe
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
-  
+
             var postData = new HttpResponseMessage();
             if (apiConfig.MetodoAPI.ToLower() == "get")
             {
@@ -154,36 +155,20 @@ namespace Unimake.Business.DFe
                 xmlBody = Compress.GZIPCompress(xml);
             }
 
-            if (apiConfig.B64) {  }
- 
-            switch(apiConfig.PadraoNFSe)
+            if (apiConfig.B64) { }
+
+            switch (apiConfig.PadraoNFSe)
             {
                 case PadraoNFSe.NACIONAL:
-                        var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
-                        var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
-                        var Chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", Chave);
+                    var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
+                    var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
+                    var chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
+                    apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
                     break;
 
                 case PadraoNFSe.IPM:
                     apiConfig.Token = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{apiConfig.MunicipioUsuario}:{apiConfig.MunicipioSenha}"));
                     break;
-
-                case PadraoNFSe.BAUHAUS:        //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5dasdasde4948f";
-                    string chave = "";
-
-                    if (apiConfig.RequestURI.IndexOf("NumeroRps") > 0)
-                    {
-                        chave = xml.GetElementsByTagName("NumeroRps")[0].InnerText;
-                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
-                    }
-                    else if (apiConfig.RequestURI.IndexOf("NumeroNfse") > 0)
-                    {
-                        chave = xml.GetElementsByTagName("NumeroNfse")[0].InnerText;
-                        apiConfig.RequestURI = apiConfig.RequestURI.Replace("{Chave}", chave);
-                    }
-
-                    return new StringContent(JsonConvert.SerializeXmlNode(xml), Encoding.UTF8, apiConfig.ContentType);
 
                 default:
                     break;
@@ -239,17 +224,52 @@ namespace Unimake.Business.DFe
                 HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
                 {
                     xmlContent,
+
                 };
 
-                //if (apiConfig.LoginConexao)               SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
-                //{
-                //    //var usuario = new StringContent() { }
-                //    //var senha = new stringcontent () {}
-                //}
 
+                if (apiConfig.LoginConexao)               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
+                {
+                    StringContent usuario = new StringContent(apiConfig.MunicipioUsuario);
+                    usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    usuario.Headers.ContentEncoding.Add("UTF-8");
+                    usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "login",
+                    };
+                    StringContent senha = new StringContent(apiConfig.MunicipioSenha);
+                    senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    senha.Headers.ContentEncoding.Add("UTF-8");
+                    senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "senha",
+                    };
+                    StringContent codigoTom = new StringContent("7483");
+                    codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    codigoTom.Headers.ContentEncoding.Add("UTF-8");
+                    codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "cidade",
+                    };
+                    StringContent f1 = new StringContent(path);
+                    f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    f1.Headers.ContentEncoding.Add("ISO-8859-1");
+                    f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "f1",
+                    };
+                    HttpContent MultiPartContent2 = new MultipartContent("form-data", boundary)
+                    {
+                        usuario,
+                        senha,
+                        codigoTom,
+                        f1,
+                        xmlContent
+                    };
+                    return MultiPartContent2;
+                }
                 return MultiPartContent;
             }
-
             return new StringContent(xmlBody, Encoding.UTF8, apiConfig.ContentType);
         }
     }

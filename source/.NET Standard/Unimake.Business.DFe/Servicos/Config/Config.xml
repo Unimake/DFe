@@ -1564,4 +1564,10 @@
 		<ArqConfig>CabedeloPB.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4104303">
+		<Nome>Campo Mourão - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CampoMouraoPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

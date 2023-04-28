@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe
@@ -37,6 +38,7 @@ namespace Unimake.Business.DFe
         {
             var ResponseString = Response.Content.ReadAsStringAsync().Result;
             var resultadoRetorno = new XmlDocument();
+            Response.Content.Headers.ContentType.MediaType = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
@@ -78,7 +80,16 @@ namespace Unimake.Business.DFe
                     break;
             }
 
+            if (Config.PadraoNFSe == PadraoNFSe.IPM)
+            {
+                if(resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
+                {
+                    resultadoRetorno.DocumentElement.RemoveChild(resultadoRetorno.GetElementsByTagName("codigo_html")[0]);
+                }
+            }
+
             return resultadoRetorno;
+
         }
 
         #region Private Methods
