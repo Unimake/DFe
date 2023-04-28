@@ -235,6 +235,7 @@ namespace Unimake.Business.DFe.Servicos
                     PadraoNFSe = Configuracoes.PadraoNFSe,
                     LoginConexao = Configuracoes.LoginConexao,
                     ResponseMediaType = Configuracoes.ResponseMediaType,
+                    CodigoTom = Configuracoes.CodigoTom
                 };
 
                 var consumirAPI = new ConsumirAPI();

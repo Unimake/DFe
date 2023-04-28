@@ -244,7 +244,7 @@ namespace Unimake.Business.DFe
                     {
                         Name = "senha",
                     };
-                    StringContent codigoTom = new StringContent("7483");
+                    StringContent codigoTom = new StringContent(apiConfig.CodigoTom);
                     codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
                     codigoTom.Headers.ContentEncoding.Add("UTF-8");
                     codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")

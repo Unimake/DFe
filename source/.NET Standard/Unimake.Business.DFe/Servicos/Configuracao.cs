@@ -316,6 +316,11 @@ namespace Unimake.Business.DFe.Servicos
                                 ResponseMediaType = XMLUtility.TagRead(elementPropriedades, "ResponseMediaType");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "CodigoTom"))
+                            {
+                                CodigoTom = XMLUtility.TagRead(elementPropriedades, "CodigoTom");
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -875,7 +880,12 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Nome da tag onde você escolhe como deseja que seja tratado o retorno.
         /// </summary>
-        public string ResponseMediaType { get; set; } 
+        public string ResponseMediaType { get; set; }
+
+        /// <summary>
+        /// Nome da tag onde é definido o CodigoTOM da cidade
+        /// </summary>
+        public string CodigoTom { get; set; }
 
         /// <summary>
         /// Namespace do XML para validação de schema

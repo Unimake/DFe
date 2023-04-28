@@ -27,6 +27,7 @@ namespace Unimake.Business.DFe
         private string _Token;
         private bool _LoginConexao;
         private string _ResponseMediaType;
+        private string _CodigoTom;
 
         /// <summary>
         /// Utilizar os dados de login (usuário e senha)
@@ -44,6 +45,15 @@ namespace Unimake.Business.DFe
         {
             get => _ResponseMediaType;
             set => _ResponseMediaType = value;
+        }
+
+        /// <summary>
+        /// Escolher a forma de tratar o retorno API
+        /// </summary>
+        public string CodigoTom
+        {
+            get => _CodigoTom;
+            set => _CodigoTom = value;
         }
 
         /// <summary>
