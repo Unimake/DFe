@@ -119,12 +119,9 @@ namespace Unimake.Business.DFe
         /// <summary>
         /// Tempo, em milissegundos, para aguardar resposta dos WebServices. (default = 60000)
         /// </summary>
-        public int TimeOutWebServiceConnect 
-        { 
-            get
-            {
-                return _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
-            }
+        public int TimeOutWebServiceConnect
+        {
+            get => _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
             set => _TimeOutWebServiceConnect = value;
         }
 

@@ -17,8 +17,8 @@ namespace Unimake.Business.DFe
     public class TratarRetornoAPI
     {
         #region Private Property
-        private APIConfig Config;
-        private HttpResponseMessage Response;
+        private readonly APIConfig Config;
+        private readonly HttpResponseMessage Response;
         #endregion Private Property
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Unimake.Business.DFe
 
             if (Config.PadraoNFSe == PadraoNFSe.IPM)
             {
-                if(resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
+                if (resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
                 {
                     resultadoRetorno.DocumentElement.RemoveChild(resultadoRetorno.GetElementsByTagName("codigo_html")[0]);
                 }
@@ -101,9 +101,9 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         private string BuscarXML(string content)
         {
-            string result = "";
-            string temp = "";
-            XmlDocument xml = JsonConvert.DeserializeXmlNode(content, "temp");
+            var result = "";
+            var temp = "";
+            var xml = JsonConvert.DeserializeXmlNode(content, "temp");
             XmlNode node;
 
             try
@@ -160,8 +160,8 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         private string StringToXml(string str)
         {
-            XmlSerializer xml = new XmlSerializer(str.GetType());
-            StringWriter retorno = new StringWriter();
+            var xml = new XmlSerializer(str.GetType());
+            var retorno = new StringWriter();
             xml.Serialize(retorno, str);
 
             return retorno.ToString();

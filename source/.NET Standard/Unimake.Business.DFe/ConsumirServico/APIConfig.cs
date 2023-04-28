@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe
@@ -37,7 +35,7 @@ namespace Unimake.Business.DFe
             get => _LoginConexao;
             set => _LoginConexao = value;
         }
-        
+
         /// <summary>
         /// Escolher a forma de tratar o retorno API
         /// </summary>
@@ -89,7 +87,7 @@ namespace Unimake.Business.DFe
         public bool B64
         {
             get => _B64;
-            set => _B64= value;
+            set => _B64 = value;
         }
 
         /// <summary>
@@ -187,7 +185,7 @@ namespace Unimake.Business.DFe
         public string TagRetorno
         {
             get => _TagRetorno;
-            set => _TagRetorno = value;           
+            set => _TagRetorno = value;
         }
     }
 }

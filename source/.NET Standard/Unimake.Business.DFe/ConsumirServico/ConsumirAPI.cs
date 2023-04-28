@@ -9,7 +9,6 @@ using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -209,8 +208,8 @@ namespace Unimake.Business.DFe
                 var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
 
                 #region ENVIO EM BYTES
-                byte[] xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
-                ByteArrayContent xmlContent = new ByteArrayContent(xmlBytes);
+                var xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
+                var xmlContent = new ByteArrayContent(xmlBytes);
                 xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
                 xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
                 xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -230,28 +229,28 @@ namespace Unimake.Business.DFe
 
                 if (apiConfig.LoginConexao)               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
                 {
-                    StringContent usuario = new StringContent(apiConfig.MunicipioUsuario);
+                    var usuario = new StringContent(apiConfig.MunicipioUsuario);
                     usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
                     usuario.Headers.ContentEncoding.Add("UTF-8");
                     usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
                     {
                         Name = "login",
                     };
-                    StringContent senha = new StringContent(apiConfig.MunicipioSenha);
+                    var senha = new StringContent(apiConfig.MunicipioSenha);
                     senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
                     senha.Headers.ContentEncoding.Add("UTF-8");
                     senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
                     {
                         Name = "senha",
                     };
-                    StringContent codigoTom = new StringContent(apiConfig.CodigoTom);
+                    var codigoTom = new StringContent(apiConfig.CodigoTom);
                     codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
                     codigoTom.Headers.ContentEncoding.Add("UTF-8");
                     codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
                     {
                         Name = "cidade",
                     };
-                    StringContent f1 = new StringContent(path);
+                    var f1 = new StringContent(path);
                     f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
                     f1.Headers.ContentEncoding.Add("ISO-8859-1");
                     f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
