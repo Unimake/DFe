@@ -1576,4 +1576,10 @@
 		<ArqConfig>SantaMariaRS.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4217709">
+		<Nome>Sombrio - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
