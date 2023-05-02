@@ -1570,4 +1570,10 @@
 		<ArqConfig>CampoMouraoPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4316907">
+		<Nome>Santa Maria - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantaMariaRS.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
