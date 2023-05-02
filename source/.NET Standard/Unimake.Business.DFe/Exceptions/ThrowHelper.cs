@@ -11,13 +11,12 @@ namespace Unimake.Exceptions
     [ComVisible(true)]
     public class ThrowHelper
     {
-        #region Private Fields
-
         private static ThrowHelper _instance;
 
-        #endregion Private Fields
-
-        #region Public Properties
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public ThrowHelper() => _instance = null;
 
         /// <summary>
         /// Instancia estática da ThrowHelper para receber a mensagem original da exceção
@@ -33,10 +32,6 @@ namespace Unimake.Exceptions
         /// Código de erro específico da exceção gerada
         /// </summary>
         public int ErrorCode { get; private set; } = 0;
-
-        #endregion Public Properties
-
-        #region Public Methods
 
         /// <summary>
         /// Recuperar o conteúdo da mensagem de exceção
@@ -59,7 +54,5 @@ namespace Unimake.Exceptions
             Instance.ErrorCode = ex.GetLastException().HResult;
             throw ex;
         }
-
-        #endregion Public Methods
     }
 }
