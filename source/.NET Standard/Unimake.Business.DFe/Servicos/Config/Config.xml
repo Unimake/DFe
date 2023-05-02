@@ -1582,4 +1582,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4309308">
+		<Nome>Guaíba - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GuaibaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

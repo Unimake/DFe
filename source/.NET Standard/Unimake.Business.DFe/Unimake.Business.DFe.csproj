@@ -280,6 +280,7 @@
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GravataPE.xml" />
+		<None Remove="Servicos\Config\NFSe\GuaibaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
@@ -692,6 +693,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaibaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantaMariaRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
