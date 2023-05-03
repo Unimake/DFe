@@ -86,7 +86,7 @@ namespace Unimake.Business.DFe
             var retornoXml = new XmlDocument();
             try
             {
-                retornoXml = new TratarRetornoAPI(apiConfig, postData).ReceberRetorno();
+                retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, postData);
 
             }
             catch (XmlException)

@@ -2,11 +2,9 @@
 using System;
 using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe
@@ -14,31 +12,16 @@ namespace Unimake.Business.DFe
     /// <summary>
     /// Classe para tratar o retornos das comunicações por API
     /// </summary>
-    public class TratarRetornoAPI
+    public static class TratarRetornoAPI
     {
-        #region Private Property
-        private readonly APIConfig Config;
-        private readonly HttpResponseMessage Response;
-        #endregion Private Property
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public TratarRetornoAPI(APIConfig apiConfig, HttpResponseMessage message)
-        {
-            Config = apiConfig;
-            Response = message;
-        }
-
         /// <summary>
         /// Classifica, faz o tratamento e retorna um XML (caso a comunicação tenha retorno)
         /// </summary>
         /// <returns></returns>
-        public XmlDocument ReceberRetorno()
+        public static XmlDocument ReceberRetorno(ref APIConfig Config, HttpResponseMessage Response)
         {
             var ResponseString = Response.Content.ReadAsStringAsync().Result;
             var resultadoRetorno = new XmlDocument();
-            Response.Content.Headers.ContentType.MediaType = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
@@ -59,7 +42,7 @@ namespace Unimake.Business.DFe
                 case "application/json": //Retorno JSON -> Vamos ter que converter para XML
                     try
                     {
-                        resultadoRetorno.LoadXml(BuscarXML(ResponseString));
+                        resultadoRetorno.LoadXml(BuscarXML(ref Config, ResponseString));
                     }
                     catch
                     {
@@ -71,7 +54,7 @@ namespace Unimake.Business.DFe
                 case "text/html": //Retorno HTML -> Entendemos que sempre será erro
                     try
                     {
-                        resultadoRetorno.LoadXml(BuscarXML(ResponseString));
+                        resultadoRetorno.LoadXml(BuscarXML(ref Config, ResponseString));
                     }
                     catch
                     {
@@ -80,16 +63,7 @@ namespace Unimake.Business.DFe
                     break;
             }
 
-            if (Config.PadraoNFSe == PadraoNFSe.IPM)
-            {
-                if (resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
-                {
-                    resultadoRetorno.DocumentElement.RemoveChild(resultadoRetorno.GetElementsByTagName("codigo_html")[0]);
-                }
-            }
-
             return resultadoRetorno;
-
         }
 
         #region Private Methods
@@ -99,22 +73,22 @@ namespace Unimake.Business.DFe
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
-        private string BuscarXML(string content)
+        private static string BuscarXML(ref APIConfig Config, string content)
         {
-            var result = "";
-            var temp = "";
-            var xml = JsonConvert.DeserializeXmlNode(content, "temp");
+            string result = "";
+            string temp = "";
+            XmlDocument xml = JsonConvert.DeserializeXmlNode(content, "temp");
             XmlNode node;
+
 
             try
             {
                 node = xml.GetElementsByTagName(Config.TagRetorno)[0];         //tag retorno
                 if (node != null)
                 {
-                    temp = node.OuterXml;
-                    temp = Compress.GZIPDecompress(temp);
-                    result = Encoding.UTF8.GetString(Convert.FromBase64String(temp));
-                    return result;
+                    temp = Compress.GZIPDecompress(node.InnerText);
+                    Config.TagRetorno = "prop:innertext";
+                    return temp;
                 }
             }
             finally
@@ -158,10 +132,10 @@ namespace Unimake.Business.DFe
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private string StringToXml(string str)
+        private static string StringToXml(string str)
         {
-            var xml = new XmlSerializer(str.GetType());
-            var retorno = new StringWriter();
+            XmlSerializer xml = new XmlSerializer(str.GetType());
+            StringWriter retorno = new StringWriter();
             xml.Serialize(retorno, str);
 
             return retorno.ToString();
