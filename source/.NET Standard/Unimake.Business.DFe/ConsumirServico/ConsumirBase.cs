@@ -112,12 +112,18 @@ namespace Unimake.Business.DFe
         /// <param name="certificado">Certificado digital a ser utilizado na conexão com os serviços</param>
         public void ExecutarServico(XmlDocument xml, object servico, X509Certificate2 certificado)
         {
-            if (certificado == null)
+            var soap = (WSSoap)servico;
+
+            if (soap.TipoDFe == TipoDFe.NFSe && certificado == null)
+            {
+
+            }
+            else if(certificado == null)
             {
                 throw new CertificadoDigitalException();
             }
 
-            var soap = (WSSoap)servico;
+            
             TratarScapeEnvio = false;
             TratarScapeRetorno = false;
 
@@ -151,7 +157,10 @@ namespace Unimake.Business.DFe
             httpWebRequest.Timeout = soap.TimeOutWebServiceConnect;
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
-            httpWebRequest.ClientCertificates.Add(certificado);
+            if (certificado != null)
+            {
+                httpWebRequest.ClientCertificates.Add(certificado);
+            }
             httpWebRequest.ContentLength = buffer2.Length;
 
             //Definir dados para conexão com proxy
