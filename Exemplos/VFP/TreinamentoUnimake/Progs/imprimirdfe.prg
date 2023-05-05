@@ -14,15 +14,15 @@ FUNCTION ImprimirDFe
       STRING cParams, ;  
       STRING cDir, ;
       INTEGER nShowWin
-      
+     
    * Impressão via DLL
     
    * Criar as configurações 
      oUnidanfeConfiguration = CreateObject("Unimake.Unidanfe.Configurations.UnidanfeConfiguration")   
-     oUnidanfeConfiguration.Arquivo = "D:\testenfe\41220606117473000150550010000580071051443444-procnfe.xml"
+     oUnidanfeConfiguration.Arquivo = "D:\testenfe\41220606117473000150550010000580071051443444-procnfe.xml" 
      oUnidanfeConfiguration.Visualizar = .T.
      oUnidanfeConfiguration.Imprimir = .F.
-     oUnidanfeConfiguration.EnviaEmail = .F.
+     oUnidanfeConfiguration.EnviaEmail = .F.    
      
    * Disparar a impressao DANFe NFe
      oUnidanfeServices = CreateObject("Unimake.Unidanfe.UnidanfeServices")
@@ -31,6 +31,14 @@ FUNCTION ImprimirDFe
      
    * Disparar a impressao DANFe NFCe
      oUnidanfeConfiguration.Arquivo = "D:\testenfe\41220706117473000150650010000580151230845952-procnfe.xml"
+     
+     * Comprovante TEF 1
+     oUnidanfeConfiguration.AddComprovanteTEF("D:\testenfe\foxpro\unimake.dfe\testeComprovanteTEF1.txt")     
+
+     * Comprovante TEF 2
+     oUnidanfeConfiguration.AddComprovanteTEF("D:\testenfe\foxpro\unimake.dfe\testeComprovanteTEF2.txt")     
+     
+     * Imprimir o DANFE NFCe com 2 comprovantes de TEF, pode ter até 9
      oUnidanfeServices.Execute(oUnidanfeConfiguration)     
      MESSAGEBOX("Aguarde!")
      
