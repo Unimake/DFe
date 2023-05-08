@@ -227,7 +227,7 @@ namespace Unimake.Business.DFe
                 };
 
 
-                if (apiConfig.LoginConexao)               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
+                if (!string.IsNullOrWhiteSpace(apiConfig.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
                 {
                     var usuario = new StringContent(apiConfig.MunicipioUsuario);
                     usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
