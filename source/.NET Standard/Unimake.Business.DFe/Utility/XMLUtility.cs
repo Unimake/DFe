@@ -381,6 +381,12 @@ namespace Unimake.Business.DFe.Utility
 
                     ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
+                else if (ex.GetType() == typeof(InvalidOperationException))
+                {
+                    ThrowHelper.Instance.Throw(new Exception(ex.GetAllMessages()));
+                    throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
+                }
+
 
                 ThrowHelper.Instance.Throw(ex.GetLastException());
                 throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
