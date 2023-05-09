@@ -11,7 +11,9 @@ namespace Unimake.Business.DFe.Utility
     /// <summary>
     /// Utilitários de rede
     /// </summary>
+#if INTEROP
     [ComVisible(false)]
+#endif
     public static class Net
     {
         /// <summary>
@@ -19,7 +21,6 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="proxy">Proxy a ser utilizado para testar a conexão</param>
         /// <returns>true = Tem conexão com a internet</returns>
-        [ComVisible(false)]
         public static bool HasInternetConnection(IWebProxy proxy) => Unimake.Net.Utility.HasInternetConnection(proxy);
 
         /// <summary>
