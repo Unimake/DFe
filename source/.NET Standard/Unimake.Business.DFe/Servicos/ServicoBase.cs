@@ -8,6 +8,7 @@ using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 using Unimake.Business.DFe.Validator;
+using Unimake.Business.Security;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -135,9 +136,9 @@ namespace Unimake.Business.DFe.Servicos
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
             //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-            _ = ConteudoXMLAssinado;
-        }
-
+                _ = ConteudoXMLAssinado;
+            }
+            
         #endregion Protected Internal Methods
 
         #region Public Properties
@@ -235,7 +236,8 @@ namespace Unimake.Business.DFe.Servicos
                     PadraoNFSe = Configuracoes.PadraoNFSe,
                     LoginConexao = Configuracoes.LoginConexao,
                     ResponseMediaType = Configuracoes.ResponseMediaType,
-                    CodigoTom = Configuracoes.CodigoTom
+                    CodigoTom = Configuracoes.CodigoTom,
+                    UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital
                 };
 
                 var consumirAPI = new ConsumirAPI();
@@ -256,9 +258,9 @@ namespace Unimake.Business.DFe.Servicos
                     VersaoSoap = Configuracoes.WebSoapVersion,
                     SoapString = Configuracoes.WebSoapString,
                     ContentType = Configuracoes.WebContentType,
-                    TipoDFe = Configuracoes.TipoDFe,
                     TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
                     PadraoNFSe = Configuracoes.PadraoNFSe,
+                    UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)

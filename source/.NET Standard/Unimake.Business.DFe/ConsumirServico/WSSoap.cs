@@ -21,19 +21,19 @@ namespace Unimake.Business.DFe
         private IWebProxy _Proxy;
         private int _TimeOutWebServiceConnect;
         private PadraoNFSe _PadraoNFSe;
-        private TipoDFe _TipoDFe;
+        private bool _UsaCertificadoDigital;
 
         #endregion Private Fields
 
         #region Public Properties
 
         /// <summary>
-        /// Web Action - Endereço com a ação/método que será executado no webservice
+        /// Utiliza ou não o certificado digital
         /// </summary>
-        public TipoDFe TipoDFe
+        public bool UsaCertificadoDigital
         {
-            get => _TipoDFe;
-            set => _TipoDFe = value;
+            get => _UsaCertificadoDigital;
+            set => _UsaCertificadoDigital = value;
         }
 
         /// <summary>

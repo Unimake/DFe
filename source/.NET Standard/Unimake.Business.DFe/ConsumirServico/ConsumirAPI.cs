@@ -27,7 +27,7 @@ namespace Unimake.Business.DFe
         /// <param name="certificado">Certificado digital a ser utilizado na conexão com os serviços</param>
         public void ExecutarServico(XmlDocument xml, APIConfig apiConfig, X509Certificate2 certificado)
         {
-            if (certificado == null)
+            if (certificado == null && apiConfig.UsaCertificadoDigital)
             {
                 throw new CertificadoDigitalException();
             }

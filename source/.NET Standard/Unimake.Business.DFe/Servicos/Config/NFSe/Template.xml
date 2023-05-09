@@ -18,6 +18,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="1.00">
@@ -37,6 +38,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="1.00">
@@ -56,6 +58,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</GerarNfse>
 		<CancelarNfse versao="1.00">
@@ -75,6 +78,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</CancelarNfse>
 		<SubstituirNfse versao="1.00">
@@ -96,6 +100,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="1.00">
@@ -115,6 +120,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarLoteRps>
 		<ConsultarNotaValida versao="1.00">
@@ -134,6 +140,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNotaValida>
 		<ConsultarNfsePorRps versao="1.00">
@@ -153,6 +160,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="1.00">
@@ -172,6 +180,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="1.00">
@@ -191,6 +200,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseFaixa versao="1.00">
@@ -210,6 +220,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfseFaixa>
 		<ConsultarNotaPrestador versao="1.00">
@@ -229,6 +240,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNotaPrestador>
 		<ConsultarNfse versao="1.00">
@@ -248,6 +260,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfse>
 		<ConsultarNfsePDF versao="1.00">
@@ -267,6 +280,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarNfsePDF>
 		<EnvioLoteRps versao="1.00">
@@ -286,6 +300,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</EnvioLoteRps>
 		<TesteEnvioLoteRps versao="1.00">
@@ -305,6 +320,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</TesteEnvioLoteRps>
 		<EnvioRps versao="1.00">
@@ -324,6 +340,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</EnvioRps>
 		<CancelamentoNfe versao="1.00">
@@ -343,6 +360,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</CancelamentoNfe>
 		<ConsultaLote versao="1.00">
@@ -362,6 +380,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultaLote>
 		<ConsultaInformacoesLote versao="1.00">
@@ -381,6 +400,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultaInformacoesLote>
 		<ConsultaNFeRecebidas versao="1.00">
@@ -400,6 +420,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultaNFeRecebidas>
 		<ConsultaNFeEmitidas versao="1.00">
@@ -419,6 +440,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultaNFeEmitidas>
 		<ConsultarRpsServicoPrestado versao="1.00">
@@ -438,6 +460,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarRpsServicoPrestado>
 		<ConsultarSequenciaLoteNotaRPS versao="1.00">
@@ -457,6 +480,7 @@
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion></WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
+			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS></TargetNS>
 		</ConsultarSequenciaLoteNotaRPS>
 	</Servicos>

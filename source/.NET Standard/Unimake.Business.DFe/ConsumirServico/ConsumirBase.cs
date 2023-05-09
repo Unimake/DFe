@@ -71,15 +71,15 @@ namespace Unimake.Business.DFe
             {
                 if (soap.PadraoNFSe == PadraoNFSe.TINUS)
                 {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    xmlBody = "";
+                        var doc = new XmlDocument();
+                        doc.LoadXml(xmlBody);
+                        xmlBody = "";
 
-                    foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
-                    {
-                        xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
+                        foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
+                        {
+                            xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
+                        }
                     }
-                }
 
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
@@ -114,11 +114,8 @@ namespace Unimake.Business.DFe
         {
             var soap = (WSSoap)servico;
 
-            if (soap.TipoDFe == TipoDFe.NFSe && certificado == null)
-            {
-
-            }
-            else if(certificado == null)
+            
+            if(certificado == null && soap.UsaCertificadoDigital)
             {
                 throw new CertificadoDigitalException();
             }
@@ -157,7 +154,7 @@ namespace Unimake.Business.DFe
             httpWebRequest.Timeout = soap.TimeOutWebServiceConnect;
             httpWebRequest.ContentType = (string.IsNullOrEmpty(soap.ContentType) ? "application/soap+xml; charset=utf-8;" : soap.ContentType);
             httpWebRequest.Method = "POST";
-            if (certificado != null)
+            if (soap.UsaCertificadoDigital)
             {
                 httpWebRequest.ClientCertificates.Add(certificado);
             }

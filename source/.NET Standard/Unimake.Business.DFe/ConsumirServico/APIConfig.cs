@@ -26,6 +26,16 @@ namespace Unimake.Business.DFe
         private bool _LoginConexao;
         private string _ResponseMediaType;
         private string _CodigoTom;
+        private bool _UsaCertificadoDigital;
+
+        /// <summary>
+        /// Utiliza ou não o certificado digital
+        /// </summary>
+        public bool UsaCertificadoDigital
+        {
+            get => _UsaCertificadoDigital;
+            set => _UsaCertificadoDigital = value;
+        }
 
         /// <summary>
         /// Utilizar os dados de login (usuário e senha)

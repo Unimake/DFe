@@ -309,7 +309,7 @@ namespace Unimake.Business.DFe.Servicos
 
                             if (XMLUtility.TagExist(elementPropriedades, "LoginConexao"))
                             {
-                                LoginConexao = XMLUtility.TagRead(elementPropriedades, "LoginConexao").ToLower() == "true" ? true : false; 
+                                LoginConexao = XMLUtility.TagRead(elementPropriedades, "LoginConexao").ToLower() == "true" ? true : false;
                             }
                             if (XMLUtility.TagExist(elementPropriedades, "ResponseMediaType"))
                             {
@@ -319,6 +319,11 @@ namespace Unimake.Business.DFe.Servicos
                             if (XMLUtility.TagExist(elementPropriedades, "CodigoTom"))
                             {
                                 CodigoTom = XMLUtility.TagRead(elementPropriedades, "CodigoTom");
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "UsaCertificadoDigital"))
+                            {
+                                UsaCertificadoDigital = XMLUtility.TagRead(elementPropriedades, "UsaCertificadoDigital").ToLower() == "true" ? true : false;
                             }
 
                             //Verificar se existem schemas específicos de validação
@@ -995,6 +1000,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Propriedade para habilitar o uso de usuário e senha para consumo pela API
         /// </summary>
         public bool LoginConexao { get; set; }
+
+        /// <summary>
+        /// Propriedade para habilitar o uso de certificado digital (default == True)
+        /// </summary>
+        public bool UsaCertificadoDigital { get; set; } = true;
 
         /// <summary>
         /// Método de solicitação da API
