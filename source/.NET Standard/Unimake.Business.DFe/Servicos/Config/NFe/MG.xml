@@ -118,7 +118,7 @@
       <WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/NFeRetAutorizacao4</WebEnderecoProducao>
       <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionHomologacao>
       <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionProducao>
-      <WebTagRetorno>ns2:nfeResultMsg</WebTagRetorno>
+      <WebTagRetorno>nfeResultMsg</WebTagRetorno>
       <SchemaArquivo>consReciNFe_v{0}.xsd</SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
