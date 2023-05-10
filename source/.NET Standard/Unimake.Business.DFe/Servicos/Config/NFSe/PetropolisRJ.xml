@@ -7,8 +7,8 @@
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/gerar</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>DadosNota</TagAtributoID>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
