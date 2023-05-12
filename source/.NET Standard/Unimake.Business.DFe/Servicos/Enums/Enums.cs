@@ -714,247 +714,253 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoNFe
     {
         /// <summary>
-        /// Evento desconhecido (0)
+        /// 0 - Evento desconhecido
         /// </summary>
         [XmlEnum("0")]
         Desconhecido = 0,
 
         /// <summary>
-        /// Carta de correção eletrônica (110110)
+        /// 110110 - Carta de correção eletrônica
         /// </summary>
         [XmlEnum("110110")]
         CartaCorrecao = 110110,
 
         /// <summary>
-        /// Cancelamento NFe (110111)
+        /// 110111 - Cancelamento NFe
         /// </summary>
         [XmlEnum("110111")]
         Cancelamento = 110111,
 
         /// <summary>
-        /// Cancelamento da NFCe sendo substituída por outra NFCe (110112)
+        /// 110112 - Cancelamento da NFCe sendo substituída por outra NFCe
         /// </summary>
         [XmlEnum("110112")]
         CancelamentoPorSubstituicao = 110112,
 
         /// <summary>
-        /// Comprovante de Entrega da NF-e
+        /// 110130 - Comprovante de Entrega da NF-e
         /// </summary>
         [XmlEnum("110130")]
         ComprovanteEntregaNFe = 110130,
 
         /// <summary>
-        /// Cancelamento do Comprovante de Entrega da NF-e
+        /// 110131 - Cancelamento do Comprovante de Entrega da NF-e
         /// </summary>
         [XmlEnum("110131")]
         CancelamentoComprovanteEntregaNFe = 110131,
 
         /// <summary>
-        /// EPEC - Evento Prévio de Emissão em Contingência (110140)
+        /// 110140 - EPEC - Evento Prévio de Emissão em Contingência
         /// </summary>
         [XmlEnum("110140")]
         EPEC = 110140,
 
         /// <summary>
-        /// Pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (111500) - 1o Prazo
+        /// 111500 - Pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 1o Prazo
         /// </summary>
         [XmlEnum("111500")]
         PedidoProrrogacaoPrazo1 = 111500,
 
         /// <summary>
-        /// Pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (111501) - 2o Prazo
+        /// 111501 - Pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 2o Prazo
         /// </summary>
         [XmlEnum("111501")]
         PedidoProrrogacaoPrazo2 = 111501,
 
         /// <summary>
-        /// Cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (111502) - 1o Prazo
+        /// 111502 - Cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 1o Prazo
         /// </summary>
         [XmlEnum("111502")]
         CancelamentoPedidoProrrogacaoPrazo1 = 111502,
 
         /// <summary>
-        /// Cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (111503) - 2o Prazo
+        /// 111503 - Cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 2o Prazo
         /// </summary>
         [XmlEnum("111503")]
         CancelamentoPedidoProrrogacaoPrazo2 = 111503,
 
         /// <summary>
-        /// Manifestação do Destinatário - Confirmação da Operação (210200)
+        /// 210200 - Manifestação do Destinatário - Confirmação da Operação
         /// </summary>
         [XmlEnum("210200")]
         ManifestacaoConfirmacaoOperacao = 210200,
 
         /// <summary>
-        /// Manifestação do Destinatário - Ciência da Operação (210210)
+        /// 210210 - Manifestação do Destinatário - Ciência da Operação
         /// </summary>
         [XmlEnum("210210")]
         ManifestacaoCienciaOperacao = 210210,
 
         /// <summary>
-        /// Manifestação do Destinatário - Desconhecimento da Operação (210220)
+        /// 210220 - Manifestação do Destinatário - Desconhecimento da Operação
         /// </summary>
         [XmlEnum("210220")]
         ManifestacaoDesconhecimentoOperacao = 210220,
 
         /// <summary>
-        /// Manifestação do Destinatário - Operação não realizada (210240)
+        /// 210240 - Manifestação do Destinatário - Operação não realizada
         /// </summary>
         [XmlEnum("210240")]
         ManifestacaoOperacaoNaoRealizada = 210240,
 
         /// <summary>
-        /// SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo". (400200)
+        /// 400200 - SEFAZ do emitente declara que NF-e é um "Documento Fiscal Inidôneo".
         /// </summary>
         [XmlEnum("400200")]
         DocumentoFiscalInidoneo = 400200,
 
         /// <summary>
-        /// Cancelamento do evento 400200 (400201)
+        /// 400201 - Cancelamento do evento 400200
         /// </summary>
         [XmlEnum("400201")]
         CancelamentoEventoFisco400200 = 400201,
 
         /// <summary>
-        /// Possibilita que a SEFAZ marque uma NF-e emitida em função de uma situação específica prevista em legislação, ex.: transferência de crédito, ressarcimento. (400300)
+        /// 400300 - Possibilita que a SEFAZ marque uma NF-e emitida em função de uma situação específica prevista em legislação, ex.: transferência de crédito, ressarcimento.
         /// </summary>
         [XmlEnum("400300")]
         VistoEletronicoDoFisco = 400300,
 
         /// <summary>
-        /// O evento da Nota Fiscal Referenciada é gerado sempre que uma nova NF-e referenciar uma ou mais outras Notas Fiscais Eletrônicas. Não serão gerados eventos de "NF-e Referenciada" para os documentos diferentes do Modelo 55. (410300)
+        /// 410300 - O evento da Nota Fiscal Referenciada é gerado sempre que uma nova NF-e referenciar uma ou mais outras Notas Fiscais Eletrônicas. Não serão gerados eventos de "NF-e Referenciada" para os documentos diferentes do Modelo 55.
         /// </summary>
         [XmlEnum("410300")]
         NFeReferenciada = 410300,
 
         /// <summary>
-        /// Resposta ao pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (411500) - 1o Prazo (Evento exclusivo do fisco)
+        /// 411500 - Resposta ao pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 1o Prazo (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("411500")]
         RespostaPedidoProrrogacaoPrazo1 = 411500,
 
         /// <summary>
-        /// Resposta ao pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (411501) - 2o Prazo (Evento exclusivo do fisco)
+        /// 411501 - Resposta ao pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 2o Prazo (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("411501")]
         RespostaPedidoProrrogacaoPrazo2 = 411501,
 
         /// <summary>
-        /// Resposta ao cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (411502) - 1o Prazo (Evento exclusivo do fisco)
+        /// 411502 - Resposta ao cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 1o Prazo (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("411502")]
         RespostaCancelamentoPedidoProrrogacaoPrazo1 = 411502,
 
         /// <summary>
-        /// Resposta ao cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização (411503) - 2o Prazo (Evento exclusivo do fisco)
+        /// 411503 - Resposta ao cancelamento do pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 2o Prazo (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("411503")]
         RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
 
         /// <summary>
-        /// Registro de Passagem da NF-e no Posto Fiscal (610500)
+        /// 610130 - Comprovante de entrega do CTe
+        /// </summary>
+        [XmlEnum("610130")]
+        ComprovantedeEntregaCTe = 610130,
+
+        /// <summary>
+        /// 610500 - Registro de Passagem da NF-e no Posto Fiscal
         /// </summary>
         [XmlEnum("610500")]
         RegistroPassagemNFe = 610500,
 
         /// <summary>
-        /// Cancelamento do evento 610500 (610501)
+        /// 610501 - Cancelamento do evento 610500
         /// </summary>
         [XmlEnum("610501")]
         CancelamentoRegistroPassagemNFe = 610501,
 
         /// <summary>
-        /// Registro de Passagem do MDF-e no Posto Fiscal, propagado pelo Sistema MDF-e. (610510)
+        /// 610510 - Registro de Passagem do MDF-e no Posto Fiscal, propagado pelo Sistema MDF-e.
         /// </summary>
         [XmlEnum("610510")]
         RegistroDePassagemMDFe = 610510,
 
         /// <summary>
-        /// Cancelamento do evento 610511 (610511)
+        /// 610511 - Cancelamento do evento 610511
         /// </summary>
         [XmlEnum("610511")]
         CancelamentoRegistroDePassagemMDFe = 610511,
 
         /// <summary>
-        /// Registro de Passagem do MDF-e no Posto Fiscal, propagado pelo Ambiente Nacional. Nota: A Chave de Acesso da NF-e está vinculada a um CT-e citado no MDF-e. (610514)
+        /// 610514 - Registro de Passagem do MDF-e no Posto Fiscal, propagado pelo Ambiente Nacional. Nota: A Chave de Acesso da NF-e está vinculada a um CT-e citado no MDF-e.
         /// </summary>
         [XmlEnum("610514")]
         RegistroDePassagemMDFeComCTe = 610514,
 
         /// <summary>
-        /// Cancelamento do evento 610514. (610515)
+        /// 610515 - Cancelamento do evento 610514.
         /// </summary>
         [XmlEnum("610515")]
         CancelamentoRegistroDePassagemMDFeComCTe = 610515,
 
         /// <summary>
-        /// Registro de Passagem do MDF-e, capturado por antenas do Projeto Brasil ID. Evento eliminado (BT 2017.002), substituído pelo Registro de Passagem Automático MDF-e. (610550)
+        /// 610550 - Registro de Passagem do MDF-e, capturado por antenas do Projeto Brasil ID. Evento eliminado (BT 2017.002), substituído pelo Registro de Passagem Automático MDF-e.
         /// </summary>
         [XmlEnum("610550")]
         RegistroPassagemNFeBRId = 610550,
 
         /// <summary>
-        /// Registro de Passagem do MDF-e capturado de forma automática (antena, leitura de placa por OCR, etc.), propagado pelo Sistema MDFe. Nota: A Chave de Acesso da NF-e está citada no MDF-e. (610552)
+        /// 610552 - Registro de Passagem do MDF-e capturado de forma automática (antena, leitura de placa por OCR, etc.), propagado pelo Sistema MDFe. Nota: A Chave de Acesso da NF-e está citada no MDF-e.
         /// </summary>
         [XmlEnum("610552")]
         RegistroDePassagemAutomaticoMDFe = 610552,
 
         /// <summary>
-        /// Cancelamento do evento 610552 (610554)
+        /// 610554 - Cancelamento do evento 610552
         /// </summary>
         [XmlEnum("610554")]
         RegistroDePassagemAutomaticoMDFeComCTe = 610554,
 
         /// <summary>
-        /// Documenta na NF-e a ocorrência de CT-e autorizado, no momento do compartilhamento do CT-e com o Ambiente Nacional. Nota: A Chave de Acesso da NF-e está citada no CTe. (610600)
+        /// 610600 - Documenta na NF-e a ocorrência de CT-e autorizado, no momento do compartilhamento do CT-e com o Ambiente Nacional. Nota: A Chave de Acesso da NF-e está citada no CTe.
         /// </summary>
         [XmlEnum("610600")]
         CTeAutorizado = 610600,
 
         /// <summary>
-        /// Documenta na NF-e a ocorrência de cancelamento de CT-e autorizado, no momento do compartilhamento do evento com o Ambiente Nacional. Nota: A Chave de Acesso da NF-e está citada no CT-e. (610601)
+        /// 610601 - Documenta na NF-e a ocorrência de cancelamento de CT-e autorizado, no momento do compartilhamento do evento com o Ambiente Nacional. Nota: A Chave de Acesso da NF-e está citada no CT-e.
         /// </summary>
         [XmlEnum("610601")]
         CTeCancelado = 610601,
 
         /// <summary>
-        /// Evento que documenta na NF-e a ocorrência de MDF-e autorizado.Nota: A Chave de Acesso da NF-e está citada no MDF-e. (610610)
+        /// 610610 - Evento que documenta na NF-e a ocorrência de MDF-e autorizado.Nota: A Chave de Acesso da NF-e está citada no MDF-e.
         /// </summary>
         [XmlEnum("610610")]
         MDFeAutorizado = 610610,
 
         /// <summary>
-        /// Cancelamento do MDF-e (610611)
+        /// 610611 - Cancelamento do MDF-e
         /// </summary>
         [XmlEnum("610611")]
         MDFeCancelado = 610611,
 
         /// <summary>
-        /// Evento que documenta na NF-e a ocorrência de MDF-e autorizado. Nota: A Chave de Acesso da NF-e está vinculada a um CT-e citado no MDF-e. (610614)
+        /// 610614 - Evento que documenta na NF-e a ocorrência de MDF-e autorizado. Nota: A Chave de Acesso da NF-e está vinculada a um CT-e citado no MDF-e.
         /// </summary>
         [XmlEnum("610614")]
         MDFeAutorizadoComCTe = 610614,
 
         /// <summary>
-        /// Cancelamento do evento 610614. (610615)
+        /// 610615 - Cancelamento do evento 610614.
         /// </summary>
         [XmlEnum("610615")]
         CancelamentoDoMDFeAutorizadoComCTe = 610615,
 
         /// <summary>
-        /// Evento que indica a quantidade de mercadoria na unidade tributável que foi efetivamente embarcada para o exterior referente a um certo item de uma NF-e. Gerado e enviado pelo sistema Portal Único do Comércio Exterior (PUCOMEX) Receita Federal do Brasil (RFB) para o Ambiente Nacional da NF-e (790700)
+        /// 790700 - Evento que indica a quantidade de mercadoria na unidade tributável que foi efetivamente embarcada para o exterior referente a um certo item de uma NF-e. Gerado e enviado pelo sistema Portal Único do Comércio Exterior (PUCOMEX) Receita Federal do Brasil (RFB) para o Ambiente Nacional da NF-e
         /// </summary>
         [XmlEnum("790700")]
         AverbacaoDeExportacao = 790700,
 
         /// <summary>
-        /// Registro da ocorrência da Vistoria do processo de internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA. (990900)
+        /// 990900 - Registro da ocorrência da Vistoria do processo de internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA.
         /// </summary>
         [XmlEnum("990900")]
         VistoriaSUFRAMA = 990900,
 
         /// <summary>
-        /// Confirmação da internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA. (990910)
+        /// 990910 - Confirmação da internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA.
         /// </summary>
         [XmlEnum("990910")]
         InternalizacaoSUFRAMA = 990910

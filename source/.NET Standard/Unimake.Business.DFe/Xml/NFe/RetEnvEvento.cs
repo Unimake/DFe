@@ -149,13 +149,26 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string EmailDest { get; set; }
 
         [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        [XmlElement("cOrgaoAutor", Order = 12)]
+        public int COrgaoAutorField
+        {
+            get => (int)COrgaoAutor;
+            set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }        
+
+        [XmlElement("chCTe", Order = 13)]
+        public string ChCTe { get; set; }
+
+        [XmlIgnore]
 #if INTEROP
         public DateTime DhRegEvento { get; set; }
 #else
         public DateTimeOffset DhRegEvento { get; set; }
 #endif
 
-        [XmlElement("dhRegEvento", Order = 12)]
+        [XmlElement("dhRegEvento", Order = 14)]
         public string DhRegEventoField
         {
             get => DhRegEvento.ToString("yyyy-MM-ddTHH:mm:sszzz");
@@ -166,7 +179,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
-        [XmlElementAttribute("nProt", Order = 13)]
+        [XmlElement("nProt", Order = 15)]
         public string NProt { get; set; }
 
         #region ShouldSerialize
@@ -174,6 +187,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCNPJDest() => !string.IsNullOrWhiteSpace(CNPJDest);
 
         public bool ShouldSerializeCPFDest() => !string.IsNullOrWhiteSpace(CPFDest);
+
+        public bool ShouldSerializeChCTe() => !string.IsNullOrWhiteSpace(ChCTe);
+
+        public bool ShouldSerializeCOrgaoAutorField() => COrgaoAutor != UFBrasil.NaoDefinido;
 
         #endregion
     }

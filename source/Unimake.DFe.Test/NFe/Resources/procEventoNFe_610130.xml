@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<procEventoNFe versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID6101303223010000000000000055001000000000000000000001">
+			<cOrgao>91</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>03080101000100</CNPJ>
+			<chNFe>32230100000000000000550010000000000000000000</chNFe>
+			<dhEvento>2023-02-11T00:35:46-03:00</dhEvento>
+			<tpEvento>610130</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Comprovante de Entrega do CT-e</descEvento>
+				<cOrgaoAutor>32</cOrgaoAutor>
+				<tpAutor>5</tpAutor>
+				<verAplic>1.5.1</verAplic>
+				<CTe>
+					<chCTe>32230200000000000000570060001111111111222223</chCTe>
+					<nProtCTe>333230313837333</nProtCTe>
+					<dhEntrega>2023-02-10T14:16:30-03:00</dhEntrega>
+					<nDoc>..</nDoc>
+					<xNome>..</xNome>
+					<hashEntregaCTe>2eDWGfx2xZJVFTKXGuiGZgzE2W4=</hashEntregaCTe>
+					<dhHashEntregaCTe>2023-02-10T21:01:32-03:00</dhHashEntregaCTe>
+				</CTe>
+			</detEvento>
+		</infEvento>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#ID6101303223010000000000000055001000000000000000000001">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>xiv6sp84OP2vW1kCH/9dBHsQw+o=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>LGqtO8igPLqvCjQwxTk7ZPa3/qs3sBAsLsKsB4s6sjsHIsXXjXsRs4eszs+qsUsGpsTsZshwsDsrb2mYtH1FS3cAG9CIQMpnh0xnEuPH1HwDciFV03ywNBJG6WmgA2IME60ZdehBqP6waWCJNr2A9be5TeoHIdoS5aLDsZsRsgNed2fZgEhZjfkUlkMçbOgodVdrdf8gChShX/PBYQPqhZB7aUMjX/4m0Sy5QReyDpkr1d+8m9SeAA2HLrah6aiRTLHBBkIqYXozJwOAotgRkKUvemUe6bJ5l6oOOZiPhFITGsiOUMysieWkOEGQaS38W1EI13sG91QFzyFwF47+ow==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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ç2S8Q~hRfdzd7fkgYh0jkWklLliç7çHh/fdadzCB8ASdWlT5z4wDNqRHusfV1JPGp1SSosv0HESezVAAdjeUSUBFv4rXGrgN3DBNur2HTmKafoN2bIrqUFB/eCKhve0OHWz4dCnI/fEg/rJMJqWjhIMP0g48njKvDlp9FSnlJiyuf/D24zBJxHLFwJlw==</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</evento>
+	<retEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID292220212026202">
+			<tpAmb>1</tpAmb>
+			<verAplic>AN_1.4.0</verAplic>
+			<cOrgao>91</cOrgao>
+			<cStat>135</cStat>
+			<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+			<chNFe>32230100000000000000550010000000000000000000</chNFe>
+			<tpEvento>610130</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<cOrgaoAutor>32</cOrgaoAutor>
+			<chCTe>32230200000000000000570060001111111111222223</chCTe>
+			<dhRegEvento>2023-02-11T00:35:46-03:00</dhRegEvento>
+			<nProt>292220212026202</nProt>
+		</infEvento>
+	</retEvento>
+</procEventoNFe>
