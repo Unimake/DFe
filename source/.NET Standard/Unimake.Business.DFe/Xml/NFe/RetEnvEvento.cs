@@ -149,7 +149,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string EmailDest { get; set; }
 
         [XmlIgnore]
-        public UFBrasil COrgaoAutor { get; set; }
+        public UFBrasil COrgaoAutor { get; set; } = UFBrasil.NaoDefinido;
 
         [XmlElement("cOrgaoAutor", Order = 12)]
         public int COrgaoAutorField
