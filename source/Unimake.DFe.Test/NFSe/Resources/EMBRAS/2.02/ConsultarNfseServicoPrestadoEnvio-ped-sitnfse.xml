@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseServicoPrestadoEnvio xmlns:ns="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <Prestador>
+    <CpfCnpj>
+      <Cnpj>99999999999999</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal>100010</InscricaoMunicipal>
+  </Prestador>
+  <NumeroNfse>1</NumeroNfse>
+  <Pagina>1</Pagina>
+</ConsultarNfseServicoPrestadoEnvio>

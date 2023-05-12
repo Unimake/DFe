@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns:ns="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <Rps>
+    <InfDeclaracaoPrestacaoServico Id="string1">
+      <Rps Id="string2">
+        <IdentificacaoRps>
+          <Numero>123</Numero>
+          <Serie>NFSe</Serie>
+          <Tipo>1</Tipo>
+        </IdentificacaoRps>
+        <DataEmissao>2018-01-01</DataEmissao>
+        <Status>1</Status>
+      </Rps>
+      <Competencia>2018-01-01</Competencia>
+      <Servico>
+        <Valores>
+          <ValorServicos>1108200</ValorServicos>
+          <ValorDeducoes>4999</ValorDeducoes>
+          <ValorPis>69</ValorPis>
+          <ValorCofins>369</ValorCofins>
+          <ValorInss>2899</ValorInss>
+          <ValorIr>9199</ValorIr>
+          <ValorCsll>6.99</ValorCsll>
+          <OutrasRetencoes>555</OutrasRetencoes>
+          <ValorIss>0</ValorIss>
+          <Aliquota>2</Aliquota>
+          <DescontoIncondicionado>49</DescontoIncondicionado>
+          <DescontoCondicionado>3681</DescontoCondicionado>
+        </Valores>
+        <IssRetido>1</IssRetido>
+        <ResponsavelRetencao>1</ResponsavelRetencao>
+        <ItemListaServico>1</ItemListaServico>
+        <CodigoCnae>6204000</CodigoCnae>
+        <CodigoTributacaoMunicipio>1</CodigoTributacaoMunicipio>
+        <Discriminacao>discriminaação do serviço</Discriminacao>
+        <CodigoMunicipio>4314407</CodigoMunicipio>
+        <CodigoPais>1058</CodigoPais>
+        <ExigibilidadeISS>1</ExigibilidadeISS>
+        <MunicipioIncidencia>1</MunicipioIncidencia>
+        <NumeroProcesso>123</NumeroProcesso>
+      </Servico>
+      <Prestador>
+        <CpfCnpj>
+          <Cnpj>99999999999999</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>123</InscricaoMunicipal>
+      </Prestador>
+      <Tomador>
+        <IdentificacaoTomador>
+          <CpfCnpj>
+            <Cnpj>99999999999988</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>345</InscricaoMunicipal>
+        </IdentificacaoTomador>
+        <RazaoSocial>Fulano</RazaoSocial>
+        <Endereco>
+          <Endereco>string</Endereco>
+          <Numero>string</Numero>
+          <Complemento>string</Complemento>
+          <Bairro>string</Bairro>
+          <CodigoMunicipio>4314407</CodigoMunicipio>
+          <Uf>RS</Uf>
+          <CodigoPais>1058</CodigoPais>
+          <Cep>97010033</Cep>
+        </Endereco>
+        <Contato>
+          <Telefone>string</Telefone>
+          <Email>maicon@avmb.com.br</Email>
+        </Contato>
+      </Tomador>
+      <RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+      <OptanteSimplesNacional>1</OptanteSimplesNacional>
+      <IncentivoFiscal>1</IncentivoFiscal>
+    </InfDeclaracaoPrestacaoServico>
+  </Rps>
+</GerarNfseEnvio>

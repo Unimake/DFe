@@ -323,6 +323,7 @@
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\PousoAltoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
@@ -752,6 +753,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CabedeloPB.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PousoAltoMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">

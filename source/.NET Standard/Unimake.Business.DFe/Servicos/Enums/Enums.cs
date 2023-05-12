@@ -6232,6 +6232,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("TINUS")]
         TINUS = 36,
+
+        /// <summary>
+        /// EMBRAS
+        /// </summary>
+        [Description("EMBRAS")]
+        EMBRAS = 37,
     }
 
     #endregion

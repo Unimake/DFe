@@ -1588,4 +1588,10 @@
 		<ArqConfig>GuaibaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3152600">
+		<Nome>Pouso Alto - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>PousoAltoMG.xml</ArqConfig>
+		<PadraoNFSe>EMBRAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
