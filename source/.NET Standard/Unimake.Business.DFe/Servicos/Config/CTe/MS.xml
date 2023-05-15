@@ -1,6 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="CTe">
+		<!-- Versão 2.00 do CTe -->
+		
+		<ConsultaCadastro versao="2.00">
+			<Descricao>Consulta cadastro do contribuinte</Descricao>
+			<WebEnderecoHomologacao>https://nfe.sefaz.ms.gov.br/ws/CadConsultaCadastro4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.sefaz.ms.gov.br/ws/CadConsultaCadastro4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionProducao>
+			<SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaCadastro>
+
 		<!-- Versão 3.00 do CTe -->
 
 		<StatusServico versao="3.00">
@@ -42,18 +57,6 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</Inutilizacao>
-		<ConsultaCadastro versao="2.00">
-			<Descricao>Consulta cadastro do contribuinte</Descricao>
-			<WebEnderecoHomologacao>https://nfe.sefaz.ms.gov.br/ws/CadConsultaCadastro4</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfe.sefaz.ms.gov.br/ws/CadConsultaCadastro4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionProducao>
-			<SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-		</ConsultaCadastro>
 		<RecepcaoEvento versao="3.00">
 			<Descricao>Recepcao de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CteRecepcaoEvento</WebEnderecoHomologacao>
@@ -216,6 +219,19 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</StatusServico>
+		<ConsultaProtocolo versao="4.00">
+			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeConsultaV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
+			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
+			<SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaProtocolo>
 		<RecepcaoEvento versao="4.00">
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
@@ -256,5 +272,52 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RecepcaoEvento>
+		<AutorizacaoSinc versao="4.00">
+			<Descricao>Autorização do CTe - Síncrono</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeRecepcaoSincV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionProducao>
+			<GZIPCompress>true</GZIPCompress>
+			<WebTagRetorno>cteRecepcaoSincResult</WebTagRetorno>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>1</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>2</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>3</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>4</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>5</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalDutoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>6</ID>
+					<SchemaArquivo>cte_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteMultiModal_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>CTe</TagAssinatura>
+			<TagAtributoID>infCte</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+		</AutorizacaoSinc>
 	</Servicos>
 </Configuracoes>

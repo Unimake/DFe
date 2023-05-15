@@ -1489,7 +1489,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 3 - Regime Normal
         /// </summary>
         [XmlEnum("3")]
-        RegimeNormal = 3
+        RegimeNormal = 3,
+
+        /// <summary>
+        /// 4 - Simples Nacional - Microempreendedor Individual – MEI
+        /// </summary>
+        [XmlEnum("4")]
+        SimplesNacionalMEI = 4
     }
 
     #endregion
