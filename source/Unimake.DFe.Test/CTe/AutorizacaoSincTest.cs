@@ -109,7 +109,7 @@ namespace Unimake.DFe.Test.CTe
                             TpImp = FormatoImpressaoDACTE.NormalPaisagem,
                             TpEmis = TipoEmissao.Normal,
                             TpAmb = tipoAmbiente,
-                            TpCTe = TipoCTe.Anulacao,
+                            TpCTe = TipoCTe.Normal,
                             ProcEmi = ProcessoEmissao.AplicativoContribuinte,
                             VerProc = "UNICO V8.0",
                             CMunEnv = "4118402",
