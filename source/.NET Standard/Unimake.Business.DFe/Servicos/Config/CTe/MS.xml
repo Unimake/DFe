@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="CTe">
+		<!-- Versão 3.00 do CTe -->
+
 		<StatusServico versao="3.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CteStatusServico</WebEnderecoHomologacao>
@@ -198,5 +200,21 @@
 			<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
 		</AutorizacaoSinc>
+
+		<!-- Versão 4.00 do CTe -->
+
+		<StatusServico versao="4.00">
+			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeStatusServicoV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
+			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
+			<SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</StatusServico>
 	</Servicos>
 </Configuracoes>
