@@ -85,7 +85,7 @@ namespace Unimake.DFe.Test.CTe
                 {
                     Versao = versao,
                     TpAmb = tipoAmbiente,
-                    CUF = (versao == "4.00" ? ufBrasil : UFBrasil.NaoDefinido)
+                    //CUF = (versao == "4.00" ? ufBrasil : UFBrasil.NaoDefinido)
                 };
 
                 var configuracao = new Configuracao
