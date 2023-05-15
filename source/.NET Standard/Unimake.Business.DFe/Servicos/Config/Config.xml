@@ -1594,4 +1594,10 @@
 		<ArqConfig>PousoAltoMG.xml</ArqConfig>
 		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2602902">
+		<Nome>Cabo de Santo Agostinho - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>CaboDeSantoAgostinhoPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
