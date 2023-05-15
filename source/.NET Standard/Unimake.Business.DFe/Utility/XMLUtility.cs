@@ -91,19 +91,19 @@ namespace Unimake.Business.DFe.Utility
             /// </summary>
             public UFBrasil UFEmissor { get; set; }
 
-#endregion Public Properties
+            #endregion Public Properties
         }
 
-#endregion Public Structs
+        #endregion Public Structs
 
-#region Public Classes
+        #region Public Classes
 
         /// <summary>
         /// Tipo Namespace
         /// </summary>
         public class TNameSpace
         {
-#region Public Properties
+            #region Public Properties
 
             /// <summary>
             /// Conteúdo do Namespace
@@ -115,7 +115,7 @@ namespace Unimake.Business.DFe.Utility
             /// </summary>
             public string Prefix { get; set; }
 
-#endregion Public Properties
+            #endregion Public Properties
         }
 
         /// <summary>
@@ -123,25 +123,25 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         public class Utf8StringWriter : StringWriter
         {
-#region Public Properties
+            #region Public Properties
 
             /// <summary>
             /// Sobrescrever o Encoding para deixar como padrão o UTF8
             /// </summary>
             public override Encoding Encoding => Encoding.UTF8;
 
-#endregion Public Properties
+            #endregion Public Properties
         }
 
-#endregion Public Classes
+        #endregion Public Classes
 
-#region Private Methods
+        #region Private Methods
 
         private static bool Validate(string xml) => ValidatorFactory.BuidValidator(xml)?.Validate() ?? true;
 
-#endregion
+        #endregion
 
-#region Public Methods
+        #region Public Methods
 
         /// <summary>
         /// Gerar o dígito da chave da NFe, CTe, MDFe ou NFCe
@@ -208,16 +208,16 @@ namespace Unimake.Business.DFe.Utility
         /// </example>
         public static void ChecarChaveDFe(string chave)
         {
-#region Verificar o tamanho da chave
+            #region Verificar o tamanho da chave
 
             if (chave.Length != 44)
             {
                 throw new Exception("Tamanho da chave do documento fiscal eletrônico está diferente de 44 dígitos. Chave deve ter exatamente 44 dígitos.");
             }
 
-#endregion Verificar o tamanho da chave
+            #endregion Verificar o tamanho da chave
 
-#region Verificar se o mês da emissão da nota da chave é válida
+            #region Verificar se o mês da emissão da nota da chave é válida
 
             var mes = Convert.ToInt32(chave.Substring(4, 2));
 
@@ -226,9 +226,9 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("Mês da data de emissão, do documento fiscal eletrônico, que compõe a chave, está incorreto. Mês informado: " + mes.ToString() + ". Meses permitidos: 01 a 12.");
             }
 
-#endregion Verificar se o mês da emissão da nota da chave é válida
+            #endregion Verificar se o mês da emissão da nota da chave é válida
 
-#region Verificar se o modelo da chave é válido
+            #region Verificar se o modelo da chave é válido
 
             var modeloDFe = Convert.ToInt32(chave.Substring(20, 2));
             var tipoEnum = typeof(ModeloDFe);
@@ -252,9 +252,9 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("Modelo, do documento fiscal eletrônico, que compõe a chave, está incorreto. Modelo informado: " + modeloDFe.ToString() + ". Modelos permitidos: " + modeloPermitido + ".");
             }
 
-#endregion Verificar se o modelo da chave é válido
+            #endregion Verificar se o modelo da chave é válido
 
-#region Verificar se o tipo de emissão da chave é válido
+            #region Verificar se o tipo de emissão da chave é válido
 
             var tpEmis = Convert.ToInt32(chave.Substring(34, 1));
             tipoEnum = typeof(TipoEmissao);
@@ -278,9 +278,9 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("Tipo de emissão, do documento fiscal eletrônico, que compõe a chave, está incorreto. Tipo informado: " + tpEmis.ToString() + ". Tipos permitidos: " + tipoPermitido + ".");
             }
 
-#endregion Verificar se o tipo de emissão da chave é válido
+            #endregion Verificar se o tipo de emissão da chave é válido
 
-#region Verificar se a UF da chave é válida
+            #region Verificar se a UF da chave é válida
 
             var cUF = Convert.ToInt32(chave.Substring(0, 2));
             tipoEnum = typeof(UFBrasil);
@@ -308,9 +308,9 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("Código da UF, do documento fiscal eletrônico, que compõe a chave, está incorreto. Código informado: " + cUF.ToString() + ". Códigos permitidos: " + cufPermitido + ".");
             }
 
-#endregion Verificar se a UF da chave é válida
+            #endregion Verificar se a UF da chave é válida
 
-#region Verificar se o dígito verificador está correto
+            #region Verificar se o dígito verificador está correto
 
             var digitoCalc = CalcularDVChave(chave.Substring(0, 43));
             var digitoInf = chave.Substring(43, 1);
@@ -319,7 +319,7 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("Dígito verificador, do documento fiscal eletrônico, que compõe a chave, está incorreto. Dígito informado: " + digitoInf + ". Dígito calculado: " + digitoCalc.ToString() + ".");
             }
 
-#endregion Verificar se o dígito verificador está correto
+            #endregion Verificar se o dígito verificador está correto
         }
 
         /// <summary>
@@ -705,7 +705,7 @@ namespace Unimake.Business.DFe.Utility
             var tipoXML = TipoXML.NaoIdentificado;
             switch (xmlDoc.DocumentElement.Name)
             {
-#region XML NFe
+                #region XML NFe
 
                 case "consStatServ":
                     tipoXML = TipoXML.NFeStatusServico;
@@ -754,9 +754,9 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.NFeDistribuicao;
                     break;
 
-#endregion XML NFe
+                #endregion XML NFe
 
-#region XML CTe
+                #region XML CTe
 
                 case "consStatServCte":
                     tipoXML = TipoXML.CTeStatusServico;
@@ -794,9 +794,9 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.CTeDistribuicao;
                     break;
 
-#endregion XML CTe
+                #endregion XML CTe
 
-#region XML do MDFe
+                #region XML do MDFe
 
                 case "consStatServMDFe":
                     tipoXML = TipoXML.MDFeStatusServico;
@@ -830,7 +830,7 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.MDFeDistribuicao;
                     break;
 
-#endregion XML do MDFe
+                #endregion XML do MDFe
 
                 default:
                     break;
@@ -1149,6 +1149,46 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="xmlRootAttribute"></param>
+        /// <param name="namespaces"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static XmlDocument Serializar(object obj, XmlRootAttribute xmlRootAttribute, List<TNameSpace> namespaces = null) => Serialize(obj, xmlRootAttribute, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="xmlRootAttribute"></param>
+        /// <param name="namespaces"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        private static XmlDocument Serialize<T>(T obj, XmlRootAttribute xmlRootAttribute, List<(string Namespace, string Prefix)> namespaces = null)
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            var ns = new XmlSerializerNamespaces();
+            namespaces?.ForEach(delegate ((string Namespace, string Prefix) n)
+            {
+                ns.Add(n.Prefix, n.Namespace);
+            });
+            var xmlSerializer = new XmlSerializer(obj.GetType(), xmlRootAttribute);
+            var xmlDocument = new XmlDocument();
+            StringWriter stringWriter = new Utf8StringWriter();
+            xmlSerializer.Serialize(stringWriter, obj, ns);
+            xmlDocument.LoadXml(stringWriter.ToString());
+
+            return xmlDocument;
+        }
+
+        /// <summary>
         /// Busca o nome de uma determinada TAG em um Elemento do XML para ver se existe, se existir retorna seu conteúdo da TAG.
         /// </summary>
         /// <param name="xmlElement">Elemento do XML onde será pesquisado o Nome da TAG</param>
@@ -1233,6 +1273,6 @@ namespace Unimake.Business.DFe.Utility
             return content;
         }
 
-#endregion Public Methods
+        #endregion Public Methods
     }
 }
