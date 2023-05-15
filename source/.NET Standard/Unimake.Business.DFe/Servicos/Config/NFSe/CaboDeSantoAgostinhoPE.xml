@@ -8,10 +8,10 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><RecepcionarLoteRps><Arg>{xmlBody}</Arg></RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
