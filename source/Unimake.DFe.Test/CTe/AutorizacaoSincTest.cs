@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
+using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTe
 {
@@ -109,7 +109,7 @@ namespace Unimake.DFe.Test.CTe
                             TpImp = FormatoImpressaoDACTE.NormalPaisagem,
                             TpEmis = TipoEmissao.Normal,
                             TpAmb = tipoAmbiente,
-                            TpCTe = TipoCTe.Normal,
+                            TpCTe = TipoCTe.Anulacao,
                             ProcEmi = ProcessoEmissao.AplicativoContribuinte,
                             VerProc = "UNICO V8.0",
                             CMunEnv = "4118402",
@@ -124,7 +124,7 @@ namespace Unimake.DFe.Test.CTe
                             XMunFim = "SAO JOAO DE MERITI",
                             UFFim = UFBrasil.RJ,
                             Retira = SimNao.Nao,
-                            IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,                            
+                            IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
                             Toma3 = new Toma3
                             {
                                 Toma = TomadorServicoCTe.Remetente,
@@ -296,7 +296,7 @@ namespace Unimake.DFe.Test.CTe
                 Diag.Debug.Assert(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
                 Diag.Debug.Assert(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }

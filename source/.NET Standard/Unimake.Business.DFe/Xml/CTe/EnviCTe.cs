@@ -271,6 +271,12 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
 
         #endregion
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeInfCteAnu() => Convert.ToDecimal(Versao) <= 300;
+
+        #endregion
     }
 
 #if INTEROP
@@ -4742,12 +4748,16 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfCteSub
     {
-
         [XmlElement("chCte")]
         public string ChCte { get; set; }
 
+        //TODO: Wandrey - Remover a tag RefCteAnu quando a versão 3.00 do CTe não existir mais.
+        /// <summary>
+        /// Propriedade só existe até a versão 3.00 do schema do CTe
+        /// </summary>
         [XmlElement("refCteAnu")]
-        public string RefCteAnu { get; set; }
+        [Obsolete("A tag <refCteAnu> não existe na versão 4.00 do CTe.")]
+        public string RefCteAnu { get; set; } 
 
         [XmlElement("tomaICMS")]
         public TomaICMS TomaICMS { get; set; }

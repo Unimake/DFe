@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Servicos
@@ -3807,6 +3808,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 3=CTe de Anulação
         /// </summary>
         [XmlEnum("2")]
+        [Obsolete("Tipo de CTe está obsoleto, será removido com o tempo. Só é aceito na versão 3.00 do CTe.")]
         Anulacao = 2,
 
         /// <summary>
