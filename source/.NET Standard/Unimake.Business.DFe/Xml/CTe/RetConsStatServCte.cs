@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -86,5 +88,39 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("xObs")]
         public string XObs { get; set; }
 
+        /// <summary>
+        /// Serializa o objeto (Converte o objeto para XML)
+        /// </summary>
+        /// <returns>Conteúdo do XML</returns>
+        public override XmlDocument GerarXML()
+        {
+            XmlDocument xml = null;
+
+            if (Convert.ToDecimal(Versao) >= 400)
+            {
+                // criar uma instância de XmlRootAttribute com o novo nome do elemento
+                var newRootAttribute = new XmlRootAttribute("retConsStatServCTe")
+                {
+                    Namespace = "http://www.portalfiscal.inf.br/cte",
+                    IsNullable = false
+                };
+
+                xml = XMLUtility.Serializar(this, newRootAttribute, NameSpaces);
+            }
+            else
+            {
+                xml = XMLUtility.Serializar(this, NameSpaces);
+            }
+
+            return xml;
+        }
+
+        /// <summary>
+        /// Desserializar XML (Converte o XML para um objeto)
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
+        public override T LerXML<T>(XmlDocument doc) => XMLUtility.Deserializar<T>(doc.OuterXml.Replace("retConsStatServCTe", "retConsStatServCte"));
     }
 }

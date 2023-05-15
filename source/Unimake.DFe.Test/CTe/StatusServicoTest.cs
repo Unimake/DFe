@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao, "3.00")]
 
-        //[InlineData(UFBrasil.MS, TipoAmbiente.Homologacao, "4.00")]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao, "4.00")]
 
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao, "3.00")]
         [InlineData(UFBrasil.AL, TipoAmbiente.Producao, "3.00")]
@@ -81,19 +81,19 @@ namespace Unimake.DFe.Test.CTe
         {
             try
             {
-                var xml = new ConsStatServCte
-                {
-                    Versao = versao,
-                    TpAmb = tipoAmbiente,
-                    //CUF = (versao == "4.00" ? ufBrasil : UFBrasil.NaoDefinido)
-                };
-
                 var configuracao = new Configuracao
                 {
                     TipoDFe = TipoDFe.CTe,
                     TipoEmissao = TipoEmissao.Normal,
                     CodigoUF = (int)ufBrasil,
                     CertificadoDigital = PropConfig.CertificadoDigital
+                };
+
+                var xml = new ConsStatServCte
+                {
+                    Versao = versao,
+                    TpAmb = tipoAmbiente,
+                    CUF = (versao == "4.00" ? ufBrasil : UFBrasil.NaoDefinido)
                 };
 
                 var statusServico = new StatusServico(xml, configuracao);

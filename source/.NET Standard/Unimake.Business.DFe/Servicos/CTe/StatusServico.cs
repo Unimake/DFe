@@ -35,6 +35,11 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 Configuracoes.TipoAmbiente = xml.TpAmb;
                 Configuracoes.SchemaVersao = xml.Versao;
 
+                if (Convert.ToDecimal(xml.Versao) >= 400)
+                {
+                    Configuracoes.CodigoUF = (int)xml.CUF;
+                }
+
                 base.DefinirConfiguracao();
             }
         }
@@ -52,7 +57,8 @@ namespace Unimake.Business.DFe.Servicos.CTe
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetConsStatServCte>(RetornoWSXML);
+                    //return  XMLUtility.Deserializar<RetConsStatServCte>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetConsStatServCte>(RetornoWSXML.OuterXml.Replace("retConsStatServCTe", "retConsStatServCte"));
                 }
 
                 return new RetConsStatServCte
