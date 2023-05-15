@@ -216,5 +216,45 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</StatusServico>
+		<RecepcaoEvento versao="4.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
+			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110180</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110181</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancCECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>610110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoCTe</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RecepcaoEvento>
 	</Servicos>
 </Configuracoes>

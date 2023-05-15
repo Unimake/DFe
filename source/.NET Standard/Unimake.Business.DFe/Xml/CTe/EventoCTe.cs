@@ -1028,7 +1028,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
                 var xml = new StringBuilder();
                 xml.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-                xml.Append($"<eventoCTe versao=\"3.00\" xmlns=\"{xmlEl.NamespaceURI}\">");
+                xml.Append($"<eventoCTe versao=\"{eventos[0].Attributes["versao"].Value}\" xmlns=\"{xmlEl.NamespaceURI}\">");
                 xml.Append($"{xmlEl.InnerXml}</eventoCTe>");
 
                 var envEvt = XMLUtility.Deserializar<EventoCTe>(xml.ToString());
@@ -1393,7 +1393,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlAttribute(DataType = "ID", AttributeName = "Id")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString() + ChCTe + NSeqEvento.ToString("00");
+            get => "ID" + ((int)TpEvento).ToString() + ChCTe + NSeqEvento.ToString((Convert.ToDecimal(DetEvento.VersaoEvento) >= 400 ? "000" : "00"));
             set => _ = value;
         }
 
