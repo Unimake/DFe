@@ -1694,7 +1694,6 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         /// Propriedade só existe até a versão 3.00 do schema do CTe
         /// </summary>
         [XmlElement("refCteAnu")]
-        [Obsolete("A tag <refCteAnu> não existe na versão 4.00 do CTe.")]
         public string RefCteAnu { get; set; }
 
 

@@ -5,7 +5,7 @@ using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
 using Diag = System.Diagnostics;
 
-namespace Unimake.DFe.Test.CTe
+namespace Unimake.DFe.Test.CTeOS
 {
     /// <summary>
     /// Testar o serviço de recepção de eventos da CTe
@@ -21,7 +21,7 @@ namespace Unimake.DFe.Test.CTe
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
         /// <param name="versao">Versão do schema</param>
         [Theory]
-        [Trait("DFe", "CTe")]
+        [Trait("DFe", "CTeOS")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao, "3.00")]

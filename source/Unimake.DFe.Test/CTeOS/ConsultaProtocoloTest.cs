@@ -5,23 +5,22 @@ using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
 using Diag = System.Diagnostics;
 
-namespace Unimake.DFe.Test.CTe
+namespace Unimake.DFe.Test.CTeOS
 {
     /// <summary>
-    /// Testar o serviço de recepção de eventos da CTe
+    /// Testar o serviço de consulta protocolo do MDFe
     /// </summary>
-    public class RecepcaoEventoTest
+    public class ConsultaProtocoloTest
     {
         /// <summary>
-        /// Enviar um evento de da CTe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
-        /// Enviar um evento por estado + ambiente para garantir que todos estão funcionando.
-        /// Evento utilizado no teste é o cancelamento, pois tem em todos estados e também no ambiente nacional.
+        /// Consultar uma chave de CTe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
         /// </summary>
-        /// <param name="ufBrasil">UF para onde deve ser enviado xml</param>
-        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta situação</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta situação</param>
         /// <param name="versao">Versão do schema</param>
         [Theory]
-        [Trait("DFe", "CTe")]
+        [Trait("DFe", "CTeOS")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao, "3.00")]
@@ -105,28 +104,15 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao, "3.00")]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao, "3.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao, "3.00")]
-        public void RecepcaoEventoEstados(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
+        public void ConsultarProtocoloCTe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
             try
             {
-                var xml = new EventoCTe
+                var xml = new ConsSitCTe
                 {
                     Versao = versao,
-                    InfEvento = new InfEvento(new DetEventoCanc
-                    {
-                        NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.PR) + "0000000000000",
-                        VersaoEvento = versao,
-                        XJust = "Justificativa para cancelamento da CTe de teste"
-                    })
-                    {
-                        COrgao = ufBrasil,
-                        ChCTe = (int)ufBrasil + "200206117473000150570010000005671227070615",
-                        CNPJ = "06117473000150",
-                        DhEvento = DateTime.Now,
-                        TpEvento = TipoEventoCTe.Cancelamento,
-                        NSeqEvento = 1,
-                        TpAmb = tipoAmbiente
-                    }
+                    TpAmb = tipoAmbiente,
+                    ChCTe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
                 };
 
                 var configuracao = new Configuracao
@@ -136,14 +122,25 @@ namespace Unimake.DFe.Test.CTe
                     CertificadoDigital = PropConfig.CertificadoDigital
                 };
 
-                var recepcaoEvento = new RecepcaoEvento(xml, configuracao);
-                recepcaoEvento.Executar();
+                var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
+                consultaProtocolo.Executar();
 
                 Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
+
+                if (versao == "3.00" || consultaProtocolo.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
+                {
+                    Diag.Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                }
+
+                Diag.Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                if (consultaProtocolo.Result.ProtCTe != null)
+                {
+                    if (consultaProtocolo.Result.ProtCTe.InfProt != null)
+                    {
+                        Diag.Debug.Assert(consultaProtocolo.Result.ProtCTe.InfProt.ChCTe.Equals(xml.ChCTe), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
+                    }
+                }
             }
             catch (Exception ex)
             {

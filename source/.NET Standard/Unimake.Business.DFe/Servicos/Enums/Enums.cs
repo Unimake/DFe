@@ -3805,10 +3805,9 @@ namespace Unimake.Business.DFe.Servicos
         Complementar = 1,
 
         /// <summary>
-        /// 3=CTe de Anulação
+        /// 3=CTe de Anulação (Tipo obsoleto, só funciona para versão 3.00 do CTe)
         /// </summary>
         [XmlEnum("2")]
-        [Obsolete("Tipo de CTe está obsoleto, será removido com o tempo. Só é aceito na versão 3.00 do CTe.")]
         Anulacao = 2,
 
         /// <summary>
