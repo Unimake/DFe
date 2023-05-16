@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="CTeOS">
-		<!-- Versão 2.00 do CTe -->
+		<!-- Versão 2.00 do CTeOS -->
 
 		<ConsultaCadastro versao="2.00">
 			<Descricao>Consulta cadastro do contribuinte</Descricao>
@@ -16,7 +16,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaCadastro>
 
-		<!-- Versão 3.00 do CTe -->
+		<!-- Versão 3.00 do CTeOS -->
 
 		<StatusServico versao="3.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
@@ -98,7 +98,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RecepcaoEvento>
 
-		<!-- Versão 4.00 do CTe -->
+		<!-- Versão 4.00 do CTeOS -->
 
 		<StatusServico versao="4.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>

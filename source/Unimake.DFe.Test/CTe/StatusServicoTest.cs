@@ -18,6 +18,7 @@ namespace Unimake.DFe.Test.CTe
         /// </summary>
         /// <param name="ufBrasil">UF para onde deve ser enviado a consulta status</param>
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta status</param>
+        /// <param name="versao">Versão do schema</param>
         [Theory]
         [Trait("DFe", "CTe")]
         [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao, "3.00")]

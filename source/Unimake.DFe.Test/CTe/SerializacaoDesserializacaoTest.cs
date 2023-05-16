@@ -3,7 +3,6 @@ using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.CTe;
-using Unimake.Business.DFe.Xml.CTeOS;
 using Xunit;
 using Unimake.Business.DFe.Utility;
 
@@ -59,8 +58,8 @@ namespace Unimake.DFe.Test.CTe
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = new CTeOS();
-            xml = xml.LerXML<CTeOS>(doc);
+            var xml = new Unimake.Business.DFe.Xml.CTeOS.CTeOS();
+            xml = xml.LerXML<Unimake.Business.DFe.Xml.CTeOS.CTeOS>(doc);
 
             var configuracao = new Configuracao
             {
