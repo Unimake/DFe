@@ -49,6 +49,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao, "3.00")]
 
+        [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao, "4.00")]
 
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao, "3.00")]
@@ -81,7 +82,7 @@ namespace Unimake.DFe.Test.CTe
         public void EnviarCTeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
             //Estados que não tem envio síncrono
-            if (ufBrasil == UFBrasil.MG || ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.RR || ufBrasil == UFBrasil.PE || ufBrasil == UFBrasil.AP)
+            if (versao == "3.00" && (ufBrasil == UFBrasil.MG || ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.RR || ufBrasil == UFBrasil.PE || ufBrasil == UFBrasil.AP))
             {
                 return;
             }

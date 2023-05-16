@@ -48,6 +48,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao, "3.00")]
 
+        [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao, "4.00")]
 
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao, "3.00")]
@@ -101,7 +102,12 @@ namespace Unimake.DFe.Test.CTe
 
                 Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+
+                if (versao == "3.00" || statusServico.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
+                {
+                    Diag.Debug.Assert(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                }
+
                 Diag.Debug.Assert(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
                 Diag.Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
             }

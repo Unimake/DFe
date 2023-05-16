@@ -1,9 +1,9 @@
 ﻿using System;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
+using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTe
 {
@@ -48,6 +48,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao, "3.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao, "3.00")]
 
+        [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao, "4.00")]
 
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao, "3.00")]
@@ -100,17 +101,22 @@ namespace Unimake.DFe.Test.CTe
 
                 Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
                 Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if(consultaProtocolo.Result.ProtCTe != null)
+
+                if (versao == "3.00" || consultaProtocolo.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
                 {
-                    if(consultaProtocolo.Result.ProtCTe.InfProt != null)
+                    Diag.Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                }
+
+                Diag.Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                if (consultaProtocolo.Result.ProtCTe != null)
+                {
+                    if (consultaProtocolo.Result.ProtCTe.InfProt != null)
                     {
                         Diag.Debug.Assert(consultaProtocolo.Result.ProtCTe.InfProt.ChCTe.Equals(xml.ChCTe), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
