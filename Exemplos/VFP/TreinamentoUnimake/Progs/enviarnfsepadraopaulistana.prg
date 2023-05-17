@@ -1,9 +1,9 @@
 * ---------------------------------------------------------------------------------
-* Enviar CTe de forma síncrona
+* Enviar NFSe padrão Paulistana (Município de São Paulo)
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarNFSePadraoPAULISTANA()
-   LOCAL oConfiguracao, oErro, oExceptionInterop
-   LOCAL oGerarNfse, oEnvioRPS, xmlNfse
+   LOCAL oConfiguracao, oErro, oExceptionInterop, oConfigConsulta
+   LOCAL oGerarNfse, oEnvioRPS, xmlNfse, xmlConsultaRPS, oConsultarNfse
    
  * Criar o objeto de configuração mínima
    oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
@@ -12,87 +12,16 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
    oConfiguracao.CertificadoSenha = "12345678"   
   
    oConfiguracao.TipoAmbiente = 1 && Produção
-
-*   oConfiguracao.CodigoMunicipio = 4118402 && Código do IBGE de Paranavaí-PR
-*   oConfiguracao.Servico = 27 && Servico.NFSeGerarNfse
-*   oConfiguracao.SchemaVersao = "1.20"
-*   oConfiguracao.MunicipioSenha = "123456"
-*   oConfiguracao.MunicipioUsuario = "01001001000113"
    
    oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
    oConfiguracao.Servico = 45 && Servico.NFSeEnvioRps
    oConfiguracao.SchemaVersao = "2.00"
    
+*   oConfiguracao.MunicipioSenha = "123456"
+*   oConfiguracao.MunicipioUsuario = "01001001000113"
       
  * Montar a string do XML
    xmlNfse = ""
-*   xmlNfse = xmlNfse + AllTrim([<?xml version="1.0" encoding="utf-8"?>])
-*   xmlNfse = xmlNfse + AllTrim([<nfse>])
-*   xmlNfse = xmlNfse + AllTrim([	<nfse_teste>1</nfse_teste>])
-*   xmlNfse = xmlNfse + AllTrim([	<nf>])
-*   xmlNfse = xmlNfse + AllTrim([		<serie_nfse>1</serie_nfse>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_total>0,10</valor_total>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_desconto>0,00</valor_desconto>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_ir>0,00</valor_ir>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_inss>0,00</valor_inss>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_contribuicao_social>0,00</valor_contribuicao_social>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_rps>0,00</valor_rps>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_pis>0,00</valor_pis>])
-*   xmlNfse = xmlNfse + AllTrim([		<valor_cofins>0,00</valor_cofins>])
-*   xmlNfse = xmlNfse + AllTrim([		<observacao/>])
-*   xmlNfse = xmlNfse + AllTrim([	</nf>])
-*   xmlNfse = xmlNfse + AllTrim([	<prestador>])
-*   xmlNfse = xmlNfse + AllTrim([		<cpfcnpj>06117473000150</cpfcnpj>])
-*   xmlNfse = xmlNfse + AllTrim([		<cidade>7749</cidade>])
-*   xmlNfse = xmlNfse + AllTrim([	</prestador>])
-*   xmlNfse = xmlNfse + AllTrim([	<tomador>])
-*   xmlNfse = xmlNfse + AllTrim([		<tipo>F</tipo>])
-*   xmlNfse = xmlNfse + AllTrim([		<cpfcnpj>77988006037</cpfcnpj>])
-*   xmlNfse = xmlNfse + AllTrim([		<ie/>])
-*   xmlNfse = xmlNfse + AllTrim([		<nome_razao_social>EMPRESA TESTE</nome_razao_social>])
-*   xmlNfse = xmlNfse + AllTrim([		<sobrenome_nome_fantasia>EMPRESA TESTE</sobrenome_nome_fantasia>])
-*   xmlNfse = xmlNfse + AllTrim([		<logradouro>KM47</logradouro>])
-*   xmlNfse = xmlNfse + AllTrim([		<email/>])
-*   xmlNfse = xmlNfse + AllTrim([		<complemento/>])
-*   xmlNfse = xmlNfse + AllTrim([		<ponto_referencia/>])
-*   xmlNfse = xmlNfse + AllTrim([		<bairro>RURAL</bairro>])
-*   xmlNfse = xmlNfse + AllTrim([		<cidade>7829</cidade>])
-*   xmlNfse = xmlNfse + AllTrim([		<cep>87800000</cep>])
-*   xmlNfse = xmlNfse + AllTrim([		<ddd_fone_comercial>044</ddd_fone_comercial>])
-*   xmlNfse = xmlNfse + AllTrim([		<fone_comercial>36721722</fone_comercial>])
-*   xmlNfse = xmlNfse + AllTrim([		<ddd_fone_residencial/>])
-*   xmlNfse = xmlNfse + AllTrim([		<fone_residencial/>])
-*   xmlNfse = xmlNfse + AllTrim([		<ddd_fax/>])
-*   xmlNfse = xmlNfse + AllTrim([		<fone_fax/>])
-*   xmlNfse = xmlNfse + AllTrim([	</tomador>])
-*   xmlNfse = xmlNfse + AllTrim([	<itens>])
-*   xmlNfse = xmlNfse + AllTrim([		<lista>])
-*   xmlNfse = xmlNfse + AllTrim([			<codigo_local_prestacao_servico>7749</codigo_local_prestacao_servico>])
-*   xmlNfse = xmlNfse + AllTrim([			<codigo_item_lista_servico>0101</codigo_item_lista_servico>])
-*   xmlNfse = xmlNfse + AllTrim([			<descritivo>SERVICO DESENVOLVIMENTO DE SISTEMAS</descritivo>])
-*   xmlNfse = xmlNfse + AllTrim([			<aliquota_item_lista_servico>2,00</aliquota_item_lista_servico>])
-*   xmlNfse = xmlNfse + AllTrim([			<situacao_tributaria>0</situacao_tributaria>])
-*   xmlNfse = xmlNfse + AllTrim([			<valor_tributavel>0,10</valor_tributavel>])
-*   xmlNfse = xmlNfse + AllTrim([			<valor_deducao>0,00</valor_deducao>])
-*   xmlNfse = xmlNfse + AllTrim([			<valor_issrf>0,00</valor_issrf>])
-*   xmlNfse = xmlNfse + AllTrim([			<tributa_municipio_prestador>N</tributa_municipio_prestador>])
-*   xmlNfse = xmlNfse + AllTrim([			<unidade_codigo/>])
-*   xmlNfse = xmlNfse + AllTrim([			<unidade_quantidade/>])
-*   xmlNfse = xmlNfse + AllTrim([			<unidade_valor_unitario/>])
-*   xmlNfse = xmlNfse + AllTrim([		</lista>])
-*   xmlNfse = xmlNfse + AllTrim([	</itens>])
-*   xmlNfse = xmlNfse + AllTrim([	<forma_pagamento>])
-*   xmlNfse = xmlNfse + AllTrim([		<tipo_pagamento>2</tipo_pagamento>])
-*   xmlNfse = xmlNfse + AllTrim([		<parcelas>])
-*   xmlNfse = xmlNfse + AllTrim([			<parcela>])
-*   xmlNfse = xmlNfse + AllTrim([				<numero>1</numero>])
-*   xmlNfse = xmlNfse + AllTrim([				<valor>0,10</valor>])
-*   xmlNfse = xmlNfse + AllTrim([				<data_vencimento>10/04/2023</data_vencimento>])
-*   xmlNfse = xmlNfse + AllTrim([			</parcela>])
-*   xmlNfse = xmlNfse + AllTrim([		</parcelas>])
-*   xmlNfse = xmlNfse + AllTrim([	</forma_pagamento>])
-*   xmlNfse = xmlNfse + AllTrim([</nfse>])
-
    xmlNfse = xmlNfse + AllTrim([<?xml version="1.0" encoding="UTF-8"?>])
    xmlNfse = xmlNfse + AllTrim([<PedidoEnvioRPS xmlns="http://www.prefeitura.sp.gov.br/nfe">])
    xmlNfse = xmlNfse + AllTrim([	<Cabecalho Versao="1" xmlns="">])
@@ -148,14 +77,44 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
    oExceptionInterop = CREATEOBJECT("Unimake.Exceptions.ThrowHelper")     
 
    TRY 
-*      oGerarNfse = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.GerarNfse")
-*      oGerarNfse.Executar(xmlnfse, oConfiguracao)
-
       oEnvioRPS = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.EnvioRps")
       oEnvioRPS.Executar(xmlnfse, oConfiguracao)
-
       
       MESSAGEBOX(oEnvioRPS.RetornoWSString)
+      
+    * Criar o XML de consulta nfse por RPS
+      xmlConsultaRPS = ""
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([<?xml version="1.0" encoding="UTF-8"?>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([<p1:PedidoConsultaNFe xmlns:p1="http://www.prefeitura.sp.gov.br/nfe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([	<Cabecalho Versao="1">])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([		<CPFCNPJRemetente>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([			<CNPJ>99999997000100</CNPJ>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([		</CPFCNPJRemetente>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([	</Cabecalho>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([	<Detalhe>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([		<ChaveRPS>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([			<InscricaoPrestador>39616924</InscricaoPrestador>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([			<SerieRPS>BB</SerieRPS>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([			<NumeroRPS>4105</NumeroRPS>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([		</ChaveRPS>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([	</Detalhe>])
+      xmlConsultaRPS = xmlConsultaRPS + AllTrim([</p1:PedidoConsultaNFe>])
+      
+    * Consumir o serviço de consulta nfse por RPS  
+      
+      oConfigConsulta = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
+      oConfigConsulta.TipoDFe = 5 && TipoDFe.NFSe
+      oConfigConsulta.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
+      oConfigConsulta.CertificadoSenha = "12345678"   
+      oConfigConsulta.TipoAmbiente =  1 && Produção
+      oConfigConsulta.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
+      oConfigConsulta.Servico = 32 && Servico.NFSeConsultarNfse
+      oConfigConsulta.SchemaVersao = "2.00"
+
+      oConsultarNfse = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfse")
+      oConsultarNfse.Executar(xmlConsultaRPS, oConfigConsulta);   
+      
+      MESSAGEBOX(oConsultarNfse.RetornoWSString)
 	     
    CATCH TO oErro
     * Excecao do FOXPRO
