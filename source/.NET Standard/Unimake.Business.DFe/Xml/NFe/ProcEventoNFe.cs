@@ -101,7 +101,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
 
             var nodeListRetEvento = document.GetElementsByTagName("retEvento");
-            if (nodeListRetEvento != null)
+            if (nodeListRetEvento.Count > 0)
             {
                 RetEvento = XMLUtility.Deserializar<RetEvento>(((XmlElement)nodeListRetEvento[0]).OuterXml);
             }
