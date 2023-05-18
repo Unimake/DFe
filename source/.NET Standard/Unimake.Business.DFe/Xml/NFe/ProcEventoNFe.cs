@@ -69,6 +69,8 @@ namespace Unimake.Business.DFe.Xml.NFe
                 var nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature");
                 if (nodeListEventoSignature != null)
                 {
+                    //TODO: Wandrey - Pelo que eu vi a SEFAZ MG corrigiu esta falha, testar consultando a chave 31230507400075000109550090000001901987052951 em homologação, se sim, remover esta parte específica.
+
                     //SEFAZ MG está retornando o nome da tag signature da seguinte forma <Signature:Signature> e o correto é somente <Signature>
                     //Até que eles façam a correção, já solicitamos abertura de chamado na SEFAZ MG, vamos manter este código para evitar erro de objeto não reconhecido.
                     if (Evento.InfEvento.ChNFe.Substring(0, 2) == "31")
