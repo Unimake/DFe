@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2023.05.16.1643</AssemblyVersion>
-		<FileVersion>2023.05.16.1643</FileVersion>
+		<AssemblyVersion>2023.05.18.1139</AssemblyVersion>
+		<FileVersion>2023.05.18.1139</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
