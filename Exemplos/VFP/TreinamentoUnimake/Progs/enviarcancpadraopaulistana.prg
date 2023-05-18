@@ -30,8 +30,8 @@ FUNCTION EnviarCancPadraoPAULISTANA()
       xmlCanc = xmlCanc + AllTrim([o9T8uw==</AssinaturaCancelamento>])
       xmlCanc = xmlCanc + AllTrim([	</Detalhe>])
       xmlCanc = xmlCanc + AllTrim([</PedidoCancelamentoNFe>])
-         
-    * Consumir o serviço de consulta
+
+   * Consumir o serviço de consulta
       oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
@@ -40,11 +40,12 @@ FUNCTION EnviarCancPadraoPAULISTANA()
       oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
       oConfiguracao.Servico = 46  && Servico.NFSeCancelamentoNfe
       oConfiguracao.SchemaVersao = "2.00"
-
+      
       oCancelamentoNfe = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.CancelamentoNfe")
       oCancelamentoNfe.Executar(xmlCanc, oConfiguracao)  
       
-      MESSAGEBOX(oCancelamentoNfe.RetornoWSString)      
+      MESSAGEBOX(oCancelamentoNfe.RetornoWSString)     
+
 
    CATCH TO oErro
     * Excecao do FOXPRO

@@ -80,7 +80,7 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
       oEnvioRPS = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.EnvioRps")
       oEnvioRPS.Executar(xmlnfse, oConfiguracao)
       
-      MESSAGEBOX(oEnvioRPS.RetornoWSString)
+      MESSAGEBOX(oEnvioRPS.RetornoWSString)  
       
     * Criar o XML de consulta nfse por RPS
       xmlConsultaRPS = ""
@@ -100,8 +100,7 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
       xmlConsultaRPS = xmlConsultaRPS + AllTrim([	</Detalhe>])
       xmlConsultaRPS = xmlConsultaRPS + AllTrim([</p1:PedidoConsultaNFe>])
       
-    * Consumir o serviço de consulta nfse por RPS  
-      
+    * Consumir o serviço de consulta nfse por RPS        
       oConfigConsulta = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
       oConfigConsulta.TipoDFe = 5 && TipoDFe.NFSe
       oConfigConsulta.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
@@ -110,12 +109,12 @@ FUNCTION EnviarNFSePadraoPAULISTANA()
       oConfigConsulta.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
       oConfigConsulta.Servico = 32 && Servico.NFSeConsultarNfse
       oConfigConsulta.SchemaVersao = "2.00"
-
+      
       oConsultarNfse = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultarNfse")
-      oConsultarNfse.Executar(xmlConsultaRPS, oConfigConsulta);   
+      oConsultarNfse.Executar(xmlConsultaRPS, oConfigConsulta)
       
       MESSAGEBOX(oConsultarNfse.RetornoWSString)
-	     
+     
    CATCH TO oErro
     * Excecao do FOXPRO
 	* Mais sobre excecao em FOXPRO

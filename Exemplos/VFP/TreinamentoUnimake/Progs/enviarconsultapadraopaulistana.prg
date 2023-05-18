@@ -5,7 +5,7 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
    LOCAL xmlConsulta, oConfiguracao 
    LOCAL oErro, oConsultaNFeEmitidas, oConsultarNfse, oConsultaNFeRecebidas   
       
-   TRY 
+   TRY
     * ------------------------------------------------------   
     * Consulta da NFSe por RPS
     * ------------------------------------------------------
@@ -63,7 +63,7 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
       xmlConsulta = xmlConsulta + AllTrim([	</Cabecalho>])
       xmlConsulta = xmlConsulta + AllTrim([</p1:PedidoConsultaNFePeriodo>])  
       
-    * Consumir o serviço de consulta
+   * Consumir o serviço de consulta
       oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
       oConfiguracao.TipoDFe = 5 && TipoDFe.NFSe
       oConfiguracao.CertificadoArquivo = "C:\Projetos\UnimakeCM.pfx"
@@ -71,13 +71,13 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
       oConfiguracao.TipoAmbiente =  1 && Produção
       oConfiguracao.CodigoMunicipio = 3550308 && Código do IBGE de São Paulo-SP
       oConfiguracao.Servico = 42 && Servico.NFSeConsultaNFeEmitidas
-      oConfiguracao.SchemaVersao = "2.00"        
+      oConfiguracao.SchemaVersao = "2.00"
       
       oConsultaNFeEmitidas = CREATEOBJECT("Unimake.Business.DFe.Servicos.NFSe.ConsultaNFeEmitidas")
       oConsultaNFeEmitidas.Executar(xmlConsulta, oConfiguracao)
        
       MESSAGEBOX(oConsultaNFeEmitidas.RetornoWSString)
-      
+            
     * ------------------------------------------------------   
     * Consulta de NFSe´s Recebidas por período
     * ------------------------------------------------------
@@ -113,6 +113,7 @@ FUNCTION EnviarConsultaPadraoPAULISTANA()
       oConsultaNFeRecebidas.Executar(xmlConsulta, oConfiguracao)
        
       MESSAGEBOX(oConsultaNFeRecebidas.RetornoWSString)      
+
 
    CATCH TO oErro
     * Excecao do FOXPRO
