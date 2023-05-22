@@ -115,5 +115,25 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
 		</ConsultarNfsePDF>
+		<SolicitacaoInutilizacao versao="1.00">
+			<Descricao>Solicitar Inutilizacao NFSe</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomol.caxias.rs.gov.br/portal/Servicos?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.caxias.rs.gov.br/portal/Servicos?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>solicitacaoInutilizacao</TagAssinatura>
+			<TagAtributoID>numeroSolicitacao</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:inutilizacao><xml>{xmlBodyScapeRetorno}</xml></ws:inutilizacao></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:inutilizacao><xml>{xmlBodyScapeRetorno}</xml></ws:inutilizacao></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</SolicitacaoInutilizacao>
 	</Servicos>
 </Configuracoes>

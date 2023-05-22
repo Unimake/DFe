@@ -115,5 +115,24 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
 		</ConsultarNfsePDF>
+		<SolicitacaoInutilizacao versao="1.00">
+			<Descricao>Solicitar Inutilizacao NFSe</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://sapucaia.infisc.com.br/portal/Servicos?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:inutilizacao><xml>{xmlBodyScapeRetorno}</xml></ws:inutilizacao></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</SolicitacaoInutilizacao>
 	</Servicos>
 </Configuracoes>

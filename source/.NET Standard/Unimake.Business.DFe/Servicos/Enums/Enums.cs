@@ -391,6 +391,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Obter Nota Fiscal Xml")]
         NFSeObterNotaFiscalXml = 62,
 
+        /// <summary>
+        /// 63 - Inutilizacao NFSe
+        /// </summary>
+        [Description("Solicitar Inutilizacao NFSe")]
+        NFSeSolicitacaoInutilizacao = 63,
+
         #endregion
 
         #region Gerais
