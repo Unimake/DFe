@@ -1890,9 +1890,9 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
-		<PackageReference Include="Unimake.Cryptography" Version="20230509.903.26" />
-		<PackageReference Include="Unimake.Extensions" Version="20230509.903.26" />
-		<PackageReference Include="Unimake.Utils" Version="20230509.903.26" />
+		<PackageReference Include="Unimake.Cryptography" Version="20230522.1212.16" />
+		<PackageReference Include="Unimake.Extensions" Version="20230522.1212.16" />
+		<PackageReference Include="Unimake.Utils" Version="20230522.1212.16" />
 	</ItemGroup>
 
 	<ItemGroup>
