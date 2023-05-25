@@ -1,11 +1,9 @@
 ﻿using System;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.NFe;
-using Unimake.Business.DFe.Xml.NFe;
-using Xunit;
-using Unimake.Business.DFe.Xml.CCG;
 using Unimake.Business.DFe.Servicos.CCG;
+using Unimake.Business.DFe.Xml.CCG;
+using Xunit;
+using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CCG
 {
@@ -35,6 +33,7 @@ namespace Unimake.DFe.Test.CCG
                 var configuracao = new Configuracao
                 {
                     TipoDFe = TipoDFe.CCG,
+                    TipoAmbiente = tipoAmbiente,
                     CertificadoDigital = PropConfig.CertificadoDigital
                 };
 

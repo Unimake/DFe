@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe
                     }
                     break;
             }
-            
+
             if (Config.PadraoNFSe == PadraoNFSe.IPM)
             {
                 if (resultadoRetorno.GetElementsByTagName("codigo_html").Count >= 1)
@@ -72,7 +72,7 @@ namespace Unimake.Business.DFe
                     resultadoRetorno.DocumentElement.RemoveChild(resultadoRetorno.GetElementsByTagName("codigo_html")[0]);
                 }
             }
-           
+
             return resultadoRetorno;
         }
 
@@ -80,25 +80,24 @@ namespace Unimake.Business.DFe
         #region Private Methods
 
         /// <summary>
-        /// Método para desserealizar e buscar o XML dentro de um JSON
+        /// Método para desserializar e buscar o XML dentro de um JSON
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="config">Objeto com as configurações para consumir a API</param>
+        /// <param name="content">Conteúdo</param>
         /// <returns></returns>
-        private static string BuscarXML(ref APIConfig Config, string content)
+        private static string BuscarXML(ref APIConfig config, string content)
         {
-            string result = "";
-            string temp = "";
-            XmlDocument xml = JsonConvert.DeserializeXmlNode(content, "temp");
+            string result;
+            var xml = JsonConvert.DeserializeXmlNode(content, "temp");
             XmlNode node;
-
 
             try
             {
-                node = xml.GetElementsByTagName(Config.TagRetorno)[0];         //tag retorno
+                node = xml.GetElementsByTagName(config.TagRetorno)[0];         //tag retorno
                 if (node != null)
                 {
-                    temp = Compress.GZIPDecompress(node.InnerText);
-                    Config.TagRetorno = "prop:innertext";
+                    var temp = Compress.GZIPDecompress(node.InnerText);
+                    config.TagRetorno = "prop:innertext";
                     return temp;
                 }
             }
@@ -145,8 +144,8 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         private static string StringToXml(string str)
         {
-            XmlSerializer xml = new XmlSerializer(str.GetType());
-            StringWriter retorno = new StringWriter();
+            var xml = new XmlSerializer(str.GetType());
+            var retorno = new StringWriter();
             xml.Serialize(retorno, str);
 
             return retorno.ToString();

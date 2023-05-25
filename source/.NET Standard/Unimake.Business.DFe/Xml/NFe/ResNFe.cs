@@ -4,8 +4,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -53,8 +55,14 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("tpNF")]
         public TipoOperacao TpNF { get; set; }
 
+        [XmlIgnore]
+        public double VNF { get; set; }
         [XmlElement("vNF")]
-        public string VNF { get; set; }
+        public string VNFField
+        {
+            get => VNF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VNF = Converter.ToDouble(value);
+        }
 
         [XmlElement("digVal")]
         public string DigVal { get; set; }
