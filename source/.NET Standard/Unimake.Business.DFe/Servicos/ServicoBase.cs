@@ -253,6 +253,7 @@ namespace Unimake.Business.DFe.Servicos
                     EnderecoWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao),
                     ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
                     TagRetorno = Configuracoes.WebTagRetorno,
+                    TagRetornoHomologacao = Configuracoes.WebTagRetornoHomologacao,
                     EncodingRetorno = Configuracoes.WebEncodingRetorno,
                     GZIPCompress = Configuracoes.GZIPCompress,
                     VersaoSoap = Configuracoes.WebSoapVersion,
@@ -261,6 +262,7 @@ namespace Unimake.Business.DFe.Servicos
                     TimeOutWebServiceConnect = Configuracoes.TimeOutWebServiceConnect,
                     PadraoNFSe = Configuracoes.PadraoNFSe,
                     UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
+                    TipoAmbiente = Configuracoes.TipoAmbiente,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)

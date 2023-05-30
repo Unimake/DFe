@@ -22,6 +22,8 @@ namespace Unimake.Business.DFe
         private int _TimeOutWebServiceConnect;
         private PadraoNFSe _PadraoNFSe;
         private bool _UsaCertificadoDigital;
+        private string _TagRetornoHomologacao;
+        private TipoAmbiente _TipoAmbiente;
 
         #endregion Private Fields
 
@@ -88,6 +90,24 @@ namespace Unimake.Business.DFe
         {
             get => string.IsNullOrWhiteSpace(_TagRetorno) ? (_TagRetorno = "nfeResultMsg") : _TagRetorno;
             set => _TagRetorno = value;
+        }
+
+        /// <summary>
+        /// Nome da tag de retorno de conteúdo que é devolvido pelo WebService
+        /// </summary>
+        public string TagRetornoHomologacao
+        {
+            get => string.IsNullOrWhiteSpace(_TagRetornoHomologacao) ? (_TagRetornoHomologacao = "nfeResultMsg") : _TagRetornoHomologacao;
+            set => _TagRetornoHomologacao = value;
+        }
+
+        /// <summary>
+        /// Tipo ambiente
+        /// </summary>
+        public TipoAmbiente TipoAmbiente
+        {
+            get => _TipoAmbiente;
+            set => _TipoAmbiente = value;
         }
 
         /// <summary>

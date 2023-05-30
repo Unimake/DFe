@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.SNCM;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -71,15 +72,15 @@ namespace Unimake.Business.DFe
             {
                 if (soap.PadraoNFSe == PadraoNFSe.TINUS)
                 {
-                        var doc = new XmlDocument();
-                        doc.LoadXml(xmlBody);
-                        xmlBody = "";
+                    var doc = new XmlDocument();
+                    doc.LoadXml(xmlBody);
+                    xmlBody = "";
 
-                        foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
-                        {
-                            xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
-                        }
+                    foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
+                    {
+                        xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
                     }
+                }
 
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
@@ -114,13 +115,12 @@ namespace Unimake.Business.DFe
         {
             var soap = (WSSoap)servico;
 
-            
-            if(certificado == null && soap.UsaCertificadoDigital)
+            if (certificado == null && soap.UsaCertificadoDigital)
             {
                 throw new CertificadoDigitalException();
             }
 
-            
+
             TratarScapeEnvio = false;
             TratarScapeRetorno = false;
 
@@ -215,16 +215,32 @@ namespace Unimake.Business.DFe
 
             if (soap.TagRetorno.ToLower() != "prop:innertext")
             {
-                if (retornoXml.GetElementsByTagName(soap.TagRetorno)[0] == null)
+                if (retornoXml.InnerXml.IndexOf("nfeResultMsg") > 0)
                 {
-                    throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
-                        "Conteúdo retornado pelo servidor:\r\n\r\n" +
-                        retornoXml.InnerXml);
+
+                    if (soap.TipoAmbiente == TipoAmbiente.Producao && retornoXml.GetElementsByTagName(soap.TagRetorno)[0] == null)
+                    {
+                        throw new Exception("Não foi possível localizar a tag <" + soap.TagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
+                              "Conteúdo retornado pelo servidor:\r\n\r\n" +
+                           retornoXml.InnerXml);
+                    }
+
+                    else if (soap.TipoAmbiente == TipoAmbiente.Homologacao && retornoXml.GetElementsByTagName(soap.TagRetornoHomologacao)[0] == null)
+                    {
+                        throw new Exception("Não foi possível localizar a tag <" + soap.TagRetornoHomologacao + "> no XML retornado pelo webservice.\r\n\r\n" +
+                              "Conteúdo retornado pelo servidor:\r\n\r\n" +
+                           retornoXml.InnerXml);
+                    }
+
                 }
 
                 if (TratarScapeRetorno)
                 {
                     RetornoServicoString = retornoXml.GetElementsByTagName(soap.TagRetorno)[0].ChildNodes[0].InnerText;
+                }
+                else if(soap.TipoAmbiente == TipoAmbiente.Homologacao && retornoXml.OuterXml.IndexOf("nfeResultMsg") > 0)
+                {
+                    RetornoServicoString = retornoXml.GetElementsByTagName(soap.TagRetornoHomologacao)[0].ChildNodes[0].OuterXml;
                 }
                 else
                 {

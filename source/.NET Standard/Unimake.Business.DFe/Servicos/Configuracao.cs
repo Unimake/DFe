@@ -665,6 +665,11 @@ namespace Unimake.Business.DFe.Servicos
                             WebTagRetorno = XMLUtility.TagRead(elementVersao, "WebTagRetorno");
                         }
 
+                        if (XMLUtility.TagExist(elementVersao, "WebTagRetornoHomologacao"))
+                        {
+                            WebTagRetornoHomologacao = XMLUtility.TagRead(elementVersao, "WebTagRetornoHomologacao");
+                        }
+
                         if (XMLUtility.TagExist(elementVersao, "WebEncodingRetorno"))
                         {
                             WebEncodingRetorno = XMLUtility.TagRead(elementVersao, "WebEncodingRetorno");
@@ -1105,6 +1110,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Nome da tag de retorno do serviço
         /// </summary>
         public string WebTagRetorno { get; set; }
+
+        /// <summary>
+        /// Nome da tag de retorno do serviço
+        /// </summary>
+        public string WebTagRetornoHomologacao { get; set; }
 
         /// <summary>
         /// Encoding do XML retornado pelo webservice (Padrão é UTF-8, mas tem webservices que retornam em encodings diferentes, para estes tem que definir para que os caracteres fiquem corretos.)
