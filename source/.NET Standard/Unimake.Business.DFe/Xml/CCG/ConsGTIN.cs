@@ -6,6 +6,7 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Xml.CCG
 {
@@ -39,19 +40,31 @@ namespace Unimake.Business.DFe.Xml.CCG
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
+#if INTEROP
+                    ThrowHelper.Instance.Throw(new Exception("Código GTIN inválido! Não pode ser nulo ou espaço em branco."));
+#else
                     throw new Exception("Código GTIN inválido! Não pode ser nulo ou espaço em branco.");
+#endif
                 }
 
                 if (value.Length != 8 && value.Length != 12 && value.Length != 13 && value.Length != 14)
                 {
+#if INTEROP
+                    ThrowHelper.Instance.Throw(new Exception("Código GTIN informado (" + value + ") inválido. GTIN deve ter, como tamanho, 8,12,13 ou 14 números sem conter letras."));
+#else
                     throw new Exception("Código GTIN informado (" + value + ") inválido. GTIN deve ter, como tamanho, 8,12,13 ou 14 números sem conter letras.");
+#endif
                 }
 
                 for (var i = 0; i < value.Length; i++)
                 {
                     if (!"0123456789".Contains(value.Substring(i, 1)))
                     {
+#if INTEROP
+                        ThrowHelper.Instance.Throw(new Exception("Código GTIN informado (" + value + ") inválido. Não pode conter letras, somente números."));
+#else
                         throw new Exception("Código GTIN informado (" + value + ") inválido. Não pode conter letras, somente números.");
+#endif
                     }
                 }
 

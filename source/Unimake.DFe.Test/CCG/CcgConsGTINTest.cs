@@ -27,7 +27,7 @@ namespace Unimake.DFe.Test.CCG
                 var xml = new ConsGTIN
                 {
                     Versao = "1.00",
-                    GTIN = "7894900019896" //Código da Coca Cola
+                    GTIN = "789611211726X" // "7894900019896" //Código da Coca Cola
                 };
 
                 var configuracao = new Configuracao
