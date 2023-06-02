@@ -97,7 +97,7 @@ namespace Unimake.Business.DFe
         /// </summary>
         public string TagRetornoHomologacao
         {
-            get => string.IsNullOrWhiteSpace(_TagRetornoHomologacao) ? (_TagRetornoHomologacao = "nfeResultMsg") : _TagRetornoHomologacao;
+            get => _TagRetornoHomologacao;
             set => _TagRetornoHomologacao = value;
         }
 

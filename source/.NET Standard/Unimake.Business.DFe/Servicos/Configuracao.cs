@@ -222,6 +222,11 @@ namespace Unimake.Business.DFe.Servicos
                                 WebTagRetorno = XMLUtility.TagRead(elementPropriedades, "WebTagRetorno");
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "WebTagRetornoHomologacao"))
+                            {
+                                WebTagRetornoHomologacao = XMLUtility.TagRead(elementPropriedades, "WebTagRetornoHomologacao");
+                            }
+
                             if (XMLUtility.TagExist(elementPropriedades, "WebEncodingRetorno"))
                             {
                                 WebEncodingRetorno = XMLUtility.TagRead(elementPropriedades, "WebEncodingRetorno");
