@@ -1600,4 +1600,10 @@
 		<ArqConfig>CaboDeSantoAgostinhoPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4307609">
+		<Nome>Estância Velha - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EstanciaVelhaRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
