@@ -1606,4 +1606,10 @@
 		<ArqConfig>EstanciaVelhaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5213103">
+		<Nome>Mineiros - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
