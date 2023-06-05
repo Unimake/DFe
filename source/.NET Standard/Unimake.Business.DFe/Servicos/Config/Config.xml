@@ -1612,4 +1612,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5211909">
+		<Nome>Jataí - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>JataiGO.xml</ArqConfig>
+		<PadraoNFSe>BSITBR</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

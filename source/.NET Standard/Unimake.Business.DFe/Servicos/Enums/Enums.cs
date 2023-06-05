@@ -6251,6 +6251,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("EMBRAS")]
         EMBRAS = 37,
+
+        /// <summary>
+        /// BSITBR
+        /// </summary>
+        [Description("BSITBR")]
+        BSITBR = 38,
     }
 
     #endregion

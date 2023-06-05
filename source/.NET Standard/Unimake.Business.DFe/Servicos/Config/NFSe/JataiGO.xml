@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="2.00">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://gestaopublica.jatai.bsit-br.com.br/integracao/services/nfseWS</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>p:Rps</TagAssinatura>
+			<TagAtributoID>p:InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType></WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><gerarNfse xmlns="http://ws.integration.pm.bsit.com.br/"><GerarNfseEnvio xmlns="">{xmlBodyScape}</GerarNfseEnvio></gerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>GerarNfseRetorno</WebTagRetorno>
+			<WebEncodingRetorno></WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://gestaopublica.jatai.bsit-br.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>p:Pedido</TagAssinatura>
+			<TagAtributoID>p:InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType></WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><cancelarNfse xmlns="http://ws.integration.pm.bsit.com.br/"><CancelarNfseEnvio xmlns="">{xmlBodyScape}</CancelarNfseEnvio></cancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
+			<WebEncodingRetorno></WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://gestaopublica.jatai.bsit-br.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType></WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarLoteRps xmlns="http://ws.integration.pm.bsit.com.br/"><ConsultarLoteRpsEnvio xmlns="">{xmlBodyScape}</ConsultarLoteRpsEnvio></consultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
+			<WebEncodingRetorno></WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.00">
+			<Descricao></Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://gestaopublica.jatai.bsit-br.com.br/integracao/services/nfseWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType></WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarNfseRps xmlns="http://ws.integration.pm.bsit.com.br/"><ConsultarNfseRpsEnvio xmlns="">{xmlBodyScape}</ConsultarNfseRpsEnvio></consultarNfseRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>
+			<WebEncodingRetorno></WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<p:GerarNfseEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://www.abrasf.org.br/nfse.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abrasf.org.br/nfse.xsd nfse-v2.xsd ">
+  <p:credenciais>
+    <p:usuario>11816286000102-302113401</p:usuario>
+    <p:senha>I8HCPss7</p:senha>
+    <p:chavePrivada>0358147c7d1814c7</p:chavePrivada>
+  </p:credenciais>
+  <p:Rps>
+    <p:InfDeclaracaoPrestacaoServico>
+      <p:Rps>
+        <p:IdentificacaoRps>
+          <p:Numero>9</p:Numero>
+          <p:Tipo>R1</p:Tipo>
+        </p:IdentificacaoRps>
+        <p:DataEmissao>2011-11-26T12:00:00</p:DataEmissao>
+        <p:Status>CO</p:Status>
+      </p:Rps>
+      <p:Servico>
+        <p:Valores>
+          <p:ValorServicos>1500</p:ValorServicos>
+          <p:ValorDeducoes>0.0</p:ValorDeducoes>
+          <p:ValorPis>0.0</p:ValorPis>
+          <p:ValorCofins>0.0</p:ValorCofins>
+          <p:ValorInss>0.0</p:ValorInss>
+          <p:ValorIr>0.0</p:ValorIr>
+          <p:ValorCsll>0.0</p:ValorCsll>
+          <p:OutrasRetencoes>0.0</p:OutrasRetencoes>
+          <p:Aliquota>0.0</p:Aliquota>
+          <p:DescontoIncondicionado>0.0</p:DescontoIncondicionado>
+          <p:DescontoCondicionado>10</p:DescontoCondicionado>
+        </p:Valores>
+        <p:ItemListaServico>1.01</p:ItemListaServico>
+        <p:CodigoCnae>4520001</p:CodigoCnae>
+        <p:CodigoTributacaoMunicipio>1</p:CodigoTributacaoMunicipio>
+        <p:Discriminacao>SERVIÇOS PRESTADOS ADEQUADAMENTE</p:Discriminacao>
+        <p:CodigoMunicipio>1</p:CodigoMunicipio>
+        <p:ExigibilidadeISS>01</p:ExigibilidadeISS>
+      </p:Servico>
+      <p:Prestador>
+        <p:CpfCnpj>
+          <p:Cnpj>99999999999999</p:Cnpj>
+        </p:CpfCnpj>
+        <p:InscricaoMunicipal>99999999</p:InscricaoMunicipal>
+      </p:Prestador>
+      <p:Tomador>
+        <p:IdentificacaoTomador>
+          <p:CpfCnpj>
+            <p:Cpf>99999999999</p:Cpf>
+          </p:CpfCnpj>
+          <p:InscricaoMunicipal>2</p:InscricaoMunicipal>
+        </p:IdentificacaoTomador>
+        <p:RazaoSocial>MARCELO HONÓRIO DOS SANTOS</p:RazaoSocial>
+        <p:Endereco>
+          <p:TipoLogradouro>RUA</p:TipoLogradouro>
+          <p:Logradouro>APINAJÉS</p:Logradouro>
+          <p:Numero>919</p:Numero>
+          <p:Complemento>APTO. 22</p:Complemento>
+          <p:Bairro>PERDIZES</p:Bairro>
+          <p:CodigoMunicipio>2</p:CodigoMunicipio>
+          <p:Uf>SP</p:Uf>
+          <p:Cep>05017000</p:Cep>
+        </p:Endereco>
+        <p:Contato>
+          <p:Telefone>86030007</p:Telefone>
+          <p:Ddd>011</p:Ddd>
+          <p:TipoTelefone>CE</p:TipoTelefone>
+          <p:Email>MARCELO@BSIT-BR.COM.BR</p:Email>
+        </p:Contato>
+      </p:Tomador>
+    </p:InfDeclaracaoPrestacaoServico>
+    <ds:Signature Id="idvalue0">
+      <ds:SignedInfo Id="idvalue1">
+        <ds:CanonicalizationMethod Algorithm="http://tempuri.org" />
+        <ds:SignatureMethod Algorithm="http://tempuri.org">
+          <ds:HMACOutputLength>0</ds:HMACOutputLength>
+        </ds:SignatureMethod>
+        <ds:Reference Id="idvalue2" Type="http://tempuri.org" URI="http://tempuri.org">
+          <ds:Transforms>
+            <ds:Transform Algorithm="http://tempuri.org">
+              <ds:XPath>ds:XPath</ds:XPath>
+            </ds:Transform>
+          </ds:Transforms>
+          <ds:DigestMethod Algorithm="http://tempuri.org" />
+          <ds:DigestValue>MA==</ds:DigestValue>
+        </ds:Reference>
+      </ds:SignedInfo>
+      <ds:SignatureValue Id="idvalue3">MA==</ds:SignatureValue>
+      <ds:KeyInfo Id="idvalue4">
+        <ds:KeyName>ds:KeyName</ds:KeyName>
+      </ds:KeyInfo>
+      <ds:Object Encoding="http://tempuri.org" Id="idvalue5" MimeType="">
+        <ds:SPKIData>
+          <ds:SPKISexp>MA==</ds:SPKISexp>
+        </ds:SPKIData>
+      </ds:Object>
+    </ds:Signature>
+  </p:Rps>
+</p:GerarNfseEnvio>
