@@ -61,6 +61,8 @@ Function Main()
    Aadd(aOpcoes, "Consulta de documentos fiscais eletronicos destinados")
    AAdd(aOpcoes, "Consultar Status CTe")
    
+   AAdd(aOpcoes, "Consultar URL NFSe")
+   
    Do While .T.
       Cls
 
@@ -214,6 +216,9 @@ Function Main()
 			  
          case nOpcao = 47
 		      ConsultaStatusCTe()
+			  
+         case nOpcao = 48
+		      ConsultarURLNfse()
       endcase
    EndDo
 Return       
