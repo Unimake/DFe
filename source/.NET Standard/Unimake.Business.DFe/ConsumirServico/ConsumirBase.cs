@@ -243,7 +243,7 @@ namespace Unimake.Business.DFe
                 {
                     throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
                 }
-
+                
                 RetornoServicoString = retornoXml.InnerText;
 
                 //Remover do XML retornado o conteúdo ﻿<?xml version="1.0" encoding="utf-8"?> ou gera falha na hora de transformar em XmlDocument
@@ -254,6 +254,13 @@ namespace Unimake.Business.DFe
 
                 //Remover quebras de linhas
                 RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
+            }
+
+            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI)
+            {
+                RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
+                RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
+                RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
             }
 
             RetornoServicoXML = new XmlDocument
