@@ -74,7 +74,7 @@ namespace Unimake.DFe.Test.CTeOS
         [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao, "4.00")]
-        //[InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "4.00")]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao, "4.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao, "4.00")]
 
