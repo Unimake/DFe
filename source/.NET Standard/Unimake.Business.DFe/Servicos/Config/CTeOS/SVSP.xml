@@ -97,6 +97,21 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RecepcaoEvento>
+		<Autorizacao versao="3.00">
+			<Descricao>Autorização do CTeOS</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcaoOS.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcaoOS.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionProducao>
+			<WebTagRetorno>cteRecepcaoOSResult</WebTagRetorno>
+			<SchemaArquivo>cteOS_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>CTeOS</TagAssinatura>
+			<TagAtributoID>infCte</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+		</Autorizacao>
 
 		<!-- Versão 4.00 do CTeOS -->
 
