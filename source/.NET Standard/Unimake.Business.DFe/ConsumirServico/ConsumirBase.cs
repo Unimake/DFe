@@ -256,7 +256,7 @@ namespace Unimake.Business.DFe
                 RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
             }
 
-            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI)
+            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI || soap.PadraoNFSe == PadraoNFSe.SONNER)
             {
                 RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
                 RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
