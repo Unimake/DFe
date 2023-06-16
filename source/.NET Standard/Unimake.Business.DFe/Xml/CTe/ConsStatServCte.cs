@@ -57,7 +57,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         #region ShouldSerialize
 
         /// <summary>
-        /// Verifica se é ou não para gerar a tag <cUF>
+        /// Verifica se é ou não para gerar a tag cUF
         /// </summary>
         /// <returns>Retorna true se for para gerar a tag</returns>
         public bool ShouldSerializeCUFField() => Convert.ToDecimal(Versao) >= 400;
