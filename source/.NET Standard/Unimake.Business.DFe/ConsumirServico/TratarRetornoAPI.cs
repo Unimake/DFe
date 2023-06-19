@@ -25,9 +25,12 @@ namespace Unimake.Business.DFe
             var resultadoRetorno = new XmlDocument();
             Response.Content.Headers.ContentType.MediaType = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
-            if (!ResponseString.StartsWith("<"))
-            {
-                ResponseString = ResponseString.Substring(1);
+            if (!ResponseString.StartsWith("<") && Response.IsSuccessStatusCode)
+            {   
+                if(ResponseString.StartsWith(" "))
+                {
+                    ResponseString = ResponseString.Substring(1);
+                }
             }
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
