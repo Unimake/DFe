@@ -24,10 +24,31 @@ namespace Unimake.Business.DFe
         private bool _UsaCertificadoDigital;
         private string _TagRetornoHomologacao;
         private TipoAmbiente _TipoAmbiente;
+        private bool _ConverteSenhaBase64;
+        private string _MunicipioSenha;
 
         #endregion Private Fields
 
         #region Public Properties
+
+
+        /// <summary>
+        /// Utiliza ou não a conversão Base64
+        /// </summary>
+        public string MunicipioSenha
+        {
+            get => _MunicipioSenha;
+            set => _MunicipioSenha = value;
+        }
+
+        /// <summary>
+        /// Utiliza ou não a conversão Base64
+        /// </summary>
+        public bool ConverteSenhaBase64
+        {
+            get => _ConverteSenhaBase64;
+            set => _ConverteSenhaBase64 = value;
+        }
 
         /// <summary>
         /// Utiliza ou não o certificado digital

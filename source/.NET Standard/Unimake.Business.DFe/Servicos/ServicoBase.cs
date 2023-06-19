@@ -131,7 +131,7 @@ namespace Unimake.Business.DFe.Servicos
             }
 
             //Esta linha tem que ficar fora do if acima, pois tem que carregar esta parte, independente, pois o que é carregado sempre é automático. Mudar isso, vai gerar falha no UNINFE, principalmente no envio dos eventos, onde eu defino as configurações manualmente. Wandrey 07/12/2020
-            Configuracoes.Load(GetType().Name);
+           Configuracoes.Load(GetType().Name);
 
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
@@ -263,6 +263,8 @@ namespace Unimake.Business.DFe.Servicos
                     PadraoNFSe = Configuracoes.PadraoNFSe,
                     UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
                     TipoAmbiente = Configuracoes.TipoAmbiente,
+                    ConverteSenhaBase64 = Configuracoes.ConverteSenhaBase64,
+                    MunicipioSenha = Configuracoes.ConverteSenhaBase64 ? Configuracoes.MunicipioSenha.Base64Encode() : Configuracoes.MunicipioSenha,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)

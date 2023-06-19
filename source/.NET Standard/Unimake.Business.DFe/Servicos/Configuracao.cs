@@ -331,6 +331,11 @@ namespace Unimake.Business.DFe.Servicos
                                 UsaCertificadoDigital = XMLUtility.TagRead(elementPropriedades, "UsaCertificadoDigital").ToLower() == "true" ? true : false;
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "ConverteSenhaBase64"))
+                            {
+                                ConverteSenhaBase64 = XMLUtility.TagRead(elementPropriedades, "ConverteSenhaBase64").ToLower() == "true" ? true : false;
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -588,7 +593,14 @@ namespace Unimake.Business.DFe.Servicos
 
             if (!string.IsNullOrWhiteSpace(MunicipioSenha))
             {
-                WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha);
+                if (ConverteSenhaBase64)
+                {
+                    WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha.Base64Encode());
+                }
+                else
+                {
+                    WebSoapString = WebSoapString.Replace("{MunicipioSenha}", MunicipioSenha);
+                }
             }
 
             if (TipoAmbiente == TipoAmbiente.Homologacao)
@@ -1010,6 +1022,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Propriedade para habilitar o uso de certificado digital (default == True)
         /// </summary>
         public bool UsaCertificadoDigital { get; set; } = true;
+
+        /// <summary>
+        /// Propriedade para habilitar a conversao de alguma configuração para Base64 antes do envio (default == True)
+        /// </summary>
+        public bool ConverteSenhaBase64 { get; set; } = false;
 
         /// <summary>
         /// Método de solicitação da API

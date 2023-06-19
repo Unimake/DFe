@@ -80,7 +80,6 @@ namespace Unimake.Business.DFe
                         xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
                     }
                 }
-
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
             return retorna;
@@ -118,7 +117,6 @@ namespace Unimake.Business.DFe
             {
                 throw new CertificadoDigitalException();
             }
-
 
             TratarScapeEnvio = false;
             TratarScapeRetorno = false;
