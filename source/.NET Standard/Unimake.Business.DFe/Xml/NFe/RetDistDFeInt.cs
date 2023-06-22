@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -112,7 +114,62 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlAttribute("schema")]
         public string Schema { get; set; }
 
+        /// <summary>
+        /// Conteúdo do XML em BASE64 compactado com GZIP (Da forma que é retornado pelo web-service)
+        /// </summary>
         [XmlText(DataType = "base64Binary")]
         public byte[] Value { get; set; }
+
+        /// <summary>
+        /// Conteúdo do XML retornado no formato string
+        /// </summary>
+        [XmlIgnore]
+        public string ConteudoXML => Compress.GZIPDecompress(Convert.ToBase64String(Value));
+
+        /// <summary>
+        /// Conteúdo do XML retornado no formato XmlDocument
+        /// </summary>
+        [XmlIgnore]
+        public XmlDocument DocXML
+        {
+            get
+            {
+                var docXML = new XmlDocument();
+                docXML.Load(Converter.StringToStreamUTF8(ConteudoXML));
+
+                return docXML;
+            }
+        }
+
+        /// <summary>
+        /// Tipo dos XML retornados no DocZip
+        /// </summary>
+        [XmlIgnore]
+        public TipoXMLDocZip TipoXML
+        {
+            get
+            {
+                var tipoXML = TipoXMLDocZip.Desconhecido;
+
+                if (Schema.StartsWith("resEvento"))
+                {
+                    tipoXML = TipoXMLDocZip.ResEvento;
+                }
+                else if (Schema.StartsWith("procEventoNFe"))
+                {
+                    tipoXML = TipoXMLDocZip.ProcEventoNFe;
+                }
+                else if (Schema.StartsWith("procNFe"))
+                {
+                    tipoXML = TipoXMLDocZip.ProcNFe;
+                }
+                else if (Schema.StartsWith("resNFe"))
+                {
+                    tipoXML = TipoXMLDocZip.ResNFe;
+                }
+
+                return tipoXML;
+            }
+        }        
     }
 }

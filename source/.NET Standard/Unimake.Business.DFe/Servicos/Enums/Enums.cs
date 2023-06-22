@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using static Unimake.Business.DFe.Xml.NFe.DocZip;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -6609,6 +6610,8 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region Tipos de códigos GTIN
+
     /// <summary>
     /// Tipos de códigos GTIN
     /// </summary>
@@ -6639,6 +6642,10 @@ namespace Unimake.Business.DFe.Servicos
         GTIN14 = 14
     }
 
+    #endregion
+
+    #region Tipos de GNRE
+
     /// <summary>
     /// Tipos de GNRE
     /// </summary>
@@ -6663,6 +6670,10 @@ namespace Unimake.Business.DFe.Servicos
         MultiplasReceitas = 2
     }
 
+    #endregion
+
+    #region Indicador de Importação
+
     /// <summary>
     /// Indicador de Importação
     /// </summary>
@@ -6681,6 +6692,10 @@ namespace Unimake.Business.DFe.Servicos
         Importado = 1
     }
 
+    #endregion
+
+    #region Motivos de redução do adrem do ICMS
+
     /// <summary>
     /// Motivos da redução do adrem do ICMS
     /// </summary>
@@ -6697,4 +6712,41 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("9")]
         Outros = 9
     }
+
+    #endregion
+
+    #region Tipos dos XML retornados no DocZip
+
+    /// <summary>
+    /// Tipos de XML retornados na consulta distribuição de DFe (NFe) na tag docZip
+    /// </summary>
+    public enum TipoXMLDocZip
+    {
+        /// <summary>
+        /// XML de resumo de eventos
+        /// </summary>
+        ResEvento = 1,
+
+        /// <summary>
+        /// XML de resumo da NFe
+        /// </summary>
+        ResNFe = 2,
+
+        /// <summary>
+        /// XML de distribuição de eventos da NFe (XML completo do evento)
+        /// </summary>
+        ProcEventoNFe = 3,
+
+        /// <summary>
+        /// XML de distribuição da NFe (XML completo da NFe)
+        /// </summary>
+        ProcNFe = 4,
+
+        /// <summary>
+        /// XML desconhecido
+        /// </summary>
+        Desconhecido = 0
+    }
+
+    #endregion
 }
