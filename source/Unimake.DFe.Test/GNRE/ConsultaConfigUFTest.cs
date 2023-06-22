@@ -41,7 +41,7 @@ namespace Unimake.DFe.Test.GNRE
             {
                 TipoDFe = TipoDFe.GNRE,
                 TipoAmbiente = tipoAmbiente,
-                CertificadoArquivo = @"D:\projetos\GNRE.pfx",
+                CertificadoArquivo = @"D:\projetos\Unimake_PV.pfx",
                 CertificadoSenha = "12345678",
                 TipoEmissao = TipoEmissao.Normal,
                 CodigoUF = (int)uf,
