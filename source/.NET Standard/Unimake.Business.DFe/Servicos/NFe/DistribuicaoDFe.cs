@@ -112,18 +112,25 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 foreach (var item in Result.LoteDistDFeInt.DocZip)
                 {
-                    var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
+                    var conteudoXML = item.ConteudoXML;
 
-                    var docXML = new XmlDocument();
-                    docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
+                    switch (item.TipoXML)
+                    {
+                        case TipoXMLDocZip.ResEvento:
+                            ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
+                            break;
 
-                    if (item.Schema.StartsWith("resEvento"))
-                    {
-                        ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
-                    }
-                    else if (item.Schema.StartsWith("resNFe"))
-                    {
-                        ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
+                        case TipoXMLDocZip.ResNFe:
+                            ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
+                            break;
+
+                        case TipoXMLDocZip.ProcEventoNFe:
+                            ProcEventoNFes.Add(XMLUtility.Deserializar<ProcEventoNFe>(conteudoXML));
+                            break;
+
+                        case TipoXMLDocZip.ProcNFe:
+                            ProcNFes.Add(XMLUtility.Deserializar<NfeProc>(conteudoXML));
+                            break;
                     }
                 }
             }
@@ -196,49 +203,51 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 foreach (var item in Result.LoteDistDFeInt.DocZip)
                 {
                     var save = true;
-                    var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
+                    var conteudoXML = item.ConteudoXML;
                     var nomeArquivo = string.Empty;
 
                     var docXML = new XmlDocument();
                     docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
 
-                    if (item.Schema.StartsWith("resEvento"))
+                    switch (item.TipoXML)
                     {
-                        nomeArquivo = item.NSU + "-resEvento.xml";
-                        save = saveXMLSummary;
-                    }
-                    else if (item.Schema.StartsWith("procEventoNFe"))
-                    {
-                        var chNFe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "chNFe");
-                        var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
-                        var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
+                        case TipoXMLDocZip.ResEvento:
+                            nomeArquivo = item.NSU + "-resEvento.xml";
+                            save = saveXMLSummary;
+                            break;
 
-                        if (fileNameWithNSU)
-                        {
-                            nomeArquivo = item.NSU + "-procEventoNFe.xml";
-                        }
-                        else
-                        {
-                            nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
-                        }
-                    }
-                    else if (item.Schema.StartsWith("procNFe"))
-                    {
-                        var chave = ((XmlElement)docXML.GetElementsByTagName("infNFe")[0]).GetAttribute("Id").Substring(3, 44);
+                        case TipoXMLDocZip.ResNFe:
+                            nomeArquivo = item.NSU + "-resNFe.xml";
+                            save = saveXMLSummary;
+                            break;
 
-                        if (fileNameWithNSU)
-                        {
-                            nomeArquivo = item.NSU + "-procNFe.xml";
-                        }
-                        else
-                        {
-                            nomeArquivo = chave + "-procNFe.xml";
-                        }
-                    }
-                    else if (item.Schema.StartsWith("resNFe"))
-                    {
-                        nomeArquivo = item.NSU + "-resNFe.xml";
-                        save = saveXMLSummary;
+                        case TipoXMLDocZip.ProcEventoNFe:
+                            var chNFe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "chNFe");
+                            var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
+                            var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("evento")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
+
+                            if (fileNameWithNSU)
+                            {
+                                nomeArquivo = item.NSU + "-procEventoNFe.xml";
+                            }
+                            else
+                            {
+                                nomeArquivo = chNFe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoNFe.xml";
+                            }
+                            break;
+
+                        case TipoXMLDocZip.ProcNFe:
+                            var chave = ((XmlElement)docXML.GetElementsByTagName("infNFe")[0]).GetAttribute("Id").Substring(3, 44);
+
+                            if (fileNameWithNSU)
+                            {
+                                nomeArquivo = item.NSU + "-procNFe.xml";
+                            }
+                            else
+                            {
+                                nomeArquivo = chave + "-procNFe.xml";
+                            }
+                            break;
                     }
 
                     if (save && !string.IsNullOrEmpty(nomeArquivo))
@@ -262,6 +271,16 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// Resgatar a lista dos resumos das notas fiscais retornadas pelo serviço de distribuição de DFe
         /// </summary>
         public List<ResNFe> ResNFes { get; private set; }
+
+        /// <summary>
+        /// Resgata a lista das notas fiscais completas (XML de distribuição das notas) retornadas pelo serviço de distribuição do DFe
+        /// </summary>
+        public List<NfeProc> ProcNFes { get; private set; }
+
+        /// <summary>
+        /// Resgata a lista dos eventos completos (XML de distribuição dos eventos das notas fiscais) retornados pelo serviço de distribuição do DFe
+        /// </summary>
+        public List<ProcEventoNFe> ProcEventoNFes { get; private set; }
 
 #if INTEROP
 
@@ -288,6 +307,30 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="elemento">Elemento a ser retornado</param>
         /// <returns>Resumo de NF-e (ResNFe)</returns>
         public ResNFe GetResNFe(int elemento) => ResNFes[elemento];
+
+        /// <summary>
+        /// Retorna o quantidade de elementos na lista com os XMLs de distribuição das notas
+        /// </summary>
+        public int GetProcNFesCount() => ProcNFes.Count;
+
+        /// <summary>
+        /// Retorna a NFe (NfeProc) do elemento informado por parâmetro
+        /// </summary>
+        /// <param name="elemento">Elemento a ser retornado</param>
+        /// <returns>Objeto da NF-e (NfeProc)</returns>
+        public NfeProc GetProcNFes(int elemento) => ProcNFes[elemento];
+
+        /// <summary>
+        /// Retorna o quantidade de elementos na lista com os XMLs de distribuição dos eventos das notas
+        /// </summary>
+        public int GetProcEventoNFesCount() => ProcEventoNFes.Count;
+
+        /// <summary>
+        /// Retorna o Evento da NFe (ProcEventoNFe) do elemento informado por parâmetro
+        /// </summary>
+        /// <param name="elemento">Elemento a ser retornado</param>
+        /// <returns>Objeto do evento da NF-e (ProcEventoNFes)</returns>
+        public ProcEventoNFe GetProcEventoNFes(int elemento) => ProcEventoNFes[elemento];
 
 #endif
 
