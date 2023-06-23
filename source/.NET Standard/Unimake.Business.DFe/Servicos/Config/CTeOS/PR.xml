@@ -187,7 +187,7 @@
 			<WebEnderecoProducao></WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionProducao>
-			<WebTagRetorno>cteRecepcaoOSResult</WebTagRetorno>
+			<WebTagRetorno>cteRecepcaoResult</WebTagRetorno>
 			<SchemaArquivo>cteOS_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura>CTeOS</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>
