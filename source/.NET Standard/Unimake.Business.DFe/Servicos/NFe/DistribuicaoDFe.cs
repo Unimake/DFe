@@ -109,6 +109,8 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 ResNFes = new List<ResNFe>();
                 ResEventos = new List<ResEvento>();
+                ProcEventoNFes = new List<ProcEventoNFe>();
+                ProcNFes = new List<NfeProc>();
 
                 foreach (var item in Result.LoteDistDFeInt.DocZip)
                 {
