@@ -209,7 +209,7 @@
 		<StatusServico versao="4.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.fazenda.pr.gov.br/cte4/CTeStatusServicoV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.pr.gov.br/cte4/CTeStatusServicoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
 			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
@@ -222,7 +222,7 @@
 		<ConsultaProtocolo versao="4.00">
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.fazenda.pr.gov.br/cte4/CTeConsultaV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.pr.gov.br/cte4/CTeConsultaV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
 			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
@@ -235,7 +235,7 @@
 		<RecepcaoEvento versao="4.00">
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.fazenda.pr.gov.br/cte4/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.pr.gov.br/cte4/CTeRecepcaoEventoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
@@ -275,7 +275,7 @@
 		<AutorizacaoSinc versao="4.00">
 			<Descricao>Autorização do CTe - Síncrono</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.fazenda.pr.gov.br/cte4/CTeRecepcaoSincV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.pr.gov.br/cte4/CTeRecepcaoSincV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionProducao>
 			<GZIPCompress>true</GZIPCompress>

@@ -119,7 +119,7 @@
 		<StatusServico versao="4.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeStatusServicoV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeStatusServicoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionProducao>
 			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
@@ -132,7 +132,7 @@
 		<ConsultaProtocolo versao="4.00">
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeConsultaV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeConsultaV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionProducao>
 			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
@@ -145,7 +145,7 @@
 		<RecepcaoEvento versao="4.00">
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeRecepcaoEventoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
@@ -185,7 +185,7 @@
 		<Autorizacao versao="4.00">
 			<Descricao>Autorização do CTeOS</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeRecepcaoOSV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeRecepcaoOSV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoOSResult</WebTagRetorno>
@@ -196,6 +196,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+			<GZIPCompress>true</GZIPCompress>
 		</Autorizacao>
 	</Servicos>
 </Configuracoes>

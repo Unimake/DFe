@@ -118,7 +118,7 @@
 		<StatusServico versao="4.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeStatusServicoV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://producao.cte.ms.gov.br/ws/CTeStatusServicoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
 			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
@@ -131,7 +131,7 @@
 		<ConsultaProtocolo versao="4.00">
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeConsultaV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://producao.cte.ms.gov.br/ws/CTeConsultaV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
 			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
@@ -144,7 +144,7 @@
 		<RecepcaoEvento versao="4.00">
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://producao.cte.ms.gov.br/ws/CTeRecepcaoEventoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
@@ -181,5 +181,21 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RecepcaoEvento>
+		<Autorizacao versao="4.00">
+			<Descricao>Autorização do CTeOS</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.cte.ms.gov.br/ws/CTeRecepcaoOSV4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://producao.cte.ms.gov.br/ws/CTeRecepcaoOSV4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionProducao>
+			<WebTagRetorno>cteOSRecepcaoResult</WebTagRetorno>
+			<SchemaArquivo>cteOS_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>CTeOS</TagAssinatura>
+			<TagAtributoID>infCte</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<UrlQrCodeHomologacao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>http://www.dfe.ms.gov.br/cte/qrcode</UrlQrCodeProducao>
+			<GZIPCompress>true</GZIPCompress>
+		</Autorizacao>
 	</Servicos>
 </Configuracoes>

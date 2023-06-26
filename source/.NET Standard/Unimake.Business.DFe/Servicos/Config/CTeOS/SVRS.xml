@@ -200,6 +200,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/cte/qrCode</UrlQrCodeProducao>
+			<GZIPCompress>true</GZIPCompress>
 		</Autorizacao>
 	</Servicos>
 </Configuracoes>

@@ -167,7 +167,7 @@
 		<StatusServico versao="4.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeWS/WS/CTeStatusServicoV4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.fazenda.sp.gov.br/CTeWS/WS/CTeStatusServicoV4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
 			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
@@ -180,7 +180,7 @@
 		<ConsultaProtocolo versao="4.00">
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeWS/WS/CTeConsultaV4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.fazenda.sp.gov.br/CTeWS/WS/CTeConsultaV4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
 			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
@@ -193,7 +193,7 @@
 		<RecepcaoEvento versao="4.00">
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeWS/WS/CTeRecepcaoEventoV4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.fazenda.sp.gov.br/CTeWS/WS/CTeRecepcaoEventoV4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
@@ -238,7 +238,7 @@
 		<AutorizacaoSinc versao="4.00">
 			<Descricao>Autorização do CTe - Síncrono</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeWS/WS/CTeRecepcaoSincV4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfe.fazenda.sp.gov.br/CTeWS/WS/CTeRecepcaoSincV4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionProducao>
 			<GZIPCompress>true</GZIPCompress>
