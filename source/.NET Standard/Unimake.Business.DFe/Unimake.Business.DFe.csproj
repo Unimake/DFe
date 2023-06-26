@@ -320,6 +320,7 @@
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
+		<None Remove="Servicos\Config\NFSe\PaveramaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PederneirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
@@ -748,6 +749,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaibaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstanciaVelhaRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PaveramaRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortaoRS.xml">
