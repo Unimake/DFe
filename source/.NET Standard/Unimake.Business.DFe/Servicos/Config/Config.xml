@@ -1630,4 +1630,10 @@
 		<ArqConfig>PresidenteLucenaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314803">
+		<Nome>Portão - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PortaoRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

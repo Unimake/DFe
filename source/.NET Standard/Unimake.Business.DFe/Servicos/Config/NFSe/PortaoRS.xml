@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRpsSincrono versao="1.00">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>http://homologalucena.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://presidentelucena.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://homologapor.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://portao.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/mEnvioLoteRPSSincrono</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/mEnvioLoteRPSSincrono</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -22,8 +22,8 @@
 		</RecepcionarLoteRpsSincrono>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>http://homologalucena.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://presidentelucena.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://homologapor.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://portao.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/mCancelamentoNFSe</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/mCancelamentoNFSe</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -41,8 +41,8 @@
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>http://homologalucena.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://presidentelucena.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://homologapor.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://portao.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/mConsultaNFSePorRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/mConsultaNFSePorRPS</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -60,8 +60,8 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="1.00">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>http://homologalucena.nfse-tecnos.com.br:9094/ConsultaNFSeServicosPrestados.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://presidentelucena.nfse-tecnos.com.br:9094/ConsultaNFSeServicosPrestados.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://homologapor.nfse-tecnos.com.br:9094/ConsultaNFSeServicosPrestados.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://portao.nfse-tecnos.com.br:9094/ConsultaNFSeServicosPrestados.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/mConsultaNFSeServicosPrestados</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/mConsultaNFSeServicosPrestados</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -79,8 +79,8 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="1.00">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>http://homologalucena.nfse-tecnos.com.br:9096/ConsultaNFSePorFaixa.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://presidentelucena.nfse-tecnos.com.br:9096/ConsultaNFSePorFaixa.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://homologapor.nfse-tecnos.com.br:9096/ConsultaNFSePorFaixa.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://portao.nfse-tecnos.com.br:9096/ConsultaNFSePorFaixa.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/mConsultaNFSePorFaixa</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/mConsultaNFSePorFaixa</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -98,8 +98,8 @@
 		</ConsultarNfseFaixa>
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://homologalucena.nfse-tecnos.com.br:9097/ConsultaLoteRPS.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://presidentelucena.nfse-tecnos.com.br:9097/ConsultaLoteRPS.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://homologapor.nfse-tecnos.com.br:9097/ConsultaLoteRPS.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://portao.nfse-tecnos.com.br:9097/ConsultaLoteRPS.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/mConsultaLoteRPS</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/mConsultaLoteRPS</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
