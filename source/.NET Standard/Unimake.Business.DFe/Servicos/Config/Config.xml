@@ -1618,10 +1618,16 @@
 		<ArqConfig>JataiGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
 	</Arquivo>
-		<Arquivo ID="3122306">
+	<Arquivo ID="3122306">
 		<Nome>Divinópolis - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>DivinopolisMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4315149">
+		<Nome>Presidente Lucena - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PresidenteLucenaRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
