@@ -180,6 +180,11 @@
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110190</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>eventoCTe</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
