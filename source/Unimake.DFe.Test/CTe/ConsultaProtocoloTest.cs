@@ -135,45 +135,38 @@ namespace Unimake.DFe.Test.CTe
 
         public void ConsultarProtocoloCTe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
-            try
+            var xml = new ConsSitCTe
             {
-                var xml = new ConsSitCTe
-                {
-                    Versao = versao,
-                    TpAmb = tipoAmbiente,
-                    ChCTe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
-                };
+                Versao = versao,
+                TpAmb = tipoAmbiente,
+                ChCTe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.CTe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
 
-                var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
-                consultaProtocolo.Executar();
+            var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
 
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
 
-                if (versao == "3.00" || consultaProtocolo.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
-                {
-                    Diag.Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                }
-
-                Diag.Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if (consultaProtocolo.Result.ProtCTe != null)
-                {
-                    if (consultaProtocolo.Result.ProtCTe.InfProt != null)
-                    {
-                        Diag.Debug.Assert(consultaProtocolo.Result.ProtCTe.InfProt.ChCTe.Equals(xml.ChCTe), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
-                    }
-                }
+            if (versao == "3.00" || consultaProtocolo.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
+            {
+                Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             }
-            catch (Exception ex)
+
+            Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            if (consultaProtocolo.Result.ProtCTe != null)
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
+                if (consultaProtocolo.Result.ProtCTe.InfProt != null)
+                {
+                    Assert.True(consultaProtocolo.Result.ProtCTe.InfProt.ChCTe.Equals(xml.ChCTe), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
+                }
             }
         }
     }
