@@ -155,7 +155,7 @@
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-		</RetAutorizacao>		
+		</RetAutorizacao>
 		<AutorizacaoSinc versao="3.00">
 			<Descricao>Autorização do CTe - Síncrono</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.cte.fazenda.pr.gov.br/cte/CteRecepcaoSinc</WebEnderecoHomologacao>
@@ -265,6 +265,11 @@
 					<ID>610110</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110190</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>eventoCTe</TagAssinatura>

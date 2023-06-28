@@ -148,5 +148,26 @@ namespace Unimake.DFe.Test.CTe
 
             Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do XML EventoCTe
+        /// </summary>
+        /// <param name="arqXML">Arquivo a ser desserializado</param>
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(@"..\..\..\CTe\Resources\ie41200210859283000185570010000005671227070615-ped-eve.xml")]
+        public void SerializacaoDesserializacaoEventoCTe(string arqXML)
+        {
+            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<EventoCTe>(doc);
+            var xmlSerializado = xml.GerarXML();
+            
+            Diag.Debug.Assert((doc.InnerText + "12343455") == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
     }
 }

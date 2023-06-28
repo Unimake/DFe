@@ -13,6 +13,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -1071,6 +1072,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(DetEventoCCE))]
     [XmlInclude(typeof(DetEventoCancCompEntrega))]
     [XmlInclude(typeof(DetEventoCompEntrega))]
+    [XmlInclude(typeof(DetEventoInsucessoEntrega))]
     [XmlInclude(typeof(EventoCECTe))]
     [XmlInclude(typeof(DetEventoPrestDesacordo))]
     [XmlInclude(typeof(DetEventoFiscoMDFeCancelado))]
@@ -1087,6 +1089,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             "DhEntrega",
             "DhHashEntrega",
+            "DhTentativaEntrega",
+            "DhHashTentativaEntrega",
+            "NTentativa",
+            "TpMotivo",
             "VICMS",
             "VICMSST",
             "VTPrest",
@@ -1245,15 +1251,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class InfEntrega
     {
-        #region Private Fields
-
         private string ChNFeField;
 
-        #endregion Private Fields
-
-        #region Public Properties
-
-        [XmlElement("chNFe", Order = 0)]
+        [XmlElement("chNFe")]
         public string ChNFe
         {
             get => ChNFeField;
@@ -1267,8 +1267,6 @@ namespace Unimake.Business.DFe.Xml.CTe
                 ChNFeField = value;
             }
         }
-
-        #endregion Public Properties
     }
 
 #if INTEROP
@@ -1378,6 +1376,10 @@ namespace Unimake.Business.DFe.Xml.CTe
                         _detEvento = new DetEventoFiscoMDFeAutorizado();
                         break;
 
+                    case TipoEventoCTe.InsucessoEntrega:
+                        _detEvento = new DetEventoInsucessoEntrega();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -1412,6 +1414,306 @@ namespace Unimake.Business.DFe.Xml.CTe
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
         #endregion Public Methods
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoInsucessoEntrega")]
+    [ComVisible(true)]
+#endif
+    [XmlInclude(typeof(EventoDetalhe))]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoInsucessoEntrega : EventoDetalhe
+    {
+        private EventoIECTe _eventoIECTe;
+
+        internal override void SetValue(PropertyInfo pi)
+        {
+            if (pi.Name == nameof(InfEntrega))
+            {
+                XmlReader.Read();
+                InfEntrega.Add(new InfEntrega
+                {
+                    ChNFe = XmlReader.GetValue<string>(nameof(Xml.CTe.InfEntrega.ChNFe))
+                });
+                return;
+            }
+
+            base.SetValue(pi);
+        }
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EventoIECTe.DescEvento;
+            set => EventoIECTe.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string NProt
+        {
+            get => EventoIECTe.NProt;
+            set => EventoIECTe.NProt = value;
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhTentativaEntrega
+        {
+            get => EventoIECTe.DhTentativaEntrega;
+            set => EventoIECTe.DhTentativaEntrega = value;
+        }
+#else
+        public DateTimeOffset DhTentativaEntrega
+        {
+            get => EventoIECTe.DhTentativaEntrega;
+            set => EventoIECTe.DhTentativaEntrega = value;
+        }
+#endif
+
+        [XmlIgnore]
+        public string DhTentativaEntregaField
+        {
+            get => EventoIECTe.DhTentativaEntregaField;
+            set => EventoIECTe.DhTentativaEntregaField = value;
+        }
+
+
+        [XmlIgnore]
+        public int NTentativa
+        {
+            get => EventoIECTe.NTentativa;
+            set => EventoIECTe.NTentativa = value;
+        }
+
+
+        [XmlIgnore]
+        public TipoMotivoInsucessoEntrega TpMotivo
+        {
+            get => EventoIECTe.TpMotivo;
+            set => EventoIECTe.TpMotivo = value;
+        }
+
+        [XmlIgnore]
+        public string XJustMotivo
+        {
+            get => EventoIECTe.XJustMotivo;
+            set => EventoIECTe.XJustMotivo = value;
+        }
+
+        [XmlIgnore]
+        public string Latitude
+        {
+            get => EventoIECTe.Latitude;
+            set => EventoIECTe.Latitude = value;
+        }
+
+        [XmlIgnore]
+        public string Longitude
+        {
+            get => EventoIECTe.Longitude;
+            set => EventoIECTe.Longitude = value;
+        }
+
+        [XmlIgnore]
+        public string HashTentativaEntrega
+        {
+            get => EventoIECTe.HashTentativaEntrega;
+            set => EventoIECTe.HashTentativaEntrega = value;
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhHashTentativaEntrega
+        {
+            get => EventoIECTe.DhHashTentativaEntrega;
+            set => EventoIECTe.DhHashTentativaEntrega = value;
+        }
+#else
+        public DateTimeOffset DhHashTentativaEntrega
+        {
+            get => EventoIECTe.DhHashTentativaEntrega;
+            set => EventoIECTe.DhHashTentativaEntrega = value;
+        }
+#endif
+
+        [XmlIgnore]
+        public string DhHashTentativaEntregaField
+        {
+            get => EventoIECTe.DhHashTentativaEntregaField;
+            set => EventoIECTe.DhHashTentativaEntregaField = value;
+        }
+
+
+        [XmlIgnore]
+        public List<InfEntrega> InfEntrega
+        {
+            get => EventoIECTe.InfEntrega;
+            set => EventoIECTe.InfEntrega = value;
+        }
+
+        [XmlElement(ElementName = "evIECTe")]
+        public EventoIECTe EventoIECTe
+        {
+            get => _eventoIECTe ?? (_eventoIECTe = new EventoIECTe());
+            set => _eventoIECTe = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evIECTe>
+                <descEvento>{DescEvento}</descEvento>
+                <nProt>{NProt}</nProt>
+                <dhTentativaEntrega>{DhTentativaEntregaField}</dhTentativaEntrega>";
+
+            if (NTentativa > 0)
+            {
+                writeRaw += $@"<nTentativa>{NTentativa}</nTentativa>";
+            }
+
+            writeRaw += $@"<tpMotivo>{((int)TpMotivo).ToString()}</tpMotivo>";
+
+            if (TpMotivo == TipoMotivoInsucessoEntrega.Outros)
+            {
+                writeRaw += $@"<xJustMotivo>{XJustMotivo}</xJustMotivo>";
+            }
+
+            if (!string.IsNullOrWhiteSpace(Latitude))
+            {
+                writeRaw += $@"<latitude>{Latitude}</latitude>";
+            }
+
+            if (!string.IsNullOrWhiteSpace(Longitude))
+            {
+                writeRaw += $@"<longitude>{Longitude}</longitude>";
+            }
+
+            writeRaw += $@"<hashTentativaEntrega>{HashTentativaEntrega}</hashTentativaEntrega>
+                <dhHashTentativaEntrega>{DhHashTentativaEntregaField}</dhHashTentativaEntrega>";
+
+            foreach (var infEntrega in InfEntrega)
+            {
+                writeRaw += $@"<infEntrega><chNFe>{infEntrega.ChNFe}</chNFe></infEntrega>";
+            }
+
+            writeRaw += $@"</evIECTe>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoIECTe")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot(ElementName = "evIECTe")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EventoIECTe : EventoDetalhe
+    {
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Insucesso na Entrega do CT-e";
+
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhTentativaEntrega { get; set; }
+#else
+        public DateTimeOffset DhTentativaEntrega { get; set; }
+#endif
+
+        [XmlElement("dhTentativaEntrega")]
+        public string DhTentativaEntregaField
+        {
+            get => DhTentativaEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhTentativaEntrega = DateTime.Parse(value);
+#else
+            set => DhTentativaEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("nTentativa")]
+        public int NTentativa { get; set; }
+
+        [XmlElement("tpMotivo")]
+        public TipoMotivoInsucessoEntrega TpMotivo { get; set; }
+
+        [XmlElement("xJustMotivo")]
+        public string XJustMotivo { get; set; }
+
+        [XmlElement("latitude")]
+        public string Latitude { get; set; }
+
+        [XmlElement("longitude")]
+        public string Longitude { get; set; }
+
+        [XmlElement("hashTentativaEntrega")]
+        public string HashTentativaEntrega { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhHashTentativaEntrega { get; set; }
+#else
+        public DateTimeOffset DhHashTentativaEntrega { get; set; }
+#endif
+
+        [XmlElement("dhHashTentativaEntrega")]
+        public string DhHashTentativaEntregaField
+        {
+            get => DhHashTentativaEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhHashTentativaEntrega = DateTime.Parse(value);
+#else
+            set => DhHashTentativaEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("infEntrega")]
+        public List<InfEntrega> InfEntrega { get; set; } = new List<InfEntrega>();
+
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infentrega">Elemento</param>
+        public void AddInfEntrega(InfEntrega infentrega)
+        {
+            if (InfEntrega == null)
+            {
+                InfEntrega = new List<InfEntrega>();
+            }
+
+            InfEntrega.Add(infentrega);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfEntrega (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfEntrega</returns>
+        public InfEntrega GetInfEntrega(int index)
+        {
+            if ((InfEntrega?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfEntrega[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfEntrega
+        /// </summary>
+        public int GetInfEntregaCount => (InfEntrega != null ? InfEntrega.Count : 0);
+
+#endif
     }
 
     #region Eventos exclusivos do fisco (Gerados pelo fisco)
@@ -1747,5 +2049,5 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string XNome { get; set; }
     }
 
-#endregion
+    #endregion
 }

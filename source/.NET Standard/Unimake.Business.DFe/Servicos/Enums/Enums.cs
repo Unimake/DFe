@@ -1020,6 +1020,12 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoComprovanteEntrega = 110181,
 
         /// <summary>
+        /// Evento de Insucesso na Entrega do CTe (110190)
+        /// </summary>
+        [XmlEnum("110190")]
+        InsucessoEntrega = 110190,
+
+        /// <summary>
         /// Prestação de serviço em desacordo CTe (610110)
         /// </summary>
         [XmlEnum("610110")]
@@ -6746,6 +6752,40 @@ namespace Unimake.Business.DFe.Servicos
         /// XML desconhecido
         /// </summary>
         Desconhecido = 0
+    }
+
+    #endregion
+
+    #region Motivos de insucesso na entrega de mercadorias
+
+    /// <summary>
+    /// Motivos de insucesso na entrega da mercadoria
+    /// </summary>
+    public enum TipoMotivoInsucessoEntrega
+    {
+        /// <summary>
+        /// 1 - Recebedor não foi encontrado 
+        /// </summary>
+        [XmlEnum("1")]
+        RecebedorNaoEncontrado = 1,
+
+        /// <summary>
+        /// 2 - Recusa do recebedor
+        /// </summary>
+        [XmlEnum("2")]
+        RecusaDoRecebedor = 2,
+
+        /// <summary>
+        /// 3 - Endereço inexistente
+        /// </summary>
+        [XmlEnum("3")]
+        EnderecoInexistente = 3,
+
+        /// <summary>
+        /// 4 - Outros (exige informar justificativa)
+        /// </summary>
+        [XmlEnum("4")]
+        Outros = 4
     }
 
     #endregion
