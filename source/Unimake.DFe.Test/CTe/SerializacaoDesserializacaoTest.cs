@@ -166,7 +166,7 @@ namespace Unimake.DFe.Test.CTe
             var xml = XMLUtility.Deserializar<EventoCTe>(doc);
             var xmlSerializado = xml.GerarXML();
             
-            Diag.Debug.Assert((doc.InnerText + "12343455") == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
     }

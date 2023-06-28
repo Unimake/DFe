@@ -13,7 +13,6 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -1092,7 +1091,6 @@ namespace Unimake.Business.DFe.Xml.CTe
             "DhTentativaEntrega",
             "DhHashTentativaEntrega",
             "NTentativa",
-            "TpMotivo",
             "VICMS",
             "VICMSST",
             "VTPrest",
@@ -1437,6 +1435,10 @@ namespace Unimake.Business.DFe.Xml.CTe
                     ChNFe = XmlReader.GetValue<string>(nameof(Xml.CTe.InfEntrega.ChNFe))
                 });
                 return;
+            }
+            if (pi.Name == nameof(TpMotivo))
+            {
+                TpMotivo = XmlReader.GetValue<TipoMotivoInsucessoEntrega>(nameof(TpMotivo));
             }
 
             base.SetValue(pi);

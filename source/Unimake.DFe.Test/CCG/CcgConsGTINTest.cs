@@ -20,14 +20,14 @@ namespace Unimake.DFe.Test.CCG
         [Trait("DFe", "CCG")]
         [InlineData(TipoAmbiente.Homologacao)]
         [InlineData(TipoAmbiente.Producao)]
-        public void ConsultarStatusServico(TipoAmbiente tipoAmbiente)
+        public void ConsultaGTIN(TipoAmbiente tipoAmbiente)
         {
             try
             {
                 var xml = new ConsGTIN
                 {
                     Versao = "1.00",
-                    GTIN = "789611211726X" // "7894900019896" //Código da Coca Cola
+                    GTIN = "7894900019896" // "7894900019896" //Código da Coca Cola
                 };
 
                 var configuracao = new Configuracao
