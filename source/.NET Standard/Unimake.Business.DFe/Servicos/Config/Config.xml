@@ -1642,4 +1642,10 @@
 		<ArqConfig>PaveramaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3518602">
+		<Nome>Guariba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>GuaribaSP.xml</ArqConfig>
+		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
