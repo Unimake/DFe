@@ -20,10 +20,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string Versao { get; set; }
 
         [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
+        public TipoAmbiente TpAmb { get; set; } = "3.00";
 
         [XmlElement("xServ")]
-        public string XServ { get; set; }
+        public string XServ { get; set; } = "CONSULTAR NÃO ENCERRADOS";
 
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
