@@ -13,7 +13,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\Unimake.DFe\Compilacao\</OutputPath>
-		<DefineConstants>TRACE;DEBUG;INTEROP</DefineConstants>
+		<DefineConstants>TRACE;DEBUG</DefineConstants>
 		<GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
 		<DocumentationFile>..\..\Unimake.DFe\Compilacao\Unimake.Business.DFe.xml</DocumentationFile>
 	</PropertyGroup>

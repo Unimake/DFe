@@ -1099,7 +1099,8 @@ namespace Unimake.Business.DFe.Xml.CTe
             "UFIni",
             "UFFim",
             "TpCTe",
-            "DhEmi"
+            "DhEmi",
+            "DhRecbto"
         };
 
         #endregion Private Fields
@@ -2022,7 +2023,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
-            get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:ss");
+            get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
 #if INTEROP
             set => DhRecbto = DateTime.Parse(value);
 #else

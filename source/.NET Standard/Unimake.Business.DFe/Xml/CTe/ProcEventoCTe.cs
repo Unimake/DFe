@@ -4,10 +4,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.IO;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -79,34 +79,26 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         public override void ReadXml(XmlDocument document)
         {
-            base.ReadXml(document);
+            var nodeListEvento = document.GetElementsByTagName("eventoCTe");
 
-            var reader = XmlReader.Create(new StringReader(document.InnerXml));
-
-            while (reader.Read())
+            if (nodeListEvento != null)
             {
-                if (reader.NodeType != XmlNodeType.Element)
+                EventoCTe = XMLUtility.Deserializar<EventoCTe>(((XmlElement)nodeListEvento[0]).OuterXml);
+                var nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature");
+                if (nodeListEventoSignature != null)
                 {
-                    continue;
+                    var signature = ((XmlElement)nodeListEventoSignature[0]).OuterXml;
+
+                    signature = signature.Replace("<Signature xmlns=\"http://www.portalfiscal.inf.br/cte\">", "<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\">");
+
+                    EventoCTe.Signature = XMLUtility.Deserializar<Signature>(signature);
                 }
+            }
 
-                switch (reader.Name)
-                {
-                    case "Signature":
-                        EventoCTe.Signature = reader.ToSignature();
-                        break;
-
-                    case "retEventoCTe":
-                        var versao = reader.GetAttribute("versao");
-                        var infEvento = reader.DeserializeTo<RetEventoCTeInfEvento>();
-
-                        RetEventoCTe = new RetEventoCTe
-                        {
-                            Versao = versao,
-                            InfEvento = infEvento
-                        };
-                        break;
-                }
+            var nodeListRetEvento = document.GetElementsByTagName("retEventoCTe");
+            if (nodeListRetEvento != null)
+            {
+                RetEventoCTe = XMLUtility.Deserializar<RetEventoCTe>(((XmlElement)nodeListRetEvento[0]).OuterXml);
             }
         }
 
