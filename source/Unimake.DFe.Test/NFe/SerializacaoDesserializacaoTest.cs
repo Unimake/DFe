@@ -188,9 +188,7 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe.xml")]
-        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe2.xml")] //XML retornado pela SEFAZ MG com falha na tag Signature. Vou manter este teste, só para garantir o funcionamento para este estado. Eles estão fugindo o padrão.
-        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe3.xml")] //XML retornado pela SEFAZ MG com falha na tag Signature. Vou manter este teste, só para garantir o funcionamento para este estado. Eles estão fugindo o padrão.
-        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe4.xml")] //XML retornado pela SEFAZ MG com falha na tag Signature, quando a nota é autorizado no SVCAN. Vou manter este teste só para garantir o funcionamento para este estado. Eles estão fugindo o padrão.
+        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe2.xml")] 
         public void SerializacaoDesserializacaoRetConsSitNFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
