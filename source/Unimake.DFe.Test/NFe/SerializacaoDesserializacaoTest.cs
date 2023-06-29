@@ -21,7 +21,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\enviNFe.xml")]
         public void SerializacaoDesserializacaoEnviNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -37,7 +37,7 @@ namespace Unimake.DFe.Test.NFe
 
             var autorizacao = new Business.DFe.Servicos.NFe.Autorizacao(xml, configuracao);
 
-            Diag.Debug.Assert(doc.InnerText == autorizacao.ConteudoXMLOriginal.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == autorizacao.ConteudoXMLOriginal.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\NFe4.xml")]
         public void SerializacaoDesserializacaoNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -72,7 +72,7 @@ namespace Unimake.DFe.Test.NFe
 
             var autorizacao = new Business.DFe.Servicos.NFe.Autorizacao(enviNFe, configuracao);
 
-            Diag.Debug.Assert(doc.InnerText == autorizacao.ConteudoXMLOriginal.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == autorizacao.ConteudoXMLOriginal.GetElementsByTagName("NFe")[0].InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\99999999999999999999999999999999999999999999-procNFe.xml")]
         public void SerializacaoDesserializacaoNfeProc(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -93,7 +93,7 @@ namespace Unimake.DFe.Test.NFe
             xml = xml.LoadFromFile(arqXML);
             var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\resEvento.xml")]
         public void SerializacaoDesserializacaoResEvento(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -113,7 +113,7 @@ namespace Unimake.DFe.Test.NFe
             var xml = XMLUtility.Deserializar<ResEvento>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\resNFe.xml")]
         public void SerializacaoDesserializacaoResNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -133,7 +133,7 @@ namespace Unimake.DFe.Test.NFe
             var xml = XMLUtility.Deserializar<ResNFe>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\EnvEventoEPEC.xml")]
         public void SerializacaoDesserializacaoEnvEvento(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -153,7 +153,7 @@ namespace Unimake.DFe.Test.NFe
             var xml = XMLUtility.Deserializar<EnvEvento>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
 
         }
 
@@ -171,7 +171,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\DistDFeInt_SemUFAutor.xml")]
         public void SerializacaoDesserializacaoDistDFeInt(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -179,7 +179,7 @@ namespace Unimake.DFe.Test.NFe
             var xml = XMLUtility.Deserializar<DistDFeInt>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe4.xml")] //XML retornado pela SEFAZ MG com falha na tag Signature, quando a nota é autorizado no SVCAN. Vou manter este teste só para garantir o funcionamento para este estado. Eles estão fugindo o padrão.
         public void SerializacaoDesserializacaoRetConsSitNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -201,7 +201,7 @@ namespace Unimake.DFe.Test.NFe
             var xml = XMLUtility.Deserializar<RetConsSitNFe>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -210,9 +210,10 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_610130.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_610131.xml")]
         public void SerializacaoDesserializacaoProcEventoNFe(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -220,7 +221,7 @@ namespace Unimake.DFe.Test.NFe
             var xml = XMLUtility.Deserializar<ProcEventoNFe>(doc);
             var doc2 = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -309,6 +310,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                     case TipoEventoNFe.ComprovantedeEntregaCTe:
                         _detEvento = new DetEventoComprovanteEntregaCTe();
+                        break;
+
+                    case TipoEventoNFe.CancelamentoComprovantedeEntregaCTe:
+                        _detEvento = new DetEventoCancelamentoComprovanteEntregaCTe();
                         break;
 
                     default:
@@ -1671,6 +1676,83 @@ namespace Unimake.Business.DFe.Xml.NFe
 #else
             set => DhHashEntregaCTe = DateTimeOffset.Parse(value);
 #endif
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoComprovanteEntregaCTe")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class DetEventoCancelamentoComprovanteEntregaCTe : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Cancelamento Comprovante de Entrega do CT-e";
+
+        [XmlElement("cOrgaoAutor", Order = 1)]
+        public string COrgaoAutor { get; set; }
+
+        [XmlElement("tpAutor", Order = 2)]
+        public string TpAutor { get; set; }
+
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        [XmlElement("chCTe", Order = 4)]
+        public string ChCTe { get; set; }
+
+        [XmlElement("nProtCTeCanc", Order = 4)]
+        public string NProtCTeCanc { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+                <descEvento>{DescEvento}</descEvento>
+                <cOrgaoAutor>{COrgaoAutor}</cOrgaoAutor> 
+                <tpAutor>{TpAutor}</tpAutor> 
+                <verAplic>{VerAplic}</verAplic> 
+                <chCTe>{ChCTe}</chCTe> 
+                <nProtCTeCanc>{NProtCTeCanc}</nProtCTeCanc>");
+        }
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var xml = new XmlDocument();
+            xml.Load(XmlReader);
+
+            if (xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao") != null)
+            {
+                Versao = xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao").Value;
+            }
+            if (xml.GetElementsByTagName("cOrgaoAutor") != null)
+            {
+                COrgaoAutor = xml.GetElementsByTagName("cOrgaoAutor")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("tpAutor") != null)
+            {
+                TpAutor = xml.GetElementsByTagName("tpAutor")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("verAplic") != null)
+            {
+                VerAplic = xml.GetElementsByTagName("verAplic")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("chCTe") != null)
+            {
+                ChCTe = xml.GetElementsByTagName("chCTe")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("nProtCTeCanc") != null)
+            {
+                NProtCTeCanc = xml.GetElementsByTagName("nProtCTeCanc")[0].InnerText;
+            }
         }
     }
 }

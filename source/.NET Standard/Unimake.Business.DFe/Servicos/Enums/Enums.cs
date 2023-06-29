@@ -866,6 +866,12 @@ namespace Unimake.Business.DFe.Servicos
         ComprovantedeEntregaCTe = 610130,
 
         /// <summary>
+        /// 610131 - Cancelamento Comprovante de Entrega do CTe
+        /// </summary>
+        [XmlEnum("610131")]
+        CancelamentoComprovantedeEntregaCTe = 610131,
+
+        /// <summary>
         /// 610500 - Registro de Passagem da NF-e no Posto Fiscal
         /// </summary>
         [XmlEnum("610500")]
