@@ -332,7 +332,8 @@ namespace Unimake.Business.DFe.Servicos.CTe
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetEnviCTe>(RetornoWSXML);
+                    var retEnviCTe = new RetEnviCTe();
+                    return retEnviCTe.LerXML<RetEnviCTe>(RetornoWSXML);
                 }
 
                 return new RetEnviCTe

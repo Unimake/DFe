@@ -4,8 +4,10 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -46,6 +48,14 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement("infRec")]
         public RetEnviCTeInfRec InfRec { get; set; }
+
+        /// <summary>
+        /// Desserializar XML (Converte o XML para um objeto)
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
+        public override T LerXML<T>(XmlDocument doc) => XMLUtility.Deserializar<T>(doc.OuterXml.Replace("retEnviCTe", "retEnviCte")); //SEFAZ MG está retornando o nome da tag fora do padrão nacional
     }
 
 #if INTEROP
