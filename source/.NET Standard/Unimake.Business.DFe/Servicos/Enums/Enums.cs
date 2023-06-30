@@ -6270,6 +6270,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("BSITBR")]
         BSITBR = 38,
+
+        /// <summary>
+        /// SIMPLE
+        /// </summary>
+        [Description("SIMPLE")]
+        SIMPLE = 39,
     }
 
     #endregion

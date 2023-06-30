@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://simple.camboriu.sc.gov.br:8788/LISIPMC/NFSePrefeituraCamboriu.wso</WebEnderecoProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:CancelarNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://simple.camboriu.sc.gov.br:8788/LISIPMC/NFSePrefeituraCamboriu.wso</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:ConsultaNotaporRPSResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://simple.camboriu.sc.gov.br:8788/LISIPMC/NFSePrefeituraCamboriu.wso</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:ConsultaNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfse>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://simple.camboriu.sc.gov.br:8788/LISIPMC/NFSePrefeituraCamboriu.wso?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:LeRPSeGravaNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+	</Servicos>
+</Configuracoes>

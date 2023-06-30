@@ -1648,4 +1648,10 @@
 		<ArqConfig>GuaribaSP.xml</ArqConfig>
 		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4203204">
+		<Nome>Camboriú - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>CamboriuSC.xml</ArqConfig>
+		<PadraoNFSe>SIMPLE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
