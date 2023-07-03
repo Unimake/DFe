@@ -1654,4 +1654,10 @@
 		<ArqConfig>CamboriuSC.xml</ArqConfig>
 		<PadraoNFSe>SIMPLE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4206108">
+		<Nome>Grão-Pará - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
