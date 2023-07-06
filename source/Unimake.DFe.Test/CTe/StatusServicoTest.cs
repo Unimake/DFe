@@ -1,9 +1,7 @@
-﻿using System;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTe
 {
@@ -135,41 +133,34 @@ namespace Unimake.DFe.Test.CTe
 
         public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
-            try
+            var configuracao = new Configuracao
             {
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.CTe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CodigoUF = (int)ufBrasil,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)ufBrasil,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
 
-                var xml = new ConsStatServCte
-                {
-                    Versao = versao,
-                    TpAmb = tipoAmbiente,
-                    CUF = (versao == "4.00" ? ufBrasil : UFBrasil.NaoDefinido)
-                };
-
-                var statusServico = new StatusServico(xml, configuracao);
-                statusServico.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-
-                if (versao == "3.00" || statusServico.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
-                {
-                    Diag.Debug.Assert(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                }
-
-                Diag.Debug.Assert(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
-            }
-            catch (Exception ex)
+            var xml = new ConsStatServCte
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
+                Versao = versao,
+                TpAmb = tipoAmbiente,
+                CUF = (versao == "4.00" ? ufBrasil : UFBrasil.NaoDefinido)
+            };
+
+            var statusServico = new StatusServico(xml, configuracao);
+            statusServico.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+
+            if (versao == "3.00" || statusServico.Result.CUF != UFBrasil.SP) //Não sei o PQ mas SVSP não está retornando o estado de origem, na versão 3.00 retorna, na 4.00 não.
+            {
+                Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             }
+
+            Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(statusServico.Result.CStat.Equals(107), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
         }
     }
 }

@@ -142,8 +142,6 @@ namespace Unimake.DFe.Test.CTe
                 return;
             }
 
-            try
-            {
                 #region CriarCTe
 
                 var xml = new Business.DFe.Xml.CTe.CTe
@@ -346,16 +344,11 @@ namespace Unimake.DFe.Test.CTe
                 var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
                 autorizacaoSinc.Executar();
 
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
-            }
-            catch (Exception ex)
-            {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+                Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+                Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                Assert.True(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
         }
     }
 }

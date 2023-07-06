@@ -1,9 +1,7 @@
-﻿using System;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTe
 {

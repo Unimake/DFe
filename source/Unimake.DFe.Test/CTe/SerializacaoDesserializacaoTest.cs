@@ -1,10 +1,9 @@
-﻿using Diag = System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
-using Unimake.Business.DFe.Utility;
 
 namespace Unimake.DFe.Test.CTe
 {
@@ -165,9 +164,8 @@ namespace Unimake.DFe.Test.CTe
 
             var xml = XMLUtility.Deserializar<EventoCTe>(doc);
             var xmlSerializado = xml.GerarXML();
-            
+
             Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
-
     }
 }

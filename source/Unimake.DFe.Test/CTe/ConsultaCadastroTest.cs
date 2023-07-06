@@ -49,8 +49,6 @@ namespace Unimake.DFe.Test.CTe
         //        [InlineData(UFBrasil.TO)]
         public void ConsultarCadastroContribuinteCTe(UFBrasil ufBrasil, string cnpj)
         {
-            try
-            {
                 var xml = new ConsCad
                 {
                     Versao = "2.00",
@@ -71,33 +69,28 @@ namespace Unimake.DFe.Test.CTe
                 var consultaCadastro = new ConsultaCadastro(xml, configuracao);
                 consultaCadastro.Executar();
 
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+                Assert.True(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
 
                 switch(consultaCadastro.Result.InfCons.CStat)
                 {
                     case 259: // Rejeição: CNPJ da consulta não cadastrado como contribuinte na UF
-                        Diag.Debug.Assert(false, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
+                        Assert.True(false, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
                         break;
 
                     case 111: // Consulta cadastro com ocorrencia
-                        Diag.Debug.Assert(consultaCadastro.Result.InfCons.InfCad != null, "Objeto com o retorno do cadastro não foi retornado.");
+                        Assert.True(consultaCadastro.Result.InfCons.InfCad != null, "Objeto com o retorno do cadastro não foi retornado.");
                         break;
 
                     default:
                         if(ufBrasil != UFBrasil.MT) //MT está retornando problema de schema, não faz sentido, eles estão validando algo errado no webservice deles.
                         {
-                            Diag.Debug.Assert(false, "cStat: " + consultaCadastro.Result.InfCons.CStat + " - xMotivo: " + consultaCadastro.Result.InfCons.XMotivo);
+                            Assert.True(false, "cStat: " + consultaCadastro.Result.InfCons.CStat + " - xMotivo: " + consultaCadastro.Result.InfCons.XMotivo);
                         }
                         break;
                 }
 
-                //Diag.Debug.Assert(consultaCadastro.Result.InfCons.CNPJ.Equals(xml.InfCons.CNPJ), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
-            }
-            catch(Exception ex)
-            {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                //Assert.True(consultaCadastro.Result.InfCons.CNPJ.Equals(xml.InfCons.CNPJ), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Unimake.DFe.Test.CCG
         [InlineData(@"..\..\..\CCG\Resources\0000000000-consGTIN.xml")]
         public void SerializacaoDeserializacaoConsGTIN(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -28,7 +28,7 @@ namespace Unimake.DFe.Test.CCG
             xml = xml.LoadFromFile(arqXML);
             var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Unimake.DFe.Test.CCG
         [InlineData(@"..\..\..\CCG\Resources\retConsGTIN.xml")]
         public void SerializacaoDeserializacaoRetConsGTIN(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.CCG
             xml = xml.LoadFromFile(arqXML);
             var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
     }

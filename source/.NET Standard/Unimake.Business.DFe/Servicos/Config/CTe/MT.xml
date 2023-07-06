@@ -64,7 +64,7 @@
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CteRecepcaoEvento?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<WebTagRetorno>ns1:cteRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>
@@ -239,7 +239,7 @@
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoEventoV4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<WebTagRetorno>ns1:cteRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>

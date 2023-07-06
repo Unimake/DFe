@@ -284,7 +284,7 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionProducao>
 			<GZIPCompress>true</GZIPCompress>
-			<WebTagRetorno>cteRecepcaoSincResult</WebTagRetorno>
+			<WebTagRetorno>cteRecepcaoResult</WebTagRetorno>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
