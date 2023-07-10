@@ -990,25 +990,25 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoCTe
     {
         /// <summary>
-        /// Evento desconhecido (0)
+        /// 0 - Evento desconhecido
         /// </summary>
         [XmlEnum("0")]
         Desconhecido = 0,
 
         /// <summary>
-        /// Carta de Correção CTe (110110)
+        /// 110110 - Carta de Correção CTe
         /// </summary>
         [XmlEnum("110110")]
         CartaCorrecao = 110110,
 
         /// <summary>
-        /// Cancelamento CTe (110111)
+        /// 110111 - Cancelamento CTe
         /// </summary>
         [XmlEnum("110111")]
         Cancelamento = 110111,
 
         /// <summary>
-        /// EPEC = Evento Prévio da Emissão em Contingência do CTe (110113)
+        /// 110113 - EPEC = Evento Prévio da Emissão em Contingência do CTe
         /// </summary>
         [XmlEnum("110113")]
         EPEC = 110113,
@@ -1020,40 +1020,47 @@ namespace Unimake.Business.DFe.Servicos
         ComprovanteEntrega = 110180,
 
         /// <summary>
-        /// Cancelamento Comprovante de Entrega do CTe (110181)
+        /// 110181 - Cancelamento Comprovante de Entrega do CTe 
         /// </summary>
         [XmlEnum("110181")]
         CancelamentoComprovanteEntrega = 110181,
 
         /// <summary>
-        /// Evento de Insucesso na Entrega do CTe (110190)
+        /// 110190 - Evento de Insucesso na Entrega do CTe
         /// </summary>
         [XmlEnum("110190")]
         InsucessoEntrega = 110190,
 
         /// <summary>
-        /// Prestação de serviço em desacordo CTe (610110)
+        /// 610110 - Prestação de serviço em desacordo CTe
         /// </summary>
         [XmlEnum("610110")]
         PrestDesacordo = 610110,
 
         /// <summary>
-        /// MDFe Autorizado (310610) (Evento exclusivo do fisco)
+        /// 310610 - MDFe Autorizado (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("310610")]
         MDFeAutorizado = 310610,
 
         /// <summary>
-        /// Registro de Passagem CT-e (310620) (Evento exclusivo do fisco)
+        /// 310620 - Registro de Passagem CT-e (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("310620")]
         RegistroPassagem = 310620,
 
         /// <summary>
-        /// MDFe cancelado (310611) (Evento exclusivo do fisco)
+        /// 310611 - MDFe cancelado (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("310611")]
-        MDFeCancelado = 310611
+        MDFeCancelado = 310611,
+
+        /// <summary>
+        /// 510620 - Registro de Passagem Automático CTe (Evento exclusivo do fisco)
+        /// </summary>
+        RegistroPassagemAutomatico = 510620
+
+
     }
 
     #endregion

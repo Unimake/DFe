@@ -1379,6 +1379,10 @@ namespace Unimake.Business.DFe.Xml.CTe
                         _detEvento = new DetEventoInsucessoEntrega();
                         break;
 
+                    case TipoEventoCTe.RegistroPassagemAutomatico:
+                        _detEvento = new DetEventoRegistroPassagemAutomatico();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -2050,6 +2054,198 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement("xNome")]
         public string XNome { get; set; }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoRegistroPassagemAutomatico")]
+    [ComVisible(true)]
+#endif
+    [XmlInclude(typeof(EventoDetalhe))]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoRegistroPassagemAutomatico : EventoDetalhe
+    {
+        private EventoEvCTeRegPassagemAuto _eventoEvCTeRegPassagemAuto;
+
+        internal override void SetValue(PropertyInfo pi)
+        {
+            if (pi.Name == nameof(InfPass))
+            {
+                XmlReader.Read();
+                var InfPass = new EventoEvCTeRegPassagemAutoInfPass
+                {
+                    CUFTransito = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.CUFTransito)),
+                    CIdEquip = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.CIdEquip)),
+                    XIdEquip = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.XIdEquip)),
+                    TpEquip = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.TpEquip)),
+                    Placa = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.Placa)),
+#if INTEROP
+                    DhPass = XmlReader.GetValue<DateTime>(nameof(EventoEvCTeRegPassagemAutoInfPass.DhPass)),
+#else
+                    DhPass = XmlReader.GetValue<DateTimeOffset>(nameof(EventoEvCTeRegPassagemAutoInfPass.DhPass)),
+#endif
+                    Latitude = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.Latitude)),
+                    Longitude = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.Longitude)),
+                    NSU = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.NSU))
+                };
+
+                return;
+            }
+
+            base.SetValue(pi);
+        }
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EventoEvCTeRegPassagemAuto.DescEvento;
+            set => EventoEvCTeRegPassagemAuto.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string TpTransm
+        {
+            get => EventoEvCTeRegPassagemAuto.TpTransm;
+            set => EventoEvCTeRegPassagemAuto.TpTransm = value;
+        }
+
+
+        [XmlIgnore]
+        public EventoEvCTeRegPassagemAutoInfPass InfPass
+        {
+            get => EventoEvCTeRegPassagemAuto.InfPass;
+            set => EventoEvCTeRegPassagemAuto.InfPass = value;
+        }
+
+        [XmlElement(ElementName = "evCTeRegPassagemAuto")]
+        public EventoEvCTeRegPassagemAuto EventoEvCTeRegPassagemAuto
+        {
+            get => _eventoEvCTeRegPassagemAuto ?? (_eventoEvCTeRegPassagemAuto = new EventoEvCTeRegPassagemAuto());
+            set => _eventoEvCTeRegPassagemAuto = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evCTeRegPassagemAuto>
+                <descEvento>{DescEvento}</descEvento>
+                <tpTransm>{TpTransm}</tpTransm>";
+
+            writeRaw += "<infPass>";
+
+            writeRaw += $@"<infPass>
+                <cUFTransito>{InfPass.CUFTransito}</cUFTransito>
+                <cIdEquip>{InfPass.CIdEquip}</cIdEquip>
+                <xIdEquip>{InfPass.XIdEquip}</xIdEquip>
+                <tpEquip>{InfPass.TpEquip}</tpEquip>
+                <placa>{InfPass.Placa}</placa>
+                <tpSentido>{InfPass.TpSentido}</tpSentido>
+                <dhPass>{InfPass.DhPassField}</dhPass>
+                <latitude>{InfPass.Latitude}</latitude>
+                <longitude>{InfPass.Longitude}</longitude>
+                <NSU>{InfPass.NSU}</NSU>";
+
+            writeRaw += "</infPass>";
+
+            writeRaw += "</evCTeRegPassagemAuto>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoEvCTeRegPassagemAuto")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot(ElementName = "evCTeRegPassagemAuto")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EventoEvCTeRegPassagemAuto : EventoDetalhe
+    {
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Registro de Passagem Automático";
+
+        [XmlElement("tpTransm")]
+        public string TpTransm { get; set; }
+
+        [XmlElement("infPass")]
+        public EventoEvCTeRegPassagemAutoInfPass InfPass { get; set; }
+
+        [XmlElement("chMDFe")]
+        public string ChMDFe { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoEvCTeRegPassagemAuto")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot(ElementName = "evCTeRegPassagemAuto")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EventoEvCTeRegPassagemAutoInfPass : EventoDetalhe
+    {
+        [XmlElement("cUFTransito")]
+        public string CUFTransito { get; set; }
+
+        [XmlElement("cIdEquip")]
+        public string CIdEquip { get; set; }
+
+        [XmlElement("xIdEquip")]
+        public string XIdEquip { get; set; }
+
+        [XmlElement("tpEquip")]
+        public string TpEquip { get; set; }
+
+        [XmlElement("placa")]
+        public string Placa { get; set; }
+
+        [XmlElement("tpSentido")]
+        public string TpSentido { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhPass { get; set; }
+#else
+        public DateTimeOffset DhPass { get; set; }
+#endif
+
+        [XmlElement("dhPass")]
+        public string DhPassField
+        {
+            get => DhPass.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhPass = DateTime.Parse(value);
+#else
+            set => DhPass = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("latitude")]
+        public string Latitude { get; set; }
+
+        [XmlElement("longitude")]
+        public string Longitude { get; set; }
+
+        [XmlElement("NSU")]
+        public string NSU { get; set; }
     }
 
     #endregion
