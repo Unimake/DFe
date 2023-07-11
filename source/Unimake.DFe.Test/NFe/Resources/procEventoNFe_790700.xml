@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<procEventoNFe versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID7907003523011236656600066155001000377454100377454201">
+			<cOrgao>91</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>11111111111111</CNPJ>
+			<chNFe>35230112366566000661550010003774541003774542</chNFe>
+			<dhEvento>2019-06-29T04:52:37-03:00</dhEvento>
+			<tpEvento>790700</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Averbação para Exportação</descEvento>
+				<tpAutor>6</tpAutor>
+				<verAplic>1.00</verAplic>
+				<itensAverbados>
+					<dhEmbarque>2019-06-29T04:52:37-03:00</dhEmbarque>
+					<dhAverbacao>2019-06-29T04:52:37-03:00</dhAverbacao>
+					<nDue>12BR2222222222</nDue>
+					<nItem>1</nItem>
+					<nItemDue>1</nItemDue>
+					<qItem>1008</qItem>
+					<motAlteracao>1</motAlteracao>
+				</itensAverbados>
+				<itensAverbados>
+					<dhEmbarque>2019-06-29T04:52:37-03:00</dhEmbarque>
+					<dhAverbacao>2019-06-29T04:52:37-03:00</dhAverbacao>
+					<nDue>12BR2222222222</nDue>
+					<nItem>2</nItem>
+					<nItemDue>2</nItemDue>
+					<qItem>932</qItem>
+					<motAlteracao>1</motAlteracao>
+				</itensAverbados>
+			</detEvento>
+		</infEvento>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#ID7907003523011236656600066155001000377454100377454201">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>avaaasasaiaU7/S7s7sdswsesus=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>XwcyxWanyqJHK6JcvgF5jysaUasWsaOasKsa5Fas7asnasOasdas3asqasgWsapsa4aspasraseas9asHasVasEasX0as5asNasQasJ81Cs56Ny8tZGBmJDzLCu+/hXslSAsMBjDRYt0ALHeRicKoykuziTfMS3V/w1o2BL89OKY0avz2oP57wj7rdS+jcy8v6/sPRHh+FbPTWqXkmimv1XLJRTGtQjWtomfPVXLvXWRpoiIShNnyKglzYA7bmVavp2gilZp6PtGI3SSPvLaIKGEoNNaHOziIB3FI4VpeqDldR6c9eKMg4+hTxoK2P7UzpgsCuFQsxWeTkYaU4mV/Q==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</evento>
+	<retEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID111111111111111" xmlns="http://www.portalfiscal.inf.br/nfe">
+			<tpAmb>1</tpAmb>
+			<verAplic>AN_1.0.0</verAplic>
+			<cOrgao>91</cOrgao>
+			<cStat>135</cStat>
+			<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+			<chNFe>35230112366566000661550010003774541003774542</chNFe>
+			<tpEvento>790700</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<CNPJDest>11111111111111</CNPJDest>
+			<dhRegEvento>2019-06-29T04:53:51-03:00</dhRegEvento>
+			<nProt>111111111111111</nProt>
+		</infEvento>
+	</retEvento>
+</procEventoNFe>

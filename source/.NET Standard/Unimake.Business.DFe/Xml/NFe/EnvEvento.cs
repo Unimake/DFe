@@ -13,7 +13,6 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.CTe;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -314,6 +313,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                     case TipoEventoNFe.CancelamentoComprovantedeEntregaCTe:
                         _detEvento = new DetEventoCancelamentoComprovanteEntregaCTe();
+                        break;
+
+                    case TipoEventoNFe.AverbacaoDeExportacao:
+                        _detEvento = new DetEventoAverbacaoExportacao();
                         break;
 
                     default:
@@ -1754,5 +1757,161 @@ namespace Unimake.Business.DFe.Xml.NFe
                 NProtCTeCanc = xml.GetElementsByTagName("nProtCTeCanc")[0].InnerText;
             }
         }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAverbacaoExportacao")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class DetEventoAverbacaoExportacao : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Averbação para Exportação";
+
+        [XmlElement("tpAutor", Order = 2)]
+        public string TpAutor { get; set; }
+
+        [XmlElement("verAplic", Order = 3)]
+        public string VerAplic { get; set; }
+
+        [XmlElement("itensAverbados", Order = 4)]
+        public List<DetEventoAverbacaoExportacaoItensAverbados> ItensAverbados { get; set; } = new List<DetEventoAverbacaoExportacaoItensAverbados>();
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"
+                <descEvento>{DescEvento}</descEvento>
+                <tpAutor>{TpAutor}</tpAutor> 
+                <verAplic>{VerAplic}</verAplic>";
+
+            foreach (var item in ItensAverbados)
+            {
+                writeRaw += $@"<itensAverbados>
+                    <dhEmbarque>{item.DhEmbarqueField}</dhEmbarque>
+                    <dhAverbacao>{item.DhAverbacaoField}</dhAverbacao>
+					<nDue>{item.NDue}</nDue>
+					<nItem>{item.NItem}</nItem>
+					<nItemDue>{item.NItemDue}</nItemDue>
+					<qItem>{item.QItem}</qItem>
+                    <motAlteracao>{item.MotAlteracao}</motAlteracao>
+                    </itensAverbados>";
+            }
+
+            writer.WriteRaw(writeRaw);
+        }
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var xml = new XmlDocument();
+            xml.Load(XmlReader);
+
+            if (xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao") != null)
+            {
+                Versao = xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao").Value;
+            }
+            if (xml.GetElementsByTagName("tpAutor") != null)
+            {
+                TpAutor = xml.GetElementsByTagName("tpAutor")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("verAplic") != null)
+            {
+                VerAplic = xml.GetElementsByTagName("verAplic")[0].InnerText;
+            }
+
+            var detEventoNodeList = xml.GetElementsByTagName("detEvento");
+            foreach (var item in detEventoNodeList)
+            {
+                var detEventoElement = (XmlElement)item;
+
+                var itensAverbadosNodeList = detEventoElement.GetElementsByTagName("itensAverbados");
+
+                foreach (var itemAverbado in itensAverbadosNodeList)
+                {
+                    var itensAverbadosElement = (XmlElement)itemAverbado;
+
+                    ItensAverbados.Add(new DetEventoAverbacaoExportacaoItensAverbados
+                    {
+                        DhEmbarqueField = (itensAverbadosElement.GetElementsByTagName("dhEmbarque").Count > 0 ? itensAverbadosElement.GetElementsByTagName("dhEmbarque")[0].InnerText : ""),
+                        DhAverbacaoField = (itensAverbadosElement.GetElementsByTagName("dhAverbacao").Count > 0 ? itensAverbadosElement.GetElementsByTagName("dhAverbacao")[0].InnerText : ""),
+                        NDue = (itensAverbadosElement.GetElementsByTagName("nDue").Count > 0 ? itensAverbadosElement.GetElementsByTagName("nDue")[0].InnerText : ""),
+                        NItem = (itensAverbadosElement.GetElementsByTagName("nItem").Count > 0 ? itensAverbadosElement.GetElementsByTagName("nItem")[0].InnerText : ""),
+                        NItemDue = (itensAverbadosElement.GetElementsByTagName("nItemDue").Count > 0 ? itensAverbadosElement.GetElementsByTagName("nItemDue")[0].InnerText : ""),
+                        QItem = (itensAverbadosElement.GetElementsByTagName("qItem").Count > 0 ? itensAverbadosElement.GetElementsByTagName("qItem")[0].InnerText : ""),
+                        MotAlteracao = (itensAverbadosElement.GetElementsByTagName("motAlteracao").Count > 0 ? itensAverbadosElement.GetElementsByTagName("motAlteracao")[0].InnerText : ""),
+                    });                    
+                }
+            }
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAverbacaoExportacaoItensAverbados")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot("itensAverbados", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class DetEventoAverbacaoExportacaoItensAverbados
+    {
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhEmbarque { get; set; }
+#else
+        public DateTimeOffset DhEmbarque { get; set; }
+#endif
+
+        [XmlElement("dhEmbarque")]
+        public string DhEmbarqueField
+        {
+            get => DhEmbarque.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhEmbarque = DateTime.Parse(value);
+#else
+            set => DhEmbarque = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhAverbacao { get; set; }
+#else
+        public DateTimeOffset DhAverbacao { get; set; }
+#endif
+
+        [XmlElement("dhAverbacao")]
+        public string DhAverbacaoField
+        {
+            get => DhAverbacao.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhAverbacao = DateTime.Parse(value);
+#else
+            set => DhAverbacao = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("nDue")]
+        public string NDue { get; set; }
+
+        [XmlElement("nItem")]
+        public string NItem { get; set; }
+
+        [XmlElement("nItemDue")]
+        public string NItemDue { get; set; }
+
+        [XmlElement("qItem")]
+        public string QItem { get; set; }
+
+        [XmlElement("motAlteracao")]
+        public string MotAlteracao { get; set; }
     }
 }
