@@ -159,21 +159,21 @@
 				<serie>1</serie>
 				<subserie>su1</subserie>
 				<dEmi>2021-11-01</dEmi>
-				<vDoc>1.0000</vDoc>
+				<vDoc>1.00</vDoc>
 			</infDocRef>
 			<infDocRef>
 				<nDoc>nDoc2</nDoc>
 				<serie>2</serie>
 				<subserie>su2</subserie>
 				<dEmi>2021-11-01</dEmi>
-				<vDoc>2.0000</vDoc>
+				<vDoc>2.00</vDoc>
 			</infDocRef>
 			<infDocRef>
 				<nDoc>nDoc3</nDoc>
 				<serie>3</serie>
 				<subserie>su3</subserie>
 				<dEmi>2021-11-01</dEmi>
-				<vDoc>4.0000</vDoc>
+				<vDoc>4.00</vDoc>
 			</infDocRef>
 			<seg>
 				<respSeg>4</respSeg>

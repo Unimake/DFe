@@ -1058,9 +1058,8 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 510620 - Registro de Passagem Automático CTe (Evento exclusivo do fisco)
         /// </summary>
+        [XmlEnum("510620")]
         RegistroPassagemAutomatico = 510620
-
-
     }
 
     #endregion

@@ -1428,7 +1428,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoInsucessoEntrega : EventoDetalhe
     {
-        private EventoIECTe _eventoIECTe;
+        private EvIECTe _eventoIECTe;
 
         internal override void SetValue(PropertyInfo pi)
         {
@@ -1439,11 +1439,15 @@ namespace Unimake.Business.DFe.Xml.CTe
                 {
                     ChNFe = XmlReader.GetValue<string>(nameof(Xml.CTe.InfEntrega.ChNFe))
                 });
+
                 return;
             }
+
             if (pi.Name == nameof(TpMotivo))
             {
                 TpMotivo = XmlReader.GetValue<TipoMotivoInsucessoEntrega>(nameof(TpMotivo));
+
+                return;
             }
 
             base.SetValue(pi);
@@ -1560,9 +1564,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         [XmlElement(ElementName = "evIECTe")]
-        public EventoIECTe EventoIECTe
+        public EvIECTe EventoIECTe
         {
-            get => _eventoIECTe ?? (_eventoIECTe = new EventoIECTe());
+            get => _eventoIECTe ?? (_eventoIECTe = new EvIECTe());
             set => _eventoIECTe = value;
         }
 
@@ -1613,15 +1617,15 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoIECTe")]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvIECTe")]
     [ComVisible(true)]
 #endif
     [XmlRoot(ElementName = "evIECTe")]
     [XmlInclude(typeof(EventoDetalhe))]
-    public class EventoIECTe : EventoDetalhe
+    public class EvIECTe : Contract.Serialization.IXmlSerializable
     {
         [XmlElement("descEvento")]
-        public override string DescEvento { get; set; } = "Insucesso na Entrega do CT-e";
+        public string DescEvento { get; set; } = "Insucesso na Entrega do CT-e";
 
         [XmlElement("nProt")]
         public string NProt { get; set; }
@@ -1721,6 +1725,19 @@ namespace Unimake.Business.DFe.Xml.CTe
         public int GetInfEntregaCount => (InfEntrega != null ? InfEntrega.Count : 0);
 
 #endif
+        public void ReadXml(XmlDocument document)
+        {
+
+        }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na serialização
+        /// </summary>
+        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        public void WriteXml(System.IO.StringWriter writer)
+        {
+
+        }
     }
 
     #region Eventos exclusivos do fisco (Gerados pelo fisco)
@@ -1863,12 +1880,16 @@ namespace Unimake.Business.DFe.Xml.CTe
                 MDFe.Modal = XmlReader.GetValue<ModalidadeTransporteCTe>(nameof(MDFe.Modal));
 #if INTEROP
                 MDFe.DhEmi = XmlReader.GetValue<DateTime>(nameof(MDFe.DhEmi));
-                MDFe.DhRecbto = XmlReader.GetValue<DateTime>(nameof(MDFe.DhRecbto));
 #else
                 MDFe.DhEmi = XmlReader.GetValue<DateTimeOffset>(nameof(MDFe.DhEmi));
-                MDFe.DhRecbto = XmlReader.GetValue<DateTimeOffset>(nameof(MDFe.DhRecbto));
 #endif
                 MDFe.NProt = XmlReader.GetValue<string>(nameof(MDFe.NProt));
+
+#if INTEROP
+                MDFe.DhRecbto = XmlReader.GetValue<DateTime>(nameof(MDFe.DhRecbto));
+#else
+                MDFe.DhRecbto = XmlReader.GetValue<DateTimeOffset>(nameof(MDFe.DhRecbto));
+#endif
 
                 return;
             }
@@ -2082,29 +2103,28 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoRegistroPassagemAutomatico : EventoDetalhe
     {
-        private EventoEvCTeRegPassagemAuto _eventoEvCTeRegPassagemAuto;
+        private EvCTeRegPassagemAuto _evCTeRegPassagemAuto;
 
         internal override void SetValue(PropertyInfo pi)
         {
-            if (pi.Name == nameof(InfPass))
+            if (pi?.Name == nameof(InfPass))
             {
                 XmlReader.Read();
-                var InfPass = new EventoEvCTeRegPassagemAutoInfPass
-                {
-                    CUFTransito = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.CUFTransito)),
-                    CIdEquip = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.CIdEquip)),
-                    XIdEquip = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.XIdEquip)),
-                    TpEquip = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.TpEquip)),
-                    Placa = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.Placa)),
+                InfPass = new EvCTeRegPassagemAutoInfPass();
+                InfPass.CUFTransito = XmlReader.GetValue<string>(nameof(InfPass.CUFTransito));
+                InfPass.CIdEquip = XmlReader.GetValue<string>(nameof(InfPass.CIdEquip));
+                InfPass.XIdEquip = XmlReader.GetValue<string>(nameof(InfPass.XIdEquip));
+                InfPass.TpEquip = XmlReader.GetValue<string>(nameof(InfPass.TpEquip));
+                InfPass.Placa = XmlReader.GetValue<string>(nameof(InfPass.Placa));
+                InfPass.TpSentido = XmlReader.GetValue<string>(nameof(InfPass.TpSentido));
 #if INTEROP
-                    DhPass = XmlReader.GetValue<DateTime>(nameof(EventoEvCTeRegPassagemAutoInfPass.DhPass)),
+                InfPass.DhPass = XmlReader.GetValue<DateTime>(nameof(InfPass.DhPass));
 #else
-                    DhPass = XmlReader.GetValue<DateTimeOffset>(nameof(EventoEvCTeRegPassagemAutoInfPass.DhPass)),
+                InfPass.DhPass = XmlReader.GetValue<DateTimeOffset>(nameof(InfPass.DhPass));
 #endif
-                    Latitude = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.Latitude)),
-                    Longitude = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.Longitude)),
-                    NSU = XmlReader.GetValue<string>(nameof(EventoEvCTeRegPassagemAutoInfPass.NSU))
-                };
+                InfPass.Latitude = XmlReader.GetValue<string>(nameof(InfPass.Latitude));
+                InfPass.Longitude = XmlReader.GetValue<string>(nameof(InfPass.Longitude));
+                InfPass.NSU = XmlReader.GetValue<string>(nameof(InfPass.NSU));
 
                 return;
             }
@@ -2115,30 +2135,36 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlIgnore]
         public override string DescEvento
         {
-            get => EventoEvCTeRegPassagemAuto.DescEvento;
-            set => EventoEvCTeRegPassagemAuto.DescEvento = value;
+            get => EvCTeRegPassagemAuto.DescEvento;
+            set => EvCTeRegPassagemAuto.DescEvento = value;
         }
 
         [XmlIgnore]
         public string TpTransm
         {
-            get => EventoEvCTeRegPassagemAuto.TpTransm;
-            set => EventoEvCTeRegPassagemAuto.TpTransm = value;
+            get => EvCTeRegPassagemAuto.TpTransm;
+            set => EvCTeRegPassagemAuto.TpTransm = value;
         }
-
 
         [XmlIgnore]
-        public EventoEvCTeRegPassagemAutoInfPass InfPass
+        public EvCTeRegPassagemAutoInfPass InfPass
         {
-            get => EventoEvCTeRegPassagemAuto.InfPass;
-            set => EventoEvCTeRegPassagemAuto.InfPass = value;
+            get => EvCTeRegPassagemAuto.InfPass;
+            set => EvCTeRegPassagemAuto.InfPass = value;
         }
 
-        [XmlElement(ElementName = "evCTeRegPassagemAuto")]
-        public EventoEvCTeRegPassagemAuto EventoEvCTeRegPassagemAuto
+        [XmlIgnore]
+        public string ChMDFe
         {
-            get => _eventoEvCTeRegPassagemAuto ?? (_eventoEvCTeRegPassagemAuto = new EventoEvCTeRegPassagemAuto());
-            set => _eventoEvCTeRegPassagemAuto = value;
+            get => EvCTeRegPassagemAuto.ChMDFe;
+            set => EvCTeRegPassagemAuto.ChMDFe = value;
+        }
+
+        [XmlIgnore]
+        public EvCTeRegPassagemAuto EvCTeRegPassagemAuto
+        {
+            get => _evCTeRegPassagemAuto ?? (_evCTeRegPassagemAuto = new EvCTeRegPassagemAuto());
+            set => _evCTeRegPassagemAuto = value;
         }
 
         public override void WriteXml(XmlWriter writer)
@@ -2151,8 +2177,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
             writeRaw += "<infPass>";
 
-            writeRaw += $@"<infPass>
-                <cUFTransito>{InfPass.CUFTransito}</cUFTransito>
+            writeRaw += $@"<cUFTransito>{InfPass.CUFTransito}</cUFTransito>
                 <cIdEquip>{InfPass.CIdEquip}</cIdEquip>
                 <xIdEquip>{InfPass.XIdEquip}</xIdEquip>
                 <tpEquip>{InfPass.TpEquip}</tpEquip>
@@ -2165,42 +2190,64 @@ namespace Unimake.Business.DFe.Xml.CTe
 
             writeRaw += "</infPass>";
 
+            writeRaw += $@"<chMDFe>{ChMDFe}</chMDFe>";
+
             writeRaw += "</evCTeRegPassagemAuto>";
 
             writer.WriteRaw(writeRaw);
         }
     }
 
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoEvCTeRegPassagemAuto")]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeRegPassagemAuto")]
     [ComVisible(true)]
 #endif
     [XmlRoot(ElementName = "evCTeRegPassagemAuto")]
     [XmlInclude(typeof(EventoDetalhe))]
-    public class EventoEvCTeRegPassagemAuto : EventoDetalhe
+    public class EvCTeRegPassagemAuto : Contract.Serialization.IXmlSerializable
     {
         [XmlElement("descEvento")]
-        public override string DescEvento { get; set; } = "Registro de Passagem Automático";
+        public string DescEvento { get; set; } = "Registro de Passagem Automático";
 
         [XmlElement("tpTransm")]
         public string TpTransm { get; set; }
 
         [XmlElement("infPass")]
-        public EventoEvCTeRegPassagemAutoInfPass InfPass { get; set; }
+        public EvCTeRegPassagemAutoInfPass InfPass { get; set; }
 
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na desserialização
+        /// </summary>
+        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        public void ReadXml(XmlDocument document)
+        {
+
+        }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na serialização
+        /// </summary>
+        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        public void WriteXml(System.IO.StringWriter writer)
+        {
+
+        }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.EventoEvCTeRegPassagemAuto")]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeRegPassagemAutoInfPass")]
     [ComVisible(true)]
 #endif
-    [XmlRoot(ElementName = "evCTeRegPassagemAuto")]
-    [XmlInclude(typeof(EventoDetalhe))]
-    public class EventoEvCTeRegPassagemAutoInfPass : EventoDetalhe
+
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class EvCTeRegPassagemAutoInfPass
     {
         [XmlElement("cUFTransito")]
         public string CUFTransito { get; set; }
