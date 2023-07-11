@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -85,6 +86,40 @@ namespace Unimake.Business.DFe.Servicos.CTe
 
         #region Public Methods
 
+        /// <summary>
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
+        /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void Executar()
+        {
+            base.Executar();
+
+            //Adicionar os XMLs retornados em suas respectivas listas para que possam ser resgatados em formato de objeto
+            if (Result != null && Result.LoteDistDFeInt != null)
+            {
+                ProcEventoCTes = new List<ProcEventoCTe>();
+                ProcCTes = new List<CteProc>();
+
+                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                {
+                    var conteudoXML = item.ConteudoXML;
+
+                    switch (item.TipoXML)
+                    {
+                        case TipoXMLDocZip.ProcEventoCTe:
+                            ProcEventoCTes.Add(XMLUtility.Deserializar<ProcEventoCTe>(conteudoXML));
+                            break;
+
+                        case TipoXMLDocZip.ProcCTe:
+                            ProcCTes.Add(XMLUtility.Deserializar<CteProc>(conteudoXML));
+                            break;
+                    }
+                }
+            }
+        }
+
 #if INTEROP
 
         /// <summary>
@@ -150,23 +185,25 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 foreach (var item in Result.LoteDistDFeInt.DocZip)
                 {
                     var save = true;
-                    var conteudoXML = Compress.GZIPDecompress(Convert.ToBase64String(item.Value));
+                    var conteudoXML = item.ConteudoXML;
                     var nomeArquivo = string.Empty;
 
                     var docXML = new XmlDocument();
                     docXML.Load(Converter.StringToStreamUTF8(conteudoXML));
 
-                    if (item.Schema.StartsWith("procEventoCTe"))
+                    switch (item.TipoXML)
                     {
-                        var chCTe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "chCTe");
-                        var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
-                        var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
-                        nomeArquivo = chCTe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoCTe.xml";
-                    }
-                    else if (item.Schema.StartsWith("procCTe"))
-                    {
-                        var chave = ((XmlElement)docXML.GetElementsByTagName("infCte")[0]).GetAttribute("Id").Substring(3, 44);
-                        nomeArquivo = chave + "-procCTe.xml";
+                        case TipoXMLDocZip.ProcEventoCTe:
+                            var chCTe = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "chCTe");
+                            var tpEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "tpEvento");
+                            var nSeqEvento = XMLUtility.TagRead(((XmlElement)((XmlElement)docXML.GetElementsByTagName("eventoCTe")[0]).GetElementsByTagName("infEvento")[0]), "nSeqEvento");
+                            nomeArquivo = chCTe + "_" + tpEvento + "_" + nSeqEvento.PadLeft(2, '0') + "-procEventoCTe.xml";
+                            break;
+
+                        case TipoXMLDocZip.ProcCTe:
+                            var chave = ((XmlElement)docXML.GetElementsByTagName("infCte")[0]).GetAttribute("Id").Substring(3, 44);
+                            nomeArquivo = chave + "-procCTe.xml";
+                            break;
                     }
 
                     if (save && !string.IsNullOrEmpty(nomeArquivo))
@@ -182,5 +219,15 @@ namespace Unimake.Business.DFe.Servicos.CTe
         }
 
         #endregion Public Methods
+
+        /// <summary>
+        /// Resgata a lista dos CTes completos (XML de distribuição dos CTes) retornadas pelo serviço de distribuição do DFe
+        /// </summary>
+        public List<CteProc> ProcCTes { get; private set; }
+
+        /// <summary>
+        /// Resgata a lista dos eventos completos (XML de distribuição dos eventos dos CTes) retornados pelo serviço de distribuição do DFe
+        /// </summary>
+        public List<ProcEventoCTe> ProcEventoCTes { get; private set; }
     }
 }

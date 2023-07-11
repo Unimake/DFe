@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Xml.Serialization;
-using static Unimake.Business.DFe.Xml.NFe.DocZip;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -6742,7 +6740,7 @@ namespace Unimake.Business.DFe.Servicos
     #region Tipos dos XML retornados no DocZip
 
     /// <summary>
-    /// Tipos de XML retornados na consulta distribuição de DFe (NFe) na tag docZip
+    /// Tipos de XML retornados na consulta distribuição de DFe (NFe/CTe) na tag docZip
     /// </summary>
     public enum TipoXMLDocZip
     {
@@ -6765,6 +6763,16 @@ namespace Unimake.Business.DFe.Servicos
         /// XML de distribuição da NFe (XML completo da NFe)
         /// </summary>
         ProcNFe = 4,
+
+        /// <summary>
+        /// XML de distribuição de eventos da CTe (XML completo do evento)
+        /// </summary>
+        ProcEventoCTe = 5,
+
+        /// <summary>
+        /// XML de distribuição do CTe (XML completo do CTe)
+        /// </summary>
+        ProcCTe = 6,
 
         /// <summary>
         /// XML desconhecido

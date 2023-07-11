@@ -5,8 +5,10 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -114,5 +116,49 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlText(DataType = "base64Binary")]
         public byte[] Value { get; set; }
+
+        /// <summary>
+        /// Conteúdo do XML retornado no formato string
+        /// </summary>
+        [XmlIgnore]
+        public string ConteudoXML => Compress.GZIPDecompress(Convert.ToBase64String(Value));
+
+        /// <summary>
+        /// Conteúdo do XML retornado no formato XmlDocument
+        /// </summary>
+        [XmlIgnore]
+        public XmlDocument DocXML
+        {
+            get
+            {
+                var docXML = new XmlDocument();
+                docXML.Load(Converter.StringToStreamUTF8(ConteudoXML));
+
+                return docXML;
+            }
+        }
+
+        /// <summary>
+        /// Tipo dos XML retornados no DocZip
+        /// </summary>
+        [XmlIgnore]
+        public TipoXMLDocZip TipoXML
+        {
+            get
+            {
+                var tipoXML = TipoXMLDocZip.Desconhecido;
+
+                if (Schema.StartsWith("procEventoCTe"))
+                {
+                    tipoXML = TipoXMLDocZip.ProcEventoCTe;
+                }
+                else if (Schema.StartsWith("procCTe"))
+                {
+                    tipoXML = TipoXMLDocZip.ProcCTe;
+                }
+
+                return tipoXML;
+            }
+        }
     }
 }
