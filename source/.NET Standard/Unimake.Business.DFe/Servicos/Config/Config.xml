@@ -1660,4 +1660,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4316501">
+		<Nome>Salvador do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SalvadorDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
