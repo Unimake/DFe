@@ -296,6 +296,7 @@
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaporangaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItumbiaraGO.xml" />
+		<None Remove="Servicos\Config\NFSe\IvotiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\JaciSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JataiGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
@@ -753,6 +754,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaibaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstanciaVelhaRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\IvotiRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaPrataRS.xml">

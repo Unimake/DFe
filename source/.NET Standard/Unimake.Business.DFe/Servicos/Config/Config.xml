@@ -1672,4 +1672,10 @@
 		<ArqConfig>NovaPrataRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4310801">
+		<Nome>Ivoti - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>IvotiRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
