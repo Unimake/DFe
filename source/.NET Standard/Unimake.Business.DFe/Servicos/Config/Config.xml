@@ -1666,4 +1666,10 @@
 		<ArqConfig>SalvadorDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4313300">
+		<Nome>Nova Prata - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>NovaPrataRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

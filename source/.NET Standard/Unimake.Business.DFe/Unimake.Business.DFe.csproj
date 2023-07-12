@@ -314,6 +314,7 @@
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
+		<None Remove="Servicos\Config\NFSe\NovaPrataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSerranaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
@@ -752,6 +753,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaibaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstanciaVelhaRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaPrataRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SalvadorDoSulRS.xml">
