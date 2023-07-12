@@ -1678,4 +1678,10 @@
 		<ArqConfig>IvotiRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4309555">
+		<Nome>Harmonia - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>HarmoniaRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
