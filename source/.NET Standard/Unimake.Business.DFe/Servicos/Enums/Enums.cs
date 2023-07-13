@@ -73,12 +73,6 @@ namespace Unimake.Business.DFe.Servicos
         CTeConsultaProtocolo = 9,
 
         /// <summary>
-        /// 10 - Inutilização de números do Conhecimento de Transporte Eletrônico (CTe)
-        /// </summary>
-        [Description("Inutilização de números do CTe")]
-        CTeInutilizacao = 10,
-
-        /// <summary>
         /// 11 - Envio do XML de consulta dos documentos fiscais eletrônicos destinados - CTe
         /// </summary>
         [Description("Distribuição de documentos fiscais eletrônicos do CTe")]
@@ -6426,12 +6420,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("XML de envio de evento do CTe")]
         CTeEnvioEvento,
-
-        /// <summary>
-        /// XML de Inutilização do CTe
-        /// </summary>
-        [Description("XML de Inutilização do CTe")]
-        CTeInutilizacao,
 
         /// <summary>
         /// XML individual do CTe

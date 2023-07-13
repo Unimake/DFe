@@ -403,14 +403,11 @@
 		<None Remove="Xml\Schemas\CTe\evRegMultimodal_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\GTVe_v4.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v4.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\procInutCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retConsSitCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retConsStatServCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retCTeOS_v4.00.xsd" />
@@ -418,7 +415,6 @@
 		<None Remove="Xml\Schemas\CTe\retEventoCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retGTVe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\retInutCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\tiposGeralCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\cabecMsg_v1.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\config_uf_v1.00.xsd" />
@@ -471,13 +467,10 @@
 		<None Remove="Xml\Schemas\CTe\evGTV_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evPrestDesacordo_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evRegMultimodal_v3.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\inutCTeTiposBasico_v3.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\inutCTe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\leiauteConsultaCadastro_v2.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTeOS_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procEventoCTe_v3.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\procInutCTe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retConsCad_v2.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retConsReciCTe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retConsSitCTe_v3.00.xsd" />
@@ -487,7 +480,6 @@
 		<None Remove="Xml\Schemas\CTe\retDistDFeInt_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retEnviCTe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retEventoCTe_v3.00.xsd" />
-		<None Remove="Xml\Schemas\CTe\retInutCTe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\tiposBasico_v1.03.xsd" />
 		<None Remove="Xml\Schemas\CTe\tiposDistDFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\tiposGeralCTe_v3.00.xsd" />
@@ -986,20 +978,16 @@
 	  <EmbeddedResource Include="Xml\Schemas\CTe\evPrestDesacordo_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\evRegMultimodal_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\GTVe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\procInutCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retConsSitCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retConsStatServCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTeOS_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retEventoCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\CTe\retInutCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\tiposGeralCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
@@ -1552,15 +1540,12 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\evGTV_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evPrestDesacordo_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\evRegMultimodal_v3.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v3.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\leiauteConsultaCadastro_v2.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v3.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\CTe\procInutCTe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\retConsCad_v2.00.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
@@ -1572,7 +1557,6 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\retDistDFeInt_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\retEnviCTe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\retEventoCTe_v3.00.xsd" />
-		<EmbeddedResource Include="Xml\Schemas\CTe\retInutCTe_v3.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\tiposBasico_v1.03.xsd">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
