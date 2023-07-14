@@ -45,19 +45,6 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaProtocolo>
-		<Inutilizacao versao="3.00">
-			<Descricao>Inutilização de números do conhecimento de transporte eletrônico</Descricao>
-			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CteInutilizacao?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CteInutilizacao</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteInutilizacao</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteInutilizacao</WebActionProducao>
-			<WebTagRetorno>cteInutilizacaoCTResult</WebTagRetorno>
-			<SchemaArquivo>inutCTe_v{0}.xsd</SchemaArquivo>
-			<TagAssinatura>inutCTe</TagAssinatura>
-			<TagAtributoID>infInut</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-		</Inutilizacao>
 		<RecepcaoEvento versao="3.00">
 			<Descricao>Recepcao de eventos</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/RecepcaoEvento?wsdl</WebEnderecoHomologacao>
