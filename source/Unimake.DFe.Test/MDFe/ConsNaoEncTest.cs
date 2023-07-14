@@ -1,6 +1,4 @@
-﻿using System;
-using Diag = System.Diagnostics;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.MDFe;
 using Unimake.Business.DFe.Xml.MDFe;
 using Xunit;
@@ -76,36 +74,29 @@ namespace Unimake.DFe.Test.MDFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarMDFeNaoEncerrado(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            var xml = new ConsMDFeNaoEnc
             {
-                var xml = new ConsMDFeNaoEnc
-                {
-                    Versao = "3.00",
-                    TpAmb = tipoAmbiente,
-                    XServ = "CONSULTAR NÃO ENCERRADOS",
-                    CNPJ = "06117473000150"
-                };
+                Versao = "3.00",
+                TpAmb = tipoAmbiente,
+                XServ = "CONSULTAR NÃO ENCERRADOS",
+                CNPJ = "06117473000150"
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.MDFe,
-                    CodigoUF = (int)ufBrasil,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var consNaoEnc = new ConsNaoEnc(xml, configuracao);
-                consNaoEnc.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(consNaoEnc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(consNaoEnc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(consNaoEnc.Result.CStat.Equals(203) || consNaoEnc.Result.CStat.Equals(112), "Serviço não está em operação - <xMotivo>" + consNaoEnc.Result.XMotivo + "<xMotivo>");
-            }
-            catch(Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                TipoDFe = TipoDFe.MDFe,
+                CodigoUF = (int)ufBrasil,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consNaoEnc = new ConsNaoEnc(xml, configuracao);
+            consNaoEnc.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(consNaoEnc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consNaoEnc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consNaoEnc.Result.CStat.Equals(203) || consNaoEnc.Result.CStat.Equals(112), "Serviço não está em operação - <xMotivo>" + consNaoEnc.Result.XMotivo + "<xMotivo>");
         }
     }
 }

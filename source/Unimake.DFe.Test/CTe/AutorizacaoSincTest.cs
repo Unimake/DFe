@@ -4,7 +4,6 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTe
 {
@@ -142,110 +141,110 @@ namespace Unimake.DFe.Test.CTe
                 return;
             }
 
-                #region CriarCTe
+            #region CriarCTe
 
-                var xml = new Business.DFe.Xml.CTe.CTe
+            var xml = new Business.DFe.Xml.CTe.CTe
+            {
+                InfCTe = new InfCTe
                 {
-                    InfCTe = new InfCTe
-                    {
-                        Versao = versao,
+                    Versao = versao,
 
-                        Ide = new Ide
+                    Ide = new Ide
+                    {
+                        CUF = ufBrasil,
+                        CCT = "01722067",
+                        CFOP = "6352",
+                        NatOp = "PREST.SERV.TRANSP.INDUSTR",
+                        Mod = ModeloDFe.CTe,
+                        Serie = 1,
+                        NCT = 861,
+                        DhEmi = DateTime.Now,
+                        TpImp = FormatoImpressaoDACTE.NormalPaisagem,
+                        TpEmis = TipoEmissao.Normal,
+                        TpAmb = tipoAmbiente,
+                        TpCTe = TipoCTe.Normal,
+                        ProcEmi = ProcessoEmissao.AplicativoContribuinte,
+                        VerProc = "UNICO V8.0",
+                        CMunEnv = "4118402",
+                        XMunEnv = "PARANAVAI",
+                        UFEnv = ufBrasil,
+                        Modal = ModalidadeTransporteCTe.Rodoviario,
+                        TpServ = TipoServicoCTe.Normal,
+                        CMunIni = "4118402",
+                        XMunIni = "PARANAVAI",
+                        UFIni = UFBrasil.PR,
+                        CMunFim = "3305109",
+                        XMunFim = "SAO JOAO DE MERITI",
+                        UFFim = UFBrasil.RJ,
+                        Retira = SimNao.Nao,
+                        IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
+                        Toma3 = new Toma3
                         {
-                            CUF = ufBrasil,
-                            CCT = "01722067",
-                            CFOP = "6352",
-                            NatOp = "PREST.SERV.TRANSP.INDUSTR",
-                            Mod = ModeloDFe.CTe,
-                            Serie = 1,
-                            NCT = 861,
-                            DhEmi = DateTime.Now,
-                            TpImp = FormatoImpressaoDACTE.NormalPaisagem,
-                            TpEmis = TipoEmissao.Normal,
-                            TpAmb = tipoAmbiente,
-                            TpCTe = TipoCTe.Normal,
-                            ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                            VerProc = "UNICO V8.0",
-                            CMunEnv = "4118402",
-                            XMunEnv = "PARANAVAI",
-                            UFEnv = ufBrasil,
-                            Modal = ModalidadeTransporteCTe.Rodoviario,
-                            TpServ = TipoServicoCTe.Normal,
-                            CMunIni = "4118402",
-                            XMunIni = "PARANAVAI",
-                            UFIni = UFBrasil.PR,
-                            CMunFim = "3305109",
-                            XMunFim = "SAO JOAO DE MERITI",
-                            UFFim = UFBrasil.RJ,
-                            Retira = SimNao.Nao,
-                            IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
-                            Toma3 = new Toma3
-                            {
-                                Toma = TomadorServicoCTe.Remetente,
-                            },
+                            Toma = TomadorServicoCTe.Remetente,
                         },
-                        Emit = new Emit
+                    },
+                    Emit = new Emit
+                    {
+                        CNPJ = "31905001000109",
+                        IE = "9079649730",
+                        XNome = "EXATUS MOVEIS EIRELI",
+                        XFant = "EXATUS MOVEIS",
+                        EnderEmit = new Unimake.Business.DFe.Xml.CTe.EnderEmit
                         {
-                            CNPJ = "31905001000109",
-                            IE = "9079649730",
-                            XNome = "EXATUS MOVEIS EIRELI",
-                            XFant = "EXATUS MOVEIS",
-                            EnderEmit = new Unimake.Business.DFe.Xml.CTe.EnderEmit
-                            {
-                                XLgr = "RUA JOAQUIM F. DE SOUZA",
-                                Nro = "01112",
-                                XBairro = "VILA TEREZINHA",
-                                CMun = 4118402,
-                                XMun = "PARANAVAI",
-                                CEP = "87706675",
-                                UF = ufBrasil,
-                                Fone = "04434237530",
-                            },
-                            CRT = CRT.SimplesNacional
+                            XLgr = "RUA JOAQUIM F. DE SOUZA",
+                            Nro = "01112",
+                            XBairro = "VILA TEREZINHA",
+                            CMun = 4118402,
+                            XMun = "PARANAVAI",
+                            CEP = "87706675",
+                            UF = ufBrasil,
+                            Fone = "04434237530",
                         },
-                        Rem = new Rem
+                        CRT = CRT.SimplesNacional
+                    },
+                    Rem = new Rem
+                    {
+                        CNPJ = "10197843000183",
+                        IE = "9044791606",
+                        XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                        XFant = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                        Fone = "04434225480",
+                        EnderReme = new Unimake.Business.DFe.Xml.CTe.EnderReme
                         {
-                            CNPJ = "10197843000183",
-                            IE = "9044791606",
-                            XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                            XFant = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                            Fone = "04434225480",
-                            EnderReme = new Unimake.Business.DFe.Xml.CTe.EnderReme
-                            {
-                                XLgr = "RUA AMAZONAS, 1140",
-                                Nro = "1140",
-                                XBairro = "JD. SAO FELICIO",
-                                CMun = 4118402,
-                                XMun = "PARANAVAI",
-                                CEP = "87702300",
-                                UF = UFBrasil.PR,
-                                CPais = 1058,
-                                XPais = "BRASIL",
-                            }
+                            XLgr = "RUA AMAZONAS, 1140",
+                            Nro = "1140",
+                            XBairro = "JD. SAO FELICIO",
+                            CMun = 4118402,
+                            XMun = "PARANAVAI",
+                            CEP = "87702300",
+                            UF = UFBrasil.PR,
+                            CPais = 1058,
+                            XPais = "BRASIL",
+                        }
+                    },
+                    Dest = new Dest
+                    {
+                        CNPJ = "00000000075108",
+                        IE = "ISENTO",
+                        XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                        EnderDest = new Unimake.Business.DFe.Xml.CTe.EnderDest
+                        {
+                            XLgr = "R. GESSYR GONCALVES FONTES, 55",
+                            Nro = "55",
+                            XBairro = "CENTRO",
+                            CMun = 3305109,
+                            XMun = "SAO JOAO DE MERITI",
+                            CEP = "25520570",
+                            UF = UFBrasil.RJ,
+                            CPais = 1058,
+                            XPais = "BRASIL",
                         },
-                        Dest = new Dest
-                        {
-                            CNPJ = "00000000075108",
-                            IE = "ISENTO",
-                            XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                            EnderDest = new Unimake.Business.DFe.Xml.CTe.EnderDest
-                            {
-                                XLgr = "R. GESSYR GONCALVES FONTES, 55",
-                                Nro = "55",
-                                XBairro = "CENTRO",
-                                CMun = 3305109,
-                                XMun = "SAO JOAO DE MERITI",
-                                CEP = "25520570",
-                                UF = UFBrasil.RJ,
-                                CPais = 1058,
-                                XPais = "BRASIL",
-                            },
-                        },
-                        VPrest = new VPrest
-                        {
-                            VTPrest = 50.00,
-                            VRec = 50.00,
-                            Comp = new List<Comp>
+                    },
+                    VPrest = new VPrest
+                    {
+                        VTPrest = 50.00,
+                        VRec = 50.00,
+                        Comp = new List<Comp>
                                     {
                                         new Comp
                                         {
@@ -253,25 +252,25 @@ namespace Unimake.DFe.Test.CTe
                                             VComp = 50.00,
                                         },
                                     },
-                        },
-                        Imp = new Imp
+                    },
+                    Imp = new Imp
+                    {
+                        ICMS = new ICMS
                         {
-                            ICMS = new ICMS
+                            ICMSSN = new ICMSSN
                             {
-                                ICMSSN = new ICMSSN
-                                {
-                                    CST = "90",
-                                    IndSN = SimNao.Sim,
-                                }
+                                CST = "90",
+                                IndSN = SimNao.Sim,
                             }
-                        },
-                        InfCTeNorm = new InfCTeNorm
+                        }
+                    },
+                    InfCTeNorm = new InfCTeNorm
+                    {
+                        InfCarga = new InfCarga
                         {
-                            InfCarga = new InfCarga
-                            {
-                                VCarga = 6252.96,
-                                ProPred = "MOVEIS",
-                                InfQ = new List<InfQ>
+                            VCarga = 6252.96,
+                            ProPred = "MOVEIS",
+                            InfQ = new List<InfQ>
                                         {
                                             new InfQ
                                             {
@@ -286,24 +285,24 @@ namespace Unimake.DFe.Test.CTe
                                                 QCarga = 1.0000,
                                             },
                                         },
-                            },
-                            InfDoc = new InfDoc
-                            {
-                                InfNFe = new List<InfNFe>
+                        },
+                        InfDoc = new InfDoc
+                        {
+                            InfNFe = new List<InfNFe>
                                         {
                                             new InfNFe
                                             {
                                                 Chave = "41200306117473000150550030000652511417023254"
                                             },
                                         },
-                            },
-                            InfModal = new InfModal
+                        },
+                        InfModal = new InfModal
+                        {
+                            VersaoModal = versao,
+                            Rodo = new Rodo
                             {
-                                VersaoModal = versao,
-                                Rodo = new Rodo
-                                {
-                                    RNTRC = "44957333",
-                                    Occ = new List<Occ>
+                                RNTRC = "44957333",
+                                Occ = new List<Occ>
                                             {
                                                 new Occ
                                                 {
@@ -319,36 +318,36 @@ namespace Unimake.DFe.Test.CTe
                                                     },
                                                 },
                                             },
-                                },
                             },
                         },
-                        InfRespTec = new InfRespTec
-                        {
-                            CNPJ = "06117473000150",
-                            XContato = "Wandrey Mundin Ferreira",
-                            Email = "wandrey@unimake.com.br",
-                            Fone = "04431414900",
-                        },
                     },
-                };
+                    InfRespTec = new InfRespTec
+                    {
+                        CNPJ = "06117473000150",
+                        XContato = "Wandrey Mundin Ferreira",
+                        Email = "wandrey@unimake.com.br",
+                        Fone = "04431414900",
+                    },
+                },
+            };
 
-                #endregion CriarCTe
+            #endregion CriarCTe
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.CTe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
 
-                var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
-                autorizacaoSinc.Executar();
+            var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
+            autorizacaoSinc.Executar();
 
-                Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Assert.True(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
         }
     }
 }

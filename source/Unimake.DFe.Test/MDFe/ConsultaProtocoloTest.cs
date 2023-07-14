@@ -1,6 +1,4 @@
-﻿using System;
-using Diag = System.Diagnostics;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.MDFe;
 using Unimake.Business.DFe.Xml.MDFe;
 using Xunit;
@@ -76,40 +74,33 @@ namespace Unimake.DFe.Test.MDFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarProtocoloMDFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            var xml = new ConsSitMDFe
             {
-                var xml = new ConsSitMDFe
-                {
-                    Versao = "3.00",
-                    TpAmb = tipoAmbiente,
-                    ChMDFe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
-                };
+                Versao = "3.00",
+                TpAmb = tipoAmbiente,
+                ChMDFe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.MDFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
 
-                var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
-                consultaProtocolo.Executar();
+            var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
 
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if(consultaProtocolo.Result.ProtMDFe != null)
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            if (consultaProtocolo.Result.ProtMDFe != null)
+            {
+                if (consultaProtocolo.Result.ProtMDFe.InfProt != null)
                 {
-                    if(consultaProtocolo.Result.ProtMDFe.InfProt != null)
-                    {
-                        Diag.Debug.Assert(consultaProtocolo.Result.ProtMDFe.InfProt.ChMDFe.Equals(xml.ChMDFe), "Webservice retornou uma chave do MDFe diferente da enviada na consulta.");
-                    }
+                    Assert.True(consultaProtocolo.Result.ProtMDFe.InfProt.ChMDFe.Equals(xml.ChMDFe), "Webservice retornou uma chave do MDFe diferente da enviada na consulta.");
                 }
-            }
-            catch(Exception ex)
-            {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
         }
     }

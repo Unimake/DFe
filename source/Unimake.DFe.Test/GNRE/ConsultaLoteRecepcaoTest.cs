@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Diag = System.Diagnostics;
+﻿using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.GNRE;
 using Unimake.Business.DFe.Xml.GNRE;
@@ -56,9 +54,9 @@ namespace Unimake.DFe.Test.GNRE
             var consultaLoteRecepcao = new ConsultaLoteRecepcao(xml, configuracao);
             consultaLoteRecepcao.Executar();
 
-            Diag.Debug.Assert(consultaLoteRecepcao.Result != null);
-            Diag.Debug.Assert(consultaLoteRecepcao.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Diag.Debug.Assert(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"), "Código de retorno diferente de 100 e 102.");  //Lote de consulta de guia recebido com sucesso!
+            Assert.True(consultaLoteRecepcao.Result != null);
+            Assert.True(consultaLoteRecepcao.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"), "Código de retorno diferente de 100 e 102.");  //Lote de consulta de guia recebido com sucesso!
         }
     }
 }

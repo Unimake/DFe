@@ -2,7 +2,6 @@
 using System.Xml;
 using Unimake.Business.DFe.Xml.CCG;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CCG
 {

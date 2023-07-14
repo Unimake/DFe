@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
@@ -77,13 +76,13 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarCTeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-                #region CriarCTe
+            #region CriarCTe
 
-                var xml = new EnviCTe
-                {
-                    Versao = "3.00",
-                    IdLote = "000000000000001",
-                    CTe = new List<Business.DFe.Xml.CTe.CTe> {
+            var xml = new EnviCTe
+            {
+                Versao = "3.00",
+                IdLote = "000000000000001",
+                CTe = new List<Business.DFe.Xml.CTe.CTe> {
                         new Business.DFe.Xml.CTe.CTe
                         {
                             InfCTe = new InfCTe
@@ -271,25 +270,25 @@ namespace Unimake.DFe.Test.CTe
                             },
                         },
                     },
-                };
+            };
 
-                #endregion CriarCTe
+            #endregion CriarCTe
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.CTe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
 
-                var autorizacao = new Autorizacao(xml, configuracao);
-                autorizacao.Executar();
+            var autorizacao = new Autorizacao(xml, configuracao);
+            autorizacao.Executar();
 
-                Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Assert.True(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(203) || autorizacao.Result.CStat.Equals(213), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(203) || autorizacao.Result.CStat.Equals(213), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Diag = System.Diagnostics;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.GNRE;
 using Unimake.Business.DFe.Xml.GNRE;
 using Xunit;
@@ -42,9 +39,9 @@ namespace Unimake.DFe.Test.GNRE
             var consultaResultadoLote = new ConsultaResultadoLote(xml, configuracao);
             consultaResultadoLote.Executar();
 
-            Diag.Debug.Assert(consultaResultadoLote.Result != null);
-            Diag.Debug.Assert(consultaResultadoLote.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Diag.Debug.Assert(consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("100") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("102") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("602"), "Código retornado não era esperado: " + consultaResultadoLote.Result.SituacaoProcess.Codigo + "-" + consultaResultadoLote.Result.SituacaoProcess.Descricao);
+            Assert.True(consultaResultadoLote.Result != null);
+            Assert.True(consultaResultadoLote.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("100") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("102") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("602"), "Código retornado não era esperado: " + consultaResultadoLote.Result.SituacaoProcess.Codigo + "-" + consultaResultadoLote.Result.SituacaoProcess.Descricao);
         }
     }
 }

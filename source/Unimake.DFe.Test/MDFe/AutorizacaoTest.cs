@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.MDFe;
 using Unimake.Business.DFe.Xml.MDFe;
@@ -77,38 +76,36 @@ namespace Unimake.DFe.Test.MDFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarMDFeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            #region CriarMDFe
+
+            var xml = new EnviMDFe
             {
-                #region CriarMDFe
-
-                var xml = new EnviMDFe
+                Versao = "3.00",
+                IdLote = "000000000000001",
+                MDFe = new Business.DFe.Xml.MDFe.MDFe
                 {
-                    Versao = "3.00",
-                    IdLote = "000000000000001",
-                    MDFe = new Business.DFe.Xml.MDFe.MDFe
+
+                    InfMDFe = new InfMDFe
                     {
+                        Versao = "3.00",
 
-                        InfMDFe = new InfMDFe
+                        Ide = new Ide
                         {
-                            Versao = "3.00",
-
-                            Ide = new Ide
-                            {
-                                CUF = ufBrasil,
-                                TpAmb = tipoAmbiente,
-                                TpEmit = TipoEmitenteMDFe.PrestadorServicoTransporte,
-                                Mod = ModeloDFe.MDFe,
-                                Serie = 1,
-                                NMDF = 861,
-                                CMDF = "01722067",
-                                Modal = ModalidadeTransporteMDFe.Rodoviario,
-                                DhEmi = DateTime.Now,
-                                TpEmis = TipoEmissao.Normal,
-                                ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                                VerProc = "UNICO V8.0",
-                                UFIni = ufBrasil,
-                                UFFim = UFBrasil.SP,
-                                InfMunCarrega = new List<InfMunCarrega>
+                            CUF = ufBrasil,
+                            TpAmb = tipoAmbiente,
+                            TpEmit = TipoEmitenteMDFe.PrestadorServicoTransporte,
+                            Mod = ModeloDFe.MDFe,
+                            Serie = 1,
+                            NMDF = 861,
+                            CMDF = "01722067",
+                            Modal = ModalidadeTransporteMDFe.Rodoviario,
+                            DhEmi = DateTime.Now,
+                            TpEmis = TipoEmissao.Normal,
+                            ProcEmi = ProcessoEmissao.AplicativoContribuinte,
+                            VerProc = "UNICO V8.0",
+                            UFIni = ufBrasil,
+                            UFFim = UFBrasil.SP,
+                            InfMunCarrega = new List<InfMunCarrega>
                                 {
                                     new InfMunCarrega
                                     {
@@ -117,36 +114,36 @@ namespace Unimake.DFe.Test.MDFe
 
                                     }
                                 },
-                                DhIniViagem = DateTime.Now,
+                            DhIniViagem = DateTime.Now,
 
-                            },
-                            Emit = new Emit
+                        },
+                        Emit = new Emit
+                        {
+                            CNPJ = "06117473000150",
+                            IE = "9032000301",
+                            XNome = "TESTE DE ENVIO DE MDFE",
+                            XFant = "TESTE DE ENVIO DE MDFE",
+                            EnderEmit = new EnderEmit
                             {
-                                CNPJ = "06117473000150",
-                                IE = "9032000301",
-                                XNome = "TESTE DE ENVIO DE MDFE",
-                                XFant = "TESTE DE ENVIO DE MDFE",
-                                EnderEmit = new EnderEmit
-                                {
-                                    XLgr = "RUA TESTE DE SOUZA",
-                                    Nro = "01112",
-                                    XBairro = "JD. SIMARA",
-                                    CMun = 4118402,
-                                    XMun = "PARANAVAI",
-                                    CEP = "87706111",
-                                    UF = UFBrasil.PR,
-                                    Fone = "04431421010",
-                                },
+                                XLgr = "RUA TESTE DE SOUZA",
+                                Nro = "01112",
+                                XBairro = "JD. SIMARA",
+                                CMun = 4118402,
+                                XMun = "PARANAVAI",
+                                CEP = "87706111",
+                                UF = UFBrasil.PR,
+                                Fone = "04431421010",
                             },
-                            InfModal = new InfModal
+                        },
+                        InfModal = new InfModal
+                        {
+                            VersaoModal = "3.00",
+                            Rodo = new Rodo
                             {
-                                VersaoModal = "3.00",
-                                Rodo = new Rodo
+                                InfANTT = new InfANTT
                                 {
-                                    InfANTT = new InfANTT
-                                    {
-                                        RNTRC = "99778899",
-                                        InfContratante = new List<InfContratante>
+                                    RNTRC = "99778899",
+                                    InfContratante = new List<InfContratante>
                                         {
                                             new InfContratante
                                             {
@@ -157,23 +154,23 @@ namespace Unimake.DFe.Test.MDFe
                                                 CNPJ = "06117473000150"
                                             }
                                         }
-                                    },
-                                    VeicTracao = new VeicTracao
+                                },
+                                VeicTracao = new VeicTracao
+                                {
+                                    CInt = "ARR5555",
+                                    Placa = "ARR5555",
+                                    Tara = 0,
+                                    CapKG = 5000,
+                                    Prop = new Prop
                                     {
-                                        CInt = "ARR5555",
-                                        Placa = "ARR5555",
-                                        Tara = 0,
-                                        CapKG = 5000,
-                                        Prop = new Prop
-                                        {
-                                            CNPJ = "06117473000150",
-                                            RNTRC = "12345678",
-                                            XNome = "TESTE TESTE TESTE X",
-                                            IE = "1234567890",
-                                            UF = ufBrasil,
-                                            TpProp = TipoProprietarioMDFe.Outros
-                                        },
-                                        Condutor = new List<Condutor>
+                                        CNPJ = "06117473000150",
+                                        RNTRC = "12345678",
+                                        XNome = "TESTE TESTE TESTE X",
+                                        IE = "1234567890",
+                                        UF = ufBrasil,
+                                        TpProp = TipoProprietarioMDFe.Outros
+                                    },
+                                    Condutor = new List<Condutor>
                                         {
                                             new Condutor
                                             {
@@ -181,15 +178,15 @@ namespace Unimake.DFe.Test.MDFe
                                                 CPF = "00000000000"
                                             }
                                         },
-                                        TpRod = TipoRodado.Toco,
-                                        TpCar = TipoCarroceriaMDFe.FechadaBau,
-                                        UF = UFBrasil.PR
-                                    },
-                                }
-                            },
-                            InfDoc = new InfDocInfMDFe
-                            {
-                                InfMunDescarga = new List<InfMunDescarga>
+                                    TpRod = TipoRodado.Toco,
+                                    TpCar = TipoCarroceriaMDFe.FechadaBau,
+                                    UF = UFBrasil.PR
+                                },
+                            }
+                        },
+                        InfDoc = new InfDocInfMDFe
+                        {
+                            InfMunDescarga = new List<InfMunDescarga>
                                 {
                                     new InfMunDescarga
                                     {
@@ -254,24 +251,24 @@ namespace Unimake.DFe.Test.MDFe
                                         }
                                     }
                                 }
-                            },
-                            ProdPred = new ProdPred
+                        },
+                        ProdPred = new ProdPred
+                        {
+                            TpCarga = TipoCargaMDFe.CargaGeral,
+                            XProd = "TESTE DE PRODUTO PREDOMINANTE",
+                            InfLotacao = new InfLotacao
                             {
-                                TpCarga = TipoCargaMDFe.CargaGeral,
-                                XProd = "TESTE DE PRODUTO PREDOMINANTE",
-                                InfLotacao = new InfLotacao
+                                InfLocalCarrega = new InfLocalCarrega
                                 {
-                                    InfLocalCarrega = new InfLocalCarrega
-                                    {
-                                        CEP = "87302080"
-                                    },
-                                    InfLocalDescarrega = new InfLocalDescarrega
-                                    {
-                                        CEP = "25650208"
-                                    }
+                                    CEP = "87302080"
+                                },
+                                InfLocalDescarrega = new InfLocalDescarrega
+                                {
+                                    CEP = "25650208"
                                 }
-                            },
-                            Seg = new List<Seg>
+                            }
+                        },
+                        Seg = new List<Seg>
                             {
                                 new Seg
                                 {
@@ -297,14 +294,14 @@ namespace Unimake.DFe.Test.MDFe
                                     }
                                 }
                             },
-                            Tot = new Tot
-                            {
-                                QCTe = 3,
-                                VCarga = 56599.09,
-                                CUnid = CodigoUnidadeMedidaMDFe.KG,
-                                QCarga = 2879.00
-                            },
-                            Lacres = new List<Lacre>
+                        Tot = new Tot
+                        {
+                            QCTe = 3,
+                            VCarga = 56599.09,
+                            CUnid = CodigoUnidadeMedidaMDFe.KG,
+                            QCarga = 2879.00
+                        },
+                        Lacres = new List<Lacre>
                             {
                                 new Lacre
                                 {
@@ -316,43 +313,38 @@ namespace Unimake.DFe.Test.MDFe
                                 }
 
                             },
-                            InfAdic = new InfAdic
-                            {
-                                InfCpl = "DATA/HORA PREVISTA PARA O INICO DA VIAGEM: 10/08/2020 as 08:00"
-                            },
-                            InfRespTec = new InfRespTec
-                            {
-                                CNPJ = "06117473000150",
-                                XContato = "TESTE TESTE TESTE",
-                                Email = "wandrey@unimake.com.br",
-                                Fone = "04431421010",
-                            },
+                        InfAdic = new InfAdic
+                        {
+                            InfCpl = "DATA/HORA PREVISTA PARA O INICO DA VIAGEM: 10/08/2020 as 08:00"
+                        },
+                        InfRespTec = new InfRespTec
+                        {
+                            CNPJ = "06117473000150",
+                            XContato = "TESTE TESTE TESTE",
+                            Email = "wandrey@unimake.com.br",
+                            Fone = "04431421010",
                         },
                     },
-                };
+                },
+            };
 
-                #endregion CriarMDFe
+            #endregion CriarMDFe
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.MDFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var autorizacao = new Autorizacao(xml, configuracao);
-                autorizacao.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(203) || autorizacao.Result.CStat.Equals(213), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
-            }
-            catch(Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacao = new Autorizacao(xml, configuracao);
+            autorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(203) || autorizacao.Result.CStat.Equals(213), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
         }
     }
 }

@@ -5,7 +5,6 @@ using Unimake.Business.DFe.Servicos.GNRE;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.GNRE
 {
@@ -34,7 +33,7 @@ namespace Unimake.DFe.Test.GNRE
                     Courier = courier,
                     Value = receita
                 },
-                TiposGnre=SimNaoLetra.Sim
+                TiposGnre = SimNaoLetra.Sim
             };
 
             var configuracao = new Configuracao
@@ -51,9 +50,9 @@ namespace Unimake.DFe.Test.GNRE
             var consultaConfigUF = new ConsultaConfigUF(xml, configuracao);
             consultaConfigUF.Executar();
 
-            Diag.Debug.Assert(consultaConfigUF.Result != null);
-            Diag.Debug.Assert(consultaConfigUF.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Diag.Debug.Assert(consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("450") || consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("999"), "Código de retorno " + consultaConfigUF.Result.SituacaoConsulta.Codigo + " (" + consultaConfigUF.Result.SituacaoConsulta.Descricao + ") não esperado.");
+            Assert.True(consultaConfigUF.Result != null);
+            Assert.True(consultaConfigUF.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("450") || consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("999"), "Código de retorno " + consultaConfigUF.Result.SituacaoConsulta.Codigo + " (" + consultaConfigUF.Result.SituacaoConsulta.Descricao + ") não esperado.");
 
             //Diag.Trace.WriteLine("Receita: " + receita + " Courier: " + courier.ToString() + " - Situação retorno: " + consultaConfigUF.Result.SituacaoConsulta.Codigo + "-" + consultaConfigUF.Result.SituacaoConsulta.Descricao, "Unimake.DFe.Test.GNRE.ConsultarConfigUFGNRETest()");
 
@@ -64,7 +63,7 @@ namespace Unimake.DFe.Test.GNRE
             var xmlRetorno = XMLUtility.Deserializar<TConfigUf>(doc);
             var doc2 = xmlRetorno.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado. (Receita: " + receita + "Courier: " + courier.ToString() + ")");
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado. (Receita: " + receita + "Courier: " + courier.ToString() + ")");
         }
 
         /// <summary>

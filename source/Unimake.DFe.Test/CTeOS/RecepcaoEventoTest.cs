@@ -3,7 +3,6 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTe;
 using Unimake.Business.DFe.Xml.CTe;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTeOS
 {
@@ -136,48 +135,41 @@ namespace Unimake.DFe.Test.CTeOS
 
         public void RecepcaoEventoEstados(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
-            try
+            var xml = new EventoCTe
             {
-                var xml = new EventoCTe
+                Versao = versao,
+                InfEvento = new InfEvento(new DetEventoCanc
                 {
-                    Versao = versao,
-                    InfEvento = new InfEvento(new DetEventoCanc
-                    {
-                        NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.PR) + "0000000000000",
-                        VersaoEvento = versao,
-                        XJust = "Justificativa para cancelamento da CTe de teste"
-                    })
-                    {
-                        COrgao = ufBrasil,
-                        ChCTe = (int)ufBrasil + "200206117473000150570010000005671227070615",
-                        CNPJ = "06117473000150",
-                        DhEvento = DateTime.Now,
-                        TpEvento = TipoEventoCTe.Cancelamento,
-                        NSeqEvento = 1,
-                        TpAmb = tipoAmbiente
-                    }
-                };
-
-                var configuracao = new Configuracao
+                    NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.PR) + "0000000000000",
+                    VersaoEvento = versao,
+                    XJust = "Justificativa para cancelamento da CTe de teste"
+                })
                 {
-                    TipoDFe = TipoDFe.CTe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
+                    COrgao = ufBrasil,
+                    ChCTe = (int)ufBrasil + "200206117473000150570010000005671227070615",
+                    CNPJ = "06117473000150",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoCTe.Cancelamento,
+                    NSeqEvento = 1,
+                    TpAmb = tipoAmbiente
+                }
+            };
 
-                var recepcaoEvento = new RecepcaoEvento(xml, configuracao);
-                recepcaoEvento.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
-            }
-            catch (Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var recepcaoEvento = new RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
         }
     }
 }

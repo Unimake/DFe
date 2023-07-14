@@ -4,7 +4,6 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.CTeOS;
 using Unimake.Business.DFe.Xml.CTeOS;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.CTeOS
 {
@@ -80,88 +79,86 @@ namespace Unimake.DFe.Test.CTeOS
 
         public void EnviarCTeOSSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
-            try
-            {
-                #region CriarCTeOS
+            #region CriarCTeOS
 
-                var xml = new Business.DFe.Xml.CTeOS.CTeOS
+            var xml = new Business.DFe.Xml.CTeOS.CTeOS
+            {
+                Versao = versao,
+
+                InfCTe = new InfCTe
                 {
                     Versao = versao,
 
-                    InfCTe = new InfCTe
+                    Ide = new Ide
                     {
-                        Versao = versao,
-
-                        Ide = new Ide
+                        CUF = ufBrasil,
+                        CCT = "01722067",
+                        CFOP = "6352",
+                        NatOp = "PREST.SERV.TRANSP.INDUSTR",
+                        Mod = ModeloDFe.CTeOS,
+                        Serie = 1,
+                        NCT = 861,
+                        DhEmi = DateTime.Now,
+                        TpImp = FormatoImpressaoDACTE.NormalPaisagem,
+                        TpEmis = TipoEmissao.Normal,
+                        TpAmb = tipoAmbiente,
+                        TpCTe = TipoCTe.Normal,
+                        ProcEmi = ProcessoEmissao.AplicativoContribuinte,
+                        VerProc = "UNICO V8.0",
+                        CMunEnv = "4118402",
+                        XMunEnv = "PARANAVAI",
+                        UFEnv = ufBrasil,
+                        Modal = ModalidadeTransporteCTe.Rodoviario,
+                        TpServ = TipoServicoCTeOS.TransportePessoas,
+                        CMunIni = "4118402",
+                        XMunIni = "PARANAVAI",
+                        UFIni = UFBrasil.PR,
+                        CMunFim = "3305109",
+                        XMunFim = "SAO JOAO DE MERITI",
+                        UFFim = UFBrasil.RJ,
+                        IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
+                    },
+                    Emit = new Emit
+                    {
+                        CNPJ = "31905001000109",
+                        IE = "9079649730",
+                        XNome = "EXATUS MOVEIS EIRELI",
+                        XFant = "EXATUS MOVEIS",
+                        EnderEmit = new Unimake.Business.DFe.Xml.CTeOS.EnderEmit
                         {
-                            CUF = ufBrasil,
-                            CCT = "01722067",
-                            CFOP = "6352",
-                            NatOp = "PREST.SERV.TRANSP.INDUSTR",
-                            Mod = ModeloDFe.CTeOS,
-                            Serie = 1,
-                            NCT = 861,
-                            DhEmi = DateTime.Now,
-                            TpImp = FormatoImpressaoDACTE.NormalPaisagem,
-                            TpEmis = TipoEmissao.Normal,
-                            TpAmb = tipoAmbiente,
-                            TpCTe = TipoCTe.Normal,
-                            ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                            VerProc = "UNICO V8.0",
-                            CMunEnv = "4118402",
-                            XMunEnv = "PARANAVAI",
-                            UFEnv = ufBrasil,
-                            Modal = ModalidadeTransporteCTe.Rodoviario,
-                            TpServ = TipoServicoCTeOS.TransportePessoas,
-                            CMunIni = "4118402",
-                            XMunIni = "PARANAVAI",
-                            UFIni = UFBrasil.PR,
-                            CMunFim = "3305109",
-                            XMunFim = "SAO JOAO DE MERITI",
-                            UFFim = UFBrasil.RJ,
-                            IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
+                            XLgr = "RUA JOAQUIM F. DE SOUZA",
+                            Nro = "01112",
+                            XBairro = "VILA TEREZINHA",
+                            CMun = 4118402,
+                            XMun = "PARANAVAI",
+                            CEP = "87706675",
+                            UF = ufBrasil,
+                            Fone = "04434237530",
                         },
-                        Emit = new Emit
+                        CRT = CRT.SimplesNacional
+                    },
+                    Toma = new Toma
+                    {
+                        CNPJ = "31905001000109",
+                        IE = "9079649730",
+                        XNome = "EXATUS MOVEIS EIRELI",
+                        XFant = "EXATUS MOVEIS",
+                        EnderToma = new Unimake.Business.DFe.Xml.CTeOS.EnderToma
                         {
-                            CNPJ = "31905001000109",
-                            IE = "9079649730",
-                            XNome = "EXATUS MOVEIS EIRELI",
-                            XFant = "EXATUS MOVEIS",
-                            EnderEmit = new Unimake.Business.DFe.Xml.CTeOS.EnderEmit
-                            {
-                                XLgr = "RUA JOAQUIM F. DE SOUZA",
-                                Nro = "01112",
-                                XBairro = "VILA TEREZINHA",
-                                CMun = 4118402,
-                                XMun = "PARANAVAI",
-                                CEP = "87706675",
-                                UF = ufBrasil,
-                                Fone = "04434237530",
-                            },
-                            CRT = CRT.SimplesNacional
-                        },
-                        Toma = new Toma
-                        {
-                            CNPJ = "31905001000109",
-                            IE = "9079649730",
-                            XNome = "EXATUS MOVEIS EIRELI",
-                            XFant = "EXATUS MOVEIS",
-                            EnderToma = new Unimake.Business.DFe.Xml.CTeOS.EnderToma
-                            {                                
-                                XLgr = "RUA JOAQUIM F. DE SOUZA",
-                                Nro = "01112",
-                                XBairro = "VILA TEREZINHA",
-                                CMun = 4118402,
-                                XMun = "PARANAVAI",
-                                CEP = "87706675",
-                                UF = ufBrasil,
-                            }
-                        },
-                        VPrest = new VPrest
-                        {
-                            VTPrest = 50.00,
-                            VRec = 50.00,
-                            Comp = new List<Comp>
+                            XLgr = "RUA JOAQUIM F. DE SOUZA",
+                            Nro = "01112",
+                            XBairro = "VILA TEREZINHA",
+                            CMun = 4118402,
+                            XMun = "PARANAVAI",
+                            CEP = "87706675",
+                            UF = ufBrasil,
+                        }
+                    },
+                    VPrest = new VPrest
+                    {
+                        VTPrest = 50.00,
+                        VRec = 50.00,
+                        Comp = new List<Comp>
                                     {
                                         new Comp
                                         {
@@ -169,82 +166,77 @@ namespace Unimake.DFe.Test.CTeOS
                                             VComp = 50.00,
                                         },
                                     },
-                        },
-                        Imp = new Imp
+                    },
+                    Imp = new Imp
+                    {
+                        ICMS = new ICMS
                         {
-                            ICMS = new ICMS
+                            ICMSSN = new ICMSSN
                             {
-                                ICMSSN = new ICMSSN
-                                {
-                                    CST = "90",
-                                    IndSN = SimNao.Sim,
-                                }
+                                CST = "90",
+                                IndSN = SimNao.Sim,
                             }
-                        },
-                        InfCTeNorm = new InfCTeNorm
+                        }
+                    },
+                    InfCTeNorm = new InfCTeNorm
+                    {
+                        InfServico = new InfServico
                         {
-                            InfServico = new InfServico
+                            XDescServ = "TRANSPORTE DE PASSAGEIROS",
+                            InfQ = new InfQ
                             {
-                                XDescServ = "TRANSPORTE DE PASSAGEIROS",
-                                InfQ = new InfQ
-                                {
-                                    QCarga = 45.0000
-                                },
+                                QCarga = 45.0000
                             },
-                            Seg = new List<Seg>
+                        },
+                        Seg = new List<Seg>
                             {
                                 new Seg
                                 {
                                     RespSeg = ResponsavelSeguroCTeOS.EmitenteCTeOS
                                 }
                             },
-                            InfModal = new InfModal
+                        InfModal = new InfModal
+                        {
+                            VersaoModal = versao,
+                            RodoOS = new RodoOS
                             {
-                                VersaoModal = versao,                                
-                                RodoOS = new RodoOS
+                                TAF = "999999999999",
+                                Veic = new Veic
                                 {
-                                    TAF = "999999999999",
-                                    Veic = new Veic
-                                    {
-                                        Placa = "XXX999",
-                                        RENAVAM = "999999999",
-                                        UF = UFBrasil.SP
-                                    },
+                                    Placa = "XXX999",
+                                    RENAVAM = "999999999",
+                                    UF = UFBrasil.SP
                                 },
                             },
                         },
-                        InfRespTec = new InfRespTec
-                        {
-                            CNPJ = "06117473000150",
-                            XContato = "Wandrey Mundin Ferreira",
-                            Email = "wandrey@unimake.com.br",
-                            Fone = "04431414900",
-                        },
                     },
-                };
+                    InfRespTec = new InfRespTec
+                    {
+                        CNPJ = "06117473000150",
+                        XContato = "Wandrey Mundin Ferreira",
+                        Email = "wandrey@unimake.com.br",
+                        Fone = "04431414900",
+                    },
+                },
+            };
 
-                #endregion CriarCTeOS
+            #endregion CriarCTeOS
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.CTeOS,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var autorizacao = new Autorizacao(xml, configuracao);
-                autorizacao.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CStat.Equals(753) || autorizacao.Result.CStat.Equals(213) || autorizacao.Result.CStat.Equals(539) || autorizacao.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
-            }
-            catch (Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                TipoDFe = TipoDFe.CTeOS,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacao = new Autorizacao(xml, configuracao);
+            autorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CStat.Equals(753) || autorizacao.Result.CStat.Equals(213) || autorizacao.Result.CStat.Equals(539) || autorizacao.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
         }
     }
 }
