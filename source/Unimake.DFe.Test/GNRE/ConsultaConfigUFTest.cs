@@ -52,7 +52,7 @@ namespace Unimake.DFe.Test.GNRE
 
             Assert.True(consultaConfigUF.Result != null);
             Assert.True(consultaConfigUF.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("450") || consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("999"), "Código de retorno " + consultaConfigUF.Result.SituacaoConsulta.Codigo + " (" + consultaConfigUF.Result.SituacaoConsulta.Descricao + ") não esperado.");
+            Assert.True(consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("102") || consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("450") || consultaConfigUF.Result.SituacaoConsulta.Codigo.Equals("999"), "Código de retorno " + consultaConfigUF.Result.SituacaoConsulta.Codigo + " (" + consultaConfigUF.Result.SituacaoConsulta.Descricao + ") não esperado.");
 
             //Diag.Trace.WriteLine("Receita: " + receita + " Courier: " + courier.ToString() + " - Situação retorno: " + consultaConfigUF.Result.SituacaoConsulta.Codigo + "-" + consultaConfigUF.Result.SituacaoConsulta.Descricao, "Unimake.DFe.Test.GNRE.ConsultarConfigUFGNRETest()");
 

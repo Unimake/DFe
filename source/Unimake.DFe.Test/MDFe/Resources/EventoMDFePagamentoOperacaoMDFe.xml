@@ -36,7 +36,6 @@
 					<vContrato>3000.00</vContrato>
 					<indPag>1</indPag>
 					<vAdiant>500.00</vAdiant>
-					<indAntecipaAdiant>1</indAntecipaAdiant>
 					<infPrazo>
 						<nParcela>001</nParcela>
 						<dVenc>2021-08-17</dVenc>
@@ -47,7 +46,6 @@
 						<dVenc>2021-09-06</dVenc>
 						<vParcela>500.00</vParcela>
 					</infPrazo>
-					<tpAntecip>1</tpAntecip>
 					<infBanc>
 						<PIX>+5544999999999</PIX>
 					</infBanc>
