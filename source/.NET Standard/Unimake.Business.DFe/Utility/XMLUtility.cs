@@ -774,10 +774,6 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.CTeEnvioEvento;
                     break;
 
-                case "inutCTe":
-                    tipoXML = TipoXML.CTeInutilizacao;
-                    break;
-
                 case "CTe":
                     tipoXML = TipoXML.CTe;
                     break;
