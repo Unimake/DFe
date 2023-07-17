@@ -960,6 +960,12 @@ namespace Unimake.Business.DFe.Servicos
         AverbacaoDeExportacao = 790700,
 
         /// <summary>
+        /// 630690 - Registro da ocorrência da Vistoria do processo de internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA.
+        /// </summary>
+        [XmlEnum("630690")]
+        VistoriaSUFRAMASEFAZ = 630690,
+
+        /// <summary>
         /// 990900 - Registro da ocorrência da Vistoria do processo de internalização de produtos industrializados de origem nacional com isenção de ICMS nas áreas sob controle da SUFRAMA.
         /// </summary>
         [XmlEnum("990900")]

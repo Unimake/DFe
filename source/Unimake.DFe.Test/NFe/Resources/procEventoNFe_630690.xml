@@ -1,50 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<procEventoNFe versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+<?xml version="1.0" encoding="UTF-8"?>
+<procEventoNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
 	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
-		<infEvento Id="ID7907003523011236656600066155001000377454100377454201">
+		<infEvento Id="ID6306902921070000000000000055000000220153149027266204">
 			<cOrgao>91</cOrgao>
 			<tpAmb>1</tpAmb>
-			<CNPJ>11111111111111</CNPJ>
-			<chNFe>35230112366566000661550010003774541003774542</chNFe>
-			<dhEvento>2019-06-29T04:52:37-03:00</dhEvento>
-			<tpEvento>790700</tpEvento>
-			<nSeqEvento>1</nSeqEvento>
+			<CNPJ>00000000000000</CNPJ>
+			<chNFe>29210700000000000000550000002201531490272662</chNFe>
+			<dhEvento>2021-07-20T09:33:45-04:00</dhEvento>
+			<tpEvento>630690</tpEvento>
+			<nSeqEvento>4</nSeqEvento>
 			<verEvento>1.00</verEvento>
 			<detEvento versao="1.00">
-				<descEvento>Averbação para Exportação</descEvento>
-				<tpAutor>6</tpAutor>
-				<verAplic>1.00</verAplic>
-				<itensAverbados>
-					<dhEmbarque>2019-06-29T04:52:37-03:00</dhEmbarque>
-					<dhAverbacao>2019-06-29T04:52:37-03:00</dhAverbacao>
-					<nDue>12BR2222222222</nDue>
-					<nItem>1</nItem>
-					<nItemDue>1</nItemDue>
-					<qItem>1008</qItem>
-					<motAlteracao>1</motAlteracao>
-				</itensAverbados>
-				<itensAverbados>
-					<dhEmbarque>2019-06-29T04:52:37-03:00</dhEmbarque>
-					<dhAverbacao>2019-06-29T04:52:37-03:00</dhAverbacao>
-					<nDue>12BR2222222222</nDue>
-					<nItem>2</nItem>
-					<nItemDue>2</nItemDue>
-					<qItem>932</qItem>
-					<motAlteracao>1</motAlteracao>
-				</itensAverbados>
+				<descEvento>Vistoria SUFRAMA - SEFAZ</descEvento>
+				<PINe>0</PINe>
+				<dVistoria>2021-07-20T09:33:37-04:00</dVistoria>
+				<locVistoria>GUAJARA-MIRIM</locVistoria>
+				<postoVistoria>GUAJARA-MIRIM</postoVistoria>
+				<xHistorico>VISTORIA REALIZADA PELA SEFIN RO</xHistorico>
 			</detEvento>
 		</infEvento>
 		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
 			<SignedInfo>
 				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
 				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-				<Reference URI="#ID7907003523011236656600066155001000377454100377454201">
+				<Reference URI="#ID6306902921070000000000000055000000220153149027266204">
 					<Transforms>
 						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
 						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
 					</Transforms>
 					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-					<DigestValue>avaaasasaiaU7/S7s7sdswsesus=</DigestValue>
+					<DigestValue>k9E4SZazbRymL5BDIcah4F+b/q4=</DigestValue>
 				</Reference>
 			</SignedInfo>
 			<SignatureValue>XwcyxWanyqJHK6JcvgF5jysaUasWsaOasKsa5Fas7asnasOasdas3asqasgWsapsa4aspasraseas9asHasVasEasX0as5asNasQasJ81Cs56Ny8tZGBmJDzLCu+/hXslSAsMBjDRYt0ALHeRicKoykuziTfMS3V/w1o2BL89OKY0avz2oP57wj7rdS+jcy8v6/sPRHh+FbPTWqXkmimv1XLJRTGtQjWtomfPVXLvXWRpoiIShNnyKglzYA7bmVavp2gilZp6PtGI3SSPvLaIKGEoNNaHOziIB3FI4VpeqDldR6c9eKMg4+hTxoK2P7UzpgsCuFQsxWeTkYaU4mV/Q==</SignatureValue>
@@ -58,15 +43,15 @@
 	<retEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
 		<infEvento Id="ID111111111111111">
 			<tpAmb>1</tpAmb>
-			<verAplic>AN_1.0.0</verAplic>
+			<verAplic>AN_1.2.4</verAplic>
 			<cOrgao>91</cOrgao>
 			<cStat>135</cStat>
 			<xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
-			<chNFe>35230112366566000661550010003774541003774542</chNFe>
-			<tpEvento>790700</tpEvento>
-			<nSeqEvento>1</nSeqEvento>
-			<CNPJDest>11111111111111</CNPJDest>
-			<dhRegEvento>2019-06-29T04:53:51-03:00</dhRegEvento>
+			<chNFe>29210700000000000000550000002201531490272662</chNFe>
+			<tpEvento>630690</tpEvento>
+			<nSeqEvento>4</nSeqEvento>
+			<CNPJDest>00000000000000</CNPJDest>
+			<dhRegEvento>2021-07-20T10:33:47-03:00</dhRegEvento>
 			<nProt>111111111111111</nProt>
 		</infEvento>
 	</retEvento>

@@ -210,6 +210,9 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_610130.xml")]
         [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_610131.xml")]
         [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_790700.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_630690.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_990900.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\procEventoNFe_990910.xml")]
         public void SerializacaoDesserializacaoProcEventoNFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

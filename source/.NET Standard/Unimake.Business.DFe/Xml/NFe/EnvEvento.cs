@@ -319,6 +319,18 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoAverbacaoExportacao();
                         break;
 
+                    case TipoEventoNFe.VistoriaSUFRAMASEFAZ:
+                        _detEvento = new DetEventoVistoriaSuframaSEFAZ();
+                        break;
+
+                    case TipoEventoNFe.VistoriaSUFRAMA:
+                        _detEvento = new DetEventoVistoriaSuframa();
+                        break;
+
+                    case TipoEventoNFe.InternalizacaoSUFRAMA:
+                        _detEvento = new DetEventoInternalizacaoSUFRAMA();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -1848,7 +1860,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         NItemDue = (itensAverbadosElement.GetElementsByTagName("nItemDue").Count > 0 ? itensAverbadosElement.GetElementsByTagName("nItemDue")[0].InnerText : ""),
                         QItem = (itensAverbadosElement.GetElementsByTagName("qItem").Count > 0 ? itensAverbadosElement.GetElementsByTagName("qItem")[0].InnerText : ""),
                         MotAlteracao = (itensAverbadosElement.GetElementsByTagName("motAlteracao").Count > 0 ? itensAverbadosElement.GetElementsByTagName("motAlteracao")[0].InnerText : ""),
-                    });                    
+                    });
                 }
             }
         }
@@ -1913,5 +1925,125 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("motAlteracao")]
         public string MotAlteracao { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoVistoriaSuframaSEFAZ")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class DetEventoVistoriaSuframaSEFAZ : EventoDetalhe
+    {
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Vistoria SUFRAMA - SEFAZ";
+
+        [XmlElement("PINe")]
+        public string PINe { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DVistoria { get; set; }
+#else
+        public DateTimeOffset DVistoria { get; set; }
+#endif
+
+        [XmlElement("dVistoria")]
+        public string DVistoriaField
+        {
+            get => DVistoria.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DVistoria = DateTime.Parse(value);
+#else
+            set => DVistoria = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("locVistoria")]
+        public string LocVistoria { get; set; }
+
+        [XmlElement("postoVistoria")]
+        public string PostoVistoria { get; set; }
+
+        [XmlElement("xHistorico")]
+        public string XHistorico { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"
+                <descEvento>{DescEvento}</descEvento>
+                <PINe>{PINe}</PINe> 
+                <dVistoria>{DVistoriaField}</dVistoria> 
+                <locVistoria>{LocVistoria}</locVistoria> 
+                <postoVistoria>{PostoVistoria}</postoVistoria> 
+                <xHistorico>{XHistorico}</xHistorico>";
+
+            writer.WriteRaw(writeRaw);
+        }
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var xml = new XmlDocument();
+            xml.Load(XmlReader);
+
+            if (xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao") != null)
+            {
+                Versao = xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao").Value;
+            }
+            if (xml.GetElementsByTagName("PINe") != null)
+            {
+                PINe = xml.GetElementsByTagName("PINe")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("dVistoria") != null)
+            {
+                DVistoriaField = xml.GetElementsByTagName("dVistoria")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("locVistoria") != null)
+            {
+                LocVistoria = xml.GetElementsByTagName("locVistoria")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("postoVistoria") != null)
+            {
+                PostoVistoria = xml.GetElementsByTagName("postoVistoria")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("xHistorico") != null)
+            {
+                XHistorico = xml.GetElementsByTagName("xHistorico")[0].InnerText;
+            }
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoVistoriaSuframa")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class DetEventoVistoriaSuframa : DetEventoVistoriaSuframaSEFAZ
+    {
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Vistoria SUFRAMA";
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoInternalizacaoSUFRAMA")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public class DetEventoInternalizacaoSUFRAMA : DetEventoVistoriaSuframaSEFAZ
+    {
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Confirmacao de Internalizacao da Mercadoria na SUFRAMA";
     }
 }
