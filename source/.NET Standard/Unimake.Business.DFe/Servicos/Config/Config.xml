@@ -1690,4 +1690,10 @@
 		<ArqConfig>PantanoGrandeRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3505203">
+		<Nome>Bariri - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BaririSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

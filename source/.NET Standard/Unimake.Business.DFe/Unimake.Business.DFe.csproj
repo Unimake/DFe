@@ -238,6 +238,7 @@
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
@@ -853,6 +854,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VeraCruzRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BaririSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\XangriLaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresLagoasMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />

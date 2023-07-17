@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.01">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:recepcionarLoteRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:EnviarLoteRpsResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.01">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:recepcionarLoteRpsSincrono>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:recepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:EnviarLoteRpsSincronoResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.01">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:gerarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:GerarNfseResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:cancelarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:CancelarNfseResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.01">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:substituirNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:substituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:SubstituirNfseResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.01">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarLoteRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfsePorRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseRpsResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.01">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoPrestado>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseServicoPrestadoResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.01">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoTomado>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseServicoTomadoResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.01">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://sipweb.bariri.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfsePorFaixa>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseFaixaResposta</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>
