@@ -25,6 +25,19 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
+        public GerarNfse(string conteudoXML, Configuracao configuracao) : this()
+        {
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(conteudoXML);
+
+            Inicializar(xmlDoc, configuracao);
+        }
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
+        /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
         public GerarNfse(XmlDocument conteudoXML, Configuracao configuracao) : this() => Inicializar(conteudoXML, configuracao);
 
         /// <summary>

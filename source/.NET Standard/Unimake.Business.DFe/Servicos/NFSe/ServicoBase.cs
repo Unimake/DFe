@@ -69,7 +69,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
             base.Inicializar(conteudoXML, configuracao);
-
         }
 
         /// <summary>
