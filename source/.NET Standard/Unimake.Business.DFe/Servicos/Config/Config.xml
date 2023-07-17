@@ -1684,4 +1684,10 @@
 		<ArqConfig>HarmoniaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4313953">
+		<Nome>Pântano Grande - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PantanoGrandeRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

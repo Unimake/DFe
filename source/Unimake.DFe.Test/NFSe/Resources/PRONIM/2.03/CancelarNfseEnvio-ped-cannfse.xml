@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio>
+	<Pedido>
+		<InfPedidoCancelamento Id="ID7000">
+			<IdentificacaoNfse>
+				<Numero>49</Numero>
+				<CpfCnpj>
+					<Cnpj>99999999999999</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+				<CodigoMunicipio>4214805</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>1</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>

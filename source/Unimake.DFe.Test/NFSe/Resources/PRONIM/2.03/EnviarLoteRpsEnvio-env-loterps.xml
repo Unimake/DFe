@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio>
+	<LoteRps Id="LOTE00006638" versao="2.03">
+		<NumeroLote>00006638</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="RPS66">
+					<Rps>
+						<IdentificacaoRps>
+							<Numero>66</Numero>
+							<Serie>F</Serie>
+							<Tipo>2</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2017-09-27</DataEmissao>
+						<Status>2</Status>
+					</Rps>
+					<Competencia>2016-02-11</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>0.50</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<ValorIss>0.00</ValorIss>
+							<Aliquota>0.030</Aliquota>
+							<DescontoIncondicionado>0.00</DescontoIncondicionado>
+							<DescontoCondicionado>0.00</DescontoCondicionado>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ItemListaServico>1401</ItemListaServico>
+						<CodigoTributacaoMunicipio>1401</CodigoTributacaoMunicipio>
+						<Discriminacao>MAO DE OBRA - R$ 0.50 TESTE DE NOTA</Discriminacao>
+						<CodigoMunicipio>4303004</CodigoMunicipio>
+						<CodigoPais>1058</CodigoPais>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>4303004</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>99999999999999</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>99999999999999</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</RazaoSocial>
+						<Endereco>
+							<Endereco>xxxxxxxx</Endereco>
+							<Numero>SN</Numero>
+							<Complemento>xxxxxxxxxx</Complemento>
+							<Bairro>xxxxxxxxxx</Bairro>
+							<CodigoMunicipio>4303004</CodigoMunicipio>
+							<Uf>RS</Uf>
+							<Cep>96501230</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999999999999</Telefone>
+							<Email>xxxxxxxxxx@hotmail.com</Email>
+						</Contato>
+					</Tomador>
+					<OptanteSimplesNacional>1</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

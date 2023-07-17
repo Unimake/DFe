@@ -6274,6 +6274,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SIMPLE")]
         SIMPLE = 39,
+
+        /// <summary>
+        /// SIMPLE
+        /// </summary>
+        [Description("PRONIM")]
+        PRONIM = 40,
     }
 
     #endregion

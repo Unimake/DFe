@@ -321,6 +321,7 @@
 		<None Remove="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
+		<None Remove="Servicos\Config\NFSe\PantanoGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
@@ -843,6 +844,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CamboriuSC.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PantanoGrandeRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">
