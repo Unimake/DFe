@@ -95,7 +95,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista DocZip
         /// </summary>
-        public int GetDocZipCount => (DocZip != null ? DocZip.Count : 0);
+        public int GetDocZipCount() => (DocZip != null ? DocZip.Count : 0);
 
 #endif
     }
