@@ -109,8 +109,8 @@
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeStatusServicoV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeStatusServicoV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServico</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
 			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
 			<SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -122,8 +122,8 @@
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeConsultaV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeConsultaV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
 			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
 			<SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -135,8 +135,8 @@
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeRecepcaoEventoV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
@@ -180,8 +180,8 @@
 			<Descricao>Autorização do CTeOS</Descricao>
 			<WebEnderecoHomologacao>https://hcte.fazenda.mg.gov.br/cte/services/CTeRecepcaoOSV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.fazenda.mg.gov.br/cte/services/CTeRecepcaoOSV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOS</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionProducao>
 			<WebTagRetorno>cteRecepcaoOSResult</WebTagRetorno>
 			<SchemaArquivo>cteOS_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura>CTeOS</TagAssinatura>

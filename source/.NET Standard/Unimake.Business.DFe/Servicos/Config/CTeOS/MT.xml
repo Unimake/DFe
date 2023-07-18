@@ -50,7 +50,7 @@
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CteRecepcaoEvento?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<WebTagRetorno>ns1:cteRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>
@@ -106,9 +106,9 @@
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeStatusServicoV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeStatusServicoV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServicoV4</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServicoV4</WebActionProducao>
-			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
+			<WebTagRetorno>ns1:cteStatusServicoCTResult</WebTagRetorno>
 			<SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -119,9 +119,9 @@
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeConsultaV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeConsultaV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionProducao>
-			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
+			<WebTagRetorno>ns1:cteConsultaCTResult</WebTagRetorno>
 			<SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -132,9 +132,9 @@
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoEventoV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEvento</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>cteRecepcaoEventoResult</WebTagRetorno>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
+			<WebTagRetorno>ns1:cteRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>
@@ -177,9 +177,9 @@
 			<Descricao>Autorização do CTeOS</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews/services/CTeRecepcaoOSV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews/services/CTeRecepcaoOSV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOSV4</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoOSV4</WebActionProducao>
-			<WebTagRetorno>cteRecepcaoOSResult</WebTagRetorno>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoOSV4</WebActionProducao>
+			<WebTagRetorno>ns1:cteRecepcaoOSResult</WebTagRetorno>
 			<SchemaArquivo>cteOS_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura>CTeOS</TagAssinatura>
 			<TagAtributoID>infCte</TagAtributoID>

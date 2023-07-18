@@ -198,9 +198,9 @@
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeStatusServicoV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeStatusServicoV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServicoV4</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteStatusServicoV4</WebActionProducao>
-			<WebTagRetorno>cteStatusServicoCTResult</WebTagRetorno>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeStatusServicoV4</WebActionProducao>
+			<WebTagRetorno>ns1:cteStatusServicoCTResult</WebTagRetorno>
 			<SchemaArquivo>consStatServCTe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -211,9 +211,9 @@
 			<Descricao>Consulta situação do conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeConsultaV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeConsultaV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteConsulta</WebActionProducao>
-			<WebTagRetorno>cteConsultaCTResult</WebTagRetorno>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeConsultaV4</WebActionProducao>
+			<WebTagRetorno>ns1:cteConsultaCTResult</WebTagRetorno>
 			<SchemaArquivo>consSitCTe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -224,8 +224,8 @@
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoEventoV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoEventoV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEvento</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEvento</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoEventoV4</WebActionProducao>
 			<WebTagRetorno>ns1:cteRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
@@ -269,10 +269,10 @@
 			<Descricao>Autorização do CTe - Síncrono</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoSincV4</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.sefaz.mt.gov.br/ctews2/services/CTeRecepcaoSincV4</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSincV4</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoSincV4</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSincV4</WebActionProducao>
 			<GZIPCompress>true</GZIPCompress>
-			<WebTagRetorno>cteRecepcaoSincResult</WebTagRetorno>
+			<WebTagRetorno>ns1:cteRecepcaoSincResult</WebTagRetorno>
 			<SchemasEspecificos>
 				<Tipo>
 					<ID>1</ID>
