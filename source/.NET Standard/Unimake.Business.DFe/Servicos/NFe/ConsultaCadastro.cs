@@ -116,6 +116,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     RetornoWSXML.LoadXml(RetornoWSString);
                 }
             }
+            else if (Configuracoes.CodigoUF == (int)UFBrasil.MG)
+            {
+                if (RetornoWSXML.GetElementsByTagName("retConsCad")[0] != null)
+                {
+                    RetornoWSString = RetornoWSString.Replace("<retConsCad xmlns:ns2=\"http://www.portalfiscal.inf.br/nfe\" versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4\">", "<retConsCad versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
+                    RetornoWSXML.LoadXml(RetornoWSString);
+                }
+            }
         }
 
 #if INTEROP

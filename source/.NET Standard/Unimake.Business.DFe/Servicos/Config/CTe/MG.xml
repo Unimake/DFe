@@ -5,12 +5,12 @@
 
 		<ConsultaCadastro versao="2.00">
 			<Descricao>Consulta cadastro do contribuinte</Descricao>
-			<WebEnderecoHomologacao>https://hnfe.fazenda.mg.gov.br/nfe2/services/cadconsultacadastro2</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/cadconsultacadastro2</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro2</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro2</WebActionProducao>
+			<WebEnderecoHomologacao>https://nfe.fazenda.mg.gov.br/nfe2/services/CadConsultaCadastro4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/CadConsultaCadastro4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionProducao>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cad="{ActionWeb}"><soap:Header><cad:nfeCabecMsg><cad:cUF>31</cad:cUF><cad:versaoDados>2.00</cad:versaoDados></cad:nfeCabecMsg></soap:Header><soap:Body><cad:nfeDadosMsg>{xmlBody}</cad:nfeDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>consultaCadastro2Result</WebTagRetorno>
+			<WebTagRetorno>consultaCadastro4Result</WebTagRetorno>
 			<SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
