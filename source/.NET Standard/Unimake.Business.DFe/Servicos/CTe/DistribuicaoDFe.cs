@@ -97,27 +97,31 @@ namespace Unimake.Business.DFe.Servicos.CTe
             base.Executar();
 
             //Adicionar os XMLs retornados em suas respectivas listas para que possam ser resgatados em formato de objeto
-            if (Result != null && Result.LoteDistDFeInt != null)
+            try
             {
-                ProcEventoCTes = new List<ProcEventoCTe>();
-                ProcCTes = new List<CteProc>();
-
-                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                if (Result != null && Result.LoteDistDFeInt != null)
                 {
-                    var conteudoXML = item.ConteudoXML;
+                    ProcEventoCTes = new List<ProcEventoCTe>();
+                    ProcCTes = new List<CteProc>();
 
-                    switch (item.TipoXML)
+                    foreach (var item in Result.LoteDistDFeInt.DocZip)
                     {
-                        case TipoXMLDocZip.ProcEventoCTe:
-                            ProcEventoCTes.Add(XMLUtility.Deserializar<ProcEventoCTe>(conteudoXML));
-                            break;
+                        var conteudoXML = item.ConteudoXML;
 
-                        case TipoXMLDocZip.ProcCTe:
-                            ProcCTes.Add(XMLUtility.Deserializar<CteProc>(conteudoXML));
-                            break;
+                        switch (item.TipoXML)
+                        {
+                            case TipoXMLDocZip.ProcEventoCTe:
+                                ProcEventoCTes.Add(XMLUtility.Deserializar<ProcEventoCTe>(conteudoXML));
+                                break;
+
+                            case TipoXMLDocZip.ProcCTe:
+                                ProcCTes.Add(XMLUtility.Deserializar<CteProc>(conteudoXML));
+                                break;
+                        }
                     }
                 }
             }
+            catch { }
         }
 
 #if INTEROP

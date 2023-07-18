@@ -105,37 +105,41 @@ namespace Unimake.Business.DFe.Servicos.NFe
             base.Executar();
 
             //Adicionar os XMLs retornados em suas respectivas listas para que possam ser resgatados em formato de objeto
-            if (Result != null && Result.LoteDistDFeInt != null)
+            try
             {
-                ResNFes = new List<ResNFe>();
-                ResEventos = new List<ResEvento>();
-                ProcEventoNFes = new List<ProcEventoNFe>();
-                ProcNFes = new List<NfeProc>();
-
-                foreach (var item in Result.LoteDistDFeInt.DocZip)
+                if (Result != null && Result.LoteDistDFeInt != null)
                 {
-                    var conteudoXML = item.ConteudoXML;
+                    ResNFes = new List<ResNFe>();
+                    ResEventos = new List<ResEvento>();
+                    ProcEventoNFes = new List<ProcEventoNFe>();
+                    ProcNFes = new List<NfeProc>();
 
-                    switch (item.TipoXML)
+                    foreach (var item in Result.LoteDistDFeInt.DocZip)
                     {
-                        case TipoXMLDocZip.ResEvento:
-                            ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
-                            break;
+                        var conteudoXML = item.ConteudoXML;
 
-                        case TipoXMLDocZip.ResNFe:
-                            ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
-                            break;
+                        switch (item.TipoXML)
+                        {
+                            case TipoXMLDocZip.ResEvento:
+                                ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
+                                break;
 
-                        case TipoXMLDocZip.ProcEventoNFe:
-                            ProcEventoNFes.Add(XMLUtility.Deserializar<ProcEventoNFe>(conteudoXML));
-                            break;
+                            case TipoXMLDocZip.ResNFe:
+                                ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
+                                break;
 
-                        case TipoXMLDocZip.ProcNFe:
-                            ProcNFes.Add(XMLUtility.Deserializar<NfeProc>(conteudoXML));
-                            break;
+                            case TipoXMLDocZip.ProcEventoNFe:
+                                ProcEventoNFes.Add(XMLUtility.Deserializar<ProcEventoNFe>(conteudoXML));
+                                break;
+
+                            case TipoXMLDocZip.ProcNFe:
+                                ProcNFes.Add(XMLUtility.Deserializar<NfeProc>(conteudoXML));
+                                break;
+                        }
                     }
                 }
             }
+            catch { }
         }
 
 #if INTEROP
