@@ -70,6 +70,25 @@ Function TesteDiversoCertificadoHarbour3x()
 	  
 	  ConsultaStatus(oConfig)
 	  
+    * Transformar o Base64 do Certificado em Certificado
+	  Cls
+	  ? "Opa!!! Vamos comecar?"
+	  Wait 
+	  
+	  oCertificado3 := CreateObject("Unimake.Security.Platform.CertificadoDigitalInterop")
+	  oCertificado3:FromBase64(cBase64, "12345678")
+	  
+      ?
+      ? "ID do Certificado....: ", oCertificado3:GetThumbPrint()
+      ? "Dados do proprietario: ", oCertificado3:GetSubject()
+      ? "Numero de Serie......: ", oCertificado3:GetSerialNumber()
+      ? "Validade Inicial.....: ", oCertificado3:GetNotBefore()
+      ? "Validade Final.......: ", oCertificado3:GetNotAfter()
+      ? "Certificado vencido?.: ", oCertificado3:Vencido()
+      ?
+      Wait		  
+	  
+	  
     * Consultar o status do servi篠da NFe - Usando a propriedade do arquivo .PFX do certificado
       oConfig                    := CreateObject("Unimake.Business.Dfe.Servicos.Configuracao")
       oConfig:TipoDfe            := 0

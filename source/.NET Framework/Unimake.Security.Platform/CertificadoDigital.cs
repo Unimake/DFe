@@ -534,6 +534,13 @@ namespace Unimake.Security.Platform
         public void CarregarCertificadoDigitalA1(string caminho, string senha) => CertificadoSelecionado = Certificado.CarregarCertificadoDigitalA1(caminho, senha);
 
         /// <summary>
+        /// Converte a string Base64 no certificado
+        /// </summary>
+        /// <param name="base64">String base64 convertida pelo método <see cref="ToBase64(string)"/></param>
+        /// <param name="password">Senha do certificado</param>
+        public void FromBase64(string base64, string password) => CertificadoSelecionado = Certificado.FromBase64(base64, password);
+
+        /// <summary>
         /// Verifica se o certificado digital selecionado está vencido
         /// </summary>
         /// <returns>true = vencido</returns>
