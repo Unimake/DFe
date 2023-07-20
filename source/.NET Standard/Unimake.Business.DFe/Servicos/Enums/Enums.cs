@@ -6282,10 +6282,16 @@ namespace Unimake.Business.DFe.Servicos
         SIMPLE = 39,
 
         /// <summary>
-        /// SIMPLE
+        /// PRONIM
         /// </summary>
         [Description("PRONIM")]
         PRONIM = 40,
+
+        /// <summary>
+        /// PROPRIOBARUERISP
+        /// </summary>
+        [Description("PROPRIOBARUERISP")]
+        PROPRIOBARUERISP = 41,
     }
 
     #endregion

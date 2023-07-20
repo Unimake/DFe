@@ -80,7 +80,24 @@ namespace Unimake.Business.DFe
                         xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
                     }
                 }
+
+                if (soap.PadraoNFSe == PadraoNFSe.PROPRIOBARUERISP)
+                {
+                    var doc = new XmlDocument();
+                    doc.LoadXml(xmlBody);
+                    XmlNodeList xmlNode = doc.GetElementsByTagName("ArquivoRPSBase64");
+                    if (xmlNode.Count > 0)
+                    {
+                        XmlNode tagNode = xmlNode[0];
+                        tagNode.InnerText = tagNode.InnerText.Base64Encode();
+                        doc.GetElementsByTagName("ArquivoRPSBase64")[0].InnerText = tagNode.InnerText;
+                    }
+                    xmlBody = doc.OuterXml;
+                }
+
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
+
+
             }
             return retorna;
         }

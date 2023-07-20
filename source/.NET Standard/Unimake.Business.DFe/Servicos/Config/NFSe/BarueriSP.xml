@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="1.00">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://testeeiss.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.barueri.sp.gov.br/nfe/NFeLoteEnviarArquivo</WebActionHomologacao>
+			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteEnviarArquivo</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteEnviarArquivo><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteEnviarArquivo></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>NFeLoteEnviarArquivoResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://testeeiss.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.barueri.sp.gov.br/nfe/NFeLoteStatusArquivo</WebActionHomologacao>
+			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteStatusArquivo</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteStatusArquivo><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteStatusArquivo></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>NFeLoteStatusArquivoResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfseFaixa versao="1.00">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://testeeiss.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.barueri.sp.gov.br/nfe/NFeLoteListarArquivos</WebActionHomologacao>
+			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteListarArquivos</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteListarArquivos><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteListarArquivos></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>NFeLoteListarArquivosResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseFaixa>
+		<ConsultarNfsePDF versao="1.00">
+			<Descricao>Consulta/Download do PDF da NFSe</Descricao>
+			<WebEnderecoHomologacao>https://testeeiss.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.barueri.sp.gov.br/nfeservice/wsrps.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.barueri.sp.gov.br/nfe/NFeLoteBaixarArquivo</WebActionHomologacao>
+			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteBaixarArquivo</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteBaixarArquivo><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteBaixarArquivo></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>NFeLoteBaixarArquivoResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePDF>
+	</Servicos>
+</Configuracoes>

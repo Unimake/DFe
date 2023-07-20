@@ -1696,4 +1696,10 @@
 		<ArqConfig>BaririSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3505708">
+		<Nome>Barueri - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BarueriSP.xml</ArqConfig>
+		<PadraoNFSe>PROPRIOBARUERISP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

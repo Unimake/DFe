@@ -1,0 +1,7 @@
+<NFeLoteEnviarArquivo xmlns="http://www.barueri.sp.gov.br/nfe">
+	<InscricaoMunicipal>1A75682</InscricaoMunicipal>
+	<CPFCNPJContrib>39999999999991</CPFCNPJContrib>
+	<NomeArquivoRPS>arquivo.txt</NomeArquivoRPS>
+	<ApenasValidaArq>false</ApenasValidaArq>
+	<ArquivoRPSBase64>1serie111122222000000000120220628152857E1234567891Rua Joao15fundosvilabarueriSP8777777710000000000000150000000000000002108415415488Teste testeteste rua145casavilabarueriSP87777777teste de integracaoCR</ArquivoRPSBase64>
+</NFeLoteEnviarArquivo>
