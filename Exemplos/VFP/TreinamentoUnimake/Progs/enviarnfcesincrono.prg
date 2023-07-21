@@ -316,6 +316,9 @@ Function EnviarNfCeSincrono()
  
  * adicionar a tag DetPag dentro da tag Tag
    oPag.AddDetPag(oDetPag)
+   
+ * Adicionar a tag de Troco
+   oPag.vTroco = 0.00 
 
  * adicionar a tag Pag dentro da InfNfe
    oInfNFe.Pag = oPag

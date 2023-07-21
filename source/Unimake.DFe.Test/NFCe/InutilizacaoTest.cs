@@ -1,6 +1,4 @@
-﻿using System;
-using Diag = System.Diagnostics;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFCe;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
@@ -76,47 +74,40 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void InutilizarNumeroNFCe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            var xml = new InutNFe
             {
-                var xml = new InutNFe
+                Versao = "4.00",
+                InfInut = new InutNFeInfInut
                 {
-                    Versao = "4.00",
-                    InfInut = new InutNFeInfInut
-                    {
-                        Ano = "20",
-                        CNPJ = "01111222333444",
-                        CUF = ufBrasil,
-                        Mod = ModeloDFe.NFCe,
-                        NNFIni = 1,
-                        NNFFin = 2,
-                        Serie = 1,
-                        TpAmb = tipoAmbiente,
-                        XJust = "Justificativa da inutilizacao de teste"
-                    }
-                };
-
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFCe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var inutilizacao = new Inutilizacao(xml, configuracao);
-                inutilizacao.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(inutilizacao.Result.InfInut.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(inutilizacao.Result.InfInut.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if(inutilizacao.Result.InfInut.Id != null)
-                {
-                    Diag.Debug.Assert(inutilizacao.Result.InfInut.Id.Equals(xml.InfInut.Id), "Webservice retornou uma chave da NFCe diferente da enviada na consulta.");
+                    Ano = "20",
+                    CNPJ = "01111222333444",
+                    CUF = ufBrasil,
+                    Mod = ModeloDFe.NFCe,
+                    NNFIni = 1,
+                    NNFFin = 2,
+                    Serie = 1,
+                    TpAmb = tipoAmbiente,
+                    XJust = "Justificativa da inutilizacao de teste"
                 }
-            }
-            catch(Exception ex)
+            };
+
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
+                TipoDFe = TipoDFe.NFCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var inutilizacao = new Inutilizacao(xml, configuracao);
+            inutilizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(inutilizacao.Result.InfInut.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(inutilizacao.Result.InfInut.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            if (inutilizacao.Result.InfInut.Id != null)
+            {
+                Assert.True(inutilizacao.Result.InfInut.Id.Equals(xml.InfInut.Id), "Webservice retornou uma chave da NFCe diferente da enviada na consulta.");
             }
         }
     }

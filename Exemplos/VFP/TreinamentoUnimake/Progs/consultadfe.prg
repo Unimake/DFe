@@ -44,22 +44,22 @@ FUNCTION ConsultaDFe()
          
          IF oDistribuicaoDFe.Result.CStat = 138 && 138=Documentos localizados
           * Pasta onde vamos gravar os XMLs retornados pela SEFAZ
-            && folder = "d:\testenfe\doczip"
+            folder = "d:\testenfe\doczip"
 
           * Salvar o XML retornados na consulta            
           * <param name="folder">Nome da pasta onde é para salvar os XML</param>
           * <param name="saveXMLSummary">Salvar os arquivos de resumo da NFe e Eventos?</param>
           * <param name="fileNameWithNSU">true=Salva os arquivos da NFe e seus eventos com o NSU no nome do arquivo / false=Salva os arquivos da NFe e seus eventos com o CHAVE da NFe no nome do arquivo</param>
-            && oDistribuicaoDFe.GravarXMLDocZIP(folder, .T., .T.)
+            oDistribuicaoDFe.GravarXMLDocZIP(folder, .T., .T.) 
             
           * Como pegar o conteúdo retornado na consulta no formato string
-           FOR I = 1 TO oDistribuicaoDFe.Result.LoteDistDFeInt.GetDocZipCount()
+            FOR I = 1 TO oDistribuicaoDFe.Result.LoteDistDFeInt.GetDocZipCount()
                 oDocZip = oDistribuicaoDFe.Result.LoteDistDFeInt.GetDocZip(I-1)
                 
               * Conteudo do XML retornado no formato string
                 MESSAGEBOX(oDocZip.ConteudoXML)
                 
-              * Tipo do XML:  
+              * Tipo do XML:
               * 1 = XML de resumo de eventos
               * 2 = XML de resumo da NFe
               * 3 = XML de distribuição de eventos da NFe (XML completo do evento)
@@ -67,8 +67,8 @@ FUNCTION ConsultaDFe()
               * 5 = XML de distribuição de eventos da CTe (XML completo do evento)
               * 6 = XML de distribuição do CTe (XML completo do CTe)
               * 0 = XML desconhecido
-                MESSAGEBOX(oDocZip.TipoXML) 
-            NEXT I 
+                MESSAGEBOX(oDocZip.TipoXML)
+            NEXT I
             
           * Como pegar os retornos dos resumos de eventos em objeto
             FOR I = 1 TO oDistribuicaoDFe.GetResEventosCount()
@@ -84,8 +84,8 @@ FUNCTION ConsultaDFe()
                 
                 MESSAGEBOX(oResNFe.ChNFe)
                 MESSAGEBOX(oResNFe.CNPJ)
-            NEXT I   
-
+            NEXT I
+            
           * Como pegar os retornos dos XML de Distribuição dos Eventos (XML completos dos eventos)
             FOR I = 1 TO oDistribuicaoDFe.GetProcEventoNFesCount()
                 oProcEventoNFe = oDistribuicaoDFe.GetProcEventoNFes(I-1)
@@ -103,10 +103,9 @@ FUNCTION ConsultaDFe()
                 MESSAGEBOX(oInfNFe.Id)
                 MESSAGEBOX(oInfNFe.IDE.CUF)
                 MESSAGEBOX(oInfNFe.IDE.CNF)                
-                MESSAGEBOX(oNfeProc.Evento.InfEvento.ChNFe)
                 MESSAGEBOX(oNFeProc.ProtNFe.InfProt.ChNFe)
                 MESSAGEBOX(oNFeProc.ProtNFe.InfProt.NProt)
-             NEXT I     
+             NEXT I        
          ELSE 
             IF oDistribuicaoDFe.Result.CStat = 656 && 656 = Consumo indevido
                * Abortar a operação e só voltar a consultar novamente após 1 hora (nossa experiencia nos levou a usar 1h10m)
