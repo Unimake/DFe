@@ -1702,4 +1702,10 @@
 		<ArqConfig>BarueriSP.xml</ArqConfig>
 		<PadraoNFSe>PROPRIOBARUERISP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4208609">
+		<Nome>Jaborá - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
