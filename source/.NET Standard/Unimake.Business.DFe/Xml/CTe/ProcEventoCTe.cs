@@ -87,11 +87,14 @@ namespace Unimake.Business.DFe.Xml.CTe
                 var nodeListEventoSignature = ((XmlElement)nodeListEvento[0]).GetElementsByTagName("Signature");
                 if (nodeListEventoSignature != null)
                 {
-                    var signature = ((XmlElement)nodeListEventoSignature[0]).OuterXml;
+                    if (nodeListEventoSignature.Count > 0)
+                    {
+                        var signature = ((XmlElement)nodeListEventoSignature[0]).OuterXml;
 
-                    signature = signature.Replace("<Signature xmlns=\"http://www.portalfiscal.inf.br/cte\">", "<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\">");
+                        signature = signature.Replace("<Signature xmlns=\"http://www.portalfiscal.inf.br/cte\">", "<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\">");
 
-                    EventoCTe.Signature = XMLUtility.Deserializar<Signature>(signature);
+                        EventoCTe.Signature = XMLUtility.Deserializar<Signature>(signature);
+                    }
                 }
             }
 
