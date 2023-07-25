@@ -64,6 +64,7 @@ Function Main()
    AAdd(aOpcoes, "Consultar URL NFSe")
    
    AAdd(aOpcoes, "Gerando XML de distribuicao Evento Canc NFe via consulta situacao")
+   AAdd(aOpcoes, "Consulta MDFes nao encerrados")
    
    Do While .T.
       Cls
@@ -224,6 +225,9 @@ Function Main()
 			  
          case nOpcao = 49
 		      GerarXmlDistribuicaoEvento()
+			  
+         case nOpcao = 50
+		      ConsultaMDFeNaoEnc()
       endcase
    EndDo
 Return       

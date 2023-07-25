@@ -141,6 +141,7 @@ Function EnviarNfCeSincrono()
        oProd.IndTot = 1 && SimNao.Sim
        oProd.XPed = "300474"
        oProd.NItemPed = 1
+	   oProd.VDesc = 0.00
    
      * adicionar a tag Prod dentro da tag Det
        oDet.Prod = oProd
@@ -282,7 +283,7 @@ Function EnviarNfCeSincrono()
    oICMSTot.VProd = 254.70
    oICMSTot.VFrete = 0
    oICMSTot.VSeg = 0
-   oICMSTot.VDesc = 0
+   oICMSTot.VDesc = 0.00
    oICMSTot.VII = 0
    oICMSTot.VIPI = 0
    oICMSTot.VIPIDevol = 0

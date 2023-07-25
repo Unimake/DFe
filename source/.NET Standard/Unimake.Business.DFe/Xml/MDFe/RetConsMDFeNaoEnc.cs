@@ -66,7 +66,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfMDFe
         /// </summary>
-        public int GetInfMDFeCount => (InfMDFe != null ? InfMDFe.Count : 0);
+        public int GetInfMDFeCount() => (InfMDFe != null ? InfMDFe.Count : 0);
 
 #endif
     }
