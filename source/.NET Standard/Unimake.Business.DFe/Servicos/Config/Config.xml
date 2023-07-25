@@ -1708,4 +1708,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4316006">
+		<Nome>Rolante - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>RolanteRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
