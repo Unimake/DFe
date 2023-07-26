@@ -248,6 +248,7 @@
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
+		<None Remove="Servicos\Config\NFSe\BrumadoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
@@ -789,6 +790,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FarroupilhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoMouraoPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BrumadoBA.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

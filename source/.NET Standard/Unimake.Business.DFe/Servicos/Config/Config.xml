@@ -1714,4 +1714,10 @@
 		<ArqConfig>RolanteRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2904605">
+		<Nome>Brumado - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>BrumadoBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
