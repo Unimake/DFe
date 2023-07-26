@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
 using Unimake.Business.DFe.Xml.NFe;
@@ -79,14 +78,12 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarNFeAssincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            var xml = new EnviNFe
             {
-                var xml = new EnviNFe
-                {
-                    Versao = "4.00",
-                    IdLote = "000000000000001",
-                    IndSinc = SimNao.Nao,
-                    NFe = new List<Business.DFe.Xml.NFe.NFe> {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Nao,
+                NFe = new List<Business.DFe.Xml.NFe.NFe> {
                         new Business.DFe.Xml.NFe.NFe
                         {
                             InfNFe = new List<InfNFe> {
@@ -300,31 +297,26 @@ namespace Unimake.DFe.Test.NFe
                             }
                         }
                     }
-                };
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var autorizacao = new Autorizacao(xml, configuracao);
-                autorizacao.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(656), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
-                if (autorizacao.Result.InfRec != null)
-                {
-                    Diag.Debug.Assert(!string.IsNullOrWhiteSpace(autorizacao.Result.InfRec.NRec), "Não retornou o número do recibo no envio da NFe");
-                }
-            }
-            catch (Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacao = new Autorizacao(xml, configuracao);
+            autorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CStat.Equals(103) || autorizacao.Result.CStat.Equals(656), "Lote não foi processado. <xMotivo>" + autorizacao.Result.XMotivo + "<xMotivo>");
+            if (autorizacao.Result.InfRec != null)
+            {
+                Assert.True(!string.IsNullOrWhiteSpace(autorizacao.Result.InfRec.NRec), "Não retornou o número do recibo no envio da NFe");
             }
         }
 
@@ -398,14 +390,12 @@ namespace Unimake.DFe.Test.NFe
                 return;
             }
 
-            try
+            var xml = new EnviNFe
             {
-                var xml = new EnviNFe
-                {
-                    Versao = "4.00",
-                    IdLote = "000000000000001",
-                    IndSinc = SimNao.Sim,
-                    NFe = new List<Business.DFe.Xml.NFe.NFe> {
+                Versao = "4.00",
+                IdLote = "000000000000001",
+                IndSinc = SimNao.Sim,
+                NFe = new List<Business.DFe.Xml.NFe.NFe> {
                         new Business.DFe.Xml.NFe.NFe
                         {
                             InfNFe = new List<InfNFe> {
@@ -638,35 +628,30 @@ namespace Unimake.DFe.Test.NFe
                             }
                         }
                     }
-                };
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var autorizacao = new Autorizacao(xml, configuracao);
-                autorizacao.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                if (autorizacao.Result.CUF != UFBrasil.EX) //Maranhão, não sei o pq, está retornando de forma errada a UF, retorna como EX e não MA, bem estranho. Falha no WS deles.
-                {
-                    Diag.Debug.Assert(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                }
-                Diag.Debug.Assert(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                if (autorizacao.Result.CStat.Equals(104))
-                {
-                    Diag.Debug.Assert(autorizacao.Result.CStat.Equals(104), "Lote não foi processado");
-                    Diag.Debug.Assert(autorizacao.Result.ProtNFe.InfProt != null, "Não teve retorno do processamento no envio síncrono");
-                    Diag.Debug.Assert(autorizacao.Result.ProtNFe.InfProt.ChNFe.Equals(xml.NFe[0].InfNFe[0].Chave), "Não teve retorno do processamento no envio síncrono");
-                }
-            }
-            catch (Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacao = new Autorizacao(xml, configuracao);
+            autorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            if (autorizacao.Result.CUF != UFBrasil.EX) //Maranhão, não sei o pq, está retornando de forma errada a UF, retorna como EX e não MA, bem estranho. Falha no WS deles.
+            {
+                Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            }
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            if (autorizacao.Result.CStat.Equals(104))
+            {
+                Assert.True(autorizacao.Result.CStat.Equals(104), "Lote não foi processado");
+                Assert.True(autorizacao.Result.ProtNFe.InfProt != null, "Não teve retorno do processamento no envio síncrono");
+                Assert.True(autorizacao.Result.ProtNFe.InfProt.ChNFe.Equals(xml.NFe[0].InfNFe[0].Chave), "Não teve retorno do processamento no envio síncrono");
             }
         }
 

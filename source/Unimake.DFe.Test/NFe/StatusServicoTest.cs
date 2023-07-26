@@ -1,6 +1,4 @@
-﻿using System;
-using Diag = System.Diagnostics;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
@@ -76,35 +74,28 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            var xml = new ConsStatServ
             {
-                var xml = new ConsStatServ
-                {
-                    Versao = "4.00",
-                    CUF = ufBrasil,
-                    TpAmb = tipoAmbiente
-                };
+                Versao = "4.00",
+                CUF = ufBrasil,
+                TpAmb = tipoAmbiente
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var statusServico = new StatusServico(xml, configuracao);
-                statusServico.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(statusServico.Result.CStat.Equals(107) || statusServico.Result.CStat.Equals(656), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
-            }
-            catch(Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var statusServico = new StatusServico(xml, configuracao);
+            statusServico.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(statusServico.Result.CStat.Equals(107) || statusServico.Result.CStat.Equals(656), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
         }
     }
 }

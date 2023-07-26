@@ -1,6 +1,4 @@
-﻿using System;
-using Diag = System.Diagnostics;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
@@ -76,35 +74,28 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarProtocoloNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            try
+            var xml = new ConsSitNFe
             {
-                var xml = new ConsSitNFe
-                {
-                    Versao = "4.00",
-                    TpAmb = tipoAmbiente,
-                    ChNFe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
-                };
+                Versao = "4.00",
+                TpAmb = tipoAmbiente,
+                ChNFe = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFe,
-                    TipoEmissao = TipoEmissao.Normal,
-                    CertificadoDigital = PropConfig.CertificadoDigital
-                };
-
-                var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
-                consultaProtocolo.Executar();
-
-                Diag.Debug.Assert(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                Diag.Debug.Assert(consultaProtocolo.Result.ChNFe.Equals(xml.ChNFe), "Webservice retornou uma chave da NFe diferente da enviada na consulta.");
-            }
-            catch(Exception ex)
+            var configuracao = new Configuracao
             {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
-            }
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consultaProtocolo.Result.ChNFe.Equals(xml.ChNFe), "Webservice retornou uma chave da NFe diferente da enviada na consulta.");
         }
     }
 }

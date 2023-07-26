@@ -4,7 +4,6 @@ using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
-using Diag = System.Diagnostics;
 
 namespace Unimake.DFe.Test.NFe
 {
@@ -56,12 +55,14 @@ namespace Unimake.DFe.Test.NFe
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var enviNFe = new EnviNFe();
-            enviNFe.IdLote = "000000000000001";
-            enviNFe.Versao = "4.00";
-            enviNFe.NFe = new System.Collections.Generic.List<Business.DFe.Xml.NFe.NFe>
+            var enviNFe = new EnviNFe
+            {
+                IdLote = "000000000000001",
+                Versao = "4.00",
+                NFe = new System.Collections.Generic.List<Business.DFe.Xml.NFe.NFe>
             {
                 XMLUtility.Deserializar<Business.DFe.Xml.NFe.NFe>(doc.OuterXml)
+            }
             };
 
             var configuracao = new Configuracao
@@ -188,7 +189,7 @@ namespace Unimake.DFe.Test.NFe
         [Theory]
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe.xml")]
-        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe2.xml")] 
+        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe2.xml")]
         public void SerializacaoDesserializacaoRetConsSitNFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

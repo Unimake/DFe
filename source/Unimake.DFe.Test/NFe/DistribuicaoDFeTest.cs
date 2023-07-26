@@ -1,5 +1,4 @@
 ﻿using System;
-using Diag = System.Diagnostics;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
 using Unimake.Business.DFe.Xml.NFe;
@@ -23,71 +22,64 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(TipoAmbiente.Producao)]
         public void ConsultarDFeDestinado(TipoAmbiente tipoAmbiente)
         {
-            try
+            var nsu = "000000000000000";
+            var configuracao = new Configuracao
             {
-                var nsu = "000000000000000";
-                var configuracao = new Configuracao
+                TipoDFe = TipoDFe.NFe,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            while (true)
+            {
+                var xml = new DistDFeInt
                 {
-                    TipoDFe = TipoDFe.NFe,
-                    CertificadoDigital = PropConfig.CertificadoDigital
+                    Versao = "1.01",
+                    TpAmb = tipoAmbiente,
+                    CNPJ = PropConfig.CNPJEmpresaCertificado,
+                    CUFAutor = PropConfig.UFEmpresaCertificado,
+                    DistNSU = new DistNSU
+                    {
+                        UltNSU = nsu
+                    }
                 };
 
-                while(true)
+                var distribuicaoDFe = new DistribuicaoDFe(xml, configuracao);
+                distribuicaoDFe.Executar();
+
+                Assert.True(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91-Ambiente Nacional.");
+                Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+                Assert.True(distribuicaoDFe.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                //Assert.True(statusServico.Result.CStat.Equals(107), "Serviço não está em operação");
+
+                if (distribuicaoDFe.Result.CStat.Equals(138)) //Documentos localizados
                 {
-                    var xml = new DistDFeInt
+                    //TODO: WANDREY - Preciso, de alguma forma, testar os arquivos gravados para ver se deu certo.
+                    //var folder = @"c:\testenfe\doczip";
+
+                    //if(Environment.MachineName == "MARCELO-PC")
+                    //{
+                    //    folder = @"D:\temp\uninfe";
+                    //}                       
+
+                    ////Salvar os XMLs do docZIP no HD
+                    //distribuicaoDFe.GravarXMLDocZIP(folder, true);
+
+                    foreach (var item in distribuicaoDFe.ResEventos)
                     {
-                        Versao = "1.01",
-                        TpAmb = tipoAmbiente,
-                        CNPJ = PropConfig.CNPJEmpresaCertificado,
-                        CUFAutor = PropConfig.UFEmpresaCertificado,
-                        DistNSU = new DistNSU
-                        {
-                            UltNSU = nsu
-                        }
-                    };
-
-                    var distribuicaoDFe = new DistribuicaoDFe(xml, configuracao);
-                    distribuicaoDFe.Executar();
-
-                    Diag.Debug.Assert(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91-Ambiente Nacional." );
-                    Diag.Debug.Assert(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-                    Diag.Debug.Assert(distribuicaoDFe.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-                    //Diag.Debug.Assert(statusServico.Result.CStat.Equals(107), "Serviço não está em operação");
-
-                    if(distribuicaoDFe.Result.CStat.Equals(138)) //Documentos localizados
-                    {
-                        //TODO: WANDREY - Preciso, de alguma forma, testar os arquivos gravados para ver se deu certo.
-                        //var folder = @"c:\testenfe\doczip";
-
-                        //if(Environment.MachineName == "MARCELO-PC")
-                        //{
-                        //    folder = @"D:\temp\uninfe";
-                        //}                       
-
-                        ////Salvar os XMLs do docZIP no HD
-                        //distribuicaoDFe.GravarXMLDocZIP(folder, true);
-
-                        foreach (var item in distribuicaoDFe.ResEventos)
-                        {
-                            Diag.Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
-                        }
-                        foreach (var item in distribuicaoDFe.ResNFes)
-                        {
-                            Diag.Debug.Assert(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
-                        }
+                        Assert.True(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
                     }
-
-                    nsu = distribuicaoDFe.Result.UltNSU;
-
-                    if(Convert.ToInt64(distribuicaoDFe.Result.UltNSU) >= Convert.ToInt64(distribuicaoDFe.Result.MaxNSU))
+                    foreach (var item in distribuicaoDFe.ResNFes)
                     {
-                        break;
+                        Assert.True(!string.IsNullOrWhiteSpace(item.ChNFe), "Chave da NFe está nula ou em branco, algo está errado.");
                     }
                 }
-            }
-            catch(Exception ex)
-            {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
+
+                nsu = distribuicaoDFe.Result.UltNSU;
+
+                if (Convert.ToInt64(distribuicaoDFe.Result.UltNSU) >= Convert.ToInt64(distribuicaoDFe.Result.MaxNSU))
+                {
+                    break;
+                }
             }
         }
     }
