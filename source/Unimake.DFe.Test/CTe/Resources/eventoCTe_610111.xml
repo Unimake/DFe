@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoCTe versao="4.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<infEvento Id="ID61011135190100000000000000670010000000011089844061001">
+		<cOrgao>35</cOrgao>
+		<tpAmb>2</tpAmb>
+		<CNPJ>00000000000000</CNPJ>
+		<chCTe>35190100000000000000670010000000011089844061</chCTe>
+		<dhEvento>2019-01-27T03:00:52-02:00</dhEvento>
+		<tpEvento>610111</tpEvento>
+		<nSeqEvento>1</nSeqEvento>
+		<detEvento versaoEvento="4.00">
+			<evPrestDesacordo>
+				<descEvento>Cancelamento Prestação do Serviço em Desacordo</descEvento>
+				<nProtEvPrestDes>135191111111111</nProtEvPrestDes>
+			</evPrestDesacordo>
+		</detEvento>
+	</infEvento>
+</eventoCTe>

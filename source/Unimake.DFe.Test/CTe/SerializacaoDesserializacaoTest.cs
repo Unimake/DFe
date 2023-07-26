@@ -155,7 +155,8 @@ namespace Unimake.DFe.Test.CTe
         /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "CTe")]
-        [InlineData(@"..\..\..\CTe\Resources\ie41200210859283000185570010000005671227070615-ped-eve.xml")]
+        [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110190.xml")]
+        [InlineData(@"..\..\..\CTe\Resources\eventoCTe_610111.xml")]
         public void SerializacaoDesserializacaoEventoCTe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

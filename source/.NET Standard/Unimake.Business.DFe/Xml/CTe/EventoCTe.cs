@@ -96,6 +96,34 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCancelamentoPrestDesacordo")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancelamentoPrestDesacordo : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Cancelamento Prestacao do Servico em Desacordo";
+
+        [XmlElement("nProtEvPrestDes", Order = 1)]
+        public string NProtEvPrestDes { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            writer.WriteRaw($@"
+            <evPrestDesacordo>
+            <descEvento>{DescEvento}</descEvento>
+            <nProtEvPrestDes>{NProtEvPrestDes}</nProtEvPrestDes>
+            </evPrestDesacordo>");
+        }
+    }
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCancCompEntrega")]
     [ComVisible(true)]
 #endif
@@ -1362,6 +1390,11 @@ namespace Unimake.Business.DFe.Xml.CTe
                     case TipoEventoCTe.PrestDesacordo:
                         _detEvento = new DetEventoPrestDesacordo();
                         break;
+
+                    case TipoEventoCTe.CancelamentoPrestDesacordo:
+                        _detEvento = new DetEventoCancelamentoPrestDesacordo();
+                        break;
+
 
                     case TipoEventoCTe.EPEC:
                         _detEvento = new DetEventoEPEC();

@@ -2,7 +2,7 @@
 <Configuracoes>
 	<Servicos ID="CTe">
 		<!-- Versão 2.00 do CTe -->
-		
+
 		<ConsultaCadastro versao="2.00">
 			<Descricao>Consulta cadastro do contribuinte</Descricao>
 			<WebEnderecoHomologacao>https://cad.svrs.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro4.asmx</WebEnderecoHomologacao>
@@ -15,9 +15,9 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaCadastro>
-		
+
 		<!-- Versão 3.00 do CTe -->
-		
+
 		<StatusServico versao="3.00">
 			<Descricao>Consulta situação do serviço de conhecimento de transporte eletrônico</Descricao>
 			<WebEnderecoHomologacao>https://cte-homologacao.svrs.rs.gov.br/ws/ctestatusservico/CteStatusServico.asmx</WebEnderecoHomologacao>
@@ -45,7 +45,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaProtocolo>
 		<RecepcaoEvento versao="3.00">
-			<Descricao>Recepcao de eventos</Descricao>
+			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://cte-homologacao.svrs.rs.gov.br/ws/cterecepcaoevento/cterecepcaoevento.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://cte.svrs.rs.gov.br/ws/cterecepcaoevento/cterecepcaoevento.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento</WebActionHomologacao>
@@ -54,9 +54,19 @@
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>
+					<ID>110110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>110111</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110113</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>110180</ID>
@@ -69,9 +79,9 @@
 					<SchemaArquivoEspecifico>evCancCECTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>110110</ID>
+					<ID>110190</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>610110</ID>
@@ -79,9 +89,9 @@
 					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>110113</ID>
+					<ID>610111</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
+					<SchemaArquivoEspecifico>evCancPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>eventoCTe</TagAssinatura>
@@ -234,9 +244,19 @@
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>
+					<ID>110110</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
 					<ID>110111</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evCancCTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110113</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>110180</ID>
@@ -249,9 +269,9 @@
 					<SchemaArquivoEspecifico>evCancCECTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>110110</ID>
+					<ID>110190</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evCCeCTe_v{0}.xsd</SchemaArquivoEspecifico>
+					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>610110</ID>
@@ -259,14 +279,9 @@
 					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
-					<ID>110113</ID>
+					<ID>610111</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evEPECCTe_v{0}.xsd</SchemaArquivoEspecifico>
-				</Tipo>
-				<Tipo>
-					<ID>110190</ID>
-					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
+					<SchemaArquivoEspecifico>evCancPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>eventoCTe</TagAssinatura>

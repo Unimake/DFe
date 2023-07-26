@@ -1030,10 +1030,16 @@ namespace Unimake.Business.DFe.Servicos
         InsucessoEntrega = 110190,
 
         /// <summary>
-        /// 610110 - Prestação de serviço em desacordo CTe
+        /// 610110 - Evento de prestação de serviço em desacordo CTe
         /// </summary>
         [XmlEnum("610110")]
         PrestDesacordo = 610110,
+
+        /// <summary>
+        /// 610111 - Cancelamento evento prestação de serviço em desacordo CTe
+        /// </summary>
+        [XmlEnum("610111")]
+        CancelamentoPrestDesacordo = 610111,
 
         /// <summary>
         /// 310610 - MDFe Autorizado (Evento exclusivo do fisco)
