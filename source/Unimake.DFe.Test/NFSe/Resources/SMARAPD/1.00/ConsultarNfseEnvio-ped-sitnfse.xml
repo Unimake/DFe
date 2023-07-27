@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<nfd>
+	<recibo>
+		<codrecibo>99999999999999</codrecibo>
+		<datahora>26/12/2010 09:35:56</datahora>
+		<numeronotas>1</numeronotas>
+		<codmunicipio>3</codmunicipio>
+		<inscricaomunicipalemissor>99999999999999</inscricaomunicipalemissor>
+	</recibo>
+</nfd>

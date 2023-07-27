@@ -586,6 +586,11 @@ namespace Unimake.Business.DFe.Servicos
                 WebSoapString = WebSoapString.Replace("{TokenSoap}", TokenSoap);
             }
 
+            if (!string.IsNullOrWhiteSpace(CodigoMunicipio.ToString()))
+            {
+                WebSoapString = WebSoapString.Replace("{CodigoMunicipio}", CodigoMunicipio.ToString());
+            }
+
             if (!string.IsNullOrWhiteSpace(MunicipioUsuario))
             {
                 WebSoapString = WebSoapString.Replace("{MunicipioUsuario}", MunicipioUsuario);

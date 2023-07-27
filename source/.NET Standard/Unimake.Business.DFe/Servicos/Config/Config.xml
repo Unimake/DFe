@@ -1720,4 +1720,10 @@
 		<ArqConfig>BrumadoBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3205002">
+		<Nome>Serra - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>SerraES.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

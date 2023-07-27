@@ -355,6 +355,7 @@
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\SerafinaCorreaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\SerraES.xml" />
 		<None Remove="Servicos\Config\NFSe\SertaozinhoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
@@ -858,6 +859,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarueriSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SerraES.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresCachoeirasRS.xml">

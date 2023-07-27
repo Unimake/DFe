@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tbnfd>
+	<nfd>
+		<numeronfd>124</numeronfd>
+		<codseriedocumento>8</codseriedocumento>
+		<codnaturezaoperacao>511</codnaturezaoperacao>
+		<codigocidade>3</codigocidade>
+		<inscricaomunicipalemissor>99999999999999</inscricaomunicipalemissor>
+		<dataemissao>10/05/2010</dataemissao>
+		<razaotomador>SMARapd - ltda.</razaotomador>
+		<nomefantasiatomador>SMARapd</nomefantasiatomador>
+		<enderecotomador>Rua Aurora</enderecotomador>
+		<cidadetomador>Ribeirao Preto</cidadetomador>
+		<estadotomador>SP</estadotomador>
+		<paistomador>Brasil</paistomador>
+		<fonetomador>99999999999999</fonetomador>
+		<faxtomador/>
+		<ceptomador>79010100</ceptomador>
+		<bairrotomador>Centro</bairrotomador>
+		<emailtomador>teste@smarapd.com.br</emailtomador>
+		<cpfcnpjtomador>99999999999999</cpfcnpjtomador>
+		<inscricaoestadualtomador/>
+		<inscricaomunicipaltomador/>
+		<tbfatura>
+			<fatura>
+				<numfatura>10/2010</numfatura>
+				<vencimentofatura>10/10/2010</vencimentofatura>
+				<valorfatura>100</valorfatura>
+			</fatura>
+			<fatura>
+				<numfatura>11/2010</numfatura>
+				<vencimentofatura>10/11/2010</vencimentofatura>
+				<valorfatura>100</valorfatura>
+			</fatura>
+			<fatura>
+				<numfatura>12/2010</numfatura>
+				<vencimentofatura>10/12/2010</vencimentofatura>
+				<valorfatura>100</valorfatura>
+			</fatura>
+		</tbfatura>
+		<tbservico>
+			<servico>
+				<quantidade>2</quantidade>
+				<descricao>Servicos de Criacao de Logomarca</descricao>
+				<codatividade>0101</codatividade>
+				<valorunitario>150</valorunitario>
+				<aliquota>5,5</aliquota>
+				<impostoretido>False</impostoretido>
+			</servico>
+			<servico>
+				<quantidade>1</quantidade>
+				<descricao>Servicos de Criacao de Logomarca</descricao>
+				<codatividade>0101</codatividade>
+				<valorunitario>200</valorunitario>
+				<aliquota>5,5</aliquota>
+				<impostoretido>False</impostoretido>
+			</servico>
+			<servico>
+				<quantidade>5</quantidade>
+				<descricao>Servicos de Criacao de Logomarca</descricao>
+				<codatividade>8011000</codatividade>
+				<valorunitario>150</valorunitario>
+				<aliquota>5,5</aliquota>
+				<impostoretido>False</impostoretido>
+			</servico>
+		</tbservico>
+		<observacao>Pedido 3258943</observacao>
+		<razaotransportadora/>
+		<cpfcnpjtransportadora/>
+		<enderecotransportadora/>
+		<tipofrete>0</tipofrete>
+		<quantidade>0</quantidade>
+		<especie/>
+		<pesoliquido>0</pesoliquido>
+		<pesobruto>0</pesobruto>
+		<pis/>
+		<cofins/>
+		<csll/>
+		<irrf/>
+		<inss/>
+		<descdeducoesconstrucao/>
+		<totaldeducoesconstrucao/>
+		<tributadonomunicipio>true</tributadonomunicipio>
+		<numerort/>
+		<codigoseriert/>
+		<dataemissaort/>
+	</nfd>
+</tbnfd>
