@@ -3,11 +3,11 @@
 * ---------------------------------------------------------------------------------
 FUNCTION EnviarEventoComprovanteEntregaNFe()         
    LOCAL oConfiguracao, oExceptionInterop
-   LOCAL oEnvEvento, oEvento, oDetEventoCancCompEntregaNFe, oInfEvento, oRecepcaoEvento    
+   LOCAL oEnvEvento, oEvento, oDetEventoCompEntregaNFe, oInfEvento, oRecepcaoEvento    
 
  * Criar o objeto de configuração mínima
    oConfiguracao = CREATEOBJECT("Unimake.Business.DFe.Servicos.Configuracao")
-   oConfiguracao.TipoDFe = 0 && 2=CTe
+   oConfiguracao.TipoDFe = 0 && 0=NFe
    oConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oConfiguracao.CertificadoSenha = "12345678"   
 
@@ -23,35 +23,35 @@ FUNCTION EnviarEventoComprovanteEntregaNFe()
  * -------------------------------------------------
  * Criar tag Evento
    oEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.Evento")
-   oEvento.Versao = "1.00"
+   oEvento.Versao = "1.00" 
  
  * Criar tag DetEventoCCE ###
-   oDetEventoCancCompEntregaNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCompEntregaNFe")
-   oDetEventoCancCompEntregaNFe.Versao = "1.00"
-   oDetEventoCancCompEntregaNFe.COrgaoAutor = 41 && UFBrasil.PR
-   oDetEventoCancCompEntregaNFe.TpAutor = 1 && TipoAutor.EmpresaEmitente
-   oDetEventoCancCompEntregaNFe.VerAplic = "ERP 1.0"
-   oDetEventoCancCompEntregaNFe.DhEntrega = DATETIME()
-   oDetEventoCancCompEntregaNFe.NDoc = "00000000000" && Documento de quem assinou o comprovante
-   oDetEventoCancCompEntregaNFe.XNome = "NOME DE QUEM ASSINOU O COMPROVANTE"
-   oDetEventoCancCompEntregaNFe.LatGPS = "37.774929"
-   oDetEventoCancCompEntregaNFe.LongGPS = "122.419418"
-   oDetEventoCancCompEntregaNFe.HashComprovante = "2eDWGfx2xZJVFTKXGuiGZgzE2W4="
-   oDetEventoCancCompEntregaNFe.DhHashComprovante = DATETIME()
+   oDetEventoCompEntregaNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.DetEventoCompEntregaNFe")
+   oDetEventoCompEntregaNFe.Versao = "1.00"
+   oDetEventoCompEntregaNFe.COrgaoAutor = 41 && UFBrasil.PR
+   oDetEventoCompEntregaNFe.TpAutor = 1 && TipoAutor.EmpresaEmitente
+   oDetEventoCompEntregaNFe.VerAplic = "ERP 1.0"
+   oDetEventoCompEntregaNFe.DhEntrega = DATETIME()
+   oDetEventoCompEntregaNFe.NDoc = "00000000000" && Documento de quem assinou o comprovante
+   oDetEventoCompEntregaNFe.XNome = "NOME DE QUEM ASSINOU O COMPROVANTE"
+   oDetEventoCompEntregaNFe.LatGPS = "37.774929"
+   oDetEventoCompEntregaNFe.LongGPS = "122.419418"
+   oDetEventoCompEntregaNFe.HashComprovante = "2eDWGfx2xZJVFTKXGuiGZgzE2W4="
+   oDetEventoCompEntregaNFe.DhHashComprovante = DATETIME()
 
  * Criar tag InfEvento
    oInfEvento = CreateObject("Unimake.Business.DFe.Xml.NFe.InfEvento")
  
  * Referenciar o objeto oDetEventoCompEntregaNFe na Tag DetEvento
-   oInfEvento.DetEvento = oDetEventoCancCompEntregaNFe 
+   oInfEvento.DetEvento = oDetEventoCompEntregaNFe
  
  * Atualizar propriedades da oInfEvento
- * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCCE para que funcione sem erro
+ * IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCancCompEntregaNFe para que funcione sem erro
    oInfEvento.COrgao = 91 && UFBrasil.AN
    oInfEvento.ChNFe = "41191006117473000150550010000579281779843610"
    oInfEvento.CNPJ = "06117473000150"
    oInfEvento.DhEvento = DateTime()
-   oInfEvento.TpEvento = 110130 && TipoEventoNFe.ComprovanteEntregaNFe 
+   oInfEvento.TpEvento = 110130 && TipoEventoNFe.ComprovanteEntregaNFe ###
    oInfEvento.NSeqEvento = 1
    oInfEvento.VerEvento = "1.00"
    oInfEvento.TpAmb = 2 && TipoAmbiente.Homologacao   
