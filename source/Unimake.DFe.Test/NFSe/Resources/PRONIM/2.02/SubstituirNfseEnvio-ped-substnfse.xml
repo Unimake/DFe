@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SubstituirNfseEnvio>
+	<SubstituicaoNfse Id="SNF1">
+		<Pedido>
+			<InfPedidoCancelamento Id="PDD1">
+				<IdentificacaoNfse>
+					<Numero>99999999999999</Numero>
+					<CpfCnpj>
+						<Cnpj>99999999999999</Cnpj>
+					</CpfCnpj>
+					<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					<CodigoMunicipio>3106200</CodigoMunicipio>
+				</IdentificacaoNfse>
+				<CodigoCancelamento>2</CodigoCancelamento>
+			</InfPedidoCancelamento>
+		</Pedido>
+		<Rps>
+			<InfRps>
+				<IdentificacaoRps>
+					<Numero>5664</Numero>
+					<Serie>RPS</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2012-11-11T08:30:57</DataEmissao>
+				<NaturezaOperacao>1</NaturezaOperacao>
+				<OptanteSimplesNacional>2</OptanteSimplesNacional>
+				<IncentivadorCultural>2</IncentivadorCultural>
+				<Status>1</Status>
+				<Servico>
+					<Valores>
+						<ValorServicos>1290</ValorServicos>
+						<IssRetido>2</IssRetido>
+						<ValorIss>38.7</ValorIss>
+						<BaseCalculo>1290</BaseCalculo>
+						<Aliquota>3.00</Aliquota>
+						<ValorIssRetido>38.7</ValorIssRetido>
+					</Valores>
+					<ItemListaServico>14.04</ItemListaServico>
+					<CodigoCnae>0</CodigoCnae>
+					<CodigoTributacaoMunicipio>901404</CodigoTributacaoMunicipio>
+					<Discriminacao>1 SERVICOS DE COLETA TRANSPORTE E TRATAMENTO POR DESTRUICAO TERMICA E DESTINACAO FINAL DAS CINZAS DOS RESIDUOS DE SERVICO DE SAUDE 1.290,00 1.290,00 ISENTA RET COFINS C. SOCIAL PIS UMA VEZ QUE O SERV PREST NAO CONSTA NA RELACAO CONTIDA NO ARTIGO 30 DA LEI 10.833/2003 ISS RETIDO PERIODO 01/10/11 A 31/10/11 TOTAL COLETADO NO PERIODO: 166,600 KGDOTACAO ORCAMENTARIA 2.1410.122.0002.2057 3.3.90.39</Discriminacao>
+					<CodigoMunicipio>3530300</CodigoMunicipio>
+				</Servico>
+				<Prestador>
+					<Cnpj>99999999999999</Cnpj>
+					<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+				</Prestador>
+				<Tomador>
+					<IdentificacaoTomador>
+						<CpfCnpj>
+							<Cpf>99999999999999</Cpf>
+						</CpfCnpj>
+					</IdentificacaoTomador>
+					<RazaoSocial>xxxxxxxxxxxxxxxxxxxx</RazaoSocial>
+					<Endereco>
+						<Endereco>xxxxxxxxxxxxxxxxxxxxx</Endereco>
+						<Numero>03</Numero>
+						<Bairro>CENTRO</Bairro>
+						<CodigoMunicipio>3530300</CodigoMunicipio>
+						<Uf>SP</Uf>
+						<Cep>99999999999999</Cep>
+					</Endereco>
+				</Tomador>
+			</InfRps>
+		</Rps>
+	</SubstituicaoNfse>
+</SubstituirNfseEnvio>

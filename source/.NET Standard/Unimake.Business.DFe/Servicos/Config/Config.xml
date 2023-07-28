@@ -1732,4 +1732,10 @@
 		<ArqConfig>CacapavaDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4312401">
+		<Nome>Montenegro - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>MontenegroRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
