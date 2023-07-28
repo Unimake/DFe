@@ -22,6 +22,14 @@ namespace Unimake.Business.DFe
         public static XmlDocument ReceberRetorno(ref APIConfig Config, HttpResponseMessage Response)
         {
             var ResponseString = Response.Content.ReadAsStringAsync().Result;
+
+            if (Response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            {
+                var InternalServerError = new XmlDocument();
+                InternalServerError.LoadXml(StringToXml("O servidor retornou um erro (500)"));
+                return InternalServerError;
+            }
+
             var resultadoRetorno = new XmlDocument();
             Response.Content.Headers.ContentType.MediaType = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
@@ -32,6 +40,7 @@ namespace Unimake.Business.DFe
                     ResponseString = ResponseString.Substring(1);
                 }
             }
+            
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
             {
