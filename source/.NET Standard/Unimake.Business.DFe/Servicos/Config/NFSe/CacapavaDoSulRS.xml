@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoProducao>http://cacapavadosul.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soapenv:Header><soapenv:Body><tem:RecepcionarLoteRps><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<GerarNfse versao="2.03">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoProducao>http://cacapavadosul.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/GerarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soap:Header><soap:Body><tem:GerarNfse xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>GerarNfseResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.03">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>http://cacapavadosul.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soapenv:Header><soapenv:Body><tem:CancelarNfse><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.03">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoProducao>http://cacapavadosul.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soap:Header><soap:Body><SubstituirNfse xmlns="http://tempuri.org/"><xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xmlEnvio></SubstituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.03">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoProducao>http://cacapavadosul.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soapenv:Header><tem:cabecalho versao="2.03" xmlns="http://tempuri.org/"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarLoteRps xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.03">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoProducao>http://cacapavadosul.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soapenv:Header><tem:cabecalho versao="2.03" xmlns="http://tempuri.org/"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarNfsePorRps xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRpsResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>

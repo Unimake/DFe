@@ -1726,4 +1726,10 @@
 		<ArqConfig>SerraES.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4302808">
+		<Nome>Caçapava Do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CacapavaDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
