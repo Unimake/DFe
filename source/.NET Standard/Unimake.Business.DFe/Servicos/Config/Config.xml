@@ -421,8 +421,8 @@
 	<Arquivo ID="4218707">
 		<Nome>Tubarão - SC</Nome>
 		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
+		<ArqConfig>TubaraoSC.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4212403">
 		<Nome>Pedras Grandes - SC</Nome>
