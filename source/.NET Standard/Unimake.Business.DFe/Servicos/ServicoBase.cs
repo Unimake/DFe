@@ -170,6 +170,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <returns>Retorna conteúdo do XML assinado</returns>
         public string GetConteudoXMLAssinado() => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.OuterXml : "");
 
+        /// <summary>
+        /// Recupera o conteúdo do XML original.
+        /// </summary>
+        /// <returns>Retorna conteúdo do XML original</returns>
+        public string GetConteudoXMLOriginal() => (ConteudoXMLOriginal != null ? ConteudoXMLOriginal.OuterXml : "");
+
+
 #endif
 
         /// <summary>
