@@ -20,11 +20,8 @@ namespace Unimake.Business.DFe.Utility
     /// Utilitários diversos para trabalhar com XML
     /// </summary>
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Utility.XMLUtility")]
-    [ComVisible(true)]
+    [ComVisible(false)]
 #endif
-
     public static class XMLUtility
     {
         #region Public Structs
@@ -1270,5 +1267,82 @@ namespace Unimake.Business.DFe.Utility
         }
 
         #endregion Public Methods
+
+        /// <summary>
+        /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe e CTeOS.
+        /// </summary>
+        /// <param name="cUF">UF do emitente</param>
+        /// <param name="dhEmi">Data de emissão do documento</param>
+        /// <param name="cnpjcpf">CNPJ ou CPF do emitente</param>
+        /// <param name="mod">Código do modelo do documento fiscal eletrônicos</param>
+        /// <param name="serie">Série do documento fiscal eletrônico</param>
+        /// <param name="nNF">Número da nota fiscal</param>
+        /// <param name="tpEmis">Tipo de emissão (Tag tpEmis)</param>
+        /// <param name="cNF">Código numérico randômico (Deixe em branco ou nulo para que a DLL gera este código para você)</param>
+        /// <returns>Retorna a chave, completa, do documento fiscal eletrônico com o dígito verificar calculado e concatenado a chave</returns>
+        public static string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "")
+        {
+            if (string.IsNullOrWhiteSpace(cNF))
+            {
+                cNF = XMLUtility.GerarCodigoNumerico(nNF).ToString("00000000");
+            }
+
+            var chaveDFe = ((int)cUF).ToString() +
+                dhEmi.ToString("yyMM") +
+                cnpjcpf.PadLeft(14, '0') +
+                ((int)mod).ToString().PadLeft(2, '0') +
+                serie.ToString().PadLeft(3, '0') +
+                nNF.ToString().PadLeft(9, '0') +
+                ((int)tpEmis).ToString() +
+                cNF.PadLeft(8, '0');
+
+            var cDV = XMLUtility.CalcularDVChave(chaveDFe);
+
+            chaveDFe += cDV.ToString();
+
+            return chaveDFe;
+        }
     }
+
+#if INTEROP
+
+    /// <summary>
+    /// Utilitários diversos para trabalhar com XML - Específico INTEROP
+    /// </summary>
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Utility.XMLUtilityInterop")]
+    [ComVisible(true)]
+    public class XMLUtilityInterop
+    {
+        /// <summary>
+        /// Gerar a chave dos seguintes documentos fiscais eletrônicos: NFe, NFCe, CTe, MFDe e CTeOS.
+        /// </summary>
+        /// <param name="cUF">UF do emitente</param>
+        /// <param name="dhEmi">Data de emissão do documento</param>
+        /// <param name="cnpjcpf">CNPJ ou CPF do emitente</param>
+        /// <param name="mod">Código do modelo do documento fiscal eletrônicos</param>
+        /// <param name="serie">Série do documento fiscal eletrônico</param>
+        /// <param name="nNF">Número da nota fiscal</param>
+        /// <param name="tpEmis">Tipo de emissão (Tag tpEmis)</param>
+        /// <param name="cNF">Código numérico randômico (Deixe em branco ou nulo para que a DLL gera este código para você)</param>
+        /// <returns>Retorna a chave, completa, do documento fiscal eletrônico com o dígito verificar calculado e concatenado a chave</returns>
+        public string MontarChaveDFe(UFBrasil cUF, DateTime dhEmi, string cnpjcpf, ModeloDFe mod, int serie, int nNF, TipoEmissao tpEmis, string cNF = "") => XMLUtility.MontarChaveDFe(cUF, dhEmi, cnpjcpf, mod, serie, nNF, tpEmis, cNF);
+
+        /// <summary>
+        /// Gera um número randômico para ser utilizado no Código Numérico da NFe, NFCe, CTe, MDFe, etc...
+        /// </summary>
+        /// <param name="numeroNF">Número da NF, CT ou MDF</param>
+        /// <returns>Código numérico</returns>
+        public int GerarCodigoNumerico(int numeroNF) => XMLUtility.GerarCodigoNumerico(numeroNF);
+
+        /// <summary>
+        /// Gerar o dígito da chave da NFe, CTe, MDFe ou NFCe
+        /// </summary>
+        /// <param name="chave">Chave do DFe (sem o dígito) que deve ser calculado o dígito verificador.</param>
+        /// <returns>Dígito verificador</returns>
+        public int CalcularDVChave(string chave) => XMLUtility.CalcularDVChave(chave);
+    }
+
+#endif
+
 }
