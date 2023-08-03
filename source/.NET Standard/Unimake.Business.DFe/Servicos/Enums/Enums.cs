@@ -458,7 +458,12 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 10 - CCG - Consulta Centralizada de GTIN
         /// </summary>
-        CCG = 10
+        CCG = 10,
+        /// <summary>
+        /// 11 - EFDReinf - Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais
+        /// </summary>
+        EFDReinf = 11
+
     }
 
     #endregion       
@@ -658,7 +663,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("1")]
         Producao = 1,
         /// <summary>
-        /// 2 - Ambiente de Homologação
+        /// 2 - Ambiente de Homologação / Produção Restrita
         /// </summary>
         [XmlEnum("2")]
         Homologacao = 2
@@ -6827,4 +6832,225 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    #region ProcessoEmissao
+
+    /// <summary>
+    /// Processo de emissão do evento do EFDReinf
+    /// </summary>
+    public enum ProcessoEmissaoReinf
+    {
+        /// <summary>
+        /// 1 - Aplicativo do contribuinte
+        /// </summary>
+        [XmlEnum("1")]
+        AplicativoContribuinte = 1,
+
+        /// <summary>
+        /// 2 - Aplicativo governamental
+        /// </summary>
+        [XmlEnum("2")]
+        AplicativoGovernamental = 2,
+    }
+
+    #endregion
+
+    #region Tipos De Inscrição
+
+    /// <summary>
+    /// Tipos de Inscrição
+    /// </summary>
+    public enum TiposInscricao
+    {
+        /// <summary>
+        /// 1 - CNPJ
+        /// </summary>
+        [XmlEnum("1")]
+        CNPJ = 1,
+
+        /// <summary>
+        /// 2 - CPF
+        /// </summary>
+        [XmlEnum("2")]
+        CPF = 2,
+    }
+
+    #endregion
+
+    #region Indicativo escrituração
+
+    /// <summary>
+    /// Indicativo da obrigatoriedade do contribuinte em fazer a sua escrituração contábil através da ECD Escrituração Contábil Digital
+    /// </summary>
+    public enum IndicativoEscrituracao
+    {
+        /// <summary>
+        /// 0 - Empresa NÃO obrigada à ECD.
+        /// </summary>
+        [XmlEnum("0")]
+        naoObrigada = 0,
+
+        /// <summary>
+        /// 1 - Empresa obrigada à ECD.
+        /// </summary>
+        [XmlEnum("1")]
+        Obrigada = 1,
+    }
+
+    #endregion
+
+    #region Indicativo de desoneração
+
+    /// <summary>
+    /// Indicativo de desoneração da folha de pagamento
+    /// </summary>
+    public enum IndicativoDesoneracao
+    {
+        /// <summary>
+        /// 0 - Não aplicável.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoAplicavel = 0,
+
+        /// <summary>
+        /// 1 - Empresa enquadrada nos artigos 7° a 9° da Lei 12.546/2011. Validação: Pode ser igual a [1] apenas se a classificação tributária for igual a [02, 03, 99]. Nos demais casos deve ser igual a [0].
+        /// </summary>
+        [XmlEnum("1")]
+        Aplicavel = 1,
+    }
+
+    #endregion
+
+    #region Indicativo acordo isenção de multa
+
+    /// <summary>
+    /// Indicativo da existência de acordo internacional para isenção de multa
+    /// Validação: Só pode ser igual a [1] se {classTrib} for igual a [60].
+    /// </summary>
+    public enum IndicativoIsencaoMulta
+    {
+        /// <summary>
+        /// 0 - Sem acordo.
+        /// </summary>
+        [XmlEnum("0")]
+        SemAcordo = 0,
+
+        /// <summary>
+        /// 1 - Com acordo.
+        /// </summary>
+        [XmlEnum("1")]
+        ComAcordo = 1,
+    }
+
+    #endregion
+
+    #region Indicativo situação pessoa jurídica
+
+    /// <summary>
+    /// Indicativo da situação da pessoa jurídica
+    /// Validação: Informação obrigatória e exclusiva para pessoa jurídica.
+    /// </summary>
+    public enum IndicativoSituacaoPJ
+    {
+        /// <summary>
+        /// 0 - Situação normal.
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 1 - Extinção.
+        /// </summary>
+        [XmlEnum("1")]
+        Extincao = 1,
+
+        /// <summary>
+        /// 2 - Fusão.
+        /// </summary>
+        [XmlEnum("2")]
+        Fusao = 2,
+
+        /// <summary>
+        /// 3 - Cisão.
+        /// </summary>
+        [XmlEnum("3")]
+        Cisao = 3,
+
+        /// <summary>
+        /// 4 - Incorporação.
+        /// </summary>
+        [XmlEnum("4")]
+        Incorporacao = 4,
+    }
+
+    #endregion
+
+    #region Indicativo de entidade vinculada a União
+
+    /// <summary>
+    /// Indicativo de entidade vinculada a União
+    /// </summary>
+    public enum IndicativoUniao
+    {
+        /// <summary>
+        /// 0 - Não aplicável.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoAplicavel = 0,
+
+        /// <summary>
+        /// 1 - Órgão da Administração Pública Federal Direta, autarquias e fundações da Administração Pública Federal, empresas públicas, sociedades de economia mista, ou demais entidades em que a que União detenha maioria do capital social sujeito a voto, recebe recursos do Tesouro Nacional e está obrigada a registrar a execução orçamentária no Siafi. Validação: Informação obrigatória e exclusiva se a natureza jurídica do declarante for igual a: [101-5,104-0,107-4,110-4, 113-9, 116-3, 121-0, 122-8, 125-2, 126-0, 128-7, 131-7, 201-1, 203-8].
+        /// </summary>
+        [XmlEnum("1")]
+        Aplicavel = 1,
+    }
+
+    #endregion
+
+    #region Classificação tributária
+
+    /// <summary>
+    /// Classificação tributária
+    /// </summary>
+    public enum ClassificacaoTributaria
+    {
+        /// <summary>
+        /// 01 - Empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária substituída.
+        /// </summary>
+        [XmlEnum("01")]
+        SimplesNacionalTributacaoPrevidenciariaSubstituida = 1,
+
+        /// <summary>
+        /// 02 - Empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária não substituída
+        /// </summary>
+        [XmlEnum("02")]
+        SimplesNacionalTributacaoPrevidenciariaNaoSubstituida = 2,
+
+        /// <summary>
+        /// 03 - Empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária substituída e não substituída
+        /// </summary>
+        [XmlEnum("03")]
+        SimplesNacionalTributacaoPrevidenciariaSubstituidaNaoSubstituida = 3,
+
+        /// <summary>
+        /// 04 - MEI - Micro Empreendedor Individual.
+        /// </summary>
+        [XmlEnum("04")]
+        MEI = 4,
+
+        /// <summary>
+        /// 06 - Agroindústria.
+        /// </summary>
+        [XmlEnum("06")]
+        Agroindustria = 6,
+
+        /// <summary>
+        /// 07 - Produtor rural pessoa jurídica.
+        /// </summary>
+        [XmlEnum("07")]
+        ProdutorRuralPessoaJuridica = 7,
+    }
+    #endregion
 }
+
+
