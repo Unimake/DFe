@@ -18,7 +18,7 @@ namespace Unimake.DFe.Test.EFDReinf
         [Theory]
         [Trait("DFe", "EFDReinf")]
         [InlineData(@"..\..\..\EFDReinf\Resources\1000_evtInfoContri-Reinf-evt.xml")]
-        public void SerializacaoDesserializacaoReinf(string arqXML)
+        public void SerializacaoDesserializacaoReinf1000(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -31,7 +31,7 @@ namespace Unimake.DFe.Test.EFDReinf
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var xml = XMLUtility.Deserializar<Reinf>(doc);
+            var xml = XMLUtility.Deserializar<Reinf1000>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");

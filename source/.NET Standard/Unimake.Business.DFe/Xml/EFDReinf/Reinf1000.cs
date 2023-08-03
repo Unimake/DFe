@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02", IsNullable = false)]
-    public class Reinf : XMLBase
+    public class Reinf1000 : XMLBase
     {
         [XmlElement("evtInfoContri")]
         public EvtInfoContri EvtInfoContri { get; set; }
@@ -216,6 +216,44 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeIndSitPJ() => IndSitPJ != null;
 #endif
         #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddSoftHouse(SoftHouse item)
+        {
+            if (SoftHouse == null)
+            {
+                SoftHouse = new List<SoftHouse>();
+            }
+
+            SoftHouse.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista SoftHouse (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da SoftHouse</returns>
+        public SoftHouse GetSoftHouse(int index)
+        {
+            if ((SoftHouse?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return SoftHouse[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista SoftHouse
+        /// </summary>
+        public int GetSoftHouseCount => (SoftHouse != null ? SoftHouse.Count : 0);
+
+#endif
     }
 
 #if INTEROP
@@ -293,7 +331,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoEFR
     {
         [XmlElement("ideEFR")]
-        public string IdeEFR { get; set; }
+        public SimNaoLetra IdeEFR { get; set; }
 
         [XmlElement("cnpjEFR")]
         public string CnpjEFR { get; set; }

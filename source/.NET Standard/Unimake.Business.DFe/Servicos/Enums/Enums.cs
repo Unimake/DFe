@@ -6888,7 +6888,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 0 - Empresa NÃO obrigada à ECD.
         /// </summary>
         [XmlEnum("0")]
-        naoObrigada = 0,
+        NaoObrigada = 0,
 
         /// <summary>
         /// 1 - Empresa obrigada à ECD.
