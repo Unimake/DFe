@@ -7049,6 +7049,84 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("07")]
         ProdutorRuralPessoaJuridica = 7,
+
+        /// <summary>
+        /// 08 - Consórcio simplificado de produtores rurais.
+        /// </summary>
+        [XmlEnum("08")]
+        ConsorcioSimplificadoDeProdutoresRurais = 8,
+
+        /// <summary>
+        /// 09 - Órgão gestor de mão de obra – OGMO
+        /// </summary>
+        [XmlEnum("09")]
+        OGMO = 9,
+
+        /// <summary>
+        /// 10 - Entidade sindical a que se refere a Lei 12.023/2009
+        /// </summary>
+        [XmlEnum("10")]
+        EntidadeSindical = 10,
+
+        /// <summary>
+        /// 11 - Associação desportiva que mantém clube de futebol profissional
+        /// </summary>
+        [XmlEnum("11")]
+        AssociacaoDesportiva = 11,
+
+        /// <summary>
+        /// 13 - Banco, caixa econômica, sociedade de crédito, financiamento e investimento e demais empresas relacionadas no parágrafo 1º do art. 22 da Lei 8.212./91
+        /// </summary>
+        [XmlEnum("13")]
+        InstituicaoFinanceira = 13,
+
+        /// <summary>
+        /// 14 - Sindicatos em geral, exceto aquele classificado no código [10]
+        /// </summary>
+        [XmlEnum("14")]
+        SindicatosGeral = 14,
+
+        /// <summary>
+        /// 21 - Pessoa física, exceto segurado especial
+        /// </summary>
+        [XmlEnum("21")]
+        PessoaFisica = 21,
+
+        /// <summary>
+        /// 22 - Segurado especial
+        /// </summary>
+        [XmlEnum("22")]
+        SeguradoEspecial = 22,
+
+        /// <summary>
+        /// 60 - Missão diplomática ou repartição consular de carreira estrangeira
+        /// </summary>
+        [XmlEnum("60")]
+        MissaoDiplomatica = 60,
+
+        /// <summary>
+        /// 70 - Empresa de que trata o Decreto 5.436/2005
+        /// </summary>
+        [XmlEnum("70")]
+        Decreto54362005 = 70,
+
+        /// <summary>
+        /// 80 - Entidade beneficente de assistência social isenta de contribuições sociais
+        /// </summary>
+        [XmlEnum("80")]
+        EntidadeBeneficente = 80,
+
+        /// <summary>
+        /// 85 - Administração direta da União, Estados, Distrito Federal e Municípios; Autarquias e fundações públicas
+        /// </summary>
+        [XmlEnum("85")]
+        AdministracaoDiretaUniao = 85,
+
+        /// <summary>
+        /// 99 - Pessoas jurídicas em geral
+        /// </summary>
+        [XmlEnum("99")]
+        PessoaJuridica = 99,
     }
     #endregion
 }

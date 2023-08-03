@@ -154,7 +154,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IndicativoSituacaoPJ IndSitPJ { get; set; } = (IndicativoSituacaoPJ)(-1);
 #else
-         public IndicativoSituacaoPJ? IndSitPJ { get; set; }
+        public IndicativoSituacaoPJ? IndSitPJ { get; set; }
 #endif
 
         [XmlElement("indUniao")]
@@ -226,8 +226,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class Contato
     {
-        //precisa de mascara? (⊙_⊙)？
-
         [XmlElement("nmCtt")]
         public string NmCtt { get; set; }
 
@@ -237,11 +235,21 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("foneFixo")]
         public string FoneFixo { get; set; }
 
-        [XmlElement("foneCel1")]
-        public string FoneCel1 { get; set; }
+        [XmlElement("foneCel")]
+        public string FoneCel { get; set; }
 
         [XmlElement("email")]
         public string Email { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeFoneFixo() => !string.IsNullOrEmpty(FoneFixo);
+
+        public bool ShouldSerializeFoneCel() => !string.IsNullOrEmpty(FoneCel);
+
+        public bool ShouldSerializeEmail() => !string.IsNullOrEmpty(Email);
+
+        #endregion
     }
 
 #if INTEROP
@@ -266,6 +274,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("email")]
         public string Email { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeEmail() => !string.IsNullOrEmpty(Email);
+
+        public bool ShouldSerializeTelefone() => !string.IsNullOrEmpty(Telefone);
+
+        #endregion
     }
 
 #if INTEROP
@@ -281,5 +297,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("cnpjEFR")]
         public string CnpjEFR { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCnpjEFR() => !string.IsNullOrEmpty(CnpjEFR);
+
+        #endregion
     }
 }
