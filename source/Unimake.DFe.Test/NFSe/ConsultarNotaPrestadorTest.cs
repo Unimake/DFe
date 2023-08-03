@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Diag = System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
@@ -31,30 +29,23 @@ namespace Unimake.DFe.Test.NFSe
             var nomeXMLEnvio = "ConsultarNotaPrestador-ped-sitnfse.xml";
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;
 
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado.");
 
-            try
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(arqXML);
+
+            var configuracao = new Configuracao
             {
-                var conteudoXML = new XmlDocument();
-                conteudoXML.Load(arqXML);
+                TipoDFe = TipoDFe.NFSe,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                CodigoMunicipio = codMunicipio,
+                Servico = Servico.NFSeConsultarNotaPrestador,
+                SchemaVersao = versaoSchema
+            };
 
-                var configuracao = new Configuracao
-                {
-                    TipoDFe = TipoDFe.NFSe,
-                    CertificadoDigital = PropConfig.CertificadoDigital,
-                    TipoAmbiente = tipoAmbiente,
-                    CodigoMunicipio = codMunicipio,
-                    Servico = Servico.NFSeConsultarNotaPrestador,
-                    SchemaVersao = versaoSchema
-                };
-
-                var consultarNotaPrestador = new ConsultarNotaPrestador(conteudoXML, configuracao);
-                consultarNotaPrestador.Executar();
-            }
-            catch (Exception ex)
-            {
-                Diag.Debug.Assert(false, "Falha na hora de consumir o serviço: " + nomeMunicipio + " - IBGE: " + codMunicipio + " - Padrão: " + padraoNFSe.ToString() + " - Versão schema: " + versaoSchema + "\r\nExceção: " + ex.Message, ex.StackTrace);
-            }
+            var consultarNotaPrestador = new ConsultarNotaPrestador(conteudoXML, configuracao);
+            consultarNotaPrestador.Executar();
         }
     }
 }

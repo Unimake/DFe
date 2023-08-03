@@ -29,14 +29,14 @@ namespace Unimake.DFe.Test
         {
             get
             {
-                if(CertificadoDigitalField == null)
+                if (CertificadoDigitalField == null)
                 {
                     CertificadoDigitalField = new CertificadoDigital().CarregarCertificadoDigitalA1(PathCertificadoDigital, SenhaCertificadoDigital);
                 }
 
                 return CertificadoDigitalField;
             }
-         
+
             private set => throw new Exception("Não é possível atribuir um certificado digital! Somente resgate o valor da propriedade que o certificado é definido automaticamente.");
         }
 

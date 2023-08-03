@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Diag = System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
-using System.Drawing;
+using Xunit;
 
 namespace Unimake.DFe.Test.NFSe
 {
@@ -22,61 +21,54 @@ namespace Unimake.DFe.Test.NFSe
             var pastaConfigNFSe = pastaConfigGeral + "\\NFSe";
             var arqConfigGeral = pastaConfigGeral + "\\Config.xml"; //Arquivo de configuração que contem os municípios implementados
 
-            Diag.Debug.Assert(File.Exists(arqConfigGeral), "Arquivo de configuração geral (" + arqConfigGeral + ") não foi localizado.");
+            Assert.True(File.Exists(arqConfigGeral), "Arquivo de configuração geral (" + arqConfigGeral + ") não foi localizado.");
 
-            try
+            //Buscar todos os padrões de NFSe implementados para testar os municípios
+            foreach (var nomePadrao in Enum.GetNames(typeof(PadraoNFSe)))
             {
-                //Buscar todos os padrões de NFSe implementados para testar os municípios
-                foreach (var nomePadrao in Enum.GetNames(typeof(PadraoNFSe)))
+                var padraoNFSe = (PadraoNFSe)Enum.Parse(typeof(PadraoNFSe), nomePadrao);
+
+                if (padraoNFSe == PadraoNFSe.None)
                 {
-                    var padraoNFSe = (PadraoNFSe)Enum.Parse(typeof(PadraoNFSe), nomePadrao);
+                    continue;
+                }
 
-                    if (padraoNFSe == PadraoNFSe.None)
+                //Pegar o arquivo de configurações para buscar todos os municípios implementados do padrão em questão para testar 1 por 1
+                var xmlConfig = new XmlDocument();
+                xmlConfig.Load(arqConfigGeral);
+
+                var configuracoesList = xmlConfig.GetElementsByTagName("Configuracoes");
+
+                foreach (var configuracoesNode in configuracoesList)
+                {
+                    var configuracoesElement = (XmlElement)configuracoesNode;
+
+                    var arquivoList = configuracoesElement.GetElementsByTagName("Arquivo");
+
+                    foreach (var arquivoNode in arquivoList)
                     {
-                        continue;
-                    }
+                        var arquivoElement = (XmlElement)arquivoNode;
 
-                    //Pegar o arquivo de configurações para buscar todos os municípios implementados do padrão em questão para testar 1 por 1
-                    var xmlConfig = new XmlDocument();
-                    xmlConfig.Load(arqConfigGeral);
-
-                    var configuracoesList = xmlConfig.GetElementsByTagName("Configuracoes");
-
-                    foreach (var configuracoesNode in configuracoesList)
-                    {
-                        var configuracoesElement = (XmlElement)configuracoesNode;
-
-                        var arquivoList = configuracoesElement.GetElementsByTagName("Arquivo");
-
-                        foreach (var arquivoNode in arquivoList)
+                        if (arquivoElement.GetElementsByTagName("PadraoNFSe").Count > 0)
                         {
-                            var arquivoElement = (XmlElement)arquivoNode;
-
-                            if (arquivoElement.GetElementsByTagName("PadraoNFSe").Count > 0)
+                            if (arquivoElement.GetElementsByTagName("PadraoNFSe")[0].InnerText == padraoNFSe.ToString())
                             {
-                                if (arquivoElement.GetElementsByTagName("PadraoNFSe")[0].InnerText == padraoNFSe.ToString())
+                                var codMunicipio = Convert.ToInt32(arquivoElement.GetAttribute("ID"));
+                                var nomeMunicipio = arquivoElement.GetElementsByTagName("Nome")[0].InnerText;
+
+                                var ambientesVersoesSchema = TestUtility.BuscarDadosConfigNFSe(pastaConfigNFSe + "\\" + arquivoElement.GetElementsByTagName("ArqConfig")[0].InnerText, servico);
+
+                                foreach (var ambienteVersaoSchema in ambientesVersoesSchema)
                                 {
-                                    var codMunicipio = Convert.ToInt32(arquivoElement.GetAttribute("ID"));
-                                    var nomeMunicipio = arquivoElement.GetElementsByTagName("Nome")[0].InnerText;
-
-                                    var ambientesVersoesSchema = TestUtility.BuscarDadosConfigNFSe(pastaConfigNFSe + "\\" + arquivoElement.GetElementsByTagName("ArqConfig")[0].InnerText, servico);
-
-                                    foreach (var ambienteVersaoSchema in ambientesVersoesSchema)
+                                    if (!string.IsNullOrWhiteSpace(ambienteVersaoSchema.VersaoSchema))
                                     {
-                                        if (!string.IsNullOrWhiteSpace(ambienteVersaoSchema.VersaoSchema))
-                                        {
-                                            dados.Add(new object[] { ambienteVersaoSchema.TipoAmbiente, padraoNFSe, ambienteVersaoSchema.VersaoSchema, codMunicipio, nomeMunicipio });
-                                        }
+                                        dados.Add(new object[] { ambienteVersaoSchema.TipoAmbiente, padraoNFSe, ambienteVersaoSchema.VersaoSchema, codMunicipio, nomeMunicipio });
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Diag.Debug.Assert(false, ex.Message, ex.StackTrace);
             }
 
             return dados;
@@ -89,7 +81,7 @@ namespace Unimake.DFe.Test.NFSe
         /// <returns>Lista com dados das configurações da NFSe</returns>
         public static List<DadosConfigNFSe> BuscarDadosConfigNFSe(string arqConfigMunicipio, string servico)
         {
-            Diag.Debug.Assert(File.Exists(arqConfigMunicipio), "Arquivo " + arqConfigMunicipio + " não foi localizado.");
+            Assert.True(File.Exists(arqConfigMunicipio), "Arquivo " + arqConfigMunicipio + " não foi localizado.");
 
             var retornar = new List<DadosConfigNFSe>();
 

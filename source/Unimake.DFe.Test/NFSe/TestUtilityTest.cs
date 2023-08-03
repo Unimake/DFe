@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Diag = System.Diagnostics;
-using System.IO;
-using System.Xml;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.NFSe;
-using Xunit;
+﻿using Xunit;
 
 namespace Unimake.DFe.Test.NFSe
 {

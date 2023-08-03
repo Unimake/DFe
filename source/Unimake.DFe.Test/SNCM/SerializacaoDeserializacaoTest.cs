@@ -1,5 +1,4 @@
-﻿using Diag = System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Xml.SNCM;
 using Xunit;
@@ -19,16 +18,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\msgParam-consparam.xml")]
         public void SerializacaoDeserializacaoMsgParam(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new MsgParam();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -39,16 +38,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\retMbtAgtMgmt.xml")]
         public void SerializacaoDeserializacaoRetMbtAgtMgmt(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new RetMbtAgtMgmt();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -59,16 +58,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\retEvtIn.xml")]
         public void SerializacaoDeserializacaoRetEvtIn(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new RetEvtIn();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -79,16 +78,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\msgMbtAgtMgmt.xml")]
         public void SerializacaoDeserializacaoMsgMbtAgtMgmt(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new MsgMbtAgtMgmt();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -99,16 +98,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\retMdataMAH.xml")]
         public void SerializacaoDeserializacaoRetMdataMAH(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new RetMdataMAH();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -119,16 +118,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\msgMdataMAH.xml")]
         public void SerializacaoDeserializacaoMsgMdataMAH(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new MsgMdataMAH();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -139,16 +138,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\retParam.xml")]
         public void SerializacaoDeserializacaoRetParam(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new RetParam();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -159,16 +158,16 @@ namespace Unimake.DFe.Test.SNCM
         [InlineData(@"..\..\..\SNCM\Resources\msgEvtIn-RegEvento.xml")]
         public void SerializacaoDeserializacaoMsgEvtIn(string arqXML)
         {
-            Diag.Debug.Assert(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
             var xml = new MsgEvtIn();
             xml = xml.LoadFromFile(arqXML);
-            XmlDocument xmlSerializado = xml.GerarXML();
+            var xmlSerializado = xml.GerarXML();
 
-            Diag.Debug.Assert(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xmlSerializado.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
     }
 }
