@@ -450,7 +450,11 @@
 		<None Remove="Xml\Schemas\EFDReinf\R-9005-evtRet-v2_01_02-.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\R-9011-evtTotalContrib-v2_01_02-.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\R-9015-evtRetCons-v2_01_02-.xsd" />
+		<None Remove="Xml\Schemas\EFDReinf\retornoLoteEventos-v1_05_01.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\retornoLoteEventosAssincrono-v1_00_00.xsd" />
+		<None Remove="Xml\Schemas\EFDReinf\retornoRecibosChaveEvento-v1_05_01.xsd" />
+		<None Remove="Xml\Schemas\EFDReinf\retornoTotalizadorContribuinte-v1_05_01.xsd" />
+		<None Remove="Xml\Schemas\EFDReinf\retornoTotalizadorEvento-v1_05_01.xsd" />
 		<None Remove="Xml\Schemas\EFDReinf\xmldsig-core-schema.xsd" />
 		<None Remove="Xml\Schemas\GNRE\cabecMsg_v1.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\config_uf_v1.00.xsd" />
@@ -1073,7 +1077,11 @@
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9005-evtRet-v2_01_02-.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9011-evtTotalContrib-v2_01_02-.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\R-9015-evtRetCons-v2_01_02-.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoLoteEventos-v1_05_01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoLoteEventosAssincrono-v1_00_00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoRecibosChaveEvento-v1_05_01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorContribuinte-v1_05_01.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorEvento-v1_05_01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\xmldsig-core-schema.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
