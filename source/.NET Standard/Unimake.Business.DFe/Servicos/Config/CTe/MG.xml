@@ -229,6 +229,11 @@
 					<SchemaArquivoEspecifico>evIECTe_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>110191</ID>
+					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancIECTe_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>				
+				<Tipo>
 					<ID>610110</ID>
 					<SchemaArquivo>eventoCTe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>evPrestDesacordo_v{0}.xsd</SchemaArquivoEspecifico>
