@@ -103,6 +103,8 @@ namespace TreinamentoDLL
             this.BtnConsultarConfigUF = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.BtnConsultarGTIN = new System.Windows.Forms.Button();
+            this.BtnInsucessoEntregaCTe = new System.Windows.Forms.Button();
+            this.BtnCancInsucessoEntregaCTe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -622,6 +624,8 @@ namespace TreinamentoDLL
             // 
             // GroupCTe
             // 
+            this.GroupCTe.Controls.Add(this.BtnCancInsucessoEntregaCTe);
+            this.GroupCTe.Controls.Add(this.BtnInsucessoEntregaCTe);
             this.GroupCTe.Controls.Add(this.BtnEventoCCeCTeOS);
             this.GroupCTe.Controls.Add(this.BtnEventoCCeCTe);
             this.GroupCTe.Controls.Add(this.BtnEventoCancelamentoCTeOS);
@@ -942,6 +946,26 @@ namespace TreinamentoDLL
             this.BtnConsultarGTIN.UseVisualStyleBackColor = true;
             this.BtnConsultarGTIN.Click += new System.EventHandler(this.BtnConsultarGTIN_Click);
             // 
+            // BtnInsucessoEntregaCTe
+            // 
+            this.BtnInsucessoEntregaCTe.Location = new System.Drawing.Point(8, 219);
+            this.BtnInsucessoEntregaCTe.Name = "BtnInsucessoEntregaCTe";
+            this.BtnInsucessoEntregaCTe.Size = new System.Drawing.Size(197, 40);
+            this.BtnInsucessoEntregaCTe.TabIndex = 23;
+            this.BtnInsucessoEntregaCTe.Text = "Evento de Insucesso na Entrega do CTe";
+            this.BtnInsucessoEntregaCTe.UseVisualStyleBackColor = true;
+            this.BtnInsucessoEntregaCTe.Click += new System.EventHandler(this.BtnInsucessoEntregaCTe_Click);
+            // 
+            // BtnCancInsucessoEntregaCTe
+            // 
+            this.BtnCancInsucessoEntregaCTe.Location = new System.Drawing.Point(8, 265);
+            this.BtnCancInsucessoEntregaCTe.Name = "BtnCancInsucessoEntregaCTe";
+            this.BtnCancInsucessoEntregaCTe.Size = new System.Drawing.Size(197, 42);
+            this.BtnCancInsucessoEntregaCTe.TabIndex = 24;
+            this.BtnCancInsucessoEntregaCTe.Text = "Evento de Cancelamento do Insucesso da Entrega do CTe";
+            this.BtnCancInsucessoEntregaCTe.UseVisualStyleBackColor = true;
+            this.BtnCancInsucessoEntregaCTe.Click += new System.EventHandler(this.BtnCancInsucessoEntregaCTe_Click);
+            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1046,6 +1070,8 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnGetInfCertificadoDigital;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button BtnConsultarGTIN;
+        private System.Windows.Forms.Button BtnCancInsucessoEntregaCTe;
+        private System.Windows.Forms.Button BtnInsucessoEntregaCTe;
     }
 }
 

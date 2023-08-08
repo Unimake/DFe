@@ -5635,5 +5635,114 @@ namespace TreinamentoDLL
                 MessageBox.Show(ex.GetLastException().Message);
             }
         }
+
+        private void BtnInsucessoEntregaCTe_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlCTe.EventoCTe
+            {
+                Versao = "4.00",
+                InfEvento = new XmlCTe.InfEvento(new XmlCTe.DetEventoInsucessoEntrega
+                {
+                    VersaoEvento = "4.00",
+                    DescEvento = "Insucesso na Entrega do CT-e",
+                    NProt = "141200000007987",
+                    DhTentativaEntrega = DateTime.Now,
+                    TpMotivo = TipoMotivoInsucessoEntrega.Outros,
+                    XJustMotivo = "Teste da justificativa do motivo da entrega quando é outro = 4",
+                    Latitude = "37.774929",
+                    Longitude = "122.419418",
+                    HashTentativaEntrega = "noauBnfaoS02PYxVm8ufox7OKww=",
+                    DhHashTentativaEntrega = DateTime.Now,
+                    InfEntrega = new List<XmlCTe.InfEntrega>
+                    {
+                        new XmlCTe.InfEntrega
+                        {
+                            ChNFe = "12345678901234567890123456789012345678901234"
+                        }
+                    }
+                    
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    ChCTe = "41200210859283000185570010000005671227070615",
+                    CNPJ = "10859283000185",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoCTe.InsucessoEntrega,
+                    NSeqEvento = 1,
+                    TpAmb = TipoAmbiente.Homologacao
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var recepcaoEvento = new ServicoCTe.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            //Gravar o XML de distribuição se o evento foi homologada
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
+                case 135: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
+                case 136: //Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
+                    recepcaoEvento.GravarXmlDistribuicao(@"c:\testecte\");
+                    break;
+
+                default:
+                    //Quando o evento é rejeitado pela Sefaz.
+                    break;
+            }
+        }
+
+        private void BtnCancInsucessoEntregaCTe_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlCTe.EventoCTe
+            {
+                Versao = "4.00",
+                InfEvento = new XmlCTe.InfEvento(new XmlCTe.DetEventoCancelamentoInsucessoEntrega
+                {
+                    VersaoEvento = "4.00",
+                    DescEvento = "Cancelamento do Insucesso de Entrega do CT-e",
+                    NProt = "141200000007987",
+                    NProtIE = "141200000007982"
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    ChCTe = "41200210859283000185570010000005671227070615",
+                    CNPJ = "10859283000185",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoCTe.CancelamentoInsucessoEntrega,
+                    NSeqEvento = 1,
+                    TpAmb = TipoAmbiente.Homologacao
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var recepcaoEvento = new ServicoCTe.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            //Gravar o XML de distribuição se o evento foi homologada
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
+                case 135: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
+                case 136: //Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
+                    recepcaoEvento.GravarXmlDistribuicao(@"c:\testecte\");
+                    break;
+
+                default:
+                    //Quando o evento é rejeitado pela Sefaz.
+                    break;
+            }
+
+        }
     }
 }
