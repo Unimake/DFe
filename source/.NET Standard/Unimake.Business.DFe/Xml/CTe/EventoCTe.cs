@@ -1412,6 +1412,11 @@ namespace Unimake.Business.DFe.Xml.CTe
                         _detEvento = new DetEventoInsucessoEntrega();
                         break;
 
+                    case TipoEventoCTe.CancelamentoInsucessoEntrega:
+                        _detEvento = new DetEventoCancelamentoInsucessoEntrega();
+                        break;
+
+
                     case TipoEventoCTe.RegistroPassagemAutomatico:
                         _detEvento = new DetEventoRegistroPassagemAutomatico();
                         break;
@@ -1650,6 +1655,64 @@ namespace Unimake.Business.DFe.Xml.CTe
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoCancelamentoInsucessoEntrega")]
+    [ComVisible(true)]
+#endif
+    [XmlInclude(typeof(EventoDetalhe))]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancelamentoInsucessoEntrega : EventoDetalhe
+    {
+        private EvCancIECTe _eventoCancIECTe;
+
+        internal override void SetValue(PropertyInfo pi)
+        {
+            base.SetValue(pi);
+        }
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EvCancIECTe.DescEvento;
+            set => EvCancIECTe.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string NProt
+        {
+            get => EvCancIECTe.NProt;
+            set => EvCancIECTe.NProt = value;
+        }
+
+        [XmlIgnore]
+        public string NProtIE
+        {
+            get => EvCancIECTe.NProtIE;
+            set => EvCancIECTe.NProtIE = value;
+        }
+
+        [XmlElement(ElementName = "evCancIECTe")]
+        public EvCancIECTe EvCancIECTe
+        {
+            get => _eventoCancIECTe ?? (_eventoCancIECTe = new EvCancIECTe());
+            set => _eventoCancIECTe = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evCancIECTe>
+                <descEvento>{DescEvento}</descEvento>
+                <nProt>{NProt}</nProt>
+                <nProtIE>{NProtIE}</nProtIE>
+                </evCancIECTe>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.EvIECTe")]
     [ComVisible(true)]
 #endif
@@ -1771,6 +1834,33 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
 
         }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCancIECTe")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot(ElementName = "evCancIECTe")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EvCancIECTe : Contract.Serialization.IXmlSerializable
+    {
+        [XmlElement("descEvento")]
+        public string DescEvento { get; set; } = "“Cancelamento do Insucesso de Entrega do CT-e";
+
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
+
+        [XmlElement("nProtIE")]
+        public string NProtIE { get; set; }
+
+        public void ReadXml(XmlDocument document) { }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na serialização
+        /// </summary>
+        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        public void WriteXml(System.IO.StringWriter writer) { }
     }
 
     #region Eventos exclusivos do fisco (Gerados pelo fisco)

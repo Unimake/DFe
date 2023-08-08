@@ -1035,6 +1035,12 @@ namespace Unimake.Business.DFe.Servicos
         InsucessoEntrega = 110190,
 
         /// <summary>
+        /// 110191 - Evento de Insucesso na Entrega do CTe
+        /// </summary>
+        [XmlEnum("110191")]
+        CancelamentoInsucessoEntrega = 110191,
+
+        /// <summary>
         /// 610110 - Evento de prestação de serviço em desacordo CTe
         /// </summary>
         [XmlEnum("610110")]
