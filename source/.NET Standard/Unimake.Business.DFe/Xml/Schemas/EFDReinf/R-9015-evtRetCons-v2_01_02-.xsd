@@ -44,7 +44,7 @@
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:unsignedByte">
-                          <xs:pattern value="[1|2]"/>
+                          <xs:pattern value="1|2"/>
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
@@ -117,7 +117,6 @@
                                   </xs:annotation>
                                   <xs:simpleType>
                                     <xs:restriction base="xs:string">
-                                      <xs:minLength value="1"/>
                                       <xs:maxLength value="200"/>
                                       <xs:whiteSpace value="preserve"/>
                                     </xs:restriction>
@@ -167,7 +166,7 @@
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
-                          <xs:minLength value="3"/>
+                          <xs:minLength value=""/>
                           <xs:maxLength value="52"/>
                         </xs:restriction>
                       </xs:simpleType>
@@ -178,8 +177,16 @@
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
-                          <xs:minLength value="4"/>
                           <xs:maxLength value="30"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="dhRecepcao" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Data e hora da recepcao do evento</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:dateTime">
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
@@ -224,6 +231,16 @@
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
+                    <xs:element name="fechRet" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Indicativo da finalidade do evento de origem.</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:unsignedByte">
+                          <xs:pattern value="\d"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -233,7 +250,7 @@
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="indExistInfo" minOccurs="0" maxOccurs="1">
+                    <xs:element name="indExistInfo" minOccurs="1" maxOccurs="1">
                       <xs:annotation>
                         <xs:documentation>Existe informacoes</xs:documentation>
                       </xs:annotation>
@@ -243,13 +260,13 @@
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
-                    <xs:element name="identEscritDCTF" minOccurs="0" maxOccurs="1">
+                    <xs:element name="identEscritDCTF" minOccurs="1" maxOccurs="1">
                       <xs:annotation>
                         <xs:documentation>Identificacao da escrituracao fiscal (EFD-Reinf) na DCTFWeb</xs:documentation>
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
-                          <xs:minLength value="8"/>
+                          <xs:minLength value="1"/>
                           <xs:maxLength value="19"/>
                         </xs:restriction>
                       </xs:simpleType>
@@ -289,7 +306,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -313,7 +329,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -325,7 +340,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -337,7 +351,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -401,7 +414,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -425,7 +437,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -437,7 +448,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -449,7 +459,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -513,7 +522,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -537,7 +545,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -549,7 +556,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -561,7 +567,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -625,7 +630,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -649,7 +653,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -661,7 +664,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -673,7 +675,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -737,7 +738,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -761,7 +761,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -773,7 +772,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -785,7 +783,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -848,7 +845,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -902,7 +898,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -956,7 +951,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -1010,7 +1004,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
@@ -1064,7 +1057,6 @@
                             </xs:annotation>
                             <xs:simpleType>
                               <xs:restriction base="xs:string">
-                                <xs:minLength value="4"/>
                                 <xs:maxLength value="15"/>
                                 <xs:pattern value="[0-9]{1,12}[,][0-9]{2}"/>
                               </xs:restriction>
