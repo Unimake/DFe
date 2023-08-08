@@ -166,7 +166,7 @@
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string">
-                          <xs:minLength value=""/>
+                          <xs:minLength value="0"/>
                           <xs:maxLength value="52"/>
                         </xs:restriction>
                       </xs:simpleType>
