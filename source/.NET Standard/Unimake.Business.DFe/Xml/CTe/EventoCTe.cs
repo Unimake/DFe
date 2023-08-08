@@ -1846,7 +1846,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     public class EvCancIECTe : Contract.Serialization.IXmlSerializable
     {
         [XmlElement("descEvento")]
-        public string DescEvento { get; set; } = "“Cancelamento do Insucesso de Entrega do CT-e";
+        public string DescEvento { get; set; } = "Cancelamento do Insucesso de Entrega do CT-e";
 
         [XmlElement("nProt")]
         public string NProt { get; set; }
