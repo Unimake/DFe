@@ -33,11 +33,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class EvtInfoContri
+    public class EvtInfoContri : ReinfEventoBase
     {
-        [XmlAttribute(AttributeName = "id", DataType = "token")]
-        public string ID { get; set; }
-
         [XmlElement("ideEvento")]
         public IdeEvento IdeEvento { get; set; }
 
@@ -50,39 +47,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    public class IdeEvento
-    {
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcessoEmissaoReinf ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeContri")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    public class IdeContri
-    {
-        [XmlElement("tpInsc")]
-        public TiposInscricao TpInsc { get; set; }
-
-        [XmlElement("nrInsc")]
-        public string NrInsc { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoContri")]
     [ComVisible(true)]
 #endif
@@ -90,16 +54,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoContri
     {
         [XmlElement("inclusao")]
-        public Inclusao Inclusao { get; set; }
+        public Reinf1000Inclusao Inclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Inclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1000Inclusao")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Inclusao
+    public class Reinf1000Inclusao
     {
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }

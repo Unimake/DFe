@@ -7135,6 +7135,38 @@ namespace Unimake.Business.DFe.Servicos
         PessoaJuridica = 99,
     }
     #endregion
+
+    #region Tipo da entidadade ligada
+
+    /// <summary>
+    /// Tipo da entidadade ligada
+    /// Valores validos: 1, 2, 3, 4
+    /// </summary>
+    public enum TpEntLig
+    {
+        /// <summary>
+        /// 01 - Fundo de investimento.
+        /// </summary>
+        [XmlEnum("01")]
+        FundoDeInvestimento = 1,
+
+        /// <summary>
+        /// 02 - Fundo de investimento imobiliário.
+        /// </summary>
+        [XmlEnum("02")]
+        FundoDeInvestimentoImobiliario = 2,
+
+        /// <summary>
+        /// 03 - Clube de Investimento.
+        /// </summary>
+        [XmlEnum("03")]
+        ClubeDeInvestimento = 3,
+
+        /// <summary>
+        /// 04 - Sociedade em conta de participação.
+        /// </summary>
+        [XmlEnum("04")]
+        SociedadeEmContaDeParticipacao = 4,
+    }
+    #endregion
 }
-
-

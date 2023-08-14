@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evt1050TabLig/v2_01_02">
+  <evtTabLig id="ID1000000000000002021052608080800001">
+    <ideEvento>
+      <tpAmb>1</tpAmb>
+      <procEmi>1</procEmi>
+      <verProc>verProc1</verProc>
+    </ideEvento>
+    <ideContri>
+      <tpInsc>1</tpInsc>
+      <nrInsc>00000000000000</nrInsc>
+    </ideContri>
+    <infoLig>
+      <inclusao>
+        <ideEntLig>
+          <tpEntLig>01</tpEntLig>
+          <cnpjLig>00000000000000</cnpjLig>
+          <iniValid>2022-01</iniValid>
+          <fimValid>2022-01</fimValid>
+        </ideEntLig>
+      </inclusao>
+    </infoLig>
+  </evtTabLig>
+</Reinf>
