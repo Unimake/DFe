@@ -5659,8 +5659,7 @@ namespace TreinamentoDLL
                         {
                             ChNFe = "12345678901234567890123456789012345678901234"
                         }
-                    }
-                    
+                    }                    
                 })
                 {
                     COrgao = UFBrasil.PR,
