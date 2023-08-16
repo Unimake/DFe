@@ -12,7 +12,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1000")]
     [ComVisible(true)]
 #endif
 

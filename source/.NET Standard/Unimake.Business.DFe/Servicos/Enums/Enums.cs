@@ -7142,7 +7142,7 @@ namespace Unimake.Business.DFe.Servicos
     /// Tipo da entidadade ligada
     /// Valores validos: 1, 2, 3, 4
     /// </summary>
-    public enum TpEntLig
+    public enum TipoEntidadeLigada
     {
         /// <summary>
         /// 01 - Fundo de investimento.

@@ -12,12 +12,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1050")]
     [ComVisible(true)]
 #endif
 
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evt1050TabLig/v2_01_02", IsNullable = false)]
+    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTabProcesso/v2_01_02", IsNullable = false)]
     public class Reinf1050 : XMLBase
     {
         [XmlElement("evtTabLig")]
@@ -81,7 +81,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class IdeEntLig
     {
         [XmlElement("tpEntLig")]
-        public TpEntLig TpEntLig { get; set; }
+        public TipoEntidadeLigada TpEntLig { get; set; }
 
         [XmlElement("cnpjLig")]
         public string CnpjLig { get; set; }
@@ -111,7 +111,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class Alteracao
     {
         [XmlElement("tpEntLig")]
-        public TpEntLig TpEntLig { get; set; }
+        public TipoEntidadeLigada TpEntLig { get; set; }
 
         [XmlElement("cnpjLig")]
         public string CnpjLig { get; set; }
