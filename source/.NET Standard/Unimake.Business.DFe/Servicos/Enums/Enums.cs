@@ -7169,4 +7169,133 @@ namespace Unimake.Business.DFe.Servicos
         SociedadeEmContaDeParticipacao = 4,
     }
     #endregion
+
+    #region Tipo do Processo
+
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de processo
+    /// </summary>
+    public enum TipoProcesso
+    {
+        /// <summary>
+        /// 01 - Administrativo.
+        /// </summary>
+        [XmlEnum("1")]
+        Administrativo = 1,
+
+        /// <summary>
+        /// 02 - Judicial.
+        /// </summary>
+        [XmlEnum("2")]
+        Judicial = 2,
+    }
+    #endregion
+
+    #region Indicativo da autoria da ação judicial
+
+    /// <summary>
+    /// Indicativo da autoria da ação judicial:
+    /// </summary>
+    public enum IndicativoAutoria
+    {
+        /// <summary>
+        /// 01 - Próprio contribuinte.
+        /// </summary>
+        [XmlEnum("1")]
+        ProprioContribuinte = 1,
+
+        /// <summary>
+        /// 02 - Terceiro (outra entidade, empresa ou pessoa física).
+        /// </summary>
+        [XmlEnum("2")]
+        Terceiro = 2,
+    }
+    #endregion
+
+    #region Indicativo de suspensão da exigibilidade
+
+    /// <summary>
+    /// Indicativo de suspensão da exigibilidade
+    /// </summary>
+    public enum IndicativoSuspensao
+    {
+        /// <summary>
+        /// 01 - Liminar em mandado de segurança.
+        /// </summary>
+        [XmlEnum("01")]
+        MandadoDeSeguranca = 1,
+
+        /// <summary>
+        /// 02 - Depósito judicial do montante integral.
+        /// </summary>
+        [XmlEnum("02")]
+        DepositoJudicial = 2,
+
+        /// <summary>
+        /// 03 - Depósito administrativo do montante integral.
+        /// </summary>
+        [XmlEnum("03")]
+        DepositoAdministrativo = 3,
+
+        /// <summary>
+        /// 04 - Antecipação de tutela.
+        /// </summary>
+        [XmlEnum("04")]
+        AntecipacaoDeTutela = 4,
+
+        /// <summary>
+        /// 05 - Liminar em medida cautelar.
+        /// </summary>
+        [XmlEnum("05")]
+        MedidaCautelar = 5,
+
+        /// <summary>
+        /// 08 - Sentença em mandado de segurança favorável ao contribuinte.
+        /// </summary>
+        [XmlEnum("08")]
+        SentencaEmMandado = 8,
+
+        /// <summary>
+        /// 09 - Sentença em ação ordinária favorável ao contribuinte e confirmada pelo TRF.
+        /// </summary>
+        [XmlEnum("09")]
+        SentencaEmAcao = 9,
+
+        /// <summary>
+        /// 10 - Acórdão do TRF favorável ao contribuinte.
+        /// </summary>
+        [XmlEnum("10")]
+        AcordaoTRF = 10,
+
+        /// <summary>
+        /// 11 - Acórdão do STJ em recurso especial favorável ao contribuinte.
+        /// </summary>
+        [XmlEnum("11")]
+        AcordaoSTJ = 11,
+
+        /// <summary>
+        /// 12 - Acórdão do STF em recurso extraordinário favorável ao contribuinte.
+        /// </summary>
+        [XmlEnum("12")]
+        AcordaoSTF = 12,
+
+        /// <summary>
+        /// 13 - Sentença 1ª instância não transitada em julgado com efeito suspensivo.
+        /// </summary>
+        [XmlEnum("13")]
+        SentencaNaoTransitada = 13,
+
+        /// <summary>
+        /// 90 - Decisão definitiva a favor do contribuinte.
+        /// </summary>
+        [XmlEnum("90")]
+        DecisaoDefinitiva = 90,
+
+        /// <summary>
+        /// 92 - Sem suspensão da exigibilidade.
+        /// </summary>
+        [XmlEnum("92")]
+        SemSuspensao = 92,
+    }
+    #endregion
 }

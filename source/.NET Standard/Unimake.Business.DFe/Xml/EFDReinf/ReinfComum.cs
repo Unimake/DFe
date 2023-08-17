@@ -42,4 +42,5 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
     }
+
 }

@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evt1050TabLig/v2_01_02", IsNullable = false)]
+    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTabProcesso/v2_01_02", IsNullable = false)]
     public class Reinf1070 : XMLBase
     {
         [XmlElement("evtTabProcesso")]
@@ -58,6 +58,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         [XmlElement("inclusao")]
         public Reinf1070Inclusao Reinf1070Inclusao { get; set; }
+
+        [XmlElement("alteracao")]
+        public Reinf1070Alteracao Alteracao { get; set; }
+
+        [XmlElement("exclusao")]
+        public Reinf1070Exclusao Exclusao { get; set; }
     }
 
 #if INTEROP
@@ -80,7 +86,193 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class IdeProcesso
     {
+        [XmlElement("tpProc")]
+        public TipoProcesso TpProc { get; set; }
 
+        [XmlElement("nrProc")]
+        public string NrProc { get; set; }
+
+        [XmlElement("iniValid")]
+        public string IniValid { get; set; }
+
+        [XmlElement("fimValid")]
+        public string FimValid { get; set; }
+
+        [XmlElement("indAutoria")]
+#if INTEROP
+        public IndicativoAutoria IndAutoria { get; set; } = (IndicativoAutoria)(-1);
+#else
+        public IndicativoAutoria? IndAutoria { get; set; }
+#endif
+
+        [XmlElement("infoSusp")]
+        public List<InfoSusp> InfoSusp { get; set; }
+
+        [XmlElement("dadosProcJud")]
+        public DadosProcJud DadosProcJud { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
+
+        #endregion
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoSusp(InfoSusp item)
+        {
+            if (InfoSusp == null)
+            {
+                InfoSusp = new List<InfoSusp>();
+            }
+
+            InfoSusp.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoSusp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoSusp</returns>
+        public InfoSusp GetInfoSusp(int index)
+        {
+            if ((InfoSusp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoSusp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoSusp
+        /// </summary>
+        public int GetInfoSuspCount => (InfoSusp != null ? InfoSusp.Count : 0);
+
+#endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoSusp")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class InfoSusp
+    {
+        [XmlElement("codSusp")]
+        public string CodSusp { get; set; }
+
+        [XmlElement("indSusp")]
+        public IndicativoSuspensao IndSusp { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtDecisao { get; set; }
+#else
+        public DateTimeOffset DtDecisao { get; set; }
+#endif
+
+        [XmlElement("dtDecisao")]
+        public string DtDecisaoField
+        {
+            get => DtDecisao.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtDecisao = DateTime.Parse(value);
+#else
+            set => DtDecisao = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("indDeposito")]
+        public SimNaoLetra IndDeposito { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.DadosProcJud")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class DadosProcJud
+    {
+        [XmlElement("ufVara")]
+        public UFBrasil UfVara { get; set; }
+
+        [XmlElement("codMunic")]
+        public string CodMunic { get; set; }
+
+        [XmlElement("idVara")]
+        public string IdVara { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1070Alteracao")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class Reinf1070Alteracao
+    {
+        [XmlElement("ideProcesso")]
+        public IdeProcesso IdeProcesso { get; set; }
+
+        [XmlElement("infoSusp")]
+        public List<InfoSusp> InfoSusp { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoSusp(InfoSusp item)
+        {
+            if (InfoSusp == null)
+            {
+                InfoSusp = new List<InfoSusp>();
+            }
+
+            InfoSusp.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoSusp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoSusp</returns>
+        public InfoSusp GetInfoSusp(int index)
+        {
+            if ((InfoSusp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoSusp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoSusp
+        /// </summary>
+        public int GetInfoSuspCount => (InfoSusp != null ? InfoSusp.Count : 0);
+
+#endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1070Exclusao")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class Reinf1070Exclusao
+    {
+        [XmlElement("ideProcesso")]
+        public IdeProcesso IdeProcesso { get; set; }
+
+    }
 }

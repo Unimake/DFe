@@ -69,7 +69,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeEntLig IdeEntLig { get; set; }
 
         [XmlElement("alteracao")]
-        public Alteracao Alteracao { get; set; }
+        public Reinf1050Alteracao Alteracao { get; set; }
     }
 
 #if INTEROP
@@ -93,7 +93,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string FimValid { get; set; }
 
         [XmlElement("exclusao")]
-        public Exclusao Exclusao { get; set; }
+        public Reinf1050Exclusao Exclusao { get; set; }
 
         #region ShouldSerialize
 
@@ -108,7 +108,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Alteracao
+    public class Reinf1050Alteracao
     {
         [XmlElement("tpEntLig")]
         public TipoEntidadeLigada TpEntLig { get; set; }
@@ -159,7 +159,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Exclusao
+    public class Reinf1050Exclusao
     {
         [XmlElement("cnpjLig")]
         public string CnpjLig { get; set; }
