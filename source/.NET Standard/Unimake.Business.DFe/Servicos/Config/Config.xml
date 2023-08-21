@@ -1738,4 +1738,76 @@
 		<ArqConfig>MontenegroRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5002407">
+		<Nome>Caarapó - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5003454">
+		<Nome>Deodápolis - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5003801">
+		<Nome>Fátima do Sul - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5004601">
+		<Nome>Itaquiraí - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5005400">
+		<Nome>Maracaju - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5005681">
+		<Nome>Mundo Novo - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5006200">
+		<Nome>Nova Andradina - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5006259">
+		<Nome>Novo Horizonte do Sul - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5006903">
+		<Nome>Porto Murtinho - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5007208">
+		<Nome>Rio Brilhante - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5007406">
+		<Nome>Rio Verde de Mato Grosso - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5007976">
+		<Nome>Taquarussu - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
