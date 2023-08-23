@@ -155,6 +155,7 @@ namespace Unimake.DFe.Test.CTe
         /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "CTe")]
+        [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110180.xml")]
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110190.xml")]
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_110191.xml")]
         [InlineData(@"..\..\..\CTe\Resources\eventoCTe_610111.xml")]

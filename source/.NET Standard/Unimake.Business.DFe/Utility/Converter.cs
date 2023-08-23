@@ -1,12 +1,15 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Business.Security;
+using Unimake.Exceptions;
 #endif
 using System;
 using System.IO;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Text.RegularExpressions;
 using Unimake.Cryptography;
-using Unimake.Business.Security;
-using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -18,8 +21,6 @@ namespace Unimake.Business.DFe.Utility
 #endif
     public static class Converter
     {
-        #region Private Methods
-
         /// <summary>
         /// Converter tipo de um objeto
         /// </summary>
@@ -27,10 +28,6 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="expectedType">Para qual tipo converter o conteúdo do objeto</param>
         /// <returns>Conteúdo do objeto convertido para o tipo informado</returns>
         private static object ChangeType(object value, Type expectedType) => UConvert.ChangeType(value, expectedType);
-
-        #endregion Private Methods
-
-        #region Public Methods
 
         /// <summary>
         /// Converter string para MemoryStream com UTF8 Encoding
@@ -110,7 +107,45 @@ namespace Unimake.Business.DFe.Utility
         /// <exception cref="ArgumentException">Se o <paramref name="path"/> for nulo, vazio ou espaços</exception>
         public static void Base64ToPDF(string content, string path) => PDFHelper.WriteBase64ToPDFFile(content, path);
 
-        #endregion Public Methods
+        /// <summary>
+        /// Calcula o hash SHA-1 de uma entrada e retorna o resultado em formato Base64.
+        /// </summary>
+        /// <param name="input">A string de entrada para a qual o hash SHA-1 será calculado.</param>
+        /// <returns>O hash SHA-1 calculado em formato Base64.</returns>
+        public static string CalculateSHA1Hash(string input)
+        {
+            using (var sha1 = SHA1.Create())
+            {
+                var inputBytes = Encoding.UTF8.GetBytes(input);
+                var hashBytes = sha1.ComputeHash(inputBytes);
+
+                return Convert.ToBase64String(hashBytes);
+            }
+        }
+
+        /// <summary>
+        /// Verifica se uma string está no formato hexadecimal de um hash SHA-1.
+        /// </summary>
+        /// <param name="input">A string a ser verificada.</param>
+        /// <returns>True se a string estiver no formato de hash SHA-1, False caso contrário.</returns>
+        public static bool IsSHA1Hash(string input)
+        {
+            // Definir uma expressão regular para verificar o formato de hash SHA-1
+            var pattern = "^[0-9a-fA-F]{40}$";
+
+            // Verificar se a string corresponde ao padrão
+            return Regex.IsMatch(input, pattern);
+        }
+
+        /// <summary>
+        /// Verifica se uma string está no formato Base64 de um hash SHA-1.
+        /// </summary>
+        /// <param name="input">A string a ser verificada.</param>
+        /// <returns>True se a string estiver no formato de hash SHA-1 em Base64, False caso contrário.</returns>
+        public static bool IsSHA1Base64(string input)
+        {
+            return input.Length == 28; // SHA-1 em Base64 tem que ter 28 caracteres
+        }
     }
 
 #if INTEROP
@@ -170,7 +205,28 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="data">Conteúdo a ser convertido</param>
         /// <param name="toUpper">Resultado todo em maiúsculo?</param>
         /// <returns>Conteúdo convertido para SH1HashData</returns>
-        public static string ToSHA1HashData(string data, bool toUpper) => Converter.ToSHA1HashData(data, toUpper);
+        public string ToSHA1HashData(string data, bool toUpper) => Converter.ToSHA1HashData(data, toUpper);
+
+        /// <summary>
+        /// Verifica se uma string está no formato hexadecimal de um hash SHA-1.
+        /// </summary>
+        /// <param name="input">A string a ser verificada.</param>
+        /// <returns>True se a string estiver no formato de hash SHA-1, False caso contrário.</returns>
+        public bool IsSHA1Hash(string input) => Converter.IsSHA1Hash(input);
+
+        /// <summary>
+        /// Calcula o hash SHA-1 de uma entrada e retorna o resultado em formato Base64.
+        /// </summary>
+        /// <param name="input">A string de entrada para a qual o hash SHA-1 será calculado.</param>
+        /// <returns>O hash SHA-1 calculado em formato Base64.</returns>
+        public string CalculateSHA1Hash(string input) => Converter.CalculateSHA1Hash(input);
+
+        /// <summary>
+        /// Verifica se uma string está no formato Base64 de um hash SHA-1.
+        /// </summary>
+        /// <param name="input">A string a ser verificada.</param>
+        /// <returns>True se a string estiver no formato de hash SHA-1 em Base64, False caso contrário.</returns>
+        public bool IsSHA1Base64(string input) => Converter.IsSHA1Base64(input);
     }
 
 #endif

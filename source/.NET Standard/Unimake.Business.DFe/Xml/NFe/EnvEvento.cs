@@ -960,8 +960,24 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("longGPS", Order = 8)]
         public string LongGPS { get; set; }
 
+        private string HashComprovanteField;
+
         [XmlElement("hashComprovante", Order = 9)]
-        public string HashComprovante { get; set; }
+        public string HashComprovante
+        {
+            get => HashComprovanteField;
+            set
+            {
+                if (Converter.IsSHA1Base64(value))
+                {
+                    HashComprovanteField = value;
+                }
+                else
+                {
+                    HashComprovanteField = Converter.CalculateSHA1Hash(value);
+                }
+            }
+        }
 
         [XmlIgnore]
 #if INTEROP

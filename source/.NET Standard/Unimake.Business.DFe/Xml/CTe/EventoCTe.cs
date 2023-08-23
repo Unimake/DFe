@@ -917,8 +917,24 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        private string HashEntregaField;
+
         [XmlElement("hashEntrega", Order = 7)]
-        public string HashEntrega { get; set; }
+        public string HashEntrega
+        {
+            get => HashEntregaField;
+            set
+            {
+                if (Converter.IsSHA1Base64(value))
+                {
+                    HashEntregaField = value;
+                }
+                else
+                {
+                    HashEntregaField = Converter.CalculateSHA1Hash(value);
+                }
+            }
+        }
 
         [XmlElement("infEntrega", Order = 9)]
         public List<InfEntrega> InfEntrega { get; set; } = new List<InfEntrega>();
@@ -1664,10 +1680,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private EvCancIECTe _eventoCancIECTe;
 
-        internal override void SetValue(PropertyInfo pi)
-        {
-            base.SetValue(pi);
-        }
+        internal override void SetValue(PropertyInfo pi) => base.SetValue(pi);
 
         [XmlIgnore]
         public override string DescEvento

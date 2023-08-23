@@ -349,19 +349,25 @@ namespace TreinamentoDLL
             };
 
             var recepcaoEvento = new ServicoNFe.RecepcaoEvento(xml, configuracao);
+            var XmlDaCCeAssinadoNoFormatoString = recepcaoEvento.ConteudoXMLAssinado.OuterXml; //Como pegar o XML da CCe no formato estring
             recepcaoEvento.Executar();
 
             if (recepcaoEvento.Result.CStat == 128) //128 = Lote de evento processado com sucesso.
             {
-                switch (recepcaoEvento.Result.RetEvento[0].InfEvento.CStat)
+                for (int i = 0; i < recepcaoEvento.Result.RetEvento.Count; i++)
                 {
-                    case 135: //Evento homologado com vinculação da respectiva NFe
-                        recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe"); //Grava o XML de distribuição
-                        break;
+                    switch (recepcaoEvento.Result.RetEvento[i].InfEvento.CStat)
+                    {
+                        case 135: //Evento homologado com vinculação da respectiva NFe
+                            var XmlDistribuicaoCCeFormatoString = recepcaoEvento.ProcEventoNFeResult[i].GerarXML().OuterXml; //Strig do XML de distribuição da CCe para gravar em banco de dados
+                            recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe"); //Grava o XML de distribuição
+                            break;
 
-                    default:
-                        //Realizar ações necessárias
-                        break;
+                        default:
+                            //Realizar ações necessárias
+                            break;
+                    }
+
                 }
             }
         }
@@ -2115,7 +2121,7 @@ namespace TreinamentoDLL
             };
 
             var autorizacao = new ServicoNFe.Autorizacao(xml, configuracao);
-            var xmlString = autorizacao.ConteudoXMLAssinado.OuterXml;
+            var xmlNFeAssinadoNoFormatoString = autorizacao.ConteudoXMLAssinado.OuterXml;
 
             //Gravo no meu banco de dados o xmlString
             autorizacao.Executar();
@@ -2136,7 +2142,7 @@ namespace TreinamentoDLL
                     case 302: //Uso Denegado: Irregularidade fiscal do destinatário
                     case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
                         autorizacao.GravarXmlDistribuicao(@"c:\testenfe\");
-                        var docProcNFe = autorizacao.NfeProcResult.GerarXML(); //Gerar o Objeto para pegar a string e gravar em banco de dados
+                        var docProcNFe = autorizacao.NfeProcResult.GerarXML().OuterXml; //Gerar o Objeto para pegar a string e gravar em banco de dados
                         MessageBox.Show(autorizacao.NfeProcResult.NomeArquivoDistribuicao);
                         break;
 
@@ -5659,7 +5665,7 @@ namespace TreinamentoDLL
                         {
                             ChNFe = "12345678901234567890123456789012345678901234"
                         }
-                    }                    
+                    }
                 })
                 {
                     COrgao = UFBrasil.PR,
