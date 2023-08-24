@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -7296,6 +7298,121 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("92")]
         SemSuspensao = 92,
+    }
+    #endregion
+
+
+    #region Indicativo Retificação
+
+    /// <summary>
+    /// Indicativo de retificação.
+    /// Valores válidos: 1, 2.
+    /// </summary>
+    public enum IndicativoRetificacao
+    {
+        /// <summary>
+        /// 1 - Arquivo original.
+        /// </summary>
+        [XmlEnum("1")]
+        ArquivoOriginal = 1,
+
+        /// <summary>
+        /// 2 - Arquivo de retificação.
+        /// </summary>
+        [XmlEnum("2")]
+        ArquivoRetificacao = 2
+    }
+    #endregion
+
+    #region Tipo de Inscricao do Estabelecimento
+
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento contratante dos serviços:
+    /// 1 - CNPJ;
+    /// 4 - CNO - Cadastro Nacional de Obras
+    /// </summary>
+    public enum TipoInscricaoEstabelecimento
+    {
+        /// <summary>
+        /// 1 - Arquivo original.
+        /// </summary>
+        [XmlEnum("1")]
+        ArquivoOriginal = 1,
+
+        /// <summary>
+        /// 4 - Arquivo de retificação.
+        /// </summary>
+        [XmlEnum("4")]
+        ArquivoRetificacao = 4
+    }
+    #endregion
+
+    #region Indicativo Obra
+
+    /// <summary>
+    /// Indicativo de prestação de serviços em obra de construção civil
+    /// </summary>
+    public enum IndicativoObra
+    {
+        /// <summary>
+        /// 0 - Não é obra de construção civil ou não está sujeita a matrícula de obra.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoSujeitaMatriculaDeObra = 0,
+
+        /// <summary>
+        /// 1 - É obra de construção civil, modalidade empreitada total.
+        /// </summary>
+        [XmlEnum("1")]
+        EmpreitadaTotal = 1,
+
+        /// <summary>
+        /// 2 - É obra de construção civil, modalidade empreitada parcial.
+        /// </summary>
+        [XmlEnum("2")]
+        EmpreitadaParcial = 2
+    }
+    #endregion
+
+    #region IndicativoCPRB
+    /// <summary>
+    /// Indicativo se o prestador é contribuinte da contribuição previdenciária sobre a receita bruta(CPRB), a qual reduz a alíquota de 11% para 3,5% na retenção de contribuição previdenciária
+    /// </summary>
+    public enum IndicativoCPRB
+    {
+        /// <summary>
+        /// 0 - Não é contribuinte da CPRB - retenção de 11%.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoContribuinte = 0,
+
+        /// <summary>
+        /// 1 - É contribuinte da CPRB - retenção de 3,5%.
+        /// </summary>
+        [XmlEnum("1")]
+        Contribuinte = 1,
+
+    }
+    #endregion
+
+    #region TipoProcessoRetPrinc
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de processo:
+    /// </summary>
+    public enum TipoProcessoRetPrinc
+    {
+        /// <summary>
+        /// 1 - Administrativo.
+        /// </summary>
+        [XmlEnum("1")]
+        NaoContribuinte = 1,
+
+        /// <summary>
+        /// 2 - Judicial.
+        /// </summary>
+        [XmlEnum("2")]
+        Contribuinte = 2,
+
     }
     #endregion
 }
