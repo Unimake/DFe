@@ -24,7 +24,7 @@ namespace Unimake.DFe.Test.NFSe
         [Theory]
         [Trait("DFe", "NFSe")]
         [MemberData(nameof(Parametros))]
-        public void ConsultarNotaPrestador(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
+        public void ConsultarNotaPrestador(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
             var nomeXMLEnvio = "ConsultarNotaPrestador-ped-sitnfse.xml";
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;

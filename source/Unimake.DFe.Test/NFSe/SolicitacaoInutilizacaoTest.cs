@@ -24,7 +24,7 @@ namespace Unimake.DFe.Test.NFSe
         [Theory]
         [Trait("DFe", "NFSe")]
         [MemberData(nameof(Parametros))]
-        public void SolicitacaoInutilizacao(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio, string nomeMunicipio)
+        public void SolicitacaoInutilizacao(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
             var nomeXMLEnvio = "solicitacaoInutilizacao-ped-inunfse.xml";
             var arqXML = "..\\..\\..\\NFSe\\Resources\\" + padraoNFSe.ToString() + "\\" + versaoSchema + "\\" + nomeXMLEnvio;

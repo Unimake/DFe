@@ -1195,7 +1195,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => _CMun;
             set
             {
-                if (value <= 0 || value == null)
+                if (value <= 0)
                 {
                     throw new Exception("Código do município do destinatário (tag <cMun> da <enderDest>) está sem conteúdo. É obrigatório informar o código IBGE do município.");
                 }
@@ -1315,7 +1315,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => _CMun;
             set
             {
-                if (value <= 0 || value == null)
+                if (value <= 0)
                 {
                     throw new Exception("Código do município do local de " + GetType().Name.ToLower() + " (tag <cMun> da <" + GetType().Name.ToLower() + ">) está sem conteúdo. É obrigatório informar o código IBGE do município.");
                 }

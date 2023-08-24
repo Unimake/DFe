@@ -62,7 +62,8 @@ namespace Unimake.DFe.Test.NFSe
                                 {
                                     if (!string.IsNullOrWhiteSpace(ambienteVersaoSchema.VersaoSchema))
                                     {
-                                        dados.Add(new object[] { ambienteVersaoSchema.TipoAmbiente, padraoNFSe, ambienteVersaoSchema.VersaoSchema, codMunicipio, nomeMunicipio });
+                                        dados.Add(new object[] { ambienteVersaoSchema.TipoAmbiente, padraoNFSe, ambienteVersaoSchema.VersaoSchema, codMunicipio });
+                                        //dados.Add(new object[] { ambienteVersaoSchema.TipoAmbiente, padraoNFSe, ambienteVersaoSchema.VersaoSchema, codMunicipio, nomeMunicipio });
                                     }
                                 }
                             }

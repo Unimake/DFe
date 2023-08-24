@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Xml;
 
 namespace Unimake.Exceptions
 {
@@ -49,6 +50,28 @@ namespace Unimake.Exceptions
         /// </summary>
         /// <param name="ex">Exception</param>
         public void Throw(Exception ex)
+        {
+            Instance.Message = ex.GetLastException().Message;
+            Instance.ErrorCode = ex.GetLastException().HResult;
+            throw ex;
+        }
+
+        /// <summary>
+        /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade
+        /// </summary>
+        /// <param name="ex">ValidatorDFeException</param>
+        public void Throw(ValidatorDFeException ex)
+        {
+            Instance.Message = ex.GetLastException().Message;
+            Instance.ErrorCode = ex.GetLastException().HResult;
+            throw ex;
+        }
+
+        /// <summary>
+        /// Setar a mensagem de erro da exceção para que outras linguagens consigam pegar o erro através desta propriedade
+        /// </summary>
+        /// <param name="ex">XmlException</param>
+        public void Throw(XmlException ex)
         {
             Instance.Message = ex.GetLastException().Message;
             Instance.ErrorCode = ex.GetLastException().HResult;

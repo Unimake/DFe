@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Validator.Contract;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Validator
 {
@@ -101,6 +102,7 @@ namespace Unimake.Business.DFe.Validator
                     Utility.XMLUtility.ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
 
+                ThrowHelper.Instance.Throw(ex);
                 throw;
             }
         }

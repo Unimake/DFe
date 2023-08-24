@@ -25,8 +25,8 @@ namespace Unimake.Business.DFe.Validator.CTeOS
             if (!string.IsNullOrWhiteSpace(cpf) &&
                !string.IsNullOrWhiteSpace(cnpj))
             {
-                throw new ValidatorDFeException("Não é permitido informar CPF e CNPJ concomitantemente nas informações dos autorizados a fazer download do XML do CTeOS. Somente um pode ser informado." +
-                    " [TAG: <CPF> e <CNPJ> do grupo de tag <infCte><autXML>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Não é permitido informar CPF e CNPJ concomitantemente nas informações dos autorizados a fazer download do XML do CTeOS. Somente um pode ser informado." +
+                    " [TAG: <CPF> e <CNPJ> do grupo de tag <infCte><autXML>]"));
             }
         })
         .ValidateTag(element => element.NameEquals(nameof(RefNF.Mod)) && element.Parent.NameEquals(nameof(RefNF)), Tag =>
@@ -35,73 +35,73 @@ namespace Unimake.Business.DFe.Validator.CTeOS
 
             if (!permitidos.Contains(Tag.Value))
             {
-                throw new ValidatorDFeException("O modelo do documento informado nas informações da NF ou CT emitido pelo tomador é inválido. Valor informado: " + Tag.Value + " - Valores aceitos: " + permitidos +
-                    " [TAG: <mod> do grupo de tag <infCte><infCTeNorm><infCteSub><tomaICMS><RefNF>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("O modelo do documento informado nas informações da NF ou CT emitido pelo tomador é inválido. Valor informado: " + Tag.Value + " - Valores aceitos: " + permitidos +
+                    " [TAG: <mod> do grupo de tag <infCte><infCTeNorm><infCteSub><tomaICMS><RefNF>]"));
             }
         }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunEnv)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
         {
             if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
             {
-                throw new ValidatorDFeException("Código do município de envio do CTeOS (de onde o documento foi transmitido) não foi informado. É obrigatório informar o código IBGE do município." +
-                    " [TAG: <cMunEnv> do grupo de tag <infCte><ide>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município de envio do CTeOS (de onde o documento foi transmitido) não foi informado. É obrigatório informar o código IBGE do município." +
+                    " [TAG: <cMunEnv> do grupo de tag <infCte><ide>]"));
             }
 
             if (Tag.Value.Length != 7)
             {
-                throw new ValidatorDFeException("Código do município de envio do CTeOS (de onde o documento foi transmitido) está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
-                    " [TAG: <cMunEnv> do grupo de tag <infCte><ide>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município de envio do CTeOS (de onde o documento foi transmitido) está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                    " [TAG: <cMunEnv> do grupo de tag <infCte><ide>]"));
             }
         }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunIni)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
         {
             if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
             {
-                throw new ValidatorDFeException("Código do município de início da prestação do serviço de transporte não foi informado. É obrigatório informar o código IBGE do município." +
-                    " [TAG: <cMunIni> do grupo de tag <infCte><ide>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município de início da prestação do serviço de transporte não foi informado. É obrigatório informar o código IBGE do município." +
+                    " [TAG: <cMunIni> do grupo de tag <infCte><ide>]"));
             }
 
             if (Tag.Value.Length != 7)
             {
-                throw new ValidatorDFeException("Código do município de início da prestação de serviço de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
-                    " [TAG: <cMunIni> do grupo de tag <infCte><ide>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município de início da prestação de serviço de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                    " [TAG: <cMunIni> do grupo de tag <infCte><ide>]"));
             }
         }).ValidateTag(element => element.NameEquals(nameof(Ide.CMunFim)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
         {
             if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
             {
-                throw new ValidatorDFeException("Código do município de término da prestação do serviço de transporte não foi informado. É obrigatório informar o código IBGE do município." +
-                    " [TAG: <cMunFim> do grupo de tag <infCte><ide>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município de término da prestação do serviço de transporte não foi informado. É obrigatório informar o código IBGE do município." +
+                    " [TAG: <cMunFim> do grupo de tag <infCte><ide>]"));
             }
 
             if (Tag.Value.Length != 7)
             {
-                throw new ValidatorDFeException("Código do município de término da prestação de serviço de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
-                    " [TAG: <cMunFim> do grupo de tag <infCte><ide>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município de término da prestação de serviço de transporte está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                    " [TAG: <cMunFim> do grupo de tag <infCte><ide>]"));
             }
         }).ValidateTag(element => element.NameEquals(nameof(EnderEmit.CMun)) && element.Parent.NameEquals(nameof(EnderEmit)), Tag =>
         {
             if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
             {
-                throw new ValidatorDFeException("Código do município do emitente não foi informado. É obrigatório informar o código IBGE do município." +
-                    " [TAG: <cMun> do grupo de tag <infCte><emit><enderEmit>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município do emitente não foi informado. É obrigatório informar o código IBGE do município." +
+                    " [TAG: <cMun> do grupo de tag <infCte><emit><enderEmit>]"));
             }
 
             if (Tag.Value.Length != 7)
             {
-                throw new ValidatorDFeException("Código do município do emitente está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
-                    " [TAG: <cMun> do grupo de tag <infCte><emit><enderEmit>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município do emitente está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                    " [TAG: <cMun> do grupo de tag <infCte><emit><enderEmit>]"));
             }
         }).ValidateTag(element => element.NameEquals(nameof(EnderToma.CMun)) && element.Parent.NameEquals(nameof(EnderToma)), Tag =>
         {
             if (UConvert.ToInt(Tag.Value) <= 0 || Tag.Value == null)
             {
-                throw new ValidatorDFeException("Código do município do tomador do serviço não foi informado. É obrigatório informar o código IBGE do município." +
-                    " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município do tomador do serviço não foi informado. É obrigatório informar o código IBGE do município." +
+                    " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]"));
             }
 
             if (Tag.Value.Length != 7)
             {
-                throw new ValidatorDFeException("Código do município do tomador do serviço está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
-                    " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]");
+                ThrowHelper.Instance.Throw(new ValidatorDFeException("Código do município do tomador do serviço está incorreto. Código informado deve ter 7 dígitos. Valor informado: " + Tag.Value +
+                    " [TAG: <cMun> do grupo de tag <infCte><toma><enderToma>]"));
             }
         }).ValidateTag(element => element.NameEquals(nameof(Ide)), Tag =>
         {
@@ -121,28 +121,28 @@ namespace Unimake.Business.DFe.Validator.CTeOS
                     {
                         if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
                         {
-                            throw new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
-                                " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
+                                " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
                         }
 
                         if (!string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("NroRegEstadual")))
                         {
-                            throw new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
-                                " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
+                                " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
                         }
                     }
                     else //Operação Estadual
                     {
                         if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("NroRegEstadual")))
                         {
-                            throw new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
-                                " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <NroRegEstadual> (Número do Registro Estadual) no CTe." +
+                                " [TAG: <NroRegEstadual> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
                         }
 
                         if (!string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
                         {
-                            throw new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
-                                " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]");
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações estaduais com CTe normal/substituição de transporte rodoviário de pessoas não pode informar a tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
+                                " [TAG: <TAF> do grupo de tag <infCte><infCTeNorm><infModal><rodoOS>]"));
                         }
                     }
                 }

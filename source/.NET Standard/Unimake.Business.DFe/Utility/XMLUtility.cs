@@ -410,9 +410,9 @@ namespace Unimake.Business.DFe.Utility
 
                         throw new XmlException(message, ex.InnerException, ex.LineNumber, ex.LinePosition);
                     }
-                    catch
+                    catch (XmlException newException)
                     {
-                        throw;
+                        ThrowHelper.Instance.Throw(newException);
                     }
                 }
             }
