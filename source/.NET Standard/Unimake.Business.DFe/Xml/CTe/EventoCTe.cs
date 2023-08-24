@@ -1772,8 +1772,24 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("longitude")]
         public string Longitude { get; set; }
 
+        private string HashTentativaEntregaField;
+
         [XmlElement("hashTentativaEntrega")]
-        public string HashTentativaEntrega { get; set; }
+        public string HashTentativaEntrega 
+        {
+            get => HashTentativaEntregaField;
+            set
+            {
+                if (Converter.IsSHA1Base64(value))
+                {
+                    HashTentativaEntregaField = value;
+                }
+                else
+                {
+                    HashTentativaEntregaField = Converter.CalculateSHA1Hash(value);
+                }
+            }
+        }
 
         [XmlIgnore]
 #if INTEROP
