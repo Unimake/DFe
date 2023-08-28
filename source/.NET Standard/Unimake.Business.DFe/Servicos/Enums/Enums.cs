@@ -7334,16 +7334,16 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoInscricaoEstabelecimento
     {
         /// <summary>
-        /// 1 - Arquivo original.
+        /// 1 - CNPJ.
         /// </summary>
         [XmlEnum("1")]
-        ArquivoOriginal = 1,
+        CNPJ = 1,
 
         /// <summary>
-        /// 4 - Arquivo de retificação.
+        /// 4 - Cadastro Nacional de Obras.
         /// </summary>
         [XmlEnum("4")]
-        ArquivoRetificacao = 4
+        CNO = 4
     }
     #endregion
 
@@ -7391,27 +7391,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Contribuinte = 1,
-
-    }
-    #endregion
-
-    #region TipoProcessoRetPrinc
-    /// <summary>
-    /// Preencher com o código correspondente ao tipo de processo:
-    /// </summary>
-    public enum TipoProcessoRetPrinc
-    {
-        /// <summary>
-        /// 1 - Administrativo.
-        /// </summary>
-        [XmlEnum("1")]
-        NaoContribuinte = 1,
-
-        /// <summary>
-        /// 2 - Judicial.
-        /// </summary>
-        [XmlEnum("2")]
-        Contribuinte = 2,
 
     }
     #endregion

@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -309,7 +311,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeVlrTotalNRetAdic() => !string.IsNullOrEmpty(VlrTotalNRetAdic);
 
-        
+
         #endregion
     }
 
@@ -333,19 +335,37 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("numDocto")]
         public string NumDocto { get; set; }
 
-        /// <summary>
-        /// Data de emissão da nota fiscal/fatura ou do Recibo Provisório de Serviço - RPS ou de outro documento fiscal válido.
-        /// O mês/ano informado deve ser igual ao mês/ano indicado no registro de abertura do arquivo.
-        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtEmissaoNF { get; set; }
+#else
+        public DateTimeOffset DtEmissaoNF { get; set; }
+#endif
+
         [XmlElement("dtEmissaoNF")]
-        public string DtEmissaoNF { get; set; }
+        public string DtEmissaoNFField
+        {
+            get => DtEmissaoNF.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtEmissaoNF = DateTime.Parse(value);
+#else
+            set => DtEmissaoNF = DateTimeOffset.Parse(value);
+#endif
+        }
 
         /// <summary>
         /// Preencher com o valor bruto da nota fiscal ou do Recibo Provisório de Serviço - RPS ou de outro documento fiscal válido
         /// Validação: Deve ser maior que zero.
         /// </summary>
+        [XmlIgnore]
+        public double VlrBruto { get; set; }
+
         [XmlElement("vlrBruto")]
-        public string VlrBruto { get; set; }
+        public string VlrBrutoField
+        {
+            get => VlrBruto.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrBruto = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Observações.
@@ -422,75 +442,138 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Valor da base de cálculo da retenção da contribuição previdenciária.
         /// </summary>
+        [XmlIgnore]
+        public double VlrBaseRet { get; set; }
+
         [XmlElement("vlrBaseRet")]
-        public string VlrBaseRet { get; set; }
+        public string VlrBaseRetField
+        {
+            get => VlrBaseRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrBaseRet = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Preencher com o valor da retenção apurada de acordo com o que determina a legislação vigente relativa aos serviços contidos na nota fiscal/fatura. 
         /// Se {indCPRB} = [0] preencher com valor correspondente a 11% de {vlrBaseRet}. 
         /// Se {indCPRB}= [1] preencher com valor correspondente a 3,5% de {vlrBaseRet}.
         /// </summary>
+        [XmlIgnore]
+        public double VlrRetencao { get; set; }
+
         [XmlElement("vlrRetencao")]
-        public string VlrRetencao { get; set; }
+        public string VlrRetencaoField
+        {
+            get => VlrRetencao.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRetencao = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Informar o valor da retenção destacada na nota fiscal relativo aos serviços subcontratados, se houver, desde que todos os documentos envolvidos se refiram à mesma competência e ao mesmo serviço, conforme disciplina a legislação.
         /// </summary>
+        [XmlIgnore]
+        public double VlrRetSub { get; set; }
+
         [XmlElement("vlrRetSub")]
-        public string VlrRetSub { get; set; }
+        public string VlrRetSubField
+        {
+            get => VlrRetSub.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRetSub = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da retenção principal que deixou de ser efetuada pelo contratante ou que foi depositada em juízo em decorrência de decisão judicial/administrativa.
         /// </summary>
+        [XmlIgnore]
+        public double VlrNRetPrinc { get; set; }
+
         [XmlElement("vlrNRetPrinc")]
-        public string VlrNRetPrinc { get; set; }
+        public string VlrNRetPrincField
+        {
+            get => VlrNRetPrinc.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrNRetPrinc = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 15 anos de contribuição.
         /// </summary>
+        [XmlIgnore]
+        public double VlrServicos15 { get; set; }
+
         [XmlElement("vlrServicos15")]
-        public string VlrServicos15 { get; set; }
+        public string VlrServicos15Field
+        {
+            get => VlrServicos15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrServicos15 = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 20 anos de contribuição.
         /// </summary>
+        [XmlIgnore]
+        public double VlrServicos20 { get; set; }
+
         [XmlElement("vlrServicos20")]
-        public string VlrServicos20 { get; set; }
+        public string VlrServicos20Field
+        {
+            get => VlrServicos20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrServicos20 = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 25 anos de contribuição.
         /// </summary>
+        [XmlIgnore]
+        public double VlrServicos25 { get; set; }
+
         [XmlElement("vlrServicos25")]
-        public string VlrServicos25 { get; set; }
+        public string VlrServicos25Field
+        {
+            get => VlrServicos25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrServicos25 = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Adicional apurado de retenção da nota fiscal, caso os serviços tenham sido prestados sob condições especiais que ensejem aposentadoria especial aos trabalhadores após 15, 20, ou 25 anos de contribuição. 
         /// Preencher com o valor correspondente ao somatório de 4% sobre o {vlrServicos15} mais 3% sobre {vlrServicos20} mais 2% sobre {vlrServicos25}
         /// </summary>
+        [XmlIgnore]
+        public double VlrAdicional { get; set; }
+
         [XmlElement("vlrAdicional")]
-        public string VlrAdicional { get; set; }
+        public string VlrAdicionalField
+        {
+            get => VlrAdicional.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAdicional = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da retenção adicional que deixou de ser efetuada pelo contratante ou que foi depositada em juízo em decorrência de decisão judicial/administrativa
         /// </summary>
+        [XmlIgnore]
+        public double VlrNRetAdic { get; set; }
+
         [XmlElement("vlrNRetAdic")]
-        public string VlrNRetAdic { get; set; }
+        public string vlrNRetAdicField
+        {
+            get => VlrNRetAdic.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrNRetAdic = Converter.ToDouble(value);
+        }
 
         #region Should Serialize
 
-        public bool ShouldSerializeVlrRetSub() => !string.IsNullOrEmpty(VlrRetSub);
+        public bool ShouldSerializeVlrRetSubField() => VlrRetSub > 0;
 
-        public bool ShouldSerializeVlrNRetPrinc() => !string.IsNullOrEmpty(VlrNRetPrinc);
+        public bool ShouldSerializeVlrNRetPrincField() => VlrNRetPrinc > 0;
 
-        public bool ShouldSerializeVlrServicos15() => !string.IsNullOrEmpty(VlrServicos15);
+        public bool ShouldSerializeVlrServicos15Field() => VlrServicos15 > 0;
 
-        public bool ShouldSerializeVlrServicos20() => !string.IsNullOrEmpty(VlrServicos20);
+        public bool ShouldSerializeVlrServicos20Field() => VlrServicos20 > 0;
 
-        public bool ShouldSerializeVlrServicos25() => !string.IsNullOrEmpty(VlrServicos25);
+        public bool ShouldSerializeVlrServicos25Field() => VlrServicos25 > 0;
 
-        public bool ShouldSerializeVlrAdicional() => !string.IsNullOrEmpty(VlrAdicional);
+        public bool ShouldSerializeVlrAdicionalField() => VlrAdicional > 0;
 
-        public bool ShouldSerializeVlrNRetAdic() => !string.IsNullOrEmpty(VlrNRetAdic);
+        public bool ShouldSerializeVlrNRetAdicField() => VlrNRetAdic > 0;
 
         #endregion
     }
@@ -504,7 +587,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoProcRetPr
     {
         [XmlElement("tpProcRetPrinc")]
-        public TipoProcessoRetPrinc TpProcRetPrinc { get; set; }
+        public TipoProcesso TpProcRetPrinc { get; set; }
 
         /// <summary>
         /// Informar o número do processo administrativo/judicial.
@@ -522,8 +605,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Valor da retenção de contribuição previdenciária principal que deixou de ser efetuada em função de processo administrativo ou judicial.
         /// </summary>
+        [XmlIgnore]
+        public double ValorPrinc { get; set; }
+
         [XmlElement("valorPrinc")]
-        public string ValorPrinc { get; set; }
+        public string ValorPrincField
+        {
+            get => ValorPrinc.ToString("F2", CultureInfo.InvariantCulture);
+            set => ValorPrinc = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
@@ -541,7 +631,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoProcRetAd
     {
         [XmlElement("tpProcRetAdic")]
-        public TipoProcessoRetPrinc TpProcRetAdic { get; set; }
+        public TipoProcesso TpProcRetAdic { get; set; }
 
         [XmlElement("nrProcRetAdic")]
         public string NrProcRetAdic { get; set; }
@@ -549,8 +639,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("codSuspAdic")]
         public string CodSuspAdic { get; set; }
 
+        [XmlIgnore]
+        public double ValorAdic { get; set; }
+
         [XmlElement("valorAdic")]
-        public string ValorAdic { get; set; }
+        public string ValorAdicField
+        {
+            get => ValorAdic.ToString("F2", CultureInfo.InvariantCulture);
+            set => ValorAdic = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
