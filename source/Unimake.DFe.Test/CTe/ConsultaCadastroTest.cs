@@ -69,24 +69,7 @@ namespace Unimake.DFe.Test.CTe
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-
-            switch (consultaCadastro.Result.InfCons.CStat)
-            {
-                case 259: // Rejeição: CNPJ da consulta não cadastrado como contribuinte na UF
-                    Assert.True(false, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
-                    break;
-
-                case 111: // Consulta cadastro com ocorrencia
-                    Assert.True(consultaCadastro.Result.InfCons.InfCad != null, "Objeto com o retorno do cadastro não foi retornado.");
-                    break;
-
-                default:
-                    if (ufBrasil != UFBrasil.MT) //MT está retornando problema de schema, não faz sentido, eles estão validando algo errado no webservice deles.
-                    {
-                        Assert.True(false, "cStat: " + consultaCadastro.Result.InfCons.CStat + " - xMotivo: " + consultaCadastro.Result.InfCons.XMotivo);
-                    }
-                    break;
-            }
+            Assert.True(consultaCadastro.Result.InfCons.CStat != 259, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
 
             //Assert.True(consultaCadastro.Result.InfCons.CNPJ.Equals(xml.InfCons.CNPJ), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
         }
