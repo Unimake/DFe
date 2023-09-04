@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<Pedido>
+		<InfPedidoCancelamento>
+			<IdentificacaoNfse>
+				<Numero>1</Numero>
+				<Cnpj>99999999999999</Cnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+				<CodigoMunicipio>11111</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>E506</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>

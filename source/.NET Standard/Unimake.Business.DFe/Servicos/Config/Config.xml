@@ -1736,7 +1736,7 @@
 		<Nome>Montenegro - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>MontenegroRS.xml</ArqConfig>
-		<PadraoNFSe>PRONIM</PadraoNFSe>
+		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5002407">
 		<Nome>Caarapó - MS</Nome>

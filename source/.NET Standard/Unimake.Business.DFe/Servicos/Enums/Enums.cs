@@ -6311,6 +6311,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("PROPRIOBARUERISP")]
         PROPRIOBARUERISP = 41,
+
+        /// <summary>
+        /// THEMA
+        /// </summary>
+        [Description("PROPRIOBARUERISP")]
+        THEMA = 42,
     }
 
     #endregion

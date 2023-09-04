@@ -1,91 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.02">
+		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoProducao>http://montenegro.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
+			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEremessa?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEremessa?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><cabecalho versao="2.02" xmlns="http://tempuri.org/"><versaoDados>2.02</versaoDados></cabecalho></soapenv:Header><soapenv:Body><tem:RecepcionarLoteRps><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsResult</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><recepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</RecepcionarLoteRps>
-		<CancelarNfse versao="2.02">
+		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEcancelamento</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebEnderecoProducao>http://montenegro.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
+			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
+			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><cabecalho versao="2.02" xmlns="http://tempuri.org/"><versaoDados>2.02</versaoDados></cabecalho></soapenv:Header><soapenv:Body><tem:CancelarNfse><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>CancelarNfseResult</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><cancelarNfse><xml>{xmlBodyScapeEnvio}</xml></cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</CancelarNfse>
-		<SubstituirNfse versao="2.02">
-			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoProducao>http://montenegro.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header><cabecalho versao="2.02" xmlns="http://tempuri.org/"><versaoDados>2.02</versaoDados></cabecalho></soap:Header><soap:Body><SubstituirNfse xmlns="http://tempuri.org/"><xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xmlEnvio></SubstituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<TargetNS></TargetNS>
-		</SubstituirNfse>
-		<ConsultarLoteRps versao="2.02">
+		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoProducao>http://montenegro.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
+			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEconsulta</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEconsulta</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soapenv:Header><tem:cabecalho versao="2.02" xmlns="http://tempuri.org/"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarLoteRps xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarLoteRpsResult</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.02">
-			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoProducao>http://montenegro.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
-			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEconsulta</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEconsulta</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soapenv:Header><tem:cabecalho versao="2.02" xmlns="http://tempuri.org/"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarNfsePorRps xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ConsultarNfsePorRpsResult</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEconsulta</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEconsulta</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</ConsultarNfsePorRps>
 	</Servicos>

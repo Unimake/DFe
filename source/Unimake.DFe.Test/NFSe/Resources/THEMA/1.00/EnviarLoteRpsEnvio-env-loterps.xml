@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<LoteRps id="L13032509575798">
+		<NumeroLote>13032509575798</NumeroLote>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfRps id="R130325095740511">
+					<IdentificacaoRps>
+						<Numero>13032509574052</Numero>
+						<Serie>NFOF</Serie>
+						<Tipo>2</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2013-03-25T09:56:23.703125-03:00</DataEmissao>
+					<NaturezaOperacao>52</NaturezaOperacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivadorCultural>2</IncentivadorCultural>
+					<Status>1</Status>
+					<Servico>
+						<Valores>
+							<ValorServicos>10.00</ValorServicos>
+							<IssRetido>2</IssRetido>
+							<ValorIss>0.25</ValorIss>
+							<BaseCalculo>10.00</BaseCalculo>
+							<Aliquota>0.025</Aliquota>
+							<ValorLiquidoNfse>10.00</ValorLiquidoNfse>
+						</Valores>
+						<ItemListaServico>101</ItemListaServico>
+						<CodigoCnae>111301</CodigoCnae>
+						<Discriminacao>Teste discriminacao servicos</Discriminacao>
+						<CodigoMunicipio>4303103</CodigoMunicipio>
+					</Servico>
+					<Prestador>
+						<Cnpj>99999999999999</Cnpj>
+						<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>99999999999999</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>TESTE</RazaoSocial>
+						<Endereco>
+							<Endereco>TESTE ENDERECO</Endereco>
+							<Numero>123</Numero>
+							<Complemento>321</Complemento>
+							<Bairro>TESTE BAIRRO</Bairro>
+							<CodigoMunicipio>4303103</CodigoMunicipio>
+							<Uf>RS</Uf>
+							<Cep>90990990</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999999999999</Telefone>
+							<Email>teste@teste.com.br</Email>
+						</Contato>
+					</Tomador>
+				</InfRps>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>
