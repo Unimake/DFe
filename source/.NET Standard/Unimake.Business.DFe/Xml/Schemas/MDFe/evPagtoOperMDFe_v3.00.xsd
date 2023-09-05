@@ -167,6 +167,19 @@
 									<xs:documentation>Valor do Adiantamento (usar apenas em pagamento à Prazo</xs:documentation>
 								</xs:annotation>
 							</xs:element>
+							<xs:element name="indAntecipaAdiant" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Indicador para declarar concordância em antecipar o adiantamento</xs:documentation>
+									<xs:documentation>Operação de transporte com utilização de veículos de frotas dedicadas ou fidelizadas.
+Preencher com “1” para indicar operação de transporte de alto desempenho, demais casos não informar a tag
+</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
 							<xs:element name="infPrazo" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>Informações do pagamento a prazo. </xs:documentation>
@@ -197,6 +210,21 @@
 										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
+							</xs:element>
+							<xs:element name="tpAntecip" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Tipo de Permissão em relação a antecipação das parcelas</xs:documentation>
+									<xs:documentation>0 - Não permite antecipar
+1 - Permite antecipar as parcelas
+2 - Permite antecipar as parcelas mediante confirmação</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="0"/>
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+									</xs:restriction>
+								</xs:simpleType>
 							</xs:element>
 							<xs:element name="infBanc">
 								<xs:annotation>

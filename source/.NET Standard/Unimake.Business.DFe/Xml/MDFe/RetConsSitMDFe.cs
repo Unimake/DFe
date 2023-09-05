@@ -8,12 +8,12 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Xml;
-using System.IO;
-using System.Xml.Linq;
-using System.Linq;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -56,6 +56,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement("procEventoMDFe")]
         public List<ProcEventoMDFe> ProcEventoMDFe { get; set; }
+
+        /// <summary>
+        /// Grupo de informações do compartilhamento do MDFe com InfraSA para geração do DTe
+        /// </summary>
+        [XmlElement("procInfraSA")]
+        public ProcInfraSA ProcInfraSA { get; set; }
 
         public override void ReadXml(XmlDocument document)
         {
