@@ -314,6 +314,16 @@ Function EnviarNfCeSincrono()
    oDetPag.IndPag = 0 && IndicadorPagamento.PagamentoVista
    oDetPag.TPag   = 1 && MeioPagamento.Dinheiro
    oDetPag.VPag   = 254.70
+   
+ * Criar grupo de tag <card>  
+   oCard = CreateObject("Unimake.Business.DFe.Xml.NFe.Card")
+   
+   oCard.TpIntegra = 1 && TipoIntegracaoPagamento.PagamentoNaoIntegrado,
+   oCard.CAut = ""
+   oCard.CNPJ = ""
+   oCard.TBand = 1 && BandeiraOperadoraCartao.Visa
+  
+   oDetPag.Card = oCard
  
  * adicionar a tag DetPag dentro da tag Tag
    oPag.AddDetPag(oDetPag)

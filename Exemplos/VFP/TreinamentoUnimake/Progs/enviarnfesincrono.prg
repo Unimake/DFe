@@ -364,17 +364,19 @@ Function EnviarNfeSincrono()
  * Criar a tag Transp  
    oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
    oTransp.ModFrete = 0 && ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
+   
+   FOR I = 1 TO 3
+    * Criar a tag Vol
+      oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
+      oVol.QVol  = 1
+      oVol.Esp   = "LU"
+      oVol.Marca = "UNIMAKE"
+      oVol.PesoL = 0.000
+      oVol.PesoB = 0.000
 
- * Criar a tag Vol
-   oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
-   oVol.QVol  = 1
-   oVol.Esp   = "LU"
-   oVol.Marca = "UNIMAKE"
-   oVol.PesoL = 0.000
-   oVol.PesoB = 0.000
-
- * adicionar a tag Vol na tag Transp
-   oTransp.AddVol(oVol)
+    * adicionar a tag Vol na tag Transp
+      oTransp.AddVol(oVol)
+   Next
 
  * adicionar a tag Transp dentro da tag InfNfe
    oInfNfe.Transp = oTransp
@@ -388,24 +390,17 @@ Function EnviarNfeSincrono()
    oFat.VOrig = 254.70
    oFat.VDesc = 0
    oFat.VLiq = 254.70
+   
+   FOR I = 1 TO 2
+    * Criar tag Dup
+      oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
+      oDup.NDup  = "00" + STR(I,1)
+      oDup.DVenc = Date()
+      oDup.VDup  = 127.35
 
- * Criar tag Dup (parcela 1)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-   oDup.NDup  = "001"
-   oDup.DVenc = Date()
-   oDup.VDup  = 127.35
-
- * adicionar a tag Dup dentro da tag Cobr
-   OCobr.AddDup(oDup)
-
- * Criar tag Dup (parcela 2)
-   oDup = CreateObject("Unimake.Business.DFe.Xml.NFe.Dup")
-   oDup.NDup  = "002"
-   oDup.DVenc = Date()
-   oDup.VDup  = 127.35
-
- * adicionar a tag Dup dentro da tag Cobr
-   oCobr.AddDup(oDup)
+    * adicionar a tag Dup dentro da tag Cobr
+      OCobr.AddDup(oDup)
+   NEXT I   
 
  * adicionar a tag Fat dentro da tag Cobr
    oCobr.Fat = oFat
