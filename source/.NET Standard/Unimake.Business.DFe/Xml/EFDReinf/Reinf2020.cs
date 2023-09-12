@@ -4,9 +4,9 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Collections.Generic;
 using System.Globalization;
 using Unimake.Business.DFe.Utility;
 
@@ -14,47 +14,44 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2010")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2020")]
     [ComVisible(true)]
 #endif
 
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTomadorServicos/v2_01_02", IsNullable = false)]
-    public class Reinf2010 : XMLBase
+    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtPrestadorServicos/v2_01_02", IsNullable = false)]
+    public class Reinf2020 : XMLBase
     {
-        [XmlElement("evtServTom")]
-        public EvtServTom EvtServTom { get; set; }
+
+        [XmlElement("evtServPrest")]
+        public EvtServPrest EvtServPrest { get; set; }
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtServTom")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtServPrest")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class EvtServTom
+    public class EvtServPrest
     {
         [XmlElement("ideEvento")]
-        public Reinf2010IdeEvento IdeEvento { get; set; }
+        public Reinf2020IdeEvento IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
-        [XmlElement("infoServTom")]
-        public InfoServTom InfoServTom { get; set; }
+        [XmlElement("infoServPrest")]
+        public InfoServPrest InfoServPrest { get; set; }
     }
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2010IdeEvento")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    public class Reinf2010IdeEvento
+    public class Reinf2020IdeEvento
     {
+
         [XmlElement("indRetif")]
         public IndicativoRetificacao IndRetif { get; set; }
 
@@ -84,59 +81,61 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSereializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
         #endregion
+
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoServTom")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoServPrest")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InfoServTom
+    public class InfoServPrest
     {
-        [XmlElement("ideEstabObra")]
-        public IdeEstabObra IdeEstabObra { get; set; }
+        [XmlElement("ideEstabPrest")]
+        public IdeEstabPrest IdeEstabPrest { get; set; }
+
+        [XmlElement("ideTomador")]
+        public IdeTomador IdeTomador { get; set; }
     }
+
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabObra")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabPrest")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class IdeEstabObra
+    public class IdeEstabPrest
     {
-        [XmlElement("tpInscEstab")]
+        [XmlElement("tpInscEstabPrest")]
         public TipoInscricaoEstabelecimento tpInscEstab { get; set; }
 
         /// <summary>
         /// Validação: A inscrição informada deve ser compatível com o {tpInscEstab}.
         /// Se {indObra} = [0], o número informado deve ser um CNPJ.Se {indObra} for igual a[1, 2] o número informado deve ser um CNO.
         /// </summary>
-        [XmlElement("nrInscEstab")]
-        public string NrInscEstab { get; set; }
-
-        [XmlElement("indObra")]
-        public IndicativoObra IndObra { get; set; }
-
-        [XmlElement("idePrestServ")]
-        public IdePrestServ IdePrestServ { get; set; }
+        [XmlElement("nrInscEstabPrest")]
+        public string NrInscEstabPrest { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdePrestServ")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeTomador")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class IdePrestServ
+    public class IdeTomador
     {
-        /// <summary>
-        /// Deve ser um CNPJ válido. Não pode pertencer ao declarante. 
-        /// Se {indObra} for igual a [1] (empreitada total) o CNPJ do prestador terá que ser o proprietário do CNO informado no campo {nrInscEstab}.
-        /// </summary>
-        [XmlElement("cnpjPrestador")]
-        public string CnpjPrestador { get; set; }
+
+        [XmlElement("tpInscTomador")]
+        public TipoInscricaoEstabelecimento TpInscTomador { get; set; }
+
+        [XmlElement("nrInscTomador")]
+        public string NrInscTomador { get; set; }
+
+        [XmlElement("indObra")]
+        public IndicativoObra IndObra { get; set; }
 
         [XmlIgnore]
         public double VlrTotalBruto { get; set; }
@@ -198,11 +197,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrTotalNRetAdic = Converter.ToDouble(value);
         }
 
-        [XmlElement("indCPRB")]
-        public IndicativoCPRB IndCPRB { get; set; }
-
         [XmlElement("nfs")]
-        public List<Reinf2010Nfs> Nfs { get; set; }
+        public List<Reinf2020Nfs> Nfs { get; set; }
 
 #if INTEROP
 
@@ -210,11 +206,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddNfs(Reinf2010Nfs item)
+        public void AddNfs(Reinf2020Nfs item)
         {
             if (Nfs == null)
             {
-                Nfs = new List<Reinf2010Nfs>();
+                Nfs = new List<Reinf2020Nfs>();
             }
 
             Nfs.Add(item);
@@ -225,7 +221,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Nfs</returns>
-        public Reinf2010Nfs GetReinf2010Nfs(int index)
+        public Reinf2020Nfs GetNfs(int index)
         {
             if ((Nfs?.Count ?? 0) == 0)
             {
@@ -238,120 +234,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
-        public int GetReinf2010NfsCount => (Nfs != null ? Nfs.Count : 0);
+        public int GetReinf2020NfsCount => (Nfs != null ? Nfs.Count : 0);
 
 #endif
-
-        [XmlElement("infoProcRetPr")]
-        public List<InfoProcRetPr> InfoProcRetPr { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddInfoProcRetPr(InfoProcRetPr item)
-        {
-            if (InfoProcRetPr == null)
-            {
-                InfoProcRetPr = new List<InfoProcRetPr>();
-            }
-
-            InfoProcRetPr.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista InfoProcRetPr (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfoProcRetPr</returns>
-        public InfoProcRetPr GetInfoProcRetPr(int index)
-        {
-            if ((InfoProcRetPr?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return InfoProcRetPr[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfoProcRetPr
-        /// </summary>
-        public int GetInfoProcRetPrCount => (InfoProcRetPr != null ? InfoProcRetPr.Count : 0);
-
-#endif
-
-        [XmlElement("infoProcRetAd")]
-        public List<InfoProcRetAd> InfoProcRetAd { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddInfoProcRetAd(InfoProcRetAd item)
-        {
-            if (InfoProcRetAd == null)
-            {
-                InfoProcRetAd = new List<InfoProcRetAd>();
-            }
-
-            InfoProcRetAd.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista InfoProcRetAd (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfoProcRetAd</returns>
-        public InfoProcRetAd GetInfoProcRetAd(int index)
-        {
-            if ((InfoProcRetAd?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return InfoProcRetAd[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfoProcRetAd
-        /// </summary>
-        public int GetInfoProcRetAdCount => (InfoProcRetAd != null ? InfoProcRetAd.Count : 0);
-
-#endif
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeVlrTotalRetAdic() => VlrTotalRetAdic > 0;
-        
-        public bool ShouldSerializeVlrTotalNRetPrinc() => VlrTotalNRetPrinc > 0;
-
-        public bool ShouldSerializeVlrTotalNRetAdic() => VlrTotalNRetAdic > 0;
-
-        #endregion
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2010Nfs")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2020Nfs")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf2010Nfs
+    public class Reinf2020Nfs
     {
-        /// <summary>
-        /// Informar o número de série da nota fiscal/fatura ou do Recibo Provisório de Serviço - RPS ou de outro documento fiscal válido.Preencher com 0 (zero) caso não exista número de série.
-        /// </summary>
         [XmlElement("serie")]
         public string Serie { get; set; }
 
-        /// <summary>
-        /// Número da nota fiscal/fatura ou outro documento fiscal válido, como ReciboProvisório de Serviço - RPS, CT-e, entre outros.
-        /// </summary>
         [XmlElement("numDocto")]
         public string NumDocto { get; set; }
 
@@ -373,10 +271,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
         }
 
-        /// <summary>
-        /// Preencher com o valor bruto da nota fiscal ou do Recibo Provisório de Serviço - RPS ou de outro documento fiscal válido
-        /// Validação: Deve ser maior que zero.
-        /// </summary>
         [XmlIgnore]
         public double VlrBruto { get; set; }
 
@@ -387,17 +281,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrBruto = Converter.ToDouble(value);
         }
 
-        /// <summary>
-        /// Observações.
-        /// </summary>
         [XmlElement("obs")]
         public string Obs { get; set; }
 
-        /// <summary>
-        /// Informações sobre os tipos de serviços constantes da nota fiscal.
-        /// </summary>
         [XmlElement("infoTpServ")]
-        public List<InfoTpServ> InfoTpServ { get; set; }
+        public List<Reinf2020InfoTpServ> InfoTpServ { get; set; }
 
 #if INTEROP
 
@@ -405,22 +293,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoTpServ(InfoTpServ item)
+        public void AddInfoTpServ(Reinf2020InfoTpServ item)
         {
             if (InfoTpServ == null)
             {
-                InfoTpServ = new List<InfoTpServ>();
+                InfoTpServ = new List<Reinf2020InfoTpServ>();
             }
 
             InfoTpServ.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoTpServ (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista Reinf2020InfoTpServ (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfoTpServ</returns>
-        public InfoTpServ GetInfoTpServ(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da Reinf2020InfoTpServ</returns>
+        public Reinf2020InfoTpServ GetInfoTpServ(int index)
         {
             if ((InfoTpServ?.Count ?? 0) == 0)
             {
@@ -433,24 +321,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfoTpServ
         /// </summary>
-        public int GetInfoTpServCount => (InfoTpServ != null ? InfoTpServ.Count : 0);
-
+        public int GetReinf2020InfoTpServCount => (InfoTpServ != null ? InfoTpServ.Count : 0);
 #endif
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeObs() => !string.IsNullOrEmpty(Obs);
-
-        #endregion
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoTpServ")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2020InfoTpServ")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InfoTpServ
+    public class Reinf2020InfoTpServ : InfoTpServ
     {
         /// <summary>
         /// O código informado deve existir na Tabela 06.
@@ -594,84 +475,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeVlrAdicionalField() => VlrAdicional > 0;
 
         public bool ShouldSerializeVlrNRetAdicField() => VlrNRetAdic > 0;
-
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcRetPr")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    public class InfoProcRetPr
-    {
-        [XmlElement("tpProcRetPrinc")]
-        public TipoProcesso TpProcRetPrinc { get; set; }
-
-        /// <summary>
-        /// Informar o número do processo administrativo/judicial.
-        /// </summary>
-        [XmlElement("nrProcRetPrinc")]
-        public string NrProcRetPrinc { get; set; }
-
-        /// <summary>
-        /// Código do indicativo da suspensão atribuído pelo contribuinte. 
-        /// Este campo deve ser utilizado se, num mesmo processo, houver mais de uma matéria tributária objeto de contestação e as decisões forem diferentes para cada uma.
-        /// </summary>
-        [XmlElement("codSuspPrinc")]
-        public string CodSuspPrinc { get; set; }
-
-        /// <summary>
-        /// Valor da retenção de contribuição previdenciária principal que deixou de ser efetuada em função de processo administrativo ou judicial.
-        /// </summary>
-        [XmlIgnore]
-        public double ValorPrinc { get; set; }
-
-        [XmlElement("valorPrinc")]
-        public string ValorPrincField
-        {
-            get => ValorPrinc.ToString("F2", CultureInfo.InvariantCulture);
-            set => ValorPrinc = Converter.ToDouble(value);
-        }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeCodSuspPrinc() => !string.IsNullOrEmpty(CodSuspPrinc);
-
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcRetAd")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    public class InfoProcRetAd
-    {
-        [XmlElement("tpProcRetAdic")]
-        public TipoProcesso TpProcRetAdic { get; set; }
-
-        [XmlElement("nrProcRetAdic")]
-        public string NrProcRetAdic { get; set; }
-
-        [XmlElement("codSuspAdic")]
-        public string CodSuspAdic { get; set; }
-
-        [XmlIgnore]
-        public double ValorAdic { get; set; }
-
-        [XmlElement("valorAdic")]
-        public string ValorAdicField
-        {
-            get => ValorAdic.ToString("F2", CultureInfo.InvariantCulture);
-            set => ValorAdic = Converter.ToDouble(value);
-        }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeCodSuspAdic() => !string.IsNullOrEmpty(CodSuspAdic);
 
         #endregion
     }

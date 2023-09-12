@@ -7351,7 +7351,6 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("4")]
         CNO = 4
     }
-    #endregion
 
     #region Indicativo Obra
 
@@ -7401,3 +7400,4 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 }
+#endregion
