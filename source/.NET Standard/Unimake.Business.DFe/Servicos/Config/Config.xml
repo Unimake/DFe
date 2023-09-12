@@ -1652,7 +1652,7 @@
 		<Nome>Camboriú - SC</Nome>
 		<UF>SC</UF>
 		<ArqConfig>CamboriuSC.xml</ArqConfig>
-		<PadraoNFSe>SIMPLE</PadraoNFSe>
+		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4206108">
 		<Nome>Grão-Pará - SC</Nome>
