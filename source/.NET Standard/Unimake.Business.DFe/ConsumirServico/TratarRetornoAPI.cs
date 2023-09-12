@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Numerics;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
@@ -78,6 +79,10 @@ namespace Unimake.Business.DFe
                     {
                         resultadoRetorno.LoadXml(HtmlToPlainText(ResponseString));
                     }
+                    break;
+
+                case "application/pdf":
+                    resultadoRetorno = CreateXmlDocument(ResponseString);
                     break;
             }
 
@@ -165,6 +170,19 @@ namespace Unimake.Business.DFe
             xml.Serialize(retorno, str);
 
             return retorno.ToString();
+        }
+
+        static XmlDocument CreateXmlDocument(string text)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode root = xmlDoc.CreateElement("root");
+            xmlDoc.AppendChild(root);
+
+            XmlNode textoElement = xmlDoc.CreateElement("PDF");
+            textoElement.InnerText = text;
+            root.AppendChild(textoElement);
+
+            return xmlDoc;
         }
 
         #endregion Private Methods

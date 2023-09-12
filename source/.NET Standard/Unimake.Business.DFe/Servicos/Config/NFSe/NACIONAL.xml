@@ -61,5 +61,20 @@
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
 		</ConsultarNfse>
+		<ConsultarNfsePDF versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/danfse/{Chave}</RequestURIProducao>
+			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/danfse/{Chave}</RequestURIHomologacao>
+			<MetodoAPI>get</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>false</LoginConexao>
+		</ConsultarNfsePDF>
 	</Servicos>
 </Configuracoes>
