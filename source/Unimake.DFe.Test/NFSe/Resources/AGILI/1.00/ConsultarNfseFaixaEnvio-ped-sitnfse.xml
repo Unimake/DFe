@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseFaixaEnvio xmlns="http://www.agili.com.br/nfse_v_1.00.xsd">
+  <UnidadeGestora>UnidadeGestor1</UnidadeGestora>
+  <IdentificacaoPrestador>
+    <ChaveDigital>ChaveDigital___________________1</ChaveDigital>
+    <CpfCnpj>
+      <Cpf>Cpf_______1</Cpf>
+    </CpfCnpj>
+    <InscricaoMunicipal>InscricaoMunicipal1</InscricaoMunicipal>
+  </IdentificacaoPrestador>
+  <NumeroNfseInicial>0</NumeroNfseInicial>
+  <NumeroNfseFinal>0</NumeroNfseFinal>
+  <Versao>Versao1</Versao>
+</ConsultarNfseFaixaEnvio>

@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos
@@ -617,6 +618,13 @@ namespace Unimake.Business.DFe.Servicos
                 WebSoapString = WebSoapStringProducao;
             }
 
+            if (!string.IsNullOrEmpty(ClientSecret) && !string.IsNullOrEmpty(ClientID))
+            {
+                var proxy = Proxy.DefinirServidor(ProxyAutoDetect, ProxyUser, ProxyPassword);
+                var token =  Token.GerarToken(proxy, MunicipioUsuario, MunicipioSenha, ClientID, ClientSecret);
+                MunicipioToken = token.AccessToken;
+            }
+
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
@@ -1162,6 +1170,16 @@ namespace Unimake.Business.DFe.Servicos
         /// Senha de acesso ao webservice/api do município
         /// </summary>
         public string MunicipioSenha { get; set; }
+
+        /// <summary>
+        /// ClientID para gerar token (no momento, apenas Padrão AGILI)
+        /// </summary>
+        public string ClientID { get; set; }
+
+        /// <summary>
+        /// ClientSecret para gerar token (no momento, apenas Padrão AGILI) 
+        /// </summary>
+        public string ClientSecret { get; set; }
 
         private int _TimeOutWebServiceConnect;
 

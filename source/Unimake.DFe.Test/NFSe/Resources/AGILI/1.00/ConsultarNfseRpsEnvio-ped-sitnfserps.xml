@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.agili.com.br/nfse_v_1.00.xsd">
+  <UnidadeGestora>UnidadeGestor1</UnidadeGestora>
+  <IdentificacaoRps>
+    <Numero>0</Numero>
+    <Serie>Seri1</Serie>
+    <Tipo>1</Tipo>
+    <Descricao>Descricao1</Descricao>
+  </IdentificacaoRps>
+  <IdentificacaoPrestador>
+    <ChaveDigital>ChaveDigital___________________1</ChaveDigital>
+    <CpfCnpj>
+      <Cpf>Cpf_______1</Cpf>
+    </CpfCnpj>
+    <InscricaoMunicipal>InscricaoMunicipal1</InscricaoMunicipal>
+  </IdentificacaoPrestador>
+  <Versao>Versao1</Versao>
+</ConsultarNfseRpsEnvio>

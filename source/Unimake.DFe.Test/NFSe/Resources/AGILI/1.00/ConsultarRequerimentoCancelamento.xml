@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarRequerimentoCancelamentoEnvio xmlns="http://www.agili.com.br/nfse_v_1.00.xsd">
+  <UnidadeGestora>UnidadeGestor1</UnidadeGestora>
+  <IdentificacaoPrestador>
+    <ChaveDigital>ChaveDigital___________________1</ChaveDigital>
+    <CpfCnpj>
+      <Cpf>Cpf_______1</Cpf>
+    </CpfCnpj>
+    <InscricaoMunicipal>InscricaoMunicipal1</InscricaoMunicipal>
+  </IdentificacaoPrestador>
+  <Protocolo>Protocolo1</Protocolo>
+  <Versao>Versao1</Versao>
+</ConsultarRequerimentoCancelamentoEnvio>

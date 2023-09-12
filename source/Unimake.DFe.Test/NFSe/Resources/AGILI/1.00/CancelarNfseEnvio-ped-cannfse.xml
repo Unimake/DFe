@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns="http://www.agili.com.br/nfse_v_1.00.xsd">
+  <UnidadeGestora>UnidadeGestor1</UnidadeGestora>
+  <PedidoCancelamento>
+    <IdentificacaoNfse>
+      <Numero>0</Numero>
+      <IdentificacaoPrestador>
+        <ChaveDigital>ChaveDigital___________________1</ChaveDigital>
+        <CpfCnpj>
+          <Cpf>Cpf_______1</Cpf>
+        </CpfCnpj>
+        <InscricaoMunicipal>InscricaoMunicipal1</InscricaoMunicipal>
+      </IdentificacaoPrestador>
+    </IdentificacaoNfse>
+    <CodigoCancelamento>1</CodigoCancelamento>
+    <JustificativaCancelamento>JustificativaCancelamento1</JustificativaCancelamento>
+    <Versao>Versao1</Versao>
+  </PedidoCancelamento>
+</CancelarNfseEnvio>
