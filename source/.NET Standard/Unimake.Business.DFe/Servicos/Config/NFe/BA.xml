@@ -8,7 +8,8 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4</WebActionProducao>
 			<SchemaArquivo>consStatServ_v{0}.xsd</SchemaArquivo>
-			<WebTagRetorno>nfeStatusServicoNFResult</WebTagRetorno>
+			<WebTagRetorno>nfeResultMsg</WebTagRetorno>
+			<WebTagRetornoHomologacao>nfeStatusServicoNFResult</WebTagRetornoHomologacao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
