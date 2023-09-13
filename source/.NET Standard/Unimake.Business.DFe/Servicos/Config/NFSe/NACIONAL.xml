@@ -62,7 +62,7 @@
 			<LoginConexao>false</LoginConexao>
 		</ConsultarNfse>
 		<ConsultarNfsePDF versao="1.00">
-			<Descricao>Consultar NFSe</Descricao>
+			<Descricao>Consultar NFSe PDF</Descricao>
 			<RequestURIProducao>https://sefin.nfse.gov.br/sefinnacional/danfse/{Chave}</RequestURIProducao>
 			<RequestURIHomologacao>https://sefin.producaorestrita.nfse.gov.br/SefinNacional/danfse/{Chave}</RequestURIHomologacao>
 			<MetodoAPI>get</MetodoAPI>
@@ -70,7 +70,7 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
-			<WebContentType>application/json</WebContentType>
+			<WebContentType>application/pdf</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>

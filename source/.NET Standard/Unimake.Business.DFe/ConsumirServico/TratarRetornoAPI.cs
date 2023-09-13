@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Net.Http;
-using System.Numerics;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
@@ -82,6 +82,8 @@ namespace Unimake.Business.DFe
                     break;
 
                 case "application/pdf":
+                    ResponseString = ResponseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
+                    ResponseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(ResponseString));
                     resultadoRetorno = CreateXmlDocument(ResponseString);
                     break;
             }
@@ -178,7 +180,7 @@ namespace Unimake.Business.DFe
             XmlNode root = xmlDoc.CreateElement("root");
             xmlDoc.AppendChild(root);
 
-            XmlNode textoElement = xmlDoc.CreateElement("PDF");
+            XmlNode textoElement = xmlDoc.CreateElement("Base64Pdf");
             textoElement.InnerText = text;
             root.AppendChild(textoElement);
 
