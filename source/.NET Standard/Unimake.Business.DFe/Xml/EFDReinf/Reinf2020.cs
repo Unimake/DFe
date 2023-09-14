@@ -37,7 +37,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class EvtServPrest
+    public class EvtServPrest : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
         public Reinf2020IdeEvento IdeEvento { get; set; }
@@ -95,8 +95,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("ideEstabPrest")]
         public IdeEstabPrest IdeEstabPrest { get; set; }
 
-        [XmlElement("ideTomador")]
-        public IdeTomador IdeTomador { get; set; }
     }
 
 
@@ -117,6 +115,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         [XmlElement("nrInscEstabPrest")]
         public string NrInscEstabPrest { get; set; }
+
+        [XmlElement("ideTomador")]
+        public IdeTomador IdeTomador { get; set; }
     }
 
 #if INTEROP
@@ -235,6 +236,87 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
         public int GetReinf2020NfsCount => (Nfs != null ? Nfs.Count : 0);
+#endif
+
+        [XmlElement("infoProcRetPr")]
+        public List<InfoProcRetPr> InfoProcRetPr { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoProcRetPr(InfoProcRetPr item)
+        {
+            if (InfoProcRetPr == null)
+            {
+                InfoProcRetPr = new List<InfoProcRetPr>();
+            }
+
+            InfoProcRetPr.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoProcRetPr (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoProcRetPr</returns>
+        public InfoProcRetPr GetInfoProcRetPr(int index)
+        {
+            if ((InfoProcRetPr?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoProcRetPr[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoProcRetPr
+        /// </summary>
+        public int GetInfoProcRetPrCount => (InfoProcRetPr != null ? InfoProcRetPr.Count : 0);
+
+#endif
+
+        [XmlElement("infoProcRetAd")]
+        public List<InfoProcRetAd> InfoProcRetAd { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoProcRetAd(InfoProcRetAd item)
+        {
+            if (InfoProcRetAd == null)
+            {
+                InfoProcRetAd = new List<InfoProcRetAd>();
+            }
+
+            InfoProcRetAd.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoProcRetAd (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoProcRetAd</returns>
+        public InfoProcRetAd GetInfoProcRetAd(int index)
+        {
+            if ((InfoProcRetAd?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoProcRetAd[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoProcRetAd
+        /// </summary>
+        public int GetInfoProcRetAdCount => (InfoProcRetAd != null ? InfoProcRetAd.Count : 0);
 
 #endif
     }
@@ -285,7 +367,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string Obs { get; set; }
 
         [XmlElement("infoTpServ")]
-        public List<Reinf2020InfoTpServ> InfoTpServ { get; set; }
+        public List<InfoTpServ> InfoTpServ { get; set; }
 
 #if INTEROP
 
@@ -293,11 +375,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoTpServ(Reinf2020InfoTpServ item)
+        public void AddInfoTpServ(InfoTpServ item)
         {
             if (InfoTpServ == null)
             {
-                InfoTpServ = new List<Reinf2020InfoTpServ>();
+                InfoTpServ = new List<InfoTpServ>();
             }
 
             InfoTpServ.Add(item);
@@ -308,7 +390,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Reinf2020InfoTpServ</returns>
-        public Reinf2020InfoTpServ GetInfoTpServ(int index)
+        public InfoTpServ GetInfoTpServ(int index)
         {
             if ((InfoTpServ?.Count ?? 0) == 0)
             {
@@ -321,161 +403,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfoTpServ
         /// </summary>
-        public int GetReinf2020InfoTpServCount => (InfoTpServ != null ? InfoTpServ.Count : 0);
+        public int GetInfoTpServCount => (InfoTpServ != null ? InfoTpServ.Count : 0);
 #endif
+
     }
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2020InfoTpServ")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    public class Reinf2020InfoTpServ : InfoTpServ
-    {
-        /// <summary>
-        /// O código informado deve existir na Tabela 06.
-        /// </summary>
-        [XmlElement("tpServico")]
-        public string TpServico { get; set; }
-
-
-        /// <summary>
-        /// Valor da base de cálculo da retenção da contribuição previdenciária.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrBaseRet { get; set; }
-
-        [XmlElement("vlrBaseRet")]
-        public string VlrBaseRetField
-        {
-            get => VlrBaseRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrBaseRet = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Preencher com o valor da retenção apurada de acordo com o que determina a legislação vigente relativa aos serviços contidos na nota fiscal/fatura. 
-        /// Se {indCPRB} = [0] preencher com valor correspondente a 11% de {vlrBaseRet}. 
-        /// Se {indCPRB}= [1] preencher com valor correspondente a 3,5% de {vlrBaseRet}.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrRetencao { get; set; }
-
-        [XmlElement("vlrRetencao")]
-        public string VlrRetencaoField
-        {
-            get => VlrRetencao.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrRetencao = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Informar o valor da retenção destacada na nota fiscal relativo aos serviços subcontratados, se houver, desde que todos os documentos envolvidos se refiram à mesma competência e ao mesmo serviço, conforme disciplina a legislação.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrRetSub { get; set; }
-
-        [XmlElement("vlrRetSub")]
-        public string VlrRetSubField
-        {
-            get => VlrRetSub.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrRetSub = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Valor da retenção principal que deixou de ser efetuada pelo contratante ou que foi depositada em juízo em decorrência de decisão judicial/administrativa.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrNRetPrinc { get; set; }
-
-        [XmlElement("vlrNRetPrinc")]
-        public string VlrNRetPrincField
-        {
-            get => VlrNRetPrinc.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrNRetPrinc = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 15 anos de contribuição.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrServicos15 { get; set; }
-
-        [XmlElement("vlrServicos15")]
-        public string VlrServicos15Field
-        {
-            get => VlrServicos15.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrServicos15 = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 20 anos de contribuição.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrServicos20 { get; set; }
-
-        [XmlElement("vlrServicos20")]
-        public string VlrServicos20Field
-        {
-            get => VlrServicos20.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrServicos20 = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 25 anos de contribuição.
-        /// </summary>
-        [XmlIgnore]
-        public double VlrServicos25 { get; set; }
-
-        [XmlElement("vlrServicos25")]
-        public string VlrServicos25Field
-        {
-            get => VlrServicos25.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrServicos25 = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Adicional apurado de retenção da nota fiscal, caso os serviços tenham sido prestados sob condições especiais que ensejem aposentadoria especial aos trabalhadores após 15, 20, ou 25 anos de contribuição. 
-        /// Preencher com o valor correspondente ao somatório de 4% sobre o {vlrServicos15} mais 3% sobre {vlrServicos20} mais 2% sobre {vlrServicos25}
-        /// </summary>
-        [XmlIgnore]
-        public double VlrAdicional { get; set; }
-
-        [XmlElement("vlrAdicional")]
-        public string VlrAdicionalField
-        {
-            get => VlrAdicional.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrAdicional = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Valor da retenção adicional que deixou de ser efetuada pelo contratante ou que foi depositada em juízo em decorrência de decisão judicial/administrativa
-        /// </summary>
-        [XmlIgnore]
-        public double VlrNRetAdic { get; set; }
-
-        [XmlElement("vlrNRetAdic")]
-        public string vlrNRetAdicField
-        {
-            get => VlrNRetAdic.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrNRetAdic = Converter.ToDouble(value);
-        }
-
-        #region Should Serialize
-
-        public bool ShouldSerializeVlrRetSubField() => VlrRetSub > 0;
-
-        public bool ShouldSerializeVlrNRetPrincField() => VlrNRetPrinc > 0;
-
-        public bool ShouldSerializeVlrServicos15Field() => VlrServicos15 > 0;
-
-        public bool ShouldSerializeVlrServicos20Field() => VlrServicos20 > 0;
-
-        public bool ShouldSerializeVlrServicos25Field() => VlrServicos25 > 0;
-
-        public bool ShouldSerializeVlrAdicionalField() => VlrAdicional > 0;
-
-        public bool ShouldSerializeVlrNRetAdicField() => VlrNRetAdic > 0;
-
-        #endregion
-    }
 }
