@@ -7405,5 +7405,45 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion
+
+    #region Tipo Repasse
+    /// <summary>
+    /// Tipo de repasse, conforme tabela:
+    /// 1-Patrocinio, 2-Licenciamento de marcas e símbolos, 3 - Publicidade, 4 - Propaganda, 5 - Transmissão de espetáculos. 
+    /// </summary>
+    public enum TipoRepasse
+    {
+        /// <summary>
+        /// 1 - Patrocinio.
+        /// </summary>
+        [XmlEnum("1")]
+        Patrocinio = 1,
+
+        /// <summary>
+        /// 2 - Licenciamento de marcas e símbolos.
+        /// </summary>
+        [XmlEnum("2")]
+        LicenciamentoMarcas = 2,
+
+        /// <summary>
+        /// 3 - Publicidade.
+        /// </summary>
+        [XmlEnum("3")]
+        Publicidade = 3,
+
+        /// <summary>
+        /// 4 - Propaganda.
+        /// </summary>
+        [XmlEnum("4")]
+        Propaganda = 4,
+
+        /// <summary>
+        /// 5 - Transmissão de espetáculos.
+        /// </summary>
+        [XmlEnum("5")]
+        TransmissaoDeEspetaculos = 5,
+
+    }
+    #endregion
 }
 #endregion
