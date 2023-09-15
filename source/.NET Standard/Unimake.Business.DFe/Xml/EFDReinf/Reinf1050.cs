@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -17,7 +16,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTabProcesso/v2_01_02", IsNullable = false)]
+    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evt1050TabLig/v2_01_02", IsNullable = false)]
     public class Reinf1050 : XMLBase
     {
         [XmlElement("evtTabLig")]

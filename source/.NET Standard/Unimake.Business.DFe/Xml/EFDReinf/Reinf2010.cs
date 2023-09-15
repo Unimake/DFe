@@ -7,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
-using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -144,8 +142,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrTotalBruto")]
         public string VlrTotalBrutoField
         {
-            get => VlrTotalBruto.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrTotalBruto = Converter.ToDouble(value);
+            get => VlrTotalBruto.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalBruto = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlIgnore]
@@ -154,18 +152,18 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrTotalBaseRet")]
         public string VlrTotalBaseRetField
         {
-            get => VlrTotalBaseRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrTotalBaseRet = Converter.ToDouble(value);
+            get => VlrTotalBaseRet.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalBaseRet = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlIgnore]
-        public double VlrTotalRetPrin { get; set; }
+        public double VlrTotalRetPrinc { get; set; }
 
-        [XmlElement("vlrTotalRetPrin")]
-        public string VlrTotalRetPrinField
+        [XmlElement("vlrTotalRetPrinc")]
+        public string VlrTotalRetPrincField
         {
-            get => VlrTotalRetPrin.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrTotalRetPrin = Converter.ToDouble(value);
+            get => VlrTotalRetPrinc.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalRetPrinc = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlIgnore]
@@ -174,8 +172,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrTotalRetAdic")]
         public string VlrTotalRetAdicField
         {
-            get => VlrTotalRetAdic.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrTotalRetAdic = Converter.ToDouble(value);
+            get => VlrTotalRetAdic.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalRetAdic = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlIgnore]
@@ -184,8 +182,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrTotalNRetPrinc")]
         public string VlrTotalNRetPrincField
         {
-            get => VlrTotalNRetPrinc.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrTotalNRetPrinc = Converter.ToDouble(value);
+            get => VlrTotalNRetPrinc.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalNRetPrinc = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlIgnore]
@@ -194,8 +192,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrTotalNRetAdic")]
         public string VlrTotalNRetAdicField
         {
-            get => VlrTotalNRetAdic.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrTotalNRetAdic = Converter.ToDouble(value);
+            get => VlrTotalNRetAdic.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalNRetAdic = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlElement("indCPRB")]
@@ -383,8 +381,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrBruto")]
         public string VlrBrutoField
         {
-            get => VlrBruto.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrBruto = Converter.ToDouble(value);
+            get => VlrBruto.ToString("F2", CultureInfoReinf.Info);
+            set => VlrBruto = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>

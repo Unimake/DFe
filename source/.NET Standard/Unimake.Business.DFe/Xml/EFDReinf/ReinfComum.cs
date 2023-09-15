@@ -11,6 +11,24 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// Configurações Cultura para o REINF
+    /// </summary>
+    public static class CultureInfoReinf
+    {
+        private static CultureInfo InfoField = new CultureInfo("pt-BR");
+
+        public static CultureInfo Info 
+        {
+            get
+            {
+                InfoField.NumberFormat.NumberDecimalSeparator = ",";
+
+                return InfoField;
+            }
+        }
+    }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento")]
@@ -68,8 +86,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrBaseRet")]
         public string VlrBaseRetField
         {
-            get => VlrBaseRet.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrBaseRet = Converter.ToDouble(value);
+            get => VlrBaseRet.ToString("F2", CultureInfoReinf.Info);
+            set => VlrBaseRet = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -83,8 +101,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrRetencao")]
         public string VlrRetencaoField
         {
-            get => VlrRetencao.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrRetencao = Converter.ToDouble(value);
+            get => VlrRetencao.ToString("F2", CultureInfoReinf.Info);
+            set => VlrRetencao = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -96,8 +114,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrRetSub")]
         public string VlrRetSubField
         {
-            get => VlrRetSub.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrRetSub = Converter.ToDouble(value);
+            get => VlrRetSub.ToString("F2", CultureInfoReinf.Info);
+            set => VlrRetSub = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -109,8 +127,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrNRetPrinc")]
         public string VlrNRetPrincField
         {
-            get => VlrNRetPrinc.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrNRetPrinc = Converter.ToDouble(value);
+            get => VlrNRetPrinc.ToString("F2", CultureInfoReinf.Info);
+            set => VlrNRetPrinc = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -122,8 +140,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrServicos15")]
         public string VlrServicos15Field
         {
-            get => VlrServicos15.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrServicos15 = Converter.ToDouble(value);
+            get => VlrServicos15.ToString("F2", CultureInfoReinf.Info);
+            set => VlrServicos15 = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -135,8 +153,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrServicos20")]
         public string VlrServicos20Field
         {
-            get => VlrServicos20.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrServicos20 = Converter.ToDouble(value);
+            get => VlrServicos20.ToString("F2", CultureInfoReinf.Info);
+            set => VlrServicos20 = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -148,8 +166,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrServicos25")]
         public string VlrServicos25Field
         {
-            get => VlrServicos25.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrServicos25 = Converter.ToDouble(value);
+            get => VlrServicos25.ToString("F2", CultureInfoReinf.Info);
+            set => VlrServicos25 = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -162,8 +180,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrAdicional")]
         public string VlrAdicionalField
         {
-            get => VlrAdicional.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrAdicional = Converter.ToDouble(value);
+            get => VlrAdicional.ToString("F2", CultureInfoReinf.Info);
+            set => VlrAdicional = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         /// <summary>
@@ -175,8 +193,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("vlrNRetAdic")]
         public string vlrNRetAdicField
         {
-            get => VlrNRetAdic.ToString("F2", CultureInfo.InvariantCulture);
-            set => VlrNRetAdic = Converter.ToDouble(value);
+            get => VlrNRetAdic.ToString("F2", CultureInfoReinf.Info);
+            set => VlrNRetAdic = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         #region Should Serialize
@@ -231,8 +249,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("valorPrinc")]
         public string ValorPrincField
         {
-            get => ValorPrinc.ToString("F2", CultureInfo.InvariantCulture);
-            set => ValorPrinc = Converter.ToDouble(value);
+            get => ValorPrinc.ToString("F2", CultureInfoReinf.Info);
+            set => ValorPrinc = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         #region ShouldSerialize
@@ -265,8 +283,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("valorAdic")]
         public string ValorAdicField
         {
-            get => ValorAdic.ToString("F2", CultureInfo.InvariantCulture);
-            set => ValorAdic = Converter.ToDouble(value);
+            get => ValorAdic.ToString("F2", CultureInfoReinf.Info);
+            set => ValorAdic = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         #region ShouldSerialize
