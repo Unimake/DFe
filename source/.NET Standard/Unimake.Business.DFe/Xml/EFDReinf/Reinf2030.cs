@@ -7,6 +7,7 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -105,7 +106,44 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string NrInscEstab { get; set; }
 
         [XmlElement("recursosRec")]
-        public RecursosRec RecursosRec { get; set; }
+        public List<RecursosRec> RecursosRec { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRecursosRec(RecursosRec item)
+        {
+            if (RecursosRec == null)
+            {
+                RecursosRec = new List<RecursosRec>();
+            }
+
+            RecursosRec.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RecursosRec (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RecursosRec</returns>
+        public RecursosRec GetRecursosRec(int index)
+        {
+            if ((RecursosRec?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RecursosRec[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Nfs
+        /// </summary>
+        public int GetRecursosRecCount => (RecursosRec != null ? RecursosRec.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -147,13 +185,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlIgnore]
-        public double VlrRetApur { get; set; }
+        public double VlrTotalNRet { get; set; }
 
-        [XmlElement("vlrRetApur")]
+        [XmlElement("vlrTotalNRet")]
         public string VlrTotalNRetField
         {
-            get => VlrRetApur.ToString("F2", CultureInfoReinf.Info);
-            set => VlrRetApur = double.Parse(value.ToString(), CultureInfoReinf.Info);
+            get => VlrTotalNRet.ToString("F2", CultureInfoReinf.Info);
+            set => VlrTotalNRet = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
         [XmlElement("infoRecurso")]
@@ -236,8 +274,26 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public int GetInfoProcCount => (InfoProc != null ? InfoProc.Count : 0);
 #endif
 
+        #region ShouldSerialize
+
+        public bool ShouldSereializeCnpjOrigRecurso() => !string.IsNullOrEmpty(CnpjOrigRecurso);
+        
+        public bool ShouldSereializeRecEmprExt() => !string.IsNullOrEmpty(RecEmprExt);
+        
+        public bool ShouldSereializeNmEmprExt() => !string.IsNullOrEmpty(NmEmprExt);
+
+        public bool ShouldSerializeVlrTotalNRetPrinc() => VlrTotalNRet > 0;
+
+        #endregion
+
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecurso")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
     public class InfoRecurso
     {
 
@@ -260,7 +316,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlIgnore]
         public double VlrRetApur { get; set; }
 
-        [XmlElement("VlrRetApur")]
+        [XmlElement("vlrRetApur")]
         public string VlrRetApurField
         {
             get => VlrRetApur.ToString("F2", CultureInfoReinf.Info);
@@ -268,12 +324,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProc")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
     public class InfoProc
     {
 
         [XmlElement("tpProc")]
         public TipoProcesso TpProc { get; set; }
-
 
         [XmlElement("nrProc")]
         public string NrProc { get; set; }
@@ -290,5 +351,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             get => VlrNRet.ToString("F2", CultureInfoReinf.Info);
             set => VlrNRet = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+
+        #endregion
     }
 }
