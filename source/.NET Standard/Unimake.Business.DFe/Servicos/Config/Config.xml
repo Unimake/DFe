@@ -1828,4 +1828,10 @@
 		<ArqConfig>SaoGoncaloDoAmaranteRN.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4311791">
+		<Nome>Maratá - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>MarataRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
