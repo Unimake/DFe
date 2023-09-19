@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.01">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRps xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="2.01">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincrono xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></RecepcionarLoteRpsSincrono></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="2.01">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfse xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+       <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.01">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="2.01">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <TagExtraAssinatura></TagExtraAssinatura>
+      <TagExtraAtributoID></TagExtraAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SubstituirNfse xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></SubstituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.01">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRps xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></ConsultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="2.01">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRps xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></ConsultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="2.01">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoPrestado xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></ConsultarNfseServicoPrestado></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="2.01">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoTomado xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></ConsultarNfseServicoTomado></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="2.01">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
+      <TagAssinatura></TagAssinatura>
+      <TagAtributoID></TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType></WebContentType>
+      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseFaixa xmlns="http://ws.supernova.com.br/"><xml xmlns="">{xmlBodyScape}</xml></ConsultarNfseFaixa></soap:Body></soap:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.01</SchemaVersao>
+      <TargetNS>http://ws.supernova.com.br/</TargetNS>
+    </ConsultarNfseFaixa> 
+</Servicos>
+</Configuracoes>

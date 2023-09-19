@@ -1810,4 +1810,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3130101">
+		<Nome>Igarape - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>IgarapeMG.xml</ArqConfig>
+		<PadraoNFSe>QUASAR</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
