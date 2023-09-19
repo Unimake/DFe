@@ -352,6 +352,7 @@
 		<None Remove="Servicos\Config\NFSe\SalvadorDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhais.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
@@ -784,6 +785,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
