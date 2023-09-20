@@ -134,5 +134,24 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseServicoTomado>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://homologamarata.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://marata.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mEnvioLoteRPSSincrono><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mEnvioLoteRPSSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.tinus.com.br</TargetNS>
+		</RecepcionarLoteRps>
 	</Servicos>
 </Configuracoes>
