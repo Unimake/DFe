@@ -1822,12 +1822,6 @@
 		<ArqConfig>IgarapeMG.xml</ArqConfig>
 		<PadraoNFSe>QUASAR</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="2412005">
-		<Nome>São Gonçalo do Amarante - RN</Nome>
-		<UF>RN</UF>
-		<ArqConfig>SaoGoncaloDoAmaranteRN.xml</ArqConfig>
-		<PadraoNFSe>TINUS</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4311791">
 		<Nome>Maratá - RS</Nome>
 		<UF>RS</UF>
