@@ -39,7 +39,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
 
         [XmlElement("ideEvento")]
-        public Reinf2050IdeEvento IdeEvento { get; set; }
+        public IdeEventoReinf2050 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -51,10 +51,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2050IdeEvento")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf2050")]
     [ComVisible(true)]
 #endif
-    public class Reinf2050IdeEvento
+    public class IdeEventoReinf2050
     {
 
         [XmlElement("indRetif")]
@@ -90,18 +90,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class InfoComProd
     {
-
         [XmlElement("ideEstab")]
-        public Reinf2050IdeEstab IdeEstab { get; set; }
-
+        public IdeEstabReinf2050 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2050IdeEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabReinf2050")]
     [ComVisible(true)]
 #endif
-    public class Reinf2050IdeEstab
+    public class IdeEstabReinf2050
     {
 
         [XmlElement("tpInscEstab")]
@@ -252,7 +250,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("infoProc")]
-        public List<Reinf2050InfoProc> InfoProc { get; set; }
+        public List<InfoProcReinf2050> InfoProc { get; set; }
 
 #if INTEROP
 
@@ -260,11 +258,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddReinf2050InfoProc(Reinf2050InfoProc item)
+        public void AddReinf2050InfoProc(InfoProcReinf2050 item)
         {
             if (InfoProc == null)
             {
-                InfoProc = new List<Reinf2050InfoProc>();
+                InfoProc = new List<InfoProcReinf2050>();
             }
 
             InfoProc.Add(item);
@@ -275,7 +273,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Reinf2050InfoProc</returns>
-        public Reinf2050InfoProc GetReinf2050InfoProc(int index)
+        public InfoProcReinf2050 GetInfoProcReinf2050(int index)
         {
             if ((InfoProc?.Count ?? 0) == 0)
             {
@@ -288,11 +286,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
-        public int GetReinf2050InfoProcCount => (InfoProc != null ? InfoProc.Count : 0);
+        public int GetInfoProcReinf2050Count => (InfoProc != null ? InfoProc.Count : 0);
 #endif
     }
 
-    public class Reinf2050InfoProc
+    public class InfoProcReinf2050
     {
 
         [XmlElement("tpProc")]

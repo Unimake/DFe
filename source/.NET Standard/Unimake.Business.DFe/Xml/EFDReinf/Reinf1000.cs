@@ -54,16 +54,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoContri
     {
         [XmlElement("inclusao")]
-        public Reinf1000Inclusao Inclusao { get; set; }
+        public InclusaoReinf1000 Inclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1000Inclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InclusaoReinf1000")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf1000Inclusao
+    public class InclusaoReinf1000
     {
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }

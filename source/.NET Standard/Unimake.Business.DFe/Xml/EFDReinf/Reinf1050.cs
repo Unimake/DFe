@@ -53,22 +53,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoLig
     {
         [XmlElement("inclusao")]
-        public Reinf1050Inclusao Inclusao { get; set; }
+        public InclusaoReinf1050 Inclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1050Inclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InclusaoReinf1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf1050Inclusao
+    public class InclusaoReinf1050
     {
         [XmlElement("ideEntLig")]
         public IdeEntLig IdeEntLig { get; set; }
 
         [XmlElement("alteracao")]
-        public Reinf1050Alteracao Alteracao { get; set; }
+        public AlteracaoReinf1050 Alteracao { get; set; }
     }
 
 #if INTEROP
@@ -92,7 +92,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string FimValid { get; set; }
 
         [XmlElement("exclusao")]
-        public Reinf1050Exclusao Exclusao { get; set; }
+        public ExclusaoReinf1050 Exclusao { get; set; }
 
         #region ShouldSerialize
 
@@ -103,11 +103,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Alteracao")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.AlteracaoReinf1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf1050Alteracao
+    public class AlteracaoReinf1050
     {
         [XmlElement("tpEntLig")]
         public TipoEntidadeLigada TpEntLig { get; set; }
@@ -154,11 +154,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Exclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ExclusaoReinf1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf1050Exclusao
+    public class ExclusaoReinf1050
     {
         [XmlElement("cnpjLig")]
         public string CnpjLig { get; set; }

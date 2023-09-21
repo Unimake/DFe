@@ -197,7 +197,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("nfs")]
-        public List<Reinf2020Nfs> Nfs { get; set; }
+        public List<NfsReinf2020> Nfs { get; set; }
 
 #if INTEROP
 
@@ -205,11 +205,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddNfs(Reinf2020Nfs item)
+        public void AddNfs(NfsReinf2020 item)
         {
             if (Nfs == null)
             {
-                Nfs = new List<Reinf2020Nfs>();
+                Nfs = new List<NfsReinf2020>();
             }
 
             Nfs.Add(item);
@@ -220,7 +220,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Nfs</returns>
-        public Reinf2020Nfs GetNfs(int index)
+        public NfsReinf2020 GetNfs(int index)
         {
             if ((Nfs?.Count ?? 0) == 0)
             {
@@ -233,7 +233,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
-        public int GetReinf2020NfsCount => (Nfs != null ? Nfs.Count : 0);
+        public int GetNfsReinf2020Count => (Nfs != null ? Nfs.Count : 0);
 #endif
 
         [XmlElement("infoProcRetPr")]
@@ -321,11 +321,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2020Nfs")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NfsReinf2020")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf2020Nfs
+    public class NfsReinf2020
     {
         [XmlElement("serie")]
         public string Serie { get; set; }

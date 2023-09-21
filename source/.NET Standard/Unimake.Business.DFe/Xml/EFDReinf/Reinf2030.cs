@@ -36,19 +36,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtAssocDespRec : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public Reinf2030IdeEvento IdeEvento { get; set; }
+        public IdeEventoReinf2030 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
-        public Reinf2030IdeContri IdeContri { get; set; }
+        public IdeContriReinf2030 IdeContri { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2030IdeEvento")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf2030")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf2030IdeEvento
+    public class IdeEventoReinf2030
     {
         [XmlElement("indRetif")]
         public IndicativoRetificacao IndRetif { get; set; }
@@ -77,11 +77,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2030IdeContri")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeContriReinf2030")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class Reinf2030IdeContri : IdeContri
+    public class IdeContriReinf2030 : IdeContri
     {
 
         [XmlElement("ideEstab")]
