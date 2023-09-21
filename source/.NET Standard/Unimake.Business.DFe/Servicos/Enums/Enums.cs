@@ -7445,5 +7445,38 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion
+
+    #region Indicativo de Comercialização
+    /// <summary>
+    /// Indicativo de comercialização.
+    /// </summary>
+    public enum IndicativoComercializacao
+    {
+        /// <summary>
+        /// 1 - Comercialização da produção por produtor rural PJ/agroindústria, exceto para entidade executora do Programa de Aquisição de Alimentos - PAA
+        /// </summary>
+        [XmlEnum("1")]
+        ProdutorRuralPJ = 1,
+
+        /// <summary>
+        /// 7 - Comercialização da produção com isenção de contribuição previdenciária, de acordo com a Lei n° 13.606/2018
+        /// </summary>
+        [XmlEnum("7")]
+        IsencaoDeContribuicao = 7,
+
+        /// <summary>
+        /// 8 - Comercialização da produção para entidade executora do PAA
+        /// </summary>
+        [XmlEnum("8")]
+        ParaEntidadePAA = 8,
+
+        /// <summary>
+        /// 9 - Comercialização da produção para entidade executora do PAA
+        /// </summary>
+        [XmlEnum("9")]
+        MercadoExterno = 9,
+
+    }
+    #endregion
 }
 #endregion
