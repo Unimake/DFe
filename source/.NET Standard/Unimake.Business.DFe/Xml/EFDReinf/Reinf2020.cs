@@ -38,7 +38,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtServPrest : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public Reinf2020IdeEvento IdeEvento { get; set; }
+        public IdeEventoReinf2020 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -47,7 +47,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public InfoServPrest InfoServPrest { get; set; }
     }
 
-    public class Reinf2020IdeEvento
+    public class IdeEventoReinf2020
     {
 
         [XmlElement("indRetif")]

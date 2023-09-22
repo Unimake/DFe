@@ -257,7 +257,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddReinf2050InfoProc(InfoProcReinf2050 item)
+        public void AddInfoProcReinf2050(InfoProcReinf2050 item)
         {
             if (InfoProc == null)
             {
