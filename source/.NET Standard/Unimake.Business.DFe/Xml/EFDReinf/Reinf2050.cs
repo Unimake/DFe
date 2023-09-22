@@ -7,7 +7,6 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -290,6 +289,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcReinf2050")]
+    [ComVisible(true)]
+#endif
     public class InfoProcReinf2050
     {
 
