@@ -232,7 +232,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfoProcJud
         /// </summary>
-        public int GetRecursosRecCount => (InfoProcJud != null ? InfoProcJud.Count : 0);
+        public int GetInfoProcJudCount => (InfoProcJud != null ? InfoProcJud.Count : 0);
 #endif
     }
 

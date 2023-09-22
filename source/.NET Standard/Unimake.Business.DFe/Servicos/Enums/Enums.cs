@@ -7516,13 +7516,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 2 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral por entidade executora do Programa de Aquisição de Alimentos - PAA;
         /// </summary>
         [XmlEnum("2")]
-        AquisicaoPaaPfSe = 2,
+        AquisicaoPfSePaa = 2,
 
         /// <summary>
         /// 3 - Aquisição de produção de produtor rural pessoa jurídica por entidade executora do PAA;
         /// </summary>
         [XmlEnum("3")]
-        AquisicaoPaaPj = 3,
+        AquisicaoPjPaa = 3,
 
         /// <summary>
         /// 4 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral - Produção isenta (Lei 13.606/2018);
@@ -7534,13 +7534,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 5 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral por entidade executora do PAA - Produção isenta (Lei 13.606/2018);
         /// </summary>
         [XmlEnum("5")]
-        AquisicaoIsentaPaaPfSe = 5,
+        AquisicaoIsentaPfSePaa = 5,
 
         /// <summary>
         /// 6 -  Aquisição de produção de produtor rural pessoa jurídica por entidade executora do PAA - Produção isenta (Lei 13.606/2018);
         /// </summary>
         [XmlEnum("6")]
-        AquisicaoIsentaPaaPj = 6,
+        AquisicaoIsentaPjPaa = 6,
 
         /// <summary>
         /// 7 -  Aquisição de produção de produtor rural pessoa física ou segurado especial para fins de exportação.
