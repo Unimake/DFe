@@ -7478,5 +7478,77 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion
+
+    #region Tipo de Inscrição do Estabelecimento Adquirente da Produção
+    /// <summary>
+    /// Tipo de inscrição do estabelecimento adquirente da produção.
+    /// </summary>
+    public enum TipoInscricaoAdquirente
+    {
+        /// <summary>
+        /// 1 - CNPJ.
+        /// </summary>
+        [XmlEnum("1")]
+        CNPJ = 1,
+
+        /// <summary>
+        /// 3 - CAEPF.
+        /// </summary>
+        [XmlEnum("3")]
+        CAEPF = 3,
+
+    }
+    #endregion
+
+    #region Indicativo da aquisição
+    /// <summary>
+    /// Indicativo da aquisição.
+    /// </summary>
+    public enum IndicativoDaAquisicao
+    {
+        /// <summary>
+        /// 1 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral;
+        /// </summary>
+        [XmlEnum("1")]
+        AquisicaoGeralPfSe = 1,
+
+        /// <summary>
+        /// 2 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral por entidade executora do Programa de Aquisição de Alimentos - PAA;
+        /// </summary>
+        [XmlEnum("2")]
+        AquisicaoPaaPfSe = 2,
+
+        /// <summary>
+        /// 3 - Aquisição de produção de produtor rural pessoa jurídica por entidade executora do PAA;
+        /// </summary>
+        [XmlEnum("3")]
+        AquisicaoPaaPj = 3,
+
+        /// <summary>
+        /// 4 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral - Produção isenta (Lei 13.606/2018);
+        /// </summary>
+        [XmlEnum("4")]
+        AquisicaoIsentaPfSe = 4,
+
+        /// <summary>
+        /// 5 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral por entidade executora do PAA - Produção isenta (Lei 13.606/2018);
+        /// </summary>
+        [XmlEnum("5")]
+        AquisicaoIsentaPaaPfSe = 5,
+
+        /// <summary>
+        /// 6 -  Aquisição de produção de produtor rural pessoa jurídica por entidade executora do PAA - Produção isenta (Lei 13.606/2018);
+        /// </summary>
+        [XmlEnum("6")]
+        AquisicaoIsentaPaaPj = 6,
+
+        /// <summary>
+        /// 7 -  Aquisição de produção de produtor rural pessoa física ou segurado especial para fins de exportação.
+        /// </summary>
+        [XmlEnum("7")]
+        AquisicaoExportacaoPfSe = 7,
+
+    }
+    #endregion
 }
 #endregion
