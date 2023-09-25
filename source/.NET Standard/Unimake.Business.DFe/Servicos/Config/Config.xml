@@ -1828,4 +1828,10 @@
 		<ArqConfig>MarataRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5103403">
+		<Nome>Cuiabá - MT</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CuiabaMT.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
