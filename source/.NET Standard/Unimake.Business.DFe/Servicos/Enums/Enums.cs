@@ -7496,7 +7496,6 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("3")]
         CAEPF = 3,
-
     }
     #endregion
 
@@ -7547,7 +7546,100 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("7")]
         AquisicaoExportacaoPfSe = 7,
+    }
+    #endregion
 
+    #region Tipo Ajuste
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de ajuste.
+    /// </summary>
+    public enum TipoAjusteReinf
+    {
+        /// <summary>
+        /// 0 - Ajuste de Redução.
+        /// </summary>
+        [XmlEnum("0")]
+        AjusteDeReducao = 0,
+
+        /// <summary>
+        /// 1 - Ajuste de Acréscimo.
+        /// </summary>
+        [XmlEnum("1")]
+        AjusteDeAcrescimo = 1,
+    }
+    #endregion
+
+    #region Codigo Ajuste
+    /// <summary>
+    /// Preencher com o código de ajuste.
+    /// </summary>
+    public enum CodigoAjuste
+    {
+        /// <summary>
+        /// 1 - Ajuste da CPRB: Adoção do regime de caixa.
+        /// </summary>
+        [XmlEnum("1")]
+        AjusteAdocaoCaixa = 1,
+
+        /// <summary>
+        /// 2 - Ajuste da CPRB: Diferimento de valores a recolher no período.
+        /// </summary>
+        [XmlEnum("2")]
+        AjusteDiferimento = 2,
+
+        /// <summary>
+        /// 3 - Adição de valores diferidos em período(s) anteriores(es).
+        /// </summary>
+        [XmlEnum("3")]
+        AdicaoValoresDiferidos = 3,
+
+        /// <summary>
+        /// 4 - Exportações diretas.
+        /// </summary>
+        [XmlEnum("4")]
+        ExportacaoDireta = 4,
+
+        /// <summary>
+        /// 5 - Transporte internacional de cargas.
+        /// </summary>
+        [XmlEnum("5")]
+        TransporteInternacional = 5,
+
+        /// <summary>
+        /// 6 - Vendas canceladas e os descontos incondicionais concedidos.
+        /// </summary>
+        [XmlEnum("6")]
+        VendaCanceladaDesconto = 6,
+
+        /// <summary>
+        /// 7 - IPI, se incluído na receita bruta.
+        /// </summary>
+        [XmlEnum("7")]
+        IpiIncluidoReceitaBruta = 7,
+
+        /// <summary>
+        /// 8 - ICMS, quando cobrado pelo vendedor dos bens ou prestador dos serviços na condição de substituto tributário.
+        /// </summary>
+        [XmlEnum("8")]
+        IcmsCobrancaSubstituto = 8,
+
+        /// <summary>
+        /// 9 - Receita bruta reconhecida pela construção, recuperação, reforma, ampliação ou melhoramento da infraestrutura, cuja contrapartida seja ativo intangível representativo de direito de exploração, no caso de contratos de concessão de serviços públicos.
+        /// </summary>
+        [XmlEnum("9")]
+        ReceitaBrutaInfraestrutura = 9,
+
+        /// <summary>
+        /// 10 - O valor do aporte de recursos realizado nos termos do art 6 §3 inciso III da Lei 11.079/2004.
+        /// </summary>
+        [XmlEnum("10")]
+        AporteRecursos = 10,
+
+        /// <summary>
+        /// 11 - Demais ajustes oriundos da legislação tributária, estorno ou outras situações.
+        /// </summary>
+        [XmlEnum("11")]
+        DemaisAjustes = 11,
     }
     #endregion
 }
