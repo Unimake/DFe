@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evtFechamento/v2_01_02">
+	<evtFechaEvPer id="ID1000000000000002021052608080800001">
+		<ideEvento>
+			<perApur>2021-05</perApur>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideContri>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideContri>
+		<ideRespInf>
+			<nmResp>Responsavel Nome Silva</nmResp>
+			<cpfResp>00000000000</cpfResp>
+			<telefone>044999999999</telefone>
+			<email>str1234</email>
+		</ideRespInf>
+		<infoFech>
+			<evtServTm>S</evtServTm>
+			<evtServPr>S</evtServPr>
+			<evtAssDespRec>S</evtAssDespRec>
+			<evtAssDespRep>S</evtAssDespRep>
+			<evtComProd>S</evtComProd>
+			<evtCPRB>S</evtCPRB>
+			<evtAquis>S</evtAquis>
+		</infoFech>
+	</evtFechaEvPer>
+</Reinf>
