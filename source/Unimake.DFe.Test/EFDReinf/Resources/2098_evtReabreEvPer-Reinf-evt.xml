@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evtReabreEvPer/v2_01_02">
+	<evtReabreEvPer id="ID1000000000000002021052608080800001">
+		<ideEvento>
+			<perApur>2021-05</perApur>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideContri>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideContri>
+	</evtReabreEvPer>
+</Reinf>
