@@ -336,7 +336,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public TipoAjusteReinf TpAjuste { get; set; }
 
         [XmlElement("codAjuste")]
-        public CodigoAjuste codAjuste { get; set; }
+        public CodigoAjuste CodAjuste { get; set; }
 
         [XmlIgnore]
         public double VlrAjuste { get; set; }
