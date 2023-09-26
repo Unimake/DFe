@@ -7642,5 +7642,127 @@ namespace Unimake.Business.DFe.Servicos
         DemaisAjustes = 11,
     }
     #endregion
+
+    #region Tipo Competicao. Reinf
+    /// <summary>
+    /// Tipo de competição.
+    /// </summary>
+    public enum TipoCompeticao
+    {
+        /// <summary>
+        /// 1 - Oficial.
+        /// </summary>
+        [XmlEnum("1")]
+        Oficial = 1,
+
+        /// <summary>
+        /// 2 - Não oficial.
+        /// </summary>
+        [XmlEnum("2")]
+        NaoOficial = 2,
+    }
+    #endregion
+
+    #region Categoria do evento esportivo. Reinf
+    /// <summary>
+    /// Categoria do evento esportivo.
+    /// </summary>
+    public enum CategoriaEventoReinf
+    {
+        /// <summary>
+        /// 1 - Internacional.
+        /// </summary>
+        [XmlEnum("1")]
+        Internacional = 1,
+
+        /// <summary>
+        /// 2 - Interestadual.
+        /// </summary>
+        [XmlEnum("2")]
+        Interestadual = 2,
+
+        /// <summary>
+        /// 3 - Interestadual.
+        /// </summary>
+        [XmlEnum("3")]
+        Estadual = 3,
+
+        /// <summary>
+        /// 4 - Local.
+        /// </summary>
+        [XmlEnum("4")]
+        Local = 4,
+    }
+    #endregion
+
+    #region Tipo de Ingresso.
+    /// <summary>
+    /// Tipo de Ingresso. 
+    /// </summary>
+    public enum TipoDeIngresso
+    {
+        /// <summary>
+        /// 1 - Arquibancada.
+        /// </summary>
+        [XmlEnum("1")]
+        Arquibancada = 1,
+
+        /// <summary>
+        /// 2 - Geral.
+        /// </summary>
+        [XmlEnum("2")]
+        Geral = 2,
+
+        /// <summary>
+        /// 3 - Cadeiras.
+        /// </summary>
+        [XmlEnum("3")]
+        Cadeiras = 3,
+
+        /// <summary>
+        /// 4 - Camarote.
+        /// </summary>
+        [XmlEnum("4")]
+        Camarote = 4,
+    }
+    #endregion
+
+    #region Tipo de Receita.
+    /// <summary>
+    /// Tipo de Receita. 
+    /// </summary>
+    public enum TipoReceita
+    {
+        /// <summary>
+        /// 1 - Transmissão.
+        /// </summary>
+        [XmlEnum("1")]
+        Transmissao = 1,
+
+        /// <summary>
+        /// 2 - Propaganda.
+        /// </summary>
+        [XmlEnum("2")]
+        Propaganda = 2,
+
+        /// <summary>
+        /// 3 - Publicidade.
+        /// </summary>
+        [XmlEnum("3")]
+        Publicidade = 3,
+
+        /// <summary>
+        /// 4 - Sorteio.
+        /// </summary>
+        [XmlEnum("4")]
+        Sorteio = 4,
+
+        /// <summary>
+        /// 5 - Outros.
+        /// </summary>
+        [XmlEnum("5")]
+        Outros = 5,
+    }
+    #endregion
 }
 #endregion
