@@ -2897,7 +2897,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Quantidade tributada - Informar a BC do ICMS próprio em quantidade conforme unidade de medida estabelecida na legislação para o produto.
         /// </summary>
         [XmlElement("qBCMono")]
-        public double QBCMono { get; set; }
+        public decimal QBCMono { get; set; }
 
         /// <summary>
         /// Alíquota ad rem do imposto. Alíquota ad rem do ICMS, estabelecida na legislação para o produto.
@@ -3156,7 +3156,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Quantidade tributada - Informar a BC do ICMS próprio em quantidade conforme unidade de medida estabelecida na legislação para o produto.
         /// </summary>
         [XmlElement("qBCMono")]
-        public double QBCMono { get; set; }
+        public decimal QBCMono { get; set; }
 
         /// <summary>
         /// Alíquota ad rem do imposto.
@@ -3188,7 +3188,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Quantidade tributada sujeita a retenção - Informar a BC do ICMS sujeito a retenção em quantidade conforme unidade de medida estabelecida na legislação para o produto.
         /// </summary>
         [XmlElement("qBCMonoReten")]
-        public double QBCMonoReten { get; set; }
+        public decimal QBCMonoReten { get; set; }
 
         /// <summary>
         /// Alíquota ad rem do imposto com retenção
@@ -3729,7 +3729,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Quantidade tributada - Informar a BC do ICMS em quantidade conforme unidade de medida estabelecida na legislação para o produto.
         /// </summary>
         [XmlElement("qBCMono")]
-        public double QBCMono { get; set; }
+        public decimal QBCMono { get; set; }
 
         /// <summary>
         /// Alíquota ad rem do ICMS estabelecida na legislação para o produto.
@@ -3998,7 +3998,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Quantidade tributada retida anteriormente - Informar a BC do ICMS em quantidade conforme unidade de medida estabelecida na legislação.
         /// </summary>
         [XmlElement("qBCMonoRet")]
-        public double QBCMonoRet { get; set; }
+        public decimal QBCMonoRet { get; set; }
 
         /// <summary>
         /// Alíquota ad rem do imposto retido anteriormente
