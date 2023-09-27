@@ -42,6 +42,17 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         {
             try
             {
+                //Esta comparação está sendo utilizada apenas para o padrão NACIONAL. É o único com comunicação por API. RetornoStream só está sendo preenchido na classe "TratarRetorno" no consumo por API.
+                if (RetornoStream != null)
+                {
+                    using (FileStream fs = new FileStream(Path.Combine (pasta, nomePDF), FileMode.Create))
+                    {
+                        RetornoStream.CopyTo(fs);
+                        fs.Close();
+                    }
+                    return;
+                }
+
                 if (RetornoWSXML.GetElementsByTagName(nomeTagPDF)[0] != null)
                 {
                     Converter.Base64ToPDF(RetornoWSXML.GetElementsByTagName("Base64Pdf")[0].InnerText, Path.Combine(pasta, nomePDF));

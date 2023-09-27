@@ -9,6 +9,7 @@ using Unimake.Business.DFe.Xml;
 using Unimake.Exceptions;
 using Unimake.Business.DFe.Validator;
 using Unimake.Business.Security;
+using System.IO;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -194,6 +195,11 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public XmlDocument RetornoWSXML { get; set; }
 
+        /// <summary>
+        /// Stream retornada pelo Webservice. Para consumo de serviços que retornam .pdf
+        /// </summary>
+        public Stream RetornoStream { get; set; }
+
         #endregion Public Properties
 
         #region Public Constructors
@@ -252,6 +258,7 @@ namespace Unimake.Business.DFe.Servicos
 
                 RetornoWSString = consumirAPI.RetornoServicoString;
                 RetornoWSXML = consumirAPI.RetornoServicoXML;
+                RetornoStream = consumirAPI.RetornoStream;  //Retorno específico para criação de .pdf para os casos em que a String corrompe o conteúdo. Mauricio 27/09/2023 #157859
             }
             else
             {

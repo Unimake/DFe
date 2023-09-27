@@ -116,6 +116,11 @@ namespace Unimake.Business.DFe
         /// </summary>
         public XmlDocument RetornoServicoXML { get; protected set; }
 
+        /// <summary>
+        /// Stream retornada pelo Webservice. Para consumo de serviços que retornam .pdf
+        /// </summary>
+        public Stream RetornoStream { get; set; }
+
         #endregion Public Properties
 
         #region Public Methods

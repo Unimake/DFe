@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -86,8 +87,9 @@ namespace Unimake.Business.DFe
             var retornoXml = new XmlDocument();
             try
             {
-                retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, postData);
-
+                var stream = default(Stream);
+                retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, postData, ref stream);
+                RetornoStream =  stream != null ? stream : null;
             }
             catch (XmlException)
             {

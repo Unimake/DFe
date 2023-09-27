@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe
         /// Classifica, faz o tratamento e retorna um XML (caso a comunicação tenha retorno)
         /// </summary>
         /// <returns></returns>
-        public static XmlDocument ReceberRetorno(ref APIConfig Config, HttpResponseMessage Response)
+        public static XmlDocument ReceberRetorno(ref APIConfig Config, HttpResponseMessage Response, ref Stream stream)
         {
             var ResponseString = Response.Content.ReadAsStringAsync().Result;
 
@@ -84,6 +84,7 @@ namespace Unimake.Business.DFe
                 case "application/pdf":
                     ResponseString = ResponseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
                     ResponseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(ResponseString));
+                    stream  = Response.IsSuccessStatusCode ?  Response.Content.ReadAsStreamAsync().Result : null;
                     resultadoRetorno = CreateXmlDocument(ResponseString);
                     break;
             }
