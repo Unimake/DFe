@@ -272,7 +272,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProc</returns>
-        public InfoProcReinf2050 GetAddInfoProc(int index)
+        public InfoProcReinf2050 GetInfoProc(int index)
         {
             if ((InfoProc?.Count ?? 0) == 0)
             {
