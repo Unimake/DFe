@@ -7682,7 +7682,7 @@ namespace Unimake.Business.DFe.Servicos
         Interestadual = 2,
 
         /// <summary>
-        /// 3 - Interestadual.
+        /// 3 - Estadual.
         /// </summary>
         [XmlEnum("3")]
         Estadual = 3,
@@ -7762,6 +7762,242 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("5")]
         Outros = 5,
+    }
+    #endregion
+
+    #region Relacao De Dependencia
+
+    /// <summary>
+    /// Relação de dependência;
+    /// </summary>
+    public enum RelacaoDeDependencia
+    {
+        /// <summary>
+        /// 1 - Conjuge
+        /// </summary>
+        [XmlEnum("1")]
+        Conjuge = 1,
+        
+        /// <summary>
+        /// 2 - Companheiro(a) com o(a) qual tenha filho ou viva há mais de 5 (cinco) anos ou possua declaração de união estável
+        /// </summary>
+        [XmlEnum("2")]
+        UniaoEstavel = 2,
+
+        /// <summary>
+        /// 3 - Filho(a) ou enteado(a)
+        /// </summary>
+        [XmlEnum("3")]
+        FilhoOuEnteado = 3,
+
+        /// <summary>
+        /// 6 - Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, do(a) qual detenha a guarda judicial
+        /// </summary>
+        [XmlEnum("6")]
+        IrmaoNetoBisneto = 6,
+
+        /// <summary>
+        /// 9 - Pais, avós e bisavós;
+        /// </summary>
+        [XmlEnum("9")]
+        PaisAvosBisavos = 9,
+
+        /// <summary>
+        /// 10 - Menor pobre do qual detenha a guarda judicial;
+        /// </summary>
+        [XmlEnum("10")]
+        MenorPobreJudicial = 10,
+
+        /// <summary>
+        /// 11 - A pessoa absolutamente incapaz, da qual seja tutor ou curador;
+        /// </summary>
+        [XmlEnum("11")]
+        PessoaAbsolutamenteIncapaz = 11,
+
+        /// <summary>
+        /// 12 - Ex-cônjuge;
+        /// </summary>
+        [XmlEnum("12")]
+        ExConjuge = 12,
+
+        /// <summary>
+        /// 99 - Ex-cônjuge;
+        /// </summary>
+        [XmlEnum("99")]
+        AgregadoOutros = 99,
+    }
+
+    #endregion
+
+    #region Tipo Competicao. Reinf
+    /// <summary>
+    /// Tipo de competição.
+    /// </summary>
+    public enum IndicativoFundoDeInvestimento
+    {
+        /// <summary>
+        /// 1 - Fundo ou clube de investimento.
+        /// </summary>
+        [XmlEnum("1")]
+        FCI = 1,
+
+        /// <summary>
+        /// 2 - Sociedade em conta de participação.
+        /// </summary>
+        [XmlEnum("2")]
+        SCP = 2,
+    }
+    #endregion
+
+    #region Indicativo do tipo de dedução
+    /// <summary>
+    /// Indicativo do tipo de dedução.
+    /// </summary>
+    public enum IndicativoTipoDeducao
+    {
+        /// <summary>
+        /// 1 - Previdência oficial.
+        /// </summary>
+        [XmlEnum("1")]
+        PrevidenciaOficial = 1,
+
+        /// <summary>
+        /// 2 - Previdência privada.
+        /// </summary>
+        [XmlEnum("2")]
+        PrevidenciaPrivada = 2,
+
+        /// <summary>
+        /// 3 - Fundo de aposentadoria programada individual - Fapi.
+        /// </summary>
+        [XmlEnum("3")]
+        FundoAposentadoriaIndividual = 3,
+
+        /// <summary>
+        /// 4 - Fundação de previdência complementar do servidor público - Funpresp.
+        /// </summary>
+        [XmlEnum("4")]
+        FundacaoPrevidenciaComplementar = 4,
+
+        /// <summary>
+        /// 5 - Pensão alimentícia.
+        /// </summary>
+        [XmlEnum("5")]
+        PensaoAlimenticia = 5,
+
+        /// <summary>
+        /// 7 - Dependentes.
+        /// </summary>
+        [XmlEnum("7")]
+        Dependentes = 7,
+    }
+    #endregion
+
+    #region Tipo de Isenção
+    /// <summary>
+    /// Tipo de Isenção.
+    /// </summary>
+    public enum TipoIsencao
+    {
+        /// <summary>
+        /// 1 - Parcela isenta 65 anos.
+        /// </summary>
+        [XmlEnum("1")]
+        ParcelaIsenta = 1,
+
+        /// <summary>
+        /// 2 - Diária de viagem.
+        /// </summary>
+        [XmlEnum("2")]
+        DiariaViagem = 2,
+
+        /// <summary>
+        /// 3 - Indenização e rescisão de contrato, inclusive a título de PDV e acidentes de trabalho
+        /// </summary>
+        [XmlEnum("3")]
+        IndenizacaoRecisao = 3,
+
+        /// <summary>
+        /// 4 - Abono pecuniário
+        /// </summary>
+        [XmlEnum("4")]
+        AbonoPecuniario = 4,
+
+        /// <summary>
+        /// 5 - Valores pagos a titular ou sócio de microempresa ou empresa de pequeno porte, exceto pró-labore, alugueis e serviços prestados
+        /// </summary>
+        [XmlEnum("5")]
+        TitularOuSocioMicroempresa = 5,
+
+        /// <summary>
+        /// 7 - Complementação de aposentadoria, correspondente às contribuições efetuadas no período de 01/01/1989 a 31/12/1995.
+        /// </summary>
+        [XmlEnum("7")]
+        ComplementacaoAposentadoria = 7,
+
+        /// <summary>
+        /// 8 - Ajuda de custo
+        /// </summary>
+        [XmlEnum("8")]
+        AjudaDeCusto = 8,
+
+        /// <summary>
+        /// 9 - Rendimentos pagos sem retenção do IR na fonte - Lei 10.833/2003;
+        /// </summary>
+        [XmlEnum("9")]
+        RendimentoSemRetencao = 9,
+
+        /// <summary>
+        /// 99 - Outros (especificar).
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+    }
+    #endregion
+
+    #region Indicativo da origem dos recursos
+    /// <summary>
+    /// Indicativo da origem dos recursos.
+    /// </summary>
+    public enum IndicativoOrigemRecursos
+    {
+        /// <summary>
+        /// 1 - Recursos do próprio declarante.
+        /// </summary>
+        [XmlEnum("1")]
+        ProprioDeclarante = 1,
+
+        /// <summary>
+        /// 2 - Recursos de terceiros - Declarante é a instituição financeira responsável pelo repasse dos valores.
+        /// </summary>
+        [XmlEnum("2")]
+        Terceiros = 2,
+    }
+    #endregion
+
+    #region Indicativo do Número de Identificação Fiscal - NIF
+    /// <summary>
+    /// Indicativo do Número de Identificação Fiscal - NIF.
+    /// </summary>
+    public enum IndicativoNIF
+    {
+        /// <summary>
+        /// 1 - Beneficiário com NIF
+        /// </summary>
+        [XmlEnum("1")]
+        BeneficiarioComNIF = 1,
+
+        /// <summary>
+        /// 2 - Beneficiário dispensado do NIF
+        /// </summary>
+        [XmlEnum("2")]
+        DispensadoDoNIF = 2,
+
+        /// <summary>
+        /// 3 - País não exige NIF
+        /// </summary>
+        [XmlEnum("3")]
+        PaisNaoExigeNIF = 3,
     }
     #endregion
 }
