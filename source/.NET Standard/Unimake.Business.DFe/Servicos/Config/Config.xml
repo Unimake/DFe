@@ -1834,4 +1834,10 @@
 		<ArqConfig>CuiabaMT.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+		<Arquivo ID="4101606">
+		<Nome>Arapoti - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
