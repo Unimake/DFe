@@ -257,7 +257,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProcReinf2050(InfoProcReinf2050 item)
+        public void AddInfoProc(InfoProcReinf2050 item)
         {
             if (InfoProc == null)
             {
@@ -268,11 +268,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         /// <summary>
-        /// Retorna o elemento da lista Reinf2050InfoProc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoProc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Reinf2050InfoProc</returns>
-        public InfoProcReinf2050 GetInfoProcReinf2050(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da InfoProc</returns>
+        public InfoProcReinf2050 GetAddInfoProc(int index)
         {
             if ((InfoProc?.Count ?? 0) == 0)
             {
@@ -283,9 +283,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista Nfs
+        /// Retorna a quantidade de elementos existentes na lista InfoProc
         /// </summary>
-        public int GetInfoProcReinf2050Count => (InfoProc != null ? InfoProc.Count : 0);
+        public int GetInfoProcCount => (InfoProc != null ? InfoProc.Count : 0);
 #endif
     }
 
