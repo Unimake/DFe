@@ -418,7 +418,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IndicativoFundoDeInvestimento IndFciScp { get; set; } = (IndicativoFundoDeInvestimento)(-1);
 #else
-        public IndicativoFundoDeInvestimento IndFciScp { get; set; }
+        public IndicativoFundoDeInvestimento ? IndFciScp { get; set; }
 #endif
 
         [XmlElement("nrInscFciScp")]
@@ -522,7 +522,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RendIsento</returns>
-        public RendIsento GetInfoPgto(int index)
+        public RendIsento GetRendIsento(int index)
         {
             if ((RendIsento?.Count ?? 0) == 0)
             {
@@ -648,7 +648,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public SimNaoLetra InfoEntid { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra InfoEntid { get; set; }
+        public SimNaoLetra ? InfoEntid { get; set; }
 #endif
 
         [XmlElement("nrInscPrevComp")]
@@ -721,7 +721,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.BenefPenSusp")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.BenefPen")]
     [ComVisible(true)]
 #endif
     public class BenefPen

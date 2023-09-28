@@ -7821,7 +7821,7 @@ namespace Unimake.Business.DFe.Servicos
         ExConjuge = 12,
 
         /// <summary>
-        /// 99 - Ex-cônjuge;
+        /// 99 - Agregado / Outros;
         /// </summary>
         [XmlEnum("99")]
         AgregadoOutros = 99,
@@ -7915,7 +7915,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 3 - Indenização e rescisão de contrato, inclusive a título de PDV e acidentes de trabalho
         /// </summary>
         [XmlEnum("3")]
-        IndenizacaoRecisao = 3,
+        IndenizacaoRescisao = 3,
 
         /// <summary>
         /// 4 - Abono pecuniário
