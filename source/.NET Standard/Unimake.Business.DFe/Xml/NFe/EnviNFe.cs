@@ -3112,7 +3112,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializePFCPField() => PFCP > 0;
 
-        public bool ShouldSerializeVFCPField() => VFCP > 0;
+        public bool ShouldSerializeVFCPField() => PFCP > 0;
 
         public bool ShouldSerializePMVASTField() => PMVAST != null;
 
