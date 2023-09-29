@@ -8000,5 +8000,162 @@ namespace Unimake.Business.DFe.Servicos
         PaisNaoExigeNIF = 3,
     }
     #endregion
+
+    #region Informações sobre isenção e imunidade
+    /// <summary>
+    /// Informações sobre isenção e imunidade.
+    /// </summary>
+    public enum IsencaoEImunidade
+    {
+        /// <summary>
+        /// 2 - Instituição de educação e de assistência social sem fins lucrativos, a que se refere o art. 12 da Lei nº 9.532, de 10 de dezembro de 1997;
+        /// </summary>
+        [XmlEnum("2")]
+        InstituicaoDeEducacao = 2,
+
+        /// <summary>
+        /// 3 - Instituição de caráter filantrópico, recreativo, cultural, científico e às associações civis, a que se refere o art. 15 da Lei nº 9.532, de 1997. 
+        /// Informação a ser prestada exclusivamente por órgãos da Administração Pública Federal Direta, autarquias e fundações da Administração Pública Federal, empresas públicas, sociedades de economia mista, ou demais entidades em que a que União detenha maioria do capital social sujeito a voto, recebe recursos do Tesouro Nacional e está obrigada a registrar a execução orçamentária no Siafi
+        /// </summary>
+        [XmlEnum("3")]
+        InstituicaoFilantropica = 3,
+    }
+    #endregion
+
+    #region Relação da fonte pagadora com o beneficiário
+    /// <summary>
+    /// Relação da fonte pagadora com o beneficiário.
+    /// </summary>
+    public enum RelacaoFontePagadora
+    {
+        /// <summary>
+        /// 500 - A fonte pagadora é matriz da beneficiária no exterior.
+        /// </summary>
+        [XmlEnum("500")]
+        MatrizNoExterior = 500,
+
+        /// <summary>
+        /// 510 - A fonte pagadora é filial, sucursal ou agência de beneficiária no exterior.
+        /// </summary>
+        [XmlEnum("510")]
+        FilialNoExterior = 510,
+
+        /// <summary>
+        /// 520 - A fonte pagadora é controlada ou coligada da beneficiária no exterior, na forma dos §§ 1º e 2º do art. 243 da Lei nº 6.404, de 15 de dezembro de 19
+        /// </summary>
+        [XmlEnum("520")]
+        ControladaOuColigada = 520,
+
+        /// <summary>
+        /// 530 - A fonte pagadora é controladora ou coligada da beneficiária no exterior, na forma dos §§ 1º e 2º do art. 243 da Lei nº 6.404, de 197
+        /// </summary>
+        [XmlEnum("530")]
+        ControladoraOuColigada = 530,
+
+        /// <summary>
+        /// 540 - A fonte pagadora e a beneficiária no exterior estão sob controle societário ou administrativo comum ou quando pelo menos 10% do capital de cada uma, pertencer a uma mesma pessoa física ou jurídica
+        /// </summary>
+        [XmlEnum("540")]
+        ControleSocietario = 540,
+
+        /// <summary>
+        /// 550 - A fonte pagadora e a beneficiária no exterior têm participação societária no capital de uma terceira pessoa jurídica, cuja soma as caracterize como controladoras ou coligadas na forma dos §§ 1º e 2º do art. 243 da Lei nº 6.404, de 1976.
+        /// </summary>
+        [XmlEnum("550")]
+        ParticipacaoSocietaria = 550,
+
+        /// <summary>
+        /// 560 - A fonte pagadora ou a beneficiária no exterior mantenha contrato de exclusividade como agente, como distribuidor ou como concessionário nas operações com bens, serviços e direitos.
+        /// </summary>
+        [XmlEnum("560")]
+        ContratoDeExclusividade = 560,
+
+        /// <summary>
+        /// 570 - A fonte pagadora e a beneficiária mantêm acordo de atuação conjunta
+        /// </summary>
+        [XmlEnum("570")]
+        AcordoAtuacaoConjunta = 570,
+
+        /// <summary>
+        /// 900 - Não há relação entre a fonte pagadora e a beneficiária no exterior
+        /// </summary>
+        [XmlEnum("900")]
+        SemRelacao = 900,
+    }
+    #endregion
+
+    #region Forma de tributação sobre rendimentos de beneficiários domiciliados no exterior
+    /// <summary>
+    /// Forma de tributação sobre rendimentos de beneficiários domiciliados no exterior
+    /// </summary>
+    public enum FormaDeTributacao
+    {
+        /// <summary>
+        /// 10 - Retenção do IRRF – alíquota padrã
+        /// </summary>
+        [XmlEnum("10")]
+        AliquotaPadrao = 10,
+
+        /// <summary>
+        /// 11 - Retenção do IRRF – alíquota da tabela progressiva
+        /// </summary>
+        [XmlEnum("11")]
+        AliquotaProgressiva = 11,
+
+        /// <summary>
+        /// 12 - Retenção do IRRF – alíquota da tabela progressiva
+        /// </summary>
+        [XmlEnum("12")]
+        AliquotaDiferenciada = 12,
+
+        /// <summary>
+        /// 13 - Retenção do IRRF – alíquota limitada conforme cláusula em convênio
+        /// </summary>
+        [XmlEnum("13")]
+        AliquotaLimitada = 13,
+
+        /// <summary>
+        /// 30 - Retenção do IRRF – outras hipóteses
+        /// </summary>
+        [XmlEnum("30")]
+        OutrasHipoteses = 30,
+
+        /// <summary>
+        /// 40 - Não retenção do IRRF – isenção estabelecida em convênio
+        /// </summary>
+        [XmlEnum("40")]
+        IsencaoConvenio = 40,
+
+        /// <summary>
+        /// 41 - Não retenção do IRRF – isenção prevista em lei interna
+        /// </summary>
+        [XmlEnum("41")]
+        IsencaoLeiInterna = 41,
+
+        /// <summary>
+        /// 42 - Não retenção do IRRF – alíquota zero prevista em lei interna
+        /// </summary>
+        [XmlEnum("42")]
+        AliquotaZeroLeiInterna = 42,
+
+        /// <summary>
+        /// 43 - Não retenção do IRRF – pagamento antecipado do imposto
+        /// </summary>
+        [XmlEnum("43")]
+        PagamentoAntecipado = 43,
+
+        /// <summary>
+        /// 44 - Não retenção do IRRF – medida judicial
+        /// </summary>
+        [XmlEnum("44")]
+        MedidaJudicial = 44,
+
+        /// <summary>
+        /// 50 - Não retenção do IRRF – outras hipóteses
+        /// </summary>
+        [XmlEnum("50")]
+        NaoRetencaoOutrasHipoteses = 50,
+    }
+    #endregion
 }
 #endregion

@@ -7,7 +7,6 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -1194,58 +1193,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #region ShouldSerialize
 
         public bool ShouldSereializeNifBenef() => !string.IsNullOrEmpty(NifBenef);
-
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EndExt")]
-    [ComVisible(true)]
-#endif
-    public class EndExt
-    {
-        [XmlElement("dscLograd")]
-        public string DscLograd { get; set; }
-
-        [XmlElement("nrLograd")]
-        public string NrLograd { get; set; }
-
-        [XmlElement("complem")]
-        public string Complem { get; set; }
-
-        [XmlElement("bairro")]
-        public string Bairro { get; set; }
-
-        [XmlElement("cidade")]
-        public string Cidade { get; set; }
-
-        [XmlElement("estado")]
-        public string Estado { get; set; }
-
-        [XmlElement("codPostal")]
-        public string CodPostal { get; set; }
-
-        [XmlElement("telef")]
-        public string Telef { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSereializeDscLograd() => !string.IsNullOrEmpty(DscLograd);
-
-        public bool ShouldSereializeNrLograd() => !string.IsNullOrEmpty(NrLograd);
-
-        public bool ShouldSereializeComplem() => !string.IsNullOrEmpty(Complem);
-
-        public bool ShouldSereializeBairro() => !string.IsNullOrEmpty(Bairro);
-
-        public bool ShouldSereializeCidade() => !string.IsNullOrEmpty(Cidade);
-
-        public bool ShouldSereializeEstado() => !string.IsNullOrEmpty(Estado);
-
-        public bool ShouldSereializeCodPostal() => !string.IsNullOrEmpty(CodPostal);
-
-        public bool ShouldSereializeTelef() => !string.IsNullOrEmpty(Telef);
 
         #endregion
     }
