@@ -8103,7 +8103,7 @@ namespace Unimake.Business.DFe.Servicos
         AliquotaProgressiva = 11,
 
         /// <summary>
-        /// 12 - Retenção do IRRF – alíquota da tabela progressiva
+        /// 12 - Retenção do IRRF – alíquota diferenciada (países com tributação favorecida)
         /// </summary>
         [XmlEnum("12")]
         AliquotaDiferenciada = 12,
@@ -8118,7 +8118,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 30 - Retenção do IRRF – outras hipóteses
         /// </summary>
         [XmlEnum("30")]
-        OutrasHipoteses = 30,
+        RetencaoOutrasHipoteses = 30,
 
         /// <summary>
         /// 40 - Não retenção do IRRF – isenção estabelecida em convênio
