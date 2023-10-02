@@ -1840,4 +1840,10 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4113254">
+		<Nome>Laranjal - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
