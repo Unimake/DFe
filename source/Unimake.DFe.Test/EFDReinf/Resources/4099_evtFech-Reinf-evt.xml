@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns='http://www.reinf.esocial.gov.br/schemas/evt4099FechamentoDirf/v2_01_02'>
+	<evtFech id="ID1000000000000002021052608080800001">
+		<ideEvento>
+			<perApur>2020-05</perApur>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideContri>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideContri>
+		<ideRespInf>
+			<nmResp>TESTESTESTESTESTESTESTESTESTES</nmResp>
+			<cpfResp>00000000000</cpfResp>
+			<telefone>telefone1</telefone>
+			<email>email1</email>
+		</ideRespInf>
+		<infoFech>
+			<fechRet>1</fechRet>
+		</infoFech>
+	</evtFech>
+</Reinf>

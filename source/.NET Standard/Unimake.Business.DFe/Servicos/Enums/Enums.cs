@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Business.DFe.Xml.NFe;
 
@@ -7777,7 +7779,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Conjuge = 1,
-        
+
         /// <summary>
         /// 2 - Companheiro(a) com o(a) qual tenha filho ou viva há mais de 5 (cinco) anos ou possua declaração de união estável
         /// </summary>
@@ -8155,6 +8157,27 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("50")]
         NaoRetencaoOutrasHipoteses = 50,
+    }
+    #endregion
+
+    #region FechamentoRetencao
+
+    /// <summary>
+    /// Indicativo de fechamento ou reabertura de movimento relativo aos eventos de retenções na fonte(IR, CSLL, Pis/Pasep e Cofins)
+    /// </summary>
+    public enum FechamentoRetencao
+    {
+        /// <summary>
+        /// 0 - Fechamento (fecha o movimento, caso esteja aberto)
+        /// </summary>
+        [XmlEnum("0")]
+        Fechamento = 0,
+
+        /// <summary>
+        /// 1 - Reabertura (reabre o movimento, caso esteja fechado).
+        /// </summary>
+        [XmlEnum("1")]
+        Reabertura = 1,
     }
     #endregion
 }
