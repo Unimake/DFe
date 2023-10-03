@@ -100,7 +100,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="consStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
-        public void Executar(ConsStatServ consStatServ, Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ConsStatServ consStatServ, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
