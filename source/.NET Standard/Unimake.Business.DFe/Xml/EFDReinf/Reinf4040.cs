@@ -103,7 +103,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista IdeNat
         /// </summary>
-        public int GetBoletimCount => (IdeNat != null ? IdeNat.Count : 0);
+        public int GetIdeNatCount => (IdeNat != null ? IdeNat.Count : 0);
 #endif
 
         #region ShouldSerialize
