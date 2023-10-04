@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd">
+	<IdentificacaoRps>
+		<Numero xmlns="http://www.giss.com.br/tipos-v2_04.xsd">0</Numero>
+		<Serie xmlns="http://www.giss.com.br/tipos-v2_04.xsd">Seri1</Serie>
+		<Tipo xmlns="http://www.giss.com.br/tipos-v2_04.xsd">1</Tipo>
+	</IdentificacaoRps>
+	<Prestador>
+		<CpfCnpj xmlns="http://www.giss.com.br/tipos-v2_04.xsd">
+			<Cpf>12345678901</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal xmlns="http://www.giss.com.br/tipos-v2_04.xsd">123456</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>

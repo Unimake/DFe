@@ -1069,7 +1069,7 @@
 	<Arquivo ID="3525904">
 		<Nome>Jundiaí - SP</Nome>
 		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
+		<ArqConfig>JundiaiSP.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3523909">

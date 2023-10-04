@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseFaixaEnvio xmlns="http://www.giss.com.br/consultar-nfse-faixa-envio-v2_04.xsd">
+	<Prestador>
+		<CpfCnpj xmlns="http://www.giss.com.br/tipos-v2_04.xsd">
+			<Cpf>12345678901</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal xmlns="http://www.giss.com.br/tipos-v2_04.xsd">123456</InscricaoMunicipal>
+	</Prestador>
+	<Faixa>
+		<NumeroNfseInicial>0</NumeroNfseInicial>
+		<NumeroNfseFinal>0</NumeroNfseFinal>
+	</Faixa>
+	<Pagina>1</Pagina>
+</ConsultarNfseFaixaEnvio>
