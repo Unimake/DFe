@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="D:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1449427374"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -gw2 -godwarfsets -gl -WG -l -vewnhibq -FiD:\testenfe\delphi\Unimake.DFe\lib\x86_64-win64 -FuD:\lazarus\lcl\units\x86_64-win64\win32 -FuD:\lazarus\lcl\units\x86_64-win64 -FuD:\lazarus\components\freetype\lib\x86_64-win64 -FuD:\lazarus\components\lazutils\lib\x86_64-win64 -FuD:\lazarus\packager\units\x86_64-win64 -FuD:\testenfe\delphi\Unimake.DFe\ -FUD:\testenfe\delphi\Unimake.DFe\lib\x86_64-win64\ -FED:\testenfe\delphi\Unimake.DFe\ -oD:\testenfe\delphi\Unimake.DFe\Treinamento.exe -dLCL -dLCLwin32 Treinamento.lpr"/>
+</CONFIG>
