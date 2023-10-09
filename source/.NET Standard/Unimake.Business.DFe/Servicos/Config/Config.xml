@@ -1846,4 +1846,10 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5206206">
+		<Nome>Cristalina - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>CristalinaGO.xml</ArqConfig>	
+		<PadraoNFSe>BSITBR</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
