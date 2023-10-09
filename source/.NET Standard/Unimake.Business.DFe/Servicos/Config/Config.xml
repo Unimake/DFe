@@ -1852,4 +1852,10 @@
 		<ArqConfig>CristalinaGO.xml</ArqConfig>	
 		<PadraoNFSe>BSITBR</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5218003">
+		<Nome>Porangatu - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>PorangatuGO.xml</ArqConfig>
+		<PadraoNFSe>CENTI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

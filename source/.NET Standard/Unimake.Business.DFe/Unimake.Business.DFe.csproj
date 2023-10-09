@@ -343,6 +343,7 @@
 		<None Remove="Servicos\Config\NFSe\PelotasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PetropolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PortaoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
@@ -792,6 +793,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CristalinaGO.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PorangatuGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JundiaiSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarataRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

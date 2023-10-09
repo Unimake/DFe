@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="2.00">
+			<Descricao>Envio de lote RPS - Sincrono</Descricao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/gerar/go/porangatu</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/gerar/homologacao/go/porangatu</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.00</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</GerarNfse>
+		<CancelarNfse versao="2.00">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/cancelar/go/porangatu</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/cancelar/homologacao/go/porangatu</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>2.00</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://api.centi.com.br/nfe/consultar/rps/go/porangatu</RequestURIProducao>
+			<RequestURIHomologacao>https://api.centi.com.br/nfe/consultar/homologacao/rps/go/porangatu</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/json</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>2.00</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>
