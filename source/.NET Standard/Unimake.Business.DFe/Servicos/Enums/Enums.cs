@@ -8180,5 +8180,152 @@ namespace Unimake.Business.DFe.Servicos
         Reabertura = 1,
     }
     #endregion
+
+    #region Eventos da EFD-Reinf
+
+    /// <summary>
+    /// Eventos da EFD-Reinf
+    /// </summary>
+    public enum EventosEFDReinf
+    {
+        /// <summary>
+        /// R-1000 - Informações do contribuinte
+        /// </summary>
+        [XmlEnum("R-1000")]
+        R1000 = 1000,
+
+        /// <summary>
+        /// R-1050 - Tabela de entidades ligadas
+        /// </summary>
+        [XmlEnum("R-1050")]
+        R1050 = 1050,
+
+        /// <summary>
+        /// R-1070 - Tabela de processos administrativos/judiciais
+        /// </summary>
+        [XmlEnum("R-1070")]
+        R1070 = 1070,
+
+        /// <summary>
+        /// R-2010 - Retenção de contribuição previdenciária - serviços tomados
+        /// </summary>
+        [XmlEnum("R-2010")]
+        R2010 = 2010,
+
+        /// <summary>
+        /// R-2020 - Retenção de contribuição previdenciária - serviços prestados
+        /// </summary>
+        [XmlEnum("R-2020")]
+        R2020 = 2020,
+
+        /// <summary>
+        /// R-2030 - Recursos recebidos por associação desportiva
+        /// </summary>
+        [XmlEnum("R-2030")]
+        R2030 = 2030,
+
+        /// <summary>
+        /// R-2040 - Recursos repassados para associação desportiva
+        /// </summary>
+        [XmlEnum("R-2040")]
+        R2040 = 2040,
+
+        /// <summary>
+        /// R-2050 - Comercialização de produção
+        /// </summary>
+        [XmlEnum("R-2050")]
+        R2050 = 2050,
+
+        /// <summary>
+        /// R-2055 - Aquisição de produção rural
+        /// </summary>
+        [XmlEnum("R-2055")]
+        R2055 = 2055,
+
+        /// <summary>
+        /// R-2060 - Contribuição previdenciária sobre a receita bruta - CPRB
+        /// </summary>
+        [XmlEnum("R-2060")]
+        R2060 = 2060,
+
+        /// <summary>
+        /// R-2098 - Reabertura dos eventos da série R-2000
+        /// </summary>
+        [XmlEnum("R-2098")]
+        R2098 = 2098,
+
+        /// <summary>
+        /// R-2099 - Fechamento dos eventos da série R-2000
+        /// </summary>
+        [XmlEnum("R-2099")]
+        R2099 = 2099,
+
+        /// <summary>
+        /// R-3010 - Receita de espetáculos desportivos
+        /// </summary>
+        [XmlEnum("R-3010")]
+        R3010 = 3010,
+
+        /// <summary>
+        /// R-4010 - Pagamentos/créditos a beneficiário pessoa física
+        /// </summary>
+        [XmlEnum("R-4010")]
+        R4010 = 4010,
+
+        /// <summary>
+        /// R-4020 - Pagamentos/créditos a beneficiário pessoa jurídica
+        /// </summary>
+        [XmlEnum("R-4020")]
+        R4020 = 4020,
+
+        /// <summary>
+        /// R-4040 - Pagamentos/créditos a beneficiários não identificados
+        /// </summary>
+        [XmlEnum("R-4040")]
+        R4040 = 4040,
+
+        /// <summary>
+        /// R-4080 - Retenção no recebimento
+        /// </summary>
+        [XmlEnum("R-4080")]
+        R4080 = 4080,
+
+        /// <summary>
+        /// R-4099 - Fechamento/reabertura dos eventos da série R-4000
+        /// </summary>
+        [XmlEnum("R-4099")]
+        R4099 = 4099,
+
+        /// <summary>
+        /// R-9000 - Exclusão de eventos
+        /// </summary>
+        [XmlEnum("R-9000")]
+        R9000 = 9000,
+
+        /// <summary>
+        /// R-9001 - Bases e tributos - contribuição previdenciária
+        /// </summary>
+        [XmlEnum("R-9001")]
+        R9001 = 9001,
+
+        /// <summary>
+        /// R-9005 - Bases e tributos - retenções na fonte
+        /// </summary>
+        [XmlEnum("R-9005")]
+        R9005 = 9005,
+
+        /// <summary>
+        /// R-9011 - Consolidação de bases e tributos - contribuição previdenciária
+        /// </summary>
+        [XmlEnum("R-9011")]
+        R9011 = 9011,
+
+        /// <summary>
+        /// R-9015 - Consolidação das retenções na fonte
+        /// </summary>
+        [XmlEnum("R-9015")]
+        R9015 = 9015,
+    }
+    #endregion
 }
 #endregion

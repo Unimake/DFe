@@ -50,7 +50,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoExclusao
     {
         [XmlElement("tpEvento")]
-        public string TpEvento { get; set; }
+        public EventosEFDReinf TpEvento { get; set; }
 
         [XmlElement("nrRecEvt")]
         public string NrRecEvt { get; set; }
@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("perApur")]
         public string PerApurField
         {
-            get => PerApur.ToString("yyyy-MM-dd");
+            get => PerApur.ToString((TpEvento == EventosEFDReinf.R3010 ? "yyyy-MM-dd": "yyyy-MM"));
 #if INTEROP
             set => PerApur = DateTime.Parse(value);
 #else
