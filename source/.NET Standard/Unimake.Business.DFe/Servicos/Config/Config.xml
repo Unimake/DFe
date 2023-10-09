@@ -1858,4 +1858,10 @@
 		<ArqConfig>PorangatuGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4318614">
+		<Nome>São José do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoJoseDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -360,6 +360,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhais.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoseDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
@@ -791,6 +792,9 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CristalinaGO.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoSulRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PorangatuGO.xml" />
