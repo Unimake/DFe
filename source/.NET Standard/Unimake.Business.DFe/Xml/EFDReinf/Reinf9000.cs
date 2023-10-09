@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("perApur")]
         public string PerApurField
         {
-            get => PerApur.ToString("yyyy-MM");
+            get => PerApur.ToString("yyyy-MM-dd");
 #if INTEROP
             set => PerApur = DateTime.Parse(value);
 #else
