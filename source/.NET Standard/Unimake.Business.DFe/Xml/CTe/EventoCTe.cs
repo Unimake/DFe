@@ -1452,7 +1452,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlAttribute(DataType = "ID", AttributeName = "Id")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString() + ChCTe + NSeqEvento.ToString((Convert.ToDecimal(DetEvento.VersaoEvento) >= 400 ? "000" : "00"));
+            get => "ID" + ((int)TpEvento).ToString() + ChCTe + NSeqEvento.ToString((DetEvento.VersaoEvento == "3.00" ? "00" : "000"));
             set => _ = value;
         }
 
