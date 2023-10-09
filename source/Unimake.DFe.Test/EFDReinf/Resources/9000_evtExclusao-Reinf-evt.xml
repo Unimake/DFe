@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evtExclusao/v2_01_02">
+	<evtExclusao id="ID1000000000000002021052608080800001">
+		<ideEvento>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideContri>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideContri>
+		<infoExclusao>
+			<tpEvento>R-2010</tpEvento>
+			<nrRecEvt>123456-12-1234-1234-123456</nrRecEvt>
+			<perApur>2021-05</perApur>
+		</infoExclusao>
+	</evtExclusao>
+</Reinf>
