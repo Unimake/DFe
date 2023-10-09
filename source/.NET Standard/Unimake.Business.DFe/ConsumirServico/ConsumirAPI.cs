@@ -35,13 +35,20 @@ namespace Unimake.Business.DFe
 
             var Content = EnveloparXML(apiConfig, xml);
 
-            var Handler = new HttpClientHandler
-            {
-                ClientCertificateOptions = ClientCertificateOption.Automatic,
-                Credentials = CredentialCache.DefaultCredentials
-            };
+            var httpClientHandler = new HttpClientHandler();
 
-            var httpWebRequest = new HttpClient(Handler)
+            if (!apiConfig.UsaCertificadoDigital)
+            {
+                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                httpClientHandler.Credentials = CredentialCache.DefaultCredentials;
+            }
+            else
+            {
+                httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Manual;
+                httpClientHandler.ClientCertificates.Add(certificado);
+            }
+
+            var httpWebRequest = new HttpClient(httpClientHandler)
             {
                 BaseAddress = new Uri(apiConfig.RequestURI),
             };
@@ -54,7 +61,6 @@ namespace Unimake.Business.DFe
             ServicePointManager.Expect100Continue = false;
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-
 
             var postData = new HttpResponseMessage();
             if (apiConfig.MetodoAPI.ToLower() == "get")
@@ -89,7 +95,7 @@ namespace Unimake.Business.DFe
             {
                 var stream = default(Stream);
                 retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, postData, ref stream);
-                RetornoStream =  stream != null ? stream : null;
+                RetornoStream = stream != null ? stream : null;
             }
             catch (XmlException)
             {
@@ -172,7 +178,7 @@ namespace Unimake.Business.DFe
                     break;
 
                 case PadraoNFSe.BAUHAUS:        //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5dasdasde4948f";
-                    
+
                     if (apiConfig.RequestURI.IndexOf("NumeroRps") > 0)
                     {
                         chave = xml.GetElementsByTagName("NumeroRps")[0].InnerText;
@@ -243,7 +249,6 @@ namespace Unimake.Business.DFe
 
                 };
 
-
                 if (!string.IsNullOrWhiteSpace(apiConfig.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
                 {
                     var usuario = new StringContent(apiConfig.MunicipioUsuario);
@@ -282,10 +287,13 @@ namespace Unimake.Business.DFe
                         f1,
                         xmlContent
                     };
+
                     return MultiPartContent2;
                 }
+
                 return MultiPartContent;
             }
+
             return new StringContent(xmlBody, Encoding.UTF8, apiConfig.ContentType);
         }
     }
