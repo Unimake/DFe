@@ -14,7 +14,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:enviarLoteNotas><xml>{xmlBody}</xml></ws:enviarLoteNotas></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:cancelarNotaFiscal><xml>{xmlBody}</xml></ws:cancelarNotaFiscal></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -52,7 +52,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:consultarNotaFiscal><xml>{xmlBody}</xml></ws:consultarNotaFiscal></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -71,7 +71,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterCriticaLote><xml>{xmlBody}</xml></ws:obterCriticaLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -90,7 +90,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotaFiscalXml><xml>{xmlBody}</xml></ws:obterNotaFiscalXml></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -109,7 +109,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotasEmPDF><xml>{xmlBody}</xml></ws:obterNotasEmPDF></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>obterNotasEmPDFResponse</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -129,7 +129,7 @@
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:inutilizacao><xml>{xmlBodyScapeRetorno}</xml></ws:inutilizacao></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:inutilizacao><xml>{xmlBodyScapeRetorno}</xml></ws:inutilizacao></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
