@@ -349,6 +349,7 @@
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PousoAltoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\RedencaoPA.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
@@ -805,6 +806,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuiabaMT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RedencaoPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

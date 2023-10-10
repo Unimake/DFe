@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe
         /// <returns></returns>
         public static XmlDocument ReceberRetorno(ref APIConfig Config, HttpResponseMessage Response, ref Stream stream)
         {
-            var ResponseString = Response.Content.ReadAsStringAsync().Result;
+            var responseString = Response.Content.ReadAsStringAsync().Result;
 
             if (Response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
             {
@@ -32,40 +32,40 @@ namespace Unimake.Business.DFe
             }
 
             var resultadoRetorno = new XmlDocument();
-            Response.Content.Headers.ContentType.MediaType = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
+            var tipoRetorno = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
-            if (!ResponseString.StartsWith("<") && Response.IsSuccessStatusCode)
+            if (!responseString.StartsWith("<") && Response.IsSuccessStatusCode)
             {   
-                if(ResponseString.StartsWith(" "))
+                if(responseString.StartsWith(" "))
                 {
-                    ResponseString = ResponseString.Substring(1);
+                    responseString = responseString.Substring(1);
                 }
             }
             
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
-            switch (Response.Content.Headers.ContentType.MediaType)             //(Config.ContentType)
+            switch (tipoRetorno)             //(Config.ContentType)
             {
                 case "text/plain": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                 case "application/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                 case "text/xml": //Retorno XML -> Não temos que fazer nada, já retornou no formato mais comum
                     try
                     {
-                        resultadoRetorno.LoadXml(ResponseString);
+                        resultadoRetorno.LoadXml(responseString);
                     }
                     catch
                     {
-                        resultadoRetorno.LoadXml(StringToXml(ResponseString));
+                        resultadoRetorno.LoadXml(StringToXml(responseString));
                     }
                     break;
 
                 case "application/json": //Retorno JSON -> Vamos ter que converter para XML
                     try
                     {
-                        resultadoRetorno.LoadXml(BuscarXML(ref Config, ResponseString));
+                        resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
                     }
                     catch
                     {
-                        resultadoRetorno.LoadXml(ResponseString);
+                        resultadoRetorno.LoadXml(responseString);
                     }
 
                     break;
@@ -73,20 +73,22 @@ namespace Unimake.Business.DFe
                 case "text/html": //Retorno HTML -> Entendemos que sempre será erro
                     try
                     {
-                        resultadoRetorno.LoadXml(BuscarXML(ref Config, ResponseString));
+                        resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
                     }
                     catch
                     {
-                        resultadoRetorno.LoadXml(HtmlToPlainText(ResponseString));
+                        resultadoRetorno.LoadXml(HtmlToPlainText(responseString));
                     }
                     break;
 
                 case "application/pdf":
-                    ResponseString = ResponseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
-                    ResponseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(ResponseString));
+                    responseString = responseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
+                    responseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(responseString));
                     stream  = Response.IsSuccessStatusCode ?  Response.Content.ReadAsStreamAsync().Result : null;
-                    resultadoRetorno = CreateXmlDocument(ResponseString);
+                    resultadoRetorno = CreateXmlDocument(responseString);
                     break;
+
+                default: return CreateXmlDocument(Response.Content.Headers.ToString());
             }
 
             if (Config.PadraoNFSe == PadraoNFSe.IPM)

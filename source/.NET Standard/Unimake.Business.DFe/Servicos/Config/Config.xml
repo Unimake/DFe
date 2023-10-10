@@ -1864,4 +1864,10 @@
 		<ArqConfig>SaoJoseDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1506138">
+		<Nome>Redencao - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>RedencaoPA.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
