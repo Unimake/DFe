@@ -107,10 +107,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("tpInscEstabPrest")]
         public TipoInscricaoEstabelecimento tpInscEstab { get; set; }
 
-        /// <summary>
-        /// Validação: A inscrição informada deve ser compatível com o {tpInscEstab}.
-        /// Se {indObra} = [0], o número informado deve ser um CNPJ.Se {indObra} for igual a[1, 2] o número informado deve ser um CNO.
-        /// </summary>
         [XmlElement("nrInscEstabPrest")]
         public string NrInscEstabPrest { get; set; }
 

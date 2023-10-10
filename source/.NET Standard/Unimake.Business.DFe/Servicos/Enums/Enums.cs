@@ -7354,6 +7354,12 @@ namespace Unimake.Business.DFe.Servicos
         CNPJ = 1,
 
         /// <summary>
+        /// 3 - CAEPF.
+        /// </summary>
+        [XmlEnum("3")]
+        CAEPF = 3,
+
+        /// <summary>
         /// 4 - Cadastro Nacional de Obras.
         /// </summary>
         [XmlEnum("4")]
@@ -8325,6 +8331,60 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("R-9015")]
         R9015 = 9015,
+    }
+    #endregion
+
+    #region Código do Retorno
+
+    /// <summary>
+    /// Código do Retorno
+    /// </summary>
+    public enum CodigoDoRetorno
+    {
+        /// <summary>
+        /// 0 - Sucesso
+        /// </summary>
+        [XmlEnum("0")]
+        Sucesso = 0,
+
+        /// <summary>
+        /// 1 - Erro
+        /// </summary>
+        [XmlEnum("1")]
+        Erro = 1,
+
+        /// <summary>
+        /// 2 - Em Processamento
+        /// </summary>
+        [XmlEnum("2")]
+        EmProcessamento = 2,
+    }
+    #endregion
+
+    #region Tipo da ocorrência
+
+    /// <summary>
+    /// Tipo da ocorrência
+    /// </summary>
+    public enum TipoDaOcorrencia
+    {
+        /// <summary>
+        /// 1 - Erro
+        /// </summary>
+        [XmlEnum("1")]
+        Erro = 1,
+
+        /// <summary>
+        /// 2 - Aviso
+        /// </summary>
+        [XmlEnum("2")]
+        Aviso = 2,
+
+        /// <summary>
+        /// 3 - Informação
+        /// </summary>
+        [XmlEnum("3")]
+        Informacao = 3,
     }
     #endregion
 }
