@@ -43,7 +43,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/json</WebContentType>
-			<WebTagRetorno>idDps</WebTagRetorno>
+			<WebTagRetorno>chaveAcesso</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>

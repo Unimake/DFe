@@ -120,7 +120,7 @@ namespace Unimake.Business.DFe
             try
             {
                 node = xml.GetElementsByTagName(config.TagRetorno)[0];         //tag retorno
-                if (node != null)
+                if (node != null && config.TagRetorno != "chaveAcesso")
                 {
                     var temp = Compress.GZIPDecompress(node.InnerText);
                     config.TagRetorno = "prop:innertext";
