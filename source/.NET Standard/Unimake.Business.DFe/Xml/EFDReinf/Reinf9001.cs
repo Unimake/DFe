@@ -143,7 +143,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeStatus")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RegOcorrs")]
     [ComVisible(true)]
 #endif
     public class RegOcorrs
@@ -529,7 +529,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoCRTom")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RPrest")]
     [ComVisible(true)]
 #endif
     public class RPrest
