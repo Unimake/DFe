@@ -1888,4 +1888,10 @@
 		<ArqConfig>CanoasRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321436">
+		<Nome>Terra de Areia - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TerraDeAreiaRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
