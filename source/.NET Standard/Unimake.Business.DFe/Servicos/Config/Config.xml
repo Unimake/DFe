@@ -1882,4 +1882,10 @@
 		<ArqConfig>AraquariSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4304606">
+		<Nome>Canoas - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CanoasRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
