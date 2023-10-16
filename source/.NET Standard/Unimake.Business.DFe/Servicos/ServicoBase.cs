@@ -38,7 +38,8 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
         private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
-            if (!string.IsNullOrWhiteSpace(tagAssinatura))
+            
+                if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
             {
                 if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
@@ -223,7 +224,7 @@ namespace Unimake.Business.DFe.Servicos
                 return;
             }
 
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura))
+            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && Configuracoes.NaoAssina != null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
             {
                 if (!AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
                 {

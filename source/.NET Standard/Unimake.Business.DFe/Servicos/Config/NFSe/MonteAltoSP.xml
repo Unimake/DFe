@@ -19,6 +19,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<NaoAssina>producao</NaoAssina>
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
@@ -38,6 +39,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<NaoAssina>producao</NaoAssina>
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
@@ -57,6 +59,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<NaoAssina>producao</NaoAssina>
 		</GerarNfse>
 		<CancelarNfse versao="2.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
@@ -76,6 +79,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<NaoAssina>producao</NaoAssina>
 		</CancelarNfse>
 		<SubstituirNfse versao="2.01">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
@@ -95,6 +99,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<NaoAssina>producao</NaoAssina>
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.01">
 			<Descricao>Consulta lote RPS</Descricao>

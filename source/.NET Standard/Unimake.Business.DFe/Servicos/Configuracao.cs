@@ -337,6 +337,11 @@ namespace Unimake.Business.DFe.Servicos
                                 ConverteSenhaBase64 = XMLUtility.TagRead(elementPropriedades, "ConverteSenhaBase64").ToLower() == "true" ? true : false;
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "NaoAssina"))
+                            {
+                                NaoAssina = XMLUtility.TagRead(elementPropriedades, "NaoAssina").ToLower() == "homologação" ? TipoAmbiente.Homologacao : TipoAmbiente.Producao;
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -1009,6 +1014,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Chave de acesso utilizada nos URLs do padrão NACIONAL *(quando se necessita fazer o replace na url)
         /// </summary>
         public string ChaveAcesso { get; set; }
+
+        /// <summary>
+        /// Propriedade criada para atender o padrão FIORILLI, Monte Alto - SP; O município não precisa de assinatura em produção mas precisa em homologação.
+        /// </summary>
+        public TipoAmbiente? NaoAssina;
 
         /// <summary>
         /// O serviço consome API? true ou false
