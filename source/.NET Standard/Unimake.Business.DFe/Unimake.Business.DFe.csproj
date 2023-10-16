@@ -235,6 +235,7 @@
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AguasDeLindoiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
+		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
@@ -795,6 +796,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CristalinaGO.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AraquariSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDoSulRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

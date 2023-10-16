@@ -1876,4 +1876,10 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4201307">
+		<Nome>Araquari - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>AraquariSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
