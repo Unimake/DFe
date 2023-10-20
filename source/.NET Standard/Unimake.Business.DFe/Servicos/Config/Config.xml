@@ -1894,4 +1894,10 @@
 		<ArqConfig>TerraDeAreiaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1100205">
+		<Nome>Porto Velho - RO</Nome>
+		<UF>RO</UF>
+		<ArqConfig>PortoVelhoRO.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

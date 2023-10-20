@@ -348,6 +348,7 @@
 		<None Remove="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PortaoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
+		<None Remove="Servicos\Config\NFSe\PortoVelhoRO.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PousoAltoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
@@ -802,6 +803,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraquariSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoVelhoRO.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TerraDeAreiaRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
