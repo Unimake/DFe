@@ -70,7 +70,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarNfse><xml>{xmlBodyScapeEnvio}</xml></consultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -89,7 +89,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
