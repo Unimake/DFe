@@ -115,10 +115,17 @@ namespace Unimake.Business.DFe.Validator.CTeOS
                 var UFIni = Tag.GetValue("UFIni"); //UF inicial do transporte
                 var UFFim = Tag.GetValue("UFFim"); //UF Final do transporte
 
+                if (Tag.Parent.GetElement("infCTeNorm") == null)
+                {
+                    ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações com CTe normal/substituição (<tpCTe> = 1 ou 3) de transporte rodoviário de pessoas é obrigatório informar o grupo de tag <infCTeNorm>." +
+                        " [TAG: <infCTeNorm> do grupo de tag <infCte>]"));
+                }
+
                 if (UFIni != "EX" && UFFim != "EX")
                 {
                     if (UFIni != UFFim) //Operação Interestadual
                     {
+
                         if (string.IsNullOrWhiteSpace(Tag.Parent.GetElement("infCTeNorm").GetElement("infModal").GetElement("rodoOS").GetValue("TAF")))
                         {
                             ThrowHelper.Instance.Throw(new ValidatorDFeException("Para operações interestaduais com CTe normal/substituição de transporte rodoviário de pessoas é obrigatório informar o conteúdo da tag <TAF> (Termo de Autorização de Fretamento) no CTe." +
