@@ -272,6 +272,7 @@
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
@@ -799,6 +800,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CanoasRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CotiaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CristalinaGO.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

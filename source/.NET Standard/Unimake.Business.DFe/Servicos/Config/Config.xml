@@ -1900,4 +1900,10 @@
 		<ArqConfig>PortoVelhoRO.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3513009">
+		<Nome>Cotia - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CotiaSP.xml</ArqConfig>
+		<PadraoNFSe>GIAP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
