@@ -178,7 +178,7 @@ namespace Unimake.Business.DFe
                     break;
 
                 case PadraoNFSe.BAUHAUS:        //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5dasdasde4948f";
-                    
+
                     if (apiConfig.RequestURI.IndexOf("NumeroRps") > 0)
                     {
                         chave = xml.GetElementsByTagName("NumeroRps")[0].InnerText;
@@ -224,10 +224,19 @@ namespace Unimake.Business.DFe
 
                 return temp;
             }
-
-            if (apiConfig.ContentType == "multipart/form-data")
+            else if (apiConfig.ContentType == "multipart/form-data")
             {
-                var path = xml.BaseURI.Substring(8, xml.BaseURI.Length - 8);
+                var path = string.Empty;
+
+                if (string.IsNullOrWhiteSpace(xml.BaseURI))
+                {
+                    path = "";
+                }
+                else
+                {
+                    path = xml.BaseURI.Substring(8, xml.BaseURI.Length - 8);
+                }
+
                 var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
 
                 #region ENVIO EM BYTES
