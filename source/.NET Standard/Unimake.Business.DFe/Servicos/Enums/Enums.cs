@@ -8387,5 +8387,32 @@ namespace Unimake.Business.DFe.Servicos
         Informacao = 3,
     }
     #endregion
+
+    #region Indicativo de existência de valores de bases ou de tributos.
+
+    /// <summary>
+    /// Indicativo de existência de valores de bases ou de tributos.
+    /// </summary>
+    public enum IndicativoExistenciaTributos
+    {
+        /// <summary>
+        /// 1 - Há informações de bases e/ou de tributos.
+        /// </summary>
+        [XmlEnum("1")]
+        Tributo = 1,
+
+        /// <summary>
+        /// 2 - Há movimento, porém não há informações de bases ou de tributos.
+        /// </summary>
+        [XmlEnum("2")]
+        SemInformacoes = 2,
+
+        /// <summary>
+        /// 3 - Não há movimento na competência.
+        /// </summary>
+        [XmlEnum("3")]
+        SemMovimento = 3,
+    }
+    #endregion
 }
 #endregion
