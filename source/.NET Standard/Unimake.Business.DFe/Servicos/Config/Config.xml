@@ -1924,4 +1924,10 @@
 		<ArqConfig>BarreirasBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4319505">
+		<Nome>São Sebastião do Caí - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoSebastiaoDoCaiRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
