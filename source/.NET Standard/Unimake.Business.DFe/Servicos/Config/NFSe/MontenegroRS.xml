@@ -24,7 +24,7 @@
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEcancelamento</WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
-			<WebEnderecoProducao>http://montenegro.govbr.cloud/NFSe.Portal.Integracao/Services.svc</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEcancelamento?wsdl</WebEnderecoProducao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
