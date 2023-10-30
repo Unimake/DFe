@@ -325,6 +325,7 @@
 		<None Remove="Servicos\Config\NFSe\MonteAltoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MontenegroRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
+		<None Remove="Servicos\Config\NFSe\MossoroRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
@@ -805,6 +806,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraquariSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MossoroRN.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoVelhoRO.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

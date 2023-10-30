@@ -1912,4 +1912,10 @@
 		<ArqConfig>OlindaPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2408003">
+		<Nome>Mossoró - RN</Nome>
+		<UF>RN</UF>
+		<ArqConfig>MossoroRN.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
