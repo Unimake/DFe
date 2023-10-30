@@ -1918,4 +1918,10 @@
 		<ArqConfig>MossoroRN.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2903201">
+		<Nome>Barreiras - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>BarreirasBA.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
