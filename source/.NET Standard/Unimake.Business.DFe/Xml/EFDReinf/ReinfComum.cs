@@ -69,16 +69,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class InfoTpServ
     {
-        /// <summary>
-        /// O código informado deve existir na Tabela 06.
-        /// </summary>
         [XmlElement("tpServico")]
         public string TpServico { get; set; }
 
-
-        /// <summary>
-        /// Valor da base de cálculo da retenção da contribuição previdenciária.
-        /// </summary>
         [XmlIgnore]
         public double VlrBaseRet { get; set; }
 
@@ -89,11 +82,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrBaseRet = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Preencher com o valor da retenção apurada de acordo com o que determina a legislação vigente relativa aos serviços contidos na nota fiscal/fatura. 
-        /// Se {indCPRB} = [0] preencher com valor correspondente a 11% de {vlrBaseRet}. 
-        /// Se {indCPRB}= [1] preencher com valor correspondente a 3,5% de {vlrBaseRet}.
-        /// </summary>
         [XmlIgnore]
         public double VlrRetencao { get; set; }
 
@@ -104,9 +92,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrRetencao = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Informar o valor da retenção destacada na nota fiscal relativo aos serviços subcontratados, se houver, desde que todos os documentos envolvidos se refiram à mesma competência e ao mesmo serviço, conforme disciplina a legislação.
-        /// </summary>
         [XmlIgnore]
         public double VlrRetSub { get; set; }
 
@@ -117,9 +102,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrRetSub = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Valor da retenção principal que deixou de ser efetuada pelo contratante ou que foi depositada em juízo em decorrência de decisão judicial/administrativa.
-        /// </summary>
         [XmlIgnore]
         public double VlrNRetPrinc { get; set; }
 
@@ -130,9 +112,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrNRetPrinc = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 15 anos de contribuição.
-        /// </summary>
         [XmlIgnore]
         public double VlrServicos15 { get; set; }
 
@@ -143,9 +122,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrServicos15 = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 20 anos de contribuição.
-        /// </summary>
         [XmlIgnore]
         public double VlrServicos20 { get; set; }
 
@@ -156,9 +132,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrServicos20 = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Valor dos serviços prestados por segurados em condições especiais, cuja atividade permita concessão de aposentadoria especial após 25 anos de contribuição.
-        /// </summary>
         [XmlIgnore]
         public double VlrServicos25 { get; set; }
 
@@ -169,10 +142,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrServicos25 = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Adicional apurado de retenção da nota fiscal, caso os serviços tenham sido prestados sob condições especiais que ensejem aposentadoria especial aos trabalhadores após 15, 20, ou 25 anos de contribuição. 
-        /// Preencher com o valor correspondente ao somatório de 4% sobre o {vlrServicos15} mais 3% sobre {vlrServicos20} mais 2% sobre {vlrServicos25}
-        /// </summary>
         [XmlIgnore]
         public double VlrAdicional { get; set; }
 
@@ -183,9 +152,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
             set => VlrAdicional = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        /// <summary>
-        /// Valor da retenção adicional que deixou de ser efetuada pelo contratante ou que foi depositada em juízo em decorrência de decisão judicial/administrativa
-        /// </summary>
         [XmlIgnore]
         public double VlrNRetAdic { get; set; }
 
@@ -226,22 +192,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("tpProcRetPrinc")]
         public TipoProcesso TpProcRetPrinc { get; set; }
 
-        /// <summary>
-        /// Informar o número do processo administrativo/judicial.
-        /// </summary>
+
         [XmlElement("nrProcRetPrinc")]
         public string NrProcRetPrinc { get; set; }
 
-        /// <summary>
-        /// Código do indicativo da suspensão atribuído pelo contribuinte. 
-        /// Este campo deve ser utilizado se, num mesmo processo, houver mais de uma matéria tributária objeto de contestação e as decisões forem diferentes para cada uma.
-        /// </summary>
+
         [XmlElement("codSuspPrinc")]
         public string CodSuspPrinc { get; set; }
 
-        /// <summary>
-        /// Valor da retenção de contribuição previdenciária principal que deixou de ser efetuada em função de processo administrativo ou judicial.
-        /// </summary>
+
         [XmlIgnore]
         public double ValorPrinc { get; set; }
 
