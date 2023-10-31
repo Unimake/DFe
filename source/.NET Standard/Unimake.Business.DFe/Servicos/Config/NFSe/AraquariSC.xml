@@ -15,6 +15,7 @@
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</GerarNfse>
 		<CancelarNfse versao="1.20">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
@@ -30,6 +31,7 @@
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</CancelarNfse>
 		<ConsultarNfse versao="1.20">
 			<Descricao>Consulta da NFSe</Descricao>
@@ -45,6 +47,7 @@
 			<SchemaVersao>1.20</SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
