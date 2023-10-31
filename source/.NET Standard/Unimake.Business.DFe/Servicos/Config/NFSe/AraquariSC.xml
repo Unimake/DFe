@@ -7,8 +7,8 @@
 			<RequestURIHomologacao>https://migracao.atende.net/pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_araquari</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>nfse</TagAssinatura>
-			<TagAtributoID>nfse</TagAtributoID>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -23,8 +23,8 @@
 			<RequestURIHomologacao>https://migracao.atende.net/pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_araquari</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>nfse</TagAssinatura>
-			<TagAtributoID>nfse</TagAtributoID>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>multipart/form-data</WebContentType>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
