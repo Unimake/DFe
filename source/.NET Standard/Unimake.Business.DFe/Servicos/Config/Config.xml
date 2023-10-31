@@ -1930,4 +1930,10 @@
 		<ArqConfig>SaoSebastiaoDoCaiRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4104501">
+		<Nome>Capanema - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
