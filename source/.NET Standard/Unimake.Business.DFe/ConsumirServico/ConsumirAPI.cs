@@ -230,7 +230,7 @@ namespace Unimake.Business.DFe
 
                 if (string.IsNullOrWhiteSpace(xml.BaseURI))
                 {
-                    path = "";
+                    path = "arquivo.xml";
                 }
                 else
                 {
