@@ -95,6 +95,7 @@
 					<SchemaArquivoEspecifico>e111503_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
+			<WebTagRetornoHomologacao>nfeRecepcaoEventoNFResult</WebTagRetornoHomologacao>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
