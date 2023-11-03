@@ -187,7 +187,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/cte/qrcode</UrlQrCodeProducao>
-			<GZIPCompress>false</GZIPCompress>
+			<GZIPCompress>true</GZIPCompress>
 		</Autorizacao>
 	</Servicos>
 </Configuracoes>
