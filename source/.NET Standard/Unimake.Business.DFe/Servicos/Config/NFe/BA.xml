@@ -26,6 +26,7 @@
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebTagRetornoHomologacao>nfeConsultaNFResult</WebTagRetornoHomologacao>
 		</ConsultaProtocolo>
 		<Inutilizacao versao="4.00">
 			<Descricao>Inutilização de números da nota fiscal eletrônica</Descricao>
