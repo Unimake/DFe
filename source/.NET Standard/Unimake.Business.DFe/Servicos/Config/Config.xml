@@ -1936,4 +1936,10 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2607901">
+		<Nome>Jaboatão dos Guararapes - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>JabotaoDosGuararapesPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
