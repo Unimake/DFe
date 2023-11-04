@@ -1942,4 +1942,10 @@
 		<ArqConfig>JabotaoDosGuararapesPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2606200">
+		<Nome>Goiana - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>GoianaPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

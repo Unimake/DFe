@@ -291,6 +291,7 @@
 		<None Remove="Servicos\Config\NFSe\GarcaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Ginfes.xml" />
+		<None Remove="Servicos\Config\NFSe\GoianaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\GravataPE.xml" />
@@ -809,6 +810,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraquariSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GoianaPE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JabotaoDosGuararapesPE.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
