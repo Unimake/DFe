@@ -178,12 +178,6 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4208302">
-		<Nome>Itapema - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4204608">
 		<Nome>Criciúma - SC</Nome>
 		<UF>SC</UF>
@@ -1947,5 +1941,11 @@
 		<UF>PE</UF>
 		<ArqConfig>GoianaPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4208302">
+		<Nome>Itapema - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>ItapemaSC.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
