@@ -3,8 +3,8 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="1.00">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/RecepcionarLoteRps</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -22,8 +22,8 @@
     </RecepcionarLoteRps>
     <GerarNfse versao="1.00">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/GerarNfse</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/GerarNfse</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -41,8 +41,8 @@
     </GerarNfse>
     <CancelarNfse versao="1.00">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/CancelarNfse</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/CancelarNfse</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -60,8 +60,8 @@
     </CancelarNfse>
     <ConsultarLoteRps versao="1.00">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/ConsultarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/ConsultarLoteRps</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -79,8 +79,8 @@
     </ConsultarLoteRps>
     <ConsultarNfsePorRps versao="1.00">
       <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/ConsultarNfsePorRps</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/ConsultarNfsePorRps</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -98,8 +98,8 @@
     </ConsultarNfsePorRps>
     <ConsultarNfseFaixa versao="1.00">
       <Descricao>Consulta NFSe por Faixa</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/ConsultarNfsePorFaixa</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/ConsultarNfsePorFaixa</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -117,8 +117,8 @@
     </ConsultarNfseFaixa>
     <ConsultarNfse versao="1.00">
       <Descricao>Consultar Nfse</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/ConsultarNfse</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/ConsultarNfse</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -136,8 +136,8 @@
     </ConsultarNfse>
     <ConsultarSituacaoLoteRps versao="1.00">
       <Descricao>Consultar Situação Lote Rps</Descricao>
-      <WebEnderecoHomologacao>https://bhisshomologa.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://bhissdigital.pbh.gov.br:443/bhiss-ws/nfse</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://bhisshomologaws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://bhissdigitalws.pbh.gov.br/bhiss-ws/nfse?wsdl</WebEnderecoProducao>
       <WebActionHomologacao>http://ws.bhiss.pbh.gov.br/ConsultarNfse</WebActionHomologacao>
       <WebActionProducao>http://ws.bhiss.pbh.gov.br/ConsultarNfse</WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
