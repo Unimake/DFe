@@ -288,6 +288,7 @@
 		<None Remove="Servicos\Config\NFSe\FernandopolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
+		<None Remove="Servicos\Config\NFSe\GaranhunsPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GarcaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Ginfes.xml" />
@@ -803,6 +804,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GaranhunsPE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CanoasRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

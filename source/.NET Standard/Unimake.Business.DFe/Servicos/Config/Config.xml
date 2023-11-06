@@ -1948,4 +1948,10 @@
 		<ArqConfig>ItapemaSC.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2606002">
+		<Nome>Garanhuns - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>GaranhunsPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
