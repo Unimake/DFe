@@ -5749,5 +5749,32 @@ namespace TreinamentoDLL
             }
 
         }
+
+        private void BtnDesserializandoCTeOS_Click(object sender, EventArgs e)
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"C:\projetos\uninfe\exemplos\CTe 4.00\CTeOS\35170799999999999999670000000000261309301440-cte.xml");
+            XmlCTeOS.CTeOS xml = XMLUtility.Deserializar<XmlCTeOS.CTeOS>(doc);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTeOS,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var autorizacao = new ServicoCTeOS.Autorizacao(xml, configuracao);
+            autorizacao.Executar();
+
+            if (autorizacao.Result.ProtCTe != null)
+            {
+                if (autorizacao.Result.CStat == 103) //103 = Lote Recebido com sucesso
+                {
+                    if (autorizacao.Result.ProtCTe.InfProt.CStat == 100) //Autorizado
+                    {
+                        autorizacao.GravarXmlDistribuicao(@"c:\testenfe\");
+                    }
+                }
+            }
+        }
     }
 }

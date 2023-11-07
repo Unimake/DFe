@@ -65,23 +65,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unimake.Business.DFe, Version=2023.8.8.1728, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.DFe.20230808.1728.13\lib\net472\Unimake.Business.DFe.dll</HintPath>
+    <Reference Include="Unimake.Business.DFe, Version=2023.11.6.1651, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.DFe.20231106.1651.36\lib\net472\Unimake.Business.DFe.dll</HintPath>
     </Reference>
-    <Reference Include="Unimake.Cryptography, Version=2023.7.25.1125, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Cryptography.20230725.1125.26\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
+    <Reference Include="Unimake.Cryptography, Version=2023.11.3.1515, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.Cryptography.20231103.1515.15\lib\netstandard2.0\Unimake.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Unimake.Extensions, Version=2023.7.25.1125, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Extensions.20230725.1125.26\lib\netstandard2.0\Unimake.Extensions.dll</HintPath>
+    <Reference Include="Unimake.Extensions, Version=2023.11.3.1515, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.Extensions.20231103.1515.15\lib\netstandard2.0\Unimake.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unimake.Security.Platform, Version=2023.7.6.1027, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Unimake.Security.Platform.20230706.1027.33\lib\net\Unimake.Security.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Unimake.Unidanfe, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Unidanfe.20221130.1002.52\lib\net\Unimake.Unidanfe.dll</HintPath>
+      <HintPath>packages\Unimake.Unidanfe.20230905.1023.21\lib\net472\Unimake.Unidanfe.dll</HintPath>
     </Reference>
-    <Reference Include="Unimake.Utils, Version=2023.7.25.1125, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Unimake.Utils.20230725.1125.26\lib\netstandard2.0\Unimake.Utils.dll</HintPath>
+    <Reference Include="Unimake.Utils, Version=2023.11.3.1515, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Unimake.Utils.20231103.1515.15\lib\netstandard2.0\Unimake.Utils.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
