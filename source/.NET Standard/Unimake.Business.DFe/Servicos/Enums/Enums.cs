@@ -6325,6 +6325,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("AGILI")]
         AGILI = 43,
+
+        /// <summary>
+        /// WEBFISCO_TECNOLOGIA
+        /// </summary>
+        [Description("WEBFISCO")]
+        WEBFISCO = 44,
     }
 
     #endregion

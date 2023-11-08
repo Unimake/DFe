@@ -60,7 +60,9 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = codMunicipio,
                 Servico = Servico.NFSeConsultarNfse,
-                SchemaVersao = versaoSchema
+                SchemaVersao = versaoSchema,
+                MunicipioSenha = "123",
+                MunicipioUsuario = "123"
             };
 
             var consultarNfse = new ConsultarNfse(conteudoXML, configuracao);

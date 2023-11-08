@@ -26,6 +26,7 @@ namespace Unimake.Business.DFe
         private TipoAmbiente _TipoAmbiente;
         private bool _ConverteSenhaBase64;
         private string _MunicipioSenha;
+        private string _MunicipioUsuario;
 
         #endregion Private Fields
 
@@ -39,6 +40,15 @@ namespace Unimake.Business.DFe
         {
             get => _MunicipioSenha;
             set => _MunicipioSenha = value;
+        }
+
+        /// <summary>
+        /// Municipio Usuario
+        /// </summary>
+        public string MunicipioUsuario
+        {
+            get => _MunicipioUsuario;
+            set => _MunicipioUsuario = value;
         }
 
         /// <summary>

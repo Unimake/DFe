@@ -1960,4 +1960,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3505302">
+		<Nome>Barra Bonita - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Webfisco.xml</ArqConfig>
+		<PadraoNFSe>WEBFISCO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -280,6 +280,7 @@ namespace Unimake.Business.DFe.Servicos
                     TipoAmbiente = Configuracoes.TipoAmbiente,
                     ConverteSenhaBase64 = Configuracoes.ConverteSenhaBase64,
                     MunicipioSenha = Configuracoes.ConverteSenhaBase64 ? Configuracoes.MunicipioSenha.Base64Encode() : Configuracoes.MunicipioSenha,
+                    MunicipioUsuario = Configuracoes.MunicipioUsuario,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)
