@@ -94,25 +94,6 @@ namespace Unimake.Business.DFe
                     }
                     xmlBody = doc.OuterXml;
                 }
-
-                if (soap.PadraoNFSe == PadraoNFSe.WEBFISCO)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-
-                    XmlElement root = doc.DocumentElement;
-                    XmlNode firstElement = root.FirstChild;
-                    XmlNode tagUsuario = doc.CreateElement("usuario");
-                    XmlNode tagSenha = doc.CreateElement("pass");
-
-                    tagUsuario.InnerText = soap.MunicipioUsuario;
-                    tagSenha.InnerText = soap.MunicipioSenha;
-                    root.InsertBefore(tagUsuario, firstElement);
-                    root.InsertBefore(tagSenha, firstElement);
-
-                    xmlBody = "";
-                    xmlBody += root.OuterXml;
-                }
                 
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
