@@ -1966,4 +1966,16 @@
 		<ArqConfig>Webfisco.xml</ArqConfig>
 		<PadraoNFSe>WEBFISCO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3529302">
+		<Nome>Matão - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2704302">
+		<Nome>Maceió - AL</Nome>
+		<UF>AL</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
