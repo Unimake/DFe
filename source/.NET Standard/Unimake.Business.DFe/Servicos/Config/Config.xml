@@ -1978,4 +1978,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3520004">
+		<Nome>Igaraçu do Tietê - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Webfisco.xml</ArqConfig>
+		<PadraoNFSe>WEBFISCO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
