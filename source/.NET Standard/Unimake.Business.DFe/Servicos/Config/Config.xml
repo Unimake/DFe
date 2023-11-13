@@ -1990,4 +1990,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4319000">
+		<Nome>São Marcos - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoMarcosRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
