@@ -346,6 +346,7 @@
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
+		<None Remove="Servicos\Config\NFSe\PaulistaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PaveramaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PederneirasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PeixotodeAzevedoMT.xml" />
@@ -806,6 +807,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PaulistaPE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GaranhunsPE.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

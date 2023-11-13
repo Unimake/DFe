@@ -1996,4 +1996,10 @@
 		<ArqConfig>SaoMarcosRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2610707">
+		<Nome>Paulista - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>PaulistaPE.xml</ArqConfig>
+		<PadraoNFSe>TINUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
