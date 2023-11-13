@@ -6,7 +6,7 @@
 			<RequestURIProducao>https://api-nfse-itapema-sc.prefeituramoderna.com.br/ws/services/gerar</RequestURIProducao>
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/gerar</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
-			<WebActionProducao>dpsXmlGZipB64</WebActionProducao>
+			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
@@ -23,7 +23,7 @@
 			<RequestURIProducao>https://api-nfse-itapema-sc.prefeituramoderna.com.br/ws/services/cancelar</RequestURIProducao>
 			<RequestURIHomologacao>https://api-nfse-homologacao.prefeituramoderna.com.br/ws/services/cancelar</RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
-			<WebActionProducao>pedidoRegistroEventoXmlGZipB64</WebActionProducao>
+			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>

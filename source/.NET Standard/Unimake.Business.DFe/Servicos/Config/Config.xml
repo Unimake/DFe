@@ -1984,4 +1984,10 @@
 		<ArqConfig>Webfisco.xml</ArqConfig>
 		<PadraoNFSe>WEBFISCO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4107652">
+		<Nome>Fazenda Rio Grande - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

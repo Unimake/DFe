@@ -162,8 +162,6 @@ namespace Unimake.Business.DFe
                 xmlBody = Compress.GZIPCompress(xml);
             }
 
-            if (apiConfig.B64) { }
-
             switch (apiConfig.PadraoNFSe)
             {
                 case PadraoNFSe.NACIONAL:
