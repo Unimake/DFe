@@ -28,6 +28,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        [XmlElement("CPF")]
+        public string CPF { get; set; }
+
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
@@ -122,6 +125,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         #region ShouldSerialize
 
         public bool ShouldSerializeCSitConf() => !string.IsNullOrWhiteSpace(CSitConf);
+        public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+        public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
         #endregion
     }
