@@ -2470,7 +2470,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVCargaField() => VCarga > 0;
+        public bool ShouldSerializeVCargaField() => VCarga >= 0;
         public bool ShouldSerializeXOutCat() => !string.IsNullOrWhiteSpace(XOutCat);
         public bool ShouldSerializeVCargaAverbField() => VCargaAverb > 0;
 
