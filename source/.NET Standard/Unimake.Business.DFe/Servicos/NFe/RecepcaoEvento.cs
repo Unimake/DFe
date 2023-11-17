@@ -177,9 +177,19 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     goto case TipoEventoNFe.EPEC;
 
                 case TipoEventoNFe.EPEC:
-                    if (xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
+                    if (xml.Evento[0].InfEvento.ChNFe.Substring(20, 2) == "65" && ((DetEventoEPEC)xml.Evento[0].InfEvento.DetEvento).COrgaoAutor == UFBrasil.SP)
                     {
-                        throw new Exception("Conteúdo da tag <cOrgao> inválido. Para eventos de manifestação do destinatário o conteúdo da tag <cOrgao> deve igual a 91.");
+                        if (xml.Evento[0].InfEvento.COrgao != UFBrasil.SP)
+                        {
+                            throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de EPEC de NFCe o conteúdo da tag <cOrgao> deve igual a 35.");
+                        }
+                    }
+                    else
+                    {
+                        if (xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
+                        {
+                            throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de EPEC de NFe o conteúdo da tag <cOrgao> deve igual a 91.");
+                        }
                     }
                     break;
             }
