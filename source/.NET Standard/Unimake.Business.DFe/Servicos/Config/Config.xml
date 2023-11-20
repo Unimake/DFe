@@ -2002,4 +2002,10 @@
 		<ArqConfig>PaulistaPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322806">
+		<Nome>Veranópolis - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>VeranopolisRS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
