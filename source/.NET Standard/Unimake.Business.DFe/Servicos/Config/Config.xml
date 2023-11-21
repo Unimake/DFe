@@ -2008,4 +2008,10 @@
 		<ArqConfig>VeranopolisRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4108809">
+		<Nome>Guaira - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>GuairaPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

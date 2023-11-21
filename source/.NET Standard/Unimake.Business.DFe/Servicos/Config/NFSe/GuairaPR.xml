@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<GerarNfse versao="1.20">
+			<Descricao>Envio de lote RPS - Sincrono</Descricao>
+			<RequestURIProducao>https://guaira.atende.net/?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>nfse</TagAssinatura>
+			<TagAtributoID>nfse</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.20</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</GerarNfse>
+		<CancelarNfse versao="1.20">
+			<Descricao>Evento de cancelamento da NFSe</Descricao>
+			<RequestURIProducao>https://guaira.atende.net/?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>nfse</TagAssinatura>
+			<TagAtributoID>nfse</TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.20</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfse versao="1.20">
+			<Descricao>Consulta da NFSe</Descricao>
+			<RequestURIProducao>https://guaira.atende.net/?pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>multipart/form-data</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao>1.20</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>
