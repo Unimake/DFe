@@ -35,8 +35,8 @@
 		<infoRecEv>
 			<nrRecArqBase>nrRecArqBase1</nrRecArqBase>
 			<nrProtEntr>nrProtEntr1</nrProtEntr>
-			<dhRecepcao>2023-01-01T01:01:01-02:00</dhRecepcao>
-			<dhProcess>2023-01-01T01:01:01-02:00</dhProcess>
+			<dhRecepcao>2023-01-01T00:01:01-03:00</dhRecepcao>
+			<dhProcess>2023-01-01T00:01:01-03:00</dhProcess>
 			<tpEv>R-0001</tpEv>
 			<idEv>idEv1</idEv>
 			<hash>hash1</hash>

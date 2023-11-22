@@ -586,5 +586,41 @@ namespace Unimake.DFe.Test.EFDReinf
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        /// <summary>
+        /// Testar a serialização e desserialização das consultas Evento Reinf
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S1000-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S1070-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2010-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2020-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2030-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2040-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2050-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2055-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2060-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2098-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S2099-reinf-cons.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaReciboEvento_S3010-reinf-cons.xml")]
+        public void SerializacaoDesserializacaoConsultasReinf(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = XMLUtility.Deserializar<ReinfConsultas>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
     }
 }

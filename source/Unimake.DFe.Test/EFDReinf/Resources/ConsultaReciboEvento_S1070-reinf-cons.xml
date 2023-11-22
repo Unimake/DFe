@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/envioLoteEventos/v1_05_01">
+  <ConsultaReciboEvento>
+    <tipoEvento>1070</tipoEvento>
+    <tpInsc>1</tpInsc>
+    <nrInsc>00000000</nrInsc>
+  </ConsultaReciboEvento>
+</Reinf>
