@@ -238,7 +238,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 2060 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -263,7 +263,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 2098 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -288,7 +288,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 2099 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -313,7 +313,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 3010 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -338,7 +338,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 4010 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -363,7 +363,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 4020 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -388,7 +388,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 4040 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -413,7 +413,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 4080 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -438,7 +438,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 4099 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -463,7 +463,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 9000 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -488,7 +488,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 9001 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -513,7 +513,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 9005 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -538,7 +538,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 9011 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -563,7 +563,7 @@ namespace Unimake.DFe.Test.EFDReinf
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2055 Reinf
+        /// Testar a serialização e desserialização do Evento 9015 Reinf
         /// </summary>
         [Theory]
         [Trait("DFe", "EFDReinf")]
@@ -621,6 +621,32 @@ namespace Unimake.DFe.Test.EFDReinf
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização da Consulta Resultado Fechamento 2099 EFDReinf.
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\ConsultaResultadoFechamento2099-reinf-cons.xml")]
+        public void SerializacaoDesserializacaoFechamento2099(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = XMLUtility.Deserializar<ReinfConsultaFechamento2099>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+
         }
     }
 }

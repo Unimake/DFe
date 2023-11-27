@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/envioLoteEventos/v1_05_01">
+	<ConsultaResultadoFechamento2099>
+		<tipoInscricaoContribuinte>1</tipoInscricaoContribuinte>
+		<numeroInscricaoContribuinte>00000000</numeroInscricaoContribuinte>
+		<numeroProtocoloFechamento>000000000000000</numeroProtocoloFechamento>
+	</ConsultaResultadoFechamento2099>
+</Reinf>
