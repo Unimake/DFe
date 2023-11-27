@@ -357,6 +357,7 @@
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PortaoRS.xml" />
+		<None Remove="Servicos\Config\NFSe\PortoAlegreRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoSeguroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoVelhoRO.xml" />
 		<None Remove="Servicos\Config\NFSe\PotirendabaSP.xml" />
@@ -810,6 +811,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoAlegreRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapariES.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
