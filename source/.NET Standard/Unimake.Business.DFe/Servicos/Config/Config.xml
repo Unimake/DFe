@@ -2032,4 +2032,10 @@
 		<ArqConfig>PortoAlegreRS.xml</ArqConfig>
 		<PadraoNFSe>BHISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3527207">
+		<Nome>Lorena - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>LorenaSP.xml</ArqConfig>
+		<PadraoNFSe>EMBRAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
