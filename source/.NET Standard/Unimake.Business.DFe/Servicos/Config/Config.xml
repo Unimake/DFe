@@ -2038,4 +2038,10 @@
 		<ArqConfig>LorenaSP.xml</ArqConfig>
 		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3518404">
+		<Nome>Guaratinguetá - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>GuaratinguetaSP.xml</ArqConfig>
+		<PadraoNFSe>EMBRAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
