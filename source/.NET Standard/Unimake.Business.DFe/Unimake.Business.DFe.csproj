@@ -299,6 +299,7 @@
 		<None Remove="Servicos\Config\NFSe\GuaibaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
+		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\HarmoniaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
@@ -809,6 +810,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarapariES.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuairaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PaulistaPE.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

@@ -2020,4 +2020,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3202405">
+		<Nome>Guarapari - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>GuarapariES.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
