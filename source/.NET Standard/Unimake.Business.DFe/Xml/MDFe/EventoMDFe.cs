@@ -953,7 +953,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlAttribute(DataType = "ID")]
         public string Id
         {
-            get => "ID" + ((int)TpEvento).ToString() + ChMDFe + NSeqEvento.ToString("00");
+            get => "ID" + ((int)TpEvento).ToString() + ChMDFe + NSeqEvento.ToString("000");
             set => _ = value;
         }
 
