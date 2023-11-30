@@ -1,8 +1,5 @@
 ﻿#pragma warning disable CS1591
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf

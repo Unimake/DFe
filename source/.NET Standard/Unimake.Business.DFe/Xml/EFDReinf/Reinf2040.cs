@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.MDFe;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -19,7 +20,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtRecursoRepassadoAssociacao/v2_01_02", IsNullable = false)]
     public class Reinf2040 : XMLBase
     {
-
         [XmlElement("evtAssocDespRep")]
         public EvtAssocDespRep EvtAssocDespRep { get; set; }
 
@@ -34,7 +34,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class EvtAssocDespRep
+    public class EvtAssocDespRep : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
         public IdeEventoReinf2040 IdeEvento { get; set; }
