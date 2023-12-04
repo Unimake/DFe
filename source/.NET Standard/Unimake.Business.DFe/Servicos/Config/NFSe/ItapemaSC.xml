@@ -15,7 +15,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<ResponseMediaType>default</ResponseMediaType>
+			<ResponseMediaType></ResponseMediaType>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</GerarNfse>
 		<CancelarNfse versao="1.00">
@@ -32,7 +32,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<ResponseMediaType>default</ResponseMediaType>
+			<ResponseMediaType></ResponseMediaType>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</CancelarNfse>
 		<ConsultarNfsePorRps versao="1.00">
@@ -49,7 +49,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<ResponseMediaType>default</ResponseMediaType>
+			<ResponseMediaType></ResponseMediaType>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePorRps>
 		<ConsultarNfse versao="1.00">
@@ -66,7 +66,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<ResponseMediaType>default</ResponseMediaType>
+			<ResponseMediaType></ResponseMediaType>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfse>
 		<SubstituirNfse versao="1.00">
@@ -83,7 +83,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<ResponseMediaType>default</ResponseMediaType>
+			<ResponseMediaType></ResponseMediaType>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</SubstituirNfse>
 		<ConsultarRpsDisponivel versao="1.00">
@@ -100,7 +100,7 @@
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
-			<ResponseMediaType>default</ResponseMediaType>
+			<ResponseMediaType></ResponseMediaType>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarRpsDisponivel>
 		</Servicos>
