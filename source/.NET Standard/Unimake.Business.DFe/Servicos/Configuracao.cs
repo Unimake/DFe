@@ -7,7 +7,6 @@ using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos
@@ -623,12 +622,13 @@ namespace Unimake.Business.DFe.Servicos
                 WebSoapString = WebSoapStringProducao;
             }
 
-            if (!string.IsNullOrEmpty(ClientSecret) && !string.IsNullOrEmpty(ClientID))
-            {
-                var proxy = Proxy.DefinirServidor(ProxyAutoDetect, ProxyUser, ProxyPassword);
-                var token =  Token.GerarToken(proxy, MunicipioUsuario, MunicipioSenha, ClientID, ClientSecret);
-                MunicipioToken = token.AccessToken;
-            }
+            //Antiga implementação para uso do padrão AGILI (Rondonópolis) que acabou não sendo necessária no momento da implementação do município. Ticket ID #159383. Mauricio 05/12/2023
+            //if (!string.IsNullOrEmpty(ClientSecret) && !string.IsNullOrEmpty(ClientID))
+            //{
+            //    var proxy = Proxy.DefinirServidor(ProxyAutoDetect, ProxyUser, ProxyPassword);
+            //    var token =  Token.GerarToken(proxy, MunicipioUsuario, MunicipioSenha, ClientID, ClientSecret);
+            //    MunicipioToken = token.AccessToken;
+            //}
 
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());

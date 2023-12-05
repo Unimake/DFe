@@ -394,6 +394,11 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Solicitar Inutilizacao NFSe")]
         NFSeSolicitacaoInutilizacao = 63,
 
+        /// <summary>
+        /// 64 - Consulta Requerimento de Cancelamento da NFSe
+        /// </summary>
+        [Description("Consulta Requerimento de Cancelamento NFSe")]
+        NFSeConsultarRequerimentoCancelamento= 64,
         #endregion
 
         #region Gerais

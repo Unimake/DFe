@@ -682,12 +682,6 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5107602">
-		<Nome>Rondonópolis - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>RondonopolisMT.xml</ArqConfig>
-		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3147105">
 		<Nome>Pará de Minas - MG</Nome>
 		<UF>MG</UF>
@@ -2007,6 +2001,12 @@
 		<UF>RS</UF>
 		<ArqConfig>VeranopolisRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="5107602">
+		<Nome>Rondonópolis - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>RondonopolisMT.xml</ArqConfig>
+		<PadraoNFSe>AGILI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4108809">
 		<Nome>Guaira - PR</Nome>
