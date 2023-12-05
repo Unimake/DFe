@@ -262,6 +262,7 @@
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CanaaDosCarajasPA.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
+		<None Remove="Servicos\Config\NFSe\CanoinhaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CarapicuibaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
@@ -816,6 +817,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaratinguetaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CanoinhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoAlegreRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

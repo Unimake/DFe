@@ -2044,4 +2044,10 @@
 		<ArqConfig>GuaratinguetaSP.xml</ArqConfig>
 		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4203808">
+		<Nome>Canoinha - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>CanoinhaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
