@@ -466,6 +466,17 @@ namespace Unimake.Business.DFe.Servicos
                     if (File.Exists(arqConfig))
                     {
                         doc.Load(arqConfig);
+
+                        if (doc.GetElementsByTagName("VersaoConfiguracao").Count > 0)
+                        {
+                            VersaoConfiguracao = doc.GetElementsByTagName("VersaoConfiguracao")[0].InnerText;
+                        }
+
+                        //Versão da DLL é maior que a versão do arquivo de configuração, então o que tem na DLL é mais atual do que o arquivo que está gravado na pasta, vou ignorar.
+                        if (Convert.ToDecimal(Info.VersaoDLL) >= Convert.ToDecimal(VersaoConfiguracao))
+                        {
+                            goto default;
+                        }
                     }
                     else
                     {
@@ -734,6 +745,9 @@ namespace Unimake.Business.DFe.Servicos
                         {
                             MetodoAPI = XMLUtility.TagRead(elementVersao, "MetodoAPI");
                         }
+
+                        //Vou limpar a versão da configuração, caso alguém informe algo no arquivo padrão, tem que zerar, pois só pode existir valor na configuração específica de cada UF ou Município
+                        VersaoConfiguracao = "";
 
                         break;
                     }
@@ -1231,6 +1245,24 @@ namespace Unimake.Business.DFe.Servicos
 
             set => _PastaDLL = value;
         }
+
+        /// <summary>
+        /// Versão da configuração definido no XML de configurações da UF ou Município
+        /// Esta versão só vai existir se a configuração foi alterada e o ERP deseja usar ela na pasta sem precisar atualizar a DLL.
+        /// A DLL vai verificar se a versão da configuração que está na pasta é maior que a versão da DLL, se for, vai priorizar o que está na pasta, caso contrário vai pegar a configuração embutida na DLL, pois é mais atual.
+        /// Tag que deve ser informada no arquivo de configuração: Exemplo:
+        /// 
+        /// AC.XML
+        /// 
+        /// <?xml version="1.0" encoding="utf-8"?>
+        /// <Configuracoes>
+        /// 	<VersaoConfiguracao>202312061103</VersaoConfiguracao>
+        /// 	<Heranca>SVRS.xml</Heranca>
+        /// </Configuracoes>
+        /// 
+        /// Formato deve ser conforme acima: ano com 4 dígitos + mês com 2 dígitos (zeros a esquerda) + dia com 2 dígitos (zeros a esquerda) + horas com 2 dígitos (zeros a esquerda) + minutos com 2 dígitos (zeros a esquerda)
+        /// </summary>
+        public string VersaoConfiguracao { get; set; }
 
         #endregion Public Properties
 
