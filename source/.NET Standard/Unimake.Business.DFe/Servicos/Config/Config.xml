@@ -2050,10 +2050,4 @@
 		<ArqConfig>CanoinhaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3501905">
-		<Nome>Amparo - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>AmparoSP.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
-	</Arquivo>
 </Configuracoes>
