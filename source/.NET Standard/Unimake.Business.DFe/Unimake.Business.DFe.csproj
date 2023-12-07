@@ -234,6 +234,7 @@
 		<None Remove="Servicos\Config\NFSe\Abase.xml" />
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AguasDeLindoiaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\AmparoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
@@ -818,6 +819,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CanoinhaSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AmparoSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PortoAlegreRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
