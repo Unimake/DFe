@@ -386,7 +386,7 @@
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
-		<None Remove="Servicos\Config\NFSe\SerafinaCorreaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SerraES.xml" />
 		<None Remove="Servicos\Config\NFSe\SertaozinhoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
@@ -1031,7 +1031,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\XangriLaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresLagoasMS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaquaritubaSP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SerafinaCorreaGO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PotirendabaSP.xml" />

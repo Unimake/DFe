@@ -1313,7 +1313,7 @@
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5003207">
-		<Nome>Corumba - MS</Nome>
+		<Nome>Corumbá - MS</Nome>
 		<UF>MS</UF>
 		<ArqConfig>CorumbaMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
@@ -1457,9 +1457,9 @@
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4320404">
-		<Nome>Serafina Corrêa - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>SerafinaCorreaGO.xml</ArqConfig>
+		<Nome>Serafina Corrêa - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SerafinaCorreaRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3553807">
