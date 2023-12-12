@@ -1,0 +1,13 @@
+<sis:CancelarNfseEnvio xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd">
+	<nfse:Pedido>
+		<nfse:InfPedidoCancelamento id="id1">
+			<nfse:IdentificacaoNfse>
+				<nfse:Numero>1</nfse:Numero>
+				<nfse:Cnpj>99999999999999</nfse:Cnpj>
+				<nfse:InscricaoMunicipal>99999999999999</nfse:InscricaoMunicipal>
+				<nfse:CodigoMunicipio>1</nfse:CodigoMunicipio>
+			</nfse:IdentificacaoNfse>
+			<nfse:CodigoCancelamento>99999999999999</nfse:CodigoCancelamento>
+		</nfse:InfPedidoCancelamento>
+	</nfse:Pedido>
+</sis:CancelarNfseEnvio>

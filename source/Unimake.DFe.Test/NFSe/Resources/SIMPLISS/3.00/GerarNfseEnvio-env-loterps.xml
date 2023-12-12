@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sis:GerarNovaNfseEnvio xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd">
+	<nfse:Prestador>
+		<nfse:Cnpj>99999999999999</nfse:Cnpj>
+		<nfse:InscricaoMunicipal>99999999999999</nfse:InscricaoMunicipal>
+	</nfse:Prestador>
+	<nfse:InformacaoNfse>
+		<nfse:NaturezaOperacao>1</nfse:NaturezaOperacao>
+		<nfse:RegimeEspecialTributacao>3</nfse:RegimeEspecialTributacao>
+		<nfse:OptanteSimplesNacional>2</nfse:OptanteSimplesNacional>
+		<nfse:IncentivadorCultural>2</nfse:IncentivadorCultural>
+		<nfse:Status>1</nfse:Status>
+		<nfse:Competencia>2017-04-18</nfse:Competencia>
+		<nfse:Servico>
+			<nfse:Valores>
+				<nfse:ValorServicos>825.89</nfse:ValorServicos>
+				<nfse:IssRetido>2</nfse:IssRetido>
+				<nfse:ValorIss>41.29</nfse:ValorIss>
+				<nfse:ValorIssRetido>0.00</nfse:ValorIssRetido>
+				<nfse:BaseCalculo>825.89</nfse:BaseCalculo>
+				<nfse:Aliquota>5.00</nfse:Aliquota>
+				<nfse:ValorLiquidoNfse>825.89</nfse:ValorLiquidoNfse>
+			</nfse:Valores>
+			<nfse:ItemListaServico>14.01</nfse:ItemListaServico>
+			<nfse:CodigoCnae>4520001</nfse:CodigoCnae>
+			<nfse:Discriminacao>TESTE MO \n TESTE NFSE \n OS Nro: 2 - CP: 99 - VEND.: - REPR.: VENCTOS: 21/04/2017- R$ 825,89/n\ TESTE MO TESTE NFSE Num. do RPS: 24021</nfse:Discriminacao>
+			<nfse:CodigoMunicipio>3541406</nfse:CodigoMunicipio>
+			<nfse:ItensServico>
+				<nfse:Descricao>TESTE MO</nfse:Descricao>
+				<nfse:Quantidade>1</nfse:Quantidade>
+				<nfse:ValorUnitario>250.00</nfse:ValorUnitario>
+			</nfse:ItensServico>
+			<nfse:ItensServico>
+				<nfse:Descricao>TESTE NFSE</nfse:Descricao>
+				<nfse:Quantidade>1</nfse:Quantidade>
+				<nfse:ValorUnitario>575.89</nfse:ValorUnitario>
+			</nfse:ItensServico>
+		</nfse:Servico>
+		<nfse:Tomador>
+			<nfse:IdentificacaoTomador>
+				<nfse:CpfCnpj>
+					<nfse:Cpf>073.033.049-40</nfse:Cpf>
+				</nfse:CpfCnpj>
+		</nfse:IdentificacaoTomador>
+			<nfse:RazaoSocial>xxxxxxxx</nfse:RazaoSocial>
+			<nfse:Endereco>
+				<nfse:Endereco>xxxxxxxxxxx</nfse:Endereco>
+				<nfse:Numero>0</nfse:Numero>
+				<nfse:Bairro>CENTRO</nfse:Bairro>
+				<nfse:CodigoMunicipio>4127106</nfse:CodigoMunicipio>
+				<nfse:Uf>PR</nfse:Uf>
+				<nfse:Cep>99999999</nfse:Cep>
+			</nfse:Endereco>
+			<nfse:Contato>
+				<nfse:Telefone>99999999999999</nfse:Telefone>
+				<nfse:Email>xxxxxxxxxxxxxx@xxxxxxxxxx.com.br</nfse:Email>
+			</nfse:Contato>
+		</nfse:Tomador>
+	</nfse:InformacaoNfse>
+</sis:GerarNovaNfseEnvio>

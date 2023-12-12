@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sis:ConsultarNfseServicoTomadoEnvio xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd">
+	<nfse:Consulente>
+		<nfse:CpfCnpj>
+		<nfse:Cnpj>99999999999999</nfse:Cnpj>
+		</nfse:CpfCnpj>
+		<nfse:InscricaoMunicipal>99999999999999</nfse:InscricaoMunicipal>
+	</nfse:Consulente>
+	<nfse:NumeroNfse>99999999999999</nfse:NumeroNfse>
+	<nfse:PeriodoCompetencia>
+		<nfse:DataInicial>2009-12-01</nfse:DataInicial>
+		<nfse:DataFinal>2009-12-31</nfse:DataFinal>
+	</nfse:PeriodoCompetencia>
+	<nfse:Tomador>
+		<nfse:CpfCnpj>
+			<nfse:Cnpj>?</nfse:Cnpj>
+			<nfse:Cpf>?</nfse:Cpf>
+		</nfse:CpfCnpj>
+		<nfse:InscricaoMunicipal>?</nfse:InscricaoMunicipal>
+		<nfse:InscricaoEstadual>?</nfse:InscricaoEstadual>
+	</nfse:Tomador>
+	<nfse:Pagina>?</nfse:Pagina>
+</sis:ConsultarNfseServicoTomadoEnvio>

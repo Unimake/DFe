@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseEnvio xmlns="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd">
+	<Prestador>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>99999999999999</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2009-12-01</DataInicial>
+		<DataFinal>2009-12-31</DataFinal>
+	</PeriodoEmissao>
+</ConsultarNfseEnvio>

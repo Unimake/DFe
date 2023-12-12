@@ -2050,4 +2050,10 @@
 		<ArqConfig>CanoinhaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3538709">
+		<Nome>Piracicaba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PiracicabaSP.xml</ArqConfig>
+		<PadraoNFSe>SIMPLISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

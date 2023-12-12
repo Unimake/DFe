@@ -1,0 +1,7 @@
+<sis:ConsultarSituacaoLoteRpsEnvio xmlns:sis="http://www.sistema.com.br/Sistema.Ws.Nfse" xmlns:nfse="http://www.sistema.com.br/Nfse/arquivos/nfse_3.xsd">
+	<nfse:Prestador>
+		<nfse:Cnpj>99999999999999</nfse:Cnpj>
+		<nfse:InscricaoMunicipal>99999999999999</nfse:InscricaoMunicipal>
+	</nfse:Prestador>
+	<nfse:Protocolo>9999999999999999999999999999</nfse:Protocolo>
+</sis:ConsultarSituacaoLoteRpsEnvio>
