@@ -1609,8 +1609,8 @@
 	<Arquivo ID="3122306">
 		<Nome>Divinópolis - MG</Nome>
 		<UF>MG</UF>
-		<ArqConfig>DivinopolisMG.xml</ArqConfig>
-		<PadraoNFSe>SONNER</PadraoNFSe>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4315149">
 		<Nome>Presidente Lucena - RS</Nome>
