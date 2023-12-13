@@ -2,10 +2,8 @@
 using System.Runtime.InteropServices;
 #endif
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.NFSe;
 
-namespace Unimake.DFe.Test.NFSe
+namespace Unimake.Business.DFe.Servicos.NFSe
 {
     /// <summary>
     /// Consulta ao requerimento de cancelamento - Implementado em 23/11 para o Padrão AGILI
@@ -17,7 +15,7 @@ namespace Unimake.DFe.Test.NFSe
         /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarNotaPrestador")]
+    [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarRequerimentoCancelamento")]
     [ComVisible(true)]
 #endif
         /// <summary>

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.NFSe;
 using Xunit;
 
 namespace Unimake.DFe.Test.NFSe
@@ -23,7 +24,7 @@ namespace Unimake.DFe.Test.NFSe
         [Theory]
         [Trait("DFe", "NFSe")]
         [MemberData(nameof(Parametros))]
-        public void ConsultaLote(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        public void ConsultarRequerimentoCancelamento(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
             var nomeXMLEnvio = "ConsultarRequerimentoCancelamento-ped-sitcannfse.xml";
 
