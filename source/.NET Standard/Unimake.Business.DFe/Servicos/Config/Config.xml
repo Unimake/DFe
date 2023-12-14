@@ -2045,9 +2045,9 @@
 		<PadraoNFSe>EMBRAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4203808">
-		<Nome>Canoinha - SC</Nome>
+		<Nome>Canoinhas - SC</Nome>
 		<UF>SC</UF>
-		<ArqConfig>CanoinhaSC.xml</ArqConfig>
+		<ArqConfig>CanoinhasSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3538709">

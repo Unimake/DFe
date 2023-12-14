@@ -106,5 +106,35 @@
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>true</LoginConexao>
 		</ConsultarNfseFaixa>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar NFSe</Descricao>
+			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://homologacao.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=integracoes</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por Rps</Descricao>
+			<RequestURIProducao>https://canoinhas.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao>https://homologacao.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=integracoes</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
