@@ -2062,4 +2062,10 @@
 		<ArqConfig>CoronelFabricianoMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3500303">
+		<Nome>Aguaí - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
