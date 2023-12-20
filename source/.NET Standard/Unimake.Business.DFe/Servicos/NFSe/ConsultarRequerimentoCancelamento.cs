@@ -5,14 +5,14 @@ using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
+    /// <summary>
+    /// Consulta ao requerimento de cancelamento - Implementado em 23/11 para o Padrão AGILI
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Servicos.NFSe.ConsultarRequerimentoCancelamento")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Consulta ao requerimento de cancelamento - Implementado em 23/11 para o Padrão AGILI
-    /// </summary>
     public class ConsultarRequerimentoCancelamento : ConsultarNfse
     {
         /// <summary>
