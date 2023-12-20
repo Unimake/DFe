@@ -63,9 +63,7 @@ namespace Unimake.Business.DFe.Validator.CTe
                 }
             }).ValidateTag(element => element.NameEquals(nameof(ICMSSN.CST)) && element.Parent.NameEquals(nameof(ICMSSN)) && element.Parent.Parent.NameEquals(nameof(ICMS)) && element.Parent.Parent.Parent.NameEquals(nameof(Imp)), Tag =>
             {
-                var mod = Tag.Parent.Parent.Parent.Parent.GetElement("ide").GetElement("mod").Value; //Modelo da nota fiscal.
-
-                if (Tag.Value != (mod == "57" ? "01" : "90"))
+                if (Tag.Value != "90") //Não pode ser 01, apesar do manual estar 01 o schema só aceita 90, acreditamos que o manual está incorreto. Já reclamaram disso no passado, eu até alterei e depois me dei conta que o schema só aceita 90. Wandrey 20/12/2023
                 {
                     ThrowHelper.Instance.Throw(new ValidatorDFeException("O CST do grupo de tributação de ICMSSN está incorreto. Valor informado: " + Tag.Value + " - Valor aceito: 90." +
                         " [TAG: <CST> do grupo de tag <infCTe><Imp><ICMS><ICMSSN>]"));
