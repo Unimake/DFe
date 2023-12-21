@@ -341,6 +341,11 @@ namespace Unimake.Business.DFe.Servicos
                                 NaoAssina = XMLUtility.TagRead(elementPropriedades, "NaoAssina").ToLower() == "homologação" ? TipoAmbiente.Homologacao : TipoAmbiente.Producao;
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "EncriptaAssinatura"))
+                            {
+                                EncriptaAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaAssinatura").ToLower() == "true" ? true : false;
+                            }
+
                             //Verificar se existem schemas específicos de validação
                             if (XMLUtility.TagExist(elementPropriedades, "SchemasEspecificos"))
                             {
@@ -1033,6 +1038,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Propriedade criada para atender o padrão FIORILLI, Monte Alto - SP; O município não precisa de assinatura em produção mas precisa em homologação.
         /// </summary>
         public TipoAmbiente? NaoAssina;
+
+        /// <summary>
+        /// Propriedade criada para atender o padrão DSF Versão 1.0.
+        /// </summary>
+        public bool EncriptaAssinatura {  get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false

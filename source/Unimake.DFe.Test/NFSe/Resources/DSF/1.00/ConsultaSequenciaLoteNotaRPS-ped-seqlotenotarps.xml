@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ns1:ConsultaSeqRps xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/ConsultaSeqRps.xsd">
+	<Cabecalho>
+		<CodCid>6291</CodCid>
+		<IMPrestador>12345678944</IMPrestador>
+		<CPFCNPJRemetente>12345678914520</CPFCNPJRemetente>
+		<SeriePrestacao>99</SeriePrestacao>
+		<Versao>1</Versao>
+	</Cabecalho>
+</ns1:ConsultaSeqRps>

@@ -2,9 +2,11 @@
 using System.IO;
 using System.Net;
 using System.Net.Security;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
+using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Exceptions;
@@ -62,6 +64,7 @@ namespace Unimake.Business.DFe
                 {
                     retorna += soap.SoapString.Replace("{xmlBodyScapeEnvio}", xmlBody);
                 }
+
             }
             else if (TratarScapeRetorno)
             {
@@ -94,11 +97,21 @@ namespace Unimake.Business.DFe
                     }
                     xmlBody = doc.OuterXml;
                 }
-                
+                if (soap.PadraoNFSe == PadraoNFSe.DSF && xmlBody.Contains("ReqEnvioLoteRPS"))
+                {
+                    var doc = new XmlDocument();
+                    doc.LoadXml(xmlBody);
+                    var sh1 = Criptografia.GetSHA1HashData(doc.GetElementsByTagName("Assinatura")[0].InnerText);
+                    doc.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                    xmlBody = doc.OuterXml;
+                    xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
+                }
+
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
             return retorna;
         }
+
 
         #endregion Private Methods
 
@@ -274,8 +287,9 @@ namespace Unimake.Business.DFe
                 RetornoServicoString = RetornoServicoString.Replace("\r\n", "");
             }
 
-            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI || soap.PadraoNFSe == PadraoNFSe.SONNER || soap.PadraoNFSe == PadraoNFSe.SMARAPD)
+            if (soap.PadraoNFSe == PadraoNFSe.FIORILLI || soap.PadraoNFSe == PadraoNFSe.SONNER || soap.PadraoNFSe == PadraoNFSe.SMARAPD || soap.PadraoNFSe == PadraoNFSe.DSF)
             {
+                RetornoServicoString = RetornoServicoString.Replace("ns1:", string.Empty);
                 RetornoServicoString = RetornoServicoString.Replace("ns2:", string.Empty);
                 RetornoServicoString = RetornoServicoString.Replace("ns3:", string.Empty);
                 RetornoServicoString = RetornoServicoString.Replace("ns4:", string.Empty);
