@@ -7,6 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Text;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -49,6 +52,24 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Desserializar o XML RetEnvEvento no objeto EnviNFe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML RetEnvEvento</param>
+        /// <returns>Objeto do RetEnvEvento</returns>
+        public RetEnvEvento LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<RetEnvEvento>(doc);
+        }
+
+        /// <summary>
+        /// Desserializar o XML EnviNFe no objeto EnviNFe
+        /// </summary>
+        /// <param name="xml">string do XML EnviNFe</param>
+        /// <returns>Objeto da EnviNFe</returns>
+        public RetEnvEvento LoadFromXML(string xml) => XMLUtility.Deserializar<RetEnvEvento>(xml);
 
 #if INTEROP
 
