@@ -2068,4 +2068,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3509502">
+		<Nome>Campinas - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CampinasSP.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

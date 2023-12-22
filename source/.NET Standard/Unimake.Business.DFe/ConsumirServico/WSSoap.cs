@@ -27,6 +27,7 @@ namespace Unimake.Business.DFe
         private bool _ConverteSenhaBase64;
         private string _MunicipioSenha;
         private string _MunicipioUsuario;
+        private bool _EncriptaAssinatura;
 
         #endregion Private Fields
 
@@ -34,7 +35,16 @@ namespace Unimake.Business.DFe
 
 
         /// <summary>
-        /// Utiliza ou não a conversão Base64
+        /// Encriptação de assinatura usada no padrão DSF 1.0
+        /// </summary>
+        public bool EncriptaAssinatura
+        {
+            get => _EncriptaAssinatura;
+            set => _EncriptaAssinatura = value;
+        }
+
+        /// <summary>
+        /// Municipio Senha
         /// </summary>
         public string MunicipioSenha
         {
