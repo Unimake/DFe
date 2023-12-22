@@ -11,7 +11,7 @@ namespace Unimake.Business.Security
     /// Trabalhar com certificado digital
     /// </summary>
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Security.Platform.CertificadoDigital")]
+    [ProgId("Unimake.Business.Security.CertificadoDigital")]
     [ComVisible(true)]
     public class CertificadoDigital
     {
@@ -515,7 +515,7 @@ namespace Unimake.Business.Security
     /// Trabalhar com certificado digital - Interop
     /// </summary>
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Security.Platform.CertificadoDigitalInterop")]
+    [ProgId("Unimake.Business.Security.CertificadoDigitalInterop")]
     [ComVisible(true)]
     public class CertificadoDigitalInterop
     {
