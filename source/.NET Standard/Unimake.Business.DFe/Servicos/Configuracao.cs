@@ -341,9 +341,9 @@ namespace Unimake.Business.DFe.Servicos
                                 NaoAssina = XMLUtility.TagRead(elementPropriedades, "NaoAssina").ToLower() == "homologação" ? TipoAmbiente.Homologacao : TipoAmbiente.Producao;
                             }
 
-                            if (XMLUtility.TagExist(elementPropriedades, "EncriptaAssinatura"))
+                            if (XMLUtility.TagExist(elementPropriedades, "EncriptaTagAssinatura"))
                             {
-                                EncriptaAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaAssinatura").ToLower() == "true" ? true : false;
+                                EncriptaTagAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaTagAssinatura").ToLower() == "true" ? true : false;
                             }
 
                             //Verificar se existem schemas específicos de validação
@@ -1042,7 +1042,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Propriedade criada para atender o padrão DSF Versão 1.0.
         /// </summary>
-        public bool EncriptaAssinatura {  get; set; }
+        public bool EncriptaTagAssinatura {  get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false

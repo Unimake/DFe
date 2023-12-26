@@ -97,7 +97,7 @@ namespace Unimake.Business.DFe
                     }
                     xmlBody = doc.OuterXml;
                 }
-                if (soap.PadraoNFSe == PadraoNFSe.DSF && xmlBody.Contains("ReqEnvioLoteRPS"))
+                if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
                 {
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
