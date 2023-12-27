@@ -233,5 +233,34 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// Resgata a lista dos eventos completos (XML de distribuição dos eventos dos CTes) retornados pelo serviço de distribuição do DFe
         /// </summary>
         public List<ProcEventoCTe> ProcEventoCTes { get; private set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Retorna o quantidade de elementos na lista com os XMLs de distribuição dos CTe´s
+        /// </summary>
+        public int GetProcCTesCount() => ProcCTes.Count;
+
+        /// <summary>
+        /// Retorna o CTe (CteProc) do elemento informado por parâmetro
+        /// </summary>
+        /// <param name="elemento">Elemento a ser retornado</param>
+        /// <returns>Objeto da CT-e (CteProc)</returns>
+        public CteProc GetProcCTes(int elemento) => ProcCTes[elemento];
+
+        /// <summary>
+        /// Retorna o quantidade de elementos na lista com os XMLs de distribuição dos eventos dos CTe´s
+        /// </summary>
+        public int GetProcEventoCTesCount() => ProcEventoCTes.Count;
+
+        /// <summary>
+        /// Retorna o Evento do CTe (ProcEventoCTe) do elemento informado por parâmetro
+        /// </summary>
+        /// <param name="elemento">Elemento a ser retornado</param>
+        /// <returns>Objeto do evento do CT-e (ProcEventoCTes)</returns>
+        public ProcEventoCTe GetProcEventoCTes(int elemento) => ProcEventoCTes[elemento];
+
+#endif
+
     }
 }
