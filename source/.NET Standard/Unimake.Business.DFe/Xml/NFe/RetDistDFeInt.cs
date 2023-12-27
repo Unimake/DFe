@@ -64,23 +64,23 @@ namespace Unimake.Business.DFe.Xml.NFe
         public LoteDistDFeInt LoteDistDFeInt { get; set; }
 
         /// <summary>
-        /// Desserializar o XML RetEnvEvento no objeto EnviNFe
+        /// Desserializar o XML RetDistDFeInt no objeto RetDistDFeInt
         /// </summary>
-        /// <param name="filename">Localização do arquivo XML RetEnvEvento</param>
-        /// <returns>Objeto do RetEnvEvento</returns>
-        public RetEnvEvento LoadFromFile(string filename)
+        /// <param name="filename">Localização do arquivo XML RetDistDFeInt</param>
+        /// <returns>Objeto do RetDistDFeInt</returns>
+        public RetDistDFeInt LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
-            return XMLUtility.Deserializar<RetEnvEvento>(doc);
+            return XMLUtility.Deserializar<RetDistDFeInt>(doc);
         }
 
         /// <summary>
-        /// Desserializar o XML EnviNFe no objeto EnviNFe
+        /// Desserializar o XML RetDistDFeInt no objeto RetDistDFeInt
         /// </summary>
-        /// <param name="xml">string do XML EnviNFe</param>
-        /// <returns>Objeto da EnviNFe</returns>
-        public RetEnvEvento LoadFromXML(string xml) => XMLUtility.Deserializar<RetEnvEvento>(xml);
+        /// <param name="xml">string do XML RetDistDFeInt</param>
+        /// <returns>Objeto da RetDistDFeInt</returns>
+        public RetDistDFeInt LoadFromXML(string xml) => XMLUtility.Deserializar<RetDistDFeInt>(xml);
     }
 
     /// <remarks/>
