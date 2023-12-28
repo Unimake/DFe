@@ -2074,4 +2074,10 @@
 		<ArqConfig>CampinasSP.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3524303">
+		<Nome>Jaboticabal - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
