@@ -216,7 +216,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public Emit Emit { get; set; }
 
         /// <summary>
-        /// Esta TAG é de uso exclusivo do FISCO, não precisa gerar nada, só temos ela para caso de alguma necessidade de deserialização.
+        /// Esta TAG é de uso exclusivo do FISCO, não precisa gerar nada, só temos ela para caso de alguma necessidade de desserialização.
         /// </summary>
         [XmlElement("avulsa")]
         public Avulsa Avulsa { get; set; }

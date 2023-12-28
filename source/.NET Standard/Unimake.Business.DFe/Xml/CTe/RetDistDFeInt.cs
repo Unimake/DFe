@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using System.Text;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
@@ -61,6 +62,25 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement("loteDistDFeInt")]
         public LoteDistDFeInt LoteDistDFeInt { get; set; }
+
+        /// <summary>
+        /// Desserializar o XML RetDistDFeInt no objeto RetDistDFeInt
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML RetDistDFeInt</param>
+        /// <returns>Objeto do RetDistDFeInt</returns>
+        public RetDistDFeInt LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<RetDistDFeInt>(doc);
+        }
+
+        /// <summary>
+        /// Desserializar o XML RetDistDFeInt no objeto RetDistDFeInt
+        /// </summary>
+        /// <param name="xml">string do XML RetDistDFeInt</param>
+        /// <returns>Objeto da RetDistDFeInt</returns>
+        public RetDistDFeInt LoadFromXML(string xml) => XMLUtility.Deserializar<RetDistDFeInt>(xml);
     }
 
     /// <remarks/>
