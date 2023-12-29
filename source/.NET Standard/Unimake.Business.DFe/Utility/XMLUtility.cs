@@ -372,22 +372,61 @@ namespace Unimake.Business.DFe.Utility
             }
             catch (Exception ex)
             {
-                if (ex.GetLastException().GetType() == typeof(XmlException))
+                if (ex.GetLastException() is XmlException)
                 {
                     var exception = (XmlException)ex.GetLastException();
 
                     ImproveInvalidCharacterExceptionInXML(xml, exception);
                 }
-                else if (ex.GetType() == typeof(InvalidOperationException))
+                else if (ex is InvalidOperationException)
                 {
-                    ThrowHelper.Instance.Throw(new Exception(ex.GetAllMessages()));
-                    throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
-                }
+                    var conteudo = ExtrairLinhaColuna(ex.Message);
 
+                    var linha = conteudo[0];
+                    var coluna = conteudo[1];
+
+                    if (coluna > 0)
+                    {
+                        var message = ExtrairParteXMLComFalha(xml, coluna, true);
+
+                        throw new XmlException(message, ex.InnerException, linha, coluna);
+                    }
+                    else
+                    {
+                        ThrowHelper.Instance.Throw(new Exception(ex.GetAllMessages()));
+                        throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
+                    }
+                }
 
                 ThrowHelper.Instance.Throw(ex.GetLastException());
                 throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
             }
+        }
+
+        /// <summary>
+        /// Extrair a linha e coluna da string da exceção referente a problema de desserialização do XML
+        /// </summary>
+        /// <param name="input">mensagem de exceção para analisar e extrair o conteúdo</param>
+        private static int[] ExtrairLinhaColuna(string input)
+        {
+            // Padrão regex para encontrar números entre parênteses
+            var pattern = @"\((\d+), (\d+)\)";
+
+            // Aplica o padrão regex à string de entrada
+            var match = Regex.Match(input, pattern);
+
+            var linha = 0;
+            var coluna = 0;
+
+            // Verifica se houve uma correspondência
+            if (match.Success)
+            {
+                // Os números estarão nos grupos de captura 1 e 2
+                linha = Convert.ToInt32(match.Groups[1].Value);
+                coluna = Convert.ToInt32(match.Groups[2].Value) - 3; //Tenho que voltar 3 caracteres para pegar a tag correta, não consegui entender a logica ainda, mas funciona. Wandrey 29/12/2023
+            }
+
+            return new int[] { linha, coluna };
         }
 
         /// <summary>
@@ -403,10 +442,7 @@ namespace Unimake.Business.DFe.Utility
                 {
                     try
                     {
-                        var positionStart = xml.LastIndexOf("<", ex.LinePosition);
-                        var positionFinal = xml.IndexOf(">", ex.LinePosition) - positionStart + 1;
-
-                        var message = "TAG com caracteres inválidos: " + xml.Substring(positionStart, positionFinal) + ".";
+                        var message = ExtrairParteXMLComFalha(xml, ex.LinePosition);
 
                         throw new XmlException(message, ex.InnerException, ex.LineNumber, ex.LinePosition);
                     }
@@ -416,6 +452,35 @@ namespace Unimake.Business.DFe.Utility
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Extrair do XML a parte que gerou a exceção para retornar uma mensagem mais clara para o ERP.
+        /// </summary>
+        /// <param name="xml">Conteúdo do XML</param>
+        /// <param name="linePosition">Posição da linha do XML que gerou a exceção</param>
+        private static string ExtrairParteXMLComFalha(string xml, int linePosition, bool voltarUmaTag = false)
+        {
+            var message = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(xml))
+            {
+                if (linePosition > 0)
+                {
+                    var positionStart = xml.LastIndexOf("<", linePosition);
+
+                    if (voltarUmaTag)
+                    {
+                        positionStart = xml.LastIndexOf("<", positionStart - 1);
+                    }
+
+                    var positionFinal = xml.IndexOf(">", linePosition) - positionStart + 1;
+
+                    message = "TAG com caracteres inválidos: " + xml.Substring(positionStart, positionFinal) + ".";
+                }
+            }
+
+            return message;
         }
 
         /// <summary>
