@@ -30,7 +30,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>
         /// Versão de compilação da DLL
         /// </summary>
-        public static string VersaoDLL => Info.VersaoDLL;
+        public string VersaoDLL => Info.VersaoDLL;
     }
 
 #endif
