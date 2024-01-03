@@ -278,6 +278,7 @@
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
@@ -820,6 +821,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaratinguetaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

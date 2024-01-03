@@ -2080,4 +2080,10 @@
 		<ArqConfig>Ginfes.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4306106">
+		<Nome>Cruz Alta - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CruzAltaRS.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
