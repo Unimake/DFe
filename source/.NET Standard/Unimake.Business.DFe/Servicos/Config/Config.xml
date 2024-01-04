@@ -2092,4 +2092,10 @@
 		<ArqConfig>CarazinhoRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2111201">
+		<Nome>São José de Ribamar - MA</Nome>
+		<UF>MA</UF>
+		<ArqConfig>SaoJoseDeRibamarMA.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
