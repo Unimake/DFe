@@ -1822,7 +1822,7 @@
 		<ArqConfig>CuiabaMT.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
-		<Arquivo ID="4101606">
+	<Arquivo ID="4101606">
 		<Nome>Arapoti - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>Equiplano.xml</ArqConfig>
@@ -1837,7 +1837,7 @@
 	<Arquivo ID="5206206">
 		<Nome>Cristalina - GO</Nome>
 		<UF>GO</UF>
-		<ArqConfig>CristalinaGO.xml</ArqConfig>	
+		<ArqConfig>CristalinaGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5218003">
@@ -2097,5 +2097,11 @@
 		<UF>MA</UF>
 		<ArqConfig>SaoJoseDeRibamarMA.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3526902">
+		<Nome>Limeira - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>LimeiraSP.xml</ArqConfig>
+		<PadraoNFSe>IIBRASIL</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

@@ -6336,6 +6336,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("WEBFISCO")]
         WEBFISCO = 44,
+
+        /// <summary>
+        /// IIBRASIL
+        /// </summary>
+        [Description("IIBRASIL")]
+        IIBRASIL = 45,
     }
 
     #endregion

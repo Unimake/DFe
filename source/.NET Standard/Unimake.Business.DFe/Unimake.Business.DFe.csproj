@@ -325,6 +325,7 @@
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
+		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />

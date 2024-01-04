@@ -28,6 +28,7 @@ namespace Unimake.Business.DFe
         private string _MunicipioSenha;
         private string _MunicipioUsuario;
         private bool _EncriptaTagAssinatura;
+        private string _Token;
 
         #endregion Private Fields
 
@@ -45,6 +46,15 @@ namespace Unimake.Business.DFe
 
         /// <summary>
         /// Municipio Senha
+        /// </summary>
+        public string Token
+        {
+            get => _Token;
+            set => _Token = value;
+        }
+
+        /// <summary>
+        /// Utiliza ou não a conversão Base64
         /// </summary>
         public string MunicipioSenha
         {
