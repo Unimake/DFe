@@ -265,6 +265,7 @@
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoinhasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CarapicuibaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\CarazinhoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
@@ -278,6 +279,7 @@
 		<None Remove="Servicos\Config\NFSe\CosmoramaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
@@ -819,7 +821,9 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinasSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CarazinhoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CruzAltaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaratinguetaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
