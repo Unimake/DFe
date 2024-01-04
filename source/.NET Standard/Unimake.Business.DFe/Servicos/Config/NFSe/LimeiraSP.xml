@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://limeira.iibrasil.com.br/api/soap/homologacao_notafiscal.php?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://limeira.iibrasil.com.br/api/soap/notafiscal.php?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.04"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBody}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+		</ConsultarNfsePorRps>
+		<GerarNfse versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://limeira.iibrasil.com.br/api/soap/homologacao_notafiscal.php?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://limeira.iibrasil.com.br/api/soap/notafiscal.php?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg><cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.04"><versaoDados>2.04</versaoDados></cabecalho></nfseCabecMsg><nfseDadosMsg>{xmlBody}</nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.abrasf.org.br</TargetNS>
+		</GerarNfse>
+	</Servicos>
+</Configuracoes>

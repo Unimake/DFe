@@ -1,0 +1,66 @@
+﻿<GerarNfseEnvio xmlns="http://www.abrasf.org.br">
+	<Rps>
+		<tcDeclaracaoPrestacaoServico Id="1">
+			<Rps>
+				<IdentificacaoRps>
+					<Numero>1</Numero>
+					<Serie>12312</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2020-01-17</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2020-01-17</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>2358.77</ValorServicos>
+					<ValorDeducoes>0</ValorDeducoes>
+					<ValorPis>0</ValorPis>
+					<ValorCofins>0</ValorCofins>
+					<ValorInss>0</ValorInss>
+					<ValorIr>0</ValorIr>
+					<ValorCsll>0</ValorCsll>
+					<OutrasRetencoes>0</OutrasRetencoes>
+					<Aliquota>0</Aliquota>
+					<DescontoIncondicionado>0</DescontoIncondicionado>
+					<DescontoCondicionado>0</DescontoCondicionado>
+				</Valores>
+				<IssRetido>1</IssRetido>
+				<ResponsavelRetencao>1</ResponsavelRetencao>
+				<ItemListaServico>07.02</ItemListaServico>
+				<Discriminacao>TESTANDO RPS DISCRIMINAÇÃO</Discriminacao>
+				<CodigoMunicipio>3526902</CodigoMunicipio>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>88888888888888</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+			</Prestador>
+			<TomadorServico>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>55555555555555</Cnpj>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>xxxxxxxxxx</RazaoSocial>
+				<Endereco>
+					<Endereco>xxx</Endereco>
+					<Numero>2</Numero>
+					<Complemento>TESTE RPS</Complemento>
+					<Bairro>Jaragua</Bairro>
+					<CodigoMunicipio>3550704</CodigoMunicipio>
+					<Uf>SP</Uf>
+					<Cep>11600318</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>99999999999999</Telefone>
+					<Email>teste@teste.com</Email>
+				</Contato>
+				<AtualizaTomador>2</AtualizaTomador>
+				<TomadorExterior>2</TomadorExterior>
+			</TomadorServico>
+			<InformacoesComplementares>TESTANDO RPS</InformacoesComplementares>
+		</tcDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>
