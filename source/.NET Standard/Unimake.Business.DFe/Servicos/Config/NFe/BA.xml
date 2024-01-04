@@ -96,7 +96,7 @@
 					<SchemaArquivoEspecifico>e111503_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
-			<WebTagRetornoHomologacao>nfeRecepcaoEventoNFResult</WebTagRetornoHomologacao>
+			<WebTagRetornoHomologacao>nfeResultMsg</WebTagRetornoHomologacao>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -123,6 +123,7 @@
 			<SchemaArquivo>consReciNFe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
+			<WebTagRetornoHomologacao>nfeRetAutorizacaoLoteResult</WebTagRetornoHomologacao>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RetAutorizacao>
