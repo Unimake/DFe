@@ -2086,4 +2086,10 @@
 		<ArqConfig>CruzAltaRS.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4304705">
+		<Nome>Carazinho - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CarazinhoRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
