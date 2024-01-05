@@ -25,7 +25,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarLote soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScapeEnvio}</mensagemXml></proc:consultarLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarLote soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:consultarLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:consultarLoteResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -70,7 +70,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarSequencialRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScapeEnvio}</mensagemXml></proc:consultarSequencialRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarSequencialRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:consultarSequencialRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns1:consultarSequencialRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
