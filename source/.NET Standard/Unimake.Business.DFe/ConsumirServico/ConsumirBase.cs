@@ -109,17 +109,17 @@ namespace Unimake.Business.DFe
                 
                 if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
                 {
+                    soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");
+
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
-                    retorna += IIBRASIL.cabecalho;
-                    var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
-
-                    var teste = doc.FirstChild.AppendChild(doc.CreateNode(XmlNodeType.DocumentFragment,"Integridade",integridade));
-                    var teste2 = doc.CreateNode(XmlNodeType.Text, "Integridade", integridade);
-                    var teste3 = doc.CreateNode(XmlNodeType.Element, "Integridade", integridade);
-
+                    
+                    var integridade= IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
+                    var noIntegridade = doc.CreateNode(XmlNodeType.Element,"Integridade", null);
+                    noIntegridade.InnerText = integridade;
+                    
+                    doc.FirstChild.FirstChild.AppendChild(noIntegridade);
                     xmlBody = doc.OuterXml;
-
                 }
 
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
