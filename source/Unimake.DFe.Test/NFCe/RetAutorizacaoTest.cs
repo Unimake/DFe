@@ -29,7 +29,7 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
+        //[InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)] //MS não tem mais a consulta recibo de NFCe, acreditamos que no futuro todos os estados vão desativar este serviço, pois não tem mais envio de NFCe em lote.
         [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
@@ -56,7 +56,7 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
+        //[InlineData(UFBrasil.MS, TipoAmbiente.Producao)] //MS não tem mais a consulta recibo de NFCe, acreditamos que no futuro todos os estados vão desativar este serviço, pois não tem mais envio de NFCe em lote.
         [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
