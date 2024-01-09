@@ -65,7 +65,14 @@ namespace Unimake.Business.DFe
                     }
                     catch
                     {
-                        resultadoRetorno.LoadXml(StringToXml( responseString));
+                        if (Config.PadraoNFSe == PadraoNFSe.BAUHAUS)
+                        {
+                            resultadoRetorno.LoadXml(StringToXml(responseString));
+                        }
+                        else
+                        {
+                            resultadoRetorno.LoadXml(responseString);
+                        }
                     }
 
                     break;
