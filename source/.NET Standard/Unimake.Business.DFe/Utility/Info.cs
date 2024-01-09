@@ -14,7 +14,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>
         /// Versão de compilação da DLL
         /// </summary>
-        public static string VersaoDLL => $"{Assembly.GetExecutingAssembly().GetName().Version.Major:0000}{Assembly.GetExecutingAssembly().GetName().Version.Minor:00}{Assembly.GetExecutingAssembly().GetName().Version.Build:00}{Assembly.GetExecutingAssembly().GetName().Version.Revision:0000}";
+        public static string VersaoDLL => $"{Assembly.GetExecutingAssembly().GetName().Version.Major:0000}{Assembly.GetExecutingAssembly().GetName().Version.Minor:00}{Assembly.GetExecutingAssembly().GetName().Version.Build:00}{"."}{Assembly.GetExecutingAssembly().GetName().Version.Revision:0000}";
     }
 
 #if INTEROP
