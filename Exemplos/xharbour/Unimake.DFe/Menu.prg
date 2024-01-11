@@ -68,6 +68,8 @@ Function Main()
    
    AAdd(aOpcoes, "Obter a versao da DLL Unimake.DFe")
    
+   Aadd(aOpcoes, "Extrair eventos retornados na consulta situacao da NFe/NFCe")
+   
    Do While .T.
       Cls
 
@@ -240,7 +242,10 @@ Function Main()
 			  ?
 			  Wait
 			  
-			  Cls			  
+			  Cls		
+			  
+         case nOpcao = 52			  
+		      ExtrairEventoPedSitNFe()
       endcase
    EndDo
 Return       
