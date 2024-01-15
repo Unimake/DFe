@@ -114,12 +114,14 @@ namespace Unimake.Business.DFe
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
                     
-                    var integridade= IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
-                    var noIntegridade = doc.CreateNode(XmlNodeType.Element,"Integridade", null);
-                    noIntegridade.InnerText = integridade;
-                    
-                    doc.FirstChild.FirstChild.AppendChild(noIntegridade);
-                    xmlBody = doc.OuterXml;
+                    if (!xmlBody.Contains("Integridade"))
+                    {
+                        var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
+                        var noIntegridade = doc.CreateNode(XmlNodeType.Element, "Integridade", null);
+                        noIntegridade.InnerText = integridade;
+                        doc.FirstChild.FirstChild.AppendChild(noIntegridade);
+                        xmlBody = doc.OuterXml;
+                    }                                       
                 }
 
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
