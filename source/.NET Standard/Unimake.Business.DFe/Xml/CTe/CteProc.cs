@@ -93,7 +93,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Deserializar o XML no objeto CteProc
+        /// Deserializar o arquivo XML no objeto CteProc
         /// </summary>
         /// <param name="filename">Localização do arquivo XML de distribuição do CTe</param>
         /// <returns>Objeto do XML de distribuição do CTe</returns>
@@ -104,12 +104,19 @@ namespace Unimake.Business.DFe.Xml.CTe
             return XMLUtility.Deserializar<CteProc>(doc);
         }
 
-#region ShouldSerialize
+        /// <summary>
+        /// Desserializar a string do XML CteProc no objeto CteProc
+        /// </summary>
+        /// <param name="xml">string do XML NfeProc</param>
+        /// <returns>Objeto da NfeProc</returns>
+        public CteProc LoadFromXML(string xml) => XMLUtility.Deserializar<CteProc>(xml);
+
+        #region ShouldSerialize
 
         public bool ShouldSerializeIpTransmissor() => !string.IsNullOrWhiteSpace(IpTransmissor);
         public bool ShouldSerializeNPortaCon() => NPortaCon > 0;
         public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
 
-#endregion
+        #endregion
     }
 }

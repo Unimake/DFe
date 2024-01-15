@@ -57,19 +57,19 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public override XmlDocument GerarXML()
         {
-            XmlDocument xmlDocument = base.GerarXML();
+            var xmlDocument = base.GerarXML();
 
-            XmlRootAttribute attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
-            XmlElement xmlElementNFe = (XmlElement)xmlDocument.GetElementsByTagName("NFe")[0];
+            var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
+            var xmlElementNFe = (XmlElement)xmlDocument.GetElementsByTagName("NFe")[0];
             xmlElementNFe.SetAttribute("xmlns", attribute.Namespace);
-            XmlElement xmlElementProtNFe = (XmlElement)xmlDocument.GetElementsByTagName("protNFe")[0];
+            var xmlElementProtNFe = (XmlElement)xmlDocument.GetElementsByTagName("protNFe")[0];
             xmlElementProtNFe.SetAttribute("xmlns", attribute.Namespace);
 
             return xmlDocument;
         }
 
         /// <summary>
-        /// Desserializar o XML no objeto NfeProc
+        /// Desserializar o arquivo XML no objeto NfeProc
         /// </summary>
         /// <param name="filename">Localização do arquivo XML de distribuição do NFe</param>
         /// <returns>Objeto do XML de distribuição do NFe</returns>
@@ -81,7 +81,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Desserializar o XML NfeProc no objeto EnviNFe
+        /// Desserializar a string do XML NfeProc no objeto NfeProc
         /// </summary>
         /// <param name="xml">string do XML NfeProc</param>
         /// <returns>Objeto da NfeProc</returns>
