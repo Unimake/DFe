@@ -2104,4 +2104,10 @@
 		<ArqConfig>LimeiraSP.xml</ArqConfig>
 		<PadraoNFSe>IIBRASIL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3300407">
+		<Nome>Barra Mansa - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>BarraMansaRJ.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
