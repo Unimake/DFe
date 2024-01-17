@@ -12,7 +12,7 @@ InicializarConfiguracao.TipoDFe = CInt(pTipoDFe)
 
 If pCUF > 0 Then InicializarConfiguracao.CodigoUF = pCUF
 
-InicializarConfiguracao.CertificadoSenha = "123456"
-InicializarConfiguracao.CertificadoArquivo = "D:\Temp\Certificado.pfx"
+InicializarConfiguracao.CertificadoSenha = "12345678"
+InicializarConfiguracao.CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
 
 End Function

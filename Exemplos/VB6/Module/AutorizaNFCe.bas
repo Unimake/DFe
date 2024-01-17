@@ -5,7 +5,12 @@ On Error GoTo erro
 Dim EnviNFe
 Dim Autorizacao
 Dim localConfig
+
 Log.ClearLog
+
+Set localConfig = Config.InicializarConfiguracao(TipoDFe.NFCe)
+localConfig.CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG"
+localConfig.CSCIDToken = 2
 
 Set EnviNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
 EnviNFe.Versao = "4.00"
@@ -14,9 +19,7 @@ EnviNFe.IndSinc = 1
 EnviNFe.AddNFe GetNFCe()
 
 Set Autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")
-Set localConfig = Config.InicializarConfiguracao(TipoDFe.NFCe)
-localConfig.CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG"
-localConfig.CSCIDToken = 2
+
 
 Autorizacao.Executar (EnviNFe), (localConfig)
 
