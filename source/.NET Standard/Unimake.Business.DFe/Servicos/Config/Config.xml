@@ -2110,4 +2110,10 @@
 		<ArqConfig>BarraMansaRJ.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3507001">
+		<Nome>Boituva - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BoituvaSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
