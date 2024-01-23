@@ -1836,6 +1836,9 @@ namespace TreinamentoDLL
             };
 
             var autorizacao = new ServicoNFe.Autorizacao(xml, configuracao);
+
+            var nfeXML = autorizacao.ConteudoXMLAssinado.OuterXml;
+
             autorizacao.Executar();
 
             var configSit = new Configuracao

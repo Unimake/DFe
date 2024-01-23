@@ -1,0 +1,21 @@
+Features:
+- conexão SQL Server;
+- considera desconto;
+- considera acréscimo;
+- registro de vários produtos;
+- considera varias formas de pagamento;
+- rateio desconto ou acréscimo nos produtos automático;
+- atualizada DB chave e protocolo;
+- baixa XML autorizado;
+- exibir XML com crítica na autorização;
+- considera tributação regime SIMPLES para o ICMS: 
+ * ICMSSN101
+ * ICMSSN102
+ * ICMSSN103
+ * ICMSSN201
+ * ICMSSN202
+ * ICMSSN203
+ * ICMSSN300
+ * ICMSSN400
+ * ICMSSN500
+ * ICMSSN900
