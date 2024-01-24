@@ -617,7 +617,7 @@ namespace Unimake.DFe.Test.EFDReinf
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var xml = XMLUtility.Deserializar<ReinfConsultas>(doc);
+            var xml = XMLUtility.Deserializar<ReinfConsulta>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");

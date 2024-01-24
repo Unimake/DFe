@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Net.Security;
-using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
@@ -83,8 +82,7 @@ namespace Unimake.Business.DFe
                         xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
                     }
                 }
-
-                if (soap.PadraoNFSe == PadraoNFSe.PROPRIOBARUERISP)
+                else if (soap.PadraoNFSe == PadraoNFSe.PROPRIOBARUERISP)
                 {
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
@@ -97,7 +95,7 @@ namespace Unimake.Business.DFe
                     }
                     xmlBody = doc.OuterXml;
                 }
-                if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
+                else if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
                 {
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
@@ -106,8 +104,7 @@ namespace Unimake.Business.DFe
                     xmlBody = doc.OuterXml;
                     xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
                 }
-                
-                if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
+                else if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
                 {
                     soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");
 
@@ -124,8 +121,20 @@ namespace Unimake.Business.DFe
                     }                                       
                 }
 
+                if (soap.Servico == Servico.EFDReinfConsultaReciboEvento)
+                {
+                    var doc = new XmlDocument();
+                    doc.LoadXml(xmlBody);
+
+                    var tpEvento = doc.GetElementsByTagName("tipoEvento")[0].InnerText;
+
+                    xmlBody = doc.GetElementsByTagName("ConsultaReciboEvento")[0].OuterXml;
+                    xmlBody = xmlBody.Replace("ConsultaReciboEvento", "ConsultaReciboEvento" + tpEvento);
+                }
+
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
+
             return retorna;
         }
 

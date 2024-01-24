@@ -649,6 +649,13 @@ namespace Unimake.Business.DFe.Servicos
             WebSoapString = WebSoapString.Replace("{ActionWeb}", (TipoAmbiente == TipoAmbiente.Homologacao ? WebActionHomologacao : WebActionProducao));
             WebSoapString = WebSoapString.Replace("{cUF}", CodigoUF.ToString());
             WebSoapString = WebSoapString.Replace("{versaoDados}", SchemaVersao);
+
+            if (Servico == Servico.EFDReinfConsultaReciboEvento && !string.IsNullOrWhiteSpace(TipoEventoEFDReinf))
+            {
+                WebActionHomologacao = WebActionHomologacao.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
+                WebActionProducao = WebActionProducao.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
+                WebTagRetorno = WebTagRetorno.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
+            }
         }
 
         /// <summary>
@@ -1042,7 +1049,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Propriedade criada para atender o padrão DSF Versão 1.0.
         /// </summary>
-        public bool EncriptaTagAssinatura {  get; set; }
+        public bool EncriptaTagAssinatura { get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false
@@ -1214,6 +1221,11 @@ namespace Unimake.Business.DFe.Servicos
         /// ClientSecret para gerar token (no momento, apenas Padrão AGILI) 
         /// </summary>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Tipo do Evento do EFDReinf
+        /// </summary>
+        public string TipoEventoEFDReinf { get; set; }
 
         private int _TimeOutWebServiceConnect;
 

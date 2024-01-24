@@ -399,6 +399,13 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("Consulta Requerimento de Cancelamento NFSe")]
         NFSeConsultarRequerimentoCancelamento= 64,
+        
+        /// <summary>
+        /// 65 - Consulta do Recibo Evento do EFDReinf
+        /// </summary>
+        [Description("Consulta Recibo Evento do EFDReinf")]
+        EFDReinfConsultaReciboEvento = 65,
+
         #endregion
 
         #region Gerais
@@ -472,7 +479,6 @@ namespace Unimake.Business.DFe.Servicos
         /// 11 - EFDReinf - Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais
         /// </summary>
         EFDReinf = 11
-
     }
 
     #endregion       

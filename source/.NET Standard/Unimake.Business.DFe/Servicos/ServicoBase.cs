@@ -38,8 +38,8 @@ namespace Unimake.Business.DFe.Servicos
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
         private void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
-            
-                if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
+
+            if (!string.IsNullOrWhiteSpace(tagAssinatura) && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
             {
                 if (AssinaturaDigital.EstaAssinado(ConteudoXML, tagAssinatura))
                 {
@@ -133,14 +133,14 @@ namespace Unimake.Business.DFe.Servicos
             }
 
             //Esta linha tem que ficar fora do if acima, pois tem que carregar esta parte, independente, pois o que é carregado sempre é automático. Mudar isso, vai gerar falha no UNINFE, principalmente no envio dos eventos, onde eu defino as configurações manualmente. Wandrey 07/12/2020
-           Configuracoes.Load(GetType().Name);
+            Configuracoes.Load(GetType().Name);
 
             System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
 
             //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
-                _ = ConteudoXMLAssinado;
-            }
-            
+            _ = ConteudoXMLAssinado;
+        }
+
         #endregion Protected Internal Methods
 
         #region Public Properties
@@ -251,6 +251,7 @@ namespace Unimake.Business.DFe.Servicos
                     LoginConexao = Configuracoes.LoginConexao,
                     ResponseMediaType = Configuracoes.ResponseMediaType,
                     CodigoTom = Configuracoes.CodigoTom,
+                    Servico = Configuracoes.Servico,
                     UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital
                 };
 
@@ -283,6 +284,7 @@ namespace Unimake.Business.DFe.Servicos
                     MunicipioUsuario = Configuracoes.MunicipioUsuario,
                     Token = Configuracoes.MunicipioToken,
                     EncriptaTagAssinatura = Configuracoes.EncriptaTagAssinatura,
+                    Servico = Configuracoes.Servico,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)

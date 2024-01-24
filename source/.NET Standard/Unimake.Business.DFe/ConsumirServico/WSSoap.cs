@@ -29,6 +29,7 @@ namespace Unimake.Business.DFe
         private string _MunicipioUsuario;
         private bool _EncriptaTagAssinatura;
         private string _Token;
+        private Servico _Servico;
 
         #endregion Private Fields
 
@@ -204,6 +205,15 @@ namespace Unimake.Business.DFe
         {
             get => _TimeOutWebServiceConnect <= 0 ? (_TimeOutWebServiceConnect = 60000) : _TimeOutWebServiceConnect;
             set => _TimeOutWebServiceConnect = value;
+        }
+
+        /// <summary>
+        /// Serviço que está sendo executado
+        /// </summary>
+        public Servico Servico
+        {
+            get => _Servico;
+            set => _Servico = value;
         }
 
         #endregion Public Properties

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigPadrao>
+	<Versao ID="1.05.01">
+		<WebContentType>text/xml</WebContentType>
+		<MetodoAPI>post</MetodoAPI>
+		<WebTagRetorno>ideStatus</WebTagRetorno>
+		<WebSoapVersion>soap12</WebSoapVersion>
+		<SchemaVersao>1.05.01</SchemaVersao>
+		<TargetNS>http://sped.fazenda.gov.br</TargetNS>		
+	</Versao>
+</ConfigPadrao>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="EFDReinf">
+		<ConsultaReciboEvento versao="1.05.01">
+			<Descricao>Consulta Recibo Evento Reinf</Descricao>
+			<WebEnderecoHomologacao>https://preprodefdreinf.receita.fazenda.gov.br/WsREINFConsultas/ConsultasReinf.svc?singlewsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://reinf.receita.fazenda.gov.br/WsREINFConsultas/ConsultasReinf.svc?singlewsdl</WebEnderecoProducao>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebActionProducao>http://sped.fazenda.gov.br/ConsultasReinf/ConsultaReciboEvento{TipoEventoEFDReinf}</WebActionProducao>
+			<WebActionHomologacao>http://sped.fazenda.gov.br/ConsultasReinf/ConsultaReciboEvento{TipoEventoEFDReinf}</WebActionHomologacao>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<WebTagRetorno>ConsultaReciboEvento{TipoEventoEFDReinf}Result</WebTagRetorno>
+		</ConsultaReciboEvento>
+	</Servicos>
+</Configuracoes>
