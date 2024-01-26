@@ -76,7 +76,6 @@ namespace Unimake.DFe.Test.CTeOS
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao, "4.00")]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao, "4.00")]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao, "4.00")]
-
         public void EnviarCTeOSSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
         {
             #region CriarCTeOS

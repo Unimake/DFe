@@ -1,0 +1,380 @@
+PROCEDURE Emitir_MDFe_Unimake() 
+
+
+//*---------------------------------------------------------------------------------
+//*Enviar MDFe de forma síncrona
+//*---------------------------------------------------------------------------------
+	
+//* Criar o objeto de configuração mínima
+oConfiguracao						is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDFe				= 4  // 4=MDFe
+oConfiguracao.CertificadoArquivo	= "eCNPJ.pfx"
+oConfiguracao.CertificadoSenha		= "1234"   
+
+//* Criar o XML do MDFe
+oMDFe                               is Unimake.Business.DFe.XML.MDFe.MDFe
+
+//* Criar a tag <infMDFe>
+oInfMDFe		is  Unimake.Business.DFe.XML.MDFe.InfMDFe
+oInfMDFe.Versao	= "3.00"
+
+//* Criar a tag <ide>
+oIDE				is Unimake.Business.DFe.XML.MDFe.IDE
+
+oIDE.CUF			= 41 // UFBrasil.PR
+oIDE.TpAmb			= 2 // TipoAmbiente.Homologacao
+oIDE.TpEmit			= 1 // TipoEmitenteMDFe.PrestadorServicoTransporte
+oIDE.Mod			= 58 // ModeloDFe.MDFe
+oIDE.Serie			= 1
+oIDE.NMDF			= 861
+oIDE.CMDF			= "01722067"
+oIDE.Modal			= 1 // ModalidadeTransporteMDFe.Rodoviario
+oIDE.DhEmi			= SysDateTime()
+oIDE.TpEmis			= 1 // TipoEmissao.Normal
+oIDE.ProcEmi		= 0 // ProcessoEmissao.AplicativoContribuinte
+oIDE.VerProc		= "UNICO V8.0"
+oIDE.TpTransp		= 1 // 1=ETC
+oIDE.UFIni			= 41 // UFBrasil.PR
+oIDE.UFFim			= 35 // UFBrasil.SP
+oIDE.DhIniViagem	= SysDateTime() 
+
+//*Criar À tag <InfMunCarrega>
+oInfMunCarrega				is Unimake.Business.DFe.XML.MDFe.InfMunCarrega 
+oInfMunCarrega.CMunCarrega	= 4118402
+oInfMunCarrega.XMunCarrega	= "PARANAVAI"   
+
+//*Adicionar o grupo de tag <InfMunCarrega> dentro da IDE
+oIDE.AddInfMunCarrega(oInfMunCarrega)
+
+//*Adicionar o grupo de tag <ide> dentro da tag <InfMDFe>
+oInfMDFe.IDE = oIDE
+
+//*Criar À tag <emit>
+oEmit		is Unimake.Business.DFe.XML.MDFe.Emit 
+oEmit.CNPJ	= "06117473000150"
+oEmit.IE	= "9456656656"
+oEmit.XNome	= "XXXXXX XXXXXX XXXXXX"
+oEmit.XFant	= "XXXXXX XXXXXX" 
+
+//*Criar À tag <enderEmit>
+oEnderEmit			is Unimake.Business.DFe.XML.MDFe.EnderEmit 
+oEnderEmit.XLgr		= "RUA XXXXXXX X. XX XXXXX"
+oEnderEmit.Nro		= "01112"
+oEnderEmit.XBairro	= "VILA XXXXXXXXX"
+oEnderEmit.CMun		= 4118402
+oEnderEmit.XMun		= "PARANAVAI"
+oEnderEmit.CEP		= "87706000"
+oEnderEmit.UF		= 41 // UFBrasil.PR
+oEnderEmit.Fone		= "04433333333"
+
+//*Adicionar o grupo de tag <enderEmit> dentro da tag <emit>   
+oEmit.EnderEmit		= oEnderEmit
+
+//*Adicionar o grupo de tag <emit> dentro da tag <InfMDFe>
+oInfMDFe.Emit		= oEmit
+
+//*Criar o grupo de tag <infModal>
+oInfModal				is Unimake.Business.DFe.XML.MDFe.InfModal 
+oInfModal.VersaoModal	= "3.00"
+
+//*Criar o grupo de tag <rodo>
+oRodo			is Unimake.Business.DFe.XML.MDFe.Rodo 
+
+//*Criar o grupo de tag <InfANTT>
+oInfANTT		is Unimake.Business.DFe.XML.MDFe.InfANTT 
+oInfANTT.RNTRC	= "44556666"
+
+//*Criar o grupo de tag <InfContratante>
+oInfContratante			is Unimake.Business.DFe.XML.MDFe.InfContratante 
+oInfContratante.CNPJ	= "06117473000150"
+
+//*Adicionar o grupo de tag <InfContratante> dentro da tag <InfANTT>
+oInfANTT.AddInfContratante(oInfContratante)
+
+//*Criar um novo grupo de tag <InfContratante>
+oInfContratante2			is Unimake.Business.DFe.XML.MDFe.InfContratante 
+oInfContratante2.CNPJ	= "06117473000150"
+
+//*Adicionar o grupo de tag <InfContratante> dentro da tag <InfANTT>
+oInfANTT.AddInfContratante(oInfContratante2)
+
+//*Adicionar o grupo de tag <InfANTT> dentro DO grupo <rodo>
+oRodo.InfANTT = oInfANTT
+
+//*Criar o grupo de tag <VeicTracao>
+oVeicTracao			is Unimake.Business.DFe.XML.MDFe.VeicTracao 
+oVeicTracao.CInt	= "AXF0000"
+oVeicTracao.Placa	= "AXF0000"
+oVeicTracao.Tara	= 0
+oVeicTracao.CapKG	= 5000
+oVeicTracao.TpRod	= 2 // TipoRodado.Toco
+oVeicTracao.TpCar	= 2 // TipoCarroceriaMDFe.FechadaBau
+oVeicTracao.UF		= 41 // UFBrasil.PR
+
+//*Criar o grupo de tag <prop>
+oProp			is Unimake.Business.DFe.XML.MDFe.Prop 
+oProp.CNPJ			= "06117443000150"
+oProp.RNTRC			= "44556666"
+oProp.XNome			= "XXXXXX XXXXXX XXXXXX"
+oProp.IE			= "5545546656"
+oProp.UF			= 41 // UFBrasil.PR
+oProp.TpProp		= 2 // TipoProprietarioMDFe.Outros
+
+//*Adicionar o grupo de tag <prop> dentro DO grupo <VeicTracao>
+oVeicTracao.Prop	= oProp
+
+//*Criar o grupo de tag <Condutor>
+oCondutor		is Unimake.Business.DFe.XML.MDFe.Condutor 
+oCondutor.XNome	= "XXXXXXXXX XXXXX XX XXXXX"
+oCondutor.CPF	= "02133333333"
+
+//*Adicionar o grupo de tag <Condutor> dentro DO grupo <VeicTracao>
+oVeicTracao.AddCondutor(oCondutor)
+
+//*Adicionar o grupo de tag <VeicTracao> dentro DO grupo <rodo>
+oRodo.VeicTracao	= oVeicTracao
+
+//*Adicionar o grupo de tag <rodo> dentro DO grupo <infModal>
+oInfModal.Rodo		= oRodo
+
+//*Adicionar o grupo de tag <infModal> dentro DO grupo <InfMDFe>
+oInfMDFe.InfModal	= oInfModal
+
+//*Criar o grupo de tag <infDoc>
+oInfDoc							is Unimake.Business.DFe.XML.MDFe.InfDocInfMDFe 
+
+//*Criar o grupo de tag <InfMunDescarga>
+oInfMunDescarga					is Unimake.Business.DFe.XML.MDFe.InfMunDescarga 
+oInfMunDescarga.CMunDescarga	= 3505708
+oInfMunDescarga.XMunDescarga	= "BARUERI"
+
+//*Criar o grupo de tag <infCTe>
+oInfCTe			is Unimake.Business.DFe.XML.MDFe.InfMunDescargaInfCTe 
+oInfCTe.ChCTe	= "41000000000000000000000000000000000000000006"
+
+//*Adicionar o grupo de tag <infCTe> dentro DO grupo <InfMunDescarga>
+oInfMunDescarga.AddInfCTe(oInfCTe)
+
+//*Criar um novo grupo de tag <infCTe>
+oInfCTe2			is Unimake.Business.DFe.XML.MDFe.InfMunDescargaInfCTe 
+oInfCTe2.ChCTe	= "41000000000000000000000000000000000000000004"
+
+//*Adicionar o grupo de tag <infCTe> dentro DO grupo <InfMunDescarga>
+oInfMunDescarga.AddInfCTe(oInfCTe)
+
+//*Criar o grupo de tag <infNFe>
+oInfNFe			is Unimake.Business.DFe.XML.MDFe.InfMunDescargaInfNFe 
+oInfNFe.ChNFe	= "12345678901234567890123456789012345678901234"
+
+//*Criar o grupo de tag <infUnidTransp>
+oInfUnidTransp				is Unimake.Business.DFe.XML.MDFe.InfUnidTransp 
+oInfUnidTransp.IdUnidTransp	= "122"
+oInfUnidTransp.TpUnidTransp	= 2 // TipoUnidadeTransporte.RodoviarioReboque
+
+//*Criar o grupo de tag <lacUnidTransp>
+oLacUnidTransp			is Unimake.Business.DFe.XML.MDFe.LacUnidTransp 
+oLacUnidTransp.NLacre	= "12334"
+
+//*Adicionar o grupo de tag <lacUnidTransp> dentro DO grupo <infUnidTransp>
+oInfUnidTransp.AddLacUnidTransp(oLacUnidTransp)
+
+//*Criar o grupo de tag <infUnidCarga>
+oInfUnidCarga				is Unimake.Business.DFe.XML.MDFe.InfUnidCarga 
+oInfUnidCarga.TpUnidCarga	= 1 // TipoUnidadeCarga.Container
+oInfUnidCarga.IdUnidCarga	= "123"
+
+//*Criar o grupo de tag <lacUnidCarga>
+oLacUnidCarga			is Unimake.Business.DFe.XML.MDFe.LacUnidCarga 
+oLacUnidCarga.NLacre	= "3333333"
+
+//*Adicionar o grupo de tag <lacUnidCarga> dentro DO grupo <infUnidCarga>
+oInfUnidCarga.AddLacUnidCarga(oLacUnidCarga)
+
+//*Adicionar o grupo de tag <infUnidCarga> dentro DO grupo <infUnidTransp>
+oInfUnidTransp.AddInfUnidCarga(oInfUnidCarga)
+
+//*Adicionar o grupo de tag <infUnidTrans> dentro DO grupo <infNFe>
+oInfNFe.AddInfUnidTransp(oInfUnidTransp)
+
+//*Adicionar o grupo <infNfe> dentro DO grupo <InfMunDescarga>
+oInfMunDescarga.AddInfNFe(oInfNFe)
+
+//*Adicionar o grupo de tag <InfMunDescarga> dentro DO grupo <infDoc>
+oInfDoc.AddInfMunDescarga(oInfMunDescarga)
+
+//*Criar um novo grupo de tag <InfMunDescarga>
+oInfMunDescarga2					is Unimake.Business.DFe.XML.MDFe.InfMunDescarga 
+oInfMunDescarga2.CMunDescarga	= 3550308
+oInfMunDescarga2.XMunDescarga	= "SAO PAULO"
+
+//*Criar o grupo de tag <infCTe>
+oInfCTe3			is Unimake.Business.DFe.XML.MDFe.InfMunDescargaInfCTe 
+oInfCTe3.ChCTe	= "41000000000000000000000000000000000000000000"
+
+//*Adicionar o grupo de tag <infCTe> dentro DO grupo <InfMunDescarga>
+oInfMunDescarga.AddInfCTe(oInfCTe)
+
+//*Adicionar o grupo de tag <InfMunDescarga> dentro DO grupo <infDoc>
+oInfDoc.AddInfMunDescarga(oInfMunDescarga)
+
+//*Adicionar o grupo de tag <infDoc> dentro DO grupo <InfMDFe>
+oInfMDFe.InfDoc = oInfDoc
+
+//*Criar o grupo de tag <seg>
+oSeg		is Unimake.Business.DFe.XML.MDFe.Seg 
+oSeg.NApol	= "033666565656"
+
+//*Criar o grupo de tag <InfResp>
+oInfResp			is Unimake.Business.DFe.XML.MDFe.InfResp 
+oInfResp.RespSeg	= 1 // ResponsavelSeguroMDFe.EmitenteMDFe
+oInfResp.CNPJ		= "06117473000150"
+
+//*Adicionar o grupo de tag <InfResp> dentro DO grupo <seg>
+oSeg.InfResp		= oInfResp
+
+//*Criar o grupo de tag <infSeg>
+oInfSeg			is Unimake.Business.DFe.XML.MDFe.InfSeg 
+oInfSeg.XSeg	= "PORTO SEGURO"
+oInfSeg.CNPJ	= "06117473000150"
+
+//*Adicionar o grupo de tag <infSeg> dentro DO grupo <seg>
+oSeg.InfSeg		= oInfSeg
+
+//*Adicionar tag <nAver> No grupo <seg> quantas vezes FOR necessÃ¡rio (Pode ter mais de uma)
+oSeg.AddNAver("0000000000000000000000000000000000000000")  
+oSeg.AddNAver("0000000000000000000000000000000000000000")  
+
+//*Adicionar o grupo <seg> dentro DO grupo <InfMDFe>
+oInfMDFe.AddSeg(oSeg)
+
+//*Criar o grupo de tag <ProdPred>
+oProdPred			is Unimake.Business.DFe.XML.MDFe.ProdPred 
+oProdPred.TpCarga	= 5 // TipoCargaMDFe.CargaGeral
+oProdPred.XProd		= "TESTE DE PRODUTO PREDOMINANTE"
+
+//*Criar o grupo de tag <InfLotacao>
+oInfLotacao				is Unimake.Business.DFe.XML.MDFe.InfLotacao 
+
+//*Criar o grupo de tag <InfLocalCarrega>
+oInfLocalCarrega		is Unimake.Business.DFe.XML.MDFe.InfLocalCarrega 
+oInfLocalCarrega.CEP		= "87302080"
+
+//*Adicionar o grupo de tag <InfLocalCarrega> dentro DO grupo <InfLotacao>
+oInfLotacao.InfLocalCarrega	= oInfLocalCarrega
+
+//*Criar o grupo de tag <InfLocalDescarrega>
+oInfLocalDescarrega		is Unimake.Business.DFe.XML.MDFe.InfLocalDescarrega 
+oInfLocalDescarrega.CEP			= "25650208"
+
+//*Adicionar o grupo de tag <InfLocalDescarrega> dentro DO grupo de tag <oInfLotacao>
+oInfLotacao.InfLocalDescarrega	= oInfLocalDescarrega
+
+//*Adicionar À tag <InfLotacao> dentro da tag <ProdPred>
+oProdPred.InfLotacao			= oInfLotacao
+
+//*Adicionar À tag <ProdPred> dentro DO grupo <InfMDFe>
+oInfMDFe.ProdPred				= oProdPred
+
+//*Criar o grupo de tag <Tot>
+oTot		is Unimake.Business.DFe.XML.MDFe.Tot 
+oTot.QCTe		= 3
+oTot.VCarga		= 56599.09
+oTot.CUnid		= 1 // CodigoUnidadeMedidaMDFe.KG
+oTot.QCarga		= 2879.00
+
+//*Adicionar o grupo de tag <Tot> dentro DO grupo <InfMDFe>
+oInfMDFe.Tot	= oTot
+
+//*Criar o grupo de tag <Lacres>
+oLacre			is Unimake.Business.DFe.XML.MDFe.Lacre 
+oLacre.NLacre	= "1111111"
+
+//*Adicionar o grupo de tag <lacre> dentro DO grupo <Lacres>
+oInfMDFe.AddLacres(oLacre)
+
+//*Criar um novo grupo de tag <lacre>
+oLacre2			is Unimake.Business.DFe.XML.MDFe.Lacre 
+oLacre2.NLacre	= "2222222"
+
+//*Adicionar o grupo de tag <lacre> dentro DO grupo <Lacres>
+oInfMDFe.AddLacres(oLacre2)
+
+//*Criar o grupo de tag <infAdic>
+oInfAdic		is Unimake.Business.DFe.XML.MDFe.InfAdic 
+oInfAdic.InfCpl		= "DATA/HORA PREVISTA PARA O INICO DA VIAGEM: 10/08/2020 as 08:00"
+
+//*Adicionar o grupo de tag <infAdic> dentro DO grupo <InfMDFe>
+oInfMDFe.InfAdic	= oInfAdic
+
+//*Criar o grupo de tag <infRespTec>
+oInfRespTec				is Unimake.Business.DFe.XML.MDFe.InfRespTec 
+oInfRespTec.CNPJ		= "99999999999999"
+oInfRespTec.XContato	= "Teste de Responsavel Tecnico"
+oInfRespTec.Email		= "testey@teste.com.br"
+oInfRespTec.Fone		= "04431414900"
+
+//*Adicionar o grupo de tag <infRespTec> dentro DO grupo <InfMDFe>
+oInfMDFe.InfRespTec		= oInfRespTec
+
+//*Adicionar o grupo de tag <InfMDFe> dentro DO grupo <MDFe>
+oMDFe.InfMDFe			= oInfMDFe
+
+//*Resgatar alguns dados DO Objeto DO XML para demostrar como funciona
+Info("CNPJ Emitente: " + oMDFe.InfMDFe.Emit.CNPJ)
+Info("Razao Emitente: " + oMDFe.InfMDFe.Emit.XNome)
+Info("Chave do MDFe: " + oMDFe.InfMDFe.Chave)
+
+//*Criar objeto para pegar exceção DO lado DO CSHARP
+OExceptionInterop is Unimake.Exceptions.ThrowHelper    
+
+WHEN EXCEPTION IN 
+	
+	//*Criar o objeto para consumir o Servico de autorização DO MDFe
+	oAutorizacaoSinc is Unimake.Business.DFe.Servicos.MDFe.AutorizacaoSinc 
+	oAutorizacaoSinc.SetXMLConfiguracao(oMDFe, oConfiguracao)
+	
+	//*O conteúdo DO XML assinado deve ser gravado na base de dados para ser recuperado 
+	//*caso seja necessário. Imagine que de um problema No envio DO MDFe e vc precise resgatar para enviar novamente.
+	Info(oAutorizacaoSinc.GetConteudoMDFeAssinado())
+	
+	//*Gravar o XML assinado na pasta  
+	fDelete("c:\testenfe\" + oMDFe.InfMDFe.Chave + "-mdfe.xml")
+	fSaveText( "c:\testenfe\" + oMDFe.InfMDFe.Chave + "-mdfe.xml",oAutorizacaoSinc.GetConteudoMDFeAssinado())
+	
+	
+	//*Enviar o XML
+	oAutorizacaoSinc.Executar(oMDFe, oConfiguracao)
+	
+	//*Demonstrar o XML retornado pela SEFAZ
+	Info(oAutorizacaoSinc.RetornoWSString)
+	
+	IF oAutorizacaoSinc.Result <> Null THEN 
+		Info("Status envio: " + NumToString(oAutorizacaoSinc.Result.CStat) + " - " + oAutorizacaoSinc.Result.XMotivo)		
+		IF oAutorizacaoSinc.Result.CStat = 104 // Lote processado
+			Info("Status do MDFe enviado: " + NumToString(oAutorizacaoSinc.Result.ProtMDFe.InfProt.CStat) + " - " + oAutorizacaoSinc.Result.ProtMDFe.InfProt.XMotivo)
+			IF oAutorizacaoSinc.Result.ProtMDFe.InfProt.CStat = 100 // MDFe autorizado
+				Info("Protocolo de autorizacao: " + oAutorizacaoSinc.Result.ProtMDFe.InfProt.NProt)
+				
+				//*Gravar o XML de distribuição DO MDFe No HD, se preferir assim.
+				oAutorizacaoSinc.GravarXmlDistribuicao("c:\testenfe") 
+				
+				//*Pegar À string DO XML de distribuição para gravar na base de dados, se preferir assim.  
+				sTringXmlDistribuicao is string = oAutorizacaoSinc.GetMDFeProcResults(oMDFe.InfMDFe.Chave)
+			ELSE   
+				//*Rejeitado, fazer devidos tratamentos
+			END 	
+		ELSE
+	          //*Rejeitado, fazer devidos tratamentos
+	    END 		 
+	END    
+
+DO 
+	
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#,	importante envolver o código em Try/Catch
+	
+	Info ( ExceptionInfo(errFullDetails))      //Ele também pega o conteúdo da Exception do lado do C#,	importante envolver o código em Try/Catch
+	Info(OExceptionInterop.GetErrorCode()  + " " + OExceptionInterop.GetMessage() )
+END 
+
+
+RETURN 
