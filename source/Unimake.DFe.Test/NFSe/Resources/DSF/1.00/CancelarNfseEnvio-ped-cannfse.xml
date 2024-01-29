@@ -1,40 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ns1:ReqCancelamentoNFSe xmlns:ns1="http://localhost:8080/WsNFe2/lote"
 	xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/ReqCancelamentoNFSe.xsd">
 	<Cabecalho>
-		<CodCidade>6291</CodCidade>
-		<CPFCNPJRemetente>99999999999999</CPFCNPJRemetente>
+		<CodCidade>9051</CodCidade>
+		<CPFCNPJRemetente>11111222222</CPFCNPJRemetente>
 		<transacao>true</transacao>
 		<Versao>1</Versao>
 	</Cabecalho>
 	<Lote Id="lote:1ABCDZ">
-		<Nota Id="nota:5">
-			<InscricaoMunicipalPrestador>99999999999999</InscricaoMunicipalPrestador>
-			<NumeroNota>5</NumeroNota>
+		<Nota Id="nota:1">
+			<InscricaoMunicipalPrestador>0000000</InscricaoMunicipalPrestador>
+			<NumeroNota>11</NumeroNota>
+			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
+			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
+		</Nota>
+		<Nota Id="nota:2">
+			<InscricaoMunicipalPrestador>0000000</InscricaoMunicipalPrestador>
+			<NumeroNota>2</NumeroNota>
+			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
+			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
+		</Nota>
+		<Nota Id="nota:3">
+			<InscricaoMunicipalPrestador>0000000</InscricaoMunicipalPrestador>
+			<NumeroNota>3</NumeroNota>
+			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
+			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
+		</Nota>
+		<Nota Id="nota:4">
+			<InscricaoMunicipalPrestador>0000000</InscricaoMunicipalPrestador>
+			<NumeroNota>4</NumeroNota>
 			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
 			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
 		</Nota>
 		<Nota Id="nota:5">
-			<InscricaoMunicipalPrestador>99999999999999</InscricaoMunicipalPrestador>
-			<NumeroNota>5</NumeroNota>
-			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
-			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
-		</Nota>
-		<Nota Id="nota:5">
-			<InscricaoMunicipalPrestador>99999999999999</InscricaoMunicipalPrestador>
-			<NumeroNota>5</NumeroNota>
-			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
-			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
-		</Nota>
-		<Nota Id="nota:5">
-			<InscricaoMunicipalPrestador>99999999999999</InscricaoMunicipalPrestador>
-			<NumeroNota>5</NumeroNota>
-			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
-			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>
-		</Nota>
-		<Nota Id="nota:5">
-			<InscricaoMunicipalPrestador>99999999999999</InscricaoMunicipalPrestador>
+			<InscricaoMunicipalPrestador>0000000</InscricaoMunicipalPrestador>
 			<NumeroNota>5</NumeroNota>
 			<CodigoVerificacao>nwnvoervnevn933r94r4necfonedvr0v0vbrvebv</CodigoVerificacao>
 			<MotivoCancelamento>Teste de cancelamento</MotivoCancelamento>

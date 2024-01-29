@@ -2116,4 +2116,10 @@
 		<ArqConfig>BoituvaSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5002704">
+		<Nome>Campo Grande - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>CampoGrandeMS.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
