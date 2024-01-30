@@ -722,6 +722,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoDetalhe")]
     [ComVisible(true)]
 #endif
+    [Serializable()]
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoIncCondutor))]
     [XmlInclude(typeof(DetEventoIncDFeMDFe))]

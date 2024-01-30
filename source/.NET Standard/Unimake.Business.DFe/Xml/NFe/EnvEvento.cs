@@ -404,6 +404,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ProgId("Unimake.Business.DFe.Xml.NFe.EventoDetalhe")]
     [ComVisible(true)]
 #endif
+    [Serializable()]
     [XmlInclude(typeof(DetEventoCanc))]
     [XmlInclude(typeof(DetEventoCCE))]
     [XmlInclude(typeof(DetEventoCancSubst))]
