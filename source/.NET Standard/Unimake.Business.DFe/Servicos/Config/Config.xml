@@ -2122,4 +2122,10 @@
 		<ArqConfig>CampoGrandeMS.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3543402">
+		<Nome>Ribeirão Preto - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>RibeiraoPretoSP.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

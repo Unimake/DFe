@@ -378,6 +378,7 @@
 		<None Remove="Servicos\Config\NFSe\PresidenteLucenaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RedencaoPA.xml" />
 		<None Remove="Servicos\Config\NFSe\RibasDoRioPardoMS.xml" />
+		<None Remove="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioDasPedrasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RolanteRS.xml" />
@@ -832,6 +833,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LimeiraSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
