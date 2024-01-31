@@ -8437,5 +8437,66 @@ namespace Unimake.Business.DFe.Servicos
         SemMovimento = 3,
     }
     #endregion
+
+    #region Situação do evento Reinf.
+
+    /// <summary>
+    /// Situação do evento Reinf.
+    /// </summary>
+    public enum ReinfSituacaoEvento
+    {
+        /// <summary>
+        /// 1 - Ativo.
+        /// </summary>
+        [XmlEnum("1")]
+        Ativo = 1,
+
+        /// <summary>
+        /// 2 - Retificado.
+        /// </summary>
+        [XmlEnum("2")]
+        Retificado = 2,
+
+        /// <summary>
+        /// 3 - Excluído.
+        /// </summary>
+        [XmlEnum("3")]
+        Excluído = 3,
+
+        /// <summary>
+        /// 3 - Em Processamento.
+        /// </summary>
+        [XmlEnum("4")]
+        EmProcessamento = 4,
+
+        /// <summary>
+        /// 5 - Recusado.
+        /// </summary>
+        [XmlEnum("5")]
+        Recusado = 5,
+    }
+    #endregion
+
+    #region Reinf Aplicacao Recepcao.
+
+    /// <summary>
+    /// Indicativo de existência de valores de bases ou de tributos.
+    /// </summary>
+    public enum ReinfAplicacaoRecepcao
+    {
+        /// <summary>
+        /// 1 - Webservice.
+        /// </summary>
+        [XmlEnum("1")]
+        Webservice = 1,
+
+        /// <summary>
+        /// 2 - Portal Web.
+        /// </summary>
+        [XmlEnum("2")]
+        PortalWeb = 2,
+
+    }
+    #endregion
 }
 #endregion

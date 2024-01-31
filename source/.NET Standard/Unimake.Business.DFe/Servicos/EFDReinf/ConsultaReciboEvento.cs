@@ -44,25 +44,21 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
         #region Public Properties
 
-        ///// <summary>
-        ///// Conteúdo retornado pelo web-service depois do envio do XML
-        ///// </summary>
-        //public RetConsStatServ Result
-        //{
-        //    get
-        //    {
-        //        if (!string.IsNullOrWhiteSpace(RetornoWSString))
-        //        {
-        //            return XMLUtility.Deserializar<RetConsStatServ>(RetornoWSXML);
-        //        }
+        /// <summary>
+        /// Conteúdo retornado pelo web-service depois do envio do XML
+        /// </summary>
+        public ReinfRetornoRecibo Result
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    return XMLUtility.Deserializar<ReinfRetornoRecibo>(RetornoWSXML);
+                }
 
-        //        return new RetConsStatServ
-        //        {
-        //            CStat = 0,
-        //            XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-        //        };
-        //    }
-        //}
+                return new ReinfRetornoRecibo { };
+            }
+        }
 
         #endregion Public Properties
 
