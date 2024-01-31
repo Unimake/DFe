@@ -86,10 +86,10 @@ namespace Unimake.Business.DFe
                 {
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
-                    XmlNodeList xmlNode = doc.GetElementsByTagName("ArquivoRPSBase64");
+                    var xmlNode = doc.GetElementsByTagName("ArquivoRPSBase64");
                     if (xmlNode.Count > 0)
                     {
-                        XmlNode tagNode = xmlNode[0];
+                        var tagNode = xmlNode[0];
                         tagNode.InnerText = tagNode.InnerText.Base64Encode();
                         doc.GetElementsByTagName("ArquivoRPSBase64")[0].InnerText = tagNode.InnerText;
                     }
@@ -110,7 +110,7 @@ namespace Unimake.Business.DFe
 
                     var doc = new XmlDocument();
                     doc.LoadXml(xmlBody);
-                    
+
                     if (!xmlBody.Contains("Integridade"))
                     {
                         var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
@@ -118,7 +118,7 @@ namespace Unimake.Business.DFe
                         noIntegridade.InnerText = integridade;
                         doc.FirstChild.FirstChild.AppendChild(noIntegridade);
                         xmlBody = doc.OuterXml;
-                    }                                       
+                    }
                 }
 
                 if (soap.Servico == Servico.EFDReinfConsultaReciboEvento)
@@ -280,9 +280,16 @@ namespace Unimake.Business.DFe
 
                 if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
                 {
-                    throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo webservice.\r\n\r\n" +
-                            "Conteúdo retornado pelo servidor:\r\n\r\n" +
-                        retornoXml.InnerXml);
+                    if (retornoXml.GetElementsByTagName("soap:Body").Count >= 1 && retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes.Count >= 1)
+                    {
+                        tagRetorno = retornoXml.GetElementsByTagName("soap:Body")[0].ChildNodes[0].Name;
+                    }
+
+                    if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
+                    {
+                        throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo web-service.\r\n\r\n" +
+                            "Conteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
+                    }
                 }
 
                 if (TratarScapeRetorno)
@@ -298,7 +305,7 @@ namespace Unimake.Business.DFe
             {
                 if (string.IsNullOrWhiteSpace(retornoXml.InnerText))
                 {
-                    throw new Exception("A propriedade InnerText do XML retornado pelo webservice está vazia.");
+                    throw new Exception("A propriedade InnerText do XML retornado pelo web-service está vazia.");
                 }
 
                 RetornoServicoString = retornoXml.InnerText;

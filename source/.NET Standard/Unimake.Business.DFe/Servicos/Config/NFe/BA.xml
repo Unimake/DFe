@@ -114,7 +114,6 @@
 			<TagAtributoID>infNFe</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebTagRetornoHomologacao>nfeAutorizacaoLoteResult</WebTagRetornoHomologacao>
 		</Autorizacao>
 		<RetAutorizacao versao="4.00">
 			<Descricao>Consulta recibo da nota fiscal eletrônica</Descricao>
@@ -125,7 +124,6 @@
 			<SchemaArquivo>consReciNFe_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebTagRetornoHomologacao>nfeRetAutorizacaoLoteResult</WebTagRetornoHomologacao>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</RetAutorizacao>
