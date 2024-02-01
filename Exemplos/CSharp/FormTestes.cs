@@ -8,10 +8,13 @@ using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.MDFe;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
+using Unimake.Unidanfe.Configurations;
+using Unimake.Unidanfe;
 using DANFe = Unimake.Unidanfe;
 using DFe = Unimake.Business.DFe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
@@ -5778,6 +5781,43 @@ namespace TreinamentoDLL
                     }
                 }
             }
+        }
+
+        private void BtnImprimirCCe_Click(object sender, EventArgs e)
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"D:\testenfe\35240110654122000155550010000085161700218900_110110_01-proceventonfe.xml");
+
+            var config = new UnidanfeConfiguration
+            {
+                Arquivo = doc.OuterXml,
+                Copias = 1,
+                Visualizar = true,
+                Imprimir = false,
+                PastaPDF = @"d:\testenfe\pdf",
+                NomePDF = "35240110654122000155550010000085161700218900_110110_01-proceventonfe.pdf",
+                WaitProcess = false
+            };
+
+            config.NFe = @"D:\testenfe\41240106117473000150550300000000111905645773-procnfe.xml";
+            UnidanfeServices.Execute(config);
+        }
+
+        private void BtnImprimirSAT_Click(object sender, EventArgs e)
+        {
+            var doc = new XmlDocument();
+            doc.Load(@"C:\Users\Wandrey\Downloads\Telegram Desktop\35240111111111111111599000001020007901053255-sat.xml");
+
+            var config = new UnidanfeConfiguration
+            {
+                Arquivo = doc.OuterXml,
+                Copias = 1,
+                Visualizar = false,
+                Imprimir = true,
+                //WaitProcess = false
+            };
+
+            UnidanfeServices.Execute(config);
         }
     }
 }

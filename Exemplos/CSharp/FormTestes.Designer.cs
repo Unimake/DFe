@@ -85,6 +85,7 @@ namespace TreinamentoDLL
             this.BtnEnviarCTeAssincrono = new System.Windows.Forms.Button();
             this.BtnConsultarStatusCTe = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.BtnImprimirCCe = new System.Windows.Forms.Button();
             this.BtnTestarConexaoInternet = new System.Windows.Forms.Button();
             this.BtnGetInfCertificadoDigital = new System.Windows.Forms.Button();
             this.BtnTratamentoExcecao2 = new System.Windows.Forms.Button();
@@ -106,6 +107,7 @@ namespace TreinamentoDLL
             this.BtnConsultarConfigUF = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.BtnConsultarGTIN = new System.Windows.Forms.Button();
+            this.BtnImprimirSAT = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -637,7 +639,7 @@ namespace TreinamentoDLL
             this.GroupCTe.Controls.Add(this.BtnConsultarStatusCTe);
             this.GroupCTe.Location = new System.Drawing.Point(888, 12);
             this.GroupCTe.Name = "GroupCTe";
-            this.GroupCTe.Size = new System.Drawing.Size(210, 473);
+            this.GroupCTe.Size = new System.Drawing.Size(210, 351);
             this.GroupCTe.TabIndex = 8;
             this.GroupCTe.TabStop = false;
             this.GroupCTe.Text = "CTe e CTeOS";
@@ -744,6 +746,8 @@ namespace TreinamentoDLL
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.BtnImprimirSAT);
+            this.groupBox5.Controls.Add(this.BtnImprimirCCe);
             this.groupBox5.Controls.Add(this.BtnTestarConexaoInternet);
             this.groupBox5.Controls.Add(this.BtnGetInfCertificadoDigital);
             this.groupBox5.Controls.Add(this.BtnTratamentoExcecao2);
@@ -761,10 +765,20 @@ namespace TreinamentoDLL
             this.groupBox5.Controls.Add(this.BtnCarregarA3comPIN);
             this.groupBox5.Location = new System.Drawing.Point(1104, 13);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(210, 541);
+            this.groupBox5.Size = new System.Drawing.Size(210, 680);
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Diversos";
+            // 
+            // BtnImprimirCCe
+            // 
+            this.BtnImprimirCCe.Location = new System.Drawing.Point(7, 540);
+            this.BtnImprimirCCe.Name = "BtnImprimirCCe";
+            this.BtnImprimirCCe.Size = new System.Drawing.Size(197, 23);
+            this.BtnImprimirCCe.TabIndex = 31;
+            this.BtnImprimirCCe.Text = "Imprimir CCe";
+            this.BtnImprimirCCe.UseVisualStyleBackColor = true;
+            this.BtnImprimirCCe.Click += new System.EventHandler(this.BtnImprimirCCe_Click);
             // 
             // BtnTestarConexaoInternet
             // 
@@ -961,7 +975,7 @@ namespace TreinamentoDLL
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.BtnConsultarGTIN);
-            this.groupBox7.Location = new System.Drawing.Point(888, 491);
+            this.groupBox7.Location = new System.Drawing.Point(888, 369);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(210, 63);
             this.groupBox7.TabIndex = 26;
@@ -978,11 +992,21 @@ namespace TreinamentoDLL
             this.BtnConsultarGTIN.UseVisualStyleBackColor = true;
             this.BtnConsultarGTIN.Click += new System.EventHandler(this.BtnConsultarGTIN_Click);
             // 
+            // BtnImprimirSAT
+            // 
+            this.BtnImprimirSAT.Location = new System.Drawing.Point(7, 569);
+            this.BtnImprimirSAT.Name = "BtnImprimirSAT";
+            this.BtnImprimirSAT.Size = new System.Drawing.Size(197, 23);
+            this.BtnImprimirSAT.TabIndex = 32;
+            this.BtnImprimirSAT.Text = "Imprimir SAT";
+            this.BtnImprimirSAT.UseVisualStyleBackColor = true;
+            this.BtnImprimirSAT.Click += new System.EventHandler(this.BtnImprimirSAT_Click);
+            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1323, 565);
+            this.ClientSize = new System.Drawing.Size(1323, 705);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -1085,6 +1109,8 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnCancInsucessoEntregaCTe;
         private System.Windows.Forms.Button BtnInsucessoEntregaCTe;
         private System.Windows.Forms.Button BtnDesserializandoCTeOS;
+        private System.Windows.Forms.Button BtnImprimirCCe;
+        private System.Windows.Forms.Button BtnImprimirSAT;
     }
 }
 
