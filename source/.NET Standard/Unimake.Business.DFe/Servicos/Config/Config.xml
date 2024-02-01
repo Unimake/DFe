@@ -2128,4 +2128,10 @@
 		<ArqConfig>RibeiraoPretoSP.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3103504">
+		<Nome>Araguari - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>AraguariMG.xml</ArqConfig>
+		<PadraoNFSe>SONNER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
