@@ -104,7 +104,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("tpInscEstab")]
-        public string TpInscEstab { get; set; }
+#if INTEROP
+        public TipoInscricaoEstabelecimento TpInscEstab { get; set; } = (TipoInscricaoEstabelecimento)(-1);
+#else
+        public TipoInscricaoEstabelecimento? TpInscEstab { get; set; }
+#endif
 
         [XmlElement("nrInscEstabPrest")]
         public string NrInscEstabPrest { get; set; }
@@ -156,8 +160,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeDtApuracaoField() => DtApuracao > DateTime.MinValue;
 
-        public bool ShouldSerializeTpInscEstabField() => !string.IsNullOrEmpty(TpInscEstab);
-
         public bool ShouldSerializeNrInscTomadorField() => !string.IsNullOrEmpty(NrInscTomador);
 
         public bool ShouldSerializeCnpjPrestadorField() => !string.IsNullOrEmpty(CnpjPrestador);
@@ -181,13 +183,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public bool ShouldSerializeTpInscAdq() => TpInscAdq != (TipoInscricaoAdquirente)(-1);
 #else
-        public bool ShouldSerializeTpInscAdq()=> TpInscAdq != null;        
+        public bool ShouldSerializeTpInscAdq() => TpInscAdq != null;
 #endif
 
 #if INTEROP
         public bool ShouldSerializeTpInscTomador() => TpInscTomador != (TipoInscricaoEstabelecimento)(-1);
 #else
         public bool ShouldSerializeTpInscTomador() => TpInscTomador != null;
+#endif
+
+#if INTEROP
+        public TipoInscricaoEstabelecimento TpInscEstab { get; set; } = (TipoInscricaoEstabelecimento)(-1);
+#else
+        public bool ShouldSerializeTpInscEstab() => TpInscEstab != null;
 #endif
         #endregion
     }
