@@ -80,6 +80,18 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
+			<xs:element minOccurs="0" name="qrcodePayload">
+				<xs:annotation>
+					<xs:documentation>String PIX, texto copia e cola, utilizado na geracao do qrcode.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TString">
+						<xs:whiteSpace value="preserve" />
+						<xs:maxLength value="512"></xs:maxLength>
+						<xs:minLength value="100"></xs:minLength>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element minOccurs="0" name="dataEmissao" type="TData">
 				<xs:annotation>
 					<xs:documentation>

@@ -74,15 +74,26 @@
 							</xs:element>
 							<xs:element name="tipoConsulta" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
-                       				<xs:documentation>Tipo da Consulta. C: codigo de barras, N: numero controle, D: documento origem</xs:documentation>
-                       			</xs:annotation>
-								 <xs:simpleType>
-			    					<xs:restriction base="xs:string">
-			    						<xs:enumeration value="C"></xs:enumeration>
-			    						<xs:enumeration value="N"></xs:enumeration>
-			    						<xs:enumeration value="D"></xs:enumeration>
-			    					</xs:restriction>
-			    				</xs:simpleType>
+									<xs:documentation>Tipo da Consulta. 
+C: Consulta por codigo de barras
+N: Consulta por numero controle
+D: Consulta por documento origem
+CD: Consulta por codigo de barras mais documento de origem
+ND: Consulta por numero de controle mais documento de origem
+CR: Consulta por codigo de barras mais codigo da receita
+NR: Consulta por numero de controle mais codigo da receita</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="C"></xs:enumeration>
+										<xs:enumeration value="N"></xs:enumeration>
+										<xs:enumeration value="D"></xs:enumeration>
+										<xs:enumeration value="CD"></xs:enumeration>
+										<xs:enumeration value="ND"></xs:enumeration>
+										<xs:enumeration value="CR"></xs:enumeration>
+										<xs:enumeration value="NR"></xs:enumeration>
+									</xs:restriction>
+								</xs:simpleType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>

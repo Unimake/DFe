@@ -515,6 +515,8 @@
 		<None Remove="Xml\Schemas\GNRE\lote_gnre_result_v2.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\lote_gnre_v1.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\lote_gnre_v2.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\retorno_gnre_v1.00.xsd" />
+		<None Remove="Xml\Schemas\GNRE\retorno_gnre_v2.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\tiposBasicoGNRE_v1.00.xsd" />
 		<None Remove="Xml\Schemas\GNRE\tiposBasicoGNRE_v2.00.xsd" />
 		<None Remove="Xml\Schemas\CCe_v1.00.xsd" />
@@ -1233,6 +1235,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorContribuinte-v1_05_01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\retornoTotalizadorEvento-v1_05_01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\EFDReinf\xmldsig-core-schema.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v2.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />

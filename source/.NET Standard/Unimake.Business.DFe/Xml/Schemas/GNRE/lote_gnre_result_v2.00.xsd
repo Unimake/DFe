@@ -82,6 +82,18 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
+			<xs:element minOccurs="0" name="qrcodePayload">
+				<xs:annotation>
+					<xs:documentation>String PIX, texto copia e cola, utilizado na geracao do qrcode.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="TString">
+						<xs:whiteSpace value="preserve" />
+						<xs:maxLength value="512"></xs:maxLength>
+						<xs:minLength value="100"></xs:minLength>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element name="motivosRejeicao" maxOccurs="1" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
@@ -262,8 +274,8 @@
 									</xs:attribute>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="pdfGuias" minOccurs="0" maxOccurs="1" type="xs:string" />								
-							<xs:element name="arquivoPagamento" minOccurs="0" maxOccurs="1" type="xs:string" />
+							<xs:element name="pdfGuias" minOccurs="0" maxOccurs="1"></xs:element>
+							<xs:element name="arquivoPagamento" minOccurs="0" maxOccurs="1"></xs:element>
 							<xs:element name="noticias" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:sequence>

@@ -145,6 +145,9 @@ namespace Unimake.Business.DFe.Xml.GNRE
         [XmlElement("linhaDigitavel")]
         public string LinhaDigitavel { get; set; }
 
+        [XmlElement("qrcodePayload")]
+        public string QrcodePayload { get; set; }
+
         [XmlElement("motivosRejeicao")]
         public MotivosRejeicao MotivosRejeicao { get; set; }
     }
