@@ -193,7 +193,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
 #if INTEROP
-        public TipoInscricaoEstabelecimento TpInscEstab { get; set; } = (TipoInscricaoEstabelecimento)(-1);
+        public bool ShouldSerializeTpInscEstab() => TpInscEstab != (TipoInscricaoEstabelecimento)(-1);
 #else
         public bool ShouldSerializeTpInscEstab() => TpInscEstab != null;
 #endif

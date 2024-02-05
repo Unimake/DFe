@@ -24,6 +24,46 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("ideStatus")]
         public IdeStatusRetorno IdeStatus { get; set; }
 
+        [XmlElement("regOcorrs")]
+        public List<RegOcorrsRetorno> RegOcorrs { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRegOcorrs(RegOcorrsRetorno item)
+        {
+            if (RegOcorrs == null)
+            {
+                RegOcorrs = new List<RegOcorrsRetorno>();
+            }
+
+            RegOcorrs.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RegOcorrs (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RegOcorrs</returns>
+        public RegOcorrsRetorno GetRegOcorrs(int index)
+        {
+            if ((RegOcorrs?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RegOcorrs[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RegOcorrs
+        /// </summary>
+        public int GetRegOcorrsCount => (RegOcorrs != null ? RegOcorrs.Count : 0);
+#endif
+
         [XmlElement("retornoEventos")]
         public RetornoEventos RetornoEventos { get; set; }
 
@@ -35,6 +75,20 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     public class IdeStatusRetorno
+    {
+        [XmlElement("cdRetorno")]
+        public string CdRetorno { get; set; }
+
+        [XmlElement("descRetorno")]
+        public string DescRetorno { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RegOcorrsRetorno")]
+    [ComVisible(true)]
+#endif
+    public class RegOcorrsRetorno
     {
         [XmlElement("tpOcorr")]
         public TipoDaOcorrencia TpOcorr { get; set; }

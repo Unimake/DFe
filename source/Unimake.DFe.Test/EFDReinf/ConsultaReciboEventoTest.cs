@@ -42,7 +42,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -416,7 +416,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace Unimake.DFe.Test.EFDReinf
             var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(xml, configuracao);
             consultaReciboEvento.Executar();
 
-            //Assert.True(consultaReciboEvento., "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
     }
 }
