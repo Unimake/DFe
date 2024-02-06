@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="1.00">
+		<RecepcionarLoteRpsSincrono versao="1.00">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoProducao>https://issdigital.pmcg.ms.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
 			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
@@ -12,7 +12,7 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
-		</RecepcionarLoteRps>
+		</RecepcionarLoteRpsSincrono>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao>https://issdigital.pmcg.ms.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
@@ -73,6 +73,5 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
 		</ConsultarSequenciaLoteNotaRPS>
-
 	</Servicos>
 </Configuracoes>
