@@ -14,9 +14,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ReinfConsultas")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://sped.fazenda.gov.br/", IsNullable = false)]
+    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/envioLoteEventos/v1_05_01", IsNullable = false)]
     public class ReinfConsulta : XMLBase
     {
         [XmlIgnore]
@@ -32,8 +31,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ConsultaReciboEvento")]
     [ComVisible(true)]
 #endif
-    [Serializable()]
-    [XmlType(AnonymousType = true, Namespace = "http://sped.fazenda.gov.br/")]
     public class ConsultaReciboEvento
     {
         [XmlElement("tipoEvento")]
@@ -174,6 +171,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeNrInscAdqField() => !string.IsNullOrEmpty(NrInscAdq);
 
+
+#if INTEROP
+        public bool ShouldSerializeTpInsc() => TpInsc != (TiposInscricao)(-1);
+#else
+        public bool ShouldSerializeTpInsc() => TpInsc != null;
+#endif
+
 #if INTEROP
         public bool ShouldSerializeTpInscProd() => TpInscProd != (TiposInscricao)(-1);
 #else
@@ -197,6 +201,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #else
         public bool ShouldSerializeTpInscEstab() => TpInscEstab != null;
 #endif
-        #endregion
+
+#endregion
     }
 }
