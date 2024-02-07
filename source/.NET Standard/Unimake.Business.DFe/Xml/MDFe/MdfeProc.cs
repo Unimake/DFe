@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -103,5 +104,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
             return XMLUtility.Deserializar<MdfeProc>(doc);
         }
+
+        /// <summary>
+        /// Desserializar a string do XML MdfeProc no objeto MdfeProc
+        /// </summary>
+        /// <param name="xml">string do XML MdfeProc</param>
+        /// <returns>Objeto da MdfeProc</returns>
+        public MdfeProc LoadFromXML(string xml) => XMLUtility.Deserializar<MdfeProc>(xml);
     }
 }
