@@ -2134,4 +2134,10 @@
 		<ArqConfig>AraguariMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3113404">
+		<Nome>Caratinga - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>CaratingaMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

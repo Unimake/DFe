@@ -271,6 +271,7 @@
 		<None Remove="Servicos\Config\NFSe\CanoasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CanoinhasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CarapicuibaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\CaratingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CarazinhoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
@@ -833,6 +834,9 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CaratingaMG.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BoituvaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
