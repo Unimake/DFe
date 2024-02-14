@@ -330,6 +330,7 @@
 		<None Remove="Servicos\Config\NFSe\JaciSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JataiGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
+		<None Remove="Servicos\Config\NFSe\JoaoMonlevadeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
@@ -834,6 +835,9 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JoaoMonlevadeMG.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CaratingaMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

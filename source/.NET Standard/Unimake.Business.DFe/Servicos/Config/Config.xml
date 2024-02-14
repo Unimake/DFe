@@ -2140,4 +2140,10 @@
 		<ArqConfig>CaratingaMG.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3136207">
+		<Nome>João Monlevade - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>JoaoMonlevadeMG.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
