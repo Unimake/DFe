@@ -251,6 +251,7 @@
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
+		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BoituvaSP.xml" />
@@ -845,6 +846,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LimeiraSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BiguacuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RibeiraoPretoSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
