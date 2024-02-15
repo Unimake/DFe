@@ -382,3 +382,5 @@ MigrationBackup/
 *.ppo
 *.MAP
 *.exe
+/Exemplos/Windev/TreinamentoUnimakeDFe/Exe/Dados
+/Exemplos/Windev/TreinamentoUnimakeDFe/Exe/lic
