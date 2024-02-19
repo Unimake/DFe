@@ -6348,6 +6348,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("IIBRASIL")]
         IIBRASIL = 45,
+
+        /// <summary>
+        /// ADM_SISTEMAS
+        /// </summary>
+        [Description("ADM_SISTEMAS")]
+        ADM_SISTEMAS = 46,
     }
 
     #endregion

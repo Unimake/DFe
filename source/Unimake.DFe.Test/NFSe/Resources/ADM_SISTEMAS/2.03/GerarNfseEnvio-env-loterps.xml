@@ -1,0 +1,77 @@
+<GerarNfseEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico Id="Declaracao_31847389000139">
+			<Rps Id="RPS_111">
+				<IdentificacaoRps>
+					<Numero>1</Numero>
+					<Serie>1</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>2012-06-30T00:00:00</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>2012-06-30T00:00:00</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>100000.00</ValorServicos>
+					<ValorDeducoes>9999.99</ValorDeducoes>
+					<ValorPis>8888.88</ValorPis>
+					<ValorCofins>7777.77</ValorCofins>
+					<ValorInss>6666.66</ValorInss>
+					<ValorIr>5555.55</ValorIr>
+					<ValorCsll>4444.44</ValorCsll>
+					<OutrasRetencoes>3333.33</OutrasRetencoes>
+					<ValorIss>2222.22</ValorIss>
+					<Aliquota>3.0000000000</Aliquota>
+					<DescontoIncondicionado>1111.00</DescontoIncondicionado>
+					<DescontoCondicionado>1111.11</DescontoCondicionado>
+				</Valores>
+				<IssRetido>1</IssRetido>
+				<ResponsavelRetencao>1</ResponsavelRetencao>
+				<ItemListaServico>01.01</ItemListaServico>
+				<CodigoCnae>0</CodigoCnae>
+				<Discriminacao>Teste da Geração de NFS-e</Discriminacao>
+				<CodigoMunicipio>4216602</CodigoMunicipio>
+				<CodigoPais>1058</CodigoPais>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>4216602</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>31847389000139</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>111111</InscricaoMunicipal>
+			</Prestador>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cpf>72625701374</Cpf>
+					</CpfCnpj>
+					<InscricaoMunicipal>999999</InscricaoMunicipal>
+				</IdentificacaoTomador>
+				<RazaoSocial>Modelo de Pessoa Tomadora de Serviço da Prefeitura</RazaoSocial>
+				<Endereco>
+					<Endereco>Logradouro do Tomador de Serviço</Endereco>
+					<Numero>999</Numero>
+					<Complemento>AP 901</Complemento>
+					<Bairro>Bairro do Tomador de Serviço</Bairro>
+					<CodigoMunicipio>4216602</CodigoMunicipio>
+					<Uf>SC</Uf>
+					<CodigoPais>1058</CodigoPais>
+					<Cep>99999999</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>99999999</Telefone>
+					<Email>amorim1609@gmail.com</Email>
+				</Contato>
+			</Tomador>
+			<ConstrucaoCivil>
+				<CodigoObra>8888</CodigoObra>
+				<Art>9999</Art>
+			</ConstrucaoCivil>
+			<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

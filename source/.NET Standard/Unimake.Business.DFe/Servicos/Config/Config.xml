@@ -2146,4 +2146,10 @@
 		<ArqConfig>JoaoMonlevadeMG.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1400100">
+		<Nome>Boa Vista - RR</Nome>
+		<UF>RR</UF>
+		<ArqConfig>BoaVistaRR.xml</ArqConfig>
+		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
