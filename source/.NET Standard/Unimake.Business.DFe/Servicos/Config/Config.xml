@@ -2152,4 +2152,10 @@
 		<ArqConfig>BoaVistaRR.xml</ArqConfig>
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2919553">
+		<Nome>Luis Eduardo Magalhães - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>LuisEduardoMagalhaesBA.xml</ArqConfig>
+		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

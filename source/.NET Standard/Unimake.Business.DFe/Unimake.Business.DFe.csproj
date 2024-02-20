@@ -338,6 +338,7 @@
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
@@ -837,6 +838,9 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BoituvaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
