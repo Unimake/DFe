@@ -292,6 +292,18 @@ namespace Unimake.Business.DFe
                     }
                 }
 
+                //Condição apenas para tratar erro ocorrendo no padrão DSF onde o erro de assinatura indicava "Message|Dados no nível raiz inválidos. Linha 1, posição 1."
+                if (soap.PadraoNFSe == PadraoNFSe.DSF && xml.GetElementsByTagName("ns1:ReqEnvioLoteRPS").Count > 0)
+                {
+                    RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
+                    TratarScapeRetorno = false;
+                }
+                else
+                {
+                    RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
+                    TratarScapeRetorno = false;
+                }
+
                 if (TratarScapeRetorno)
                 {
                     RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
