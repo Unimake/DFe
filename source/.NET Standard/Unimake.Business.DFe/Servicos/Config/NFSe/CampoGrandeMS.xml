@@ -8,10 +8,11 @@
 			<TagAtributoID>Lote</TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:enviar soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:enviar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:enviarResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebTagRetorno>enviarReturn</WebTagRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
+			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>			
 		</RecepcionarLoteRpsSincrono>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>

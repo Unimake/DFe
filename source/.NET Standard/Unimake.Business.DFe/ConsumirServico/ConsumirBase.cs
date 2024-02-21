@@ -49,7 +49,68 @@ namespace Unimake.Business.DFe
                 xmlBody = xmlBody.Substring(xmlBody.IndexOf("?>") + 2);
             }
 
-            var retorna = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+            var retorna = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";            
+
+            if (soap.PadraoNFSe == PadraoNFSe.TINUS)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlBody);
+                xmlBody = "";
+
+                foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
+                {
+                    xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
+                }
+            }
+            else if (soap.PadraoNFSe == PadraoNFSe.PROPRIOBARUERISP)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlBody);
+                var xmlNode = doc.GetElementsByTagName("ArquivoRPSBase64");
+                if (xmlNode.Count > 0)
+                {
+                    var tagNode = xmlNode[0];
+                    tagNode.InnerText = tagNode.InnerText.Base64Encode();
+                    doc.GetElementsByTagName("ArquivoRPSBase64")[0].InnerText = tagNode.InnerText;
+                }
+                xmlBody = doc.OuterXml;
+            }
+            else if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlBody);
+                var sh1 = Criptografia.GetSHA1HashData(doc.GetElementsByTagName("Assinatura")[0].InnerText);
+                doc.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                xmlBody = doc.OuterXml;
+                xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
+            }
+            else if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
+            {
+                soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");
+
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlBody);
+
+                if (!xmlBody.Contains("Integridade"))
+                {
+                    var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
+                    var noIntegridade = doc.CreateNode(XmlNodeType.Element, "Integridade", null);
+                    noIntegridade.InnerText = integridade;
+                    doc.FirstChild.FirstChild.AppendChild(noIntegridade);
+                    xmlBody = doc.OuterXml;
+                }
+            }
+
+            if (soap.Servico == Servico.EFDReinfConsultaReciboEvento)
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(xmlBody);
+
+                var tpEvento = doc.GetElementsByTagName("tipoEvento")[0].InnerText;
+
+                xmlBody = doc.GetElementsByTagName("ConsultaReciboEvento")[0].OuterXml;
+                xmlBody = xmlBody.Replace("ConsultaReciboEvento", "ConsultaReciboEvento" + tpEvento);
+            }
 
             if (TratarScapeEnvio)
             {
@@ -71,67 +132,6 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                if (soap.PadraoNFSe == PadraoNFSe.TINUS)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    xmlBody = "";
-
-                    foreach (XmlNode item in doc.GetElementsByTagName(doc.ChildNodes[0].Name)[0].ChildNodes)
-                    {
-                        xmlBody += item.OuterXml.Replace(" xmlns=\"http://www.tinus.com.br\"", "");
-                    }
-                }
-                else if (soap.PadraoNFSe == PadraoNFSe.PROPRIOBARUERISP)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    var xmlNode = doc.GetElementsByTagName("ArquivoRPSBase64");
-                    if (xmlNode.Count > 0)
-                    {
-                        var tagNode = xmlNode[0];
-                        tagNode.InnerText = tagNode.InnerText.Base64Encode();
-                        doc.GetElementsByTagName("ArquivoRPSBase64")[0].InnerText = tagNode.InnerText;
-                    }
-                    xmlBody = doc.OuterXml;
-                }
-                else if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-                    var sh1 = Criptografia.GetSHA1HashData(doc.GetElementsByTagName("Assinatura")[0].InnerText);
-                    doc.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
-                    xmlBody = doc.OuterXml;
-                    xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
-                }
-                else if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
-                {
-                    soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");
-
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-
-                    if (!xmlBody.Contains("Integridade"))
-                    {
-                        var integridade = IIBRASIL.GerarIntegridade(xmlBody, soap.Token);
-                        var noIntegridade = doc.CreateNode(XmlNodeType.Element, "Integridade", null);
-                        noIntegridade.InnerText = integridade;
-                        doc.FirstChild.FirstChild.AppendChild(noIntegridade);
-                        xmlBody = doc.OuterXml;
-                    }
-                }
-
-                if (soap.Servico == Servico.EFDReinfConsultaReciboEvento)
-                {
-                    var doc = new XmlDocument();
-                    doc.LoadXml(xmlBody);
-
-                    var tpEvento = doc.GetElementsByTagName("tipoEvento")[0].InnerText;
-
-                    xmlBody = doc.GetElementsByTagName("ConsultaReciboEvento")[0].OuterXml;
-                    xmlBody = xmlBody.Replace("ConsultaReciboEvento", "ConsultaReciboEvento" + tpEvento);
-                }
-
                 retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
             }
 
@@ -290,13 +290,7 @@ namespace Unimake.Business.DFe
                         throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo web-service.\r\n\r\n" +
                             "Conteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
                     }
-                }
-
-                //Condição apenas para tratar erro ocorrendo no padrão DSF onde o erro de assinatura indicava "Message|Dados no nível raiz inválidos. Linha 1, posição 1."
-                if (soap.Servico == Servico.NFSeRecepcionarLoteRpsSincrono && soap.PadraoNFSe == PadraoNFSe.DSF && xml.GetElementsByTagName("ns1:ReqEnvioLoteRPS").Count > 0)
-                {
-                    TratarScapeRetorno = false;
-                }
+                }               
 
                 if (TratarScapeRetorno)
                 {
