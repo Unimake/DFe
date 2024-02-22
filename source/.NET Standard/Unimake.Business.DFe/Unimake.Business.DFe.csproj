@@ -236,6 +236,7 @@
 		<None Remove="Servicos\Config\NFSe\Abase.xml" />
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AguasDeLindoiaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\AlegreteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguariMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
@@ -838,6 +839,9 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

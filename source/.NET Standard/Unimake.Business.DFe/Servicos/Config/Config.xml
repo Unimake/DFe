@@ -2158,4 +2158,10 @@
 		<ArqConfig>LuisEduardoMagalhaesBA.xml</ArqConfig>
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4300406">
+		<Nome>Alegrete - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>AlegreteRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
