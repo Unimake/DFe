@@ -2164,4 +2164,10 @@
 		<ArqConfig>AlegreteRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4318002">
+		<Nome>São Borja - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoBorjaRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
