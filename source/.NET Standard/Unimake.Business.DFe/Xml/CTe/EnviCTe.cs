@@ -1899,7 +1899,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string PRedBCField
         {
             get => PRedBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => PRedBC = Utility.Converter.ToDouble(value);
+            set => PRedBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1909,7 +1909,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string VBCField
         {
             get => VBC.ToString("F2", CultureInfo.InvariantCulture);
-            set => VBC = Utility.Converter.ToDouble(value);
+            set => VBC = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1919,7 +1919,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string PICMSField
         {
             get => PICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => PICMS = Utility.Converter.ToDouble(value);
+            set => PICMS = Converter.ToDouble(value);
         }
 
         [XmlIgnore]
@@ -1929,8 +1929,28 @@ namespace Unimake.Business.DFe.Xml.CTe
         public string VICMSField
         {
             get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
-            set => VICMS = Utility.Converter.ToDouble(value);
+            set => VICMS = Converter.ToDouble(value);
         }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool ShouldSerializeCBenef => VICMSDeson > 0;
+
+        #endregion
     }
 
 #if INTEROP
@@ -1960,6 +1980,26 @@ namespace Unimake.Business.DFe.Xml.CTe
                 }
             }
         }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool ShouldSerializeCBenef => VICMSDeson > 0;
+
+        #endregion
     }
 
 #if INTEROP
@@ -2030,9 +2070,24 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeVCredField() => VCred > 0;
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool ShouldSerializeCBenef => VICMSDeson > 0;
 
         #endregion
     }
@@ -2115,11 +2170,25 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCred = Utility.Converter.ToDouble(value);
         }
 
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializePRedBCField() => PRedBC > 0;
-
         public bool ShouldSerializeVCredField() => VCred > 0;
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool ShouldSerializeCBenef => VICMSDeson > 0;
 
         #endregion
     }
@@ -2192,9 +2261,24 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VICMSOutraUF = Utility.Converter.ToDouble(value);
         }
 
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializePRedBCOutraUFField() => PRedBCOutraUF > 0;
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool ShouldSerializeCBenef => VICMSDeson > 0;
 
         #endregion
     }
