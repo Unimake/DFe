@@ -439,6 +439,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("cMun", Order = 4)]
         public long CMun { get; set; }
 
+        [XmlElement("indEncPorTerceiro", Order = 5)]
+        public int IndEncPorTerceiro { get; set; } = 0;
+
         #endregion Public Properties
 
         #region Public Methods
@@ -452,8 +455,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 <nProt>{NProt}</nProt>
                 <dtEnc>{DtEncField}</dtEnc>
                 <cUF>{CUFField}</cUF>
-                <cMun>{CMun}</cMun>
-            </evEncMDFe>");
+                <cMun>{CMun}</cMun>" +
+                (IndEncPorTerceiro.Equals(1) ? $@"<indEncPorTerceiro>1</indEncPorTerceiro>" : "") +
+                $@"</evEncMDFe>");
         }
 
         #endregion Public Methods
