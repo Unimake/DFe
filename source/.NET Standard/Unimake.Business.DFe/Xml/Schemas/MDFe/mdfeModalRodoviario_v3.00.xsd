@@ -6,7 +6,7 @@
 		<xs:annotation>
 			<xs:documentation>Tipo RNTRC - Registro Nacional Transportadores Rodoviários de Carga</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:string">
+		<xs:restriction base="TString">
 			<xs:whiteSpace value="preserve"/>
 			<xs:pattern value="[0-9]{8}"/>
 		</xs:restriction>
@@ -15,7 +15,7 @@
 		<xs:annotation>
 			<xs:documentation>Tipo CIOT - Código Identificador da Operação de Transporte</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:string">
+		<xs:restriction base="TString">
 			<xs:whiteSpace value="preserve"/>
 			<xs:pattern value="[0-9]{12}"/>
 		</xs:restriction>
