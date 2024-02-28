@@ -2,9 +2,8 @@
 <ConfigPadrao>
 	<Versao ID="1.05.01">
 		<WebContentType>text/xml</WebContentType>
-		<MetodoAPI>post</MetodoAPI>
 		<WebTagRetorno>ideStatus</WebTagRetorno>
 		<SchemaVersao>1.05.01</SchemaVersao>
-		<TargetNS>http://sped.fazenda.gov.br</TargetNS>		
+		<TargetNS>http://sped.fazenda.gov.br</TargetNS>
 	</Versao>
 </ConfigPadrao>

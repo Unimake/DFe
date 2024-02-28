@@ -406,6 +406,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consulta Recibo Evento do EFDReinf")]
         EFDReinfConsultaReciboEvento = 65,
 
+        /// <summary>
+        /// 66 - Consulta Lote Assincrono EFDReinf
+        /// </summary>
+        [Description("Consulta Lote Assíncrono EFDReinf")]
+        EFDReinfConsultaLoteAssincrono = 66,
+
         #endregion
 
         #region Gerais

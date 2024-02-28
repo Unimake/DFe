@@ -656,6 +656,10 @@ namespace Unimake.Business.DFe.Servicos
                 WebActionProducao = WebActionProducao.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
                 WebTagRetorno = WebTagRetorno.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
             }
+            else if(Servico == Servico.EFDReinfConsultaLoteAssincrono)
+            {
+                RequestURIProducao = RequestURIProducao.Replace("{numeroProtocolo}", NumeroProtocolo);
+            }
         }
 
         /// <summary>
@@ -1226,6 +1230,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Tipo do Evento do EFDReinf
         /// </summary>
         public string TipoEventoEFDReinf { get; set; }
+
+        /// <summary>
+        /// Tipo do Evento do EFDReinf
+        /// </summary>
+        public string NumeroProtocolo {  get; set; }
 
         private int _TimeOutWebServiceConnect;
 

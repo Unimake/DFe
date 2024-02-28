@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -18,6 +17,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "", IsNullable = false)]
     public class ReinfConsultaLoteAssincrono : XMLBase
     {
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.05.01";
+
         [XmlElement("ConsultaLoteAssincrono")]
         public ConsultaLoteAssincrono ConsultaLoteAssincrono { get; set; }
     }

@@ -11,5 +11,12 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<WebTagRetorno>ConsultaReciboEvento{TipoEventoEFDReinf}Result</WebTagRetorno>
 		</ConsultaReciboEvento>
+		<ConsultaLoteAssincrono versao="1.05.01">
+			<Descricao>Consulta Lote Eventos Assincrono Reinf</Descricao>
+			<RequestURIHomologacao>https://pre-reinf.receita.economia.gov.br/consulta/lotes/{numeroProtocolo}</RequestURIHomologacao>
+			<RequestURIProducao>https://reinf.receita.economia.gov.br/consulta/lotes/{numeroProtocolo}</RequestURIProducao>
+			<WebSoapString></WebSoapString>
+			<MetodoAPI>get</MetodoAPI>
+		</ConsultaLoteAssincrono>
 	</Servicos>
 </Configuracoes>
