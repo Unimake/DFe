@@ -2170,4 +2170,10 @@
 		<ArqConfig>SaoBorjaRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3102001">
+		<Nome>Alterosa - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
