@@ -1911,6 +1911,12 @@ namespace Unimake.Business.DFe.Servicos
         SecexRFB = 3,
 
         /// <summary>
+        /// 4 - CONFAZ
+        /// </summary>
+        [XmlEnum("4")]
+        CONFAZ = 4,
+
+        /// <summary>
         /// 9 - Outros
         /// </summary>
         [XmlEnum("9")]
@@ -6651,7 +6657,19 @@ namespace Unimake.Business.DFe.Servicos
         /// 12 = Autorização Específica
         /// </summary>
         [XmlEnum("12")]
-        AutorizacaoEspecifica = 12
+        AutorizacaoEspecifica = 12,
+
+        /// <summary>
+        /// 14 - Ajuste SINIEF
+        /// </summary>
+        [XmlEnum("14")]
+        AjusteSINIEF = 14,
+
+        /// <summary>
+        /// 15 - Convênio ICMS
+        /// </summary>
+        [XmlEnum("15")]
+        ConvenioICMS = 15
     }
 
     #endregion
