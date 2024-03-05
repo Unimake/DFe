@@ -4,8 +4,7 @@
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -22,8 +21,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsSincronoRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -40,8 +38,7 @@
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/gerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -58,8 +55,7 @@
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/cancelarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -76,8 +72,7 @@
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/substituirNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -96,8 +91,7 @@
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarLoteRpsRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
@@ -114,8 +108,7 @@
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorRpsRequest</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -127,8 +120,7 @@
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoPrestadoRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
@@ -145,8 +137,7 @@
 		<ConsultarNfseServicoTomado versao="2.04">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoTomadoRequest</WebActionProducao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoTomado><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
@@ -158,8 +149,7 @@
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionHomologacao>
-			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorFaixaRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
