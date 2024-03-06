@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico Id="0000013165">
+			<Servico>
+				<Valores>
+					<ValorServicos>55.00</ValorServicos>
+					<ValorDeducoes>0.00</ValorDeducoes>
+					<ValorIss>1.65</ValorIss>
+					<Aliquota>3.00</Aliquota>
+					<BaseCalculo>55.00</BaseCalculo>
+					<ValorPis>0.00</ValorPis>
+					<ValorCofins>0.00</ValorCofins>
+					<ValorInss>0.00</ValorInss>
+					<ValorIr>0.00</ValorIr>
+					<ValorCsll>0.00</ValorCsll>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ItemListaServico>01.03</ItemListaServico>
+				<Discriminacao>19 - Implementacoes e Customizacoes</Discriminacao>
+				<CodigoMunicipio>4307005</CodigoMunicipio>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>4307005</MunicipioIncidencia>
+			</Servico>
+			<Competencia>2014-02-13</Competencia>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>90868787000109</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>6038</InscricaoMunicipal>
+			</Prestador>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>92639988000151</Cnpj>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>Tomador Teste Ltda</RazaoSocial>
+				<Endereco>
+					<Endereco>Avenida Sete de Setembro</Endereco>
+					<Numero>825</Numero>
+					<Bairro>Centro</Bairro>
+					<CodigoMunicipio>4307005</CodigoMunicipio>
+					<Uf>RS</Uf>
+					<Cep>99700000</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>05433212030</Telefone>
+					<Email>tomador@empresa.com.br</Email>
+				</Contato>
+			</Tomador>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

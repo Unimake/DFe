@@ -2176,4 +2176,10 @@
 		<ArqConfig>Betha.xml</ArqConfig>
 		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314134">
+		<Nome>Paulo Bento - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>PauloBentoRS.xml</ArqConfig>
+		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

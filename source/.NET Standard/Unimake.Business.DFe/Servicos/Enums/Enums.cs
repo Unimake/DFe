@@ -6366,6 +6366,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ADM_SISTEMAS")]
         ADM_SISTEMAS = 46,
+
+        /// <summary>
+        /// SYSTEMPRO
+        /// </summary>
+        [Description("SYSTEMPRO")]
+        SYSTEMPRO = 47,
     }
 
     #endregion

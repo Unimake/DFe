@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="2.01">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoProducao>https://sistema.paulobento.rs.gov.br:8182/NfseService/NfseService?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://sistema.paulobento.rs.gov.br:8183/NfseService_Homolog/NfseService_Homolog?wsdl</WebEnderecoHomologacao>
+			<WebActionProducao>http://NFSe.wsservices.systempro.com.br/NfseService/EnviarLoteRpsSincronoRequest</WebActionProducao>
+			<WebActionHomologacao>http://NFSe.wsservices.systempro.com.br/NfseService/EnviarLoteRpsSincronoRequest</WebActionHomologacao>
+			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://NFSe.wsservices.systempro.com.br/"><soapenv:Header/><soapenv:Body><nfse:EnviarLoteRpsSincrono><nfseCabecMsg xmlns="">&lt;cabecalho versao=&quot;2.01&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:EnviarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.01">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoProducao>https://sistema.paulobento.rs.gov.br:8182/NfseService/NfseService?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://sistema.paulobento.rs.gov.br:8183/NfseService_Homolog/NfseService_Homolog?wsdl</WebEnderecoHomologacao>
+			<WebActionProducao>http://NFSe.wsservices.systempro.com.br/NfseService/GerarNfseRequest</WebActionProducao>
+			<WebActionHomologacao>http://NFSe.wsservices.systempro.com.br/NfseService/GerarNfseRequest</WebActionHomologacao>
+			<TagAssinatura>GerarNfseEnvio</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://NFSe.wsservices.systempro.com.br/"><soapenv:Header/><soapenv:Body><nfse:GerarNfse><nfseCabecMsg xmlns="">&lt;cabecalho versao=&quot;2.01&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+		</GerarNfse>
+		<CancelarNfse versao="2.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>https://sistema.paulobento.rs.gov.br:8182/NfseService/NfseService?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://sistema.paulobento.rs.gov.br:8183/NfseService_Homolog/NfseService_Homolog?wsdl</WebEnderecoHomologacao>
+			<WebActionProducao>http://NFSe.wsservices.systempro.com.br/NfseService/CancelarNfseRequest</WebActionProducao>
+			<WebActionHomologacao>http://NFSe.wsservices.systempro.com.br/NfseService/CancelarNfseRequest</WebActionHomologacao>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://NFSe.wsservices.systempro.com.br/"><nfseCabecMsg xmlns="">&lt;cabecalho versao=&quot;2.01&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.01">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoProducao>https://sistema.paulobento.rs.gov.br:8182/NfseService/NfseService?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://sistema.paulobento.rs.gov.br:8183/NfseService_Homolog/NfseService_Homolog?wsdl</WebEnderecoHomologacao>
+			<WebActionProducao>http://NFSe.wsservices.systempro.com.br/NfseService/SubstituirNfseRequest</WebActionProducao>
+			<WebActionHomologacao>http://NFSe.wsservices.systempro.com.br/NfseService/SubstituirNfseRequest</WebActionHomologacao>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://NFSe.wsservices.systempro.com.br/"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfse><nfseCabecMsg>&lt;cabecalho versao=&quot;2.01&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+		</SubstituirNfse>
+		<ConsultarNfseFaixa versao="2.01">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoProducao>https://sistema.paulobento.rs.gov.br:8182/NfseService/NfseService?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://sistema.paulobento.rs.gov.br:8183/NfseService_Homolog/NfseService_Homolog?wsdl</WebEnderecoHomologacao>
+			<WebActionProducao>http://NFSe.wsservices.systempro.com.br/NfseService/ConsultarNfseFaixaRequest</WebActionProducao>
+			<WebActionHomologacao>http://NFSe.wsservices.systempro.com.br/NfseService/ConsultarNfseFaixaRequest</WebActionHomologacao>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://NFSe.wsservices.systempro.com.br/"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseFaixa><nfseCabecMsg>&lt;cabecalho versao=&quot;2.01&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&lt;versaoDados&gt;2.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>
