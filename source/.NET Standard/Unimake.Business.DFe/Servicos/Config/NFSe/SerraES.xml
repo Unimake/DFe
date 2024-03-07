@@ -109,6 +109,10 @@
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoProducao>https://tributacao.serra.es.gov.br:8080/tbserra/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorRpsRequest</WebActionProducao>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>Pedido</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfsePorRps><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
