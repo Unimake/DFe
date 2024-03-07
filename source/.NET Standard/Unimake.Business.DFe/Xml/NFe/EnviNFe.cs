@@ -11,10 +11,8 @@ using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -1529,32 +1527,32 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Código de Benefício Fiscal de Crédito Presumido utilizado pela UF, aplicado ao item. Obs.: Deve ser utilizado o mesmo código adotado na EFD e outras declarações, nas UF que o exigem.
         /// </summary>
         [XmlElement("cCredPresumido")]
-        public string[] CCredPresumido { get; set; }
+        public string CCredPresumido { get; set; }
 
         /// <summary>
         /// Informar o percentual do crédito presumido relativo ao código do crédito presumido informado.
         /// </summary>
         [XmlIgnore]
-        public double[] PCredPresumido { get; set; }
+        public double PCredPresumido { get; set; }
 
         [XmlElement("pCredPresumido")]
-        public string[] PCredPresumidoField
+        public string PCredPresumidoField
         {
-            get => PCredPresumido?.Select(d => d.ToString("F4", CultureInfo.InvariantCulture)).ToArray();
-            set => PCredPresumido = value?.Select(s => Converter.ToDouble(s)).ToArray() ?? new double[0];
+            get => PCredPresumido.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCredPresumido = Converter.ToDouble(value);
         }
 
         /// <summary>
         /// Informar o valor do crédito presumido relativo ao código do crédito presumido informado.
         /// </summary>
         [XmlIgnore]
-        public double[] VCredPresumido { get; set; }
+        public double VCredPresumido { get; set; }
 
         [XmlElement("vCredPresumido")]
-        public string[] VCredPresumidoField
+        public string VCredPresumidoField
         {
-            get => VCredPresumido.Select(d => d.ToString("F2", CultureInfo.InvariantCulture)).ToArray();
-            set => VCredPresumido = value?.Select(s => Converter.ToDouble(s)).ToArray() ?? new double[0];
+            get => VCredPresumido.ToString("F4", CultureInfo.InvariantCulture);
+            set => VCredPresumido = Converter.ToDouble(value);
         }
 
         #endregion
@@ -1721,6 +1719,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCBarra() => !string.IsNullOrWhiteSpace(CBarra);
 
         public bool ShouldSerializeCBarraTrib() => !string.IsNullOrWhiteSpace(CBarraTrib);
+
+        public bool ShouldSerializeCCredPresumido() => !string.IsNullOrWhiteSpace(CCredPresumido);
+        public bool ShouldSerializePCredPresumidoField() => !string.IsNullOrWhiteSpace(CCredPresumido);
+        public bool ShouldSerializeVCredPresumidoField() => !string.IsNullOrWhiteSpace(CCredPresumido);
 
         #endregion
 
@@ -8085,7 +8087,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCAut() => !string.IsNullOrWhiteSpace(CAut);
 
         public bool ShouldSerializeCNPJReceb() => !string.IsNullOrWhiteSpace(CNPJReceb);
-        
+
         public bool ShouldSerializeIdTermPag() => !string.IsNullOrWhiteSpace(IdTermPag);
 
         #endregion
