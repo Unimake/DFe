@@ -398,7 +398,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoGoncaloDoAmaranteRN.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoaoDeMeritiRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDeRibamarMA.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhais.xml" />
+		<None Remove="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoJoseDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoMarcosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
@@ -1158,7 +1158,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NACIONAL.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EdeiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FormosaGO.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhais.xml">
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosPinhaisPR.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItumbiaraGO.xml" />
