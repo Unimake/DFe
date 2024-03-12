@@ -18,5 +18,13 @@
 			<WebSoapString></WebSoapString>
 			<MetodoAPI>get</MetodoAPI>
 		</ConsultaLoteAssincrono>
+		<RecepcionarLoteAssincrono versao="1.05.01">
+			<Descricao>Recepcionar Lote Assincrono EFDReinf</Descricao>
+			<RequestURIProducao>https://pre-reinf.receita.economia.gov.br/recepcao/lotes</RequestURIProducao>
+			<WebContentType>application/xml</WebContentType>
+			<MetodoAPI>post</MetodoAPI>
+			<TipoRetorno>application/xml</TipoRetorno>
+			<WebSoapString></WebSoapString>
+		</RecepcionarLoteAssincrono>
 	</Servicos>
 </Configuracoes>

@@ -412,6 +412,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Consulta Lote Assíncrono EFDReinf")]
         EFDReinfConsultaLoteAssincrono = 66,
 
+        /// <summary>
+        /// 67 - Recepção Lote Assincrono EFDReinf
+        /// </summary>
+        [Description("Recepcionar Lote Assincrono EFDReinf")]
+        EFDReinfRecepcionarLoteAssincrono = 67,
+
         #endregion
 
         #region Gerais

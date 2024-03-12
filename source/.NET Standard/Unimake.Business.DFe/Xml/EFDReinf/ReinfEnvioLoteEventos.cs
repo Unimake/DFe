@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/envioLoteEventosAssincrono/v1_00_00", IsNullable = false)]
     public class ReinfEnvioLoteEventos : XMLBase
     {
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.05.01";
+
         [XmlElement("envioLoteEventos")]
         public EnvioLoteEventos EnvioLoteEventos { get; set; }
     }
