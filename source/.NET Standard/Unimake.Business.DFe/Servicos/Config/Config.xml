@@ -142,6 +142,50 @@
 	</Arquivo>
 	<!-- Nota Fiscal de Serviço Eletrônica - Prefeituras/Municípios -->
 	<!-- O nome do padrão tem que ficar identico ao enumerador PadraoNFSe, ou gera BUG e não vai funcionar (Case Sensitive) -->
+	<!--///////////////////////////////////////////////////////////// PADRÕES COM APENAS UM XML DE CONFIGURAÇÃO ///////////////////////////////////////////////////////////////-->
+	<Arquivo ID="1001058">
+		<Nome>NACIONAL</Nome>
+		<UF>BR</UF>
+		<ArqConfig>NACIONAL.xml</ArqConfig>
+		<PadraoNFSe>NACIONAL</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="9999900">
+		<Nome>GINFES</Nome>
+		<UF>BR</UF>
+		<ArqConfig>Ginfes.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="9999901">
+		<Nome>MEMORY</Nome>
+		<UF>BR</UF>
+		<ArqConfig>Memory.xml</ArqConfig>
+		<PadraoNFSe>MEMORY</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="9999902">
+		<Nome>ABASE</Nome>
+		<UF>BR</UF>
+		<ArqConfig>Abase.xml</ArqConfig>
+		<PadraoNFSe>ABASE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="9999903">
+		<Nome>BETHA</Nome>
+		<UF>BR</UF>
+		<ArqConfig>Betha.xml</ArqConfig>
+		<PadraoNFSe>BETHA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="9999904">
+		<Nome>WEBFISCO</Nome>
+		<UF>BR</UF>
+		<ArqConfig>Webfisco.xml</ArqConfig>
+		<PadraoNFSe>WEBFISCO</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="9999905">
+		<Nome>EQUIPLANO</Nome>
+		<UF>BR</UF>
+		<ArqConfig>Equiplano.xml</ArqConfig>
+		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
+	</Arquivo>
+	<!--///////////////////////////////////////////////////////////// PADRÕES COM APENAS UM XML DE CONFIGURAÇÃO ///////////////////////////////////////////////////////////////-->
 	<Arquivo ID="4105508">
 		<Nome>Cianorte - PR</Nome>
 		<UF>PR</UF>
@@ -154,227 +198,11 @@
 		<ArqConfig>NilopolisRJ.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4209300">
-		<Nome>Lages - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3168705">
-		<Nome>Timóteo - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3513504">
 		<Nome>Cubatão - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>CubataoSP.xml</ArqConfig>
 		<PadraoNFSe>PRODATA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4112009">
-		<Nome>Jaguariaíva - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4204608">
-		<Nome>Criciúma - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4204251">
-		<Nome>Cocal do Sul - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4216602">
-		<Nome>São José - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4209003">
-		<Nome>Joaçaba - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4203907">
-		<Nome>Capinzal - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4210035">
-		<Nome>Luzerna - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4204806">
-		<Nome>Curitibanos - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4206702">
-		<Nome>Herval D'Oeste - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4100400">
-		<Nome>Almirante Tamandaré - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4219002">
-		<Nome>Urussanga - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4211207">
-		<Nome>Morro da Fumaça - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4211603">
-		<Nome>Nova Veneza - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3116605">
-		<Nome>Cláudio - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4211504">
-		<Nome>Nova Trento - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4208906">
-		<Nome>Jaragua do Sul - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5218805">
-		<Nome>Rio Vede - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4124020">
-		<Nome>Santa Tereza do Oeste - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4211702">
-		<Nome>Orleans - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4114104">
-		<Nome>Mandaguaçú - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4317806">
-		<Nome>Santo Augusto - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4120804">
-		<Nome>Quatro Barras - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3304201">
-		<Nome>Resende - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4302451">
-		<Nome>Boqueirão do Leão - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4202453">
-		<Nome>Bombinhas - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4128708">
-		<Nome>Vitorino - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4204350">
-		<Nome>Cordilheira Alta - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4218004">
-		<Nome>TIJUCAS - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4321402">
-		<Nome>Tenente Portela - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5006200">
-		<Nome>Nova Andradina - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3101607">
-		<Nome>Alfenas - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3300209">
-		<Nome>Araruama - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4207304">
-		<Nome>Imbituba - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3130200">
-		<Nome>Igaratinga - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3505500">
 		<Nome>Barretos - SP</Nome>
@@ -394,53 +222,11 @@
 		<ArqConfig>ItambacuriMG.xml</ArqConfig>
 		<PadraoNFSe>NOTAINTELIGENTE</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4217402">
-		<Nome>Schroeder - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4309100">
-		<Nome>Gramado - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4202800">
-		<Nome>Braço do Norte - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4218707">
 		<Nome>Tubarão - SC</Nome>
 		<UF>SC</UF>
 		<ArqConfig>TubaraoSC.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4212403">
-		<Nome>Pedras Grandes - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4211702">
-		<Nome>Orleans - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4205456">
-		<Nome>Forquilhinha - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4120408">
-		<Nome>Presidente Castelo Branco - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5205109">
 		<Nome>Catalão - GO</Nome>
@@ -484,41 +270,17 @@
 		<ArqConfig>JoinvilleSC.xml</ArqConfig>
 		<PadraoNFSe>PROPRIOJOINVILLESC</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4321501">
-		<Nome>Torres - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3132404">
 		<Nome>Itajubá - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>ItajubaMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4219002">
-		<Nome>Urussanga - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4210407">
-		<Nome>Maracajá - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3306305">
 		<Nome>Volta Redonda - RJ</Nome>
 		<UF>RJ</UF>
 		<ArqConfig>VoltaRedondaRJ.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3139607">
-		<Nome>Mantena - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3530706">
 		<Nome>Mogi Guaçu - SP</Nome>
@@ -538,12 +300,6 @@
 		<ArqConfig>VitoriaDaConquistaBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5105259">
-		<Nome>Lucas do Rio Verde - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3201209">
 		<Nome>Cachoeiro de Itapemirim - ES</Nome>
 		<UF>ES</UF>
@@ -556,12 +312,6 @@
 		<ArqConfig>BauruSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4218905">
-		<Nome>Urubici - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2925303">
 		<Nome>Porto Seguro - BA</Nome>
 		<UF>BA</UF>
@@ -573,12 +323,6 @@
 		<UF>SC</UF>
 		<ArqConfig>BiguacuSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3303955">
-		<Nome>Pinheiral - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3530805">
 		<Nome>Mogi Mirim - SP</Nome>
@@ -598,18 +342,6 @@
 		<ArqConfig>IpatingaMG.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4201505">
-		<Nome>Armazém - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4211306">
-		<Nome>Navegantes - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3106200">
 		<Nome>Belo Horizonte - MG</Nome>
 		<UF>MG</UF>
@@ -627,18 +359,6 @@
 		<UF>SP</UF>
 		<ArqConfig>SorocabaSP.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4215505">
-		<Nome>Santa Cecília - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4102406">
-		<Nome>Bandeirantes - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4310009">
 		<Nome>Ibirubá - RS</Nome>
@@ -664,23 +384,11 @@
 		<ArqConfig>CataguasesMG.xml</ArqConfig>
 		<PadraoNFSe>VERSATEC</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5108600">
-		<Nome>Vila Rica - MT</Nome>
-		<UF>MT</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3147907">
 		<Nome>Passos - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>PassosMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3523107">
-		<Nome>Itaquaquecetuba - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3147105">
 		<Nome>Pará de Minas - MG</Nome>
@@ -706,12 +414,6 @@
 		<ArqConfig>GoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>PROPRIOGOIANIA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4204004">
-		<Nome>Catanduvas - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5105200">
 		<Nome>Juscimeira - MT</Nome>
 		<UF>MT</UF>
@@ -724,29 +426,11 @@
 		<ArqConfig>TaubateSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4217006">
-		<Nome>São Ludgero - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4217600">
-		<Nome>Siderópolis - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2910800">
 		<Nome>Feira de Santana - BA</Nome>
 		<UF>BA</UF>
 		<ArqConfig>FeiraDeSantanaBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3545209">
-		<Nome>Salto - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4303905">
 		<Nome>Campo Bom - RS</Nome>
@@ -759,12 +443,6 @@
 		<UF>MT</UF>
 		<ArqConfig>CampoNovoParecisMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3143906">
-		<Nome>Muriae - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4307054">
 		<Nome>Ernestina - RS</Nome>
@@ -826,12 +504,6 @@
 		<ArqConfig>TremembeSP.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3306107">
-		<Nome>Valença - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5100201">
 		<Nome>Água Boa - MT</Nome>
 		<UF>MT</UF>
@@ -868,12 +540,6 @@
 		<ArqConfig>NovaSerranaMG.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3158300">
-		<Nome>Santana da Vargem - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5211503">
 		<Nome>Itumbiara - GO</Nome>
 		<UF>GO</UF>
@@ -885,12 +551,6 @@
 		<UF>GO</UF>
 		<ArqConfig>EdeiaGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="1001058">
-		<Nome>NACIONAL</Nome>
-		<UF>BR</UF>
-		<ArqConfig>NACIONAL.xml</ArqConfig>
-		<PadraoNFSe>NACIONAL</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5208004">
 		<Nome>Formosa - GO</Nome>
@@ -904,167 +564,17 @@
 		<ArqConfig>BlumenauSC.xml</ArqConfig>
 		<PadraoNFSe>SIMPLISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="1500800">
-		<Nome>Ananindeua - PA</Nome>
-		<UF>PA</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3503208">
-		<Nome>Araraquara - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3506359">
-		<Nome>Bertioga - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3106705">
-		<Nome>Betim - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3301009">
-		<Nome>Campos dos Goytacazes - RJ</Nome>
-		<UF>RJ</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3510401">
-		<Nome>Capivari - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3513801">
-		<Nome>Diadema - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2304400">
-		<Nome>Fortaleza - CE</Nome>
-		<UF>CE</UF>
-		<ArqConfig>FortalezaCE.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3516200">
-		<Nome>Franca - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3518800">
-		<Nome>Guarulhos - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3519071">
-		<Nome>Hortolândia - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4125506">
 		<Nome>São José dos Pinhais - PR</Nome>
 		<UF>PR</UF>
-		<ArqConfig>SaoJoseDosPinhais.xml</ArqConfig>
+		<ArqConfig>SaoJoseDosPinhaisPR.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4212205">
-		<Nome>Papanduva - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3510609">
 		<Nome>Carapicuíba - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>CarapicuibaSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4128104">
-		<Nome>Umuarama - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3549805">
-		<Nome>São José do Rio Preto - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3548807">
-		<Nome>São Caetano do Sul - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3548708">
-		<Nome>São Bernardo do Campo - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3548500">
-		<Nome>Santos - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3547809">
-		<Nome>Santo André - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3542602">
-		<Nome>Registro - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3536505">
-		<Nome>Paulínia - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3533908">
-		<Nome>Olímpia - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3529401">
-		<Nome>Mauá - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2704708">
-		<Nome>Marechal Deodoro - AL</Nome>
-		<UF>AL</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3525904">
-		<Nome>Jundiaí - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3523909">
-		<Nome>Itu - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5101803">
 		<Nome>Barra do Garças - MT</Nome>
@@ -1078,197 +588,17 @@
 		<ArqConfig>UberabaMG.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4216909">
-		<Nome>São Lourenço do Oeste - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4127700">
-		<Nome>Toledo - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4102307">
-		<Nome>Balsa Nova - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4103453">
-		<Nome>Cafelândia - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4104428">
-		<Nome>Candói - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4107207">
-		<Nome>Dois Vizinhos - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4108403">
-		<Nome>Francisco Beltrão - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4109708">
-		<Nome>Ibaiti - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4110102">
-		<Nome>Imbituva - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4113304">
-		<Nome>Laranjeiras do Sul - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4116059">
-		<Nome>Missal - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4120606">
-		<Nome>Prudentópolis - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4122008">
-		<Nome>Rio Azul - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4124400">
-		<Nome>Santo Antônio do Sudoeste - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4126306">
-		<Nome>Sengés - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4120358">
-		<Nome>Pranchita - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3120904">
-		<Nome>Curvelo - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Memory.xml</ArqConfig>
-		<PadraoNFSe>MEMORY</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3141108">
-		<Nome>Matozinhos - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Memory.xml</ArqConfig>
-		<PadraoNFSe>MEMORY</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3152105">
-		<Nome>Ponte Nova- MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Memory.xml</ArqConfig>
-		<PadraoNFSe>MEMORY</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3157005">
-		<Nome>Salinas- MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Memory.xml</ArqConfig>
-		<PadraoNFSe>MEMORY</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4204202">
 		<Nome>Chapecó - SC</Nome>
 		<UF>SC</UF>
 		<ArqConfig>ChapecoSC.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4303301">
-		<Nome>Caibaté - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4305207">
-		<Nome>Cerro Largo - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4309001">
-		<Nome>Giruá - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4306734">
-		<Nome>Mauricio Cardoso - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4315107">
-		<Nome>Porto Xavier - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4317509">
-		<Nome>Santo Ângelo - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4317707">
-		<Nome>Santo Antônio das Missões - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4318903">
-		<Nome>São Luiz Gonzaga - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4321808">
-		<Nome>Três de Maio - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2606408">
 		<Nome>Gravatá - PE</Nome>
 		<UF>PE</UF>
 		<ArqConfig>GravataPE.xml</ArqConfig>
 		<PadraoNFSe>TRIBUTUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4317905">
-		<Nome>Santo Cristo - RS</Nome>
-		<UF>RS</UF>
-		<ArqConfig>Abase.xml</ArqConfig>
-		<PadraoNFSe>ABASE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3201308">
 		<Nome>Cariacica - ES</Nome>
@@ -1372,18 +702,6 @@
 		<ArqConfig>CosmoramaSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="2604106">
-		<Nome>Caruaru - PE</Nome>
-		<UF>PE</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3118601">
-		<Nome>Contagem - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3146008">
 		<Nome>Ouro Fino - MG</Nome>
 		<UF>MG</UF>
@@ -1480,18 +798,6 @@
 		<ArqConfig>XangriLaRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4219705">
-		<Nome>Xaxim - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3543907">
-		<Nome>Rio Claro - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3539400">
 		<Nome>Piratininga - SP</Nome>
 		<UF>SP</UF>
@@ -1540,12 +846,6 @@
 		<ArqConfig>PetropolisRJ.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4205209">
-		<Nome>Erval Velho - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2503209">
 		<Nome>Cabedelo - PB</Nome>
 		<UF>PB</UF>
@@ -1563,12 +863,6 @@
 		<UF>RS</UF>
 		<ArqConfig>SantaMariaRS.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4217709">
-		<Nome>Sombrio - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4309308">
 		<Nome>Guaíba - RS</Nome>
@@ -1594,23 +888,11 @@
 		<ArqConfig>EstanciaVelhaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5213103">
-		<Nome>Mineiros - GO</Nome>
-		<UF>GO</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5211909">
 		<Nome>Jataí - GO</Nome>
 		<UF>GO</UF>
 		<ArqConfig>JataiGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3122306">
-		<Nome>Divinópolis - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4315149">
 		<Nome>Presidente Lucena - RS</Nome>
@@ -1641,12 +923,6 @@
 		<UF>SC</UF>
 		<ArqConfig>CamboriuSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4206108">
-		<Nome>Grão-Pará - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4316501">
 		<Nome>Salvador do Sul - RS</Nome>
@@ -1690,12 +966,6 @@
 		<ArqConfig>BarueriSP.xml</ArqConfig>
 		<PadraoNFSe>PROPRIOBARUERISP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4208609">
-		<Nome>Jaborá - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="4316006">
 		<Nome>Rolante - RS</Nome>
 		<UF>RS</UF>
@@ -1726,78 +996,6 @@
 		<ArqConfig>MontenegroRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="5002407">
-		<Nome>Caarapó - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5003454">
-		<Nome>Deodápolis - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5003801">
-		<Nome>Fátima do Sul - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5004601">
-		<Nome>Itaquiraí - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5005400">
-		<Nome>Maracaju - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5005681">
-		<Nome>Mundo Novo - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5006200">
-		<Nome>Nova Andradina - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5006259">
-		<Nome>Novo Horizonte do Sul - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5006903">
-		<Nome>Porto Murtinho - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5007208">
-		<Nome>Rio Brilhante - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5007406">
-		<Nome>Rio Verde de Mato Grosso - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="5007976">
-		<Nome>Taquarussu - MS</Nome>
-		<UF>MS</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2412005">
 		<Nome>São Gonçalo do Amarante - RN</Nome>
 		<UF>RN</UF>
@@ -1822,18 +1020,6 @@
 		<ArqConfig>CuiabaMT.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4101606">
-		<Nome>Arapoti - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4113254">
-		<Nome>Laranjal - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="5206206">
 		<Nome>Cristalina - GO</Nome>
 		<UF>GO</UF>
@@ -1857,12 +1043,6 @@
 		<UF>PA</UF>
 		<ArqConfig>RedencaoPA.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4117800">
-		<Nome>Palmital - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4201307">
 		<Nome>Araquari - SC</Nome>
@@ -1918,12 +1098,6 @@
 		<ArqConfig>SaoSebastiaoDoCaiRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="4104501">
-		<Nome>Capanema - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Equiplano.xml</ArqConfig>
-		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="2607901">
 		<Nome>Jaboatão dos Guararapes - PE</Nome>
 		<UF>PE</UF>
@@ -1947,42 +1121,6 @@
 		<UF>PE</UF>
 		<ArqConfig>GaranhunsPE.xml</ArqConfig>
 		<PadraoNFSe>TINUS</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4212254">
-		<Nome>Passo de Torres - SC</Nome>
-		<UF>SC</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3505302">
-		<Nome>Barra Bonita - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Webfisco.xml</ArqConfig>
-		<PadraoNFSe>WEBFISCO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3529302">
-		<Nome>Matão - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="2704302">
-		<Nome>Maceió - AL</Nome>
-		<UF>AL</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3520004">
-		<Nome>Igaraçu do Tietê - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Webfisco.xml</ArqConfig>
-		<PadraoNFSe>WEBFISCO</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="4107652">
-		<Nome>Fazenda Rio Grande - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4319000">
 		<Nome>São Marcos - RS</Nome>
@@ -2062,23 +1200,11 @@
 		<ArqConfig>CoronelFabricianoMG.xml</ArqConfig>
 		<PadraoNFSe>SONNER</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3500303">
-		<Nome>Aguaí - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3509502">
 		<Nome>Campinas - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>CampinasSP.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3524303">
-		<Nome>Jaboticabal - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>Ginfes.xml</ArqConfig>
-		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4306106">
 		<Nome>Cruz Alta - RS</Nome>
@@ -2169,12 +1295,6 @@
 		<UF>RS</UF>
 		<ArqConfig>SaoBorjaRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
-	</Arquivo>
-	<Arquivo ID="3102001">
-		<Nome>Alterosa - MG</Nome>
-		<UF>MG</UF>
-		<ArqConfig>Betha.xml</ArqConfig>
-		<PadraoNFSe>BETHA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4314134">
 		<Nome>Paulo Bento - RS</Nome>

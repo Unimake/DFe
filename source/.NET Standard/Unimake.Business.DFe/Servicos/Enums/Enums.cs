@@ -398,8 +398,8 @@ namespace Unimake.Business.DFe.Servicos
         /// 64 - Consulta Requerimento de Cancelamento da NFSe
         /// </summary>
         [Description("Consulta Requerimento de Cancelamento NFSe")]
-        NFSeConsultarRequerimentoCancelamento= 64,
-        
+        NFSeConsultarRequerimentoCancelamento = 64,
+
         /// <summary>
         /// 65 - Consulta do Recibo Evento do EFDReinf
         /// </summary>
@@ -6372,6 +6372,53 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SYSTEMPRO")]
         SYSTEMPRO = 47,
+    }
+
+    #endregion
+
+    #region Códigos dos Padrões de NFSe com link único
+
+    /// <summary>
+    /// Código para consumo dos padrões com o mesmo link de comunicação
+    /// O UniNFe enviará a configuração com os códigos IBGE do respectivo município, este ENUM foi criado para criar a conversão do código do município para o código do padrão aqui dentro da DLL.
+    /// </summary>
+    public enum CodigoPadraoNFSe 
+    {
+        /// <summary>
+        /// PADRÃO GINFES
+        /// </summary>
+        [Description("GINFES")]
+        GINFES = 9999900,
+
+        /// <summary>
+        /// PADRÃO MEMORY
+        /// </summary>
+        [Description("MEMORY")]
+        MEMORY = 9999901,
+
+        /// <summary>
+        /// PADRÃO ABASE
+        /// </summary>
+        [Description("ABASE")]
+        ABASE = 9999902,
+
+        /// <summary>
+        /// PADRÃO BETHA
+        /// </summary>
+        [Description("BETHA Sistemas")]
+        BETHA = 9999903,
+
+        /// <summary>
+        /// PADRÃO WEBFISCO
+        /// </summary>
+        [Description("WEBFISCO")]
+        WEBFISCO = 9999904,
+
+        /// <summary>
+        /// PADRÃO EQUIPLANO
+        /// </summary>
+        [Description("EQUIPLANO")]
+        EQUIPLANO = 9999905,
     }
 
     #endregion
