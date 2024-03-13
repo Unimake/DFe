@@ -33,7 +33,7 @@ namespace Unimake.DFe.Test.NFe
             {
                 var xml = new DistDFeInt
                 {
-                    Versao = "1.01",
+                    Versao = "1.35",
                     TpAmb = tipoAmbiente,
                     CNPJ = PropConfig.CNPJEmpresaCertificado,
                     CUFAutor = PropConfig.UFEmpresaCertificado,

@@ -811,6 +811,13 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
             while (XmlReader.Read())
             {
+
+                //Encerrou o detalhe do evento
+                if (XmlReader.Name == "detEvento")
+                {
+                    break;
+                }
+
                 if (XmlReader.NodeType != XmlNodeType.Element)
                 {
                     continue;
