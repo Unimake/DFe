@@ -1017,7 +1017,7 @@
 	<Arquivo ID="4125506">
 		<Nome>São José dos Pinhais - PR</Nome>
 		<UF>PR</UF>
-		<ArqConfig>SaoJoseDosPinhais.xml</ArqConfig>
+		<ArqConfig>SaoJoseDosPinhaisPR.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4212205">
