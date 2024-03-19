@@ -38,4 +38,10 @@
     <ProjectReference Include="..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="BugFixes\XML\Bug162066.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
