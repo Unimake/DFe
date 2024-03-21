@@ -359,6 +359,8 @@ namespace Unimake.Business.DFe.Utility
 
             try
             {
+                xml = TratarFalhaXML(xml);
+
                 var result = XmlHelper.Deserialize<T>(xml);
 
                 if (result is Contract.Serialization.IXmlSerializable serializable)
@@ -401,6 +403,19 @@ namespace Unimake.Business.DFe.Utility
                 ThrowHelper.Instance.Throw(ex.GetLastException());
                 throw; //Desnecessário, mas se eu tiro esta linha o compilador gera falha, mas dentro do ThrowHelper já tem este cara.
             }
+        }
+
+        /// <summary>
+        /// Tratar erros no XML antes de desserializar para evitar erro na desserialização
+        /// </summary>
+        /// <param name="xml">String do XML que deve sofrer a correção</param>
+        /// <returns>XML já corrigido</returns>
+        private static string TratarFalhaXML(string xml)
+        {
+            //Falta de namespace na tag principal gera erro. Caso abaixo é no XML de distribuição de eventos
+            var xmlCorrigido = xml.Replace("<procEventoNFe>", "<procEventoNFe versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
+
+            return xmlCorrigido;
         }
 
         /// <summary>

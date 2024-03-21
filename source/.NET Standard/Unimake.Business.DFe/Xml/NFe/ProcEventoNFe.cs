@@ -97,7 +97,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                     }
                     else
                     {
-                        Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                        if (nodeListEventoSignature.Count > 0)
+                        {
+                            Evento.Signature = XMLUtility.Deserializar<Signature>(((XmlElement)nodeListEventoSignature[0]).OuterXml);
+                        }
                     }
                 }
             }
