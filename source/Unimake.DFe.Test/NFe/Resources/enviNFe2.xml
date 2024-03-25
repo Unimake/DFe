@@ -153,18 +153,26 @@
 					<indEscala>S</indEscala>
 					<CNPJFab>CNPJFab1</CNPJFab>
 					<cBenef>cBenef1</cBenef>
-					<cCredPresumido>11111111</cCredPresumido>
-					<pCredPresumido>1.1111</pCredPresumido>
-					<vCredPresumido>1.11</vCredPresumido>
-					<cCredPresumido>22222222</cCredPresumido>
-					<pCredPresumido>2.2222</pCredPresumido>
-					<vCredPresumido>2.22</vCredPresumido>
-					<cCredPresumido>33333333</cCredPresumido>
-					<pCredPresumido>3.3333</pCredPresumido>
-					<vCredPresumido>3.33</vCredPresumido>
-					<cCredPresumido>44444444</cCredPresumido>
-					<pCredPresumido>4.4444</pCredPresumido>
-					<vCredPresumido>4.44</vCredPresumido>
+					<gCred>
+						<cCredPresumido>11111111</cCredPresumido>
+						<pCredPresumido>1.1111</pCredPresumido>
+						<vCredPresumido>1.11</vCredPresumido>
+					</gCred>
+					<gCred>
+						<cCredPresumido>22222222</cCredPresumido>
+						<pCredPresumido>2.2222</pCredPresumido>
+						<vCredPresumido>2.22</vCredPresumido>
+					</gCred>
+					<gCred>
+						<cCredPresumido>33333333</cCredPresumido>
+						<pCredPresumido>3.3333</pCredPresumido>
+						<vCredPresumido>3.33</vCredPresumido>
+					</gCred>
+					<gCred>
+						<cCredPresumido>44444444</cCredPresumido>
+						<pCredPresumido>4.4444</pCredPresumido>
+						<vCredPresumido>4.44</vCredPresumido>
+					</gCred>
 					<EXTIPI>EXTIPI1</EXTIPI>
 					<CFOP>CFOP1</CFOP>
 					<uCom>uCom1</uCom>
@@ -474,18 +482,26 @@
 					<indEscala>N</indEscala>
 					<CNPJFab>CNPJFab2</CNPJFab>
 					<cBenef>cBenef2</cBenef>
-					<cCredPresumido>11111111</cCredPresumido>
-					<pCredPresumido>1.1111</pCredPresumido>
-					<vCredPresumido>1.11</vCredPresumido>
-					<cCredPresumido>22222222</cCredPresumido>
-					<pCredPresumido>2.2222</pCredPresumido>
-					<vCredPresumido>2.22</vCredPresumido>
-					<cCredPresumido>33333333</cCredPresumido>
-					<pCredPresumido>3.3333</pCredPresumido>
-					<vCredPresumido>3.33</vCredPresumido>
-					<cCredPresumido>44444444</cCredPresumido>
-					<pCredPresumido>4.4444</pCredPresumido>
-					<vCredPresumido>4.44</vCredPresumido>
+					<gCred>
+						<cCredPresumido>11111111</cCredPresumido>
+						<pCredPresumido>1.1111</pCredPresumido>
+						<vCredPresumido>1.11</vCredPresumido>
+					</gCred>
+					<gCred>
+						<cCredPresumido>22222222</cCredPresumido>
+						<pCredPresumido>2.2222</pCredPresumido>
+						<vCredPresumido>2.22</vCredPresumido>
+					</gCred>
+					<gCred>
+						<cCredPresumido>33333333</cCredPresumido>
+						<pCredPresumido>3.3333</pCredPresumido>
+						<vCredPresumido>3.33</vCredPresumido>
+					</gCred>
+					<gCred>
+						<cCredPresumido>44444444</cCredPresumido>
+						<pCredPresumido>4.4444</pCredPresumido>
+						<vCredPresumido>4.44</vCredPresumido>
+					</gCred>
 					<EXTIPI>EXTIPI2</EXTIPI>
 					<CFOP>CFOP2</CFOP>
 					<uCom>uCom2</uCom>

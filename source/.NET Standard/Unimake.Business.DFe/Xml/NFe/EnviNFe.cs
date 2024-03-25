@@ -1521,41 +1521,11 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("cBenef")]
         public string CBenef { get; set; }
 
-        #region Grupo opcional para informações do Crédito Presumido.
-
         /// <summary>
-        /// Código de Benefício Fiscal de Crédito Presumido utilizado pela UF, aplicado ao item. Obs.: Deve ser utilizado o mesmo código adotado na EFD e outras declarações, nas UF que o exigem.
+        /// Grupo opcional para informações do Crédito Presumido. Obs.: A exigência do preenchimento das informações do crédito presumido fica a critério de cada UF.
         /// </summary>
-        [XmlElement("cCredPresumido")]
-        public string CCredPresumido { get; set; }
-
-        /// <summary>
-        /// Informar o percentual do crédito presumido relativo ao código do crédito presumido informado.
-        /// </summary>
-        [XmlIgnore]
-        public double PCredPresumido { get; set; }
-
-        [XmlElement("pCredPresumido")]
-        public string PCredPresumidoField
-        {
-            get => PCredPresumido.ToString("F4", CultureInfo.InvariantCulture);
-            set => PCredPresumido = Converter.ToDouble(value);
-        }
-
-        /// <summary>
-        /// Informar o valor do crédito presumido relativo ao código do crédito presumido informado.
-        /// </summary>
-        [XmlIgnore]
-        public double VCredPresumido { get; set; }
-
-        [XmlElement("vCredPresumido")]
-        public string VCredPresumidoField
-        {
-            get => VCredPresumido.ToString("F4", CultureInfo.InvariantCulture);
-            set => VCredPresumido = Converter.ToDouble(value);
-        }
-
-        #endregion
+        [XmlElement("gCred")]
+        public List<GCred> GCred { get; set; }
 
         [XmlElement("EXTIPI")]
         public string EXTIPI { get; set; }
@@ -1720,12 +1690,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeCBarraTrib() => !string.IsNullOrWhiteSpace(CBarraTrib);
 
-        public bool ShouldSerializeCCredPresumido() => !string.IsNullOrWhiteSpace(CCredPresumido);
-        public bool ShouldSerializePCredPresumidoField() => !string.IsNullOrWhiteSpace(CCredPresumido);
-        public bool ShouldSerializeVCredPresumidoField() => !string.IsNullOrWhiteSpace(CCredPresumido);
-
         #endregion
-
 
 #if INTEROP
 
@@ -1967,7 +1932,83 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         public int GetVeicProdCount => (VeicProd != null ? VeicProd.Count : 0);
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="elemento">Elemento</param>
+        public void AddGCred(GCred elemento)
+        {
+            if (GCred == null)
+            {
+                GCred = new List<GCred>();
+            }
+
+            GCred.Add(elemento);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GCred (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GCred</returns>
+        public GCred GetGCred(int index)
+        {
+            if ((GCred?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return GCred[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GCred
+        /// </summary>
+        public int GetGCredCount => (GCred != null ? GCred.Count : 0);
+
 #endif
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GCred")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GCred
+    {
+        /// <summary>
+        /// Código de Benefício Fiscal de Crédito Presumido utilizado pela UF, aplicado ao item. Obs.: Deve ser utilizado o mesmo código adotado na EFD e outras declarações, nas UF que o exigem.
+        /// </summary>
+        [XmlElement("cCredPresumido")]
+        public string CCredPresumido { get; set; }
+
+        /// <summary>
+        /// Informar o percentual do crédito presumido relativo ao código do crédito presumido informado.
+        /// </summary>
+        [XmlIgnore]
+        public double PCredPresumido { get; set; }
+
+        [XmlElement("pCredPresumido")]
+        public string PCredPresumidoField
+        {
+            get => PCredPresumido.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCredPresumido = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informar o valor do crédito presumido relativo ao código do crédito presumido informado.
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPresumido { get; set; }
+
+        [XmlElement("vCredPresumido")]
+        public string VCredPresumidoField
+        {
+            get => VCredPresumido.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresumido = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
