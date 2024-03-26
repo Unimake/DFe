@@ -1,0 +1,64 @@
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
+	<LoteRps Id="Lote" versao="2.04">
+		<NumeroLote>7875888</NumeroLote>
+		<Prestador>
+			<CpfCnpj>
+				<Cnpj>10836254000106</Cnpj>
+			</CpfCnpj>
+			<InscricaoMunicipal>19497100</InscricaoMunicipal>
+		</Prestador>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico Id="ID_39596881ABCDE1">
+					<Rps Id="rps">
+						<IdentificacaoRps>
+							<Numero>39596881</Numero>
+							<Serie>ABCDE</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2023-06-21</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2023-06-21</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>10</ValorServicos>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ItemListaServico>04.02</ItemListaServico>
+						<CodigoTributacaoMunicipio>864020400</CodigoTributacaoMunicipio>
+						<Discriminacao>teste</Discriminacao>
+						<CodigoMunicipio>3170206</CodigoMunicipio>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>3170206</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>10836254000106</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>19497100</InscricaoMunicipal>
+					</Prestador>
+					<TomadorServico>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>43260062009</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>José Silva</RazaoSocial>
+						<Endereco>
+							<Endereco>RUA JOSÉ PASSOS</Endereco>
+							<Numero>564</Numero>
+							<Bairro>CENTRO</Bairro>
+							<CodigoMunicipio>3170206</CodigoMunicipio>
+							<Uf>MG</Uf>
+							<Cep>35858555</Cep>
+						</Endereco>
+					</TomadorServico>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>
