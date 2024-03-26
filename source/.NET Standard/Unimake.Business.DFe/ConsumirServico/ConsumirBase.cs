@@ -75,15 +75,6 @@ namespace Unimake.Business.DFe
                 }
                 xmlBody = doc.OuterXml;
             }
-            else if (soap.PadraoNFSe == PadraoNFSe.DSF && soap.EncriptaTagAssinatura)
-            {
-                var doc = new XmlDocument();
-                doc.LoadXml(xmlBody);
-                var sh1 = Criptografia.GetSHA1HashData(doc.GetElementsByTagName("Assinatura")[0].InnerText);
-                doc.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
-                xmlBody = doc.OuterXml;
-                xmlBody = xmlBody.Replace("<", "&lt;").Replace(">", "&gt;");
-            }
             else if (soap.PadraoNFSe == PadraoNFSe.IIBRASIL)
             {
                 soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");

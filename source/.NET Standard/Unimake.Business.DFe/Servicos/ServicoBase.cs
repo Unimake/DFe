@@ -157,6 +157,12 @@ namespace Unimake.Business.DFe.Servicos
         {
             get
             {
+                if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF && Configuracoes.EncriptaTagAssinatura)
+                {
+                    var sh1 = Criptografia.GetSHA1HashData(ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText);
+                    ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                    
+                }
                 VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
                 VerificarAssinarXML(Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID);
 
