@@ -68,17 +68,17 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
-            //if (configuracao.PadraoNFSe == PadraoNFSe.ABASE || configuracao.PadraoNFSe == PadraoNFSe.BETHA || configuracao.PadraoNFSe == PadraoNFSe.GINFES ||
-            //    configuracao.PadraoNFSe == PadraoNFSe.MEMORY || configuracao.PadraoNFSe == PadraoNFSe.EQUIPLANO || configuracao.PadraoNFSe == PadraoNFSe.WEBFISCO)
-            //{
-            //    //Municípios pontuais com configuração diferente:
-            //    //São José dos Pinhais - PR     |GINFES
-            //    //Varginha - MG                 |BETHA
-            //    if (configuracao.CodigoMunicipio != 4125506 || configuracao.CodigoMunicipio != 3170701)
-            //    {
-            //        configuracao.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), configuracao.PadraoNFSe.ToString());
-            //    }
-            //}
+            if (configuracao.PadraoNFSe == PadraoNFSe.ABASE || configuracao.PadraoNFSe == PadraoNFSe.BETHA || configuracao.PadraoNFSe == PadraoNFSe.GINFES ||
+                configuracao.PadraoNFSe == PadraoNFSe.MEMORY || configuracao.PadraoNFSe == PadraoNFSe.EQUIPLANO || configuracao.PadraoNFSe == PadraoNFSe.WEBFISCO)
+            {
+                //Municípios pontuais com configuração diferente:
+                //São José dos Pinhais - PR     |GINFES
+                //Varginha - MG                 |BETHA
+                if (configuracao.CodigoMunicipio != 4125506 || configuracao.CodigoMunicipio != 3170701)
+                {
+                    configuracao.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), configuracao.PadraoNFSe.ToString());
+                }
+            }
 
             base.Inicializar(conteudoXML, configuracao);
         }
