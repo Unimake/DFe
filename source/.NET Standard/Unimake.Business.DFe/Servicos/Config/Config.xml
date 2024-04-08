@@ -1308,4 +1308,10 @@
 		<ArqConfig>TaperaRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3170206">
+		<Nome>Uberlândia - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>UberlandiaMG.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
