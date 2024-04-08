@@ -1302,4 +1302,10 @@
 		<ArqConfig>PauloBentoRS.xml</ArqConfig>
 		<PadraoNFSe>SYSTEMPRO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321006">
+		<Nome>Tapera - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TaperaRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
