@@ -51,6 +51,11 @@ namespace Unimake.Business.DFe
 
             var retorna = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
+            if (soap.TemCDATA)
+            {
+                soap.SoapString = soap.SoapString.Replace("{cCDATA}", "]]>").Replace("{oCDATA}", "<![CDATA[");
+            }
+
             if (soap.PadraoNFSe == PadraoNFSe.TINUS)
             {
                 var doc = new XmlDocument();
