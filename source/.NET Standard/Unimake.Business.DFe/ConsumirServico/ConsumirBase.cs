@@ -49,7 +49,7 @@ namespace Unimake.Business.DFe
                 xmlBody = xmlBody.Substring(xmlBody.IndexOf("?>") + 2);
             }
 
-            var retorna = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";            
+            var retorna = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
             if (soap.PadraoNFSe == PadraoNFSe.TINUS)
             {
@@ -281,7 +281,7 @@ namespace Unimake.Business.DFe
                         throw new Exception("Não foi possível localizar a tag <" + tagRetorno + "> no XML retornado pelo web-service.\r\n\r\n" +
                             "Conteúdo retornado pelo servidor:\r\n\r\n" + retornoXml.InnerXml);
                     }
-                }               
+                }
 
                 if (TratarScapeRetorno)
                 {

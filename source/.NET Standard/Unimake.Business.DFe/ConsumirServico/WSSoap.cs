@@ -30,10 +30,21 @@ namespace Unimake.Business.DFe
         private bool _EncriptaTagAssinatura;
         private string _Token;
         private Servico _Servico;
+        private bool _TemCDATA;
 
         #endregion Private Fields
 
         #region Public Properties
+
+
+        /// <summary>
+        /// Propriedade criada para tratar municípios com mais de um CDATA no SOAP.
+        /// </summary>
+        public bool TemCDATA
+        {
+            get => _TemCDATA;
+            set => _TemCDATA = value;
+        }
 
 
         /// <summary>

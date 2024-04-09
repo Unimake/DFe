@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -344,6 +345,11 @@ namespace Unimake.Business.DFe.Servicos
                             if (XMLUtility.TagExist(elementPropriedades, "EncriptaTagAssinatura"))
                             {
                                 EncriptaTagAssinatura = XMLUtility.TagRead(elementPropriedades, "EncriptaTagAssinatura").ToLower() == "true" ? true : false;
+                            }
+
+                            if (XMLUtility.TagExist(elementPropriedades, "TemCDATA"))
+                            {
+                                TemCDATA = XMLUtility.TagRead(elementPropriedades, "TemCDATA").ToLower() == "true" ? true : false;
                             }
 
                             //Verificar se existem schemas específicos de validação
@@ -1054,6 +1060,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Propriedade criada para atender o padrão DSF Versão 1.0.
         /// </summary>
         public bool EncriptaTagAssinatura { get; set; }
+
+        /// <summary>
+        /// Propriedade criada para tratar municípios com mais de um CDATA no SOAP.
+        /// </summary>
+        public bool TemCDATA { get; set; }
 
         /// <summary>
         /// O serviço consome API? true ou false

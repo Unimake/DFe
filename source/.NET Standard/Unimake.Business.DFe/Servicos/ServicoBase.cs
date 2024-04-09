@@ -291,6 +291,7 @@ namespace Unimake.Business.DFe.Servicos
                     Token = Configuracoes.MunicipioToken,
                     EncriptaTagAssinatura = Configuracoes.EncriptaTagAssinatura,
                     Servico = Configuracoes.Servico,
+                    TemCDATA = Configuracoes.TemCDATA,
                     Proxy = (Configuracoes.HasProxy ? Proxy.DefinirServidor(Configuracoes.ProxyAutoDetect,
                                                                             Configuracoes.ProxyUser,
                                                                             Configuracoes.ProxyPassword) : null)
