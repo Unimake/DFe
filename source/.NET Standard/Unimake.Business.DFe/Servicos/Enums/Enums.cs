@@ -6378,6 +6378,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SYSTEMPRO")]
         SYSTEMPRO = 47,
+
+        /// <summary>
+        /// FINTEL
+        /// </summary>
+        [Description("FINTEL")]
+        FINTEL = 48,
     }
 
     #endregion
