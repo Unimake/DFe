@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.03">
+		<RecepcionarLoteRps versao="2.01">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -20,7 +20,7 @@
 			<SchemaVersao></SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</RecepcionarLoteRps>
-		<ConsultarLoteRps versao="2.03">
+		<ConsultarLoteRps versao="2.01">
 			<Descricao>Realiza a consulta do Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -36,10 +36,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarLoteRps>
-		<CancelarNfse versao="2.03">
+		<CancelarNfse versao="2.01">
 			<Descricao>Realiza o cancelamento da NFSe</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -55,10 +55,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</CancelarNfse>
-		<ConsultarNfseServicoTomado versao="2.03">
+		<ConsultarNfseServicoTomado versao="2.01">
 			<Descricao>Realiza a consulta da NFSe através do Tomador</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -74,10 +74,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseServicoTomado>
-		<ConsultarNfseServicoPrestado versao="2.03">
+		<ConsultarNfseServicoPrestado versao="2.01">
 			<Descricao>Realiza a consulta da NFSe através do Prestador</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -93,10 +93,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseServicoPrestado>
-		<ConsultarNfseFaixa versao="2.03">
+		<ConsultarNfseFaixa versao="2.01">
 			<Descricao>Realiza a consulta da NFSe por faixa</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -112,10 +112,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfseFaixa>
-		<ConsultarNfsePorRps versao="2.03">
+		<ConsultarNfsePorRps versao="2.01">
 			<Descricao>Realiza a consulta da NFSe através do Rps</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -131,10 +131,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarNfsePorRps>
-		<GerarNfse versao="2.03">
+		<GerarNfse versao="2.01">
 			<Descricao>Gerar Nfse</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -150,10 +150,10 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</GerarNfse>
-		<SubstituirNfse versao="2.03">
+		<SubstituirNfse versao="2.01">
 			<Descricao>Substitui NFSe </Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
@@ -169,7 +169,7 @@
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.03</SchemaVersao>
+			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</SubstituirNfse>
 	</Servicos>
