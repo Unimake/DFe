@@ -87,7 +87,7 @@
 			<WebEnderecoProducao>https://luiseduardomagalhaes.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Infse/GerarNfse</WebActionProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/GerarNfse</WebActionHomologacao>
-			<TagAssinatura>InfDeclaracaoPrestacaoServico</TagAssinatura>
+			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID>Rps</TagLoteAtributoID>
