@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2024.04.12.1552</AssemblyVersion>
-		<FileVersion>2024.04.12.1552</FileVersion>
+		<AssemblyVersion>2024.04.19.1002</AssemblyVersion>
+		<FileVersion>2024.04.19.1002</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -2242,9 +2242,9 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.0" />
-		<PackageReference Include="Unimake.Cryptography" Version="20240228.1132.9" />
-		<PackageReference Include="Unimake.Extensions" Version="20240228.1132.9" />
-		<PackageReference Include="Unimake.Utils" Version="20240228.1132.9" />
+		<PackageReference Include="Unimake.Cryptography" Version="20240416.118.7" />
+		<PackageReference Include="Unimake.Extensions" Version="20240416.118.7" />
+		<PackageReference Include="Unimake.Utils" Version="20240416.118.7" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -2260,6 +2260,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Servicos\MFE\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

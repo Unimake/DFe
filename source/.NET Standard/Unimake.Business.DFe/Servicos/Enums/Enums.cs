@@ -1,9 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Xml.CTe;
-using Unimake.Business.DFe.Xml.EFDReinf;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -6394,7 +6390,7 @@ namespace Unimake.Business.DFe.Servicos
     /// Código para consumo dos padrões com o mesmo link de comunicação
     /// O UniNFe enviará a configuração com os códigos IBGE do respectivo município, este ENUM foi criado para criar a conversão do código do município para o código do padrão aqui dentro da DLL.
     /// </summary>
-    public enum CodigoPadraoNFSe 
+    public enum CodigoPadraoNFSe
     {
         /// <summary>
         /// PADRÃO GINFES
@@ -6435,7 +6431,7 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region Tipos de Compoenentes da GTVe para CTeOS
+    #region Tipos de Componentes da GTVe para CTeOS
 
     /// <summary>
     /// Tipos de componentes da GTVe para CTeOS
@@ -7268,6 +7264,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("99")]
         PessoaJuridica = 99,
     }
+
     #endregion
 
     #region Tipo da entidadade ligada
@@ -7431,8 +7428,8 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("92")]
         SemSuspensao = 92,
     }
-    #endregion
 
+    #endregion
 
     #region Indicativo Retificação
 
@@ -7454,6 +7451,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("2")]
         ArquivoRetificacao = 2
     }
+
     #endregion
 
     #region Tipo de Inscricao do Estabelecimento
@@ -7483,6 +7481,8 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("4")]
         CNO = 4
     }
+
+    #endregion
 
     #region Indicativo Obra
 
@@ -8593,5 +8593,89 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion
+
+    #region Marcas de equipamentos SAT
+
+    /// <summary>
+    /// Marcas dos equipamentos de SAT
+    /// </summary>
+    public enum MarcaEquipamentoSAT
+    {
+        /// <summary>
+        /// Tanca
+        /// </summary>
+        TANCA,
+
+        /// <summary>
+        /// Daruma
+        /// </summary>
+        DARUMA,
+
+        /// <summary>
+        /// Bematech
+        /// </summary>
+        BEMATECH,
+
+        /// <summary>
+        /// Dimep
+        /// </summary>
+        DIMEP,
+
+        /// <summary>
+        /// ELGIN Linker I
+        /// </summary>
+        ELGIN,
+
+        /// <summary>
+        /// Elgin Linker II
+        /// </summary>
+        ELGIN_II,
+
+        /// <summary>
+        /// Elgin SMART
+        /// </summary>
+        ELGIN_SMART,
+
+        /// <summary>
+        /// Emulador de SP
+        /// </summary>
+        EMULADOR,
+
+        /// <summary>
+        /// Nitere
+        /// </summary>
+        NITERE,
+
+        /// <summary>
+        /// SWEDA
+        /// </summary>
+        SWEDA,
+
+        /// <summary>
+        /// EPSON
+        /// </summary>
+        EPSON,
+
+        /// <summary>
+        /// KRYPTUS
+        /// </summary>
+        KRYPTUS,
+
+        /// <summary>
+        /// CONTROL ID
+        /// </summary>
+        CONTROL_ID,
+
+        /// <summary>
+        /// JETWAY
+        /// </summary>
+        JETWAY,
+
+        /// <summary>
+        /// GERTEC
+        /// </summary>
+        GERTEC
+    }
+
+    #endregion
 }
-#endregion

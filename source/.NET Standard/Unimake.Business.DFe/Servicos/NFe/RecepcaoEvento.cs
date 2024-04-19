@@ -124,12 +124,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
             var tpEvento = xml.Evento[0].InfEvento.TpEvento;
 
             var msgException = "Conteúdo da tag <descEvento> deve ser igual a \"$\", pois foi este o conteudo informado na tag <tpEvento>.";
-            string descEvento;
+            var descEvento = string.Empty;
+            var descMensagem = string.Empty;
 
             switch (tpEvento)
             {
                 case TipoEventoNFe.ManifestacaoCienciaOperacao:
                     descEvento = "Ciencia da Operacao";
+                    descMensagem = "Ciência da Operação";
                     if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
@@ -138,6 +140,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ManifestacaoConfirmacaoOperacao:
                     descEvento = "Confirmacao da Operacao";
+                    descMensagem = "Confirmação da Operação";
                     if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
@@ -146,6 +149,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ManifestacaoDesconhecimentoOperacao:
                     descEvento = "Desconhecimento da Operacao";
+                    descMensagem = "Desconhecimento da Operação";
                     if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
@@ -154,6 +158,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ManifestacaoOperacaoNaoRealizada:
                     descEvento = "Operacao nao Realizada";
+                    descMensagem = "Operação não Realizada";
                     if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
@@ -162,6 +167,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.ComprovanteEntregaNFe:
                     descEvento = "Comprovante de Entrega da NF-e";
+                    descMensagem = descEvento;
                     if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
@@ -170,6 +176,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                 case TipoEventoNFe.CancelamentoComprovanteEntregaNFe:
                     descEvento = "Cancelamento Comprovante de Entrega da NF-e";
+                    descMensagem = descEvento;
                     if (!xml.Evento[0].InfEvento.DetEvento.DescEvento.Equals(descEvento))
                     {
                         throw new Exception(msgException.Replace("$", descEvento));
@@ -177,7 +184,12 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     goto case TipoEventoNFe.EPEC;
 
                 case TipoEventoNFe.EPEC:
-                    if (xml.Evento[0].InfEvento.ChNFe.Substring(20, 2) == "65" && ((DetEventoEPEC)xml.Evento[0].InfEvento.DetEvento).COrgaoAutor == UFBrasil.SP)
+                    if (tpEvento == TipoEventoNFe.EPEC)
+                    {
+                        descMensagem = "EPEC de NFe";
+                    }
+
+                    if (tpEvento == TipoEventoNFe.EPEC && xml.Evento[0].InfEvento.ChNFe.Substring(20, 2) == "65" && ((DetEventoEPEC)xml.Evento[0].InfEvento.DetEvento).COrgaoAutor == UFBrasil.SP)
                     {
                         if (xml.Evento[0].InfEvento.COrgao != UFBrasil.SP)
                         {
@@ -188,7 +200,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     {
                         if (xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
                         {
-                            throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de EPEC de NFe o conteúdo da tag <cOrgao> deve igual a 91.");
+                            throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de tipo " + descMensagem + " o conteúdo da tag <cOrgao> deve igual a 91.");
                         }
                     }
                     break;
