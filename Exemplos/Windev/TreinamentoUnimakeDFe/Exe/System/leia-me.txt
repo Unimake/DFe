@@ -3,4 +3,4 @@ linha1=Nao apague ou modifique esse arquivo.
 linha2=Se isso acontecer, os sistemas
 linha3=poderao deixar de funcionar.
 [check]
-code=bc322cf33e3108837533d2674308b46f
+code=63e6569b9bb08ef8ecec96a487ca7ecb
