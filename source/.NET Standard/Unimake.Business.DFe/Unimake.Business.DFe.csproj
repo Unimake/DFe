@@ -283,6 +283,7 @@
 		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ChapecoSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
+		<None Remove="Servicos\Config\NFSe\ColomboPR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CorumbaMS.xml" />
@@ -863,6 +864,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ColomboPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MaringaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaperaRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

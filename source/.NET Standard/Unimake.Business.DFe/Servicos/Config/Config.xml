@@ -1320,4 +1320,10 @@
 		<ArqConfig>MaringaPR.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4105805">
+		<Nome>Colombo - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ColomboPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
