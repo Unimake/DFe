@@ -5819,5 +5819,51 @@ namespace TreinamentoDLL
 
             UnidanfeServices.Execute(config);
         }
+
+        private void BtnEventoCTeEmDesacordo_Click(object sender, EventArgs e)
+        {
+            var xml = new Unimake.Business.DFe.Xml.CTe.EventoCTe
+            {
+                Versao = "4.00",
+                InfEvento = new XmlCTe.InfEvento(new Unimake.Business.DFe.Xml.CTe.DetEventoPrestDesacordo
+                {
+                    VersaoEvento = "4.00",
+                    IndDesacordoOper = "1",
+                    XObs = "Observação do desacordo"
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    ChCTe = "41200211111111111111111111111111111111111115",
+                    CNPJ = "11111111111111",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoCTe.PrestDesacordo,
+                    NSeqEvento = 1,
+                    TpAmb = TipoAmbiente.Homologacao
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var recepcaoEvento = new ServicoCTe.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            //Gravar o XML de distribuição se o evento foi homologada
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
+                case 135: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
+                case 136: //Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
+                    recepcaoEvento.GravarXmlDistribuicao(@"c:\testecte\");
+                    break;
+
+                default:
+                    //Quando o evento é rejeitado pela Sefaz.
+                    break;
+            }
+        }
     }
 }
