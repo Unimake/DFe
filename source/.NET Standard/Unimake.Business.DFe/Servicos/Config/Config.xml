@@ -1320,4 +1320,16 @@
 		<ArqConfig>MaringaPR.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4105805">
+		<Nome>Colombo - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>ColomboPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4303004">
+		<Nome>Cachoeira do Sul - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CachoeiraDoSulRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

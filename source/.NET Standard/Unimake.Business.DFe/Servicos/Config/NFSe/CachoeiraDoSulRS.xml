@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.02">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoProducao>http://cachoeira.govbr.cloud/nfse.portal.integracao/services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:RecepcionarLoteRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="2.02">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>http://cachoeira.govbr.cloud/nfse.portal.integracao/services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:CancelarNfse><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.02">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoProducao>http://cachoeira.govbr.cloud/nfse.portal.integracao/services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:SubstituirNfse><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SubstituirNfseResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.02">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoProducao>http://cachoeira.govbr.cloud/nfse.portal.integracao/services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarLoteRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.02">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoProducao>http://cachoeira.govbr.cloud/nfse.portal.integracao/services.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarNfsePorRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRpsResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>
