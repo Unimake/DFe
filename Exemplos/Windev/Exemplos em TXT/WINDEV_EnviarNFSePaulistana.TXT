@@ -1,0 +1,29 @@
+oConfiguracao						is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDFe				= TipoDFe.NFSe
+oConfiguracao.CertificadoArquivo	= "C:\projetos\Unimake_PV.pfx"
+oConfiguracao.CertificadoSenha		= "12345678"
+oConfiguracao.TipoAmbiente			= TipoAmbiente.Producao
+
+oConfiguracao.CodigoMunicipio		= 3550308 //Código do IBGE de São Paulo-SP
+oConfiguracao.Servico				= 45 //Servico.NFSeEnvioRps
+oConfiguracao.SchemaVersao			= "2.00"
+
+//oConfiguracao.MunicipioSenha = "123456"
+//oConfiguracao.MunicipioUsuario = "01001001000113"
+
+//Montar a string do XML
+xmlNfse	is string = fLoadText("D:\testenfe\NFSeSP.xml")
+
+EDT_RetornoWSString += "XML da NFSe:" + CR + CR + xmlNfse + CR + CR
+
+WHEN EXCEPTION IN
+	oEnvioRPS is Unimake.Business.DFe.Servicos.NFSe.EnvioRps(xmlNfse, oConfiguracao)	
+	oEnvioRPS.Executar()
+	
+	EDT_RetornoWSString += "XML Retornado" + CR + CR 
+	EDT_RetornoWSString += oEnvioRPS.RetornoWSString
+	
+	Info("FIM")	
+DO
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
+END
