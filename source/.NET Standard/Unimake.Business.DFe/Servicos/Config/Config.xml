@@ -1332,4 +1332,10 @@
 		<ArqConfig>CachoeiraDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5000609">
+		<Nome>Amambai - MS</Nome>
+		<UF>MS</UF>
+		<ArqConfig>AmambaiMS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
