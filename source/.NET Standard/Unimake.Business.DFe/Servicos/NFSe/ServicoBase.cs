@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.IO;
+using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
@@ -33,6 +34,81 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         protected override void DefinirConfiguracao() { }
 
         /// <summary>
+        /// Ajustes no XMLs, depois de assinado.
+        /// </summary>
+        protected override void AjustarXMLAposAssinado()
+        {
+            #region Resolver problema da assinatura de Uberlândia-MG, que fugiu padrão mundial
+
+            if (Configuracoes.CodigoMunicipio == 3170206) //Uberlândia (Tem esta zica na assinatura, pensa em merda.)
+            {
+                if (Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps ||
+                    Configuracoes.Servico == Servico.NFSeRecepcionarLoteRpsSincrono ||
+                    Configuracoes.Servico == Servico.NFSeGerarNfse ||
+                    Configuracoes.Servico == Servico.NFSeSubstituirNfse)
+                {
+
+                    var xmlDoc = new XmlDocument();
+                    xmlDoc.LoadXml(ConteudoXML.OuterXml);
+                    var mudouXml = false;
+                    if (Configuracoes.TagAssinatura.Equals("Rps"))
+                    {
+                        if (Configuracoes.Servico == Servico.NFSeGerarNfse)
+                        {
+                            var nodeRps = xmlDoc.GetElementsByTagName("Rps")[0];
+                            var elementNodeRps = (XmlElement)nodeRps;
+                            var elementInfDeclaracao = (XmlElement)elementNodeRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
+                            var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
+                            var elementSignatureValue = (XmlElement)elementNodeRps.GetElementsByTagName("SignatureValue")[0];
+
+                            if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
+                            {
+                                var attributeId = xmlDoc.CreateAttribute("Id");
+                                attributeId.Value = "ID_ASSINATURA_" + id;
+                                elementSignatureValue.SetAttributeNode(attributeId);
+
+                                mudouXml = true;
+                            }
+                        }
+                        else
+                        {
+                            var listListaRps = xmlDoc.GetElementsByTagName("ListaRps");
+                            foreach (XmlNode nodeListaRps in listListaRps)
+                            {
+                                var elementListaRps = (XmlElement)nodeListaRps;
+                                foreach (XmlNode nodeRps in elementListaRps.GetElementsByTagName("Rps"))
+                                {
+                                    var elementRps = (XmlElement)nodeRps;
+                                    if (elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico").Count > 0)
+                                    {
+                                        var elementInfDeclaracao = (XmlElement)elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
+                                        var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
+                                        var elementSignatureValue = (XmlElement)elementRps.GetElementsByTagName("SignatureValue")[0];
+
+                                        if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
+                                        {
+                                            var attributeId = xmlDoc.CreateAttribute("Id");
+                                            attributeId.Value = "ID_ASSINATURA_" + id;
+                                            elementSignatureValue.SetAttributeNode(attributeId);
+                                            mudouXml = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (mudouXml)
+                        {
+                            ConteudoXML.LoadXml(xmlDoc.OuterXml);
+                        }
+                    }
+                }
+            }
+
+            #endregion
+        }
+
+        /// <summary>
         /// Conteúdo do XML assinado.
         /// </summary>
         public override XmlDocument ConteudoXMLAssinado
@@ -43,61 +119,9 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 {
                     var sh1 = Criptografia.GetSHA1HashData(ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText);
                     ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
-
                 }
 
                 ConteudoXML = base.ConteudoXMLAssinado;
-
-                #region Resolver problema da assinatura de Uberlândia-MG, que fugiu padrão mundial
-
-                if (Configuracoes.CodigoMunicipio == 3170206) //Uberlândia (Tem esta zica na assinatura, pensa em merda.)
-                {
-                    if (Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps ||
-                        Configuracoes.Servico == Servico.NFSeRecepcionarLoteRpsSincrono ||
-                        Configuracoes.Servico == Servico.NFSeGerarNfse ||
-                        Configuracoes.Servico == Servico.NFSeSubstituirNfse)
-                    {
-
-                        var xmlDoc = new XmlDocument();
-                        xmlDoc.LoadXml(ConteudoXML.OuterXml);
-
-                        if (Configuracoes.TagAssinatura.Equals("Rps"))
-                        {
-                            if (Configuracoes.Servico == Servico.NFSeGerarNfse)
-                            {
-                                var nodeRps = xmlDoc.GetElementsByTagName("Rps")[0];
-                                var elementNodeRps = (XmlElement)nodeRps;
-                                var elementInfDeclaracao = (XmlElement)elementNodeRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
-                                var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
-                                var elementSignatureValue = (XmlElement)elementNodeRps.GetElementsByTagName("SignatureValue")[0];
-
-                                var attributeId = xmlDoc.CreateAttribute("Id");
-                                attributeId.Value = "ID_ASSINATURA_" + id;
-                                elementSignatureValue.SetAttributeNode(attributeId);
-                            }
-                            else
-                            {
-                                var listListaRps = xmlDoc.GetElementsByTagName("ListaRps");
-                                foreach (XmlNode nodeListaRps in listListaRps)
-                                {
-                                    var elementListaRps = (XmlElement)nodeListaRps;
-                                    var elementRps = (XmlElement)elementListaRps.GetElementsByTagName("Rps")[0];
-                                    var elementInfDeclaracao = (XmlElement)elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
-                                    var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
-                                    var elementSignatureValue = (XmlElement)elementRps.GetElementsByTagName("SignatureValue")[0];
-
-                                    var attributeId = xmlDoc.CreateAttribute("Id");
-                                    attributeId.Value = "ID_ASSINATURA_" + id;
-                                    elementSignatureValue.SetAttributeNode(attributeId);
-                                }
-                            }
-
-                            ConteudoXML.LoadXml(xmlDoc.OuterXml);
-                        }
-                    }
-                }
-
-                #endregion
 
                 return ConteudoXML;
             }
