@@ -46,27 +46,6 @@ namespace Unimake.Business.DFe.Servicos
                 {
                     AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id", true);
 
-                    if (Configuracoes.CodigoMunicipio == 3170206 &&  //Uberlândia (Tem esta zica na assinatura, pensa em merda.)
-                        (Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps ||
-                        Configuracoes.Servico == Servico.NFSeRecepcionarLoteRpsSincrono ||
-                        Configuracoes.Servico == Servico.NFSeGerarNfse ||
-                        Configuracoes.Servico == Servico.NFSeSubstituirNfse))
-                    {
-                        if (tagAssinatura.Equals("Rps"))
-                        {
-                            var listListaRps = ConteudoXML.GetElementsByTagName("ListaRps");
-                            foreach (XmlNode nodeListaRps in listListaRps)
-                            {
-                                var elementListaRps = (XmlElement)nodeListaRps;
-                                var elementRps = (XmlElement)elementListaRps.GetElementsByTagName("Rps")[0];
-                                var elementInfDeclaracao = (XmlElement)elementRps.GetElementsByTagName("InfDeclaracaoPrestacaoServico")[0];
-                                var id = elementInfDeclaracao.GetAttribute("Id").Replace("ID_", "");
-                                var elementSignatureValue = (XmlElement)elementRps.GetElementsByTagName("SignatureValue")[0];
-                                elementSignatureValue.SetAttribute("Id", "ID_ASSINATURA_" + id);
-                            }
-                        }
-                    }
-
                     AjustarXMLAposAssinado();
                 }
             }
@@ -171,16 +150,10 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Conteúdo do XML assinado.
         /// </summary>
-        public XmlDocument ConteudoXMLAssinado
+        public virtual XmlDocument ConteudoXMLAssinado
         {
             get
             {
-                if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF && Configuracoes.EncriptaTagAssinatura)
-                {
-                    var sh1 = Criptografia.GetSHA1HashData(ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText);
-                    ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
-
-                }
                 VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
                 VerificarAssinarXML(Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID);
 
