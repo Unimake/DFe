@@ -74,6 +74,7 @@ namespace TreinamentoDLL
             this.BtnEnvioLoteRPSAssincrono = new System.Windows.Forms.Button();
             this.BtnEnviarCancNFSe = new System.Windows.Forms.Button();
             this.GroupCTe = new System.Windows.Forms.GroupBox();
+            this.BtnEventoCTeEmDesacordo = new System.Windows.Forms.Button();
             this.BtnDesserializandoCTeOS = new System.Windows.Forms.Button();
             this.BtnCancInsucessoEntregaCTe = new System.Windows.Forms.Button();
             this.BtnInsucessoEntregaCTe = new System.Windows.Forms.Button();
@@ -108,7 +109,7 @@ namespace TreinamentoDLL
             this.BtnConsultarConfigUF = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.BtnConsultarGTIN = new System.Windows.Forms.Button();
-            this.BtnEventoCTeEmDesacordo = new System.Windows.Forms.Button();
+            this.BtnDistribuicaoDFeChNFe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -696,6 +697,17 @@ namespace TreinamentoDLL
             this.GroupCTe.TabStop = false;
             this.GroupCTe.Text = "CTe e CTeOS";
             // 
+            // BtnEventoCTeEmDesacordo
+            // 
+            this.BtnEventoCTeEmDesacordo.Location = new System.Drawing.Point(12, 526);
+            this.BtnEventoCTeEmDesacordo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoCTeEmDesacordo.Name = "BtnEventoCTeEmDesacordo";
+            this.BtnEventoCTeEmDesacordo.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoCTeEmDesacordo.TabIndex = 26;
+            this.BtnEventoCTeEmDesacordo.Text = "Evento de CTe em Desacordo";
+            this.BtnEventoCTeEmDesacordo.UseVisualStyleBackColor = true;
+            this.BtnEventoCTeEmDesacordo.Click += new System.EventHandler(this.BtnEventoCTeEmDesacordo_Click);
+            // 
             // BtnDesserializandoCTeOS
             // 
             this.BtnDesserializandoCTeOS.Location = new System.Drawing.Point(12, 482);
@@ -808,6 +820,7 @@ namespace TreinamentoDLL
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.BtnDistribuicaoDFeChNFe);
             this.groupBox5.Controls.Add(this.BtnImprimirSAT);
             this.groupBox5.Controls.Add(this.BtnImprimirCCe);
             this.groupBox5.Controls.Add(this.BtnTestarConexaoInternet);
@@ -1089,16 +1102,16 @@ namespace TreinamentoDLL
             this.BtnConsultarGTIN.UseVisualStyleBackColor = true;
             this.BtnConsultarGTIN.Click += new System.EventHandler(this.BtnConsultarGTIN_Click);
             // 
-            // BtnEventoCTeEmDesacordo
+            // BtnDistribuicaoDFeChNFe
             // 
-            this.BtnEventoCTeEmDesacordo.Location = new System.Drawing.Point(12, 526);
-            this.BtnEventoCTeEmDesacordo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnEventoCTeEmDesacordo.Name = "BtnEventoCTeEmDesacordo";
-            this.BtnEventoCTeEmDesacordo.Size = new System.Drawing.Size(296, 35);
-            this.BtnEventoCTeEmDesacordo.TabIndex = 26;
-            this.BtnEventoCTeEmDesacordo.Text = "Evento de CTe em Desacordo";
-            this.BtnEventoCTeEmDesacordo.UseVisualStyleBackColor = true;
-            this.BtnEventoCTeEmDesacordo.Click += new System.EventHandler(this.BtnEventoCTeEmDesacordo_Click);
+            this.BtnDistribuicaoDFeChNFe.Location = new System.Drawing.Point(11, 920);
+            this.BtnDistribuicaoDFeChNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDistribuicaoDFeChNFe.Name = "BtnDistribuicaoDFeChNFe";
+            this.BtnDistribuicaoDFeChNFe.Size = new System.Drawing.Size(296, 37);
+            this.BtnDistribuicaoDFeChNFe.TabIndex = 33;
+            this.BtnDistribuicaoDFeChNFe.Text = "Distribuição DFe por chNFE";
+            this.BtnDistribuicaoDFeChNFe.UseVisualStyleBackColor = true;
+            this.BtnDistribuicaoDFeChNFe.Click += new System.EventHandler(this.BtnDistribuicaoDFeChNFe_Click);
             // 
             // FormTestes
             // 
@@ -1211,6 +1224,7 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnImprimirCCe;
         private System.Windows.Forms.Button BtnImprimirSAT;
         private System.Windows.Forms.Button BtnEventoCTeEmDesacordo;
+        private System.Windows.Forms.Button BtnDistribuicaoDFeChNFe;
     }
 }
 

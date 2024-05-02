@@ -5865,5 +5865,103 @@ namespace TreinamentoDLL
                     break;
             }
         }
+
+        private void BtnDistribuicaoDFeChNFe_Click(object sender, EventArgs e)
+        {
+            var chaveNFe = "41240276416890000189558950047230601397793171";
+
+            #region Se a nota não tiver sido manifestada, pelo menos ciência, manifestar para conseguir fazer o download
+
+            var xmlManif = new Unimake.Business.DFe.Xml.NFe.EnvEvento
+            {
+                Versao = "1.00",
+                IdLote = "000000000000001",
+                Evento = new List<Unimake.Business.DFe.Xml.NFe.Evento> {
+                    new Unimake.Business.DFe.Xml.NFe.Evento
+                    {
+                        Versao = "1.00",
+                        InfEvento = new Unimake.Business.DFe.Xml.NFe.InfEvento(new Unimake.Business.DFe.Xml.NFe.DetEventoManif
+                        {
+                            Versao = "1.00",
+                            DescEvento = "Ciencia da Operacao",
+                        })
+                        {
+                            COrgao = UFBrasil.AN,
+                            ChNFe = chaveNFe,
+                            CNPJ = "06117473000150",
+                            DhEvento = DateTime.Now,
+                            TpEvento = TipoEventoNFe.ManifestacaoCienciaOperacao,
+                            NSeqEvento = 1,
+                            VerEvento = "1.00",
+                            TpAmb = TipoAmbiente.Producao
+                        }
+                    }
+                }
+            };
+
+            var configManifestacao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                CertificadoArquivo = @"d:\projetos\unimake_pv.pfx",
+                CertificadoSenha = "12345678"
+            };
+
+            var recepcaoEvento = new Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento(xmlManif, configManifestacao);
+            recepcaoEvento.Executar();
+
+            //Gravar o XML de distribuição do evento
+            if (recepcaoEvento.Result.CStat == 128) //128 = Lote de evento processado com sucesso
+            {
+                switch (recepcaoEvento.Result.RetEvento[0].InfEvento.CStat)
+                {
+                    case 135: //Evento homologado com vinculação da respectiva NFe
+                        recepcaoEvento.GravarXmlDistribuicao(@"c:\testenfe\");
+                        break;
+
+                    default: //Evento rejeitado
+                        //Executar as ações necessárias
+                        break;
+                }
+            }
+
+            #endregion
+
+            #region Fazer a consulta e o download, depois da nota já manifestada
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                CertificadoArquivo = @"d:\projetos\unimake_pv.pfx",
+                CertificadoSenha = "12345678"
+            };
+
+            var xmlConsulta = new XmlNFe.DistDFeInt
+            {
+                Versao = "1.01",
+                TpAmb = TipoAmbiente.Producao,
+                CNPJ = "06117473000150",
+                CUFAutor = UFBrasil.PR,
+                ConsChNFe = new ConsChNFe
+                {
+                    ChNFe = chaveNFe
+                }
+            };
+
+            var distribuicaoDFe = new ServicoNFe.DistribuicaoDFe(xmlConsulta, configuracao);
+            distribuicaoDFe.Executar();
+
+            if (distribuicaoDFe.Result.CStat == 138) // Documentos localizados e 137 = Não tem documentos
+            {
+                var folder = @"c:\testenfe\doczip";
+
+                //Salvar XML o XML em uma pasta
+                distribuicaoDFe.GravarXMLDocZIP(folder, true);
+
+                //String do XML Baixado, só salvar no banco de dados
+                var xmlBaixado = distribuicaoDFe.ProcNFes[0].GerarXML().OuterXml;
+            }
+
+            #endregion
+        }
     }
 }
