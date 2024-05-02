@@ -21,7 +21,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
     public abstract class ServicoBase : Servicos.ServicoBase
     {
-
         /// <summary>
         /// Construtor
         /// </summary>
