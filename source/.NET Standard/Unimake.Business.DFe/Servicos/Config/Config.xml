@@ -1338,4 +1338,10 @@
 		<ArqConfig>AmambaiMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2930105">
+		<Nome>Senhor do Bonfim - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>SenhorDoBonfimBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
