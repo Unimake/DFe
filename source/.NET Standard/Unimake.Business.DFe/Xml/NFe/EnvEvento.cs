@@ -1006,18 +1006,24 @@ namespace Unimake.Business.DFe.Xml.NFe
         {
             base.WriteXml(writer);
 
-            writer.WriteRaw($@"
-            <descEvento>{DescEvento}</descEvento>
-            <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
-            <tpAutor>{TpAutorField}</tpAutor>
-            <verAplic>{VerAplic}</verAplic>
-            <dhEntrega>{DhEntregaField}</dhEntrega>
-            <nDoc>{NDoc}</nDoc>
-            <xNome>{XNome}</xNome>
-            <latGPS>{LatGPS}</latGPS>
-            <longGPS>{LongGPS}</longGPS>
-            <hashComprovante>{HashComprovante}</hashComprovante>
-            <dhHashComprovante>{DhHashComprovanteField}</dhHashComprovante>");
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{TpAutorField}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <dhEntrega>{DhEntregaField}</dhEntrega>
+                         <nDoc>{NDoc}</nDoc>
+                         <xNome>{XNome}</xNome>";
+
+            if (!string.IsNullOrEmpty(LatGPS) && !string.IsNullOrEmpty(LongGPS))
+            {
+                xml += $@"<latGPS>{LatGPS}</latGPS>
+                          <longGPS>{LongGPS}</longGPS>";
+            }
+
+            xml += $@"<hashComprovante>{HashComprovante}</hashComprovante>
+                      <dhHashComprovante>{DhHashComprovanteField}</dhHashComprovante>";
+
+            writer.WriteRaw(xml);
         }
 
         #endregion Public Methods
