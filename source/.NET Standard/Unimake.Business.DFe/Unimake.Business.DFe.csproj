@@ -410,6 +410,7 @@
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SarandiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
+		<None Remove="Servicos\Config\NFSe\SenhorDoBonfimBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SerraES.xml" />
 		<None Remove="Servicos\Config\NFSe\SertaozinhoSP.xml" />
@@ -864,6 +865,9 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SenhorDoBonfimBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColomboPR.xml" />
