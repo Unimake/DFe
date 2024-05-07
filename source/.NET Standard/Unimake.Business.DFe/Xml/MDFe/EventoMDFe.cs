@@ -927,6 +927,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
                         _detEvento = value is DetEventoMDFeRegPassagem ? value : new DetEventoMDFeRegPassagem();
                         break;
 
+                    case TipoEventoMDFe.RegistroPassagemBRId:
+                        _detEvento = value is DetEventoMDFeRegPassagemAuto ? value : new DetEventoMDFeRegPassagemAuto();
+                        break;
+
                     case TipoEventoMDFe.ConfirmacaoServicoTransporte:
                         _detEvento = value is DetEventoConfirmaServMDFe ? value : new DetEventoConfirmaServMDFe();
                         break;
@@ -1489,6 +1493,183 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         [XmlElement("placa", Order = 1)]
         public string Placa { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoMDFeRegPassagemAuto")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEventoMDFeRegPassagemAuto")]
+    public class DetEventoMDFeRegPassagemAuto : EventoDetalhe
+    {
+        private EventoMDFeRegPassagemAuto _eventoMDFeRegPassagemAuto;
+
+        internal override void SetValue(PropertyInfo pi) => base.SetValue(pi);
+
+        [XmlElement(ElementName = "evMDFeRegPassagemAuto", Order = 0)]
+        public EventoMDFeRegPassagemAuto EventoMDFeRegPassagemAuto
+        {
+            get => _eventoMDFeRegPassagemAuto ?? (_eventoMDFeRegPassagemAuto = new EventoMDFeRegPassagemAuto());
+            set => _eventoMDFeRegPassagemAuto = value;
+        }
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EventoMDFeRegPassagemAuto.DescEvento;
+            set => EventoMDFeRegPassagemAuto.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string TpTransm
+        {
+            get => EventoMDFeRegPassagemAuto.TpTransm;
+            set => EventoMDFeRegPassagemAuto.TpTransm = value;
+        }
+
+        [XmlIgnore]
+        public string CUFTransito
+        {
+            get => EventoMDFeRegPassagemAuto.CUFTransito;
+            set => EventoMDFeRegPassagemAuto.CUFTransito = value;
+        }
+
+        [XmlIgnore]
+        public string CIdEquip
+        {
+            get => EventoMDFeRegPassagemAuto.CIdEquip;
+            set => EventoMDFeRegPassagemAuto.CIdEquip = value;
+
+        }
+
+        [XmlIgnore]
+        public string XIdEquip
+        {
+            get => EventoMDFeRegPassagemAuto.XIdEquip;
+            set => EventoMDFeRegPassagemAuto.XIdEquip = value;
+        }
+
+        [XmlIgnore]
+        public string TpEquip
+        {
+            get => EventoMDFeRegPassagemAuto.TpEquip;
+            set => EventoMDFeRegPassagemAuto.TpEquip = value;
+        }
+
+        [XmlIgnore]
+        public string Placa
+        {
+            get => EventoMDFeRegPassagemAuto.Placa;
+            set => EventoMDFeRegPassagemAuto.Placa = value;
+        }
+
+        [XmlIgnore]
+        public string TpSentido
+        {
+            get => EventoMDFeRegPassagemAuto.TpSentido;
+            set => EventoMDFeRegPassagemAuto.TpSentido = value;
+        }
+
+        [XmlIgnore]
+        public string DhPass
+        {
+            get => EventoMDFeRegPassagemAuto.DhPass;
+            set => EventoMDFeRegPassagemAuto.DhPass = value;
+        }
+
+        [XmlIgnore]
+        public string Latitude
+        {
+            get => EventoMDFeRegPassagemAuto.Latitude ;
+            set => EventoMDFeRegPassagemAuto.Latitude = value;
+        }
+
+        [XmlIgnore]
+        public string Longitude
+        {
+            get => EventoMDFeRegPassagemAuto.Longitude;
+            set => EventoMDFeRegPassagemAuto.Longitude = value;
+        }
+
+
+        [XmlIgnore]
+        public string NSU
+        {
+            get => EventoMDFeRegPassagemAuto.NSU;
+            set => EventoMDFeRegPassagemAuto.NSU = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evMDFeRegPassagemAuto>
+                <descEvento>{DescEvento}</descEvento>
+                <tpTransm>{TpTransm}</tpTransm>
+                <infPass>
+                <cUFTransito>{CUFTransito}</cUFTransito>
+                <cIdEquip>{CIdEquip}</cIdEquip>
+                <xIdEquip>{XIdEquip}</xIdEquip>
+                <tpEquip>{TpEquip}</tpEquip>
+                <placa>{Placa}</placa>
+                <tpSentido>{TpSentido}</tpSentido>
+                <dhPass>{DhPass}</dhPass>
+                <latitude>{Latitude}</latitude>
+                <longitude>{Longitude}</longitude>
+                <NSU>{NSU}</NSU>
+                </infPass>
+                </evMDFeRegPassagemAuto>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoMDFeRegPassagemAuto")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "evMDFeRegPassagemAuto")]
+    public class EventoMDFeRegPassagemAuto : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Registro de Passagem Automático";
+                
+        [XmlElement("tpTransm", Order = 1)]
+        public string TpTransm { get; set; }
+
+        [XmlElement("cUFTransito", Order = 1)]
+        public string CUFTransito { get; set; }
+
+        [XmlElement("cIdEquip", Order = 1)]
+        public string CIdEquip { get; set; }
+
+        [XmlElement("xIdEquip", Order = 1)]
+        public string XIdEquip { get; set; }
+
+        [XmlElement("tpEquip", Order = 1)]
+        public string TpEquip { get; set; }        
+
+        [XmlElement("placa", Order = 1)]
+        public string Placa { get; set; }
+
+        [XmlElement("tpSentido", Order = 1)]
+        public string TpSentido { get; set; }
+
+        [XmlElement("dhPass", Order = 1)]
+        public string DhPass { get; set; }
+
+        [XmlElement("latitude", Order = 1)]
+        public string Latitude { get; set; }
+
+        [XmlElement("longitude", Order = 1)]
+        public string Longitude { get; set; }
+
+        [XmlElement("NSU", Order = 1)]
+        public string NSU { get; set; }
     }
 
 #if INTEROP

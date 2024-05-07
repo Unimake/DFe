@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsSitMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<tpAmb>1</tpAmb>
+	<verAplic>RS20230927085313</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>Autorizado o uso do MDF-e</xMotivo>
+	<cUF>31</cUF>
+	<protMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<infProt Id="MDFe931211111111111">
+			<tpAmb>1</tpAmb>
+			<verAplic>RS20240408102526</verAplic>
+			<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+			<dhRecbto>2024-05-03T18:34:14-03:00</dhRecbto>
+			<nProt>931111111111111</nProt>
+			<digVal>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do MDF-e</xMotivo>
+		</infProt>
+	</protMDFe>
+	<procEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID51062031240599999999999999999999999999999999999999001">
+				<cOrgao>93</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>00000000000000</CNPJ>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<dhEvento>2024-05-04T08:30:36-03:00</dhEvento>
+				<tpEvento>510620</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evMDFeRegPassagemAuto xmlns="http://www.portalfiscal.inf.br/mdfe">
+						<descEvento>Registro de Passagem Automático</descEvento>
+						<tpTransm>N</tpTransm>
+						<infPass>
+							<cUFTransito>31</cUFTransito>
+							<cIdEquip>000000000000504</cIdEquip>
+							<xIdEquip>P4_SAOGONCALODOSAPUCAI</xIdEquip>
+							<tpEquip>2</tpEquip>
+							<placa>GVK9D79</placa>
+							<tpSentido>I</tpSentido>
+							<dhPass>2024-05-04T08:30:32-03:00</dhPass>
+							<latitude>-21.970441</latitude>
+							<longitude>-45.631188</longitude>
+							<NSU>000000111111111</NSU>
+						</infPass>
+					</evMDFeRegPassagemAuto>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID5106203124059999999999999999999999999999999999999901">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID000000000000000">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20230927085804</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<tpEvento>510620</tpEvento>
+				<xEvento>Registro de Passagem Automático</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2024-05-04T08:30:36-03:00</dhRegEvento>
+				<nProt>931111111111111</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+	<procEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID51062031240599999999999999999999999999999999999999002">
+				<cOrgao>93</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>00000000000000</CNPJ>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<dhEvento>2024-05-05T20:58:57-03:00</dhEvento>
+				<tpEvento>510620</tpEvento>
+				<nSeqEvento>2</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evMDFeRegPassagemAuto xmlns="http://www.portalfiscal.inf.br/mdfe">
+						<descEvento>Registro de Passagem Automático</descEvento>
+						<tpTransm>N</tpTransm>
+						<infPass>
+							<cUFTransito>31</cUFTransito>
+							<cIdEquip>000000000000504</cIdEquip>
+							<xIdEquip>P4_SAOGONCALODOSAPUCAI</xIdEquip>
+							<tpEquip>2</tpEquip>
+							<placa>GVK9D79</placa>
+							<tpSentido>I</tpSentido>
+							<dhPass>2024-05-05T20:58:54-03:00</dhPass>
+							<latitude>-21.970441</latitude>
+							<longitude>-45.631188</longitude>
+							<NSU>000000111111111</NSU>
+						</infPass>
+					</evMDFeRegPassagemAuto>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID5106203124059999999999999999999999999999999999999902">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID000000000000000">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20230927085804</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<tpEvento>510620</tpEvento>
+				<xEvento>Registro de Passagem Automático</xEvento>
+				<nSeqEvento>2</nSeqEvento>
+				<dhRegEvento>2024-05-05T20:58:57-03:00</dhRegEvento>
+				<nProt>931111111111111</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+	<procEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID51062031240599999999999999999999999999999999999999003">
+				<cOrgao>93</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>00000000000000</CNPJ>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<dhEvento>2024-05-06T11:05:38-03:00</dhEvento>
+				<tpEvento>510620</tpEvento>
+				<nSeqEvento>3</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evMDFeRegPassagemAuto xmlns="http://www.portalfiscal.inf.br/mdfe">
+						<descEvento>Registro de Passagem Automático</descEvento>
+						<tpTransm>N</tpTransm>
+						<infPass>
+							<cUFTransito>31</cUFTransito>
+							<cIdEquip>000000000000504</cIdEquip>
+							<xIdEquip>P4_SAOGONCALODOSAPUCAI</xIdEquip>
+							<tpEquip>2</tpEquip>
+							<placa>GVK9D79</placa>
+							<tpSentido>I</tpSentido>
+							<dhPass>2024-05-06T11:05:35-03:00</dhPass>
+							<latitude>-21.970441</latitude>
+							<longitude>-45.631188</longitude>
+							<NSU>000000111111111</NSU>
+						</infPass>
+					</evMDFeRegPassagemAuto>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID5106203124059999999999999999999999999999999999999903">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID000000000000000">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20230927085804</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<tpEvento>510620</tpEvento>
+				<xEvento>Registro de Passagem Automático</xEvento>
+				<nSeqEvento>3</nSeqEvento>
+				<dhRegEvento>2024-05-06T11:05:38-03:00</dhRegEvento>
+				<nProt>931111111111111</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+	<procEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+		<eventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID51062031240599999999999999999999999999999999999999003">
+				<cOrgao>93</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>00000000000000</CNPJ>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<dhEvento>2024-05-06T11:05:38-03:00</dhEvento>
+				<tpEvento>510620</tpEvento>
+				<nSeqEvento>3</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evMDFeRegPassagemAuto xmlns="http://www.portalfiscal.inf.br/mdfe">
+						<descEvento>Registro de Passagem Automático</descEvento>
+						<tpTransm>N</tpTransm>
+						<infPass>
+							<cUFTransito>31</cUFTransito>
+							<cIdEquip>000000000000504</cIdEquip>
+							<xIdEquip>P4_SAOGONCALODOSAPUCAI</xIdEquip>
+							<tpEquip>2</tpEquip>
+							<placa>GVK9D79</placa>
+							<tpSentido>I</tpSentido>
+							<dhPass>2024-05-06T11:05:35-03:00</dhPass>
+							<latitude>-21.970441</latitude>
+							<longitude>-45.631188</longitude>
+							<NSU>000000111111111</NSU>
+						</infPass>
+					</evMDFeRegPassagemAuto>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID5106203124059999999999999999999999999999999999999903">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxx</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+			<infEvento Id="ID000000000000000">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20230927085804</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31240599999999999999999999999999999999999999</chMDFe>
+				<tpEvento>510620</tpEvento>
+				<xEvento>Registro de Passagem Automático</xEvento>
+				<nSeqEvento>3</nSeqEvento>
+				<dhRegEvento>2024-05-06T11:05:38-03:00</dhRegEvento>
+				<nProt>931111111111111</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+</retConsSitMDFe>
