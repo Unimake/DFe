@@ -23,6 +23,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="proxy">Proxy a ser utilizado para testar a conexão</param>
         /// <returns>true = Tem conexão com a internet</returns>
         public static bool HasInternetConnection(IWebProxy proxy) => HasInternetConnection(proxy, 3);
+        //Quando o Marcelo liberar novos NUGET, passar a utilizar este Unimake.Net.Utility.HasInternetConnection(proxy, 3)
 
         /// <summary>
         /// Verifica a conexão com a internet e retorna verdadeiro se conectado com sucesso
@@ -51,7 +52,6 @@ namespace Unimake.Business.DFe.Utility
             }
 
             var retorno = true;
-
             var timeoutMilleSeconds = (timeoutInSeconds * 1000);
 
             foreach (var url in testUrls)
