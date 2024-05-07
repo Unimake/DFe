@@ -316,7 +316,7 @@
 		<Nome>Porto Seguro - BA</Nome>
 		<UF>BA</UF>
 		<ArqConfig>PortoSeguroBA.xml</ArqConfig>
-		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4202305">
 		<Nome>Biguaçu - SC</Nome>
