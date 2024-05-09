@@ -6,6 +6,9 @@ using System.Runtime.InteropServices;
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Text;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
@@ -23,6 +26,25 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("infInut")]
         public InfInut InfInut { get; set; }
+
+        /// <summary>
+        /// Desserializar o arquivo XML no objeto RetInutNFe
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML</param>
+        /// <returns>Objeto do XML</returns>
+        public RetInutNFe LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<RetInutNFe>(doc);
+        }
+
+        /// <summary>
+        /// Desserializar a string do XML RetInutNFe no objeto RetInutNFe
+        /// </summary>
+        /// <param name="xml">string do XML</param>
+        /// <returns>Objeto da RetInutNFe</returns>
+        public RetInutNFe LoadFromXML(string xml) => XMLUtility.Deserializar<RetInutNFe>(xml);
     }
 
 #if INTEROP
