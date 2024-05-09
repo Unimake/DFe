@@ -76,6 +76,54 @@ namespace Unimake.DFe.Test.NFCe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarNFCeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
+            var xml = MontaXmlEnviNFe(ufBrasil, tipoAmbiente);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                CSC = "121233",
+                CSCIDToken = 1
+            };
+
+            var autorizacao = new Autorizacao(xml, configuracao);
+            autorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void EnviarNFCeSincronoString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xml = MontaXmlEnviNFe(ufBrasil, tipoAmbiente);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                CSC = "121233",
+                CSCIDToken = 1
+            };
+
+            var autorizacao = new Autorizacao(xml.GerarXML().OuterXml, configuracao);
+            autorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+        }
+
+        private EnviNFe MontaXmlEnviNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
             var xml = new EnviNFe
             {
                 Versao = "4.00",
@@ -297,22 +345,7 @@ namespace Unimake.DFe.Test.NFCe
                     }
             };
 
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.NFCe,
-                TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital,
-                CSC = "121233",
-                CSCIDToken = 1
-            };
-
-            var autorizacao = new Autorizacao(xml, configuracao);
-            autorizacao.Executar();
-
-            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-            Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            return xml;
         }
     }
 }

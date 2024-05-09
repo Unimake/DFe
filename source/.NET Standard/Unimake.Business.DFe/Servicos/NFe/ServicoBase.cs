@@ -19,16 +19,10 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
     public abstract class ServicoBase : Servicos.ServicoBase
     {
-        #region Protected Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
         protected ServicoBase() : base() { }
-
-        #endregion Protected Constructors
-
-        #region Protected Methods
 
         /// <summary>
         /// Definir configurações
@@ -56,10 +50,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         protected override void XmlValidarConteudo() { }
 
-        #endregion Protected Methods
-
-        #region Public Methods
-
         /// <summary>
         /// Executar o serviço
         /// </summary>       
@@ -68,14 +58,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
         public override void Executar()
         {
-            if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) &&
-               !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-            {
-                AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
-            }
-
-            AjustarXMLAposAssinado();
-
             XmlValidar();
 
             base.Executar();
@@ -140,7 +122,5 @@ namespace Unimake.Business.DFe.Servicos.NFe
             stream.Write(byteData, 0, byteData.Length);
             stream.Close();
         }
-
-        #endregion Public Methods
     }
 }

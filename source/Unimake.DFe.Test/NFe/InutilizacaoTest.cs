@@ -116,5 +116,52 @@ namespace Unimake.DFe.Test.NFe
                 }
             }
         }
+
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void InutilizarNumeroNFeString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string cnpj = "01111222333444", string cpf = "")
+        {
+            var xml = new InutNFe
+            {
+                Versao = "4.00",
+                InfInut = new InutNFeInfInut
+                {
+                    Ano = "20",
+                    CNPJ = cnpj,
+                    CPF = cpf,
+                    CUF = ufBrasil,
+                    Mod = ModeloDFe.NFe,
+                    NNFIni = 1,
+                    NNFFin = 2,
+                    Serie = 1,
+                    TpAmb = tipoAmbiente,
+                    XJust = "Justificativa da inutilização de teste"
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var inutilizacao = new Inutilizacao(xml.GerarXML().OuterXml, configuracao);
+            inutilizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            if (inutilizacao.Result != null)
+            {
+                Assert.True(inutilizacao.Result.InfInut.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+                Assert.True(inutilizacao.Result.InfInut.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+                if (inutilizacao.Result.InfInut.Id != null)
+                {
+                    Assert.True(inutilizacao.Result.InfInut.Id.Equals(xml.InfInut.Id), "Web-service retornou uma chave da NFe diferente da enviada na consulta.");
+                }
+            }
+        }
+
     }
 }

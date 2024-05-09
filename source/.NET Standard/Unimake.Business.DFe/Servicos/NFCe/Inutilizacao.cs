@@ -28,6 +28,13 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// <summary>
         /// Construtor
         /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public Inutilizacao(string conteudoXML, Configuracao configuracao) : base(conteudoXML, configuracao) { }
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
         public Inutilizacao() : base() { }
 
         #endregion Public Constructors
