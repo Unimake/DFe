@@ -20,16 +20,10 @@ namespace Unimake.Business.DFe
 #endif
     public class ValidarSchema
     {
-        #region Private Properties
-
         /// <summary>
         /// Erros ocorridos na validação
         /// </summary>
         private string ErroValidacao { get; set; }
-
-        #endregion Private Properties
-
-        #region Private Methods
 
         /// <summary>
         /// Converte String para Stream
@@ -151,9 +145,9 @@ namespace Unimake.Business.DFe
         /// </summary>
         /// <param name="conteudoXML">Conteúdo do XML as ser validado</param>
         /// <param name="settings">Parâmetros para validação</param>
-        private void ValidateXMLAgainstSchema(XmlDocument conteudoXML, XmlReaderSettings settings)
+        private void ValidateXMLAgainstSchema(string conteudoXML, XmlReaderSettings settings)
         {
-            using (var xmlReader = XmlReader.Create(new StringReader(conteudoXML.OuterXml), settings))
+            using (var xmlReader = XmlReader.Create(new StringReader(conteudoXML), settings))
             {
                 ErroValidacao = "";
 
@@ -170,10 +164,6 @@ namespace Unimake.Business.DFe
             }
         }
 
-        #endregion Private Methods
-
-        #region Public Properties
-
         /// <summary>
         /// Código do erro em caso de falhas na validação
         /// </summary>
@@ -188,10 +178,6 @@ namespace Unimake.Business.DFe
         /// Se a validação foi bem sucedida (true/false)
         /// </summary>
         public bool Success { get; private set; }
-
-        #endregion Public Properties
-
-        #region Public Methods
 
         /// <summary>
         /// Método responsável por validar a estrutura do XML de acordo com o schema passado por parâmetro
@@ -250,7 +236,7 @@ namespace Unimake.Business.DFe
 
                 settings.ValidationEventHandler += new ValidationEventHandler(Reader_ValidationEventHandler);
 
-                ValidateXMLAgainstSchema(conteudoXML, settings);
+                ValidateXMLAgainstSchema(conteudoXML.OuterXml, settings);
             }
             catch (Exception ex)
             {
@@ -306,11 +292,10 @@ namespace Unimake.Business.DFe
         {
             var doc = new XmlDocument();
             doc.LoadXml(xml);
+
             Validar(doc, arqSchema, targetNS);
         }
-
 #endif
 
-        #endregion Public Methods
     }
 }

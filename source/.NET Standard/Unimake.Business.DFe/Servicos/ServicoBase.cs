@@ -21,13 +21,7 @@ namespace Unimake.Business.DFe.Servicos
 #endif
     public abstract class ServicoBase
     {
-        #region Private Fields
-
-        private XmlDocument _conteudoXML;
-
-        #endregion Private Fields
-
-        #region Private Methods
+        private XmlDocument _ConteudoXML;
 
         /// <summary>
         /// Verifica se o XML está assinado, se não estiver assina. Só faz isso para XMLs que tem tag de assinatura, demais ele mantem como está, sem assinar.
@@ -51,17 +45,13 @@ namespace Unimake.Business.DFe.Servicos
             }
         }
 
-        #endregion Private Methods
-
-        #region Protected Properties
-
         /// <summary>
         /// Conteúdo do XML, pode ou não estar assinado. Esta propriedade é utilizada em tempo de processamento.
         /// Utilize as propriedades ConteudoXMLOriginal ou ConteudoXMLAssinado para recuperar o que você deseja fora da classe.
         /// </summary>
         protected XmlDocument ConteudoXML
         {
-            get => _conteudoXML;
+            get => _ConteudoXML;
             set
             {
                 if (ConteudoXMLOriginal == null)
@@ -70,22 +60,14 @@ namespace Unimake.Business.DFe.Servicos
                     ConteudoXMLOriginal.LoadXml(value?.OuterXml);
                 }
 
-                _conteudoXML = value;
+                _ConteudoXML = value;
             }
         }
-
-        #endregion Protected Properties
-
-        #region Protected Constructors
 
         /// <summary>
         /// Construtor
         /// </summary>
         protected ServicoBase() { }
-
-        #endregion Protected Constructors
-
-        #region Protected Methods
 
         /// <summary>
         /// Este método é uma possibilidade de fazer ajustes no XML depois de assinado, pois ele é executado assim que a assinatura é feita. Basta implementar ele nas heranças.
@@ -106,10 +88,6 @@ namespace Unimake.Business.DFe.Servicos
         /// Validar o conteúdo das tags do XML, alguns validações manuais que o schema não faz. Vamos implementando novas regras na medida da necessidade de cada serviço.
         /// </summary>
         protected abstract void XmlValidarConteudo();
-
-        #endregion Protected Methods
-
-        #region Protected Internal Methods
 
         /// <summary>
         /// Inicializa configurações, parâmetros e propriedades para execução do serviço.
@@ -138,9 +116,6 @@ namespace Unimake.Business.DFe.Servicos
             _ = ConteudoXMLAssinado;
         }
 
-        #endregion Protected Internal Methods
-
-        #region Public Properties
 
         /// <summary>
         /// Configurações diversas para consumir os serviços
@@ -198,15 +173,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public Stream RetornoStream { get; set; }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         static ServicoBase() => AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.AssemblyResolve;
-
-        #endregion Public Constructors
-
-        #region Public Methods
 
         /// <summary>
         /// Executar o serviço para consumir o web-service
@@ -306,7 +273,5 @@ namespace Unimake.Business.DFe.Servicos
         [ComVisible(false)]
 #endif
         public abstract void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML);
-
-        #endregion Public Methods
     }
 }

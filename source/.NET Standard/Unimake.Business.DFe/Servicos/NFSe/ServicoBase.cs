@@ -178,35 +178,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// </summary>
         protected override void XmlValidarConteudo() { }
 
-        /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o webservice
-        /// </summary>
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public override void Executar()
-        {
-
-            if (Configuracoes.UsaCertificadoDigital && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
-            {
-                if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
-                {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
-                }
-
-                if (!string.IsNullOrWhiteSpace(Configuracoes.TagLoteAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagLoteAssinatura))
-                {
-                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
-                }
-            }
-
-            AjustarXMLAposAssinado();
-
-            XmlValidar();
-
-            base.Executar();
-        }
-
 #if INTEROP
 
         /// <summary>
@@ -246,6 +217,35 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
 #endif
+
+        /// <summary>
+        /// Executa o serviço: Assina o XML, valida e envia para o webservice
+        /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void Executar()
+        {
+
+            if (Configuracoes.UsaCertificadoDigital && Configuracoes.NaoAssina == null && Configuracoes.NaoAssina != Configuracoes.TipoAmbiente)
+            {
+                if (!string.IsNullOrWhiteSpace(Configuracoes.TagAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagAssinatura))
+                {
+                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagAssinatura, Configuracoes.TagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
+                }
+
+                if (!string.IsNullOrWhiteSpace(Configuracoes.TagLoteAssinatura) && !AssinaturaDigital.EstaAssinado(ConteudoXML, Configuracoes.TagLoteAssinatura))
+                {
+                    AssinaturaDigital.Assinar(ConteudoXML, Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id");
+                }
+            }
+
+            AjustarXMLAposAssinado();
+
+            XmlValidar();
+
+            base.Executar();
+        }
 
 
         /// <summary>
