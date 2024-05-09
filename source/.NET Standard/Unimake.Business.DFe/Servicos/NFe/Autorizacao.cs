@@ -146,11 +146,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
-        /// <summary>
-        /// Efetuar ajustes diversos no XML após o mesmo ter sido assinado.
-        /// </summary>
-        protected override void AjustarXMLAposAssinado() => EnviNFe = new EnviNFe().LerXML<EnviNFe>(ConteudoXML);
-
         #endregion Protected Methods
 
         #region Public Properties
@@ -427,8 +422,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
         public override void Executar()
         {
             base.Executar();
-
             MudarConteudoTagRetornoXMotivo();
+
+            EnviNFe = EnviNFe.LerXML<EnviNFe>(ConteudoXML);            
         }
 
 #if INTEROP
