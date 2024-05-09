@@ -1,8 +1,8 @@
 //Criar as configurações mínimas necessárias para consumir o serviço
 oConfiguracao is Unimake.Business.DFe.Servicos.Configuracao()
 oConfiguracao.TipoDFe				= TipoDFe.NFCe
-oConfiguracao.CertificadoArquivo	= "C:\Projetos\certificados\UnimakePV.pfx"
-oConfiguracao.CertificadoSenha		= "12345678"
+oConfiguracao.CertificadoArquivo	= "C:\Users\Wandrey\Downloads\SW Comércio_123456.p12"
+oConfiguracao.CertificadoSenha		= "123456"
 
 //Criar tag inutNFe
 oInutNFe is Unimake.Business.DFe.XML.NFe.InutNFe
@@ -10,15 +10,15 @@ oInutNFe.Versao	= "4.00"
 
 //Criar tag infInut
 oInfInut			is Unimake.Business.DFe.XML.NFe.InutNFeInfInut
-oInfInut.Ano		= "19"
-oInfInut.CNPJ		= "06117473000150"
-oInfInut.CUF		= UFBrasil.PR
+oInfInut.Ano		= "24"
+oInfInut.CNPJ		= "36550752000173"
+oInfInut.CUF		= UFBrasil.PA
 oInfInut.Mod		= ModeloDFe.NFCe
-oInfInut.NNFIni		= 59972
-oInfInut.NNFFin		= 59972
+oInfInut.NNFIni		= 3552
+oInfInut.NNFFin		= 3552
 oInfInut.Serie		= 1
-oInfInut.TpAmb		= TipoAmbiente.Homologacao
-oInfInut.XJust		= "Justificativa da inutilizacao de teste"
+oInfInut.TpAmb		= TipoAmbiente.Producao
+oInfInut.XJust		= "Inutilização de numeração por erro no sequenciador de NF do software"
 
 oInutNFe.InfInut	= oInfInut
 
@@ -54,8 +54,27 @@ WHEN EXCEPTION IN
 		//oRetEvento Is Unimake.Business.DFe.XML.NFe.RetEvento <- oRecepcaoEvento.Result.GetRetEvento(I - 1)
 		oInutilizacao.GravarXmlDistribuicao("tmp\testenfe") // Grava o XML de distribuição					
 	ELSE
-		// Evento rejeitado
-		// Realizar as ações necessárias					
+		// Já existe pedido de Inutilização para esta sequencia, só vamos finalizar gerando o XML de distribuição
+		IF oRetInutNFe.InfInut.CStat = 563 
+			//info(oRetInutNFe.InfInut.CStat + " " + oRetInutNFe.InfInut.XMotivo)		
+			
+			oProcInutNFe is Unimake.Business.DFe.XML.NFe.ProcInutNFe
+			oProcInutNFe.InutNFe = oInutilizacao.ProcInutNFeResult.InutNFe
+			oProcInutNFe.RetInutNFe = oRetInutNFe
+			//Ajustar o CStat e XMotivo para o de homologado		
+			oProcInutNFe.RetInutNFe.InfInut.CStat				= 102
+			oProcInutNFe.RetInutNFe.InfInut.XMotivo				= "Inutilizacao de numero homologado"
+
+			//Gravar o XML de Distribuicao
+			xmlDistribuicao		is string	= oProcInutNFe.GerarXMLString()
+			nomeArqDistribuicao	is string	= oInutilizacao.ProcInutNFeResult.NomeArquivoDistribuicao
+			
+			fDelete("d:\testenfe\" + nomeArqDistribuicao)
+			fSaveText("d:\testenfe\" + nomeArqDistribuicao, xmlDistribuicao)
+		ELSE
+			// Outras rejeições
+			// Realizar as ações necessárias					
+		END
 	END
 DO
 	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
