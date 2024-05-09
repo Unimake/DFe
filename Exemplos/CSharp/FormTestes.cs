@@ -1198,8 +1198,12 @@ namespace TreinamentoDLL
                                             new XmlNFe.DetPag
                                             {
                                                 IndPag = IndicadorPagamento.PagamentoVista,
-                                                TPag = MeioPagamento.Dinheiro,
+                                                TPag = MeioPagamento.PagamentoInstantaneo,
                                                 VPag = 84.90,
+                                                Card = new Card()
+                                                {
+                                                    TpIntegra = TipoIntegracaoPagamento.PagamentoNaoIntegrado
+                                                }
                                             }
                                     }
                                 },
