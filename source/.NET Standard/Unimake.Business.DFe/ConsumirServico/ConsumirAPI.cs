@@ -93,6 +93,7 @@ namespace Unimake.Business.DFe
             var retornoXml = new XmlDocument();
             try
             {
+                HttpStatusCode = postData.StatusCode;
                 var stream = default(Stream);
                 retornoXml = TratarRetornoAPI.ReceberRetorno(ref apiConfig, postData, ref stream);
                 RetornoStream = stream != null ? stream : null;

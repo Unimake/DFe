@@ -46,7 +46,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarDadosCadastrais = new ConsultarDadosCadastrais(conteudoXML, configuracao);
-            consultarDadosCadastrais.Executar();
+            Assert.Multiple(() => consultarDadosCadastrais.Executar(), () => Assert.NotNull(consultarDadosCadastrais.RetornoWSString), () => Assert.NotNull(consultarDadosCadastrais.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarDadosCadastrais));
         }
     }
 }

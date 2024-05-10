@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var gerarNfse = new GerarNfse(conteudoXML, configuracao);
-            gerarNfse.Executar();
+            Assert.Multiple(() => gerarNfse.Executar(), () => Assert.NotNull(gerarNfse.RetornoWSString), () => Assert.NotNull(gerarNfse.RetornoWSXML), () => TestUtility.AnalisaResultado(gerarNfse));
         }
     }
 }

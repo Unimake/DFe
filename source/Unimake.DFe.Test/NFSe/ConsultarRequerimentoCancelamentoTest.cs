@@ -47,7 +47,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarRequerimentoCancelamento = new ConsultarRequerimentoCancelamento(conteudoXML, configuracao);
-            consultarRequerimentoCancelamento.Executar();
+            Assert.Multiple(() => consultarRequerimentoCancelamento.Executar(), () => Assert.NotNull(consultarRequerimentoCancelamento.RetornoWSString), () => Assert.NotNull(consultarRequerimentoCancelamento.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarRequerimentoCancelamento));
         }
     }
 }

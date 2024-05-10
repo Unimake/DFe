@@ -56,7 +56,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultaLote = new ConsultaLote(conteudoXML, configuracao);
-            consultaLote.Executar();
+            Assert.Multiple(() => consultaLote.Executar(), () => Assert.NotNull(consultaLote.RetornoWSString), () => Assert.NotNull(consultaLote.RetornoWSXML), () => TestUtility.AnalisaResultado(consultaLote));
         }
     }
 }

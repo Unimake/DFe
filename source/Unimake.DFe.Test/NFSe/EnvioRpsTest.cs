@@ -46,7 +46,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var envioRps = new EnvioRps(conteudoXML, configuracao);
-            envioRps.Executar();
+            Assert.Multiple(() => envioRps.Executar(), () => Assert.NotNull(envioRps.RetornoWSString), () => Assert.NotNull(envioRps.RetornoWSXML), () => TestUtility.AnalisaResultado(envioRps));
         }
     }
 }

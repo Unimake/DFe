@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Security;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFSe;
@@ -60,7 +62,11 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var cancelarNfse = new CancelarNfse(conteudoXML, configuracao);
-            cancelarNfse.Executar();
+
+             Assert.Multiple( () => cancelarNfse.Executar(),
+                              () => Assert.NotNull(cancelarNfse.RetornoWSString),
+                              () => Assert.NotNull(cancelarNfse.RetornoWSXML),
+                              () => TestUtility.AnalisaResultado(cancelarNfse));
         }
     }
 }

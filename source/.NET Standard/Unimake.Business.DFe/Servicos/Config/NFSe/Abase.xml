@@ -3,7 +3,7 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="2.01">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>http://testenfse.abase.com.br/webservice/nfsews.asmx</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/RecepcionarLoteRps</WebActionProducao>
@@ -22,7 +22,7 @@
     </RecepcionarLoteRps>   
     <CancelarNfse versao="2.01">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>http://testenfse.abase.com.br/webservice/nfsews.asmx</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/CancelaNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/CancelaNfse</WebActionProducao>
@@ -41,7 +41,7 @@
     </CancelarNfse>
     <ConsultarLoteRps versao="2.01">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>http://testenfse.abase.com.br/webservice/nfsews.asmx</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/ConsultaLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/ConsultaLoteRps</WebActionProducao>
@@ -60,7 +60,7 @@
     </ConsultarLoteRps>
 	<ConsultarNfsePorRps versao="2.01">
       <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>http://testenfse.abase.com.br/webservice/nfsews.asmx</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/ConsultaNfseRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/ConsultaNfseRps</WebActionProducao>
