@@ -160,8 +160,8 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>pedidoNFSeTomada</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
