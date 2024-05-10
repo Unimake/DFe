@@ -414,6 +414,11 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Recepcionar Lote Assincrono EFDReinf")]
         EFDReinfRecepcionarLoteAssincrono = 67,
 
+        /// <summary>
+        /// 68 - ESocial Informacoes Do Empregador S-1000
+        /// </summary>
+        [Description("ESocial Informacoes Do Empregador S-1000")]
+        ESocialInformacoesDoEmpregador = 69,
         #endregion
 
         #region Gerais
@@ -486,7 +491,11 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 11 - EFDReinf - Escrituração Fiscal Digital de Retenções e Outras Informações Fiscais
         /// </summary>
-        EFDReinf = 11
+        EFDReinf = 11,
+        /// <summary>
+        /// 12 - eSocial - Escrituração Digital das Obrigações Fiscais, Previdenciárias e Trabalhistas
+        /// </summary>
+        eSocial = 12
     }
 
     #endregion       
@@ -8676,6 +8685,148 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         GERTEC
     }
+
+    #endregion
+
+    #region eSocial
+
+    #region Indicativo indCoop
+
+    /// <summary>
+    /// eSocial - tag indCoop - Sua empresa realmente se enquadra como cooperativa?
+    /// NaoOptante = 0 - Não optante.
+    /// SimOptante = 1 - Optante.
+    /// </summary>
+    public enum indCoop
+    {
+        /// <summary>
+        /// 0 - Não optante.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoOptante = 0,
+        /// <summary>
+        /// 1 - Optante.
+        /// </summary>
+        [XmlEnum("1")]
+        SimOptante = 1,
+
+    }
+    #endregion
+
+    #region Indicativo indConstr
+
+    /// <summary>
+    /// eSocial - tag indConstr - Sua empresa realmente se enquadra no setor de construção civil?
+    /// NaoOptante = 0 - Não optante.
+    /// SimOptante = 1 - Optante.
+    /// </summary>
+    public enum indConstr
+    {
+        /// <summary>
+        /// 0 - Não optante.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoOptante = 0,
+        /// <summary>
+        /// 1 - Optante.
+        /// </summary>
+        [XmlEnum("1")]
+        SimOptante = 1,
+
+    }
+    #endregion
+
+    #region Indicativo indDesFolha
+
+    /// <summary>
+    /// eSocial - tag indDesFolha - Indica se a empresa desdobra a sua folha de pagamento. Desdobrar a folha significa separá-la em partes diferentes para processamento
+    /// NaoOptante = 0 - Não optante.
+    /// SimOptante = 1 - Optante.
+    /// </summary>
+    public enum indDesFolha
+    {
+        /// <summary>
+        /// 0 - Não optante. Não desdobra a folha de pagamento
+        /// </summary>
+        [XmlEnum("0")]
+        NaoOptante = 0,
+        /// <summary>
+        /// 1 - Optante. Desdobra a folha de pagamento
+        /// </summary>
+        [XmlEnum("1")]
+        SimOptante = 1,
+
+    }
+    #endregion
+
+    #region Indicativo indDesFolha
+
+    /// <summary>
+    /// eSocial - tag indOptRegEletron - Indica se a empresa optou pelo registro eletrônico de empregados.
+    /// NaoOptante = 0 - Não optante.
+    /// SimOptante = 1 - Optante.
+    /// </summary>
+    public enum indOptRegEletron
+    {
+        /// <summary>
+        /// 0 - Não optante. Não a empresa optou pelo registro eletrônico de empregados.
+        /// </summary>
+        [XmlEnum("0")]
+        NaoOptante = 0,
+        /// <summary>
+        /// 1 - Optante. A empresa optou pelo registro eletrônico de empregados.
+        /// </summary>
+        [XmlEnum("1")]
+        SimOptante = 1,
+
+    }
+    #endregion
+
+    #region Indicativo infoOrgInternacional
+
+    /// <summary>
+    /// eSocial - tag infoOrgInternacional - Utilizada para informar a participação da empresa em uma organização internacional.
+    /// NaoOptante = 0 - Não optante.
+    /// SimOptante = 1 - Optante.
+    /// </summary>
+    public enum infoOrgInternacional
+    {
+        /// <summary>
+        /// 0 - Não participa em uma organização internacional.
+        /// </summary>
+        [XmlEnum("0")]
+        Nao = 0,
+        /// <summary>
+        /// 1 - A empresa participa em uma organização internacional.
+        /// </summary>
+        [XmlEnum("1")]
+        Sim = 1,
+
+    }
+    #endregion
+
+    #region Indicativo indDesFolha
+
+    /// <summary>
+    /// eSocial - tag IndAcordoIsenMulta - Informa se a empresa tem um acordo internacional que a isenta de multas.
+    /// NaoOptante = 0 - Não optante.
+    /// SimOptante = 1 - Optante.
+    /// </summary>
+    public enum IndAcordoIsenMulta
+    {
+        /// <summary>
+        /// 0 - A empresa não possui um acordo internacional de isenção de multa. (Este é o cenário mais comum).
+        /// </summary>
+        [XmlEnum("0")]
+        Nao = 0,
+        /// <summary>
+        /// 1 - A empresa possui um acordo internacional que a isenta de multas previdenciárias.
+        /// </summary>
+        [XmlEnum("1")]
+        Sim = 1,
+
+    }
+    #endregion
 
     #endregion
 }

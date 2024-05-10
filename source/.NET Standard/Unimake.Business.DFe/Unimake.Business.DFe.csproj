@@ -2278,6 +2278,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Servicos\MFE\" />
+	  <Folder Include="Servicos\eSocial\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
