@@ -109,8 +109,8 @@ namespace Unimake.DFe.Test.NFCe
                 TipoDFe = TipoDFe.NFCe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital,
-                CSC = "121233",
-                CSCIDToken = 1
+                CSC = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG",
+                CSCIDToken = 2
             };
 
             var autorizacao = new Autorizacao(xml.GerarXML().OuterXml, configuracao);
@@ -143,20 +143,22 @@ namespace Unimake.DFe.Test.NFCe
                                         NatOp = "VENDA PRODUC.DO ESTABELEC",
                                         Mod = ModeloDFe.NFCe,
                                         Serie = 16,
-                                        NNF = 57962,
+                                        NNF = 57964,
                                         DhEmi = DateTime.Now,
                                         DhSaiEnt = DateTime.Now,
                                         TpNF = TipoOperacao.Saida,
-                                        IdDest = DestinoOperacao.OperacaoInterestadual,
+                                        IdDest = DestinoOperacao.OperacaoInterna,
                                         CMunFG = 4118402,
-                                        TpImp = FormatoImpressaoDANFE.NormalRetrato,
+                                        TpImp = FormatoImpressaoDANFE.NFCe,
                                         TpEmis = TipoEmissao.Normal,
                                         TpAmb = tipoAmbiente,
                                         FinNFe = FinalidadeNFe.Normal,
                                         IndFinal = SimNao.Sim,
                                         IndPres = IndicadorPresenca.OperacaoPresencial,
                                         ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                                        VerProc = "TESTE 1.00"
+                                        VerProc = "TESTE 1.00",
+                                        //XJust = "problemas na internet",
+                                        //DhCont = DateTime.Now
                                     },
                                     Emit = new Emit
                                     {
@@ -181,21 +183,20 @@ namespace Unimake.DFe.Test.NFCe
                                     },
                                     Dest = new Dest
                                     {
-                                        CNPJ = "02131087000161",
+                                        CNPJ = "01761135000132",
                                         XNome = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
                                         EnderDest = new EnderDest
                                         {
-                                            XLgr = "AVENIDA DE TESTE DE NFE",
-                                            Nro = "82",
-                                            XBairro = "CAMPOS ELISEOS",
-                                            CMun = 3543402,
-                                            XMun = "RIBEIRAO PRETO",
-                                            UF = UFBrasil.SP,
-                                            CEP = "14080000",
-                                            Fone = "01666994533"
+                                            XLgr = "AV. COMENDADOR NORBERTO MARCONDES",
+                                            Nro = "2156",
+                                            XBairro = "CENTRO",
+                                            CMun = 4104303,
+                                            XMun = "CAMPO MOURAO",
+                                            UF = UFBrasil.PR,
+                                            CEP = "87703100",
+                                            Fone = "04431414900"
                                         },
-                                        IndIEDest = IndicadorIEDestinatario.ContribuinteICMS,
-                                        IE = "124815618820",
+                                        IndIEDest = IndicadorIEDestinatario.NaoContribuinte,
                                         Email = "testenfe@hotmail.com"
                                     },
                                     Det = new List<Det> {
@@ -206,9 +207,9 @@ namespace Unimake.DFe.Test.NFCe
                                             {
                                                 CProd = "01042",
                                                 CEAN = "SEM GTIN",
-                                                XProd = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                                                XProd = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
                                                 NCM = "84714900",
-                                                CFOP = "6101",
+                                                CFOP = "5101",
                                                 UCom = "LU",
                                                 QCom = 1.00m,
                                                 VUnCom = 84.9000000000M,
@@ -226,11 +227,10 @@ namespace Unimake.DFe.Test.NFCe
                                                 VTotTrib = 12.63,
                                                 ICMS = new ICMS
                                                 {
-                                                    ICMSSN101 = new ICMSSN101
+                                                    ICMSSN102 = new ICMSSN102
                                                     {
                                                         Orig = OrigemMercadoria.Nacional,
-                                                        PCredSN = 2.8255,
-                                                        VCredICMSSN = 2.40
+                                                        CSOSN = "102"
                                                     }
                                                 },
                                                 PIS = new PIS
@@ -284,37 +284,7 @@ namespace Unimake.DFe.Test.NFCe
                                     },
                                     Transp = new Transp
                                     {
-                                        ModFrete = ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF,
-                                        Vol = new List<Vol>
-                                        {
-                                            new Vol
-                                            {
-                                                QVol = 1,
-                                                Esp = "LU",
-                                                Marca = "UNIMAKE",
-                                                PesoL = 0.000,
-                                                PesoB = 0.000
-                                            }
-                                        }
-                                    },
-                                    Cobr = new Unimake.Business.DFe.Xml.NFe.Cobr()
-                                    {
-                                        Fat = new Fat
-                                        {
-                                            NFat = "057910",
-                                            VOrig = 84.90,
-                                            VDesc = 0,
-                                            VLiq = 84.90
-                                        },
-                                        Dup = new List<Dup>
-                                        {
-                                            new Dup
-                                            {
-                                                NDup = "001",
-                                                DVenc = DateTime.Now,
-                                                VDup = 84.90
-                                            }
-                                        }
+                                        ModFrete = ModalidadeFrete.SemOcorrenciaTransporte,
                                     },
                                     Pag = new Pag
                                     {

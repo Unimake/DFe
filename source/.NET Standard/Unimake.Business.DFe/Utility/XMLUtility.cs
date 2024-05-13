@@ -34,7 +34,6 @@ namespace Unimake.Business.DFe.Utility
 #else
         public struct ConteudoChaveDFe
 #endif
-
         {
             #region Public Properties
 
@@ -46,7 +45,17 @@ namespace Unimake.Business.DFe.Utility
             /// <summary>
             /// CNPJ do emissor do documento fiscal
             /// </summary>
-            public string CNPJEmissor { get; set; }
+            [Obsolete("Agora utilize a propriedade CNPJCPFEmissor. Em futuras versões esta propriedade será excluída.")]
+            public string CNPJEmissor
+            {
+                get => CNPJCPFEmissor;
+                set => CNPJCPFEmissor = value;
+            }
+
+            /// <summary>
+            /// CNPJ ou CPF do emissor do documento fiscal
+            /// </summary>
+            public string CNPJCPFEmissor { get; set; }
 
             /// <summary>
             /// Código numérico do documento fiscal
@@ -924,7 +933,7 @@ namespace Unimake.Business.DFe.Utility
         /// Console.WriteLine(conteudo.UFEmissor); //Output: PR
         /// Console.WriteLine(conteudo.AnoEmissao); //Output: 21
         /// Console.WriteLine(conteudo.MesEmissao); //Output: 02
-        /// Console.WriteLine(conteudo.CNPJEmissor); //Output: 12345678000112
+        /// Console.WriteLine(conteudo.CNPJCPFEmissor); //Output: 12345678000112
         /// Console.WriteLine(conteudo.Modelo); //Output: NFCe
         /// Console.WriteLine(conteudo.Serie); //Output: 11
         /// Console.WriteLine(conteudo.NumeroDoctoFiscal); //Output: 6
@@ -940,7 +949,7 @@ namespace Unimake.Business.DFe.Utility
                 UFEmissor = (UFBrasil)Convert.ToInt32(chave.Substring(0, 2)),
                 AnoEmissao = chave.Substring(2, 2),
                 MesEmissao = chave.Substring(4, 2),
-                CNPJEmissor = chave.Substring(6, 14),
+                CNPJCPFEmissor = chave.Substring(6, 14),
                 Modelo = (ModeloDFe)Convert.ToInt32(chave.Substring(20, 2)),
                 Serie = Convert.ToInt32(chave.Substring(22, 3)),
                 NumeroDoctoFiscal = Convert.ToInt32(chave.Substring(25, 9)),
@@ -950,6 +959,37 @@ namespace Unimake.Business.DFe.Utility
             };
 
             return conteudo;
+        }
+
+        /// <summary>
+        /// Monta a chave do DFE com base nos valores do XML
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos do DFe necessário para montagem da chave</param>
+        /// <returns>Chave do DFe</returns>
+        public static string MontarChaveNFe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
+
+        /// <summary>
+        /// Monta a chave do DFE com base nos valores do XML
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos do DFe necessário para montagem da chave</param>
+        /// <returns>Chave do DFe</returns>
+        private static string MontarChaveDFe(ref ConteudoChaveDFe conteudoChaveDFe)
+        {
+            var chave = ((int)conteudoChaveDFe.UFEmissor).ToString() +
+                conteudoChaveDFe.AnoEmissao +
+                conteudoChaveDFe.MesEmissao +
+                conteudoChaveDFe.CNPJCPFEmissor +
+                ((int)conteudoChaveDFe.Modelo).ToString().PadLeft(2, '0') +
+                conteudoChaveDFe.Serie.ToString().PadLeft(3, '0') +
+                conteudoChaveDFe.NumeroDoctoFiscal.ToString().PadLeft(9, '0') +
+                ((int)conteudoChaveDFe.TipoEmissao).ToString() +
+                conteudoChaveDFe.CodigoNumerico.PadLeft(8, '0');
+
+            conteudoChaveDFe.DigitoVerificador = XMLUtility.CalcularDVChave(chave);
+
+            chave += conteudoChaveDFe.DigitoVerificador.ToString();
+
+            return chave;
         }
 
         /// <summary>

@@ -98,7 +98,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
                         }
                         else
                         {
-                            throw new Exception("O atributo obrigatório \"versao\" da tag <infNFe>, do grupo de tag <enviNFe>, não foi localizado no XML.");
+                            throw new Exception("O atributo obrigatório \"versao\" da tag <infNFe>, do grupo de tag <enviNFe><NFe>, não foi localizado no XML.");
                         }
 
                         if (tagInfNFe.GetElementsByTagName("ide").Count > 0)
@@ -107,19 +107,19 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
                             if (tagIde.GetElementsByTagName("cUF").Count <= 0)
                             {
-                                throw new Exception("A tag obrigatória <cUF>, do grupo de tag <enviNFe><infNFe><ide>, não foi localizada no XML.");
+                                throw new Exception("A tag obrigatória <cUF>, do grupo de tag <enviNFe><NFe><infNFe><ide>, não foi localizada no XML.");
                             }
                             else if (tagIde.GetElementsByTagName("mod").Count <= 0)
                             {
-                                throw new Exception("A tag obrigatória <mod>, do grupo de tag <enviNFe><infNFe><ide>, não foi localizada no XML.");
+                                throw new Exception("A tag obrigatória <mod>, do grupo de tag <enviNFe><NFe><infNFe><ide>, não foi localizada no XML.");
                             }
                             else if (tagIde.GetElementsByTagName("tpEmis").Count <= 0)
                             {
-                                throw new Exception("A tag obrigatória <tpEmis>, do grupo de tag <enviNFe><infNFe><ide>, não foi localizada no XML.");
+                                throw new Exception("A tag obrigatória <tpEmis>, do grupo de tag <enviNFe><NFe><infNFe><ide>, não foi localizada no XML.");
                             }
                             else if (tagIde.GetElementsByTagName("tpAmb").Count <= 0)
                             {
-                                throw new Exception("A tag obrigatória <tpAmb>, do grupo de tag <enviNFe><infNFe><ide>, não foi localizada no XML.");
+                                throw new Exception("A tag obrigatória <tpAmb>, do grupo de tag <enviNFe><NFe><infNFe><ide>, não foi localizada no XML.");
                             }
 
                             Configuracoes.CodigoUF = Convert.ToInt32(tagIde.GetElementsByTagName("cUF")[0].InnerText);
