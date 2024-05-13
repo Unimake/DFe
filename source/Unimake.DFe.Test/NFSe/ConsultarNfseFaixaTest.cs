@@ -46,7 +46,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarNfseFaixa = new ConsultarNfseFaixa(conteudoXML, configuracao);
-            consultarNfseFaixa.Executar();
+            Assert.Multiple(() => consultarNfseFaixa.Executar(), () => Assert.NotNull(consultarNfseFaixa.RetornoWSString), () => Assert.NotNull(consultarNfseFaixa.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarNfseFaixa));
         }
     }
 }

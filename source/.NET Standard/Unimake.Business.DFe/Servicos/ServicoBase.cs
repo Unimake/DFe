@@ -6,8 +6,9 @@ using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
+using Unimake.Business.DFe.Validator;
+using System.Net;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -157,6 +158,11 @@ namespace Unimake.Business.DFe.Servicos
 #endif
 
         /// <summary>
+        /// Propriedade para uso interno nos testes unitários. 
+        /// </summary>
+        public HttpStatusCode HttpStatusCode { get; private set; }
+
+        /// <summary>
         /// Conteúdo do XML original, para os que tem assinatura este está sem. Original conforme foi criado.
         /// </summary>
         public XmlDocument ConteudoXMLOriginal { get; private set; }
@@ -228,6 +234,7 @@ namespace Unimake.Business.DFe.Servicos
                 RetornoWSString = consumirAPI.RetornoServicoString;
                 RetornoWSXML = consumirAPI.RetornoServicoXML;
                 RetornoStream = consumirAPI.RetornoStream;  //Retorno específico para criação de .pdf para os casos em que a String corrompe o conteúdo. Mauricio 27/09/2023 #157859
+                HttpStatusCode = consumirAPI.HttpStatusCode;
             }
             else
             {
@@ -263,6 +270,7 @@ namespace Unimake.Business.DFe.Servicos
 
                 RetornoWSString = consumirWS.RetornoServicoString;
                 RetornoWSXML = consumirWS.RetornoServicoXML;
+                HttpStatusCode = consumirWS.HttpStatusCode;
             }
         }
 

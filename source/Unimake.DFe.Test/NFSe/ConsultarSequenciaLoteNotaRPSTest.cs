@@ -46,7 +46,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarSequenciaLoteNotaRPS = new ConsultarSequenciaLoteNotaRPS(conteudoXML, configuracao);
-            consultarSequenciaLoteNotaRPS.Executar();
+            Assert.Multiple(() => consultarSequenciaLoteNotaRPS.Executar(), () => Assert.NotNull(consultarSequenciaLoteNotaRPS.RetornoWSString), () => Assert.NotNull(consultarSequenciaLoteNotaRPS.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarSequenciaLoteNotaRPS));
         }
     }
 }

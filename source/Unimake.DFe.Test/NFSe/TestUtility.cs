@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Xml;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Unimake.Business.DFe.Servicos;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Unimake.DFe.Test.NFSe
 {
     public static class TestUtility
     {
+        #region Private Properties
+        public static bool CanReadXML;
+        #endregion Private Properties
+
         /// <summary>
         /// Prepara uma Lista de parâmetros para montagem dos cenários que devem ser testados para os serviços da NFSe
         /// </summary>
@@ -168,6 +177,97 @@ namespace Unimake.DFe.Test.NFSe
             return retornar;
         }
 
+        /// <summary>
+        /// Analisa o resultado do testa para verificar se é satisfatório. Existem padrões com retornos negativos devido a sua autenticação de certificados digitais, autorização, etc..
+        /// </summary>
+        /// <param name="o"> Objeto serviço a ser analisado </param>
+        public static void AnalisaResultado(object o)
+        {
+            var servico = (ServicoBase)o;
+
+            //Este método irá analisar a comunicação HttpStatusCode,junto com os padrões...
+            //O padrão BAUHAUS (exemplo), retorna um código 500, porém com uma comunicação satisfatória.
+            //Caso queira verificar o motivo de algum erro ou comunicação não satisfatória (impedido por causa de autenticação de certificado ou login/senha),
+            //Comente as 4 linhas abaixo que irá gerar a mensagem
+            if (AnalisaComunicacao(servico))
+            {
+                return;
+            }
+
+            var message = string.Empty;//$"O padrão {servico.Configuracoes.PadraoNFSe}, no ambiente de {servico.Configuracoes.TipoAmbiente}, ";
+
+            if (servico.HttpStatusCode != HttpStatusCode.NotFound)
+            {
+                message = $"\nPadrão: {servico.Configuracoes.PadraoNFSe}\n" +
+                          $"Ambiente: {servico.Configuracoes.TipoAmbiente}\n" +
+                          $"Utiliza autenticação: {servico.Configuracoes.LoginConexao} \n" +
+                          $"HttpCode: {(int)servico.HttpStatusCode} \n" +
+                          "Este contexto ";
+
+                var result = VerificaContexto(servico);
+
+                if (!string.IsNullOrEmpty(result))
+                {
+                    message += result;
+                }
+            }
+            else
+            {
+                message = "Provavelmente este município mudou de padrão ou o link está errado! ";
+            }
+
+            throw new Exception(message);
+        }
+
+        #region Private Methods
+
+        private static bool AnalisaComunicacao(ServicoBase o)
+        {
+            var servico = o;
+
+            // Nesta parte, entendo que, alguns padrões retornam um HttpStatusCode diferente de 200 (OK), mesmo se a comunicação tenha sido satisfatória
+            //Exemplo: BAUHAUS, precisa de um token válido
+            if (servico.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return false;
+            }
+            if (servico.HttpStatusCode == System.Net.HttpStatusCode.OK ||
+                (servico.HttpStatusCode == HttpStatusCode.InternalServerError && servico.Configuracoes.PadraoNFSe == PadraoNFSe.BAUHAUS) ||
+                servico.HttpStatusCode == (HttpStatusCode)0 && servico.Configuracoes.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static string VerificaContexto(ServicoBase servicoBase)
+        {
+            var servico = servicoBase;
+
+            var message = string.Empty;
+
+            switch (servico.Configuracoes.PadraoNFSe, servico.Configuracoes.TipoAmbiente)
+            {
+                case (PadraoNFSe.FIORILLI, TipoAmbiente.Producao):
+                    message += "necessita de um certificado digital válido";
+                    break;
+
+                case (PadraoNFSe.BAUHAUS, TipoAmbiente.Homologacao):
+                case (PadraoNFSe.BAUHAUS, TipoAmbiente.Producao):
+                case (PadraoNFSe.IPM, TipoAmbiente.Homologacao):
+                case (PadraoNFSe.ADM_SISTEMAS, TipoAmbiente.Homologacao):
+                case (PadraoNFSe.IPM, TipoAmbiente.Producao):
+                    message += "necessita de uma autenticação válida";
+                    break;
+
+                default:
+                    message += "ainda não possui o erro catalogado!";
+                    break;
+            }
+            return message;
+        }
+        #endregion
     }
 
     /// <summary>

@@ -46,7 +46,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarRpsDisponivel = new ConsultarRpsDisponivel(conteudoXML, configuracao);
-            consultarRpsDisponivel.Executar();
+            Assert.Multiple(() => consultarRpsDisponivel.Executar(), () => Assert.NotNull(consultarRpsDisponivel.RetornoWSString), () => Assert.NotNull(consultarRpsDisponivel.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarRpsDisponivel));
         }
     }
 }

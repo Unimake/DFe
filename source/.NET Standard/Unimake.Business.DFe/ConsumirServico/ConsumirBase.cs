@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -154,6 +155,11 @@ namespace Unimake.Business.DFe
         /// </summary>
         public Stream RetornoStream { get; set; }
 
+        /// <summary>
+        /// Propriedade para uso interno nos testes unitários. 
+        /// </summary>
+        public HttpStatusCode HttpStatusCode { get; protected set; }
+
         #endregion Public Properties
 
         #region Public Methods
@@ -227,9 +233,11 @@ namespace Unimake.Business.DFe
             try
             {
                 responsePost = (HttpWebResponse)httpWebRequest.GetResponse();
+                HttpStatusCode = HttpStatusCode.OK;
             }
             catch (WebException ex)
             {
+                HttpStatusCode = (HttpStatusCode)ex.Status;
                 webException = ex;
                 responsePost = ex.Response;
 
