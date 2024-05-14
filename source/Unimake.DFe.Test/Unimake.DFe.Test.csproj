@@ -44,4 +44,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
+  </ItemGroup>
+
 </Project>
