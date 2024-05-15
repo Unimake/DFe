@@ -140,6 +140,11 @@
 		<UF>AN</UF>
 		<ArqConfig>AN.xml</ArqConfig>
 	</Arquivo>
+	<Arquivo ID="92">
+		<Nome>Sistema Virtual Rio Grande do Sul</Nome>
+		<UF>SVRS</UF>
+		<ArqConfig>SVRS.xml</ArqConfig>
+	</Arquivo>
 	<!-- Nota Fiscal de Serviço Eletrônica - Prefeituras/Municípios -->
 	<!-- O nome do padrão tem que ficar identico ao enumerador PadraoNFSe, ou gera BUG e não vai funcionar (Case Sensitive) -->
 	<!--///////////////////////////////////////////////////////////// PADRÕES COM APENAS UM XML DE CONFIGURAÇÃO ///////////////////////////////////////////////////////////////-->

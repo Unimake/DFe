@@ -73,6 +73,11 @@
           <SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
         </Tipo>
         <Tipo>
+          <ID>110192</ID>
+          <SchemaArquivo>envEventoInsucessoNFe_v{0}.xsd</SchemaArquivo>
+          <SchemaArquivoEspecifico>e110192_v{0}.xsd</SchemaArquivoEspecifico>
+        </Tipo>
+        <Tipo>
           <ID>111500</ID>
           <SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
           <SchemaArquivoEspecifico>e111500_v{0}.xsd</SchemaArquivoEspecifico>

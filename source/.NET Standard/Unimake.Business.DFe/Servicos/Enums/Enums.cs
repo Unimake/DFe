@@ -652,7 +652,10 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         AN = 91,
 
-        //Existe um código 92, mas como não sei o que é e não encontrei nada na internet que identifique, não criei ainda este código no ENUM. Wandrey 30/01/2023
+        /// <summary>
+        /// 92 - SVRS - Serviço Virtal do Rio Grande do SUL
+        /// </summary>
+        SVRS = 92,
 
         /// <summary>
         /// 94 - SVCRS - Serviço Virtual de Contingência do Rio Grande do Sul
@@ -791,6 +794,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("110140")]
         EPEC = 110140,
+
+        /// <summary>
+        /// 110192 - Insucesso na Entrega da NF-e
+        /// </summary>
+        [XmlEnum("110192")]
+        InsucessoEntregaNFe = 110192,
 
         /// <summary>
         /// 111500 - Pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 1o Prazo

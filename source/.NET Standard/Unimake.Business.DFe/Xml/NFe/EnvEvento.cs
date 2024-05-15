@@ -331,6 +331,11 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoInternalizacaoSUFRAMA();
                         break;
 
+                    case TipoEventoNFe.InsucessoEntregaNFe:
+                        COrgao = UFBrasil.SVRS; //Sempre será 92 no caso de Insucesso da Entrega da NFe, somente SVRS vai autorizar este evento.
+                        _detEvento = new DetEventoInsucessoEntregaNFe();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -2068,5 +2073,176 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Confirmacao de Internalizacao da Mercadoria na SUFRAMA";
+    }
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoInsucessoEntregaNFe")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoInsucessoEntregaNFe : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Insucesso na Entrega da NF-e";
+
+        /// <summary>
+        /// Código do Órgão Autor do Evento. Informar o Código da F da Chave de Acesso para este Evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        [XmlElement("cOrgaoAutor")]
+        public int COrgaoAutorField
+        {
+            get => (int)COrgaoAutor;
+            set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
+
+        /// <summary>
+        /// Versão do aplicativo do Autor do Evento. 
+        /// </summary>
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Data e hora da tentativa de entrega
+        /// Formato= AAAA-MM-DDTHH:MM:SS TZD
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhTentativaEntrega { get; set; }
+#else
+        public DateTimeOffset DhTentativaEntrega { get; set; }
+#endif
+
+        [XmlElement("dhTentativaEntrega")]
+        public string DhTentativaEntregaField
+        {
+            get => DhTentativaEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhTentativaEntrega = DateTime.Parse(value);
+#else
+            set => DhTentativaEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Número da tentativa de entrega que não teve sucesso
+        /// </summary>
+        [XmlElement("nTentativa")]
+        public int NTentativa { get; set; }
+
+        /// <summary>
+        /// Motivo do insucesso da entrega
+        /// </summary>
+        [XmlElement("tpMotivo")]
+        public TipoMotivoInsucessoEntrega TpMotivo { get; set; }
+
+        /// <summary>
+        /// Justificativa do motivo do insucesso. Informar apenas para TpMotivo=4-Outros
+        /// </summary>
+        [XmlElement("xJustMotivo")]
+        public string XJustMotivo { get; set; }
+
+        /// <summary>
+        /// Latitude do ponto de entrega (Coordenada GPS)
+        /// </summary>
+        [XmlElement("latGPS")]
+        public string LatGPS { get; set; }
+
+        /// <summary>
+        /// Longitude do ponto de entrega (Coordenada GPS)+
+        /// </summary>
+        [XmlElement("longGPS")]
+        public string LongGPS { get; set; }
+
+        private string HashTentativaEntregaField;
+
+        /// <summary>
+        /// Hash SHA-1, no formato Base64, resultante da concatenação de: Chave de Acesso da NF-e + Base64 da imagem capturada na tentativa da entrega (ex: imagem capturada da assinatura eletrônica, digital do recebedor, foto, etc). 
+        /// 
+        /// Nota 1: A critério do autor do evento, este campo pode ser utilizado como índice para acesso as informações do Insucesso na Entrega da NF-e.
+        /// Nota 2: A SEFAZ não tem nenhum controle sobre a informação deste campo.
+        /// 
+        /// Propriedade, se não for informado em Base64, automaticamente converte o conteúdo para Base64, facilitando para o desenvolvedor.
+        /// </summary>
+        [XmlElement("hashTentativaEntrega")]
+        public string HashTentativaEntrega
+        {
+            get => HashTentativaEntregaField;
+            set
+            {
+                if (Converter.IsSHA1Base64(value))
+                {
+                    HashTentativaEntregaField = value;
+                }
+                else
+                {
+                    HashTentativaEntregaField = Converter.CalculateSHA1Hash(value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Data e hora da geração do hash da tentativa de entrega. 
+        /// Formato AAAA-MMDDThh:mm:ssTZD.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DhHashTentativaEntrega { get; set; }
+#else
+        public DateTimeOffset DhHashTentativaEntrega { get; set; }
+#endif
+
+        [XmlElement("dhHashTentativaEntrega")]
+        public string DhHashTentativaEntregaField
+        {
+            get => DhHashTentativaEntrega.ToString("yyyy-MM-ddTHH:mm:sszzz");
+#if INTEROP
+            set => DhHashTentativaEntrega = DateTime.Parse(value);
+#else
+            set => DhHashTentativaEntrega = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <dhTentativaEntrega>{DhTentativaEntregaField}</dhTentativaEntrega>";
+
+            if (NTentativa > 0)
+            {
+                xml += $@"<nTentativa>{NTentativa}</nTentativa>";
+            }
+
+            xml += $@"<tpMotivo>{(int)TpMotivo}</tpMotivo>";
+
+            if (TpMotivo == TipoMotivoInsucessoEntrega.Outros)
+            {
+                xml += $@"<xJustMotivo>{XJustMotivo}</xJustMotivo>";
+            }
+
+            if (!string.IsNullOrEmpty(LatGPS) && !string.IsNullOrEmpty(LongGPS))
+            {
+                xml += $@"<latGPS>{LatGPS}</latGPS>
+                          <longGPS>{LongGPS}</longGPS>";
+            }
+
+
+            xml += $@"<hashTentativaEntrega>{HashTentativaEntrega}</hashTentativaEntrega>
+                         <dhHashTentativaEntrega>{DhHashTentativaEntregaField}</dhHashTentativaEntrega>";
+
+            writer.WriteRaw(xml);
+        }
     }
 }
