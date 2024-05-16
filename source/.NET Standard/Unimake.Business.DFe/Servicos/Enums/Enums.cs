@@ -802,6 +802,12 @@ namespace Unimake.Business.DFe.Servicos
         InsucessoEntregaNFe = 110192,
 
         /// <summary>
+        /// 110193 - Cancelamento do Evento de Insucesso na Entrega da NF-e
+        /// </summary>
+        [XmlEnum("110193")]
+        CancelamentoInsucessoEntregaNFe = 110193,
+
+        /// <summary>
         /// 111500 - Pedido de prorrogação do prazo de ICMS no caso de remessa para industrialização - 1o Prazo
         /// </summary>
         [XmlEnum("111500")]

@@ -336,6 +336,11 @@ namespace Unimake.Business.DFe.Xml.NFe
                         _detEvento = new DetEventoInsucessoEntregaNFe();
                         break;
 
+                    case TipoEventoNFe.CancelamentoInsucessoEntregaNFe:
+                        COrgao = UFBrasil.SVRS; //Sempre será 92 no caso de Insucesso da Entrega da NFe, somente SVRS vai autorizar este evento.
+                        _detEvento = new DetEventoCancelamentoInsucessoEntregaNFe();
+                        break;
+
                     default:
                         throw new NotImplementedException($"O tipo de evento '{TpEvento}' não está implementado.");
                 }
@@ -2241,6 +2246,59 @@ namespace Unimake.Business.DFe.Xml.NFe
 
             xml += $@"<hashTentativaEntrega>{HashTentativaEntrega}</hashTentativaEntrega>
                          <dhHashTentativaEntrega>{DhHashTentativaEntregaField}</dhHashTentativaEntrega>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoInsucessoEntregaNFe")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancelamentoInsucessoEntregaNFe : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Cancelamento Insucesso na Entrega da NF-e";
+
+        /// <summary>
+        /// Código do Órgão Autor do Evento. Informar o Código da F da Chave de Acesso para este Evento.
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        [XmlElement("cOrgaoAutor")]
+        public int COrgaoAutorField
+        {
+            get => (int)COrgaoAutor;
+            set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
+
+        /// <summary>
+        /// Versão do aplicativo do Autor do Evento. 
+        /// </summary>
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informar o número do Protocolo de Autorização do Evento da NF-e a que se refere este cancelamento.
+        /// </summary>
+        [XmlElement("nProtEvento")]
+        public string NProtEvento { get; set; }               
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <nProtEvento>{NProtEvento}</nProtEvento>";
 
             writer.WriteRaw(xml);
         }
