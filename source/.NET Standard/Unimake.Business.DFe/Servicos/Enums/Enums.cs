@@ -8843,5 +8843,127 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region Processo de emissão do evento eSocial 
+
+    /// <summary>
+    /// Processo de emissão do evento eSocial.
+    /// </summary>
+    public enum ProcEmiESocial
+    {
+        /// <summary>
+        /// 1 - Aplicativo do empregador.
+        /// </summary>
+        [XmlEnum("1")]
+        AppDoEmpregador = 1,
+        
+        /// <summary>
+        /// 2 - Aplicativo governamental - Simplificado Pessoa Física.
+        /// </summary>
+        [XmlEnum("2")]
+        AppGovernamentalPF = 2,
+
+        /// <summary>
+        /// 3 - Aplicativo governamental - Web Geral.
+        /// </summary>
+        [XmlEnum("3")]
+        AppGovernamentalWebGeral = 3,
+
+        /// <summary>
+        /// 4 - Aplicativo governamental - Simplificado Pessoa Jurídica.
+        /// </summary>
+        [XmlEnum("4")]
+        AppGovernamentalPJ = 4,
+
+        /// <summary>
+        /// 9 - Aplicativo governamental - Integração com a Junta Comercial.
+        /// </summary>
+        [XmlEnum("9")]
+        AppGovernamentalJuntaComercial = 9,
+
+        /// <summary>
+        /// 22 - Aplicativo governamental para dispositivos móveis - Empregador Doméstico.
+        /// </summary>
+        [XmlEnum("22")]
+        AppGovernamentalEmpregadorDomestico = 22,
+
+    }
+    #endregion
+
+    #region Tipo Processo eSocial
+
+    /// <summary>
+    /// eSocial - Tipo Processo eSocial.
+    /// </summary>
+    public enum TipoProcessoESocial
+    {
+        /// <summary>
+        /// 1 - Administrativo
+        /// </summary>
+        [XmlEnum("1")]
+        Administrativo = 1,
+        
+        /// <summary>
+        /// 2 - Judicial
+        /// </summary>
+        [XmlEnum("2")]
+        Judicial = 2,
+
+        /// <summary>
+        /// 4 - Processo FAP de exercício anterior a 2019
+        /// </summary>
+        [XmlEnum("4")]
+        FAP = 4,
+    }
+    #endregion
+
+    #region Tipo de CAEPF.
+
+    /// <summary>
+    /// eSocial - Tipo de CAEPF.
+    /// Validação: Deve ser compatível com o cadastro da RFB.
+    /// </summary>
+    public enum TipoCaepf
+    {
+        /// <summary>
+        /// 1 - Contribuinte individual
+        /// </summary>
+        [XmlEnum("1")]
+        ContribuinteIndividual = 1,
+
+        /// <summary>
+        /// 2 - Produtor rural
+        /// </summary>
+        [XmlEnum("2")]
+        ProdutorRural = 2,
+
+        /// <summary>
+        /// 4 - Segurado especial
+        /// </summary>
+        [XmlEnum("3")]
+        SeguradoEspecial = 3,
+    }
+    #endregion
+
+    #region Indicativo de substituição da contribuição patronal de obra de construção civil.
+
+    /// <summary>
+    /// Indicativo de substituição da contribuição patronal de obra de construção civil.
+    /// </summary>
+    public enum IndicativoSubstuicaoPatronal
+    {
+        /// <summary>
+        /// 1 - Contribuição patronal substituída
+        /// </summary>
+        [XmlEnum("1")]
+        ContribuicaoNaoSubstituida = 1,
+
+        /// <summary>
+        /// 2 - Contribuição patronal não substituída
+        /// </summary>
+        [XmlEnum("2")]
+        ContribuicaoSubstituida = 2,
+    }
+    #endregion
+
     #endregion
 }

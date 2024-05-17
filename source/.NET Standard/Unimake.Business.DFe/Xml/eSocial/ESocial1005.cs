@@ -1,0 +1,447 @@
+﻿#pragma warning disable CS1591
+
+#if INTEROP
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
+#endif
+
+namespace Unimake.Business.DFe.Xml.eSocial
+{
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial1005")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTabEstab/v_S_01_02_00", IsNullable = false)]
+    public class ESocial1005 : XMLBase
+    {
+        [XmlElement("evtTabEstab")]
+        public EvtTabEstab EvtTabEstab { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EvtTabEstab")]
+    [ComVisible(true)]
+#endif
+    public class EvtTabEstab
+    {
+        [XmlElement("ideEvento")]
+        public IdeEvento IdeEvento { get; set; }
+
+        [XmlElement("ideEmpregador")]
+        public IdeEmpregador IdeEmpregador { get; set; }
+
+        [XmlElement("infoEstab")]
+        public InfoEstab infoEstab { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.IdeEvento")]
+    [ComVisible(true)]
+#endif
+    public class IdeEvento
+    {
+        [XmlElement("tpAmb")]
+        public TipoAmbiente TpAmb { get; set; }
+
+        [XmlElement("procEmi")]
+        public ProcEmiESocial ProcEmi { get; set; }
+
+        [XmlElement("verProc")]
+        public string verProc { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.IdeEmpregador")]
+    [ComVisible(true)]
+#endif
+    public class IdeEmpregador
+    {
+        [XmlElement("tpInsc")]
+        public TiposInscricao TpInsc { get; set; }
+
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoEstab")]
+    [ComVisible(true)]
+#endif
+    public class InfoEstab
+    {
+        [XmlElement("inclusao")]
+        public InclusaoESocial1005 Inclusao { get; set; }
+
+        [XmlElement("alteracao")]
+        public Alteracao Alteracao { get; set; }
+
+        [XmlElement("exclusao")]
+        public Exclusao Exclusao { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InclusaoESocial1005")]
+    [ComVisible(true)]
+#endif
+    public class InclusaoESocial1005
+    {
+        [XmlElement("ideEstab")]
+        public IdeEstab IdeEstab { get; set; }
+
+        [XmlElement("dadosEstab")]
+        public DadosEstab DadosEstab { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.IdeEstab")]
+    [ComVisible(true)]
+#endif
+    public class IdeEstab
+    {
+        [XmlElement("tpInsc")]
+        public TipoInscricaoEstabelecimento TpInsc { get; set; }
+
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime IniValid { get; set; }
+#else
+        public DateTimeOffset IniValid { get; set; }
+#endif
+
+        [XmlElement("iniValid")]
+        public string IniValidField
+        {
+            get => IniValid.ToString("yyyy-MM");
+#if INTEROP
+            set => IniValid = DateTime.Parse(value);
+#else
+            set => IniValid = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime FimValid { get; set; }
+#else
+        public DateTimeOffset IniValid { get; set; }
+#endif
+
+        [XmlElement("fimValid")]
+        public string FimValidField
+        {
+            get => FimValid.ToString("yyyy-MM");
+#if INTEROP
+            set => FimValid = DateTime.Parse(value);
+#else
+            set => FimValid = DateTimeOffset.Parse(value);
+#endif
+        }
+        #region ShouldSerialize
+
+        public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
+
+        #endregion
+
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DadosEstab")]
+    [ComVisible(true)]
+#endif
+    public class DadosEstab
+    {
+        [XmlElement("cnaePrep")]
+        public string CnaePrep { get; set; }
+
+        [XmlElement("cnpjResp")]
+        public string CnpjResp { get; set; }
+
+        [XmlElement("aliqGilrat")]
+        public AliqGilrat AliqGilrat { get; set; }
+
+        [XmlElement("infoCaepf")]
+        public InfoCaepf InfoCaepf { get; set; }
+
+        [XmlElement("infoObra")]
+        public InfoObra InfoObra { get; set; }
+
+        [XmlElement("infoTrab")]
+        public InfoTrab InfoTrab { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSereializeCnpjRespField() => !string.IsNullOrEmpty(CnpjResp);
+
+        #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.AliqGilrat")]
+    [ComVisible(true)]
+#endif
+    public class AliqGilrat
+    {
+        [XmlElement("aliqRat")]
+        public string AliqRat { get; set; }
+
+        [XmlElement("fap")]
+        public string Fap { get; set; }
+
+        [XmlElement("procAdmJudRat")]
+        public ProcAdmJudRat ProcAdmJudRat { get; set; }
+
+        [XmlElement("procAdmJudFap")]
+        public ProcAdmJudFap ProcAdmJudFap { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSereializeAliqRatField() => !string.IsNullOrEmpty(AliqRat);
+
+        public bool ShouldSereializeFapField() => !string.IsNullOrEmpty(Fap);
+
+        #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ProcAdmJudRat")]
+    [ComVisible(true)]
+#endif
+    public class ProcAdmJudRat
+    {
+        [XmlElement("tpProc")]
+        public TipoProcesso TpProc { get; set; }
+
+        [XmlElement("nrProc")]
+        public string NrProc { get; set; }
+
+        [XmlElement("codSusp")]
+        public string CodSusp { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ProcAdmJudFap")]
+    [ComVisible(true)]
+#endif
+    public class ProcAdmJudFap
+    {
+        [XmlElement("tpProc")]
+        public TipoProcessoESocial TpProc { get; set; }
+
+        [XmlElement("nrProc")]
+        public string NrProc { get; set; }
+
+        [XmlElement("codSusp")]
+        public string CodSusp { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoCaepf")]
+    [ComVisible(true)]
+#endif
+    public class InfoCaepf
+    {
+        [XmlElement("tpCaepf")]
+        public TipoCaepf TpCaepf { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoObra")]
+    [ComVisible(true)]
+#endif
+    public class InfoObra
+    {
+        [XmlElement("indSubstPatrObra")]
+        public IndicativoSubstuicaoPatronal IndSubstPatrObra { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoTrab")]
+    [ComVisible(true)]
+#endif
+    public class InfoTrab
+    {
+        [XmlElement("infoApr")]
+        public InfoApr InfoApr { get; set; }
+
+        [XmlElement("infoPCD")]
+        public InfoPCD InfoPCD { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoApr")]
+    [ComVisible(true)]
+#endif
+    public class InfoApr
+    {
+        [XmlElement("nrProcJud")]
+        public string NrProcJud { get; set; }
+
+        [XmlElement("infoEntEduc")]
+        public List<InfoEntEduc> InfoEntEduc { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoEntEduc(InfoEntEduc item)
+        {
+            if (InfoEntEduc == null)
+            {
+                InfoEntEduc = new List<InfoEntEduc>();
+            }
+
+            InfoEntEduc.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoEntEduc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoEntEduc</returns>
+        public InfoEntEduc GetInfoEntEduc(int index)
+        {
+            if ((InfoEntEduc?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoEntEduc[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoEntEduc
+        /// </summary>
+        public int GetInfoEntEducCount => (InfoEntEduc != null ? InfoEntEduc.Count : 0);
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSereializeNrProcJudField() => !string.IsNullOrEmpty(NrProcJud);
+
+        #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoEntEduc")]
+    [ComVisible(true)]
+#endif
+    public class InfoEntEduc
+    {
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.InfoPCD")]
+    [ComVisible(true)]
+#endif
+    public class InfoPCD
+    {
+        [XmlElement("nrProcJud")]
+        public string NrProcJud { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.Alteracao")]
+    [ComVisible(true)]
+#endif
+    public class Alteracao
+    {
+        [XmlElement("ideEstab")]
+        public IdeEstab IdeEstab { get; set; }
+
+        [XmlElement("dadosEstab")]
+        public DadosEstab DadosEstab { get; set; }
+
+        [XmlElement("novaValidade")]
+        public NovaValidade NovaValidade { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NovaValidade")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade
+    {
+        [XmlIgnore]
+#if INTEROP
+        public DateTime IniValid { get; set; }
+#else
+        public DateTimeOffset IniValid { get; set; }
+#endif
+
+        [XmlElement("iniValid")]
+        public string IniValidField
+        {
+            get => IniValid.ToString("yyyy-MM");
+#if INTEROP
+            set => IniValid = DateTime.Parse(value);
+#else
+            set => IniValid = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime FimValid { get; set; }
+#else
+        public DateTimeOffset IniValid { get; set; }
+#endif
+
+        [XmlElement("fimValid")]
+        public string FimValidField
+        {
+            get => FimValid.ToString("yyyy-MM");
+#if INTEROP
+            set => FimValid = DateTime.Parse(value);
+#else
+            set => FimValid = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
+
+        #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.Exclusao")]
+    [ComVisible(true)]
+#endif
+    public class Exclusao
+    {
+        [XmlElement("ideEstab")]
+        public IdeEstab IdeEstab { get; set; }
+    }
+}
