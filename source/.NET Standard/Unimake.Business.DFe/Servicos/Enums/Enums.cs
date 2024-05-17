@@ -495,7 +495,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 12 - eSocial - Escrituração Digital das Obrigações Fiscais, Previdenciárias e Trabalhistas
         /// </summary>
-        eSocial = 12
+        ESocial = 12
     }
 
     #endregion       
@@ -8703,7 +8703,7 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region eSocial
+    #region ESocial
 
     #region Indicativo indCoop
 
@@ -8712,7 +8712,7 @@ namespace Unimake.Business.DFe.Servicos
     /// NaoOptante = 0 - Não optante.
     /// SimOptante = 1 - Optante.
     /// </summary>
-    public enum indCoop
+    public enum IndCoop
     {
         /// <summary>
         /// 0 - Não optante.
@@ -8735,7 +8735,7 @@ namespace Unimake.Business.DFe.Servicos
     /// NaoOptante = 0 - Não optante.
     /// SimOptante = 1 - Optante.
     /// </summary>
-    public enum indConstr
+    public enum IndConstr
     {
         /// <summary>
         /// 0 - Não optante.
@@ -8758,7 +8758,7 @@ namespace Unimake.Business.DFe.Servicos
     /// NaoOptante = 0 - Não optante.
     /// SimOptante = 1 - Optante.
     /// </summary>
-    public enum indDesFolha
+    public enum IndDesFolha
     {
         /// <summary>
         /// 0 - Não optante. Não desdobra a folha de pagamento
@@ -8781,7 +8781,7 @@ namespace Unimake.Business.DFe.Servicos
     /// NaoOptante = 0 - Não optante.
     /// SimOptante = 1 - Optante.
     /// </summary>
-    public enum indOptRegEletron
+    public enum IndOptRegEletron
     {
         /// <summary>
         /// 0 - Não optante. Não a empresa optou pelo registro eletrônico de empregados.
@@ -8804,7 +8804,7 @@ namespace Unimake.Business.DFe.Servicos
     /// NaoOptante = 0 - Não optante.
     /// SimOptante = 1 - Optante.
     /// </summary>
-    public enum infoOrgInternacional
+    public enum InfoOrgInternacional
     {
         /// <summary>
         /// 0 - Não participa em uma organização internacional.
