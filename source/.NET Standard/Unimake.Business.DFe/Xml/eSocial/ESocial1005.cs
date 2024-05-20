@@ -54,7 +54,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
         public ProcEmiESocial ProcEmi { get; set; }
 
         [XmlElement("verProc")]
-        public string verProc { get; set; }
+        public string VerProc { get; set; }
     }
 
 #if INTEROP

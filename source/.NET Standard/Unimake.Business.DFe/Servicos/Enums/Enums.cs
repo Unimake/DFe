@@ -8874,7 +8874,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         AppDoEmpregador = 1,
-        
+
         /// <summary>
         /// 2 - Aplicativo governamental - Simplificado Pessoa Física.
         /// </summary>
@@ -8920,7 +8920,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Administrativo = 1,
-        
+
         /// <summary>
         /// 2 - Judicial
         /// </summary>
@@ -8981,6 +8981,326 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("2")]
         ContribuicaoSubstituida = 2,
+    }
+    #endregion
+
+    #region eSocial - Tipo de rubrica.
+
+    /// <summary>
+    /// Tipo de rubrica.
+    /// </summary>
+    public enum TipoRubrica
+    {
+        /// <summary>
+        /// 1 - Vencimento, provento ou pensão
+        /// </summary>
+        [XmlEnum("1")]
+        VencimentoProventoOuPensao = 1,
+
+        /// <summary>
+        /// 2 - Desconto
+        /// </summary>
+        [XmlEnum("2")]
+        Desconto = 2,
+
+        /// <summary>
+        /// 3 - Informativa
+        /// </summary>
+        [XmlEnum("3")]
+        Informativa = 3,
+
+        /// <summary>
+        /// 4 - Informativa dedutora
+        /// </summary>
+        [XmlEnum("4")]
+        InformativaDedutora = 4
+    }
+    #endregion
+
+    #region eSocial - Código de incidência tributária da rubrica para a Previdência Social.
+
+    /// <summary>
+    /// Código de incidência tributária da rubrica para a Previdência Social.
+    /// Validação: Para utilização de código [91, 92, 93, 94, 95, 96, 97, 98], é necessária a existência de grupo com informações relativas ao processo.
+    /// </summary>
+    public enum CodigoIncidenciaTributaria
+    {
+        /// <summary>
+        /// 00 - Não é base de cálculo
+        /// </summary>
+        [XmlEnum("00")]
+        NaoBaseDeCalculo = 00,
+
+        /// <summary>
+        /// 01 - Não é base de cálculo em função de acordos internacionais de previdência social
+        /// </summary>
+        [XmlEnum("01")]
+        NaoBaseDeCalculoAcordosInternacionais = 01,
+
+        ///Base de cálculo das contribuições sociais - Salário de contribuição:
+
+        /// <summary>
+        /// 11 - Mensal
+        /// </summary>
+        [XmlEnum("11")]
+        Mensal = 11,
+
+        /// <summary>
+        /// 12 - 13º salário
+        /// </summary>
+        [XmlEnum("12")]
+        DecimoTerceiroSalario = 12,
+
+        /// <summary>
+        /// 13 - Exclusiva do empregador - Mensal
+        /// </summary>
+        [XmlEnum("13")]
+        ExclusivaEmpregadorMensal = 13,
+
+        /// <summary>
+        /// 14 - Exclusiva do empregador - 13° salário
+        /// </summary>
+        [XmlEnum("14")]
+        ExclusivaEmpregadorDecimoTerceiro = 14,
+
+        /// <summary>
+        /// 15 - Exclusiva do segurado - Mensal
+        /// </summary>
+        [XmlEnum("15")]
+        ExclusivaSeguradoMensal = 15,
+
+        /// <summary>
+        /// 16 - Exclusiva do segurado - 13° salário
+        /// </summary>
+        [XmlEnum("16")]
+        ExclusivaSeguradoDecimoTerceiro = 16,
+
+        /// <summary>
+        /// 21 - Salário-maternidade mensal, pago pelo empregador
+        /// </summary>
+        [XmlEnum("21")]
+        MaternidadePagoEmpregador = 21,
+
+        /// <summary>
+        /// 22 - Salário-maternidade 13º salário, pago pelo empregador
+        /// </summary>
+        [XmlEnum("22")]
+        MaternidadeDecimoTerceiroEmpregador = 22,
+
+        /// <summary>
+        /// 25 - Salário-maternidade mensal, pago pelo INSS
+        /// </summary>
+        [XmlEnum("25")]
+        MaternidadePagoInss = 25,
+
+        /// <summary>
+        /// 26 - Salário-maternidade 13° salário, pago pelo INSS
+        /// </summary>
+        [XmlEnum("26")]
+        MaternidadeDecimoTerceiroInss = 26,
+
+        /// <summary>
+        /// 31 - Contribuição descontada do segurado sobre salário de contribuição: Mensal
+        /// </summary>
+        [XmlEnum("31")]
+        DescontadoMensal = 31,
+
+        /// <summary>
+        /// 32 - Contribuição descontada do segurado sobre salário de contribuição: 13º salário
+        /// </summary>
+        [XmlEnum("32")]
+        DescontadoDecimoTerceiro = 32,
+
+        /// <summary>
+        /// 34 - Contribuição descontada do segurado sobre salário de contribuição: SEST
+        /// </summary>
+        [XmlEnum("34")]
+        SEST = 34,
+
+        /// <summary>
+        /// 35 - Contribuição descontada do segurado sobre salário de contribuição: SENAT
+        /// </summary>
+        [XmlEnum("35")]
+        SENAT = 35,
+
+        /// <summary>
+        /// 51 - Salário-família
+        /// </summary>
+        [XmlEnum("51")]
+        SalarioFamilia = 51,
+
+        /// <summary>
+        /// 91 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Mensal
+        /// </summary>
+        [XmlEnum("91")]
+        SuspensaoJudicialMensal = 91,
+
+        /// <summary>
+        /// 92 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: 13º salário
+        /// </summary>
+        [XmlEnum("92")]
+        SuspensaoJudicialDecimoTerceiro = 92,
+
+        /// <summary>
+        /// 93 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Salário-maternidade
+        /// </summary>
+        [XmlEnum("93")]
+        SuspensaoSalarioMaternidade = 93,
+
+        /// <summary>
+        /// 94 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Salário-maternidade 13º salário
+        /// </summary>
+        [XmlEnum("94")]
+        SuspensaoSalarioMaternidadeDecimoTerceiro = 94,
+
+        /// <summary>
+        /// 95 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Exclusiva do empregador - Mensal
+        /// </summary>
+        [XmlEnum("95")]
+        SuspensaoExclusivaEmpregadorMensal = 95,
+
+        /// <summary>
+        /// 96 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Exclusiva do empregador - 13º salário
+        /// </summary>
+        [XmlEnum("96")]
+        SuspensaoExclusivaEmpregadorDecimoTerceiro = 96,
+
+        /// <summary>
+        /// 97 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Exclusiva do empregador - Salário-maternidade
+        /// </summary>
+        [XmlEnum("97")]
+        SuspensaoExclusivaEmpregadorMaternidade = 97,
+
+        /// <summary>
+        /// 98 - Suspensão de incidência sobre salário de contribuição em decorrência de decisão judicial: Exclusiva do empregador - Salário-maternidade 13º salário
+        /// </summary>
+        [XmlEnum("98")]
+        SuspensaoExclusivaEmpregadorMaternidadeDecimoTerceiro = 98
+    }
+    #endregion
+
+
+    #region eSocial - Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
+    /// <summary>
+    /// Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
+    /// Validação: Para utilização de código [91, 92, 93], é necessária a existência de grupo com informações relativas ao processo.
+    /// </summary>
+    public enum CodigoIncidenciaRubricaFGTS
+    {
+        /// <summary>
+        /// 00 - Não é base de cálculo do FGTS
+        /// </summary>
+        [XmlEnum("00")]
+        NaoBaseCalculoFGTS = 00,
+
+        /// <summary>
+        /// 11 - Base de cálculo do FGTS mensal
+        /// </summary>
+        [XmlEnum("11")]
+        BaseDeCalculoFGTSMensal = 11,
+
+        /// <summary>
+        /// 12 - Base de cálculo do FGTS 13° salário
+        /// </summary>
+        [XmlEnum("12")]
+        BaseDeCalculoFGTSDecimoTerceiro = 12,
+
+        /// <summary>
+        /// 21 - Base de cálculo do FGTS aviso prévio indenizado
+        /// </summary>
+        [XmlEnum("21")]
+        BaseDeCalculoFGTSAvisoPrevioIndenizado = 21,
+
+        /// <summary>
+        /// 91 - Incidência suspensa em decorrência de decisão judicial - FGTS mensal
+        /// </summary>
+        [XmlEnum("91")]
+        SuspensaoFGTSMensal = 91,
+
+        /// <summary>
+        /// 92 - Incidência suspensa em decorrência de decisão judicial - FGTS 13º salário
+        /// </summary>
+        [XmlEnum("92")]
+        SuspensaoFGTSDecimoTerceiro = 92,
+
+        /// <summary>
+        /// 93 - Incidência suspensa em decorrência de decisão judicial - FGTS aviso prévio indenizado
+        /// </summary>
+        [XmlEnum("93")]
+        SuspensaoFGTSAvisoPrevioIndenizado = 93,
+    }
+    #endregion
+
+    #region eSocial - Código de incidência da rubrica para as contribuições do Regime Próprio de Previdência Social - RPPS ou do Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA.
+
+    /// <summary>
+    /// Código de incidência da rubrica para as contribuições do Regime Próprio de Previdência Social - RPPS ou do Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA.
+    /// </summary>
+    public enum CodigoIncidenciaDaRubrica
+    {
+        /// <summary>
+        /// 00 - Vencimento, provento ou pensão
+        /// </summary>
+        [XmlEnum("00")]
+        NaoBaseContribuicoesDevidas = 00,
+
+        /// <summary>
+        /// 11 - Base de cálculo de contribuições devidas
+        /// </summary>
+        [XmlEnum("11")]
+        BaseCalculoContribuicoesDevidas = 11,
+
+        /// <summary>
+        /// 12 - Base de cálculo de contribuições devidas - 13º salário
+        /// </summary>
+        [XmlEnum("12")]
+        BaseCalculoDecimoTerceiro = 12,
+
+        /// <summary>
+        /// 31 - Contribuição descontada do segurado ou beneficiário
+        /// </summary>
+        [XmlEnum("31")]
+        ContribuicaoDescontadaBeneficiario = 31,
+
+        /// <summary>
+        /// 32 - Contribuição descontada do segurado ou beneficiário - 13º salário
+        /// </summary>
+        [XmlEnum("32")]
+        ContribuicaoDescontadaDecimoTerceiro= 32,
+
+        /// <summary>
+        /// 91 - Suspensão de incidência em decorrência de decisão judicial
+        /// </summary>
+        [XmlEnum("91")]
+        SuspensaoDecisaoJudicial = 91,
+
+        /// <summary>
+        /// 92 - Suspensão de incidência em decorrência de decisão judicial - 13º salário
+        /// </summary>
+        [XmlEnum("92")]
+        SuspensaoDecisaoJudicialDecimoTerceiro = 92
+    }
+    #endregion
+
+    #region eSocial - Extensão da decisão/sentença.
+
+    /// <summary>
+    /// Extensão da decisão/sentença.
+    /// </summary>
+    public enum ExtensaoDecisao
+    {
+        /// <summary>
+        /// 1 - Contribuição previdenciária patronal
+        /// </summary>
+        [XmlEnum("1")]
+        ContribuicaoPrevidenciariaPatronal = 1,
+
+        /// <summary>
+        /// 2 - Contribuição previdenciária patronal + descontada dos segurados
+        /// </summary>
+        [XmlEnum("2")]
+        ContribuicaoPatronalDescontadaDosSegurados = 2,
+
     }
     #endregion
 
