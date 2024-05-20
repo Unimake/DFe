@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
@@ -22,7 +22,7 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="2.03">
 			<Descricao>Consulta Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarLoteRps</WebActionProducao>
@@ -41,7 +41,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarNfsePorRps</WebActionProducao>
@@ -60,7 +60,7 @@
 		</ConsultarNfsePorRps>
 		<GerarNfse versao="2.03">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/GerarNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/GerarNfse</WebActionProducao>
@@ -79,7 +79,7 @@
 		</GerarNfse>
 		<RecepcionarLoteRps versao="2.03">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
@@ -98,7 +98,7 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.03">
 			<Descricao>Recepcionar Lote RPS Síncrono</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionProducao>
@@ -117,7 +117,7 @@
 		</RecepcionarLoteRpsSincrono>
 		<SubstituirNfse versao="2.03">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao>http://testeabrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://abrasfcabofrio.sigcorp.com.br/servico.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://tempuri.org/SubstituirNfse</WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/SubstituirNfse</WebActionProducao>
