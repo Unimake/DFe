@@ -243,7 +243,6 @@
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
-		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraMansaRJ.xml" />
@@ -1217,9 +1216,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />
