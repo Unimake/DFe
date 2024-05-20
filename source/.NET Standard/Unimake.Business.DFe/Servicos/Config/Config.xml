@@ -1349,4 +1349,10 @@
 		<ArqConfig>SenhorDoBonfimBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322400">
+		<Nome>Uruguaiana - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>UruguaianaRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
