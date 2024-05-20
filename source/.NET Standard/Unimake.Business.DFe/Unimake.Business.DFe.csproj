@@ -243,7 +243,6 @@
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ArujaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
-		<None Remove="Servicos\Config\NFSe\AvareSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraMansaRJ.xml" />
@@ -429,6 +428,7 @@
 		<None Remove="Servicos\Config\NFSe\TubaraoSC.xml" />
 		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\UberlandiaMG.xml" />
+		<None Remove="Servicos\Config\NFSe\UruguaianaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VarginhaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VeraCruzRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VeranopolisRS.xml" />
@@ -1003,6 +1003,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IgarapeMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\UruguaianaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VarginhaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AmambaiMS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -1215,9 +1216,6 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AguaBoaMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuarantaDoNorteMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MogiDasCruzesSP.xml">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="Servicos\Config\NFSe\AvareSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TremembeSP.xml" />

@@ -12,7 +12,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial1005")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EvtTabEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.EvtTabEstab")]
     [ComVisible(true)]
 #endif
     public class EvtTabEstab
@@ -42,7 +42,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.IdeEvento")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.IdeEvento")]
     [ComVisible(true)]
 #endif
     public class IdeEvento
@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.IdeEmpregador")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.IdeEmpregador")]
     [ComVisible(true)]
 #endif
     public class IdeEmpregador
@@ -73,7 +73,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoEstab")]
     [ComVisible(true)]
 #endif
     public class InfoEstab
@@ -90,7 +90,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InclusaoESocial1005")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InclusaoESocial1005")]
     [ComVisible(true)]
 #endif
     public class InclusaoESocial1005
@@ -104,7 +104,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.IdeEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.IdeEstab")]
     [ComVisible(true)]
 #endif
     public class IdeEstab
@@ -160,7 +160,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.DadosEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.DadosEstab")]
     [ComVisible(true)]
 #endif
     public class DadosEstab
@@ -171,15 +171,24 @@ namespace Unimake.Business.DFe.Xml.eSocial
         [XmlElement("cnpjResp")]
         public string CnpjResp { get; set; }
 
+        /// <summary>
+        /// Informações de apuração da alíquota GILRAT do estabelecimento
+        /// </summary>
         [XmlElement("aliqGilrat")]
         public AliqGilrat AliqGilrat { get; set; }
 
         [XmlElement("infoCaepf")]
         public InfoCaepf InfoCaepf { get; set; }
 
+        /// <summary>
+        /// Grupo preenchido obrigatória e exclusivamente por empresa construtora, relacionando os estabelecimentos inscritos no Cadastro Nacional de Obras - CNO, para indicar a substituição ou não da contribuição patronal incidente sobre a remuneração dos trabalhadores de obra de construção civil.
+        /// </summary>
         [XmlElement("infoObra")]
         public InfoObra InfoObra { get; set; }
 
+        /// <summary>
+        /// Informações trabalhistas relativas ao estabelecimento.
+        /// </summary>
         [XmlElement("infoTrab")]
         public InfoTrab InfoTrab { get; set; }
 
@@ -192,20 +201,30 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.AliqGilrat")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.AliqGilrat")]
     [ComVisible(true)]
 #endif
     public class AliqGilrat
     {
+        /// <summary>
+        /// Informar a alíquota RAT, quando divergente da legislação vigente para a atividade (CNAE) preponderante. 
+        /// A divergência só é permitida se existir o grupo com informações sobre o processo administrativo/judicial que permite a aplicação de alíquota diferente.
+        /// </summary>
         [XmlElement("aliqRat")]
         public string AliqRat { get; set; }
 
         [XmlElement("fap")]
         public string Fap { get; set; }
 
+        /// <summary>
+        /// Grupo que identifica, em caso de existência, o processo administrativo ou judicial em que houve decisão/sentença favorável ao contribuinte modificando a alíquota RAT da empresa.
+        /// </summary>
         [XmlElement("procAdmJudRat")]
         public ProcAdmJudRat ProcAdmJudRat { get; set; }
 
+        /// <summary>
+        /// Grupo que identifica, em caso de existência, o processo administrativo/judicial em que houve decisão ou sentença favorável ao contribuinte suspendendo ou alterando a alíquota FAP aplicável ao contribuinte.
+        /// </summary>
         [XmlElement("procAdmJudFap")]
         public ProcAdmJudFap ProcAdmJudFap { get; set; }
 
@@ -220,7 +239,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ProcAdmJudRat")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.ProcAdmJudRat")]
     [ComVisible(true)]
 #endif
     public class ProcAdmJudRat
@@ -237,7 +256,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ProcAdmJudFap")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.ProcAdmJudFap")]
     [ComVisible(true)]
 #endif
     public class ProcAdmJudFap
@@ -254,7 +273,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoCaepf")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoCaepf")]
     [ComVisible(true)]
 #endif
     public class InfoCaepf
@@ -265,22 +284,26 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoObra")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoObra")]
     [ComVisible(true)]
 #endif
     public class InfoObra
     {
         [XmlElement("indSubstPatrObra")]
-        public IndicativoSubstuicaoPatronal IndSubstPatrObra { get; set; }
+        public IndicativoSubstituicaoPatronal IndSubstPatrObra { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoTrab")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoTrab")]
     [ComVisible(true)]
 #endif
     public class InfoTrab
     {
+        /// <summary>
+        /// Informações relacionadas à contratação de aprendiz.
+        /// Preenchimento obrigatório somente no caso de dispensa, ainda que parcial, de contratação de aprendiz em virtude de processo judicial ou quando houver contratação de aprendiz por meio de entidade educativa ou de prática desportiva.
+        /// </summary>
         [XmlElement("infoApr")]
         public InfoApr InfoApr { get; set; }
 
@@ -290,7 +313,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoApr")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoApr")]
     [ComVisible(true)]
 #endif
     public class InfoApr
@@ -347,7 +370,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoEntEduc")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoEntEduc")]
     [ComVisible(true)]
 #endif
     public class InfoEntEduc
@@ -358,7 +381,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.InfoPCD")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.InfoPCD")]
     [ComVisible(true)]
 #endif
     public class InfoPCD
@@ -369,7 +392,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.Alteracao")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.Alteracao")]
     [ComVisible(true)]
 #endif
     public class Alteracao
@@ -377,6 +400,9 @@ namespace Unimake.Business.DFe.Xml.eSocial
         [XmlElement("ideEstab")]
         public IdeEstab IdeEstab { get; set; }
 
+        /// <summary>
+        /// Detalhamento das informações do estabelecimento, obra de construção civil ou unidade de órgão público.
+        /// </summary>
         [XmlElement("dadosEstab")]
         public DadosEstab DadosEstab { get; set; }
 
@@ -386,7 +412,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NovaValidade")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.NovaValidade")]
     [ComVisible(true)]
 #endif
     public class NovaValidade
@@ -436,7 +462,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.Exclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.eSocial.Exclusao")]
     [ComVisible(true)]
 #endif
     public class Exclusao

@@ -3,7 +3,7 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="2.02">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
       <WebActionHomologacao>RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>RecepcionarLoteRps</WebActionProducao>
@@ -22,7 +22,7 @@
     </RecepcionarLoteRps>
     <GerarNfse versao="2.02">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
       <WebActionHomologacao>GerarNfse</WebActionHomologacao>
       <WebActionProducao>GerarNfse</WebActionProducao>
@@ -41,7 +41,7 @@
     </GerarNfse>
     <CancelarNfse versao="2.02">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
       <WebActionHomologacao>CancelarNfse</WebActionHomologacao>
       <WebActionProducao>CancelarNfse</WebActionProducao>
@@ -60,7 +60,7 @@
     </CancelarNfse>
     <SubstituirNfse versao="2.02">
       <Descricao>Substituir nota fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
       <WebActionHomologacao>SubstituirNfse</WebActionHomologacao>
       <WebActionProducao>SubstituirNfse</WebActionProducao>
@@ -81,7 +81,7 @@
     </SubstituirNfse>
     <ConsultarLoteRps versao="2.02">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://treino-itambacuri-mg.notainteligente.com/api/action</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao></WebEnderecoHomologacao>
       <WebEnderecoProducao>https://itambacuri-mg.notainteligente.com/api/action</WebEnderecoProducao>
       <WebActionHomologacao>ConsultarLoteRps</WebActionHomologacao>
       <WebActionProducao>ConsultarLoteRps</WebActionProducao>
