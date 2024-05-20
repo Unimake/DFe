@@ -250,8 +250,9 @@ namespace Unimake.DFe.Test.NFSe
             switch (servico.Configuracoes.PadraoNFSe, servico.Configuracoes.TipoAmbiente)
             {
                 case (PadraoNFSe.FIORILLI, TipoAmbiente.Producao):
-                case (PadraoNFSe.SIGCORP, TipoAmbiente.Homologacao):
-                    message += "necessita de um certificado digital válido";
+                case (PadraoNFSe.SYSTEMPRO, TipoAmbiente.Homologacao):
+                case (PadraoNFSe.SYSTEMPRO, TipoAmbiente.Producao):
+                    message += "necessita de um certificado digital autorizado para consumir o Webservice";
                     break;
 
                 case (PadraoNFSe.BAUHAUS, TipoAmbiente.Homologacao):
