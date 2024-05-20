@@ -8949,7 +8949,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Indicativo de substituição da contribuição patronal de obra de construção civil.
     /// </summary>
-    public enum IndicativoSubstuicaoPatronal
+    public enum IndicativoSubstituicaoPatronal
     {
         /// <summary>
         /// 1 - Contribuição patronal substituída

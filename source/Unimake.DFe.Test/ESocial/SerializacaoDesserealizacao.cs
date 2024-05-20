@@ -15,7 +15,7 @@ namespace Unimake.DFe.Test.ESocial
         /// Testar a serialização e desserialização do Evento 1000 eSocial
         /// </summary>
         [Theory]
-        [Trait("DFe", "EFDReinf")]
+        [Trait("DFe", "eSocial")]
         [InlineData(@"..\..\..\ESocial\Resources\1000_evtInfoEmpregador-esocial-evt .xml")]
         public void SerializacaoDesserializacaoESocial1000(string arqXML)
         {
@@ -40,7 +40,7 @@ namespace Unimake.DFe.Test.ESocial
         /// Testar a serialização e desserialização do Evento 1005 eSocial
         /// </summary>
         [Theory]
-        [Trait("DFe", "EFDReinf")]
+        [Trait("DFe", "eSocial")]
         [InlineData(@"..\..\..\ESocial\Resources\1005_evtTabEstab-esocial-evt.xml")]
         public void SerializacaoDesserializacaoESocial1005(string arqXML)
         {
