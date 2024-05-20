@@ -8708,22 +8708,30 @@ namespace Unimake.Business.DFe.Servicos
     #region Indicativo indCoop
 
     /// <summary>
-    /// eSocial - tag indCoop - Sua empresa realmente se enquadra como cooperativa?
-    /// NaoOptante = 0 - Não optante.
-    /// SimOptante = 1 - Optante.
+    /// Valores válidos: 0 - Não é cooperativa 1 - Cooperativa de trabalho 2 - Cooperativa de produção 3 - Outras cooperativas
     /// </summary>
     public enum IndCoop
     {
         /// <summary>
-        /// 0 - Não optante.
+        /// 0 - Não é cooperativa.
         /// </summary>
         [XmlEnum("0")]
-        NaoOptante = 0,
+        NaoCooperativa = 0,
         /// <summary>
-        /// 1 - Optante.
+        /// 1 - Cooperativa de trabalho.
         /// </summary>
         [XmlEnum("1")]
-        SimOptante = 1,
+        CoopDeTrabalho = 1,
+        /// <summary>
+        /// 2 - Cooperativa de produção.
+        /// </summary>
+        [XmlEnum("2")]
+        CoopDeProducao = 2,
+        /// <summary>
+        /// 3 - Outras cooperativas
+        /// </summary>
+        [XmlEnum("3")]
+        OutrasCoop = 3,
 
     }
     #endregion
@@ -8731,22 +8739,23 @@ namespace Unimake.Business.DFe.Servicos
     #region Indicativo indConstr
 
     /// <summary>
-    /// eSocial - tag indConstr - Sua empresa realmente se enquadra no setor de construção civil?
-    /// NaoOptante = 0 - Não optante.
-    /// SimOptante = 1 - Optante.
+    /// Valores válidos:
+    /// 0 - Não é construtora; 
+    /// 1 - Empresa construtora;
+    /// Validação: O preenchimento do campo é exclusivo e obrigatória para PJ.
     /// </summary>
     public enum IndConstr
     {
         /// <summary>
-        /// 0 - Não optante.
+        /// 0 - Não é construtora; 
         /// </summary>
         [XmlEnum("0")]
-        NaoOptante = 0,
+        NaoConstrutora = 0,
         /// <summary>
-        /// 1 - Optante.
+        /// 1 - Empresa construtora;
         /// </summary>
         [XmlEnum("1")]
-        SimOptante = 1,
+        EmpresaConstrutora = 1,
 
     }
     #endregion
@@ -8754,22 +8763,31 @@ namespace Unimake.Business.DFe.Servicos
     #region Indicativo indDesFolha
 
     /// <summary>
-    /// eSocial - tag indDesFolha - Indica se a empresa desdobra a sua folha de pagamento. Desdobrar a folha significa separá-la em partes diferentes para processamento
-    /// NaoOptante = 0 - Não optante.
-    /// SimOptante = 1 - Optante.
+    /// Valores válidos:
+    /// 0 - Não aplicável;
+    /// 1 - Empresa enquadrada nos critérios da legislação vigente;
+    /// 2 - Município enquadrado nos critérios da legislação vigente;
+    /// 
+    /// Validação: Pode ser igual a [1] apenas se classTrib = [02, 03, 99]. Pode ser igual a [2] apenas para as naturezas jurídicas iguais a [103-1, 106-6, 124-4, 133-3].
+    /// Nos demais casos, deve ser igual a [0].
     /// </summary>
     public enum IndDesFolha
     {
         /// <summary>
-        /// 0 - Não optante. Não desdobra a folha de pagamento
+        /// 0 - Não aplicável;
         /// </summary>
         [XmlEnum("0")]
-        NaoOptante = 0,
+        NaoAplicavel = 0,
         /// <summary>
-        /// 1 - Optante. Desdobra a folha de pagamento
+        /// 1 - Empresa enquadrada nos critérios da legislação vigente;
         /// </summary>
         [XmlEnum("1")]
-        SimOptante = 1,
+        EmpresaEnquadrada = 1,
+        /// <summary>
+        /// 2 - Município enquadrado nos critérios da legislação vigente;
+        /// </summary>
+        [XmlEnum("2")]
+        MunicipioEnquadrado = 2,
 
     }
     #endregion
@@ -8777,22 +8795,22 @@ namespace Unimake.Business.DFe.Servicos
     #region Indicativo indDesFolha
 
     /// <summary>
-    /// eSocial - tag indOptRegEletron - Indica se a empresa optou pelo registro eletrônico de empregados.
-    /// NaoOptante = 0 - Não optante.
-    /// SimOptante = 1 - Optante.
+    /// Valores válidos:
+    /// 0 - Não optou pelo registro eletrônico de empregados (ou opção não aplicável);
+    /// 1 - Optou pelo registro eletrônico de empregados;
     /// </summary>
     public enum IndOptRegEletron
     {
         /// <summary>
-        /// 0 - Não optante. Não a empresa optou pelo registro eletrônico de empregados.
+        /// 0 - Não optou pelo registro eletrônico de empregados (ou opção não aplicável);
         /// </summary>
         [XmlEnum("0")]
-        NaoOptante = 0,
+        NaoOptou = 0,
         /// <summary>
-        /// 1 - Optante. A empresa optou pelo registro eletrônico de empregados.
+        /// 1 - Optou pelo registro eletrônico de empregados;
         /// </summary>
         [XmlEnum("1")]
-        SimOptante = 1,
+        SimOptou = 1,
 
     }
     #endregion
@@ -8823,22 +8841,23 @@ namespace Unimake.Business.DFe.Servicos
     #region Indicativo indDesFolha
 
     /// <summary>
-    /// eSocial - tag IndAcordoIsenMulta - Informa se a empresa tem um acordo internacional que a isenta de multas.
-    /// NaoOptante = 0 - Não optante.
-    /// SimOptante = 1 - Optante.
+    /// Indicativo da existência de acordo internacional para isenção de multa.
+    /// Valores válidos:
+    /// 0 - Sem acordo
+    /// 1 - Com acordo
     /// </summary>
     public enum IndAcordoIsenMulta
     {
         /// <summary>
-        /// 0 - A empresa não possui um acordo internacional de isenção de multa. (Este é o cenário mais comum).
+        /// 0 - Sem acordo
         /// </summary>
         [XmlEnum("0")]
-        Nao = 0,
+        SemAcordo = 0,
         /// <summary>
-        /// 1 - A empresa possui um acordo internacional que a isenta de multas previdenciárias.
+        /// 1 - Com acordo
         /// </summary>
         [XmlEnum("1")]
-        Sim = 1,
+        ComAcordo = 1,
 
     }
     #endregion
