@@ -9239,7 +9239,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum CodigoIncidenciaDaRubrica
     {
         /// <summary>
-        /// 00 - Vencimento, provento ou pensão
+        /// 00 - Não é base de cálculo de contribuições devidas
         /// </summary>
         [XmlEnum("00")]
         NaoBaseContribuicoesDevidas = 00,
@@ -9260,13 +9260,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 31 - Contribuição descontada do segurado ou beneficiário
         /// </summary>
         [XmlEnum("31")]
-        ContribuicaoDescontadaBeneficiario = 31,
+        ContribuicaoDescontadaSeguradoBeneficiario = 31,
 
         /// <summary>
         /// 32 - Contribuição descontada do segurado ou beneficiário - 13º salário
         /// </summary>
         [XmlEnum("32")]
-        ContribuicaoDescontadaDecimoTerceiro= 32,
+        ContribuicaoDescontadaSeguradoBeneficiarioDecimoTerceiro = 32,
 
         /// <summary>
         /// 91 - Suspensão de incidência em decorrência de decisão judicial
