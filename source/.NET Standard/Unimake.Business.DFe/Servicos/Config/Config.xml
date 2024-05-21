@@ -1349,4 +1349,10 @@
 		<ArqConfig>UruguaianaRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2304400">
+		<Nome>Fortaleza - CE</Nome>
+		<UF>CE</UF>
+		<ArqConfig>FortalezaCE.xml</ArqConfig>
+		<PadraoNFSe>GINFES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
