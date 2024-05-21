@@ -1,0 +1,13 @@
+<ConsultarNfseServicoPrestadoEnvio>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>91593376000102</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>31001042</InscricaoMunicipal>
+	</Prestador>
+	<PeriodoEmissao>
+		<DataInicial>2011-01-01</DataInicial>
+		<DataFinal>2011-06-06</DataFinal>
+	</PeriodoEmissao>
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoPrestadoEnvio>
