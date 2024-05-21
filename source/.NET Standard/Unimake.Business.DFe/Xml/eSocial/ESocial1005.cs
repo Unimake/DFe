@@ -8,6 +8,11 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 #endif
 
+using System;
+using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
+using System.Collections.Generic;
+
 namespace Unimake.Business.DFe.Xml.eSocial
 {
 #if INTEROP
@@ -137,7 +142,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 #if INTEROP
         public DateTime FimValid { get; set; }
 #else
-        public DateTimeOffset IniValid { get; set; }
+        public DateTimeOffset FimValid { get; set; }
 #endif
 
         [XmlElement("fimValid")]
@@ -439,7 +444,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 #if INTEROP
         public DateTime FimValid { get; set; }
 #else
-        public DateTimeOffset IniValid { get; set; }
+        public DateTimeOffset FimValid { get; set; }
 #endif
 
         [XmlElement("fimValid")]
