@@ -263,6 +263,15 @@ namespace Unimake.DFe.Test.NFSe
                     message += "necessita de uma autenticação válida";
                     break;
 
+                case (PadraoNFSe.TINUS, TipoAmbiente.Producao):
+                case (PadraoNFSe.TINUS, TipoAmbiente.Homologacao):
+                    if (servico.Configuracoes.Servico == Servico.NFSeCancelarNfse)
+                    {
+                        message += "necessita de dados reais para retorno correto da prefeitura.";
+                    }
+
+                    break;
+
                 default:
                     message += "ainda não possui o erro catalogado!";
                     break;
