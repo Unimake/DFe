@@ -1355,4 +1355,10 @@
 		<ArqConfig>FortalezaCE.xml</ArqConfig>
 		<PadraoNFSe>GINFES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3507506">
+		<Nome>Botucatu - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>BotucatuSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

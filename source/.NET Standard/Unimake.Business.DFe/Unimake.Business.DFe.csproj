@@ -257,6 +257,7 @@
 		<None Remove="Servicos\Config\NFSe\BlumenauSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BoaVistaRR.xml" />
 		<None Remove="Servicos\Config\NFSe\BoituvaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BotucatuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\BrumadoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
@@ -867,6 +868,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SenhorDoBonfimBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
