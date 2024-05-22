@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.eSocial
 {
@@ -109,7 +108,7 @@ namespace Unimake.Business.DFe.Xml.eSocial
 #if INTEROP
         public DateTime FimValid { get; set; }
 #else
-        public DateTimeOffset IniValid { get; set; }
+        public DateTimeOffset FimValid { get; set; }
 #endif
 
         [XmlElement("fimValid")]

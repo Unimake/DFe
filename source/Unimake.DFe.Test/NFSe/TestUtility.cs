@@ -233,7 +233,8 @@ namespace Unimake.DFe.Test.NFSe
             }
             if (servico.HttpStatusCode == System.Net.HttpStatusCode.OK ||
                 (servico.HttpStatusCode == HttpStatusCode.InternalServerError && servico.Configuracoes.PadraoNFSe == PadraoNFSe.BAUHAUS) ||
-                servico.HttpStatusCode == (HttpStatusCode)0 && servico.Configuracoes.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS)
+                servico.HttpStatusCode == (HttpStatusCode)0 && servico.Configuracoes.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS || 
+                servico.HttpStatusCode == HttpStatusCode.BadRequest && servico.Configuracoes.PadraoNFSe == PadraoNFSe.NACIONAL)
             {
                 return true;
             }
