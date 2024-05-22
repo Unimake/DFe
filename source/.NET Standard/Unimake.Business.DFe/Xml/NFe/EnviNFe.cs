@@ -300,7 +300,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                     CodigoNumerico = Ide.CNF
                 };
                 ChaveField = XMLUtility.MontarChaveNFe(ref conteudoChaveDFe);
-                Ide.CDV = conteudoChaveDFe.DigitoVerificador; //Convert.ToInt32(ChaveField.Substring(43));
+                Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
                 return ChaveField;
             }

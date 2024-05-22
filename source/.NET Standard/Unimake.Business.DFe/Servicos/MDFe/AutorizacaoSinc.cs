@@ -34,28 +34,95 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
         private void MontarQrCode()
         {
-            MDFe = new Xml.MDFe.MDFe().LerXML<Xml.MDFe.MDFe>(ConteudoXML);
-
-            if (MDFe.InfMDFeSupl == null)
+            if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
             {
-                MDFe.InfMDFeSupl = new InfMDFeSupl();
+                throw new Exception("A tag obrigatória <MDFe> não foi localizada no XML.");
+            }
+            var elementMDFe = (XmlElement)ConteudoXML.GetElementsByTagName("MDFe")[0];
 
-                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
-
-                var paramLinkQRCode = urlQrCode +
-                    "?chMDFe=" + MDFe.InfMDFe.Chave +
-                    "&tpAmb=" + ((int)MDFe.InfMDFe.Ide.TpAmb).ToString();
-
-                if (MDFe.InfMDFe.Ide.TpEmis == TipoEmissao.ContingenciaFSIA)
+            if (elementMDFe.GetElementsByTagName("infMDFeSupl").Count <= 0)
+            {
+                if (elementMDFe.GetElementsByTagName("infMDFe").Count <= 0)
                 {
-                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, MDFe.InfMDFe.Chave);
+                    throw new Exception("A tag obrigatória <infMDFe>, do grupo de tag <MDFe>, não foi localizada no XML.");
+                }
+                var elementInfMDFe = (XmlElement)elementMDFe.GetElementsByTagName("infMDFe")[0];
+
+                if (elementInfMDFe.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <MDFe><infMDFe>, não foi localizada no XML.");
+                }
+                var elementIde = (XmlElement)elementInfMDFe.GetElementsByTagName("ide")[0];
+
+                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                var cUF = elementIde.GetElementsByTagName("cUF")[0].InnerText;
+                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
+                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
+                var nMDF = elementIde.GetElementsByTagName("nMDF")[0].InnerText;
+                var cMDF = elementIde.GetElementsByTagName("cMDF")[0].InnerText;
+                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
+
+                if (elementInfMDFe.GetElementsByTagName("emit").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <emit>, do grupo de tag <MDFe><infNFe>, não foi localizada no XML.");
+                }
+                var elementEmit = (XmlElement)elementMDFe.GetElementsByTagName("emit")[0];
+
+                var CNPJEmit = string.Empty;
+                var CPFEmit = string.Empty;
+                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
+                {
+                    if (elementEmit.GetElementsByTagName("CPF").Count <= 0)
+                    {
+                        throw new Exception("A tag obrigatória <CNPJ> ou <CPF>, do grupo de tag <MDFe><infMDFe><emit>, não foi localizada no XML.");
+                    }
+                    else
+                    {
+                        CPFEmit = elementEmit.GetElementsByTagName("CPF")[0].InnerText;
+                    }
+                }
+                else
+                {
+                    CNPJEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
                 }
 
-                MDFe.InfMDFeSupl.QrCodMDFe = paramLinkQRCode.Trim();
-            }
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
+                    AnoEmissao = dhEmi.ToString("yy"),
+                    MesEmissao = dhEmi.ToString("MM"),
+                    CNPJCPFEmissor = (string.IsNullOrWhiteSpace(CNPJEmit) ? CPFEmit : CNPJEmit).PadLeft(14, '0'),
+                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
+                    Serie = Convert.ToInt32(serie),
+                    NumeroDoctoFiscal = Convert.ToInt32(nMDF),
+                    TipoEmissao = (TipoEmissao)(int)tpEmis,
+                    CodigoNumerico = cMDF
+                };
 
-            //Atualizar a propriedade do XML do MDFe novamente com o conteúdo atual já a tag de QRCode e link de consulta
-            ConteudoXML = MDFe.GerarXML();
+                var chave = XMLUtility.MontarChaveMDFe(ref conteudoChaveDFe);
+
+                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
+                var paramLinkQRCode = urlQrCode +
+                    "?chMDFe=" + chave +
+                    "&tpAmb=" + ((int)tpAmb).ToString();
+
+                if (tpEmis == TipoEmissao.ContingenciaFSIA)
+                {
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, chave);
+                }
+
+                var nodeMDFe = ConteudoXML.GetElementsByTagName("MDFe")[0];
+
+                var namespaceURI = nodeMDFe.GetNamespaceOfPrefix("");
+                XmlNode infMDFeSuplNode = ConteudoXML.CreateElement("infMDFeSupl", namespaceURI);
+                XmlNode qrCodMDFeNode = ConteudoXML.CreateElement("qrCodMDFe", namespaceURI);
+                qrCodMDFeNode.InnerText = paramLinkQRCode.Trim();
+                infMDFeSuplNode.AppendChild(qrCodMDFeNode);
+                nodeMDFe.AppendChild(infMDFeSuplNode);
+                var nodeInfMDFe = (XmlNode)elementInfMDFe;
+                nodeMDFe.InsertAfter(infMDFeSuplNode, nodeInfMDFe);
+            }
         }
 
         /// <summary>
@@ -93,22 +160,41 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if (MDFe == null)
-            {
-                Configuracoes.Definida = false;
-                return;
-            }
-
-            var xml = MDFe;
-
             if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.MDFeAutorizacaoSinc;
-                Configuracoes.CodigoUF = (int)xml.InfMDFe.Ide.CUF;
-                Configuracoes.TipoAmbiente = xml.InfMDFe.Ide.TpAmb;
-                Configuracoes.Modelo = xml.InfMDFe.Ide.Mod;
-                Configuracoes.TipoEmissao = xml.InfMDFe.Ide.TpEmis;
-                Configuracoes.SchemaVersao = xml.InfMDFe.Versao;
+
+                if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <MDFe> não foi localizada no XML.");
+                }
+                var elementMDFe = (XmlElement)ConteudoXML.GetElementsByTagName("MDFe")[0];
+
+                if (elementMDFe.GetElementsByTagName("infMDFe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <infMDFe>, do grupo de tag <MDFe>, não foi localizada no XML.");
+                }
+                var elementInfMDFe = (XmlElement)elementMDFe.GetElementsByTagName("infMDFe")[0];
+
+                if (elementInfMDFe.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <MDFe><infMDFe>, não foi localizada no XML.");
+                }
+                var elementIde = (XmlElement)elementInfMDFe.GetElementsByTagName("ide")[0];
+
+                Configuracoes.CodigoUF = Convert.ToInt32(elementIde.GetElementsByTagName("cUF")[0].InnerText);
+                Configuracoes.TipoAmbiente = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                Configuracoes.Modelo = (ModeloDFe)Convert.ToInt32(elementIde.GetElementsByTagName("mod")[0].InnerText);
+                Configuracoes.TipoEmissao = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+
+                if (elementInfMDFe.GetAttribute("versao").Length > 0)
+                {
+                    Configuracoes.SchemaVersao = elementInfMDFe.GetAttribute("versao");
+                }
+                else
+                {
+                    throw new Exception("O atributo obrigatório \"versao\" da tag <infMDFe>, do grupo de tag <MDFe>, não foi localizado no XML.");
+                }
 
                 base.DefinirConfiguracao();
             }
@@ -272,6 +358,24 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             Inicializar(mdfe?.GerarXML() ?? throw new ArgumentNullException(nameof(mdfe)), configuracao);
         }
 
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public AutorizacaoSinc(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
+
         #endregion Public Constructors
 
         #region Public Methods
@@ -284,17 +388,9 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 #endif
         public override void Executar()
         {
-            if (!Configuracoes.Definida)
-            {
-                if (MDFe == null)
-                {
-                    throw new NullReferenceException($"{nameof(MDFe)} não pode ser nulo.");
-                }
-
-                DefinirConfiguracao();
-            }
-
             base.Executar();
+
+            MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
         }
 
         /// <summary>
@@ -302,14 +398,36 @@ namespace Unimake.Business.DFe.Servicos.MDFe
         /// </summary>
         protected override void XmlValidar()
         {
-            var xml = MDFe;
-
             var schemaArquivo = string.Empty;
             var schemaArquivoEspecifico = string.Empty;
 
             if (Configuracoes.SchemasEspecificos.Count > 0)
             {
-                var modal = (int)xml.InfMDFe.Ide.Modal;
+                if (ConteudoXML.GetElementsByTagName("MDFe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <MDFe> não foi localizada no XML.");
+                }
+                var elementMDFe = (XmlElement)ConteudoXML.GetElementsByTagName("MDFe")[0];
+
+                if (elementMDFe.GetElementsByTagName("infMDFe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <infMDFe>, do grupo de tag <MDFe>, não foi localizada no XML.");
+                }
+                var elementInfMDFe = (XmlElement)elementMDFe.GetElementsByTagName("infMDFe")[0];
+
+                if (elementInfMDFe.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <MDFe><infMDFe>, não foi localizada no XML.");
+                }
+                var elementIde = (XmlElement)elementInfMDFe.GetElementsByTagName("ide")[0];
+
+                if (elementIde.GetElementsByTagName("modal").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <modal>, do grupo de tag <MDFe><infMDFe><ide>, não foi localizada no XML.");
+
+                }
+
+                var modal = Convert.ToInt32(elementIde.GetElementsByTagName("modal")[0].InnerText);
 
                 schemaArquivo = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivo;
                 schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[modal.ToString()].SchemaArquivoEspecifico;

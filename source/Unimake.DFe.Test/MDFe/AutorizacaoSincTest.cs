@@ -76,8 +76,65 @@ namespace Unimake.DFe.Test.MDFe
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void EnviarMDFeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            #region Criar MDFe
+            var xml = MontarXMLMDFe(ufBrasil, tipoAmbiente);
 
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
+            autorizacaoSinc.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CStat.Equals(744), "Falha no envio do MDFe - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+        }
+
+        /// <summary>
+        /// Enviar um MDFe no modo síncrono somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado</param>
+        [Theory]
+        [Trait("DFe", "MDFe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+
+        public void EnviarMDFeSincronoString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xml = MontarXMLMDFe(ufBrasil, tipoAmbiente);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacaoSinc = new AutorizacaoSinc(xml.GerarXML().OuterXml, configuracao);
+            autorizacaoSinc.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CStat.Equals(744), "Falha no envio do MDFe - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+        }
+
+
+        /// <summary>
+        /// Auxiliar para montar o XML do MDFe
+        /// </summary>
+        /// <param name="ufBrasil">UF</param>
+        /// <param name="tipoAmbiente">Ambiente</param>
+        /// <returns></returns>
+        private Business.DFe.Xml.MDFe.MDFe MontarXMLMDFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {            
             var xml = new Business.DFe.Xml.MDFe.MDFe
             {
                 InfMDFe = new InfMDFe
@@ -321,23 +378,7 @@ namespace Unimake.DFe.Test.MDFe
                 },
             };
 
-            #endregion CriarMDFe
-
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.MDFe,
-                TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital
-            };
-
-            var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
-            autorizacaoSinc.Executar();
-
-            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(autorizacaoSinc.Result.CStat.Equals(744), "Falha no envio do MDFe - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+            return xml;
         }
     }
 }

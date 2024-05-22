@@ -97,5 +97,41 @@ namespace Unimake.DFe.Test.MDFe
             Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(statusServico.Result.CStat.Equals(107), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
         }
+
+        /// <summary>
+        /// Consultar o status do serviço do MDFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta status</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta status</param>
+        [Theory]
+        [Trait("DFe", "MDFe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void ConsultarStatusServicoString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xml = new ConsStatServMDFe
+            {
+                Versao = "3.00",
+                TpAmb = tipoAmbiente
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)ufBrasil,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var statusServico = new StatusServico(xml.GerarXML().OuterXml, configuracao);
+            statusServico.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            //Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(statusServico.Result.CStat.Equals(107), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
+        }
+
     }
 }

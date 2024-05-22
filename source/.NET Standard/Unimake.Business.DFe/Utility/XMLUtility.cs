@@ -962,16 +962,23 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Monta a chave do DFE com base nos valores do XML
+        /// Monta a chave da NFe com base nos valores informados
         /// </summary>
-        /// <param name="conteudoChaveDFe">Conteúdos do DFe necessário para montagem da chave</param>
-        /// <returns>Chave do DFe</returns>
+        /// <param name="conteudoChaveDFe">Conteúdos da NFe necessários para montagem da chave</param>
+        /// <returns>Chave da NFe</returns>
         public static string MontarChaveNFe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
 
         /// <summary>
-        /// Monta a chave do DFE com base nos valores do XML
+        /// Monta a chave do MDFe com base nos valores informados
         /// </summary>
-        /// <param name="conteudoChaveDFe">Conteúdos do DFe necessário para montagem da chave</param>
+        /// <param name="conteudoChaveDFe">Conteúdos do MDFe necessários para montagem da chave</param>
+        /// <returns>Chave do MDFe</returns>
+        public static string MontarChaveMDFe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
+
+        /// <summary>
+        /// Monta a chave do DFE com base nos valores informados
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos do DFe necessários para montagem da chave</param>
         /// <returns>Chave do DFe</returns>
         private static string MontarChaveDFe(ref ConteudoChaveDFe conteudoChaveDFe)
         {

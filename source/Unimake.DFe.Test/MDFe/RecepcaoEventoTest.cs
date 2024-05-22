@@ -121,5 +121,64 @@ namespace Unimake.DFe.Test.MDFe
             Assert.True(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(recepcaoEvento.Result.InfEvento.CStat.Equals(630) || recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
         }
+
+        /// <summary>
+        /// Enviar um evento do MDFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Enviar um evento por estado + ambiente para garantir que todos estão funcionando.
+        /// Evento utilizado no teste é o cancelamento, pois tem em todos estados e também no ambiente nacional.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado xml</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
+        [Theory]
+        [Trait("DFe", "MDFe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void RecepcaoEventoEstadosString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xml = new EventoMDFe
+            {
+                Versao = "3.00",
+                InfEvento = new InfEvento(new DetEventoCanc
+                {
+                    NProt = (ufBrasil != UFBrasil.AN ? (int)ufBrasil : (int)UFBrasil.PR) + "0000000000000",
+                    VersaoEvento = "3.00",
+                    XJust = "Justificativa para cancelamento do MDFe de teste"
+                })
+                {
+                    COrgao = ufBrasil,
+                    ChMDFe = (int)ufBrasil + "200206117473000150570010000005671227070615",
+                    CNPJ = "06117473000150",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoMDFe.Cancelamento,
+                    NSeqEvento = 1,
+                    TpAmb = tipoAmbiente
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var recepcaoEvento = new RecepcaoEvento(xml.GerarXML().OuterXml, configuracao);
+            recepcaoEvento.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+
+            //if(ufBrasil == UFBrasil.MA)
+            //{
+            //    Assert.True(recepcaoEvento.Result.InfEvento.COrgao.Equals(UFBrasil.DF), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            //}
+            //else
+            //{
+            Assert.True(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            //}
+
+            Assert.True(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(recepcaoEvento.Result.InfEvento.CStat.Equals(630) || recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
+        }
+
     }
 }

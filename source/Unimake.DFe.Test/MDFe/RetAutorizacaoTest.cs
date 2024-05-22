@@ -101,5 +101,45 @@ namespace Unimake.DFe.Test.MDFe
             }
             //Assert.True(retAutorizacao.Result.CStat.Equals(106), "Status está diferente de \"106-Recibo pesquisado não foi encontrado\". Analise!!!");
         }
+
+        /// <summary>
+        /// Consultar o recibo do MDFe somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta recibo</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta recibo</param>
+        [Theory]
+        [Trait("DFe", "MDFe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void ConsultarReciboString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xml = new ConsReciMDFe
+            {
+                Versao = "3.00",
+                TpAmb = tipoAmbiente,
+                NRec = ((int)ufBrasil).ToString() + "9210140351219"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var retAutorizacao = new RetAutorizacao(xml.GerarXML().OuterXml, configuracao);
+            retAutorizacao.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(retAutorizacao.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(retAutorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            if (retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000" && retAutorizacao.Result.NRec != "0")
+            {
+                Assert.True(retAutorizacao.Result.NRec.Equals(xml.NRec), "Webservice retornou um número diferente do informado no XML da consulta." + xml.NRec);
+            }
+            //Assert.True(retAutorizacao.Result.CStat.Equals(106), "Status está diferente de \"106-Recibo pesquisado não foi encontrado\". Analise!!!");
+        }
+
     }
 }
