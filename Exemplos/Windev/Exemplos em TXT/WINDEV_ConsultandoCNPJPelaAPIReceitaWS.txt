@@ -1,9 +1,9 @@
-// Definindo a URL da API
 // Limites da API na sua versão gratuita:
 // - 3 consultas por minuto
 // - 130.000 consultas por mês
 // - Não é consulta em tempo real na base da receita, então pode ter uma defasagem nas informações. No retorno do Json tem a data da ultima atualização do cadastro
 
+// Definindo a URL da API
 sCNPJ			is string	= "06117473000150"
 sURL			is string	= "https://receitaws.com.br/v1/cnpj/" + sCNPJ
 
