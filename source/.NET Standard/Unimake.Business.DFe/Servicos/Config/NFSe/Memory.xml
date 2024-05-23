@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://web1.memory.com.br:81/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://web1.memory.com.br/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.testarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.importarLoteRPS</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -15,6 +15,7 @@
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebTagRetornoHomologacao>SOAP-ENV:Body</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -22,8 +23,8 @@
 		</RecepcionarLoteRps>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta nota fiscal de serviço por RPS</Descricao>
-			<WebEnderecoHomologacao>http://web1.memory.com.br:81/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://web1.memory.com.br/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.consultarRPS</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.consultarRPS</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -41,8 +42,8 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consulta nota fiscal de serviço do prestador</Descricao>
-			<WebEnderecoHomologacao>http://web1.memory.com.br:81/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://web1.memory.com.br/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.consultarNFSE</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.consultarNFSE</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -60,8 +61,8 @@
 		</ConsultarNfse>
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta o Lote RPS enviado</Descricao>
-			<WebEnderecoHomologacao>http://web1.memory.com.br:81/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://web1.memory.com.br/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.consultarLoteRPS</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.consultarLoteRPS</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -79,8 +80,8 @@
 		</ConsultarLoteRps>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://web1.memory.com.br:81/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://web1.memory.com.br/nfse/ws/lote_rps_service.php</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfsebrasil.net.br/nfse/ws/lote_rps_service.php</WebEnderecoProducao>
 			<WebActionHomologacao>urn:loterpswsdl#tm_lote_rps_service.cancelarNFSE</WebActionHomologacao>
 			<WebActionProducao>urn:loterpswsdl#tm_lote_rps_service.cancelarNFSE</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
