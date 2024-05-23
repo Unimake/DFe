@@ -8734,7 +8734,7 @@ namespace Unimake.Business.DFe.Servicos
         OutrasCoop = 3,
 
     }
-    #endregion
+    #endregion Indicativo indCoop
 
     #region Indicativo indConstr
 
@@ -8758,7 +8758,7 @@ namespace Unimake.Business.DFe.Servicos
         EmpresaConstrutora = 1,
 
     }
-    #endregion
+    #endregion Indicativo indConstr
 
     #region Indicativo indDesFolha
 
@@ -8790,7 +8790,8 @@ namespace Unimake.Business.DFe.Servicos
         MunicipioEnquadrado = 2,
 
     }
-    #endregion
+
+    #endregion Indicativo indDesFolha
 
     #region Indicativo indDesFolha
 
@@ -8813,7 +8814,7 @@ namespace Unimake.Business.DFe.Servicos
         SimOptou = 1,
 
     }
-    #endregion
+    #endregion Indicativo indDesFolha
 
     #region Indicativo infoOrgInternacional
 
@@ -8836,7 +8837,7 @@ namespace Unimake.Business.DFe.Servicos
         Sim = 1,
 
     }
-    #endregion
+    #endregion Indicativo infoOrgInternacional
 
     #region Indicativo indDesFolha
 
@@ -8860,7 +8861,7 @@ namespace Unimake.Business.DFe.Servicos
         ComAcordo = 1,
 
     }
-    #endregion
+    #endregion Indicativo indDesFolha
 
     #region Processo de emissão do evento eSocial 
 
@@ -8906,7 +8907,8 @@ namespace Unimake.Business.DFe.Servicos
         AppGovernamentalEmpregadorDomestico = 22,
 
     }
-    #endregion
+
+    #endregion Processo de emissão do evento eSocial 
 
     #region Tipo Processo eSocial
 
@@ -8933,7 +8935,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("4")]
         FAP = 4,
     }
-    #endregion
+    #endregion Tipo Processo eSocial
 
     #region Tipo de CAEPF.
 
@@ -8961,7 +8963,7 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("3")]
         SeguradoEspecial = 3,
     }
-    #endregion
+    #endregion Tipo de CAEPF.
 
     #region Indicativo de substituição da contribuição patronal de obra de construção civil.
 
@@ -8982,7 +8984,152 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("2")]
         ContribuicaoSubstituida = 2,
     }
-    #endregion
+    #endregion Indicativo de substituição da contribuição patronal de obra de construção civil.
+
+    #region Tipo de Lotação Tributária
+
+    /// <summary>
+    /// Tipos de Lotação Tributária
+    /// </summary>
+    public enum TpLotacao
+    {
+        /// <summary>
+        /// Classificação da atividade econômica exercida pela Pessoa
+        ///Jurídica para fins de atribuição de código FPAS, inclusive obras de construção civil própria, exceto:
+        ///a) empreitada parcial ou sub-empreitada de obra de construção civil (utilizar opção 02);
+        ///b) prestação de serviços em instalações de terceiros (utilizar opções 03 a 09);
+        ///c) Embarcação inscrita no Registro Especial Brasileiro - REB (utilizar opção 10);
+        ///Preenchimento do Campo (nrInsc) = Não preencher
+        /// </summary>
+        PJ_FPAS = 01,
+
+        /// <summary>
+        /// Obra de construção civil - Empreitada parcial ou subempreitada;
+        /// Preenchimento do Campo (nrInsc) = CNO da obra - A informação do CNPJ/CPF
+        ///do contratante é prestada no grupo {infoEmprParcial}
+        /// </summary>
+        ObraConstrCivil = 02,
+
+        /// <summary>
+        /// Pessoa Física tomadora de serviços prestados mediante cessão de mão de obra, exceto contratante de cooperativa;
+        /// Preenchimento do Campo (nrInsc) = CPF do contratante
+        /// </summary>
+        PF_TomadoraServicoPrestado = 03,
+
+        /// <summary>
+        /// Pessoa Jurídica tomadora de serviços prestados mediante cessão de mão de obra, exceto contratante de cooperativa, nos
+        /// termos da Lei 8.212/1991;                               
+        /// Preenchimento do campo (nrInsc) = CNPJ do estabelecimento contratante.
+        /// </summary>
+        PJ_TomadoraServicoPrestadoMaoDeObra = 04,
+
+        /// <summary>
+        /// Pessoa Jurídica tomadora de serviços prestados por cooperados por intermédio de cooperativa de trabalho, exceto aqueles
+        /// prestados a entidade beneficente/isenta
+        /// Preenchimento do campo (nrInsc) = CNPJ do estabelecimento contratante.
+        /// </summary>
+        PJ_TomadoraServicoPrestadoCoop = 05,
+
+        /// <summary>
+        /// Entidade beneficente/isenta tomadora de serviços prestados por cooperados por intermédio de cooperativa de trabalho
+        /// Preenchimento do campo (nrInsc) = CNPJ do estabelecimento contratante.
+        /// </summary>
+        PJ_EntidadeBeneficenteTomadoraServicoPrestado = 06,
+
+        /// <summary>
+        /// Pessoa Física tomadora de serviços prestados por cooperados por intermédio de cooperativa de trabalho;
+        /// Preenchimento do campo (nrInsc) = CPF do contratante.
+        /// </summary>
+        PF_TomadoraServicoPrestadoCoop = 07,
+
+        /// <summary>
+        /// Operador portuário tomador de serviços de trabalhadores avulsos;
+        /// Preenchimento do campo (nrInsc) = CNPJ do operador portuário.
+        /// </summary>
+        PJ_OperadorPortuarioTomadorServicoPrestado = 08,
+
+        /// <summary>
+        /// Contratante de trabalhadores avulsos não portuários por intermédio de sindicato
+        /// Preenchimento do campo (nrInsc) = CNPJ ou CPF do contratante.
+        /// </summary>
+        ContratanteAvulsos = 09,
+
+        /// <summary>
+        /// Embarcação inscrita no Registro Especial Brasileiro - REB
+        /// Preenchimento do campo (nrInsc) = Não preencher
+        /// </summary>
+        EmbarcacaoREB = 10,
+
+        /// <summary>
+        /// Classificação da atividade econômica ou obra própria de construção civil da Pessoa Física
+        /// Preenchimento do campo (nrInsc) = Não preencher
+        /// </summary>
+        PF_ObraPropriaConstrCivil = 21,
+
+        /// <summary>
+        /// Empregador doméstico
+        /// Preenchimento do campo (nrInsc) = Não preencher
+        /// </summary>
+        EmpregadorDomestico = 24,
+
+        /// <summary>
+        /// Atividades desenvolvidas no exterior por trabalhador vinculado ao Regime Geral de Previdência Social (expatriados)
+        /// Preenchimento do campo (nrInsc) = Não preencher
+        /// </summary>
+        AtvExteriorExpatriados = 90,
+
+        /// <summary>
+        /// Atividades desenvolvidas por trabalhador estrangeiro vinculado a Regime de Previdência Social no exterior
+        /// Preenchimento do campo (nrInsc) = Não preencher
+        /// </summary>
+        AtvEstrangeirosRegimePrevidenciaSocialExterior = 91,
+
+        /// <summary>
+        /// Bolsista contribuinte individual sem contribuição patronal.
+        /// Preenchimento do campo (nrInsc) = Não preencher
+        /// </summary>
+        BolsistaIndividual = 92
+
+    }
+
+    #endregion Tipo de Lotação Tributária
+
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de inscrição
+    /// </summary>
+    public enum TpInsc
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        CNPJ = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        CPF = 2,
+
+        /// <summary>
+        /// Cadastro de Atividade Econômica de Pessoa Física
+        /// </summary>
+        CAEPF = 3,
+
+        /// <summary>
+        /// Cadastro Nacional de Obra
+        /// </summary>
+        CNO = 4,
+
+        /// <summary>
+        /// Cadastro Geral de Contribuintes
+        /// </summary>
+        CGC = 5,
+
+        /// <summary>
+        /// Cadastro Específico do INSS
+        /// </summary>
+        CEI = 6
+    }
+
 
     #region eSocial - Tipo de rubrica.
 
