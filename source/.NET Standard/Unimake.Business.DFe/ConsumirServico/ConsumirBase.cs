@@ -273,7 +273,7 @@ namespace Unimake.Business.DFe
                 throw (ex);
             }
 
-            if (soap.TagRetorno.ToLower() != "prop:innertext")
+            if (soap.TagRetorno.ToLower() != "prop:innertext" || soap.TagRetornoHomologacao.ToLower() != "prop:innertext")
             {
                 var tagRetorno = soap.TagRetorno;
 
