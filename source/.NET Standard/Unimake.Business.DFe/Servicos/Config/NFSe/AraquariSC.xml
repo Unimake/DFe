@@ -4,7 +4,7 @@
 		<GerarNfse versao="1.20">
 			<Descricao>Envio de lote RPS - Sincrono</Descricao>
 			<RequestURIProducao>https://ws-araquari.atende.net:7443/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
-			<RequestURIHomologacao>https://migracao.atende.net/pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_araquari</RequestURIHomologacao>
+			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -20,7 +20,7 @@
 		<CancelarNfse versao="1.20">
 			<Descricao>Evento de cancelamento da NFSe</Descricao>
 			<RequestURIProducao>https://ws-araquari.atende.net:7443/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
-			<RequestURIHomologacao>https://migracao.atende.net/pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_araquari</RequestURIHomologacao>
+			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
@@ -36,7 +36,7 @@
 		<ConsultarNfse versao="1.20">
 			<Descricao>Consulta da NFSe</Descricao>
 			<RequestURIProducao>https://ws-araquari.atende.net:7443/?pg=rest&amp;service=WNERestServiceNFSe</RequestURIProducao>
-			<RequestURIHomologacao>https://migracao.atende.net/pg=rest&amp;service=WNERestServiceNFSe&amp;cidade=treina_araquari</RequestURIHomologacao>
+			<RequestURIHomologacao></RequestURIHomologacao>
 			<MetodoAPI>post</MetodoAPI>
 			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
