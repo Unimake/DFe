@@ -11,7 +11,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1000")]
     [ComVisible(true)]
 #endif
 
@@ -129,22 +129,50 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAAMM. Validação: Deve ser uma data válida, igual ou 
         /// posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM.
         /// </summary>
+        [XmlIgnore]
+        public DateTimeOffset IniValid { get; set; }
+
+        /// <summary>
+        /// Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAAMM. Validação: Deve ser uma data válida, igual ou 
+        /// posterior à data de início de obrigatoriedade deste evento para o empregador no eSocial, no formato AAAA-MM.
+        /// </summary>
         [XmlElement("iniValid")]
-        public string IniValid { get; set; }
+        public string IniValidField
+        {
+            get => IniValid.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => IniValid = DateTime.Parse(value);
+#else
+            set => IniValid = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Preencher com o mês e ano de término da validade das informações, se houver. Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a IniValid.
+        /// </summary>
+        [XmlIgnore]
+        public DateTimeOffset FimValid { get; set; }
 
         /// <summary>
         /// Preencher com o mês e ano de término da validade das informações, se houver. Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a IniValid.
         /// </summary>
         [XmlElement("fimValid")]
-        public string FimValid { get; set; }
+        public string FimValidField
+        {
+            get => FimValid.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => FimValid = DateTime.Parse(value);
+#else
+            set => FimValid = DateTimeOffset.Parse(value);
+#endif
+        }
 
         #region ShouldSerialize
 
         /// <summary>
         /// ShouldSerializeFimValid
         /// </summary>
-        /// <returns></returns>
-        public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
+        public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValidField);
 
         #endregion
     }
