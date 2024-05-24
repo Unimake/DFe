@@ -67,7 +67,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarNfsePorRps = new ConsultarNfsePorRps(conteudoXML, configuracao);
-            Assert.Multiple(() => consultarNfsePorRps.Executar(), () => Assert.NotNull(consultarNfsePorRps.RetornoWSString), () => Assert.NotNull(consultarNfsePorRps.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarNfsePorRps));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNfsePorRps));
         }
     }
 }

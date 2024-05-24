@@ -156,15 +156,6 @@ namespace Unimake.Business.DFe
         }
 
         /// <summary>
-        /// Nome da tag de retorno de conteúdo que é devolvido pelo WebService
-        /// </summary>
-        public string TagRetornoHomologacao
-        {
-            get => _TagRetornoHomologacao;
-            set => _TagRetornoHomologacao = value;
-        }
-
-        /// <summary>
         /// Tipo ambiente
         /// </summary>
         public TipoAmbiente TipoAmbiente

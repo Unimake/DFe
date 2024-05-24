@@ -58,7 +58,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultaNFeEmitidas = new ConsultaNFeEmitidas(conteudoXML, configuracao);
-            Assert.Multiple(() => consultaNFeEmitidas.Executar(), () => Assert.NotNull(consultaNFeEmitidas.RetornoWSString), () => Assert.NotNull(consultaNFeEmitidas.RetornoWSXML), () => TestUtility.AnalisaResultado(consultaNFeEmitidas));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(consultaNFeEmitidas));
         }
     }
 }

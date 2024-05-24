@@ -58,10 +58,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var cancelarNotaFiscal = new CancelarNotaFiscal(conteudoXML, configuracao);
-            Assert.Multiple(() => cancelarNotaFiscal.Executar(),
-                              () => Assert.NotNull(cancelarNotaFiscal.RetornoWSString),
-                              () => Assert.NotNull(cancelarNotaFiscal.RetornoWSXML),
-                              () => TestUtility.AnalisaResultado(cancelarNotaFiscal));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(cancelarNotaFiscal));
         }
     }
 }

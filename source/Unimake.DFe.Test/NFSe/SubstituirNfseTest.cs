@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var substituirNfse = new SubstituirNfse(conteudoXML, configuracao);
-            substituirNfse.Executar();
+            Assert.Multiple(() => TestUtility.AnalisaResultado(substituirNfse));
         }
     }
 }

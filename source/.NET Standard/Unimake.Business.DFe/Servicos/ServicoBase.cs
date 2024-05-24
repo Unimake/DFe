@@ -242,8 +242,7 @@ namespace Unimake.Business.DFe.Servicos
                 {
                     EnderecoWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebEnderecoProducao : Configuracoes.WebEnderecoHomologacao),
                     ActionWeb = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.WebActionProducao : Configuracoes.WebActionHomologacao),
-                    TagRetorno = Configuracoes.WebTagRetorno,
-                    TagRetornoHomologacao = Configuracoes.WebTagRetornoHomologacao,
+                    TagRetorno = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && !string.IsNullOrEmpty(Configuracoes.WebTagRetornoHomologacao)) ? Configuracoes.WebTagRetornoHomologacao : Configuracoes.WebTagRetorno,
                     EncodingRetorno = Configuracoes.WebEncodingRetorno,
                     GZIPCompress = Configuracoes.GZIPCompress,
                     VersaoSoap = Configuracoes.WebSoapVersion,

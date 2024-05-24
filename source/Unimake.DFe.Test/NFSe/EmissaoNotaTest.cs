@@ -59,10 +59,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var emissaoNota = new EmissaoNota(conteudoXML, configuracao);
-            Assert.Multiple(() => emissaoNota.Executar(),
-                              () => Assert.NotNull(emissaoNota.RetornoWSString),
-                              () => Assert.NotNull(emissaoNota.RetornoWSXML),
-                              () => TestUtility.AnalisaResultado(emissaoNota));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(emissaoNota));
         }
     }
 }

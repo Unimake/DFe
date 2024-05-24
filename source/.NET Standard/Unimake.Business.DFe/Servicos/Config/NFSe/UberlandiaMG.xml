@@ -126,7 +126,7 @@
 			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns3:GerarNfseResponse</WebTagRetorno>
+			<WebTagRetorno>ns3:SubstituirNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.04</SchemaVersao>

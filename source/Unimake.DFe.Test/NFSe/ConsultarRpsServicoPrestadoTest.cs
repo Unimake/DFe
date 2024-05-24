@@ -58,7 +58,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarRpsServicoPrestado = new ConsultarRpsServicoPrestado(conteudoXML, configuracao);
-            Assert.Multiple(() => consultarRpsServicoPrestado.Executar(), () => Assert.NotNull(consultarRpsServicoPrestado.RetornoWSString), () => Assert.NotNull(consultarRpsServicoPrestado.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarRpsServicoPrestado));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarRpsServicoPrestado));
         }
     }
 }

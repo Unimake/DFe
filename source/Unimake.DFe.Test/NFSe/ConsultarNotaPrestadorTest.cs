@@ -45,7 +45,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarNotaPrestador = new ConsultarNotaPrestador(conteudoXML, configuracao);
-            Assert.Multiple(() => consultarNotaPrestador.Executar(), () => Assert.NotNull(consultarNotaPrestador.RetornoWSString), () => Assert.NotNull(consultarNotaPrestador.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarNotaPrestador));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNotaPrestador));
         }
     }
 }

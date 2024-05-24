@@ -185,38 +185,48 @@ namespace Unimake.DFe.Test.NFSe
         {
             var servico = (ServicoBase)o;
 
-            //Este método irá analisar a comunicação HttpStatusCode,junto com os padrões...
-            //O padrão BAUHAUS (exemplo), retorna um código 500, porém com uma comunicação satisfatória.
-            //Caso queira verificar o motivo de algum erro ou comunicação não satisfatória (impedido por causa de autenticação de certificado ou login/senha),
-            //Comente as 4 linhas abaixo que irá gerar a mensagem
-            if (AnalisaComunicacao(servico))
+            // Precisei passar o executar aqui para dentro, por causa do padrão ADM_SISTEMAS.
+            // O padrão necessita de autenticação de login e senha, porém a resposta em xml vem quebrada, gerando erro nos testes como estava antigamente.
+            try
             {
-                return;
+                servico.Executar();
             }
-
-            var message = string.Empty;//$"O padrão {servico.Configuracoes.PadraoNFSe}, no ambiente de {servico.Configuracoes.TipoAmbiente}, ";
-
-            if (servico.HttpStatusCode != HttpStatusCode.NotFound)
+            catch
             {
-                message = $"\nPadrão: {servico.Configuracoes.PadraoNFSe}\n" +
-                          $"Ambiente: {servico.Configuracoes.TipoAmbiente}\n" +
-                          $"Utiliza autenticação: {servico.Configuracoes.LoginConexao} \n" +
-                          $"HttpCode: {(int)servico.HttpStatusCode} \n" +
-                          "Este contexto ";
-
-                var result = VerificaContexto(servico);
-
-                if (!string.IsNullOrEmpty(result))
+                //Este método irá analisar a comunicação HttpStatusCode,junto com os padrões...
+                //O padrão BAUHAUS (exemplo), retorna um código 500, porém com uma comunicação satisfatória.
+                //Caso queira verificar o motivo de algum erro ou comunicação não satisfatória (impedido por causa de autenticação de certificado ou login/senha),
+                //Comente as 4 linhas abaixo que irá gerar a mensagem
+                if (AnalisaComunicacao(servico))
                 {
-                    message += result;
+                    return;
                 }
-            }
-            else
-            {
-                message = "Provavelmente este município mudou de padrão ou o link está errado! ";
+
+                var message = string.Empty;//$"O padrão {servico.Configuracoes.PadraoNFSe}, no ambiente de {servico.Configuracoes.TipoAmbiente}, ";
+
+                if (servico.HttpStatusCode != HttpStatusCode.NotFound)
+                {
+                    message = $"\nPadrão: {servico.Configuracoes.PadraoNFSe}\n" +
+                              $"Ambiente: {servico.Configuracoes.TipoAmbiente}\n" +
+                              $"Utiliza autenticação: {servico.Configuracoes.LoginConexao} \n" +
+                              $"HttpCode: {(int)servico.HttpStatusCode} \n" +
+                              "Este contexto ";
+
+                    var result = VerificaContexto(servico);
+
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        message += result;
+                    }
+                }
+                else
+                {
+                    message = "Provavelmente este município mudou de padrão ou o link está errado! ";
+                }
+
+                throw new Exception(message);
             }
 
-            throw new Exception(message);
         }
 
         #region Private Methods

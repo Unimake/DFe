@@ -48,7 +48,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var recepcionarLoteRpsSincrono = new RecepcionarLoteRpsSincrono(conteudoXML, configuracao);
-            recepcionarLoteRpsSincrono.Executar();
+            Assert.Multiple(() => TestUtility.AnalisaResultado(recepcionarLoteRpsSincrono));
         }
     }
 }

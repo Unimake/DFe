@@ -109,7 +109,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:RecepcionarLoteRps><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -128,7 +128,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:RecepcionarLoteRpsSincrono><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -147,7 +147,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:GerarNfse><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -166,7 +166,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:CancelarNfse><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -185,7 +185,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:ConsultarLoteRps><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -204,7 +204,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:ConsultarNfseFaixa><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -223,7 +223,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:ConsultarNfsePorRps><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -242,7 +242,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:ConsultarNfseServicoPrestado><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -261,7 +261,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:ConsultarNfseServicoTomado><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
@@ -282,7 +282,7 @@
 			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml; charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws"><soapenv:Header/><soapenv:Body><e:SubstituirNfse><nfseCabecMsg><![CDATA[<cabecalho xmlns="http://www.betha.com.br/e-nota-contribuinte-ws" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]]]><![CDATA[></nfseCabecMsg><nfseDadosMsg><![CDATA[{xmlBody}]]]]><![CDATA[></nfseDadosMsg></e:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>PROP:InnerText</WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>

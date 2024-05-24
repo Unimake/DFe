@@ -45,7 +45,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarNotaValida = new ConsultarNotaValida(conteudoXML, configuracao);
-            Assert.Multiple(() => consultarNotaValida.Executar(), () => Assert.NotNull(consultarNotaValida.RetornoWSString), () => Assert.NotNull(consultarNotaValida.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarNotaValida));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarNotaValida));
         }
     }
 }

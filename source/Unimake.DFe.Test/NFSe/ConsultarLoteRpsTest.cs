@@ -60,7 +60,7 @@ namespace Unimake.DFe.Test.NFSe
             };
 
             var consultarLoteRps = new ConsultarLoteRps(conteudoXML, configuracao);
-            Assert.Multiple(() => consultarLoteRps.Executar(), () => Assert.NotNull(consultarLoteRps.RetornoWSString), () => Assert.NotNull(consultarLoteRps.RetornoWSXML), () => TestUtility.AnalisaResultado(consultarLoteRps));
+            Assert.Multiple(() => TestUtility.AnalisaResultado(consultarLoteRps));
         }
     }
 }

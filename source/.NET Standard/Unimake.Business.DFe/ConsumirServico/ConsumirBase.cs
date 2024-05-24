@@ -273,14 +273,9 @@ namespace Unimake.Business.DFe
                 throw (ex);
             }
 
-            if (soap.TagRetorno.ToLower() != "prop:innertext" || soap.TagRetornoHomologacao.ToLower() != "prop:innertext")
+            if (soap.TagRetorno.ToLower() != "prop:innertext")
             {
                 var tagRetorno = soap.TagRetorno;
-
-                if (soap.TipoAmbiente == TipoAmbiente.Homologacao && !string.IsNullOrWhiteSpace(soap.TagRetornoHomologacao))
-                {
-                    tagRetorno = soap.TagRetornoHomologacao;
-                }
 
                 if (retornoXml.GetElementsByTagName(tagRetorno)[0] == null)
                 {
