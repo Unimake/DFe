@@ -1644,7 +1644,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public InfProdEmb InfProdEmb { get; set; }
 
         [XmlElement("veicProd")]
-        public List<VeicProd> VeicProd { get; set; }
+        public VeicProd VeicProd { get; set; }
 
         [XmlElement("med")]
         public Med Med { get; set; }
@@ -1899,40 +1899,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Retorna a quantidade de elementos existentes na lista Comb
         /// </summary>
         public int GetCombCount => (Comb != null ? Comb.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="veicProd">Elemento</param>
-        public void AddVeicProd(VeicProd veicProd)
-        {
-            if (VeicProd == null)
-            {
-                VeicProd = new List<VeicProd>();
-            }
-
-            VeicProd.Add(veicProd);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista VeicProd (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da VeicProd</returns>
-        public VeicProd GetVeicProd(int index)
-        {
-            if ((VeicProd?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return VeicProd[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista VeicProd
-        /// </summary>
-        public int GetVeicProdCount => (VeicProd != null ? VeicProd.Count : 0);
 
         /// <summary>
         /// Adicionar novo elemento a lista
