@@ -287,6 +287,11 @@ namespace Unimake.DFe.Test.NFSe
 
                     break;
 
+                case (PadraoNFSe.WEBFISCO, TipoAmbiente.Producao):
+                    message += "retornou erro 500 do servidor, podendo ser problema de comunicação ou informação não real no XML.";
+                    
+                    break;
+
                 default:
                     message += "ainda não possui o erro catalogado!";
                     break;
