@@ -11,13 +11,13 @@ Propriedade VeicProd da classe Unimake.Business.DFe.Xml.NFe.Prod deixou de ser u
 Antes era assim:
 
 ```
-prod.VeicProd.Add(veicProd)
+prod.VeicProd.Add(veicProd);
 ```
 
 Agora deve ser assim:
 
 ```
-prod.VeicProd = veicProd
+prod.VeicProd = veicProd;
 ```
 
 ### Alterações realizadas em 2023-12-21
