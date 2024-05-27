@@ -203,12 +203,6 @@
 		<ArqConfig>NilopolisRJ.xml</ArqConfig>
 		<PadraoNFSe>SIGCORP</PadraoNFSe>
 	</Arquivo>
-	<Arquivo ID="3513504">
-		<Nome>Cubatão - SP</Nome>
-		<UF>SP</UF>
-		<ArqConfig>CubataoSP.xml</ArqConfig>
-		<PadraoNFSe>PRODATA</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3505500">
 		<Nome>Barretos - SP</Nome>
 		<UF>SP</UF>
