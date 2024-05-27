@@ -4,6 +4,22 @@ Saiba mais sobre as alterações recentes e futuras na DLL Unimake.DFe.
 ## Sobre o breaking changes
 Sobre mudanças recentes que podem exigir ação dos desenvolvedores que utilizam o projeto.
 
+### Alterações realizadas em 2024-05-27
+
+Propriedade VeicProd da classe Unimake.Business.DFe.Xml.NFe.Prod deixou de ser uma List, pois no manual da SEFAZ está que a ocorrencia é somente 1-1. Sendo assim, ao atualizar o projeto é necessário adaptar os pontos que utilizam esta Propriedade para retirar o Add e passar a somente atribuir o valor na propriedade.
+
+Antes era assim:
+
+```
+prod.VeicProd.Add(veicProd)
+```
+
+Agora deve ser assim:
+
+```
+prod.VeicProd = veicProd
+```
+
 ### Alterações realizadas em 2023-12-21
 
 Para compatibilizar a DLL Unimake.DFe com os pacotes de schema mais atuais da NFe/NFCe efetuamos uma mudança na classe de serialização/desserialização dentro do grupo de tag <imposto>, conforme segue:
