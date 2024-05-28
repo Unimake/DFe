@@ -31,10 +31,6 @@ namespace Unimake.Business.DFe.Xml.GNRE
             get => NumeroReciboField;
             set
             {
-                if(value.Length != 10)
-                {
-                    throw new Exception("Conteúdo da tag <numeroRecibo> deve ter exatamente 10 caracteres.");
-                }
                 NumeroReciboField = value;
             }
 
