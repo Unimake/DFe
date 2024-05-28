@@ -154,5 +154,24 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
 		</ConsultarNfseServicoTomado>
+		<ConsultarNfseServicoPrestado versao="1.00">
+			<Descricao>Consultar NFSe serviço prestado</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.caxias.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+			<TagAtributoID>ConsultarNfseServicoPrestadoEnvio</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfse:nfseCabecMsg><nfse:cabecalho versao="1.00"><nfse:versaoDados>1.00</nfse:versaoDados></nfse:cabecalho></nfse:nfseCabecMsg><nfse:nfseDadosMsg>{xmlBody}</nfse:nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultarNfseServicoPrestado>
 	</Servicos>
 </Configuracoes>
