@@ -23,28 +23,95 @@ namespace Unimake.Business.DFe.Servicos.CTe
     {
         private void MontarQrCode()
         {
-            CTe = new Xml.CTe.CTe().LerXML<Xml.CTe.CTe>(ConteudoXML);
-
-            if (CTe.InfCTeSupl == null)
+            if (ConteudoXML.GetElementsByTagName("CTe").Count <= 0)
             {
-                CTe.InfCTeSupl = new InfCTeSupl();
+                throw new Exception("A tag obrigatória <CTe> não foi localizada no XML.");
+            }
+            var elementCTe = (XmlElement)ConteudoXML.GetElementsByTagName("CTe")[0];
 
-                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
-
-                var paramLinkQRCode = urlQrCode +
-                    "?chCTe=" + CTe.InfCTe.Chave +
-                    "&tpAmb=" + ((int)CTe.InfCTe.Ide.TpAmb).ToString();
-
-                if (CTe.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaEPEC || CTe.InfCTe.Ide.TpEmis == TipoEmissao.ContingenciaFSDA)
+            if (elementCTe.GetElementsByTagName("infCTeSupl").Count <= 0)
+            {
+                if (elementCTe.GetElementsByTagName("infCte").Count <= 0)
                 {
-                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, CTe.InfCTe.Chave);
+                    throw new Exception("A tag obrigatória <infCte>, do grupo de tag <CTe>, não foi localizada no XML.");
+                }
+                var elementInfCte = (XmlElement)elementCTe.GetElementsByTagName("infCte")[0];
+
+                if (elementInfCte.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <CTe><infCte>, não foi localizada no XML.");
+                }
+                var elementIde = (XmlElement)elementInfCte.GetElementsByTagName("ide")[0];
+
+                var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                var cUF = elementIde.GetElementsByTagName("cUF")[0].InnerText;
+                var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
+                var serie = elementIde.GetElementsByTagName("serie")[0].InnerText;
+                var nCT = elementIde.GetElementsByTagName("nCT")[0].InnerText;
+                var cCT = elementIde.GetElementsByTagName("cCT")[0].InnerText;
+                var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+                var mod = elementIde.GetElementsByTagName("mod")[0].InnerText;
+
+                if (elementInfCte.GetElementsByTagName("emit").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <emit>, do grupo de tag <CTe><infCte>, não foi localizada no XML.");
+                }
+                var elementEmit = (XmlElement)elementInfCte.GetElementsByTagName("emit")[0];
+
+                var CNPJEmit = string.Empty;
+                var CPFEmit = string.Empty;
+                if (elementEmit.GetElementsByTagName("CNPJ").Count <= 0)
+                {
+                    if (elementEmit.GetElementsByTagName("CPF").Count <= 0)
+                    {
+                        throw new Exception("A tag obrigatória <CNPJ> ou <CPF>, do grupo de tag <CTe><infCte><emit>, não foi localizada no XML.");
+                    }
+                    else
+                    {
+                        CPFEmit = elementEmit.GetElementsByTagName("CPF")[0].InnerText;
+                    }
+                }
+                else
+                {
+                    CNPJEmit = elementEmit.GetElementsByTagName("CNPJ")[0].InnerText;
                 }
 
-                CTe.InfCTeSupl.QrCodCTe = paramLinkQRCode.Trim();
-            }
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)Convert.ToInt32(cUF),
+                    AnoEmissao = dhEmi.ToString("yy"),
+                    MesEmissao = dhEmi.ToString("MM"),
+                    CNPJCPFEmissor = (string.IsNullOrWhiteSpace(CNPJEmit) ? CPFEmit : CNPJEmit).PadLeft(14, '0'),
+                    Modelo = (ModeloDFe)Convert.ToInt32(mod),
+                    Serie = Convert.ToInt32(serie),
+                    NumeroDoctoFiscal = Convert.ToInt32(nCT),
+                    TipoEmissao = (TipoEmissao)(int)tpEmis,
+                    CodigoNumerico = cCT
+                };
 
-            //Atualizar a propriedade do XML do CTe novamente com o conteúdo atual já a tag de QRCode e link de consulta
-            ConteudoXML = CTe.GerarXML();
+                var chave = XMLUtility.MontarChaveCTe(ref conteudoChaveDFe);
+
+                var urlQrCode = (Configuracoes.TipoAmbiente == TipoAmbiente.Homologacao ? Configuracoes.UrlQrCodeHomologacao : Configuracoes.UrlQrCodeProducao);
+                var paramLinkQRCode = urlQrCode +
+                    "?chCTe=" + chave +
+                    "&tpAmb=" + ((int)tpAmb).ToString();
+
+                if (tpEmis == TipoEmissao.ContingenciaEPEC || tpEmis == TipoEmissao.ContingenciaFSDA)
+                {
+                    paramLinkQRCode += "&sign=" + Converter.ToRSASHA1(Configuracoes.CertificadoDigital, chave);
+                }
+
+                var nodeCTe = ConteudoXML.GetElementsByTagName("CTe")[0];
+
+                var namespaceURI = nodeCTe.GetNamespaceOfPrefix("");
+                XmlNode infCTeSuplNode = ConteudoXML.CreateElement("infCTeSupl", namespaceURI);
+                XmlNode qrCodCTeNode = ConteudoXML.CreateElement("qrCodCTe", namespaceURI);
+                qrCodCTeNode.InnerText = paramLinkQRCode.Trim();
+                infCTeSuplNode.AppendChild(qrCodCTeNode);
+                nodeCTe.AppendChild(infCTeSuplNode);
+                var nodeInfCTe = (XmlNode)elementInfCte;
+                nodeCTe.InsertAfter(infCTeSuplNode, nodeInfCTe);
+            }
         }
 
         /// <summary>
@@ -64,14 +131,8 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
-        #region Private Fields
-
         private Xml.CTe.CTe _CTe;
         private readonly Dictionary<string, CteProc> CteProcs = new Dictionary<string, CteProc>();
-
-        #endregion Private Fields
-
-        #region Protected Properties
 
         /// <summary>
         /// Objeto do XML do CTe
@@ -82,31 +143,46 @@ namespace Unimake.Business.DFe.Servicos.CTe
             protected set => _CTe = value;
         }
 
-        #endregion Protected Properties
-
-        #region Protected Methods
-
         /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            if (CTe == null)
-            {
-                Configuracoes.Definida = false;
-                return;
-            }
-
-            var xml = CTe;
-
             if (!Configuracoes.Definida)
             {
                 Configuracoes.Servico = Servico.CTeAutorizacaoSinc;
-                Configuracoes.CodigoUF = (int)xml.InfCTe.Ide.CUF;
-                Configuracoes.TipoAmbiente = xml.InfCTe.Ide.TpAmb;
-                Configuracoes.Modelo = xml.InfCTe.Ide.Mod;
-                Configuracoes.TipoEmissao = xml.InfCTe.Ide.TpEmis;
-                Configuracoes.SchemaVersao = xml.InfCTe.Versao;
+
+                if (ConteudoXML.GetElementsByTagName("CTe").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <CTe> não foi localizada no XML.");
+                }
+                var elementCTe = (XmlElement)ConteudoXML.GetElementsByTagName("CTe")[0];
+
+                if (elementCTe.GetElementsByTagName("infCte").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <infCte>, do grupo de tag <CTe>, não foi localizada no XML.");
+                }
+                var elementInfCte = (XmlElement)elementCTe.GetElementsByTagName("infCte")[0];
+
+                if (elementInfCte.GetElementsByTagName("ide").Count <= 0)
+                {
+                    throw new Exception("A tag obrigatória <ide>, do grupo de tag <CTe><infCte>, não foi localizada no XML.");
+                }
+                var elementIde = (XmlElement)elementInfCte.GetElementsByTagName("ide")[0];
+
+                Configuracoes.CodigoUF = Convert.ToInt32(elementIde.GetElementsByTagName("cUF")[0].InnerText);
+                Configuracoes.TipoAmbiente = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
+                Configuracoes.Modelo = (ModeloDFe)Convert.ToInt32(elementIde.GetElementsByTagName("mod")[0].InnerText);
+                Configuracoes.TipoEmissao = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
+
+                if (elementInfCte.GetAttribute("versao").Length > 0)
+                {
+                    Configuracoes.SchemaVersao = elementInfCte.GetAttribute("versao");
+                }
+                else
+                {
+                    throw new Exception("O atributo obrigatório \"versao\" da tag <infCte>, do grupo de tag <CTe>, não foi localizado no XML.");
+                }
 
                 base.DefinirConfiguracao();
             }
@@ -160,10 +236,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 #endregion Validar a parte específica de cada evento
             }
         }
-
-        #endregion Protected Methods
-
-        #region Public Properties
 
         /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situação do CTe
@@ -296,10 +368,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -320,9 +388,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
             Inicializar(cte?.GerarXML() ?? throw new ArgumentNullException(nameof(cte)), configuracao);
         }
 
-        #endregion Public Constructors
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public AutorizacaoSinc(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-        #region Public Methods
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
 
         /// <summary>
         /// Executar o serviço
@@ -332,17 +414,9 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #endif
         public override void Executar()
         {
-            if (!Configuracoes.Definida)
-            {
-                if (CTe == null)
-                {
-                    throw new NullReferenceException($"{nameof(CTe)} não pode ser nulo.");
-                }
-
-                DefinirConfiguracao();
-            }
-
             base.Executar();
+
+            CTe = CTe.LerXML<Xml.CTe.CTe>(ConteudoXML);
         }
 
 #if INTEROP
@@ -463,7 +537,5 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
-
-        #endregion Public Methods
     }
 }

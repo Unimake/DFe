@@ -21,78 +21,120 @@ namespace Unimake.DFe.Test.CTe
         /// <param name="versao">Versão do schema</param>
         [Theory]
         [Trait("DFe", "CTe")]
-
-        [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.AM, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.BA, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.CE, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.DF, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.ES, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.PE, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.PI, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.RJ, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.RN, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.RS, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao, "4.00")]
-        [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao, "4.00")]
-
-        [InlineData(UFBrasil.AC, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.AL, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.AP, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.AM, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.BA, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.CE, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.DF, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.ES, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.GO, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.MA, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.MT, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.MG, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.PA, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.PB, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.PE, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.PI, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.RJ, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.RN, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.RS, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.RO, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.RR, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.SC, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.SE, TipoAmbiente.Producao, "4.00")]
-        [InlineData(UFBrasil.TO, TipoAmbiente.Producao, "4.00")]
-
-        public void EnviarCTeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, string versao)
+        [InlineData(UFBrasil.AC, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.AL, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.AP, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.AM, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.BA, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.CE, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.DF, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PE, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PI, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RJ, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RN, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RS, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.AL, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.AP, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.AM, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.BA, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.CE, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.DF, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PE, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PI, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.RJ, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.RN, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.RS, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.RO, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.RR, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
+        public void EnviarCTeSincrono(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            //Estados que não tem envio síncrono
-            if (versao == "3.00" && (ufBrasil == UFBrasil.MG || ufBrasil == UFBrasil.SP || ufBrasil == UFBrasil.RR || ufBrasil == UFBrasil.PE || ufBrasil == UFBrasil.AP))
+            var xml = MontarXmlCTe(ufBrasil, tipoAmbiente);
+
+            var configuracao = new Configuracao
             {
-                return;
-            }
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
 
-            #region CriarCTe
+            var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
+            autorizacaoSinc.Executar();
 
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+        }
+
+        /// <summary>
+        /// Enviar uma CTe no modo síncrono somente para saber se a conexão com o web-service está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua o envio por estado + ambiente para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a CTe</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a CTe</param>
+        /// <param name="versao">Versão do schema</param>
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void EnviarCTeSincronoString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xml = MontarXmlCTe(ufBrasil, tipoAmbiente);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var autorizacaoSinc = new AutorizacaoSinc(xml.GerarXML().OuterXml, configuracao);
+            autorizacaoSinc.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+        }
+
+
+        private Business.DFe.Xml.CTe.CTe MontarXmlCTe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
             var xml = new Business.DFe.Xml.CTe.CTe
             {
                 InfCTe = new InfCTe
                 {
-                    Versao = versao,
+                    Versao = "4.00",
 
                     Ide = new Ide
                     {
@@ -243,7 +285,7 @@ namespace Unimake.DFe.Test.CTe
                         },
                         InfModal = new InfModal
                         {
-                            VersaoModal = versao,
+                            VersaoModal = "4.00",
                             Rodo = new Rodo
                             {
                                 RNTRC = "44957333",
@@ -269,30 +311,14 @@ namespace Unimake.DFe.Test.CTe
                     InfRespTec = new InfRespTec
                     {
                         CNPJ = "06117473000150",
-                        XContato = "Wandrey Mundin Ferreira",
-                        Email = "wandrey@unimake.com.br",
+                        XContato = "Teste Teste Teste",
+                        Email = "teste@teste.com.br",
                         Fone = "04431414900",
                     },
                 },
             };
 
-            #endregion CriarCTe
-
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.CTe,
-                TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital
-            };
-
-            var autorizacaoSinc = new AutorizacaoSinc(xml, configuracao);
-            autorizacaoSinc.Executar();
-
-            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
-            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
-            Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(autorizacaoSinc.Result.CStat.Equals(213) || autorizacaoSinc.Result.CStat.Equals(539) || autorizacaoSinc.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+            return xml;
         }
     }
 }

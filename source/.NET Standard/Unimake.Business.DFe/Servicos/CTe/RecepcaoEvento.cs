@@ -20,12 +20,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #endif
     public class RecepcaoEvento : ServicoBase
     {
-        #region Private Fields
         private EventoCTe EventoCTe => new EventoCTe().LerXML<EventoCTe>(ConteudoXML);
-
-        #endregion Private Fields
-
-        #region Private Methods
 
         private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
         {
@@ -37,10 +32,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
-
-        #endregion Private Methods
-
-        #region Protected Methods
 
         /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
@@ -108,10 +99,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             #endregion Validar a parte específica de cada evento
         }
 
-        #endregion Protected Methods
-
-        #region Public Properties
-
         /// <summary>
         /// Propriedade contendo o XML do evento com o protocolo de autorização anexado
         /// </summary>
@@ -146,10 +133,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -170,9 +153,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         public RecepcaoEvento() : base() { }
 
-        #endregion Public Constructors
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public RecepcaoEvento(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-        #region Public Methods
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
 
         /// <summary>
         /// Executar o serviço
@@ -272,7 +269,5 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
-
-        #endregion Public Methods
     }
 }

@@ -976,6 +976,13 @@ namespace Unimake.Business.DFe.Utility
         public static string MontarChaveMDFe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
 
         /// <summary>
+        /// Monta a chave do CTe com base nos valores informados
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos do CTe necessários para montagem da chave</param>
+        /// <returns>Chave do CTe</returns>
+        public static string MontarChaveCTe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
+
+        /// <summary>
         /// Monta a chave do DFE com base nos valores informados
         /// </summary>
         /// <param name="conteudoChaveDFe">Conteúdos do DFe necessários para montagem da chave</param>

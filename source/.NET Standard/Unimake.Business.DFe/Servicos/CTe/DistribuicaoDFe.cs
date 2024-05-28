@@ -21,8 +21,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #endif
     public class DistribuicaoDFe : ServicoBase, IInteropService<DistDFeInt>
     {
-        #region Protected Methods
-
         /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
@@ -41,10 +39,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 base.DefinirConfiguracao();
             }
         }
-
-        #endregion Protected Methods
-
-        #region Public Properties
 
         /// <summary>
         /// Conteúdo retornado pelo webservice depois do envio do XML
@@ -66,10 +60,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -82,9 +72,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         public DistribuicaoDFe() : base() { }
 
-        #endregion Public Constructors
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public DistribuicaoDFe(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-        #region Public Methods
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
 
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o web-service
@@ -222,8 +226,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
-        #endregion Public Methods
-
         /// <summary>
         /// Resgata a lista dos CTes completos (XML de distribuição dos CTes) retornadas pelo serviço de distribuição do DFe
         /// </summary>
@@ -261,6 +263,5 @@ namespace Unimake.Business.DFe.Servicos.CTe
         public ProcEventoCTe GetProcEventoCTes(int elemento) => ProcEventoCTes[elemento];
 
 #endif
-
     }
 }

@@ -19,6 +19,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
     [ProgId("Unimake.Business.DFe.Servicos.CTe.Autorizacao")]
     [ComVisible(true)]
 #endif
+    [Obsolete("SEFAZ não disponibiliza mais envio assíncrono de CTe, em breve vamos remover esta funcionalidade da DLL.", false)]
     public class Autorizacao : ServicoBase, IInteropService<EnviCTe>
     {
         private void MontarQrCode()

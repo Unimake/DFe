@@ -212,18 +212,20 @@ namespace Unimake.Business.DFe.Xml.CTe
         {
             get
             {
-                ChaveField = ((int)Ide.CUF).ToString() +
-                    Ide.DhEmi.ToString("yyMM") +
-                    (string.IsNullOrWhiteSpace(Emit.CNPJ) ? Emit.CPF?.PadLeft(14, '0') : Emit.CNPJ.PadLeft(14, '0')) +
-                    ((int)Ide.Mod).ToString().PadLeft(2, '0') +
-                    Ide.Serie.ToString().PadLeft(3, '0') +
-                    Ide.NCT.ToString().PadLeft(9, '0') +
-                    ((int)Ide.TpEmis).ToString() +
-                    Ide.CCT.PadLeft(8, '0');
-
-                Ide.CDV = Utility.XMLUtility.CalcularDVChave(ChaveField);
-
-                ChaveField += Ide.CDV.ToString();
+                var conteudoChaveDFe = new XMLUtility.ConteudoChaveDFe
+                {
+                    UFEmissor = (UFBrasil)(int)Ide.CUF,
+                    AnoEmissao = Ide.DhEmi.ToString("yy"),
+                    MesEmissao = Ide.DhEmi.ToString("MM"),
+                    CNPJCPFEmissor = (string.IsNullOrWhiteSpace(Emit.CNPJ) ? Emit.CPF?.PadLeft(14, '0') : Emit.CNPJ.PadLeft(14, '0')),
+                    Modelo = (ModeloDFe)(int)Ide.Mod,
+                    Serie = Ide.Serie,
+                    NumeroDoctoFiscal = Ide.NCT,
+                    TipoEmissao = (TipoEmissao)(int)Ide.TpEmis,
+                    CodigoNumerico = Ide.CCT
+                };
+                ChaveField = XMLUtility.MontarChaveCTe(ref conteudoChaveDFe);
+                Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
                 return ChaveField;
             }
@@ -1819,10 +1821,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -1878,10 +1877,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -1967,10 +1963,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -2016,10 +2009,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -2106,10 +2096,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -2207,10 +2194,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -2297,10 +2281,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("CST")]
         public string CST
         {
-            get
-            {
-                return CSTField;
-            }
+            get => CSTField;
             set
             {
                 CSTField = "";
@@ -4840,7 +4821,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         /// Propriedade só existe até a versão 3.00 do schema do CTe
         /// </summary>
         [XmlElement("refCteAnu")]
-        public string RefCteAnu { get; set; } 
+        public string RefCteAnu { get; set; }
 
         [XmlElement("tomaICMS")]
         public TomaICMS TomaICMS { get; set; }

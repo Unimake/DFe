@@ -16,6 +16,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
     [ProgId("Unimake.Business.DFe.Servicos.CTe.RetAutorizacao")]
     [ComVisible(true)]
 #endif
+    [Obsolete("SEFAZ não disponibiliza mais envio assíncrono de CTe, em breve vamos remover esta funcionalidade da DLL.", false)]
     public class RetAutorizacao : ServicoBase
     {
         #region Public Constructors

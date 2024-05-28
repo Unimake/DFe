@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
@@ -19,8 +20,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #endif
     public class ConsultaProtocolo : ServicoBase, IInteropService<ConsSitCTe>
     {
-        #region Protected Methods
-
         /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
@@ -40,10 +39,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 base.DefinirConfiguracao();
             }
         }
-
-        #endregion Protected Methods
-
-        #region Public Properties
 
         /// <summary>
         /// Conteúdo retornado pelo webservice depois do envio do XML
@@ -65,10 +60,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
         }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -81,9 +72,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// </summary>
         public ConsultaProtocolo() : base() { }
 
-        #endregion Public Constructors
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public ConsultaProtocolo(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
 
-        #region Public Methods
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
 
 #if INTEROP
 
@@ -138,7 +143,5 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
-
-        #endregion Public Methods
     }
 }

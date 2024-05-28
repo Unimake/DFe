@@ -73,5 +73,41 @@ namespace Unimake.DFe.Test.CTe
 
             //Assert.True(consultaCadastro.Result.InfCons.CNPJ.Equals(xml.InfCons.CNPJ), "Webservice retornou uma chave da CTe diferente da enviada na consulta.");
         }
+
+        /// <summary>
+        /// Consulta um CNPJ em cada estado somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente e um CNPJ por estado para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta</param>
+        [Theory]
+        [Trait("DFe", "CTe")]
+        [InlineData(UFBrasil.PR, "06117473000150")]
+        public void ConsultarCadastroContribuinteCTeString(UFBrasil ufBrasil, string cnpj)
+        {
+            var xml = new ConsCad
+            {
+                Versao = "2.00",
+                InfCons = new Business.DFe.Xml.NFe.InfCons()
+                {
+                    CNPJ = cnpj,
+                    UF = ufBrasil
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaCadastro = new ConsultaCadastro(xml.GerarXML().OuterXml, configuracao);
+            consultaCadastro.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(consultaCadastro.Result.InfCons.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consultaCadastro.Result.InfCons.CStat != 259, "CNPJ consultado não é foi localizado no webservice da UF " + ufBrasil.ToString() + ".");
+        }
     }
 }
