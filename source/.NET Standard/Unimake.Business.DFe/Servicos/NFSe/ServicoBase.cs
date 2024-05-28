@@ -44,7 +44,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 if (Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps ||
                     Configuracoes.Servico == Servico.NFSeRecepcionarLoteRpsSincrono ||
                     Configuracoes.Servico == Servico.NFSeGerarNfse ||
-                    Configuracoes.Servico == Servico.NFSeSubstituirNfse || Configuracoes.Servico == Servico.NFSeCancelarNfse)
+                    Configuracoes.Servico == Servico.NFSeSubstituirNfse || 
+                    Configuracoes.Servico == Servico.NFSeCancelarNfse)
                 {
 
                     var xmlDoc = new XmlDocument();
@@ -101,31 +102,29 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                             ConteudoXML.LoadXml(xmlDoc.OuterXml);
                         }
                     }
-                    if (Configuracoes.Servico == Servico.NFSeCancelarNfse)
+                    else if (Configuracoes.TagAssinatura.Equals("Pedido")) //Para o serviço CancelarNfse
                     {
-                        if (Configuracoes.TagAssinatura.Equals("Pedido"))
+                        var nodePedido = xmlDoc.GetElementsByTagName("Pedido")[0];
+                        var elementNodePedido = (XmlElement)nodePedido;
+                        var elementInfPedidoCancelamento = (XmlElement)elementNodePedido.GetElementsByTagName("InfPedidoCancelamento")[0];
+                        var id = elementInfPedidoCancelamento.GetAttribute("Id").Replace("ID_PEDIDO_CANCELAMENTO_", "");
+                        var elementSignatureValue = (XmlElement)elementNodePedido.GetElementsByTagName("SignatureValue")[0];
+
+                        if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
                         {
-                            var nodePedido = xmlDoc.GetElementsByTagName("Pedido")[0];
-                            var elementNodePedido = (XmlElement)nodePedido;
-                            var elementInfPedidoCancelamento = (XmlElement)elementNodePedido.GetElementsByTagName("InfPedidoCancelamento")[0];
-                            var id = elementInfPedidoCancelamento.GetAttribute("Id").Replace("ID_PEDIDO_CANCELAMENTO_", "");
-                            var elementSignatureValue = (XmlElement)elementNodePedido.GetElementsByTagName("SignatureValue")[0];
+                            var attributeId = xmlDoc.CreateAttribute("Id");
+                            attributeId.Value = "ID_ASSINATURA_PEDIDO_CANCELAMENTO_" + id;
+                            elementSignatureValue.SetAttributeNode(attributeId);
 
-                            if (string.IsNullOrWhiteSpace(elementSignatureValue.GetAttribute("Id")))
-                            {
-                                var attributeId = xmlDoc.CreateAttribute("Id");
-                                attributeId.Value = "ID_ASSINATURA_PEDIDO_CANCELAMENTO_" + id;
-                                elementSignatureValue.SetAttributeNode(attributeId);
-
-                                mudouXml = true;
-                            }
-                        }
-
-                        if (mudouXml)
-                        {
-                            ConteudoXML.LoadXml(xmlDoc.OuterXml);
+                            mudouXml = true;
                         }
                     }
+
+                    if (mudouXml)
+                    {
+                        ConteudoXML.LoadXml(xmlDoc.OuterXml);
+                    }
+
                 }
             }
 
