@@ -25,7 +25,7 @@ namespace Unimake.DFe.Test.GNRE
             var xml = new TConsLoteConsGNRE
             {
                 Ambiente = tipoAmbiente,
-                NumeroRecibo = "1234567891"
+                NumeroRecibo = "12345678901234567890"
             };
 
             var configuracao = new Configuracao
