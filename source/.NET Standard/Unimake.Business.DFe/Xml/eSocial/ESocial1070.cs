@@ -147,9 +147,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("indAutoria")]
 #if INTEROP
-        public IndicativoAutoriaESocial IndAutoria { get; set; } = (IndicativoAutoriaESocial)(-1);
+        public IndicativoAutoriaAcaoJudicial IndAutoria { get; set; } = (IndicativoAutoriaAcaoJudicial)(-1);
 #else
-        public IndicativoAutoriaESocial? IndAutoria { get; set; }
+        public IndicativoAutoriaAcaoJudicial? IndAutoria { get; set; }
 #endif
 
         [XmlElement("indMatProc")]
@@ -203,7 +203,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeIndAutoria() => IndAutoria != (IndicativoAutoriaESocial)(-1);
+        public bool ShouldSerializeIndAutoria() => IndAutoria != (IndicativoAutoriaAcaoJudicial)(-1);
 #else
         public bool ShouldSerializeIndAutoria() => IndAutoria != null;
 #endif
@@ -232,7 +232,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial1070")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ExclusaoESocial1070")]
     [ComVisible(true)]
 #endif
     public class ExclusaoESocial1070
