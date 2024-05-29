@@ -1,19 +1,14 @@
 ﻿#pragma warning disable CS1591
 
 #if INTEROP
-using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
 #endif
-
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
 
-namespace Unimake.Business.DFe.Xml.eSocial
+namespace Unimake.Business.DFe.Xml.ESocial
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -43,37 +38,6 @@ namespace Unimake.Business.DFe.Xml.eSocial
 
         [XmlElement("infoEstab")]
         public InfoEstab infoEstab { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.IdeEvento")]
-    [ComVisible(true)]
-#endif
-    public class IdeEvento
-    {
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.IdeEmpregador")]
-    [ComVisible(true)]
-#endif
-    public class IdeEmpregador
-    {
-        [XmlElement("tpInsc")]
-        public TiposInscricao TpInsc { get; set; }
-
-        [XmlElement("nrInsc")]
-        public string NrInsc { get; set; }
     }
 
 #if INTEROP

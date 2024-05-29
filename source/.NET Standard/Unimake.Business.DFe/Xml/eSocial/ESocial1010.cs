@@ -7,7 +7,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
-namespace Unimake.Business.DFe.Xml.eSocial
+namespace Unimake.Business.DFe.Xml.ESocial
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
