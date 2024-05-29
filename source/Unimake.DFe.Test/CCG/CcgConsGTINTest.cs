@@ -27,7 +27,7 @@ namespace Unimake.DFe.Test.CCG
             var xml = new ConsGTIN
             {
                 Versao = "1.00",
-                GTIN = "7894900019896" // "7894900019896" //Código da Coca Cola
+                GTIN = "7896714200217" //NEOTAREN 50MG COMP REV CT BL 1X20
             };
 
             var configuracao = new Configuracao
@@ -43,7 +43,7 @@ namespace Unimake.DFe.Test.CCG
             Assert.True(configuracao.TipoAmbiente.Equals(TipoAmbiente.Producao), "Tipo de ambiente definido não pode ser diferente de produção. Consulta GTIN só tem endereço de produção.");
             Assert.True(ccgConsGTIN.Result.CStat.Equals(9490), "Não encontrou o GTIN consultado, deveria ter encontrado, pois se trata do GTIN da Coca Cola.");
             Assert.True(ccgConsGTIN.Result.TpGTIN.Equals(TipoCodigoGTIN.GTIN13), "Tipo do GTIN retornado está incorreto.");
-            Assert.True(ccgConsGTIN.Result.NCM.Equals("22021000"), "NCM da coca cola retornado está incorreto.");
+            Assert.True(ccgConsGTIN.Result.NCM.Equals("30049037"), "NCM da coca cola retornado está incorreto.");
             Assert.True(ccgConsGTIN.Result.GTIN.Equals(xml.GTIN), "NCM da coca cola retornado está incorreto.");
         }
 
