@@ -9451,5 +9451,49 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region Indicativo da autoria da ação judicial.
+
+    /// <summary>
+    /// eSocial - Indicativo da autoria da ação judicial..
+    /// </summary>
+    public enum IndicativoAutoriaESocial
+    {
+        /// <summary>
+        /// 1 - Próprio contribuinte
+        /// </summary>
+        [XmlEnum("1")]
+        ProprioContribuinte = 1,
+
+        /// <summary>
+        /// 2 - Outra entidade, empresa ou empregado
+        /// </summary>
+        [XmlEnum("2")]
+        OutraEntidade = 2,
+
+    }
+    #endregion Tipo Processo eSocial
+
+    #region Indicativo da matéria do processo eSocial.
+
+    /// <summary>
+    /// eSocial - Indicativo da autoria da ação judicial..
+    /// </summary>
+    public enum IndicativoMateriaProcesso
+    {
+        /// <summary>
+        /// 1 - Exclusivamente tributária ou tributária e FGTS
+        /// </summary>
+        [XmlEnum("1")]
+        TributariaOuTributariaFGTS = 1,
+
+        /// <summary>
+        /// 7 - Exclusivamente FGTS e/ou Contribuição Social Rescisória (Lei Complementar 110/2001)
+        /// </summary>
+        [XmlEnum("7")]
+        OutraEntidade = 7,
+
+    }
+    #endregion Indicativo da matéria do processo eSocial.
+
     #endregion
 }

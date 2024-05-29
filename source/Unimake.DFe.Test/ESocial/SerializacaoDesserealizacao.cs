@@ -55,7 +55,7 @@ namespace Unimake.DFe.Test.ESocial
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.eSocial.ESocial1005>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial1005>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -80,7 +80,7 @@ namespace Unimake.DFe.Test.ESocial
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.eSocial.ESocial1010>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial1010>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -106,6 +106,31 @@ namespace Unimake.DFe.Test.ESocial
             };
 
             var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial1020>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do Evento 1070 eSocial
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "eSocial")]
+        [InlineData(@"..\..\..\ESocial\Resources\1070_evtTabProcesso-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1070(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial1070>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
