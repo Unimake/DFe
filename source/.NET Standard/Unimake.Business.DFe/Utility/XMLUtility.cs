@@ -419,13 +419,10 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="xml">String do XML que deve sofrer a correção</param>
         /// <returns>XML já corrigido</returns>
-        private static string TratarFalhaXML(string xml)
-        {
+        private static string TratarFalhaXML(string xml) =>
             //Falta de namespace na tag principal gera erro. Caso abaixo é no XML de distribuição de eventos
-            var xmlCorrigido = xml.Replace("<procEventoNFe>", "<procEventoNFe versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
-
-            return xmlCorrigido;
-        }
+            xml.Replace("<procEventoNFe>", "<procEventoNFe versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">")
+               .Replace("<procEventoNFe versao=\"1.00\">", "<procEventoNFe versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">");
 
         /// <summary>
         /// Extrair a linha e coluna da string da exceção referente a problema de desserialização do XML
