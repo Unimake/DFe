@@ -70,6 +70,8 @@ Function Main()
    
    Aadd(aOpcoes, "Extrair eventos retornados na consulta situacao da NFe/NFCe")
    
+   Aadd(aOpcoes, "Verificar se a DLL esta instalada no PC")
+   
    Do While .T.
       Cls
 
@@ -246,6 +248,9 @@ Function Main()
 			  
          case nOpcao = 52			  
 		      ExtrairEventoPedSitNFe()
+			  
+         case nOpcao = 53
+		      VerificarDLLInstalada()
       endcase
    EndDo
 Return       
