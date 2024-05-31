@@ -139,7 +139,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("iniValid")]
         public string IniValidField
         {
-            get => IniValid.ToString("yyyy-MM-dd");
+            get => IniValid.ToString("yyyy-MM");
 #if INTEROP
             set => IniValid = DateTime.Parse(value);
 #else
@@ -159,7 +159,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("fimValid")]
         public string FimValidField
         {
-            get => FimValid.ToString("yyyy-MM-dd");
+            get => FimValid.ToString("yyyy-MM");
 #if INTEROP
             set => FimValid = DateTime.Parse(value);
 #else
