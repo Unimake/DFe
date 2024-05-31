@@ -9094,6 +9094,8 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion Tipo de Lotação Tributária
 
+    #region Tipo de Inscrição tpInsc
+
     /// <summary>
     /// Preencher com o código correspondente ao tipo de inscrição
     /// </summary>
@@ -9130,6 +9132,7 @@ namespace Unimake.Business.DFe.Servicos
         CEI = 6
     }
 
+    #endregion Tipo de Inscrição tpInsc
 
     #region eSocial - Tipo de rubrica.
 
@@ -9326,7 +9329,6 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
-
     #region eSocial - Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
     /// <summary>
     /// Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
@@ -9495,5 +9497,422 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion Indicativo da matéria do processo eSocial.
 
+    #region IndApuracao
+
+    /// <summary>
+    /// Indicativo de período de apuração.
+    /// Valores válidos:
+    ///1 - Mensal; 
+    ///2 - Anual(13° salário);
+    /// </summary>
+    public enum IndApuracao
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Mensal = 1,
+        /// <summary>
+        /// 13° salário 
+        /// </summary>
+        Anual = 2,
+    }
+
     #endregion
+
+    #region IndMV
+
+    /// <summary>
+    /// Indicador de desconto da contribuição previdenciária do trabalhador.
+    /// Valores válidos:
+    /// [1] - O declarante aplica a(s) alíquota(s) de desconto do
+    /// segurado sobre a remuneração por ele informada(o
+    /// percentual da(s) alíquota(s) será(ão) obtido(s)
+    /// considerando a remuneração total do trabalhador);                                                                                                                                        
+    /// [2] - O declarante aplica a(s) alíquota(s) de desconto do
+    /// segurado sobre a diferença entre o limite máximo do
+    /// salário de contribuição e a remuneração de outra(s)
+    /// empresa(s) para as quais o trabalhador informou que
+    /// houve o desconto;
+    /// [3] - O declarante não realiza desconto do segurado, uma
+    /// vez que houve desconto sobre o limite máximo de salário
+    /// de contribuição em outra(s) empresa(s);
+    /// </summary>
+    public enum IndMV
+    {
+        /// <summary>
+        /// [1] - O declarante aplica a(s) alíquota(s) de desconto do
+        /// segurado sobre a remuneração por ele informada(o
+        /// percentual da(s) alíquota(s) será(ão) obtido(s)
+        /// considerando a remuneração total do trabalhador);
+        /// </summary>
+        DescontoSobreRemuneracao = 1,
+
+        /// <summary>
+        /// [2] - O declarante aplica a(s) alíquota(s) de desconto do
+        /// segurado sobre a diferença entre o limite máximo do
+        /// salário de contribuição e a remuneração de outra(s)
+        /// empresa(s) para as quais o trabalhador informou que
+        /// houve o desconto;
+        /// </summary>
+        DescontoSobreDiferenca = 2,
+
+        /// <summary>
+        /// [3] - O declarante não realiza desconto do segurado, uma
+        /// vez que houve desconto sobre o limite máximo de salário
+        /// de contribuição em outra(s) empresa(s);
+        /// </summary>
+        SemDesconto = 3,
+    }
+
+    #endregion IndMV
+
+    #region Tipo Tributação - TpTrib
+
+    /// <summary>
+    /// Abrangência da decisão.
+    /// Valores válidos:
+    /// 1 - IRRF
+    /// 2 - Contribuições sociais do trabalhador
+    /// </summary>
+    public enum TpTrib
+    {
+        /// <summary>
+        /// 1 - IRRF
+        /// </summary>
+        IRRF = 1,
+
+        /// <summary>
+        /// 2 - Contribuições sociais do trabalhador
+        /// </summary>
+        ContribuicoesSociaisDoTrabalhador = 2,
+
+    }
+    #endregion Tipo Tributação - TpTrib
+
+    #region Codigo Categoria - CodCateg
+
+    /// <summary>
+    /// Codigo Categoria - Categorias de Trabalhadores
+    /// </summary>
+    public enum CodCateg
+    {
+        #region Empregado e Trabalhador Temporário
+
+        /// <summary>
+        /// Geral, inclusive o empregado público da administração direta ou indireta contratado pela CLT
+        /// </summary>
+        EmpregadoGeral = 101,
+
+        /// <summary>
+        /// Trabalhador rural por pequeno prazo da Lei 11.718/2008
+        /// </summary>
+        EmpregadoTrabalhadorRural = 102,
+
+        /// <summary>
+        ///  Empregado - Aprendiz
+        /// </summary>
+        EmpregadoAprendiz = 103,
+
+        /// <summary>
+        ///  Empregado - Doméstico 
+        /// </summary>
+        EmpregadoDomestico = 104,
+
+        /// <summary>
+        ///  Contrato a termo firmado nos termos da Lei 9.601/1998
+        /// </summary>
+        EmpregadoContratoTermo = 105,
+
+        /// <summary>
+        /// Trabalhador temporário - Contrato nos termos da Lei 6.019/1974
+        /// </summary>
+        TrabalhadorTemporario = 106,
+
+        /// <summary>
+        /// Empregado - Contrato de trabalho Verde e Amarelo - sem
+        /// acordo para antecipação mensal da multa rescisória do FGTS
+        /// </summary>
+        EmpregadoContratoVerdeAmareloSemAcordo = 107,
+
+        /// <summary>
+        /// Empregado - Contrato de trabalho Verde e Amarelo - com
+        /// acordo para antecipação mensal da multa rescisória do FGTS
+        /// </summary>
+        EmpregadoContratoVerdeAmareloComAcordo = 108,
+
+        /// <summary>
+        /// Empregado - Contrato de trabalho intermitente
+        /// </summary>
+        EmpregadoContratoIntermitente = 111,
+
+        #endregion Empregado e Trabalhador Temporário
+
+        #region Avulso
+
+        /// <summary>
+        /// Trabalhador avulso portuário 
+        /// </summary>
+        TrabalhadorAvulsoPortuario = 201,
+
+        /// <summary>
+        /// Trabalhador avulso não portuário 
+        /// </summary>
+        TrabalhadorAvulsoNaoPortuario = 202,
+
+        #endregion Avulso
+
+        #region Agente Público
+
+        /// <summary>
+        /// Servidor público titular de cargo efetivo, magistrado,
+        /// ministro de Tribunal de Contas, conselheiro de Tribunal de
+        /// Contas e membro do Ministério Público
+        /// </summary>
+        ServidorPublicoEfetivo = 301,
+
+        /// <summary>
+        /// Servidor público ocupante de cargo exclusivo em comissão
+        /// </summary>
+        ServidorPublicoCargoExclusivoComissao = 302,
+
+        /// <summary>
+        /// Exercente de mandato eletivo 
+        /// </summary>
+        ExercenteDeMandatoEletivo = 303,
+
+        /// <summary>
+        /// Servidor público exercente de mandato eletivo, inclusive com exercício de cargo em comissão
+        /// </summary>
+        ExercenteDeMandatoEletivoComComissao = 304,
+
+        /// <summary>
+        /// Servidor público indicado para conselho ou órgão
+        /// deliberativo, na condição de representante do governo,
+        /// órgão ou entidade da administração pública
+        /// </summary>
+        ServidorPublicoConselhoOuOrgaoDeliberativo = 305,
+
+        /// <summary>
+        /// Servidor público contratado por tempo determinado, sujeito a regime administrativo especial definido em lei própria
+        /// </summary>
+        ServidorPublicoContratado = 306,
+
+        /// <summary>
+        /// Militar dos Estados e Distrito Federal
+        /// </summary>
+        MilitarDosEstadosEDistritoFederal = 307,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Conscrito = 308,
+
+        /// <summary>
+        /// Agente público - Outros
+        /// </summary>
+        AgentePublico = 309,
+
+        /// <summary>
+        /// Servidor público eventual 
+        /// </summary>
+        ServidorPublicoEventual = 310,
+
+        /// <summary>
+        /// Ministros, juízes, procuradores, promotores ou oficiais de justiça à disposição da Justiça Eleitoral
+        /// </summary>
+        MinistroJuizProcuradPromotorOficialJusticaJE = 311,
+
+        /// <summary>
+        /// Auxiliar Local
+        /// </summary>
+        AuxiliarLocal = 312,
+
+        /// <summary>
+        /// Servidor público exercente de atividade de instrutoria,
+        /// capacitação, treinamento, curso ou concurso, ou convocado
+        /// para pareceres técnicos ou depoimentos
+        /// </summary>
+        ServidorPublicoInstrutor = 313,
+
+        /// <summary>
+        /// Militar das Forças Armadas
+        /// </summary>
+        MilitarForcasArmadas = 314,
+
+        #endregion Agente Público
+
+        #region Cessão
+
+        /// <summary>
+        /// Dirigente sindical - Informação prestada pelo sindicato 
+        /// </summary>
+        DirigenteSindical = 401,
+
+        /// <summary>
+        /// Trabalhador cedido/exercício em outro órgão/juiz auxiliar - Informação prestada pelo cessionário/destino
+        /// </summary>
+        TrabalhadorCedido = 410,
+
+        #endregion Cessão
+
+        #region Segurado Especial
+
+        /// <summary>
+        /// Dirigente sindical - Segurado especial 
+        /// </summary>
+        DirigenteSindicalEspecial = 501,
+
+        #endregion Segurado Especial
+
+        #region Contribuinte Individual
+
+        /// <summary>
+        /// Contribuinte individual - Autônomo em geral, exceto se enquadrado em 
+        /// uma das demais categorias de contribuinte individual
+        /// </summary>
+        ContribuinteIndividualAutonomo = 701,
+
+        /// <summary>
+        /// Contribuinte individual - Transportador autônomo de passageiros
+        /// </summary>
+        ContribuinteIndividualTranspAutonomoPassageiros = 711,
+
+        /// <summary>
+        /// Contribuinte individual - Transportador autônomo de carga
+        /// </summary>
+        ContribuinteIndividualTranspAutonomoCarga = 712,
+
+        /// <summary>
+        /// Contribuinte individual - Diretor não empregado, com FGTS 
+        /// </summary>
+        ContribuinteIndividualDiretorComFGTS = 721,
+
+        /// <summary>
+        /// Contribuinte individual - Diretor não empregado, sem FGTS 
+        /// </summary>
+        ContribuinteIndividualDiretorSemFGTS = 722,
+
+        /// <summary>
+        /// Contribuinte individual - Empresário, sócio e membro de conselho de administração ou fiscal
+        /// </summary>
+        ContribuinteIndividualEmpSocioAdmFiscal = 723,
+
+        /// <summary>
+        /// Contribuinte individual - Cooperado que presta serviços por intermédio de cooperativa de trabalho
+        /// </summary>
+        ContribuinteIndividualCooperadoPorCoopTrabalho = 731,
+
+        /// <summary>
+        /// Contribuinte individual - Transportador cooperado que presta serviços por intermédio de cooperativa de trabalho
+        /// </summary>
+        ContribuinteIndividualTranspCooperadoPorCoopTrabalho = 734,
+
+        /// <summary>
+        /// Contribuinte individual - Cooperado filiado a cooperativa de produção
+        /// </summary>
+        ContribuinteIndividualCooperadoPorCooperativaProducao = 738,
+
+        /// <summary>
+        ///  Contribuinte individual - Microempreendedor individual 
+        /// </summary>
+        ContribuinteIndividualMEI = 741,
+
+        /// <summary>
+        /// Contribuinte individual - Magistrado classista temporário da Justiça do Trabalho 
+        /// ou da Justiça Eleitoral que seja aposentado de qualquer regime previdenciário
+        /// </summary>
+        ContribuinteIndividualMagistradoTempJusTrabJusEleitAposentado = 751,
+
+        /// <summary>
+        /// Contribuinte individual - Associado eleito para direção de cooperativa, 
+        /// associação ou entidade de classe de qualquer natureza ou finalidade, bem como o síndico ou
+        /// administrador eleito para exercer atividade de direção condominial, desde que recebam remuneração
+        /// </summary>
+        ContribuinteIndividualAssocEleitoDiretorSindicoRemunerado = 761,
+
+        /// <summary>
+        /// Contribuinte individual - Membro de conselho tutelar, nos termos da Lei 8.069/1990
+        /// </summary>
+        ContribuinteIndividualMembroDeConselhoTutelar = 771,
+
+        /// <summary>
+        /// Ministro de confissão religiosa ou membro de vida consagrada, de congregação ou de ordem religiosa
+        /// </summary>
+        MinistroConfissaoReligiosaMembroVidaSagradaCongregacaoOuOrdem = 781,
+
+        #endregion Contribuinte Individual
+
+        #region Bolsista
+
+        /// <summary>
+        /// Bolsista
+        /// </summary>
+        Estagiario = 901,
+
+        /// <summary>
+        /// Bolsista - Médico residente, residente em área profissional de saúde ou médico em curso de formação
+        /// </summary>
+        MedicoResidenteOuCursoDeFormacao = 902,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Bolsista = 903,
+
+        /// <summary>
+        /// Participante de curso de formação, como etapa de concurso público, sem vínculo de emprego/estatutário
+        /// </summary>
+        ParticipanteCursoDeFormacao = 904,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        BeneficiarioProgNacPrestacaoServicoCivilVoluntario = 906,
+        #endregion Bolsista
+    }
+    #endregion Codigo Categoria - CodCateg
+
+    #region IndSimples
+
+    /// <summary>
+    /// Indicador de contribuição substituída.
+    /// </summary>
+    public enum IndSimples
+    {
+        /// <summary>
+        /// 1 - Contribuição substituída integralmente
+        /// </summary>
+        ContribuicaoSubstituidaIntegralmente = 1,
+
+        /// <summary>
+        /// Contribuição não substituída
+        /// </summary>
+        ContribuicaoNaoSubstituida = 2,
+
+        /// <summary>
+        /// Contribuição não substituída concomitante com contribuição substituída
+        /// </summary>
+        ContribuicaoNaoSubstituidaConcomitanteComContribSubst = 3,
+    }
+    #endregion IndSimples
+
+    #region NatAtividade
+    /// <summary>
+    /// Natureza da atividade. 
+    /// Valores válidos: 1 - Trabalho urbano 2 - Trabalho rural 
+    /// </summary>
+    public enum NatAtividade
+    {
+        /// <summary>
+        /// 1 - Trabalho urbano
+        /// </summary>
+        TrabalhoUrbano = 1,
+        /// <summary>
+        /// 2 - Trabalho rural
+        /// </summary>
+        TrabalhoRural = 2,
+    }
+    #endregion NatAtividade
+
+    #endregion ESocial
 }

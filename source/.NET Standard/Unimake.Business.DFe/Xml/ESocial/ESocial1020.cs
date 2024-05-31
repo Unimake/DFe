@@ -1,9 +1,10 @@
 ﻿#pragma warning disable CS1591
-
 using System;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -141,7 +142,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("iniValid")]
         public string IniValidField
         {
-            get => IniValid.ToString("yyyy-MM-dd");
+            get => IniValid.ToString("yyyy-MM");
 #if INTEROP
             set => IniValid = DateTime.Parse(value);
 #else
@@ -165,7 +166,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("fimValid")]
         public string FimValidField
         {
-            get => FimValid.ToString("yyyy-MM-dd");
+            get => FimValid.ToString("yyyy-MM");
 #if INTEROP
             set => FimValid = DateTime.Parse(value);
 #else
@@ -190,13 +191,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o código correspondente ao tipo de lotação.
         /// </summary>
         [XmlElement("tpLotacao")]
-        public TpLotacao TpLotacao { get; set; }
+        public string TpLotacao { get; set; }
+        //Existe um enum "TpLotacao", mas por causa de erros na conversão do xml, será colocado como string
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
         /// </summary>
         [XmlElement("tpInsc")]
-        public TpInsc TpInsc { get; set; }
+        public string TpInsc { get; set; }
+        //Existe um enum "TpInsc", mas por causa de erros na conversão do xml, será colocado como string
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
@@ -371,7 +374,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 2 - CPF
         /// </summary>
         [XmlElement("tpInscContrat")]
-        public TpInsc TpInscContrat { get; set; }
+        public string TpInscContrat { get; set; }
+        //Existe um enum "TpInsc", mas por causa de erros na conversão do xml, será colocado como string
 
         /// <summary>
         /// Número de inscrição (CNPJ/CPF) do contratante.
@@ -390,7 +394,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// quando o proprietário não for encontrado no CNO.
         /// </summary>
         [XmlElement("tpInscProp")]
-        public TpInsc TpInscProp { get; set; }
+        public string TpInscProp { get; set; }
+        //Existe um enum "TpInscProp", mas por causa de erros na conversão do xml, será colocado como string
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ/CPF) do proprietário do CNO
@@ -443,8 +448,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("fap")]
         public string FapField
         {
-            get => Fap.ToString("F2", CultureInfoESocial.Info);
-            set => Fap = double.Parse(value.ToString(), CultureInfoESocial.Info);
+            get => Fap.ToString();//("F2", CultureInfoESocial.Info);
+            set => Fap = double.Parse(value);
         }
     }
     #endregion DadosOpPort
