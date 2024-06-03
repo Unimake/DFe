@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.EFDReinf;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EFDReinf;
 using Xunit;

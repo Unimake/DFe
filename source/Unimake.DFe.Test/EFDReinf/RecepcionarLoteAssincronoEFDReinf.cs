@@ -35,7 +35,6 @@ namespace Unimake.DFe.Test.EFDReinf
                 Versao = "1.05.01",
                 EnvioLoteEventos = new EnvioLoteEventos
                 {
-
                     IdeContribuinte = new IdeContribuinte
                     {
                         TpInsc = TiposInscricao.CNPJ,
