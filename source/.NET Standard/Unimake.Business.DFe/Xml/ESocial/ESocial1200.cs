@@ -1,6 +1,5 @@
 ﻿#pragma warning disable CS1591
 using System;
-using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -548,6 +547,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("remunPerApur")]
         public RemunPerApur RemunPerApur { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeQtdDiasAvField() => QtdDiasAv != 0;
+        #endregion ShouldSerialize
     }
 
     #region RemunPerApur
@@ -588,10 +591,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         /// <summary>
         /// Grau de exposição a agentes nocivos 
-
         /// </summary>
         [XmlElement("infoAgNocivo")]
         public InfoAgNocivo InfoAgNocivo { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeIndSimplesField() => IndSimples > 0;
+        #endregion ShouldSerialize
     }
 
     #region ItensRemun

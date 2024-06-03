@@ -202,6 +202,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         //    get => VrRubr.ToString("F2", CultureInfoESocial.Info);
         //    set => VrRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
         //}
+
+        #region ShouldSerialize
+        public bool ShouldSerializeQtdRubrField() => QtdRubr != 0;
+        public bool ShouldSerializeFatorRubrField() => FatorRubr != 0;
+        #endregion ShouldSerialize
     }
 
     #endregion ItensRemun
