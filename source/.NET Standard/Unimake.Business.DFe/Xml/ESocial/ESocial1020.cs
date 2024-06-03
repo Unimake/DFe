@@ -191,15 +191,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o código correspondente ao tipo de lotação.
         /// </summary>
         [XmlElement("tpLotacao")]
-        public string TpLotacao { get; set; }
-        //Existe um enum "TpLotacao", mas por causa de erros na conversão do xml, será colocado como string
+        public TpLotacao TpLotacao { get; set; }
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
         /// </summary>
         [XmlElement("tpInsc")]
-        public string TpInsc { get; set; }
-        //Existe um enum "TpInsc", mas por causa de erros na conversão do xml, será colocado como string
+        public TpInsc TpInsc { get; set; }
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
@@ -374,8 +372,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 2 - CPF
         /// </summary>
         [XmlElement("tpInscContrat")]
-        public string TpInscContrat { get; set; }
-        //Existe um enum "TpInsc", mas por causa de erros na conversão do xml, será colocado como string
+        public TpInsc TpInscContrat { get; set; }
 
         /// <summary>
         /// Número de inscrição (CNPJ/CPF) do contratante.
@@ -394,8 +391,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// quando o proprietário não for encontrado no CNO.
         /// </summary>
         [XmlElement("tpInscProp")]
-        public string TpInscProp { get; set; }
-        //Existe um enum "TpInscProp", mas por causa de erros na conversão do xml, será colocado como string
+        public TpInsc TpInscProp { get; set; }
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ/CPF) do proprietário do CNO

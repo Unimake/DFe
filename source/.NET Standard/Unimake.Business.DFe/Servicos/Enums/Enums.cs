@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -9001,6 +9002,7 @@ namespace Unimake.Business.DFe.Servicos
         ///c) Embarcação inscrita no Registro Especial Brasileiro - REB (utilizar opção 10);
         ///Preenchimento do Campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("01")]
         PJ_FPAS = 01,
 
         /// <summary>
@@ -9008,12 +9010,14 @@ namespace Unimake.Business.DFe.Servicos
         /// Preenchimento do Campo (nrInsc) = CNO da obra - A informação do CNPJ/CPF
         ///do contratante é prestada no grupo {infoEmprParcial}
         /// </summary>
+        [XmlEnum("02")]
         ObraConstrCivil = 02,
 
         /// <summary>
         /// Pessoa Física tomadora de serviços prestados mediante cessão de mão de obra, exceto contratante de cooperativa;
         /// Preenchimento do Campo (nrInsc) = CPF do contratante
         /// </summary>
+        [XmlEnum("03")]
         PF_TomadoraServicoPrestado = 03,
 
         /// <summary>
@@ -9021,6 +9025,7 @@ namespace Unimake.Business.DFe.Servicos
         /// termos da Lei 8.212/1991;                               
         /// Preenchimento do campo (nrInsc) = CNPJ do estabelecimento contratante.
         /// </summary>
+        [XmlEnum("04")]
         PJ_TomadoraServicoPrestadoMaoDeObra = 04,
 
         /// <summary>
@@ -9028,66 +9033,77 @@ namespace Unimake.Business.DFe.Servicos
         /// prestados a entidade beneficente/isenta
         /// Preenchimento do campo (nrInsc) = CNPJ do estabelecimento contratante.
         /// </summary>
+        [XmlEnum("05")]
         PJ_TomadoraServicoPrestadoCoop = 05,
 
         /// <summary>
         /// Entidade beneficente/isenta tomadora de serviços prestados por cooperados por intermédio de cooperativa de trabalho
         /// Preenchimento do campo (nrInsc) = CNPJ do estabelecimento contratante.
         /// </summary>
+        [XmlEnum("06")]
         PJ_EntidadeBeneficenteTomadoraServicoPrestado = 06,
 
         /// <summary>
         /// Pessoa Física tomadora de serviços prestados por cooperados por intermédio de cooperativa de trabalho;
         /// Preenchimento do campo (nrInsc) = CPF do contratante.
         /// </summary>
+        [XmlEnum("07")]
         PF_TomadoraServicoPrestadoCoop = 07,
 
         /// <summary>
         /// Operador portuário tomador de serviços de trabalhadores avulsos;
         /// Preenchimento do campo (nrInsc) = CNPJ do operador portuário.
         /// </summary>
+        [XmlEnum("08")]
         PJ_OperadorPortuarioTomadorServicoPrestado = 08,
 
         /// <summary>
         /// Contratante de trabalhadores avulsos não portuários por intermédio de sindicato
         /// Preenchimento do campo (nrInsc) = CNPJ ou CPF do contratante.
         /// </summary>
+        [XmlEnum("09")]
         ContratanteAvulsos = 09,
 
         /// <summary>
         /// Embarcação inscrita no Registro Especial Brasileiro - REB
         /// Preenchimento do campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("10")]
         EmbarcacaoREB = 10,
 
         /// <summary>
         /// Classificação da atividade econômica ou obra própria de construção civil da Pessoa Física
         /// Preenchimento do campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("21")]
         PF_ObraPropriaConstrCivil = 21,
 
         /// <summary>
         /// Empregador doméstico
         /// Preenchimento do campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("24")]
         EmpregadorDomestico = 24,
 
         /// <summary>
         /// Atividades desenvolvidas no exterior por trabalhador vinculado ao Regime Geral de Previdência Social (expatriados)
         /// Preenchimento do campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("90")]
         AtvExteriorExpatriados = 90,
 
         /// <summary>
         /// Atividades desenvolvidas por trabalhador estrangeiro vinculado a Regime de Previdência Social no exterior
         /// Preenchimento do campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("91")]
         AtvEstrangeirosRegimePrevidenciaSocialExterior = 91,
 
         /// <summary>
         /// Bolsista contribuinte individual sem contribuição patronal.
         /// Preenchimento do campo (nrInsc) = Não preencher
         /// </summary>
+        [XmlEnum("92")]
         BolsistaIndividual = 92
 
     }
@@ -9104,31 +9120,37 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 
         /// </summary>
+        [XmlEnum("1")]
         CNPJ = 1,
 
         /// <summary>
         /// 
         /// </summary>
+        [XmlEnum("2")]
         CPF = 2,
 
         /// <summary>
         /// Cadastro de Atividade Econômica de Pessoa Física
         /// </summary>
+        [XmlEnum("3")]
         CAEPF = 3,
 
         /// <summary>
         /// Cadastro Nacional de Obra
         /// </summary>
+        [XmlEnum("4")]
         CNO = 4,
 
         /// <summary>
         /// Cadastro Geral de Contribuintes
         /// </summary>
+        [XmlEnum("5")]
         CGC = 5,
 
         /// <summary>
         /// Cadastro Específico do INSS
         /// </summary>
+        [XmlEnum("6")]
         CEI = 6
     }
 
@@ -9510,10 +9532,12 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 
         /// </summary>
+        [XmlEnum("1")]
         Mensal = 1,
         /// <summary>
         /// 13° salário 
         /// </summary>
+        [XmlEnum("2")]
         Anual = 2,
     }
 
@@ -9545,6 +9569,7 @@ namespace Unimake.Business.DFe.Servicos
         /// percentual da(s) alíquota(s) será(ão) obtido(s)
         /// considerando a remuneração total do trabalhador);
         /// </summary>
+        [XmlEnum("1")]
         DescontoSobreRemuneracao = 1,
 
         /// <summary>
@@ -9554,6 +9579,7 @@ namespace Unimake.Business.DFe.Servicos
         /// empresa(s) para as quais o trabalhador informou que
         /// houve o desconto;
         /// </summary>
+        [XmlEnum("2")]
         DescontoSobreDiferenca = 2,
 
         /// <summary>
@@ -9561,6 +9587,7 @@ namespace Unimake.Business.DFe.Servicos
         /// vez que houve desconto sobre o limite máximo de salário
         /// de contribuição em outra(s) empresa(s);
         /// </summary>
+        [XmlEnum("3")]
         SemDesconto = 3,
     }
 
@@ -9579,11 +9606,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 1 - IRRF
         /// </summary>
+        [XmlEnum("1")]
         IRRF = 1,
 
         /// <summary>
         /// 2 - Contribuições sociais do trabalhador
         /// </summary>
+        [XmlEnum("2")]
         ContribuicoesSociaisDoTrabalhador = 2,
 
     }
@@ -9601,48 +9630,57 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Geral, inclusive o empregado público da administração direta ou indireta contratado pela CLT
         /// </summary>
+        [XmlEnum("101")]
         EmpregadoGeral = 101,
 
         /// <summary>
         /// Trabalhador rural por pequeno prazo da Lei 11.718/2008
         /// </summary>
+        [XmlEnum("102")]
         EmpregadoTrabalhadorRural = 102,
 
         /// <summary>
         ///  Empregado - Aprendiz
         /// </summary>
+        [XmlEnum("103")]
         EmpregadoAprendiz = 103,
 
         /// <summary>
         ///  Empregado - Doméstico 
         /// </summary>
+        [XmlEnum("104")]
         EmpregadoDomestico = 104,
 
         /// <summary>
         ///  Contrato a termo firmado nos termos da Lei 9.601/1998
         /// </summary>
+        [XmlEnum("105")]
         EmpregadoContratoTermo = 105,
 
         /// <summary>
         /// Trabalhador temporário - Contrato nos termos da Lei 6.019/1974
         /// </summary>
+        [XmlEnum("106")]
         TrabalhadorTemporario = 106,
 
         /// <summary>
         /// Empregado - Contrato de trabalho Verde e Amarelo - sem
         /// acordo para antecipação mensal da multa rescisória do FGTS
         /// </summary>
+        [XmlEnum("107")]
         EmpregadoContratoVerdeAmareloSemAcordo = 107,
 
         /// <summary>
         /// Empregado - Contrato de trabalho Verde e Amarelo - com
         /// acordo para antecipação mensal da multa rescisória do FGTS
         /// </summary>
+        [XmlEnum("108")]
         EmpregadoContratoVerdeAmareloComAcordo = 108,
 
         /// <summary>
         /// Empregado - Contrato de trabalho intermitente
         /// </summary>
+        [XmlEnum("111")]
         EmpregadoContratoIntermitente = 111,
 
         #endregion Empregado e Trabalhador Temporário
@@ -9652,11 +9690,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Trabalhador avulso portuário 
         /// </summary>
+        [XmlEnum("201")]
         TrabalhadorAvulsoPortuario = 201,
 
         /// <summary>
         /// Trabalhador avulso não portuário 
         /// </summary>
+        [XmlEnum("202")]
         TrabalhadorAvulsoNaoPortuario = 202,
 
         #endregion Avulso
@@ -9668,21 +9708,25 @@ namespace Unimake.Business.DFe.Servicos
         /// ministro de Tribunal de Contas, conselheiro de Tribunal de
         /// Contas e membro do Ministério Público
         /// </summary>
+        [XmlEnum("301")]
         ServidorPublicoEfetivo = 301,
 
         /// <summary>
         /// Servidor público ocupante de cargo exclusivo em comissão
         /// </summary>
+        [XmlEnum("302")]
         ServidorPublicoCargoExclusivoComissao = 302,
 
         /// <summary>
         /// Exercente de mandato eletivo 
         /// </summary>
+        [XmlEnum("303")]
         ExercenteDeMandatoEletivo = 303,
 
         /// <summary>
         /// Servidor público exercente de mandato eletivo, inclusive com exercício de cargo em comissão
         /// </summary>
+        [XmlEnum("304")]
         ExercenteDeMandatoEletivoComComissao = 304,
 
         /// <summary>
@@ -9690,41 +9734,49 @@ namespace Unimake.Business.DFe.Servicos
         /// deliberativo, na condição de representante do governo,
         /// órgão ou entidade da administração pública
         /// </summary>
+        [XmlEnum("305")]
         ServidorPublicoConselhoOuOrgaoDeliberativo = 305,
 
         /// <summary>
         /// Servidor público contratado por tempo determinado, sujeito a regime administrativo especial definido em lei própria
         /// </summary>
+        [XmlEnum("306")]
         ServidorPublicoContratado = 306,
 
         /// <summary>
         /// Militar dos Estados e Distrito Federal
         /// </summary>
+        [XmlEnum("307")]
         MilitarDosEstadosEDistritoFederal = 307,
 
         /// <summary>
         /// 
         /// </summary>
+        [XmlEnum("308")]
         Conscrito = 308,
 
         /// <summary>
         /// Agente público - Outros
         /// </summary>
+        [XmlEnum("309")]
         AgentePublico = 309,
 
         /// <summary>
         /// Servidor público eventual 
         /// </summary>
+        [XmlEnum("310")]
         ServidorPublicoEventual = 310,
 
         /// <summary>
         /// Ministros, juízes, procuradores, promotores ou oficiais de justiça à disposição da Justiça Eleitoral
         /// </summary>
+        [XmlEnum("311")]
         MinistroJuizProcuradPromotorOficialJusticaJE = 311,
 
         /// <summary>
         /// Auxiliar Local
         /// </summary>
+        [XmlEnum("312")]
         AuxiliarLocal = 312,
 
         /// <summary>
@@ -9732,11 +9784,13 @@ namespace Unimake.Business.DFe.Servicos
         /// capacitação, treinamento, curso ou concurso, ou convocado
         /// para pareceres técnicos ou depoimentos
         /// </summary>
+        [XmlEnum("313")]
         ServidorPublicoInstrutor = 313,
 
         /// <summary>
         /// Militar das Forças Armadas
         /// </summary>
+        [XmlEnum("314")]
         MilitarForcasArmadas = 314,
 
         #endregion Agente Público
@@ -9746,11 +9800,13 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Dirigente sindical - Informação prestada pelo sindicato 
         /// </summary>
+        [XmlEnum("401")]
         DirigenteSindical = 401,
 
         /// <summary>
         /// Trabalhador cedido/exercício em outro órgão/juiz auxiliar - Informação prestada pelo cessionário/destino
         /// </summary>
+        [XmlEnum("410")]
         TrabalhadorCedido = 410,
 
         #endregion Cessão
@@ -9760,6 +9816,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Dirigente sindical - Segurado especial 
         /// </summary>
+        [XmlEnum("501")]
         DirigenteSindicalEspecial = 501,
 
         #endregion Segurado Especial
@@ -9770,57 +9827,68 @@ namespace Unimake.Business.DFe.Servicos
         /// Contribuinte individual - Autônomo em geral, exceto se enquadrado em 
         /// uma das demais categorias de contribuinte individual
         /// </summary>
+        [XmlEnum("701")]
         ContribuinteIndividualAutonomo = 701,
 
         /// <summary>
         /// Contribuinte individual - Transportador autônomo de passageiros
         /// </summary>
+        [XmlEnum("711")]
         ContribuinteIndividualTranspAutonomoPassageiros = 711,
 
         /// <summary>
         /// Contribuinte individual - Transportador autônomo de carga
         /// </summary>
+        [XmlEnum("712")]
         ContribuinteIndividualTranspAutonomoCarga = 712,
 
         /// <summary>
         /// Contribuinte individual - Diretor não empregado, com FGTS 
         /// </summary>
+        [XmlEnum("721")]
         ContribuinteIndividualDiretorComFGTS = 721,
 
         /// <summary>
         /// Contribuinte individual - Diretor não empregado, sem FGTS 
         /// </summary>
+        [XmlEnum("722")]
         ContribuinteIndividualDiretorSemFGTS = 722,
 
         /// <summary>
         /// Contribuinte individual - Empresário, sócio e membro de conselho de administração ou fiscal
         /// </summary>
+        [XmlEnum("723")]
         ContribuinteIndividualEmpSocioAdmFiscal = 723,
 
         /// <summary>
         /// Contribuinte individual - Cooperado que presta serviços por intermédio de cooperativa de trabalho
         /// </summary>
+        [XmlEnum("731")]
         ContribuinteIndividualCooperadoPorCoopTrabalho = 731,
 
         /// <summary>
         /// Contribuinte individual - Transportador cooperado que presta serviços por intermédio de cooperativa de trabalho
         /// </summary>
+        [XmlEnum("734")]
         ContribuinteIndividualTranspCooperadoPorCoopTrabalho = 734,
 
         /// <summary>
         /// Contribuinte individual - Cooperado filiado a cooperativa de produção
         /// </summary>
+        [XmlEnum("738")]
         ContribuinteIndividualCooperadoPorCooperativaProducao = 738,
 
         /// <summary>
         ///  Contribuinte individual - Microempreendedor individual 
         /// </summary>
+        [XmlEnum("741")]
         ContribuinteIndividualMEI = 741,
 
         /// <summary>
         /// Contribuinte individual - Magistrado classista temporário da Justiça do Trabalho 
         /// ou da Justiça Eleitoral que seja aposentado de qualquer regime previdenciário
         /// </summary>
+        [XmlEnum("751")]
         ContribuinteIndividualMagistradoTempJusTrabJusEleitAposentado = 751,
 
         /// <summary>
@@ -9828,16 +9896,19 @@ namespace Unimake.Business.DFe.Servicos
         /// associação ou entidade de classe de qualquer natureza ou finalidade, bem como o síndico ou
         /// administrador eleito para exercer atividade de direção condominial, desde que recebam remuneração
         /// </summary>
+        [XmlEnum("761")]
         ContribuinteIndividualAssocEleitoDiretorSindicoRemunerado = 761,
 
         /// <summary>
         /// Contribuinte individual - Membro de conselho tutelar, nos termos da Lei 8.069/1990
         /// </summary>
+        [XmlEnum("771")]
         ContribuinteIndividualMembroDeConselhoTutelar = 771,
 
         /// <summary>
         /// Ministro de confissão religiosa ou membro de vida consagrada, de congregação ou de ordem religiosa
         /// </summary>
+        [XmlEnum("781")]
         MinistroConfissaoReligiosaMembroVidaSagradaCongregacaoOuOrdem = 781,
 
         #endregion Contribuinte Individual
@@ -9847,21 +9918,25 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Bolsista
         /// </summary>
+        [XmlEnum("901")]
         Estagiario = 901,
 
         /// <summary>
         /// Bolsista - Médico residente, residente em área profissional de saúde ou médico em curso de formação
         /// </summary>
+        [XmlEnum("902")]
         MedicoResidenteOuCursoDeFormacao = 902,
 
         /// <summary>
         /// 
         /// </summary>
+        [XmlEnum("903")]
         Bolsista = 903,
 
         /// <summary>
         /// Participante de curso de formação, como etapa de concurso público, sem vínculo de emprego/estatutário
         /// </summary>
+        [XmlEnum("904")]
         ParticipanteCursoDeFormacao = 904,
 
         /// <summary>
@@ -9882,16 +9957,19 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 1 - Contribuição substituída integralmente
         /// </summary>
+        [XmlEnum("1")]
         ContribuicaoSubstituidaIntegralmente = 1,
 
         /// <summary>
         /// Contribuição não substituída
         /// </summary>
+        [XmlEnum("2")]
         ContribuicaoNaoSubstituida = 2,
 
         /// <summary>
         /// Contribuição não substituída concomitante com contribuição substituída
         /// </summary>
+        [XmlEnum("3")]
         ContribuicaoNaoSubstituidaConcomitanteComContribSubst = 3,
     }
     #endregion IndSimples
@@ -9906,13 +9984,98 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 1 - Trabalho urbano
         /// </summary>
+        [XmlEnum("1")]
         TrabalhoUrbano = 1,
         /// <summary>
         /// 2 - Trabalho rural
         /// </summary>
+        [XmlEnum("2")]
         TrabalhoRural = 2,
     }
     #endregion NatAtividade
 
+    #region  IndApurIR
+
+    /// <summary>
+    ///  Indicativo de tipo de apuração de IR.
+    /// 0 - Normal (apuração sob a folha de pagamento declarada no eSocial)
+    /// 1 - Situação especial de apuração de IR
+    /// </summary>
+    public enum IndApurIR
+    {
+        /// <summary>
+        /// 0 - Normal (apuração sob a folha de pagamento declarada no eSocial)
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 1 - Situação especial de apuração de IR
+        /// </summary>
+        [XmlEnum("1")]
+        SituacaoEspecial = 1,
+    }
+
+    #endregion IndApurIR
+
+    #region IndComerc
+
+    /// <summary>
+    /// Indicativo de comercialização.
+    /// Valores válidos:
+    /// 2 - Comercialização da produção efetuada diretamente no
+    /// varejo a consumidor final ou a outro produtor rural pessoa
+    /// física por produtor rural pessoa física, inclusive por
+    /// segurado especial, ou por pessoa física não produtor rural
+    /// 3 - Comercialização da produção por prod.rural PF/seg.
+    /// especial - Vendas a PJ(exceto entidade inscrita no
+    /// Programa de Aquisição de Alimentos - PAA) ou a
+    /// intermediário PF
+    /// 7 - Comercialização da produção isenta de acordo com a
+    /// Lei 13.606/2018 efetuada diretamente no varejo a
+    /// consumidor final ou a outro produtor rural pessoa física
+    /// por produtor rural pessoa física, inclusive por segurado
+    /// especial, ou por pessoa física não produtor rural
+    /// 8 - Comercialização da produção da pessoa física/segurado especial para entidade inscrita no PAA
+    /// 9 - Comercialização da produção no mercado externo
+    /// </summary>
+    public enum IndComerc
+    {
+        /// <summary>
+        /// 2 - Comercialização da produção efetuada diretamente no
+        /// varejo a consumidor final ou a outro produtor rural pessoa
+        /// física por produtor rural pessoa física, inclusive por
+        /// segurado especial, ou por pessoa física não produtor rural
+        /// </summary>
+        ComercVarejoPF = 2,
+
+        /// <summary>
+        /// 3 - Comercialização da produção por prod.rural PF/seg.
+        /// especial - Vendas a PJ(exceto entidade inscrita no
+        /// Programa de Aquisição de Alimentos - PAA) ou a
+        /// intermediário PF
+        /// </summary>
+        ComercParaCNPJ = 3,
+
+        /// <summary>
+        /// 7 - Comercialização da produção isenta de acordo com a
+        /// Lei 13.606/2018 efetuada diretamente no varejo a
+        /// consumidor final ou a outro produtor rural pessoa física
+        /// por produtor rural pessoa física, inclusive por segurado
+        /// especial, ou por pessoa física não produtor rural
+        /// </summary>
+        ComercVarejoIsenta = 7,
+
+        /// <summary>
+        /// 8 - Comercialização da produção da pessoa física/segurado especial para entidade inscrita no PAA
+        /// </summary>
+        ComercEntidadeInscritaPAA = 8,
+
+        /// <summary>
+        /// 9 - Comercialização da produção no mercado externo
+        /// </summary>
+        ComercExterior = 9
+    }
+    #endregion IndComerc
     #endregion ESocial
 }

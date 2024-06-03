@@ -61,7 +61,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1000.EvtInfoEmpregador.IdeEmpregador")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -93,6 +93,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion
 
+    #region CultureInfoESocial
     /// <summary>
     /// Configurações Cultura para o ESocial
     /// </summary>
@@ -113,4 +114,95 @@ namespace Unimake.Business.DFe.Xml.ESocial
             }
         }
     }
+    #endregion
+
+    #region ItensRemun
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Rubricas que compõem a remuneração do trabalhador
+    /// </summary>
+    [Serializable()]
+    public abstract class ItensRemun
+    {
+        /// <summary>
+        /// Informar o código atribuído pelo empregador que identifica a rubrica em sua 
+        /// folha de pagamento ou ocódigo da rubrica constante da Tabela de Rubricas Padrão.
+        /// </summary>
+        [XmlElement("codRubr")]
+        public string CodRubr { get; set; }
+
+        /// <summary>
+        /// Preencher com o identificador da Tabela de Rubricas para a rubrica definida em codRubr.
+        /// </summary>
+        [XmlElement("ideTabRubr")]
+        public string IdeTabRubr { get; set; }
+
+        /// <summary>
+        /// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.). 
+        /// Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra,
+        /// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        //[XmlIgnore]
+        [XmlElement("qtdRubr")]
+        public double QtdRubr { get; set; }
+
+        ///// <summary>
+        ///// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.). 
+        ///// Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra,
+        ///// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
+        ///// Validação: Deve ser maior que 0 (zero).
+        ///// </summary>
+        //[XmlElement("qtdRubr")]
+        //public string QtdRubrField
+        //{
+        //    get => QtdRubr.ToString("F2", CultureInfoESocial.Info);
+        //    set => QtdRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
+        //}
+
+        /// <summary>
+        /// Informar o fator, percentual, etc. da rubrica, quando necessário.
+        /// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        //[XmlIgnore]
+        [XmlElement("fatorRubr")]
+        public double FatorRubr { get; set; }
+
+        ///// <summary>
+        ///// Informar o fator, percentual, etc. da rubrica, quando necessário.
+        ///// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
+        ///// Validação: Deve ser maior que 0 (zero).
+        ///// </summary>
+        //[XmlElement("fatorRubr")]
+        //public string fatorRubrField
+        //{
+        //    get => FatorRubr.ToString("F2", CultureInfoESocial.Info);
+        //    set => FatorRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
+        //}
+
+        /// <summary>
+        /// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        //[XmlIgnore]
+        [XmlElement("vrRubr")]
+        public double VrRubr { get; set; }
+
+        ///// <summary>
+        ///// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
+        ///// </summary>
+        //[XmlElement("vrRubr")]
+        //public string VrRubrField
+        //{
+        //    get => VrRubr.ToString("F2", CultureInfoESocial.Info);
+        //    set => VrRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
+        //}
+    }
+
+    #endregion ItensRemun
 }
