@@ -10047,6 +10047,7 @@ namespace Unimake.Business.DFe.Servicos
         /// física por produtor rural pessoa física, inclusive por
         /// segurado especial, ou por pessoa física não produtor rural
         /// </summary>
+        [XmlEnum("2")]
         ComercVarejoPF = 2,
 
         /// <summary>
@@ -10055,6 +10056,7 @@ namespace Unimake.Business.DFe.Servicos
         /// Programa de Aquisição de Alimentos - PAA) ou a
         /// intermediário PF
         /// </summary>
+        [XmlEnum("3")]
         ComercParaCNPJ = 3,
 
         /// <summary>
@@ -10064,16 +10066,19 @@ namespace Unimake.Business.DFe.Servicos
         /// por produtor rural pessoa física, inclusive por segurado
         /// especial, ou por pessoa física não produtor rural
         /// </summary>
+        [XmlEnum("7")]
         ComercVarejoIsenta = 7,
 
         /// <summary>
         /// 8 - Comercialização da produção da pessoa física/segurado especial para entidade inscrita no PAA
         /// </summary>
+        [XmlEnum("8")]
         ComercEntidadeInscritaPAA = 8,
 
         /// <summary>
         /// 9 - Comercialização da produção no mercado externo
         /// </summary>
+        [XmlEnum("9")]
         ComercExterior = 9
     }
     #endregion IndComerc
