@@ -94,8 +94,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indicativo de período de apuração.
         /// </summary>
         [XmlElement("indApuracao")]
-        public string IndApuracao { get; set; }
-        //Existe um enum "IndApuracao", mas por causa de erros na conversão do xml, será colocado como string
+        public IndApuracao IndApuracao { get; set; }
 
 #if INTEROP
         public DateTime PerApur {get; set; }
@@ -224,8 +223,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indicador de desconto da contribuição previdenciária do trabalhador.
         /// </summary>
         [XmlElement("indMV")]
-        public string IndMV { get; set; }
-        //Existe um enum "IndMV", mas por causa de erros na conversão do xml, será colocado como string
+        public IndMV IndMV { get; set; }
 
         /// <summary>
         /// Informações relativas ao trabalhador que possui vínculo
@@ -398,8 +396,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 2 - Contribuições sociais do trabalhador
         /// </summary>
         [XmlElement("tpTrib")]
-        public string TpTrib { get; set; }
-        //Existe um enum "TpTrib", mas por causa de erros na conversão do xml, será colocado como string
+        public TpTrib TpTrib { get; set; }
 
         /// <summary>
         /// Informar um número de processo judicial cadastrado
@@ -454,8 +451,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o código da categoria do trabalhador.
         /// </summary>
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
-        //Existe um enum "CodCateg", mas por causa de erros na conversão do xml, será colocado como string
+        public CodCateg CodCateg { get; set; }
 
         /// <summary>
         /// Informações relativas ao período de apuração.
@@ -526,8 +522,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 4 - CNO;
         /// </summary>
         [XmlElement("tpInsc")]
-        public string TpInsc { get; set; }
-        //Existe um enum "TpInsc", mas por causa de erros na conversão do xml, será colocado como string
+        public TpInsc TpInsc { get; set; }
 
         /// <summary>
         /// Informar o número de inscrição do estabelecimento do contribuinte de acordo 
@@ -583,14 +578,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 3 - Contribuição não substituída concomitante com
         /// </summary>
         [XmlElement("indSimples")]
-        public string IndSimples { get; set; }
-        //Existe um enum "IndSimples", mas por causa de erros na conversão do xml, será colocado como string
+        public IndSimples IndSimples { get; set; }
 
         /// <summary>
         /// Rubricas que compõem a remuneração do trabalhador
         /// </summary>
         [XmlElement("itensRemun")]
-        public ItensRemun ItensRemun { get; set; }
+        public ItensRemunESocial1200 ItensRemun { get; set; }
 
         /// <summary>
         /// Grau de exposição a agentes nocivos 
@@ -604,88 +598,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur.ItensRemun")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur.ItensRemunESocial1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Rubricas que compõem a remuneração do trabalhador
     /// </summary>
     [Serializable()]
-    public class ItensRemun
+    public class ItensRemunESocial1200 : ItensRemun
     {
-        /// <summary>
-        /// Informar o código atribuído pelo empregador que identifica a rubrica em sua 
-        /// folha de pagamento ou ocódigo da rubrica constante da Tabela de Rubricas Padrão.
-        /// </summary>
-        [XmlElement("codRubr")]
-        public string CodRubr { get; set; }
 
-        /// <summary>
-        /// Preencher com o identificador da Tabela de Rubricas para a rubrica definida em codRubr.
-        /// </summary>
-        [XmlElement("ideTabRubr")]
-        public string IdeTabRubr { get; set; }
-
-        /// <summary>
-        /// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.). 
-        /// Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra,
-        /// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
-        /// Validação: Deve ser maior que 0 (zero).
-        /// </summary>
-        //[XmlIgnore]
-        [XmlElement("qtdRubr")]
-        public double QtdRubr { get; set; }
-
-        ///// <summary>
-        ///// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.). 
-        ///// Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra,
-        ///// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
-        ///// Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("qtdRubr")]
-        //public string QtdRubrField
-        //{
-        //    get => QtdRubr.ToString("F2", CultureInfoESocial.Info);
-        //    set => QtdRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
-
-        /// <summary>
-        /// Informar o fator, percentual, etc. da rubrica, quando necessário.
-        /// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
-        /// Validação: Deve ser maior que 0 (zero).
-        /// </summary>
-        //[XmlIgnore]
-        [XmlElement("fatorRubr")]
-        public double FatorRubr { get; set; }
-
-        ///// <summary>
-        ///// Informar o fator, percentual, etc. da rubrica, quando necessário.
-        ///// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
-        ///// Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("fatorRubr")]
-        //public string fatorRubrField
-        //{
-        //    get => FatorRubr.ToString("F2", CultureInfoESocial.Info);
-        //    set => FatorRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
-
-        /// <summary>
-        /// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
-        /// </summary>
-        //[XmlIgnore]
-        [XmlElement("vrRubr")]
-        public double VrRubr { get; set; }
-
-        ///// <summary>
-        ///// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("vrRubr")]
-        //public string VrRubrField
-        //{
-        //    get => VrRubr.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
     }
 
     #endregion ItensRemun
@@ -749,8 +671,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// a um tipo de CAEPF informado em S-1005 como produtor rural ou segurado especial.
         /// </summary>
         [XmlElement("natAtividade")]
-        public string NatAtividade { get; set; }
-        //Existe um enum "NatAtividade", mas por causa de erros na conversão do xml, será colocado como string
+        public NatAtividade NatAtividade { get; set; }
 
         /// <summary>
         /// Informação prestada exclusivamente pelo segurado especial em caso de 
