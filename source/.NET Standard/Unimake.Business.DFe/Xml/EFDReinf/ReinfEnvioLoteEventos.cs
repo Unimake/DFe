@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/envioLoteEventosAssincrono/v1_00_00", IsNullable = false)]
+    [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/envioLoteEventosAssincrono/v1_00_00", IsNullable = true)]
     public class ReinfEnvioLoteEventos : XMLBase
     {
         [XmlIgnore]
