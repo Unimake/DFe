@@ -1,6 +1,8 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
+using System;
+using System.Xml;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Exceptions;
 
@@ -16,8 +18,6 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 #endif
     public class StatusServico : CTe.StatusServico
     {
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -30,7 +30,23 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// </summary>
         public StatusServico() : base() { }
 
-        #endregion Public Constructors
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public StatusServico(string conteudoXML, Configuracao configuracao) : this()
+        {
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudoXML);
+
+            Inicializar(doc, configuracao);
+        }
 
         /// <summary>
         /// Validar o XML

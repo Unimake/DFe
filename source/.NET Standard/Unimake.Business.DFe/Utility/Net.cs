@@ -7,11 +7,12 @@ using System.Runtime.InteropServices;
 using System;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Unimake.Business.DFe.Utility
 {
     /// <summary>
-    /// Utilitários de rede
+    /// Utilitários de rede e internet
     /// </summary>
 #if INTEROP
     [ComVisible(false)]
@@ -41,6 +42,11 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>true = Tem conexão com a internet</returns>
         public static bool HasInternetConnection(IWebProxy proxy, int timeoutInSeconds = 3, string[] testUrls = null)
         {
+            if (timeoutInSeconds <= 0)
+            {
+                throw new ArgumentOutOfRangeException("O valor  do parâmetro 'timeoutInSeconds' deve ser maior que zero.");
+            }
+
             if (testUrls == null)
             {
                 testUrls = new string[] {
@@ -64,17 +70,11 @@ namespace Unimake.Business.DFe.Utility
 
             foreach (var url in testUrls)
             {
-                if (url.Substring(0,7).Equals("http://"))
+                if (url.Substring(0, 7).Equals("http://"))
                 {
-                    var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-                    if (proxy != null)
-                    {
-                        httpWebRequest.Proxy = proxy;
-                    }
-
                     try
                     {
-                        retorno = HasInternetConnection(httpWebRequest, timeoutMilleSeconds);
+                        retorno = TestHttpConnection(url, null, timeoutInSeconds);
                     }
                     catch
                     {
@@ -84,7 +84,7 @@ namespace Unimake.Business.DFe.Utility
                 else
                 {
                     // Testar conexão com IP direto do Google
-                    retorno = TestConnectionToIp(url, timeoutInSeconds);
+                    retorno = PingHost(url, timeoutInSeconds);
                 }
 
                 if (retorno)
@@ -97,58 +97,99 @@ namespace Unimake.Business.DFe.Utility
         }
 
         /// <summary>
-        /// Testar para ver o servidor de DNS dá um PING
+        /// Testar conexão HTTP ou HTTPS
         /// </summary>
-        /// <param name="ipAddress">IP</param>
-        /// <param name="timeoutInSeconds">Tempo máximo para ter uma resposta</param>
-        /// <returns>Se teve sucesso no PING</returns>
-        private static bool TestConnectionToIp(string ipAddress, int timeoutInSeconds)
+        /// <param name="url">URL a ser testada</param>
+        /// <param name="certificate">Certificado a ser utilizado para conexões https</param>
+        /// <param name="proxy">Configuração de proxy, caso exista</param>
+        /// <returns>Se a URL está respondendo, ou não</returns>
+        public static bool TestHttpConnection(string url, X509Certificate2 certificate = null, int timeoutInSeconds = 3, IWebProxy proxy = null)
         {
             try
             {
-                Ping ping = new Ping();
-                PingReply reply = ping.Send(ipAddress, timeoutInSeconds * 1000);
-                return (reply.Status == IPStatus.Success);
-            }
-            catch (PingException ex)
-            {
-                // Log ex.Message for debugging if necessary
-                return false;
-            }
-        }
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                if (proxy != null)
+                {
+                    httpWebRequest.Proxy = proxy;
+                }
 
-        /// <summary>
-        /// Verifica a conexão com a internet e retorna verdadeiro se conectado com sucesso
-        /// </summary>
-        /// <param name="client">Client a ser testado</param>
-        /// <param name="timeoutInMilliSeconds">Tempo de retorno em mile segundos</param>
-        /// <returns>true=Se tudo ok com a internet</returns>
-        /// <exception cref="ArgumentNullException">Quantidade </exception>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private static bool HasInternetConnection(HttpWebRequest client, int timeoutInMilliSeconds)
-        {
-            if (client == null)
-            {
-                throw new ArgumentNullException("client");
-            }
+                if (certificate != null)
+                {
+                    httpWebRequest.ClientCertificates.Add(certificate);
+                }
 
-            if (timeoutInMilliSeconds <= 0)
-            {
-                throw new ArgumentOutOfRangeException("O valor  do parâmetro 'timeoutInSeconds' deve ser maior que zero.");
-            }
+                httpWebRequest.Timeout = timeoutInSeconds * 1000;
+                httpWebRequest.ReadWriteTimeout = timeoutInSeconds * 1000;
 
-            try
-            {
-                client.Timeout = timeoutInMilliSeconds;
-                client.ReadWriteTimeout = timeoutInMilliSeconds;
-
-                var statusCode = (client.GetResponse() as HttpWebResponse).StatusCode;
-
+                var statusCode = (httpWebRequest.GetResponse() as HttpWebResponse).StatusCode;
                 return statusCode == HttpStatusCode.OK || statusCode == HttpStatusCode.NoContent;
             }
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Testar para ver o servidor de DNS dá um PING
+        /// </summary>
+        /// <param name="ipAddress">IP</param>
+        /// <param name="timeoutInSeconds">Tempo máximo para ter uma resposta</param>
+        /// <returns>Se teve sucesso no PING</returns>
+        public static bool PingHost(string ipAddress, int timeoutInSeconds)
+        {
+            try
+            {
+                var ping = new Ping();
+                var reply = ping.Send(ipAddress, timeoutInSeconds * 1000);
+                return (reply.Status == IPStatus.Success);
+            }
+            catch (PingException)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Extrair o domínio de uma URL
+        /// </summary>
+        /// <param name="url">URL para extrair o domínio</param>
+        /// <returns>Domínio da URL</returns>
+        public static string ExtractDomain(string url)
+        {
+            try
+            {
+                var uri = new Uri(url);
+                return uri.Host;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Obter o endereço de IP de um domínio
+        /// </summary>
+        /// <param name="domain">Domínio que é para obter o IP</param>
+        /// <returns>IP do domínio</returns>
+        public static string GetIpAddressDomain(string domain)
+        {
+            try
+            {
+                var addresses = Dns.GetHostAddresses(domain);
+                if (addresses.Length > 0)
+                {
+                    return addresses[0].ToString();
+                }
+                else
+                {
+                    throw new Exception("Nenhum endereço de IP encontrado.");
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
     }
