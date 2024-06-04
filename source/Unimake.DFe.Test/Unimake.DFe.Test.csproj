@@ -46,6 +46,9 @@
     <None Update="BugFixes\XML\41170801761135000132550010000189121110755809-ev-110110-001.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="BugFixes\XML\41190976430438002891550020000200981772597373-procNFe.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="BugFixes\XML\Bug162066.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
