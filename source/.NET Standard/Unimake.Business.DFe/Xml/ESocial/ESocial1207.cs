@@ -154,7 +154,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
+        #region ShouldSerialize
+        public bool ShouldSerializePerApurField () => PerApur > DateTime.MinValue;
 
+        #endregion ShouldSerialize
     }
 
     #endregion IdeEventoESocial1207
@@ -380,6 +383,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("ideEstab")]
         public IdeEstabESocial1207 IdeEstabESocial1207 { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializePerRefField () => PerRef > DateTime.MinValue;
+        #endregion ShouldSerialize
     }
 
     #endregion IdePeriodoESocial1207
