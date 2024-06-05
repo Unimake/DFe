@@ -36,7 +36,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Evento Tabela de Lotações Tributárias
     /// </summary>
-    [Serializable()]
     public class EvtTabLotacao
     {
         /// <summary>
@@ -55,7 +54,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do empregador
         /// </summary>
         [XmlElement("ideEmpregador")]
-        public IdeEmpregador ideEmpregador { get; set; }
+        public IdeEmpregador IdeEmpregador { get; set; }
 
         /// <summary>
         /// Informações da lotação 
@@ -74,7 +73,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Informações da lotação 
     /// </summary>
-    [Serializable()]
     public class InfoLotacao
     {
         /// <summary>
@@ -93,7 +91,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Inclusão de novas informações
     /// </summary>
-    [Serializable()]
     public class InclusaoE1020
     {
         /// <summary>
@@ -117,7 +114,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Identificação da lotação e validade das informações
     /// </summary>
-    [Serializable()]
     public class IdeLotacao
     {
         /// <summary>
@@ -126,13 +122,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime IniValid {get; set; }
 #else
         /// <summary>
         /// Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAAMM
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset IniValid { get; set; }
 #endif
 
@@ -150,14 +146,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        [XmlIgnore]
 #if INTEROP
-            public DateTime FimValid {get; set; }
+        public DateTime FimValid {get; set; }
 
 #else
         /// <summary>
         /// Preencher com o mês e ano de término da validade das informações, se houver.
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset FimValid { get; set; }
 #endif
         /// <summary>
@@ -184,7 +180,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Detalhamento das informações da lotação.
     /// </summary>
-    [Serializable()]
     public class DadosLotacao
     {
         /// <summary>
@@ -236,7 +231,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Informações de FPAS e Terceiros relativos à lotação tributária.
     /// </summary>
-    [Serializable]
     public class FpasLotacao
     {
         /// <summary>
@@ -298,7 +292,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// relativos às contribuições destinadas a Outras Entidades
     /// e Fundos.
     /// </summary>
-    [Serializable()]
     public class InfoProcJudTerceiro
     {
         /// <summary>
@@ -316,7 +309,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Identificação do processo judicial.
     /// </summary>
-    [Serializable()]
     public class ProcJudTerceiro
     {
         /// <summary>
@@ -362,7 +354,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// do contratante de obra de construção civil sob regime
     /// de empreitada parcial ou subempreitada.
     /// </summary>
-    [Serializable()]
     public class InfoEmprParcial
     {
         /// <summary>
@@ -415,7 +406,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Informações do operador portuário.
     /// </summary>
-    [Serializable()]
     public class DadosOpPort
     {
         /// <summary>
@@ -432,21 +422,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// e menor ou igual a 2,0000, de acordo com o
         /// estabelecido pelo órgão governamental competente.
         /// </summary>
-        [XmlIgnore]
-        public double Fap { get; set; }
-
-        /// <summary>
-        /// Fator Acidentário de Prevenção - FAP.
-        /// Validação: Deve ser um número maior ou igual a 0,5000
-        /// e menor ou igual a 2,0000, de acordo com o
-        /// estabelecido pelo órgão governamental competente.
-        /// </summary>
         [XmlElement("fap")]
-        public string FapField
-        {
-            get => Fap.ToString();//("F2", CultureInfoESocial.Info);
-            set => Fap = double.Parse(value);
-        }
+        public double Fap { get; set; }
     }
     #endregion DadosOpPort
 
