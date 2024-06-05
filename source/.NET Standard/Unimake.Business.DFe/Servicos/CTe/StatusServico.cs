@@ -84,7 +84,6 @@ namespace Unimake.Business.DFe.Servicos.CTe
             Inicializar(consStatServCte?.GerarXML() ?? throw new ArgumentNullException(nameof(consStatServCte)), configuracao);
         }
 
-
         /// <summary>
         /// Construtor
         /// </summary>

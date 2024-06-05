@@ -15,14 +15,10 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
 #endif
     public abstract class ServicoBase : NFe.ServicoBase
     {
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
         public ServicoBase() : base() { }
-
-        #endregion Public Constructors
 
         /// <summary>
         /// Validar o XML
