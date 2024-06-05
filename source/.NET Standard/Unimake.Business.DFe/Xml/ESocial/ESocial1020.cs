@@ -30,7 +30,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTabLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -67,7 +67,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -85,7 +85,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoE1020")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -108,7 +108,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.IdeLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -174,7 +174,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -225,7 +225,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.FpasLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.FpasLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -283,7 +283,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.FpasLotacao.InfoProcJudTerceiro")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJudTerceiro")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -303,7 +303,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.FpasLotacao.InfoProcJudTerceiro.ProcJudTerceiro")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTerceiro")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -346,7 +346,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.InfoEmprParcial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEmprParcial")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -400,7 +400,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.DadosOpPort")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosOpPort")]
     [ComVisible(true)]
 #endif
     /// <summary>

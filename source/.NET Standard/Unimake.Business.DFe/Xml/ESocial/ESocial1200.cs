@@ -30,7 +30,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.EvtRemun")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtRemun")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -73,7 +73,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.EvtRemun.IdeEventoESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -153,7 +153,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -204,7 +204,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.InfoMV")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMV")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -235,7 +235,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.InfoMV.RemunOutrEmpr")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunOutrEmpr")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -304,7 +304,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.InfoComplem")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -359,7 +359,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.ProcJudTrab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -404,7 +404,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -452,7 +452,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApur")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -477,7 +477,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLot")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -535,7 +535,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -582,7 +582,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur.ItensRemunESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -599,7 +599,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur.InfoAgNocivo")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAgNocivo")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -626,7 +626,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoComplCont")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplCont")]
     [ComVisible(true)]
 #endif
     /// <summary>
