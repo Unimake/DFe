@@ -9530,7 +9530,7 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndApuracao
     {
         /// <summary>
-        /// 
+        /// Mensal
         /// </summary>
         [XmlEnum("1")]
         Mensal = 1,
