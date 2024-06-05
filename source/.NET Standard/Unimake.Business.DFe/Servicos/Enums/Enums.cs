@@ -9530,12 +9530,12 @@ namespace Unimake.Business.DFe.Servicos
     public enum IndApuracao
     {
         /// <summary>
-        /// 
+        /// Mensal
         /// </summary>
         [XmlEnum("1")]
         Mensal = 1,
         /// <summary>
-        /// 13° salário 
+        /// Anual (13° salário)
         /// </summary>
         [XmlEnum("2")]
         Anual = 2,
@@ -9916,7 +9916,7 @@ namespace Unimake.Business.DFe.Servicos
         #region Bolsista
 
         /// <summary>
-        /// Bolsista
+        /// Estagiario
         /// </summary>
         [XmlEnum("901")]
         Estagiario = 901,
@@ -9928,7 +9928,7 @@ namespace Unimake.Business.DFe.Servicos
         MedicoResidenteOuCursoDeFormacao = 902,
 
         /// <summary>
-        /// 
+        /// Bolsista
         /// </summary>
         [XmlEnum("903")]
         Bolsista = 903,
@@ -9940,8 +9940,9 @@ namespace Unimake.Business.DFe.Servicos
         ParticipanteCursoDeFormacao = 904,
 
         /// <summary>
-        /// 
+        /// Beneficiário do Programa Nacional de Prestação de Serviço Civil Voluntário
         /// </summary>
+        [XmlEnum("906")]
         BeneficiarioProgNacPrestacaoServicoCivilVoluntario = 906,
         #endregion Bolsista
     }

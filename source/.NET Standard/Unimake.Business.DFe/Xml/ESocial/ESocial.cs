@@ -148,43 +148,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
         /// Validação: Deve ser maior que 0 (zero).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("qtdRubr")]
         public double QtdRubr { get; set; }
-
-        ///// <summary>
-        ///// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.). 
-        ///// Ex.: Quantidade de horas extras trabalhadas relacionada com uma rubrica de hora extra,
-        ///// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
-        ///// Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("qtdRubr")]
-        //public string QtdRubrField
-        //{
-        //    get => QtdRubr.ToString("F2", CultureInfoESocial.Info);
-        //    set => QtdRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Informar o fator, percentual, etc. da rubrica, quando necessário.
         /// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
         /// Validação: Deve ser maior que 0 (zero).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("fatorRubr")]
         public double FatorRubr { get; set; }
-
-        ///// <summary>
-        ///// Informar o fator, percentual, etc. da rubrica, quando necessário.
-        ///// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
-        ///// Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("fatorRubr")]
-        //public string fatorRubrField
-        //{
-        //    get => FatorRubr.ToString("F2", CultureInfoESocial.Info);
-        //    set => FatorRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
@@ -192,16 +165,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         //[XmlIgnore]
         [XmlElement("vrRubr")]
         public double VrRubr { get; set; }
-
-        ///// <summary>
-        ///// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("vrRubr")]
-        //public string VrRubrField
-        //{
-        //    get => VrRubr.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         #region ShouldSerialize
         public bool ShouldSerializeQtdRubrField() => QtdRubr != 0;
