@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.EvtTabEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTabEstab")]
     [ComVisible(true)]
 #endif
     public class EvtTabEstab
@@ -42,7 +42,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstab")]
     [ComVisible(true)]
 #endif
     public class InfoEstab
@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InclusaoESocial1005")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoESocial1005")]
     [ComVisible(true)]
 #endif
     public class InclusaoESocial1005
@@ -73,7 +73,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.IdeEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab")]
     [ComVisible(true)]
 #endif
     public class IdeEstab
@@ -129,7 +129,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.DadosEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosEstab")]
     [ComVisible(true)]
 #endif
     public class DadosEstab
@@ -170,7 +170,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.AliqGilrat")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.AliqGilrat")]
     [ComVisible(true)]
 #endif
     public class AliqGilrat
@@ -208,7 +208,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.ProcAdmJudRat")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcAdmJudRat")]
     [ComVisible(true)]
 #endif
     public class ProcAdmJudRat
@@ -225,7 +225,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.ProcAdmJudFap")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcAdmJudFap")]
     [ComVisible(true)]
 #endif
     public class ProcAdmJudFap
@@ -242,7 +242,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoCaepf")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCaepf")]
     [ComVisible(true)]
 #endif
     public class InfoCaepf
@@ -253,7 +253,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoObra")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoObra")]
     [ComVisible(true)]
 #endif
     public class InfoObra
@@ -264,7 +264,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoTrab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTrab")]
     [ComVisible(true)]
 #endif
     public class InfoTrab
@@ -282,7 +282,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoApr")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoApr")]
     [ComVisible(true)]
 #endif
     public class InfoApr
@@ -339,7 +339,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoEntEduc")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEntEduc")]
     [ComVisible(true)]
 #endif
     public class InfoEntEduc
@@ -350,7 +350,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.InfoPCD")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPCD")]
     [ComVisible(true)]
 #endif
     public class InfoPCD
@@ -361,7 +361,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.Alteracao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao")]
     [ComVisible(true)]
 #endif
     public class Alteracao
@@ -381,7 +381,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.NovaValidade")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade")]
     [ComVisible(true)]
 #endif
     public class NovaValidade
@@ -431,7 +431,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.eSocial.ESocial1005.Exclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao")]
     [ComVisible(true)]
 #endif
     public class Exclusao
