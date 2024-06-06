@@ -263,7 +263,6 @@ namespace Unimake.Business.DFe.Xml.NFe
                         break;
 
                     case TipoEventoNFe.Cancelamento:
-                        COrgao = UFBrasil.AN; //Sempre será 91, somente o ambiente nacional vai autorizar este evento
                         _detEvento = new DetEventoCanc();
                         break;
 
@@ -275,6 +274,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         break;
 
                     case TipoEventoNFe.AtorInteressadoNFe:
+                        COrgao = UFBrasil.AN; //Sempre será 91, somente o ambiente nacional vai autorizar este evento
                         _detEvento = new DetEventoAtorInteressadoNFe();
                         break;
 
