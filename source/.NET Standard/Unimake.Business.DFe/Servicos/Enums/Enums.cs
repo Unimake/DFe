@@ -797,6 +797,12 @@ namespace Unimake.Business.DFe.Servicos
         EPEC = 110140,
 
         /// <summary>
+        /// 110150 - Ator Interessado na NFe
+        /// </summary>
+        [XmlEnum("110150")]
+        AtorInteressadoNFe = 110150,
+
+        /// <summary>
         /// 110192 - Insucesso na Entrega da NF-e
         /// </summary>
         [XmlEnum("110192")]
@@ -4453,6 +4459,56 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("9")]
         OutrosOrgaos = 9
+    }
+
+    #endregion
+
+    #region Tipo do autor que gerou o evento do Ator Interessado na NFe
+
+    /// <summary>
+    /// Tipo do autor que gerou o evento do Ator Interessado na NFe
+    /// </summary>
+    public enum TipoAutorGeradorEvento
+    {
+        /// <summary>
+        /// Evento gerado pela Empresa Emitente
+        /// </summary>
+        [XmlEnum("1")]
+        EmpresaEmitente = 1,
+
+        /// <summary>
+        /// Evento gerado pela Empresa Destinatária
+        /// </summary>
+        [XmlEnum("2")]
+        EmpresaDestinaria = 2,
+
+        /// <summary>
+        /// Evento gerado pela Empresa Transportadora
+        /// </summary>
+        [XmlEnum("3")]
+        EmpresaTransportadora = 3
+    }
+
+    #endregion
+
+    #region Tipo de autorização do evento de ator interessado na NFe
+
+    /// <summary>
+    /// Tipo de autorização do evento de ator interessado na NFe
+    /// </summary>
+    public enum TipoAutorizacao
+    {
+        /// <summary>
+        /// 0 – Não permite
+        /// </summary>
+        [XmlEnum("0")]
+        NaoPermite = 0,
+
+        /// <summary>
+        /// 1 – Permite o transportador autorizado pelo emitente ou destinatário autorizar outros transportadores para ter acesso ao download da NF-e
+        /// </summary>
+        [XmlEnum("1")]
+        Permite = 1,
     }
 
     #endregion

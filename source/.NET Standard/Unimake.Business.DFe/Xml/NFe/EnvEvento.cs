@@ -263,6 +263,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         break;
 
                     case TipoEventoNFe.Cancelamento:
+                        COrgao = UFBrasil.AN; //Sempre será 91, somente o ambiente nacional vai autorizar este evento
                         _detEvento = new DetEventoCanc();
                         break;
 
@@ -271,6 +272,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                     case TipoEventoNFe.ManifestacaoDesconhecimentoOperacao:
                     case TipoEventoNFe.ManifestacaoOperacaoNaoRealizada:
                         _detEvento = new DetEventoManif();
+                        break;
+
+                    case TipoEventoNFe.AtorInteressadoNFe:
+                        _detEvento = new DetEventoAtorInteressadoNFe();
                         break;
 
                     case TipoEventoNFe.CancelamentoPorSubstituicao:
@@ -2289,7 +2294,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Informar o número do Protocolo de Autorização do Evento da NF-e a que se refere este cancelamento.
         /// </summary>
         [XmlElement("nProtEvento")]
-        public string NProtEvento { get; set; }               
+        public string NProtEvento { get; set; }
 
         public override void WriteXml(XmlWriter writer)
         {
@@ -2301,6 +2306,145 @@ namespace Unimake.Business.DFe.Xml.NFe
                          <nProtEvento>{NProtEvento}</nProtEvento>";
 
             writer.WriteRaw(xml);
+        }
+    }
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAtorInteressadoNFe")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoAtorInteressadoNFe : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Ator interessado na NF-e";
+
+        /// <summary>
+        /// Código da UF do emitente do Evento
+        /// </summary>
+        [XmlIgnore]
+        public UFBrasil COrgaoAutor { get; set; }
+
+        [XmlElement("cOrgaoAutor")]
+        public int COrgaoAutorField
+        {
+            get => (int)COrgaoAutor;
+            set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
+
+        /// <summary>
+        /// Tipo do autor gerador do evento
+        /// </summary>
+        [XmlElement("tpAutor")]
+        public TipoAutorGeradorEvento TpAutor { get; set; }
+
+        /// <summary>
+        /// Versão do aplicativo do Autor do Evento. 
+        /// </summary>
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// CNPJs ou CPFs autorizados a fazer download do XML da NFe
+        /// </summary>
+        [XmlElement("autXML")]
+        public AutXML AutXML { get; set; } = new AutXML();
+
+        /// <summary>
+        /// Tipo de autorização do evento do ator interessado na NFe
+        /// </summary>
+        [XmlElement("tpAutorizacao")]
+        public TipoAutorizacao TpAutorizacao { get; set; }
+
+        /// <summary>
+        /// Texto Fixo com as Condição de uso do tipo de autorização para o transportador
+        /// </summary>
+        public string XCondUso { get; set; } = "O emitente ou destinatário da NF-e, declara que permite o transportador declarado no campo CNPJ/CPF deste evento a autorizar os transportadores subcontratados ou redespachados a terem acesso ao download da NF-e";
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <cOrgaoAutor>{COrgaoAutorField}</cOrgaoAutor>
+                         <tpAutor>{(int)TpAutor}</tpAutor>
+                         <verAplic>{VerAplic}</verAplic>
+                         <autXML>";
+
+            if (!string.IsNullOrEmpty(AutXML.CPF))
+            {
+                xml += $"<CPF>{AutXML.CPF}</CPF>";
+            }
+            else
+            {
+                xml += $"<CNPJ>{AutXML.CNPJ}</CNPJ>";
+            }
+
+            xml += $@"</autXML>
+                      <tpAutorizacao>{(int)TpAutorizacao}</tpAutorizacao>
+                      <xCondUso>{XCondUso}</xCondUso>";
+
+            writer.WriteRaw(xml);
+        }
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var xml = new XmlDocument();
+            xml.Load(XmlReader);
+
+            if (xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao") != null)
+            {
+                Versao = xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao").Value;
+            }
+            if (xml.GetElementsByTagName("cOrgaoAutor") != null)
+            {
+                COrgaoAutor = (UFBrasil)Convert.ToInt32(xml.GetElementsByTagName("cOrgaoAutor")[0].InnerText);
+            }
+            if (xml.GetElementsByTagName("tpAutor") != null)
+            {
+                TpAutor = (TipoAutorGeradorEvento)Convert.ToInt32(xml.GetElementsByTagName("tpAutor")[0].InnerText);
+            }
+            if (xml.GetElementsByTagName("verAplic") != null)
+            {
+                VerAplic = xml.GetElementsByTagName("verAplic")[0].InnerText;
+            }
+            if (xml.GetElementsByTagName("tpAutorizacao") != null)
+            {
+                TpAutorizacao = (TipoAutorizacao)Convert.ToInt32(xml.GetElementsByTagName("tpAutorizacao")[0].InnerText);
+            }
+
+            var detEventoNodeList = xml.GetElementsByTagName("detEvento");
+            foreach (var item in detEventoNodeList)
+            {
+                var detEventoElement = (XmlElement)item;
+
+                var autXMLNodeList = detEventoElement.GetElementsByTagName("autXML");
+
+                foreach (var itemAutXML in autXMLNodeList)
+                {
+                    var autXMLElement = (XmlElement)itemAutXML;
+
+                    if (autXMLElement.GetElementsByTagName("CPF").Count > 0)
+                    {
+                        AutXML.CPF = autXMLElement.GetElementsByTagName("CPF")[0].InnerText;
+                    }
+                    else
+                    {
+                        AutXML.CPF = autXMLElement.GetElementsByTagName("CNPJ")[0].InnerText;
+                    }
+                }
+            }
         }
     }
 }
