@@ -2441,7 +2441,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                     }
                     else
                     {
-                        AutXML.CPF = autXMLElement.GetElementsByTagName("CNPJ")[0].InnerText;
+                        AutXML.CNPJ = autXMLElement.GetElementsByTagName("CNPJ")[0].InnerText;
                     }
                 }
             }
