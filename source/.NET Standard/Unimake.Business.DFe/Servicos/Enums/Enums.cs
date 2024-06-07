@@ -10139,5 +10139,290 @@ namespace Unimake.Business.DFe.Servicos
         ComercExterior = 9
     }
     #endregion IndComerc
+
+    #region Tipo Pagamento eSocial
+
+    /// <summary>
+    /// Informar o evento de origem do pagamento.
+    /// </summary>
+    public enum TipoPagamentoESocial
+    {
+        /// <summary>
+        /// 1 - Pagamento de remuneração, conforme apurado em ideDmDev do S-1200
+        /// </summary>
+        [XmlEnum("1")]
+        PagamentoRemuneracaoS1200 = 1,
+
+        /// <summary>
+        /// 2 - Pagamento de verbas rescisórias conforme apurado em ideDmDev do S-2299
+        /// </summary>
+        [XmlEnum("2")]
+        PagamentoVerbasRecisoriasS2299 = 2,
+
+        /// <summary>
+        /// 3 - Pagamento de verbas rescisórias conforme apurado em ideDmDev do S-2399
+        /// </summary>
+        [XmlEnum("3")]
+        PagamentoVerbasRecisorias2399 = 3,
+
+        /// <summary>
+        /// 4 - Pagamento de remuneração conforme apurado em ideDmDev do S-1202
+        /// </summary>
+        [XmlEnum("4")]
+        PagamentoRemuneracaoS1202 = 4,
+
+        /// <summary>
+        /// 5 - Pagamento de benefícios previdenciários, conforme apurado em ideDmDev do S-1207
+        /// </summary>
+        [XmlEnum("5")]
+        PagamentoBeneficiosS1207 = 5
+    }
+
+    #endregion Tipo Pagamento eSocial
+
+    #region Formas de Tributação para Rendimentos de Beneficiários no Exterior - eSocial
+
+    /// <summary>
+    /// Tabela 30 - Formas de Tributação para Rendimentos de Beneficiários no Exterior. eSocial
+    /// </summary>
+    public enum FormasDeTributacaoESocial
+    {
+        /// <summary>
+        /// 10 - Retenção do IRRF - Alíquota padrão
+        /// </summary>
+        [XmlEnum("10")]
+        RetencaoAliquotaPadrao = 10,
+
+        /// <summary>
+        /// 11 - Retenção do IRRF - Alíquota da tabela progressiva
+        /// </summary>
+        [XmlEnum("11")]
+        RetencaoAliquotaTabelaProgressiva = 11,
+
+        /// <summary>
+        /// 12 - Retenção do IRRF - Alíquota diferenciada (países com tributação favorecida)
+        /// </summary>
+        [XmlEnum("12")]
+        RetencaoAliquotaDiferenciada = 12,
+
+        /// <summary>
+        /// 13 - Retenção do IRRF - Alíquota limitada conforme cláusula em convênio
+        /// </summary>
+        [XmlEnum("4")]
+        RetencaoAliquotaLimitada = 13,
+
+        /// <summary>
+        /// 30 - Retenção do IRRF - Outras hipóteses
+        /// </summary>
+        [XmlEnum("30")]
+        RetencaoOutrasHipoteses = 30,
+
+        /// <summary>
+        /// 40 - Não retenção do IRRF - Isenção estabelecida em convênio
+        /// </summary>
+        [XmlEnum("40")]
+        NaoRetencaoIsencaoConvenio = 40,
+
+        /// <summary>
+        /// 41 - Não retenção do IRRF - Isenção prevista em lei interna
+        /// </summary>
+        [XmlEnum("41")]
+        NaoRetencaoIsencaoLeiInterna = 41,
+
+        /// <summary>
+        /// 42 - Não retenção do IRRF - Alíquota zero prevista em lei interna
+        /// </summary>
+        [XmlEnum("42")]
+        NaoRetencaoAliquotaLeiInterna = 42,
+
+        /// <summary>
+        /// 43 - Não retenção do IRRF - Pagamento antecipado do imposto
+        /// </summary>
+        [XmlEnum("43")]
+        NaoRetencaoPagamentoAntecipadoDoImposto = 43,
+
+        /// <summary>
+        /// 44 - Não retenção do IRRF - Medida judicial
+        /// </summary>
+        [XmlEnum("44")]
+        NaoRetencaoMedidaJudicial = 44,
+
+        /// <summary>
+        /// 50 - Não retenção do IRRF - Outras hipóteses
+        /// </summary>
+        [XmlEnum("50")]
+        NaoRetencaoOutrasHiposteses = 50
+    }
+
+    #endregion 
+
+    #region Tipos de Dependente - eSocial
+
+    /// <summary>
+    /// Tabela 07 - Tipos de Dependente
+    /// </summary>
+    public enum TiposDeDependente
+    {
+        /// <summary>
+        /// 01 - Cônjuge
+        /// </summary>
+        [XmlEnum("01")]
+        Conjuge = 01,
+
+        /// <summary>
+        /// 02 - Companheiro(a) com o(a) qual tenha filho ou viva há mais de 5 (cinco) anos ou possua declaração de união estável
+        /// </summary>
+        [XmlEnum("02")]
+        FilhoOuUniaoEstavel = 02,
+
+        /// <summary>
+        /// 03 - Filho(a) ou enteado(a) 
+        /// </summary>
+        [XmlEnum("03")]
+        FilhoOuEnteado = 03,
+
+        /// <summary>
+        /// 04 - Filho(a) ou enteado(a), universitário(a) ou cursando escola técnica de 2º grau
+        /// </summary>
+        [XmlEnum("04")]
+        FilhoOuEnteadoEstudante = 04,
+
+        /// <summary>
+        /// 06 - Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, do(a) qual detenha a guarda judicial
+        /// </summary>
+        [XmlEnum("06")]
+        IrmaoNetoOuBisneto = 06,
+
+        /// <summary>
+        /// 07 - Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, universitário(a) ou cursando escola técnica de 2° grau, do(a) qual detenha a guarda judicial
+        /// </summary>
+        [XmlEnum("07")]
+        IrmaoNetoOuBisnetoEstudante = 07,
+
+        /// <summary>
+        /// 09 - Pais, avós e bisavós
+        /// </summary>
+        [XmlEnum("09")]
+        PaisAvosBisavos = 09,
+
+        /// <summary>
+        /// 10 - Menor pobre do qual detenha a guarda judicial
+        /// </summary>
+        [XmlEnum("10")]
+        MenorPobreGuardaJudicial = 10,
+
+        /// <summary>
+        /// 11 - A pessoa absolutamente incapaz, da qual seja tutor ou curador
+        /// </summary>
+        [XmlEnum("11")]
+        PessoaAbsolutamenteIncapaz = 11,
+
+        /// <summary>
+        /// 12 - Ex-cônjuge
+        /// </summary>
+        [XmlEnum("12")]
+        ExConjuge = 12,
+
+        /// <summary>
+        /// 99 - Agregado/Outros
+        /// </summary>
+        [XmlEnum("99")]
+        AgregadoOuOutros = 99,
+    }
+
+    #endregion
+
+    #region Tipo de rendimento.
+    /// <summary>
+    /// Tipo de rendimento.
+    /// </summary>
+    public enum TipoDeRendimento
+    {
+        /// <summary>
+        /// 11 - Remuneração mensal
+        /// </summary>
+        [XmlEnum("11")]
+        RemuneracaoMensal = 11,
+
+        /// <summary>
+        /// 12 - 13º salário
+        /// </summary>
+        [XmlEnum("12")]
+        DecimoTerceiroSalario = 12,
+
+        /// <summary>
+        /// 13 - Férias
+        /// </summary>
+        [XmlEnum("13")]
+        Ferias = 13,
+
+        /// <summary>
+        /// 14 - PLR
+        /// </summary>
+        [XmlEnum("14")]
+        PLR = 14,
+
+        /// <summary>
+        /// 18 - RRA
+        /// </summary>
+        [XmlEnum("18")]
+        RRA = 18,
+
+        /// <summary>
+        /// 79 - Rendimento isento ou não tributável
+        /// </summary>
+        [XmlEnum("79")]
+        RendimentoIsentoOuNaoTributavel = 79
+    }
+    #endregion
+
+    #region Tipo de previdência complementar - eSocial.
+    /// <summary>
+    /// Tipo de previdência complementar.
+    /// </summary>
+    public enum TipoDePrevidenciaComplementar
+    {
+        /// <summary>
+        /// 1 - Privada: codIncIRRF em S-1010 = [46, 47, 48]
+        /// </summary>
+        [XmlEnum("1")]
+        Privada = 1,
+
+        /// <summary>
+        /// 2 - FAPI: codIncIRRF em S-1010 = [61, 62, 66]
+        /// </summary>
+        [XmlEnum("2")]
+        FAPI = 2,
+
+        /// <summary>
+        /// 3 - Funpresp: codIncIRRF em S-1010 = [63, 64, 65]
+        /// </summary>
+        [XmlEnum("3")]
+        Funpresp = 3,
+
+    }
+    #endregion
+
+    #region Indicativo da origem do reembolso - eSocial.
+
+    /// <summary>
+    /// Indicativo da origem do reembolso.
+    /// </summary>
+    public enum IndicativoOrigemReembolso
+    {
+        /// <summary>
+        /// 1 - Reembolso efetuado pelo empregador no âmbito do plano de saúde (a operadora reembolsa o empregador)
+        /// </summary>
+        [XmlEnum("1")]
+        AmbitoDoPlanoDeSaude = 1,
+        /// <summary>
+        /// 2 - Reembolso efetuado pelo empregador como benefício do próprio empregador
+        /// </summary>
+        [XmlEnum("2")]
+        BeneficioDoProprioEmpregador = 2,
+
+    }
+    #endregion
+
     #endregion ESocial
 }
