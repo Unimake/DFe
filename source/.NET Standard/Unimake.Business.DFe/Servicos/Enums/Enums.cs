@@ -10083,5 +10083,57 @@ namespace Unimake.Business.DFe.Servicos
         ComercExterior = 9
     }
     #endregion IndComerc
+
+    #region IndGuia
+
+    /// <summary>
+    /// Indicativo do tipo de guia.
+    /// </summary>
+    public enum IndGuia
+    {
+        /// <summary>
+        /// 1 - Documento de Arrecadação do eSocial - DAE
+        /// </summary>
+        [XmlEnum("1")]
+        DocumentoArrecadacaoESocial = 1,
+    }
+    #endregion IndGuia
+
+    #region PercTranf
+
+    /// <summary>
+    /// Informe o percentual de contribuição social devida em
+    /// caso de transformação em sociedade de fins lucrativos - Lei 11.096/2005.
+    /// Valores válidos:
+    /// [1] - 0,2000
+    /// [2] - 0,4000
+    /// [3] - 0,6000
+    /// [4] - 0,8000
+    /// [5] - 1,0000
+    /// </summary>
+    public enum PercTranf
+    {
+        /// <summary>
+        /// [1] - 0,2000
+        /// </summary>
+        UM = 1,
+        /// <summary>
+        /// [2] - 0,4000
+        /// </summary>
+        DOIS = 2,
+        /// <summary>
+        /// [3] - 0,6000
+        /// </summary>
+        TRES = 3,
+        /// <summary>
+        /// [4] - 0,8000
+        /// </summary>
+        QUATRO = 4,
+        /// <summary>
+        /// [5] - 1,0000
+        /// </summary>
+        CINCO = 5,
+    }
+    #endregion PercTranf
     #endregion ESocial
 }
