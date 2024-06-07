@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -460,7 +459,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoReembMed</returns>
-        public InfoReembMed GetInfoDepSau(int index)
+        public InfoReembMed GetInfoReembMed(int index)
         {
             if ((InfoReembMed?.Count ?? 0) == 0)
             {
@@ -1156,7 +1155,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da DetReembTit</returns>
-        public DetReembTit GetInfoDepSau(int index)
+        public DetReembTit GetDetReembTit(int index)
         {
             if ((DetReembTit?.Count ?? 0) == 0)
             {

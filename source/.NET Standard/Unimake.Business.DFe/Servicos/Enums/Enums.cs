@@ -10208,7 +10208,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 13 - Retenção do IRRF - Alíquota limitada conforme cláusula em convênio
         /// </summary>
-        [XmlEnum("4")]
+        [XmlEnum("13")]
         RetencaoAliquotaLimitada = 13,
 
         /// <summary>
