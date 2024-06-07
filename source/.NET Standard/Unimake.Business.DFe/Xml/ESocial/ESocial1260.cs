@@ -409,6 +409,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// favorável ao contribuinte e relativos à contribuição
     /// incidente sobre a comercialização.
     /// </summary>
+    [Serializable]
     public class InfoProcJudESocial1260
     {
         /// <summary>
@@ -450,6 +451,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("vrRatSusp")]
         public double VrRatSusp { get; set; }
+
 
         /// <summary>
         /// Valor da contribuição para o SENAR com exigibilidade suspensa.
