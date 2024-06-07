@@ -521,62 +521,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Preenchimento obrigatório se vrRatSusp e vrSenarSusp não tiverem sido preenchidos.
         /// Deve ser um valor maior que 0 (zero).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("vrCPSusp")]
         public double VrCPSusp { get; set; }
-
-        ///// <summary>
-        ///// Preencher com o valor da remuneração recebida pelo
-        ///// trabalhador na outra empresa/atividade, sobre a qual
-        ///// houve desconto/recolhimento da contribuição do segurado.
-        ///// </summary>
-        //[XmlElement("VrCPSusp")]
-        //public string VrCPSuspField
-        //{
-        //    get => VrCPSusp.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrCPSusp = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Valor da contribuição para GILRAT com exigibilidade suspensa.
         /// Validação: Preenchimento obrigatório se vrCPSusp e vrSenarSusp não tiverem sido preenchidos.
         /// Deve ser um valor maior que 0 (zero).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("vrRatSusp")]
         public double VrRatSusp { get; set; }
 
-        ///// <summary>
-        ///// Preencher com o valor da remuneração recebida pelo
-        ///// trabalhador na outra empresa/atividade, sobre a qual
-        ///// houve desconto/recolhimento da contribuição do segurado.
-        ///// </summary>
-        //[XmlElement("VrRatSusp")]
-        //public string VrRatSuspField
-        //{
-        //    get => VrRatSusp.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrRatSusp = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Valor da contribuição para o SENAR com exigibilidade suspensa.
         /// Validação: Preenchimento obrigatório se VrCPSusp e vrRatSusp não tiverem sido preenchidos. 
         /// Deve ser um valor maior que 0 (zero).
-        ///[XmlIgnore]
         [XmlElement("vrSenarSusp")]
         public double VrSenarSusp { get; set; }
-
-        ///// <summary>
-        ///// Preencher com o valor da remuneração recebida pelo
-        ///// trabalhador na outra empresa/atividade, sobre a qual
-        ///// houve desconto/recolhimento da contribuição do segurado.
-        ///// </summary>
-        //[XmlElement("VrSenarSusp")]
-        //public string VrSenarSuspField
-        //{
-        //    get => VrSenarSusp.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrSenarSusp = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         #region ShouldSerialize
 
