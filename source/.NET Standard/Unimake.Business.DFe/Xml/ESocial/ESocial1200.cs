@@ -30,13 +30,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.EvtRemun")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtRemun")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Evento Remuneração de Trabalhador vinculado ao RGPS
     /// </summary>
-    [Serializable()]
     public class EvtRemun
     {
         /// <summary>
@@ -74,13 +73,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.EvtRemun.IdeEventoESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
-    [Serializable()]
     public class IdeEventoESocial1200
     {
         /// <summary>
@@ -95,6 +93,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime PerApur {get; set; }
 #else
@@ -106,7 +105,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -155,13 +153,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação do trabalhador.
     /// </summary>
-    [Serializable()]
     public class IdeTrabalhador
     {
         /// <summary>
@@ -207,7 +204,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.InfoMV")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMV")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -215,7 +212,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// que possua outros vínculos/atividades nos quais já tenha
     /// ocorrido desconto de contribuição previdenciária.
     /// </summary>
-    [Serializable()]
     public class InfoMV
     {
         /// <summary>
@@ -239,7 +235,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.InfoMV.RemunOutrEmpr")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunOutrEmpr")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -249,7 +245,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// detalhando as empresas que efetuaram(ou efetuarão)
     /// desconto da contribuição.
     /// </summary>
-    [Serializable()]
     public class RemunOutrEmpr
     {
         /// <summary>
@@ -299,18 +294,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         //[XmlIgnore]
         [XmlElement("vlrRemunOE")]
         public double VlrRemunOE { get; set; }
-
-        ///// <summary>
-        ///// Preencher com o valor da remuneração recebida pelo
-        ///// trabalhador na outra empresa/atividade, sobre a qual
-        ///// houve desconto/recolhimento da contribuição do segurado.
-        ///// </summary>
-        //[XmlElement("vlrRemunOE")]
-        //public string VlrRemunOEField
-        //{
-        //    get => VlrRemunOE.ToString("F2", CultureInfoESocial.Info);
-        //    set => VlrRemunOE = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
     }
 
     #endregion RemunOutrEmpr
@@ -321,7 +304,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.InfoComplem")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -336,7 +319,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// informações complementares são necessárias para correta
     /// identificação do trabalhador.
     /// </summary>
-    [Serializable()]
     public class InfoComplem
     {
         /// <summary>
@@ -345,13 +327,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nmTrab")]
         public string NmTrab { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
-         public DateTime DtNascto {get; set; }
+        public DateTime DtNascto {get; set; }
 #else
         /// <summary>
         /// Preencher com a data de nascimento
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset DtNascto { get; set; }
 #endif
 
@@ -377,7 +359,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.IdeTrabalhador.ProcJudTrab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -385,7 +367,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// trabalhador com decisão favorável quanto à não
     /// incidência de contribuições sociais e/ou Imposto de Renda.
     /// </summary>
-    [Serializable()]
     public class ProcJudTrab
     {
         /// <summary>
@@ -423,13 +404,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador.
     /// </summary>
-    [Serializable()]
     public class DmDev
     {
         /// <summary>
@@ -472,13 +452,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApur")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações relativas ao período de apuração. 
     /// </summary>
-    [Serializable()]
     public class InfoPerApur
     {
         /// <summary>
@@ -498,7 +477,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLot")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -510,7 +489,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// número do CAEPF(no caso de pessoa física obrigada a
     /// inscrição no Cadastro de Atividade Econômica da Pessoa Física).
     /// </summary>
-    [Serializable()]
     public class IdeEstabLot
     {
         /// <summary>
@@ -534,7 +512,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informar o código atribuído pelo empregador para a lotação tributária.
         /// </summary>
         [XmlElement("codLotacao")]
-        public string codlotacao { get; set; }
+        public string Codlotacao { get; set; }
 
         /// <summary>
         /// 
@@ -557,13 +535,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Remuneração do trabalhador 
     /// </summary>
-    [Serializable()]
     public class RemunPerApur
     {
         /// <summary>
@@ -605,13 +582,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur.ItensRemunESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Rubricas que compõem a remuneração do trabalhador
     /// </summary>
-    [Serializable()]
     public class ItensRemunESocial1200 : ItensRemun
     {
 
@@ -623,13 +599,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoPerApur.IdeEstabLot.RemunPerApur.InfoAgNocivo")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAgNocivo")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Grau de exposição a agentes nocivos 
     /// </summary>
-    [Serializable]
     public class InfoAgNocivo
     {
         /// <summary>
@@ -651,7 +626,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1200.DmDev.InfoComplCont")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplCont")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -659,7 +634,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// trabalhador cuja categoria não estiver obrigada ao evento de início de TSVE e se não
     /// houver evento S-2300 correspondente.
     /// </summary>
-    [Serializable()]
     public class InfoComplCont
     {
         /// <summary>

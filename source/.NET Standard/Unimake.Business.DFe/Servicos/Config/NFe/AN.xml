@@ -36,6 +36,11 @@
 					<SchemaArquivoEspecifico>e110140_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
+					<ID>110150</ID>
+					<SchemaArquivo>envEventoAtorInteressado_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>110150_v{0}.xsd</SchemaArquivoEspecifico>					
+				</Tipo>
+				<Tipo>
 					<ID>110130</ID>
 					<SchemaArquivo>envEventoEntregaNFe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110130_v{0}.xsd</SchemaArquivoEspecifico>

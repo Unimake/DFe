@@ -31,13 +31,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtBenPrRP")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Evento Remuneração de Trabalhador vinculado ao RGPS
     /// </summary>
-    [Serializable()]
     public class EvtBenPrRP
     {
         /// <summary>
@@ -73,13 +72,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #region IdeEventoESocial1207
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.IdeEventoESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações de identificação do evento
     /// </summary>
-    [Serializable]
     public class IdeEventoESocial1207
     {
         /// <summary>
@@ -102,6 +100,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime PerApur {get; set; }
 #else
@@ -113,7 +112,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -166,7 +164,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.IdeBenefESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenefESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -187,13 +185,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.DmDevESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDevESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação de cada um dos demonstrativos de valores devidos ao beneficiário
     /// </summary>
-    [Serializable()]
     public class DmDevESocial1207
     {
         /// <summary>
@@ -235,13 +232,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.DmDevESocial1207.InfoPerApurESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApurESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações relativas ao período de apuração
     /// </summary>
-    [Serializable()]
     public class InfoPerApurESocial1207
     {
         /// <summary>
@@ -255,13 +251,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.DmDevESocial1207.InfoPerApurESocial1207.IdeEstabESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
     /// </summary>
-    [Serializable()]
     public class IdeEstabESocial1207
     {
         /// <summary>
@@ -281,19 +276,55 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("itensRemun")]
         public List<ItensRemunESocial1207> ItensRemun { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddItensRemun(ItensRemunESocial1207 item)
+        {
+            if (ItensRemun == null)
+            {
+                ItensRemun = new List<ItensRemunESocial1207>();
+            }
+
+            ItensRemun.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ItensRemunESocial1207 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ItensRemunESocial1207</returns>
+        public ItensRemunESocial1207 GetItensRemun(int index)
+        {
+            if ((ItensRemun?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ItensRemun[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ItensRemunESocial1207
+        /// </summary>
+        public int GetItensRemunCount => (ItensRemun != null ? ItensRemun.Count : 0);
+#endif
     }
 
     #region ItensRemunESocial1207
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.DmDevESocial1207.InfoPerApurESocial1207.ItensRemunESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Rubricas que compõem o provento ou pensão do beneficiário.
     /// </summary>
-    [Serializable()]
     public class ItensRemunESocial1207 : ItensRemun
     {
         /// <summary>
@@ -314,7 +345,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.DmDevESocial1207.InfPerAnt")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfPerAnt")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -322,7 +353,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// anteriores.Somente preencher esse grupo se houver
     /// proventos ou pensões retroativos
     /// </summary>
-    [Serializable()]
     public class InfPerAnt
     {
         /// <summary>
@@ -337,15 +367,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207.EvtBenPrRP.DmDevESocial1207.InfPerAnt.IdePeriodoESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodoESocial1207")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação do período ao qual se referem as diferenças de provento ou pensão.
     /// </summary>
-    [Serializable()]
     public class IdePeriodoESocial1207
     {
+        [XmlIgnore]
 #if INTEROP
         public DateTime PerRef { get; set; }
 #else
@@ -356,7 +386,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// apuração informado em perApur.
         /// Deve ser informado no formato AAAA-MM
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset PerRef { get; set; }
 #endif
 

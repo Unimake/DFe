@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.EFDReinf;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -238,7 +237,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra IndRRA { get; set; }
+        public SimNaoLetra ? IndRRA { get; set; }
 #endif
 
         [XmlElement("infoRRA")]

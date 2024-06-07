@@ -33,13 +33,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtComProdESocial1260")]
     [ComVisible(true)]
 #endif
     /// <summary>
     ///  Evento Comercialização da Produção Rural Pessoa Física
     /// </summary>
-    [Serializable()]
     public class EvtComProdESocial1260
     {
         /// <summary>
@@ -65,13 +64,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.IdeEventoESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial1260")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações de identificação do evento
     /// </summary>
-    [Serializable]
     public class IdeEventoESocial1260
     {
         /// <summary>
@@ -88,6 +86,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrRecibo")]
         public string NrRecibo { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime PerApur {get; set; }
 #else
@@ -99,7 +98,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -151,13 +149,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.InfoComProdESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComProdESocial1260")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informação da comercialização de produção
     /// </summary>
-    [Serializable()]
     public class InfoComProdESocial1260
     {
         /// <summary>
@@ -171,13 +168,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.InfoComProdESocial1260.IdeEstabESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial1260")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação do estabelecimento que comercializou a produção
     /// </summary>
-    [Serializable]
     public class IdeEstabelESocial1260
     {
         /// <summary>
@@ -199,13 +195,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.InfoComProdESocial1260.IdeEstabESocial1260.TpComerc")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.TpComerc")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Valor total da comercialização por "tipo" de comercialização.
     /// </summary>
-    [Serializable]
     public class TpComerc
     {
         /// <summary>
@@ -237,17 +232,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("vrTotCom")]
         public double VrTotCom { get; set; }
 
-        ///// <summary>
-        ///// Preencher com o valor total da comercialização.
-        ///// Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("VrTotCom")]
-        //public string VrTotComField
-        //{
-        //    get => VrTotCom.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrTotCom = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
-
         /// <summary>
         /// Identificação dos adquirentes da produção.
         /// </summary>
@@ -274,13 +258,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.InfoComProdESocial1260.IdeEstabESocial1260.TpComerc.IdeAdquir")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeAdquir")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação dos adquirentes da produção.
     /// </summary>
-    [Serializable]
     public class IdeAdquir
     {
         /// <summary>
@@ -307,17 +290,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("vrComerc")]
         public double VrComerc { get; set; }
 
-        ///// <summary>
-        ///// Preencher com o valor total da comercialização.
-        ///// Validação: Deve ser maior que 0 (zero).
-        ///// </summary>
-        //[XmlElement("VrComerc")]
-        //public string VrComercField
-        //{
-        //    get => VrComerc.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrComerc = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
-
         /// <summary>
         /// Detalhamento das notas fiscais relativas à comercialização
         /// de produção com o adquirente identificado no grupo superior
@@ -336,17 +308,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.InfoComProdESocial1260.IdeEstabESocial1260.TpComerc.IdeAdquir.Nfs")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Nfs")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Detalhamento das notas fiscais relativas à comercialização
     /// de produção com o adquirente identificado no grupo superior
     /// </summary>
-    [Serializable]
     public class Nfs
     {
-
         /// <summary>
         /// Informar o número de série da nota fiscal/fatura.
         /// </summary>
@@ -359,6 +329,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrDocto")]
         public string NrDocto { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime DtEmisNF { get; set; }
 #else
@@ -366,7 +337,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Data de emissão da nota fiscal/fatura. Validação: O mês/ano da emissão da nota fiscal deve ser
         ///igual ao mês/ano indicado no registro de abertura do arquivo
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset DtEmisNF { get; set; }
 #endif
 
@@ -388,38 +358,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Preencher com o valor bruto da(s) nota(s) fiscal(is).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("vlrBruto")]
         public double VlrBruto { get; set; }
-
-        ///// <summary>
-        ///// Preencher com o valor bruto da(s) nota(s) fiscal(is).
-        ///// </summary>
-        //[XmlElement("vlrBruto")]
-        //public string VlrBrutoField
-        //{
-        //    get => VlrBruto.ToString("F2", CultureInfoESocial.Info);
-        //    set => VlrBruto = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Preencher com o valor da contribuição previdenciária descontada pelo adquirente na comercialização de
         /// produção.Se não houver informação, preencher com 0 (zero).
         /// </summary>
-        //[XmlIgnore]
+ 
         [XmlElement("vrCPDescPR")]
         public double VrCPDescPR { get; set; }
-
-        ///// <summary>
-        /////  Preencher com o valor da contribuição previdenciária descontada pelo adquirente na comercialização de
-        /////produção.Se não houver informação, preencher com 0 (zero).
-        ///// </summary>
-        //[XmlElement("vrCPDescPR")]
-        //public string VrCPDescPRField
-        //{
-        //    get => VrCPDescPR.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrCPDescPR = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Valor da contribuição destinada ao financiamento dos benefícios concedidos 
@@ -427,22 +375,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// do trabalho, incidente sobre a comercialização de
         /// produção rural de produtor rural.Se não houver informação, preencher com 0 (zero).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("vrRatDescPR")]
         public double VrRatDescPR { get; set; }
-
-        ///// <summary>
-        //// Valor da contribuição destinada ao financiamento dos benefícios concedidos 
-        //// em razão do grau de incidência da incapacidade laborativa decorrente dos riscos ambientais
-        //// do trabalho, incidente sobre a comercialização de
-        //// produção rural de produtor rural.Se não houver informação, preencher com 0 (zero).
-        ///// </summary>
-        //[XmlElement("vrRatDescPR")]
-        //public string VrRatDescPRField
-        //{
-        //    get => VrRatDescPR.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrRatDescPR = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         /// <summary>
         /// Valor da contribuição destinada ao SENAR, incidente sobre
@@ -450,22 +384,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// pessoa física/segurado especial.Se não houver
         /// informação, preencher com 0 (zero).
         /// </summary>
-        //[XmlIgnore]
         [XmlElement("vrSenarDesc")]
         public double VrSenarDesc { get; set; }
-
-        ///// <summary>
-        /// Valor da contribuição destinada ao financiamento dos benefícios concedidos 
-        /// em razão do grau de incidência da incapacidade laborativa decorrente dos riscos ambientais
-        /// do trabalho, incidente sobre a comercialização de
-        /// produção rural de produtor rural.Se não houver informação, preencher com 0 (zero).
-        ///// </summary>
-        //[XmlElement("vrSenarDesc")]
-        //public string VrSenarDescField
-        //{
-        //    get => VrSenarDesc.ToString("F2", CultureInfoESocial.Info);
-        //    set => VrSenarDesc = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        //}
 
         #region ShouldSerialize 
 
@@ -481,7 +401,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260.EvtComProdESocial1260.InfoComProdESocial1260.IdeEstabESocial1260.TpComerc.InfoProcJudESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJudESocial1260")]
     [ComVisible(true)]
 #endif
     /// <summary>

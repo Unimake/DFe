@@ -239,7 +239,7 @@ namespace Unimake.DFe.Test.NFe
                         {
                             Versao = "1.00",
                             InfEvento = new InfEvento(new DetEventoInsucessoEntregaNFe
-                            {                                
+                            {
                                 Versao = "1.00",
                                 COrgaoAutor = UFBrasil.SVRS, //Sempre 92 para Insucesso na entrega
                                 DhTentativaEntrega = DateTime.Now,
@@ -365,6 +365,97 @@ namespace Unimake.DFe.Test.NFe
             Assert.True(configuracao.CodigoUF.Equals(92), "UF definida nas configurações diferente de 92=SVRS");
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(recepcaoEvento.Result.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
+        }
+
+        /// <summary>
+        /// Testar o envio do evento de cancelamento do insucesso na entrega da NF-e, pois é tudo enviando para o SVRS, independente do estado, e tenho que garantir isso.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado xml</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado o xml</param>
+        [Theory]
+        [Trait("DFe", "NFe")]
+        [InlineData(UFBrasil.AC)]
+        [InlineData(UFBrasil.AL)]
+        [InlineData(UFBrasil.AP)]
+        [InlineData(UFBrasil.AM)]
+        [InlineData(UFBrasil.BA)]
+        [InlineData(UFBrasil.CE)]
+        [InlineData(UFBrasil.DF)]
+        [InlineData(UFBrasil.ES)]
+        [InlineData(UFBrasil.GO)]
+        [InlineData(UFBrasil.MA)]
+        [InlineData(UFBrasil.MT)]
+        [InlineData(UFBrasil.MS)]
+        [InlineData(UFBrasil.MG)]
+        [InlineData(UFBrasil.PA)]
+        [InlineData(UFBrasil.PB)]
+        [InlineData(UFBrasil.PR)]
+        [InlineData(UFBrasil.PE)]
+        [InlineData(UFBrasil.PI)]
+        [InlineData(UFBrasil.RJ)]
+        [InlineData(UFBrasil.RN)]
+        [InlineData(UFBrasil.RS)]
+        [InlineData(UFBrasil.RO)]
+        [InlineData(UFBrasil.RR)]
+        [InlineData(UFBrasil.SC)]
+        [InlineData(UFBrasil.SP)]
+        [InlineData(UFBrasil.SE)]
+        [InlineData(UFBrasil.TO)]
+        public void RecepcaoEventoAtorInteressadoNFe(UFBrasil ufBrasil)
+        {
+            var tipoAmbiente = TipoAmbiente.Producao;
+
+            var xml = new EnvEvento
+            {
+                Versao = "1.00",
+                IdLote = "000000000000001",
+                Evento = new List<Evento> {
+                        new Evento
+                        {
+                            Versao = "1.00",
+                            InfEvento = new InfEvento(new DetEventoAtorInteressadoNFe
+                            {
+                                Versao = "1.00",
+                                COrgaoAutor = ufBrasil,
+                                VerAplic = "uninfeteste1.0",
+                                TpAutor = TipoAutorGeradorEvento.EmpresaEmitente,
+                                TpAutorizacao = TipoAutorizacao.Permite,
+                                AutXML = new AutXML
+                                {
+                                    CNPJ = "00000000000000"
+                                }
+                            })
+                            {
+                                COrgao = UFBrasil.AN, //Sempre 91 para este evento
+                                ChNFe = (int)ufBrasil + "190806117473000150550010000579131943463890",
+                                CNPJ = "06117473000150",
+                                DhEvento = DateTime.Now,
+                                TpEvento = TipoEventoNFe.AtorInteressadoNFe,
+                                NSeqEvento = 1,
+                                VerEvento = "1.00",
+                                TpAmb = tipoAmbiente
+                            }
+                        }
+                    }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var recepcaoEvento = new RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            Assert.Contains("AN_", recepcaoEvento.Result.VerAplic); //Quem tem que responder é sempre o AN_, se não for tem coisa errada. Só AN_ autoriza este evento.
+            Assert.True(configuracao.CodigoUF.Equals(91), "UF definida nas configurações diferente de 91=AN");
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(recepcaoEvento.Result.COrgao.Equals(UFBrasil.AN), "Webservice retornou uma UF e está diferente de " + UFBrasil.AN.ToString());
+            Assert.True(recepcaoEvento.Result.RetEvento[0].InfEvento.COrgaoAutor.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(recepcaoEvento.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(recepcaoEvento.Result.CStat.Equals(128) || recepcaoEvento.Result.CStat.Equals(656) || recepcaoEvento.Result.CStat.Equals(217), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.XMotivo + "<xMotivo>");
         }

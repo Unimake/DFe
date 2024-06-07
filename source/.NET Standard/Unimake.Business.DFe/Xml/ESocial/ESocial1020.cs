@@ -30,13 +30,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTabLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Evento Tabela de Lotações Tributárias
     /// </summary>
-    [Serializable()]
     public class EvtTabLotacao
     {
         /// <summary>
@@ -55,7 +54,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do empregador
         /// </summary>
         [XmlElement("ideEmpregador")]
-        public IdeEmpregador ideEmpregador { get; set; }
+        public IdeEmpregador IdeEmpregador { get; set; }
 
         /// <summary>
         /// Informações da lotação 
@@ -68,13 +67,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações da lotação 
     /// </summary>
-    [Serializable()]
     public class InfoLotacao
     {
         /// <summary>
@@ -87,13 +85,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoE1020")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Inclusão de novas informações
     /// </summary>
-    [Serializable()]
     public class InclusaoE1020
     {
         /// <summary>
@@ -111,13 +108,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.IdeLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação da lotação e validade das informações
     /// </summary>
-    [Serializable()]
     public class IdeLotacao
     {
         /// <summary>
@@ -126,13 +122,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime IniValid {get; set; }
 #else
         /// <summary>
         /// Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAAMM
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset IniValid { get; set; }
 #endif
 
@@ -150,14 +146,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        [XmlIgnore]
 #if INTEROP
-            public DateTime FimValid {get; set; }
+        public DateTime FimValid {get; set; }
 
 #else
         /// <summary>
         /// Preencher com o mês e ano de término da validade das informações, se houver.
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset FimValid { get; set; }
 #endif
         /// <summary>
@@ -178,13 +174,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Detalhamento das informações da lotação.
     /// </summary>
-    [Serializable()]
     public class DadosLotacao
     {
         /// <summary>
@@ -230,13 +225,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.FpasLotacao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.FpasLotacao")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações de FPAS e Terceiros relativos à lotação tributária.
     /// </summary>
-    [Serializable]
     public class FpasLotacao
     {
         /// <summary>
@@ -289,7 +283,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.FpasLotacao.InfoProcJudTerceiro")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJudTerceiro")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -298,7 +292,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// relativos às contribuições destinadas a Outras Entidades
     /// e Fundos.
     /// </summary>
-    [Serializable()]
     public class InfoProcJudTerceiro
     {
         /// <summary>
@@ -310,13 +303,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.FpasLotacao.InfoProcJudTerceiro.ProcJudTerceiro")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTerceiro")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Identificação do processo judicial.
     /// </summary>
-    [Serializable()]
     public class ProcJudTerceiro
     {
         /// <summary>
@@ -354,7 +346,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.InfoEmprParcial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEmprParcial")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -362,7 +354,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// do contratante de obra de construção civil sob regime
     /// de empreitada parcial ou subempreitada.
     /// </summary>
-    [Serializable()]
     public class InfoEmprParcial
     {
         /// <summary>
@@ -409,13 +400,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1020.EvtTabLotacao.InfoLotacao.InclusaoE1020.DadosLotacao.DadosOpPort")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosOpPort")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações do operador portuário.
     /// </summary>
-    [Serializable()]
     public class DadosOpPort
     {
         /// <summary>
@@ -432,21 +422,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// e menor ou igual a 2,0000, de acordo com o
         /// estabelecido pelo órgão governamental competente.
         /// </summary>
-        [XmlIgnore]
-        public double Fap { get; set; }
-
-        /// <summary>
-        /// Fator Acidentário de Prevenção - FAP.
-        /// Validação: Deve ser um número maior ou igual a 0,5000
-        /// e menor ou igual a 2,0000, de acordo com o
-        /// estabelecido pelo órgão governamental competente.
-        /// </summary>
         [XmlElement("fap")]
-        public string FapField
-        {
-            get => Fap.ToString();//("F2", CultureInfoESocial.Info);
-            set => Fap = double.Parse(value);
-        }
+        public double Fap { get; set; }
     }
     #endregion DadosOpPort
 
