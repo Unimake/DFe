@@ -20,17 +20,12 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     [ProgId("Unimake.Business.DFe.Servicos.MDFe.AutorizacaoSinc")]
     [ComVisible(true)]
 #endif
+    [Obsolete("SEFAZ não disponibilizará mais o envio assíncrono de MDFe a partir de julho de 2024, em breve vamos remover esta classe da DLL.", false)]
     public class AutorizacaoSinc : ServicoBase, IInteropService<Xml.MDFe.MDFe>
     {
-        #region Private Fields
-
         private Xml.MDFe.MDFe _MDFe;
 
         private readonly Dictionary<string, MdfeProc> MdfeProcs = new Dictionary<string, MdfeProc>();
-
-        #endregion Private Fields
-
-        #region Private Methods
 
         private void MontarQrCode()
         {
@@ -142,10 +137,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             }
         }
 
-        #endregion Private Methods
-
-        #region Protected Methods
-
         /// <summary>
         /// Efetuar um Ajustse no XML da NFCe logo depois de assinado
         /// </summary>
@@ -200,18 +191,10 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             }
         }
 
-        #endregion Protected Methods
-
-        #region Public Fields
-
         /// <summary>
         /// Propriedade com o conteúdo retornado da consulta situação do MDFe
         /// </summary>
         public List<RetConsSitMDFe> RetConsSitMDFe = new List<RetConsSitMDFe>();
-
-        #endregion Public Fields
-
-        #region Public Properties
 
         /// <summary>
         /// Objeto do XML do MDFe
@@ -334,10 +317,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             }
         }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -356,6 +335,8 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             }
 
             Inicializar(mdfe?.GerarXML() ?? throw new ArgumentNullException(nameof(mdfe)), configuracao);
+
+            MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
         }
 
         /// <summary>
@@ -374,11 +355,25 @@ namespace Unimake.Business.DFe.Servicos.MDFe
             doc.LoadXml(conteudoXML);
 
             Inicializar(doc, configuracao);
+
+            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
+
+            //Remover a assinatura e QRCode para forçar criar novamente
+            MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
+            MDFe.Signature = null;
+            MDFe.InfMDFeSupl = null;
+
+            //Gerar o XML novamente com base no objeto
+            ConteudoXML = MDFe.GerarXML();
+
+            //Forçar assinar e criar QRCode novamente
+            _ = ConteudoXMLAssinado;
+
+            //Atualizar o objeto novamente com o XML já assinado e com QRCode
+            MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
+
+            #endregion
         }
-
-        #endregion Public Constructors
-
-        #region Public Methods
 
         /// <summary>
         /// Executar o serviço
@@ -386,12 +381,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 #if INTEROP
         [ComVisible(false)]
 #endif
-        public override void Executar()
-        {
-            base.Executar();
-
-            MDFe = MDFe.LerXML<Xml.MDFe.MDFe>(ConteudoXML);
-        }
+        public override void Executar() => base.Executar();
 
         /// <summary>
         /// Validar o XML
@@ -579,7 +569,5 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
-
-        #endregion Public Methods
     }
 }
