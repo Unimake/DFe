@@ -22,13 +22,16 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #endif
     public class RecepcaoEvento : ServicoBase, IInteropService<EnvEvento>
     {
-        #region Private Properties
+        private EnvEvento _EnvEvento;
 
-        private EnvEvento EnvEvento => new EnvEvento().LerXML<EnvEvento>(ConteudoXML);
-
-        #endregion Private Properties
-
-        #region Private Methods
+        /// <summary>
+        /// Objeto do XML do Evento
+        /// </summary>
+        public EnvEvento EnvEvento
+        {
+            get => _EnvEvento ?? (_EnvEvento = new EnvEvento().LerXML<EnvEvento>(ConteudoXML));
+            protected set => _EnvEvento = value;
+        }
 
         private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
         {
@@ -40,10 +43,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
-
-        #endregion Private Methods
-
-        #region Protected Methods
 
         /// <summary>
         /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
@@ -207,10 +206,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
-        #endregion Protected Methods
-
-        #region Public Properties
-
         /// <summary>
         /// Propriedade contendo o XML do evento com o protocolo de autorização anexado
         /// </summary>
@@ -254,10 +249,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
-        #endregion Public Properties
-
-        #region Public Constructors
-
         /// <summary>
         /// Construtor
         /// </summary>
@@ -271,6 +262,8 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
 
             Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+
+            EnvEvento = EnvEvento.LerXML<EnvEvento>(ConteudoXML);
         }
 
         /// <summary>
@@ -289,16 +282,32 @@ namespace Unimake.Business.DFe.Servicos.NFe
             doc.LoadXml(conteudoXML);
 
             Inicializar(doc, configuracao);
+
+            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
+
+            //Remover a assinatura para forçar criar novamente
+            EnvEvento = EnvEvento.LerXML<EnvEvento>(ConteudoXML);
+            foreach (var evento in EnvEvento.Evento)
+            {
+                evento.Signature = null;
+            }
+
+            //Gerar o XML novamente com base no objeto
+            ConteudoXML = EnvEvento.GerarXML();
+
+            //Forçar assinar novamente
+            _ = ConteudoXMLAssinado;
+
+            //Atualizar o objeto novamente com o XML já assinado
+            EnvEvento = EnvEvento.LerXML<EnvEvento>(ConteudoXML);
+
+            #endregion
         }
 
         /// <summary>
         /// Construtor
         /// </summary>
         public RecepcaoEvento() : base() { }
-
-        #endregion Public Constructors
-
-        #region Public Methods
 
 #if INTEROP
 
@@ -432,7 +441,5 @@ namespace Unimake.Business.DFe.Servicos.NFe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
-
-        #endregion Public Methods
     }
 }

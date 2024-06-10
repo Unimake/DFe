@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Text;
-using Unimake.Business.DFe.Security;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.NFe
@@ -56,12 +55,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
 #if INTEROP
         [ComVisible(false)]
 #endif
-        public override void Executar()
-        {
-            XmlValidar();
-
-            base.Executar();
-        }
+        public override void Executar() => base.Executar();
 
         /// <summary>
         /// Gravar o XML de distribuição em uma pasta no HD
