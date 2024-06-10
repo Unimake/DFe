@@ -39,9 +39,7 @@ namespace Unimake.DFe.Test.CTe
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacao = new Unimake.Business.DFe.Servicos.CTe.Autorizacao(xml, configuracao);
-
-            Assert.True(doc.InnerText == autorizacao.ConteudoXMLOriginal.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
@@ -71,9 +69,7 @@ namespace Unimake.DFe.Test.CTe
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacao = new Unimake.Business.DFe.Servicos.CTe.AutorizacaoSinc(xml, configuracao);
-
-            Assert.True(doc.InnerText == autorizacao.ConteudoXMLOriginal.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
 
@@ -100,9 +96,7 @@ namespace Unimake.DFe.Test.CTe
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var autorizacao = new Unimake.Business.DFe.Servicos.CTeOS.Autorizacao(xml, configuracao);
-
-            Assert.True(doc.InnerText == autorizacao.ConteudoXMLOriginal.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+            Assert.True(doc.InnerText == xml.GerarXML().InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
         /// <summary>
