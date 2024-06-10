@@ -10476,5 +10476,84 @@ namespace Unimake.Business.DFe.Servicos
         CINCO = 5,
     }
     #endregion PercTranf
+
+    #region Unidade de pagamento da parte fixa da remuneração. - eSocial.
+
+    /// <summary>
+    /// Unidade de pagamento da parte fixa da remuneração.
+    /// </summary>
+    public enum UnidadeSalarioFixo
+    {
+        /// <summary>
+        /// 1 - Por hora
+        /// </summary>
+        [XmlEnum("1")]
+        PorHora = 1,
+
+        /// <summary>
+        /// 2 - Por dia
+        /// </summary>
+        [XmlEnum("2")]
+        PorDia = 2,
+
+        /// <summary>
+        /// 3 - Por semana
+        /// </summary>
+        [XmlEnum("3")]
+        PorSemana = 3,
+
+        /// <summary>
+        /// 4 - Por quinzena
+        /// </summary>
+        [XmlEnum("4")]
+        PorQuinzena = 4,
+
+        /// <summary>
+        /// 5 - Por mês
+        /// </summary>
+        [XmlEnum("5")]
+        PorMes = 5,
+
+        /// <summary>
+        /// 6 - Por tarefa
+        /// </summary>
+        [XmlEnum("6")]
+        PorTarefa = 6,
+
+        /// <summary>
+        /// 7 - Não aplicável - Salário exclusivamente variável
+        /// </summary>
+        [XmlEnum("7")]
+        NaoAplicavel = 7
+    }
+    #endregion
+
+    #region Tipo de contrato de trabalho. [tpContr] - eSocial.
+
+    /// <summary>
+    /// Tipo de contrato de trabalho. [tpContr]
+    /// </summary>
+    public enum TipoDeContratoDeTrabalho
+    {
+        /// <summary>
+        /// 1 - Prazo indeterminado
+        /// </summary>
+        [XmlEnum("1")]
+        PrazoIndeterminado = 1,
+
+        /// <summary>
+        /// 2 - Prazo determinado, definido em dias
+        /// </summary>
+        [XmlEnum("2")]
+        PrazoDeterminadoEmDias = 2,
+
+        /// <summary>
+        /// 3 - Prazo determinado, vinculado à ocorrência de um fato
+        /// </summary>
+        [XmlEnum("3")]
+        PrazoDeterminadoOcorrencia = 3
+    }
+    #endregion
+
     #endregion ESocial
 }
