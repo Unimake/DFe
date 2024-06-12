@@ -10476,6 +10476,342 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion PercTranf
 
+    #region Unidade de pagamento da parte fixa da remuneração. - eSocial.
+
+    /// <summary>
+    /// Unidade de pagamento da parte fixa da remuneração.
+    /// </summary>
+    public enum UnidadeSalarioFixo
+    {
+        /// <summary>
+        /// 1 - Por hora
+        /// </summary>
+        [XmlEnum("1")]
+        PorHora = 1,
+
+        /// <summary>
+        /// 2 - Por dia
+        /// </summary>
+        [XmlEnum("2")]
+        PorDia = 2,
+
+        /// <summary>
+        /// 3 - Por semana
+        /// </summary>
+        [XmlEnum("3")]
+        PorSemana = 3,
+
+        /// <summary>
+        /// 4 - Por quinzena
+        /// </summary>
+        [XmlEnum("4")]
+        PorQuinzena = 4,
+
+        /// <summary>
+        /// 5 - Por mês
+        /// </summary>
+        [XmlEnum("5")]
+        PorMes = 5,
+
+        /// <summary>
+        /// 6 - Por tarefa
+        /// </summary>
+        [XmlEnum("6")]
+        PorTarefa = 6,
+
+        /// <summary>
+        /// 7 - Não aplicável - Salário exclusivamente variável
+        /// </summary>
+        [XmlEnum("7")]
+        NaoAplicavel = 7
+    }
+    #endregion
+
+    #region Tipo de contrato de trabalho. [tpContr] - eSocial.
+
+    /// <summary>
+    /// Tipo de contrato de trabalho. [tpContr]
+    /// </summary>
+    public enum TipoDeContratoDeTrabalho
+    {
+        /// <summary>
+        /// 1 - Prazo indeterminado
+        /// </summary>
+        [XmlEnum("1")]
+        PrazoIndeterminado = 1,
+
+        /// <summary>
+        /// 2 - Prazo determinado, definido em dias
+        /// </summary>
+        [XmlEnum("2")]
+        PrazoDeterminadoEmDias = 2,
+
+        /// <summary>
+        /// 3 - Prazo determinado, vinculado à ocorrência de um fato
+        /// </summary>
+        [XmlEnum("3")]
+        PrazoDeterminadoOcorrencia = 3
+    }
+    #endregion
+
+    #region Sexo do trabalhador, tag [sexo] eSocial.
+
+    /// <summary>
+    /// Sexo do trabalhador, tag [sexo] eSocial
+    /// </summary>
+    public enum TipoSexo
+    {
+        /// <summary>
+        /// Masculino
+        /// </summary>
+        [XmlEnum("M")]
+        Masculino = 1,
+
+        /// <summary>
+        /// Feminino
+        /// </summary>
+        [XmlEnum("F")]
+        Feminino = 2,
+    }
+    #endregion
+
+    #region Etnia e raça do trabalhador, conforme sua autoclassificação(art. 39, § 8º, da Lei 12.288/2010). - eSocial
+    /// <summary>
+    /// Etnia e raça do trabalhador, conforme sua autoclassificação(art. 39, § 8º, da Lei 12.288/2010).
+    /// </summary>
+    public enum RacaCor
+    {
+        /// <summary>
+        /// 1 - Branca
+        /// </summary>
+        [XmlEnum("1")]
+        Branca = 1,
+
+        /// <summary>
+        /// 2 - Preta
+        /// </summary>
+        [XmlEnum("2")]
+        Preta = 2,
+
+        /// <summary>
+        /// 3 - Parda
+        /// </summary>
+        [XmlEnum("3")]
+        Parda = 3,
+
+        /// <summary>
+        /// 4 - Amarela
+        /// </summary>
+        [XmlEnum("4")]
+        Amarela = 4,
+
+        /// <summary>
+        /// 5 - Indígena
+        /// </summary>
+        [XmlEnum("5")]
+        Indigena = 5,
+
+        /// <summary>
+        /// 6 - Não informado
+        /// </summary>
+        [XmlEnum("6")]
+        NaoInformado = 6
+    }
+    #endregion
+
+    #region Estado civil do trabalhador.
+
+    /// <summary>
+    /// Estado civil do trabalhador.
+    /// </summary>
+    public enum EstadoCivil
+    {
+        /// <summary>
+        /// 1 - Solteiro
+        /// </summary>
+        [XmlEnum("1")]
+        Solteiro = 1,
+
+        /// <summary>
+        /// 2 - Casado
+        /// </summary>
+        [XmlEnum("2")]
+        Casado = 2,
+
+        /// <summary>
+        /// 3 - Divorciado
+        /// </summary>
+        [XmlEnum("3")]
+        Divorciado = 3,
+
+        /// <summary>
+        /// 4 - Separado
+        /// </summary>
+        [XmlEnum("4")]
+        Separado = 4,
+
+        /// <summary>
+        /// 5 - Viúvo
+        /// </summary>
+        [XmlEnum("5")]
+        Viuvo = 5
+    }
+    #endregion
+
+    #region Grau de instrução do trabalhador. - eSocial
+
+    /// <summary>
+    /// Grau de instrução do trabalhador.
+    /// </summary>
+    public enum GrauDeInstrucao
+    {
+        /// <summary>
+        /// 01 - Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou
+        /// </summary>
+        [XmlEnum("01")]
+        Analfabeto = 01,
+
+        /// <summary>
+        /// 2 - Até o 5º ano incompleto do ensino fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado escola regular
+        /// </summary>
+        [XmlEnum("02")]
+        QuintoAnoIncompleto = 02,
+
+        /// <summary>
+        /// 03 - 5º ano completo do ensino fundamental
+        /// </summary>
+        [XmlEnum("03")]
+        QuintoAnoCompleto = 03,
+
+        /// <summary>
+        /// 04 - Do 6º ao 9º ano do ensino fundamental incompleto (antiga 5ª a 8ª série)
+        /// </summary>
+        [XmlEnum("04")]
+        FundamentalIncompleto = 04,
+
+        /// <summary>
+        /// 05 - Ensino fundamental completo
+        /// </summary>
+        [XmlEnum("05")]
+        FundamentalCompleto = 05,
+
+        /// <summary>
+        /// 06 - Ensino médio incompleto
+        /// </summary>
+        [XmlEnum("06")]
+        EnsinoMedioIncompleto = 06,
+
+        /// <summary>
+        /// 07 - Ensino médio completo
+        /// </summary>
+        [XmlEnum("07")]
+        EnsinoMedioCompleto = 07,
+
+        /// <summary>
+        /// 08 - Educação superior incompleta
+        /// </summary>
+        [XmlEnum("08")]
+        EducacaoSuperiorIncompleta = 08,
+
+        /// <summary>
+        /// 09 - Educação superior completa
+        /// </summary>
+        [XmlEnum("09")]
+        EducacaoSuperiorCompleta = 09,
+
+        /// <summary>
+        /// 10 - Pós-graduação completa
+        /// </summary>
+        [XmlEnum("10")]
+        PosGraduacaoCompleta = 10,
+
+        /// <summary>
+        /// 11 - Mestrado completo
+        /// </summary>
+        [XmlEnum("11")]
+        MestradoCompleto = 11,
+
+        /// <summary>
+        /// 12 - Doutorado completo
+        /// </summary>
+        [XmlEnum("12")]
+        DoutoradoCompleto = 12
+    }
+    #endregion
+
+    #region Tempo de residência do trabalhador imigrante. - eSocial
+
+    /// <summary>
+    /// Tempo de residência do trabalhador imigrante.
+    /// </summary>
+    public enum TempoDeResidencia
+    {
+        /// <summary>
+        /// 1 - Prazo indeterminado
+        /// </summary>
+        [XmlEnum("1")]
+        PrazoIndeterminado = 1,
+
+        /// <summary>
+        /// 2 - Prazo determinado
+        /// </summary>
+        [XmlEnum("2")]
+        PrazoDeterminado = 2
+    }
+    #endregion
+
+    #region Condição de ingresso do trabalhador imigrante - eSocial
+
+    /// <summary>
+    /// Condição de ingresso do trabalhador imigrante
+    /// </summary>
+    public enum CondicaoIngressoTrabalhador
+    {
+        /// <summary>
+        /// 1 - Refugiado
+        /// </summary>
+        [XmlEnum("1")]
+        Refugiado = 1,
+
+        /// <summary>
+        /// 2 - Solicitante de refúgio
+        /// </summary>
+        [XmlEnum("2")]
+        SolicitanteDeRefugio = 2,
+
+        /// <summary>
+        /// 3 - Permanência no Brasil em razão de reunião familiar
+        /// </summary>
+        [XmlEnum("3")]
+        PermanenciaNoBrasilReuniaoFamiliar = 3,
+
+        /// <summary>
+        /// 4 - Beneficiado pelo acordo entre países do Mercosul
+        /// </summary>
+        [XmlEnum("4")]
+        BeneficiadoAcordoPaisesMercosul = 4,
+
+        /// <summary>
+        /// 5 - Dependente de agente diplomático e/ou consular de países que mantêm acordo de reciprocidade para o exercício de atividade remunerada no Brasil
+        /// </summary>
+        [XmlEnum("5")]
+        DependenteDeAgenteDiplomatico = 5,
+
+        /// <summary>
+        /// 6 - Beneficiado pelo Tratado de Amizade, Cooperação e Consulta entre a República Federativa do Brasil e a República Portuguesa
+        /// </summary>
+        [XmlEnum("6")]
+        BeneficiadoTratadoDeAmizade = 6,
+
+        /// <summary>
+        /// 7 - Outra condição
+        /// </summary>
+        [XmlEnum("7")]
+        OutraCondicao = 7,
+    }
+    #endregion
+
+
     #region SimNaoESocial
     /// <summary>
     /// Sim ou Não (S ou N)

@@ -20,7 +20,16 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #endif
     public class RecepcaoEvento : ServicoBase
     {
-        private EventoCTe EventoCTe => new EventoCTe().LerXML<EventoCTe>(ConteudoXML);
+        private EventoCTe _eventoCTe;
+
+        /// <summary>
+        /// Objeto do XML do Evento de CTe
+        /// </summary>
+        public EventoCTe EventoCTe
+        {
+            get => _eventoCTe ?? (_eventoCTe = new EventoCTe().LerXML<EventoCTe>(ConteudoXML));
+            protected set => _eventoCTe = value;
+        }
 
         private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
         {
@@ -146,6 +155,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
 
             Inicializar(envEvento?.GerarXML() ?? throw new ArgumentNullException(nameof(envEvento)), configuracao);
+            EventoCTe = EventoCTe.LerXML<EventoCTe>(ConteudoXML);
         }
 
         /// <summary>
@@ -169,6 +179,23 @@ namespace Unimake.Business.DFe.Servicos.CTe
             doc.LoadXml(conteudoXML);
 
             Inicializar(doc, configuracao);
+
+            #region Limpar a assinatura do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
+
+            //Remover a assinatura para forçar criar novamente
+            EventoCTe = EventoCTe.LerXML<EventoCTe>(ConteudoXML);
+            EventoCTe.Signature = null;
+
+            //Gerar o XML novamente com base no objeto
+            ConteudoXML = EventoCTe.GerarXML();
+
+            //Forçar assinar novamente
+            _ = ConteudoXMLAssinado;
+
+            //Atualizar o objeto novamente com o XML já assinado
+            EventoCTe = EventoCTe.LerXML<EventoCTe>(ConteudoXML);
+
+            #endregion
         }
 
         /// <summary>

@@ -255,7 +255,7 @@
 		<Nome>Governador Valadares - MG</Nome>
 		<UF>MG</UF>
 		<ArqConfig>GovernadorValadaresMG.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
+		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5107909">
 		<Nome>Sinop - MT</Nome>

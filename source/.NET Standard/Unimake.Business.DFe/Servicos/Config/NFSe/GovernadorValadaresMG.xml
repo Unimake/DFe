@@ -1,81 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<GerarNfse versao="3.00">
-			<Descricao>Envio de NFSe Síncrono</Descricao>
-			<WebEnderecoHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php</WebEnderecoProducao>
-			<WebActionHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php#GerarNota</WebActionHomologacao>
-			<WebActionProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php#GerarNota</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
-		</GerarNfse>
-		<CancelarNfse versao="3.00">
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php</WebEnderecoProducao>
-			<WebActionHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php#CancelarNfse</WebActionHomologacao>
-			<WebActionProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<WebEnderecoHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
 		</CancelarNfse>
-		<ConsultarNotaValida versao="3.00">
-			<Descricao>Consulta nota fiscal de serviço válida</Descricao>
-			<WebEnderecoHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php</WebEnderecoProducao>
-			<WebActionHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php#ConsultarNotaValida</WebActionHomologacao>
-			<WebActionProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
-			<TargetNS></TargetNS>
-		</ConsultarNotaValida>
-		<ConsultarNotaPrestador versao="3.00">
-			<Descricao>Consulta nota fiscal de serviço do prestador</Descricao>
-			<WebEnderecoHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php</WebEnderecoProducao>
-			<WebActionHomologacao>https://testevaladares.sigiss.com.br:443/testevaladares/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionHomologacao>
-			<WebActionProducao>https://valadares.sigiss.com.br:443/valadares/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
-			<SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
-			<SchemaVersao>3.00</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
-		</ConsultarNotaPrestador>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta NFSe</Descricao>
+			<WebEnderecoHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://governadorvaladares-mg.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionHomologacao>
+			<WebActionProducao>https://governadorvaladares-mg.issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>

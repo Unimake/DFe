@@ -15,7 +15,8 @@ namespace Unimake.Business.DFe.Servicos.NFCe
     [ProgId("Unimake.Business.DFe.Servicos.NFCe.RetAutorizacao")]
     [ComVisible(true)]
 #endif
-    public class RetAutorizacao: NFe.RetAutorizacao
+    [Obsolete("Método obsoleto, SEFAZ não tem mais consulta recibo para NFCe, pois agora é somente envio síncrono. Logo iremos excluir esta classe da DLL.", false)]
+    public class RetAutorizacao : NFe.RetAutorizacao
     {
         #region Public Constructors
 
@@ -48,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.NFCe
             var validar = new ValidarSchema();
             validar.Validar(ConteudoXML, TipoDFe.NFe.ToString() + "." + Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
-            if(!validar.Success)
+            if (!validar.Success)
             {
                 throw new ValidarXMLException(validar.ErrorMessage);
             }

@@ -386,6 +386,8 @@ namespace Unimake.Business.DFe.Servicos.CTe
             }
 
             Inicializar(cte?.GerarXML() ?? throw new ArgumentNullException(nameof(cte)), configuracao);
+
+            CTe = CTe.LerXML<Xml.CTe.CTe>(ConteudoXML);
         }
 
         /// <summary>
@@ -404,6 +406,24 @@ namespace Unimake.Business.DFe.Servicos.CTe
             doc.LoadXml(conteudoXML);
 
             Inicializar(doc, configuracao);
+
+            #region Limpar a assinatura e QRCode do objeto para recriar e atualizar o ConteudoXML. Isso garante que a propriedade e o objeto tenham assinaturas iguais, evitando discrepâncias. Autor: Wandrey Data: 10/06/2024
+
+            //Remover a assinatura e QRCode para forçar criar novamente
+            CTe = CTe.LerXML<Xml.CTe.CTe>(ConteudoXML);
+            CTe.Signature = null;
+            CTe.InfCTeSupl = null;
+
+            //Gerar o XML novamente com base no objeto
+            ConteudoXML = CTe.GerarXML();
+
+            //Forçar assinar e criar QRCode novamente
+            _ = ConteudoXMLAssinado;
+
+            //Atualizar o objeto novamente com o XML já assinado e com QRCode
+            CTe = CTe.LerXML<Xml.CTe.CTe>(ConteudoXML);
+
+            #endregion
         }
 
         /// <summary>
@@ -412,12 +432,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
 #if INTEROP
         [ComVisible(false)]
 #endif
-        public override void Executar()
-        {
-            base.Executar();
-
-            CTe = CTe.LerXML<Xml.CTe.CTe>(ConteudoXML);
-        }
+        public override void Executar() => base.Executar();
 
 #if INTEROP
 

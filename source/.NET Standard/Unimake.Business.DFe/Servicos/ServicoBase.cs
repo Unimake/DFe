@@ -3,12 +3,12 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.IO;
+using System.Net;
 using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Validator;
-using System.Net;
+using Unimake.Business.DFe.Xml;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -118,6 +118,8 @@ namespace Unimake.Business.DFe.Servicos
 
             //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
             _ = ConteudoXMLAssinado;
+
+            XmlValidar();
         }
 
 

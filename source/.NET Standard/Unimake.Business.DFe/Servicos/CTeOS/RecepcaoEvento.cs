@@ -1,8 +1,6 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
-using System;
-using System.Xml;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Exceptions;
 
@@ -35,18 +33,7 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// </summary>
         /// <param name="conteudoXML">String do XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public RecepcaoEvento(string conteudoXML, Configuracao configuracao) : this()
-        {
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
-            var doc = new XmlDocument();
-            doc.LoadXml(conteudoXML);
-
-            Inicializar(doc, configuracao);
-        }
+        public RecepcaoEvento(string conteudoXML, Configuracao configuracao) : base(conteudoXML, configuracao) { }
 
         /// <summary>
         /// Validar o XML

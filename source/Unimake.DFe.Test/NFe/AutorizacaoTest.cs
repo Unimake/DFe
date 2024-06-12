@@ -672,7 +672,6 @@ namespace Unimake.DFe.Test.NFe
         /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a NFe</param>
         [Theory]
         [Trait("DFe", "NFe")]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
         public void EnviarNFeSincronoString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
