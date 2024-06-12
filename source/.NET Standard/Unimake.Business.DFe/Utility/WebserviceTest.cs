@@ -118,7 +118,7 @@ namespace Unimake.Business.DFe.Utility
                 url = configuracao.WebEnderecoHomologacao;
             }
 
-            resultTest.Sucess = Net.TestHttpConnection(url, CertificadoDigital, 3, null, method);
+            resultTest.Sucess = Unimake.Net.Utility.TestHttpConnection(url, CertificadoDigital, 3, null, method);
 
             if (!resultTest.Sucess)
             {

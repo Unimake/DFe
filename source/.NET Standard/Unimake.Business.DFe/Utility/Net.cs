@@ -6,8 +6,6 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Net;
-using System.Net.NetworkInformation;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Unimake.Business.DFe.Utility
 {
@@ -24,8 +22,8 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="proxy">Proxy a ser utilizado para testar a conexão</param>
         /// <returns>true = Tem conexão com a internet</returns>
-        public static bool HasInternetConnection(IWebProxy proxy) => HasInternetConnection(proxy, 3);
-        //Quando o Marcelo liberar novos NUGET, passar a utilizar este Unimake.Net.Utility.HasInternetConnection(proxy, 3)
+        public static bool HasInternetConnection(IWebProxy proxy) => Unimake.Net.Utility.HasInternetConnection(proxy, 3);
+        //Quando o Marcelo liberar novos NUGET, passar a utilizar este 
 
         /// <summary>
         /// Verifica a conexão com a internet e retorna verdadeiro se conectado com sucesso
@@ -40,119 +38,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="timeoutInSeconds">Tempo para tentativa de conexão em segundos</param>
         /// <param name="testUrls">URLs a serem testadas, se não informada o método utilizará 5 URLs para o teste, se uma delas funcionar, vai retornar que a conexão está ok</param>
         /// <returns>true = Tem conexão com a internet</returns>
-        public static bool HasInternetConnection(IWebProxy proxy, int timeoutInSeconds = 3, string[] testUrls = null)
-        {
-            if (timeoutInSeconds <= 0)
-            {
-                throw new ArgumentOutOfRangeException("O valor  do parâmetro 'timeoutInSeconds' deve ser maior que zero.");
-            }
-
-            if (testUrls == null)
-            {
-                testUrls = new string[] {
-                    "http://clients3.google.com/generate_204",
-                    "8.8.8.8", //Servidor Primário de DNS do Google
-                    "8.8.4.4", //Servidor Secundário de DNS do Google
-                    "http://www.microsoft.com",
-                    "http://www.cloudflare.com",
-                    "1.1.1.1", //Servidor Primário de DNS do Cloudfare
-                    "1.0.0.1",  //Servidor Secundário de DNS do Cloudfare
-                    "http://www.amazon.com",
-                    "9.9.9.9", //Servidor Primário de DNS do Quad 9
-                    "149.112.112.112", //Servidor Secundário de DNS do Quad 9
-                    "http://www.unimake.com.br",
-                    "http://67.205.183.164"
-                };
-            }
-
-            var retorno = true;
-            var timeoutMilleSeconds = (timeoutInSeconds * 1000);
-
-            foreach (var url in testUrls)
-            {
-                if (url.Substring(0, 7).Equals("http://"))
-                {
-                    try
-                    {
-                        retorno = TestHttpConnection(url, null, timeoutInSeconds);
-                    }
-                    catch
-                    {
-                        retorno = false;
-                    }
-                }
-                else
-                {
-                    // Testar conexão com IP direto do Google
-                    retorno = PingHost(url, timeoutInSeconds);
-                }
-
-                if (retorno)
-                {
-                    break;
-                }
-            }
-
-            return retorno;
-        }
-
-        /// <summary>
-        /// Testar conexão HTTP ou HTTPS
-        /// </summary>
-        /// <param name="url">URL a ser testada</param>
-        /// <param name="certificate">Certificado a ser utilizado para conexões https</param>
-        /// <param name="proxy">Configuração de proxy, caso exista</param>
-        /// <param name="method">POST ou GET</param>
-        /// <returns>Se a URL está respondendo, ou não</returns>
-        public static bool TestHttpConnection(string url, X509Certificate2 certificate = null, int timeoutInSeconds = 3, IWebProxy proxy = null, string method = "GET")
-        {
-            try
-            {
-                var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-                if (proxy != null)
-                {
-                    httpWebRequest.Proxy = proxy;
-                }
-
-                httpWebRequest.Method = method;
-
-                if (certificate != null)
-                {
-                    httpWebRequest.ClientCertificates.Add(certificate);
-                }
-
-                httpWebRequest.Timeout = timeoutInSeconds * 1000;
-                httpWebRequest.ReadWriteTimeout = timeoutInSeconds * 1000;
-
-                var statusCode = (httpWebRequest.GetResponse() as HttpWebResponse).StatusCode;
-                return statusCode == HttpStatusCode.OK || statusCode == HttpStatusCode.NoContent;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Testar para ver o servidor de DNS dá um PING
-        /// </summary>
-        /// <param name="ipAddress">IP</param>
-        /// <param name="timeoutInSeconds">Tempo máximo para ter uma resposta</param>
-        /// <returns>Se teve sucesso no PING</returns>
-        public static bool PingHost(string ipAddress, int timeoutInSeconds)
-        {
-            try
-            {
-                var ping = new Ping();
-                var reply = ping.Send(ipAddress, timeoutInSeconds * 1000);
-                return (reply.Status == IPStatus.Success);
-            }
-            catch (PingException)
-            {
-                return false;
-            }
-        }
+        public static bool HasInternetConnection(IWebProxy proxy, int timeoutInSeconds = 3, string[] testUrls = null) => Unimake.Net.Utility.HasInternetConnection(proxy, timeoutInSeconds, testUrls);
 
         /// <summary>
         /// Extrair o domínio de uma URL
