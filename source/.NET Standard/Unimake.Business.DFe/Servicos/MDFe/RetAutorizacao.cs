@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     [ProgId("Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao")]
     [ComVisible(true)]
 #endif
-    [Obsolete("SEFAZ não disponibilizará mais o envio assíncrono de MDFe a partir de julho de 2024, em breve vamos remover esta classe da DLL.", false)]
+    [Obsolete("SEFAZ não disponibilizá mais, a partir de julho de 2024, o envio assíncrono de MDFe, em breve vamos remover esta funcionalidade da DLL.", false)]
     public class RetAutorizacao : ServicoBase
     {
         #region Protected Methods

@@ -102,16 +102,20 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="url">URL a ser testada</param>
         /// <param name="certificate">Certificado a ser utilizado para conexões https</param>
         /// <param name="proxy">Configuração de proxy, caso exista</param>
+        /// <param name="method">POST ou GET</param>
         /// <returns>Se a URL está respondendo, ou não</returns>
-        public static bool TestHttpConnection(string url, X509Certificate2 certificate = null, int timeoutInSeconds = 3, IWebProxy proxy = null)
+        public static bool TestHttpConnection(string url, X509Certificate2 certificate = null, int timeoutInSeconds = 3, IWebProxy proxy = null, string method = "GET")
         {
             try
             {
                 var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
                 if (proxy != null)
                 {
                     httpWebRequest.Proxy = proxy;
                 }
+
+                httpWebRequest.Method = method;
 
                 if (certificate != null)
                 {

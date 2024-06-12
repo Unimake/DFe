@@ -20,7 +20,6 @@ namespace Unimake.Business.DFe.Servicos.MDFe
     [ProgId("Unimake.Business.DFe.Servicos.MDFe.AutorizacaoSinc")]
     [ComVisible(true)]
 #endif
-    [Obsolete("SEFAZ não disponibilizará mais o envio assíncrono de MDFe a partir de julho de 2024, em breve vamos remover esta classe da DLL.", false)]
     public class AutorizacaoSinc : ServicoBase, IInteropService<Xml.MDFe.MDFe>
     {
         private Xml.MDFe.MDFe _MDFe;
