@@ -10670,55 +10670,55 @@ namespace Unimake.Business.DFe.Servicos
         /// 01 - Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou
         /// </summary>
         [XmlEnum("01")]
-        Analfabeto = 1,
+        Analfabeto = 01,
 
         /// <summary>
         /// 2 - Até o 5º ano incompleto do ensino fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado escola regular
         /// </summary>
         [XmlEnum("02")]
-        QuintoAnoIncompleto = 2,
+        QuintoAnoIncompleto = 02,
 
         /// <summary>
         /// 03 - 5º ano completo do ensino fundamental
         /// </summary>
         [XmlEnum("03")]
-        QuintoAnoCompleto = 3,
+        QuintoAnoCompleto = 03,
 
         /// <summary>
         /// 04 - Do 6º ao 9º ano do ensino fundamental incompleto (antiga 5ª a 8ª série)
         /// </summary>
         [XmlEnum("04")]
-        FundamentalIncompleto = 4,
+        FundamentalIncompleto = 04,
 
         /// <summary>
         /// 05 - Ensino fundamental completo
         /// </summary>
         [XmlEnum("05")]
-        FundamentalCompleto = 5,
+        FundamentalCompleto = 05,
 
         /// <summary>
         /// 06 - Ensino médio incompleto
         /// </summary>
         [XmlEnum("06")]
-        EnsinoMedioIncompleto = 6,
+        EnsinoMedioIncompleto = 06,
 
         /// <summary>
         /// 07 - Ensino médio completo
         /// </summary>
         [XmlEnum("07")]
-        EnsinoMedioCompleto = 7,
+        EnsinoMedioCompleto = 07,
 
         /// <summary>
         /// 08 - Educação superior incompleta
         /// </summary>
         [XmlEnum("08")]
-        EducacaoSuperiorIncompleta = 8,
+        EducacaoSuperiorIncompleta = 08,
 
         /// <summary>
         /// 09 - Educação superior completa
         /// </summary>
         [XmlEnum("09")]
-        EducacaoSuperiorCompleta = 9,
+        EducacaoSuperiorCompleta = 09,
 
         /// <summary>
         /// 10 - Pós-graduação completa
