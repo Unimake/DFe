@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Servicos
@@ -10831,5 +10832,200 @@ namespace Unimake.Business.DFe.Servicos
         Nao = 1
     }
     #endregion SimNaoESocial
+
+    #region Tipo de acidente de trabalho. - eSocial.
+
+    /// <summary>
+    /// Tipo de acidente de trabalho.
+    /// </summary>
+    public enum TipoAcidenteTrabalho
+    {
+        /// <summary>
+        /// 1 - Típico
+        /// </summary>
+        [XmlEnum("1")]
+        Tipico = 1,
+
+        /// <summary>
+        /// 2 - Doença
+        /// </summary>
+        [XmlEnum("2")]
+        Doenca = 2,
+
+        /// <summary>
+        /// 3 - Trajeto
+        /// </summary>
+        [XmlEnum("3")]
+        Trajeto = 3
+    }
+    #endregion
+
+    #region Tipo de CAT. - eSocial.
+
+    /// <summary>
+    /// Tipo de CAT.
+    /// </summary>
+    public enum TipoDeCAT
+    {
+        /// <summary>
+        /// 1 - Inicial
+        /// </summary>
+        [XmlEnum("1")]
+        Inicial = 1,
+
+        /// <summary>
+        /// 2 - Reabertura
+        /// </summary>
+        [XmlEnum("2")]
+        Reabertura = 2,
+
+        /// <summary>
+        /// 3 - Comunicação de óbito
+        /// </summary>
+        [XmlEnum("3")]
+        ComunicacaoDeObito = 3
+    }
+    #endregion
+
+    #region Iniciativa da CAT. - eSocial.
+
+    /// <summary>
+    /// Iniciativa da CAT.
+    /// </summary>
+    public enum IniciativaDaCAT
+    {
+        /// <summary>
+        /// 1 - Empregador
+        /// </summary>
+        [XmlEnum("1")]
+        Empregador = 1,
+
+        /// <summary>
+        /// 2 - Ordem judicial
+        /// </summary>
+        [XmlEnum("2")]
+        OrdemJudicial = 2,
+
+        /// <summary>
+        /// 3 - Determinação de órgão fiscalizador
+        /// </summary>
+        [XmlEnum("3")]
+        DeterminacaoOrgaoFiscalizador = 3
+    }
+    #endregion
+
+    #region Tipo de local do acidente. - eSocial.
+
+    /// <summary>
+    /// Tipo de local do acident.
+    /// </summary>
+    public enum TipoLocalAcidente
+    {
+        /// <summary>
+        /// 1 - Estabelecimento do empregador no Brasil
+        /// </summary>
+        [XmlEnum("1")]
+        EstabelecimentoBrasil = 1,
+
+        /// <summary>
+        /// 2 - - Estabelecimento do empregador no exterior
+        /// </summary>
+        [XmlEnum("2")]
+        EstabelecimentoExterior = 2,
+
+        /// <summary>
+        /// 3 - Estabelecimento de terceiros onde o empregador presta serviços
+        /// </summary>
+        [XmlEnum("3")]
+        EstabelecimentoDeTerceiros = 3,
+
+        /// <summary>
+        /// 4 - Via pública
+        /// </summary>
+        [XmlEnum("4")]
+        ViaPublica = 4,
+
+        /// <summary>
+        /// 5 - Área rural
+        /// </summary>
+        [XmlEnum("5")]
+        AreaRural = 5,
+
+        /// <summary>
+        /// 6 - Embarcação
+        /// </summary>
+        [XmlEnum("6")]
+        Embarcacao = 6,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+    #endregion
+
+    #region Lateralidade. - eSocial
+
+    /// <summary>
+    /// Lateralidade da(s) parte(s) atingida(s). Nos casos de órgãos bilaterais, ou seja, que se situam dos lados do corpo, assinalar o lado(direito ou esquerdo).
+    /// Ex.: Caso o órgão atingido seja perna, apontar qual foi a atingida(perna direita, perna esquerda ou ambas).
+    /// Se o órgão atingido é único(como, por exemplo, a cabeça), assinalar este campo como não aplicável.
+    /// </summary>
+    public enum Lateralidade
+    {
+        /// <summary>
+        /// 0 - Não aplicável
+        /// </summary>
+        [XmlEnum("0")]
+        NaoAplicavel = 0,
+
+        /// <summary>
+        /// 1 - Esquerda
+        /// </summary>
+        [XmlEnum("1")]
+        Esquerda = 1,
+
+        /// <summary>
+        /// 2 - Direita
+        /// </summary>
+        [XmlEnum("2")]
+        Direita = 2,
+
+        /// <summary>
+        /// 3 - Ambas
+        /// </summary>
+        [XmlEnum("3")]
+        Ambas = 3
+    }
+    #endregion
+
+    #region Médico/Dentista que emitiu o atestado. - eSocial
+
+    /// <summary>
+    /// Médico/Dentista que emitiu o atestado.
+    /// </summary>
+    public enum OrgaoDeClasseMedica
+    {
+        /// <summary>
+        /// 1 - Conselho Regional de Medicina - CRM
+        /// </summary>
+        [XmlEnum("1")]
+        CRM = 1,
+
+        /// <summary>
+        /// 2 - Conselho Regional de Odontologia - CRO
+        /// </summary>
+        [XmlEnum("2")]
+        CRO = 3,
+
+        /// <summary>
+        /// 3 - Registro do Ministério da Saúde - RMS
+        /// </summary>
+        [XmlEnum("3")]
+        RMS = 3
+    }
+    #endregion
+
     #endregion ESocial
 }
