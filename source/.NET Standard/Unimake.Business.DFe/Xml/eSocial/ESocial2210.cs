@@ -61,9 +61,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
 
-        public bool ShouldSereializeCodCategField() => !string.IsNullOrEmpty(CodCateg);
+        public bool ShouldSerializeCodCategField() => !string.IsNullOrEmpty(CodCateg);
 
         #endregion
     }
@@ -180,9 +180,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeHrAcidField() => !string.IsNullOrEmpty(HrAcid);
+        public bool ShouldSerializeHrAcidField() => !string.IsNullOrEmpty(HrAcid);
 
-        public bool ShouldSereializeHrsTrabAntesAcidField() => !string.IsNullOrEmpty(HrsTrabAntesAcid);
+        public bool ShouldSerializeHrsTrabAntesAcidField() => !string.IsNullOrEmpty(HrsTrabAntesAcid);
 
         public bool ShouldSerializeDtObitoField() => DtObito > DateTime.MinValue;
 
@@ -249,17 +249,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeDscLocalField() => !string.IsNullOrEmpty(DscLocal);
+        public bool ShouldSerializeDscLocalField() => !string.IsNullOrEmpty(DscLocal);
 
-        public bool ShouldSereializeTpLogradField() => !string.IsNullOrEmpty(TpLograd);
+        public bool ShouldSerializeTpLogradField() => !string.IsNullOrEmpty(TpLograd);
 
-        public bool ShouldSereializeComplementoField() => !string.IsNullOrEmpty(Complemento);
+        public bool ShouldSerializeComplementoField() => !string.IsNullOrEmpty(Complemento);
 
-        public bool ShouldSereializeBairroField() => !string.IsNullOrEmpty(Bairro);
+        public bool ShouldSerializeBairroField() => !string.IsNullOrEmpty(Bairro);
 
-        public bool ShouldSereializeCepField() => !string.IsNullOrEmpty(Cep);
+        public bool ShouldSerializeCepField() => !string.IsNullOrEmpty(Cep);
 
-        public bool ShouldSereializeCodMunicField() => !string.IsNullOrEmpty(CodMunic);
+        public bool ShouldSerializeCodMunicField() => !string.IsNullOrEmpty(CodMunic);
 
 #if INTEROP
         public bool ShouldSerializeUfField() => Uf != (UFBrasil)(-1);
@@ -267,9 +267,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeUfField() => Uf != null;
 #endif
 
-        public bool ShouldSereializePaisField() => !string.IsNullOrEmpty(Pais);
+        public bool ShouldSerializePaisField() => !string.IsNullOrEmpty(Pais);
 
-        public bool ShouldSereializeCodPostalField() => !string.IsNullOrEmpty(CodPostal);
+        public bool ShouldSerializeCodPostalField() => !string.IsNullOrEmpty(CodPostal);
 
         #endregion
     }
@@ -368,11 +368,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("emitente")]
         public Emitente Emitente { get; set; }
 
-        public bool ShouldSereializeDscCompLesaoField() => !string.IsNullOrEmpty(DscCompLesao);
+        public bool ShouldSerializeDscCompLesaoField() => !string.IsNullOrEmpty(DscCompLesao);
 
-        public bool ShouldSereializeDiagProvavelField() => !string.IsNullOrEmpty(DiagProvavel);
+        public bool ShouldSerializeDiagProvavelField() => !string.IsNullOrEmpty(DiagProvavel);
 
-        public bool ShouldSereializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
     }
 
 #if INTEROP
