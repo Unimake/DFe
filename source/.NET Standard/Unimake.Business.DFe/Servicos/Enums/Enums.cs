@@ -11017,7 +11017,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 2 - Conselho Regional de Odontologia - CRO
         /// </summary>
         [XmlEnum("2")]
-        CRO = 3,
+        CRO = 2,
 
         /// <summary>
         /// 3 - Registro do Ministério da Saúde - RMS
