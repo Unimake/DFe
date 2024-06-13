@@ -163,7 +163,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCnpjRespField() => !string.IsNullOrEmpty(CnpjResp);
+        public bool ShouldSerializeCnpjRespField() => !string.IsNullOrEmpty(CnpjResp);
 
         #endregion
     }
@@ -199,9 +199,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeAliqRatField() => !string.IsNullOrEmpty(AliqRat);
+        public bool ShouldSerializeAliqRatField() => !string.IsNullOrEmpty(AliqRat);
 
-        public bool ShouldSereializeFapField() => !string.IsNullOrEmpty(Fap);
+        public bool ShouldSerializeFapField() => !string.IsNullOrEmpty(Fap);
 
         #endregion
     }
@@ -332,7 +332,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeNrProcJudField() => !string.IsNullOrEmpty(NrProcJud);
+        public bool ShouldSerializeNrProcJudField() => !string.IsNullOrEmpty(NrProcJud);
 
         #endregion
     }

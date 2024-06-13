@@ -11027,5 +11027,113 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region Tipo de acidente de trânsito. - eSocial
+
+    /// <summary>
+    /// Tipo de acidente de trânsito.
+    /// </summary>
+    public enum TipoAcidenteTransito
+    {
+        /// <summary>
+        /// 1 - Atropelamento
+        /// </summary>
+        [XmlEnum("1")]
+        Atropelamento = 1,
+
+        /// <summary>
+        /// 2 - Colisão
+        /// </summary>
+        [XmlEnum("2")]
+        Colisao = 2,
+
+        /// <summary>
+        /// 3 - Outros
+        /// </summary>
+        [XmlEnum("3")]
+        Outros = 3
+    }
+    #endregion
+
+    #region InfOnus. - eSocial
+
+    /// <summary>
+    /// Ônus da cessão/requisição
+    /// </summary>
+    public enum InfOnus
+    {
+        /// <summary>
+        /// 1 - Ônus do cedente
+        /// </summary>
+        [XmlEnum("1")]
+        OnusDoCedente = 1,
+
+        /// <summary>
+        /// 2 - Ônus do cessionário
+        /// </summary>
+        [XmlEnum("2")]
+        OnusDoCessionario = 2,
+
+        /// <summary>
+        /// 3 - Ônus do cedente e cessionário
+        /// </summary>
+        [XmlEnum("3")]
+        OnusDoCedenteCessionario = 3
+    }
+    #endregion
+
+    #region infOnusRemun. - eSocial
+
+    /// <summary>
+    /// Ônus da remuneração
+    /// </summary>
+    public enum OnusDaRemuneracao
+    {
+        /// <summary>
+        /// 1 - Apenas do empregador
+        /// </summary>
+        [XmlEnum("1")]
+        ApenasEmpregador = 1,
+
+        /// <summary>
+        /// 2 - Apenas do sindicato
+        /// </summary>
+        [XmlEnum("2")]
+        ApenasSindicato = 2,
+
+        /// <summary>
+        /// 3 - - Parte do empregador, sendo a diferença e/ou complementação salarial paga pelo sindicato
+        /// </summary>
+        [XmlEnum("3")]
+        EmpregadorComplementacaoDoSindicato = 3
+    }
+    #endregion
+
+    #region Origem da retificação. - eSocial.
+
+    /// <summary>
+    /// Origem da retificação.
+    /// </summary>
+    public enum OrigemDaRetificacao
+    {
+        /// <summary>
+        /// 1 - Por iniciativa do empregador
+        /// </summary>
+        [XmlEnum("1")]
+        IniciativaDoEmpregador = 1,
+
+        /// <summary>
+        /// 2 - Revisão administrativa
+        /// </summary>
+        [XmlEnum("2")]
+        RevisaoAdministrativa = 2,
+
+        /// <summary>
+        /// 3 - Determinação judicial
+        /// </summary>
+        [XmlEnum("3")]
+        DeterminacaoJudicial = 3
+    }
+    #endregion
+
     #endregion ESocial
 }
