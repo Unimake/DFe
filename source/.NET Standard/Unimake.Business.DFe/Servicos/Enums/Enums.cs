@@ -2300,103 +2300,121 @@ namespace Unimake.Business.DFe.Servicos
     public enum MeioPagamento
     {
         /// <summary>
-        /// 01=Dinheiro
+        /// 01 - Dinheiro
         /// </summary>
         [XmlEnum("01")]
         Dinheiro = 1,
 
         /// <summary>
-        /// 02=Cheque
+        /// 02 - Cheque
         /// </summary>
         [XmlEnum("02")]
         Cheque = 2,
 
         /// <summary>
-        /// 03=Cartão de Crédito
+        /// 03 - Cartão de Crédito
         /// </summary>
         [XmlEnum("03")]
         CartaoCredito = 3,
 
         /// <summary>
-        /// 04=Cartão de Débito
+        /// 04 - Cartão de Débito
         /// </summary>
         [XmlEnum("04")]
         CartaoDebito = 4,
 
         /// <summary>
-        /// 05=Crédito Loja
+        /// 05 - Crédito Loja (Private Label), Crediário Digital, Outros Crediários (Não usar para cartão de loja "bandeirado"
         /// </summary>
         [XmlEnum("05")]
         CreditoLoja = 5,
 
         /// <summary>
-        /// 10=Vale Alimentação
+        /// 10 - Vale Alimentação
         /// </summary>
         [XmlEnum("10")]
         ValeAlimentacao = 10,
 
         /// <summary>
-        /// 11=Vale Refeição
+        /// 11 - Vale Refeição
         /// </summary>
         [XmlEnum("11")]
         ValeRefeicao = 11,
 
         /// <summary>
-        /// 12=Vale Presente
+        /// 12 - Vale Presente
         /// </summary>
         [XmlEnum("12")]
         ValePresente = 12,
 
         /// <summary>
-        /// 13=Vale Combustível
+        /// 13 - Vale Combustível
         /// </summary>
         [XmlEnum("13")]
         ValeCombustivel = 13,
 
         /// <summary>
-        /// 14=Duplicata Mercantil (Não existe mais este numerador no padrão da SEFAZ, foi retirado na Nota Técnica 2016.002 - v 1.61. Mantemos no enum para manter compatilidade em casos de importação de XMLs antigos (B2B) que possuem este valor na tag tPag.)
+        /// 14 - Duplicata Mercantil (Não existe mais este numerador no padrão da SEFAZ, foi retirado na Nota Técnica 2016.002 - v 1.61. Mantemos no enum para manter compatilidade em casos de importação de XMLs antigos (B2B) que possuem este valor na tag tPag.)
         /// </summary>
         [XmlEnum("14")]
         DuplicataMercantil = 14,
 
         /// <summary>
-        /// 15=Boleto Bancário
+        /// 15 - Boleto Bancário
         /// </summary> 
         [XmlEnum("15")]
         BoletoBancario = 15,
 
         /// <summary>
-        /// 16=Depósito Bancário
+        /// 16 - Depósito Bancário
         /// </summary> 
         [XmlEnum("16")]
         DepositoBancario = 16,
 
         /// <summary>
-        /// 17=Pagamento Instantâneo (PIX)
+        /// 17 - Pagamento Instantâneo (PIX) - Dinâmico
         /// </summary> 
         [XmlEnum("17")]
         PagamentoInstantaneo = 17,
 
         /// <summary>
-        /// 18=Transferência bancária, Carteira Digital
+        /// 18 - Transferência bancária, Carteira Digital
         /// </summary> 
         [XmlEnum("18")]
         TransferenciaBancaria = 18,
 
         /// <summary>
-        /// 19=Programa de fidelidade, Cashback, Crédito Virtual
+        /// 19 - Programa de fidelidade, Cashback, Crédito Virtual
         /// </summary> 
         [XmlEnum("19")]
         ProgramaFidelidade = 19,
 
         /// <summary>
-        /// 90=Sem pagamento
+        /// 20 - Pagamento Instantâneo (PIX) - Estático
+        /// </summary>
+        [XmlEnum("20")]
+        PagamentoInstantaneoEstatico = 20,
+
+        /// <summary>
+        /// 21 - Crédito em loja decorrente de valor pago anteriormente, de devolução de mercadoria, etc.
+        /// </summary>
+        [XmlEnum("21")]
+        CreditoEmLoja = 21,
+
+        /// <summary>
+        /// 22 - Pagamento Eletrônico não Informado - falha de hardware do sistema emissor
+        /// </summary>
+        [XmlEnum("22")]
+        PagamentoEletronicoNaoInformado = 22,
+
+        /// <summary>
+        /// 90 - Sem pagamento
         /// </summary>
         [XmlEnum("90")]
         SemPagamento = 90,
 
         /// <summary>
-        /// 99=Outros
+        /// 99 - Outros - Quando o pagamento não estiver no rol desta tabela, o contribuinte deverá preencher o tipo de pagamento com "Outros" e informar, em campo específico da Nota Fiscal, a descrição adequada do meio de pagamento utilizado na operação ou prestação.
         /// </summary>
         [XmlEnum("99")]
         Outros = 99
