@@ -60,8 +60,10 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Resultado do teste</returns>
         public ResultTest Execute()
         {
-            var resultTest = new ResultTest();
-            resultTest.Sucess = true;
+            var resultTest = new ResultTest
+            {
+                Sucess = true
+            };
 
             var configuracao = new Configuracao
             {
@@ -140,7 +142,7 @@ namespace Unimake.Business.DFe.Utility
                 Sucess = true
             };
 
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 5; i++)
             {
                 switch (i)
                 {
@@ -151,15 +153,21 @@ namespace Unimake.Business.DFe.Utility
 
                     case 1:
                         configuracao.Load("Autorizacao");
-                        resultTest = TestNFeAutorizacao(configuracao);
+                        resultTest = TestNFeAutorizacao(configuracao, SimNao.Nao);
                         goto default;
 
                     case 2:
-                        configuracao.Load("ConsultaProtocolo");
+                        configuracao.Load("Autorizacao");
+                        resultTest = TestNFeAutorizacao(configuracao, SimNao.Sim);
                         goto default;
 
                     case 3:
+                        configuracao.Load("ConsultaProtocolo");
+                        goto default;
+
+                    case 4:
                         configuracao.Load("RetAutorizacao");
+                        resultTest = TestNFeRetAutorizacao(configuracao);
                         goto default;
 
                     default:
@@ -203,13 +211,13 @@ namespace Unimake.Business.DFe.Utility
                     Versao = SchemaVersao
                 };
 
-                var StatusServico = new Servicos.NFe.StatusServico(xml, configuracao);
-                StatusServico.Executar();
+                var statusServico = new Servicos.NFe.StatusServico(xml, configuracao);
+                statusServico.Executar();
 
-                resultTest.CStat = StatusServico.Result.CStat;
-                resultTest.XMotivo = StatusServico.Result.XMotivo;
+                resultTest.CStat = statusServico.Result.CStat;
+                resultTest.XMotivo = statusServico.Result.XMotivo;
 
-                switch (StatusServico.Result.CStat)
+                switch (statusServico.Result.CStat)
                 {
                     case 999: //Erro não catalogado
                     case 108: //Serviço Paralisado Momentaneamente (curto prazo)
@@ -231,7 +239,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="configuracao">Objeto contendo as configurações para consumir o serviço</param>
         /// <returns>Resultado do teste</returns>
-        private ResultTest TestNFeAutorizacao(Configuracao configuracao)
+        private ResultTest TestNFeRetAutorizacao(Configuracao configuracao)
         {
             var resultTest = new ResultTest()
             {
@@ -247,7 +255,61 @@ namespace Unimake.Business.DFe.Utility
 
             try
             {
-                var autorizacao = new Servicos.NFe.Autorizacao(MontaXMLEnviNFe((UFBrasil)configuracao.CodigoUF, configuracao.TipoAmbiente), configuracao);
+                var xml = new Xml.NFe.ConsReciNFe
+                {
+                    TpAmb = configuracao.TipoAmbiente,
+                    Versao = SchemaVersao,
+                    NRec = configuracao.CodigoUF.ToString() + "1210140351219"
+                };
+
+                var retAutorizacao = new Servicos.NFe.RetAutorizacao(xml, configuracao);
+                retAutorizacao.Executar();
+
+                resultTest.CStat = retAutorizacao.Result.CStat;
+                resultTest.XMotivo = retAutorizacao.Result.XMotivo;
+
+                switch (retAutorizacao.Result.CStat)
+                {
+                    case 999: //Erro não catalogado
+                    case 108: //Serviço Paralisado Momentaneamente (curto prazo)
+                    case 109: //Serviço Paralisado sem Previsão
+                        resultTest.Sucess = false;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultTest.ErrorMessage = MensagemErroPadrao + Environment.NewLine + Environment.NewLine + "Exception Messages: " + ex.GetAllMessages();
+            }
+
+            return resultTest;
+        }
+
+        /// <summary>
+        /// Testar WebService de NFe
+        /// </summary>
+        /// <param name="configuracao">Objeto contendo as configurações para consumir o serviço</param>
+        /// <param name="indSinc">Testar envio síncrono?</param>
+        /// <returns>Resultado do teste</returns>
+        private ResultTest TestNFeAutorizacao(Configuracao configuracao, SimNao indSinc)
+        {
+            var resultTest = new ResultTest()
+            {
+                Sucess = true
+            };
+
+            resultTest = TestURL(configuracao);
+
+            if (!resultTest.Sucess)
+            {
+                return resultTest;
+            }
+
+            try
+            {
+                var xml = MontaXMLEnviNFe((UFBrasil)configuracao.CodigoUF, configuracao.TipoAmbiente, indSinc);
+
+                var autorizacao = new Servicos.NFe.Autorizacao(xml, configuracao);
                 autorizacao.Executar();
 
                 resultTest.CStat = autorizacao.Result.CStat;
@@ -274,14 +336,15 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>
         /// Método auxiliar para montar XML teste
         /// </summary>
-        /// <param name="ufBrasil"></param>
-        /// <param name="tipoAmbiente"></param>
+        /// <param name="ufBrasil">UF que vai recepcionar o XML</param>
+        /// <param name="tipoAmbiente">Ambiente para o qual o XML será enviado</param>
+        /// <param name="indSinc">Envio síncrono?</param>
         /// <returns></returns>
-        private EnviNFe MontaXMLEnviNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente) => new EnviNFe
+        private EnviNFe MontaXMLEnviNFe(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, SimNao indSinc) => new EnviNFe
         {
             Versao = "4.00",
             IdLote = "000000000000001",
-            IndSinc = SimNao.Sim,
+            IndSinc = indSinc,
             NFe = new List<NFe> {
                         new NFe
                         {
