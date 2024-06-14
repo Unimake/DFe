@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Servicos
@@ -10831,5 +10832,1256 @@ namespace Unimake.Business.DFe.Servicos
         Nao = 1
     }
     #endregion SimNaoESocial
+
+    #region TpRegPrev
+    /// <summary>
+    /// Tipo de regime previdenciário (ou Sistema de Proteção
+    /// Social dos Militares das Forças Armadas).
+    /// Valores válidos:
+    /// 1 - Regime Geral de Previdência Social - RGPS
+    /// 2 - Regime Próprio de Previdência Social - RPPS
+    /// 3 - Regime de Previdência Social no exterior
+    /// 4 - Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA
+    /// Validação: Se codCateg = [104], deve ser preenchido com
+    /// [1]. Se codCateg = [101, 102, 103, 105, 106, 107, 108, 111],
+    /// não pode ser preenchido com[2, 4].
+    /// </summary>
+    public enum TpRegPrev
+    {
+        /// <summary>
+        /// 1 - Regime Geral de Previdência Social - RGPS
+        /// </summary>
+        [XmlEnum("1")]
+        RegimeGeral = 1,
+        /// <summary>
+        /// 2 - Regime Próprio de Previdência Social - RPPS
+        /// </summary>
+        [XmlEnum("2")]
+        RegimeProprio = 2,
+        /// <summary>
+        /// 3 - Regime de Previdência Social no exterior
+        /// </summary>
+        [XmlEnum("3")]
+        RegimeExterior = 3,
+        /// <summary>
+        /// 4 - Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA
+        /// </summary>
+        [XmlEnum("4")]
+        SPSMFA = 4,
+    }
+    #endregion TpRegPrev
+
+    #region TpRegJor
+    /// <summary>
+    /// Regime de jornada do empregado.
+    /// Valores válidos:
+    /// 1 - Submetido a horário de trabalho(Capítulo II do Título II da CLT)
+    /// 2 - Atividade externa especificada no inciso I do art. 62 da CLT
+    /// 3 - Função especificada no inciso II do art. 62 da CLT
+    /// 4 - Teletrabalho, previsto no inciso III do art. 62 da CLT
+    /// </summary>
+    public enum TpRegJor
+    {
+        /// <summary>
+        /// 1 - Submetido a horário de trabalho(Capítulo II do Título II da CLT)
+        /// </summary>
+        [XmlEnum("1")]
+        SubmetidoAHorario = 1,
+        /// <summary>
+        /// 2 - Atividade externa especificada no inciso I do art. 62 da CLT
+        /// </summary>
+        [XmlEnum("2")]
+        AtividadeExterna = 2,
+        /// <summary>
+        /// 3 - Função especificada no inciso II do art. 62 da CLT
+        /// </summary>
+        [XmlEnum("3")]
+        FuncaoEspecificada = 3,
+        /// <summary>
+        /// 4 - Teletrabalho, previsto no inciso III do art. 62 da CLT
+        /// </summary>
+        [XmlEnum("4")]
+        Teletrabalho = 4,
+    }
+    #endregion TpRegJor
+
+    #region IndAprend
+    /// <summary>
+    /// Indicativo de modalidade de contratação de aprendiz.
+    /// Valores válidos:
+    /// 1 - Contratação direta: contratação do aprendiz efetivada
+    /// pelo estabelecimento cumpridor da cota de aprendizagem
+    /// 2 - Contratação indireta: contratação do aprendiz
+    /// efetivada por entidades sem fins lucrativos ou por
+    /// entidades de prática desportiva a serviço do
+    /// estabelecimento cumpridor da cota
+    /// </summary>
+    public enum IndAprend
+    {
+        /// <summary>
+        /// 1 - Contratação direta: contratação do aprendiz efetivada
+        /// pelo estabelecimento cumpridor da cota de aprendizagem
+        /// </summary>
+        [XmlEnum ("1")]
+        ContratacaoDireta = 1,
+        /// <summary>
+        /// 2 - Contratação indireta: contratação do aprendiz
+        /// efetivada por entidades sem fins lucrativos ou por
+        /// entidades de prática desportiva a serviço do
+        /// estabelecimento cumpridor da cota
+        /// </summary>
+        [XmlEnum ("2")]
+        ContratacaoIndireta = 2,
+    }
+    #endregion IndAprend
+
+    #region TpPlanRP
+    /// <summary>
+    /// Tipo de plano de segregação da massa.
+    /// Valores válidos:
+    /// 0 - Sem segregação da massa
+    /// 1 - Fundo em capitalização
+    /// 2 - Fundo em repartição
+    /// 3 - Mantido pelo Tesouro
+    /// </summary>
+    public enum TpPlanRP
+    {
+        /// <summary>
+        /// 0 - Sem segregação da massa
+        /// </summary>
+        [XmlEnum("0")]
+        SemSegregacao = 0,
+        /// <summary>
+        /// 1 - Fundo em capitalização
+        /// </summary>
+        [XmlEnum("1")]
+        FundoCapitalizacao = 1,
+        /// <summary>
+        /// 2 - Fundo em repartição
+        /// </summary>
+        [XmlEnum("2")]
+        FundoReparticao = 2,
+        /// <summary>
+        /// 3 - Mantido pelo Tesouro
+        /// </summary>
+        [XmlEnum("3")]
+        MantidoPeloTesouro = 3,
+    }
+    #endregion TpPlanRP
+
+    #region TpLograd
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum TipoLogradouro
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("A")]
+        Area,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AC")]
+        Acesso,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ACA")]
+        Acampamento,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ACL")]
+        AcessoLocal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AD")]
+        Adro,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AE")]
+        AreaEspecial,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AER")]
+        Aeroporto,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AL")]
+        Alameda,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ALD")]
+        Aldeia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AMD")]
+        AvenidaMarginalDireita,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AME")]
+        AvenidaMarginalEsquerda,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AN")]
+        AnelViario,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ANT")]
+        AntigaEstrada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ART")]
+        Arteria,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AT")]
+        Alto,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ATL")]
+        Atalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("A V")]
+        AreaVerde,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AV")]
+        Avenida,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AVC")]
+        AvenidaContorno,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AVM")]
+        AvenidaMarginal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("AVV")]
+        AvenidaVelha,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BAL")]
+        Balneario,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BC")]
+        Beco,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BCO")]
+        Buraco,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BEL")]
+        Belvedere,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BL")]
+        Bloco,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BLO")]
+        Balao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BLS")]
+        Blocos,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BLV")]
+        Bulevar,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BSQ")]
+        Bosque,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BVD")]
+        Boulevard,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("BX")]
+        Baixa,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("C")]
+        Cais,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CAL")]
+        Calcada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CAM")]
+        Caminho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CAN")]
+        Canal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CH")]
+        Chacara,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CHA")]
+        Chapadao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CIC")]
+        Ciclovia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CIR")]
+        Circular,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CJ")]
+        Conjunto,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CJM")]
+        ConjuntoMutirao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CMP")]
+        ComplexoViario,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("COL")]
+        Colonia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("COM")]
+        Comunidade,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CON")]
+        Condominio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("COR")]
+        Corredor,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CPO")]
+        Campo,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CRG")]
+        Corrego,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("CTN")]
+        Contorno,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("DSC")]
+        Descida,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("DSV")]
+        Desvio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("DT")]
+        Distrito,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EB")]
+        EntreBloco,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EIM")]
+        EstradaIntermunicipal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ENS")]
+        Enseada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ENT")]
+        EntradaParticular,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EQ")]
+        EntreQuadra,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESC")]
+        Escada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESD")]
+        Escadaria,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESE")]
+        EstradaEstadual,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESI")]
+        EstradaVicinal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESL")]
+        EstradaDeLigacao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESM")]
+        EstradaMunicipal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESP")]
+        Esplanada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESS")]
+        EstradaDeServidao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EST")]
+        Estrada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ESV")]
+        EstradaVelha,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ETA")]
+        EstradaAntiga,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ETC")]
+        Estacao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ETD")]
+        Estadio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ETN")]
+        Estancia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ETP")]
+        EstradaParticular,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ETT")]
+        Estacionamento,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EVA")]
+        Evangelica,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EVD")]
+        Elevada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("EX")]
+        EixoIndustrial,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("FAV")]
+        Favela,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("FAZ")]
+        Fazenda,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("FER")]
+        Ferrovia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("FNT")]
+        Fonte,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("FRA")]
+        Feira,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("FTE")]
+        Forte,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("GAL")]
+        Galeria,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("GJA")]
+        Granja,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("HAB")]
+        NucleoHabitacional,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("IA")]
+        Ilha,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("IGP")]
+        Igarape,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("IND")]
+        Indeterminado,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("IOA")]
+        Ilhota,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("JD")]
+        Jardim,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("JDE")]
+        Jardinete,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("LD")]
+        Ladeira,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("LGA")]
+        Lagoa,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("LGO")]
+        Lago,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("LOT")]
+        Loteamento,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("LRG")]
+        Largo,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("LT")]
+        Lote,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("MER")]
+        Mercado,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("MNA")]
+        Marina,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("MOD")]
+        Modulo,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("MRG")]
+        Projecao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("MRO")]
+        Morro,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("MTE")]
+        Monte,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("NUC")]
+        Nucleo,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("NUR")]
+        NucleoRural,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("O")]
+        Outros,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("OUT")]
+        Outeiro,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PAR")]
+        Paralela,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PAS")]
+        Passeio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PAT")]
+        Patio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PC")]
+        Praca,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PCE")]
+        PracaDeEsportes,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PDA")]
+        Parada,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PDO")]
+        Paradouro,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PNT")]
+        Ponta,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PR")]
+        Praia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PRL")]
+        Prolongamento,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PRM")]
+        ParqueMunicipal,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PRQ")]
+        Parque,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PRR")]
+        ParqueResidencial,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PSA")]
+        Passarela,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PSG")]
+        Passagem,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PSP")]
+        PassagemDePedestre,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PSS")]
+        PassagemSubterranea,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PTE")]
+        Ponte,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("PTO")]
+        Porto,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("Q")]
+        Quadra,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("QTA")]
+        Quinta,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("QTS")]
+        Quintas,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("R")]
+        Rua,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RI")]
+        RuaIntegracao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RL")]
+        RuaDeLigacao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RP")]
+        RuaParticular,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RV")]
+        RuaVelha,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RAM")]
+        Ramal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RCR")]
+        Recreio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("REC")]
+        Recanto,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RER")]
+        Retiro,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RES")]
+        Residencial,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RET")]
+        Reta,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RLA")]
+        Ruela,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RMP")]
+        Rampa,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ROA")]
+        RodoAnel,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ROD")]
+        Rodovia,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ROT")]
+        Rotula,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RPE")]
+        RuaDePedestre,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RPR")]
+        Margem,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RTN")]
+        Retorno,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("RTT")]
+        Rotatoria,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("SEG")]
+        SegundaAvenida,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("SIT")]
+        Sitio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("SRV")]
+        Servidao,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ST")]
+        Setor,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("SUB")]
+        Subida,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TCH")]
+        Trincheira,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TER")]
+        Terminal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TR")]
+        Trecho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TRV")]
+        Trevo,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TUN")]
+        Tunel,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TV")]
+        Travessa,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TVP")]
+        TravessaParticular,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("TVV")]
+        TravessaVelha,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("UNI")]
+        Unidade,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("V")]
+        Via,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VC")]
+        ViaColetora,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VL")]
+        ViaLocal,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VAC")]
+        ViaDeAcesso,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VAL")]
+        Vala,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VCO")]
+        ViaCosteira,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VD")]
+        Viaduto,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("V-E")]
+        ViaExpressa,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VER")]
+        Vereda,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VEV")]
+        ViaElevado,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VL")]
+        Vila,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VLA")]
+        Viela,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VLE")]
+        Vale,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VLT")]
+        ViaLitoranea,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VPE")]
+        ViaDePedestre,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("VRT")]
+        Variante,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("ZIG")]
+        ZigueZague
+
+
+    }
+    #endregion TpLograd
+
+    #region TpJornada
+
+    /// <summary>
+    /// Tipo de jornada.
+    /// Valores válidos:
+    /// 2 - Jornada 12 x 36 (12 horas de trabalho seguidas de 36
+    /// horas ininterruptas de descanso)
+    /// 3 - Jornada com horário diário fixo e folga variável
+    /// 4 - Jornada com horário diário fixo e folga fixa(no
+    /// domingo)
+    /// 5 - Jornada com horário diário fixo e folga fixa(exceto no
+    /// domingo)
+    /// 6 - Jornada com horário diário fixo e folga fixa(em outro
+    /// dia da semana), com folga adicional periódica no
+    /// domingo
+    /// 7 - Turno ininterrupto de revezamento
+    /// 9 - Demais tipos de jornada
+    /// </summary>
+    public enum TpJornada
+    {
+        /// <summary>
+        /// 2 - Jornada 12 x 36 (12 horas de trabalho seguidas de 36
+        /// horas ininterruptas de descanso)
+        /// </summary>
+        [XmlEnum ("2")]
+        Jornada1236 = 2,
+        /// <summary>
+        /// 3 - Jornada com horário diário fixo e folga variável
+        /// </summary>
+        [XmlEnum ("3")]
+        JornadaHorarioFixoFolgaVariavel = 3,
+        /// <summary>
+        /// 4 - Jornada com horário diário fixo e folga fixa(no
+        /// domingo)
+        /// </summary>
+        [XmlEnum ("4")]
+        JornadaHorarioFixoFolgaFixaDomingo = 4,
+        /// <summary>
+        /// 5 - Jornada com horário diário fixo e folga fixa(exceto no
+        /// domingo)
+        /// </summary>
+        [XmlEnum ("5")]
+        JornadaHorarioFixoFolgaFixaExcetoDomingo = 5,
+        /// <summary>
+        /// 6 - Jornada com horário diário fixo e folga fixa(em outro
+        /// dia da semana), com folga adicional periódica no
+        /// domingo
+        /// </summary>
+        [XmlEnum ("6")]
+        JornadaHorarioFixoFolgaFixaDomingoPeriodico = 6,
+        /// <summary>
+        /// 7 - Turno ininterrupto de revezamento
+        /// </summary>
+        [XmlEnum ("7")]
+        TurnoIninterruptoRevezamento = 7,
+        /// <summary>
+        /// 9 - Demais tipos de jornada
+        /// </summary>
+        [XmlEnum ("9")]
+        DemaisTipos = 9,
+    }
+    #endregion TpJornada
+
+    #region TmpParc
+
+    /// <summary>
+    /// código relativo ao tipo de contrato em
+    /// tempo parcial.
+    /// Valores válidos:
+    /// 0 - Não é contrato em tempo parcial
+    /// 1 - Limitado a 25 horas semanais
+    /// 2 - Limitado a 30 horas semanais
+    /// 3 - Limitado a 26 horas semanais
+    /// </summary>
+    public enum TmpParc
+    {
+        /// <summary>
+        /// 0 - Não é contrato em tempo parcial
+        /// </summary>
+        [XmlEnum("0")]
+        NaoParcial = 0,
+        /// <summary>
+        /// 1 - Limitado a 25 horas semanais
+        /// </summary>
+        [XmlEnum("1")]
+        Limitado25horas = 1,
+        /// <summary>
+        /// 2 - Limitado a 30 horas semanais
+        /// </summary>
+        [XmlEnum("2")]
+        Limitado30horas = 2,
+        /// <summary>
+        /// 3 - Limitado a 26 horas semanais
+        /// </summary>
+        [XmlEnum("3")]
+        Limitado26horas = 3,
+    }
+    #endregion TmpParc
+
+    #region CodTreiCap
+    /// <summary>
+    /// Treinamentos, capacitações, exercícios simulados,
+    /// autorizações ou outras anotações que devam ser anotadas
+    /// no registro de empregados e/ou na CTPS, por
+    /// determinação de Norma Regulamentadora - NR.
+    /// </summary>
+    public enum CodTreiCap
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoAntesDoPrimeiroEmbarque = 3701,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoAntesDoPrimeiroEmbarqueReciclagem = 3702,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoEventual = 3703,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoBasico = 3704,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoBasicoReciclagem = 3705,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoAvancado = 3706,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoAvancadoReciclagem = 3707,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoEspecificoEmpregadoBrigadaDeIncendio = 3708,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoEspecificoRiscosRadiologicos = 3709,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoEspecificoEquipeDeEmergencias = 3710,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoSinaleiro = 3711,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoOperadorGuindasteReciclagem = 3712,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoManipuladorDeAlimentos = 3713,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoInstalacoesEletricasAltaTensao = 3714,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoMovimentacaoCargasTransportePessoas = 3715,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoOperadorGuindaste = 3716,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoOcupacionalmenteExpostosARadiacao = 3717,
+        /// <summary>
+        /// 
+        /// </summary>
+        TreinamentoAcendimentoChamaPiloto = 3818,
+        /// <summary>
+        /// 
+        /// </summary>
+        AutorizacaoInstalacoesEletricas = 1006,
+        /// <summary>
+        /// 
+        /// </summary>
+        OperacaoRealizacaoIntervencaoEmMaquinas = 1207,
+        /// <summary>
+        /// 
+        /// </summary>
+        OperadorEquipamentoGuindar = 3719,
+
+    }
+    #endregion CodTreiCap
+
     #endregion ESocial
 }
