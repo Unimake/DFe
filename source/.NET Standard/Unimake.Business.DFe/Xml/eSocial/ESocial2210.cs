@@ -37,7 +37,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculo IdeVinculo { get; set; }
+        public IdeVinculoESocial2210 IdeVinculo { get; set; }
 
         [XmlElement("cat")]
         public Cat Cat { get; set; }
@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")]
     [ComVisible(true)]
 #endif
-    public class IdeVinculo
+    public class IdeVinculoESocial2210
     {
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }

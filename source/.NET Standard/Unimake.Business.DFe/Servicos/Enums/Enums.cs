@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -7108,6 +7111,30 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("2")]
         CPF = 2,
+
+        /// <summary>
+        /// 3 - CAEPF (Cadastro de Atividade Econômica de Pessoa Física)
+        /// </summary>
+        [XmlEnum("3")]
+        CAEPF = 3,
+
+        /// <summary>
+        /// 4 - CNO (Cadastro Nacional de Obra)
+        /// </summary>
+        [XmlEnum("4")]
+        CNO = 4,
+
+        /// <summary>
+        /// 5 - CGC
+        /// </summary>
+        [XmlEnum("5")]
+        CGC = 5,
+
+        /// <summary>
+        /// 6 - CEI
+        /// </summary>
+        [XmlEnum("6")]
+        CEI = 6
     }
 
     #endregion
@@ -11152,6 +11179,191 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
+    #region Tipo de regime trabalhista. - eSocial.
+
+    /// <summary>
+    /// Tipo de regime trabalhista.
+    /// </summary>
+    public enum TipoRegimeTrabalhista
+    {
+        /// <summary>
+        /// 1 - CLT - Consolidação das Leis de Trabalho e legislações trabalhistas específicas
+        /// </summary>
+        [XmlEnum("1")]
+        CLT = 1,
+
+        /// <summary>
+        /// 2 - Estatutário/legislações específicas (servidor temporário, militar, agente político, etc.)
+        /// </summary>
+        [XmlEnum("2")]
+        EstatutarioOuLegislacoesEspecificas = 2
+    }
+    #endregion
+
+    #region Tipo de regime previdenciário. - eSocial.
+
+    /// <summary>
+    /// Tipo de regime previdenciário (ou Sistema de Proteção Social dos Militares das Forças Armadas).
+    /// </summary>
+    public enum TipoRegimePrevidenciario
+    {
+        /// <summary>
+        /// 1 - Regime Geral de Previdência Social - RGPS
+        /// </summary>
+        [XmlEnum("1")]
+        RGPS = 1,
+
+        /// <summary>
+        /// 2 - Regime Próprio de Previdência Social - RPPS
+        /// </summary>
+        [XmlEnum("2")]
+        RPPS = 2,
+
+        /// <summary>
+        /// 3 - Regime de Previdência Social no exterior
+        /// </summary>
+        [XmlEnum("3")]
+        PrevidenciaSocialExterior = 3,
+
+        /// <summary>
+        /// 4 - Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA
+        /// </summary>
+        [XmlEnum("4")]
+        ProtecaoSocialDosMilitares = 4
+    }
+    #endregion
+
+    #region Tipo de admissão do trabalhador. - eSocial.
+
+    /// <summary>
+    /// Tipo de admissão do trabalhador.
+    /// </summary>
+    public enum TipoAdmissaoTrabalhador
+    {
+        /// <summary>
+        /// 1 - Admissão
+        /// </summary>
+        [XmlEnum("1")]
+        Admissao = 1,
+
+        /// <summary>
+        /// 2 - Transferência de empresa do mesmo grupo econômico ou transferência entre órgãos do mesmo Ente Federativo
+        /// </summary>
+        [XmlEnum("2")]
+        TransferenciaMesmoEnteFederativo = 2,
+
+        /// <summary>
+        /// 3 - Transferência de empresa consorciada ou de consórcio
+        /// </summary>
+        [XmlEnum("3")]
+        TransferenciaEmpresaConsorciada = 3,
+
+        /// <summary>
+        /// 4 - Transferência por motivo de sucessão, incorporação, cisão ou fusão
+        /// </summary>
+        [XmlEnum("4")]
+        TransferenciaSucessao = 4,
+
+        /// <summary>
+        /// 5 - Transferência do empregado doméstico para outro representante da mesma unidade familiar
+        /// </summary>
+        [XmlEnum("5")]
+        TransferenciaEmpregadoDomestico = 5,
+
+        /// <summary>
+        /// 6 - Mudança de CPF
+        /// </summary>
+        [XmlEnum("6")]
+        MudancaDeCPF = 6,
+
+        /// <summary>
+        /// 7 - Transferência quando a empresa sucedida é considerada inapta por inexistência de fato
+        /// </summary>
+        [XmlEnum("7")]
+        TransferenciaEmpresaInapta = 7
+    }
+    #endregion
+
+    #region Indicativo de admissão. - eSocial
+
+    /// <summary>
+    /// Indicativo de admissão.
+    /// </summary>
+    public enum IndicativoDeAdmissao
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Decorrente de ação fiscal
+        /// </summary>
+        [XmlEnum("2")]
+        AcaoFiscal = 2,
+
+        /// <summary>
+        /// 3 - Decorrente de decisão judicial
+        /// </summary>
+        [XmlEnum("3")]
+        DecisaoJudicial = 3
+    }
+    #endregion
+
+    #region Regime de jornada do empregado. - eSocial
+
+    /// <summary>
+    /// Indicativo de admissão.
+    /// </summary>
+    public enum RegimeJornadaEmpregado
+    {
+        /// <summary>
+        /// 1 - Submetido a horário de trabalho (Capítulo II do Título II da CLT)
+        /// </summary>
+        [XmlEnum("1")]
+        SubmetidoHorarioDeTrabalho = 1,
+
+        /// <summary>
+        /// 2 - Atividade externa especificada no inciso I do art. 62 da CLT
+        /// </summary>
+        [XmlEnum("2")]
+        AtividadeExternaEspecificada = 2,
+
+        /// <summary>
+        /// 3 - Função especificada no inciso II do art. 62 da CLT
+        /// </summary>
+        [XmlEnum("3")]
+        FuncaoEspecificada = 3,
+
+        /// <summary>
+        /// 4 - Teletrabalho, previsto no inciso III do art. 62 da CLT
+        /// </summary>
+        [XmlEnum("4")]
+        Teletrabalho = 4
+    }
+    #endregion
+
+    #region hipLeg. - eSocial
+    /// <summary>
+    /// Hipótese legal para contratação de trabalhador temporário.
+    /// </summary>
+    public enum ContratacaoTrabalhadorTemporario
+    {
+        /// <summary>
+        /// 1 - Necessidade de substituição transitória de pessoal
+        /// </summary>
+        [XmlEnum("1")]
+        SubstituicaoTransitoriaDePessoal = 1,
+
+        /// <summary>
+        /// 2 - Demanda complementar de serviços
+        /// </summary>
+        [XmlEnum("2")]
+        DemandaComplementar = 2
+    }
+    #endregion
+
 
     #region TpRegPrev
     /// <summary>
@@ -12402,6 +12614,213 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion CodTreiCap
+
+    #region indAprend. - eSocial
+
+    /// <summary>
+    /// Indicativo de modalidade de contratação de aprendiz.
+    /// </summary>
+    public enum IndicativoContratacaoAprendiz
+    {
+        /// <summary>
+        /// 1 - Contratação direta: contratação do aprendiz efetivada pelo estabelecimento cumpridor da cota de aprendizagem
+        /// </summary>
+        [XmlEnum("1")]
+        ContratacaoDireta = 1,
+
+        /// <summary>
+        /// 2 - Contratação indireta: contratação do aprendiz efetivada por entidades sem fins lucrativos ou por entidades de prática desportiva a serviço do estabelecimento cumpridor da cota
+        /// </summary>
+        [XmlEnum("2")]
+        ContratacaoIndireta = 2,
+    }
+
+    #endregion
+
+    #region tpProv. - eSocial
+
+    /// <summary>
+    /// Preencher com o tipo de provimento.
+    /// </summary>
+    public enum TipoProvimento
+    {
+        /// <summary>
+        /// 1 - Nomeação em cargo efetivo
+        /// </summary>
+        [XmlEnum("1")]
+        NomeacaoCargoEfetivo = 1,
+
+        /// <summary>
+        /// 2 - Nomeação exclusivamente em cargo em comissão
+        /// </summary>
+        [XmlEnum("2")]
+        NomeacaoExclusivamenteEmCargoEmComissao = 2,
+
+        /// <summary>
+        /// 3 - Incorporação ou matrícula (militar)
+        /// </summary>
+        [XmlEnum("3")]
+        IncorporacaoOuMatriculaMilitar = 3,
+
+        /// <summary>
+        /// 5 - Redistribuição ou Reforma Administrativa
+        /// </summary>
+        [XmlEnum("5")]
+        RedistribuicaoOuReformaAdministrativa = 5,
+
+        /// <summary>
+        /// 6 - Diplomação
+        /// </summary>
+        [XmlEnum("6")]
+        Diplomacao = 6,
+
+        /// <summary>
+        /// 7 - Contratação por tempo determinado
+        /// </summary>
+        [XmlEnum("7")]
+        ContratacaoTempoDeterminado = 7,
+
+        /// <summary>
+        /// 8 - Remoção (em caso de alteração do órgão declarante)
+        /// </summary>
+        [XmlEnum("8")]
+        Remocao = 8,
+
+        /// <summary>
+        /// 9 - Designação
+        /// </summary>
+        [XmlEnum("9")]
+        Designacao = 9,
+
+        /// <summary>
+        /// 10 - Mudança de CPF
+        /// </summary>
+        [XmlEnum("10")]
+        MudancaDeCPF = 10,
+
+        /// <summary>
+        /// 11 - Estabilizados - Art. 19 do ADCT
+        /// </summary>
+        [XmlEnum("11")]
+        Estabilizados = 11,
+
+        /// <summary>
+        /// 99 - Outros não relacionados acima
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    #endregion
+
+    #region tpPlanRP. - eSocial
+
+    /// <summary>
+    /// Tipo de plano de segregação da massa.
+    /// </summary>
+    public enum PlanoSegregacaoDaMassa
+    {
+        /// <summary>
+        /// 0 - Sem segregação da massa
+        /// </summary>
+        [XmlEnum("0")]
+        SemSegregacao = 0,
+
+        /// <summary>
+        /// 1 - Fundo em capitalização
+        /// </summary>
+        [XmlEnum("1")]
+        FundoEmCapitalizacao = 1,
+
+        /// <summary>
+        /// 2 - Fundo em repartição
+        /// </summary>
+        [XmlEnum("2")]
+        FundoEmReparticao = 2,
+
+        /// <summary>
+        /// 3 - Mantido pelo Tesouro
+        /// </summary>
+        [XmlEnum("3")]
+        MantidoPeloTesouro = 3
+    }
+
+    #endregion
+
+    #region tpJornada. - eSocial
+
+    /// <summary>
+    /// Tipo de jornada.
+    /// </summary>
+    public enum TipoDeJornada
+    {
+        /// <summary>
+        /// 2 - Jornada 12 x 36 (12 horas de trabalho seguidas de 36 horas ininterruptas de descanso)
+        /// </summary>
+        [XmlEnum("2")]
+        Jornada12x36 = 2,
+
+        /// <summary>
+        /// 3 - Jornada com horário diário fixo e folga variável
+        /// </summary>
+        [XmlEnum("3")]
+        DiarioFixoFolgaVariavel = 3,
+
+        /// <summary>
+        /// 4 - Jornada com horário diário fixo e folga fixa (no domingo)
+        /// </summary>
+        [XmlEnum("4")]
+        FolgaDomingo = 4,
+
+        /// <summary>
+        /// 5 - Jornada com horário diário fixo e folga fixa (exceto no domingo)
+        /// </summary>
+        [XmlEnum("5")]
+        FolgaExcetoDomingo = 5,
+
+        /// <summary>
+        /// 6 - Jornada com horário diário fixo e folga fixa (em outro dia da semana), com folga adicional periódica no domingo
+        /// </summary>
+        [XmlEnum("6")]
+        FolgaDiaDaSemana = 6
+    }
+
+    #endregion
+
+    #region tpPlanRP. - eSocial
+
+    /// <summary>
+    /// Preencher com o código relativo ao tipo de contrato em tempo parcial.
+    /// </summary>
+    public enum ContratoTempoParcial
+    {
+        /// <summary>
+        /// 0 - Não é contrato em tempo parcial
+        /// </summary>
+        [XmlEnum("0")]
+        NaoTempoParcial = 0,
+
+        /// <summary>
+        /// 1 - Limitado a 25 horas semanais
+        /// </summary>
+        [XmlEnum("1")]
+        Limitado25HorasSemanais = 1,
+
+        /// <summary>
+        /// 2 - Limitado a 30 horas semanais
+        /// </summary>
+        [XmlEnum("2")]
+        Limitado30HorasSemanais = 2,
+
+        /// <summary>
+        /// 3 - Limitado a 26 horas semanais
+        /// </summary>
+        [XmlEnum("3")]
+        Limitado26HorasSemanais = 3
+    }
+
+    #endregion
+
 
     #endregion ESocial
 }

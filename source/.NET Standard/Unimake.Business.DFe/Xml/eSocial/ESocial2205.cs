@@ -377,6 +377,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeInfoCotaField() => InfoCota != null;
 #endif
 
+        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+
         #endregion
     }
 
@@ -448,9 +450,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeCpfDepField() => !string.IsNullOrEmpty(CpfDep);
 
 #if INTEROP
-        public bool ShouldSerializeSexoDepField() => SexoDep != (TipoSexo)(-1);
+        public bool ShouldSerializeSexoDep() => SexoDep != (TipoSexo)(-1);
 #else
-        public bool ShouldSerializeSexoDepField() => SexoDep != null;
+        public bool ShouldSerializeSexoDep() => SexoDep != null;
 #endif
 
         #endregion
