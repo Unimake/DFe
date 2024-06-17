@@ -2,12 +2,14 @@
 
 #if INTEROP
  using System.Runtime.InteropServices;
- #endif
+#endif
 
 using System;
 using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -166,9 +168,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("vrRubr")]
         public double VrRubr { get; set; }
 
+        /// <summary>
+        /// Indicativo de tipo de apuração de IR.
+        ///        Valores válidos:
+        /// 0 - Normal(apuração sob a folha de pagamento
+        /// declarada no eSocial)
+        /// 1 - Situação especial de apuração de IR
+        /// Validação: Informação obrigatória e exclusiva se perApur
+        /// >= [2021-07] (se indApuracao = [1]) ou se perApur >=
+        /// [2021] (se indApuracao = [2]).
+        /// </summary>
+        [XmlElement("indApurIR")]
+        public IndApurIR? IndApurIR { get; set; }
+
         #region ShouldSerialize
         public bool ShouldSerializeQtdRubrField() => QtdRubr != 0;
         public bool ShouldSerializeFatorRubrField() => FatorRubr != 0;
+        public bool ShouldSerializeIndApurIRField() =>  !IndApurIR.IsNullOrEmpty();
         #endregion ShouldSerialize
     }
 

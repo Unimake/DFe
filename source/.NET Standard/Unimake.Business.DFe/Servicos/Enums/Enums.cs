@@ -10089,6 +10089,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         SituacaoEspecial = 1,
+
     }
 
     #endregion IndApurIR
@@ -11242,7 +11243,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 1 - Contratação direta: contratação do aprendiz efetivada
         /// pelo estabelecimento cumpridor da cota de aprendizagem
         /// </summary>
-        [XmlEnum ("1")]
+        [XmlEnum("1")]
         ContratacaoDireta = 1,
         /// <summary>
         /// 2 - Contratação indireta: contratação do aprendiz
@@ -11250,7 +11251,7 @@ namespace Unimake.Business.DFe.Servicos
         /// entidades de prática desportiva a serviço do
         /// estabelecimento cumpridor da cota
         /// </summary>
-        [XmlEnum ("2")]
+        [XmlEnum("2")]
         ContratacaoIndireta = 2,
     }
     #endregion IndAprend
@@ -12231,41 +12232,41 @@ namespace Unimake.Business.DFe.Servicos
         /// 2 - Jornada 12 x 36 (12 horas de trabalho seguidas de 36
         /// horas ininterruptas de descanso)
         /// </summary>
-        [XmlEnum ("2")]
+        [XmlEnum("2")]
         Jornada1236 = 2,
         /// <summary>
         /// 3 - Jornada com horário diário fixo e folga variável
         /// </summary>
-        [XmlEnum ("3")]
+        [XmlEnum("3")]
         JornadaHorarioFixoFolgaVariavel = 3,
         /// <summary>
         /// 4 - Jornada com horário diário fixo e folga fixa(no
         /// domingo)
         /// </summary>
-        [XmlEnum ("4")]
+        [XmlEnum("4")]
         JornadaHorarioFixoFolgaFixaDomingo = 4,
         /// <summary>
         /// 5 - Jornada com horário diário fixo e folga fixa(exceto no
         /// domingo)
         /// </summary>
-        [XmlEnum ("5")]
+        [XmlEnum("5")]
         JornadaHorarioFixoFolgaFixaExcetoDomingo = 5,
         /// <summary>
         /// 6 - Jornada com horário diário fixo e folga fixa(em outro
         /// dia da semana), com folga adicional periódica no
         /// domingo
         /// </summary>
-        [XmlEnum ("6")]
+        [XmlEnum("6")]
         JornadaHorarioFixoFolgaFixaDomingoPeriodico = 6,
         /// <summary>
         /// 7 - Turno ininterrupto de revezamento
         /// </summary>
-        [XmlEnum ("7")]
+        [XmlEnum("7")]
         TurnoIninterruptoRevezamento = 7,
         /// <summary>
         /// 9 - Demais tipos de jornada
         /// </summary>
-        [XmlEnum ("9")]
+        [XmlEnum("9")]
         DemaisTipos = 9,
     }
     #endregion TpJornada
@@ -12402,6 +12403,67 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion CodTreiCap
+
+    #region TpAcConv
+
+    /// <summary>
+    /// Tipo do instrumento ou situação ensejadora da
+    /// remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
+    public enum TpAcConv
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("A")]
+        AcordoColetivoDeTrabalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("B")]
+        LegislacaoFederalEstadualMunicipalDistrital,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("C")]
+        ConvecaoColetivaDeTrabalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("D")]
+        SentencaNormativaDissidio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("E")]
+        ConvencaoDeLicencaSaudeAcidenteDeTrabalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("F")]
+        OutrasVerbasDeNaturezaSalarialOuNaoAposODesligamento,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("G")]
+        AntecipacaoDeDiferencasDeAcordoConvencaoOuDissidioColetivo,
+        ///<summary>
+        /// 
+        /// </summary>
+        [XmlEnum("H")]
+        DeclaracaoBateFDTSAnteriorAoInicioDoDigital,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("I")]
+        SentencaJudicial,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("J")]
+        ParcelasComplementaresConhecidasAposOFechamentoDaFolha,
+    }
+    #endregion TpAcConv
 
     #endregion ESocial
 }
