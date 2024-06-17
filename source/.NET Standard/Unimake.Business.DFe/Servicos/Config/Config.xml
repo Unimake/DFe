@@ -1355,4 +1355,10 @@
 		<ArqConfig>BotucatuSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4300109">
+		<Nome>Agudo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>AgudoRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
