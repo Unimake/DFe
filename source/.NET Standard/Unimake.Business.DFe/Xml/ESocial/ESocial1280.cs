@@ -80,6 +80,42 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("infoSubstPatrOpPort")]
         public List<InfoSubstPatrOpPort> InfoSubstPatrOpPort { get; set; }
 
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoSubstPatrOpPort(InfoSubstPatrOpPort item)
+        {
+            if (InfoSubstPatrOpPort == null)
+            {
+                InfoSubstPatrOpPort = new List<InfoSubstPatrOpPort>();
+            }
+
+            InfoSubstPatrOpPort.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoSubstPatrOpPort (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoSubstPatrOpPort</returns>
+        public InfoSubstPatrOpPort InfoSubstPatrOpPort(int index)
+        {
+            if ((InfoSubstPatrOpPort?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoSubstPatrOpPort[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoSubstPatrOpPort
+        /// </summary>
+        public int GetInfoSubstPatrOpPortCount => (InfoSubstPatrOpPort != null ? InfoSubstPatrOpPort.Count : 0);
+#endif
         /// <summary>
         /// Empresas enquadradas no Simples Nacional - Atividades concomitantes
         ///  Grupo preenchido por empresa enquadrada no
@@ -94,8 +130,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// transformado em sociedade de fins lucrativos nos
         /// termos e no prazo da Lei 11.096/2005.
         /// </summary>
-        [XmlElement("infoPercTranf11096")]
-        public InfoPercTranf11096 InfoPercTranf11096 { get; set; }
+        [XmlElement("infoPercTransf11096")]
+        public InfoPercTransf11096 InfoPercTransf11096 { get; set; }
 
     }
 
@@ -173,8 +209,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indicativo do tipo de guia. Valores válidos:
         /// 1 - Documento de Arrecadação do eSocial - DAE
         /// </summary>
-        ///[XmlElement("indGuia")]
-        ///public IndGuia IndGuia { get; set; }
+        [XmlElement("indGuia")]
+        public string IndGuia { get; set; }
 
         /// <summary>
         /// Identificação do ambiente
@@ -195,17 +231,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        /*
-         * Problema com versão do leitaute, por estar desatualizado (o exemplo), irei criar ShouldSerializes
-         * para que não dê erro no teste unitário
-         */
-        //public bool ShouldSerializeIndGuiaField() => IndGuia.IsNullOrEmpty();
-
-        /**/
         public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
-        ///public bool ShouldSerializeIndGuiaField() => IndGuia.IsNullOrEmpty();
-
-
+        public bool ShouldSerializeIndGuiaField() => !string.IsNullOrEmpty(IndGuia);
         #endregion ShouldSerialize
     }
 
@@ -347,7 +374,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// termos e no prazo da Lei 11.096/2005.
     /// </summary>
     [Serializable()]
-    public class InfoPercTranf11096
+    public class InfoPercTransf11096
     {
         /// <summary>
         /// Informe o percentual de contribuição social devida em
