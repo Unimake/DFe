@@ -11830,76 +11830,126 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region tpJornada. - eSocial
+    #region tpExameOcup - eSocial.
 
     /// <summary>
-    /// Tipo de jornada.
+    /// Abrangência da decisão.
     /// </summary>
-    public enum TipoDeJornada
+    public enum TpExameOcup
     {
         /// <summary>
-        /// 2 - Jornada 12 x 36 (12 horas de trabalho seguidas de 36 horas ininterruptas de descanso)
+        /// 0 - Exame médico admissional
+        /// </summary>
+        [XmlEnum("0")]
+        ExameAdmissional = 0,
+
+        /// <summary>
+        /// 1 - Exame médico periódico, conforme Norma Regulamentadora 07 - NR-07 e/ou planejamento do Programa de Controle Médico de Saúde Ocupacional - PCMSO
+        /// </summary>
+        [XmlEnum("1")]
+        PCMSO = 1,
+
+        /// <summary>
+        /// 2 - Exame médico de retorno ao trabalho
         /// </summary>
         [XmlEnum("2")]
-        Jornada12x36 = 2,
+        ExameDeRetornoAoTrabalho = 2,
 
         /// <summary>
-        /// 3 - Jornada com horário diário fixo e folga variável
+        /// 3 - Exame médico de mudança de função ou de mudança de risco ocupacional
         /// </summary>
         [XmlEnum("3")]
-        DiarioFixoFolgaVariavel = 3,
+        ExameMudancaDeFuncao = 3,
 
         /// <summary>
-        /// 4 - Jornada com horário diário fixo e folga fixa (no domingo)
+        /// 4 - Exame médico de monitoração pontual, não enquadrado nos demais casos
         /// </summary>
         [XmlEnum("4")]
-        FolgaDomingo = 4,
+        ExameMonitoracaoPontual = 4,
 
         /// <summary>
-        /// 5 - Jornada com horário diário fixo e folga fixa (exceto no domingo)
+        /// 9 - Exame médico demissional
         /// </summary>
-        [XmlEnum("5")]
-        FolgaExcetoDomingo = 5,
+        [XmlEnum("9")]
+        ExameDemissional = 9
+
+    }
+    #endregion
+
+    #region ResAso. - eSocial
+
+    /// <summary>
+    /// Resultado do ASO.
+    /// </summary>
+    public enum ResAso
+    {
+        /// <summary>
+        /// 1 - Apto
+        /// </summary>
+        [XmlEnum("1")]
+        Apto = 1,
 
         /// <summary>
-        /// 6 - Jornada com horário diário fixo e folga fixa (em outro dia da semana), com folga adicional periódica no domingo
+        /// 2 - Inapto
         /// </summary>
-        [XmlEnum("6")]
-        FolgaDiaDaSemana = 6
+        [XmlEnum("2")]
+        Inapto = 2
     }
 
     #endregion
 
-    #region tpPlanRP. - eSocial
+    #region ordExame. - eSocial
 
     /// <summary>
-    /// Preencher com o código relativo ao tipo de contrato em tempo parcial.
+    /// Ordem do exame.
     /// </summary>
-    public enum ContratoTempoParcial
+    public enum OrdExame
     {
         /// <summary>
-        /// 0 - Não é contrato em tempo parcial
-        /// </summary>
-        [XmlEnum("0")]
-        NaoTempoParcial = 0,
-
-        /// <summary>
-        /// 1 - Limitado a 25 horas semanais
+        /// 1 - Inicial
         /// </summary>
         [XmlEnum("1")]
-        Limitado25HorasSemanais = 1,
+        Inicial = 1,
 
         /// <summary>
-        /// 2 - Limitado a 30 horas semanais
+        /// 2 - Sequencial
         /// </summary>
         [XmlEnum("2")]
-        Limitado30HorasSemanais = 2,
+        Sequencial = 2
+    }
+
+    #endregion
+
+    #region indResult. - eSocial
+
+    /// <summary>
+    /// Indicação dos resultados.
+    /// </summary>
+    public enum IndResult
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
 
         /// <summary>
-        /// 3 - Limitado a 26 horas semanais
+        /// 2 - Alterado
+        /// </summary>
+        [XmlEnum("2")]
+        Alterado = 2,
+
+        /// <summary>
+        /// 3 - Estável
         /// </summary>
         [XmlEnum("3")]
-        Limitado26HorasSemanais = 3
+        EstAvel = 3,
+
+        /// <summary>
+        /// 4 - Agravamento
+        /// </summary>
+        [XmlEnum("4")]
+        Agravamento = 4
     }
 
     #endregion
