@@ -823,10 +823,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string QtdHrsSem { get; set; }
 
         [XmlElement("tpJornada")]
-        public TipoDeJornada TpJornada { get; set; }
+        public TpJornada TpJornada { get; set; }
 
         [XmlElement("tmpParc")]
-        public ContratoTempoParcial TmpParc { get; set; }
+        public TmpParc TmpParc { get; set; }
 
         [XmlElement("horNoturno")]
 #if INTEROP
