@@ -3,8 +3,6 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Formatters;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -32,13 +30,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtFechamento")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtFechaEvPer")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Evento Fechamento dos Eventos Periódicos
     /// </summary>
-    [Serializable()]
     public class EvtFechaEvPer
     {
         /// <summary>
@@ -63,7 +60,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Período de apuração a que se refere o fechamento.
         /// </summary>
         [XmlElement("infoFech")]
-        public InfoFech IdePeriodo { get; set; }
+        public InfoFech InfoFech { get; set; }
     }
 
 #if INTEROP
@@ -74,7 +71,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
-    [Serializable()]
     public class IdeEventoESocial1299
     {
         /// <summary>
@@ -83,6 +79,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime PerApur {get; set; }
 #else
@@ -95,7 +92,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// periódicos para o empregador.
         /// (yyyy-MM)
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -124,8 +120,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indicativo do tipo de guia. Valores válidos:
         /// 1 - Documento de Arrecadação do eSocial - DAE
         /// </summary>
-        ///[XmlElement("indGuia")]
-        ///public IndGuia IndGuia { get; set; }
+        [XmlElement("indGuia")]
+        public IndGuia? IndGuia { get; set; }
 
         /// <summary>
         /// Identificação do ambiente
@@ -146,13 +142,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        /*
-         * Problema com versão do leitaute, por estar desatualizado (o exemplo), irei criar ShouldSerializes
-         * para que não dê erro no teste unitário
-         */
-        //public bool ShouldSerializeIndGuiaField() => IndGuia.IsNullOrEmpty();
-
-        /**/
+        public bool ShouldSerializeIndGuiaField() => IndGuia.IsNullOrEmpty();
         #endregion ShouldSerialize
     }
 
@@ -165,7 +155,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Informações do fechamento.
     /// </summary>
-    [Serializable()]
     public class InfoFech
     {
         /// <summary>
@@ -180,7 +169,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// indGuia.Caso contrário, não deve existir evento de remuneração.
         /// </summary>
         [XmlElement("evtRemun")]
-        public SimNaoESocial EvtRemun { get; set; }
+        public SimNaoLetra EvtRemun { get; set; }
 
         /// <summary>
         /// Possui informações de pagamento de rendimentos do
@@ -193,7 +182,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///indGuia.Caso contrário, não deve existir o evento.
         /// </summary>
         [XmlElement("evtPgtos")]
-        public SimNaoESocial EvtPgtos { get; set; }
+        public SimNaoLetra EvtPgtos { get; set; }
 
         /// <summary>
         /// Possui informações de comercialização de produção?
@@ -205,7 +194,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// indGuia.Caso contrário, não deve existir o evento.
         /// </summary>
         [XmlElement("evtComProd")]
-        public SimNaoESocial EvtComProd { get; set; }
+        public SimNaoLetra EvtComProd { get; set; }
 
         /// <summary>
         /// Contratou, por intermédio de sindicato, serviços de
@@ -218,7 +207,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// indGuia.Caso contrário, não deve existir o evento.
         /// </summary>
         [XmlElement("evtContratAvNP")]
-        public SimNaoESocial EvtContratAvNP { get; set; }
+        public SimNaoLetra EvtContratAvNP { get; set; }
         /// <summary>
         /// Possui informações de desoneração de folha de
         /// pagamento ou, sendo empresa enquadrada no Simples,
@@ -234,7 +223,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// não deve existir o evento
         /// </summary>
         [XmlElement("evtInfoComplPer")]
-        public SimNaoESocial EvtInfoComplPer { get; set; }
+        public SimNaoLetra EvtInfoComplPer { get; set; }
 
         /// <summary>
         /// Indicativo de exclusão de apuração das aquisições de produção rural (eventos S-1250) do período

@@ -10857,27 +10857,6 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
-
-    #region SimNaoESocial
-    /// <summary>
-    /// Sim ou Não (S ou N)
-    /// </summary>
-    public enum SimNaoESocial
-    {
-        /// <summary>
-        /// Sim (1 ou N)
-        /// </summary>
-        [XmlEnum("S")]
-        Sim = 0,
-
-        /// <summary>
-        /// Não (0 ou N)
-        /// </summary>
-        [XmlEnum("N")]
-        Nao = 1
-    }
-    #endregion SimNaoESocial
-
     #region Tipo de acidente de trabalho. - eSocial.
 
     /// <summary>
