@@ -143,9 +143,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 #if INTEROP
-        public bool ShouldSerializeIndGuiaField() => IndGuia != (SimNaoLetra)(-1);
+        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
 #else
-        public bool ShouldSerializeIndGuiaField() => IndGuia.IsNullOrEmpty();
+        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
 #endif
 #endregion ShouldSerialize
     }
