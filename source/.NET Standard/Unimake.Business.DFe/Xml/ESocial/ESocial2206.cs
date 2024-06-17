@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS1591
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -93,9 +94,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("indRetif")]
 #if INTEROP
-        public IndicativoRetificacao IndRetif { get; set; } = (IndicativoRetificacao)(-1);
+        public IndicativoRetificacao IndRetif { get; set; }
 #else
-        public IndicativoRetificacao? IndRetif { get; set; }
+        public IndicativoRetificacao IndRetif { get; set; }
 #endif
 
         /// <summary>
@@ -132,12 +133,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
-        #region ShouldSerialize
-        /// <summary>
-        /// Verifica se a tag 'nrRecibo' deve ser serializada
-        /// </summary>
-        public bool ShouldSerializeNrReciboField() => IndRetif.IsNullOrEmpty();
-        #endregion
     }
 
     #endregion IdeEvento
@@ -437,7 +432,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// indAprend = [2].
         /// </summary>
         [XmlElement("tpInsc")]
-        public TpInsc TpInsc { get; set; }
+#if INTEROP
+        public TpInsc? TpInsc { get; set; } = (SimNaoLetra)(-1);
+#else
+        public TpInsc? TpInsc { get; set; }
+#endif
 
         /// <summary>
         /// Informar o número de inscrição do estabelecimento para
@@ -478,7 +477,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
         public bool ShouldSerializeCnpjEntQualField() => !string.IsNullOrEmpty(CnpjEntQual);
+#if INTEROP
+        public bool ShouldSerializeTpInscField() => TpInsc != (SimNaoLetra)(-1);
+#else
         public bool ShouldSerializeTpInscField() => TpInsc.IsNullOrEmpty();
+#endif
         public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
 
         public bool ShouldSerializeCnpjPratField() => !string.IsNullOrEmpty(CnpjPrat);
@@ -633,8 +636,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Observações do contrato de trabalho.
         /// </summary>
         [XmlElement("observacoes")]
-        public Observacoes Observacoes { get; set; }
+        public List<Observacoes> Observacoes { get; set; }
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddObservacoes(Observacoes item)
+        {
+            if (Observacoes == null)
+            {
+                Observacoes = new List<Observacoes>();
+            }
+
+            Observacoes.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Observacoes (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Observacoes</returns>
+        public Observacoes Observacoes(int index)
+        {
+            if ((Observacoes?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Observacoes[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Observacoes
+        /// </summary>
+        public int GetObservacoesCount => (Observacoes != null ? Observacoes.Count : 0);
+#endif
         /// <summary>
         /// Treinamentos, capacitações, exercícios simulados,
         /// autorizações ou outras anotações que devam ser anotadas
@@ -642,14 +680,54 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// determinação de Norma Regulamentadora - NR.
         /// </summary>
         [XmlElement("treiCap")]
-        public TreiCap TreiCap { get; set; }
+        public List<TreiCap> TreiCap { get; set; }
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddTreiCap(TreiCap item)
+        {
+            if (TreiCap == null)
+            {
+                TreiCap = new List<TreiCap>();
+            }
+
+            TreiCap.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista TreiCap (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TreiCap</returns>
+        public TreiCap TreiCap(int index)
+        {
+            if ((TreiCap?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TreiCap[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TreiCap
+        /// </summary>
+        public int GetTreiCapCount => (TreiCap != null ? TreiCap.Count : 0);
+#endif
         #region ShouldSerialize
         public bool ShouldSerializeNmCargoField() => !string.IsNullOrEmpty(NmCargo);
         public bool ShouldSerializeCBOCargoField() => !string.IsNullOrEmpty(CBOCargo);
         public bool ShouldSerializeNmFuncaoField() => !string.IsNullOrEmpty(NmFuncao);
         public bool ShouldSerializeCBOFuncaoField() => !string.IsNullOrEmpty(CBOFuncao);
+#if INTEROP
+                public bool ShouldSerializeAcumCargoField() => AcumCargo != (SimNaoLetra)(-1);
+#else
         public bool ShouldSerializeAcumCargoField() => AcumCargo.IsNullOrEmpty();
+#endif
+
         #endregion ShouldSerialize
     }
 
@@ -671,11 +749,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Se undSalFixo for igual a [7], preencher com 0 (zero).
         /// </summary>
         [XmlIgnore]
-#if INTEROP
         public double VrSalFx { get; set; }
-#else
-        public double VrSalFx { get; set; }
-#endif
+
 
         /// <summary>
         /// Salário base do trabalhador, correspondente à parte fixa
@@ -686,11 +761,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VrSalFxField
         {
             get => VrSalFx.ToString("F2", CultureInfo.InvariantCulture);
-#if INTEROP
-            set => VrSalFx = DateTime.Parse(value);
-#else
             set => VrSalFx = Converter.ToDouble(value);
-#endif
+
         }
 
         /// <summary>
@@ -711,7 +783,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeDscSalVarField() => !string.IsNullOrEmpty(DscSalVar);
         #endregion ShouldSerialize
     }
-#endregion Remuneracao
+    #endregion Remuneracao
 
     #region Duracao
 
@@ -787,7 +859,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string ObjDet { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeDtTermField () => !string.IsNullOrEmpty(DtTermField);
+        public bool ShouldSerializeDtTermField() => !string.IsNullOrEmpty(DtTermField);
         public bool ShouldSerializeObjDetField() => TipoDeContratoDeTrabalho == TipoDeContratoDeTrabalho.PrazoDeterminadoOcorrencia;
 
         #endregion ShouldSerialize
@@ -1034,8 +1106,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string DscJorn { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeQtdHrsSemField () => !string.IsNullOrEmpty(QtdHrsSem);
+        public bool ShouldSerializeQtdHrsSemField() => !string.IsNullOrEmpty(QtdHrsSem);
+#if INTEROP
+        public bool ShouldSerializeHorNoturnoField() => HorNoturno != (SimNaoLetra)(-1);
+#else
         public bool ShouldSerializeHorNoturnoField() => HorNoturno.IsNullOrEmpty();
+#endif
 
         #endregion ShouldSerialize
     }
@@ -1109,9 +1185,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion TreiCap
 
-#endregion InfoContrato
+    #endregion InfoContrato
 
-#endregion Vinculo
+    #endregion Vinculo
 
-#endregion altContratual
+    #endregion altContratual
 }
