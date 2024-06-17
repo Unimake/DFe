@@ -2,13 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -81,7 +78,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// da Lei 12.546/2011.
         /// </summary>
         [XmlElement("infoSubstPatrOpPort")]
-        public InfoSubstPatrOpPort InfoSubstPatrOpPort { get; set; }
+        public List<InfoSubstPatrOpPort> InfoSubstPatrOpPort { get; set; }
 
         /// <summary>
         /// Empresas enquadradas no Simples Nacional - Atividades concomitantes
@@ -97,17 +94,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// transformado em sociedade de fins lucrativos nos
         /// termos e no prazo da Lei 11.096/2005.
         /// </summary>
-        //[XmlElement("infoPercTranf11096")]
-        //public InfoPercTranf11096 InfoPercTranf11096 { get; set; }
+        [XmlElement("infoPercTranf11096")]
+        public InfoPercTranf11096 InfoPercTranf11096 { get; set; }
 
-        #region ShouldSerialize
-
-        public bool ShouldSerializeInfoSubstPatrField() => InfoSubstPatr.IsNullOrEmpty();
-        public bool ShouldSerializeInfoSubstPatrOpPortField() => InfoSubstPatrOpPort.IsNullOrEmpty();
-        public bool ShouldSerializeInfoAtivConcomField() => InfoAtiviConcom.IsNullOrEmpty();
-        ///public bool ShouldSerializeInfoPercTranf11096Field() => InfoPercTranf11096. ();
-
-        #endregion ShouldSerialize
     }
 
     #region IdeEventoESocial1280
@@ -143,6 +132,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
+        [XmlIgnore]
 #if INTEROP
         public DateTime PerApur {get; set; }
 #else
@@ -155,7 +145,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// periódicos para o empregador.
         /// (yyyy-MM)
         /// </summary>
-        [XmlIgnore]
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -352,28 +341,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoPercTranf11096
 
-    ///// <summary>
-    ///// Grupo preenchido por entidade que tenha se
-    ///// transformado em sociedade de fins lucrativos nos
-    ///// termos e no prazo da Lei 11.096/2005.
-    ///// </summary>
-    //[Serializable()]
-    //public class InfoPercTranf11096
-    //{
-    //    /// <summary>
-    //    /// Informe o percentual de contribuição social devida em
-    //    /// caso de transformação em sociedade de fins lucrativos
-    //    /// - Lei 11.096/2005.
-    //    /// Valores válidos:
-    //    /// 1 - 0,2000
-    //    /// 2 - 0,4000
-    //    /// 3 - 0,6000
-    //    /// 4 - 0,8000
-    //    /// 5 - 1,0000
-    //    /// </summary>
-    //    [XmlElement("percTranf")]
-    //    public PercTranf PercTranf { get; set; }
-    //}
+    /// <summary>
+    /// Grupo preenchido por entidade que tenha se
+    /// transformado em sociedade de fins lucrativos nos
+    /// termos e no prazo da Lei 11.096/2005.
+    /// </summary>
+    [Serializable()]
+    public class InfoPercTranf11096
+    {
+        /// <summary>
+        /// Informe o percentual de contribuição social devida em
+        /// caso de transformação em sociedade de fins lucrativos
+        /// - Lei 11.096/2005.
+        /// Valores válidos:
+        /// 1 - 0,2000
+        /// 2 - 0,4000
+        /// 3 - 0,6000
+        /// 4 - 0,8000
+        /// 5 - 1,0000
+        /// </summary>
+        [XmlElement("percTranf")]
+        public PercTranf PercTranf { get; set; }
+    }
 
     #endregion InfoPercTranf11096
 }
