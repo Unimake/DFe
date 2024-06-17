@@ -142,8 +142,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeIndGuiaField() => IndGuia != (SimNaoLetra)(-1);
+#else
         public bool ShouldSerializeIndGuiaField() => IndGuia.IsNullOrEmpty();
-        #endregion ShouldSerialize
+#endif
+#endregion ShouldSerialize
     }
 
 
