@@ -207,7 +207,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista RespReg
         /// </summary>
-        public int GetEpiCount => (RespReg != null ? RespReg.Count : 0);
+        public int GetRespRegCount => (RespReg != null ? RespReg.Count : 0);
 #endif
 
         [XmlElement("obs")]
@@ -242,7 +242,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAmb")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAtiv")]
     [ComVisible(true)]
 #endif
     public class InfoAtiv
@@ -253,7 +253,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAmb")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.AgNoc")]
     [ComVisible(true)]
 #endif
     public class AgNoc
@@ -344,7 +344,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public SimNaoLetra EficEpi { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra EficEpi { get; set; }
+        public SimNaoLetra? EficEpi { get; set; }
 #endif
 
         [XmlElement("epi")]
