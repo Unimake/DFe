@@ -12334,5 +12334,57 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region tpReint - eSocial
+
+    /// <summary>
+    /// Tipo de reintegração/outro provimento.
+    /// </summary>
+    public enum TpReint
+    {
+        /// <summary>
+        /// 1 - Reintegração por decisão judicial
+        /// </summary>
+        [XmlEnum("1")]
+        DecisaoJudicial = 1,
+
+        /// <summary>
+        /// 2 - Reintegração por anistia legal
+        /// </summary>
+        [XmlEnum("2")]
+        AnistiaLegal = 2,
+
+        /// <summary>
+        /// 3 - Reversão de servidor público
+        /// </summary>
+        [XmlEnum("3")]
+        ReversaoDeServidorPublico = 3,
+
+        /// <summary>
+        /// 4 - Recondução de servidor público
+        /// </summary>
+        [XmlEnum("4")]
+        ReconducaoDeServidorPublico = 4,
+
+        /// <summary>
+        /// 5 - Reinclusão de militar
+        /// </summary>
+        [XmlEnum("5")]
+        ReinclusaoDeMilitar = 5,
+
+        /// <summary>
+        /// 6 - Revisão de reforma de militar
+        /// </summary>
+        [XmlEnum("6")]
+        RevisaoDeReformaDeMilitar = 6,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+
+    #endregion
+
     #endregion ESocial
 }
