@@ -1,21 +1,10 @@
 ﻿#pragma warning disable CS1591
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.CTe;
-using Unimake.Business.DFe.Xml.CTeOS;
-using Unimake.Business.DFe.Xml.EFDReinf;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.MDFe;
 using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Business.DFe.Xml.SNCM;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -78,8 +67,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador.
         /// </summary>
         [XmlElement("dmDev")]
-        public DmDev DmDev { get; set; }
+        public List<DmDev> DmDev { get; set; }
+#if INTEROP
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDmDev(DmDev item)
+        {
+            if (DmDev == null)
+            {
+                DmDev = new List<DmDev>();
+            }
+
+            DmDev.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DmDev (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DmDev</returns>
+        public DmDev GetDmDev(int index)
+        {
+            if ((DmDev?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DmDev[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DmDev
+        /// </summary>
+        public int GetDmDevCount => (DmDev != null ? DmDev.Count : 0);
+#endif
     }
 
     #region IdeEventoESocial1200
@@ -230,18 +254,85 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///incidência de contribuições sociais e/ou Imposto de Renda.
         /// </summary>
         [XmlElement("procJudTrab")]
-        public ProcJudTrab ProcJudTrab { get; set; }
+        public List<ProcJudTrab> ProcJudTrab { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddProcJudTrab(ProcJudTrab item)
+        {
+            if (ProcJudTrab == null)
+            {
+                ProcJudTrab = new List<ProcJudTrab>();
+            }
+
+            ProcJudTrab.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ProcJudTrab (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
+        public ProcJudTrab GetProcJudTrab(int index)
+        {
+            if ((ProcJudTrab?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ProcJudTrab[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ProcJudTrab
+        /// </summary>
+        public int GetProcJudTrabCount => (ProcJudTrab != null ? ProcJudTrab.Count : 0);
+#endif
 
         /// <summary>
         /// Informações relativas ao trabalho intermitente.
         /// </summary>
         [XmlElement("infoInterm")]
-        public InfoInterm InfoInterm { get; set; }
+        public List<InfoInterm> InfoInterm { get; set; }
+#if INTEROP
 
-        #region ShouldSerialize
-        public bool ShouldSerializeInfoIntermField() => !InfoInterm.IsNullOrEmpty();
-        #endregion ShouldSerialize
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoInterm(InfoInterm item)
+        {
+            if (InfoInterm == null)
+            {
+                InfoInterm = new List<InfoInterm>();
+            }
 
+            InfoInterm.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoInterm (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoInterm</returns>
+        public InfoInterm GetInfoInterm(int index)
+        {
+            if ((InfoInterm?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoInterm[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoInterm
+        /// </summary>
+        public int GetInfoIntermCount => (InfoInterm != null ? InfoInterm.Count : 0);
+#endif
     }
 
     #region InfoMV
@@ -272,7 +363,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// desconto da contribuição.
         /// </summary>
         [XmlElement("remunOutrEmpr")]
-        public RemunOutrEmpr RemunOutrEmpr { get; set; }
+        public List<RemunOutrEmpr> RemunOutrEmpr { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRemunOutrEmpr(RemunOutrEmpr item)
+        {
+            if (RemunOutrEmpr == null)
+            {
+                RemunOutrEmpr = new List<RemunOutrEmpr>();
+            }
+
+            RemunOutrEmpr.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RemunOutrEmpr (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RemunOutrEmpr</returns>
+        public RemunOutrEmpr GetRemunOutrEmpr(int index)
+        {
+            if ((RemunOutrEmpr?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RemunOutrEmpr[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RemunOutrEmpr
+        /// </summary>
+        public int GetRemunOutrEmprCount => (RemunOutrEmpr != null ? RemunOutrEmpr.Count : 0);
+#endif
     }
 
     #region RemunOutrEmpr
@@ -401,9 +528,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("sucessaoVinc")]
         public SucessaoVincESocial1200 SucessaoVinc { get; set; }
 
-        #region ShouldSerialize
-        public bool ShouldSerializeSucessaoVincField() => !SucessaoVinc.IsNullOrEmpty();
-        #endregion ShouldSerialize
     }
 
     #region SucessaoVincESocial1200 
@@ -721,7 +845,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Codlotacao { get; set; }
 
         /// <summary>
-        /// 
+        /// Quantidade de dias trabalhados no mês pelo trabalhador
+        /// avulso no tomador de serviços identificado em
+        /// ideEstabLot/codLotacao.Cada dia, total ou parcial, em
+        /// que o trabalhador tenha prestado serviços ao tomador
+        /// deve ser considerado.Ex.: Se, em um mesmo mês, o
+        /// trabalhador prestou serviços durante uma hora em um dia
+        /// e durante mais uma hora em outro dia, deve-se informar a
+        /// quantidade de 2 dias.
+        /// Caso não tenha havido trabalho no mês, informar 0 (zero).
+        /// Validação: Informação obrigatória e exclusiva se
+        /// ideEstabLot/codLotacao possuir tpLotacao em S-1020 =
+        /// [08, 09] em perApur e se indApuracao = [1].
         /// </summary>
         [XmlElement("qtdDiasAv")]
         public int QtdDiasAv { get; set; }
@@ -730,7 +865,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Remuneração do trabalhador 
         /// </summary>
         [XmlElement("remunPerApur")]
-        public RemunPerApur RemunPerApur { get; set; }
+        public List<RemunPerApur> RemunPerApur { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRemunPerApur(RemunPerApur item)
+        {
+            if (RemunPerApur == null)
+            {
+                RemunPerApur = new List<RemunPerApur>();
+            }
+
+            RemunPerApur.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RemunPerApur (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RemunPerApur</returns>
+        public RemunPerApur GetRemunPerApur(int index)
+        {
+            if ((RemunPerApur?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RemunPerApur[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RemunPerApur
+        /// </summary>
+        public int GetRemunPerApurCount => (RemunPerApur != null ? RemunPerApur.Count : 0);
+#endif
 
         #region ShouldSerialize
         public bool ShouldSerializeQtdDiasAvField() => QtdDiasAv != 0;
@@ -770,7 +942,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Rubricas que compõem a remuneração do trabalhador
         /// </summary>
         [XmlElement("itensRemun")]
-        public ItensRemunESocial1200 ItensRemun { get; set; }
+        public List<ItensRemunESocial1200> ItensRemun { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddItensRemunESocial1200(ItensRemunESocial1200 item)
+        {
+            if (ItensRemunESocial1200 == null)
+            {
+                ItensRemunESocial1200 = new List<ItensRemunESocial1200>();
+            }
+
+            ItensRemunESocial1200.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ItensRemunESocial1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ItensRemunESocial1200</returns>
+        public ItensRemunESocial1200 GetItensRemunESocial1200(int index)
+        {
+            if ((ItensRemunESocial1200?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ItensRemunESocial1200[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ItensRemunESocial1200
+        /// </summary>
+        public int GetItensRemunESocial1200Count => (ItensRemunESocial1200 != null ? ItensRemunESocial1200.Count : 0);
+#endif
 
         /// <summary>
         /// Grau de exposição a agentes nocivos 
@@ -860,7 +1069,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// remuneração relativa a períodos de apuração anteriores.
         /// </summary>
         [XmlElement("ideADC")]
-        public IdeADC IdeADC { get; set; }
+        public List<IdeADC> IdeADC { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeADC(IdeADC item)
+        {
+            if (IdeADC == null)
+            {
+                IdeADC = new List<IdeADC>();
+            }
+
+            IdeADC.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdeADC (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeADC</returns>
+        public IdeADC GetIdeADC(int index)
+        {
+            if ((IdeADC?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdeADC[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdeADC
+        /// </summary>
+        public int GetIdeADCCount => (IdeADC != null ? IdeADC.Count : 0);
+#endif
     }
 
     #region IdeADC
@@ -939,7 +1184,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// ser informado[E, H, I].
         /// </summary>
         [XmlElement("tpAcConv")]
-        public TpAcConv TpAcConv { get; set; }
+        public string TpAcConv { get; set; }
 
         /// <summary>
         /// Descrição do instrumento ou situação que originou o
@@ -963,10 +1208,46 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Identificação do período ao qual se referem as diferenças de remuneração.
         /// </summary>
         [XmlElement("idePeriodo")]
-        public IdePeriodoESocial1200 IdePeriodoESocial1200 { get; set; }
+        public List<IdePeriodoESocial1200> IdePeriodoESocial1200 { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdePeriodoESocial1200(IdePeriodoESocial1200 item)
+        {
+            if (IdePeriodoESocial1200 == null)
+            {
+                IdePeriodoESocial1200 = new List<IdePeriodoESocial1200>();
+            }
+
+            IdePeriodoESocial1200.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdePeriodoESocial1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdePeriodoESocial1200</returns>
+        public IdePeriodoESocial1200 GetIdePeriodoESocial1200(int index)
+        {
+            if ((IdePeriodoESocial1200?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdePeriodoESocial1200[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdePeriodoESocial1200
+        /// </summary>
+        public int GetIdePeriodoESocial1200Count => (IdePeriodoESocial1200 != null ? IdePeriodoESocial1200.Count : 0);
+#endif
 
         #region ShouldSerialize
-        public bool ShouldSerializeDtAcConvField () => DtAcConv > DateTimeOffset.MinValue;
+        public bool ShouldSerializeDtAcConvField() => DtAcConv > DateTimeOffset.MinValue;
         #endregion ShouldSerialize
     }
 
@@ -1016,14 +1297,51 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// identificado no grupo superior.
         /// </summary>
         [XmlElement("ideEstabLot")]
-        public IdeEstabLotESocial1200 IdeEstabLot { get; set; }
+        public List<IdeEstabLotAnt> IdeEstabLot { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeEstabLotAnt(IdeEstabLotAnt item)
+        {
+            if (IdeEstabLotAnt == null)
+            {
+                IdeEstabLotAnt = new List<IdeEstabLotAnt>();
+            }
+
+            IdeEstabLotAnt.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdeEstabLotAnt (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLotAnt</returns>
+        public IdeEstabLotAnt GetIdeEstabLotAnt(int index)
+        {
+            if ((IdeEstabLotAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdeEstabLotAnt[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdeEstabLotAnt
+        /// </summary>
+        public int GetIdeEstabLotAntCount => (IdeEstabLotAnt != null ? IdeEstabLotAnt.Count : 0);
+#endif
     }
 
     #region IdeEstabLotESocial1200
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotAnt")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -1031,7 +1349,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// referem as diferenças de remuneração do mês
     /// identificado no grupo superior.
     /// </summary>
-    public class IdeEstabLotESocial1200
+    public class IdeEstabLotAnt
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento
@@ -1059,7 +1377,43 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Informações relativas à remuneração do trabalhador em períodos anteriores.
         /// </summary>
-        public RemunPerAntESocial1200 RemunPerAnt { get; set; }
+        public List<RemunPerAntESocial1200> RemunPerAnt { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddRemunPerAntESocial1200(RemunPerAntESocial1200 item)
+        {
+            if (RemunPerAntESocial1200 == null)
+            {
+                RemunPerAntESocial1200 = new List<RemunPerAntESocial1200>();
+            }
+
+            RemunPerAntESocial1200.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista RemunPerAntESocial1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da RemunPerAntESocial1200</returns>
+        public RemunPerAntESocial1200 GetRemunPerAntESocial1200(int index)
+        {
+            if ((RemunPerAntESocial1200?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return RemunPerAntESocial1200[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista RemunPerAntESocial1200
+        /// </summary>
+        public int GetRemunPerAntESocial1200Count => (RemunPerAntESocial1200 != null ? RemunPerAntESocial1200.Count : 0);
+#endif
     }
 
     #region  RemunPerAntESocial1200
@@ -1099,6 +1453,42 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("itensRemun")]
         public List<ItensRemunESocial1200> ItensRemun { get; set; }
 
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddItensRemun(ItensRemun item)
+        {
+            if (ItensRemun == null)
+            {
+                ItensRemun = new List<ItensRemun>();
+            }
+
+            ItensRemun.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista ItensRemun (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da ItensRemun</returns>
+        public ItensRemun GetItensRemun(int index)
+        {
+            if ((ItensRemun?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return ItensRemun[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista ItensRemun
+        /// </summary>
+        public int GetItensRemunCount => (ItensRemun != null ? ItensRemun.Count : 0);
+#endif
         /// <summary>
         ///  Grupo referente ao detalhamento do grau de exposição
         /// do trabalhador aos agentes nocivos que ensejam a
@@ -1109,8 +1499,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAgNocivo InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeMatriculaField () => !Matricula.IsNullOrEmpty();
-        public bool ShouldSerializeIndSimplesField () => !IndSimples.IsNullOrEmpty();
+        public bool ShouldSerializeMatriculaField() => !Matricula.IsNullOrEmpty();
+        public bool ShouldSerializeIndSimplesField() => !IndSimples.IsNullOrEmpty();
         public bool ShouldSerializeInfoAgNocivoField() => !InfoAgNocivo.IsNullOrEmpty();
         #endregion ShouldSerialize
     }
