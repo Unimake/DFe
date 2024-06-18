@@ -93,11 +93,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 2 - Retificação
         /// </summary>
         [XmlElement("indRetif")]
-#if INTEROP
         public IndicativoRetificacao IndRetif { get; set; }
-#else
-        public IndicativoRetificacao IndRetif { get; set; }
-#endif
 
         /// <summary>
         /// Preencher com o número do recibo do arquivo a ser
@@ -433,7 +429,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("tpInsc")]
 #if INTEROP
-        public TpInsc? TpInsc { get; set; } = (SimNaoLetra)(-1);
+        public TpInsc TpInsc { get; set; } = (TpInsc)(-1);
 #else
         public TpInsc? TpInsc { get; set; }
 #endif
@@ -478,7 +474,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeCnpjEntQualField() => !string.IsNullOrEmpty(CnpjEntQual);
 #if INTEROP
-        public bool ShouldSerializeTpInscField() => TpInsc != (SimNaoLetra)(-1);
+        public bool ShouldSerializeTpInscField() => TpInsc != (TpInsc)(-1);
 #else
         public bool ShouldSerializeTpInscField() => TpInsc.IsNullOrEmpty();
 #endif
@@ -658,7 +654,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Observacoes</returns>
-        public Observacoes Observacoes(int index)
+        public Observacoes GetObservacoes(int index)
         {
             if ((Observacoes?.Count ?? 0) == 0)
             {
@@ -702,7 +698,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da TreiCap</returns>
-        public TreiCap TreiCap(int index)
+        public TreiCap GetTreiCap(int index)
         {
             if ((TreiCap?.Count ?? 0) == 0)
             {
