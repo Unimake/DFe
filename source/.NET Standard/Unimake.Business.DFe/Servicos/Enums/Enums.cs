@@ -11592,107 +11592,107 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3701")]
+        [XmlEnum("3701")]
         TreinamentoAntesDoPrimeiroEmbarque = 3701,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3702")]
+        [XmlEnum("3702")]
         TreinamentoAntesDoPrimeiroEmbarqueReciclagem = 3702,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3703")]
+        [XmlEnum("3703")]
         TreinamentoEventual = 3703,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3704")]
+        [XmlEnum("3704")]
         TreinamentoBasico = 3704,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3705")]
+        [XmlEnum("3705")]
         TreinamentoBasicoReciclagem = 3705,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3706")]
+        [XmlEnum("3706")]
         TreinamentoAvancado = 3706,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3707")]
+        [XmlEnum("3707")]
         TreinamentoAvancadoReciclagem = 3707,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3708")]
+        [XmlEnum("3708")]
         TreinamentoEspecificoEmpregadoBrigadaDeIncendio = 3708,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3709")]
+        [XmlEnum("3709")]
         TreinamentoEspecificoRiscosRadiologicos = 3709,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3710")]
+        [XmlEnum("3710")]
         TreinamentoEspecificoEquipeDeEmergencias = 3710,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3711")]
+        [XmlEnum("3711")]
         TreinamentoSinaleiro = 3711,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3712")]
+        [XmlEnum("3712")]
         TreinamentoOperadorGuindasteReciclagem = 3712,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3713")]
+        [XmlEnum("3713")]
         TreinamentoManipuladorDeAlimentos = 3713,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3714")]
+        [XmlEnum("3714")]
         TreinamentoInstalacoesEletricasAltaTensao = 3714,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3715")]
+        [XmlEnum("3715")]
         TreinamentoMovimentacaoCargasTransportePessoas = 3715,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3716")]
+        [XmlEnum("3716")]
         TreinamentoOperadorGuindaste = 3716,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3717")]
+        [XmlEnum("3717")]
         TreinamentoOcupacionalmenteExpostosARadiacao = 3717,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3718")]
+        [XmlEnum("3718")]
         TreinamentoAcendimentoChamaPiloto = 3818,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("1006")]
+        [XmlEnum("1006")]
         AutorizacaoInstalacoesEletricas = 1006,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("1207")]
+        [XmlEnum("1207")]
         OperacaoRealizacaoIntervencaoEmMaquinas = 1207,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3719")]
+        [XmlEnum("3719")]
         OperadorEquipamentoGuindar = 3719,
 
     }
@@ -11950,6 +11950,386 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("4")]
         Agravamento = 4
+    }
+
+    #endregion
+
+
+    #region TpAcConv
+
+    /// <summary>
+    /// Tipo do instrumento ou situação ensejadora da
+    /// remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
+    public enum TpAcConv
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("A")]
+        AcordoColetivoDeTrabalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("B")]
+        LegislacaoFederalEstadualMunicipalDistrital,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("C")]
+        ConvecaoColetivaDeTrabalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("D")]
+        SentencaNormativaDissidio,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("E")]
+        ConvencaoDeLicencaSaudeAcidenteDeTrabalho,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("F")]
+        OutrasVerbasDeNaturezaSalarialOuNaoAposODesligamento,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("G")]
+        AntecipacaoDeDiferencasDeAcordoConvencaoOuDissidioColetivo,
+        ///<summary>
+        /// 
+        /// </summary>
+        [XmlEnum("H")]
+        DeclaracaoBateFDTSAnteriorAoInicioDoDigital,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("I")]
+        SentencaJudicial,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("J")]
+        ParcelasComplementaresConhecidasAposOFechamentoDaFolha,
+    }
+    #endregion TpAcConv
+
+    #region localAmb. - eSocial
+
+    /// <summary>
+    /// Informar o tipo de estabelecimento do ambiente de trabalho.
+    /// </summary>
+    public enum LocalAmb
+    {
+        /// <summary>
+        /// 1 - Estabelecimento do próprio empregador
+        /// </summary>
+        [XmlEnum("1")]
+        EstabelecimentoProprioEmpregador = 1,
+
+        /// <summary>
+        /// 2 - Estabelecimento de terceiros
+        /// </summary>
+        [XmlEnum("2")]
+        EstabelecimentoDeTerceiros = 2
+    }
+
+    #endregion
+
+    #region tpAval. - eSocial
+
+    /// <summary>
+    /// Tipo de avaliação do agente nocivo. 
+    /// </summary>
+    public enum TpAval
+    {
+        /// <summary>
+        /// 1 - Critério quantitativo 
+        /// </summary>
+        [XmlEnum("1")]
+        CriterioQuantitativo = 1,
+
+        /// <summary>
+        /// 2 - Critério qualitativo 
+        /// </summary>
+        [XmlEnum("2")]
+        CriterioQualitativo = 2
+    }
+
+    #endregion
+
+    #region unMed. - eSocial
+
+    /// <summary>
+    /// Dose ou unidade de medida da intensidade ou concentração do agente. 
+    /// </summary>
+    public enum UnMed
+    {
+        /// <summary>
+        /// 1 - dose diária de ruído 
+        /// </summary>
+        [XmlEnum("1")]
+        DoseDiariaDeRuido = 1,
+
+        /// <summary>
+        /// 2 - decibel linear (dB (linear)) 
+        /// </summary>
+        [XmlEnum("2")]
+        DecibelLinear = 2,
+
+        /// <summary>
+        /// 3 - decibel (C) (dB(C)) 
+        /// </summary>
+        [XmlEnum("3")]
+        DecibelC = 3,
+
+        /// <summary>
+        /// 4 - decibel (A) (dB(A)) 
+        /// </summary>
+        [XmlEnum("4")]
+        DecibelA = 4,
+
+        /// <summary>
+        /// 5 - metro por segundo ao quadrado (m/s²)
+        /// </summary>
+        [XmlEnum("5")]
+        MetroPorSegundoAoQuadrado = 5,
+
+        /// <summary>
+        /// 6 - metro por segundo elevado a 1,75 (m/s1,75)
+        /// </summary>
+        [XmlEnum("6")]
+        MetroPorSegundoElevado175 = 6,
+
+        /// <summary>
+        /// 7 - parte de vapor ou gás por milhão de partes de ar contaminado (ppm)
+        /// </summary>
+        [XmlEnum("7")]
+        Ppm = 7,
+
+        /// <summary>
+        /// 8 - miligrama por metro cúbico de ar (mg/m3)
+        /// </summary>
+        [XmlEnum("8")]
+        MiligramaPorMetroCubicoDeAr = 8,
+
+        /// <summary>
+        /// 9 - fibra por centímetro cúbico (f/cm3) 
+        /// </summary>
+        [XmlEnum("9")]
+        FibraPorCentrimetroCubico = 9,
+
+        /// <summary>
+        /// 10 - grau Celsius (ºC) 
+        /// </summary>
+        [XmlEnum("10")]
+        GrauCelsius = 10,
+
+        /// <summary>
+        /// 11 - metro por segundo (m/s) 
+        /// </summary>
+        [XmlEnum("11")]
+        MetroPorSegundo = 11,
+
+        /// <summary>
+        /// 12 - porcentual
+        /// </summary>
+        [XmlEnum("12")]
+        Porcentual = 12,
+
+        /// <summary>
+        /// 13 - lux (lx)  
+        /// </summary>
+        [XmlEnum("13")]
+        Lux = 13,
+
+        /// <summary>
+        /// 14 - unidade formadora de colônias por metro cúbico (ufc/m3)
+        /// </summary>
+        [XmlEnum("14")]
+        UFCM3 = 14,
+
+        /// <summary>
+        /// 15 - dose diária 
+        /// </summary>
+        [XmlEnum("15")]
+        DoseDiaria = 15,
+
+        /// <summary>
+        /// 16 - dose mensal
+        /// </summary>
+        [XmlEnum("16")]
+        DoseMensal = 16,
+
+        /// <summary>
+        /// 17 - dose trimestral
+        /// </summary>
+        [XmlEnum("17")]
+        DoseTrismestral = 17,
+
+        /// <summary>
+        /// 18 - dose anual
+        /// </summary>
+        [XmlEnum("18")]
+        DoseAnual = 18,
+
+        /// <summary>
+        /// 19 - watt por metro quadrado (W/m2)
+        /// </summary>
+        [XmlEnum("19")]
+        WattPorMetroQuadrado = 19,
+
+        /// <summary>
+        /// 20 - ampère por metro (A/m) 
+        /// </summary>
+        [XmlEnum("20")]
+        AmperePorMetro = 20,
+
+        /// <summary>
+        /// 21 - militesla (mT) 
+        /// </summary>
+        [XmlEnum("21")]
+        Militesla = 21,
+
+        /// <summary>
+        /// 22 - microtesla (μT) 
+        /// </summary>
+        [XmlEnum("22")]
+        MicroTesla = 22,
+
+        /// <summary>
+        /// 23 - miliampère (mA) 
+        /// </summary>
+        [XmlEnum("23")]
+        Miliampere = 23,
+
+        /// <summary>
+        /// 24 - quilovolt por metro (kV/m)  
+        /// </summary>
+        [XmlEnum("24")]
+        QuilovoltPorMetro = 24,
+
+        /// <summary>
+        /// 25 - volt por metro (V/m) 
+        /// </summary>
+        [XmlEnum("25")]
+        VoltPorMetro = 25,
+
+        /// <summary>
+        /// 26 - joule por metro quadrado (J/m2) 
+        /// </summary>
+        [XmlEnum("26")]
+        JoulePorMetroQuadrado = 26,
+
+        /// <summary>
+        /// 27 - milijoule por centímetro quadrado (mJ/cm2) 
+        /// </summary>
+        [XmlEnum("27")]
+        MilijoulePorCentimetroQuadrado = 27,
+
+        /// <summary>
+        /// 28 - milisievert (mSv) 
+        /// </summary>
+        [XmlEnum("28")]
+        Milisievert = 28,
+
+        /// <summary>
+        /// 29 - milhão de partículas por decímetro cúbico (mppdc)
+        /// </summary>
+        [XmlEnum("29")]
+        Mppdc = 29,
+
+        /// <summary>
+        /// 30 - umidade relativa do ar (UR (%))
+        /// </summary>
+        [XmlEnum("30")]
+        UmidadeRelativaDoAr = 30
+    }
+
+    #endregion
+
+    #region utilizEPC - eSocial
+
+    /// <summary>
+    /// O empregador implementa medidas de proteção coletiva (EPC) para eliminar ou reduzir a exposição dos trabalhadores ao agente nocivo?
+    /// </summary>
+    public enum UtilizEPC
+    {
+        /// <summary>
+        /// 0 - Não se aplica
+        /// </summary>
+        [XmlEnum("0")]
+        NaoSeAplica = 0,
+
+        /// <summary>
+        /// 1 - Não implementa
+        /// </summary>
+        [XmlEnum("1")]
+        NaoImplementa = 1,
+
+        /// <summary>
+        /// 2 - Implementa
+        /// </summary>
+        [XmlEnum("2")]
+        Implementa = 2
+    }
+
+    #endregion
+
+    #region utilizEPI - eSocial
+
+    /// <summary>
+    /// Utilização de EPI.
+    /// </summary>
+    public enum UtilizEPI
+    {
+        /// <summary>
+        /// 0 - Não se aplica
+        /// </summary>
+        [XmlEnum("0")]
+        NaoSeAplica = 0,
+
+        /// <summary>
+        /// 1 - Não utilizado
+        /// </summary>
+        [XmlEnum("1")]
+        NaoUtilizado = 1,
+
+        /// <summary>
+        /// 2 - Utilizado
+        /// </summary>
+        [XmlEnum("2")]
+        Utilizado = 2
+    }
+
+    #endregion
+
+    #region ideOC - eSocial
+
+    /// <summary>
+    /// Órgão de classe ao qual o responsável pelos registros ambientais está vinculado.
+    /// </summary>
+    public enum IdeOc
+    {
+        /// <summary>
+        /// 1 - Conselho Regional de Medicina - CRM
+        /// </summary>
+        [XmlEnum("1")]
+        CRM = 1,
+
+        /// <summary>
+        /// 4 - Conselho Regional de Engenharia e Agronomia - CREA
+        /// </summary>
+        [XmlEnum("4")]
+        CREA = 4,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
     }
 
     #endregion
