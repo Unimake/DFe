@@ -110,7 +110,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         {
             get
             {
-                InfoField.NumberFormat.NumberDecimalSeparator = ",";
+                InfoField.NumberFormat.NumberDecimalSeparator = ".";
 
                 return InfoField;
             }
@@ -189,4 +189,5 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #endregion ItensRemun
+
 }

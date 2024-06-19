@@ -626,11 +626,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("qtdRubr")]
         public double QtdRubr { get; set; }
 
-        [XmlElement("fatorRubr")]
+        [XmlIgnore]
         public double FatorRubr { get; set; }
+        [XmlElement("fatorRubr")]
+        public string FatorRubrField
+        {
+            get => FatorRubr.ToString("F2", CultureInfoESocial.Info);
+            set => FatorRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
+        }
 
-        [XmlElement("vrRubr")]
+        [XmlIgnore]
         public double VrRubr { get; set; }
+        [XmlElement("vrRubr")]
+        public string VrRubrField
+        {
+            get => VrRubr.ToString("F2", CultureInfoESocial.Info);
+            set => VrRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
+        }
 
         [XmlElement("indApurIR")]
         public IndApurIR IndApurIR { get; set; }
@@ -665,7 +677,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoPerAntESocial2299
     {
-        [XmlElement("detVerbas")]
+        [XmlElement("ideADC")]
         public List<IdeADCESocial2299> IdeADC { get; set; }
 
 #if INTEROP
