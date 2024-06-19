@@ -3,11 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.SAT;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -17,7 +14,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtReintegr/v_S_01_02_00", IsNullable = false)]
+    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtDeslig/v_S_01_02_00", IsNullable = false)]
     public class ESocial2299 : XMLBase
     {
         [XmlElement("evtDeslig")]
