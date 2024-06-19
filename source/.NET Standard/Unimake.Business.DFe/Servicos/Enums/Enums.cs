@@ -11592,107 +11592,107 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3701")]
+        [XmlEnum("3701")]
         TreinamentoAntesDoPrimeiroEmbarque = 3701,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3702")]
+        [XmlEnum("3702")]
         TreinamentoAntesDoPrimeiroEmbarqueReciclagem = 3702,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3703")]
+        [XmlEnum("3703")]
         TreinamentoEventual = 3703,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3704")]
+        [XmlEnum("3704")]
         TreinamentoBasico = 3704,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3705")]
+        [XmlEnum("3705")]
         TreinamentoBasicoReciclagem = 3705,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3706")]
+        [XmlEnum("3706")]
         TreinamentoAvancado = 3706,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3707")]
+        [XmlEnum("3707")]
         TreinamentoAvancadoReciclagem = 3707,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3708")]
+        [XmlEnum("3708")]
         TreinamentoEspecificoEmpregadoBrigadaDeIncendio = 3708,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3709")]
+        [XmlEnum("3709")]
         TreinamentoEspecificoRiscosRadiologicos = 3709,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3710")]
+        [XmlEnum("3710")]
         TreinamentoEspecificoEquipeDeEmergencias = 3710,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3711")]
+        [XmlEnum("3711")]
         TreinamentoSinaleiro = 3711,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3712")]
+        [XmlEnum("3712")]
         TreinamentoOperadorGuindasteReciclagem = 3712,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3713")]
+        [XmlEnum("3713")]
         TreinamentoManipuladorDeAlimentos = 3713,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3714")]
+        [XmlEnum("3714")]
         TreinamentoInstalacoesEletricasAltaTensao = 3714,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3715")]
+        [XmlEnum("3715")]
         TreinamentoMovimentacaoCargasTransportePessoas = 3715,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3716")]
+        [XmlEnum("3716")]
         TreinamentoOperadorGuindaste = 3716,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3717")]
+        [XmlEnum("3717")]
         TreinamentoOcupacionalmenteExpostosARadiacao = 3717,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3718")]
+        [XmlEnum("3718")]
         TreinamentoAcendimentoChamaPiloto = 3818,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("1006")]
+        [XmlEnum("1006")]
         AutorizacaoInstalacoesEletricas = 1006,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("1207")]
+        [XmlEnum("1207")]
         OperacaoRealizacaoIntervencaoEmMaquinas = 1207,
         /// <summary>
         /// 
         /// </summary>
-        [XmlEnum ("3719")]
+        [XmlEnum("3719")]
         OperadorEquipamentoGuindar = 3719,
 
     }
@@ -11954,5 +11954,71 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region NatEstagio
+
+    /// <summary>
+    /// Natureza do estágio ou da prestação de serviço civil voluntário.
+    /// </summary>
+    public enum NatEstagio
+    {
+        /// <summary>
+        /// O - Obrigatório
+        /// </summary>
+        [XmlEnum("O")]
+        Obrigatorio,
+        /// <summary>
+        /// N - Não Obrigatório
+        /// </summary>
+        [XmlEnum("N")]
+        NaoObrigatorio,
+    }
+    #endregion NatEstagio
+
+    #region NivEstagio
+    /// <summary>
+    /// Informar o nível do estágio ou da prestação de
+    /// serviço civil voluntário.
+    /// Valores válidos:
+    /// 1 - Fundamental
+    /// 2 - Médio
+    /// 3 - Formação profissional
+    /// 4 - Superior
+    /// 8 - Especial
+    /// 9 - Mãe social(Lei 7.644/1987)
+    /// </summary>
+    public enum NivEstagio
+    {
+        /// <summary>
+        /// 1 - Fundamental
+        /// </summary>
+        [XmlEnum("1")]
+        Fundamental = 1,
+        /// <summary>
+        /// 2 - Médio
+        /// </summary>
+        [XmlEnum("2")]
+        Medio = 2,
+        /// <summary>
+        /// 3 - Formação profissional
+        /// </summary>
+        [XmlEnum("3")]
+        FormacaoProfissional = 3,
+        /// <summary>
+        /// 4 - Superior
+        /// </summary>
+        [XmlEnum("4")]
+        Superior = 4,
+        /// <summary>
+        /// 8 - Especial
+        /// </summary>
+        [XmlEnum("8")]
+        Especial = 8,
+        /// <summary>
+        /// 9 - Mãe social(Lei 7.644/1987)
+        /// </summary>
+        [XmlEnum("9")]
+        MaeSocial = 9
+    }
+    #endregion NivEstagio
     #endregion ESocial
 }

@@ -89,8 +89,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoDeficiencia InfoDeficiencia { get; set; }
 
         [XmlElement("dependente")]
-        public Dependente Dependente { get; set; }
+        public List<Dependente> Dependente { get; set; }
 
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDependente(Dependente item)
+        {
+            if (Dependente == null)
+            {
+                Dependente = new List<Dependente>();
+            }
+
+            Dependente.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Dependente (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Dependente</returns>
+        public Dependente GetDependente(int index)
+        {
+            if ((Dependente?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Dependente[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Dependente
+        /// </summary>
+        public int GetDependenteCount => (Dependente != null ? Dependente.Count : 0);
+#endif
         [XmlElement("contato")]
         public Contato Contato { get; set; }
 
@@ -152,9 +188,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeFonePrincField() => !string.IsNullOrEmpty(FonePrinc);
+        public bool ShouldSerializeFonePrincField() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 10;
 
-        public bool ShouldSerializeEmailPrincField() => !string.IsNullOrEmpty(EmailPrinc);
+        public bool ShouldSerializeEmailPrincField() => !string.IsNullOrEmpty(EmailPrinc) &&
+                                                         EmailPrinc.Contains("@")   &&
+                                                         EmailPrinc.Contains(".") &&
+                                                        !EmailPrinc.StartsWith("@") &&
+                                                        !EmailPrinc.EndsWith("@") &&
+                                                        !EmailPrinc.StartsWith(".") &&
+                                                        !EmailPrinc.EndsWith(".");
 
         #endregion
     }
@@ -674,13 +716,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeNmCargoField() => !string.IsNullOrEmpty(NmCargo);
-       
+
         public bool ShouldSerializeCBOCargoField() => !string.IsNullOrEmpty(CBOCargo);
 
         public bool ShouldSerializeDtIngrCargoField() => DtIngrCargo > DateTime.MinValue;
 
         public bool ShouldSerializeNmFuncaoField() => !string.IsNullOrEmpty(NmFuncao);
-       
+
         public bool ShouldSerializeCBOFuncaoField() => !string.IsNullOrEmpty(CBOFuncao);
 
 #if INTEROP
