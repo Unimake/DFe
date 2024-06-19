@@ -11379,7 +11379,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 4 - Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA
         /// </summary>
         [XmlEnum("4")]
-        SPSMFA = 4,
+        SPSMFA = 4
     }
     #endregion TpRegPrev
 
@@ -12386,7 +12386,7 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region NatEstagio
+    #region natEstagio - eSocial
 
     /// <summary>
     /// Natureza do estágio ou da prestação de serviço civil voluntário.
@@ -12394,29 +12394,24 @@ namespace Unimake.Business.DFe.Servicos
     public enum NatEstagio
     {
         /// <summary>
-        /// O - Obrigatório
+        /// Obrigatorio (O OU 0) 
         /// </summary>
         [XmlEnum("O")]
-        Obrigatorio,
+        Obrigatorio = 0,
+
         /// <summary>
-        /// N - Não Obrigatório
+        /// Não obrigatório (N OU 1)
         /// </summary>
         [XmlEnum("N")]
-        NaoObrigatorio,
+        NaoObrigatorio = 1
     }
-    #endregion NatEstagio
 
-    #region NivEstagio
+    #endregion
+
+    #region nivEstagio - eSocial
+
     /// <summary>
-    /// Informar o nível do estágio ou da prestação de
-    /// serviço civil voluntário.
-    /// Valores válidos:
-    /// 1 - Fundamental
-    /// 2 - Médio
-    /// 3 - Formação profissional
-    /// 4 - Superior
-    /// 8 - Especial
-    /// 9 - Mãe social(Lei 7.644/1987)
+    /// Informar o nível do estágio ou da prestação de serviço civil voluntário.
     /// </summary>
     public enum NivEstagio
     {
@@ -12425,32 +12420,39 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Fundamental = 1,
+
         /// <summary>
         /// 2 - Médio
         /// </summary>
         [XmlEnum("2")]
         Medio = 2,
+
         /// <summary>
         /// 3 - Formação profissional
         /// </summary>
         [XmlEnum("3")]
         FormacaoProfissional = 3,
+
         /// <summary>
         /// 4 - Superior
         /// </summary>
         [XmlEnum("4")]
         Superior = 4,
+
         /// <summary>
         /// 8 - Especial
         /// </summary>
         [XmlEnum("8")]
         Especial = 8,
+
         /// <summary>
-        /// 9 - Mãe social(Lei 7.644/1987)
+        /// 9 - Mãe social (Lei 7.644/1987)
         /// </summary>
         [XmlEnum("9")]
         MaeSocial = 9
     }
-    #endregion NivEstagio
+
+    #endregion
+
     #endregion ESocial
 }
