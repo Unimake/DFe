@@ -952,12 +952,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <param name="item">Elemento</param>
         public void AddItensRemunESocial1200(ItensRemunESocial1200 item)
         {
-            if (ItensRemunESocial1200 == null)
+            if (ItensRemun == null)
             {
-                ItensRemunESocial1200 = new List<ItensRemunESocial1200>();
+                ItensRemun = new List<ItensRemunESocial1200>();
             }
 
-            ItensRemunESocial1200.Add(item);
+            ItensRemun.Add(item);
         }
 
         /// <summary>
@@ -967,18 +967,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <returns>Conteúdo do index passado por parâmetro da ItensRemunESocial1200</returns>
         public ItensRemunESocial1200 GetItensRemunESocial1200(int index)
         {
-            if ((ItensRemunESocial1200?.Count ?? 0) == 0)
+            if ((ItensRemun?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return ItensRemunESocial1200[index];
+            return ItensRemun[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ItensRemunESocial1200
         /// </summary>
-        public int GetItensRemunESocial1200Count => (ItensRemunESocial1200 != null ? ItensRemunESocial1200.Count : 0);
+        public int GetItensRemunESocial1200Count => (ItensRemun != null ? ItensRemun.Count : 0);
 #endif
 
         /// <summary>
@@ -1307,12 +1307,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <param name="item">Elemento</param>
         public void AddIdeEstabLotAnt(IdeEstabLotAnt item)
         {
-            if (IdeEstabLotAnt == null)
+            if (IdeEstabLot == null)
             {
-                IdeEstabLotAnt = new List<IdeEstabLotAnt>();
+                IdeEstabLot = new List<IdeEstabLotAnt>();
             }
 
-            IdeEstabLotAnt.Add(item);
+            IdeEstabLot.Add(item);
         }
 
         /// <summary>
@@ -1322,7 +1322,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLotAnt</returns>
         public IdeEstabLotAnt GetIdeEstabLotAnt(int index)
         {
-            if ((IdeEstabLotAnt?.Count ?? 0) == 0)
+            if ((IdeEstabLot?.Count ?? 0) == 0)
             {
                 return default;
             };
@@ -1333,7 +1333,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista IdeEstabLotAnt
         /// </summary>
-        public int GetIdeEstabLotAntCount => (IdeEstabLotAnt != null ? IdeEstabLotAnt.Count : 0);
+        public int GetIdeEstabLotAntCount => (IdeEstabLot != null ? IdeEstabLot.Count : 0);
 #endif
     }
 
@@ -1386,12 +1386,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <param name="item">Elemento</param>
         public void AddRemunPerAntESocial1200(RemunPerAntESocial1200 item)
         {
-            if (RemunPerAntESocial1200 == null)
+            if (RemunPerAnt == null)
             {
-                RemunPerAntESocial1200 = new List<RemunPerAntESocial1200>();
+                RemunPerAnt = new List<RemunPerAntESocial1200>();
             }
 
-            RemunPerAntESocial1200.Add(item);
+            RemunPerAnt.Add(item);
         }
 
         /// <summary>
@@ -1401,18 +1401,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <returns>Conteúdo do index passado por parâmetro da RemunPerAntESocial1200</returns>
         public RemunPerAntESocial1200 GetRemunPerAntESocial1200(int index)
         {
-            if ((RemunPerAntESocial1200?.Count ?? 0) == 0)
+            if ((RemunPerAnt?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return RemunPerAntESocial1200[index];
+            return RemunPerAnt[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista RemunPerAntESocial1200
         /// </summary>
-        public int GetRemunPerAntESocial1200Count => (RemunPerAntESocial1200 != null ? RemunPerAntESocial1200.Count : 0);
+        public int GetRemunPerAntESocial1200Count => (RemunPerAnt != null ? RemunPerAnt.Count : 0);
 #endif
     }
 
