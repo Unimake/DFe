@@ -9639,7 +9639,7 @@ namespace Unimake.Business.DFe.Servicos
         /// Anual (13° salário)
         /// </summary>
         [XmlEnum("2")]
-        Anual = 2,
+        Anual = 2
     }
 
     #endregion
@@ -12320,6 +12320,68 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("9")]
         Outros = 9
+    }
+
+    #endregion
+
+    #region pensAlim - eSocial
+
+    /// <summary>
+    /// Indicativo de pensão alimentícia para fins de retenção de FGTS.
+    /// </summary>
+    public enum PensAlim
+    {
+        /// <summary>
+        /// 0 - Não existe pensão alimentícia
+        /// </summary>
+        [XmlEnum("0")]
+        NaoExistePensaoAlimenticia = 0,
+
+        /// <summary>
+        /// 1 - Percentual de pensão alimentícia
+        /// </summary>
+        [XmlEnum("1")]
+        PercentualDePensaoAlimenticia = 1,
+
+        /// <summary>
+        /// 2 - Valor de pensão alimentícia
+        /// </summary>
+        [XmlEnum("2")]
+        ValorDePensaoAlimenticia = 2,
+
+        /// <summary>
+        /// 3 - Percentual e valor de pensão alimentícia
+        /// </summary>
+        [XmlEnum("3")]
+        PercentualValorDePensaoAlimenticia = 3
+    }
+
+    #endregion
+
+    #region indRemun - eSocial
+
+    /// <summary>
+    /// Indicativo de situação de remuneração após o desligamento.
+    /// </summary>
+    public enum IndRemun
+    {
+        /// <summary>
+        /// 1 - Quarentena
+        /// </summary>
+        [XmlEnum("1")]
+        Quarentena = 1,
+
+        /// <summary>
+        /// 2 - Desligamento reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial
+        /// </summary>
+        [XmlEnum("2")]
+        Desligamento = 2,
+
+        /// <summary>
+        /// 3 - Aposentadoria de servidor com data anterior a competências com remunerações já informadas no eSocial
+        /// </summary>
+        [XmlEnum("3")]
+        Aposentadoria = 3
     }
 
     #endregion
