@@ -9639,7 +9639,7 @@ namespace Unimake.Business.DFe.Servicos
         /// Anual (13° salário)
         /// </summary>
         [XmlEnum("2")]
-        Anual = 2,
+        Anual = 2
     }
 
     #endregion
@@ -11950,6 +11950,438 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("4")]
         Agravamento = 4
+    }
+
+    #endregion
+
+    #region localAmb. - eSocial
+
+    /// <summary>
+    /// Informar o tipo de estabelecimento do ambiente de trabalho.
+    /// </summary>
+    public enum LocalAmb
+    {
+        /// <summary>
+        /// 1 - Estabelecimento do próprio empregador
+        /// </summary>
+        [XmlEnum("1")]
+        EstabelecimentoProprioEmpregador = 1,
+
+        /// <summary>
+        /// 2 - Estabelecimento de terceiros
+        /// </summary>
+        [XmlEnum("2")]
+        EstabelecimentoDeTerceiros = 2
+    }
+
+    #endregion
+
+    #region tpAval. - eSocial
+
+    /// <summary>
+    /// Tipo de avaliação do agente nocivo. 
+    /// </summary>
+    public enum TpAval
+    {
+        /// <summary>
+        /// 1 - Critério quantitativo 
+        /// </summary>
+        [XmlEnum("1")]
+        CriterioQuantitativo = 1,
+
+        /// <summary>
+        /// 2 - Critério qualitativo 
+        /// </summary>
+        [XmlEnum("2")]
+        CriterioQualitativo = 2
+    }
+
+    #endregion
+
+    #region unMed. - eSocial
+
+    /// <summary>
+    /// Dose ou unidade de medida da intensidade ou concentração do agente. 
+    /// </summary>
+    public enum UnMed
+    {
+        /// <summary>
+        /// 1 - dose diária de ruído 
+        /// </summary>
+        [XmlEnum("1")]
+        DoseDiariaDeRuido = 1,
+
+        /// <summary>
+        /// 2 - decibel linear (dB (linear)) 
+        /// </summary>
+        [XmlEnum("2")]
+        DecibelLinear = 2,
+
+        /// <summary>
+        /// 3 - decibel (C) (dB(C)) 
+        /// </summary>
+        [XmlEnum("3")]
+        DecibelC = 3,
+
+        /// <summary>
+        /// 4 - decibel (A) (dB(A)) 
+        /// </summary>
+        [XmlEnum("4")]
+        DecibelA = 4,
+
+        /// <summary>
+        /// 5 - metro por segundo ao quadrado (m/s²)
+        /// </summary>
+        [XmlEnum("5")]
+        MetroPorSegundoAoQuadrado = 5,
+
+        /// <summary>
+        /// 6 - metro por segundo elevado a 1,75 (m/s1,75)
+        /// </summary>
+        [XmlEnum("6")]
+        MetroPorSegundoElevado175 = 6,
+
+        /// <summary>
+        /// 7 - parte de vapor ou gás por milhão de partes de ar contaminado (ppm)
+        /// </summary>
+        [XmlEnum("7")]
+        Ppm = 7,
+
+        /// <summary>
+        /// 8 - miligrama por metro cúbico de ar (mg/m3)
+        /// </summary>
+        [XmlEnum("8")]
+        MiligramaPorMetroCubicoDeAr = 8,
+
+        /// <summary>
+        /// 9 - fibra por centímetro cúbico (f/cm3) 
+        /// </summary>
+        [XmlEnum("9")]
+        FibraPorCentrimetroCubico = 9,
+
+        /// <summary>
+        /// 10 - grau Celsius (ºC) 
+        /// </summary>
+        [XmlEnum("10")]
+        GrauCelsius = 10,
+
+        /// <summary>
+        /// 11 - metro por segundo (m/s) 
+        /// </summary>
+        [XmlEnum("11")]
+        MetroPorSegundo = 11,
+
+        /// <summary>
+        /// 12 - porcentual
+        /// </summary>
+        [XmlEnum("12")]
+        Porcentual = 12,
+
+        /// <summary>
+        /// 13 - lux (lx)  
+        /// </summary>
+        [XmlEnum("13")]
+        Lux = 13,
+
+        /// <summary>
+        /// 14 - unidade formadora de colônias por metro cúbico (ufc/m3)
+        /// </summary>
+        [XmlEnum("14")]
+        UFCM3 = 14,
+
+        /// <summary>
+        /// 15 - dose diária 
+        /// </summary>
+        [XmlEnum("15")]
+        DoseDiaria = 15,
+
+        /// <summary>
+        /// 16 - dose mensal
+        /// </summary>
+        [XmlEnum("16")]
+        DoseMensal = 16,
+
+        /// <summary>
+        /// 17 - dose trimestral
+        /// </summary>
+        [XmlEnum("17")]
+        DoseTrimestral = 17,
+
+        /// <summary>
+        /// 18 - dose anual
+        /// </summary>
+        [XmlEnum("18")]
+        DoseAnual = 18,
+
+        /// <summary>
+        /// 19 - watt por metro quadrado (W/m2)
+        /// </summary>
+        [XmlEnum("19")]
+        WattPorMetroQuadrado = 19,
+
+        /// <summary>
+        /// 20 - ampère por metro (A/m) 
+        /// </summary>
+        [XmlEnum("20")]
+        AmperePorMetro = 20,
+
+        /// <summary>
+        /// 21 - militesla (mT) 
+        /// </summary>
+        [XmlEnum("21")]
+        Militesla = 21,
+
+        /// <summary>
+        /// 22 - microtesla (μT) 
+        /// </summary>
+        [XmlEnum("22")]
+        MicroTesla = 22,
+
+        /// <summary>
+        /// 23 - miliampère (mA) 
+        /// </summary>
+        [XmlEnum("23")]
+        Miliampere = 23,
+
+        /// <summary>
+        /// 24 - quilovolt por metro (kV/m)  
+        /// </summary>
+        [XmlEnum("24")]
+        QuilovoltPorMetro = 24,
+
+        /// <summary>
+        /// 25 - volt por metro (V/m) 
+        /// </summary>
+        [XmlEnum("25")]
+        VoltPorMetro = 25,
+
+        /// <summary>
+        /// 26 - joule por metro quadrado (J/m2) 
+        /// </summary>
+        [XmlEnum("26")]
+        JoulePorMetroQuadrado = 26,
+
+        /// <summary>
+        /// 27 - milijoule por centímetro quadrado (mJ/cm2) 
+        /// </summary>
+        [XmlEnum("27")]
+        MilijoulePorCentimetroQuadrado = 27,
+
+        /// <summary>
+        /// 28 - milisievert (mSv) 
+        /// </summary>
+        [XmlEnum("28")]
+        Milisievert = 28,
+
+        /// <summary>
+        /// 29 - milhão de partículas por decímetro cúbico (mppdc)
+        /// </summary>
+        [XmlEnum("29")]
+        Mppdc = 29,
+
+        /// <summary>
+        /// 30 - umidade relativa do ar (UR (%))
+        /// </summary>
+        [XmlEnum("30")]
+        UmidadeRelativaDoAr = 30
+    }
+
+    #endregion
+
+    #region utilizEPC - eSocial
+
+    /// <summary>
+    /// O empregador implementa medidas de proteção coletiva (EPC) para eliminar ou reduzir a exposição dos trabalhadores ao agente nocivo?
+    /// </summary>
+    public enum UtilizEPC
+    {
+        /// <summary>
+        /// 0 - Não se aplica
+        /// </summary>
+        [XmlEnum("0")]
+        NaoSeAplica = 0,
+
+        /// <summary>
+        /// 1 - Não implementa
+        /// </summary>
+        [XmlEnum("1")]
+        NaoImplementa = 1,
+
+        /// <summary>
+        /// 2 - Implementa
+        /// </summary>
+        [XmlEnum("2")]
+        Implementa = 2
+    }
+
+    #endregion
+
+    #region utilizEPI - eSocial
+
+    /// <summary>
+    /// Utilização de EPI.
+    /// </summary>
+    public enum UtilizEPI
+    {
+        /// <summary>
+        /// 0 - Não se aplica
+        /// </summary>
+        [XmlEnum("0")]
+        NaoSeAplica = 0,
+
+        /// <summary>
+        /// 1 - Não utilizado
+        /// </summary>
+        [XmlEnum("1")]
+        NaoUtilizado = 1,
+
+        /// <summary>
+        /// 2 - Utilizado
+        /// </summary>
+        [XmlEnum("2")]
+        Utilizado = 2
+    }
+
+    #endregion
+
+    #region ideOC - eSocial
+
+    /// <summary>
+    /// Órgão de classe ao qual o responsável pelos registros ambientais está vinculado.
+    /// </summary>
+    public enum IdeOc
+    {
+        /// <summary>
+        /// 1 - Conselho Regional de Medicina - CRM
+        /// </summary>
+        [XmlEnum("1")]
+        CRM = 1,
+
+        /// <summary>
+        /// 4 - Conselho Regional de Engenharia e Agronomia - CREA
+        /// </summary>
+        [XmlEnum("4")]
+        CREA = 4,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+
+    #endregion
+
+    #region tpReint - eSocial
+
+    /// <summary>
+    /// Tipo de reintegração/outro provimento.
+    /// </summary>
+    public enum TpReint
+    {
+        /// <summary>
+        /// 1 - Reintegração por decisão judicial
+        /// </summary>
+        [XmlEnum("1")]
+        DecisaoJudicial = 1,
+
+        /// <summary>
+        /// 2 - Reintegração por anistia legal
+        /// </summary>
+        [XmlEnum("2")]
+        AnistiaLegal = 2,
+
+        /// <summary>
+        /// 3 - Reversão de servidor público
+        /// </summary>
+        [XmlEnum("3")]
+        ReversaoDeServidorPublico = 3,
+
+        /// <summary>
+        /// 4 - Recondução de servidor público
+        /// </summary>
+        [XmlEnum("4")]
+        ReconducaoDeServidorPublico = 4,
+
+        /// <summary>
+        /// 5 - Reinclusão de militar
+        /// </summary>
+        [XmlEnum("5")]
+        ReinclusaoDeMilitar = 5,
+
+        /// <summary>
+        /// 6 - Revisão de reforma de militar
+        /// </summary>
+        [XmlEnum("6")]
+        RevisaoDeReformaDeMilitar = 6,
+
+        /// <summary>
+        /// 9 - Outros
+        /// </summary>
+        [XmlEnum("9")]
+        Outros = 9
+    }
+
+    #endregion
+
+    #region pensAlim - eSocial
+
+    /// <summary>
+    /// Indicativo de pensão alimentícia para fins de retenção de FGTS.
+    /// </summary>
+    public enum PensAlim
+    {
+        /// <summary>
+        /// 0 - Não existe pensão alimentícia
+        /// </summary>
+        [XmlEnum("0")]
+        NaoExistePensaoAlimenticia = 0,
+
+        /// <summary>
+        /// 1 - Percentual de pensão alimentícia
+        /// </summary>
+        [XmlEnum("1")]
+        PercentualDePensaoAlimenticia = 1,
+
+        /// <summary>
+        /// 2 - Valor de pensão alimentícia
+        /// </summary>
+        [XmlEnum("2")]
+        ValorDePensaoAlimenticia = 2,
+
+        /// <summary>
+        /// 3 - Percentual e valor de pensão alimentícia
+        /// </summary>
+        [XmlEnum("3")]
+        PercentualValorDePensaoAlimenticia = 3
+    }
+
+    #endregion
+
+    #region indRemun - eSocial
+
+    /// <summary>
+    /// Indicativo de situação de remuneração após o desligamento.
+    /// </summary>
+    public enum IndRemun
+    {
+        /// <summary>
+        /// 1 - Quarentena
+        /// </summary>
+        [XmlEnum("1")]
+        Quarentena = 1,
+
+        /// <summary>
+        /// 2 - Desligamento reconhecido judicialmente com data anterior a competências com remunerações já informadas no eSocial
+        /// </summary>
+        [XmlEnum("2")]
+        Desligamento = 2,
+
+        /// <summary>
+        /// 3 - Aposentadoria de servidor com data anterior a competências com remunerações já informadas no eSocial
+        /// </summary>
+        [XmlEnum("3")]
+        Aposentadoria = 3
     }
 
     #endregion
