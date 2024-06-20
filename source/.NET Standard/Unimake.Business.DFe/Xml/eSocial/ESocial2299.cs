@@ -447,7 +447,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
-        public ProcJudTrab GetIdeEstabLot(int index)
+        public ProcJudTrab GetProcJudTrab(int index)
         {
             if ((ProcJudTrab?.Count ?? 0) == 0)
             {
@@ -460,7 +460,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProcJudTrab
         /// </summary>
-        public int GetIdePeriodoCount => (ProcJudTrab != null ? ProcJudTrab.Count : 0);
+        public int GetProcJudTrabCount => (ProcJudTrab != null ? ProcJudTrab.Count : 0);
 #endif
 
         [XmlElement("infoMV")]
