@@ -12504,5 +12504,27 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region mtvSuspensao - eSocial
+
+    /// <summary>
+    /// Motivo da suspensão do benefício.
+    /// </summary>
+    public enum MtvSuspensao
+    {
+        /// <summary>
+        /// 01 - Suspensão por não recadastramento
+        /// </summary>
+        [XmlEnum("01")]
+        SuspensaoPorNaoRecadastramento = 01,
+
+        /// <summary>
+        /// 99 - Outros motivos de suspensão
+        /// </summary>
+        [XmlEnum("99")]
+        OutrosMotivos = 99
+    }
+
+    #endregion
+
     #endregion ESocial
 }
