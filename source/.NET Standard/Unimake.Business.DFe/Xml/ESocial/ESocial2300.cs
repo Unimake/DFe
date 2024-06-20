@@ -32,13 +32,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2300.EvtTSVInicio")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTSVInicio")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Evento TSVE - Início
     /// </summary>
-    [Serializable()]
     public class EvtTSVInicio
     {
         /// <summary>
@@ -94,7 +93,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE - Início. 
     /// </summary>
-    [Serializable()]
     public class InfoTSVInicio
     {
 
@@ -108,7 +106,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// N - Não (Início de TSVE)
         /// </summary>
         [XmlElement("cadIni")]
-        public SimNaoLetra cadIni { get; set; }
+        public SimNaoLetra CadIni { get; set; }
 
         /// <summary>
         /// Matrícula atribuída ao trabalhador pela empresa.
@@ -215,8 +213,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
         public bool ShouldSerializeNrProcTrabField() => !string.IsNullOrEmpty(NrProcTrab);
+#if INTEROP
+        public bool ShouldSerializeNatAtividadeField() => NatAtividade != (NatAtividade)(-1);
+#else
         public bool ShouldSerializeNatAtividadeField() => !NatAtividade.IsNullOrEmpty();
-        #endregion
+#endif
+#endregion ShouldSerialize
     }
 
     #region InfoComplemESocial2300
@@ -462,11 +464,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoRegimePrevidenciario TpRegPrev { get; set; }
 
         #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeTpInscField() => TpInsc != (TpInsc)(-1);
+#else
         public bool ShouldSerializeTpInscField() => !TpInsc.IsNullOrEmpty();
+#endif
         public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
         public bool ShouldSerializeDtAdmOrigField() => DtAdmOrig > DateTimeOffset.MinValue;
         public bool ShouldSerializeMatricOrigField() => !string.IsNullOrEmpty(MatricOrig);
+#if INTEROP
+        public bool ShouldSerializeTpRegTrabField() => TpRegTrab != (TpRegTrab)(-1);
+#else
         public bool ShouldSerializeTpRegTrabField() => !TpRegTrab.IsNullOrEmpty();
+#endif
         #endregion ShouldSerialize
     }
     #endregion InfoDirigenteSindical
@@ -629,7 +639,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public SimNaoLetra IndRemunCargo { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra IndRemunCargo { get; set; }
+        public SimNaoLetra? IndRemunCargo { get; set; }
 #endif
 
         /// <summary>
@@ -645,7 +655,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoRegimePrevidenciario TpRegPrev { get; set; }
 
         #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeIndRemunCargoField() => IndRemunCargo != (IndRemunCargo)(-1);
+#else
         public bool ShouldSerializeIndRemunCargoField() => !IndRemunCargo.IsNullOrEmpty();
+#endif
         #endregion ShouldSerialize
     }
     #endregion InfoMandElet
@@ -682,7 +696,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("nivEstagio")]
 #if INTEROP
-        public NivEstagio NivEstagio { get; set; }= (NatAtividade)(-1);
+        public NivEstagio NivEstagio { get; set; }= (NivEstagio)(-1);
 #else
         public NivEstagio? NivEstagio { get; set; }
 #endif
@@ -752,7 +766,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeAreaAtuacaoField() => !string.IsNullOrEmpty(AreaAtuacao);
         public bool ShouldSerializeNrApolField() => !string.IsNullOrEmpty(NrApol);
+#if INTEROP
+        public bool ShouldSerializeNivEstagioField() => NivEstagio != (NivEstagio)(-1);
+#else
         public bool ShouldSerializeNivEstagiolField() => !NivEstagio.IsNullOrEmpty();
+#endif
         #endregion ShouldSerialize
     }
 
@@ -853,7 +871,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeBairroField() => !string.IsNullOrEmpty(Bairro);
         public bool ShouldSerializeCepField() => !string.IsNullOrEmpty(Cep);
         public bool ShouldSerializeCodMunicField() => !string.IsNullOrEmpty(CodMunic);
+#if INTEROP
+        public bool ShouldSerializeUfField() => Uf != (UFBrasil)(-1);
+#else
         public bool ShouldSerializeUflField() => !Uf.IsNullOrEmpty();
+#endif
         #endregion ShouldSerialize
     }
     #endregion InstEnsino
@@ -911,7 +933,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #region Termino
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplemESocial2300")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Termino")]
     [ComVisible(true)]
 #endif
 
@@ -954,6 +976,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion Termino
 
-    #endregion InfoTSVInicio
+#endregion InfoTSVInicio
 
 }
