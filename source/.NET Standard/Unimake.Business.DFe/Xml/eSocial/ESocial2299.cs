@@ -626,23 +626,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("qtdRubr")]
         public double QtdRubr { get; set; }
 
-        [XmlIgnore]
-        public double FatorRubr { get; set; }
         [XmlElement("fatorRubr")]
-        public string FatorRubrField
-        {
-            get => FatorRubr.ToString("F2", CultureInfoESocial.Info);
-            set => FatorRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        }
+        public double FatorRubr { get; set; }
 
-        [XmlIgnore]
-        public double VrRubr { get; set; }
         [XmlElement("vrRubr")]
-        public string VrRubrField
-        {
-            get => VrRubr.ToString("F2", CultureInfoESocial.Info);
-            set => VrRubr = double.Parse(value.ToString(), CultureInfoESocial.Info);
-        }
+        public double VrRubr { get; set; }
 
         [XmlElement("indApurIR")]
         public IndApurIR IndApurIR { get; set; }
