@@ -60,13 +60,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Matricula { get; set; }
 
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
+#if INTEROP
+        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
+#else
+        public CodCateg? CodCateg { get; set; }
+#endif
 
         #region ShouldSerialize
 
         public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
-        
-        public bool ShouldSerializeCodCategField() => !string.IsNullOrEmpty(CodCateg);
+
+#if INTEROP
+        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
+#else
+        public bool ShouldSerializeCodCateg() => CodCateg != null;
+#endif
 
         #endregion
     }

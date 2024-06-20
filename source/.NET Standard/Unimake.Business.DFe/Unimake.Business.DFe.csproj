@@ -239,6 +239,7 @@
 		<None Remove="Servicos\Config\NFSe\AgudoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AlegreteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
+		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguariMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AraquariSC.xml" />
@@ -871,6 +872,7 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

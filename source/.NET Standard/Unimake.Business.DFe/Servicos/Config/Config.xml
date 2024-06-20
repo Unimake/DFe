@@ -1361,4 +1361,10 @@
 		<ArqConfig>AgudoRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5201405">
+		<Nome>Aparecida de Goiânia - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>AparecidaDeGoianiaGO.xml</ArqConfig>
+		<PadraoNFSe>ISSNET</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
