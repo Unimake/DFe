@@ -1327,7 +1327,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
                 return default;
             };
 
-            return IdeEstabLotAnt[index];
+            return IdeEstabLot[index];
         }
 
         /// <summary>
@@ -1459,11 +1459,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddItensRemun(ItensRemun item)
+        public void AddItensRemun(ItensRemunESocial1200 item)
         {
             if (ItensRemun == null)
             {
-                ItensRemun = new List<ItensRemun>();
+                ItensRemun = new List<ItensRemunESocial1200>();
             }
 
             ItensRemun.Add(item);
