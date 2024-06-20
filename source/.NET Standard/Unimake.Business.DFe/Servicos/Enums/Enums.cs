@@ -12454,5 +12454,55 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region indSitBenef - eSocial
+
+    /// <summary>
+    /// Indicar a situação do benefício no órgão declarante.
+    /// </summary>
+    public enum IndSitBenef
+    {
+        /// <summary>
+        /// 1 - Benefício concedido pelo próprio órgão declarante
+        /// </summary>
+        [XmlEnum("1")]
+        ConcedidoPeloOrgaoDeclarante = 1,
+
+        /// <summary>
+        /// 2 - Benefício transferido de outro órgão
+        /// </summary>
+        [XmlEnum("2")]
+        TransferidoDeOutroOrgao = 2,
+
+        /// <summary>
+        /// 3 - Mudança de CPF do beneficiário
+        /// </summary>
+        [XmlEnum("3")]
+        MudancaDeCPF = 3
+    }
+
+    #endregion
+
+    #region tpPenMorte - eSocial
+
+    /// <summary>
+    /// Informações relativas à pensão por morte.
+    /// </summary>
+    public enum TpPenMorte
+    {
+        /// <summary>
+        /// 1 - Vitalícia
+        /// </summary>
+        [XmlEnum("1")]
+        Vitalicia = 1,
+
+        /// <summary>
+        /// 2 - Temporária
+        /// </summary>
+        [XmlEnum("2")]
+        Temporaria = 2
+    }
+
+    #endregion
+
     #endregion ESocial
 }
