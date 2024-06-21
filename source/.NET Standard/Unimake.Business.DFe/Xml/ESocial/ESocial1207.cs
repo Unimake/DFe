@@ -1,9 +1,14 @@
 ﻿#pragma warning disable CS1591
+
 using System;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Security.Cryptography;
+using Unimake.Business.DFe.Xml.GNRE;
+
+
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -102,7 +107,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerApur {get; set; }
+        public DateTime PerApur { get; set; }
 #else
         /// <summary>
         /// Informar o mês/ano (formato AAAA-MM) de referência
@@ -153,7 +158,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializePerApurField () => PerApur > DateTime.MinValue;
+
+        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
 
         #endregion ShouldSerialize
     }
@@ -212,6 +218,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("nrBeneficio")]
         public string NrBeneficio { get; set; }
+
+        [XmlElement("indRRA")]
+        public string IndRRA { get; set; }
+
+        [XmlElement("infoRRA")]
+        public InfoRRA InfoRRA { get; set; }
 
         /// <summary>
         /// Informações relativas ao período de apuração
@@ -325,13 +337,36 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Rubricas que compõem o provento ou pensão do beneficiário.
     /// </summary>
-    public class ItensRemunESocial1207 : ItensRemun
+    public class ItensRemunESocial1207
     {
+
+        [XmlElement("codRubr")]
+        public string CodRubr { get; set; }
+
+        [XmlElement("ideTabRubr")]
+        public string IdeTabRubr { get; set; }
+
+        [XmlElement("qtdRubr")]
+        public double QtdRubr { get; set; }
+
+        [XmlElement("fatorRubr")]
+        public double FatorRubr { get; set; }
+
+        [XmlElement("vrRubr")]
+        public double VrRubr { get; set; }
         /// <summary>
         /// Indicativo de tipo de apuração de IR
         /// </summary>
         [XmlElement("indApurIR")]
         public IndApurIR IndApurIR { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQtdRubr() => QtdRubr > 0;
+
+        public bool ShouldSerializeFatorRubr() => FatorRubr > 0;
+
+        #endregion
     }
 
 
@@ -355,11 +390,45 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
     public class InfPerAnt
     {
-        /// <summary>
-        /// Identificação do período ao qual se referem as diferenças de provento ou pensão.
-        /// </summary>
         [XmlElement("idePeriodo")]
-        public IdePeriodoESocial1207 IdePeriodoESocial1207 { get; set; }
+        public List<IdePeriodoESocial1207> IdePeriodo { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdePeriodo(IdePeriodoESocial1207 item)
+        {
+            if (IdePeriodo == null)
+            {
+                IdePeriodo = new List<IdePeriodoESocial1207>();
+            }
+
+            IdePeriodo.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdePeriodo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdePeriodo</returns>
+        public IdePeriodoESocial1207 GetIdePeriodo(int index)
+        {
+            if ((IdePeriodo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdePeriodo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdePeriodo
+        /// </summary>
+        public int GetIdePeriodoCount => (IdePeriodo != null ? IdePeriodo.Count : 0);
+#endif
 
     }
 
@@ -379,13 +448,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public DateTime PerRef { get; set; }
 #else
-        /// <summary>
-        /// Informar o período ao qual se refere o complemento de
-        /// provento ou pensão, no formato AAAA-MM.
-        /// Validação: Deve ser igual ou anterior ao período de
-        /// apuração informado em perApur.
-        /// Deve ser informado no formato AAAA-MM
-        /// </summary>
         public DateTimeOffset PerRef { get; set; }
 #endif
 
@@ -414,7 +476,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEstabESocial1207 IdeEstabESocial1207 { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializePerRefField () => PerRef > DateTime.MinValue;
+        public bool ShouldSerializePerRefField() => PerRef > DateTime.MinValue;
         #endregion ShouldSerialize
     }
 
