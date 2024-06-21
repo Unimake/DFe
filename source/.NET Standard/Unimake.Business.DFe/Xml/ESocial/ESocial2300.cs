@@ -860,7 +860,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public UFBrasil Uf { get; set; } = (UFBrasil)(-1);
 #else
-        public UFBrasil Uf { get; set; }
+        public UFBrasil? Uf { get; set; }
 #endif
 
         #region ShouldSerialize
