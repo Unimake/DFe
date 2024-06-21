@@ -8,8 +8,6 @@ using System;
 using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {

@@ -5,13 +5,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Security.Cryptography;
-using Unimake.Business.DFe.Xml.GNRE;
-
-
-#if INTEROP
 using System.Runtime.InteropServices;
-#endif
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
