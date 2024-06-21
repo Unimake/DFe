@@ -13,7 +13,7 @@
   <body>
         <div class="top-navbar">
 
-            <a href="javascript:void(0);" class="burger-icon" onclick="toggleMenu()">
+            <a class="burger-icon" onclick="toggleMenu()">
                 <svg name="Hamburger" 
                     style="vertical-align: middle;"
                     width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
@@ -47,7 +47,11 @@
 
             <main class="main-panel">
 
-                <div role="main" class="hide-when-search" >
+                {{#_enableSearch}}
+                    {{>partials/searchResults}}
+                {{/_enableSearch}}
+
+                <div role="main" class="main-panel-content hide-when-search" >
 
                     {{^_disableBreadcrumb}}
                         {{>partials/breadcrumb}}

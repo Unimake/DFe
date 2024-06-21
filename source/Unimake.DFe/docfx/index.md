@@ -1,5 +1,5 @@
 # Este é o site da documentação da DLL Unimake.DFe.
-DLL para geração e envio de documentos fiscais eletrônicos (NFe, NFCe, MDFe, CTe, CTeOS, GNRE, NFSe, etc).
+DLL para geração e envio de documentos fiscais eletrônicos (NFe, NFCe, MDFe, CTe, CTeOS, GNRE, NFSe, EFD-Reinf, eSocial, etc).
 
 ## Iniciando:
 1. [Site do projeto](https://www.uninfe.com.br)
