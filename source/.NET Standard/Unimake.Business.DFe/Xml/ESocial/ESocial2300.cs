@@ -473,7 +473,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeDtAdmOrigField() => DtAdmOrig > DateTimeOffset.MinValue;
         public bool ShouldSerializeMatricOrigField() => !string.IsNullOrEmpty(MatricOrig);
 #if INTEROP
-        public bool ShouldSerializeTpRegTrabField() => TpRegTrab != (TpRegTrab)(-1);
+        public bool ShouldSerializeTpRegTrabField() => TpRegTrab != (TipoRegimeTrabalhista)(-1);
 #else
         public bool ShouldSerializeTpRegTrabField() => !TpRegTrab.IsNullOrEmpty();
 #endif
@@ -656,7 +656,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 #if INTEROP
-        public bool ShouldSerializeIndRemunCargoField() => IndRemunCargo != (IndRemunCargo)(-1);
+        public bool ShouldSerializeIndRemunCargoField() => IndRemunCargo != (SimNaoLetra)(-1);
 #else
         public bool ShouldSerializeIndRemunCargoField() => !IndRemunCargo.IsNullOrEmpty();
 #endif
