@@ -126,7 +126,7 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 1200 eSocial
+        /// Testar a serialização e desserialização do Evento 1202 eSocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]

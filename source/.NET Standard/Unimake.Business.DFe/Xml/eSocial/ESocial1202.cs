@@ -419,10 +419,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1202")]
     [ComVisible(true)]
 #endif
-    public class ItensRemunESocial1202 : ItensRemun
+    public class ItensRemunESocial1202
     {
+        [XmlElement("codRubr")]
+        public string CodRubr { get; set; }
+
+        [XmlElement("ideTabRubr")]
+        public string IdeTabRubr { get; set; }
+
+        [XmlElement("qtdRubr")]
+        public double QtdRubr { get; set; }
+
+        [XmlElement("fatorRubr")]
+        public double FatorRubr { get; set; }
+
+        [XmlElement("vrRubr")]
+        public double VrRubr { get; set; }
+
         [XmlElement("indApurIR")]
         public IndApurIR IndApurIR { get; set; }
+
+        #region ShouldSerialize
+        
+        public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
+       
+        public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
+
+        #endregion
     }
 
 #if INTEROP
