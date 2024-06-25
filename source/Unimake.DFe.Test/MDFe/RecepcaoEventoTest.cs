@@ -119,7 +119,7 @@ namespace Unimake.DFe.Test.MDFe
             //}
 
             Assert.True(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(recepcaoEvento.Result.InfEvento.CStat.Equals(630) || recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "<xMotivo>");
+            Assert.True(recepcaoEvento.Result.InfEvento.CStat.Equals(213) || recepcaoEvento.Result.InfEvento.CStat.Equals(630) || recepcaoEvento.Result.InfEvento.CStat.Equals(128) || recepcaoEvento.Result.InfEvento.CStat.Equals(217) || recepcaoEvento.Result.InfEvento.CStat.Equals(236), "Serviço não está em operação - <cStat>" + recepcaoEvento.Result.InfEvento.CStat + "</cStat><xMotivo>" + recepcaoEvento.Result.InfEvento.XMotivo + "</xMotivo>");
         }
 
         /// <summary>

@@ -1,0 +1,67 @@
+//--------------------------------------------------------------------------------
+//Executar a tela de configuração do UniDANFe
+//--------------------------------------------------------------------------------
+Unimake.Unidanfe.UnidanfeServices.ShowConfigurationScreen("D:\testenfe\Windev\TreinamentoUnimakeDFe\Exe\Unimake_EXE")
+
+//--------------------------------------------------------------------------------
+//Executar a tela de gerenciamento de emails do UniDANFe
+//--------------------------------------------------------------------------------
+Unimake.Unidanfe.UnidanfeServices.ShowEmailScreen("D:\testenfe\Windev\TreinamentoUnimakeDFe\Exe\Unimake_EXE")
+
+//--------------------------------------------------------------------------------
+//Envio de emails diversos via UniDANFe.EXE
+//--------------------------------------------------------------------------------
+//Montar o XML 
+xmlEmail is string = "" 
+xmlEmail += "<?xml version=""1.0"" encoding=""UTF-8"" ?>"
+xmlEmail += "<emailExt>"
+xmlEmail +=    "<EmailRemetente>wandrey.mundin@gmail.com</EmailRemetente>"
+xmlEmail +=    "<NomeRemetente>Wandrey</NomeRemetente>"
+xmlEmail +=    "<Data>2024-06-20</Data>"
+xmlEmail +=    "<Destinatarios>wandrey@unimake.com.br</Destinatarios>"
+xmlEmail +=    "<Assunto>Boletos para pagamento</Assunto>"
+xmlEmail +=    "<Anexo1>D:\testenfe\boleto.pdf</Anexo1>"
+xmlEmail +=    "<Anexo2>D:\testenfe\betha.xml</Anexo2>"
+xmlEmail +=    "<Texto><b>Bem</b>  vindo ao uso de e-mail externo para o UniDANFE.;;Esse é um exemplo de texto para o corpo do e-mail.;Use o ponto-e-vírgula para quebrar linhas.;;att,;Minha empresa</Texto>"
+xmlEmail += "</emailExt>"
+
+//Gravar ele na pasta do UniDANFE específica para envio de email
+nomeArqXmlEmail is string = "D:\testenfe\unidanfe\email\enviar\emailteste.xml"
+fDelete(nomeArqXmlEmail) 
+fSaveText(nomeArqXmlEmail, xmlEmail)
+
+//Falar para o UNIDANFE disparar os emails que estão na fila
+cCaminhoExecutavel	is string	= "D:\testenfe\unidanfe\udproc.exe"
+cParametro			is string	= " acao=envia_email"
+cDiretorioTrabalho	is string	= "D:\testenfe\unidanfe"
+
+//ExeRun(cCaminhoExecutavel + cParametro, exeInactive, exeDontWait, cDiretorioTrabalho)
+
+//--------------------------------------------------------------------------------
+//Envio de emails diversos via UniDANFe DLL
+//--------------------------------------------------------------------------------
+textoEmail is string = "<center><img src=""https://www.unimake2.com.br/img/logo_unimake.jpg\""></center>";
+textoEmail += "<hr>";
+textoEmail += "<br>Prezado Cliente,<br><br>";
+textoEmail += "<b>FULANO DE TAL AAABBB</b><br><br>";
+textoEmail += "<span style=""color: #E74C3C""><b>1111 - Este é apenas um lembrete de que há título(s) em nosso sistema com vencimento próximo.</b></span><br>";
+textoEmail += "<b>Caso o boleto tenha sido quitado, desconsidere este e-mail.</b><br><br>";
+
+oUnidanfeConfiguration is Unimake.Unidanfe.Configurations.UnidanfeConfiguration()
+oUnidanfeConfiguration.PastaConfiguracao	= "D:\testenfe\Windev\TreinamentoUnimakeDFe\Exe\Unimake_EXE"
+oUnidanfeConfiguration.EmailRemetente		= "wandrey.mundin@gmail.com"
+oUnidanfeConfiguration.NomeRemetente = "Wandrey"
+oUnidanfeConfiguration.Data = SysDateTime()
+oUnidanfeConfiguration.Destinatarios = "wandrey@unimake.com.br"
+oUnidanfeConfiguration.Assunto = "Boletos para pagamento"
+oUnidanfeConfiguration.Texto = textoEmail
+oUnidanfeConfiguration.AddAnexos("D:\testenfe\boleto.pdf")
+oUnidanfeConfiguration.AddAnexos("D:\testenfe\betha.xml")
+
+//Coloca o e-mail na fila
+UnidanfeServices.EnviarEmail(oUnidanfeConfiguration);
+
+//Dispara emails na fila
+UnidanfeServices.DisparaEmail("D:\testenfe\Windev\TreinamentoUnimakeDFe\Exe\Unimake_EXE")
+
+Info("Fim")

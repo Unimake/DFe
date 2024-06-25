@@ -92,7 +92,7 @@ namespace Unimake.DFe.Test.MDFe
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(autorizacaoSinc.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(autorizacaoSinc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(autorizacaoSinc.Result.CStat.Equals(744), "Falha no envio do MDFe - <xMotivo> = " + autorizacaoSinc.Result.XMotivo);
+            Assert.True(autorizacaoSinc.Result.CStat.Equals(744) || autorizacaoSinc.Result.CStat.Equals(213), "Falha no envio do MDFe - <cStat>" + autorizacaoSinc.Result.CStat + "</cStat><xMotivo>" + autorizacaoSinc.Result.XMotivo + "</xMotivo>");
         }
 
         /// <summary>

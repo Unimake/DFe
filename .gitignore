@@ -384,3 +384,5 @@ MigrationBackup/
 *.exe
 /Exemplos/Windev/TreinamentoUnimakeDFe/Exe/Dados
 /Exemplos/Windev/TreinamentoUnimakeDFe/Exe/lic
+/Exemplos/Windev/TreinamentoUnimakeDFe/Exe/Unimake_EXE
+/Exemplos/Windev/TreinamentoUnimakeDFe/Exe/email/enviar
