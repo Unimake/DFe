@@ -775,19 +775,19 @@
 						<tpInsc>1</tpInsc>
 						<nrInsc>00000000000000</nrInsc>
 						<codCateg>001</codCateg>
-						<vlrRemunOE>1</vlrRemunOE>
+						<vlrRemunOE>1.00</vlrRemunOE>
 					</remunOutrEmpr>
 					<remunOutrEmpr>
 						<tpInsc>2</tpInsc>
 						<nrInsc>00000000000000</nrInsc>
 						<codCateg>001</codCateg>
-						<vlrRemunOE>1</vlrRemunOE>
+						<vlrRemunOE>1.00</vlrRemunOE>
 					</remunOutrEmpr>
 					<remunOutrEmpr>
 						<tpInsc>1</tpInsc>
 						<nrInsc>00000000000000</nrInsc>
 						<codCateg>001</codCateg>
-						<vlrRemunOE>1</vlrRemunOE>
+						<vlrRemunOE>1.00</vlrRemunOE>
 					</remunOutrEmpr>
 				</infoMV>
 				<procCS>
