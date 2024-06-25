@@ -372,9 +372,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeInfoCotaField() => InfoCota != (SimNaoLetra)(-1);
+        public bool ShouldSerializeInfoCota() => InfoCota != (SimNaoLetra)(-1);
 #else
-        public bool ShouldSerializeInfoCotaField() => InfoCota != null;
+        public bool ShouldSerializeInfoCota() => InfoCota != null;
 #endif
 
         public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);

@@ -37,10 +37,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculo IdeVinculo { get; set; }
+        public IdeVinculoESocial2230 IdeVinculo { get; set; }
 
         [XmlElement("infoAfastamento")]
         public InfoAfastamento InfoAfastamento { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculoESocial2230")]
+    [ComVisible(true)]
+#endif
+    public class IdeVinculoESocial2230
+    {
+        [XmlElement("cpfTrab")]
+        public string CpfTrab { get; set; }
+
+        [XmlElement("matricula")]
+        public string Matricula { get; set; }
+
+        [XmlElement("codCateg")]
+        public string CodCateg { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNrProcTrabField() => !string.IsNullOrEmpty(CodCateg);
+
+        #endregion
     }
 
 #if INTEROP
