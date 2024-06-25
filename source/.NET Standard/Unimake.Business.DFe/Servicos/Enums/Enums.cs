@@ -12594,5 +12594,74 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion MtvDesligTSV
 
+    #region MtvTermino
+    /// <summary>
+    /// Motivo da cessação do benefício.
+    /// </summary>
+    public enum MtvTermino
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("01")]
+        Obito = 01,
+        /// <summary>
+        /// Reversão
+        /// </summary>
+        [XmlEnum("02")]
+        Reversao = 02,
+        /// <summary>
+        /// Por decisão judicial
+        /// </summary>
+        [XmlEnum("03")]
+        DecisaoJudicial = 03,
+        /// <summary>
+        /// Cassação
+        /// </summary>
+        [XmlEnum("04")]
+        Cassacao = 04,
+        /// <summary>
+        /// Término do prazo do benefício
+        /// </summary>
+        [XmlEnum("05")]
+        TerminoPrazoDoBeneficio = 05,
+        /// <summary>
+        /// Extinção de quota
+        /// </summary>
+        [XmlEnum("06")]
+        ExtincaoDeQuota = 06,
+        /// <summary>
+        /// Não homologado pelo Tribunal de Contas
+        /// </summary>
+        [XmlEnum("07")]
+        NaoHomologadoPeloTribunalDeContas = 07,
+        /// <summary>
+        /// Renúncia expressa
+        /// </summary>
+        [XmlEnum("08")]
+        RenunciaExpressa = 08,
+        /// <summary>
+        /// Transferência de órgão administrador
+        /// </summary>
+        [XmlEnum("09")]
+        TransfDeOrgaoAdministrador = 09,
+        /// <summary>
+        /// Mudança de CPF do beneficiário
+        /// </summary>
+        [XmlEnum("10")]
+        MudancaDeCPF = 10,
+        /// <summary>
+        /// Não recadastramento
+        /// </summary>
+        [XmlEnum("11")]
+        NaoRecadastramento = 11,
+        /// <summary>
+        /// Revisão de reforma de militar
+        /// </summary>
+        [XmlEnum("12")]
+        RevisaoDeReformaDeMilitar = 12,
+
+    }
+    #endregion MtvTermino
     #endregion ESocial
 }
