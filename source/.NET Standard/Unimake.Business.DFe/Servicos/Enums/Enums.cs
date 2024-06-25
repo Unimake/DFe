@@ -12526,5 +12526,73 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region MtvDesligTSV
+    /// <summary>
+    /// Motivo do término.
+    /// Valores válidos:
+    /// 01 - Exoneração do diretor não empregado sem justa
+    /// causa, por deliberação da assembleia, dos sócios cotistas
+    /// ou da autoridade competente
+    /// 02 - Término de mandato do diretor não empregado
+    /// que não tenha sido reconduzido ao cargo
+    /// 03 - Exoneração a pedido de diretor não empregado
+    /// 04 - Exoneração do diretor não empregado por culpa
+    /// recíproca ou força maior
+    /// 05 - Morte do diretor não empregado
+    /// 06 - Exoneração do diretor não empregado por falência,
+    /// encerramento ou supressão de parte da empresa
+    /// 07 - Mudança de CPF
+    /// 99 - Outros
+    /// </summary>
+    public enum MtvDesligTSV
+    {
+        /// <summary>
+        /// 01 - Exoneração do diretor não empregado sem justa
+        /// causa, por deliberação da assembleia, dos sócios cotistas
+        /// ou da autoridade competente
+        /// </summary>
+        [XmlEnum("01")]
+        SemJustaCausa = 01,
+        /// <summary>
+        /// Término de mandato do diretor não empregado
+        /// que não tenha sido reconduzido ao cargo
+        /// </summary>
+        [XmlEnum("02")]
+        TerminoDeMandato = 02,
+        /// <summary>
+        /// 03 - Exoneração a pedido de diretor não empregado
+        /// </summary>
+        [XmlEnum("03")]
+        ExoneracaoAPedido = 03,
+        /// <summary>
+        /// 04 - Exoneração do diretor não empregado por culpa
+        /// recíproca ou força maior
+        /// </summary>
+        [XmlEnum("04")]
+        ExoneracaoDiretorCulpaReciprocaOuForcaMaior = 04,
+        /// <summary>
+        /// 05 - Morte do diretor não empregado
+        /// </summary>
+        [XmlEnum("05")]
+        MorteDoDiretor = 05,
+        /// <summary>
+        /// 06 - Exoneração do diretor não empregado por falência,
+        /// encerramento ou supressão de parte da empresa
+        /// </summary>
+        [XmlEnum("06")]
+        ExoneracaoDiretorFalenciaEncerramentoSupressao = 06,
+        /// <summary>
+        /// 07 - Mudança de CPF
+        /// </summary>
+        [XmlEnum("07")]
+        MudancaCPF = 07,
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+    }
+    #endregion MtvDesligTSV
+
     #endregion ESocial
 }

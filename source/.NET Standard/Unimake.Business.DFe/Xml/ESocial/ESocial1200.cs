@@ -1,9 +1,11 @@
 ﻿#pragma warning disable CS1591
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 #if INTEROP
 using System.Runtime.InteropServices;
@@ -463,8 +465,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// houve desconto/recolhimento da contribuição do segurado.
         /// </summary>
         //[XmlIgnore]
-        [XmlElement("vlrRemunOE")]
+        [XmlIgnore]
         public double VlrRemunOE { get; set; }
+
+        /// <summary>
+        /// Preencher com o valor da remuneração recebida pelo
+        /// trabalhador na outra empresa/atividade, sobre a qual
+        /// houve desconto/recolhimento da contribuição do segurado.
+        /// </summary>
+        [XmlElement("vlrRemunOE")]
+        public string VlrRemunOEField
+        {
+            get => VlrRemunOE.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRemunOE = Converter.ToDouble(value);
+        }
     }
 
     #endregion RemunOutrEmpr

@@ -2,9 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -629,8 +631,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("fatorRubr")]
         public double FatorRubr { get; set; }
 
-        [XmlElement("vrRubr")]
+        [XmlIgnore]
         public double VrRubr { get; set; }
+
+        [XmlElement("vrRubr")]
+        public string VrRubrField
+        {
+            get => VrRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRubr = Converter.ToDouble(value);
+
+        }
 
         [XmlElement("indApurIR")]
         public IndApurIR IndApurIR { get; set; }
