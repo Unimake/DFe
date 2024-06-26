@@ -280,7 +280,7 @@ namespace Unimake.DFe.Test.NFSe
 
                 case (PadraoNFSe.TINUS, TipoAmbiente.Producao):
                 case (PadraoNFSe.TINUS, TipoAmbiente.Homologacao):
-                    if (servico.Configuracoes.Servico == Servico.NFSeCancelarNfse)
+                    if (servico.Configuracoes.Servico == Servico.NFSeCancelarNfse || servico.Configuracoes.Servico == Servico.NFSeConsultarNfse)
                     {
                         message += "necessita de dados reais para retorno correto da prefeitura.";
                     }
