@@ -108,8 +108,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotasEmPDF><xml>{xmlBody}</xml></ws:obterNotasEmPDF></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>obterNotasEmPDFResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.pc.gif.com.br/"><soapenv:Header/><soapenv:Body><ws:obterNotasEmPDF><xml>{xmlBodyScapeRetorno}</xml></ws:obterNotasEmPDF></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ws:obterNotasEmPDFResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
