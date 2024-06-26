@@ -2,16 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.CTe;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -109,8 +103,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 1 - Documento de Arrecadação do eSocial - DAE
         /// </summary>
         [XmlElement("indGuia")]
+#if INTEROP
+        public IndGuia? IndGuia { get; set; } = (InfGuia)(-1);
+#else
         public IndGuia? IndGuia { get; set; }
-
+#endif
         /// <summary>
         /// Identificação do ambiente
         /// </summary>
@@ -131,13 +128,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 #if INTEROP
-        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
+        public bool ShouldSerializeIndGuiaField() => IndGuia != (IndGuia)(-1);
 #else
         public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
 #endif
-        #endregion ShouldSerialize
+#endregion ShouldSerialize
     }
-    #endregion IdeEventoESocial2399
+#endregion IdeEventoESocial2399
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -147,16 +144,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Informações do término da prestação de serviço ou da execução da obra.
     /// </summary>
-    [Serializable()]
     public class InfoTSVTermino
     {
-#if INTEROP
-        public DateTime DtTerm { get; set; }
-#else
         /// <summary>
         /// Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias.
         /// </summary>
         [XmlIgnore]
+#if INTEROP
+        public DateTime DtTerm { get; set; }
+#else
         public DateTimeOffset DtTerm { get; set; }
 #endif
         /// <summary>
@@ -200,7 +196,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informação obrigatória e exclusiva se pensAlim = [1, 3].
         /// </summary>
         [XmlElement("percAliment")]
-        public int PercAliment { get; set; }
+        public double PercAliment { get; set; }
 
         /// <summary>
         /// Valor da pensão alimentícia.
