@@ -129,6 +129,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
+        #region         ShouldSerialize
+        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        #endregion ShouldSerialize
     }
 
     #endregion IdeEvento

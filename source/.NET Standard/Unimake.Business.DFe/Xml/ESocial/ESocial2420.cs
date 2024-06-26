@@ -51,7 +51,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEventoESocial2206 IdeEvento { get; set; }
 
         /// <summary>
-        /// Informa\u00e7\u00f5es de identifica\u00e7\u00e3o do empregador.
+        /// Informações de identificação do empregador
         /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
@@ -139,5 +139,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("novoCPF")]
         public string NovoCPF { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeCnpjOrgaoSucField() => !string.IsNullOrEmpty(CnpjOrgaoSuc);
+        public bool ShouldSerializeNovoCPFField() => !string.IsNullOrEmpty(NovoCPF);
+        #endregion ShouldSerialize 
     }
 }
