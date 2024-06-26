@@ -12526,73 +12526,199 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region MtvDesligTSV
+    #region origem - eSocial
+
     /// <summary>
-    /// Motivo do término.
-    /// Valores válidos:
-    /// 01 - Exoneração do diretor não empregado sem justa
-    /// causa, por deliberação da assembleia, dos sócios cotistas
-    /// ou da autoridade competente
-    /// 02 - Término de mandato do diretor não empregado
-    /// que não tenha sido reconduzido ao cargo
-    /// 03 - Exoneração a pedido de diretor não empregado
-    /// 04 - Exoneração do diretor não empregado por culpa
-    /// recíproca ou força maior
-    /// 05 - Morte do diretor não empregado
-    /// 06 - Exoneração do diretor não empregado por falência,
-    /// encerramento ou supressão de parte da empresa
-    /// 07 - Mudança de CPF
-    /// 99 - Outros
+    /// Informar a origem do processo/demanda.
+    /// </summary>
+    public enum Origem
+    {
+        /// <summary>
+        /// 1 - Processo judicial
+        /// </summary>
+        [XmlEnum("1")]
+        ProcessoJudicial = 1,
+
+        /// <summary>
+        /// 2 - Demanda submetida à CCP ou ao NINTER
+        /// </summary>
+        [XmlEnum("2")]
+        DemandaSubmetida = 2
+    }
+
+    #endregion
+
+    #region tpCCP - eSocial
+
+    /// <summary>
+    /// Indicar o âmbito de celebração do acordo.
+    /// </summary>
+    public enum TpCCP
+    {
+        /// <summary>
+        /// 1 - CCP no âmbito de empresa
+        /// </summary>
+        [XmlEnum("1")]
+        CCPAmbitoEmpresa = 1,
+
+        /// <summary>
+        /// 2 - CCP no âmbito de sindicato
+        /// </summary>
+        [XmlEnum("2")]
+        CCPAmbitoSindicato = 2,
+
+        /// <summary>
+        /// 3 - NINTER
+        /// </summary>
+        [XmlEnum("3")]
+        NINTER = 3
+    }
+
+    #endregion
+
+    #region tpContr - eSocial
+
+    /// <summary>
+    /// Tipo de contrato a que se refere o processo judicial ou a demanda submetida à CCP ou ao NINTER.
+    /// </summary>
+    public enum TpContr
+    {
+        /// <summary>
+        /// 1 - Trabalhador com vínculo formalizado, sem alteração nas datas de admissão e de desligamento
+        /// </summary>
+        [XmlEnum("1")]
+        TrabalhadorComVinculoFormalizadoSemAlteracao = 1,
+
+        /// <summary>
+        /// 2 - Trabalhador com vínculo formalizado, com alteração na data de admissão
+        /// </summary>
+        [XmlEnum("2")]
+        TrabalhadorComVinculoFormalizadoAlteracaoDataAdmissao = 2,
+
+        /// <summary>
+        /// 3 - Trabalhador com vínculo formalizado, com inclusão ou alteração de data de desligamento
+        /// </summary>
+        [XmlEnum("3")]
+        TrabalhadorComVinculoFormalizadoAlteracaoDataDesligamento = 3,
+
+        /// <summary>
+        /// 4 - Trabalhador com vínculo formalizado, com alteração na data de admissão e inclusão ou alteração de data de desligamento
+        /// </summary>
+        [XmlEnum("4")]
+        TrabalhadorComVinculoFormalizadoAlteracaoAdmissaoEDesligamento = 4,
+
+        /// <summary>
+        /// 5 - Empregado com reconhecimento de vínculo
+        /// </summary>
+        [XmlEnum("5")]
+        EmpregadoComReconhecimentoDeVinculo = 5,
+
+        /// <summary>
+        /// 6 - Trabalhador sem vínculo de emprego/estatutário (TSVE), sem reconhecimento de vínculo empregatício
+        /// </summary>
+        [XmlEnum("6")]
+        TrabalhadorSemVinculoEmpregoEstatutario = 6,
+
+        /// <summary>
+        /// 7 - Trabalhador com vínculo de emprego formalizado em período anterior ao eSocial
+        /// </summary>
+        [XmlEnum("7")]
+        TrabalhadorComVinculoEmpregoFormalizadoPreESocial = 7,
+
+        /// <summary>
+        /// 8 - Responsabilidade indireta
+        /// </summary>
+        [XmlEnum("8")]
+        ResponsabilidadeIndireta = 8,
+
+        /// <summary>
+        /// 9 - Trabalhador cujos contratos foram unificados (unicidade contratual)
+        /// </summary>
+        [XmlEnum("9")]
+        TrabalhadorComContratosUnificados = 9
+    }
+
+    #endregion
+
+    #region mtvDesligTSV - eSocial
+
+    /// <summary>
+    /// Motivo do término do diretor não empregado, com FGTS.
     /// </summary>
     public enum MtvDesligTSV
     {
         /// <summary>
-        /// 01 - Exoneração do diretor não empregado sem justa
-        /// causa, por deliberação da assembleia, dos sócios cotistas
-        /// ou da autoridade competente
+        /// 01 - Exoneração do diretor não empregado sem justa causa, por deliberação da assembleia, dos sócios cotistas ou da autoridade competente
         /// </summary>
         [XmlEnum("01")]
-        SemJustaCausa = 01,
+        ExoneracaoDiretorNaoEmpregadoSemJustaCausa = 01,
+
         /// <summary>
-        /// Término de mandato do diretor não empregado
-        /// que não tenha sido reconduzido ao cargo
+        /// 02 - Término de mandato do diretor não empregado que não tenha sido reconduzido ao cargo
         /// </summary>
         [XmlEnum("02")]
-        TerminoDeMandato = 02,
+        TerminoMandatoDiretorNaoEmpregado = 02,
+
         /// <summary>
         /// 03 - Exoneração a pedido de diretor não empregado
         /// </summary>
         [XmlEnum("03")]
-        ExoneracaoAPedido = 03,
+        ExoneracaoPedidoDiretorNaoEmpregado = 03,
+
         /// <summary>
-        /// 04 - Exoneração do diretor não empregado por culpa
-        /// recíproca ou força maior
+        /// 04 - Exoneração do diretor não empregado por culpa recíproca ou força maior
         /// </summary>
         [XmlEnum("04")]
-        ExoneracaoDiretorCulpaReciprocaOuForcaMaior = 04,
+        ExoneracaoDiretorNaoEmpregadoCulpaReciproca = 04,
+
         /// <summary>
         /// 05 - Morte do diretor não empregado
         /// </summary>
         [XmlEnum("05")]
-        MorteDoDiretor = 05,
+        MorteDiretorNaoEmpregado = 05,
+
         /// <summary>
-        /// 06 - Exoneração do diretor não empregado por falência,
-        /// encerramento ou supressão de parte da empresa
+        /// 06 - Exoneração do diretor não empregado por falência, encerramento ou supressão de parte da empresa
         /// </summary>
         [XmlEnum("06")]
-        ExoneracaoDiretorFalenciaEncerramentoSupressao = 06,
-        /// <summary>
-        /// 07 - Mudança de CPF
-        /// </summary>
-        [XmlEnum("07")]
-        MudancaCPF = 07,
+        ExoneracaoDiretorNaoEmpregadoFalencia = 06,
+
         /// <summary>
         /// 99 - Outros
         /// </summary>
         [XmlEnum("99")]
-        Outros = 99,
+        Outros = 99
     }
-    #endregion MtvDesligTSV
+
+    #endregion
+
+    #region indReperc - eSocial
+
+    /// <summary>
+    /// Indicativo de repercussão do processo trabalhista ou de demanda submetida à CCP ou ao NINTER.
+    /// </summary>
+    public enum IndReperc
+    {
+        /// <summary>
+        /// 1 - Decisão com repercussão tributária e/ou FGTS
+        /// </summary>
+        [XmlEnum("1")]
+        DecisaoComRepercussaoTributariaFgts = 1,
+
+        /// <summary>
+        /// 2 - Decisão sem repercussão tributária ou FGTS
+        /// </summary>
+        [XmlEnum("2")]
+        DecisaoSemRepercussaoTributariaFgts = 2,
+
+        /// <summary>
+        /// 3 - Decisão com repercussão exclusiva para declaração de rendimentos para fins de Imposto de Renda
+        /// </summary>
+        [XmlEnum("3")]
+        DecisaoRepercussaoDeclaracaoRendimentosIR = 3
+    }
+
+    #endregion
 
     #region MtvTermino
     /// <summary>
