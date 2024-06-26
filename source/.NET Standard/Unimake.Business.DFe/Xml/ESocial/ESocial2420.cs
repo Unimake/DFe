@@ -3,7 +3,6 @@ using System;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.SNCM;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif

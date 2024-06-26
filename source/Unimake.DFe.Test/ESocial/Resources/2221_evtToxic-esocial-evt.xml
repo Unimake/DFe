@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00">
+	<evtToxic Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<indRetif>1</indRetif>
+			<nrRecibo>nrRecibo______________1</nrRecibo>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>1</verProc>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>nrInsc1</nrInsc>
+		</ideEmpregador>
+		<ideVinculo>
+			<cpfTrab>cpfTrab1</cpfTrab>
+			<matricula>matricula1</matricula>
+		</ideVinculo>
+		<toxicologico>
+			<dtExame>1900-01-01</dtExame>
+			<cnpjLab>cnpjLab1</cnpjLab>
+			<codSeqExame>codSeqExam1</codSeqExame>
+			<nmMed>nmMed1</nmMed>
+			<nrCRM>nrCRM1</nrCRM>
+			<ufCRM>AC</ufCRM>
+		</toxicologico>
+	</evtToxic>
+</eSocial>
