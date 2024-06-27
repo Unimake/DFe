@@ -935,13 +935,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTerm")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.UnicContr")]
     [ComVisible(true)]
 #endif
     public class UnicContr
     {
         [XmlElement("matUnic")]
-        public string MatUnicCodCateg { get; set; }
+        public string MatUnic { get; set; }
 
         [XmlElement("codCateg")]
         public string CodCateg { get; set; }
@@ -966,7 +966,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatUnicCodCategField() => !string.IsNullOrEmpty(MatUnicCodCateg);
+        public bool ShouldSerializeMatUnicCodCategField() => !string.IsNullOrEmpty(MatUnic);
        
         public bool ShouldSerializeCodCategField() => !string.IsNullOrEmpty(CodCateg);
 
@@ -1229,7 +1229,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoFGTS")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.BaseMudCateg")]
     [ComVisible(true)]
 #endif
     public class BaseMudCateg
