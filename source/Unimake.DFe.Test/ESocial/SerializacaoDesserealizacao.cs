@@ -678,7 +678,7 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 2500 eSocial
+        /// Testar a serialização e desserialização do Evento 2501 eSocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
@@ -691,6 +691,25 @@ namespace Unimake.DFe.Test.ESocial
             doc.Load(arqXML);
 
             var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial2501>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do Evento 3000 eSocial
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(@"..\..\..\ESocial\Resources\3000_evtExclusao-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial3000(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial3000>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
