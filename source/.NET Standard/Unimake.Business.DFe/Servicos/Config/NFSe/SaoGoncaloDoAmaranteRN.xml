@@ -22,7 +22,7 @@
 		</RecepcionarLoteRps>
 		<ConsultarSituacaoLoteRps versao="1.00">
 			<Descricao>Consultar Situação Lote Rps</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testegon/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/saogoncalo/WSNFSE.ConsultarSituacaoLoteRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -58,7 +58,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>http://www2.tinus.com.br/csp/testegon/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>http://www.tinus.com.br/csp/saogoncalo/WSNFSE.ConsultarNfsePorRps.CLS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
