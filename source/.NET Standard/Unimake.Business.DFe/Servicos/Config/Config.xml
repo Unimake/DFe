@@ -1367,4 +1367,10 @@
 		<ArqConfig>AparecidaDeGoianiaGO.xml</ArqConfig>
 		<PadraoNFSe>ISSNET</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4310207">
+		<Nome>Ijuí - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>IjuiRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
