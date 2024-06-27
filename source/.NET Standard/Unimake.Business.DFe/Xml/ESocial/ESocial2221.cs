@@ -37,7 +37,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// <summary>
     /// Evento Exame Toxicológico do Motorista Profissional Empregado
     /// </summary>
-    [Serializable()]
     public class EvtToxic
     {
         /// <summary>
@@ -154,7 +153,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public UFBrasil UfCRM { get; set; } = UfCRM = (UFBrasil)(-1);
 #else
-        public UFBrasil UfCRM { get; set; }
+        public UFBrasil? UfCRM { get; set; }
 #endif
 
         #region ShouldSerialize
