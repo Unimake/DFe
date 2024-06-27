@@ -87,7 +87,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarNfse><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:www2="http://www2.tinus.com.br"><soapenv:Header/><soapenv:Body><www2:ConsultarNfse><www2:Arg>{xmlBody}</www2:Arg></www2:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tin="http://www.tinus.com.br"><soapenv:Header/><soapenv:Body><tin:ConsultarNfse><tin:Arg>{xmlBody}</tin:Arg></tin:ConsultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>

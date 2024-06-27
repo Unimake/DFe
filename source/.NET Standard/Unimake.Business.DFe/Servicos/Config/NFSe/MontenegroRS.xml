@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEremessa?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEremessa?wsdl</WebEnderecoProducao>
 			<WebActionProducao></WebActionProducao>
@@ -22,7 +22,7 @@
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEcancelamento</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEcancelamento?wsdl</WebEnderecoProducao>
 			<WebActionProducao></WebActionProducao>
@@ -41,7 +41,7 @@
 		</CancelarNfse>
 		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEconsulta</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEconsulta</WebEnderecoProducao>
 			<WebActionProducao></WebActionProducao>
@@ -60,7 +60,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEconsulta</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEconsulta</WebEnderecoProducao>
 			<WebActionProducao></WebActionProducao>
@@ -79,7 +79,7 @@
 		</ConsultarNfse>
 		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://nfsehml.montenegro.rs.gov.br/nfsehml/services/NFSEconsulta</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebEnderecoProducao>https://nfse.montenegro.rs.gov.br/thema-nfse/services/NFSEconsulta</WebEnderecoProducao>
 			<WebActionProducao></WebActionProducao>

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ConsultarNfseEnvio xmlns="http://www.tinus.com.br">
-  <Prestador>
-    <Cnpj>07303304940  </Cnpj>
-    <InscricaoMunicipal>1235671</InscricaoMunicipal>
-  </Prestador>
-  <PeriodoEmissao>
-    <DataInicial>2009-12-01</DataInicial>
-    <DataFinal>2009-12-31</DataFinal>
-  </PeriodoEmissao>
-  <Tomador>
-    <CpfCnpj>
-      <Cnpj>063117473000150</Cnpj>
-    </CpfCnpj>
-  </Tomador>
+	<Prestador>
+		<Cnpj>12345678901234</Cnpj>
+		<InscricaoMunicipal>1235671</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>212</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2009-12-01</DataInicial>
+		<DataFinal>2009-12-31</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj>
+			<Cnpj>12345678901234</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>123456</InscricaoMunicipal>
+	</Tomador>
 </ConsultarNfseEnvio>
