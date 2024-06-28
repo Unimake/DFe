@@ -70,6 +70,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial5002")]
+    [ComVisible(true)]
+#endif
     public class IdeTrabalhadorESocial5002
     {
         [XmlElement("cpfBenef")]
@@ -312,7 +317,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public double Valor { get; set; }
 
         [XmlElement("infoProcJudRub")]
-        public InfoProcJudRub InfoProcJudRub { get; set; }
+        public List<InfoProcJudRub> InfoProcJudRub { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoProcJudRub(InfoProcJudRub item)
+        {
+            if (InfoProcJudRub == null)
+            {
+                InfoProcJudRub = new List<InfoProcJudRub>();
+            }
+
+            InfoProcJudRub.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoProcJudRub (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoProcJudRub</returns>
+        public InfoProcJudRub GetInfoProcJudRub(int index)
+        {
+            if ((InfoProcJudRub?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoProcJudRub[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoProcJudRub
+        /// </summary>
+        public int GetInfoProcJudRubCount => (InfoProcJudRub != null ? InfoProcJudRub.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -492,7 +534,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NifBenef { get; set; }
 
         [XmlElement("frmTribut")]
-        public string FrmTribut { get; set; }
+        public FrmTribut FrmTribut { get; set; }
 
         [XmlElement("endExt")]
         public EndExt EndExt { get; set; }
@@ -733,7 +775,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoIRCRESocial5002
     {
         [XmlElement("tpCR")]
-        public int TpCR { get; set; }
+        public TpCR TpCR { get; set; }
 
         [XmlElement("dedDepen")]
         public List<DedDepenESocial5002> DedDepen { get; set; }
