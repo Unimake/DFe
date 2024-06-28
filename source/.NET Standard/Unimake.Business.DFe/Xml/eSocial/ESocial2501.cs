@@ -193,7 +193,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoCRIRRF</returns>
-        public InfoCRIRRF GetInfoCRContrib(int index)
+        public InfoCRIRRF GetInfoCRIRRF(int index)
         {
             if ((InfoCRIRRF?.Count ?? 0) == 0)
             {
@@ -206,7 +206,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfoCRIRRF
         /// </summary>
-        public int GetInfoCRContribCount => (InfoCRIRRF != null ? InfoCRIRRF.Count : 0);
+        public int GetInfoCRIRRFCount => (InfoCRIRRF != null ? InfoCRIRRF.Count : 0);
 #endif
 
         [XmlElement("infoIRComplem")]
@@ -550,7 +550,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DespProcJudESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DespProcJudESocial2501")]
     [ComVisible(true)]
 #endif
     public class DespProcJudESocial2501
@@ -925,11 +925,26 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "depIRRF")]
         public string DepIRRF { get; set; }
 
-        [XmlAttribute(AttributeName = "tpDep")]
+        [XmlIgnore]
 #if INTEROP
         public TiposDeDependente TpDep { get; set; } = (TiposDeDependente)(-1);
+
+        [XmlAttribute(AttributeName = "tpDep")]
+        public TiposDeDependente TpDepAux
+        {
+            get { return TpDep; }
+            set { TpDep = value; }
+        }
+
 #else
         public TiposDeDependente? TpDep { get; set; }
+
+        [XmlAttribute(AttributeName = "tpDep")]
+        public TiposDeDependente TpDepAux
+        {
+            get { return TpDep.GetValueOrDefault((TiposDeDependente)(-1)); }
+            set { TpDep = value; }
+        }
 #endif
 
         [XmlAttribute(AttributeName = "descrDep")]
@@ -944,9 +959,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeDepIRRFField() => !string.IsNullOrEmpty(DepIRRF);
 
 #if INTEROP
-        public bool ShouldSerializeTpDep() => TpDep != (TiposDeDependente)(-1);
+        public bool ShouldSerializeTpDepAux()
+        {
+            return TpDep != (TiposDeDependente)(-1);
+        }
 #else
-        public bool ShouldSerializeTpDep() => TpDep != null;
+        public bool ShouldSerializeTpDepAux()
+    {
+        return TpDep.HasValue;
+    }
 #endif
 
         public bool ShouldSerializeDescrDepField() => !string.IsNullOrEmpty(DescrDep);

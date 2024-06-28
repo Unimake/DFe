@@ -23,7 +23,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://45.174.220.242:8056/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>http://transparencia.aguasdelindoia.sp.gov.br:5661/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>

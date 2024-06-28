@@ -28,8 +28,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soap:Header><soap:Body><tem:GerarNfse xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:GerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>GerarNfseResult</WebTagRetorno>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.03"><tem:versaoDados>2.03</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:GerarNfse xmlns="http://tempuri.org/"><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>GerarNfseResponseResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
