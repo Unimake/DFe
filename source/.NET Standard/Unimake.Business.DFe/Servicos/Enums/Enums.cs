@@ -1,9 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -7755,7 +7751,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Indicativo da aquisição.
     /// </summary>
-    public enum IndicativoDaAquisicao
+    public enum IndAquis
     {
         /// <summary>
         /// 1 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral;
@@ -12875,6 +12871,57 @@ namespace Unimake.Business.DFe.Servicos
         IrrfResidentesExteriorFinsFiscais = 047301
 
     }
+    #endregion
+
+
+    #region indSubstPatr - eSocial
+
+    /// <summary>
+    /// Indicativo de substituição da contribuição previdenciária patronal.
+    /// </summary>
+    public enum IndSubstPatr
+    {
+        /// <summary>
+        /// 1 -  Integralmente substituída
+        /// </summary>
+        [XmlEnum("1")]
+        IntegralmenteSubstituida = 1,
+
+        /// <summary>
+        /// 2 - Parcialmente substituída
+        /// </summary>
+        [XmlEnum("2")]
+        ParcialmenteSubstituida = 2,
+    }
+
+    #endregion
+
+    #region indIncid - eSocial
+
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de incidência para fins de apuração da contribuição previdenciária.
+    /// </summary>
+    public enum IndIncid
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Atividade concomitante
+        /// </summary>
+        [XmlEnum("2")]
+        AtividadeConcomitante = 2,
+
+        /// <summary>
+        /// 9 - Substituída ou isenta
+        /// </summary>
+        [XmlEnum("9")]
+        SubstituidaOuIsenta = 9
+    }
+
     #endregion
 
     #endregion ESocial

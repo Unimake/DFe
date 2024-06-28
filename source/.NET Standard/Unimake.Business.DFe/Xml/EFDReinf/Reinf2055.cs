@@ -153,7 +153,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class DetAquis
     {
         [XmlElement("indAquis")]
-        public IndicativoDaAquisicao IndAquis { get; set; }
+        public IndAquis IndAquis { get; set; }
 
         [XmlIgnore]
         public double VlrBruto { get; set; }
