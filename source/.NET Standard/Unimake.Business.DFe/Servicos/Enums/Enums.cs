@@ -1,9 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -7755,7 +7751,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Indicativo da aquisição.
     /// </summary>
-    public enum IndicativoDaAquisicao
+    public enum IndAquis
     {
         /// <summary>
         /// 1 - Aquisição de produção de produtor rural pessoa física ou segurado especial em geral;
@@ -10231,7 +10227,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Tabela 30 - Formas de Tributação para Rendimentos de Beneficiários no Exterior. eSocial
     /// </summary>
-    public enum FormasDeTributacaoESocial
+    public enum FrmTribut
     {
         /// <summary>
         /// 10 - Retenção do IRRF - Alíquota padrão
@@ -12789,5 +12785,144 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion MtvTermino
+
+    #region tpCR - eSocial
+    /// <summary>
+    /// Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho.
+    /// </summary>
+    public enum TpCR
+    {
+        /// <summary>
+        /// 056107 - IRRF mensal, 13° salário e férias sobre trabalho assalariado no país ou ausente no exterior a serviço do país, exceto se contratado por empregador doméstico ou por segurado especial sujeito a recolhimento unificado
+        /// </summary>
+        [XmlEnum("056107")]
+        IrrfMensalDecimoTerceiroFeriasAssalariado = 056107,
+
+        /// <summary>
+        /// 056108 - IRRF mensal e férias - Empregado doméstico
+        /// </summary>
+        [XmlEnum("056108")]
+        IrrfMensalFeriasEmpregadoDomestico = 056108,
+
+        /// <summary>
+        /// 056109 - IRRF 13° salário na rescisão de contrato de trabalho - Empregado doméstico
+        /// </summary>
+        [XmlEnum("056109")]
+        IrrfDecimoTerceiroRescisaoEmpregadoDomestico = 056109,
+
+        /// <summary>
+        /// 056110 - IRRF - Empregado doméstico 13º salário
+        /// </summary>
+        [XmlEnum("056110")]
+        IrrfDecimoTerceiroEmpregadoDomestico = 056110,
+
+        /// <summary>
+        /// 056111 - IRRF - Empregado/Trabalhador rural - Segurado especial
+        /// </summary>
+        [XmlEnum("056111")]
+        IrrfEmpregadoTrabalhadorRuralSeguradoEspecial = 056111,
+
+        /// <summary>
+        /// 056112 - IRRF - Empregado/Trabalhador rural - Segurado especial 13° salário
+        /// </summary>
+        [XmlEnum("056112")]
+        IrrfDecimoTerceiroEmpregadoTrabalhadorRuralSeguradoEspecial = 056112,
+
+        /// <summary>
+        /// 056113 - IRRF - Empregado/Trabalhador rural - Segurado especial 13° salário rescisório
+        /// </summary>
+        [XmlEnum("056113")]
+        IrrfDecimoTerceiroRescisorioEmpregadoTrabalhadorRuralSeguradoEspecial = 056113,
+
+        /// <summary>
+        /// 058806 - IRRF sobre rendimento do trabalho sem vínculo empregatício
+        /// </summary>
+        [XmlEnum("058806")]
+        IrrfRendimentoTrabalhoSemVinculoEmpregaticio = 058806,
+
+        /// <summary>
+        /// 061001 - IRRF sobre rendimentos relativos a prestação de serviços de transporte rodoviário internacional de carga, pagos a transportador autônomo PF residente no Paraguai
+        /// </summary>
+        [XmlEnum("061001")]
+        IrrfServicoTransporteRodoviarioInternacionalPFParaguai = 061001,
+
+        /// <summary>
+        /// 353301 - Proventos de aposentadoria, reserva, reforma ou pensão pagos por previdência pública
+        /// </summary>
+        [XmlEnum("353301")]
+        ProventosAposentadoriaPrevidenciaPublica = 353301,
+
+        /// <summary>
+        /// 356201 - IRRF sobre participação dos trabalhadores em lucros ou resultados - PLR
+        /// </summary>
+        [XmlEnum("356201")]
+        IrrfParticipacaoLucrosResultadosPlr = 356201,
+
+        /// <summary>
+        /// 188901 - Rendimentos Recebidos Acumuladamente - RRA
+        /// </summary>
+        [XmlEnum("188901")]
+        RendimentosRecebidosAcumuladamenteRra = 188901,
+
+        /// <summary>
+        /// 047301 - IRRF - Residentes no exterior, para fins fiscais
+        /// </summary>
+        [XmlEnum("047301")]
+        IrrfResidentesExteriorFinsFiscais = 047301
+
+    }
+    #endregion
+
+
+    #region indSubstPatr - eSocial
+
+    /// <summary>
+    /// Indicativo de substituição da contribuição previdenciária patronal.
+    /// </summary>
+    public enum IndSubstPatr
+    {
+        /// <summary>
+        /// 1 -  Integralmente substituída
+        /// </summary>
+        [XmlEnum("1")]
+        IntegralmenteSubstituida = 1,
+
+        /// <summary>
+        /// 2 - Parcialmente substituída
+        /// </summary>
+        [XmlEnum("2")]
+        ParcialmenteSubstituida = 2,
+    }
+
+    #endregion
+
+    #region indIncid - eSocial
+
+    /// <summary>
+    /// Preencher com o código correspondente ao tipo de incidência para fins de apuração da contribuição previdenciária.
+    /// </summary>
+    public enum IndIncid
+    {
+        /// <summary>
+        /// 1 - Normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - Atividade concomitante
+        /// </summary>
+        [XmlEnum("2")]
+        AtividadeConcomitante = 2,
+
+        /// <summary>
+        /// 9 - Substituída ou isenta
+        /// </summary>
+        [XmlEnum("9")]
+        SubstituidaOuIsenta = 9
+    }
+
+    #endregion
+
     #endregion ESocial
 }

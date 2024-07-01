@@ -226,7 +226,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NifBenef { get; set; }
 
         [XmlElement("frmTribut")]
-        public FormasDeTributacaoESocial FrmTribut { get; set; }
+        public FrmTribut FrmTribut { get; set; }
 
         [XmlElement("endExt")]
         public EndExt EndExt { get; set; }
