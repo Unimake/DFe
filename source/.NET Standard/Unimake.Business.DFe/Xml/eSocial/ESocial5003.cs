@@ -286,7 +286,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoTrabFGTS</returns>
-        public InfoTrabFGTS GetIdeLotacao(int index)
+        public InfoTrabFGTS GetInfoTrabFGTS(int index)
         {
             if ((InfoTrabFGTS?.Count ?? 0) == 0)
             {
@@ -334,11 +334,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Matricula { get; set; }
 
         [XmlElement("codCateg")]
-#if INTEROP
-        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
-#else
-        public CodCateg? CodCateg { get; set; }
-#endif
+        public CodCateg CodCateg { get; set; }
 
         [XmlElement("categOrig")]
         public string CategOrig { get; set; }
@@ -382,7 +378,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public DateTime DtTerm { get; set; }
 #else
-        public DateTimeOffset PerApur { get; set; }
+        public DateTimeOffset DtTerm { get; set; }
 #endif
 
         [XmlElement("dtTerm")]
@@ -683,7 +679,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeProcessoFGTS</returns>
-        public IdeProcessoFGTS GetDetRubrSusp(int index)
+        public IdeProcessoFGTS GetIdeProcessoFGTS(int index)
         {
             if ((IdeProcessoFGTS?.Count ?? 0) == 0)
             {
@@ -726,7 +722,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("tpAcConv")]
-        public TpAcConv TpAcConv { get; set; }
+        public string TpAcConv { get; set; }
 
         [XmlElement("basePerAntE")]
         public List<BasePerAntE> BasePerAntE { get; set; }

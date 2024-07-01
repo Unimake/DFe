@@ -13113,34 +13113,6 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
-    #region tpAcConv - eSocial
-
-    /// <summary>
-    /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores.
-    /// </summary>
-    public enum TpAcConv
-    {
-        /// <summary>
-        /// E - Conversão de licença saúde em acidente de trabalho
-        /// </summary>
-        [XmlEnum("E")]
-        ConversaoLicencaSaudeAcidenteTrabalho = 'E',
-
-        /// <summary>
-        /// H - Declaração de base de cálculo de FGTS anterior ao início do FGTS Digital
-        /// </summary>
-        [XmlEnum("H")]
-        DeclaracaoBaseCalculoFgtsAnteriorFgtsDigital = 'H',
-
-        /// <summary>
-        /// I - Sentença judicial (exceto reclamatória trabalhista)
-        /// </summary>
-        [XmlEnum("I")]
-        SentencaJudicialExcetoReclamatoriaTrabalhista = 'I'
-    }
-
-    #endregion
-
     #region indExistInfo - eSocial
 
     /// <summary>
