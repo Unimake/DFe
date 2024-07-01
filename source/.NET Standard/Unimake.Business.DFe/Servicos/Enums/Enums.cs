@@ -12924,5 +12924,222 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region tpValor. - eSocial.
+
+    /// <summary>
+    /// Tipo de valor que influi na apuração do FGTS.
+    /// </summary>
+    public enum TpValor
+    {
+        /// <summary>
+        /// 11 - FGTS mensal
+        /// </summary>
+        [XmlEnum("11")]
+        FgtsMensal = 11,
+
+        /// <summary>
+        /// 12 - FGTS 13° salário
+        /// </summary>
+        [XmlEnum("12")]
+        FgtsDecimoTerceiroSalario = 12,
+
+        /// <summary>
+        /// 13 - FGTS (período anterior) mensal
+        /// </summary>
+        [XmlEnum("13")]
+        FgtsPeriodoAnteriorMensal = 13,
+
+        /// <summary>
+        /// 14 - FGTS (período anterior) 13º salário
+        /// </summary>
+        [XmlEnum("14")]
+        FgtsPeriodoAnteriorDecimoTerceiroSalario = 14,
+
+        /// <summary>
+        /// 15 - FGTS mensal - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("15")]
+        FgtsMensalAprendizContratoVerdeAmarelo = 15,
+
+        /// <summary>
+        /// 16 - FGTS 13° salário - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("16")]
+        FgtsDecimoTerceiroSalarioAprendizContratoVerdeAmarelo = 16,
+
+        /// <summary>
+        /// 17 - FGTS (período anterior) mensal - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("17")]
+        FgtsPeriodoAnteriorMensalAprendizContratoVerdeAmarelo = 17,
+
+        /// <summary>
+        /// 18 - FGTS (período anterior) 13º salário - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("18")]
+        FgtsPeriodoAnteriorDecimoTerceiroSalarioAprendizContratoVerdeAmarelo = 18,
+
+        /// <summary>
+        /// 21 - FGTS mês da rescisão
+        /// </summary>
+        [XmlEnum("21")]
+        FgtsMesRescisao = 21,
+
+        /// <summary>
+        /// 22 - FGTS 13° salário rescisório
+        /// </summary>
+        [XmlEnum("22")]
+        FgtsDecimoTerceiroSalarioRescisorio = 22,
+
+        /// <summary>
+        /// 23 - FGTS aviso prévio indenizado
+        /// </summary>
+        [XmlEnum("23")]
+        FgtsAvisoPrevioIndenizado = 23,
+
+        /// <summary>
+        /// 24 - FGTS (período anterior) mês da rescisão
+        /// </summary>
+        [XmlEnum("24")]
+        FgtsPeriodoAnteriorMesRescisao = 24,
+
+        /// <summary>
+        /// 25 - FGTS (período anterior) 13º salário rescisório
+        /// </summary>
+        [XmlEnum("25")]
+        FgtsPeriodoAnteriorDecimoTerceiroSalarioRescisorio = 25,
+
+        /// <summary>
+        /// 26 - FGTS (período anterior) aviso prévio indenizado
+        /// </summary>
+        [XmlEnum("26")]
+        FgtsPeriodoAnteriorAvisoPrevioIndenizado = 26,
+
+        /// <summary>
+        /// 27 - FGTS mês da rescisão - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("27")]
+        FgtsMesRescisaoAprendizContratoVerdeAmarelo = 27,
+
+        /// <summary>
+        /// 28 - FGTS 13° salário rescisório - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("28")]
+        FgtsDecimoTerceiroSalarioRescisorioAprendizContratoVerdeAmarelo = 28,
+
+        /// <summary>
+        /// 29 - FGTS aviso prévio indenizado - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("29")]
+        FgtsAvisoPrevioIndenizadoAprendizContratoVerdeAmarelo = 29,
+
+        /// <summary>
+        /// 30 - FGTS (período anterior) mês da rescisão - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("30")]
+        FgtsPeriodoAnteriorMesRescisaoAprendizContratoVerdeAmarelo = 30,
+
+        /// <summary>
+        /// 31 - FGTS (período anterior) 13° salário rescisório - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("31")]
+        FgtsPeriodoAnteriorDecimoTerceiroSalarioRescisorioAprendizContratoVerdeAmarelo = 31,
+
+        /// <summary>
+        /// 32 - FGTS (período anterior) aviso prévio indenizado - Aprendiz/Contrato Verde e Amarelo
+        /// </summary>
+        [XmlEnum("32")]
+        FgtsPeriodoAnteriorAvisoPrevioIndenizadoAprendizContratoVerdeAmarelo = 32,
+
+        /// <summary>
+        /// 41 - FGTS mensal - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("41")]
+        FgtsMensalIndenizacaoCompensatoriaEmpregadoDomestico = 41,
+
+        /// <summary>
+        /// 42 - FGTS 13° salário - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("42")]
+        FgtsDecimoTerceiroSalarioIndenizacaoCompensatoriaEmpregadoDomestico = 42,
+
+        /// <summary>
+        /// 43 - FGTS (período anterior) mensal - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("43")]
+        FgtsPeriodoAnteriorMensalIndenizacaoCompensatoriaEmpregadoDomestico = 43,
+
+        /// <summary>
+        /// 44 - FGTS (período anterior) 13º salário - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("44")]
+        FgtsPeriodoAnteriorDecimoTerceiroSalarioIndenizacaoCompensatoriaEmpregadoDomestico = 44,
+
+        /// <summary>
+        /// 45 - FGTS mês da rescisão - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("45")]
+        FgtsMesRescisaoIndenizacaoCompensatoriaEmpregadoDomestico = 45,
+
+        /// <summary>
+        /// 46 - FGTS 13° salário rescisório - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("46")]
+        FgtsDecimoTerceiroSalarioRescisorioIndenizacaoCompensatoriaEmpregadoDomestico = 46,
+
+        /// <summary>
+        /// 47 - FGTS aviso prévio indenizado - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("47")]
+        FgtsAvisoPrevioIndenizadoIndenizacaoCompensatoriaEmpregadoDomestico = 47,
+
+        /// <summary>
+        /// 48 - FGTS (período anterior) mês da rescisão - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("48")]
+        FgtsPeriodoAnteriorMesRescisaoIndenizacaoCompensatoriaEmpregadoDomestico = 48,
+
+        /// <summary>
+        /// 49 - FGTS (período anterior) 13º salário rescisório - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("49")]
+        FgtsPeriodoAnteriorDecimoTerceiroSalarioRescisorioIndenizacaoCompensatoriaEmpregadoDomestico = 49,
+
+        /// <summary>
+        /// 50 - FGTS (período anterior) aviso prévio indenizado - Indenização compensatória do empregado doméstico
+        /// </summary>
+        [XmlEnum("50")]
+        FgtsPeriodoAnteriorAvisoPrevioIndenizadoIndenizacaoCompensatoriaEmpregadoDomestico = 50
+    }
+    #endregion
+
+    #region tpAcConv - eSocial
+
+    /// <summary>
+    /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
+    public enum TpAcConv
+    {
+        /// <summary>
+        /// E - Conversão de licença saúde em acidente de trabalho
+        /// </summary>
+        [XmlEnum("E")]
+        ConversaoLicencaSaudeAcidenteTrabalho = 'E',
+
+        /// <summary>
+        /// H - Declaração de base de cálculo de FGTS anterior ao início do FGTS Digital
+        /// </summary>
+        [XmlEnum("H")]
+        DeclaracaoBaseCalculoFgtsAnteriorFgtsDigital = 'H',
+
+        /// <summary>
+        /// I - Sentença judicial (exceto reclamatória trabalhista)
+        /// </summary>
+        [XmlEnum("I")]
+        SentencaJudicialExcetoReclamatoriaTrabalhista = 'I'
+    }
+
+    #endregion
+
     #endregion ESocial
 }
