@@ -153,7 +153,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoCRContrib</returns>
-        public InfoCRContribESocial5011 GetInfoCREstab(int index)
+        public InfoCRContribESocial5011 GetInfoCRContrib(int index)
         {
             if ((InfoCRContrib?.Count ?? 0) == 0)
             {
