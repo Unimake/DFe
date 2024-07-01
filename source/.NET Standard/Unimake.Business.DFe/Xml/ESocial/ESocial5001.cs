@@ -6,8 +6,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.SNCM;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -153,7 +151,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerApur {get; set; }
+        public DateTime PerApur { get; set; }
 #else
         public DateTimeOffset PerApur { get; set; }
 #endif
@@ -231,7 +229,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
-        public ProcJudTrabESocial5001 ProcJudTrab(int index)
+        public ProcJudTrabESocial5001 GetProcJudTrab(int index)
         {
             if ((ProcJudTrab?.Count ?? 0) == 0)
             {
@@ -263,7 +261,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Grupo de informações da sucessão de vínculo trabalhista. Evento de origem: S-1200.
         /// </summary>
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial1200 SucessaoVinc { get; set; }
+        public SucessaoVincESocial5001 SucessaoVinc { get; set; }
 
         /// <summary>
         ///  Informações relativas ao trabalho intermitente. Evento de origem: S-1200 ou S-2299.
@@ -311,7 +309,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações complementares contratuais do trabalhador. Evento de origem: S-1200
         /// </summary>
         [XmlElement("infoComplCont")]
-        public List<InfoComplCont> InfoComplCont { get; set; }
+        public List<InfoComplContESocial5001> InfoComplCont { get; set; }
 
 #if INTEROP
 
@@ -319,11 +317,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoComplCont(InfoComplCont item)
+        public void AddInfoComplCont(InfoComplContESocial5001 item)
         {
             if (InfoComplCont == null)
             {
-                InfoComplCont = new List<InfoComplCont>();
+                InfoComplCont = new List<InfoComplContESocial5001>();
             }
 
             InfoComplCont.Add(item);
@@ -334,7 +332,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoComplCont</returns>
-        public InfoComplCont GetInfoComplCont(int index)
+        public InfoComplContESocial5001 GetInfoComplCont(int index)
         {
             if ((InfoComplCont?.Count ?? 0) == 0)
             {
@@ -350,9 +348,150 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoComplContCount => (InfoComplCont != null ? InfoComplCont.Count : 0);
 #endif
     }
+
+    #region SucessaoVincESocial5001
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial5001")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SucessaoVincESocial5001
+    {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de
+        /// inscrição, conforme Tabela 05.
+        /// Valores válidos:
+        /// 1 - CNPJ
+        /// 2 - CPF
+        /// </summary>
+        [XmlElement("tpInsc")]
+        public TpInsc TpInsc { get; set; }
+
+        /// <summary>
+        /// Informar o número de inscrição do empregador anterior,
+        /// de acordo com o tipo de inscrição indicado no campo sucessaoVinc/tpInsc.
+        /// </summary>
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+
+        /// <summary>
+        /// Matrícula do trabalhador no empregador anterior.
+        /// </summary>
+        [XmlElement("matricAnt")]
+        public string MatricAnt { get; set; }
+
+        /// <summary>
+        /// Preencher com a data de admissão do trabalhador. No
+        /// caso de transferência do empregado, deve ser preenchida
+        /// a data inicial do vínculo no primeiro empregador(data de
+        /// início do vínculo).
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtAdm { get; set; }
+#else
+        public DateTimeOffset DtAdm { get; set; }
+#endif
+
+        /// <summary>
+        /// Preencher com a data de admissão do trabalhador. No
+        /// caso de transferência do empregado, deve ser preenchida
+        /// a data inicial do vínculo no primeiro empregador(data de
+        /// início do vínculo).
+        /// </summary>
+        [XmlElement("dtAdm")]
+        public string DtAdmField
+        {
+            get => DtAdm.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtAdm = DateTime.Parse(value);
+#else
+            set => DtAdm = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Observação
+        /// </summary>
+        [XmlElement("observacao")]
+        public string Observacao { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        #endregion ShouldSerialize
+    }
+    #endregion SucessaoVincESocial5001
+
+    #region InfoComplContESocial5001
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplContESocial5001")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Grupo preenchido exclusivamente quando o evento de remuneração se referir a 
+    /// trabalhador cuja categoria não estiver obrigada ao evento de início de TSVE e se não
+    /// houver evento S-2300 correspondente.
+    /// </summary>
+    public class InfoComplContESocial5001
+    {
+        /// <summary>
+        /// Classificação Brasileira de Ocupações - CBO
+        /// Validação: Deve ser um código válido e existente na tabela de CBO, com 6 (seis) posições.
+        /// </summary>
+        [XmlElement("codCBO")]
+        public string CodCBO { get; set; }
+
+        /// <summary>
+        /// Natureza da atividade
+        /// Validação: 
+        /// O campo deve ser preenchido apenas se atendida uma das condições a seguir apresentadas: 
+        /// a) classTrib em S-1000 = [06, 07];
+        /// b) classTrib em S-1000 = [21,22] e existir remuneração para o trabalhador vinculada 
+        /// a um tipo de CAEPF informado em S-1005 como produtor rural ou segurado especial.
+        /// </summary>
+        [XmlElement("natAtividade")]
+#if INTEROP
+        public NatAtividade NatAtividade { get; set; } = (NatAtividade)(-1);
+#else
+        public NatAtividade NatAtividade { get; set; }
+#endif
+
+        /// <summary>
+        /// Informação prestada exclusivamente pelo segurado especial em caso de 
+        /// contratação de contribuinte individual, indicando a quantidade de dias trabalhados pelo mesmo.
+        /// Caso não tenha havido trabalho no mês, informar 0 (zero).
+        /// Validação: Preenchimento obrigatório e exclusivo se classTrib em S-1000 = [22], natAtividade = [2]
+        /// e indApuracao = [1]. Neste caso, preencher com um número entre 0 e 31, de acordo com o calendário anual.
+        /// </summary>
+        [XmlElement("qtdDiasTrab")]
+        public int QtdDiasTrab { get; set; }
+
+        #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeNatAtividadeField() => NatAtividade != (NatAtividade)(-1);
+#else
+        public bool ShouldSerializeNatAtividadeField() => !NatAtividade.IsNullOrEmpty();
+#endif
+        public bool ShouldSerializeQtdDiasTrabField() => QtdDiasTrab > 0;
+        #endregion ShouldSerialize
+
+    }
+    #endregion InfoComplContESocial5001
+
     #endregion InfoComplESocial5001
 
     #region ProcJudTrab
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrabESocial5001")]
+    [ComVisible(true)]
+#endif
     /// <summary>
     /// Informações sobre processos judiciais do trabalhador
     /// com decisão favorável quanto à não incidência ou
@@ -484,7 +623,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLot</returns>
-        public IdeEstabLotESocial5001 GetIdeADC(int index)
+        public IdeEstabLotESocial5001 GetIdeEstabLot(int index)
         {
             if ((IdeEstabLot?.Count ?? 0) == 0)
             {
@@ -757,10 +896,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetInfoPerRefCount => (InfoPerRef != null ? InfoPerRef.Count : 0);
 #endif
-#region ShouldSerialize
+        #region ShouldSerialize
         public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
 #if INTEROP
-        public bool ShouldSerializeIndSimplesField() =>  IndSimples != (IndSimples)(-1);
+        public bool ShouldSerializeIndSimplesField() => IndSimples != (IndSimples)(-1);
 #else
         public bool ShouldSerializeIndSimplesField() =>  !IndSimples.IsNullOrEmpty();
 #endif
@@ -897,7 +1036,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerRef {get; set; }
+        public DateTime PerRef { get; set; }
 #else
         public DateTimeOffset PerRef { get; set; }
 #endif
@@ -925,7 +1064,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// cujo evento de origem somente é S-1200).
         /// </summary>
         [XmlElement("ideADC")]
-        public List<IdeADC> IdeADC { get; set; }
+        public List<IdeADCESocial5001> IdeADC { get; set; }
 
 #if INTEROP
 
@@ -933,11 +1072,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeADC(IdeADC item)
+        public void AddIdeADC(IdeADCESocial5001 item)
         {
             if (IdeADC == null)
             {
-                IdeADC = new List<IdeADC>();
+                IdeADC = new List<IdeADCESocial5001>();
             }
 
             IdeADC.Add(item);
@@ -948,7 +1087,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeADC</returns>
-        public IdeADC GetIdeADC(int index)
+        public IdeADCESocial5001 GetIdeADC(int index)
         {
             if ((IdeADC?.Count ?? 0) == 0)
             {
@@ -1013,6 +1152,118 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
+    #region IdeADC
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeADCESocial5001")]
+    [ComVisible(true)]
+#endif
+    /// <summary>
+    /// Identificação do instrumento ou situação ensejadora da
+    /// remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
+    public class IdeADCESocial5001
+    {
+        /// <summary>
+        /// Data da assinatura do acordo, convenção coletiva,
+        /// sentença normativa ou da conversão da licença saúde em
+        /// acidente de trabalho.
+        /// Validação: Informação obrigatória se tpAcConv = [A,
+        /// B,
+        /// C,
+        /// D,
+        /// E].Se preenchida, seu mês/ano deve ser igual ou
+        /// anterior ao período de apuração, informado em perApur.
+        /// A data deve ser igual ou posterior a 01/01/1890.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtAcConv { get; set; }
+#else
+        public DateTimeOffset DtAcConv { get; set; }
+#endif
+
+        /// <summary>
+        /// Data da assinatura do acordo, convenção coletiva,
+        /// sentença normativa ou da conversão da licença saúde em
+        /// acidente de trabalho.
+        /// Validação: Informação obrigatória se tpAcConv = [A,
+        /// B,
+        /// C,
+        /// D,
+        /// E].Se preenchida, seu mês/ano deve ser igual ou
+        /// anterior ao período de apuração, informado em perApur.
+        /// A data deve ser igual ou posterior a 01/01/1890.
+        /// </summary>
+        [XmlElement("dtAcConv")]
+        public string DtAcConvField
+        {
+            get => DtAcConv.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtAcConv = DateTime.Parse(value);
+#else
+            set => DtAcConv = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        /// Tipo do instrumento ou situação ensejadora da
+        /// remuneração relativa a períodos de apuração anteriores.
+        /// Valores válidos:
+        /// A - Acordo Coletivo de Trabalho
+        /// B - Legislação federal, estadual, municipal ou distrital
+        /// C - Convenção Coletiva de Trabalho
+        /// D - Sentença normativa - Dissídio
+        /// E - Conversão de licença saúde em acidente de trabalho
+        /// F - Outras verbas de natureza salarial ou não salarial
+        /// devidas após o desligamento
+        /// G - Antecipação de diferenças de acordo, convenção ou
+        /// dissídio coletivo
+        /// H - Declaração de base de cálculo de FGTS anterior ao
+        /// início do FGTS Digital
+        /// I - Sentença judicial(exceto reclamatória trabalhista)
+        /// J - Parcelas complementares conhecidas após o
+        /// fechamento da folha
+        /// Validação: Se classTrib em S-1000 = [04, 22], não pode
+        /// ser informado[E, H, I].
+        /// </summary>
+        [XmlElement("tpAcConv")]
+        public string TpAcConv { get; set; }
+
+        /// <summary>
+        /// Descrição do instrumento ou situação que originou o
+        /// pagamento das verbas relativas a períodos anteriores.
+        /// </summary>
+        [XmlElement("dsc")]
+        public string Dsc { get; set; }
+
+        /// <summary>
+        /// Indicar se a remuneração é relativa a verbas de natureza
+        /// salarial ou não salarial devidas pela empresa sucessora a
+        /// empregados desligados ainda na sucedida.
+        /// Valores válidos:
+        /// S - Sim
+        /// N - Não
+        /// </summary>
+        [XmlElement("remunSuc")]
+#if INTEROP
+        public SimNaoLetra RemunSuc { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? RemunSuc { get; set; }
+#endif
+
+        #region ShouldSerialize
+        public bool ShouldSerializeDtAcConvField() => DtAcConv > DateTimeOffset.MinValue;
+#if INTEROP
+        public bool ShouldSerializeRemunSucField() => RemunSuc != (SimNaoLetra)(-1);
+#else
+        public bool shouldSerializeRemunSucField() => RemunSuc.IsNullOrEmpty();
+#endif
+
+        #endregion ShouldSerialize
+    }
+    #endregion IdeADC
+
     #region  DetInfoPerRef
     /// <summary>
     /// Detalhamento das informações de remuneração por
@@ -1063,7 +1314,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion InfoPerRef
 
-#endregion InfoCategIncid
+    #endregion InfoCategIncid
 
-#endregion InfoCp
+    #endregion InfoCp
 }
