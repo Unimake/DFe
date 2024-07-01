@@ -151,7 +151,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("ufCRM")]
 #if INTEROP
-        public UFBrasil UfCRM { get; set; } = UfCRM = (UFBrasil)(-1);
+        public UFBrasil UfCRM { get; set; } = (UFBrasil)(-1);
 #else
         public UFBrasil? UfCRM { get; set; }
 #endif

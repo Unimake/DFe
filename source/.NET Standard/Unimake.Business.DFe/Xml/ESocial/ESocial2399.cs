@@ -104,7 +104,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("indGuia")]
 #if INTEROP
-        public IndGuia? IndGuia { get; set; } = (InfGuia)(-1);
+        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
 #else
         public IndGuia? IndGuia { get; set; }
 #endif
