@@ -13141,5 +13141,33 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region indExistInfo - eSocial
+
+    /// <summary>
+    /// Indicativo de existência de valores de bases ou de tributos.
+    /// </summary>
+    public enum IndExistInfo
+    {
+        /// <summary>
+        /// 1 - Há informações de IRRF
+        /// </summary>
+        [XmlEnum("1")]
+        HaInformacoesIrrf = 1,
+
+        /// <summary>
+        /// 2 - Há movimento, porém não há informações de IRRF
+        /// </summary>
+        [XmlEnum("2")]
+        HaMovimentoSemInformacoesIrrf = 2,
+
+        /// <summary>
+        /// 3 - Não há movimento no período informado em perApur
+        /// </summary>
+        [XmlEnum("3")]
+        NaoHaMovimentoPeriodoInformadoPerApur = 3
+    }
+
+    #endregion
+
     #endregion ESocial
 }
