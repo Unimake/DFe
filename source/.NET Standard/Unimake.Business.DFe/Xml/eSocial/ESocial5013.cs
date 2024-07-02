@@ -140,11 +140,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 4 - CNO
         /// </summary>
         [XmlElement("tpInsc")]
-#if INTEROP
-        public TpInsc TpInsc { get; set; } = (TpInsc)(-1);
-#else
-        public TpInsc? TpInsc { get; set; }
-#endif
+        public TpInsc TpInsc { get; set; }
 
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
@@ -188,18 +184,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetIdeLotacaoCount => (IdeLotacao != null ? IdeLotacao.Count : 0);
 #endif
-
-        #region ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeTpInsc() => TpInsc != (TpInsc)(-1);
-#else
-        public bool ShouldSerializeTpInsc() => TpInsc != null;
-#endif
-
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
-
-        #endregion
     }
 
 #if INTEROP
@@ -354,6 +338,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("vrFGTS")]
         public double VrFGTS { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVrFGTS() => VrFGTS > 0;
+
+        #endregion
     }
 
 #if INTEROP
