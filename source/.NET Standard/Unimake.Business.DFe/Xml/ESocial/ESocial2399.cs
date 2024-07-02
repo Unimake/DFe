@@ -132,9 +132,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
 #endif
-#endregion ShouldSerialize
+        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+
+        #endregion ShouldSerialize
     }
-#endregion IdeEventoESocial2399
+    #endregion IdeEventoESocial2399
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
