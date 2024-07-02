@@ -389,7 +389,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDevESocial2299")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDevESocial2399")]
     [ComVisible(true)]
 #endif
     public class DmDevESocial2399
