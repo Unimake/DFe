@@ -275,6 +275,7 @@ namespace Unimake.DFe.Test.NFSe
                 case (PadraoNFSe.IPM, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.ADM_SISTEMAS, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.IPM, TipoAmbiente.Producao):
+                case (PadraoNFSe.AVMB, TipoAmbiente.Producao):
                     message += "necessita de uma autenticação válida";
                     break;
 
