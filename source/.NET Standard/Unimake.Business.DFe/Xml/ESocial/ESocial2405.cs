@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.NFe;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -217,8 +215,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Estado civil do beneficiário.
         /// </summary>
         [XmlElement("estCiv")]
-        public EstadoCivil EstadoCivil { get; set; }
-
+#if INTEROP
+        public EstadoCivil EstadoCivil { get; set; } = (EstadoCivil)(-1);
+#else 
+        public EstadoCivil? EstadoCivil { get; set; }
+#endif
         /// <summary>
         /// Informar se o beneficiário é pessoa com doença
         /// incapacitante que isenta da contribuição previdenciária,
@@ -275,6 +276,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetDependenteCount => (Dependente != null ? Dependente.Count : 0);
 #endif
+        #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeEstadoCivilField() => EstadoCivil != (EstadoCivil)(-1);
+#else
+        public bool ShouldSerializeEstadoCivilField() => !EstadoCivil.IsNullOrEmpty();
+#endif
+#endregion ShouldSerialize
     }
 
     public class DependenteESocial2405
@@ -361,14 +369,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeTpDep() => TpDep != null;
 #endif
-
         public bool ShouldSerializeCpfDepField() => !string.IsNullOrEmpty(CpfDep);
-
-#if INTEROP
-        public bool ShouldSerializeSexoDep() => SexoDep != (TipoSexo)(-1);
-#else
-        public bool ShouldSerializeSexoDep() => SexoDep != null;
-#endif
         public bool ShouldSerializeDescrDepField() => !string.IsNullOrEmpty(DescrDep);
 
         #endregion
