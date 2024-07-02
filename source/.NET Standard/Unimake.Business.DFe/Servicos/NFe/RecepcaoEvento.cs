@@ -76,7 +76,15 @@ namespace Unimake.Business.DFe.Servicos.NFe
 
             if (Configuracoes.SchemasEspecificos.Count > 0)
             {
-                var tpEvento = ((int)xml.Evento[0].InfEvento.TpEvento);
+                int tpEvento;
+                if (ConteudoXML.GetElementsByTagName("tpEvento").Count > 0)
+                {
+                    tpEvento = Convert.ToInt32(ConteudoXML.GetElementsByTagName("tpEvento")[0].InnerText);
+                }
+                else
+                {
+                    throw new Exception("Não foi possível localizar a tag obrigatória <tpEvento> no XML.");
+                }
 
                 schemaArquivo = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivo;
                 schemaArquivoEspecifico = Configuracoes.SchemasEspecificos[tpEvento.ToString()].SchemaArquivoEspecifico;
