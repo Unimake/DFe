@@ -77,27 +77,6 @@
       <SchemaVersao>2.03</SchemaVersao>
       <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
     </CancelarNfse>
-    <SubstituirNfse versao="2.03">
-      <Descricao>Substituir nota fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://servicos.prefeituradearuja.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://servicos.prefeituradearuja.sp.gov.br/tbw/services/Abrasf23</WebEnderecoProducao>
-      <WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionHomologacao>
-      <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionProducao>
-      <SchemaArquivo></SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura>Rps</TagLoteAssinatura>
-      <TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
-      <TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
-      <TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:substituirNfse><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:substituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>prop:innertext</WebTagRetorno>
-      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-      <WebSoapVersion>soap11</WebSoapVersion>
-      <SchemaVersao>2.03</SchemaVersao>
-      <TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-    </SubstituirNfse>
     <ConsultarLoteRps versao="2.03">
       <Descricao>Consulta lote RPS</Descricao>
       <WebEnderecoHomologacao>https://servicos.prefeituradearuja.sp.gov.br/tbwhomologacao/services/Abrasf23</WebEnderecoHomologacao>
