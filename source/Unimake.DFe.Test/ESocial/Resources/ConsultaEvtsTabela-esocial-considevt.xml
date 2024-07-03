@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/consulta/identificadores-eventos/tabela/v1_0_0">
+	<consultaIdentificadoresEvts>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<consultaEvtsTabela>
+			<tpEvt>str123</tpEvt>
+			<chEvt>str1234</chEvt>
+			<dtIni>2018-10-02</dtIni>
+			<dtFim>2018-10-02</dtFim>
+		</consultaEvtsTabela>
+	</consultaIdentificadoresEvts>
+</eSocial>
