@@ -529,7 +529,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Código de Receita - CR da contribuição descontada do trabalhador.
         /// </summary>
         [XmlElement("tpCR")]
-        public TpCR TpCR { get; set; }
+        public string TpCR { get; set; }
 
         /// <summary>
         /// Valor da contribuição do segurado, devida à Previdência Social,
@@ -971,7 +971,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 122102 - Contribuição ao SENAT, descontada do transportador autônomo
         /// </summary>
         [XmlElement("tpCR")]
-        public TpCR TpCR { get; set; }
+        public string TpCR { get; set; }
 
         /// <summary>
         /// Valor da contribuição social devida a Outras Entidades ou
