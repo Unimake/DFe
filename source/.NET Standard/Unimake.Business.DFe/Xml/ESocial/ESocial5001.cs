@@ -413,15 +413,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
-        /// <summary>
-        /// Observação
-        /// </summary>
-        [XmlElement("observacao")]
-        public string Observacao { get; set; }
-
         #region ShouldSerialize
         public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
         #endregion ShouldSerialize
     }
     #endregion SucessaoVincESocial5001
@@ -459,7 +452,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public NatAtividade NatAtividade { get; set; } = (NatAtividade)(-1);
 #else
-        public NatAtividade NatAtividade { get; set; }
+        public NatAtividade? NatAtividade { get; set; }
 #endif
 
         /// <summary>
@@ -536,7 +529,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Código de Receita - CR da contribuição descontada do trabalhador.
         /// </summary>
         [XmlElement("tpCR")]
-        public string TpCR { get; set; }
+        public TpCR TpCR { get; set; }
 
         /// <summary>
         /// Valor da contribuição do segurado, devida à Previdência Social,
@@ -978,7 +971,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 122102 - Contribuição ao SENAT, descontada do transportador autônomo
         /// </summary>
         [XmlElement("tpCR")]
-        public string TpCR { get; set; }
+        public TpCR TpCR { get; set; }
 
         /// <summary>
         /// Valor da contribuição social devida a Outras Entidades ou

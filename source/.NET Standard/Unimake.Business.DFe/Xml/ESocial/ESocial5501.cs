@@ -204,11 +204,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoCRIRRF(InfoCRIRRF item)
+        public void AddInfoCRIRRF(InfoCRIRRFESocial5501 item)
         {
             if (InfoCRIRRF == null)
             {
-                InfoCRIRRF = new List<InfoCRIRRF>();
+                InfoCRIRRF = new List<InfoCRIRRFESocial5501>();
             }
 
             InfoCRIRRF.Add(item);
@@ -219,7 +219,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoCRIRRF</returns>
-        public InfoCRIRRF GetInfoCRIRRF(int index)
+        public InfoCRIRRFESocial5501 GetInfoCRIRRF(int index)
         {
             if ((InfoCRIRRF?.Count ?? 0) == 0)
             {
