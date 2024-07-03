@@ -1,50 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<GerarNfse versao="1.20">
-			<Descricao>Envio de lote RPS - Sincrono</Descricao>
-			<RequestURIProducao>https://camboriu.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao>https://camboriu.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
-			<MetodoAPI>post</MetodoAPI>
-			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>nfse</TagAssinatura>
-			<TagAtributoID>nfse</TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>multipart/form-data</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
-			<GZIPCompress>false</GZIPCompress>
-			<LoginConexao>true</LoginConexao>
-		</GerarNfse>
-		<CancelarNfse versao="1.20">
-			<Descricao>Evento de cancelamento da NFSe</Descricao>
-			<RequestURIProducao>https://camboriu.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao>https://camboriu.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
-			<MetodoAPI>post</MetodoAPI>
-			<WebActionProducao></WebActionProducao>
-			<TagAssinatura>nfse</TagAssinatura>
-			<TagAtributoID>nfse</TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>multipart/form-data</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
-			<GZIPCompress>false</GZIPCompress>
-			<LoginConexao>true</LoginConexao>
-		</CancelarNfse>
-		<ConsultarNfse versao="1.20">
-			<Descricao>Consulta da NFSe</Descricao>
-			<RequestURIProducao>https://camboriu.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
-			<RequestURIHomologacao>https://camboriu.atende.net:7443/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIHomologacao>
-			<MetodoAPI>post</MetodoAPI>
-			<WebActionProducao></WebActionProducao>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://simple.camboriu.sc.gov.br/LISIPMC/NFSePrefeituraCamboriu.wso</WebEnderecoProducao>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<WebSoapString></WebSoapString>
-			<WebContentType>multipart/form-data</WebContentType>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<SchemaVersao>1.20</SchemaVersao>
-			<GZIPCompress>false</GZIPCompress>
-			<LoginConexao>true</LoginConexao>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:CancelarNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://simple.camboriu.sc.gov.br/LISIPMC/NFSePrefeituraCamboriu.wso</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:ConsultaNotaporRPSResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://simple.camboriu.sc.gov.br/LISIPMC/NFSePrefeituraCamboriu.wso</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:ConsultaNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
 		</ConsultarNfse>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://simple.camboriu.sc.gov.br/LISIPMC/NFSePrefeituraCamboriu.wso?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>m:LeRPSeGravaNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
 	</Servicos>
 </Configuracoes>
