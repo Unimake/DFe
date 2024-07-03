@@ -768,7 +768,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Unidade de pagamento da parte fixa da remuneração.
         /// </summary>
         [XmlElement("undSalFixo")]
-        public UnidadeSalarioFixo UnidadeSalarioFixo { get; set; }
+        public UndSalFixo UnidadeSalarioFixo { get; set; }
 
         /// <summary>
         /// Descrição do salário por tarefa ou variável e como este é

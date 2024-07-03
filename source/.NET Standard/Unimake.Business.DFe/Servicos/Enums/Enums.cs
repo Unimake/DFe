@@ -10518,12 +10518,12 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion PercTranf
 
-    #region Unidade de pagamento da parte fixa da remuneração. - eSocial.
+    #region undSalFixo - Unidade de pagamento da parte fixa da remuneração. - eSocial.
 
     /// <summary>
     /// Unidade de pagamento da parte fixa da remuneração.
     /// </summary>
-    public enum UnidadeSalarioFixo
+    public enum UndSalFixo
     {
         /// <summary>
         /// 1 - Por hora
