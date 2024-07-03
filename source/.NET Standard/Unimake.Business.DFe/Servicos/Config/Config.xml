@@ -915,7 +915,7 @@
 		<Nome>Camboriú - SC</Nome>
 		<UF>SC</UF>
 		<ArqConfig>CamboriuSC.xml</ArqConfig>
-		<PadraoNFSe>IPM</PadraoNFSe>
+		<PadraoNFSe>SIMPLE</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4316501">
 		<Nome>Salvador do Sul - RS</Nome>
