@@ -262,7 +262,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public CodCateg CodCateg { get; set; }
 
         [XmlElement("tpValorProcTrab")]
-        public string TpValorProcTrab { get; set; }
+        public int TpValorProcTrab { get; set; }
 
         [XmlElement("remFGTSProcTrab")]
         public double RemFGTSProcTrab { get; set; }
