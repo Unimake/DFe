@@ -1,0 +1,65 @@
+//Criar a configuração básica
+oConfiguracao						is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDfe				= 10 // 10=CCG
+oConfiguracao.CertificadoSenha		= "12345678"
+oConfiguracao.CertificadoArquivo	= "C:\Projetos\certificados\UnimakePV.pfx"
+
+//Criar o XML de consulta GTIN
+oConsGTIN			is Unimake.Business.DFe.XML.CCG.ConsGTIN
+oConsGTIN.Versao	= "1.00"
+oConsGTIN.GTIN		= "7896714200217" //"7896015516031"
+
+WHEN EXCEPTION IN
+	//Consumir o serviço
+	oCcgConsGTIN is Unimake.Business.DFe.Servicos.CCG.CcgConsGTIN
+	oCcgConsGTIN.Executar(oConsGTIN, oConfiguracao) 
+	
+	//Demonstrar a string do XML da consulta
+	EDT_RetornoWSString = "String XML consulta:" + CR + CR
+	EDT_RetornoWSString += oCcgConsGTIN.ConteudoXMLAssinado.OuterXml + CR + CR
+	
+	//Demonstrar a string do XML retornado pelo webservice
+	EDT_RetornoWSString += "String XML retornado:" + CR + CR
+	EDT_RetornoWSString += oCcgConsGTIN.RetornoWSString + CR + CR
+	
+	//Ver o conteúdo da tag CStat e XMotivo 
+	EDT_RetornoWSString += "CStat e xMotivo:" + CR + CR
+	EDT_RetornoWSString += oCcgConsGTIN.Result.CStat + " - " + oCcgConsGTIN.Result.xMotivo + CR + CR 
+	
+	IF oCcgConsGTIN.Result.CStat = 9490 //Consulta realizada com sucesso
+		EDT_RetornoWSString += "GTIN:" + CR
+		EDT_RetornoWSString += oCcgConsGTIN.Result.GTIN + CR + CR
+		
+		EDT_RetornoWSString += "NCM:" + CR
+		EDT_RetornoWSString += oCcgConsGTIN.Result.NCM  + CR + CR
+		
+		EDT_RetornoWSString += "Tipo GTIN:" + CR
+		EDT_RetornoWSString += oCcgConsGTIN.Result.TpGTIN.ToString() + CR + CR
+		
+		EDT_RetornoWSString += "Descricao Produto:" + CR
+		EDT_RetornoWSString += oCcgConsGTIN.Result.XProd + CR + CR	
+		
+		EDT_RetornoWSString += "CEST 1:" + CR
+		IF oCcgConsGTIN.Result.GetCESTCount >= 1
+			EDT_RetornoWSString += oCcgConsGTIN.Result.GetCEST(0) + CR + CR
+		ELSE
+			EDT_RetornoWSString += "SEM CEST" + CR + CR
+		END
+		
+		EDT_RetornoWSString += "CEST 2:" + CR
+		IF oCcgConsGTIN.Result.GetCESTCount >= 2
+			EDT_RetornoWSString += oCcgConsGTIN.Result.GetCEST(1) + CR + CR
+		ELSE
+			EDT_RetornoWSString += "SEM CEST" + CR + CR
+		END
+		
+		EDT_RetornoWSString += "CEST 3:" + CR
+		IF oCcgConsGTIN.Result.GetCESTCount >= 3
+			EDT_RetornoWSString += oCcgConsGTIN.Result.GetCEST(2) + CR + CR
+		ELSE
+			EDT_RetornoWSString += "SEM CEST" + CR + CR
+		END
+	END
+DO
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
+END

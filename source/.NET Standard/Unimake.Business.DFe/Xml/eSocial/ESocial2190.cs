@@ -156,7 +156,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int VrSalFx { get; set; }
 
         [XmlElement("undSalFixo")]
-        public UnidadeSalarioFixo UndSalFixo { get; set; }
+        public UndSalFixo UndSalFixo { get; set; }
 
         [XmlElement("tpContr")]
         public TipoDeContratoDeTrabalho TpContr { get; set; }

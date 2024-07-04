@@ -745,7 +745,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public double VrSalFx { get; set; }
 
         [XmlElement("undSalFixo")]
-        public UnidadeSalarioFixo UndSalFixo { get; set; }
+        public UndSalFixo UndSalFixo { get; set; }
 
         [XmlElement("dscSalVar")]
         public string DscSalVar { get; set; }

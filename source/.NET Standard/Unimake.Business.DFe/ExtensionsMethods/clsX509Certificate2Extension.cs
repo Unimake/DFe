@@ -20,6 +20,8 @@ namespace Unimake.Business.DFe.Security
         /// <param name="pinPassword">O Pin Code / Senha / Password do certificado digital</param>
         public static void SetPinPrivateKey(this X509Certificate2 certificado, string pinPassword)
         {
+            AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
             if (certificado == null)
             {
                 throw new ArgumentNullException("certificado == null!");
@@ -81,6 +83,8 @@ namespace Unimake.Business.DFe.Security
             }
 
             var result = false;
+
+            AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
 
             try
             {
@@ -188,6 +192,8 @@ namespace Unimake.Business.DFe.Security
         /// <param name="pinPassword">O Pin Code / Senha / Password do certificado digital</param>
         public void SetPinPrivateKey(X509Certificate2 certificado, string pinPassword)
         {
+            AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
             if (certificado == null)
             {
                 throw new ArgumentNullException("certificado == null!");
@@ -249,6 +255,8 @@ namespace Unimake.Business.DFe.Security
             }
 
             var result = false;
+
+            AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
 
             try
             {
