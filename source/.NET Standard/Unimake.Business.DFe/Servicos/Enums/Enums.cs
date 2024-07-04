@@ -13141,5 +13141,246 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region MtvDeslig
+
+    /// <summary>
+    /// Motivo do término do diretor não empregado, com FGTS.
+    /// </summary>
+    public enum MtvDeslig
+    {
+        /// <summary>
+        /// Rescisão com justa causa, por iniciativa do empregador 
+        /// </summary>
+        [XmlEnum("01")]
+        JustaCausaIniEmp = 01,
+        /// <summary>
+        /// Rescisão sem justa causa, por iniciativa do empregador
+        /// </summary>
+        [XmlEnum("02")]
+        SemJustaCausaIniEmp = 02,
+        /// <summary>
+        /// Rescisão antecipada do contrato a termo por iniciativa do empregador
+        /// </summary>
+        [XmlEnum("03")]
+        AntecipadaTermoIniEmp = 03,
+        /// <summary>
+        /// Rescisão antecipada do contrato a termo por iniciativa do empregado
+        /// </summary>
+        [XmlEnum("04")]
+        AntecipadaTermoIniEmpregado = 04,
+        /// <summary>
+        /// Rescisão por culpa recíproca
+        /// </summary>
+        [XmlEnum("05")]
+        CulpaReciproca = 05,
+        /// <summary>
+        /// Rescisão por término do contrato a termo
+        /// </summary>
+        [XmlEnum("06")]
+        TerminoDoContrato = 06,
+        /// <summary>
+        /// Rescisão do contrato de trabalho por iniciativa do empregado
+        /// </summary>
+        [XmlEnum("07")]
+        AntecipadaIniEmpregado = 07,
+        /// <summary>
+        /// Rescisão do contrato de trabalho por interesse do(a)
+        /// empregado(a), nas hipóteses previstas nos arts. 394 e 483, §1º, da CLT
+        /// </summary>
+        [XmlEnum("08")]
+        RecisaoPorInteresseDoEmpregado = 08,
+        /// <summary>
+        /// Rescisão por opção do empregado em virtude de falecimento
+        /// do empregador individual ou empregador doméstico
+        /// </summary>
+        [XmlEnum("09")]
+        RescisaoPorOpcaoDoEmpregadoPorFalecimentoDoEmpregadorIndividual = 09,
+        /// <summary>
+        /// Rescisão por falecimento do empregado 
+        /// </summary>
+        [XmlEnum("10")]
+        RescisaoPorFalecimentoDoEmpregado = 10,
+        /// <summary>
+        /// Transferência de empregado para empresa do mesmo grupo
+        /// empresarial que tenha assumido os encargos trabalhistas, sem
+        /// que tenha havido rescisão do contrato de trabalho
+        /// </summary>
+        [XmlEnum("11")]
+        TransfParaEmpresaMesmoGrupo = 11,
+        /// <summary>
+        /// Transferência de empregado da empresa consorciada para o
+        /// consórcio que tenha assumido os encargos trabalhistas, e
+        /// vice-versa, sem que tenha havido rescisão do contrato de trabalho
+        /// </summary>
+        [XmlEnum("12")]
+        TransfParaEmpresaConsorciadaAssumindoEncargos = 12,
+
+        /// <summary>
+        /// Transferência de empregado de empresa ou consórcio, para
+        /// outra empresa ou consórcio que tenha assumido os encargos
+        /// trabalhistas por motivo de sucessão (fusão, cisão ou
+        /// incorporação), sem que tenha havido rescisão do contrato de trabalho
+        /// </summary>
+        [XmlEnum("13")]
+        TransfParaEmpresaConsorciadaAssumindoEncargosSucessao = 13,
+        /// <summary>
+        /// Declaração de nulidade do contrato de trabalho por
+        /// infringência ao inciso II do art. 37 da Constituição Federal,
+        /// quando mantido o direito ao salário
+        /// </summary>
+        [XmlEnum("16")]
+        DeclaracaoNulidadePorInfringencia = 16,
+        /// <summary>
+        /// Rescisão indireta do contrato de trabalho
+        /// </summary>
+        [XmlEnum("17")]
+        RescisaoIndireta = 17,
+        /// <summary>
+        /// Reforma militar 
+        /// </summary>
+        [XmlEnum("21")]
+        ReformaMilitar = 21,
+        /// <summary>
+        /// Reserva militar 
+        /// </summary>
+        [XmlEnum("12")]
+        ReservaMilitar = 22,
+        /// <summary>
+        /// Exoneração
+        /// </summary>
+        [XmlEnum("23")]
+        Exoneracao = 23,
+        /// <summary>
+        /// Demissão 
+        /// </summary>
+        [XmlEnum("24")]
+        Demissao = 24,
+        /// <summary>
+        /// Vacância de cargo efetivo
+        /// </summary>
+        [XmlEnum("25")]
+        VacanciaDeCargoEfetivo = 25,
+
+        /// <summary>
+        /// Rescisão do contrato de trabalho por paralisação temporária
+        /// ou definitiva da empresa, estabelecimento ou parte das
+        /// atividades motivada por atos de autoridade municipal, estadual ou federal
+        /// </summary>
+        [XmlEnum("26")]
+        ParalisacaoDaEmpresaPorAtosDeAutoridade = 26,
+        /// <summary>
+        /// Rescisão por motivo de força maior 
+        /// </summary>
+        [XmlEnum("27")]
+        RescisaoPorMotivoDeForcaMaior = 27,
+        /// <summary>
+        /// Redistribuição ou Reforma Administrativa 
+        /// </summary>
+        [XmlEnum("29")]
+        RedistribuicaoOuReformaAdministrativa = 29,
+        /// <summary>
+        /// Mudança de regime trabalhista 
+        /// </summary>
+        [XmlEnum("30")]
+        MudancaDeRegimeTrabalhista = 30,
+        /// <summary>
+        /// Reversão de reintegração 
+        /// </summary>
+        [XmlEnum("31")]
+        ReversaoDeReintegracao = 31,
+        /// <summary>
+        /// Extravio de militar
+        /// </summary>
+        [XmlEnum("32")]
+        ExtravioDeMilitar = 32,
+        /// <summary>
+        /// Rescisão por acordo entre as partes (art. 484-A da CLT)
+        /// </summary>
+        [XmlEnum("33")]
+        AcordoEntreAsPartes = 33,
+        /// <summary>
+        /// Transferência de titularidade do empregado doméstico para
+        /// outro representante da mesma unidade familiar
+        /// </summary>
+        [XmlEnum("34")]
+        TransfDeTitularidadeEmpregadoDomestico = 34,
+        /// <summary>
+        /// Mudança de CPF
+        /// </summary>
+        [XmlEnum("36")]
+        MudancaCPF = 36,
+        /// <summary>
+        /// Remoção, em caso de alteração do órgão declarante
+        /// </summary>
+        [XmlEnum("37")]
+        RemocaoPorAlteracaoOrgaoDeclarante = 37,
+        /// <summary>
+        /// Aposentadoria, exceto por invalidez
+        /// </summary>
+        [XmlEnum("38")]
+        AposentadoriaExcetoInvalidez = 38,
+        /// <summary>
+        /// Aposentadoria de servidor estatutário, por invalidez
+        /// </summary>
+        [XmlEnum("39")]
+        AposentadoriaPorInvalidez = 39,
+        /// <summary>
+        /// Término de exercício de mandato
+        /// </summary>
+        [XmlEnum("40")]
+        TerminoMandato = 40,
+        /// <summary>
+        /// Rescisão do contrato de aprendizagem por desempenho
+        /// insuficiente ou inadaptação do aprendiz
+        /// </summary>
+        [XmlEnum("41")]
+        ContratoAprendizagemPorDesempenhoOuInadaptacao = 41,
+        /// <summary>
+        /// Rescisão do contrato de aprendizagem por ausência
+        /// injustificada do aprendiz à escola que implique perda do ano letivo
+        /// </summary>
+        [XmlEnum("42")]
+        ContratoAprendizagemPorAusenciaInjustificada = 42,
+
+        /// <summary>
+        /// Transferência de empregado de empresa considerada inapta
+        /// por inexistência de fato
+        /// </summary>
+        [XmlEnum("43")]
+        TransfEmpregadoEmpresaInapta = 43,
+        /// <summary>
+        /// Agrupamento contratual 
+        /// </summary>
+        [XmlEnum("44")]
+        AgrupamentoContratual = 44,
+        /// <summary>
+        /// Exclusão de militar das Forças Armadas do serviço ativo, com efeitos financeiros
+        /// </summary>
+        [XmlEnum("45")]
+        ExclusaoMilitarComEfeitosEfinanceiros = 45,
+        /// <summary>
+        /// Exclusão de militar das Forças Armadas do serviço ativo, sem efeitos financeiros
+        /// </summary>
+        [XmlEnum("46")]
+        ExclusaoMilitarSemEfeitosEfinanceiros = 46,
+        /// <summary>
+        /// Rescisão do contrato de trabalho por encerramento da
+        /// empresa, de seus estabelecimentos ou supressão de parte de suas atividades
+        /// </summary>
+        [XmlEnum("47")]
+        EncerramentoDaEmpresaOuSupressaoDeSuasAtividades = 47,
+        /// <summary>
+        /// Falecimento do empregador individual sem continuação da atividade
+        /// </summary>
+        [XmlEnum("48")]
+        FalecimentoDoEmpregadorIndividualSemContinuacao = 48,
+        /// <summary>
+        /// Falecimento do empregador doméstico sem continuação da atividade
+        /// </summary>
+        [XmlEnum("49")]
+        FalecimentoDoEmpregadorDomesticoSemContinuacao = 49
+    }
+    #endregion MtvDeslig
+
     #endregion ESocial
 }
