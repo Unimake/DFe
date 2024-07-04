@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/download/solicitacao/id/v1_0_0">
+	<download>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<solicDownloadEvtsPorId>
+			<id>ID1111111111111111111111111111111111</id>
+		</solicDownloadEvtsPorId>
+	</download>
+</eSocial>

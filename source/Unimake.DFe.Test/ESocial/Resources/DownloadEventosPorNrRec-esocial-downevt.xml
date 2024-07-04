@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/download/solicitacao/nrRecibo/v1_0_0">
+	<download>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<solicDownloadEventosPorNrRecibo>
+			<nrRec>1.2.1111111111111111111</nrRec>
+		</solicDownloadEventosPorNrRecibo>
+	</download>
+</eSocial>
