@@ -2349,10 +2349,23 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("infEntregaParcial")]
         public InfEntregaParcial InfEntregaParcial { get; set; }
 
+        /// <summary>
+        /// Prestação é parcial? Sim ou Não (1 ou 0)
+        /// </summary>
+        [XmlElement("indPrestacaoParcial")]
+        public SimNao IndPrestacaoParcial { get; set; } = SimNao.Nao;
+
+        /// <summary>
+        /// Grupo de informações das NFe entregues na prestação parcial do CTe (Este grupo sempre é informado quando indPrestacaoParcial for igual a Sim (1))
+        /// </summary>
+        [XmlElement("infNFePresParcial")]
+        public List<InfNFePresParcial> InfNFePresParcial { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeSegCodBarra() => !string.IsNullOrWhiteSpace(SegCodBarra);
         public bool ShouldSerializeIndReentrega() => IndReentrega == SimNao.Sim;
+        public bool ShouldSerializeIndPrestacaoParcial() => IndPrestacaoParcial == SimNao.Sim;
 
         #endregion
 
@@ -2425,6 +2438,40 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// Retorna a quantidade de elementos existentes na lista Peri
         /// </summary>
         public int GetPeriCount => (Peri != null ? Peri.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="elemento">Elemento</param>
+        public void AddInfNFePresParcial(Peri elemento)
+        {
+            if (InfNFePresParcial == null)
+            {
+                InfNFePresParcial = new List<InfNFePresParcial>();
+            }
+
+            Peri.Add(elemento);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfNFePresParcial (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfNFePresParcial</returns>
+        public InfNFePresParcial GetInfNFePresParcial(int index)
+        {
+            if ((InfNFePresParcial?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfNFePresParcial[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfNFePresParcial
+        /// </summary>
+        public int GetInfNFePresParcialCount => (InfNFePresParcial != null ? InfNFePresParcial.Count : 0);
 
 #endif
     }
@@ -3268,5 +3315,24 @@ namespace Unimake.Business.DFe.Xml.MDFe
     {
         [XmlElement("qrCodMDFe")]
         public string QrCodMDFe { get; set; }
+    }
+
+    /// <summary> 
+    /// Grupo de informações das NFe entregues na prestação parcial do CTe(Este grupo sempre é informado quando indPrestacaoParcial estiver informado)
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.InfNFePresParcial")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    public class InfNFePresParcial
+    {
+        /// <summary>
+        /// Chave de acesso da NFe entregue na prestação parcial do CTe relacionado
+        /// </summary>
+        [XmlElement("chNFe")]
+        public string ChNFe { get; set; }
     }
 }
