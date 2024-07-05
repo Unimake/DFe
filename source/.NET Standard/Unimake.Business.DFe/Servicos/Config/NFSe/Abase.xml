@@ -7,7 +7,7 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/RecepcionarLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/RecepcionarLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Rps</TagAssinatura>
       <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
       <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
@@ -26,7 +26,7 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/CancelaNfse</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/CancelaNfse</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura>Pedido</TagAssinatura>
       <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -45,7 +45,7 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/ConsultaLoteRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/ConsultaLoteRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
@@ -64,7 +64,7 @@
       <WebEnderecoProducao>http://nfse.abase.com.br/webservice_v2/nfsews.asmx</WebEnderecoProducao>
       <WebActionHomologacao>http://nfse.abase.com.br/NFSeWS/ConsultaNfseRps</WebActionHomologacao>
       <WebActionProducao>http://nfse.abase.com.br/NFSeWS/ConsultaNfseRps</WebActionProducao>
-      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <SchemaArquivo></SchemaArquivo>
       <TagAssinatura></TagAssinatura>
       <TagAtributoID></TagAtributoID>
       <TagLoteAssinatura></TagLoteAssinatura>
