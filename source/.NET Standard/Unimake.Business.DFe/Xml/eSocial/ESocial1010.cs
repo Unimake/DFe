@@ -161,7 +161,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
         /// </summary>
         [XmlElement("codIncFGTS")]
-        public CodigoIncidenciaRubricaFGTS CodIncFGTS { get; set; }
+        public CodIncFGTS CodIncFGTS { get; set; }
 
         /// <summary>
         /// Código de incidência da rubrica para as contribuições do Regime Próprio de Previdência Social - RPPS ou do Sistema de Proteção Social dos Militares das Forças Armadas - SPSMFA.

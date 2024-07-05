@@ -9448,12 +9448,12 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion
 
-    #region eSocial - Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
+    #region codIncFGTS - Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS. eSocial
     /// <summary>
     /// Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
     /// Validação: Para utilização de código [91, 92, 93], é necessária a existência de grupo com informações relativas ao processo.
     /// </summary>
-    public enum CodigoIncidenciaRubricaFGTS
+    public enum CodIncFGTS
     {
         /// <summary>
         /// 00 - Não é base de cálculo do FGTS
@@ -9478,6 +9478,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("21")]
         BaseDeCalculoFGTSAvisoPrevioIndenizado = 21,
+
+        /// <summary>
+        /// 31 - Desconto eConsignado
+        /// </summary>
+        [XmlEnum("31 ")]
+        DescontoeConsignado = 31,
 
         /// <summary>
         /// 91 - Incidência suspensa em decorrência de decisão judicial - FGTS mensal
