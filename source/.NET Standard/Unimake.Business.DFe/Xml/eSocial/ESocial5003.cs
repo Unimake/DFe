@@ -404,6 +404,46 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("procCS")]
         public ProcCS ProcCS { get; set; }
 
+        [XmlElement("eConsignado")]
+        public List<EConsignado> EConsignado { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddEConsignado(EConsignado item)
+        {
+            if (EConsignado == null)
+            {
+                EConsignado = new List<EConsignado>();
+            }
+
+            EConsignado.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista EConsignado (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da EConsignado</returns>
+        public EConsignado GetEConsignado(int index)
+        {
+            if ((EConsignado?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return EConsignado[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista EConsignado
+        /// </summary>
+        public int GetEConsignadoCount => (EConsignado != null ? EConsignado.Count : 0);
+#endif
+
         #region ShouldSerialize
 
         public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
@@ -834,5 +874,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeDpsFGTSE() => DpsFGTSE > 0;
 
         #endregion
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EConsignado")]
+    [ComVisible(true)]
+#endif
+    public class EConsignado
+    {
+        [XmlElement("instFinanc")]
+        public string InstFinanc { get; set; }
+
+        [XmlElement("nrContrato")]
+        public string NrContrato { get; set; }
+
+        [XmlElement("vreConsignado")]
+        public double VreConsignado { get; set; }
     }
 }

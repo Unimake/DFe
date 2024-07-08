@@ -76,6 +76,11 @@
 						<procCS>
 							<nrProcJud>nrProcJud__________1</nrProcJud>
 						</procCS>
+						<eConsignado>
+							<instFinanc>banco1</instFinanc>
+							<nrContrato>12345678</nrContrato>
+							<vreConsignado>45.59</vreConsignado>
+						</eConsignado>
 					</infoTrabFGTS>
 				</ideLotacao>
 			</ideEstab>

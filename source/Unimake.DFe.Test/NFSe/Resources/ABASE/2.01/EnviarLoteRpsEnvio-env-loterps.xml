@@ -40,7 +40,7 @@
             <CodigoCnae>123</CodigoCnae>
             <Discriminacao>Serv.Exp(Arm/Seg): ELQ5155 Cesv: 336748 Nro.Recebimento.: 00575450 11 ESTADIA 297,00 01 MOVTO/SEGURO/ROD. 253,00 01 PERIG. 120,00 Impostos nesta NF: Federais: PIS 0,65%: 4,36 COFINS 3,00%: 20,10 IR 4,80%: 32,16 CSLL 2,88%: 19,30 Municipais: ISS 5,00%: 33,50</Discriminacao>
             <CodigoMunicipio>5003207</CodigoMunicipio>
-            <ExigibilidadeISS>1</ExigibilidadeISS>
+            <ExigibilidadeISS>8</ExigibilidadeISS>
             <MunicipioIncidencia>5003207</MunicipioIncidencia>
           </Servico>
           <Prestador>
