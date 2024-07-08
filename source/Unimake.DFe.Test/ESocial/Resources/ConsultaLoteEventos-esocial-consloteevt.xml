@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/lote/eventos/envio/consulta/retornoProcessamento/v1_0_0">
+	<consultaLoteEventos>
+		<protocoloEnvio>1.8.1111111111111111111</protocoloEnvio>
+	</consultaLoteEventos>
+</eSocial>
