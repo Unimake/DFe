@@ -909,6 +909,16 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("411503")]
         RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
 
+        #region Eventos ainda não identificados ou desconhecidos
+
+        /// <summary>
+        /// Evento desconhecido - Quando descobrirmos vamos mudar a descrição
+        /// </summary>
+        [XmlEnum("510630")]
+        EventoDesconhecido1 = 510630,
+
+        #endregion
+
         /// <summary>
         /// 610130 - Comprovante de entrega do CTe
         /// </summary>
@@ -1462,7 +1472,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 3 - NF-e de ajuste
         /// </summary>
         [XmlEnum("3")]
-        Auste = 3,
+        Ajuste = 3,
 
         /// <summary>
         /// 4 - Devolução de mercadoria
