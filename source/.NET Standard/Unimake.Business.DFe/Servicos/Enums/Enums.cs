@@ -909,15 +909,17 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("411503")]
         RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
 
-        #region Eventos ainda não identificados ou desconhecidos
+        /// <summary>
+        /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510620")]
+        RegistroPassagemAutomatico = 510620,
 
         /// <summary>
-        /// Evento desconhecido - Quando descobrirmos vamos mudar a descrição
+        /// 510630 - Registro de Passagem Automático Originado no MDF-e (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("510630")]
-        EventoDesconhecido1 = 510630,
-
-        #endregion
+        RegistoPassagemAutomaticoOriginadoMDFe = 510630,
 
         /// <summary>
         /// 610130 - Comprovante de entrega do CTe
@@ -1104,6 +1106,18 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoInsucessoEntrega = 110191,
 
         /// <summary>
+        /// 510620 - Registro de Passagem Automático do CTe (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510620")]
+        RegistroPassagemAutomatico = 510620,
+
+        /// <summary>
+        /// 510630 - Registro de Passagem Automático Originado no MDF-e  (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510630")]
+        RegistoPassagemAutomaticoOriginadoMDFe = 510630,
+
+        /// <summary>
         /// 610110 - Evento de prestação de serviço em desacordo CTe
         /// </summary>
         [XmlEnum("610110")]
@@ -1131,13 +1145,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 310611 - MDFe cancelado (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("310611")]
-        MDFeCancelado = 310611,
-
-        /// <summary>
-        /// 510620 - Registro de Passagem Automático CTe (Evento exclusivo do fisco)
-        /// </summary>
-        [XmlEnum("510620")]
-        RegistroPassagemAutomatico = 510620
+        MDFeCancelado = 310611
     }
 
     #endregion
