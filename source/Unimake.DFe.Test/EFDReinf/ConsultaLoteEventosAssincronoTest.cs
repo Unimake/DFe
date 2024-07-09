@@ -85,13 +85,13 @@ namespace Unimake.DFe.Test.EFDReinf
 
         public ReinfEnvioLoteEventos reinfTeste = new Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos
         {
-            EnvioLoteEventos = new EnvioLoteEventos
+            EnvioLoteEventos = new EnvioLoteEventosReinf
             {
-                Eventos = new Eventos
+                Eventos = new EventosReinf
                 {
-                    Evento = new List<Evento>
+                    Evento = new List<EventoReinf>
                     {
-                        new Evento
+                        new EventoReinf
                     {
                         Reinf1000 = new Reinf1000
                         {

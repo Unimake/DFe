@@ -13398,5 +13398,33 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion MtvDeslig
 
+    #region grupo - eSocial
+
+    /// <summary>
+    /// Grupos dos eventos eSocial.
+    /// </summary>
+    public enum Grupo
+    {
+        /// <summary>
+        /// 1 - Eventos de Tabelas
+        /// </summary>
+        [XmlEnum("1")]
+        EventosDeTabelas = 1,
+
+        /// <summary>
+        /// 2 - Eventos não Periódicos
+        /// </summary>
+        [XmlEnum("2")]
+        EventosNaoPeriodicos = 2,
+
+        /// <summary>
+        /// 3 - Eventos de Periódicos
+        /// </summary>
+        [XmlEnum("3")]
+        EventosDePeriodicos = 3
+    }
+
+    #endregion
+
     #endregion ESocial
 }

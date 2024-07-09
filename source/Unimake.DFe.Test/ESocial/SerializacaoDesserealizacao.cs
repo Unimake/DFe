@@ -906,19 +906,19 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do Evento 8299 eSocial
+        /// Testar a serialização e desserialização do XML EnvioLoteEventos
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\8299_evtBaixa-esocial-evt.xml")]
-        public void SerializacaoDesserializacaoESocial8299(string arqXML)
+        [InlineData(@"..\..\..\ESocial\Resources\EnvioLoteEventos-esocial-loteevt.xml")]
+        public void SerializacaoDesserializacaoESocialEnvioLoteEventos(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial8299>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
