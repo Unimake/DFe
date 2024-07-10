@@ -1,8 +1,10 @@
 ﻿#pragma warning disable CS1591
 using System;
+using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -229,8 +231,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o valor total da comercialização.
         /// Validação: Deve ser maior que 0 (zero).
         /// </summary>
-        [XmlElement("vrTotCom")]
+        [XmlIgnore]
         public double VrTotCom { get; set; }
+
+        /// <summary>
+        /// Preencher com o valor total da comercialização.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlElement("vrTotCom")]
+        public string VrTotComContribField
+        {
+            get => VrTotCom.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrTotCom = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Identificação dos adquirentes da produção.

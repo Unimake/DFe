@@ -7,6 +7,10 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using System.Diagnostics;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -182,8 +186,47 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("aliqRat")]
         public string AliqRat { get; set; }
 
+        /// <summary>
+        /// Fator Acidentário de Prevenção - FAP.
+        /// Validação: Preenchimento obrigatório e exclusivo por
+        /// Pessoa Jurídica e:
+        /// a) ideEstab/tpInsc = [4] e o campo cnpjResp não estiver
+        /// informado; ou
+        /// b) ideEstab/tpInsc = [1, 4] e o fator informado for diferente
+        /// do definido pelo órgão governamental competente para o
+        /// estabelecimento ou para o CNPJ responsável pela inscrição
+        /// no CNO(neste caso, deverá haver informações de processo
+        /// em procAdmJudFap); ou c) ideEstab/tpInsc = [1, 4] e o estabelecimento ou o CNPJ
+        /// responsável pela inscrição no CNO não for encontrado na tabela FAP.
+        /// Se informado, deve ser um número maior ou igual a 0,5000
+        /// e menor ou igual a 2,0000 e, no caso da alínea "b", deve ser
+        /// diferente do valor definido pelo órgão governamental competente.
+        /// </summary>
+        [XmlIgnore]
+        protected double Fap { get; set; }
+
+        /// <summary>
+        /// Fator Acidentário de Prevenção - FAP.
+        /// Validação: Preenchimento obrigatório e exclusivo por
+        /// Pessoa Jurídica e:
+        /// a) ideEstab/tpInsc = [4] e o campo cnpjResp não estiver
+        /// informado; ou
+        /// b) ideEstab/tpInsc = [1, 4] e o fator informado for diferente
+        /// do definido pelo órgão governamental competente para o
+        /// estabelecimento ou para o CNPJ responsável pela inscrição
+        /// no CNO(neste caso, deverá haver informações de processo
+        /// em procAdmJudFap); ou c) ideEstab/tpInsc = [1, 4] e o estabelecimento ou o CNPJ
+        /// responsável pela inscrição no CNO não for encontrado na tabela FAP.
+        /// Se informado, deve ser um número maior ou igual a 0,5000
+        /// e menor ou igual a 2,0000 e, no caso da alínea "b", deve ser
+        /// diferente do valor definido pelo órgão governamental competente.
+        /// </summary>
         [XmlElement("fap")]
-        public string Fap { get; set; }
+        public string FapField
+        {
+            get => Fap.ToString("F4", CultureInfo.InvariantCulture);
+            set => Fap = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Grupo que identifica, em caso de existência, o processo administrativo ou judicial em que houve decisão/sentença favorável ao contribuinte modificando a alíquota RAT da empresa.
@@ -201,7 +244,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeAliqRatField() => !string.IsNullOrEmpty(AliqRat);
 
-        public bool ShouldSerializeFapField() => !string.IsNullOrEmpty(Fap);
+        public bool ShouldSerializeFapField() => !Fap.IsNullOrEmpty();
 
         #endregion
     }

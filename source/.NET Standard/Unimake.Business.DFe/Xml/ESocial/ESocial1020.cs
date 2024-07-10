@@ -1,7 +1,9 @@
 ﻿#pragma warning disable CS1591
 using System;
+using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -418,12 +420,45 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         /// <summary>
         /// Fator Acidentário de Prevenção - FAP.
-        /// Validação: Deve ser um número maior ou igual a 0,5000
-        /// e menor ou igual a 2,0000, de acordo com o
-        /// estabelecido pelo órgão governamental competente.
+        /// Validação: Preenchimento obrigatório e exclusivo por
+        /// Pessoa Jurídica e:
+        /// a) ideEstab/tpInsc = [4] e o campo cnpjResp não estiver
+        /// informado; ou
+        /// b) ideEstab/tpInsc = [1, 4] e o fator informado for diferente
+        /// do definido pelo órgão governamental competente para o
+        /// estabelecimento ou para o CNPJ responsável pela inscrição
+        /// no CNO(neste caso, deverá haver informações de processo
+        /// em procAdmJudFap); ou c) ideEstab/tpInsc = [1, 4] e o estabelecimento ou o CNPJ
+        /// responsável pela inscrição no CNO não for encontrado na tabela FAP.
+        /// Se informado, deve ser um número maior ou igual a 0,5000
+        /// e menor ou igual a 2,0000 e, no caso da alínea "b", deve ser
+        /// diferente do valor definido pelo órgão governamental competente.
+        /// </summary>
+        [XmlIgnore]
+        public double Fap { get; set; }
+
+        /// <summary>
+        /// Fator Acidentário de Prevenção - FAP.
+        /// Validação: Preenchimento obrigatório e exclusivo por
+        /// Pessoa Jurídica e:
+        /// a) ideEstab/tpInsc = [4] e o campo cnpjResp não estiver
+        /// informado; ou
+        /// b) ideEstab/tpInsc = [1, 4] e o fator informado for diferente
+        /// do definido pelo órgão governamental competente para o
+        /// estabelecimento ou para o CNPJ responsável pela inscrição
+        /// no CNO(neste caso, deverá haver informações de processo
+        /// em procAdmJudFap); ou c) ideEstab/tpInsc = [1, 4] e o estabelecimento ou o CNPJ
+        /// responsável pela inscrição no CNO não for encontrado na tabela FAP.
+        /// Se informado, deve ser um número maior ou igual a 0,5000
+        /// e menor ou igual a 2,0000 e, no caso da alínea "b", deve ser
+        /// diferente do valor definido pelo órgão governamental competente.
         /// </summary>
         [XmlElement("fap")]
-        public double Fap { get; set; }
+        public string FapField
+        {
+            get => Fap.ToString("F4", CultureInfo.InvariantCulture);
+            set => Fap = Converter.ToDouble(value);
+        }
     }
     #endregion DadosOpPort
 
