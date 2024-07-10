@@ -910,6 +910,18 @@ namespace Unimake.Business.DFe.Servicos
         RespostaCancelamentoPedidoProrrogacaoPrazo2 = 411503,
 
         /// <summary>
+        /// 510620 - Registro de Passagem Automático da NFe (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510620")]
+        RegistroPassagemAutomatico = 510620,
+
+        /// <summary>
+        /// 510630 - Registro de Passagem Automático Originado no MDF-e (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510630")]
+        RegistoPassagemAutomaticoOriginadoMDFe = 510630,
+
+        /// <summary>
         /// 610130 - Comprovante de entrega do CTe
         /// </summary>
         [XmlEnum("610130")]
@@ -1094,6 +1106,18 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoInsucessoEntrega = 110191,
 
         /// <summary>
+        /// 510620 - Registro de Passagem Automático do CTe (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510620")]
+        RegistroPassagemAutomatico = 510620,
+
+        /// <summary>
+        /// 510630 - Registro de Passagem Automático Originado no MDF-e  (Evento exclusivo do fisco)
+        /// </summary>
+        [XmlEnum("510630")]
+        RegistoPassagemAutomaticoOriginadoMDFe = 510630,
+
+        /// <summary>
         /// 610110 - Evento de prestação de serviço em desacordo CTe
         /// </summary>
         [XmlEnum("610110")]
@@ -1121,13 +1145,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 310611 - MDFe cancelado (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("310611")]
-        MDFeCancelado = 310611,
-
-        /// <summary>
-        /// 510620 - Registro de Passagem Automático CTe (Evento exclusivo do fisco)
-        /// </summary>
-        [XmlEnum("510620")]
-        RegistroPassagemAutomatico = 510620
+        MDFeCancelado = 310611
     }
 
     #endregion
@@ -1462,7 +1480,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 3 - NF-e de ajuste
         /// </summary>
         [XmlEnum("3")]
-        Auste = 3,
+        Ajuste = 3,
 
         /// <summary>
         /// 4 - Devolução de mercadoria

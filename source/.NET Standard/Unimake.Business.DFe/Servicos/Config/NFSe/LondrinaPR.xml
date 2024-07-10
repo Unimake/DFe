@@ -73,7 +73,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://iss.londrina.pr.gov.br/ws/v1_03"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://iss.londrina.pr.gov.br/ws/v1_03"><soapenv:Header/><soapenv:Body>{xmlBodyScapeRetorno}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>

@@ -23,7 +23,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string Versao { get; set; } = "1.05.01";
 
         [XmlElement("envioLoteEventos")]
-        public EnvioLoteEventos EnvioLoteEventos { get; set; }
+        public EnvioLoteEventosReinf EnvioLoteEventos { get; set; }
     }
 
 #if INTEROP
@@ -31,13 +31,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EnvioLoteEventos")]
     [ComVisible(true)]
 #endif
-    public class EnvioLoteEventos
+    public class EnvioLoteEventosReinf
     {
         [XmlElement("ideContribuinte")]
         public IdeContribuinte IdeContribuinte { get; set; }
 
         [XmlElement("eventos")]
-        public Eventos Eventos { get; set; }
+        public EventosReinf Eventos { get; set; }
     }
 
 #if INTEROP
@@ -60,13 +60,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Eventos")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EventosReinf")]
     [ComVisible(true)]
 #endif
-    public class Eventos
+    public class EventosReinf
     {
         [XmlElement("evento")]
-        public List<Evento> Evento { get; set; }
+        public List<EventoReinf> Evento { get; set; }
     }
 
 #if INTEROP
@@ -74,7 +74,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Evento")]
     [ComVisible(true)]
 #endif
-    public class Evento : ReinfEventoBase
+    public class EventoReinf : ReinfEventoBase
     {
         [XmlElement("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02")]
         public Reinf1000 Reinf1000 { get; set; }

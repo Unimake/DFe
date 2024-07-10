@@ -34,6 +34,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtTabEstab
     {
+        [XmlAttribute(AttributeName = "Id", DataType = "token")]
+        public string ID { get; set; }
+
         [XmlElement("ideEvento")]
         public IdeEvento IdeEvento { get; set; }
 

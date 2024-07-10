@@ -33,18 +33,18 @@ namespace Unimake.DFe.Test.EFDReinf
             var conteudoXML = new Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos
             {
                 Versao = "1.05.01",
-                EnvioLoteEventos = new EnvioLoteEventos
+                EnvioLoteEventos = new EnvioLoteEventosReinf
                 {
                     IdeContribuinte = new IdeContribuinte
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "12345678945687"
                     },
-                    Eventos = new Eventos
+                    Eventos = new EventosReinf
                     {
-                        Evento = new List<Evento>
+                        Evento = new List<EventoReinf>
                             {
-                                new Evento
+                                new EventoReinf
                             {
                                 ID = "ID1000000000000002021052608080800001",
                                 Reinf1000 = new Reinf1000
