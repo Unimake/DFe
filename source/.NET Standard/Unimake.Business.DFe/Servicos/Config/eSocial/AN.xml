@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="eSocial">
+		<EnvioLoteEventos versao="1.1.0">
+			<Descricao>Enviar Lote Eventos eSocial</Descricao>
+			<RequestURIProducao>https://webservices.envio.esocial.gov.br/servicos/empregador/enviarloteeventos/WsEnviarLoteEventos.svc</RequestURIProducao>
+			<RequestURIHomologacao>https://webservices.producaorestrita.esocial.gov.br/servicos/empregador/enviarloteeventos/WsEnviarLoteEventos.svc</RequestURIHomologacao>
+			<WebContentType>application/xml</WebContentType>
+			<MetodoAPI>post</MetodoAPI>
+			<TipoRetorno>application/xml</TipoRetorno>
+			<WebSoapString></WebSoapString>
+		</EnvioLoteEventos>
+	</Servicos>
+</Configuracoes>

@@ -111,6 +111,7 @@
 		<None Remove="Servicos\Config\CTe\TO.xml" />
 		<None Remove="Servicos\Config\EFDReinf\AN.xml" />
 		<None Remove="Servicos\Config\EFDReinf\Config.xml" />
+		<None Remove="Servicos\Config\eSocial\AN.xml" />
 		<None Remove="Servicos\Config\GNRE\AC.xml" />
 		<None Remove="Servicos\Config\GNRE\AL.xml" />
 		<None Remove="Servicos\Config\GNRE\AM.xml" />
@@ -872,6 +873,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\eSocial\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
