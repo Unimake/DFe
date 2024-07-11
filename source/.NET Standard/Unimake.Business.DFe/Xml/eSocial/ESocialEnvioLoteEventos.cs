@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.EFDReinf;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -137,6 +136,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtMonit/v_S_01_02_00")]
         public ESocial2220 ESocial2220 { get; set; }
+
+        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00")]
+        public ESocial2221 ESocial2221 { get; set; }
 
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAfastTemp/v_S_01_02_00")]
         public ESocial2230 ESocial2230 { get; set; }
