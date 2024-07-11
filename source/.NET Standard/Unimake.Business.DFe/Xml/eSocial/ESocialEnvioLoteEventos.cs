@@ -18,6 +18,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     public class ESocialEnvioLoteEventos : XMLBase
     {
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
+
         [XmlElement("envioLoteEventos")]
         public EnvioLoteEventosESocial EnvioLoteEventos { get; set; }
     }

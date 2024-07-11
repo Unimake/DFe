@@ -418,7 +418,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 68 - ESocial Informacoes Do Empregador S-1000
         /// </summary>
         [Description("ESocial Informacoes Do Empregador S-1000")]
-        ESocialInformacoesDoEmpregador = 69,
+        ESocialInformacoesDoEmpregador = 68,
+
+        /// <summary>
+        /// 69 - ESocial Enviar Lote Eventos
+        /// </summary>
+        [Description("ESocial Enviar Lote Eventos")]
+        ESocialEnviarLoteEventos = 69,
         #endregion
 
         #region Gerais

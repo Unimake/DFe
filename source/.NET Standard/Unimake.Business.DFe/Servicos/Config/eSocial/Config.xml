@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigPadrao>
-	<Versao ID="1.05.01">
+	<Versao ID="1.1.0">
 		<WebContentType>text/xml</WebContentType>
 		<WebTagRetorno>ideStatus</WebTagRetorno>
-		<SchemaVersao>1.05.01</SchemaVersao>
-		<TargetNS>http://sped.fazenda.gov.br</TargetNS>
+		<SchemaVersao>1.1.0</SchemaVersao>
 	</Versao>
 </ConfigPadrao>

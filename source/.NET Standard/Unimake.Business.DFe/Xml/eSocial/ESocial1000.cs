@@ -218,7 +218,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indica se houve opção pelo registro eletrônico de empregados. Caso o declarante seja órgão público sem empregados regidos pela CLT, informar [0].
         /// </summary>
         [XmlElement("indOptRegEletron")]
-        public IndOptRegEletron IndOptRegimeEletronico { get; set; }
+        public IndOptRegEletron IndOptRegEletron { get; set; }
 
         /// <summary>
         /// Informações complementares - Empresas isentas - Dados da isenção.
