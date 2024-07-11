@@ -188,7 +188,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 //Municípios pontuais com configuração diferente:
                 //São José dos Pinhais - PR     |GINFES
                 //Varginha - MG                 |BETHA
-                if (configuracao.CodigoMunicipio != 4125506 || configuracao.CodigoMunicipio != 3170701)
+                //Fortaleza - CE                |GINFES
+                if (configuracao.CodigoMunicipio != 4125506 || configuracao.CodigoMunicipio != 3170701 || configuracao.CodigoMunicipio != 2304400)
                 {
                     configuracao.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), configuracao.PadraoNFSe.ToString());
                 }
