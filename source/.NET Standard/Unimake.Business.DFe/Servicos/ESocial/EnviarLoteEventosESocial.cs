@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Exceptions;
@@ -70,10 +69,10 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="reinfRecepcionarLoteAssinc">Objeto contendo o XML a ser enviado</param>
+        /// <param name="eSocialEnviarLoteEventos">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ESocialEnvioLoteEventos reinfRecepcionarLoteAssinc, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ESocialEnvioLoteEventos eSocialEnviarLoteEventos, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -82,7 +81,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(reinfRecepcionarLoteAssinc?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfRecepcionarLoteAssinc)), configuracao);
+                Inicializar(eSocialEnviarLoteEventos?.GerarXML() ?? throw new ArgumentNullException(nameof(eSocialEnviarLoteEventos)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
