@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Ocorrencias
     {
-        [XmlElement("Ocorrencia")]
+        [XmlElement("ocorrencia")]
         public List<Ocorrencia> Ocorrencia { get; set; }
 
 #if INTEROP
