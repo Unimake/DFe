@@ -9,8 +9,7 @@ using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
 using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using System.Diagnostics;
-using Unimake.Business.DFe.Xml.GNRE;
+
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {

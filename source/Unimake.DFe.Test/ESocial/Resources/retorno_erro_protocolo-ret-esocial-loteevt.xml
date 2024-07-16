@@ -1,0 +1,16 @@
+<eSocial xmlns="http://www.esocial.gov.br/schema/lote/eventos/envio/retornoEnvio/v1_1_0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<retornoEnvioLoteEventos>
+		<status>
+			<cdResposta>401</cdResposta>
+			<descResposta>Lote Incorreto - Erro preenchimento.</descResposta>
+			<ocorrencias>
+				<ocorrencia>
+					<codigo>609</codigo>
+					<descricao>Código inválido.</descricao>
+					<tipo>1</tipo>
+					<localizacao>/eSocial/envioLoteEventos/eventos/evento/@Id</localizacao>
+				</ocorrencia>
+			</ocorrencias>
+		</status>
+	</retornoEnvioLoteEventos>
+</eSocial>
