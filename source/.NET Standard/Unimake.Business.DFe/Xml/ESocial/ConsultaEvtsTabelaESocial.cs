@@ -18,6 +18,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/consulta/identificadores-eventos/empregador/v1_0_0", IsNullable = false)]
     public class ConsultarEvtsEmpregadorESocial : XMLBase
     {
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
+
         [XmlElement("consultaIdentificadoresEvts")]
         public ConsultaIdentificadoresEvts ConsultaIdentificadoresEvts { get; set; }
     }
@@ -33,6 +36,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/consulta/identificadores-eventos/tabela/v1_0_0", IsNullable = false)]
     public class ConsultarEvtsTabelaESocial : XMLBase
     {
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
+
         [XmlElement("consultaIdentificadoresEvts")]
         public ConsultaIdentificadoresEvts ConsultaIdentificadoresEvts { get; set; }
     }
@@ -48,6 +54,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/consulta/identificadores-eventos/trabalhador/v1_0_0", IsNullable = false)]
     public class ConsultarEvtsTrabalhadorESocial : XMLBase
     {
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
+
         [XmlElement("consultaIdentificadoresEvts")]
         public ConsultaIdentificadoresEvts ConsultaIdentificadoresEvts { get; set; }
     }
@@ -96,7 +105,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtIni")]
         public string DtIniField
         {
-            get => DtIni.ToString("yyyy-MM-dd");
+            get => DtIni.ToString();
 #if INTEROP
             set => DtIni = DateTime.Parse(value);
 #else
@@ -113,7 +122,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtFim")]
         public string DtFimField
         {
-            get => DtFim.ToString("yyyy-MM-dd");
+            get => DtFim.ToString();
 #if INTEROP
             set => DtFim = DateTime.Parse(value);
 #else

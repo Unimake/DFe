@@ -425,6 +425,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ESocial Enviar Lote Eventos")]
         ESocialEnviarLoteEventos = 69,
+
+        /// <summary>
+        /// Consulta dos eventos do eSocial
+        /// </summary>
+        [Description("ESocial Consulta Eventos")]
+        ESocialConsultaEvts = 70,
+
+        /// <summary>
+        /// Download dos eventos do eSocial
+        /// </summary>
+        [Description("ESocial download Eventos")]
+        ESocialDownloadEvts = 71,
         #endregion
 
         #region Gerais

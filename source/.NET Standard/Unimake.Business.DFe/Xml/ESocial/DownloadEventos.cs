@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("download")]
         public Download Download {  get; set; }
+
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
     }
 
 #if INTEROP
@@ -32,6 +35,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("download")]
         public Download Download { get; set; }
+
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
     }
 
 #if INTEROP
@@ -47,7 +53,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("solicDownloadEvtsPorId")]
         public SolicitacaoDownloadPorId SolicitacaoDownloadPorId {  get; set; }
 
-        [XmlElement("solicDownloadEventosPorNrRecibo")]
+        [XmlElement("solicDownloadEvtsPorNrRecibo")]
         public SolicitacaoDownloadPorNrRec SolicitacaoDownloadPorNrRec { get; set; }
     }
 
