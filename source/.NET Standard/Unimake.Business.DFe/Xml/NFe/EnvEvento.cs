@@ -2360,7 +2360,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Tipo de autorização do evento do ator interessado na NFe
         /// </summary>
         [XmlElement("tpAutorizacao")]
-        public TipoAutorizacao TpAutorizacao { get; set; }
+#if INTEROP
+        public TipoAutorizacao TpAutorizacao { get; set; } = (TipoAutorizacao)(-1);
+
+#else
+        public TipoAutorizacao? TpAutorizacao { get; set; }
+#endif
 
         /// <summary>
         /// Texto Fixo com as Condição de uso do tipo de autorização para o transportador
@@ -2386,9 +2391,21 @@ namespace Unimake.Business.DFe.Xml.NFe
                 xml += $"<CNPJ>{AutXML.CNPJ}</CNPJ>";
             }
 
-            xml += $@"</autXML>
-                      <tpAutorizacao>{(int)TpAutorizacao}</tpAutorizacao>
-                      <xCondUso>{XCondUso}</xCondUso>";
+            xml += $@"</autXML>";
+
+#if INTEROP
+            if (TpAutorizacao != (TipoAutorizacao)(-1))
+#else
+            if (TpAutorizacao != null)
+#endif
+            {
+                xml += $@"<tpAutorizacao>{(int)TpAutorizacao}</tpAutorizacao>";
+            }
+
+            if (TpAutorizacao == TipoAutorizacao.Permite && !string.IsNullOrWhiteSpace(XCondUso))
+            {
+                xml += $@"<xCondUso>{XCondUso}</xCondUso>";
+            }
 
             writer.WriteRaw(xml);
         }
@@ -2407,19 +2424,19 @@ namespace Unimake.Business.DFe.Xml.NFe
             {
                 Versao = xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versao").Value;
             }
-            if (xml.GetElementsByTagName("cOrgaoAutor") != null)
+            if (xml.GetElementsByTagName("cOrgaoAutor").Count > 0)
             {
                 COrgaoAutor = (UFBrasil)Convert.ToInt32(xml.GetElementsByTagName("cOrgaoAutor")[0].InnerText);
             }
-            if (xml.GetElementsByTagName("tpAutor") != null)
+            if (xml.GetElementsByTagName("tpAutor").Count > 0)
             {
                 TpAutor = (TipoAutorGeradorEvento)Convert.ToInt32(xml.GetElementsByTagName("tpAutor")[0].InnerText);
             }
-            if (xml.GetElementsByTagName("verAplic") != null)
+            if (xml.GetElementsByTagName("verAplic").Count > 0)
             {
                 VerAplic = xml.GetElementsByTagName("verAplic")[0].InnerText;
             }
-            if (xml.GetElementsByTagName("tpAutorizacao") != null)
+            if (xml.GetElementsByTagName("tpAutorizacao").Count > 0)
             {
                 TpAutorizacao = (TipoAutorizacao)Convert.ToInt32(xml.GetElementsByTagName("tpAutorizacao")[0].InnerText);
             }

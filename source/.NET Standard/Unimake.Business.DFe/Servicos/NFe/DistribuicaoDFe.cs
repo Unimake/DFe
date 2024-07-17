@@ -136,24 +136,28 @@ namespace Unimake.Business.DFe.Servicos.NFe
                     {
                         var conteudoXML = item.ConteudoXML;
 
-                        switch (item.TipoXML)
+                        try
                         {
-                            case TipoXMLDocZip.ResEvento:
-                                ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
-                                break;
+                            switch (item.TipoXML)
+                            {
+                                case TipoXMLDocZip.ResEvento:
+                                    ResEventos.Add(XMLUtility.Deserializar<ResEvento>(conteudoXML));
+                                    break;
 
-                            case TipoXMLDocZip.ResNFe:
-                                ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
-                                break;
+                                case TipoXMLDocZip.ResNFe:
+                                    ResNFes.Add(XMLUtility.Deserializar<ResNFe>(conteudoXML));
+                                    break;
 
-                            case TipoXMLDocZip.ProcEventoNFe:
-                                ProcEventoNFes.Add(XMLUtility.Deserializar<ProcEventoNFe>(conteudoXML));
-                                break;
+                                case TipoXMLDocZip.ProcEventoNFe:
+                                    ProcEventoNFes.Add(XMLUtility.Deserializar<ProcEventoNFe>(conteudoXML));
+                                    break;
 
-                            case TipoXMLDocZip.ProcNFe:
-                                ProcNFes.Add(XMLUtility.Deserializar<NfeProc>(conteudoXML));
-                                break;
+                                case TipoXMLDocZip.ProcNFe:
+                                    ProcNFes.Add(XMLUtility.Deserializar<NfeProc>(conteudoXML));
+                                    break;
+                            }
                         }
+                        catch { }
                     }
                 }
             }

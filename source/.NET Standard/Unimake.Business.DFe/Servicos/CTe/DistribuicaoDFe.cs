@@ -112,16 +112,20 @@ namespace Unimake.Business.DFe.Servicos.CTe
                     {
                         var conteudoXML = item.ConteudoXML;
 
-                        switch (item.TipoXML)
+                        try
                         {
-                            case TipoXMLDocZip.ProcEventoCTe:
-                                ProcEventoCTes.Add(XMLUtility.Deserializar<ProcEventoCTe>(conteudoXML));
-                                break;
+                            switch (item.TipoXML)
+                            {
+                                case TipoXMLDocZip.ProcEventoCTe:
+                                    ProcEventoCTes.Add(XMLUtility.Deserializar<ProcEventoCTe>(conteudoXML));
+                                    break;
 
-                            case TipoXMLDocZip.ProcCTe:
-                                ProcCTes.Add(XMLUtility.Deserializar<CteProc>(conteudoXML));
-                                break;
+                                case TipoXMLDocZip.ProcCTe:
+                                    ProcCTes.Add(XMLUtility.Deserializar<CteProc>(conteudoXML));
+                                    break;
+                            }
                         }
+                        catch { }
                     }
                 }
             }

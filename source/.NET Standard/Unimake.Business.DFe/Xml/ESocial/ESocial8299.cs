@@ -1,13 +1,10 @@
 ﻿#pragma warning disable CS1591
 
 using System;
-using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Runtime.InteropServices;
-using Unimake.Business.DFe.Xml.SNCM;
-using Unimake.Formatters;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {

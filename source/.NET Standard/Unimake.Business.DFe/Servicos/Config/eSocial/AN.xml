@@ -8,7 +8,7 @@
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/v1_1_0/ServicoEnviarLoteEventos/EnviarLoteEventos</WebActionProducao>
 			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/v1_1_0/ServicoEnviarLoteEventos/EnviarLoteEventos</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>EnviarLoteEventosResult</WebTagRetorno>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnviarLoteEventos xmlns="http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/v1_1_0"><loteEventos>{xmlBody}</loteEventos></EnviarLoteEventos></soap:Body></soap:Envelope>]]></WebSoapString>
 			<TargetNS>http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1</TargetNS>
 		</EnviarLoteEventosESocial>

@@ -1,61 +1,62 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
 
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Properties\**" />
+		<EmbeddedResource Remove="Properties\**" />
+		<None Remove="Properties\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="coverlet.collector" Version="6.0.2">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="xunit" Version="2.8.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+		<PackageReference Include="coverlet.collector" Version="6.0.2">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="xunit" Version="2.8.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\.NET Framework\Unimake.Security.Platform\Unimake.Security.Platform.csproj" />
-    <ProjectReference Include="..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\.NET Framework\Unimake.Security.Platform\Unimake.Security.Platform.csproj" />
+		<ProjectReference Include="..\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="BugFixes\XML\41170801761135000132550010000189121110755809-ev-110110-001.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="BugFixes\XML\41190976430438002891550020000200981772597373-procNFe.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="BugFixes\XML\Bug162066.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="BugFixes\XML\41170801761135000132550010000189121110755809-ev-110110-001.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="BugFixes\XML\41190976430438002891550020000200981772597373-procNFe.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="BugFixes\XML\Bug162066.xml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
+	</ItemGroup>
+
 
 </Project>
