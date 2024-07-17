@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.IO;
-using System.Linq.Expressions;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
@@ -44,7 +43,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 if (Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps ||
                     Configuracoes.Servico == Servico.NFSeRecepcionarLoteRpsSincrono ||
                     Configuracoes.Servico == Servico.NFSeGerarNfse ||
-                    Configuracoes.Servico == Servico.NFSeSubstituirNfse || 
+                    Configuracoes.Servico == Servico.NFSeSubstituirNfse ||
                     Configuracoes.Servico == Servico.NFSeCancelarNfse)
                 {
 
@@ -144,7 +143,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
                 }
 
-                ConteudoXML = base.ConteudoXMLAssinado;
+                VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
+                VerificarAssinarXML(Configuracoes.TagLoteAssinatura, Configuracoes.TagLoteAtributoID);
 
                 return ConteudoXML;
             }
