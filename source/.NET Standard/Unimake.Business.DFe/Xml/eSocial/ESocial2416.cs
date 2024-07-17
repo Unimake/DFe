@@ -18,6 +18,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("evtCdBenAlt")]
         public EvtCdBenAlt EvtCdBenAlt { get; set; }
+
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public Signature Signature { get; set; }
     }
 
 #if INTEROP

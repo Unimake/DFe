@@ -29,6 +29,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("evtComProd")]
         public EvtComProdESocial1260 EvtBenPrRP { get; set; }
 
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public Signature Signature { get; set; }
+
     }
 
     #region  EvtComProdESocial1260
