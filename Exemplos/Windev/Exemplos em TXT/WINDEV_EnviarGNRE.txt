@@ -1,0 +1,144 @@
+oConfiguracao						is Unimake.Business.DFe.Servicos.Configuracao
+oConfiguracao.TipoDFe				= TipoDFe.GNRE
+oConfiguracao.CodigoUF				= UFBrasil.PR
+oConfiguracao.TipoAmbiente			= TipoAmbiente.Homologacao
+oConfiguracao.CertificadoArquivo	= "C:\projetos\Unimake_PV.pfx"
+oConfiguracao.CertificadoSenha		= "12345678"
+
+// Criar XML  
+
+// Criar grupo de tag TLoteGNRE
+oTLoteGNRE	is Unimake.Business.DFe.XML.GNRE.TLoteGNRE   
+
+// Criar grupo de tag Guias  
+oGuias		is Unimake.Business.DFe.XML.GNRE.Guias
+
+// Criar tag TDadosGNRE  
+oTDadosGNRE	is Unimake.Business.DFe.XML.GNRE.TDadosGNRE
+oTDadosGNRE.Versao			= "2.00"
+oTDadosGNRE.UfFavorecida	= 41 // UFBrasil.PR
+oTDadosGNRE.TipoGNRE		= 0 // TipoGuiaGNRE.Simples
+oTDadosGNRE.ValorGNRE		= 30.00
+oTDadosGNRE.DataPagamento	= SysDateTime()
+
+// Criar grupo de tag ContribuinteEmitente  
+oContribuinteEmitente	is Unimake.Business.DFe.XML.GNRE.ContribuinteEmitente
+
+// Criar grupo de tag Identificacao  
+oIdentificacao			is Unimake.Business.DFe.XML.GNRE.Identificacao
+oIdentificacao.CNPJ					= "07666666000166"
+oIdentificacao.IE					= "9335665656"
+
+oContribuinteEmitente.Identificacao	= oIdentificacao // Atualizar conteúdo do grupo de tag identificacao
+
+oContribuinteEmitente.RazaoSocial	= "TESTE EMPRESA PARA ENVIO DA GNRE"
+oContribuinteEmitente.Endereco		= "XXX XXXXXXX XXXXX"
+oContribuinteEmitente.Municipio		= "04808"
+oContribuinteEmitente.UF			= 41 // UFBrasil.PR
+oContribuinteEmitente.CEP			= "90399899"
+oContribuinteEmitente.Telefone		= "04456566566"
+
+oTDadosGNRE.ContribuinteEmitente	= oContribuinteEmitente // Atualizar conteúdo do grupo de tag ContribuinteEmitente   
+
+// Criar Grupo de tag ItensGNRE
+oItensGNRE	is Unimake.Business.DFe.XML.GNRE.ItensGNRE
+
+// Criar grupo de tag Item  
+oItem		is Unimake.Business.DFe.XML.GNRE.Item
+oItem.Receita			= "100099"
+oItem.DataVencimento	= SysDateTime()
+
+oDocumentoOrigem is Unimake.Business.DFe.XML.GNRE.DocumentoOrigem
+oDocumentoOrigem.Tipo	= "10"
+oDocumentoOrigem.Value	= "41210807666666000166550010001234551123455553"
+oItem.DocumentoOrigem	= oDocumentoOrigem // Atualizar conteudo do grupo de tag Documento Origem
+
+// Criar grupo de tag Valor
+oValor is Unimake.Business.DFe.XML.GNRE.Valor
+oValor.Tipo				= 0 // ItemValorTipo.Item11
+oValor.ValorOriginal	= 116.24
+
+oItem.AddValor(oValor) // Atualizar conteúdo do grupo de tag Valor
+
+oItensGNRE.AddItem(oItem) // Atualizar conteúdo do grupo de tag Item
+
+oTDadosGNRE.ItensGNRE = oItensGNRE // Atualizar conteudo do grupo de tag ItensGNRE
+
+oGuias.AddTDadosGNRE(oTDadosGNRE) // Atualizar conteúdo do grupo de tag TDadosGNRE
+
+oTLoteGNRE.Guias = oGuias // Atualizar o conteúdo do grupo de tag Guias
+
+EDT_RetornoWSString = "" 
+
+WHEN EXCEPTION IN
+	oLoteRecepcao is Unimake.Business.DFe.Servicos.GNRE.LoteRecepcao
+	oLoteRecepcao.Executar(oTLoteGNRE, oConfiguracao)
+		
+	EDT_RetornoWSString += "XML assinado" + CR + CR 
+	EDT_RetornoWSString += oLoteRecepcao.GetConteudoXMLAssinado() + CR + CR 
+	
+	EDT_RetornoWSString += "XML retornado" + CR + CR	
+	EDT_RetornoWSString += oLoteRecepcao.RetornoWSString
+	
+	IF oLoteRecepcao.Result.SituacaoRecepcao.Codigo = "100"
+		// Aguardar 30 segundos para consultar o resultado do lote, é o que solicita o manual
+		
+		// Criar configuraçao básica para consumir o serviço de consulta do resultado do envio da GNRE
+		oConfigConsLote						is Unimake.Business.DFe.Servicos.Configuracao
+		oConfigConsLote.TipoDfe				= TipoDFe.GNRE
+		oConfigConsLote.TipoEmissao			= TipoEmissao.Normal
+		oConfigConsLote.TipoAmbiente		= TipoAmbiente.Homologacao
+		oConfigConsLote.CodigoUF			= UFBrasil.PR
+		oConfigConsLote.CertificadoArquivo	= "C:\Projetos\certificados\UnimakePV.pfx"
+		oConfigConsLote.CertificadoSenha	= "12345678"
+		
+		// Criar o XML da consulta
+		oTConsLoteGNRE					is Unimake.Business.DFe.XML.GNRE.TConsLoteGNRE
+		oTConsLoteGNRE.Ambiente			= TipoAmbiente.Homologacao
+		oTConsLoteGNRE.NumeroRecibo		= "0000000000" // oLoteRecepcao.Result.Recibo.Numero
+		oTConsLoteGNRE.IncluirPDFGuias	= SimNaoLetra.Sim
+		
+		oConsultaResultadoLote			is Unimake.Business.DFe.Servicos.GNRE.ConsultaResultadoLote
+		oConsultaResultadoLote.Executar(oTConsLoteGNRE , oConfigConsLote)
+		
+		EDT_RetornoWSString += "XML retorno consulta:" + CR + CR
+		EDT_RetornoWSString += oConsultaResultadoLote.RetornoWSString + CR + CR
+		
+		SWITCH  oConsultaResultadoLote.Result.SituacaoProcess.Codigo
+			CASE "400" // Lote recebido, aguardando processamento
+				// Tentar consultar mais tarde 
+				
+			CASE "401" // Lote em processamento
+				// Tentar consultar mais tarde   
+				
+			CASE "402" // Lote processado com sucesso			
+				oConsultaResultadoLote.GravarXmlRetorno("d:\testenfe", oTConsLoteGNRE.NumeroRecibo + "-procgnre.xml");
+				oConsultaResultadoLote.GravarPDFGuia("d:\testenfe", "GuiaGNRE.pdf");
+				
+				// Criar as configurações 
+				oUnidanfeConfiguration				is Unimake.Unidanfe.Configurations.UnidanfeConfiguration
+				oUnidanfeConfiguration.Arquivo		= "D:\testenfe\41211207638784000127550050000001761815064891-procgnre.xml" 
+				oUnidanfeConfiguration.Visualizar	= True
+				oUnidanfeConfiguration.Imprimir		= False
+				oUnidanfeConfiguration.EnviaEmail	= False  
+				
+				// Disparar À impressao DANFe NFe
+				Unimake.Unidanfe.UnidanfeServices.Execute(oUnidanfeConfiguration)  
+				
+			CASE "403" //Lote processado com pendências OU Lote com pendência de tempo de processamento. As Guias com situação 4 (campo < situacaoGuia > para À versão 2.00) podem levar em média 20 minutos, e No máximo 1 hora para serem processadas.
+				//Analisar pendencias
+				
+			CASE "404" // Erro No processamento DO lote
+				//Enviar novamente
+				
+			OTHER CASE
+                // GNRE Rejeitada, analisar, corrigir e enviar novamente     				
+		END				
+		
+		
+	END
+	
+	Info("FIM")	
+DO
+	Info(ExceptionInfo(errFullDetails)) //Ele também pega o conteúdo da Exception do lado do C#, importante envolver o código em Try/Catch
+END
