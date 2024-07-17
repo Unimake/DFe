@@ -1,0 +1,98 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+import clr
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.NFe import *
+from Unimake.Business.DFe.Servicos.NFe import RecepcaoEvento
+from Unimake.Exceptions import ThrowHelper
+
+def enviar_nfe_evento_canc():
+    print("Enviando evento de cancelamento de NFe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.Servico            = Servico.NFeRecepcaoEvento
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar XML
+    oEnvEvento        = EnvEvento() # Unimake.Business.DFe.Xml.NFe.EnvEvento
+    oEnvEvento.Versao = "1.00"
+    oEnvEvento.IdLote = "000000000000001"
+    
+    #------------------------------------
+    #| Criar as tags do evento sequencia|
+    #------------------------------------
+    # Criar tag Evento
+    oEvento        = Evento() # Unimake.Business.DFe.Xml.NFe.Evento
+    oEvento.Versao = "1.00"
+    
+    # Criar tag DetEventoCCE
+    oDetEventoCanc           = DetEventoCanc() # Unimake.Business.DFe.Xml.NFe.DetEventoCanc
+    oDetEventoCanc.Versao    = "1.00"
+    oDetEventoCanc.NProt     = "141240000438996"
+    oDetEventoCanc.XJust     = "Justificativa para cancelamento da NFe de teste"
+    
+    # Criar tag InfEvento
+    oInfEvento = InfEvento() # Unimake.Business.DFe.Xml.NFe.InfEvento
+    
+    # Adicionar a tag DetEventoCanc dentro da tag DetEvento
+    oInfEvento.DetEvento = oDetEventoCanc
+    
+    # Atualizar propriedades da oInfEvento
+    # IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois 
+    # que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+    oInfEvento.COrgao     = UFBrasil.PR
+    oInfEvento.ChNFe      = "41240706117473000150550300000000151562622985"
+    oInfEvento.CNPJ       = "06117473000150"
+    oInfEvento.DhEvento   = clr.System.DateTime.Now.AddHours(-3)
+    oInfEvento.TpEvento   = TipoEventoNFe.Cancelamento
+    oInfEvento.NSeqEvento = 1
+    oInfEvento.VerEvento  = "1.00"
+    oInfEvento.TpAmb      = TipoAmbiente.Homologacao
+    
+    # Adicionar a tag InfEvento dentro da tag Evento
+    oEvento.InfEvento = oInfEvento
+    
+    # Adicionar a tag Evento dentro da tag EnvEvento
+    oEnvEvento.AddEvento(oEvento)
+    
+    # Resgatando alguns dados do objeto do XML de evento
+    print("ID Lote: ", oEnvEvento.IdLote)
+    
+    # Criar objeto para pegar exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper()
+    
+    try:
+        # Enviar o evento
+        oRecepcaoEvento = RecepcaoEvento() # Unimake.Business.DFe.Servicos.NFe.RecepcaoEvento
+        oRecepcaoEvento.Executar(oEnvEvento, oConfig)
+        
+        eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
+        print("\nEvento assinado: ", eventoAssinado)
+        
+        print("\n\nRetorno: ", oRecepcaoEvento.RetornoWSString)
+        
+        if (oRecepcaoEvento.Result.CStat == 128): # Lote Processado com sucesso
+            # Como pode existir vários eventos no XML (Caso da carta de correção que posso enviar várias sequencias de evento)
+            # É necessário fazer um loop para ver a autorização de cada um deles
+            for evento in range(0, oRecepcaoEvento.Result.GetRetEventoCount):
+                oRetEvento = oRecepcaoEvento.Result.GetRetEvento(evento)
+                
+                if(oRetEvento.InfEvento.CStat == 135 or oRetEvento.InfEvento.CStat == 136 or oRetEvento.InfEvento.CStat == 155):
+                    # 135 //Evento homologado com vinculação da respectiva NFe
+                    # 136 //Evento homologado sem vinculação com a respectiva NFe (SEFAZ não encontrou a NFe na base dela)
+                    # 155 //Evento de Cancelamento homologado fora do prazo permitido para cancelamento
+                    print("Evento autorizado!")
+                    oRecepcaoEvento.GravarXmlDistribuicao("NFe\\XMLs")
+                    break
+                else:
+                    print("Evento não autorizado")
+                    print("\n\nRetorno: ", oRecepcaoEvento.RetornoWSString)
+
+    except Exception as e:
+        print("Erro ao enviar o evento da NFe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

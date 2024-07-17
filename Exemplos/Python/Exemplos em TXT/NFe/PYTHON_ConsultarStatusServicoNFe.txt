@@ -1,0 +1,34 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.NFe import *
+from Unimake.Business.DFe.Servicos.NFe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def consulta_status_nfe():
+    print("Consultando o status da NFe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.Servico            = Servico.NFeStatusServico
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+
+    # Criar XML
+    oConsStatServ        = ConsStatServ() # Unimake.Business.DFe.Xml.NFe.ConsStatServ
+    oConsStatServ.Versao = "4.00"
+    oConsStatServ.TpAmb  = TipoAmbiente.Homologacao
+    oConsStatServ.CUF    = UFBrasil.PR
+
+    # Criar objeto para pegar exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+
+    try:
+        oStatusServico = StatusServico() # Unimake.Business.DFe.Servicos.NFe.StatusServico
+        oStatusServico.Executar(oConsStatServ, oConfig)
+        return print("Status do Serviço: ", oStatusServico.RetornoWSString)
+    except Exception as e:
+        print("Erro ao consultar o status da NFe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
