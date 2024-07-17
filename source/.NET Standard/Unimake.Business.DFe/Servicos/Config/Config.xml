@@ -1373,4 +1373,10 @@
 		<ArqConfig>IjuiRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3143005">
+		<Nome>Monte Belo - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>MonteBeloMG.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
