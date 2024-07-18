@@ -4117,7 +4117,7 @@ namespace Unimake.Business.DFe.Servicos
         Destinatario = 3,
 
         /// <summary>
-        /// 4 - Outros
+        /// 4 - Outros / Terceiros
         /// </summary>
         [XmlEnum("4")]
         Outros = 4

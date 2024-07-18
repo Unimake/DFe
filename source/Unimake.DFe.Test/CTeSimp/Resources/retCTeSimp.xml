@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retCTeSimp versao="versao1" xmlns="http://www.portalfiscal.inf.br/cte">
+	<tpAmb>1</tpAmb>
+	<cUF>11</cUF>
+	<verAplic>verAplic1</verAplic>
+	<cStat>100</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<protCTe versao="versao1">
+		<infProt Id="ID1">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chCTe>chCTe1</chCTe>
+			<dhRecbto>2023-05-15T18:14:48-03:00</dhRecbto>
+			<nProt>000000000000000</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>101</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
+		<infFisco>
+			<cMsg>100</cMsg>
+			<xMsg>xMsg1</xMsg>
+		</infFisco>
+	</protCTe>
+</retCTeSimp>
