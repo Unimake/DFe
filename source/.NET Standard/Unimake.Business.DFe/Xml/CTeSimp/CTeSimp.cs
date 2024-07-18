@@ -950,12 +950,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.Comp")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.Comp")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class Comp
+    public class Comp : CTe.Comp
     {
         [XmlElement("xNome")]
         public string XNome { get; set; }
@@ -1700,15 +1700,122 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfCarga")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.Det")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class Det
     {
+        [XmlElement("cMunIni")]
+        public string CMunIni { get; set; }
 
+        [XmlElement("xMunIni")]
+        public string XMunIni { get; set; }
+
+        [XmlElement("cMunFim")]
+        public string CMunFim { get; set; }
+
+        [XmlElement("xMunFim")]
+        public string XMunFim { get; set; }
+
+        [XmlIgnore]
+        public double VPrest { get; set; }
+
+        [XmlElement("vPrest")]
+        public string VPrestField
+        {
+            get => VPrest.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPrest = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VRec { get; set; }
+
+        [XmlElement("vRec")]
+        public string VRecField
+        {
+            get => VRec.ToString("F2", CultureInfo.InvariantCulture);
+            set => VRec = Utility.Converter.ToDouble(value);
+        }
+
+        [XmlElement("Comp")]
+        public List<Comp> Comp { get; set; }
+
+        [XmlElement("infNFe")]
+        public List<InfNFe> InfNFe { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="comp">Elemento</param>
+        public void AddComp(Comp comp)
+        {
+            if (Comp == null)
+            {
+                Comp = new List<Comp>();
+            }
+
+            Comp.Add(comp);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Comp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
+        public Comp GetComp(int index)
+        {
+            if ((Comp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Comp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Comp
+        /// </summary>
+        public int GetCompCount => (Comp != null ? Comp.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infnfe">Elemento</param>
+        public void AddInfNFe(InfNFe infnfe)
+        {
+            if (InfNFe == null)
+            {
+                InfNFe = new List<InfNFe>();
+            }
+
+            InfNFe.Add(infnfe);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfNFe (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfNFe</returns>
+        public InfNFe GetInfNFe(int index)
+        {
+            if ((InfNFe?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfNFe[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfNFe
+        /// </summary>
+        public int GetInfNFeCount => (InfNFe != null ? InfNFe.Count : 0);
+
+#endif
     }
 
 
@@ -2064,89 +2171,21 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.InfUnidCarga")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfUnidCarga")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class InfUnidCarga
-    {
-        [XmlElement("tpUnidCarga")]
-        public virtual TipoUnidadeCarga TpUnidCarga { get; set; }
-
-        [XmlElement("idUnidCarga")]
-        public string IdUnidCarga { get; set; }
-
-        [XmlElement("lacUnidCarga")]
-        public List<LacUnidCarga> LacUnidCarga { get; set; }
-
-        [XmlIgnore]
-        public double QtdRat { get; set; }
-
-        [XmlElement("qtdRat")]
-        public string QtdRatField
-        {
-            get => QtdRat.ToString("F2", CultureInfo.InvariantCulture);
-            set => QtdRat = Utility.Converter.ToDouble(value);
-        }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="lacUnidCarga">Elemento</param>
-        public void AddLacUnidCarga(LacUnidCarga lacUnidCarga)
-        {
-            if (LacUnidCarga == null)
-            {
-                LacUnidCarga = new List<LacUnidCarga>();
-            }
-
-            LacUnidCarga.Add(lacUnidCarga);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista LacUnidCarga (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da LacUnidCarga</returns>
-        public LacUnidCarga GetLacUnidCarga(int index)
-        {
-            if ((LacUnidCarga?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return LacUnidCarga[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista LacUnidCarga
-        /// </summary>
-        public int GetLacUnidCargaCount => (LacUnidCarga != null ? LacUnidCarga.Count : 0);
-
-#endif
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeQtdRatField() => QtdRat > 0;
-
-        #endregion
-    }
+    public class InfUnidCarga : CTe.InfUnidCarga { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.LacUnidCarga")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.LacUnidCarga")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class LacUnidCarga
-    {
-        [XmlElement("nLacre")]
-        public string NLacre { get; set; }
-    }
+    public class LacUnidCarga : CTe.LacUnidCarga { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -2271,7 +2310,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.InfNFe")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfNFe")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -2296,9 +2335,6 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         [XmlElement("infUnidCarga")]
         public List<InfUnidCarga> InfUnidCarga { get; set; }
-
-        [XmlElement("infUnidTransp")]
-        public List<InfUnidTransp> InfUnidTransp { get; set; }
 
 #if INTEROP
 
@@ -2335,40 +2371,6 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Retorna a quantidade de elementos existentes na lista InfUnidCarga
         /// </summary>
         public int GetInfUnidCargaCount => (InfUnidCarga != null ? InfUnidCarga.Count : 0);
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="infUnidTransp">Elemento</param>
-        public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
-        {
-            if (InfUnidTransp == null)
-            {
-                InfUnidTransp = new List<InfUnidTransp>();
-            }
-
-            InfUnidTransp.Add(infUnidTransp);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista InfUnidTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
-        public InfUnidTransp GetInfUnidTransp(int index)
-        {
-            if ((InfUnidTransp?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return InfUnidTransp[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfUnidTransp
-        /// </summary>
-        public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
 
 #endif
 
