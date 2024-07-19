@@ -85,30 +85,20 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         [XmlElement("det")]
         public List<Det> Det { get; set; }
 
+        [XmlElement("infModal")]
+        public InfModal InfModal { get; set; }
 
+        [XmlElement("cobr")]
+        public Cobr Cobr { get; set; }
 
-
-
-
-
-
-
-
-
-        [XmlElement("vPrest")]
-        public VPrest VPrest { get; set; }
+        [XmlElement("infCteSub")]
+        public InfCteSub InfCteSub { get; set; }
 
         [XmlElement("imp")]
         public Imp Imp { get; set; }
 
-        [XmlElement("infCTeNorm")]
-        public InfCTeNorm InfCTeNorm { get; set; }
-
-        [XmlElement("infCteComp")]
-        public InfCteComp InfCteComp { get; set; }
-
-        [XmlElement("infCteAnu")]
-        public InfCteAnu InfCteAnu { get; set; }
+        [XmlElement("total")]
+        public Total Total { get; set; }
 
         [XmlElement("autXML")]
         public List<AutXML> AutXML { get; set; }
@@ -118,6 +108,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         [XmlElement("infSolicNFF")]
         public InfSolicNFF InfSolicNFF { get; set; }
+
+        /// <summary>
+        /// Grupo de informação do Provedor de Assinatura e Autorização
+        /// </summary>
+        [XmlElement("infPAA")]
+        public InfPAA InfPAA { get; set; }
 
         [XmlAttribute(AttributeName = "Id", DataType = "ID")]
         public string Id
@@ -973,71 +969,13 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.Imp")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.Imp")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class Imp
-    {
-        [XmlElement("ICMS")]
-        public ICMS ICMS { get; set; }
+    public class Imp : CTe.Imp { }
 
-        [XmlIgnore]
-        public double VTotTrib { get; set; }
-
-        [XmlElement("vTotTrib")]
-        public string VTotTribField
-        {
-            get => VTotTrib.ToString("F2", CultureInfo.InvariantCulture);
-            set => VTotTrib = Utility.Converter.ToDouble(value);
-        }
-
-        [XmlElement("infAdFisco")]
-        public string InfAdFisco { get; set; }
-
-        [XmlElement("ICMSUFFim")]
-        public ICMSUFFim ICMSUFFim { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
-
-        public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
-
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.ICMS")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class ICMS
-    {
-        [XmlElement("ICMS00")]
-        public ICMS00 ICMS00 { get; set; }
-
-        [XmlElement("ICMS20")]
-        public ICMS20 ICMS20 { get; set; }
-
-        [XmlElement("ICMS45")]
-        public ICMS45 ICMS45 { get; set; }
-
-        [XmlElement("ICMS60")]
-        public ICMS60 ICMS60 { get; set; }
-
-        [XmlElement("ICMS90")]
-        public ICMS90 ICMS90 { get; set; }
-
-        [XmlElement("ICMSOutraUF")]
-        public ICMSOutraUF ICMSOutraUF { get; set; }
-
-        [XmlElement("ICMSSN")]
-        public ICMSSN ICMSSN { get; set; }
-    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1632,11 +1570,6 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         [XmlElement("veicNovos")]
         public List<VeicNovos> VeicNovos { get; set; }
 
-        [XmlElement("cobr")]
-        public Cobr Cobr { get; set; }
-
-        [XmlElement("infCteSub")]
-        public InfCteSub InfCteSub { get; set; }
 
         [XmlElement("infGlobalizado")]
         public InfGlobalizado InfGlobalizado { get; set; }
@@ -1744,6 +1677,18 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         [XmlElement("infNFe")]
         public List<InfNFe> InfNFe { get; set; }
+
+        /// <summary>
+        /// Documentos anteriores
+        /// </summary>
+        [XmlElement("infDocAnt")]
+        public InfDocAnt InfDocAnt { get; set; }
+
+
+
+
+
+
 
 #if INTEROP
 
@@ -2785,155 +2730,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.InfModal")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfModal")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class InfModal
-    {
-        [XmlAttribute(AttributeName = "versaoModal", DataType = "token")]
-        public string VersaoModal { get; set; }
-
-        [XmlElement("rodo")]
-        public Rodo Rodo { get; set; }
-
-        [XmlElement("multimodal")]
-        public MultiModal MultiModal { get; set; }
-
-        [XmlElement("duto")]
-        public Duto Duto { get; set; }
-
-        [XmlElement("aereo")]
-        public Aereo Aereo { get; set; }
-
-        [XmlElement("aquav")]
-        public Aquav Aquav { get; set; }
-
-        [XmlElement("ferrov")]
-        public Ferrov Ferrov { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.Rodo")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class Rodo
-    {
-        [XmlElement("RNTRC")]
-        public string RNTRC { get; set; }
-
-        [XmlElement("occ")]
-        public List<Occ> Occ { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="occ">Elemento</param>
-        public void AddOcc(Occ occ)
-        {
-            if (Occ == null)
-            {
-                Occ = new List<Occ>();
-            }
-
-            Occ.Add(occ);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista Occ (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Occ</returns>
-        public Occ GetOcc(int index)
-        {
-            if ((Occ?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return Occ[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista Occ
-        /// </summary>
-        public int GetOccCount => (Occ != null ? Occ.Count : 0);
-
-#endif
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.Occ")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class Occ
-    {
-        [XmlElement("serie")]
-        public string Serie { get; set; }
-
-        [XmlElement("nOcc")]
-        public int NOcc { get; set; }
-
-        [XmlIgnore]
-        public DateTime DEmi { get; set; }
-
-        [XmlElement("dEmi")]
-        public string DEmiField
-        {
-            get => DEmi.ToString("yyyy-MM-dd");
-            set => DEmi = DateTime.Parse(value);
-        }
-
-        [XmlElement("emiOcc")]
-        public EmiOcc EmiOcc { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeSerie() => !string.IsNullOrWhiteSpace(Serie);
-
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.EmiOcc")]
-    [ComVisible(true)]
-#endif
-    [Serializable()]
-    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class EmiOcc
-    {
-        [XmlElement("CNPJ")]
-        public string CNPJ { get; set; }
-
-        [XmlElement("cInt")]
-        public string CInt { get; set; }
-
-        [XmlElement("IE")]
-        public string IE { get; set; }
-
-        [XmlElement("UF")]
-        public UFBrasil UF { get; set; }
-
-        [XmlElement("fone")]
-        public string Fone { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
-        public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
-
-        #endregion
-    }
+    public class InfModal : CTe.InfModal { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -3832,57 +3634,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.Cobr")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.Cobr")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class Cobr
-    {
-        [XmlElement("fat")]
-        public Fat Fat { get; set; }
-
-        [XmlElement("dup")]
-        public List<Dup> Dup { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="dup">Elemento</param>
-        public void AddDup(Dup dup)
-        {
-            if (Dup == null)
-            {
-                Dup = new List<Dup>();
-            }
-
-            Dup.Add(dup);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista Dup (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Dup</returns>
-        public Dup GetDup(int index)
-        {
-            if ((Dup?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return Dup[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista Dup
-        /// </summary>
-        public int GetDupCount => (Dup != null ? Dup.Count : 0);
-
-#endif
-    }
+    public class Cobr : CTe.Cobr { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -3968,7 +3725,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.InfCteSub")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfCteSub")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -3977,16 +3734,6 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
     {
         [XmlElement("chCte")]
         public string ChCte { get; set; }
-
-        //TODO: Wandrey - Remover a tag RefCteAnu quando a versão 3.00 do CTe não existir mais.
-        /// <summary>
-        /// Propriedade só existe até a versão 3.00 do schema do CTe
-        /// </summary>
-        [XmlElement("refCteAnu")]
-        public string RefCteAnu { get; set; }
-
-        [XmlElement("tomaICMS")]
-        public TomaICMS TomaICMS { get; set; }
 
         [XmlIgnore]
         public SimNao IndAlteraToma { get; set; }
@@ -4000,7 +3747,6 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeRefCteAnu() => !string.IsNullOrWhiteSpace(RefCteAnu);
         public bool ShouldSerializeIndAlteraTomaField() => IndAlteraToma == SimNao.Sim;
 
         #endregion
@@ -4277,52 +4023,21 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.InfRespTec")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfRespTec")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class InfRespTec
-    {
-        [XmlElement("CNPJ")]
-        public string CNPJ { get; set; }
-
-        [XmlElement("xContato")]
-        public string XContato { get; set; }
-
-        [XmlElement("email")]
-        public string Email { get; set; }
-
-        [XmlElement("fone")]
-        public string Fone { get; set; }
-
-        [XmlElement("idCSRT")]
-        public string IdCSRT { get; set; }
-
-        [XmlElement("hashCSRT", DataType = "base64Binary")]
-        public byte[] HashCSRT { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
-
-        public bool ShouldSerializeHashCSRT() => HashCSRT != null;
-
-        #endregion
-    }
+    public class InfRespTec : CTe.InfRespTec { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTe.InfSolicNFF")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfSolicNFF")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public class InfSolicNFF
-    {
-        [XmlElement("xSolic", Order = 0)]
-        public string XSolic { get; set; }
-    }
+    public class InfSolicNFF : CTe.InfSolicNFF { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -4335,5 +4050,100 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
     {
         [XmlElement("qrCodCTe")]
         public string QrCodCTe { get; set; }
+    }
+
+    /// <summary>
+    /// Documentos anteriores
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfDocAnt")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class InfDocAnt
+    {
+        /// <summary>
+        /// Chave de acesso do CT-e
+        /// </summary>
+        [XmlElement("chCTe")]
+        public string ChCTe { get; set; }
+
+        /// <summary>
+        /// Indica se a prestação é total ou parcial em relação as notas do documento anterior
+        /// </summary>
+        [XmlElement("tpPrest")]
+        public TipoPrestacaoCTe TpPrest { get; set; }
+
+        /// <summary>
+        /// Informando o tpPrest com “2 – Parcial” deve-se informar as chaves de acesso das NF-e que acobertam a carga transportada.
+        /// </summary>
+        [XmlElement("infNFeTranspParcial")]
+        public InfNFeTranspParcial InfNFeTranspParcial { get; set; }
+    }
+
+    /// <summary>
+    /// Informando o tpPrest com “2 – Parcial” deve-se informar as chaves de acesso das NF-e que acobertam a carga transportada.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.InfNFeTranspParcial")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class InfNFeTranspParcial
+    {
+        /// <summary>
+        /// Informando o tpPrest com “2 – Parcial” deve-se informar as chaves de acesso das NF-e que acobertam a carga transportada.
+        /// </summary>
+        [XmlElement("chNFe")]
+        public string ChNFe { get; set; }
+    }
+
+    /// <summary>
+    /// Valores Totais do CTe 
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.Total")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class Total
+    {
+        /// <summary>
+        /// Valor Total da Prestação do Serviço
+        /// </summary>
+        [XmlIgnore]
+        public double VTPrest { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar da VTPrest (Utilize sempre a VTPrest)
+        /// </summary>
+        [XmlElement("vTPrest")]
+        public string VTPrestField
+        {
+            get => VTPrest.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTPrest = Utility.Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor total a Receber
+        /// </summary>
+        [XmlIgnore]
+        public double VRec { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar da VRec (Utilize sempre a VRec)
+        /// </summary>
+        [XmlElement("vRec")]
+        public string VRecField
+        {
+            get => VRec.ToString("F2", CultureInfo.InvariantCulture);
+            set => VRec = Utility.Converter.ToDouble(value);
+        }
     }
 }
