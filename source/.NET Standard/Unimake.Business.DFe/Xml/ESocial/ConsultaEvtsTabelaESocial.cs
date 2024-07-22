@@ -105,7 +105,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtIni")]
         public string DtIniField
         {
-            get => DtIni.ToString();
+            get => DtIni.ToString("yyyy-MM-dd");
 #if INTEROP
             set => DtIni = DateTime.Parse(value);
 #else
@@ -122,7 +122,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtFim")]
         public string DtFimField
         {
-            get => DtFim.ToString();
+            get => DtFim.ToString("yyyy-MM-dd");
 #if INTEROP
             set => DtFim = DateTime.Parse(value);
 #else

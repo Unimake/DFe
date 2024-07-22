@@ -56,7 +56,7 @@
 			<WebEnderecoProducao>https://webservices.download.esocial.gov.br/servicos/empregador/dwlcirurgico/WsConsultarIdentificadoresEventos.svc?wsdl</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://webservices.producaorestrita.esocial.gov.br/servicos/empregador/dwlcirurgico/WsConsultarIdentificadoresEventos.svc?wsdl</WebEnderecoHomologacao>
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0/ServicoSolicitarDownloadEventos/SolicitarDownloadEventosPorNrRecibo</WebActionProducao>
-			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0/ServicoSolicitarDownloadEventos/SolicitarDownloadEventosPorNrReciboResponse</WebActionHomologacao>
+			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0/ServicoSolicitarDownloadEventos/SolicitarDownloadEventosPorNrRecibo</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
 			<WebTagRetorno>s:Body</WebTagRetorno>
 			<TagAssinatura>eSocial</TagAssinatura>

@@ -53,7 +53,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("solicDownloadEvtsPorId")]
         public SolicitacaoDownloadPorId SolicitacaoDownloadPorId {  get; set; }
 
-        [XmlElement("solicDownloadEvtsPorNrRecibo")]
+        [XmlElement("solicDownloadEventosPorNrRecibo")]
         public SolicitacaoDownloadPorNrRec SolicitacaoDownloadPorNrRec { get; set; }
     }
 
