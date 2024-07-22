@@ -1379,4 +1379,10 @@
 		<ArqConfig>MonteBeloMG.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2912202">
+		<Nome>Ibicoara - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>IbicoaraBA.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
