@@ -4117,7 +4117,7 @@ namespace Unimake.Business.DFe.Servicos
         Destinatario = 3,
 
         /// <summary>
-        /// 4 - Outros
+        /// 4 - Outros / Terceiros
         /// </summary>
         [XmlEnum("4")]
         Outros = 4
@@ -4250,6 +4250,24 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion
+
+    /// <summary>
+    /// Indica se a prestação é total ou parcial em relação as notas o documento anterior
+    /// </summary>
+    public enum TipoPrestacaoCTe
+    {
+        /// <summary>
+        /// 1 - Total
+        /// </summary>
+        [XmlEnum("1")]
+        Total = 1,
+
+        /// <summary>
+        /// 2 - Parcial
+        /// </summary>
+        [XmlEnum("2")]
+        Parcial = 2
+    }
 
     #region ModeloNF
 

@@ -461,6 +461,7 @@
 		<None Remove="Xml\Schemas\CTe\cteModalRodoviario_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteMultiModal_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteOS_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cte_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
@@ -490,6 +491,7 @@
 		<None Remove="Xml\Schemas\CTe\retConsSitCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retConsStatServCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retCTeOS_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\retCTeSimp_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retEventoCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\retGTVe_v3.00.xsd" />
@@ -1266,6 +1268,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cteModalRodoviario_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cteMultiModal_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cteOS_v4.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cte_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
@@ -1292,6 +1295,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retConsSitCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retConsStatServCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTeOS_v4.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTeSimp_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retEventoCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\retGTVe_v4.00.xsd" />

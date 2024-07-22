@@ -10,22 +10,22 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
 
-namespace Unimake.Business.DFe.Xml.CTeOS
+namespace Unimake.Business.DFe.Xml.CTeSimp
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.CTeOS.CteOSProc")]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.CteSimpProc")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("cteOSProc", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class CteOSProc : XMLBase
+    [XmlRoot("cteProc", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
+    public class CteSimpProc : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
-        [XmlElement("CTeOS")]
-        public CTeOS CTeOS { get; set; }
+        [XmlElement("CTeSimp")]
+        public CTeSimp CTeSimp { get; set; }
 
         [XmlElement("protCTe")]
         public CTe.ProtCTe ProtCTe { get; set; }
@@ -65,7 +65,10 @@ namespace Unimake.Business.DFe.Xml.CTeOS
                 switch (ProtCTe.InfProt.CStat)
                 {
                     case 110: //Uso Denegado
+                    case 205: //NF-e está denegada na base de dados da SEFAZ [nRec:999999999999999]
                     case 301: //Uso Denegado: Irregularidade fiscal do emitente
+                    case 302: //Uso Denegado: Irregularidade fiscal do destinatário
+                    case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
                         return ProtCTe.InfProt.ChCTe + "-den.xml";
 
                     case 100: //Autorizado o uso da NF-e
@@ -81,7 +84,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             var xmlDocument = base.GerarXML();
 
             var attribute = GetType().GetCustomAttribute<XmlRootAttribute>();
-            var xmlElementCTe = (XmlElement)xmlDocument.GetElementsByTagName("CTeOS")[0];
+            var xmlElementCTe = (XmlElement)xmlDocument.GetElementsByTagName("CTe")[0];
             xmlElementCTe.SetAttribute("xmlns", attribute.Namespace);
             var xmlElementProtCTe = (XmlElement)xmlDocument.GetElementsByTagName("protCTe")[0];
             xmlElementProtCTe.SetAttribute("xmlns", attribute.Namespace);
@@ -90,15 +93,30 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         }
 
         /// <summary>
-        /// Deserializar o XML no objeto CteOSProc
+        /// Desserializar o arquivo XML no objeto CteProc
         /// </summary>
-        /// <param name="filename">Localização do arquivo XML de distribuição do CTeOS</param>
-        /// <returns>Objeto do XML de distribuição do CTeOS</returns>
-        public CteOSProc LoadFromFile(string filename)
+        /// <param name="filename">Localização do arquivo XML de distribuição do CTe</param>
+        /// <returns>Objeto do XML de distribuição do CTe</returns>
+        public CTe.CteProc LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
-            return XMLUtility.Deserializar<CteOSProc>(doc);
+            return XMLUtility.Deserializar<CTe.CteProc>(doc);
         }
+
+        /// <summary>
+        /// Desserializar a string do XML CteProc no objeto CteProc
+        /// </summary>
+        /// <param name="xml">string do XML NfeProc</param>
+        /// <returns>Objeto da NfeProc</returns>
+        public CTe.CteProc LoadFromXML(string xml) => XMLUtility.Deserializar<CTe.CteProc>(xml);
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIpTransmissor() => !string.IsNullOrWhiteSpace(IpTransmissor);
+        public bool ShouldSerializeNPortaCon() => NPortaCon > 0;
+        public bool ShouldSerializeDhConexaoField() => DhConexao > DateTime.MinValue;
+
+        #endregion
     }
 }
