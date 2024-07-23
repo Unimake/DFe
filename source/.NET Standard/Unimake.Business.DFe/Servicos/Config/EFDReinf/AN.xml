@@ -20,7 +20,8 @@
 		</ConsultaLoteAssincrono>
 		<RecepcionarLoteAssincrono versao="1.05.01">
 			<Descricao>Recepcionar Lote Assincrono EFDReinf</Descricao>
-			<RequestURIProducao>https://pre-reinf.receita.economia.gov.br/recepcao/lotes</RequestURIProducao>
+			<RequestURIProducao>https://reinf.receita.fazenda.gov.br/WsREINF/RecepcaoLoteReinf.svc</RequestURIProducao>
+			<RequestURIHomologacao>https://pre-reinf.receita.economia.gov.br/recepcao/lotes</RequestURIHomologacao>
 			<WebContentType>application/xml</WebContentType>
 			<MetodoAPI>post</MetodoAPI>
 			<TipoRetorno>application/xml</TipoRetorno>

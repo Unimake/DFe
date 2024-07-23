@@ -7,8 +7,6 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using static Unimake.Business.DFe.Xml.EFDReinf.TipoAjuste;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {

@@ -3,9 +3,10 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Exceptions;
+using Unimake.Business.DFe.Xml.ESocial;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Servicos.EFDReinf
 {
@@ -62,6 +63,33 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
             Inicializar(reinfRecepcionarLoteAssinc?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfRecepcionarLoteAssinc)), configuracao);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RetornoEnvioLote Result
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    return XMLUtility.Deserializar<RetornoEnvioLote>(RetornoWSXML);
+                }
+
+                return new RetornoEnvioLote
+                {
+                    RetornoEnvioLoteEventos = new RetornoEnvioLoteEventos
+                    {
+                        Status = new Xml.ESocial.Status
+                        {
+                            CdResposta = 0,
+                            DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ",
+                        }
+                    }
+                };
+            }
+        }
+
 
         #endregion Public Constructors
 
