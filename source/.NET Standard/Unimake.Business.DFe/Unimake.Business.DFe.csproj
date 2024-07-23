@@ -334,6 +334,7 @@
 		<None Remove="Servicos\Config\NFSe\ItambacuriMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItapemaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaporangaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\ItaquaquecetubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItumbiaraGO.xml" />
 		<None Remove="Servicos\Config\NFSe\IvotiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\JabotaoDosGuararapesPE.xml" />
@@ -887,6 +888,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IjuiRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaquaquecetubaSP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SenhorDoBonfimBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

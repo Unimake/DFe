@@ -1385,4 +1385,10 @@
 		<ArqConfig>IbicoaraBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3523107">
+		<Nome>Itaquaquecetuba - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItaquaquecetubaSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
