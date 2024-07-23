@@ -1,0 +1,81 @@
+# type: ignore
+import clr
+
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.CTe import *
+from Unimake.Business.DFe.Servicos.CTe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def enviar_cte_evento_canc():
+    print("Enviando evento de cancelamento de CTe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.CTe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar tag do lote de eventos eventoCTe
+    oEventoCTe        = EventoCTe() # Unimake.Business.DFe.Xml.CTe.EventoCTe
+    oEventoCTe.Versao = "4.00"
+    
+    # Criar tag DetEventoCanc
+    oDetEventoCanc              = DetEventoCanc() # Unimake.Business.DFe.Xml.CTe.DetEventoCanc
+    oDetEventoCanc.VersaoEvento = "4.00"
+    oDetEventoCanc.NProt        = "141190000660363"
+    oDetEventoCanc.XJust        = "Justificativa para cancelamento do CTe de teste"
+    
+    # Criar tag infEvento
+    oInfEvento = InfEvento() # Unimake.Business.DFe.XML.CTe.InfEvento
+    
+    # Adicionar o objeto oDetEventoCanc dentro do objeto DetEvento
+    oInfEvento.DetEvento = oDetEventoCanc
+    
+    # Atualizar propriedades da oInfEvento
+    # IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+    oInfEvento.COrgao		= UFBrasil.PR
+    oInfEvento.ChCTe		= "41191006117473000150550010000579281779843610"
+    oInfEvento.CNPJ			= "06117473000150"
+    oInfEvento.DhEvento		= clr.System.DateTime.Now.AddHours(-3)
+    oInfEvento.TpEvento		= TipoEventoCTe.Cancelamento
+    oInfEvento.NSeqEvento	= 1
+    oInfEvento.TpAmb		= TipoAmbiente.Homologacao
+    
+    # Adicionar a tag infEvento dentro da tag eventoCTe
+    oEventoCTe.InfEvento = oInfEvento
+    
+    # Criar o objeto para pegar exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper()
+    
+    # Criar o objeto para pegar o retorno do evento
+    oRetEventoCTe = RetEventoCTe() # Unimake.Business.DFe.XML.CTe.RetEventoCTe
+    
+    try:
+        # Enviar o evento
+        oRecepcaoEvento = RecepcaoEvento() # Unimake.Business.DFe.Servicos.CTe.RecepcaoEvento
+        oRecepcaoEvento.SetXMLConfiguracao(oEventoCTe, oConfig)
+        
+        oRecepcaoEvento.Executar(oEventoCTe, oConfig)
+        
+        oRetEventoCTe = oRecepcaoEvento.Result
+        
+        eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
+        print("\nEvento assinado: ", eventoAssinado)
+        print("\n\nRetorno do webservice: ", oRecepcaoEvento.RetornoWSString)
+    
+        if (oRetEventoCTe.InfEvento.CStat == 134 or 
+            oRetEventoCTe.InfEvento.CStat == 135 or 
+            oRetEventoCTe.InfEvento.CStat == 156):
+            print("\nEvento autorizado!")
+            oRecepcaoEvento.GravarXmlDistribuicao("src\\CTe\\XMLs")
+            
+        else:
+            print("\nEvento não autorizado!")
+            print("Motivo da não autorização: ", oRetEventoCTe.InfEvento.XMotivo)
+    
+    except Exception as e:
+        print("Erro ao enviar o evento do CTe: ", e)
+        print("Erro do lado do CSHARP: ", oExceptionInterop.GetMessage())
+    

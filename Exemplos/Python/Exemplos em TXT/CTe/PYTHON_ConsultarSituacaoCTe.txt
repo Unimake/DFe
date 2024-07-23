@@ -1,0 +1,36 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.CTe import *
+from Unimake.Business.DFe.Servicos.CTe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def consultar_situacao_cte():
+    print("Consultar a situação do CTe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.CTe
+    oConfig.Servico            = Servico.CTeConsultaProtocolo
+    oConfig.TipoEmissao        = TipoEmissao.Normal
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar XML
+    oConsSitCte        = ConsSitCTe() # Unimake.Business.DFe.Xml.CTe.ConsSitCTe
+    oConsSitCte.Versao = "4.00"
+    oConsSitCte.TpAmb  = TipoAmbiente.Homologacao
+    oConsSitCte.ChCTe  = "51160624686092000173570010000000031000000020"
+    
+    oExceptionInterop = ThrowHelper()
+    
+    try:
+        oConsultaProtocoloCTe = ConsultaProtocolo() # Unimake.Business.DFe.Servicos.CTe.ConsultaProtocolo
+        oConsultaProtocoloCTe.Executar(oConsSitCte, oConfig)
+        
+        return print("Situação do CTe: ", oConsultaProtocoloCTe.RetornoWSString)
+    
+    except Exception as e:
+        print("\nErro ao consultar situação do CTe: ", e)
+        print("\nExceção do CSHARP: ", oExceptionInterop.GetMessage())
