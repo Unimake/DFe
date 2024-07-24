@@ -47,7 +47,7 @@ def enviar_nfe_evento_cce():
     oInfEvento.COrgao     = UFBrasil.PR
     oInfEvento.ChNFe      = "41240706117473000150550300000000161085048302"
     oInfEvento.CNPJ       = "06117473000150"
-    oInfEvento.DhEvento   = clr.System.DateTime.Now.AddHours(-3)
+    oInfEvento.DhEvento   = clr.System.DateTime.Now
     oInfEvento.TpEvento   = TipoEventoNFe.CartaCorrecao
     oInfEvento.NSeqEvento = 1
     oInfEvento.VerEvento  = "1.00"

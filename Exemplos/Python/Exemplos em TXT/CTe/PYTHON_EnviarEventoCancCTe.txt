@@ -9,7 +9,7 @@ from Unimake.Business.DFe.Servicos.CTe import *
 from Unimake.Exceptions import ThrowHelper
 
 def enviar_cte_evento_canc():
-    print("Enviando evento de cancelamento de CTe...")
+    print("Enviando evento de CTe...")
     
     # Criar configuração básica para consumir o serviço
     oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
@@ -38,7 +38,7 @@ def enviar_cte_evento_canc():
     oInfEvento.COrgao		= UFBrasil.PR
     oInfEvento.ChCTe		= "41191006117473000150550010000579281779843610"
     oInfEvento.CNPJ			= "06117473000150"
-    oInfEvento.DhEvento		= clr.System.DateTime.Now.AddHours(-3)
+    oInfEvento.DhEvento		= clr.System.DateTime.Now
     oInfEvento.TpEvento		= TipoEventoCTe.Cancelamento
     oInfEvento.NSeqEvento	= 1
     oInfEvento.TpAmb		= TipoAmbiente.Homologacao

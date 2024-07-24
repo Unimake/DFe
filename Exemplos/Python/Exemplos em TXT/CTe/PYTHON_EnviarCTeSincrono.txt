@@ -34,7 +34,7 @@ def enviar_cte():
     oIde.Mod		= ModeloDFe.CTe
     oIde.Serie		= 1
     oIde.NCT		= 861
-    oIde.DhEmi		= clr.System.DateTime.Now.AddHours(-3)
+    oIde.DhEmi		= clr.System.DateTime.Now
     oIde.TpImp		= FormatoImpressaoDACTE.NormalPaisagem
     oIde.TpEmis		= TipoEmissao.Normal
     oIde.TpAmb		= TipoAmbiente.Homologacao
@@ -235,7 +235,7 @@ def enviar_cte():
     # Criar o grupo de tag occ
     oOcc      = Occ() # Unimake.Business.DFe.XML.CTe.Occ
     oOcc.NOcc = 810
-    oOcc.DEmi = clr.System.DateTime.Now.AddHours(-3)
+    oOcc.DEmi = clr.System.DateTime.Now
     
     # Criar o grupo de tag emiOcc
     oEmiOcc      = EmiOcc() # Unimake.Business.DFe.XML.CTe.EmiOcc
