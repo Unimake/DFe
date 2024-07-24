@@ -1,0 +1,36 @@
+#type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.MDFe import *
+from Unimake.Business.DFe.Servicos.MDFe import *
+from Unimake.Exceptions import ThrowHelper
+
+def consulta_status_mdfe():
+    print("Consultando o status do serviço do MDFe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.MDFe
+    oConfig.TipoEmissao        = TipoEmissao.Normal
+    oConfig.CodigoUF           = 41
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar o XML
+    oConsStatServMDFe        = ConsStatServMDFe() # Unimake.Business.DFe.Xml.MDFe.ConsStatServMDFe
+    oConsStatServMDFe.Versao = "3.00"
+    oConsStatServMDFe.TpAmb  = TipoAmbiente.Homologacao
+    
+    # Criar objeto para pegar exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oStatusServicoMDFe = StatusServico() # Unimake.Business.DFe.Servicos.MDFe.StatusServico
+        oStatusServicoMDFe.Executar(oConsStatServMDFe, oConfig)
+        
+        return print("\nStatus do serviço: ", oStatusServicoMDFe.RetornoWSString)
+    
+    except Exception as e:
+        print("Erro ao consultar o status do MDFe: ", e)
+        print("\nExceção do CSHARP: ", oExceptionInterop.GetMessage())
