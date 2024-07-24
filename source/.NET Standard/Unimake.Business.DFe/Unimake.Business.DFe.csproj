@@ -323,6 +323,7 @@
 		<None Remove="Servicos\Config\NFSe\GuaratinguetaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\HarmoniaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\IbicoaraBA.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IgarapeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\IjuiRS.xml" />
@@ -887,6 +888,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\IbicoaraBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IjuiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaquaquecetubaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
