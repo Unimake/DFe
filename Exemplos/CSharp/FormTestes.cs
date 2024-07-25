@@ -8,13 +8,11 @@ using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.CTe;
-using Unimake.Business.DFe.Xml.MDFe;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
-using Unimake.Unidanfe.Configurations;
 using Unimake.Unidanfe;
+using Unimake.Unidanfe.Configurations;
 using DANFe = Unimake.Unidanfe;
 using DFe = Unimake.Business.DFe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
@@ -357,7 +355,7 @@ namespace TreinamentoDLL
 
             if (recepcaoEvento.Result.CStat == 128) //128 = Lote de evento processado com sucesso.
             {
-                for (int i = 0; i < recepcaoEvento.Result.RetEvento.Count; i++)
+                for (var i = 0; i < recepcaoEvento.Result.RetEvento.Count; i++)
                 {
                     switch (recepcaoEvento.Result.RetEvento[i].InfEvento.CStat)
                     {
@@ -371,330 +369,6 @@ namespace TreinamentoDLL
                             break;
                     }
 
-                }
-            }
-        }
-
-        private void BtnEnviarMDFeAssincrono_Click(object sender, EventArgs e)
-        {
-            var xml = new Unimake.Business.DFe.Xml.MDFe.EnviMDFe
-            {
-                Versao = "3.00",
-                IdLote = "000000000000001",
-                MDFe = new Unimake.Business.DFe.Xml.MDFe.MDFe
-                {
-                    InfMDFe = new Unimake.Business.DFe.Xml.MDFe.InfMDFe
-                    {
-                        Versao = "3.00",
-                        Ide = new Unimake.Business.DFe.Xml.MDFe.Ide
-                        {
-                            CUF = UFBrasil.PR,
-                            TpAmb = TipoAmbiente.Homologacao,
-                            TpEmit = TipoEmitenteMDFe.PrestadorServicoTransporte,
-                            Mod = ModeloDFe.MDFe,
-                            Serie = 1,
-                            NMDF = 861,
-                            CMDF = "01722067",
-                            Modal = ModalidadeTransporteMDFe.Rodoviario,
-                            DhEmi = DateTime.Now,
-                            TpEmis = TipoEmissao.Normal,
-                            ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                            VerProc = "UNICO V8.0",
-                            UFIni = UFBrasil.PR,
-                            UFFim = UFBrasil.SP,
-                            InfMunCarrega = new List<Unimake.Business.DFe.Xml.MDFe.InfMunCarrega>
-                            {
-                                new Unimake.Business.DFe.Xml.MDFe.InfMunCarrega
-                                {
-                                    CMunCarrega = 4118402,
-                                    XMunCarrega = "PARANAVAI"
-                                }
-                            },
-                            DhIniViagem = DateTime.Now,
-                        },
-                        Emit = new Unimake.Business.DFe.Xml.MDFe.Emit
-                        {
-                            CNPJ = "31905001000109",
-                            IE = "9079649730",
-                            XNome = "EXATUS MOVEIS EIRELI",
-                            XFant = "EXATUS MOVEIS",
-                            EnderEmit = new Unimake.Business.DFe.Xml.MDFe.EnderEmit
-                            {
-                                XLgr = "RUA JOAQUIM F. DE SOUZA",
-                                Nro = "01112",
-                                XBairro = "VILA TEREZINHA",
-                                CMun = 4118402,
-                                XMun = "PARANAVAI",
-                                CEP = "87706675",
-                                UF = UFBrasil.PR,
-                                Fone = "04434237530",
-                            },
-                        },
-                        InfModal = new Unimake.Business.DFe.Xml.MDFe.InfModal
-                        {
-                            VersaoModal = "3.00",
-                            Rodo = new Unimake.Business.DFe.Xml.MDFe.Rodo
-                            {
-                                InfANTT = new Unimake.Business.DFe.Xml.MDFe.InfANTT
-                                {
-                                    RNTRC = "44957333",
-                                    InfContratante = new List<Unimake.Business.DFe.Xml.MDFe.InfContratante>
-                                    {
-                                        new Unimake.Business.DFe.Xml.MDFe.InfContratante
-                                        {
-                                            CNPJ = "80568835000181"
-                                        },
-                                        new Unimake.Business.DFe.Xml.MDFe.InfContratante
-                                        {
-                                            CNPJ = "10197843000183"
-                                        }
-                                    }
-                                },
-                                VeicTracao = new Unimake.Business.DFe.Xml.MDFe.VeicTracao
-                                {
-                                    CInt = "AXF8500",
-                                    Placa = "AXF8500",
-                                    Tara = 0,
-                                    CapKG = 5000,
-                                    Prop = new Unimake.Business.DFe.Xml.MDFe.Prop
-                                    {
-                                        CNPJ = "31905001000109",
-                                        RNTRC = "44957333",
-                                        XNome = "EXATUS MOVEIS EIRELI",
-                                        IE = "9079649730",
-                                        UF = UFBrasil.PR,
-                                        TpProp = TipoProprietarioMDFe.Outros
-                                    },
-                                    Condutor = new List<Unimake.Business.DFe.Xml.MDFe.Condutor>
-                                    {
-                                        new Unimake.Business.DFe.Xml.MDFe.Condutor
-                                        {
-                                            XNome = "XXXXXXXXX XXXXX XX XXXXX",
-                                            CPF = "12345566655"
-                                        }
-                                    },
-                                    TpRod = TipoRodado.Toco,
-                                    TpCar = TipoCarroceriaMDFe.FechadaBau,
-                                    UF = UFBrasil.PR
-                                },
-                            }
-                        },
-                        InfDoc = new Unimake.Business.DFe.Xml.MDFe.InfDocInfMDFe
-                        {
-                            InfMunDescarga = new List<Unimake.Business.DFe.Xml.MDFe.InfMunDescarga>
-                            {
-                                new Unimake.Business.DFe.Xml.MDFe.InfMunDescarga
-                                {
-                                    CMunDescarga = 3505708,
-                                    XMunDescarga = "BARUERI",
-                                    InfCTe = new List<Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe>
-                                    {
-                                        new Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe
-                                        {
-                                            ChCTe = "41200531905001000109570010000009551708222466"
-                                        },
-                                        new Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe
-                                        {
-                                            ChCTe = "41200531905001000109570010000009561308222474"
-                                        }
-                                    },
-                                    InfNFe = new List<Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfNFe>
-                                    {
-                                        new Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfNFe
-                                        {
-                                            ChNFe = "12345678901234567890123456789012345678901234",
-                                            InfUnidTransp = new List<Unimake.Business.DFe.Xml.MDFe.InfUnidTransp>
-                                            {
-                                                new Unimake.Business.DFe.Xml.MDFe.InfUnidTransp
-                                                {
-                                                    IdUnidTransp = "122",
-                                                    TpUnidTransp = TipoUnidadeTransporte.RodoviarioReboque,
-                                                    LacUnidTransp = new List<Unimake.Business.DFe.Xml.MDFe.LacUnidTransp>
-                                                    {
-                                                        new Unimake.Business.DFe.Xml.MDFe.LacUnidTransp
-                                                        {
-                                                            NLacre = "12334"
-                                                        }
-                                                    },
-                                                    InfUnidCarga = new List<Unimake.Business.DFe.Xml.MDFe.InfUnidCarga>
-                                                    {
-                                                        new Unimake.Business.DFe.Xml.MDFe.InfUnidCarga
-                                                        {
-                                                            TpUnidCarga = TipoUnidadeCarga.Container,
-                                                            IdUnidCarga = "123",
-                                                            LacUnidCarga = new List<Unimake.Business.DFe.Xml.MDFe.LacUnidCarga>
-                                                            {
-                                                                new Unimake.Business.DFe.Xml.MDFe.LacUnidCarga
-                                                                {
-                                                                    NLacre = "3333333"
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                new Unimake.Business.DFe.Xml.MDFe.InfMunDescarga
-                                {
-                                    CMunDescarga = 3550308,
-                                    XMunDescarga = "SAO PAULO",
-                                    InfCTe = new List<Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe>
-                                    {
-                                        new Unimake.Business.DFe.Xml.MDFe.InfMunDescargaInfCTe
-                                        {
-                                            ChCTe = "41200531905001000109570010000009581608222490"
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        ProdPred = new Unimake.Business.DFe.Xml.MDFe.ProdPred
-                        {
-                            TpCarga = TipoCargaMDFe.CargaGeral,
-                            XProd = "TESTE DE PRODUTO PREDOMINANTE",
-                            InfLotacao = new Unimake.Business.DFe.Xml.MDFe.InfLotacao
-                            {
-                                InfLocalCarrega = new Unimake.Business.DFe.Xml.MDFe.InfLocalCarrega
-                                {
-                                    CEP = "87302080"
-                                },
-                                InfLocalDescarrega = new Unimake.Business.DFe.Xml.MDFe.InfLocalDescarrega
-                                {
-                                    CEP = "25650208"
-                                }
-                            }
-                        },
-                        Seg = new List<Unimake.Business.DFe.Xml.MDFe.Seg>
-                        {
-                            new Unimake.Business.DFe.Xml.MDFe.Seg
-                            {
-                                InfResp = new Unimake.Business.DFe.Xml.MDFe.InfResp
-                                {
-                                    RespSeg = ResponsavelSeguroMDFe.EmitenteMDFe,
-                                    CNPJ = "31905001000109"
-                                },
-                                InfSeg = new Unimake.Business.DFe.Xml.MDFe.InfSeg
-                                {
-                                    XSeg = "PORTO SEGURO",
-                                    CNPJ = "61198164000160"
-                                },
-                                NApol = "053179456362",
-                                NAver = new List<string>
-                                {
-                                    {
-                                        "0000000000000000000000000000000000000000"
-                                    },
-                                    {
-                                        "0000000000000000000000000000000000000001"
-                                    },
-                                }
-                            }
-                        },
-                        Tot = new Unimake.Business.DFe.Xml.MDFe.Tot
-                        {
-                            QCTe = 3,
-                            VCarga = 56599.09,
-                            CUnid = CodigoUnidadeMedidaMDFe.KG,
-                            QCarga = 2879.00
-                        },
-                        Lacres = new List<Unimake.Business.DFe.Xml.MDFe.Lacre>
-                        {
-                            new Unimake.Business.DFe.Xml.MDFe.Lacre
-                            {
-                                NLacre = "1111111"
-                            },
-                            new Unimake.Business.DFe.Xml.MDFe.Lacre
-                            {
-                                NLacre = "22222"
-                            }
-                        },
-                        InfAdic = new Unimake.Business.DFe.Xml.MDFe.InfAdic
-                        {
-                            InfCpl = "DATA/HORA PREVISTA PARA O INICO DA VIAGEM: 10/08/2020 as 08:00"
-                        },
-                        InfRespTec = new Unimake.Business.DFe.Xml.MDFe.InfRespTec
-                        {
-                            CNPJ = "06117473000150",
-                            XContato = "Wandrey Mundin Ferreira",
-                            Email = "wandrey@unimake.com.br",
-                            Fone = "04431414900",
-                        },
-                    }
-                }
-            };
-
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.MDFe,
-                CertificadoDigital = CertificadoSelecionado
-            };
-
-            var autorizacao = new Unimake.Business.DFe.Servicos.MDFe.Autorizacao(xml, configuracao);
-            autorizacao.Executar();
-
-            MessageBox.Show(autorizacao.RetornoWSString);
-
-            if (autorizacao.Result != null)
-            {
-                MessageBox.Show(autorizacao.Result.XMotivo);
-
-                if (autorizacao.Result.CStat == 103) //103 = Lote Recebido com Sucesso
-                {
-                    var xmlRec = new Unimake.Business.DFe.Xml.MDFe.ConsReciMDFe
-                    {
-                        Versao = "3.00",
-                        TpAmb = TipoAmbiente.Homologacao,
-                        NRec = autorizacao.Result.InfRec.NRec
-                    };
-
-                    var configRec = new Configuracao
-                    {
-                        TipoDFe = TipoDFe.MDFe,
-                        CertificadoDigital = CertificadoSelecionado
-                    };
-
-                    var retAutorizacao = new Unimake.Business.DFe.Servicos.MDFe.RetAutorizacao(xmlRec, configRec);
-                    retAutorizacao.Executar();
-
-                    //Se autorizado, gravar XML de distribuição
-                    if (retAutorizacao.Result.ProtMDFe[0].InfProt.CStat == 100) //100 =MDFe Autorizado
-                    {
-                        autorizacao.RetConsReciMDFe = retAutorizacao.Result;
-                        autorizacao.GravarXmlDistribuicao(@"d:\testenfe\");
-                    }
-                    else
-                    {
-                        //Se rejeitado, realizar tratamento.
-                    }
-
-                    //Digamos que eu não consegui o retorno do envio do MDFe que tem o recibo
-                    //Como eu faço para finalizar o MDFe ???? Sem o recibo para consultar?
-                    autorizacao.RetConsReciMDFe = null;
-
-                    var xmlSit = new Unimake.Business.DFe.Xml.MDFe.ConsSitMDFe
-                    {
-                        Versao = "3.00",
-                        TpAmb = TipoAmbiente.Homologacao,
-                        ChMDFe = xml.MDFe.InfMDFe.Chave
-                    };
-
-                    var configSit = new Configuracao
-                    {
-                        TipoDFe = TipoDFe.MDFe,
-                        CertificadoDigital = CertificadoSelecionado
-                    };
-
-                    var consultaProtocolo = new Unimake.Business.DFe.Servicos.MDFe.ConsultaProtocolo(xmlSit, configSit);
-                    consultaProtocolo.Executar();
-
-                    //Se autorizado, gravar XML de distribuição
-                    if (consultaProtocolo.Result.CStat == 100)
-                    {
-                        autorizacao.RetConsSitMDFe.Add(consultaProtocolo.Result);
-                        autorizacao.GravarXmlDistribuicao(@"d:\testenfe\");
-                    }
                 }
             }
         }
@@ -2933,14 +2607,14 @@ namespace TreinamentoDLL
         {
             var xml = new XmlCTe.ConsStatServCte
             {
-                Versao = "3.00",
-                TpAmb = TipoAmbiente.Homologacao
+                Versao = "4.00",
+                TpAmb = TipoAmbiente.Homologacao,
+                CUF = UFBrasil.SP
             };
 
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.CTe,
-                CodigoUF = (int)UFBrasil.SP,
                 CertificadoDigital = CertificadoSelecionado
             };
 
@@ -2973,113 +2647,109 @@ namespace TreinamentoDLL
             MessageBox.Show(consultaMDFeNaoEnc.RetornoWSString);
         }
 
-        private void BtnEnviarCTeAssincrono_Click(object sender, EventArgs e)
+        private void BtnEnviarCTeSincrono_Click(object sender, EventArgs e)
         {
-            var xml = new XmlCTe.EnviCTe
+            var xml = new XmlCTe.CTe
             {
-                Versao = "3.00",
-                IdLote = "000000000000001",
-                CTe = new List<XmlCTe.CTe> {
-                        new XmlCTe.CTe
+                InfCTe = new XmlCTe.InfCTe
+                {
+                    Versao = "4.00",
+                    Ide = new XmlCTe.Ide
+                    {
+                        CUF = UFBrasil.PR,
+                        CCT = "01234567",
+                        CFOP = "6352",
+                        NatOp = "PREST.SERV.TRANSP.INDUSTR",
+                        Mod = ModeloDFe.CTe,
+                        Serie = 1,
+                        NCT = 868,
+                        DhEmi = DateTime.Now,
+                        TpImp = FormatoImpressaoDACTE.NormalPaisagem,
+                        TpEmis = TipoEmissao.Normal,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        TpCTe = TipoCTe.Normal,
+                        ProcEmi = ProcessoEmissao.AplicativoContribuinte,
+                        VerProc = "UNICO V8.0",
+                        CMunEnv = "4118402",
+                        XMunEnv = "PARANAVAI",
+                        UFEnv = UFBrasil.PR,
+                        Modal = ModalidadeTransporteCTe.Rodoviario,
+                        TpServ = TipoServicoCTe.Normal,
+                        CMunIni = "4118402",
+                        XMunIni = "PARANAVAI",
+                        UFIni = UFBrasil.PR,
+                        CMunFim = "3305109",
+                        XMunFim = "SAO JOAO DE MERITI",
+                        UFFim = UFBrasil.RJ,
+                        Retira = SimNao.Nao,
+                        IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
+                        Toma3 = new XmlCTe.Toma3
                         {
-                            InfCTe = new XmlCTe.InfCTe
-                            {
-                                Versao = "3.00",
-                                Ide = new XmlCTe.Ide
-                                {
-                                    CUF = UFBrasil.PR,
-                                    CCT = "01234567",
-                                    CFOP  = "6352",
-                                    NatOp = "PREST.SERV.TRANSP.INDUSTR",
-                                    Mod = ModeloDFe.CTe,
-                                    Serie = 1,
-                                    NCT = 868 ,
-                                    DhEmi = DateTime.Now,
-                                    TpImp = FormatoImpressaoDACTE.NormalPaisagem,
-                                    TpEmis = TipoEmissao.Normal,
-                                    TpAmb = TipoAmbiente.Homologacao,
-                                    TpCTe = TipoCTe.Normal,
-                                    ProcEmi = ProcessoEmissao.AplicativoContribuinte,
-                                    VerProc = "UNICO V8.0",
-                                    CMunEnv = "4118402",
-                                    XMunEnv = "PARANAVAI",
-                                    UFEnv = UFBrasil.PR,
-                                    Modal =  ModalidadeTransporteCTe.Rodoviario,
-                                    TpServ = TipoServicoCTe.Normal,
-                                    CMunIni = "4118402",
-                                    XMunIni = "PARANAVAI",
-                                    UFIni = UFBrasil.PR,
-                                    CMunFim = "3305109",
-                                    XMunFim = "SAO JOAO DE MERITI",
-                                    UFFim =  UFBrasil.RJ,
-                                    Retira = SimNao.Nao,
-                                    IndIEToma = IndicadorIEDestinatario.ContribuinteICMS,
-                                    Toma3 =  new XmlCTe.Toma3
-                                    {
-                                        Toma= TomadorServicoCTe.Remetente,
-                                    },
-                                },
-                                Emit = new XmlCTe.Emit
-                                {
-                                    CNPJ = "00000000000000",
-                                    IE = "9999999999",
-                                    XNome = "XXXXXX XXXXXX XXXXXX",
-                                    XFant = "XXXXXX XXXXXX",
-                                    EnderEmit = new XmlCTe.EnderEmit
-                                    {
-                                        XLgr = "XXXXXXXXXXXXXXXXXXXXXXX",
-                                        Nro = "11111",
-                                        XBairro = "XXXXXXXXXXXXXX",
-                                        CMun = 4118402,
-                                        XMun = "PARANAVAI",
-                                        CEP = "87700000",
-                                        UF = UFBrasil.PR,
-                                        Fone = "04433333333",
-                                    },
-                                },
-                                Rem = new XmlCTe.Rem
-                                {
-                                    CNPJ = "00000000000000",
-                                    IE = "9999999999",
-                                    XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                                    XFant = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                                    Fone = "04433333333",
-                                    EnderReme = new XmlCTe.EnderReme
-                                    {
-                                        XLgr = "XXXXXXXXXXXXXXXXXX",
-                                        Nro = "9999",
-                                        XBairro = "XXXXXXXXXXXXXXX",
-                                        CMun = 4118402,
-                                        XMun = "PARANAVAI",
-                                        CEP = "87700000",
-                                        UF = UFBrasil.PR,
-                                        CPais = 1058,
-                                        XPais = "BRASIL",
-                                    }
-                                },
-                                Dest = new XmlCTe.Dest
-                                {
-                                    CNPJ = "00000000000000",
-                                    IE = "ISENTO",
-                                    XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                                    EnderDest = new XmlCTe.EnderDest
-                                    {
-                                        XLgr = "XXXXXXXXXXXXXXXXXXXXXXXXXXX",
-                                        Nro = "55",
-                                        XBairro = "CENTRO",
-                                        CMun = 3305109,
-                                        XMun = "SAO JOAO DE MERITI",
-                                        CEP = "25520570",
-                                        UF = UFBrasil.RJ,
-                                        CPais = 1058,
-                                        XPais = "BRASIL",
-                                    },
-                                },
-                                VPrest = new XmlCTe.VPrest
-                                {
-                                    VTPrest = 50.00,
-                                    VRec = 50.00,
-                                    Comp = new List<XmlCTe.Comp>
+                            Toma = TomadorServicoCTe.Remetente,
+                        },
+                    },
+                    Emit = new XmlCTe.Emit
+                    {
+                        CNPJ = "00000000000000",
+                        IE = "9999999999",
+                        XNome = "XXXXXX XXXXXX XXXXXX",
+                        XFant = "XXXXXX XXXXXX",
+                        EnderEmit = new XmlCTe.EnderEmit
+                        {
+                            XLgr = "XXXXXXXXXXXXXXXXXXXXXXX",
+                            Nro = "11111",
+                            XBairro = "XXXXXXXXXXXXXX",
+                            CMun = 4118402,
+                            XMun = "PARANAVAI",
+                            CEP = "87700000",
+                            UF = UFBrasil.PR,
+                            Fone = "04433333333",
+                        },
+                        CRT = CRT.RegimeNormal                        
+                    },
+                    Rem = new XmlCTe.Rem
+                    {
+                        CNPJ = "00000000000000",
+                        IE = "9999999999",
+                        XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                        XFant = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                        Fone = "04433333333",
+                        EnderReme = new XmlCTe.EnderReme
+                        {
+                            XLgr = "XXXXXXXXXXXXXXXXXX",
+                            Nro = "9999",
+                            XBairro = "XXXXXXXXXXXXXXX",
+                            CMun = 4118402,
+                            XMun = "PARANAVAI",
+                            CEP = "87700000",
+                            UF = UFBrasil.PR,
+                            CPais = 1058,
+                            XPais = "BRASIL",
+                        }
+                    },
+                    Dest = new XmlCTe.Dest
+                    {
+                        CNPJ = "00000000000000",
+                        IE = "ISENTO",
+                        XNome = "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
+                        EnderDest = new XmlCTe.EnderDest
+                        {
+                            XLgr = "XXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            Nro = "55",
+                            XBairro = "CENTRO",
+                            CMun = 3305109,
+                            XMun = "SAO JOAO DE MERITI",
+                            CEP = "25520570",
+                            UF = UFBrasil.RJ,
+                            CPais = 1058,
+                            XPais = "BRASIL",
+                        },
+                    },
+                    VPrest = new XmlCTe.VPrest
+                    {
+                        VTPrest = 50.00,
+                        VRec = 50.00,
+                        Comp = new List<XmlCTe.Comp>
                                     {
                                         new XmlCTe.Comp
                                         {
@@ -3087,25 +2757,25 @@ namespace TreinamentoDLL
                                             VComp = 50.00,
                                         },
                                     },
-                                },
-                                Imp = new XmlCTe.Imp
-                                {
-                                    ICMS = new XmlCTe.ICMS
-                                    {
-                                        ICMSSN = new XmlCTe.ICMSSN
-                                        {
-                                            CST = "90",
-                                            IndSN = SimNao.Sim,
-                                        }
-                                    }
-                                },
-                                InfCTeNorm = new XmlCTe.InfCTeNorm
-                                {
-                                    InfCarga = new XmlCTe.InfCarga
-                                    {
-                                        VCarga = 6252.96,
-                                        ProPred = "xxxxxxx",
-                                        InfQ = new List<XmlCTe.InfQ>
+                    },
+                    Imp = new XmlCTe.Imp
+                    {
+                        ICMS = new XmlCTe.ICMS
+                        {
+                            ICMSSN = new XmlCTe.ICMSSN
+                            {
+                                CST = "90",
+                                IndSN = SimNao.Sim,
+                            }
+                        }
+                    },
+                    InfCTeNorm = new XmlCTe.InfCTeNorm
+                    {
+                        InfCarga = new XmlCTe.InfCarga
+                        {
+                            VCarga = 6252.96,
+                            ProPred = "xxxxxxx",
+                            InfQ = new List<XmlCTe.InfQ>
                                         {
                                             new XmlCTe.InfQ
                                             {
@@ -3120,24 +2790,24 @@ namespace TreinamentoDLL
                                                 QCarga = 1.0000,
                                             },
                                         },
-                                    },
-                                    InfDoc = new XmlCTe.InfDoc
-                                    {
-                                        InfNFe = new List<XmlCTe.InfNFe>
+                        },
+                        InfDoc = new XmlCTe.InfDoc
+                        {
+                            InfNFe = new List<XmlCTe.InfNFe>
                                         {
                                             new XmlCTe.InfNFe
                                             {
                                                 Chave = "41444444444444444444444444444444444444444441"
                                             },
                                         },
-                                    },
-                                    InfModal = new XmlCTe.InfModal
-                                    {
-                                        VersaoModal="3.00",
-                                        Rodo = new XmlCTe.Rodo
-                                        {
-                                            RNTRC = "44444444",
-                                            Occ = new List<XmlCTe.Occ>
+                        },
+                        InfModal = new XmlCTe.InfModal
+                        {
+                            VersaoModal = "4.00",
+                            Rodo = new XmlCTe.Rodo
+                            {
+                                RNTRC = "44444444",
+                                Occ = new List<XmlCTe.Occ>
                                             {
                                                 new XmlCTe.Occ
                                                 {
@@ -3153,19 +2823,17 @@ namespace TreinamentoDLL
                                                     },
                                                 },
                                             },
-                                        },
-                                    },
-                                },
-                                InfRespTec = new XmlCTe.InfRespTec
-                                {
-                                    CNPJ = "00000000000000",
-                                    XContato = "XXXXXXXXXXXXXXXXXXXXXXX",
-                                    Email= "teste@gmail.com",
-                                    Fone = "04433333333",
-                                },
                             },
                         },
-                    }
+                    },
+                    InfRespTec = new XmlCTe.InfRespTec
+                    {
+                        CNPJ = "00000000000000",
+                        XContato = "XXXXXXXXXXXXXXXXXXXXXXX",
+                        Email = "teste@gmail.com",
+                        Fone = "04433333333",
+                    },
+                },
             };
 
             var configuracao = new Configuracao
@@ -3174,33 +2842,17 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado
             };
 
-            var autorizacao = new ServicoCTe.Autorizacao(xml, configuracao);
-            autorizacao.Executar();
+            var autorizacaoSinc = new ServicoCTe.AutorizacaoSinc(xml, configuracao);
+            autorizacaoSinc.Executar();
 
-            if (autorizacao.Result != null)
+            if (autorizacaoSinc.Result != null)
             {
-                if (autorizacao.Result.CStat == 103) //Lote Recebido com Sucesso
+                if (autorizacaoSinc.Result.CStat == 104 || //Lote Recebido com Sucesso
+                    autorizacaoSinc.Result.CStat == 100)  //CTe Autorizado
                 {
-                    var xmlRec = new XmlCTe.ConsReciCTe
+                    if (autorizacaoSinc.Result.ProtCTe.InfProt.CStat == 100) //CTe Autorizado
                     {
-                        Versao = "3.00",
-                        TpAmb = TipoAmbiente.Homologacao,
-                        NRec = autorizacao.Result.InfRec.NRec
-                    };
-
-                    var configRec = new Configuracao
-                    {
-                        TipoDFe = TipoDFe.CTe,
-                        CertificadoDigital = CertificadoSelecionado
-                    };
-
-                    var retAutorizacao = new ServicoCTe.RetAutorizacao(xmlRec, configRec);
-                    retAutorizacao.Executar();
-
-                    if (retAutorizacao.Result.ProtCTe[0].InfProt.CStat == 100) //CTe Autorizado
-                    {
-                        autorizacao.RetConsReciCTe = retAutorizacao.Result;
-                        autorizacao.GravarXmlDistribuicao(@"d:\testenfe");
+                        autorizacaoSinc.GravarXmlDistribuicao(@"d:\testenfe");
                     }
                 }
             }
@@ -3210,10 +2862,10 @@ namespace TreinamentoDLL
         {
             var xml = new XmlCTeOS.CTeOS
             {
-                Versao = "3.00",
+                Versao = "4.00",
                 InfCTe = new XmlCTeOS.InfCTe
                 {
-                    Versao = "3.00",
+                    Versao = "4.00",
                     Ide = new XmlCTeOS.Ide
                     {
                         CUF = UFBrasil.PR,
@@ -3279,6 +2931,7 @@ namespace TreinamentoDLL
                             UF = UFBrasil.PR,
                             Fone = "04444444444",
                         },
+                        CRT = CRT.SimplesNacional
                     },
                     Toma = new XmlCTeOS.Toma
                     {
@@ -3359,7 +3012,7 @@ namespace TreinamentoDLL
                             },
                         InfModal = new XmlCTeOS.InfModal
                         {
-                            VersaoModal = "3.00",
+                            VersaoModal = "4.00",
                             RodoOS = new XmlCTeOS.RodoOS
                             {
                                 TAF = "999999999999",
@@ -3775,10 +3428,10 @@ namespace TreinamentoDLL
         {
             var xml = new XmlCTe.EventoCTe
             {
-                Versao = "3.00",
+                Versao = "4.00",
                 InfEvento = new XmlCTe.InfEvento(new XmlCTe.DetEventoCanc
                 {
-                    VersaoEvento = "3.00",
+                    VersaoEvento = "4.00",
                     NProt = "141200000001111",
                     XJust = "Justificativa de teste de cancelamento"
                 })
@@ -3821,11 +3474,11 @@ namespace TreinamentoDLL
         {
             var xml = new XmlCTe.EventoCTe
             {
-                Versao = "3.00",
+                Versao = "4.00",
                 InfEvento = new XmlCTe.InfEvento(new XmlCTe.DetEventoCanc
                 {
                     NProt = "141200000001111",
-                    VersaoEvento = "3.00",
+                    VersaoEvento = "4.00",
                     XJust = "Justificativa para cancelamento da CTe de teste"
                 })
                 {
@@ -3867,10 +3520,10 @@ namespace TreinamentoDLL
         {
             var xml = new XmlCTe.EventoCTe
             {
-                Versao = "3.00",
+                Versao = "4.00",
                 InfEvento = new XmlCTe.InfEvento(new XmlCTe.DetEventoCCE
                 {
-                    VersaoEvento = "3.00",
+                    VersaoEvento = "4.00",
                     EventoCCeCTe = new XmlCTe.EventoCCeCTe
                     {
                         InfCorrecao = new List<XmlCTe.InfCorrecao>
@@ -3932,10 +3585,10 @@ namespace TreinamentoDLL
         {
             var xml = new XmlCTe.EventoCTe
             {
-                Versao = "3.00",
+                Versao = "4.00",
                 InfEvento = new XmlCTe.InfEvento(new XmlCTe.DetEventoCCE
                 {
-                    VersaoEvento = "3.00",
+                    VersaoEvento = "4.00",
                     EventoCCeCTe = new XmlCTe.EventoCCeCTe
                     {
                         InfCorrecao = new List<XmlCTe.InfCorrecao>
@@ -5764,7 +5417,7 @@ namespace TreinamentoDLL
         {
             var doc = new XmlDocument();
             doc.Load(@"C:\projetos\uninfe\exemplos\CTe 4.00\CTeOS\35170799999999999999670000000000261309301440-cte.xml");
-            XmlCTeOS.CTeOS xml = XMLUtility.Deserializar<XmlCTeOS.CTeOS>(doc);
+            var xml = XMLUtility.Deserializar<XmlCTeOS.CTeOS>(doc);
 
             var configuracao = new Configuracao
             {
@@ -5800,10 +5453,9 @@ namespace TreinamentoDLL
                 Imprimir = false,
                 PastaPDF = @"d:\testenfe\pdf",
                 NomePDF = "35240110654122000155550010000085161700218900_110110_01-proceventonfe.pdf",
-                WaitProcess = false
+                WaitProcess = false,
+                NFe = @"D:\testenfe\41240106117473000150550300000000111905645773-procnfe.xml"
             };
-
-            config.NFe = @"D:\testenfe\41240106117473000150550300000000111905645773-procnfe.xml";
             UnidanfeServices.Execute(config);
         }
 
