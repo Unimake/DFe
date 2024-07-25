@@ -40,7 +40,7 @@ def enviar_nfe():
     oIde.Mod      = ModeloDFe.NFe
     oIde.Serie    = 30
     oIde.NNF      = 16
-    oIde.DhEmi    = clr.System.DateTime.Now.AddHours(-3)
+    oIde.DhEmi    = clr.System.DateTime.Now
     oIde.DhsaiEnt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime("yyyy-MM-ddTHH:mm:sszzz")
     oIde.TpNF     = TipoOperacao.Saida
     oIde.IdDest   = DestinoOperacao.OperacaoInterestadual

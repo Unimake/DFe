@@ -1,0 +1,77 @@
+#type: ignore
+import clr
+
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.MDFe import *
+from Unimake.Business.DFe.Servicos.MDFe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def enviar_mdfe_evento_canc():
+    print("Enviando o cancelamento de MDFe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.MDFe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar tag Evento
+    oEventoMDFe        = EventoMDFe() # Unimake.Business.DFe.XML.MDFe.EventoMDFe
+    oEventoMDFe.Versao = "3.00"
+    
+    # Criar tag DetEventoCanc
+    oDetEventoCanc              = DetEventoCanc() # Unimake.Business.DFe.XML.MDFe.DetEventoCanc
+    oDetEventoCanc.VersaoEvento	= "3.00"
+    oDetEventoCanc.NProt		= "141200000007987"
+    oDetEventoCanc.XJust		= "Justificativa para cancelamento do MDFe de teste"
+    
+    # Criar tag InfEvento
+    oInfEvento = InfEvento() # Unimake.Business.DFe.XML.MDFe.InfEvento
+    
+    # Adicionar a tag DetEventoCanc dentro da tag DetEvento
+    oInfEvento.DetEvento = oDetEventoCanc
+    
+    # Atualizar propriedades da oInfEvento
+    # IMPORTANTE: Atualização da propriedade TpEvento deve acontecer depois que o DetEvento recebeu o oDetEventoCanc para que funcione sem erro
+    oInfEvento.COrgao		= UFBrasil.PR
+    oInfEvento.ChMDFe		= "41200210859283000185570010000005671227070615"
+    oInfEvento.CNPJ			= "10859283000185"
+    oInfEvento.DhEvento		= clr.System.DateTime.Now
+    oInfEvento.TpEvento		= TipoEventoMDFe.Cancelamento 
+    oInfEvento.NSeqEvento	= 1
+    oInfEvento.TpAmb		= TipoAmbiente.Homologacao
+
+    # Adicionar a tag InfEvento dentro da tag Evento
+    oEventoMDFe.InfEvento	= oInfEvento
+    
+    # Resgatar algumas informações do XML partindo do objeto criado
+    print("\n<Versao>: ", oEventoMDFe.Versao)
+    print("\n<chMDFe>: ", oEventoMDFe.InfEvento.ChMDFe)
+    print("\n<nProt>: ", oEventoMDFe.InfEvento.DetEvento.NProt)
+    
+    # Criar o objeto para pegar exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper()
+    
+    try:
+        # Enviar o evento
+        oRecepcaoEvento = RecepcaoEvento() # Unimake.Business.DFe.Servicos.MDFe.RecepcaoEvento
+        oRecepcaoEvento.Executar(oEventoMDFe, oConfig)
+    
+        eventoAssinado = oRecepcaoEvento.GetConteudoXMLAssinado()
+        print("\nEvento assinado: ", eventoAssinado)
+        print("\nRetorno do webservice: ", oRecepcaoEvento.RetornoWSString)
+        
+        if (oRecepcaoEvento.Result.InfEvento.CStat == 135): # Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo MDFe
+            print("\nEvento autorizado!")
+            oRecepcaoEvento.GravarXmlDistribuicao("src\\MDFe\\XMLs")
+        
+        else:
+            print("\nEvento não autorizado!")
+            print("\nMotivo da não autorização: ", oRecepcaoEvento.Result.InfEvento.XMotivo)
+    
+    except Exception as e:
+        print("Erro ao enviar o evento do MDFe: ", e)
+        print("Erro do lado do CSHARP: ", oExceptionInterop.GetMessage())
+    

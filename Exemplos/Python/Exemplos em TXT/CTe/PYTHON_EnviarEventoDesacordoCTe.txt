@@ -39,7 +39,7 @@ def enviar_cte_evento_desacordo():
     oInfEvento.COrgao		= UFBrasil.PR # Tem que ser o estado de origem do CTe, dois primeiros digitos da chave do CTe que está no evento.
     oInfEvento.ChCTe		= "41191006117473000150550010000579281779843610"
     oInfEvento.CNPJ			= "06117473000150"
-    oInfEvento.DhEvento		= clr.System.DateTime.Now.AddHours(-3)
+    oInfEvento.DhEvento		= clr.System.DateTime.Now
     oInfEvento.TpEvento		= TipoEventoCTe.PrestDesacordo
     oInfEvento.NSeqEvento	= 1
     oInfEvento.TpAmb		= TipoAmbiente.Homologacao

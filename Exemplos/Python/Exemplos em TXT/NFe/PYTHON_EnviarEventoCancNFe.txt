@@ -48,7 +48,7 @@ def enviar_nfe_evento_canc():
     oInfEvento.COrgao     = UFBrasil.PR
     oInfEvento.ChNFe      = "41240706117473000150550300000000151562622985"
     oInfEvento.CNPJ       = "06117473000150"
-    oInfEvento.DhEvento   = clr.System.DateTime.Now.AddHours(-3)
+    oInfEvento.DhEvento   = clr.System.DateTime.Now
     oInfEvento.TpEvento   = TipoEventoNFe.Cancelamento
     oInfEvento.NSeqEvento = 1
     oInfEvento.VerEvento  = "1.00"

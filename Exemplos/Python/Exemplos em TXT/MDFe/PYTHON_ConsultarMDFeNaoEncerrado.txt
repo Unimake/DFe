@@ -1,0 +1,53 @@
+# type: ignore
+# from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.MDFe import *
+from Unimake.Business.DFe.Servicos.MDFe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def enviar_mdfe_consulta_nao_encerrado():
+    print("Consultando os não encerrados...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.MDFe
+    oConfig.CodigoUF           = 41
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar XML
+    oConsMDFeNaoEnc        = ConsMDFeNaoEnc() # Unimake.Business.DFe.XML.MDFe.ConsMDFeNaoEnc
+    oConsMDFeNaoEnc.Versao = "3.00"
+    oConsMDFeNaoEnc.TpAmb  = TipoAmbiente.Homologacao
+    oConsMDFeNaoEnc.XServ  = "CONSULTAR NÃO ENCERRADOS"
+    oConsMDFeNaoEnc.CNPJ   = "06117473000150"
+    
+    # Criar o objeto para pegar a exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper()
+    
+    # Criar o objeto para pegar o retorno
+    oRetConsMDFeNaoEnc = RetConsMDFeNaoEnc() # Unimake.Business.DFe.XML.MDFe.RetConsMDFeNaoEnc
+    
+    try:
+        oConsNaoEnc = ConsNaoEnc() # Unimake.Business.DFe.Servicos.MDFe.ConsNaoEnc
+        oConsNaoEnc.Executar(oConsMDFeNaoEnc, oConfig)
+        
+        # Adiciona o result do serviço na classe de retorno para conseguir fazer a deserialização para trabalhar com o objeto
+        oRetConsMDFeNaoEnc = oConsNaoEnc.Result
+        
+        if (oRetConsMDFeNaoEnc.GetInfMDFeCount() > 0):
+            for consulta in range(0, oRetConsMDFeNaoEnc.GetInfMDFeCount()):
+                oInfMDFe = InfMDFe() # Unimake.Business.DFe.XML.MDFe.RetConsMDFeNaoEncInfMDFe
+                oInfMDFe = oRetConsMDFeNaoEnc.GetInfMDFe(consulta)
+                
+                # Pode guardar a chave e o protocolo do MDFe desejado para depois fazer o encerramento dele
+                print("\nChave do MDFe: ", oInfMDFe.ChMDFe)
+                print("\nProtocolo: ", oInfMDFe.NProt)
+        else:
+            print("\nNão tem MDFe não encerrado, veja o retorno: ", oConsNaoEnc.RetornoWSString)
+    
+    except Exception as e:
+        print("Erro ao enviar a consulta do MDFe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
+        
