@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://notacarioca.rio.gov.br/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://notacarioca.rio.gov.br/RecepcionarLoteRps</WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="http://notacarioca.rio.gov.br/"><inputXML>{xmlBodyScape}</inputXML></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+		</RecepcionarLoteRps>
+		<GerarNfse versao="1.00">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://notacarioca.rio.gov.br/GerarNfse</WebActionHomologacao>
+			<WebActionProducao>http://notacarioca.rio.gov.br/GerarNfse</WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:not="http://notacarioca.rio.gov.br/"><soapenv:Header/><soapenv:Body><GerarNfseRequest xmlns="http://notacarioca.rio.gov.br/"><inputXML>{xmlBodyScape}</inputXML></GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+		</GerarNfse>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://notacarioca.rio.gov.br/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://notacarioca.rio.gov.br/CancelarNfse</WebActionProducao>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://notacarioca.rio.gov.br/"><inputXML>{xmlBodyScape}</inputXML></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://notacarioca.rio.gov.br/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://notacarioca.rio.gov.br/ConsultarLoteRps</WebActionProducao>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:not="http://notacarioca.rio.gov.br/"><soapenv:Header/><soapenv:Body><ConsultarLoteRpsRequest xmlns="http://notacarioca.rio.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://notacarioca.rio.gov.br/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://notacarioca.rio.gov.br/ConsultarNfsePorRps</WebActionProducao>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:not="http://notacarioca.rio.gov.br/"><soapenv:Header/><soapenv:Body><ConsultarNfsePorRpsRequest xmlns="http://notacarioca.rio.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao></Descricao>
+			<WebEnderecoHomologacao>https://notacariocahom.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://notacarioca.rio.gov.br/ConsultarNfse</WebActionHomologacao>
+			<WebActionProducao>http://notacarioca.rio.gov.br/ConsultarNfse</WebActionProducao>
+			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:not="http://notacarioca.rio.gov.br/"><soapenv:Header/><soapenv:Body><ConsultarNfseRequest xmlns="http://notacarioca.rio.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>
