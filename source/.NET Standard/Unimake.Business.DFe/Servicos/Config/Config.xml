@@ -1391,4 +1391,10 @@
 		<ArqConfig>ItaquaquecetubaSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3304557">
+		<Nome>Rio de Janeiro - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>RioDeJaneiroRJ.xml</ArqConfig>
+		<PadraoNFSe>CARIOCA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

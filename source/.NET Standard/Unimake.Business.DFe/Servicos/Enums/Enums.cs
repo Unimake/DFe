@@ -6532,6 +6532,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("FINTEL")]
         FINTEL = 48,
+
+        /// <summary>
+        /// CARIOCA
+        /// </summary>
+        [Description("CARIOCA")]
+        CARIOCA = 49
     }
 
     #endregion

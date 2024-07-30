@@ -61,7 +61,6 @@ namespace TreinamentoDLL
             this.BtnEnviarEventoEncerramentoMDFe = new System.Windows.Forms.Button();
             this.BtnEnviarEventoCancelamentoMDFe = new System.Windows.Forms.Button();
             this.BtnEnviarMDFeSincrono = new System.Windows.Forms.Button();
-            this.BtnEnviarMDFeAssincrono = new System.Windows.Forms.Button();
             this.BtnConsultaSituacaoMDFe = new System.Windows.Forms.Button();
             this.BtnConsultaStatusMDFe = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -83,9 +82,10 @@ namespace TreinamentoDLL
             this.BtnEventoCancelamentoCTeOS = new System.Windows.Forms.Button();
             this.BtnEventoCancelamentoCTe = new System.Windows.Forms.Button();
             this.BtnEnviarCTeOSSincrono = new System.Windows.Forms.Button();
-            this.BtnEnviarCTeAssincrono = new System.Windows.Forms.Button();
+            this.BtnEnviarCTeSincrono = new System.Windows.Forms.Button();
             this.BtnConsultarStatusCTe = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.BtnDistribuicaoDFeChNFe = new System.Windows.Forms.Button();
             this.BtnImprimirSAT = new System.Windows.Forms.Button();
             this.BtnImprimirCCe = new System.Windows.Forms.Button();
             this.BtnTestarConexaoInternet = new System.Windows.Forms.Button();
@@ -109,7 +109,6 @@ namespace TreinamentoDLL
             this.BtnConsultarConfigUF = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.BtnConsultarGTIN = new System.Windows.Forms.Button();
-            this.BtnDistribuicaoDFeChNFe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -449,7 +448,6 @@ namespace TreinamentoDLL
             this.groupBox3.Controls.Add(this.BtnEnviarEventoEncerramentoMDFe);
             this.groupBox3.Controls.Add(this.BtnEnviarEventoCancelamentoMDFe);
             this.groupBox3.Controls.Add(this.BtnEnviarMDFeSincrono);
-            this.groupBox3.Controls.Add(this.BtnEnviarMDFeAssincrono);
             this.groupBox3.Controls.Add(this.BtnConsultaSituacaoMDFe);
             this.groupBox3.Controls.Add(this.BtnConsultaStatusMDFe);
             this.groupBox3.Location = new System.Drawing.Point(666, 18);
@@ -464,7 +462,7 @@ namespace TreinamentoDLL
             // BtnEnviarEventoAlteracaoPagamentoServicoMDFe
             // 
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Location = new System.Drawing.Point(9, 417);
+            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Location = new System.Drawing.Point(9, 368);
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Name = "BtnEnviarEventoAlteracaoPagamentoServicoMDFe";
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Size = new System.Drawing.Size(296, 66);
@@ -476,7 +474,7 @@ namespace TreinamentoDLL
             // BtnEnviarEventoPagamentoOperacaoMDFe
             // 
             this.BtnEnviarEventoPagamentoOperacaoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoPagamentoOperacaoMDFe.Location = new System.Drawing.Point(9, 342);
+            this.BtnEnviarEventoPagamentoOperacaoMDFe.Location = new System.Drawing.Point(9, 293);
             this.BtnEnviarEventoPagamentoOperacaoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnEnviarEventoPagamentoOperacaoMDFe.Name = "BtnEnviarEventoPagamentoOperacaoMDFe";
             this.BtnEnviarEventoPagamentoOperacaoMDFe.Size = new System.Drawing.Size(296, 66);
@@ -488,7 +486,7 @@ namespace TreinamentoDLL
             // BtnConsultarMDFeNaoEncerrado
             // 
             this.BtnConsultarMDFeNaoEncerrado.CausesValidation = false;
-            this.BtnConsultarMDFeNaoEncerrado.Location = new System.Drawing.Point(9, 297);
+            this.BtnConsultarMDFeNaoEncerrado.Location = new System.Drawing.Point(9, 248);
             this.BtnConsultarMDFeNaoEncerrado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnConsultarMDFeNaoEncerrado.Name = "BtnConsultarMDFeNaoEncerrado";
             this.BtnConsultarMDFeNaoEncerrado.Size = new System.Drawing.Size(296, 35);
@@ -500,7 +498,7 @@ namespace TreinamentoDLL
             // BtnEnviarEventoEncerramentoMDFe
             // 
             this.BtnEnviarEventoEncerramentoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoEncerramentoMDFe.Location = new System.Drawing.Point(10, 252);
+            this.BtnEnviarEventoEncerramentoMDFe.Location = new System.Drawing.Point(10, 203);
             this.BtnEnviarEventoEncerramentoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnEnviarEventoEncerramentoMDFe.Name = "BtnEnviarEventoEncerramentoMDFe";
             this.BtnEnviarEventoEncerramentoMDFe.Size = new System.Drawing.Size(296, 35);
@@ -512,7 +510,7 @@ namespace TreinamentoDLL
             // BtnEnviarEventoCancelamentoMDFe
             // 
             this.BtnEnviarEventoCancelamentoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoCancelamentoMDFe.Location = new System.Drawing.Point(10, 208);
+            this.BtnEnviarEventoCancelamentoMDFe.Location = new System.Drawing.Point(10, 159);
             this.BtnEnviarEventoCancelamentoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnEnviarEventoCancelamentoMDFe.Name = "BtnEnviarEventoCancelamentoMDFe";
             this.BtnEnviarEventoCancelamentoMDFe.Size = new System.Drawing.Size(296, 35);
@@ -524,7 +522,7 @@ namespace TreinamentoDLL
             // BtnEnviarMDFeSincrono
             // 
             this.BtnEnviarMDFeSincrono.CausesValidation = false;
-            this.BtnEnviarMDFeSincrono.Location = new System.Drawing.Point(9, 163);
+            this.BtnEnviarMDFeSincrono.Location = new System.Drawing.Point(9, 114);
             this.BtnEnviarMDFeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnEnviarMDFeSincrono.Name = "BtnEnviarMDFeSincrono";
             this.BtnEnviarMDFeSincrono.Size = new System.Drawing.Size(296, 35);
@@ -532,18 +530,6 @@ namespace TreinamentoDLL
             this.BtnEnviarMDFeSincrono.Text = "Enviar MDFe Sincrono";
             this.BtnEnviarMDFeSincrono.UseVisualStyleBackColor = true;
             this.BtnEnviarMDFeSincrono.Click += new System.EventHandler(this.BtnEnviarMDFeSincrono_Click);
-            // 
-            // BtnEnviarMDFeAssincrono
-            // 
-            this.BtnEnviarMDFeAssincrono.CausesValidation = false;
-            this.BtnEnviarMDFeAssincrono.Location = new System.Drawing.Point(10, 118);
-            this.BtnEnviarMDFeAssincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnEnviarMDFeAssincrono.Name = "BtnEnviarMDFeAssincrono";
-            this.BtnEnviarMDFeAssincrono.Size = new System.Drawing.Size(296, 35);
-            this.BtnEnviarMDFeAssincrono.TabIndex = 2;
-            this.BtnEnviarMDFeAssincrono.Text = "Enviar MDFe Assincrono";
-            this.BtnEnviarMDFeAssincrono.UseVisualStyleBackColor = true;
-            this.BtnEnviarMDFeAssincrono.Click += new System.EventHandler(this.BtnEnviarMDFeAssincrono_Click);
             // 
             // BtnConsultaSituacaoMDFe
             // 
@@ -686,7 +672,7 @@ namespace TreinamentoDLL
             this.GroupCTe.Controls.Add(this.BtnEventoCancelamentoCTeOS);
             this.GroupCTe.Controls.Add(this.BtnEventoCancelamentoCTe);
             this.GroupCTe.Controls.Add(this.BtnEnviarCTeOSSincrono);
-            this.GroupCTe.Controls.Add(this.BtnEnviarCTeAssincrono);
+            this.GroupCTe.Controls.Add(this.BtnEnviarCTeSincrono);
             this.GroupCTe.Controls.Add(this.BtnConsultarStatusCTe);
             this.GroupCTe.Location = new System.Drawing.Point(1332, 18);
             this.GroupCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -796,16 +782,16 @@ namespace TreinamentoDLL
             this.BtnEnviarCTeOSSincrono.UseVisualStyleBackColor = true;
             this.BtnEnviarCTeOSSincrono.Click += new System.EventHandler(this.BtnEnviarCTeOSSincrono_Click);
             // 
-            // BtnEnviarCTeAssincrono
+            // BtnEnviarCTeSincrono
             // 
-            this.BtnEnviarCTeAssincrono.Location = new System.Drawing.Point(10, 74);
-            this.BtnEnviarCTeAssincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnEnviarCTeAssincrono.Name = "BtnEnviarCTeAssincrono";
-            this.BtnEnviarCTeAssincrono.Size = new System.Drawing.Size(296, 35);
-            this.BtnEnviarCTeAssincrono.TabIndex = 17;
-            this.BtnEnviarCTeAssincrono.Text = "Enviar CTe Assincrono em Lote";
-            this.BtnEnviarCTeAssincrono.UseVisualStyleBackColor = true;
-            this.BtnEnviarCTeAssincrono.Click += new System.EventHandler(this.BtnEnviarCTeAssincrono_Click);
+            this.BtnEnviarCTeSincrono.Location = new System.Drawing.Point(10, 74);
+            this.BtnEnviarCTeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarCTeSincrono.Name = "BtnEnviarCTeSincrono";
+            this.BtnEnviarCTeSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarCTeSincrono.TabIndex = 17;
+            this.BtnEnviarCTeSincrono.Text = "Enviar CTe Síncrono";
+            this.BtnEnviarCTeSincrono.UseVisualStyleBackColor = true;
+            this.BtnEnviarCTeSincrono.Click += new System.EventHandler(this.BtnEnviarCTeSincrono_Click);
             // 
             // BtnConsultarStatusCTe
             // 
@@ -846,6 +832,17 @@ namespace TreinamentoDLL
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Diversos";
+            // 
+            // BtnDistribuicaoDFeChNFe
+            // 
+            this.BtnDistribuicaoDFeChNFe.Location = new System.Drawing.Point(11, 920);
+            this.BtnDistribuicaoDFeChNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDistribuicaoDFeChNFe.Name = "BtnDistribuicaoDFeChNFe";
+            this.BtnDistribuicaoDFeChNFe.Size = new System.Drawing.Size(296, 37);
+            this.BtnDistribuicaoDFeChNFe.TabIndex = 33;
+            this.BtnDistribuicaoDFeChNFe.Text = "Distribuição DFe por chNFE";
+            this.BtnDistribuicaoDFeChNFe.UseVisualStyleBackColor = true;
+            this.BtnDistribuicaoDFeChNFe.Click += new System.EventHandler(this.BtnDistribuicaoDFeChNFe_Click);
             // 
             // BtnImprimirSAT
             // 
@@ -1102,17 +1099,6 @@ namespace TreinamentoDLL
             this.BtnConsultarGTIN.UseVisualStyleBackColor = true;
             this.BtnConsultarGTIN.Click += new System.EventHandler(this.BtnConsultarGTIN_Click);
             // 
-            // BtnDistribuicaoDFeChNFe
-            // 
-            this.BtnDistribuicaoDFeChNFe.Location = new System.Drawing.Point(11, 920);
-            this.BtnDistribuicaoDFeChNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnDistribuicaoDFeChNFe.Name = "BtnDistribuicaoDFeChNFe";
-            this.BtnDistribuicaoDFeChNFe.Size = new System.Drawing.Size(296, 37);
-            this.BtnDistribuicaoDFeChNFe.TabIndex = 33;
-            this.BtnDistribuicaoDFeChNFe.Text = "Distribuição DFe por chNFE";
-            this.BtnDistribuicaoDFeChNFe.UseVisualStyleBackColor = true;
-            this.BtnDistribuicaoDFeChNFe.Click += new System.EventHandler(this.BtnDistribuicaoDFeChNFe_Click);
-            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1161,7 +1147,6 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnConsultaStatusNFCe;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button BtnEnviarMDFeSincrono;
-        private System.Windows.Forms.Button BtnEnviarMDFeAssincrono;
         private System.Windows.Forms.Button BtnConsultaSituacaoMDFe;
         private System.Windows.Forms.Button BtnConsultaStatusMDFe;
         private System.Windows.Forms.Button BtnImprimirDANFe;
@@ -1183,7 +1168,7 @@ namespace TreinamentoDLL
         private System.Windows.Forms.GroupBox GroupCTe;
         private System.Windows.Forms.Button BtnConsultarStatusCTe;
         private System.Windows.Forms.Button BtnEnviarCTeOSSincrono;
-        private System.Windows.Forms.Button BtnEnviarCTeAssincrono;
+        private System.Windows.Forms.Button BtnEnviarCTeSincrono;
         private System.Windows.Forms.Button BtnEnviarEventoEPEC;
         private System.Windows.Forms.Button BtnRecuperarXMLNFeDistribuicao;
         private System.Windows.Forms.Button BtnRecuperarXMLNFeDistribuicao2;

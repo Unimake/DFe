@@ -161,11 +161,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="autxml">Elemento</param>
-        public void AddAutXML(AutXML autxml)
+        public void AddAutXML(CTe.AutXML autxml)
         {
             if (AutXML == null)
             {
-                AutXML = new List<AutXML>();
+                AutXML = new List<CTe.AutXML>();
             }
 
             AutXML.Add(autxml);
@@ -176,7 +176,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da AutXML</returns>
-        public AutXML GetAutXML(int index)
+        public CTe.AutXML GetAutXML(int index)
         {
             if ((AutXML?.Count ?? 0) == 0)
             {
@@ -434,11 +434,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="obsCont">Elemento</param>
-        public void AddObsCont(ObsCont obsCont)
+        public void AddObsCont(CTe.ObsCont obsCont)
         {
             if (ObsCont == null)
             {
-                ObsCont = new List<ObsCont>();
+                ObsCont = new List<CTe.ObsCont>();
             }
 
             ObsCont.Add(obsCont);
@@ -449,7 +449,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ObsCont</returns>
-        public ObsCont GetObsCont(int index)
+        public CTe.ObsCont GetObsCont(int index)
         {
             if ((ObsCont?.Count ?? 0) == 0)
             {
@@ -468,11 +468,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="obsFisco">Elemento</param>
-        public void AddObsFisco(ObsFisco obsFisco)
+        public void AddObsFisco(CTe.ObsFisco obsFisco)
         {
             if (ObsFisco == null)
             {
-                ObsFisco = new List<ObsFisco>();
+                ObsFisco = new List<CTe.ObsFisco>();
             }
 
             ObsFisco.Add(obsFisco);
@@ -483,7 +483,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ObsFisco</returns>
-        public ObsFisco GetObsFisco(int index)
+        public CTe.ObsFisco GetObsFisco(int index)
         {
             if ((ObsFisco?.Count ?? 0) == 0)
             {
@@ -631,11 +631,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="comp">Elemento</param>
-        public void AddComp(Comp comp)
+        public void AddComp(CTe.Comp comp)
         {
             if (Comp == null)
             {
-                Comp = new List<Comp>();
+                Comp = new List<CTe.Comp>();
             }
 
             Comp.Add(comp);
@@ -646,7 +646,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Comp</returns>
-        public Comp GetComp(int index)
+        public CTe.Comp GetComp(int index)
         {
             if ((Comp?.Count ?? 0) == 0)
             {
@@ -732,11 +732,11 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="infUnidCarga">Elemento</param>
-        public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
+        public void AddInfUnidCarga(CTe.InfUnidCarga infUnidCarga)
         {
             if (InfUnidCarga == null)
             {
-                InfUnidCarga = new List<InfUnidCarga>();
+                InfUnidCarga = new List<CTe.InfUnidCarga>();
             }
 
             InfUnidCarga.Add(infUnidCarga);
@@ -747,7 +747,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfUnidCarga</returns>
-        public InfUnidCarga GetInfUnidCarga(int index)
+        public CTe.InfUnidCarga GetInfUnidCarga(int index)
         {
             if ((InfUnidCarga?.Count ?? 0) == 0)
             {
