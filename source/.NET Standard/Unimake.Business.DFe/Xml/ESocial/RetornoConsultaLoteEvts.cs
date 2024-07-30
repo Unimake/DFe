@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Servicos;
-using System.Reflection;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {

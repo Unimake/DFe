@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.ESocial;
+using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {
@@ -29,6 +30,42 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
         }
+
+#if INTEROP
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="downloadEventosPorNrRec"></param>
+        /// <param name="configuracao"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        [ComVisible(true)]
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] DownloadEventosPorNrRec downloadEventosPorNrRec, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        {
+            try
+            {
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
+
+                Inicializar(downloadEventosPorNrRec?.GerarXML() ?? throw new ArgumentNullException(nameof(downloadEventosPorNrRec)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                Exceptions.ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+#endif
+
         /// <summary>
         /// 
         /// </summary>
