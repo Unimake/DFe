@@ -961,5 +961,43 @@ namespace Unimake.DFe.Test.ESocial
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do retorno positivo da consulta lote Eventos eSocial
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(@"..\..\..\ESocial\Resources\retorno_negativo-ret-esocial-consloteevt.xml")]
+        public void SerializacaoDesserializacaoRetornoConsultaLotePositivoESocial(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.RetornoConsultaLoteEvts>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do retorno negativo da consulta lote Eventos eSocial
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(@"..\..\..\ESocial\Resources\retorno_negativo-ret-esocial-consloteevt.xml")]
+        public void SerializacaoDesserializacaoRetornoConsultaLoteNegativoESocial(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.RetornoConsultaLoteEvts>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
     }
 }
