@@ -6,4 +6,10 @@
 		<SchemaVersao>1.05.01</SchemaVersao>
 		<TargetNS>http://sped.fazenda.gov.br</TargetNS>
 	</Versao>
+	<Versao ID="1.00.00">
+		<WebContentType>application/xml</WebContentType>
+		<WebTagRetorno>Reinf</WebTagRetorno>
+		<SchemaVersao>1.00.00</SchemaVersao>
+		<TargetNS></TargetNS>
+	</Versao>
 </ConfigPadrao>

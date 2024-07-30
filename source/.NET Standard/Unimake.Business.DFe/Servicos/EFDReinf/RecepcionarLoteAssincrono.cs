@@ -65,22 +65,22 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         }
 
         /// <summary>
-        /// 
+        /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public RetornoEnvioLote Result
+        public ReinfRetornoLoteAssincrono Result
         {
             get
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetornoEnvioLote>(RetornoWSXML);
+                    return XMLUtility.Deserializar<ReinfRetornoLoteAssincrono>(RetornoWSXML);
                 }
 
-                return new RetornoEnvioLote
+                return new ReinfRetornoLoteAssincrono
                 {
-                    RetornoEnvioLoteEventos = new RetornoEnvioLoteEventos
+                    RetornoLoteEventosAssincrono = new RetornoLoteEventosAssincrono
                     {
-                        Status = new Xml.ESocial.Status
+                        Status = new Xml.EFDReinf.Status
                         {
                             CdResposta = 0,
                             DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ",
