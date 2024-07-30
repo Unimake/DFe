@@ -14,6 +14,7 @@ namespace Unimake.DFe.Test.EFDReinf
         [Theory]
         [Trait("DFe", "EFDReinf")]
         [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
         public void RecepcionarLoteAssincReinf(TipoAmbiente tipoAmbiente)
         {
             var configuracao = new Configuracao
@@ -27,7 +28,6 @@ namespace Unimake.DFe.Test.EFDReinf
 
             var conteudoXML = new Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos
             {
-                Versao = "1.05.01",
                 EnvioLoteEventos = new EnvioLoteEventosReinf
                 {
                     IdeContribuinte = new IdeContribuinte
