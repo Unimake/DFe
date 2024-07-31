@@ -11,18 +11,17 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<WebTagRetorno>ConsultaReciboEvento{TipoEventoEFDReinf}Result</WebTagRetorno>
 		</ConsultaReciboEvento>
-		<ConsultaLoteAssincrono versao="1.05.01">
+		<ConsultaLoteAssincrono versao="1.00.00">
 			<Descricao>Consulta Lote Eventos Assincrono Reinf</Descricao>
 			<RequestURIHomologacao>https://pre-reinf.receita.economia.gov.br/consulta/lotes/{numeroProtocolo}</RequestURIHomologacao>
 			<RequestURIProducao>https://reinf.receita.economia.gov.br/consulta/lotes/{numeroProtocolo}</RequestURIProducao>
 			<WebSoapString></WebSoapString>
 			<MetodoAPI>get</MetodoAPI>
 		</ConsultaLoteAssincrono>
-		<RecepcionarLoteAssincrono versao="1.05.01">
+		<RecepcionarLoteAssincrono versao="1.00.00">
 			<Descricao>Recepcionar Lote Assincrono EFDReinf</Descricao>
-			<RequestURIProducao>https://reinf.receita.fazenda.gov.br/WsREINF/RecepcaoLoteReinf.svc</RequestURIProducao>
 			<RequestURIHomologacao>https://pre-reinf.receita.economia.gov.br/recepcao/lotes</RequestURIHomologacao>
-			<WebContentType>application/xml</WebContentType>
+			<RequestURIProducao>https://reinf.receita.economia.gov.br/recepcao/lotes</RequestURIProducao>
 			<MetodoAPI>post</MetodoAPI>
 			<TipoRetorno>application/xml</TipoRetorno>
 			<WebSoapString></WebSoapString>

@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class ReinfConsultaLoteAssincrono : XMLBase
     {
         [XmlIgnore]
-        public string Versao { get; set; } = "1.05.01";
+        public string Versao { get; set; } = "1.00.00";
 
         [XmlElement("ConsultaLoteAssincrono")]
         public ConsultaLoteAssincrono ConsultaLoteAssincrono { get; set; }

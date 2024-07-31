@@ -8,11 +8,13 @@ using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
 using Unimake.Unidanfe;
 using Unimake.Unidanfe.Configurations;
+using Unimake.Unidanfe.Exceptions;
 using DANFe = Unimake.Unidanfe;
 using DFe = Unimake.Business.DFe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
@@ -48,7 +50,7 @@ namespace TreinamentoDLL
         /// <summary>
         /// Caminho do certificado digital A1
         /// </summary>
-        private static string PathCertificadoDigital { get; set; } = @"D:\projetos\UnimakePV.pfx";
+        private static string PathCertificadoDigital { get; set; } = @"C:\Projetos\Unimake_PV.pfx";
 
         /// <summary>
         /// Senha de uso do certificado digital A1
@@ -5618,6 +5620,169 @@ namespace TreinamentoDLL
             }
 
             #endregion
+        }
+
+        private void BtnEnviarReinf_Click(object sender, EventArgs e)
+        {
+            var xmlEnvio = new Unimake.Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos
+            {
+                Versao = "1.00.00",
+                EnvioLoteEventos = new EnvioLoteEventosReinf
+                {
+                    IdeContribuinte = new IdeContribuinte
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "12345678901234"
+                    },
+                    Eventos = new EventosReinf
+                    {
+                        Evento = new List<EventoReinf>
+                        {
+                            new EventoReinf
+                            {
+                                ID = "ID1000000000000002021052608080800001",
+                                Reinf1000 = new Reinf1000
+                                {
+                                    EvtInfoContri = new EvtInfoContri
+                                    {
+                                        ID = "ID1000000000000002021052608080654321",
+                                        IdeEvento = new IdeEvento
+                                        {
+                                            TpAmb = TipoAmbiente.Homologacao,
+                                            ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte,
+                                            VerProc = "150"
+                                        },
+                                        IdeContri = new IdeContri
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "12345678901234"
+                                        },
+                                        InfoContri = new InfoContri
+                                        {
+                                            Inclusao = new InclusaoReinf1000
+                                            {
+                                                IdePeriodo = new IdePeriodo
+                                                {
+                                                    IniValid = "2021-05"
+                                                },
+                                                InfoCadastro = new InfoCadastro
+                                                {
+                                                    ClassTrib = ClassificacaoTributaria.PessoaJuridica,
+                                                    IndEscrituracao = IndicativoEscrituracao.Obrigada,
+                                                    IndDesoneracao = IndicativoDesoneracao.NaoAplicavel,
+                                                    IndAcordoIsenMulta = IndicativoIsencaoMulta.ComAcordo,
+                                                    IndSitPJ = IndicativoSituacaoPJ.Extincao,
+                                                    IndUniao = IndicativoUniao.NaoAplicavel,
+                                                    DtTransfFinsLucr = DateTime.Parse("2021-01-01"),
+                                                    DtObito = DateTime.Parse("2021-01-01"),
+                                                    Contato = new Contato
+                                                    {
+                                                        NmCtt = "NMCTT1",
+                                                        CpfCtt = "12345678954",
+                                                        FoneFixo = "4412347894",
+                                                        FoneCel = "44912347894",
+                                                        Email = "email@email.com"
+                                                    },
+                                                    SoftHouse = new List<SoftHouse>
+                                                    {
+                                                        new SoftHouse
+                                                        {
+                                                            CnpjSoftHouse = "12345678901234",
+                                                            NmRazao = "nomeContribuinte",
+                                                            NmCont = "nomeContato",
+                                                            Telefone = "44123456789",
+                                                            Email = "email@email.com"
+                                                        }
+                                                    },
+                                                    InfoEFR = new InfoEFR
+                                                    {
+                                                        IdeEFR = SimNaoLetra.Sim,
+                                                        CnpjEFR = "12345678901234"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                Servico =  Servico.EFDReinfRecepcionarLoteAssincrono,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var recepcionarLoteAssincReinf = new Unimake.Business.DFe.Servicos.EFDReinf.RecepcionarLoteAssincrono(xmlEnvio, configuracao);
+            recepcionarLoteAssincReinf.Executar();
+
+            if (recepcionarLoteAssincReinf.Result.RetornoLoteEventosAssincrono != null)
+            {
+                switch (recepcionarLoteAssincReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta)
+                {
+
+                    case 1: //O lote está aguardando processamento.
+
+                        // Guardar o protocolo para ser utilizado na consulta do lote
+                        var protocolo = recepcionarLoteAssincReinf.Result.RetornoLoteEventosAssincrono.DadosRecepcaoLote.ProtocoloEnvio;
+
+                        var configuracaoConsulta = new Configuracao
+                        {
+                            TipoDFe = TipoDFe.EFDReinf,
+                            TipoEmissao = TipoEmissao.Normal,
+                            TipoAmbiente = TipoAmbiente.Homologacao,
+                            Servico = Servico.EFDReinfConsultaLoteAssincrono,
+                            CertificadoDigital = CertificadoSelecionado
+                        };
+
+                        var xmlConsulta = new ReinfConsultaLoteAssincrono
+                        {
+                            Versao = "1.00.00",
+                            ConsultaLoteAssincrono = new ConsultaLoteAssincrono
+                            {
+                                NumeroProtocolo = protocolo
+                            }
+                        };
+
+                        var consultaLoteReinf = new Unimake.Business.DFe.Servicos.EFDReinf.ConsultaLoteAssincrono(xmlConsulta, configuracaoConsulta);
+                        consultaLoteReinf.Executar();
+
+                        switch (consultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta)
+                        {
+                            case 1: //O lote ainda está aguardando processamento.
+                                MessageBox.Show("Aguarde alguns minutos e tente novamente!");
+                                break;
+
+                            case 2: //O lote foi processado. Todos os eventos foram processados com sucesso
+                            case 3: //O lote foi processado. Possui um ou mais eventos com ocorrências
+                                consultaLoteReinf.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#");
+                                break;
+
+                            case 8: //Consulta não executada - Verificar ocorrências.
+                                MessageBox.Show(consultaLoteReinf.RetornoWSString);
+                                break;
+                        }
+                        break;
+
+                    case 7: //O lote não foi recebido pois possui ocorrências a serem corrigidas
+                        MessageBox.Show(recepcionarLoteAssincReinf.RetornoWSString);
+                        break;
+
+                    case 99: //Erro interno na EFD-REINF
+                        MessageBox.Show("Erro interno no REINF! Aguarde alguns minutos e tente novamente!");
+                        break;
+
+                    default:
+                        // Tratamentos necessários
+                        break;
+                }
+            }
         }
     }
 }

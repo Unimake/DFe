@@ -33,8 +33,6 @@ namespace Unimake.DFe.Test.EFDReinf
 
             var xml = new ReinfConsultaLoteAssincrono
             {
-                Versao = "1.05.01",
-
                 ConsultaLoteAssincrono = new ConsultaLoteAssincrono
                 {
                     NumeroProtocolo = "2.202402.5467550"

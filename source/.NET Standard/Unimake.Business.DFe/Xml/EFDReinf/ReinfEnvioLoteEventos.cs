@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class ReinfEnvioLoteEventos : XMLBase
     {
         [XmlIgnore]
-        public string Versao { get; set; } = "1.05.01";
+        public string Versao { get; set; } = "1.00.00";
 
         [XmlElement("envioLoteEventos")]
         public EnvioLoteEventosReinf EnvioLoteEventos { get; set; }
@@ -74,8 +74,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Evento")]
     [ComVisible(true)]
 #endif
-    public class EventoReinf : ReinfEventoBase
+    public class EventoReinf 
     {
+        [XmlAttribute(AttributeName = "Id", DataType = "token")]
+        public string ID { get; set; }
+
         [XmlElement("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02")]
         public Reinf1000 Reinf1000 { get; set; }
 
