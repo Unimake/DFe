@@ -14,8 +14,8 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:recepcionarLoteRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:recepcionarLoteRpsResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:EnviarLoteRpsResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:recepcionarLoteRpsResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:EnviarLoteRpsResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -34,8 +34,8 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:recepcionarLoteRpsSincrono>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:recepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:recepcionarLoteRpsSincronoResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:EnviarLoteRpsSincronoResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:recepcionarLoteRpsSincronoResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:EnviarLoteRpsSincronoResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -54,8 +54,8 @@
 			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:gerarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:gerarNfseResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:GerarNfseResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:gerarNfseResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:GerarNfseResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -74,8 +74,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:cancelarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:cancelarNfseResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:CancelarNfseResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:cancelarNfseResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:CancelarNfseResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -94,8 +94,8 @@
 			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:substituirNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:substituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:substituirNfseResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:SubstituirNfseResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:substituirNfseResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:SubstituirNfseResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -114,8 +114,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarLoteRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:consultarLoteRpsResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:ConsultarLoteRpsResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:consultarLoteRpsResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:ConsultarLoteRpsResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -134,8 +134,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfsePorRps>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:consultarNfsePorRpsResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:ConsultarNfseRpsResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:consultarNfsePorRpsResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:ConsultarNfseRpsResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -154,8 +154,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoPrestado>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:consultarNfseServicoPrestadoResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:ConsultarNfseServicoPrestadoResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:consultarNfseServicoPrestadoResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:ConsultarNfseServicoPrestadoResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -174,8 +174,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfseServicoTomado>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:consultarNfseServicoTomadoResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:ConsultarNfseServicoTomadoResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:consultarNfseServicoTomadoResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:ConsultarNfseServicoTomadoResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
@@ -194,8 +194,8 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd"><soapenv:Header/><soapenv:Body><ws:consultarNfsePorFaixa>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:consultarNfsePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns4:consultarNfsePorFaixaResponse</WebTagRetorno>
-			<WebTagRetornoHomologacao>ns2:ConsultarNfseFaixaResposta</WebTagRetornoHomologacao>
+			<WebTagRetorno>ns3:consultarNfsePorFaixaResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>ns2:ConsultarNfseFaixaResponse</WebTagRetornoHomologacao>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
