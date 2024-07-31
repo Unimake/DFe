@@ -665,6 +665,7 @@ namespace Unimake.Business.DFe.Servicos
             else if(Servico == Servico.EFDReinfConsultaLoteAssincrono)
             {
                 RequestURIProducao = RequestURIProducao.Replace("{numeroProtocolo}", NumeroProtocolo);
+                RequestURIHomologacao = RequestURIHomologacao.Replace("{numeroProtocolo}", NumeroProtocolo);
             }
         }
 
@@ -1243,7 +1244,7 @@ namespace Unimake.Business.DFe.Servicos
         public string TipoEventoEFDReinf { get; set; }
 
         /// <summary>
-        /// Tipo do Evento do EFDReinf
+        /// Número do protocolo retornado no envio do lote do REINF
         /// </summary>
         public string NumeroProtocolo {  get; set; }
 
