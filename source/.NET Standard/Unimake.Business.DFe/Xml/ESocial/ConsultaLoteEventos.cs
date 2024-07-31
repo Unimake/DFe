@@ -20,6 +20,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("consultaLoteEventos")]
         public ConsultaLoteEventos ConsultaLoteEventos { get; set; }
+
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
     }
     #endregion Consulta Lote Eventos
 

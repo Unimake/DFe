@@ -77,5 +77,18 @@
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SolicitarDownloadEventosPorId xmlns="http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0"><solicitacao>{xmlBody}</solicitacao></SolicitarDownloadEventosPorId></soap:Body></soap:Envelope>]]></WebSoapString>
 			<TargetNS>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0</TargetNS>
 		</DownloadPorID>
-	</Servicos>
+		<ConsultaLoteAssincrono versao="1.1.0">
+			<Descricao>Consulta Lote Eventos Assincrono</Descricao>
+			<WebEnderecoProducao>https://webservices.consulta.esocial.gov.br/servicos/empregador/consultarloteeventos/WsConsultarLoteEventos.svc?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://webservices.producaorestrita.esocial.gov.br/servicos/empregador/consultarloteeventos/WsConsultarLoteEventos.svc?wsdl</WebEnderecoHomologacao>
+			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0/ServicoConsultarLoteEventos/ConsultarLoteEventos</WebActionProducao>
+			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0/ServicoConsultarLoteEventos/ConsultarLoteEventos</WebActionHomologacao>
+			<WebContentType>text/xml</WebContentType>
+			<WebTagRetorno>retornoProcessamentoLoteEventos</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteEventos xmlns="http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0"><consulta>{xmlBody}</consulta></ConsultarLoteEventos></soap:Body></soap:Envelope>]]></WebSoapString>
+			<TargetNS>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0</TargetNS>
+		</ConsultaLoteAssincrono>
+</Servicos>
 </Configuracoes>
