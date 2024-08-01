@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.ESocial
 {
-    public class EnvioLoteEventosESocial
+    public class EnvioLoteEventosESocialTest
     {
         /// <summary>
         /// Testar a consulta lote assincrono do eSocial

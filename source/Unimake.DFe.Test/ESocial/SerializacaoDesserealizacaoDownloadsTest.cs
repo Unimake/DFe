@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.ESocial
 {
-    public class SerializacaoDesserealizacaoDownloads
+    public class SerializacaoDesserealizacaoDownloadsTest
     {
         /// <summary>
         /// Testar a serialização e desserialização do download por ID de Eventos eSocial

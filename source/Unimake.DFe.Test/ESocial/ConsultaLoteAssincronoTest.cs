@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.ESocial
 {
-    public class ConsultaLoteAssincrono
+    public class ConsultaLoteAssincronoTest
     {
         /// <summary>
         /// Testar o Download de Eventos Por ID

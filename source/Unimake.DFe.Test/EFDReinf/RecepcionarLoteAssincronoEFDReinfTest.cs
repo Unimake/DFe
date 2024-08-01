@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.EFDReinf
 {
-    public class RecepcionarLoteAssincronoEFDReinf
+    public class RecepcionarLoteAssincronoEFDReinfTest
     {
         /// <summary>
         /// Testar a consulta lote assincrono do EFDReinf

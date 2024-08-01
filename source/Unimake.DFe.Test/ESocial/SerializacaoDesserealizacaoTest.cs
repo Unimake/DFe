@@ -9,7 +9,7 @@ namespace Unimake.DFe.Test.ESocial
     /// <summary>
     /// Testar a serialização e desserialização dos XMLs do NFe
     /// </summary>
-    public class SerializacaoDesserealizacao
+    public class SerializacaoDesserealizacaoTest
     {
         /// <summary>
         /// Testar a serialização e desserialização do Evento 1000 eSocial
