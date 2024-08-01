@@ -1,11 +1,10 @@
 ﻿#if INTEROP
 using System.Runtime.InteropServices;
+using Unimake.Exceptions;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Business.DFe.Xml.EFDReinf;
-using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {

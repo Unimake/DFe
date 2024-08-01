@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Unimake.Business.DFe.Servicos;
+﻿using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.ESocial;
 using Xunit;
 
@@ -34,8 +32,8 @@ namespace Unimake.DFe.Test.ESocial
                 }
             };
 
-            var DownloadEvtsID = new Business.DFe.Servicos.ESocial.ConsultaLoteAssincrono(conteudoXML, configuracao);
-            DownloadEvtsID.Executar();
+            var consultaLoteAssincrono = new Business.DFe.Servicos.ESocial.ConsultaLoteAssincrono(conteudoXML, configuracao);
+            consultaLoteAssincrono.Executar();
         }
     }
 }
