@@ -403,6 +403,7 @@
 		<None Remove="Servicos\Config\NFSe\RioGrandeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RolanteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\RondonopolisMT.xml" />
+		<None Remove="Servicos\Config\NFSe\SalvadorBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SalvadorDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantaMariaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SantoAntonioDeJesusBA.xml" />
@@ -889,6 +890,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SalvadorBA.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IbicoaraBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\IjuiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItaquaquecetubaSP.xml">

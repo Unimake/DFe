@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://notahml.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc</WebEnderecoProducao>
+			<WebActionHomologacao>http://tempuri.org/IEnvioLoteRPS/EnviarLoteRPS</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/IEnvioLoteRPS/EnviarLoteRPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnviarLoteRPS xmlns="http://tempuri.org/"><loteXML>{xmlBodyScape}</loteXML></EnviarLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao>https://notahml.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc</WebEnderecoProducao>
+			<WebActionHomologacao>http://tempuri.org/IConsultaSituacaoLoteRPS/ConsultarSituacaoLoteRPS</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/IConsultaSituacaoLoteRPS/ConsultarSituacaoLoteRPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRPS xmlns="http://tempuri.org/"><loteXML>{xmlBodyScape}</loteXML></ConsultarSituacaoLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarSituacaoLoteRps>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://notahml.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc</WebEnderecoProducao>
+			<WebActionHomologacao>http://tempuri.org/IConsultaLoteRPS/ConsultarLoteRPS</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/IConsultaLoteRPS/ConsultarLoteRPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRPS xmlns="http://tempuri.org/"><loteXML>{xmlBodyScape}</loteXML></ConsultarLoteRPS></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://notahml.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc</WebEnderecoProducao>
+			<WebActionHomologacao>http://tempuri.org/IConsultaNfseRPS/ConsultarNfseRPS</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/IConsultaNfseRPS/ConsultarNfseRPS</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRPS xmlns="http://tempuri.org/"><consultaxml>{xmlBodyScape}</consultaxml></ConsultarNfseRPS></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao>https://notahml.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc</WebEnderecoProducao>
+			<WebActionHomologacao>http://tempuri.org/IConsultaNfse/ConsultarNfse</WebActionHomologacao>
+			<WebActionProducao>http://tempuri.org/IConsultaNfse/ConsultarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfse xmlns="http://tempuri.org/"><consultaxml>{xmlBodyScape}</consultaxml></ConsultarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarNfse>
+	</Servicos>
+</Configuracoes>

@@ -1397,4 +1397,10 @@
 		<ArqConfig>RioDeJaneiroRJ.xml</ArqConfig>
 		<PadraoNFSe>CARIOCA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2927408">
+		<Nome>Salvador - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>SalvadorBA.xml</ArqConfig>
+		<PadraoNFSe>SALVADOR_BA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

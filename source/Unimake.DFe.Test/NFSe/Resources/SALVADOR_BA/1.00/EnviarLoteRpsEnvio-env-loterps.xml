@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<LoteRps id="lote002">
+		<NumeroLote>2</NumeroLote>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfRps id="ID001">
+					<IdentificacaoRps>
+						<Numero>1</Numero>
+						<Serie>A</Serie>
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2009-04-03T17:12:27</DataEmissao>
+					<NaturezaOperacao>5</NaturezaOperacao>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivadorCultural>2</IncentivadorCultural>
+					<Status>1</Status>
+					<Servico>
+						<Valores>
+							<ValorServicos>10000</ValorServicos>
+							<ValorDeducoes>0</ValorDeducoes>
+							<ValorPis>0</ValorPis>
+							<ValorCofins>0</ValorCofins>
+							<ValorIr>0</ValorIr>
+							<ValorCsll>0</ValorCsll>
+							<IssRetido>2</IssRetido>
+							<ValorIss>500</ValorIss>
+							<ValorIssRetido>0</ValorIssRetido>
+							<OutrasRetencoes>0</OutrasRetencoes>
+							<BaseCalculo>10000</BaseCalculo>
+							<Aliquota>0.05</Aliquota>
+							<ValorLiquidoNfse>10000</ValorLiquidoNfse>
+							<DescontoIncondicionado>0</DescontoIncondicionado>
+							<DescontoCondicionado>0</DescontoCondicionado>
+						</Valores>
+						<ItemListaServico>10.10</ItemListaServico>
+						<CodigoTributacaoMunicipio>17</CodigoTributacaoMunicipio>
+						<Discriminacao>Teste emissÃ£o de nota</Discriminacao>
+						<CodigoMunicipio>2927408</CodigoMunicipio>
+					</Servico>
+					<Prestador>
+						<Cnpj>99999999999999</Cnpj>
+						<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cnpj>99999999999999</Cnpj>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>Testes Tomador</RazaoSocial>
+						<Endereco>
+							<Endereco>Rua dos testes</Endereco>
+							<Numero>01</Numero>
+							<Bairro>COMERCIO</Bairro>
+							<CodigoMunicipio>2927408</CodigoMunicipio>
+							<Uf>BA</Uf>
+							<Cep>99999999</Cep>
+						</Endereco>
+					</Tomador>
+				</InfRps>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

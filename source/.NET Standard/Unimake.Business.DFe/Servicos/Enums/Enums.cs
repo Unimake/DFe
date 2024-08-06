@@ -6537,7 +6537,13 @@ namespace Unimake.Business.DFe.Servicos
         /// CARIOCA
         /// </summary>
         [Description("CARIOCA")]
-        CARIOCA = 49
+        CARIOCA = 49,
+
+        /// <summary>
+        /// SALVADOR_BA
+        /// </summary>
+        [Description("SALVADOR_BA")]
+        SALVADOR_BA = 50
     }
 
     #endregion
