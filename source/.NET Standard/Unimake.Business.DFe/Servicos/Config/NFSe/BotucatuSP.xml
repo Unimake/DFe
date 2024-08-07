@@ -119,6 +119,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
@@ -138,6 +139,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.01">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
@@ -157,6 +159,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="2.01">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
@@ -176,6 +179,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseFaixa versao="2.01">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
@@ -195,6 +199,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.01</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfseFaixa>
 	</Servicos>
 </Configuracoes>
