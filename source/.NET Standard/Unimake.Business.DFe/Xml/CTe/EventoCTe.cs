@@ -114,10 +114,10 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.WriteXml(writer);
 
             writer.WriteRaw($@"
-            <evPrestDesacordo>
+            <evCancPrestDesacordo>
             <descEvento>{DescEvento}</descEvento>
             <nProtEvPrestDes>{NProtEvPrestDes}</nProtEvPrestDes>
-            </evPrestDesacordo>");
+            </evCancPrestDesacordo>");
         }
     }
 
