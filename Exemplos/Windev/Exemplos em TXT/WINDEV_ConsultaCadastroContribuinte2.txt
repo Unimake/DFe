@@ -1,0 +1,335 @@
+//=========== CONSUMO
+// criar as variaveis 
+s_cnpj_emitente			is string		= ""
+s_certificado_senha		is string		= ""
+s_cnpj_consultar		is string		= ""
+s_uf					is string		= ""
+sEDT_Url_string			is string		= "http://www.amarildomatos.com.br/uninfe_consulta_cadastro"
+oRequest				is httpRequest
+oResponse				is httpResponse
+oRequest.URL									= sEDT_Url_string 
+oRequest.Method									= httpPost
+oRequest..Header["s_recebe_cnpj_emitente"]				= s_cnpj_emitente
+oRequest..Header["s_recebe_senha"]				= s_certificado_senha
+oRequest..Header["s_recebe_UF"]				    = s_uf
+oRequest..Header["s_recebe_cnpj_cadastro"]		= s_cnpj_consultar
+oRequest..Header["local_salvar"]		        = "E:"
+oRequest.Content								= ""
+oRequest.ContentType							= typeMimeJSON
+oResponse										= RESTSend(oRequest)
+sRetorno_webservice			is string	= oResponse.Content
+edt_Resposta		= sRetorno_webservice
+
+//======== WEBSERVICE
+
+PROCEDURE uninfe_consulta_cadastro()
+
+retorno_json	is JSON	
+cstat	is string=""
+xmotivo is string=""
+s_auditoria				is string	= ""
+retorno_xml				is string	= ""
+razao_social is string=""
+
+s_recebe_cnpj_emitente	is string	= WebserviceReadHTTPHeader("s_recebe_cnpj_emitente") // cnpj do emitente-> certificado	
+s_recebe_senha			is string	= WebserviceReadHTTPHeader("s_recebe_senha") // senha certificado
+s_recebe_UF			    is string	= WebserviceReadHTTPHeader("s_recebe_UF") 
+s_recebe_cnpj_cadastro  is string	= WebserviceReadHTTPHeader("s_recebe_cnpj_cadastro")
+s_local_salvar			is string	= WebserviceReadHTTPHeader("local_salvar")
+
+diretorio_salvar is string=fCurrentDir() // escolhendo onde salvar as informacoes
+IF s_local_salvar="" THEN
+ELSE	
+	diretorio_salvar=s_local_salvar // "e:" 
+END
+s_arquivo_certificado	is string	= fCurrentDir()+"\erpmatos\"+s_recebe_cnpj_emitente+".pfx"
+s_diretorio				is string	= s_local_salvar+"\erpmatos\xml_"+s_recebe_cnpj_emitente+"\retorno"
+IF fMakeDir(s_diretorio)=False THEN
+END
+s_diretorio_log is string=s_local_salvar+"\erpmatos\xml_"+s_recebe_cnpj_emitente+"\retorno"
+IF fMakeDir(s_diretorio_log)=False THEN
+END
+s_busca_cnpj is string=""
+
+busca_cnpj_sefaz:
+
+o_configuracao	is Unimake.Business.DFe.Servicos.Configuracao // configurações minimas 
+o_configuracao.TipoDFe				= TipoDFe.NFe //1 // nfe
+o_configuracao.CertificadoArquivo	= s_arquivo_certificado
+o_configuracao.CertificadoSenha		= s_recebe_senha
+
+oConsCad is Unimake.Business.DFe.XML.NFe.ConsCad() // criar xml
+oConsCad.VERSAO	= "2.00"
+
+oInfCons is Unimake.Business.DFe.XML.NFe.InfCons()
+oInfCons.CNPJ	= s_recebe_cnpj_cadastro
+oInfCons.uf		= UFBrasil.RS
+
+IF s_recebe_UF<>"" THEN
+   pesquisa_estado()	
+END
+IF s_busca_cnpj="receita_busca" THEN
+	busca_receita_cnpj()	
+END
+
+oConsCad.InfCons	= oInfCons
+
+WHEN EXCEPTION IN
+	oConsultaCadastro is Unimake.Business.DFe.Servicos.NFe.ConsultaCadastro() 
+	oConsultaCadastro.Executar(oConsCad,o_configuracao)
+	oRetConsCad	is Unimake.Business.DFe.XML.NFe.RetConsCad	<- oConsultaCadastro.Result
+	
+	cstat	= oRetConsCad.InfCons.CStat
+	xmotivo	= oRetConsCad.InfCons.XMotivo
+	
+	IF cstat="259" THEN
+		// cnpj da consulta não cadastrado como contribuinte na UF
+		// na primeira vez, vai pesquizar o estado do emitente, ou da informacao fornecida pelo usuario
+		// na segunda vez, vai pegar o resultado pela receita ws, pois nao tem inscrição
+	ELSE
+		razao_social		= oRetConsCad.InfCons.InfCad.XNome
+		retorno_xml			= oConsultaCadastro.RetornoWSString 
+		s_busca_cnpj="sefaz_achou"
+	END
+DO
+	retorno_xml			= "ERRO:"+ExceptionInfo(errFullDetails)
+	s_busca_cnpj="sefaz_erro"
+END
+
+IF s_busca_cnpj="sefaz_achou" OR s_busca_cnpj="sefaz_erro" THEN
+ELSE
+	IF s_busca_cnpj="" THEN
+		s_busca_cnpj="receita_busca"
+		GOTO busca_cnpj_sefaz
+	END
+END
+
+	INTERNAL PROCEDURE busca_receita_cnpj()
+		
+		// pegar pela receita o estado 
+		s_busca_cnpj="buscou"
+		s_url					is string	= "https://www.receitaws.com.br/v1/cnpj/"+s_recebe_cnpj_cadastro
+		IF HTTPRequest(s_url) THEN
+			retorno_json=HTTPGetResult()
+			recebi_o_estado	is string	= retorno_json.uf
+			SWITCH recebi_o_estado
+				CASE "AC"
+					oInfCons.uf=UFBrasil.AC 
+				CASE "AL"
+					oInfCons.uf=UFBrasil.AL 
+				CASE "AM"
+					oInfCons.uf=UFBrasil.AM 
+				CASE "AP"
+					oInfCons.uf=UFBrasil.AP 
+				CASE "BA"
+					oInfCons.uf=UFBrasil.BA 
+				CASE "CE"
+					oInfCons.uf=UFBrasil.CE 
+				CASE "DF"
+					oInfCons.uf=UFBrasil.DF 
+				CASE "ES"
+					oInfCons.uf=UFBrasil.ES 
+				CASE "EX"
+					oInfCons.uf=UFBrasil.EX 
+				CASE "GO"
+					oInfCons.uf=UFBrasil.GO 
+				CASE "MA"
+					oInfCons.uf=UFBrasil.MA 
+				CASE "MG"
+					oInfCons.uf=UFBrasil.MG 
+				CASE "MS"
+					oInfCons.uf=UFBrasil.MS 
+				CASE "MT"
+					oInfCons.uf=UFBrasil.MT
+				CASE "PA"
+					oInfCons.uf=UFBrasil.PA 
+				CASE "PB"
+					oInfCons.uf=UFBrasil.PB 
+				CASE "PE"
+					oInfCons.uf=UFBrasil.PE 
+				CASE "PI"
+					oInfCons.uf=UFBrasil.PI 
+				CASE "PR"
+					oInfCons.uf=UFBrasil.PR 
+				CASE "RJ"
+					oInfCons.uf=UFBrasil.RJ 
+				CASE "RN"
+					oInfCons.uf=UFBrasil.RN 
+				CASE "RO"
+					oInfCons.uf=UFBrasil.RO 
+				CASE "RR"
+					oInfCons.uf=UFBrasil.RR 
+				CASE "RS"
+					oInfCons.uf=UFBrasil.RS
+				CASE "SC"
+					oInfCons.uf=UFBrasil.SC 
+				CASE "SE"
+					oInfCons.uf=UFBrasil.SE 
+				CASE "SP"
+					oInfCons.uf=UFBrasil.SP 
+				CASE "TO"
+					oInfCons.uf=UFBrasil.TO 
+				OTHER CASE
+					s_busca_cnpj="receita_nao_achou["+retorno_json
+			END
+        ELSE
+        	s_busca_cnpj="erro busca receita="+ErrorInfo(errFullDetails)
+		END
+		
+	
+	END
+
+   	 INTERNAL PROCEDURE pesquisa_estado()
+
+		SWITCH s_recebe_UF
+			CASE "AC"
+				oInfCons.uf=UFBrasil.AC 
+			CASE "AL"
+				oInfCons.uf=UFBrasil.AL 
+			CASE "AM"
+				oInfCons.uf=UFBrasil.AM 
+			CASE "AP"
+				oInfCons.uf=UFBrasil.AP 
+			CASE "BA"
+				oInfCons.uf=UFBrasil.BA 
+			CASE "CE"
+				oInfCons.uf=UFBrasil.CE 
+			CASE "DF"
+				oInfCons.uf=UFBrasil.DF 
+			CASE "ES"
+				oInfCons.uf=UFBrasil.ES 
+			CASE "EX"
+				oInfCons.uf=UFBrasil.EX 
+			CASE "GO"
+				oInfCons.uf=UFBrasil.GO 
+			CASE "MA"
+				oInfCons.uf=UFBrasil.MA 
+			CASE "MG"
+				oInfCons.uf=UFBrasil.MG 
+			CASE "MS"
+				oInfCons.uf=UFBrasil.MS 
+			CASE "MT"
+				oInfCons.uf=UFBrasil.MT
+			CASE "PA"
+				oInfCons.uf=UFBrasil.PA 
+			CASE "PB"
+				oInfCons.uf=UFBrasil.PB 
+			CASE "PE"
+				oInfCons.uf=UFBrasil.PE 
+			CASE "PI"
+				oInfCons.uf=UFBrasil.PI 
+			CASE "PR"
+				oInfCons.uf=UFBrasil.PR 
+			CASE "RJ"
+				oInfCons.uf=UFBrasil.RJ 
+			CASE "RN"
+				oInfCons.uf=UFBrasil.RN 
+			CASE "RO"
+				oInfCons.uf=UFBrasil.RO 
+			CASE "RR"
+				oInfCons.uf=UFBrasil.RR 
+			CASE "RS"
+				oInfCons.uf=UFBrasil.RS
+			CASE "SC"
+				oInfCons.uf=UFBrasil.SC 
+			CASE "SE"
+				oInfCons.uf=UFBrasil.SE 
+			CASE "SP"
+				oInfCons.uf=UFBrasil.SP 
+			CASE "TO"
+				oInfCons.uf=UFBrasil.TO 
+			OTHER CASE
+				s_busca_cnpj="nao_acho_estado"
+		END
+		
+   	END
+
+retorno_xml_erpmatos is string=""
+retorno_xml_erpmatos=[
+	<infCad>
+	<IE>#IE#</IE>
+	<CNPJ>#CNPJ#</CNPJ>
+	<UF>#UF#</UF>
+	<cSit>#cSit#</cSit>
+	<indCredNFe>#indCredNFe#</indCredNFe>
+	<indCredCTe>#indCredCTe#</indCredCTe>
+	<xNome>#xNome#</xNome>
+	<xFant>#xFant#</xFant>
+	<xRegApur>#xRegApur#</xRegApur>
+	<CNAE>#CNAE#</CNAE>
+	<dIniAtiv>#dIniAtiv#</dIniAtiv>
+	<dUltSit>#dUltSit#</dUltSit>
+	<ender>
+	<xLgr>#xLgr#</xLgr>
+	<nro>#nro#</nro>
+	<xCpl>#xCpl#</xCpl>
+	<xBairro>#xBairro#</xBairro>
+	<cMun>#cMun#</cMun>
+	<xMun>#xMun#</xMun>
+	<CEP>#CEP#</CEP>
+	</ender>
+	<alteracao>#alteracao#</alteracao>
+	</infCad>
+]
+
+IF cstat="259" THEN
+	//caso nao tiver no sefaz, vai pegar o json da receita
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#alteracao#","pegou pelo json da receita")
+	
+    retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#IE#","")
+    retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#CNPJ#",s_recebe_cnpj_cadastro)
+    retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#UF#",retorno_json.uf)	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#cSit#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#indCredNFe#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#indCredCTe#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xNome#",retorno_json.nome)
+    IF retorno_json.fantasia="" THEN
+		retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xFant#",retorno_json.nome)
+	ELSE    	
+		retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xFant#",retorno_json.fantasia)
+	END
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xRegApur#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#CNAE#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#dIniAtiv#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#dUltSit#","")	
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xLgr#",retorno_json.logradouro)
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#nro#",retorno_json.numero)
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xCpl#",retorno_json.complemento)
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xBairro#",retorno_json.bairro)
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#cMun#","")
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#xMun#",retorno_json.municipio)
+	cep_string is string=retorno_json.cep
+	cep_string=Replace(cep_string,".","")
+	cep_string=Replace(cep_string,"-","")
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#CEP#",cep_string)
+ELSE
+	retorno_xml_erpmatos=Replace(retorno_xml_erpmatos,"#alteracao#","pegou pelo xml da sefaz")
+	
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#IE#",XMLExtractString(retorno_xml,"IE"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#CNPJ#",s_recebe_cnpj_cadastro)
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#UF#",XMLExtractString(retorno_xml,"UF"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#cSit#",XMLExtractString(retorno_xml,"cSit"))	
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#indCredNFe#",XMLExtractString(retorno_xml,"indCredNFe"))	
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#indCredCTe#",XMLExtractString(retorno_xml,"indCredCTe"))	
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#xNome#",XMLExtractString(retorno_xml,"xNome"))
+	IF XMLExtractString(retorno_xml,"xFant")="" THEN
+		retorno_xml_erpmatos    = Replace(retorno_xml_erpmatos,"#xFant#",XMLExtractString(retorno_xml,"xNome"))
+	ELSE
+		retorno_xml_erpmatos    = Replace(retorno_xml_erpmatos,"#xFant#",XMLExtractString(retorno_xml,"xFant"))
+	END
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#xRegApur#",XMLExtractString(retorno_xml,"xRegApur"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#CNAE#",XMLExtractString(retorno_xml,"CNAE"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#dIniAtiv#",XMLExtractString(retorno_xml,"dIniAtiv"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#dUltSit#",XMLExtractString(retorno_xml,"dUltSit"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#xLgr#",XMLExtractString(retorno_xml,"xLgr"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#nro#",XMLExtractString(retorno_xml,"nro"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#xCpl#",XMLExtractString(retorno_xml,"xCpl"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#xBairro#",XMLExtractString(retorno_xml,"xBairro"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#cMun#",XMLExtractString(retorno_xml,"cMun"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#xMun#",XMLExtractString(retorno_xml,"xMun"))
+	retorno_xml_erpmatos	= Replace(retorno_xml_erpmatos,"#CEP#",XMLExtractString(retorno_xml,"CEP"))
+	//xFant
+END
+
+
+RESULT retorno_xml_erpmatos	
