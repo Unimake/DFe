@@ -111,6 +111,8 @@ namespace TreinamentoDLL
             this.BtnConsultarGTIN = new System.Windows.Forms.Button();
             this.reinf = new System.Windows.Forms.GroupBox();
             this.BtnEnviarReinf = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.BtnEnviarEConsultarESocial = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -120,6 +122,7 @@ namespace TreinamentoDLL
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.reinf.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConsultaStatusNFe
@@ -1036,11 +1039,32 @@ namespace TreinamentoDLL
             this.BtnEnviarReinf.UseVisualStyleBackColor = true;
             this.BtnEnviarReinf.Click += new System.EventHandler(this.BtnEnviarReinf_Click);
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.BtnEnviarEConsultarESocial);
+            this.groupBox8.Location = new System.Drawing.Point(228, 443);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(210, 63);
+            this.groupBox8.TabIndex = 28;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "ESocial";
+            // 
+            // BtnEnviarEConsultarESocial
+            // 
+            this.BtnEnviarEConsultarESocial.Location = new System.Drawing.Point(6, 21);
+            this.BtnEnviarEConsultarESocial.Name = "BtnEnviarEConsultarESocial";
+            this.BtnEnviarEConsultarESocial.Size = new System.Drawing.Size(197, 23);
+            this.BtnEnviarEConsultarESocial.TabIndex = 0;
+            this.BtnEnviarEConsultarESocial.Text = "Enviar e consulta ESocial";
+            this.BtnEnviarEConsultarESocial.UseVisualStyleBackColor = true;
+            this.BtnEnviarEConsultarESocial.Click += new System.EventHandler(this.BtnEnviarEConsultarESocial_Click);
+            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1323, 690);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.reinf);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -1062,6 +1086,7 @@ namespace TreinamentoDLL
             this.groupBox6.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.reinf.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1150,6 +1175,8 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnDistribuicaoDFeChNFe;
         private System.Windows.Forms.GroupBox reinf;
         private System.Windows.Forms.Button BtnEnviarReinf;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button BtnEnviarEConsultarESocial;
     }
 }
 

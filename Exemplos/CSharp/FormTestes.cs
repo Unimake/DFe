@@ -7,8 +7,10 @@ using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.ESocial;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EFDReinf;
+using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
@@ -5646,7 +5648,7 @@ namespace TreinamentoDLL
                                     EvtInfoContri = new EvtInfoContri
                                     {
                                         ID = "ID1000000000000002021052608080654321",
-                                        IdeEvento = new IdeEvento
+                                        IdeEvento = new Unimake.Business.DFe.Xml.EFDReinf.IdeEvento
                                         {
                                             TpAmb = TipoAmbiente.Homologacao,
                                             ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte,
@@ -5661,11 +5663,11 @@ namespace TreinamentoDLL
                                         {
                                             Inclusao = new InclusaoReinf1000
                                             {
-                                                IdePeriodo = new IdePeriodo
+                                                IdePeriodo = new Unimake.Business.DFe.Xml.EFDReinf.IdePeriodo
                                                 {
                                                     IniValid = "2021-05"
                                                 },
-                                                InfoCadastro = new InfoCadastro
+                                                InfoCadastro = new Unimake.Business.DFe.Xml.EFDReinf.InfoCadastro
                                                 {
                                                     ClassTrib = ClassificacaoTributaria.PessoaJuridica,
                                                     IndEscrituracao = IndicativoEscrituracao.Obrigada,
@@ -5675,7 +5677,7 @@ namespace TreinamentoDLL
                                                     IndUniao = IndicativoUniao.NaoAplicavel,
                                                     DtTransfFinsLucr = DateTime.Parse("2021-01-01"),
                                                     DtObito = DateTime.Parse("2021-01-01"),
-                                                    Contato = new Contato
+                                                    Contato = new Unimake.Business.DFe.Xml.EFDReinf.Contato
                                                     {
                                                         NmCtt = "NMCTT1",
                                                         CpfCtt = "12345678954",
@@ -5783,6 +5785,120 @@ namespace TreinamentoDLL
                         break;
                 }
             }
+        }
+
+        private void BtnEnviarEConsultarESocial_Click(object sender, EventArgs e)
+        {
+            var xmlEnvio = new ESocialEnvioLoteEventos
+            {
+                Versao = "1.00.00",
+                EnvioLoteEventos = new EnvioLoteEventosESocial
+                {
+                    IdeEmpregador = new IdeEmpregador
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "12345678901234"
+                    },
+
+                    IdeTransmissor = new IdeTransmissor
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "12345678901234"
+                    },
+
+                    Grupo = "1231231",
+
+                    Eventos = new EventosESocial
+                    {
+                        Evento = new List<EventoESocial>
+                        {
+                            new EventoESocial
+                            {
+                                ESocial1000 = new ESocial1000
+                                {
+                                    EvtInfoEmpregador = new EvtInfoEmpregador
+                                    {
+                                        ID = "ID1235345346546234",
+                                        IdeEvento = new DFe.Xml.ESocial.IdeEvento
+                                        {
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            TpAmb = TipoAmbiente.Homologacao,
+                                            VerProc = "1.00"
+
+                                        },
+
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "12345678901234"
+                                        },
+
+                                        InfoEmpregador = new InfoEmpregador
+                                        {
+                                            Inclusao = new InclusaoE1000
+                                            {
+                                                InfoCadastro = new DFe.Xml.ESocial.InfoCadastro
+                                                {
+                                                    ClassTrib = ClassificacaoTributaria.SimplesNacionalTributacaoPrevidenciariaNaoSubstituida, 
+                                                    
+                                                    IndConstr = IndConstr.NaoConstrutora,
+
+                                                    IndDesFolha = IndDesFolha.EmpresaEnquadrada,
+
+                                                    
+
+                                                    DadosIsencao = new DadosIsencao
+                                                    {
+                                                        NrProtRenov = "NrProtRenov",
+                                                        NrCertif = "12312314125",
+                                                        IdeMinLei = "123123",
+                                                        PagDou = "123123123"
+
+                                                    },
+                                                },
+
+                                                IdePeriodo = new DFe.Xml.ESocial.IdePeriodo
+                                                {
+                                                   FimValidField = "2000-10-05"   
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                Servico = Servico.ESocialEnviarLoteEventos
+            };
+
+            var envioLoteESocial = new EnviarLoteEventosESocial(xmlEnvio, configuracao);
+            envioLoteESocial.Executar();
+
+            switch (envioLoteESocial.Result.Status.CdResposta)
+            {
+                case 0: //Retorno inválido
+                    break;
+                case 1: //Registrar os retornos
+                    break;
+                case 200: //Ok
+                    envioLoteESocial.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#","treinamento eSocial", envioLoteESocial?.RetornoWSString);
+                    break;
+                case 417:
+                    MessageBox.Show("Erro na estrutura de solicitação do eSocial");
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }
