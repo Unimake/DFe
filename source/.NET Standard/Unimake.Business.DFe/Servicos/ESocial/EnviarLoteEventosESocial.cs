@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Exceptions;
 
@@ -114,6 +116,37 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         }
 
         #endregion Public Methods
+
+        #region Result
+
+        /// <summary>
+        /// Conteúdo retornado pelo web-service depois do envio do XML
+        /// </summary>
+        public RetornoEnvioLote Result
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
+                {
+                    return XMLUtility.Deserializar<RetornoEnvioLote>(RetornoWSXML);
+                }
+
+                return new RetornoEnvioLote
+                {
+                    RetornoEnvioLoteEventos = new RetornoEnvioLoteEventos
+                    {
+                        Status = new Xml.ESocial.Status
+                        {
+                            CdResposta = 0,
+                            DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornoado",
+                        }
+                    }
+                    
+                };
+            }
+        }
+        #endregion
+
     }
 }
 
