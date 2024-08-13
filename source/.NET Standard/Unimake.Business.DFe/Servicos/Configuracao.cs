@@ -248,6 +248,11 @@ namespace Unimake.Business.DFe.Servicos
                                 SchemaArquivo = XMLUtility.TagRead(elementPropriedades, "SchemaArquivo").Replace("{0}", SchemaVersao);
                             }
 
+                            if (XMLUtility.TagExist(elementPropriedades, "SchemaVersaoEvento"))
+                            {
+                                SchemaVersaoEvento = XMLUtility.TagRead(elementPropriedades, "SchemaVersaoEvento").Replace("{0}", SchemaVersaoEvento);
+                            }
+
                             if (XMLUtility.TagExist(elementPropriedades, "TagAssinatura"))
                             {
                                 TagAssinatura = XMLUtility.TagRead(elementPropriedades, "TagAssinatura");
@@ -373,6 +378,34 @@ namespace Unimake.Business.DFe.Servicos
                                             Id = idSchemaEspecifico,
                                             SchemaArquivo = elementTipo.GetElementsByTagName("SchemaArquivo")[0].InnerText.Replace("{0}", SchemaVersao),
                                             SchemaArquivoEspecifico = elementTipo.GetElementsByTagName("SchemaArquivoEspecifico")[0].InnerText.Replace("{0}", SchemaVersao)
+                                        };
+                                    }
+                                }
+                            }
+
+                            //Verificar se existem schemas específicos de validação para o evento do REINF ou eSocial
+                            if (XMLUtility.TagExist(elementPropriedades, "TiposEventosEspecificos"))
+                            {
+                                var listTiposEventosEspecificos = elementPropriedades.GetElementsByTagName("TiposEventosEspecificos");
+
+                                foreach (var nodeTiposEventosEspecificos in listTiposEventosEspecificos)
+                                {
+                                    var elemenTiposEventosEspecificos = (XmlElement)nodeTiposEventosEspecificos;
+
+                                    var listTipo = elemenTiposEventosEspecificos.GetElementsByTagName("Tipo");
+
+                                    foreach (var nodeTipo in listTipo)
+                                    {
+                                        var elementTipo = (XmlElement)nodeTipo;
+                                        var eventoEspecifico = elementTipo.GetElementsByTagName("Evento")[0].InnerText;
+
+                                        TiposEventosEspecificos[eventoEspecifico] = new TiposEventosEspecificos
+                                        {
+                                            Evento = eventoEspecifico,
+                                            SchemaArquivoEvento = elementTipo.GetElementsByTagName("SchemaArquivoEvento")[0].InnerText.Replace("{0}", SchemaVersaoEvento),
+                                            TagAssinatura = elementTipo.GetElementsByTagName("TagAssinatura")[0].InnerText,
+                                            TagAtributoID = elementTipo.GetElementsByTagName("TagAtributoID")[0].InnerText,
+                                            TargetNS = elementTipo.GetElementsByTagName("TargetNS")[0].InnerText.Replace("{0}", SchemaVersaoEvento)
                                         };
                                     }
                                 }
@@ -769,6 +802,11 @@ namespace Unimake.Business.DFe.Servicos
                             MetodoAPI = XMLUtility.TagRead(elementVersao, "MetodoAPI");
                         }
 
+                        if (XMLUtility.TagExist(elementVersao, "SchemaVersaoEvento"))
+                        {
+                            SchemaVersaoEvento = XMLUtility.TagRead(elementVersao, "SchemaVersaoEvento");
+                        }
+
                         //Vou limpar a versão da configuração, caso alguém informe algo no arquivo padrão, tem que zerar, pois só pode existir valor na configuração específica de cada UF ou Município
                         VersaoConfiguracao = "";
 
@@ -791,6 +829,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Schemas específicos de um mesmo serviço (Tipos de Evento, Modal CTe ou Modal MDFe)
         /// </summary>
         public Dictionary<string, SchemaEspecifico> SchemasEspecificos = new Dictionary<string, SchemaEspecifico>();
+
+        /// <summary>
+        /// Tipos de eventos específicos do REINF e eSocial
+        /// </summary>
+        public Dictionary<string, TiposEventosEspecificos> TiposEventosEspecificos = new Dictionary<string, TiposEventosEspecificos>();
 
         #endregion Public Fields
 
@@ -1248,6 +1291,11 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public string NumeroProtocolo {  get; set; }
 
+        /// <summary>
+        /// Versão do schema do XML do evento
+        /// </summary>
+        public string SchemaVersaoEvento { get; set; }
+
         private int _TimeOutWebServiceConnect;
 
         /// <summary>
@@ -1393,6 +1441,41 @@ namespace Unimake.Business.DFe.Servicos
         /// Arquivo de schema da parte específica do XML
         /// </summary>
         public string SchemaArquivoEspecifico { get; set; }
+
+        #endregion Public Properties
+    }
+
+    /// <summary>
+    /// Arquivos de eventos específicos.
+    /// </summary>
+    public class TiposEventosEspecificos
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Evento específico que vai ser validado para o REINF ou eSocial
+        /// </summary>
+        public string Evento { get; set; }
+
+        /// <summary>
+        /// Arquivo de schema específico do evento
+        /// </summary>
+        public string SchemaArquivoEvento { get; set; }
+
+        /// <summary>
+        /// Nome da tag de Assinatura do evento
+        /// </summary>
+        public string TagAssinatura { get; set; }
+
+        /// <summary>
+        /// Nome da tag que tem o atributo de identificador único a ser utilizado no Reference.URI da assinatura
+        /// </summary>
+        public string TagAtributoID { get; set; }
+
+        /// <summary>
+        /// Namespace do XML para validação de schema
+        /// </summary>
+        public string TargetNS { get; set; }
 
         #endregion Public Properties
     }

@@ -29,7 +29,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         /// <param name="tagAssinatura">Tag de assinatura</param>
         /// <param name="tagAtributoID">Tag que detêm o atributo ID</param>
-        protected void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
+        protected virtual void VerificarAssinarXML(string tagAssinatura, string tagAtributoID)
         {
             if (Configuracoes.UsaCertificadoDigital)
             {
