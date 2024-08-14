@@ -288,7 +288,6 @@
 		<None Remove="Servicos\Config\NFSe\CatanduvaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CaxiasDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ChapecoSC.xml" />
-		<None Remove="Servicos\Config\NFSe\CianortePR.xml" />
 		<None Remove="Servicos\Config\NFSe\ColomboPR.xml" />
 		<None Remove="Servicos\Config\NFSe\Config.xml" />
 		<None Remove="Servicos\Config\NFSe\CoronelFabricianoMG.xml" />
@@ -1849,9 +1848,6 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Betha.xml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Servicos\Config\NFSe\CianortePR.xml">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 		<EmbeddedResource Include="Servicos\Config\NFSe\Config.xml" />

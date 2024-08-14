@@ -191,12 +191,6 @@
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
 	<!--///////////////////////////////////////////////////////////// PADRÕES COM APENAS UM XML DE CONFIGURAÇÃO ///////////////////////////////////////////////////////////////-->
-	<Arquivo ID="4105508">
-		<Nome>Cianorte - PR</Nome>
-		<UF>PR</UF>
-		<ArqConfig>CianortePR.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
-	</Arquivo>
 	<Arquivo ID="3303203">
 		<Nome>Nilópolis - RJ</Nome>
 		<UF>RJ</UF>
