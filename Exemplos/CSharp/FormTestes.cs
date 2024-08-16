@@ -7,10 +7,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Servicos.ESocial;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.EFDReinf;
-using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
@@ -27,12 +24,16 @@ using ServicoMDFe = Unimake.Business.DFe.Servicos.MDFe;
 using ServicoNFCe = Unimake.Business.DFe.Servicos.NFCe;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
+using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
+using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
 using XmlMDFe = Unimake.Business.DFe.Xml.MDFe;
 using XmlNFe = Unimake.Business.DFe.Xml.NFe;
+using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
+using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 
 namespace TreinamentoDLL
 {
@@ -5629,45 +5630,45 @@ namespace TreinamentoDLL
             var xmlEnvio = new Unimake.Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos
             {
                 Versao = "1.00.00",
-                EnvioLoteEventos = new EnvioLoteEventosReinf
+                EnvioLoteEventos = new XmlEFDReinf.EnvioLoteEventosReinf
                 {
-                    IdeContribuinte = new IdeContribuinte
+                    IdeContribuinte = new XmlEFDReinf.IdeContribuinte
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "12345678901234"
                     },
-                    Eventos = new EventosReinf
+                    Eventos = new XmlEFDReinf.EventosReinf
                     {
-                        Evento = new List<EventoReinf>
+                        Evento = new List<XmlEFDReinf.EventoReinf>
                         {
-                            new EventoReinf
+                            new XmlEFDReinf.EventoReinf
                             {
                                 ID = "ID1000000000000002021052608080800001",
-                                Reinf1000 = new Reinf1000
+                                Reinf1000 = new XmlEFDReinf.Reinf1000
                                 {
-                                    EvtInfoContri = new EvtInfoContri
+                                    EvtInfoContri = new XmlEFDReinf.EvtInfoContri
                                     {
                                         ID = "ID1000000000000002021052608080654321",
-                                        IdeEvento = new Unimake.Business.DFe.Xml.EFDReinf.IdeEvento
+                                        IdeEvento = new XmlEFDReinf.IdeEvento
                                         {
                                             TpAmb = TipoAmbiente.Homologacao,
                                             ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte,
                                             VerProc = "150"
                                         },
-                                        IdeContri = new IdeContri
+                                        IdeContri = new XmlEFDReinf.IdeContri
                                         {
                                             TpInsc = TiposInscricao.CNPJ,
                                             NrInsc = "12345678901234"
                                         },
-                                        InfoContri = new InfoContri
+                                        InfoContri = new XmlEFDReinf.InfoContri
                                         {
-                                            Inclusao = new InclusaoReinf1000
+                                            Inclusao = new XmlEFDReinf.InclusaoReinf1000
                                             {
-                                                IdePeriodo = new Unimake.Business.DFe.Xml.EFDReinf.IdePeriodo
+                                                IdePeriodo = new XmlEFDReinf.IdePeriodo
                                                 {
                                                     IniValid = "2021-05"
                                                 },
-                                                InfoCadastro = new Unimake.Business.DFe.Xml.EFDReinf.InfoCadastro
+                                                InfoCadastro = new XmlEFDReinf.InfoCadastro
                                                 {
                                                     ClassTrib = ClassificacaoTributaria.PessoaJuridica,
                                                     IndEscrituracao = IndicativoEscrituracao.Obrigada,
@@ -5677,7 +5678,7 @@ namespace TreinamentoDLL
                                                     IndUniao = IndicativoUniao.NaoAplicavel,
                                                     DtTransfFinsLucr = DateTime.Parse("2021-01-01"),
                                                     DtObito = DateTime.Parse("2021-01-01"),
-                                                    Contato = new Unimake.Business.DFe.Xml.EFDReinf.Contato
+                                                    Contato = new XmlEFDReinf.Contato
                                                     {
                                                         NmCtt = "NMCTT1",
                                                         CpfCtt = "12345678954",
@@ -5685,9 +5686,9 @@ namespace TreinamentoDLL
                                                         FoneCel = "44912347894",
                                                         Email = "email@email.com"
                                                     },
-                                                    SoftHouse = new List<SoftHouse>
+                                                    SoftHouse = new List<XmlEFDReinf.SoftHouse>
                                                     {
-                                                        new SoftHouse
+                                                        new XmlEFDReinf.SoftHouse
                                                         {
                                                             CnpjSoftHouse = "12345678901234",
                                                             NmRazao = "nomeContribuinte",
@@ -5696,7 +5697,7 @@ namespace TreinamentoDLL
                                                             Email = "email@email.com"
                                                         }
                                                     },
-                                                    InfoEFR = new InfoEFR
+                                                    InfoEFR = new XmlEFDReinf.InfoEFR
                                                     {
                                                         IdeEFR = SimNaoLetra.Sim,
                                                         CnpjEFR = "12345678901234"
@@ -5721,7 +5722,7 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado
             };
 
-            var recepcionarLoteAssincReinf = new Unimake.Business.DFe.Servicos.EFDReinf.RecepcionarLoteAssincrono(xmlEnvio, configuracao);
+            var recepcionarLoteAssincReinf = new ServicoEFDReinf.RecepcionarLoteAssincrono(xmlEnvio, configuracao);
             recepcionarLoteAssincReinf.Executar();
 
             if (recepcionarLoteAssincReinf.Result.RetornoLoteEventosAssincrono != null)
@@ -5743,16 +5744,16 @@ namespace TreinamentoDLL
                             CertificadoDigital = CertificadoSelecionado
                         };
 
-                        var xmlConsulta = new ReinfConsultaLoteAssincrono
+                        var xmlConsulta = new XmlEFDReinf.ReinfConsultaLoteAssincrono
                         {
                             Versao = "1.00.00",
-                            ConsultaLoteAssincrono = new ConsultaLoteAssincrono
+                            ConsultaLoteAssincrono = new XmlEFDReinf.ConsultaLoteAssincrono
                             {
                                 NumeroProtocolo = protocolo
                             }
                         };
 
-                        var consultaLoteReinf = new Unimake.Business.DFe.Servicos.EFDReinf.ConsultaLoteAssincrono(xmlConsulta, configuracaoConsulta);
+                        var consultaLoteReinf = new ServicoEFDReinf.ConsultaLoteAssincrono(xmlConsulta, configuracaoConsulta);
                         consultaLoteReinf.Executar();
 
                         switch (consultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta)
@@ -5789,18 +5790,18 @@ namespace TreinamentoDLL
 
         private void BtnEnviarEConsultarESocial_Click(object sender, EventArgs e)
         {
-            var xmlEnvio = new ESocialEnvioLoteEventos
+            var xmlEnvio = new XmlESocial.ESocialEnvioLoteEventos
             {
                 Versao = "1.00.00",
-                EnvioLoteEventos = new EnvioLoteEventosESocial
+                EnvioLoteEventos = new XmlESocial.EnvioLoteEventosESocial
                 {
-                    IdeEmpregador = new IdeEmpregador
+                    IdeEmpregador = new XmlESocial.IdeEmpregador
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "12345678901234"
                     },
 
-                    IdeTransmissor = new IdeTransmissor
+                    IdeTransmissor = new XmlESocial.IdeTransmissor
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "12345678901234"
@@ -5808,18 +5809,18 @@ namespace TreinamentoDLL
 
                     Grupo = "1231231",
 
-                    Eventos = new EventosESocial
+                    Eventos = new XmlESocial.EventosESocial
                     {
-                        Evento = new List<EventoESocial>
+                        Evento = new List<XmlESocial.EventoESocial>
                         {
-                            new EventoESocial
+                            new XmlESocial.EventoESocial
                             {
-                                ESocial1000 = new ESocial1000
+                                ESocial1000 = new XmlESocial.ESocial1000
                                 {
-                                    EvtInfoEmpregador = new EvtInfoEmpregador
+                                    EvtInfoEmpregador = new XmlESocial.EvtInfoEmpregador
                                     {
                                         ID = "ID1235345346546234",
-                                        IdeEvento = new DFe.Xml.ESocial.IdeEvento
+                                        IdeEvento = new XmlESocial.IdeEvento
                                         {
                                             ProcEmi = ProcEmiESocial.AppDoEmpregador,
                                             TpAmb = TipoAmbiente.Homologacao,
@@ -5827,17 +5828,17 @@ namespace TreinamentoDLL
 
                                         },
 
-                                        IdeEmpregador = new IdeEmpregador
+                                        IdeEmpregador = new XmlESocial.IdeEmpregador
                                         {
                                             TpInsc = TiposInscricao.CNPJ,
                                             NrInsc = "12345678901234"
                                         },
 
-                                        InfoEmpregador = new InfoEmpregador
+                                        InfoEmpregador = new XmlESocial.InfoEmpregador
                                         {
-                                            Inclusao = new InclusaoE1000
+                                            Inclusao = new XmlESocial.InclusaoE1000
                                             {
-                                                InfoCadastro = new DFe.Xml.ESocial.InfoCadastro
+                                                InfoCadastro = new XmlESocial.InfoCadastro
                                                 {
                                                     ClassTrib = ClassificacaoTributaria.SimplesNacionalTributacaoPrevidenciariaNaoSubstituida, 
                                                     
@@ -5847,7 +5848,7 @@ namespace TreinamentoDLL
 
                                                     
 
-                                                    DadosIsencao = new DadosIsencao
+                                                    DadosIsencao = new XmlESocial.DadosIsencao
                                                     {
                                                         NrProtRenov = "NrProtRenov",
                                                         NrCertif = "12312314125",
@@ -5857,7 +5858,7 @@ namespace TreinamentoDLL
                                                     },
                                                 },
 
-                                                IdePeriodo = new DFe.Xml.ESocial.IdePeriodo
+                                                IdePeriodo = new XmlESocial.IdePeriodo
                                                 {
                                                    FimValidField = "2000-10-05"   
                                                 }
@@ -5880,10 +5881,10 @@ namespace TreinamentoDLL
                 Servico = Servico.ESocialEnviarLoteEventos
             };
 
-            var envioLoteESocial = new EnviarLoteEventosESocial(xmlEnvio, configuracao);
+            var envioLoteESocial = new ServicoESocial.EnviarLoteEventosESocial(xmlEnvio, configuracao);
             envioLoteESocial.Executar();
 
-            switch (envioLoteESocial.Result.Status.CdResposta)
+            switch (envioLoteESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta)
             {
                 case 0: //Retorno inválido
                     break;
