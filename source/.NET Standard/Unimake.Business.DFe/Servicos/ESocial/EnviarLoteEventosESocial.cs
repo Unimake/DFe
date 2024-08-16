@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Exceptions;
 
