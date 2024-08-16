@@ -1397,4 +1397,10 @@
 		<ArqConfig>SalvadorBA.xml</ArqConfig>
 		<PadraoNFSe>SALVADOR_BA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2909802">
+		<Nome>Cruz das Almas - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>FISCO.xml</ArqConfig>
+		<PadraoNFSe>FISCO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -6543,7 +6543,13 @@ namespace Unimake.Business.DFe.Servicos
         /// SALVADOR_BA
         /// </summary>
         [Description("SALVADOR_BA")]
-        SALVADOR_BA = 50
+        SALVADOR_BA = 50,
+
+        /// <summary>
+        /// FISCO
+        /// </summary>
+        [Description("FISCO")]
+        FISCO = 51,
     }
 
     #endregion
