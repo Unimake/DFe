@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtAdmPrelim/v_S_01_00_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtAdmPrelim/v_S_01_00_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtAdmPrelim/v_S_01_02_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtAdmPrelim/v_S_01_02_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:include schemaLocation="tipos.xsd" />
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
     <xs:element name="eSocial">
@@ -46,7 +46,7 @@
                                         <xs:element name="dtAdm" type="xs:date">
                                             <xs:annotation>
                                                 <xs:documentation>Preencher com a data de admissão do trabalhador (ou data de início, no caso de Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE).</xs:documentation>
-                                                <xs:documentation>Validação: Deve ser posterior à data de nascimento do trabalhador e igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador.</xs:documentation>
+                                                <xs:documentation>Validação: Deve ser posterior à data de nascimento do trabalhador, igual ou posterior à data de início da obrigatoriedade dos eventos não periódicos para o empregador e igual ou anterior ao ano do óbito, se existente.</xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                         <xs:element name="matricula" type="TS_codigo_esocial">
@@ -85,7 +85,12 @@
                                                     </xs:element>
                                                     <xs:element name="vrSalFx" type="TS_vrSalFx" />
                                                     <xs:element name="undSalFixo" type="TS_undSalFixo" />
-                                                    <xs:element name="tpContr" type="TS_tpContr" />
+                                                    <xs:element name="tpContr" type="TS_tpContr">
+                                                        <xs:annotation>
+                                                            <xs:documentation>Tipo de contrato de trabalho.</xs:documentation>
+                                                            <xs:documentation>Validação: Se {codCateg}(../codCateg) = [103] e {dtAdm}(../dtAdm) >= [2024-04-22], deve ser informado [2].</xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:element>
                                                     <xs:element name="dtTerm" minOccurs="0" type="xs:date">
                                                         <xs:annotation>
                                                             <xs:documentation>Data do término do contrato por prazo determinado.</xs:documentation>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_00_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_00_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_02_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_02_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:include schemaLocation="tipos.xsd" />
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
     <xs:element name="eSocial">
@@ -51,7 +51,7 @@
                                             <xs:annotation>
                                                 <xs:documentation>Identificação do trabalhador a que se refere o evento a ser excluído</xs:documentation>
                                                 <xs:documentation>DESCRICAO_COMPLETA:Grupo que identifica a qual trabalhador se refere o evento a ser excluído.</xs:documentation>
-                                                <xs:documentation>CONDICAO_GRUPO: O (se {tpEvento}(../tpEvento) corresponder a um dos eventos não periódicos (S-2190 a S-2420 ou S-8299) ou um dos eventos periódicos (S-1200 a S-1210); N (nos demais casos)</xs:documentation>
+                                                <xs:documentation>CONDICAO_GRUPO: O (se {tpEvento}(../tpEvento) corresponder a um dos eventos não periódicos (S-2190 a S-2420, S-8200 ou S-8299) ou um dos eventos periódicos (S-1200 a S-1210); N (nos demais casos)</xs:documentation>
                                             </xs:annotation>
                                             <xs:complexType>
                                                 <xs:sequence>

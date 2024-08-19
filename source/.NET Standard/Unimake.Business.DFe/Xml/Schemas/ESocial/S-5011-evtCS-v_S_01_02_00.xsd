@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_00_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_00_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_02_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_02_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:include schemaLocation="tipos.xsd" />
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
     <xs:element name="eSocial">
@@ -126,6 +126,21 @@
                                                                         <xs:documentation>Percentual de contribuição social - Lei 11.096/2005.</xs:documentation>
                                                                         <xs:documentation>Evento de origem: S-1280.</xs:documentation>
                                                                     </xs:annotation>
+                                                                </xs:element>
+                                                                <xs:element name="indTribFolhaPisCofins" minOccurs="0">
+                                                                    <xs:simpleType>
+                                                                        <xs:annotation>
+                                                                            <xs:documentation>Indicador de tributação sobre a folha de pagamento - PIS e COFINS.</xs:documentation>
+                                                                            <xs:documentation>Evento de origem: S-1000.</xs:documentation>
+                                                                        </xs:annotation>
+                                                                        <xs:restriction base="xs:string">
+                                                                            <xs:enumeration value="S">
+                                                                                <xs:annotation>
+                                                                                    <xs:documentation>Sim</xs:documentation>
+                                                                                </xs:annotation>
+                                                                            </xs:enumeration>
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
                                                                 </xs:element>
                                                                 <xs:element name="infoAtConc" minOccurs="0">
                                                                     <xs:annotation>
@@ -428,16 +443,16 @@
                                                                                 <xs:simpleType>
                                                                                     <xs:annotation>
                                                                                         <xs:documentation>Preencher com o código correspondente ao tipo de incidência para fins de apuração da contribuição previdenciária.</xs:documentation>
-                                                                                        <xs:documentation>Validação: a) Para empresas com {classTrib}(5011_infoCS_infoContrib_classTrib) = [01, 70, 80], todas as bases de cálculo devem ser totalizadas com {indIncid}(./indIncid) = [9], EXCETO para {classTrib}(5011_infoCS_infoContrib_classTrib) = [01] E {ideEstab/tpInsc}(5011_infoCS_ideEstab) = [4], que deve ser totalizada com {indIncid}(./indIncid) = [1].</xs:documentation>
+                                                                                        <xs:documentation>Validação: a) Para empresas com {classTrib}(5011_infoCS_infoContrib_classTrib) = [01, 70, 80], todas as bases de cálculo devem ser totalizadas com {indIncid}(./indIncid) = [9], EXCETO para {classTrib}(5011_infoCS_infoContrib_classTrib) = [01] E {ideEstab/tpInsc}(5011_infoCS_ideEstab_tpInsc) = [4], que deve ser totalizada com {indIncid}(./indIncid) = [1].</xs:documentation>
                                                                                         <xs:documentation>b) Para empresas com {classTrib}(5011_infoCS_infoContrib_classTrib) = [03], considerar a informação prestada no campo {indSimples}(5001_infoCp_ideEstabLot_infoCategIncid_indSimples) do evento S-5001, conforme abaixo:</xs:documentation>
                                                                                         <xs:documentation>- Se o {indSimples}(5001_infoCp_ideEstabLot_infoCategIncid_indSimples) em S-5001 = [1] (contrib. subst. integralmente), a base de cálculo do respectivo trabalhador deve ser totalizada com {indIncid}(./indIncid) = [9];</xs:documentation>
                                                                                         <xs:documentation>- Se o {indSimples}(5001_infoCp_ideEstabLot_infoCategIncid_indSimples) em S-5001 = [2] (contrib. não substituída), a base de cálculo do respectivo trabalhador deve ser totalizada com {indIncid}(./indIncid) = [1] (normal);</xs:documentation>
                                                                                         <xs:documentation>- Se o {indSimples}(5001_infoCp_ideEstabLot_infoCategIncid_indSimples) em S-5001 = [3] (ativ. concomitante), a base de cálculo do respectivo trabalhador deve ser totalizada com {indIncid}(./indIncid) = [2].</xs:documentation>
                                                                                         <xs:documentation>c) Para empresas com {classTrib}(5011_infoCS_infoContrib_classTrib) = [10] (sindicato de avulsos não portuários), as bases de cálculo dos trabalhadores avulsos da categoria [202] devem ser totalizadas com {indIncid}(./indIncid) = [9].</xs:documentation>
-                                                                                        <xs:documentation>d) Para {classTrib}(5011_infoCS_infoContrib_classTrib) = [22] (segurado especial), as bases de cálculo dos trabalhadores devem ser totalizadas com {indIncid}(./indIncid) = [9], EXCETO para a categoria [104] (empregado doméstico), que deve ser totalizada com {indIncid}(./indIncid) = [1].</xs:documentation>
+                                                                                        <xs:documentation>d) Para {classTrib}(5011_infoCS_infoContrib_classTrib) = [22] (segurado especial), as bases de cálculo dos trabalhadores devem ser totalizadas com {indIncid}(./indIncid) = [9], EXCETO para a categoria [104] (empregado doméstico) ou se {ideEstab/tpInsc}(5011_infoCS_ideEstab_tpInsc) = [4], que deve ser totalizada com {indIncid}(./indIncid) = [1].</xs:documentation>
                                                                                         <xs:documentation>e) Para contribuinte com {classTrib}(5011_infoCS_infoContrib_classTrib) = [99] e com {indCoop}(5011_infoCS_infoContrib_infoPJ_indCoop) = [1] (cooperativa de trabalho), as remunerações dos cooperados (categoria [731, 734]) cuja lotação esteja classificada com {tpLotacao}(1020_infoLotacao_inclusao_dadosLotacao_tpLotacao) em S-1020 = [05, 06, 07] devem ser totalizadas com {indIncid}(./indIncid) = [9]. Nos demais casos, {indIncid}(./indIncid) = [1].</xs:documentation>
                                                                                         <xs:documentation>f) Para contribuintes com {classTrib}(5011_infoCS_infoContrib_classTrib) = [11], as bases de cálculo dos trabalhadores devem ser totalizadas com {indIncid}(./indIncid) = [9], EXCETO para as categorias de contribuinte individual, que devem ser totalizadas com {indIncid}(./indIncid) = [1].</xs:documentation>
-                                                                                        <xs:documentation>g) Para {tpLotacao}(1020_infoLotacao_inclusao_dadosLotacao_tpLotacao) em S-1020 = [91], todas as bases de cálculo devem ser totalizadas com {indIncid}(./indIncid) = [9].</xs:documentation>
+                                                                                        <xs:documentation>g) Para {tpLotacao}(1020_infoLotacao_inclusao_dadosLotacao_tpLotacao) em S-1020 = [91, 92], todas as bases de cálculo devem ser totalizadas com {indIncid}(./indIncid) = [9].</xs:documentation>
                                                                                     </xs:annotation>
                                                                                     <xs:restriction base="xs:byte">
                                                                                         <xs:enumeration value="1">

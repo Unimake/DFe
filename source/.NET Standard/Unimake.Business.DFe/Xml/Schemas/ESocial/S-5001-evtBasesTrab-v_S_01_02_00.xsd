@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_00_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_00_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:include schemaLocation="tipos.xsd" />
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
     <xs:element name="eSocial">
@@ -129,7 +129,7 @@
                                             <xs:simpleType>
                                                 <xs:annotation>
                                                     <xs:documentation>Código de Receita - CR da contribuição descontada do trabalhador.</xs:documentation>
-                                                    <xs:documentation>Validação: Se {indApuracao}(5001_ideEvento_indApuracao) = [2], deve ser igual a [108221, 108222, 108223, 108224, 108225].</xs:documentation>
+                                                    <xs:documentation>Validação: Se {indApuracao}(5001_ideEvento_indApuracao) = [2], deve ser igual a [108221, 108222, 108223, 108224, 108225, 109921, 109922].</xs:documentation>
                                                 </xs:annotation>
                                                 <xs:restriction base="xs:integer">
                                                     <xs:enumeration value="108201">
@@ -197,6 +197,16 @@
                                                             <xs:documentation>CP descontada do contribuinte individual, alíquota de 20%</xs:documentation>
                                                         </xs:annotation>
                                                     </xs:enumeration>
+                                                    <xs:enumeration value="109921">
+                                                        <xs:annotation>
+                                                            <xs:documentation>CP descontada do contribuinte individual, alíquota de 11% - 13º salário</xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:enumeration>
+                                                    <xs:enumeration value="109922">
+                                                        <xs:annotation>
+                                                            <xs:documentation>CP descontada do contribuinte individual, alíquota de 20% - 13º salário</xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:enumeration>
                                                 </xs:restriction>
                                             </xs:simpleType>
                                         </xs:element>
@@ -220,7 +230,7 @@
                                                 <xs:documentation>II. Caso o somatório do item I não tenha atingido o limite máximo do salário de contribuição, efetuar o somatório de {valor}(5001_infoCp_ideEstabLot_infoCategIncid_infoBaseCS_valor) quando {tpValor}(5001_infoCp_ideEstabLot_infoCategIncid_infoBaseCS_tpValor) = [11, 12, 13, 14, 19] para todas as categorias diferentes de segurado empregado e aplicar a alíquota correta conforme a categoria, observado o limite máximo do salário de contribuição.</xs:documentation>
                                                 <xs:documentation> </xs:documentation>
                                                 <xs:documentation>OBS.: a) No caso de {indApuracao}(5001_ideEvento_indApuracao) = [1], o cálculo deve ser efetuado separadamente para {infoBaseCS/ind13}(5001_infoCp_ideEstabLot_infoCategIncid_infoBaseCS_ind13) = [0] e {infoBaseCS/ind13}(5001_infoCp_ideEstabLot_infoCategIncid_infoBaseCS_ind13) = [1]. A soma de ambos os cálculos deve corresponder ao valor de {vrCpSeg}(./vrCpSeg).</xs:documentation>
-                                                <xs:documentation>b) Aplica-se a alíquota de 20% para o cálculo da contribuição previdenciária a ser descontada de remuneração de trabalhador pertencente às categorias [731, 734], quando o empregador for cooperativa de trabalho ({indCoop}(1000_infoEmpregador_inclusao_infoCadastro_indCoop) em S-1000 = [1]), ou pertencente ao grupo "Contribuinte Individual", quando o Empregador tiver {classTrib}(5001_infoCp_classTrib) = [04, 70, 80]). Caso o trabalhador receba remuneração da empresa em outra categoria do grupo "Contribuinte Individual", primeiro deve ser aplicado o desconto sobre essa categoria (7XX) e depois sobre a remuneração das categorias [731, 734], observado o limite máximo do salário de contribuição.</xs:documentation>
+                                                <xs:documentation>b) Aplica-se a alíquota de 20% para o cálculo da contribuição previdenciária a ser descontada de remuneração de trabalhador pertencente às categorias [731, 734], quando o empregador for cooperativa de trabalho ({indCoop}(1000_infoEmpregador_inclusao_infoCadastro_indCoop) em S-1000 = [1]), ou pertencente ao grupo "Contribuinte Individual", quando o Empregador tiver {classTrib}(5001_infoCp_classTrib) = [04, 70, 80]; ou de trabalhador pertencente à categoria = [902] quando o tipo de lotação tributária ({tpLotacao}(1020_infoLotacao_inclusao_dadosLotacao_tpLotacao) em S-1020) for igual a [92]. Caso o trabalhador receba remuneração da empresa em outra categoria do grupo "Contribuinte Individual", primeiro deve ser aplicado o desconto sobre essa categoria (7XX) e depois sobre a remuneração das categorias [731, 734], observado o limite máximo do salário de contribuição.</xs:documentation>
                                                 <xs:documentation>c) {vrCpSeg}(./vrCpSeg) deve ser igual a {vrDescSeg}(./vrDescSeg) nas seguintes situações:</xs:documentation>
                                                 <xs:documentation>c1) Se houver informações em {infoPerAnt} na composição de {valor}(5001_infoCp_ideEstabLot_infoCategIncid_infoBaseCS_valor);</xs:documentation>
                                                 <xs:documentation>c2) Se houver informação de {procJudTrab} com {tpTrib} = [2] nos eventos que contenham informações de remuneração (S-1200, S-2299 e S-2399);</xs:documentation>
@@ -229,7 +239,7 @@
                                                 <xs:documentation>c5) Se {procEmi} do evento S-1200/S-2299/S-2399 for igual a [2, 4, 22];</xs:documentation>
                                                 <xs:documentation>c6) Para as categorias do grupo "Contribuinte Individual" (7XX), se o campo {dtTrans11096}(1000_infoEmpregador_inclusao_infoCadastro_dtTrans11096) em S-1000 for informado.</xs:documentation>
                                                 <xs:documentation>d) No caso de trabalhador categoria = [102], utilizar somente a alíquota de 8%, observado o limite máximo do salário de contribuição.</xs:documentation>
-                                                <xs:documentation>e) No caso de empregador com {classTrib}(5001_infoCp_classTrib) = [21, 22], exceto se {ideEstabLot/tpInsc}(5001_infoCp_ideEstabLot_tpInsc) = [4], ou com {classTrib}(5001_infoCp_classTrib) = [60], não calcular para a categoria do grupo "Contribuinte Individual" (7XX). O valor deve ser zerado.</xs:documentation>
+                                                <xs:documentation>e) No caso de empregador com {classTrib}(5001_infoCp_classTrib) = [21, 22, 60], não calcular para a categoria do grupo "Contribuinte Individual" (7XX). O valor deve ser zerado.</xs:documentation>
                                                 <xs:documentation>f) Não calcular quando a categoria do trabalhador for [741] (MEI). O valor deve ser zerado.</xs:documentation>
                                                 <xs:documentation>g) Não calcular quando a lotação tributária for [91]. O valor deve ser zerado.</xs:documentation>
                                             </xs:annotation>
@@ -294,7 +304,7 @@
                                                         </xs:annotation>
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="matricula" minOccurs="0" type="TS_codigo_esocial">
+                                                                <xs:element name="matricula" minOccurs="0" type="TS_matricula">
                                                                     <xs:annotation>
                                                                         <xs:documentation>Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.</xs:documentation>
                                                                         <xs:documentation>Evento de origem: S-1200, S-2299 ou S-2399.</xs:documentation>

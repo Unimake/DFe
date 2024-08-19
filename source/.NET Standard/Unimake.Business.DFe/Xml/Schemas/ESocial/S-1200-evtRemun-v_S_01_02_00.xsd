@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_00_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_00_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_02_00" targetNamespace="http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_02_00" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <xs:include schemaLocation="tipos.xsd" />
     <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
     <xs:element name="eSocial">
@@ -37,6 +37,7 @@
                         <xs:documentation>REGRA:REGRA_RUBRICA_COMPATIVEL_CATEGORIA</xs:documentation>
                         <xs:documentation>REGRA:REGRA_RUBRICA_COMPATIVEL_DECTERCEIRO</xs:documentation>
                         <xs:documentation>REGRA:REGRA_RUBRICA_COMPATIVEL_RESC</xs:documentation>
+                        <xs:documentation>REGRA:REGRA_RUBRICA_ECONSIGNADO</xs:documentation>
                         <xs:documentation>REGRA:REGRA_TSV_ATIVO_NA_DTEVENTO</xs:documentation>
                         <xs:documentation>REGRA:REGRA_VALIDA_EMPREGADOR</xs:documentation>
                         <xs:documentation>REGRA:REGRA_VALIDA_PERIODO_APURACAO</xs:documentation>
@@ -151,6 +152,8 @@
                                             </xs:annotation>
                                         </xs:element>
                                         <xs:element name="codCateg" type="TS_codCateg" />
+                                        <xs:element name="indRRA" minOccurs="0" type="TS_indRRA" />
+                                        <xs:element name="infoRRA" minOccurs="0" type="T_infoRRA" />
                                         <xs:element name="infoPerApur" minOccurs="0">
                                             <xs:annotation>
                                                 <xs:documentation>Informações relativas ao período de apuração.</xs:documentation>
@@ -185,7 +188,7 @@
                                                                     </xs:annotation>
                                                                     <xs:complexType>
                                                                         <xs:sequence>
-                                                                            <xs:element name="matricula" minOccurs="0" type="TS_codigo_esocial">
+                                                                            <xs:element name="matricula" minOccurs="0" type="TS_matricula">
                                                                                 <xs:annotation>
                                                                                     <xs:documentation>Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.</xs:documentation>
                                                                                     <xs:documentation>Validação: Deve corresponder à matrícula informada pelo empregador no evento S-2190, S-2200 ou S-2300 do respectivo contrato. Não preencher no caso de Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE sem informação de matrícula no evento S-2300.</xs:documentation>
@@ -218,7 +221,7 @@
                                                 <xs:documentation>c) bases de cálculo para efeitos de apuração de FGTS resultantes de conversão de licença saúde em acidente de trabalho;</xs:documentation>
                                                 <xs:documentation>d) verbas de natureza salarial ou não salarial devidas após o desligamento.</xs:documentation>
                                                 <xs:documentation>OBS.: As informações previstas acima podem se referir ao período de apuração definido em {perApur}(1200_ideEvento_perApur) ou a períodos anteriores a {perApur}(1200_ideEvento_perApur).</xs:documentation>
-                                                <xs:documentation>CONDICAO_GRUPO: N (se {indApuracao}(1200_ideEvento_indApuracao) = [2] ou {codCateg}(1200_dmDev_codCateg) for diferente de [1XX, 2XX, 3XX, 4XX, 721, 722, 901]); O (se não existir o grupo {infoPerApur}(1200_dmDev_infoPerApur) e {indApuracao}(1200_ideEvento_indApuracao) = [1]); OC (nos demais casos)</xs:documentation>
+                                                <xs:documentation>CONDICAO_GRUPO: N (se {indApuracao}(1200_ideEvento_indApuracao) = [2] ou {codCateg}(1200_dmDev_codCateg) for diferente de [1XX, 2XX, 3XX, 4XX, 721, 722, 771, 901, 902]); O (se não existir o grupo {infoPerApur}(1200_dmDev_infoPerApur) e {indApuracao}(1200_ideEvento_indApuracao) = [1]); OC (nos demais casos)</xs:documentation>
                                             </xs:annotation>
                                             <xs:complexType>
                                                 <xs:sequence>
@@ -244,7 +247,7 @@
                                                                 <xs:element name="tpAcConv" type="TS_tpAcConv">
                                                                     <xs:annotation>
                                                                         <xs:documentation>Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores.</xs:documentation>
-                                                                        <xs:documentation>Validação: Se {classTrib}(1000_infoEmpregador_inclusao_infoCadastro_classTrib) em S-1000 = [04, 22], não pode ser informado [E, H].</xs:documentation>
+                                                                        <xs:documentation>Validação: Se {classTrib}(1000_infoEmpregador_inclusao_infoCadastro_classTrib) em S-1000 = [04, 22], não pode ser informado [E, H, I].</xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:element>
                                                                 <xs:element name="dsc" type="TS_dsc" />
@@ -266,7 +269,7 @@
                                                                                     <xs:documentation>Informar o período ao qual se refere o complemento de remuneração, no formato AAAA-MM.</xs:documentation>
                                                                                     <xs:documentation>Validação: Deve ser igual ou anterior ao período de apuração informado em {perApur}(/ideEvento_perApur).</xs:documentation>
                                                                                     <xs:documentation>Deve ser informado no formato AAAA-MM.</xs:documentation>
-                                                                                    <xs:documentation>Se {tpAcConv}(../tpAcConv) = [H], deve ser anterior ao início dos eventos periódicos para o empregador no eSocial.</xs:documentation>
+                                                                                    <xs:documentation>Se {tpAcConv}(../tpAcConv) = [H], deve ser anterior ao início do FGTS Digital e igual ou posterior a [1994-07].</xs:documentation>
                                                                                 </xs:annotation>
                                                                             </xs:element>
                                                                             <xs:element name="ideEstabLot" maxOccurs="500">
@@ -288,7 +291,7 @@
                                                                                             </xs:annotation>
                                                                                             <xs:complexType>
                                                                                                 <xs:sequence>
-                                                                                                    <xs:element name="matricula" minOccurs="0" type="TS_codigo_esocial">
+                                                                                                    <xs:element name="matricula" minOccurs="0" type="TS_matricula">
                                                                                                         <xs:annotation>
                                                                                                             <xs:documentation>Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, a matrícula constante no Sistema de Administração de Recursos Humanos do órgão.</xs:documentation>
                                                                                                             <xs:documentation>Validação: Deve corresponder à matrícula informada pelo empregador no evento S-2190, S-2200 ou S-2300 do respectivo contrato. Não preencher no caso de TSVE sem informação de matrícula no evento S-2300 ou se {remunSuc}(1200_dmDev_infoPerAnt_ideADC_remunSuc) = [S].</xs:documentation>
