@@ -50,12 +50,12 @@ namespace Unimake.DFe.Test.ESocial
                     {
                         new EventoESocial
                         {
-                            ID = "ID061174730000002024071115560000001",
+                            ID = "ID1061174730000002024081911021200001",
                             ESocial1000 = new ESocial1000
                             {
                                 EvtInfoEmpregador = new EvtInfoEmpregador
                                 {
-                                    ID = "ID061174730000002024071115560000002",
+                                    ID = "ID1061174730000002024081911021200001",
                                     IdeEvento = new IdeEvento
                                     {
                                         TpAmb = TipoAmbiente.Homologacao,
@@ -66,7 +66,7 @@ namespace Unimake.DFe.Test.ESocial
                                     IdeEmpregador = new IdeEmpregador
                                     {
                                         TpInsc = TiposInscricao.CNPJ,
-                                        NrInsc = "12345678945687"
+                                        NrInsc = "06117473"
                                     },
 
                                     InfoEmpregador = new InfoEmpregador
