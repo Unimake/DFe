@@ -1403,4 +1403,10 @@
 		<ArqConfig>FISCO.xml</ArqConfig>
 		<PadraoNFSe>FISCO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2917508">
+		<Nome>Jacobina - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>JacobinaBA.xml</ArqConfig>
+		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

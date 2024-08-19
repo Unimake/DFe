@@ -340,6 +340,7 @@
 		<None Remove="Servicos\Config\NFSe\IvotiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\JabotaoDosGuararapesPE.xml" />
 		<None Remove="Servicos\Config\NFSe\JaciSP.xml" />
+		<None Remove="Servicos\Config\NFSe\JacobinaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\JataiGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
 		<None Remove="Servicos\Config\NFSe\JoaoMonlevadeMG.xml" />
@@ -887,6 +888,9 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JacobinaBA.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BotucatuSP.xml" />

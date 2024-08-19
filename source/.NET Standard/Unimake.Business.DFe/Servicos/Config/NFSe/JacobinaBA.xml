@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<CancelarNfse versao="2.03">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/CancelarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/CancelarNfse</WebActionHomologacao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.03">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarLoteRps</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarLoteRps</WebActionHomologacao>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarLoteRps>
+		<ConsultarNfseFaixa versao="2.03">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorFaixa</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfsePorFaixaRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfsePorFaixaRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfseFaixa>
+		<ConsultarNfsePorRps versao="2.03">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorRps</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.03">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoPrestado</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.03">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoTomado</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfseServicoTomado>
+		<GerarNfse versao="2.03">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/GerarNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/GerarNfse</WebActionHomologacao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:GerarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</GerarNfse>
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRps</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRps</WebActionHomologacao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.03">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRpsSincrono</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</RecepcionarLoteRpsSincrono>
+		<SubstituirNfse versao="2.03">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://homologa-jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://jacobina.saatri.com.br/servicos/nfse.svc?wsdl</WebEnderecoProducao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Infse/SubstituirNfse</WebActionProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Infse/SubstituirNfse</WebActionHomologacao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<WebContentType>text/xml</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsse:UsernameToken wsu:Id="UsernameToken-18"><wsse:Username>{MunicipioUsuario}</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{MunicipioSenha}</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><nfse:SubstituirNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfse:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>s:Body</WebTagRetorno>
+			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</SubstituirNfse>
+	</Servicos>
+</Configuracoes>
