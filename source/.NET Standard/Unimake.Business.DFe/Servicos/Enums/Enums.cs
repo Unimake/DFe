@@ -6550,6 +6550,11 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("FISCO")]
         FISCO = 51,
+        /// <summary>
+        /// ABACO
+        /// </summary>
+        [Description("ABACO")]
+        ABACO = 52, 
     }
 
     #endregion

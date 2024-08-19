@@ -1409,4 +1409,10 @@
 		<ArqConfig>JacobinaBA.xml</ArqConfig>
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5108402">
+		<Nome>Várzea Grande - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>VarzeaGrandeMT.xml</ArqConfig>
+		<PadraoNFSe>ABACO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
