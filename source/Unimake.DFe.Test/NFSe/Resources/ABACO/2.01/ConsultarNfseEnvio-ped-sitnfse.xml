@@ -1,0 +1,26 @@
+<ConsultarNfsEnvio>
+	<Prestador>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse/>
+	<PeriodoEmissao>
+		<DataInicial>2010-03-01T00:00:00</DataInicial>
+		<DataFinal>2010-03-25T10:42:19</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj>
+			<Cpf/>
+			<Cnpj/>
+		</CpfCnpj>
+		<InscricaoMunicipal/>
+	</Tomador>
+	<IntermediarioServico>
+		<RazaoSocial/>
+		<CpfCnpj>
+			<Cpf/>
+			<Cnpj/>
+		</CpfCnpj>
+		<InscricaoMunicipal/>
+	</IntermediarioServico>
+</ConsultarNfsEnvio>

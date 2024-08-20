@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.01">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/varzeagrande/servlet/arecepcionarloterps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/varzeagrande/servlet/arecepcionarloterps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRPS.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></RecepcionarLoteRPS.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="2.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/varzeagrande/servlet/acancelarnfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/varzeagrande/servlet/acancelarnfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></CancelarNfse.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.01">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/varzeagrande/servlet/aconsultarloterps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/varzeagrande/servlet/aconsultarloterps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarLoteRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/varzeagrande/servlet/aconsultarnfseporrps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/varzeagrande/servlet/aconsultarnfseporrps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfsePorRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="2.01">
+			<Descricao>Consulta NFSe</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/varzeagrande/servlet/aconsultarnfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/varzeagrande/servlet/aconsultarnfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfse.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfse.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="2.01">
+			<Descricao>Consulta Situacao Lote Rps</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/varzeagrande/servlet/aconsultarsituacaoloterps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/varzeagrande/servlet/aconsultarsituacaoloterps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>/</WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarSituacaoLoteRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>
