@@ -64,7 +64,7 @@ namespace Unimake.DFe.Test.EFDReinf
                                             {
                                                 IdePeriodo = new IdePeriodo
                                                 {
-                                                    IniValid = "202105",
+                                                    IniValid = "2021-05",
                                                 },
                                                 InfoCadastro = new InfoCadastro
                                                 {

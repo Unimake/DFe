@@ -71,7 +71,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             var xml = ReinfEnvioLoteEventos;
             var schemaArquivoEvento = string.Empty;
 
-            //ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+            ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
 
             if (Configuracoes.TiposEventosEspecificos.Count > 0)
             {
@@ -89,7 +89,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
                     eventoEspecifico = reinfEvento.FirstChild.Name;
                     schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
 
-                    //ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+                    ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
                 }
             }
         }

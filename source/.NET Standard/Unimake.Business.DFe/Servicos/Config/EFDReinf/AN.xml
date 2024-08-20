@@ -25,7 +25,7 @@
 			<MetodoAPI>post</MetodoAPI>
 			<TipoRetorno>application/xml</TipoRetorno>
 			<WebSoapString/>
-			<SchemaArquivo>envioLoteEventosAssincrono-v{0}.xsd</SchemaArquivo>
+			<SchemaArquivo>envioLoteEventosAssincrono-v1_00_00.xsd</SchemaArquivo>
 			<TiposEventosEspecificos>
 				<Tipo>
 					<Evento>evtInfoContri</Evento>
