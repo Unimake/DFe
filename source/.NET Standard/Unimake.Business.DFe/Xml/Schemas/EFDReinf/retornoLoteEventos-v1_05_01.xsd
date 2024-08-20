@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.reinf.esocial.gov.br/schemas/retornoLoteEventos/v1_05_01" targetNamespace="http://www.reinf.esocial.gov.br/schemas/retornoLoteEventos/v1_05_01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="./xmldsig-core-schema.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
   <xs:element name="Reinf">
     <xs:annotation>
       <xs:documentation>Elemento raiz do Reinf.</xs:documentation> 
