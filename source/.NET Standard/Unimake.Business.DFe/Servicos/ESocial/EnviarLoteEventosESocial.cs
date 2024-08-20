@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
@@ -17,6 +18,29 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 #endif
     public class EnviarLoteEventosESocial : ServicoBase, IInteropService<ESocialEnvioLoteEventos>
     {
+
+        private ESocialEnvioLoteEventos _ESocialEnvioLoteEventos;
+
+        /// <summary>
+        /// Objeto do XML do lote eventos eSocial
+        /// </summary>
+        public ESocialEnvioLoteEventos ESocialEnvioLoteEventos
+        {
+            get => _ESocialEnvioLoteEventos ?? (_ESocialEnvioLoteEventos = new ESocialEnvioLoteEventos().LerXML<ESocialEnvioLoteEventos>(ConteudoXML));
+            protected set => _ESocialEnvioLoteEventos = value;
+        }
+
+        private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
+        {
+            var validar = new ValidarSchema();
+            validar.Validar(xml, (Configuracoes.TipoDFe).ToString() + "." + schemaArquivo, targetNS);
+
+            if (!validar.Success)
+            {
+                throw new ValidarXMLException(validar.ErrorMessage);
+            }
+        }
+
         #region Protected Methods
 
         /// <summary>
@@ -35,6 +59,38 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                 base.DefinirConfiguracao();
             }
+        }
+
+        /// <summary>
+        /// Validar o XML
+        /// </summary>
+        protected override void XmlValidar()
+        {
+            var schemaArquivoEvento = string.Empty;
+
+            ValidarXMLEvento(ConteudoXML, Configuracoes.SchemaArquivo, Configuracoes.TargetNS);
+
+            if (Configuracoes.TiposEventosEspecificos.Count > 0)
+            {
+                string eventoEspecifico;
+                var listEventos = ConteudoXML.GetElementsByTagName("evento");
+
+                foreach (XmlNode nodeEvento in listEventos)
+                {
+                    var elementEvento = (XmlElement)nodeEvento;
+                    var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
+
+                    var xmlEventoEspecifico = new XmlDocument();
+                    xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
+
+                    eventoEspecifico = esocialEvento.FirstChild.Name;
+                    schemaArquivoEvento = Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].SchemaArquivoEvento;
+
+                    //Vamos avaliar depois como será feito essa validação de eventos do eSocial - Wesley: 20/08/2024
+                    //ValidarXMLEvento(xmlEventoEspecifico, schemaArquivoEvento, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TargetNS);
+                }
+            }
+
         }
 
         #endregion Protected Methods
