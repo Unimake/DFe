@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="NFSe">
+    <RecepcionarLoteRps versao="2.03">
+      <Descricao>Recepcionar Lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+	  <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+	  <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+	  <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRps>{xmlBody}</nfse:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRps>
+    <RecepcionarLoteRpsSincrono versao="2.03">
+      <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsSincrono>{xmlBody}</nfse:RecepcionarLoteRpsSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </RecepcionarLoteRpsSincrono>
+    <GerarNfse versao="2.03">
+      <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>Rps</TagAssinatura>
+      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:GerarNfse>{xmlBody}</nfse:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </GerarNfse>
+    <CancelarNfse versao="2.03">
+      <Descricao>Cancelar nota fiscal de serviço</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>Pedido</TagAssinatura>
+      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfse>{xmlBody}</nfse:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+	  <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </CancelarNfse>
+    <SubstituirNfse versao="2.03">
+      <Descricao>Substituir nota fiscal de Serviço</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+	  <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+	  <TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+	  <TagExtraAssinatura>Pedido</TagExtraAssinatura>
+	  <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><nfse:SubstituirNfse>{xmlBody}</nfse:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </SubstituirNfse>
+    <ConsultarLoteRps versao="2.03">
+      <Descricao>Consulta lote RPS</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRps>{xmlBody}</nfse:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarLoteRps>
+    <ConsultarNfsePorRps versao="2.03">
+      <Descricao>Consulta NFSe por RPS</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRps>{xmlBody}</nfse:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfsePorRps>
+    <ConsultarNfseServicoPrestado versao="2.03">
+      <Descricao>Consulta NFSe de serviços prestados</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestado>{xmlBody}</nfse:ConsultarNfseServicoPrestado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoPrestado>
+    <ConsultarNfseServicoTomado versao="2.03">
+      <Descricao>Consulta NFSe de serviços tomados</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomado>{xmlBody}</nfse:ConsultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseServicoTomado>
+    <ConsultarNfseFaixa versao="2.03">
+      <Descricao>Consulta NFSe por Faixa</Descricao>
+      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebActionHomologacao></WebActionHomologacao>
+      <WebActionProducao></WebActionProducao>
+      <SchemaArquivo>nfse.xsd</SchemaArquivo>
+      <TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+      <TagAtributoID>Prestador</TagAtributoID>
+      <TagLoteAssinatura></TagLoteAssinatura>
+      <TagLoteAtributoID></TagLoteAtributoID>
+      <WebContentType>text/xml;charset=UTF-8</WebContentType>
+      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseFaixa>{xmlBody}</nfse:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+      <WebTagRetorno>soap:Body</WebTagRetorno>
+      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+      <WebSoapVersion>soap11</WebSoapVersion>
+      <SchemaVersao>2.03</SchemaVersao>
+      <TargetNS></TargetNS>
+    </ConsultarNfseFaixa>
+</Servicos>
+</Configuracoes>

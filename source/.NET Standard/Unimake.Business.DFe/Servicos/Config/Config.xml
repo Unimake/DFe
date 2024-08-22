@@ -1415,4 +1415,10 @@
 		<ArqConfig>VarzeaGrandeMT.xml</ArqConfig>
 		<PadraoNFSe>ABACO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3549904">
+		<Nome>São José dos Campos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoJoseDosCamposSP.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
