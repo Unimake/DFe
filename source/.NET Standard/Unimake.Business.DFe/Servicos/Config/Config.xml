@@ -1451,4 +1451,10 @@
 		<ArqConfig>GuaramirimSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4212809">
+		<Nome>Balneário Piçarras - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>BalnearioPicarrasSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
