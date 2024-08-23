@@ -34,6 +34,8 @@ using XmlMDFe = Unimake.Business.DFe.Xml.MDFe;
 using XmlNFe = Unimake.Business.DFe.Xml.NFe;
 using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
 using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
+using Unimake.Business.DFe.Servicos.ESocial;
+using Unimake.Business.DFe.Xml.ESocial;
 
 namespace TreinamentoDLL
 {
@@ -2710,7 +2712,7 @@ namespace TreinamentoDLL
                             UF = UFBrasil.PR,
                             Fone = "04433333333",
                         },
-                        CRT = CRT.RegimeNormal                        
+                        CRT = CRT.RegimeNormal
                     },
                     Rem = new XmlCTe.Rem
                     {
@@ -5718,7 +5720,7 @@ namespace TreinamentoDLL
                 TipoDFe = TipoDFe.EFDReinf,
                 TipoEmissao = TipoEmissao.Normal,
                 TipoAmbiente = TipoAmbiente.Homologacao,
-                Servico =  Servico.EFDReinfRecepcionarLoteAssincrono,
+                Servico = Servico.EFDReinfRecepcionarLoteAssincrono,
                 CertificadoDigital = CertificadoSelecionado
             };
 
@@ -5840,13 +5842,13 @@ namespace TreinamentoDLL
                                             {
                                                 InfoCadastro = new XmlESocial.InfoCadastro
                                                 {
-                                                    ClassTrib = ClassificacaoTributaria.SimplesNacionalTributacaoPrevidenciariaNaoSubstituida, 
-                                                    
+                                                    ClassTrib = ClassificacaoTributaria.SimplesNacionalTributacaoPrevidenciariaNaoSubstituida,
+
                                                     IndConstr = IndConstr.NaoConstrutora,
 
                                                     IndDesFolha = IndDesFolha.EmpresaEnquadrada,
 
-                                                    
+
 
                                                     DadosIsencao = new XmlESocial.DadosIsencao
                                                     {
@@ -5860,7 +5862,7 @@ namespace TreinamentoDLL
 
                                                 IdePeriodo = new XmlESocial.IdePeriodo
                                                 {
-                                                   FimValidField = "2000-10-05"   
+                                                   FimValidField = "2000-10-05"
                                                 }
                                             }
                                         }
@@ -5884,19 +5886,57 @@ namespace TreinamentoDLL
             var envioLoteESocial = new ServicoESocial.EnviarLoteEventosESocial(xmlEnvio, configuracao);
             envioLoteESocial.Executar();
 
-            switch (envioLoteESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta)
+            switch (envioLoteESocial.Result?.RetornoEnvioLoteEventos.Status.CdResposta)
             {
                 case 0: //Retorno inválido
                     break;
                 case 1: //Registrar os retornos
                     break;
                 case 200: //Ok
-                    envioLoteESocial.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#","treinamento eSocial", envioLoteESocial?.RetornoWSString);
+                    envioLoteESocial.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#", "treinamento eSocial", envioLoteESocial?.RetornoWSString);
+
+                    var protocoloEnvio = envioLoteESocial.Result.RetornoEnvioLoteEventos.DadosRecepcaoLote.ProtocoloEnvio;
+
+                    var xmlConsultaESocial = new ConsultarLoteEventos
+                    {
+                        ConsultaLoteEventos = new ConsultaLoteEventos
+                        {
+                            ProtocoloEnvio = protocoloEnvio
+                        }
+                    };
+
+                    var configuracaoConsulta = new Configuracao
+                    {
+                        TipoDFe = TipoDFe.ESocial,
+                        TipoAmbiente = TipoAmbiente.Homologacao,
+                        CertificadoDigital = CertificadoSelecionado,
+                        Servico = Servico.ESocialConsultaEvts
+                    };
+
+                    var consultaLoteAssincrono = new Unimake.Business.DFe.Servicos.ESocial.ConsultaLoteAssincrono(xmlConsultaESocial, configuracao);
+                    consultaLoteAssincrono.Executar();
+
+                    consultaLoteAssincrono.Executar();
+
+                    switch (consultaLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.CdResposta)
+                    {
+                        case 1: //O lote ainda está aguardando processamento.
+                            MessageBox.Show("Aguarde alguns minutos e tente novamente!");
+                            break;
+
+                        case 2: //O lote foi processado. Todos os eventos foram processados com sucesso
+                        case 3: //O lote foi processado. Possui um ou mais eventos com ocorrências
+                            consultaLoteAssincrono.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#", $"{protocoloEnvio}.xml", consultaLoteAssincrono.RetornoWSString);
+                            break;
+
+                        case 8: //Consulta não executada - Verificar ocorrências.
+                            MessageBox.Show(consultaLoteAssincrono.RetornoWSString);
+                            break;
+                    }
                     break;
-                case 417:
-                    MessageBox.Show("Erro na estrutura de solicitação do eSocial");
-                    break;
+
                 default:
+                    MessageBox.Show($"Erro: {envioLoteESocial.Result.RetornoEnvioLoteEventos.Status.DescResposta} ");
                     break;
             }
 
