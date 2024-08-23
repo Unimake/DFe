@@ -435,6 +435,7 @@
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TaioSC.xml" />
 		<None Remove="Servicos\Config\NFSe\TaperaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TaquaritubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
@@ -968,6 +969,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
