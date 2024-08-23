@@ -1445,4 +1445,10 @@
 		<ArqConfig>PomerodeSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4206504">
+		<Nome>Guaramirim - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>GuaramirimSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
