@@ -1421,4 +1421,10 @@
 		<ArqConfig>SaoJoseDosCamposSP.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4210605">
+		<Nome>Massaranduba - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>MassarandubaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

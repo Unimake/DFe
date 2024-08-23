@@ -353,6 +353,7 @@
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MaringaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\MassarandubaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\MatupaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\Memory.xml" />
 		<None Remove="Servicos\Config\NFSe\MirassolandiaSP.xml" />
@@ -951,6 +952,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AlegreteRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
