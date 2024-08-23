@@ -1463,4 +1463,10 @@
 		<ArqConfig>CampoLargoPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4217808">
+		<Nome>Taió - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>TaioSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
