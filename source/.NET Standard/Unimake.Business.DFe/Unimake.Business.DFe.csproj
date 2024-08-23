@@ -391,6 +391,7 @@
 		<None Remove="Servicos\Config\NFSe\PetropolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\PiracicabaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PiratiningaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\PomerodeSC.xml" />
 		<None Remove="Servicos\Config\NFSe\PorangatuGO.xml" />
 		<None Remove="Servicos\Config\NFSe\PortaoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PortoAlegreRS.xml" />
@@ -957,6 +958,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>

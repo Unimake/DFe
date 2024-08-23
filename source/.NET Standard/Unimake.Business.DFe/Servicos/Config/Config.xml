@@ -1439,4 +1439,10 @@
 		<ArqConfig>BentoGoncalvesRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4213203">
+		<Nome>Pomerode - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>PomerodeSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
