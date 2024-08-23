@@ -1427,4 +1427,10 @@
 		<ArqConfig>MassarandubaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4204301">
+		<Nome>Concórdia - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>ConcordiaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
