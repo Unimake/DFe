@@ -276,6 +276,7 @@
 		<None Remove="Servicos\Config\NFSe\CampinasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoGrandeMS.xml" />
+		<None Remove="Servicos\Config\NFSe\CampoLargoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoMouraoPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoNovoParecisMT.xml" />
 		<None Remove="Servicos\Config\NFSe\CanaaDosCarajasPA.xml" />
@@ -959,6 +960,7 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />

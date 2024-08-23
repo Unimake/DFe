@@ -1457,4 +1457,10 @@
 		<ArqConfig>BalnearioPicarrasSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4104204">
+		<Nome>Campo Largo - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CampoLargoPR.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
