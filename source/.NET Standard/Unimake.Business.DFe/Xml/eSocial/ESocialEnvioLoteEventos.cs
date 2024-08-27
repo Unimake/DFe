@@ -194,6 +194,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_02_00")]
         public ESocial3000 ESocial3000 { get; set; }
 
+        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_02_00")]
+        public ESocial3500 ESocial3500 { get; set; }
+
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00")]
         public ESocial5001 ESocial5001 { get; set; }
 
@@ -223,5 +226,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00")]
         public ESocial8299 ESocial8299 { get; set; }
+
+
     }
 }

@@ -349,6 +349,13 @@
 					<TagAtributoID>evtBaixa</TagAtributoID>
 					<TargetNS>http://www.esocial.gov.br/schema/evt/evtBaixa/v_{0}</TargetNS>
 				</Tipo>
+				<Tipo>
+					<Evento>evtExcProcTrab</Evento>
+					<SchemaArquivoEvento>evtExcProcTrab.xsd</SchemaArquivoEvento>
+					<TagAssinatura>eSocial</TagAssinatura>
+					<TagAtributoID>evtExcProcTrab</TagAtributoID>
+					<TargetNS>http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_{0}</TargetNS>
+				</Tipo>
 			</TiposEventosEspecificos>
 		</EnviarLoteEventosESocial>
 		<ConsultarEvtsEmpregador versao="1.1.0">
