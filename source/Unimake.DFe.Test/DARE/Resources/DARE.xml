@@ -1,0 +1,34 @@
+<Dare xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"> <!--Essa tag não existe no envio-->
+	<cnpj>12345678000195</cnpj>
+	<cpf/>
+	<cidade>São Paulo</cidade>
+	<codigoBarra44>12345678901234</codigoBarra44>
+	<codigoBarra48/>
+	<dataVencimento>2024-12-31T00:00:00</dataVencimento>
+	<documentoImpressao/>
+	<endereco>Rua Exemplo, 123</endereco>
+	<erro>
+		<estaOk>true</estaOk>
+		<mensagens/>
+	</erro>
+	<gerarPDF>true</gerarPDF>
+	<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
+	<observacao>Pagamento referente ao imposto X</observacao>
+	<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
+	<razaoSocial>Empresa Exemplo S/A</razaoSocial>
+	<receita>
+		<codigo>001</codigo>
+		<codigoServicoDARE>101</codigoServicoDARE>
+		<escopoUso>1</escopoUso>
+		<nome>Receita Exemplo</nome>
+	</receita>
+	<referencia>REF123</referencia>
+	<telefone>(11) 1234-5678</telefone>
+	<uf>SP</uf>
+	<valor>1000.50</valor>
+	<valorJuros>10.00</valorJuros>
+	<valorMulta>5.00</valorMulta>
+	<valorTotal>1015.50</valorTotal>
+	<linha06/>
+	<linha08/>
+</Dare>

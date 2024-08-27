@@ -247,6 +247,7 @@ namespace Unimake.Business.DFe.Xml.DARE
     [ProgId("Unimake.Business.DFe.Xml.DARE.DARE")]
     [ComVisible(true)]
 #endif
+
     public class DARE
     {
         [XmlElement("numeroControleDarePrincipal")]
