@@ -15,6 +15,11 @@ namespace Unimake.Business.DFe.Xml.DARE
     [ProgId("Unimake.Business.DFe.Xml.DARE.Receitas")]
     [ComVisible(true)]
 #endif
+
+    /// <summary>
+    /// Classe para serialização e deserialização para Receitas - DARE SP
+    /// </summary>
+
     [Serializable()]
     [XmlRoot("Receitas")]
     public class Receitas: XMLBase
@@ -60,6 +65,16 @@ namespace Unimake.Business.DFe.Xml.DARE
 #endif
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.DARE.ReceitaDARE")]
+    [ComVisible(true)]
+#endif
+
+    /// <summary>
+    /// Classe de retorno do serviço de Receitas DARE - SP
+    /// </summary>
+    
     public class ReceitaDARE
     {
         [XmlElement("codigo")]
