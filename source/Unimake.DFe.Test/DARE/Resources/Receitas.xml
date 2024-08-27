@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--As tags <Receitas> e <Receita> não existe no retorno-->
+<Receitas>
+	<Receita>
+		<codigo>046-2</codigo>
+		<codigoServicoDARE>4601</codigoServicoDARE>
+		<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+	</Receita>
+	<Receita>
+		<codigo>046-2</codigo>
+		<codigoServicoDARE>4603</codigoServicoDARE>
+		<nome>ICMS - OPP - RPA - Regime Especial (04603)</nome>
+	</Receita>
+	<Receita>
+		<codigo>146-6</codigo>
+		<codigoServicoDARE>14601</codigoServicoDARE>
+		<nome>ICMS – Substituição tributária - RPA (14601)</nome>
+	</Receita>
+	<Receita>
+		<codigo>146-6</codigo>
+		<codigoServicoDARE>14604</codigoServicoDARE>
+		<nome>ICMS - ST - RPA - Regime Especial (14604)</nome>
+	</Receita>
+	<Receita>
+		<codigo>046-2</codigo>
+		<codigoServicoDARE>4602</codigoServicoDARE>
+		<nome>ICMS - Diferencial de alíquota - Simples Nacional (04602)</nome>
+	</Receita>
+	<Receita>
+		<codigo>146-6</codigo>
+		<codigoServicoDARE>14602</codigoServicoDARE>
+		<nome>ICMS - ST - Simples Nacional (14602)</nome>
+	</Receita>
+	<Receita>
+		<codigo>146-6</codigo>
+		<codigoServicoDARE>14603</codigoServicoDARE>
+		<nome>ICMS - RAST - Simples Nacional (14603)</nome>
+	</Receita>
+	<Receita>
+		<codigo>063-2</codigo>
+		<codigoServicoDARE>6304</codigoServicoDARE>
+		<nome>ICMS - Outros Rec. Especiais - RPA (06304)</nome>
+	</Receita>
+	<Receita>
+		<codigo>063-2</codigo>
+		<codigoServicoDARE>6305</codigoServicoDARE>
+		<escopoUso>2</escopoUso>
+		<nome>ICMS - Outros Rec. Especiais - Leilão (06305)</nome>
+	</Receita>
+	<Receita>
+		<codigo>063-2</codigo>
+		<codigoServicoDARE>6306</codigoServicoDARE>
+		<escopoUso>2</escopoUso>
+		<nome>ICMS - Outros Rec. Espec. - Produtor Rural/ PF (06306)</nome>
+	</Receita>
+	<Receita>
+		<codigo>063-2</codigo>
+		<codigoServicoDARE>6307</codigoServicoDARE>
+		<nome>ICMS - OPP - Outros Rec. Espec.- Regime Especial (06307)</nome>
+	</Receita>
+	<Receita>
+		<codigo>063-2</codigo>
+		<codigoServicoDARE>6308</codigoServicoDARE>
+		<nome>ICMS - ST - Outros Rec. Espec.- Regime Especial (06308)</nome>
+	</Receita>
+	<Receita>
+		<codigo>101-6</codigo>
+		<codigoServicoDARE>10101</codigoServicoDARE>
+		<nome>ICMS - DIFAL (outra UF) -RPA- Sem cadastro em SP (10101)</nome>
+	</Receita>
+	<Receita>
+		<codigo>102-8</codigo>
+		<codigoServicoDARE>10201</codigoServicoDARE>
+		<nome>ICMS - DIFAL (outra UF) -RPA- Com cadastro em SP (10201)</nome>
+	</Receita>
+	<Receita>
+		<codigo>246-0</codigo>
+		<codigoServicoDARE>24601</codigoServicoDARE>
+		<nome>ICMS – ST por apuração - outra UF (24601)</nome>
+	</Receita>
+	<Receita>
+		<codigo>247-1</codigo>
+		<codigoServicoDARE>24701</codigoServicoDARE>
+		<nome>ICMS – ST por operação - outra UF (24701)</nome>
+	</Receita>
+	<Receita>
+		<codigo>892-8</codigo>
+		<codigoServicoDARE>89201</codigoServicoDARE>
+		<escopoUso>2</escopoUso>
+		<nome>ICMS - Outros valores não discriminados (89201)</nome>
+	</Receita>
+	<Receita>
+		<codigo>892-8</codigo>
+		<codigoServicoDARE>89202</codigoServicoDARE>
+		<nome>ICMS - Operações - DIFIS (89202)</nome>
+	</Receita>
+	<Receita>
+		<codigo>892-8</codigo>
+		<codigoServicoDARE>89203</codigoServicoDARE>
+		<nome>ICMS - Autorregularização - DIFIS (89203)</nome>
+	</Receita>
+	<Receita>
+		<codigo>104-1</codigo>
+		<codigoServicoDARE>1041</codigoServicoDARE>
+		<nome>FECOEP - Substituição Tributária - RPA (1041)</nome>
+	</Receita>
+	<Receita>
+		<codigo>104-1</codigo>
+		<codigoServicoDARE>1042</codigoServicoDARE>
+		<nome>FECOEP - Operações Próprias- RPA (1042)</nome>
+	</Receita>
+	<Receita>
+		<codigo>103-0</codigo>
+		<codigoServicoDARE>1030</codigoServicoDARE>
+		<nome>FECOEP - DIFAL (outra UF) -RPA- Sem cadastro em SP (1030)</nome>
+	</Receita>
+	<Receita>
+		<codigo>100-4</codigo>
+		<codigoServicoDARE>10001</codigoServicoDARE>
+		<nome>ICMS - Recolhimento antecipado (10001)</nome>
+	</Receita>
+	<Receita>
+		<codigo>110-7</codigo>
+		<codigoServicoDARE>11001</codigoServicoDARE>
+		<escopoUso>2</escopoUso>
+		<nome>ICMS - Transporte -transp. autônomo de SP (11001)</nome>
+	</Receita>
+	<Receita>
+		<codigo>111-9</codigo>
+		<codigoServicoDARE>11101</codigoServicoDARE>
+		<nome>ICMS- Transporte -outra UF (11101)</nome>
+	</Receita>
+	<Receita>
+		<codigo>112-0</codigo>
+		<codigoServicoDARE>11201</codigoServicoDARE>
+		<nome>ICMS - Comunicação no Estado de SP (11201)</nome>
+	</Receita>
+	<Receita>
+		<codigo>113-2</codigo>
+		<codigoServicoDARE>11301</codigoServicoDARE>
+		<nome>ICMS - Comunicação -outra UF (11301)</nome>
+	</Receita>
+	<Receita>
+		<codigo>114-4</codigo>
+		<codigoServicoDARE>11401</codigoServicoDARE>
+		<nome>ICMS - Merc. destinadas a consumo ou a ativo imobilizado (11401)</nome>
+	</Receita>
+	<Receita>
+		<codigo>115-6</codigo>
+		<codigoServicoDARE>11501</codigoServicoDARE>
+		<nome>ICMS - Energia elétrica no Estado de SP (11501)</nome>
+	</Receita>
+	<Receita>
+		<codigo>116-8</codigo>
+		<codigoServicoDARE>11601</codigoServicoDARE>
+		<nome>ICMS - Energia elétrica -outra UF (11601)</nome>
+	</Receita>
+	<Receita>
+		<codigo>117-0</codigo>
+		<codigoServicoDARE>11701</codigoServicoDARE>
+		<nome>ICMS - Combustível no Estado de SP (11701)</nome>
+	</Receita>
+	<Receita>
+		<codigo>119-3</codigo>
+		<codigoServicoDARE>11901</codigoServicoDARE>
+		<escopoUso>2</escopoUso>
+		<nome>ICMS - Recolhimentos especiais -outra UF (11901)</nome>
+	</Receita>
+	<Receita>
+		<codigo>123-5</codigo>
+		<codigoServicoDARE>12301</codigoServicoDARE>
+		<nome>ICMS - Exportação de café cru (12301)</nome>
+	</Receita>
+	<Receita>
+		<codigo>128-4</codigo>
+		<codigoServicoDARE>12801</codigoServicoDARE>
+		<nome>ICMS - Operações internas e interestaduais com café cru (12801)</nome>
+	</Receita>
+	<Receita>
+		<codigo>137-5</codigo>
+		<codigoServicoDARE>13701</codigoServicoDARE>
+		<nome>ICMS - Abate de gado (13701)</nome>
+	</Receita>
+	<Receita>
+		<codigo>141-7</codigo>
+		<codigoServicoDARE>14101</codigoServicoDARE>
+		<nome>ICMS - Operações com feijão (14101)</nome>
+	</Receita>
+	<Receita>
+		<codigo>081-4</codigo>
+		<codigoServicoDARE>8101</codigoServicoDARE>
+		<escopoUso>2</escopoUso>
+		<nome>ICMS - Parcelamento de débito não inscrito (08101)</nome>
+	</Receita>
+	<Receita>
+		<codigo>104-1</codigo>
+		<codigoServicoDARE>1044</codigoServicoDARE>
+		<nome>FECOEP - Parcelamento de débito não inscrito (1044)</nome>
+	</Receita>
+</Receitas>
