@@ -1,0 +1,174 @@
+<DareLote xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"> <!--Essa tag não existe no envio-->
+	<dadosContribuinteNaoCadastrado>
+		<numeroControleDarePrincipal>1</numeroControleDarePrincipal>
+		<gerarPDF>true</gerarPDF>
+		<codigoBarra44/>
+		<codigoBarra48/>
+		<cnpj>46377222000129</cnpj>
+		<cpf/>
+		<cpr/>
+		<cidade>São Paulo</cidade>
+		<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+		<documentoImpressao/>
+		<endereco>Av. Rangel Pestana, 300</endereco>
+		<funcionalidadeOrigem>0</funcionalidadeOrigem>
+		<inscricaoEstadual/>
+		<pixCopiaCola/>
+		<possiveisReceitas/>
+		<razaoSocial>Exemplo Razão Social</razaoSocial>
+		<receita>
+			<codigo>046-2</codigo>
+			<codigoServicoDARE>4601</codigoServicoDARE>
+			<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+		</receita>
+		<referencia>07/2024</referencia>
+		<telefone/>
+		<uf>SP</uf>
+		<valor>100</valor>
+		<valorJuros>0</valorJuros>
+		<valorMulta>0</valorMulta>
+		<valorTotal>0</valorTotal>
+		<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
+		<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
+		<numeroGuia>12345</numeroGuia>
+	</dadosContribuinteNaoCadastrado>
+	<erro>
+		<estaOk>true</estaOk>
+		<mensagens/>
+	</erro>
+	<tipoAgrupamentoFilhotes>1</tipoAgrupamentoFilhotes>
+	<itensParaGeracao>
+		<Dare> <!--Essa tag não existe no envio-->
+			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
+			<gerarPDF>true</gerarPDF>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<cnpj>46377222000129</cnpj>
+			<cpf/>
+			<cpr/>
+			<cidade>São Paulo</cidade>
+			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+			<documentoImpressao/>
+			<endereco>Av. Rangel Pestana, 300</endereco>
+			<funcionalidadeOrigem>0</funcionalidadeOrigem>
+			<inscricaoEstadual/>
+			<pixCopiaCola/>
+			<possiveisReceitas/>
+			<razaoSocial>Exemplo Razão Social</razaoSocial>
+			<receita>
+				<codigo>046-2</codigo>
+				<codigoServicoDARE>4601</codigoServicoDARE>
+				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+			</receita>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<uf>SP</uf>
+			<valor>11</valor>
+			<valorJuros>0</valorJuros>
+			<valorMulta>0</valorMulta>
+			<valorTotal>0</valorTotal>
+			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
+			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
+			<numeroGuia>12345</numeroGuia>
+		</Dare> <!--Essa tag não existe no envio-->
+		<Dare> <!--Essa tag não existe no envio-->
+			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
+			<gerarPDF>true</gerarPDF>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<cnpj>46377222000129</cnpj>
+			<cpf/>
+			<cpr/>
+			<cidade>São Paulo</cidade>
+			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+			<documentoImpressao/>
+			<endereco>Av. Rangel Pestana, 300</endereco>
+			<funcionalidadeOrigem>0</funcionalidadeOrigem>
+			<inscricaoEstadual/>
+			<pixCopiaCola/>
+			<possiveisReceitas/>
+			<razaoSocial>Exemplo Razão Social</razaoSocial>
+			<receita>
+				<codigo>046-2</codigo>
+				<codigoServicoDARE>4601</codigoServicoDARE>
+				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+			</receita>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<uf>SP</uf>
+			<valor>12</valor>
+			<valorJuros>0</valorJuros>
+			<valorMulta>0</valorMulta>
+			<valorTotal>0</valorTotal>
+			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
+			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
+			<numeroGuia>12345</numeroGuia>
+		</Dare> <!--Essa tag não existe no envio-->
+		<Dare> <!--Essa tag não existe no envio-->
+			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
+			<gerarPDF>true</gerarPDF>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<cnpj>46377222000129</cnpj>
+			<cpf/>
+			<cpr/>
+			<cidade>São Paulo</cidade>
+			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+			<documentoImpressao/>
+			<endereco>Av. Rangel Pestana, 300</endereco>
+			<funcionalidadeOrigem>0</funcionalidadeOrigem>
+			<inscricaoEstadual/>
+			<pixCopiaCola/>
+			<possiveisReceitas/>
+			<razaoSocial>Exemplo Razão Social</razaoSocial>
+			<receita>
+				<codigo>046-2</codigo>
+				<codigoServicoDARE>4601</codigoServicoDARE>
+				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+			</receita>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<uf>SP</uf>
+			<valor>13</valor>
+			<valorJuros>0</valorJuros>
+			<valorMulta>0</valorMulta>
+			<valorTotal>0</valorTotal>
+			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
+			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
+			<numeroGuia>12345</numeroGuia>
+		</Dare> <!--Essa tag não existe no envio-->
+		<Dare> <!--Essa tag não existe no envio-->
+			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
+			<gerarPDF>true</gerarPDF>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<cnpj>46377222000129</cnpj>
+			<cpf/>
+			<cpr/>
+			<cidade>São Paulo</cidade>
+			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+			<documentoImpressao/>
+			<endereco>Av. Rangel Pestana, 300</endereco>
+			<funcionalidadeOrigem>0</funcionalidadeOrigem>
+			<inscricaoEstadual/>
+			<pixCopiaCola/>
+			<possiveisReceitas/>
+			<razaoSocial>Exemplo Razão Social</razaoSocial>
+			<receita>
+				<codigo>046-2</codigo>
+				<codigoServicoDARE>4601</codigoServicoDARE>
+				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+			</receita>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<uf>SP</uf>
+			<valor>14</valor>
+			<valorJuros>0</valorJuros>
+			<valorMulta>0</valorMulta>
+			<valorTotal>0</valorTotal>
+			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
+			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
+			<numeroGuia>12345</numeroGuia>
+		</Dare> <!--Essa tag não existe no envio-->
+	</itensParaGeracao>
+</DareLote> <!--Essa tag não existe no envio-->
