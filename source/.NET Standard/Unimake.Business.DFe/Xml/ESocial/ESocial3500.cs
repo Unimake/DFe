@@ -145,6 +145,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => PerApurPgto = DateTimeOffset.Parse(value);
 #endif
         }
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCpfTrabField() => !string.IsNullOrEmpty(CpfTrab);
+        #endregion ShouldSerialize
+
     }
 
 }
