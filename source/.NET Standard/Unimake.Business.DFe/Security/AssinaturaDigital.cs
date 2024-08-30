@@ -36,8 +36,6 @@ namespace Unimake.Business.DFe.Security
         {
             if (!string.IsNullOrEmpty(tagAssinatura))
             {
-                AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
-
                 if (!verificaAssinatura || !EstaAssinado(conteudoXML, tagAssinatura))
                 {
                     try
@@ -132,6 +130,9 @@ namespace Unimake.Business.DFe.Security
                                     var keyInfo = new KeyInfo();
                                     keyInfo.AddClause(new KeyInfoX509Data(x509Cert));
                                     signedXml.KeyInfo = keyInfo;
+
+                                    AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
                                     signedXml.ComputeSignature();
 
                                     var xmlDigitalSignature = signedXml.GetXml();
@@ -241,6 +242,9 @@ namespace Unimake.Business.DFe.Security
                             var keyInfo = new KeyInfo();
                             keyInfo.AddClause(new KeyInfoX509Data(x509Cert));
                             signedXml.KeyInfo = keyInfo;
+
+                            AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
                             signedXml.ComputeSignature();
 
                             var xmlDigitalSignature = signedXml.GetXml();
