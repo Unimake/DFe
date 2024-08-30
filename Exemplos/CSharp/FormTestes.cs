@@ -5888,11 +5888,7 @@ namespace TreinamentoDLL
 
             switch (envioLoteESocial.Result?.RetornoEnvioLoteEventos.Status.CdResposta)
             {
-                case 0: //Retorno inválido
-                    break;
-                case 1: //Registrar os retornos
-                    break;
-                case 200: //Ok
+                case 201: //Lote recebido com sucesso
                     envioLoteESocial.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#", "treinamento eSocial", envioLoteESocial?.RetornoWSString);
 
                     var protocoloEnvio = envioLoteESocial.Result.RetornoEnvioLoteEventos.DadosRecepcaoLote.ProtocoloEnvio;
