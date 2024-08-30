@@ -56,6 +56,44 @@ namespace Unimake.Business.DFe.Xml.NFe
                 case "111501":
                     PreparaItemPedido(document);
                     break;
+
+                case "110750":
+                    PreparaDetPag(document);
+                    break;
+            }
+        }
+
+        public void PreparaDetPag(XmlDocument xmlDoc)
+        {
+            var detPags = xmlDoc.GetElementsByTagName("detPag");
+
+            foreach (var evento in Evento)
+            {
+                if (evento.InfEvento.DetEvento is DetEventoConciliacaoFinanceira detEvento)
+                {
+                    detEvento.DetPag = new List<DetPagECONF>();
+
+                    foreach (var nodeDetPag in detPags)
+                    {
+                        var elementDetPag = (XmlElement)nodeDetPag;
+
+                        detEvento.DetPag.Add(new DetPagECONF
+                        {
+                            IndPag = elementDetPag.GetElementsByTagName("indPag").Count > 0 ? (IndicadorPagamento?)Convert.ToInt32(elementDetPag.GetElementsByTagName("indPag")[0].InnerText) : (IndicadorPagamento?)null,
+                            TPag = (MeioPagamento)Convert.ToInt32(elementDetPag.GetElementsByTagName("tPag")[0].InnerText),
+                            XPag = elementDetPag.GetElementsByTagName("xPag").Count > 0 ? elementDetPag.GetElementsByTagName("xPag")[0].InnerText : "",
+                            VPag = Convert.ToDouble(elementDetPag.GetElementsByTagName("vPag")[0].InnerText, CultureInfo.InvariantCulture),
+                            DPag = Convert.ToDateTime(elementDetPag.GetElementsByTagName("dPag")[0].InnerText, CultureInfo.InvariantCulture),
+                            CNPJPag = elementDetPag.GetElementsByTagName("CNPJPag").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJPag")[0].InnerText : "",
+                            UFPag = elementDetPag.GetElementsByTagName("CNPJPag").Count > 0 ? (UFBrasil)Enum.Parse(typeof(UFBrasil), elementDetPag.GetElementsByTagName("UFPag")[0].InnerText) : UFBrasil.AN,
+                            CNPJIF = elementDetPag.GetElementsByTagName("CNPJIF").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJIF")[0].InnerText : "",
+                            TBand = elementDetPag.GetElementsByTagName("tBand").Count > 0 ? (BandeiraOperadoraCartao?)Convert.ToInt32(elementDetPag.GetElementsByTagName("tBand")[0].InnerText) : (BandeiraOperadoraCartao?)null,
+                            CAut = elementDetPag.GetElementsByTagName("cAut").Count > 0 ? elementDetPag.GetElementsByTagName("cAut")[0].InnerText : "",
+                            CNPJReceb = elementDetPag.GetElementsByTagName("CNPJReceb").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJReceb")[0].InnerText : "",
+                            UFReceb = elementDetPag.GetElementsByTagName("CNPJReceb").Count > 0 ? (UFBrasil)Enum.Parse(typeof(UFBrasil), elementDetPag.GetElementsByTagName("UFReceb")[0].InnerText) : UFBrasil.AN,
+                        });
+                    }
+                }
             }
         }
 
@@ -344,6 +382,14 @@ namespace Unimake.Business.DFe.Xml.NFe
                     case TipoEventoNFe.CancelamentoInsucessoEntregaNFe:
                         COrgao = UFBrasil.SVRS; //Sempre será 92 no caso de Insucesso da Entrega da NFe, somente SVRS vai autorizar este evento.
                         _detEvento = new DetEventoCancelamentoInsucessoEntregaNFe();
+                        break;
+
+                    case TipoEventoNFe.ConciliacaoFinanceira:
+                        _detEvento = new DetEventoConciliacaoFinanceira();
+                        break;
+
+                    case TipoEventoNFe.CancelamentoConciliacaoFinanceira:
+                        //_detEvento = new DetEventoCancelamentoConciliacaoFinanceira();
                         break;
 
                     default:
@@ -2463,5 +2509,198 @@ namespace Unimake.Business.DFe.Xml.NFe
                 }
             }
         }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoConciliacaoFinanceira")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoConciliacaoFinanceira : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "ECONF";
+
+        /// <summary>
+        /// Versão do aplicativo do Autor do Evento. 
+        /// </summary>
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Grupo de detalhamento do pagamento
+        /// </summary>
+        [XmlElement("detPag")]
+        public List<DetPagECONF> DetPag { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <verAplic>{VerAplic}</verAplic>";
+
+            foreach (var detpag in DetPag)
+            {
+                xml += "<detPag>";
+
+#if INTEROP
+                if (detpag.IndPag != (IndicadorPagamento)(-1))
+#else
+                if (detpag.IndPag != null)
+#endif
+                {
+                    xml += $"<indPag>{(int)detpag.IndPag}</indPag>";
+                }
+
+                xml += $"<tPag>{((int)detpag.TPag).ToString("00")}</tPag>";
+
+                if (detpag.TPag == MeioPagamento.Outros)
+                {
+                    xml += $"<xPag>{detpag.XPag}</xPag>";
+                }
+
+                xml += $"<vPag>{detpag.VPagField}</vPag>";
+                xml += $"<dPag>{detpag.DPagField}</dPag>";
+
+                if (!string.IsNullOrWhiteSpace(detpag.CNPJPag))
+                {
+                    xml += $"<CNPJPag>{detpag.CNPJPag}</CNPJPag>";
+                    xml += $"<UFPag>{detpag.UFPag}</UFPag>";
+
+                    if (!string.IsNullOrWhiteSpace(detpag.CNPJIF))
+                    {
+                        xml += $"<CNPJIF>{detpag.CNPJIF}</CNPJIF>";
+                    }
+
+#if INTEROP
+                    if (detpag.TBand != (BandeiraOperadoraCartao)(-1))
+#else
+                    if (detpag.TBand != null)
+#endif
+                    {
+                        xml += $"<tBand>{((int)detpag.TBand).ToString("00")}</tBand>";
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(detpag.CAut))
+                    {
+                        xml += $"<cAut>{detpag.CAut}</cAut>";
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(detpag.CNPJReceb))
+                {
+                    xml += $"<CNPJReceb>{detpag.CNPJReceb}</CNPJReceb>";
+                    xml += $"<UFReceb>{detpag.UFReceb}</UFReceb>";
+                }
+
+                xml += "</detPag>";
+            }
+
+            writer.WriteRaw(xml);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetPagECONF")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class DetPagECONF
+    {
+        private string XPagField { get; set; }
+
+        [XmlElement("indPag")]
+#if INTEROP
+        public IndicadorPagamento IndPag { get; set; } = (IndicadorPagamento)(-1);
+#else
+        public IndicadorPagamento? IndPag { get; set; }
+#endif
+
+        [XmlElement("tPag")]
+        public MeioPagamento TPag { get; set; }
+
+        [XmlElement("xPag")]
+        public string XPag
+        {
+            get => XPagField;
+            set => XPagField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim());
+        }
+
+        [XmlIgnore]
+        public double VPag { get; set; }
+
+        [XmlElement("vPag")]
+        public string VPagField
+        {
+            get => VPag.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPag = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Data do pagamento
+        /// </summary>
+        [XmlIgnore]
+        public DateTime DPag { get; set; }
+
+        [XmlElement("dPag")]
+        public string DPagField
+        {
+            get => DPag.ToString("yyyy-MM-dd");
+            set => DPag = DateTime.Parse(value);
+        }
+
+        /// <summary>
+        /// CNPJ transacional do pagamento. Preencher informando o CNPJ do estabelecimento onde o pagamento foi processado/transacionado/recebido quando a emissão do documento fiscal ocorrer em estabelecimento distinto
+        /// </summary>
+        [XmlElement("CNPJPag")]
+        public string CNPJPag { get; set; }
+
+        /// <summary>
+        /// UF do CNPJ do estabelecimento onde o pagamento foi processado/transacionado/recebido.
+        /// </summary>
+        [XmlElement("UFPag")]
+        public UFBrasil UFPag { get; set; }
+
+        /// <summary>
+        /// Preencher informando o CNPJ do estabelecimento onde o pagamento foi processado/transacionado/recebido quando a emissão do documento fiscal ocorrer em estabelecimento distinto.
+        /// </summary>
+        [XmlElement("CNPJIF")]
+        public string CNPJIF { get; set; }
+
+        /// <summary>
+        /// Utilizar a Tabela de Códigos das Operadoras de cartão de crédito e/ou débito publicada no Portal Nacional da Nota Fiscal Eletrônica.        
+        /// </summary>
+        [XmlElement("tBand")]
+#if INTEROP
+        public BandeiraOperadoraCartao TBand { get; set; } = (BandeiraOperadoraCartao)(-1);
+#else
+        public BandeiraOperadoraCartao? TBand { get; set; }
+#endif
+
+        /// <summary>
+        /// Identifica o número da autorização da transação da operação
+        /// </summary>
+        [XmlElement("cAut")]
+        public string CAut { get; set; }
+
+        /// <summary>
+        /// Informar o CNPJ do estabelecimento beneficiário do pagamento
+        /// </summary>
+        [XmlElement("CNPJReceb")]
+        public string CNPJReceb { get; set; }
+
+        /// <summary>
+        /// UF do CNPJ do estabelecimento beneficiário do pagamento.
+        /// </summary>
+        [XmlElement("UFReceb")]
+        public UFBrasil UFReceb { get; set; }
     }
 }

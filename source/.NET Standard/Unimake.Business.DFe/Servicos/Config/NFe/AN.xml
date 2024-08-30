@@ -38,7 +38,7 @@
 				<Tipo>
 					<ID>110150</ID>
 					<SchemaArquivo>envEventoAtorInteressado_v{0}.xsd</SchemaArquivo>
-					<SchemaArquivoEspecifico>110150_v{0}.xsd</SchemaArquivoEspecifico>					
+					<SchemaArquivoEspecifico>110150_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 				<Tipo>
 					<ID>110130</ID>
@@ -54,6 +54,16 @@
 					<ID>110111</ID>
 					<SchemaArquivo>envEventoCancNFe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110111_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110750</ID>
+					<SchemaArquivo>envEventoEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110750_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110751</ID>
+					<SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>

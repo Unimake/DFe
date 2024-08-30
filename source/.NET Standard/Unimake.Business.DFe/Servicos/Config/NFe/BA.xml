@@ -39,7 +39,7 @@
 			<TagAtributoID>infInut</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebTagRetornoHomologacao>nfeInutilizacaoNFResult</WebTagRetornoHomologacao>		
+			<WebTagRetornoHomologacao>nfeInutilizacaoNFResult</WebTagRetornoHomologacao>
 		</Inutilizacao>
 		<ConsultaCadastro versao="2.00">
 			<Descricao>Consulta cadastro do contribuinte</Descricao>
@@ -54,7 +54,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaCadastro>
 		<RecepcaoEvento versao="1.00">
-			<Descricao>Recepcao de eventos</Descricao>
+			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://hnfe.sefaz.ba.gov.br/webservices/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.sefaz.ba.gov.br/webservices/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
@@ -95,6 +95,16 @@
 					<ID>111503</ID>
 					<SchemaArquivo>envRemIndus_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e111503_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110750</ID>
+					<SchemaArquivo>envEventoEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110750_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110751</ID>
+					<SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
 			</SchemasEspecificos>
 			<WebTagRetornoHomologacao>nfeResultMsg</WebTagRetornoHomologacao>

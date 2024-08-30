@@ -856,6 +856,18 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoPedidoProrrogacaoPrazo2 = 111503,
 
         /// <summary>
+        /// 110750 - Conciliação Financeira
+        /// </summary>
+        [XmlEnum("110750")]
+        ConciliacaoFinanceira = 110750,
+
+        /// <summary>
+        /// 110750 - Cancelamento Conciliação Financeira
+        /// </summary>
+        [XmlEnum("110751")]
+        CancelamentoConciliacaoFinanceira = 110751,
+
+        /// <summary>
         /// 210200 - Manifestação do Destinatário - Confirmação da Operação
         /// </summary>
         [XmlEnum("210200")]
