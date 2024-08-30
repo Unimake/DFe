@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<envEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<idLote>000000000000001</idLote>
+	<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infEvento Id="ID1107511119080611747300015055001000057913194346389001">
+			<cOrgao>11</cOrgao>
+			<tpAmb>1</tpAmb>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFe>11190806117473000150550010000579131943463890</chNFe>			
+			<dhEvento>2024-08-30T16:54:13-03:00</dhEvento>
+			<tpEvento>110751</tpEvento>
+			<nSeqEvento>1</nSeqEvento>
+			<verEvento>1.00</verEvento>
+			<detEvento versao="1.00">
+				<descEvento>Cancelamento Conciliação Financeira</descEvento>
+				<verAplic>uninfeteste1.0</verAplic>
+				<nProtEvento>000000000000000</nProtEvento>
+			</detEvento>
+		</infEvento>
+	</evento>
+</envEvento>

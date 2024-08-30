@@ -79,7 +79,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                         detEvento.DetPag.Add(new DetPagECONF
                         {
-                            IndPag = elementDetPag.GetElementsByTagName("indPag").Count > 0 ? (IndicadorPagamento?)Convert.ToInt32(elementDetPag.GetElementsByTagName("indPag")[0].InnerText) : (IndicadorPagamento?)null,
+                            IndPag = elementDetPag.GetElementsByTagName("indPag").Count > 0 ? (IndicadorPagamento?)Convert.ToInt32(elementDetPag.GetElementsByTagName("indPag")[0].InnerText) : null,
                             TPag = (MeioPagamento)Convert.ToInt32(elementDetPag.GetElementsByTagName("tPag")[0].InnerText),
                             XPag = elementDetPag.GetElementsByTagName("xPag").Count > 0 ? elementDetPag.GetElementsByTagName("xPag")[0].InnerText : "",
                             VPag = Convert.ToDouble(elementDetPag.GetElementsByTagName("vPag")[0].InnerText, CultureInfo.InvariantCulture),
@@ -87,7 +87,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                             CNPJPag = elementDetPag.GetElementsByTagName("CNPJPag").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJPag")[0].InnerText : "",
                             UFPag = elementDetPag.GetElementsByTagName("CNPJPag").Count > 0 ? (UFBrasil)Enum.Parse(typeof(UFBrasil), elementDetPag.GetElementsByTagName("UFPag")[0].InnerText) : UFBrasil.AN,
                             CNPJIF = elementDetPag.GetElementsByTagName("CNPJIF").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJIF")[0].InnerText : "",
-                            TBand = elementDetPag.GetElementsByTagName("tBand").Count > 0 ? (BandeiraOperadoraCartao?)Convert.ToInt32(elementDetPag.GetElementsByTagName("tBand")[0].InnerText) : (BandeiraOperadoraCartao?)null,
+                            TBand = elementDetPag.GetElementsByTagName("tBand").Count > 0 ? (BandeiraOperadoraCartao?)Convert.ToInt32(elementDetPag.GetElementsByTagName("tBand")[0].InnerText) : null,
                             CAut = elementDetPag.GetElementsByTagName("cAut").Count > 0 ? elementDetPag.GetElementsByTagName("cAut")[0].InnerText : "",
                             CNPJReceb = elementDetPag.GetElementsByTagName("CNPJReceb").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJReceb")[0].InnerText : "",
                             UFReceb = elementDetPag.GetElementsByTagName("CNPJReceb").Count > 0 ? (UFBrasil)Enum.Parse(typeof(UFBrasil), elementDetPag.GetElementsByTagName("UFReceb")[0].InnerText) : UFBrasil.AN,
@@ -389,7 +389,7 @@ namespace Unimake.Business.DFe.Xml.NFe
                         break;
 
                     case TipoEventoNFe.CancelamentoConciliacaoFinanceira:
-                        //_detEvento = new DetEventoCancelamentoConciliacaoFinanceira();
+                        _detEvento = new DetEventoCancelamentoConciliacaoFinanceira();
                         break;
 
                     default:
@@ -2703,4 +2703,44 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("UFReceb")]
         public UFBrasil UFReceb { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoConciliacaoFinanceira")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoCancelamentoConciliacaoFinanceira : EventoDetalhe
+    {
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
+        [XmlElement("descEvento")]
+        public override string DescEvento { get; set; } = "Cancelamento Conciliação Financeira";
+
+        /// <summary>
+        /// Versão do aplicativo do Autor do Evento. 
+        /// </summary>
+        [XmlElement("verAplic")]
+        public string VerAplic { get; set; }
+
+        /// <summary>
+        /// Informar o número do protocolo de autorização do evento de conciliação financeira da NFe/NFCe que se refere a este cancelamento
+        /// </summary>
+        [XmlElement("nProtEvento")]
+        public string NProtEvento { get; set; }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var xml = $@"<descEvento>{DescEvento}</descEvento>
+                         <verAplic>{VerAplic}</verAplic>
+                         <nProtEvento>{NProtEvento}</nProtEvento>";
+
+            writer.WriteRaw(xml);
+        }
+    }
+
 }
