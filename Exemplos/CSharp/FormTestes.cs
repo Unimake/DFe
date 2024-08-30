@@ -5918,25 +5918,70 @@ namespace TreinamentoDLL
 
                     consultaLoteAssincrono.Executar();
 
-                    switch (consultaLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.CdResposta)
+                    switch (consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta)
                     {
-                        case 1: //O lote ainda está aguardando processamento.
+                        case 101: // Lote Aguardando Processamento.
                             MessageBox.Show("Aguarde alguns minutos e tente novamente!");
                             break;
 
-                        case 2: //O lote foi processado. Todos os eventos foram processados com sucesso
-                        case 3: //O lote foi processado. Possui um ou mais eventos com ocorrências
+                        case 201: // Lote Processado com Sucesso
+                        case 202: // Lote Processado com Advertências.
                             consultaLoteAssincrono.GravarXmlDistribuicao("C:\\Projetos\\Treinamentos\\C#", $"{protocoloEnvio}.xml", consultaLoteAssincrono.RetornoWSString);
                             break;
 
-                        case 8: //Consulta não executada - Verificar ocorrências.
-                            MessageBox.Show(consultaLoteAssincrono.RetornoWSString);
+                        case 301: // Erro Servidor eSocial
+                            MessageBox.Show("Erro no servidor do eSocial. Aguarde alguns minutos e envie novamente!");
+                            break;
+
+                        case 401: // Lote incorreto - Erro preenchimento.
+                        case 402: // Lote incorreto - Schema inválido
+                        case 403: // Lote incorreto - Versão do SCHEMA não permitida
+                        case 404: // Lote incorreto - Erro certificado
+                        case 405: // Lote incorreto - Lote nulo ou vazio
+                            MessageBox.Show($"Código: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta}");
+                            MessageBox.Show($"Descrição: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.DescResposta}");
+                            break;
+
+                        case 501: // Solicitação de Consulta Incorreta - Erro Preenchimento.
+                        case 502: // Solicitação de Consulta Incorreta - Schema inválido
+                        case 503: // Solicitação de Consulta Incorreta - Versão do SCHEMA não permitida
+                        case 504: // Solicitação de Consulta Incorreta - Erro certificado
+                        case 505: // Solicitação de Consulta Incorreta - Consulta nula ou 
+                            MessageBox.Show($"Código: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta}");
+                            MessageBox.Show($"Descrição: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.DescResposta}");
+                            break;
+
+                        default:
+                            MessageBox.Show("Erro não catalogado!!");
                             break;
                     }
                     break;
+                case 202: // Lote recebido advertências.
+                    MessageBox.Show("Lote recebido mas possui advertências, verifique!");
+                    MessageBox.Show(envioLoteESocial.RetornoWSString);
+                    break;
+
+                case 203: // Lote recebido já foi recebido anteriormente e ainda está na fila de processamento.
+                    MessageBox.Show("Lote recebido já foi recebido anteriormente e ainda está sendo processado");
+                    break;
+
+                case 301: // Erro no servidor do eSocial
+                    MessageBox.Show("Erro no servidor do eSocial. Aguarde alguns minutos e envie novamente!");
+                    break;
+
+                case 401: // Lote incorreto - Erro preenchimento.
+                case 402: // Lote incorreto - Schema inválido
+                case 403: // Lote incorreto - Versão do SCHEMA não permitida
+                case 404: // Lote incorreto - Erro certificado
+                case 405: // Lote incorreto - Lote nulo ou vazio
+                case 406: // Lote incorreto - Totalização em andamento
+                case 407: // Lote incorreto - Empregador não autorizado a enviar
+                    MessageBox.Show($"Código: {envioLoteESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta}");
+                    MessageBox.Show($"Descrição: {envioLoteESocial.Result.RetornoEnvioLoteEventos.Status.DescResposta}");
+                    break;
 
                 default:
-                    MessageBox.Show($"Erro: {envioLoteESocial.Result.RetornoEnvioLoteEventos.Status.DescResposta} ");
+                    MessageBox.Show("Erro não catalogado!!");
                     break;
             }
 
