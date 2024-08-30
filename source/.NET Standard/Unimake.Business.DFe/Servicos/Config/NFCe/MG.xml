@@ -74,6 +74,16 @@
 					<SchemaArquivo>envCCe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110750</ID>
+					<SchemaArquivo>envEventoEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110750_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110751</ID>
+					<SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
@@ -94,7 +104,7 @@
 			<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnfce/sistema/qrcode.xhtml</UrlQrCodeProducao>
 			<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnfce</UrlChaveHomologacao>
-			<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>			
+			<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnfce</UrlChaveProducao>
 		</Autorizacao>
 		<RetAutorizacao versao="4.00">
 			<Descricao>Consulta recibo da nota fiscal consumidor eletrônica</Descricao>

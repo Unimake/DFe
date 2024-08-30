@@ -72,6 +72,16 @@
 					<SchemaArquivo>envCCe_v{0}.xsd</SchemaArquivo>
 					<SchemaArquivoEspecifico>e110110_v{0}.xsd</SchemaArquivoEspecifico>
 				</Tipo>
+				<Tipo>
+					<ID>110750</ID>
+					<SchemaArquivo>envEventoEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110750_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>110751</ID>
+					<SchemaArquivo>envEventoCancEConf_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110751_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
 			</SchemasEspecificos>
 			<TagAssinatura>evento</TagAssinatura>
 			<TagAtributoID>infEvento</TagAtributoID>
