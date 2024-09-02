@@ -430,7 +430,7 @@
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0/ServicoConsultarLoteEventos/ConsultarLoteEventos</WebActionProducao>
 			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0/ServicoConsultarLoteEventos/ConsultarLoteEventos</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>retornoProcessamentoLoteEventos</WebTagRetorno>
+			<WebTagRetorno>ConsultarLoteEventosResult</WebTagRetorno>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteEventos xmlns="http://www.esocial.gov.br/servicos/empregador/lote/eventos/envio/consulta/retornoProcessamento/v1_1_0"><consulta>{xmlBody}</consulta></ConsultarLoteEventos></soap:Body></soap:Envelope>]]></WebSoapString>

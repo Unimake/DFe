@@ -50,6 +50,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
+
         /// <summary>
         /// Informações de identificação do evento.
         /// </summary>
@@ -183,7 +184,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 1 - Documento de Arrecadação do eSocial - DAE
         /// </summary>
         [XmlElement("indGuia")]
-        public string IndGuia { get; set; }
+        public IndGuia? IndGuia { get; set; }
 
         /// <summary>
         /// Identificação do ambiente
@@ -204,8 +205,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
-        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
+
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
+
+#if INTEROP
+        public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
+#else
+        public bool ShouldSerializeIndGuia() => !IndGuia.IsNullOrEmpty();
+#endif
+
         #endregion ShouldSerialize
     }
 
@@ -460,7 +468,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o código da categoria do trabalhador na qual houve a remuneração.
         /// </summary>
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
+        public CodCateg CodCateg { get; set; }
 
         /// <summary>
         /// Preencher com o valor da remuneração recebida pelo
@@ -618,8 +626,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Observacao { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
         #endregion ShouldSerialize
     }
     #endregion SucessaoVincESocial1200 
@@ -778,7 +786,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoComplCont InfoComplCont { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeIndRRAField() => IndRRA.IsNullOrEmpty();
+
+#if INTEROP
+        public bool ShouldSerializeIndRRA() => IndRRA != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndRRA() => !IndRRA.IsNullOrEmpty();
+#endif
+
         #endregion ShouldSerialize
 
     }
@@ -953,7 +967,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 3 - Contribuição não substituída concomitante com
         /// </summary>
         [XmlElement("indSimples")]
-        public IndSimples IndSimples { get; set; }
+#if INTEROP
+        public IndSimples IndSimples { get; set; } = (IndSimples)(-1);
+#else
+        public IndSimples? IndSimples { get; set; }
+#endif
 
         /// <summary>
         /// Rubricas que compõem a remuneração do trabalhador
@@ -1005,9 +1023,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAgNocivo InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
-        public bool ShouldSerializeIndSimplesField() => IndSimples > 0;
-        #endregion ShouldSerialize
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
+
+        public bool ShouldSerializeIndSimples() => IndSimples != null && IndSimples != (IndSimples)(-1);
+
+#endregion ShouldSerialize
     }
 
     #region ItensRemun
@@ -1047,16 +1067,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string GrauExp { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeGrauExpField() => !string.IsNullOrEmpty(GrauExp);
+
+        public bool ShouldSerializeGrauExp() => !string.IsNullOrEmpty(GrauExp);
+
         #endregion ShouldSerialize
     }
     #endregion InfoAgNocivo
 
-    #endregion RemunPerApur
+#endregion RemunPerApur
 
-    #endregion IdeEstabLot
+#endregion IdeEstabLot
 
-    #endregion InfoPerApur
+#endregion InfoPerApur
 
     #region InfoPerAntESocial1200
 #if INTEROP
@@ -1462,7 +1484,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// ser informado.
         /// </summary>
         [XmlElement("indSimples")]
-        public IndSimples IndSimples { get; set; }
+#if INTEROP
+        public IndSimples IndSimples { get; set; } = (IndSimples)(-1);
+#else
+        public IndSimples? IndSimples { get; set; }
+#endif
 
         /// <summary>
         /// Rubricas que compõem a remuneração do trabalhador.
@@ -1516,9 +1542,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAgNocivo InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeMatriculaField() => !Matricula.IsNullOrEmpty();
-        public bool ShouldSerializeIndSimplesField() => !IndSimples.IsNullOrEmpty();
-        public bool ShouldSerializeInfoAgNocivoField() => !InfoAgNocivo.IsNullOrEmpty();
+        public bool ShouldSerializeMatricula() => !Matricula.IsNullOrEmpty();
+        public bool ShouldSerializeIndSimples() => IndSimples != null && IndSimples != (IndSimples)(-1);
         #endregion ShouldSerialize
     }
 
@@ -1573,5 +1598,5 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion InfoComplCont
 
-    #endregion DmDev
+#endregion DmDev
 }

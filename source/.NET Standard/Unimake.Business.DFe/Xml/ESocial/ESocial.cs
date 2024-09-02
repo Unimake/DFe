@@ -180,9 +180,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndApurIR? IndApurIR { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeQtdRubrField() => QtdRubr != 0;
-        public bool ShouldSerializeFatorRubrField() => FatorRubr != 0;
-        public bool ShouldSerializeIndApurIRField() =>  !IndApurIR.IsNullOrEmpty();
+        public bool ShouldSerializeQtdRubr() => QtdRubr != 0;
+        public bool ShouldSerializeFatorRubr() => FatorRubr != 0;
+
+#if INTEROP
+        public bool ShouldSerializeIndApurIR() => IndApurIR != (IndApurIR)(-1);
+#else
+        public bool ShouldSerializeIndApurIR() => !IndApurIR.IsNullOrEmpty();
+#endif
         #endregion ShouldSerialize
     }
 
