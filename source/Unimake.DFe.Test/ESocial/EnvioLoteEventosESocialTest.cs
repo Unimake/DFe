@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Servicos.ESocial;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
 using Xunit;
 
@@ -9,13 +13,13 @@ namespace Unimake.DFe.Test.ESocial
     public class EnvioLoteEventosESocialTest
     {
         /// <summary>
-        /// Testar a consulta lote assincrono do eSocial
+        /// Testar o envio do evento S-1000
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
         [InlineData(TipoAmbiente.Producao)]
         [InlineData(TipoAmbiente.Homologacao)]
-        public void ESocialEnvioLoteEventos(TipoAmbiente tipoAmbiente)
+        public void ESocialEnvioLoteEventosS1000(TipoAmbiente tipoAmbiente)
         {
             var configuracao = new Configuracao
             {
@@ -111,7 +115,159 @@ namespace Unimake.DFe.Test.ESocial
                     }
                 }
             };
+
             var enviarLoteEventosESocial = new Business.DFe.Servicos.ESocial.EnviarLoteEventosESocial(conteudoXML, configuracao);
+            enviarLoteEventosESocial.Executar();
+        }
+
+        /// <summary>
+        /// Testar o envio do evento S-1200
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void ESocialEnvioLoteEventosS1200(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.ESocialEnviarLoteEventos,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var conteudoXML = new ESocialEnvioLoteEventos
+            {
+                Versao = "1.1.0",
+                EnvioLoteEventos = new EnvioLoteEventosESocial
+                {
+                    Grupo = "3",
+                    IdeEmpregador = new IdeEmpregador
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "06117473"
+                    },
+
+                    IdeTransmissor = new IdeTransmissor
+                    {
+                        TpInsc = TiposInscricao.CNPJ,
+                        NrInsc = "06117473000150"
+                    },
+
+                    Eventos = new EventosESocial
+                    {
+                        Evento = new List<EventoESocial>
+                        {
+                            new EventoESocial
+                            {
+                                ID = "ID1061174730000002017102608080800001",
+                                ESocial1200 = new ESocial1200
+                                {
+                                    EvtRemun = new EvtRemun
+                                    {
+                                        ID = "ID1061174730000002017102608080800001",
+                                        IdeEvento = new IdeEventoESocial1200
+                                        {
+                                            IndRetif = IndicativoRetificacao.ArquivoOriginal,
+                                            IndApuracao = IndApuracao.Mensal,
+                                            PerApur = DateTime.Parse("2017-10"),
+                                            TpAmb = TipoAmbiente.Homologacao,
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            VerProc = "1.0",
+                                        },
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "06117473"
+                                        },
+                                        IdeTrabalhador =  new IdeTrabalhador
+                                        {
+                                            CpfTrab = "11111111111",
+                                            InfoMV = new InfoMV
+                                            {
+                                                IndMV = IndMV.DescontoSobreRemuneracao,
+                                                RemunOutrEmpr = new List<RemunOutrEmpr>
+                                                {
+                                                    new RemunOutrEmpr
+                                                    {
+                                                        TpInsc = TiposInscricao.CNPJ,
+                                                        NrInsc = "06117473",
+                                                        CodCateg = CodCateg.EmpregadoAprendiz,
+                                                        VlrRemunOE = 123.45
+                                                    }
+                                                }
+                                            },
+                                            InfoComplem = new InfoComplem
+                                            {
+                                                NmTrab = "nome",
+                                                DtNascto = DateTime.Parse("2012-12-13")
+                                            },
+                                            ProcJudTrab = new List<ProcJudTrab>
+                                            {
+                                               new ProcJudTrab
+                                               {
+                                                   TpTrib = TpTrib.IRRF,
+                                                   NrProcJud = "00000000000000000001",
+                                                   CodSusp = "1234"
+                                               }
+                                            }
+                                        },
+                                        DmDev = new List<DmDev>
+                                        {
+                                            new DmDev
+                                            {
+                                                IdeDmDev = "teste",
+                                                CodCateg = CodCateg.EmpregadoAprendiz,
+                                                InfoPerApur = new InfoPerApur
+                                                {
+                                                    IdeEstabLot = new IdeEstabLot
+                                                    {
+                                                        TpInsc = TpInsc.CNPJ,
+                                                        NrInsc = "12345678901234",
+                                                        Codlotacao = "148",
+                                                        QtdDiasAv = 1,
+                                                        RemunPerApur = new List<RemunPerApur>
+                                                        {
+                                                            new RemunPerApur
+                                                            {
+                                                                Matricula = "teste1",
+                                                                ItensRemun = new List<ItensRemunESocial1200>
+                                                                {
+                                                                    new ItensRemunESocial1200
+                                                                    {
+                                                                        CodRubr = "123",
+                                                                        IdeTabRubr = "teste1",
+                                                                        VrRubr = 123.45
+                                                                    }
+                                                                },
+                                                                InfoAgNocivo = new InfoAgNocivo
+                                                                {
+                                                                    GrauExp = "123"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                InfoComplCont = new InfoComplCont
+                                                {
+                                                    CodCBO = "14",
+                                                    NatAtividade = NatAtividade.TrabalhoUrbano,
+                                                    QtdDiasTrab = 2
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoXML, configuracao);
             enviarLoteEventosESocial.Executar();
         }
     }
