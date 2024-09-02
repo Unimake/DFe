@@ -8,6 +8,7 @@ using System;
 using System.Globalization;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -148,23 +149,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// quantidade de dias trabalhados relacionada com uma rubrica de salário, etc.
         /// Validação: Deve ser maior que 0 (zero).
         /// </summary>
-        [XmlElement("qtdRubr")]
+        [XmlIgnore]
         public double QtdRubr { get; set; }
+
+        [XmlElement("qtdRubr")]
+        public string QtdRubrField
+        {
+            get => QtdRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => QtdRubr = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Informar o fator, percentual, etc. da rubrica, quando necessário.
         /// Ex.: Adicional de horas extras 50%, relacionado a uma rubrica de horas extras: Fator = 50.
         /// Validação: Deve ser maior que 0 (zero).
         /// </summary>
-        [XmlElement("fatorRubr")]
+        [XmlIgnore]
         public double FatorRubr { get; set; }
+
+        [XmlElement("fatorRubr")]
+        public string FatorRubrField
+        {
+            get => FatorRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => FatorRubr = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor total da rubrica. Validação: Deve ser maior que 0 (zero).
         /// </summary>
         //[XmlIgnore]
-        [XmlElement("vrRubr")]
+        [XmlIgnore]
         public double VrRubr { get; set; }
+
+        [XmlElement("vrRubr")]
+        public string VrRubrField
+        {
+            get => VrRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRubr = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Indicativo de tipo de apuração de IR.
@@ -177,20 +199,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// [2021] (se indApuracao = [2]).
         /// </summary>
         [XmlElement("indApurIR")]
-        public IndApurIR? IndApurIR { get; set; }
-
-        #region ShouldSerialize
-        public bool ShouldSerializeQtdRubr() => QtdRubr != 0;
-        public bool ShouldSerializeFatorRubr() => FatorRubr != 0;
-
 #if INTEROP
-        public bool ShouldSerializeIndApurIR() => IndApurIR != (IndApurIR)(-1);
+        public IndApurIR IndApurIR { get; set; } = (IndApurIR)(-1);
 #else
-        public bool ShouldSerializeIndApurIR() => !IndApurIR.IsNullOrEmpty();
+        public IndApurIR? IndApurIR { get; set; }
 #endif
+        #region ShouldSerialize
+        public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
+        public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
+
+        public bool ShouldSerializeIndApurIR() => IndApurIR != null && IndApurIR != (IndApurIR)(-1);
+
         #endregion ShouldSerialize
     }
 
-    #endregion ItensRemun
+#endregion ItensRemun
 
 }

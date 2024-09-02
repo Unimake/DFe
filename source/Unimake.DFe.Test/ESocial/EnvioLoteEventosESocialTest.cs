@@ -227,7 +227,7 @@ namespace Unimake.DFe.Test.ESocial
                                                         TpInsc = TpInsc.CNPJ,
                                                         NrInsc = "12345678901234",
                                                         Codlotacao = "148",
-                                                        QtdDiasAv = 1,
+                                                        QtdDiasAv = "1",
                                                         RemunPerApur = new List<RemunPerApur>
                                                         {
                                                             new RemunPerApur
@@ -266,6 +266,35 @@ namespace Unimake.DFe.Test.ESocial
                     }
                 }
             };
+
+            var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoXML, configuracao);
+            enviarLoteEventosESocial.Executar();
+        }
+
+
+        /// <summary>
+        /// Testar o envio do evento S-1005
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void ESocialEnvioLoteEventosXML(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.ESocialEnviarLoteEventos,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var xml = new XmlDocument();
+            xml.Load("..\\..\\..\\ESocial\\Resources\\EnvioLoteEventos-esocial-loteevt.xml");
+
+            var conteudoXML = new ESocialEnvioLoteEventos();
+            conteudoXML = XMLUtility.Deserializar<ESocialEnvioLoteEventos>(xml);
 
             var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoXML, configuracao);
             enviarLoteEventosESocial.Executar();

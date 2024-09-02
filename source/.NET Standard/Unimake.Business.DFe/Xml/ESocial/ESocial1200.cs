@@ -890,7 +890,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// [08, 09] em perApur e se indApuracao = [1].
         /// </summary>
         [XmlElement("qtdDiasAv")]
-        public int QtdDiasAv { get; set; }
+        public string QtdDiasAv { get; set; }
 
         /// <summary>
         /// Remuneração do trabalhador 
@@ -936,7 +936,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         #region ShouldSerialize
-        public bool ShouldSerializeQtdDiasAvField() => QtdDiasAv != 0;
+        public bool ShouldSerializeQtdDiasAv() => !QtdDiasAv.IsNullOrEmpty();
+
         #endregion ShouldSerialize
     }
 
