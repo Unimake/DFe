@@ -81,8 +81,8 @@
 				<descrDep>descrDep3</descrDep>
 			</dependente>
 			<contato>
-				<fonePrinc>fonePrinc1</fonePrinc>
-				<emailPrinc>emailPrinc1</emailPrinc>
+				<fonePrinc>1234567890</fonePrinc>
+				<emailPrinc>teste@teste.com.br</emailPrinc>
 			</contato>
 		</trabalhador>
 		<infoTSVInicio>

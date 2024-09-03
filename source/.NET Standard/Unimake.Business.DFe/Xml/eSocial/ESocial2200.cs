@@ -191,7 +191,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeFonePrinc() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 10;
+        public bool ShouldSerializeFonePrinc() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 8;
 
         public bool ShouldSerializeEmailPrinc() => !string.IsNullOrEmpty(EmailPrinc) &&
                                                          EmailPrinc.Contains("@")   &&

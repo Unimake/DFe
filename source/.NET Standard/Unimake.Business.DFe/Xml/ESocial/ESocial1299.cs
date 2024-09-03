@@ -124,8 +124,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 1 - Documento de Arrecadação do eSocial - DAE
         /// </summary>
         [XmlElement("indGuia")]
+#if INTEROP
+        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
+#else
         public IndGuia? IndGuia { get; set; }
-
+#endif
         /// <summary>
         /// Identificação do ambiente
         /// </summary>
@@ -145,11 +148,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-#if INTEROP
-        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
-#else
-        public bool ShouldSerializeIndGuia() => !IndGuia.IsNullOrEmpty();
-#endif
+
+        public bool ShouldSerializeIndGuia() => IndGuia != null && IndGuia != (IndGuia)(-1);
+
 #endregion ShouldSerialize
     }
 
@@ -241,29 +242,37 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// caso o campo tenha sido informado em fechamento anterior do mesmo período de apuração.
         /// </summary>
         [XmlElement("indExcApur1250")]
-        public string IndExcApur1250 { get; set; }
-
+#if INTEROP
+        public SimNaoLetra IndExcApur1250 { get; set; } = (SimNaoLetra)(-1)
+#else
+        public SimNaoLetra? IndExcApur1250 { get; set; }
+#endif
         /// <summary>
         /// Solicitação de transmissão imediata da DCTFWeb
         /// Valores válidos: S - Sim Validação: Não informar se perApur < [2021-10]. 
         /// Preenchimento obrigatório se perApur >= [2021-10] e (classTrib em S-1000 = [04] ou indGuia estiver informado).
         /// </summary>
         [XmlElement("transDCTFWeb")]
-        public string TransDCTFWeb { get; set; }
-
+#if INTEROP
+        public SimNaoLetra TransDCTFWeb { get; set; } = (SimNaoLetra)(-1)
+#else
+        public SimNaoLetra? TransDCTFWeb { get; set; }
+#endif
         /// <summary>
         /// Indicativo de não validação das regras de fechamento, para que os grandes contribuintes possam reduzir o tempo
         /// de processamento do evento. O preenchimento deste campo implica a não execução da REGRA_VALIDA_FECHAMENTO_FOPAG.
         /// </summary>
         [XmlElement("naoValid")]
-        public string NaoValid { get; set; }
-
+#if INTEROP
+        public SimNaoLetra NaoValid { get; set; } = (SimNaoLetra)(-1)
+#else
+        public SimNaoLetra? NaoValid { get; set; }
+#endif
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndExecApur1250() => !string.IsNullOrEmpty(IndExcApur1250);
-        public bool ShouldSerializeTransDCTFWeb() => !string.IsNullOrEmpty(TransDCTFWeb);
-        public bool ShouldSerializeNaoValid() => !string.IsNullOrEmpty(NaoValid);
-
+        public bool ShouldSerializeIndExecApur1250() => IndExcApur1250 != null && IndExcApur1250 != (SimNaoLetra)(-1);
+        public bool ShouldSerializeTransDCTFWeb() => TransDCTFWeb != null && TransDCTFWeb != (SimNaoLetra)(-1);
+        public bool ShouldSerializeNaoValid() => NaoValid != null && NaoValid != (SimNaoLetra)(-1);
 
         #endregion ShouldSerialize
     }

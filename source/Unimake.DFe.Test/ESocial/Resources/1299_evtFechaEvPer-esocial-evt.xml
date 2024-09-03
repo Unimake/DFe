@@ -19,8 +19,6 @@
 			<evtContratAvNP>S</evtContratAvNP>
 			<evtInfoComplPer>S</evtInfoComplPer>
 			<indExcApur1250>S</indExcApur1250>
-			<transDCTFWeb>S</transDCTFWeb>
-			<naoValid>S</naoValid>
 		</infoFech>
 	</evtFechaEvPer>
 </eSocial>

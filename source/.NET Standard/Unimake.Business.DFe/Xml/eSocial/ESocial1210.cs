@@ -76,8 +76,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("indGuia")]
-        public string IndGuia { get; set; }
-
+#if INTEROP
+        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
+#else
+        public IndGuia? IndGuia { get; set; }
+#endif
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
@@ -91,7 +94,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
-        public bool ShouldSerializeIndGuia() => !string.IsNullOrEmpty(IndGuia);
+        public bool ShouldSerializeIndGuia() => IndGuia != null && IndGuia != (IndGuia)(-1);
 
         #endregion
     }
@@ -493,7 +496,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoDep
     {
         [XmlElement("cpfDep")]
-        public int CpfDep { get; set; }
+        public string CpfDep { get; set; }
 
         [XmlIgnore]
 #if INTEROP
@@ -556,7 +559,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoIRCR
     {
         [XmlElement("tpCR")]
-        public int TpCR { get; set; }
+        public TpCR TpCR { get; set; }
 
         [XmlElement("dedDepen")]
         public List<DedDepen> DedDepen { get; set; }
@@ -718,12 +721,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoProcRetCount => (InfoProcRet != null ? InfoProcRet.Count : 0);
 #endif
 
-
-        #region ShouldSerialize 
-
-        public bool ShouldSerializeTpCR() => TpCR > 0;
-
-        #endregion
     }
 
 #if INTEROP
@@ -734,27 +731,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class DedDepen
     {
         [XmlElement("tpRend")]
-#if INTEROP
-        public TipoDeRendimento TpRend { get; set; } = (TipoDeRendimento)(-1);
-#else
-        public TipoDeRendimento ? TpRend { get; set; }
-#endif
+        public TipoDeRendimento TpRend { get; set; }
 
         [XmlElement("cpfDep")]
-        public int CpfDep { get; set; }
+        public string CpfDep { get; set; }
 
         [XmlElement("vlrDedDep")]
         public double VlrDedDep { get; set; }
-
-        #region ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeTpRend() => TpRend != (TipoDeRendimento)(-1);
-#else
-        public bool ShouldSerializeTpRend() => TpRend != null;
-#endif
-
-        #endregion
     }
 
 #if INTEROP
@@ -765,27 +748,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class PenAlim
     {
         [XmlElement("tpRend")]
-#if INTEROP
-        public TipoDeRendimento TpRend { get; set; } = (TipoDeRendimento)(-1);
-#else
-        public TipoDeRendimento ? TpRend { get; set; }
-#endif
+        public TipoDeRendimento TpRend { get; set; }
 
         [XmlElement("cpfDep")]
-        public int CpfDep { get; set; }
+        public string CpfDep { get; set; }
 
         [XmlElement("vlrDedPenAlim")]
         public double VlrDedPenAlim { get; set; }
-
-        #region ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeTpRend() => TpRend != (TipoDeRendimento)(-1);
-#else
-        public bool ShouldSerializeTpRend() => TpRend != null;
-#endif
-
-        #endregion
     }
 
 #if INTEROP

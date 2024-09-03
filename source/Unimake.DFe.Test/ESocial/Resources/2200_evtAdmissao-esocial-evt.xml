@@ -56,8 +56,8 @@
 				<incTrab>S</incTrab>
 			</dependente>
 			<contato>
-				<fonePrinc>str12340</fonePrinc>
-				<emailPrinc>str1234</emailPrinc>
+				<fonePrinc>1234567890</fonePrinc>
+				<emailPrinc>teste@teste.com.br</emailPrinc>
 			</contato>
 		</trabalhador>
 		<vinculo>
