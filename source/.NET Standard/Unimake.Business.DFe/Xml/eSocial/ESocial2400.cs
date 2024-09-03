@@ -256,7 +256,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpDep() => TpDep != null;
 #endif
 
-        public bool ShouldSerializeCpfDepField() => !string.IsNullOrEmpty(CpfDep);
+        public bool ShouldSerializeCpfDep() => !string.IsNullOrEmpty(CpfDep);
 
 #if INTEROP
         public bool ShouldSerializeSexoDep() => SexoDep != (TipoSexo)(-1);

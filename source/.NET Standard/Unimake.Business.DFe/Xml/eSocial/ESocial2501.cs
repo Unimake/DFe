@@ -117,7 +117,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeObsField() => !string.IsNullOrEmpty(Obs);
+        public bool ShouldSerializeObs() => !string.IsNullOrEmpty(Obs);
 
         #endregion
     }
@@ -475,21 +475,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrRendTribField() => VrRendTrib > 0;
+        public bool ShouldSerializeVrRendTrib() => VrRendTrib > 0;
       
-        public bool ShouldSerializeVrRendTrib13Field() => VrRendTrib13 > 0;
+        public bool ShouldSerializeVrRendTrib13() => VrRendTrib13 > 0;
        
-        public bool ShouldSerializeVrRendMoleGraveField() => VrRendMoleGrave > 0;
+        public bool ShouldSerializeVrRendMoleGrave() => VrRendMoleGrave > 0;
        
-        public bool ShouldSerializeVrRendIsen65Field() => VrRendIsen65 > 0;
+        public bool ShouldSerializeVrRendIsen65() => VrRendIsen65 > 0;
       
-        public bool ShouldSerializeVrJurosMoraField() => VrJurosMora > 0;
+        public bool ShouldSerializeVrJurosMora() => VrJurosMora > 0;
       
-        public bool ShouldSerializeVrRendIsenNTribField() => VrRendIsenNTrib > 0;
+        public bool ShouldSerializeVrRendIsenNTrib() => VrRendIsenNTrib > 0;
 
-        public bool ShouldSerializeDescIsenNTribField() => !string.IsNullOrEmpty(DescIsenNTrib);
+        public bool ShouldSerializeDescIsenNTrib() => !string.IsNullOrEmpty(DescIsenNTrib);
 
-        public bool ShouldSerializeVrPrevOficialField() => VrPrevOficial > 0;
+        public bool ShouldSerializeVrPrevOficial() => VrPrevOficial > 0;
 
         #endregion
     }
@@ -674,7 +674,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCodSuspField() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
         #endregion
     }
@@ -957,9 +957,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtNasctoField() => DtNascto > DateTime.MinValue;
 
-        public bool ShouldSerializeNomeField() => !string.IsNullOrEmpty(Nome);
+        public bool ShouldSerializeNome() => !string.IsNullOrEmpty(Nome);
 
-        public bool ShouldSerializeDepIRRFField() => !string.IsNullOrEmpty(DepIRRF);
+        public bool ShouldSerializeDepIRRF() => !string.IsNullOrEmpty(DepIRRF);
 
 #if INTEROP
         public bool ShouldSerializeTpDepAux()
@@ -973,7 +973,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 #endif
 
-        public bool ShouldSerializeDescrDepField() => !string.IsNullOrEmpty(DescrDep);
+        public bool ShouldSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
 
         #endregion
     }

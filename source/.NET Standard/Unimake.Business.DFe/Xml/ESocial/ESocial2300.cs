@@ -214,12 +214,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Termino Termino { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
-        public bool ShouldSerializeNrProcTrabField() => !string.IsNullOrEmpty(NrProcTrab);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeNrProcTrab() => !string.IsNullOrEmpty(NrProcTrab);
 #if INTEROP
-        public bool ShouldSerializeNatAtividadeField() => NatAtividade != (NatAtividade)(-1);
+        public bool ShouldSerializeNatAtividade() => NatAtividade != (NatAtividade)(-1);
 #else
-        public bool ShouldSerializeNatAtividadeField() => !NatAtividade.IsNullOrEmpty();
+        public bool ShouldSerializeNatAtividade() => !NatAtividade.IsNullOrEmpty();
 #endif
 #endregion ShouldSerialize
     }
@@ -341,10 +341,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CBOFuncao { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeNmCargoField() => !string.IsNullOrEmpty(NmCargo);
-        public bool ShouldSerializeCBOCargoField() => !string.IsNullOrEmpty(CBOCargo);
-        public bool ShouldSerializeNmFuncaoField() => !string.IsNullOrEmpty(NmFuncao);
-        public bool ShouldSerializeCBOFuncaoField() => !string.IsNullOrEmpty(CBOFuncao);
+        public bool ShouldSerializeNmCargo() => !string.IsNullOrEmpty(NmCargo);
+        public bool ShouldSerializeCBOCargo() => !string.IsNullOrEmpty(CBOCargo);
+        public bool ShouldSerializeNmFuncao() => !string.IsNullOrEmpty(NmFuncao);
+        public bool ShouldSerializeCBOFuncao() => !string.IsNullOrEmpty(CBOFuncao);
         #endregion ShouldSerialize
     }
 
@@ -470,15 +470,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeTpInscField() => TpInsc != (TpInsc)(-1);
 #else
-        public bool ShouldSerializeTpInscField() => !TpInsc.IsNullOrEmpty();
+        public bool ShouldSerializeTpInsc() => !TpInsc.IsNullOrEmpty();
 #endif
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
         public bool ShouldSerializeDtAdmOrigField() => DtAdmOrig > DateTimeOffset.MinValue;
-        public bool ShouldSerializeMatricOrigField() => !string.IsNullOrEmpty(MatricOrig);
+        public bool ShouldSerializeMatricOrig() => !string.IsNullOrEmpty(MatricOrig);
 #if INTEROP
-        public bool ShouldSerializeTpRegTrabField() => TpRegTrab != (TipoRegimeTrabalhista)(-1);
+        public bool ShouldSerializeTpRegTrab() => TpRegTrab != (TipoRegimeTrabalhista)(-1);
 #else
-        public bool ShouldSerializeTpRegTrabField() => !TpRegTrab.IsNullOrEmpty();
+        public bool ShouldSerializeTpRegTrab() => !TpRegTrab.IsNullOrEmpty();
 #endif
         #endregion ShouldSerialize
     }
@@ -659,9 +659,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 #if INTEROP
-        public bool ShouldSerializeIndRemunCargoField() => IndRemunCargo != (SimNaoLetra)(-1);
+        public bool ShouldSerializeIndRemunCargo() => IndRemunCargo != (SimNaoLetra)(-1);
 #else
-        public bool ShouldSerializeIndRemunCargoField() => !IndRemunCargo.IsNullOrEmpty();
+        public bool ShouldSerializeIndRemunCargo() => !IndRemunCargo.IsNullOrEmpty();
 #endif
         #endregion ShouldSerialize
     }
@@ -767,12 +767,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SupervisorEstagio SupervisorEstagio { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeAreaAtuacaoField() => !string.IsNullOrEmpty(AreaAtuacao);
-        public bool ShouldSerializeNrApolField() => !string.IsNullOrEmpty(NrApol);
+        public bool ShouldSerializeAreaAtuacao() => !string.IsNullOrEmpty(AreaAtuacao);
+        public bool ShouldSerializeNrApol() => !string.IsNullOrEmpty(NrApol);
 #if INTEROP
-        public bool ShouldSerializeNivEstagioField() => NivEstagio != (NivEstagio)(-1);
+        public bool ShouldSerializeNivEstagio() => NivEstagio != (NivEstagio)(-1);
 #else
-        public bool ShouldSerializeNivEstagiolField() => !NivEstagio.IsNullOrEmpty();
+        public bool ShouldSerializeNivEstagiol() => !NivEstagio.IsNullOrEmpty();
 #endif
         #endregion ShouldSerialize
     }
@@ -867,17 +867,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         #region ShouldSerialize
-        public bool ShouldSerializeCnpjInstEnsinoField() => !string.IsNullOrEmpty(CnpjInstEnsino);
-        public bool ShouldSerializeNmRazaoField() => !string.IsNullOrEmpty(NmRazao);
-        public bool ShouldSerializeDscLogradField() => !string.IsNullOrEmpty(DscLograd);
-        public bool ShouldSerializeNrLogradField() => !string.IsNullOrEmpty(NrLograd);
-        public bool ShouldSerializeBairroField() => !string.IsNullOrEmpty(Bairro);
-        public bool ShouldSerializeCepField() => !string.IsNullOrEmpty(Cep);
-        public bool ShouldSerializeCodMunicField() => !string.IsNullOrEmpty(CodMunic);
+        public bool ShouldSerializeCnpjInstEnsino() => !string.IsNullOrEmpty(CnpjInstEnsino);
+        public bool ShouldSerializeNmRazao() => !string.IsNullOrEmpty(NmRazao);
+        public bool ShouldSerializeDscLograd() => !string.IsNullOrEmpty(DscLograd);
+        public bool ShouldSerializeNrLograd() => !string.IsNullOrEmpty(NrLograd);
+        public bool ShouldSerializeBairro() => !string.IsNullOrEmpty(Bairro);
+        public bool ShouldSerializeCep() => !string.IsNullOrEmpty(Cep);
+        public bool ShouldSerializeCodMunic() => !string.IsNullOrEmpty(CodMunic);
 #if INTEROP
-        public bool ShouldSerializeUfField() => Uf != (UFBrasil)(-1);
+        public bool ShouldSerializeUf() => Uf != (UFBrasil)(-1);
 #else
-        public bool ShouldSerializeUflField() => !Uf.IsNullOrEmpty();
+        public bool ShouldSerializeUf() => !Uf.IsNullOrEmpty();
 #endif
         #endregion ShouldSerialize
     }
@@ -923,7 +923,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CpfSupervisor { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeCpfSupervisorField() => CpfSupervisor.HasOnlyNumbers();
+        public bool ShouldSerializeCpfSupervisor() => CpfSupervisor.HasOnlyNumbers();
         #endregion ShouldSerialize
 
     }
