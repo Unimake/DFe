@@ -298,7 +298,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDscAgNocField() => !string.IsNullOrEmpty(DscAgNoc);
+        public bool ShouldSerializeDscAgNoc() => !string.IsNullOrEmpty(DscAgNoc);
 
 #if INTEROP
         public bool ShouldSerializeTpAval() => TpAval != (TpAval)(-1);
@@ -306,9 +306,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpAval() => TpAval != null;
 #endif
 
-        public bool ShouldSerializeIntConcField() => !string.IsNullOrEmpty(IntConc);
+        public bool ShouldSerializeIntConc() => !string.IsNullOrEmpty(IntConc);
 
-        public bool ShouldSerializeLimTolField() => !string.IsNullOrEmpty(LimTol);
+        public bool ShouldSerializeLimTol() => !string.IsNullOrEmpty(LimTol);
 
 #if INTEROP
         public bool ShouldSerializeUnMed() => UnMed != (UnMed)(-1);
@@ -316,9 +316,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeUnMed() => UnMed != null;
 #endif
 
-        public bool ShouldSerializeTecMedicaoField() => !string.IsNullOrEmpty(TecMedicao);
+        public bool ShouldSerializeTecMedicao() => !string.IsNullOrEmpty(TecMedicao);
 
-        public bool ShouldSerializeNrProcJudField() => !string.IsNullOrEmpty(NrProcJud);
+        public bool ShouldSerializeNrProcJud() => !string.IsNullOrEmpty(NrProcJud);
 
         #endregion
     }
@@ -485,9 +485,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIdeOc() => IdeOc != null;
 #endif
 
-        public bool ShouldSerializeDscOCField() => !string.IsNullOrEmpty(DscOC);
+        public bool ShouldSerializeDscOC() => !string.IsNullOrEmpty(DscOC);
 
-        public bool ShouldSerializeNrOCField() => !string.IsNullOrEmpty(NrOC);
+        public bool ShouldSerializeNrOC() => !string.IsNullOrEmpty(NrOC);
 
 #if INTEROP
         public bool ShouldSerializeUfOC() => UfOC != (UFBrasil)(-1);

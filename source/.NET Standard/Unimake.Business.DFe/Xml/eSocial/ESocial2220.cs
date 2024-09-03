@@ -66,7 +66,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 
 #if INTEROP
         public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
@@ -228,7 +228,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeObsProcField() => !string.IsNullOrEmpty(ObsProc);
+        public bool ShouldSerializeObsProc() => !string.IsNullOrEmpty(ObsProc);
 
 #if INTEROP
         public bool ShouldSerializeOrdExame() => OrdExame != (OrdExame)(-1);
@@ -267,7 +267,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrCRMField() => !string.IsNullOrEmpty(NrCRM);
+        public bool ShouldSerializeNrCRM() => !string.IsNullOrEmpty(NrCRM);
 
 #if INTEROP
         public bool ShouldSerializeUfCRM() => UfCRM != (UFBrasil)(-1);
@@ -299,7 +299,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCpfRespField() => !string.IsNullOrEmpty(CpfResp);
+        public bool ShouldSerializeCpfResp() => !string.IsNullOrEmpty(CpfResp);
 
         #endregion
     }

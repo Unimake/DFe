@@ -160,11 +160,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         #region ShouldSerialize
-        public bool ShouldSerializeNrCRMField() => !string.IsNullOrEmpty(NrCRM);
+        public bool ShouldSerializeNrCRM() => !string.IsNullOrEmpty(NrCRM);
 #if INTEROP
-        public bool ShouldSerializeUfCRMField() => UfCRM != (UFBrasil)(-1);
+        public bool ShouldSerializeUfCRM() => UfCRM != (UFBrasil)(-1);
 #else
-        public bool ShouldSerializeUfCRMField() => !UfCRM.IsNullOrEmpty();
+        public bool ShouldSerializeUfCRM() => !UfCRM.IsNullOrEmpty();
 #endif
 
 #endregion ShouldSerialize

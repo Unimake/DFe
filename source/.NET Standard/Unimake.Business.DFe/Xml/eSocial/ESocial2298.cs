@@ -100,9 +100,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrProcJudField() => !string.IsNullOrEmpty(NrProcJud);
+        public bool ShouldSerializeNrProcJud() => !string.IsNullOrEmpty(NrProcJud);
      
-        public bool ShouldSerializeNrLeiAnistiaField() => !string.IsNullOrEmpty(NrLeiAnistia);
+        public bool ShouldSerializeNrLeiAnistia() => !string.IsNullOrEmpty(NrLeiAnistia);
 
         #endregion
     }
