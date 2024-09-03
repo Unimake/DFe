@@ -23,9 +23,9 @@ namespace Unimake.Business.DFe.Xml.DARE
     [XmlRoot("DareLote", Namespace = "https://portal.fazenda.sp.gov.br/servicos/dare", IsNullable = false)]
     public class DARELote : XMLBase
 
-        /// <summary>
-        /// Dados do contribuinte não cadastrado no sistema. 
-        /// Contém informações relevantes sobre o contribuinte que não está registrado no cadastro oficial.
+    /// <summary>
+    /// Dados do contribuinte não cadastrado no sistema. 
+    /// Contém informações relevantes sobre o contribuinte que não está registrado no cadastro oficial.
     {
         [XmlElement("dadosContribuinteNaoCadastrado")]
 
@@ -102,10 +102,10 @@ namespace Unimake.Business.DFe.Xml.DARE
 
     public class DadosContribuinteNaoCadastrado
 
-        /// <summary>
-        /// Número de controle do DARE principal. 
-        /// Este é um identificador único utilizado para rastreamento e referência do DARE.
-        /// </summary>
+    /// <summary>
+    /// Número de controle do DARE principal. 
+    /// Este é um identificador único utilizado para rastreamento e referência do DARE.
+    /// </summary>
     {
         [XmlElement("numeroControleDarePrincipal")]
         public string NumeroControleDarePrincipal { get; set; }
@@ -228,11 +228,11 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddPossiveisReceitas(PossiveisReceitas item)
+        public void AddPossiveisReceitas(string item)
         {
             if (PossiveisReceitas == null)
             {
-                PossiveisReceitas = new List<PossiveisReceitas>();
+                PossiveisReceitas = new List<string>();
             }
 
             PossiveisReceitas.Add(item);
@@ -243,7 +243,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da PossiveisReceitas</returns>
-        public PossiveisReceitas GetPossiveisReceitas(int index)
+        public string GetPossiveisReceitas(int index)
         {
             if ((PossiveisReceitas?.Count ?? 0) == 0)
             {
@@ -364,10 +364,10 @@ namespace Unimake.Business.DFe.Xml.DARE
 
     public class Erro
 
-        /// <summary>
-        /// Indica se o processamento do DARE está OK ou não. 
-        /// Um valor que indica o status geral do processamento.
-        /// </summary>
+    /// <summary>
+    /// Indica se o processamento do DARE está OK ou não. 
+    /// Um valor que indica o status geral do processamento.
+    /// </summary>
     {
         [XmlElement("estaOk")]
         public string EstaOk { get; set; }
@@ -389,10 +389,10 @@ namespace Unimake.Business.DFe.Xml.DARE
 
     public class ItensParaGeracao
 
-        /// <summary>
-        /// Lista de objetos DARE para geração. 
-        /// Cada item nesta lista representa um DARE individual que compõe o lote.
-        /// </summary>
+    /// <summary>
+    /// Lista de objetos DARE para geração. 
+    /// Cada item nesta lista representa um DARE individual que compõe o lote.
+    /// </summary>
     {
 
         [XmlElement("Dare")]
@@ -407,10 +407,10 @@ namespace Unimake.Business.DFe.Xml.DARE
 
     public class DARE
 
-        /// <summary>
-        /// Número de controle do DARE principal. 
-        /// Um identificador único utilizado para rastreamento e referência do DARE.
-        /// </summary>
+    /// <summary>
+    /// Número de controle do DARE principal. 
+    /// Um identificador único utilizado para rastreamento e referência do DARE.
+    /// </summary>
     {
         [XmlElement("numeroControleDarePrincipal")]
         public string NumeroControleDarePrincipal { get; set; }

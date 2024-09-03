@@ -79,7 +79,11 @@ namespace Unimake.Business.DFe.Xml.NFe
 
                         detEvento.DetPag.Add(new DetPagECONF
                         {
+#if INTEROP
+                            IndPag = elementDetPag.GetElementsByTagName("indPag").Count > 0 ? (IndicadorPagamento)Convert.ToInt32(elementDetPag.GetElementsByTagName("indPag")[0].InnerText) : (IndicadorPagamento)(-1),
+#else
                             IndPag = elementDetPag.GetElementsByTagName("indPag").Count > 0 ? (IndicadorPagamento?)Convert.ToInt32(elementDetPag.GetElementsByTagName("indPag")[0].InnerText) : null,
+#endif
                             TPag = (MeioPagamento)Convert.ToInt32(elementDetPag.GetElementsByTagName("tPag")[0].InnerText),
                             XPag = elementDetPag.GetElementsByTagName("xPag").Count > 0 ? elementDetPag.GetElementsByTagName("xPag")[0].InnerText : "",
                             VPag = Convert.ToDouble(elementDetPag.GetElementsByTagName("vPag")[0].InnerText, CultureInfo.InvariantCulture),
@@ -87,7 +91,11 @@ namespace Unimake.Business.DFe.Xml.NFe
                             CNPJPag = elementDetPag.GetElementsByTagName("CNPJPag").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJPag")[0].InnerText : "",
                             UFPag = elementDetPag.GetElementsByTagName("CNPJPag").Count > 0 ? (UFBrasil)Enum.Parse(typeof(UFBrasil), elementDetPag.GetElementsByTagName("UFPag")[0].InnerText) : UFBrasil.AN,
                             CNPJIF = elementDetPag.GetElementsByTagName("CNPJIF").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJIF")[0].InnerText : "",
+#if INTEROP
+                            TBand = elementDetPag.GetElementsByTagName("tBand").Count > 0 ? (BandeiraOperadoraCartao)Convert.ToInt32(elementDetPag.GetElementsByTagName("tBand")[0].InnerText) : (BandeiraOperadoraCartao)(-1),
+#else
                             TBand = elementDetPag.GetElementsByTagName("tBand").Count > 0 ? (BandeiraOperadoraCartao?)Convert.ToInt32(elementDetPag.GetElementsByTagName("tBand")[0].InnerText) : null,
+#endif
                             CAut = elementDetPag.GetElementsByTagName("cAut").Count > 0 ? elementDetPag.GetElementsByTagName("cAut")[0].InnerText : "",
                             CNPJReceb = elementDetPag.GetElementsByTagName("CNPJReceb").Count > 0 ? elementDetPag.GetElementsByTagName("CNPJReceb")[0].InnerText : "",
                             UFReceb = elementDetPag.GetElementsByTagName("CNPJReceb").Count > 0 ? (UFBrasil)Enum.Parse(typeof(UFBrasil), elementDetPag.GetElementsByTagName("UFReceb")[0].InnerText) : UFBrasil.AN,
