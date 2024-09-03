@@ -129,7 +129,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
         #endregion
     }
@@ -216,9 +216,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
 
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
         #endregion
     }
@@ -444,9 +444,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
         
-        public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
+        public bool ShouldSerializeQtdRubr() => QtdRubr > 0;
        
-        public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
+        public bool ShouldSerializeFatorRubr() => FatorRubr > 0;
 
         #endregion
     }

@@ -82,7 +82,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndGuiaField() => !string.IsNullOrEmpty(IndGuia);
+        public bool ShouldSerializeIndGuia() => !string.IsNullOrEmpty(IndGuia);
 
         #endregion
     }

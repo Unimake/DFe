@@ -156,7 +156,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
         #endregion ShouldSerialize
     }

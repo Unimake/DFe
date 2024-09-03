@@ -234,8 +234,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
-        public bool ShouldSerializeIndGuiaField() => !string.IsNullOrEmpty(IndGuia);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeIndGuia() => !string.IsNullOrEmpty(IndGuia);
         #endregion ShouldSerialize
     }
 

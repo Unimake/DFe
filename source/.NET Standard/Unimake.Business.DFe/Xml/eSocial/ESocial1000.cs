@@ -177,7 +177,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// ShouldSerializeFimValid
         /// </summary>
-        public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValidField);
+        public bool ShouldSerializeFimValid() => FimValid > DateTime.MinValue;
 
         #endregion
     }

@@ -148,7 +148,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
 #else
-        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
+        public bool ShouldSerializeIndGuia() => !IndGuia.IsNullOrEmpty();
 #endif
 #endregion ShouldSerialize
     }
@@ -260,9 +260,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndExecApur1250Field() => !string.IsNullOrEmpty(IndExcApur1250);
-        public bool ShouldSerializeTransDCTFWebField() => !string.IsNullOrEmpty(TransDCTFWeb);
-        public bool ShouldSerializeNaoValidField() => !string.IsNullOrEmpty(NaoValid);
+        public bool ShouldSerializeIndExecApur1250() => !string.IsNullOrEmpty(IndExcApur1250);
+        public bool ShouldSerializeTransDCTFWeb() => !string.IsNullOrEmpty(TransDCTFWeb);
+        public bool ShouldSerializeNaoValid() => !string.IsNullOrEmpty(NaoValid);
 
 
         #endregion ShouldSerialize

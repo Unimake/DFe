@@ -172,7 +172,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCnpjRespField() => !string.IsNullOrEmpty(CnpjResp);
+        public bool ShouldSerializeCnpjResp() => !string.IsNullOrEmpty(CnpjResp);
 
         #endregion
     }
@@ -208,7 +208,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// diferente do valor definido pelo órgão governamental competente.
         /// </summary>
         [XmlIgnore]
-        protected double Fap { get; set; }
+        public double Fap { get; set; }
 
         /// <summary>
         /// Fator Acidentário de Prevenção - FAP.
@@ -247,7 +247,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeAliqRatField() => !string.IsNullOrEmpty(AliqRat);
+        public bool ShouldSerializeAliqRat() => !string.IsNullOrEmpty(AliqRat);
 
         public bool ShouldSerializeFapField() => !Fap.IsNullOrEmpty();
 
@@ -380,7 +380,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrProcJudField() => !string.IsNullOrEmpty(NrProcJud);
+        public bool ShouldSerializeNrProcJud() => !string.IsNullOrEmpty(NrProcJud);
 
         #endregion
     }

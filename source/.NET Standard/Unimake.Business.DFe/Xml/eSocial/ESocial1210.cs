@@ -89,9 +89,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
-        public bool ShouldSerializeIndGuiaField() => !string.IsNullOrEmpty(IndGuia);
+        public bool ShouldSerializeIndGuia() => !string.IsNullOrEmpty(IndGuia);
 
         #endregion
     }
@@ -210,7 +210,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializePaisResidExtField() => !string.IsNullOrEmpty(PaisResidExt);
+        public bool ShouldSerializePaisResidExt() => !string.IsNullOrEmpty(PaisResidExt);
 
         #endregion
     }
@@ -236,7 +236,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNifBenefField() => !string.IsNullOrEmpty(NifBenef);
+        public bool ShouldSerializeNifBenef() => !string.IsNullOrEmpty(NifBenef);
 
         #endregion
     }
@@ -274,21 +274,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeEndDscLogradField() => !string.IsNullOrEmpty(EndDscLograd);
+        public bool ShouldSerializeEndDscLograd() => !string.IsNullOrEmpty(EndDscLograd);
 
-        public bool ShouldSerializeEndNrLogradField() => !string.IsNullOrEmpty(EndNrLograd);
+        public bool ShouldSerializeEndNrLograd() => !string.IsNullOrEmpty(EndNrLograd);
 
-        public bool ShouldSerializeEndComplemField() => !string.IsNullOrEmpty(EndComplem);
+        public bool ShouldSerializeEndComplem() => !string.IsNullOrEmpty(EndComplem);
 
-        public bool ShouldSerializeEndBairroField() => !string.IsNullOrEmpty(EndBairro);
+        public bool ShouldSerializeEndBairro() => !string.IsNullOrEmpty(EndBairro);
 
-        public bool ShouldSerializeEndCidadeField() => !string.IsNullOrEmpty(EndCidade);
+        public bool ShouldSerializeEndCidade() => !string.IsNullOrEmpty(EndCidade);
 
-        public bool ShouldSerializeEndEstadoField() => !string.IsNullOrEmpty(EndEstado);
+        public bool ShouldSerializeEndEstado() => !string.IsNullOrEmpty(EndEstado);
 
-        public bool ShouldSerializeEndCodPostalField() => !string.IsNullOrEmpty(EndCodPostal);
+        public bool ShouldSerializeEndCodPostal() => !string.IsNullOrEmpty(EndCodPostal);
 
-        public bool ShouldSerializeTelefField() => !string.IsNullOrEmpty(Telef);
+        public bool ShouldSerializeTelef() => !string.IsNullOrEmpty(Telef);
 
         #endregion
     }
@@ -533,9 +533,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtNasctoField() => DtNascto > DateTime.MinValue;
 
-        public bool ShouldSerializeNomeField() => !string.IsNullOrEmpty(Nome);
+        public bool ShouldSerializeNome() => !string.IsNullOrEmpty(Nome);
 
-        public bool ShouldSerializeDepIRRFField() => !string.IsNullOrEmpty(DepIRRF);
+        public bool ShouldSerializeDepIRRF() => !string.IsNullOrEmpty(DepIRRF);
 
 #if INTEROP
         public bool ShouldSerializeTpDep() => TpDep != (TiposDeDependente)(-1);
@@ -543,7 +543,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpDep() => TpDep != null;
 #endif
 
-        public bool ShouldSerializeDescrDepField() => !string.IsNullOrEmpty(DescrDep);
+        public bool ShouldSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
 
         #endregion
     }
@@ -721,7 +721,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize 
 
-        public bool ShouldSerializeTpCRField() => TpCR > 0;
+        public bool ShouldSerializeTpCR() => TpCR > 0;
 
         #endregion
     }
@@ -872,7 +872,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCodSuspField() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
         #endregion
     }

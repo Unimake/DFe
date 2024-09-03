@@ -144,7 +144,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
         #endregion ShouldSerialize
     }
@@ -264,8 +264,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize 
 
-        public bool ShouldSerializeIdeAdquirField() => IdeAdquir != null;
-        public bool ShouldSerializeInfoProcJudField() => InfoProcJudESocial1260 != null;
+        public bool ShouldSerializeIdeAdquir() => IdeAdquir != null;
+        public bool ShouldSerializeInfoProcJud() => InfoProcJudESocial1260 != null;
 
         #endregion ShouldSerialize
     }
@@ -315,7 +315,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region shouldSerialize
 
-        public bool ShouldSerializeNfsField() => Nfs != null;
+        public bool ShouldSerializeNfs() => Nfs != null;
 
         #endregion shouldSerialize
     }
@@ -405,7 +405,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize 
 
-        public bool ShouldSerializeSerieField() => !string.IsNullOrEmpty(Serie);
+        public bool ShouldSerializeSerie() => !string.IsNullOrEmpty(Serie);
 
         #endregion ShouldSerialize
     }
@@ -478,11 +478,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrCPSuspField() => VrCPSusp > 0;
+        public bool ShouldSerializeVrCPSusp() => VrCPSusp > 0;
         
-        public bool ShouldSerializeVrRatSuspField() => VrRatSusp > 0;
+        public bool ShouldSerializeVrRatSusp() => VrRatSusp > 0;
 
-        public bool ShouldSerializeVrSenarSuspField() => VrSenarSusp > 0;
+        public bool ShouldSerializeVrSenarSusp() => VrSenarSusp > 0;
 
 
         #endregion ShouldSerialize
