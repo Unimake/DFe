@@ -163,7 +163,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtVencField() => DtVenc > DateTime.MinValue;
 
-        public bool ShouldSerializeClassTribField() => !string.IsNullOrEmpty(ClassTrib);
+        public bool ShouldSerializeClassTrib() => !string.IsNullOrEmpty(ClassTrib);
 
         #endregion
     }
@@ -233,7 +233,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
 
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
         #endregion
     }
@@ -307,7 +307,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCodLotacaoField() => !string.IsNullOrEmpty(CodLotacao);
+        public bool ShouldSerializeCodLotacao() => !string.IsNullOrEmpty(CodLotacao);
 
 #if INTEROP
         public bool ShouldSerializeTpLotacao() => TpLotacao != (TpLotacao)(-1);
@@ -321,7 +321,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
 
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
         #endregion
     }
@@ -449,15 +449,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 
-#if INTEROP
-        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
-#else
-        public bool ShouldSerializeCodCateg() => CodCateg != null;
-#endif
-
-        public bool ShouldSerializeCategOrigField() => !string.IsNullOrEmpty(CategOrig);
+        public bool ShouldSerializeCategOrig() => !string.IsNullOrEmpty(CategOrig);
 
 #if INTEROP
         public bool ShouldSerializeTpRegTrab() => TpRegTrab != (TipoRegimeTrabalhista)(-1);
@@ -473,11 +467,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtDesligField() => DtDeslig > DateTime.MinValue;
 
-        public bool ShouldSerializeMtvDesligField() => !string.IsNullOrEmpty(MtvDeslig);
+        public bool ShouldSerializeMtvDeslig() => !string.IsNullOrEmpty(MtvDeslig);
 
         public bool ShouldSerializeDtTermField() => DtTerm > DateTime.MinValue;
 
-        public bool ShouldSerializeMtvDesligTSVField() => !string.IsNullOrEmpty(MtvDesligTSV);
+        public bool ShouldSerializeMtvDesligTSV() => !string.IsNullOrEmpty(MtvDesligTSV);
 
         #endregion
     }
@@ -518,7 +512,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
 
         #endregion
     }
