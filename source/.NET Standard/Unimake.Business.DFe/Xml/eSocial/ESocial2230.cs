@@ -61,6 +61,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
+        [XmlElement("codCateg")]
 #if INTEROP
         public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
 #else

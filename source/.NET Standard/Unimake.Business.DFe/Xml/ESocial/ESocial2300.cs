@@ -219,7 +219,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeNatAtividade() => NatAtividade != (NatAtividade)(-1);
 #else
-        public bool ShouldSerializeNatAtividade() => !NatAtividade.IsNullOrEmpty();
+        public bool ShouldSerializeNatAtividade() => NatAtividade != null;
 #endif
 #endregion ShouldSerialize
     }
@@ -470,7 +470,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeTpInscField() => TpInsc != (TpInsc)(-1);
 #else
-        public bool ShouldSerializeTpInsc() => !TpInsc.IsNullOrEmpty();
+        public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
         public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
         public bool ShouldSerializeDtAdmOrigField() => DtAdmOrig > DateTimeOffset.MinValue;
@@ -478,7 +478,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeTpRegTrab() => TpRegTrab != (TipoRegimeTrabalhista)(-1);
 #else
-        public bool ShouldSerializeTpRegTrab() => !TpRegTrab.IsNullOrEmpty();
+        public bool ShouldSerializeTpRegTrab() => TpRegTrab != null;
 #endif
         #endregion ShouldSerialize
     }
@@ -661,7 +661,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeIndRemunCargo() => IndRemunCargo != (SimNaoLetra)(-1);
 #else
-        public bool ShouldSerializeIndRemunCargo() => !IndRemunCargo.IsNullOrEmpty();
+        public bool ShouldSerializeIndRemunCargo() => IndRemunCargo != null;
 #endif
         #endregion ShouldSerialize
     }
@@ -752,7 +752,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Instituição de ensino ou entidade de formação/qualificação.
         /// </summary>
         [XmlElement("instEnsino")]
-        public InstEnsino InfoEnsino { get; set; }
+        public InstEnsino InstEnsino { get; set; }
 
         /// <summary>
         /// Agente de integração
@@ -769,10 +769,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeAreaAtuacao() => !string.IsNullOrEmpty(AreaAtuacao);
         public bool ShouldSerializeNrApol() => !string.IsNullOrEmpty(NrApol);
+
 #if INTEROP
         public bool ShouldSerializeNivEstagio() => NivEstagio != (NivEstagio)(-1);
 #else
-        public bool ShouldSerializeNivEstagiol() => !NivEstagio.IsNullOrEmpty();
+        public bool ShouldSerializeNivEstagiol() => NivEstagio != null;
 #endif
         #endregion ShouldSerialize
     }
@@ -874,10 +875,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeBairro() => !string.IsNullOrEmpty(Bairro);
         public bool ShouldSerializeCep() => !string.IsNullOrEmpty(Cep);
         public bool ShouldSerializeCodMunic() => !string.IsNullOrEmpty(CodMunic);
+
 #if INTEROP
         public bool ShouldSerializeUf() => Uf != (UFBrasil)(-1);
 #else
-        public bool ShouldSerializeUf() => !Uf.IsNullOrEmpty();
+        public bool ShouldSerializeUf() => Uf != null;
 #endif
         #endregion ShouldSerialize
     }
@@ -924,6 +926,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
         public bool ShouldSerializeCpfSupervisor() => CpfSupervisor.HasOnlyNumbers();
+
         #endregion ShouldSerialize
 
     }

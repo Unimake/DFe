@@ -133,7 +133,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeIndGuiaField() => IndGuia != (IndGuia)(-1);
 #else
-        public bool ShouldSerializeIndGuia() => !IndGuia.IsNullOrEmpty();
+        public bool ShouldSerializeIndGuia() => IndGuia != null;
 #endif
         public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
@@ -262,12 +262,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeMtvDesligTsVField() => MtvDesligTSV != (MtvDesligTSV)(-1);
 #else
-        public bool ShouldSerializeMtvDesligTsV() => !MtvDesligTSV.IsNullOrEmpty();
+        public bool ShouldSerializeMtvDesligTsV() => MtvDesligTSV != null;
 #endif
 #if INTEROP
         public bool ShouldSerializePensAlimField() => PensAlim != (PensAlim)(-1);
 #else
-        public bool ShouldSerializePensAlim() => !PensAlim.IsNullOrEmpty();
+        public bool ShouldSerializePensAlim() => PensAlim != null;
 #endif
 
         public bool ShouldSerializePercAliment() => PercAliment > 0;

@@ -283,7 +283,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeEstadoCivilField() => EstadoCivil != (EstadoCivil)(-1);
 #else
-        public bool ShouldSerializeEstadoCivil() => !EstadoCivil.IsNullOrEmpty();
+        public bool ShouldSerializeEstadoCivil() => EstadoCivil != null;
 #endif
 #endregion ShouldSerialize
     }

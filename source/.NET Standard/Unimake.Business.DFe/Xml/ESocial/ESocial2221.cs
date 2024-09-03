@@ -161,10 +161,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
         public bool ShouldSerializeNrCRM() => !string.IsNullOrEmpty(NrCRM);
+
 #if INTEROP
         public bool ShouldSerializeUfCRM() => UfCRM != (UFBrasil)(-1);
 #else
-        public bool ShouldSerializeUfCRM() => !UfCRM.IsNullOrEmpty();
+        public bool ShouldSerializeUfCRM() => UfCRM != null;
 #endif
 
 #endregion ShouldSerialize
