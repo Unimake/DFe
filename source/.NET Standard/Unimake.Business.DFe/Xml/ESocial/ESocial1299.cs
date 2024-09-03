@@ -243,7 +243,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("indExcApur1250")]
 #if INTEROP
-        public SimNaoLetra IndExcApur1250 { get; set; } = (SimNaoLetra)(-1)
+        public SimNaoLetra IndExcApur1250 { get; set; } = (SimNaoLetra)(-1);
 #else
         public SimNaoLetra? IndExcApur1250 { get; set; }
 #endif
@@ -254,7 +254,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("transDCTFWeb")]
 #if INTEROP
-        public SimNaoLetra TransDCTFWeb { get; set; } = (SimNaoLetra)(-1)
+        public SimNaoLetra TransDCTFWeb { get; set; } = (SimNaoLetra)(-1);
 #else
         public SimNaoLetra? TransDCTFWeb { get; set; }
 #endif
@@ -264,7 +264,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("naoValid")]
 #if INTEROP
-        public SimNaoLetra NaoValid { get; set; } = (SimNaoLetra)(-1)
+        public SimNaoLetra NaoValid { get; set; } = (SimNaoLetra)(-1);
 #else
         public SimNaoLetra? NaoValid { get; set; }
 #endif
