@@ -732,17 +732,7 @@ namespace Unimake.Business.DFe.Xml.NFe
             get => DescEventoField;
             set
             {
-                if (!value.Equals("Ciencia da Operacao") &&
-                    !value.Equals("Confirmacao da Operacao") &&
-                    !value.Equals("Desconhecimento da Operacao") &&
-                    !value.Equals("Operacao nao Realizada"))
-                {
-                    throw new Exception("O conteúdo da tag <descEvento> deve ser: Ciencia da Operacao, Confirmacao da Operacao, Desconhecimento da Operacao ou Operacao nao Realizada. O texto deve ficar idêntico ao descrito, inclusive letras maiúsculas e minúsculas.");
-                }
-                else
-                {
-                    DescEventoField = value;
-                }
+                DescEventoField = value;
             }
         }
 

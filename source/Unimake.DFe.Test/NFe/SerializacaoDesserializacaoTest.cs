@@ -196,6 +196,7 @@ namespace Unimake.DFe.Test.NFe
         [Trait("DFe", "NFe")]
         [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe.xml")]
         [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe2.xml")]
+        [InlineData(@"..\..\..\NFe\Resources\retConsSitNFe3.xml")]
         public void SerializacaoDesserializacaoRetConsSitNFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
@@ -204,6 +205,7 @@ namespace Unimake.DFe.Test.NFe
             doc.Load(arqXML);
 
             var xml = XMLUtility.Deserializar<RetConsSitNFe>(doc);
+
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
