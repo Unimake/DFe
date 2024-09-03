@@ -411,13 +411,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("indRRA")]
-        public string IndRRA { get; set; }
+#if INTEROP
+        public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndRRA { get; set; }
+#endif
 
         [XmlElement("indFciScp")]
 #if INTEROP
         public IndicativoFundoDeInvestimento IndFciScp { get; set; } = (IndicativoFundoDeInvestimento)(-1);
 #else
-        public IndicativoFundoDeInvestimento ? IndFciScp { get; set; }
+        public IndicativoFundoDeInvestimento? IndFciScp { get; set; }
 #endif
 
         [XmlElement("nrInscFciScp")]
@@ -592,11 +596,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSereializeIndDecTerc() => !string.IsNullOrEmpty(IndDecTerc);
 
-        public bool ShouldSerializeVlrRendTrib() => VlrRendTrib > 0;
+        public bool ShouldSerializeVlrRendTribField() => VlrRendTrib > 0;
 
-        public bool ShouldSerializeVlrIR() => VlrIR > 0;
+        public bool ShouldSerializeVlrIRField() => VlrIR > 0;
 
-        public bool ShouldSereializeIndRRA() => !string.IsNullOrEmpty(IndRRA);
+#if INTEROP
+        public bool ShouldSerializeIndRRA() => IndRRA != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSereializeIndRRA() => IndRRA != null;
+#endif
 
 #if INTEROP
         public bool ShouldSerializeIndFciScp() => IndFciScp != (IndicativoFundoDeInvestimento)(-1);
@@ -647,7 +655,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public SimNaoLetra InfoEntid { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra ? InfoEntid { get; set; }
+        public SimNaoLetra? InfoEntid { get; set; }
 #endif
 
         [XmlElement("nrInscPrevComp")]
@@ -713,7 +721,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSereializeNrInscPrevComp() => !string.IsNullOrEmpty(NrInscPrevComp);
 
-        public bool ShouldSerializeVlrPatrocFunp() => VlrPatrocFunp > 0;
+        public bool ShouldSerializeVlrPatrocFunpField() => VlrPatrocFunp > 0;
 
         #endregion
     }
@@ -748,9 +756,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
-
-        [XmlIgnore]
-        public double VlrDepen { get; set; }
 
         [XmlIgnore]
         public double VlrDepenSusp { get; set; }
@@ -923,15 +928,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        public bool ShouldSerializeVlrNRetido() => VlrNRetido > 0;
+        public bool ShouldSerializeVlrNRetidoField() => VlrNRetido > 0;
 
-        public bool ShouldSerializeVlrDepJu() => VlrDepJud > 0;
+        public bool ShouldSerializeVlrDepJudField() => VlrDepJud > 0;
 
-        public bool ShouldSerializeVlrCmpAnoCal() => VlrCmpAnoCal > 0;
+        public bool ShouldSerializeVlrCmpAnoCalField() => VlrCmpAnoCal > 0;
 
-        public bool ShouldSerializeVlrCmpAnoAnt() => VlrCmpAnoAnt > 0;
+        public bool ShouldSerializeVlrCmpAnoAntField() => VlrCmpAnoAnt > 0;
 
-        public bool ShouldSerializeVlrRendSusp() => VlrRendSusp > 0;
+        public bool ShouldSerializeVlrRendSuspField() => VlrRendSusp > 0;
 
         #endregion
     }
@@ -998,7 +1003,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrDedSusp() => VlrDedSusp > 0;
+        public bool ShouldSerializeVlrDedSuspField() => VlrDedSusp > 0;
 
         #endregion
     }
@@ -1135,7 +1140,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrAdv() => VlrAdv > 0;
+        public bool ShouldSerializeVlrAdvField() => VlrAdv > 0;
 
         #endregion
     }
@@ -1342,9 +1347,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrReemb() => VlrReemb > 0;
+        public bool ShouldSerializeVlrReembField() => VlrReemb > 0;
 
-        public bool ShouldSerializeVlrReembAnt() => VlrReembAnt > 0;
+        public bool ShouldSerializeVlrReembAntField() => VlrReembAnt > 0;
 
         #endregion
     }
@@ -1445,9 +1450,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrReemb() => VlrReemb > 0;
+        public bool ShouldSerializeVlrReembField() => VlrReemb > 0;
 
-        public bool ShouldSerializeVlrReembAnt() => VlrReembAnt > 0;
+        public bool ShouldSerializeVlrReembAntField() => VlrReembAnt > 0;
 
         #endregion
     }

@@ -68,7 +68,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 
 #if INTEROP
         public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
@@ -263,9 +263,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeNivEstagio() => NivEstagio != null;
 #endif
 
-        public bool ShouldSerializeAreaAtuacaoField() => !string.IsNullOrEmpty(AreaAtuacao);
+        public bool ShouldSerializeAreaAtuacao() => !string.IsNullOrEmpty(AreaAtuacao);
       
-        public bool ShouldSerializeNrApolField() => !string.IsNullOrEmpty(NrApol);
+        public bool ShouldSerializeNrApol() => !string.IsNullOrEmpty(NrApol);
 
         #endregion
     }
@@ -307,19 +307,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCnpjInstEnsinoField() => !string.IsNullOrEmpty(CnpjInstEnsino);
+        public bool ShouldSerializeCnpjInstEnsino() => !string.IsNullOrEmpty(CnpjInstEnsino);
       
-        public bool ShouldSerializeNmRazaoField() => !string.IsNullOrEmpty(NmRazao);
+        public bool ShouldSerializeNmRazao() => !string.IsNullOrEmpty(NmRazao);
      
-        public bool ShouldSerializeDscLogradField() => !string.IsNullOrEmpty(DscLograd);
+        public bool ShouldSerializeDscLograd() => !string.IsNullOrEmpty(DscLograd);
      
-        public bool ShouldSerializeNrLogradField() => !string.IsNullOrEmpty(NrLograd);
+        public bool ShouldSerializeNrLograd() => !string.IsNullOrEmpty(NrLograd);
    
-        public bool ShouldSerializeBairroField() => !string.IsNullOrEmpty(Bairro);
+        public bool ShouldSerializeBairro() => !string.IsNullOrEmpty(Bairro);
         
-        public bool ShouldSerializeCepField() => !string.IsNullOrEmpty(Cep);
+        public bool ShouldSerializeCep() => !string.IsNullOrEmpty(Cep);
         
-        public bool ShouldSerializeCodMunicField() => !string.IsNullOrEmpty(CodMunic);
+        public bool ShouldSerializeCodMunic() => !string.IsNullOrEmpty(CodMunic);
 
 #if INTEROP
         public bool ShouldSerializeUf() => Uf != (UFBrasil)(-1);

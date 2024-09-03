@@ -417,7 +417,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         #region ShouldSerialize
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
         #endregion ShouldSerialize
     }
     #endregion SucessaoVincESocial5001
@@ -470,11 +470,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 #if INTEROP
-        public bool ShouldSerializeNatAtividadeField() => NatAtividade != (NatAtividade)(-1);
+        public bool ShouldSerializeNatAtividade() => NatAtividade != (NatAtividade)(-1);
 #else
-        public bool ShouldSerializeNatAtividadeField() => !NatAtividade.IsNullOrEmpty();
+        public bool ShouldSerializeNatAtividade() => NatAtividade != null;
 #endif
-        public bool ShouldSerializeQtdDiasTrabField() => QtdDiasTrab > 0;
+        public bool ShouldSerializeQtdDiasTrab() => QtdDiasTrab > 0;
         #endregion ShouldSerialize
 
     }
@@ -893,11 +893,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoPerRefCount => (InfoPerRef != null ? InfoPerRef.Count : 0);
 #endif
         #region ShouldSerialize
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 #if INTEROP
-        public bool ShouldSerializeIndSimplesField() => IndSimples != (IndSimples)(-1);
+        public bool ShouldSerializeIndSimples() => IndSimples != (IndSimples)(-1);
 #else
-        public bool ShouldSerializeIndSimplesField() =>  !IndSimples.IsNullOrEmpty();
+        public bool ShouldSerializeIndSimples() => IndSimples != null;
+
 #endif
         #endregion  ShouldSerialize
     }
@@ -1251,9 +1252,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeDtAcConvField() => DtAcConv > DateTimeOffset.MinValue;
 #if INTEROP
-        public bool ShouldSerializeRemunSucField() => RemunSuc != (SimNaoLetra)(-1);
+        public bool ShouldSerializeRemunSuc() => RemunSuc != (SimNaoLetra)(-1);
 #else
-        public bool shouldSerializeRemunSucField() => RemunSuc.IsNullOrEmpty();
+        public bool shouldSerializeRemunSuc() => RemunSuc.IsNullOrEmpty();
 #endif
 
         #endregion ShouldSerialize

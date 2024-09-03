@@ -133,9 +133,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeIndGuiaField() => IndGuia != (IndGuia)(-1);
 #else
-        public bool ShouldSerializeIndGuiaField() => !IndGuia.IsNullOrEmpty();
+        public bool ShouldSerializeIndGuia() => IndGuia != null;
 #endif
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
         #endregion ShouldSerialize
     }
@@ -262,17 +262,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeMtvDesligTsVField() => MtvDesligTSV != (MtvDesligTSV)(-1);
 #else
-        public bool ShouldSerializeMtvDesligTsVField() => !MtvDesligTSV.IsNullOrEmpty();
+        public bool ShouldSerializeMtvDesligTsV() => MtvDesligTSV != null;
 #endif
 #if INTEROP
         public bool ShouldSerializePensAlimField() => PensAlim != (PensAlim)(-1);
 #else
-        public bool ShouldSerializePensAlimField() => !PensAlim.IsNullOrEmpty();
+        public bool ShouldSerializePensAlim() => PensAlim != null;
 #endif
 
-        public bool ShouldSerializePercAlimentField() => PercAliment > 0;
+        public bool ShouldSerializePercAliment() => PercAliment > 0;
         public bool ShouldSerializeVrAlimField() => VrAlim > 0;
-        public bool ShouldSerializeNrProcTrabField() => !string.IsNullOrEmpty(NrProcTrab);
+        public bool ShouldSerializeNrProcTrab() => !string.IsNullOrEmpty(NrProcTrab);
 
         #endregion ShouldSerialize
     }
@@ -456,7 +456,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndRRAField() => !string.IsNullOrEmpty(IndRRA);
+        public bool ShouldSerializeIndRRA() => !string.IsNullOrEmpty(IndRRA);
 
         #endregion
     }

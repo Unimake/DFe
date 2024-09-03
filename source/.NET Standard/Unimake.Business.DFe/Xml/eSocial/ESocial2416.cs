@@ -116,7 +116,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDscField() => !string.IsNullOrEmpty(Dsc);
+        public bool ShouldSerializeDsc() => !string.IsNullOrEmpty(Dsc);
 
         #endregion
     }
@@ -147,7 +147,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDscSuspensaoField() => !string.IsNullOrEmpty(DscSuspensao);
+        public bool ShouldSerializeDscSuspensao() => !string.IsNullOrEmpty(DscSuspensao);
 
         #endregion
     }

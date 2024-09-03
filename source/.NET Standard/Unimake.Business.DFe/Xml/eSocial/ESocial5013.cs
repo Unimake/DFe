@@ -223,7 +223,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
 
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
         #endregion
     }

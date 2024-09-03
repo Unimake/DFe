@@ -256,7 +256,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializePercTransfField() => !string.IsNullOrEmpty(PercTransf);
 
-        public bool ShouldSerializeIndTribFolhaPisCofinsField() => !string.IsNullOrEmpty(IndTribFolhaPisCofins);
+        public bool ShouldSerializeIndTribFolhaPisCofins() => !string.IsNullOrEmpty(IndTribFolhaPisCofins);
 
         #endregion
     }
@@ -486,7 +486,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCnpjRespField() => !string.IsNullOrEmpty(CnpjResp);
+        public bool ShouldSerializeCnpjResp() => !string.IsNullOrEmpty(CnpjResp);
 
         public bool ShouldSerializeFap() => Fap > 0;
 
@@ -648,7 +648,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCodTercsSuspField() => !string.IsNullOrEmpty(CodTercsSusp);
+        public bool ShouldSerializeCodTercsSusp() => !string.IsNullOrEmpty(CodTercsSusp);
 
         #endregion
     }

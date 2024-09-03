@@ -144,8 +144,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NovoCPF { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeCnpjOrgaoSucField() => !string.IsNullOrEmpty(CnpjOrgaoSuc);
-        public bool ShouldSerializeNovoCPFField() => !string.IsNullOrEmpty(NovoCPF);
+        public bool ShouldSerializeCnpjOrgaoSuc() => !string.IsNullOrEmpty(CnpjOrgaoSuc);
+        public bool ShouldSerializeNovoCPF() => !string.IsNullOrEmpty(NovoCPF);
         #endregion ShouldSerialize 
     }
 }

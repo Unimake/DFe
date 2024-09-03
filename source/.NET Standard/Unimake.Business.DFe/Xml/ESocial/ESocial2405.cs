@@ -120,7 +120,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Verifica se a tag 'nrRecibo' deve ser serializada
         /// </summary>
-        public bool ShouldSerializeNrReciboField() => IndRetif == IndicativoRetificacao.ArquivoRetificacao;
+        public bool ShouldSerializeNrRecibo() => IndRetif == IndicativoRetificacao.ArquivoRetificacao;
         #endregion ShouldSerialize
     }
     #endregion IdeEvento
@@ -283,7 +283,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeEstadoCivilField() => EstadoCivil != (EstadoCivil)(-1);
 #else
-        public bool ShouldSerializeEstadoCivilField() => !EstadoCivil.IsNullOrEmpty();
+        public bool ShouldSerializeEstadoCivil() => EstadoCivil != null;
 #endif
 #endregion ShouldSerialize
     }
@@ -372,8 +372,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeTpDep() => TpDep != null;
 #endif
-        public bool ShouldSerializeCpfDepField() => !string.IsNullOrEmpty(CpfDep);
-        public bool ShouldSerializeDescrDepField() => !string.IsNullOrEmpty(DescrDep);
+        public bool ShouldSerializeCpfDep() => !string.IsNullOrEmpty(CpfDep);
+        public bool ShouldSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
 
         #endregion
     }

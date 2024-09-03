@@ -64,9 +64,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
        
-        public bool ShouldSerializeCnpjOrigemField() => !string.IsNullOrEmpty(CnpjOrigem);
+        public bool ShouldSerializeCnpjOrigem() => !string.IsNullOrEmpty(CnpjOrigem);
 
         #endregion
     }
@@ -180,7 +180,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSeriaize
 
-        public bool ShouldSerializeDscField() => !string.IsNullOrEmpty(Dsc);
+        public bool ShouldSerializeDsc() => !string.IsNullOrEmpty(Dsc);
 
 #if INTEROP
         public bool ShouldSerializeIndDecJud() => IndDecJud != (SimNaoLetra)(-1);
@@ -270,7 +270,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
         #endregion
     }
@@ -311,7 +311,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
         #endregion
     }

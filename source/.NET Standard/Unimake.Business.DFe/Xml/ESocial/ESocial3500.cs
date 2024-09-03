@@ -147,7 +147,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
         #region ShouldSerialize
 
-        public bool ShouldSerializeCpfTrabField() => !string.IsNullOrEmpty(CpfTrab);
+        public bool ShouldSerializeCpfTrab() => !string.IsNullOrEmpty(CpfTrab);
         #endregion ShouldSerialize
 
     }

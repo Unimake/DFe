@@ -59,12 +59,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("matricula")]
         public string Matricula { get; set; }
 
-        [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
-
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrProcTrabField() => !string.IsNullOrEmpty(CodCateg);
+        [XmlElement("codCateg")]
+#if INTEROP
+        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
+#else
+        public CodCateg? CodCateg { get; set; }
+#endif
+
+        public bool ShouldSerializeCodCateg() => CodCateg != null && CodCateg != (CodCateg)(-1);
 
         #endregion
     }
@@ -157,7 +161,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpAcidTransito() => TpAcidTransito != null;
 #endif
 
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
         #endregion
     }
@@ -286,9 +290,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeTpProcField() => !string.IsNullOrEmpty(TpProc);
+        public bool ShouldSerializeTpProc() => !string.IsNullOrEmpty(TpProc);
        
-        public bool ShouldSerializeNrProcField() => !string.IsNullOrEmpty(NrProc);
+        public bool ShouldSerializeNrProc() => !string.IsNullOrEmpty(NrProc);
 
         #endregion
     }

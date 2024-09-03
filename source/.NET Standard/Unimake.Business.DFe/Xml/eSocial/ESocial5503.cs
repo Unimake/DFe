@@ -155,7 +155,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatriculaField() => !string.IsNullOrEmpty(Matricula);
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 
 #if INTEROP
         public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
@@ -163,7 +163,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeCodCateg() => CodCateg != null;
 #endif
 
-        public bool ShouldSerializeCategOrigField() => !string.IsNullOrEmpty(CategOrig);
+        public bool ShouldSerializeCategOrig() => !string.IsNullOrEmpty(CategOrig);
 
         #endregion
     }

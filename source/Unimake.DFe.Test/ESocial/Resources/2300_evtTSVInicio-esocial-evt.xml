@@ -153,7 +153,7 @@
 						<cnpjAgntInteg>cnpjAgntInteg1</cnpjAgntInteg>
 					</ageIntegracao>
 					<supervisorEstagio>
-						<cpfSupervisor>cpfSupervisor1</cpfSupervisor>
+						<cpfSupervisor>12345678901</cpfSupervisor>
 					</supervisorEstagio>
 				</infoEstagiario>
 				<localTrabGeral>
