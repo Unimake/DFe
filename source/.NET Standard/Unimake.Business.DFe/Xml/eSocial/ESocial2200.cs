@@ -191,9 +191,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeFonePrincField() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 10;
+        public bool ShouldSerializeFonePrinc() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 10;
 
-        public bool ShouldSerializeEmailPrincField() => !string.IsNullOrEmpty(EmailPrinc) &&
+        public bool ShouldSerializeEmailPrinc() => !string.IsNullOrEmpty(EmailPrinc) &&
                                                          EmailPrinc.Contains("@")   &&
                                                          EmailPrinc.Contains(".") &&
                                                         !EmailPrinc.StartsWith("@") &&
@@ -322,11 +322,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNrProcTrabField() => !string.IsNullOrEmpty(NrProcTrab);
+        public bool ShouldSerializeNrProcTrab() => !string.IsNullOrEmpty(NrProcTrab);
 
-        public bool ShouldSerializeDtBaseField() => DtBase > 0;
+        public bool ShouldSerializeDtBase() => DtBase > 0;
 
-        public bool ShouldSerializeMatAnotJudField() => !string.IsNullOrEmpty(MatAnotJud);
+        public bool ShouldSerializeMatAnotJud() => !string.IsNullOrEmpty(MatAnotJud);
 
         #endregion
     }
@@ -467,7 +467,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeCnpjEntQualField() => !string.IsNullOrEmpty(CnpjEntQual);
+        public bool ShouldSerializeCnpjEntQual() => !string.IsNullOrEmpty(CnpjEntQual);
 
 #if INTEROP
         public bool ShouldSerializeTpInsc() => TpInsc != (TiposInscricao)(-1);
@@ -475,9 +475,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
 
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
-        public bool ShouldSerializeCnpjPratField() => !string.IsNullOrEmpty(CnpjPrat);
+        public bool ShouldSerializeCnpjPrat() => !string.IsNullOrEmpty(CnpjPrat);
 
         #endregion
     }
@@ -718,15 +718,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeNmCargoField() => !string.IsNullOrEmpty(NmCargo);
+        public bool ShouldSerializeNmCargo() => !string.IsNullOrEmpty(NmCargo);
 
-        public bool ShouldSerializeCBOCargoField() => !string.IsNullOrEmpty(CBOCargo);
+        public bool ShouldSerializeCBOCargo() => !string.IsNullOrEmpty(CBOCargo);
 
         public bool ShouldSerializeDtIngrCargoField() => DtIngrCargo > DateTime.MinValue;
 
-        public bool ShouldSerializeNmFuncaoField() => !string.IsNullOrEmpty(NmFuncao);
+        public bool ShouldSerializeNmFuncao() => !string.IsNullOrEmpty(NmFuncao);
 
-        public bool ShouldSerializeCBOFuncaoField() => !string.IsNullOrEmpty(CBOFuncao);
+        public bool ShouldSerializeCBOFuncao() => !string.IsNullOrEmpty(CBOFuncao);
 
 #if INTEROP
         public bool ShouldSerializeAcumCargo() => AcumCargo != (SimNaoLetra)(-1);
@@ -755,7 +755,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDscSalVarField() => !string.IsNullOrEmpty(DscSalVar);
+        public bool ShouldSerializeDscSalVar() => !string.IsNullOrEmpty(DscSalVar);
 
         #endregion
     }
@@ -808,7 +808,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeClauAssec() => ClauAssec != null;
 #endif
 
-        public bool ShouldSerializeObjDetField() => !string.IsNullOrEmpty(ObjDet);
+        public bool ShouldSerializeObjDet() => !string.IsNullOrEmpty(ObjDet);
 
         #endregion
     }
@@ -845,7 +845,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDescCompField() => !string.IsNullOrEmpty(DescComp);
+        public bool ShouldSerializeDescComp() => !string.IsNullOrEmpty(DescComp);
 
         #endregion
     }
@@ -885,7 +885,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeQtdHrsSemField() => !string.IsNullOrEmpty(QtdHrsSem);
+        public bool ShouldSerializeQtdHrsSem() => !string.IsNullOrEmpty(QtdHrsSem);
 
 #if INTEROP
         public bool ShouldSerializeHorNoturno() => HorNoturno != (SimNaoLetra)(-1);
@@ -968,9 +968,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
 
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
         #endregion
     }
@@ -1008,7 +1008,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
 
         #endregion
     }
@@ -1049,7 +1049,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
         #endregion
     }
