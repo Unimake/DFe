@@ -110,7 +110,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VerProc { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeNrReciboField() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
         #endregion ShouldSerialize
     }
     #endregion IdeEvento
@@ -214,7 +214,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
         public bool ShouldSerializeDtProjFimAPIField() => DtProjFimAPI > DateTimeOffset.MinValue;
-        public bool ShouldSerializeObservacaoField() => !string.IsNullOrEmpty(Observacao);
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
         #endregion ShouldSerialize
     }
     #endregion InfoBaixa

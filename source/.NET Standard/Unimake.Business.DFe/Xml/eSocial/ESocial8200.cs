@@ -316,7 +316,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpInscTrab() => TpInscTrab != null;
 #endif
 
-        public bool ShouldSerializeLocalTrabalhoField() => !string.IsNullOrEmpty(LocalTrabalho);
+        public bool ShouldSerializeLocalTrabalho() => !string.IsNullOrEmpty(LocalTrabalho);
 
         #endregion
     }
@@ -386,7 +386,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDscSalVarField() => !string.IsNullOrEmpty(DscSalVar);
+        public bool ShouldSerializeDscSalVar() => !string.IsNullOrEmpty(DscSalVar);
 
         #endregion
     }
@@ -422,7 +422,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
 
-        public bool ShouldSerializeNrInscField() => !string.IsNullOrEmpty(NrInsc);
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
         #endregion
     }
