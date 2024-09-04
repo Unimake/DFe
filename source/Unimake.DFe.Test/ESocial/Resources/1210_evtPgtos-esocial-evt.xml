@@ -21,6 +21,19 @@
 				<ideDmDev>str1234</ideDmDev>
 				<vrLiq>0.01</vrLiq>
 			</infoPgto>
+			<infoIRComplem>
+				<infoIRCR>
+					<tpCR>056107</tpCR>
+					<infoProcRet>
+						<tpProcRet>1</tpProcRet>
+						<nrProcRet>12345678901234567</nrProcRet>
+						<infoValores>
+							<indApuracao>1</indApuracao>
+							<vlrNRetido>0.01</vlrNRetido>
+						</infoValores>
+					</infoProcRet>
+				</infoIRCR>
+			</infoIRComplem>
 		</ideBenef>
 	</evtPgtos>
 </eSocial>

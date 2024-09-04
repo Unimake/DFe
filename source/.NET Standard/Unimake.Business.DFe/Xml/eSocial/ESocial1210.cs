@@ -2,9 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -202,8 +204,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("ideDmDev")]
         public string IdeDmDev { get; set; }
 
-        [XmlElement("vrLiq")]
+        /// <summary>
+        /// Valor líquido recebido pelo trabalhador, composto pelos vencimentos e descontos, inclusive os descontos de IRRF e de pensão alimentícia (se houver).
+        /// Validação: Não pode ser um valor negativo.
+        /// </summary>
+        [XmlIgnore]
         public double VrLiq { get; set; }
+
+        [XmlElement("vrLiq")]
+        public string VrLiqField
+        {
+            get => VrLiq.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrLiq = Converter.ToDouble(value);
+        }
 
         [XmlElement("paisResidExt")]
         public string PaisResidExt { get; set; }
@@ -736,8 +749,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
 
-        [XmlElement("vlrDedDep")]
+        /// <summary>
+        /// Preencher com o valor da dedução da base de cálculo.
+        /// Validação: O valor informado neste campo deve ser menor ou igual ao valor unitário da dedução por dependente definido na legislação.
+        /// Deve ser maior que 0 (zero).
+        /// Em caso de inconsistência na validação, o arquivo será aceito, porém com alerta ao contribuinte.
+        /// </summary>
+        [XmlIgnore]
         public double VlrDedDep { get; set; }
+
+        [XmlElement("vlrDedDep")]
+        public string VlrDedDepField
+        {
+            get => VlrDedDep.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedDep = Converter.ToDouble(value);
+        }
+
     }
 
 #if INTEROP
@@ -753,8 +780,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
 
-        [XmlElement("vlrDedPenAlim")]
+        /// <summary>
+        /// Valor relativo à dedução do rendimento tributável correspondente a pagamento de pensão alimentícia.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrDedPenAlim { get; set; }
+
+        [XmlElement("vlrDedPenAlim")]
+        public string VlrDedPenAlimField
+        {
+            get => VlrDedPenAlim.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedPenAlim = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -770,15 +808,38 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cnpjEntidPC")]
         public string CnpjEntidPC { get; set; }
 
-        [XmlElement("vlrDedPC")]
+        /// <summary>
+        /// Valor da dedução mensal relativa a previdência complementar.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrDedPC { get; set; }
 
-        [XmlElement("vlrPatrocFunp")]
+        [XmlElement("vlrDedPC")]
+        public string VlrDedPCEField
+        {
+            get => VlrDedPC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedPC = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da contribuição mensal do ente público patrocinador da Fundação de Previdência Complementar do Servidor Público (Funpresp).
+        /// Validação: Informação permitida apenas se tpPrev = [3].
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrPatrocFunp { get; set; }
+
+        [XmlElement("vlrPatrocFunp")]
+        public string VlrPatrocFunpField
+        {
+            get => VlrPatrocFunp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPatrocFunp = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrPatrocFunp() => VlrPatrocFunp > 0;
+        public bool ShouldSerializeVlrPatrocFunpField() => VlrPatrocFunp > 0;
 
         #endregion
     }
@@ -856,20 +917,78 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
-        [XmlElement("vlrNRetido")]
+        /// <summary>
+        /// Valor da retenção que deixou de ser efetuada em função de processo administrativo ou judicial.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrNRetido { get; set; }
 
-        [XmlElement("vlrDepJud")]
+        [XmlElement("vlrNRetido")]
+        public string VlrNRetidoField
+        {
+            get => VlrNRetido.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrNRetido = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do depósito judicial em função de processo administrativo ou judicial.
+        /// Validação: Informação permitida apenas se indDeposito informado em S-1070 for igual a[S].
+        /// Se informado, deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrDepJud { get; set; }
 
-        [XmlElement("vlrCmpAnoCal")]
+        [XmlElement("vlrDepJud")]
+        public string VlrDepJudField
+        {
+            get => VlrDepJud.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDepJud = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da compensação relativa ao ano calendário em função de processo judicial.
+        ///Validação: Informação permitida apenas se tpProcRet = [2].
+        ///Se informado, deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrCmpAnoCal { get; set; }
 
-        [XmlElement("vlrCmpAnoAnt")]
+        [XmlElement("vlrCmpAnoCal")]
+        public string VlrCmpAnoCalField
+        {
+            get => VlrCmpAnoCal.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrCmpAnoCal = Converter.ToDouble(value);
+        }        
+
+        /// <summary>
+        /// Valor da compensação relativa a anos anteriores em função de processo judicial.
+        /// Validação: Informação permitida apenas se tpProcRet = [2].
+        /// Se informado, deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrCmpAnoAnt { get; set; }
 
-        [XmlElement("vlrRendSusp")]
+        [XmlElement("vlrCmpAnoAnt")]
+        public string VlrCmpAnoAntField
+        {
+            get => VlrCmpAnoAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrCmpAnoAnt = Converter.ToDouble(value);
+        }
+        
+        /// <summary>
+        /// Valor do rendimento com exigibilidade suspensa.
+        /// Validação: Se informado, deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrRendSusp { get; set; }
+
+        [XmlElement("vlrRendSusp")]
+        public string VlrRendSuspField
+        {
+            get => VlrRendSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRendSusp = Converter.ToDouble(value);
+        }
 
         [XmlElement("dedSusp")]
         public List<DedSusp> DedSusp { get; set; }
@@ -910,20 +1029,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetDedSuspCount => (DedSusp != null ? DedSusp.Count : 0);
 #endif
+        #region ShoudSerialize
 
-        #region ShouldSerialize
+        public bool ShouldSerializeVlrNRetidoField() => VlrNRetido > 0;
+        public bool ShouldSerializeVlrDepJudField() => VlrDepJud > 0;
+        public bool ShouldSerializeVlrCmpAnoCalField() => VlrCmpAnoCal > 0;
+        public bool ShouldSerializeVlrCmpAnoAntField() => VlrCmpAnoAnt > 0;
+        public bool ShouldSerializeVlrRendSuspField() => VlrRendSusp > 0;
 
-        public bool ShouldSerializeVlrNRetido() => VlrNRetido > 0;
-        
-        public bool ShouldSerializeVlrDepJud() => VlrDepJud > 0;
-        
-        public bool ShouldSerializeVlrCmpAnoCal() => VlrCmpAnoCal > 0;
-        
-        public bool ShouldSerializeVlrCmpAnoAnt() => VlrCmpAnoAnt > 0;
-       
-        public bool ShouldSerializeVlrRendSusp() => VlrRendSusp > 0;
-
-        #endregion
+        #endregion ShoudSerialize
     }
 
 #if INTEROP
@@ -936,14 +1050,39 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indTpDeducao")]
         public IndicativoTipoDeducao IndTpDeducao { get; set; }
 
-        [XmlElement("vlrDedSusp")]
+        /// <summary>
+        /// Valor da dedução da base de cálculo do imposto de renda com exigibilidade suspensa.
+        /// Validação: Se indTpDeducao = [5, 7], e o grupo benefPen for preenchido, o valor informado neste campo deve ser a soma do(s) campo(s) vlrDepenSusp do grupo benefPen.
+        /// Deve ser maior que 0 (zero).
+        /// O não preenchimento do grupo benefPen indica que o contribuinte declarante não possui as informações detalhadas por dependente/alimentando.
+        /// </summary>
+        [XmlIgnore]
         public double VlrDedSusp { get; set; }
+
+        [XmlElement("vlrDedSusp")]
+        public string VlrDedSuspField
+        {
+            get => VlrDedSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedSusp = Converter.ToDouble(value);
+        }
 
         [XmlElement("cnpjEntidPC")]
         public string CnpjEntidPC { get; set; }
 
-        [XmlElement("vlrPatrocFunp")]
+        /// <summary>
+        /// Valor da contribuição do ente público patrocinador da Fundação de Previdência Complementar do Servidor Público (Funpresp).
+        /// Validação: Informação exclusiva se indTpDeducao = [4].
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VlrPatrocFunp { get; set; }
+
+        [XmlElement("vlrPatrocFunp")]
+        public string VlrPatrocFunpField
+        {
+            get => VlrPatrocFunp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPatrocFunp = Converter.ToDouble(value);
+        }
 
         [XmlElement("benefPen")]
         public List<BenefPen> BenefPen { get; set; }
@@ -987,13 +1126,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrDedSusp() => VlrDedSusp > 0;
-
+        public bool ShouldSerializeVlrDedSuspField() => VlrDedSusp > 0;
         public bool ShouldSerializeCnpjEntidPC() => !string.IsNullOrEmpty(CnpjEntidPC);
+        public bool ShoudSerializeVlrPatrocFunpField() => VlrPatrocFunp > 0;
 
-        public bool ShouldSerializeVlrPatrocFunp() => VlrPatrocFunp > 0;
-
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -1005,9 +1142,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
+        
+        /// <summary>
+        /// Valor da dedução relativa a dependentes ou a pensão alimentícia com exigibilidade suspensa.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
+        public double VlrDepenSusp { get; set; }
 
         [XmlElement("vlrDepenSusp")]
-        public double VlrDepenSusp { get; set; }
+        public string VlrDepenSuspField
+        {
+            get => VlrDepenSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDepenSusp = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -1023,8 +1171,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("regANS")]
         public string RegANS { get; set; }
 
-        [XmlElement("vlrSaudeTit")]
+        /// <summary>
+        /// Valor relativo à dedução do rendimento tributável correspondente a pagamento a plano de saúde do titular.
+        /// Validação: Deve ser maior ou igual a 0 (zero).
+        /// Se for igual a 0 (zero), deve haver informações em registro(s) filho(s), relativas a dependentes(infoDepSau).
+        /// </summary>
+        [XmlIgnore]
         public double VlrSaudeTit { get; set; }
+
+        [XmlElement("vlrSaudeTit")]
+        public string VlrSaudeTitField
+        {
+            get => VlrSaudeTit.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrSaudeTit = Converter.ToDouble(value);
+        }
 
         [XmlElement("infoDepSau")]
         public List<InfoDepSau> InfoDepSau { get; set; }
@@ -1083,8 +1243,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
 
-        [XmlElement("vlrSaudeDep")]
+        /// <sumary>
+        /// Valor relativo a dedução do rendimento tributável correspondente a pagamento a plano de saúde do dependente.
+        /// Validação: Deve ser maior ou igual a 0 (zero).
+        /// Se for igual a 0 (zero), vlrSaudeTit deve ser maior que 0 (zero).
+        /// </sumary>
+        [XmlIgnore]
         public double VlrSaudeDep { get; set; }
+
+        [XmlElement("vlrSaudeDep")]
+        public string VlrSaudeDepField
+        {
+            get => VlrSaudeDep.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrSaudeDep = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -1186,7 +1358,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeCnpjOper() => !string.IsNullOrEmpty(CnpjOper);
-        
+
         public bool ShouldSerializeRegANS() => !string.IsNullOrEmpty(RegANS);
 
         #endregion
@@ -1205,17 +1377,38 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
-        [XmlElement("vlrReemb")]
+        /// <summary>
+        /// Valor do reembolso relativo ao ano do período indicado em perApur.
+        /// Validação: Informação não obrigatória se vlrReembAnt for maior que zero.
+        /// </summary>
+        [XmlIgnore]
         public double VlrReemb { get; set; }
 
-        [XmlElement("vlrReembAnt")]
+        [XmlElement("vlrReemb")]
+        public string VlrReembField
+        {
+            get => VlrReemb.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrReemb = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do reembolso relativo a anos anteriores.
+        /// Validação: Informação não obrigatória se vlrReemb for maior que zero.
+        /// </summary>
+        [XmlIgnore]
         public double VlrReembAnt { get; set; }
+
+        [XmlElement("vlrReembAnt")]
+        public string VlrReembAntField
+        {
+            get => VlrReembAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrReembAnt = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrReemb() => VlrReemb > 0;
-       
-        public bool ShouldSerializeVlrReembAnt() => VlrReembAnt > 0;
+        public bool ShouldSerializeVlrReembField() => VlrReemb > 0;
+        public bool ShouldSerializeVlrReembAntField() => VlrReembAnt > 0;
 
         #endregion
     }
