@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -744,8 +746,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class RemuneracaoESocial2200
     {
-        [XmlElement("vrSalFx")]
+        /// <summary>
+        /// Salário base do trabalhador, correspondente à parte fixa da remuneração.
+        /// Validação: Se undSalFixo for igual a[7], preencher com 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrSalFx { get; set; }
+        [XmlElement("vrSalFx")]
+        public string VrSalFxField
+        {
+            get => VrSalFx.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSalFx = Converter.ToDouble(value);
+        }
 
         [XmlElement("undSalFixo")]
         public UndSalFixo UndSalFixo { get; set; }
