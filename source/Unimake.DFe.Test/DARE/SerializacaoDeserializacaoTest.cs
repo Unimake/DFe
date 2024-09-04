@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.DARE
 {
-    public class SerializacaoDesserializacaoConsultasTest
+    public class SerializacaoDesserializacaoTest
     {
         /// <summary>
         /// Testar a serialização e desserialização da consulta de Eventos DARE
@@ -13,7 +13,7 @@ namespace Unimake.DFe.Test.DARE
         [Theory]
         [Trait("DFe", "DARE")]
         [InlineData(@"..\..\..\DARE\Resources\Receitas.xml")]
-        public void SerializacaoDesserializacaoConsultaTabelaDARE(string arqXML)
+        public void SerializacaoDesserializacaoReceitasDARE(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -60,7 +60,7 @@ namespace Unimake.DFe.Test.DARE
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DARE.DAREUnico>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.DARE.DARE>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
