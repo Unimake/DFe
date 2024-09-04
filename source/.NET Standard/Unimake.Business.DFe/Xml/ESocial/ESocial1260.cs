@@ -125,6 +125,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        [XmlElement("indGuia")]
+#if INTEROP
+        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
+#else
+        public IndGuia? IndGuia { get; set; }
+#endif
         /// <summary>
         /// Identificação do ambiente
         /// </summary>
@@ -146,9 +152,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
+        public bool ShouldSerializeIndGuia() => IndGuia != null && IndGuia != (IndGuia)(-1);
+
         #endregion ShouldSerialize
     }
-    #endregion IdeEventoESocial1260 
+#endregion IdeEventoESocial1260 
 
     #region InfoComProdESocial1260
 
@@ -237,12 +245,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrTotCom { get; set; }
 
-        /// <summary>
-        /// Preencher com o valor total da comercialização.
-        /// Validação: Deve ser maior que 0 (zero).
-        /// </summary>
         [XmlElement("vrTotCom")]
-        public string VrTotComContribField
+        public string VrTotCombField
         {
             get => VrTotCom.ToString("F2", CultureInfo.InvariantCulture);
             set => VrTotCom = Converter.ToDouble(value);
@@ -303,8 +307,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o valor total da comercialização.
         /// Validação: Deve ser maior que 0 (zero).
         /// </summary>
-        [XmlElement("vrComerc")]
+        [XmlIgnore]
         public double VrComerc { get; set; }
+
+        [XmlElement("vrComerc")]
+        public string VrComercField
+        {
+            get => VrComerc.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrComerc = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Detalhamento das notas fiscais relativas à comercialização
@@ -374,16 +385,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Preencher com o valor bruto da(s) nota(s) fiscal(is).
         /// </summary>
-        [XmlElement("vlrBruto")]
+        [XmlIgnore]
         public double VlrBruto { get; set; }
+
+        [XmlElement("vlrBruto")]
+        public string VlrBrutoField
+        {
+            get => VlrBruto.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrBruto = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Preencher com o valor da contribuição previdenciária descontada pelo adquirente na comercialização de
         /// produção.Se não houver informação, preencher com 0 (zero).
         /// </summary>
- 
-        [XmlElement("vrCPDescPR")]
+        [XmlIgnore]
         public double VrCPDescPR { get; set; }
+
+        [XmlElement("vrCPDescPR")]
+        public string VrCPDescPRField
+        {
+            get => VrCPDescPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCPDescPR = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da contribuição destinada ao financiamento dos benefícios concedidos 
@@ -391,8 +415,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// do trabalho, incidente sobre a comercialização de
         /// produção rural de produtor rural.Se não houver informação, preencher com 0 (zero).
         /// </summary>
-        [XmlElement("vrRatDescPR")]
+        [XmlIgnore]
         public double VrRatDescPR { get; set; }
+        [XmlElement("vrRatDescPR")]
+        public string VrRatDescPRField
+        {
+            get => VrRatDescPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRatDescPR = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da contribuição destinada ao SENAR, incidente sobre
@@ -400,8 +430,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// pessoa física/segurado especial.Se não houver
         /// informação, preencher com 0 (zero).
         /// </summary>
-        [XmlElement("vrSenarDesc")]
+        [XmlIgnore]
         public double VrSenarDesc { get; set; }
+        [XmlElement("vrSenarDesc")]
+        public string VrSenarDescField
+        {
+            get => VrSenarDesc.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSenarDesc = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize 
 
@@ -457,32 +493,49 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Preenchimento obrigatório se vrRatSusp e vrSenarSusp não tiverem sido preenchidos.
         /// Deve ser um valor maior que 0 (zero).
         /// </summary>
-        [XmlElement("vrCPSusp")]
+        [XmlIgnore]
         public double VrCPSusp { get; set; }
+        [XmlElement("vrCPSusp")]
+        public string VrCPSuspField
+        {
+            get => VrCPSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCPSusp = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da contribuição para GILRAT com exigibilidade suspensa.
         /// Validação: Preenchimento obrigatório se vrCPSusp e vrSenarSusp não tiverem sido preenchidos.
         /// Deve ser um valor maior que 0 (zero).
         /// </summary>
-        [XmlElement("vrRatSusp")]
+        [XmlIgnore]
         public double VrRatSusp { get; set; }
-
+        [XmlElement("vrRatSusp")]
+        public string VrRatSuspField
+        {
+            get => VrRatSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRatSusp = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da contribuição para o SENAR com exigibilidade suspensa.
         /// Validação: Preenchimento obrigatório se VrCPSusp e vrRatSusp não tiverem sido preenchidos. 
         /// Deve ser um valor maior que 0 (zero).
-        [XmlElement("vrSenarSusp")]
+        [XmlIgnore]
         public double VrSenarSusp { get; set; }
+        [XmlElement("vrSenarSusp")]
+        public string VrSenarSuspField
+        {
+            get => VrSenarSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSenarSusp = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrCPSusp() => VrCPSusp > 0;
+        public bool ShouldSerializeVrCPSuspField() => VrCPSusp > 0;
         
-        public bool ShouldSerializeVrRatSusp() => VrRatSusp > 0;
+        public bool ShouldSerializeVrRatSuspField() => VrRatSusp > 0;
 
-        public bool ShouldSerializeVrSenarSusp() => VrSenarSusp > 0;
+        public bool ShouldSerializeVrSenarSuspField() => VrSenarSusp > 0;
 
 
         #endregion ShouldSerialize
@@ -495,5 +548,5 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion InfoComProdESocial1260
 
-    #endregion EvtComProdESocial1260
+#endregion EvtComProdESocial1260
 }
