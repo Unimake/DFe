@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -60,25 +62,97 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
 
-        [XmlElement("vrBcCp00")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária
+        /// sobre a remuneração dos trabalhadores avulsos não portuários.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp00 { get; set; }
 
-        [XmlElement("vrBcCp15")]
+        [XmlElement("vrBcCp00")]
+        public string VrBcCp00Field
+        {
+            get => VrBcCp00.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp00 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 15 anos de contribuição.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp15 { get; set; }
 
-        [XmlElement("vrBcCp20")]
+        [XmlElement("vrBcCp15")]
+        public string VrBcCp15Field
+        {
+            get => VrBcCp15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp15 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 20 anos de contribuição.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp20 { get; set; }
+        [XmlElement("vrBcCp20")]
+        public string VrBcCp20Field
+        {
+            get => VrBcCp20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp20 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp25")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 25 anos de contribuição.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp25 { get; set; }
+        [XmlElement("vrBcCp25")]
+        public string VrBcCp25Field
+        {
+            get => VrBcCp25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp25 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp13")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária sobre o 13°
+        /// salário dos trabalhadores avulsos não portuários contratados.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp13 { get; set; }
+        [XmlElement("vrBcCp13")]
+        public string VrBcCp13Field
+        {
+            get => VrBcCp13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp13 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcFgts")]
+        /// <summary>
+        /// Valor da base de cálculo do FGTS sobre a remuneração
+        /// dos trabalhadores avulsos não portuários contratados.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcFgts { get; set; }
+        [XmlElement("vrBcFgts")]
+        public string VrBcFgtsFIeld
+        {
+            get => VrBcFgts.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcFgts = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrDescCP")]
+        /// <summary>
+        /// Preencher com o valor total da contribuição descontada
+        /// dos trabalhadores avulsos não portuários.
+        /// </summary>
+        [XmlIgnore]
         public double VrDescCP { get; set; }
+        [XmlElement("vrDescCP")]
+        public string VrDescCPField
+        {
+            get => VrDescCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrDescCP = Converter.ToDouble(value);
+        }
     }
 }
