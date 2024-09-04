@@ -267,12 +267,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double PercRedContrib { get; set; }
-
-        /// <summary>
-        /// Percentual não substituído pela contribuição prevista na Lei 12.546/2011.
-        /// Informar 0 (zero) se indSubstPatr = [1]. Caso contrário, preencher com o percentual correspondente à razão entre a receita de atividades não relacionadas nos arts. 7o e 8o da Lei 12.546/2011 e a receita bruta total.
-        /// Validação: Se indSubstPatr = [1], informar 0 (zero).
-        /// </summary>
         [XmlElement("percRedContrib")]
         public string PercRedContribField
         {
@@ -334,10 +328,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double FatorMes { get; set; }
 
-        /// <summary>
-        /// Preencher com o valor total da comercialização.
-        /// Validação: Deve ser maior que 0 (zero).
-        /// </summary>
         [XmlElement("fatorMes")]
         public string FatorMesField
         {
@@ -355,10 +345,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double Fator13 { get; set; }
 
-        /// <summary>
-        /// Preencher com o valor total da comercialização.
-        /// Validação: Deve ser maior que 0 (zero).
-        /// </summary>
         [XmlElement("fator13")]
         public string Fator13Field
         {
