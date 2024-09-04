@@ -753,12 +753,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrSalFx { get; set; }
 
-
-        /// <summary>
-        /// Salário base do trabalhador, correspondente à parte fixa
-        /// da remuneração.
-        /// Validação: Se undSalFixo for igual a [7], preencher com 0 (zero).
-        /// </summary>
         [XmlElement("vrSalFx")]
         public string VrSalFxField
         {
