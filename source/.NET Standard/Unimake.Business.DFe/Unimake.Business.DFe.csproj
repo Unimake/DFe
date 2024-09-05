@@ -498,6 +498,7 @@
 		<None Remove="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procCTeSimp_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
@@ -1404,6 +1405,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\CTe\inutCTeTiposBasico_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTeSimp_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v4.00.xsd" />
