@@ -274,11 +274,6 @@
 					</infoValores>
 				</infoProcRet>
 			</infoCRIRRF>
-			<infoIRComplem dtLaudo="2022-01-01">
-				<infoDep cpfDep="00000000000" dtNascto="2022-01-01" nome="nome1" depIRRF="S" tpDep="01" descrDep="descrDep1"/>
-				<infoDep cpfDep="00000000000" dtNascto="2022-12-31" nome="nome2" depIRRF="S" tpDep="01" descrDep="descrDep2"/>
-				<infoDep cpfDep="00000000000" dtNascto="2022-02-02" nome="nome3" depIRRF="S" tpDep="01" descrDep="descrDep3"/>
-			</infoIRComplem>
 		</ideTrab>
 		<ideTrab cpfTrab="00000000000">
 			<calcTrib perRef="2022-05" vrBcCpMensal="123.45" vrBcCp13="123.45">
