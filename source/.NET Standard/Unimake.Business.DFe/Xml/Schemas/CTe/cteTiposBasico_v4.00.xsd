@@ -2657,7 +2657,7 @@ Onde v9.99 é a a designação genérica para a versão do arquivo. Por exemplo,
 					</xs:attribute>
 				</xs:complexType>
 				<xs:unique name="pk_nItem">
-					<xs:selector xpath="det"/>
+					<xs:selector xpath="./*"/>
 					<xs:field xpath="@nItem"/>
 				</xs:unique>
 			</xs:element>
