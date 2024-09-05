@@ -43,6 +43,12 @@ namespace Unimake.Business.DFe.Xml.DARE
         public string TipoAgrupamentoFilhotes { get; set; }
 
         /// <summary>
+        /// Indica o arquivo compactado contendo os documentos gerados em um processamento de lote de DAREs
+        /// </summary>
+        [XmlElement("zipDownload")]
+        public byte[] ZipDownload { get; set; }
+
+        /// <summary>
         /// Lista de itens para geração no lote DARE. 
         /// Contém os diferentes elementos que compõem o lote para processamento.
         /// </summary>
@@ -85,6 +91,13 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// </summary>
         public int GetItensParaGeracaoCount => (ItensParaGeracao != null ? ItensParaGeracao.Count : 0);
 #endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeZipDownload() => ZipDownload != null && ZipDownload.Length > 0;
+        public bool ShouldSerializeItensParaGeracao() => ItensParaGeracao != null && ItensParaGeracao.Count > 0;
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -107,7 +120,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// Um valor que indica o status geral do processamento.
         /// </summary>
         [XmlElement("estaOk")]
-        public string EstaOk { get; set; }
+        public bool EstaOk { get; set; }
 
         /// <summary>
         /// Mensagens de erro associadas ao DARE. 
@@ -115,7 +128,50 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// </summary>
 
         [XmlElement("mensagens")]
-        public string Mensagens { get; set; }
+        public List<string> Mensagens { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddMensagens(string item)
+        {
+            if (Mensagens == null)
+            {
+                Mensagens = new List<string>();
+            }
+
+            Mensagens.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Mensagens (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Mensagens</returns>
+        public string GetMensagens(int index)
+        {
+            if ((Mensagens?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Mensagens[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Mensagens
+        /// </summary>
+        public int GetMensagensCount => (Mensagens != null ? Mensagens.Count : 0);
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeMensagens() => Mensagens != null && Mensagens.Count > 0;
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -131,5 +187,41 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// </summary>
         [XmlElement("Dare")]
         public List<DARE> DARE { get; set; }
+
+#if INTEROP
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddDARE(DARE item)
+        {
+            if (DARE == null)
+            {
+                DARE = new List<DARE>();
+            }
+
+            DARE.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista DARE (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da DARE</returns>
+        public DARE GetDARE(int index)
+        {
+            if ((DARE?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return DARE[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista DARE
+        /// </summary>
+        public int GetDARECount => (DARE != null ? DARE.Count : 0);
+#endif
     }
 }

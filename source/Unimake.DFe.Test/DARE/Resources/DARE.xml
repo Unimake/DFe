@@ -1,38 +1,34 @@
 <Dare xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"> <!--Essa tag não existe no envio-->
-	<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
-	<gerarPDF>true</gerarPDF>
-	<codigoBarra44>12345678901234</codigoBarra44>
-	<codigoBarra48/>
-	<cnpj>12345678000195</cnpj>
+	<cnpj>12345678000199</cnpj>
 	<cpf/>
-	<cpr/>
 	<cidade>São Paulo</cidade>
-	<dataVencimento>2024-12-31T00:00:00</dataVencimento>
+	<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
+	<codigoBarra48/>
+	<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 	<documentoImpressao/>
-	<endereco>Rua Exemplo, 123</endereco>
-	<funcionalidadeOrigem>0</funcionalidadeOrigem>
-	<inscricaoEstadual/>
-	<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
-	<possiveisReceitas/>
-	<razaoSocial>Empresa Exemplo S/A</razaoSocial>
-	<receita>
-		<codigo>001</codigo>
-		<codigoServicoDARE>101</codigoServicoDARE>
-		<escopoUso>1</escopoUso>
-		<nome>Receita Exemplo</nome>
-	</receita>
+	<endereco>Rua Exemplo, 100</endereco>
 	<erro>
 		<estaOk>true</estaOk>
 		<mensagens/>
 	</erro>
-	<observacao>Pagamento referente ao imposto X</observacao>
-	<referencia>REF123</referencia>
-	<telefone>(11) 1234-5678</telefone>
+	<gerarPDF>false</gerarPDF>
+	<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
+	<observacao>Pagamento referente à taxa X</observacao>
+	<pixCopiaCola/>
+	<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
+	<receita>
+		<codigo>101010</codigo>
+		<codigoServicoDARE>2020</codigoServicoDARE>
+		<escopoUso>1</escopoUso>
+		<nome>Receita ICMS</nome>
+	</receita>
+	<referencia>20241231</referencia>
+	<telefone>11987654321</telefone>
 	<uf>SP</uf>
-	<valor>1000.50</valor>
-	<valorJuros>10.00</valorJuros>
+	<valor>100.00</valor>
+	<valorJuros>2.50</valorJuros>
 	<valorMulta>5.00</valorMulta>
-	<valorTotal>1015.50</valorTotal>
+	<valorTotal>107.50</valorTotal>
 	<linha06/>
 	<linha08/>
 </Dare>

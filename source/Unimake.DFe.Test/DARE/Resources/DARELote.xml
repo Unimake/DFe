@@ -1,174 +1,112 @@
-<DareLote xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"> <!--Essa tag não existe no envio-->
+<DareLote xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"><!--Essa tag não existe no envio-->
 	<dadosContribuinteNaoCadastrado>
-		<numeroControleDarePrincipal>1</numeroControleDarePrincipal>
-		<gerarPDF>true</gerarPDF>
-		<codigoBarra44/>
-		<codigoBarra48/>
-		<cnpj>46377222000129</cnpj>
+		<cnpj>12345678000199</cnpj>
 		<cpf/>
-		<cpr/>
-		<cidade>São Paulo</cidade>
-		<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+		<cidade>Santos</cidade>
+		<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
+		<codigoBarra48/>
+		<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 		<documentoImpressao/>
-		<endereco>Av. Rangel Pestana, 300</endereco>
-		<funcionalidadeOrigem>0</funcionalidadeOrigem>
-		<inscricaoEstadual/>
+		<endereco>Avenida Exemplo, 500</endereco>
+		<erro>
+			<estaOk>true</estaOk>
+			<mensagens/>
+		</erro>
+		<gerarPDF>false</gerarPDF>
+		<numeroControleDarePrincipal>789012</numeroControleDarePrincipal>
+		<observacao>Pagamento em lote referente à taxas Y</observacao>
 		<pixCopiaCola/>
-		<possiveisReceitas/>
-		<razaoSocial>Exemplo Razão Social</razaoSocial>
+		<razaoSocial>Empresa Exemplo em Lote</razaoSocial>
 		<receita>
-			<codigo>046-2</codigo>
-			<codigoServicoDARE>4601</codigoServicoDARE>
-			<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+			<codigo>202020</codigo>
+			<codigoServicoDARE>3030</codigoServicoDARE>
+			<escopoUso>2</escopoUso>
+			<nome>Receita ISS</nome>
 		</receita>
-		<referencia>07/2024</referencia>
-		<telefone/>
+		<referencia>20241231</referencia>
+		<telefone>11987654321</telefone>
 		<uf>SP</uf>
-		<valor>100</valor>
-		<valorJuros>0</valorJuros>
-		<valorMulta>0</valorMulta>
-		<valorTotal>0</valorTotal>
-		<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
-		<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
-		<numeroGuia>12345</numeroGuia>
+		<valor>500.00</valor>
+		<valorJuros>12.50</valorJuros>
+		<valorMulta>25.00</valorMulta>
+		<valorTotal>537.50</valorTotal>
+		<linha06/>
+		<linha08/>
 	</dadosContribuinteNaoCadastrado>
 	<erro>
 		<estaOk>true</estaOk>
 		<mensagens/>
 	</erro>
 	<tipoAgrupamentoFilhotes>1</tipoAgrupamentoFilhotes>
+	<zipDownload/>
 	<itensParaGeracao>
-		<Dare> <!--Essa tag não existe no envio-->
-			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
-			<gerarPDF>true</gerarPDF>
-			<codigoBarra44/>
-			<codigoBarra48/>
-			<cnpj>46377222000129</cnpj>
+		<Dare>
+			<cnpj>12345678000199</cnpj>
 			<cpf/>
-			<cpr/>
 			<cidade>São Paulo</cidade>
-			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
-			<documentoImpressao/>
-			<endereco>Av. Rangel Pestana, 300</endereco>
-			<funcionalidadeOrigem>0</funcionalidadeOrigem>
-			<inscricaoEstadual/>
-			<pixCopiaCola/>
-			<possiveisReceitas/>
-			<razaoSocial>Exemplo Razão Social</razaoSocial>
-			<receita>
-				<codigo>046-2</codigo>
-				<codigoServicoDARE>4601</codigoServicoDARE>
-				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
-			</receita>
-			<referencia>07/2024</referencia>
-			<telefone/>
-			<uf>SP</uf>
-			<valor>11</valor>
-			<valorJuros>0</valorJuros>
-			<valorMulta>0</valorMulta>
-			<valorTotal>0</valorTotal>
-			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
-			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
-			<numeroGuia>12345</numeroGuia>
-		</Dare> <!--Essa tag não existe no envio-->
-		<Dare> <!--Essa tag não existe no envio-->
-			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
-			<gerarPDF>true</gerarPDF>
-			<codigoBarra44/>
+			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
 			<codigoBarra48/>
-			<cnpj>46377222000129</cnpj>
-			<cpf/>
-			<cpr/>
-			<cidade>São Paulo</cidade>
-			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+			<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 			<documentoImpressao/>
-			<endereco>Av. Rangel Pestana, 300</endereco>
-			<funcionalidadeOrigem>0</funcionalidadeOrigem>
-			<inscricaoEstadual/>
+			<endereco>Rua Exemplo, 100</endereco>
+			<erro>
+				<estaOk>true</estaOk>
+				<mensagens/>
+			</erro>
+			<gerarPDF>false</gerarPDF>
+			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
+			<observacao>Pagamento referente à taxa X</observacao>
 			<pixCopiaCola/>
-			<possiveisReceitas/>
-			<razaoSocial>Exemplo Razão Social</razaoSocial>
+			<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
 			<receita>
-				<codigo>046-2</codigo>
-				<codigoServicoDARE>4601</codigoServicoDARE>
-				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+				<codigo>101010</codigo>
+				<codigoServicoDARE>2020</codigoServicoDARE>
+				<escopoUso>1</escopoUso>
+				<nome>Receita ICMS</nome>
 			</receita>
-			<referencia>07/2024</referencia>
-			<telefone/>
+			<referencia>20241231</referencia>
+			<telefone>11987654321</telefone>
 			<uf>SP</uf>
-			<valor>12</valor>
-			<valorJuros>0</valorJuros>
-			<valorMulta>0</valorMulta>
-			<valorTotal>0</valorTotal>
-			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
-			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
-			<numeroGuia>12345</numeroGuia>
-		</Dare> <!--Essa tag não existe no envio-->
-		<Dare> <!--Essa tag não existe no envio-->
-			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
-			<gerarPDF>true</gerarPDF>
-			<codigoBarra44/>
+			<valor>100.00</valor>
+			<valorJuros>2.50</valorJuros>
+			<valorMulta>5.00</valorMulta>
+			<valorTotal>107.50</valorTotal>
+			<linha06/>
+			<linha08/>
+		</Dare>
+		<Dare>
+			<cnpj>12345678000199</cnpj>
+			<cpf/>
+			<cidade>São Paulo</cidade>
+			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
 			<codigoBarra48/>
-			<cnpj>46377222000129</cnpj>
-			<cpf/>
-			<cpr/>
-			<cidade>São Paulo</cidade>
-			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
+			<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 			<documentoImpressao/>
-			<endereco>Av. Rangel Pestana, 300</endereco>
-			<funcionalidadeOrigem>0</funcionalidadeOrigem>
-			<inscricaoEstadual/>
+			<endereco>Rua Exemplo, 100</endereco>
+			<erro>
+				<estaOk>true</estaOk>
+				<mensagens/>
+			</erro>
+			<gerarPDF>false</gerarPDF>
+			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
+			<observacao>Pagamento referente à taxa X</observacao>
 			<pixCopiaCola/>
-			<possiveisReceitas/>
-			<razaoSocial>Exemplo Razão Social</razaoSocial>
+			<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
 			<receita>
-				<codigo>046-2</codigo>
-				<codigoServicoDARE>4601</codigoServicoDARE>
-				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
+				<codigo>101010</codigo>
+				<codigoServicoDARE>2020</codigoServicoDARE>
+				<escopoUso>1</escopoUso>
+				<nome>Receita ICMS</nome>
 			</receita>
-			<referencia>07/2024</referencia>
-			<telefone/>
+			<referencia>20241231</referencia>
+			<telefone>11987654321</telefone>
 			<uf>SP</uf>
-			<valor>13</valor>
-			<valorJuros>0</valorJuros>
-			<valorMulta>0</valorMulta>
-			<valorTotal>0</valorTotal>
-			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
-			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
-			<numeroGuia>12345</numeroGuia>
-		</Dare> <!--Essa tag não existe no envio-->
-		<Dare> <!--Essa tag não existe no envio-->
-			<numeroControleDarePrincipal>0</numeroControleDarePrincipal>
-			<gerarPDF>true</gerarPDF>
-			<codigoBarra44/>
-			<codigoBarra48/>
-			<cnpj>46377222000129</cnpj>
-			<cpf/>
-			<cpr/>
-			<cidade>São Paulo</cidade>
-			<dataVencimento>2024-09-01T00:00:00</dataVencimento>
-			<documentoImpressao/>
-			<endereco>Av. Rangel Pestana, 300</endereco>
-			<funcionalidadeOrigem>0</funcionalidadeOrigem>
-			<inscricaoEstadual/>
-			<pixCopiaCola/>
-			<possiveisReceitas/>
-			<razaoSocial>Exemplo Razão Social</razaoSocial>
-			<receita>
-				<codigo>046-2</codigo>
-				<codigoServicoDARE>4601</codigoServicoDARE>
-				<nome>ICMS- Operações Próprias- RPA (04601)</nome>
-			</receita>
-			<referencia>07/2024</referencia>
-			<telefone/>
-			<uf>SP</uf>
-			<valor>14</valor>
-			<valorJuros>0</valorJuros>
-			<valorMulta>0</valorMulta>
-			<valorTotal>0</valorTotal>
-			<linha06>Valor preenchido pela função CampoExtraLinha06(receitaEscolhida)</linha06>
-			<linha08>Valor preenchido pela função CampoExtraLinha08(receitaEscolhida)</linha08>
-			<numeroGuia>12345</numeroGuia>
-		</Dare> <!--Essa tag não existe no envio-->
+			<valor>100.00</valor>
+			<valorJuros>2.50</valorJuros>
+			<valorMulta>5.00</valorMulta>
+			<valorTotal>107.50</valorTotal>
+			<linha06/>
+			<linha08/>
+		</Dare>
 	</itensParaGeracao>
 </DareLote> <!--Essa tag não existe no envio-->
