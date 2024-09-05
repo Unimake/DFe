@@ -5,6 +5,11 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Xml.ESocial;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -623,11 +628,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indIncid")]
         public IndIncid IndIncid { get; set; }
 
-        [XmlElement("remFGTS")]
+        /// <summary>
+        /// Remuneração (valor da base de cálculo) do FGTS,
+        /// conforme definido nos campos tpValor e indIncid.
+        /// </summary>
+        [XmlIgnore]
         public double RemFGTS { get; set; }
+        [XmlElement("remFGTS")]
+        public string RemFGTSField
+        {
+            get => RemFGTS.ToString("F2", CultureInfo.InvariantCulture);
+            set => RemFGTS = Converter.ToDouble(value);
+        }
 
-        [XmlElement("dpsFGTS")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado
+        /// na conta vinculada do trabalhador.
+        /// Validação: Deve ser maior que 0 (zero) e
+        /// informado somente se indIncid = [1].
+        /// </summary>
+        [XmlIgnore]
         public double DpsFGTS { get; set; }
+        [XmlElement("dpsFGTS")]
+        public string DpsFGTSFIeld
+        {
+            get => DpsFGTS.ToString("F2", CultureInfo.InvariantCulture);
+            set => DpsFGTS = Converter.ToDouble(value);
+        }
 
         [XmlElement("detRubrSusp")]
         public List<DetRubrSusp> DetRubrSusp { get; set; }
@@ -671,9 +698,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDpsFGTS() => DpsFGTS > 0;
+        public bool ShouldSerializeDpsFGTSField() => DpsFGTS > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -689,8 +716,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("ideTabRubr")]
         public string IdeTabRubr { get; set; }
 
-        [XmlElement("vrRubr")]
+        /// <summary>
+        /// Valor total da rubrica.
+        /// Evento de origem: S-1200, S-2299 ou S-2399.
+        /// Validação: Deve corresponder ao somatório
+        /// dos valores informados no campo {vrRubr}
+        /// dos eventos de origem para a respectiva rubrica.
+        /// </summary>
+        [XmlIgnore]
         public double VrRubr { get; set; }
+        [XmlElement("vrRubr")]
+        public string VrRubrField
+        {
+            get => VrRubr.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRubr = Converter.ToDouble(value);
+        }
 
         [XmlElement("ideProcessoFGTS")]
         public List<IdeProcessoFGTS> IdeProcessoFGTS { get; set; }
@@ -732,6 +772,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetIdeProcessoFGTSCount => (IdeProcessoFGTS != null ? IdeProcessoFGTS.Count : 0);
 #endif
     }
+}
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -820,11 +861,31 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indIncidE")]
         public IndIncid IndIncidE { get; set; }
 
-        [XmlElement("remFGTSE")]
+        /// <summary>
+        /// Remuneração (valor da base de cálculo) do FGTS,
+        /// conforme definido nos campos tpValorE e indIncidE.
+        /// </summary>
+        [XmlIgnore]
         public double RemFGTSE { get; set; }
+        [XmlElement("remFGTSE")]
+        public string RemFGTSEField
+        {
+            get => RemFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+            set => RemFGTSE = Converter.ToDouble(value);
+        }
 
-        [XmlElement("dpsFGTSE")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
+        /// Validação: Deve ser maior que 0 (zero) e informado somente se indIncidE = [1].
+        /// </summary>
+        [XmlIgnore]
         public double DpsFGTSE { get; set; }
+        [XmlElement("dpsFGTSE")]
+        public string DpsFGTSEFIeld
+        {
+            get => DpsFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+            set => DpsFGTSE = Converter.ToDouble(value);
+        }
 
         [XmlElement("detRubrSusp")]
         public List<DetRubrSusp> DetRubrSusp { get; set; }
@@ -868,9 +929,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDpsFGTSE() => DpsFGTSE > 0;
+        public bool ShouldSerializeDpsFGTSEField() => DpsFGTSE > 0;
 
         #endregion
+
     }
 
 #if INTEROP
@@ -878,15 +940,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EConsignado")]
     [ComVisible(true)]
 #endif
-    public class EConsignado
+public class EConsignado
+{
+    [XmlElement("instFinanc")]
+    public string InstFinanc { get; set; }
+
+    [XmlElement("nrContrato")]
+    public string NrContrato { get; set; }
+
+    [XmlIgnore]
+    public double VreConsignado { get; set; }
+    [XmlElement("vreConsignado")]
+    public string VreConsignadoField
     {
-        [XmlElement("instFinanc")]
-        public string InstFinanc { get; set; }
-
-        [XmlElement("nrContrato")]
-        public string NrContrato { get; set; }
-
-        [XmlElement("vreConsignado")]
-        public double VreConsignado { get; set; }
+        get => VreConsignado.ToString("F2", CultureInfo.InvariantCulture);
+        set => VreConsignado = Converter.ToDouble(value);
     }
 }
