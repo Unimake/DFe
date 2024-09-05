@@ -27,7 +27,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Evento Comercialização da Produção Rural Pessoa Física
         /// </summary>
         [XmlElement("evtComProd")]
-        public EvtComProdESocial1260 EvtBenPrRP { get; set; }
+        public EvtComProdESocial1260 EvtComProd { get; set; }
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
@@ -46,6 +46,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
     public class EvtComProdESocial1260
     {
+        [XmlAttribute(AttributeName = "Id", DataType = "token")]
+        public string ID { get; set; }
+
         /// <summary>
         /// Informações de identificação do evento
         /// </summary>

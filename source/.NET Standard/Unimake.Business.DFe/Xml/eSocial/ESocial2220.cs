@@ -31,6 +31,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtMonit
     {
+        [XmlAttribute(AttributeName = "Id", DataType = "token")]
+        public string ID { get; set; }
+
         [XmlElement("ideEvento")]
         public IdeEventoESocial2205 IdeEvento { get; set; }
 

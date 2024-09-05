@@ -45,7 +45,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// ID
         /// </summary>
         [XmlAttribute(AttributeName = "Id")]
-        public string Id { get; set; }
+        public string ID { get; set; }
 
         /// <summary>
         /// Informações de identificação do evento

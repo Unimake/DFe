@@ -14,7 +14,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1", IsNullable = false)]
+    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1", IsNullable = true)]
 
     public class ESocialEnvioLoteEventos : XMLBase
     {
@@ -226,7 +226,5 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00")]
         public ESocial8299 ESocial8299 { get; set; }
-
-
     }
 }

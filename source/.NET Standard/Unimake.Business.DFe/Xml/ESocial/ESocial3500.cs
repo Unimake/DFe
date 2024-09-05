@@ -38,6 +38,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtExcProcTrab
     {
+        [XmlAttribute(AttributeName = "Id", DataType = "token")]
+        public string ID { get; set; }
+
         /// <summary>
         /// Informações de identificação do evento
         /// </summary>
