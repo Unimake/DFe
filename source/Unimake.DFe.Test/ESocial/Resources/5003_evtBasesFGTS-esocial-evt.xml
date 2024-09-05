@@ -43,12 +43,12 @@
 							<basePerApur>
 								<tpValor>11</tpValor>
 								<indIncid>1</indIncid>
-								<remFGTS>1</remFGTS>
-								<dpsFGTS>1</dpsFGTS>
+								<remFGTS>1.00</remFGTS>
+								<dpsFGTS>1.00</dpsFGTS>
 								<detRubrSusp>
 									<codRubr>codRubr1</codRubr>
 									<ideTabRubr>ideTabR1</ideTabRubr>
-									<vrRubr>1</vrRubr>
+									<vrRubr>1.00</vrRubr>
 									<ideProcessoFGTS>
 										<nrProc>nrProc_____________1</nrProc>
 									</ideProcessoFGTS>
@@ -60,12 +60,12 @@
 								<basePerAntE>
 									<tpValorE>13</tpValorE>
 									<indIncidE>1</indIncidE>
-									<remFGTSE>1</remFGTSE>
-									<dpsFGTSE>1</dpsFGTSE>
+									<remFGTSE>1.00</remFGTSE>
+									<dpsFGTSE>1.00</dpsFGTSE>
 									<detRubrSusp>
 										<codRubr>codRubr1</codRubr>
 										<ideTabRubr>ideTabR1</ideTabRubr>
-										<vrRubr>1</vrRubr>
+										<vrRubr>1.00</vrRubr>
 										<ideProcessoFGTS>
 											<nrProc>nrProc____________28</nrProc>
 										</ideProcessoFGTS>
