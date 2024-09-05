@@ -200,8 +200,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// a 100 (cem).
         /// Informação obrigatória e exclusiva se pensAlim = [1, 3].
         /// </summary>
-        [XmlElement("percAliment")]
+        [XmlIgnore]
         public double PercAliment { get; set; }
+
+        [XmlElement("percAliment")]
+        public string PercAlimentField
+        {
+            get => PercAliment.ToString("F2", CultureInfo.InvariantCulture);
+            set => PercAliment = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor da pensão alimentícia.
@@ -211,11 +218,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrAlim { get; set; }
 
-        /// <summary>
-        /// Valor da pensão alimentícia.
-        /// Validação: Deve ser maior que 0 (zero).
-        /// Informação obrigatória e exclusiva se pensAlim = [2, 3].
-        /// </summary>
         [XmlElement("vrAlim")]
         public string VrAlimField
         {
@@ -270,7 +272,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializePensAlim() => PensAlim != null;
 #endif
 
-        public bool ShouldSerializePercAliment() => PercAliment > 0;
+        public bool ShouldSerializePercAlimentField() => PercAliment > 0;
         public bool ShouldSerializeVrAlimField() => VrAlim > 0;
         public bool ShouldSerializeNrProcTrab() => !string.IsNullOrEmpty(NrProcTrab);
 
