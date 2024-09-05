@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -316,8 +318,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpInfoIR")]
         public string TpInfoIR { get; set; }
 
-        [XmlElement("valor")]
+        /// <summary>
+        /// Composição do valor do rendimento tributável, não tributável,
+        /// retenção, dedução ou isenção do IRRF, de acordo com a
+        /// classificação apresentada no campo tpInfoIR.
+        /// </summary>
+        [XmlIgnore]
         public double Valor { get; set; }
+        [XmlElement("valor")]
+        public string ValorField
+        {
+            get => Valor.ToString("F2", CultureInfo.InvariantCulture);
+            set => Valor = Converter.ToDouble(value);
+        }
 
         [XmlElement("infoProcJudRub")]
         public List<InfoProcJudRub> InfoProcJudRub { get; set; }
@@ -390,8 +403,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("CRMen")]
         public string CRMen { get; set; }
 
-        [XmlElement("vlrCRMen")]
+        /// <summary>
+        /// Valor relativo ao Imposto de Renda Retido
+        /// na Fonte sobre rendimentos do trabalho.
+        /// </summary>
+        [XmlIgnore]
         public double VlrCRMen { get; set; }
+        [XmlElement("vlrCRMen")]
+        public string VlrCRMenField
+        {
+            get => VlrCRMen.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrCRMen = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -422,8 +445,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("CRDia")]
         public string CRDia { get; set; }
 
-        [XmlElement("vlrCRDia")]
+        /// <summary>
+        /// Valor relativo ao Imposto de Renda Retido na Fonte
+        /// sobre rendimentos do trabalho pagos a residente,
+        /// para fins fiscais, no exterior.
+        /// </summary>
+        [XmlIgnore]
         public double VlrCRDia { get; set; }
+        [XmlElement("vlrCRDia")]
+        public string VlrCRDiaField
+        {
+            get => VlrCRDia.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrCRDia = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -516,8 +550,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
-        [XmlElement("vlrAdv")]
+        /// <summary>
+        /// Valor da despesa com o advogado, se houver.
+        /// </summary>
+        [XmlIgnore]
         public double VlrAdv { get; set; }
+        [XmlElement("vlrAdv")]
+        public string VlrAdvField
+        {
+            get => VlrAdv.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAdv = Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+
+        public bool ShoulSerializeVlrAdvField() => VlrAdv > 0;
+
+        #endregion ShouldSerialize
+
     }
 
 #if INTEROP
@@ -954,8 +1004,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfDep")]
         public int CpfDep { get; set; }
 
-        [XmlElement("vlrDedDep")]
+        /// <summary>
+        /// Preencher com o valor da dedução da base de cálculo.
+        /// </summary>
+        [XmlIgnore]
         public double VlrDedDep { get; set; }
+        [XmlElement("vlrDedDep")]
+        public string VlrDedDepField
+        {
+            get => VlrDedDep.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedDep = Converter.ToDouble(value);
+        }
     }
 
     public class PenAlimESocial5002
@@ -966,7 +1025,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
 
-        [XmlElement("vlrDedPenAlim")]
+        [XmlIgnore]
         public double VlrDedPenAlim { get; set; }
+
+        [XmlElement("vlrDedPenAlim")]
+        public string VlrDedPenAlimField
+        {
+            get => VlrDedPenAlim.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedPenAlim = Converter.ToDouble(value);
+        }
     }
 }
