@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -549,8 +552,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
-        [XmlElement("vrSalFx")]
+        [XmlIgnore]
         public double VrSalFx { get; set; }
+
+        [XmlElement("vrSalFx")]
+        public string VrSalFxField
+        {
+            get => VrSalFx.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSalFx = Converter.ToDouble(value);
+        }
 
         [XmlElement("undSalFixo")]
         public UndSalFixo UndSalFixo { get; set; }
@@ -821,12 +831,35 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public PensAlim? PensAlim { get; set; }
 #endif
-
-        [XmlElement("percAliment")]
+        /// <summary>
+        /// Percentual a ser destinado a pensão alimentícia.
+        /// Validação: Deve ser maior que 0 (zero) e menor ou igual a 100 (cem).
+        /// Informação obrigatória e exclusiva se pensAlim = [1, 3].
+        /// </summary>
+        [XmlIgnore]
         public double PercAliment { get; set; }
 
-        [XmlElement("vrAlim")]
+        [XmlElement("percAliment")]
+        public string PercAlimentField
+        {
+            get => PercAliment.ToString("F2", CultureInfo.InvariantCulture);
+            set => PercAliment = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da pensão alimentícia.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// Informação obrigatória e exclusiva se pensAlim = [2, 3].
+        /// </summary>
+        [XmlIgnore]
         public double VrAlim { get; set; }
+
+        [XmlElement("vrAlim")]
+        public string VrAlimField
+        {
+            get => VrAlim.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrAlim = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
@@ -839,11 +872,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializePensAlim() => PensAlim != null;
 #endif
 
-        public bool ShouldSerializePercAliment() => PercAliment > 0;
+        public bool ShouldSerializePercAlimentField() => PercAliment > 0;
 
-        public bool ShouldSerializeVrAlim() => VrAlim > 0;
+        public bool ShouldSerializeVrAlimField() => VrAlim > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -1189,11 +1222,34 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class BaseCalculo
     {
-        [XmlElement("vrBcCpMensal")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária
+        /// sobre a remuneração mensal do trabalhador.
+        /// Validação: Deve ser maior ou igual a 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCpMensal { get; set; }
 
-        [XmlElement("vrBcCp13")]
+        [XmlElement("vrBcCpMensal")]
+        public string VrBcCpMensalField
+        {
+            get => VrBcCpMensal.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCpMensal = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária
+        /// sobre a remuneração do trabalhador referente ao 13º salário.
+        /// Validação: Deve ser maior ou igual a 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp13 { get; set; }
+        [XmlElement("vrBcCp13")]
+        public string VrBcCp13Field
+        {
+            get => VrBcCp13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp13 = Converter.ToDouble(value);
+        }
 
         [XmlElement("infoAgNocivo")]
         public InfoAgNocivo InfoAgNocivo { get; set; }
@@ -1212,22 +1268,58 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoFGTS
     {
-        [XmlElement("vrBcFGTSProcTrab")]
+        /// <summary>
+        /// Valor da base de cálculo de FGTS ainda não declarada em SEFIP ou no
+        /// eSocial, inclusive de verba reconhecida no processo trabalhista.
+        /// Validação: Deve ser maior ou igual a 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrBcFGTSProcTrab { get; set; }
 
-        [XmlElement("vrBcFGTSSefip")]
+        [XmlElement("vrBcFGTSProcTrab")]
+        public string VrBcFGTSProcTrabField
+        {
+            get => VrBcFGTSProcTrab.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcFGTSProcTrab = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo de FGTS declarada apenas em SEFIP
+        /// (não informada no eSocial) e ainda não recolhida.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrBcFGTSSefip { get; set; }
+        [XmlElement("vrBcFGTSSefip")]
+        public string VrBcFGTSSefipField
+        {
+            get => VrBcFGTSSefip.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcFGTSSefip = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo de FGTS declarada anteriormente no eSocial e ainda não recolhida.
+        /// Validação: Somente pode ser informado se perRef for anterior ao início do FGTS Digital.
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        
+        [XmlIgnore]
+        public double VrBcFGTSDecAnt { get; set; }
 
         [XmlElement("vrBcFGTSDecAnt")]
-        public double VrBcFGTSDecAnt { get; set; }
+        public string VrBcFGTSDeAntField
+        {
+            get => VrBcFGTSDecAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcFGTSDecAnt = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrBcFGTSSefip() => VrBcFGTSSefip > 0;
+        public bool ShouldSerializeVrBcFGTSSefipField() => VrBcFGTSSefip > 0;
        
-        public bool ShouldSerializeVrBcFGTSDecAnt() => VrBcFGTSDecAnt > 0;
+        public bool ShouldSerializeVrBcFGTSDecAntField() => VrBcFGTSDecAnt > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -1240,8 +1332,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codCateg")]
         public string CodCateg { get; set; }
 
-        [XmlElement("vrBcCPrev")]
+        /// <summary>
+        /// Valor da remuneração do trabalhador a ser considerada para fins previdenciários
+        /// declarada em GFIP ou em S-1200 de trabalhador sem cadastro no S-2300.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCPrev { get; set; }
+
+        [XmlElement("vrBcCPrev")]
+        public string VrBcCPrevField
+        {
+            get => VrBcCPrev.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCPrev = Converter.ToDouble(value);
+        }
     }
 
 }

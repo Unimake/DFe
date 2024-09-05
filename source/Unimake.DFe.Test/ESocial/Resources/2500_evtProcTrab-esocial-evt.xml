@@ -96,8 +96,8 @@
 							<mtvDeslig>01</mtvDeslig>
 							<dtProjFimAPI>1900-01-01</dtProjFimAPI>
 							<pensAlim>0</pensAlim>
-							<percAliment>1</percAliment>
-							<vrAlim>15</vrAlim>
+							<percAliment>1.00</percAliment>
+							<vrAlim>15.00</vrAlim>
 						</infoDeslig>
 					</infoVinc>
 					<infoTerm>
@@ -163,9 +163,9 @@
 								</infoAgNocivo>
 							</baseCalculo>
 							<infoFGTS>
-								<vrBcFGTSProcTrab>0</vrBcFGTSProcTrab>
-								<vrBcFGTSSefip>1</vrBcFGTSSefip>
-								<vrBcFGTSDecAnt>1</vrBcFGTSDecAnt>
+								<vrBcFGTSProcTrab>0.00</vrBcFGTSProcTrab>
+								<vrBcFGTSSefip>1.00</vrBcFGTSSefip>
+								<vrBcFGTSDecAnt>1.00</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
 								<codCateg>001</codCateg>
@@ -277,7 +277,7 @@
 							<dtProjFimAPI>2023-01-01</dtProjFimAPI>
 							<pensAlim>1</pensAlim>
 							<percAliment>12.05</percAliment>
-							<vrAlim>15</vrAlim>
+							<vrAlim>15.00</vrAlim>
 						</infoDeslig>
 					</infoVinc>
 					<infoTerm>
@@ -343,9 +343,9 @@
 								</infoAgNocivo>
 							</baseCalculo>
 							<infoFGTS>
-								<vrBcFGTSProcTrab>0</vrBcFGTSProcTrab>
-								<vrBcFGTSSefip>1</vrBcFGTSSefip>
-								<vrBcFGTSDecAnt>1</vrBcFGTSDecAnt>
+								<vrBcFGTSProcTrab>0.00</vrBcFGTSProcTrab>
+								<vrBcFGTSSefip>1.00</vrBcFGTSSefip>
+								<vrBcFGTSDecAnt>1.00</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
 								<codCateg>001</codCateg>
