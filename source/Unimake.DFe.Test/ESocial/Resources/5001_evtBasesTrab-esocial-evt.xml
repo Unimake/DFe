@@ -113,7 +113,7 @@
 							<dtAcConv>1900-01-01</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc1</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0001-01-01</dtAcConv>
@@ -125,7 +125,7 @@
 							<dtAcConv>9999-12-31</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc3</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -155,7 +155,7 @@
 							<dtAcConv>1900-02-02</dtAcConv>
 							<tpAcConv>E</tpAcConv>
 							<dsc>dsc5</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0001-02-02</dtAcConv>
@@ -185,7 +185,7 @@
 							<dtAcConv>9999-11-29</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc7</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1899-10-29</dtAcConv>
@@ -197,7 +197,7 @@
 							<dtAcConv>1900-03-06</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc9</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -257,7 +257,7 @@
 							<dtAcConv>9999-10-28</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc11</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1899-09-27</dtAcConv>
@@ -287,7 +287,7 @@
 							<dtAcConv>1900-04-07</dtAcConv>
 							<tpAcConv>E</tpAcConv>
 							<dsc>dsc13</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0001-04-07</dtAcConv>
@@ -299,7 +299,7 @@
 							<dtAcConv>9999-09-26</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc15</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -329,7 +329,7 @@
 							<dtAcConv>1900-05-09</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc17</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0001-05-09</dtAcConv>
@@ -389,7 +389,7 @@
 							<dtAcConv>9999-08-25</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc19</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1899-07-25</dtAcConv>
@@ -401,7 +401,7 @@
 							<dtAcConv>1900-06-10</dtAcConv>
 							<tpAcConv>E</tpAcConv>
 							<dsc>dsc21</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -431,7 +431,7 @@
 							<dtAcConv>9999-07-24</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc23</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1899-06-23</dtAcConv>
@@ -461,7 +461,7 @@
 							<dtAcConv>1900-07-12</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc25</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0001-07-12</dtAcConv>
@@ -473,7 +473,7 @@
 							<dtAcConv>9999-06-22</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc27</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -532,7 +532,7 @@
 							<dtAcConv>9998-11-10</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc55</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1898-10-10</dtAcConv>
@@ -544,7 +544,7 @@
 							<dtAcConv>1901-03-25</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc57</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -574,7 +574,7 @@
 							<dtAcConv>9998-10-09</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc59</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1898-09-08</dtAcConv>
@@ -604,7 +604,7 @@
 							<dtAcConv>1901-04-26</dtAcConv>
 							<tpAcConv>E</tpAcConv>
 							<dsc>dsc61</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0002-04-26</dtAcConv>
@@ -616,7 +616,7 @@
 							<dtAcConv>9998-09-07</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc63</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -676,7 +676,7 @@
 							<dtAcConv>1901-05-28</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc65</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0002-05-28</dtAcConv>
@@ -706,7 +706,7 @@
 							<dtAcConv>9998-08-06</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc67</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1898-07-06</dtAcConv>
@@ -718,7 +718,7 @@
 							<dtAcConv>1901-06-29</dtAcConv>
 							<tpAcConv>E</tpAcConv>
 							<dsc>dsc69</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -748,7 +748,7 @@
 							<dtAcConv>9998-07-05</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc71</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1898-06-04</dtAcConv>
@@ -808,7 +808,7 @@
 							<dtAcConv>1901-07-31</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc73</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0002-07-31</dtAcConv>
@@ -820,7 +820,7 @@
 							<dtAcConv>9998-06-03</dtAcConv>
 							<tpAcConv>C</tpAcConv>
 							<dsc>dsc75</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>
@@ -850,7 +850,7 @@
 							<dtAcConv>1901-09-01</dtAcConv>
 							<tpAcConv>E</tpAcConv>
 							<dsc>dsc77</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>0002-09-01</dtAcConv>
@@ -880,7 +880,7 @@
 							<dtAcConv>9998-05-02</dtAcConv>
 							<tpAcConv>G</tpAcConv>
 							<dsc>dsc79</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<ideADC>
 							<dtAcConv>1898-04-01</dtAcConv>
@@ -892,7 +892,7 @@
 							<dtAcConv>1901-10-03</dtAcConv>
 							<tpAcConv>A</tpAcConv>
 							<dsc>dsc81</dsc>
-							<remunSuc>S</remunSuc>
+							 
 						</ideADC>
 						<detInfoPerRef>
 							<ind13>0</ind13>

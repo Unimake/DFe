@@ -540,11 +540,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCpSeg { get; set; }
-
-        /// <summary>
-        /// Valor da contribuição do segurado, devida à Previdência Social,
-        /// calculada segundo as regras da legislação em vigor, por CR.
-        /// </summary>
         [XmlElement("vrCpSeg")]
         public string VrCpSegField
         {
@@ -559,10 +554,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrDescSeg { get; set; }
 
-        /// <summary>
-        /// Valor efetivamente descontado do segurado, corresponde a TpValor = [21] do correspondente
-        /// infoCpCalc/tpCR
-        /// </summary>
         [XmlElement("vrDescSeg")]
         public string VrDescSegField
         {
@@ -942,11 +933,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double Valor { get; set; }
 
-        /// <summary>
-        /// Valor da base de cálculo, dedução ou desconto da contribuição
-        /// social devida à Previdência Social ou a Outras Entidades e Fundos, 
-        /// conforme definido no campo TpValor.
-        /// </summary>
         [XmlElement("valor")]
         public string ValorField
         {
@@ -984,10 +970,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrCsSegTerc { get; set; }
 
-        /// <summary>
-        /// Valor da contribuição social devida a Outras Entidades ou
-        /// Fundos, calculada segundo a legislação em vigor, por CR.
-        /// </summary>
         [XmlElement("vrCsSegTerc")]
         public string VrCsSegTercField
         {
@@ -1002,10 +984,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrDescTerc { get; set; }
 
-        /// <summary>
-        ///  Valor efetivamente descontado do segurado,
-        /// correspondente a tpValor = [22, 23], do correspondente calcTerc/tpCR.
-        /// </summary>
         [XmlElement("vrDescTerc")]
         public string VrDescTercField
         {
@@ -1296,10 +1274,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrPerRef { get; set; }
 
-        /// <summary>
-        /// Valor da base de cálculo, dedução ou desconto da contribuição
-        /// social, conforme definido no campo tpVrPerRef.
-        /// </summary>
         [XmlElement("vrPerRef")]
         public string VrPerRefField
         {
