@@ -3984,6 +3984,28 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region Tipo de CTe Simplificado
+
+    /// <summary>
+    /// Tipos de CTe Simplificado
+    /// </summary>
+    public enum TipoCTeSimp
+    {
+        /// <summary>
+        /// 5 - CTe Simplificado
+        /// </summary>
+        [XmlEnum("5")]
+        CTeSimplificado = 5,
+
+        /// <summary>
+        /// 6 - Substituição CTe Simplificado
+        /// </summary>
+        [XmlEnum("6")]
+        SubstituicaoCTeSimplificado = 6
+    }
+
+    #endregion
+
     #region Modalidades de transportes do CTe
 
     /// <summary>

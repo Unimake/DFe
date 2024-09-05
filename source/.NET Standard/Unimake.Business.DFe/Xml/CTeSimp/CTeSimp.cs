@@ -312,7 +312,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("tpCTe")]
-        public TipoCTe TpCTe { get; set; }
+        public TipoCTeSimp TpCTe { get; set; }
 
         [XmlElement("procEmi")]
         public ProcessoEmissao ProcEmi
