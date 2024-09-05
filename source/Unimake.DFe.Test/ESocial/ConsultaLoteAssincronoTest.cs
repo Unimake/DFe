@@ -81,7 +81,7 @@ namespace Unimake.DFe.Test.ESocial
             consultaLoteAssincrono.Executar();
             consultaLoteAssincrono.RetornoWSXML = retornoConsultaESocial;
             consultaLoteAssincrono.RetornoWSString = consultaLoteAssincrono.RetornoWSXML.OuterXml;
-            consultaLoteAssincrono.GravarXmlDistribuicao("C:\\Projetos\\TesteDistribuicaoESocial");
+            consultaLoteAssincrono.GravarXmlDistribuicao(@"..\\\\..\\\\..\\\\ESocial\\\\Resources");
         }
 
     }
