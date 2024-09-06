@@ -43,19 +43,19 @@
 			</cargo>
 			<remuneracao>
 				<dtRemun>2002-01-01</dtRemun>
-				<vrSalFx>100</vrSalFx>
+				<vrSalFx>100.00</vrSalFx>
 				<undSalFixo>1</undSalFixo>
 				<dscSalVar>dscSalVar1</dscSalVar>
 			</remuneracao>
 			<remuneracao>
 				<dtRemun>1041-01-01</dtRemun>
-				<vrSalFx>100</vrSalFx>
+				<vrSalFx>100.00</vrSalFx>
 				<undSalFixo>2</undSalFixo>
 				<dscSalVar>dscSalVar2</dscSalVar>
 			</remuneracao>
 			<remuneracao>
 				<dtRemun>9999-12-31</dtRemun>
-				<vrSalFx>100</vrSalFx>
+				<vrSalFx>100.00</vrSalFx>
 				<undSalFixo>3</undSalFixo>
 				<dscSalVar>dscSalVar3</dscSalVar>
 			</remuneracao>
