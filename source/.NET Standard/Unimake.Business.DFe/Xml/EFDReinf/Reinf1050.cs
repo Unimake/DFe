@@ -54,6 +54,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         [XmlElement("inclusao")]
         public InclusaoReinf1050 Inclusao { get; set; }
+
+        [XmlElement("alteracao")]
+        public AlteracaoReinf1050 Alteracao { get; set; }
+
+        [XmlElement("exclusao")]
+        public ExclusaoReinf1050 Exclusao { get; set; }
     }
 
 #if INTEROP
@@ -66,9 +72,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         [XmlElement("ideEntLig")]
         public IdeEntLig IdeEntLig { get; set; }
-
-        [XmlElement("alteracao")]
-        public AlteracaoReinf1050 Alteracao { get; set; }
     }
 
 #if INTEROP
@@ -91,9 +94,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("fimValid")]
         public string FimValid { get; set; }
 
-        [XmlElement("exclusao")]
-        public ExclusaoReinf1050 Exclusao { get; set; }
-
         #region ShouldSerialize
 
         public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
@@ -109,26 +109,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class AlteracaoReinf1050
     {
-        [XmlElement("tpEntLig")]
-        public TipoEntidadeLigada TpEntLig { get; set; }
-
-        [XmlElement("cnpjLig")]
-        public string CnpjLig { get; set; }
-
-        [XmlElement("iniValid")]
-        public string IniValid { get; set; }
-
-        [XmlElement("fimValid")]
-        public string FimValid { get; set; }
+        [XmlElement("ideEntLig")]
+        public IdeEntLig IdeEntLig { get; set; }
 
         [XmlElement("novaValidade")]
         public NovaValidade NovaValidade { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
-
-        #endregion
     }
 
 #if INTEROP
@@ -159,6 +144,18 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     [Serializable()]
     public class ExclusaoReinf1050
+    {
+        [XmlElement("ideEntLig")]
+        public IdeEntLigExclusao IdeEntLig { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEntLigExclusao")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class IdeEntLigExclusao
     {
         [XmlElement("cnpjLig")]
         public string CnpjLig { get; set; }

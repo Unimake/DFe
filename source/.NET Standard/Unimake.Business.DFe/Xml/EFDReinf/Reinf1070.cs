@@ -115,6 +115,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
 
+#if INTEROP
+        public bool ShouldSerializeIndAutoria() => IndAutoria != (IndicativoAutoria)(-1);
+#else
+        public bool ShouldSerializeIndAutoria() => IndAutoria != null;
+#endif
+
         #endregion
 
 #if INTEROP
@@ -221,46 +227,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
 
-        [XmlElement("infoSusp")]
-        public List<InfoSusp> InfoSusp { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddInfoSusp(InfoSusp item)
-        {
-            if (InfoSusp == null)
-            {
-                InfoSusp = new List<InfoSusp>();
-            }
-
-            InfoSusp.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista InfoSusp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfoSusp</returns>
-        public InfoSusp GetInfoSusp(int index)
-        {
-            if ((InfoSusp?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return InfoSusp[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfoSusp
-        /// </summary>
-        public int GetInfoSuspCount => (InfoSusp != null ? InfoSusp.Count : 0);
-
-#endif
+        [XmlElement("novaValidade")]
+        public NovaValidade NovaValidade { get; set; }
     }
 
 #if INTEROP
@@ -272,7 +240,33 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class ExclusaoReinf1070
     {
         [XmlElement("ideProcesso")]
-        public IdeProcesso IdeProcesso { get; set; }
+        public IdeProcessoExclusao IdeProcesso { get; set; }
+    }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeProcessoExclusao")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class IdeProcessoExclusao
+    {
+        [XmlElement("tpProc")]
+        public TipoProcesso TpProc { get; set; }
+
+        [XmlElement("nrProc")]
+        public string NrProc { get; set; }
+
+        [XmlElement("iniValid")]
+        public string IniValid { get; set; }
+
+        [XmlElement("fimValid")]
+        public string FimValid { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
+
+        #endregion ShouldSerialize
     }
 }

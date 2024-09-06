@@ -55,6 +55,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         [XmlElement("inclusao")]
         public InclusaoReinf1000 Inclusao { get; set; }
+
+        [XmlElement("alteracao")]
+        public AlteracaoReinf1000 Alteracao { get; set; }
+        
+        [XmlElement("exclusao")]
+        public ExclusaoReinf1000 Exclusao { get; set; }
     }
 
 #if INTEROP
@@ -70,6 +76,30 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("infoCadastro")]
         public InfoCadastro InfoCadastro { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.AlteracaoReinf1000")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class AlteracaoReinf1000 : InclusaoReinf1000
+    {
+        [XmlElement("novaValidade")]
+        public NovaValidade NovaValidade { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ExclusaoReinf1000")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    public class ExclusaoReinf1000
+    {
+        [XmlElement("idePeriodo")]
+        public IdePeriodo IdePeriodo { get; set; }
     }
 
 #if INTEROP
@@ -122,7 +152,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("indUniao")]
-        public IndicativoUniao IndUniao { get; set; }
+#if INTEROP
+        public IndicativoUniao IndUniao { get; set; } = (IndicativoUniao)(-1);
+#else
+        public IndicativoUniao? IndUniao { get; set; }
+#endif
 
         [XmlIgnore]
 #if INTEROP
@@ -179,6 +213,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #else
         public bool ShouldSerializeIndSitPJ() => IndSitPJ != null;
 #endif
+
+#if INTEROP
+        public bool ShouldSerializeIndUniao() => IndUniao != (IndicativoUniao)(-1);
+#else
+        public bool ShouldSerializeIndUniao() => IndUniao != null;
+#endif
+
         #endregion
 
 #if INTEROP
