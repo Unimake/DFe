@@ -24,8 +24,8 @@
 						<basePerApur>
 							<tpValor>11</tpValor>
 							<indIncid>1</indIncid>
-							<baseFGTS>1</baseFGTS>
-							<vrFGTS>1</vrFGTS>
+							<baseFGTS>1.00</baseFGTS>
+							<vrFGTS>1.00</vrFGTS>
 						</basePerApur>
 						<infoBasePerAntE>
 							<perRef>2005-01</perRef>
@@ -33,8 +33,8 @@
 							<basePerAntE>
 								<tpValorE>13</tpValorE>
 								<indIncidE>1</indIncidE>
-								<baseFGTSE>1</baseFGTSE>
-								<vrFGTSE>1</vrFGTSE>
+								<baseFGTSE>1.00</baseFGTSE>
+								<vrFGTSE>1.00</vrFGTSE>
 							</basePerAntE>
 						</infoBasePerAntE>
 					</infoBaseFGTS>

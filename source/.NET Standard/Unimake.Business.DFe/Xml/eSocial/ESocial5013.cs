@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -336,17 +340,38 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indIncid")]
         public IndIncid IndIncid { get; set; }
 
-        [XmlElement("baseFGTS")]
+        /// <summary>
+        /// Remuneração (valor da base de cálculo) do FGTS.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double BaseFGTS { get; set; }
+        [XmlElement("baseFGTS")]
+        public string BaseFGTSString
+        {
+            get => BaseFGTS.ToString("F2", CultureInfo.InvariantCulture);
+            set => BaseFGTS = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrFGTS")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado
+        /// na conta vinculada do trabalhador.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrFGTS { get; set; }
+        [XmlElement("vrFGTS")]
+        public string VrFGTSField
+        {
+            get => VrFGTS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrFGTS = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrFGTS() => VrFGTS > 0;
+        public bool ShouldSerializeVrFGTSField() => VrFGTS > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -431,16 +456,40 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indIncidE")]
         public IndIncid IndIncidE { get; set; }
 
-        [XmlElement("baseFGTSE")]
+        /// <summary>
+        /// Remuneração (valor da base de cálculo) do FGTS.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// Deve corresponder ao somatório dos valores informados no campo remFGTSE
+        /// do evento de origem, agrupados por tpValorE e indIncidE.
+        /// </summary>
+        [XmlIgnore]
         public double BaseFGTSE { get; set; }
+        [XmlElement("baseFGTSE")]
+        public string BaseFGTSEField
+        {
+            get => BaseFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+            set => BaseFGTSE = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrFGTSE")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// Deve corresponder ao somatório dos valores informados no campo
+        /// dpsFGTSE do evento de origem, agrupados por tpValorE.
+        /// </summary>
+        [XmlIgnore]
         public double VrFGTSE { get; set; }
+        [XmlElement("vrFGTSE")]
+        public string VrFGTSEField
+        {
+            get => VrFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrFGTSE = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrFGTSE() => VrFGTSE > 0;
+        public bool ShouldSerializeVrFGTSEField() => VrFGTSE > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }
