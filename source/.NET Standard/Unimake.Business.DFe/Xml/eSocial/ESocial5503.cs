@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -175,8 +178,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoFGTSProcTrab
     {
-        [XmlElement("totalFGTS")]
+        /// <summary>
+        /// Valor total de FGTS a recolher no processo trabalhista.
+        /// </summary>
+        [XmlIgnore]
         public double TotalFGTS { get; set; }
+        [XmlElement("totalFGTS")]
+        public string TotalFGTSField
+        {
+            get => TotalFGTS.ToString("F2", CultureInfo.InvariantCulture);
+            set => TotalFGTS = Converter.ToDouble(value);
+        }
 
         [XmlElement("ideEstab")]
         public IdeEstabESocial5503 IdeEstab { get; set; }
@@ -267,36 +279,103 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpValorProcTrab")]
         public int TpValorProcTrab { get; set; }
 
-        [XmlElement("remFGTSProcTrab")]
+        /// <summary>
+        /// Valor da base de cálculo de FGTS ainda não declarada,
+        /// reconhecida no processo trabalhista.
+        /// Origem: campo vrBcFGTSProcTrab de S-2500.
+        /// </summary>
+        [XmlIgnore]
         public double RemFGTSProcTrab { get; set; }
+        [XmlElement("remFGTSProcTrab")]
+        public string RemFGTSProcTrabField
+        {
+            get => RemFGTSProcTrab.ToString("F2", CultureInfo.InvariantCulture);
+            set => RemFGTSProcTrab = Converter.ToDouble(value);
+        }
 
-        [XmlElement("dpsFGTSProcTrab")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado na conta vinculada
+        /// do trabalhador sobre base reconhecida no processo trabalhista.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double DpsFGTSProcTrab { get; set; }
+        [XmlElement("dpsFGTSProcTrab")]
+        public string DpsFGTSProcTrabField
+        {
+            get => DpsFGTSProcTrab.ToString("F2", CultureInfo.InvariantCulture);
+            set => DpsFGTSProcTrab = Converter.ToDouble(value);
 
-        [XmlElement("remFGTSSefip")]
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo declarada anteriormente
+        /// em SEFIP e ainda não recolhida.
+        /// Origem: campo vrBcFGTSSefip de S-2500.
+        /// </summary>
+        [XmlIgnore]
         public double RemFGTSSefip { get; set; }
+        [XmlElement("remFGTSSefip")]
+        public string RemFGTSSefipField
+        {
+            get => RemFGTSSefip.ToString("F2", CultureInfo.InvariantCulture);
+            set => RemFGTSSefip = Converter.ToDouble(value);
+        }
 
-        [XmlElement("dpsFGTSSefip")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado na conta vinculada
+        /// do trabalhador sobre base já declarada anteriormente em SEFIP.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double DpsFGTSSefip { get; set; }
+        [XmlElement("dpsFGTSSefip")]
+        public string DpsFGTSSefipField
+        {
+            get => DpsFGTSSefip.ToString("F2", CultureInfo.InvariantCulture);
+            set => DpsFGTSSefip = Converter.ToDouble(value);
+        }
 
-        [XmlElement("remFGTSDecAnt")]
+        /// <summary>
+        /// Valor da base de cálculo declarada anteriormente
+        /// no eSocial e ainda não recolhida.
+        /// Origem: campo vrBcFGTSDecAnt de S-2500.
+        /// </summary>
+        [XmlIgnore]
         public double RemFGTSDecAnt { get; set; }
+        [XmlElement("remFGTSDecAnt")]
+        public string RemFGTSDecAntField
+        {
+            get => RemFGTSDecAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => RemFGTSDecAnt = Converter.ToDouble(value);
+        }
 
-        [XmlElement("dpsFGTSDecAnt")]
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado na conta vinculada do
+        /// trabalhador sobre base já declarada anteriormente no eSocial.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double DpsFGTSDecAnt { get; set; }
+        [XmlElement("dpsFGTSDecAnt")]
+        public string DpsFGTSDecAntField
+        {
+            get => DpsFGTSDecAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => DpsFGTSDecAnt = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDpsFGTSProcTrab() => DpsFGTSProcTrab > 0;
+        public bool ShouldSerializeDpsFGTSProcTrabField() => DpsFGTSProcTrab > 0;
    
-        public bool ShouldSerializeRemFGTSSefip() => RemFGTSSefip > 0;
+        public bool ShouldSerializeRemFGTSSefipField() => RemFGTSSefip > 0;
        
-        public bool ShouldSerializeDpsFGTSSefip() => DpsFGTSSefip > 0;
+        public bool ShouldSerializeDpsFGTSSefipField() => DpsFGTSSefip > 0;
        
-        public bool ShouldSerializeRemFGTSDecAnt() => RemFGTSDecAnt > 0;
+        public bool ShouldSerializeRemFGTSDecAntField() => RemFGTSDecAnt > 0;
      
-        public bool ShouldSerializeDpsFGTSDecAnt() => DpsFGTSDecAnt > 0;
+        public bool ShouldSerializeDpsFGTSDecAntField() => DpsFGTSDecAnt > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

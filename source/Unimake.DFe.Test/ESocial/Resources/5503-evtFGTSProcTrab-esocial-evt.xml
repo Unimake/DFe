@@ -21,7 +21,7 @@
 			<codCateg>105</codCateg>
 			<categOrig>000</categOrig>
 			<infoFGTSProcTrab>
-				<totalFGTS>0</totalFGTS>
+				<totalFGTS>0.00</totalFGTS>
 				<ideEstab>
 					<tpInsc>1</tpInsc>
 					<nrInsc>00000000000000</nrInsc>
@@ -29,34 +29,34 @@
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>71</tpValorProcTrab>
-						<remFGTSProcTrab>0</remFGTSProcTrab>
-						<dpsFGTSProcTrab>1</dpsFGTSProcTrab>
-						<remFGTSSefip>1</remFGTSSefip>
-						<dpsFGTSSefip>1</dpsFGTSSefip>
-						<remFGTSDecAnt>1</remFGTSDecAnt>
-						<dpsFGTSDecAnt>1</dpsFGTSDecAnt>
+						<remFGTSProcTrab>0.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>1.00</dpsFGTSProcTrab>
+						<remFGTSSefip>1.00</remFGTSSefip>
+						<dpsFGTSSefip>1.00</dpsFGTSSefip>
+						<remFGTSDecAnt>1.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>1.00</dpsFGTSDecAnt>
 					</basePerRef>
 					<basePerRef>
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>72</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 					<basePerRef>
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>73</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 				</ideEstab>
 			</infoFGTSProcTrab>
@@ -66,7 +66,7 @@
 			<codCateg>105</codCateg>
 			<categOrig>000</categOrig>
 			<infoFGTSProcTrab>
-				<totalFGTS>100</totalFGTS>
+				<totalFGTS>100.00</totalFGTS>
 				<ideEstab>
 					<tpInsc>1</tpInsc>
 					<nrInsc>00000000000000</nrInsc>
@@ -74,34 +74,34 @@
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>71</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 					<basePerRef>
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>72</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 					<basePerRef>
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>73</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 				</ideEstab>
 			</infoFGTSProcTrab>
@@ -111,7 +111,7 @@
 			<codCateg>105</codCateg>
 			<categOrig>000</categOrig>
 			<infoFGTSProcTrab>
-				<totalFGTS>100</totalFGTS>
+				<totalFGTS>100.00</totalFGTS>
 				<ideEstab>
 					<tpInsc>1</tpInsc>
 					<nrInsc>00000000000000</nrInsc>
@@ -119,34 +119,34 @@
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>71</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 					<basePerRef>
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>72</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 					<basePerRef>
 						<perRef>2022-12</perRef>
 						<codCateg>105</codCateg>
 						<tpValorProcTrab>73</tpValorProcTrab>
-						<remFGTSProcTrab>100</remFGTSProcTrab>
-						<dpsFGTSProcTrab>100</dpsFGTSProcTrab>
-						<remFGTSSefip>100</remFGTSSefip>
-						<dpsFGTSSefip>100</dpsFGTSSefip>
-						<remFGTSDecAnt>100</remFGTSDecAnt>
-						<dpsFGTSDecAnt>100</dpsFGTSDecAnt>
+						<remFGTSProcTrab>100.00</remFGTSProcTrab>
+						<dpsFGTSProcTrab>100.00</dpsFGTSProcTrab>
+						<remFGTSSefip>100.00</remFGTSSefip>
+						<dpsFGTSSefip>100.00</dpsFGTSSefip>
+						<remFGTSDecAnt>100.00</remFGTSDecAnt>
+						<dpsFGTSDecAnt>100.00</dpsFGTSDecAnt>
 					</basePerRef>
 				</ideEstab>
 			</infoFGTSProcTrab>
