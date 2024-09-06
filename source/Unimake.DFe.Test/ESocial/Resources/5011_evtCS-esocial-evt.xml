@@ -22,10 +22,10 @@
 					<indCoop>1</indCoop>
 					<indConstr>1</indConstr>
 					<indSubstPatr>1</indSubstPatr>
-					<percRedContrib>0.1234</percRedContrib>
+					<percRedContrib>0.12</percRedContrib>
 					<infoAtConc>
-						<fatorMes>0.4321</fatorMes>
-						<fator13>0.4321</fator13>
+						<fatorMes>0.43</fatorMes>
+						<fator13>0.43</fator13>
 					</infoAtConc>
 				</infoPJ>
 			</infoContrib>
@@ -35,8 +35,8 @@
 				<infoEstab>
 					<cnaePrep>1234567</cnaePrep>
 					<aliqRat>1</aliqRat>
-					<fap>0.5</fap>
-					<aliqRatAjust>0.5</aliqRatAjust>
+					<fap>0.5000</fap>
+					<aliqRatAjust>0.5000</aliqRatAjust>
 					<infoComplObra>
 						<indSubstPatrObra>1</indSubstPatrObra>
 					</infoComplObra>
@@ -65,100 +65,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>1</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -188,100 +188,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>2</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -311,100 +311,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>3</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -412,78 +412,78 @@
 				</ideLotacao>
 				<basesAquis>
 					<indAquis>1</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesAquis>
 					<indAquis>2</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesAquis>
 					<indAquis>3</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesComerc>
 					<indComerc>2</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<basesComerc>
 					<indComerc>3</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<basesComerc>
 					<indComerc>7</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 			</ideEstab>
 			<ideEstab>
@@ -492,8 +492,8 @@
 				<infoEstab>
 					<cnaePrep>1234567</cnaePrep>
 					<aliqRat>2</aliqRat>
-					<fap>0.5</fap>
-					<aliqRatAjust>0.5</aliqRatAjust>
+					<fap>0.5000</fap>
+					<aliqRatAjust>0.5000</aliqRatAjust>
 					<infoComplObra>
 						<indSubstPatrObra>2</indSubstPatrObra>
 					</infoComplObra>
@@ -522,100 +522,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>1</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -645,100 +645,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>2</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -768,100 +768,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>3</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -869,78 +869,78 @@
 				</ideLotacao>
 				<basesAquis>
 					<indAquis>4</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesAquis>
 					<indAquis>5</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesAquis>
 					<indAquis>6</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesComerc>
 					<indComerc>8</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<basesComerc>
 					<indComerc>9</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<basesComerc>
 					<indComerc>2</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 			</ideEstab>
 			<ideEstab>
@@ -949,8 +949,8 @@
 				<infoEstab>
 					<cnaePrep>1234567</cnaePrep>
 					<aliqRat>3</aliqRat>
-					<fap>0.5</fap>
-					<aliqRatAjust>0.5</aliqRatAjust>
+					<fap>0.5000</fap>
+					<aliqRatAjust>0.5000</aliqRatAjust>
 					<infoComplObra>
 						<indSubstPatrObra>1</indSubstPatrObra>
 					</infoComplObra>
@@ -979,100 +979,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>1</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -1102,100 +1102,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>2</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -1225,100 +1225,100 @@
 					<dadosOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
 						<aliqRat>3</aliqRat>
-						<fap>0.5</fap>
-						<aliqRatAjust>0.5</aliqRatAjust>
+						<fap>0.5000</fap>
+						<aliqRatAjust>0.5000</aliqRatAjust>
 					</dadosOpPort>
 					<basesRemun>
 						<indIncid>1</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>2</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesRemun>
 						<indIncid>9</indIncid>
 						<codCateg>104</codCateg>
 						<basesCp>
-							<vrBcCp00>0</vrBcCp00>
-							<vrBcCp15>0</vrBcCp15>
-							<vrBcCp20>0</vrBcCp20>
-							<vrBcCp25>0</vrBcCp25>
-							<vrSuspBcCp00>0</vrSuspBcCp00>
-							<vrSuspBcCp15>0</vrSuspBcCp15>
-							<vrSuspBcCp20>0</vrSuspBcCp20>
-							<vrSuspBcCp25>0</vrSuspBcCp25>
-							<vrBcCp00VA>12</vrBcCp00VA>
-							<vrBcCp15VA>31</vrBcCp15VA>
-							<vrBcCp20VA>5</vrBcCp20VA>
-							<vrBcCp25VA>2</vrBcCp25VA>
-							<vrSuspBcCp00VA>51</vrSuspBcCp00VA>
-							<vrSuspBcCp15VA>12</vrSuspBcCp15VA>
-							<vrSuspBcCp20VA>42</vrSuspBcCp20VA>
-							<vrSuspBcCp25VA>15</vrSuspBcCp25VA>
-							<vrDescSest>0</vrDescSest>
-							<vrCalcSest>0</vrCalcSest>
-							<vrDescSenat>0</vrDescSenat>
-							<vrCalcSenat>0</vrCalcSenat>
-							<vrSalFam>0</vrSalFam>
-							<vrSalMat>0</vrSalMat>
+							<vrBcCp00>0.00</vrBcCp00>
+							<vrBcCp15>0.00</vrBcCp15>
+							<vrBcCp20>0.00</vrBcCp20>
+							<vrBcCp25>0.00</vrBcCp25>
+							<vrSuspBcCp00>0.00</vrSuspBcCp00>
+							<vrSuspBcCp15>0.00</vrSuspBcCp15>
+							<vrSuspBcCp20>0.00</vrSuspBcCp20>
+							<vrSuspBcCp25>0.00</vrSuspBcCp25>
+							<vrBcCp00VA>12.00</vrBcCp00VA>
+							<vrBcCp15VA>31.00</vrBcCp15VA>
+							<vrBcCp20VA>5.00</vrBcCp20VA>
+							<vrBcCp25VA>2.00</vrBcCp25VA>
+							<vrSuspBcCp00VA>51.00</vrSuspBcCp00VA>
+							<vrSuspBcCp15VA>12.00</vrSuspBcCp15VA>
+							<vrSuspBcCp20VA>42.00</vrSuspBcCp20VA>
+							<vrSuspBcCp25VA>15.00</vrSuspBcCp25VA>
+							<vrDescSest>0.00</vrDescSest>
+							<vrCalcSest>0.00</vrCalcSest>
+							<vrDescSenat>0.00</vrDescSenat>
+							<vrCalcSenat>0.00</vrCalcSenat>
+							<vrSalFam>0.00</vrSalFam>
+							<vrSalMat>0.00</vrSalMat>
 						</basesCp>
 					</basesRemun>
 					<basesAvNPort>
-						<vrBcCp00>0</vrBcCp00>
-						<vrBcCp15>0</vrBcCp15>
-						<vrBcCp20>0</vrBcCp20>
-						<vrBcCp25>0</vrBcCp25>
-						<vrBcCp13>0</vrBcCp13>
-						<vrDescCP>0</vrDescCP>
+						<vrBcCp00>0.00</vrBcCp00>
+						<vrBcCp15>0.00</vrBcCp15>
+						<vrBcCp20>0.00</vrBcCp20>
+						<vrBcCp25>0.00</vrBcCp25>
+						<vrBcCp13>0.00</vrBcCp13>
+						<vrDescCP>0.00</vrDescCP>
 					</basesAvNPort>
 					<infoSubstPatrOpPort>
 						<cnpjOpPortuario>12345678901234</cnpjOpPortuario>
@@ -1326,94 +1326,94 @@
 				</ideLotacao>
 				<basesAquis>
 					<indAquis>1</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesAquis>
 					<indAquis>2</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesAquis>
 					<indAquis>3</indAquis>
-					<vlrAquis>0</vlrAquis>
-					<vrCPDescPR>0</vrCPDescPR>
-					<vrCPNRet>0</vrCPNRet>
-					<vrRatNRet>0</vrRatNRet>
-					<vrSenarNRet>0</vrSenarNRet>
-					<vrCPCalcPR>0</vrCPCalcPR>
-					<vrRatDescPR>0</vrRatDescPR>
-					<vrRatCalcPR>0</vrRatCalcPR>
-					<vrSenarDesc>0</vrSenarDesc>
-					<vrSenarCalc>55</vrSenarCalc>
+					<vlrAquis>0.00</vlrAquis>
+					<vrCPDescPR>0.00</vrCPDescPR>
+					<vrCPNRet>0.00</vrCPNRet>
+					<vrRatNRet>0.00</vrRatNRet>
+					<vrSenarNRet>0.00</vrSenarNRet>
+					<vrCPCalcPR>0.00</vrCPCalcPR>
+					<vrRatDescPR>0.00</vrRatDescPR>
+					<vrRatCalcPR>0.00</vrRatCalcPR>
+					<vrSenarDesc>0.00</vrSenarDesc>
+					<vrSenarCalc>55.00</vrSenarCalc>
 				</basesAquis>
 				<basesComerc>
 					<indComerc>3</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<basesComerc>
 					<indComerc>7</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<basesComerc>
 					<indComerc>8</indComerc>
-					<vrBcComPR>0</vrBcComPR>
-					<vrCPSusp>1</vrCPSusp>
-					<vrRatSusp>2</vrRatSusp>
-					<vrSenarSusp>1</vrSenarSusp>
+					<vrBcComPR>0.00</vrBcComPR>
+					<vrCPSusp>1.00</vrCPSusp>
+					<vrRatSusp>2.00</vrRatSusp>
+					<vrSenarSusp>1.00</vrSenarSusp>
 				</basesComerc>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 				<infoCREstab>
 					<tpCR>056107</tpCR>
-					<vrCR>1</vrCR>
-					<vrSuspCR>4</vrSuspCR>
+					<vrCR>1.00</vrCR>
+					<vrSuspCR>4.00</vrSuspCR>
 				</infoCREstab>
 			</ideEstab>
 			<infoCRContrib>
 				<tpCR>056107</tpCR>
-				<vrCR>1</vrCR>
-				<vrCRSusp>1</vrCRSusp>
+				<vrCR>1.00</vrCR>
+				<vrCRSusp>1.00</vrCRSusp>
 			</infoCRContrib>
 			<infoCRContrib>
 				<tpCR>056107</tpCR>
-				<vrCR>1</vrCR>
-				<vrCRSusp>1</vrCRSusp>
+				<vrCR>1.00</vrCR>
+				<vrCRSusp>1.00</vrCRSusp>
 			</infoCRContrib>
 			<infoCRContrib>
 				<tpCR>056107</tpCR>
-				<vrCR>1</vrCR>
-				<vrCRSusp>1</vrCRSusp>
+				<vrCR>1.00</vrCR>
+				<vrCRSusp>1.00</vrCRSusp>
 			</infoCRContrib>
 		</infoCS>
 	</evtCS>

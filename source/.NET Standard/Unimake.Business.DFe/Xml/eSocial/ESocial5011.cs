@@ -5,6 +5,12 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.GNRE;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Xml.MDFe;
+using System.Diagnostics;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -180,11 +186,31 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoCPSeg
     {
-        [XmlElement("vrDescCP")]
+        /// <summary>
+        /// Valor total da contribuição descontada dos segurados.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [21].
+        /// </summary>
+        [XmlIgnore]
         public double VrDescCP { get; set; }
+        [XmlElement("vrDescCP")]
+        public string VrDescCPField
+        {
+            get => VrDescCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrDescCP = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCpSeg")]
+        /// <summary>
+        /// Valor total calculado relativo à contribuição dos segurados.
+        /// Origem: campo vrCpSeg de S-5001.
+        /// </summary>
+        [XmlIgnore]
         public double VrCpSeg { get; set; }
+        [XmlElement("vrCpSeg")]
+        public string VrCpSegField
+        {
+            get => VrCpSeg.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCpSeg = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -212,7 +238,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public IndCoop IndCoop { get; set; } = (IndCoop)(-1);
 #else
-        public IndCoop ? IndCoop { get; set; }
+        public IndCoop? IndCoop { get; set; }
 #endif
 
         [XmlElement("indConstr")]
@@ -222,11 +248,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public IndSubstPatr IndSubstPatr { get; set; } = (IndSubstPatr)(-1);
 #else
-        public IndSubstPatr ? IndSubstPatr { get; set; }
+        public IndSubstPatr? IndSubstPatr { get; set; }
 #endif
 
-        [XmlElement("percRedContrib")]
+        /// <summary>
+        /// Percentual de redução da contribuição prevista na Lei 12.546/2011.
+        /// Evento de origem: S-1280.
+        /// </summary>
+        [XmlIgnore]
         public double PercRedContrib { get; set; }
+        [XmlElement("percRedContrib")]
+        public string PercRedContribField
+        {
+            get => PercRedContrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => PercRedContrib = Converter.ToDouble(value);
+        }
 
         [XmlElement("percTransf")]
         public string PercTransf { get; set; }
@@ -252,7 +288,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndSubstPatr() => IndSubstPatr != null;
 #endif
 
-        public bool ShouldSerializePercRedContrib() => PercRedContrib > 0;
+        public bool ShouldSerializePercRedContribField() => PercRedContrib > 0;
 
         public bool ShouldSerializePercTransfField() => !string.IsNullOrEmpty(PercTransf);
 
@@ -268,11 +304,37 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoAtConc
     {
-        [XmlElement("fatorMes")]
+        /// <summary>
+        /// Informe o fator a ser utilizado para cálculo da contribuição
+        /// patronal do mês dos trabalhadores envolvidos na execução
+        /// das atividades enquadradas no Anexo IV em conjunto com
+        /// as dos Anexos I a III e V da Lei Complementar 123/2006.
+        /// Evento de origem: S-1280.
+        /// </summary>
+        [XmlIgnore]
         public double FatorMes { get; set; }
+        [XmlElement("fatorMes")]
+        public string FatorMesField
+        {
+            get => FatorMes.ToString("F2", CultureInfo.InvariantCulture);
+            set => FatorMes = Converter.ToDouble(value);
+        }
 
-        [XmlElement("fator13")]
+        /// <summary>
+        /// Informe o fator a ser utilizado para cálculo da contribuição
+        /// patronal do décimo terceiro dos trabalhadores envolvidos na
+        /// execução das atividades enquadradas no Anexo IV em conjunto
+        /// com as dos Anexos I a III e V da Lei Complementar 123/2006.
+        /// Evento de origem: S-1280.
+        /// </summary>
+        [XmlIgnore]
         public double Fator13 { get; set; }
+        [XmlElement("fator13")]
+        public string Fator13Field
+        {
+            get => Fator13.ToString("F2", CultureInfo.InvariantCulture);
+            set => Fator13 = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -472,11 +534,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("aliqRat")]
         public int AliqRat { get; set; }
 
-        [XmlElement("fap")]
+        /// <summary>
+        /// Fator Acidentário de Prevenção - FAP.
+        /// Validação: Informação obrigatória e
+        /// exclusiva se ideEmpregador/tpInsc = [1].
+        /// </summary>
+        [XmlIgnore]
         public double Fap { get; set; }
+        [XmlElement("fap")]
+        public string FapField
+        {
+            get => Fap.ToString("F4", CultureInfo.InvariantCulture);
+            set => Fap = Converter.ToDouble(value);
+        }
 
-        [XmlElement("aliqRatAjust")]
+        /// <summary>
+        /// Alíquota do RAT após ajuste pelo FAP.
+        /// Validação: Informação obrigatória e
+        /// exclusiva se ideEmpregador/tpInsc = [1].
+        /// </summary>
+        [XmlIgnore]
         public double AliqRatAjust { get; set; }
+        [XmlElement("aliqRatAjust")]
+        public string AliqRatAjustField
+        {
+            get => AliqRatAjust.ToString("F4", CultureInfo.InvariantCulture);
+            set => AliqRatAjust = Converter.ToDouble(value);
+        }
 
         [XmlElement("infoEstabRef")]
         public InfoEstabRef InfoEstabRef { get; set; }
@@ -488,11 +572,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeCnpjResp() => !string.IsNullOrEmpty(CnpjResp);
 
-        public bool ShouldSerializeFap() => Fap > 0;
+        public bool ShouldSerializeFapFIeld() => Fap > 0;
 
-        public bool ShouldSerializeAliqRatAjust() => AliqRatAjust > 0;
+        public bool ShouldSerializeAliqRatAjustField() => AliqRatAjust > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -509,19 +593,35 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("aliqRat")]
         public int AliqRat { get; set; }
 
-        [XmlElement("fap")]
+        [XmlIgnore]
         public double Fap { get; set; }
+        [XmlElement("fap")]
+        public string FapField
+        {
+            get => Fap.ToString("F4", CultureInfo.InvariantCulture);
+            set => Fap = Converter.ToDouble(value);
+        }
 
-        [XmlElement("aliqRatAjust")]
+        /// <summary>
+        /// nformações de RAT e FAP de referência, nos casos de processo
+        /// administrativo ou judicial que altere a(s) alíquota(s).
+        /// </summary>
+        [XmlIgnore]
         public double AliqRatAjust { get; set; }
+        [XmlElement("aliqRatAjust")]
+        public string AliqRatAjustField
+        {
+            get => AliqRatAjust.ToString("F4", CultureInfo.InvariantCulture);
+            set => AliqRatAjust = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeFap() => Fap > 0;
+        public bool ShouldSerializeFapField() => Fap > 0;
 
-        public bool ShouldSerializeAliqRatAjust() => AliqRatAjust > 0;
+        public bool ShouldSerializeAliqRatAjustField() => AliqRatAjust > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -704,11 +804,32 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("aliqRat")]
         public int AliqRat { get; set; }
 
-        [XmlElement("fap")]
+        /// <summary>
+        /// Fator Acidentário de Prevenção - FAP.
+        /// Origem: campo dadosOpPort/fap de S-1020.
+        /// </summary>
+        [XmlIgnore]
         public double Fap { get; set; }
+        [XmlElement("fap")]
+        public string FapField
+        {
+            get => Fap.ToString("F4", CultureInfo.InvariantCulture);
+            set => Fap = Converter.ToDouble(value);
+        }
 
-        [XmlElement("aliqRatAjust")]
+        /// <summary>
+        /// Alíquota do RAT após ajuste pelo FAP.
+        /// Validação: Deve corresponder ao resultado da multiplicação
+        /// dos campos dadosOpPort/aliqRat e dadosOpPort/fap.
+        /// </summary>
+        [XmlIgnore]
         public double AliqRatAjust { get; set; }
+        [XmlElement("aliqRatAjust")]
+        public string AliqRatAjustField
+        {
+            get => AliqRatAjust.ToString("F4", CultureInfo.InvariantCulture);
+            set => AliqRatAjust = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -735,91 +856,342 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class BasesCp
     {
-        [XmlElement("vrBcCp00")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição
+        /// previdenciária sobre a remuneração.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp00 { get; set; }
+        [XmlElement("vrBcCp00")]
+        public string VrBcCp00Field
+        {
+            get => VrBcCp00.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp00 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp15")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional
+        /// para o financiamento dos benefícios de aposentadoria
+        /// especial após 15 anos de contribuição.
+        /// Origem: campo valor de S-5001, se tpValor em S-5001 = [12, 16].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp15 { get; set; }
+        [XmlElement("vrBcCp15")]
+        public string VrBcCp15Field
+        {
+            get => VrBcCp15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp15 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp20")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 20 anos de contribuição.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [13, 17].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp20 { get; set; }
+        [XmlElement("vrBcCp20")]
+        public string VrBcCp20FIeld
+        {
+            get => VrBcCp20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp20 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp25")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 25 anos de contribuição.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [14, 18].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp25 { get; set; }
+        [XmlElement("vrBcCp25")]
+        public string VrBcCp25Field
+        {
+            get => VrBcCp25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp25 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp00")]
+        /// <summary>
+        /// Valor da BC com incidência suspensa em decorrência de decisão judicial.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [91, 95].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp00 { get; set; }
+        [XmlElement("vrSuspBcCp00")]
+        public string VrSuspBcCp00Field
+        {
+            get => VrSuspBcCp00.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp00 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp15")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional
+        /// correspondente a exposição a agente nocivo que dá ao trabalhador
+        /// direito a aposentadoria especial aos 15 anos de trabalho, com
+        /// incidência suspensa em decorrência de decisão judicial.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [92, 96].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp15 { get; set; }
+        [XmlElement("vrSuspBcCp15")]
+        public string VrSuspBcCp15Field
+        {
+            get => VrSuspBcCp15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp15 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp20")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional
+        /// correspondente a exposição a agente nocivo que dá ao trabalhador
+        /// expectativa de aposentadoria especial aos 20 anos de trabalho,
+        /// com incidência suspensa em decorrência de decisão judicial.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [93, 97].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp20 { get; set; }
+        [XmlElement("vrSuspBcCp20")]
+        public string VrSuspBcCp20Field
+        {
+            get => VrSuspBcCp20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp20 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp25")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional correspondente
+        /// a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial
+        /// aos 25 anos de trabalho, com incidência suspensa em decorrência de decisão judicial.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [94, 98].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp25 { get; set; }
+        [XmlElement("vrSuspBcCp25")]
+        public string VrSuspBcCp25Field
+        {
+            get => VrSuspBcCp25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp25 = Convert.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp00VA")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição previdenciária
+        /// sobre a remuneração - Contrato Verde e Amarelo.
+        /// Origem: somatório do campo valor de S-5001, quando tpValor em S-5001 = [41, 45].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp00VA { get; set; }
+        [XmlElement("vrBcCp00VA")]
+        public string VrBcCp00VAField
+        {
+            get => VrBcCp00VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp00VA =Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp15VA")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o
+        /// financiamentodos benefícios de aposentadoria especial após 15
+        /// anos de contribuição - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, se tpValor em S-5001 = [42, 46].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp15VA { get; set; }
+        [XmlElement("vrBcCp15VA")]
+        public string VrBcCp15VAFIeld
+        {
+            get => VrBcCp15VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp15VA = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp20VA")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o
+        /// financiamento dos benefícios de aposentadoria especial após 20
+        /// anos de contribuição - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [43, 47].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp20VA { get; set; }
+        [XmlElement("vrBcCp20VA")]
+        public string VrBcCp20VAField
+        {
+            get => VrBcCp20VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp20VA = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp25VA")]
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o
+        /// financiamento dos benefícios de aposentadoria especial após 25
+        /// anos de contribuição - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [44, 48].
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp25VA { get; set; }
+        [XmlElement("vrBcCp25VA")]
+        public string VrBcCp25VAField
+        {
+            get => VrBcCp25VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp25VA = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp00VA")]
+        /// <summary>
+        /// Valor da BC com incidência suspensa em decorrência
+        /// de decisão judicial - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [81, 85].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp00VA { get; set; }
+        [XmlElement("vrSuspBcCp00VA")]
+        public string VrSuspBcCp00VAField
+        {
+            get => VrSuspBcCp00VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp00VA = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp15VA")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional
+        /// correspondente a exposição a agente nocivo que dá ao trabalhador
+        /// direito a aposentadoria especial aos 15 anos de trabalho, com
+        /// incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [82, 86].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp15VA { get; set; }
+        [XmlElement("vrSuspBcCp15VA")]
+        public string VrSuspBcCp15VAField
+        {
+            get => VrSuspBcCp15VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp15VA = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspBcCp20VA")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional
+        /// correspondente a exposição a agente nocivo que dá ao trabalhador
+        /// expectativa de aposentadoria especial aos 20 anos de trabalho, com
+        /// incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [83, 87].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp20VA { get; set; }
+        [XmlElement("vrSuspBcCp20VA")]
+        public string VrSuspBcCp20VAFIeld
+        {
+            get => VrSuspBcCp20VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp20VA = Converter.ToDouble(value);
 
-        [XmlElement("vrSuspBcCp25VA")]
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional
+        /// correspondente a exposição a agente nocivo que dá ao trabalhador
+        /// direito a aposentadoria especial aos 25 anos de trabalho, com
+        /// incidência suspensa em decorrência de decisão judicial - Contrato Verde e Amarelo.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [84, 88].
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspBcCp25VA { get; set; }
+        [XmlElement("vrSuspBcCp25VA")]
+        public string VrSuspBcCp25VAField
+        {
+            get => VrSuspBcCp25VA.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp25VA = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrDescSest")]
+        /// <summary>
+        /// Valor total descontado do trabalhador para recolhimento ao SEST.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [22].
+        /// </summary>
+        [XmlIgnore]
         public double VrDescSest { get; set; }
+        [XmlElement("vrDescSest")]
+        public string VrDescSestField
+        {
+            get => VrDescSest.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrDescSest = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCalcSest")]
+        /// <summary>
+        /// Valor calculado relativo à contribuição devida
+        /// pelo trabalhador para recolhimento ao SEST.
+        /// </summary>
+        [XmlIgnore]
         public double VrCalcSest { get; set; }
+        [XmlElement("vrCalcSest")]
+        public string VrCalcSestField
+        {
+            get => VrCalcSest.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCalcSest = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrDescSenat")]
+        /// <summary>
+        /// Valor total descontado do trabalhador para recolhimento ao SENAT.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [23].
+        /// </summary>
+        [XmlIgnore]
         public double VrDescSenat { get; set; }
+        [XmlElement("vrDescSenat")]
+        public string VrDescSenatField
+        {
+            get => VrDescSenat.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrDescSenat = Converter.ToDouble(value);
 
-        [XmlElement("vrCalcSenat")]
+        }
+
+        /// <summary>
+        /// Valor calculado relativo à contribuição devida
+        /// pelo trabalhador para recolhimento ao SENAT.
+        /// </summary>
+        [XmlIgnore]
         public double VrCalcSenat { get; set; }
+        [XmlElement("vrCalcSenat")]
+        public string VrCalcSenatField
+        {
+            get => VrCalcSenat.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCalcSenat = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSalFam")]
+        /// <summary>
+        /// Valor total do salário-família para a categoria indicada.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [31].
+        /// </summary>
+        [XmlIgnore]
         public double VrSalFam { get; set; }
+        [XmlElement("vrSalFam")]
+        public string VrSalFamField
+        {
+            get => VrSalFam.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSalFam = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSalMat")]
+        /// <summary>
+        /// Valor total do salário-maternidade para a categoria indicada.
+        /// Origem: campo valor de S-5001, quando tpValor em S-5001 = [32].
+        /// </summary>
+        [XmlIgnore]
         public double VrSalMat { get; set; }
+        [XmlElement("vrSalMat")]
+        public string VrSalMatField
+        {
+            get => VrSalMat.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSalMat = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrBcCp00VA() => VrBcCp00VA > 0;
+        public bool ShouldSerializeVrBcCp00VAField() => VrBcCp00VA > 0;
 
-        public bool ShouldSerializeVrBcCp15VA() => VrBcCp15VA > 0;
+        public bool ShouldSerializeVrBcCp15VAField() => VrBcCp15VA > 0;
 
-        public bool ShouldSerializeVrBcCp20VA() => VrBcCp20VA > 0;
+        public bool ShouldSerializeVrBcCp20VAField() => VrBcCp20VA > 0;
 
-        public bool ShouldSerializeVrBcCp25VA() => VrBcCp25VA > 0;
+        public bool ShouldSerializeVrBcCp25VAFIeld() => VrBcCp25VA > 0;
 
-        public bool ShouldSerializeVrSuspBcCp00VA() => VrSuspBcCp00VA > 0;
+        public bool ShouldSerializeVrSuspBcCp00VAField() => VrSuspBcCp00VA > 0;
 
-        public bool ShouldSerializeVrSuspBcCp15VA() => VrSuspBcCp15VA > 0;
+        public bool ShouldSerializeVrSuspBcCp15VAField() => VrSuspBcCp15VA > 0;
 
-        public bool ShouldSerializeVrSuspBcCp20VA() => VrSuspBcCp20VA > 0;
+        public bool ShouldSerializeVrSuspBcCp20VAField() => VrSuspBcCp20VA > 0;
 
-        public bool ShouldSerializeVrSuspBcCp25VA() => VrSuspBcCp25VA > 0;
+        public bool ShouldSerializeVrSuspBcCp25VAField() => VrSuspBcCp25VA > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -829,23 +1201,91 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class BasesAvNPort
     {
-        [XmlElement("vrBcCp00")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária sobre
+        /// a remuneração dos trabalhadores avulsos não portuários.
+        /// Origem: campo vrBcCp00 de S-1270.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp00 { get; set; }
+        [XmlElement("vrBcCp00")]
+        public string VrBcCp00FIeld
+        {
+            get => VrBcCp00.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp00 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp15")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição adicional para o
+        /// financiamento dos benefícios de aposentadoria especial
+        /// após 15 anos de contribuição.
+        /// Origem: campo vrBcCp15 de S-1270.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp15 { get; set; }
+        [XmlElement("vrBcCp15")]
+        public string VrBcCp15Field
+        {
+            get => VrBcCp15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp15 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp20")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 20 anos de contribuição.
+        /// Origem: campo vrBcCp20 de S-1270.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp20 { get; set; }
+        [XmlElement("vrBcCp20")]
+        public string VrBcCp20Field
+        {
+            get => VrBcCp20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp20 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp25")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição adicional para o financiamento
+        /// dos benefícios de aposentadoria especial após 25 anos de contribuição.
+        /// Origem: campo vrBcCp25 de S-1270.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp25 { get; set; }
+        [XmlElement("vrBcCp25")]
+        public string VrBcCp25Field
+        {
+            get => VrBcCp25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp25 = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrBcCp13")]
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária sobre o 13°
+        /// salário dos trabalhadores avulsos não portuários contratados.
+        /// Origem: campo vrBcCp13 de S-1270.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcCp13 { get; set; }
+        [XmlElement("vrBcCp13")]
+        public string VrBcCp13Field
+        {
+            get => VrBcCp13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp13 = Converter.ToDouble(value);
 
-        [XmlElement("vrDescCP")]
+        }
+
+        /// <summary>
+        /// Preencher com o valor total da contribuição descontada
+        /// dos trabalhadores avulsos não portuários.
+        /// Origem: campo vrDescCP de S-1270.
+        /// </summary>
+        [XmlIgnore]
         public double VrDescCP { get; set; }
+        [XmlElement("vrDescCP")]
+        public string VrDescCPField
+        {
+            get => VrDescCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrDescCP = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -869,35 +1309,136 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indAquis")]
         public IndAquis IndAquis { get; set; }
 
-        [XmlElement("vlrAquis")]
+        /// <summary>
+        ///  Valor total da aquisição de produção rural de produtor rural.
+        ///  Origem: campo {vlrTotAquis} de S-1250.
+        /// </summary>
+        [XmlIgnore]
         public double VlrAquis { get; set; }
+        [XmlElement("vlrAquis")]
+        public string VlrAquisField
+        {
+            get => VlrAquis.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAquis = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCPDescPR")]
+        /// <summary>
+        /// Preencher com o valor da contribuição previdenciária descontada
+        /// pelo adquirente de produção de produtor rural - sub-rogação.
+        /// Origem: somatório do campo {vrCpDescPR} de S-1250.
+        /// </summary>
+        [XmlIgnore]
         public double VrCPDescPR { get; set; }
+        [XmlElement("vrCPDescPR")]
+        public string VrCPDescPRField
+        {
+            get => VrCPDescPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCPDescPR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCPNRet")]
+        /// <summary>
+        /// Valor da contribuição previdenciária que deixou de ser retida
+        /// pelo declarante em decorrência de decisão/sentença judicial.
+        /// </summary>
+        [XmlIgnore]
         public double VrCPNRet { get; set; }
+        [XmlElement("vrCPNRet")]
+        public string VrCPNRetField
+        {
+            get => VrCPNRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCPNRet = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrRatNRet")]
+        /// <summary>
+        /// Valor da GILRAT, incidente sobre a aquisição de produção rural de 
+        /// produtor rural, cuja retenção deixou de ser efetuada em
+        /// decorrência de decisão/sentença judicial.
+        /// </summary>
+        [XmlIgnore]
         public double VrRatNRet { get; set; }
+        [XmlElement("vrRatNRet")]
+        public string VrRatNRetField
+        {
+            get => VrRatNRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRatNRet = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSenarNRet")]
+        /// <summary>
+        /// Valor da contribuição destinada ao SENAR, incidente sobre a aquisição
+        /// de produção rural de produtor rural pessoa física/segurado especial, que
+        /// deixou de ser retida em decorrência de decisão/sentença judicial.
+        /// </summary>
+        [XmlIgnore]
         public double VrSenarNRet { get; set; }
+        [XmlElement("vrSenarNRet")]
+        public string VrSenarNRetField
+        {
+            get => VrSenarNRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSenarNRet = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCPCalcPR")]
+        /// <summary>
+        /// Valor calculado relativo à contribuição previdenciária
+        /// do produtor rural, de acordo com indAquis
+        /// </summary>
+        [XmlIgnore]
         public double VrCPCalcPR { get; set; }
+        [XmlElement("vrCPCalcPR")]
+        public string VrCPCalcPRField
+        {
+            get => VrCPCalcPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCPCalcPR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrRatDescPR")]
+        /// <summary>
+        /// Valor da contribuição destinada ao financiamento dos benefícios
+        /// concedidos em razão do grau de incidência da incapacidade
+        /// laborativa decorrente dos riscos ambientais do trabalho,
+        /// incidente sobre a aquisição de produção rural de produtor rural.
+        /// </summary>
+        [XmlIgnore]
         public double VrRatDescPR { get; set; }
+        [XmlElement("vrRatDescPR")]
+        public string VrRatDescPRField
+        {
+            get => VrRatDescPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRatDescPR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrRatCalcPR")]
+        /// <summary>
+        /// Valor calculado relativo à contribuição GILRAT devida
+        /// pelo produtor rural, de acordo com indAquis
+        /// </summary>
+        [XmlIgnore]
         public double VrRatCalcPR { get; set; }
+        [XmlElement("vrRatCalcPR")]
+        public string VrRatCalcPRField
+        {
+            get => VrRatCalcPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRatCalcPR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSenarDesc")]
+        /// <summary>
+        /// Valor da contribuição destinada ao SENAR, incidente sobre a aquisição
+        /// de produção rural de produtor rural pessoa física/segurado especial.
+        /// </summary>
+        [XmlIgnore]
         public double VrSenarDesc { get; set; }
+        [XmlElement("vrSenarDesc")]
+        public string VrSenarDescField
+        {
+            get => VrSenarDesc.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSenarDesc = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSenarCalc")]
+        [XmlIgnore]
         public double VrSenarCalc { get; set; }
+        [XmlElement("vrSenarCalc")]
+        public string VrSenarCalcField
+        {
+            get => VrSenarCalc.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSenarCalc = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -910,26 +1451,65 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indComerc")]
         public IndComerc IndComerc { get; set; }
 
-        [XmlElement("vrBcComPR")]
+        /// <summary>
+        /// Valor da base de cálculo da comercialização da produção rural do
+        /// produtor rural PF/segurado especial a outra PF no varejo ou a
+        /// outro produtor rural PF/segurado especial ou no mercado
+        /// externo, conforme indComerc.
+        /// Origem: campo vrTotCom de S-1260.
+        /// </summary>
+        [XmlIgnore]
         public double VrBcComPR { get; set; }
+        [XmlElement("vrBcComPR")]
+        public string VrBcComPRField
+        {
+            get => VrBcComPR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcComPR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCPSusp")]
+        /// <summary>
+        /// Valor da contribuição previdenciária com exigibilidade suspensa.
+        /// Origem: campo vrCPSusp de S-1260.
+        /// </summary>
+        [XmlIgnore]
         public double VrCPSusp { get; set; }
+        [XmlElement("vrCPSusp")]
+        public string VrCPSuspField
+        {
+            get => VrCPSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCPSusp = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrRatSusp")]
+        /// <summary>
+        /// Valor da contribuição para GILRAT com exigibilidade suspensa.
+        /// Origem: campo vrRatSusp de S-1260.
+        /// </summary>
+        [XmlIgnore]
         public double VrRatSusp { get; set; }
+        [XmlElement("vrRatSusp")]
+        public string VrRatSuspField
+        {
+            get => VrRatSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrRatSusp = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSenarSusp")]
+        [XmlIgnore]
         public double VrSenarSusp { get; set; }
+        [XmlElement("vrSenarSusp")]
+        public string VrSenarSuspField
+        {
+            get => VrSenarSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSenarSusp = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
-        public bool ShouldSerializeVrCPSusp() => VrCPSusp > 0;
+        public bool ShouldSerializeVrCPSuspField() => VrCPSusp > 0;
 
-        public bool ShouldSerializeVrRatSusp() => VrRatSusp > 0;
+        public bool ShouldSerializeVrRatSuspField() => VrRatSusp > 0;
 
-        public bool ShouldSerializeVrSenarSusp() => VrSenarSusp > 0;
+        public bool ShouldSerializeVrSenarSuspField() => VrSenarSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -942,17 +1522,40 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpCR")]
         public TpCR TpCR { get; set; }
 
-        [XmlElement("vrCR")]
+        /// <summary>
+        /// Valor correspondente ao CR apurado.
+        /// Validação: Deve ser apurado de acordo com
+        /// a legislação em vigor na competência.
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrCR { get; set; }
+        [XmlElement("vrCR")]
+        public string VrCRField
+        {
+            get => VrCR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrSuspCR")]
+        /// <summary>
+        /// Valor suspenso correspondente ao CR apurado.
+        /// Validação: Deve ser apurado de acordo com as
+        /// informações de processos judiciais e administrativos.
+        /// </summary>
+        [XmlIgnore]
         public double VrSuspCR { get; set; }
+        [XmlElement("vrSuspCR")]
+        public string VrSuspCRField
+        {
+            get => VrSuspCR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspCR = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrSuspCR() => VrSuspCR > 0;
+        public bool ShouldSerializeVrSuspCRField() => VrSuspCR > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -965,16 +1568,37 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpCR")]
         public TpCR TpCR { get; set; }
 
-        [XmlElement("vrCR")]
+        /// <summary>
+        /// Valor correspondente ao CR apurado.
+        /// Validação: Deve ser apurado de acordo com a
+        /// legislação em vigor na competência.
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrCR { get; set; }
+        [XmlElement("vrCR")]
+        public string VrCRField
+        {
+            get => VrCR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCR = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vrCRSusp")]
+        /// <summary>
+        /// Valor do tributo com exigibilidade suspensa.
+        /// </summary>
+        [XmlIgnore]
         public double VrCRSusp { get; set; }
+        [XmlElement("vrCRSusp")]
+        public string VrSuspCRField
+        {
+            get => VrCRSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCRSusp = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrCRSusp() => VrCRSusp > 0;
+        public bool ShouldSerializeVrCRSuspFIeld() => VrCRSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }
