@@ -125,13 +125,6 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         {
             try
             {
-                if (Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta != 201)
-                {
-                    var mensagemRetorno = Result.GerarXML();
-                    base.GravarXmlDistribuicao(pasta, "erro.xml", mensagemRetorno.OuterXml);
-                    return;
-                }
-
                 foreach (var evento in ESocialEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
                 {
                     #region ESocial1000
@@ -146,10 +139,13 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
-                            }                            
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
+                            }
                         }
                     }
 
@@ -167,9 +163,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -188,9 +187,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -209,9 +211,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -230,9 +235,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -251,9 +259,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -272,9 +283,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -293,9 +307,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -314,9 +331,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -335,9 +355,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -356,9 +379,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -377,9 +403,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -398,9 +427,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -419,9 +451,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -440,9 +475,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -461,9 +499,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -482,9 +523,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -503,9 +547,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -524,9 +571,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -545,9 +595,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -566,9 +619,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -587,9 +643,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -608,9 +667,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -629,9 +691,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -650,9 +715,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -671,9 +739,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -692,9 +763,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -713,9 +787,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -734,9 +811,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -755,9 +835,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -776,9 +859,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -797,9 +883,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -818,9 +907,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -839,9 +931,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -860,9 +955,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -881,9 +979,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -902,9 +1003,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -923,9 +1027,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -946,9 +1053,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -969,9 +1079,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -990,9 +1103,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -1011,9 +1127,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -1032,9 +1151,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -1053,16 +1175,19 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
-                                base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
-                                break;
+                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                {
+                                    esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                    base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
+                                    break;
+                                }
                             }
                         }
                     }
 
                     #endregion ESocial8299
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 ThrowHelper.Instance.Throw(ex);
