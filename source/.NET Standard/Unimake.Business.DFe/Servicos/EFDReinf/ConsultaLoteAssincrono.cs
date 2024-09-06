@@ -160,433 +160,393 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         {
             try
             {
-                ReinfProc reinfProc = null;
-
-                if (Result.RetornoLoteEventosAssincrono.Status.CdResposta != 0)
+                if (Result.RetornoLoteEventosAssincrono.Status.CdResposta != 2)
                 {
                     var mensagemRetorno = Result.GerarXML();
-                    base.GravarXmlDistribuicao(pasta, "testeteste.xml", mensagemRetorno.OuterXml);
+                    base.GravarXmlDistribuicao(pasta, "erro.xml", mensagemRetorno.OuterXml);
                 }
 
                 foreach (var evento in ReinfEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
                 {
-
                     #region Reinf1000
 
                     if (evento.Reinf1000 != null)
                     {
-                        reinfProc = new ReinfProc();
+                        var reinfProc = new ReinfProc();
                         reinfProc.Reinf1000 = evento.Reinf1000;
                         reinfProc.ID = evento.Reinf1000.EvtInfoContri.ID;
 
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                            }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
 
-                            base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
+                            }
                         }
-                        #endregion
                     }
+
+                    #endregion Reinf1000
+
                     #region Reinf1050
 
-                    if (evento.Reinf1050 != null)
+                    else if (evento.Reinf1050 != null)
                     {
-                        foreach (var reinf1050 in evento.Reinf1050)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf1050 = evento.Reinf1050;
+                        reinfProc.ID = evento.Reinf1050.EvtTabLig.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf1050 = reinf1050;
-                            reinfProc.ID = reinf1050.EvtTabLig.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf1050
 
                     #region Reinf1070
 
-                    if (evento.Reinf1070 != null)
+                    else if (evento.Reinf1070 != null)
                     {
-                        foreach (var reinf1070 in evento.Reinf1070)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf1070 = evento.Reinf1070;
+                        reinfProc.ID = evento.Reinf1070.EvtTabProcesso.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf1070 = reinf1070;
-                            reinfProc.ID = reinf1070.EvtTabProcesso.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
 
-                    #endregion
+                    #endregion Reinf1070
 
                     #region Reinf2010
 
-                    if (evento.Reinf2010 != null)
+                    else if (evento.Reinf2010 != null)
                     {
-                        foreach (var reinf2010 in evento.Reinf2010)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2010 = evento.Reinf2010;
+                        reinfProc.ID = evento.Reinf2010.EvtServTom.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2010 = reinf2010;
-                            reinfProc.ID = reinf2010.EvtServTom.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2010
 
                     #region Reinf2020
 
-                    if (evento.Reinf2020 != null)
+                    else if (evento.Reinf2020 != null)
                     {
-                        foreach (var reinf2020 in evento.Reinf2020)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2020 = evento.Reinf2020;
+                        reinfProc.ID = evento.Reinf2020.EvtServPrest.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2020 = reinf2020;
-                            reinfProc.ID = reinf2020.EvtServPrest.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2020
 
                     #region Reinf2030
 
-                    if (evento.Reinf2030 != null)
+                    else if (evento.Reinf2030 != null)
                     {
-                        foreach (var reinf2030 in evento.Reinf2030)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2030 = evento.Reinf2030;
+                        reinfProc.ID = evento.Reinf2030.EvtAssocDespRec.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2030 = reinf2030;
-                            reinfProc.ID = reinf2030.EvtAssocDespRec.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
 
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2030
 
                     #region Reinf2040
 
-                    if (evento.Reinf2040 != null)
+                    else if (evento.Reinf2040 != null)
                     {
-                        foreach (var reinf2040 in evento.Reinf2040)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2040 = evento.Reinf2040;
+                        reinfProc.ID = evento.Reinf2040.EvtAssocDespRep.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2040 = reinf2040;
-                            reinfProc.ID = reinf2040.EvtAssocDespRep.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2040
 
                     #region Reinf2050
 
-                    if (evento.Reinf2050 != null)
+                    else if (evento.Reinf2050 != null)
                     {
-                        foreach (var reinf2050 in evento.Reinf2050)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2050 = evento.Reinf2050;
+                        reinfProc.ID = evento.Reinf2050.EvtComProd.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2050 = reinf2050;
-                            reinfProc.ID = reinf2050.EvtComProd.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2050
 
                     #region Reinf2055
 
-                    if (evento.Reinf2055 != null)
+                    else if (evento.Reinf2055 != null)
                     {
-                        foreach (var reinf2055 in evento.Reinf2055)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2055 = evento.Reinf2055;
+                        reinfProc.ID = evento.Reinf2055.EvtAqProd.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2055 = reinf2055;
-                            reinfProc.ID = reinf2055.EvtAqProd.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2055
 
                     #region Reinf2060
 
-                    if (evento.Reinf2060 != null)
+                    else if (evento.Reinf2060 != null)
                     {
-                        foreach (var reinf2060 in evento.Reinf2060)
-                        {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2060 = reinf2060;
-                            reinfProc.ID = reinf2060.EvtCPRB.ID;
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2060 = evento.Reinf2060;
+                        reinfProc.ID = evento.Reinf2060.EvtCPRB.ID;
 
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        {
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2060
 
                     #region Reinf2098
 
-                    if (evento.Reinf2098 != null)
+                    else if (evento.Reinf2098 != null)
                     {
-                        foreach (var reinf2098 in evento.Reinf2098)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2098 = evento.Reinf2098;
+                        reinfProc.ID = evento.Reinf2098.EvtReabreEvPer.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2098 = reinf2098;
-                            reinfProc.ID = reinf2098.EvtReabreEvPer.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2098
 
                     #region Reinf2099
 
-                    if (evento.Reinf2099 != null)
+                    else if (evento.Reinf2099 != null)
                     {
-                        foreach (var reinf2099 in evento.Reinf2099)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf2099 = evento.Reinf2099;
+                        reinfProc.ID = evento.Reinf2099.EvtFechaEvPer.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf2099 = reinf2099;
-                            reinfProc.ID = reinf2099.EvtFechaEvPer.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9011.FirstOrDefault()?.EvtTotalContrib.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf2099
 
                     #region Reinf3010
 
-                    if (evento.Reinf3010 != null)
+                    else if (evento.Reinf3010 != null)
                     {
-                        foreach (var reinf3010 in evento.Reinf3010)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf3010 = evento.Reinf3010;
+                        reinfProc.ID = evento.Reinf3010.EvtEspDesportivo.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf3010 = reinf3010;
-                            reinfProc.ID = reinf3010.EvtEspDesportivo.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9001.FirstOrDefault()?.EvtTotal.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf3010
 
                     #region Reinf4010
 
-                    if (evento.Reinf4010 != null)
+                    else if (evento.Reinf4010 != null)
                     {
-                        foreach (var reinf4010 in evento.Reinf4010)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf4010 = evento.Reinf4010;
+                        reinfProc.ID = evento.Reinf4010.EvtRetPF.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf4010 = reinf4010;
-                            reinfProc.ID = reinf4010.EvtRetPF.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9005.FirstOrDefault()?.EvtRet.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf4010
 
                     #region Reinf4020
 
-                    if (evento.Reinf4020 != null)
+                    else if (evento.Reinf4020 != null)
                     {
-                        foreach (var reinf4020 in evento.Reinf4020)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf4020 = evento.Reinf4020;
+                        reinfProc.ID = evento.Reinf4020.EvtRetPJ.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf4020 = reinf4020;
-                            reinfProc.ID = reinf4020.EvtRetPJ.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9005.FirstOrDefault()?.EvtRet.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf4020
 
                     #region Reinf4040
 
-                    if (evento.Reinf4040 != null)
+                    else if (evento.Reinf4040 != null)
                     {
-                        foreach (var reinf4040 in evento.Reinf4040)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf4040 = evento.Reinf4040;
+                        reinfProc.ID = evento.Reinf4040.EvtBenefNId.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf4040 = reinf4040;
-                            reinfProc.ID = reinf4040.EvtBenefNId.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9005.FirstOrDefault()?.EvtRet.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
-
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf4040
 
                     #region Reinf4080
 
-                    if (evento.Reinf4080 != null)
+                    else if (evento.Reinf4080 != null)
                     {
-                        foreach (var reinf4080 in evento.Reinf4080)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf4080 = evento.Reinf4080;
+                        reinfProc.ID = evento.Reinf4080.EvtRetRec.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf4080 = reinf4080;
-                            reinfProc.ID = reinf4080.EvtRetRec.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9005.FirstOrDefault()?.EvtRet.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf4080
 
                     #region Reinf4099
 
-                    if (evento.Reinf4099 != null)
+                    else if (evento.Reinf4099 != null)
                     {
-                        foreach (var reinf4099 in evento.Reinf4099)
+                        var reinfProc = new ReinfProc();
+                        reinfProc.Reinf4099 = evento.Reinf4099;
+                        reinfProc.ID = evento.Reinf4099.EvtFech.ID;
+
+                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
                         {
-                            reinfProc = new ReinfProc();
-                            reinfProc.Reinf4099 = reinf4099;
-                            reinfProc.ID = reinf4099.EvtFech.ID;
-
-                            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos)
+                            if (retornoEvento.ID == reinfProc.ID)
                             {
-
-                                if (retornoEvento.Evento.RetornoEvento.Reinf9015.FirstOrDefault()?.EvtRetCons.InfoRecEv.IdEv == reinfProc.ID)
-                                {
-                                    reinfProc.RetornoEvento = retornoEvento.Evento.RetornoEvento;
-                                }
+                                reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                                base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                                break;
                             }
-
-                            GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
                         }
                     }
-                    #endregion
+
+                    #endregion Reinf4099
                 }
             }
             catch (Exception ex)

@@ -67,6 +67,259 @@
 					</Reinf>
 				</retornoEvento>
 			</evento>
+			<evento Id="ID1000000000000002021052608080800002">
+				<retornoEvento>
+					<Reinf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.reinf.esocial.gov.br/schemas/evtTotal/v2_01_02">
+						<evtTotal id="ID900100000000001882893922">
+							<ideEvento>
+								<perApur>2024-05</perApur>
+							</ideEvento>
+							<ideContri>
+								<tpInsc>1</tpInsc>
+								<nrInsc>06117473</nrInsc>
+							</ideContri>
+							<ideRecRetorno>
+								<ideStatus>
+									<cdRetorno>0</cdRetorno>
+									<descRetorno>SUCESSO</descRetorno>
+								</ideStatus>
+							</ideRecRetorno>
+							<infoRecEv>
+								<nrRecArqBase>27369-03-1000-2405-27369</nrRecArqBase>
+								<dhRecepcao>2024-05-29T15:24:45.867</dhRecepcao>
+								<dhProcess>2024-05-29T15:24:46.1941139-03:00</dhProcess>
+								<tpEv>1000</tpEv>
+								<idEv>ID1000000000000002021052608080800002</idEv>
+								<hash>20XIJQ/xYmtOrSORfgxIxQe6gl6Y16K5YwsTx2SQIWM=</hash>
+							</infoRecEv>
+							<infoTotal/>
+						</evtTotal>
+						<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+							<SignedInfo>
+								<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+								<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+								<Reference URI="#ID900100000000001882893920">
+									<Transforms>
+										<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+										<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+									</Transforms>
+									<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+									<DigestValue>rNOm/Jr0dUCMHaMVNAIgmwKsjJ3LAq11CExFWlCZb+Y=</DigestValue>
+								</Reference>
+							</SignedInfo>
+							<SignatureValue>DexvOEXjPaGU7NnTho7Se+QIsQhoLIMqloZkksrf5J67MWng3rWqmx/6UPrunufMyUbfqBvllT0sBGF8OWNyKW6hFQCL6FLeq9HKtV3m9VDCv6+nyjw1ytchZtYhpuRsMqUkACE5z0+8P67au+fmqzBH4c4JVXoDDFYt7fIvUlR0y03VJztw+MQeUPxwAmT3yFlp+4r2FkasJ16K0TeoiZynheqJL2ckl6bcVJHggo2daaRaJH0w6DNTCaTmd/oU1+QAcD12VjmeuZXbczyB41uDJ2Y/wmHvP7tVUnAYcS1g0obitvBdeIUesNn/cZHpxlu50h03bN18BKXrV0jnmg==</SignatureValue>
+							<KeyInfo>
+								<X509Data>
+									<X509Certificate>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</X509Certificate>
+								</X509Data>
+							</KeyInfo>
+						</Signature>
+					</Reinf>
+				</retornoEvento>
+			</evento>
+			<evento Id="ID1000000000000002021052608080800003">
+				<retornoEvento>
+					<Reinf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.reinf.esocial.gov.br/schemas/evtTotalContrib/v2_01_02">
+						<evtTotalContrib id="ID1000000000000002021052608080800003">
+							<ideEvento>
+								<perApur>2022-05</perApur>
+							</ideEvento>
+							<ideContri>
+								<tpInsc>1</tpInsc>
+								<nrInsc>00000000000000</nrInsc>
+							</ideContri>
+							<ideRecRetorno>
+								<ideStatus>
+									<cdRetorno>0</cdRetorno>
+									<descRetorno>descRetorno1</descRetorno>
+									<regOcorrs>
+										<tpOcorr>1</tpOcorr>
+										<localErroAviso>localErroAviso1</localErroAviso>
+										<codResp>codRe1</codResp>
+										<dscResp>dscResp1</dscResp>
+									</regOcorrs>
+									<regOcorrs>
+										<tpOcorr>1</tpOcorr>
+										<localErroAviso>localErroAviso2</localErroAviso>
+										<codResp>codRe2</codResp>
+										<dscResp>dscResp2</dscResp>
+									</regOcorrs>
+									<regOcorrs>
+										<tpOcorr>1</tpOcorr>
+										<localErroAviso>localErroAviso3</localErroAviso>
+										<codResp>codRe3</codResp>
+										<dscResp>dscResp3</dscResp>
+									</regOcorrs>
+								</ideStatus>
+							</ideRecRetorno>
+							<infoRecEv>
+								<nrProtEntr>nrProtEntr1</nrProtEntr>
+								<nrRecArqBase>nrRecArqBase1</nrRecArqBase>
+								<dhProcess>1900-01-01T01:01:01-02:00</dhProcess>
+								<tpEv>R-0001</tpEv>
+								<idEv>ID1000000000000002021052608080800003</idEv>
+								<hash>hash1</hash>
+							</infoRecEv>
+							<infoTotalContrib>
+								<indExistInfo>1</indExistInfo>
+								<identEscritDCTF>identEscritDCTF1</identEscritDCTF>
+								<RTom>
+									<cnpjPrestador>00000000000000</cnpjPrestador>
+									<cno>0000000000</cno>
+									<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
+									<infoCRTom>
+										<CRTom>114106</CRTom>
+										<vlrCRTom>1,00</vlrCRTom>
+										<vlrCRTomSusp>1,00</vlrCRTomSusp>
+									</infoCRTom>
+									<infoCRTom>
+										<CRTom>114106</CRTom>
+										<vlrCRTom>1,00</vlrCRTom>
+										<vlrCRTomSusp>1,00</vlrCRTomSusp>
+									</infoCRTom>
+								</RTom>
+								<RTom>
+									<cnpjPrestador>00000000000000</cnpjPrestador>
+									<cno>0000000000</cno>
+									<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
+									<infoCRTom>
+										<CRTom>114106</CRTom>
+										<vlrCRTom>1,00</vlrCRTom>
+										<vlrCRTomSusp>1,00</vlrCRTomSusp>
+									</infoCRTom>
+									<infoCRTom>
+										<CRTom>114106</CRTom>
+										<vlrCRTom>1,00</vlrCRTom>
+										<vlrCRTomSusp>1,00</vlrCRTomSusp>
+									</infoCRTom>
+								</RTom>
+								<RTom>
+									<cnpjPrestador>00000000000000</cnpjPrestador>
+									<cno>0000000000</cno>
+									<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
+									<infoCRTom>
+										<CRTom>114106</CRTom>
+										<vlrCRTom>1,00</vlrCRTom>
+										<vlrCRTomSusp>1,00</vlrCRTomSusp>
+									</infoCRTom>
+									<infoCRTom>
+										<CRTom>114106</CRTom>
+										<vlrCRTom>1,00</vlrCRTom>
+										<vlrCRTomSusp>1,00</vlrCRTomSusp>
+									</infoCRTom>
+								</RTom>
+								<RPrest>
+									<tpInscTomador>1</tpInscTomador>
+									<nrInscTomador>00000000000000</nrInscTomador>
+									<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
+									<vlrTotalRetPrinc>1,00</vlrTotalRetPrinc>
+									<vlrTotalRetAdic>1,00</vlrTotalRetAdic>
+									<vlrTotalNRetPrinc>1,00</vlrTotalNRetPrinc>
+									<vlrTotalNRetAdic>1,00</vlrTotalNRetAdic>
+								</RPrest>
+								<RPrest>
+									<tpInscTomador>1</tpInscTomador>
+									<nrInscTomador>00000000000000</nrInscTomador>
+									<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
+									<vlrTotalRetPrinc>1,00</vlrTotalRetPrinc>
+									<vlrTotalRetAdic>1,00</vlrTotalRetAdic>
+									<vlrTotalNRetPrinc>1,00</vlrTotalNRetPrinc>
+									<vlrTotalNRetAdic>1,00</vlrTotalNRetAdic>
+								</RPrest>
+								<RPrest>
+									<tpInscTomador>1</tpInscTomador>
+									<nrInscTomador>00000000000000</nrInscTomador>
+									<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
+									<vlrTotalRetPrinc>1,00</vlrTotalRetPrinc>
+									<vlrTotalRetAdic>1,00</vlrTotalRetAdic>
+									<vlrTotalNRetPrinc>1,00</vlrTotalNRetPrinc>
+									<vlrTotalNRetAdic>1,00</vlrTotalNRetAdic>
+								</RPrest>
+								<RRecRepAD>
+									<CRRecRepAD>115102</CRRecRepAD>
+									<vlrCRRecRepAD>1,00</vlrCRRecRepAD>
+									<vlrCRRecRepADSusp>1,00</vlrCRRecRepADSusp>
+								</RRecRepAD>
+								<RRecRepAD>
+									<CRRecRepAD>115102</CRRecRepAD>
+									<vlrCRRecRepAD>1,00</vlrCRRecRepAD>
+									<vlrCRRecRepADSusp>1,00</vlrCRRecRepADSusp>
+								</RRecRepAD>
+								<RRecRepAD>
+									<CRRecRepAD>115102</CRRecRepAD>
+									<vlrCRRecRepAD>1,00</vlrCRRecRepAD>
+									<vlrCRRecRepADSusp>1,00</vlrCRRecRepADSusp>
+								</RRecRepAD>
+								<RComl>
+									<CRComl>165701</CRComl>
+									<vlrCRComl>1,00</vlrCRComl>
+									<vlrCRComlSusp>1,00</vlrCRComlSusp>
+								</RComl>
+								<RComl>
+									<CRComl>165701</CRComl>
+									<vlrCRComl>1,00</vlrCRComl>
+									<vlrCRComlSusp>1,00</vlrCRComlSusp>
+								</RComl>
+								<RComl>
+									<CRComl>165701</CRComl>
+									<vlrCRComl>1,00</vlrCRComl>
+									<vlrCRComlSusp>1,00</vlrCRComlSusp>
+								</RComl>
+								<RAquis>
+									<CRAquis>165601</CRAquis>
+									<vlrCRAquis>1,00</vlrCRAquis>
+									<vlrCRAquisSusp>1,00</vlrCRAquisSusp>
+								</RAquis>
+								<RAquis>
+									<CRAquis>165601</CRAquis>
+									<vlrCRAquis>1,00</vlrCRAquis>
+									<vlrCRAquisSusp>1,00</vlrCRAquisSusp>
+								</RAquis>
+								<RAquis>
+									<CRAquis>165601</CRAquis>
+									<vlrCRAquis>1,00</vlrCRAquis>
+									<vlrCRAquisSusp>1,00</vlrCRAquisSusp>
+								</RAquis>
+								<RCPRB>
+									<CRCPRB>299101</CRCPRB>
+									<vlrCRCPRB>1,00</vlrCRCPRB>
+									<vlrCRCPRBSusp>1,00</vlrCRCPRBSusp>
+								</RCPRB>
+								<RCPRB>
+									<CRCPRB>299101</CRCPRB>
+									<vlrCRCPRB>1,00</vlrCRCPRB>
+									<vlrCRCPRBSusp>1,00</vlrCRCPRBSusp>
+								</RCPRB>
+								<RCPRB>
+									<CRCPRB>299101</CRCPRB>
+									<vlrCRCPRB>1,00</vlrCRCPRB>
+									<vlrCRCPRBSusp>1,00</vlrCRCPRBSusp>
+								</RCPRB>
+							</infoTotalContrib>
+						</evtTotalContrib>
+						<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+							<SignedInfo>
+								<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+								<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+								<Reference URI="#ID900100000000001882893920">
+									<Transforms>
+										<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+										<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+									</Transforms>
+									<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+									<DigestValue>rNOm/Jr0dUCMHaMVNAIgmwKsjJ3LAq11CExFWlCZb+Y=</DigestValue>
+								</Reference>
+							</SignedInfo>
+							<SignatureValue>DexvOEXjPaGU7NnTho7Se+QIsQhoLIMqloZkksrf5J67MWng3rWqmx/6UPrunufMyUbfqBvllT0sBGF8OWNyKW6hFQCL6FLeq9HKtV3m9VDCv6+nyjw1ytchZtYhpuRsMqUkACE5z0+8P67au+fmqzBH4c4JVXoDDFYt7fIvUlR0y03VJztw+MQeUPxwAmT3yFlp+4r2FkasJ16K0TeoiZynheqJL2ckl6bcVJHggo2daaRaJH0w6DNTCaTmd/oU1+QAcD12VjmeuZXbczyB41uDJ2Y/wmHvP7tVUnAYcS1g0obitvBdeIUesNn/cZHpxlu50h03bN18BKXrV0jnmg==</SignatureValue>
+							<KeyInfo>
+								<X509Data>
+									<X509Certificate>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</X509Certificate>
+								</X509Data>
+							</KeyInfo>
+						</Signature>
+					</Reinf>
+				</retornoEvento>
+			</evento>
 		</retornoEventos>
 	</retornoLoteEventosAssincrono>
 </Reinf>

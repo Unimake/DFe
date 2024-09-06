@@ -72,13 +72,13 @@ namespace Unimake.DFe.Test.EFDReinf
                 }
             };
 
-            var teste = new Unimake.Business.DFe.Servicos.EFDReinf.ConsultaLoteAssincrono(xml, configuracao);
+            var consultaLote = new Unimake.Business.DFe.Servicos.EFDReinf.ConsultaLoteAssincrono(xml, configuracao);
             var reinfEnvio = reinfTeste;
-            teste.ReinfEnvioLoteEventos = reinfEnvio;
-            teste.Executar();
-            teste.RetornoWSXML = doc;
-            teste.RetornoWSString = teste.RetornoWSXML.OuterXml;
-            teste.GravarXmlDistribuicao("C:\\Projetos");
+            consultaLote.ReinfEnvioLoteEventos = reinfEnvio;
+            consultaLote.Executar();
+            consultaLote.RetornoWSXML = doc;
+            consultaLote.RetornoWSString = consultaLote.RetornoWSXML.OuterXml;
+            consultaLote.GravarXmlDistribuicao(@"..\..\..\EFDReinf\Resources");
         }
 
         public ReinfEnvioLoteEventos reinfTeste = new Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos
@@ -90,72 +90,134 @@ namespace Unimake.DFe.Test.EFDReinf
                     Evento = new List<EventoReinf>
                     {
                         new EventoReinf
-                    {
-                        Reinf1000 = new Reinf1000
                         {
-                            EvtInfoContri = new EvtInfoContri
+                            Reinf1000 = new Reinf1000
+                            {
+                                EvtInfoContri = new EvtInfoContri
                                 {
                                     ID = "ID1061174730000002024052915244400001",
                                     IdeEvento = new IdeEvento
                                     {
                                         TpAmb = TipoAmbiente.Homologacao,
                                         ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte,
-                                        VerProc = "150"
+                                        VerProc = "UNICO V8.0"
                                     },
                                     IdeContri = new IdeContri
                                     {
                                         TpInsc = TiposInscricao.CNPJ,
-                                        NrInsc = "12345678945687"
+                                        NrInsc = "06117473"
                                     },
                                     InfoContri = new InfoContri
                                     {
                                         Inclusao = new InclusaoReinf1000
                                         {
-                                            IdePeriodo = new IdePeriodo
-                                            {
-                                                IniValid = "202105",
-                                            },
-                                            InfoCadastro = new InfoCadastro
-                                            {
-                                                ClassTrib = ClassificacaoTributaria.PessoaJuridica,
-                                                IndEscrituracao = IndicativoEscrituracao.Obrigada,
-                                                IndDesoneracao = IndicativoDesoneracao.Aplicavel,
-                                                IndAcordoIsenMulta = IndicativoIsencaoMulta.ComAcordo,
-                                                IndSitPJ = IndicativoSituacaoPJ.Extincao,
-                                                IndUniao = IndicativoUniao.NaoAplicavel,
-                                                DtTransfFinsLucr = DateTime.Parse("2021-01-01"),
-                                                DtObito = DateTime.Parse("2021-01-01"),
-                                                Contato = new Contato
-                                                {
-                                                    NmCtt = "NMCTT1",
-                                                    CpfCtt = "12345678954",
-                                                    FoneFixo = "4412347894",
-                                                    FoneCel = "44912347894",
-                                                    Email = "email@email.com"
-                                                },
-                                                SoftHouse = new List<SoftHouse>
-                                                {
-                                                    new SoftHouse
-                                                    {
-                                                        CnpjSoftHouse = "12345678945687",
-                                                        NmRazao = "nomeContribuinte",
-                                                        NmCont = "Nome Contato",
-                                                        Telefone = "4498749874",
-                                                        Email = "email@email.com"
-                                                    }
-                                                },
-                                                InfoEFR = new InfoEFR
-                                                {
-                                                    IdeEFR = SimNaoLetra.Sim,
-                                                    CnpjEFR = "11122233344488"
-                                                }
-                                            }
+                                           IdePeriodo = new IdePeriodo
+                                           {
+                                               IniValid = "2024-03",
+                                               FimValid = "2024-03"
+                                           },
+                                           InfoCadastro = new InfoCadastro
+                                           {
+                                               ClassTrib = ClassificacaoTributaria.Agroindustria,
+                                               IndEscrituracao = IndicativoEscrituracao.Obrigada,
+                                               IndDesoneracao = IndicativoDesoneracao.NaoAplicavel,
+                                               IndAcordoIsenMulta = IndicativoIsencaoMulta.SemAcordo,
+                                               IndSitPJ = IndicativoSituacaoPJ.Normal,
+                                               Contato = new Contato
+                                               {
+
+                                                   NmCtt = "TESTE TESTE TESTE",
+                                                   CpfCtt = "12345678901",
+                                                   FoneFixo = "123456789012",
+                                                   FoneCel = "123456789012",
+                                                   Email = "TESTE@GMAIL.COM"
+                                               },
+                                               SoftHouse = new List<SoftHouse>
+                                               {
+                                                   new SoftHouse
+                                                   {
+                                                       CnpjSoftHouse = "06117473000150",
+                                                       NmRazao = "UNIMAKE SOLUCOES CORPORATIVAS LTDA",
+                                                       NmCont = "wandrey",
+                                                       Telefone = "4431421010",
+                                                       Email = "wandrey@unimake.com.br"
+                                                   }
+                                               }
+                                           }
                                         }
                                     }
                                 }
                             },
+                        },
+                        new EventoReinf
+                        {
+                            Reinf1050 = new Reinf1050
+                            {
+                                EvtTabLig = new EvtTabLig
+                                {
+                                    ID = "ID1000000000000002021052608080800002",
+                                    IdeEvento = new IdeEvento
+                                    {
+                                        TpAmb = TipoAmbiente.Homologacao,
+                                        ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte,
+                                        VerProc = "verProc1"
+                                    },
+                                    IdeContri = new IdeContri
+                                    {
+                                        TpInsc =  TiposInscricao.CNPJ,
+                                        NrInsc = "00000000000000"
+                                    },
+                                    InfoLig = new InfoLig
+                                    {
+                                        Inclusao = new InclusaoReinf1050
+                                        {
+                                            IdeEntLig = new IdeEntLig
+                                            {
+                                                TpEntLig = TipoEntidadeLigada.FundoDeInvestimento,
+                                                CnpjLig = "00000000000000",
+                                                IniValid = "2022-01",
+                                                FimValid = "2022-01"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        new EventoReinf
+                        {
+                            Reinf2099 = new Reinf2099
+                            {
+                                EvtFechaEvPer = new EvtFechaEvPer
+                                {
+                                    ID = "ID1000000000000002021052608080800003",
+                                    IdeEvento = new IdeEventoReinf2099
+                                    {
+                                        PerApur = DateTime.Now,
+                                        TpAmb = TipoAmbiente.Homologacao,
+                                        ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte,
+                                        VerProc = "verProc1"
+                                    },
+                                    IdeContri = new IdeContri
+                                    {
+                                        TpInsc = TiposInscricao.CNPJ,
+                                        NrInsc = "00000000000000"
+                                    },
+                                    IdeRespInf = new IdeRespInf
+                                    {
+                                        NmResp = "Responsavel Nome Silva",
+                                        CpfResp = "00000000000",
+                                        Telefone = "044999999999",
+                                        Email = "teste@teste.com"
+                                    },
+                                    InfoFech = new InfoFech
+                                    {
+                                        EvtAquis = SimNaoLetra.Sim,
+                                        EvtComProd = SimNaoLetra.Sim
+                                    }
+                                }
+                            }
                         }
-                    }
+                    },
                 }
             }
         };
