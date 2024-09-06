@@ -53,7 +53,7 @@ namespace Unimake.DFe.Test.ESocial
             retornoConsultaESocial.Load(arqXML);
 
             var envioESocialXML = new XmlDocument();
-            envioESocialXML.Load(@"..\\..\\..\\ESocial\\Resources\\S1210-esocial-loteevt.xml");
+            envioESocialXML.Load(@"..\..\..\ESocial\Resources\S1210-esocial-loteevt.xml");
 
             var envioESocialObjeto = new ESocialEnvioLoteEventos();
             envioESocialObjeto = XMLUtility.Deserializar<ESocialEnvioLoteEventos>(envioESocialXML);
@@ -81,7 +81,7 @@ namespace Unimake.DFe.Test.ESocial
             consultaLoteAssincrono.Executar();
             consultaLoteAssincrono.RetornoWSXML = retornoConsultaESocial;
             consultaLoteAssincrono.RetornoWSString = consultaLoteAssincrono.RetornoWSXML.OuterXml;
-            consultaLoteAssincrono.GravarXmlDistribuicao(@"..\\\\..\\\\..\\\\ESocial\\\\Resources");
+            consultaLoteAssincrono.GravarXmlDistribuicao(@"..\..\..\ESocial\Resources");
         }
 
     }
