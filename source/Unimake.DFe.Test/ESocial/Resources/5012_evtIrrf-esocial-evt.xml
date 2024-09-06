@@ -13,7 +13,7 @@
 			<indExistInfo>1</indExistInfo>
 			<infoCRMen>
 				<CRMen>056107</CRMen>
-				<vrCRMen>1</vrCRMen>
+				<vrCRMen>1.00</vrCRMen>
 			</infoCRMen>
 			<infoCRMen>
 				<CRMen>056108</CRMen>
@@ -26,7 +26,7 @@
 			<infoCRDia>
 				<perApurDia>2022-05-15</perApurDia>
 				<CRDia>047301</CRDia>
-				<vrCRDia>1</vrCRDia>
+				<vrCRDia>1.00</vrCRDia>
 			</infoCRDia>
 			<infoCRDia>
 				<perApurDia>2022-05-10</perApurDia>

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -174,8 +176,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("CRMen")]
         public TpCR CRMen { get; set; }
 
-        [XmlElement("vrCRMen")]
+        /// <summary>
+        /// Valor correspondente ao Código de Receita - CR indicado em CRMen.
+        /// </summary>
+        [XmlIgnore]
         public double VrCRMen { get; set; }
+        [XmlElement("vrCRMen")]
+        public string VrCRMenField
+        {
+            get => VrCRMen.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCRMen = Converter.ToDouble(value);
+
+        }
     }
 
 #if INTEROP
@@ -206,7 +218,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("CRDia")]
         public string CRDia { get; set; }
 
-        [XmlElement("vrCRDia")]
+        /// <summary>
+        /// Valor relativo ao Imposto de Renda Retido na Fonte sobre rendimentos
+        /// do trabalho pagos a residente, para fins fiscais, no exterior.
+        /// </summary>
+        [XmlIgnore]
         public double VrCRDia { get; set; }
+        [XmlElement("vrCRDia")]
+        public string CRDiaField
+        {
+            get => VrCRDia.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCRDia = Converter.ToDouble(value);
+        }
     }
 }
