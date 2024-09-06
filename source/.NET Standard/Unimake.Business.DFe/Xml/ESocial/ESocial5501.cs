@@ -5,6 +5,11 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.GNRE;
+using System.Globalization;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.MDFe;
+
+
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
@@ -313,8 +318,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpCR")]
         public string TpCR { get; set; }
 
-        [XmlElement("vrCR")]
+        /// <summary>
+        /// Valor correspondente ao Código de Receita - CR.
+        /// Validação: Deve ser apurado de acordo com a
+        /// legislação em vigor na competência.
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
         public double VrCR { get; set; }
+        [XmlElement("vrCR")]
+        public string VrCRField
+        {
+            get => VrCR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCR = Converter.ToDouble(value);
+        }
     }
 
     #endregion InfoCRContrib
@@ -337,11 +354,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("tpCR")]
         public string TpCR { get; set; }
+
         /// <summary>
         /// Valor correspondente ao Código de Receita - CR.
         /// </summary>
-        [XmlElement("vrCR")]
+        [XmlIgnore]
         public double VrCR { get; set; }
+        [XmlElement("vrCR")]
+        public string VrCRField
+        {
+            get => VrCR.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrCR = Converter.ToDouble(value);
+        }
     }
     #endregion InfoCRIRRF
 }
