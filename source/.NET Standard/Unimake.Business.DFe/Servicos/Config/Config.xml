@@ -1469,4 +1469,10 @@
 		<ArqConfig>TaioSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1709500">
+		<Nome>Gurupi - TO</Nome>
+		<UF>TO</UF>
+		<ArqConfig>GurupiTO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
