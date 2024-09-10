@@ -249,6 +249,7 @@
 		<None Remove="Servicos\Config\NFSe\AssisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BaririSP.xml" />
+		<None Remove="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraMansaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\BarreirasBA.xml" />
@@ -973,6 +974,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />

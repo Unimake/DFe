@@ -1475,4 +1475,10 @@
 		<ArqConfig>GurupiTO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3200904">
+		<Nome>Barra de São Francisco - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>BarraDeSaoFranciscoES.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
