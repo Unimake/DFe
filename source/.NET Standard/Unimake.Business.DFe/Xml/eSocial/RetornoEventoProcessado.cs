@@ -1,4 +1,7 @@
 ﻿#pragma warning disable CS1591
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
 
 using System;
 using System.Collections.Generic;
