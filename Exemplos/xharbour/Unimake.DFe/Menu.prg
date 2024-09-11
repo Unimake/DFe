@@ -72,6 +72,8 @@ Function Main()
    
    Aadd(aOpcoes, "Verificar se a DLL esta instalada no PC")
    
+   Aadd(aOpcoes, "eSocial - Consultar lote assincrono")
+   
    Do While .T.
       Cls
 
@@ -251,6 +253,9 @@ Function Main()
 			  
          case nOpcao = 53
 		      VerificarDLLInstalada()
+			  
+	     case nOpcao = 54
+              eSocialConsultaLoteAssincrono()		 
       endcase
    EndDo
 Return       
