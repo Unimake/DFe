@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -106,7 +105,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         [XmlElement("dhRecepcao")]
         public string DhRecepcaoField
         {
-            get => DhRecepcao.ToString("yyyy-MM-ddTHH:mm:ss.fff");
+            get => DhRecepcao.ToString("yyyy-MM-ddTHH:mm:ss.ff" + (DhRecepcao.Millisecond.ToString().EndsWith("0") ? "" : "f"));
 #if INTEROP
             set => DhRecepcao = DateTime.Parse(value);
 #else
@@ -332,7 +331,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         [XmlElement("dhRecepcao")]
         public string DhRecepcaoField
         {
-            get => DhRecepcao.ToString("yyyy-MM-ddTHH:mm:ss.ff");
+            get => DhRecepcao.ToString("yyyy-MM-ddTHH:mm:ss.ff" + (DhRecepcao.Millisecond.ToString().EndsWith("0") ? "" : "f"));
 #if INTEROP
             set => DhRecepcao = DateTime.Parse(value);
 #else
@@ -373,7 +372,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         [XmlElement("dhProcessamento")]
         public string DhProcessamentoField
         {
-            get => DhProcessamento.ToString("yyyy-MM-ddTHH:mm:ss.fff");
+            get => DhProcessamento.ToString("yyyy-MM-ddTHH:mm:ss.ff" + (DhProcessamento.Millisecond.ToString().EndsWith("0") ? "" : "f"));
 #if INTEROP
             set => DhProcessamento = DateTime.Parse(value);
 #else

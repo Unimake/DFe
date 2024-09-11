@@ -13,7 +13,7 @@
 			<descResposta>Lote processado com sucesso.</descResposta>
 		</status>
 		<dadosRecepcaoLote>
-			<dhRecepcao>2022-06-07T11:53:14.333</dhRecepcao>
+			<dhRecepcao>2022-06-07T11:53:14.33</dhRecepcao>
 			<versaoAplicativoRecepcao>0.1.0.0</versaoAplicativoRecepcao>
 			<protocoloEnvio>1.1.202206.0000000003168818462</protocoloEnvio>
 		</dadosRecepcaoLote>
@@ -39,7 +39,7 @@
 								<cdResposta>402</cdResposta>
 								<descResposta>Schema do evento inválido.</descResposta>
 								<versaoAppProcessamento>13.8.10</versaoAppProcessamento>
-								<dhProcessamento>2022-06-07T11:53:14.477</dhProcessamento>
+								<dhProcessamento>2022-06-07T11:53:14.47</dhProcessamento>
 								<ocorrencias>
 									<ocorrencia>
 										<tipo>1</tipo>
