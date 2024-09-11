@@ -80,24 +80,27 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public Xml.ESocial.Retorno.RetornoEventoProcessado GetResult()
+        public Xml.ESocial.Retorno.RetornoEventoProcessado Result
         {
-            if (!string.IsNullOrWhiteSpace(RetornoWSString))
+            get
             {
-                return XMLUtility.Deserializar<Xml.ESocial.Retorno.RetornoEventoProcessado>(RetornoWSXML);
-            }
-
-            return new Xml.ESocial.Retorno.RetornoEventoProcessado
-            {
-                RetornoProcessamentoLoteEventos = new Xml.ESocial.Retorno.RetornoProcessamentoLoteEventos
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    Status = new Xml.ESocial.Retorno.Status
-                    {
-                        CdResposta = 0,
-                        DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado"
-                    }
+                    return XMLUtility.Deserializar<Xml.ESocial.Retorno.RetornoEventoProcessado>(RetornoWSXML);
                 }
-            };
+
+                return new Xml.ESocial.Retorno.RetornoEventoProcessado
+                {
+                    RetornoProcessamentoLoteEventos = new Xml.ESocial.Retorno.RetornoProcessamentoLoteEventos
+                    {
+                        Status = new Xml.ESocial.Retorno.Status
+                        {
+                            CdResposta = 0,
+                            DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado"
+                        }
+                    }
+                };
+            }
         }
         #endregion
 
@@ -132,7 +135,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1000.EvtInfoEmpregador.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -158,7 +161,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1005.EvtTabEstab.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -184,7 +187,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1010.EvtTabRubrica.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -210,7 +213,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1020.evtTabLotacao.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -236,7 +239,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1070.EvtTabProcesso.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -262,7 +265,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1200.EvtRemun.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -288,7 +291,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1202.EvtRmnRPPS.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -314,7 +317,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1207.EvtBenPrRP.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -340,7 +343,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1210.EvtPgtos.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -366,7 +369,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1260.EvtComProd.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -392,7 +395,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1270.EvtContratAvNP.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -418,7 +421,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1280.EvtInfoComplPer.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -444,7 +447,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1298.EvtReabreEvPer.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -470,7 +473,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial1299.EvtFechaEvPer.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -496,7 +499,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2190.EvtAdmPrelim.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -522,7 +525,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2200.EvtAdmissao.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -548,7 +551,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2205.EvtAltCadastral.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -574,7 +577,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2206.EvtAltContratual.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -600,7 +603,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2210.EvtCAT.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -626,7 +629,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2220.EvtMonit.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -652,7 +655,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2221.EvtToxic.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -678,7 +681,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2230.EvtAfastTemp.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -704,7 +707,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2231.EvtCessao.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -730,7 +733,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2240.EvtExpRisco.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -756,7 +759,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2298.EvtReintegr.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -782,7 +785,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2299.EvtDeslig.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -808,7 +811,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2306.EvtTSVAltContr.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -834,7 +837,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2399.EvtTSVTermino.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -860,7 +863,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2400.EvtCdBenefIn.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -886,7 +889,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2405.EvtCdBenefAlt.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -912,7 +915,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2410.EvtCdBenIn.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -938,7 +941,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2416.EvtCdBenAlt.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -964,7 +967,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2418.EvtReativBen.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -990,7 +993,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2420.EvtCdBenTerm.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1016,7 +1019,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2500.EvtProcTrab.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1042,7 +1045,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial2501.EvtContProc.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1068,7 +1071,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial3000.EvtExclusao.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1094,7 +1097,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial3500.EvtExcProcTrab.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1122,7 +1125,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial5003.EvtBasesFGTS.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1150,7 +1153,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial5013.EvtFGTS.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1176,7 +1179,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial5501.EvtTribProcTrab.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1202,7 +1205,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial5503.EvtFGTSProcTrab.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1228,7 +1231,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial8200.EvtAnotJud.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
@@ -1254,7 +1257,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             ID = evento.ESocial8299.EvtBaixa.ID
                         };
 
-                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
