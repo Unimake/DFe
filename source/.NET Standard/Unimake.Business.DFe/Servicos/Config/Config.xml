@@ -1481,4 +1481,10 @@
 		<ArqConfig>BarraDeSaoFranciscoES.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2103307">
+		<Nome>Codó - MA</Nome>
+		<UF>MA</UF>
+		<ArqConfig>CodoMA.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
