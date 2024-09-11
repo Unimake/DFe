@@ -93,17 +93,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.DadosProcessamentoLote")]
-    [ComVisible(true)]
-#endif
-    public class DadosProcessamentoLote
-    {
-        [XmlElement("versaoAplicativoProcessamentoLote")]
-        public string VersaoAplicativoProcessamentoLote { get; set; }
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RetornoEventosLoteAssincrono")]
     [ComVisible(true)]
 #endif
@@ -182,5 +171,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtRetCons/v2_01_02")]
         public Reinf9015 Reinf9015 { get; set; }
+    }
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.DadosProcessamentoLote")]
+    [ComVisible(true)]
+#endif
+    public class DadosProcessamentoLote
+    {
+        [XmlElement("versaoAplicativoProcessamentoLote")]
+        public string VersaoAplicativoProcessamentoLote { get; set; }
     }
 }

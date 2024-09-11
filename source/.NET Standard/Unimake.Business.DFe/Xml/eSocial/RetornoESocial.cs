@@ -1,72 +1,100 @@
 ﻿#pragma warning disable CS1591
 
 using System;
-using System.Xml.Serialization;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml.EFDReinf;
+using System.Runtime.InteropServices;
+using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
-namespace Unimake.Business.DFe.Xml.ESocial
+namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoConsultaLoteEvts")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.ESocial")]
     [ComVisible(true)]
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/retornoProcessamento/v1_3_0", IsNullable = true)]
-    public class RetornoConsultaLoteEvts : XMLBase
+    public class RetornoEventoProcessado : XMLBase
     {
         [XmlElement("retornoProcessamentoLoteEventos")]
         public RetornoProcessamentoLoteEventos RetornoProcessamentoLoteEventos { get; set; }
-
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoProcessamentoLoteEventos")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Ocorrencias")]
     [ComVisible(true)]
 #endif
-    public class RetornoProcessamentoLoteEventos
+    public class Ocorrencias
     {
-        [XmlElement("ideEmpregador")]
-        public IdeEmpregador IdeEmpregador { get; set; }
+        [XmlElement("ocorrencia")]
+        public List<Ocorrencia> Ocorrencia { get; set; }
 
-        [XmlElement("ideTransmissor")]
-        public IdeTransmissor IdeTransmissor { get; set; }
+#if INTEROP
 
-        [XmlElement("status")]
-        public StatusRetorno StatusRetorno { get; set; }
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddOcorrencia(Ocorrencia item)
+        {
+            if (Ocorrencia == null)
+            {
+                Ocorrencia = new List<Ocorrencia>();
+            }
 
-        [XmlElement("dadosRecepcaoLote")]
-        public DadosRecepcaoLoteRetorno DadosRecepcaoLote { get; set; }
+            Ocorrencia.Add(item);
+        }
 
-        [XmlElement("dadosProcessamentoLote")]
-        public DadosProcessamentoLote DadosProcessamentoLote { get; set; }
+        /// <summary>
+        /// Retorna o elemento da lista Ocorrencia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Ocorrencia</returns>
+        public Ocorrencia GetOcorrencia(int index)
+        {
+            if ((Ocorrencia?.Count ?? 0) == 0)
+            {
+                return default;
+            };
 
-        [XmlElement("retornoEventos")]
-        public RetornoEventosESocial RetornoEventos { get; set; }
+            return Ocorrencia[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Ocorrencia
+        /// </summary>
+        public int GetOcorrenciaCount => (Ocorrencia != null ? Ocorrencia.Count : 0);
+#endif
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.StatusRetorno")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Ocorrencia")]
     [ComVisible(true)]
 #endif
-    public class StatusRetorno
+    public class Ocorrencia
     {
-        [XmlElement("cdResposta")]
-        public int CdResposta { get; set; }
+        [XmlElement("tipo")]
+        public int Tipo { get; set; }
 
-        [XmlElement("descResposta")]
-        public string DescResposta { get; set; }
+        [XmlElement("codigo")]
+        public int Codigo { get; set; }
+
+        [XmlElement("descricao")]
+        public string Descricao { get; set; }
+
+        [XmlElement("localizacao")]
+        public string Localizacao { get; set; }
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosRecepcaoLoteRetorno")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosRecepcaoLote")]
     [ComVisible(true)]
 #endif
-    public class DadosRecepcaoLoteRetorno
+    public class DadosRecepcaoLote
     {
         [XmlIgnore]
 #if INTEROP
@@ -78,7 +106,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dhRecepcao")]
         public string DhRecepcaoField
         {
-            get => DhRecepcao.ToString("yyyy-MM-ddTHH:mm:ss.ff");
+            get => DhRecepcao.ToString("yyyy-MM-ddTHH:mm:ss.fff");
 #if INTEROP
             set => DhRecepcao = DateTime.Parse(value);
 #else
@@ -96,13 +124,67 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEventosESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Status")]
     [ComVisible(true)]
 #endif
-    public class RetornoEventosESocial
+    public class Status
+    {
+        [XmlElement("cdResposta")]
+        public int CdResposta { get; set; }
+
+        [XmlElement("descResposta")]
+        public string DescResposta { get; set; }
+
+        [XmlElement("ocorrencias")]
+        public Ocorrencias Ocorrencias { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosProcessamentoLote")]
+    [ComVisible(true)]
+#endif
+    public class DadosProcessamentoLote
+    {
+        [XmlElement("versaoAplicativoProcessamentoLote")]
+        public string VersaoAplicativoProcessamentoLote { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoProcessamentoLoteEventos")]
+    [ComVisible(true)]
+#endif
+    public class RetornoProcessamentoLoteEventos
+    {
+        [XmlElement("ideEmpregador")]
+        public IdeEmpregador IdeEmpregador { get; set; }
+
+        [XmlElement("ideTransmissor")]
+        public IdeTransmissor IdeTransmissor { get; set; }
+
+        [XmlElement("status")]
+        public Status Status { get; set; }
+
+        [XmlElement("dadosRecepcaoLote")]
+        public DadosRecepcaoLote DadosRecepcaoLote { get; set; }
+
+        [XmlElement("dadosProcessamentoLote")]
+        public DadosProcessamentoLote DadosProcessamentoLote { get; set; }
+
+        [XmlElement("retornoEventos")]
+        public RetornoEventos RetornoEventos { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEventos")]
+    [ComVisible(true)]
+#endif
+    public class RetornoEventos
     {
         [XmlElement("evento")]
-        public List<RetornoEventoESocial> Evento { get; set; }
+        public List<Evento> Evento { get; set; }
 
 #if INTEROP
 
@@ -110,11 +192,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddEvento(RetornoEventoESocial item)
+        public void AddEvento(Evento item)
         {
             if (Evento == null)
             {
-                Evento = new List<RetornoEventoESocial>();
+                Evento = new List<Evento>();
             }
 
             Evento.Add(item);
@@ -125,7 +207,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Evento</returns>
-        public RetornoEventoESocial GetEvento(int index)
+        public Evento GetEvento(int index)
         {
             if ((Evento?.Count ?? 0) == 0)
             {
@@ -140,30 +222,31 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetEventoCount => (Evento != null ? Evento.Count : 0);
 #endif
-
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEventoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Evento")]
     [ComVisible(true)]
 #endif
-    public class RetornoEventoESocial
+    public class Evento
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
         [XmlElement("retornoEvento")]
-        public EventoESocialRetorno RetornoEvento { get; set; }
+        public RetornoEvento RetornoEvento { get; set; }
 
         [XmlElement("tot")]
-        public TotEsocial TotEsocial { get; set; }
+        public Tot Tot { get; set; }
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.TotEsocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Tot")]
     [ComVisible(true)]
 #endif
-    public class TotEsocial
+    public class Tot
     {
         [XmlAttribute(AttributeName = "tipo", DataType = "token")]
         public string Tipo { get; set; }
@@ -183,33 +266,35 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EventoESocialRetorno")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEvento")]
     [ComVisible(true)]
 #endif
-    public class EventoESocialRetorno
+    public class RetornoEvento
     {
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/retornoEvento/v1_2_1")]
-        public RetornoDoEventoESocial RetornoEvento { get; set; }
+        public RetornoEventoESocial ESocial { get; set; }
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoDoEventoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEventoESocial")]
     [ComVisible(true)]
 #endif
-    public class RetornoDoEventoESocial
+    public class RetornoEventoESocial
     {
         [XmlElement("retornoEvento")]
-        public EventoDeRetornoESocial RetornoEvento { get; set; }
+        public EventoRetorno RetornoEvento { get; set; }
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EventoDeRetornoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EventoRetorno")]
     [ComVisible(true)]
 #endif
-    public class EventoDeRetornoESocial
+    public class EventoRetorno
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
@@ -218,27 +303,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("recepcao")]
-        public RecepcaoESocial Recepcao { get; set; }
+        public Recepcao Recepcao { get; set; }
 
         [XmlElement("processamento")]
-        public ProcessamentoRetornoESocial Processamento { get; set; }
+        public Processamento Processamento { get; set; }
 
         [XmlElement("recibo")]
-        public ReciboESocial Recibo { get; set; }
+        public Recibo Recibo { get; set; }
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RecepcaoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Recepcao")]
     [ComVisible(true)]
 #endif
-    public class RecepcaoESocial
+    public class Recepcao
     {
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime DhRecepcao {get; set; }
+        public DateTime DhRecepcao { get; set; }
 #else
         public DateTime DhRecepcao { get; set; }
 #endif
@@ -260,12 +346,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("protocoloEnvioLote")]
         public string ProtocoloEnvioLote { get; set; }
     }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcessamentoRetornoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Processamento")]
     [ComVisible(true)]
 #endif
-    public class ProcessamentoRetornoESocial
+    public class Processamento
     {
         [XmlElement("cdResposta")]
         public int CdResposta { get; set; }
@@ -278,7 +365,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime DhProcessamento {get; set; }
+        public DateTime DhProcessamento { get; set; }
 #else
         public DateTime DhProcessamento { get; set; }
 #endif
@@ -295,78 +382,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("ocorrencias")]
-        public OcorrenciasRetornoConsulta Ocorrencias { get; set; }
-    }
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.OcorrenciasRetornoConsulta")]
-    [ComVisible(true)]
-#endif
-    public class OcorrenciasRetornoConsulta
-    {
-        [XmlElement("ocorrencia")]
-        public List<OcorrenciaRetConsulta> Ocorrencia { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddOcorrencia(OcorrenciaRetConsulta item)
-        {
-            if (Ocorrencia == null)
-            {
-                Ocorrencia = new List<OcorrenciaRetConsulta>();
-            }
-
-            Ocorrencia.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista Ocorrencia (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Ocorrencia</returns>
-        public OcorrenciaRetConsulta GetOcorrencia(int index)
-        {
-            if ((Ocorrencia?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return Ocorrencia[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista Ocorrencia
-        /// </summary>
-        public int GetOcorrenciaCount => (Ocorrencia != null ? Ocorrencia.Count : 0);
-#endif    
-    }
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.OcorrenciaRetConsulta")]
-    [ComVisible(true)]
-#endif
-    public class OcorrenciaRetConsulta
-    {
-        [XmlElement("tipo")]
-        public int Tipo { get; set; }
-
-        [XmlElement("codigo")]
-        public int Codigo { get; set; }
-
-        [XmlElement("descricao")]
-        public string Descricao { get; set; }
+        public Ocorrencias Ocorrencias { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ReciboESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Recibo")]
     [ComVisible(true)]
 #endif
-    public class ReciboESocial
+    public class Recibo
     {
         [XmlElement("nrRecibo")]
         public string NrRecibo { get; set; }

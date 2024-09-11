@@ -13,7 +13,7 @@
 			<descResposta>Lote processado com sucesso.</descResposta>
 		</status>
 		<dadosRecepcaoLote>
-			<dhRecepcao>2022-06-07T11:53:14.33</dhRecepcao>
+			<dhRecepcao>2022-06-07T11:53:14.333</dhRecepcao>
 			<versaoAplicativoRecepcao>0.1.0.0</versaoAplicativoRecepcao>
 			<protocoloEnvio>1.1.202206.0000000003168818462</protocoloEnvio>
 		</dadosRecepcaoLote>

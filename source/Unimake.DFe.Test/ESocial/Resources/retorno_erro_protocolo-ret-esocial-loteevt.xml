@@ -5,9 +5,9 @@
 			<descResposta>Lote Incorreto - Erro preenchimento.</descResposta>
 			<ocorrencias>
 				<ocorrencia>
+					<tipo>1</tipo>
 					<codigo>609</codigo>
 					<descricao>Código inválido.</descricao>
-					<tipo>1</tipo>
 					<localizacao>/eSocial/envioLoteEventos/eventos/evento/@Id</localizacao>
 				</ocorrencia>
 			</ocorrencias>

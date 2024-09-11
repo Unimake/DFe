@@ -72,20 +72,20 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public RetornoConsultaLoteEvts Result
+        public Xml.ESocial.Retorno.RetornoEventoProcessado Result
         {
             get
             {
                 if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return XMLUtility.Deserializar<RetornoConsultaLoteEvts>(RetornoWSXML);
+                    return XMLUtility.Deserializar<Xml.ESocial.Retorno.RetornoEventoProcessado>(RetornoWSXML);
                 }
 
-                return new RetornoConsultaLoteEvts
+                return new Xml.ESocial.Retorno.RetornoEventoProcessado
                 {
-                    RetornoProcessamentoLoteEventos = new RetornoProcessamentoLoteEventos
+                    RetornoProcessamentoLoteEventos = new Xml.ESocial.Retorno.RetornoProcessamentoLoteEventos
                     {
-                        StatusRetorno = new StatusRetorno
+                        Status = new Xml.ESocial.Retorno.Status
                         {
                             CdResposta = 0,
                             DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornoado",

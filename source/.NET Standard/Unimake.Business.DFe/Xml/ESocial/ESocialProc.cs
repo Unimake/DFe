@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Xml.ESocial.Retorno;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -168,7 +169,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public ESocial8299 ESocial8299 { get; set; }
 
         [XmlElement("retornoEvento")]
-        public EventoESocialRetorno RetornoEvento { get; set; }
+        public RetornoEvento RetornoEvento { get; set; }
 
         /// <summary>
         /// Nome do arquivo XML de distribuição do evento

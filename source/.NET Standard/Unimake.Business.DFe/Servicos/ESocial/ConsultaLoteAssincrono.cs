@@ -8,7 +8,6 @@ using System.Text;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {
@@ -73,6 +72,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                 ThrowHelper.Instance.Throw(ex);
             }
         }
+
 #endif
 
         #region Result
@@ -80,47 +80,37 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
-        public RetornoConsultaLoteEvts Result
+        public Xml.ESocial.Retorno.RetornoEventoProcessado GetResult()
         {
-            get
+            if (!string.IsNullOrWhiteSpace(RetornoWSString))
             {
-                if (!string.IsNullOrWhiteSpace(RetornoWSString))
-                {
-                    return XMLUtility.Deserializar<RetornoConsultaLoteEvts>(RetornoWSXML);
-                }
-
-                return new RetornoConsultaLoteEvts
-                {
-                    RetornoProcessamentoLoteEventos = new RetornoProcessamentoLoteEventos
-                    {
-                        StatusRetorno = new StatusRetorno
-                        {
-                            CdResposta = 0,
-                            DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornoado"
-                        }
-                    }
-
-                };
+                return XMLUtility.Deserializar<Xml.ESocial.Retorno.RetornoEventoProcessado>(RetornoWSXML);
             }
+
+            return new Xml.ESocial.Retorno.RetornoEventoProcessado
+            {
+                RetornoProcessamentoLoteEventos = new Xml.ESocial.Retorno.RetornoProcessamentoLoteEventos
+                {
+                    Status = new Xml.ESocial.Retorno.Status
+                    {
+                        CdResposta = 0,
+                        DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado"
+                    }
+                }
+            };
         }
         #endregion
 
         /// <summary>
-        /// Desserialize nesta propriedade o XML do lote de eventos já assinado que foi enviado.
+        /// Desserializar nesta propriedade o XML do lote de eventos já assinado que foi enviado.
         /// </summary>
         public ESocialEnvioLoteEventos ESocialEnvioLoteEventos { get; set; }
 
         /// <inheritdoc />
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
-        {
-            throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta)");
-        }
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta)");
 
         /// <inheritdoc />
-        public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null)
-        {
-            throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta)");
-        }
+        public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta)");
 
         /// <summary>
         /// Gravar XML de distribuição dos eventos enviados/autorizados em uma pasta específica
@@ -136,15 +126,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     if (evento.ESocial1000 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1000 = evento.ESocial1000;
-                        esocialProc.ID = evento.ESocial1000.EvtInfoEmpregador.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1000 = evento.ESocial1000,
+                            ID = evento.ESocial1000.EvtInfoEmpregador.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -160,15 +152,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1005 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1005 = evento.ESocial1005;
-                        esocialProc.ID = evento.ESocial1005.EvtTabEstab.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1005 = evento.ESocial1005,
+                            ID = evento.ESocial1005.EvtTabEstab.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -184,15 +178,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1010 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1010 = evento.ESocial1010;
-                        esocialProc.ID = evento.ESocial1010.EvtTabRubrica.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1010 = evento.ESocial1010,
+                            ID = evento.ESocial1010.EvtTabRubrica.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -208,15 +204,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1020 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1020 = evento.ESocial1020;
-                        esocialProc.ID = evento.ESocial1020.evtTabLotacao.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1020 = evento.ESocial1020,
+                            ID = evento.ESocial1020.evtTabLotacao.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -232,15 +230,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1070 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1070 = evento.ESocial1070;
-                        esocialProc.ID = evento.ESocial1070.EvtTabProcesso.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1070 = evento.ESocial1070,
+                            ID = evento.ESocial1070.EvtTabProcesso.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -256,15 +256,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1200 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1200 = evento.ESocial1200;
-                        esocialProc.ID = evento.ESocial1200.EvtRemun.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1200 = evento.ESocial1200,
+                            ID = evento.ESocial1200.EvtRemun.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -280,15 +282,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1202 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1202 = evento.ESocial1202;
-                        esocialProc.ID = evento.ESocial1202.EvtRmnRPPS.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1202 = evento.ESocial1202,
+                            ID = evento.ESocial1202.EvtRmnRPPS.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -304,15 +308,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1207 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1207 = evento.ESocial1207;
-                        esocialProc.ID = evento.ESocial1207.EvtBenPrRP.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1207 = evento.ESocial1207,
+                            ID = evento.ESocial1207.EvtBenPrRP.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -328,15 +334,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1210 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1210 = evento.ESocial1210;
-                        esocialProc.ID = evento.ESocial1210.EvtPgtos.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1210 = evento.ESocial1210,
+                            ID = evento.ESocial1210.EvtPgtos.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -352,15 +360,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1260 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1260 = evento.ESocial1260;
-                        esocialProc.ID = evento.ESocial1260.EvtComProd.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1260 = evento.ESocial1260,
+                            ID = evento.ESocial1260.EvtComProd.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -376,15 +386,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1270 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1270 = evento.ESocial1270;
-                        esocialProc.ID = evento.ESocial1270.EvtContratAvNP.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1270 = evento.ESocial1270,
+                            ID = evento.ESocial1270.EvtContratAvNP.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -400,15 +412,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1280 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1280 = evento.ESocial1280;
-                        esocialProc.ID = evento.ESocial1280.EvtInfoComplPer.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1280 = evento.ESocial1280,
+                            ID = evento.ESocial1280.EvtInfoComplPer.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -424,15 +438,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1298 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1298 = evento.ESocial1298;
-                        esocialProc.ID = evento.ESocial1298.EvtReabreEvPer.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1298 = evento.ESocial1298,
+                            ID = evento.ESocial1298.EvtReabreEvPer.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -448,15 +464,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial1299 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial1299 = evento.ESocial1299;
-                        esocialProc.ID = evento.ESocial1299.EvtFechaEvPer.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial1299 = evento.ESocial1299,
+                            ID = evento.ESocial1299.EvtFechaEvPer.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -472,15 +490,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2190 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2190 = evento.ESocial2190;
-                        esocialProc.ID = evento.ESocial2190.EvtAdmPrelim.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2190 = evento.ESocial2190,
+                            ID = evento.ESocial2190.EvtAdmPrelim.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -496,15 +516,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2200 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2200 = evento.ESocial2200;
-                        esocialProc.ID = evento.ESocial2200.EvtAdmissao.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2200 = evento.ESocial2200,
+                            ID = evento.ESocial2200.EvtAdmissao.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -520,15 +542,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2205 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2205 = evento.ESocial2205;
-                        esocialProc.ID = evento.ESocial2205.EvtAltCadastral.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2205 = evento.ESocial2205,
+                            ID = evento.ESocial2205.EvtAltCadastral.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -544,15 +568,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2206 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2206 = evento.ESocial2206;
-                        esocialProc.ID = evento.ESocial2206.EvtAltContratual.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2206 = evento.ESocial2206,
+                            ID = evento.ESocial2206.EvtAltContratual.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -568,15 +594,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2210 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2210 = evento.ESocial2210;
-                        esocialProc.ID = evento.ESocial2210.EvtCAT.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2210 = evento.ESocial2210,
+                            ID = evento.ESocial2210.EvtCAT.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -592,15 +620,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2220 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2220 = evento.ESocial2220;
-                        esocialProc.ID = evento.ESocial2220.EvtMonit.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2220 = evento.ESocial2220,
+                            ID = evento.ESocial2220.EvtMonit.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -616,15 +646,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2221 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2221 = evento.ESocial2221;
-                        esocialProc.ID = evento.ESocial2221.EvtToxic.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2221 = evento.ESocial2221,
+                            ID = evento.ESocial2221.EvtToxic.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -640,15 +672,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2230 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2230 = evento.ESocial2230;
-                        esocialProc.ID = evento.ESocial2230.EvtAfastTemp.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2230 = evento.ESocial2230,
+                            ID = evento.ESocial2230.EvtAfastTemp.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -664,15 +698,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2231 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2231 = evento.ESocial2231;
-                        esocialProc.ID = evento.ESocial2231.EvtCessao.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2231 = evento.ESocial2231,
+                            ID = evento.ESocial2231.EvtCessao.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -688,15 +724,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2240 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2240 = evento.ESocial2240;
-                        esocialProc.ID = evento.ESocial2240.EvtExpRisco.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2240 = evento.ESocial2240,
+                            ID = evento.ESocial2240.EvtExpRisco.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -712,15 +750,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2298 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2298 = evento.ESocial2298;
-                        esocialProc.ID = evento.ESocial2298.EvtReintegr.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2298 = evento.ESocial2298,
+                            ID = evento.ESocial2298.EvtReintegr.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -736,15 +776,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2299 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2299 = evento.ESocial2299;
-                        esocialProc.ID = evento.ESocial2299.EvtDeslig.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2299 = evento.ESocial2299,
+                            ID = evento.ESocial2299.EvtDeslig.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -760,15 +802,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2306 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2306 = evento.ESocial2306;
-                        esocialProc.ID = evento.ESocial2306.EvtTSVAltContr.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2306 = evento.ESocial2306,
+                            ID = evento.ESocial2306.EvtTSVAltContr.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -784,15 +828,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2399 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2399 = evento.ESocial2399;
-                        esocialProc.ID = evento.ESocial2399.EvtTSVTermino.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2399 = evento.ESocial2399,
+                            ID = evento.ESocial2399.EvtTSVTermino.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -808,15 +854,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2400 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2400 = evento.ESocial2400;
-                        esocialProc.ID = evento.ESocial2400.EvtCdBenefIn.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2400 = evento.ESocial2400,
+                            ID = evento.ESocial2400.EvtCdBenefIn.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -832,15 +880,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2405 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2405 = evento.ESocial2405;
-                        esocialProc.ID = evento.ESocial2405.EvtCdBenefAlt.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2405 = evento.ESocial2405,
+                            ID = evento.ESocial2405.EvtCdBenefAlt.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -856,15 +906,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2410 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2410 = evento.ESocial2410;
-                        esocialProc.ID = evento.ESocial2410.EvtCdBenIn.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2410 = evento.ESocial2410,
+                            ID = evento.ESocial2410.EvtCdBenIn.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -880,15 +932,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2416 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2416 = evento.ESocial2416;
-                        esocialProc.ID = evento.ESocial2416.EvtCdBenAlt.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2416 = evento.ESocial2416,
+                            ID = evento.ESocial2416.EvtCdBenAlt.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -904,15 +958,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2418 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2418 = evento.ESocial2418;
-                        esocialProc.ID = evento.ESocial2418.EvtReativBen.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2418 = evento.ESocial2418,
+                            ID = evento.ESocial2418.EvtReativBen.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -928,15 +984,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2420 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2420 = evento.ESocial2420;
-                        esocialProc.ID = evento.ESocial2420.EvtCdBenTerm.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2420 = evento.ESocial2420,
+                            ID = evento.ESocial2420.EvtCdBenTerm.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -952,15 +1010,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2500 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2500 = evento.ESocial2500;
-                        esocialProc.ID = evento.ESocial2500.EvtProcTrab.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2500 = evento.ESocial2500,
+                            ID = evento.ESocial2500.EvtProcTrab.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -976,15 +1036,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial2501 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial2501 = evento.ESocial2501;
-                        esocialProc.ID = evento.ESocial2501.EvtContProc.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial2501 = evento.ESocial2501,
+                            ID = evento.ESocial2501.EvtContProc.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1000,15 +1062,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial3000 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial3000 = evento.ESocial3000;
-                        esocialProc.ID = evento.ESocial3000.EvtExclusao.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial3000 = evento.ESocial3000,
+                            ID = evento.ESocial3000.EvtExclusao.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1024,15 +1088,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial3500 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial3500 = evento.ESocial3500;
-                        esocialProc.ID = evento.ESocial3500.EvtExcProcTrab.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial3500 = evento.ESocial3500,
+                            ID = evento.ESocial3500.EvtExcProcTrab.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1050,15 +1116,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial5003 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial5003 = evento.ESocial5003;
-                        esocialProc.ID = evento.ESocial5003.EvtBasesFGTS.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial5003 = evento.ESocial5003,
+                            ID = evento.ESocial5003.EvtBasesFGTS.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1076,15 +1144,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial5013 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial5013 = evento.ESocial5013;
-                        esocialProc.ID = evento.ESocial5013.EvtFGTS.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial5013 = evento.ESocial5013,
+                            ID = evento.ESocial5013.EvtFGTS.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1100,15 +1170,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial5501 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial5501 = evento.ESocial5501;
-                        esocialProc.ID = evento.ESocial5501.EvtTribProcTrab.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial5501 = evento.ESocial5501,
+                            ID = evento.ESocial5501.EvtTribProcTrab.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1124,15 +1196,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial5503 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial5503 = evento.ESocial5503;
-                        esocialProc.ID = evento.ESocial5503.EvtFGTSProcTrab.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial5503 = evento.ESocial5503,
+                            ID = evento.ESocial5503.EvtFGTSProcTrab.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1148,15 +1222,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial8200 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial8200 = evento.ESocial8200;
-                        esocialProc.ID = evento.ESocial8200.EvtAnotJud.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial8200 = evento.ESocial8200,
+                            ID = evento.ESocial8200.EvtAnotJud.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1172,15 +1248,17 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
                     else if (evento.ESocial8299 != null)
                     {
-                        var esocialProc = new ESocialProc();
-                        esocialProc.ESocial8299 = evento.ESocial8299;
-                        esocialProc.ID = evento.ESocial8299.EvtBaixa.ID;
+                        var esocialProc = new ESocialProc
+                        {
+                            ESocial8299 = evento.ESocial8299,
+                            ID = evento.ESocial8299.EvtBaixa.ID
+                        };
 
-                        foreach (var retornoEvento in Result.RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
+                        foreach (var retornoEvento in GetResult().RetornoProcessamentoLoteEventos.RetornoEventos.Evento)
                         {
                             if (retornoEvento.ID == esocialProc.ID)
                             {
-                                if (retornoEvento.RetornoEvento.RetornoEvento.RetornoEvento.Processamento.CdResposta == 201)
+                                if (retornoEvento.RetornoEvento.ESocial.RetornoEvento.Processamento.CdResposta == 201)
                                 {
                                     esocialProc.RetornoEvento = retornoEvento.RetornoEvento;
                                     base.GravarXmlDistribuicao(pasta, esocialProc.NomeArquivoDistribuicao, esocialProc.GerarXML().OuterXml);
@@ -1195,7 +1273,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             }
             catch (Exception ex)
             {
-                ThrowHelper.Instance.Throw(ex);
+                Exceptions.ThrowHelper.Instance.Throw(ex);
             }
         }
 

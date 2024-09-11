@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Xml;
-using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Xunit;
 
@@ -956,7 +955,7 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.RetornoEnvioLote>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEnvioLote>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -975,7 +974,7 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.RetornoEnvioLote>(doc);
+            var xml = XMLUtility.Deserializar<Business.DFe.Xml.ESocial.Retorno.RetornoEnvioLote>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -994,7 +993,7 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.RetornoConsultaLoteEvts>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEventoProcessado>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -1013,7 +1012,7 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.RetornoConsultaLoteEvts>(doc);
+            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEventoProcessado>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
