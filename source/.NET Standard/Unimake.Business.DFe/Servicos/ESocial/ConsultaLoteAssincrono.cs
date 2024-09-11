@@ -23,7 +23,12 @@ namespace Unimake.Business.DFe.Servicos.ESocial
     public class ConsultaLoteAssincrono : ServicoBase, IInteropService<ConsultarLoteEventos>
     {
         /// <summary>
-        /// 
+        /// Construtor
+        /// </summary>
+        public ConsultaLoteAssincrono() : base() { }
+
+        /// <summary>
+        /// Construtor
         /// </summary>
         public ConsultaLoteAssincrono(ConsultarLoteEventos consulta, Configuracao configuracao)
         {
@@ -37,10 +42,10 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
 #if INTEROP
         /// <summary>
-        /// 
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="ConsultarLoteEventos"></param>
-        /// <param name="configuracao"></param>
+        /// <param name="ConsultarLoteEventos">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
         public void Executar([MarshalAs(UnmanagedType.IUnknown)] ConsultarLoteEventos ConsultarLoteEventos, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)

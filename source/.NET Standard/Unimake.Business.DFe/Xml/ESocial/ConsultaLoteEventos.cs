@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
-    #region Consultar Lote Eventos
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultarLoteEventos")]
@@ -24,13 +23,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public string Versao { get; set; } = "1.1.0";
     }
-    #endregion Consulta Lote Eventos
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultaLoteEventos")]
     [ComVisible(true)]
 #endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/consulta/retornoProcessamento/v1_0_0")]
     public class ConsultaLoteEventos
     {
         [XmlElement("protocoloEnvio")]
