@@ -807,6 +807,16 @@ namespace Unimake.Business.DFe.Servicos
                             SchemaVersaoEvento = XMLUtility.TagRead(elementVersao, "SchemaVersaoEvento");
                         }
 
+                        if (XMLUtility.TagExist(elementVersao, "HostHomologacao"))
+                        {
+                            HostHomologacao = XMLUtility.TagRead(elementVersao, "HostHomologacao");
+                        }
+
+                        if (XMLUtility.TagExist(elementVersao, "HostProducao"))
+                        {
+                            HostProducao = XMLUtility.TagRead(elementVersao, "HostProducao");
+                        }
+
                         //Vou limpar a versão da configuração, caso alguém informe algo no arquivo padrão, tem que zerar, pois só pode existir valor na configuração específica de cada UF ou Município
                         VersaoConfiguracao = "";
 
@@ -919,6 +929,21 @@ namespace Unimake.Business.DFe.Servicos
         /// Tem servidor de proxy?
         /// </summary>
         public bool HasProxy { get; set; } = false;
+
+        /// <summary>
+        /// Host - Header API
+        /// </summary>
+        public string HostHomologacao { get; set; }
+
+        /// <summary>
+        /// Host - Header API
+        /// </summary>
+        public string HostProducao { get; set; }
+
+        /// <summary>
+        /// ApiKey - Header API
+        /// </summary>
+        public string ApiKey { get; set; }
 
         /// <summary>
         /// Modelo do documento fiscal que é para consultar o status do serviço

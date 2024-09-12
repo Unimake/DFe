@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigPadrao>
+	<Versao ID="1.00">
+		<WebContentType>application/json</WebContentType>
+		<WebTagRetorno></WebTagRetorno>
+		<SchemaVersao>1.00</SchemaVersao>
+		<SchemaVersaoEvento></SchemaVersaoEvento>
+		<TargetNS></TargetNS>
+		<HostHomologacao>apigateway-hml.fazenda.sp.gov.br</HostHomologacao>
+		<HostProducao>apigateway.fazenda.sp.gov.br</HostProducao>
+	</Versao>
+</ConfigPadrao>

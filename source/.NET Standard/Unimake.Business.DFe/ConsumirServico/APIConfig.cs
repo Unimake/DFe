@@ -27,6 +27,26 @@ namespace Unimake.Business.DFe
         private string _ResponseMediaType;
         private string _CodigoTom;
         private bool _UsaCertificadoDigital;
+        private string _Host;
+        private string _ApiKey;
+
+        /// <summary>
+        /// Host - Header API
+        /// </summary>
+        public string ApiKey
+        {
+            get => _ApiKey;
+            set => _ApiKey= value;
+        }
+
+        /// <summary>
+        /// Host - Header API
+        /// </summary>
+        public string Host
+        {
+            get => _Host;
+            set => _Host = value;
+        }
 
         /// <summary>
         /// Utiliza ou não o certificado digital
