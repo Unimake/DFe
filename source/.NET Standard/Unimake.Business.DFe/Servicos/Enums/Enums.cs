@@ -437,6 +437,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ESocial download Eventos")]
         ESocialDownloadEvts = 71,
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [Description("DARE Envio Unitário")]
+        DAREEnvio = 72,
         #endregion
 
         #region Gerais
@@ -513,7 +519,11 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 12 - eSocial - Escrituração Digital das Obrigações Fiscais, Previdenciárias e Trabalhistas
         /// </summary>
-        ESocial = 12
+        ESocial = 12,
+        /// <summary>
+        /// 13 - DARE SP - Documento de Arrecadação de Receitas Estaduais
+        /// </summary>
+        DARE = 13,
     }
 
     #endregion       

@@ -227,7 +227,9 @@ namespace Unimake.Business.DFe.Servicos
                     ResponseMediaType = Configuracoes.ResponseMediaType,
                     CodigoTom = Configuracoes.CodigoTom,
                     Servico = Configuracoes.Servico,
-                    UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital
+                    UsaCertificadoDigital = Configuracoes.UsaCertificadoDigital,
+                    Host = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.HostProducao : Configuracoes.HostHomologacao),
+                    ApiKey = Configuracoes.ApiKey,
                 };
 
                 var consumirAPI = new ConsumirAPI();
