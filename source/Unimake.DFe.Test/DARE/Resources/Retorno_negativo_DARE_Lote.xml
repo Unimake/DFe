@@ -1,0 +1,17 @@
+<DareRetorno>
+	<errors>
+		<itensParaGeracao_1_numeroControleDarePrincipal>
+			<message>Invalid character after parsing property name. Expected ':' but got: ". Path 'itensParaGeracao[1].numeroControleDarePrincipal', line 67, position 24.</message>
+		</itensParaGeracao_1_numeroControleDarePrincipal>
+		<itensParaGeracao_1_numeroControleDarePrincipal_1>
+			<message>Invalid character after parsing property name. Expected ':' but got: c. Path 'itensParaGeracao[1].numeroControleDarePrincipal', line 67, position 7.</message>
+		</itensParaGeracao_1_numeroControleDarePrincipal_1>
+		<itensParaGeracao_1_numeroControleDarePrincipal_itensParaGeracao>
+			<message>Invalid JavaScript property identifier character: ". Path 'itensParaGeracao[1].numeroControleDarePrincipal', line 67, position 20.</message>
+		</itensParaGeracao_1_numeroControleDarePrincipal_itensParaGeracao>
+	</errors>
+	<type>https://tools.ietf.org/html/rfc7231#section-6.5.1</type>
+	<title>One or more validation errors occurred.</title>
+	<status>400</status>
+	<traceId>00-5500edb4d7f2a241975d0110780bb3fd-d9225ef7dac30b46-00</traceId>
+</DareRetorno>
