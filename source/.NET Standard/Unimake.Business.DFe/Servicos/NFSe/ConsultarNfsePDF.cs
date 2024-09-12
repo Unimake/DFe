@@ -55,7 +55,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
                 if (RetornoWSXML.GetElementsByTagName(nomeTagPDF)[0] != null)
                 {
-                    Converter.Base64ToPDF(RetornoWSXML.GetElementsByTagName("Base64Pdf")[0].InnerText, Path.Combine(pasta, nomePDF));
+                    Converter.Base64ToPDF(RetornoWSXML.GetElementsByTagName(nomeTagPDF)[0].InnerText, Path.Combine(pasta, nomePDF));
                 }
                 else
                 {
