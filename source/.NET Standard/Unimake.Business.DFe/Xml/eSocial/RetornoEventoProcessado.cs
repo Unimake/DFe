@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Ocorrencias")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Ocorrencias")]
     [ComVisible(true)]
 #endif
     public class Ocorrencias
@@ -73,7 +73,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Ocorrencia")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Ocorrencia")]
     [ComVisible(true)]
 #endif
     public class Ocorrencia
@@ -93,7 +93,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosRecepcaoLote")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.DadosRecepcaoLote")]
     [ComVisible(true)]
 #endif
     public class DadosRecepcaoLote
@@ -126,7 +126,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Status")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Status")]
     [ComVisible(true)]
 #endif
     public class Status
@@ -143,7 +143,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosProcessamentoLote")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.DadosProcessamentoLote")]
     [ComVisible(true)]
 #endif
     public class DadosProcessamentoLote
@@ -154,7 +154,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoProcessamentoLoteEventos")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoProcessamentoLoteEventos")]
     [ComVisible(true)]
 #endif
     public class RetornoProcessamentoLoteEventos
@@ -180,7 +180,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEventos")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEventos")]
     [ComVisible(true)]
 #endif
     public class RetornoEventos
@@ -228,7 +228,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Evento")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Evento")]
     [ComVisible(true)]
 #endif
     public class Evento
@@ -245,7 +245,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Tot")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Tot")]
     [ComVisible(true)]
 #endif
     public class Tot
@@ -268,7 +268,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEvento")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEvento")]
     [ComVisible(true)]
 #endif
     public class RetornoEvento
@@ -279,7 +279,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RetornoEventoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEventoESocial")]
     [ComVisible(true)]
 #endif
     public class RetornoEventoESocial
@@ -293,7 +293,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EventoRetorno")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.EventoRetorno")]
     [ComVisible(true)]
 #endif
     public class EventoRetorno
@@ -316,7 +316,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Recepcao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Recepcao")]
     [ComVisible(true)]
 #endif
     public class Recepcao
@@ -351,7 +351,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Processamento")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Processamento")]
     [ComVisible(true)]
 #endif
     public class Processamento
@@ -389,7 +389,7 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Recibo")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Recibo")]
     [ComVisible(true)]
 #endif
     public class Recibo
