@@ -39,7 +39,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] EnvioDARELoteDARE EnvioDARELoteDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] DARELote EnvioDARELoteDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -64,6 +64,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
                 ThrowHelper.Instance.Throw(ex);
             }
         }
+
 #endif
 
         /// <summary>

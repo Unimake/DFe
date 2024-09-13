@@ -356,11 +356,11 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddMensagens(string item)
+        public void AddMensagens(MensagensEnvio item)
         {
             if (Mensagens == null)
             {
-                Mensagens = new List<string>();
+                Mensagens = new List<MensagensEnvio>();
             }
 
             Mensagens.Add(item);
@@ -371,7 +371,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Mensagens</returns>
-        public string GetMensagens(int index)
+        public MensagensEnvio GetMensagens(int index)
         {
             if ((Mensagens?.Count ?? 0) == 0)
             {

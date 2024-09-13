@@ -39,7 +39,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] EnvioDAREUnitarioDARE EnvioDAREUnitarioDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Unimake.Business.DFe.Xml.DARE.DARE EnvioDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(EnvioDAREUnitarioDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(EnvioDAREUnitarioDARE)), configuracao);
+                Inicializar(EnvioDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(EnvioDARE)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
