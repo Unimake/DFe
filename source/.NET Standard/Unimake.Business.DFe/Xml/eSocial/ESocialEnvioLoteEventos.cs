@@ -3,8 +3,11 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -15,7 +18,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1", IsNullable = true)]
-
     public class ESocialEnvioLoteEventos : XMLBase
     {
         [XmlIgnore]
@@ -23,6 +25,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("envioLoteEventos")]
         public EnvioLoteEventosESocial EnvioLoteEventos { get; set; }
+
+        /// <summary>
+        /// Desserializar o XML de Lote de Eventos do eSocial no objeto ESocialEnvioLoteEventos
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML de lote de eventos do eSocial</param>
+        /// <returns>Objeto do ESocialEnvioLoteEventos</returns>
+        public ESocialEnvioLoteEventos LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<ESocialEnvioLoteEventos>(doc);
+        }
+
+        /// <summary>
+        /// Desserializar o XML de Lote de Eventos do eSocial no objeto ESocialEnvioLoteEventos
+        /// </summary>
+        /// <param name="xml">string do XML de lote de eventos do eSocial</param>
+        /// <returns>Objeto do ESocialEnvioLoteEventos</returns>
+        public ESocialEnvioLoteEventos LoadFromXML(string xml) => XMLUtility.Deserializar<ESocialEnvioLoteEventos>(xml);
     }
 
 #if INTEROP
