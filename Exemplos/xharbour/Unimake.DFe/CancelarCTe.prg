@@ -19,11 +19,11 @@ Function EnviarCancCTe()
    
  * Criar tag do lote de eventos <eventoCTe>
    oEventoCTe = CreateObject("Unimake.Business.DFe.Xml.CTe.EventoCTe")
-   oEventoCTe:Versao = "3.00"
+   oEventoCTe:Versao = "4.00"
 
  * Criar tag <detEvento>
    oDetEventoCanc = CreateObject("Unimake.Business.DFe.Xml.CTe.DetEventoCanc")
-   oDetEventoCanc:VersaoEvento = "3.00"
+   oDetEventoCanc:VersaoEvento = "4.00"
    oDetEventoCanc:NProt = "141190000660363"
    oDetEventoCanc:XJust = "Justificativa para cancelamento da NFe de teste"
    
