@@ -119,7 +119,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("dtObito")]
-        public string DtAlteracaoField
+        public string DtObitoField
         {
             get => DtObito.ToString("yyyy-MM-dd");
 #if INTEROP
@@ -148,7 +148,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset UltDiaTrab { get; set; }
 #endif
 
-        [XmlElement("UltDiaTrab")]
+        [XmlElement("ultDiaTrab")]
         public string UltDiaTrabField
         {
             get => UltDiaTrab.ToString("yyyy-MM-dd");

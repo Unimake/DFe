@@ -193,7 +193,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         Status = new Xml.ESocial.Retorno.Status
                         {
                             CdResposta = 0,
-                            DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornoado",
+                            DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado",
                         }
                     }
                     
