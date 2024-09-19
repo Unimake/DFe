@@ -89,6 +89,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("evento")]
         public List<EventoESocial> Evento { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddEvento(EventoESocial item)
+        {
+            if (Evento == null)
+            {
+                Evento = new List<EventoESocial>();
+            }
+
+            Evento.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Evento (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Evento</returns>
+        public EventoESocial GetEvento(int index)
+        {
+            if ((Evento?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Evento[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Evento
+        /// </summary>
+        public int GetInfoPgtoCount => (Evento != null ? Evento.Count : 0);
+
+#endif
     }
 
 #if INTEROP
