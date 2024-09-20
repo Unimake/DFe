@@ -16,7 +16,7 @@ Function EnviarEsocial2221Desserializando()
 
    oConfiguracao:TipoDFe           := 12 // 12 = eSocial
    oConfiguracao:Servico           := 69 // Servico.ESocialEnviarLoteEventos
-   oConfiguracao:CertificadoArquivo:= "D:\tools\sergio\BACKUP\CERT DIG AGAPE_MEDICINA_DO_TRABALHO_LTDA_15527739000123_1702988563264876200.pfx"
+   oConfiguracao:CertificadoArquivo:= "D:\projetos\unimake_pv.pfx"
    oConfiguracao:CertificadoSenha  := "1234"
    oConfiguracao:TipoAmbiente      := 2  // TipoAmbiente.Producao
 

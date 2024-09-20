@@ -18,7 +18,7 @@ Function eSocialConsultaLoteAssincrono()
    oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 12 //12=eSocial
    oConfiguracao:TipoEmissao = 1 //1=Normal
-   oConfiguracao:CertificadoArquivo = "C:\Users\Wandrey\Downloads\Telegram Desktop\CERT_DIG_AGAPE_MEDICINA_DO_TRABALHO_LTDA_15527739000123_1702988563264876200.pfx"
+   oConfiguracao:CertificadoArquivo = "d:\projetos\unimake_pv.pfx"
    oConfiguracao:CertificadoSenha = "1234"
    oConfiguracao:Servico = 70 //Servico.ESocialConsultaEvts
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
