@@ -72,7 +72,9 @@ Function Main()
    
    Aadd(aOpcoes, "Verificar se a DLL esta instalada no PC")
    
-   Aadd(aOpcoes, "eSocial - Consultar lote assincrono")
+   Aadd(aOpcoes, "eSocial - Consultar lote assincrono")   
+   Aadd(aOpcoes, "eSocial - Evento 2210 - Enviar lote")
+   Aadd(aOpcoes, "eSocial - Evento 2210 - Enviar lote - XML desserializado")
    
    Do While .T.
       Cls
@@ -256,6 +258,12 @@ Function Main()
 			  
 	     case nOpcao = 54
               eSocialConsultaLoteAssincrono()		 
+		
+         case nOpcao = 55
+		      EnviarEsocial2210()
+		
+	     case nOpcao = 56
+		      EnviarEsocial2210Desserializando()
       endcase
    EndDo
 Return       
