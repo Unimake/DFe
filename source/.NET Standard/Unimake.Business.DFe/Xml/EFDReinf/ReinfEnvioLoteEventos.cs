@@ -7,6 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using System.Text;
+using System.Xml;
+using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.ESocial;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -24,6 +28,25 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("envioLoteEventos")]
         public EnvioLoteEventosReinf EnvioLoteEventos { get; set; }
+
+        /// <summary>
+        /// Desserializar o XML de Lote de Eventos do EFDReinf no objeto ReinfEnvioLoteEventos
+        /// </summary>
+        /// <param name="filename">Localização do arquivo XML de lote de eventos do EFDReinf</param>
+        /// <returns>Objeto do ReinfEnvioLoteEventos</returns>
+        public ReinfEnvioLoteEventos LoadFromFile(string filename)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+            return XMLUtility.Deserializar<ReinfEnvioLoteEventos>(doc);
+        }
+
+        /// <summary>
+        /// Desserializar o XML de Lote de Eventos do EFDReinf no objeto ReinfEnvioLoteEventos
+        /// </summary>
+        /// <param name="xml">string do XML de lote de eventos do EFDReinf</param>
+        /// <returns>Objeto do ReinfEnvioLoteEventos</returns>
+        public ReinfEnvioLoteEventos LoadFromXML(string xml) => XMLUtility.Deserializar<ReinfEnvioLoteEventos>(xml);
     }
 
 #if INTEROP
