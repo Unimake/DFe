@@ -7,8 +7,9 @@
 #endif
  
 Function EnviarEsocial2221Desserializando()
-   Local oConfiguracao
-   Local xmlString
+   Local oConfiguracao, oExceptionInterop, oErro
+   Local xmlString, nomeArqLoteEvento, stringXMLLoteAssinado
+   Local oESocialEnvioLoteEventos
    Local oEnviarLoteEventosESocial
 
  * Criar o objeto de configuração mínima
@@ -16,17 +17,29 @@ Function EnviarEsocial2221Desserializando()
 
    oConfiguracao:TipoDFe           := 12 // 12 = eSocial
    oConfiguracao:Servico           := 69 // Servico.ESocialEnviarLoteEventos
-   oConfiguracao:CertificadoArquivo:= "D:\projetos\unimake_pv.pfx"
-   oConfiguracao:CertificadoSenha  := "1234"
-   oConfiguracao:TipoAmbiente      := 2  // TipoAmbiente.Producao
+   oConfiguracao:CertificadoArquivo:= "C:\Projetos\certificados\UnimakePV.pfx"
+   oConfiguracao:CertificadoSenha  := "12345678"
+   oConfiguracao:TipoAmbiente      := 2  // TipoAmbiente.Homologação
 
  * Criar objeto para pegar exceção do lado do CSHARP
    oExceptionInterop:= CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try         
-	  xmlString:= [<?xml version="1.0" encoding="utf-8"?>] + ;
+      xmlString:= [<?xml version="1.0" encoding="UTF-8"?>] + ;
+                  [<eSocial xmlns="http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1">] + ;
+                    [<envioLoteEventos grupo="2">] + ;
+                      [<ideEmpregador>] + ;
+                        [<tpInsc>1</tpInsc>] + ;
+                        [<nrInsc>99998563</nrInsc>] + ;
+                      [</ideEmpregador>] + ;
+                      [<ideTransmissor>] + ;
+                        [<tpInsc>1</tpInsc>] + ;
+                        [<nrInsc>99927739000999</nrInsc>] + ;
+                      [</ideTransmissor>] + ;
+                      [<eventos>] + ;
+                        [<evento Id="ID1999985630000002024090421022000001">] + ;
                       [<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00">] + ;
-                        [<evtToxic Id="ID1475922250000002024091211312700001">] + ; 
+                            [<evtToxic Id="ID1999985630000002024091310242800001">] + ;
                           [<ideEvento>] + ;
                             [<indRetif>1</indRetif>] + ; 
                             [<tpAmb>2</tpAmb>] + ;
@@ -50,7 +63,11 @@ Function EnviarEsocial2221Desserializando()
                             [<ufCRM>SP</ufCRM>] + ; 
                           [</toxicologico>] + ;
                         [</evtToxic>] + ; 
-                        [<evtToxic Id="ID1475922250000002024091211312700002">] + ;
+                          [</eSocial>] + ;
+                        [</evento>] + ;
+                        [<evento Id="ID1999985630000002024090421022000002">] + ;
+                          [<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00">] + ;
+                            [<evtToxic Id="ID1999985630000002024091310242800002">] + ;
                           [<ideEvento>] + ; 
                             [<indRetif>1</indRetif>] + ;
                             [<tpAmb>2</tpAmb>] + ;
@@ -74,6 +91,10 @@ Function EnviarEsocial2221Desserializando()
                             [<ufCRM>SP</ufCRM>] + ;
                           [</toxicologico>] + ;
                         [</evtToxic>] + ;
+                          [</eSocial>] + ;
+                        [</evento>] + ;
+                     [</eventos>] + ;
+                    [</envioLoteEventos>] + ;
                       [</eSocial>]
 
 	  ? "String do XML:"
@@ -82,23 +103,40 @@ Function EnviarEsocial2221Desserializando()
 	  ? xmlString
 	  ?
 	  ?
+
+      nomeArqLoteEvento := "D:\enzza\unimake_esocial\toxic_teste-esocial-loteevt.xml"
+      hb_MemoWrit(nomeArqLoteEvento, xmlString)
+
 	  Wait
 	  Cls 
- /*
-   
- * Desserializar o XML no objeto a partir do arquivo no HD  // não existe
-*  oEventoS2221 = oEventoS2221:LoadFromFile("D:\testenfe\xharbour\Unimake.DFe\Xmls2221.xml") 
+     * Criar objeto do lote de eventos
+      oESocialEnvioLoteEventos := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos")
+	
+    * Desserializar o XML de lote de eventos a partir do arquivo gravado no HD	 
+*      oESocialEnvioLoteEventos := oESocialEnvioLoteEventos:LoadFromFile("D:\enzza\unimake_esocial\cat_teste-esocial-loteevt.xml")
+	
+    * Desserializar o XML de lote de eventos a partir da string do XML
+      //oESocialEnvioLoteEventos := oESocialEnvioLoteEventos:LoadFromXML("D:\enzza\unimake_esocial\cat_teste-esocial-loteevt.xml")
+      oESocialEnvioLoteEventos := oESocialEnvioLoteEventos:LoadFromXML(xmlString)
 
- * Desserializar o objeto a partir de uma string
-   oEventoS2221 = oEventoS2221:LoadFromXML(xmlString) // não existe
- 
-*/
- 
-         oEnviarLoteEventosESocial:= CreateObject("Unimake.Business.DFe.Xml.ESocial.EnviarLoteEventosESocial")
-         oEnviarLoteEventosESocial:Executar(xmlString, oConfiguracao)
+    * Criar objeto para consumir o serviço de envio de lotes de eventos do eSocial
+      oEnviarLoteEventosESocial := CreateObject("Unimake.Business.DFe.Servicos.ESocial.EnviarLoteEventosESocial")
+	
+    * Consumir o serviço	
+      oEnviarLoteEventosESocial:Executar(oESocialEnvioLoteEventos, oConfiguracao)
+      
+      stringXMLLoteAssinado = oEnviarLoteEventosESocial:GetConteudoXMLAssinado()
+      
+      ? "StringXMLAssinado:", stringXMLLoteAssinado
+      ?
+      ?
+      Wait
+      hb_MemoWrit("D:\enzza\unimake_esocial\toxic-xmlloteeventosassinado.xml", stringXMLLoteAssinado)
+	
 	  ? oEnviarLoteEventosESocial:RetornoWSString
 	  ?
 	  ?
+      hb_MemoWrit("D:\enzza\unimake_esocial\toxic-xmlloteeventos-ret.xml", oEnviarLoteEventosESocial:RetornoWSString)
 	  Wait
 	  Cls
    Catch oErro
