@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.DARE
@@ -63,7 +64,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         public ErroRetorno Erro { get; set; }
 
         [XmlElement("gerarPDF")]
-        public bool? GerarPDF { get; set; }
+        public string GerarPDF { get; set; }
 
         [XmlElement("pixCopiaCola")]
         public string PixCopiaCola{ get; set; }
@@ -139,7 +140,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         #region ShouldSerialize
         public bool ShouldSerializeDataVencimentoStringField() => !string.IsNullOrEmpty(DataVencimentoField);
         public bool ShouldSerializeDataVencimentoField() => DataVencimento > DateTime.MinValue;
-        public bool ShouldSerializeGerarPDFField() => GerarPDF.HasValue;
+        public bool ShouldSerializeGerarPDFField() => GerarPDF != null;
         #endregion ShouldSerialize
     }
 

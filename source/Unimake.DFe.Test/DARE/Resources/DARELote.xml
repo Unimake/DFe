@@ -1,20 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <DareLote xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"><!--Essa tag não existe no envio-->
 	<dadosContribuinteNaoCadastrado>
+		<numeroControleDarePrincipal>789012</numeroControleDarePrincipal>
+		<gerarPDF>false</gerarPDF>
+		<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
+		<codigoBarra48/>
 		<cnpj>12345678000199</cnpj>
 		<cpf/>
 		<cidade>Santos</cidade>
-		<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-		<codigoBarra48/>
 		<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 		<documentoImpressao/>
 		<endereco>Avenida Exemplo, 500</endereco>
-		<erro>
-			<estaOk>true</estaOk>
-			<mensagens/>
-		</erro>
-		<gerarPDF>false</gerarPDF>
-		<numeroControleDarePrincipal>789012</numeroControleDarePrincipal>
-		<observacao>Pagamento em lote referente à taxas Y</observacao>
 		<pixCopiaCola/>
 		<razaoSocial>Empresa Exemplo em Lote</razaoSocial>
 		<receita>
@@ -23,6 +19,11 @@
 			<escopoUso>2</escopoUso>
 			<nome>Receita ISS</nome>
 		</receita>
+		<erro>
+			<mensagens/>
+			<estaOk>true</estaOk>
+		</erro>
+		<observacao>Pagamento em lote referente à taxas Y</observacao>
 		<referencia>20241231</referencia>
 		<telefone>11987654321</telefone>
 		<uf>SP</uf>
@@ -34,28 +35,22 @@
 		<linha08/>
 	</dadosContribuinteNaoCadastrado>
 	<erro>
-		<estaOk>true</estaOk>
 		<mensagens/>
+		<estaOk>true</estaOk>
 	</erro>
 	<tipoAgrupamentoFilhotes>1</tipoAgrupamentoFilhotes>
-	<zipDownload/>
 	<itensParaGeracao>
 		<Dare>
+			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
+			<gerarPDF>false</gerarPDF>
+			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
+			<codigoBarra48/>
 			<cnpj>12345678000199</cnpj>
 			<cpf/>
 			<cidade>São Paulo</cidade>
-			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-			<codigoBarra48/>
 			<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 			<documentoImpressao/>
 			<endereco>Rua Exemplo, 100</endereco>
-			<erro>
-				<estaOk>true</estaOk>
-				<mensagens/>
-			</erro>
-			<gerarPDF>false</gerarPDF>
-			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
-			<observacao>Pagamento referente à taxa X</observacao>
 			<pixCopiaCola/>
 			<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
 			<receita>
@@ -64,6 +59,11 @@
 				<escopoUso>1</escopoUso>
 				<nome>Receita ICMS</nome>
 			</receita>
+			<erro>
+				<mensagens/>
+				<estaOk>true</estaOk>
+			</erro>
+			<observacao>Pagamento referente à taxa X</observacao>
 			<referencia>20241231</referencia>
 			<telefone>11987654321</telefone>
 			<uf>SP</uf>
@@ -75,21 +75,16 @@
 			<linha08/>
 		</Dare>
 		<Dare>
+			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
+			<gerarPDF>false</gerarPDF>
+			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
+			<codigoBarra48/>
 			<cnpj>12345678000199</cnpj>
 			<cpf/>
 			<cidade>São Paulo</cidade>
-			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-			<codigoBarra48/>
 			<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 			<documentoImpressao/>
 			<endereco>Rua Exemplo, 100</endereco>
-			<erro>
-				<estaOk>true</estaOk>
-				<mensagens/>
-			</erro>
-			<gerarPDF>false</gerarPDF>
-			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
-			<observacao>Pagamento referente à taxa X</observacao>
 			<pixCopiaCola/>
 			<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
 			<receita>
@@ -98,6 +93,11 @@
 				<escopoUso>1</escopoUso>
 				<nome>Receita ICMS</nome>
 			</receita>
+			<erro>
+				<mensagens/>
+				<estaOk>true</estaOk>
+			</erro>
+			<observacao>Pagamento referente à taxa X</observacao>
 			<referencia>20241231</referencia>
 			<telefone>11987654321</telefone>
 			<uf>SP</uf>
@@ -109,4 +109,4 @@
 			<linha08/>
 		</Dare>
 	</itensParaGeracao>
-</DareLote> <!--Essa tag não existe no envio-->
+</DareLote>

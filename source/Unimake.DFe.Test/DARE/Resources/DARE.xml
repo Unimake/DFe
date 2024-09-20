@@ -1,19 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?> 
 <Dare xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"> <!--Essa tag não existe no envio-->
+	<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
+	<gerarPDF>false</gerarPDF>
+	<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
+	<codigoBarra48/>
 	<cnpj>12345678000199</cnpj>
 	<cpf/>
 	<cidade>São Paulo</cidade>
-	<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-	<codigoBarra48/>
 	<dataVencimento>2024-12-31T23:59:59</dataVencimento>
 	<documentoImpressao/>
 	<endereco>Rua Exemplo, 100</endereco>
-	<erro>
-		<estaOk>true</estaOk>
-		<mensagens/>
-	</erro>
-	<gerarPDF>false</gerarPDF>
-	<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
-	<observacao>Pagamento referente à taxa X</observacao>
 	<pixCopiaCola/>
 	<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
 	<receita>
@@ -22,6 +18,11 @@
 		<escopoUso>1</escopoUso>
 		<nome>Receita ICMS</nome>
 	</receita>
+	<erro>
+		<mensagens/>
+		<estaOk>true</estaOk>
+	</erro>
+	<observacao>Pagamento referente à taxa X</observacao>
 	<referencia>20241231</referencia>
 	<telefone>11987654321</telefone>
 	<uf>SP</uf>

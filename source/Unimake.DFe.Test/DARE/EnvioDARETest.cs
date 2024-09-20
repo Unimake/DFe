@@ -14,7 +14,7 @@ namespace Unimake.DFe.Test.DARE
         [Trait("DFe", "ESocial")]
         [InlineData(TipoAmbiente.Producao)]
         [InlineData(TipoAmbiente.Homologacao)]
-        public void DAREEnvioUnitario(TipoAmbiente tipoAmbiente)
+        public void DAREEnvio(TipoAmbiente tipoAmbiente)
         {
             var configuracao = new Configuracao
             {
