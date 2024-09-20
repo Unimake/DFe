@@ -505,25 +505,25 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrBaseIR() => VlrBaseIR > 0;
+        public bool ShouldSerializeVlrBaseIRField() => VlrBaseIR > 0;
 
-        public bool ShouldSerializeVlrIR() => VlrIR > 0;
+        public bool ShouldSerializeVlrIRField() => VlrIR > 0;
 
-        public bool ShouldSerializeVlrBaseAgreg() => VlrBaseAgreg > 0;
+        public bool ShouldSerializeVlrBaseAgregField() => VlrBaseAgreg > 0;
 
-        public bool ShouldSerializeVlrAgreg() => VlrAgreg > 0;
+        public bool ShouldSerializeVlrAgregField() => VlrAgreg > 0;
 
-        public bool ShouldSerializeVlrBaseCSLL() => VlrBaseCSLL > 0;
+        public bool ShouldSerializeVlrBaseCSLLField() => VlrBaseCSLL > 0;
 
-        public bool ShouldSerializeVlrCSLL() => VlrCSLL > 0;
+        public bool ShouldSerializeVlrCSLLField() => VlrCSLL > 0;
 
-        public bool ShouldSerializeVlrBaseCofins() => VlrBaseCofins > 0;
+        public bool ShouldSerializeVlrBaseCofinsField() => VlrBaseCofins > 0;
 
-        public bool ShouldSerializeVlrCofins() => VlrCofins > 0;
+        public bool ShouldSerializeVlrCofinsField() => VlrCofins > 0;
 
-        public bool ShouldSerializeVlrBasePP() => VlrBasePP > 0;
+        public bool ShouldSerializeVlrBasePPField() => VlrBasePP > 0;
 
-        public bool ShouldSerializeVlrPP() => VlrPP > 0;
+        public bool ShouldSerializeVlrPPField() => VlrPP > 0;
 
         #endregion
     }
