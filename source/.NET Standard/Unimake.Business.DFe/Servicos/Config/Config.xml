@@ -1493,4 +1493,10 @@
 		<ArqConfig>EstrelaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3516200">
+		<Nome> Franca - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>FrancaSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

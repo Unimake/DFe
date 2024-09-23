@@ -317,6 +317,7 @@
 		<None Remove="Servicos\Config\NFSe\FISCO.xml" />
 		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
+		<None Remove="Servicos\Config\NFSe\FrancaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GaranhunsPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GarcaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GaribaldiRS.xml" />
@@ -986,6 +987,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstrelaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CodoMA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\FrancaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
