@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/envioLoteEventosAssincrono/v1_00_00">
+	<envioLoteEventos>
+		<ideContribuinte>
+			<tpInsc>1</tpInsc>
+			<nrInsc>11111111111111</nrInsc>
+		</ideContribuinte>
+		<eventos>
+			<evento Id="ID2222222222222222222222222222222222">
+				<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evt4020PagtoBeneficiarioPJ/v2_01_02">
+					<evtRetPJ id="ID1111111111111111111111111111111111">
+						<ideEvento>
+							<indRetif>1</indRetif>
+							<perApur>2024-04</perApur>
+							<tpAmb>2</tpAmb>
+							<procEmi>1</procEmi>
+							<verProc>2.47</verProc>
+						</ideEvento>
+						<ideContri>
+							<tpInsc>1</tpInsc>
+							<nrInsc>11111111</nrInsc>
+						</ideContri>
+						<ideEstab>
+							<tpInscEstab>1</tpInscEstab>
+							<nrInscEstab>11111111111111</nrInscEstab>
+							<ideBenef>
+								<cnpjBenef>33333333333333</cnpjBenef>
+								<idePgto>
+									<natRend>15052</natRend>
+									<infoPgto>
+										<dtFG>2024-04-05</dtFG>
+										<vlrBruto>3000,00</vlrBruto>
+										<indJud>N</indJud>
+										<retencoes>
+											<vlrBaseIR>3000,00</vlrBaseIR>
+											<vlrIR>31,80</vlrIR>
+										</retencoes>
+									</infoPgto>
+								</idePgto>
+							</ideBenef>
+						</ideEstab>
+					</evtRetPJ>
+				</Reinf>
+			</evento>
+		</eventos>
+	</envioLoteEventos>
+</Reinf>

@@ -684,6 +684,8 @@ namespace Unimake.DFe.Test.EFDReinf
         [Theory]
         [Trait("DFe", "EFDReinf")]
         [InlineData(@"..\..\..\EFDReinf\Resources\loteEventosAssincrono-Reinf-loteevt.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\envioLoteEventos_evtRetPJ_1-Reinf-evt.xml")]
+        [InlineData(@"..\..\..\EFDReinf\Resources\envioLoteEventos_evtRetPJ_2-Reinf-evt.xml")]
         public void SerializacaoDesserializacaoReinfAssincrono(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

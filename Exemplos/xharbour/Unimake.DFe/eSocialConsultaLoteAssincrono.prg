@@ -18,7 +18,7 @@ Function eSocialConsultaLoteAssincrono()
    oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 12 //12=eSocial
    oConfiguracao:TipoEmissao = 1 //1=Normal
-   oConfiguracao:CertificadoArquivo = "C:\Users\Wandrey\Downloads\Telegram Desktop\CERT_DIG_AGAPE_MEDICINA_DO_TRABALHO_LTDA_15527739000123_1702988563264876200.pfx"
+   oConfiguracao:CertificadoArquivo = "d:\projetos\unimake_pv.pfx"
    oConfiguracao:CertificadoSenha = "1234"
    oConfiguracao:Servico = 70 //Servico.ESocialConsultaEvts
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
@@ -31,7 +31,7 @@ Function eSocialConsultaLoteAssincrono()
    oConsultarLoteEventos:Versao = "1.0.0"
    
    oConsultaLoteEventos = CreateObject("Unimake.Business.DFe.Xml.ESocial.ConsultaLoteEventos")
-   oConsultaLoteEventos:ProtocoloEnvio = "1.1.202408.0000000010502861381"
+   oConsultaLoteEventos:ProtocoloEnvio = "1.2.202409.0000000000163727328"
   
    oConsultarLoteEventos:ConsultaLoteEventos = oConsultaLoteEventos   
   
@@ -100,27 +100,47 @@ Function eSocialConsultaLoteAssincrono()
 		 
       Else //Aconteceu algum erro no Retorno
 		 hb_MemoWrit("d:\testenfe\" + oConsultaLoteEventos:ProtocoloEnvio + "-eSocial-erro-ret.xml", oConsultaLoteAssincrono:RetornoWSString)
-
          DO CASE
-			CASE oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta == 101
+			CASE oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta == 101
 				 ? "Aguarde alguns minutos e tente novamente!"
+				 ?
+				 ?
+  		         Wait
 				 
-			CASE oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta == 301
+			CASE oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta == 301
 				 ? "Erro no servidor do eSocial. Aguarde alguns minutos e envie novamente!"
+				 ?
+				 ?
+  		         Wait
 				 
-			CASE oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta >= 401 .AND. oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta <= 411
-				 ? "Codigo: " + hb_Ntos(oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta)
-				 ? "Descricao: " + oEvento:RetornoEvento:eSocial:RetornoEvento:processamento:descResposta
+			CASE oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta >= 401 .AND. oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta <= 411
+				 ? "Codigo: " + hb_Ntos(oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta)
+				 ? "Descricao: " + oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:descResposta
+				 ?
+				 ?
+  		         Wait
 				 
-			CASE oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta >= 501 .AND. oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta <= 505
-				 ? "Codigo: " + hb_Ntos(oEvento:RetornoEvento:eSocial:RetornoEvento:Processamento:CdResposta)
-				 ? "Descricao: " + oEvento:RetornoEvento:eSocial:RetornoEvento:processamento:descResposta
+			CASE oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta >= 501 .AND. oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta <= 505
+   			     For x = 1 To oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:Ocorrencias:GetOcorrenciaCount()
+			         oOcorrencia = oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:Ocorrencias:GetOcorrencia(x-1)
+				   
+  				     ? "<tipo>", oOcorrencia:Tipo
+				     ? "<codigo>", oOcorrencia:codigo
+				     ? "<descricao>", oOcorrencia:descricao
+				     ? "<localizacao>", oOcorrencia:localizacao
+				     ?
+				     ?
+				     ?
+    			     Wait
+			     Next x
 				 
 			OTHERWISE
-				 ? "Erro nao catalogado!!"				 
+				 ? "Erro nao catalogado!!"
+				 ?
+				 ?
+  		         Wait
          ENDCASE
 	  
-		 Wait
 		 Cls
 	  Endif	  
    
