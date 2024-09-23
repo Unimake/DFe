@@ -1487,4 +1487,10 @@
 		<ArqConfig>CodoMA.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4307807">
+		<Nome>Estrela - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>EstrelaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
