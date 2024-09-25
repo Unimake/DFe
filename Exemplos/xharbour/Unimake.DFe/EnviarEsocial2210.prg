@@ -51,22 +51,22 @@ Function EnviarEsocial2210()
       oEvtCAT := CreateObject("Unimake.Business.DFe.Xml.ESocial.EvtCAT")
 	  oEvtCAT:Id = "ID1230985630000002024091310242800001"
 	  
-      oIdeEventoESocial2205 := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial2205")
-      oIdeEventoESocial2205:IndRetif := 1 //IndicativoRetificacao.ArquivoOriginal
-      oIdeEventoESocial2205:TpAmb := 2 //TipoAmbiente.Homologacao
-      oIdeEventoESocial2205:ProcEmi := 1 //ProcEmiESocial.AppDoEmpregador
-      oIdeEventoESocial2205:VerProc := "SGOWIN_Versao24091"
-	  oEvtCAT:IdeEvento := oIdeEventoESocial2205
+      oIdeEvento2210 := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento2210")
+      oIdeEvento2210:IndRetif := 1 //IndicativoRetificacao.ArquivoOriginal
+      oIdeEvento2210:TpAmb := 2 //TipoAmbiente.Homologacao
+      oIdeEvento2210:ProcEmi := 1 //ProcEmiESocial.AppDoEmpregador
+      oIdeEvento2210:VerProc := "SGOWIN_Versao24091"
+	  oEvtCAT:IdeEvento := oIdeEvento2210
 
       oIdeEmpregador := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")
 	  oIdeEmpregador:tpInsc := 1 //TiposInscricao.CNPJ
 	  oIdeEmpregador:nrInsc := "23098563"
 	  oEvtCAT:IdeEmpregador := oIdeEmpregador
 	  
-	  oIdeVinculoESocial2210 := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculoESocial2210")
-      oIdeVinculoESocial2210:cpfTrab := "37501812845"
-	  oIdeVinculoESocial2210:matricula := "0516400100"
-	  oEvtCAT:IdeVinculo := oIdeVinculoESocial2210
+	  oIdeVinculo2210 := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2210")
+      oIdeVinculo2210:cpfTrab := "37501812845"
+	  oIdeVinculo2210:matricula := "0516400100"
+	  oEvtCAT:IdeVinculo := oIdeVinculo2210
 	  
 	  oCat := CreateObject("Unimake.Business.DFe.Xml.ESocial.Cat")
 	  oCat:dtAcidField := "2024-09-03"

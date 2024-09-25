@@ -131,12 +131,12 @@ Function EnviarEsocial2221Desserializando()
       ?
       ?
       Wait
-      hb_MemoWrit("D:\enzza\unimake_esocial\toxic-xmlloteeventosassinado.xml", stringXMLLoteAssinado)
+      hb_MemoWrit("D:\testenfe\esocial\toxic-xmlloteeventosassinado.xml", stringXMLLoteAssinado)
 	
 	  ? oEnviarLoteEventosESocial:RetornoWSString
 	  ?
 	  ?
-      hb_MemoWrit("D:\enzza\unimake_esocial\toxic-xmlloteeventos-ret.xml", oEnviarLoteEventosESocial:RetornoWSString)
+      hb_MemoWrit("D:\testenfe\esocial\toxic-xmlloteeventos-ret.xml", oEnviarLoteEventosESocial:RetornoWSString)
 	  Wait
 	  Cls
    Catch oErro
