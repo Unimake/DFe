@@ -37,7 +37,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string ID { get; set; }
 
         [XmlElement("ideEvento")]
-        public IdeEventoESocial1210 IdeEvento { get; set; }
+        public IdeEvento1270 IdeEvento { get; set; }
 
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
@@ -45,6 +45,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("remunAvNP")]
         public RemunAvNP RemunAvNP { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1270")]
+    [ComVisible(true)]
+#endif
+    public class IdeEvento1270 : IdeEvento1210 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

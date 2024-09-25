@@ -53,7 +53,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do evento.
         /// </summary>
         [XmlElement("ideEvento")]
-        public IdeEventoESocial2300 IdeEvento { get; set; }
+        public IdeEvento2300 IdeEvento { get; set; }
 
         /// <summary>
         /// Informações de identificação do empregador.
@@ -75,17 +75,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region IdeEventoESocial2300
+    #region IdeEvento2300
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial2300")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2300")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
-    public class IdeEventoESocial2300 : IdeEventoESocial2205 { }
-    #endregion IdeEventoESocial2300
+    public class IdeEvento2300 : IdeEvento2205 { }
+    #endregion IdeEvento2300
 
     #region InfoTSVInicio
 #if INTEROP
