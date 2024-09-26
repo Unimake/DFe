@@ -64,12 +64,12 @@ Function EnviarEsocial2221()
       oEvtToxic:IdeEmpregador:= oIdeEmpregador
       
       oIdeVinculo:= CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
-      oIdeVinculo:cpfTrab  := "37501812845"
-      oIdeVinculo:matricula:= "0516400100"
+      oIdeVinculo:cpfTrab  := "11111111111"
+      oIdeVinculo:matricula:= "1111111111"
       oEvtToxic:IdeVinculo:= oIdeVinculo
  
       oToxicologico:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Toxicologico")
-      oToxicologico:CnpjLab     := "51509164000180"
+      oToxicologico:CnpjLab     := "11111111111111"
       oToxicologico:CodSeqExame := "BB222222222"
       oToxicologico:DtExameField:= "2024-09-03" 
 *     oToxicologico:DtExame     := "2024-09-03"

@@ -88,7 +88,7 @@ Function EnviarEsocial2240Desserializando()
                                          [</epcEpi>] + ;
                                        [</agNoc>] + ;
                                        [<respReg>] + ;
-                                         [<cpfResp>08417912345</cpfResp>] + ;
+                                         [<cpfResp>11111111111</cpfResp>] + ;
                                          [<ideOC>9</ideOC>] + ;
                                          [<dscOC>MTE</dscOC>] + ;
                                          [<nrOC>0131369</nrOC>] + ;
@@ -130,7 +130,7 @@ Function EnviarEsocial2240Desserializando()
                                          [<codAgNoc>09.01.001</codAgNoc>] + ;
                                        [</agNoc>] + ;
                                        [<respReg>] + ;
-                                         [<cpfResp>08417912345</cpfResp>] + ;
+                                         [<cpfResp>11111111111</cpfResp>] + ;
                                          [<ideOC>9</ideOC>] + ;
                                          [<dscOC>MTE</dscOC>] + ;
                                          [<nrOC>0131369</nrOC>] + ;

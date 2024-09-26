@@ -1,12 +1,12 @@
 * ---------------------------------------------------------------------------------
-* Enviar lote de eventos do eSocial - Evento 1010
+* Enviar lote de eventos do eSocial - Evento 2220
 * ---------------------------------------------------------------------------------
 #IfNdef __XHARBOUR__
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
    #xcommand CATCH [<!oErr!>] => RECOVER [USING <oErr>] <-oErr->
 #endif
  
-Function EnviarEsocial1010()
+Function EnviarEsocial2220()
    Local oConfiguracao, oExceptionInterop, oErro
    Local nomeArqLoteEvento, stringXMLLoteAssinado
    Local oESocialEnvioLoteEventos
@@ -44,51 +44,61 @@ Function EnviarEsocial1010()
       oEventosESocial := CreateObject("Unimake.Business.DFe.Xml.ESocial.EventosESocial")
       
       oEventoESocial := CreateObject("Unimake.Business.DFe.Xml.ESocial.EventoESocial")
-      oEventoESocial:Id := "ID1219984720000002024091914425200001"
+      oEventoESocial:Id := "ID1230985630000002024090421022000002"
       
-      oESocial1010 := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocial1010")
+      oESocial2220 := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocial2220")
 	 
-      oEvtTabRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.EvtTabRubrica")
-      oEvtTabRubrica:Id := "ID1219984720000002024091914425200001"
+      oEvtMonit := CreateObject("Unimake.Business.DFe.Xml.ESocial.EvtMonit")
+      oEvtMonit:Id := "ID1230985630000002024090421022000002"
 	  
-	  oIdeEvento := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento")
-	  oIdeEvento:TpAmb   := 2 //TipoAmbiente.Homologacao
-	  oIdeEvento:ProcEmi := 1 //ProcEmiESocial.AppDoEmpregador 
-	  oIdeEvento:VerProc := "1.0"
-	  oEvtTabRubrica:IdeEvento := oIdeEvento
+	  oIdeEvento2220 := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento2220")
+	  oIdeEvento2220:IndRetif := 1 //IndicativoRetificacao.ArquivoOriginal
+	  oIdeEvento2220:TpAmb   := 2 //TipoAmbiente.Homologacao
+	  oIdeEvento2220:ProcEmi := 1 //ProcEmiESocial.AppDoEmpregador 
+	  oIdeEvento2220:VerProc := "SGOWIN_Versao24091"
+	  oEvtMonit:IdeEvento := oIdeEvento2220
 	  
 	  oIdeEmpregador := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")
       oIdeEmpregador:tpInsc := 1 //TiposInscricao.CNPJ
-      oIdeEmpregador:nrInsc := "21998472"
-      oEvtTabRubrica:IdeEmpregador := oIdeEmpregador
-
-	  oInfoRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.InfoRubrica")
+      oIdeEmpregador:nrInsc := "47592225"
+      oEvtMonit:IdeEmpregador := oIdeEmpregador
 	  
-	  oInclusao := CreateObject("Unimake.Business.DFe.Xml.ESocial.Inclusao")
+	  oIdeVinculo := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
+	  oIdeVinculo:CpfTrab := "11111111111"
+	  oIdeVinculo:Matricula := "73"
+	  oEvtMonit:IdeVinculo := oIdeVinculo
 	  
-	  oIdeRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeRubrica")
-	  oIdeRubrica:CodRubr := "554"
-	  oIdeRubrica:ideTabRubr := "UNICA"
-	  oIdeRubrica:iniValidField := "2024-05"
-	  oInclusao:IdeRubrica := oIdeRubrica
+	  oExMedOcup := CreateObject("Unimake.Business.DFe.Xml.ESocial.ExMedOcup")
+	  oExMedOcup:TpExameOcup := 9 //TpExameOcup.ExameDemissional
 	  
-	  oDadosRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.DadosRubrica")
-	  oDadosRubrica:dscRubr := "MENSALIDADE SINDICAL"
-	  oDadosRubrica:natRubr := 9231
-	  oDadosRubrica:tpRubr := 2 //TipoRubrica.Desconto
-	  oDadosRubrica:codIncCP := 21 //CodigoIncidenciaTributaria.MaternidadePagoEmpregador
-	  oDadosRubrica:codIncIRRF := 11
-	  oDadosRubrica:codIncFGTS := 00 //CodIncFGTS.NaoBaseCalculoFGTS
-	  oDadosRubrica:observacao := "Inclusao do codigo incidencia"
-	  oInclusao:DadosRubrica := oDadosRubrica
+	  oAso := CreateObject("Unimake.Business.DFe.Xml.ESocial.Aso")
+	  oAso:DtAsoField := "2024-08-30"
+	  oAso:ResAso := 1 //ResAso.Apto
 	  
-	  oInfoRubrica:Inclusao := oInclusao
+	  oExame := CreateObject("Unimake.Business.DFe.Xml.ESocial.Exame")
+	  oExame:DtExmField := "2024-08-30"
+	  oExame:procRealizado := "0295"
+	  oExame:indResult := 1 //IndResult.Normal
+	  oAso:AddExame(oExame)
 	  
-	  oEvtTabRubrica:InfoRubrica := oInfoRubrica
-
-      oESocial1010:EvtTabRubrica := oEvtTabRubrica
+	  oMedico := CreateObject("Unimake.Business.DFe.Xml.ESocial.Medico")
+	  oMedico:nmMed := "Fulana de Tal"
+	  oMedico:nrCRM := "654321"
+	  oMedico:ufCRM := 35 //UFBrasil.SP
+	  oAso:Medico := oMedico
+	  oExMedOcup:Aso := oAso
+	  
+	  oRespMonit := CreateObject("Unimake.Business.DFe.Xml.ESocial.RespMonit") 
+	  oRespMonit:nmResp := "Dr. Medico da Silva"
+	  oRespMonit:nrCRM := "123456"
+	  oRespMonit:ufCRM := 35 //UFBrasil.SP
+	  oExMedOcup:RespMonit := oRespMonit
+	  
+	  oEvtMonit:ExMedOcup := oExMedOcup
+	  
+      oESocial2220:EvtMonit := oEvtMonit
       
-      oEventoESocial:ESocial1010 := oESocial1010
+      oEventoESocial:ESocial2220 := oESocial2220
       oEventosESocial:AddEvento(oEventoESocial)
       oEnvioLoteEventosESocial:Eventos:= oEventosESocial
       oESocialEnvioLoteEventos:EnvioLoteEventos:= oEnvioLoteEventosESocial
@@ -105,12 +115,12 @@ Function EnviarEsocial1010()
       ?
       ?
       Wait
-      hb_MemoWrit("D:\testenfe\esocial\tox-xmlloteeventos1010assinado.xml", stringXMLLoteAssinado)
+      hb_MemoWrit("D:\testenfe\esocial\xmlloteeventos2220assinado.xml", stringXMLLoteAssinado)
 	
       ? oEnviarLoteEventosESocial:RetornoWSString
       ?
       ?
-      hb_MemoWrit("D:\testenfe\esocial\xmlloteeventos-1010-ret.xml", oEnviarLoteEventosESocial:RetornoWSString)
+      hb_MemoWrit("D:\testenfe\esocial\xmlloteeventos-2220-ret.xml", oEnviarLoteEventosESocial:RetornoWSString)
       Wait
       Cls
 

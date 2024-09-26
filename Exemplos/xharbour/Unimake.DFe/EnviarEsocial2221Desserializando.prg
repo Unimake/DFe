@@ -51,7 +51,7 @@ Function EnviarEsocial2221Desserializando()
                             [<nrInsc>47592225</nrInsc>] + ;
                           [</ideEmpregador>] + ;
                           [<ideVinculo>] + ;
-                            [<cpfTrab>32495144896</cpfTrab>] + ; 
+                            [<cpfTrab>11111111111</cpfTrab>] + ; 
                             [<matricula>52</matricula>] + ;
                           [</ideVinculo>] + ;
                           [<toxicologico>] + ;
@@ -79,12 +79,12 @@ Function EnviarEsocial2221Desserializando()
                             [<nrInsc>47592225</nrInsc>] + ; 
                           [</ideEmpregador>] + ;
                           [<ideVinculo>] + ; 
-                            [<cpfTrab>22321798858</cpfTrab>] + ; 
+                            [<cpfTrab>11111111111</cpfTrab>] + ; 
                             [<matricula>66</matricula>] + ;
                           [</ideVinculo>] + ;
                           [<toxicologico>] + ;
                             [<dtExame>2024-09-01</dtExame>] + ;
-                            [<cnpjLab>49881147000127</cnpjLab>] + ; 
+                            [<cnpjLab>11111111111111</cnpjLab>] + ; 
                             [<codSeqExame>AA111111111</codSeqExame>] + ;
                             [<nmMed>Sicrano de Tal</nmMed>] + ;
                             [<nrCRM>0075866</nrCRM>] + ; 
