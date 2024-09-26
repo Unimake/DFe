@@ -5663,7 +5663,7 @@ namespace TreinamentoDLL
                                         },
                                         InfoContri = new XmlEFDReinf.InfoContri
                                         {
-                                            Inclusao = new XmlEFDReinf.InclusaoReinf1000
+                                            Inclusao = new XmlEFDReinf.Inclusao1000
                                             {
                                                 IdePeriodo = new XmlEFDReinf.IdePeriodo
                                                 {
