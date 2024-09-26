@@ -74,6 +74,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("dmDev")]
         public List<DmDev> DmDev { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -112,8 +113,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region IdeEvento1200
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1200")]
@@ -131,14 +130,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndicativoRetificacao IndRetif { get; set; }
 
         /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
         /// Indicativo de período de apuração.
         /// </summary>
         [XmlElement("indApuracao")]
@@ -146,7 +137,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerApur {get; set; }
+        public DateTime PerApur { get; set; }
 #else
         /// <summary>
         /// Informar o mês/ano (formato AAAA-MM) de referência
@@ -179,12 +170,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
+        /// Preencher com o número do recibo do arquivo a ser retificado.
+        /// Validação: O preenchimento é obrigatório se indRetif = [2].
+        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
+        /// </summary>
+        [XmlElement("nrRecibo")]
+        public string NrRecibo { get; set; }
+
+        /// <summary>
         /// Indicativo do tipo de guia.
         /// Valores válidos:
         /// 1 - Documento de Arrecadação do eSocial - DAE
         /// </summary>
         [XmlElement("indGuia")]
+#if INTEROP
+        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
+#else
         public IndGuia? IndGuia { get; set; }
+#endif
 
         /// <summary>
         /// Identificação do ambiente
@@ -217,9 +220,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
-    #endregion IdeEvento1200
-
-    #region IdeTrabalhador
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -348,8 +348,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region InfoMV
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMV")]
@@ -414,8 +412,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetRemunOutrEmprCount => (RemunOutrEmpr != null ? RemunOutrEmpr.Count : 0);
 #endif
     }
-
-    #region RemunOutrEmpr
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -492,12 +488,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
-    #endregion RemunOutrEmpr
-
-    #endregion InfoMV
-
-    #region InfoComplem
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem")]
@@ -525,7 +515,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime DtNascto {get; set; }
+        public DateTime DtNascto { get; set; }
 #else
         /// <summary>
         /// Preencher com a data de nascimento
@@ -551,20 +541,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Grupo de informações da sucessão de vínculo trabalhista.
         /// </summary>
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial1200 SucessaoVinc { get; set; }
+        public SucessaoVinc1200 SucessaoVinc { get; set; }
 
     }
 
-    #region SucessaoVincESocial1200 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Grupo de informações da sucessão de vínculo trabalhista.
     /// </summary>
-    public class SucessaoVincESocial1200
+    public class SucessaoVinc1200
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de
@@ -626,15 +615,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Observacao { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
         public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
+
         #endregion ShouldSerialize
     }
-    #endregion SucessaoVincESocial1200 
-
-    #endregion InfoComplem
-
-    #region ProcJudTrab
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -675,10 +661,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CodSusp { get; set; }
     }
 
-    #endregion ProcJudTrab
-
-    #region InfoInterm
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm")]
@@ -700,11 +682,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dia")]
         public int Dia { get; set; }
     }
-    #endregion  InfoInterm
-
-    #endregion IdeTrabalhador
-
-    #region DmDev
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -745,13 +722,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// S - Sim
         /// </summary>
         [XmlElement("indRRA")]
+#if INTEROP
+        public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
+#else
         public SimNaoLetra? IndRRA { get; set; }
+#endif
 
         /// <summary>
         /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
         /// </summary>
         [XmlElement("infoRRA")]
-        public InfoRRAESocial1200 InfoRRA { get; set; }
+        public InfoRRA1200 InfoRRA { get; set; }
 
         /// <summary>
         /// Informações relativas ao período de apuração.
@@ -775,7 +756,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// anteriores a perApur.
         /// </summary>
         [XmlElement("infoPerAnt")]
-        public InfoPerAntESocial1200 InfoPerAnt { get; set; }
+        public InfoPerAnt1200 InfoPerAnt { get; set; }
 
         /// <summary>
         /// Grupo preenchido exclusivamente quando o evento de remuneração se referir a 
@@ -797,19 +778,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region InfoRRAESocial1200
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRAESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
     /// </summary>
-    public class InfoRRAESocial1200 : InfoRRA { }
-    #endregion InfoRRAESocial1200
-
-    #region InfoPerApur
+    public class InfoRRA1200 : InfoRRA { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -833,8 +810,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("ideEstabLot")]
         public IdeEstabLot IdeEstabLot { get; set; }
     }
-
-    #region IdeEstabLot
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -936,21 +911,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         #region ShouldSerialize
+
         public bool ShouldSerializeQtdDiasAv() => !QtdDiasAv.IsNullOrEmpty();
 
         #endregion ShouldSerialize
     }
 
-    #region RemunPerApur
-
+    /// <summary>
+    /// Remuneração do trabalhador 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Remuneração do trabalhador 
-    /// </summary>
     public class RemunPerApur
     {
         /// <summary>
@@ -978,7 +952,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Rubricas que compõem a remuneração do trabalhador
         /// </summary>
         [XmlElement("itensRemun")]
-        public List<ItensRemunESocial1200> ItensRemun { get; set; }
+        public List<ItensRemun1200> ItensRemun { get; set; }
 
 #if INTEROP
 
@@ -986,22 +960,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddItensRemunESocial1200(ItensRemunESocial1200 item)
+        public void AddItensRemun1200(ItensRemun1200 item)
         {
             if (ItensRemun == null)
             {
-                ItensRemun = new List<ItensRemunESocial1200>();
+                ItensRemun = new List<ItensRemun1200>();
             }
 
             ItensRemun.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista ItensRemunESocial1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista ItensRemun1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da ItensRemunESocial1200</returns>
-        public ItensRemunESocial1200 GetItensRemunESocial1200(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da ItensRemun1200</returns>
+        public ItensRemun1200 GetItensRemun1200(int index)
         {
             if ((ItensRemun?.Count ?? 0) == 0)
             {
@@ -1012,9 +986,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista ItensRemunESocial1200
+        /// Retorna a quantidade de elementos existentes na lista ItensRemun1200
         /// </summary>
-        public int GetItensRemunESocial1200Count => (ItensRemun != null ? ItensRemun.Count : 0);
+        public int GetItensRemun1200Count => (ItensRemun != null ? ItensRemun.Count : 0);
 #endif
 
         /// <summary>
@@ -1028,27 +1002,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeIndSimples() => IndSimples != null && IndSimples != (IndSimples)(-1);
 
-#endregion ShouldSerialize
+        #endregion ShouldSerialize
     }
-
-    #region ItensRemun
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Rubricas que compõem a remuneração do trabalhador
     /// </summary>
-    public class ItensRemunESocial1200 : ItensRemun
+    public class ItensRemun1200 : ItensRemun
     {
 
     }
-
-    #endregion ItensRemun
-
-    #region InfoAgNocivo
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1073,18 +1041,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion InfoAgNocivo
 
-#endregion RemunPerApur
-
-#endregion IdeEstabLot
-
-#endregion InfoPerApur
-
-    #region InfoPerAntESocial1200
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerAntESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerAnt1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -1102,7 +1062,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// período de apuração definido em perApur ou a períodos
     /// anteriores a perApur.
     /// </summary>
-    public class InfoPerAntESocial1200
+    public class InfoPerAnt1200
     {
         /// <summary>
         /// Identificação do instrumento ou situação ensejadora da
@@ -1148,7 +1108,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region IdeADC
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeADC")]
@@ -1248,63 +1207,64 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Identificação do período ao qual se referem as diferenças de remuneração.
         /// </summary>
         [XmlElement("idePeriodo")]
-        public List<IdePeriodoESocial1200> IdePeriodoESocial1200 { get; set; }
+        public List<IdePeriodo1200> IdePeriodo1200 { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdePeriodoESocial1200(IdePeriodoESocial1200 item)
+        public void AddIdePeriodo1200(IdePeriodo1200 item)
         {
-            if (IdePeriodoESocial1200 == null)
+            if (IdePeriodo1200 == null)
             {
-                IdePeriodoESocial1200 = new List<IdePeriodoESocial1200>();
+                IdePeriodo1200 = new List<IdePeriodo1200>();
             }
 
-            IdePeriodoESocial1200.Add(item);
+            IdePeriodo1200.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista IdePeriodoESocial1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista IdePeriodo1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da IdePeriodoESocial1200</returns>
-        public IdePeriodoESocial1200 GetIdePeriodoESocial1200(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da IdePeriodo1200</returns>
+        public IdePeriodo1200 GetIdePeriodo1200(int index)
         {
-            if ((IdePeriodoESocial1200?.Count ?? 0) == 0)
+            if ((IdePeriodo1200?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return IdePeriodoESocial1200[index];
+            return IdePeriodo1200[index];
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista IdePeriodoESocial1200
+        /// Retorna a quantidade de elementos existentes na lista IdePeriodo1200
         /// </summary>
-        public int GetIdePeriodoESocial1200Count => (IdePeriodoESocial1200 != null ? IdePeriodoESocial1200.Count : 0);
+        public int GetIdePeriodo1200Count => (IdePeriodo1200 != null ? IdePeriodo1200.Count : 0);
 #endif
 
         #region ShouldSerialize
+
         public bool ShouldSerializeDtAcConvField() => DtAcConv > DateTimeOffset.MinValue;
+
         #endregion ShouldSerialize
     }
 
-    #region  IdePeriodoESocial1200
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodoESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodo1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     ///  Identificação do período ao qual se referem as diferenças de remuneração.
     /// </summary>
-    public class IdePeriodoESocial1200
+    public class IdePeriodo1200
     {
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerRef {get; set; }
+        public DateTime PerRef { get; set; }
 #else
         /// <summary>
         /// Informar o período ao qual se refere o complemento de remuneração, no formato AAAA-MM.
@@ -1377,8 +1337,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region IdeEstabLotESocial1200
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotAnt")]
@@ -1417,29 +1375,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Informações relativas à remuneração do trabalhador em períodos anteriores.
         /// </summary>
-        public List<RemunPerAntESocial1200> RemunPerAnt { get; set; }
+        public List<RemunPerAnt1200> RemunPerAnt { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRemunPerAntESocial1200(RemunPerAntESocial1200 item)
+        public void AddRemunPerAnt1200(RemunPerAnt1200 item)
         {
             if (RemunPerAnt == null)
             {
-                RemunPerAnt = new List<RemunPerAntESocial1200>();
+                RemunPerAnt = new List<RemunPerAnt1200>();
             }
 
             RemunPerAnt.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista RemunPerAntESocial1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista RemunPerAnt1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da RemunPerAntESocial1200</returns>
-        public RemunPerAntESocial1200 GetRemunPerAntESocial1200(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da RemunPerAnt1200</returns>
+        public RemunPerAnt1200 GetRemunPerAnt1200(int index)
         {
             if ((RemunPerAnt?.Count ?? 0) == 0)
             {
@@ -1450,22 +1408,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista RemunPerAntESocial1200
+        /// Retorna a quantidade de elementos existentes na lista RemunPerAnt1200
         /// </summary>
-        public int GetRemunPerAntESocial1200Count => (RemunPerAnt != null ? RemunPerAnt.Count : 0);
+        public int GetRemunPerAnt1200Count => (RemunPerAnt != null ? RemunPerAnt.Count : 0);
 #endif
     }
 
-    #region  RemunPerAntESocial1200
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerAntESocial1200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerAnt1200")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações relativas à remuneração do trabalhador em períodos anteriores.
     /// </summary>
-    public class RemunPerAntESocial1200
+    public class RemunPerAnt1200
     {
         [XmlElement("matricula")]
         public string Matricula { get; set; }
@@ -1495,7 +1452,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Rubricas que compõem a remuneração do trabalhador.
         /// </summary>
         [XmlElement("itensRemun")]
-        public List<ItensRemunESocial1200> ItensRemun { get; set; }
+        public List<ItensRemun1200> ItensRemun { get; set; }
 
 #if INTEROP
 
@@ -1503,11 +1460,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddItensRemun(ItensRemunESocial1200 item)
+        public void AddItensRemun(ItensRemun1200 item)
         {
             if (ItensRemun == null)
             {
-                ItensRemun = new List<ItensRemunESocial1200>();
+                ItensRemun = new List<ItensRemun1200>();
             }
 
             ItensRemun.Add(item);
@@ -1543,18 +1500,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAgNocivo InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializeMatricula() => !Matricula.IsNullOrEmpty();
         public bool ShouldSerializeIndSimples() => IndSimples != null && IndSimples != (IndSimples)(-1);
+
         #endregion ShouldSerialize
     }
-
-    #endregion RemunPerAntESocial1200
-    #endregion IdeEstabLotESocial1200
-    #endregion IdePeriodoESocial1200
-    #endregion IdeADC
-    #endregion InfoPerAntESocial1200
-
-    #region InfoComplCont
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1597,7 +1548,4 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int QtdDiasTrab { get; set; }
 
     }
-    #endregion InfoComplCont
-
-#endregion DmDev
 }

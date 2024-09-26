@@ -119,14 +119,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region ItensRemun
 
+    /// <summary>
+    /// Rubricas que compõem a remuneração do trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Rubricas que compõem a remuneração do trabalhador
-    /// </summary>
     [Serializable()]
     public abstract class ItensRemun
     {

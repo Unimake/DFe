@@ -233,9 +233,9 @@ namespace Unimake.DFe.Test.ESocial
                                                             new RemunPerApur
                                                             {
                                                                 Matricula = "teste1",
-                                                                ItensRemun = new List<ItensRemunESocial1200>
+                                                                ItensRemun = new List<ItensRemun1200>
                                                                 {
-                                                                    new ItensRemunESocial1200
+                                                                    new ItensRemun1200
                                                                     {
                                                                         CodRubr = "123",
                                                                         IdeTabRubr = "teste1",
