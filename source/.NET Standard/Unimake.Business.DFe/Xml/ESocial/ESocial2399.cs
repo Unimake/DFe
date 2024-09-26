@@ -54,7 +54,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do evento.
         /// </summary>
         [XmlElement("ideEvento")]
-        public IdeEventoESocial2399 IdeEvento { get; set; }
+        public IdeEvento2399 IdeEvento { get; set; }
 
         /// <summary>
         /// Informações de identificação do empregador.
@@ -75,16 +75,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoTSVTermino InfoTSVTermino { get; set; }
     }
 
-    #region IdeEventoESocial2399
+    #region IdeEvento2399
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2399")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
-    public class IdeEventoESocial2399
+    public class IdeEvento2399
     {
         /// <summary>
         /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
@@ -139,7 +139,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion IdeEventoESocial2399
+    #endregion IdeEvento2399
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

@@ -34,13 +34,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string ID { get; set; }
 
         [XmlElement("ideEvento")]
-        public IdeEventoESocial2205 IdeEvento { get; set; }
+        public IdeEvento2210 IdeEvento { get; set; }
 
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculoESocial2210 IdeVinculo { get; set; }
+        public IdeVinculo2210 IdeVinculo { get; set; }
 
         [XmlElement("cat")]
         public Cat Cat { get; set; }
@@ -48,10 +48,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculoESocial2210")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2210")]
     [ComVisible(true)]
 #endif
-    public class IdeVinculoESocial2210
+    public class IdeEvento2210 : IdeEvento2205 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2210")]
+    [ComVisible(true)]
+#endif
+    public class IdeVinculo2210
     {
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }

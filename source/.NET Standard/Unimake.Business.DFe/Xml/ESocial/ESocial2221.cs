@@ -52,7 +52,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do evento.
         /// </summary>
         [XmlElement("ideEvento")]
-        public IdeEventoESocial2206 IdeEvento { get; set; }
+        public IdeEvento2221 IdeEvento { get; set; }
 
         /// <summary>
         /// Informações de identificação do empregador.
@@ -72,6 +72,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("toxicologico")]
         public Toxicologico Toxicologico { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2221")]
+    [ComVisible(true)]
+#endif
+    public class IdeEvento2221 : IdeEvento2205 { }
 
     #region Toxicologico
 

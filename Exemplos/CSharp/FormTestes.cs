@@ -8,34 +8,33 @@ using System.Xml.Linq;
 using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 using Unimake.Security.Platform;
 using Unimake.Unidanfe;
 using Unimake.Unidanfe.Configurations;
-using Unimake.Unidanfe.Exceptions;
 using DANFe = Unimake.Unidanfe;
 using DFe = Unimake.Business.DFe;
 using ServicoCCG = Unimake.Business.DFe.Servicos.CCG;
 using ServicoCTe = Unimake.Business.DFe.Servicos.CTe;
 using ServicoCTeOS = Unimake.Business.DFe.Servicos.CTeOS;
+using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
+using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using ServicoGNRe = Unimake.Business.DFe.Servicos.GNRE;
 using ServicoMDFe = Unimake.Business.DFe.Servicos.MDFe;
 using ServicoNFCe = Unimake.Business.DFe.Servicos.NFCe;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
-using ServicoEFDReinf = Unimake.Business.DFe.Servicos.EFDReinf;
-using ServicoESocial = Unimake.Business.DFe.Servicos.ESocial;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
+using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
+using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
 using XmlMDFe = Unimake.Business.DFe.Xml.MDFe;
 using XmlNFe = Unimake.Business.DFe.Xml.NFe;
-using XmlEFDReinf = Unimake.Business.DFe.Xml.EFDReinf;
-using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Business.DFe.Servicos.ESocial;
-using Unimake.Business.DFe.Xml.ESocial;
 
 namespace TreinamentoDLL
 {
@@ -5914,7 +5913,7 @@ namespace TreinamentoDLL
 
                     consultaLoteAssincrono.Executar();
 
-                    switch (consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta)
+                    switch (consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta)
                     {
                         case 101: // Lote Aguardando Processamento.
                             MessageBox.Show("Aguarde alguns minutos e tente novamente!");
@@ -5934,8 +5933,8 @@ namespace TreinamentoDLL
                         case 403: // Lote incorreto - Versão do SCHEMA não permitida
                         case 404: // Lote incorreto - Erro certificado
                         case 405: // Lote incorreto - Lote nulo ou vazio
-                            MessageBox.Show($"Código: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta}");
-                            MessageBox.Show($"Descrição: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.DescResposta}");
+                            MessageBox.Show($"Código: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta}");
+                            MessageBox.Show($"Descrição: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.DescResposta}");
                             break;
 
                         case 501: // Solicitação de Consulta Incorreta - Erro Preenchimento.
@@ -5943,8 +5942,8 @@ namespace TreinamentoDLL
                         case 503: // Solicitação de Consulta Incorreta - Versão do SCHEMA não permitida
                         case 504: // Solicitação de Consulta Incorreta - Erro certificado
                         case 505: // Solicitação de Consulta Incorreta - Consulta nula ou 
-                            MessageBox.Show($"Código: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.CdResposta}");
-                            MessageBox.Show($"Descrição: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.StatusRetorno.DescResposta}");
+                            MessageBox.Show($"Código: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta}");
+                            MessageBox.Show($"Descrição: {consultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.DescResposta}");
                             break;
 
                         default:
@@ -5981,6 +5980,111 @@ namespace TreinamentoDLL
                     break;
             }
 
+        }
+
+        private void BtnDesserializarNFeB2B_Click(object sender, EventArgs e)
+        {
+            var directoryInfo = new DirectoryInfo(@"C:\Users\Wandrey\Downloads\NFeTeste\NFe");
+            var files = directoryInfo.GetFiles("*.xml");
+            var naoIdentificou = 0;
+
+            foreach (var file in files)
+            {
+                var nfeProc = new NfeProc();
+
+                var doc = new XmlDocument();
+                doc.Load(file.FullName);
+
+                switch (doc.LastChild.Name.ToLower())
+                {
+                    case "nfeproc":
+                        nfeProc = XMLUtility.Deserializar<NfeProc>(doc.OuterXml);
+                        break;
+
+                    case "nfe":
+                        nfeProc.NFe = XMLUtility.Deserializar<NFe>(doc.OuterXml);
+                        nfeProc.ProtNFe = null;
+                        break;
+
+                    default:
+                        //Não foi possível identificar o tipo do XML
+                        naoIdentificou++;
+                        continue;
+                }
+
+                if (nfeProc.NFe.InfNFe.Count > 0)
+                {
+                    if (nfeProc.NFe.InfNFe[0].Det.Count > 0)
+                    {
+                        foreach (var det in nfeProc.NFe.InfNFe[0].Det)
+                        {
+                            var descricaoProduto = det.Prod.XProd;
+                        }
+                    }
+                }
+            }
+
+            MessageBox.Show($"Processamento encerrado! (Não identificou = {naoIdentificou} de {files.Length})");
+        }
+
+        private void BtnEventoEPECCTe_Click(object sender, EventArgs e)
+        {
+            var xml = new Unimake.Business.DFe.Xml.CTe.EventoCTe
+            {
+                Versao = "4.00",
+                InfEvento = new Unimake.Business.DFe.Xml.CTe.InfEvento(new Unimake.Business.DFe.Xml.CTe.DetEventoEPEC
+                {
+                    VersaoEvento = "4.00",
+                    XJust = "Teste de EPEC do CTE para ver se tudo está funcionando",
+                    VICMS = 100,
+                    VICMSST = 100,
+                    VTPrest = 1000,
+                    VCarga = 1000,
+                    Toma4 = new Unimake.Business.DFe.Xml.CTe.EvEPECCTeToma4
+                    {
+                        UF = UFBrasil.PR,
+                        CNPJ = "06117473000150",
+                        IE = "1234567890"
+                    },
+                    Modal = ModalidadeTransporteCTe.Rodoviario,
+                    UFIni = UFBrasil.PR,
+                    UFFim = UFBrasil.PR,
+                    TpCTe = TipoCTe.Normal,
+                    DhEmi = DateTime.Now
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    ChCTe = "41200211111111111111111111111111111111111115",
+                    CNPJ = "11111111111111",
+                    DhEvento = DateTime.Now,
+                    TpEvento = TipoEventoCTe.EPEC,
+                    NSeqEvento = 1,
+                    TpAmb = TipoAmbiente.Homologacao
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var recepcaoEvento = new ServicoCTe.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            //Gravar o XML de distribuição se o evento foi homologada
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respectivo CT-e com situação diferente de Autorizada.
+                case 135: //Recebido pelo Sistema de Registro de Eventos, com vinculação do evento no respetivo CTe.
+                case 136: //Recebido pelo Sistema de Registro de Eventos – vinculação do evento ao respectivo CT-e prejudicado.
+                    recepcaoEvento.GravarXmlDistribuicao(@"c:\testecte\");
+                    break;
+
+                default:
+                    //Quando o evento é rejeitado pela Sefaz.
+                    break;
+            }
         }
     }
 }

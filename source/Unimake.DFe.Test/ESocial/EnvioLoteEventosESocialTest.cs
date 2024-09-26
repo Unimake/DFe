@@ -168,7 +168,7 @@ namespace Unimake.DFe.Test.ESocial
                                     EvtRemun = new EvtRemun
                                     {
                                         ID = "ID1061174730000002017102608080800001",
-                                        IdeEvento = new IdeEventoESocial1200
+                                        IdeEvento = new IdeEvento1200
                                         {
                                             IndRetif = IndicativoRetificacao.ArquivoOriginal,
                                             IndApuracao = IndApuracao.Mensal,

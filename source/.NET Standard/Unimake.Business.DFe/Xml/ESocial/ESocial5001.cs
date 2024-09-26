@@ -54,7 +54,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do evento de retorno.
         /// </summary>
         [XmlElement("ideEvento")]
-        public IdeEventoESocial5001 IdeEvento { get; set; }
+        public IdeEvento5001 IdeEvento { get; set; }
 
         /// <summary>
         /// Informações de identificação do empregador.
@@ -123,10 +123,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #region IdeEvento5001
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEventoESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento5001")]
     [ComVisible(true)]
 #endif
-    public class IdeEventoESocial5001
+    public class IdeEvento5001
     {
         /// <summary>
         /// Preencher com o número do recibo do arquivo que deu
