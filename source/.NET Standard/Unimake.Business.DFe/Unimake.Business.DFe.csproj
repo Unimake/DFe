@@ -333,6 +333,7 @@
 		<None Remove="Servicos\Config\NFSe\GuarapariES.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaratinguetaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaribaSP.xml" />
+		<None Remove="Servicos\Config\NFSe\GurupiTO.xml" />
 		<None Remove="Servicos\Config\NFSe\HarmoniaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IbicoaraBA.xml" />
 		<None Remove="Servicos\Config\NFSe\IbirubaRS.xml" />
@@ -989,6 +990,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FrancaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GurupiTO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
