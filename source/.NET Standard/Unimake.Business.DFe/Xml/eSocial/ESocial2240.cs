@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 #if INTEROP
 using Unimake.Business.DFe.Servicos;
 #endif
