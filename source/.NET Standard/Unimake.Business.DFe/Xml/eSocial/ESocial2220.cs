@@ -41,7 +41,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculo ÌdeVinculo { get; set; }
+        public IdeVinculo IdeVinculo { get; set; }
 
         [XmlElement("exMedOcup")]
         public ExMedOcup ExMedOcup { get; set; }
@@ -53,39 +53,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     public class IdeEvento2220 : IdeEvento2205 { }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2220")]
-    [ComVisible(true)]
-#endif
-    public class IdeVinculo2220
-    {
-        [XmlElement("cpfTrab")]
-        public string CpfTrab { get; set; }
-
-        [XmlElement("matricula")]
-        public string Matricula { get; set; }
-
-        [XmlElement("codCateg")]
-#if INTEROP
-        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
-#else
-        public CodCateg? CodCateg { get; set; }
-#endif
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
-
-#if INTEROP
-        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
-#else
-        public bool ShouldSerializeCodCateg() => CodCateg != null;
-#endif
-
-        #endregion
-    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -140,6 +107,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("exame")]
         public List<Exame> Exame { get; set; }
 
+        [XmlElement("medico")]
+        public Medico Medico { get; set; }
+
+
 #if INTEROP
 
         /// <summary>
@@ -176,9 +147,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetExameCount => (Exame != null ? Exame.Count : 0);
 #endif
-
-        [XmlElement("medico")]
-        public Medico Medico { get; set; }
 
         #region ShouldSerialize
 

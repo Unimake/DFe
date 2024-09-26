@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
+#if INTEROP
 using Unimake.Business.DFe.Servicos;
+#endif
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -41,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculo2220 IdeVinculo { get; set; }
+        public IdeVinculo2240 IdeVinculo { get; set; }
 
         [XmlElement("infoExpRisco")]
         public InfoExpRisco InfoExpRisco { get; set; }
@@ -52,8 +54,34 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2240")]
     [ComVisible(true)]
 #endif
-    public class IdeVinculo2240 : IdeVinculo2220
-    { }
+    public class IdeVinculo2240
+    {
+        [XmlElement("cpfTrab")]
+        public string CpfTrab { get; set; }
+
+        [XmlElement("matricula")]
+        public string Matricula { get; set; }
+
+        [XmlElement("codCateg")]
+#if INTEROP
+        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
+#else
+        public CodCateg? CodCateg { get; set; }
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
+
+#if INTEROP
+        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
+#else
+        public bool ShouldSerializeCodCateg() => CodCateg != null;
+#endif
+
+        #endregion
+    }
+
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
