@@ -33,7 +33,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtFechaEvPer : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf2099 IdeEvento { get; set; }
+        public IdeEvento2099 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -47,10 +47,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf2099")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2099")]
     [ComVisible(true)]
 #endif
-    public class IdeEventoReinf2099 : IdeEventoReinf2098 { }
+    public class IdeEvento2099 : IdeEvento2098 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

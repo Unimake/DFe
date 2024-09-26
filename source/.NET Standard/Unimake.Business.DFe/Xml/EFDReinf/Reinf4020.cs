@@ -34,46 +34,46 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtRetPJ : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf4020 IdeEvento { get; set; }
+        public IdeEvento4020 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
-        public IdeContriReinf4020 IdeContri { get; set; }
+        public IdeContri4020 IdeContri { get; set; }
 
         [XmlElement("ideEstab")]
-        public IdeEstabReinf4020 IdeEstab { get; set; }
+        public IdeEstab4020 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento4020")]
     [ComVisible(true)]
 #endif
-    public class IdeEventoReinf4020 : IdeEventoReinf4010 { }
+    public class IdeEvento4020 : IdeEvento4010 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeContriReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeContri4020")]
     [ComVisible(true)]
 #endif
-    public class IdeContriReinf4020 : IdeContriReinf4010 { }
+    public class IdeContri4020 : IdeContri4010 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab4020")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabReinf4020 : IdeEstab
+    public class IdeEstab4020 : IdeEstab
     {
         [XmlElement("ideBenef")]
-        public IdeBenefReinf4020 IdeBenef { get; set; }
+        public IdeBenef4020 IdeBenef { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeBenefReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeBenef4020")]
     [ComVisible(true)]
 #endif
-    public class IdeBenefReinf4020
+    public class IdeBenef4020
     {
         [XmlElement("cnpjBenef")]
         public string CnpjBenef { get; set; }
@@ -92,7 +92,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string IdeEvtAdic { get; set; }
 
         [XmlElement("idePgto")]
-        public List<IdePgtoReinf4020> IdePgto { get; set; }
+        public List<IdePgto4020> IdePgto { get; set; }
 
 #if INTEROP
 
@@ -100,11 +100,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdePgto(IdePgtoReinf4020 item)
+        public void AddIdePgto(IdePgto4020 item)
         {
             if (IdePgto == null)
             {
-                IdePgto = new List<IdePgtoReinf4020>();
+                IdePgto = new List<IdePgto4020>();
             }
 
             IdePgto.Add(item);
@@ -115,7 +115,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdePgto</returns>
-        public IdePgtoReinf4020 GetIdePgto(int index)
+        public IdePgto4020 GetIdePgto(int index)
         {
             if ((IdePgto?.Count ?? 0) == 0)
             {
@@ -149,10 +149,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdePgtoReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdePgto4020")]
     [ComVisible(true)]
 #endif
-    public class IdePgtoReinf4020
+    public class IdePgto4020
     {
         [XmlElement("natRend")]
         public string NatRend { get; set; }
@@ -161,7 +161,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string Observ { get; set; }
 
         [XmlElement("infoPgto")]
-        public List<InfoPgtoReinf4020> InfoPgto { get; set; }
+        public List<InfoPgto4020> InfoPgto { get; set; }
 
 #if INTEROP
 
@@ -169,11 +169,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoPgto(InfoPgtoReinf4020 item)
+        public void AddInfoPgto(InfoPgto4020 item)
         {
             if (InfoPgto == null)
             {
-                InfoPgto = new List<InfoPgtoReinf4020>();
+                InfoPgto = new List<InfoPgto4020>();
             }
 
             InfoPgto.Add(item);
@@ -184,7 +184,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoPgto</returns>
-        public InfoPgtoReinf4020 GetInfoPgto(int index)
+        public InfoPgto4020 GetInfoPgto(int index)
         {
             if ((InfoPgto?.Count ?? 0) == 0)
             {
@@ -209,10 +209,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoPgtoReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoPgto4020")]
     [ComVisible(true)]
 #endif
-    public class InfoPgtoReinf4020
+    public class InfoPgto4020
     {
         [XmlIgnore]
 #if INTEROP
@@ -327,7 +327,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("infoProcRet")]
-        public List<InfoProcRetReinf4020> InfoProcRet { get; set; }
+        public List<InfoProcRet4020> InfoProcRet { get; set; }
 
 #if INTEROP
 
@@ -335,11 +335,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProcRet(InfoProcRetReinf4020 item)
+        public void AddInfoProcRet(InfoProcRet4020 item)
         {
             if (InfoProcRet == null)
             {
-                InfoProcRet = new List<InfoProcRetReinf4020>();
+                InfoProcRet = new List<InfoProcRet4020>();
             }
 
             InfoProcRet.Add(item);
@@ -350,7 +350,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProcRet</returns>
-        public InfoProcRetReinf4020 GetInfoProcRet(int index)
+        public InfoProcRet4020 GetInfoProcRet(int index)
         {
             if ((InfoProcRet?.Count ?? 0) == 0)
             {
@@ -367,10 +367,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("infoProcJud")]
-        public InfoProcJudReinf4020 InfoProcJud { get; set; }
+        public InfoProcJud4020 InfoProcJud { get; set; }
 
         [XmlElement("infoPgtoExt")]
-        public InfoPgtoExtReinf4020 InfoPgtoExt { get; set; }
+        public InfoPgtoExt4020 InfoPgtoExt { get; set; }
 
         #region ShouldSerialize
 #if INTEROP
@@ -530,10 +530,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcRetReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcRet4020")]
     [ComVisible(true)]
 #endif
-    public class InfoProcRetReinf4020
+    public class InfoProcRet4020
     {
         [XmlElement("tpProcRet")]
         public TipoProcesso TpProcRet { get; set; }
@@ -696,17 +696,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcJudReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcJud4020")]
     [ComVisible(true)]
 #endif
-    public class InfoProcJudReinf4020 : InfoProcJudReinf4010 { }
+    public class InfoProcJud4020 : InfoProcJud4010 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoPgtoExtReinf4020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoPgtoExt4020")]
     [ComVisible(true)]
 #endif
-    public class InfoPgtoExtReinf4020
+    public class InfoPgtoExt4020
     {
         [XmlElement("indNIF")]
         public IndicativoNIF IndNIF { get; set; }

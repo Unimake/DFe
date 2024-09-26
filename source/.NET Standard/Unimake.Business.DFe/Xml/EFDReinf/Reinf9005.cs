@@ -34,7 +34,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtRet : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf9001 IdeEvento { get; set; }
+        public IdeEvento9001 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -43,18 +43,18 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeRecRetorno IdeRecRetorno { get; set; }
 
         [XmlElement("infoRecEv")]
-        public InfoRecEvReinf9005 InfoRecEv { get; set; }
+        public InfoRecEv9005 InfoRecEv { get; set; }
 
         [XmlElement("infoTotal")]
-        public InfoTotalReinf9005 InfoTotal { get; set; }
+        public InfoTotal9005 InfoTotal { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecEvReinf9005")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecEv9005")]
     [ComVisible(true)]
 #endif
-    public class InfoRecEvReinf9005
+    public class InfoRecEv9005
     {
         [XmlElement("nrRecArqBase")]
         public string NrRecArqBase { get; set; }
@@ -115,21 +115,21 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoTotalReinf9005")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoTotal9005")]
     [ComVisible(true)]
 #endif
-    public class InfoTotalReinf9005
+    public class InfoTotal9005
     {
         [XmlElement("ideEstab")]
-        public IdeEstabReinf9005 IdeEstab { get; set; }
+        public IdeEstab9005 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabReinf9005")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab9005")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabReinf9005
+    public class IdeEstab9005
     {
         [XmlElement("tpInsc")]
         public TipoInscricaoEstabelecimento TpInsc { get; set; }

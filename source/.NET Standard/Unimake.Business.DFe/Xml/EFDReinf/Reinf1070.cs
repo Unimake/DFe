@@ -57,22 +57,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoProcesso
     {
         [XmlElement("inclusao")]
-        public InclusaoReinf1070 Inclusao { get; set; }
+        public Inclusao1070 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
-        public AlteracaoReinf1070 Alteracao { get; set; }
+        public Alteracao1070 Alteracao { get; set; }
 
         [XmlElement("exclusao")]
-        public ExclusaoReinf1070 Exclusao { get; set; }
+        public Exclusao1070 Exclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InclusaoReinf1070")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Inclusao1070")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InclusaoReinf1070
+    public class Inclusao1070
     {
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
@@ -218,11 +218,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.AlteracaoReinf1070")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Alteracao1070")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class AlteracaoReinf1070
+    public class Alteracao1070
     {
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
@@ -233,11 +233,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ExclusaoReinf1070")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Exclusao1070")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class ExclusaoReinf1070
+    public class Exclusao1070
     {
         [XmlElement("ideProcesso")]
         public IdeProcessoExclusao IdeProcesso { get; set; }

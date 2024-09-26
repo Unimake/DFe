@@ -36,7 +36,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtServTom : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf2010 IdeEvento { get; set; }
+        public IdeEvento2010 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -47,11 +47,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf2010")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2010")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class IdeEventoReinf2010
+    public class IdeEvento2010
     {
         [XmlElement("indRetif")]
         public IndicativoRetificacao IndRetif { get; set; }
@@ -200,7 +200,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IndicativoCPRB IndCPRB { get; set; }
 
         [XmlElement("nfs")]
-        public List<NfsReinf2010> Nfs { get; set; }
+        public List<Nfs2010> Nfs { get; set; }
 
 #if INTEROP
 
@@ -208,11 +208,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddNfs(NfsReinf2010 item)
+        public void AddNfs(Nfs2010 item)
         {
             if (Nfs == null)
             {
-                Nfs = new List<NfsReinf2010>();
+                Nfs = new List<Nfs2010>();
             }
 
             Nfs.Add(item);
@@ -223,7 +223,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Nfs</returns>
-        public NfsReinf2010 GetNfsReinf2010(int index)
+        public Nfs2010 GetNfs2010(int index)
         {
             if ((Nfs?.Count ?? 0) == 0)
             {
@@ -236,7 +236,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
-        public int GetNfsReinf2010Count => (Nfs != null ? Nfs.Count : 0);
+        public int GetNfs2010Count => (Nfs != null ? Nfs.Count : 0);
 
 #endif
 
@@ -335,11 +335,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NfsReinf2010")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Nfs2010")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class NfsReinf2010
+    public class Nfs2010
     {
         /// <summary>
         /// Informar o número de série da nota fiscal/fatura ou do Recibo Provisório de Serviço - RPS ou de outro documento fiscal válido.Preencher com 0 (zero) caso não exista número de série.

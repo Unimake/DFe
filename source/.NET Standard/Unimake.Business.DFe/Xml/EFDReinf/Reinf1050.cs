@@ -53,22 +53,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoLig
     {
         [XmlElement("inclusao")]
-        public InclusaoReinf1050 Inclusao { get; set; }
+        public Inclusao1050 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
-        public AlteracaoReinf1050 Alteracao { get; set; }
+        public Alteracao1050 Alteracao { get; set; }
 
         [XmlElement("exclusao")]
-        public ExclusaoReinf1050 Exclusao { get; set; }
+        public Exclusao1050 Exclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InclusaoReinf1050")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Inclusao1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InclusaoReinf1050
+    public class Inclusao1050
     {
         [XmlElement("ideEntLig")]
         public IdeEntLig IdeEntLig { get; set; }
@@ -103,11 +103,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.AlteracaoReinf1050")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Alteracao1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class AlteracaoReinf1050
+    public class Alteracao1050
     {
         [XmlElement("ideEntLig")]
         public IdeEntLig IdeEntLig { get; set; }
@@ -139,11 +139,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ExclusaoReinf1050")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Exclusao1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class ExclusaoReinf1050
+    public class Exclusao1050
     {
         [XmlElement("ideEntLig")]
         public IdeEntLigExclusao IdeEntLig { get; set; }

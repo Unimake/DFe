@@ -54,22 +54,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoContri
     {
         [XmlElement("inclusao")]
-        public InclusaoReinf1000 Inclusao { get; set; }
+        public Inclusao1000 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
-        public AlteracaoReinf1000 Alteracao { get; set; }
+        public Alteracao1000 Alteracao { get; set; }
         
         [XmlElement("exclusao")]
-        public ExclusaoReinf1000 Exclusao { get; set; }
+        public Exclusao1000 Exclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InclusaoReinf1000")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Inclusao1000")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InclusaoReinf1000
+    public class Inclusao1000
     {
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }
@@ -80,11 +80,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.AlteracaoReinf1000")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Alteracao1000")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class AlteracaoReinf1000 : InclusaoReinf1000
+    public class Alteracao1000 : Inclusao1000
     {
         [XmlElement("novaValidade")]
         public NovaValidade NovaValidade { get; set; }
@@ -92,11 +92,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ExclusaoReinf1000")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Exclusao1000")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class ExclusaoReinf1000
+    public class Exclusao1000
     {
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }

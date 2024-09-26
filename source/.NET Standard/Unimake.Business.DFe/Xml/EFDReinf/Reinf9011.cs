@@ -34,7 +34,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtTotalContrib : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf9001 IdeEvento { get; set; }
+        public IdeEvento9011 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeRecRetorno IdeRecRetorno { get; set; }
 
         [XmlElement("infoRecEv")]
-        public InfoRecEvReinf9011 InfoRecEv { get; set; }
+        public InfoRecEv9011 InfoRecEv { get; set; }
 
         [XmlElement("infoTotalContrib")]
         public InfoTotalContrib InfoTotalContrib { get; set; }
@@ -51,10 +51,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecEvReinf9011")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento9011")]
     [ComVisible(true)]
 #endif
-    public class InfoRecEvReinf9011
+    public class IdeEvento9011 : IdeEvento9001{ }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecEv9011")]
+    [ComVisible(true)]
+#endif
+    public class InfoRecEv9011
     {
         [XmlElement("nrProtEntr")]
         public string NrProtEntr { get; set; }
@@ -190,7 +197,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("RRecRepAD")]
-        public List<RRecRepADReinf9011> RRecRepAD { get; set; }
+        public List<RRecRepAD9011> RRecRepAD { get; set; }
 
 #if INTEROP
 
@@ -198,11 +205,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRRecRepAD(RRecRepADReinf9011 item)
+        public void AddRRecRepAD(RRecRepAD9011 item)
         {
             if (RRecRepAD == null)
             {
-                RRecRepAD = new List<RRecRepADReinf9011>();
+                RRecRepAD = new List<RRecRepAD9011>();
             }
 
             RRecRepAD.Add(item);
@@ -213,7 +220,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RRecRepAD</returns>
-        public RRecRepADReinf9011 GetRRecRepAD(int index)
+        public RRecRepAD9011 GetRRecRepAD(int index)
         {
             if ((RRecRepAD?.Count ?? 0) == 0)
             {
@@ -352,10 +359,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RRecRepADReinf9011")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RRecRepAD9011")]
     [ComVisible(true)]
 #endif
-    public class RRecRepADReinf9011
+    public class RRecRepAD9011
     {
         [XmlElement("CRRecRepAD")]
         public string CRRecRepAD { get; set; }

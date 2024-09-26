@@ -109,7 +109,7 @@ namespace Unimake.DFe.Test.EFDReinf
                                     },
                                     InfoContri = new InfoContri
                                     {
-                                        Inclusao = new InclusaoReinf1000
+                                        Inclusao = new Inclusao1000
                                         {
                                            IdePeriodo = new IdePeriodo
                                            {
@@ -169,7 +169,7 @@ namespace Unimake.DFe.Test.EFDReinf
                                     },
                                     InfoLig = new InfoLig
                                     {
-                                        Inclusao = new InclusaoReinf1050
+                                        Inclusao = new Inclusao1050
                                         {
                                             IdeEntLig = new IdeEntLig
                                             {
@@ -190,7 +190,7 @@ namespace Unimake.DFe.Test.EFDReinf
                                 EvtFechaEvPer = new EvtFechaEvPer
                                 {
                                     ID = "ID1000000000000002021052608080800003",
-                                    IdeEvento = new IdeEventoReinf2099
+                                    IdeEvento = new IdeEvento2099
                                     {
                                         PerApur = DateTime.Now,
                                         TpAmb = TipoAmbiente.Homologacao,
