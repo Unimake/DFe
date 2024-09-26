@@ -7,11 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using System.Text;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -1126,6 +1126,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("idEstrangeiro")]
         public string IdEstrangeiro { get; set; }
 
+        /// <summary>
+        /// Grupo de informações do contrato entre transportador e contratante
+        /// </summary>
+        [XmlElement("infContrato")]
+        public InfContrato InfContrato { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
@@ -1139,6 +1145,41 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #endregion
     }
 
+    /// <summary>
+    /// Grupo de informações do contrato entre transportador e contratante
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.InfContrato")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    public class InfContrato
+    {
+        /// <summary>
+        /// Número do contrato do transportador com o contratante quando este existir para prestações continuadas
+        /// </summary>
+        [XmlElement("NroContrato")]
+        public string NroContrato { get; set; }
+
+        /// <summary>
+        /// Valor Global do Contrato
+        /// </summary>
+        [XmlIgnore]
+        public double VContratoGlobal { get; set; }
+
+        /// <summary>
+        /// Valor Global do Contrato (Utilize a propriedade VContratoGlobal para setar ou recuperar o conteúdo
+        /// </summary>
+        [XmlElement("vContratoGlobal")]
+        public string VContratoGlobalField
+        {
+            get => VContratoGlobal.ToString("F2", CultureInfo.InvariantCulture);
+            set => VContratoGlobal = Utility.Converter.ToDouble(value);
+        }
+    }
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.MDFe.InfPag")]
@@ -1149,6 +1190,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
     public class InfPag : InfContratante
     {
         private int IndAltoDesempField;
+        private int IndAntecipaAdiantField;
 
         [XmlElement("Comp")]
         public List<Comp> Comp { get; set; }
@@ -1191,17 +1233,53 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VAdiant = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Indicador para declarar concordância em antecipar o adiantamento (Informar a tag somente se for autorizado antecipar o adiantamento)
+        /// </summary>
+        [XmlElement("indAntecipaAdiant")]
+        public int IndAntecipaAdiant
+        {
+            get => IndAntecipaAdiantField;
+            set
+            {
+                if (value != 1)
+                {
+                    throw new Exception("Conteúdo da TAG <indAntecipaAdiant> inválido! Valores aceitos: 1 ou não informe a TAG.");
+                }
+
+                IndAntecipaAdiantField = value;
+            }
+        }
+
         [XmlElement("infPrazo")]
         public List<InfPrazo> InfPrazo { get; set; }
+
+        /// <summary> 
+        /// Tipo de Permissão em relação a antecipação das parcelas
+        /// </summary>
+        [XmlElement("tpAntecip")]
+#if INTEROP
+        public TipoPermissaoAtencipacaoParcela TpAntecip { get; set; } = (TipoPermissaoAtencipacaoParcela)(-1);
+#else
+        public TipoPermissaoAtencipacaoParcela? TpAntecip { get; set; }
+#endif
 
         [XmlElement("infBanc")]
         public InfBanc InfBanc { get; set; }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndAltoDesemp() => IndAltoDesemp == 1;
+        public bool ShouldSerializeIndAntecipaAdiant() => IndAntecipaAdiant == 1;
 
         public bool ShouldSerializeVAdiantField() => VAdiant > 0;
+
+        public bool ShouldSerializeIndAltoDesemp() => IndAltoDesemp == 1;
+
+#if INTEROP
+        public bool ShouldSerializeTpAntecip() => TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1);
+#else
+        public bool ShouldSerializeTpAntecip() => TpAntecip  != null;
+#endif
 
         #endregion
 
