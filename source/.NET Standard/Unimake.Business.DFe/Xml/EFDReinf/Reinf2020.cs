@@ -38,7 +38,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtServPrest : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf2020 IdeEvento { get; set; }
+        public IdeEvento2020 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -47,7 +47,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public InfoServPrest InfoServPrest { get; set; }
     }
 
-    public class IdeEventoReinf2020
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2020")]
+    [ComVisible(true)]
+#endif
+    public class IdeEvento2020
     {
 
         [XmlElement("indRetif")]
@@ -94,7 +99,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeEstabPrest IdeEstabPrest { get; set; }
 
     }
-
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -193,7 +197,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("nfs")]
-        public List<NfsReinf2020> Nfs { get; set; }
+        public List<Nfs2020> Nfs { get; set; }
 
 #if INTEROP
 
@@ -201,11 +205,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddNfs(NfsReinf2020 item)
+        public void AddNfs(Nfs2020 item)
         {
             if (Nfs == null)
             {
-                Nfs = new List<NfsReinf2020>();
+                Nfs = new List<Nfs2020>();
             }
 
             Nfs.Add(item);
@@ -216,7 +220,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Nfs</returns>
-        public NfsReinf2020 GetNfs(int index)
+        public Nfs2020 GetNfs(int index)
         {
             if ((Nfs?.Count ?? 0) == 0)
             {
@@ -229,7 +233,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
-        public int GetNfsReinf2020Count => (Nfs != null ? Nfs.Count : 0);
+        public int GetNfs2020Count => (Nfs != null ? Nfs.Count : 0);
 #endif
 
         [XmlElement("infoProcRetPr")]
@@ -317,11 +321,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NfsReinf2020")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Nfs2020")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class NfsReinf2020
+    public class Nfs2020
     {
         [XmlElement("serie")]
         public string Serie { get; set; }
@@ -380,10 +384,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         /// <summary>
-        /// Retorna o elemento da lista Reinf2020InfoTpServ (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista 2020InfoTpServ (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da Reinf2020InfoTpServ</returns>
+        /// <returns>Conteúdo do index passado por parâmetro da 2020InfoTpServ</returns>
         public InfoTpServ GetInfoTpServ(int index)
         {
             if ((InfoTpServ?.Count ?? 0) == 0)

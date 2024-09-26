@@ -37,20 +37,25 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtAssocDespRep : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf2040 IdeEvento { get; set; }
+        public IdeEvento2040 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
-        public IdeContriReinf2040 IdeContri { get; set; }
+        public IdeContri2040 IdeContri { get; set; }
     }
-
-    public class IdeEventoReinf2040 : IdeEventoReinf2030 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeContriReinf2040")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2040")]
     [ComVisible(true)]
 #endif
-    public class IdeContriReinf2040
+    public class IdeEvento2040 : IdeEvento2030 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeContri2040")]
+    [ComVisible(true)]
+#endif
+    public class IdeContri2040
     {
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }
@@ -59,15 +64,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string NrInsc { get; set; }
 
         [XmlElement("ideEstab")]
-        public IdeEstabReinf2040 IdeEstab { get; set; }
+        public IdeEstab2040 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabReinf2040")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab2040")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabReinf2040
+    public class IdeEstab2040
     {
         [XmlElement("tpInscEstab")]
         public TipoInscricaoEstabelecimento TpInscEstab { get; set; }

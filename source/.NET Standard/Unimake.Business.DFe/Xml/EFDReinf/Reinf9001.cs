@@ -35,7 +35,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtTotal : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf9001 IdeEvento { get; set; }
+        public IdeEvento9001 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -55,7 +55,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf9001")]
     [ComVisible(true)]
 #endif
-    public class IdeEventoReinf9001
+    public class IdeEvento9001
     {
         [XmlIgnore]
 #if INTEROP

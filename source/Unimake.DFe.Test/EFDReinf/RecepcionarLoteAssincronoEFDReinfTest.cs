@@ -60,7 +60,7 @@ namespace Unimake.DFe.Test.EFDReinf
                                         },
                                         InfoContri = new InfoContri
                                         {
-                                            Inclusao = new InclusaoReinf1000
+                                            Inclusao = new Inclusao1000
                                             {
                                                 IdePeriodo = new IdePeriodo
                                                 {

@@ -33,24 +33,24 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtFech : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf4099 IdeEvento { get; set; }
+        public IdeEvento4099 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
         [XmlElement("ideRespInf")]
-        public IdeRespInfReinf4099 IdeRespInf { get; set; }
+        public IdeRespInf IdeRespInf { get; set; }
 
         [XmlElement("infoFech")]
-        public InfoFechReinf4099 InfoFech { get; set; }
+        public InfoFech4099 InfoFech { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf4099")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento4099")]
     [ComVisible(true)]
 #endif
-    public class IdeEventoReinf4099
+    public class IdeEvento4099
     {
         [XmlIgnore]
 #if INTEROP
@@ -80,19 +80,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string VerProc { get; set; }
     }
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRespInfReinf4099")]
-    [ComVisible(true)]
-#endif
-    public class IdeRespInfReinf4099 : IdeRespInf { }
+ 
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoFechReinf4099")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoFech4099")]
     [ComVisible(true)]
 #endif
-    public class InfoFechReinf4099
+    public class InfoFech4099
     {
         [XmlElement("fechRet")]
         public FechamentoRetencao FechRet { get; set; }

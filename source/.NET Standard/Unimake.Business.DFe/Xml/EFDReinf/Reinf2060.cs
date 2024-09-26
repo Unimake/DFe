@@ -13,7 +13,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2060")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2060 ")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -35,7 +35,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class EvtCPRB : ReinfEventoBase
     {
         [XmlElement("ideEvento")]
-        public IdeEventoReinf2060 IdeEvento { get; set; }
+        public IdeEvento2060 IdeEvento { get; set; }
 
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
@@ -46,10 +46,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf2060")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2060")]
     [ComVisible(true)]
 #endif
-    public class IdeEventoReinf2060
+    public class IdeEvento2060
     {
         [XmlElement("indRetif")]
         public IndicativoRetificacao IndRetif { get; set; }
@@ -84,15 +84,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoCPRB
     {
         [XmlElement("ideEstab")]
-        public IdeEstabReinf2060 IdeEstab { get; set; }
+        public IdeEstab2060 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabReinf2060")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab2060")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabReinf2060
+    public class IdeEstab2060
     {
 
         [XmlElement("tpInscEstab")]
@@ -279,7 +279,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("infoProc")]
-        public List<InfoProcReinf2060> InfoProc { get; set; }
+        public List<InfoProc2060> InfoProc { get; set; }
 
 #if INTEROP
 
@@ -287,11 +287,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProc(InfoProcReinf2060 item)
+        public void AddInfoProc(InfoProc2060 item)
         {
             if (InfoProc == null)
             {
-                InfoProc = new List<InfoProcReinf2060>();
+                InfoProc = new List<InfoProc2060>();
             }
 
             InfoProc.Add(item);
@@ -302,7 +302,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProc</returns>
-        public InfoProcReinf2060 GetInfoProc(int index)
+        public InfoProc2060 GetInfoProc(int index)
         {
             if ((InfoProc?.Count ?? 0) == 0)
             {
@@ -371,10 +371,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
         [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcReinf2060")]
+        [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProc2060")]
         [ComVisible(true)]
 #endif
-        public class InfoProcReinf2060
+        public class InfoProc2060
         {
             [XmlElement("tpProc")]
             public TipoProcesso TpProc { get; set; }
