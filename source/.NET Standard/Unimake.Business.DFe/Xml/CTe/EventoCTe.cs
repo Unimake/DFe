@@ -1432,9 +1432,12 @@ namespace Unimake.Business.DFe.Xml.CTe
                         _detEvento = new DetEventoCancelamentoInsucessoEntrega();
                         break;
 
-
                     case TipoEventoCTe.RegistroPassagemAutomatico:
                         _detEvento = new DetEventoRegistroPassagemAutomatico();
+                        break;
+
+                    case TipoEventoCTe.RegistoPassagemAutomaticoOriginadoMDFe:
+                        _detEvento = new DetEventoRegistroPassagemAutomaticoMDFe();
                         break;
 
                     default:
@@ -1775,7 +1778,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         private string HashTentativaEntregaField;
 
         [XmlElement("hashTentativaEntrega")]
-        public string HashTentativaEntrega 
+        public string HashTentativaEntrega
         {
             get => HashTentativaEntregaField;
             set
@@ -2448,4 +2451,84 @@ namespace Unimake.Business.DFe.Xml.CTe
     }
 
     #endregion
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoRegistroPassagemAutomaticoMDFe")]
+    [ComVisible(true)]
+#endif
+    [XmlInclude(typeof(EventoDetalhe))]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoRegistroPassagemAutomaticoMDFe : EventoDetalhe
+    {
+        private EvCTeRegPassagemAutoMDFe _evCTeRegPassagemAutoMDFe;
+         
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EvCTeRegPassagemAutoMDFe.DescEvento;
+            set => EvCTeRegPassagemAutoMDFe.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string ChMDFe
+        {
+            get => EvCTeRegPassagemAutoMDFe.ChMDFe;
+            set => EvCTeRegPassagemAutoMDFe.ChMDFe = value;
+        }
+
+        [XmlIgnore]
+        public EvCTeRegPassagemAutoMDFe EvCTeRegPassagemAutoMDFe
+        {
+            get => _evCTeRegPassagemAutoMDFe ?? (_evCTeRegPassagemAutoMDFe = new EvCTeRegPassagemAutoMDFe());
+            set => _evCTeRegPassagemAutoMDFe = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evCTeRegPassagemAutoMDFe>
+                <descEvento>{DescEvento}</descEvento>
+                <chMDFe>{ChMDFe}</chMDFe>";
+
+            writeRaw += "</evCTeRegPassagemAutoMDFe>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeRegPassagemAutoMDFe")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot(ElementName = "evCTeRegPassagemAutoMDFe")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EvCTeRegPassagemAutoMDFe : Contract.Serialization.IXmlSerializable
+    {
+        [XmlElement("descEvento")]
+        public string DescEvento { get; set; } = "Registro de Passagem Automatico Originado no MDFe";
+
+        [XmlElement("chMDFe")]
+        public string ChMDFe { get; set; }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na desserialização
+        /// </summary>
+        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        public void ReadXml(XmlDocument document)
+        {
+
+        }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na serialização
+        /// </summary>
+        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        public void WriteXml(System.IO.StringWriter writer)
+        {
+
+        }
+    }
 }

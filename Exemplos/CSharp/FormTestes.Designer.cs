@@ -35,7 +35,6 @@ namespace TreinamentoDLL
             this.BtnRecuperarXMLNFeDistribuicao2 = new System.Windows.Forms.Button();
             this.BtnRecuperarXMLNFeDistribuicao = new System.Windows.Forms.Button();
             this.BtnEnviarEventoEPEC = new System.Windows.Forms.Button();
-            this.BtnExecutarTelaConfigDANFe = new System.Windows.Forms.Button();
             this.BtnImprimirDANFe = new System.Windows.Forms.Button();
             this.BtnEnviarEventoCCe = new System.Windows.Forms.Button();
             this.BtnEnviarEventoCancelamento = new System.Windows.Forms.Button();
@@ -74,6 +73,7 @@ namespace TreinamentoDLL
             this.BtnEnvioLoteRPSAssincrono = new System.Windows.Forms.Button();
             this.BtnEnviarCancNFSe = new System.Windows.Forms.Button();
             this.GroupCTe = new System.Windows.Forms.GroupBox();
+            this.BtnEventoEPECCTe = new System.Windows.Forms.Button();
             this.BtnEventoCTeEmDesacordo = new System.Windows.Forms.Button();
             this.BtnDesserializandoCTeOS = new System.Windows.Forms.Button();
             this.BtnCancInsucessoEntregaCTe = new System.Windows.Forms.Button();
@@ -114,7 +114,8 @@ namespace TreinamentoDLL
             this.BtnEnviarReinf = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.BtnEnviarEConsultarESocial = new System.Windows.Forms.Button();
-            this.BtnEventoEPECCTe = new System.Windows.Forms.Button();
+            this.BtnAbrirTeleConfigUnidanfe = new System.Windows.Forms.Button();
+            this.BtnAbrirTelaLicencaUnidanfe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -140,11 +141,12 @@ namespace TreinamentoDLL
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.BtnAbrirTeleConfigUnidanfe);
             this.groupBox1.Controls.Add(this.BtnDesserializarNFeB2B);
+            this.groupBox1.Controls.Add(this.BtnAbrirTelaLicencaUnidanfe);
             this.groupBox1.Controls.Add(this.BtnRecuperarXMLNFeDistribuicao2);
             this.groupBox1.Controls.Add(this.BtnRecuperarXMLNFeDistribuicao);
             this.groupBox1.Controls.Add(this.BtnEnviarEventoEPEC);
-            this.groupBox1.Controls.Add(this.BtnExecutarTelaConfigDANFe);
             this.groupBox1.Controls.Add(this.BtnImprimirDANFe);
             this.groupBox1.Controls.Add(this.BtnEnviarEventoCCe);
             this.groupBox1.Controls.Add(this.BtnEnviarEventoCancelamento);
@@ -168,7 +170,7 @@ namespace TreinamentoDLL
             // BtnDesserializarNFeB2B
             // 
             this.BtnDesserializarNFeB2B.CausesValidation = false;
-            this.BtnDesserializarNFeB2B.Location = new System.Drawing.Point(11, 863);
+            this.BtnDesserializarNFeB2B.Location = new System.Drawing.Point(11, 906);
             this.BtnDesserializarNFeB2B.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnDesserializarNFeB2B.Name = "BtnDesserializarNFeB2B";
             this.BtnDesserializarNFeB2B.Size = new System.Drawing.Size(296, 62);
@@ -180,7 +182,7 @@ namespace TreinamentoDLL
             // BtnRecuperarXMLNFeDistribuicao2
             // 
             this.BtnRecuperarXMLNFeDistribuicao2.CausesValidation = false;
-            this.BtnRecuperarXMLNFeDistribuicao2.Location = new System.Drawing.Point(10, 737);
+            this.BtnRecuperarXMLNFeDistribuicao2.Location = new System.Drawing.Point(10, 780);
             this.BtnRecuperarXMLNFeDistribuicao2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnRecuperarXMLNFeDistribuicao2.Name = "BtnRecuperarXMLNFeDistribuicao2";
             this.BtnRecuperarXMLNFeDistribuicao2.Size = new System.Drawing.Size(296, 97);
@@ -193,7 +195,7 @@ namespace TreinamentoDLL
             // BtnRecuperarXMLNFeDistribuicao
             // 
             this.BtnRecuperarXMLNFeDistribuicao.CausesValidation = false;
-            this.BtnRecuperarXMLNFeDistribuicao.Location = new System.Drawing.Point(9, 631);
+            this.BtnRecuperarXMLNFeDistribuicao.Location = new System.Drawing.Point(9, 674);
             this.BtnRecuperarXMLNFeDistribuicao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnRecuperarXMLNFeDistribuicao.Name = "BtnRecuperarXMLNFeDistribuicao";
             this.BtnRecuperarXMLNFeDistribuicao.Size = new System.Drawing.Size(296, 97);
@@ -206,7 +208,7 @@ namespace TreinamentoDLL
             // BtnEnviarEventoEPEC
             // 
             this.BtnEnviarEventoEPEC.CausesValidation = false;
-            this.BtnEnviarEventoEPEC.Location = new System.Drawing.Point(10, 586);
+            this.BtnEnviarEventoEPEC.Location = new System.Drawing.Point(10, 629);
             this.BtnEnviarEventoEPEC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnEnviarEventoEPEC.Name = "BtnEnviarEventoEPEC";
             this.BtnEnviarEventoEPEC.Size = new System.Drawing.Size(296, 35);
@@ -214,18 +216,6 @@ namespace TreinamentoDLL
             this.BtnEnviarEventoEPEC.Text = "Enviar o Evento de EPEC";
             this.BtnEnviarEventoEPEC.UseVisualStyleBackColor = true;
             this.BtnEnviarEventoEPEC.Click += new System.EventHandler(this.BtnEnviarEventoEPEC_Click);
-            // 
-            // BtnExecutarTelaConfigDANFe
-            // 
-            this.BtnExecutarTelaConfigDANFe.CausesValidation = false;
-            this.BtnExecutarTelaConfigDANFe.Location = new System.Drawing.Point(10, 542);
-            this.BtnExecutarTelaConfigDANFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnExecutarTelaConfigDANFe.Name = "BtnExecutarTelaConfigDANFe";
-            this.BtnExecutarTelaConfigDANFe.Size = new System.Drawing.Size(296, 35);
-            this.BtnExecutarTelaConfigDANFe.TabIndex = 10;
-            this.BtnExecutarTelaConfigDANFe.Text = "Executar tela config DANFe";
-            this.BtnExecutarTelaConfigDANFe.UseVisualStyleBackColor = true;
-            this.BtnExecutarTelaConfigDANFe.Click += new System.EventHandler(this.BtnExecutarTelaConfigDANFe_Click);
             // 
             // BtnImprimirDANFe
             // 
@@ -705,6 +695,17 @@ namespace TreinamentoDLL
             this.GroupCTe.TabStop = false;
             this.GroupCTe.Text = "CTe e CTeOS";
             // 
+            // BtnEventoEPECCTe
+            // 
+            this.BtnEventoEPECCTe.Location = new System.Drawing.Point(12, 571);
+            this.BtnEventoEPECCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoEPECCTe.Name = "BtnEventoEPECCTe";
+            this.BtnEventoEPECCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoEPECCTe.TabIndex = 27;
+            this.BtnEventoEPECCTe.Text = "Evento de EPEC CTe";
+            this.BtnEventoEPECCTe.UseVisualStyleBackColor = true;
+            this.BtnEventoEPECCTe.Click += new System.EventHandler(this.BtnEventoEPECCTe_Click);
+            // 
             // BtnEventoCTeEmDesacordo
             // 
             this.BtnEventoCTeEmDesacordo.Location = new System.Drawing.Point(12, 526);
@@ -1167,16 +1168,27 @@ namespace TreinamentoDLL
             this.BtnEnviarEConsultarESocial.UseVisualStyleBackColor = true;
             this.BtnEnviarEConsultarESocial.Click += new System.EventHandler(this.BtnEnviarEConsultarESocial_Click);
             // 
-            // BtnEventoEPECCTe
+            // BtnAbrirTeleConfigUnidanfe
             // 
-            this.BtnEventoEPECCTe.Location = new System.Drawing.Point(12, 571);
-            this.BtnEventoEPECCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnEventoEPECCTe.Name = "BtnEventoEPECCTe";
-            this.BtnEventoEPECCTe.Size = new System.Drawing.Size(296, 35);
-            this.BtnEventoEPECCTe.TabIndex = 27;
-            this.BtnEventoEPECCTe.Text = "Evento de EPEC CTe";
-            this.BtnEventoEPECCTe.UseVisualStyleBackColor = true;
-            this.BtnEventoEPECCTe.Click += new System.EventHandler(this.BtnEventoEPECCTe_Click);
+            this.BtnAbrirTeleConfigUnidanfe.Location = new System.Drawing.Point(9, 535);
+            this.BtnAbrirTeleConfigUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAbrirTeleConfigUnidanfe.Name = "BtnAbrirTeleConfigUnidanfe";
+            this.BtnAbrirTeleConfigUnidanfe.Size = new System.Drawing.Size(296, 37);
+            this.BtnAbrirTeleConfigUnidanfe.TabIndex = 34;
+            this.BtnAbrirTeleConfigUnidanfe.Text = "Abrir tela configuração UniDANFe";
+            this.BtnAbrirTeleConfigUnidanfe.UseVisualStyleBackColor = true;
+            this.BtnAbrirTeleConfigUnidanfe.Click += new System.EventHandler(this.BtnAbrirTeleConfigUnidanfe_Click);
+            // 
+            // BtnAbrirTelaLicencaUnidanfe
+            // 
+            this.BtnAbrirTelaLicencaUnidanfe.Location = new System.Drawing.Point(8, 582);
+            this.BtnAbrirTelaLicencaUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAbrirTelaLicencaUnidanfe.Name = "BtnAbrirTelaLicencaUnidanfe";
+            this.BtnAbrirTelaLicencaUnidanfe.Size = new System.Drawing.Size(296, 37);
+            this.BtnAbrirTelaLicencaUnidanfe.TabIndex = 35;
+            this.BtnAbrirTelaLicencaUnidanfe.Text = "Abrir tela licenças UniDANFe";
+            this.BtnAbrirTelaLicencaUnidanfe.UseVisualStyleBackColor = true;
+            this.BtnAbrirTelaLicencaUnidanfe.Click += new System.EventHandler(this.BtnAbrirTelaLicencaUnidanfe_Click);
             // 
             // FormTestes
             // 
@@ -1233,7 +1245,6 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnConsultaSituacaoMDFe;
         private System.Windows.Forms.Button BtnConsultaStatusMDFe;
         private System.Windows.Forms.Button BtnImprimirDANFe;
-        private System.Windows.Forms.Button BtnExecutarTelaConfigDANFe;
         private System.Windows.Forms.Button BtnGerarNFCeContingenciaOFFLine;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button BtnEnviarCancNFSe;
@@ -1299,6 +1310,8 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnEnviarEConsultarESocial;
         private System.Windows.Forms.Button BtnDesserializarNFeB2B;
         private System.Windows.Forms.Button BtnEventoEPECCTe;
+        private System.Windows.Forms.Button BtnAbrirTeleConfigUnidanfe;
+        private System.Windows.Forms.Button BtnAbrirTelaLicencaUnidanfe;
     }
 }
 

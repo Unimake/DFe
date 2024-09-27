@@ -2090,7 +2090,8 @@ namespace TreinamentoDLL
                 Arquivo = arqXMLNFCe,
                 Copias = 1,
                 Visualizar = true,
-                Imprimir = false
+                Imprimir = false,
+                PastaConfiguracao = @"d:\testenfe\unidanfe"
             };
 
             DANFe.UnidanfeServices.Execute(config);
@@ -6085,6 +6086,18 @@ namespace TreinamentoDLL
                     //Quando o evento é rejeitado pela Sefaz.
                     break;
             }
+        }
+
+        private void BtnAbrirTeleConfigUnidanfe_Click(object sender, EventArgs e)
+        {
+            //Abrir a tela de configuração do UNIDANFE
+            UnidanfeServices.ShowConfigurationScreen(@"d:\testenfe\unidanfe");
+        }
+
+        private void BtnAbrirTelaLicencaUnidanfe_Click(object sender, EventArgs e)
+        {
+            //Abrir a tela de licenças do UNIDANFE:
+            UnidanfeServices.ShowLicencaScreen(@"d:\testenfe\unidanfe");
         }
     }
 }
