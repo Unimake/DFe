@@ -29,5 +29,14 @@
 			<ContentType>text/json</ContentType>
 			<MetodoAPI>post</MetodoAPI>
 		</EnvioDARELote>
+		<ReceitasDARE versao="1.00">
+			<Descricao>Serviço de consumo da API do receitas do DARE</Descricao>
+			<RequestURIHomologacao>https://apigateway-hml.fazenda.sp.gov.br/dare-icms/receitas</RequestURIHomologacao>
+			<RequestURIProducao>https://apigateway.fazenda.sp.gov.br/dare-icms/receitas</RequestURIProducao>
+			<WebSoapString></WebSoapString>
+			<WebTagRetorno>prop:Innertext</WebTagRetorno>
+			<ContentType>text/json</ContentType>
+			<MetodoAPI>post</MetodoAPI>
+		</ReceitasDARE>
 	</Servicos>
 </Configuracoes>
