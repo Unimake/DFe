@@ -1099,13 +1099,16 @@ namespace Unimake.Business.DFe.Xml.MDFe
                                <indPag>{infPag.IndPagField}</indPag>
                                <vAdiant>{infPag.VAdiantField}</vAdiant>";
 
-                foreach (var infPrazo in infPag.InfPrazo)
+                if (infPag.InfPrazo != null)
                 {
-                    writeRaw += $@"<infPrazo>
+                    foreach (var infPrazo in infPag.InfPrazo)
+                    {
+                        writeRaw += $@"<infPrazo>
                                    <nParcela>{infPrazo.NParcela}</nParcela>
                                    <dVenc>{infPrazo.DVencField}</dVenc>
                                    <vParcela>{infPrazo.VParcelaField}</vParcela>
                                    </infPrazo>";
+                    }
                 }
 
                 writeRaw += $@"<infBanc>";
