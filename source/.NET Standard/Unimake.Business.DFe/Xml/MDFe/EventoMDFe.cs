@@ -1231,6 +1231,8 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlRoot(ElementName = "infPag")]
     public class PagtoOperMDFeInfPag : InfContratante
     {
+        private int IndAntecipaAdiantField;
+
         [XmlElement("Comp")]
         public List<Comp> Comp { get; set; }
 
@@ -1264,12 +1266,51 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VAdiant = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Indicador para declarar concordância em antecipar o adiantamento (Informar a tag somente se for autorizado antecipar o adiantamento)
+        /// </summary>
+        [XmlElement("indAntecipaAdiant")]
+        public int IndAntecipaAdiant
+        {
+            get => IndAntecipaAdiantField;
+            set
+            {
+                if (value != 1)
+                {
+                    throw new Exception("Conteúdo da TAG <indAntecipaAdiant> inválido! Valores aceitos: 1 ou não informe a TAG.");
+                }
+
+                IndAntecipaAdiantField = value;
+            }
+        }
+
         [XmlElement("infPrazo")]
         public List<InfPrazo> InfPrazo { get; set; }
 
+        /// <summary> 
+        /// Tipo de Permissão em relação a antecipação das parcelas
+        /// </summary>
+        [XmlElement("tpAntecip")]
+#if INTEROP
+        public TipoPermissaoAtencipacaoParcela TpAntecip { get; set; } = (TipoPermissaoAtencipacaoParcela)(-1);
+#else
+        public TipoPermissaoAtencipacaoParcela? TpAntecip { get; set; }
+#endif
 
         [XmlElement("infBanc")]
         public InfBanc InfBanc { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeIndAntecipaAdiant() => IndAntecipaAdiant == 1;
+
+#if INTEROP
+        public bool ShouldSerializeTpAntecip() => TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1);
+#else
+        public bool ShouldSerializeTpAntecip() => TpAntecip != null;
+#endif
+
+        #endregion 
 
 #if INTEROP
 
@@ -1582,7 +1623,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlIgnore]
         public string Latitude
         {
-            get => EventoMDFeRegPassagemAuto.Latitude ;
+            get => EventoMDFeRegPassagemAuto.Latitude;
             set => EventoMDFeRegPassagemAuto.Latitude = value;
         }
 
@@ -1637,7 +1678,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
     {
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Registro de Passagem Automático";
-                
+
         [XmlElement("tpTransm", Order = 1)]
         public string TpTransm { get; set; }
 
@@ -1651,7 +1692,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string XIdEquip { get; set; }
 
         [XmlElement("tpEquip", Order = 1)]
-        public string TpEquip { get; set; }        
+        public string TpEquip { get; set; }
 
         [XmlElement("placa", Order = 1)]
         public string Placa { get; set; }
