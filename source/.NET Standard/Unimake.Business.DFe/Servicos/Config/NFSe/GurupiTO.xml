@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-
 <Configuracoes>
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.02">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://gurupito.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://gurupito.webiss.com.br/ws/nfse.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
