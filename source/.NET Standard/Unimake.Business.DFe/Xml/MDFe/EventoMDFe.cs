@@ -1096,8 +1096,12 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 }
 
                 writeRaw += $@"<vContrato>{infPag.VContratoField}</vContrato>
-                               <indPag>{infPag.IndPagField}</indPag>
-                               <vAdiant>{infPag.VAdiantField}</vAdiant>";
+                               <indPag>{infPag.IndPagField}</indPag>";
+
+                if (infPag.IndPag == IndicadorPagamento.PagamentoPrazo)
+                {
+                    writeRaw += $@"<vAdiant>{infPag.VAdiantField}</vAdiant>";
+                }
 
                 if (infPag.InfPrazo != null)
                 {
