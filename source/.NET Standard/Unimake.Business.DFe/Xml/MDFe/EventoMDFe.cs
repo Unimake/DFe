@@ -552,6 +552,40 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        private void PrepararInfPag2(XmlDocument xmlDoc)
+        {
+            var infPags = xmlDoc.GetElementsByTagName("infPag");
+
+            if (!(infPags?.Count > 0))
+            {
+                return;
+            }
+
+            if (InfEvento.DetEvento is DetEventoAlteracaoPagtoServMDFe detEvento)
+            {
+                detEvento.InfPag = new List<AlteracaoPagtoServMDFeInfPag>();
+
+                foreach (var elementInfPag in infPags.Cast<XmlElement>())
+                {
+                    detEvento.InfPag.Add(new AlteracaoPagtoServMDFeInfPag
+                    {
+                        XNome = elementInfPag.GetValue<string>(nameof(AlteracaoPagtoServMDFeInfPag.XNome)),
+                        CNPJ = elementInfPag.GetValue<string>(nameof(AlteracaoPagtoServMDFeInfPag.CNPJ)),
+                        CPF = elementInfPag.GetValue<string>(nameof(AlteracaoPagtoServMDFeInfPag.CPF)),
+                        IdEstrangeiro = elementInfPag.GetValue<string>(nameof(AlteracaoPagtoServMDFeInfPag.IdEstrangeiro)),
+                        VContrato = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(AlteracaoPagtoServMDFeInfPag.VContrato)), true),
+                        IndPag = elementInfPag.GetValue<IndicadorPagamento>(nameof(AlteracaoPagtoServMDFeInfPag.IndPag)),
+                        VAdiant = UConvert.ToDouble(elementInfPag.GetValue<string>(nameof(AlteracaoPagtoServMDFeInfPag.VAdiant)), true)
+                    });
+
+                    PrepararComp2(elementInfPag);
+                    PrepararInfPrazo2(elementInfPag);
+                    PrepararInfBanc2(elementInfPag);
+                }
+            }
+        }
+
+
         private void PrepararComp(XmlElement xmlDoc)
         {
             var comps = xmlDoc.GetElementsByTagName("Comp");
@@ -562,6 +596,31 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
 
             if (InfEvento.DetEvento is DetEventoPagtoOperMDFe detEvento)
+            {
+                detEvento.InfPag[detEvento.InfPag.Count - 1].Comp = new List<Comp>();
+
+                foreach (var elComp in comps.Cast<XmlElement>())
+                {
+                    detEvento.InfPag[detEvento.InfPag.Count - 1].Comp.Add(new Comp
+                    {
+                        TpComp = elComp.GetValue<TipoComponenteMDFe>(nameof(Comp.TpComp)),
+                        VCompField = elComp.GetValue<string>(nameof(Comp.VComp)),
+                        XComp = elComp.GetValue<string>(nameof(Comp.XComp))
+                    });
+                }
+            }
+        }
+
+        private void PrepararComp2(XmlElement xmlDoc)
+        {
+            var comps = xmlDoc.GetElementsByTagName("Comp");
+
+            if (!(comps?.Count > 0))
+            {
+                return;
+            }
+
+            if (InfEvento.DetEvento is DetEventoAlteracaoPagtoServMDFe detEvento)
             {
                 detEvento.InfPag[detEvento.InfPag.Count - 1].Comp = new List<Comp>();
 
@@ -600,6 +659,29 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        private void PrepararInfBanc2(XmlElement xmlDoc)
+        {
+            var infBanc = xmlDoc.GetElementsByTagName("infBanc");
+
+            if (!(infBanc?.Count > 0))
+            {
+                return;
+            }
+
+            if (InfEvento.DetEvento is DetEventoAlteracaoPagtoServMDFe detEvento)
+            {
+                var infBancElement = ((XmlElement)infBanc[0]);
+
+                detEvento.InfPag[detEvento.InfPag.Count - 1].InfBanc = new InfBanc
+                {
+                    CNPJIPEF = infBancElement.GetValue<string>(nameof(InfBanc.CNPJIPEF)),
+                    CodAgencia = infBancElement.GetValue<string>(nameof(InfBanc.CodAgencia)),
+                    CodBanco = infBancElement.GetValue<string>(nameof(InfBanc.CodBanco)),
+                    PIX = infBancElement.GetValue<string>(nameof(InfBanc.PIX))
+                };
+            }
+        }
+
         private void PrepararInfPrazo(XmlElement xmlDoc)
         {
             var infPrazos = xmlDoc.GetElementsByTagName("infPrazo");
@@ -610,6 +692,31 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
 
             if (InfEvento.DetEvento is DetEventoPagtoOperMDFe detEvento)
+            {
+                detEvento.InfPag[detEvento.InfPag.Count - 1].InfPrazo = new List<InfPrazo>();
+
+                foreach (var elInfPrazo in infPrazos.Cast<XmlElement>())
+                {
+                    detEvento.InfPag[detEvento.InfPag.Count - 1].InfPrazo.Add(new InfPrazo
+                    {
+                        DVencField = elInfPrazo.GetValue<string>(nameof(InfPrazo.DVenc)),
+                        NParcela = elInfPrazo.GetValue<string>(nameof(InfPrazo.NParcela)),
+                        VParcelaField = elInfPrazo.GetValue<string>(nameof(InfPrazo.VParcela)),
+                    });
+                }
+            }
+        }
+
+        private void PrepararInfPrazo2(XmlElement xmlDoc)
+        {
+            var infPrazos = xmlDoc.GetElementsByTagName("infPrazo");
+
+            if (!(infPrazos?.Count > 0))
+            {
+                return;
+            }
+
+            if (InfEvento.DetEvento is DetEventoAlteracaoPagtoServMDFe detEvento)
             {
                 detEvento.InfPag[detEvento.InfPag.Count - 1].InfPrazo = new List<InfPrazo>();
 
@@ -682,6 +789,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 case "110116":
                     PrepararInfViagens(document);
                     PrepararInfPag(document);
+                    break;
+
+                case "110118":
+                    PrepararInfPag2(document);
                     break;
 
                 case "110114":
@@ -1802,16 +1913,23 @@ namespace Unimake.Business.DFe.Xml.MDFe
                 }
 
                 writeRaw += $@"<vContrato>{infPag.VContratoField}</vContrato>
-                               <indPag>{infPag.IndPagField}</indPag>
-                               <vAdiant>{infPag.VAdiantField}</vAdiant>";
+                               <indPag>{infPag.IndPagField}</indPag>";
 
-                foreach (var infPrazo in infPag.InfPrazo)
+                if (infPag.IndPag == IndicadorPagamento.PagamentoPrazo)
                 {
-                    writeRaw += $@"<infPrazo>
+                    writeRaw += $"<vAdiant>{infPag.VAdiantField}</vAdiant>";
+                }
+
+                if (infPag.InfPrazo != null)
+                {
+                    foreach (var infPrazo in infPag.InfPrazo)
+                    {
+                        writeRaw += $@"<infPrazo>
                                    <nParcela>{infPrazo.NParcela}</nParcela>
                                    <dVenc>{infPrazo.DVencField}</dVenc>
                                    <vParcela>{infPrazo.VParcelaField}</vParcela>
                                    </infPrazo>";
+                    }
                 }
 
                 writeRaw += $@"<infBanc>";
