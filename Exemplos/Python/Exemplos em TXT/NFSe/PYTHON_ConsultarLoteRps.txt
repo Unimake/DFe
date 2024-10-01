@@ -1,0 +1,58 @@
+# type: ignore
+import xml.etree.ElementTree as ET
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Exceptions import ThrowHelper
+from Unimake.Business.DFe.Servicos.NFSe import *
+
+def consultar_lote_rps():
+    print("Enviando a consulta lote rps...")
+    
+    # Criar configuração básica
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFSe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    oConfig.CodigoMunicipio    = 9999903 # Código padrão BETHA na DLL
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.Servico            = Servico.NFSeConsultarLoteRps
+    oConfig.SchemaVersao       = "2.02"  
+    
+    #region Criar XML
+    
+    # Registrar namespace vazio para evitar o "ns0"
+    ET.register_namespace('', "http://www.betha.com.br/e-nota-contribuinte-ws")
+    
+    # Namespace do XML
+    ns = "http://www.betha.com.br/e-nota-contribuinte-ws"
+    
+    # Elemento raiz
+    consultar_lote_rps = ET.Element(f"{{{ns}}}ConsultarLoteRpsEnvio")
+    
+    # Grupo Prestador
+    prestador = ET.SubElement(consultar_lote_rps, "Prestador")
+    cpf_cnpj_prestador = ET.SubElement(prestador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_prestador, "Cnpj").text = "99999999999999"
+    ET.SubElement(prestador, "InscricaoMunicipal").text = "99999999999999"
+    
+    # Protocolo
+    ET.SubElement(consultar_lote_rps, "Protocolo").text = "9999999999999999999999999999"
+    
+    #endregion Criar XML
+    
+    # Converter para string XML
+    xml_str = ET.tostring(consultar_lote_rps, encoding = 'unicode', method = 'xml')
+    
+    print(xml_str)
+    
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oConsultarLoteRps = ConsultarLoteRps() # Unimake.Business.DFe.Servicos.NFSe.ConsultarLoteRps
+        oConsultarLoteRps.Executar(xml_str, oConfig)
+        
+        return print("\nXML retornado pela prefeitura: ", oConsultarLoteRps.RetornoWSString)
+    except Exception as e:
+        print("Erro ao consultar lote rps: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

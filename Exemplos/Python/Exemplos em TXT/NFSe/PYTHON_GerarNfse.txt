@@ -1,0 +1,130 @@
+# type: ignore
+import xml.etree.ElementTree as ET
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Exceptions import ThrowHelper
+from Unimake.Business.DFe.Servicos.NFSe import *
+
+def gerar_nfse():
+    print("Enviando o gerar NFSe...")
+    
+    # Criar configuração básica
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFSe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    oConfig.CodigoMunicipio    = 9999903 # Código padrão BETHA na DLL
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.Servico            = Servico.NFSeGerarNfse
+    oConfig.SchemaVersao       = "2.02"
+    
+    #region Criar XML
+    
+    # Registrar namespace vazio para evitar o "ns0"
+    ET.register_namespace('', "http://www.betha.com.br/e-nota-contribuinte-ws")
+    
+    # Namespace do XML
+    ns = "http://www.betha.com.br/e-nota-contribuinte-ws"
+    
+    # Elemento raiz
+    gerar_nfse = ET.Element(f"{{{ns}}}GerarNfseEnvio")
+    
+    # Rps
+    rps                              = ET.SubElement(gerar_nfse, "Rps")
+    inf_declaracao_prestacao_servico = ET.SubElement(rps, "InfDeclaracaoPrestacaoServico", Id="lote")
+    rps_dados                        = ET.SubElement(inf_declaracao_prestacao_servico, "Rps")
+    
+    # Grupo IdentificacaoRps
+    identificacao_rps                               = ET.SubElement(rps_dados, "IdentificacaoRps")
+    ET.SubElement(identificacao_rps, "Numero").text = "1"
+    ET.SubElement(identificacao_rps, "Serie").text  = "A"
+    ET.SubElement(identificacao_rps, "Tipo").text   = "1"
+    
+    ET.SubElement(rps_dados, "DataEmissao").text = "2024-10-01"
+    ET.SubElement(rps_dados, "Status").text      = "1"
+    
+    ET.SubElement(inf_declaracao_prestacao_servico, "Competencia").text = "2024-10-01"
+    
+    # Grupo Servico
+    servico = ET.SubElement(inf_declaracao_prestacao_servico, "Servico")
+    
+    # Subgrupo Valores
+    valores                                               = ET.SubElement(servico, "Valores")
+    ET.SubElement(valores, "ValorServicos").text          = "1.00"
+    ET.SubElement(valores, "ValorDeducoes").text          = "0.00"
+    ET.SubElement(valores, "ValorPis").text               = "0.00"
+    ET.SubElement(valores, "ValorCofins").text            = "0.00"
+    ET.SubElement(valores, "ValorInss").text              = "0.00"
+    ET.SubElement(valores, "ValorIr").text                = "0.00"
+    ET.SubElement(valores, "ValorCsll").text              = "0.00"
+    ET.SubElement(valores, "OutrasRetencoes").text        = "0.00"
+    ET.SubElement(valores, "ValorIss").text               = "0.00"
+    ET.SubElement(valores, "Aliquota").text               = "0.00"
+    ET.SubElement(valores, "DescontoIncondicionado").text = "0.00"
+    ET.SubElement(valores, "DescontoCondicionado").text   = "0.00"
+    
+    ET.SubElement(servico, "IssRetido").text                 = "1"
+    ET.SubElement(servico, "ResponsavelRetencao").text       = "1"
+    ET.SubElement(servico, "ItemListaServico").text          = "14.01"
+    ET.SubElement(servico, "CodigoCnae").text                = "1234567"
+    ET.SubElement(servico, "CodigoTributacaoMunicipio").text = "12345678"
+    ET.SubElement(servico, "Discriminacao").text             = "TESTESTESTESTESTESTESTES"
+    ET.SubElement(servico, "CodigoMunicipio").text           = "1234567"
+    ET.SubElement(servico, "CodigoPais").text                = "1058"
+    ET.SubElement(servico, "ExigibilidadeISS").text          = "1"
+    ET.SubElement(servico, "MunicipioIncidencia").text       = "1234567"
+    
+    # Grupo Prestador
+    prestador                                           = ET.SubElement(inf_declaracao_prestacao_servico, "Prestador")
+    cpf_cnpj_prestador                                  = ET.SubElement(prestador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_prestador, "Cnpj").text      = "12345678901234"
+    ET.SubElement(prestador, "InscricaoMunicipal").text = "123456"
+    
+    # Grupo Tomador
+    tomador = ET.SubElement(inf_declaracao_prestacao_servico, "Tomador")
+    
+    # Subgrupo IdentificacaoTomador
+    identificacao_tomador                                           = ET.SubElement(tomador, "IdentificacaoTomador")
+    cpf_cnpj_tomador                                                = ET.SubElement(identificacao_tomador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_tomador, "Cnpj").text                    = "06117473000150"
+    ET.SubElement(identificacao_tomador, "InscricaoMunicipal").text = "987654"
+    
+    ET.SubElement(tomador, "RazaoSocial").text = "TESTE DE ENVIO"
+    
+    # Subgrupo Endereco
+    endereco = ET.SubElement(tomador, "Endereco")
+    ET.SubElement(endereco, "Endereco").text        = "RUA TESTE"
+    ET.SubElement(endereco, "Numero").text          = "1"
+    ET.SubElement(endereco, "Complemento").text     = "TESTE"
+    ET.SubElement(endereco, "Bairro").text          = "TESTE"
+    ET.SubElement(endereco, "CodigoMunicipio").text = "1234567"
+    ET.SubElement(endereco, "Uf").text              = "PR"
+    ET.SubElement(endereco, "CodigoPais").text      = "1058"
+    ET.SubElement(endereco, "Cep").text             = "12345678"
+    
+    # Subgrupo Contato
+    contato                                 = ET.SubElement(tomador, "Contato")
+    ET.SubElement(contato, "Telefone").text = "123456789"
+    ET.SubElement(contato, "Email").text    = "TESTE@TESTES.COM"
+    
+    ET.SubElement(inf_declaracao_prestacao_servico, "RegimeEspecialTributacao").text  = "1"
+    ET.SubElement(inf_declaracao_prestacao_servico, "OptanteSimplesNacional").text    = "2"
+    ET.SubElement(inf_declaracao_prestacao_servico, "IncentivoFiscal").text           = "1"
+    
+    #endregion Criar XML
+    
+    xml_string = ET.tostring(gerar_nfse, encoding = 'unicode', method = 'xml')
+    
+    print(xml_string)
+    
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oGerarNfse = GerarNfse() # Unimake.Business.DFe.Servicos.NFSe.GerarNfse
+        oGerarNfse.Executar(xml_string, oConfig)
+        
+        return print("\nXML retornado pela prefeitura: ", oGerarNfse.RetornoWSString)
+    except Exception as e:
+        print("Erro ao gerar NFSe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
