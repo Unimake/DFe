@@ -16,54 +16,25 @@ namespace Unimake.DFe.Test.DARE
         [Trait("DFe", "ESocial")]
         [InlineData(TipoAmbiente.Producao)]
         [InlineData(TipoAmbiente.Homologacao)]
-        public void ReceitasDare(TipoAmbiente tipoAmbiente)
+        public void ReceitasDareTest(TipoAmbiente tipoAmbiente)
         {
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.DARE,
                 TipoAmbiente = tipoAmbiente,
-                Servico = Servico.DAREEnvio,
-                CertificadoDigital = PropConfig.CertificadoDigital,
-                SchemaVersao = "1.031230",
-                ApiKey = "jArkFGc5dxkxGjdmVQK7FiPQ2EJQqi7J"
-            };
-
-            var RD = new Business.DFe.Xml.DARE.Receitas
-            {
-
-            };
-
-            var Receita = new Business.DFe.Servicos.DARE.EnvioDARE(/*NÃO SEI*/, configuracao);
-            ReceitaDARE.Executar();
-        }
-
-        /// <summary>
-        /// Testar o consumo da API do receitas do DARE
-        /// </summary>
-        [Theory]
-        [Trait("DFe", "ESocial")]
-        [InlineData(TipoAmbiente.Producao)]
-        [InlineData(TipoAmbiente.Homologacao)]
-        public void DAREEnvioLote(TipoAmbiente tipoAmbiente)
-        {
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.DARE,
-                TipoAmbiente = tipoAmbiente,
-                Servico = Servico.DAREEnvio,
+                Servico = Servico.DAREReceita,
                 CertificadoDigital = PropConfig.CertificadoDigital,
                 SchemaVersao = "1.00",
                 ApiKey = "jArkFGc5dxkxGjdmVQK7FiPQ2EJQqi7J"
             };
 
-            /* TEM A VER COM Receita*/ = new Business.DFe.Xml.DARE.ReceitaDARE
+            var consulta = new Business.DFe.Xml.DARE.Receitas
             {
-                Codigo = "001",
-                CodigoServicoDARE = "101",
-                EscopoUso = "1",
-                Nome = "Receita Exemplo"
-
+                Consulta = "CONSULTAR RECEITA"
             };
+
+            var receitaDARE = new Business.DFe.Servicos.DARE.ReceitasDARE(consulta, configuracao);
+            receitaDARE.Executar();
         }
     }
 }

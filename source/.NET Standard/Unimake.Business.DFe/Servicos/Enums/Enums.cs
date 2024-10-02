@@ -449,6 +449,16 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DARE Receita")]
         DAREReceita = 73,
+
+        #endregion
+
+        #region Gerais
+
+        /// <summary>
+        /// 9999 - Serviço não definido
+        /// </summary>
+        Nulo = 9999
+
         #endregion
     }
 

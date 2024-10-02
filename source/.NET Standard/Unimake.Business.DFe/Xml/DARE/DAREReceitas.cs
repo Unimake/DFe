@@ -23,6 +23,9 @@ namespace Unimake.Business.DFe.Xml.DARE
     public class Receitas : XMLBase
     {
 
+        [XmlElement("consulta")]
+        public string Consulta { get; set; }
+
         [XmlElement("Receita")]
         public List<ReceitaDARE> Receita { get; set; }
 #if INTEROP
