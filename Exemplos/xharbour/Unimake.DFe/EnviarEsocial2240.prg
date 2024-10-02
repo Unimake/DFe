@@ -150,17 +150,21 @@ Function EnviarEsocial2240()
       ? "CdResposta:", oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:CdResposta
 	  ? "DescResposta:", oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:DescResposta
 	  ?
-	  ? "Ocorrencias:"
-	  ?
-	  For x = 1 To oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:Ocorrencias:GetOcorrenciaCount()
-	     oOcorrencia := oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:Ocorrencias:GetOcorrencia(x-1)
+	  
+	  if oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:Ocorrencias != nil
+         ? "Ocorrencias:"
+         ?
+
+         For x := 1 To oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:Ocorrencias:GetOcorrenciaCount()
+            oOcorrencia:= oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:Ocorrencias:GetOcorrencia(x - 1)
 		 
-		 ? AllTrim(Str(x,3)) + ")"
-		 ? "Tipo:", oOcorrencia:Tipo
-		 ? "Codigo:", oOcorrencia:Codigo
-		 ? "Descricao:", oOcorrencia:Descricao
-		 ? "Localizacao:", oOcorrencia:Localizacao
-	  Next x
+		    ? AllTrim(Str(x, 3)) + ")"
+		    ? "Tipo:", oOcorrencia:Tipo
+		    ? "Codigo:", oOcorrencia:Codigo
+		    ? "Descricao:", oOcorrencia:Descricao
+		    ? "Localizacao:", oOcorrencia:Localizacao
+         Next x
+      Endif		 
 	  
       Wait
       Cls

@@ -29,7 +29,7 @@ Function EnviarEsocial2220()
       oESocialEnvioLoteEventos := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos")      
 
       oEnvioLoteEventosESocial := CreateObject("Unimake.Business.DFe.Xml.ESocial.EnvioLoteEventosESocial")
-      oEnvioLoteEventosESocial:Grupo := "1"
+      oEnvioLoteEventosESocial:Grupo := "2"
       
       oIdeEmpregador := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")
       oIdeEmpregador:tpInsc := 1 //TiposInscricao.CNPJ
@@ -58,9 +58,6 @@ Function EnviarEsocial2220()
 	  oIdeEvento2220:VerProc := "SGOWIN_Versao24091"
 	  oEvtMonit:IdeEvento := oIdeEvento2220
 	  
-	  oIdeEmpregador := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")
-      oIdeEmpregador:tpInsc := 1 //TiposInscricao.CNPJ
-      oIdeEmpregador:nrInsc := "47592225"
       oEvtMonit:IdeEmpregador := oIdeEmpregador
 	  
 	  oIdeVinculo := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
@@ -74,12 +71,41 @@ Function EnviarEsocial2220()
 	  oAso := CreateObject("Unimake.Business.DFe.Xml.ESocial.Aso")
 	  oAso:DtAsoField := "2024-08-30"
 	  oAso:ResAso := 1 //ResAso.Apto
+      
+      * Primeiro Exame
 	  
 	  oExame := CreateObject("Unimake.Business.DFe.Xml.ESocial.Exame")
 	  oExame:DtExmField := "2024-08-30"
 	  oExame:procRealizado := "0295"
 	  oExame:indResult := 1 //IndResult.Normal
 	  oAso:AddExame(oExame)
+
+      * Segundo exame
+      oExame:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Exame")
+      oExame:DtExmField   := "2024-08-30"
+      oExame:procRealizado:= "0704"
+      oExame:indResult    := 1 // IndResult.Normal
+      oAso:AddExame(oExame)
+
+      * Terceiro exame
+      oExame:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Exame")
+      oExame:DtExmField   := "2024-08-30"
+      oExame:procRealizado:= "0705"
+      oExame:indResult    := 1 // IndResult.Normal
+      oAso:AddExame(oExame)
+                                            
+      * Quarto exame
+      oExame:DtExmField   := "2024-08-30"
+      oExame:procRealizado:= "0733"
+      oExame:indResult    := 1 // IndResult.Normal
+      oAso:AddExame(oExame)
+                                           
+      * Quinto exame
+      oExame:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Exame")
+      oExame:DtExmField   := "2024-08-30"
+      oExame:procRealizado:= "0234"
+      oExame:indResult    := 1 // IndResult.Normal
+      oAso:AddExame(oExame)
 	  
 	  oMedico := CreateObject("Unimake.Business.DFe.Xml.ESocial.Medico")
 	  oMedico:nmMed := "Fulana de Tal"
@@ -99,6 +125,54 @@ Function EnviarEsocial2220()
       oESocial2220:EvtMonit := oEvtMonit
       
       oEventoESocial:ESocial2220 := oESocial2220
+      oEventosESocial:AddEvento(oEventoESocial)
+
+      * outro evento   
+      oEventoESocial:= CreateObject("Unimake.Business.DFe.Xml.ESocial.EventoESocial")
+      oEventoESocial:Id:= "ID1230985630000002024091310242800002"
+      
+      oESocial2220:= CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocial2220")
+
+      oEvtMonit:= CreateObject("Unimake.Business.DFe.Xml.ESocial.EvtMonit")
+      oEvtMonit:Id:= "ID1230985630000002024091310242800002"
+      
+      oEvtMonit:IdeEvento    := oIdeEvento2220
+      
+      oEvtMonit:IdeEmpregador:= oIdeEmpregador
+      
+      oIdeVinculo:= CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
+      oIdeVinculo:CpfTrab  := "22321798858"
+      oIdeVinculo:Matricula:= "66"
+      oEvtMonit:IdeVinculo := oIdeVinculo
+      
+      oExMedOcup:= CreateObject("Unimake.Business.DFe.Xml.ESocial.ExMedOcup")
+      oExMedOcup:TpExameOcup:= 1 //TpExameOcup.ExamePeriodico
+      
+      oAso:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Aso")
+      oAso:DtAsoField:= "2024-08-30"
+      oAso:ResAso    := 1 //ResAso.Apto
+      
+      oExame:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Exame")
+      oExame:DtExmField   := "2024-08-30"
+      oExame:procRealizado:= "0295"
+      oExame:indResult    := 1 // IndResult.Normal
+      oAso:AddExame(oExame)
+    
+      oMedico:= CreateObject("Unimake.Business.DFe.Xml.ESocial.Medico")
+      oMedico:nmMed := "Fteste"
+      oMedico:nrCRM := "654321"
+      oMedico:ufCRM := 35 // UFBrasil.SP
+      oAso:Medico   := oMedico
+      oExMedOcup:Aso:= oAso
+      
+      oExMedOcup:RespMonit:= oRespMonit
+      
+      oEvtMonit:ExMedOcup:= oExMedOcup
+      
+      oESocial2220:EvtMonit:= oEvtMonit
+
+      **** comum daqui para baixo   
+      oEventoESocial:ESocial2220:= oESocial2220
       oEventosESocial:AddEvento(oEventoESocial)
       oEnvioLoteEventosESocial:Eventos:= oEventosESocial
       oESocialEnvioLoteEventos:EnvioLoteEventos:= oEnvioLoteEventosESocial
