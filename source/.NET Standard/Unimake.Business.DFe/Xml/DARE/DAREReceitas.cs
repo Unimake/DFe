@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.DARE
 {
@@ -15,6 +13,7 @@ namespace Unimake.Business.DFe.Xml.DARE
     [ProgId("Unimake.Business.DFe.Xml.DARE.Receitas")]
     [ComVisible(true)]
 #endif
+
     /// <summary>
     /// Classe para serialização e deserialização para Receitas - DARE SP
     /// </summary>

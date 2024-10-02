@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Exceptions;
+using Unimake.Business.DFe.Xml.DARE;
 
 namespace Unimake.Business.DFe.Servicos.DARE
 {
@@ -38,7 +39,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Unimake.Business.DFe.Xml.DARE.DARE ReceitasDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Receitas ReceitasDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {

@@ -138,9 +138,11 @@ namespace Unimake.Business.DFe.Xml.DARE
         #endregion DARE RETORNO POSITIVO LOTE
 
         #region ShouldSerialize
+
         public bool ShouldSerializeDataVencimentoStringField() => !string.IsNullOrEmpty(DataVencimentoField);
         public bool ShouldSerializeDataVencimentoField() => DataVencimento > DateTime.MinValue;
         public bool ShouldSerializeGerarPDFField() => GerarPDF != null;
+
         #endregion ShouldSerialize
     }
 
@@ -155,16 +157,17 @@ namespace Unimake.Business.DFe.Xml.DARE
     public class ReceitaDARERetorno
     {
         [XmlElement("codigo")]
-        public string codigo { get; set; }
+        public string Codigo { get; set; }
 
         [XmlElement("codigoServicoDARE")]
-        public string codigoServicoDARE { get; set; }
+        public string CodigoServicoDARE { get; set; }
 
         [XmlElement("nome")]
-        public string nome { get; set; }
+        public string Nome { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeNomeField() => !string.IsNullOrWhiteSpace(nome);
+        public bool ShouldSerializeNome() => !string.IsNullOrWhiteSpace(Nome);
+
         #endregion ShouldSerialize
     }
     #endregion Receita DARE Retorno
@@ -332,10 +335,10 @@ namespace Unimake.Business.DFe.Xml.DARE
         public DateTimeOffset DataVencimento { get; set; }
 #endif
 
-        [XmlElement("DataVencimento")]
+        [XmlElement("dataVencimento")]
         public string DataVencimentoField
         {
-            get => DataVencimento.ToString("yyyy-MM-dd");
+            get => DataVencimento.ToString("yyyy-MM-ddTHH:mm:ss");
 #if INTEROP
             set => DataVencimento = DateTime.Parse(value);
 #else
