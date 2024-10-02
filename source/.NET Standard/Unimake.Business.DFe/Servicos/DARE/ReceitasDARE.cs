@@ -3,10 +3,9 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
-using Unimake.Business.DFe.Xml.DARE;
 using Unimake.Exceptions;
 
-namespace Unimake.Business.DFe.Servicos.DARE.ReceitasDARE
+namespace Unimake.Business.DFe.Servicos.DARE
 {
     /// <summary>
     /// Enviar o xml para o webservice
@@ -21,7 +20,7 @@ namespace Unimake.Business.DFe.Servicos.DARE.ReceitasDARE
         /// <summary>
         /// 
         /// </summary>
-        public ReceitasDARE(Unimake.Business.DFe.Xml.DARE.DARE consulta, Configuracao configuracao)
+        public ReceitasDARE(Unimake.Business.DFe.Xml.DARE.Receitas consulta, Configuracao configuracao)
         {
             if (configuracao is null)
             {
@@ -84,14 +83,13 @@ namespace Unimake.Business.DFe.Servicos.DARE.ReceitasDARE
         /// <exception cref="NotImplementedException"></exception>
         protected override void DefinirConfiguracao()
         {
-            var xml = new Unimake.Business.DFe.Xml.DARE.DARE();
-            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.DARE>(ConteudoXML);
+            var xml = new Unimake.Business.DFe.Xml.DARE.Receitas();
+            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.Receitas>(ConteudoXML);
 
             if (!Configuracoes.Definida)
             {
-                Configuracoes.Servico = Servico.DAREEnvio;
+                Configuracoes.Servico = Servico.DAREReceita;
                 Configuracoes.CodigoUF = (int)UFBrasil.AN;
-                Configuracoes.SchemaVersao = xml.Versao;
 
                 base.DefinirConfiguracao();
             }

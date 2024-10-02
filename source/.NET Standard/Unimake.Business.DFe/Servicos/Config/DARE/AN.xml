@@ -36,7 +36,7 @@
 			<WebSoapString></WebSoapString>
 			<WebTagRetorno>prop:Innertext</WebTagRetorno>
 			<ContentType>text/json</ContentType>
-			<MetodoAPI>post</MetodoAPI>
+			<MetodoAPI>get</MetodoAPI>
 		</ReceitasDARE>
 	</Servicos>
 </Configuracoes>

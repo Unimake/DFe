@@ -22,8 +22,9 @@ namespace Unimake.Business.DFe.Xml.DARE
     [XmlRoot("Receitas")]
     public class Receitas : XMLBase
     {
-        [XmlElement("Receita")]        
-        public List<ReceitaDARE>  Receita { get; set; }
+
+        [XmlElement("Receita")]
+        public List<ReceitaDARE> Receita { get; set; }
 #if INTEROP
 
         /// <summary>
@@ -88,6 +89,7 @@ namespace Unimake.Business.DFe.Xml.DARE
 
         public bool ShouldSerializeCodigo() => !string.IsNullOrEmpty(Codigo);
         public bool ShouldSerializeNome() => !string.IsNullOrEmpty(Nome);
+
         #endregion ShouldSerialize
     }
 }

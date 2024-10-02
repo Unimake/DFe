@@ -443,15 +443,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DARE Envio Unitário")]
         DAREEnvio = 72,
-        #endregion
-
-        #region Gerais
 
         /// <summary>
-        /// 9999 - Serviço não definido
+        /// Serviço de consumo da API do receitas do DARE
         /// </summary>
-        Nulo = 9999
-
+        [Description("DARE Receita")]
+        DAREReceita = 73,
         #endregion
     }
 
