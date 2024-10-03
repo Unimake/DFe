@@ -3,8 +3,8 @@
 	<Servicos ID="NFe">
 		<StatusServico versao="4.00">
 			<Descricao>Consulta situação do serviço da nota fiscal eletrônica</Descricao>
-			<WebEnderecoHomologacao>https://hom.svc.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://www.svc.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://hom.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeStatusServico4</WebActionProducao>
 			<SchemaArquivo>consStatServ_v{0}.xsd</SchemaArquivo>
@@ -15,8 +15,8 @@
 		</StatusServico>
 		<ConsultaProtocolo versao="4.00">
 			<Descricao>Consulta situação da nota fiscal eletrônica</Descricao>
-			<WebEnderecoHomologacao>https://hom.svc.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://www.svc.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://hom.sefazvirtual.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefazvirtual.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeConsultaProtocolo4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeConsultaProtocolo4</WebActionProducao>
 			<SchemaArquivo>consSitNFe_v{0}.xsd</SchemaArquivo>
@@ -27,8 +27,8 @@
 		</ConsultaProtocolo>
 		<Inutilizacao versao="4.00">
 			<Descricao>Inutilização de números da nota fiscal eletrônica</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://hom.sefazvirtual.fazenda.gov.br/NFeInutilizacao4/NFeInutilizacao4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao4/NFeInutilizacao4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeInutilizacao4</WebActionProducao>
 			<SchemaArquivo>inutNFe_v{0}.xsd</SchemaArquivo>
@@ -51,8 +51,8 @@
 		</ConsultaCadastro>
 		<RecepcaoEvento versao="1.00">
 			<Descricao>Recepcao de eventos</Descricao>
-			<WebEnderecoHomologacao>https://hom.svc.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://www.svc.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://hom.sefazvirtual.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefazvirtual.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -110,8 +110,8 @@
 		</RecepcaoEvento>
 		<Autorizacao versao="4.00">
 			<Descricao>Autorização da NFe</Descricao>
-			<WebEnderecoHomologacao>https://hom.svc.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://www.svc.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://hom.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeAutorizacao4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeAutorizacao4</WebActionProducao>
 			<SchemaArquivo>enviNFe_v{0}.xsd</SchemaArquivo>
@@ -122,8 +122,8 @@
 		</Autorizacao>
 		<RetAutorizacao versao="4.00">
 			<Descricao>Consulta recibo da nota fiscal eletrônica</Descricao>
-			<WebEnderecoHomologacao>https://hom.svc.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://www.svc.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://hom.sefazvirtual.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.sefazvirtual.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionProducao>
 			<SchemaArquivo>consReciNFe_v{0}.xsd</SchemaArquivo>
