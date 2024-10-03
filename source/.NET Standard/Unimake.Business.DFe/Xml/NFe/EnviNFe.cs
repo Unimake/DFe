@@ -302,6 +302,8 @@ namespace Unimake.Business.DFe.Xml.NFe
                 ChaveField = XMLUtility.MontarChaveNFe(ref conteudoChaveDFe);
                 Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
+                InfRespTec.GerarHashCSRT(ChaveField);
+
                 return ChaveField;
             }
             set => throw new Exception("Não é permitido atribuir valor para a propriedade Chave. Ela é calculada automaticamente.");
@@ -8656,6 +8658,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class InfRespTec
     {
         private string XContatoField;
+        private string HashCSRTField;
 
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
@@ -8676,14 +8679,55 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("idCSRT")]
         public string IdCSRT { get; set; }
 
-        [XmlElement("hashCSRT", DataType = "base64Binary")]
-        public byte[] HashCSRT { get; set; }
+        /// <summary>
+        /// Você pode informar o conteúdo já convertido para Sha1Hash + Base64, ou pode informar somente a concatenação do CSRT + Chave de Acesso que a DLL já converte para Sha1Hash + Base64
+        /// </summary>
+        [XmlElement("hashCSRT")]
+        public string HashCSRT
+        {
+
+            get
+            {
+                if (string.IsNullOrWhiteSpace(HashCSRTField) || Converter.IsSHA1Base64(HashCSRTField))
+                {
+                    return HashCSRTField;
+                }
+                else
+                {
+                    return Converter.CalculateSHA1Hash(HashCSRTField);
+                }
+            }
+            set => HashCSRTField = value;
+        }
+
+        /// <summary>
+        /// Esta propriedade deve ser utilizada para informar o CSRT sem o hast, informando ela a DLL irá gerar o conteúdo da tag <hashCSRT> automaticamente
+        /// </summary>
+        [XmlIgnore]
+        public string CSRT { get; set; }
+
+        /// <summary>
+        /// Gerar o conteúdo da tag HashCSRT
+        /// </summary>
+        /// <param name="chaveAcesso"></param>
+        public void GerarHashCSRT(string chaveAcesso)
+        {
+            if (string.IsNullOrWhiteSpace(CSRT))
+            {
+                return;
+            }
+
+            if (!Converter.IsSHA1Base64(HashCSRT))
+            {
+                HashCSRT = Converter.CalculateSHA1Hash(CSRT + chaveAcesso);
+            }
+        }
 
         #region ShouldSerialize
 
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
-        public bool ShouldSerializeHashCSRT() => HashCSRT != null;
+        public bool ShouldSerializeHashCSRT() => !string.IsNullOrWhiteSpace(HashCSRT);
 
         #endregion
     }

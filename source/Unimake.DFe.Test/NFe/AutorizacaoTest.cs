@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NFe;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
@@ -297,6 +299,29 @@ namespace Unimake.DFe.Test.NFe
                     }
             };
 
+            var idCSRT = "01";
+            var CSRT = "G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO";
+            var hashCSRT = Converter.CalculateSHA1Hash("G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO41180678393592000146558900000006041028190697");
+
+            switch (ufBrasil)
+            {
+                case UFBrasil.PR:
+                    xml.NFe[0].InfNFe[0].InfRespTec.IdCSRT = idCSRT;
+                    xml.NFe[0].InfNFe[0].InfRespTec.HashCSRT = hashCSRT;
+                    break;
+
+                case UFBrasil.SP:
+                    xml.NFe[0].InfNFe[0].InfRespTec.IdCSRT = idCSRT;
+                    xml.NFe[0].InfNFe[0].InfRespTec.CSRT = CSRT;
+                    break;
+
+                case UFBrasil.RS:
+                    xml.NFe[0].InfNFe[0].InfRespTec.IdCSRT = idCSRT;
+                    xml.NFe[0].InfNFe[0].InfRespTec.HashCSRT = "G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO41180678393592000146558900000006041028190697";
+                    break;
+            }
+
+
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.NFe,
@@ -305,6 +330,39 @@ namespace Unimake.DFe.Test.NFe
             };
 
             var autorizacao = new Autorizacao(xml, configuracao);
+
+            XmlElement elementInfRespTec = null;
+
+            #region Testar o hashCSRT
+            switch (ufBrasil)
+            {
+                case UFBrasil.PR:
+                    elementInfRespTec = (XmlElement)autorizacao.ConteudoXMLAssinado.GetElementsByTagName("infRespTec")[0];
+                    Assert.True(elementInfRespTec.GetElementsByTagName("idCSRT")[0].InnerText == idCSRT, "idCSRT informado está diferente do valor gerado no XML.");
+                    Assert.True(elementInfRespTec.GetElementsByTagName("hashCSRT")[0].InnerText == Converter.CalculateSHA1Hash("G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO41180678393592000146558900000006041028190697"), "hasCSRT informado está diferente do valor gerado no XML.");
+                    break;
+
+                case UFBrasil.SP:
+                    elementInfRespTec = (XmlElement)autorizacao.ConteudoXMLAssinado.GetElementsByTagName("infRespTec")[0];
+                    Assert.True(elementInfRespTec.GetElementsByTagName("idCSRT")[0].InnerText == idCSRT, "idCSRT informado está diferente do valor gerado no XML.");
+                    Assert.True(elementInfRespTec.GetElementsByTagName("hashCSRT")[0].InnerText == Converter.CalculateSHA1Hash(CSRT + xml.NFe[0].InfNFe[0].Chave), "hasCSRT informado está diferente do valor gerado no XML.");
+                    break;
+
+                case UFBrasil.RS:
+                    elementInfRespTec = (XmlElement)autorizacao.ConteudoXMLAssinado.GetElementsByTagName("infRespTec")[0];
+                    Assert.True(elementInfRespTec.GetElementsByTagName("idCSRT")[0].InnerText == idCSRT, "idCSRT informado está diferente do valor gerado no XML.");
+                    Assert.True(elementInfRespTec.GetElementsByTagName("hashCSRT")[0].InnerText == Converter.CalculateSHA1Hash("G8063VRTNDMO886SFNK5LDUDEI24XJ22YIPO41180678393592000146558900000006041028190697"), "hasCSRT informado está diferente do valor gerado no XML.");
+                    break;
+
+                default:
+                    elementInfRespTec = (XmlElement)autorizacao.ConteudoXMLAssinado.GetElementsByTagName("infRespTec")[0];
+                    Assert.True(elementInfRespTec.GetElementsByTagName("idCSRT").Count <= 0, "Não pode existir tag <idCSRT> no XML");
+                    Assert.True(elementInfRespTec.GetElementsByTagName("hashCSRT").Count <= 0, "Não pode existir tag <hashCSRT> no XML");
+                    break;
+            }
+
+            #endregion
+
             autorizacao.Executar();
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
