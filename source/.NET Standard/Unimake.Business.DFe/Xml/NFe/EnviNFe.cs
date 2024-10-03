@@ -302,7 +302,10 @@ namespace Unimake.Business.DFe.Xml.NFe
                 ChaveField = XMLUtility.MontarChaveNFe(ref conteudoChaveDFe);
                 Ide.CDV = conteudoChaveDFe.DigitoVerificador;
 
-                InfRespTec.GerarHashCSRT(ChaveField);
+                if (InfRespTec != null)
+                {
+                    InfRespTec.GerarHashCSRT(ChaveField);
+                }
 
                 return ChaveField;
             }
