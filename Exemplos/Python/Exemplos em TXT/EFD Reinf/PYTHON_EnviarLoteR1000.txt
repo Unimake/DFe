@@ -1,0 +1,171 @@
+# type: ignore
+from config_dll import inicializar_DLL
+from datetime import datetime
+
+from System import DateTime
+
+from Unimake.Business.DFe.Servicos import *
+import Unimake.Business.DFe.Xml.EFDReinf as XmlREINF
+import Unimake.Business.DFe.Servicos.EFDReinf as ServicosREINF
+from Unimake.Exceptions import ThrowHelper
+
+
+def enviar_lote_r1000():
+    print("Enviando o lote do evento R-1000...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.EFDReinf
+    oConfig.Servico            = Servico.EFDReinfRecepcionarLoteAssincrono
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar o XML do lote
+    oReinfEnvioLoteEventos = XmlREINF.ReinfEnvioLoteEventos()
+    
+    oEnvioLoteEventos = XmlREINF.EnvioLoteEventosReinf()     
+    # Grupo IdeContribuinte
+    oIdeContribuinte        = XmlREINF.IdeContribuinte()
+    oIdeContribuinte.TpInsc = TiposInscricao.CNPJ
+    oIdeContribuinte.NrInsc = "12345678000145"
+    
+    # Adicionar IdeContribuinte ao oEnvioLoteEventos
+    oEnvioLoteEventos.IdeContribuinte = oIdeContribuinte
+    
+    # Grupo eventos
+    oEventosReinf = XmlREINF.EventosReinf()
+    
+    oEventoReinf    = XmlREINF.EventoReinf()
+    oEventoReinf.ID = "ID1000000000000002021052608080800001"
+    
+    #region Evento 1000
+    
+    # Criar o objeto do evento 1000
+    oReinf1000 = XmlREINF.Reinf1000()
+    
+    oEvtInfoContri    = XmlREINF.EvtInfoContri()
+    oEvtInfoContri.ID = "ID1000000000000002021052608080654321"
+    
+    # Criar o IdeEvento
+    oIdeEvento         = XmlREINF.IdeEvento()
+    oIdeEvento.TpAmb   = TipoAmbiente.Homologacao
+    oIdeEvento.ProcEmi = ProcessoEmissaoReinf.AplicativoContribuinte
+    oIdeEvento.VerProc = "150"
+    
+    # Adicionar o objeto IdeEvento dentro de EvtInfoContri
+    oEvtInfoContri.IdeEvento = oIdeEvento
+    
+    # Criar o IdeContri
+    oIdeContri        = XmlREINF.IdeContri()
+    oIdeContri.TpInsc = TiposInscricao.CNPJ
+    oIdeContri.NrInsc = "12345678901234"
+    
+    # Adicionar o objeto IdeContri dentro de EvtInfoContri
+    oEvtInfoContri.IdeContri = oIdeContri
+    
+    # Criar o InfoContri
+    oInfoContri = XmlREINF.InfoContri()
+    
+    oInclusao = XmlREINF.Inclusao1000()
+    
+    oIdePeriodo          = XmlREINF.IdePeriodo()
+    oIdePeriodo.IniValid = "2021-05"
+    
+    # Adicionar o objeto IdePeriodo dentro de oInclusao
+    oInclusao.IdePeriodo = oIdePeriodo
+    
+    oInfoCadastro                    = XmlREINF.InfoCadastro()
+    oInfoCadastro.ClassTrib          = ClassificacaoTributaria.PessoaJuridica
+    oInfoCadastro.IndEscrituracao    = IndicativoEscrituracao.Obrigada
+    oInfoCadastro.IndDesoneracao     = IndicativoDesoneracao.NaoAplicavel
+    oInfoCadastro.IndAcordoIsenMulta = IndicativoIsencaoMulta.ComAcordo
+    oInfoCadastro.IndSitPJ           = IndicativoSituacaoPJ.Extincao
+    oInfoCadastro.IndUniao           = IndicativoUniao.NaoAplicavel
+    oInfoCadastro.DtTransFinsLucr    = DateTime(2024, 10, 2)
+    oInfoCadastro.DtObito            = DateTime(2024, 10, 2)
+    
+    oContato          = XmlREINF.Contato()
+    oContato.NmCtt    = "NMCTT1"
+    oContato.CpfCtt   = "12345678901"
+    oContato.FoneFixo = "1234567890"
+    oContato.FoneCel  = "12345678901"
+    oContato.Email    = "TESTE@TESTE.COM"
+    
+    # Adicionar o objeto oContato dentro de oInfoCadastro
+    oInfoCadastro.Contato = oContato
+    
+    oSoftHouse               = XmlREINF.SoftHouse()
+    oSoftHouse.CnpjSoftHouse = "12345678901234"
+    oSoftHouse.NmRazao       = "TESTE"
+    oSoftHouse.NmCont        = "TESTE"
+    oSoftHouse.Telefone      = "1234567890"
+    oSoftHouse.Email         = "TESTE@TESTE.COM"
+    
+    # Adicionar o objeto oSoftHouse dentro de oInfoCadastro
+    oInfoCadastro.AddSoftHouse(oSoftHouse)
+    
+    oInfoEFR         = XmlREINF.InfoEFR()
+    oInfoEFR.IdeEFR  = SimNaoLetra.Sim
+    oInfoEFR.CnpjEFR = "12345678901234"
+    
+    # Adicionar o objeto oInfoEFR dentro de oInfoCadastro
+    oInfoCadastro.InfoEFR = oInfoEFR
+    
+    # Adicionar oInfoCadastro dentro de oInclusao
+    oInclusao.InfoCadastro = oInfoCadastro
+    
+    # Adicionar oInclusao dentro de InfoContri
+    oInfoContri.Inclusao = oInclusao
+    
+    # Adicionar oInfoContri dentro de EvtInfoContri
+    oEvtInfoContri.InfoContri = oInfoContri
+    
+    # Adicionar oEvtInfoContri dentro de Evento1000
+    oReinf1000.EvtInfoContri = oEvtInfoContri    
+    
+    #endregion Evento 1000
+    
+    # Adicionar oReinf1000 dentro de EventoReinf
+    oEventoReinf.Reinf1000 = oReinf1000
+    
+    # Adicionar EventoReinf dentro de EventosReinf
+    oEventosReinf.AddEvento(oEventoReinf)
+    
+    # Adicionar EventosReinf dentro de EnvioLoteEventos
+    oEnvioLoteEventos.Eventos = oEventosReinf
+    
+    # Adicionar oEnvioLoteEventos dentro de ReinfEnvioLoteEventos
+    oReinfEnvioLoteEventos.EnvioLoteEventos = oEnvioLoteEventos
+    
+    # Criar objeto para pegar a exceção do lado CHARP
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oRecepcionarLoteAssincrono = ServicosREINF.RecepcionarLoteAssincrono()
+        oRecepcionarLoteAssincrono.Executar(oReinfEnvioLoteEventos, oConfig)
+        
+        # Evento assinado
+        eventoAssinado = oRecepcionarLoteAssincrono.GetConteudoXMLAssinado()
+        print("\nXML do Lote: ", eventoAssinado)
+        
+        if (oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 1): # Lote está aguardando processamento
+            # Aqui você deve armazenar o protocolo que é retornado para ser utilizado na consulta lote depois
+            protocoloEnvio = oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.DadosRecepcaoLote.ProtocoloEnvio
+            
+            print("Protocolo: ", protocoloEnvio)
+            
+        elif (oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 7): # Lote não foi recebido pois possui ocorrências a serem corrigidas
+            # Aqui você deve verificar as ocorrências e corrigi-las antes de enviar
+            print("\nXML retornado: ", oRecepcionarLoteAssincrono.RetornoWSString)
+            
+        elif (oRecepcionarLoteAssincrono.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 99): # Erro interno da EFD Reinf
+            print("Erro interno no REINF! Aguarde alguns minutos e tente novamente!")
+            
+        else:
+            print("\nDemais tratamentos")
+            
+    except Exception as e:
+        print("Erro ao enviar o lote do R-1000: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
+    

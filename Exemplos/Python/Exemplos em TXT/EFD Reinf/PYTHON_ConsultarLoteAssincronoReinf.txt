@@ -1,0 +1,63 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+import Unimake.Business.DFe.Servicos.EFDReinf as ServicosREINF
+import Unimake.Business.DFe.Xml.EFDReinf as XmlREINF
+from Unimake.Exceptions import ThrowHelper
+
+def consultar_lote_assincrono_reinf():
+    
+    print("Enviando a consulta lote...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.EFDReinf
+    oConfig.Servico            = Servico.EFDReinfConsultaLoteAssincrono
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    #region Criar XML
+    
+    oReinfConsultaLoteAssincrono        = XmlREINF.ReinfConsultaLoteAssincrono() # Unimake.Business.DFe.Xml.EFDReinf.ReinfConsultaLoteAssincrono
+    
+    oConsultaLoteAssincrono                 = XmlREINF.ConsultaLoteAssincrono() # Unimake.Business.DFe.Xml.EFDReinf.ConsultaLoteAssincrono
+    oConsultaLoteAssincrono.NumeroProtocolo = "2.202402.5467553"
+    
+    oReinfConsultaLoteAssincrono.ConsultaLoteAssincrono = oConsultaLoteAssincrono
+    
+    #endregion Criar XML
+    
+    # Criar objeto para pegar a exceção do lado CHARP
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oConsultaLoteReinf = ServicosREINF.ConsultaLoteAssincrono(oReinfConsultaLoteAssincrono, oConfig) # Unimake.Business.DFe.Servicos.EFDReinf.ConsultaLoteAssincrono        
+        oConsultaLoteReinf.Executar()
+        
+        # print("Cód. Resposta: ", oConsultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta)
+        # print("Descrição: ", oConsultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.DescResposta)
+        
+        if (oConsultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 1): # Lote ainda aguardando processamento
+            print("Lote ainda aguardando processamento")
+        
+        elif (oConsultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 2): # O lote foi processado. Todos os eventos foram processados com sucesso
+            oConsultaLoteReinf.GravarXmlDistribuicao("src\\REINF\\XMLs")
+        
+        elif (oConsultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 3): # O lote foi processado. Possui um ou mais eventos com ocorrências
+            # Nesse retorno pode ter acontecido duas coisas:
+            ## 1) Todos os eventos deram algum tipo de erro
+            ## 2) Alguns eventos foram transmitidos e outros deram problema
+            # Aqui você pode pedir para gerar o XML de distribuição normalmente para aqueles eventos que foram transmitidos e cuidar para 
+            # reenviar os eventos que deram erro
+            oConsultaLoteReinf.GravarXmlDistribuicao("src\\REINF\\XMLs")
+            
+        elif (oConsultaLoteReinf.Result.RetornoLoteEventosAssincrono.Status.CdResposta == 8): # Consulta não executada - Verificar ocorrências
+            print("Consulta não executada - Verificar ocorrências")
+            print("\nXML retornado: ", oConsultaLoteReinf.RetornoWSString)
+        
+    except Exception as e:
+        print("Erro ao consultar lote assíncrono: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
+    
