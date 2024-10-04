@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.DARE
 {
@@ -15,6 +13,7 @@ namespace Unimake.Business.DFe.Xml.DARE
     [ProgId("Unimake.Business.DFe.Xml.DARE.Receitas")]
     [ComVisible(true)]
 #endif
+
     /// <summary>
     /// Classe para serialização e deserialização para Receitas - DARE SP
     /// </summary>
@@ -22,8 +21,12 @@ namespace Unimake.Business.DFe.Xml.DARE
     [XmlRoot("Receitas")]
     public class Receitas : XMLBase
     {
-        [XmlElement("Receita")]        
-        public List<ReceitaDARE>  Receita { get; set; }
+
+        [XmlElement("consulta")]
+        public string Consulta { get; set; }
+
+        [XmlElement("Receita")]
+        public List<ReceitaDARE> Receita { get; set; }
 #if INTEROP
 
         /// <summary>
@@ -88,6 +91,7 @@ namespace Unimake.Business.DFe.Xml.DARE
 
         public bool ShouldSerializeCodigo() => !string.IsNullOrEmpty(Codigo);
         public bool ShouldSerializeNome() => !string.IsNullOrEmpty(Nome);
+
         #endregion ShouldSerialize
     }
 }

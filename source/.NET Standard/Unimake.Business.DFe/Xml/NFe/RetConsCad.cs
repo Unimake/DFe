@@ -4,6 +4,7 @@
 using System.Runtime.InteropServices;
 #endif
 using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -88,7 +89,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlElement("infCad")]
-        public InfCad InfCad { get; set; }
+        public List<InfCad> InfCad { get; set; }
 
         #region ShouldSerialize
 
@@ -96,6 +97,45 @@ namespace Unimake.Business.DFe.Xml.NFe
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
         #endregion
+
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfCad(InfCad item)
+        {
+            if (InfCad == null)
+            {
+                InfCad = new List<InfCad>();
+            }
+
+            InfCad.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfCad (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfCad</returns>
+        public InfCad GetInfCad(int index)
+        {
+            if ((InfCad?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfCad[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfCad
+        /// </summary>
+        public int GetInfCadCount => (InfCad != null ? InfCad.Count : 0);
+
+#endif
     }
 
 #if INTEROP

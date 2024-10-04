@@ -1,0 +1,61 @@
+# type: ignore
+import xml.etree.ElementTree as ET
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Exceptions import ThrowHelper
+from Unimake.Business.DFe.Servicos.NFSe import *
+
+def consultar_nfse_rps():
+    print("Enviando a consulta NFSe por RPS...")
+    
+    # Criar configuração básica
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFSe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    oConfig.CodigoMunicipio    = 9999903 # Código padrão BETHA na DLL
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.Servico            = Servico.NFSeConsultarNfsePorRps
+    oConfig.SchemaVersao       = "2.02"
+    
+    #region Criar XML
+    
+    # Registrar namespace vazio para evitar o "ns0"
+    ET.register_namespace('', "http://www.betha.com.br/e-nota-contribuinte-ws")
+    
+    # Namespace do XML
+    ns = "http://www.betha.com.br/e-nota-contribuinte-ws"
+    
+    # Elemento raiz
+    consultar_nfse_rps = ET.Element(f"{{{ns}}}ConsultarNfseRpsEnvio")
+    
+    # Grupo IdentificacaoRps
+    identificacao_rps = ET.SubElement(consultar_nfse_rps, "IdentificacaoRps")
+    ET.SubElement(identificacao_rps, "Numero").text = "24"
+    ET.SubElement(identificacao_rps, "Serie").text = "A1"
+    ET.SubElement(identificacao_rps, "Tipo").text = "1"
+    
+    # Grupo prestador
+    prestador = ET.SubElement(consultar_nfse_rps, "Prestador")
+    cpf_cpnj = ET.SubElement(prestador, "CpfCnpj")
+    ET.SubElement(cpf_cpnj, "Cnpj").text = "99999999999999"
+    ET.SubElement(prestador, "InscricaoMunicipal").text = "99999999999999"
+    
+    #endregion Criar XML
+    
+    # Converter para string XML
+    xml_string = ET.tostring(consultar_nfse_rps, encoding = 'unicode', method = 'xml')
+    
+    print(xml_string)
+    
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oConsultarNfsePorRps = ConsultarNfsePorRps() # Unimake.Business.DFe.Servicos.NFSe.ConsultarNfsePorRps
+        oConsultarNfsePorRps.Executar(xml_string, oConfig)
+        
+        return print("\nXML retornado pela prefeitura: ", oConsultarNfsePorRps.RetornoWSString)
+    except Exception as e:
+        print("Erro ao consultar NFSe por RPS: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

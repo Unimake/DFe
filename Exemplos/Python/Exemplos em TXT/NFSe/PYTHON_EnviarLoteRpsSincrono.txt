@@ -1,0 +1,213 @@
+# type: ignore
+import xml.etree.ElementTree as ET
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Exceptions import ThrowHelper
+from Unimake.Business.DFe.Servicos.NFSe import *
+
+def enviar_lote_rps_sincrono():
+    print("Enviando o lote rps síncrono...")
+    
+    # Criar configuração básica
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFSe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    oConfig.CodigoMunicipio    = 9999903 # Código padrão BETHA na DLL
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.Servico            = Servico.NFSeRecepcionarLoteRpsSincrono
+    oConfig.SchemaVersao       = "2.02"
+    
+    #region Criar XML
+    
+    # Registrar namespace vazio para evitar o "ns0"
+    ET.register_namespace('', "http://www.betha.com.br/e-nota-contribuinte-ws")
+    
+    # Namespace do XML
+    ns = "http://www.betha.com.br/e-nota-contribuinte-ws"
+    
+    # Elemento raiz
+    enviar_lote = ET.Element(f"{{{ns}}}EnviarLoteRpsSincronoEnvio")
+    
+    # LoteRps
+    lote_rps = ET.SubElement(enviar_lote, "LoteRps", Id="ID11628", versao="2.02")
+    
+    # Dados do LoteRps
+    ET.SubElement(lote_rps, "NumeroLote").text            = "11628"
+    cpf_cnpj                                              = ET.SubElement(lote_rps, "CpfCnpj")
+    ET.SubElement(cpf_cnpj, "Cnpj").text                  = "99999999999999"
+    ET.SubElement(lote_rps, "InscricaoMunicipal").text    = "99999999999999"
+    ET.SubElement(lote_rps, "QuantidadeRps").text         = "2"
+    
+    # ListaRps
+    lista_rps = ET.SubElement(lote_rps, "ListaRps")
+    
+    #region RPS 1
+    rps = ET.SubElement(lista_rps, "Rps")
+    
+    # InfDeclaracaoPrestacaoServico
+    inf_declaracao = ET.SubElement(rps, "InfDeclaracaoPrestacaoServico", Id="ID1")
+    
+    # Rps
+    rps_dados                                         = ET.SubElement(inf_declaracao, "Rps")
+    identificacao_rps                                 = ET.SubElement(rps_dados, "IdentificacaoRps")
+    ET.SubElement(identificacao_rps, "Numero").text   = "1551"
+    ET.SubElement(identificacao_rps, "Serie").text    = "1"
+    ET.SubElement(identificacao_rps, "Tipo").text     = "1"
+    ET.SubElement(rps_dados, "DataEmissao").text      = "2021-07-27"
+    ET.SubElement(rps_dados, "Status").text           = "1"
+    
+    # Competencia
+    ET.SubElement(inf_declaracao, "Competencia").text = "2021-07-27"
+    
+    # Grupo Servico
+    servico = ET.SubElement(inf_declaracao, "Servico")
+    
+    # Subgrupo Valores
+    valores                                               = ET.SubElement(servico, "Valores")
+    ET.SubElement(valores, "ValorServicos").text          = "50.00"
+    ET.SubElement(valores, "ValorDeducoes").text          = "0.00"
+    ET.SubElement(valores, "ValorPis").text               = "0.00"
+    ET.SubElement(valores, "ValorCofins").text            = "0.00"
+    ET.SubElement(valores, "ValorInss").text              = "0.00"
+    ET.SubElement(valores, "ValorIr").text                = "0.00"
+    ET.SubElement(valores, "ValorCsll").text              = "0.00"
+    ET.SubElement(valores, "OutrasRetencoes").text        = "0.00"
+    ET.SubElement(valores, "DescontoIncondicionado").text = "0.00"
+    ET.SubElement(valores, "DescontoCondicionado").text   = "0.00"
+    
+    ET.SubElement(servico, "IssRetido").text              = "2"
+    ET.SubElement(servico, "ItemListaServico").text       = "1401"
+    ET.SubElement(servico, "Discriminacao").text          = "SERVICO DE CORTE E DOBRA A/c"
+    ET.SubElement(servico, "CodigoMunicipio").text        = "1111111"
+    ET.SubElement(servico, "ExigibilidadeISS").text       = "1"
+    ET.SubElement(servico, "MunicipioIncidencia").text    = "1111111"
+    
+    # Grupo Prestador
+    prestador                                            = ET.SubElement(inf_declaracao, "Prestador")
+    cpf_cnpj_prestador                                   = ET.SubElement(prestador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_prestador, "Cnpj").text       = "99999999999999"
+    ET.SubElement(prestador, "InscricaoMunicipal").text  = "99999999999999"
+    
+    # Gupo Tomador
+    tomador                                        = ET.SubElement(inf_declaracao, "Tomador")
+    identificacao_tomador                          = ET.SubElement(tomador, "IdentificacaoTomador")
+    cpf_cnpj_tomador                               = ET.SubElement(identificacao_tomador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_tomador, "Cnpj").text   = "99999999999999"
+    
+    ET.SubElement(tomador, "RazaoSocial").text = "xxxxxxxx ALIMENTOS LTDA"
+    
+    # Subgrupo Endereco
+    endereco                                          = ET.SubElement(tomador, "Endereco")
+    ET.SubElement(endereco, "Endereco").text          = "ROD. xxxxx xxxxxxxxx"
+    ET.SubElement(endereco, "Numero").text            = "sn"
+    ET.SubElement(endereco, "Bairro").text            = "ZONA RURAL"
+    ET.SubElement(endereco, "CodigoMunicipio").text   = "1111111"
+    ET.SubElement(endereco, "Uf").text                = "PR"
+    ET.SubElement(endereco, "Cep").text               = "87706060"
+    
+    # Subgrupo Contato
+    contato                                  = ET.SubElement(tomador, "Contato")
+    ET.SubElement(contato, "Telefone").text  = "1111111111111"
+    ET.SubElement(contato, "Email").text     = "teste@hotmail.com"
+    
+    # Dados adicionais
+    ET.SubElement(inf_declaracao, "RegimeEspecialTributacao").text = "1"
+    ET.SubElement(inf_declaracao, "OptanteSimplesNacional").text   = "2"
+    ET.SubElement(inf_declaracao, "IncentivoFiscal").text          = "2"
+    
+    #endregion RPS 1
+    
+    #region RPS 2
+    
+    rps = ET.SubElement(lista_rps, "Rps")
+    
+    # InfDeclaracaoPrestacaoServico
+    inf_declaracao = ET.SubElement(rps, "InfDeclaracaoPrestacaoServico", Id="ID2")
+    
+    # Rps
+    rps_dados                                         = ET.SubElement(inf_declaracao, "Rps")
+    identificacao_rps                                 = ET.SubElement(rps_dados, "IdentificacaoRps")
+    ET.SubElement(identificacao_rps, "Numero").text   = "1551"
+    ET.SubElement(identificacao_rps, "Serie").text    = "1"
+    ET.SubElement(identificacao_rps, "Tipo").text     = "1"
+    ET.SubElement(rps_dados, "DataEmissao").text      = "2021-07-27"
+    ET.SubElement(rps_dados, "Status").text           = "1"
+    
+    # Competencia
+    ET.SubElement(inf_declaracao, "Competencia").text = "2021-07-27"
+    
+    # Grupo Servico
+    servico = ET.SubElement(inf_declaracao, "Servico")
+    
+    # Subgrupo Valores
+    valores                                               = ET.SubElement(servico, "Valores")
+    ET.SubElement(valores, "ValorServicos").text          = "50.00"
+    ET.SubElement(valores, "ValorDeducoes").text          = "0.00"
+    ET.SubElement(valores, "ValorPis").text               = "0.00"
+    ET.SubElement(valores, "ValorCofins").text            = "0.00"
+    ET.SubElement(valores, "ValorInss").text              = "0.00"
+    ET.SubElement(valores, "ValorIr").text                = "0.00"
+    ET.SubElement(valores, "ValorCsll").text              = "0.00"
+    ET.SubElement(valores, "OutrasRetencoes").text        = "0.00"
+    ET.SubElement(valores, "DescontoIncondicionado").text = "0.00"
+    ET.SubElement(valores, "DescontoCondicionado").text   = "0.00"
+    
+    ET.SubElement(servico, "IssRetido").text              = "2"
+    ET.SubElement(servico, "ItemListaServico").text       = "1401"
+    ET.SubElement(servico, "Discriminacao").text          = "SERVICO DE CORTE E DOBRA A/c"
+    ET.SubElement(servico, "CodigoMunicipio").text        = "1111111"
+    ET.SubElement(servico, "ExigibilidadeISS").text       = "1"
+    ET.SubElement(servico, "MunicipioIncidencia").text    = "1111111"
+    
+    # Grupo Prestador
+    prestador                                            = ET.SubElement(inf_declaracao, "Prestador")
+    cpf_cnpj_prestador                                   = ET.SubElement(prestador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_prestador, "Cnpj").text       = "99999999999999"
+    ET.SubElement(prestador, "InscricaoMunicipal").text  = "99999999999999"
+    
+    # Gupo Tomador
+    tomador                                        = ET.SubElement(inf_declaracao, "Tomador")
+    identificacao_tomador                          = ET.SubElement(tomador, "IdentificacaoTomador")
+    cpf_cnpj_tomador                               = ET.SubElement(identificacao_tomador, "CpfCnpj")
+    ET.SubElement(cpf_cnpj_tomador, "Cnpj").text   = "99999999999999"
+    
+    ET.SubElement(tomador, "RazaoSocial").text = "xxxxxxxx ALIMENTOS LTDA"
+    
+    # Subgrupo Endereco
+    endereco                                          = ET.SubElement(tomador, "Endereco")
+    ET.SubElement(endereco, "Endereco").text          = "ROD. xxxxx xxxxxxxxx"
+    ET.SubElement(endereco, "Numero").text            = "sn"
+    ET.SubElement(endereco, "Bairro").text            = "ZONA RURAL"
+    ET.SubElement(endereco, "CodigoMunicipio").text   = "1111111"
+    ET.SubElement(endereco, "Uf").text                = "PR"
+    ET.SubElement(endereco, "Cep").text               = "87706060"
+    
+    # Subgrupo Contato
+    contato                                  = ET.SubElement(tomador, "Contato")
+    ET.SubElement(contato, "Telefone").text  = "1111111111111"
+    ET.SubElement(contato, "Email").text     = "teste@hotmail.com"
+    
+    # Dados adicionais
+    ET.SubElement(inf_declaracao, "RegimeEspecialTributacao").text = "1"
+    ET.SubElement(inf_declaracao, "OptanteSimplesNacional").text   = "2"
+    ET.SubElement(inf_declaracao, "IncentivoFiscal").text          = "2"
+    
+    #endregion RPS 2
+    
+    # Converter para string XML
+    xml_str = ET.tostring(enviar_lote, encoding='unicode', method='xml')
+    
+    print(xml_str)
+    
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oRecepcionarLoteRpsSincrono = RecepcionarLoteRpsSincrono() # Unimake.Business.DFe.Servicos.NFSe.RecepcionarLoteRpsSincrono
+        oRecepcionarLoteRpsSincrono.Executar(xml_str, oConfig)
+        
+        return print("\nXML retornado pela prefeitura: ", oRecepcionarLoteRpsSincrono.RetornoWSString)
+    except Exception as e:
+        print("Erro ao enviar NFSe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

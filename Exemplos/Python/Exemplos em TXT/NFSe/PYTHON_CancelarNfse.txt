@@ -1,0 +1,65 @@
+# type: ignore
+import xml.etree.ElementTree as ET
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Exceptions import ThrowHelper
+from Unimake.Business.DFe.Servicos.NFSe import *
+
+def cancelar_nfse():
+    print("Enviando o cancelamento de NFSe...")
+    
+    # Criar configuração básica
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFSe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    oConfig.CodigoMunicipio    = 9999903 # Código padrão BETHA na DLL
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.Servico            = Servico.NFSeCancelarNfse
+    oConfig.SchemaVersao       = "2.02"
+    
+    #region Criar XML
+    
+    # Registrar namespace vazio para evitar o "ns0"
+    ET.register_namespace('', "http://www.betha.com.br/e-nota-contribuinte-ws")
+    
+    # Namespace do XML
+    ns = "http://www.betha.com.br/e-nota-contribuinte-ws"
+    
+    # Elemento raiz
+    cancelar_nfse = ET.Element(f"{{{ns}}}CancelarNfseEnvio")
+    
+    # Grupo Pedido
+    pedido = ET.SubElement(cancelar_nfse, "Pedido")
+    
+    # Subgrupo InfPedidoCancelamento
+    inf_pedido_cancelamento = ET.SubElement(pedido, "InfPedidoCancelamento", Id="C7000")
+    
+    # Subsubgrupo IdentificacaoNfse
+    identificacao_nfse = ET.SubElement(inf_pedido_cancelamento, "IdentificacaoNfse")
+    ET.SubElement(identificacao_nfse, "Numero").text = "58"
+    cpf_cnpj = ET.SubElement(identificacao_nfse, "CpfCnpj")
+    ET.SubElement(cpf_cnpj, "Cnpj").text = "99999999999999"
+    ET.SubElement(identificacao_nfse, "InscricaoMunicipal").text = "99999999999999"
+    ET.SubElement(identificacao_nfse, "CodigoMunicipio").text = "4204608"
+    
+    ET.SubElement(inf_pedido_cancelamento, "CodigoCancelamento").text = "1"
+    
+    #endregion Criar XML
+    
+    # Converter para string XML
+    xml_string = ET.tostring(cancelar_nfse, encoding = 'unicode', method = 'xml')
+    
+    print(xml_string)
+    
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oCancelarNfse = CancelarNfse() # Unimake.Business.DFe.Servicos.NFSe.CancelarNfse
+        oCancelarNfse.Executar(xml_string, oConfig)
+        
+        return print("\nXML retornado pela prefeitura: ", oCancelarNfse.RetornoWSString)
+    except Exception as e:
+        print("Erro ao cancelar NFSe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

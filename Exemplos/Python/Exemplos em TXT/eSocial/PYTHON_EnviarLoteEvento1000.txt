@@ -1,0 +1,184 @@
+# type: ignore
+from config_dll import inicializar_DLL
+from datetime import datetime
+
+from System import DateTime
+
+from Unimake.Business.DFe.Servicos import *
+import Unimake.Business.DFe.Xml.ESocial as XmlESocial
+import Unimake.Business.DFe.Servicos.ESocial as ServicosESocial
+from Unimake.Exceptions import ThrowHelper
+
+def enviar_lote_s1000():
+    print("Enviando o lote do evento S-1000...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.ESocial
+    oConfig.Servico            = Servico.ESocialEnviarLoteEventos
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar o XML do lote
+    oESocialEnvioLoteEventos = XmlESocial.ESocialEnvioLoteEventos()
+    
+    oEnvioLoteEventosESocial       = XmlESocial.EnvioLoteEventosESocial()
+    oEnvioLoteEventosESocial.Grupo = "1"
+    
+    # Grupo IdeEmpregador
+    oIdeEmpregador        = XmlESocial.IdeEmpregador()
+    oIdeEmpregador.TpInsc = TiposInscricao.CNPJ
+    oIdeEmpregador.NrInsc = "12345678901234"
+    
+    # Adicionar IdeEmpregador ao EnvioLoteEventosESocial
+    oEnvioLoteEventosESocial.IdeEmpregador = oIdeEmpregador
+    
+    # Grupo IdeTransmissor
+    oIdeTransmissor        = XmlESocial.IdeTransmissor()
+    oIdeTransmissor.TpInsc = TiposInscricao.CNPJ
+    oIdeTransmissor.NrInsc = "12345678901234"
+    
+    # Adicionar IdeTransmissor ao EnvioLoteEventosESocial
+    oEnvioLoteEventosESocial.IdeTransmissor = oIdeTransmissor
+    
+    # Grupo Eventos
+    oEventosESocial = XmlESocial.EventosESocial()
+    
+    # Grupo Evento
+    oEventoESocial    = XmlESocial.EventoESocial()
+    oEventoESocial.ID = "ID1230985630000002024090421022000001"
+    
+    #region Evento 1000
+    
+    # Criar o objeto do evento 1000
+    oEvento1000 = XmlESocial.ESocial1000()
+    
+    oEvtInfoEmpregador    = XmlESocial.EvtInfoEmpregador()
+    oEvtInfoEmpregador.ID = "ID1230985630000002024090421022000001"
+    
+    # Criar o IdeEvento
+    oIdeEvento1000         = XmlESocial.IdeEvento()
+    oIdeEvento1000.TpAmb   = TipoAmbiente.Homologacao
+    oIdeEvento1000.ProcEmi = ProcEmiESocial.AppDoEmpregador
+    oIdeEvento1000.VerProc = "1.1.0"
+    
+    # Adicionar o objeto IdeEvento dentro de EvtInfoEmpregador
+    oEvtInfoEmpregador.IdeEvento = oIdeEvento1000
+    
+    # Criar o IdeEmpregador do evento
+    oIdeEmpregador1000        = XmlESocial.IdeEmpregador()
+    oIdeEmpregador1000.TpInsc = TiposInscricao.CNPJ
+    oIdeEmpregador1000.NrInsc = "12345678901234"
+    
+    # Adicionar o objeto IdeEmpregador dentro de EvtInfoEmpregador
+    oEvtInfoEmpregador.IdeEmpregador = oIdeEmpregador1000
+    
+    # Criar o InfoEmpregador
+    oInfoEmpregador1000 = XmlESocial.InfoEmpregador()
+    
+    oInclusao = XmlESocial.InclusaoE1000()
+    
+    oIdePeriodo          = XmlESocial.IdePeriodo()
+    oIdePeriodo.IniValid = DateTime(2024, 10, 2)
+    oIdePeriodo.FimValid = DateTime(2024, 10, 3)
+    
+    # Adicionar o objeto IdePeriodo dentro de oInclusao
+    oInclusao.IdePeriodo = oIdePeriodo
+    
+    oInfoCadastro                  = XmlESocial.InfoCadastro()
+    oInfoCadastro.ClassTrib        = ClassificacaoTributaria.AdministracaoDiretaUniao
+    oInfoCadastro.IndCoop          = IndCoop.NaoCooperativa
+    oInfoCadastro.IndConstr        = IndConstr.EmpresaConstrutora
+    oInfoCadastro.IndDesFolha      = IndDesFolha.NaoAplicavel
+    oInfoCadastro.IndOptRegEletron = IndOptRegEletron.NaoOptou
+    
+    oDadosIsencao              = XmlESocial.DadosIsencao()
+    oDadosIsencao.IdeMinLei    = "teste"
+    oDadosIsencao.NrCertif     = "123456789"
+    oDadosIsencao.DtEmisCertif = DateTime(2024, 10, 2)
+    oDadosIsencao.DtVencCertif = DateTime(2024, 10, 2)
+    oDadosIsencao.NrProtRenov  = "123456789"
+    oDadosIsencao.DtProtRenov  = DateTime(2024, 10, 2)
+    oDadosIsencao.DtDou        = DateTime(2024, 10, 2)
+    oDadosIsencao.PagDou       = "123"
+    
+    # Adicionar o objeto DadosIsencao dentro de InfoCadastro
+    oInfoCadastro.DadosIsencao = oDadosIsencao
+    
+    oInfoOrgInternacional                    = XmlESocial.InfoOrgInternacional()
+    oInfoOrgInternacional.IndAcordoIsenMulta = IndAcordoIsenMulta.ComAcordo
+    
+    # Adicionar o objeto InfoOrgInternacional dentro de InfoCadastro
+    oInfoCadastro.InfoOrgInternacional = oInfoOrgInternacional
+    
+    # Adicionar o objeto EvtInfoEmpregador dentro de oEvento1000
+    oInclusao.InfoCadastro = oInfoCadastro
+    
+    # Adicionar o objeto oInclusao dentro de oInfoEmpregador1000
+    oInfoEmpregador1000.Inclusao = oInclusao
+    
+    # Adicionar o objeto InfoEmpregador1000 dentro de EvtInfoEmpregador
+    oEvtInfoEmpregador.InfoEmpregador = oInfoEmpregador1000
+    
+    # Adicionar o objeto EvtInfoEmpregador dentro de oEvento1000
+    oEvento1000.EvtInfoEmpregador = oEvtInfoEmpregador
+    
+    #endregion Evento 1000
+    
+    # Adicionar o objeto ESocial100 dentro de EventoESocial
+    oEventoESocial.ESocial1000 = oEvento1000
+    
+    # Adicionar EventoESocial ao EventosESocial
+    oEventosESocial.AddEvento(oEventoESocial)
+    
+    # Adicionar EventosESocial ao EnvioLoteEventosESocial
+    oEnvioLoteEventosESocial.Eventos = oEventosESocial
+    
+    # Adicionar EnvioLoteEventosESocial ao EnvioLoteEventos
+    oESocialEnvioLoteEventos.EnvioLoteEventos = oEnvioLoteEventosESocial
+    
+    # Criar objeto para pegar a exceção do lado CHARP
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oEnviarLoteEventosESocial = ServicosESocial.EnviarLoteEventosESocial()
+        oEnviarLoteEventosESocial.Executar(oESocialEnvioLoteEventos, oConfig)
+        
+        # Enviado evento assinado
+        eventoAssinado = oEnviarLoteEventosESocial.GetConteudoXMLAssinado()
+        print("\nXML do lote: ", eventoAssinado)    
+        
+        if (oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 201): # Lote Recebido com sucesso
+            # Aqui você deve armazenar o protocolo que é retornado para ser utilizado na consulta lote depois
+            protocoloEnvio = oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.DadosRecepcaoLote.ProtocoloEnvio
+            
+            print("Protocolo: ", protocoloEnvio)
+            
+        elif (oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 202): # Lote recebido com advertências
+            print("Lote recebido mas possui advertências, verifique!")
+            print("XML retornado: ", oEnviarLoteEventosESocial.RetornoWSString)
+            
+        elif (oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 203): # Lote recebido já foi recebido anteriormente e ainda está na fila de processamento
+            print("Lote recebido já foi recebido anteriormente e ainda está sendo processado")
+            
+        elif (oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 301): # Erro no servidor do eSocial
+            print("Erro no servidor do eSocial. Aguarde alguns minutos e envie novamente!")
+            
+        elif (oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 401 or 
+              oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 402 or 
+              oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 403 or 
+              oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 404 or 
+              oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 405 or 
+              oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 406 or 
+              oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta == 407): # Lote incorreto (Erro preenchimento, Schema inválido, Versão do SCHEMA não permitida, Erro certificado, Lote nulo ou vazio, Totalização em andamento, Empregador não autorizado a enviar)
+            print("\nCód. Resposta: ", oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.CdResposta)
+            print("Descricao: ", oEnviarLoteEventosESocial.Result.RetornoEnvioLoteEventos.Status.DescResposta)
+            print("\nXML retornado: ", oEnviarLoteEventosESocial.RetornoWSString)
+        
+        else:
+            print("\nDemais tratamentos")
+        
+    except Exception as e:
+        print("Erro ao enviar o lote do S-1000: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

@@ -72,6 +72,7 @@ namespace Unimake.DFe.Test.MDFe
         [Theory]
         [Trait("DFe", "MDFe")]
         [InlineData(@"..\..\..\MDFe\Resources\EventoMDFePagamentoOperacaoMDFe.xml")]
+        [InlineData(@"..\..\..\MDFe\Resources\EventoMDFeAlteracaoPagamentoServico.xml")]
         public void SerializacaoDeserializacaoEventoMDFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
@@ -113,7 +114,8 @@ namespace Unimake.DFe.Test.MDFe
         /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "MDFe")]
-        [InlineData(@"..\..\..\MDFe\Resources\procEventoMDFe_Encerramento_110112_01.xml")]
+        //[InlineData(@"..\..\..\MDFe\Resources\procEventoMDFe_Encerramento_110112_01.xml")]
+        [InlineData(@"..\..\..\MDFe\Resources\procEventoMDFe_AlteracaoPagamentoServico_110118_01.xml")]        
         public void SerializacaoDeserializacaoProcEventoMDFe(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

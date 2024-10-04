@@ -274,24 +274,6 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private EvEPECCTe _evEPECCTe;
 
-        internal override void SetValue(PropertyInfo pi)
-        {
-            if (pi.Name == nameof(InfEntrega))
-            {
-                XmlReader.Read();
-
-                Toma4 = new EvEPECCTeToma4();
-                Toma4.UF = XmlReader.GetValue<UFBrasil>(nameof(Toma4.UF));
-                Toma4.CNPJ = XmlReader.GetValue<string>(nameof(Toma4.CNPJ));
-                Toma4.CPF = XmlReader.GetValue<string>(nameof(Toma4.CPF));
-                Toma4.IE = XmlReader.GetValue<string>(nameof(Toma4.IE));
-
-                return;
-            }
-
-            base.SetValue(pi);
-        }
-
         [XmlElement(ElementName = "evEPECCTe", Order = 0)]
         public EvEPECCTe EvEPECCTe
         {
@@ -415,7 +397,6 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
-
         [XmlIgnore]
         public string DhEmiField
         {
@@ -432,7 +413,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 <xJust>{XJust}</xJust>
                 <vICMS>{VICMSField}</vICMS>";
 
-            if (VICMS > 0)
+            if (VICMSST > 0)
             {
                 writeRaw += $@"<vICMSST>{VICMSSTField}</vICMSST>";
             }
@@ -442,7 +423,7 @@ namespace Unimake.Business.DFe.Xml.CTe
 
             writeRaw += $@"<toma4>
                 <toma>{(int)Toma4.Toma}</toma>
-                <UF>{Toma4.UF}</UF>";
+                <UF>{Toma4.UF.ToString()}</UF>";
 
             if (!string.IsNullOrWhiteSpace(Toma4.CNPJ))
             {
@@ -461,14 +442,126 @@ namespace Unimake.Business.DFe.Xml.CTe
 
             writeRaw += $@"</toma4>
                 <modal>{((int)Modal).ToString().PadLeft(2, '0')}</modal>
-                <UFIni>{UFIni}</UFIni>
-                <UFFim>{UFFim}</UFFim>
+                <UFIni>{UFIni.ToString()}</UFIni>
+                <UFFim>{UFFim.ToString()}</UFFim>
                 <tpCTe>{(int)TpCTe}</tpCTe>
                 <dhEmi>{DhEmiField}</dhEmi>";
 
             writeRaw += $@"</evEPECCTe>";
 
             writer.WriteRaw(writeRaw);
+        }
+
+
+        internal override void ProcessReader()
+        {
+            if (XmlReader == null)
+            {
+                return;
+            }
+
+            var xml = new XmlDocument();
+            xml.Load(XmlReader);
+
+            if (xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versaoEvento") != null)
+            {
+                VersaoEvento = xml.GetElementsByTagName("detEvento")[0].Attributes.GetNamedItem("versaoEvento").Value;
+            }
+
+            if (xml.GetElementsByTagName("evEPECCTe").Count > 0)
+            {
+                var evEPECCTe = (XmlElement)xml.GetElementsByTagName("evEPECCTe")[0];
+
+                if (evEPECCTe.GetElementsByTagName("descEvento").Count > 0)
+                {
+                    DescEvento = evEPECCTe.GetElementsByTagName("descEvento")[0].InnerText;
+                }
+
+                if (evEPECCTe.GetElementsByTagName("xJust").Count > 0)
+                {
+                    XJust = evEPECCTe.GetElementsByTagName("xJust")[0].InnerText;
+                }
+
+                if (evEPECCTe.GetElementsByTagName("vICMS").Count > 0)
+                {
+                    VICMSField = evEPECCTe.GetElementsByTagName("vICMS")[0].InnerText;
+                }
+
+                if (evEPECCTe.GetElementsByTagName("vICMSST").Count > 0)
+                {
+                    VICMSSTField = evEPECCTe.GetElementsByTagName("vICMSST")[0].InnerText;
+                }
+
+                if (evEPECCTe.GetElementsByTagName("vTPrest").Count > 0)
+                {
+                    VTPrestField = evEPECCTe.GetElementsByTagName("vTPrest")[0].InnerText;
+                }
+
+                if (evEPECCTe.GetElementsByTagName("vCarga").Count > 0)
+                {
+                    VCargaField = evEPECCTe.GetElementsByTagName("vCarga")[0].InnerText;
+                }
+
+                if (evEPECCTe.GetElementsByTagName("toma4").Count > 0)
+                {
+                    Toma4 = new EvEPECCTeToma4();
+
+                    var toma4 = (XmlElement)evEPECCTe.GetElementsByTagName("toma4")[0];
+
+                    if (toma4.GetElementsByTagName("toma").Count > 0)
+                    {
+                        if (toma4.GetElementsByTagName("toma").Count > 0)
+                        {
+                            Toma4.Toma = (TomadorServicoCTe)Convert.ToInt32(toma4.GetElementsByTagName("toma")[0].InnerText);
+                        }
+
+                        if (toma4.GetElementsByTagName("UF").Count > 0)
+                        {
+                            Toma4.UF = (UFBrasil)Enum.Parse(typeof(UFBrasil), toma4.GetElementsByTagName("UF")[0].InnerText);
+                        }
+
+                        if (toma4.GetElementsByTagName("CNPJ").Count > 0)
+                        {
+                            Toma4.CNPJ = toma4.GetElementsByTagName("CNPJ")[0].InnerText;
+                        }
+
+                        if (toma4.GetElementsByTagName("CPF").Count > 0)
+                        {
+                            Toma4.CPF = toma4.GetElementsByTagName("CPF")[0].InnerText;
+                        }
+
+                        if (toma4.GetElementsByTagName("IE").Count > 0)
+                        {
+                            Toma4.IE = toma4.GetElementsByTagName("IE")[0].InnerText;
+                        }
+                    }
+                }
+
+                if (evEPECCTe.GetElementsByTagName("modal").Count > 0)
+                {
+                    Modal = (ModalidadeTransporteCTe)Convert.ToInt32(evEPECCTe.GetElementsByTagName("modal")[0].InnerText);
+                }
+
+                if (evEPECCTe.GetElementsByTagName("UFIni").Count > 0)
+                {
+                    UFIni = (UFBrasil)Enum.Parse(typeof(UFBrasil), evEPECCTe.GetElementsByTagName("UFIni")[0].InnerText);
+                }
+
+                if (evEPECCTe.GetElementsByTagName("UFFim").Count > 0)
+                {
+                    UFFim = (UFBrasil)Enum.Parse(typeof(UFBrasil), evEPECCTe.GetElementsByTagName("UFFim")[0].InnerText);
+                }
+
+                if (evEPECCTe.GetElementsByTagName("tpCTe").Count > 0)
+                {
+                    TpCTe = (TipoCTe)Convert.ToInt32(evEPECCTe.GetElementsByTagName("tpCTe")[0].InnerText);
+                }
+
+                if (evEPECCTe.GetElementsByTagName("dhEmi").Count > 0)
+                {
+                    DhEmiField = evEPECCTe.GetElementsByTagName("dhEmi")[0].InnerText;
+                }
+            }
         }
     }
 
@@ -594,7 +687,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         [XmlElement("toma", Order = 0)]
         public TomadorServicoCTe Toma
         {
-            get => TomadorServicoCTe.Outros;
+            get => TomaField;
             set => TomaField = value;
         }
 
@@ -2462,7 +2555,7 @@ namespace Unimake.Business.DFe.Xml.CTe
     public class DetEventoRegistroPassagemAutomaticoMDFe : EventoDetalhe
     {
         private EvCTeRegPassagemAutoMDFe _evCTeRegPassagemAutoMDFe;
-         
+
         [XmlIgnore]
         public override string DescEvento
         {

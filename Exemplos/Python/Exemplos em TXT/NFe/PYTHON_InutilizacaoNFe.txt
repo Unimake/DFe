@@ -1,0 +1,78 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.NFe import *
+from Unimake.Business.DFe.Servicos.NFe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def inutilizacao_nfe():
+    print("Enviando a inutilização da NFe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    #region Criar XML
+    
+    # Criar tag InutNFe
+    oInutNFe        = InutNFe() # Unimake.Business.DFe.Xml.NFe.InutNFe
+    oInutNFe.Versao = "4.00"
+    
+    # Criar tag InfInut
+    oInfInut        = InutNFeInfInut() # Unimake.Business.DFe.Xml.NFe.InutNFeInfInut
+    oInfInut.Ano    = "24"
+    oInfInut.CNPJ   = "06117473000150"
+    oInfInut.CUF    = UFBrasil.PR
+    oInfInut.Mod    = ModeloDFe.NFe
+    oInfInut.NNFIni = 104
+    oInfInut.NNFFin = 104
+    oInfInut.Serie  = 30
+    oInfInut.TpAmb  = TipoAmbiente.Homologacao
+    oInfInut.XJust  = "Justificativa da inutilizacao de teste"
+    
+    oInutNFe.InfInut = oInfInut
+    
+    #endregion Criar XML
+    
+    print("\nVersão SCHEMA: ", oInutNFe.Versao)
+    print("Ano: ", oInutNFe.InfInut.Ano)
+    print("CNPJ: ", oInutNFe.InfInut.CNPJ)
+    
+    # Criar objeto para pegar exceção do lado do CSHARP
+    oExceptionInterop = ThrowHelper()
+    
+    oRetInutNFe       = RetInutNFe() # Unimake.Business.DFe.Xml.NFe.RetInutNFe
+    
+    try:
+        oInutilizacao = Inutilizacao()  # Unimake.Business.DFe.Servicos.NFe.Inutilizacao
+        oInutilizacao.SetXMLConfiguracao(oInutNFe, oConfig)
+        
+        # XML assinado
+        xml_assinado = oInutilizacao.GetConteudoXMLAssinado()
+        print("\nXML assinado: ", xml_assinado)
+        
+        # Executar o envio para a SEFAZ
+        oInutilizacao.Executar(oInutNFe, oConfig)
+        
+        # Guardar o valor de Result dentro da classe de retorno da Inutilização
+        oRetInutNFe = oInutilizacao.Result
+        
+        if (oRetInutNFe.InfInut.CStat == 102): # Inutilização homologada
+            
+            xml_string = oInutilizacao.ProcInutNFeResult.GerarXML().OuterXml
+            print("\nXML autorizado: ", xml_string)
+            print("\nNome arquivo distribuição: ", oInutilizacao.ProcInutNFeResult.NomeArquivoDistribuicao)
+            
+            oInutilizacao.GravarXmlDistribuicao("src\\NFe\\XMLs") # Grava o XML de distribuição
+            
+        else:
+            # Tratar rejeições
+            print("\nInutilização não autorizada!")
+            print("\nXML de retorno: ", oInutilizacao.RetornoWSString)
+        
+    except Exception as e:
+        print("Erro ao enviar a inutilização da NFe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

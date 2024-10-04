@@ -1,0 +1,80 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+import Unimake.Business.DFe.Xml.ESocial as XmlESocial
+import Unimake.Business.DFe.Servicos.ESocial as ServicosESocial
+from Unimake.Exceptions import ThrowHelper
+
+def consultar_lote_assincrono():
+    print("Enviando a consulta lote...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.ESocial
+    oConfig.Servico            = Servico.ESocialConsultaEvts
+    oConfig.TipoAmbiente       = TipoAmbiente.Homologacao
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    #region Criar XML
+    
+    oConsultarLoteEventos = XmlESocial.ConsultarLoteEventos()
+    
+    oConsultaLoteEventos = XmlESocial.ConsultaLoteEventos()
+    oConsultaLoteEventos.ProtocoloEnvio = "1.8.11111111111111111111"
+    
+    oConsultarLoteEventos.ConsultaLoteEventos = oConsultaLoteEventos
+    
+    #endregion Criar XML
+    
+    # Criar objeto para pegar a exceção do lado CHARP
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oConsultaLoteAssincrono = ServicosESocial.ConsultaLoteAssincrono()
+        oConsultaLoteAssincrono.Executar(oConsultarLoteEventos, oConfig)
+        
+        # print("Cód. Resposta: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta)
+        # print("Descrição: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.DescResposta)
+        
+        # print("\nXML retornado: ", oConsultaLoteAssincrono.RetornoWSString)
+        
+        if (oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 101): # Lote aguardando processamento
+            print("aguarde alguns minutos e tente novamente")
+            
+        elif (oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 201): # Lote processado com sucesso
+            oConsultaLoteAssincrono.GravarXmlDistribuicao("src\\eSocial\\XMLs")
+            
+        elif (oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 202): # Lote processado com advertências
+            # Nesse retorno pode ter acontecido duas coisas:
+            ## 1) Todos os eventos deram algum tipo de erro
+            ## 2) Alguns eventos foram transmitidos e outros deram problema
+            # Aqui você pode pedir para gerar o XML de distribuição normalmente para aqueles eventos que foram transmitidos e cuidar para 
+            # reenviar os eventos que deram erro
+            oConsultaLoteAssincrono.GravarXmlDistribuicao("src\\eSocial\\XMLs")
+            
+        elif (oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 301): # Erro servidor eSocial
+            print("Erro no servidor do eSocial. Aguarde alguns minutos e envie novamente!")
+            
+        elif (oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 401 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 402 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 403 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 404 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 405): # Lote incorreto (Erro preenchimento, Schema inválido, Versão do SCHEMA não permitida, Erro certificado, Lote nulo ou vazio)
+            print("\nCód. Resposta: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta)
+            print("Descricao: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.DescResposta)
+            print("\nXML retornado: ", oConsultaLoteAssincrono.RetornoWSString)
+            
+        elif (oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 501 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 502 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 503 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 504 or 
+              oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta == 505): # Solicitação de consulta incorreta (Erro preenchimento, Schema inválido, Versão do SCHEMA não permitida, Erro certificado, Consulta nula ou vazia)
+            print("\nCód. Resposta: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta)
+            print("Descricao: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.DescResposta)
+            print("\nXML retornado: ", oConsultaLoteAssincrono.RetornoWSString)
+    
+    except Exception as e:
+        print("Erro ao consultar lote assíncrono: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
