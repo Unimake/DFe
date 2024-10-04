@@ -10,16 +10,21 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-1000 - Informações do contribuinte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1000")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02", IsNullable = false)]
     public class Reinf1000 : XMLBase
     {
+        /// <summary>
+        /// Evento de informações do contribuinte
+        /// </summary>
         [XmlElement("evtInfoContri")]
         public EvtInfoContri EvtInfoContri { get; set; }
 
@@ -27,6 +32,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento de informações do contribuinte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtInfoContri")]
@@ -35,16 +43,28 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class EvtInfoContri : ReinfEventoBase
     {
+        /// <summary>
+        ///  Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do contribuinte 
+        /// </summary>
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
+        /// <summary>
+        /// Informações do contribuinte
+        /// </summary>
         [XmlElement("infoContri")]
         public InfoContri InfoContri { get; set; }
     }
 
+    /// <summary>
+    /// Informações do contribuinte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoContri")]
@@ -53,16 +73,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class InfoContri
     {
+        /// <summary>
+        /// Inclusão de novas informações
+        /// </summary>
         [XmlElement("inclusao")]
         public Inclusao1000 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
         public Alteracao1000 Alteracao { get; set; }
-        
+
         [XmlElement("exclusao")]
         public Exclusao1000 Exclusao { get; set; }
     }
 
+    /// <summary>
+    /// Inclusão de novas informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Inclusao1000")]
@@ -71,9 +97,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class Inclusao1000
     {
+        /// <summary>
+        /// Período de validade das informações incluídas 
+        /// </summary>
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }
 
+        /// <summary>
+        /// Informações do contribuinte 
+        /// </summary>
         [XmlElement("infoCadastro")]
         public InfoCadastro InfoCadastro { get; set; }
     }
@@ -86,10 +118,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class Alteracao1000 : Inclusao1000
     {
+        /// <summary>
+        /// Novo período de validade das informações que
+        /// estão sendo alteradas
+        /// </summary>
         [XmlElement("novaValidade")]
         public NovaValidade NovaValidade { get; set; }
     }
 
+    /// <summary>
+    /// Exclusão de informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Exclusao1000")]
@@ -98,10 +137,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class Exclusao1000
     {
+        /// <summary>
+        /// Período de validade das informações excluídas 
+        /// </summary>
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }
     }
 
+    /// <summary>
+    /// Período de validade das informações incluídas 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdePeriodo")]
@@ -123,6 +168,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Informações do contribuinte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoCadastro")]
@@ -194,12 +242,21 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
         }
 
+        /// <summary>
+        /// Informações de contato
+        /// </summary>
         [XmlElement("contato")]
         public Contato Contato { get; set; }
 
+        /// <summary>
+        /// Informações da empresa desenvolvedora da
+        ///aplicação que gera os arquivos
+        /// </summary>
         [XmlElement("softHouse")]
         public List<SoftHouse> SoftHouse { get; set; }
-
+        /// <summary>
+        /// Informações da Administração Pública relativas a EFR
+        /// </summary>
         [XmlElement("infoEFR")]
         public InfoEFR InfoEFR { get; set; }
 
@@ -261,6 +318,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     }
 
+    /// <summary>
+    /// Informações de contato
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Contato")]
@@ -295,6 +355,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Informações da empresa desenvolvedora da
+    ///aplicação que gera os arquivos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.SoftHouse")]
@@ -327,6 +391,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Informações da Administração Pública relativas a EFR
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoEFR")]

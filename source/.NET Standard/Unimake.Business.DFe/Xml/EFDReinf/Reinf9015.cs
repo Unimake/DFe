@@ -10,6 +10,9 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-9015 - Consolidação das retenções na fonte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf9015")]
@@ -19,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtRetCons/v2_01_02", IsNullable = false)]
     public class Reinf9015 : XMLBase
     {
+        /// <summary>
+        /// Evento retenções consolidadas
+        /// </summary>
         [XmlElement("evtRetCons")]
         public EvtRetCons EvtRetCons { get; set; }
 
@@ -26,6 +32,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento retenções consolidadas
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtRetCons")]
@@ -33,21 +42,39 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class EvtRetCons : ReinfEventoBase
     {
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento9015 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do contribuinte
+        /// </summary>
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
+        /// <summary>
+        /// Informações do recibo de retorno
+        /// </summary>
         [XmlElement("ideRecRetorno")]
         public IdeRecRetorno IdeRecRetorno { get; set; }
 
+        /// <summary>
+        /// Informações de processamento do evento
+        /// </summary>
         [XmlElement("infoRecEv")]
         public InfoRecEv9015 InfoRecEv { get; set; }
 
+        /// <summary>
+        /// Informações relativas a totalizadores pela natureza do rendimento e código de receita
+        /// </summary>
         [XmlElement("infoCR_CNR")]
         public InfoCR_CNR InfoCR_CNR { get; set; }
 
+        /// <summary>
+        /// Informações consolidadas dos tributos da empresa
+        /// </summary>
         [XmlElement("infoTotalCR")]
         public InfoTotalCR InfoTotalCR { get; set; }
     }
@@ -57,7 +84,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento9015")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento9015 : IdeEvento9001{ }
+    public class IdeEvento9015 : IdeEvento9001 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -116,7 +143,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IndicativoExistenciaTributos IndExistInfo { get; set; } = (IndicativoExistenciaTributos)(-1);
 #else
-        public IndicativoExistenciaTributos ? IndExistInfo { get; set; }
+        public IndicativoExistenciaTributos? IndExistInfo { get; set; }
 #endif
 
         [XmlElement("identEscritDCTF")]

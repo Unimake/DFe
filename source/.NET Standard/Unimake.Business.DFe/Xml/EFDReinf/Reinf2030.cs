@@ -10,16 +10,21 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-2030 - Recursos recebidos por associação desportiva
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2030")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtRecursoRecebidoAssociacao/v2_01_02", IsNullable = false)]
     public class Reinf2030 : XMLBase
     {
+        /// <summary>
+        /// Evento recursos recebidos por associação desportiva
+        /// </summary>
         [XmlElement("evtAssocDespRec")]
         public EvtAssocDespRec EvtAssocDespRec { get; set; }
 

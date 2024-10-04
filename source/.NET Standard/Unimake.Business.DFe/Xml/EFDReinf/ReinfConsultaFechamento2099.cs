@@ -20,8 +20,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class ReinfConsultaFechamento2099 : XMLBase
     {
         [XmlElement("ConsultaResultadoFechamento2099")]
-        public ConsultaResultadoFechamento2099 ConsultaResultadoFechamento2099 {  get; set; }
-
+        public ConsultaResultadoFechamento2099 ConsultaResultadoFechamento2099 { get; set; }
     }
 
 #if INTEROP

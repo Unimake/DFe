@@ -10,6 +10,9 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-4020 - Pagamentos/créditos a beneficiário pessoa jurídica
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf4020")]
@@ -19,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evt4020PagtoBeneficiarioPJ/v2_01_02", IsNullable = false)]
     public class Reinf4020 : XMLBase
     {
+        /// <summary>
+        /// Evento retenções na fonte PJ
+        /// </summary>
         [XmlElement("evtRetPJ")]
         public EvtRetPJ EvtRetPJ { get; set; }
 
@@ -26,6 +32,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Pagamentos/créditos a beneficiário pessoa jurídica
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtRetPJ")]
@@ -33,12 +42,21 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class EvtRetPJ : ReinfEventoBase
     {
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento4020 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do Contribuinte
+        /// </summary>
         [XmlElement("ideContri")]
         public IdeContri4020 IdeContri { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do estabelecimento
+        /// </summary>
         [XmlElement("ideEstab")]
         public IdeEstab4020 IdeEstab { get; set; }
     }
@@ -64,10 +82,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class IdeEstab4020 : IdeEstab
     {
+        /// <summary>
+        /// Identificação do beneficiário do rendimento
+        /// </summary>
         [XmlElement("ideBenef")]
         public IdeBenef4020 IdeBenef { get; set; }
     }
 
+    /// <summary>
+    /// Identificação do beneficiário do rendimento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeBenef4020")]
@@ -85,12 +109,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IsencaoEImunidade IsenImun { get; set; } = (IsencaoEImunidade)(-1);
 #else
-        public IsencaoEImunidade ? IsenImun { get; set; }
+        public IsencaoEImunidade? IsenImun { get; set; }
 #endif
 
         [XmlElement("ideEvtAdic")]
         public string IdeEvtAdic { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao rendimento pago/creditado
+        /// </summary>
         [XmlElement("idePgto")]
         public List<IdePgto4020> IdePgto { get; set; }
 
@@ -147,6 +174,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Informações de identificação do pagamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdePgto4020")]
@@ -160,6 +190,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("observ")]
         public string Observ { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao rendimento pago/creditado
+        /// </summary>
         [XmlElement("infoPgto")]
         public List<InfoPgto4020> InfoPgto { get; set; }
 
@@ -207,6 +240,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Informações relativas ao rendimento pago/creditado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoPgto4020")]
@@ -246,7 +282,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #if INTEROP
         public IndicativoFundoDeInvestimento IndFciScp { get; set; } = (IndicativoFundoDeInvestimento)(-1);
 #else
-        public IndicativoFundoDeInvestimento ? IndFciScp { get; set; }
+        public IndicativoFundoDeInvestimento? IndFciScp { get; set; }
 #endif
 
         [XmlElement("nrInscFciScp")]
@@ -286,6 +322,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("observ")]
         public string Observ { get; set; }
 
+        /// <summary>
+        /// Informações relativas a retenções na fonte
+        /// </summary>
         [XmlElement("retencoes")]
         public List<Retencoes> Retencoes { get; set; }
 
@@ -387,7 +426,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #else
         public bool ShouldSerializeIndJud() => IndJud != null;
 #endif
-        
+
         public bool ShouldSereializePaisResidExt() => !string.IsNullOrEmpty(PaisResidExt);
 
         public bool ShouldSerializeDtEscrContField() => DtEscrCont > DateTime.MinValue;
@@ -396,6 +435,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Informações relativas a retenções na fonte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Retencoes")]
@@ -486,6 +528,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlIgnore]
         public double VlrBasePP { get; set; }
 
+        /// <summary>
+        /// Valor da base do PIS/PASEP, relativa à retenção efetivamente realizada.
+        /// Validação: Informação permitida apenas se, para a natureza do rendimento
+        /// informada em {natRend}, houver "PP" na coluna "Tributo" da Tabela 01.
+        /// Não pode ser informado se {vlrBaseAgreg}
+        /// for informado.
+        /// Se informado, deve ser maior que zero.
+        /// </summary>
         [XmlElement("vlrBasePP")]
         public string VlrBasePPField
         {
@@ -496,6 +546,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlIgnore]
         public double VlrPP { get; set; }
 
+        /// <summary>
+        /// Valor da retenção do PIS/PASEP.
+        /// Validação: Informação obrigatória se {vlrBasePP} for informado.
+        /// Informação permitida apenas se, para a natureza do rendimento informada em
+        /// {natRend}, houver "PP" na coluna "Tributo" da Tabela 01.
+        /// Se informado, deve ser maior que zero.
+        /// </summary>
         [XmlElement("vlrPP")]
         public string VlrPPField
         {
@@ -720,6 +777,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("frmTribut")]
         public FormaDeTributacao FrmTribut { get; set; }
 
+        /// <summary>
+        /// Endereço do beneficiário residente ou domiciliado no exterior
+        /// </summary>
         [XmlElement("endExt")]
         public EndExt EndExt { get; set; }
     }

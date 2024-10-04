@@ -11,7 +11,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ReinfConsultas")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ReinfConsulta")]
     [ComVisible(true)]
 #endif
     [Serializable()]

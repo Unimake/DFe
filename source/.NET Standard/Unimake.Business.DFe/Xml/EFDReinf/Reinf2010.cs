@@ -10,16 +10,21 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-2010 - Retenção de contribuição previdenciária - serviços tomados
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2010")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTomadorServicos/v2_01_02", IsNullable = false)]
     public class Reinf2010 : XMLBase
     {
+        /// <summary>
+        /// Evento serviços tomados
+        /// </summary>
         [XmlElement("evtServTom")]
         public EvtServTom EvtServTom { get; set; }
 
@@ -35,12 +40,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class EvtServTom : ReinfEventoBase
     {
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2010 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do Contribuinte
+        /// </summary>
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
+        /// <summary>
+        /// Serviços tomados com cessão de mão de
+        ///obra ou empreitada
+        /// </summary>
         [XmlElement("infoServTom")]
         public InfoServTom InfoServTom { get; set; }
     }
@@ -84,6 +99,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Serviços tomados com cessão de mão de
+    /// obra ou empreitada
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoServTom")]
@@ -92,6 +111,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class InfoServTom
     {
+        /// <summary>
+        /// Identificação do estabelecimento/obra
+        /// contratante dos serviços
+        /// </summary>
         [XmlElement("ideEstabObra")]
         public IdeEstabObra IdeEstabObra { get; set; }
     }
@@ -240,6 +263,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #endif
 
+        /// <summary>
+        /// Informações de processos relacionados a não retenção de contribuição
+        /// previdenciária.
+        /// Validação: A soma dos valores informados no campo {valorPrinc
+        /// }
+        /// deste
+        /// grupo, com exceção dos valores informados para {indSusp} = [92], deve ser
+        /// igual a {vlrTotalNRetPrinc}
+        /// </summary>
         [XmlElement("infoProcRetPr")]
         public List<InfoProcRetPr> InfoProcRetPr { get; set; }
 
@@ -281,6 +313,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #endif
 
+        /// <summary>
+        /// Informações de processos relacionados a não retenção de contribuição
+        /// previdenciária adicional.
+        /// Validação: A soma dos valores informados no campo { valorAdic}
+        /// deste
+        /// grupo, com exceção dos valores informados para {indSusp
+        /// } = [92], deve ser
+        /// igual a { vlrTotalNRetAdic }.
+        /// </summary>
         [XmlElement("infoProcRetAd")]
         public List<InfoProcRetAd> InfoProcRetAd { get; set; }
 
@@ -325,7 +366,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #region ShouldSerialize
 
         public bool ShouldSerializeVlrTotalRetAdic() => VlrTotalRetAdic > 0;
-        
+
         public bool ShouldSerializeVlrTotalNRetPrinc() => VlrTotalNRetPrinc > 0;
 
         public bool ShouldSerializeVlrTotalNRetAdic() => VlrTotalNRetAdic > 0;
