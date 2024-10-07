@@ -326,6 +326,7 @@
 		<None Remove="Servicos\Config\NFSe\GoianaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\GovernadorValadaresMG.xml" />
+		<None Remove="Servicos\Config\NFSe\GramadoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GravataPE.xml" />
 		<None Remove="Servicos\Config\NFSe\GuaibaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\GuairaPR.xml" />
@@ -993,6 +994,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CodoMA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FrancaSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\GramadoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GurupiTO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />

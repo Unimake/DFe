@@ -1512,9 +1512,15 @@
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4321634">
-		<Nome> Três Arroios - RS</Nome>
+		<Nome>Três Arroios - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>TresArroiosRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4309100">
+		<Nome>Gramado - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GramadoRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>
