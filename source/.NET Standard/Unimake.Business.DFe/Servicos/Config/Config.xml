@@ -1511,4 +1511,10 @@
 		<ArqConfig>CarlosBarbosaRS.xml</ArqConfig>
 		<PadraoNFSe>GIF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321634">
+		<Nome> Três Arroios - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TresArroiosRS.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

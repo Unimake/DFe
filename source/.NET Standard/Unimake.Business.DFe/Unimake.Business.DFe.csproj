@@ -452,6 +452,7 @@
 		<None Remove="Servicos\Config\NFSe\TerraDeAreiaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TimboSC.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
+		<None Remove="Servicos\Config\NFSe\TresArroiosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresCachoeirasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
 		<None Remove="Servicos\Config\NFSe\TubaraoSC.xml" />
@@ -1000,6 +1001,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TresArroiosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -2483,6 +2485,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FSharp.Compiler.Service" Version="43.8.400" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.1" />
