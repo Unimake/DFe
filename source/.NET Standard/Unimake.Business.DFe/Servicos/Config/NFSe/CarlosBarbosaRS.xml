@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<EnviarLoteNotas versao="1.00">
+			<Descricao>Enviar Lote Notas</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>envioLote</TagAssinatura>
+			<TagAtributoID>NFS-e</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><enviarLoteNotasRequest>{xmlBodyScapeRetorno}</enviarLoteNotasRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</EnviarLoteNotas>
+		<CancelarNotaFiscal versao="1.00">
+			<Descricao>Cancelamento Nota Fiscal</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedCancelaNFSe</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><cancelarNotaFiscalRequest>{xmlBodyScapeRetorno}</cancelarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>cancelarNotaFiscalResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</CancelarNotaFiscal>
+		<ObterCriticaLote versao="1.00">
+			<Descricao>Consulta Pedido Status Lote</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoStatusLote</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterCriticaLoteRequest>{xmlBodyScapeRetorno}</obterCriticaLoteRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>obterCriticaLoteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ObterCriticaLote>
+		<ConsultarNotaFiscal versao="1.00">
+			<Descricao>Consultar Nota Fiscal</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedConsultaTrans</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><consultarNotaFiscalRequest>{xmlBodyScapeRetorno}</consultarNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultarNotaFiscal>
+		<ObterNotaFiscalXml versao="1.00">
+			<Descricao>Obter Nota Fiscal Xml</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoNFSe</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotaFiscalXmlRequest>{xmlBodyScapeRetorno}</obterNotaFiscalXmlRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ObterNotaFiscalXml>
+		<ConsultarNfsePDF versao="1.00">
+			<Descricao>Obter Nota Fiscal Xml</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoNFSePDF</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotasEmPDFRequest>{xmlBodyScapeRetorno}</obterNotasEmPDFRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>obterNotasEmPDFResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultarNfsePDF>
+		<SolicitacaoInutilizacao versao="1.00">
+			<Descricao>Solicitar Inutilizacao NFSe</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>solicitacaoInutilizacao</TagAssinatura>
+			<TagAtributoID>numeroSolicitacao</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><inutilizacaoRequest>{xmlBodyScapeRetorno}</inutilizacaoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>inutilizacaoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</SolicitacaoInutilizacao>
+		<ConsultaLote versao="1.00">
+			<Descricao>Consultar Lote Nota Fiscal</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoLoteNFSe</TagAssinatura>
+			<TagAtributoID>serieNotaFiscal</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterLoteNotaFiscalRequest>{xmlBodyScapeRetorno}</obterLoteNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultaLote>
+		<ConsultarNfseServicoTomado versao="1.00">
+			<Descricao>Consultar Lote Nota Fiscal</Descricao>
+			<WebEnderecoHomologacao>https://carlosbarbosa-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.carlosbarbosa.rs.gov.br/services/nfse/ws/Servicos.wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoNFSeTomada</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotaFiscalTomada>{xmlBodyScapeRetorno}</obterNotaFiscalTomada></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultarNfseServicoTomado>
+	</Servicos>
+</Configuracoes>

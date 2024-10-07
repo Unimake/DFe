@@ -289,6 +289,7 @@
 		<None Remove="Servicos\Config\NFSe\CaratingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CarazinhoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CariacicaES.xml" />
+		<None Remove="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CataguasesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\CatalaoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CatanduvaSP.xml" />
@@ -986,6 +987,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstrelaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CodoMA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ConcordiaSC.xml" />
