@@ -60,7 +60,7 @@ namespace Unimake.DFe.Test.ESocial
                                 EvtInfoEmpregador = new EvtInfoEmpregador
                                 {
                                     ID = "ID1061174730000002024081911021200001",
-                                    IdeEvento = new IdeEvento
+                                    IdeEvento = new IdeEvento1000
                                     {
                                         TpAmb = TipoAmbiente.Homologacao,
                                         ProcEmi = ProcEmiESocial.AppDoEmpregador,

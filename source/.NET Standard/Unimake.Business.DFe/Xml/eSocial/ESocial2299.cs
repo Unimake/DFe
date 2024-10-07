@@ -266,7 +266,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial2299 SucessaoVinc { get; set; }
+        public SucessaoVinc2299 SucessaoVinc { get; set; }
 
         [XmlElement("transfTit")]
         public TransfTit TransfTit { get; set; }
@@ -345,10 +345,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial2299")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc2299")]
     [ComVisible(true)]
 #endif
-    public class SucessaoVincESocial2299
+    public class SucessaoVinc2299
     {
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }

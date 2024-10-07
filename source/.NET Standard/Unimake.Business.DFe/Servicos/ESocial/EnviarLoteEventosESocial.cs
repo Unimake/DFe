@@ -4,6 +4,7 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
+using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
@@ -148,6 +149,30 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             catch (CertificadoDigitalException ex)
             {
                 ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
+        /// </summary>
+        /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
+        public void SetXMLConfiguracao([MarshalAs(UnmanagedType.IUnknown)] ESocialEnvioLoteEventos eSocialEnviarLoteEventos, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        {
+            try
+            {
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
+
+                Inicializar(eSocialEnviarLoteEventos?.GerarXML() ?? throw new ArgumentNullException(nameof(eSocialEnviarLoteEventos)), configuracao);
             }
             catch (Exception ex)
             {

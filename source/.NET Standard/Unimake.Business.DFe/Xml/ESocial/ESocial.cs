@@ -23,7 +23,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// Informações de identificação do evento
     /// </summary>
     [Serializable()]
-    public class IdeEvento
+    public abstract class IdeEvento
     {
         /// <summary>
         ///Valores válidos:

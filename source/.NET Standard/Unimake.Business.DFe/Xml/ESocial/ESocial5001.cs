@@ -264,7 +264,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Grupo de informações da sucessão de vínculo trabalhista. Evento de origem: S-1200.
         /// </summary>
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial5001 SucessaoVinc { get; set; }
+        public SucessaoVinc5001 SucessaoVinc { get; set; }
 
         /// <summary>
         ///  Informações relativas ao trabalho intermitente. Evento de origem: S-1200 ou S-2299.
@@ -312,7 +312,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações complementares contratuais do trabalhador. Evento de origem: S-1200
         /// </summary>
         [XmlElement("infoComplCont")]
-        public List<InfoComplContESocial5001> InfoComplCont { get; set; }
+        public List<InfoComplCont5001> InfoComplCont { get; set; }
 
 #if INTEROP
 
@@ -320,11 +320,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoComplCont(InfoComplContESocial5001 item)
+        public void AddInfoComplCont(InfoComplCont5001 item)
         {
             if (InfoComplCont == null)
             {
-                InfoComplCont = new List<InfoComplContESocial5001>();
+                InfoComplCont = new List<InfoComplCont5001>();
             }
 
             InfoComplCont.Add(item);
@@ -335,7 +335,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoComplCont</returns>
-        public InfoComplContESocial5001 GetInfoComplCont(int index)
+        public InfoComplCont5001 GetInfoComplCont(int index)
         {
             if ((InfoComplCont?.Count ?? 0) == 0)
             {
@@ -352,16 +352,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region SucessaoVincESocial5001
+    #region SucessaoVinc5001
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc5001")]
     [ComVisible(true)]
 #endif
     /// <summary>
     /// 
     /// </summary>
-    public class SucessaoVincESocial5001
+    public class SucessaoVinc5001
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de
@@ -420,13 +420,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
         #endregion ShouldSerialize
     }
-    #endregion SucessaoVincESocial5001
+    #endregion SucessaoVinc5001
 
-    #region InfoComplContESocial5001
+    #region InfoComplCont5001
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplContESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplCont5001")]
     [ComVisible(true)]
 #endif
     /// <summary>
@@ -434,7 +434,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// trabalhador cuja categoria não estiver obrigada ao evento de início de TSVE e se não
     /// houver evento S-2300 correspondente.
     /// </summary>
-    public class InfoComplContESocial5001
+    public class InfoComplCont5001
     {
         /// <summary>
         /// Classificação Brasileira de Ocupações - CBO

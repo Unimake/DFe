@@ -404,7 +404,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string MtvDesligTSV { get; set; }
 
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial5003 SucessaoVinc { get; set; }
+        public SucessaoVinc5003 SucessaoVinc { get; set; }
 
         [XmlElement("infoBaseFGTS")]
         public InfoBaseFGTS InfoBaseFGTS { get; set; }
@@ -483,10 +483,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial5003")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc5003")]
     [ComVisible(true)]
 #endif
-    public class SucessaoVincESocial5003
+    public class SucessaoVinc5003
     {
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }

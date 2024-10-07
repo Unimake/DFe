@@ -476,7 +476,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("remuneracao")]
-        public List<RemuneracaoESocial2500> Remuneracao { get; set; }
+        public List<Remuneracao2500> Remuneracao { get; set; }
 
 #if INTEROP
 
@@ -484,11 +484,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRemuneracao(RemuneracaoESocial2500 item)
+        public void AddRemuneracao(Remuneracao2500 item)
         {
             if (Remuneracao == null)
             {
-                Remuneracao = new List<RemuneracaoESocial2500>();
+                Remuneracao = new List<Remuneracao2500>();
             }
 
             Remuneracao.Add(item);
@@ -499,7 +499,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Remuneracao</returns>
-        public RemuneracaoESocial2500 GetRemuneracao(int index)
+        public Remuneracao2500 GetRemuneracao(int index)
         {
             if ((Remuneracao?.Count ?? 0) == 0)
             {
@@ -536,10 +536,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemuneracaoESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao2500")]
     [ComVisible(true)]
 #endif
-    public class RemuneracaoESocial2500
+    public class Remuneracao2500
     {
         [XmlIgnore]
 #if INTEROP
@@ -626,7 +626,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("duracao")]
-        public DuracaoESocial2500 Duracao { get; set; }
+        public Duracao2500 Duracao { get; set; }
 
         [XmlElement("observacoes")]
         public List<Observacoes> Observacoes { get; set; }
@@ -669,7 +669,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial2500 SucessaoVinc { get; set; }
+        public SucessaoVinc2500 SucessaoVinc { get; set; }
 
         [XmlElement("infoDeslig")]
         public InfoDesligESocial2500 InfoDeslig { get; set; }
@@ -687,10 +687,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DuracaoESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Duracao2500")]
     [ComVisible(true)]
 #endif
-    public class DuracaoESocial2500
+    public class Duracao2500
     {
         [XmlElement("tpContr")]
         public TipoDeContratoDeTrabalho TipoDeContratoDeTrabalho { get; set; }
@@ -740,10 +740,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc2500")]
     [ComVisible(true)]
 #endif
-    public class SucessaoVincESocial2500
+    public class SucessaoVinc2500
     {
         /// <summary>
         /// Valores válidos:

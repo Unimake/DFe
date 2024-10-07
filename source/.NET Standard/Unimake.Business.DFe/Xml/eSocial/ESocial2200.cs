@@ -46,7 +46,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Trabalhador Trabalhador { get; set; }
 
         [XmlElement("vinculo")]
-        public VinculoESocial2200 Vinculo { get; set; }
+        public Vinculo2200 Vinculo { get; set; }
     }
 
 #if INTEROP
@@ -215,10 +215,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.VinculoESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Vinculo2200")]
     [ComVisible(true)]
 #endif
-    public class VinculoESocial2200
+    public class Vinculo2200
     {
         [XmlElement("matricula")]
         public string Matricula { get; set; }
@@ -233,13 +233,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra CadIni { get; set; }
 
         [XmlElement("infoRegimeTrab")]
-        public InfoRegimeTrabESocial2200 InfoRegimeTrab { get; set; }
+        public InfoRegimeTrab2200 InfoRegimeTrab { get; set; }
 
         [XmlElement("infoContrato")]
-        public InfoContratoESocial2200 InfoContrato { get; set; }
+        public InfoContrato2200 InfoContrato { get; set; }
 
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial2200 SucessaoVinc { get; set; }
+        public SucessaoVinc2200 SucessaoVinc { get; set; }
 
         [XmlElement("transfDom")]
         public TransfDom TransfDom { get; set; }
@@ -259,24 +259,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRegimeTrabESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRegimeTrab2200")]
     [ComVisible(true)]
 #endif
-    public class InfoRegimeTrabESocial2200
+    public class InfoRegimeTrab2200
     {
         [XmlElement("infoCeletista")]
-        public InfoCeletistaESocial2200 InfoCeletista { get; set; }
+        public InfoCeletista2200 InfoCeletista { get; set; }
 
         [XmlElement("infoEstatutario")]
-        public InfoEstatutarioESocial2200 InfoEstatutario { get; set; }
+        public InfoEstatutario2200 InfoEstatutario { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCeletistaESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCeletista2200")]
     [ComVisible(true)]
 #endif
-    public class InfoCeletistaESocial2200
+    public class InfoCeletista2200
     {
         [XmlIgnore]
 #if INTEROP
@@ -324,7 +324,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public FGTS FGTS { get; set; }
 
         [XmlElement("trabTemporario")]
-        public TrabTemporarioESocial2200 TrabTemporario { get; set; }
+        public TrabTemporario2200 TrabTemporario { get; set; }
 
         [XmlElement("aprend")]
         public AprendESocial2200 Aprend { get; set; }
@@ -368,10 +368,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.TrabTemporarioESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.TrabTemporario2200")]
     [ComVisible(true)]
 #endif
-    public class TrabTemporarioESocial2200
+    public class TrabTemporario2200
     {
         [XmlElement("hipLeg")]
         public ContratacaoTrabalhadorTemporario HipLeg { get; set; }
@@ -493,10 +493,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstatutarioESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstatutario2200")]
     [ComVisible(true)]
 #endif
-    public class InfoEstatutarioESocial2200
+    public class InfoEstatutario2200
     {
         [XmlElement("tpProv")]
         public TipoProvimento TpProv { get; set; }
@@ -585,10 +585,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoContratoESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoContrato2200")]
     [ComVisible(true)]
 #endif
-    public class InfoContratoESocial2200
+    public class InfoContrato2200
     {
         [XmlElement("nmCargo")]
         public string NmCargo { get; set; }
@@ -631,22 +631,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CodCateg { get; set; }
 
         [XmlElement("remuneracao")]
-        public RemuneracaoESocial2200 Remuneracao { get; set; }
+        public Remuneracao2200 Remuneracao { get; set; }
 
         [XmlElement("duracao")]
-        public DuracaoESocial2200 Duracao { get; set; }
+        public Duracao2200 Duracao { get; set; }
 
         [XmlElement("localTrabalho")]
-        public LocalTrabalhoESocial2200 LocalTrabalho { get; set; }
+        public LocalTrabalho2200 LocalTrabalho { get; set; }
 
         [XmlElement("horContratual")]
-        public HorContratualESocial2200 HorContratual { get; set; }
+        public HorContratual2200 HorContratual { get; set; }
 
         [XmlElement("alvaraJudicial")]
-        public AlvaraJudicialESocial2200 AlvaraJudicial { get; set; }
+        public AlvaraJudicial2200 AlvaraJudicial { get; set; }
 
         [XmlElement("observacoes")]
-        public List<ObservacoesESocial2200> Observacoes { get; set; }
+        public List<Observacoes2200> Observacoes { get; set; }
 
 #if INTEROP
 
@@ -654,11 +654,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddObservacoes(ObservacoesESocial2200 item)
+        public void AddObservacoes(Observacoes2200 item)
         {
             if (Observacoes == null)
             {
-                Observacoes = new List<ObservacoesESocial2200>();
+                Observacoes = new List<Observacoes2200>();
             }
 
             Observacoes.Add(item);
@@ -669,7 +669,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Observacoes</returns>
-        public ObservacoesESocial2200 GetObservacoes(int index)
+        public Observacoes2200 GetObservacoes(int index)
         {
             if ((Observacoes?.Count ?? 0) == 0)
             {
@@ -748,10 +748,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemuneracaoESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao2200")]
     [ComVisible(true)]
 #endif
-    public class RemuneracaoESocial2200
+    public class Remuneracao2200
     {
         /// <summary>
         /// Salário base do trabalhador, correspondente à parte fixa da remuneração.
@@ -781,10 +781,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DuracaoESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Duracao2200")]
     [ComVisible(true)]
 #endif
-    public class DuracaoESocial2200
+    public class Duracao2200
     {
         [XmlElement("tpContr")]
         public TipoDeContratoDeTrabalho TpContr { get; set; }
@@ -834,24 +834,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabalhoESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabalho2200")]
     [ComVisible(true)]
 #endif
-    public class LocalTrabalhoESocial2200
+    public class LocalTrabalho2200
     {
         [XmlElement("localTrabGeral")]
-        public LocalTrabGeralESocial2200 LocalTrabGeral { get; set; }
+        public LocalTrabGeral2200 LocalTrabGeral { get; set; }
 
         [XmlElement("localTempDom")]
-        public LocalTempDomESocial2200 LocalTempDom { get; set; }
+        public LocalTempDom2200 LocalTempDom { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeralESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral2200")]
     [ComVisible(true)]
 #endif
-    public class LocalTrabGeralESocial2200
+    public class LocalTrabGeral2200
     {
         [XmlElement("tpInsc")]
         public TipoInscricaoEstabelecimento TpInsc { get; set; }
@@ -871,17 +871,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTempDomESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTempDom2200")]
     [ComVisible(true)]
 #endif
-    public class LocalTempDomESocial2200 : Brasil { }
+    public class LocalTempDom2200 : Brasil { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.HorContratualESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.HorContratual2200")]
     [ComVisible(true)]
 #endif
-    public class HorContratualESocial2200
+    public class HorContratual2200
     {
         [XmlElement("qtdHrsSem")]
         public string QtdHrsSem { get; set; }
@@ -917,10 +917,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlvaraJudicialESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlvaraJudicial2200")]
     [ComVisible(true)]
 #endif
-    public class AlvaraJudicialESocial2200
+    public class AlvaraJudicial2200
     {
         [XmlElement("nrProcJud")]
         public string NrProcJud { get; set; }
@@ -928,10 +928,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ObservacoesESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2200")]
     [ComVisible(true)]
 #endif
-    public class ObservacoesESocial2200
+    public class Observacoes2200
     {
         [XmlElement("observacao")]
         public string Observacao { get; set; }
@@ -950,10 +950,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc2200")]
     [ComVisible(true)]
 #endif
-    public class SucessaoVincESocial2200
+    public class SucessaoVinc2200
     {
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }

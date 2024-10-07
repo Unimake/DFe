@@ -41,10 +41,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideTrabalhador")]
-        public IdeTrabalhadorESocial2205 IdeTrabalhador { get; set; }
+        public IdeTrabalhador2205 IdeTrabalhador { get; set; }
 
         [XmlElement("alteracao")]
-        public AlteracaoESocial2205 Alteracao { get; set; }
+        public Alteracao2205 Alteracao { get; set; }
     }
 
 #if INTEROP
@@ -81,7 +81,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial2205")]
     [ComVisible(true)]
 #endif
-    public class IdeTrabalhadorESocial2205
+    public class IdeTrabalhador2205
     {
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
@@ -92,7 +92,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial2205")]
     [ComVisible(true)]
 #endif
-    public class AlteracaoESocial2205
+    public class Alteracao2205
     {
         [XmlIgnore]
 #if INTEROP

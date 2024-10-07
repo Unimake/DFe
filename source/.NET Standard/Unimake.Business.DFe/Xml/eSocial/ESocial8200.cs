@@ -230,7 +230,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("remuneracao")]
-        public List<RemuneracaoESocial8200> Remuneracao { get; set; }
+        public List<Remuneracao8200> Remuneracao { get; set; }
 
 #if INTEROP
 
@@ -238,11 +238,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRemuneracao(RemuneracaoESocial8200 item)
+        public void AddRemuneracao(Remuneracao8200 item)
         {
             if (Remuneracao == null)
             {
-                Remuneracao = new List<RemuneracaoESocial8200>();
+                Remuneracao = new List<Remuneracao8200>();
             }
 
             Remuneracao.Add(item);
@@ -253,7 +253,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Remuneracao</returns>
-        public RemuneracaoESocial8200 GetRemuneracao(int index)
+        public Remuneracao8200 GetRemuneracao(int index)
         {
             if ((Remuneracao?.Count ?? 0) == 0)
             {
@@ -361,10 +361,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemuneracaoESocial8200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao8200")]
     [ComVisible(true)]
 #endif
-    public class RemuneracaoESocial8200
+    public class Remuneracao8200
     {
         [XmlIgnore]
 #if INTEROP
@@ -433,7 +433,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string MatIncorp { get; set; }
 
         [XmlElement("sucessaoVinc")]
-        public SucessaoVincESocial8200 SucessaoVinc { get; set; }
+        public SucessaoVinc8200 SucessaoVinc { get; set; }
 
         #region ShouldSerialize
 
@@ -450,10 +450,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVincESocial8200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc8200")]
     [ComVisible(true)]
 #endif
-    public class SucessaoVincESocial8200
+    public class SucessaoVinc8200
     {
         [XmlIgnore]
 #if INTEROP
