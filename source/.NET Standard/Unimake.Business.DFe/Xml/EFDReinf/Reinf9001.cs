@@ -7,10 +7,12 @@ using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using System.Collections.Generic;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-9001 - Bases e tributos - contribuição previdenciária
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf9001")]
@@ -20,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTotal/v2_01_02", IsNullable = false)]
     public class Reinf9001 : XMLBase
     {
+        /// <summary>
+        ///  Evento totalização 
+        /// </summary>
         [XmlElement("evtTotal")]
         public EvtTotal EvtTotal { get; set; }
 
@@ -27,6 +32,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    ///  Evento totalização 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtTotal")]
@@ -76,6 +84,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
     }
 
+    /// <summary>
+    /// Informações do recibo de retorno
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRecRetorno")]
@@ -83,10 +94,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class IdeRecRetorno
     {
+        /// <summary>
+        /// Situação atual do evento
+        /// </summary>
         [XmlElement("ideStatus")]
         public IdeStatus IdeStatus { get; set; }
     }
 
+    /// <summary>
+    /// Situação atual do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeStatus")]
@@ -258,6 +275,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("RPrest")]
         public RPrest RPrest { get; set; }
 
+        /// <summary>
+        /// Totalizador das bases de cálculo e da contribuição previdenciária sobre
+        /// recursos repassados a associações desportivas que mantenham equipe de
+        /// futebol profissional, apuradas nos eventos R-2030 e R-2040
+        /// </summary>
         [XmlElement("RRecRepAD")]
         public List<RRecRepAD> RRecRepAD { get; set; }
 
@@ -600,6 +622,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         #endregion
     }
 
+    /// <summary>
+    /// Totalizador das bases de cálculo e da contribuição previdenciária sobre
+    /// recursos repassados a associações desportivas que mantenham equipe de
+    /// futebol profissional, apuradas nos eventos R-2030 e R-2040
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RRecRepAD")]

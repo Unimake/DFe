@@ -15,7 +15,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.ReinfRetornoRecibo")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/retornoRecibosChaveEvento/v1_05_01", IsNullable = false)]
     public class ReinfRetornoRecibo : XMLBase

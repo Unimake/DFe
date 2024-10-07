@@ -7,10 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.MDFe;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-2040 - Recursos repassados para associação desportiva
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2040")]
@@ -20,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtRecursoRepassadoAssociacao/v2_01_02", IsNullable = false)]
     public class Reinf2040 : XMLBase
     {
+        /// <summary>
+        /// Evento recursos repassados para associações desportivas
+        /// </summary>
         [XmlElement("evtAssocDespRep")]
         public EvtAssocDespRep EvtAssocDespRep { get; set; }
 

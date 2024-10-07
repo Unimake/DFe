@@ -1499,4 +1499,16 @@
 		<ArqConfig>FrancaSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4218202">
+		<Nome>Timbó - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>TimboSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4304804">
+		<Nome>Carlos Barbosa - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>CarlosBarbosaRS.xml</ArqConfig>
+		<PadraoNFSe>GIF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

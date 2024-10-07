@@ -10,20 +10,28 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-3010 - Receita de espetáculos desportivos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf3010")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtEspDesportivo/v2_01_02", IsNullable = false)]
     public class Reinf3010 : XMLBase
     {
+        /// <summary>
+        /// Evento espetáculo desportivo
+        /// </summary>
         [XmlElement("evtEspDesportivo")]
         public EvtEspDesportivo EvtEspDesportivo { get; set; }
     }
 
+    /// <summary>
+    /// Evento espetáculo desportivo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtEspDesportivo")]
@@ -97,6 +105,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     public class IdeEstab3010 : IdeEstab
     {
+        /// <summary>
+        /// Boletim do espetáculo desportivo
+        /// </summary>
         [XmlElement("boletim")]
         public List<Boletim> Boletim { get; set; }
 
@@ -141,6 +152,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public ReceitaTotal ReceitaTotal { get; set; }
     }
 
+    /// <summary>
+    /// Boletim do espetáculo desportivo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Boletim")]

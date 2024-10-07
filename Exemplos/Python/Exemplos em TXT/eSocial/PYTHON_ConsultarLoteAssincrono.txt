@@ -2,8 +2,8 @@
 from config_dll import inicializar_DLL
 
 from Unimake.Business.DFe.Servicos import *
-from Unimake.Business.DFe.Xml.ESocial import *
-from Unimake.Business.DFe.Servicos.ESocial import * 
+import Unimake.Business.DFe.Xml.ESocial as XmlESocial
+import Unimake.Business.DFe.Servicos.ESocial as ServicosESocial
 from Unimake.Exceptions import ThrowHelper
 
 def consultar_lote_assincrono():
@@ -19,9 +19,9 @@ def consultar_lote_assincrono():
     
     #region Criar XML
     
-    oConsultarLoteEventos = ConsultarLoteEventos() # Unimake.Business.DFe.Xml.ESocial.ConsultarLoteEventos
+    oConsultarLoteEventos = XmlESocial.ConsultarLoteEventos()
     
-    oConsultaLoteEventos = ConsultaLoteEventos() # Unimake.Business.DFe.Xml.ESocial.ConsultaLoteEventos
+    oConsultaLoteEventos = XmlESocial.ConsultaLoteEventos()
     oConsultaLoteEventos.ProtocoloEnvio = "1.8.11111111111111111111"
     
     oConsultarLoteEventos.ConsultaLoteEventos = oConsultaLoteEventos
@@ -32,7 +32,7 @@ def consultar_lote_assincrono():
     oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
     
     try:
-        oConsultaLoteAssincrono = ConsultaLoteAssincrono() # Unimake.Business.DFe.Servicos.ESocial.ConsultaLoteAssincrono
+        oConsultaLoteAssincrono = ServicosESocial.ConsultaLoteAssincrono()
         oConsultaLoteAssincrono.Executar(oConsultarLoteEventos, oConfig)
         
         # print("Cód. Resposta: ", oConsultaLoteAssincrono.Result.RetornoProcessamentoLoteEventos.Status.CdResposta)

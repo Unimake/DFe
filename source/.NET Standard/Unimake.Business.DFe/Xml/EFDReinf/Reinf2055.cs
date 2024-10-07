@@ -10,16 +10,21 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-2055 - Aquisição de produção rural
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2055")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evt2055AquisicaoProdRural/v2_01_02", IsNullable = false)]
     public class Reinf2055 : XMLBase
     {
+        /// <summary>
+        /// Evento aquisição de produção 
+        /// </summary>
         [XmlElement("evtAqProd")]
         public EvtAqProd EvtAqProd { get; set; }
 

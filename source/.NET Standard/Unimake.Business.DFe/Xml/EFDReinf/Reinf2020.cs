@@ -10,17 +10,21 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-2020 - Retenção de contribuição previdenciária - serviços prestados
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf2020")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtPrestadorServicos/v2_01_02", IsNullable = false)]
     public class Reinf2020 : XMLBase
     {
-
+        /// <summary>
+        /// Evento serviços prestados 
+        /// </summary>
         [XmlElement("evtServPrest")]
         public EvtServPrest EvtServPrest { get; set; }
 
@@ -40,9 +44,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("ideEvento")]
         public IdeEvento2020 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do contribuinte
+        /// </summary>
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
+        /// <summary>
+        /// Informações relativas aos serviços prestados
+        /// </summary>
         [XmlElement("infoServPrest")]
         public InfoServPrest InfoServPrest { get; set; }
     }
@@ -87,6 +97,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
     }
 
+    /// <summary>
+    /// Informações relativas aos serviços prestados
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoServPrest")]
@@ -95,11 +108,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class InfoServPrest
     {
+        /// <summary>
+        /// Registro que identifica o estabelecimento
+        /// "prestador" dos serviços
+        /// </summary>
         [XmlElement("ideEstabPrest")]
         public IdeEstabPrest IdeEstabPrest { get; set; }
 
     }
 
+    /// <summary>
+    /// Registro que identifica o estabelecimento
+    /// "prestador" dos serviços
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabPrest")]
@@ -364,6 +385,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("obs")]
         public string Obs { get; set; }
 
+        /// <summary>
+        /// Informações sobre os tipos de serviços
+        /// constantes da nota fiscal
+        /// </summary>
         [XmlElement("infoTpServ")]
         public List<InfoTpServ> InfoTpServ { get; set; }
 

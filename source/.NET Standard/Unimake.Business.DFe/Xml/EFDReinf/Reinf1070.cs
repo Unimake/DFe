@@ -10,16 +10,21 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    ///  R-1070 - Tabela de processos administrativos/judiciais
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf1070")]
     [ComVisible(true)]
 #endif
-
     [Serializable()]
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evtTabProcesso/v2_01_02", IsNullable = false)]
     public class Reinf1070 : XMLBase
     {
+        /// <summary>
+        /// Evento tabela de processos
+        /// </summary>
         [XmlElement("evtTabProcesso")]
         public EvtTabProcesso EvtTabProcesso { get; set; }
 
@@ -27,6 +32,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento tabela de processos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.EvtTabProcesso")]
@@ -35,19 +43,34 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class EvtTabProcesso : ReinfEventoBase
     {
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do contribuinte
+        /// </summary>
         [XmlElement("ideContri")]
         public IdeContri IdeContri { get; set; }
 
+        /// <summary>
+        /// Informações do contribuinte
+        /// </summary>
         [XmlElement("infoContri")]
         public InfoContri InfoContri { get; set; }
 
+        /// <summary>
+        /// Informações do Processo
+        /// </summary>
         [XmlElement("infoProcesso")]
         public InfoProcesso InfoProcesso { get; set; }
     }
 
+    /// <summary>
+    /// Informações do Processo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProcesso")]
@@ -56,16 +79,28 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class InfoProcesso
     {
+        /// <summary>
+        /// Inclusão de informações
+        /// </summary>
         [XmlElement("inclusao")]
         public Inclusao1070 Inclusao { get; set; }
 
+        /// <summary>
+        /// Alteração de informações
+        /// </summary>
         [XmlElement("alteracao")]
         public Alteracao1070 Alteracao { get; set; }
 
+        /// <summary>
+        /// Exclusão de informações
+        /// </summary>
         [XmlElement("exclusao")]
         public Exclusao1070 Exclusao { get; set; }
     }
 
+    /// <summary>
+    /// Inclusão de Informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Inclusao1070")]
@@ -74,10 +109,16 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class Inclusao1070
     {
+        /// <summary>
+        /// Identificação do processo
+        /// </summary>
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
     }
 
+    /// <summary>
+    /// Identificação do processo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeProcesso")]
@@ -105,9 +146,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IndicativoAutoria? IndAutoria { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações de suspensão de exibilidade de tributos
+        /// </summary>
         [XmlElement("infoSusp")]
         public List<InfoSusp> InfoSusp { get; set; }
 
+        /// <summary>
+        /// Informações Complementares do Processo Judicial 
+        /// </summary>
         [XmlElement("dadosProcJud")]
         public DadosProcJud DadosProcJud { get; set; }
 
@@ -162,6 +209,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
     }
 
+    /// <summary>
+    /// Informações de suspensão de exibilidade de tributos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoSusp")]
@@ -198,6 +248,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public SimNaoLetra IndDeposito { get; set; }
     }
 
+    /// <summary>
+    /// Informações Complementares do Processo Judicial 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.DadosProcJud")]
@@ -216,6 +269,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string IdVara { get; set; }
     }
 
+    /// <summary>
+    /// Alteração de informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Alteracao1070")]
@@ -224,6 +280,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class Alteracao1070
     {
+        /// <summary>
+        /// Informações de identificação do processo
+        /// </summary>
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
 
@@ -243,6 +302,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeProcessoExclusao IdeProcesso { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do processo de Exclusão
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeProcessoExclusao")]

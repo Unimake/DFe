@@ -10,7 +10,6 @@ using Unimake.Business.DFe.Servicos;
 using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.ESocial;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
@@ -135,7 +134,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Evento")]
     [ComVisible(true)]
 #endif
-    public class EventoReinf 
+    public class EventoReinf
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }

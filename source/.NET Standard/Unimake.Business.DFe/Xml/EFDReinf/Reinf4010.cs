@@ -10,6 +10,9 @@ using System.Collections.Generic;
 
 namespace Unimake.Business.DFe.Xml.EFDReinf
 {
+    /// <summary>
+    /// R-4010 - Pagamentos/créditos a beneficiário pessoa física
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.Reinf4010")]
@@ -19,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [XmlRoot("Reinf", Namespace = "http://www.reinf.esocial.gov.br/schemas/evt4010PagtoBeneficiarioPF/v2_01_02", IsNullable = false)]
     public class Reinf4010 : XMLBase
     {
+        /// <summary>
+        /// Evento pagamentos ou créditos efetuados a pessoa física
+        /// </summary>
         [XmlElement("evtRetPF")]
         public EvtRetPF EvtRetPF { get; set; }
 
@@ -1192,6 +1198,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("frmTribut")]
         public string FrmTribut { get; set; }
 
+        /// <summary>
+        /// Endereço do beneficiário residente ou domiciliado no exterior
+        /// </summary>
         [XmlElement("endExt")]
         public EndExt EndExt { get; set; }
 
