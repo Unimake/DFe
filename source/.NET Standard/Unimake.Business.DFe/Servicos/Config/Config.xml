@@ -1499,4 +1499,10 @@
 		<ArqConfig>FrancaSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4218202">
+		<Nome>Timbó - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>TimboSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -449,6 +449,7 @@
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
 		<None Remove="Servicos\Config\NFSe\TerraDeAreiaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\TimboSC.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TresCachoeirasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
@@ -997,6 +998,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TaioSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
