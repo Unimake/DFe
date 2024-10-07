@@ -335,3 +335,13 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[EnviarEsocial2220Desserializando.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[EnviarEsocial2200.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 

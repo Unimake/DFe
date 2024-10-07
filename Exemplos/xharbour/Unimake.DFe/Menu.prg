@@ -81,6 +81,8 @@ Function Main()
    Aadd(aOpcoes, "eSocial - Evento 1200 - Enviar lote")   
    Aadd(aOpcoes, "eSocial - Evento 2240 - Enviar lote")   
    Aadd(aOpcoes, "eSocial - Evento 1210 - Enviar lote")   
+   Aadd(aOpcoes, "eSocial - Evento 2220 - Enviar lote - XML desserializado")
+   Aadd(aOpcoes, "eSocial - Evento 2200 - Enviar lote")   
    
    Do While .T.
       Cls
@@ -288,6 +290,12 @@ Function Main()
 			  
          case nOpcao = 62
 		      EnviarEsocial1210()			  
+			  
+         case nOpcao = 63
+		      EnviarEsocial2220Desserializando()			  
+			  
+         case nOpcao = 64
+		      EnviarEsocial2200()		 
       endcase
    EndDo
 Return       

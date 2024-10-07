@@ -18,7 +18,7 @@ Function eSocialConsultaLoteAssincrono()
    oConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
    oConfiguracao:TipoDFe = 12 //12=eSocial
    oConfiguracao:TipoEmissao = 1 //1=Normal
-   oConfiguracao:CertificadoArquivo = "d:\projetos\unimake_pv.pfx"
+   oConfiguracao:CertificadoArquivo = "D:\projetos\certificados\DosClientes\CERT_DIG_AGAPE_MEDICINA_DO_TRABALHO_LTDA_15527739000123_1702988563264876200.pfx"
    oConfiguracao:CertificadoSenha = "1234"
    oConfiguracao:Servico = 70 //Servico.ESocialConsultaEvts
    oConfiguracao:TipoAmbiente = 1 //TipoAmbiente.Producao
@@ -31,7 +31,7 @@ Function eSocialConsultaLoteAssincrono()
    oConsultarLoteEventos:Versao = "1.0.0"
    
    oConsultaLoteEventos = CreateObject("Unimake.Business.DFe.Xml.ESocial.ConsultaLoteEventos")
-   oConsultaLoteEventos:ProtocoloEnvio = "1.2.202409.0000000000163727328"
+   oConsultaLoteEventos:ProtocoloEnvio = "1.1.202410.0000000010705741120"
   
    oConsultarLoteEventos:ConsultaLoteEventos = oConsultaLoteEventos   
   
@@ -50,16 +50,16 @@ Function eSocialConsultaLoteAssincrono()
 	  ? oConsultaLoteAssincrono:RetornoWSString
 	  ?
 	  ?
-	  Wait
+	  Wait	  
 	  
 	  nStatusResposta := oConsultaLoteAssincrono:Result:RetornoProcessamentoLoteEventos:Status:CdResposta
       ? "StatusRespostaLote: " + Trim(Str(nStatusResposta,3))	  	  	  	  
 	  
 	  If nStatusResposta == 201		 
 	   * Tem que passar para a consulta o XML do lote de eventos enviados para que ela tenha os eventos para montar o XML de distribuição de cada um deles.
-	     if File("C:\projetos\github\Unimake.DFe\source\Unimake.DFe.Test\ESocial\Resources\eSocial_envioLoteEventos.xml")
+	     if File("C:\Users\Wandrey\Downloads\Telegram Desktop\monit_teste-esocial-loteevt.xml")
             oESocialEnvioLoteEventos = CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos")
-   	        oESocialEnvioLoteEventos = oESocialEnvioLoteEventos:LoadFromFile("C:\projetos\github\Unimake.DFe\source\Unimake.DFe.Test\ESocial\Resources\eSocial_envioLoteEventos.xml")  		 
+   	        oESocialEnvioLoteEventos = oESocialEnvioLoteEventos:LoadFromFile("C:\Users\Wandrey\Downloads\Telegram Desktop\monit_teste-esocial-loteevt.xml")  		 
 	        oConsultaLoteAssincrono:ESocialEnvioLoteEventos = oESocialEnvioLoteEventos
 	     Endif		
 
@@ -78,7 +78,7 @@ Function eSocialConsultaLoteAssincrono()
 			   ?
 			   ?
 
-   			   oConsultaLoteAssincrono:GravarXmlDistribuicao("D:\testenfe\esocial\Enviado\Autorizados", "ID1230985630000002024090317432200001")
+   			   oConsultaLoteAssincrono:GravarXmlDistribuicao("D:\testenfe\esocial\Enviado\Autorizados", oEvento:ID)
 			   
 			   Wait
 			Else

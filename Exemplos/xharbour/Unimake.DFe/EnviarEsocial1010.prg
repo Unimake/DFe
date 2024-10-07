@@ -51,7 +51,7 @@ Function EnviarEsocial1010()
       oEvtTabRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.EvtTabRubrica")
       oEvtTabRubrica:Id := "ID1219984720000002024091914425200001"
 	  
-	  oIdeEvento := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento")
+	  oIdeEvento := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento1010")
 	  oIdeEvento:TpAmb   := 2 //TipoAmbiente.Homologacao
 	  oIdeEvento:ProcEmi := 1 //ProcEmiESocial.AppDoEmpregador 
 	  oIdeEvento:VerProc := "1.0"

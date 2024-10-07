@@ -289,16 +289,26 @@ Function EnviarEsocial2220Desserializando()
 
     * Criar objeto para consumir o serviço de envio de lotes de eventos do eSocial
       oEnviarLoteEventosESocial:= CreateObject("Unimake.Business.DFe.Servicos.ESocial.EnviarLoteEventosESocial")
-	
-    * Consumir o serviço	
-      oEnviarLoteEventosESocial:Executar(oESocialEnvioLoteEventos, oConfiguracao)
-      
-      stringXMLLoteAssinado:= oEnviarLoteEventosESocial:GetConteudoXMLAssinado()
-      
-      ? "StringXMLAssinado:", stringXMLLoteAssinado
+	  
+	* Setar o XML e configuração antes de enviar para conseguir resgatar o XML original e assinado antes de chamar o método Executar() para enviar
+	  oEnviarLoteEventosESocial:SetXMLConfiguracao(oESocialEnvioLoteEventos, oConfiguracao)
+	  
+    * Resgatar o conteúdo do XML original ou assinado antes de enviar:
+      stringXMLLoteOriginal := oEnviarLoteEventosESocial:GetConteudoXMLOriginal() //Sem assinatura
+      ? "stringXMLLoteOriginal:", stringXMLLoteOriginal
       ?
       ?
       Wait
+	  
+      stringXMLLoteAssinado := oEnviarLoteEventosESocial:GetConteudoXMLAssinado() //Com assinatura
+      ? "stringXMLLoteAssinado:", stringXMLLoteAssinado
+      ?
+      ?
+      Wait
+	   
+    * Consumir o serviço	
+      oEnviarLoteEventosESocial:Executar(oESocialEnvioLoteEventos, oConfiguracao)     
+      
       hb_MemoWrit("D:\enzza\unimake_esocial\xmlloteeventosassinado.xml", stringXMLLoteAssinado)
 	
       ? oEnviarLoteEventosESocial:RetornoWSString
