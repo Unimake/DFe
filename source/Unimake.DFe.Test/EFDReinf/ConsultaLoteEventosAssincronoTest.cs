@@ -78,7 +78,7 @@ namespace Unimake.DFe.Test.EFDReinf
             consultaLote.Executar();
             consultaLote.RetornoWSXML = doc;
             consultaLote.RetornoWSString = consultaLote.RetornoWSXML.OuterXml;
-            consultaLote.GravarXmlDistribuicao(@"..\..\..\EFDReinf\Resources");
+            consultaLote.GravarXmlDistribuicao(@"..\..\..\EFDReinf\Resources", null);
         }
 
         public ReinfEnvioLoteEventos reinfTeste = new Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos

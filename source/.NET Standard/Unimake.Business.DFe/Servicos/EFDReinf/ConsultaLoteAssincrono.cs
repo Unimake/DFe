@@ -139,24 +139,76 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         /// </summary>
         public ReinfEnvioLoteEventos ReinfEnvioLoteEventos { get; set; }
 
-
-        /// <inheritdoc />
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
+        /// <summary>
+        /// Gravar o XML de distribuição
+        /// </summary>
+        /// <param name="reinfProc">Objeto da estrutura do XML de distribuição contendo o evento e ID</param>
+        /// <param name="pasta">Pasta onde será gravado os XMLs de distribuição dos eventos autorizados</param>
+        /// <param name="idEvento">Id do evento a ser gravado. Em branco ou nulo vai gravar o XML de distribuição de todos os eventos do lote enviado</param>
+        private void GravarXML(ReinfProc reinfProc, string pasta, string idEvento)
         {
-            throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta)");
-        }
+            if (!string.IsNullOrWhiteSpace(idEvento))
+            {
+                if (reinfProc.ID != idEvento)
+                {
+                    return;
+                }
+            }
 
-        /// <inheritdoc />
-        public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null)
-        {
-            throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta)");
+            foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+            {
+                if (retornoEvento.ID == reinfProc.ID)
+                {
+                    if (retornoEvento.RetornoEvento.Reinf9001 != null)
+                    {
+                        if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
+                        {
+                            reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                            break;
+                        }
+                    }
+
+                    else if (retornoEvento.RetornoEvento.Reinf9005 != null)
+                    {
+                        if (retornoEvento.RetornoEvento.Reinf9005.EvtRet.IdeRecRetorno.IdeStatus.CdRetorno == 0)
+                        {
+                            reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                            break;
+                        }
+                    }
+                    
+                    else if (retornoEvento.RetornoEvento.Reinf9011 != null)
+                    {
+                        if (retornoEvento.RetornoEvento.Reinf9011.EvtTotalContrib.IdeRecRetorno.IdeStatus.CdRetorno == 0)
+                        {
+                            reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                            break;
+                        }
+                    }
+
+                    else if (retornoEvento.RetornoEvento.Reinf9015 != null)
+                    {
+                        if (retornoEvento.RetornoEvento.Reinf9015.EvtRetCons.IdeRecRetorno.IdeStatus.CdRetorno == 0)
+                        {
+                            reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
+                            break;
+                        }
+                    }
+
+                }
+            }
         }
 
         /// <summary>
         /// Gravar XML de distribuição dos eventos enviados/autorizados em uma pasta específica
         /// </summary>
         /// <param name="pasta">Pasta onde será gravado os XMLs de distribuição dos eventos autorizados</param>
-        public void GravarXmlDistribuicao(string pasta)
+        /// <param name="idEvento">Id do evento a ser gravado. Em branco ou nulo vai gravar o XML de distribuição de todos os eventos do lote enviado</param>
+        public void GravarXmlDistribuicao(string pasta, string idEvento)
         {
             try
             { 
@@ -166,26 +218,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     if (evento.Reinf1000 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf1000 = evento.Reinf1000;
-                        reinfProc.ID = evento.Reinf1000.EvtInfoContri.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf1000 = evento.Reinf1000,
+                            ID = evento.Reinf1000.EvtInfoContri.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf1000
@@ -194,26 +233,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf1050 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf1050 = evento.Reinf1050;
-                        reinfProc.ID = evento.Reinf1050.EvtTabLig.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf1050 = evento.Reinf1050,
+                            ID = evento.Reinf1050.EvtTabLig.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf1050
@@ -222,26 +248,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf1070 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf1070 = evento.Reinf1070;
-                        reinfProc.ID = evento.Reinf1070.EvtTabProcesso.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf1070 = evento.Reinf1070,
+                            ID = evento.Reinf1070.EvtTabProcesso.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf1070
@@ -250,26 +263,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2010 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2010 = evento.Reinf2010;
-                        reinfProc.ID = evento.Reinf2010.EvtServTom.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2010 = evento.Reinf2010,
+                            ID = evento.Reinf2010.EvtServTom.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2010
@@ -278,26 +278,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2020 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2020 = evento.Reinf2020;
-                        reinfProc.ID = evento.Reinf2020.EvtServPrest.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2020 = evento.Reinf2020,
+                            ID = evento.Reinf2020.EvtServPrest.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2020
@@ -306,26 +293,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2030 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2030 = evento.Reinf2030;
-                        reinfProc.ID = evento.Reinf2030.EvtAssocDespRec.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2030 = evento.Reinf2030,
+                            ID = evento.Reinf2030.EvtAssocDespRec.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2030
@@ -334,26 +308,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2040 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2040 = evento.Reinf2040;
-                        reinfProc.ID = evento.Reinf2040.EvtAssocDespRep.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2040 = evento.Reinf2040,
+                            ID = evento.Reinf2040.EvtAssocDespRep.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2040
@@ -362,26 +323,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2050 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2050 = evento.Reinf2050;
-                        reinfProc.ID = evento.Reinf2050.EvtComProd.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2050 = evento.Reinf2050,
+                            ID = evento.Reinf2050.EvtComProd.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2050
@@ -390,26 +338,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2055 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2055 = evento.Reinf2055;
-                        reinfProc.ID = evento.Reinf2055.EvtAqProd.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2055 = evento.Reinf2055,
+                            ID = evento.Reinf2055.EvtAqProd.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2055
@@ -418,26 +353,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2060 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2060 = evento.Reinf2060;
-                        reinfProc.ID = evento.Reinf2060.EvtCPRB.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2060 = evento.Reinf2060,
+                            ID = evento.Reinf2060.EvtCPRB.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2060
@@ -446,26 +368,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2098 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2098 = evento.Reinf2098;
-                        reinfProc.ID = evento.Reinf2098.EvtReabreEvPer.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2098 = evento.Reinf2098,
+                            ID = evento.Reinf2098.EvtReabreEvPer.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2098
@@ -474,26 +383,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf2099 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf2099 = evento.Reinf2099;
-                        reinfProc.ID = evento.Reinf2099.EvtFechaEvPer.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9011.EvtTotalContrib != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9011.EvtTotalContrib.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf2099 = evento.Reinf2099,
+                            ID = evento.Reinf2099.EvtFechaEvPer.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf2099
@@ -502,26 +398,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf3010 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf3010 = evento.Reinf3010;
-                        reinfProc.ID = evento.Reinf3010.EvtEspDesportivo.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9001.EvtTotal.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf3010 = evento.Reinf3010,
+                            ID = evento.Reinf3010.EvtEspDesportivo.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf3010
@@ -530,26 +413,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf4010 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf4010 = evento.Reinf4010;
-                        reinfProc.ID = evento.Reinf4010.EvtRetPF.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9005.EvtRet != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9005.EvtRet.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf4010 = evento.Reinf4010,
+                            ID = evento.Reinf4010.EvtRetPF.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf4010
@@ -558,26 +428,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf4020 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf4020 = evento.Reinf4020;
-                        reinfProc.ID = evento.Reinf4020.EvtRetPJ.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9005.EvtRet != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9005.EvtRet.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf4020 = evento.Reinf4020,
+                            ID = evento.Reinf4020.EvtRetPJ.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf4020
@@ -586,26 +443,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf4040 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf4040 = evento.Reinf4040;
-                        reinfProc.ID = evento.Reinf4040.EvtBenefNId.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9005.EvtRet != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9005.EvtRet.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf4040 = evento.Reinf4040,
+                            ID = evento.Reinf4040.EvtBenefNId.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf4040
@@ -614,26 +458,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf4080 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf4080 = evento.Reinf4080;
-                        reinfProc.ID = evento.Reinf4080.EvtRetRec.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9005.EvtRet != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9005.EvtRet.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf4080 = evento.Reinf4080,
+                            ID = evento.Reinf4080.EvtRetRec.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf4080
@@ -642,26 +473,13 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
                     else if (evento.Reinf4099 != null)
                     {
-                        var reinfProc = new ReinfProc();
-                        reinfProc.Reinf4099 = evento.Reinf4099;
-                        reinfProc.ID = evento.Reinf4099.EvtFech.ID;
-
-                        foreach (var retornoEvento in Result.RetornoLoteEventosAssincrono.RetornoEventos.Evento)
+                        var reinfProc = new ReinfProc
                         {
-                            if (retornoEvento.ID == reinfProc.ID)
-                            {
-                                if (retornoEvento.RetornoEvento.Reinf9015.EvtRetCons != null)
-                                {
-                                    if (retornoEvento.RetornoEvento.Reinf9015.EvtRetCons.IdeRecRetorno.IdeStatus.CdRetorno == 0)
-                                    {
-                                        reinfProc.RetornoEvento = retornoEvento.RetornoEvento;
+                            Reinf4099 = evento.Reinf4099,
+                            ID = evento.Reinf4099.EvtFech.ID
+                        };
 
-                                        base.GravarXmlDistribuicao(pasta, reinfProc.NomeArquivoDistribuicao, reinfProc.GerarXML().OuterXml);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                        GravarXML(reinfProc, pasta, idEvento);
                     }
 
                     #endregion Reinf4099
@@ -672,6 +490,37 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
                 ThrowHelper.Instance.Throw(ex);
             }
         }
+
+        /// <summary>
+        /// Gravar XML de distribuição dos eventos enviados/autorizados em uma pasta específica
+        /// </summary>
+        /// <param name="pasta">Pasta onde será gravado os XMLs de distribuição dos eventos autorizados</param>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public void GravarXmlDistribuicao(string pasta)
+        {
+            try
+            {
+                GravarXmlDistribuicao(pasta, null);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        /// <inheritdoc />
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string idEvento)");
+
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        /// <inheritdoc />
+        public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string idEvento)");
 
 
         #endregion Public Methods
