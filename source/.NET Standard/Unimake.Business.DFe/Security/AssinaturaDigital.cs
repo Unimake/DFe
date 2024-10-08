@@ -97,16 +97,12 @@ namespace Unimake.Business.DFe.Security
                                             {
                                                 idAttributeName = "id";
                                             }
+
                                         }
 
-                                        else if (childElemen.GetAttributeNode(idAttributeName) != null)
+                                        if (childElemen.GetAttributeNode(idAttributeName) != null)
                                         {
                                             reference.Uri = "#" + childElemen.GetAttributeNode(idAttributeName).Value;
-                                        }
-
-                                        else if (childElemen.GetAttributeNode("id") != null) // Para Salvador - BA, é utilizado o id
-                                        {
-                                            reference.Uri = "#" + childElemen.GetAttributeNode("id").Value;
                                         }
                                     }
 

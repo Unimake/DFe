@@ -41,7 +41,7 @@ namespace Unimake.Business.DFe.Servicos
                     }
                     else
                     {
-                        AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "Id", true);
+                        AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha1, true, "", true);
 
                         AjustarXMLAposAssinado();
                     }
