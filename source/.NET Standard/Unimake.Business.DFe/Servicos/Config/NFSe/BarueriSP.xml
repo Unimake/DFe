@@ -9,7 +9,7 @@
 			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteEnviarArquivo</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteEnviarArquivo><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteEnviarArquivo></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>NFeLoteEnviarArquivoResult</WebTagRetorno>
+			<WebTagRetorno>NFeLoteEnviarArquivoResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -23,7 +23,7 @@
 			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteStatusArquivo</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteStatusArquivo><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteStatusArquivo></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>NFeLoteStatusArquivoResult</WebTagRetorno>
+			<WebTagRetorno>NFeLoteStatusArquivoResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -37,7 +37,7 @@
 			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteListarArquivos</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteListarArquivos><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteListarArquivos></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>NFeLoteListarArquivosResult</WebTagRetorno>
+			<WebTagRetorno>NFeLoteListarArquivosResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -51,7 +51,7 @@
 			<WebActionProducao>http://www.barueri.sp.gov.br/nfe/NFeLoteBaixarArquivo</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.barueri.sp.gov.br/nfe"><soapenv:Header/><soapenv:Body><nfe:NFeLoteBaixarArquivo><nfe:VersaoSchema>1</nfe:VersaoSchema><nfe:MensagemXML><![CDATA[{xmlBody}]]]]><![CDATA[></nfe:MensagemXML></nfe:NFeLoteBaixarArquivo></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>NFeLoteBaixarArquivoResult</WebTagRetorno>
+			<WebTagRetorno>NFeLoteBaixarArquivoResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
