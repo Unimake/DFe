@@ -1,6 +1,4 @@
-﻿using FSharp.Compiler.Syntax;
-using FSharp.Compiler.Xml;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +10,8 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe
 {
@@ -218,33 +218,10 @@ namespace Unimake.Business.DFe
 
         static XmlDocument CreateXmlDocumentReceitas(List<ReceitaDARE> listaReceitas)
         {
-            var xmlReceitas = new Unimake.Business.DFe.Xml.DARE.Receitas();
-            
-            //xmlReceitas = XMLUtility.Serializar<Unimake.Business.DFe.Xml.DARE.Receitas>(List<ReceitaDARE> listaReceitas);
-            
-            XmlDocument xmlDoc = new XmlDocument();
-            XmlNode receitas = xmlDoc.CreateElement("Receitas");
-            xmlDoc.AppendChild(receitas);
+            var receitas = new Xml.DARE.Receitas();
+            receitas.Receita = listaReceitas;
 
-            foreach (ReceitaDARE receitaItem in listaReceitas)
-            {
-                XmlNode receita = xmlDoc.CreateElement("Receita");
-
-                XmlElement codigo = xmlDoc.CreateElement("codigo");
-                codigo.InnerText = receitaItem.Codigo;
-                receita.AppendChild(codigo);
-
-                XmlElement codigoServicoDARE = xmlDoc.CreateElement("codigoServicoDARE");
-                codigoServicoDARE.InnerText = receitaItem.CodigoServicoDARE;
-                receita.AppendChild(codigoServicoDARE);
-
-                XmlElement nome = xmlDoc.CreateElement("nome");
-                nome.InnerText = receitaItem.Nome;
-                receita.AppendChild(nome);
-
-
-                receitas.AppendChild(receita);
-            }
+            var xmlDoc = XMLUtility.Serializar<Xml.DARE.Receitas>(receitas);
 
             return xmlDoc;
         }
