@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS1591
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -17,6 +18,7 @@ namespace Unimake.Business.DFe.Xml.DARE
     /// <summary>
     /// Classe para serialização e deserialização para Receitas - DARE SP
     /// </summary>
+
     [Serializable()]
     [XmlRoot("Receitas")]
     public class Receitas : XMLBase
@@ -25,6 +27,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         [XmlElement("consulta")]
         public string Consulta { get; set; }
 
+        [JsonIgnore]
         [XmlElement("Receita")]
         public List<ReceitaDARE> Receita { get; set; }
 #if INTEROP
@@ -80,9 +83,6 @@ namespace Unimake.Business.DFe.Xml.DARE
 
         [XmlElement("codigoServicoDARE")]
         public string CodigoServicoDARE { get; set; }
-
-        [XmlElement("escopoUso")]
-        public string EscopoUso { get; set; }
 
         [XmlElement("nome")]
         public string Nome { get; set; }

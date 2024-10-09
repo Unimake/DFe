@@ -46,7 +46,6 @@ namespace Unimake.DFe.Test.DARE
                 {
                     Codigo = "001",
                     CodigoServicoDARE = "101",
-                    EscopoUso = "1",
                     Nome = "Receita Exemplo"
                 },
                 Referencia = "REF123",
@@ -114,7 +113,6 @@ namespace Unimake.DFe.Test.DARE
                     {
                         Codigo = "001",
                         CodigoServicoDARE = "101",
-                        EscopoUso = "1",
                         Nome = "Receita Exemplo"
                     },
                     Referencia = "REF123",
@@ -185,7 +183,6 @@ namespace Unimake.DFe.Test.DARE
                                     {
                                         Codigo = "001",
                                         CodigoServicoDARE = "101",
-                                        EscopoUso = "1",
                                         Nome = "Receita Exemplo"
                                     },
                                     Referencia = "REF123",
@@ -228,7 +225,6 @@ namespace Unimake.DFe.Test.DARE
                                     {
                                         Codigo = "001",
                                         CodigoServicoDARE = "101",
-                                        EscopoUso = "1",
                                         Nome = "Receita Exemplo"
                                     },
                                     Referencia = "REF123",

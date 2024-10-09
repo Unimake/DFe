@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using FSharp.Compiler.Syntax;
+using FSharp.Compiler.Xml;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text;
@@ -8,6 +11,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.DARE;
 
 namespace Unimake.Business.DFe
 {
@@ -35,13 +39,13 @@ namespace Unimake.Business.DFe
             var tipoRetorno = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
 
             if (!responseString.StartsWith("<") && Response.IsSuccessStatusCode)
-            {   
-                if(responseString.StartsWith(" "))
+            {
+                if (responseString.StartsWith(" "))
                 {
                     responseString = responseString.Substring(1);
                 }
             }
-            
+
             //Response.Content.Headers.ContentType.MediaType -> ContentType retornado na comunicação || (Config.ContentType)
             switch (tipoRetorno)             //(Config.ContentType)
             {
@@ -69,6 +73,21 @@ namespace Unimake.Business.DFe
                         {
                             resultadoRetorno.LoadXml(StringToXml(responseString));
                         }
+
+                        else if (Config.Servico == Servico.DAREReceita)
+                        {
+
+                            // Desserializando JSON para lista de objetos
+                            List<ReceitaDARE> dare = JsonConvert.DeserializeObject<List<ReceitaDARE>>(responseString);
+
+                            if (dare == null)
+                            {
+                                throw new InvalidOperationException("Não foi possível desserializar a lista de receitas.");
+                            }
+
+                            resultadoRetorno = CreateXmlDocumentReceitas(dare);
+                        }
+
                         else
                         {
                             resultadoRetorno.LoadXml(responseString);
@@ -91,7 +110,7 @@ namespace Unimake.Business.DFe
                 case "application/pdf":
                     responseString = responseString.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&");
                     responseString = Convert.ToBase64String(Encoding.UTF8.GetBytes(responseString));
-                    stream  = Response.IsSuccessStatusCode ?  Response.Content.ReadAsStreamAsync().Result : null;
+                    stream = Response.IsSuccessStatusCode ? Response.Content.ReadAsStreamAsync().Result : null;
                     resultadoRetorno = CreateXmlDocument(responseString);
                     break;
 
@@ -193,6 +212,39 @@ namespace Unimake.Business.DFe
             XmlNode textoElement = xmlDoc.CreateElement("Base64Pdf");
             textoElement.InnerText = text;
             root.AppendChild(textoElement);
+
+            return xmlDoc;
+        }
+
+        static XmlDocument CreateXmlDocumentReceitas(List<ReceitaDARE> listaReceitas)
+        {
+            var xmlReceitas = new Unimake.Business.DFe.Xml.DARE.Receitas();
+            
+            //xmlReceitas = XMLUtility.Serializar<Unimake.Business.DFe.Xml.DARE.Receitas>(List<ReceitaDARE> listaReceitas);
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode receitas = xmlDoc.CreateElement("Receitas");
+            xmlDoc.AppendChild(receitas);
+
+            foreach (ReceitaDARE receitaItem in listaReceitas)
+            {
+                XmlNode receita = xmlDoc.CreateElement("Receita");
+
+                XmlElement codigo = xmlDoc.CreateElement("codigo");
+                codigo.InnerText = receitaItem.Codigo;
+                receita.AppendChild(codigo);
+
+                XmlElement codigoServicoDARE = xmlDoc.CreateElement("codigoServicoDARE");
+                codigoServicoDARE.InnerText = receitaItem.CodigoServicoDARE;
+                receita.AppendChild(codigoServicoDARE);
+
+                XmlElement nome = xmlDoc.CreateElement("nome");
+                nome.InnerText = receitaItem.Nome;
+                receita.AppendChild(nome);
+
+
+                receitas.AppendChild(receita);
+            }
 
             return xmlDoc;
         }
