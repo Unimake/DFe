@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.ESocial;
@@ -51,59 +50,57 @@ namespace Unimake.DFe.Test.ESocial
                     Eventos = new EventosESocial
                     {
                         Evento = new List<EventoESocial>
-                    {
-                        new EventoESocial
                         {
-                            ID = "ID1061174730000002024081911021200001",
-                            ESocial1000 = new ESocial1000
+                            new EventoESocial
                             {
-                                EvtInfoEmpregador = new EvtInfoEmpregador
+                                ID = "ID1061174730000002024081911021200001",
+                                ESocial1000 = new ESocial1000
                                 {
-                                    ID = "ID1061174730000002024081911021200001",
-                                    IdeEvento = new IdeEvento1000
+                                    EvtInfoEmpregador = new EvtInfoEmpregador
                                     {
-                                        TpAmb = TipoAmbiente.Homologacao,
-                                        ProcEmi = ProcEmiESocial.AppDoEmpregador,
-                                        VerProc = "1.1.0"
-                                    },
-
-                                    IdeEmpregador = new IdeEmpregador
-                                    {
-                                        TpInsc = TiposInscricao.CNPJ,
-                                        NrInsc = "06117473"
-                                    },
-
-                                    InfoEmpregador = new InfoEmpregador
-                                    {
-                                        Inclusao = new InclusaoE1000
+                                        ID = "ID1061174730000002024081911021200001",
+                                        IdeEvento = new IdeEvento1000
                                         {
-                                            IdePeriodo = new IdePeriodo
+                                            TpAmb = TipoAmbiente.Homologacao,
+                                            ProcEmi = ProcEmiESocial.AppDoEmpregador,
+                                            VerProc = "1.1.0"
+                                        },
+                                        IdeEmpregador = new IdeEmpregador
+                                        {
+                                            TpInsc = TiposInscricao.CNPJ,
+                                            NrInsc = "06117473"
+                                        },
+                                        InfoEmpregador = new InfoEmpregador
+                                        {
+                                            Inclusao = new InclusaoE1000
                                             {
-                                                IniValid = DateTime.Parse("2021-01-01"),
-                                                FimValid = DateTime.Parse("2021-01-02"),
-                                            },
-
-                                            InfoCadastro = new InfoCadastro
-                                            {
-                                                ClassTrib = ClassificacaoTributaria.AdministracaoDiretaUniao,
-                                                IndCoop = IndCoop.NaoCooperativa,
-                                                IndConstr = IndConstr.EmpresaConstrutora,
-                                                IndDesFolha = IndDesFolha.NaoAplicavel,
-                                                IndOptRegEletron = IndOptRegEletron.NaoOptou,
-                                                DadosIsencao = new DadosIsencao
+                                                IdePeriodo = new IdePeriodo
                                                 {
-                                                    IdeMinLei = "str1234",
-                                                    NrCertif = "56156178151",
-                                                    DtEmisCertif = DateTime.Parse("2021-01-01"),
-                                                    DtVencCertif = DateTime.Parse("2021-12-31"),
-                                                    NrProtRenov = "1565458",
-                                                    DtProtRenov = DateTime.Parse("2021-06-20"),
-                                                    DtDou = DateTime.Parse("2021-05-20"),
-                                                    PagDou = "123"
+                                                    IniValid = DateTime.Parse("2021-01-01"),
+                                                    FimValid = DateTime.Parse("2021-01-02"),
                                                 },
-                                                InfoOrgInternacional = new Business.DFe.Xml.ESocial.InfoOrgInternacional
+                                                InfoCadastro = new InfoCadastro
                                                 {
-                                                    IndAcordoIsenMulta = IndAcordoIsenMulta.ComAcordo
+                                                    ClassTrib = ClassificacaoTributaria.AdministracaoDiretaUniao,
+                                                    IndCoop = IndCoop.NaoCooperativa,
+                                                    IndConstr = IndConstr.EmpresaConstrutora,
+                                                    IndDesFolha = IndDesFolha.NaoAplicavel,
+                                                    IndOptRegEletron = IndOptRegEletron.NaoOptou,
+                                                    DadosIsencao = new DadosIsencao
+                                                    {
+                                                        IdeMinLei = "str1234",
+                                                        NrCertif = "56156178151",
+                                                        DtEmisCertif = DateTime.Parse("2021-01-01"),
+                                                        DtVencCertif = DateTime.Parse("2021-12-31"),
+                                                        NrProtRenov = "1565458",
+                                                        DtProtRenov = DateTime.Parse("2021-06-20"),
+                                                        DtDou = DateTime.Parse("2021-05-20"),
+                                                        PagDou = "123"
+                                                    },
+                                                    InfoOrgInternacional = new Business.DFe.Xml.ESocial.InfoOrgInternacional
+                                                    {
+                                                        IndAcordoIsenMulta = IndAcordoIsenMulta.ComAcordo
+                                                    }
                                                 }
                                             }
                                         }
@@ -111,7 +108,6 @@ namespace Unimake.DFe.Test.ESocial
                                 }
                             }
                         }
-                    }
                     }
                 }
             };

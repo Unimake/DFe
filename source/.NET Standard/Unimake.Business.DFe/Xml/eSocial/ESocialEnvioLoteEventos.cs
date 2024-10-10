@@ -1,8 +1,12 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -124,7 +128,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Evento
         /// </summary>
-        public int GetInfoPgtoCount => (Evento != null ? Evento.Count : 0);
+        public int GetEventoCount => (Evento != null ? Evento.Count : 0);
 
 #endif
     }
@@ -285,5 +289,35 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00")]
         public ESocial8299 ESocial8299 { get; set; }
+
+        /// <summary>
+        /// Retorna códigos dos eventos que estão sendo enviados no lote
+        /// </summary>
+        [XmlIgnore]
+        public int TipoEvento
+        {
+            get
+            {
+                var propriedades = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+                int tipoEvento = 0;
+                foreach (var propriedade in propriedades)
+                {
+                    if (propriedade.PropertyType.Name.StartsWith("ESocial"))
+                    {
+                        var valor = propriedade.GetValue(this);
+
+                        if (valor != null)
+                        {
+                            tipoEvento = Convert.ToInt32(propriedade.PropertyType.Name.Substring(7, 4));
+                            break;
+
+                        }
+                    }
+                }
+
+                return tipoEvento;
+            }
+        }
     }
 }
