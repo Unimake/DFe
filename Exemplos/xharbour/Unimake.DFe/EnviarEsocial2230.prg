@@ -80,6 +80,20 @@ Function EnviarEsocial2230()
       oEventosESocial:AddEvento(oEventoESocial)
       oEnvioLoteEventosESocial:Eventos:= oEventosESocial
       oESocialEnvioLoteEventos:EnvioLoteEventos:= oEnvioLoteEventosESocial
+	  
+
+ 	* Aqui vou abrir um LOOP para ver todos os eventos que estão no lote e pegar o tipo de cada um deles.
+	  ?
+	  ?
+	  FOR i := 1 TO oESocialEnvioLoteEventos:EnvioLoteEventos:Eventos:GetEventoCount
+          evento := oESocialEnvioLoteEventos:EnvioLoteEventos:Eventos:GetEvento(i-1)
+          tipoEvento := evento:TipoEvento
+		  
+		  ? "Tipo do evento:", tipoEvento
+	  NEXT i
+	  ?
+	  ?
+	  Wait
 
     * comum daqui para baixo
     * Criar objeto para consumir o serviço de envio de lotes de eventos do eSocial

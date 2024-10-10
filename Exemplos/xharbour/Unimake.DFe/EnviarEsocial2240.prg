@@ -151,6 +151,9 @@ Function EnviarEsocial2240()
 	  ? "DescResposta:", oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:DescResposta
 	  ?
 	  
+	  //? Numero do protocolo: ", oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:DadosRecepcaoLote:ProtocoloEnvio
+	  
+	  
 	  if oEnviarLoteEventosESocial:Result:RetornoEnvioLoteEventos:Status:Ocorrencias != nil
          ? "Ocorrencias:"
          ?
