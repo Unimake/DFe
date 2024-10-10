@@ -510,18 +510,17 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             }
         }
 
+        /// <inheritdoc />
 #if INTEROP
         [ComVisible(false)]
 #endif
-        /// <inheritdoc />
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string idEvento)");
 
+        /// <inheritdoc />
 #if INTEROP
         [ComVisible(false)]
 #endif
-        /// <inheritdoc />
         public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string idEvento)");
-
 
         #endregion Public Methods
     }
