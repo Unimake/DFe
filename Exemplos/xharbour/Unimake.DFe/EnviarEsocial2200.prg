@@ -44,12 +44,12 @@ Function EnviarEsocial2200()
 	  oEventosESocial := CreateObject("Unimake.Business.DFe.Xml.ESocial.EventosESocial")
 	  
 	  oEventoESocial := CreateObject("Unimake.Business.DFe.Xml.ESocial.EventoESocial")
-	  oEventoESocial:Id = "ID1219984720000002024082712064800287"
+	  oEventoESocial:Id = "ID1111111111111111111111111111111111"
 	  
 	  oESocial2200 := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocial2200")
 	 
       oEvtAdmissao := CreateObject("Unimake.Business.DFe.Xml.ESocial.EvtAdmissao")
-	  oEvtAdmissao:Id = "ID1219984720000002024082712064800287"
+	  oEvtAdmissao:Id = "ID1111111111111111111111111111111111"
 	  
       oIdeEvento := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento2200")
       oIdeEvento:IndRetif := 1 //IndicativoRetificacao.ArquivoOriginal
@@ -60,12 +60,12 @@ Function EnviarEsocial2200()
 
       oIdeEmpregador := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")
 	  oIdeEmpregador:tpInsc := 1 //TiposInscricao.CNPJ
-	  oIdeEmpregador:nrInsc := "21998472"
+	  oIdeEmpregador:nrInsc := "11111111"
 	  oEvtAdmissao:IdeEmpregador := oIdeEmpregador
 	  
 	  oTrabalhador := CreateObject("Unimake.Business.DFe.Xml.ESocial.Trabalhador")
-	  oTrabalhador:cpfTrab := "45589625840"
-      oTrabalhador:nmTrab := "WENDELL ROSA RIBEIRO"
+	  oTrabalhador:cpfTrab := "11111111111"
+      oTrabalhador:nmTrab := "XXXXXXXX XXX XXXXXXX"
       oTrabalhador:sexo := 1 //1=TipoSexo.Masculino 2=TipoSexo.Feminino
       oTrabalhador:racaCor := 3 //RacaCor.Parda
       oTrabalhador:estCiv :=  1 //EstadoCivil.Solteiro
@@ -80,11 +80,11 @@ Function EnviarEsocial2200()
 	  oEndereco := CreateObject("Unimake.Business.DFe.Xml.ESocial.Endereco")
 	  oBrasil := CreateObject("Unimake.Business.DFe.Xml.ESocial.Brasil")
 	  oBrasil:tpLograd := "R"
-	  oBrasil:dscLograd := "RUA ARARAQUARA"
-	  oBrasil:nrLograd := "38"
+	  oBrasil:dscLograd := "RUA XXXXXXXXXX"
+	  oBrasil:nrLograd := "11"
 	  oBrasil:bairro := "CIDADE NOVA"
-	  oBrasil:cep := "13308113"
-	  oBrasil:codMunic := "3523909"
+	  oBrasil:cep := "11111111"
+	  oBrasil:codMunic := "1111111"
 	  oBrasil:uf := "SP"
 	  oEndereco:Brasil := oBrasil	  
 	  oTrabalhador:Endereco := oEndereco
@@ -103,7 +103,7 @@ Function EnviarEsocial2200()
 	  oEvtAdmissao:Trabalhador := oTrabalhador
 	  
 	  oVinculo := CreateObject("Unimake.Business.DFe.Xml.ESocial.Vinculo2200")
-	  oVinculo:matricula := "000269"
+	  oVinculo:matricula := "111111"
 	  oVinculo:tpRegTrab := 1
 	  oVinculo:tpRegPrev := 1
 	  oVinculo:cadIni := 0 //SimNaoLetra.Nao
@@ -116,7 +116,7 @@ Function EnviarEsocial2200()
 	  oInfoCeletista:indAdmissao := 1
 	  oInfoCeletista:tpRegJor := 1
 	  oInfoCeletista:natAtividade := 1
-	  oInfoCeletista:cnpjSindCategProf := "50234384000185"
+	  oInfoCeletista:cnpjSindCategProf := "11111111111111"
 	  oInfoRegimeTrab:InfoCeletista := oInfoCeletista
 
       oVinculo:InfoRegimeTrab := oInfoRegimeTrab
@@ -140,7 +140,7 @@ Function EnviarEsocial2200()
 	  
 	  oLocalTrabGeral := CreateObject("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral2200")
 	  oLocalTrabGeral:tpInsc := 1
-	  oLocalTrabGeral:nrInsc := "21998472000155"
+	  oLocalTrabGeral:nrInsc := "11111111111111"
 	  oLocalTrabalho:LocalTrabGeral := oLocalTrabGeral
 	  oInfoContrato:LocalTrabalho := oLocalTrabalho
 	  
