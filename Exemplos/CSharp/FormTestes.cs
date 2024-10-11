@@ -2860,6 +2860,8 @@ namespace TreinamentoDLL
                     if (autorizacaoSinc.Result.ProtCTe.InfProt.CStat == 100) //CTe Autorizado
                     {
                         autorizacaoSinc.GravarXmlDistribuicao(@"d:\testenfe");
+
+                        var stringXMLDistribuicaoCTe = autorizacaoSinc.CteProcResults["50230500000000000000570010000008611017220679"].GerarXML().OuterXml;
                     }
                 }
             }

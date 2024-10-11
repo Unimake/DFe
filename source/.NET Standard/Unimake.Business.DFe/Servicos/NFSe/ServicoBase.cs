@@ -211,7 +211,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <param name="conteudoXML">Conteúdo do XML que será enviado para o WebService</param>
         /// <param name="configuracao">Objeto "Configuracoes" com as propriedade necessária para a execução do serviço</param>
         [ComVisible(true)]
-        public void Executar(string conteudoXML, Configuracao configuracao)
+        public virtual void Executar(string conteudoXML, Configuracao configuracao)
         {
             try
             {
