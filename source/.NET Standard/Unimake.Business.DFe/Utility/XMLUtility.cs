@@ -486,6 +486,7 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         /// <param name="xml">Conteúdo do XML</param>
         /// <param name="linePosition">Posição da linha do XML que gerou a exceção</param>
+        /// <param name="voltarUmaTag">Booleano para voltar uma tag</param>
         private static string ExtrairParteXMLComFalha(string xml, int linePosition, bool voltarUmaTag = false)
         {
             var message = string.Empty;

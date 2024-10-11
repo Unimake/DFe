@@ -166,9 +166,13 @@ namespace Unimake.Business.DFe.Xml.GNRE
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
+#if INTEROP
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
+#else
+        public bool ShouldSerializeUF() => UF != null;
+#endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -401,8 +405,19 @@ namespace Unimake.Business.DFe.Xml.GNRE
 #region ShouldSerialize
 
         public bool ShouldSerializePeriodo() => Periodo != null;
-        public bool ShouldSerializeMes() => Mes != null && Mes != (Meses)(-1);
-        public bool ShouldSerializeAno() => !string.IsNullOrWhiteSpace(Ano) && Mes != null && Mes != (Meses)(-1);
+
+#if INTEROP
+        public bool ShouldSerializeMes() => Mes != (Meses)(-1);
+#else
+        public bool ShouldSerializeMes() => Mes != null;
+#endif
+
+
+#if INTEROP
+        public bool ShouldSerializeAno() => !string.IsNullOrWhiteSpace(Ano) && Mes != (Meses)(-1);
+#else
+        public bool ShouldSerializeAno() => !string.IsNullOrWhiteSpace(Ano) && Mes != null;
+#endif
         public bool ShouldSerializeParcela() => !string.IsNullOrWhiteSpace(Parcela);
 
 #endregion

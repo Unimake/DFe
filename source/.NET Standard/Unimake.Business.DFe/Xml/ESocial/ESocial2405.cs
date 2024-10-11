@@ -10,14 +10,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2405 - Cadastro de Beneficiário - Entes Públicos - Alteração
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-2405 - Cadastro de Beneficiário - Entes Públicos - Alteração
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenefAlt/v_S_01_02_00", IsNullable = false)]
     public class ESocial2405 : XMLBase
@@ -32,14 +32,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Cadastro de Beneficiário - Entes Públicos - Alteração.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtCdBenefAlt")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Cadastro de Beneficiário - Entes Públicos - Alteração.
-    /// </summary>
     public class EvtCdBenefAlt
     {
         /// <summary>
@@ -75,14 +75,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeEvento2405
 
-#if INTEROP
-        [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2405")]
-        [ComVisible(true)]
-#endif
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2405")]
+        [ComVisible(true)]
+#endif
     public class IdeEvento2405
     {
         /// <summary>
@@ -126,14 +126,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeEvento
 
     #region IdeBenefESocial2405
+
+    /// <summary>
+    /// Identificação do beneficiário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenefESocial2405")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do beneficiário.
-    /// </summary>
     public class IdeBenefESocial2405
     {
         /// <summary>
@@ -144,14 +145,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion IdeBenef
 
+    /// <summary>
+    /// Alteração de dados do beneficiário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial2405")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Alteração de dados do beneficiário.
-    /// </summary>
     public class AlteracaoESocial2405
     {
         /// <summary>
@@ -185,14 +186,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DadosBenef DadosBenef { get; set; }
     }
 
+    /// <summary>
+    /// Dados do beneficiário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.DadosBenef")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Dados do beneficiário.
-    /// </summary>
     public class DadosBenef
     {
         /// <summary>

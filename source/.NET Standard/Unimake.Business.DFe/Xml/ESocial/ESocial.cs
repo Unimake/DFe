@@ -14,14 +14,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 {
     #region IdeEvento
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento
-    /// </summary>
+   
     [Serializable()]
     public abstract class IdeEvento
     {
@@ -60,14 +61,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeEmpregador
 
+    /// <summary>
+    /// Informações de identificação do empregador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do empregador
-    /// </summary>
     [Serializable()]
     public class IdeEmpregador
     {
@@ -208,11 +209,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
         public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
 
-        public bool ShouldSerializeIndApurIR() => IndApurIR != null && IndApurIR != (IndApurIR)(-1);
+#if INTEROP
+        public bool ShouldSerializeIndApurIR() => IndApurIR != (IndApurIR)(-1);
+#else
+        public bool ShouldSerializeIndApurIR() => IndApurIR != null;
+#endif
 
         #endregion ShouldSerialize
     }
 
-#endregion ItensRemun
+    #endregion ItensRemun
 
 }

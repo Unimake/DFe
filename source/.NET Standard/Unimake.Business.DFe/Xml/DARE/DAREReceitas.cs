@@ -8,16 +8,14 @@ using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.DARE
 {
-
+    /// <summary>
+    /// Classe para serialização e deserialização para Receitas - DARE SP
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.DARE.Receitas")]
     [ComVisible(true)]
 #endif
-
-    /// <summary>
-    /// Classe para serialização e deserialização para Receitas - DARE SP
-    /// </summary>
 
     [Serializable()]
     [XmlRoot("Receitas")]
@@ -68,14 +66,14 @@ namespace Unimake.Business.DFe.Xml.DARE
 #endif
     }
 
+    /// <summary>
+    /// Classe de retorno do serviço de Receitas DARE - SP
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.DARE.ReceitaDARE")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Classe de retorno do serviço de Receitas DARE - SP
-    /// </summary>
     public class ReceitaDARE
     {
         [XmlElement("codigo")]

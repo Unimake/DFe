@@ -66,8 +66,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("matricula")]
         public string Matricula { get; set; }
 
-        #region ShouldSerialize
-
         [XmlElement("codCateg")]
 #if INTEROP
         public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
@@ -75,9 +73,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public CodCateg? CodCateg { get; set; }
 #endif
 
-        public bool ShouldSerializeCodCateg() => CodCateg != null && CodCateg != (CodCateg)(-1);
+        #region ShouldSerialize
 
-        #endregion
+#if INTEROP
+        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
+#else
+        public bool ShouldSerializeCodCateg() => CodCateg != null;
+#endif
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP

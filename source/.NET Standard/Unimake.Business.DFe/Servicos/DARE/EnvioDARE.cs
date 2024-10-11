@@ -33,13 +33,13 @@ namespace Unimake.Business.DFe.Servicos.DARE
 
 #if INTEROP
         /// <summary>
-        /// 
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="interopType"></param>
+        /// <param name="envioDARE">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Unimake.Business.DFe.Xml.DARE.DARE EnvioDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] Unimake.Business.DFe.Xml.DARE.DARE envioDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(EnvioDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(EnvioDARE)), configuracao);
+                Inicializar(envioDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(envioDARE)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)

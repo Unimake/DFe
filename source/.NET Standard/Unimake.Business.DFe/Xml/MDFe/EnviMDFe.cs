@@ -1545,9 +1545,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
         public bool ShouldSerializeCapM3() => CapM3 > 0;
         public bool ShouldSerializeCapKG() => CapKG > 0;
-        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 
-        #endregion
+#if INTEROP
+        public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
+#else
+        public bool ShouldSerializeUF() => UF != null;
+#endif
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP

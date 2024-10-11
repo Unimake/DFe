@@ -22,7 +22,6 @@ namespace Unimake.Business.DFe
         private int _TimeOutWebServiceConnect;
         private PadraoNFSe _PadraoNFSe;
         private bool _UsaCertificadoDigital;
-        private string _TagRetornoHomologacao;
         private TipoAmbiente _TipoAmbiente;
         private bool _ConverteSenhaBase64;
         private string _MunicipioSenha;

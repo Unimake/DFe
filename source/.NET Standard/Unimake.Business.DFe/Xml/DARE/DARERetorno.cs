@@ -8,17 +8,16 @@ using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.DARE
 {
-
+    /// <summary>
+    /// Retorno DARE Unico e Lote
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.DARE.DARERetorno")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Retorno DARE Unico e Lote
-    /// </summary>
+    
     [Serializable()]
-
     [XmlRoot("DareRetorno", Namespace = "", IsNullable = false)]
     public class DARERetorno : XMLBase
     {
@@ -270,7 +269,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
-        /// <param name="item">Elemento</param>
+        /// <param name="novoItem">Elemento</param>
         public void AddItem(ItensDARERetorno novoItem)
         {
             if (Item == null)

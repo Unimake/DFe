@@ -121,7 +121,8 @@ namespace Unimake.Business.DFe.Security
         /// Metodo que verifica se a string encontra-se criptografada, pode ser utilizada
         /// antes de se tentar descriptografar uma senha evitando exceções na aplicação.
         /// </summary>
-        /// <param name="senhaCripto">string com a senha</param>
+        /// <param name="strCriptografada">string com a senha</param>
+        /// <param name="chave">string privada</param>
         /// <returns>booleano que se a senha esta criptografda</returns>
         /// <author>Renan Borges</author>
         public static bool IsCriptografadaSenha(string strCriptografada, string chave)

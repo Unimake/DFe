@@ -9,14 +9,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    ///  Benefícios - Entes Públicos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    ///  Benefícios - Entes Públicos
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBenPrRP/v_S_01_02_00", IsNullable = false)]
     public class ESocial1207 : XMLBase
@@ -31,14 +31,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Remuneração de Trabalhador vinculado ao RGPS
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtBenPrRP")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Remuneração de Trabalhador vinculado ao RGPS
-    /// </summary>
     public class EvtBenPrRP
     {
         /// <summary>
@@ -72,14 +72,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeEvento1207
+    
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento
-    /// </summary>
     public class IdeEvento1207
     {
         /// <summary>
@@ -102,10 +103,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur { get; set; }
-#else
         /// <summary>
         /// Informar o mês/ano (formato AAAA-MM) de referência
         /// das informações, se indApuracao for igual a[1], ou apenas
@@ -114,6 +111,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerApur { get; set; }
+#else
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -165,14 +166,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeBenefESocial1207
 
+    /// <summary>
+    /// Identificação do beneficiário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenefESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do beneficiário.
-    /// </summary>
     public class IdeBenefESocial1207
     {
         /// <summary>
@@ -186,14 +187,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region DmDevEsocial1207
 
+    /// <summary>
+    /// Identificação de cada um dos demonstrativos de valores devidos ao beneficiário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDevESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação de cada um dos demonstrativos de valores devidos ao beneficiário
-    /// </summary>
     public class DmDevESocial1207
     {
         /// <summary>
@@ -239,14 +240,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoPerApurESocial1207
 
+    /// <summary>
+    /// Informações relativas ao período de apuração
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApurESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações relativas ao período de apuração
-    /// </summary>
     public class InfoPerApurESocial1207
     {
         /// <summary>
@@ -258,14 +259,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeEstabESocial1207
 
+    /// <summary>
+    /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
-    /// </summary>
     public class IdeEstabESocial1207
     {
         /// <summary>
@@ -326,14 +327,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region ItensRemunESocial1207
 
+    /// <summary>
+    /// Rubricas que compõem o provento ou pensão do beneficiário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Rubricas que compõem o provento ou pensão do beneficiário.
-    /// </summary>
     public class ItensRemunESocial1207
     {
 
@@ -375,16 +376,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region  InfPerAnt
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfPerAnt")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     /// Grupo destinado às informações relativas a períodos
     /// anteriores.Somente preencher esse grupo se houver
     /// proventos ou pensões retroativos
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfPerAnt")]
+    [ComVisible(true)]
+#endif
     public class InfPerAnt
     {
         [XmlElement("idePeriodo")]
@@ -431,16 +432,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdePeriodoESocial1207
 
+    /// <summary>
+    /// Identificação do período ao qual se referem as diferenças de provento ou pensão.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodoESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do período ao qual se referem as diferenças de provento ou pensão.
-    /// </summary>
     public class IdePeriodoESocial1207
     {
+        /// <summary>
+        /// Informar o período ao qual se refere o complemento de
+        /// provento ou pensão, no formato AAAA-MM.
+        /// Validação: Deve ser igual ou anterior ao período de
+        /// apuração informado em perApur.
+        /// Deve ser informado no formato AAAA-MM
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime PerRef { get; set; }

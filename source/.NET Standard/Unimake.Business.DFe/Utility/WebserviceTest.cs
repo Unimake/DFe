@@ -92,8 +92,7 @@ namespace Unimake.Business.DFe.Utility
         /// <summary>
         /// Testar a URL
         /// </summary>
-        /// <param name="url">URL a ser testada</param>
-        /// <param name="method">Definir método para testar: GET ou POST</param>
+        /// <param name="configuracao">Objeto da classe Configuracao</param>
         /// <returns>Resultado do teste</returns>
         private ResultTest TestURL(Configuracao configuracao)
         {
@@ -695,7 +694,6 @@ namespace Unimake.Business.DFe.Utility
         /// Testar WebService de NFCe
         /// </summary>
         /// <param name="configuracao">Objeto contendo as configurações para consumir o serviço</param>
-        /// <param name="indSinc">Testar envio síncrono?</param>
         /// <returns>Resultado do teste</returns>
         private ResultTest TestNFCeAutorizacao(Configuracao configuracao)
         {

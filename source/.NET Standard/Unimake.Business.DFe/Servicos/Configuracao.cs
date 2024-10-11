@@ -1370,11 +1370,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 
         /// AC.XML
         /// 
-        /// <?xml version="1.0" encoding="utf-8"?>
-        /// <Configuracoes>
-        /// 	<VersaoConfiguracao>202312061103</VersaoConfiguracao>
-        /// 	<Heranca>SVRS.xml</Heranca>
-        /// </Configuracoes>
+        /// &lt;?xml version="1.0" encoding="utf-8"?&gt;
+        /// &lt;Configuracoes&gt;
+        ///     &lt;VersaoConfiguracao&gt;202312061103&lt;/VersaoConfiguracao&gt;
+        ///     &lt;Heranca&gt;SVRS.xml&lt;/Heranca&gt;
+        /// &lt;/Configuracoes&gt;
         /// 
         /// Formato deve ser conforme acima: ano com 4 dígitos + mês com 2 dígitos (zeros a esquerda) + dia com 2 dígitos (zeros a esquerda) + horas com 2 dígitos (zeros a esquerda) + minutos com 2 dígitos (zeros a esquerda)
         /// </summary>

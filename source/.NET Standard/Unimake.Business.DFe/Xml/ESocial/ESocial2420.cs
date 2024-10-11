@@ -9,14 +9,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2420 - Cadastro de Benefício - Entes Públicos - Término
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2420")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-2420 - Cadastro de Benefício - Entes Públicos - Término
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenTerm/v_S_01_02_00", IsNullable = false)]
     public class ESocial2420 : XMLBase
@@ -31,14 +31,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento - Cadastro de Benefício - Entes Públicos - Término
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtCdBenTerm")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento - Cadastro de Benefício - Entes Públicos - Término
-    /// </summary>
     public class EvtCdBenTerm
     {
         /// <summary>
@@ -79,14 +79,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2420 : IdeEvento2206 { }
 
+    /// <summary>
+    /// Informações da cessação do benefício.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBenTerminoESocial2420")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações da cessação do benefício.
-    /// </summary>
     public class InfoBenTerminoESocial2420
     {
         /// <summary>

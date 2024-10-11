@@ -12,14 +12,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2399 - Trabalhador Sem Vínculo de Emprego/Estatutário - Término
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2399")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-2399 - Trabalhador Sem Vínculo de Emprego/Estatutário - Término
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVTermino/v_S_01_02_00", IsNullable = false)]
     public class ESocial2399 : XMLBase
@@ -34,14 +34,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento TSVE - Término
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTSVTermino")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento TSVE - Término
-    /// </summary>
     public class EvtTSVTermino
     {
         /// <summary>
@@ -76,14 +76,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeEvento2399
+
+    /// <summary>
+    /// Informações de identificação do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2399")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento.
-    /// </summary>
     public class IdeEvento2399
     {
         /// <summary>
@@ -141,14 +142,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion IdeEvento2399
 
+    /// <summary>
+    /// Informações do término da prestação de serviço ou da execução da obra.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTSVTermino")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações do término da prestação de serviço ou da execução da obra.
-    /// </summary>
     public class InfoTSVTermino
     {
         /// <summary>
@@ -280,14 +281,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region MudancaCPFESocial2399
+
+    /// <summary>
+    /// Informação do novo CPF do trabalhador.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCPFESocial2399")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informação do novo CPF do trabalhador.
-    /// </summary>
     public class MudancaCPFESocial2399
     {
         /// <summary>
@@ -464,27 +466,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeEstabLotESocial2399
+
+    /// <summary>
+    /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotESocial2399")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
-    /// </summary>
     public class IdeEstabLotESocial2399 : IdeEstabLotESocial2299 { }
 
     #endregion  IdeEstabLotESocial2399
 
     #region RemunAposTerm
+    
+    /// <summary>
+    /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAposTerm")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
-    /// </summary>
     public class RemunAposTerm : RemunAposDeslig { }
 
     #endregion  RemunAposTerm

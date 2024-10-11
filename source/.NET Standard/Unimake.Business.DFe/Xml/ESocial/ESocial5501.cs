@@ -16,14 +16,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-5501 - Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial5501")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-5501 - Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTribProcTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial5501 : XMLBase
@@ -38,14 +38,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTribProcTrab")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista
-    /// </summary>
     public class EvtTribProcTrab
     {
         /// <summary>
@@ -74,14 +74,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeEvento
+
+    /// <summary>
+    /// Informações de identificação do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento5501")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento.
-    /// </summary>
     public class IdeEvento5501
     {
         /// <summary>
@@ -96,14 +97,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeEvento
 
     #region IdeEmpregador
+
+    /// <summary>
+    /// Informações de identificação do empregador ou do contribuinte que prestou a informação.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregadorESocial5501")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do empregador ou do contribuinte que prestou a informação.
-    /// </summary>
     public class IdeEmpregadorESocial5501
     {
         /// <summary>
@@ -121,14 +123,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeEmpregador
 
     #region IdeProcESocial5501
-#if INTEROP
-        [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcESocial5501")]
-        [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Identificação do processo.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcESocial5501")]
+        [ComVisible(true)]
+#endif
     public class IdeProcESocial5501
     {
         /// <summary>
@@ -246,14 +249,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeProcESocial5501
 
     #region InfoTributos
+
+    /// <summary>
+    /// Identificação do período e da base de cálculo dos tributos referentes ao processo trabalhista.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTributos")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do período e da base de cálculo dos tributos referentes ao processo trabalhista.
-    /// </summary>
     public class InfoTributos
     {
         /// <summary>
@@ -339,14 +343,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoCRIRRF
 
+    /// <summary>
+    /// Informações de Imposto de Renda Retido na Fonte, consolidadas por Código de Receita - CR.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRIRRFESocial5501")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de Imposto de Renda Retido na Fonte, consolidadas por Código de Receita - CR.
-    /// </summary>
     public class InfoCRIRRFESocial5501
     {
         /// <summary>

@@ -10,14 +10,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2300 - Trabalhador Sem Vínculo de Emprego/Estatutário - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2300")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-2300 - Trabalhador Sem Vínculo de Emprego/Estatutário - Início
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVInicio/v_S_01_02_00", IsNullable = false)]
     public class ESocial2300 : XMLBase
@@ -33,14 +33,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
+    /// <summary>
+    /// Evento TSVE - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTSVInicio")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento TSVE - Início
-    /// </summary>
     public class EvtTSVInicio
     {
         /// <summary>
@@ -76,26 +76,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeEvento2300
+
+    /// <summary>
+    /// Informações de identificação do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2300")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento.
-    /// </summary>
     public class IdeEvento2300 : IdeEvento2205 { }
     #endregion IdeEvento2300
 
     #region InfoTSVInicio
+
+    /// <summary>
+    /// Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE - Início. 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTSVInicio")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE - Início. 
-    /// </summary>
     public class InfoTSVInicio
     {
 
@@ -225,15 +227,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region InfoComplemESocial2300
+
+    /// <summary>
+    /// Grupo onde são fornecidas informações
+    /// complementares, preenchidas conforme a categoria do TSVE.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplemESocial2300")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Grupo onde são fornecidas informações
-    /// complementares, preenchidas conforme a categoria do TSVE.
-    /// </summary>
     public class InfoComplemESocial2300
     {
         /// <summary>
@@ -295,14 +298,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region  CargoFuncao
+
+    /// <summary>
+    /// Grupo que apresenta o cargo e/ou função ocupada pelo TSVE.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.CargoFuncao")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Grupo que apresenta o cargo e/ou função ocupada pelo TSVE.
-    /// </summary>
     public class CargoFuncao
     {
         /// <summary>
@@ -351,14 +355,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion CargoFuncao
 
     #region InfoDirigenteSindical
+
+    /// <summary>
+    /// Informações relativas ao dirigente sindical.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDirigenteSindical")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações relativas ao dirigente sindical.
-    /// </summary>
     public class InfoDirigenteSindical
     {
         /// <summary>
@@ -485,17 +490,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoDirigenteSindical
 
     #region InfoTrabCedido
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTrabCedido")]
-    [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Informações relativas ao trabalhador cedido/em
     /// exercício em outro órgão ou servidor público
     /// indicado para conselho, preenchidas exclusivamente
     /// pelo cessionário/órgão de destino.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTrabCedido")]
+    [ComVisible(true)]
+#endif
     public class InfoTrabCedido
     {
         /// <summary>
@@ -573,14 +579,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoTrabCedido
 
     #region InfoMandElet
+
+    /// <summary>
+    /// Informações relativas a servidor público exercente de mandato eletivo.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMandEletESocial2300")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações relativas a servidor público exercente de mandato eletivo.
-    /// </summary>
     public class InfoMandEletESocial2300
     {
         /// <summary>
@@ -668,14 +675,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoMandElet
 
     #region InfoEstagiario
+
+    /// <summary>
+    /// Informações relativas ao estagiário ou ao beneficiário do Programa Nacional de Prestação de Serviço Civil Voluntário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstagiario")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// 
-    /// </summary>
     public class InfoEstagiario
     {
         /// <summary>
@@ -779,14 +787,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region InstEnsino
+
+    /// <summary>
+    ///  Instituição de ensino ou entidade de formação/qualificação.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InstEnsino")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    ///  Instituição de ensino ou entidade de formação/qualificação.
-    /// </summary>
     public class InstEnsino
     {
         /// <summary>
@@ -886,14 +895,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InstEnsino
 
     #region AgeIntegracao
+
+    /// <summary>
+    /// Agente de integração
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.AgeIntegracao")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Agente de integração
-    /// </summary>
     public class AgeIntegracao
     {
         /// <summary>
@@ -907,14 +917,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion AgeIntegracao
 
     #region SupervisorEstagio
+
+    /// <summary>
+    /// Supervisor do estágio. 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.SupervisorEstagio")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Supervisor do estágio. 
-    /// </summary>
     public class SupervisorEstagio
     {
         /// <summary>
@@ -937,11 +948,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoComplemESocial2300
 
     #region Termino
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Termino")]
-    [ComVisible(true)]
-#endif
 
     /// <summary>
     /// Informação do término do TSVE.
@@ -949,6 +955,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// ao início dos eventos não periódicos para o empregador no eSocial (por exemplo, envio para pagamento de retiradas em meses posteriores
     /// à data de término e sob vigência dos eventos periódicos para o empregador no eSocial).
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Termino")]
+    [ComVisible(true)]
+#endif
     public class Termino
     {
         /// <summary>

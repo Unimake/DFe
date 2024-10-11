@@ -34,13 +34,13 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
 #if INTEROP
         /// <summary>
-        /// 
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="interopType"></param>
+        /// <param name="downloadEventosPorID">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] DownloadEventosPorID DownloadEventosPorID, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] DownloadEventosPorID downloadEventosPorID, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(DownloadEventosPorID?.GerarXML() ?? throw new ArgumentNullException(nameof(DownloadEventosPorID)), configuracao);
+                Inicializar(downloadEventosPorID?.GerarXML() ?? throw new ArgumentNullException(nameof(downloadEventosPorID)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)

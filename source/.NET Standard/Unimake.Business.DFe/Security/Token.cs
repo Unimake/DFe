@@ -41,7 +41,6 @@ namespace Unimake.Business.DFe.Security
         /// <param name="senha"></param>
         /// <param name="clientID"></param>
         /// <param name="clientSecret"></param>
-        /// <param name="url"></param>
         /// <returns></returns>
         public static Token GerarToken(IWebProxy proxy, string usuario, string senha, string clientID, string clientSecret)
         {

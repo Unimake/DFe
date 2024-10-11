@@ -12,14 +12,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-5001 - Informações das Contribuições Sociais por Trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial5001")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-5001 - Informações das Contribuições Sociais por Trabalhador
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial5001 : XMLBase
@@ -34,14 +34,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Informações das Contribuições Sociais por Trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtBasesTrab")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Informações das Contribuições Sociais por Trabalhador
-    /// </summary>
     public class EvtBasesTrab
     {
         /// <summary>
@@ -181,14 +181,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeEvento5001
 
     #region IdeTrabalhador
+
+    /// <summary>
+    /// Identificação do trabalhador.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial5001")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do trabalhador.
-    /// </summary>
     public class IdeTrabalhadorESocial5001
     {
         /// <summary>
@@ -250,14 +251,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region InfoComplESocial5001
+
+    /// <summary>
+    /// Informações complementares do trabalhador e do contrato.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplESocial5001")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações complementares do trabalhador e do contrato.
-    /// </summary>
     public class InfoComplESocial5001
     {
         /// <summary>
@@ -353,14 +355,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region SucessaoVinc5001
+
+    /// <summary>
+    /// Grupo de informações da sucessão de vínculo trabalhista.
+    /// Evento de origem: S-1200.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc5001")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// 
-    /// </summary>
     public class SucessaoVinc5001
     {
         /// <summary>
@@ -424,16 +428,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoComplCont5001
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplCont5001")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     /// Grupo preenchido exclusivamente quando o evento de remuneração se referir a 
     /// trabalhador cuja categoria não estiver obrigada ao evento de início de TSVE e se não
     /// houver evento S-2300 correspondente.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplCont5001")]
+    [ComVisible(true)]
+#endif
     public class InfoComplCont5001
     {
         /// <summary>
@@ -483,16 +487,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoComplESocial5001
 
     #region ProcJudTrab
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrabESocial5001")]
-    [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Informações sobre processos judiciais do trabalhador
     /// com decisão favorável quanto à não incidência ou
     /// alterações na incidência de contribuição previdenciária.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrabESocial5001")]
+    [ComVisible(true)]
+#endif
     public class ProcJudTrabESocial5001
     {
         /// <summary>
@@ -516,16 +521,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeTrabalhador
 
     #region InfoCpCalc
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCpCalc")]
-    [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Cálculo da contribuição previdenciária do segurado,
     /// incidente sobre a remuneração do período de apuração e
     /// de períodos anteriores informada nos eventos S-1200, S2299 e S-2399.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCpCalc")]
+    [ComVisible(true)]
+#endif
     public class InfoCpCalc
     {
         /// <summary>
@@ -564,16 +570,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion  InfoCpCalc
 
     #region InfoCp
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCp")]
-    [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Cálculo da contribuição previdenciária do segurado,
     /// incidente sobre a remuneração do período de apuração e
     /// de períodos anteriores informada nos eventos S-1200, S2299 e S-2399.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCp")]
+    [ComVisible(true)]
+#endif
     public class InfoCp
     {
         /// <summary>
@@ -628,14 +635,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeEstabLotESocial5001
+
+    /// <summary>
+    /// Identificação do estabelecimento ou obra de construção civil e da lotação tributária.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotESocial5001")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do estabelecimento ou obra de construção civil e da lotação tributária.
-    /// </summary>
     public class IdeEstabLotESocial5001
     {
         /// <summary>
@@ -706,14 +714,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeEstabLotESocial5001
 
     #region InfoCategIncid
+
+    /// <summary>
+    /// Informações relativas à matrícula e categoria do trabalhador e tipos de incidências.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCategIncid")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações relativas à matrícula e categoria do trabalhador e tipos de incidências.
-    /// </summary>
     public class InfoCategIncid
     {
         /// <summary>
@@ -895,17 +904,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region InfoBaseCS
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBaseCS")]
-    [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Informações sobre bases de cálculo, descontos e
     /// deduções de contribuições sociais devidas à Previdência
     /// Social e a Outras Entidades e Fundos.
     /// Evento de origem: S-1200, S-2299 ou S-2399.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBaseCS")]
+    [ComVisible(true)]
+#endif
     public class InfoBaseCS
     {
         /// <summary>
@@ -943,14 +953,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoBaseCS
 
     #region CalcTerc
+
+    /// <summary>
+    /// Cálculo das contribuições sociais devidas a Outras Entidades e Fundos.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.CalcTerc")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Cálculo das contribuições sociais devidas a Outras Entidades e Fundos.
-    /// </summary>
     public class CalcTerc
     {
         /// <summary>
@@ -994,14 +1005,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion CalcTerc
 
     #region InfoPerRef
+
+    /// <summary>
+    /// Informações de remuneração por período de referência.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerRef")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de remuneração por período de referência.
-    /// </summary>
     public class InfoPerRef
     {
         /// <summary>
@@ -1128,15 +1140,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region IdeADC
+
+    /// <summary>
+    /// Identificação do instrumento ou situação ensejadora da
+    /// remuneração relativa a períodos de apuração anteriores.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeADCESocial5001")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do instrumento ou situação ensejadora da
-    /// remuneração relativa a períodos de apuração anteriores.
-    /// </summary>
     public class IdeADCESocial5001
     {
         /// <summary>

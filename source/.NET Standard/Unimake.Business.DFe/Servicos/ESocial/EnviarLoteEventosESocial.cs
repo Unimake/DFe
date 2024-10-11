@@ -161,7 +161,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <summary>
         /// Definir o objeto contendo o XML a ser enviado e configuração de conexão e envio do XML para web-service
         /// </summary>
-        /// <param name="enviNFe">Objeto contendo o XML a ser enviado</param>
+        /// <param name="eSocialEnviarLoteEventos">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public void SetXMLConfiguracao([MarshalAs(UnmanagedType.IUnknown)] ESocialEnvioLoteEventos eSocialEnviarLoteEventos, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {

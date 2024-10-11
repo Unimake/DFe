@@ -11,14 +11,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    ///  Comercialização da Produção Rural Pessoa Física
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1260")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    ///  Comercialização da Produção Rural Pessoa Física
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtComProd/v_S_01_02_00", IsNullable = false)]
     public class ESocial1260 : XMLBase
@@ -36,14 +36,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region  EvtComProdESocial1260
 
+    /// <summary>
+    ///  Evento Comercialização da Produção Rural Pessoa Física
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtComProdESocial1260")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    ///  Evento Comercialização da Produção Rural Pessoa Física
-    /// </summary>
     public class EvtComProdESocial1260
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
@@ -70,14 +70,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region  IdeEvento1260 
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1260")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento
-    /// </summary>
     public class IdeEvento1260
     {
         /// <summary>
@@ -94,10 +94,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrRecibo")]
         public string NrRecibo { get; set; }
 
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur {get; set; }
-#else
         /// <summary>
         /// Informar o mês/ano (formato AAAA-MM) de referência
         /// das informações, se indApuracao for igual a[1], ou apenas
@@ -106,6 +102,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerApur {get; set; }
+#else
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -155,22 +155,26 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
         public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
-        public bool ShouldSerializeIndGuia() => IndGuia != null && IndGuia != (IndGuia)(-1);
+#if INTEROP
+        public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
+#else
+        public bool ShouldSerializeIndGuia() => IndGuia != null;
+#endif
 
         #endregion ShouldSerialize
     }
-#endregion IdeEvento1260 
+    #endregion IdeEvento1260 
 
     #region InfoComProdESocial1260
 
+    /// <summary>
+    /// Informação da comercialização de produção
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComProdESocial1260")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informação da comercialização de produção
-    /// </summary>
     public class InfoComProdESocial1260
     {
         /// <summary>
@@ -182,14 +186,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeEstabESocial1260
 
+    /// <summary>
+    /// Identificação do estabelecimento que comercializou a produção
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial1260")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do estabelecimento que comercializou a produção
-    /// </summary>
     public class IdeEstabelESocial1260
     {
         /// <summary>
@@ -209,14 +213,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region TpComerc
 
+    /// <summary>
+    /// Valor total da comercialização por "tipo" de comercialização.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.TpComerc")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Valor total da comercialização por "tipo" de comercialização.
-    /// </summary>
     public class TpComerc
     {
         /// <summary>
@@ -279,14 +283,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeAdquir
 
+    /// <summary>
+    /// Identificação dos adquirentes da produção.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeAdquir")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação dos adquirentes da produção.
-    /// </summary>
     public class IdeAdquir
     {
         /// <summary>
@@ -336,15 +340,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region Nfs
 
+    /// <summary>
+    /// Detalhamento das notas fiscais relativas à comercialização
+    /// de produção com o adquirente identificado no grupo superior
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Nfs")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Detalhamento das notas fiscais relativas à comercialização
-    /// de produção com o adquirente identificado no grupo superior
-    /// </summary>
     public class Nfs
     {
         /// <summary>
@@ -359,14 +363,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrDocto")]
         public string NrDocto { get; set; }
 
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtEmisNF { get; set; }
-#else
         /// <summary>
         /// Data de emissão da nota fiscal/fatura. Validação: O mês/ano da emissão da nota fiscal deve ser
         ///igual ao mês/ano indicado no registro de abertura do arquivo
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtEmisNF { get; set; }
+#else
         public DateTimeOffset DtEmisNF { get; set; }
 #endif
 
@@ -454,16 +458,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoProcJudESocial1260
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJudESocial1260")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     /// Informações de processos judiciais com decisão/sentença
     /// favorável ao contribuinte e relativos à contribuição
     /// incidente sobre a comercialização.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJudESocial1260")]
+    [ComVisible(true)]
+#endif
     [Serializable]
     public class InfoProcJudESocial1260
     {
@@ -523,6 +527,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Valor da contribuição para o SENAR com exigibilidade suspensa.
         /// Validação: Preenchimento obrigatório se VrCPSusp e vrRatSusp não tiverem sido preenchidos. 
         /// Deve ser um valor maior que 0 (zero).
+        /// </summary>
         [XmlIgnore]
         public double VrSenarSusp { get; set; }
         [XmlElement("vrSenarSusp")]

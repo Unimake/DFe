@@ -12,14 +12,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// Informações Complementares aos Eventos Periódicos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1280")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações Complementares aos Eventos Periódicos
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtInfoComplPer/v_S_01_02_00", IsNullable = false)]
     public class ESocial1280 : XMLBase
@@ -34,14 +34,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Informações Complementares aos Eventos Periódicos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtInfoComplPer")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Informações Complementares aos Eventos Periódicos
-    /// </summary>
     [Serializable()]
     public class EvtInfoComplPer
     {
@@ -140,14 +140,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeEvento1280
 
+    /// <summary>
+    /// Informações de identificação do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1280")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do evento.
-    /// </summary>
     [Serializable()]
     public class IdeEvento1280
     {
@@ -171,10 +171,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indApuracao")]
         public IndApuracao IndApuracao { get; set; }
 
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur {get; set; }
-#else
         /// <summary>
         /// Informar o mês/ano (formato AAAA-MM) de referência
         /// das informações, se indApuracao for igual a[1], ou apenas
@@ -184,6 +180,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// periódicos para o empregador.
         /// (yyyy-MM)
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerApur {get; set; }
+#else
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -243,14 +243,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoSubstPatr
 
+    /// <summary>
+    /// Informações complementares de cada um dos estabelecimentos/lotações constantes no evento S-1200.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSubstPatr")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações complementares de cada um dos estabelecimentos/lotações constantes no evento S-1200.
-    /// </summary>
     [Serializable()]
     public class InfoSubstPatr
     {
@@ -279,14 +279,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoSubstPatrOpPort
 
+    /// <summary>
+    /// Informações complementares de cada um dos estabelecimentos/lotações constantes no evento S-1200.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSubstPatrOpPort")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações complementares de cada um dos estabelecimentos/lotações constantes no evento S-1200.
-    /// </summary>
     [Serializable()]
     public class InfoSubstPatrOpPort
     {
@@ -305,16 +305,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoAtivConcom
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAtivConcom")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     ///  Grupo preenchido por empresa enquadrada no
     /// regime de tributação Simples Nacional com tributação
     /// previdenciária substituída e não substituída.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAtivConcom")]
+    [ComVisible(true)]
+#endif
     [Serializable()]
     public class InfoAtivConcom
     {

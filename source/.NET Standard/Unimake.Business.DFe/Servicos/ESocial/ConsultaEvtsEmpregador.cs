@@ -33,9 +33,9 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
 #if INTEROP
         /// <summary>
-        /// 
+        /// Executa o serviço: envia o XML para o web-service
         /// </summary>
-        /// <param name="interopType"></param>
+        /// <param name="consultarEvtsEmpregadorESocial">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]

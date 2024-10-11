@@ -4216,9 +4216,14 @@ namespace Unimake.Business.DFe.Xml.CTe
         #region ShouldSerialize
 
         public bool ShouldSerializeNViag() => !string.IsNullOrWhiteSpace(NViag);
-        public bool ShouldSerializeTpNav() => TpNav != null && TpNav != TipoNavegacao.NaoDefinido;
 
-        #endregion
+#if INTEROP
+        public bool ShouldSerializeTpNav() => TpNav != TipoNavegacao.NaoDefinido;
+#else
+        public bool ShouldSerializeTpNav() => TpNav != null;
+#endif
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP

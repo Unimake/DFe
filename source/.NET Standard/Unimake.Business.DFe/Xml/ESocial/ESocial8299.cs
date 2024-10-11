@@ -8,14 +8,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    ///  Evento 8299 - Baixa Judicial do Vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1207")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    ///  Evento 8299 - Baixa Judicial do Vínculo
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00", IsNullable = false)]
     public class ESocial8299 : XMLBase
@@ -30,14 +30,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Baixa Judicial do Vínculo 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtBaixa")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Baixa Judicial do Vínculo 
-    /// </summary>
     public class EvtBaixa
     {
         /// <summary>
@@ -116,14 +116,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion IdeEvento
 
     #region InfoBaixa
+
+    /// <summary>
+    /// Informações relativas à baixa judicial do vínculo.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento8299")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações relativas à baixa judicial do vínculo.
-    /// </summary>
     public class InfoBaixa
     {
         /// <summary>

@@ -96,7 +96,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
-        public bool ShouldSerializeIndGuia() => IndGuia != null && IndGuia != (IndGuia)(-1);
+#if INTEROP
+        public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
+#else
+        public bool ShouldSerializeIndGuia() => IndGuia != null;
+#endif
 
         #endregion
     }

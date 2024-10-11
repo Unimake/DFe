@@ -12,14 +12,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// Evento Alteração de Contrato de Trabalho/Relação Estatutária.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2206")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Alteração de Contrato de Trabalho/Relação Estatutária.
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAltContratual/v_S_01_02_00", IsNullable = false)]
     public class ESocial2206 : XMLBase
@@ -35,14 +35,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
+    /// <summary>
+    /// Evento Alteração de Contrato de Trabalho
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtAltContratual")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Alteração de Contrato de Trabalho
-    /// </summary>
     public class EvtAltContratual
     {
         /// <summary>
@@ -78,14 +78,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeEvento
 
-#if INTEROP
-        [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2206")]
-        [ComVisible(true)]
-#endif
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2206")]
+        [ComVisible(true)]
+#endif
     public class IdeEvento2206
     {
         /// <summary>
@@ -141,14 +141,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region IdeVinculo
 
+    /// <summary>
+    /// Informações de identificação do trabalhador e do vínculo.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de identificação do trabalhador e do vínculo.
-    /// </summary>
     public class IdeVinculo
     {
         /// <summary>
@@ -168,24 +168,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region altContratual
 
+    /// <summary>
+    /// Alteração de dados contratuais
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.AltContratual")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Alteração de dados contratuais
-    /// </summary>
     public class AltContratual
     {
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtAlteracao {get; set; }
-#else
         /// <summary>
         /// Preencher com a data da alteração das informações.
         ///Validação: Não pode ser posterior a 180 (cento e oitenta) dias da data atual.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtAlteracao {get; set; }
+#else
         public DateTimeOffset DtAlteracao { get; set; }
 #endif
 
@@ -204,10 +204,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtEf {get; set; }
-#else
         /// <summary>
         /// Data dos efeitos remuneratórios da alteração contratual.
         /// Se a alteração foi fruto de lei, acordo coletivo, convenção
@@ -216,6 +212,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Deve ser uma data válida, igual ou posterior à
         /// data de admissão.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtEf {get; set; }
+#else
         public DateTimeOffset DtEf { get; set; }
 #endif
 
@@ -284,14 +284,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoRegimeTrab
 
+    /// <summary>
+    /// Informações do regime trabalhista 
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRegimeTrab")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações do regime trabalhista 
-    /// </summary>
     public class InfoRegimeTrab
     {
         /// <summary>
@@ -309,14 +309,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region InfoCeletista
 
+    /// <summary>
+    /// Informações de trabalhador celetista
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCeletista")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações de trabalhador celetista
-    /// </summary>
     public class InfoCeletista
     {
         /// <summary>
@@ -369,15 +369,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     #region TrabTemporario
+
+    /// <summary>
+    /// Dados sobre trabalho temporário. Preenchimento
+    /// obrigatório no caso de prorrogação de contrato de trabalhador temporário.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.TrabTemporario")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Dados sobre trabalho temporário. Preenchimento
-    /// obrigatório no caso de prorrogação de contrato de trabalhador temporário.
-    /// </summary>
     public class TrabTemporario
     {
         /// <summary>
@@ -389,14 +390,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion TrabTemporario
 
     #region Aprendiz
+
+    /// <summary>
+    /// - Informações relacionadas ao aprendiz.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Aprend")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// - Informações relacionadas ao aprendiz.
-    /// </summary>
     public class Aprend
     {
         /// <summary>
@@ -536,14 +538,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion InfoRegimeTrab
 
     #region InfoContrato
+
+    /// <summary>
+    /// Informações do contrato de trabalho.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoContrato")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações do contrato de trabalho.
-    /// </summary>
     public class InfoContrato
     {
         /// <summary>
@@ -735,14 +738,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region Remuneracao
 
+    /// <summary>
+    /// Informações da remuneração e periodicidade de pagamento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações da remuneração e periodicidade de pagamento.
-    /// </summary>
     public class Remuneracao
     {
         /// <summary>
@@ -783,14 +786,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region Duracao
 
+    /// <summary>
+    /// Duração do contrato de trabalho.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Duracao")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Duração do contrato de trabalho.
-    /// </summary>
     public class Duracao
     {
         /// <summary>
@@ -805,10 +808,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpContr")]
         public TipoDeContratoDeTrabalho TipoDeContratoDeTrabalho { get; set; }
 
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtTerm {get; set; }
-#else
         /// <summary>
         /// Data do término do contrato por prazo determinado.
         /// Validação: O preenchimento é obrigatório se tpContr =
@@ -820,6 +819,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Retornar alerta caso a data informada seja anterior a
         /// dtAlteracao.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtTerm {get; set; }
+#else
         public DateTimeOffset DtTerm { get; set; }
 #endif
 
@@ -864,14 +867,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region LocalTrabalho
 
+    /// <summary>
+    /// Informações do local de trabalho.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabalho")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações do local de trabalho.
-    /// </summary>
     public class LocalTrabalho
     {
         /// <summary>
@@ -896,11 +899,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region LocalTrabGeral
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     ///  Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador
     /// (exceto doméstico) exercerá suas atividades.Caso o
@@ -909,6 +907,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// estabelecimento do próprio empregador ao qual o
     /// trabalhador esteja vinculado.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral")]
+    [ComVisible(true)]
+#endif
     public class LocalTrabGeral
     {
         /// <summary>
@@ -943,16 +946,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region LocalTempDom
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTempDom")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     /// Grupo preenchido exclusivamente em caso de trabalhador
     /// doméstico e trabalhador temporário, indicando o
     /// endereço onde o trabalhador exerce suas atividades.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTempDom")]
+    [ComVisible(true)]
+#endif
     public class LocalTempDom
     {
         /// <summary>
@@ -1009,7 +1012,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com a sigla da Unidade da Federação - UF.
         /// Valores válidos: AC, AL, AP, AM, BA, CE, DF, ES, GO, MA,
         /// MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
-        /// /summary>
+        /// </summary>
         [XmlElement("uf")]
         public UFBrasil Uf { get; set; }
 
@@ -1027,14 +1030,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region HorContratual
 
+    /// <summary>
+    /// Informações do horário contratual do trabalhador.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.HorContratual")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações do horário contratual do trabalhador.
-    /// </summary>
     public class HorContratual
     {
         /// <summary>
@@ -1116,16 +1119,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region AlvaraJudicial
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlvaraJudicial")]
-    [ComVisible(true)]
-#endif
     /// <summary>
     /// Informações do alvará judicial em caso de contratação de
     /// menores de 14 anos, em qualquer categoria, e de maiores
     /// de 14 e menores de 16, em categoria diferente de "Aprendiz".
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlvaraJudicial")]
+    [ComVisible(true)]
+#endif
     public class AlvaraJudicial
     {
         /// <summary>
@@ -1139,14 +1142,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion AlvaraJudicial
 
     #region Observações
+
+    /// <summary>
+    /// Observações do contrato de trabalho.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Observações do contrato de trabalho.
-    /// </summary>
     public class Observacoes
     {
         /// <summary>
@@ -1158,17 +1162,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion Observações
 
     #region TreiCap
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.TreiCap")]
-    [ComVisible(true)]
-#endif
+
     /// <summary>
     /// Treinamentos, capacitações, exercícios simulados,
     /// autorizações ou outras anotações que devam ser anotadas
     /// no registro de empregados e/ou na CTPS, por
     /// determinação de Norma Regulamentadora - NR.
     /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.TreiCap")]
+    [ComVisible(true)]
+#endif
     public class TreiCap
     {
         /// <summary>

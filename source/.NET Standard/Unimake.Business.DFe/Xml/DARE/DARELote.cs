@@ -7,16 +7,16 @@ using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.DARE
 {
-
+    /// <summary>
+    /// DARE - SP - Documento de Arrecadação de Receitas Estaduais
+    /// Envio individual
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.DARE.DARELote")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// DARE - SP - Documento de Arrecadação de Receitas Estaduais
-    /// Envio individual
-    /// </summary>
+
     [Serializable()]
     [XmlRoot("DareLote", Namespace = "https://portal.fazenda.sp.gov.br/servicos/dare", IsNullable = false)]
     public class DARELote : XMLBase
@@ -98,6 +98,7 @@ namespace Unimake.Business.DFe.Xml.DARE
 
     public class DadosContribuinteNaoCadastrado
     {
+        /// <summary>
         /// Número de controle do DARE principal. 
         /// Este é um identificador único para o DARE, usado para rastreamento e referência.
         /// </summary>
@@ -121,7 +122,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// <summary>
         ///  Código de barras com 48 posições associado ao DARE. 
         /// Este código é utilizado para a leitura e processamento automático do documento.
-        /// </summary
+        /// </summary>
         [XmlElement("codigoBarra48")]
         public string CodigoBarra48 { get; set; }
 

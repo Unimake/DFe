@@ -7,15 +7,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// Evento Informações do Empregador. eSocial - 3500
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial3500")]
     [ComVisible(true)]
 #endif
-
-    /// <summary>
-    /// Evento Informações do Empregador. eSocial - 3500
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial3500 : XMLBase
@@ -68,14 +67,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento3500 : IdeEvento { }
 
+    /// <summary>
+    /// Informação do evento que será excluído
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoExclusaoESocial3500")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informação do evento que será excluído
-    /// </summary>
     public class InfoExclusaoESocial3500
     {
         /// <summary>
@@ -102,14 +101,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeProcTrab IdeProcTrab { get; set; }
     }
 
+    /// <summary>
+    /// Identificação do processo, do trabalhador e do período aque se refere o evento que será excluído.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcTrab")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Identificação do processo, do trabalhador e do período aque se refere o evento que será excluído.
-    /// </summary>
     public class IdeProcTrab
     {
         /// <summary>

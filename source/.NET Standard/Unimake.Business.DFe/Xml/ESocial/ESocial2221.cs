@@ -10,14 +10,14 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2221 - Exame Toxicológico do Motorista Profissional Empregado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2221")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// S-2221 - Exame Toxicológico do Motorista Profissional Empregado
-    /// </summary>
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00", IsNullable = false)]
     public class ESocial2221 : XMLBase
@@ -32,14 +32,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Exame Toxicológico do Motorista Profissional Empregado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtToxic")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Evento Exame Toxicológico do Motorista Profissional Empregado
-    /// </summary>
     public class EvtToxic
     {
         /// <summary>
@@ -82,14 +82,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #region Toxicologico
 
+    /// <summary>
+    /// Informações do exame toxicológico do motorista profissional.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Toxicologico")]
     [ComVisible(true)]
 #endif
-    /// <summary>
-    /// Informações do exame toxicológico do motorista profissional.
-    /// </summary>
     public class Toxicologico
     {
         /// <summary>
