@@ -269,6 +269,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("infSolicNFF")]
         public InfSolicNFF InfSolicNFF { get; set; }
 
+        /// <summary>
+        /// Grupo de tags de produtos agropecuários: animais, vegetais e florestais
+        /// </summary>
+        [XmlElement("agropecuario")]
+        public Agropecuario Agropecuario { get; set; }
+
         [XmlAttribute(AttributeName = "Id", DataType = "ID")]
         public string Id
         {
@@ -8762,5 +8768,100 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         [XmlElement("urlChave")]
         public string UrlChave { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.Agropecuario")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class Agropecuario
+    {
+        /// <summary>
+        /// Grupo de defensivo agrícola / agrotóxico
+        /// </summary>
+        [XmlElement("defensivo")]
+        public Defensivo Defensivo { get; set; }
+
+        /// <summary>
+        /// Grupo de Guia de Trânsito
+        /// </summary>
+        [XmlElement("guiaTransito")]
+        public GuiaTransito GuiaTransito { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.Defensivo")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+
+    public class Defensivo
+    {
+        /// <summary>
+        /// Informar o número da receita ou receituário de aplicação do defensivo
+        /// </summary>
+        [XmlElement("nReceituario")]
+        public string NReceituario { get; set; }
+
+        /// <summary>
+        /// Informar o CPF do Responsável Técnico legalmente habilitado, como engenheiro agrônomo, engenheiro florestal e técnico agrícola.
+        /// </summary>
+        [XmlElement("CPFRespTec")]
+        public string CPFRespTec { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFe.GuiaTransito")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
+    public class GuiaTransito
+    {
+        /// <summary>
+        /// Tipo da guia
+        /// </summary>
+        [XmlElement("tpGuia")]
+        public TipoGuiaTransito TpGuia { get; set; }
+
+        /// <summary>
+        /// UF de emissão da guia
+        /// </summary>
+#if INTEROP
+        [XmlElement("UF")]
+        public UFBrasil UFGuia { get; set; } = UFBrasil.NaoDefinido;
+#else
+        [XmlElement("UF")]
+        public UFBrasil? UFGuia { get; set; }
+#endif
+
+        /// <summary>
+        /// Informar sempre que houver a série da guia
+        /// </summary>
+        [XmlElement("serieGuia")]
+        public string SerieGuia { get; set; }
+
+        /// <summary>
+        /// Número da Guia
+        /// </summary>
+        [XmlElement("nGuia")]
+        public string NGuia { get; set; }
+
+        #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeUFGuia() => UFGuia != UFBrasil.NaoDefinido;
+#else
+        public bool ShouldSerializeUFGuia() => UFGuia != null;
+#endif
+        public bool ShouldSerializeSerieGuia() => !string.IsNullOrWhiteSpace(SerieGuia);
+
+        #endregion
     }
 }

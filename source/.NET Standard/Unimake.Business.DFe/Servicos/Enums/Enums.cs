@@ -437,7 +437,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ESocial download Eventos")]
         ESocialDownloadEvts = 71,
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -3967,6 +3967,58 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region TipoGuiaTransito
+
+    /// <summary>
+    /// Tipos de Guia de Transito
+    /// </summary>
+    public enum TipoGuiaTransito
+    {
+        /// <summary>
+        /// 1 - GTA - Guia de Trânsito Animal;
+        /// </summary>
+        [XmlEnum("1")]
+        GTA = 1,
+
+        /// <summary>
+        /// 2 - TTA - Termo de Trânsito Animal; 
+        /// </summary>
+        [XmlEnum("2")]
+        TTA = 2,
+
+        /// <summary>
+        /// 3 - DTA - Documento de Transferência Animal; 
+        /// </summary>
+        [XmlEnum("3")]
+        DTA = 3,
+
+        /// <summary>
+        /// 4 - ATV - Autorização de Trânsito Vegetal; 
+        /// </summary>
+        [XmlEnum("4")]
+        ATV = 4,
+
+        /// <summary>
+        /// 5 - PTV - Permissão de Trânsito Vegetal; 
+        /// </summary>
+        [XmlEnum("5")]
+        PTV = 5,
+
+        /// <summary>
+        /// 6 - GTV - Guia de Trânsito Vegetal; 
+        /// </summary>
+        [XmlEnum("6")]
+        GTV = 6,
+
+        /// <summary>
+        /// 7 - Guia Florestal (DOF, SisFlora - PA e MT ou SIAM - MG).
+        /// </summary>
+        [XmlEnum("7")]
+        GuiaFlorestal = 7
+    }
+
+    #endregion
+
     #region Tipo de CTe
 
     /// <summary>
@@ -6605,7 +6657,7 @@ namespace Unimake.Business.DFe.Servicos
         /// ABACO
         /// </summary>
         [Description("ABACO")]
-        ABACO = 52, 
+        ABACO = 52,
     }
 
     #endregion
