@@ -63,6 +63,7 @@ namespace Unimake.Business.DFe
                     break;
 
                 case "application/json": //Retorno JSON -> Vamos ter que converter para XML
+                case "application/problem+json": //DARE SP retorna isso quando o JSON de envio tem problemas nas tags
                     try
                     {
                         resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
