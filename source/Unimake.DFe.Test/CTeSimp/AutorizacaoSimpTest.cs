@@ -142,7 +142,7 @@ namespace Unimake.DFe.Test.CTe
                         Mod = ModeloDFe.CTe,
                         Serie = 1,
                         NCT = 861,
-                        DhEmi = DateTimeOffset.Parse("2023-05-15T18:14:48-03:00"),
+                        DhEmi = DateTime.Now,
                         TpImp = FormatoImpressaoDACTE.NormalRetrato,
                         TpEmis = TipoEmissao.Normal,
                         CDV = 9,
