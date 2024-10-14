@@ -128,7 +128,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Deserializar o XML CTe no objeto CTe
+        /// Desserializar o XML CTe no objeto CTe
         /// </summary>
         /// <param name="xml">string do XML CTe</param>
         /// <returns>Objeto da CTe</returns>

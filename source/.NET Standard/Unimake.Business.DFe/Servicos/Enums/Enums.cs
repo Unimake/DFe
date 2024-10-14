@@ -450,6 +450,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("DARE Receita")]
         DAREReceita = 73,
 
+        /// <summary>
+        /// 74 - Envio do XML de CTe Simplificado - Síncrono
+        /// </summary>
+        [Description("Autorização do CTe Simplificado")]
+        CTeAutorizacaoSimp = 74,
+
         #endregion
 
         #region Gerais

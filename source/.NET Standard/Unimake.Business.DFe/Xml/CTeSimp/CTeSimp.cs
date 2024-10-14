@@ -883,16 +883,16 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Valor total a Receber
         /// </summary>
         [XmlIgnore]
-        public double VRec { get; set; }
+        public double VTRec { get; set; }
 
         /// <summary>
         /// Propriedade auxiliar da VRec (Utilize sempre a VRec)
         /// </summary>
-        [XmlElement("vRec")]
-        public string VRecField
+        [XmlElement("vTRec")]
+        public string VtRecField
         {
-            get => VRec.ToString("F2", CultureInfo.InvariantCulture);
-            set => VRec = Utility.Converter.ToDouble(value);
+            get => VTRec.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTRec = Utility.Converter.ToDouble(value);
         }
     }
 }

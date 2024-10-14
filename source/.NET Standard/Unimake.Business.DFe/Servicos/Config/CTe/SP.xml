@@ -294,5 +294,52 @@
 			<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
 		</AutorizacaoSinc>
+		<AutorizacaoSimp versao="4.00">
+			<Descricao>Autorização do CTe Simplificado - Síncrono</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeWS/WS/CTeRecepcaoSimpV4.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.sp.gov.br/CTeWS/WS/CTeRecepcaoSimpV4.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSimpV4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/cte/wsdl/CTeRecepcaoSimpV4</WebActionProducao>
+			<GZIPCompress>true</GZIPCompress>
+			<WebTagRetorno>cteRecepcaoSimpResult</WebTagRetorno>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>1</ID>
+					<SchemaArquivo>cteSimp_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalRodoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>2</ID>
+					<SchemaArquivo>cteSimp_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAereo_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>3</ID>
+					<SchemaArquivo>cteSimp_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalAquaviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>4</ID>
+					<SchemaArquivo>cteSimp_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalFerroviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>5</ID>
+					<SchemaArquivo>cteSimp_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteModalDutoviario_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+				<Tipo>
+					<ID>6</ID>
+					<SchemaArquivo>cteSimp_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>cteMultiModal_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>CTeSimp</TagAssinatura>
+			<TagAtributoID>infCte</TagAtributoID>
+			<TagLoteAssinatura/>
+			<TagLoteAtributoID/>
+			<UrlQrCodeHomologacao>https://homologacao.nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode</UrlQrCodeProducao>
+		</AutorizacaoSimp>
 	</Servicos>
 </Configuracoes>
