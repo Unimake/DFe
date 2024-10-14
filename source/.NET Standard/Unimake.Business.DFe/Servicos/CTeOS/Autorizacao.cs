@@ -240,13 +240,6 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
                                 switch (item.ProtCTe.InfProt.CStat)
                                 {
                                     case 100: //CTe Autorizado
-                                    case 110: //CTe Denegado - Não sei quando ocorre este, mas descobrir ele no manual então estou incluindo. 
-                                    case 301: //CTe Denegado - Irregularidade fiscal do emitente
-                                    case 302: //CTe Denegado - Irregularidade fiscal do remetente
-                                    case 303: //CTe Denegado - Irregularidade fiscal do destinatário
-                                    case 304: //CTe Denegado - Irregularidade fiscal do expedidor
-                                    case 305: //CTe Denegado - Irregularidade fiscal do recebedor
-                                    case 306: //CTe Denegado - Irregularidade fiscal do tomador
                                         protCTe = item.ProtCTe;
                                         break;
                                 }
