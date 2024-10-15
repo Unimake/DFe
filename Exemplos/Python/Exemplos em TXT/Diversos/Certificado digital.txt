@@ -1,0 +1,93 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Security.Platform import CertificadoDigital
+
+def abrir_tela_certificado():
+    print("Para certificado A1 e A3...")
+    
+    oCertificado           = CertificadoDigital() # Unimake.Security.Platform.CertificadoDigital
+    certificadoSelecionado = oCertificado.AbrirTelaSelecao()
+    
+    # Criar configuração de exemplo
+    oConfig1                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig1.TipoDFe            = TipoDFe.NFe
+    oConfig1.CertificadoDigital = certificadoSelecionado
+    
+    # Você pode salvar o Thumbprint ou SerialNumber do certificado 
+    # para salvar em sua base de dados para resgatar ele no futuro no repositório do windows sem precisar abrir tela para selecionar novamente.
+    thumbprint   = certificadoSelecionado.Thumbprint
+    serialNumber = certificadoSelecionado.SerialNumber
+    
+    print("\nThumbprint: ", thumbprint)
+    print("SerialNumber: ", serialNumber)
+    
+def carregar_direto_pfx():
+    print("Apenas para certificado A1...")
+    
+    oCertificado           = CertificadoDigital() # Unimake.Security.Platform.CertificadoDigital
+    certificadoSelecionado = oCertificado.CarregarCertificadoDigitalA1("C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx", "12345678")
+    
+    # Criar configuração de exemplo
+    oConfig                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoDigital = certificadoSelecionado
+    
+def buscar_pelo_serial_number(serialNumber):
+    print("Para certificado A1 e A3...")
+    
+    oCertificado           = CertificadoDigital() # Unimake.Security.Platform.CertificadoDigital
+    certificadoSelecionado = oCertificado.BuscarCertificadoDigital(serialNumber)
+    
+    # Criar configuração de exemplo
+    oConfig                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoDigital = certificadoSelecionado
+
+def buscar_pelo_thumbPrint(thumbPrint):
+    print("Para certificado A1 e A3...")
+    
+    oCertificado           = CertificadoDigital() # Unimake.Security.Platform.CertificadoDigital
+    certificadoSelecionado = oCertificado.BuscarCertificadoDigital(thumbPrint)
+    
+    # Criar configuração de exemplo
+    oConfig                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoDigital = certificadoSelecionado
+    
+def criar_array_bytes_certificado():
+    print("Apenas para certificado A1...")
+    
+    oCertificado = CertificadoDigital() # Unimake.Security.Platform.CertificadoDigital
+    certificadoByte = oCertificado.ToByteArray("C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx")
+    
+    # Agora você pode gravar o conteúdo da "certificadoByte" no banco de dados
+
+    # Recuperar o certificado para uso a partir de uma array byte
+    certificadoCarregado = oCertificado.CarregarCertificadoDigitalA1(certificadoByte, "12345678")
+    
+    # Criar configuração de exemplo
+    oConfig                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoDigital = certificadoCarregado
+    
+    print("Array Bytes: ", certificadoByte)
+    
+def criar_base64_certificado():
+    print("Apenas para certificado A1...")
+    
+    oCertificado = CertificadoDigital() # Unimake.Security.Platform.CertificadoDigital
+    certificadoBase64 = oCertificado.ToBase64("C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx")
+    
+    # Agora você pode gravar o conteúdo da "certificadoBase64" no banco de dados
+
+    # Recuperar o certificado para uso a partir de uma array byte
+    certificadoCarregado = oCertificado.FromBase64(certificadoBase64, "12345678")
+    
+    # Criar configuração de exemplo
+    oConfig                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoDigital = certificadoCarregado
+    
+    print("Base64: ", certificadoBase64)
