@@ -82,6 +82,9 @@ namespace Unimake.Business.DFe.Xml.DARE
         [XmlElement("codigoServicoDARE")]
         public string CodigoServicoDARE { get; set; }
 
+        [XmlElement("escopoUso")]
+        public string EscopoUso { get; set; }
+
         [XmlElement("nome")]
         public string Nome { get; set; }
 
@@ -89,6 +92,7 @@ namespace Unimake.Business.DFe.Xml.DARE
 
         public bool ShouldSerializeCodigo() => !string.IsNullOrEmpty(Codigo);
         public bool ShouldSerializeNome() => !string.IsNullOrEmpty(Nome);
+        public bool ShouldSerializeEscopoUso() => !string.IsNullOrEmpty(EscopoUso);
 
         #endregion ShouldSerialize
     }
