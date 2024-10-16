@@ -60,7 +60,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEventoReinf9001")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento9001")]
     [ComVisible(true)]
 #endif
     public class IdeEvento9001
@@ -253,15 +253,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class InfoTotal
     {
         [XmlElement("ideEstab")]
-        public IdeEstabReinf9001 IdeEstab { get; set; }
+        public IdeEstab9001 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstabReinf9001")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab9001")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabReinf9001
+    public class IdeEstab9001
     {
         [XmlElement("tpInsc")]
         public TipoInscricaoEstabelecimento TpInsc { get; set; }
@@ -541,7 +541,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         #region ShouldSerialize
-        
+
         public bool ShouldSerializeVlrCRTom() => VlrCRTom > 0;
 
         public bool ShouldSerializeVlrCRTomSusp() => VlrCRTomSusp > 0;
@@ -796,7 +796,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class RRecEspetDesp
     {
         [XmlElement("CRRecEspetDesp")]
-        public string CRRecEspetDesp {  get; set; }
+        public string CRRecEspetDesp { get; set; }
 
         [XmlIgnore]
         public double VlrReceitaTotal { get; set; }
