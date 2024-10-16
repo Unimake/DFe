@@ -453,10 +453,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoPerApur")]
-        public InfoPerApur2299 InfoPerApur { get; set; }
+        public InfoPerApur2399 InfoPerApur { get; set; }
 
         [XmlElement("infoPerAnt")]
-        public InfoPerAnt2299 InfoPerAnt { get; set; }
+        public InfoPerAnt2399 InfoPerAnt { get; set; }
 
         #region ShouldSerialize
 
@@ -478,6 +478,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class IdeEstabLot2399 : IdeEstabLot2299 { }
 
     #endregion  IdeEstabLot2399
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerAnt2399")]
+    [ComVisible(true)]
+#endif
+    public class InfoPerAnt2399 : InfoPerAnt2299 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApur2399")]
+    [ComVisible(true)]
+#endif
+    public class InfoPerApur2399 : InfoPerApur2299 { }
 
     #region RemunAposTerm
 
