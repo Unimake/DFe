@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
 using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.MDFe;
 
 
 #if INTEROP
@@ -64,13 +62,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do empregador ou do contribuinte que prestou a informação
         /// </summary>
         [XmlElement("ideEmpregador")]
-        public IdeEmpregadorESocial5501 IdeEmpregador { get; set; }
+        public IdeEmpregador5501 IdeEmpregador { get; set; }
 
         /// <summary>
         /// Identificação do processo
         /// </summary>
         [XmlElement("ideProc")]
-        public IdeProcESocial5501 IdeProc { get; set; }
+        public IdeProc5501 IdeProc { get; set; }
     }
 
     #region IdeEvento
@@ -103,10 +101,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregadorESocial5501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador5501")]
     [ComVisible(true)]
 #endif
-    public class IdeEmpregadorESocial5501
+    public class IdeEmpregador5501
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
@@ -122,17 +120,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion IdeEmpregador
 
-    #region IdeProcESocial5501
+    #region IdeProc5501
 
     /// <summary>
     /// Identificação do processo.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcESocial5501")]
-        [ComVisible(true)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProc5501")]
+    [ComVisible(true)]
 #endif
-    public class IdeProcESocial5501
+    public class IdeProc5501
     {
         /// <summary>
         /// N\u00famero do processo trabalhista, da ata ou n\u00famero de identifica\u00e7\u00e3o da concilia\u00e7\u00e3o.
@@ -208,18 +206,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de IRRF referentes ao processo trabalhista
         /// </summary>
         [XmlElement("infoCRIRRF")]
-        public List<InfoCRIRRFESocial5501> InfoCRIRRF { get; set; }
+        public List<InfoCRIRRF5501> InfoCRIRRF { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoCRIRRF(InfoCRIRRFESocial5501 item)
+        public void AddInfoCRIRRF(InfoCRIRRF5501 item)
         {
             if (InfoCRIRRF == null)
             {
-                InfoCRIRRF = new List<InfoCRIRRFESocial5501>();
+                InfoCRIRRF = new List<InfoCRIRRF5501>();
             }
 
             InfoCRIRRF.Add(item);
@@ -230,7 +228,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoCRIRRF</returns>
-        public InfoCRIRRFESocial5501 GetInfoCRIRRF(int index)
+        public InfoCRIRRF5501 GetInfoCRIRRF(int index)
         {
             if ((InfoCRIRRF?.Count ?? 0) == 0)
             {
@@ -246,7 +244,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoCRIRRFCount => (InfoCRIRRF != null ? InfoCRIRRF.Count : 0);
 #endif
     }
-    #endregion IdeProcESocial5501
+    #endregion IdeProc5501
 
     #region InfoTributos
 
@@ -272,18 +270,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// consolidadas por perRef e por Código de Receita - CR.
         /// </summary>
         [XmlElement("infoCRContrib")]
-        public List<InfoCRContribESocial5501> InfoCRContrib { get; set; }
+        public List<InfoCRContrib5501> InfoCRContrib { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoCRContrib(InfoCRContribESocial5501 item)
+        public void AddInfoCRContrib(InfoCRContrib5501 item)
         {
             if (InfoCRContrib == null)
             {
-                InfoCRContrib = new List<InfoCRContribESocial5501>();
+                InfoCRContrib = new List<InfoCRContrib5501>();
             }
 
             InfoCRContrib.Add(item);
@@ -294,7 +292,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoCRContrib</returns>
-        public InfoCRContribESocial5501 GetInfoCRContrib(int index)
+        public InfoCRContrib5501 GetInfoCRContrib(int index)
         {
             if ((InfoCRContrib?.Count ?? 0) == 0)
             {
@@ -314,10 +312,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #region InfoCRContrib
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRContribESocial5501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRContrib5501")]
     [ComVisible(true)]
 #endif
-    public class InfoCRContribESocial5501
+    public class InfoCRContrib5501
     {
         [XmlElement("tpCR")]
         public string TpCR { get; set; }
@@ -348,10 +346,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRIRRFESocial5501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRIRRF5501")]
     [ComVisible(true)]
 #endif
-    public class InfoCRIRRFESocial5501
+    public class InfoCRIRRF5501
     {
         /// <summary>
         /// Código de Receita - CR relativo a Imposto de Renda Retido na Fonte.

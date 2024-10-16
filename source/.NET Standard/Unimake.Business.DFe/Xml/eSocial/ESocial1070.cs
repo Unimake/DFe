@@ -62,21 +62,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoProcessoESocial
     {
         [XmlElement("inclusao")]
-        public InclusaoESocial1070 Inclusao { get; set; }
+        public Inclusao1070 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
-        public AlteracaoESocial1070 Alteracao { get; set; }
+        public Alteracao1070 Alteracao { get; set; }
 
         [XmlElement("exclusao")]
-        public ExclusaoESocial1070 Exclusao { get; set; }
+        public Exclusao1070 Exclusao { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoESocial1070")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Inclusao1070")]
     [ComVisible(true)]
 #endif
-    public class InclusaoESocial1070
+    public class Inclusao1070
     {
         [XmlElement("ideProcesso")]
         public IdeProcessoESocial IdeProcesso { get; set; }
@@ -225,10 +225,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial1070")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1070")]
     [ComVisible(true)]
 #endif
-    public class AlteracaoESocial1070
+    public class Alteracao1070
     {
         [XmlElement("ideProcesso")]
         public IdeProcessoESocial IdeProcesso { get; set; }
@@ -242,10 +242,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ExclusaoESocial1070")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao1070")]
     [ComVisible(true)]
 #endif
-    public class ExclusaoESocial1070
+    public class Exclusao1070
     {
         [XmlElement("ideProcesso")]
         public IdeProcessoESocial IdeProcesso { get; set; }

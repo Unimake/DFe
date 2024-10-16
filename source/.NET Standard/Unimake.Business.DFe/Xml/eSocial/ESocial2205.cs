@@ -78,7 +78,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial2205")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador2205")]
     [ComVisible(true)]
 #endif
     public class IdeTrabalhador2205
@@ -89,7 +89,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial2205")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao2205")]
     [ComVisible(true)]
 #endif
     public class Alteracao2205
@@ -199,7 +199,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("contato")]
-        public ContatoESocial2205 Contato { get; set; }
+        public Contato2205 Contato { get; set; }
 
         #region ShouldSerialize
 
@@ -463,10 +463,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ContatoESocial2205")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Contato2205")]
     [ComVisible(true)]
 #endif
-    public class ContatoESocial2205
+    public class Contato2205
     {
         [XmlElement("fonePrinc")]
         public string FonePrinc { get; set; }

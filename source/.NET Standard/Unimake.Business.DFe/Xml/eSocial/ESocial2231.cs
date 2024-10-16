@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeVinculo IdeVinculo { get; set; }
 
         [XmlElement("infoCessao")]
-        public InfoCessaoESocial2231 InfoCessao { get; set; }
+        public InfoCessao2231 InfoCessao { get; set; }
     }
 
 #if INTEROP
@@ -55,10 +55,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCessaoESocial2231")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCessao2231")]
     [ComVisible(true)]
 #endif
-    public class InfoCessaoESocial2231
+    public class InfoCessao2231
     {
         [XmlElement("iniCessao")]
         public IniCessao IniCessao { get; set; }

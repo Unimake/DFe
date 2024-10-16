@@ -180,7 +180,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("mtvDesligTSV")]
 #if INTEROP
-        public MtvDesligTSV MtvDesligTSV {  get; set; } = (MtvDesligTSV)(-1);
+        public MtvDesligTSV MtvDesligTSV { get; set; } = (MtvDesligTSV)(-1);
 #else
         public MtvDesligTSV? MtvDesligTSV { get; set; }
 #endif
@@ -239,14 +239,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informação do novo CPF do trabalhador.
         /// </summary>
         [XmlElement("mudancaCPF")]
-        public MudancaCPFESocial2399 MudancaCPF { get; set; }
+        public MudancaCPF2399 MudancaCPF { get; set; }
 
         /// <summary>
         /// Grupo onde são prestadas as informações relativas às
         ///verbas rescisórias do diretor não empregado, com FGTS.
         /// </summary>
         [XmlElement("verbasResc")]
-        public VerbasRescESocial2399 VerbasResc { get; set; }
+        public VerbasResc2399 VerbasResc { get; set; }
 
         /// <summary>
         /// Informações sobre a "quarentena" remunerada de
@@ -280,17 +280,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
-    #region MudancaCPFESocial2399
+    #region MudancaCPF2399
 
     /// <summary>
     /// Informação do novo CPF do trabalhador.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCPFESocial2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCPF2399")]
     [ComVisible(true)]
 #endif
-    public class MudancaCPFESocial2399
+    public class MudancaCPF2399
     {
         /// <summary>
         /// Preencher com o novo CPF do trabalhador.
@@ -300,17 +300,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("novoCPF")]
         public string NovoCPF { get; set; }
     }
-    #endregion MudancaCPFESocial2399
+    #endregion MudancaCPF2399
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.VerbasRescESocial2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.VerbasResc2399")]
     [ComVisible(true)]
 #endif
-    public class VerbasRescESocial2399
+    public class VerbasResc2399
     {
         [XmlElement("dmDev")]
-        public List<DmDevESocial2399> DmDev { get; set; }
+        public List<DmDev2399> DmDev { get; set; }
 
 #if INTEROP
 
@@ -318,11 +318,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDmDev(DmDevESocial2399 item)
+        public void AddDmDev(DmDev2399 item)
         {
             if (DmDev == null)
             {
-                DmDev = new List<DmDevESocial2399>();
+                DmDev = new List<DmDev2399>();
             }
 
             DmDev.Add(item);
@@ -333,7 +333,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da DmDev</returns>
-        public DmDevESocial2399 GetDmDev(int index)
+        public DmDev2399 GetDmDev(int index)
         {
             if ((DmDev?.Count ?? 0) == 0)
             {
@@ -396,10 +396,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDevESocial2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev2399")]
     [ComVisible(true)]
 #endif
-    public class DmDevESocial2399
+    public class DmDev2399
     {
         [XmlElement("ideDmDev")]
         public string IdeDmDev { get; set; }
@@ -414,18 +414,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
         /// </summary>
         [XmlElement("ideEstabLot")]
-        public List<IdeEstabLotESocial2399> IdeEstabLot { get; set; }
+        public List<IdeEstabLot2399> IdeEstabLot { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeEstabLot(IdeEstabLotESocial2399 item)
+        public void AddIdeEstabLot(IdeEstabLot2399 item)
         {
             if (IdeEstabLot == null)
             {
-                IdeEstabLot = new List<IdeEstabLotESocial2399>();
+                IdeEstabLot = new List<IdeEstabLot2399>();
             }
 
             IdeEstabLot.Add(item);
@@ -436,7 +436,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLot</returns>
-        public IdeEstabLotESocial2399 GetIdeEstabLot(int index)
+        public IdeEstabLot2399 GetIdeEstabLot(int index)
         {
             if ((IdeEstabLot?.Count ?? 0) == 0)
             {
@@ -453,10 +453,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoPerApur")]
-        public InfoPerApurESocial2299 InfoPerApur { get; set; }
+        public InfoPerApur2299 InfoPerApur { get; set; }
 
         [XmlElement("infoPerAnt")]
-        public InfoPerAntESocial2299 InfoPerAnt { get; set; }
+        public InfoPerAnt2299 InfoPerAnt { get; set; }
 
         #region ShouldSerialize
 
@@ -465,22 +465,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
-    #region IdeEstabLotESocial2399
+    #region IdeEstabLot2399
 
     /// <summary>
     /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotESocial2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLot2399")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabLotESocial2399 : IdeEstabLotESocial2299 { }
+    public class IdeEstabLot2399 : IdeEstabLot2299 { }
 
-    #endregion  IdeEstabLotESocial2399
+    #endregion  IdeEstabLot2399
 
     #region RemunAposTerm
-    
+
     /// <summary>
     /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
     /// </summary>

@@ -2,12 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -41,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEvento2500 IdeEvento { get; set; }
 
         [XmlElement("ideEmpregador")]
-        public IdeEmpregadorESocial2500 IdeEmpregador { get; set; }
+        public IdeEmpregador2500 IdeEmpregador { get; set; }
 
         [XmlElement("infoProcesso")]
         public InfoProcesso InfoProcesso { get; set; }
@@ -59,10 +58,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregadorESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador2500")]
     [ComVisible(true)]
 #endif
-    public class IdeEmpregadorESocial2500
+    public class IdeEmpregador2500
     {
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }
@@ -437,7 +436,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("ideEstab")]
-        public IdeEstabESocial2500 IdeEstab { get; set; }
+        public IdeEstab2500 IdeEstab { get; set; }
 
         #region ShouldSerialize
 
@@ -450,7 +449,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
-        
+
         public bool ShouldSerializeCodCateg() => !string.IsNullOrEmpty(CodCateg);
 
         public bool ShouldSerializeDtInicioField() => DtInicio > DateTime.MinValue;
@@ -672,7 +671,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SucessaoVinc2500 SucessaoVinc { get; set; }
 
         [XmlElement("infoDeslig")]
-        public InfoDesligESocial2500 InfoDeslig { get; set; }
+        public InfoDeslig2500 InfoDeslig { get; set; }
 
         #region ShouldSerialize
 
@@ -788,10 +787,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDesligESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDeslig2500")]
     [ComVisible(true)]
 #endif
-    public class InfoDesligESocial2500
+    public class InfoDeslig2500
     {
         [XmlIgnore]
 #if INTEROP
@@ -1010,7 +1009,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeMatUnic() => !string.IsNullOrEmpty(MatUnic);
-       
+
         public bool ShouldSerializeCodCateg() => !string.IsNullOrEmpty(CodCateg);
 
         public bool ShouldSerializeDtInicioField() => DtInicio > DateTime.MinValue;
@@ -1020,10 +1019,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab2500")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabESocial2500
+    public class IdeEstab2500
     {
         [XmlElement("tpInsc")]
         public TipoInscricaoEstabelecimento TpInsc { get; set; }
@@ -1128,7 +1127,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("idePeriodo")]
-        public List<IdePeriodoESocial2500> IdePeriodo { get; set; }
+        public List<IdePeriodo2500> IdePeriodo { get; set; }
 
 #if INTEROP
 
@@ -1136,11 +1135,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdePeriodo(IdePeriodoESocial2500 item)
+        public void AddIdePeriodo(IdePeriodo2500 item)
         {
             if (IdePeriodo == null)
             {
-                IdePeriodo = new List<IdePeriodoESocial2500>();
+                IdePeriodo = new List<IdePeriodo2500>();
             }
 
             IdePeriodo.Add(item);
@@ -1151,7 +1150,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdePeriodo</returns>
-        public IdePeriodoESocial2500 GetIdePeriodo(int index)
+        public IdePeriodo2500 GetIdePeriodo(int index)
         {
             if ((IdePeriodo?.Count ?? 0) == 0)
             {
@@ -1170,7 +1169,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeIndenSD() => !string.IsNullOrEmpty(IndenSD);
-   
+
         public bool ShouldSerializeIndenAbono() => !string.IsNullOrEmpty(IndenAbono);
 
         #endregion
@@ -1189,10 +1188,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodoESocial2500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodo2500")]
     [ComVisible(true)]
 #endif
-    public class IdePeriodoESocial2500
+    public class IdePeriodo2500
     {
         [XmlIgnore]
 #if INTEROP
@@ -1309,7 +1308,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Validação: Somente pode ser informado se perRef for anterior ao início do FGTS Digital.
         /// Deve ser maior que 0 (zero).
         /// </summary>
-        
+
         [XmlIgnore]
         public double VrBcFGTSDecAnt { get; set; }
 
@@ -1323,7 +1322,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeVrBcFGTSSefipField() => VrBcFGTSSefip > 0;
-       
+
         public bool ShouldSerializeVrBcFGTSDecAntField() => VrBcFGTSDecAnt > 0;
 
         #endregion ShouldSerialize

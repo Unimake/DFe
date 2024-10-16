@@ -2,13 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -46,7 +44,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("infoFGTS")]
-        public InfoFGTSESocial5013 InfoFGTS { get; set; }
+        public InfoFGTS5013 InfoFGTS { get; set; }
     }
 
 #if INTEROP
@@ -80,10 +78,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoFGTSESocial5013")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoFGTS5013")]
     [ComVisible(true)]
 #endif
-    public class InfoFGTSESocial5013
+    public class InfoFGTS5013
     {
         [XmlElement("nrRecArqBase")]
         public string NrRecArqBase { get; set; }
@@ -92,7 +90,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndExistInfo IndExistInfo { get; set; }
 
         [XmlElement("ideEstab")]
-        public List<IdeEstabESocial5013> IdeEstab { get; set; }
+        public List<IdeEstab5013> IdeEstab { get; set; }
 
 #if INTEROP
 
@@ -100,11 +98,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeEstab(IdeEstabESocial5013 item)
+        public void AddIdeEstab(IdeEstab5013 item)
         {
             if (IdeEstab == null)
             {
-                IdeEstab = new List<IdeEstabESocial5013>();
+                IdeEstab = new List<IdeEstab5013>();
             }
 
             IdeEstab.Add(item);
@@ -115,7 +113,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstab</returns>
-        public IdeEstabESocial5013 GetIdeEstab(int index)
+        public IdeEstab5013 GetIdeEstab(int index)
         {
             if ((IdeEstab?.Count ?? 0) == 0)
             {
@@ -134,10 +132,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial5013")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab5013")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabESocial5013
+    public class IdeEstab5013
     {
         /// <summary>
         /// Valores válidos:
@@ -153,7 +151,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
 
         [XmlElement("ideLotacao")]
-        public List<IdeLotacaoESocial5013> IdeLotacao { get; set; }
+        public List<IdeLotacao5013> IdeLotacao { get; set; }
 
 #if INTEROP
 
@@ -161,11 +159,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeLotacao(IdeLotacaoESocial5013 item)
+        public void AddIdeLotacao(IdeLotacao5013 item)
         {
             if (IdeLotacao == null)
             {
-                IdeLotacao = new List<IdeLotacaoESocial5013>();
+                IdeLotacao = new List<IdeLotacao5013>();
             }
 
             IdeLotacao.Add(item);
@@ -176,7 +174,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeLotacao</returns>
-        public IdeLotacaoESocial5013 GetIdeLotacao(int index)
+        public IdeLotacao5013 GetIdeLotacao(int index)
         {
             if ((IdeLotacao?.Count ?? 0) == 0)
             {
@@ -195,10 +193,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacaoESocial5013")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacao5013")]
     [ComVisible(true)]
 #endif
-    public class IdeLotacaoESocial5013
+    public class IdeLotacao5013
     {
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
@@ -217,7 +215,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
 
         [XmlElement("infoBaseFGTS")]
-        public InfoBaseFGTSESocial5013 InfoBaseFGTS { get; set; }
+        public InfoBaseFGTS5013 InfoBaseFGTS { get; set; }
 
         #region ShouldSerialize
 
@@ -234,13 +232,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBaseFGTSESocial5013")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBaseFGTS5013")]
     [ComVisible(true)]
 #endif
-    public class InfoBaseFGTSESocial5013
+    public class InfoBaseFGTS5013
     {
         [XmlElement("basePerApur")]
-        public List<BasePerApurESocial5013> BasePerApur { get; set; }
+        public List<BasePerApur5013> BasePerApur { get; set; }
 
 #if INTEROP
 
@@ -248,11 +246,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddBasePerApur(BasePerApurESocial5013 item)
+        public void AddBasePerApur(BasePerApur5013 item)
         {
             if (BasePerApur == null)
             {
-                BasePerApur = new List<BasePerApurESocial5013>();
+                BasePerApur = new List<BasePerApur5013>();
             }
 
             BasePerApur.Add(item);
@@ -263,7 +261,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da BasePerApur</returns>
-        public BasePerApurESocial5013 GetBasePerApur(int index)
+        public BasePerApur5013 GetBasePerApur(int index)
         {
             if ((BasePerApur?.Count ?? 0) == 0)
             {
@@ -280,7 +278,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoBasePerAntE")]
-        public List<InfoBasePerAntEESocial5013> InfoBasePerAntE { get; set; }
+        public List<InfoBasePerAntE5013> InfoBasePerAntE { get; set; }
 
 #if INTEROP
 
@@ -288,11 +286,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoBasePerAntE(InfoBasePerAntEESocial5013 item)
+        public void AddInfoBasePerAntE(InfoBasePerAntE5013 item)
         {
             if (InfoBasePerAntE == null)
             {
-                InfoBasePerAntE = new List<InfoBasePerAntEESocial5013>();
+                InfoBasePerAntE = new List<InfoBasePerAntE5013>();
             }
 
             InfoBasePerAntE.Add(item);
@@ -303,7 +301,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoBasePerAntE</returns>
-        public InfoBasePerAntEESocial5013 GetInfoBasePerAntE(int index)
+        public InfoBasePerAntE5013 GetInfoBasePerAntE(int index)
         {
             if ((InfoBasePerAntE?.Count ?? 0) == 0)
             {
@@ -324,10 +322,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.BasePerApurESocial5013")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.BasePerApur5013")]
     [ComVisible(true)]
 #endif
-    public class BasePerApurESocial5013
+    public class BasePerApur5013
     {
         [XmlElement("tpValor")]
         public TpValor TpValor { get; set; }
@@ -376,10 +374,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBasePerAntEESocial5013")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBasePerAntE5013")]
     [ComVisible(true)]
 #endif
-    public class InfoBasePerAntEESocial5013
+    public class InfoBasePerAntE5013
     {
         [XmlIgnore]
 #if INTEROP
@@ -403,7 +401,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string TpAcConv { get; set; }
 
         [XmlElement("basePerAntE")]
-        public List<BasePerAntEESocial5013> BasePerAntE { get; set; }
+        public List<BasePerAntE5013> BasePerAntE { get; set; }
 
 #if INTEROP
 
@@ -411,11 +409,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddBasePerAntE(BasePerAntEESocial5013 item)
+        public void AddBasePerAntE(BasePerAntE5013 item)
         {
             if (BasePerAntE == null)
             {
-                BasePerAntE = new List<BasePerAntEESocial5013>();
+                BasePerAntE = new List<BasePerAntE5013>();
             }
 
             BasePerAntE.Add(item);
@@ -426,7 +424,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da BasePerAntE</returns>
-        public BasePerAntEESocial5013 GetBasePerAntE(int index)
+        public BasePerAntE5013 GetBasePerAntE(int index)
         {
             if ((BasePerAntE?.Count ?? 0) == 0)
             {
@@ -443,7 +441,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    public class BasePerAntEESocial5013
+    public class BasePerAntE5013
     {
         [XmlElement("tpValorE")]
         public TpValor TpValorE { get; set; }

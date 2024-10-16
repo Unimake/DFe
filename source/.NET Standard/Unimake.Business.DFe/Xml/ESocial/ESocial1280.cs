@@ -55,7 +55,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do evento.
         /// </summary>
         [XmlElement("ideEvento")]
-        public IdeEvento1280 IdeEvento1280 { get; set; }
+        public IdeEvento1280 IdeEvento { get; set; }
 
         /// <summary>
         /// Informações de identificação do empregador.
@@ -182,7 +182,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerApur {get; set; }
+        public DateTime PerApur { get; set; }
 #else
         public DateTimeOffset PerApur { get; set; }
 #endif

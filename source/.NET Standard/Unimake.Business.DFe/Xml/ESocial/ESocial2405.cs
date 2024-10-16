@@ -64,13 +64,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do beneficiário.
         /// </summary>
         [XmlElement("ideBenef")]
-        public IdeBenefESocial2405 IdeBenef { get; set; }
+        public IdeBenef2405 IdeBenef { get; set; }
 
         /// <summary>
         /// Alteração de dados do beneficiário.
         /// </summary>
         [XmlElement("alteracao")]
-        public AlteracaoESocial2405 Alteracao { get; set; }
+        public Alteracao2405 Alteracao { get; set; }
     }
 
     #region IdeEvento2405
@@ -80,8 +80,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2405")]
-        [ComVisible(true)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2405")]
+    [ComVisible(true)]
 #endif
     public class IdeEvento2405
     {
@@ -125,17 +125,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion IdeEvento
 
-    #region IdeBenefESocial2405
+    #region IdeBenef2405
 
     /// <summary>
     /// Identificação do beneficiário.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenefESocial2405")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenef2405")]
     [ComVisible(true)]
 #endif
-    public class IdeBenefESocial2405
+    public class IdeBenef2405
     {
         /// <summary>
         /// Informar o CPF do beneficiário.
@@ -150,10 +150,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial2405")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao2405")]
     [ComVisible(true)]
 #endif
-    public class AlteracaoESocial2405
+    public class Alteracao2405
     {
         /// <summary>
         /// Preencher com a data de alteração.
@@ -243,18 +243,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações dos dependentes.
         /// </summary>
         [XmlElement("dependente")]
-        public List<DependenteESocial2405> Dependente { get; set; }
+        public List<Dependente2405> Dependente { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDependente(DependenteESocial2405 item)
+        public void AddDependente(Dependente2405 item)
         {
             if (Dependente == null)
             {
-                Dependente = new List<DependenteESocial2405>();
+                Dependente = new List<Dependente2405>();
             }
 
             Dependente.Add(item);
@@ -265,7 +265,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Dependente</returns>
-        public DependenteESocial2405 GetDependente(int index)
+        public Dependente2405 GetDependente(int index)
         {
             if ((Dependente?.Count ?? 0) == 0)
             {
@@ -286,10 +286,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeEstadoCivil() => EstadoCivil != null;
 #endif
-#endregion ShouldSerialize
+        #endregion ShouldSerialize
     }
 
-    public class DependenteESocial2405
+    public class Dependente2405
     {
         /// <summary>
         ///  Tipo de dependente.

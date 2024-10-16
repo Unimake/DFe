@@ -963,7 +963,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         {
             get => VlrCmpAnoCal.ToString("F2", CultureInfo.InvariantCulture);
             set => VlrCmpAnoCal = Converter.ToDouble(value);
-        }        
+        }
 
         /// <summary>
         /// Valor da compensação relativa a anos anteriores em função de processo judicial.
@@ -979,7 +979,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             get => VlrCmpAnoAnt.ToString("F2", CultureInfo.InvariantCulture);
             set => VlrCmpAnoAnt = Converter.ToDouble(value);
         }
-        
+
         /// <summary>
         /// Valor do rendimento com exigibilidade suspensa.
         /// Validação: Se informado, deve ser maior que 0 (zero).
@@ -1146,7 +1146,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
-        
+
         /// <summary>
         /// Valor da dedução relativa a dependentes ou a pensão alimentícia com exigibilidade suspensa.
         /// Validação: Deve ser maior que 0 (zero).
@@ -1320,7 +1320,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoReembDep")]
-        public List<InfoReembDepESocial1210> InfoReembDep { get; set; }
+        public List<InfoReembDep1210> InfoReembDep { get; set; }
 
 #if INTEROP
 
@@ -1328,11 +1328,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoReembDep(InfoReembDepESocial1210 item)
+        public void AddInfoReembDep(InfoReembDep1210 item)
         {
             if (InfoReembDep == null)
             {
-                InfoReembDep = new List<InfoReembDepESocial1210>();
+                InfoReembDep = new List<InfoReembDep1210>();
             }
 
             InfoReembDep.Add(item);
@@ -1343,7 +1343,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoReembDep</returns>
-        public InfoReembDepESocial1210 GetInfoReembDep(int index)
+        public InfoReembDep1210 GetInfoReembDep(int index)
         {
             if ((InfoReembDep?.Count ?? 0) == 0)
             {
@@ -1419,10 +1419,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoReembDepESocial1210")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoReembDep1210")]
     [ComVisible(true)]
 #endif
-    public class InfoReembDepESocial1210
+    public class InfoReembDep1210
     {
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }

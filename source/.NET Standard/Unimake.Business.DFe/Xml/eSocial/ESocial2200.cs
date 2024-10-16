@@ -2,10 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
@@ -203,7 +203,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeFonePrinc() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 8;
 
         public bool ShouldSerializeEmailPrinc() => !string.IsNullOrEmpty(EmailPrinc) &&
-                                                         EmailPrinc.Contains("@")   &&
+                                                         EmailPrinc.Contains("@") &&
                                                          EmailPrinc.Contains(".") &&
                                                         !EmailPrinc.StartsWith("@") &&
                                                         !EmailPrinc.EndsWith("@") &&
@@ -327,7 +327,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TrabTemporario2200 TrabTemporario { get; set; }
 
         [XmlElement("aprend")]
-        public AprendESocial2200 Aprend { get; set; }
+        public Aprend2200 Aprend { get; set; }
 
         #region ShouldSerialize
 
@@ -450,10 +450,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AprendESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Aprend2200")]
     [ComVisible(true)]
 #endif
-    public class AprendESocial2200
+    public class Aprend2200
     {
         [XmlElement("indAprend")]
         public IndicativoContratacaoAprendiz IndAprend { get; set; }
@@ -686,7 +686,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("treiCap")]
-        public List<TreiCapESocial2200> TreiCap { get; set; }
+        public List<TreiCap2200> TreiCap { get; set; }
 
 #if INTEROP
 
@@ -694,11 +694,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddTreiCap(TreiCapESocial2200 item)
+        public void AddTreiCap(TreiCap2200 item)
         {
             if (TreiCap == null)
             {
-                TreiCap = new List<TreiCapESocial2200>();
+                TreiCap = new List<TreiCap2200>();
             }
 
             TreiCap.Add(item);
@@ -709,7 +709,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da TreiCap</returns>
-        public TreiCapESocial2200 GetTreiCap(int index)
+        public TreiCap2200 GetTreiCap(int index)
         {
             if ((TreiCap?.Count ?? 0) == 0)
             {
@@ -939,10 +939,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.TreiCapESocial2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.TreiCap2200")]
     [ComVisible(true)]
 #endif
-    public class TreiCapESocial2200
+    public class TreiCap2200
     {
         [XmlElement("codTreiCap")]
         public string CodTreiCap { get; set; }

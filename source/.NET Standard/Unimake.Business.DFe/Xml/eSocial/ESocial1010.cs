@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -63,10 +62,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Inclusao Inclusao { get; set; }
 
         [XmlElement("alteracao")]
-        public AlteracaoESocial1010 Alteracao { get; set; }
+        public Alteracao1010 Alteracao { get; set; }
 
         [XmlElement("exclusao")]
-        public ExclusaoESocial1010 Exclusao { get; set; }
+        public Exclusao1010 Exclusao { get; set; }
     }
 
 #if INTEROP
@@ -389,10 +388,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.AlteracaoESocial1010")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1010")]
     [ComVisible(true)]
 #endif
-    public class AlteracaoESocial1010
+    public class Alteracao1010
     {
         [XmlElement("dadosRubrica")]
         public DadosRubrica DadosRubrica { get; set; }
@@ -403,10 +402,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ExclusaoESocial1010")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao1010")]
     [ComVisible(true)]
 #endif
-    public class ExclusaoESocial1010
+    public class Exclusao1010
     {
         [XmlElement("ideRubrica")]
         public IdeRubrica IdeRubrica { get; set; }

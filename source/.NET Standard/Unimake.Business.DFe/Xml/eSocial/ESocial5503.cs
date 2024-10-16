@@ -2,12 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -44,13 +43,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideProc")]
-        public IdeProcESocial5503 IdeProc { get; set; }
+        public IdeProc5503 IdeProc { get; set; }
 
         [XmlElement("ideTrabalhador")]
-        public IdeTrabalhadorESocial5003 IdeTrabalhador { get; set; }
+        public IdeTrabalhador5003 IdeTrabalhador { get; set; }
 
         [XmlElement("infoTrabFGTS")]
-        public List<InfoTrabFGTSESocial5503> InfoTrabFGTS { get; set; }
+        public List<InfoTrabFGTS5503> InfoTrabFGTS { get; set; }
 
 #if INTEROP
 
@@ -58,11 +57,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoTrabFGTS(InfoTrabFGTSESocial5503 item)
+        public void AddInfoTrabFGTS(InfoTrabFGTS5503 item)
         {
             if (InfoTrabFGTS == null)
             {
-                InfoTrabFGTS = new List<InfoTrabFGTSESocial5503>();
+                InfoTrabFGTS = new List<InfoTrabFGTS5503>();
             }
 
             InfoTrabFGTS.Add(item);
@@ -73,7 +72,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoTrabFGTS</returns>
-        public InfoTrabFGTSESocial5503 GetInfoTrabFGTS(int index)
+        public InfoTrabFGTS5503 GetInfoTrabFGTS(int index)
         {
             if ((InfoTrabFGTS?.Count ?? 0) == 0)
             {
@@ -121,10 +120,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcESocial5503")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProc5503")]
     [ComVisible(true)]
 #endif
-    public class IdeProcESocial5503
+    public class IdeProc5503
     {
         [XmlElement("origem")]
         public Origem Origem { get; set; }
@@ -135,10 +134,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTrabFGTSESocial5503")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTrabFGTS5503")]
     [ComVisible(true)]
 #endif
-    public class InfoTrabFGTSESocial5503
+    public class InfoTrabFGTS5503
     {
         [XmlElement("matricula")]
         public string Matricula { get; set; }
@@ -191,15 +190,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("ideEstab")]
-        public IdeEstabESocial5503 IdeEstab { get; set; }
+        public IdeEstab5503 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial5503")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab5503")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabESocial5503
+    public class IdeEstab5503
     {
         [XmlElement("tpInsc")]
         public TpInsc TpInsc { get; set; }
@@ -367,13 +366,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeDpsFGTSProcTrabField() => DpsFGTSProcTrab > 0;
-   
+
         public bool ShouldSerializeRemFGTSSefipField() => RemFGTSSefip > 0;
-       
+
         public bool ShouldSerializeDpsFGTSSefipField() => DpsFGTSSefip > 0;
-       
+
         public bool ShouldSerializeRemFGTSDecAntField() => RemFGTSDecAnt > 0;
-     
+
         public bool ShouldSerializeDpsFGTSDecAntField() => DpsFGTSDecAnt > 0;
 
         #endregion ShouldSerialize

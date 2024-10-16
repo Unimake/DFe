@@ -1,6 +1,5 @@
 ﻿#pragma warning disable CS1591
 using System;
-using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -187,7 +186,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// complementares, preenchidas conforme a categoria do TSVE.
         /// </summary>
         [XmlElement("infoComplementares")]
-        public InfoComplemESocial2300 InfoComplemESocial2300 { get; set; }
+        public InfoComplem2300 InfoComplementares { get; set; }
 
         /// <summary>
         /// Informações de mudança de CPF do trabalhador.
@@ -223,10 +222,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeNatAtividade() => NatAtividade != null;
 #endif
-#endregion ShouldSerialize
+        #endregion ShouldSerialize
     }
 
-    #region InfoComplemESocial2300
+    #region InfoComplem2300
 
     /// <summary>
     /// Grupo onde são fornecidas informações
@@ -234,10 +233,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplemESocial2300")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem2300")]
     [ComVisible(true)]
 #endif
-    public class InfoComplemESocial2300
+    public class InfoComplem2300
     {
         /// <summary>
         /// Grupo que apresenta o cargo e/ou função ocupada pelo TSVE.
@@ -276,7 +275,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações relativas a servidor público exercente de mandato eletivo.
         /// </summary>
         [XmlElement("infoMandElet")]
-        public InfoMandEletESocial2300 InfoMandElet { get; set; }
+        public InfoMandElet2300 InfoMandElet { get; set; }
 
         /// <summary>
         /// Informações relativas ao estagiário ou ao beneficiário
@@ -421,7 +420,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime DtAdmOrig { get; set;}
+        public DateTime DtAdmOrig { get; set; }
 #else
 
         public DateTimeOffset DtAdmOrig { get; set; }
@@ -585,10 +584,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMandEletESocial2300")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMandElet2300")]
     [ComVisible(true)]
 #endif
-    public class InfoMandEletESocial2300
+    public class InfoMandElet2300
     {
         /// <summary>
         /// Preencher com o código correspondente à categoria
@@ -619,7 +618,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime DtExercOrig { get; set;}
+        public DateTime DtExercOrig { get; set; }
 #else
 
         public DateTimeOffset DtExercOrig { get; set; }
@@ -707,7 +706,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("nivEstagio")]
 #if INTEROP
-        public NivEstagio NivEstagio { get; set; }= (NivEstagio)(-1);
+        public NivEstagio NivEstagio { get; set; } = (NivEstagio)(-1);
 #else
         public NivEstagio? NivEstagio { get; set; }
 #endif
@@ -945,7 +944,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion InfoEstagiario
 
-    #endregion InfoComplemESocial2300
+    #endregion InfoComplem2300
 
     #region Termino
 
@@ -993,6 +992,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion Termino
 
-#endregion InfoTSVInicio
+    #endregion InfoTSVInicio
 
 }

@@ -2,13 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.MDFe;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -48,7 +46,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeProc IdeProc { get; set; }
 
         [XmlElement("ideTrab")]
-        public List<IdeTrabESocial2501> IdeTrab { get; set; }
+        public List<IdeTrab2501> IdeTrab { get; set; }
 
 #if INTEROP
 
@@ -56,11 +54,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeTrab(IdeTrabESocial2501 item)
+        public void AddIdeTrab(IdeTrab2501 item)
         {
             if (IdeTrab == null)
             {
-                IdeTrab = new List<IdeTrabESocial2501>();
+                IdeTrab = new List<IdeTrab2501>();
             }
 
             IdeTrab.Add(item);
@@ -71,7 +69,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeTrab</returns>
-        public IdeTrabESocial2501 GetIdeTrab(int index)
+        public IdeTrab2501 GetIdeTrab(int index)
         {
             if ((IdeTrab?.Count ?? 0) == 0)
             {
@@ -135,10 +133,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrab2501")]
     [ComVisible(true)]
 #endif
-    public class IdeTrabESocial2501
+    public class IdeTrab2501
     {
         [XmlAttribute(AttributeName = "cpfTrab")]
         public string CpfTrab { get; set; }
@@ -224,7 +222,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoIRComplem")]
-        public InfoIRComplemESocial2501 InfoIRComplem { get; set; }
+        public InfoIRComplem2501 InfoIRComplem { get; set; }
     }
 
 #if INTEROP
@@ -376,10 +374,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoIR InfoIR { get; set; }
 
         [XmlElement("infoRRA")]
-        public InfoRRAESocial2501 InfoRRA { get; set; }
+        public InfoRRA2501 InfoRRA { get; set; }
 
         [XmlElement("dedDepen")]
-        public List<DedDepenESocial2501> DedDepen { get; set; }
+        public List<DedDepen2501> DedDepen { get; set; }
 
 #if INTEROP
 
@@ -387,11 +385,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDedDepen(DedDepenESocial2501 item)
+        public void AddDedDepen(DedDepen2501 item)
         {
             if (DedDepen == null)
             {
-                DedDepen = new List<DedDepenESocial2501>();
+                DedDepen = new List<DedDepen2501>();
             }
 
             DedDepen.Add(item);
@@ -402,7 +400,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da DedDepen</returns>
-        public DedDepenESocial2501 GetDedDepen(int index)
+        public DedDepen2501 GetDedDepen(int index)
         {
             if ((DedDepen?.Count ?? 0) == 0)
             {
@@ -419,7 +417,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("penAlim")]
-        public List<PenAlimESocial2501> PenAlim { get; set; }
+        public List<PenAlim2501> PenAlim { get; set; }
 
 #if INTEROP
 
@@ -427,11 +425,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddPenAlim(PenAlimESocial2501 item)
+        public void AddPenAlim(PenAlim2501 item)
         {
             if (PenAlim == null)
             {
-                PenAlim = new List<PenAlimESocial2501>();
+                PenAlim = new List<PenAlim2501>();
             }
 
             PenAlim.Add(item);
@@ -442,7 +440,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da PenAlim</returns>
-        public PenAlimESocial2501 GetPenAlim(int index)
+        public PenAlim2501 GetPenAlim(int index)
         {
             if ((PenAlim?.Count ?? 0) == 0)
             {
@@ -459,7 +457,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoProcRet")]
-        public List<InfoProcRetESocial2501> InfoProcRet { get; set; }
+        public List<InfoProcRet2501> InfoProcRet { get; set; }
 
 #if INTEROP
 
@@ -467,11 +465,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProcRet(InfoProcRetESocial2501 item)
+        public void AddInfoProcRet(InfoProcRet2501 item)
         {
             if (InfoProcRet == null)
             {
-                InfoProcRet = new List<InfoProcRetESocial2501>();
+                InfoProcRet = new List<InfoProcRet2501>();
             }
 
             InfoProcRet.Add(item);
@@ -482,7 +480,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProcRet</returns>
-        public InfoProcRetESocial2501 GetInfoProcRet(int index)
+        public InfoProcRet2501 GetInfoProcRet(int index)
         {
             if ((InfoProcRet?.Count ?? 0) == 0)
             {
@@ -633,10 +631,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRAESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA2501")]
     [ComVisible(true)]
 #endif
-    public class InfoRRAESocial2501
+    public class InfoRRA2501
     {
         [XmlAttribute(AttributeName = "descRRA")]
         public string DescRRA { get; set; }
@@ -645,10 +643,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string QtdMesesRRA { get; set; }
 
         [XmlElement("despProcJud")]
-        public DespProcJudESocial2501 DespProcJud { get; set; }
+        public DespProcJud2501 DespProcJud { get; set; }
 
         [XmlElement("ideAdv")]
-        public List<IdeAdvESocial2501> IdeAdv { get; set; }
+        public List<IdeAdv2501> IdeAdv { get; set; }
 
 #if INTEROP
 
@@ -656,11 +654,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeAdv(IdeAdvESocial2501 item)
+        public void AddIdeAdv(IdeAdv2501 item)
         {
             if (IdeAdv == null)
             {
-                IdeAdv = new List<IdeAdvESocial2501>();
+                IdeAdv = new List<IdeAdv2501>();
             }
 
             IdeAdv.Add(item);
@@ -671,7 +669,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeAdv</returns>
-        public IdeAdvESocial2501 GetIdeAdv(int index)
+        public IdeAdv2501 GetIdeAdv(int index)
         {
             if ((IdeAdv?.Count ?? 0) == 0)
             {
@@ -690,10 +688,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DespProcJudESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DespProcJud2501")]
     [ComVisible(true)]
 #endif
-    public class DespProcJudESocial2501
+    public class DespProcJud2501
     {
         /// <summary>
         /// Preencher com o valor das despesas com custas judiciais.
@@ -723,10 +721,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeAdvESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeAdv2501")]
     [ComVisible(true)]
 #endif
-    public class IdeAdvESocial2501
+    public class IdeAdv2501
     {
         [XmlAttribute(AttributeName = "tpInsc")]
         public TiposInscricao TpInsc { get; set; }
@@ -755,10 +753,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DedDepenESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DedDepen2501")]
     [ComVisible(true)]
 #endif
-    public class DedDepenESocial2501
+    public class DedDepen2501
     {
         [XmlAttribute(AttributeName = "tpRend")]
         public TipoDeRendimento TpRend { get; set; }
@@ -786,10 +784,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.PenAlimESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PenAlim2501")]
     [ComVisible(true)]
 #endif
-    public class PenAlimESocial2501
+    public class PenAlim2501
     {
         [XmlAttribute(AttributeName = "tpRend")]
         public TipoDeRendimento TpRend { get; set; }
@@ -814,10 +812,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcRetESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcRet2501")]
     [ComVisible(true)]
 #endif
-    public class InfoProcRetESocial2501
+    public class InfoProcRet2501
     {
         [XmlAttribute(AttributeName = "tpProcRet")]
         public TipoProcesso TpProcRet { get; set; }
@@ -829,7 +827,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CodSusp { get; set; }
 
         [XmlElement("infoValores")]
-        public List<InfoValoresESocial2501> InfoValores { get; set; }
+        public List<InfoValores2501> InfoValores { get; set; }
 
 #if INTEROP
 
@@ -837,11 +835,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoValores(InfoValoresESocial2501 item)
+        public void AddInfoValores(InfoValores2501 item)
         {
             if (InfoValores == null)
             {
-                InfoValores = new List<InfoValoresESocial2501>();
+                InfoValores = new List<InfoValores2501>();
             }
 
             InfoValores.Add(item);
@@ -852,7 +850,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoValores</returns>
-        public InfoValoresESocial2501 GetInfoValores(int index)
+        public InfoValores2501 GetInfoValores(int index)
         {
             if ((InfoValores?.Count ?? 0) == 0)
             {
@@ -877,10 +875,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoValoresESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoValores2501")]
     [ComVisible(true)]
 #endif
-    public class InfoValoresESocial2501
+    public class InfoValores2501
     {
         [XmlAttribute(AttributeName = "indApuracao")]
         public IndApuracao IndApuracao { get; set; }
@@ -958,7 +956,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("dedSusp")]
-        public List<DedSuspESocial2501> DedSusp { get; set; }
+        public List<DedSusp2501> DedSusp { get; set; }
 
 #if INTEROP
 
@@ -966,11 +964,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDedSusp(DedSuspESocial2501 item)
+        public void AddDedSusp(DedSusp2501 item)
         {
             if (DedSusp == null)
             {
-                DedSusp = new List<DedSuspESocial2501>();
+                DedSusp = new List<DedSusp2501>();
             }
 
             DedSusp.Add(item);
@@ -981,7 +979,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da DedSusp</returns>
-        public DedSuspESocial2501 GetDedSusp(int index)
+        public DedSusp2501 GetDedSusp(int index)
         {
             if ((DedSusp?.Count ?? 0) == 0)
             {
@@ -1014,10 +1012,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DedSuspESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DedSusp2501")]
     [ComVisible(true)]
 #endif
-    public class DedSuspESocial2501
+    public class DedSusp2501
     {
         [XmlAttribute(AttributeName = "indTpDeducao")]
         public IndicativoTipoDeducao IndTpDeducao { get; set; }
@@ -1032,7 +1030,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("benefPen")]
-        public List<BenefPenESocial2501> BenefPen { get; set; }
+        public List<BenefPen2501> BenefPen { get; set; }
 
 #if INTEROP
 
@@ -1040,11 +1038,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddBenefPen(BenefPenESocial2501 item)
+        public void AddBenefPen(BenefPen2501 item)
         {
             if (BenefPen == null)
             {
-                BenefPen = new List<BenefPenESocial2501>();
+                BenefPen = new List<BenefPen2501>();
             }
 
             BenefPen.Add(item);
@@ -1055,7 +1053,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da BenefPen</returns>
-        public BenefPenESocial2501 GetBenefPen(int index)
+        public BenefPen2501 GetBenefPen(int index)
         {
             if ((BenefPen?.Count ?? 0) == 0)
             {
@@ -1080,10 +1078,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.BenefPenESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.BenefPen2501")]
     [ComVisible(true)]
 #endif
-    public class BenefPenESocial2501
+    public class BenefPen2501
     {
         [XmlAttribute(AttributeName = "cpfDep")]
         public string CpfDep { get; set; }
@@ -1103,7 +1101,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
-    public class InfoIRComplemESocial2501
+    public class InfoIRComplem2501
     {
         [XmlIgnore]
 #if INTEROP
@@ -1124,7 +1122,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("infoDep")]
-        public List<InfoDepESocial2501> InfoDep { get; set; }
+        public List<InfoDep2501> InfoDep { get; set; }
 
 #if INTEROP
 
@@ -1132,11 +1130,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoDep(InfoDepESocial2501 item)
+        public void AddInfoDep(InfoDep2501 item)
         {
             if (InfoDep == null)
             {
-                InfoDep = new List<InfoDepESocial2501>();
+                InfoDep = new List<InfoDep2501>();
             }
 
             InfoDep.Add(item);
@@ -1147,7 +1145,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoDep</returns>
-        public InfoDepESocial2501 GetInfoDep(int index)
+        public InfoDep2501 GetInfoDep(int index)
         {
             if ((InfoDep?.Count ?? 0) == 0)
             {
@@ -1166,10 +1164,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDepESocial2501")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDep2501")]
     [ComVisible(true)]
 #endif
-    public class InfoDepESocial2501
+    public class InfoDep2501
     {
         [XmlAttribute(AttributeName = "cpfDep")]
         public string CpfDep { get; set; }
@@ -1205,8 +1203,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "tpDep")]
         public TiposDeDependente TpDepAux
         {
-            get { return TpDep; }
-            set { TpDep = value; }
+            get => TpDep;
+            set => TpDep = value;
         }
 
 #else
@@ -1232,10 +1230,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeDepIRRF() => !string.IsNullOrEmpty(DepIRRF);
 
 #if INTEROP
-        public bool ShouldSerializeTpDepAux()
-        {
-            return TpDep != (TiposDeDependente)(-1);
-        }
+        public bool ShouldSerializeTpDepAux() => TpDep != (TiposDeDependente)(-1);
 #else
         public bool ShouldSerializeTpDepAux()
     {

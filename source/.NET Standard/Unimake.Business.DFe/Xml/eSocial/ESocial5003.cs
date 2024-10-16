@@ -2,13 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Business.DFe.Xml.ESocial;
 
 namespace Unimake.Business.DFe.Xml.ESocial
@@ -47,10 +45,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideTrabalhador")]
-        public IdeTrabalhadorESocial5003 IdeTrabalhador { get; set; }
+        public IdeTrabalhador5003 IdeTrabalhador { get; set; }
 
         [XmlElement("infoFGTS")]
-        public InfoFGTSESocial5003 InfoFGTS { get; set; }
+        public InfoFGTS5003 InfoFGTS { get; set; }
     }
 
 #if INTEROP
@@ -87,10 +85,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial5003")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador5003")]
     [ComVisible(true)]
 #endif
-    public class IdeTrabalhadorESocial5003
+    public class IdeTrabalhador5003
     {
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
@@ -98,10 +96,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoFGTSESocial5003")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoFGTS5003")]
     [ComVisible(true)]
 #endif
-    public class InfoFGTSESocial5003
+    public class InfoFGTS5003
     {
         [XmlIgnore]
 #if INTEROP
@@ -125,7 +123,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string ClassTrib { get; set; }
 
         [XmlElement("ideEstab")]
-        public List<IdeEstabESocial5003> IdeEstab { get; set; }
+        public List<IdeEstab5003> IdeEstab { get; set; }
 
 #if INTEROP
 
@@ -133,11 +131,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeEstab(IdeEstabESocial5003 item)
+        public void AddIdeEstab(IdeEstab5003 item)
         {
             if (IdeEstab == null)
             {
-                IdeEstab = new List<IdeEstabESocial5003>();
+                IdeEstab = new List<IdeEstab5003>();
             }
 
             IdeEstab.Add(item);
@@ -148,7 +146,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstab</returns>
-        public IdeEstabESocial5003 GetIdeEstab(int index)
+        public IdeEstab5003 GetIdeEstab(int index)
         {
             if ((IdeEstab?.Count ?? 0) == 0)
             {
@@ -175,10 +173,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial5003")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab5003")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabESocial5003
+    public class IdeEstab5003
     {
         [XmlElement("tpInsc")]
 #if INTEROP
@@ -191,7 +189,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
 
         [XmlElement("ideLotacao")]
-        public List<IdeLotacaoESocial5003> IdeLotacao { get; set; }
+        public List<IdeLotacao5003> IdeLotacao { get; set; }
 
 #if INTEROP
 
@@ -199,11 +197,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeLotacao(IdeLotacaoESocial5003 item)
+        public void AddIdeLotacao(IdeLotacao5003 item)
         {
             if (IdeLotacao == null)
             {
-                IdeLotacao = new List<IdeLotacaoESocial5003>();
+                IdeLotacao = new List<IdeLotacao5003>();
             }
 
             IdeLotacao.Add(item);
@@ -214,7 +212,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeLotacao</returns>
-        public IdeLotacaoESocial5003 GetIdeLotacao(int index)
+        public IdeLotacao5003 GetIdeLotacao(int index)
         {
             if ((IdeLotacao?.Count ?? 0) == 0)
             {
@@ -245,10 +243,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacaoESocial5003")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacao5003")]
     [ComVisible(true)]
 #endif
-    public class IdeLotacaoESocial5003
+    public class IdeLotacao5003
     {
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
@@ -775,170 +773,170 @@ namespace Unimake.Business.DFe.Xml.ESocial
 }
 
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBasePerAntE")]
-    [ComVisible(true)]
+[ClassInterface(ClassInterfaceType.AutoDual)]
+[ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBasePerAntE")]
+[ComVisible(true)]
 #endif
-    public class InfoBasePerAntE
-    {
-        [XmlIgnore]
+public class InfoBasePerAntE
+{
+    [XmlIgnore]
 #if INTEROP
-        public DateTime PerRef { get; set; }
+    public DateTime PerRef { get; set; }
 #else
         public DateTimeOffset PerRef { get; set; }
 #endif
 
-        [XmlElement("perRef")]
-        public string PerRefField
-        {
-            get => PerRef.ToString("yyyy-MM");
+    [XmlElement("perRef")]
+    public string PerRefField
+    {
+        get => PerRef.ToString("yyyy-MM");
 #if INTEROP
-            set => PerRef = DateTime.Parse(value);
+        set => PerRef = DateTime.Parse(value);
 #else
             set => PerRef = DateTimeOffset.Parse(value);
 #endif
-        }
-
-        [XmlElement("tpAcConv")]
-        public string TpAcConv { get; set; }
-
-        [XmlElement("basePerAntE")]
-        public List<BasePerAntE> BasePerAntE { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddBasePerAntE(BasePerAntE item)
-        {
-            if (BasePerAntE == null)
-            {
-                BasePerAntE = new List<BasePerAntE>();
-            }
-
-            BasePerAntE.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista BasePerAntE (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da BasePerAntE</returns>
-        public BasePerAntE GetBasePerAntE(int index)
-        {
-            if ((BasePerAntE?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return BasePerAntE[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista BasePerAntE
-        /// </summary>
-        public int GetBasePerAntECount => (BasePerAntE != null ? BasePerAntE.Count : 0);
-#endif
     }
 
+    [XmlElement("tpAcConv")]
+    public string TpAcConv { get; set; }
+
+    [XmlElement("basePerAntE")]
+    public List<BasePerAntE> BasePerAntE { get; set; }
+
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.BasePerAntE")]
-    [ComVisible(true)]
-#endif
-    public class BasePerAntE
+
+    /// <summary>
+    /// Adicionar novo elemento a lista
+    /// </summary>
+    /// <param name="item">Elemento</param>
+    public void AddBasePerAntE(BasePerAntE item)
     {
-        [XmlElement("tpValorE")]
-        public TpValor TpValorE { get; set; }
-
-        /// <summary>
-        /// Valores válidos:
-        /// 1 - Normal (incidência de FGTS)
-        /// 9 - Incidência de FGTS suspensa em decorrência de decisão judicial
-        /// </summary>
-        [XmlElement("indIncidE")]
-        public IndIncid IndIncidE { get; set; }
-
-        /// <summary>
-        /// Remuneração (valor da base de cálculo) do FGTS,
-        /// conforme definido nos campos tpValorE e indIncidE.
-        /// </summary>
-        [XmlIgnore]
-        public double RemFGTSE { get; set; }
-        [XmlElement("remFGTSE")]
-        public string RemFGTSEField
+        if (BasePerAntE == null)
         {
-            get => RemFGTSE.ToString("F2", CultureInfo.InvariantCulture);
-            set => RemFGTSE = Converter.ToDouble(value);
+            BasePerAntE = new List<BasePerAntE>();
         }
 
-        /// <summary>
-        /// Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
-        /// Validação: Deve ser maior que 0 (zero) e informado somente se indIncidE = [1].
-        /// </summary>
-        [XmlIgnore]
-        public double DpsFGTSE { get; set; }
-        [XmlElement("dpsFGTSE")]
-        public string DpsFGTSEFIeld
-        {
-            get => DpsFGTSE.ToString("F2", CultureInfo.InvariantCulture);
-            set => DpsFGTSE = Converter.ToDouble(value);
-        }
-
-        [XmlElement("detRubrSusp")]
-        public List<DetRubrSusp> DetRubrSusp { get; set; }
-
-#if INTEROP
-
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="item">Elemento</param>
-        public void AddDetRubrSusp(DetRubrSusp item)
-        {
-            if (DetRubrSusp == null)
-            {
-                DetRubrSusp = new List<DetRubrSusp>();
-            }
-
-            DetRubrSusp.Add(item);
-        }
-
-        /// <summary>
-        /// Retorna o elemento da lista DetRubrSusp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
-        /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da DetRubrSusp</returns>
-        public DetRubrSusp GetDetRubrSusp(int index)
-        {
-            if ((DetRubrSusp?.Count ?? 0) == 0)
-            {
-                return default;
-            };
-
-            return DetRubrSusp[index];
-        }
-
-        /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista DetRubrSusp
-        /// </summary>
-        public int GetDetRubrSuspCount => (DetRubrSusp != null ? DetRubrSusp.Count : 0);
-#endif
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeDpsFGTSEField() => DpsFGTSE > 0;
-
-        #endregion
-
+        BasePerAntE.Add(item);
     }
 
+    /// <summary>
+    /// Retorna o elemento da lista BasePerAntE (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+    /// </summary>
+    /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+    /// <returns>Conteúdo do index passado por parâmetro da BasePerAntE</returns>
+    public BasePerAntE GetBasePerAntE(int index)
+    {
+        if ((BasePerAntE?.Count ?? 0) == 0)
+        {
+            return default;
+        };
+
+        return BasePerAntE[index];
+    }
+
+    /// <summary>
+    /// Retorna a quantidade de elementos existentes na lista BasePerAntE
+    /// </summary>
+    public int GetBasePerAntECount => (BasePerAntE != null ? BasePerAntE.Count : 0);
+#endif
+}
+
 #if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EConsignado")]
-    [ComVisible(true)]
+[ClassInterface(ClassInterfaceType.AutoDual)]
+[ProgId("Unimake.Business.DFe.Xml.ESocial.BasePerAntE")]
+[ComVisible(true)]
+#endif
+public class BasePerAntE
+{
+    [XmlElement("tpValorE")]
+    public TpValor TpValorE { get; set; }
+
+    /// <summary>
+    /// Valores válidos:
+    /// 1 - Normal (incidência de FGTS)
+    /// 9 - Incidência de FGTS suspensa em decorrência de decisão judicial
+    /// </summary>
+    [XmlElement("indIncidE")]
+    public IndIncid IndIncidE { get; set; }
+
+    /// <summary>
+    /// Remuneração (valor da base de cálculo) do FGTS,
+    /// conforme definido nos campos tpValorE e indIncidE.
+    /// </summary>
+    [XmlIgnore]
+    public double RemFGTSE { get; set; }
+    [XmlElement("remFGTSE")]
+    public string RemFGTSEField
+    {
+        get => RemFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+        set => RemFGTSE = Converter.ToDouble(value);
+    }
+
+    /// <summary>
+    /// Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
+    /// Validação: Deve ser maior que 0 (zero) e informado somente se indIncidE = [1].
+    /// </summary>
+    [XmlIgnore]
+    public double DpsFGTSE { get; set; }
+    [XmlElement("dpsFGTSE")]
+    public string DpsFGTSEFIeld
+    {
+        get => DpsFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+        set => DpsFGTSE = Converter.ToDouble(value);
+    }
+
+    [XmlElement("detRubrSusp")]
+    public List<DetRubrSusp> DetRubrSusp { get; set; }
+
+#if INTEROP
+
+    /// <summary>
+    /// Adicionar novo elemento a lista
+    /// </summary>
+    /// <param name="item">Elemento</param>
+    public void AddDetRubrSusp(DetRubrSusp item)
+    {
+        if (DetRubrSusp == null)
+        {
+            DetRubrSusp = new List<DetRubrSusp>();
+        }
+
+        DetRubrSusp.Add(item);
+    }
+
+    /// <summary>
+    /// Retorna o elemento da lista DetRubrSusp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+    /// </summary>
+    /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+    /// <returns>Conteúdo do index passado por parâmetro da DetRubrSusp</returns>
+    public DetRubrSusp GetDetRubrSusp(int index)
+    {
+        if ((DetRubrSusp?.Count ?? 0) == 0)
+        {
+            return default;
+        };
+
+        return DetRubrSusp[index];
+    }
+
+    /// <summary>
+    /// Retorna a quantidade de elementos existentes na lista DetRubrSusp
+    /// </summary>
+    public int GetDetRubrSuspCount => (DetRubrSusp != null ? DetRubrSusp.Count : 0);
+#endif
+
+    #region ShouldSerialize
+
+    public bool ShouldSerializeDpsFGTSEField() => DpsFGTSE > 0;
+
+    #endregion
+
+}
+
+#if INTEROP
+[ClassInterface(ClassInterfaceType.AutoDual)]
+[ProgId("Unimake.Business.DFe.Xml.ESocial.EConsignado")]
+[ComVisible(true)]
 #endif
 public class EConsignado
 {

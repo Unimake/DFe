@@ -69,7 +69,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações da cessação do benefício
         /// </summary>
         [XmlElement("infoBenTermino")]
-        public InfoBenTerminoESocial2420 InfoBenTermino { get; set; }
+        public InfoBenTermino2420 InfoBenTermino { get; set; }
     }
 
 #if INTEROP
@@ -84,10 +84,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBenTerminoESocial2420")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBenTermino2420")]
     [ComVisible(true)]
 #endif
-    public class InfoBenTerminoESocial2420
+    public class InfoBenTermino2420
     {
         /// <summary>
         /// Data de cessação do benefício.

@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("beneficiario")]
-        public BeneficiarioESocial2410 Beneficiario { get; set; }
+        public Beneficiario2410 Beneficiario { get; set; }
 
         [XmlElement("infoBenInicio")]
         public InfoBenInicio InfoBenInicio { get; set; }
@@ -55,10 +55,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.BeneficiarioESocial2410")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Beneficiario2410")]
     [ComVisible(true)]
 #endif
-    public class BeneficiarioESocial2410
+    public class Beneficiario2410
     {
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }
@@ -72,7 +72,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
-       
+
         public bool ShouldSerializeCnpjOrigem() => !string.IsNullOrEmpty(CnpjOrigem);
 
         #endregion
@@ -141,7 +141,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SucessaoBenef SucessaoBenef { get; set; }
 
         [XmlElement("mudancaCPF")]
-        public MudancaCpfESocial2410 MudancaCPF { get; set; }
+        public MudancaCpf2410 MudancaCPF { get; set; }
 
         [XmlElement("infoBenTermino")]
         public InfoBenTermino InfoBenTermino { get; set; }
@@ -284,10 +284,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCpfESocial2410")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCpf2410")]
     [ComVisible(true)]
 #endif
-    public class MudancaCpfESocial2410
+    public class MudancaCpf2410
     {
         [XmlElement("cpfAnt")]
         public string CpfAnt { get; set; }

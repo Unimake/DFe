@@ -57,7 +57,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informação do evento que será excluído
         /// </summary>
         [XmlElement("infoExclusao")]
-        public InfoExclusaoESocial3500 InfoExclusao { get; set; }
+        public InfoExclusao3500 InfoExclusao { get; set; }
     }
 
 #if INTEROP
@@ -72,10 +72,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoExclusaoESocial3500")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoExclusao3500")]
     [ComVisible(true)]
 #endif
-    public class InfoExclusaoESocial3500
+    public class InfoExclusao3500
     {
         /// <summary>
         /// Preencher com o tipo de evento (S-2500 ou S-2501).

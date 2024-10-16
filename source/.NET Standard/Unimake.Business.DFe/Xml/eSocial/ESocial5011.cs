@@ -2,15 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
-using System.Globalization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Business.DFe.Xml.MDFe;
-using System.Diagnostics;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -99,7 +95,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoContrib InfoContrib { get; set; }
 
         [XmlElement("ideEstab")]
-        public List<IdeEstabESocial5011> IdeEstab { get; set; }
+        public List<IdeEstab5011> IdeEstab { get; set; }
 
 #if INTEROP
 
@@ -107,11 +103,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeEstab(IdeEstabESocial5011 item)
+        public void AddIdeEstab(IdeEstab5011 item)
         {
             if (IdeEstab == null)
             {
-                IdeEstab = new List<IdeEstabESocial5011>();
+                IdeEstab = new List<IdeEstab5011>();
             }
 
             IdeEstab.Add(item);
@@ -122,7 +118,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstab</returns>
-        public IdeEstabESocial5011 GetIdeEstab(int index)
+        public IdeEstab5011 GetIdeEstab(int index)
         {
             if ((IdeEstab?.Count ?? 0) == 0)
             {
@@ -139,7 +135,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoCRContrib")]
-        public List<InfoCRContribESocial5011> InfoCRContrib { get; set; }
+        public List<InfoCRContrib5011> InfoCRContrib { get; set; }
 
 #if INTEROP
 
@@ -147,11 +143,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoCRContrib(InfoCRContribESocial5011 item)
+        public void AddInfoCRContrib(InfoCRContrib5011 item)
         {
             if (InfoCRContrib == null)
             {
-                InfoCRContrib = new List<InfoCRContribESocial5011>();
+                InfoCRContrib = new List<InfoCRContrib5011>();
             }
 
             InfoCRContrib.Add(item);
@@ -162,7 +158,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoCRContrib</returns>
-        public InfoCRContribESocial5011 GetInfoCRContrib(int index)
+        public InfoCRContrib5011 GetInfoCRContrib(int index)
         {
             if ((InfoCRContrib?.Count ?? 0) == 0)
             {
@@ -339,10 +335,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab5011")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabESocial5011
+    public class IdeEstab5011
     {
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }
@@ -351,10 +347,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
 
         [XmlElement("infoEstab")]
-        public InfoEstabESocial5011 InfoEstab { get; set; }
+        public InfoEstab5011 InfoEstab { get; set; }
 
         [XmlElement("ideLotacao")]
-        public List<IdeLotacaoESocial5011> IdeLotacao { get; set; }
+        public List<IdeLotacao5011> IdeLotacao { get; set; }
 
 #if INTEROP
 
@@ -362,11 +358,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeLotacao(IdeLotacaoESocial5011 item)
+        public void AddIdeLotacao(IdeLotacao5011 item)
         {
             if (IdeLotacao == null)
             {
-                IdeLotacao = new List<IdeLotacaoESocial5011>();
+                IdeLotacao = new List<IdeLotacao5011>();
             }
 
             IdeLotacao.Add(item);
@@ -377,7 +373,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeLotacao</returns>
-        public IdeLotacaoESocial5011 GetIdeLotacao(int index)
+        public IdeLotacao5011 GetIdeLotacao(int index)
         {
             if ((IdeLotacao?.Count ?? 0) == 0)
             {
@@ -516,10 +512,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstabESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstab5011")]
     [ComVisible(true)]
 #endif
-    public class InfoEstabESocial5011
+    public class InfoEstab5011
     {
         [XmlElement("cnaePrep")]
         public string CnaePrep { get; set; }
@@ -637,10 +633,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacaoESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeLotacao5011")]
     [ComVisible(true)]
 #endif
-    public class IdeLotacaoESocial5011
+    public class IdeLotacao5011
     {
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
@@ -695,10 +691,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoEmprParcial")]
-        public InfoEmprParcialESocial5011 InfoEmprParcial { get; set; }
+        public InfoEmprParcial5011 InfoEmprParcial { get; set; }
 
         [XmlElement("dadosOpPort")]
-        public DadosOpPortESocial5011 DadosOpPort { get; set; }
+        public DadosOpPort5011 DadosOpPort { get; set; }
 
         [XmlElement("basesRemun")]
         public List<BasesRemun> BasesRemun { get; set; }
@@ -744,7 +740,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public BasesAvNPort BasesAvNPort { get; set; }
 
         [XmlElement("infoSubstPatrOpPort")]
-        public InfoSubstPatrOpPortESocial5011 InfoSubstPatrOpPort { get; set; }
+        public InfoSubstPatrOpPort5011 InfoSubstPatrOpPort { get; set; }
 
         #region ShouldSerialize
 
@@ -766,10 +762,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEmprParcialESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEmprParcial5011")]
     [ComVisible(true)]
 #endif
-    public class InfoEmprParcialESocial5011
+    public class InfoEmprParcial5011
     {
         [XmlElement("tpInscContrat")]
         public TpInsc TpInscContrat { get; set; }
@@ -789,10 +785,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosOpPortESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosOpPort5011")]
     [ComVisible(true)]
 #endif
-    public class DadosOpPortESocial5011
+    public class DadosOpPort5011
     {
         [XmlElement("cnpjOpPortuario")]
         public string CnpjOpPortuario { get; set; }
@@ -983,7 +979,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string VrBcCp00VAField
         {
             get => VrBcCp00VA.ToString("F2", CultureInfo.InvariantCulture);
-            set => VrBcCp00VA =Converter.ToDouble(value);
+            set => VrBcCp00VA = Converter.ToDouble(value);
         }
 
         /// <summary>
@@ -1290,10 +1286,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSubstPatrOpPortESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSubstPatrOpPort5011")]
     [ComVisible(true)]
 #endif
-    public class InfoSubstPatrOpPortESocial5011
+    public class InfoSubstPatrOpPort5011
     {
         [XmlElement("cnpjOpPortuario")]
         public string CnpjOpPortuario { get; set; }
@@ -1560,10 +1556,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRContribESocial5011")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRContrib5011")]
     [ComVisible(true)]
 #endif
-    public class InfoCRContribESocial5011
+    public class InfoCRContrib5011
     {
         [XmlElement("tpCR")]
         public TpCR TpCR { get; set; }

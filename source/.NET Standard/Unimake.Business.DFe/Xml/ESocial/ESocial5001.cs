@@ -66,7 +66,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do trabalhador.
         /// </summary>
         [XmlElement("ideTrabalhador")]
-        public IdeTrabalhadorESocial5001 IdeTrabalhador { get; set; }
+        public IdeTrabalhador5001 IdeTrabalhador { get; set; }
 
         /// <summary>
         /// Cálculo da contribuição previdenciária do segurado,
@@ -187,10 +187,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador5001")]
     [ComVisible(true)]
 #endif
-    public class IdeTrabalhadorESocial5001
+    public class IdeTrabalhador5001
     {
         /// <summary>
         /// Preencher com o número do CPF do trabalhador.
@@ -203,7 +203,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações complementares do trabalhador e do contrato.
         /// </summary>
         [XmlElement("infoCompl")]
-        public InfoComplESocial5001 InfoCompl { get; set; }
+        public InfoCompl5001 InfoCompl { get; set; }
 
         /// <summary>
         /// Informações sobre processos judiciais do trabalhador
@@ -211,29 +211,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// alterações na incidência de contribuição previdenciária.
         /// </summary>
         [XmlElement("procJudTrab")]
-        public List<ProcJudTrabESocial5001> ProcJudTrab { get; set; }
+        public List<ProcJudTrab5001> ProcJudTrab { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddProcJudTrab(ProcJudTrabESocial5001 item)
+        public void AddProcJudTrab(ProcJudTrab5001 item)
         {
             if (ProcJudTrab == null)
             {
-                ProcJudTrab = new List<ProcJudTrabESocial5001>();
+                ProcJudTrab = new List<ProcJudTrab5001>();
             }
 
             ProcJudTrab.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista ProcJudTrabESocial5001 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista ProcJudTrab5001 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
-        public ProcJudTrabESocial5001 GetProcJudTrab(int index)
+        public ProcJudTrab5001 GetProcJudTrab(int index)
         {
             if ((ProcJudTrab?.Count ?? 0) == 0)
             {
@@ -250,17 +250,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region InfoComplESocial5001
+    #region InfoCompl5001
 
     /// <summary>
     /// Informações complementares do trabalhador e do contrato.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCompl5001")]
     [ComVisible(true)]
 #endif
-    public class InfoComplESocial5001
+    public class InfoCompl5001
     {
         /// <summary>
         /// Grupo de informações da sucessão de vínculo trabalhista. Evento de origem: S-1200.
@@ -482,23 +482,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
 
     }
-    #endregion InfoComplContESocial5001
+    #endregion InfoComplCont5001
 
-    #endregion InfoComplESocial5001
+    #endregion InfoCompl5001
 
     #region ProcJudTrab
 
     /// <summary>
-    /// Informações sobre processos judiciais do trabalhador
-    /// com decisão favorável quanto à não incidência ou
-    /// alterações na incidência de contribuição previdenciária.
+    /// Informações sobre processos judiciais do trabalhador com decisão favorável quanto à não incidência ou alterações na incidência de contribuição previdenciária.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrabESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab5001")]
     [ComVisible(true)]
 #endif
-    public class ProcJudTrabESocial5001
+    public class ProcJudTrab5001
     {
         /// <summary>
         /// Informar um número de processo judicial cadastrado
@@ -595,18 +593,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do estabelecimento ou obra de construção civil e da lotação tributária.
         /// </summary>
         [XmlElement("ideEstabLot")]
-        public List<IdeEstabLotESocial5001> IdeEstabLot { get; set; }
+        public List<IdeEstabLot5001> IdeEstabLot { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeEstabLot(IdeEstabLotESocial5001 item)
+        public void AddIdeEstabLot(IdeEstabLot5001 item)
         {
             if (IdeEstabLot == null)
             {
-                IdeEstabLot = new List<IdeEstabLotESocial5001>();
+                IdeEstabLot = new List<IdeEstabLot5001>();
             }
 
             IdeEstabLot.Add(item);
@@ -617,7 +615,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeEstabLot</returns>
-        public IdeEstabLotESocial5001 GetIdeEstabLot(int index)
+        public IdeEstabLot5001 GetIdeEstabLot(int index)
         {
             if ((IdeEstabLot?.Count ?? 0) == 0)
             {
@@ -634,17 +632,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region IdeEstabLotESocial5001
+    #region IdeEstabLot5001
 
     /// <summary>
     /// Identificação do estabelecimento ou obra de construção civil e da lotação tributária.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLot5001")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabLotESocial5001
+    public class IdeEstabLot5001
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento
@@ -711,7 +709,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoCategIncidCount => (InfoCategIncid != null ? InfoCategIncid.Count : 0);
 #endif
     }
-    #endregion IdeEstabLotESocial5001
+    #endregion IdeEstabLot5001
 
     #region InfoCategIncid
 
@@ -1051,7 +1049,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// cujo evento de origem somente é S-1200).
         /// </summary>
         [XmlElement("ideADC")]
-        public List<IdeADCESocial5001> IdeADC { get; set; }
+        public List<IdeADC5001> IdeADC { get; set; }
 
 #if INTEROP
 
@@ -1059,11 +1057,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeADC(IdeADCESocial5001 item)
+        public void AddIdeADC(IdeADC5001 item)
         {
             if (IdeADC == null)
             {
-                IdeADC = new List<IdeADCESocial5001>();
+                IdeADC = new List<IdeADC5001>();
             }
 
             IdeADC.Add(item);
@@ -1074,7 +1072,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeADC</returns>
-        public IdeADCESocial5001 GetIdeADC(int index)
+        public IdeADC5001 GetIdeADC(int index)
         {
             if ((IdeADC?.Count ?? 0) == 0)
             {
@@ -1147,10 +1145,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeADCESocial5001")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeADC5001")]
     [ComVisible(true)]
 #endif
-    public class IdeADCESocial5001
+    public class IdeADC5001
     {
         /// <summary>
         /// Data da assinatura do acordo, convenção coletiva,

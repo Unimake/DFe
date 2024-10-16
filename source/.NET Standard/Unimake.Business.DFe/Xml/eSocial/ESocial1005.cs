@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoEstab
     {
         [XmlElement("inclusao")]
-        public InclusaoESocial1005 Inclusao { get; set; }
+        public Inclusao1005 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
         public Alteracao Alteracao { get; set; }
@@ -75,10 +75,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoESocial1005")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Inclusao1005")]
     [ComVisible(true)]
 #endif
-    public class InclusaoESocial1005
+    public class Inclusao1005
     {
         [XmlElement("ideEstab")]
         public IdeEstab IdeEstab { get; set; }

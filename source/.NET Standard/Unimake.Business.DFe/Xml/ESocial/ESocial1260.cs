@@ -27,24 +27,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Evento Comercialização da Produção Rural Pessoa Física
         /// </summary>
         [XmlElement("evtComProd")]
-        public EvtComProdESocial1260 EvtComProd { get; set; }
+        public EvtComProd1260 EvtComProd { get; set; }
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
 
     }
 
-    #region  EvtComProdESocial1260
+    #region  EvtComProd1260
 
     /// <summary>
     ///  Evento Comercialização da Produção Rural Pessoa Física
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtComProdESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtComProd1260")]
     [ComVisible(true)]
 #endif
-    public class EvtComProdESocial1260
+    public class EvtComProd1260
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
@@ -53,7 +53,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do evento
         /// </summary>
         [XmlElement("ideEvento")]
-        public IdeEvento1260 IdeEvento1260 { get; set; }
+        public IdeEvento1260 IdeEvento { get; set; }
 
         /// <summary>
         /// Informações de identificação do empregador
@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informação da comercialização de produção
         /// </summary>
         [XmlElement("infoComProd")]
-        public InfoComProdESocial1260 InfoComProdESocial1260 { get; set; }
+        public InfoComProd1260 InfoComProd { get; set; }
     }
 
     #region  IdeEvento1260 
@@ -104,7 +104,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
 #if INTEROP
-        public DateTime PerApur {get; set; }
+        public DateTime PerApur { get; set; }
 #else
         public DateTimeOffset PerApur { get; set; }
 #endif
@@ -165,36 +165,36 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion IdeEvento1260 
 
-    #region InfoComProdESocial1260
+    #region InfoComProd1260
 
     /// <summary>
     /// Informação da comercialização de produção
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComProdESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComProd1260")]
     [ComVisible(true)]
 #endif
-    public class InfoComProdESocial1260
+    public class InfoComProd1260
     {
         /// <summary>
         /// Identificação do estabelecimento que comercializou a produção
         /// </summary>
         [XmlElement("ideEstabel")]
-        public IdeEstabelESocial1260 IdeEstabESocial1260 { get; set; }
+        public IdeEstabel1260 IdeEstabel { get; set; }
     }
 
-    #region IdeEstabESocial1260
+    #region IdeEstab1260
 
     /// <summary>
     /// Identificação do estabelecimento que comercializou a produção
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab1260")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabelESocial1260
+    public class IdeEstabel1260
     {
         /// <summary>
         /// Preencher com o número de inscrição no CAEPF do estabelecimento rural.
@@ -271,12 +271,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// incidente sobre a comercialização.
         /// </summary>
         [XmlElement("infoProcJud")]
-        public InfoProcJudESocial1260 InfoProcJudESocial1260 { get; set; }
+        public InfoProcJud1260 InfoProcJud { get; set; }
 
         #region ShouldSerialize 
 
         public bool ShouldSerializeIdeAdquir() => IdeAdquir != null;
-        public bool ShouldSerializeInfoProcJud() => InfoProcJudESocial1260 != null;
+        public bool ShouldSerializeInfoProcJud() => InfoProcJud != null;
 
         #endregion ShouldSerialize
     }
@@ -456,7 +456,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion IdeAdquir
 
-    #region InfoProcJudESocial1260
+    #region InfoProcJud1260
 
     /// <summary>
     /// Informações de processos judiciais com decisão/sentença
@@ -465,11 +465,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJudESocial1260")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcJud1260")]
     [ComVisible(true)]
 #endif
     [Serializable]
-    public class InfoProcJudESocial1260
+    public class InfoProcJud1260
     {
         /// <summary>
         ///  Preencher com o código correspondente ao tipo de processo.
@@ -540,7 +540,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeVrCPSuspField() => VrCPSusp > 0;
-        
+
         public bool ShouldSerializeVrRatSuspField() => VrRatSusp > 0;
 
         public bool ShouldSerializeVrSenarSuspField() => VrSenarSusp > 0;
@@ -548,13 +548,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion InfoProcJudESocial1260
+    #endregion InfoProcJud1260
 
     #endregion TpComerc
 
-    #endregion  IdeEstabESocial1260
+    #endregion  IdeEstab1260
 
-    #endregion InfoComProdESocial1260
+    #endregion InfoComProd1260
 
-#endregion EvtComProdESocial1260
+    #endregion EvtComProd1260
 }

@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrRecEvt { get; set; }
 
         [XmlElement("ideTrabalhador")]
-        public IdeTrabalhadorESocial3000 IdeTrabalhador { get; set; }
+        public IdeTrabalhador3000 IdeTrabalhador { get; set; }
 
         [XmlElement("ideFolhaPagto")]
         public IdeFolhaPagto IdeFolhaPagto { get; set; }
@@ -72,10 +72,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhadorESocial3000")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador3000")]
     [ComVisible(true)]
 #endif
-    public class IdeTrabalhadorESocial3000
+    public class IdeTrabalhador3000
     {
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }

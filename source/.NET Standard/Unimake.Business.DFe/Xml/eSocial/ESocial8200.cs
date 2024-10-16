@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("infoProcesso")]
-        public InfoProcessoESocial8200 InfoProcesso { get; set; }
+        public InfoProcesso8200 InfoProcesso { get; set; }
 
         [XmlElement("infoAnotJud")]
         public InfoAnotJud InfoAnotJud { get; set; }
@@ -58,10 +58,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcessoESocial8200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcesso8200")]
     [ComVisible(true)]
 #endif
-    public class InfoProcessoESocial8200
+    public class InfoProcesso8200
     {
         [XmlElement("nrProcTrab")]
         public string NrProcTrab { get; set; }
@@ -313,7 +313,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Afastamento Afastamento { get; set; }
 
         [XmlElement("desligamento")]
-        public DesligamentoESocial8200 Desligamento { get; set; }
+        public Desligamento8200 Desligamento { get; set; }
 
         #region ShouldSerialize
 
@@ -476,10 +476,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DesligamentoESocial8200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Desligamento8200")]
     [ComVisible(true)]
 #endif
-    public class DesligamentoESocial8200
+    public class Desligamento8200
     {
         [XmlElement("mtvDeslig")]
         public string MtvDeslig { get; set; }

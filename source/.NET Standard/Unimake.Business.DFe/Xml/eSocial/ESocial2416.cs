@@ -93,15 +93,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("dadosBeneficio")]
-        public DadosBeneficioESocial2416 DadosBeneficio { get; set; }
+        public DadosBeneficio2416 DadosBeneficio { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosBeneficioESocial2416")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosBeneficio2416")]
     [ComVisible(true)]
 #endif
-    public class DadosBeneficioESocial2416
+    public class DadosBeneficio2416
     {
         [XmlElement("tpBeneficio")]
         public string TpBeneficio { get; set; }
@@ -116,7 +116,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra IndSuspensao { get; set; }
 
         [XmlElement("infoPenMorte")]
-        public InfoPenMorteESocial2416 InfoPenMorte { get; set; }
+        public InfoPenMorte2416 InfoPenMorte { get; set; }
 
         [XmlElement("suspensao")]
         public Suspensao Suspensao { get; set; }
@@ -130,10 +130,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPenMorteESocial2416")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPenMorte2416")]
     [ComVisible(true)]
 #endif
-    public class InfoPenMorteESocial2416
+    public class InfoPenMorte2416
     {
         [XmlElement("tpPenMorte")]
         public TpPenMorte TpPenMorte { get; set; }

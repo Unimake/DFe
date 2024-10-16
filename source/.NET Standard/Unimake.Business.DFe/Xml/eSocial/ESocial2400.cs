@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.GNRE;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -143,7 +142,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Endereco Endereco { get; set; }
 
         [XmlElement("dependente")]
-        public List<DependenteESocial2400> Dependente { get; set; }
+        public List<Dependente2400> Dependente { get; set; }
 
 #if INTEROP
 
@@ -151,11 +150,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDependente(DependenteESocial2400 item)
+        public void AddDependente(Dependente2400 item)
         {
             if (Dependente == null)
             {
-                Dependente = new List<DependenteESocial2400>();
+                Dependente = new List<Dependente2400>();
             }
 
             Dependente.Add(item);
@@ -166,7 +165,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Dependente</returns>
-        public DependenteESocial2400 GetDependente(int index)
+        public Dependente2400 GetDependente(int index)
         {
             if ((Dependente?.Count ?? 0) == 0)
             {
@@ -203,10 +202,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DependenteESocial2400")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Dependente2400")]
     [ComVisible(true)]
 #endif
-    public class DependenteESocial2400
+    public class Dependente2400
     {
         [XmlElement("tpDep")]
 #if INTEROP

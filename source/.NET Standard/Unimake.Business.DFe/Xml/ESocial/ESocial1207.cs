@@ -2,10 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -62,17 +62,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do beneficiário.
         /// </summary>
         [XmlElement("ideBenef")]
-        public IdeBenefESocial1207 IdeBenefESocial1207 { get; set; }
+        public IdeBenef1207 IdeBenef { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [XmlElement("dmDev")]
-        public DmDevESocial1207 DmDevESocial1207 { get; set; }
+        public DmDev1207 DmDev { get; set; }
     }
 
     #region IdeEvento1207
-    
+
     /// <summary>
     /// Informações de identificação do evento
     /// </summary>
@@ -164,17 +164,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion IdeEvento1207
 
-    #region IdeBenefESocial1207
+    #region IdeBenef1207
 
     /// <summary>
     /// Identificação do beneficiário.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenefESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBenef1207")]
     [ComVisible(true)]
 #endif
-    public class IdeBenefESocial1207
+    public class IdeBenef1207
     {
         /// <summary>
         /// Informar o CPF do beneficiário
@@ -183,19 +183,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }
     }
-    #endregion IdeBenefESocial1207
+    #endregion IdeBenef1207
 
-    #region DmDevEsocial1207
+    #region DmDev1207
 
     /// <summary>
     /// Identificação de cada um dos demonstrativos de valores devidos ao beneficiário
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDevESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev1207")]
     [ComVisible(true)]
 #endif
-    public class DmDevESocial1207
+    public class DmDev1207
     {
         /// <summary>
         /// Identificador atribuído pelo órgão público para o
@@ -227,7 +227,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações relativas ao período de apuração
         /// </summary>
         [XmlElement("infoPerApur")]
-        public InfoPerApurESocial1207 InfoPerApurESocial1207 { get; set; }
+        public InfoPerApur1207 InfoPerApur { get; set; }
 
         /// <summary>
         /// Grupo destinado às informações relativas a períodos
@@ -238,36 +238,36 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfPerAnt InfPerAnt { get; set; }
     }
 
-    #region InfoPerApurESocial1207
+    #region InfoPerApur1207
 
     /// <summary>
     /// Informações relativas ao período de apuração
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApurESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApur1207")]
     [ComVisible(true)]
 #endif
-    public class InfoPerApurESocial1207
+    public class InfoPerApur1207
     {
         /// <summary>
         /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
         /// </summary>
         [XmlElement("ideEstab")]
-        public IdeEstabESocial1207 IdeEstabESocial1207 { get; set; }
+        public IdeEstab1207 IdeEstab { get; set; }
     }
 
-    #region IdeEstabESocial1207
+    #region IdeEstab1207
 
     /// <summary>
     /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstab1207")]
     [ComVisible(true)]
 #endif
-    public class IdeEstabESocial1207
+    public class IdeEstab1207
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de inscrição
@@ -285,7 +285,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Rubricas que compõem o provento ou pensão do beneficiário.
         /// </summary>
         [XmlElement("itensRemun")]
-        public List<ItensRemunESocial1207> ItensRemun { get; set; }
+        public List<ItensRemun1207> ItensRemun { get; set; }
 
 #if INTEROP
 
@@ -293,22 +293,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddItensRemun(ItensRemunESocial1207 item)
+        public void AddItensRemun(ItensRemun1207 item)
         {
             if (ItensRemun == null)
             {
-                ItensRemun = new List<ItensRemunESocial1207>();
+                ItensRemun = new List<ItensRemun1207>();
             }
 
             ItensRemun.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista ItensRemunESocial1207 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista ItensRemun1207 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da ItensRemunESocial1207</returns>
-        public ItensRemunESocial1207 GetItensRemun(int index)
+        /// <returns>Conteúdo do index passado por parâmetro da ItensRemun1207</returns>
+        public ItensRemun1207 GetItensRemun(int index)
         {
             if ((ItensRemun?.Count ?? 0) == 0)
             {
@@ -319,23 +319,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista ItensRemunESocial1207
+        /// Retorna a quantidade de elementos existentes na lista ItensRemun1207
         /// </summary>
         public int GetItensRemunCount => (ItensRemun != null ? ItensRemun.Count : 0);
 #endif
     }
 
-    #region ItensRemunESocial1207
+    #region ItensRemun1207
 
     /// <summary>
     /// Rubricas que compõem o provento ou pensão do beneficiário.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemunESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun1207")]
     [ComVisible(true)]
 #endif
-    public class ItensRemunESocial1207
+    public class ItensRemun1207
     {
 
         [XmlElement("codRubr")]
@@ -368,11 +368,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
 
-    #endregion ItensRemunESocial1207
+    #endregion ItensRemun1207
 
-    #endregion IdeEstabESocial1207
+    #endregion IdeEstab1207
 
-    #endregion InfoPerApurESocial1207
+    #endregion InfoPerApur1207
 
     #region  InfPerAnt
 
@@ -389,7 +389,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfPerAnt
     {
         [XmlElement("idePeriodo")]
-        public List<IdePeriodoESocial1207> IdePeriodo { get; set; }
+        public List<IdePeriodo1207> IdePeriodo { get; set; }
 
 #if INTEROP
 
@@ -397,11 +397,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdePeriodo(IdePeriodoESocial1207 item)
+        public void AddIdePeriodo(IdePeriodo1207 item)
         {
             if (IdePeriodo == null)
             {
-                IdePeriodo = new List<IdePeriodoESocial1207>();
+                IdePeriodo = new List<IdePeriodo1207>();
             }
 
             IdePeriodo.Add(item);
@@ -412,7 +412,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdePeriodo</returns>
-        public IdePeriodoESocial1207 GetIdePeriodo(int index)
+        public IdePeriodo1207 GetIdePeriodo(int index)
         {
             if ((IdePeriodo?.Count ?? 0) == 0)
             {
@@ -430,17 +430,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region IdePeriodoESocial1207
+    #region IdePeriodo1207
 
     /// <summary>
     /// Identificação do período ao qual se referem as diferenças de provento ou pensão.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodoESocial1207")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodo1207")]
     [ComVisible(true)]
 #endif
-    public class IdePeriodoESocial1207
+    public class IdePeriodo1207
     {
         /// <summary>
         /// Informar o período ao qual se refere o complemento de
@@ -478,16 +478,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
         /// </summary>
         [XmlElement("ideEstab")]
-        public IdeEstabESocial1207 IdeEstabESocial1207 { get; set; }
+        public IdeEstab1207 IdeEstab { get; set; }
 
         #region ShouldSerialize
         public bool ShouldSerializePerRefField() => PerRef > DateTime.MinValue;
         #endregion ShouldSerialize
     }
 
-    #endregion IdePeriodoESocial1207
+    #endregion IdePeriodo1207
 
     #endregion InfPerAnt
 
-    #endregion DmDevEsocial1207
+    #endregion DmDev1207
 }
