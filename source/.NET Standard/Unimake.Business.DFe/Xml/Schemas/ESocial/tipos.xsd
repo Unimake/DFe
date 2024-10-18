@@ -4248,7 +4248,7 @@
     <xs:simpleType name="TS_periodo_mensal">
         <xs:restriction base="xs:string">
             <xs:length value="7" />
-            <xs:pattern value="([2]\d{3}|19[8-9]\d)-(1[0-2]|0[1-9])" />
+            <xs:pattern value="([2]\d{3}|19[6-9]\d)-(1[0-2]|0[1-9])" />
         </xs:restriction>
     </xs:simpleType>
 
