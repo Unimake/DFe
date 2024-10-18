@@ -24,6 +24,8 @@
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsSincronoRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/recepcionarLoteRpsSincronoRequest</WebActionHomologacao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
@@ -41,6 +43,8 @@
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/gerarNfseRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/gerarNfseRequest</WebActionHomologacao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
@@ -58,6 +62,8 @@
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/cancelarNfseRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/cancelarNfseRequest</WebActionHomologacao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -75,6 +81,8 @@
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/substituirNfseRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/substituirNfseRequest</WebActionHomologacao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
@@ -94,6 +102,8 @@
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarLoteRpsRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarLoteRpsRequest</WebActionHomologacao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
@@ -111,6 +121,8 @@
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorRpsRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarNfsePorRpsRequest</WebActionHomologacao>
 			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
 			<TagAtributoID>Pedido</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -127,6 +139,8 @@
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoPrestadoRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoPrestadoRequest</WebActionHomologacao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
 			<TagAtributoID>Prestador</TagAtributoID>
@@ -144,6 +158,8 @@
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoProducao>https://franca.siltecnologia.com.br/services/Abrasf24?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoTomadoRequest</WebActionProducao>
+			<WebEnderecoHomologacao>https://homologacao.siltecnologia.com.br/tbfranca/services/Abrasf24?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/Abrasf24/consultarNfseServicoTomadoRequest</WebActionHomologacao>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:consultarNfseServicoTomado><xml><![CDATA[{xmlBody}]]]]><![CDATA[></xml></nfse:consultarNfseServicoTomado></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
