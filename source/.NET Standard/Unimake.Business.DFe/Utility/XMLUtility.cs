@@ -880,6 +880,10 @@ namespace Unimake.Business.DFe.Utility
                     tipoXML = TipoXML.CTeDistribuicao;
                     break;
 
+                case "CTeSimp":
+                    tipoXML = TipoXML.CTeSimp;
+                    break;
+
                 #endregion XML CTe
 
                 #region XML do MDFe

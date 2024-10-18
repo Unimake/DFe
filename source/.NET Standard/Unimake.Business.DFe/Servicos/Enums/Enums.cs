@@ -6888,6 +6888,12 @@ namespace Unimake.Business.DFe.Servicos
         [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
         CTeDistribuicao = 19,
 
+        /// <summary>
+        /// XML individual do CTe simplificado
+        /// </summary>
+        [Description("XML individual do CTe simplificado")]
+        CTeSimp = 28,
+
         #endregion 
 
         #region MDFe
