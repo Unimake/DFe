@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="2.01">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -23,7 +23,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -42,7 +42,7 @@
 		<GerarNfse versao="2.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -61,7 +61,7 @@
 		<CancelarNfse versao="2.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -80,7 +80,7 @@
 		<SubstituirNfse versao="2.01">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -99,7 +99,7 @@
 		<ConsultarLoteRps versao="2.01">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -118,7 +118,7 @@
 		<ConsultarNfsePorRps versao="2.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -137,7 +137,7 @@
 		<ConsultarNfseServicoPrestado versao="2.01">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -156,7 +156,7 @@
 		<ConsultarNfseServicoTomado versao="2.01">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -175,7 +175,7 @@
 		<ConsultarNfseFaixa versao="2.01">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.com.br:8443/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
+			<WebEnderecoProducao>https://trescachoeirasweb.msgestaopublica.app.br:8443/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
