@@ -456,6 +456,42 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização do CTe Simplificado")]
         CTeAutorizacaoSimp = 74,
 
+        /// <summary>
+        /// 75 - Consulta status serviço NF3e (nota de energia)
+        /// </summary>
+        [Description("Consulta status do serviço da NF3e")]
+        NF3eStatusServico = 75,
+
+        /// <summary>
+        /// 76 - Consulta protocolo da NF3e (nota de energia)
+        /// </summary>
+        [Description("Consulta situação da NF3e")]
+        NF3eConsultaProtocolo = 76,
+
+        /// <summary>
+        /// 77 - Consulta recibo NF3e (nota de energia)
+        /// </summary>
+        [Description("Consulta recibo da NF3e")]
+        NF3eConsultaRecibo = 77,
+
+        /// <summary>
+        /// 78 - Envio de Eventos da NF3e
+        /// </summary>
+        [Description("Envio de eventos da NF3e")]
+        NF3eRecepcaoEvento = 78,
+
+        /// <summary>
+        /// 79 - Envio do XML de lote de NF3e
+        /// </summary>
+        [Description("Autorização do lote NF3e")]
+        NF3eAutorizacaoLote = 79,
+
+        /// <summary>
+        /// 80 - Envio do XML de NF3e
+        /// </summary>d
+        [Description("Autorização síncrona de NF3e")]
+        NF3eAutorizacaoSinc = 80,
+
         #endregion
 
         #region Gerais
@@ -537,6 +573,10 @@ namespace Unimake.Business.DFe.Servicos
         /// 13 - DARE SP - Documento de Arrecadação de Receitas Estaduais
         /// </summary>
         DARE = 13,
+        /// <summary>
+        /// 14 - NF3e - Nota fiscal de energia eletrônica
+        /// </summary>
+        NF3e = 14,
     }
 
     #endregion       
@@ -782,7 +822,13 @@ namespace Unimake.Business.DFe.Servicos
         /// CTeOS (Modelo: 67)
         /// </summary>
         [XmlEnum("67")]
-        CTeOS = 67
+        CTeOS = 67,
+
+        /// <summary>
+        /// NF3e (Modelo: 66)
+        /// </summary>
+        [XmlEnum("66")]
+        NF3e = 66,
     }
 
     #endregion

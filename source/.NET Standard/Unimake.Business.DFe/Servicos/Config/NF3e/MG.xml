@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NF3e">
+		<StatusServico versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fiscal de energia eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eStatusServico</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eStatusServico</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico</WebActionProducao>
+			<SchemaArquivo>consStatServNF3e_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>Consulta situação da nota fiscal de energia eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eConsulta</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eConsulta</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NF3eConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NF3eConsulta</WebActionProducao>
+			<SchemaArquivo>consSitNF3e_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://hnfe.fazenda.mg.gov.br/nfe2/services/NFeRecepcaoEvento4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/NFeRecepcaoEvento4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>envEventoCancNFe_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>e110111_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>evento</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RecepcaoEvento>
+		<Autorizacao versao="1.00">
+			<Descricao>Autorização da NFe</Descricao>
+			<WebEnderecoHomologacao>https://hnfe.fazenda.mg.gov.br/nfe2/services/NFeAutorizacao4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/NFeAutorizacao4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeAutorizacao4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeAutorizacao4</WebActionProducao>
+			<SchemaArquivo>enviNFe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>NFe</TagAssinatura>
+			<TagAtributoID>infNFe</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</Autorizacao>
+		<RetAutorizacao versao="1.00">
+			<Descricao>Consulta recibo da nota fiscal eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://hnfe.fazenda.mg.gov.br/nfe2/services/NFeRetAutorizacao4</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.fazenda.mg.gov.br/nfe2/services/NFeRetAutorizacao4</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRetAutorizacao4</WebActionProducao>
+			<WebTagRetorno>nfeResultMsg</WebTagRetorno>
+			<WebTagRetornoHomologacao>nfeResultMsg</WebTagRetornoHomologacao>
+			<SchemaArquivo>consReciNFe_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RetAutorizacao>
+	</Servicos>
+</Configuracoes>
