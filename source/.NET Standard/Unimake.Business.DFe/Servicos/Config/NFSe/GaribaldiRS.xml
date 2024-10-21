@@ -134,5 +134,43 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
 		</SolicitacaoInutilizacao>
+		<ConsultaLote versao="1.00">
+			<Descricao>Consultar Lote Nota Fiscal</Descricao>
+			<WebEnderecoHomologacao>https://garibaldi-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.garibaldi.rs.gov.br/services/nfse/ws/Servicos?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoLoteNFSe</TagAssinatura>
+			<TagAtributoID>serieNotaFiscal</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterLoteNotaFiscalRequest>{xmlBodyScapeRetorno}</obterLoteNotaFiscalRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultaLote>
+		<ConsultarNfseServicoTomado versao="1.00">
+			<Descricao>Consultar Lote Nota Fiscal</Descricao>
+			<WebEnderecoHomologacao>https://garibaldi-homol.infisc.com.br/services/nfse/ws/Servicos.wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.garibaldi.rs.gov.br/services/nfse/ws/Servicos?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>pedidoNFSeTomada</TagAssinatura>
+			<TagAtributoID>CNPJ</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns="http://ws.pc.gif.com.br/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soap:Body><obterNotaFiscalTomada>{xmlBodyScapeRetorno}</obterNotaFiscalTomada></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://ws.pc.gif.com.br/</TargetNS>
+		</ConsultarNfseServicoTomado>
 	</Servicos>
 </Configuracoes>
