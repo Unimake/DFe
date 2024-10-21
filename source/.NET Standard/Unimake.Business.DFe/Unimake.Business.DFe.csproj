@@ -173,6 +173,8 @@
 		<None Remove="Servicos\Config\MDFe\SP.xml" />
 		<None Remove="Servicos\Config\MDFe\SVRS.xml" />
 		<None Remove="Servicos\Config\MDFe\TO.xml" />
+		<None Remove="Servicos\Config\NF3e\Config.xml" />
+		<None Remove="Servicos\Config\NF3e\MG.xml" />
 		<None Remove="Servicos\Config\NFCe\AC.xml" />
 		<None Remove="Servicos\Config\NFCe\AL.xml" />
 		<None Remove="Servicos\Config\NFCe\AM.xml" />
@@ -979,6 +981,8 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\ESocial\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\ESocial\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\MG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
