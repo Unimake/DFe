@@ -481,16 +481,10 @@ namespace Unimake.Business.DFe.Servicos
         NF3eRecepcaoEvento = 78,
 
         /// <summary>
-        /// 79 - Envio do XML de lote de NF3e
-        /// </summary>
-        [Description("Autorização do lote NF3e")]
-        NF3eAutorizacaoLote = 79,
-
-        /// <summary>
-        /// 80 - Envio do XML de NF3e
+        /// 79 - Envio do XML de NF3e
         /// </summary>d
         [Description("Autorização síncrona de NF3e")]
-        NF3eAutorizacaoSinc = 80,
+        NF3eAutorizacaoSinc = 79,
 
         #endregion
 
