@@ -3,12 +3,12 @@
 	<Servicos ID="NF3e">
 		<StatusServico versao="1.00">
 			<Descricao>Consulta situação do serviço da nota fiscal de energia eletrônica</Descricao>
-			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eStatusServico?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eStatusServico?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.nf3e.fazenda.pr.gov.br/nf3e/NF3eStatusServico?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.pr.gov.br/nf3e/NF3eStatusServico?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico/NF3eStatusServicoNF</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico/NF3eStatusServicoNF</WebActionProducao>
 			<SchemaArquivo>consStatServNF3e_v{0}.xsd</SchemaArquivo>
-			<WebTagRetorno>NF3eStatusServicoNFResult</WebTagRetorno>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -16,12 +16,12 @@
 		</StatusServico>
 		<ConsultaProtocolo versao="1.00">
 			<Descricao>Consulta situação da nota fiscal de energia eletrônica</Descricao>
-			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eConsulta?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eConsulta?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.nf3e.fazenda.pr.gov.br/nf3e/NF3eConsulta?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.pr.gov.br/nf3e/NF3eConsulta?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsulta/NF3eConsultaNF</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsulta/NF3eConsultaNF</WebActionProducao>
 			<SchemaArquivo>consSitNF3e_v{0}.xsd</SchemaArquivo>
-			<WebTagRetorno>NF3eConsultaNFResult</WebTagRetorno>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -29,11 +29,11 @@
 		</ConsultaProtocolo>
 		<RecepcaoEvento versao="1.00">
 			<Descricao>Recepção de eventos</Descricao>
-			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eRecepcaoEvento?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eRecepcaoEvento?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.nf3e.fazenda.pr.gov.br/nf3e/NF3eRecepcaoEvento?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.pr.gov.br/nf3e/NF3eRecepcaoEvento?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento/NF3eRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento/NF3eRecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>NF3eRecepcaoEventoResult</WebTagRetorno>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>
@@ -49,8 +49,8 @@
 		</RecepcaoEvento>
 		<AutorizacaoSinc versao="1.00">
 			<Descricao>Autorização síncrona da NF3e</Descricao>
-			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eRecepcaoSinc?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eRecepcaoSinc?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homologacao.nf3e.fazenda.pr.gov.br/nf3e/NF3eRecepcaoSinc?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.pr.gov.br/nf3e/NF3eRecepcaoSinc?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoSinc/NF3eRecepcao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoSinc/NF3eRecepcao</WebActionProducao>
 			<SchemaArquivo>nf3e_v{0}.xsd</SchemaArquivo>
@@ -58,19 +58,19 @@
 			<TagAtributoID>infNF3e</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebTagRetorno>NF3eRecepcaoResult</WebTagRetorno>
-			<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
-			<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeProducao>
-			<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnf3e</UrlChaveHomologacao>
-			<UrlChaveProducao>https://portalsped.fazenda.mg.gov.br/portalnf3e</UrlChaveProducao>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/nf3e/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/nf3e/qrcode</UrlQrCodeProducao>
+			<UrlChaveHomologacao>http://www.fazenda.pr.gov.br</UrlChaveHomologacao>
+			<UrlChaveProducao>http://www.fazenda.pr.gov.br</UrlChaveProducao>
 		</AutorizacaoSinc>
 		<RetAutorizacaoSinc versao="1.00">
-			<Descricao>Consulta recibo da nota fiscal energia eletrônica</Descricao>
-			<WebEnderecoHomologacao>https://hnf3e.fazenda.mg.gov.br/nf3e/services/NF3eRetRecepcao?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eRetRecepcao?wsdl</WebEnderecoProducao>
+			<Descricao>Consulta recibo da nota fiscal de energia eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.nf3e.fazenda.pr.gov.br/nf3e/NF3eRetRecepcao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nf3e.fazenda.pr.gov.br/nf3e/NF3eRetRecepcao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRetRecepcao/NF3eRetRecepcao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRetRecepcao/NF3eRetRecepcao</WebActionProducao>
-			<WebTagRetorno>NF3eRetRecepcaoResult</WebTagRetorno>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<SchemaArquivo>consReciNF3e_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>

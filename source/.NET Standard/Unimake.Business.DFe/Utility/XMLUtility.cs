@@ -922,6 +922,30 @@ namespace Unimake.Business.DFe.Utility
 
                 #endregion XML do MDFe
 
+                #region NF3e
+
+                case "consStatServNF3e":
+                    tipoXML = TipoXML.NF3eStatusServico;
+                    break;
+
+                case "consSitNF3e":
+                    tipoXML = TipoXML.NF3eConsultaSituacao;
+                    break;
+
+                case "consReciNF3e":
+                    tipoXML = TipoXML.NF3eConsultaRecibo;
+                    break;
+
+                case "eventoNF3e":
+                    tipoXML = TipoXML.NF3eEnvioEvento;
+                    break;
+
+                case "NF3e":
+                    tipoXML = TipoXML.NF3e;
+                    break;
+
+                #endregion NF3e
+
                 default:
                     break;
             }

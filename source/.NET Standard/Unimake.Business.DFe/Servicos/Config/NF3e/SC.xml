@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuracoes>
+	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="NF3e">
+		<Autorizacao versao="4.00">
+			<UrlQrCodeHomologacao>https://sathomologa.sef.sc.gov.br/nf3e/consulta</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://sat.sef.sc.gov.br/nf3e/consulta</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://sathomologa.sef.sc.gov.br/nf3e/consulta</UrlChaveHomologacao>
+			<UrlChaveProducao>https://sat.sef.sc.gov.br/nf3e/consulta</UrlChaveProducao>
+		</Autorizacao>
+	</Servicos>
+</configuracoes>
+

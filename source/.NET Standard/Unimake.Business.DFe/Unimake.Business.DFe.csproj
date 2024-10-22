@@ -173,8 +173,32 @@
 		<None Remove="Servicos\Config\MDFe\SP.xml" />
 		<None Remove="Servicos\Config\MDFe\SVRS.xml" />
 		<None Remove="Servicos\Config\MDFe\TO.xml" />
+		<None Remove="Servicos\Config\NF3e\AC.xml" />
+		<None Remove="Servicos\Config\NF3e\AL.xml" />
+		<None Remove="Servicos\Config\NF3e\AM.xml" />
+		<None Remove="Servicos\Config\NF3e\AP.xml" />
+		<None Remove="Servicos\Config\NF3e\BA.xml" />
+		<None Remove="Servicos\Config\NF3e\CE.xml" />
 		<None Remove="Servicos\Config\NF3e\Config.xml" />
+		<None Remove="Servicos\Config\NF3e\DF.xml" />
+		<None Remove="Servicos\Config\NF3e\ES.xml" />
+		<None Remove="Servicos\Config\NF3e\GO.xml" />
+		<None Remove="Servicos\Config\NF3e\MA.xml" />
 		<None Remove="Servicos\Config\NF3e\MG.xml" />
+		<None Remove="Servicos\Config\NF3e\PA.xml" />
+		<None Remove="Servicos\Config\NF3e\PB.xml" />
+		<None Remove="Servicos\Config\NF3e\PE.xml" />
+		<None Remove="Servicos\Config\NF3e\PI.xml" />
+		<None Remove="Servicos\Config\NF3e\PR.xml" />
+		<None Remove="Servicos\Config\NF3e\RJ.xml" />
+		<None Remove="Servicos\Config\NF3e\RN.xml" />
+		<None Remove="Servicos\Config\NF3e\RO.xml" />
+		<None Remove="Servicos\Config\NF3e\RR.xml" />
+		<None Remove="Servicos\Config\NF3e\RS.xml" />
+		<None Remove="Servicos\Config\NF3e\SC.xml" />
+		<None Remove="Servicos\Config\NF3e\SE.xml" />
+		<None Remove="Servicos\Config\NF3e\SVRS.xml" />
+		<None Remove="Servicos\Config\NF3e\TO.xml" />
 		<None Remove="Servicos\Config\NFCe\AC.xml" />
 		<None Remove="Servicos\Config\NFCe\AL.xml" />
 		<None Remove="Servicos\Config\NFCe\AM.xml" />
@@ -981,8 +1005,72 @@
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\ESocial\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\ESocial\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\AC.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\AL.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\AM.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\AP.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\BA.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\CE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NF3e\Config.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\DF.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\ES.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\GO.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\MA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\PA.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\PB.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\PE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\PI.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\PR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NF3e\MG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\RJ.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\RN.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\RO.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\RR.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\RS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\SC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\SE.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\SVRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NF3e\TO.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />

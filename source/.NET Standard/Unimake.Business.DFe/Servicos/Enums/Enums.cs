@@ -6986,7 +6986,41 @@ namespace Unimake.Business.DFe.Servicos
         [Description("XML de distribuição da NFe com protocolo de autorização anexado")]
         MDFeDistribuicao = 27,
 
-        #endregion 
+        #endregion
+
+        #region NF3e
+
+        /// <summary>
+        /// XML de consulta status do serviço da NF3e
+        /// </summary>
+        [Description("XML de consulta status do serviço da NF3e")]
+        NF3eStatusServico = 28,
+
+        /// <summary>
+        /// XML de consulta situação da NF3e
+        /// </summary>
+        [Description("XML de consulta situação da NF3e")]
+        NF3eConsultaSituacao = 29,
+
+        /// <summary>
+        /// XML de consulta do recibo da NF3e
+        /// </summary>
+        [Description("XML de consulta do recibo da NF3e")]
+        NF3eConsultaRecibo = 30,
+
+        /// <summary>
+        /// XML de envio de evento da NF3e
+        /// </summary>
+        [Description("XML de envio de evento da NF3e")]
+        NF3eEnvioEvento = 31,
+
+        /// <summary>
+        /// XML individual da NF3e
+        /// </summary>
+        [Description("XML individual da NF3e")]
+        NF3e = 32,
+
+        #endregion NF3e
 
         /// <summary>
         /// Não foi possível identificar o tipo do XML
