@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.ESocial;
 using Xunit;
 
 namespace Unimake.DFe.Test.DARE
 {
-    public class EnvioDARE
+    public class EnvioDARETest
     {
         /// <summary>
         /// Testar o envio do DARE Unico
@@ -28,33 +28,33 @@ namespace Unimake.DFe.Test.DARE
 
             var conteudoXML = new Business.DFe.Xml.DARE.DARE
             {
-                Cnpj = "12345678000195",
+                Cnpj = "06117473000150",
                 Cidade = "São Paulo",
-                CodigoBarra44 = "12345678901234",
-                DataVencimento = "2024-12-31T00:00:00",
+                CodigoBarra44 = "12345678901234567890123456789012345678901234",
+                DataVencimento = DateTime.Now,
                 Endereco = "Rua Exemplo, 123",
                 Erro = new Business.DFe.Xml.DARE.Erro
                 {
-                    EstaOk = "true"
+                    EstaOk = true
                 },
-                GerarPDF = "true",
+                GerarPDF = true,
                 NumeroControleDarePrincipal = "123456789",
                 Observacao = "Pagamento referente ao imposto X",
                 PixCopiaCola = "abc123def456ghi789",
                 RazaoSocial = "Empresa Exemplo S/A",
                 Receita = new Business.DFe.Xml.DARE.ReceitaDARE
                 {
-                    Codigo = "001",
-                    CodigoServicoDARE = "101",
-                    Nome = "Receita Exemplo"
+                    Codigo = "046-2",
+                    CodigoServicoDARE = "4601",
+                    Nome = "ICMS- Operações Próprias- RPA (04601)"
                 },
-                Referencia = "REF123",
+                Referencia = "10/2024",
                 Telefone = "(11) 1234-5678",
                 Uf = "SP",
-                Valor = "1000.50",
-                ValorJuros = "10.00",
-                ValorMulta = "5.00",
-                ValorTotal = "1015.50",
+                Valor = 1.00,
+                ValorJuros = 10.00,
+                ValorMulta = 5.00,
+                ValorTotal = 16.00,
             };
 
             var envioDARE = new Business.DFe.Servicos.DARE.EnvioDARE(conteudoXML, configuracao);
@@ -87,24 +87,19 @@ namespace Unimake.DFe.Test.DARE
                     Cnpj = "12345678000195",
                     Cidade = "São Paulo",
                     CodigoBarra44 = "12345678901234",
-                    DataVencimento = "2024-12-31T00:00:00",
+                    DataVencimento = DateTime.Now,
                     Endereco = "Rua Exemplo, 123",
                     Erro = new Business.DFe.Xml.DARE.Erro
                     {
-                        EstaOk = "true",
-                        Mensagens = new List<Business.DFe.Xml.DARE.MensagensEnvio>
-                                        {
-                                            new Business.DFe.Xml.DARE.MensagensEnvio
-                                            {
-                                                Item = "teste",
-                                            },
-                                            new Business.DFe.Xml.DARE.MensagensEnvio
-                                            {
-                                                Item = "teste2",
-                                            }
-                                        }
+                        EstaOk = true,
+                        Mensagens = new List<string>
+                        {
+                            "teste1",
+                            "teste2",
+                            "teste3"
+                        }
                     },
-                    GerarPDF = "true",
+                    GerarPDF = true,
                     NumeroControleDarePrincipal = "123456789",
                     Observacao = "Pagamento referente ao imposto X",
                     PixCopiaCola = "abc123def456ghi789",
@@ -118,30 +113,19 @@ namespace Unimake.DFe.Test.DARE
                     Referencia = "REF123",
                     Telefone = "(11) 1234-5678",
                     Uf = "SP",
-                    Valor = "1000.50",
-                    ValorJuros = "10.00",
-                    ValorMulta = "5.00",
-                    ValorTotal = "1015.50",
-                    //PossiveisReceitas = new System.Collections.Generic.List<string>
-                    //{
-                    //    "Receita1",
-                    //    "Receita2",
-                    //    "Receita3"
-                    //}
+                    Valor = 1000.50,
+                    ValorJuros = 10.00,
+                    ValorMulta = 5.00,
+                    ValorTotal = 1015.50,
                 },
                 Erro = new Business.DFe.Xml.DARE.Erro
                 {
-                    EstaOk = "true",
-                    Mensagens = new List<Business.DFe.Xml.DARE.MensagensEnvio>
+                    EstaOk = true,
+                    Mensagens = new List<string>
                     {
-                       new Business.DFe.Xml.DARE.MensagensEnvio
-                       {
-                            Item = "teste",
-                       },
-                       new Business.DFe.Xml.DARE.MensagensEnvio
-                       {
-                            Item = "teste2",
-                       }
+                        "teste1",
+                        "teste2",
+                        "teste3"
                     }
                 },
                 TipoAgrupamentoFilhotes = "1",
@@ -157,24 +141,19 @@ namespace Unimake.DFe.Test.DARE
                                     Cnpj = "12345678000195",
                                     Cidade = "São Paulo",
                                     CodigoBarra44 = "12345678901234",
-                                    DataVencimento = "2024-12-31T00:00:00",
+                                    DataVencimento = DateTime.Now,
                                     Endereco = "Rua Exemplo, 123",
                                     Erro = new Business.DFe.Xml.DARE.Erro
                                     {
-                                        EstaOk = "true",
-                                        Mensagens = new List<Business.DFe.Xml.DARE.MensagensEnvio>
+                                        EstaOk = true,
+                                        Mensagens = new List<string>
                                         {
-                                            new Business.DFe.Xml.DARE.MensagensEnvio
-                                            {
-                                                Item = "teste",
-                                            },
-                                            new Business.DFe.Xml.DARE.MensagensEnvio
-                                            {
-                                                Item = "teste2",
-                                            }
+                                            "teste4",
+                                            "teste5",
+                                            "teste6"
                                         }
                                     },
-                                    GerarPDF = "true",
+                                    GerarPDF = true,
                                     NumeroControleDarePrincipal = "123456789",
                                     Observacao = "Pagamento referente ao imposto X",
                                     PixCopiaCola = "abc123def456ghi789",
@@ -188,10 +167,10 @@ namespace Unimake.DFe.Test.DARE
                                     Referencia = "REF123",
                                     Telefone = "(11) 1234-5678",
                                     Uf = "SP",
-                                    Valor = "1000.50",
-                                    ValorJuros = "10.00",
-                                    ValorMulta = "5.00",
-                                    ValorTotal = "1015.50",
+                                    Valor = 1000.50,
+                                    ValorJuros = 10.00,
+                                    ValorMulta = 5.00,
+                                    ValorTotal = 1015.50,
                                     },
 
                                 new Business.DFe.Xml.DARE.DARE
@@ -199,24 +178,19 @@ namespace Unimake.DFe.Test.DARE
                                     Cnpj = "12345678000195",
                                     Cidade = "São Paulo",
                                     CodigoBarra44 = "12345678901234",
-                                    DataVencimento = "2024-12-31T00:00:00",
+                                    DataVencimento = DateTime.Now,
                                     Endereco = "Rua Exemplo, 123",
                                     Erro = new Business.DFe.Xml.DARE.Erro
                                     {
-                                        EstaOk = "true",
-                                        Mensagens = new List<Business.DFe.Xml.DARE.MensagensEnvio>
+                                        EstaOk = true,
+                                        Mensagens = new List<string>
                                         {
-                                            new Business.DFe.Xml.DARE.MensagensEnvio
-                                            {
-                                                Item = "teste",
-                                            },
-                                            new Business.DFe.Xml.DARE.MensagensEnvio
-                                            {
-                                                Item = "teste2",
-                                            }
+                                            "teste1",
+                                            "teste2",
+                                            "teste3"
                                         }
                                     },
-                                    GerarPDF = "true",
+                                    GerarPDF = true,
                                     NumeroControleDarePrincipal = "123456789",
                                     Observacao = "Pagamento referente ao imposto X",
                                     PixCopiaCola = "abc123def456ghi789",
@@ -230,10 +204,10 @@ namespace Unimake.DFe.Test.DARE
                                     Referencia = "REF123",
                                     Telefone = "(11) 1234-5678",
                                     Uf = "SP",
-                                    Valor = "1000.50",
-                                    ValorJuros = "10.00",
-                                    ValorMulta = "5.00",
-                                    ValorTotal = "1015.50",
+                                    Valor = 1000.50,
+                                    ValorJuros = 10.00,
+                                    ValorMulta = 5.00,
+                                    ValorTotal = 1015.50,
                                     }
                                 }
                             }
