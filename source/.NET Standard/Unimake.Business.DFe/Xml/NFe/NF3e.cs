@@ -68,7 +68,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public GJudic GJudic { get; set; }
 
         [XmlElement("gGrContrat")]
-        public List<GGrContrat> GGrContrat { get; set; }
+        public List<GGrContrat> GGrContrats { get; set; }
 #if INTEROP
 
         /// <summary>
@@ -77,12 +77,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="GGrContrat">Elemento</param>
         public void AddGGrContrat(GGrContrat GGrContrat)
         {
-            if (GGrContrat == null)
+            if (GGrContrats == null)
             {
-                GGrContrat = new List<GGrContrat>();
+                GGrContrats = new List<GGrContrat>();
             }
 
-            GGrContrat.Add(GGrContrat);
+            GGrContrats.Add(GGrContrat);
         }
 
         /// <summary>
@@ -92,22 +92,22 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da GGrContrat</returns>
         public GGrContrat GetGGrContrat(int index)
         {
-            if ((GGrContrat?.Count ?? 0) == 0)
+            if ((GGrContrats?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return GGrContrat[index];
+            return GGrContrats[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GGrContrat
         /// </summary>
-        public int GGrContrat => (GGrContrat != null ? GGrContrat.Count : 0);
+        public int GGrContratCount => (GGrContrats != null ? GGrContrats.Count : 0);
 #endif
 
         [XmlElement("gMed")]
-        public List<GMed> GMed { get; set; }
+        public List<GMed> GMeds { get; set; }
 
 #if INTEROP
 
@@ -117,12 +117,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="GMed">Elemento</param>
         public void AddGMed(GMed GMed)
         {
-            if (GMed == null)
+            if (GMeds == null)
             {
-                GMed = new List<GMed>();
+                GMeds = new List<GMed>();
             }
 
-            GMed.Add(GMed);
+            GMeds.Add(GMed);
         }
 
         /// <summary>
@@ -132,25 +132,25 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da GMed</returns>
         public GMed GetGMed(int index)
         {
-            if ((GMed?.Count ?? 0) == 0)
+            if ((GMeds?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return GMed[index];
+            return GMeds[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GMed
         /// </summary>
-        public int GMed => (GMed != null ? GMed.Count : 0);
+        public int GMedCount => (GMeds != null ? GMeds.Count : 0);
 #endif
 
         [XmlElement("gSCEE")]
         public GSCEE GSCEE { get; set; }
 
         [XmlElement("NFdet")]
-        public List<NFdet> NFdet { get; set; }
+        public List<NFdet> NFdets { get; set; }
 
 #if INTEROP
 
@@ -160,12 +160,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="NFdet">Elemento</param>
         public void AddNFdet(NFdet NFdet)
         {
-            if (NFdet == null)
+            if (NFdets == null)
             {
-                NFdet = new List<NFdet>();
+                NFdets = new List<NFdet>();
             }
 
-            NFdet.Add(NFdet);
+            NFdets.Add(NFdet);
         }
 
         /// <summary>
@@ -175,18 +175,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da NFdet</returns>
         public NFdet GetNFdet(int index)
         {
-            if ((NFdet?.Count ?? 0) == 0)
+            if ((NFdets?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return NFdet[index];
+            return NFdets[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista NFdet
         /// </summary>
-        public int NFdet => (NFdet != null ? NFdet.Count : 0);
+        public int NFdetCount => (NFdets != null ? NFdets.Count : 0);
 #endif
 
         [XmlElement("total")]
@@ -199,7 +199,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public GANEEL GANEEL { get; set; }
 
         [XmlElement("autXML")]
-        public List<AutXMLNF3e> AutXMLNF3e { get; set; }
+        public List<AutXMLNF3e> AutXMLNF3es { get; set; }
 
 #if INTEROP
 
@@ -209,12 +209,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="AutXMLNF3e">Elemento</param>
         public void AddAutXMLNF3e(AutXMLNF3e AutXMLNF3e)
         {
-            if (AutXMLNF3e == null)
+            if (AutXMLNF3es == null)
             {
-                AutXMLNF3e = new List<AutXMLNF3e>();
+                AutXMLNF3es = new List<AutXMLNF3e>();
             }
 
-            AutXMLNF3e.Add(AutXMLNF3e);
+            AutXMLNF3es.Add(AutXMLNF3e);
         }
 
         /// <summary>
@@ -224,18 +224,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da AutXMLNF3e</returns>
         public AutXMLNF3e GetAutXMLNF3e(int index)
         {
-            if ((AutXMLNF3e?.Count ?? 0) == 0)
+            if ((AutXMLNF3es?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return AutXMLNF3e[index];
+            return AutXMLNF3es[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista AutXMLNF3e
         /// </summary>
-        public int AutXMLNF3e => (AutXMLNF3e != null ? AutXMLNF3e.Count : 0);
+        public int AutXMLNF3eCount => (AutXMLNF3es != null ? AutXMLNF3es.Count : 0);
 #endif
 
         [XmlElement("infAdic")]
@@ -583,7 +583,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string TpPartComp { get; set; }
 
         [XmlElement("gConsumidor")]
-        public List<GConsumidor> GConsumidor { get; set; }
+        public List<GConsumidor> GConsumidores { get; set; }
 #if INTEROP
 
         /// <summary>
@@ -592,12 +592,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="GConsumidor">Elemento</param>
         public void AddGConsumidor(GConsumidor GConsumidor)
         {
-            if (GConsumidor == null)
+            if (GConsumidores == null)
             {
-                GConsumidor = new List<GConsumidor>();
+                GConsumidores = new List<GConsumidor>();
             }
 
-            GConsumidor.Add(GConsumidor);
+            GConsumidores.Add(GConsumidor);
         }
 
         /// <summary>
@@ -607,22 +607,22 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da GConsumidor</returns>
         public GConsumidor GetGConsumidor(int index)
         {
-            if ((GConsumidor?.Count ?? 0) == 0)
+            if ((GConsumidores?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return GConsumidor[index];
+            return GConsumidores[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GConsumidor
         /// </summary>
-        public int GConsumidor => (GConsumidor != null ? GConsumidor.Count : 0);
+        public int GConsumidorCount => (GConsumidores != null ? GConsumidores.Count : 0);
 #endif
 
         [XmlElement("gSaldoCred")]
-        public List<GSaldoCred> GSaldoCred { get; set; }
+        public List<GSaldoCred> GSaldoCreds { get; set; }
 #if INTEROP
 
         /// <summary>
@@ -631,12 +631,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="GSaldoCred">Elemento</param>
         public void AddGSaldoCred(GSaldoCred GSaldoCred)
         {
-            if (GSaldoCred == null)
+            if (GSaldoCreds == null)
             {
-                GSaldoCred = new List<GSaldoCred>();
+                GSaldoCreds = new List<GSaldoCred>();
             }
 
-            GSaldoCred.Add(GSaldoCred);
+            GSaldoCreds.Add(GSaldoCred);
         }
 
         /// <summary>
@@ -646,18 +646,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da GSaldoCred</returns>
         public GSaldoCred GetGSaldoCred(int index)
         {
-            if ((GSaldoCred?.Count ?? 0) == 0)
+            if ((GSaldoCreds?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return GSaldoCred[index];
+            return GSaldoCreds[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GSaldoCred
         /// </summary>
-        public int GSaldoCred => (GSaldoCred != null ? GSaldoCred.Count : 0);
+        public int GSaldoCredCount => (GSaldoCreds != null ? GSaldoCreds.Count : 0);
 #endif
 
     }
@@ -726,7 +726,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Mod6HashAnt { get; set; }
 
         [XmlElement("det")]
-        public List<DetNF3e> Det {  get; set; }
+        public List<DetNF3e> Dets {  get; set; }
 
 #if INTEROP
 
@@ -736,12 +736,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="Det">Elemento</param>
         public void AddDetNF3e(DetNF3e Det)
         {
-            if (Det == null)
+            if (Dets == null)
             {
-                Det = new List<DetNF3e>();
+                Dets = new List<DetNF3e>();
             }
 
-            Det.Add(Det);
+            Dets.Add(Det);
         }
 
         /// <summary>
@@ -751,18 +751,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da DetNF3e</returns>
         public DetNF3e GetDetItem(int index)
         {
-            if ((Det?.Count ?? 0) == 0)
+            if ((Dets?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return Det[index];
+            return Dets[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista DetItemAnt
         /// </summary>
-        public int DetCount => (Det != null ? Det.Count : 0);
+        public int DetCount => (Dets != null ? Dets.Count : 0);
 #endif
     }
 
@@ -1242,7 +1242,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GANEEL
     {
         [XmlElement("gHistFat")]
-        public List<GHistFat> GHistFat { get; set; }
+        public List<GHistFat> GHistFats { get; set; }
 
 #if INTEROP
 
@@ -1252,12 +1252,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="GHistFat">Elemento</param>
         public void AddGHistFat(GHistFat GHistFat)
         {
-            if (GHistFat == null)
+            if (GHistFats == null)
             {
-                GHistFat = new List<GHistFat>();
+                GHistFats = new List<GHistFat>();
             }
 
-            GHistFat.Add(GHistFat);
+            GHistFats.Add(GHistFat);
         }
 
         /// <summary>
@@ -1267,18 +1267,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da GHistFat</returns>
         public GHistFat GetGHistFat(int index)
         {
-            if ((GHistFat?.Count ?? 0) == 0)
+            if ((GHistFats?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return GHistFat[index];
+            return GHistFats[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GHistFat
         /// </summary>
-        public int GHistFat => (GHistFat != null ? GHistFat.Count : 0);
+        public int GHistFatCount => (GHistFats != null ? GHistFats.Count : 0);
 #endif
     }
 
@@ -1303,7 +1303,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string XGrandFat {  get; set; }
 
         [XmlElement("gGrandFat")]
-        public List<GGrandFat> GGrandFat { get; set; }
+        public List<GGrandFat> GGrandFats { get; set; }
 #if INTEROP
 
         /// <summary>
@@ -1312,12 +1312,12 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <param name="GGrandFat">Elemento</param>
         public void AddGGrandFat(GGrandFat GGrandFat)
         {
-            if (GGrandFat == null)
+            if (GGrandFats == null)
             {
-                GGrandFat = new List<GGrandFat>();
+                GGrandFats = new List<GGrandFat>();
             }
 
-            GGrandFat.Add(GGrandFat);
+            GGrandFats.Add(GGrandFat);
         }
 
         /// <summary>
@@ -1327,18 +1327,18 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <returns>Conteúdo do index passado por parâmetro da GGrandFat</returns>
         public GGrandFat GetGGrandFat(int index)
         {
-            if ((GGrandFat?.Count ?? 0) == 0)
+            if ((GGrandFats?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return GGrandFat[index];
+            return GGrandFats[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GGrandFat
         /// </summary>
-        public int GGrandFat => (GGrandFat != null ? GGrandFat.Count : 0);
+        public int GGrandFatCount => (GGrandFats != null ? GGrandFats.Count : 0);
 #endif
     }
 
@@ -1387,21 +1387,21 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         [XmlElement("infCpl")]
-        public List<string> InfCpl { get; set; }
+        public List<string> InfCpls { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="InfCpl">Elemento</param>
-        public void AddInfCpl(InfCpl InfCpl)
+        public void AddInfCpl(string InfCpl)
         {
-            if (InfCpl == null)
+            if (InfCpls == null)
             {
-                InfCpl = new List<InfCpl>();
+                InfCpls = new List<string>();
             }
 
-            InfCpl.Add(InfCpl);
+            InfCpls.Add(InfCpl);
         }
 
         /// <summary>
@@ -1409,20 +1409,20 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfCpl</returns>
-        public InfCpl GetInfCpl(int index)
+        public string GetInfCpl(int index)
         {
-            if ((InfCpl?.Count ?? 0) == 0)
+            if ((InfCpls?.Count ?? 0) == 0)
             {
                 return default;
             };
 
-            return InfCpl[index];
+            return InfCpls[index];
         }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfCpl
         /// </summary>
-        public int InfCpl => (InfCpl != null ? InfCpl.Count : 0);
+        public int InfCplCount => (InfCpls != null ? InfCpls.Count : 0);
 #endif
     }
 
