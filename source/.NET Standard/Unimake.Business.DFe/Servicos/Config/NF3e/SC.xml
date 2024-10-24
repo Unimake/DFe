@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<configuracoes>
+<Configuracoes>
 	<Heranca>SVRS.xml</Heranca>
 	<Servicos ID="NF3e">
 		<Autorizacao versao="4.00">
@@ -9,5 +9,5 @@
 			<UrlChaveProducao>https://sat.sef.sc.gov.br/nf3e/consulta</UrlChaveProducao>
 		</Autorizacao>
 	</Servicos>
-</configuracoes>
+</Configuracoes>
 

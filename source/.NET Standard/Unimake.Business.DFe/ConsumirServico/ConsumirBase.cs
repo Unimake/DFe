@@ -293,7 +293,14 @@ namespace Unimake.Business.DFe
 
                 if (TratarScapeRetorno)
                 {
-                    RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
+                    if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault"))
+                    {
+                        RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
+                    }
+                    else
+                    {
+                        RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
+                    }
                 }
                 else
                 {

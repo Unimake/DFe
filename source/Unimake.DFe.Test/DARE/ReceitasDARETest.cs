@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Unimake.DFe.Test.DARE
 {
-    public class Receitas
+    public class ReceitasDARETest
     {
         /// <summary>
         /// Testar o consumo da API do receitas do DARE
@@ -16,7 +16,7 @@ namespace Unimake.DFe.Test.DARE
         [Trait("DFe", "ESocial")]
         [InlineData(TipoAmbiente.Producao)]
         [InlineData(TipoAmbiente.Homologacao)]
-        public void ReceitasDareTest(TipoAmbiente tipoAmbiente)
+        public void ReceitasDare(TipoAmbiente tipoAmbiente)
         {
             var configuracao = new Configuracao
             {

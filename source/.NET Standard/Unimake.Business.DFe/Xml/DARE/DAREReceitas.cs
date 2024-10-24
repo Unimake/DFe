@@ -77,15 +77,19 @@ namespace Unimake.Business.DFe.Xml.DARE
     public class ReceitaDARE
     {
         [XmlElement("codigo")]
+        [JsonProperty("codigo")]
         public string Codigo { get; set; }
 
         [XmlElement("codigoServicoDARE")]
+        [JsonProperty("codigoServicoDARE")]
         public string CodigoServicoDARE { get; set; }
 
         [XmlElement("escopoUso")]
+        [JsonProperty("escopoUso")]
         public string EscopoUso { get; set; }
 
         [XmlElement("nome")]
+        [JsonProperty("nome")]
         public string Nome { get; set; }
 
         #region ShouldSerialize
