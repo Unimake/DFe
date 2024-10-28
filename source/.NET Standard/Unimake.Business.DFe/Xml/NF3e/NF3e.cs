@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
 
-namespace Unimake.Business.DFe.Xml.NFe
+namespace Unimake.Business.DFe.Xml.NF3e
 {
     /// <summary>
     /// NF3e - Nota Fiscal da Energia Elétrica Eletrônica
@@ -726,7 +726,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Mod6HashAnt { get; set; }
 
         [XmlElement("det")]
-        public List<DetNF3e> Dets {  get; set; }
+        public List<DetNF3e> Dets { get; set; }
 
 #if INTEROP
 
@@ -857,7 +857,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public RetTribNF3e RetTribNF3e { get; set; }
 
         [XmlElement("indDevolucao")]
-        public int IndDevolucao {  get; set; }
+        public int IndDevolucao { get; set; }
     }
 
 #if INTEROP
@@ -1300,7 +1300,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class GHistFat
     {
         [XmlElement("xGrandFat")]
-        public string XGrandFat {  get; set; }
+        public string XGrandFat { get; set; }
 
         [XmlElement("gGrandFat")]
         public List<GGrandFat> GGrandFats { get; set; }
@@ -1454,7 +1454,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Você pode informar o conteúdo já convertido para Sha1Hash + Base64, ou pode informar somente a concatenação do CSRT + Chave de Acesso que a DLL já converte para Sha1Hash + Base64
         /// </summary>
         [XmlElement("hashCSRT")]
-        public string HashCSRT {  get; set; }
+        public string HashCSRT { get; set; }
         //{
 
         //    get
