@@ -1,4 +1,4 @@
-<DareRetorno>
+<DareLoteRetorno xmlns="https://portal.fazenda.sp.gov.br/servicos/dare">
 	<errors>
 		<itensParaGeracao_1_numeroControleDarePrincipal>
 			<message>Invalid character after parsing property name. Expected ':' but got: ". Path 'itensParaGeracao[1].numeroControleDarePrincipal', line 67, position 24.</message>
@@ -14,4 +14,4 @@
 	<title>One or more validation errors occurred.</title>
 	<status>400</status>
 	<traceId>00-5500edb4d7f2a241975d0110780bb3fd-d9225ef7dac30b46-00</traceId>
-</DareRetorno>
+</DareLoteRetorno>

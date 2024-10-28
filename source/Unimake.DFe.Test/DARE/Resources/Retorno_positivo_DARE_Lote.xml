@@ -1,82 +1,90 @@
-<DareRetorno>
+<DareLoteRetorno xmlns="https://portal.fazenda.sp.gov.br/servicos/dare">
 	<itensParaGeracao>
-		<item>
+		<DARE>
+			<gerarPDF>true</gerarPDF>
+			<cnpj>46.377.222/0001-29</cnpj>
+			<cpf/>
+			<cidade>São Paulo</cidade>
+			<dataVencimento>2024-08-31T21:00:00</dataVencimento>
+			<endereco>Av. Rangel Pestana, 300</endereco>
 			<receita>
 				<codigo>046-2</codigo>
 				<codigoServicoDARE>4601</codigoServicoDARE>
 			</receita>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<valor>11.00</valor>
+			<valorJuros>1.00</valorJuros>
+			<valorMulta>1.00</valorMulta>
+			<valorTotal>11.00</valorTotal>
+		</DARE>
+		<DARE>
+			<gerarPDF>true</gerarPDF>
 			<cnpj>46.377.222/0001-29</cnpj>
 			<cpf/>
 			<cidade>São Paulo</cidade>
-			<codigoBarra44/>
-			<codigoBarra48/>
 			<dataVencimento>2024-08-31T21:00:00</dataVencimento>
 			<endereco>Av. Rangel Pestana, 300</endereco>
-			<gerarPDF>true</gerarPDF>
-			<referencia>07/2024</referencia>
-			<telefone/>
-			<valor>11.0</valor>
-			<valorTotal>11.0</valorTotal>
-		</item>
-		<item>
 			<receita>
 				<codigo>046-2</codigo>
 				<codigoServicoDARE>4601</codigoServicoDARE>
 			</receita>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<valor>12.00</valor>
+			<valorJuros>1.00</valorJuros>
+			<valorMulta>1.00</valorMulta>
+			<valorTotal>12.00</valorTotal>
+		</DARE>
+		<DARE>
+			<gerarPDF>true</gerarPDF>
 			<cnpj>46.377.222/0001-29</cnpj>
 			<cpf/>
 			<cidade>São Paulo</cidade>
-			<codigoBarra44/>
-			<codigoBarra48/>
 			<dataVencimento>2024-08-31T21:00:00</dataVencimento>
 			<endereco>Av. Rangel Pestana, 300</endereco>
-			<gerarPDF>true</gerarPDF>
-			<referencia>07/2024</referencia>
-			<telefone/>
-			<valor>12.0</valor>
-			<valorTotal>12.0</valorTotal>
-		</item>
-		<item>
 			<receita>
 				<codigo>046-2</codigo>
 				<codigoServicoDARE>4601</codigoServicoDARE>
 			</receita>
+			<codigoBarra44/>
+			<codigoBarra48/>
+			<referencia>07/2024</referencia>
+			<telefone/>
+			<valor>13.00</valor>
+			<valorJuros>1.00</valorJuros>
+			<valorMulta>1.00</valorMulta>
+			<valorTotal>13.00</valorTotal>
+		</DARE>
+		<DARE>
+			<gerarPDF>true</gerarPDF>
 			<cnpj>46.377.222/0001-29</cnpj>
 			<cpf/>
 			<cidade>São Paulo</cidade>
-			<codigoBarra44/>
-			<codigoBarra48/>
 			<dataVencimento>2024-08-31T21:00:00</dataVencimento>
 			<endereco>Av. Rangel Pestana, 300</endereco>
-			<gerarPDF>true</gerarPDF>
-			<referencia>07/2024</referencia>
-			<telefone/>
-			<valor>13.0</valor>
-			<valorTotal>13.0</valorTotal>
-		</item>
-		<item>
 			<receita>
 				<codigo>046-2</codigo>
 				<codigoServicoDARE>4601</codigoServicoDARE>
 			</receita>
-			<cnpj>46.377.222/0001-29</cnpj>
-			<cpf/>
-			<cidade>São Paulo</cidade>
 			<codigoBarra44/>
 			<codigoBarra48/>
-			<dataVencimento>2024-08-31T21:00:00</dataVencimento>
-			<endereco>Av. Rangel Pestana, 300</endereco>
-			<gerarPDF>true</gerarPDF>
 			<referencia>07/2024</referencia>
 			<telefone/>
-			<valor>14.0</valor>
-			<valorTotal>14.0</valorTotal>
-		</item>
+			<valor>14.00</valor>
+			<valorJuros>1.00</valorJuros>
+			<valorMulta>1.00</valorMulta>
+			<valorTotal>14.00</valorTotal>
+		</DARE>
 	</itensParaGeracao>
 	<erro>
-		<estaOk>true</estaOk>
 		<mensagens/>
+		<estaOk>true</estaOk>
 	</erro>
 	<tipoAgrupamentoFilhotes>1</tipoAgrupamentoFilhotes>
 	<zipDownload>UEsDBBQAAAAIANdBG1kXS</zipDownload>
-</DareRetorno>
+</DareLoteRetorno>

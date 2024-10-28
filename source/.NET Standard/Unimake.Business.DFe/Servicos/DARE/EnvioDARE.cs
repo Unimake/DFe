@@ -3,8 +3,11 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
 using Unimake.Exceptions;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Unimake.Business.DFe.Servicos.DARE
 {
@@ -18,17 +21,79 @@ namespace Unimake.Business.DFe.Servicos.DARE
 #endif
     public class EnvioDARE : ServicoBase, IInteropService<Unimake.Business.DFe.Xml.DARE.DARE>
     {
+        #region Protected Methods
+
         /// <summary>
-        /// 
+        /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
-        public EnvioDARE(Unimake.Business.DFe.Xml.DARE.DARE consulta, Configuracao configuracao)
+        /// <exception cref="NotImplementedException"></exception>
+        protected override void DefinirConfiguracao()
+        {
+            var xml = new Unimake.Business.DFe.Xml.DARE.DARE();
+            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.DARE>(ConteudoXML);
+
+            if (!Configuracoes.Definida)
+            {
+                Configuracoes.Servico = Servico.DAREEnvio;
+                Configuracoes.CodigoUF = (int)UFBrasil.AN;
+                Configuracoes.SchemaVersao = xml.Versao;
+
+                base.DefinirConfiguracao();
+            }
+        }
+
+        #endregion Protected Methods
+
+        #region Public Properties
+
+        /// <summary>
+        /// Contém o resultado do envio único do DARE
+        /// </summary>
+        public DARERetorno Result
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(RetornoWSString))
+                {
+                    return XMLUtility.Deserializar<DARERetorno>(RetornoWSXML);
+                }
+
+                return new DARERetorno
+                {
+                    DARE = new DAREUnicoRetorno
+                    {
+                        Erro = new ErroRetorno
+                        {
+                            Mensagens = new MensagensErro
+                            {
+                                Mensagem = new List<string>
+                                {
+                                    "Ocorreu um erro ao tentar obter o objeto no retorno da API"
+                                }
+                            }
+                        }
+                    }
+                };
+            }
+        }
+
+        #endregion Public Properties
+
+        #region Public Constructors
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="envioDARE">Objeto contendo o XML do DARE único</param>
+        /// <param name="configuracao">Objeto contendo as configurações a serem utilizadas no envio do DARE único</param>
+        public EnvioDARE(Unimake.Business.DFe.Xml.DARE.DARE envioDARE, Configuracao configuracao)
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
+            Inicializar(envioDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(envioDARE)), configuracao);
         }
 
 #if INTEROP
@@ -66,8 +131,12 @@ namespace Unimake.Business.DFe.Servicos.DARE
         }
 #endif
 
+        #endregion Public Constructors
+
+        #region Public Methods
+
         /// <summary>
-        /// 
+        /// Gravar o XML de distribuição em uma pasta definida retornado pela API
         /// </summary>
         /// <param name="pasta"></param>
         /// <param name="nomeArquivo"></param>
@@ -75,26 +144,32 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <exception cref="NotImplementedException"></exception>
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// 
+        /// Gravar Guia do DARE retornadas na consulta, quando o DARE é autorizado.
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        protected override void DefinirConfiguracao()
+        /// <param name="pasta">Pasta onde será gravado o PDF das guias</param>
+        /// <param name="nomeArquivo">Nome do arquivo PDF das guias que será gravado</param>
+        public void ExtrairPDF(string pasta, string nomeArquivo)
         {
-            var xml = new Unimake.Business.DFe.Xml.DARE.DARE();
-            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.DARE>(ConteudoXML);
-
-            if (!Configuracoes.Definida)
+            try
             {
-                Configuracoes.Servico = Servico.DAREEnvio;
-                Configuracoes.CodigoUF = (int)UFBrasil.AN;
-                Configuracoes.SchemaVersao = xml.Versao;
+                if (string.IsNullOrEmpty(Result.DARE.DocumentoImpressao))
+                {
+                    throw new Exception("API não retornou as guias em PDF. Verifique se o DARE foi emitido.");
+                }
 
-                base.DefinirConfiguracao();
+                Converter.Base64ToPDF(Result.DARE.DocumentoImpressao, Path.Combine(pasta, nomeArquivo));
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
+
+        #endregion Public Methods
+
     }
 }
