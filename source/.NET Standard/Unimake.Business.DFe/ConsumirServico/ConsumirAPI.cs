@@ -220,10 +220,6 @@ namespace Unimake.Business.DFe
                         config.RequestURI = config.RequestURI.Replace("{Chave}", chave);
                     }
                     break;
-
-                default:
-                    break;
-
             }
         }
 
@@ -255,9 +251,7 @@ namespace Unimake.Business.DFe
 
             if (apiConfig.ContentType == "application/json")
             {
-                /*
-                 VERIFICAR SE ESSE TRECHO COM DICIONÁRIO ESTÁ SENDO UTILIZADO
-                 var dicionario = new Dictionary<string, string>();
+                var dicionario = new Dictionary<string, string>();
 
                 if (apiConfig.LoginConexao)
                 {
@@ -267,11 +261,7 @@ namespace Unimake.Business.DFe
 
                 dicionario.Add((string.IsNullOrWhiteSpace(apiConfig.WebAction) ? "xml" : apiConfig.WebAction), xmlBody);
 
-                Json = JsonConvert.SerializeObject(xmlBody);
-                var a  = JsonConvert.DeserializeXmlNode(xmlBody);
-                 */
-
-                var Json = JsonConvert.SerializeXmlNode(xml);
+                var Json = JsonConvert.SerializeObject(dicionario);
 
                 HttpContent temp = new StringContent(Json, Encoding.UTF8, apiConfig.ContentType);
 
