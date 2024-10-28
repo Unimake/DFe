@@ -304,7 +304,7 @@ namespace Unimake.Business.DFe.Xml.DARE
         [XmlIgnore]
         [JsonIgnore]
         public double ValorMulta { get; set; }
-        
+
         [XmlElement("valorMulta")]
         [JsonProperty("valorMulta")]
         public string ValorMultaField
@@ -435,13 +435,13 @@ namespace Unimake.Business.DFe.Xml.DARE
     [ProgId("Unimake.Business.DFe.Xml.DARE.ItensParaGeracao")]
     [ComVisible(true)]
 #endif
-    public class ItensParaGeracao
+    public class ItensParaGeracao : DARE
     {
-        /// <summary>
-        /// Lista de objetos DARE para geração. 
-        /// Cada item nesta lista representa um DARE individual que compõe o lote.
-        /// </summary>
-        [XmlElement("Dare")]
-        public List<DARE> DARE { get; set; }
+        ///// <summary>
+        ///// Lista de objetos DARE para geração. 
+        ///// Cada item nesta lista representa um DARE individual que compõe o lote.
+        ///// </summary>
+        //[XmlElement("Dare")]
+        //public List<DARE> DARE { get; set; }
     }
 }
