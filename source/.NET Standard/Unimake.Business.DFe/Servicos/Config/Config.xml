@@ -1529,4 +1529,28 @@
 		<ArqConfig>ItuSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3549805">
+		<Nome>São José do Rio Preto - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoJoseDoRioPretoSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3529302">
+		<Nome>Matão - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>MataoSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3548500">
+		<Nome>Santos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SantosSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3525904">
+		<Nome>Jundiaí - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>JundiaiSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
