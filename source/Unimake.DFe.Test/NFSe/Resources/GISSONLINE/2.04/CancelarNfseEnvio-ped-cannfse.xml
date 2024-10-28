@@ -1,0 +1,15 @@
+<can:CancelarNfseEnvio xmlns:can="http://www.giss.com.br/cancelar-nfse-envio-v2_04.xsd" xmlns:tip="http://www.giss.com.br/tipos-v2_04.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#">
+	<can:Pedido>
+		<tip:InfPedidoCancelamento>
+			<tip:IdentificacaoNfse>
+				<tip:Numero>1</tip:Numero>
+				<tip:CpfCnpj>
+					<tip:Cnpj>06117473000150</tip:Cnpj>
+				</tip:CpfCnpj>
+				<tip:InscricaoMunicipal>123456</tip:InscricaoMunicipal>
+				<tip:CodigoMunicipio>1</tip:CodigoMunicipio>
+			</tip:IdentificacaoNfse>
+			<tip:CodigoCancelamento>2</tip:CodigoCancelamento>
+		</tip:InfPedidoCancelamento>
+	</can:Pedido>
+</can:CancelarNfseEnvio>

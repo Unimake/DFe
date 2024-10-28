@@ -6734,11 +6734,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("FISCO")]
         FISCO = 51,
+
         /// <summary>
         /// ABACO
         /// </summary>
         [Description("ABACO")]
         ABACO = 52,
+
+        /// <summary>
+        /// GISSONLINE (Antigo GINFES)
+        /// </summary>
+        [Description("GISSONLINE")]
+        GISSONLINE = 53,
     }
 
     #endregion

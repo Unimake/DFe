@@ -1523,4 +1523,10 @@
 		<ArqConfig>GramadoRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3523909">
+		<Nome>Itu - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItuSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -377,6 +377,7 @@
 		<None Remove="Servicos\Config\NFSe\ItaporangaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaquaquecetubaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\ItumbiaraGO.xml" />
+		<None Remove="Servicos\Config\NFSe\ItuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\IvotiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\JabotaoDosGuararapesPE.xml" />
 		<None Remove="Servicos\Config\NFSe\JaciSP.xml" />
@@ -1089,6 +1090,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GramadoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GuaramirimSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\GurupiTO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItuSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MassarandubaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PomerodeSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoseDosCamposSP.xml">
