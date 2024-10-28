@@ -35,7 +35,13 @@ namespace Unimake.DFe.Test.DARE
                 Endereco = "Rua Exemplo, 123",
                 Erro = new Business.DFe.Xml.DARE.Erro
                 {
-                    EstaOk = true
+                    EstaOk = true,
+                    Mensagens = new List<string>
+                        {
+                            "teste1",
+                            "teste2",
+                            "teste3"
+                        }
                 },
                 GerarPDF = true,
                 NumeroControleDarePrincipal = "123456789",
