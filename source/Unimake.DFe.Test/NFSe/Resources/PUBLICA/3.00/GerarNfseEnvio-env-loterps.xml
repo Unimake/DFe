@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<GerarNfseEnvio xmlns="http://www.publica.inf.br">
+	<Rps>
+		<InfRps id="RPS1">
+			<IdentificacaoRps>
+				<Numero>8</Numero>
+				<Serie>A1</Serie>
+				<Tipo>1</Tipo>
+			</IdentificacaoRps>
+			<DataEmissao>2012-01-01T21:00:00</DataEmissao>
+			<NaturezaOperacao>16</NaturezaOperacao>
+			<OptanteSimplesNacional>1</OptanteSimplesNacional>
+			<IncentivadorCultural>2</IncentivadorCultural>
+			<Status>1</Status>
+			<Servico>
+				<Valores>
+					<ValorServicos>1000.00</ValorServicos>
+					<ValorDeducoes>10.00</ValorDeducoes>
+					<ValorPis>10.00</ValorPis>
+					<ValorCofins>10.00</ValorCofins>
+					<ValorInss>10.00</ValorInss>
+					<ValorIr>10.00</ValorIr>
+					<ValorCsll>10.00</ValorCsll>
+					<IssRetido>1</IssRetido>
+					<ValorIss>10.00</ValorIss>
+					<OutrasRetencoes>10.00</OutrasRetencoes>
+					<Aliquota>5.00</Aliquota>
+					<DescontoIncondicionado>10.00</DescontoIncondicionado>
+					<DescontoCondicionado>10.00</DescontoCondicionado>
+				</Valores>
+				<ItemListaServico>11.01</ItemListaServico>
+				<Discriminacao>Teste.</Discriminacao>
+				<CodigoMunicipio>3106200</CodigoMunicipio>
+			</Servico>
+			<Prestador>
+				<Cnpj>95836771000120</Cnpj>
+				<InscricaoMunicipal>56</InscricaoMunicipal>
+			</Prestador>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cpf>04823071964</Cpf>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>HUGO HAROLDO</RazaoSocial>
+				<Endereco>
+					<Endereco>DA BAHIA</Endereco>
+					<Numero>200</Numero>
+					<Complemento>ANDAR 14</Complemento>
+					<Bairro>CENTRO</Bairro>
+					<CodigoMunicipio>3106200</CodigoMunicipio>
+					<Uf>MG</Uf>
+					<Cep>30160010</Cep>
+				</Endereco>
+			</Tomador>
+		</InfRps>
+	</Rps>
+</GerarNfseEnvio>

@@ -6746,6 +6746,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("GISSONLINE")]
         GISSONLINE = 53,
+
+        /// <summary>
+        /// PUBLICA
+        /// </summary>
+        [Description("PUBLICA")]
+        PUBLICA = 54
     }
 
     #endregion

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.publica.inf.br" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.publica.inf.br schema_nfse_v03.xsd">
+	<LoteRps versao="1.00">
+		<NumeroLote>1</NumeroLote>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfRps id="RPS1">
+					<IdentificacaoRps>
+						<Numero>1</Numero>
+						<Serie>RP1</Serie>
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<DataEmissao>2022-03-15T10:10:58</DataEmissao>
+					<NaturezaOperacao>501</NaturezaOperacao>
+					<OptanteSimplesNacional>1</OptanteSimplesNacional>
+					<IncentivadorCultural>2</IncentivadorCultural>
+					<Status>1</Status>
+					<Servico>
+						<Valores>
+							<ValorServicos>3.95</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<IssRetido>2</IssRetido>
+							<ValorIss>0.00</ValorIss>
+							<OutrasRetencoes>0.00</OutrasRetencoes>
+							<Aliquota>0.00</Aliquota>
+						</Valores>
+						<ItemListaServico>14.01</ItemListaServico>
+						<Discriminacao>NOTA FISCAL DE SERVICO TESTE</Discriminacao>
+						<CodigoMunicipio>4208203</CodigoMunicipio>
+					</Servico>
+					<Prestador>
+						<Cnpj>99999999999999</Cnpj>
+						<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>99999999999999</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>TESTE TESTE</RazaoSocial>
+						<Endereco>
+							<Endereco>xxxxxxxxx</Endereco>
+							<Numero>12</Numero>
+							<Bairro>CENTRO</Bairro>
+							<CodigoMunicipio>1111111</CodigoMunicipio>
+							<Uf>SC</Uf>
+							<Cep>99999999999999</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999999999999</Telefone>
+						</Contato>
+					</Tomador>
+				</InfRps>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsEnvio>

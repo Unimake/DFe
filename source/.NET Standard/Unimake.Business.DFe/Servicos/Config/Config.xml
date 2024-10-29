@@ -261,7 +261,7 @@
 		<Nome>Joinville - SC</Nome>
 		<UF>SC</UF>
 		<ArqConfig>JoinvilleSC.xml</ArqConfig>
-		<PadraoNFSe>PROPRIOJOINVILLESC</PadraoNFSe>
+		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3132404">
 		<Nome>Itajubá - MG</Nome>

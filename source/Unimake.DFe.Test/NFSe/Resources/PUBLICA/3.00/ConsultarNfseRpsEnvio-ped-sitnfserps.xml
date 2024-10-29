@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.publica.inf.br">
+	<IdentificacaoRps>
+		<Numero>8</Numero>
+		<Serie>A1</Serie>
+		<Tipo>1</Tipo>
+	</IdentificacaoRps>
+	<Prestador id="assinar">
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>

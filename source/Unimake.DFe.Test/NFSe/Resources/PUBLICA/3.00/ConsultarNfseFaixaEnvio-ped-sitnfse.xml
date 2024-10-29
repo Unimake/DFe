@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseFaixaEnvio xmlns="http://www.publica.inf.br">
+	<Prestador id="assinar">
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+	<Faixa>
+		<NumeroNfseInicial>99999999999999</NumeroNfseInicial>
+		<NumeroNfseFinal>99999999999999</NumeroNfseFinal>
+	</Faixa>
+</ConsultarNfseFaixaEnvio>
