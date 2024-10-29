@@ -1,0 +1,16 @@
+﻿<con:ConsultarNfseServicoPrestadoEnvio xmlns:con="http://www.giss.com.br/consultar-nfse-servico-prestado-envio-v2_04.xsd" xmlns:tip="http://www.giss.com.br/tipos-v2_04.xsd">
+	<con:Prestador>
+		<tip:CpfCnpj>
+			<tip:Cnpj>06117473000150</tip:Cnpj>
+		</tip:CpfCnpj>
+		<tip:InscricaoMunicipal>123456</tip:InscricaoMunicipal>
+	</con:Prestador>
+	<con:NumeroNfse>0</con:NumeroNfse>
+	<con:Tomador>
+		<tip:CpfCnpj>
+			<tip:Cpf>12345678901</tip:Cpf>
+		</tip:CpfCnpj>
+		<tip:InscricaoMunicipal>1234</tip:InscricaoMunicipal>
+	</con:Tomador>
+	<con:Pagina>1</con:Pagina>
+</con:ConsultarNfseServicoPrestadoEnvio>

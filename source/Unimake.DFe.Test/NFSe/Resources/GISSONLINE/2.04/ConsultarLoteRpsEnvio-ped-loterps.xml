@@ -1,0 +1,9 @@
+<con:ConsultarLoteRpsEnvio xmlns:con="http://www.giss.com.br/consultar-lote-rps-envio-v2_04.xsd" xmlns:tip="http://www.giss.com.br/tipos-v2_04.xsd">
+	<con:Prestador>
+		<tip:CpfCnpj>
+			<tip:Cnpj>06117473000150</tip:Cnpj>
+		</tip:CpfCnpj>
+		<tip:InscricaoMunicipal>123456</tip:InscricaoMunicipal>
+	</con:Prestador>
+	<con:Protocolo>12345678901234567890</con:Protocolo>
+</con:ConsultarLoteRpsEnvio>

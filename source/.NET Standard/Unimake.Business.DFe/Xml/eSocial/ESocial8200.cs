@@ -101,6 +101,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoAnotJud
     {
+        /// <summary>
+        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
+        /// </summary>
+        [XmlIgnore]
+        public string VersaoSchema { get; set; } = "S_01_02_00";
+
+        /// <summary>
+        /// Retorna somente o valor inteiro da versão para facilitar comparações
+        /// </summary>
+        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
+
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
 
@@ -188,6 +199,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement("localTrabalho")]
         public string LocalTrabalho { get; set; }
+
+        [XmlElement("tpRegTrab")]
+        public TipoRegimeTrabalhista TpRegTrab { get; set; } = TipoRegimeTrabalhista.CLT; //Só pode ser CLT e é uma tag obrigatória
+
+        [XmlElement("tpRegPrev")]
+        public TipoRegimePrevidenciario TpRegPrev { get; set; }
 
         [XmlElement("cargo")]
         public List<Cargo> Cargo { get; set; }
@@ -327,6 +344,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeLocalTrabalho() => !string.IsNullOrEmpty(LocalTrabalho);
 
+        public bool ShouldSerializeTpRegTrab() => VersaoSchemaInt >= 10300;
+        public bool ShouldSerializeTpRegPrev() => VersaoSchemaInt >= 10300;
+
         #endregion
     }
 
@@ -419,6 +439,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Incorporacao
     {
+        /// <summary>
+        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
+        /// </summary>
+        [XmlIgnore]
+        public string VersaoSchema { get; set; } = "S_01_02_00";
+
         [XmlElement("tpInsc")]
 #if INTEROP
         public TpInsc TpInsc { get; set; } = (TpInsc)(-1);
@@ -444,6 +470,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
+
+        public bool ShouldSerializeSucessaoVinc() => VersaoSchema == "S_01_02_00" && SucessaoVinc != null;
 
         #endregion
     }

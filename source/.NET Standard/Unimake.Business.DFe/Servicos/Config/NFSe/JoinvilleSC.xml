@@ -1,81 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Servicos ID="NFSe">
-    <RecepcionarLoteRps versao="2.04">
-      <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://nfemws.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoProducao>
-      <WebActionHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/EnviarLoteRpsEnvio</WebActionHomologacao>
-      <WebActionProducao>https://nfemws.joinville.sc.gov.br/EnviarLoteRpsEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v2_04.xsd</SchemaArquivo>
-      <TagAssinatura>Rps</TagAssinatura>
-      <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-      <TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-      <TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
-      <WebTagRetorno>soap:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap11</WebSoapVersion>
-      <SchemaVersao>2.04</SchemaVersao>
-      <TargetNS></TargetNS>
-    </RecepcionarLoteRps>
-    <CancelarNfse versao="2.04">
-      <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://nfemws.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoProducao>
-      <WebActionHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/CancelarNfseEnvio</WebActionHomologacao>
-      <WebActionProducao>https://nfemws.joinville.sc.gov.br/CancelarNfseEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v2_04.xsd</SchemaArquivo>
-      <TagAssinatura>Pedido</TagAssinatura>
-      <TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
-      <WebTagRetorno>soap:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap11</WebSoapVersion>
-      <SchemaVersao>2.04</SchemaVersao>
-      <TargetNS></TargetNS>
-    </CancelarNfse>
-    <ConsultarLoteRps versao="2.04">
-      <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://nfemws.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoProducao>
-      <WebActionHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/ConsultarLoteRpsEnvio</WebActionHomologacao>
-      <WebActionProducao>https://nfemws.joinville.sc.gov.br/ConsultarLoteRpsEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v2_04.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
-      <WebTagRetorno>soap:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap11</WebSoapVersion>
-      <SchemaVersao>2.04</SchemaVersao>
-      <TargetNS></TargetNS>
-    </ConsultarLoteRps>
-    <ConsultarNfsePorRps versao="2.04">
-      <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://nfemws.joinville.sc.gov.br/NotaFiscal/Servicos.asmx</WebEnderecoProducao>
-      <WebActionHomologacao>https://nfemwshomologacao.joinville.sc.gov.br/ConsultarNfseRpsEnvio</WebActionHomologacao>
-      <WebActionProducao>https://nfemws.joinville.sc.gov.br/ConsultarNfseRpsEnvio</WebActionProducao>
-      <SchemaArquivo>nfse_v2_04.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml;charset=UTF-8</WebContentType>
-      <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body>{xmlBody}</soap:Body></soap:Envelope>]]></WebSoapString>
-      <WebTagRetorno>soap:Body</WebTagRetorno>
-      <WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-      <WebSoapVersion>soap11</WebSoapVersion>
-      <SchemaVersao>2.04</SchemaVersao>
-      <TargetNS></TargetNS>
-    </ConsultarNfsePorRps>>
-  </Servicos>
+    <Servicos ID="NFSe">
+        <RecepcionarLoteRps versao="3.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:RecepcionarLoteRps><XML>{xmlBodyScape}</XML></ser:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+            <WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+        </RecepcionarLoteRps>
+		<GerarNfse versao="3.00">
+			<Descricao>Gerar uma única NFSe</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:GerarNfse><XML>{xmlBodyScape}</XML></ser:GerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:GerarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</GerarNfse>
+        <CancelarNfse versao="3.00">
+			<Descricao>Cancelar NFSe</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:CancelarNfse><XML>{xmlBodyScape}</XML></ser:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+        </CancelarNfse>
+        <ConsultarLoteRps versao="3.00">
+			<Descricao>Consultar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarLoteRps><XML>{xmlBodyScape}</XML></ser:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+        </ConsultarLoteRps>
+        <ConsultarNfsePorRps versao="3.00">
+			<Descricao>Consultar NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarNfsePorRps><XML>{xmlBodyScape}</XML></ser:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+        </ConsultarNfsePorRps>
+		<ConsultarNfseFaixa versao="3.00">
+			<Descricao>Consultar NFSe por faixa de numeração</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfseFaixaRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarNfseFaixa><XML>{xmlBodyScape}</XML></ser:ConsultarNfseFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseFaixaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</ConsultarNfseFaixa>
+		<ConsultarSituacaoLoteRps versao="3.00">
+			<Descricao>Consultar situação do lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarSituacaoLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.nfse.integracao.ws.publica/"><soapenv:Header/><soapenv:Body><ser:ConsultarSituacaoLoteRps><XML>{xmlBodyScape}</XML></ser:ConsultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://www.publica.inf.br</TargetNS>
+		</ConsultarSituacaoLoteRps>
+    </Servicos>
 </Configuracoes>
