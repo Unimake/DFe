@@ -3,8 +3,11 @@ using System.Runtime.InteropServices;
 #endif
 using System;
 using Unimake.Business.DFe.Servicos.Interop;
+using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.DARE;
 using Unimake.Exceptions;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Unimake.Business.DFe.Servicos.DARE
 {
@@ -18,28 +21,85 @@ namespace Unimake.Business.DFe.Servicos.DARE
 #endif
     public class EnvioDARELote : ServicoBase, IInteropService<Unimake.Business.DFe.Xml.DARE.DARELote>
     {
+        #region Protected Methods
+
         /// <summary>
-        /// 
+        /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
-        public EnvioDARELote(Unimake.Business.DFe.Xml.DARE.DARELote consulta, Configuracao configuracao)
+        /// <exception cref="NotImplementedException"></exception>
+        protected override void DefinirConfiguracao()
+        {
+            var xml = new Unimake.Business.DFe.Xml.DARE.DARELote();
+            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.DARELote>(ConteudoXML);
+
+            if (!Configuracoes.Definida)
+            {
+                Configuracoes.Servico = Servico.DAREEnvio;
+                Configuracoes.CodigoUF = (int)UFBrasil.AN;
+                Configuracoes.SchemaVersao = xml.Versao;
+
+                base.DefinirConfiguracao();
+            }
+        }
+
+        #endregion Protected Methods
+
+        #region Public Properties
+
+        /// <summary>
+        /// Contém o resultado do envio lote do DARE
+        /// </summary>
+        public DARELoteRetorno Result
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(RetornoWSString))
+                {
+                    return XMLUtility.Deserializar<DARELoteRetorno>(RetornoWSXML);
+                }
+
+                return new DARELoteRetorno
+                {
+                    Erro = new ErroLoteRetorno
+                    {
+                        EstaOk = false,
+                        Mensagens = new List<string>
+                        {
+                            "Ocorreu um erro ao tentar obter o objeto no retorno da API"
+                        }
+                    }
+                };
+            }
+        }
+
+        #endregion Public Properties
+
+        #region Public Constructors
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="envioLoteDARE">Objeto contendo o XML do DARE único</param>
+        /// <param name="configuracao">Objeto contendo as configurações a serem utilizadas no envio do DARE único</param>
+        public EnvioDARELote(Unimake.Business.DFe.Xml.DARE.DARELote envioLoteDARE, Configuracao configuracao)
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
+            Inicializar(envioLoteDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(envioLoteDARE)), configuracao);
         }
 
 #if INTEROP
         /// <summary>
         /// Executa o serviço: Assina o XML, valida e envia para o web-service
         /// </summary>
-        /// <param name="envioDARELoteDARE">Objeto contendo o XML a ser enviado</param>
+        /// <param name="envioLoteDARE">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao"></param>
         /// <exception cref="NotImplementedException"></exception>
         [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] DARELote envioDARELoteDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] DARELote envioLoteDARE, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
             {
@@ -48,7 +108,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
                     throw new ArgumentNullException(nameof(configuracao));
                 }
 
-                Inicializar(envioDARELoteDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(envioDARELoteDARE)), configuracao);
+                Inicializar(envioLoteDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(envioLoteDARE)), configuracao);
                 Executar();
             }
             catch (ValidarXMLException ex)
@@ -67,8 +127,12 @@ namespace Unimake.Business.DFe.Servicos.DARE
 
 #endif
 
+        #endregion Public Constructors
+
+        #region Public Methods
+
         /// <summary>
-        /// 
+        /// Gravar o XML de distribuição em uma pasta definida retornado pela API
         /// </summary>
         /// <param name="pasta"></param>
         /// <param name="nomeArquivo"></param>
@@ -76,26 +140,31 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <exception cref="NotImplementedException"></exception>
         public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// 
+        /// Gravar Guia do DARE retornadas no envio, quando o DARE é autorizado.
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        protected override void DefinirConfiguracao()
+        /// <param name="pasta">Pasta onde será gravado o PDF das guias</param>
+        /// <param name="nomeArquivo">Nome do arquivo PDF das guias que será gravado</param>
+        public void ExtrairZip(string pasta, string nomeArquivo)
         {
-            var xml = new Unimake.Business.DFe.Xml.DARE.DARELote();
-            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.DARELote>(ConteudoXML);
-
-            if (!Configuracoes.Definida)
+            try
             {
-                Configuracoes.Servico = Servico.DAREEnvio;
-                Configuracoes.CodigoUF = (int)UFBrasil.AN;
-                Configuracoes.SchemaVersao = xml.Versao;
+                if (string.IsNullOrEmpty(Result.ZipDownload))
+                {
+                    throw new Exception("API não retornou o zip download com a GUIA. Verifique se o lote do DARE foi emitido.");
+                }
 
-                base.DefinirConfiguracao();
+                Converter.Base64ToPDF(Result.ZipDownload, Path.Combine(pasta, nomeArquivo));
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
             }
         }
+
+        #endregion Public Methods
     }
 }
