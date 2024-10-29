@@ -1553,4 +1553,10 @@
 		<ArqConfig>JundiaiSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4308904">
+		<Nome>Getúlio Vargas - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>GetulioVargasRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
