@@ -5,10 +5,10 @@
 			<cUF>12</cUF>
 			<tpAmb>1</tpAmb>
 			<mod>66</mod>
-			<serie>serie1</serie>
-			<nNF>nNF1</nNF>
-			<cNF>cNF1</cNF>
-			<cDV>cDV1</cDV>
+			<serie>1</serie>
+			<nNF>1</nNF>
+			<cNF>2</cNF>
+			<cDV>3</cDV>
 			<dhEmi>12/12/2012 12:00:00 AM -02:00</dhEmi>
 			<tpEmis>1</tpEmis>
 			<nSiteAutoriz>nSiteAutoriz1</nSiteAutoriz>
@@ -31,7 +31,7 @@
 				<cMun>123123</cMun>
 				<xMun>xMun1</xMun>
 				<CEP>CEP1</CEP>
-				<UF>AC</UF>
+				<UF>12</UF>
 				<fone>fone1</fone>
 				<email>email1</email>
 			</enderEmit>
@@ -52,7 +52,7 @@
 				<cMun>123123</cMun>
 				<xMun>xMun1</xMun>
 				<CEP>CEP1</CEP>
-				<UF>AC</UF>
+				<UF>12</UF>
 				<fone>fone1</fone>
 				<email>email1</email>
 			</enderDest>
@@ -80,7 +80,7 @@
 		</gJudic>
 		<gGrContrat nContrat="n1">
 			<tpGrContrat>1</tpGrContrat>
-			<tpPosTar>0</tpPosTar>
+			<tpPosTar>1</tpPosTar>
 			<qUnidContrat>2</qUnidContrat>
 		</gGrContrat>
 		<gGrContrat nContrat="n2">
@@ -487,7 +487,7 @@
 				<cMun>123123</cMun>
 				<xMun>xMun1</xMun>
 				<CEP>CEP1</CEP>
-				<UF>AC</UF>
+				<UF>12</UF>
 				<fone>fone1</fone>
 				<email>email1</email>
 			</enderCorresp>

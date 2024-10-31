@@ -13703,4 +13703,657 @@ namespace Unimake.Business.DFe.Servicos
     #endregion MtvDeslig
 
     #endregion ESocial
+
+    #region NF3e
+
+    #region FinNF3e
+
+    /// <summary>
+    /// Finalidade de emissão da NF-3e
+    /// </summary>
+    public enum FinNF3e
+    {
+        /// <summary>
+        /// 1 - NF-3e normal
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - NF-3e substituição
+        /// </summary>
+        [XmlEnum("2")]
+        Substituicao = 2,
+
+        /// <summary>
+        /// 3 - NF-3e normal com ajuste
+        /// </summary>
+        [XmlEnum("3")]
+        NormalComAjuste = 3,
+    }
+
+    #endregion FinNF3e
+
+    #region TpEmis
+
+    /// <summary>
+    /// Forma de emissão do Documento Fiscal
+    /// </summary>
+    public enum TpEmis
+    {
+        /// <summary>
+        /// 1 - Normal.
+        /// </summary>
+        [XmlEnum("1")]
+        Normal = 1,
+
+        /// <summary>
+        /// 2 - ContingenciaOffLine.
+        /// </summary>
+        [XmlEnum("2")]
+        ContingenciaOffLine = 2,
+    }
+
+    #endregion TpEmisNF3e
+
+    #region TpAcesso
+    /// <summary>
+    /// Tipo de Acessante
+    /// </summary>
+    public enum TpAcesso
+    {
+        /// <summary>
+        /// 0 - Gerador.
+        /// </summary>
+        [XmlEnum("0")]
+        Gerador = 0,
+
+        /// <summary>
+        /// 1 - Cativo.
+        /// </summary>
+        [XmlEnum("1")]
+        Cativo = 1,
+
+        /// <summary>
+        /// 2 - Livre.
+        /// </summary>
+        [XmlEnum("2")]
+        Livre = 2,
+
+        /// <summary>
+        /// 3 - Parcialmente Livre.
+        /// </summary>
+        [XmlEnum("3")]
+        ParcialmenteLivre = 3,
+
+        /// <summary>
+        /// 4 - Consumidor Especial.
+        /// </summary>
+        [XmlEnum("4")]
+        ConsumidorEspecial = 4,
+
+        /// <summary>
+        /// 5 - Parcialmente Especial.
+        /// </summary>
+        [XmlEnum("5")]
+        ParcialmenteEspecial = 5,
+
+        /// <summary>
+        /// 6 - Comunhão.
+        /// </summary>
+        [XmlEnum("6")]
+        Comunhão = 6,
+
+        /// <summary>
+        /// 7 - Suprimento.
+        /// </summary>
+        [XmlEnum("7")]
+        Suprimento = 7,
+
+        /// <summary>
+        /// 8 - Distribuidora.
+        /// </summary>
+        [XmlEnum("8")]
+        Distribuidora = 8,
+    }
+    #endregion Tp Acesso
+
+    #region TpClasse
+    /// <summary>
+    /// Classe de Consumo da Unidade Consumidora
+    /// </summary>
+    public enum TpClasse
+    {
+        /// <summary>
+        /// 1 - Comercial.
+        /// </summary>
+        [XmlEnum("01")]
+        Comercial = 01,
+
+        /// <summary>
+        /// 2 - ConsumoPropio.
+        /// </summary>
+        [XmlEnum("02")]
+        ConsumoPropio = 02,
+
+        /// <summary>
+        /// 3 - IluminacaoPublica.
+        /// </summary>
+        [XmlEnum("03")]
+        IluminacaoPublica = 03,
+
+        /// <summary>
+        /// 4 - Industrial.
+        /// </summary>
+        [XmlEnum("04")]
+        Industrial = 04,
+
+        /// <summary>
+        /// 5 - PoderPublico.
+        /// </summary>
+        [XmlEnum("05")]
+        PoderPublico = 05,
+
+        /// <summary>
+        /// 6 - Residencial.
+        /// </summary>
+        [XmlEnum("06")]
+        Residencial = 06,
+
+        /// <summary>
+        /// 7 - Rural.
+        /// </summary>
+        [XmlEnum("07")]
+        Rural = 07,
+
+        /// <summary>
+        /// 8 - ServicoPublico.
+        /// </summary>
+        [XmlEnum("08")]
+        ServicoPublico = 08,
+    }
+    #endregion TpClasse
+
+    #region TpSubClasse
+
+    /// <summary>
+    /// Subclasse de Consumo da Unidade Consumidora
+    /// </summary>
+    public enum TpSubClasse
+    {
+        /// <summary>
+        /// 1 - Residencial.
+        /// </summary>
+        [XmlEnum("01")]
+        Residencial = 01,
+
+        /// <summary>
+        /// 2 - Residencial baixa renda.
+        /// </summary>
+        [XmlEnum("02")]
+        ResidencialBaixaRenda = 02,
+
+        /// <summary>
+        /// 3 - Residencial baixa renda indigena.
+        /// </summary>
+        [XmlEnum("03")]
+        ResidencialBaixaRendaIndigena = 03,
+
+        /// <summary>
+        /// 4 - Residencial baixa renda quilombola.
+        /// </summary>
+        [XmlEnum("04")]
+        ResidencialBaixaRendaQuilombola = 04,
+
+        /// <summary>
+        /// 5 - Residencial baixa renda beneficio de prestacao continuada da assistencia social.
+        /// </summary>
+        [XmlEnum("05")]
+        ResidencialBaixaRendaComAssistenciaSocial = 05,
+
+        /// <summary>
+        /// 6 - Residencial baixa renda multifamiliar.
+        /// </summary>
+        [XmlEnum("06")]
+        ResidencialBaixaRendaMultifamiliar = 06,
+
+        /// <summary>
+        /// 7 - comercial.
+        /// </summary>
+        [XmlEnum("07")]
+        comercial = 07,
+
+        /// <summary>
+        /// 8 - Servico De TransporteExceto TracaoEletrica.
+        /// </summary>
+        [XmlEnum("08")]
+        ServicoDeTransporteExcetoTracaoEletrica = 08,
+
+        /// <summary>
+        /// 9 - Servico de comunicação e telecomunicação.
+        /// </summary>
+        [XmlEnum("09")]
+        ServicoDeComunicacaoETelecomunicacao = 09,
+
+        /// <summary>
+        /// 10 - Associacoes e entidades filantropicas.
+        /// </summary>
+        [XmlEnum("10")]
+        AssociacaoOuEntidadeFilantropica = 10,
+
+        /// <summary>
+        /// 11 - TemplosReligiosos.
+        /// </summary>
+        [XmlEnum("11")]
+        TemplosReligiosos = 11,
+
+        /// <summary>
+        /// 12 - CondominioAreaComum.
+        /// </summary>
+        [XmlEnum("12")]
+        CondominioAreaComum = 12,
+
+        /// <summary>
+        /// 13 - Iluminacao em rodovias solicitadas por quem detenha concessao ou autorizacao para administracao em rodovias.
+        /// </summary>
+        [XmlEnum("13")]
+        IluminacaoEmRodovias = 13,
+
+        /// <summary>
+        /// 14 - Semafaros, radares cameras de monitoramento do transito.
+        /// </summary>
+        [XmlEnum("14")]
+        SemafarosRadaresCamerasMonitoramentoTransito = 14,
+
+        /// <summary>
+        /// 15 - Outros Servicos E Outras Atividades Da Classe Comercial.
+        /// </summary>
+        [XmlEnum("15")]
+        OutrosServicosEOutrasAtividadesDaClasseComercial = 15,
+
+        /// <summary>
+        /// 16 - AgroRural.
+        /// </summary>
+        [XmlEnum("16")]
+        AgroRural = 16,
+
+        /// <summary>
+        /// 17 - AgroUrbana.
+        /// </summary>
+        [XmlEnum("17")]
+        AgroUrbana = 17,
+
+        /// <summary>
+        /// 18 - ResidencialRural.
+        /// </summary>
+        [XmlEnum("18")]
+        ResidencialRural = 18,
+
+        /// <summary>
+        /// 19 - CooperativaDeEletrificacaoRural.
+        /// </summary>
+        [XmlEnum("19")]
+        CooperativaDeEletrificacaoRural = 19,
+
+        /// <summary>
+        /// 20 - Agroindustrial.
+        /// </summary>
+        [XmlEnum("20")]
+        Agroindustrial = 20,
+
+        /// <summary>
+        /// 21 - ServicoPublicoDeIrrigacaoRural.
+        /// </summary>
+        [XmlEnum("21")]
+        ServicoPublicoDeIrrigacaoRural = 21,
+
+        /// <summary>
+        /// 22 - EscolaAgrotecnica.
+        /// </summary>
+        [XmlEnum("22")]
+        EscolaAgrotecnica = 22,
+
+        /// <summary>
+        /// 23 - Aquicultura.
+        /// </summary>
+        [XmlEnum("23")]
+        Aquicultura = 23,
+
+        /// <summary>
+        /// 24 - PoderPublicoFederal.
+        /// </summary>
+        [XmlEnum("24")]
+        PoderPublicoFederal = 24,
+
+        /// <summary>
+        /// 25 - PoderPublicoEstadualOuDistrital.
+        /// </summary>
+        [XmlEnum("25")]
+        PoderPublicoEstadualOuDistrital = 25,
+
+        /// <summary>
+        /// 26 - PoderPublicoMunicipal.
+        /// </summary>
+        [XmlEnum("26")]
+        PoderPublicoMunicipal = 26,
+
+        /// <summary>
+        /// 27 - TracaoEletrica.
+        /// </summary>
+        [XmlEnum("27")]
+        TracaoEletrica = 27,
+
+        /// <summary>
+        /// 28 - AguaEsgotoOuSaneamento.
+        /// </summary>
+        [XmlEnum("28")]
+        AguaEsgotoOuSaneamento = 28,
+
+        /// <summary>
+        /// 99 - Outros.
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99,
+
+    }
+
+    #endregion TpSubClasse
+
+    #region TpFase 
+
+    /// <summary>
+    /// Tipo de ligação
+    /// </summary>
+    public enum TpFase
+    {
+        /// <summary>
+        /// 1 - Monofasico.
+        /// </summary>
+        [XmlEnum("1")]
+        Monofasico = 1,
+
+        /// <summary>
+        /// 2 - Bifasico.
+        /// </summary>
+        [XmlEnum("2")]
+        Bifasico = 2,
+
+        /// <summary>
+        /// 3 - Trifasico.
+        /// </summary>
+        [XmlEnum("3")]
+        Trifasico = 3,
+    }
+
+    #endregion TpFase 
+
+    #region TpGrpTensao
+
+    /// <summary>
+    /// Grupo e Subgrupo de Tensão
+    /// </summary>
+    public enum TpGrpTensao
+    {
+        /// <summary>
+        /// 1 - A1 Alta Tensao 230kV+.
+        /// </summary>
+        [XmlEnum("01")]
+        A1AltaTensao230kVMais = 01,
+
+        /// <summary>
+        /// 2 - A2 Alta Tensao 88 a 138kV.
+        /// </summary>
+        [XmlEnum("02")]
+        A2AltaTensao88a138kV = 02,
+
+        /// <summary>
+        /// 3 - A3 Alta Tensao 69kV.
+        /// </summary>
+        [XmlEnum("03")]
+        A3AltaTensao69kV = 03,
+
+        /// <summary>
+        /// 4 - A3a Alta Tensao30 a 44kV.
+        /// </summary>
+        [XmlEnum("04")]
+        A3aAltaTensao30a44kV = 04,
+
+        /// <summary>
+        /// 5 - A4 Alta Tensao 2,3 a 25kV.
+        /// </summary>
+        [XmlEnum("05")]
+        A4AltaTensao2a25kV = 05,
+
+        /// <summary>
+        /// 6 - AS Alta Tensao Subterraneo.
+        /// </summary>
+        [XmlEnum("06")]
+        ASAltaTensaoSubterraneo = 06,
+
+        /// <summary>
+        /// 7 - B1 Residencial.
+        /// </summary>
+        [XmlEnum("07")]
+        B1Residencial = 07,
+
+        /// <summary>
+        /// 8 - b1 Residencial Baixa Renda.
+        /// </summary>
+        [XmlEnum("08")]
+        b1ResidencialBaixaRenda = 08,
+
+        /// <summary>
+        /// 9 - B2 Rural.
+        /// </summary>
+        [XmlEnum("09")]
+        B2Rural = 09,
+
+        /// <summary>
+        /// 10 - B2 Cooperativa De Eletrificacao Rural.
+        /// </summary>
+        [XmlEnum("10")]
+        B2CooperativaDeEletrificacaoRural = 010,
+
+        /// <summary>
+        /// 11 - B2 Servico Publico Irrigacao.
+        /// </summary>
+        [XmlEnum("11")]
+        B2ServicoPublicoIrrigacao = 011,
+
+        /// <summary>
+        /// 12 - B3 Demais Classes.
+        /// </summary>
+        [XmlEnum("12")]
+        B3DemaisClasses = 012,
+
+        /// <summary>
+        /// 13 - B4a Iluminacao Publica Rede Distribuicao.
+        /// </summary>
+        [XmlEnum("13")]
+        B4aIluminacaoPublicaRedeDistribuicao = 013,
+
+        /// <summary>
+        /// 14 - B4b Iluminacao Publica Bulbo De Lampada.
+        /// </summary>
+        [XmlEnum("14")]
+        B4bIluminacaoPublicaBulboDeLampada = 014,
+
+    }
+
+    #endregion TpGrpTensao
+
+    #region TpModTar
+
+    /// <summary>
+    /// Modalidade Tarifária
+    /// </summary>
+    public enum TpModTar
+    {
+        /// <summary>
+        /// 1 - ConvencionalMonomia.
+        /// </summary>
+        [XmlEnum("01")]
+        ConvencionalMonomia = 01,
+
+        /// <summary>
+        /// 2 - ConvencionalBinomia.
+        /// </summary>
+        [XmlEnum("02")]
+        ConvencionalBinomia = 02,
+
+        /// <summary>
+        /// 3 - HorariaAzul.
+        /// </summary>
+        [XmlEnum("03")]
+        HorariaAzul = 03,
+
+        /// <summary>
+        /// 4 - HorariaAzulAPAE.
+        /// </summary>
+        [XmlEnum("04")]
+        HorariaAzulAPAE = 04,
+
+        /// <summary>
+        /// 5 - HorariaVerde.
+        /// </summary>
+        [XmlEnum("05")]
+        HorariaVerde = 05,
+
+        /// <summary>
+        /// 6 - HorariaVerdeAPAE.
+        /// </summary>
+        [XmlEnum("06")]
+        HorariaVerdeAPAE = 06,
+
+        /// <summary>
+        /// 7 - HorariaBranca.
+        /// </summary>
+        [XmlEnum("07")]
+        HorariaBranca = 07,
+
+        /// <summary>
+        /// 8 - PrePagamento.
+        /// </summary>
+        [XmlEnum("08")]
+        PrePagamento = 08,
+
+        /// <summary>
+        /// 9 - Geracao.
+        /// </summary>
+        [XmlEnum("09")]
+        Geracao = 09,
+
+        /// <summary>
+        /// 10 - Distribuicao.
+        /// </summary>
+        [XmlEnum("10")]
+        Distribuicao = 10,
+    }
+
+    #endregion TpModTar
+
+    #region MotSub
+
+    /// <summary>
+    /// Motivo da substituição
+    /// </summary>
+    public enum MotSub
+    {
+        /// <summary>
+        /// 1 - Erro De Leitura.
+        /// </summary>
+        [XmlEnum("01")]
+        ErroDeLeitura = 01,
+
+        /// <summary>
+        /// 2 - Erro De Preco Ou Tarifa.
+        /// </summary>
+        [XmlEnum("02")]
+        ErroDePrecoOuTarifa = 02,
+
+        /// <summary>
+        /// 3 - Decisao Judicial.
+        /// </summary>
+        [XmlEnum("03")]
+        DecisaoJudicial = 03,
+
+        /// <summary>
+        /// 4 - Erro Cadastral.
+        /// </summary>
+        [XmlEnum("04")]
+        ErroCadastral = 04,
+
+        /// <summary>
+        /// 5 - Erro De Tributacao.
+        /// </summary>
+        [XmlEnum("05")]
+        ErroDeTributacao = 05,
+    }
+
+    #endregion MotSub
+
+    #region TpGrContrat
+
+    /// <summary>
+    /// Tipo de grandeza contratada
+    /// </summary>
+    public enum TpGrContrat
+    {
+        /// <summary>
+        /// 1 - Demanda.
+        /// </summary>
+        [XmlEnum("1")]
+        Demanda = 1,
+
+        /// <summary>
+        /// 2 - MontanteDeUsoDoSistemaDeDistribuicao.
+        /// </summary>
+        [XmlEnum("2")]
+        MontanteDeUsoDoSistemaDeDistribuicao = 2,
+
+        /// <summary>
+        /// 3 - ReservaDeCapacidade.
+        /// </summary>
+        [XmlEnum("3")]
+        ReservaDeCapacidade = 3,
+
+        /// <summary>
+        /// 4 - EnergiaContratada.
+        /// </summary>
+        [XmlEnum("4")]
+        EnergiaContratada = 4,
+    }
+
+    #endregion TpGrContrat
+
+    #region TpPosTar
+
+    /// <summary>
+    /// Tipo de Posto Tarifário Contratado
+    /// </summary>
+    public enum TpPosTar
+    {
+        /// <summary>
+        /// 1 - Unico.
+        /// </summary>
+        [XmlEnum("1")]
+        Unico = 1,
+
+        /// <summary>
+        /// 2 - Ponta.
+        /// </summary>
+        [XmlEnum("2")]
+        Ponta = 2,
+
+        /// <summary>
+        /// 3 - ForaPonta.
+        /// </summary>
+        [XmlEnum("3")]
+        ForaPonta = 3,
+    }
+
+    #endregion TpPosTar
+
+
+    #endregion NF3e
 }
