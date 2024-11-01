@@ -585,211 +585,176 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 12 - Acre - AC
         /// </summary>
-        [XmlEnum("12")]
         AC = 12,
 
         /// <summary>
         /// 27 - Alagoas - AL
         /// </summary>
-        [XmlEnum("27")]
         AL = 27,
 
         /// <summary>
         /// 16 - Amapá - AP
         /// </summary>
-        [XmlEnum("16")]
         AP = 16,
 
         /// <summary>
         /// 13 - Amazonas - AM
         /// </summary>
-        [XmlEnum("13")]
         AM = 13,
 
         /// <summary>
         /// 29 - Bahia - BA
         /// </summary>
-        [XmlEnum("29")]
         BA = 29,
 
         /// <summary>
         /// 23 - Ceará - CE
         /// </summary>
-        [XmlEnum("23")]
         CE = 23,
 
         /// <summary>
         /// 53 - Distrito Federal - DF
         /// </summary>
-        [XmlEnum("53")]
         DF = 53,
 
         /// <summary>
         /// 32 - Espírito Santo - ES
         /// </summary>
-        [XmlEnum("32")]
         ES = 32,
 
         /// <summary>
         /// 52 - Goiás - GO
         /// </summary>
-        [XmlEnum("52")]
         GO = 52,
 
         /// <summary>
         /// 21 - Maranhão - MA
         /// </summary>
-        [XmlEnum("21")]
         MA = 21,
 
         /// <summary>
         /// 51 - Mato Grosso - MT
         /// </summary>
-        [XmlEnum("51")]
         MT = 51,
 
         /// <summary>
         /// 50 - Mato Grosso do Sul - MS
         /// </summary>
-        [XmlEnum("50")]
         MS = 50,
 
         /// <summary>
         /// 31 - Minas Gerais - MG
-        /// </summary>
-        [XmlEnum("31")]
+        /// </summary
         MG = 31,
 
         /// <summary>
         /// 15 - Pará - PA
         /// </summary>
-        [XmlEnum("15")]
         PA = 15,
 
         /// <summary>
         /// 25 - Paraíba - PB
         /// </summary>
-        [XmlEnum("25")]
         PB = 25,
 
         /// <summary>
         /// 41 - Paraná - PR
-        /// </summary>
-        [XmlEnum("41")]
+        /// </summary
         PR = 41,
 
         /// <summary>
         /// 26 - Pernambuco - PE
-        /// </summary>
-        [XmlEnum("26")]
+        /// </summary
         PE = 26,
 
         /// <summary>
         /// 22 - Piauí - PI
         /// </summary>
-        [XmlEnum("22")]
         PI = 22,
 
         /// <summary>
         /// 33 - Rio de Janeiro - RJ
         /// </summary>
-        [XmlEnum("33")]
         RJ = 33,
 
         /// <summary>
         /// 24 - Rio Grande do Norte - RN
         /// </summary>
-        [XmlEnum("24")]
         RN = 24,
 
         /// <summary>
         /// 43 - Rio Grande do Sul - RS
         /// </summary>
-        [XmlEnum("43")]
         RS = 43,
 
         /// <summary>
         /// 11 - Rondônia - RO
         /// </summary>
-        [XmlEnum("11")]
         RO = 11,
 
         /// <summary>
         /// 14 - Roraima - RR
         /// </summary>
-        [XmlEnum("14")]
         RR = 14,
 
         /// <summary>
         /// 42 - Santa Catarina - SC
         /// </summary>
-        [XmlEnum("42")]
         SC = 42,
 
         /// <summary>
         /// 35 - São Paulo - SP
         /// </summary>
-        [XmlEnum("35")]
         SP = 35,
 
         /// <summary>
         /// 28 - Sergipe - SE
         /// </summary>
-        [XmlEnum("28")]
         SE = 28,
 
         /// <summary>
         /// 17 - Tocantins - TO
         /// </summary>
-        [XmlEnum("17")]
         TO = 17,
 
         ///<summary>
         /// 90 - SUFRAMA
         /// </summary>
-        [XmlEnum("90")]
         SUFRAMA = 90,
 
         /// <summary>
         /// 91 - RFB - Ambiente Nacional - AN
         /// </summary>
-        [XmlEnum("91")]
         AN = 91,
 
         /// <summary>
         /// 92 - SVRS - Serviço Virtal do Rio Grande do SUL
         /// </summary>
-        [XmlEnum("92")]
         SVRS = 92,
 
         /// <summary>
         /// 94 - SVCRS - Serviço Virtual de Contingência do Rio Grande do Sul
         /// </summary>
-        [XmlEnum("94")]
         SVCRS = 94,
 
         /// <summary>
         /// 95 - SVCRS - Serviço Virtual de Contingência de São Paulo
         /// </summary>
-        [XmlEnum("95")]
         SVCSP = 95,
 
         /// <summary>
         /// 96 - Sincronização de chaves do estado do Rio Grande do Sul com o Sistema Virtual de São Paulo
         /// </summary>
-        [XmlEnum("96")]
         SincChavesRSparaSVSP = 96,
 
         /// <summary>
         /// 99 - Exportação
         /// </summary>
-        [XmlEnum("99")]
         EX = 99,
 
         /// <summary>
         /// 0 - Não definido
         /// </summary>
-        [XmlEnum("0")]
         NaoDefinido = 0
     }
 
