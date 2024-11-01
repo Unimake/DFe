@@ -13711,7 +13711,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Finalidade de emissão da NF-3e
     /// </summary>
-    public enum FinNF3e
+    public enum FinalidadeNF3e
     {
         /// <summary>
         /// 1 - NF-3e normal
@@ -13739,7 +13739,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Forma de emissão do Documento Fiscal
     /// </summary>
-    public enum TpEmis
+    public enum TipoEmissaoNF3e
     {
         /// <summary>
         /// 1 - Normal.
@@ -13756,11 +13756,11 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TpEmisNF3e
 
-    #region TpAcesso
+    #region TipoAcessante
     /// <summary>
     /// Tipo de Acessante
     /// </summary>
-    public enum TpAcesso
+    public enum TipoAcessante
     {
         /// <summary>
         /// 0 - Gerador.
@@ -13816,13 +13816,13 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("8")]
         Distribuidora = 8,
     }
-    #endregion Tp Acesso
+    #endregion TipoAcessante
 
-    #region TpClasse
+    #region TipoClasseConsumidora
     /// <summary>
     /// Classe de Consumo da Unidade Consumidora
     /// </summary>
-    public enum TpClasse
+    public enum TipoClasseConsumidora
     {
         /// <summary>
         /// 1 - Comercial.
@@ -13872,14 +13872,14 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("08")]
         ServicoPublico = 08,
     }
-    #endregion TpClasse
+    #endregion TipoClasseConsumidora
 
-    #region TpSubClasse
+    #region TipoSubClasseConsumidora
 
     /// <summary>
     /// Subclasse de Consumo da Unidade Consumidora
     /// </summary>
-    public enum TpSubClasse
+    public enum TipoSubClasseConsumidora
     {
         /// <summary>
         /// 1 - Residencial.
@@ -14057,14 +14057,14 @@ namespace Unimake.Business.DFe.Servicos
 
     }
 
-    #endregion TpSubClasse
+    #endregion TipoSubClasseConsumidora
 
-    #region TpFase 
+    #region TipoLigacao 
 
     /// <summary>
     /// Tipo de ligação
     /// </summary>
-    public enum TpFase
+    public enum TipoLigacao
     {
         /// <summary>
         /// 1 - Monofasico.
@@ -14085,14 +14085,14 @@ namespace Unimake.Business.DFe.Servicos
         Trifasico = 3,
     }
 
-    #endregion TpFase 
+    #endregion TipoLigacao 
 
-    #region TpGrpTensao
+    #region GrupoSubGrupoTensao
 
     /// <summary>
     /// Grupo e Subgrupo de Tensão
     /// </summary>
-    public enum TpGrpTensao
+    public enum GrupoSubGrupoTensao
     {
         /// <summary>
         /// 1 - A1 Alta Tensao 230kV+.
@@ -14180,14 +14180,14 @@ namespace Unimake.Business.DFe.Servicos
 
     }
 
-    #endregion TpGrpTensao
+    #endregion GrupoSubGrupoTensao
 
-    #region TpModTar
+    #region ModalidadeTarifaria
 
     /// <summary>
     /// Modalidade Tarifária
     /// </summary>
-    public enum TpModTar
+    public enum ModalidadeTarifaria
     {
         /// <summary>
         /// 1 - ConvencionalMonomia.
@@ -14250,14 +14250,14 @@ namespace Unimake.Business.DFe.Servicos
         Distribuicao = 10,
     }
 
-    #endregion TpModTar
+    #endregion ModalidadeTarifaria
 
-    #region MotSub
+    #region MotivoSubstituicao
 
     /// <summary>
     /// Motivo da substituição
     /// </summary>
-    public enum MotSub
+    public enum MotivoSubstituicao
     {
         /// <summary>
         /// 1 - Erro De Leitura.
@@ -14290,14 +14290,14 @@ namespace Unimake.Business.DFe.Servicos
         ErroDeTributacao = 05,
     }
 
-    #endregion MotSub
+    #endregion MotivoSubstituicao
 
-    #region TpGrContrat
+    #region TipoGrandezaContratada
 
     /// <summary>
     /// Tipo de grandeza contratada
     /// </summary>
-    public enum TpGrContrat
+    public enum TipoGrandezaContratada
     {
         /// <summary>
         /// 1 - Demanda.
@@ -14324,14 +14324,14 @@ namespace Unimake.Business.DFe.Servicos
         EnergiaContratada = 4,
     }
 
-    #endregion TpGrContrat
+    #endregion TipoGrandezaContratada
 
-    #region TpPosTar
+    #region TipoPostoTarifarioContratado
 
     /// <summary>
     /// Tipo de Posto Tarifário Contratado
     /// </summary>
-    public enum TpPosTar
+    public enum TipoPostoTarifarioContratado
     {
         /// <summary>
         /// 1 - Unico.
@@ -14352,7 +14352,7 @@ namespace Unimake.Business.DFe.Servicos
         ForaPonta = 3,
     }
 
-    #endregion TpPosTar
+    #endregion TipoPostoTarifarioContratado
 
 
     #endregion NF3e

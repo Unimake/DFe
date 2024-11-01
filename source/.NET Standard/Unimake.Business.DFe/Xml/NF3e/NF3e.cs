@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -38,7 +38,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.InfNF3e")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.InfNF3e")]
     [ComVisible(true)]
 #endif
     public class InfNF3e
@@ -247,7 +247,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.Ide")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Ide")]
     [ComVisible(true)]
 #endif
     public class Ide
@@ -292,7 +292,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         }
 
         [XmlElement("tpEmis")]
-        public TpEmis TipoEmissao { get; set; }
+        public TipoEmissaoNF3e TipoEmissao { get; set; }
 
         [XmlElement("nSiteAutoriz")]
         public string NSiteAutoriz { get; set; }
@@ -301,7 +301,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string CMunFG { get; set; }
 
         [XmlElement("finNF3e")]
-        public FinNF3e FinNF3e { get; set; }
+        public FinalidadeNF3e FinNF3e { get; set; }
 
         [XmlElement("verProc")]
         public string VerProc { get; set; }
@@ -328,14 +328,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string XJust { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeDhContField() => TipoEmissao != (TpEmis)1;
-        public bool ShouldSerializeXJustField() => TipoEmissao != (TpEmis)1;
+        public bool ShouldSerializeDhContField() => TipoEmissao != (TipoEmissaoNF3e)1;
+        public bool ShouldSerializeXJust() => TipoEmissao != (TipoEmissaoNF3e)1;
         #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.EmitNF3e")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Emit")]
     [ComVisible(true)]
 #endif
     public class Emit
@@ -358,7 +358,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.EnderEmit")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.EnderEmit")]
     [ComVisible(true)]
 #endif
     public class EnderEmit
@@ -394,15 +394,15 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string Email { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeXCplField() => !string.IsNullOrEmpty(XCpl);
-        public bool ShouldSerializeCEPField() => !string.IsNullOrEmpty(CEP);
-        public bool ShouldSerializeFoneField() => !string.IsNullOrEmpty(Fone);
+        public bool ShouldSerializeXCpl() => !string.IsNullOrEmpty(XCpl);
+        public bool ShouldSerializeCEP() => !string.IsNullOrEmpty(CEP);
+        public bool ShouldSerializeFone() => !string.IsNullOrEmpty(Fone);
         #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.Dest")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Dest")]
     [ComVisible(true)]
 #endif
     public class Dest
@@ -442,24 +442,24 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         #region ShoulSerialize 
 
-        public bool ShouldSerializeIEField() => !string.IsNullOrEmpty(IE);
-        public bool ShouldSerializeIMField() => !string.IsNullOrEmpty(IM);
-        public bool ShouldSerializeCNISField() => !string.IsNullOrEmpty(CNIS);
-        public bool ShouldSerializeXNomeAdicionalField() => !string.IsNullOrEmpty(XNomeAdicional);
+        public bool ShouldSerializeIE() => !string.IsNullOrEmpty(IE);
+        public bool ShouldSerializeIM() => !string.IsNullOrEmpty(IM);
+        public bool ShouldSerializeCNIS() => !string.IsNullOrEmpty(CNIS);
+        public bool ShouldSerializeXNomeAdicional() => !string.IsNullOrEmpty(XNomeAdicional);
 
         #endregion ShouldSerialize
 
     }
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.EnderDest")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.EnderDest")]
     [ComVisible(true)]
 #endif
     public class EnderDest : EnderEmit { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.Acessante")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Acessante")]
     [ComVisible(true)]
 #endif
     public class Acessante
@@ -471,29 +471,29 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string IdCodCliente { get; set; }
 
         [XmlElement("tpAcesso")]
-        public TpAcesso TpAcesso { get; set; }
+        public TipoAcessante TpAcesso { get; set; }
 
         [XmlElement("xNomeUC")]
         public string XNomeUC { get; set; }
 
         [XmlElement("tpClasse")]
-        public TpClasse TpClasse { get; set; }
+        public TipoClasseConsumidora TpClasse { get; set; }
 
         [XmlElement("tpSubClasse")]
 #if INTEROP
-        public TpSubClasse TpSubClasse { get; set; } = (TpSubClasse)(-1);
+        public TipoSubClasseConsumidora TipoSubClasseConsumidora { get; set; } = (TipoSubClasseConsumidora)(-1);
 #else
-        public TpSubClasse TpSubClasse { get; set; }
+        public TipoSubClasseConsumidora? TpSubClasse { get; set; }
 #endif
 
         [XmlElement("tpFase")]
-        public TpFase TpFase { get; set; }
+        public TipoLigacao TpFase { get; set; }
 
         [XmlElement("tpGrpTensao")]
-        public TpGrpTensao TpGrpTensao { get; set; }
+        public GrupoSubGrupoTensao TpGrpTensao { get; set; }
 
         [XmlElement("tpModTar")]
-        public TpModTar TpModTar { get; set; }
+        public ModalidadeTarifaria TpModTar { get; set; }
 
         [XmlElement("latGPS")]
         public string LatGPS { get; set; }
@@ -505,14 +505,14 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string CodRoteiroLeitura { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSerializeIdCodClienteField() => !string.IsNullOrWhiteSpace(IdCodCliente);
-        public bool ShouldSerializeXNomeUCField() => !string.IsNullOrWhiteSpace(XNomeUC);
+        public bool ShouldSerializeIdCodCliente() => !string.IsNullOrWhiteSpace(IdCodCliente);
+        public bool ShouldSerializeXNomeUC() => !string.IsNullOrWhiteSpace(XNomeUC);
 #if INTEROP
-        public bool ShouldSerializeTpSubClasseField() => TpSubClasse != (TpSubClasse)(-1);
+        public bool ShouldSerializeTpSubClasse() => TpSubClasse != (TipoSubClasseConsumidora)(-1);
 #else
-        public bool ShouldSerializeTpSubClasseField() => !TpSubClasse.IsNullOrEmpty();
+        public bool ShouldSerializeTpSubClasse() => !TpSubClasse.IsNullOrEmpty();
 #endif
-        public bool ShouldSerializeCodRoteiroLeituraField() => !string.IsNullOrWhiteSpace(CodRoteiroLeitura);
+        public bool ShouldSerializeCodRoteiroLeitura() => !string.IsNullOrWhiteSpace(CodRoteiroLeitura);
 
         #endregion ShouldSerialize
 
@@ -520,7 +520,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GSub")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GSub")]
     [ComVisible(true)]
 #endif
     public class GSub
@@ -533,17 +533,17 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("motSub")]
 #if INTEROP
-        public MotSub MotSub { get; set; } = (MotSub)(-1);
+        public MotivoSubstituicao MotSub { get; set; } = (MotivoSubstituicao)(-1);
 #else
-        public MotSub MotSub { get; set; }
+        public MotivoSubstituicao? MotSub { get; set; }
 #endif
 
         #region  ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeMotSubField() => MotSub != (MotSub)(-1);
+        public bool ShouldSerializeMotSub() => MotSub != (MotivoSubstituicao)(-1);
 #else
-        public bool ShouldSerializeMotSubField() => !MotSub.IsNullOrEmpty();
+        public bool ShouldSerializeMotSub() => !MotSub.IsNullOrEmpty();
 #endif
 
         #endregion ShouldSerialize
@@ -551,7 +551,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GNF")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GNF")]
     [ComVisible(true)]
 #endif
     public class GNF
@@ -574,7 +574,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("CompetEmis")]
         public string CompetEmisField
         {
-            get => CompetEmis.ToString("yyyy-MM");
+            get => CompetEmis.ToString("yyyyMM");
 #if INTEROP
             set => CompetEmis = DateTime.Parse(value);
 #else
@@ -601,11 +601,16 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("hash115")]
         public string Hash115 { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeHash115() => !string.IsNullOrEmpty(Hash115);
+        #endregion ShouldSerialize
+
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GJudic")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GJudic")]
     [ComVisible(true)]
 #endif
     public class GJudic
@@ -617,19 +622,26 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GGrContrat")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GGrContrat")]
     [ComVisible(true)]
 #endif
     public class GGrContrat
     {
         [XmlElement("tpGrContrat")]
-        public TpGrContrat TpGrContrat { get; set; }
+        public TipoGrandezaContratada TpGrContrat { get; set; }
 
         [XmlElement("tpPosTar")]
-        public TpPosTar TpPosTar { get; set; }
+        public TipoPostoTarifarioContratado TpPosTar { get; set; }
+
+        [XmlIgnore]
+        public double QUnidContrat { get; set; }
 
         [XmlElement("qUnidContrat")]
-        public double QUnidContrat { get; set; }
+        public string QUnidContratField
+        {
+            get => QUnidContrat.ToString("F2", CultureInfo.InvariantCulture);
+            set => QUnidContrat = Converter.ToDouble(value);
+        }
 
         [XmlElement("nContrat")]
         public string NContrat { get; set; }
@@ -637,7 +649,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GMed")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GMed")]
     [ComVisible(true)]
 #endif
     public class GMed
@@ -658,7 +670,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GSCEE")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GSCEE")]
     [ComVisible(true)]
 #endif
     public class GSCEE
@@ -772,7 +784,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GSaldoCred")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GSaldoCred")]
     [ComVisible(true)]
 #endif
     public class GSaldoCred
@@ -798,7 +810,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.NFdet")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.NFdet")]
     [ComVisible(true)]
 #endif
     public class NFdet
@@ -852,7 +864,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.Det")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Det")]
     [ComVisible(true)]
 #endif
     public class Det
@@ -870,7 +882,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GAjusteNF3eAnt")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GAjusteNF3eAnt")]
     [ComVisible(true)]
 #endif
     public class GAjusteNF3eAnt
@@ -884,7 +896,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.DetItemAnt")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.DetItemAnt")]
     [ComVisible(true)]
 #endif
     public class DetItemAnt
@@ -946,7 +958,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.RetTribNF3e")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.RetTribNF3e")]
     [ComVisible(true)]
 #endif
     public class RetTribNF3e
@@ -1004,7 +1016,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.Total")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Total")]
     [ComVisible(true)]
 #endif
     public class Total
@@ -1071,7 +1083,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.ICMSTot")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMSTot")]
     [ComVisible(true)]
 #endif
     public class ICMSTot
@@ -1143,7 +1155,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.VRetTribTot")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.VRetTribTot")]
     [ComVisible(true)]
 #endif
     public class VRetTribTot
@@ -1191,7 +1203,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GFAT")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GFAT")]
     [ComVisible(true)]
 #endif
     public class GFat
@@ -1271,7 +1283,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.EnderCorresp")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.EnderCorresp")]
     [ComVisible(true)]
 #endif
     public class EnderCorresp
@@ -1309,7 +1321,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GPix")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GPix")]
     [ComVisible(true)]
 #endif
     public class GPix
@@ -1320,7 +1332,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GANEEL")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GANEEL")]
     [ComVisible(true)]
 #endif
     public class GANEEL
@@ -1368,7 +1380,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.AutXML")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.AutXML")]
     [ComVisible(true)]
 #endif
     public class AutXML
@@ -1378,7 +1390,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     }
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GHistFat")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GHistFat")]
     [ComVisible(true)]
 #endif
     public class GHistFat
@@ -1428,7 +1440,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GGrandFat")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GGrandFat")]
     [ComVisible(true)]
 #endif
     public class GGrandFat
@@ -1455,7 +1467,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.InfAdicNF3e")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.InfAdicNF3e")]
     [ComVisible(true)]
 #endif
     public class InfAdicNF3e
@@ -1512,7 +1524,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GRespTec")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GRespTec")]
     [ComVisible(true)]
 #endif
     public class GRespTec
@@ -1557,7 +1569,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     }
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.InfNF3eSupl")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.InfNF3eSupl")]
     [ComVisible(true)]
 #endif
     public class InfNF3eSupl
