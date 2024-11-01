@@ -421,11 +421,12 @@ namespace Unimake.Business.DFe.Xml.DARE
         /// </summary>
         [XmlElement("estaOk")]
         [JsonProperty("estaOk")]
-        public bool EstaOk { get; set; }
+        public bool? EstaOk { get; set; }
 
         #region ShouldSerialize
 
         public bool ShouldSerializeMensagens() => Mensagens != null && Mensagens.Count > 0;
+        public bool ShouldSerializeEstaOk() => EstaOk.HasValue;
 
         #endregion ShouldSerialize
     }
@@ -435,13 +436,5 @@ namespace Unimake.Business.DFe.Xml.DARE
     [ProgId("Unimake.Business.DFe.Xml.DARE.ItensParaGeracao")]
     [ComVisible(true)]
 #endif
-    public class ItensParaGeracao : DARE
-    {
-        ///// <summary>
-        ///// Lista de objetos DARE para geração. 
-        ///// Cada item nesta lista representa um DARE individual que compõe o lote.
-        ///// </summary>
-        //[XmlElement("Dare")]
-        //public List<DARE> DARE { get; set; }
-    }
+    public class ItensParaGeracao : DARE { }
 }

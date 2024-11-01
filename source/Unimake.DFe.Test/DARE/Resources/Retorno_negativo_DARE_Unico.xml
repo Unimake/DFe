@@ -1,32 +1,30 @@
-<DareRetorno xmlns="https://portal.fazenda.sp.gov.br/servicos/dare">
+<?xml version="1.0" encoding="utf-8"?>
+<DareRetorno xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://portal.fazenda.sp.gov.br/servicos/dare">
 	<DARE>
+		<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
 		<gerarPDF>true</gerarPDF>
-		<codigoBarra44/>
-		<codigoBarra48/>
-		<cpf/>
+		<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
 		<cidade>São Paulo</cidade>
-		<dataVencimento>2024-09-01T00:00:00</dataVencimento>
-		<observacao/>
-		<endereco>Av. Rangel Pestana, 300</endereco>
+		<dataVencimento>2024-10-30T15:21:23</dataVencimento>
+		<endereco>Rua Exemplo, 123</endereco>
 		<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
-		<razaoSocial>Exemplo Razão Social</razaoSocial>
+		<razaoSocial>Empresa Exemplo S/A</razaoSocial>
 		<receita>
 			<codigo>046-2</codigo>
 			<codigoServicoDARE>4601</codigoServicoDARE>
-			<nome>ICMS - Operações Próprias- RPA (04601)</nome>
+			<nome>ICMS- Operações Próprias- RPA (04601)</nome>
 		</receita>
 		<erro>
-			<mensagens>
-				<mensagem>Falha na geração do Dare - Origem AmbPag.</mensagem>
-				<mensagem>Código: 1 - Descrição: Não foi possível emitir o DARE-SP. Erro no Documento Detalhe: - O campo: Identificação do Contribuinte possui preenchimento obrigatório.</mensagem>
-			</mensagens>
+			<mensagens>Falha na geração do Dare - Origem AmbPag.</mensagens>
+			<mensagens>Código: 1 - Descrição: Não foi possível emitir o DARE-SP. Erro no Documento Detalhe: - O campo: Identificação do Contribuinte possui preenchimento obrigatório.</mensagens>
 		</erro>
+		<observacao>Pagamento referente ao imposto X | Valor total informado pelo usuário.</observacao>
 		<referencia>10/2024</referencia>
-		<telefone>111234-5678</telefone>
+		<telefone>(11) 1234-5678</telefone>
 		<uf>SP</uf>
-		<valor>50000.00</valor>
-		<valorJuros>1.00</valorJuros>
-		<valorMulta>1.00</valorMulta>
-		<valorTotal>50000.00</valorTotal>
+		<valor>1.00</valor>
+		<valorJuros>10.00</valorJuros>
+		<valorMulta>5.00</valorMulta>
+		<valorTotal>16.00</valorTotal>
 	</DARE>
 </DareRetorno>
