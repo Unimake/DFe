@@ -62,14 +62,11 @@ namespace Unimake.Business.DFe.Servicos.DARE
                 {
                     DARE = new DAREUnicoRetorno
                     {
-                        Erro = new ErroRetorno
+                        Erro = new Erro
                         {
-                            Mensagens = new MensagensErro
+                            Mensagens = new List<string>
                             {
-                                Mensagem = new List<string>
-                                {
-                                    "Ocorreu um erro ao tentar obter o objeto no retorno da API"
-                                }
+                                "Ocorreu um erro ao tentar obter o objeto no retorno da API"
                             }
                         }
                     }

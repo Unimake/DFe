@@ -66,7 +66,25 @@ namespace Unimake.Business.DFe
                 case "application/problem+json": //DARE SP retorna isso quando o JSON de envio tem problemas nas tags
                     try
                     {
-                        resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
+                        if (Config.Servico == Servico.DAREEnvio)
+                        {
+                            if (responseString.Contains("itensParaGeracao") || responseString.Contains("errors"))
+                            {
+                                DARELoteRetorno dareLote = JsonConvert.DeserializeObject<DARELoteRetorno>(responseString);
+
+                                resultadoRetorno = dareLote.GerarXML();
+                            }
+                            else
+                            {
+                                DAREUnicoRetorno dareUnico = JsonConvert.DeserializeObject<DAREUnicoRetorno>(responseString);
+
+                                resultadoRetorno = CreateXmlDARERetorno(dareUnico);
+                            }
+                        }
+                        else
+                        {
+                            resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
+                        }
                     }
                     catch
                     {
@@ -223,6 +241,16 @@ namespace Unimake.Business.DFe
             receitas.Receita = listaReceitas;
 
             var xmlDoc = XMLUtility.Serializar<Xml.DARE.Receitas>(receitas);
+
+            return xmlDoc;
+        }
+
+        static XmlDocument CreateXmlDARERetorno(DAREUnicoRetorno dareUnico) 
+        {
+            var dareRetorno = new DARERetorno();
+            dareRetorno.DARE = dareUnico;
+
+            var xmlDoc = XMLUtility.Serializar<DARERetorno>(dareRetorno);
 
             return xmlDoc;
         }

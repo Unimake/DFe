@@ -1,112 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DareLote xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"><!--Essa tag não existe no envio-->
+<DareLote xmlns="https://portal.fazenda.sp.gov.br/servicos/dare">
 	<dadosContribuinteNaoCadastrado>
-		<numeroControleDarePrincipal>789012</numeroControleDarePrincipal>
-		<gerarPDF>false</gerarPDF>
-		<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-		<codigoBarra48/>
-		<cnpj>12345678000199</cnpj>
-		<cpf/>
-		<cidade>Santos</cidade>
-		<dataVencimento>2024-12-31T23:59:59</dataVencimento>
-		<documentoImpressao/>
-		<endereco>Avenida Exemplo, 500</endereco>
-		<pixCopiaCola/>
-		<razaoSocial>Empresa Exemplo em Lote</razaoSocial>
+		<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
+		<gerarPDF>true</gerarPDF>
+		<codigoBarra44>12345678901234</codigoBarra44>
+		<cnpj>12345678000195</cnpj>
+		<cidade>São Paulo</cidade>
+		<dataVencimento>2024-10-31T15:10:49</dataVencimento>
+		<endereco>Rua Exemplo, 123</endereco>
+		<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
+		<razaoSocial>Empresa Exemplo S/A</razaoSocial>
 		<receita>
-			<codigo>202020</codigo>
-			<codigoServicoDARE>3030</codigoServicoDARE>
+			<codigo>046-2</codigo>
+			<codigoServicoDARE>4601</codigoServicoDARE>
 			<escopoUso>2</escopoUso>
-			<nome>Receita ISS</nome>
+			<nome>ICMS - Operações Próprias- RPA (04601)</nome>
 		</receita>
 		<erro>
-			<mensagens/>
+			<mensagens>teste1</mensagens>
+			<mensagens>teste2</mensagens>
+			<mensagens>teste3</mensagens>
 			<estaOk>true</estaOk>
 		</erro>
-		<observacao>Pagamento em lote referente à taxas Y</observacao>
-		<referencia>20241231</referencia>
-		<telefone>11987654321</telefone>
+		<observacao>Pagamento referente ao imposto X</observacao>
+		<referencia>07/2024</referencia>
+		<telefone>(11) 1234-5678</telefone>
 		<uf>SP</uf>
-		<valor>500.00</valor>
-		<valorJuros>12.50</valorJuros>
-		<valorMulta>25.00</valorMulta>
-		<valorTotal>537.50</valorTotal>
-		<linha06/>
-		<linha08/>
+		<valor>1.00</valor>
+		<valorJuros>1.00</valorJuros>
+		<valorMulta>1.00</valorMulta>
+		<valorTotal>1.00</valorTotal>
 	</dadosContribuinteNaoCadastrado>
 	<erro>
-		<mensagens/>
+		<mensagens>teste1</mensagens>
+		<mensagens>teste2</mensagens>
+		<mensagens>teste3</mensagens>
 		<estaOk>true</estaOk>
 	</erro>
 	<tipoAgrupamentoFilhotes>1</tipoAgrupamentoFilhotes>
 	<itensParaGeracao>
-		<Dare>
-			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
-			<gerarPDF>false</gerarPDF>
-			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-			<codigoBarra48/>
-			<cnpj>12345678000199</cnpj>
-			<cpf/>
-			<cidade>São Paulo</cidade>
-			<dataVencimento>2024-12-31T23:59:59</dataVencimento>
-			<documentoImpressao/>
-			<endereco>Rua Exemplo, 100</endereco>
-			<pixCopiaCola/>
-			<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
-			<receita>
-				<codigo>101010</codigo>
-				<codigoServicoDARE>2020</codigoServicoDARE>
-				<escopoUso>1</escopoUso>
-				<nome>Receita ICMS</nome>
-			</receita>
-			<erro>
-				<mensagens/>
-				<estaOk>true</estaOk>
-			</erro>
-			<observacao>Pagamento referente à taxa X</observacao>
-			<referencia>20241231</referencia>
-			<telefone>11987654321</telefone>
-			<uf>SP</uf>
-			<valor>100.00</valor>
-			<valorJuros>2.50</valorJuros>
-			<valorMulta>5.00</valorMulta>
-			<valorTotal>107.50</valorTotal>
-			<linha06/>
-			<linha08/>
-		</Dare>
-		<Dare>
-			<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
-			<gerarPDF>false</gerarPDF>
-			<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-			<codigoBarra48/>
-			<cnpj>12345678000199</cnpj>
-			<cpf/>
-			<cidade>São Paulo</cidade>
-			<dataVencimento>2024-12-31T23:59:59</dataVencimento>
-			<documentoImpressao/>
-			<endereco>Rua Exemplo, 100</endereco>
-			<pixCopiaCola/>
-			<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
-			<receita>
-				<codigo>101010</codigo>
-				<codigoServicoDARE>2020</codigoServicoDARE>
-				<escopoUso>1</escopoUso>
-				<nome>Receita ICMS</nome>
-			</receita>
-			<erro>
-				<mensagens/>
-				<estaOk>true</estaOk>
-			</erro>
-			<observacao>Pagamento referente à taxa X</observacao>
-			<referencia>20241231</referencia>
-			<telefone>11987654321</telefone>
-			<uf>SP</uf>
-			<valor>100.00</valor>
-			<valorJuros>2.50</valorJuros>
-			<valorMulta>5.00</valorMulta>
-			<valorTotal>107.50</valorTotal>
-			<linha06/>
-			<linha08/>
-		</Dare>
+		<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
+		<gerarPDF>true</gerarPDF>
+		<codigoBarra44>12345678901234</codigoBarra44>
+		<cnpj>12345678000195</cnpj>
+		<cidade>São Paulo</cidade>
+		<dataVencimento>2024-10-31T15:10:49</dataVencimento>
+		<endereco>Rua Exemplo, 123</endereco>
+		<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
+		<razaoSocial>Empresa Exemplo S/A</razaoSocial>
+		<receita>
+			<codigo>046-2</codigo>
+			<codigoServicoDARE>4601</codigoServicoDARE>
+			<escopoUso>2</escopoUso>
+			<nome>ICMS - Operações Próprias- RPA (04601)</nome>
+		</receita>
+		<erro>
+			<mensagens>teste4</mensagens>
+			<mensagens>teste5</mensagens>
+			<mensagens>teste6</mensagens>
+			<estaOk>true</estaOk>
+		</erro>
+		<observacao>Pagamento referente ao imposto X</observacao>
+		<referencia>07/2024</referencia>
+		<telefone>(11) 1234-5678</telefone>
+		<uf>SP</uf>
+		<valor>2.00</valor>
+		<valorJuros>2.00</valorJuros>
+		<valorMulta>2.00</valorMulta>
+		<valorTotal>2.00</valorTotal>
+	</itensParaGeracao>
+	<itensParaGeracao>
+		<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
+		<gerarPDF>true</gerarPDF>
+		<codigoBarra44>12345678901234</codigoBarra44>
+		<cnpj>12345678000195</cnpj>
+		<cidade>São Paulo</cidade>
+		<dataVencimento>2024-10-31T15:10:49</dataVencimento>
+		<endereco>Rua Exemplo, 123</endereco>
+		<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
+		<razaoSocial>Empresa Exemplo S/A</razaoSocial>
+		<receita>
+			<codigo>046-2</codigo>
+			<codigoServicoDARE>4601</codigoServicoDARE>
+			<escopoUso>2</escopoUso>
+			<nome>ICMS - Operações Próprias- RPA (04601)</nome>
+		</receita>
+		<erro>
+			<mensagens>teste1</mensagens>
+			<mensagens>teste2</mensagens>
+			<mensagens>teste3</mensagens>
+			<estaOk>true</estaOk>
+		</erro>
+		<observacao>Pagamento referente ao imposto X</observacao>
+		<referencia>07/2024</referencia>
+		<telefone>(11) 1234-5678</telefone>
+		<uf>SP</uf>
+		<valor>3.00</valor>
+		<valorJuros>3.00</valorJuros>
+		<valorMulta>3.00</valorMulta>
+		<valorTotal>3.00</valorTotal>
 	</itensParaGeracao>
 </DareLote>

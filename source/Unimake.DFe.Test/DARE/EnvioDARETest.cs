@@ -11,7 +11,7 @@ namespace Unimake.DFe.Test.DARE
         /// Testar o envio do DARE Unico
         /// </summary>
         [Theory]
-        [Trait("DFe", "ESocial")]
+        [Trait("DFe", "DARE")]
         [InlineData(TipoAmbiente.Producao)]
         [InlineData(TipoAmbiente.Homologacao)]
         public void DAREEnvio(TipoAmbiente tipoAmbiente)
@@ -68,10 +68,10 @@ namespace Unimake.DFe.Test.DARE
         }
 
         /// <summary>
-        /// Testar o envio do DARE Unico
+        /// Testar o envio do DARE Lote
         /// </summary>
         [Theory]
-        [Trait("DFe", "ESocial")]
+        [Trait("DFe", "DARE")]
         [InlineData(TipoAmbiente.Producao)]
         [InlineData(TipoAmbiente.Homologacao)]
         public void DAREEnvioLote(TipoAmbiente tipoAmbiente)
@@ -112,17 +112,18 @@ namespace Unimake.DFe.Test.DARE
                     RazaoSocial = "Empresa Exemplo S/A",
                     Receita = new Business.DFe.Xml.DARE.ReceitaDARE
                     {
-                        Codigo = "001",
-                        CodigoServicoDARE = "101",
-                        Nome = "Receita Exemplo"
+                        Codigo = "046-2",
+                        CodigoServicoDARE = "4601",
+                        Nome = "ICMS - Operações Próprias- RPA (04601)",
+                        EscopoUso = "2"
                     },
-                    Referencia = "REF123",
+                    Referencia = "07/2024",
                     Telefone = "(11) 1234-5678",
                     Uf = "SP",
-                    Valor = 1000.50,
-                    ValorJuros = 10.00,
-                    ValorMulta = 5.00,
-                    ValorTotal = 1015.50,
+                    Valor = 1.00,
+                    ValorJuros = 1.00,
+                    ValorMulta = 1.00,
+                    ValorTotal = 1.00,
                 },
                 Erro = new Business.DFe.Xml.DARE.Erro
                 {
@@ -163,61 +164,58 @@ namespace Unimake.DFe.Test.DARE
                                     RazaoSocial = "Empresa Exemplo S/A",
                                     Receita = new Business.DFe.Xml.DARE.ReceitaDARE
                                     {
-                                        Codigo = "001",
-                                        CodigoServicoDARE = "101",
-                                        Nome = "Receita Exemplo"
+                                        Codigo = "046-2",
+                                        CodigoServicoDARE = "4601",
+                                        Nome = "ICMS - Operações Próprias- RPA (04601)",
+                                        EscopoUso = "2"
                                     },
-                                    Referencia = "REF123",
+                                    Referencia = "07/2024",
                                     Telefone = "(11) 1234-5678",
                                     Uf = "SP",
-                                    Valor = 1000.50,
-                                    ValorJuros = 10.00,
-                                    ValorMulta = 5.00,
-                                    ValorTotal = 1015.50,
+                                    Valor = 2.00,
+                                    ValorJuros = 2.00,
+                                    ValorMulta = 2.00,
+                                    ValorTotal = 2.00,
                         },
 
                         new Business.DFe.Xml.DARE.ItensParaGeracao
                         {
-                           Cnpj = "12345678000195",
-                           Cidade = "São Paulo",
-                           CodigoBarra44 = "12345678901234",
-                           DataVencimento = DateTime.Now,
-                           Endereco = "Rua Exemplo, 123",
-                           Erro = new Business.DFe.Xml.DARE.Erro
-                           {
-                              EstaOk = true,
-                              Mensagens = new List<string>
-                           {
-                           "teste1",
-                           "teste2",
-                           "teste3"
-                           }
-                           },
-                           GerarPDF = true,
-                           NumeroControleDarePrincipal = "123456789",
-                           Observacao = "Pagamento referente ao imposto X",
-                           PixCopiaCola = "abc123def456ghi789",
-                           RazaoSocial = "Empresa Exemplo S/A",
-                           Receita = new Business.DFe.Xml.DARE.ReceitaDARE
-                           {
-                           Codigo = "001",
-                           CodigoServicoDARE = "101",
-                           Nome = "Receita Exemplo"
-                           },
-                           Referencia = "REF123",
-                           Telefone = "(11) 1234-5678",
-                           Uf = "SP",
-                           Valor = 1000.50,
-                           ValorJuros = 10.00,
-                           ValorMulta = 5.00,
-                           ValorTotal = 1015.50,
+                               Cnpj = "12345678000195",
+                               Cidade = "São Paulo",
+                               CodigoBarra44 = "12345678901234",
+                               DataVencimento = DateTime.Now,
+                               Endereco = "Rua Exemplo, 123",
+                               Erro = new Business.DFe.Xml.DARE.Erro
+                               {
+                                  EstaOk = true,
+                                  Mensagens = new List<string>
+                                  {
+                                      "teste1",
+                                      "teste2",
+                                      "teste3"
+                                  }
+                               },
+                               GerarPDF = true,
+                               NumeroControleDarePrincipal = "123456789",
+                               Observacao = "Pagamento referente ao imposto X",
+                               PixCopiaCola = "abc123def456ghi789",
+                               RazaoSocial = "Empresa Exemplo S/A",
+                               Receita = new Business.DFe.Xml.DARE.ReceitaDARE
+                               {
+                                  Codigo = "046-2",
+                                  CodigoServicoDARE = "4601",
+                                  Nome = "ICMS - Operações Próprias- RPA (04601)",
+                                  EscopoUso = "2"
+                               },
+                               Referencia = "07/2024",
+                               Telefone = "(11) 1234-5678",
+                               Uf = "SP",
+                               Valor = 3.00,
+                               ValorJuros = 3.00,
+                               ValorMulta = 3.00,
+                               ValorTotal = 3.00,
                         }
-
-
-
                 }
-
-
 
             };
 
