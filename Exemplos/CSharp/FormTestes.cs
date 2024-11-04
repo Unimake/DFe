@@ -6056,7 +6056,7 @@ namespace TreinamentoDLL
                     DhEmi = DateTime.Now
                 })
                 {
-                    COrgao = UFBrasil.PR,
+                    COrgao = UFBrasil.RS, //Paraná quem autoriza EPEC é SVRS, então tem que ser o código do estado do Rio Grande do Sul. Se fosse SVSP a atender o PR teria que ser UFBRasil.SP.
                     ChCTe = "41200211111111111111111111111111111111111115",
                     CNPJ = "11111111111111",
                     DhEvento = DateTime.Now,
@@ -6069,7 +6069,8 @@ namespace TreinamentoDLL
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.CTe,
-                CertificadoDigital = CertificadoSelecionado
+                CertificadoDigital = CertificadoSelecionado,
+                TipoEmissao = TipoEmissao.ContingenciaEPEC //EPEC o tipo de emissão tem que ser Contingência EPEC
             };
 
             var recepcaoEvento = new ServicoCTe.RecepcaoEvento(xml, configuracao);
