@@ -1559,4 +1559,10 @@
 		<ArqConfig>GetulioVargasRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4322004">
+		<Nome>Triunfo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TriunfoRS.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

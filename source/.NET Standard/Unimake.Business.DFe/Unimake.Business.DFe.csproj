@@ -488,6 +488,7 @@
 		<None Remove="Servicos\Config\NFSe\TresArroiosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresCachoeirasRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresLagoasMS.xml" />
+		<None Remove="Servicos\Config\NFSe\TriunfoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TubaraoSC.xml" />
 		<None Remove="Servicos\Config\NFSe\UberabaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\UberlandiaMG.xml" />
@@ -1136,6 +1137,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NF3e\TO.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AraguariMG.xml" />
