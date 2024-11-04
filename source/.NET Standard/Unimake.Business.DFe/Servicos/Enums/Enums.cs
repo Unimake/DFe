@@ -644,7 +644,7 @@ namespace Unimake.Business.DFe.Servicos
 
         /// <summary>
         /// 31 - Minas Gerais - MG
-        /// </summary
+        /// </summary>
         MG = 31,
 
         /// <summary>
@@ -659,12 +659,12 @@ namespace Unimake.Business.DFe.Servicos
 
         /// <summary>
         /// 41 - Paraná - PR
-        /// </summary
+        /// </summary>
         PR = 41,
 
         /// <summary>
         /// 26 - Pernambuco - PE
-        /// </summary
+        /// </summary>
         PE = 26,
 
         /// <summary>
