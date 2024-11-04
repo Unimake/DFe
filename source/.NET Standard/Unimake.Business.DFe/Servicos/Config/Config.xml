@@ -1565,4 +1565,10 @@
 		<ArqConfig>TriunfoRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3513504">
+		<Nome>Cubatão - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CubataoSP.xml</ArqConfig>
+		<PadraoNFSe>SMARAPD</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

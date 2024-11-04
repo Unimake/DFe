@@ -331,6 +331,7 @@
 		<None Remove="Servicos\Config\NFSe\CotiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CristalinaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
@@ -1135,6 +1136,9 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NF3e\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NF3e\TO.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
