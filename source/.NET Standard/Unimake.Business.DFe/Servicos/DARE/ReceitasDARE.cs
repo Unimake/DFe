@@ -9,7 +9,7 @@ using Unimake.Business.DFe.Xml.DARE;
 namespace Unimake.Business.DFe.Servicos.DARE
 {
     /// <summary>
-    /// Enviar o xml para o webservice
+    /// Enviar o xml de consulta para a API
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -18,17 +18,41 @@ namespace Unimake.Business.DFe.Servicos.DARE
 #endif
     public class ReceitasDARE : ServicoBase, IInteropService<Unimake.Business.DFe.Xml.DARE.Receitas>
     {
+        #region Protected Methods
+
         /// <summary>
-        /// 
+        /// Definir o valor de algumas das propriedades do objeto "Configuracoes"
         /// </summary>
-        public ReceitasDARE(Unimake.Business.DFe.Xml.DARE.Receitas consulta, Configuracao configuracao)
+        /// <exception cref="NotImplementedException"></exception>
+        protected override void DefinirConfiguracao()
+        {
+            var xml = new Unimake.Business.DFe.Xml.DARE.Receitas();
+            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.Receitas>(ConteudoXML);
+
+            if (!Configuracoes.Definida)
+            {
+                Configuracoes.Servico = Servico.DAREReceita;
+                Configuracoes.CodigoUF = (int)UFBrasil.AN;
+
+                base.DefinirConfiguracao();
+            }
+        }
+
+        #endregion Protected Methods
+
+        #region Public Methods
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public ReceitasDARE(Unimake.Business.DFe.Xml.DARE.Receitas receitasDARE, Configuracao configuracao)
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
+            Inicializar(receitasDARE?.GerarXML() ?? throw new ArgumentNullException(nameof(receitasDARE)), configuracao);
         }
 
 #if INTEROP
@@ -66,35 +90,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
         }
 #endif
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pasta"></param>
-        /// <param name="nomeArquivo"></param>
-        /// <param name="conteudoXML"></param>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        protected override void DefinirConfiguracao()
-        {
-            var xml = new Unimake.Business.DFe.Xml.DARE.Receitas();
-            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.Receitas>(ConteudoXML);
-
-            if (!Configuracoes.Definida)
-            {
-                Configuracoes.Servico = Servico.DAREReceita;
-                Configuracoes.CodigoUF = (int)UFBrasil.AN;
-
-                base.DefinirConfiguracao();
-            }
-        }
+        #endregion Public Methods
     }
 }
 

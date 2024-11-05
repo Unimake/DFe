@@ -8,11 +8,12 @@ using Unimake.Business.DFe.Xml.DARE;
 using Unimake.Exceptions;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Unimake.Business.DFe.Servicos.DARE
 {
     /// <summary>
-    /// Enviar o xml para o webservice
+    /// Enviar o xml do DARE lote para a API
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -134,17 +135,39 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <summary>
         /// Gravar o XML de distribuição em uma pasta definida retornado pela API
         /// </summary>
-        /// <param name="pasta"></param>
-        /// <param name="nomeArquivo"></param>
-        /// <param name="conteudoXML"></param>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
+        /// <param name="pasta">Pasta onde será grava o XML de distribuição</param>
+        /// <param name="nomeArquivo">Nome para o arquivo XML</param>
+        public void GravarXmlDistribuicao(string pasta, string nomeArquivo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (Result.Errors != null)
+                {
+                    throw new Exception("API não retornou as informações do lote. Verifique se o lote do DARE foi emitido.");
+                }
+
+                base.GravarXmlDistribuicao(pasta, nomeArquivo, Result.GerarXML().OuterXml);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
         }
 
+        /// <inheritdoc />
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string nomeArquivo)");
+
+        /// <inheritdoc />
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string nomeArquivo)");
+
         /// <summary>
-        /// Gravar Guia do DARE retornadas no envio, quando o DARE é autorizado.
+        /// Gravar Guia do DARE retornada do envio, quando o DARE é autorizado.
         /// </summary>
         /// <param name="pasta">Pasta onde será gravado o PDF das guias</param>
         /// <param name="nomeArquivo">Nome do arquivo PDF das guias que será gravado</param>
