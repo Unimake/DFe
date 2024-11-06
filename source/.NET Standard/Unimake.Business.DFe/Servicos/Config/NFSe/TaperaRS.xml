@@ -3,7 +3,7 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.02">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoProducao>http://177.22.94.131:8081/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://tapera.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:RecepcionarLoteRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
@@ -14,7 +14,7 @@
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="2.02">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoProducao>http://177.22.94.131:8081/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://tapera.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:CancelarNfse><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
@@ -25,7 +25,7 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.02">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoProducao>http://177.22.94.131:8081/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://tapera.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:SubstituirNfse><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
@@ -36,7 +36,7 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.02">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoProducao>http://177.22.94.131:8081/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://tapera.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarLoteRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
@@ -47,7 +47,7 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.02">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoProducao>http://177.22.94.131:8081/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>http://tapera.govbr.cloud/NFSe.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><tem:cabecalho versao="2.02"><tem:versaoDados>2.02</tem:versaoDados></tem:cabecalho></soapenv:Header><soapenv:Body><tem:ConsultarNfsePorRps><tem:xmlEnvio>{xmlBodyScape}</tem:xmlEnvio></tem:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
