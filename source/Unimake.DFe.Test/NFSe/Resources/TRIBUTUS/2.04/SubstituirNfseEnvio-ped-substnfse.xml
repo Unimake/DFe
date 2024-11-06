@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-	<SubstituicaoNfse id="subst" >
+	<SubstituicaoNfse id="ID1" >
 		<Pedido>
-			<InfPedidoCancelamento id="canc">
+			<InfPedidoCancelamento>
 				<IdentificacaoNfse>
 					<Numero>190000000001028</Numero>
 					<CpfCnpj>
@@ -15,8 +15,8 @@
 			</InfPedidoCancelamento>
 		</Pedido>
 		<Rps>
-			<InfDeclaracaoPrestacaoServico id="rpd" >
-				<Rps id="rpd">
+			<InfDeclaracaoPrestacaoServico id="RPS997">
+				<Rps>
 					<IdentificacaoRps>
 						<Numero>997</Numero>
 						<Serie>A2</Serie>
