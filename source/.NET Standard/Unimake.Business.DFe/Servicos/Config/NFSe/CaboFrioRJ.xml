@@ -1,154 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<CancelarNfse versao="2.04">
-			<Descricao>Cancelar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/CancelarNfse</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:CancelarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:CancelarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
 		</CancelarNfse>
-		<ConsultarLoteRps versao="2.04">
-			<Descricao>Consulta Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/ConsultarLoteRps</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
-			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
 		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.04">
+		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/ConsultarNfsePorRps</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<WebEnderecoHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:ConsultarNfsePorRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
 		</ConsultarNfsePorRps>
-		<GerarNfse versao="2.04">
-			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/GerarNfse</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/GerarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta NFSe</Descricao>
+			<WebEnderecoHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api</WebEnderecoProducao>
+			<WebActionHomologacao>https://cabofrio-rj.treino-issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionHomologacao>
+			<WebActionProducao>https://cabofrio-rj.issintegra.com.br/webservices/abrasf/api/ConsultarNfse</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:GerarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:GerarNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:GerarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>env:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<WebSoapVersion>soap12</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
-		</GerarNfse>
-		<RecepcionarLoteRps versao="2.04">
-			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRps</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
-			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
-		</RecepcionarLoteRps>
-		<RecepcionarLoteRpsSincrono versao="2.04">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/RecepcionarLoteRpsSincrono</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:RecepcionarLoteRpsSincronoRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:RecepcionarLoteRpsSincronoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
-			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
-		</RecepcionarLoteRpsSincrono>
-		<SubstituirNfse versao="2.04">
-			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://testecabofrioabrasf.meumunicipio.online/ws/nfs</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://abrasfcabofrio.meumunicipio.online/ws/nfs</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/SubstituirNfse</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
-			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
-			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
-			<WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://testecabofrioabrasf.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:SubstituirNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfs="https://abrasfcabofrio.meumunicipio.online/ws/nfs"><soapenv:Header/><soapenv:Body><nfs:SubstituirNfseRequest><nfseCabecMsg>{oCDATA}<cabecalho versao="2.04" xmlns="http://www.abrasf.org.br/nfse.xsd"><versaoDados>2.04</versaoDados></cabecalho>{cCDATA}</nfseCabecMsg><nfseDadosMsg>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</nfseDadosMsg></nfs:SubstituirNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
-			<TargetNS></TargetNS>
-			<TemCDATA>true</TemCDATA>
-		</SubstituirNfse>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
