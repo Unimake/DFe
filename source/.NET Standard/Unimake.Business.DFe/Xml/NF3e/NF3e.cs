@@ -103,7 +103,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GGrContrat
         /// </summary>
-        public int GGrContratCount => (GGrContrats != null ? GGrContrats.Count : 0);
+        public int GetGGrContratCount => (GGrContrats != null ? GGrContrats.Count : 0);
 #endif
 
         [XmlElement("gMed")]
@@ -143,7 +143,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GMed
         /// </summary>
-        public int GMedCount => (GMeds != null ? GMeds.Count : 0);
+        public int GetGMedCount => (GMeds != null ? GMeds.Count : 0);
 #endif
 
         [XmlElement("gSCEE")]
@@ -186,7 +186,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista NFdet
         /// </summary>
-        public int NFdetCount => (NFdets != null ? NFdets.Count : 0);
+        public int GetNFdetCount => (NFdets != null ? NFdets.Count : 0);
 #endif
 
         [XmlElement("total")]
@@ -235,7 +235,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista AutXML
         /// </summary>
-        public int AutXMLCount => (AutXML != null ? AutXML.Count : 0);
+        public int GetAutXMLCount => (AutXML != null ? AutXML.Count : 0);
 #endif
 
         [XmlElement("infAdic")]
@@ -481,7 +481,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("tpSubClasse")]
 #if INTEROP
-        public TipoSubClasseConsumidora TipoSubClasseConsumidora { get; set; } = (TipoSubClasseConsumidora)(-1);
+        public TipoSubClasseConsumidora TpSubClasse { get; set; } = (TipoSubClasseConsumidora)(-1);
 #else
         public TipoSubClasseConsumidora? TpSubClasse { get; set; }
 #endif
@@ -591,7 +591,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("CompetApur")]
         public string CompetApurField
         {
-            get => CompetApur.ToString("yyyy-MM");
+            get => CompetApur.ToString("yyyyMM");
 #if INTEROP
             set => CompetApur = DateTime.Parse(value);
 #else
@@ -631,7 +631,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public TipoGrandezaContratada TpGrContrat { get; set; }
 
         [XmlElement("tpPosTar")]
-        public TipoPostoTarifarioContratado TpPosTar { get; set; }
+        public TipoPostoTarifario TpPosTar { get; set; }
 
         [XmlIgnore]
         public double QUnidContrat { get; set; }
@@ -660,11 +660,41 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("idMedidor")]
         public string IdMedidor { get; set; }
 
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DMedAnt { get; set; }
+#else
+        public DateTimeOffset DMedAnt { get; set; }
+#endif
+
         [XmlElement("dMedAnt")]
-        public int DMedAnt { get; set; }
+        public string DMedAntField
+        {
+            get => DMedAnt.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DMedAnt = DateTime.Parse(value);
+#else
+            set => DMedAnt = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DMedAtu { get; set; }
+#else
+        public DateTimeOffset DMedAtu { get; set; }
+#endif
 
         [XmlElement("dMedAtu")]
-        public int DMedAtu { get; set; }
+        public string DMedAtuField
+        {
+            get => DMedAtu.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DMedAtu = DateTime.Parse(value);
+#else
+            set => DMedAtu = DateTimeOffset.Parse(value);
+#endif
+        }
 
     }
 
@@ -676,7 +706,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     public class GSCEE
     {
         [XmlElement("tpPartComp")]
-        public string TpPartComp { get; set; }
+        public TipoParticipacaoCompensacao TpPartComp { get; set; }
 
         [XmlElement("gConsumidor")]
         public List<GConsumidor> GConsumidor { get; set; }
@@ -714,7 +744,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GConsumidor
         /// </summary>
-        public int GConsumidorCount => (GConsumidor != null ? GConsumidor.Count : 0);
+        public int GetGConsumidorCount => (GConsumidor != null ? GConsumidor.Count : 0);
 #endif
 
         [XmlElement("gSaldoCred")]
@@ -753,14 +783,53 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GSaldoCred
         /// </summary>
-        public int GSaldoCredCount => (GSaldoCreds != null ? GSaldoCreds.Count : 0);
+        public int GetGSaldoCredCount => (GSaldoCreds != null ? GSaldoCreds.Count : 0);
+#endif
+
+        [XmlElement("gTipoSaldo")]
+        public List<GTipoSaldo> GTipoSaldo { get; set; }
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddGTipoSaldo(GTipoSaldo item)
+        {
+            if (GTipoSaldo == null)
+            {
+                GTipoSaldo = new List<GTipoSaldo>();
+            }
+
+            GTipoSaldo.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista GTipoSaldo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da GTipoSaldo</returns>
+        public GTipoSaldo GetGTipoSaldo(int index)
+        {
+            if ((GTipoSaldo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return GTipoSaldo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista GTipoSaldo
+        /// </summary>
+        public int GetGTipoSaldoCount => (GTipoSaldo != null ? GTipoSaldo.Count : 0);
 #endif
 
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.NF3e.GConsumidor")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GConsumidor")]
     [ComVisible(true)]
 #endif
     public class GConsumidor
@@ -768,17 +837,24 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("idAcessGer")]
         public string IdAcessGer { get; set; }
 
+        [XmlIgnore]
+        public double VPotInst { get; set; }
+
         [XmlElement("vPotInst")]
-        public string vPotInst { get; set; }
+        public string VPotInstField
+        {
+            get => VPotInst.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPotInst = Converter.ToDouble(value);
+        }
 
         [XmlElement("tpFonteEnergia")]
-        public string TpFonteEnergia { get; set; }
+        public TipoFonteEnergia TpFonteEnergia { get; set; }
 
         [XmlElement("enerAloc")]
         public string EnerAloc { get; set; }
 
         [XmlElement("tpPosTar")]
-        public string TpPosTar { get; set; }
+        public TipoPostoTarifario TpPosTar { get; set; }
 
     }
 
@@ -790,23 +866,85 @@ namespace Unimake.Business.DFe.Xml.NF3e
     public class GSaldoCred
     {
         [XmlElement("tpPosTar")]
-        public string TpPosTar { get; set; }
+        public TipoPostoTarifario TpPosTar { get; set; }
+
+        [XmlIgnore]
+        public double VSaldAnt { get; set; }
 
         [XmlElement("vSaldAnt")]
-        public string VSaldAnt { get; set; }
+        public string VSaldAntField
+        {
+            get => VSaldAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => VSaldAnt = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredExpirado { get; set; }
 
         [XmlElement("vCredExpirado")]
-        public string VCredExpirado { get; set; }
+        public string VCredExpiradoField
+        {
+            get => VCredExpirado.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredExpirado = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VSaldAtual { get; set; }
 
         [XmlElement("vSaldAtual")]
-        public string VSaldAtual { get; set; }
+        public string VSaldAtualField
+        {
+            get => VSaldAtual.ToString("F2", CultureInfo.InvariantCulture);
+            set => VSaldAtual = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCredExpirar { get; set; }
 
         [XmlElement("vCredExpirar")]
-        public string VCredExpirar { get; set; }
+        public string VCredExpirarField
+        {
+            get => VCredExpirar.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredExpirar = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime CompetExpirar { get; set; }
+#else
+        public DateTimeOffset CompetExpirar { get; set; }
+#endif
 
         [XmlElement("CompetExpirar")]
-        public string CompetExpirar { get; set; }
+        public string CompetExpirarField
+        {
+            get => CompetExpirar.ToString("yyyyMM");
+#if INTEROP
+            set => CompetExpirar = DateTime.Parse(value);
+#else
+            set => CompetExpirar = DateTimeOffset.Parse(value);
+#endif
+        }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GTipoSaldo")]
+    [ComVisible(true)]
+#endif
+    public class GTipoSaldo
+    {
+        [XmlElement("gSaldoCred")]
+        public List<GSaldoCred> GSaldoCred { get; set; }
+
+        /// <summary>
+        /// Número referente ao agrupador de saldos por posto tarifário.
+        /// Aceita valores de 01 a 10. Serve para organizar a informação dos grupos de saldos.
+        /// </summary>
+        [XmlAttribute(AttributeName = "nTipoSaldo", DataType = "token")]
+        public int NTipoSaldo { get; set; }
+    }
+
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -830,7 +968,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="Det">Elemento</param>
-        public void AddDetNF3e(Det item)
+        public void AddDet(Det item)
         {
             if (Det == null)
             {
@@ -858,7 +996,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Det
         /// </summary>
-        public int DetCount => (Det != null ? Det.Count : 0);
+        public int GetDetCount=> (Det != null ? Det.Count : 0);
 #endif
     }
 
@@ -876,8 +1014,15 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("gAjusteNF3eAnt")]
         public GAjusteNF3eAnt GAjusteNF3eAnt { get; set; }
 
+        /// <summary>
+        /// Grupo de informações referentes a item da NF-3e anterior
+        /// Este grupo somente deverá ser preenchido para detalhar item ajustado de nota anterior nos casos de item alterado ou excluído
+        /// </summary>
         [XmlElement("detItemAnt")]
         public DetItemAnt DetItemAnt { get; set; }
+
+        [XmlElement("detItem")]
+        public DetItem DetItem { get; set; }
     }
 
 #if INTEROP
@@ -888,10 +1033,10 @@ namespace Unimake.Business.DFe.Xml.NF3e
     public class GAjusteNF3eAnt
     {
         [XmlElement("tpAjuste")]
-        public string TpAjuste { get; set; }
+        public TipoAjuste TpAjuste { get; set; }
 
         [XmlElement("motAjuste")]
-        public string MotAjuste { get; set; }
+        public MotivoAjuste MotAjuste { get; set; }
     }
 
 #if INTEROP
@@ -899,68 +1044,1194 @@ namespace Unimake.Business.DFe.Xml.NF3e
     [ProgId("Unimake.Business.DFe.Xml.NF3e.DetItemAnt")]
     [ComVisible(true)]
 #endif
+    /// <summary>
+    /// Grupo de informações referentes a item da NF-3e anterior
+    /// Este grupo somente deverá ser preenchido para detalhar item ajustado de nota anterior nos casos de item alterado ou excluído
+    /// </summary>
     public class DetItemAnt
     {
         [XmlAttribute("nItemAnt")]
         public string NItemAnt { get; set; }
 
+        [XmlIgnore]
+        public double VItem { get; set; }
+
         [XmlElement("vItem")]
-        public string VItem { get; set; }
+        public string VItemField
+        {
+            get => VItem.ToString("F2", CultureInfo.InvariantCulture);
+            set => VItem = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double QFaturada { get; set; }
 
         [XmlElement("qFaturada")]
-        public string QFaturada { get; set; }
+        public string QFaturadaField
+        {
+            get => QFaturada.ToString("F2", CultureInfo.InvariantCulture);
+            set => QFaturada = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VProd { get; set; }
 
         [XmlElement("vProd")]
-        public string VProd { get; set; }
+        public string VProdField
+        {
+            get => VProd.ToString("F2", CultureInfo.InvariantCulture);
+            set => VProd = Converter.ToDouble(value);
+        }
 
+        /// <summary>
+        /// Código de classificação
+        /// Tabela de Classificação de Item da NF-3e de Energia Elétrica (validar por RV)
+        /// </summary>
         [XmlElement("cClass")]
         public string CClass { get; set; }
 
+        [XmlIgnore]
+        public double VBC { get; set; }
+
         [XmlElement("vBC")]
-        public string VBC { get; set; }
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMS { get; set; }
 
         [XmlElement("pICMS")]
-        public string PICMS { get; set; }
+        public string PICMSField
+        {
+            get => PICMS.ToString("F2", CultureInfo.InvariantCulture);
+            set => PICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMS { get; set; }
 
         [XmlElement("vICMS")]
-        public string VICMS { get; set; }
+        public string VICMSField
+        {
+            get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMS = Converter.ToDouble(value);
+        }
 
-        [XmlElement("vFCP")]
-        public string VFCP { get; set; }
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("VFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCST { get; set; }
 
         [XmlElement("vBCST")]
-        public string VBCST { get; set; }
+        public string VBCSTField
+        {
+            get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSST { get; set; }
 
         [XmlElement("vICMSST")]
-        public string VICMSST { get; set; }
+        public string VICMSSTField
+        {
+            get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCPST { get; set; }
 
         [XmlElement("vFCPST")]
-        public string VFCPST { get; set; }
+        public string VFCPSTField
+        {
+            get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCPST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VPIS { get; set; }
 
         [XmlElement("vPIS")]
-        public string VPIS { get; set; }
+        public string VPISField
+        {
+            get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPIS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VPISEfet { get; set; }
 
         [XmlElement("vPISEfet")]
-        public string VPISEfet { get; set; }
+        public string VPISEfetField
+        {
+            get => VPISEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPISEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCOFINS { get; set; }
 
         [XmlElement("vCOFINS")]
-        public string VCOFINS { get; set; }
+        public string VCOFINSField
+        {
+            get => VCOFINS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCOFINS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VCOFINSEfet { get; set; }
 
         [XmlElement("vCOFINSEfet")]
-        public string VCOFINSEfet { get; set; }
+        public string VCOFINSEfetField
+        {
+            get => VCOFINSEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCOFINSEfet = Converter.ToDouble(value);
+        }
 
         [XmlElement("retTrib")]
         public RetTribNF3e RetTribNF3e { get; set; }
 
         [XmlElement("indDevolucao")]
-        public int IndDevolucao { get; set; }
+#if INTEROP
+        public SimNao IndDevolucao { get; set; } = (SimNao)(-1);
+#else
+        public SimNao IndDevolucao { get; set; }
+#endif
+
+        #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeIndDevolucao() => IndDevolucao != (SimNao)(-1);
+#else
+        public bool ShouldSerializeIndDevolucao() => IndDevolucao != (SimNao)0;
+#endif
+
+
+        #endregion ShouldSerialize
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.DetItem")]
+    [ComVisible(true)]
+#endif
+    public class DetItem
+    {
+        /// <summary>
+        /// Grupo de Tarifas por Período
+        /// </summary>
+        [XmlElement("gTarif")]
+        public GTarif GTarif { get; set; }
+
+        /// <summary>
+        /// Grupo de Adicional de Bandeira
+        /// </summary>
+        [XmlElement("gAdBand")]
+        public GAdBand GAdBand { get; set; }
+
+        [XmlElement("prod")]
+        public Prod Prod { get; set; }
+
+        [XmlElement("imposto")]
+        public Imposto Imposto { get; set; }
+
+        //[XmlElement("gProcRef")]
+        //public GProcRef GProcRef { get; set; }
+
+        //[XmlElement("gContab")]
+        //public GContab GContab { get; set; }
+
+        //[XmlElement("infAdProd")]
+        //public InfAdProd InfAdProd { get; set; }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GTarif")]
+    [ComVisible(true)]
+#endif
+    public class GTarif
+    {
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DIniTarif { get; set; }
+#else
+        public DateTimeOffset DIniTarif { get; set; }
+#endif
+
+        [XmlElement("dIniTarif")]
+        public string DIniTarifField
+        {
+            get => DIniTarif.ToString("yyyy-MM-dd"); //yyyy-MM-ddTHH:mm:sszzz
+#if INTEROP
+            set => DIniTarif = DateTime.Parse(value);
+#else
+            set => DIniTarif = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DFimTarif { get; set; }
+#else
+        public DateTimeOffset DFimTarif { get; set; }
+#endif
+
+        [XmlElement("dFimTarif")]
+        public string DFimTarifField
+        {
+            get => DFimTarif.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DFimTarif = DateTime.Parse(value);
+#else
+            set => DFimTarif = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("tpAto")]
+        public TipoAto TpAto { get; set; }
+
+        [XmlElement("nAto")]
+        public string NAto { get; set; }
+
+        [XmlElement("anoAto")]
+        public string AnoAto { get; set; }
+
+        [XmlElement("tpTarif")]
+        public TipoTarifa TpTarif { get; set; }
+
+        [XmlElement("cPosTarif")]
+        public TipoPostoTarifario CPosTarif { get; set; }
+
+        [XmlElement("uMed")]
+        public UMed UMed { get; set; }
+
+        [XmlIgnore]
+        public double VTarifHom { get; set; }
+
+        [XmlElement("vTarifHom")]
+        public string VTarifHomField
+        {
+            get => VTarifHom.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTarifHom = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VTarifAplic { get; set; }
+
+        [XmlElement("vTarifAplic")]
+        public string VTarifAplicField
+        {
+            get => VTarifAplic.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTarifAplic = Converter.ToDouble(value);
+        }
+
+        [XmlElement("motDifTarif")]
+#if INTEROP
+        public MotivoTarifaDiferente MotDifTarif {  get; set; } = (MotivoTarifaDiferente)(-1);
+#else
+        public MotivoTarifaDiferente MotDifTarif { get; set; }
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVTarifAplicField() => VTarifAplicField != null;
+
+#if INTEROP
+        public bool ShouldSerializeMotDifTarif() => MotDifTarif != (MotivoTarifaDiferente)(-1);
+#else
+        public bool ShouldSerializeMotDifTarif() => MotDifTarif != (MotivoTarifaDiferente)(-1);
+#endif
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GAdBand")]
+    [ComVisible(true)]
+#endif
+    public class GAdBand
+    {
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DIniAdBand { get; set; }
+#else
+        public DateTimeOffset DIniAdBand { get; set; }
+#endif
+
+        [XmlElement("dIniAdBand")]
+        public string DIniAdBandField
+        {
+            get => DIniAdBand.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DIniAdBand = DateTime.Parse(value);
+#else
+            set => DIniAdBand = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DFimAdBand { get; set; }
+#else
+        public DateTimeOffset DFimAdBand { get; set; }
+#endif
+
+        [XmlElement("dFimAdBand")]
+        public string DFimAdBandField
+        {
+            get => DFimAdBand.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DFimAdBand = DateTime.Parse(value);
+#else
+            set => DFimAdBand = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        [XmlElement("tpBand")]
+        public TipoBandeira TpBand { get; set; }
+
+        [XmlIgnore]
+        public double VAdBand { get; set; }
+
+        [XmlElement("vAdBand")]
+        public string VAdBandField
+        {
+            get => VAdBand.ToString("F2", CultureInfo.InvariantCulture);
+            set => VAdBand = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VAdBandAplic { get; set; }
+
+        [XmlElement("vAdBandAplic")]
+        public string VAdBandAplicField
+        {
+            get => VAdBandAplic.ToString("F2", CultureInfo.InvariantCulture);
+            set => VAdBandAplic = Converter.ToDouble(value);
+        }
+
+        [XmlElement("motDifBand")]
+#if INTEROP
+        public MotivoTarifaDiferente MotDifBand {  get; set; } = (MotivoTarifaDiferente)(-1);
+#else
+        public MotivoTarifaDiferente? MotDifBand { get; set; }
+#endif
+
+        #region ShouldSerialize
+        public bool ShouldSerializeVAdBandAplicField() => VAdBandAplicField != null;
+#if INTEROP
+        public bool ShouldSerializeMotDifBand() => MotDifBand != (MotivoTarifaDiferente)(-1);
+#else
+        public bool ShouldSerializeMotDifBand() => MotDifBand != null;
+#endif
+
+        #endregion ShouldSerialize
+
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Prod")]
+    [ComVisible(true)]
+#endif
+    public class Prod
+    {
+        [XmlElement("indOrigemQtd")]
+        public IndOrigemQtd IndOrigemQtd { get; set; }
+
+        [XmlElement("gMedicao")]
+        public GMedicao GMedicao { get; set; }
+
+        [XmlElement("cProd")]
+        public string CProd { get; set; }
+
+        [XmlElement("xProd")]
+        public string XProd { get; set; }
+
+        [XmlElement("cClass")]
+        public string CClass { get; set; }
+
+        [XmlElement("CFOP")]
+        public string CFOP { get; set; }
+
+        [XmlElement("uMed")]
+        public UMed UMed { get; set; }
+
+        [XmlIgnore]
+        public double QFaturada { get; set; }
+
+        [XmlElement("qFaturada")]
+        public string QFaturadaField
+        {
+            get => QFaturada.ToString("F2", CultureInfo.InvariantCulture);
+            set => QFaturada = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VItem { get; set; }
+
+        [XmlElement("vItem")]
+        public string VItemField
+        {
+            get => VItem.ToString("F2", CultureInfo.InvariantCulture);
+            set => VItem = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VProd { get; set; }
+
+        [XmlElement("vProd")]
+        public string VProdField
+        {
+            get => VProd.ToString("F2", CultureInfo.InvariantCulture);
+            set => VProd = Converter.ToDouble(value);
+        }
+
+        [XmlElement("indDevolucao")]
+#if INTEROP
+        public SimNao IndDevolucao { get; set; } = (SimNao)(-1);
+#else
+        public SimNao? IndDevolucao { get; set; }
+#endif
+
+        [XmlElement("indPrecoACL")]
+#if INTEROP
+        public SimNao IndPrecoACL { get; set; } = (SimNao)(-1);
+#else
+        public SimNao? IndPrecoACL { get; set; }
+#endif
+
+
+        #region ShouldSerialize
+        public bool ShouldSerializeCFOP() => !string.IsNullOrEmpty(CFOP);
+#if INTEROP
+        public bool ShouldSerializeIndDevolucao() => IndDevolucao != (SimNao)(-1);
+#else
+        public bool ShouldSerializeIndDevolucao() => IndDevolucao != null;
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeIndPrecoACL () => IndPrecoACL  != (SimNao)(-1);
+#else
+        public bool ShouldSerializeIndPrecoACL() => IndPrecoACL != null;
+#endif
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GMedicao")]
+    [ComVisible(true)]
+#endif
+    public class GMedicao
+    {
+        [XmlElement("nMed")]
+        public string NMed { get; set; }
+
+        [XmlElement("nContrat")]
+        public string NContrat { get; set; }
+
+        [XmlElement("gMedida")]
+        public GMedida GMedida { get; set; }
+
+        [XmlElement("tpMotNaoLeitura")]
+        public TipoMotivoNaoLeitura TpMotNaoLeitura { get; set; }
+
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GMedida")]
+    [ComVisible(true)]
+#endif
+    public class GMedida
+    {
+        [XmlElement("tpGrMed")]
+        public TipoGrMedida TipoGrMedida { get; set; }
+
+        [XmlElement("cPosTarif")]
+        public TipoPostoTarifario CPosTarif { get; set; }
+
+        [XmlElement("uMed")]
+        public UMed UMed { get; set; }
+
+        [XmlIgnore]
+        public double VMedAnt { get; set; }
+
+        [XmlElement("vMedAnt")]
+        public string VMedAntField
+        {
+            get => VMedAnt.ToString("F2", CultureInfo.InvariantCulture);
+            set => VMedAnt = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VMedAtu { get; set; }
+
+        [XmlElement("vMedAtu")]
+        public string VMedAtuField
+        {
+            get => VMedAtu.ToString("F2", CultureInfo.InvariantCulture);
+            set => VMedAtu = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VConst { get; set; }
+
+        [XmlElement("vConst")]
+        public string VConstField
+        {
+            get => VConst.ToString("F2", CultureInfo.InvariantCulture);
+            set => VConst = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VMed { get; set; }
+
+        [XmlElement("vMed")]
+        public string VMedField
+        {
+            get => VMed.ToString("F2", CultureInfo.InvariantCulture);
+            set => VMed = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VMedPerdaTec { get; set; }
+
+        [XmlElement("VMedPerdaTec")]
+        public string VMedPerdaTecField
+        {
+            get => VMedPerdaTec.ToString("F2", CultureInfo.InvariantCulture);
+            set => VMedPerdaTec = Converter.ToDouble(value);
+        }
+    }
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.Imposto")]
+    [ComVisible(true)]
+#endif
+    public class Imposto
+    {
+        [XmlElement("ICMS00")]
+        public ICMS00 ICMS00 { get; set; }
+
+        [XmlElement("ICMS10")]
+        public ICMS10 ICMS10 { get; set; }
+
+        [XmlElement("ICMS20")]
+        public ICMS20 ICMS20 { get; set; }
+
+        [XmlElement("ICMS40")]
+        public ICMS40 ICMS40 { get; set; }
+
+        [XmlElement("ICMS51")]
+        public ICMS51 ICMS51 { get; set; }
+
+        [XmlElement("ICMS60")]
+        public ICMS60 ICMS60 { get; set; }
+
+        [XmlElement("ICMS90")]
+        public ICMS90 ICMS90 { get; set; }
+
+        [XmlElement("indSemCST")]
+        public SimNao IndSemCST {  get; set; }
+
+        [XmlElement("PIS")]
+        public PIS PIS { get; set; }
+
+        [XmlElement("PISEfet")]
+        public PISEfet PISEfet {  get; set; }
+
+        //[XmlElement("COFINS")]
+        //public COFINS COFINS { get; set; }
+    }
+
+    #region ICMS
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS00")]
+    [ComVisible(true)]
+#endif
+    public class ICMS00
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlIgnore]
+        public double VBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMS { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMSField
+        {
+            get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMSField
+        {
+            get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCP { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCPField
+        {
+            get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCP = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+        public bool ShouldSerializePFCPField() => PFCP > 0;
+        public bool ShouldSerializeVFCPField() => VFCP > 0;
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS10")]
+    [ComVisible(true)]
+#endif
+    public class ICMS10
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlIgnore]
+        public double VBCST { get; set; }
+
+        [XmlElement("vBCST")]
+        public string VBCSTField
+        {
+            get => VBCST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMSST { get; set; }
+
+        [XmlElement("pICMSST")]
+        public string PICMSSTField
+        {
+            get => PICMSST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMSST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSST { get; set; }
+
+        [XmlElement("vICMSST")]
+        public string VICMSSTField
+        {
+            get => VICMSST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCPST { get; set; }
+
+        [XmlElement("pFCPST")]
+        public string PFCPSTField
+        {
+            get => PFCPST.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCPST = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCPST { get; set; }
+
+        [XmlElement("vFCPST")]
+        public string VFCPSTField
+        {
+            get => VFCPST.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCPST = Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+        public bool ShouldSerializePFCPField() => PFCPST > 0;
+        public bool ShouldSerializeVFCPField() => VFCPST > 0;
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS20")]
+    [ComVisible(true)]
+#endif
+    public class ICMS20
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlIgnore]
+        public double PRedBC { get; set; }
+
+        [XmlElement("pRedBC")]
+        public string PRedBCField
+        {
+            get => PRedBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => PRedBC = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMS { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMSField
+        {
+            get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMSField
+        {
+            get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        [XmlIgnore]
+        public double PFCP { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCPField
+        {
+            get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCP = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+        public bool ShouldSerializePFCPField() => PFCP > 0;
+        public bool ShouldSerializeVFCPField() => VFCP > 0;
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS40")]
+    [ComVisible(true)]
+#endif
+    public class ICMS40
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS51")]
+    [ComVisible(true)]
+#endif
+    public class ICMS51 : ICMS40 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS60")]
+    [ComVisible(true)]
+#endif
+    public class ICMS60
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlIgnore]
+        public double VBCSTRet { get; set; }
+
+        [XmlElement("vBCSTRet")]
+        public string VBCSTRetField
+        {
+            get => VBCSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCSTRet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMSSTRet { get; set; }
+
+        [XmlElement("pICMSSTRet")]
+        public string PICMSSTRetField
+        {
+            get => PICMSSTRet.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMSSTRet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSSubstituto { get; set; }
+
+        [XmlElement("vICMSSubstituto")]
+        public string VICMSSubstitutoField
+        {
+            get => VICMSSubstituto.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSSubstituto = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSSTRet { get; set; }
+
+        [XmlElement("vICMSSTRet")]
+        public string VICMSSTRetField
+        {
+            get => VICMSSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSSTRet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCFCPSTRet { get; set; }
+
+        [XmlElement("vBCFCPSTRet")]
+        public string VBCFCPSTRetField
+        {
+            get => VBCFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCFCPSTRet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PFCPSTRet { get; set; }
+
+        [XmlElement("pFCPSTRet")]
+        public string PFCPSTRetField
+        {
+            get => PFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => PFCPSTRet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCPSTRet { get; set; }
+
+        [XmlElement("vFCPSTRet")]
+        public string VFCPSTRetField
+        {
+            get => VFCPSTRet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCPSTRet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PRedBCEfet { get; set; }
+
+        [XmlElement("pRedBCEfet")]
+        public string PRedBCEfetField
+        {
+            get => PRedBCEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => PRedBCEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VBCEfet { get; set; }
+
+        [XmlElement("vBCEfet")]
+        public string VBCEfetField
+        {
+            get => VBCEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMSEfet { get; set; }
+
+        [XmlElement("pICMSEfet")]
+        public string PICMSEfetField
+        {
+            get => PICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => PICMSEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSEfet { get; set; }
+
+        [XmlElement("vICMSEfet")]
+        public string VICMSEfetField
+        {
+            get => VICMSEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.ICMS90")]
+    [ComVisible(true)]
+#endif
+    public class ICMS90
+    {
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        [XmlIgnore]
+        public double VBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PICMS { get; set; }
+
+        [XmlElement("pICMS")]
+        public string PICMSField
+        {
+            get => PICMS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMS { get; set; }
+
+        [XmlElement("vICMS")]
+        public string VICMSField
+        {
+            get => VICMS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VICMSDeson { get; set; }
+
+        [XmlElement("vICMSDeson")]
+        public string VICMSDesonField
+        {
+            get => VICMSDeson.ToString("F2", CultureInfo.InvariantCulture);
+            set => VICMSDeson = Converter.ToDouble(value);
+        }
+
+        [XmlElement("cBenef")]
+        public string CBenef { get; set; }
+
+        [XmlIgnore]
+        public double PFCP { get; set; }
+
+        [XmlElement("pFCP")]
+        public string PFCPField
+        {
+            get => PFCP.ToString("F4", CultureInfo.InvariantCulture);
+            set => PFCP = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VFCP { get; set; }
+
+        [XmlElement("vFCP")]
+        public string VFCPField
+        {
+            get => VFCP.ToString("F2", CultureInfo.InvariantCulture);
+            set => VFCP = Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
+        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+
+        #endregion ShouldSerialize
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.PIS")]
+    [ComVisible(true)]
+#endif
+    public class PIS
+    {
+        [XmlElement("CST")]
+        public CST CST { get; set; }
+
+        [XmlIgnore]
+        public double VBC { get; set; }
+
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PPIS { get; set; }
+
+        [XmlElement("pPIS")]
+        public string PPISField
+        {
+            get => PPIS.ToString("F2", CultureInfo.InvariantCulture);
+            set => PPIS = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VPIS { get; set; }
+
+        [XmlElement("vPIS")]
+        public string VPISField
+        {
+            get => VPIS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPIS = Converter.ToDouble(value);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.PISEfet")]
+    [ComVisible(true)]
+#endif
+    public class PISEfet
+    {
+        [XmlIgnore]
+        public double VBCPISEfet { get; set; }
+
+        [XmlElement("vBCPISEfet")]
+        public string VBCPISEfetField
+        {
+            get => VBCPISEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBCPISEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double PPISEfet { get; set; }
+
+        [XmlElement("pPISEfet")]
+        public string PPISEfetField
+        {
+            get => PPISEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => PPISEfet = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
+        public double VPISEfet { get; set; }
+
+        [XmlElement("vPISEfet")]
+        public string VPISEfetField
+        {
+            get => VPISEfet.ToString("F2", CultureInfo.InvariantCulture);
+            set => VPISEfet = Converter.ToDouble(value);
+        }
+    }
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NF3e.RetTribNF3e")]
     [ComVisible(true)]
 #endif
+
+    #endregion ICMS
+
     public class RetTribNF3e
     {
         [XmlIgnore]
@@ -1231,7 +2502,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime DApresFat  { get; set; }
+        public DateTime DApresFat { get; set; }
 #else
         public DateTimeOffset DApresFat { get; set; }
 #endif
@@ -1241,7 +2512,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => DApresFat.ToString(""); //yyyy-MM-ddTHH:mm:sszzz
 #if INTEROP
-            set => DApresFat  = DateTime.Parse(value);
+            set => DApresFat = DateTime.Parse(value);
 #else
             set => DApresFat = DateTimeOffset.Parse(value);
 #endif
@@ -1249,7 +2520,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlIgnore]
 #if INTEROP
-        public DateTime DProxLeitura  { get; set; }
+        public DateTime DProxLeitura { get; set; }
 #else
         public DateTimeOffset DProxLeitura { get; set; }
 #endif
@@ -1259,7 +2530,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => DProxLeitura.ToString(""); //yyyy-MM-ddTHH:mm:sszzz
 #if INTEROP
-            set => DProxLeitura  = DateTime.Parse(value);
+            set => DProxLeitura = DateTime.Parse(value);
 #else
             set => DProxLeitura = DateTimeOffset.Parse(value);
 #endif
@@ -1374,7 +2645,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GHistFat
         /// </summary>
-        public int GHistFatCount => (GHistFats != null ? GHistFats.Count : 0);
+        public int GetGHistFatCount => (GHistFats != null ? GHistFats.Count : 0);
 #endif
     }
 
@@ -1434,7 +2705,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista GGrandFat
         /// </summary>
-        public int GGrandFatCount => (GGrandFats != null ? GGrandFats.Count : 0);
+        public int GetGGrandFatCount => (GGrandFats != null ? GGrandFats.Count : 0);
 #endif
     }
 
@@ -1518,7 +2789,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista InfCpl
         /// </summary>
-        public int InfCplCount => (InfCpls != null ? InfCpls.Count : 0);
+        public int GetInfCplCount => (InfCpls != null ? InfCpls.Count : 0);
 #endif
     }
 

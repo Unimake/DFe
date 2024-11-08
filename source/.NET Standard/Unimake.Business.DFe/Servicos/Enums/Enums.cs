@@ -14291,34 +14291,537 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TipoGrandezaContratada
 
-    #region TipoPostoTarifarioContratado
+    #region TipoPostoTarifario
 
     /// <summary>
     /// Tipo de Posto Tarifário Contratado
     /// </summary>
-    public enum TipoPostoTarifarioContratado
+    public enum TipoPostoTarifario
     {
         /// <summary>
-        /// 1 - Unico.
+        /// 0 - Unico.
+        /// </summary>
+        [XmlEnum("0")]
+        Unico = 0,
+
+        /// <summary>
+        /// 1 - Ponta.
         /// </summary>
         [XmlEnum("1")]
-        Unico = 1,
+        Ponta = 1,
 
         /// <summary>
-        /// 2 - Ponta.
+        /// 2 - ForaPonta.
         /// </summary>
         [XmlEnum("2")]
-        Ponta = 2,
+        ForaPonta = 2,
 
         /// <summary>
-        /// 3 - ForaPonta.
+        /// 3 - Intermediario 
         /// </summary>
         [XmlEnum("3")]
-        ForaPonta = 3,
+        Intermediario = 3,
+
+        /// <summary>
+        /// 4 - Ponta Reservado
+        /// </summary>
+        [XmlEnum("4")]
+        PontaReservado = 4,
+
+        /// <summary>
+        /// 5 - Fora ponta Reservado
+        /// </summary>
+        [XmlEnum("5")]
+        ForaPontaReservado = 5,
+
+        /// <summary>
+        /// 6 - Intermediario Reservado
+        /// </summary>
+        [XmlEnum("6")]
+        IntermediarioReservado = 6,
+
+        /// <summary>
+        /// 6 - Reservado
+        /// </summary>
+        [XmlEnum("7")]
+        Reservado = 7,
     }
 
-    #endregion TipoPostoTarifarioContratado
+    #endregion TipoPostoTarifario
 
+    #region TipoPartarticipacaoCompensacao
+
+    /// <summary>
+    /// Tipo de participação no sistema de compensação de energia elétrica
+    /// </summary>
+    public enum TipoParticipacaoCompensacao
+    {
+        /// <summary>
+        /// 1 - Mini ou microgeração (somente uma UC);
+        /// </summary>
+        [XmlEnum("1")]
+        MiniOuMicroSomenteUmaUC = 1,
+
+        /// <summary>
+        /// 2 - Múltiplas unidades consumidoras (condomínio em área definida);
+        /// </summary>
+        [XmlEnum("2")]
+        CondominioMultiplasUC = 2,
+
+        /// <summary>
+        /// 3 - Autoconsumo remoto;
+        /// </summary>
+        [XmlEnum("3")]
+        AutoconsumoRemoto = 3,
+
+        /// <summary>
+        /// 4 - Geração compartilhada (consórcio ou cooperativa);
+        /// </summary>
+        [XmlEnum("4")]
+        GeracaoCompartilhada = 4,
+
+        /// <summary>
+        /// 5 - Mista (utilizar quando enquadrado em mais de um tipo de participação)
+        /// </summary>
+        [XmlEnum("5")]
+        Mista = 5,
+
+    }
+
+    #endregion TipoPartarticipacaoCompensacao
+
+    #region TipoFonteEnergia
+
+    /// <summary>
+    /// Tipo da fonte de energia
+    /// </summary>
+    public enum TipoFonteEnergia
+    {
+        /// <summary>
+        /// 1 - Hidraulica.
+        /// </summary>
+        [XmlEnum("1")]
+        Hidraulica = 1,
+
+        /// <summary>
+        /// 2 - Solar.
+        /// </summary>
+        [XmlEnum("2")]
+        Solar = 2,
+
+        /// <summary>
+        /// 3 - Eolica.
+        /// </summary>
+        [XmlEnum("3")]
+        Eolica = 3,
+
+        /// <summary>
+        /// 4 - Termica.
+        /// </summary>
+        [XmlEnum("4")]
+        Termica = 4,
+
+        /// <summary>
+        /// 5 - Hibrida.
+        /// </summary>
+        [XmlEnum("5")]
+        Hibrida = 5,
+    }
+
+    #endregion TipoFonteEnergia
+
+    #region TipoAjuste
+
+    /// <summary>
+    /// Tipo de ajuste a ser aplicado ao item
+    /// </summary>
+    public enum TipoAjuste
+    {
+        /// <summary>
+        /// 1 - Item a ser substituído (deve informar detItemAnt)
+        /// </summary>
+        [XmlEnum("1")]
+        ItemASerSubstituido = 1,
+
+        /// <summary>
+        /// 2 - Item de substituição (nova imagem do item anterior)
+        /// </summary>
+        [XmlEnum("2")]
+        ItemDeSubstituicao = 2,
+
+        /// <summary>
+        /// 3 - Item a ser eliminado (deve informar detItemAnt)
+        /// </summary>
+        [XmlEnum("3")]
+        ItemASerEliminado = 3,
+
+        /// <summary>
+        /// Item a ser incluído referente a NF-3e anterior
+        /// </summary>
+        [XmlEnum("4")]
+        ItemASerIncluidoReferenteANF3eAnterior = 4,
+    }
+
+    #endregion TipoAjuste
+
+    #region MotivoAjuste
+
+    /// <summary>
+    /// Motivo do Ajuste
+    /// </summary>
+    public enum MotivoAjuste
+    {
+        /// <summary>
+        /// 1 – Erro de Leitura
+        /// </summary>
+        [XmlEnum("1")]
+        ErroDeLeitura = 1,
+
+        /// <summary>
+        ///  2 – Erro de Preço ou Erro de Tarifa
+        /// </summary>
+        [XmlEnum("2")]
+        ErroDePrecoOuTarifa = 2,
+
+        /// <summary>
+        /// 3 – Decisão Judicial
+        /// </summary>
+        [XmlEnum("3")]
+        DecisaoJudicial = 3,
+
+        /// <summary>
+        /// 4 – Erro Cadastral
+        /// </summary>
+        [XmlEnum("4")]
+        ErroCadastral = 4,
+
+        /// <summary>
+        /// 5 - Erro de Tributação
+        /// </summary>
+        [XmlEnum("5")]
+        ErroDeTributacao = 5,
+    }
+
+    #endregion MotivoAjuste
+
+    #region TipoAto
+
+    /// <summary>
+    /// Tipo de Ato da ANEEL
+    /// 1 - REH (Resolução homologatória); 2 - Despacho; 3 - REN (Resolução Normativa)
+    /// </summary>
+    public enum TipoAto
+    {
+        /// <summary>
+        /// 1 - REH (Resolução homologatória)
+        /// </summary>
+        [XmlEnum("1")]
+        REH = 1,
+
+        /// <summary>
+        ///  2 - Despacho
+        /// </summary>
+        [XmlEnum("2")]
+        Despacho = 2,
+
+        /// <summary>
+        /// 3 - REN (Resolução Normativa)
+        /// </summary>
+        [XmlEnum("3")]
+        REN = 3,
+    }
+    #endregion TipoAto
+
+    #region TipoTarifa
+    /// <summary>
+    /// Tarifa de aplicação
+    /// </summary>
+    public enum TipoTarifa
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("1")]
+        TE = 1,
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("2")]
+        TUSD = 2,
+    }
+    #endregion TipoTarifa
+
+    #region UMed
+    /// <summary>
+    /// Unidade de Medida
+    /// </summary>
+    public enum UMed
+    {
+        /// <summary>
+        /// 1 = kW (Aplica-se somente a TUSD)
+        /// </summary>
+        [XmlEnum("1")]
+        KW = 1,
+
+        /// <summary>
+        /// 2 = kWh (Aplica-se tanto a TUSD quanto TE)
+        /// </summary>
+        [XmlEnum("2")]
+        KWh = 2,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlElement("3")]
+        KVAr = 3,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlElement("4")]
+        KVArh = 4,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlElement("5")]
+        UN = 5,
+    }
+
+    #endregion UMed
+
+    #region MotivoTarifaDiferente
+    /// <summary>
+    /// Motivo da diferença de tarifa aplicada com a homologada
+    /// </summary>
+    public enum MotivoTarifaDiferente
+    {
+        /// <summary>
+        /// 01 - Decisão judicial 
+        /// </summary>
+        [XmlEnum("01")]
+        DecisaoJudicial = 01,
+        /// <summary>
+        /// 02 - Decisão da distribuidora (tarifa homologada equivale a preço teto)
+        /// </summary>
+        [XmlEnum("02")]
+        DecisaoDistribuidora = 02,
+        /// <summary>
+        ///  03 - Desconto Tarifário
+        /// </summary>
+        [XmlEnum("03")]
+        DescontoTarifario = 03,
+        /// <summary>
+        ///  04 - Reajuste tarifário
+        /// </summary>
+        [XmlEnum("04")]
+        ReajusteTarifario = 04,
+    }
+    #endregion MotivoTarifaDiferente
+
+    #region TipoBandeira
+    /// <summary>
+    /// Tipo da bandeira tarifária
+    /// </summary>
+    public enum TipoBandeira
+    {
+        /// <summary>
+        /// 1 - Verde.
+        /// </summary>
+        [XmlEnum("1")]
+        Verde = 1,
+
+        /// <summary>
+        /// 2 - Amarela.
+        /// </summary>
+        [XmlEnum("2")]
+        Amarela = 2,
+
+        /// <summary>
+        /// 3 - Vermelha Patamar 1.
+        /// </summary>
+        [XmlEnum("3")]
+        VermelhaPatamar1 = 3,
+
+        /// <summary>
+        /// 4 - Vermelha Patamar 2.
+        /// </summary>
+        [XmlEnum("4")]
+        VermelhaPatamar2 = 4,
+
+        /// <summary>
+        /// 5 - Escassez Hidrica.
+        /// </summary>
+        [XmlEnum("5")]
+        EscassezHidrica = 5,
+    }
+
+    #endregion TipoBandeira
+
+    #region IndOrigemQtd
+
+    /// <summary>
+    /// Indicador da origem da quantidade faturada
+    /// </summary>
+    public enum IndOrigemQtd
+    {
+        /// <summary>
+        /// 1 - Media.
+        /// </summary>
+        [XmlEnum("1")]
+        Media = 1,
+
+        /// <summary>
+        /// 2 - Medido.
+        /// </summary>
+        [XmlEnum("2")]
+        Medido = 2,
+
+        /// <summary>
+        /// 3 - Contratada.
+        /// </summary>
+        [XmlEnum("3")]
+        Contratada = 3,
+
+        /// <summary>
+        /// 4 - Calculada.
+        /// </summary>
+        [XmlEnum("4")]
+        Calculada = 4,
+
+        /// <summary>
+        /// 5 - Custo De Disponibilidade.
+        /// </summary>
+        [XmlEnum("5")]
+        CustoDeDisponibilidade = 5,
+
+        /// <summary>
+        /// 6 - Sem Quantidade.
+        /// </summary>
+        [XmlEnum("6")]
+        SemQuantidade = 6,
+    }
+
+    #endregion IndOrigemQtd
+
+    #region TipoGrMedida 
+
+    /// <summary>
+    /// Tipo de grandeza medida
+    /// </summary>
+    public enum TipoGrMedida
+    {
+        /// <summary>
+        /// 01 - Demanda.
+        /// </summary>
+        [XmlEnum("01")]
+        Demanda = 01,
+
+        /// <summary>
+        /// 02 - Demanda Reativa.
+        /// </summary>
+        [XmlEnum("02")]
+        DemandaReativa = 02,
+
+        /// <summary>
+        /// 03 - Energia Ativa.
+        /// </summary>
+        [XmlEnum("03")]
+        EnergiaAtiva = 03,
+
+        /// <summary>
+        /// 04 - Energia Ativa Injetada.
+        /// </summary>
+        [XmlEnum("04")]
+        EnergiaAtivaInjetada = 04,
+
+        /// <summary>
+        /// 05 - Energia Reativa.
+        /// </summary>
+        [XmlEnum("05")]
+        EnergiaReativa = 05,
+    }
+
+    #endregion TipoGrMedida
+
+    #region TipoMotivoNaoLeitura
+
+    /// <summary>
+    /// Tipo Motivo da não leitura
+    /// </summary>
+    public enum TipoMotivoNaoLeitura
+    {
+        /// <summary>
+        /// 1 - Consumidor.
+        /// </summary>
+        [XmlEnum("1")]
+        Consumidor = 1,
+
+        /// <summary>
+        /// 2 - Distribuidora.
+        /// </summary>
+        [XmlEnum("2")]
+        Distribuidora = 2,
+
+        /// <summary>
+        /// 3 - Independente Do Consumidor ou Distribuidora.
+        /// </summary>
+        [XmlEnum("3")]
+        IndependenteDoConsumidorEDistribuidora = 3,
+    }
+
+    #endregion TipoMotivoNaoLeitura
+
+    #region CST - classificação Tributária do PIS
+
+    /// <summary>
+    /// classificação Tributária do PIS
+    /// </summary>
+    public enum CST
+    {
+        /// <summary>
+        /// 01 – Tributável com alíquota básica
+        /// </summary>
+        [XmlElement("01")]
+        AliquotaBasica = 01,
+
+        /// <summary>
+        /// 02 – Tributável com alíquota diferenciada
+        /// </summary>
+        [XmlElement("02")]
+        AliquotaDiferenciada = 02,
+
+        /// <summary>
+        /// 06 – Tributável com alíquota erro
+        /// </summary>
+        [XmlElement("06")]
+        AliquotaComErro = 06,
+
+        /// <summary>
+        /// 07 – Operação isenta de contribuição
+        /// </summary>
+        [XmlElement("07")]
+        OperacaoIsenta = 07,
+
+        /// <summary>
+        /// 08 – Operação sem incidência da contribuição
+        /// </summary>
+        [XmlElement("08")]
+        OperacaoSemIncidencia = 08,
+
+        /// <summary>
+        /// 09 – Operação com suspensão da contribuição  
+        /// </summary>
+        [XmlElement("09")]
+        OperacaoComSuspensao = 09,
+
+        /// <summary>
+        /// 49 – Outras operações de saída
+        /// </summary>
+        [XmlElement("49")]
+        OutrasOperacoesDeSaida = 49,
+    }
+    #endregion CST - classificação Tributária do PIS
 
     #endregion NF3e
 }
