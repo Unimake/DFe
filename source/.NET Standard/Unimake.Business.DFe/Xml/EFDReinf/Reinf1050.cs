@@ -103,7 +103,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -118,7 +118,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeEntLig IdeEntLig { get; set; }
 
         [XmlElement("novaValidade")]
-        public NovaValidade NovaValidade { get; set; }
+        public NovaValidade1050 NovaValidade { get; set; }
     }
 
     /// <summary>
@@ -127,11 +127,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NovaValidade")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NovaValidade1050")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class NovaValidade
+    public class NovaValidade1050
     {
         [XmlElement("iniValid")]
         public string IniValid { get; set; }
@@ -143,7 +143,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -179,6 +179,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

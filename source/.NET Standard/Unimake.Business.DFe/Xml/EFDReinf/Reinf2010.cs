@@ -80,8 +80,23 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Informar o ano/mês de referência das informações no formato AAAA-MM. Validação: Deve ser um ano/mês válido para o qual haja informações do contribuinte encaminhadas através do evento R-1000.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerApur { get; set; }
+#else
+        public DateTimeOffset PerApur { get; set; }
+#endif
+
         [XmlElement("perApur")]
-        public string PerApur { get; set; }
+        public string PerApurField
+        {
+            get => PerApur.ToString("yyyy-MM");
+#if INTEROP
+            set => PerApur = DateTime.Parse(value);
+#else
+            set => PerApur = DateTimeOffset.Parse(value);
+#endif
+        }
 
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
@@ -94,9 +109,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -128,7 +143,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class IdeEstabObra
     {
         [XmlElement("tpInscEstab")]
-        public TipoInscricaoEstabelecimento tpInscEstab { get; set; }
+        public TipoInscricaoEstabelecimento TpInscEstab { get; set; }
 
         /// <summary>
         /// Validação: A inscrição informada deve ser compatível com o {tpInscEstab}.
@@ -246,7 +261,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Nfs</returns>
-        public Nfs2010 GetNfs2010(int index)
+        public Nfs2010 GetNfs(int index)
         {
             if ((Nfs?.Count ?? 0) == 0)
             {
@@ -259,7 +274,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista Nfs
         /// </summary>
-        public int GetNfs2010Count => (Nfs != null ? Nfs.Count : 0);
+        public int GetNfsCount => (Nfs != null ? Nfs.Count : 0);
 
 #endif
 
@@ -365,13 +380,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrTotalRetAdic() => VlrTotalRetAdic > 0;
+        public bool ShouldSerializeVlrTotalRetAdicField() => VlrTotalRetAdic > 0;
 
-        public bool ShouldSerializeVlrTotalNRetPrinc() => VlrTotalNRetPrinc > 0;
+        public bool ShouldSerializeVlrTotalNRetPrincField() => VlrTotalNRetPrinc > 0;
 
-        public bool ShouldSerializeVlrTotalNRetAdic() => VlrTotalNRetAdic > 0;
+        public bool ShouldSerializeVlrTotalNRetAdicField() => VlrTotalNRetAdic > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -480,7 +495,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeObs() => !string.IsNullOrEmpty(Obs);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 

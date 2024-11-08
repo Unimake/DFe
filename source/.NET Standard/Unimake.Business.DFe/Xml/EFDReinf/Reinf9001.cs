@@ -49,7 +49,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeContri IdeContri { get; set; }
 
         [XmlElement("ideRecRetorno")]
-        public IdeRecRetorno IdeRecRetorno { get; set; }
+        public IdeRecRetorno9001 IdeRecRetorno { get; set; }
 
         [XmlElement("infoRecEv")]
         public InfoRecEv InfoRecEv { get; set; }
@@ -89,10 +89,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRecRetorno")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRecRetorno9001")]
     [ComVisible(true)]
 #endif
-    public class IdeRecRetorno
+    public class IdeRecRetorno9001
     {
         /// <summary>
         /// Situação atual do evento
@@ -178,8 +178,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string DscResp { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSereializeLocalErroAviso() => !string.IsNullOrEmpty(LocalErroAviso);
-        #endregion
+        public bool ShouldSerializeLocalErroAviso() => !string.IsNullOrEmpty(LocalErroAviso);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -241,8 +242,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string Hash { get; set; }
 
         #region ShouldSerialize
-        public bool ShouldSereializeNrProtEntr() => !string.IsNullOrEmpty(NrProtEntr);
-        #endregion
+        public bool ShouldSerializeNrRecArqBase() => !string.IsNullOrEmpty(NrRecArqBase);
+        public bool ShouldSerializeNrProtEntr() => !string.IsNullOrEmpty(NrProtEntr);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -270,10 +273,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public string NrInsc { get; set; }
 
         [XmlElement("RTom")]
-        public RTom RTom { get; set; }
+        public RTom9001 RTom { get; set; }
 
         [XmlElement("RPrest")]
-        public RPrest RPrest { get; set; }
+        public RPrest9001 RPrest { get; set; }
 
         /// <summary>
         /// Totalizador das bases de cálculo e da contribuição previdenciária sobre
@@ -321,7 +324,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("RComl")]
-        public List<RComl> RComl { get; set; }
+        public List<RComl9001> RComl { get; set; }
 
 #if INTEROP
 
@@ -329,22 +332,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRComl(RComl item)
+        public void AddRComl(RComl9001 item)
         {
             if (RComl == null)
             {
-                RComl = new List<RComl>();
+                RComl = new List<RComl9001>();
             }
 
             RComl.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista RComl (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista RComl9001 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RComl</returns>
-        public RComl GetRComl(int index)
+        public RComl9001 GetRComl(int index)
         {
             if ((RComl?.Count ?? 0) == 0)
             {
@@ -361,7 +364,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("RAquis")]
-        public List<RAquis> RAquis { get; set; }
+        public List<RAquis9001> RAquis { get; set; }
 
 #if INTEROP
 
@@ -369,22 +372,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRAquis(RAquis item)
+        public void AddRAquis(RAquis9001 item)
         {
             if (RAquis == null)
             {
-                RAquis = new List<RAquis>();
+                RAquis = new List<RAquis9001>();
             }
 
             RAquis.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista RAquis (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista RAquis9001 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RAquis</returns>
-        public RAquis GetRAquis(int index)
+        public RAquis9001 GetRAquis(int index)
         {
             if ((RAquis?.Count ?? 0) == 0)
             {
@@ -401,7 +404,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("RCPRB")]
-        public List<RCPRB> RCPRB { get; set; }
+        public List<RCPRB9001> RCPRB { get; set; }
 
 #if INTEROP
 
@@ -409,22 +412,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRCPRB(RCPRB item)
+        public void AddRCPRB(RCPRB9001 item)
         {
             if (RCPRB == null)
             {
-                RCPRB = new List<RCPRB>();
+                RCPRB = new List<RCPRB9001>();
             }
 
             RCPRB.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista RCPRB (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista RCPRB9001 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RCPRB</returns>
-        public RCPRB GetRCPRB(int index)
+        public RCPRB9001 GetRCPRB(int index)
         {
             if ((RCPRB?.Count ?? 0) == 0)
             {
@@ -446,10 +449,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RTom")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RTom9001")]
     [ComVisible(true)]
 #endif
-    public class RTom
+    public class RTom9001
     {
         [XmlElement("cnpjPrestador")]
         public string CnpjPrestador { get; set; }
@@ -507,7 +510,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public int GetInfoCRTomCount => (InfoCRTom != null ? InfoCRTom.Count : 0);
 #endif
 
-        public bool ShouldSereializeCno() => !string.IsNullOrEmpty(Cno);
+        #region ShouldSerialize
+        public bool ShouldSerializeCno() => !string.IsNullOrEmpty(Cno);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -542,19 +548,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCRTom() => VlrCRTom > 0;
+        public bool ShouldSerializeVlrCRTomField() => VlrCRTom > 0;
 
-        public bool ShouldSerializeVlrCRTomSusp() => VlrCRTomSusp > 0;
+        public bool ShouldSerializeVlrCRTomSuspField() => VlrCRTomSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RPrest")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RPrest9001")]
     [ComVisible(true)]
 #endif
-    public class RPrest
+    public class RPrest9001
     {
         [XmlElement("tpInscTomador")]
         public TipoInscricaoEstabelecimento TpInscTomador { get; set; }
@@ -614,12 +620,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrTotalRetAdic() => VlrTotalRetAdic > 0;
+        public bool ShouldSerializeVlrTotalRetAdicField() => VlrTotalRetAdic > 0;
 
-        public bool ShouldSerializeVlrTotalNRetPrinc() => VlrTotalNRetPrinc > 0;
+        public bool ShouldSerializeVlrTotalNRetPrincField() => VlrTotalNRetPrinc > 0;
 
-        public bool ShouldSerializeVlrTotalNRetAdic() => VlrTotalNRetAdic > 0;
-        #endregion
+        public bool ShouldSerializeVlrTotalNRetAdicField() => VlrTotalNRetAdic > 0;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -636,6 +643,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     {
         [XmlElement("cnpjAssocDesp")]
         public string CnpjAssocDesp { get; set; }
+
+        [XmlElement("nmEmprExt")]
+        public string NmEmprExt { get; set; }
 
         [XmlIgnore]
         public double VlrTotalRep { get; set; }
@@ -672,17 +682,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCRRecRepADSusp() => VlrCRRecRepADSusp > 0;
+        public bool ShouldSerializeCnpjAssocDesp() => !string.IsNullOrEmpty(CnpjAssocDesp);
+        public bool ShouldSerializeNmEmprExt() => !string.IsNullOrEmpty(NmEmprExt);
+        public bool ShouldSerializeVlrCRRecRepADSuspField() => VlrCRRecRepADSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RComl")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RComl9001")]
     [ComVisible(true)]
 #endif
-    public class RComl
+    public class RComl9001
     {
         [XmlElement("CRComl")]
         public string CRComl { get; set; }
@@ -709,17 +721,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCRComlSusp() => VlrCRComlSusp > 0;
+        public bool ShouldSerializeVlrCRComlSuspField() => VlrCRComlSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RAquis")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RAquis9001")]
     [ComVisible(true)]
 #endif
-    public class RAquis
+    public class RAquis9001
     {
         [XmlElement("CRAquis")]
         public string CRAquis { get; set; }
@@ -746,17 +758,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCRAquisSusp() => VlrCRAquisSusp > 0;
+        public bool ShouldSerializeVlrCRAquisSuspField() => VlrCRAquisSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RCPRB")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.RCPRB9001")]
     [ComVisible(true)]
 #endif
-    public class RCPRB
+    public class RCPRB9001
     {
         [XmlElement("CRCPRB")]
         public string CRCPRB { get; set; }
@@ -783,9 +795,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCRCPRBSusp() => VlrCRCPRBSusp > 0;
+        public bool ShouldSerializeVlrCRCPRBSuspField() => VlrCRCPRBSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -830,8 +842,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCRRecEspetDespSusp() => VlrCRRecEspetDespSusp > 0;
+        public bool ShouldSerializeVlrCRRecEspetDespSuspField() => VlrCRRecEspetDespSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

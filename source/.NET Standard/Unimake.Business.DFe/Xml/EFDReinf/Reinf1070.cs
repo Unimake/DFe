@@ -168,7 +168,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeIndAutoria() => IndAutoria != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
 
 #if INTEROP
 
@@ -246,6 +246,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("indDeposito")]
         public SimNaoLetra IndDeposito { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -287,8 +293,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeProcesso IdeProcesso { get; set; }
 
         [XmlElement("novaValidade")]
-        public NovaValidade NovaValidade { get; set; }
+        public NovaValidade1070 NovaValidade { get; set; }
     }
+
+    /// <summary>
+    /// Novo período de validade das informações que
+    /// estão sendo alteradas
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NovaValidade1070")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade1070 : NovaValidade1050 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

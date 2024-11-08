@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeContri IdeContri { get; set; }
 
         [XmlElement("ideRespInf")]
-        public IdeRespInf IdeRespInf { get; set; }
+        public IdeRespInf4099 IdeRespInf { get; set; }
 
         [XmlElement("infoFech")]
         public InfoFech4099 InfoFech { get; set; }
@@ -59,37 +59,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento4099")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento4099
-    {
-        [XmlIgnore]
+    public class IdeEvento4099 : IdeEvento2099 { }
+
 #if INTEROP
-        public DateTime PerApur { get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRespInf4099")]
+    [ComVisible(true)]
 #endif
-
-        [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
-
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcessoEmissaoReinf ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-    }
-
- 
+    public class IdeRespInf4099 : IdeRespInf2099 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

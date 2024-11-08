@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public IdeContri IdeContri { get; set; }
 
         [XmlElement("ideRespInf")]
-        public IdeRespInf IdeRespInf { get; set; }
+        public IdeRespInf2099 IdeRespInf { get; set; }
 
         [XmlElement("infoFech")]
         public InfoFech InfoFech { get; set; }
@@ -63,10 +63,10 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRespInf")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeRespInf2099")]
     [ComVisible(true)]
 #endif
-    public class IdeRespInf
+    public class IdeRespInf2099
     {
         [XmlElement("nmResp")]
         public string NmResp { get; set; }
@@ -82,11 +82,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeTelefone() => !string.IsNullOrEmpty(Telefone);
+        public bool ShouldSerializeTelefone() => !string.IsNullOrEmpty(Telefone);
 
-        public bool ShouldSereializeEmail() => !string.IsNullOrEmpty(Email);
+        public bool ShouldSerializeEmail() => !string.IsNullOrEmpty(Email);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP

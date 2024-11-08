@@ -7860,6 +7860,8 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento contratante dos serviços:
     /// 1 - CNPJ;
+    /// 2 - CPF; 
+    /// 3 - CAEPF.
     /// 4 - CNO - Cadastro Nacional de Obras
     /// </summary>
     public enum TipoInscricaoEstabelecimento
@@ -7869,6 +7871,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         CNPJ = 1,
+
+        /// <summary>
+        /// 2 - CPF.
+        /// </summary>
+        [XmlEnum("2")]
+        CPF = 2,
 
         /// <summary>
         /// 3 - CAEPF.
@@ -8994,6 +9002,28 @@ namespace Unimake.Business.DFe.Servicos
 
     }
     #endregion
+
+    #region Indicativo da finalidade do evento Reinf
+
+    /// <summary>
+    /// Indicativo da finalidade do evento que deu origem ao presente arquivo de retorno ao contribuinte:
+    /// </summary>
+    public enum IndicativoFinalidadeEvento
+    {
+        /// <summary>
+        /// 0 - Fechamento
+        /// </summary>
+        [XmlEnum("0")]
+        Fechamento = 0,
+
+        /// <summary>
+        /// 1 - Reabertura.
+        /// </summary>
+        [XmlEnum("1")]
+        Reabertura = 1,
+    }
+
+    #endregion Indicativo da finalidade do evento Reinf
 
     #region Marcas de equipamentos SAT
 

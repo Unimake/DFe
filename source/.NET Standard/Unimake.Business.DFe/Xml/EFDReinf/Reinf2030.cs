@@ -53,32 +53,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class IdeEvento2030
-    {
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        [XmlElement("perApur")]
-        public string PerApur { get; set; }
-
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcessoEmissaoReinf ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSereializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-        #endregion
-    }
+    public class IdeEvento2030 : IdeEvento2010 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -88,21 +63,18 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [Serializable()]
     public class IdeContri2030 : IdeContri
     {
-
         [XmlElement("ideEstab")]
-        public IdeEstab IdeEstab { get; set; }
-
+        public IdeEstab2030 IdeEstab { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab2030")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class IdeEstab
+    public class IdeEstab2030
     {
-
         [XmlElement("tpInscEstab")]
         public TipoInscricaoEstabelecimento TpInscEstab { get; set; }
 
@@ -199,7 +171,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("infoRecurso")]
-        public List<InfoRecurso> InfoRecurso { get; set; }
+        public List<InfoRecurso2030> InfoRecurso { get; set; }
 
 #if INTEROP
 
@@ -207,22 +179,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoRecurso(InfoRecurso item)
+        public void AddInfoRecurso(InfoRecurso2030 item)
         {
             if (InfoRecurso == null)
             {
-                InfoRecurso = new List<InfoRecurso>();
+                InfoRecurso = new List<InfoRecurso2030>();
             }
 
             InfoRecurso.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoRecurso (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoRecurso2030 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoRecurso</returns>
-        public InfoRecurso GetInfoRecurso(int index)
+        public InfoRecurso2030 GetInfoRecurso(int index)
         {
             if ((InfoRecurso?.Count ?? 0) == 0)
             {
@@ -239,7 +211,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("infoProc")]
-        public List<InfoProc> InfoProc { get; set; }
+        public List<InfoProc2030> InfoProc { get; set; }
 
 #if INTEROP
 
@@ -247,22 +219,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProc(InfoProc item)
+        public void AddInfoProc(InfoProc2030 item)
         {
             if (InfoProc == null)
             {
-                InfoProc = new List<InfoProc>();
+                InfoProc = new List<InfoProc2030>();
             }
 
             InfoProc.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoProc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoProc2030 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProc</returns>
-        public InfoProc GetInfoProc(int index)
+        public InfoProc2030 GetInfoProc(int index)
         {
             if ((InfoProc?.Count ?? 0) == 0)
             {
@@ -280,29 +252,28 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCnpjOrigRecurso() => !string.IsNullOrEmpty(CnpjOrigRecurso);
+        public bool ShouldSerializeCnpjOrigRecurso() => !string.IsNullOrEmpty(CnpjOrigRecurso);
         
-        public bool ShouldSereializeRecEmprExt() => !string.IsNullOrEmpty(RecEmprExt);
+        public bool ShouldSerializeRecEmprExt() => !string.IsNullOrEmpty(RecEmprExt);
         
-        public bool ShouldSereializeNmEmprExt() => !string.IsNullOrEmpty(NmEmprExt);
+        public bool ShouldSerializeNmEmprExt() => !string.IsNullOrEmpty(NmEmprExt);
 
-        public bool ShouldSerializeVlrTotalNRetPrinc() => VlrTotalNRet > 0;
+        public bool ShouldSerializeVlrTotalNRetField() => VlrTotalNRet > 0;
 
-        #endregion
+        #endregion ShouldSerialize
 
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecurso")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecurso2030")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InfoRecurso
+    public class InfoRecurso2030
     {
-
         [XmlElement("tpRepasse")]
-        public TipoRepasse tpRepasse { get; set; }
+        public TipoRepasse TpRepasse { get; set; }
 
         [XmlElement("descRecurso")]
         public string DescRecurso { get; set; }
@@ -330,11 +301,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProc")]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProc2030")]
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class InfoProc
+    public class InfoProc2030
     {
 
         [XmlElement("tpProc")]
@@ -360,6 +331,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }
