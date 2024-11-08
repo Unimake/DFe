@@ -285,7 +285,6 @@
 		<None Remove="Servicos\Config\NFSe\BarueriSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
-		<None Remove="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
@@ -1150,7 +1149,6 @@
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioPicarrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampoLargoPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CarlosBarbosaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\EstrelaRS.xml" />

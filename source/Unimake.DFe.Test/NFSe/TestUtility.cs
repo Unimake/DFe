@@ -272,9 +272,7 @@ namespace Unimake.DFe.Test.NFSe
 
                 case (PadraoNFSe.BAUHAUS, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.BAUHAUS, TipoAmbiente.Producao):
-                case (PadraoNFSe.IPM, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.ADM_SISTEMAS, TipoAmbiente.Homologacao):
-                case (PadraoNFSe.IPM, TipoAmbiente.Producao):
                 case (PadraoNFSe.AVMB, TipoAmbiente.Producao):
                     message += "necessita de uma autenticação válida";
                     break;
@@ -290,7 +288,6 @@ namespace Unimake.DFe.Test.NFSe
 
                 case (PadraoNFSe.WEBFISCO, TipoAmbiente.Producao):
                     message += "retornou erro 500 do servidor, podendo ser problema de comunicação ou informação não real no XML.";
-                    
                     break;
 
                 default:
