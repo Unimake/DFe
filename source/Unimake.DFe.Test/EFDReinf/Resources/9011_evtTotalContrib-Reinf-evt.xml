@@ -35,6 +35,7 @@
 		<infoRecEv>
 			<nrProtEntr>nrProtEntr1</nrProtEntr>
 			<nrRecArqBase>nrRecArqBase1</nrRecArqBase>
+			<dhRecepcao>1900-01-01T01:01:01-02:00</dhRecepcao>
 			<dhProcess>1900-01-01T01:01:01-02:00</dhProcess>
 			<tpEv>R-0001</tpEv>
 			<idEv>idEv1</idEv>
@@ -94,7 +95,6 @@
 				<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
 				<vlrTotalRetPrinc>1,00</vlrTotalRetPrinc>
 				<vlrTotalRetAdic>1,00</vlrTotalRetAdic>
-				<vlrTotalNRetPrinc>1,00</vlrTotalNRetPrinc>
 				<vlrTotalNRetAdic>1,00</vlrTotalNRetAdic>
 			</RPrest>
 			<RPrest>
@@ -103,17 +103,6 @@
 				<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
 				<vlrTotalRetPrinc>1,00</vlrTotalRetPrinc>
 				<vlrTotalRetAdic>1,00</vlrTotalRetAdic>
-				<vlrTotalNRetPrinc>1,00</vlrTotalNRetPrinc>
-				<vlrTotalNRetAdic>1,00</vlrTotalNRetAdic>
-			</RPrest>
-			<RPrest>
-				<tpInscTomador>1</tpInscTomador>
-				<nrInscTomador>00000000000000</nrInscTomador>
-				<vlrTotalBaseRet>1,00</vlrTotalBaseRet>
-				<vlrTotalRetPrinc>1,00</vlrTotalRetPrinc>
-				<vlrTotalRetAdic>1,00</vlrTotalRetAdic>
-				<vlrTotalNRetPrinc>1,00</vlrTotalNRetPrinc>
-				<vlrTotalNRetAdic>1,00</vlrTotalNRetAdic>
 			</RPrest>
 			<RRecRepAD>
 				<CRRecRepAD>115102</CRRecRepAD>
@@ -133,12 +122,6 @@
 			<RComl>
 				<CRComl>165701</CRComl>
 				<vlrCRComl>1,00</vlrCRComl>
-				<vlrCRComlSusp>1,00</vlrCRComlSusp>
-			</RComl>
-			<RComl>
-				<CRComl>165701</CRComl>
-				<vlrCRComl>1,00</vlrCRComl>
-				<vlrCRComlSusp>1,00</vlrCRComlSusp>
 			</RComl>
 			<RComl>
 				<CRComl>165701</CRComl>

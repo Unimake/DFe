@@ -117,9 +117,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeIdeEvtAdic() => !string.IsNullOrEmpty(IdeEvtAdic);
+        public bool ShouldSerializeIdeEvtAdic() => !string.IsNullOrEmpty(IdeEvtAdic);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -291,13 +291,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrLiq() => VlrLiq > 0;
+        public bool ShouldSerializeVlrLiqField() => VlrLiq > 0;
        
-        public bool ShouldSerializeVlrIR() => VlrIR > 0;
+        public bool ShouldSerializeVlrIRField() => VlrIR > 0;
 
         public bool ShouldSerializeDtEscrContField() => DtEscrCont > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -349,14 +349,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        public bool ShouldSerializeVlrBaseSuspIR() => VlrBaseSuspIR > 0;
+        public bool ShouldSerializeVlrBaseSuspIRField() => VlrBaseSuspIR > 0;
         
-        public bool ShouldSerializeVlrNIR() => VlrNIR > 0;
+        public bool ShouldSerializeVlrNIRField() => VlrNIR > 0;
         
-        public bool ShouldSerializeVlrDepIR() => VlrDepIR > 0;
+        public bool ShouldSerializeVlrDepIRField() => VlrDepIR > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

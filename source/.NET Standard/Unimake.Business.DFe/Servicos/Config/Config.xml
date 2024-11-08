@@ -465,7 +465,7 @@
 		<Nome>Cabo Frio - RJ</Nome>
 		<UF>RJ</UF>
 		<ArqConfig>CaboFrioRJ.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
+		<PadraoNFSe>NOBESISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5300108">
 		<Nome>Brasília - DF</Nome>

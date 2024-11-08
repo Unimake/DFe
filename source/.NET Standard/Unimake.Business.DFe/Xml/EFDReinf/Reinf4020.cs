@@ -80,7 +80,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab4020")]
     [ComVisible(true)]
 #endif
-    public class IdeEstab4020 : IdeEstab
+    public class IdeEstab4020 : IdeEstab2030
     {
         /// <summary>
         /// Identificação do beneficiário do rendimento
@@ -159,9 +159,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         #region ShouldSerialize
-        public bool ShouldSereializeCnpjBenef() => !string.IsNullOrEmpty(CnpjBenef);
+        public bool ShouldSerializeCnpjBenef() => !string.IsNullOrEmpty(CnpjBenef);
 
-        public bool ShouldSereializeNmBenef() => !string.IsNullOrEmpty(NmBenef);
+        public bool ShouldSerializeNmBenef() => !string.IsNullOrEmpty(NmBenef);
 
 #if INTEROP
         public bool ShouldSerializeIsenImun() => IsenImun != (IsencaoEImunidade)(-1);
@@ -169,9 +169,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeIsenImun() => IsenImun != null;
 #endif
 
-        public bool ShouldSereializeIdeEvtAdic() => !string.IsNullOrEmpty(IdeEvtAdic);
+        public bool ShouldSerializeIdeEvtAdic() => !string.IsNullOrEmpty(IdeEvtAdic);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -235,9 +235,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeObserv() => !string.IsNullOrEmpty(Observ);
+        public bool ShouldSerializeObserv() => !string.IsNullOrEmpty(Observ);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -412,14 +412,17 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public InfoPgtoExt4020 InfoPgtoExt { get; set; }
 
         #region ShouldSerialize
+
+        public bool ShouldSerializeVlrBrutoField() => VlrBruto > 0;
+
 #if INTEROP
         public bool ShouldSerializeIndFciScp() => IndFciScp != (IndicativoFundoDeInvestimento)(-1);
 #else
         public bool ShouldSerializeIndFciScp() => IndFciScp != null;
 #endif
-        public bool ShouldSereializeIndNrInscFciScp() => !string.IsNullOrEmpty(NrInscFciScp);
+        public bool ShouldSerializeIndNrInscFciScp() => !string.IsNullOrEmpty(NrInscFciScp);
 
-        public bool ShouldSereializePercSCP() => !string.IsNullOrEmpty(PercSCP);
+        public bool ShouldSerializePercSCP() => !string.IsNullOrEmpty(PercSCP);
 
 #if INTEROP
         public bool ShouldSerializeIndJud() => IndJud != (SimNaoLetra)(-1);
@@ -427,12 +430,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeIndJud() => IndJud != null;
 #endif
 
-        public bool ShouldSereializePaisResidExt() => !string.IsNullOrEmpty(PaisResidExt);
+        public bool ShouldSerializePaisResidExt() => !string.IsNullOrEmpty(PaisResidExt);
 
         public bool ShouldSerializeDtEscrContField() => DtEscrCont > DateTime.MinValue;
 
-        public bool ShouldSereializeObserv() => !string.IsNullOrEmpty(Observ);
-        #endregion
+        public bool ShouldSerializeObserv() => !string.IsNullOrEmpty(Observ);
+        
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -723,31 +727,31 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        public bool ShouldSerializeVlrBaseSuspIR() => VlrBaseSuspIR > 0;
+        public bool ShouldSerializeVlrBaseSuspIRField() => VlrBaseSuspIR > 0;
 
-        public bool ShouldSerializeVlrNIR() => VlrNIR > 0;
+        public bool ShouldSerializeVlrNIRField() => VlrNIR > 0;
 
-        public bool ShouldSerializeVlrDepIR() => VlrDepIR > 0;
+        public bool ShouldSerializeVlrDepIRField() => VlrDepIR > 0;
 
-        public bool ShouldSerializeVlrBaseSuspCSLL() => VlrBaseSuspCSLL > 0;
+        public bool ShouldSerializeVlrBaseSuspCSLLField() => VlrBaseSuspCSLL > 0;
 
-        public bool ShouldSerializeVlrNCSLL() => VlrNCSLL > 0;
+        public bool ShouldSerializeVlrNCSLLField() => VlrNCSLL > 0;
 
-        public bool ShouldSerializeVlrDepCSLL() => VlrDepCSLL > 0;
+        public bool ShouldSerializeVlrDepCSLLField() => VlrDepCSLL > 0;
 
-        public bool ShouldSerializeVlrBaseSuspCofins() => VlrBaseSuspCofins > 0;
+        public bool ShouldSerializeVlrBaseSuspCofinsField() => VlrBaseSuspCofins > 0;
 
-        public bool ShouldSerializeVlrNCofins() => VlrNCofins > 0;
+        public bool ShouldSerializeVlrNCofinsField() => VlrNCofins > 0;
 
-        public bool ShouldSerializeVlrDepCofins() => VlrDepCofins > 0;
+        public bool ShouldSerializeVlrDepCofinsField() => VlrDepCofins > 0;
 
-        public bool ShouldSerializeVlrBaseSuspPP() => VlrBaseSuspPP > 0;
+        public bool ShouldSerializeVlrBaseSuspPPField() => VlrBaseSuspPP > 0;
 
-        public bool ShouldSerializeVlrNPP() => VlrNPP > 0;
+        public bool ShouldSerializeVlrNPPField() => VlrNPP > 0;
 
-        public bool ShouldSerializeVlrDepPP() => VlrDepPP > 0;
+        public bool ShouldSerializeVlrDepPPField() => VlrDepPP > 0;
         #endregion
     }
 
@@ -782,5 +786,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         [XmlElement("endExt")]
         public EndExt EndExt { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNifBenef() => !string.IsNullOrEmpty(NifBenef);
+
+        #endregion ShouldSerialize
     }
 }

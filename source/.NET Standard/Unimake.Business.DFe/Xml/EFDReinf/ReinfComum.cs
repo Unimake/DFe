@@ -183,13 +183,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public double VlrNRetAdic { get; set; }
 
         [XmlElement("vlrNRetAdic")]
-        public string vlrNRetAdicField
+        public string VlrNRetAdicField
         {
             get => VlrNRetAdic.ToString("F2", CultureInfoReinf.Info);
             set => VlrNRetAdic = double.Parse(value.ToString(), CultureInfoReinf.Info);
         }
 
-        #region Should Serialize
+        #region ShouldSerialize
 
         public bool ShouldSerializeVlrRetSubField() => VlrRetSub > 0;
 
@@ -205,7 +205,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeVlrNRetAdicField() => VlrNRetAdic > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -233,14 +233,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("tpProcRetPrinc")]
         public TipoProcesso TpProcRetPrinc { get; set; }
 
-
         [XmlElement("nrProcRetPrinc")]
         public string NrProcRetPrinc { get; set; }
 
-
         [XmlElement("codSuspPrinc")]
         public string CodSuspPrinc { get; set; }
-
 
         [XmlIgnore]
         public double ValorPrinc { get; set; }
@@ -256,7 +253,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeCodSuspPrinc() => !string.IsNullOrEmpty(CodSuspPrinc);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -314,7 +311,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeCodSuspAdic() => !string.IsNullOrEmpty(CodSuspAdic);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -353,23 +350,23 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeDscLograd() => !string.IsNullOrEmpty(DscLograd);
+        public bool ShouldSerializeDscLograd() => !string.IsNullOrEmpty(DscLograd);
 
-        public bool ShouldSereializeNrLograd() => !string.IsNullOrEmpty(NrLograd);
+        public bool ShouldSerializeNrLograd() => !string.IsNullOrEmpty(NrLograd);
 
-        public bool ShouldSereializeComplem() => !string.IsNullOrEmpty(Complem);
+        public bool ShouldSerializeComplem() => !string.IsNullOrEmpty(Complem);
 
-        public bool ShouldSereializeBairro() => !string.IsNullOrEmpty(Bairro);
+        public bool ShouldSerializeBairro() => !string.IsNullOrEmpty(Bairro);
 
-        public bool ShouldSereializeCidade() => !string.IsNullOrEmpty(Cidade);
+        public bool ShouldSerializeCidade() => !string.IsNullOrEmpty(Cidade);
 
-        public bool ShouldSereializeEstado() => !string.IsNullOrEmpty(Estado);
+        public bool ShouldSerializeEstado() => !string.IsNullOrEmpty(Estado);
 
-        public bool ShouldSereializeCodPostal() => !string.IsNullOrEmpty(CodPostal);
+        public bool ShouldSerializeCodPostal() => !string.IsNullOrEmpty(CodPostal);
 
-        public bool ShouldSereializeTelef() => !string.IsNullOrEmpty(Telef);
+        public bool ShouldSerializeTelef() => !string.IsNullOrEmpty(Telef);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 }

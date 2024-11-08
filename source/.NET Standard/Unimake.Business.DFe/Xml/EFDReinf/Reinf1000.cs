@@ -123,8 +123,19 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// estão sendo alteradas
         /// </summary>
         [XmlElement("novaValidade")]
-        public NovaValidade NovaValidade { get; set; }
+        public NovaValidade1000 NovaValidade { get; set; }
     }
+
+    /// <summary>
+    /// Novo período de validade das informações que
+    /// estão sendo alteradas
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.NovaValidade1000")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade1000 : NovaValidade1050 { }
 
     /// <summary>
     /// Exclusão de informações
@@ -165,7 +176,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeFimValid() => !string.IsNullOrEmpty(FimValid);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -277,7 +288,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public bool ShouldSerializeIndUniao() => IndUniao != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
 
 #if INTEROP
 
@@ -352,7 +363,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeEmail() => !string.IsNullOrEmpty(Email);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -388,7 +399,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeTelefone() => !string.IsNullOrEmpty(Telefone);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -412,6 +423,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         public bool ShouldSerializeCnpjEFR() => !string.IsNullOrEmpty(CnpjEFR);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

@@ -4,7 +4,7 @@
         <RecepcionarLoteRps versao="3.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/RecepcionarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -23,7 +23,7 @@
 		<GerarNfse versao="3.00">
 			<Descricao>Gerar uma única NFSe</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -42,7 +42,7 @@
         <CancelarNfse versao="3.00">
 			<Descricao>Cancelar NFSe</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/CancelarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -61,7 +61,7 @@
         <ConsultarLoteRps versao="3.00">
 			<Descricao>Consultar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -80,7 +80,7 @@
         <ConsultarNfsePorRps versao="3.00">
 			<Descricao>Consultar NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfsePorRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -99,7 +99,7 @@
 		<ConsultarNfseFaixa versao="3.00">
 			<Descricao>Consultar NFSe por faixa de numeração</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarNfseFaixaRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -118,7 +118,7 @@
 		<ConsultarSituacaoLoteRps versao="3.00">
 			<Descricao>Consultar situação do lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfsehomologacao.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse1.publica.inf.br/joinville_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebEnderecoProducao>https://nfem.joinville.sc.gov.br/nfse_integracao/Services?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://service.nfse.integracao.ws.publica/Services/ConsultarSituacaoLoteRpsRequest</WebActionHomologacao>
 			<WebActionProducao>http://service.nfse.integracao.ws.publica/Services/GerarNfseRequest</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>

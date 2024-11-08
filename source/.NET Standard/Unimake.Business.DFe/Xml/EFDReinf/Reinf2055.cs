@@ -145,9 +145,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeIndOpcCP() => !string.IsNullOrEmpty(IndOpcCP);
+        public bool ShouldSerializeIndOpcCP() => !string.IsNullOrEmpty(IndOpcCP);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -286,15 +286,15 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        public bool ShouldSerializeVlrTotalNRetPrinc() => VlrCPNRet > 0;
+        public bool ShouldSerializeVlrCPNRetField() => VlrCPNRet > 0;
         
-        public bool ShouldSerializeVlrRatNRet() => VlrRatNRet > 0;
+        public bool ShouldSerializeVlrRatNRetField() => VlrRatNRet > 0;
         
-        public bool ShouldSerializeVlrSenarNRet() => VlrSenarNRet > 0;
+        public bool ShouldSerializeVlrSenarNRetField() => VlrSenarNRet > 0;
 
-        #endregion
+        #endregion ShouldSerialize
 
     }
 

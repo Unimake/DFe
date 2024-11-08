@@ -66,24 +66,22 @@ namespace Unimake.Business.DFe
                 case "application/problem+json": //DARE SP retorna isso quando o JSON de envio tem problemas nas tags
                     try
                     {
+                        resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
+
                         if (Config.Servico == Servico.DAREEnvio)
                         {
-                            if (responseString.Contains("itensParaGeracao") || responseString.Contains("errors"))
+                            if (responseString.Contains("itensParaGeracao"))
                             {
                                 DARELoteRetorno dareLote = JsonConvert.DeserializeObject<DARELoteRetorno>(responseString);
 
                                 resultadoRetorno = dareLote.GerarXML();
                             }
-                            else
+                            else if (responseString.Contains("documentoImpressao"))
                             {
                                 DAREUnicoRetorno dareUnico = JsonConvert.DeserializeObject<DAREUnicoRetorno>(responseString);
 
-                                resultadoRetorno = CreateXmlDARERetorno(dareUnico);
+                                resultadoRetorno = CreateXmlDocumentDARERetorno(dareUnico);
                             }
-                        }
-                        else
-                        {
-                            resultadoRetorno.LoadXml(BuscarXML(ref Config, responseString));
                         }
                     }
                     catch
@@ -95,7 +93,6 @@ namespace Unimake.Business.DFe
 
                         else if (Config.Servico == Servico.DAREReceita)
                         {
-
                             // Desserializando JSON para lista de objetos
                             List<ReceitaDARE> dare = JsonConvert.DeserializeObject<List<ReceitaDARE>>(responseString);
 
@@ -245,7 +242,7 @@ namespace Unimake.Business.DFe
             return xmlDoc;
         }
 
-        static XmlDocument CreateXmlDARERetorno(DAREUnicoRetorno dareUnico) 
+        static XmlDocument CreateXmlDocumentDARERetorno(DAREUnicoRetorno dareUnico) 
         {
             var dareRetorno = new DARERetorno();
             dareRetorno.DARE = dareUnico;

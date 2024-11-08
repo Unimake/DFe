@@ -57,34 +57,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2050")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2050
-    {
-
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        [XmlElement("perApur")]
-        public string PerApur { get; set; }
-
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcessoEmissaoReinf ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSereializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-        #endregion
-
-    }
+    public class IdeEvento2050 : IdeEvento2010 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -223,13 +196,13 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCPSuspTotal() => VlrCPSuspTotal > 0;
+        public bool ShouldSerializeVlrCPSuspTotalField() => VlrCPSuspTotal > 0;
         
-        public bool ShouldSerializeVlrRatSuspTotal() => VlrRatSuspTotal > 0;
+        public bool ShouldSerializeVlrRatSuspTotalField() => VlrRatSuspTotal > 0;
        
-        public bool ShouldSerializeVlrSenarSuspTotal() => VlrSenarSuspTotal > 0;
+        public bool ShouldSerializeVlrSenarSuspTotalField() => VlrSenarSuspTotal > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -328,7 +301,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         {
             get => VlrRatSusp.ToString("F2", CultureInfoReinf.Info);
             set => VlrRatSusp = double.Parse(value.ToString(), CultureInfoReinf.Info);
-        }
+        } 
 
         [XmlIgnore]
         public double VlrSenarSusp { get; set; }
@@ -342,14 +315,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        public bool ShouldSerializeVlrCPSusp() => VlrCPSusp > 0;
+        public bool ShouldSerializeVlrCPSuspField() => VlrCPSusp > 0;
         
-        public bool ShouldSerializeVlrRatSusp() => VlrRatSusp > 0;
+        public bool ShouldSerializeVlrRatSuspField() => VlrRatSusp > 0;
         
-        public bool ShouldSerializeVlrSenarSusp() => VlrSenarSusp > 0;
+        public bool ShouldSerializeVlrSenarSuspField() => VlrSenarSusp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

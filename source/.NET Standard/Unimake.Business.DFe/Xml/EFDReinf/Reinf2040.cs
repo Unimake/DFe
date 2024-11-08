@@ -53,7 +53,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2040")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2040 : IdeEvento2030 { }
+    public class IdeEvento2040 : IdeEvento2010 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -168,7 +168,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         [XmlElement("infoRecurso")]
-        public List<InfoRecurso> InfoRecurso { get; set; }
+        public List<InfoRecurso2040> InfoRecurso { get; set; }
 
 #if INTEROP
 
@@ -176,22 +176,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoRecurso(InfoRecurso item)
+        public void AddInfoRecurso(InfoRecurso2040 item)
         {
             if (InfoRecurso == null)
             {
-                InfoRecurso = new List<InfoRecurso>();
+                InfoRecurso = new List<InfoRecurso2040>();
             }
 
             InfoRecurso.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoRecurso (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoRecurso2040 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoRecurso</returns>
-        public InfoRecurso GetInfoRecurso(int index)
+        public InfoRecurso2040 GetInfoRecurso(int index)
         {
             if ((InfoRecurso?.Count ?? 0) == 0)
             {
@@ -208,7 +208,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 #endif
 
         [XmlElement("infoProc")]
-        public List<InfoProc> InfoProc { get; set; }
+        public List<InfoProc2040> InfoProc { get; set; }
 
 #if INTEROP
 
@@ -216,22 +216,22 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProc(InfoProc item)
+        public void AddInfoProc(InfoProc2040 item)
         {
             if (InfoProc == null)
             {
-                InfoProc = new List<InfoProc>();
+                InfoProc = new List<InfoProc2040>();
             }
 
             InfoProc.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoProc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoProc2040 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProc</returns>
-        public InfoProc GetInfoProc(int index)
+        public InfoProc2040 GetInfoProc(int index)
         {
             if ((InfoProc?.Count ?? 0) == 0)
             {
@@ -247,4 +247,18 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public int GetInfoProcCount => (InfoProc != null ? InfoProc.Count : 0);
 #endif
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoRecurso2040")]
+    [ComVisible(true)]
+#endif
+    public class InfoRecurso2040 : InfoRecurso2030 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.EFDReinf.InfoProc2040")]
+    [ComVisible(true)]
+#endif
+    public class InfoProc2040 : InfoProc2030 { }
 }

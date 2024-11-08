@@ -57,32 +57,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEvento2060")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2060
-    {
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        [XmlElement("perApur")]
-        public string PerApur { get; set; }
-
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcessoEmissaoReinf ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string verProc { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSereializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-        #endregion
-    }
+    public class IdeEvento2060 : IdeEvento2055 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -181,9 +156,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCPRBSuspTotal() => VlrCPRBSuspTotal > 0;
+        public bool ShouldSerializeVlrCPRBSuspTotalField() => VlrCPRBSuspTotal > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -326,11 +301,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         public int GetInfoProcCount => (InfoProc != null ? InfoProc.Count : 0);
 #endif
 
-        #region ShoulSerialize
+        #region ShouldSerialize
 
-        public bool ShouldSerializeVlrCPRBapur() => VlrCPRBapur > 0;
+        public bool ShouldSerializeVlrCPRBapurField() => VlrCPRBapur > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -407,11 +382,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         }
 
         #region ShouldSerialize
+        
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
-
-        public bool ShouldSerializeVlrCPRBSusp() => VlrCPRBSusp > 0;
-
-        #endregion
+        #endregion ShouldSerialize
     }
 }

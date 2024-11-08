@@ -182,9 +182,9 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeObserv() => !string.IsNullOrEmpty(Observ);
+        public bool ShouldSerializeObserv() => !string.IsNullOrEmpty(Observ);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -245,12 +245,6 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         [XmlElement("observ")]
         public string Observ {  get; set; }
 
-        #region ShouldSerialize
-
-        public bool ShouldSereializeObserv() => !string.IsNullOrEmpty(Observ);
-
-        #endregion
-
         [XmlElement("infoProcRet")]
         public List<InfoProcRet4080> InfoProcRet { get; set; }
 
@@ -290,6 +284,11 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         public int GetInfoProcRetCount => (InfoProcRet != null ? InfoProcRet.Count : 0);
 #endif
+
+        #region ShouldSerialize
+        public bool ShouldSerializeObserv() => !string.IsNullOrEmpty(Observ);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP

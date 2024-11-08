@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -23,7 +23,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -42,7 +42,7 @@
 		<CancelarNfse versao="2.04">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -61,7 +61,7 @@
 		<GerarNfse versao="2.04">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -80,7 +80,7 @@
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -101,7 +101,7 @@
 		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta Lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -120,7 +120,7 @@
 		<ConsultarNfsePorRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -139,7 +139,7 @@
 		<ConsultarNfseServicoPrestado versao="2.04">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -158,7 +158,7 @@
 		<ConsultarNfseServicoTomado versao="2.04">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>
@@ -177,7 +177,7 @@
 		<ConsultarNfseFaixa versao="2.04">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://rj-novafriburgo-pm-nfs.cloud.el.com.br:80/NfseWSService</WebEnderecoProducao>
+			<WebEnderecoProducao>https://rj-novafriburgo-pm-nfs-backend.cloud.el.com.br/producao18/NfseWSService?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
 			<SchemaArquivo>nfse_v2-04.xsd</SchemaArquivo>

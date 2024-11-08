@@ -1,35 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?> 
-<Dare xmlns="https://portal.fazenda.sp.gov.br/servicos/dare"> <!--Essa tag não existe no envio-->
-	<numeroControleDarePrincipal>123456</numeroControleDarePrincipal>
-	<gerarPDF>false</gerarPDF>
+<?xml version="1.0" encoding="utf-8"?>
+<Dare xmlns="https://portal.fazenda.sp.gov.br/servicos/dare">
+	<numeroControleDarePrincipal>123456789</numeroControleDarePrincipal>
+	<gerarPDF>true</gerarPDF>
 	<codigoBarra44>12345678901234567890123456789012345678901234</codigoBarra44>
-	<codigoBarra48/>
-	<cnpj>12345678000199</cnpj>
-	<cpf/>
+	<cnpj>06117473000150</cnpj>
 	<cidade>São Paulo</cidade>
-	<dataVencimento>2024-12-31T23:59:59</dataVencimento>
-	<documentoImpressao/>
-	<endereco>Rua Exemplo, 100</endereco>
-	<pixCopiaCola/>
-	<razaoSocial>Empresa Exemplo Ltda</razaoSocial>
+	<dataVencimento>2024-11-04T14:27:02</dataVencimento>
+	<endereco>Rua Exemplo, 123</endereco>
+	<pixCopiaCola>abc123def456ghi789</pixCopiaCola>
+	<razaoSocial>Empresa Exemplo S/A</razaoSocial>
 	<receita>
-		<codigo>101010</codigo>
-		<codigoServicoDARE>2020</codigoServicoDARE>
-		<escopoUso>1</escopoUso>
-		<nome>Receita ICMS</nome>
+		<codigo>046-2</codigo>
+		<codigoServicoDARE>4601</codigoServicoDARE>
+		<nome>ICMS- Operações Próprias- RPA (04601)</nome>
 	</receita>
 	<erro>
-		<mensagens/>
+		<mensagens>teste1</mensagens>
+		<mensagens>teste2</mensagens>
+		<mensagens>teste3</mensagens>
 		<estaOk>true</estaOk>
 	</erro>
-	<observacao>Pagamento referente à taxa X</observacao>
-	<referencia>20241231</referencia>
-	<telefone>11987654321</telefone>
+	<observacao>Pagamento referente ao imposto X</observacao>
+	<referencia>10/2024</referencia>
+	<telefone>(11) 1234-5678</telefone>
 	<uf>SP</uf>
-	<valor>100.00</valor>
-	<valorJuros>2.50</valorJuros>
+	<valor>1.00</valor>
+	<valorJuros>10.00</valorJuros>
 	<valorMulta>5.00</valorMulta>
-	<valorTotal>107.50</valorTotal>
-	<linha06/>
-	<linha08/>
+	<valorTotal>16.00</valorTotal>
 </Dare>

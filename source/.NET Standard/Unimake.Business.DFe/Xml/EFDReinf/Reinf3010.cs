@@ -85,6 +85,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         [XmlElement("verProc")]
         public string VerProc { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -95,7 +101,7 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     public class IdeContri3010 : IdeContri
     {
         [XmlElement("ideEstab")]
-        public IdeEstab3010 ideEstab { get; set; }
+        public IdeEstab3010 IdeEstab { get; set; }
     }
 
 #if INTEROP
@@ -103,8 +109,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
     [ProgId("Unimake.Business.DFe.Xml.EFDReinf.IdeEstab3010")]
     [ComVisible(true)]
 #endif
-    public class IdeEstab3010 : IdeEstab
+    public class IdeEstab3010
     {
+        [XmlElement("tpInscEstab")]
+        public TipoInscricaoEstabelecimento TpInscEstab { get; set; }
+
+        [XmlElement("nrInscEstab")]
+        public string NrInscEstab { get; set; }
+
         /// <summary>
         /// Boletim do espetáculo desportivo
         /// </summary>
@@ -280,6 +292,14 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         public int GetOutrasReceitasCount => (OutrasReceitas != null ? OutrasReceitas.Count : 0);
 #endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeCnpjVisitante() => !string.IsNullOrEmpty(CnpjVisitante);
+        public bool ShouldSerializeNomeVisitante() => !string.IsNullOrEmpty(NomeVisitante);
+        public bool ShouldSerializeCodMunic() => !string.IsNullOrEmpty(CodMunic);
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -446,6 +466,12 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
         /// </summary>
         public int GetInfoProcCount => (InfoProc != null ? InfoProc.Count : 0);
 #endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVlrCPSuspTotalField() => VlrCPSuspTotal > 0;
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -476,8 +502,8 @@ namespace Unimake.Business.DFe.Xml.EFDReinf
 
         #region ShouldSerialize
 
-        public bool ShouldSereializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
+        public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

@@ -35,9 +35,11 @@
 		<infoRecEv>
 			<nrRecArqBase>nrRecArqBase1</nrRecArqBase>
 			<nrProtLote>nrProtLote1</nrProtLote>
+			<dhRecepcao>1900-01-01T01:01:01-02:00</dhRecepcao>
 			<dhProcess>1900-01-01T01:01:01-02:00</dhProcess>
 			<tpEv>R-0001</tpEv>
 			<idEv>idEv1</idEv>
+			<fechRet>1</fechRet>
 			<hash>hash1</hash>
 		</infoRecEv>
 		<infoCR_CNR>
@@ -48,9 +50,6 @@
 				<vlrCRMenInf>1,00</vlrCRMenInf>
 				<vlrCRMenCalc>1,00</vlrCRMenCalc>
 				<vlrCRMenDCTF>1,00</vlrCRMenDCTF>
-				<vlrCRMenSuspInf>1,00</vlrCRMenSuspInf>
-				<vlrCRMenSuspCalc>1,00</vlrCRMenSuspCalc>
-				<vlrCRMenSuspDCTF>1,00</vlrCRMenSuspDCTF>
 				<natRend>00001</natRend>
 			</totApurMen>
 			<totApurMen>
@@ -92,7 +91,6 @@
 				<vlrCRQuiDCTF>1,00</vlrCRQuiDCTF>
 				<vlrCRQuiSuspInf>1,00</vlrCRQuiSuspInf>
 				<vlrCRQuisSuspCalc>1,00</vlrCRQuisSuspCalc>
-				<vlrCRQuiSuspDCTF>1,00</vlrCRQuiSuspDCTF>
 				<natRend>00001</natRend>
 			</totApurQui>
 			<totApurQui>
@@ -102,24 +100,12 @@
 				<vlrCRQuiCalc>1,00</vlrCRQuiCalc>
 				<vlrCRQuiDCTF>1,00</vlrCRQuiDCTF>
 				<vlrCRQuiSuspInf>1,00</vlrCRQuiSuspInf>
-				<vlrCRQuisSuspCalc>1,00</vlrCRQuisSuspCalc>
 				<vlrCRQuiSuspDCTF>1,00</vlrCRQuiSuspDCTF>
 				<natRend>00001</natRend>
 			</totApurQui>
 			<totApurDec>
 				<perApurDec>1</perApurDec>
 				<CRDec>CRDec1</CRDec>
-				<vlrCRDecInf>1,00</vlrCRDecInf>
-				<vlrCRDecCalc>1,00</vlrCRDecCalc>
-				<vlrCRDecDCTF>1,00</vlrCRDecDCTF>
-				<vlrCRDecSuspInf>1,00</vlrCRDecSuspInf>
-				<vlrCRDecSuspCalc>1,00</vlrCRDecSuspCalc>
-				<vlrCRDecSuspDCTF>1,00</vlrCRDecSuspDCTF>
-				<natRend>00001</natRend>
-			</totApurDec>
-			<totApurDec>
-				<perApurDec>1</perApurDec>
-				<CRDec>CRDec2</CRDec>
 				<vlrCRDecInf>1,00</vlrCRDecInf>
 				<vlrCRDecCalc>1,00</vlrCRDecCalc>
 				<vlrCRDecDCTF>1,00</vlrCRDecDCTF>

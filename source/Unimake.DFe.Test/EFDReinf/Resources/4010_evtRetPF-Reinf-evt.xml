@@ -1,26 +1,26 @@
 ﻿<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evt4010PagtoBeneficiarioPF/v2_01_02">
-	<evtRetPF id="ID1123456780000002024090314510700001">
+	<evtRetPF id="ID1183132710000002024110716402200002">
 		<ideEvento>
 			<indRetif>1</indRetif>
-			<perApur>2024-08</perApur>
+			<perApur>2024-11</perApur>
 			<tpAmb>2</tpAmb>
 			<procEmi>1</procEmi>
-			<verProc>1.0</verProc>
+			<verProc>UNICO V8.0</verProc>
 		</ideEvento>
 		<ideContri>
 			<tpInsc>1</tpInsc>
-			<nrInsc>12345678</nrInsc>
+			<nrInsc>18313271</nrInsc>
 		</ideContri>
 		<ideEstab>
 			<tpInscEstab>1</tpInscEstab>
-			<nrInscEstab>12345678901234</nrInscEstab>
+			<nrInscEstab>18313271000162</nrInscEstab>
 			<ideBenef>
-				<cpfBenef>12345678901</cpfBenef>
+				<cpfBenef>15831382850</cpfBenef>
 				<idePgto>
-					<natRend>12001</natRend>
+					<natRend>16005</natRend>
 					<infoPgto>
-						<dtFG>2024-08-31</dtFG>
-						<vlrRendBruto>12000,00</vlrRendBruto>
+						<dtFG>2024-11-06</dtFG>
+						<vlrRendTrib>200,00</vlrRendTrib>
 					</infoPgto>
 				</idePgto>
 			</ideBenef>

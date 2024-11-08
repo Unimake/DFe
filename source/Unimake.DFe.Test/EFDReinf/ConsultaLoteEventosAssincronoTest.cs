@@ -202,7 +202,7 @@ namespace Unimake.DFe.Test.EFDReinf
                                         TpInsc = TiposInscricao.CNPJ,
                                         NrInsc = "00000000000000"
                                     },
-                                    IdeRespInf = new IdeRespInf
+                                    IdeRespInf = new IdeRespInf2099
                                     {
                                         NmResp = "Responsavel Nome Silva",
                                         CpfResp = "00000000000",
