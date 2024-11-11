@@ -7,6 +7,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2230 - Afastamento Temporário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2230")]
@@ -23,6 +26,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Afastamento Temporário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtAfastTemp")]
@@ -30,6 +36,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtAfastTemp
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -46,6 +55,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAfastamento InfoAfastamento { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2230")]
@@ -53,6 +65,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2230 : IdeEvento2205 { }
 
+    /// <summary>
+    /// Informações de identificação do trabalhador e do vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2230")]
@@ -75,6 +90,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
+
 #if INTEROP
         public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
 #else
@@ -84,6 +101,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações do afastamento temporário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAfastamento")]
@@ -101,6 +121,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public FimAfastamento FimAfastamento { get; set; }
     }
 
+    /// <summary>
+    /// Informações de início do afastamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IniAfastamento")]
@@ -108,6 +131,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IniAfastamento
     {
+        /// <summary>
+        /// Data de início do afastamento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtIniAfast { get; set; }
@@ -126,9 +152,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Preencher com o código do motivo de afastamento temporário
+        /// </summary>
         [XmlElement("codMotAfast")]
         public string CodMotAfast { get; set; }
 
+        /// <summary>
+        /// Informar se o afastamento decorre da mesma doença que gerou o 
+        /// afastamento anterior (codMotAfast = [01, 03]), dentro de 60 dias.
+        /// </summary>
         [XmlElement("infoMesmoMtv")]
 #if INTEROP
         public SimNaoLetra InfoMesmoMtv { get; set; } = (SimNaoLetra)(-1);
@@ -136,6 +169,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? InfoMesmoMtv { get; set; }
 #endif
 
+        /// <summary>
+        /// Tipo de acidente de trânsito
+        /// </summary>
         [XmlElement("tpAcidTransito")]
 #if INTEROP
         public TipoAcidenteTransito TpAcidTransito { get; set; } = (TipoAcidenteTransito)(-1);
@@ -143,6 +179,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoAcidenteTransito? TpAcidTransito { get; set; }
 #endif
 
+        /// <summary>
+        /// Detalhar as informações sobre o afastamento do trabalhador, de maneira a explicitar os motivos do mesmo
+        /// </summary>
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
@@ -177,6 +216,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações referentes ao período aquisitivo de férias
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.PerAquis")]
@@ -184,6 +226,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class PerAquis
     {
+        /// <summary>
+        /// Data de início do período aquisitivo de férias
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtInicio { get; set; }
@@ -202,6 +247,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Data de término do período aquisitivo de férias
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtFim { get; set; }
@@ -224,9 +272,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtFimField() => DtFim > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações complementares - Cessão/Requisição de trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCessao")]
@@ -234,13 +285,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoCessao
     {
+        /// <summary>
+        /// Preencher com o CNPJ do órgão/entidade para o qual o trabalhador foi cedido/requisitado
+        /// </summary>
         [XmlElement("cnpjCess")]
         public string CnpjCess { get; set; }
 
+        /// <summary>
+        /// Ônus da cessão/requisição
+        /// </summary>
         [XmlElement("infOnus")]
         public InfOnus InfOnus { get; set; }
     }
 
+    /// <summary>
+    /// Informações complementares - Afastamento para exercício de mandato sindical
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMandSind")]
@@ -248,13 +308,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoMandSind
     {
+        /// <summary>
+        /// CNPJ do sindicato no qual o trabalhador exercerá o mandato
+        /// </summary>
         [XmlElement("cnpjSind")]
         public string CnpjSind { get; set; }
 
+        /// <summary>
+        /// Ônus da remuneração
+        /// </summary>
         [XmlElement("infOnusRemun")]
         public OnusDaRemuneracao InfOnusRemun { get; set; }
     }
 
+    /// <summary>
+    /// Informações complementares - Afastamento para exercício de mandato eletivo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMandElet")]
@@ -262,9 +331,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoMandElet
     {
+        /// <summary>
+        /// CNPJ do órgão no qual o trabalhador exercerá o mandato eletivo
+        /// </summary>
         [XmlElement("cnpjMandElet")]
         public string CnpjMandElet { get; set; }
 
+        /// <summary>
+        /// Indicar se o servidor optou pela remuneração do cargo efetivo
+        /// </summary>
         [XmlElement("indRemunCargo")]
 #if INTEROP
         public SimNaoLetra IndRemunCargo { get; set; } = (SimNaoLetra)(-1);
@@ -280,9 +355,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndRemunCargo() => IndRemunCargo != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações de retificação do afastamento temporário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRetif")]
@@ -290,12 +368,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoRetif
     {
+        /// <summary>
+        /// Origem da retificação
+        /// </summary>
         [XmlElement("origRetif")]
         public OrigemDaRetificacao OrigRetif { get; set; }
 
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de processo
+        /// </summary>
         [XmlElement("tpProc")]
         public string TpProc { get; set; }
 
+        /// <summary>
+        /// Informar o número do processo administrativo/judicial ou do benefício de acordo com o tipo informado em tpProc
+        /// </summary>
         [XmlElement("nrProc")]
         public string NrProc { get; set; }
 
@@ -305,9 +392,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
        
         public bool ShouldSerializeNrProc() => !string.IsNullOrEmpty(NrProc);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informação do término do afastamento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.FimAfastamento")]
@@ -315,6 +405,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class FimAfastamento
     {
+        /// <summary>
+        /// Preencher com a data do término do afastamento do trabalhador.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtTermAfast { get; set; }

@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do trabalhador e do vínculo
         /// </summary>
         [XmlElement("ideVinculo")]
-        public IdeVinculo IdeVinculo { get; set; }
+        public IdeVinculo8299 IdeVinculo { get; set; }
 
         /// <summary>
         /// Informações relativas à baixa judicial do vínculo.
@@ -114,6 +114,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
     #endregion IdeEvento
+
+
+    /// <summary>
+    /// Informações de identificação do trabalhador e do vínculo
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo8299")]
+    [ComVisible(true)]
+#endif
+    public class IdeVinculo8299 : IdeVinculo2206 { }
 
     #region InfoBaixa
 

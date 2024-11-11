@@ -138,8 +138,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region IdeEvento1280
-
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
@@ -149,99 +147,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     [Serializable()]
-    public class IdeEvento1280
-    {
-        /// <summary>
-        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
-        /// </summary>
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
-        /// Indicativo de período de apuração.
-        /// </summary>
-        [XmlElement("indApuracao")]
-        public IndApuracao IndApuracao { get; set; }
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// (yyyy-MM)
-        /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur { get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
-#endif
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// (yyyy-MM)
-        /// </summary>
-        [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
-
-
-        /// <summary>
-        /// Indicativo do tipo de guia. Valores válidos:
-        /// 1 - Documento de Arrecadação do eSocial - DAE
-        /// </summary>
-        [XmlElement("indGuia")]
-        public string IndGuia { get; set; }
-
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-        public bool ShouldSerializeIndGuia() => !string.IsNullOrEmpty(IndGuia);
-        #endregion ShouldSerialize
-    }
-
-    #endregion IdeEvento1280
-
-    #region InfoSubstPatr
+    public class IdeEvento1280 : IdeEvento1200 { }
 
     /// <summary>
     /// Informações complementares de cada um dos estabelecimentos/lotações constantes no evento S-1200.
@@ -267,6 +173,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double PercRedContrib { get; set; }
+
         [XmlElement("percRedContrib")]
         public string PercRedContribField
         {
@@ -274,10 +181,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => PercRedContrib = Converter.ToDouble(value);
         }
     }
-
-    #endregion InfoSubstPatr
-
-    #region InfoSubstPatrOpPort
 
     /// <summary>
     /// Informações complementares de cada um dos estabelecimentos/lotações constantes no evento S-1200.
@@ -300,10 +203,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codLotacao")]
         public TpLotacao CodLotacao { get; set; }
     }
-
-    #endregion InfoSubstPatrOpPort
-
-    #region InfoAtivConcom
 
     /// <summary>
     ///  Grupo preenchido por empresa enquadrada no
@@ -353,10 +252,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
-    #endregion InfoAtivConcom
-
-    #region InfoPercTranf11096
-
     /// <summary>
     /// Grupo preenchido por entidade que tenha se
     /// transformado em sociedade de fins lucrativos nos
@@ -379,6 +274,4 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("percTranf")]
         public PercTranf PercTranf { get; set; }
     }
-
-    #endregion InfoPercTranf11096
 }

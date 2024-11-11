@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculo IdeVinculo { get; set; }
+        public IdeVinculo2298 IdeVinculo { get; set; }
 
         [XmlElement("infoReintegr")]
         public InfoReintegr InfoReintegr { get; set; }
@@ -52,6 +52,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     public class IdeEvento2298 : IdeEvento2205 { }
+
+    /// <summary>
+    /// Informações de identificação do trabalhador e do vínculo
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2298")]
+    [ComVisible(true)]
+#endif
+    public class IdeVinculo2298 : IdeVinculo2206 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

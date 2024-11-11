@@ -27,17 +27,17 @@
 					<itensRemun>
 						<codRubr>codRubr1</codRubr>
 						<ideTabRubr>ideTabR1</ideTabRubr>
-						<qtdRubr>1</qtdRubr>
-						<fatorRubr>1</fatorRubr>
-						<vrRubr>1</vrRubr>
+						<qtdRubr>1.45</qtdRubr>
+						<fatorRubr>1.45</fatorRubr>
+						<vrRubr>1.45</vrRubr>
 						<indApurIR>0</indApurIR>
 					</itensRemun>
 					<itensRemun>
 						<codRubr>codRubr2</codRubr>
 						<ideTabRubr>ideTabR2</ideTabRubr>
-						<qtdRubr>2023</qtdRubr>
+						<qtdRubr>2023.45</qtdRubr>
 						<fatorRubr>99.99</fatorRubr>
-						<vrRubr>12051</vrRubr>
+						<vrRubr>12051.45</vrRubr>
 						<indApurIR>1</indApurIR>
 					</itensRemun>
 				</ideEstab>
@@ -51,17 +51,17 @@
 						<itensRemun>
 							<codRubr>codRubr3</codRubr>
 							<ideTabRubr>ideTabR3</ideTabRubr>
-							<qtdRubr>1</qtdRubr>
-							<fatorRubr>1</fatorRubr>
-							<vrRubr>1</vrRubr>
+							<qtdRubr>1.45</qtdRubr>
+							<fatorRubr>1.45</fatorRubr>
+							<vrRubr>1.45</vrRubr>
 							<indApurIR>0</indApurIR>
 						</itensRemun>
 						<itensRemun>
 							<codRubr>codRubr4</codRubr>
 							<ideTabRubr>ideTabR4</ideTabRubr>
-							<qtdRubr>2023</qtdRubr>
+							<qtdRubr>2023.45</qtdRubr>
 							<fatorRubr>99.99</fatorRubr>
-							<vrRubr>12051</vrRubr>
+							<vrRubr>12051.45</vrRubr>
 							<indApurIR>1</indApurIR>
 						</itensRemun>
 					</ideEstab>

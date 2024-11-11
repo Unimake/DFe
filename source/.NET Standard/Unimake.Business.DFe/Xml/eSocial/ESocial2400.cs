@@ -139,7 +139,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("endereco")]
-        public Endereco Endereco { get; set; }
+        public Endereco2400 Endereco { get; set; }
 
         [XmlElement("dependente")]
         public List<Dependente2400> Dependente { get; set; }
@@ -199,6 +199,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Endereco2400")]
+    [ComVisible(true)]
+#endif
+    public class Endereco2400 : Endereco2205 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

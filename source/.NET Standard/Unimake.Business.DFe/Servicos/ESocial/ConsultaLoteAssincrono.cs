@@ -202,7 +202,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                         var esocialProc = new ESocialProc
                         {
                             ESocial1020 = evento.ESocial1020,
-                            ID = evento.ESocial1020.evtTabLotacao.ID
+                            ID = evento.ESocial1020.EvtTabLotacao.ID
                         };
 
                         GravarXML(esocialProc, pasta, idEvento);

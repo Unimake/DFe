@@ -272,29 +272,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Informações relativas ao trabalho intermitente. Evento de origem: S-1200 ou S-2299.
         /// </summary>
         [XmlElement("infoInterm")]
-        public List<InfoInterm> InfoInterm { get; set; }
+        public List<InfoInterm5001> InfoInterm { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoInterm(InfoInterm item)
+        public void AddInfoInterm(InfoInterm5001 item)
         {
             if (InfoInterm == null)
             {
-                InfoInterm = new List<InfoInterm>();
+                InfoInterm = new List<InfoInterm5001>();
             }
 
             InfoInterm.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoInterm (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoInterm5001 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoInterm</returns>
-        public InfoInterm GetInfoInterm(int index)
+        public InfoInterm5001 GetInfoInterm(int index)
         {
             if ((InfoInterm?.Count ?? 0) == 0)
             {
@@ -353,6 +353,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoComplContCount => (InfoComplCont != null ? InfoComplCont.Count : 0);
 #endif
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm5001")]
+    [ComVisible(true)]
+#endif
+    public class InfoInterm5001 : InfoInterm1200 { }
 
     #region SucessaoVinc5001
 

@@ -59,7 +59,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoRubrica
     {
         [XmlElement("inclusao")]
-        public Inclusao Inclusao { get; set; }
+        public Inclusao1010 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
         public Alteracao1010 Alteracao { get; set; }
@@ -70,10 +70,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Inclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Inclusao1010")]
     [ComVisible(true)]
 #endif
-    public class Inclusao
+    public class Inclusao1010
     {
         [XmlElement("ideRubrica")]
         public IdeRubrica IdeRubrica { get; set; }
@@ -397,8 +397,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DadosRubrica DadosRubrica { get; set; }
 
         [XmlElement("novaValidade")]
-        public NovaValidade NovaValidade { get; set; }
+        public NovaValidade1010 NovaValidade { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade1010")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade1010 : NovaValidade1005 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

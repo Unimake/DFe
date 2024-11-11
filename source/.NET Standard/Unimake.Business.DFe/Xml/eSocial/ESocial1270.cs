@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoInscricaoEstabelecimento TpInsc { get; set; }
 
         [XmlElement("nrInsc")]
-        public string NnrInsc { get; set; }
+        public string NrInsc { get; set; }
 
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
@@ -103,6 +103,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp20 { get; set; }
+
         [XmlElement("vrBcCp20")]
         public string VrBcCp20Field
         {
@@ -116,6 +117,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp25 { get; set; }
+
         [XmlElement("vrBcCp25")]
         public string VrBcCp25Field
         {
@@ -129,6 +131,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp13 { get; set; }
+
         [XmlElement("vrBcCp13")]
         public string VrBcCp13Field
         {
@@ -142,6 +145,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcFgts { get; set; }
+
         [XmlElement("vrBcFgts")]
         public string VrBcFgtsFIeld
         {
@@ -155,6 +159,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrDescCP { get; set; }
+
         [XmlElement("vrDescCP")]
         public string VrDescCPField
         {

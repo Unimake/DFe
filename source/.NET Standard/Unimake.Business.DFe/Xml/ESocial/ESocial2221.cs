@@ -22,9 +22,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00", IsNullable = false)]
     public class ESocial2221 : XMLBase
     {
-        /// <summary>
-        /// Evento Exame Toxicológico do Motorista Profissional Empregado
-        /// </summary>
         [XmlElement("evtToxic")]
         public EvtToxic EvtToxic { get; set; }
 
@@ -48,37 +45,38 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do evento.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2221 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do empregador.
-        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do trabalhador e do vínculo.
-        /// </summary>
         [XmlElement("ideVinculo")]
-        public IdeVinculo IdeVinculo { get; set; }
+        public IdeVinculo2221 IdeVinculo { get; set; }
 
-        /// <summary>
-        /// Informações do exame toxicológico do motorista profissional.
-        /// </summary>
         [XmlElement("toxicologico")]
         public Toxicologico Toxicologico { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2221")]
     [ComVisible(true)]
 #endif
     public class IdeEvento2221 : IdeEvento2205 { }
+
+    /// <summary>
+    /// Informações de identificação do trabalhador e do vínculo
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2221")]
+    [ComVisible(true)]
+#endif
+    public class IdeVinculo2221 : IdeVinculo2206 { }
 
     #region Toxicologico
 

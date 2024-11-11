@@ -628,7 +628,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Duracao2500 Duracao { get; set; }
 
         [XmlElement("observacoes")]
-        public List<Observacoes> Observacoes { get; set; }
+        public List<Observacoes2500> Observacoes { get; set; }
 
 #if INTEROP
 
@@ -636,22 +636,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddObservacoes(Observacoes item)
+        public void AddObservacoes(Observacoes2500 item)
         {
             if (Observacoes == null)
             {
-                Observacoes = new List<Observacoes>();
+                Observacoes = new List<Observacoes2500>();
             }
 
             Observacoes.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista Observacoes (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista Observacoes2500 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Observacoes</returns>
-        public Observacoes GetObservacoes(int index)
+        public Observacoes2500 GetObservacoes(int index)
         {
             if ((Observacoes?.Count ?? 0) == 0)
             {
@@ -683,6 +683,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2500")]
+    [ComVisible(true)]
+#endif
+    public class Observacoes2500 : Observacoes2306 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

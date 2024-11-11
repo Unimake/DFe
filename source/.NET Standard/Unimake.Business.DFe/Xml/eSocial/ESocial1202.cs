@@ -2,9 +2,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -220,7 +222,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -240,11 +242,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
 #else
-        public SimNaoLetra ? IndRRA { get; set; }
+        public SimNaoLetra? IndRRA { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
+        /// </summary>
         [XmlElement("infoRRA")]
-        public InfoRRA InfoRRA { get; set; }
+        public InfoRRA1202 InfoRRA { get; set; }
 
         [XmlElement("infoPerApur")]
         public InfoPerApur1202 InfoPerApur { get; set; }
@@ -260,15 +265,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndRRA() => IndRRA != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA1202")]
     [ComVisible(true)]
 #endif
-    public class InfoRRA
+    public class InfoRRA1202
     {
         [XmlElement("tpProcRRA")]
         public TipoProcesso TpProcRRA { get; set; }
@@ -327,9 +335,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(NrProcRRA);
+        public bool ShouldSerializeNrProcRRA() => !string.IsNullOrEmpty(NrProcRRA);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -339,11 +347,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DespProcJud1202
     {
-        [XmlElement("vlrDespCustas")]
+        [XmlIgnore]
         public double VlrDespCustas { get; set; }
 
-        [XmlElement("vlrDespAdvogados")]
+        [XmlElement("vlrDespCustas")]
+        public string VlrDespCustasField
+        {
+            get => VlrDespCustas.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDespCustas = Converter.ToDouble(value);
+        }
+
+        [XmlIgnore]
         public double VlrDespAdvogados { get; set; }
+
+        [XmlElement("vlrDespAdvogados")]
+        public string VlrDespAdvogadosField
+        {
+            get => VlrDespAdvogados.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDespAdvogados = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -359,14 +381,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
-        [XmlElement("vlrAdv")]
+        [XmlIgnore]
         public double VlrAdv { get; set; }
+
+        [XmlElement("vlrAdv")]
+        public string VlrAdvField
+        {
+            get => VlrAdv.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAdv = Converter.ToDouble(value);
+        }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrAdv() => VlrAdv > 0;
+        public bool ShouldSerializeVlrAdvField() => VlrAdv > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -385,54 +414,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur1202")]
     [ComVisible(true)]
 #endif
-    public class RemunPerApur1202
-    {
-        [XmlElement("matricula")]
-        public string Matricula { get; set; }
-
-        [XmlElement("itensRemun")]
-        public ItensRemun1202 ItensRemun { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
-
-        #endregion
-    }
+    public class RemunPerApur1202 : RemunPerApur1200 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun1202")]
     [ComVisible(true)]
 #endif
-    public class ItensRemun1202
-    {
-        [XmlElement("codRubr")]
-        public string CodRubr { get; set; }
-
-        [XmlElement("ideTabRubr")]
-        public string IdeTabRubr { get; set; }
-
-        [XmlElement("qtdRubr")]
-        public double QtdRubr { get; set; }
-
-        [XmlElement("fatorRubr")]
-        public double FatorRubr { get; set; }
-
-        [XmlElement("vrRubr")]
-        public double VrRubr { get; set; }
-
-        [XmlElement("indApurIR")]
-        public IndApurIR IndApurIR { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeQtdRubr() => QtdRubr > 0;
-
-        public bool ShouldSerializeFatorRubr() => FatorRubr > 0;
-
-        #endregion
-    }
+    public class ItensRemun1202 : ItensRemun { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -564,7 +553,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public List<RemunPerAnt> RemunPerAnt { get; set; }
 
         [XmlElement("remunPerApur")]
-        public RemunPerApur RemunPerApur { get; set; }
+        public RemunPerApur1202 RemunPerApur { get; set; }
 
 #if INTEROP
 

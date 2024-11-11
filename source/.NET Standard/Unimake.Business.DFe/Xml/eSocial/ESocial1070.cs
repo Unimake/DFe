@@ -79,7 +79,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class Inclusao1070
     {
         [XmlElement("ideProcesso")]
-        public IdeProcessoESocial IdeProcesso { get; set; }
+        public IdeProcesso IdeProcesso { get; set; }
 
         [XmlElement("dadosProc")]
         public DadosProc DadosProc { get; set; }
@@ -87,10 +87,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcessoESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcesso")]
     [ComVisible(true)]
 #endif
-    public class IdeProcessoESocial
+    public class IdeProcesso
     {
         [XmlElement("tpProc")]
         public TipoProcessoESocial TpProc { get; set; }
@@ -139,6 +139,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => FimValid = DateTimeOffset.Parse(value);
 #endif
         }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
+
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -169,32 +174,32 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Observacao { get; set; }
 
         [XmlElement("dadosProcJud")]
-        public DadosProcJud DadosProcJud { get; set; }
+        public DadosProcJud1070 DadosProcJud { get; set; }
 
         [XmlElement("infoSusp")]
-        public List<InfoSusp> InfoSusp { get; set; }
+        public List<InfoSusp1070> InfoSusp { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoSusp(InfoSusp item)
+        public void AddInfoSusp(InfoSusp1070 item)
         {
             if (InfoSusp == null)
             {
-                InfoSusp = new List<InfoSusp>();
+                InfoSusp = new List<InfoSusp1070>();
             }
 
             InfoSusp.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoSusp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoSusp1070 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoSusp</returns>
-        public InfoSusp GetInfoSusp(int index)
+        public InfoSusp1070 GetInfoSusp(int index)
         {
             if ((InfoSusp?.Count ?? 0) == 0)
             {
@@ -225,19 +230,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosProcJud1070")]
+    [ComVisible(true)]
+#endif
+    public class DadosProcJud1070 : DadosProcJud { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSusp1070")]
+    [ComVisible(true)]
+#endif
+    public class InfoSusp1070 : InfoSusp { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1070")]
     [ComVisible(true)]
 #endif
     public class Alteracao1070
     {
         [XmlElement("ideProcesso")]
-        public IdeProcessoESocial IdeProcesso { get; set; }
+        public IdeProcesso IdeProcesso { get; set; }
 
         [XmlElement("dadosProc")]
         public DadosProc DadosProc { get; set; }
 
         [XmlElement("novaValidade")]
-        public NovaValidade NovaValidade { get; set; }
+        public NovaValidade1070 NovaValidade { get; set; }
     }
 
 #if INTEROP
@@ -248,6 +267,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class Exclusao1070
     {
         [XmlElement("ideProcesso")]
-        public IdeProcessoESocial IdeProcesso { get; set; }
+        public IdeProcesso IdeProcesso { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade1070")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade1070 : NovaValidade1005 { }
 }

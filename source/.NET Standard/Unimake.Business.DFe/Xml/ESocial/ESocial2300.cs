@@ -192,7 +192,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de mudança de CPF do trabalhador.
         /// </summary>
         [XmlElement("mudancaCPF")]
-        public MudancaCPF MudancaCPF { get; set; }
+        public MudancaCPF2300 MudancaCPF { get; set; }
 
         /// <summary>
         /// Informações de afastamento do TSVE.
@@ -203,7 +203,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// CPF.
         /// </summary>
         [XmlElement("afastamento")]
-        public Afastamento Afastamento { get; set; }
+        public Afastamento2300 Afastamento { get; set; }
 
         /// <summary>
         /// Informação do término do TSVE.
@@ -224,6 +224,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         #endregion ShouldSerialize
     }
+
+    /// <summary>
+    /// Informações de mudança de CPF do trabalhador.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem2300")]
+    [ComVisible(true)]
+#endif
+    public class MudancaCPF2300 : MudancaCPF2200 { }
+
+    /// <summary>
+    /// Informações de afastamento do trabalhador.
+    /// Preenchimento exclusivo em caso de trabalhador que permaneça afastado na data de início da 
+    /// obrigatoriedade dos eventos não periódicos para o empregador no eSocial ou na data de transferência ou 
+    /// alteração de CPF do empregado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem2300")]
+    [ComVisible(true)]
+#endif
+    public class Afastamento2300 : Afastamento2200 { }
 
     #region InfoComplem2300
 

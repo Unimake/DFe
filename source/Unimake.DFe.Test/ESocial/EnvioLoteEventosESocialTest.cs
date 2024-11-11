@@ -200,9 +200,9 @@ namespace Unimake.DFe.Test.ESocial
                                                 NmTrab = "nome",
                                                 DtNascto = DateTime.Parse("2012-12-13")
                                             },
-                                            ProcJudTrab = new List<ProcJudTrab>
+                                            ProcJudTrab = new List<ProcJudTrab1200>
                                             {
-                                               new ProcJudTrab
+                                               new ProcJudTrab1200
                                                {
                                                    TpTrib = TpTrib.IRRF,
                                                    NrProcJud = "00000000000000000001",
@@ -224,9 +224,9 @@ namespace Unimake.DFe.Test.ESocial
                                                         NrInsc = "12345678901234",
                                                         Codlotacao = "148",
                                                         QtdDiasAv = "1",
-                                                        RemunPerApur = new List<RemunPerApur>
+                                                        RemunPerApur = new List<RemunPerApur1200>
                                                         {
-                                                            new RemunPerApur
+                                                            new RemunPerApur1200
                                                             {
                                                                 Matricula = "teste1",
                                                                 ItensRemun = new List<ItensRemun1200>
@@ -250,7 +250,7 @@ namespace Unimake.DFe.Test.ESocial
                                                 {
                                                     CodCBO = "14",
                                                     NatAtividade = NatAtividade.TrabalhoUrbano,
-                                                    QtdDiasTrab = 2
+                                                    QtdDiasTrab = "2"
                                                 }
                                             }
                                         }

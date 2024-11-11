@@ -26,7 +26,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Evento Tabela de Lotações Tributárias
         /// </summary>
         [XmlElement("evtTabLotacao")]
-        public EvtTabLotacao evtTabLotacao { get; set; }
+        public EvtTabLotacao EvtTabLotacao { get; set; }
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
@@ -88,7 +88,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Inclusão de novas informações
         /// </summary>
         [XmlElement("inclusao")]
-        public InclusaoE1020 Inclusao { get; set; }
+        public Inclusao1020 Inclusao { get; set; }
+
+        /// <summary>
+        /// Alteração das informações.
+        /// </summary>
+        [XmlElement("alteracao")]
+        public Alteracao1020 Alteracao { get; set; }
+
+        /// <summary>
+        /// Exclusão das informações
+        /// </summary>
+        [XmlElement("exclusao")]
+        public Exclusao1020 Exclusao { get; set; }
 
     }
 
@@ -97,10 +109,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoE1020")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Inclusao1020")]
     [ComVisible(true)]
 #endif
-    public class InclusaoE1020
+    public class Inclusao1020
     {
         /// <summary>
         /// Identificação da lotação e validade das informações
@@ -178,6 +190,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        #region ShouldSerialize
+        public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -200,7 +216,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
         /// </summary>
         [XmlElement("tpInsc")]
-        public TpInsc TpInsc { get; set; }
+#if INTEROP
+        public TpInsc TpInsc { get; set; } = (TpInsc)(-1);
+#else
+        public TpInsc? TpInsc { get; set; }
+#endif
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ, CPF, CNO) ao qual pertence a lotação tributária.
@@ -227,6 +247,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("dadosOpPort")]
         public DadosOpPort DadosOpPort { get; set; }
+
+        #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeTpInsc() => TpInsc != (TpInsc)(-1);
+#else
+        public bool ShouldSerializeTpInsc() => TpInsc != null;
+#endif
+
+        public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
+
+        #endregion ShouldSerialize
     }
 
     #region FpasLotacao
@@ -287,6 +319,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("infoProcJudTerceiros")]
         public InfoProcJudTerceiro InfoProcJudTerceiro { get; set; }
+
+        #region ShouldSerialize
+        public bool ShouldSerializeCodTercsSusp() => !string.IsNullOrEmpty(CodTercsSusp);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -390,7 +427,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// quando o proprietário não for encontrado no CNO.
         /// </summary>
         [XmlElement("tpInscProp")]
-        public TpInsc TpInscProp { get; set; }
+#if INTEROP
+        public TpInsc TpInscProp { get; set; } = (TpInsc)(-1);
+#else
+        public TpInsc? TpInscProp { get; set; }
+#endif
 
         /// <summary>
         /// Preencher com o número de inscrição (CNPJ/CPF) do proprietário do CNO
@@ -400,9 +441,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("nrInscProp")]
         public string NrInscProp { get; set; }
+
+        #region ShouldSerialize
+#if INTEROP
+        public bool ShouldSerializeTpInscProp() => TpInscProp != (TpInsc)(-1);
+#else
+        public bool ShouldSerializeTpInscProp() => TpInscProp != null;
+#endif
+        public bool ShouldSerializeNrInscProp() => !string.IsNullOrEmpty(NrInscProp);
+
+        #endregion ShouldSerialize
     }
 
-    #endregion InfoEmprParcial
+#endregion InfoEmprParcial
 
     #region DadosOpPort
 
@@ -468,4 +519,61 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion DadosOpPort
 
+    /// <summary>
+    /// Alteração das informações.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1020")]
+    [ComVisible(true)]
+#endif
+    public class Alteracao1020
+    {
+        /// <summary>
+        /// Identificação da lotação e validade das informações
+        /// </summary>
+        [XmlElement("ideLotacao")]
+        public IdeLotacao IdeLotacao { get; set; }
+
+        /// <summary>
+        /// Detalhamento das informações da lotação.
+        /// </summary>
+        [XmlElement("dadosLotacao")]
+        public DadosLotacao DadosLotacao { get; set; }
+
+        /// <summary>
+        /// Informação preenchida exclusivamente em caso de alteração do período de validade das informações, 
+        /// apresentando o novo período de validade..
+        /// </summary>
+        [XmlElement("novaValidade")]
+        public NovaValidade1020 NovaValidade { get; set; }
+    }
+
+    /// <summary>
+    /// Informação preenchida exclusivamente em caso de alteração do período de validade das informações, 
+    /// apresentando o novo período de validade..
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade1020")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade1020 : NovaValidade1010 { }
+
+    /// <summary>
+    /// Exclusão das informações.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao1020")]
+    [ComVisible(true)]
+#endif
+    public class Exclusao1020
+    {
+        /// <summary>
+        /// Identificação da lotação e validade das informações
+        /// </summary>
+        [XmlElement("ideLotacao")]
+        public IdeLotacao IdeLotacao { get; set; }
+    }
 }

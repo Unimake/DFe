@@ -51,21 +51,45 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1210")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento1210
+    public class IdeEvento1210 
     {
+        /// <summary>
+        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
+        /// </summary>
         [XmlElement("indRetif")]
         public IndicativoRetificacao IndRetif { get; set; }
 
+        /// <summary>
+        /// Preencher com o número do recibo do arquivo a ser retificado.
+        /// Validação: O preenchimento é obrigatório se indRetif = [2].
+        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
+        /// </summary>
         [XmlElement("nrRecibo")]
         public string NrRecibo { get; set; }
 
+        /// <summary>
+        /// Informar o mês/ano (formato AAAA-MM) de referência
+        /// das informações, se indApuracao for igual a[1], ou apenas
+        /// o ano(formato AAAA), se indApuracao for igual a[2].
+        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
+        /// posterior ao início da obrigatoriedade dos eventos
+        /// periódicos para o empregador.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime PerApur { get; set; }
-#else
+#else        
         public DateTimeOffset PerApur { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar o mês/ano (formato AAAA-MM) de referência
+        /// das informações, se indApuracao for igual a[1], ou apenas
+        /// o ano(formato AAAA), se indApuracao for igual a[2].
+        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
+        /// posterior ao início da obrigatoriedade dos eventos
+        /// periódicos para o empregador.
+        /// </summary>
         [XmlElement("perApur")]
         public string PerApurField
         {
@@ -77,18 +101,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Indicativo do tipo de guia.
+        /// Valores válidos:
+        /// 1 - Documento de Arrecadação do eSocial - DAE
+        /// </summary>
         [XmlElement("indGuia")]
 #if INTEROP
         public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
 #else
         public IndGuia? IndGuia { get; set; }
 #endif
+
+        /// <summary>
+        /// Identificação do ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Processo de emissão do evento.
+        /// </summary>
         [XmlElement("procEmi")]
         public ProcEmiESocial ProcEmi { get; set; }
 
+        /// <summary>
+        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
+        /// </summary>
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
@@ -102,7 +141,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndGuia() => IndGuia != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -232,7 +271,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializePaisResidExt() => !string.IsNullOrEmpty(PaisResidExt);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -252,21 +291,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public FrmTribut FrmTribut { get; set; }
 
         [XmlElement("endExt")]
-        public EndExt EndExt { get; set; }
+        public EndExt1210 EndExt { get; set; }
 
         #region ShouldSerialize
 
         public bool ShouldSerializeNifBenef() => !string.IsNullOrEmpty(NifBenef);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.EndExt")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EndExt1210")]
     [ComVisible(true)]
 #endif
-    public class EndExt
+    public class EndExt1210
     {
         [XmlElement("endDscLograd")]
         public string EndDscLograd { get; set; }
@@ -310,7 +349,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeTelef() => !string.IsNullOrEmpty(Telef);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -419,7 +458,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("planSaude")]
-        public List<PlanSaude> PlanSaude { get; set; }
+        public List<PlanSaude1210> PlanSaude { get; set; }
 
 #if INTEROP
 
@@ -427,22 +466,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddPlanSaude(PlanSaude item)
+        public void AddPlanSaude(PlanSaude1210 item)
         {
             if (PlanSaude == null)
             {
-                PlanSaude = new List<PlanSaude>();
+                PlanSaude = new List<PlanSaude1210>();
             }
 
             PlanSaude.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista PlanSaude (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista PlanSaude1210 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da PlanSaude</returns>
-        public PlanSaude GetPlanSaude(int index)
+        public PlanSaude1210 GetPlanSaude(int index)
         {
             if ((PlanSaude?.Count ?? 0) == 0)
             {
@@ -502,7 +541,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtLaudoField() => DtLaudo > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -659,7 +698,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("previdCompl")]
-        public List<PrevidCompl> PrevidCompl { get; set; }
+        public List<PrevidCompl1210> PrevidCompl { get; set; }
 
 #if INTEROP
 
@@ -667,22 +706,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddPrevidCompl(PrevidCompl item)
+        public void AddPrevidCompl(PrevidCompl1210 item)
         {
             if (PrevidCompl == null)
             {
-                PrevidCompl = new List<PrevidCompl>();
+                PrevidCompl = new List<PrevidCompl1210>();
             }
 
             PrevidCompl.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista PrevidCompl (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista PrevidCompl1210 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da PrevidCompl</returns>
-        public PrevidCompl GetPrevidCompl(int index)
+        public PrevidCompl1210 GetPrevidCompl(int index)
         {
             if ((PrevidCompl?.Count ?? 0) == 0)
             {
@@ -801,10 +840,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.PrevidCompl")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PrevidCompl1210")]
     [ComVisible(true)]
 #endif
-    public class PrevidCompl
+    public class PrevidCompl1210
     {
         [XmlElement("tpPrev")]
         public TipoDePrevidenciaComplementar TpPrev { get; set; }
@@ -845,7 +884,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeVlrPatrocFunpField() => VlrPatrocFunp > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -908,7 +947,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeCodSusp() => !string.IsNullOrEmpty(CodSusp);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -1164,10 +1203,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.PlanSaude")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PlanSaude1210")]
     [ComVisible(true)]
 #endif
-    public class PlanSaude
+    public class PlanSaude1210
     {
         [XmlElement("cnpjOper")]
         public string CnpjOper { get; set; }
@@ -1234,7 +1273,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeRegANS() => !string.IsNullOrEmpty(RegANS);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -1414,7 +1453,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeVlrReembField() => VlrReemb > 0;
         public bool ShouldSerializeVlrReembAntField() => VlrReembAnt > 0;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP

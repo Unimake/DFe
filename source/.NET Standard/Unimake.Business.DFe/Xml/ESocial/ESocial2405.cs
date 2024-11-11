@@ -237,7 +237,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///  Grupo de informações do endereço do beneficiário
         /// </summary>
         [XmlElement("endereco")]
-        public Endereco Endereco { get; set; }
+        public Endereco2405 Endereco { get; set; }
 
         /// <summary>
         /// Informações dos dependentes.
@@ -289,6 +289,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Endereco2405")]
+    [ComVisible(true)]
+#endif
+    public class Endereco2405 : Endereco2205 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Dependente2405")]
+    [ComVisible(true)]
+#endif
     public class Dependente2405
     {
         /// <summary>

@@ -16,11 +16,10 @@
 			<dtNascto>1900-01-01</dtNascto>
 			<dtAdm>1900-01-01</dtAdm>
 			<matricula>matricula1</matricula>
-			<codCateg>123</codCateg>
-			<natAtividade>1</natAtividade>
+			<codCateg>101</codCateg>
 			<infoRegCTPS>
 				<CBOCargo>123456</CBOCargo>
-				<vrSalFx>0</vrSalFx>
+				<vrSalFx>0.00</vrSalFx>
 				<undSalFixo>1</undSalFixo>
 				<tpContr>1</tpContr>
 				<dtTerm>1900-01-01</dtTerm>

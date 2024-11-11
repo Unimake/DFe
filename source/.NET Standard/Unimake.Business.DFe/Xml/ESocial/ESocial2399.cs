@@ -350,7 +350,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("procJudTrab")]
-        public List<ProcJudTrab> ProcJudTrab { get; set; }
+        public List<ProcJudTrab2399> ProcJudTrab { get; set; }
 
 #if INTEROP
 
@@ -358,22 +358,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddProcJudTrab(ProcJudTrab item)
+        public void AddProcJudTrab(ProcJudTrab2399 item)
         {
             if (ProcJudTrab == null)
             {
-                ProcJudTrab = new List<ProcJudTrab>();
+                ProcJudTrab = new List<ProcJudTrab2399>();
             }
 
             ProcJudTrab.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista ProcJudTrab (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista ProcJudTrab2399 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
-        public ProcJudTrab GetProcJudTrab(int index)
+        public ProcJudTrab2399 GetProcJudTrab(int index)
         {
             if ((ProcJudTrab?.Count ?? 0) == 0)
             {
@@ -396,6 +396,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2399")]
+    [ComVisible(true)]
+#endif
+    public class ProcJudTrab2399 : ProcJudTrab1200 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev2399")]
     [ComVisible(true)]
 #endif
@@ -408,7 +415,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string IndRRA { get; set; }
 
         [XmlElement("infoRRA")]
-        public InfoRRA InfoRRA { get; set; }
+        public InfoRRA2399 InfoRRA { get; set; }
 
         /// <summary>
         /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
@@ -464,6 +471,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA2399")]
+    [ComVisible(true)]
+#endif
+    public class InfoRRA2399 : InfoRRA1202 { }
 
     #region IdeEstabLot2399
 

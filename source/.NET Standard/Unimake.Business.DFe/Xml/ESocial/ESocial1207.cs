@@ -46,6 +46,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
+
         /// <summary>
         /// Informações de identificação do evento.
         /// </summary>
@@ -71,7 +72,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DmDev1207 DmDev { get; set; }
     }
 
-    #region IdeEvento1207
 
     /// <summary>
     /// Informações de identificação do evento
@@ -81,90 +81,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1207")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento1207
-    {
-        /// <summary>
-        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
-        /// </summary>
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
+    public class IdeEvento1207 : IdeEvento1202 { }
 
-        /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
-        /// Indicativo de período de apuração.
-        /// </summary>
-        [XmlElement("indApuracao")]
-        public IndApuracao IndApuracao { get; set; }
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur { get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
-#endif
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// </summary>
-        [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
-
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-        #endregion ShouldSerialize
-    }
-
-    #endregion IdeEvento1207
-
-    #region IdeBenef1207
 
     /// <summary>
     /// Identificação do beneficiário.
@@ -183,9 +101,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }
     }
-    #endregion IdeBenef1207
-
-    #region DmDev1207
 
     /// <summary>
     /// Identificação de cada um dos demonstrativos de valores devidos ao beneficiário
@@ -217,11 +132,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrBeneficio")]
         public string NrBeneficio { get; set; }
 
+        /// <summary>
+        /// Indicativo de Rendimentos Recebidos Acumuladamente - RRA.
+        /// Somente preencher este campo se for um demonstrativo de RRA.
+        /// </summary>
         [XmlElement("indRRA")]
         public string IndRRA { get; set; }
 
+        /// <summary>
+        /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
+        /// </summary>
         [XmlElement("infoRRA")]
-        public InfoRRA InfoRRA { get; set; }
+        public InfoRRA1207 InfoRRA { get; set; }
 
         /// <summary>
         /// Informações relativas ao período de apuração
@@ -235,10 +157,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// proventos ou pensões retroativos
         /// </summary>
         [XmlElement("infoPerAnt")]
-        public InfPerAnt InfPerAnt { get; set; }
+        public InfoPerAnt1207 InfoPerAnt { get; set; }
     }
 
-    #region InfoPerApur1207
+    /// <summary>
+    /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA1207")]
+    [ComVisible(true)]
+#endif
+    public class InfoRRA1207 : InfoRRA1202 { }
 
     /// <summary>
     /// Informações relativas ao período de apuração
@@ -256,8 +186,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("ideEstab")]
         public IdeEstab1207 IdeEstab { get; set; }
     }
-
-    #region IdeEstab1207
 
     /// <summary>
     /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
@@ -325,8 +253,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region ItensRemun1207
-
     /// <summary>
     /// Rubricas que compõem o provento ou pensão do beneficiário.
     /// </summary>
@@ -335,46 +261,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun1207")]
     [ComVisible(true)]
 #endif
-    public class ItensRemun1207
-    {
-
-        [XmlElement("codRubr")]
-        public string CodRubr { get; set; }
-
-        [XmlElement("ideTabRubr")]
-        public string IdeTabRubr { get; set; }
-
-        [XmlElement("qtdRubr")]
-        public double QtdRubr { get; set; }
-
-        [XmlElement("fatorRubr")]
-        public double FatorRubr { get; set; }
-
-        [XmlElement("vrRubr")]
-        public double VrRubr { get; set; }
-        /// <summary>
-        /// Indicativo de tipo de apuração de IR
-        /// </summary>
-        [XmlElement("indApurIR")]
-        public IndApurIR IndApurIR { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeQtdRubr() => QtdRubr > 0;
-
-        public bool ShouldSerializeFatorRubr() => FatorRubr > 0;
-
-        #endregion
-    }
-
-
-    #endregion ItensRemun1207
-
-    #endregion IdeEstab1207
-
-    #endregion InfoPerApur1207
-
-    #region  InfPerAnt
+    public class ItensRemun1207 : ItensRemun { }
 
     /// <summary>
     /// Grupo destinado às informações relativas a períodos
@@ -383,10 +270,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfPerAnt")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerAnt1207")]
     [ComVisible(true)]
 #endif
-    public class InfPerAnt
+    public class InfoPerAnt1207
     {
         [XmlElement("idePeriodo")]
         public List<IdePeriodo1207> IdePeriodo { get; set; }
@@ -430,7 +317,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region IdePeriodo1207
 
     /// <summary>
     /// Identificação do período ao qual se referem as diferenças de provento ou pensão.
@@ -481,13 +367,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEstab1207 IdeEstab { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializePerRefField() => PerRef > DateTime.MinValue;
+
         #endregion ShouldSerialize
     }
-
-    #endregion IdePeriodo1207
-
-    #endregion InfPerAnt
-
-    #endregion DmDev1207
 }

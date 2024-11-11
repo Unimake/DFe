@@ -327,7 +327,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("afastamento")]
-        public Afastamento Afastamento { get; set; }
+        public Afastamento8200 Afastamento { get; set; }
 
         [XmlElement("desligamento")]
         public Desligamento8200 Desligamento { get; set; }
@@ -349,6 +349,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+    /// <summary>
+    /// Informações de afastamento do trabalhador.
+    /// Preenchimento exclusivo em caso de trabalhador que permaneça afastado na data de início da 
+    /// obrigatoriedade dos eventos não periódicos para o empregador no eSocial ou na data de transferência ou 
+    /// alteração de CPF do empregado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Cargo")]
+    [ComVisible(true)]
+#endif
+    public class Afastamento8200 : Afastamento2200 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

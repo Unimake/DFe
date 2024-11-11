@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS1591
 
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -8,6 +9,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2205 - Alteração de Dados Cadastrais do Trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2205")]
@@ -24,6 +28,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Alteração de Dados Cadastrais do Trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtAltCadastral")]
@@ -31,6 +38,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtAltCadastral
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -47,35 +57,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Alteracao2205 Alteracao { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2205")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2205
-    {
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
+    public class IdeEvento2205 : IdeEvento2200 { }
 
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-        #endregion
-    }
-
+    /// <summary>
+    /// Identificação do trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador2205")]
@@ -83,10 +77,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeTrabalhador2205
     {
+        /// <summary>
+        /// Preencher com o número do CPF do trabalhador
+        /// </summary>
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
     }
 
+    /// <summary>
+    /// Alteração de dados cadastrais do trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao2205")]
@@ -94,6 +94,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Alteracao2205
     {
+        /// <summary>
+        /// Preencher com a data da alteração das informações
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtAlteracao { get; set; }
@@ -112,10 +115,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+
         [XmlElement("dadosTrabalhador")]
         public DadosTrabalhador DadosTrabalhador { get; set; }
     }
 
+    /// <summary>
+    /// Informações pessoais do trabalhador.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosTrabalhador")]
@@ -123,15 +130,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DadosTrabalhador
     {
+        /// <summary>
+        /// Informar o nome do trabalhador
+        /// </summary>
         [XmlElement("nmTrab")]
         public string NmTrab { get; set; }
 
+        /// <summary>
+        /// Sexo do trabalhador
+        /// </summary>
         [XmlElement("sexo")]
         public TipoSexo Sexo { get; set; }
 
+        /// <summary>
+        /// Etnia e raça do trabalhador
+        /// </summary>
         [XmlElement("racaCor")]
         public RacaCor RacaCor { get; set; }
 
+        /// <summary>
+        /// Estado civil do trabalhador
+        /// </summary>
         [XmlElement("estCiv")]
 #if INTEROP
         public EstadoCivil EstCiv { get; set; } = (EstadoCivil)(-1);
@@ -139,27 +158,35 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public EstadoCivil? EstCiv { get; set; }
 #endif
 
-
+        /// <summary>
+        /// Grau de instrução do trabalhador
+        /// </summary>
         [XmlElement("grauInstr")]
         public GrauDeInstrucao GrauInstr { get; set; }
 
+        /// <summary>
+        /// Nome social para travesti ou transexual
+        /// </summary>
         [XmlElement("nmSoc")]
         public string NmSoc { get; set; }
 
+        /// <summary>
+        /// Preencher com o código do país de nacionalidade do trabalhador
+        /// </summary>
         [XmlElement("paisNac")]
         public string PaisNac { get; set; }
 
         [XmlElement("endereco")]
-        public Endereco Endereco { get; set; }
+        public Endereco2205 Endereco { get; set; }
 
         [XmlElement("trabImig")]
-        public TrabImig TrabImig { get; set; }
+        public TrabImig2205 TrabImig { get; set; }
 
         [XmlElement("infoDeficiencia")]
-        public InfoDeficiencia InfoDeficiencia { get; set; }
+        public InfoDeficiencia2205 InfoDeficiencia { get; set; }
 
         [XmlElement("dependente")]
-        public List<Dependente> Dependente { get; set; }
+        public List<Dependente2205> Dependente { get; set; }
 
 #if INTEROP
 
@@ -167,22 +194,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddDependente(Dependente item)
+        public void AddDependente(Dependente2205 item)
         {
             if (Dependente == null)
             {
-                Dependente = new List<Dependente>();
+                Dependente = new List<Dependente2205>();
             }
 
             Dependente.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista Dependente (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista Dependente2205 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Dependente</returns>
-        public Dependente GetDependente(int index)
+        public Dependente2205 GetDependente(int index)
         {
             if ((Dependente?.Count ?? 0) == 0)
             {
@@ -214,12 +241,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Grupo de informações do endereço do trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Endereco")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Endereco2205")]
     [ComVisible(true)]
 #endif
-    public class Endereco
+    public class Endereco2205
     {
         [XmlElement("brasil")]
         public Brasil Brasil { get; set; }
@@ -228,6 +258,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Exterior Exterior { get; set; }
     }
 
+    /// <summary>
+    /// Endereço no Brasil
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Brasil")]
@@ -235,27 +268,51 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Brasil
     {
+        /// <summary>
+        /// Tipo de logradouro
+        /// </summary>
         [XmlElement("tpLograd")]
         public string TpLograd { get; set; }
 
+        /// <summary>
+        /// Descrição do logradouro
+        /// </summary>
         [XmlElement("dscLograd")]
         public string DscLograd { get; set; }
 
+        /// <summary>
+        /// Número do logradouro
+        /// </summary>
         [XmlElement("nrLograd")]
         public string NrLograd { get; set; }
 
+        /// <summary>
+        /// Complemento do logradouro
+        /// </summary>
         [XmlElement("complemento")]
         public string Complemento { get; set; }
 
+        /// <summary>
+        /// Nome do bairro/distrito
+        /// </summary>
         [XmlElement("bairro")]
         public string Bairro { get; set; }
 
+        /// <summary>
+        /// Código de Endereçamento Postal - CEP.
+        /// </summary>
         [XmlElement("cep")]
         public string Cep { get; set; }
 
+        /// <summary>
+        /// Preencher com o código do município, conforme tabela do IBGE
+        /// </summary>
         [XmlElement("codMunic")]
         public string CodMunic { get; set; }
 
+        /// <summary>
+        /// Preencher com a sigla da Unidade da Federação - UF
+        /// </summary>
         [XmlElement("uf")]
         public string Uf { get; set; }
 
@@ -270,6 +327,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Endereço no exterior
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Exterior")]
@@ -277,24 +337,46 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Exterior
     {
+        /// <summary>
+        /// Preencher com o código do país
+        /// </summary>
         [XmlElement("paisResid")]
-        public int PaisResid { get; set; }
+        public string PaisResid { get; set; }
 
+        /// <summary>
+        /// Descrição do logradouro
+        /// </summary>
         [XmlElement("dscLograd")]
         public string DscLograd { get; set; }
 
+        /// <summary>
+        /// Número do logradouro.
+        /// Se não houver número a ser informado, preencher com "S/N".
+        /// </summary>
         [XmlElement("nrLograd")]
         public string NrLograd { get; set; }
 
+        /// <summary>
+        /// Complemento do logradouro
+        /// </summary>
         [XmlElement("complemento")]
         public string Complemento { get; set; }
 
+        /// <summary>
+        /// Nome do bairro/distrito
+        /// </summary>
         [XmlElement("bairro")]
         public string Bairro { get; set; }
 
+        /// <summary>
+        /// Nome da cidade
+        /// </summary>
         [XmlElement("nmCid")]
         public string NmCid { get; set; }
 
+        /// <summary>
+        /// Código de Endereçamento Postal
+        /// </summary>
         [XmlElement("codPostal")]
         public string CodPostal { get; set; }
 
@@ -309,13 +391,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações do trabalhador imigrante
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.TrabImig")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.TrabImig2205")]
     [ComVisible(true)]
 #endif
-    public class TrabImig
+    public class TrabImig2205
     {
+        /// <summary>
+        /// Tempo de residência do trabalhador imigrante
+        /// </summary>
         [XmlElement("tmpResid")]
 #if INTEROP
         public TempoDeResidencia TmpResid { get; set; } = (TempoDeResidencia)(-1);
@@ -323,6 +411,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TempoDeResidencia? TmpResid { get; set; }
 #endif
 
+        /// <summary>
+        /// Condição de ingresso do trabalhador imigrante
+        /// </summary>
         [XmlElement("condIng")]
         public CondicaoIngressoTrabalhador CondIng { get; set; }
 
@@ -337,31 +428,55 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Pessoa com deficiência
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDeficiencia")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDeficiencia2205")]
     [ComVisible(true)]
 #endif
-    public class InfoDeficiencia
+    public class InfoDeficiencia2205
     {
+        /// <summary>
+        /// Deficiência física
+        /// </summary>
         [XmlElement("defFisica")]
         public SimNaoLetra DefFisica { get; set; }
 
+        /// <summary>
+        /// Deficiência visual
+        /// </summary>
         [XmlElement("defVisual")]
         public SimNaoLetra DefVisual { get; set; }
 
+        /// <summary>
+        /// Deficiência auditiva
+        /// </summary>
         [XmlElement("defAuditiva")]
         public SimNaoLetra DefAuditiva { get; set; }
 
+        /// <summary>
+        /// Deficiência mental
+        /// </summary>
         [XmlElement("defMental")]
         public SimNaoLetra DefMental { get; set; }
 
+        /// <summary>
+        /// Deficiência intelectual
+        /// </summary>
         [XmlElement("defIntelectual")]
         public SimNaoLetra DefIntelectual { get; set; }
 
+        /// <summary>
+        /// Informar se o trabalhador é reabilitado (empregado) ou readaptado (servidor público/militar).
+        /// </summary>
         [XmlElement("reabReadap")]
         public SimNaoLetra ReabReadap { get; set; }
 
+        /// <summary>
+        /// Informar se o trabalhador deve ser contabilizado no preenchimento de cota de pessoas com deficiência habilitadas ou de beneficiários reabilitados
+        /// </summary>
         [XmlElement("infoCota")]
 #if INTEROP
         public SimNaoLetra InfoCota { get; set; } = (SimNaoLetra)(-1);
@@ -369,6 +484,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? InfoCota { get; set; }
 #endif
 
+        /// <summary>
+        /// Observação
+        /// </summary>
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
@@ -385,13 +503,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações dos dependentes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Dependente")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Dependente2205")]
     [ComVisible(true)]
 #endif
-    public class Dependente
+    public class Dependente2205
     {
+        /// <summary>
+        /// Tipo de dependente
+        /// </summary>
         [XmlElement("tpDep")]
 #if INTEROP
         public TiposDeDependente TpDep { get; set; } = (TiposDeDependente)(-1);
@@ -399,9 +523,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TiposDeDependente? TpDep { get; set; }
 #endif
 
+        /// <summary>
+        /// Nome do dependente
+        /// </summary>
         [XmlElement("nmDep")]
         public string NmDep { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de nascimento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtNascto { get; set; }
@@ -420,9 +550,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Número de inscrição no CPF
+        /// </summary>
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
 
+        /// <summary>
+        /// Sexo do dependente
+        /// </summary>
         [XmlElement("sexoDep")]
 #if INTEROP
         public TipoSexo SexoDep { get; set; } = (TipoSexo)(-1);
@@ -430,15 +566,31 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoSexo? SexoDep { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar se é dependente do trabalhador para fins de dedução de seu rendimento tributável pelo Imposto de Renda
+        /// </summary>
         [XmlElement("depIRRF")]
         public SimNaoLetra DepIRRF { get; set; }
 
+        /// <summary>
+        /// Informar se é dependente para fins de recebimento do benefício de salário-família
+        /// </summary>
         [XmlElement("depSF")]
         public SimNaoLetra DepSF { get; set; }
 
+        /// <summary>
+        /// Informar se o dependente tem incapacidade física ou mental para o trabalho
+        /// </summary>
         [XmlElement("incTrab")]
-        public SimNaoLetra IncTrab { get; set; }
+#if INTEROP
+        public SimNaoLetra IncTrab { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IncTrab { get; set; }
+#endif
 
+        /// <summary>
+        /// Informar a descrição da dependência
+        /// </summary>
         [XmlElement("descrDep")]
         public string DescrDep { get; set; }
 
@@ -458,9 +610,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeSexoDep() => SexoDep != null;
 #endif
 
+#if INTEROP
+        public bool ShouldSerializeIncTrab() => IncTrab != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIncTrab() => IncTrab != null;
+#endif
+
+        public bool ShoulSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
+
         #endregion
     }
 
+    /// <summary>
+    /// Informações de contato
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Contato2205")]
@@ -468,18 +631,30 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Contato2205
     {
+        /// <summary>
+        /// Número de telefone do trabalhador, com DDD
+        /// </summary>
         [XmlElement("fonePrinc")]
         public string FonePrinc { get; set; }
 
+        /// <summary>
+        /// Endereço eletrônico
+        /// </summary>
         [XmlElement("emailPrinc")]
         public string EmailPrinc { get; set; }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeFonePrinc() => !string.IsNullOrEmpty(FonePrinc);
+        public bool ShouldSerializeFonePrinc() => FonePrinc.HasOnlyNumbers() && FonePrinc.Length >= 8;
 
-        public bool ShouldSerializeEmailPrinc() => !string.IsNullOrEmpty(EmailPrinc);
+        public bool ShouldSerializeEmailPrinc() => !string.IsNullOrEmpty(EmailPrinc) &&
+                                                         EmailPrinc.Contains("@") &&
+                                                         EmailPrinc.Contains(".") &&
+                                                        !EmailPrinc.StartsWith("@") &&
+                                                        !EmailPrinc.EndsWith("@") &&
+                                                        !EmailPrinc.StartsWith(".") &&
+                                                        !EmailPrinc.EndsWith(".");
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

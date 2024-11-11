@@ -130,6 +130,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndicativoRetificacao IndRetif { get; set; }
 
         /// <summary>
+        /// Preencher com o número do recibo do arquivo a ser retificado.
+        /// Validação: O preenchimento é obrigatório se indRetif = [2].
+        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
+        /// </summary>
+        [XmlElement("nrRecibo")]
+        public string NrRecibo { get; set; }
+
+        /// <summary>
         /// Indicativo de período de apuração.
         /// </summary>
         [XmlElement("indApuracao")]
@@ -170,14 +178,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
         /// Indicativo do tipo de guia.
         /// Valores válidos:
         /// 1 - Documento de Arrecadação do eSocial - DAE
@@ -214,7 +214,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
 #else
-        public bool ShouldSerializeIndGuia() => !IndGuia.IsNullOrEmpty();
+        public bool ShouldSerializeIndGuia() => IndGuia != null;
 #endif
 
         #endregion ShouldSerialize
@@ -266,18 +266,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         ///incidência de contribuições sociais e/ou Imposto de Renda.
         /// </summary>
         [XmlElement("procJudTrab")]
-        public List<ProcJudTrab> ProcJudTrab { get; set; }
+        public List<ProcJudTrab1200> ProcJudTrab { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddProcJudTrab(ProcJudTrab item)
+        public void AddProcJudTrab(ProcJudTrab1200 item)
         {
             if (ProcJudTrab == null)
             {
-                ProcJudTrab = new List<ProcJudTrab>();
+                ProcJudTrab = new List<ProcJudTrab1200>();
             }
 
             ProcJudTrab.Add(item);
@@ -288,7 +288,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
-        public ProcJudTrab GetProcJudTrab(int index)
+        public ProcJudTrab1200 GetProcJudTrab(int index)
         {
             if ((ProcJudTrab?.Count ?? 0) == 0)
             {
@@ -308,29 +308,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações relativas ao trabalho intermitente.
         /// </summary>
         [XmlElement("infoInterm")]
-        public List<InfoInterm> InfoInterm { get; set; }
+        public List<InfoInterm1200> InfoInterm { get; set; }
 #if INTEROP
 
         /// <summary>
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoInterm(InfoInterm item)
+        public void AddInfoInterm(InfoInterm1200 item)
         {
             if (InfoInterm == null)
             {
-                InfoInterm = new List<InfoInterm>();
+                InfoInterm = new List<InfoInterm1200>();
             }
 
             InfoInterm.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoInterm (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoInterm1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoInterm</returns>
-        public InfoInterm GetInfoInterm(int index)
+        public InfoInterm1200 GetInfoInterm(int index)
         {
             if ((InfoInterm?.Count ?? 0) == 0)
             {
@@ -628,10 +628,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab1200")]
     [ComVisible(true)]
 #endif
-    public class ProcJudTrab
+    public class ProcJudTrab1200
     {
         /// <summary>
         /// Abrangência da decisão.
@@ -665,10 +665,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm1200")]
     [ComVisible(true)]
 #endif
-    public class InfoInterm
+    public class InfoInterm1200
     {
         /// <summary>
         /// Dia do mês efetivamente trabalhado pelo empregado
@@ -770,7 +770,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeIndRRA() => IndRRA != (SimNaoLetra)(-1);
 #else
-        public bool ShouldSerializeIndRRA() => !IndRRA.IsNullOrEmpty();
+        public bool ShouldSerializeIndRRA() => IndRRA != null;
 #endif
 
         #endregion ShouldSerialize
@@ -785,7 +785,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA1200")]
     [ComVisible(true)]
 #endif
-    public class InfoRRA1200 : InfoRRA { }
+    public class InfoRRA1200 : InfoRRA1202 { }
 
     /// <summary>
     /// Informações relativas ao período de apuração. 
@@ -870,7 +870,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Remuneração do trabalhador 
         /// </summary>
         [XmlElement("remunPerApur")]
-        public List<RemunPerApur> RemunPerApur { get; set; }
+        public List<RemunPerApur1200> RemunPerApur { get; set; }
 
 #if INTEROP
 
@@ -878,22 +878,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddRemunPerApur(RemunPerApur item)
+        public void AddRemunPerApur(RemunPerApur1200 item)
         {
             if (RemunPerApur == null)
             {
-                RemunPerApur = new List<RemunPerApur>();
+                RemunPerApur = new List<RemunPerApur1200>();
             }
 
             RemunPerApur.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista RemunPerApur (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista RemunPerApur1200 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da RemunPerApur</returns>
-        public RemunPerApur GetRemunPerApur(int index)
+        public RemunPerApur1200 GetRemunPerApur(int index)
         {
             if ((RemunPerApur?.Count ?? 0) == 0)
             {
@@ -924,7 +924,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur")]
     [ComVisible(true)]
 #endif
-    public class RemunPerApur
+    public class RemunPerApur1200
     {
         /// <summary>
         /// Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público,
@@ -1035,11 +1035,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("grauExp")]
         public string GrauExp { get; set; }
 
-        #region ShouldSerialize
-
-        public bool ShouldSerializeGrauExp() => !string.IsNullOrEmpty(GrauExp);
-
-        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -1138,18 +1133,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset DtAcConv { get; set; }
 #endif
 
-        /// <summary>
-        /// Data da assinatura do acordo, convenção coletiva,
-        /// sentença normativa ou da conversão da licença saúde em
-        /// acidente de trabalho.
-        /// Validação: Informação obrigatória se tpAcConv = [A,
-        /// B,
-        /// C,
-        /// D,
-        /// E].Se preenchida, seu mês/ano deve ser igual ou
-        /// anterior ao período de apuração, informado em perApur.
-        /// A data deve ser igual ou posterior a 01/01/1890.
-        /// </summary>
         [XmlElement("dtAcConv")]
         public string DtAcConvField
         {
@@ -1501,7 +1484,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatricula() => !Matricula.IsNullOrEmpty();
+        public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 
 #if INTEROP
         public bool ShouldSerializeIndSimples() => IndSimples != (IndSimples)(-1);
@@ -1540,7 +1523,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// a um tipo de CAEPF informado em S-1005 como produtor rural ou segurado especial.
         /// </summary>
         [XmlElement("natAtividade")]
-        public NatAtividade NatAtividade { get; set; }
+#if INTEROP
+        public NatAtividade NatAtividade { get; set; } = (NatAtividade)(-1);
+#else
+        public NatAtividade? NatAtividade { get; set; }
+#endif
 
         /// <summary>
         /// Informação prestada exclusivamente pelo segurado especial em caso de 
@@ -1550,7 +1537,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// e indApuracao = [1]. Neste caso, preencher com um número entre 0 e 31, de acordo com o calendário anual.
         /// </summary>
         [XmlElement("qtdDiasTrab")]
-        public int QtdDiasTrab { get; set; }
+        public string QtdDiasTrab { get; set; }
+
+        #region ShouldSerialize
+
+#if INTEROP
+        public bool ShouldSerializeNatAtividade() => NatAtividade != (NatAtividade)(-1);
+#else
+        public bool ShouldSerializeNatAtividade() => NatAtividade != null;
+#endif
+
+        public bool ShouldSerializeQtdDiasTrab() => !string.IsNullOrEmpty(QtdDiasTrab);
+
+        #endregion ShouldSerialize
 
     }
 }

@@ -46,7 +46,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("infoEstab")]
-        public InfoEstab infoEstab { get; set; }
+        public InfoEstab InfoEstab { get; set; }
     }
 
 #if INTEROP
@@ -67,10 +67,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Inclusao1005 Inclusao { get; set; }
 
         [XmlElement("alteracao")]
-        public Alteracao Alteracao { get; set; }
+        public Alteracao1005 Alteracao { get; set; }
 
         [XmlElement("exclusao")]
-        public Exclusao Exclusao { get; set; }
+        public Exclusao1005 Exclusao { get; set; }
     }
 
 #if INTEROP
@@ -139,7 +139,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
 
     }
 
@@ -181,7 +181,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeCnpjResp() => !string.IsNullOrEmpty(CnpjResp);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -416,10 +416,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1005")]
     [ComVisible(true)]
 #endif
-    public class Alteracao
+    public class Alteracao1005
     {
         [XmlElement("ideEstab")]
         public IdeEstab IdeEstab { get; set; }
@@ -431,15 +431,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DadosEstab DadosEstab { get; set; }
 
         [XmlElement("novaValidade")]
-        public NovaValidade NovaValidade { get; set; }
+        public NovaValidade1005 NovaValidade { get; set; }
     }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade1005")]
     [ComVisible(true)]
 #endif
-    public class NovaValidade
+    public class NovaValidade1005
     {
         [XmlIgnore]
 #if INTEROP
@@ -486,10 +486,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao1005")]
     [ComVisible(true)]
 #endif
-    public class Exclusao
+    public class Exclusao1005
     {
         [XmlElement("ideEstab")]
         public IdeEstab IdeEstab { get; set; }

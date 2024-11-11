@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS1591
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Serialization;
@@ -68,8 +69,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoComProd1260 InfoComProd { get; set; }
     }
 
-    #region  IdeEvento1260 
-
     /// <summary>
     /// Informações de identificação do evento
     /// </summary>
@@ -78,92 +77,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1260")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento1260
-    {
-        /// <summary>
-        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
-        /// </summary>
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur { get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
-#endif
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// </summary>
-        [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
-
-        [XmlElement("indGuia")]
-#if INTEROP
-        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
-#else
-        public IndGuia? IndGuia { get; set; }
-#endif
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-#if INTEROP
-        public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
-#else
-        public bool ShouldSerializeIndGuia() => IndGuia != null;
-#endif
-
-        #endregion ShouldSerialize
-    }
-    #endregion IdeEvento1260 
+    public class IdeEvento1260 : IdeEvento1210 { }
 
     #region InfoComProd1260
 
@@ -208,7 +122,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Valor total da comercialização por "tipo" de comercialização.
         /// </summary>
         [XmlElement("tpComerc")]
-        public TpComerc TpComerc { get; set; }
+        public List<TpComerc> TpComerc { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddTpComerc(TpComerc item)
+        {
+            if (TpComerc == null)
+            {
+                TpComerc = new List<TpComerc>();
+            }
+
+            TpComerc.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista TpComerc (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da TpComerc</returns>
+        public TpComerc GetTpComerc(int index)
+        {
+            if ((TpComerc?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return TpComerc[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista TpComerc
+        /// </summary>
+        public int GetTpComercCount => (TpComerc != null ? TpComerc.Count : 0);
+#endif
     }
 
     #region TpComerc
@@ -273,12 +224,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("infoProcJud")]
         public InfoProcJud1260 InfoProcJud { get; set; }
 
-        #region ShouldSerialize 
-
-        public bool ShouldSerializeIdeAdquir() => IdeAdquir != null;
-        public bool ShouldSerializeInfoProcJud() => InfoProcJud != null;
-
-        #endregion ShouldSerialize
     }
 
     #region IdeAdquir
@@ -331,11 +276,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nfs")]
         public Nfs Nfs { get; set; }
 
-        #region shouldSerialize
-
-        public bool ShouldSerializeNfs() => Nfs != null;
-
-        #endregion shouldSerialize
     }
 
     #region Nfs
@@ -424,6 +364,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRatDescPR { get; set; }
+
         [XmlElement("vrRatDescPR")]
         public string VrRatDescPRField
         {
@@ -439,6 +380,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSenarDesc { get; set; }
+
         [XmlElement("vrSenarDesc")]
         public string VrSenarDescField
         {
@@ -502,6 +444,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCPSusp { get; set; }
+
         [XmlElement("vrCPSusp")]
         public string VrCPSuspField
         {
@@ -516,6 +459,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRatSusp { get; set; }
+
         [XmlElement("vrRatSusp")]
         public string VrRatSuspField
         {
@@ -530,6 +474,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSenarSusp { get; set; }
+
         [XmlElement("vrSenarSusp")]
         public string VrSenarSuspField
         {

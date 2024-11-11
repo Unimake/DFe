@@ -46,22 +46,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
-
-        /// <summary>
-        /// Informações de identificação do evento.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento1299 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do empregador.
-        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
-        /// <summary>
-        /// Período de apuração a que se refere o fechamento.
-        /// </summary>
         [XmlElement("infoFech")]
         public InfoFech InfoFech { get; set; }
     }
@@ -74,89 +64,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1299")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento1299
-    {
-        /// <summary>
-        /// Indicativo de período de apuração.
-        /// </summary>
-        [XmlElement("indApuracao")]
-        public IndApuracao IndApuracao { get; set; }
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// (yyyy-MM)
-        /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur {get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
-#endif
-
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// (yyyy-MM)
-        /// </summary>
-        [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
-
-
-        /// <summary>
-        /// Indicativo do tipo de guia. Valores válidos:
-        /// 1 - Documento de Arrecadação do eSocial - DAE
-        /// </summary>
-        [XmlElement("indGuia")]
-#if INTEROP
-        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
-#else
-        public IndGuia? IndGuia { get; set; }
-#endif
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
-#else
-        public bool ShouldSerializeIndGuia() => IndGuia != null;
-#endif
-
-        #endregion ShouldSerialize
-    }
+    public class IdeEvento1299 : IdeEvento1298 { }
 
     /// <summary>
     /// Informações do fechamento.
@@ -219,6 +127,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("evtContratAvNP")]
         public SimNaoLetra EvtContratAvNP { get; set; }
+
         /// <summary>
         /// Possui informações de desoneração de folha de
         /// pagamento ou, sendo empresa enquadrada no Simples,

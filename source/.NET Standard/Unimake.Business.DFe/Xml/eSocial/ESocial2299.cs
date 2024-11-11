@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideVinculo")]
-        public IdeVinculo IdeVinculo { get; set; }
+        public IdeVinculo2299 IdeVinculo { get; set; }
 
         [XmlElement("infoDeslig")]
         public InfoDeslig InfoDeslig { get; set; }
@@ -82,6 +82,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+    /// <summary>
+    /// Informações de identificação do trabalhador e do vínculo
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2299")]
+    [ComVisible(true)]
+#endif
+    public class IdeVinculo2299 : IdeVinculo2206 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -185,7 +195,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string IndPDV { get; set; }
 
         [XmlElement("infoInterm")]
-        public List<InfoInterm> InfoInterm { get; set; }
+        public List<InfoInterm2299> InfoInterm { get; set; }
 
 #if INTEROP
 
@@ -193,22 +203,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoInterm(InfoInterm item)
+        public void AddInfoInterm(InfoInterm2299 item)
         {
             if (InfoInterm == null)
             {
-                InfoInterm = new List<InfoInterm>();
+                InfoInterm = new List<InfoInterm2299>();
             }
 
             InfoInterm.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoInterm (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoInterm2299 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoInterm</returns>
-        public InfoInterm GetInfoInterm(int index)
+        public InfoInterm2299 GetInfoInterm(int index)
         {
             if ((InfoInterm?.Count ?? 0) == 0)
             {
@@ -225,7 +235,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("observacoes")]
-        public List<Observacoes> Observacoes { get; set; }
+        public List<Observacoes2299> Observacoes { get; set; }
 
 #if INTEROP
 
@@ -233,22 +243,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddObservacoes(Observacoes item)
+        public void AddObservacoes(Observacoes2299 item)
         {
             if (Observacoes == null)
             {
-                Observacoes = new List<Observacoes>();
+                Observacoes = new List<Observacoes2299>();
             }
 
             Observacoes.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista Observacoes (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista Observacoes2299 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da Observacoes</returns>
-        public Observacoes GetObservacoes(int index)
+        public Observacoes2299 GetObservacoes(int index)
         {
             if ((Observacoes?.Count ?? 0) == 0)
             {
@@ -341,6 +351,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2299")]
+    [ComVisible(true)]
+#endif
+    public class Observacoes2299 : Observacoes2306 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm2299")]
+    [ComVisible(true)]
+#endif
+    public class InfoInterm2299 : InfoInterm1200 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -444,7 +468,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("procJudTrab")]
-        public List<ProcJudTrab> ProcJudTrab { get; set; }
+        public List<ProcJudTrab2299> ProcJudTrab { get; set; }
 
 #if INTEROP
 
@@ -452,22 +476,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddProcJudTrab(ProcJudTrab item)
+        public void AddProcJudTrab(ProcJudTrab2299 item)
         {
             if (ProcJudTrab == null)
             {
-                ProcJudTrab = new List<ProcJudTrab>();
+                ProcJudTrab = new List<ProcJudTrab2299>();
             }
 
             ProcJudTrab.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista ProcJudTrab (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista ProcJudTrab2299 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProcJudTrab</returns>
-        public ProcJudTrab GetProcJudTrab(int index)
+        public ProcJudTrab2299 GetProcJudTrab(int index)
         {
             if ((ProcJudTrab?.Count ?? 0) == 0)
             {
@@ -492,6 +516,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2299")]
+    [ComVisible(true)]
+#endif
+    public class ProcJudTrab2299 : ProcJudTrab1200 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev2299")]
     [ComVisible(true)]
 #endif
@@ -504,7 +535,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string IndRRA { get; set; }
 
         [XmlElement("infoRRA")]
-        public InfoRRA InfoRRA { get; set; }
+        public InfoRRA2299 InfoRRA { get; set; }
 
         [XmlElement("infoPerApur")]
         public InfoPerApur2299 InfoPerApur { get; set; }
@@ -518,6 +549,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA2299")]
+    [ComVisible(true)]
+#endif
+    public class InfoRRA2299 : InfoRRA1202 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

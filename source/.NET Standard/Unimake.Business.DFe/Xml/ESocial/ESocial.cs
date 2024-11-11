@@ -205,7 +205,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public IndApurIR? IndApurIR { get; set; }
 #endif
+
         #region ShouldSerialize
+
         public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
         public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
 

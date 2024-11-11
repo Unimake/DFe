@@ -9200,6 +9200,31 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion Indicativo indDesFolha
 
+    #region Indicativo da opção pelo produtor rural
+
+    /// <summary>
+    /// Indicativo da opção pelo produtor rural pela forma de tributação da contribuição previdenciária, nos termos do art. 25, § 13, da Lei 8.212/1991 e do art. 25, § 7°, da Lei 8.870/1994. 
+    /// O não preenchimento deste campo por parte do produtor rural implica opção pela comercialização da sua produção.
+    /// 
+    /// Não preencher se classTrib for diferente de [07, 21].
+    /// </summary>
+    public enum IndicativoOpcaoProdutorRural
+    {
+        /// <summary>
+        /// Sobre a comercialização da sua produção
+        /// </summary>
+        [XmlEnum("1")]
+        ComercializacaoProducao = 1,
+
+        /// <summary>
+        /// Sobre a folha de pagamento
+        /// </summary>
+        [XmlEnum("2")]
+        FolhaPagamento = 2,
+    }
+
+    #endregion Indicativo da opção pelo produtor rural
+
     #region Indicativo indDesFolha
 
     /// <summary>

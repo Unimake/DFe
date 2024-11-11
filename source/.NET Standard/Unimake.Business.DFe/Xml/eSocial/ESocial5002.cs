@@ -590,8 +590,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public FrmTribut FrmTribut { get; set; }
 
         [XmlElement("endExt")]
-        public EndExt EndExt { get; set; }
+        public EndExt5002 EndExt { get; set; }
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EndExt5002")]
+    [ComVisible(true)]
+#endif
+    public class EndExt5002 : EndExt1210 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -780,7 +787,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string DescrDep { get; set; }
 
         [XmlElement("planSaude")]
-        public List<PlanSaude> PlanSaude { get; set; }
+        public List<PlanSaude1210> PlanSaude { get; set; }
 
 #if INTEROP
 
@@ -788,22 +795,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddPlanSaude(PlanSaude item)
+        public void AddPlanSaude(PlanSaude1210 item)
         {
             if (PlanSaude == null)
             {
-                PlanSaude = new List<PlanSaude>();
+                PlanSaude = new List<PlanSaude1210>();
             }
 
             PlanSaude.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista PlanSaude (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista PlanSaude1210 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da PlanSaude</returns>
-        public PlanSaude GetPlanSaude(int index)
+        public PlanSaude1210 GetPlanSaude(int index)
         {
             if ((PlanSaude?.Count ?? 0) == 0)
             {
@@ -819,6 +826,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetPlanSaudeCount => (PlanSaude != null ? PlanSaude.Count : 0);
 #endif
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PlanSaude5502")]
+    [ComVisible(true)]
+#endif
+    public class PlanSaude5502 : PlanSaude1210 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -911,7 +925,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("previdCompl")]
-        public List<PrevidCompl> PrevidCompl { get; set; }
+        public List<PrevidCompl5002> PrevidCompl { get; set; }
 
 #if INTEROP
 
@@ -919,22 +933,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddPrevidCompl(PrevidCompl item)
+        public void AddPrevidCompl(PrevidCompl5002 item)
         {
             if (PrevidCompl == null)
             {
-                PrevidCompl = new List<PrevidCompl>();
+                PrevidCompl = new List<PrevidCompl5002>();
             }
 
             PrevidCompl.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista PrevidCompl (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista PrevidCompl5002 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da PrevidCompl</returns>
-        public PrevidCompl GetPrevidCompl(int index)
+        public PrevidCompl5002 GetPrevidCompl(int index)
         {
             if ((PrevidCompl?.Count ?? 0) == 0)
             {
@@ -990,6 +1004,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoProcRetCount => (InfoProcRet != null ? InfoProcRet.Count : 0);
 #endif
     }
+
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PrevidCompl5002")]
+    [ComVisible(true)]
+#endif
+    public class PrevidCompl5002 : PrevidCompl1210 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
