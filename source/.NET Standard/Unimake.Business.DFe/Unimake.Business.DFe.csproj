@@ -391,6 +391,7 @@
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LondrinaPR.xml" />
+		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
@@ -1140,6 +1141,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />

@@ -1565,4 +1565,10 @@
 		<ArqConfig>CubataoSP.xml</ArqConfig>
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4209904">
+		<Nome>Lontras - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>LontrasSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
