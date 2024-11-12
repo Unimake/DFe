@@ -271,7 +271,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDeficiencia2200")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Dependente2200")]
     [ComVisible(true)]
 #endif
     public class Dependente2200 : Dependente2205 { }

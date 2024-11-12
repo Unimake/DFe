@@ -61,7 +61,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2220")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2220")]
     [ComVisible(true)]
 #endif
     public class IdeVinculo2220 : IdeVinculo2206 { }

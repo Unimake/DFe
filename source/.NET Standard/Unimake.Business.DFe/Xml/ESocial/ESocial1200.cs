@@ -909,7 +909,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunPerApur1200")]
     [ComVisible(true)]
 #endif
     public class RemunPerApur1200

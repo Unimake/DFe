@@ -200,7 +200,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem2300")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCPF2300")]
     [ComVisible(true)]
 #endif
     public class MudancaCPF2300 : MudancaCPF2200 { }
@@ -213,7 +213,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplem2300")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Afastamento2300")]
     [ComVisible(true)]
 #endif
     public class Afastamento2300 : Afastamento2200 { }

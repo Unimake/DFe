@@ -358,7 +358,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Cargo")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Afastamento8200")]
     [ComVisible(true)]
 #endif
     public class Afastamento8200 : Afastamento2200 { }
