@@ -61,14 +61,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador2500")]
     [ComVisible(true)]
 #endif
-    public class IdeEmpregador2500
+    public class IdeEmpregador2500 : IdeEmpregador
     {
-        [XmlElement("tpInsc")]
-        public TiposInscricao TpInsc { get; set; }
-
-        [XmlElement("nrInsc")]
-        public string NrInsc { get; set; }
-
         [XmlElement("ideResp")]
         public IdeResp IdeResp { get; set; }
     }
@@ -78,14 +72,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeResp")]
     [ComVisible(true)]
 #endif
-    public class IdeResp
-    {
-        [XmlElement("tpInsc")]
-        public TiposInscricao TpInsc { get; set; }
-
-        [XmlElement("nrInsc")]
-        public string NrInsc { get; set; }
-    }
+    public class IdeResp : IdeEmpregador { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -332,7 +319,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Matricula { get; set; }
 
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
+#if INTEROP
+        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
+#else
+        public CodCateg? CodCateg { get; set; }
+#endif
 
         [XmlIgnore]
 #if INTEROP
@@ -450,11 +441,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
 
-        public bool ShouldSerializeCodCateg() => !string.IsNullOrEmpty(CodCateg);
-
+#if INTEROP
+        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
+#else
+        public bool ShouldSerializeCodCateg() => CodCateg != null;
+#endif
         public bool ShouldSerializeDtInicioField() => DtInicio > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -686,13 +680,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2500")]
-    [ComVisible(true)]
-#endif
-    public class Observacoes2500 : Observacoes2306 { }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Duracao2500")]
     [ComVisible(true)]
 #endif
@@ -731,7 +718,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDtTerm() => DtTerm > DateTime.MinValue;
+        public bool ShouldSerializeDtTermField() => DtTerm > DateTime.MinValue;
 
 #if INTEROP
         public bool ShouldSerializeClauAssec() => ClauAssec != (SimNaoLetra)(-1);
@@ -743,6 +730,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2500")]
+    [ComVisible(true)]
+#endif
+    public class Observacoes2500 : Observacoes2306 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -787,7 +781,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeMatricAntField() => !string.IsNullOrEmpty(MatricAnt);
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
 
         #endregion
     }
@@ -875,11 +869,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         #region ShouldSerialize
-
-#if INTEROP
-
         public bool ShouldSerializeDtProjFimAPIField() => DtProjFimAPI > DateTime.MinValue;
 
+#if INTEROP
         public bool ShouldSerializePensAlim() => PensAlim != (PensAlim)(-1);
 #else
         public bool ShouldSerializePensAlim() => PensAlim != null;
@@ -943,7 +935,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class MudCategAtiv
     {
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
+        public CodCateg CodCateg { get; set; }
 
         [XmlElement("natAtividade")]
 #if INTEROP
@@ -993,7 +985,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string MatUnic { get; set; }
 
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
+#if INTEROP
+        public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
+#else
+        public CodCateg? CodCateg { get; set; }
+#endif
 
         [XmlIgnore]
 #if INTEROP
@@ -1017,11 +1013,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeMatUnic() => !string.IsNullOrEmpty(MatUnic);
 
-        public bool ShouldSerializeCodCateg() => !string.IsNullOrEmpty(CodCateg);
+#if INTEROP
+        public bool ShouldSerializeCodCateg() => CodCateg != (CodCateg)(-1);
+#else
+        public bool ShouldSerializeCodCateg() => CodCateg != null;
+#endif
 
         public bool ShouldSerializeDtInicioField() => DtInicio > DateTime.MinValue;
 
-        #endregion
+#endregion
     }
 
 #if INTEROP
@@ -1088,10 +1088,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndReperc IndReperc { get; set; }
 
         [XmlElement("indenSD")]
-        public string IndenSD { get; set; }
+#if INTEROP
+        public SimNaoLetra IndenSD { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndenSD { get; set; }
+#endif
 
         [XmlElement("indenAbono")]
-        public string IndenAbono { get; set; }
+#if INTEROP
+        public SimNaoLetra IndenAbono { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndenAbono { get; set; }
+#endif
 
         [XmlElement("abono")]
         public List<Abono> Abono { get; set; }
@@ -1175,9 +1183,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndenSD() => !string.IsNullOrEmpty(IndenSD);
+#if INTEROP
+        public bool ShouldSerializeIndenSD() => IndenSD != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndenSD() => IndenSD != null;
+#endif
 
-        public bool ShouldSerializeIndenAbono() => !string.IsNullOrEmpty(IndenAbono);
+#if INTEROP
+        public bool ShouldSerializeIndenAbono() => IndenAbono != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndenAbono() => IndenAbono != null;
+#endif
 
         #endregion
     }
@@ -1258,6 +1274,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public double VrBcCp13 { get; set; }
         [XmlElement("vrBcCp13")]
+
         public string VrBcCp13Field
         {
             get => VrBcCp13.ToString("F2", CultureInfo.InvariantCulture);
@@ -1265,7 +1282,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("infoAgNocivo")]
-        public InfoAgNocivo InfoAgNocivo { get; set; }
+        public InfoAgNocivo2500 InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
 
@@ -1273,6 +1290,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAgNocivo2500")]
+    [ComVisible(true)]
+#endif
+    public class InfoAgNocivo2500 : InfoAgNocivo1200 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1303,6 +1327,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcFGTSSefip { get; set; }
+
         [XmlElement("vrBcFGTSSefip")]
         public string VrBcFGTSSefipField
         {
@@ -1343,7 +1368,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class BaseMudCateg
     {
         [XmlElement("codCateg")]
-        public string CodCateg { get; set; }
+        public CodCateg CodCateg { get; set; }
 
         /// <summary>
         /// Valor da remuneração do trabalhador a ser considerada para fins previdenciários

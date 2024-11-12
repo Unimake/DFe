@@ -7,6 +7,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2298 - Reintegração/Outros Provimentos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2298")]
@@ -23,6 +26,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Reintegração/Outros Provimentos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtReintegr")]
@@ -30,6 +36,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtReintegr
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -46,6 +55,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoReintegr InfoReintegr { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2298")]
@@ -63,6 +75,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeVinculo2298 : IdeVinculo2206 { }
 
+    /// <summary>
+    /// Informações da reintegração
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoReintegr")]
@@ -70,15 +85,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoReintegr
     {
+        /// <summary>
+        /// Tipo de reintegração/outro provimento
+        /// </summary>
         [XmlElement("tpReint")]
         public TpReint TpReint { get; set; }
 
+        /// <summary>
+        /// Em caso de reintegração por determinação judicial, preencher com o número do processo
+        /// </summary>
         [XmlElement("nrProcJud")]
         public string NrProcJud { get; set; }
 
+        /// <summary>
+        /// Informar a lei de anistia, descrevendo seu número e ano de publicação
+        /// </summary>
         [XmlElement("nrLeiAnistia")]
         public string NrLeiAnistia { get; set; }
 
+        /// <summary>
+        /// Informar a data do efetivo retorno ao trabalho
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtEfetRetorno { get; set; }
@@ -97,6 +124,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Informar a data de início dos efeitos financeiros da reintegração
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtEfeito { get; set; }
@@ -121,6 +151,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
      
         public bool ShouldSerializeNrLeiAnistia() => !string.IsNullOrEmpty(NrLeiAnistia);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }

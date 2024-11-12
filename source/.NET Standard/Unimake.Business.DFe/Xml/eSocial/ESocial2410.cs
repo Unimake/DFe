@@ -7,6 +7,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2410 - Cadastro de Benefício - Entes Públicos - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2410")]
@@ -23,6 +26,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Cadastro de Benefício - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtCdBenIn")]
@@ -30,6 +36,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtCdBenIn
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -46,6 +55,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoBenInicio InfoBenInicio { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2410")]
@@ -53,6 +65,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2410 : IdeEvento2205 { }
 
+    /// <summary>
+    /// Informações do beneficiário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Beneficiario2410")]
@@ -60,12 +75,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Beneficiario2410
     {
+        /// <summary>
+        /// Preencher com o CPF do beneficiário
+        /// </summary>
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }
 
+        /// <summary>
+        /// Matrícula do servidor/militar constante no Sistema de Administração de Recursos Humanos do órgão cujo vínculo deu ensejo ao benefício
+        /// </summary>
         [XmlElement("matricula")]
         public string Matricula { get; set; }
 
+        /// <summary>
+        /// Preencher com o CNPJ do órgão público responsável pela matrícula do servidor/militar. 
+        /// Informação obrigatória se cadIni = [N], desde que haja informação de matrícula.
+        /// </summary>
         [XmlElement("cnpjOrigem")]
         public string CnpjOrigem { get; set; }
 
@@ -78,6 +103,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações do benefício - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBenInicio")]
@@ -85,9 +113,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoBenInicio
     {
+        /// <summary>
+        /// Indicar se a data de início do benefício é anterior à obrigatoriedade dos eventos não periódicos para o ente público no eSocial
+        /// </summary>
         [XmlElement("cadIni")]
         public SimNaoLetra CadIni { get; set; }
 
+        /// <summary>
+        /// Indicar a situação do benefício no órgão declarante
+        /// </summary>
         [XmlElement("indSitBenef")]
 #if INTEROP
         public IndSitBenef IndSitBenef { get; set; } = (IndSitBenef)(-1);
@@ -95,9 +129,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndSitBenef? IndSitBenef { get; set; }
 #endif
 
+        /// <summary>
+        /// Número do benefício
+        /// </summary>
         [XmlElement("nrBeneficio")]
         public string NrBeneficio { get; set; }
 
+        /// <summary>
+        /// Data de início do benefício
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtIniBeneficio { get; set; }
@@ -116,6 +156,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Informar a data de publicação da concessão do benefício, somente quando o ato concessório tiver vigência retroativa
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtPublic { get; set; }
@@ -156,9 +199,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtPublicField() => DtPublic > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Dados relativos ao benefício
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosBeneficio")]
@@ -166,15 +212,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DadosBeneficio
     {
+        /// <summary>
+        /// Tipo de benefício
+        /// </summary>
         [XmlElement("tpBeneficio")]
         public string TpBeneficio { get; set; }
 
+        /// <summary>
+        /// Tipo de plano de segregação da massa
+        /// </summary>
         [XmlElement("tpPlanRP")]
         public PlanoSegregacaoDaMassa TpPlanRP { get; set; }
 
+        /// <summary>
+        /// Descrição do instrumento ou situação que originou o pagamento do benefício
+        /// </summary>
         [XmlElement("dsc")]
         public string Dsc { get; set; }
 
+        /// <summary>
+        /// Informar se o benefício foi concedido por determinação judicial
+        /// </summary>
         [XmlElement("indDecJud")]
 #if INTEROP
         public SimNaoLetra IndDecJud { get; set; } = (SimNaoLetra)(-1);
@@ -198,6 +256,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações relativas à pensão por morte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPenMorte")]
@@ -205,6 +266,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoPenMorte
     {
+        /// <summary>
+        /// Tipo de pensão por morte
+        /// </summary>
         [XmlElement("tpPenMorte")]
         public TpPenMorte TpPenMorte { get; set; }
 
@@ -212,6 +276,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InstPenMorte InstPenMorte { get; set; }
     }
 
+    /// <summary>
+    /// Informações do instituidor da pensão por morte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InstPenMorte")]
@@ -219,9 +286,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InstPenMorte
     {
+        /// <summary>
+        /// Preencher com o CPF do instituidor da pensão por morte
+        /// </summary>
         [XmlElement("cpfInst")]
         public string CpfInst { get; set; }
 
+        /// <summary>
+        /// Data de óbito do instituidor da pensão por morte
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtInst { get; set; }
@@ -241,6 +314,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
+    /// <summary>
+    /// Grupo de informações de transferência de benefício
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoBenef")]
@@ -248,12 +324,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class SucessaoBenef
     {
+        /// <summary>
+        /// Informar o CNPJ do órgão público anterior
+        /// </summary>
         [XmlElement("cnpjOrgaoAnt")]
         public string CnpjOrgaoAnt { get; set; }
 
+        /// <summary>
+        /// Número do benefício no ente público anterior
+        /// </summary>
         [XmlElement("nrBeneficioAnt")]
         public string NrBeneficioAnt { get; set; }
 
+        /// <summary>
+        /// Preencher com a data da transferência do benefício para o órgão público declarante
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtTransf { get; set; }
@@ -272,6 +357,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Observação
+        /// </summary>
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
@@ -279,9 +367,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações de mudança de CPF do beneficiário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCpf2410")]
@@ -289,12 +380,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class MudancaCpf2410
     {
+        /// <summary>
+        /// Preencher com o número do CPF antigo do beneficiário
+        /// </summary>
         [XmlElement("cpfAnt")]
         public string CpfAnt { get; set; }
 
+        /// <summary>
+        /// Preencher com o número do benefício anterior
+        /// </summary>
         [XmlElement("nrBeneficioAnt")]
         public string NrBeneficioAnt { get; set; }
 
+        /// <summary>
+        /// Data de alteração do CPF
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtAltCPF { get; set; }
@@ -313,6 +413,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Observação
+        /// </summary>
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
@@ -320,9 +423,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações da cessação do benefício.
+    /// Grupo preenchido exclusivamente caso seja necessário enviar evento de reativação de benefício cessado 
+    /// antes do início dos eventos não periódicos para o ente público no eSocial ou para informação de diferenças de proventos e 
+    /// pensões devidos sob a vigência dos eventos periódicos para o ente público no eSocial
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBenTermino")]
@@ -330,6 +439,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoBenTermino
     {
+        /// <summary>
+        /// Data de cessação do benefício
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtTermBeneficio { get; set; }
@@ -348,6 +460,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Motivo da cessação do benefício
+        /// </summary>
         [XmlElement("mtvTermino")]
         public string MtvTermino { get; set; }
     }

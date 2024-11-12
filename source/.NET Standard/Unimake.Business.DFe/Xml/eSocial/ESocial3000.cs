@@ -7,6 +7,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-3000 - Exclusão de Eventos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial3000")]
@@ -23,6 +26,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Exclusão
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtExclusao")]
@@ -30,6 +36,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtExclusao
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -43,6 +52,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoExclusao InfoExclusao { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento3000")]
@@ -50,6 +62,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento3000 : IdeEvento { }
 
+    /// <summary>
+    /// Informação do evento que será excluído
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoExclusao")]
@@ -57,9 +72,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoExclusao
     {
+        /// <summary>
+        /// Preencher com o tipo de evento. Ex.: S-1200, S-2200, etc
+        /// </summary>
         [XmlElement("tpEvento")]
         public string TpEvento { get; set; }
 
+        /// <summary>
+        /// Preencher com o número do recibo do evento que será excluído
+        /// </summary>
         [XmlElement("nrRecEvt")]
         public string NrRecEvt { get; set; }
 
@@ -70,6 +91,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeFolhaPagto IdeFolhaPagto { get; set; }
     }
 
+    /// <summary>
+    /// Grupo que identifica a qual trabalhador se refere o evento a ser excluído
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabalhador3000")]
@@ -77,10 +101,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeTrabalhador3000
     {
+        /// <summary>
+        /// Preencher com o número do CPF do trabalhador ou do beneficiário
+        /// </summary>
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
     }
 
+    /// <summary>
+    /// Grupo que identifica a qual período de apuração pertence o evento que será excluído
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeFolhaPagto")]
@@ -88,6 +118,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeFolhaPagto
     {
+        /// <summary>
+        /// Indicativo de período de apuração
+        /// </summary>
         [XmlElement("indApuracao")]
 #if INTEROP
         public IndApuracao IndApuracao { get; set; } = (IndApuracao)(-1);
@@ -95,6 +128,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndApuracao? IndApuracao { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar o mês/ano (formato AAAA-MM) ou apenas o ano (formato AAAA) de referência das informações
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime PerApur { get; set; }

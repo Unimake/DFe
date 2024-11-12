@@ -7,6 +7,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2306 - Trabalhador Sem Vínculo de Emprego/Estatutário - Alteração Contratual
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2306")]
@@ -23,6 +26,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento TSVE - Alteração Contratual
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTSVAltContr")]
@@ -30,6 +36,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtTSVAltContr
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -40,12 +49,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("ideTrabSemVinculo")]
-        public IdeTrabSemVinculo IdeTrabSemVinculo { get; set; }
+        public IdeTrabSemVinculo2306 IdeTrabSemVinculo { get; set; }
 
         [XmlElement("infoTSVAlteracao")]
         public InfoTSVAlteracao InfoTSVAlteracao { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2306")]
@@ -53,19 +65,31 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2306 : IdeEvento2205 { }
 
+    /// <summary>
+    /// Identificação do TSVE
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabSemVinculo")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabSemVinculo2306")]
     [ComVisible(true)]
 #endif
-    public class IdeTrabSemVinculo
+    public class IdeTrabSemVinculo2306
     {
+        /// <summary>
+        /// Preencher com o número do CPF do trabalhador
+        /// </summary>
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
 
+        /// <summary>
+        /// Matrícula atribuída ao trabalhador pela empresa
+        /// </summary>
         [XmlElement("matricula")]
         public string Matricula { get; set; }
 
+        /// <summary>
+        /// Preencher com o código da categoria do trabalhador
+        /// </summary>
         [XmlElement("codCateg")]
 #if INTEROP
         public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
@@ -83,9 +107,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeCodCateg() => CodCateg != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// TSVE - Alteração Contratual
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTSVAlteracao")]
@@ -93,6 +120,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoTSVAlteracao
     {
+        /// <summary>
+        /// Preencher com a data da alteração das informações
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtAlteracao { get; set; }
@@ -111,13 +141,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Natureza da atividade
+        /// </summary>
         [XmlElement("natAtividade")]
 #if INTEROP
         public NatAtividade NatAtividade { get; set; } = (NatAtividade)(-1);
 #else
         public NatAtividade? NatAtividade { get; set; }
 #endif
-
 
         [XmlElement("infoComplementares")]
         public InfoComplementares InfoComplementares { get; set; }
@@ -130,9 +162,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeNatAtividade() => NatAtividade != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Grupo onde são fornecidas informações complementares, preenchidas conforme a categoria do TSVE
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplementares")]
@@ -141,10 +176,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoComplementares
     {
         [XmlElement("cargoFuncao")]
-        public CargoFuncao CargoFuncao { get; set; }
+        public CargoFuncao2306 CargoFuncao { get; set; }
 
         [XmlElement("remuneracao")]
-        public Remuneracao Remuneracao { get; set; }
+        public Remuneracao2306 Remuneracao { get; set; }
 
         [XmlElement("infoDirigenteSindical")]
         public InfoDirigenteSindical2306 InfoDirigenteSindical { get; set; }
@@ -159,9 +194,32 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoEstagiario2306 InfoEstagiario { get; set; }
 
         [XmlElement("localTrabGeral")]
-        public LocalTrabGeral LocalTrabGeral { get; set; }
+        public LocalTrabGeral2306 LocalTrabGeral { get; set; }
     }
 
+    /// <summary>
+    /// Grupo que apresenta o cargo e/ou função ocupada pelo TSVE
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.CargoFuncao2306")]
+    [ComVisible(true)]
+#endif
+    public class CargoFuncao2306 : CargoFuncao2300 { }
+
+    /// <summary>
+    /// Informações da remuneração e periodicidade de pagamento
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao2306")]
+    [ComVisible(true)]
+#endif
+    public class Remuneracao2306 : Remuneracao2206 { }
+
+    /// <summary>
+    /// Informações relativas ao dirigente sindical
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDirigenteSindical2306")]
@@ -173,6 +231,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TpRegPrev TpRegPrev { get; set; }
     }
 
+    /// <summary>
+    /// Informações relativas ao trabalhador cedido/em exercício em outro órgão, preenchidas exclusivamente pelo cessionário/órgão de destino
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoTrabCedido2306")]
@@ -184,6 +245,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TpRegPrev TpRegPrev { get; set; }
     }
 
+    /// <summary>
+    /// Informações relativas a servidor público exercente de mandato eletivo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMandElet2306")]
@@ -191,6 +255,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoMandElet2306
     {
+        /// <summary>
+        /// Indicar se o servidor optou pela remuneração do cargo efetivo
+        /// </summary>
         [XmlElement("indRemunCargo")]
 #if INTEROP
         public SimNaoLetra IndRemunCargo { get; set; } = (SimNaoLetra)(-1);
@@ -198,6 +265,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? IndRemunCargo { get; set; }
 #endif
 
+        /// <summary>
+        /// Tipo de regime previdenciário
+        /// </summary>
         [XmlElement("tpRegPrev")]
         public TpRegPrev TpRegPrev { get; set; }
 
@@ -212,139 +282,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações relativas ao estagiário ou ao beneficiário do Programa Nacional de Prestação de Serviço Civil Voluntário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEstagiario2306")]
     [ComVisible(true)]
 #endif
-    public class InfoEstagiario2306
-    {
-        [XmlElement("natEstagio")]
-        public NatEstagio NatEstagio { get; set; }
-
-        [XmlElement("nivEstagio")]
-#if INTEROP
-        public NivEstagio NivEstagio { get; set; } = (NivEstagio)(-1);
-#else
-        public NivEstagio? NivEstagio { get; set; }
-#endif
-
-        [XmlElement("areaAtuacao")]
-        public string AreaAtuacao { get; set; }
-
-        [XmlElement("nrApol")]
-        public string NrApol { get; set; }
-
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtPrevTerm { get; set; }
-#else
-        public DateTimeOffset DtPrevTerm { get; set; }
-#endif
-
-        [XmlElement("dtPrevTerm")]
-        public string DtPrevTermField
-        {
-            get => DtPrevTerm.ToString("yyyy-MM-dd");
-#if INTEROP
-            set => DtPrevTerm = DateTime.Parse(value);
-#else
-            set => DtPrevTerm = DateTimeOffset.Parse(value);
-#endif
-        }
-
-        [XmlElement("instEnsino")]
-        public InstEnsino2306 InstEnsino { get; set; }
-
-        [XmlElement("ageIntegracao")]
-        public AgeIntegracao AgeIntegracao { get; set; }
-
-        [XmlElement("supervisorEstagio")]
-        public SupervisorEstagio2306 SupervisorEstagio { get; set; }
-
-        #region ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeNivEstagio() => NivEstagio != (NivEstagio)(-1);
-#else
-        public bool ShouldSerializeNivEstagio() => NivEstagio != null;
-#endif
-
-        public bool ShouldSerializeAreaAtuacao() => !string.IsNullOrEmpty(AreaAtuacao);
-
-        public bool ShouldSerializeNrApol() => !string.IsNullOrEmpty(NrApol);
-
-        #endregion
-    }
+    public class InfoEstagiario2306 : InfoEstagiario2300 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InstEnsino2306")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral2306")]
     [ComVisible(true)]
 #endif
-    public class InstEnsino2306
-    {
-        [XmlElement("cnpjInstEnsino")]
-        public string CnpjInstEnsino { get; set; }
-
-        [XmlElement("nmRazao")]
-        public string NmRazao { get; set; }
-
-        [XmlElement("dscLograd")]
-        public string DscLograd { get; set; }
-
-        [XmlElement("nrLograd")]
-        public string NrLograd { get; set; }
-
-        [XmlElement("bairro")]
-        public string Bairro { get; set; }
-
-        [XmlElement("cep")]
-        public string Cep { get; set; }
-
-        [XmlElement("codMunic")]
-        public string CodMunic { get; set; }
-
-        [XmlElement("uf")]
-#if INTEROP
-        public UFBrasil Uf { get; set; } = (UFBrasil)(-1);
-#else
-        public UFBrasil? Uf { get; set; }
-#endif
-
-        #region ShouldSerialize
-
-        public bool ShouldSerializeCnpjInstEnsino() => !string.IsNullOrEmpty(CnpjInstEnsino);
-
-        public bool ShouldSerializeNmRazao() => !string.IsNullOrEmpty(NmRazao);
-
-        public bool ShouldSerializeDscLograd() => !string.IsNullOrEmpty(DscLograd);
-
-        public bool ShouldSerializeNrLograd() => !string.IsNullOrEmpty(NrLograd);
-
-        public bool ShouldSerializeBairro() => !string.IsNullOrEmpty(Bairro);
-
-        public bool ShouldSerializeCep() => !string.IsNullOrEmpty(Cep);
-
-        public bool ShouldSerializeCodMunic() => !string.IsNullOrEmpty(CodMunic);
-
-#if INTEROP
-        public bool ShouldSerializeUf() => Uf != (UFBrasil)(-1);
-#else
-        public bool ShouldSerializeUf() => Uf != null;
-#endif
-
-        #endregion
-    }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.SupervisorEstagio2306")]
-    [ComVisible(true)]
-#endif
-    public class SupervisorEstagio2306
-    {
-        [XmlElement("cpfSupervisor")]
-        public string CpfSupervisor { get; set; }
-    }
+    public class LocalTrabGeral2306 : LocalTrabGeral2206 { }
 }

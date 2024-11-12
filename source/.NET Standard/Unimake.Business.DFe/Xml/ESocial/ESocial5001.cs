@@ -24,9 +24,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial5001 : XMLBase
     {
-        /// <summary>
-        /// Evento Informações das Contribuições Sociais por Trabalhador
-        /// </summary>
         [XmlElement("evtBasesTrab")]
         public EvtBasesTrab EvtBasesTrab { get; set; }
 
@@ -50,9 +47,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string Id { get; set; }
 
-        /// <summary>
-        /// Identificação do evento de retorno.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5001 IdeEvento { get; set; }
 
@@ -120,7 +114,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoCp InfoCp { get; set; }
     }
 
-    #region IdeEvento5001
+    /// <summary>
+    /// Identificação do evento de retorno.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento5001")]
@@ -178,7 +174,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
     }
-    #endregion IdeEvento5001
 
     #region IdeTrabalhador
 
@@ -477,7 +472,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// e indApuracao = [1]. Neste caso, preencher com um número entre 0 e 31, de acordo com o calendário anual.
         /// </summary>
         [XmlElement("qtdDiasTrab")]
-        public int QtdDiasTrab { get; set; }
+        public string QtdDiasTrab { get; set; }
 
         #region ShouldSerialize
 #if INTEROP
@@ -485,7 +480,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeNatAtividade() => NatAtividade != null;
 #endif
-        public bool ShouldSerializeQtdDiasTrab() => QtdDiasTrab > 0;
+        public bool ShouldSerializeQtdDiasTrab() => !string.IsNullOrEmpty(QtdDiasTrab);
+
         #endregion ShouldSerialize
 
     }
@@ -551,6 +547,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCpSeg { get; set; }
+
         [XmlElement("vrCpSeg")]
         public string VrCpSegField
         {
@@ -1250,7 +1247,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeRemunSuc() => RemunSuc != (SimNaoLetra)(-1);
 #else
-        public bool shouldSerializeRemunSuc() => RemunSuc.IsNullOrEmpty();
+        public bool ShouldSerializeRemunSuc() => RemunSuc != null;
 #endif
 
         #endregion ShouldSerialize

@@ -181,7 +181,7 @@ namespace Unimake.DFe.Test.ESocial
                                         IdeTrabalhador =  new IdeTrabalhador
                                         {
                                             CpfTrab = "11111111111",
-                                            InfoMV = new InfoMV
+                                            InfoMV = new InfoMV1200
                                             {
                                                 IndMV = IndMV.DescontoSobreRemuneracao,
                                                 RemunOutrEmpr = new List<RemunOutrEmpr>
@@ -238,7 +238,7 @@ namespace Unimake.DFe.Test.ESocial
                                                                         VrRubr = 123.45
                                                                     }
                                                                 },
-                                                                InfoAgNocivo = new InfoAgNocivo
+                                                                InfoAgNocivo = new InfoAgNocivo1200
                                                                 {
                                                                     GrauExp = "123"
                                                                 }

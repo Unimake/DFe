@@ -525,7 +525,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public CodCateg CodCateg { get; set; }
 
         [XmlElement("remuneracao")]
-        public Remuneracao Remuneracao { get; set; }
+        public Remuneracao2206 Remuneracao { get; set; }
 
         [XmlElement("duracao")]
         public Duracao Duracao { get; set; }
@@ -638,10 +638,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao2206")]
     [ComVisible(true)]
 #endif
-    public class Remuneracao
+    public class Remuneracao2206
     {
         /// <summary>
         /// Salário base do trabalhador, correspondente à parte fixa
@@ -776,7 +776,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     {
 
         [XmlElement("localTrabGeral")]
-        public LocalTrabGeral LocalTrabGeral { get; set; }
+        public LocalTrabGeral2206 LocalTrabGeral { get; set; }
 
         [XmlElement("localTempDom")]
         public LocalTempDom LocalTempDom { get; set; }
@@ -794,10 +794,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral2206")]
     [ComVisible(true)]
 #endif
-    public class LocalTrabGeral
+    public class LocalTrabGeral2206
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.

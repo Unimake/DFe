@@ -52,7 +52,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         [XmlElement("trabalhador")]
-        public Trabalhador Trabalhador { get; set; }
+        public Trabalhador2200 Trabalhador { get; set; }
 
         [XmlElement("vinculo")]
         public Vinculo2200 Vinculo { get; set; }
@@ -73,10 +73,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Trabalhador")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Trabalhador2200")]
     [ComVisible(true)]
 #endif
-    public class Trabalhador
+    public class Trabalhador2200
     {
         /// <summary>
         /// Preencher com o número do CPF do trabalhador
@@ -478,7 +478,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações do Fundo de Garantia do Tempo de Serviço - FGTS
         /// </summary>
         [XmlElement("FGTS")]
-        public FGTS FGTS { get; set; }
+        public FGTS2200 FGTS { get; set; }
 
         /// <summary>
         /// Dados sobre trabalho temporário. Preenchimento obrigatório no caso de contratação de trabalhador temporário
@@ -508,10 +508,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.FGTS")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.FGTS2200")]
     [ComVisible(true)]
 #endif
-    public class FGTS
+    public class FGTS2200
     {
         /// <summary>
         /// Informar a data de opção do trabalhador pelo FGTS

@@ -10,6 +10,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2299 - Desligamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2299")]
@@ -26,6 +29,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Desligamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtDeslig")]
@@ -33,6 +39,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtDeslig
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -49,6 +58,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoDeslig InfoDeslig { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2299")]
@@ -56,21 +68,45 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2299
     {
+        /// <summary>
+        /// Informe [1] para arquivo original ou [2] para arquivo de retificação
+        /// </summary>
         [XmlElement("indRetif")]
         public IndicativoRetificacao IndRetif { get; set; }
 
+        /// <summary>
+        /// Preencher com o número do recibo do arquivo a ser retificado
+        /// </summary>
         [XmlElement("nrRecibo")]
         public string NrRecibo { get; set; }
 
+        /// <summary>
+        /// Indicativo do tipo de guia.
+        /// Valores válidos:
+        /// 1 - Documento de Arrecadação do eSocial - DAE
+        /// </summary>
         [XmlElement("indGuia")]
-        public string IndGuia { get; set; }
+#if INTEROP
+        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
+#else
+        public IndGuia? IndGuia { get; set; }
+#endif
 
+        /// <summary>
+        /// Identificação do ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Processo de emissão do evento
+        /// </summary>
         [XmlElement("procEmi")]
         public ProcEmiESocial ProcEmi { get; set; }
 
+        /// <summary>
+        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento
+        /// </summary>
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
@@ -78,9 +114,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
 
-        public bool ShouldSerializeIndGuia() => !string.IsNullOrEmpty(IndGuia);
+#if INTEROP
+        public bool ShouldSerializeIndGuia() => IndGuia != (IndGuia)(-1);
+#else
+        public bool ShouldSerializeIndGuia() => IndGuia != null;
+#endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -93,6 +133,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeVinculo2299 : IdeVinculo2206 { }
 
+    /// <summary>
+    /// Informações relativas ao desligamento do vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoDeslig")]
@@ -100,9 +143,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoDeslig
     {
+        /// <summary>
+        /// Código de motivo do desligamento
+        /// </summary>
         [XmlElement("mtvDeslig")]
         public string MtvDeslig { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de desligamento do vínculo (último dia trabalhado)
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtDeslig { get; set; }
@@ -121,6 +170,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Data de concessão do aviso prévio
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtAvPrv { get; set; }
@@ -139,9 +191,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Indicativo de pagamento de aviso prévio indenizado pelo empregador, ao empregado
+        /// </summary>
         [XmlElement("indPagtoAPI")]
         public SimNaoLetra IndPagtoAPI { get; set; }
 
+        /// <summary>
+        /// Data projetada para o término do aviso prévio indenizado
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtProjFimAPI { get; set; }
@@ -160,6 +218,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Indicativo de pensão alimentícia para fins de retenção de FGTS
+        /// </summary>
         [XmlElement("pensAlim")]
 #if INTEROP
         public PensAlim PensAlim { get; set; } = (PensAlim)(-1);
@@ -167,14 +228,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public PensAlim? PensAlim { get; set; }
 #endif
 
+        /// <summary>
+        /// Percentual a ser destinado a pensão alimentícia
+        /// </summary>
+        [XmlIgnore]
+        public double PercAliment { get; set; }
+
         [XmlElement("percAliment")]
-        public int PercAliment { get; set; }
+        public string PercAlimentField
+        {
+            get => PercAliment.ToString("F2", CultureInfo.InvariantCulture);
+            set => PercAliment = Converter.ToDouble(value);
+        }
 
         /// <summary>
-        /// 
+        /// Valor da pensão alimentícia
         /// </summary>
         [XmlIgnore]
         public double VrAlim { get; set; }
+
         [XmlElement("vrAlim")]
         public string VrAlimField
         {
@@ -182,17 +254,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrAlim = Converter.ToDouble(value);
         }
 
-        #region ShouldSerialize
-
-        public bool ShouldSerializeVrAlimField() => VrAlim > 0;
-
-        #endregion ShouldSerialize
-
+        /// <summary>
+        /// Número que identifica o processo trabalhista, quando o desligamento se der por decisão judicial
+        /// </summary>
         [XmlElement("nrProcTrab")]
         public string NrProcTrab { get; set; }
 
+        /// <summary>
+        /// Indicativo se o desligamento ocorreu por meio de adesão a Programa de Demissão Voluntária (PDV)
+        /// </summary>
         [XmlElement("indPDV")]
-        public string IndPDV { get; set; }
+#if INTEROP
+        public SimNaoLetra IndPDV { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndPDV { get; set; }
+#endif
 
         [XmlElement("infoInterm")]
         public List<InfoInterm2299> InfoInterm { get; set; }
@@ -287,7 +363,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public VerbasResc VerbasResc { get; set; }
 
         [XmlElement("remunAposDeslig")]
-        public RemunAposDeslig RemunAposDeslig { get; set; }
+        public RemunAposDeslig2299 RemunAposDeslig { get; set; }
 
         [XmlElement("consigFGTS")]
         public List<ConsigFGTS> ConsigFGTS { get; set; }
@@ -341,24 +417,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializePensAlim() => PensAlim != null;
 #endif
 
-        public bool ShouldSerializePercAliment() => PercAliment > 0;
+        public bool ShouldSerializePercAlimentField() => PercAliment > 0;
 
-        public bool ShouldSerializeVrAlim() => VrAlim > 0;
+        public bool ShouldSerializeVrAlimField() => VrAlim > 0;
 
         public bool ShouldSerializeNrProcTrab() => !string.IsNullOrEmpty(NrProcTrab);
 
-        public bool ShouldSerializeIndPDV() => !string.IsNullOrEmpty(IndPDV);
-
-        #endregion
+#if INTEROP
+        public bool ShouldSerializeIndPDV() => IndPDV != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndPDV() => IndPDV != null;
+#endif
+        #endregion ShouldSerialize
     }
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2299")]
-    [ComVisible(true)]
-#endif
-    public class Observacoes2299 : Observacoes2306 { }
-
+    /// <summary>
+    /// Informações relativas ao trabalho intermitente
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm2299")]
@@ -366,6 +441,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoInterm2299 : InfoInterm1200 { }
 
+    /// <summary>
+    /// Observações sobre o desligamento
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Observacoes2299")]
+    [ComVisible(true)]
+#endif
+    public class Observacoes2299 : Observacoes2306 { }
+
+    /// <summary>
+    /// Grupo preenchido exclusivamente nos casos de sucessão do vínculo trabalhista, com a identificação da empresa sucessora
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc2299")]
@@ -380,6 +468,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
     }
 
+    /// <summary>
+    /// Transferência de titularidade do empregado doméstico para outro representante da mesma unidade familiar
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.TransfTit")]
@@ -387,9 +478,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class TransfTit
     {
+        /// <summary>
+        /// Preencher com o CPF do novo titular
+        /// </summary>
         [XmlElement("cpfSubstituto")]
         public string CpfSubstituto { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de nascimento do novo titular
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtNascto { get; set; }
@@ -409,6 +506,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
+    /// <summary>
+    /// Informação do novo CPF do trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.MudancaCPF2299")]
@@ -416,10 +516,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class MudancaCPF2299
     {
+        /// <summary>
+        /// Preencher com o novo CPF do trabalhador
+        /// </summary>
         [XmlElement("novoCPF")]
         public string NovoCPF { get; set; }
     }
 
+    /// <summary>
+    /// Grupo onde são prestadas as informações relativas às verbas devidas ao trabalhador na rescisão contratual
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.VerbasResc")]
@@ -508,19 +614,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoMV")]
-        public InfoMV InfoMV { get; set; }
+        public InfoMV2299 InfoMV { get; set; }
 
         [XmlElement("procCS")]
-        public ProcCS ProcCS { get; set; }
+        public ProcCS2299 ProcCS { get; set; }
     }
 
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2299")]
-    [ComVisible(true)]
-#endif
-    public class ProcJudTrab2299 : ProcJudTrab1200 { }
-
+    /// <summary>
+    /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev2299")]
@@ -528,11 +630,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DmDev2299
     {
+        /// <summary>
+        /// Identificador atribuído pela empresa para o demonstrativo de valores devidos ao trabalhador relativo a verbas rescisórias
+        /// </summary>
         [XmlElement("ideDmDev")]
         public string IdeDmDev { get; set; }
 
+        /// <summary>
+        /// Indicativo de Rendimentos Recebidos Acumuladamente - RRA.
+        /// Somente preencher este campo se for um demonstrativo de RRA
+        /// </summary>
         [XmlElement("indRRA")]
-        public string IndRRA { get; set; }
+#if INTEROP
+        public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndRRA { get; set; }
+#endif
 
         [XmlElement("infoRRA")]
         public InfoRRA2299 InfoRRA { get; set; }
@@ -545,11 +658,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndRRA() => !string.IsNullOrEmpty(IndRRA);
+#if INTEROP
+        public bool ShouldSerializeIndRRA() => IndRRA != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndRRA() => IndRRA != null;
+#endif
 
-        #endregion
+#endregion
     }
 
+    /// <summary>
+    /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA2299")]
@@ -557,6 +677,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoRRA2299 : InfoRRA1202 { }
 
+    /// <summary>
+    /// Verbas rescisórias relativas ao mês/ano da data do desligamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApur2299")]
@@ -605,6 +728,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
+    /// <summary>
+    /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLot2299")]
@@ -612,12 +738,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEstabLot2299
     {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição do estabelecimento, de acordo com as opções da Tabela 05
+        /// </summary>
         [XmlElement("tpInsc")]
         public TpInsc TpInsc { get; set; }
 
+        /// <summary>
+        /// Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo ideEstabLot/tpInsc
+        /// </summary>
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
+        /// <summary>
+        /// Informar o código atribuído pelo empregador para a lotação tributária
+        /// </summary>
         [XmlElement("codLotacao")]
         public string Codlotacao { get; set; }
 
@@ -668,6 +803,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoSimples InfoSimples { get; set; }
     }
 
+    /// <summary>
+    /// Detalhamento das verbas rescisórias devidas ao trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DetVerbas")]
@@ -675,12 +813,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DetVerbas
     {
+        /// <summary>
+        /// Informar o código atribuído pelo empregador que identifica a rubrica em sua folha de pagamento ou 
+        /// o código da rubrica constante da Tabela de Rubricas Padrão
+        /// </summary>
         [XmlElement("codRubr")]
         public string CodRubr { get; set; }
 
+        /// <summary>
+        /// Preencher com o identificador da Tabela de Rubricas para a rubrica definida em codRubr
+        /// </summary>
         [XmlElement("ideTabRubr")]
         public string IdeTabRubr { get; set; }
-
 
         /// <summary>
         /// Informar a quantidade de referência para apuração (em horas, cotas, meses, etc.).
@@ -714,13 +858,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => FatorRubr = Converter.ToDouble(value);
         }
 
-        #region ShouldSeriliaze
-
-        public bool ShouldSeriliazeQtdRubrField() => QtdRubr > 0;
-        public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
-
-        #endregion ShouldSeriliaze
-
         /// <summary>
         /// Valor total da rubrica.
         /// Validação: Deve ser maior que 0 (zero).
@@ -736,11 +873,35 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         }
 
+        /// <summary>
+        /// Indicativo de tipo de apuração de IR
+        /// </summary>
         [XmlElement("indApurIR")]
-        public IndApurIR IndApurIR { get; set; }
+#if INTEROP
+        public IndApurIR IndApurIR { get; set; } = (IndApurIR)(-1);
+#else
+        public IndApurIR? IndApurIR { get; set; }
+#endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
+        public bool ShouldSerializeFatorRubrField() => FatorRubr > 0;
+
+#if INTEROP
+        public bool ShouldSerializeIndApurIR() => IndApurIR != (IndApurIR)(-1);
+#else
+        public bool ShouldSerializeIndApurIR() => IndApurIR != null;
+#endif
+
+        #endregion ShouldSerialize
 
     }
 
+    /// <summary>
+    /// Grupo referente ao detalhamento do grau de exposição do trabalhador aos agentes nocivos que 
+    /// ensejam a cobrança da contribuição adicional para financiamento dos benefícios de aposentadoria especial
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAgNocivo2299")]
@@ -748,10 +909,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoAgNocivo2299
     {
+        /// <summary>
+        /// Preencher com o código que representa o grau de exposição a agentes nocivos, conforme Tabela 02
+        /// </summary>
         [XmlElement("grauExp")]
         public string GrauExp { get; set; }
     }
 
+    /// <summary>
+    /// Informação relativa a empresas enquadradas no regime de tributação Simples Nacional
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSimples")]
@@ -763,6 +930,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndSimples IndSimples { get; set; }
     }
 
+    /// <summary>
+    /// Remuneração relativa a períodos anteriores, devida em função de acordos coletivos, legislação específica, 
+    /// convenção coletiva de trabalho, dissídio ou conversão de licença saúde em acidente de trabalho
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerAnt2299")]
@@ -811,6 +982,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
+    /// <summary>
+    /// Identificação do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeADC2299")]
@@ -818,6 +992,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeADC2299
     {
+        /// <summary>
+        /// Data da assinatura do acordo, convenção coletiva, sentença normativa ou da conversão da licença saúde em acidente de trabalho
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtAcConv { get; set; }
@@ -836,9 +1013,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Tipo do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores
+        /// </summary>
         [XmlElement("tpAcConv")]
         public string TpAcConv { get; set; }
 
+        /// <summary>
+        /// Descrição do instrumento ou situação que originou o pagamento das verbas relativas a períodos anteriores
+        /// </summary>
         [XmlElement("dsc")]
         public string Dsc { get; set; }
 
@@ -886,9 +1069,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtAcConvField() => DtAcConv > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Identificação do período ao qual se referem as diferenças de remuneração
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdePeriodo2299")]
@@ -896,6 +1082,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdePeriodo2299
     {
+        /// <summary>
+        /// Informar o período ao qual se refere o complemento de remuneração, no formato AAAA-MM
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime PerRef { get; set; }
@@ -955,24 +1144,56 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
+    /// <summary>
+    /// Informações sobre a existência de processos judiciais do trabalhador com decisão favorável quanto à não incidência de contribuições sociais e/ou Imposto de Renda
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcCS")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2299")]
     [ComVisible(true)]
 #endif
-    public class ProcCS
+    public class ProcJudTrab2299 : ProcJudTrab1200 { }
+
+    /// <summary>
+    /// Grupo preenchido exclusivamente em caso de trabalhador que possua outros vínculos/atividades nos quais já tenha ocorrido desconto de contribuição previdenciária
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2299")]
+    [ComVisible(true)]
+#endif
+    public class InfoMV2299 : InfoMV1200 { }
+
+    /// <summary>
+    /// Informação sobre processo judicial que suspende a exigibilidade da Contribuição Social Rescisória
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcCS2299")]
+    [ComVisible(true)]
+#endif
+    public class ProcCS2299
     {
+        /// <summary>
+        /// Informar um número de processo judicial cadastrado através do evento S-1070, cujo indMatProc seja igual a [1, 7]
+        /// </summary>
         [XmlElement("nrProcJud")]
         public string NrProcJud { get; set; }
     }
 
+    /// <summary>
+    /// Informações sobre a "quarentena" remunerada de trabalhador desligado ou outra situação de desligamento com data anterior
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAposDeslig")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAposDeslig2299")]
     [ComVisible(true)]
 #endif
-    public class RemunAposDeslig
+    public class RemunAposDeslig2299
     {
+        /// <summary>
+        /// Indicativo de situação de remuneração após o desligamento
+        /// </summary>
         [XmlElement("indRemun")]
 #if INTEROP
         public IndRemun IndRemun { get; set; } = (IndRemun)(-1);
@@ -980,6 +1201,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndRemun? IndRemun { get; set; }
 #endif
 
+        /// <summary>
+        /// Preencher com a data final da quarentena a que está sujeito o trabalhador
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtFimRemun { get; set; }
@@ -1006,9 +1230,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndRemun() => IndRemun != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações sobre operação de crédito consignado com garantia de FGTS
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsigFGTS")]
@@ -1016,9 +1243,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class ConsigFGTS
     {
+        /// <summary>
+        /// Matrícula da instituição consignatária, cadastrada na Caixa Econômica Federal
+        /// </summary>
         [XmlElement("insConsig")]
         public string InsConsig { get; set; }
 
+        /// <summary>
+        /// Número do contrato de empréstimo consignado existente na instituição consignatária
+        /// </summary>
         [XmlElement("nrContr")]
         public string NrContr { get; set; }
     }

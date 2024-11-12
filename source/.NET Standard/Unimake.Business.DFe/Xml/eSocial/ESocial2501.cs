@@ -257,6 +257,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCpMensal { get; set; }
+
         [XmlAttribute(AttributeName = "vrBcCpMensal")]
         public string VrBcCpMensalField
         {
@@ -271,6 +272,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp13 { get; set; }
+
         [XmlAttribute(AttributeName = "vrBcCp13")]
         public string VrBcCp13Field
         {
@@ -337,6 +339,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCR { get; set; }
+
         [XmlAttribute(AttributeName = "vrCR")]
         public string VrCRField
         {
@@ -363,6 +366,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCR { get; set; }
+
         [XmlAttribute(AttributeName = "vrCR")]
         public string VrCRField
         {
@@ -510,6 +514,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRendTrib { get; set; }
+
         [XmlAttribute(AttributeName = "vrRendTrib")]
         public string VrRendTribField
         {
@@ -525,6 +530,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRendTrib13 { get; set; }
+
         [XmlAttribute(AttributeName = "vrRendTrib13")]
         public string VrRendTrib13Field
         {
@@ -539,6 +545,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRendMoleGrave { get; set; }
+
         [XmlAttribute(AttributeName = "vrRendMoleGrave")]
         public string VrRendMoleGraveField
         {
@@ -553,6 +560,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRendIsen65 { get; set; }
+
         [XmlAttribute(AttributeName = "vrRendIsen65")]
         public string VrRendInsen65Field
         {
@@ -567,6 +575,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrJurosMora { get; set; }
+
         [XmlAttribute(AttributeName = "vrJurosMora")]
         public string VrJuroMoraField
         {
@@ -580,6 +589,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRendIsenNTrib { get; set; }
+
         [XmlAttribute(AttributeName = "vrRendIsenNTrib")]
         public string VrRendInsenNTribField
         {
@@ -601,6 +611,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrPrevOficial { get; set; }
+
         [XmlAttribute(AttributeName = "vrPrevOficial")]
         public string VrPrevOficialField
         {
@@ -698,6 +709,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrDespCustas { get; set; }
+
         [XmlAttribute(AttributeName = "vlrDespCustas")]
         public string VlrDespCustasField
         {
@@ -711,6 +723,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrDespAdvogados { get; set; }
+
         [XmlAttribute(AttributeName = "vlrDespAdvogados")]
         public string VlrDespAdvogadosField
         {
@@ -737,6 +750,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrAdv { get; set; }
+
         [XmlAttribute(AttributeName = "vlrAdv")]
         public string VlrAdvField
         {
@@ -774,6 +788,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrDeducao { get; set; }
+
         [XmlAttribute(AttributeName = "vlrDeducao")]
         public string VlrDeducaoField
         {
@@ -802,6 +817,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrPensao { get; set; }
+
         [XmlAttribute(AttributeName = "vlrPensao")]
         public string VlrPensaoField
         {
@@ -890,6 +906,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrNRetido { get; set; }
+
         [XmlAttribute(AttributeName = "vlrNRetido")]
         public string VlrNRetidoField
         {
@@ -904,6 +921,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrDepJud { get; set; }
+
         [XmlAttribute(AttributeName = "vlrDepJud")]
         public string VlrDepJudField
         {
@@ -918,6 +936,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrCmpAnoCal { get; set; }
+
         [XmlAttribute(AttributeName = "vlrCmpAnoCal")]
         public string VlrCmpAnoCalField
         {
@@ -932,6 +951,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrCmpAnoAnt { get; set; }
+
         [XmlAttribute(AttributeName = "vlrCmpAnoAnt")]
         public string VlrCmpAnoAntField
         {
@@ -948,6 +968,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrRendSusp { get; set; }
+
         [XmlAttribute(AttributeName = "vlrRendSusp")]
         public string VlrRendSuspField
         {
@@ -1022,6 +1043,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
         public double VlrDedSusp { get; set; }
+
         [XmlAttribute(AttributeName = "vlrDedSusp")]
         public string VlrDedSuspField
         {
@@ -1071,7 +1093,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVlrDedSusp() => VlrDedSusp > 0;
+        public bool ShouldSerializeVlrDedSuspField() => VlrDedSusp > 0;
 
         #endregion
     }
@@ -1093,6 +1115,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrDepenSusp { get; set; }
+
         [XmlAttribute(AttributeName = "vlrDepenSusp")]
         public string VlrDepenSuspField
         {

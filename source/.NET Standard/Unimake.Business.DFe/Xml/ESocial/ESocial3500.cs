@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
-    /// Evento Informações do Empregador. eSocial - 3500
+    /// S-3500 - Evento Informações do Empregador. eSocial - 3500
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -19,9 +19,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial3500 : XMLBase
     {
-        /// <summary>
-        /// Evento Exclusão
-        /// </summary>
         [XmlElement("evtExcProcTrab")]
         public EvtExcProcTrab EvtExcProcTrab { get; set; }
 
@@ -30,6 +27,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
+    /// <summary>
+    /// Evento Exclusão
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtExcProcTrab")]
@@ -37,29 +37,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtExcProcTrab
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do evento
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento3500 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação doempregador
-        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
-
-        /// <summary>
-        /// Informação do evento que será excluído
-        /// </summary>
         [XmlElement("infoExclusao")]
         public InfoExclusao3500 InfoExclusao { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento3500")]
@@ -94,9 +90,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrRecEvt")]
         public string NrRecEvt { get; set; }
 
-        /// <summary>
-        /// Identificação do processo, do trabalhador e do período aque se refere o evento que será excluído.
-        /// </summary>
         [XmlElement("ideProcTrab")]
         public IdeProcTrab IdeProcTrab { get; set; }
     }
@@ -157,6 +150,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeCpfTrab() => !string.IsNullOrEmpty(CpfTrab);
+
+        public bool ShouldSerializePerApurPgtoField() => PerApurPgto > DateTime.MinValue;
+
         #endregion ShouldSerialize
 
     }

@@ -42,7 +42,7 @@
 				<indNatAtiv>S</indNatAtiv>
 				<indMotDeslig>S</indMotDeslig>
 				<matricula>matricula1</matricula>
-				<codCateg>001</codCateg>
+				<codCateg>101</codCateg>
 				<dtInicio>1900-01-01</dtInicio>
 				<infoCompl>
 					<codCBO>000001</codCBO>
@@ -106,33 +106,33 @@
 					</infoTerm>
 				</infoCompl>
 				<mudCategAtiv>
-					<codCateg>001</codCateg>
+					<codCateg>101</codCateg>
 					<natAtividade>1</natAtividade>
 					<dtMudCategAtiv>2023-01-01</dtMudCategAtiv>
 				</mudCategAtiv>
 				<mudCategAtiv>
-					<codCateg>003</codCateg>
+					<codCateg>101</codCateg>
 					<natAtividade>2</natAtividade>
 					<dtMudCategAtiv>2022-01-01</dtMudCategAtiv>
 				</mudCategAtiv>
 				<mudCategAtiv>
-					<codCateg>003</codCateg>
+					<codCateg>101</codCateg>
 					<natAtividade>1</natAtividade>
 					<dtMudCategAtiv>2022-12-31</dtMudCategAtiv>
 				</mudCategAtiv>
 				<unicContr>
 					<matUnic>matUnic1</matUnic>
-					<codCateg>001</codCateg>
+					<codCateg>101</codCateg>
 					<dtInicio>1900-01-01</dtInicio>
 				</unicContr>
 				<unicContr>
 					<matUnic>matUnic2</matUnic>
-					<codCateg>003</codCateg>
+					<codCateg>101</codCateg>
 					<dtInicio>2022-01-01</dtInicio>
 				</unicContr>
 				<unicContr>
 					<matUnic>matUnic3</matUnic>
-					<codCateg>001</codCateg>
+					<codCateg>101</codCateg>
 					<dtInicio>2022-12-31</dtInicio>
 				</unicContr>
 				<ideEstab>
@@ -168,7 +168,7 @@
 								<vrBcFGTSDecAnt>1.00</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
-								<codCateg>001</codCateg>
+								<codCateg>101</codCateg>
 								<vrBcCPrev>1.25</vrBcCPrev>
 							</baseMudCateg>
 						</idePeriodo>
@@ -187,7 +187,7 @@
 								<vrBcFGTSDecAnt>120.03</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
-								<codCateg>003</codCateg>
+								<codCateg>101</codCateg>
 								<vrBcCPrev>120.03</vrBcCPrev>
 							</baseMudCateg>
 						</idePeriodo>
@@ -206,7 +206,7 @@
 								<vrBcFGTSDecAnt>100.03</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
-								<codCateg>003</codCateg>
+								<codCateg>101</codCateg>
 								<vrBcCPrev>1100.03</vrBcCPrev>
 							</baseMudCateg>
 						</idePeriodo>
@@ -222,7 +222,7 @@
 				<indNatAtiv>N</indNatAtiv>
 				<indMotDeslig>N</indMotDeslig>
 				<matricula>matricula2</matricula>
-				<codCateg>003</codCateg>
+				<codCateg>101</codCateg>
 				<dtInicio>2023-01-01</dtInicio>
 				<infoCompl>
 					<codCBO>000001</codCBO>
@@ -286,33 +286,33 @@
 					</infoTerm>
 				</infoCompl>
 				<mudCategAtiv>
-					<codCateg>003</codCateg>
+					<codCateg>101</codCateg>
 					<natAtividade>2</natAtividade>
 					<dtMudCategAtiv>1899-11-30</dtMudCategAtiv>
 				</mudCategAtiv>
 				<mudCategAtiv>
-					<codCateg>002</codCateg>
+					<codCateg>101</codCateg>
 					<natAtividade>1</natAtividade>
 					<dtMudCategAtiv>1900-02-02</dtMudCategAtiv>
 				</mudCategAtiv>
 				<mudCategAtiv>
-					<codCateg>003</codCateg>
+					<codCateg>101</codCateg>
 					<natAtividade>2</natAtividade>
 					<dtMudCategAtiv>2023-02-02</dtMudCategAtiv>
 				</mudCategAtiv>
 				<unicContr>
 					<matUnic>matUnic4</matUnic>
-					<codCateg>001</codCateg>
+					<codCateg>101</codCateg>
 					<dtInicio>2023-11-30</dtInicio>
 				</unicContr>
 				<unicContr>
 					<matUnic>matUnic5</matUnic>
-					<codCateg>002</codCateg>
+					<codCateg>101</codCateg>
 					<dtInicio>2023-02-02</dtInicio>
 				</unicContr>
 				<unicContr>
 					<matUnic>matUnic6</matUnic>
-					<codCateg>003</codCateg>
+					<codCateg>101</codCateg>
 					<dtInicio>2023-02-02</dtInicio>
 				</unicContr>
 				<ideEstab>
@@ -348,7 +348,7 @@
 								<vrBcFGTSDecAnt>1.00</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
-								<codCateg>001</codCateg>
+								<codCateg>101</codCateg>
 								<vrBcCPrev>1.25</vrBcCPrev>
 							</baseMudCateg>
 						</idePeriodo>
@@ -367,7 +367,7 @@
 								<vrBcFGTSDecAnt>120.03</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
-								<codCateg>003</codCateg>
+								<codCateg>101</codCateg>
 								<vrBcCPrev>120.03</vrBcCPrev>
 							</baseMudCateg>
 						</idePeriodo>
@@ -386,7 +386,7 @@
 								<vrBcFGTSDecAnt>100.03</vrBcFGTSDecAnt>
 							</infoFGTS>
 							<baseMudCateg>
-								<codCateg>003</codCateg>
+								<codCateg>101</codCateg>
 								<vrBcCPrev>1100.03</vrBcCPrev>
 							</baseMudCateg>
 						</idePeriodo>

@@ -24,9 +24,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVTermino/v_S_01_02_00", IsNullable = false)]
     public class ESocial2399 : XMLBase
     {
-        /// <summary>
-        /// Evento TSVE - Término
-        /// </summary>
         [XmlElement("evtTSVTermino")]
         public EvtTSVTermino EvtTSVTermino { get; set; }
 
@@ -35,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
-    /// Evento TSVE - Término
+    /// Evento Trabalhador Sem Vínculo de Emprego/Estatutário - Término
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -50,32 +47,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do evento.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2399 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do empregador.
-        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
-        /// <summary>
-        /// Identificação do trabalhador.
-        /// </summary>
         [XmlElement("ideTrabSemVinculo")]
-        public IdeTrabSemVinculo IdeTrabSemVinculo { get; set; }
+        public IdeTrabSemVinculo2399 IdeTrabSemVinculo { get; set; }
 
-        /// <summary>
-        /// Informações do término da prestação de serviço ou da execução da obra.
-        /// </summary>
         [XmlElement("infoTSVTermino")]
         public InfoTSVTermino InfoTSVTermino { get; set; }
     }
-
-    #region IdeEvento2399
 
     /// <summary>
     /// Informações de identificação do evento.
@@ -85,65 +68,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2399")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2399
-    {
-        /// <summary>
-        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
-        /// </summary>
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente
-        /// ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
-        /// Indicativo do tipo de guia. Valores válidos:
-        /// 1 - Documento de Arrecadação do eSocial - DAE
-        /// </summary>
-        [XmlElement("indGuia")]
-#if INTEROP
-        public IndGuia IndGuia { get; set; } = (IndGuia)(-1);
-#else
-        public IndGuia? IndGuia { get; set; }
-#endif
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-#if INTEROP
-        public bool ShouldSerializeIndGuiaField() => IndGuia != (IndGuia)(-1);
-#else
-        public bool ShouldSerializeIndGuia() => IndGuia != null;
-#endif
-        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-
-        #endregion ShouldSerialize
-    }
-    #endregion IdeEvento2399
+    public class IdeEvento2399 : IdeEvento2299 { }
 
     /// <summary>
-    /// Informações do término da prestação de serviço ou da execução da obra.
+    /// Identificação do Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeTrabSemVinculo2399")]
+    [ComVisible(true)]
+#endif
+    public class IdeTrabSemVinculo2399 : IdeTrabSemVinculo2306 { }
+
+    /// <summary>
+    /// TSVE - Término
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -153,6 +91,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoTSVTermino
     {
         /// <summary>
+        /// Data do término
         /// Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias.
         /// </summary>
         [XmlIgnore]
@@ -161,9 +100,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public DateTimeOffset DtTerm { get; set; }
 #endif
-        /// <summary>
-        /// Validação: Deve ser uma data igual ou anterior à data atual acrescida de 10 (dez) dias.
-        /// </summary>
+
         [XmlElement("dtTerm")]
         public string DtTermField
         {
@@ -235,33 +172,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrProcTrab")]
         public string NrProcTrab { get; set; }
 
-        /// <summary>
-        /// Informação do novo CPF do trabalhador.
-        /// </summary>
         [XmlElement("mudancaCPF")]
         public MudancaCPF2399 MudancaCPF { get; set; }
 
-        /// <summary>
-        /// Grupo onde são prestadas as informações relativas às
-        ///verbas rescisórias do diretor não empregado, com FGTS.
-        /// </summary>
         [XmlElement("verbasResc")]
         public VerbasResc2399 VerbasResc { get; set; }
 
-        /// <summary>
-        /// Informações sobre a "quarentena" remunerada de
-        /// trabalhador desligado ou outra situação de término com data anterior.
-        /// O grupo deve ser preenchido apenas no caso do
-        /// trabalhador que recebe remuneração após o
-        /// desligamento por estar impossibilitado de exercer
-        /// atividade remunerada ou no caso de término
-        /// reconhecido judicialmente com data anterior a
-        /// competências com remunerações já informadas no eSocial.
-        /// </summary>
         [XmlElement("remunAposTerm")]
-        public RemunAposTerm RemunAposTerm { get; set; }
+        public RemunAposTerm2399 RemunAposTerm { get; set; }
 
         #region ShouldSerialize
+
 #if INTEROP
         public bool ShouldSerializeMtvDesligTsVField() => MtvDesligTSV != (MtvDesligTSV)(-1);
 #else
@@ -302,6 +223,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
     #endregion MudancaCPF2399
 
+    /// <summary>
+    /// Grupo onde são prestadas as informações relativas às verbas rescisórias do diretor não empregado, com FGTS
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.VerbasResc2399")]
@@ -390,16 +314,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("infoMV")]
-        public InfoMV InfoMV { get; set; }
+        public InfoMV2399 InfoMV { get; set; }
 
     }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2399")]
-    [ComVisible(true)]
-#endif
-    public class ProcJudTrab2399 : ProcJudTrab1200 { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -412,14 +329,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string IdeDmDev { get; set; }
 
         [XmlElement("indRRA")]
-        public string IndRRA { get; set; }
+#if INTEROP
+        public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndRRA { get; set; }
+#endif
 
         [XmlElement("infoRRA")]
         public InfoRRA2399 InfoRRA { get; set; }
 
-        /// <summary>
-        /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
-        /// </summary>
         [XmlElement("ideEstabLot")]
         public List<IdeEstabLot2399> IdeEstabLot { get; set; }
 #if INTEROP
@@ -459,27 +377,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetIdeEstabLotCount => (IdeEstabLot != null ? IdeEstabLot.Count : 0);
 #endif
 
-        [XmlElement("infoPerApur")]
-        public InfoPerApur2399 InfoPerApur { get; set; }
-
-        [XmlElement("infoPerAnt")]
-        public InfoPerAnt2399 InfoPerAnt { get; set; }
-
         #region ShouldSerialize
 
-        public bool ShouldSerializeIndRRA() => !string.IsNullOrEmpty(IndRRA);
-
-        #endregion
+#if INTEROP
+        public bool ShouldSerializeIndRRA() => IndRRA != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndRRA() => IndRRA != null;
+#endif
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoRRA2399")]
     [ComVisible(true)]
 #endif
     public class InfoRRA2399 : InfoRRA1202 { }
-
-    #region IdeEstabLot2399
 
     /// <summary>
     /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
@@ -491,33 +407,36 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEstabLot2399 : IdeEstabLot2299 { }
 
-    #endregion  IdeEstabLot2399
-
+    /// <summary>
+    /// Informações sobre a existência de processos judiciais do trabalhador com decisão favorável 
+    /// quanto à não incidência de contribuições sociais e/ou Imposto de Renda
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerAnt2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcJudTrab2399")]
     [ComVisible(true)]
 #endif
-    public class InfoPerAnt2399 : InfoPerAnt2299 { }
+    public class ProcJudTrab2399 : ProcJudTrab1200 { }
 
+    /// <summary>
+    /// Grupo preenchido exclusivamente em caso de trabalhador que possua outros 
+    /// vínculos/atividades nos quais já tenha ocorrido desconto de contribuição previdenciária
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPerApur2399")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMV2399")]
     [ComVisible(true)]
 #endif
-    public class InfoPerApur2399 : InfoPerApur2299 { }
-
-    #region RemunAposTerm
+    public class InfoMV2399 : InfoMV1200 { }
 
     /// <summary>
     /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAposTerm")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAposTerm2399")]
     [ComVisible(true)]
 #endif
-    public class RemunAposTerm : RemunAposDeslig { }
+    public class RemunAposTerm2399 : RemunAposDeslig2299 { }
 
-    #endregion  RemunAposTerm
 }

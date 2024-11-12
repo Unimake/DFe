@@ -408,7 +408,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoBaseFGTS InfoBaseFGTS { get; set; }
 
         [XmlElement("procCS")]
-        public ProcCS ProcCS { get; set; }
+        public ProcCS5003 ProcCS { get; set; }
 
         [XmlElement("eConsignado")]
         public List<EConsignado> EConsignado { get; set; }
@@ -934,24 +934,31 @@ public class BasePerAntE
 }
 
 #if INTEROP
-[ClassInterface(ClassInterfaceType.AutoDual)]
-[ProgId("Unimake.Business.DFe.Xml.ESocial.EConsignado")]
-[ComVisible(true)]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ProcCS5003")]
+    [ComVisible(true)]
 #endif
-public class EConsignado
-{
-    [XmlElement("instFinanc")]
-    public string InstFinanc { get; set; }
+    public class ProcCS5003 : ProcCS2299 { }
 
-    [XmlElement("nrContrato")]
-    public string NrContrato { get; set; }
-
-    [XmlIgnore]
-    public double VreConsignado { get; set; }
-    [XmlElement("vreConsignado")]
-    public string VreConsignadoField
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.EConsignado")]
+    [ComVisible(true)]
+#endif
+    public class EConsignado
     {
-        get => VreConsignado.ToString("F2", CultureInfo.InvariantCulture);
-        set => VreConsignado = Converter.ToDouble(value);
+        [XmlElement("instFinanc")]
+        public string InstFinanc { get; set; }
+
+        [XmlElement("nrContrato")]
+        public string NrContrato { get; set; }
+
+        [XmlIgnore]
+        public double VreConsignado { get; set; }
+        [XmlElement("vreConsignado")]
+        public string VreConsignadoField
+        {
+            get => VreConsignado.ToString("F2", CultureInfo.InvariantCulture);
+            set => VreConsignado = Converter.ToDouble(value);
+        }
     }
-}

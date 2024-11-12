@@ -8,6 +8,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2400 - Cadastro de Beneficiário - Entes Públicos - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2400")]
@@ -24,6 +27,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Cadastro de Beneficiário - Início
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtCdBenefIn")]
@@ -31,6 +37,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtCdBenefIn
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -44,6 +53,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Beneficiario Beneficiario { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2400")]
@@ -51,6 +63,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2400 : IdeEvento2205 { }
 
+    /// <summary>
+    /// Grupo de informações do beneficiário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Beneficiario")]
@@ -58,12 +73,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Beneficiario
     {
+        /// <summary>
+        /// Informar o CPF do beneficiário
+        /// </summary>
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }
 
+        /// <summary>
+        /// Informar o nome do beneficiário
+        /// </summary>
         [XmlElement("nmBenefic")]
         public string NmBenefic { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de nascimento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtNascto { get; set; }
@@ -82,6 +106,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Preencher com a data de início do cadastro do beneficiário. Informar a data de início da obrigatoriedade dos 
+        /// eventos não periódicos para o ente público no eSocial caso o beneficiário possua cadastro anterior a essa data
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtInicio { get; set; }
@@ -100,6 +128,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Sexo do beneficiário
+        /// </summary>
         [XmlElement("sexo")]
 #if INTEROP
         public TipoSexo Sexo { get; set; } = (TipoSexo)(-1);
@@ -107,9 +138,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoSexo? Sexo { get; set; }
 #endif
 
+        /// <summary>
+        /// Etnia e raça do beneficiário
+        /// </summary>
         [XmlElement("racaCor")]
         public RacaCor RacaCor { get; set; }
 
+        /// <summary>
+        /// Estado civil do beneficiário
+        /// </summary>
         [XmlElement("estCiv")]
 #if INTEROP
         public EstadoCivil EstCiv { get; set; } = (EstadoCivil)(-1);
@@ -117,9 +154,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public EstadoCivil? EstCiv { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar se o beneficiário é pessoa com doença incapacitante que isenta da contribuição previdenciária, 
+        /// total ou parcialmente, reconhecida administrativa ou judicialmente, na forma da lei.
+        /// </summary>
         [XmlElement("incFisMen")]
         public SimNaoLetra IncFisMen { get; set; }
 
+        /// <summary>
+        /// Preencher com a data do reconhecimento da incapacidade
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtIncFisMen { get; set; }
@@ -197,9 +241,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtIncFisMenField() => DtIncFisMen > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Grupo de informações do endereço do beneficiário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Endereco2400")]
@@ -207,6 +254,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Endereco2400 : Endereco2205 { }
 
+    /// <summary>
+    /// Informações dos dependentes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Dependente2400")]
@@ -214,6 +264,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Dependente2400
     {
+        /// <summary>
+        /// Tipo de dependente
+        /// </summary>
         [XmlElement("tpDep")]
 #if INTEROP
         public TiposDeDependente TpDep { get; set; } = (TiposDeDependente)(-1);
@@ -221,9 +274,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TiposDeDependente? TpDep { get; set; }
 #endif
 
+        /// <summary>
+        /// Nome do dependente
+        /// </summary>
         [XmlElement("nmDep")]
         public string NmDep { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de nascimento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtNascto { get; set; }
@@ -242,9 +301,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Número de inscrição no CPF
+        /// </summary>
         [XmlElement("cpfDep")]
         public string CpfDep { get; set; }
 
+        /// <summary>
+        /// Sexo do dependente
+        /// </summary>
         [XmlElement("sexoDep")]
 #if INTEROP
         public TipoSexo SexoDep { get; set; } = (TipoSexo)(-1);
@@ -252,12 +317,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TipoSexo? SexoDep { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar se é dependente do beneficiário para fins de dedução de seu rendimento tributável pelo Imposto de Renda
+        /// </summary>
         [XmlElement("depIRRF")]
         public SimNaoLetra DepIRRF { get; set; }
 
+        /// <summary>
+        /// Informar se o dependente é pessoa com doença incapacitante, na forma da lei
+        /// </summary>
         [XmlElement("incFisMen")]
         public SimNaoLetra IncFisMen { get; set; }
 
+        /// <summary>
+        /// Informar a descrição da dependência
+        /// </summary>
         [XmlElement("descrDep")]
         public string DescrDep { get; set; }
 
@@ -277,7 +351,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeSexoDep() => SexoDep != null;
 #endif
 
-        #endregion
+        public bool ShouldSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
+
+        #endregion ShouldSerialize
 
     }
 }

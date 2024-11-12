@@ -51,27 +51,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do evento.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento1200 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do empregador.
-        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
-        /// <summary>
-        /// Identificação do trabalhador.
-        /// </summary>
         [XmlElement("ideTrabalhador")]
         public IdeTrabalhador IdeTrabalhador { get; set; }
 
-        /// <summary>
-        /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador.
-        /// </summary>
         [XmlElement("dmDev")]
         public List<DmDev> DmDev { get; set; }
 
@@ -243,7 +231,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// ocorrido desconto de contribuição previdenciária.
         /// </summary>
         [XmlElement("infoMV")]
-        public InfoMV InfoMV { get; set; }
+        public InfoMV1200 InfoMV { get; set; }
 
         /// <summary>
         /// Grupo preenchido quando o evento de remuneração se
@@ -354,10 +342,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMV")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoMV1200")]
     [ComVisible(true)]
 #endif
-    public class InfoMV
+    public class InfoMV1200
     {
         /// <summary>
         /// Indicador de desconto da contribuição previdenciária do trabalhador.
@@ -994,7 +982,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Grau de exposição a agentes nocivos 
         /// </summary>
         [XmlElement("infoAgNocivo")]
-        public InfoAgNocivo InfoAgNocivo { get; set; }
+        public InfoAgNocivo1200 InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
         public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
@@ -1023,10 +1011,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAgNocivo")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAgNocivo1200")]
     [ComVisible(true)]
 #endif
-    public class InfoAgNocivo
+    public class InfoAgNocivo1200
     {
         /// <summary>
         /// O (se codCateg = [1XX, 2XX,3XX, 731, 734, 738] ou se codCateg = [4XX] com
@@ -1480,7 +1468,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// dos benefícios de aposentadoria especial.
         /// </summary>
         [XmlElement("infoAgNocivo")]
-        public InfoAgNocivo InfoAgNocivo { get; set; }
+        public InfoAgNocivo1200 InfoAgNocivo { get; set; }
 
         #region ShouldSerialize
 

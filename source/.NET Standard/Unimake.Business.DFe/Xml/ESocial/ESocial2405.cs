@@ -22,9 +22,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenefAlt/v_S_01_02_00", IsNullable = false)]
     public class ESocial2405 : XMLBase
     {
-        /// <summary>
-        /// Evento Cadastro de Beneficiário - Entes Públicos - Alteração
-        /// </summary>
         [XmlElement("evtCdBenefAlt")]
         public EvtCdBenefAlt EvtCdBenefAlt { get; set; }
 
@@ -48,32 +45,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do evento.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2405 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do empregador.
-        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
-        /// <summary>
-        /// Identificação do beneficiário.
-        /// </summary>
         [XmlElement("ideBenef")]
         public IdeBenef2405 IdeBenef { get; set; }
 
-        /// <summary>
-        /// Alteração de dados do beneficiário.
-        /// </summary>
         [XmlElement("alteracao")]
         public Alteracao2405 Alteracao { get; set; }
     }
-
-    #region IdeEvento2405
 
     /// <summary>
     /// Informações de identificação do evento.
@@ -83,49 +66,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2405")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento2405
-    {
-        /// <summary>
-        /// Indicativo de retificação
-        /// </summary>
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        /// <summary>
-        /// Número Recibo de Entrega da(s) transmissão(ões) anterior(es) para as quais se está incluindo informações complementares.
-        /// Preencher com o número do recibo de cada um dos eventos S-1200 que se deseja complementar as informações.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; } // Valores válidos: 1-Produção, 2-Produção restrita
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcessoEmissao ProcEmi { get; set; } // Valores válidos: 1-Aplicativo do empregador, 3-Aplicativo governamental - Web Geral, 4-Aplicativo governamental - Simplificado Pessoa Jurídica
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-        /// <summary>
-        /// Verifica se a tag 'nrRecibo' deve ser serializada
-        /// </summary>
-        public bool ShouldSerializeNrRecibo() => IndRetif == IndicativoRetificacao.ArquivoRetificacao;
-        #endregion ShouldSerialize
-    }
-    #endregion IdeEvento
-
-    #region IdeBenef2405
+    public class IdeEvento2405 : IdeEvento2190 { }
 
     /// <summary>
     /// Identificação do beneficiário.
@@ -143,7 +84,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfBenef")]
         public string CpfBenef { get; set; }
     }
-    #endregion IdeBenef
 
     /// <summary>
     /// Alteração de dados do beneficiário.
@@ -233,15 +173,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("incFisMen")]
         public SimNaoLetra IncFisMen { get; set; }
 
-        /// <summary>
-        ///  Grupo de informações do endereço do beneficiário
-        /// </summary>
         [XmlElement("endereco")]
         public Endereco2405 Endereco { get; set; }
 
-        /// <summary>
-        /// Informações dos dependentes.
-        /// </summary>
         [XmlElement("dependente")]
         public List<Dependente2405> Dependente { get; set; }
 #if INTEROP
@@ -289,6 +223,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Grupo de informações do endereço do beneficiário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Endereco2405")]
@@ -296,99 +233,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Endereco2405 : Endereco2205 { }
 
+    /// <summary>
+    /// Informações dos dependentes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2405.Dependente2405")]
     [ComVisible(true)]
 #endif
-    public class Dependente2405
-    {
-        /// <summary>
-        ///  Tipo de dependente.
-        /// Validação: Preenchimento obrigatório se depIRRF = [S].
-        /// Deve ser um código válido e existente na Tabela 07.
-        /// </summary>
-        [XmlElement("tpDep")]
-#if INTEROP
-        public TiposDeDependente TpDep { get; set; } = (TiposDeDependente)(-1);
-#else
-        public TiposDeDependente? TpDep { get; set; }
-#endif
-        /// <summary>
-        ///  Nome do dependente.
-        /// </summary>
-        [XmlElement("nmDep")]
-        public string NmDep { get; set; }
-
-        /// <summary>
-        /// Preencher com a data de nascimento.
-        /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DtNascto { get; set; }
-#else
-        public DateTimeOffset DtNascto { get; set; }
-#endif
-        /// <summary>
-        /// Preencher com a data de nascimento.
-        /// </summary>
-        [XmlElement("dtNascto")]
-        public string DtNasctoField
-        {
-            get => DtNascto.ToString("yyyy-MM-dd");
-#if INTEROP
-            set => DtNascto = DateTime.Parse(value);
-#else
-            set => DtNascto = DateTimeOffset.Parse(value);
-#endif
-        }
-        /// <summary>
-        /// Número de inscrição no CPF.
-        /// </summary>
-        [XmlElement("cpfDep")]
-        public string CpfDep { get; set; }
-
-        /// <summary>
-        /// Sexo do dependente
-        /// </summary>
-        [XmlElement("sexoDep")]
-#if INTEROP
-        public TipoSexo SexoDep { get; set; } = (TipoSexo)(-1);
-#else
-        public TipoSexo? SexoDep { get; set; }
-#endif
-
-        /// <summary>
-        /// Informar se é dependente do beneficiário para fins de
-        /// dedução de seu rendimento tributável pelo Imposto de Renda.
-        /// </summary>
-        [XmlElement("depIRRF")]
-        public SimNaoLetra DepIRRF { get; set; }
-
-        /// <summary>
-        /// Informar se o dependente é pessoa com doença incapacitante, na forma da lei
-        /// </summary>
-        [XmlElement("incFisMen")]
-        public SimNaoLetra IncFisMen { get; set; }
-
-        /// <summary>
-        /// Informar a descrição da dependência.
-        /// Validação: Informação obrigatória e exclusiva se tpDep = [99].
-        /// </summary>
-        [XmlElement("descrDep")]
-        public string DescrDep { get; set; }
-
-        #region ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeTpDep() => TpDep != (TiposDeDependente)(-1);
-#else
-        public bool ShouldSerializeTpDep() => TpDep != null;
-#endif
-        public bool ShouldSerializeCpfDep() => !string.IsNullOrEmpty(CpfDep);
-        public bool ShouldSerializeDescrDep() => !string.IsNullOrEmpty(DescrDep);
-
-        #endregion
-    }
+    public class Dependente2405 : Dependente2400 { }
 
 }

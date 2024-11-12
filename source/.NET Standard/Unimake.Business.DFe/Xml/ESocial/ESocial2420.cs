@@ -63,7 +63,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Identificação do beneficiário e do benefício.
         /// </summary>
         [XmlElement("ideBeneficio")]
-        public IdeBeneficio IdeBeneficio { get; set; }
+        public IdeBeneficio2420 IdeBeneficio { get; set; }
 
         /// <summary>
         /// Informações da cessação do benefício
@@ -78,6 +78,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     public class IdeEvento2420 : IdeEvento2206 { }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBeneficio2420")]
+    [ComVisible(true)]
+#endif
+    public class IdeBeneficio2420 : IdeBeneficio2416 { }
 
     /// <summary>
     /// Informações da cessação do benefício.
@@ -151,8 +158,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NovoCPF { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializeCnpjOrgaoSuc() => !string.IsNullOrEmpty(CnpjOrgaoSuc);
         public bool ShouldSerializeNovoCPF() => !string.IsNullOrEmpty(NovoCPF);
+
         #endregion ShouldSerialize 
     }
 }
