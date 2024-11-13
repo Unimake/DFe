@@ -1251,6 +1251,22 @@ namespace TreinamentoDLL
                                     CNAE = "6202300",
                                     CRT = CRT.SimplesNacional
                                 },
+                                Entrega = new XmlNFe.Entrega
+                                {
+                                  XNome = "",
+                                  XLgr = "",
+                                  Nro = "",
+                                  XCpl = "",
+                                  XBairro = "",
+                                  CEP = ""  ,
+                                  CMun = 1111111,
+                                  XMun = "",
+                                  UF = UFBrasil.PR,
+                                  Email = "teste@gmail.com",
+                                  Fone = "",
+                                  CNPJ = "00000000000000",
+                                  IE = ""
+                                },
                                 Dest = new XmlNFe.Dest
                                 {
                                     CNPJ = "04218457000128",
