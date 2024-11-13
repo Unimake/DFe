@@ -780,7 +780,7 @@
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4323804">
-		<Nome>Xangri-Lá - RS</Nome>
+		<Nome>Xangri-lá - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>XangriLaRS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
@@ -810,7 +810,7 @@
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2928703">
-		<Nome>Santo Antonio de Jesus - BA</Nome>
+		<Nome>Santo Antônio de Jesus - BA</Nome>
 		<UF>BA</UF>
 		<ArqConfig>SantoAntonioDeJesusBA.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
@@ -972,7 +972,7 @@
 		<PadraoNFSe>SMARAPD</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4302808">
-		<Nome>Caçapava Do Sul - RS</Nome>
+		<Nome>Caçapava do Sul - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>CacapavaDoSulRS.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
@@ -1134,7 +1134,7 @@
 		<PadraoNFSe>AGILI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4108809">
-		<Nome>Guaira - PR</Nome>
+		<Nome>Guaíra - PR</Nome>
 		<UF>PR</UF>
 		<ArqConfig>GuairaPR.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
@@ -1266,7 +1266,7 @@
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="2919553">
-		<Nome>Luis Eduardo Magalhães - BA</Nome>
+		<Nome>Luís Eduardo Magalhães - BA</Nome>
 		<UF>BA</UF>
 		<ArqConfig>LuisEduardoMagalhaesBA.xml</ArqConfig>
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
