@@ -553,16 +553,6 @@ namespace Unimake.Business.DFe.Xml.NF3e
 #else
         public MotivoSubstituicao? MotSub { get; set; }
 #endif
-
-        #region  ShouldSerialize
-
-#if INTEROP
-        public bool ShouldSerializeMotSub() => MotSub != (MotivoSubstituicao)(-1);
-#else
-        public bool ShouldSerializeMotSub() => MotSub != null;
-#endif
-
-        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -658,7 +648,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("qUnidContrat")]
         public string QUnidContratField
         {
-            get => QUnidContrat.ToString("F2", CultureInfo.InvariantCulture);
+            get => QUnidContrat.ToString("F6", CultureInfo.InvariantCulture);
             set => QUnidContrat = Converter.ToDouble(value);
         }
     }
@@ -859,7 +849,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("vPotInst")]
         public string VPotInstField
         {
-            get => VPotInst.ToString("F2", CultureInfo.InvariantCulture);
+            get => VPotInst.ToString("F3", CultureInfo.InvariantCulture);
             set => VPotInst = Converter.ToDouble(value);
         }
 
@@ -872,7 +862,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("enerAloc")]
         public string EnerAlocField
         {
-            get => EnerAloc.ToString("F2", CultureInfo.InvariantCulture);
+            get => EnerAloc.ToString("F3", CultureInfo.InvariantCulture);
             set => EnerAloc = Converter.ToDouble(value);
         }
 
@@ -897,7 +887,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("vSaldAnt")]
         public string VSaldAntField
         {
-            get => VSaldAnt.ToString("F2", CultureInfo.InvariantCulture);
+            get => VSaldAnt.ToString("F3", CultureInfo.InvariantCulture);
             set => VSaldAnt = Converter.ToDouble(value);
         }
 
@@ -907,7 +897,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("vCredExpirado")]
         public string VCredExpiradoField
         {
-            get => VCredExpirado.ToString("F2", CultureInfo.InvariantCulture);
+            get => VCredExpirado.ToString("F3", CultureInfo.InvariantCulture);
             set => VCredExpirado = Converter.ToDouble(value);
         }
 
@@ -917,7 +907,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("vSaldAtual")]
         public string VSaldAtualField
         {
-            get => VSaldAtual.ToString("F2", CultureInfo.InvariantCulture);
+            get => VSaldAtual.ToString("F3", CultureInfo.InvariantCulture);
             set => VSaldAtual = Converter.ToDouble(value);
         }
 
@@ -927,7 +917,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("vCredExpirar")]
         public string VCredExpirarField
         {
-            get => VCredExpirar.ToString("F2", CultureInfo.InvariantCulture);
+            get => VCredExpirar.ToString("F3", CultureInfo.InvariantCulture);
             set => VCredExpirar = Converter.ToDouble(value);
         }
 
@@ -1664,6 +1654,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
             get => VMedPerdaTran.ToString("F2", CultureInfo.InvariantCulture);
             set => VMedPerdaTran = Converter.ToDouble(value);
         }
+
         [XmlIgnore]
         public double VMedPerdaTec { get; set; }
 
@@ -1944,7 +1935,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public bool ShouldSerializePFCPField() => PFCP > 0;
         public bool ShouldSerializeVFCPField() => VFCP > 0;
         public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
-        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+        public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
 
         #endregion ShouldSerialize
     }
@@ -1974,7 +1965,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         #region ShouldSerialize
         public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
-        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+        public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
 
         #endregion ShouldSerialize
     }
@@ -2121,7 +2112,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         #region ShouldSerialize
         public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
-        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+        public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
 
         #endregion ShouldSerialize
     }
@@ -2201,7 +2192,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         #region ShouldSerialize
         public bool ShouldSerializeVICMSDesonField() => VICMSDeson > 0;
-        public bool SholdSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
+        public bool ShouldSerializeCBenef() => !string.IsNullOrEmpty(CBenef);
 
         #endregion ShouldSerialize
     }
