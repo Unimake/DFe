@@ -14627,19 +14627,19 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 
         /// </summary>
-        [XmlElement("3")]
+        [XmlEnum("3")]
         KVAr = 3,
 
         /// <summary>
         /// 
         /// </summary>
-        [XmlElement("4")]
+        [XmlEnum("4")]
         KVArh = 4,
 
         /// <summary>
         /// 
         /// </summary>
-        [XmlElement("5")]
+        [XmlEnum("5")]
         UN = 5,
     }
 
@@ -14837,46 +14837,90 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 01 – Tributável com alíquota básica
         /// </summary>
-        [XmlElement("01")]
+        [XmlEnum("01")]
         AliquotaBasica = 01,
 
         /// <summary>
         /// 02 – Tributável com alíquota diferenciada
         /// </summary>
-        [XmlElement("02")]
+        [XmlEnum("02")]
         AliquotaDiferenciada = 02,
 
         /// <summary>
         /// 06 – Tributável com alíquota erro
         /// </summary>
-        [XmlElement("06")]
+        [XmlEnum("06")]
         AliquotaComErro = 06,
 
         /// <summary>
         /// 07 – Operação isenta de contribuição
         /// </summary>
-        [XmlElement("07")]
+        [XmlEnum("07")]
         OperacaoIsenta = 07,
 
         /// <summary>
         /// 08 – Operação sem incidência da contribuição
         /// </summary>
-        [XmlElement("08")]
+        [XmlEnum("08")]
         OperacaoSemIncidencia = 08,
 
         /// <summary>
         /// 09 – Operação com suspensão da contribuição  
         /// </summary>
-        [XmlElement("09")]
+        [XmlEnum("09")]
         OperacaoComSuspensao = 09,
 
         /// <summary>
         /// 49 – Outras operações de saída
         /// </summary>
-        [XmlElement("49")]
+        [XmlEnum("49")]
         OutrasOperacoesDeSaida = 49,
     }
     #endregion CST - classificação Tributária do PIS
 
+    #region TpProc
+
+    /// <summary>
+    /// Tipo de Processo
+    /// </summary>
+    public enum TipoProcessoNF3e
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("0")]
+        SEFAZ = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("1")]
+        JusticaFederal = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlEnum("2")]
+        JusticaEstadual = 2
+    }
+    #endregion TpProc
+
+    #region TipoLancamento
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum TipoLancamento
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        D = 0,
+        /// <summary>
+        /// 
+        /// </summary>
+        C = 1,
+    }
+
+    #endregion TipoLancamento
     #endregion NF3e
 }
