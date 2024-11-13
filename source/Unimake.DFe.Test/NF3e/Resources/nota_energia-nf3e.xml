@@ -10,9 +10,9 @@
 			<cNF>2</cNF>
 			<cDV>3</cDV>
 			<dhEmi>12/12/2012 12:00:00 AM -02:00</dhEmi>
-			<tpEmis>1</tpEmis>
-			<nSiteAutoriz>nSiteAutoriz1</nSiteAutoriz>
-			<cMunFG>123123</cMunFG>
+			<tpEmis>2</tpEmis>
+			<nSiteAutoriz>0</nSiteAutoriz>
+			<cMunFG>1234567</cMunFG>
 			<finNF3e>1</finNF3e>
 			<verProc>verProc1</verProc>
 			<dhCont>12/12/2012 12:00:00 AM -02:00</dhCont>
@@ -28,10 +28,10 @@
 				<nro>nro1</nro>
 				<xCpl>xCpl1</xCpl>
 				<xBairro>xBairro1</xBairro>
-				<cMun>123123</cMun>
+				<cMun>1234567</cMun>
 				<xMun>xMun1</xMun>
 				<CEP>CEP1</CEP>
-				<UF>12</UF>
+				<UF>SP</UF>
 				<fone>fone1</fone>
 				<email>email1</email>
 			</enderEmit>
@@ -49,7 +49,7 @@
 				<nro>nro1</nro>
 				<xCpl>xCpl1</xCpl>
 				<xBairro>xBairro1</xBairro>
-				<cMun>123123</cMun>
+				<cMun>123453</cMun>
 				<xMun>xMun1</xMun>
 				<CEP>CEP1</CEP>
 				<UF>12</UF>
@@ -73,6 +73,14 @@
 		</acessante>
 		<gSub>
 			<chNF3e>chNF3e1</chNF3e>
+			<gNF>
+				<CNPJ>101234</CNPJ>
+				<serie>1</serie>
+				<nNFe>1</nNFe>
+				<competEmis>2024/05</competEmis>
+				<competApur>2024/05</competApur>
+				<hash115>101234</hash115>
+			</gNF>
 			<motSub>01</motSub>
 		</gSub>
 		<gJudic>
@@ -81,87 +89,83 @@
 		<gGrContrat nContrat="n1">
 			<tpGrContrat>1</tpGrContrat>
 			<tpPosTar>1</tpPosTar>
-			<qUnidContrat>2</qUnidContrat>
+			<qUnidContrat>22356.00</qUnidContrat>
 		</gGrContrat>
 		<gGrContrat nContrat="n2">
 			<tpGrContrat>2</tpGrContrat>
 			<tpPosTar>1</tpPosTar>
-			<qUnidContrat>2</qUnidContrat>
+			<qUnidContrat>22356.00</qUnidContrat>
 		</gGrContrat>
 		<gGrContrat nContrat="n3">
 			<tpGrContrat>3</tpGrContrat>
 			<tpPosTar>2</tpPosTar>
-			<qUnidContrat>2</qUnidContrat>
+			<qUnidContrat>22356.00</qUnidContrat>
 		</gGrContrat>
 		<gMed nMed="n1">
 			<idMedidor>idMedidor1</idMedidor>
-			<dMedAnt>12</dMedAnt>
-			<dMedAtu>13</dMedAtu>
+			<dMedAnt>2024-05-05</dMedAnt>
+			<dMedAtu>2024-05-05</dMedAtu>
 		</gMed>
 		<gMed nMed="n2">
 			<idMedidor>idMedidor2</idMedidor>
-			<dMedAnt>12</dMedAnt>
-			<dMedAtu>13</dMedAtu>
+			<dMedAnt>2024-06-06</dMedAnt>
+			<dMedAtu>2024-06-06</dMedAtu>
 		</gMed>
 		<gMed nMed="n3">
 			<idMedidor>idMedidor3</idMedidor>
-			<dMedAnt>12</dMedAnt>
-			<dMedAtu>13</dMedAtu>
+			<dMedAnt>2024-07-07</dMedAnt>
+			<dMedAtu>2024-07-07</dMedAtu>
 		</gMed>
 		<gSCEE>
 			<tpPartComp>1</tpPartComp>
 			<gConsumidor>
 				<idAcessGer>idAcessGer1</idAcessGer>
-				<vPotInst>vPotInst1</vPotInst>
+				<vPotInst>12345678.00</vPotInst>
 				<tpFonteEnergia>1</tpFonteEnergia>
-				<enerAloc>enerAloc1</enerAloc>
+				<enerAloc>101.00</enerAloc>
 				<tpPosTar>0</tpPosTar>
 			</gConsumidor>
 			<gConsumidor>
 				<idAcessGer>idAcessGer1</idAcessGer>
-				<vPotInst>vPotInst1</vPotInst>
+				<vPotInst>12345678.00</vPotInst>
 				<tpFonteEnergia>1</tpFonteEnergia>
-				<enerAloc>enerAloc1</enerAloc>
+				<enerAloc>101.00</enerAloc>
 				<tpPosTar>0</tpPosTar>
-			</gConsumidor>
-			<gConsumidor>
-				<idAcessGer>idAcessGer1</idAcessGer>
-				<vPotInst>vPotInst1</vPotInst>
-				<tpFonteEnergia>1</tpFonteEnergia>
-				<enerAloc>enerAloc1</enerAloc>
-				<tpPosTar>0</tpPosTar>
-			</gConsumidor>
-			<gConsumidor>
-				<idAcessGer>idAcessGer3</idAcessGer>
-				<vPotInst>vPotInst3</vPotInst>
-				<tpFonteEnergia>3</tpFonteEnergia>
-				<enerAloc>enerAloc7</enerAloc>
-				<tpPosTar>2</tpPosTar>
 			</gConsumidor>
 			<gSaldoCred>
 				<tpPosTar>0</tpPosTar>
-				<vSaldAnt>vSaldAnt1</vSaldAnt>
-				<vCredExpirado>vCredExpirado1</vCredExpirado>
-				<vSaldAtual>vSaldAtual1</vSaldAtual>
-				<vCredExpirar>vCredExpirar1</vCredExpirar>
-				<CompetExpirar>Compe1</CompetExpirar>
+				<vSaldAnt>123.45</vSaldAnt>
+				<vCredExpirado>123.45</vCredExpirado>
+				<vSaldAtual>123.45</vSaldAtual>
+				<vCredExpirar>123.45</vCredExpirar>
+				<CompetExpirar>2024/06</CompetExpirar>
 			</gSaldoCred>
 			<gSaldoCred>
 				<tpPosTar>1</tpPosTar>
-				<vSaldAnt>vSaldAnt2</vSaldAnt>
-				<vCredExpirado>vCredExpirado2</vCredExpirado>
-				<vSaldAtual>vSaldAtual2</vSaldAtual>
-				<vCredExpirar>vCredExpirar2</vCredExpirar>
-				<CompetExpirar>Compe2</CompetExpirar>
+				<vSaldAnt>123.45</vSaldAnt>
+				<vCredExpirado>123.45</vCredExpirado>
+				<vSaldAtual>123.45</vSaldAtual>
+				<vCredExpirar>123.45</vCredExpirar>
+				<CompetExpirar>2024/07</CompetExpirar>
 			</gSaldoCred>
-			<gSaldoCred>
-				<tpPosTar>2</tpPosTar>
-				<vSaldAnt>vSaldAnt3</vSaldAnt>
-				<vCredExpirado>vCredExpirado3</vCredExpirado>
-				<vSaldAtual>vSaldAtual3</vSaldAtual>
-				<vCredExpirar>vCredExpirar3</vCredExpirar>
-				<CompetExpirar>Compe3</CompetExpirar>
-			</gSaldoCred>
+			<gTipoSaldo nTipoSaldo="01">
+				<gSaldoCred>
+					<tpPosTar>1</tpPosTar>
+					<vSaldAnt>123.45</vSaldAnt>
+					<vCredExpirado>123.45</vCredExpirado>
+					<vSaldAtual>123.45</vSaldAtual>
+					<vCredExpirar>123.45</vCredExpirar>
+					<CompetExpirar>2024/07</CompetExpirar>
+				</gSaldoCred>
+				<gSaldoCred>
+					<tpPosTar>1</tpPosTar>
+					<vSaldAnt>123.45</vSaldAnt>
+					<vCredExpirado>123.45</vCredExpirado>
+					<vSaldAtual>123.45</vSaldAtual>
+					<vCredExpirar>123.45</vCredExpirar>
+					<CompetExpirar>2024/07</CompetExpirar>
+				</gSaldoCred>
+			</gTipoSaldo>
 		</gSCEE>
 		<NFdet chNF3eAnt="chNF3eAnt1" mod6HashAnt="AAECAwQFBgcICQoLDA0ODw==">
 			<det nItem="nItem1">
@@ -170,321 +174,882 @@
 					<motAjuste>1</motAjuste>
 				</gAjusteNF3eAnt>
 				<detItemAnt nItemAnt="nI1">
-					<vItem>vItem1</vItem>
-					<qFaturada>qFaturada1</qFaturada>
-					<vProd>vProd1</vProd>
-					<cClass>cClass1</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
+					<vItem>123.45</vItem>
+					<qFaturada>123.45</qFaturada>
+					<vProd>123.45</vProd>
+					<cClass>1</cClass>
+					<vBC>123.45</vBC>
+					<pICMS>123.45</pICMS>
+					<vICMS>123.45</vICMS>
+					<vFCP>123.45</vFCP>
+					<vBCST>123.45</vBCST>
+					<vICMSST>123.45</vICMSST>
+					<vFCPST>123.45</vFCPST>
+					<vPIS>123.45</vPIS>
+					<vPISEfet>123.45</vPISEfet>
+					<vCOFINS>123.45</vCOFINS>
+					<vCOFINSEfet>123.45</vCOFINSEfet>
 					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
+						<vRetPIS>123.45</vRetPIS>
+						<vRetCOFINS>123.45</vRetCOFINS>
+						<vRetCSLL>123.45</vRetCSLL>
+						<vBCIRRF>123.45</vBCIRRF>
+						<vIRRF>123.45</vIRRF>
 					</retTrib>
 					<indDevolucao>1</indDevolucao>
 				</detItemAnt>
+				<detItem nItemAnt="01">
+					<gTarif>
+						<dIniTarif>2024-05-05</dIniTarif>
+						<dFimTarif>2024-05-06</dFimTarif>
+						<tpAto>1</tpAto>
+						<nAto>123</nAto>
+						<anoAto>2024</anoAto>
+						<tpTarif>1</tpTarif>
+						<cPosTarif>0</cPosTarif>
+						<uMed>1</uMed>
+						<vTarifHom>112345678.00</vTarifHom>
+						<vTarifAplic>112345678.12</vTarifAplic>
+						<motDifTarif>01</motDifTarif>
+					</gTarif>
+					<gAdBand>
+						<dIniAdBand>2024-07-07</dIniAdBand>
+						<dFimAdBand>2024-07-08</dFimAdBand>
+						<tpBand>1</tpBand>
+						<vAdBand>123.45</vAdBand>
+						<vAdBandAplic>123.45</vAdBandAplic>
+						<motDifBand>01</motDifBand>
+					</gAdBand>
+					<prod>
+						<indOrigemQtd>1</indOrigemQtd>
+						<gMedicao>
+							<nMed>1</nMed>
+							<nContrat>1</nContrat>
+							<gMedida>
+								<tpGrMed>01</tpGrMed>
+								<cPosTarif>0</cPosTarif>
+								<uMed>1</uMed>
+								<vMedAnt>123.12</vMedAnt>
+								<vMedAtu>123.00</vMedAtu>
+								<vConst>123.00</vConst>
+								<vMed>123.00</vMed>
+								<pPerdaTran>123.45</pPerdaTran>
+								<vMedPerdaTran>123.00</vMedPerdaTran>
+								<vMedPerdaTec>123.00</vMedPerdaTec>
+							</gMedida>
+							<tpMotNaoLeitura>1</tpMotNaoLeitura>
+						</gMedicao>
+						<cProd>123456</cProd>
+						<xProd>PRODUTO TESTE</xProd>
+						<cClass>1</cClass>
+						<CFOP>1234</CFOP>
+						<uMed>1</uMed>
+						<qFaturada>123.45</qFaturada>
+						<vItem>123.45</vItem>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<indPrecoACL>1</indPrecoACL>
+					</prod>
+					<imposto>
+						<ICMS00>
+							<CST>00</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS00>
+						<ICMS10>
+							<CST>10</CST>
+							<vBCST>123.45</vBCST>
+							<pICMSST>123.45</pICMSST>
+							<vICMSST>123.45</vICMSST>
+							<pFCPST>123.44</pFCPST>
+							<vFCPST>123.45</vFCPST>
+						</ICMS10>
+						<ICMS20>
+							<CST>20</CST>
+							<pRedBC>123.45</pRedBC>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS20>
+						<ICMS40>
+							<CST>40</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS40>
+						<ICMS51>
+							<CST>51</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS51>
+						<ICMS60>
+							<CST>60</CST>
+							<vBCSTRet>123.45</vBCSTRet>
+							<pICMSSTRet>123.00</pICMSSTRet>
+							<vICMSSubstituto>123.45</vICMSSubstituto>
+							<vICMSSTRet>123.45</vICMSSTRet>
+							<vBCFCPSTRet>123.45</vBCFCPSTRet>
+							<pFCPSTRet>123.00</pFCPSTRet>
+							<vFCPSTRet>123.45</vFCPSTRet>
+							<pRedBCEfet>123.00</pRedBCEfet>
+							<vBCEfet>123.45</vBCEfet>
+							<pICMSEfet>123.00</pICMSEfet>
+							<vICMSEfet>123.45</vICMSEfet>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS60>
+						<ICMS90>
+							<CST>90</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS90>
+						<indSemCST>1</indSemCST>
+						<PIS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pPIS>123.00</pPIS>
+							<vPIS>123.45</vPIS>
+						</PIS>
+						<PISEfet>
+							<vBCPISEfet>123.45</vBCPISEfet>
+							<pPISEfet>123.00</pPISEfet>
+							<vPISEfet>123.45</vPISEfet>
+						</PISEfet>
+						<COFINS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pCOFINS>123.00</pCOFINS>
+							<vCOFINS>123.45</vCOFINS>
+						</COFINS>
+						<COFINSEfet>
+							<vBCCOFINSEfet>123.45</vBCCOFINSEfet>
+							<pCOFINSEfet>123.00</pCOFINSEfet>
+							<vCOFINSEfet>123.45</vCOFINSEfet>
+						</COFINSEfet>
+						<retTrib>
+							<vRetPIS>123.45</vRetPIS>
+							<vRetCOFINS>123.45</vRetCOFINS>
+							<vRetCSLL>123.45</vRetCSLL>
+							<vBCIRRF>123.45</vBCIRRF>
+							<vIRRF>123.45</vIRRF>
+						</retTrib>
+					</imposto>
+					<gProcRef>
+						<vItem>123.45</vItem>
+						<qFaturada>123.45</qFaturada>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<vBC>123.45</vBC>
+						<pICMS>123.45</pICMS>
+						<vICMS>123.45</vICMS>
+						<pFCP>123.00</pFCP>
+						<vFCP>123.45</vFCP>
+						<vBCST>123.45</vBCST>
+						<pICMSST>123.45</pICMSST>
+						<vICMSST>123.45</vICMSST>
+						<pFCPST>123.00</pFCPST>
+						<vFCPST>123.45</vFCPST>
+						<vPIS>123.45</vPIS>
+						<vPISEfet>123.45</vPISEfet>
+						<vCOFINS>123.45</vCOFINS>
+						<vCOFINSEfet>123.45</vCOFINSEfet>
+						<gProc>
+							<tpProc>0</tpProc>
+							<nProcesso>10</nProcesso>
+						</gProc>
+					</gProcRef>
+					<gContab>
+						<cContab>10123</cContab>
+						<xContab>DESCRICAO CONTA CONTABIL</xContab>
+						<vContab>123.45</vContab>
+						<tpLanc>D</tpLanc>
+					</gContab>
+					<infAdProd>TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE</infAdProd>
+				</detItem>
 			</det>
-			<det nItem="nItem2">
-				<gAjusteNF3eAnt>
-					<tpAjuste>2</tpAjuste>
-					<motAjuste>2</motAjuste>
-				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI2">
-					<vItem>vItem2</vItem>
-					<qFaturada>qFaturada2</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>cClass2</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
-					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
-					</retTrib>
-					<indDevolucao>1</indDevolucao>
-				</detItemAnt>
-			</det>
-			<det nItem="nItem3">
-				<gAjusteNF3eAnt>
-					<tpAjuste>3</tpAjuste>
-					<motAjuste>3</motAjuste>
-				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI3">
-					<vItem>0.00</vItem>
-					<qFaturada>0.00</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
-					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
-					</retTrib>
-					<indDevolucao>1</indDevolucao>
-				</detItemAnt>
-			</det>
-		</NFdet>
-		<NFdet chNF3eAnt="chNF3eAnt2" mod6HashAnt="AAECAwQFBgcICQoLDA0ODw==">
-			<det nItem="nItem4">
-				<gAjusteNF3eAnt>
-					<tpAjuste>4</tpAjuste>
-					<motAjuste>4</motAjuste>
-				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI4">
-					<vItem>0.00</vItem>
-					<qFaturada>qFaturada4</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
-					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
-					</retTrib>
-					<indDevolucao>1</indDevolucao>
-				</detItemAnt>
-			</det>
-			<det nItem="nItem5">
+			<det nItem="nItem1">
 				<gAjusteNF3eAnt>
 					<tpAjuste>1</tpAjuste>
-					<motAjuste>5</motAjuste>
-				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI5">
-					<vItem>0.00</vItem>
-					<qFaturada>0.00</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
-					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
-					</retTrib>
-					<indDevolucao>1</indDevolucao>
-				</detItemAnt>
-			</det>
-			<det nItem="nItem6">
-				<gAjusteNF3eAnt>
-					<tpAjuste>2</tpAjuste>
 					<motAjuste>1</motAjuste>
 				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI6">
-					<vItem>vItem6</vItem>
-					<qFaturada>0.00</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
+				<detItemAnt nItemAnt="nI1">
+					<vItem>123.45</vItem>
+					<qFaturada>123.45</qFaturada>
+					<vProd>123.45</vProd>
+					<cClass>1</cClass>
+					<vBC>123.45</vBC>
+					<pICMS>123.45</pICMS>
+					<vICMS>123.45</vICMS>
+					<vFCP>123.45</vFCP>
+					<vBCST>123.45</vBCST>
+					<vICMSST>123.45</vICMSST>
+					<vFCPST>123.45</vFCPST>
+					<vPIS>123.45</vPIS>
+					<vPISEfet>123.45</vPISEfet>
+					<vCOFINS>123.45</vCOFINS>
+					<vCOFINSEfet>123.45</vCOFINSEfet>
 					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
+						<vRetPIS>123.45</vRetPIS>
+						<vRetCOFINS>123.45</vRetCOFINS>
+						<vRetCSLL>123.45</vRetCSLL>
+						<vBCIRRF>123.45</vBCIRRF>
+						<vIRRF>123.45</vIRRF>
 					</retTrib>
 					<indDevolucao>1</indDevolucao>
 				</detItemAnt>
+				<detItem nItemAnt="01">
+					<gTarif>
+						<dIniTarif>2024-05-05</dIniTarif>
+						<dFimTarif>2024-05-06</dFimTarif>
+						<tpAto>1</tpAto>
+						<nAto>123</nAto>
+						<anoAto>2024</anoAto>
+						<tpTarif>1</tpTarif>
+						<cPosTarif>0</cPosTarif>
+						<uMed>1</uMed>
+						<vTarifHom>112345678.00</vTarifHom>
+						<vTarifAplic>112345678.00</vTarifAplic>
+						<motDifTarif>01</motDifTarif>
+					</gTarif>
+					<gAdBand>
+						<dIniAdBand>2024-07-07</dIniAdBand>
+						<dFimAdBand>2024-07-08</dFimAdBand>
+						<tpBand>1</tpBand>
+						<vAdBand>123.45</vAdBand>
+						<vAdBandAplic>123.45</vAdBandAplic>
+						<motDifBand>01</motDifBand>
+					</gAdBand>
+					<prod>
+						<indOrigemQtd>1</indOrigemQtd>
+						<gMedicao>
+							<nMed>1</nMed>
+							<nContrat>1</nContrat>
+							<gMedida>
+								<tpGrMed>01</tpGrMed>
+								<cPosTarif>0</cPosTarif>
+								<uMed>1</uMed>
+								<vMedAnt>123.00</vMedAnt>
+								<vMedAtu>123.00</vMedAtu>
+								<vConst>123.00</vConst>
+								<vMed>123.00</vMed>
+								<pPerdaTran>123.45</pPerdaTran>
+								<vMedPerdaTran>123.00</vMedPerdaTran>
+								<vMedPerdaTec>123.00</vMedPerdaTec>
+							</gMedida>
+							<tpMotNaoLeitura>1</tpMotNaoLeitura>
+						</gMedicao>
+						<cProd>123456</cProd>
+						<xProd>PRODUTO TESTE</xProd>
+						<cClass>1</cClass>
+						<CFOP>1234</CFOP>
+						<uMed>1</uMed>
+						<qFaturada>123.45</qFaturada>
+						<vItem>123.45</vItem>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<indPrecoACL>1</indPrecoACL>
+					</prod>
+					<imposto>
+						<ICMS00>
+							<CST>00</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS00>
+						<ICMS10>
+							<CST>10</CST>
+							<vBCST>123.45</vBCST>
+							<pICMSST>123.45</pICMSST>
+							<vICMSST>123.45</vICMSST>
+							<pFCPST>123.00</pFCPST>
+							<vFCPST>123.45</vFCPST>
+						</ICMS10>
+						<ICMS20>
+							<CST>20</CST>
+							<pRedBC>123.45</pRedBC>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS20>
+						<ICMS40>
+							<CST>40</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS40>
+						<ICMS51>
+							<CST>51</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS51>
+						<ICMS60>
+							<CST>60</CST>
+							<vBCSTRet>123.45</vBCSTRet>
+							<pICMSSTRet>123.00</pICMSSTRet>
+							<vICMSSubstituto>123.45</vICMSSubstituto>
+							<vICMSSTRet>123.45</vICMSSTRet>
+							<vBCFCPSTRet>123.45</vBCFCPSTRet>
+							<pFCPSTRet>123.00</pFCPSTRet>
+							<vFCPSTRet>123.45</vFCPSTRet>
+							<pRedBCEfet>123.00</pRedBCEfet>
+							<vBCEfet>123.45</vBCEfet>
+							<pICMSEfet>123.00</pICMSEfet>
+							<vICMSEfet>123.45</vICMSEfet>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS60>
+						<ICMS90>
+							<CST>90</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS90>
+						<indSemCST>1</indSemCST>
+						<PIS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pPIS>123.00</pPIS>
+							<vPIS>123.45</vPIS>
+						</PIS>
+						<PISEfet>
+							<vBCPISEfet>123.45</vBCPISEfet>
+							<pPISEfet>123.00</pPISEfet>
+							<vPISEfet>123.45</vPISEfet>
+						</PISEfet>
+						<COFINS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pCOFINS>123.00</pCOFINS>
+							<vCOFINS>123.45</vCOFINS>
+						</COFINS>
+						<COFINSEfet>
+							<vBCCOFINSEfet>123.45</vBCCOFINSEfet>
+							<pCOFINSEfet>123.00</pCOFINSEfet>
+							<vCOFINSEfet>123.45</vCOFINSEfet>
+						</COFINSEfet>
+						<retTrib>
+							<vRetPIS>123.45</vRetPIS>
+							<vRetCOFINS>123.45</vRetCOFINS>
+							<vRetCSLL>123.45</vRetCSLL>
+							<vBCIRRF>123.45</vBCIRRF>
+							<vIRRF>123.45</vIRRF>
+						</retTrib>
+					</imposto>
+					<gProcRef>
+						<vItem>123.45</vItem>
+						<qFaturada>123.45</qFaturada>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<vBC>123.45</vBC>
+						<pICMS>123.45</pICMS>
+						<vICMS>123.45</vICMS>
+						<pFCP>123.00</pFCP>
+						<vFCP>123.45</vFCP>
+						<vBCST>123.45</vBCST>
+						<pICMSST>123.45</pICMSST>
+						<vICMSST>123.45</vICMSST>
+						<pFCPST>123.00</pFCPST>
+						<vFCPST>123.45</vFCPST>
+						<vPIS>123.45</vPIS>
+						<vPISEfet>123.45</vPISEfet>
+						<vCOFINS>123.45</vCOFINS>
+						<vCOFINSEfet>123.45</vCOFINSEfet>
+						<gProc>
+							<tpProc>0</tpProc>
+							<nProcesso>10</nProcesso>
+						</gProc>
+					</gProcRef>
+					<gContab>
+						<cContab>10123</cContab>
+						<xContab>DESCRICAO CONTA CONTABIL</xContab>
+						<vContab>123.45</vContab>
+						<tpLanc>D</tpLanc>
+					</gContab>
+					<infAdProd>TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE</infAdProd>
+				</detItem>
 			</det>
 		</NFdet>
-		<NFdet chNF3eAnt="chNF3eAnt3" mod6HashAnt="AAECAwQFBgcICQoLDA0ODw==">
-			<det nItem="nItem7">
-				<gAjusteNF3eAnt>
-					<tpAjuste>3</tpAjuste>
-					<motAjuste>2</motAjuste>
-				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI7">
-					<vItem>0.00</vItem>
-					<qFaturada>0.00</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
-					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
-					</retTrib>
-					<indDevolucao>1</indDevolucao>
-				</detItemAnt>
-			</det>
-			<det nItem="nItem8">
-				<gAjusteNF3eAnt>
-					<tpAjuste>4</tpAjuste>
-					<motAjuste>3</motAjuste>
-				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI8">
-					<vItem>0.00</vItem>
-					<qFaturada>0.00</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
-					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
-					</retTrib>
-					<indDevolucao>1</indDevolucao>
-				</detItemAnt>
-			</det>
-			<det nItem="nItem9">
+		<NFdet chNF3eAnt="chNF3eAnt1" mod6HashAnt="AAECAwQFBgcICQoLDA0ODw==">
+			<det nItem="nItem1">
 				<gAjusteNF3eAnt>
 					<tpAjuste>1</tpAjuste>
-					<motAjuste>4</motAjuste>
+					<motAjuste>1</motAjuste>
 				</gAjusteNF3eAnt>
-				<detItemAnt nItemAnt="nI9">
-					<vItem>0.00</vItem>
-					<qFaturada>0.00</qFaturada>
-					<vProd>0.00</vProd>
-					<cClass>0.00</cClass>
-					<vBC>0.00</vBC>
-					<pICMS>0.00</pICMS>
-					<vICMS>0.00</vICMS>
-					<vFCP>0.00</vFCP>
-					<vBCST>0.00</vBCST>
-					<vICMSST>0.00</vICMSST>
-					<vFCPST>0.00</vFCPST>
-					<vPIS>0.00</vPIS>
-					<vPISEfet>0.00</vPISEfet>
-					<vCOFINS>0.00</vCOFINS>
-					<vCOFINSEfet>0.00</vCOFINSEfet>
+				<detItemAnt nItemAnt="nI1">
+					<vItem>123.45</vItem>
+					<qFaturada>123.45</qFaturada>
+					<vProd>123.45</vProd>
+					<cClass>1</cClass>
+					<vBC>123.45</vBC>
+					<pICMS>123.45</pICMS>
+					<vICMS>123.45</vICMS>
+					<vFCP>123.45</vFCP>
+					<vBCST>123.45</vBCST>
+					<vICMSST>123.45</vICMSST>
+					<vFCPST>123.45</vFCPST>
+					<vPIS>123.45</vPIS>
+					<vPISEfet>123.45</vPISEfet>
+					<vCOFINS>123.45</vCOFINS>
+					<vCOFINSEfet>123.45</vCOFINSEfet>
 					<retTrib>
-						<vRetPIS>0.00</vRetPIS>
-						<vRetCofins>0.00</vRetCofins>
-						<vRetCSLL>0.00</vRetCSLL>
-						<vBCIRRF>0.00</vBCIRRF>
-						<vIRRF>0.00</vIRRF>
+						<vRetPIS>123.45</vRetPIS>
+						<vRetCOFINS>123.45</vRetCOFINS>
+						<vRetCSLL>123.45</vRetCSLL>
+						<vBCIRRF>123.45</vBCIRRF>
+						<vIRRF>123.45</vIRRF>
 					</retTrib>
 					<indDevolucao>1</indDevolucao>
 				</detItemAnt>
+				<detItem nItemAnt="01">
+					<gTarif>
+						<dIniTarif>2024-05-05</dIniTarif>
+						<dFimTarif>2024-05-06</dFimTarif>
+						<tpAto>1</tpAto>
+						<nAto>123</nAto>
+						<anoAto>2024</anoAto>
+						<tpTarif>1</tpTarif>
+						<cPosTarif>0</cPosTarif>
+						<uMed>1</uMed>
+						<vTarifHom>112345678.00</vTarifHom>
+						<vTarifAplic>112345678.00</vTarifAplic>
+						<motDifTarif>01</motDifTarif>
+					</gTarif>
+					<gAdBand>
+						<dIniAdBand>2024-07-07</dIniAdBand>
+						<dFimAdBand>2024-07-08</dFimAdBand>
+						<tpBand>1</tpBand>
+						<vAdBand>123.45</vAdBand>
+						<vAdBandAplic>123.45</vAdBandAplic>
+						<motDifBand>01</motDifBand>
+					</gAdBand>
+					<prod>
+						<indOrigemQtd>1</indOrigemQtd>
+						<gMedicao>
+							<nMed>1</nMed>
+							<nContrat>1</nContrat>
+							<gMedida>
+								<tpGrMed>01</tpGrMed>
+								<cPosTarif>0</cPosTarif>
+								<uMed>1</uMed>
+								<vMedAnt>123.00</vMedAnt>
+								<vMedAtu>123.00</vMedAtu>
+								<vConst>123.00</vConst>
+								<vMed>123.00</vMed>
+								<pPerdaTran>123.45</pPerdaTran>
+								<vMedPerdaTran>123.00</vMedPerdaTran>
+								<vMedPerdaTec>123.00</vMedPerdaTec>
+							</gMedida>
+							<tpMotNaoLeitura>1</tpMotNaoLeitura>
+						</gMedicao>
+						<cProd>123456</cProd>
+						<xProd>PRODUTO TESTE</xProd>
+						<cClass>1</cClass>
+						<CFOP>1234</CFOP>
+						<uMed>1</uMed>
+						<qFaturada>123.45</qFaturada>
+						<vItem>123.45</vItem>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<indPrecoACL>1</indPrecoACL>
+					</prod>
+					<imposto>
+						<ICMS00>
+							<CST>00</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS00>
+						<ICMS10>
+							<CST>10</CST>
+							<vBCST>123.45</vBCST>
+							<pICMSST>123.45</pICMSST>
+							<vICMSST>123.45</vICMSST>
+							<pFCPST>123.00</pFCPST>
+							<vFCPST>123.45</vFCPST>
+						</ICMS10>
+						<ICMS20>
+							<CST>20</CST>
+							<pRedBC>123.45</pRedBC>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS20>
+						<ICMS40>
+							<CST>40</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS40>
+						<ICMS51>
+							<CST>51</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS51>
+						<ICMS60>
+							<CST>60</CST>
+							<vBCSTRet>123.45</vBCSTRet>
+							<pICMSSTRet>123.00</pICMSSTRet>
+							<vICMSSubstituto>123.45</vICMSSubstituto>
+							<vICMSSTRet>123.45</vICMSSTRet>
+							<vBCFCPSTRet>123.45</vBCFCPSTRet>
+							<pFCPSTRet>123.00</pFCPSTRet>
+							<vFCPSTRet>123.45</vFCPSTRet>
+							<pRedBCEfet>123.00</pRedBCEfet>
+							<vBCEfet>123.45</vBCEfet>
+							<pICMSEfet>123.00</pICMSEfet>
+							<vICMSEfet>123.45</vICMSEfet>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS60>
+						<ICMS90>
+							<CST>90</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS90>
+						<indSemCST>1</indSemCST>
+						<PIS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pPIS>123.00</pPIS>
+							<vPIS>123.45</vPIS>
+						</PIS>
+						<PISEfet>
+							<vBCPISEfet>123.45</vBCPISEfet>
+							<pPISEfet>123.00</pPISEfet>
+							<vPISEfet>123.45</vPISEfet>
+						</PISEfet>
+						<COFINS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pCOFINS>123.00</pCOFINS>
+							<vCOFINS>123.45</vCOFINS>
+						</COFINS>
+						<COFINSEfet>
+							<vBCCOFINSEfet>123.45</vBCCOFINSEfet>
+							<pCOFINSEfet>123.00</pCOFINSEfet>
+							<vCOFINSEfet>123.45</vCOFINSEfet>
+						</COFINSEfet>
+						<retTrib>
+							<vRetPIS>123.45</vRetPIS>
+							<vRetCOFINS>123.45</vRetCOFINS>
+							<vRetCSLL>123.45</vRetCSLL>
+							<vBCIRRF>123.45</vBCIRRF>
+							<vIRRF>123.45</vIRRF>
+						</retTrib>
+					</imposto>
+					<gProcRef>
+						<vItem>123.45</vItem>
+						<qFaturada>123.45</qFaturada>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<vBC>123.45</vBC>
+						<pICMS>123.45</pICMS>
+						<vICMS>123.45</vICMS>
+						<pFCP>123.00</pFCP>
+						<vFCP>123.45</vFCP>
+						<vBCST>123.45</vBCST>
+						<pICMSST>123.45</pICMSST>
+						<vICMSST>123.45</vICMSST>
+						<pFCPST>123.00</pFCPST>
+						<vFCPST>123.45</vFCPST>
+						<vPIS>123.45</vPIS>
+						<vPISEfet>123.45</vPISEfet>
+						<vCOFINS>123.45</vCOFINS>
+						<vCOFINSEfet>123.45</vCOFINSEfet>
+						<gProc>
+							<tpProc>0</tpProc>
+							<nProcesso>10</nProcesso>
+						</gProc>
+					</gProcRef>
+					<gContab>
+						<cContab>10123</cContab>
+						<xContab>DESCRICAO CONTA CONTABIL</xContab>
+						<vContab>123.45</vContab>
+						<tpLanc>D</tpLanc>
+					</gContab>
+					<infAdProd>TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE</infAdProd>
+				</detItem>
+			</det>
+			<det nItem="nItem1">
+				<gAjusteNF3eAnt>
+					<tpAjuste>1</tpAjuste>
+					<motAjuste>1</motAjuste>
+				</gAjusteNF3eAnt>
+				<detItemAnt nItemAnt="nI1">
+					<vItem>123.45</vItem>
+					<qFaturada>123.45</qFaturada>
+					<vProd>123.45</vProd>
+					<cClass>1</cClass>
+					<vBC>123.45</vBC>
+					<pICMS>123.45</pICMS>
+					<vICMS>123.45</vICMS>
+					<vFCP>123.45</vFCP>
+					<vBCST>123.45</vBCST>
+					<vICMSST>123.45</vICMSST>
+					<vFCPST>123.45</vFCPST>
+					<vPIS>123.45</vPIS>
+					<vPISEfet>123.45</vPISEfet>
+					<vCOFINS>123.45</vCOFINS>
+					<vCOFINSEfet>123.45</vCOFINSEfet>
+					<retTrib>
+						<vRetPIS>123.45</vRetPIS>
+						<vRetCOFINS>123.45</vRetCOFINS>
+						<vRetCSLL>123.45</vRetCSLL>
+						<vBCIRRF>123.45</vBCIRRF>
+						<vIRRF>123.45</vIRRF>
+					</retTrib>
+					<indDevolucao>1</indDevolucao>
+				</detItemAnt>
+				<detItem nItemAnt="01">
+					<gTarif>
+						<dIniTarif>2024-05-05</dIniTarif>
+						<dFimTarif>2024-05-06</dFimTarif>
+						<tpAto>1</tpAto>
+						<nAto>123</nAto>
+						<anoAto>2024</anoAto>
+						<tpTarif>1</tpTarif>
+						<cPosTarif>0</cPosTarif>
+						<uMed>1</uMed>
+						<vTarifHom>112345678.00</vTarifHom>
+						<vTarifAplic>112345678.00</vTarifAplic>
+						<motDifTarif>01</motDifTarif>
+					</gTarif>
+					<gAdBand>
+						<dIniAdBand>2024-07-07</dIniAdBand>
+						<dFimAdBand>2024-07-08</dFimAdBand>
+						<tpBand>1</tpBand>
+						<vAdBand>123.45</vAdBand>
+						<vAdBandAplic>123.45</vAdBandAplic>
+						<motDifBand>01</motDifBand>
+					</gAdBand>
+					<prod>
+						<indOrigemQtd>1</indOrigemQtd>
+						<gMedicao>
+							<nMed>1</nMed>
+							<nContrat>1</nContrat>
+							<gMedida>
+								<tpGrMed>01</tpGrMed>
+								<cPosTarif>0</cPosTarif>
+								<uMed>1</uMed>
+								<vMedAnt>123.00</vMedAnt>
+								<vMedAtu>123.00</vMedAtu>
+								<vConst>123.00</vConst>
+								<vMed>123.00</vMed>
+								<pPerdaTran>123.45</pPerdaTran>
+								<vMedPerdaTran>123.00</vMedPerdaTran>
+								<vMedPerdaTec>123.00</vMedPerdaTec>
+							</gMedida>
+							<tpMotNaoLeitura>1</tpMotNaoLeitura>
+						</gMedicao>
+						<cProd>123456</cProd>
+						<xProd>PRODUTO TESTE</xProd>
+						<cClass>1</cClass>
+						<CFOP>1234</CFOP>
+						<uMed>1</uMed>
+						<qFaturada>123.45</qFaturada>
+						<vItem>123.45</vItem>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<indPrecoACL>1</indPrecoACL>
+					</prod>
+					<imposto>
+						<ICMS00>
+							<CST>00</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS00>
+						<ICMS10>
+							<CST>10</CST>
+							<vBCST>123.45</vBCST>
+							<pICMSST>123.45</pICMSST>
+							<vICMSST>123.45</vICMSST>
+							<pFCPST>123.00</pFCPST>
+							<vFCPST>123.45</vFCPST>
+						</ICMS10>
+						<ICMS20>
+							<CST>20</CST>
+							<pRedBC>123.45</pRedBC>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS20>
+						<ICMS40>
+							<CST>40</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS40>
+						<ICMS51>
+							<CST>51</CST>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS51>
+						<ICMS60>
+							<CST>60</CST>
+							<vBCSTRet>123.45</vBCSTRet>
+							<pICMSSTRet>123.00</pICMSSTRet>
+							<vICMSSubstituto>123.45</vICMSSubstituto>
+							<vICMSSTRet>123.45</vICMSSTRet>
+							<vBCFCPSTRet>123.45</vBCFCPSTRet>
+							<pFCPSTRet>123.00</pFCPSTRet>
+							<vFCPSTRet>123.45</vFCPSTRet>
+							<pRedBCEfet>123.00</pRedBCEfet>
+							<vBCEfet>123.45</vBCEfet>
+							<pICMSEfet>123.00</pICMSEfet>
+							<vICMSEfet>123.45</vICMSEfet>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+						</ICMS60>
+						<ICMS90>
+							<CST>90</CST>
+							<vBC>123.45</vBC>
+							<pICMS>123.45</pICMS>
+							<vICMS>123.45</vICMS>
+							<vICMSDeson>123.45</vICMSDeson>
+							<cBenef>10</cBenef>
+							<pFCP>123.00</pFCP>
+							<vFCP>123.45</vFCP>
+						</ICMS90>
+						<indSemCST>1</indSemCST>
+						<PIS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pPIS>123.00</pPIS>
+							<vPIS>123.45</vPIS>
+						</PIS>
+						<PISEfet>
+							<vBCPISEfet>123.45</vBCPISEfet>
+							<pPISEfet>123.00</pPISEfet>
+							<vPISEfet>123.45</vPISEfet>
+						</PISEfet>
+						<COFINS>
+							<CST>01</CST>
+							<vBC>123.45</vBC>
+							<pCOFINS>123.00</pCOFINS>
+							<vCOFINS>123.45</vCOFINS>
+						</COFINS>
+						<COFINSEfet>
+							<vBCCOFINSEfet>123.45</vBCCOFINSEfet>
+							<pCOFINSEfet>123.00</pCOFINSEfet>
+							<vCOFINSEfet>123.45</vCOFINSEfet>
+						</COFINSEfet>
+						<retTrib>
+							<vRetPIS>123.45</vRetPIS>
+							<vRetCOFINS>123.45</vRetCOFINS>
+							<vRetCSLL>123.45</vRetCSLL>
+							<vBCIRRF>123.45</vBCIRRF>
+							<vIRRF>123.45</vIRRF>
+						</retTrib>
+					</imposto>
+					<gProcRef>
+						<vItem>123.45</vItem>
+						<qFaturada>123.45</qFaturada>
+						<vProd>123.45</vProd>
+						<indDevolucao>1</indDevolucao>
+						<vBC>123.45</vBC>
+						<pICMS>123.45</pICMS>
+						<vICMS>123.45</vICMS>
+						<pFCP>123.00</pFCP>
+						<vFCP>123.45</vFCP>
+						<vBCST>123.45</vBCST>
+						<pICMSST>123.45</pICMSST>
+						<vICMSST>123.45</vICMSST>
+						<pFCPST>123.00</pFCPST>
+						<vFCPST>123.45</vFCPST>
+						<vPIS>123.45</vPIS>
+						<vPISEfet>123.45</vPISEfet>
+						<vCOFINS>123.45</vCOFINS>
+						<vCOFINSEfet>123.45</vCOFINSEfet>
+						<gProc>
+							<tpProc>0</tpProc>
+							<nProcesso>10</nProcesso>
+						</gProc>
+					</gProcRef>
+					<gContab>
+						<cContab>10123</cContab>
+						<xContab>DESCRICAO CONTA CONTABIL</xContab>
+						<vContab>123.45</vContab>
+						<tpLanc>D</tpLanc>
+					</gContab>
+					<infAdProd>TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE</infAdProd>
+				</detItem>
 			</det>
 		</NFdet>
 		<total>
-			<vProd>vProd1</vProd>
+			<vProd>123.45</vProd>
 			<ICMSTot>
-				<vBC>0.00</vBC>
-				<vICMS>0.00</vICMS>
-				<vICMSDeson>0.00</vICMSDeson>
-				<vFCP>0.00</vFCP>
-				<vBCST>0.00</vBCST>
-				<vST>0.00</vST>
-				<vFCPST>0.00</vFCPST>
+				<vBC>123.45</vBC>
+				<vICMS>123.45</vICMS>
+				<vICMSDeson>123.45</vICMSDeson>
+				<vFCP>123.45</vFCP>
+				<vBCST>123.45</vBCST>
+				<vST>123.45</vST>
+				<vFCPST>123.45</vFCPST>
 			</ICMSTot>
 			<vRetTribTot>
-				<vRetPIS>0.00</vRetPIS>
-				<vRetCofins>0.00</vRetCofins>
-				<vRetCSLL>0.00</vRetCSLL>
-				<vIRRF>0.00</vIRRF>
+				<vRetPIS>123.45</vRetPIS>
+				<vRetCOFINS>123.45</vRetCOFINS>
+				<vRetCSLL>123.45</vRetCSLL>
+				<vIRRF>123.45</vIRRF>
 			</vRetTribTot>
-			<vCOFINS>0.00</vCOFINS>
-			<vCOFINSEfet>0.00</vCOFINSEfet>
-			<vPIS>0.00</vPIS>
-			<vPISEfet>0.00</vPISEfet>
-			<vNF>0.00</vNF>
+			<vCOFINS>123.45</vCOFINS>
+			<vCOFINSEfet>123.45</vCOFINSEfet>
+			<vPIS>123.45</vPIS>
+			<vPISEfet>123.45</vPISEfet>
+			<vNF>123.45</vNF>
 		</total>
 		<gFat>
-			<CompetFat>Compe1</CompetFat>
-			<dVencFat>12/12/2012 12:00:00 AM -02:00</dVencFat>
-			<dApresFat>12/12/2012 12:00:00 AM -02:00</dApresFat>
-			<dProxLeitura>12/12/2012 12:00:00 AM -02:00</dProxLeitura>
-			<nFat>nFat1</nFat>
-			<codBarras>1231231231231231</codBarras>
+			<CompetFat>2024/05</CompetFat>
+			<dVencFat>2012-12-12</dVencFat>
+			<dApresFat>2012-12-12</dApresFat>
+			<dProxLeitura>2012-12-12</dProxLeitura>
+			<nFat>123</nFat>
+			<codBarras>123.453123.4531231</codBarras>
 			<codDebAuto>codDebAuto1</codDebAuto>
+			<codBanco>12345</codBanco>
+			<codAgencia>10</codAgencia>
 			<enderCorresp>
 				<xLgr>xLgr1</xLgr>
 				<nro>nro1</nro>
 				<xCpl>xCpl1</xCpl>
 				<xBairro>xBairro1</xBairro>
-				<cMun>123123</cMun>
+				<cMun>123453</cMun>
 				<xMun>xMun1</xMun>
 				<CEP>CEP1</CEP>
 				<UF>12</UF>
@@ -499,207 +1064,46 @@
 			<gHistFat>
 				<xGrandFat>xGrandFat1</xGrandFat>
 				<gGrandFat>
-					<CompetFat>Compe1</CompetFat>
-					<vFat>0.00</vFat>
+					<CompetFat>2024/06</CompetFat>
+					<vFat>123.00</vFat>
 					<uMed>1</uMed>
 					<qtdDias>2</qtdDias>
 				</gGrandFat>
 				<gGrandFat>
-					<CompetFat>Compe2</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>2</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe3</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe4</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe5</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe6</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>2</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe7</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe8</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Compe9</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp10</CompetFat>
-					<vFat>0.00</vFat>
+					<CompetFat>2024/06</CompetFat>
+					<vFat>123.00</vFat>
 					<uMed>2</uMed>
 					<qtdDias>3</qtdDias>
 				</gGrandFat>
 			</gHistFat>
 			<gHistFat>
-				<xGrandFat>xGrandFat2</xGrandFat>
+				<xGrandFat>xGrandFat1</xGrandFat>
 				<gGrandFat>
-					<CompetFat>Comp11</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp12</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp13</CompetFat>
-					<vFat>0.00</vFat>
+					<CompetFat>2024/06</CompetFat>
+					<vFat>123.00</vFat>
 					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
+					<qtdDias>2</qtdDias>
 				</gGrandFat>
 				<gGrandFat>
-					<CompetFat>Comp14</CompetFat>
-					<vFat>0.00</vFat>
+					<CompetFat>2024/06</CompetFat>
+					<vFat>123.00</vFat>
 					<uMed>2</uMed>
 					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp15</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp16</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp17</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp18</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>2</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp19</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp20</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-			</gHistFat>
-			<gHistFat>
-				<xGrandFat>xGrandFat3</xGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp21</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp22</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>2</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp23</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp24</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp25</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp26</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>2</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp27</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>3</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp28</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>4</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp29</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>1</uMed>
-					<qtdDias>3</qtdDias>
-				</gGrandFat>
-				<gGrandFat>
-					<CompetFat>Comp30</CompetFat>
-					<vFat>0.00</vFat>
-					<uMed>2</uMed>
-					<qtdDias>123</qtdDias>
 				</gGrandFat>
 			</gHistFat>
 		</gANEEL>
 		<autXML>
 			<CNPJ>CNPJ1</CNPJ>
+			<CPF>101</CPF>
 		</autXML>
 		<autXML>
 			<CNPJ>CNPJ2</CNPJ>
-		</autXML>
-		<autXML>
-			<CNPJ>CNPJ3</CNPJ>
+			<CPF>101</CPF>
 		</autXML>
 		<infAdic>
 			<infAdFisco>infAdFisco1</infAdFisco>
 			<infCpl>infCpl1</infCpl>
 			<infCpl>infCpl2</infCpl>
-			<infCpl>infCpl3</infCpl>
 		</infAdic>
 		<gRespTec>
 			<CNPJ>CNPJ1</CNPJ>
