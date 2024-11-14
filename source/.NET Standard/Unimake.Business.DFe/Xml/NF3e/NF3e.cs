@@ -548,11 +548,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public GNF GNF { get; set; }
 
         [XmlElement("motSub")]
-#if INTEROP
-        public MotivoSubstituicao MotSub { get; set; } = (MotivoSubstituicao)(-1);
-#else
         public MotivoSubstituicao? MotSub { get; set; }
-#endif
     }
 
 #if INTEROP
