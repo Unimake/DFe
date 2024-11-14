@@ -89,17 +89,17 @@
 		<gGrContrat nContrat="n1">
 			<tpGrContrat>1</tpGrContrat>
 			<tpPosTar>1</tpPosTar>
-			<qUnidContrat>22356.00</qUnidContrat>
+			<qUnidContrat>22356.000000</qUnidContrat>
 		</gGrContrat>
 		<gGrContrat nContrat="n2">
 			<tpGrContrat>2</tpGrContrat>
 			<tpPosTar>1</tpPosTar>
-			<qUnidContrat>22356.00</qUnidContrat>
+			<qUnidContrat>22356.000000</qUnidContrat>
 		</gGrContrat>
 		<gGrContrat nContrat="n3">
 			<tpGrContrat>3</tpGrContrat>
 			<tpPosTar>2</tpPosTar>
-			<qUnidContrat>22356.00</qUnidContrat>
+			<qUnidContrat>22356.000000</qUnidContrat>
 		</gGrContrat>
 		<gMed nMed="n1">
 			<idMedidor>idMedidor1</idMedidor>
@@ -120,49 +120,49 @@
 			<tpPartComp>1</tpPartComp>
 			<gConsumidor>
 				<idAcessGer>idAcessGer1</idAcessGer>
-				<vPotInst>12345678.00</vPotInst>
+				<vPotInst>12345678.000</vPotInst>
 				<tpFonteEnergia>1</tpFonteEnergia>
-				<enerAloc>101.00</enerAloc>
+				<enerAloc>101.000</enerAloc>
 				<tpPosTar>0</tpPosTar>
 			</gConsumidor>
 			<gConsumidor>
 				<idAcessGer>idAcessGer1</idAcessGer>
-				<vPotInst>12345678.00</vPotInst>
+				<vPotInst>12345678.000</vPotInst>
 				<tpFonteEnergia>1</tpFonteEnergia>
-				<enerAloc>101.00</enerAloc>
+				<enerAloc>101.000</enerAloc>
 				<tpPosTar>0</tpPosTar>
 			</gConsumidor>
 			<gSaldoCred>
 				<tpPosTar>0</tpPosTar>
-				<vSaldAnt>123.45</vSaldAnt>
-				<vCredExpirado>123.45</vCredExpirado>
-				<vSaldAtual>123.45</vSaldAtual>
-				<vCredExpirar>123.45</vCredExpirar>
+				<vSaldAnt>123.453</vSaldAnt>
+				<vCredExpirado>123.435</vCredExpirado>
+				<vSaldAtual>123.435</vSaldAtual>
+				<vCredExpirar>123.425</vCredExpirar>
 				<CompetExpirar>2024/06</CompetExpirar>
 			</gSaldoCred>
 			<gSaldoCred>
 				<tpPosTar>1</tpPosTar>
-				<vSaldAnt>123.45</vSaldAnt>
-				<vCredExpirado>123.45</vCredExpirado>
-				<vSaldAtual>123.45</vSaldAtual>
-				<vCredExpirar>123.45</vCredExpirar>
+				<vSaldAnt>123.453</vSaldAnt>
+				<vCredExpirado>123.435</vCredExpirado>
+				<vSaldAtual>123.435</vSaldAtual>
+				<vCredExpirar>123.425</vCredExpirar>
 				<CompetExpirar>2024/07</CompetExpirar>
 			</gSaldoCred>
 			<gTipoSaldo nTipoSaldo="01">
 				<gSaldoCred>
 					<tpPosTar>1</tpPosTar>
-					<vSaldAnt>123.45</vSaldAnt>
-					<vCredExpirado>123.45</vCredExpirado>
-					<vSaldAtual>123.45</vSaldAtual>
-					<vCredExpirar>123.45</vCredExpirar>
+					<vSaldAnt>123.453</vSaldAnt>
+					<vCredExpirado>123.435</vCredExpirado>
+					<vSaldAtual>123.435</vSaldAtual>
+					<vCredExpirar>123.425</vCredExpirar>
 					<CompetExpirar>2024/07</CompetExpirar>
 				</gSaldoCred>
 				<gSaldoCred>
 					<tpPosTar>1</tpPosTar>
-					<vSaldAnt>123.45</vSaldAnt>
-					<vCredExpirado>123.45</vCredExpirado>
-					<vSaldAtual>123.45</vSaldAtual>
-					<vCredExpirar>123.45</vCredExpirar>
+					<vSaldAnt>123.453</vSaldAnt>
+					<vCredExpirado>123.435</vCredExpirado>
+					<vSaldAtual>123.435</vSaldAtual>
+					<vCredExpirar>123.425</vCredExpirar>
 					<CompetExpirar>2024/07</CompetExpirar>
 				</gSaldoCred>
 			</gTipoSaldo>

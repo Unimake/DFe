@@ -8,10 +8,10 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura>p:EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>p:LoteRps</TagLoteAtributoID>
+			<TagAssinatura>ns2:Rps</TagAssinatura>
+			<TagAtributoID>ns2:InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>ns4:EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>ns4:LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
@@ -29,8 +29,8 @@
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura>can:Pedido</TagLoteAssinatura>
-			<TagLoteAtributoID>tip:InfPedidoCancelamento</TagLoteAtributoID>
+			<TagLoteAssinatura>ns4:Pedido</TagLoteAssinatura>
+			<TagLoteAtributoID>ns2:InfPedidoCancelamento</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
@@ -46,8 +46,8 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>con:ConsultarLoteRpsEnvio</TagAssinatura>
-			<TagAtributoID>con:Protocolo</TagAtributoID>
+			<TagAssinatura>ns4:ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Protocolo</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -65,8 +65,8 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>con:ConsultarNfseRpsEnvio</TagAssinatura>
-			<TagAtributoID>con:Prestador</TagAtributoID>
+			<TagAssinatura>ns4:ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -84,8 +84,8 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>con:ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
-			<TagAtributoID>con:Prestador</TagAtributoID>
+			<TagAssinatura>ns4:ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -103,8 +103,8 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>con:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
-			<TagAtributoID>con:Consulente</TagAtributoID>
+			<TagAssinatura>ns4:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Consulente</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
