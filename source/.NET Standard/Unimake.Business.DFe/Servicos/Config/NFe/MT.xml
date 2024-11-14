@@ -43,6 +43,7 @@
 			<WebEnderecoProducao>https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro4</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4/consultaCadastro</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4/consultaCadastro</WebActionProducao>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cad="http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4"><soap:Header/><soap:Body><cad:consultaCadastro><cad:nfeDadosMsg>{xmlBody}</cad:nfeDadosMsg></cad:consultaCadastro></soap:Body></soap:Envelope>]]></WebSoapString>
 			<SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>

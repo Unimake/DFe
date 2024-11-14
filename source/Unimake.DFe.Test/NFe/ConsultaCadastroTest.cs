@@ -29,7 +29,7 @@ namespace Unimake.DFe.Test.NFe
         [InlineData(UFBrasil.ES, "00205696000354")]
         [InlineData(UFBrasil.GO, "36856904000160")]
         //        [InlineData(UFBrasil.MA)]
-        [InlineData(UFBrasil.MT, "18903380000130")]
+        [InlineData(UFBrasil.MT, "41952539000209")]
         [InlineData(UFBrasil.MS, "10656587000145")]
         [InlineData(UFBrasil.MG, "12088403000113")]
         //        [InlineData(UFBrasil.PA)]
