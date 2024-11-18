@@ -290,7 +290,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
-            get => DhEmi.ToString("dd/MM/yyyy hh:mm:ss tt zzz"); //12/12/2012 12:00:00 AM -02:00
+            get => DhEmi.ToString("yyyy-MM-ddTHH:mm:sszzz"); //12/12/2012 12:00:00 AM -02:00
 #if INTEROP
             set => DhEmi = DateTime.Parse(value);
 #else
@@ -323,7 +323,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("dhCont")]
         public string DhContField
         {
-            get => DhCont.ToString("dd/MM/yyyy hh:mm:ss tt zzz");
+            get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
 #if INTEROP
             set => DhCont = DateTime.Parse(value);
 #else
