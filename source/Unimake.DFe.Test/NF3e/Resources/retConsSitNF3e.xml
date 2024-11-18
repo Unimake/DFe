@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsSitNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<tpAmb>1</tpAmb>
+	<verAplic>verAplic1</verAplic>
+	<cStat>cStat1</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<cUF>11</cUF>
+	<protNF3e versao="1.00">
+		<any_element>anyType</any_element>
+	</protNF3e>
+	<procEventoNF3e versao="1.00">
+		<any_element>anyType</any_element>
+	</procEventoNF3e>
+	<procEventoNF3e versao="1.00">
+		<any_element>anyType</any_element>
+	</procEventoNF3e>
+	<procEventoNF3e versao="1.00">
+		<any_element>anyType</any_element>
+	</procEventoNF3e>
+</retConsSitNF3e>

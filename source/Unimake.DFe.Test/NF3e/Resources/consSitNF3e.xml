@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<consSitNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<tpAmb>1</tpAmb>
+	<xServ>CONSULTAR</xServ>
+	<chNF3e>chNF3e1</chNF3e>
+</consSitNF3e>
