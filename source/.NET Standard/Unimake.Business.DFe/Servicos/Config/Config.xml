@@ -1571,4 +1571,10 @@
 		<ArqConfig>LontrasSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4312906">
+		<Nome>Nova Bassano- RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>NovaBassanoRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
