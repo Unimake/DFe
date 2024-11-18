@@ -14,7 +14,9 @@ namespace Unimake.Business.DFe.Xml.NF3e
     [ProgId("Unimake.Business.DFe.Xml.NF3e.ProtNF3e")]
     [ComVisible(true)]
 #endif
-    public class ProtNF3e
+    [Serializable()]
+    [XmlRoot("protNF3e", Namespace = "http://www.portalfiscal.inf.br/nf3e", IsNullable = false)]
+    public class ProtNF3e : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
