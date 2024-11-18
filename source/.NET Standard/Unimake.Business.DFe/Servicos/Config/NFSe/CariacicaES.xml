@@ -4,7 +4,7 @@
     <RecepcionarLoteRps versao="2.03">
       <Descricao>Recepcionar Lote RPS</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -23,7 +23,7 @@
     <RecepcionarLoteRpsSincrono versao="2.03">
       <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/recepcionarLoteRpsSincronoRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -42,7 +42,7 @@
     <GerarNfse versao="2.03">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/gerarNfseRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -61,7 +61,7 @@
     <CancelarNfse versao="2.03">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/cancelarNfseRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -80,7 +80,7 @@
     <SubstituirNfse versao="2.03">
       <Descricao>Substituir nota fiscal de Serviço</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/substituirNfseRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -101,7 +101,7 @@
     <ConsultarLoteRps versao="2.03">
       <Descricao>Consulta lote RPS</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarLoteRpsRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -120,7 +120,7 @@
     <ConsultarNfsePorRps versao="2.03">
       <Descricao>Consulta NFSe por RPS</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorRpsRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -139,7 +139,7 @@
     <ConsultarNfseServicoPrestado versao="2.03">
       <Descricao>Consulta NFSe de serviços prestados</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoPrestadoRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -158,7 +158,7 @@
     <ConsultarNfseServicoTomado versao="2.03">
       <Descricao>Consulta NFSe de serviços tomados</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfseServicoTomadoRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -177,7 +177,7 @@
     <ConsultarNfseFaixa versao="2.03">
       <Descricao>Consulta NFSe por Faixa</Descricao>
       <WebEnderecoHomologacao></WebEnderecoHomologacao>
-      <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+       <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao>http://nfse.abrasf.org.br/Abrasf23/consultarNfsePorFaixaRequest</WebActionProducao>
       <SchemaArquivo></SchemaArquivo>
@@ -196,7 +196,7 @@
 	  <SubstituirNfse versao="2.03">
 		  <Descricao>Substituir nota fiscal de Serviço</Descricao>
 		  <WebEnderecoHomologacao></WebEnderecoHomologacao>
-		  <WebEnderecoProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23</WebEnderecoProducao>
+		   <WebEnderecoProducao>https://sistemas.cariacica.es.gov.br/tbw/services/Abrasf23?wsdl</WebEnderecoProducao>
 		  <WebActionHomologacao></WebActionHomologacao>
 		  <WebActionProducao>http://servicos.cariacica.es.gov.br:8080/tbw/services/Abrasf23?wsdl</WebActionProducao>
 		  <SchemaArquivo></SchemaArquivo>
