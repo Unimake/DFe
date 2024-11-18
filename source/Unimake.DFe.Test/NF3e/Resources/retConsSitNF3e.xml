@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<retConsSitNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+<retConsSitNF3e versao="1.00" xmlns="http://www.portalfiscal.inf.br/nf3e">
 	<tpAmb>1</tpAmb>
 	<verAplic>verAplic1</verAplic>
-	<cStat>cStat1</cStat>
+	<cStat>100</cStat>
 	<xMotivo>xMotivo1</xMotivo>
 	<cUF>11</cUF>
 	<protNF3e versao="1.00">
-		<any_element>anyType</any_element>
+		<infProt Id="ID1">
+			<tpAmb>1</tpAmb>
+			<verAplic>verAplic1</verAplic>
+			<chNF3e>chNF3e1</chNF3e>
+			<dhRecbto>dhRecbto1</dhRecbto>
+			<nProt>nProt1</nProt>
+			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
+			<cStat>cStat1</cStat>
+			<xMotivo>xMotivo1</xMotivo>
+		</infProt>
 	</protNF3e>
-	<procEventoNF3e versao="1.00">
-		<any_element>anyType</any_element>
-	</procEventoNF3e>
-	<procEventoNF3e versao="1.00">
-		<any_element>anyType</any_element>
-	</procEventoNF3e>
-	<procEventoNF3e versao="1.00">
-		<any_element>anyType</any_element>
+	<procEventoNF3e versao="1.00" xmlns="http://www.portalfiscal.inf.br/nf3e">
+		<eventoNF3e versao="versao1">
+			<infEvento Id="ID1">
+				<cOrgao>11</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>CNPJ1</CNPJ>
+				<chNF3e>chNF3e1</chNF3e>
+				<dhEvento>dhEvento1</dhEvento>
+				<tpEvento>tpEvento1</tpEvento>
+				<nSeqEvento>nSeqEvento1</nSeqEvento>
+				<detEvento versaoEvento="versaoEvento1">
+					<evCancNF3e xmlns="http://www.portalfiscal.inf.br/nf3e">
+						<descEvento>Cancelamento</descEvento>
+						<nProt>nProt1</nProt>
+						<xJust>xJust_________1</xJust>
+					</evCancNF3e>
+				</detEvento>
+			</infEvento>
+		</eventoNF3e>
 	</procEventoNF3e>
 </retConsSitNF3e>
