@@ -188,6 +188,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrDescCP { get; set; }
+
         [XmlElement("vrDescCP")]
         public string VrDescCPField
         {
@@ -201,6 +202,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCpSeg { get; set; }
+
         [XmlElement("vrCpSeg")]
         public string VrCpSegField
         {
@@ -253,6 +255,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double PercRedContrib { get; set; }
+
         [XmlElement("percRedContrib")]
         public string PercRedContribField
         {
@@ -264,13 +267,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string PercTransf { get; set; }
 
         [XmlElement("indTribFolhaPisCofins")]
-        public string IndTribFolhaPisCofins { get; set; }
+#if INTEROP
+        public SimNaoLetra IndTribFolhaPisCofins { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndTribFolhaPisCofins { get; set; }
+#endif
 
         [XmlElement("infoAtConc")]
         public InfoAtConc InfoAtConc { get; set; }
 
         #region ShouldSerialize
-
 
 #if INTEROP
         public bool ShouldSerializeIndCoop() => IndCoop != (IndCoop)(-1);
@@ -288,9 +294,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializePercTransfField() => !string.IsNullOrEmpty(PercTransf);
 
-        public bool ShouldSerializeIndTribFolhaPisCofins() => !string.IsNullOrEmpty(IndTribFolhaPisCofins);
+#if INTEROP
+        public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != null;
+#endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -309,6 +319,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double FatorMes { get; set; }
+
         [XmlElement("fatorMes")]
         public string FatorMesField
         {
@@ -325,6 +336,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double Fator13 { get; set; }
+
         [XmlElement("fator13")]
         public string Fator13Field
         {
@@ -537,6 +549,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double Fap { get; set; }
+
         [XmlElement("fap")]
         public string FapField
         {
@@ -551,6 +564,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double AliqRatAjust { get; set; }
+
         [XmlElement("aliqRatAjust")]
         public string AliqRatAjustField
         {
@@ -568,7 +582,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeCnpjResp() => !string.IsNullOrEmpty(CnpjResp);
 
-        public bool ShouldSerializeFapFIeld() => Fap > 0;
+        public bool ShouldSerializeFapField() => Fap > 0;
 
         public bool ShouldSerializeAliqRatAjustField() => AliqRatAjust > 0;
 
@@ -591,6 +605,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
         public double Fap { get; set; }
+
         [XmlElement("fap")]
         public string FapField
         {
@@ -604,6 +619,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double AliqRatAjust { get; set; }
+
         [XmlElement("aliqRatAjust")]
         public string AliqRatAjustField
         {
@@ -746,7 +762,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeCodTercsSusp() => !string.IsNullOrEmpty(CodTercsSusp);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -806,6 +822,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double Fap { get; set; }
+
         [XmlElement("fap")]
         public string FapField
         {
@@ -820,6 +837,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double AliqRatAjust { get; set; }
+
         [XmlElement("aliqRatAjust")]
         public string AliqRatAjustField
         {
@@ -858,6 +876,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp00 { get; set; }
+
         [XmlElement("vrBcCp00")]
         public string VrBcCp00Field
         {
@@ -873,6 +892,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp15 { get; set; }
+
         [XmlElement("vrBcCp15")]
         public string VrBcCp15Field
         {
@@ -887,6 +907,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp20 { get; set; }
+
         [XmlElement("vrBcCp20")]
         public string VrBcCp20FIeld
         {
@@ -901,6 +922,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp25 { get; set; }
+
         [XmlElement("vrBcCp25")]
         public string VrBcCp25Field
         {
@@ -914,6 +936,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp00 { get; set; }
+
         [XmlElement("vrSuspBcCp00")]
         public string VrSuspBcCp00Field
         {
@@ -930,6 +953,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp15 { get; set; }
+
         [XmlElement("vrSuspBcCp15")]
         public string VrSuspBcCp15Field
         {
@@ -946,6 +970,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp20 { get; set; }
+
         [XmlElement("vrSuspBcCp20")]
         public string VrSuspBcCp20Field
         {
@@ -961,6 +986,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp25 { get; set; }
+
         [XmlElement("vrSuspBcCp25")]
         public string VrSuspBcCp25Field
         {
@@ -975,6 +1001,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp00VA { get; set; }
+
         [XmlElement("vrBcCp00VA")]
         public string VrBcCp00VAField
         {
@@ -990,6 +1017,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp15VA { get; set; }
+
         [XmlElement("vrBcCp15VA")]
         public string VrBcCp15VAFIeld
         {
@@ -1005,6 +1033,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp20VA { get; set; }
+
         [XmlElement("vrBcCp20VA")]
         public string VrBcCp20VAField
         {
@@ -1020,6 +1049,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp25VA { get; set; }
+
         [XmlElement("vrBcCp25VA")]
         public string VrBcCp25VAField
         {
@@ -1034,6 +1064,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp00VA { get; set; }
+
         [XmlElement("vrSuspBcCp00VA")]
         public string VrSuspBcCp00VAField
         {
@@ -1050,6 +1081,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp15VA { get; set; }
+
         [XmlElement("vrSuspBcCp15VA")]
         public string VrSuspBcCp15VAField
         {
@@ -1066,6 +1098,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp20VA { get; set; }
+
         [XmlElement("vrSuspBcCp20VA")]
         public string VrSuspBcCp20VAFIeld
         {
@@ -1083,6 +1116,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspBcCp25VA { get; set; }
+
         [XmlElement("vrSuspBcCp25VA")]
         public string VrSuspBcCp25VAField
         {
@@ -1096,6 +1130,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrDescSest { get; set; }
+
         [XmlElement("vrDescSest")]
         public string VrDescSestField
         {
@@ -1109,6 +1144,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCalcSest { get; set; }
+
         [XmlElement("vrCalcSest")]
         public string VrCalcSestField
         {
@@ -1136,6 +1172,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCalcSenat { get; set; }
+
         [XmlElement("vrCalcSenat")]
         public string VrCalcSenatField
         {
@@ -1149,6 +1186,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSalFam { get; set; }
+
         [XmlElement("vrSalFam")]
         public string VrSalFamField
         {
@@ -1162,6 +1200,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSalMat { get; set; }
+
         [XmlElement("vrSalMat")]
         public string VrSalMatField
         {
@@ -1177,7 +1216,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeVrBcCp20VAField() => VrBcCp20VA > 0;
 
-        public bool ShouldSerializeVrBcCp25VAFIeld() => VrBcCp25VA > 0;
+        public bool ShouldSerializeVrBcCp25VAField() => VrBcCp25VA > 0;
 
         public bool ShouldSerializeVrSuspBcCp00VAField() => VrSuspBcCp00VA > 0;
 
@@ -1204,6 +1243,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp00 { get; set; }
+
         [XmlElement("vrBcCp00")]
         public string VrBcCp00FIeld
         {
@@ -1219,6 +1259,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp15 { get; set; }
+
         [XmlElement("vrBcCp15")]
         public string VrBcCp15Field
         {
@@ -1233,6 +1274,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp20 { get; set; }
+
         [XmlElement("vrBcCp20")]
         public string VrBcCp20Field
         {
@@ -1247,6 +1289,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp25 { get; set; }
+
         [XmlElement("vrBcCp25")]
         public string VrBcCp25Field
         {
@@ -1261,6 +1304,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcCp13 { get; set; }
+
         [XmlElement("vrBcCp13")]
         public string VrBcCp13Field
         {
@@ -1276,6 +1320,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrDescCP { get; set; }
+
         [XmlElement("vrDescCP")]
         public string VrDescCPField
         {
@@ -1311,6 +1356,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VlrAquis { get; set; }
+
         [XmlElement("vlrAquis")]
         public string VlrAquisField
         {
@@ -1325,6 +1371,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCPDescPR { get; set; }
+
         [XmlElement("vrCPDescPR")]
         public string VrCPDescPRField
         {
@@ -1338,6 +1385,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCPNRet { get; set; }
+
         [XmlElement("vrCPNRet")]
         public string VrCPNRetField
         {
@@ -1352,6 +1400,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRatNRet { get; set; }
+
         [XmlElement("vrRatNRet")]
         public string VrRatNRetField
         {
@@ -1366,6 +1415,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSenarNRet { get; set; }
+
         [XmlElement("vrSenarNRet")]
         public string VrSenarNRetField
         {
@@ -1379,6 +1429,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCPCalcPR { get; set; }
+
         [XmlElement("vrCPCalcPR")]
         public string VrCPCalcPRField
         {
@@ -1394,6 +1445,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRatDescPR { get; set; }
+
         [XmlElement("vrRatDescPR")]
         public string VrRatDescPRField
         {
@@ -1407,6 +1459,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRatCalcPR { get; set; }
+
         [XmlElement("vrRatCalcPR")]
         public string VrRatCalcPRField
         {
@@ -1420,6 +1473,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSenarDesc { get; set; }
+
         [XmlElement("vrSenarDesc")]
         public string VrSenarDescField
         {
@@ -1429,6 +1483,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
         public double VrSenarCalc { get; set; }
+
         [XmlElement("vrSenarCalc")]
         public string VrSenarCalcField
         {
@@ -1456,6 +1511,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrBcComPR { get; set; }
+
         [XmlElement("vrBcComPR")]
         public string VrBcComPRField
         {
@@ -1469,6 +1525,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCPSusp { get; set; }
+
         [XmlElement("vrCPSusp")]
         public string VrCPSuspField
         {
@@ -1482,6 +1539,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRatSusp { get; set; }
+
         [XmlElement("vrRatSusp")]
         public string VrRatSuspField
         {
@@ -1491,6 +1549,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlIgnore]
         public double VrSenarSusp { get; set; }
+
         [XmlElement("vrSenarSusp")]
         public string VrSenarSuspField
         {
@@ -1526,6 +1585,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCR { get; set; }
+
         [XmlElement("vrCR")]
         public string VrCRField
         {
@@ -1540,6 +1600,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSuspCR { get; set; }
+
         [XmlElement("vrSuspCR")]
         public string VrSuspCRField
         {
@@ -1572,6 +1633,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCR { get; set; }
+
         [XmlElement("vrCR")]
         public string VrCRField
         {
@@ -1584,6 +1646,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCRSusp { get; set; }
+
         [XmlElement("vrCRSusp")]
         public string VrSuspCRField
         {
@@ -1593,7 +1656,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeVrCRSuspFIeld() => VrCRSusp > 0;
+        public bool ShouldSerializeVrCRSuspField() => VrCRSusp > 0;
 
         #endregion ShouldSerialize
     }

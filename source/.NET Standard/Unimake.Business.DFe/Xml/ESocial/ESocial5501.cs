@@ -52,26 +52,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do evento.
-        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5501 IdeEvento { get; set; }
 
-        /// <summary>
-        /// Informações de identificação do empregador ou do contribuinte que prestou a informação
-        /// </summary>
         [XmlElement("ideEmpregador")]
-        public IdeEmpregador5501 IdeEmpregador { get; set; }
+        public IdeEmpregador IdeEmpregador { get; set; }
 
-        /// <summary>
-        /// Identificação do processo
-        /// </summary>
         [XmlElement("ideProc")]
         public IdeProc5501 IdeProc { get; set; }
     }
-
-    #region IdeEvento
 
     /// <summary>
     /// Informações de identificação do evento.
@@ -92,35 +81,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrRecArqBase")]
         public string NrRecArqBase { get; set; }
     }
-    #endregion IdeEvento
-
-    #region IdeEmpregador
-
-    /// <summary>
-    /// Informações de identificação do empregador ou do contribuinte que prestou a informação.
-    /// </summary>
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEmpregador5501")]
-    [ComVisible(true)]
-#endif
-    public class IdeEmpregador5501
-    {
-        /// <summary>
-        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
-        /// </summary>
-        [XmlElement("tpInsc")]
-        public TpInsc TpInsc { get; set; }
-
-        /// <summary>
-        /// Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado no campo ideEmpregador/tpInsc e conforme informado em S-1000.
-        /// </summary>
-        [XmlElement("nrInsc")]
-        public string NrInsc { get; set; }
-    }
-    #endregion IdeEmpregador
-
-    #region IdeProc5501
 
     /// <summary>
     /// Identificação do processo.
@@ -161,9 +121,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
-        /// <summary>
-        /// Identifica\u00e7\u00e3o do per\u00edodo e da base de c\u00e1lculo dos tributos referentes ao processo trabalhista.
-        /// </summary>
         [XmlElement("infoTributos")]
         public List<InfoTributos> InfoTributos { get; set; }
 #if INTEROP
@@ -202,9 +159,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetInfoTributosCount => (InfoTributos != null ? InfoTributos.Count : 0);
 #endif
-        /// <summary>
-        /// Informações de IRRF referentes ao processo trabalhista
-        /// </summary>
+
         [XmlElement("infoCRIRRF")]
         public List<InfoCRIRRF5501> InfoCRIRRF { get; set; }
 #if INTEROP
@@ -244,9 +199,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoCRIRRFCount => (InfoCRIRRF != null ? InfoCRIRRF.Count : 0);
 #endif
     }
-    #endregion IdeProc5501
-
-    #region InfoTributos
 
     /// <summary>
     /// Identificação do período e da base de cálculo dos tributos referentes ao processo trabalhista.
@@ -259,16 +211,26 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoTributos
     {
         /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência das informações.
+        /// Informar o mês/ano (formato AAAA-MM) de referência das informações
         /// </summary>
-        [XmlElement("perRef")]
-        public string PerRef { get; set; }
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerRef { get; set; }
+#else
+        public DateTimeOffset PerRef { get; set; }
+#endif
 
-        /// <summary>
-        ///  Informações das contribuições sociais devidas à
-        /// Previdência Social e Outras Entidades e Fundos,
-        /// consolidadas por perRef e por Código de Receita - CR.
-        /// </summary>
+        [XmlElement("perRef")]
+        public string PerRefField
+        {
+            get => PerRef.ToString("yyyy-MM");
+#if INTEROP
+            set => PerRef = DateTime.Parse(value);
+#else
+            set => PerRef = DateTimeOffset.Parse(value);
+#endif
+        }
+
         [XmlElement("infoCRContrib")]
         public List<InfoCRContrib5501> InfoCRContrib { get; set; }
 #if INTEROP
@@ -309,7 +271,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region InfoCRContrib
+    /// <summary>
+    /// Informações das contribuições sociais devidas à Previdência Social e Outras Entidades e Fundos, consolidadas por perRef e por Código de Receita - CR
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRContrib5501")]
@@ -317,6 +281,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoCRContrib5501
     {
+        /// <summary>
+        /// Código de Receita - CR relativo a contribuições sociais devidas à Previdência Social e a 
+        /// Outras Entidades e Fundos (Terceiros), conforme legislação em vigor na competência
+        /// </summary>
         [XmlElement("tpCR")]
         public string TpCR { get; set; }
 
@@ -328,6 +296,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCR { get; set; }
+
         [XmlElement("vrCR")]
         public string VrCRField
         {
@@ -335,11 +304,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrCR = Converter.ToDouble(value);
         }
     }
-
-    #endregion InfoCRContrib
-    #endregion InfoTributos
-
-    #region InfoCRIRRF
 
     /// <summary>
     /// Informações de Imposto de Renda Retido na Fonte, consolidadas por Código de Receita - CR.
@@ -362,6 +326,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCR { get; set; }
+
         [XmlElement("vrCR")]
         public string VrCRField
         {
@@ -369,5 +334,4 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrCR = Converter.ToDouble(value);
         }
     }
-    #endregion InfoCRIRRF
 }

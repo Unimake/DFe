@@ -13722,6 +13722,37 @@ namespace Unimake.Business.DFe.Servicos
     }
     #endregion MtvDeslig
 
+    #region tpValorProcTrab
+
+    /// <summary>
+    /// tpValorProcTrab - Tipo de valor que influi na apuração do FGTS
+    /// </summary>
+    public enum TipoValorApuracaoFGTS
+    {
+        /// <summary>
+        /// FGTS Origem Processo Trabalhista: 
+        /// quando codCateg = [101, 102, 104, 105, 106, 111, 201, 202, 301, 302, 303, 304, 306, 307, 309, 310, 312, 721] ou 
+        /// ([401, 410], se categOrig for diferente de [103, 107, 108])
+        /// </summary>
+        [XmlEnum("71")]
+        FGTSOrigemProcessoTrabalhista = 71,
+
+        /// <summary>
+        /// FGTS Origem Processo Trabalhista - Aprendiz/Contrato Verde e Amarelo: quando codCateg = [103, 107, 108] ou ([401, 410], 
+        /// se categOrig = [103, 107, 108])
+        /// </summary>
+        [XmlEnum("72")]
+        FGTSOrigemProcessoTrabalhistaAprendizContrato = 72,
+
+        /// <summary>
+        /// FGTS Origem Processo Trabalhista - Indenização compensatória do empregado doméstico: quando codCateg = [104]
+        /// </summary>
+        [XmlEnum("73")]
+        FGTSOrigemProcessoTrabalhistaIndenizacao = 73
+    }
+
+    #endregion tpValorProcTrab
+
     #endregion ESocial
 
     #region NF3e

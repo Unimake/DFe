@@ -20,9 +20,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00", IsNullable = false)]
     public class ESocial8299 : XMLBase
     {
-        /// <summary>
-        ///  Baixa Judicial do Vínculo
-        /// </summary>
         [XmlElement("evtBaixa")]
         public EvtBaixa EvtBaixa { get; set; }
 
@@ -45,76 +42,30 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
-        /// <summary>
-        /// Informações de identificação do evento
-        /// </summary>
+
         [XmlElement("ideEvento")]
         public IdeEvento8299 IdeEvento { get; set; }
-        /// <summary>
-        /// Informações de identificação do empregador
-        /// </summary>
+
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
-        /// <summary>
-        /// Informações de identificação do trabalhador e do vínculo
-        /// </summary>
+        
         [XmlElement("ideVinculo")]
         public IdeVinculo8299 IdeVinculo { get; set; }
 
-        /// <summary>
-        /// Informações relativas à baixa judicial do vínculo.
-        /// </summary>
         [XmlElement("infoBaixa")]
         public InfoBaixa InfoBaixa { get; set; }
 
     }
 
-    #region IdeEvento
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento8299")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento8299
-    {
-        /// <summary>
-        /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
-        /// </summary>
-        [XmlElement("indRetif")]
-        public IndicativoRetificacao IndRetif { get; set; }
-
-        /// <summary>
-        /// Preencher com o número do recibo do arquivo a ser retificado.
-        /// Validação: O preenchimento é obrigatório se indRetif = [2].
-        /// Deve ser um recibo de entrega válido, correspondente ao arquivo que está sendo retificado.
-        /// </summary>
-        [XmlElement("nrRecibo")]
-        public string NrRecibo { get; set; }
-
-        /// <summary>
-        /// Identificação do ambiente
-        /// </summary>
-        [XmlElement("tpAmb")]
-        public TipoAmbiente TpAmb { get; set; }
-
-        /// <summary>
-        /// Processo de emissão do evento.
-        /// </summary>
-        [XmlElement("procEmi")]
-        public ProcEmiESocial ProcEmi { get; set; }
-
-        /// <summary>
-        /// Versão do processo de emissão do evento. Informar a versão do aplicativo emissor do evento.
-        /// </summary>
-        [XmlElement("verProc")]
-        public string VerProc { get; set; }
-
-        #region ShouldSerialize
-        public bool ShouldSerializeNrRecibo() => !string.IsNullOrEmpty(NrRecibo);
-        #endregion ShouldSerialize
-    }
-    #endregion IdeEvento
-
+    public class IdeEvento8299 : IdeEvento2190 { }
 
     /// <summary>
     /// Informações de identificação do trabalhador e do vínculo
@@ -126,20 +77,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeVinculo8299 : IdeVinculo2206 { }
 
-    #region InfoBaixa
-
     /// <summary>
     /// Informações relativas à baixa judicial do vínculo.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento8299")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBaixa")]
     [ComVisible(true)]
 #endif
     public class InfoBaixa
     {
         /// <summary>
-        /// 
+        /// Código de motivo do desligamento
         /// </summary>
         [XmlElement("mtvDeslig")]
         public MtvDeslig MtvDeslig { get; set; }
@@ -225,10 +174,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string Observacao { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializeDtProjFimAPIField() => DtProjFimAPI > DateTimeOffset.MinValue;
         public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
+
         #endregion ShouldSerialize
     }
-    #endregion InfoBaixa
 
 }

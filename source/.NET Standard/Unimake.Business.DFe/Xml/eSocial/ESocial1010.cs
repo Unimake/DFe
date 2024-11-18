@@ -281,7 +281,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         [XmlElement("ideProcessoFGTS")]
-        public List<IdeProcessoFGTS> IdeProcessoFGTS { get; set; }
+        public List<IdeProcessoFGTS1010> IdeProcessoFGTS { get; set; }
 
 #if INTEROP
 
@@ -289,22 +289,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeProcessoFGTS(IdeProcessoFGTS item)
+        public void AddIdeProcessoFGTS(IdeProcessoFGTS1010 item)
         {
             if (IdeProcessoFGTS == null)
             {
-                IdeProcessoFGTS = new List<IdeProcessoFGTS>();
+                IdeProcessoFGTS = new List<IdeProcessoFGTS1010>();
             }
 
             IdeProcessoFGTS.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista IdeProcessoFGTS (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista IdeProcessoFGTS1010 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeProcessoFGTS</returns>
-        public IdeProcessoFGTS GetIdeProcessoFGTS(int index)
+        public IdeProcessoFGTS1010 GetIdeProcessoFGTS(int index)
         {
             if ((IdeProcessoFGTS?.Count ?? 0) == 0)
             {
@@ -377,10 +377,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcessoFGTS")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcessoFGTS1010")]
     [ComVisible(true)]
 #endif
-    public class IdeProcessoFGTS
+    public class IdeProcessoFGTS1010
     {
         [XmlElement("nrProc")]
         public string NrProc { get; set; }

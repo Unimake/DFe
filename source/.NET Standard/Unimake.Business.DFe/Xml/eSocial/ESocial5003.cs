@@ -168,7 +168,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeClassTrib() => !string.IsNullOrEmpty(ClassTrib);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -238,7 +238,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -326,7 +326,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -476,7 +476,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeMtvDesligTSV() => !string.IsNullOrEmpty(MtvDesligTSV);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -517,7 +517,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
 #if INTEROP
@@ -632,6 +632,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double RemFGTS { get; set; }
+
         [XmlElement("remFGTS")]
         public string RemFGTSField
         {
@@ -647,6 +648,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double DpsFGTS { get; set; }
+
         [XmlElement("dpsFGTS")]
         public string DpsFGTSFIeld
         {
@@ -698,7 +700,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDpsFGTSField() => DpsFGTS > 0;
 
-        #endregion ShouldSerialize
+        #endregion ShouldSerialize ShouldSerialize
     }
 
 #if INTEROP
@@ -723,6 +725,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrRubr { get; set; }
+
         [XmlElement("vrRubr")]
         public string VrRubrField
         {
@@ -731,7 +734,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         [XmlElement("ideProcessoFGTS")]
-        public List<IdeProcessoFGTS> IdeProcessoFGTS { get; set; }
+        public List<IdeProcessoFGTS5003> IdeProcessoFGTS { get; set; }
 
 #if INTEROP
 
@@ -739,22 +742,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddIdeProcessoFGTS(IdeProcessoFGTS item)
+        public void AddIdeProcessoFGTS(IdeProcessoFGTS5003 item)
         {
             if (IdeProcessoFGTS == null)
             {
-                IdeProcessoFGTS = new List<IdeProcessoFGTS>();
+                IdeProcessoFGTS = new List<IdeProcessoFGTS5003>();
             }
 
             IdeProcessoFGTS.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista IdeProcessoFGTS (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista IdeProcessoFGTS5003 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da IdeProcessoFGTS</returns>
-        public IdeProcessoFGTS GetIdeProcessoFGTS(int index)
+        public IdeProcessoFGTS5003 GetIdeProcessoFGTS(int index)
         {
             if ((IdeProcessoFGTS?.Count ?? 0) == 0)
             {
@@ -770,38 +773,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetIdeProcessoFGTSCount => (IdeProcessoFGTS != null ? IdeProcessoFGTS.Count : 0);
 #endif
     }
-}
 
 #if INTEROP
-[ClassInterface(ClassInterfaceType.AutoDual)]
-[ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBasePerAntE")]
-[ComVisible(true)]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcessoFGTS5003")]
+    [ComVisible(true)]
 #endif
-public class InfoBasePerAntE
-{
-    [XmlIgnore]
+    public class IdeProcessoFGTS5003 : IdeProcessoFGTS1010 { }
+
 #if INTEROP
-    public DateTime PerRef { get; set; }
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoBasePerAntE")]
+    [ComVisible(true)]
+#endif
+    public class InfoBasePerAntE
+    {
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerRef { get; set; }
 #else
         public DateTimeOffset PerRef { get; set; }
 #endif
 
-    [XmlElement("perRef")]
-    public string PerRefField
-    {
-        get => PerRef.ToString("yyyy-MM");
+        [XmlElement("perRef")]
+        public string PerRefField
+        {
+            get => PerRef.ToString("yyyy-MM");
 #if INTEROP
-        set => PerRef = DateTime.Parse(value);
+            set => PerRef = DateTime.Parse(value);
 #else
             set => PerRef = DateTimeOffset.Parse(value);
 #endif
-    }
+        }
 
-    [XmlElement("tpAcConv")]
-    public string TpAcConv { get; set; }
+        [XmlElement("tpAcConv")]
+        public string TpAcConv { get; set; }
 
-    [XmlElement("basePerAntE")]
-    public List<BasePerAntE> BasePerAntE { get; set; }
+        [XmlElement("basePerAntE")]
+        public List<BasePerAntE> BasePerAntE { get; set; }
 
 #if INTEROP
 
@@ -839,54 +848,56 @@ public class InfoBasePerAntE
     /// </summary>
     public int GetBasePerAntECount => (BasePerAntE != null ? BasePerAntE.Count : 0);
 #endif
-}
+    }
 
 #if INTEROP
-[ClassInterface(ClassInterfaceType.AutoDual)]
-[ProgId("Unimake.Business.DFe.Xml.ESocial.BasePerAntE")]
-[ComVisible(true)]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.BasePerAntE")]
+    [ComVisible(true)]
 #endif
-public class BasePerAntE
-{
-    [XmlElement("tpValorE")]
-    public TpValor TpValorE { get; set; }
-
-    /// <summary>
-    /// Valores válidos:
-    /// 1 - Normal (incidência de FGTS)
-    /// 9 - Incidência de FGTS suspensa em decorrência de decisão judicial
-    /// </summary>
-    [XmlElement("indIncidE")]
-    public IndIncid IndIncidE { get; set; }
-
-    /// <summary>
-    /// Remuneração (valor da base de cálculo) do FGTS,
-    /// conforme definido nos campos tpValorE e indIncidE.
-    /// </summary>
-    [XmlIgnore]
-    public double RemFGTSE { get; set; }
-    [XmlElement("remFGTSE")]
-    public string RemFGTSEField
+    public class BasePerAntE
     {
-        get => RemFGTSE.ToString("F2", CultureInfo.InvariantCulture);
-        set => RemFGTSE = Converter.ToDouble(value);
-    }
+        [XmlElement("tpValorE")]
+        public TpValor TpValorE { get; set; }
 
-    /// <summary>
-    /// Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
-    /// Validação: Deve ser maior que 0 (zero) e informado somente se indIncidE = [1].
-    /// </summary>
-    [XmlIgnore]
-    public double DpsFGTSE { get; set; }
-    [XmlElement("dpsFGTSE")]
-    public string DpsFGTSEFIeld
-    {
-        get => DpsFGTSE.ToString("F2", CultureInfo.InvariantCulture);
-        set => DpsFGTSE = Converter.ToDouble(value);
-    }
+        /// <summary>
+        /// Valores válidos:
+        /// 1 - Normal (incidência de FGTS)
+        /// 9 - Incidência de FGTS suspensa em decorrência de decisão judicial
+        /// </summary>
+        [XmlElement("indIncidE")]
+        public IndIncid IndIncidE { get; set; }
 
-    [XmlElement("detRubrSusp")]
-    public List<DetRubrSusp> DetRubrSusp { get; set; }
+        /// <summary>
+        /// Remuneração (valor da base de cálculo) do FGTS,
+        /// conforme definido nos campos tpValorE e indIncidE.
+        /// </summary>
+        [XmlIgnore]
+        public double RemFGTSE { get; set; }
+
+        [XmlElement("remFGTSE")]
+        public string RemFGTSEField
+        {
+            get => RemFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+            set => RemFGTSE = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor histórico do FGTS a ser depositado na conta vinculada do trabalhador.
+        /// Validação: Deve ser maior que 0 (zero) e informado somente se indIncidE = [1].
+        /// </summary>
+        [XmlIgnore]
+        public double DpsFGTSE { get; set; }
+
+        [XmlElement("dpsFGTSE")]
+        public string DpsFGTSEFIeld
+        {
+            get => DpsFGTSE.ToString("F2", CultureInfo.InvariantCulture);
+            set => DpsFGTSE = Converter.ToDouble(value);
+        }
+
+        [XmlElement("detRubrSusp")]
+        public List<DetRubrSusp> DetRubrSusp { get; set; }
 
 #if INTEROP
 
@@ -925,13 +936,13 @@ public class BasePerAntE
     public int GetDetRubrSuspCount => (DetRubrSusp != null ? DetRubrSusp.Count : 0);
 #endif
 
-    #region ShouldSerialize
+        #region ShouldSerialize
 
-    public bool ShouldSerializeDpsFGTSEField() => DpsFGTSE > 0;
+        public bool ShouldSerializeDpsFGTSEField() => DpsFGTSE > 0;
 
-    #endregion
+        #endregion ShouldSerialize
 
-}
+    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -955,6 +966,7 @@ public class BasePerAntE
 
         [XmlIgnore]
         public double VreConsignado { get; set; }
+
         [XmlElement("vreConsignado")]
         public string VreConsignadoField
         {
@@ -962,3 +974,4 @@ public class BasePerAntE
             set => VreConsignado = Converter.ToDouble(value);
         }
     }
+}

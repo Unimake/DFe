@@ -10,6 +10,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-5012 - Imposto de Renda Retido na Fonte Consolidado por Contribuinte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial5012")]
@@ -26,6 +29,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento IRRF Consolidado por Contribuinte
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtIrrf")]
@@ -33,6 +39,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtIrrf
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -46,6 +55,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoIRRF InfoIRRF { get; set; }
     }
 
+    /// <summary>
+    /// Identificação do evento de retorno
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento5012")]
@@ -53,6 +65,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento5012
     {
+        /// <summary>
+        /// Informar o mês/ano (formato AAAA-MM) de referência das informações
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime PerApur { get; set; }
@@ -72,6 +87,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
+    /// <summary>
+    /// Informações relativas ao Imposto de Renda
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoIRRF")]
@@ -79,9 +97,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoIRRF
     {
+        /// <summary>
+        /// Preencher com o número do recibo do arquivo que deu origem ao presente arquivo de retorno ao empregador
+        /// </summary>
         [XmlElement("nrRecArqBase")]
         public string NrRecArqBase { get; set; }
 
+        /// <summary>
+        /// Indicativo de existência de valores de bases ou de tributos
+        /// </summary>
         [XmlElement("indExistInfo")]
         public IndExistInfo IndExistInfo { get; set; }
 
@@ -166,6 +190,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
+    /// <summary>
+    /// Informações consolidadas do IRRF, por Código de Receita - CR mensal
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRMen")]
@@ -173,14 +200,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoCRMen
     {
+        /// <summary>
+        /// Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho
+        /// </summary>
         [XmlElement("CRMen")]
         public TpCR CRMen { get; set; }
 
         /// <summary>
-        /// Valor correspondente ao Código de Receita - CR indicado em CRMen.
+        /// Valor correspondente ao Código de Receita - CR indicado em CRMen
         /// </summary>
         [XmlIgnore]
         public double VrCRMen { get; set; }
+
         [XmlElement("vrCRMen")]
         public string VrCRMenField
         {
@@ -190,6 +221,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
+    /// <summary>
+    /// Informações consolidadas do IRRF, por Código de Receita - CR diário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoCRDia")]
@@ -197,6 +231,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoCRDia
     {
+        /// <summary>
+        /// Período de apuração diário do Código de Receita - CR
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime PerApurDia { get; set; }
@@ -215,6 +252,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho pagos a residente no exterior para fins fiscais
+        /// Valores válidos:
+        /// 047301 - IRRF - Residentes no exterior, para fins fiscais
+        /// </summary>
         [XmlElement("CRDia")]
         public string CRDia { get; set; }
 
@@ -224,6 +266,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrCRDia { get; set; }
+
         [XmlElement("vrCRDia")]
         public string CRDiaField
         {

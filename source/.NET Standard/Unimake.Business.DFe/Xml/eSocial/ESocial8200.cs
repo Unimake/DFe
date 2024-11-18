@@ -10,6 +10,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-8200 - Anotação Judicial do Vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial8200")]
@@ -26,6 +29,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Anotação Judicial do Vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtAnotJud")]
@@ -33,6 +39,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtAnotJud
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -49,6 +58,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAnotJud InfoAnotJud { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento8200")]
@@ -56,6 +68,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento8200 : IdeEvento2205 { }
 
+    /// <summary>
+    /// Informações do processo judicial
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcesso8200")]
@@ -63,9 +78,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoProcesso8200
     {
+        /// <summary>
+        /// Número que identifica o processo judicial onde a anotação do vínculo foi determinada
+        /// </summary>
         [XmlElement("nrProcTrab")]
         public string NrProcTrab { get; set; }
 
+        /// <summary>
+        /// Informar a data da decisão judicial
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtSent { get; set; }
@@ -84,16 +105,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Preencher com a sigla da Unidade da Federação onde está localizada a Vara em que o processo tramitou
+        /// </summary>
         [XmlElement("ufVara")]
         public UFBrasil UfVara { get; set; }
 
+        /// <summary>
+        /// Preencher com o código do município, conforme tabela do IBGE
+        /// </summary>
         [XmlElement("codMunic")]
         public string CodMunic { get; set; }
 
+        /// <summary>
+        /// Código de identificação da Vara em que o processo tramitou
+        /// </summary>
         [XmlElement("idVara")]
         public string IdVara { get; set; }
     }
 
+    /// <summary>
+    /// Informações da anotação judicial do vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoAnotJud")]
@@ -112,12 +145,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
 
+        /// <summary>
+        /// Preencher com o número do CPF do trabalhador
+        /// </summary>
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
 
+        /// <summary>
+        /// Informar o nome do trabalhador
+        /// </summary>
         [XmlElement("nmTrab")]
         public string NmTrab { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de nascimento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtNascto { get; set; }
@@ -136,6 +178,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Preencher com a data de admissão do trabalhador
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtAdm { get; set; }
@@ -154,18 +199,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Matrícula atribuída ao trabalhador
+        /// </summary>
         [XmlElement("matricula")]
         public string Matricula { get; set; }
 
+        /// <summary>
+        /// Preencher com o código da categoria do trabalhador
+        /// </summary>
         [XmlElement("codCateg")]
         public CodCateg CodCateg { get; set; }
 
+        /// <summary>
+        /// Natureza da atividade
+        /// </summary>
         [XmlElement("natAtividade")]
         public NatAtividade NatAtividade { get; set; }
 
+        /// <summary>
+        /// Tipo de contrato de trabalho
+        /// </summary>
         [XmlElement("tpContr")]
         public TipoDeContratoDeTrabalho TpContr { get; set; }
 
+        /// <summary>
+        /// Data do término do contrato por prazo determinado
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtTerm { get; set; }
@@ -197,6 +257,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TiposInscricao? TpInscTrab { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar o número de inscrição do estabelecimento relativo ao local de trabalho
+        /// </summary>
         [XmlElement("localTrabalho")]
         public string LocalTrabalho { get; set; }
 
@@ -351,18 +414,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
-    /// Informações de afastamento do trabalhador.
-    /// Preenchimento exclusivo em caso de trabalhador que permaneça afastado na data de início da 
-    /// obrigatoriedade dos eventos não periódicos para o empregador no eSocial ou na data de transferência ou 
-    /// alteração de CPF do empregado.
+    /// Informações do cargo
     /// </summary>
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.Afastamento8200")]
-    [ComVisible(true)]
-#endif
-    public class Afastamento8200 : Afastamento2200 { }
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Cargo")]
@@ -370,6 +423,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Cargo
     {
+        /// <summary>
+        /// Data a partir da qual as informações do cargo estão vigentes
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtCargo { get; set; }
@@ -388,10 +444,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Informar a Classificação Brasileira de Ocupações - CBO relativa ao cargo
+        /// </summary>
         [XmlElement("CBOCargo")]
         public string CBOCargo { get; set; }
     }
 
+    /// <summary>
+    /// Informações da remuneração e periodicidade de pagamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Remuneracao8200")]
@@ -399,6 +461,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Remuneracao8200
     {
+        /// <summary>
+        /// Data a partir da qual as informações de remuneração e periodicidade de pagamento estão vigentes
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtRemun { get; set; }
@@ -425,6 +490,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlIgnore]
         public double VrSalFx { get; set; }
+
         [XmlElement("vrSalFx")]
         public string VrSalFxField
         {
@@ -432,9 +498,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrSalFx = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Unidade de pagamento da parte fixa da remuneração
+        /// </summary>
         [XmlElement("undSalFixo")]
         public UndSalFixo UndSalFixo { get; set; }
 
+        /// <summary>
+        /// Descrição do salário por tarefa ou variável e como este é calculado. 
+        /// Ex.: Comissões pagas no percentual de 10% sobre as vendas
+        /// </summary>
         [XmlElement("dscSalVar")]
         public string DscSalVar { get; set; }
 
@@ -445,6 +518,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informação do(s) vínculo(s)/contrato(s) já declarado(s) no eSocial e incorporado(s) ao vínculo ou sucedido(s) pelo vínculo reconhecido judicialmente
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Incorporacao")]
@@ -458,6 +534,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
         public string VersaoSchema { get; set; } = "S_01_02_00";
 
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05
+        /// </summary>
         [XmlElement("tpInsc")]
 #if INTEROP
         public TpInsc TpInsc { get; set; } = (TpInsc)(-1);
@@ -465,12 +544,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public TpInsc? TpInsc { get; set; }
 #endif
 
+        /// <summary>
+        /// Informar o número de inscrição do empregador no qual consta a matrícula incorporada ou sucedida, 
+        /// de acordo com o tipo de inscrição indicado no campo incorporacao/tpInsc
+        /// </summary>
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
+        /// <summary>
+        /// Informar a matrícula incorporada (matrícula cujo vínculo/contrato passou a integrar o vínculo reconhecido judicialmente) 
+        /// ou a matrícula no empregador anterior
+        /// </summary>
         [XmlElement("matIncorp")]
         public string MatIncorp { get; set; }
 
+        /// <summary>
+        /// Informações de sucessão do vínculo
+        /// </summary>
         [XmlElement("sucessaoVinc")]
         public SucessaoVinc8200 SucessaoVinc { get; set; }
 
@@ -489,6 +579,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações de sucessão do vínculo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.SucessaoVinc8200")]
@@ -496,6 +589,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class SucessaoVinc8200
     {
+        /// <summary>
+        /// Preencher com a data da transferência do empregado para o empregador declarante
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtTransf { get; set; }
@@ -515,6 +611,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
+    /// <summary>
+    /// Informações de afastamento do trabalhador.
+    /// Preenchimento exclusivo em caso de trabalhador que permaneça afastado na data de início da 
+    /// obrigatoriedade dos eventos não periódicos para o empregador no eSocial ou na data de transferência ou 
+    /// alteração de CPF do empregado.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.Afastamento8200")]
+    [ComVisible(true)]
+#endif
+    public class Afastamento8200 : Afastamento2200 { }
+
+    /// <summary>
+    /// Informações de desligamento do trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Desligamento8200")]
@@ -522,9 +634,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Desligamento8200
     {
+        /// <summary>
+        /// Código de motivo do desligamento
+        /// </summary>
         [XmlElement("mtvDeslig")]
         public string MtvDeslig { get; set; }
 
+        /// <summary>
+        /// Preencher com a data de desligamento do vínculo (último dia trabalhado)
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtDeslig { get; set; }
@@ -543,6 +661,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Data projetada para o término do aviso prévio indenizado
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtProjFimAPI { get; set; }
@@ -565,6 +686,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeDtProjFimAPIField() => DtProjFimAPI > DateTime.MinValue;
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }
