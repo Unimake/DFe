@@ -94,7 +94,7 @@ namespace Unimake.DFe.Test.NF3e
         /// </summary>
         [Theory]
         [Trait("DFe", "NF3e")]
-        [InlineData(@"..\..\..\NF3e\Resources\consReciNF3e.xml.xml")]
+        [InlineData(@"..\..\..\NF3e\Resources\consReciNF3e.xml")]
         public void SerializacaoDesserializacaoConsReciNF3e(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

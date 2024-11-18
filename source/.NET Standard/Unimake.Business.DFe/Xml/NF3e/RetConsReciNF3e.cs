@@ -74,28 +74,5 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public int GetProtNF3eCount => (ProtNF3e != null ? ProtNF3e.Count : 0);
 
 #endif
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DhRecbto { get; set; }
-#else
-        public DateTimeOffset DhRecbto { get; set; }
-#endif
-
-        [XmlElement("dhRecbto")]
-        public string DhRecbtoField
-        {
-            get => DhRecbto.ToString("yyyy-MM-ddTHH:mm:sszzz");
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-#if INTEROP
-                    DhRecbto = DateTime.Parse(value);
-#else
-                    DhRecbto = DateTimeOffset.Parse(value);
-#endif
-                }
-            }
-        }
     }
 }
