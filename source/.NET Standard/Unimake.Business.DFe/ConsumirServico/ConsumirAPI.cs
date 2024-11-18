@@ -251,6 +251,12 @@ namespace Unimake.Business.DFe
 
             if (apiConfig.ContentType == "application/json")
             {
+                if (apiConfig.PadraoNFSe == PadraoNFSe.BAUHAUS)
+                {
+                    var json = JsonConvert.SerializeObject(xml);
+                    return new StringContent(json, Encoding.UTF8, apiConfig.ContentType);
+                }
+
                 var dicionario = new Dictionary<string, string>();
 
                 if (apiConfig.LoginConexao)
