@@ -110,7 +110,7 @@ namespace Unimake.DFe.Test.NF3e
         }
 
         /// <summary>
-        /// Testar a serialização e desserialização do XML ConsReciNF3e
+        /// Testar a serialização e desserialização do XML RetConsReciNF3e
         /// </summary>
         [Theory]
         [Trait("DFe", "NF3e")]
@@ -123,6 +123,26 @@ namespace Unimake.DFe.Test.NF3e
             doc.Load(arqXML);
 
             var xml = XMLUtility.Deserializar<RetConsReciNF3e>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
+        /// Testar a serialização e desserialização do XML RetConsStatServNF3e
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NF3e")]
+        [InlineData(@"..\..\..\NF3e\Resources\retConsStatServNF3e.xml")]
+        public void SerializacaoDesserializacaoRetConsStatServNF3e(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<RetConsStatServNF3e>(doc);
 
             var doc2 = xml.GerarXML();
 

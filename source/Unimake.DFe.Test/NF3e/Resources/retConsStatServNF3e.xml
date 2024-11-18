@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsStatServNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<tpAmb>1</tpAmb>
+	<verAplic>verAplic1</verAplic>
+	<cStat>cStat1</cStat>
+	<xMotivo>xMotivo1</xMotivo>
+	<cUF>11</cUF>
+	<dhRecbto>dhRecbto1</dhRecbto>
+	<tMed>1</tMed>
+	<dhRetorno>dhRetorno1</dhRetorno>
+	<xObs>xObs1</xObs>
+</retConsStatServNF3e>
