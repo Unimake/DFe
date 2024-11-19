@@ -61,12 +61,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         /// <summary>
-        /// Informações da lotação 
+        /// Informações da lotação
         /// </summary>
         [XmlElement("infoLotacao")]
         public InfoLotacao InfoLotacao { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1020")]
@@ -91,7 +94,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Inclusao1020 Inclusao { get; set; }
 
         /// <summary>
-        /// Alteração das informações.
+        /// Alteração das informações
         /// </summary>
         [XmlElement("alteracao")]
         public Alteracao1020 Alteracao { get; set; }
@@ -121,7 +124,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeLotacao IdeLotacao { get; set; }
 
         /// <summary>
-        /// Detalhamento das informações da lotação.
+        /// Detalhamento das informações da lotação
         /// </summary>
         [XmlElement("dadosLotacao")]
         public DadosLotacao DadosLotacao { get; set; }
@@ -153,9 +156,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset IniValid { get; set; }
 #endif
 
-        /// <summary>
-        /// Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAAMM
-        /// </summary>
         [XmlElement("iniValid")]
         public string IniValidField
         {
@@ -176,9 +176,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public DateTimeOffset FimValid { get; set; }
 #endif
-        /// <summary>
-        /// Preencher com o mês e ano de término da validade das informações, se houver.
-        /// </summary>
+
         [XmlElement("fimValid")]
         public string FimValidField
         {
@@ -229,21 +227,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
 
         /// <summary>
-        /// Informações de FPAS e Terceiros relativos à lotação tributária.
+        /// Informações de FPAS e Terceiros relativos à lotação tributária
         /// </summary>
         [XmlElement("fpasLotacao")]
         public FpasLotacao FpasLotacao { get; set; }
 
         /// <summary>
-        /// Informação complementar que apresenta identificação
-        /// do contratante de obra de construção civil sob regime
-        /// de empreitada parcial ou subempreitada.
+        /// Informação complementar de obra de construção civil
         /// </summary>
         [XmlElement("infoEmprParcial")]
         public InfoEmprParcial InfoEmprParcial { get; set; }
 
         /// <summary>
-        /// Informações do operador portuário.
+        /// Informações do operador portuário
         /// </summary>
         [XmlElement("dadosOpPort")]
         public DadosOpPort DadosOpPort { get; set; }
@@ -260,8 +256,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-
-    #region FpasLotacao
 
     /// <summary>
     /// Informações de FPAS e Terceiros relativos à lotação tributária.
@@ -312,10 +306,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CodTercsSusp { get; set; }
 
         /// <summary>
-        /// Informações sobre a existência de processos judiciais,
-        /// com sentença/decisão favorável ao contribuinte,
-        /// relativos às contribuições destinadas a Outras Entidades
-        /// e Fundos.
+        /// Informações de processos judiciais relativos às contribuições destinadas a Outras Entidades
         /// </summary>
         [XmlElement("infoProcJudTerceiros")]
         public InfoProcJudTerceiro InfoProcJudTerceiro { get; set; }
@@ -340,7 +331,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoProcJudTerceiro
     {
         /// <summary>
-        /// Identificação do processo judicial.
+        /// Identificação do processo judicial
         /// </summary>
         [XmlElement("procJudTerceiro")]
         public ProcJudTerceiro ProcJudTerceiro { get; set; }
@@ -384,10 +375,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codSusp")]
         public string CodSusp { get; set; }
     }
-
-    #endregion FpasLotacao
-
-    #region InfoEmprParcial
 
     /// <summary>
     /// Informação complementar que apresenta identificação
@@ -453,10 +440,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
-#endregion InfoEmprParcial
-
-    #region DadosOpPort
-
     /// <summary>
     /// Informações do operador portuário.
     /// </summary>
@@ -517,7 +500,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => Fap = Converter.ToDouble(value);
         }
     }
-    #endregion DadosOpPort
 
     /// <summary>
     /// Alteração das informações.
@@ -536,14 +518,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeLotacao IdeLotacao { get; set; }
 
         /// <summary>
-        /// Detalhamento das informações da lotação.
+        /// Detalhamento das informações da lotação
         /// </summary>
         [XmlElement("dadosLotacao")]
         public DadosLotacao DadosLotacao { get; set; }
 
         /// <summary>
-        /// Informação preenchida exclusivamente em caso de alteração do período de validade das informações, 
-        /// apresentando o novo período de validade..
+        /// Novo período de validade das informações
         /// </summary>
         [XmlElement("novaValidade")]
         public NovaValidade1020 NovaValidade { get; set; }

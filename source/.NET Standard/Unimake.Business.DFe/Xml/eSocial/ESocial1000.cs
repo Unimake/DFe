@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CS1591
+
 using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -6,11 +7,10 @@ using Unimake.Business.DFe.Servicos;
 using System.Runtime.InteropServices;
 #endif
 
-
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
-    /// Evento Informações do Empregador. eSocial - 1000
+    /// S-1000 - Informações do Empregador/Contribuinte/Órgão Público
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -23,7 +23,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class ESocial1000 : XMLBase
     {
         /// <summary>
-        /// Evento informações do empregador. eSocial - 1000
+        /// Evento Informações do Empregador 
         /// </summary>
         [XmlElement("evtInfoEmpregador")]
         public EvtInfoEmpregador EvtInfoEmpregador { get; set; }
@@ -41,9 +41,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtInfoEmpregador")]
     [ComVisible(true)]
 #endif
-    
     public class EvtInfoEmpregador
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
@@ -60,14 +62,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         /// <summary>
-        /// Informações do empregador 
+        /// Identificação da operação (inclusão, alteração ou exclusão) e das respectivas informações do empregador
         /// </summary>
         [XmlElement("infoEmpregador")]
         public InfoEmpregador InfoEmpregador { get; set; }
     }
 
-    #region InfoEmpregador
-
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1000")]
@@ -83,32 +86,26 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoEmpregador")]
     [ComVisible(true)]
 #endif
-    
     public class InfoEmpregador
     {
         /// <summary>
-        /// Inclusão de novas informações.
+        /// Inclusão de novas informações
         /// </summary>
         [XmlElement("inclusao")]
         public InclusaoE1000 Inclusao { get; set; }
 
         /// <summary>
-        ///	Alteração das informações
+        /// Alteração das informações
         /// </summary>
         [XmlElement("alteracao")]
         public Alteracao1000 Alteracao { get; set; }
 
         /// <summary>
-        /// Exclusão das informações.
+        /// Exclusão das informações
         /// </summary>
         [XmlElement("exclusao")]
         public Exclucao1000 Exclusao { get; set; }
     }
-
-    #endregion  InfoEmpregador
-
-    #region Inclusao
-
 
     /// <summary>
     /// Inclusão de novas informações.
@@ -118,17 +115,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InclusaoE1000")]
     [ComVisible(true)]
 #endif
-    
     public class InclusaoE1000
     {
         /// <summary>
-        /// Período de validade das informações.
+        /// Período de validade das informações
         /// </summary>
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }
 
         /// <summary>
-        /// Detalhamento das informações do empregador. 
+        /// Detalhamento das informações do empregador
         /// </summary>
         [XmlElement("infoCadastro")]
         public InfoCadastro InfoCadastro { get; set; }
@@ -178,9 +174,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public DateTimeOffset FimValid { get; set; }
 #endif
-        /// <summary>
-        /// Preencher com o mês e ano de término da validade das informações, se houver. Validação: Se informado, deve estar no formato AAAA-MM e ser um período igual ou posterior a IniValid.
-        /// </summary>
+
         [XmlElement("fimValid")]
         public string FimValidField
         {
@@ -194,10 +188,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        /// <summary>
-        /// ShouldSerializeFimValid
-        /// </summary>
-        public bool ShouldSerializeFimValid() => FimValid > DateTime.MinValue;
+        public bool ShouldSerializeFimValidField() => FimValid > DateTime.MinValue;
 
         #endregion ShouldSerialize
     }
@@ -297,7 +288,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DadosIsencao DadosIsencao { get; set; }
 
         /// <summary>
-        /// Informações exclusivas de organismos internacionais e outras instituições extraterritoriais.        
+        /// Informações exclusivas de organismos internacionais e outras instituições extraterritoriais.   
         /// </summary>
         [XmlElement("infoOrgInternacional")]
         public InfoOrgInternacional InfoOrgInternacional { get; set; }
@@ -369,9 +360,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public DateTimeOffset DtEmisCertif { get; set; }
 #endif
-        /// <summary>
-        /// Data de emissão do certificado/publicação da lei.
-        /// </summary>
+
         [XmlElement("dtEmisCertif")]
         public string DtEmisCertifField
         {
@@ -394,10 +383,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset DtVencCertif { get; set; }
 #endif
 
-        /// <summary>
-        /// Data de vencimento do certificado.
-        /// Validação: Não pode ser anterior a dtEmisCertif.
-        /// </summary>
         [XmlElement("dtVencCertif")]
         public string DtVencCertifField
         {
@@ -425,9 +410,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset DtProtRenov { get; set; }
 #endif
 
-        /// <summary>
-        /// Data do protocolo de renovação.
-        /// </summary>
         [XmlElement("dtProtRenov")]
         public string DtProtRenovField
         {
@@ -448,9 +430,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public DateTimeOffset DtDou { get; set; }
 #endif
-        /// <summary>
-        /// Data de publicação no Diário Oficial da União - DOU.
-        /// </summary>
+
         [XmlElement("dtDou")]
         public string DtDouField
         {
@@ -494,12 +474,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indAcordoIsenMulta")]
         public IndAcordoIsenMulta IndAcordoIsenMulta { get; set; }
     }
-    #endregion Inclusao
 
     /// <summary>
     /// Alteração das informações.
     /// </summary>
-    /// 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1000")]
@@ -508,20 +486,20 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class Alteracao1000
     {
         /// <summary>
-        /// Período de validade das informações.
+        /// Período de validade das informações
         /// </summary>
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }
 
         /// <summary>
-        /// Detalhamento das informações do empregador. 
+        /// Detalhamento das informações do empregador
         /// </summary>
         [XmlElement("infoCadastro")]
         public InfoCadastro InfoCadastro { get; set; }
 
         /// <summary>
-        /// Informação preenchida exclusivamente em caso de alteração do período de validade das informações, 
-        /// apresentando o novo período de validade.
+        /// Informação preenchida exclusivamente em caso de alteração do 
+        /// período de validade das informações, apresentando o novo período de validade
         /// </summary>
         [XmlElement("novaValidade")]
         public NovaValidade1000 NovaValidade { get; set; }
@@ -549,7 +527,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class Exclucao1000
     {
         /// <summary>
-        /// Período de validade das informações.
+        /// Período de validade das informações
         /// </summary>
         [XmlElement("idePeriodo")]
         public IdePeriodo IdePeriodo { get; set; }

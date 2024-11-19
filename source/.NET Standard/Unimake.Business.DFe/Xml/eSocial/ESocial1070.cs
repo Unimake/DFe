@@ -11,6 +11,9 @@ using System.Runtime.InteropServices;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-1070 - Tabela de Processos Administrativos/Judiciais
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1070")]
@@ -20,6 +23,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTabProcesso/v_S_01_02_00", IsNullable = false)]
     public class ESocial1070 : XMLBase
     {
+        /// <summary>
+        /// Evento Tabela de Processos
+        /// </summary>
         [XmlElement("evtTabProcesso")]
         public EvtTabProcesso EvtTabProcesso { get; set; }
 
@@ -27,6 +33,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Tabela de Processos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtTabProcesso")]
@@ -34,19 +43,34 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtTabProcesso
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento1070 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações do processo
+        /// </summary>
         [XmlElement("infoProcesso")]
         public InfoProcessoESocial InfoProcesso { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1070")]
@@ -54,6 +78,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento1070 : IdeEvento { }
 
+    /// <summary>
+    /// Informações do processo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcessoESocial")]
@@ -61,16 +88,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoProcessoESocial
     {
+        /// <summary>
+        /// Inclusão de novas informações
+        /// </summary>
         [XmlElement("inclusao")]
         public Inclusao1070 Inclusao { get; set; }
 
+        /// <summary>
+        /// Alteração das informações
+        /// </summary>
         [XmlElement("alteracao")]
         public Alteracao1070 Alteracao { get; set; }
 
+        /// <summary>
+        /// Exclusão das informações
+        /// </summary>
         [XmlElement("exclusao")]
         public Exclusao1070 Exclusao { get; set; }
     }
 
+    /// <summary>
+    /// Inclusão de novas informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Inclusao1070")]
@@ -78,13 +117,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Inclusao1070
     {
+        /// <summary>
+        /// Identificação do processo e validade das informações
+        /// </summary>
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
 
+        /// <summary>
+        /// Dados do processo
+        /// </summary>
         [XmlElement("dadosProc")]
         public DadosProc DadosProc { get; set; }
     }
 
+    /// <summary>
+    /// Identificação do processo e validade das informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcesso")]
@@ -92,6 +140,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeProcesso
     {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de processo
+        /// </summary>
         [XmlElement("tpProc")]
         public TipoProcessoESocial TpProc { get; set; }
 
@@ -104,6 +155,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrProc")]
         public string NrProc { get; set; }
 
+        /// <summary>
+        /// Preencher com o mês e ano de início da validade das informações prestadas no evento, no formato AAAA-MM
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime IniValid { get; set; }
@@ -122,6 +176,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Preencher com o mês e ano de término da validade das informações, se 
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime FimValid { get; set; }
@@ -146,6 +203,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Dados do processo
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosProc")]
@@ -167,15 +227,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndicativoAutoriaAcaoJudicial? IndAutoria { get; set; }
 #endif
 
+        /// <summary>
+        /// Indicativo da matéria do processo
+        /// </summary>
         [XmlElement("indMatProc")]
         public IndicativoMateriaProcesso IndMatProc { get; set; }
 
+        /// <summary>
+        /// Observações relacionadas ao processo
+        /// </summary>
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
+        /// <summary>
+        /// Informações complementares do processo judicial
+        /// </summary>
         [XmlElement("dadosProcJud")]
         public DadosProcJud1070 DadosProcJud { get; set; }
 
+        /// <summary>
+        /// Informações de suspensão de exigibilidade de tributos
+        /// </summary>
         [XmlElement("infoSusp")]
         public List<InfoSusp1070> InfoSusp { get; set; }
 #if INTEROP
@@ -228,6 +300,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion
     }
 
+    /// <summary>
+    /// Informações complementares do processo judicial
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DadosProcJud1070")]
@@ -235,6 +310,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DadosProcJud1070 : DadosProcJud { }
 
+    /// <summary>
+    /// Informações de suspensão de exigibilidade de tributos em virtude de processo administrativo ou judicial
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoSusp1070")]
@@ -242,6 +320,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoSusp1070 : InfoSusp { }
 
+    /// <summary>
+    /// Alteração das informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Alteracao1070")]
@@ -249,16 +330,38 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Alteracao1070
     {
+        /// <summary>
+        /// Identificação do processo e validade das informações
+        /// </summary>
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
 
+        /// <summary>
+        /// Dados do processo
+        /// </summary>
         [XmlElement("dadosProc")]
         public DadosProc DadosProc { get; set; }
 
+        /// <summary>
+        /// Novo período de validade das informações
+        /// </summary>
         [XmlElement("novaValidade")]
         public NovaValidade1070 NovaValidade { get; set; }
     }
 
+    /// <summary>
+    /// Informação preenchida exclusivamente em caso de alteração do período de validade das informações, apresentando o novo período de validade
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade1070")]
+    [ComVisible(true)]
+#endif
+    public class NovaValidade1070 : NovaValidade1005 { }
+
+    /// <summary>
+    /// Exclusão das informações
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Exclusao1070")]
@@ -266,14 +369,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Exclusao1070
     {
+        /// <summary>
+        /// Identificação do processo e validade das informações
+        /// </summary>
         [XmlElement("ideProcesso")]
         public IdeProcesso IdeProcesso { get; set; }
     }
-
-#if INTEROP
-    [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.NovaValidade1070")]
-    [ComVisible(true)]
-#endif
-    public class NovaValidade1070 : NovaValidade1005 { }
 }
