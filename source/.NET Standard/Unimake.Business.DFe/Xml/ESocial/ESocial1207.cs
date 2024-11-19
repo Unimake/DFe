@@ -10,7 +10,7 @@ using Unimake.Business.DFe.Servicos;
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
-    ///  Benefícios - Entes Públicos
+    /// S-1207 - Benefícios - Entes Públicos
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class ESocial1207 : XMLBase
     {
         /// <summary>
-        ///  Benefícios - Entes Públicos
+        /// Evento Benefícios - Entes Públicos
         /// </summary>
         [XmlElement("evtBenPrRP")]
         public EvtBenPrRP EvtBenPrRP { get; set; }
@@ -32,7 +32,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
-    /// Evento Remuneração de Trabalhador vinculado ao RGPS
+    /// Evento Benefícios - Entes Públicos
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -48,7 +48,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string ID { get; set; }
 
         /// <summary>
-        /// Informações de identificação do evento.
+        /// Informações de identificação do evento
         /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento1207 IdeEvento { get; set; }
@@ -60,13 +60,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IdeEmpregador IdeEmpregador { get; set; }
 
         /// <summary>
-        /// Identificação do beneficiário.
+        /// Identificação do beneficiário
         /// </summary>
         [XmlElement("ideBenef")]
         public IdeBenef1207 IdeBenef { get; set; }
 
         /// <summary>
-        /// 
+        /// Demonstrativo de valores devidos ao beneficiário
         /// </summary>
         [XmlElement("dmDev")]
         public DmDev1207 DmDev { get; set; }
@@ -140,7 +140,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string IndRRA { get; set; }
 
         /// <summary>
-        /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA.
+        /// Informações complementares de RRA
         /// </summary>
         [XmlElement("infoRRA")]
         public InfoRRA1207 InfoRRA { get; set; }
@@ -152,9 +152,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoPerApur1207 InfoPerApur { get; set; }
 
         /// <summary>
-        /// Grupo destinado às informações relativas a períodos
-        /// anteriores.Somente preencher esse grupo se houver
-        /// proventos ou pensões retroativos
+        /// Informações relativas a períodos anteriores
         /// </summary>
         [XmlElement("infoPerAnt")]
         public InfoPerAnt1207 InfoPerAnt { get; set; }
@@ -181,7 +179,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoPerApur1207
     {
         /// <summary>
-        /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
+        /// Identificação da unidade do órgão público
         /// </summary>
         [XmlElement("ideEstab")]
         public IdeEstab1207 IdeEstab { get; set; }
@@ -210,7 +208,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrInsc { get; set; }
 
         /// <summary>
-        /// Rubricas que compõem o provento ou pensão do beneficiário.
+        /// Itens que compõem o provento ou pensão do beneficiário
         /// </summary>
         [XmlElement("itensRemun")]
         public List<ItensRemun1207> ItensRemun { get; set; }
@@ -275,6 +273,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoPerAnt1207
     {
+        /// <summary>
+        /// Identificação do período de referência do provento ou pensão
+        /// </summary>
         [XmlElement("idePeriodo")]
         public List<IdePeriodo1207> IdePeriodo { get; set; }
 
@@ -342,13 +343,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset PerRef { get; set; }
 #endif
 
-        /// <summary>
-        /// Informar o período ao qual se refere o complemento de
-        /// provento ou pensão, no formato AAAA-MM.
-        /// Validação: Deve ser igual ou anterior ao período de
-        /// apuração informado em perApur.
-        /// Deve ser informado no formato AAAA-MM
-        /// </summary>
         [XmlElement("perRef")]
         public string PerRefField
         {
@@ -361,7 +355,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
-        /// Identificação da unidade do órgão público na qual o beneficiário possui provento ou pensão.
+        /// Identificação da unidade do órgão público
         /// </summary>
         [XmlElement("ideEstab")]
         public IdeEstab1207 IdeEstab { get; set; }

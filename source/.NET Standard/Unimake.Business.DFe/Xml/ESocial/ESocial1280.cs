@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
-    /// Informações Complementares aos Eventos Periódicos
+    /// S-1280 - Informações Complementares aos Eventos Periódicos
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -73,7 +73,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoSubstPatr InfoSubstPatr { get; set; }
 
         /// <summary>
-        ///  Informação de substituição prevista na Lei 12.546/2011
+        /// Informação de substituição prevista na Lei 12.546/2011
         /// Grupo preenchido exclusivamente pelo Órgão Gestor
         /// de Mão de Obra - OGMO(classTrib em S-1000 = [09]),
         /// listando apenas seus códigos de lotação com
@@ -121,7 +121,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         /// <summary>
         /// Empresas enquadradas no Simples Nacional - Atividades concomitantes
-        ///  Grupo preenchido por empresa enquadrada no
+        /// Grupo preenchido por empresa enquadrada no
         /// regime de tributação Simples Nacional com tributação
         /// previdenciária substituída e não substituída.
         /// </summary>
@@ -129,7 +129,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoAtivConcom InfoAtiviConcom { get; set; }
 
         /// <summary>
-        ///  Grupo preenchido por entidade que tenha se
+        /// Grupo preenchido por entidade que tenha se
         /// transformado em sociedade de fins lucrativos nos
         /// termos e no prazo da Lei 11.096/2005.
         /// </summary>
@@ -196,16 +196,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Identificação do estabelecimento/lotação.
         /// Informar o código atribuído pelo empregador para a
-        ///lotação tributária.
-        ///Validação: Deve ser um código válido e existente na
-        ///Tabela de Lotações Tributárias (S-1020), com tpLotacao = [08]
+        /// lotação tributária.
+        /// Validação: Deve ser um código válido e existente na
+        /// Tabela de Lotações Tributárias (S-1020), com tpLotacao = [08]
         /// </summary>
         [XmlElement("codLotacao")]
         public TpLotacao CodLotacao { get; set; }
     }
 
     /// <summary>
-    ///  Grupo preenchido por empresa enquadrada no
+    /// Grupo preenchido por empresa enquadrada no
     /// regime de tributação Simples Nacional com tributação
     /// previdenciária substituída e não substituída.
     /// </summary>
@@ -261,9 +261,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoPercTransf11096
     {
         /// <summary>
-        /// Informe o percentual de contribuição social devida em
-        /// caso de transformação em sociedade de fins lucrativos
-        /// - Lei 11.096/2005.
+        /// Informe o percentual de contribuição social devida em caso de transformação em 
+        /// sociedade de fins lucrativos - Lei 11.096/2005.
         /// Valores válidos:
         /// 1 - 0,2000
         /// 2 - 0,4000

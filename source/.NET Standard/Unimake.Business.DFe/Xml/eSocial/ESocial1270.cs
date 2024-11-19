@@ -10,6 +10,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-1270 - Contratação de Trabalhadores Avulsos Não Portuários
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial1270")]
@@ -19,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtContratAvNP/v_S_01_02_00", IsNullable = false)]
     public class ESocial1270 : XMLBase
     {
+        /// <summary>
+        /// Evento Contratação de Trabalhadores Avulsos Não Portuários
+        /// </summary>
         [XmlElement("evtContratAvNP")]
         public EvtContratAvNP EvtContratAvNP { get; set; }
 
@@ -26,6 +32,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Contratação de Trabalhadores Avulsos Não Portuários
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtContratAvNP")]
@@ -33,19 +42,34 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtContratAvNP
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento1270 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Remuneração dos trabalhadores avulsos não portuários
+        /// </summary>
         [XmlElement("remunAvNP")]
         public RemunAvNP RemunAvNP { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1270")]
@@ -53,6 +77,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento1270 : IdeEvento1210 { }
 
+    /// <summary>
+    /// Remuneração dos trabalhadores avulsos não portuários
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.RemunAvNP")]
@@ -60,12 +87,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class RemunAvNP
     {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05
+        /// </summary>
         [XmlElement("tpInsc")]
         public TipoInscricaoEstabelecimento TpInsc { get; set; }
 
+        /// <summary>
+        /// Informar o número de inscrição do estabelecimento do contribuinte de acordo com o tipo de inscrição indicado no campo remunAvNP/tpInsc
+        /// </summary>
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
+        /// <summary>
+        /// Informar o código atribuído pelo empregador para a lotação tributária
+        /// </summary>
         [XmlElement("codLotacao")]
         public string CodLotacao { get; set; }
 

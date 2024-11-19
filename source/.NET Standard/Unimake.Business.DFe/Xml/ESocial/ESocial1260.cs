@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
-    ///  Comercialização da Produção Rural Pessoa Física
+    /// S-1260 - Comercialização da Produção Rural Pessoa Física
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -25,7 +25,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class ESocial1260 : XMLBase
     {
         /// <summary>
-        ///  Evento Comercialização da Produção Rural Pessoa Física
+        /// Evento Comercialização da Produção Rural Pessoa Física
         /// </summary>
         [XmlElement("evtComProd")]
         public EvtComProd1260 EvtComProd { get; set; }
@@ -35,10 +35,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region  EvtComProd1260
-
     /// <summary>
-    ///  Evento Comercialização da Produção Rural Pessoa Física
+    /// Evento Comercialização da Produção Rural Pessoa Física
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -79,8 +77,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento1260 : IdeEvento1210 { }
 
-    #region InfoComProd1260
-
     /// <summary>
     /// Informação da comercialização de produção
     /// </summary>
@@ -97,8 +93,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("ideEstabel")]
         public IdeEstabel1260 IdeEstabel { get; set; }
     }
-
-    #region IdeEstab1260
 
     /// <summary>
     /// Identificação do estabelecimento que comercializou a produção
@@ -162,8 +156,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region TpComerc
-
     /// <summary>
     /// Valor total da comercialização por "tipo" de comercialização.
     /// </summary>
@@ -226,8 +218,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region IdeAdquir
-
     /// <summary>
     /// Identificação dos adquirentes da produção.
     /// </summary>
@@ -278,8 +268,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     }
 
-    #region Nfs
-
     /// <summary>
     /// Detalhamento das notas fiscais relativas à comercialização
     /// de produção com o adquirente identificado no grupo superior
@@ -305,7 +293,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         /// <summary>
         /// Data de emissão da nota fiscal/fatura. Validação: O mês/ano da emissão da nota fiscal deve ser
-        ///igual ao mês/ano indicado no registro de abertura do arquivo
+        /// igual ao mês/ano indicado no registro de abertura do arquivo
         /// </summary>
         [XmlIgnore]
 #if INTEROP
@@ -314,10 +302,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset DtEmisNF { get; set; }
 #endif
 
-        /// <summary>
-        /// Data de emissão da nota fiscal/fatura. Validação: O mês/ano da emissão da nota fiscal deve ser
-        ///igual ao mês/ano indicado no registro de abertura do arquivo
-        /// </summary>
         [XmlElement("dtEmisNF")]
         public string DtEmisNFField
         {
@@ -394,11 +378,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion Nfs
-
-    #endregion IdeAdquir
-
-    #region InfoProcJud1260
 
     /// <summary>
     /// Informações de processos judiciais com decisão/sentença
@@ -414,7 +393,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class InfoProcJud1260
     {
         /// <summary>
-        ///  Preencher com o código correspondente ao tipo de processo.
+        /// Preencher com o código correspondente ao tipo de processo.
         /// Valores válidos:
         /// 1 - Administrativo
         /// 2 - Judicial
@@ -425,7 +404,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Informar um número de processo cadastrado através do evento S-1070, cujo indMatProc seja igual a [1].
         /// Validação: Deve ser um número de processo
-        ///administrativo ou judicial válido e existente na Tabela de Processos(S-1070), com indMatProc = [1].
+        /// administrativo ou judicial válido e existente na Tabela de Processos(S-1070), com indMatProc = [1].
         /// </summary>
         [XmlElement("nrProc")]
         public string NrProc { get; set; }
@@ -493,13 +472,4 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion InfoProcJud1260
-
-    #endregion TpComerc
-
-    #endregion  IdeEstab1260
-
-    #endregion InfoComProd1260
-
-    #endregion EvtComProd1260
 }

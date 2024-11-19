@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtReabreEvPer/v_S_01_02_00", IsNullable = false)]
     public class ESocial1298 : XMLBase
     {
+        /// <summary>
+        /// Evento Reabertura dos Eventos Periódicos
+        /// </summary>
         [XmlElement("evtReabreEvPer")]
         public EvtReabreEvPer EvtReabreEvPer { get; set; }
 
@@ -42,9 +45,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento1298 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
     }
