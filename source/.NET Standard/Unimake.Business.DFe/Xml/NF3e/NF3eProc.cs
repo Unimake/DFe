@@ -1,5 +1,9 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+# endif
+
 using System;
 using System.Reflection;
 using System.Text;
@@ -39,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");
 #if INTEROP
-            set => DhEveDhConexaonto = DateTime.Parse(value);
+            set => DhConexao = DateTime.Parse(value);
 #else
             set => DhConexao = DateTimeOffset.Parse(value);
 #endif

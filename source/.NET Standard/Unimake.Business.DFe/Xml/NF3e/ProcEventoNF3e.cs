@@ -41,7 +41,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         {
             get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");
 #if INTEROP
-            set => DhEveDhConexaonto = DateTime.Parse(value);
+            set => DhConexao = DateTime.Parse(value);
 #else
             set => DhConexao = DateTimeOffset.Parse(value);
 #endif

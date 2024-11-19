@@ -58,7 +58,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da ProtNF3e</returns>
-        public ProtN3e GetProtNF3e(int index)
+        public ProtNF3e GetProtNF3e(int index)
         {
             if ((ProtNF3e?.Count ?? 0) == 0)
             {
