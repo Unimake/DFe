@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string Versao { get; set; }
 
         [XmlElement("infEvento")]
-        public InfEvento InfEvento { get; set; }
+        public InfRetEvento InfEvento { get; set; }
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
@@ -33,7 +33,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     [ProgId("Unimake.Business.DFe.Xml.NF3e.InfEvento")]
     [ComVisible(true)]
 #endif
-    public class InfEvento
+    public class InfRetEvento
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string Versao { get; set; }

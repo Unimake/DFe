@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoNF3e versao="versao1" xmlns="http://www.portalfiscal.inf.br/nf3e">
+	<infEvento Id="ID1">
+		<cOrgao>11</cOrgao>
+		<tpAmb>1</tpAmb>
+		<CNPJ>CNPJ1</CNPJ>
+		<chNF3e>chNF3e1</chNF3e>
+		<dhEvento>2024-12-01T00:00:00-03:00</dhEvento>
+		<tpEvento>tpEvento1</tpEvento>
+		<nSeqEvento>nSeqEvento1</nSeqEvento>
+		<detEvento versaoEvento="versaoEvento1">
+			<evCancNF3e xmlns="http://www.portalfiscal.inf.br/nf3e">
+				<descEvento>Cancelamento</descEvento>
+				<nProt>nProt1</nProt>
+				<xJust>xJust_________1</xJust>
+			</evCancNF3e>
+		</detEvento>
+	</infEvento>
+</eventoNF3e>
