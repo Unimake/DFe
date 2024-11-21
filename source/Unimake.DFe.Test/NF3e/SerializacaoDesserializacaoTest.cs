@@ -190,5 +190,26 @@ namespace Unimake.DFe.Test.NF3e
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
 
+        /// <summary>
+        /// Testar a serialização e deserialização do XML NF3eProc
+        /// </summary>
+        /// <param name="arqXML"></param>
+        [Theory]
+        [Trait("DFe", "NF3e")]
+        [InlineData(@"..\..\..\NF3e\Resources\retNF3e.xml")]
+        public void SerializacaoDeserializacaoRetNF3e(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/deserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var xml = XMLUtility.Deserializar<RetNF3e>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
     }
 }
