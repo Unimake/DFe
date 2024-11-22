@@ -10,7 +10,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 {
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.EventoNF3e")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.EvCancNF3e")]
     [ComVisible(true)]
 #endif
     [Serializable()]

@@ -14953,5 +14953,21 @@ namespace Unimake.Business.DFe.Servicos
     }
 
     #endregion TipoLancamento
+
+    #region TipoEventoNF3e
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum TipoEventoNF3e
+    {
+        /// <summary>
+        /// Evento de cancelamento
+        /// </summary>
+        [XmlEnum ("110111")]
+        Cancelamento = 110111,
+    }
+
+    #endregion TipoEventoNF3e
+
     #endregion NF3e
 }

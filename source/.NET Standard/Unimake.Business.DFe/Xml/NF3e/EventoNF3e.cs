@@ -38,8 +38,15 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string Versao { get; set; }
         
+        [XmlIgnore]
+        public UFBrasil COrgao { get; set; }
+
         [XmlElement("cOrgao")]
-        public int COrgao { get; set; }
+        public int COrgaoField
+        {
+            get => (int)COrgao;
+            set => COrgao = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
 
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
@@ -69,7 +76,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         }
 
         [XmlElement("tpEvento")]
-        public string TpEvento { get; set; }
+        public TipoEventoNF3e TpEvento { get; set; }
 
         [XmlElement("nSeqEvento")]
         public string NSeqEvento { get; set; }
