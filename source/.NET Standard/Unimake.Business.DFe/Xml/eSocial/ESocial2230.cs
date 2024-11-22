@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAfastTemp/v_S_01_02_00", IsNullable = false)]
     public class ESocial2230 : XMLBase
     {
+        /// <summary>
+        /// Evento Afastamento Temporário
+        /// </summary>
         [XmlElement("evtAfastTemp")]
         public EvtAfastTemp EvtAfastTemp { get; set; }
 
@@ -42,15 +45,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2230 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2230 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações do afastamento temporário
+        /// </summary>
         [XmlElement("infoAfastamento")]
         public InfoAfastamento InfoAfastamento { get; set; }
     }
@@ -75,12 +90,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeVinculo2230
     {
+        /// <summary>
+        /// Preencher com o número do CPF do trabalhador
+        /// </summary>
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
 
+        /// <summary>
+        /// Matrícula atribuída ao trabalhador pela empresa ou, no caso de servidor público, 
+        /// a matrícula constante no Sistema de Administração de Recursos Humanos do órgão
+        /// </summary>
         [XmlElement("matricula")]
         public string Matricula { get; set; }
 
+        /// <summary>
+        /// Preencher com o código da categoria do trabalhador
+        /// </summary>
         [XmlElement("codCateg")]
 #if INTEROP
         public CodCateg CodCateg { get; set; } = (CodCateg)(-1);
@@ -111,12 +136,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoAfastamento
     {
+        /// <summary>
+        /// Informações de início do afastamento
+        /// </summary>
         [XmlElement("iniAfastamento")]
         public IniAfastamento IniAfastamento { get; set; }
 
+        /// <summary>
+        /// Informações de retificação do afastamento temporário.
+        /// Preenchimento obrigatório caso codMotAfast seja retificado de[01] para[03] ou de[03] para[01]
+        /// </summary>
         [XmlElement("infoRetif")]
         public InfoRetif InfoRetif { get; set; }
 
+        /// <summary>
+        /// Informação do término do afastamento
+        /// </summary>
         [XmlElement("fimAfastamento")]
         public FimAfastamento FimAfastamento { get; set; }
     }
@@ -185,15 +220,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
+        /// <summary>
+        /// Informações referentes ao período aquisitivo de férias
+        /// </summary>
         [XmlElement("perAquis")]
         public PerAquis PerAquis { get; set; }
 
+        /// <summary>
+        /// Informações complementares - Cessão/Requisição de trabalhador
+        /// </summary>
         [XmlElement("infoCessao")]
         public InfoCessao InfoCessao { get; set; }
 
+        /// <summary>
+        /// Informações complementares - Afastamento para exercício de mandato sindical
+        /// </summary>
         [XmlElement("infoMandSind")]
         public InfoMandSind InfoMandSind { get; set; }
 
+        /// <summary>
+        /// Informações complementares - Afastamento para exercício de mandato eletivo
+        /// </summary>
         [XmlElement("infoMandElet")]
         public InfoMandElet InfoMandElet { get; set; }
 

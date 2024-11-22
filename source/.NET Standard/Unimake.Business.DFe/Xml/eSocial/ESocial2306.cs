@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVAltContr/v_S_01_02_00", IsNullable = false)]
     public class ESocial2306 : XMLBase
     {
+        /// <summary>
+        /// Evento TSVE - Alteração Contratual
+        /// </summary>
         [XmlElement("evtTSVAltContr")]
         public EvtTSVAltContr EvtTSVAltContr { get; set; }
 
@@ -42,15 +45,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2306 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do TSVE
+        /// </summary>
         [XmlElement("ideTrabSemVinculo")]
         public IdeTrabSemVinculo2306 IdeTrabSemVinculo { get; set; }
 
+        /// <summary>
+        /// TSVE - Alteração Contratual
+        /// </summary>
         [XmlElement("infoTSVAlteracao")]
         public InfoTSVAlteracao InfoTSVAlteracao { get; set; }
     }
@@ -151,6 +166,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public NatAtividade? NatAtividade { get; set; }
 #endif
 
+        /// <summary>
+        /// Grupo onde são fornecidas informações complementares, preenchidas conforme a categoria do TSVE
+        /// </summary>
         [XmlElement("infoComplementares")]
         public InfoComplementares InfoComplementares { get; set; }
 
@@ -175,24 +193,45 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoComplementares
     {
+        /// <summary>
+        /// Grupo que apresenta o cargo e/ou função ocupada pelo TSVE
+        /// </summary>
         [XmlElement("cargoFuncao")]
         public CargoFuncao2306 CargoFuncao { get; set; }
 
+        /// <summary>
+        /// Informações da remuneração e periodicidade de pagamento
+        /// </summary>
         [XmlElement("remuneracao")]
         public Remuneracao2306 Remuneracao { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao dirigente sindical
+        /// </summary>
         [XmlElement("infoDirigenteSindical")]
         public InfoDirigenteSindical2306 InfoDirigenteSindical { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao trabalhador cedido/em exercício em outro órgão, preenchidas exclusivamente pelo cessionário/órgão de destino
+        /// </summary>
         [XmlElement("infoTrabCedido")]
         public InfoTrabCedido2306 InfoTrabCedido { get; set; }
 
+        /// <summary>
+        /// Informações relativas a servidor público exercente de mandato eletivo
+        /// </summary>
         [XmlElement("infoMandElet")]
         public InfoMandElet2306 InfoMandElet { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao estagiário ou ao beneficiário do Programa Nacional de Prestação de Serviço Civil Voluntário
+        /// </summary>
         [XmlElement("infoEstagiario")]
         public InfoEstagiario2306 InfoEstagiario { get; set; }
 
+        /// <summary>
+        /// Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador exercerá suas atividades
+        /// </summary>
         [XmlElement("localTrabGeral")]
         public LocalTrabGeral2306 LocalTrabGeral { get; set; }
     }
@@ -227,6 +266,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoDirigenteSindical2306
     {
+        /// <summary>
+        /// Tipo de regime previdenciário
+        /// </summary>
         [XmlElement("tpRegPrev")]
         public TpRegPrev TpRegPrev { get; set; }
     }
@@ -241,6 +283,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoTrabCedido2306
     {
+        /// <summary>
+        /// Tipo de regime previdenciário (ou Sistema de Proteção Social dos Militares das Forças Armadas)
+        /// </summary>
         [XmlElement("tpRegPrev")]
         public TpRegPrev TpRegPrev { get; set; }
     }
@@ -292,6 +337,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoEstagiario2306 : InfoEstagiario2300 { }
 
+    /// <summary>
+    /// Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador exercerá suas atividades. 
+    /// Caso o trabalhador exerça suas atividades em instalações de terceiros, este campo deve ser preenchido com o estabelecimento 
+    /// do próprio declarante ao qual o trabalhador esteja vinculado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.LocalTrabGeral2306")]

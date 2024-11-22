@@ -20,6 +20,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenefIn/v_S_01_02_00", IsNullable = false)]
     public class ESocial2400 : XMLBase
     {
+        /// <summary>
+        /// Evento Cadastro de Beneficiário - Início
+        /// </summary>
         [XmlElement("evtCdBenefIn")]
         public EvtCdBenefIn EvtCdBenefIn { get; set; }
 
@@ -43,12 +46,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2400 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Grupo de informações do beneficiário
+        /// </summary>
         [XmlElement("beneficiario")]
         public Beneficiario Beneficiario { get; set; }
     }
@@ -182,9 +194,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Endereço do beneficiário
+        /// </summary>
         [XmlElement("endereco")]
         public Endereco2400 Endereco { get; set; }
 
+        /// <summary>
+        /// Informações dos dependentes
+        /// </summary>
         [XmlElement("dependente")]
         public List<Dependente2400> Dependente { get; set; }
 

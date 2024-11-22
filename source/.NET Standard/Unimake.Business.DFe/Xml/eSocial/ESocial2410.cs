@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenIn/v_S_01_02_00", IsNullable = false)]
     public class ESocial2410 : XMLBase
     {
+        /// <summary>
+        /// Evento Cadastro de Benefício - Início
+        /// </summary>
         [XmlElement("evtCdBenIn")]
         public EvtCdBenIn EvtCdBenIn { get; set; }
 
@@ -42,15 +45,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2410 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações do beneficiário
+        /// </summary>
         [XmlElement("beneficiario")]
         public Beneficiario2410 Beneficiario { get; set; }
 
+        /// <summary>
+        /// Informações do benefício - Início
+        /// </summary>
         [XmlElement("infoBenInicio")]
         public InfoBenInicio InfoBenInicio { get; set; }
     }
@@ -100,7 +115,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         public bool ShouldSerializeCnpjOrigem() => !string.IsNullOrEmpty(CnpjOrigem);
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -177,15 +192,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Dados relativos ao benefício
+        /// </summary>
         [XmlElement("dadosBeneficio")]
         public DadosBeneficio DadosBeneficio { get; set; }
 
+        /// <summary>
+        /// Grupo de informações de transferência de benefício
+        /// </summary>
         [XmlElement("sucessaoBenef")]
         public SucessaoBenef SucessaoBenef { get; set; }
 
+        /// <summary>
+        /// Informações de mudança de CPF do beneficiário
+        /// </summary>
         [XmlElement("mudancaCPF")]
         public MudancaCpf2410 MudancaCPF { get; set; }
 
+        /// <summary>
+        /// Informações da cessação do benefício
+        /// </summary>
         [XmlElement("infoBenTermino")]
         public InfoBenTermino InfoBenTermino { get; set; }
 
@@ -240,6 +267,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? IndDecJud { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações relativas à pensão por morte
+        /// </summary>
         [XmlElement("infoPenMorte")]
         public InfoPenMorte InfoPenMorte { get; set; }
 
@@ -272,6 +302,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpPenMorte")]
         public TpPenMorte TpPenMorte { get; set; }
 
+        /// <summary>
+        /// Informações do instituidor da pensão por morte
+        /// </summary>
         [XmlElement("instPenMorte")]
         public InstPenMorte InstPenMorte { get; set; }
     }

@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExpRisco/v_S_01_02_00", IsNullable = false)]
     public class ESocial2240 : XMLBase
     {
+        /// <summary>
+        /// Evento Condições Ambientais do Trabalho - Agentes Nocivos
+        /// </summary>
         [XmlElement("evtExpRisco")]
         public EvtExpRisco EvtExpRisco { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2240 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2240 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Ambiente de trabalho, atividades desempenhadas e exposição a agentes nocivos
+        /// </summary>
         [XmlElement("infoExpRisco")]
         public InfoExpRisco InfoExpRisco { get; set; }
     }
@@ -166,6 +181,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Informações relativas ao ambiente de trabalho. Somente no caso de trabalhador avulso 
+        /// (código de categoria no RET igual a [2XX]) é possível declarar mais de um ambiente
+        /// </summary>
         [XmlElement("infoAmb")]
         public List<InfoAmb> InfoAmb { get; set; }
 
@@ -206,9 +225,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoAmbCount => (InfoAmb != null ? InfoAmb.Count : 0);
 #endif
 
+        /// <summary>
+        /// Descrição das atividades desempenhadas
+        /// </summary>
         [XmlElement("infoAtiv")]
         public InfoAtiv InfoAtiv { get; set; }
 
+        /// <summary>
+        /// Agente(s) nocivo(s) ao(s) qual(is) o trabalhador está exposto
+        /// </summary>
         [XmlElement("agNoc")]
         public List<AgNoc> AgNoc { get; set; }
 
@@ -249,6 +274,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetAgNocCount => (AgNoc != null ? AgNoc.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações relativas ao responsável pelos registros ambientais
+        /// </summary>
         [XmlElement("respReg")]
         public List<RespReg> RespReg { get; set; }
 
@@ -289,6 +317,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetRespRegCount => (RespReg != null ? RespReg.Count : 0);
 #endif
 
+        /// <summary>
+        /// Observações relativas a registros ambientais
+        /// </summary>
         [XmlElement("obs")]
         public Obs Obs { get; set; }
 
@@ -431,6 +462,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrProcJud")]
         public string NrProcJud { get; set; }
 
+        /// <summary>
+        /// Informações relativas a Equipamentos de Proteção Coletiva - EPC e Equipamentos de Proteção Individual - EPI.
+        /// </summary>
         [XmlElement("epcEpi")]
         public EpcEpi EpcEpi { get; set; }
 
@@ -500,6 +534,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? EficEpi { get; set; }
 #endif
 
+        /// <summary>
+        /// EPI
+        /// </summary>
         [XmlElement("epi")]
         public List<Epi> Epi { get; set; }
 
@@ -540,6 +577,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetEpiCount => (Epi != null ? Epi.Count : 0);
 #endif
 
+        /// <summary>
+        /// Requisitos da Norma Regulamentadora 06 - NR-06 e da Norma Regulamentadora 09 - NR-09 pelo(s) EPI(s) informado(s)
+        /// </summary>
         [XmlElement("epiCompl")]
         public EpiCompl EpiCompl { get; set; }
 

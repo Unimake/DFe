@@ -7,6 +7,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
+    /// <summary>
+    /// S-2418 - Reativação de Benefício - Entes Públicos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ESocial2418")]
@@ -16,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtReativBen/v_S_01_02_00", IsNullable = false)]
     public class ESocial2418 : XMLBase
     {
+        /// <summary>
+        /// Evento Reativação de Benefício
+        /// </summary>
         [XmlElement("evtReativBen")]
         public EvtReativBen EvtReativBen { get; set; }
 
@@ -23,6 +29,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Evento Reativação de Benefício
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.EvtReativBen")]
@@ -30,22 +39,40 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtReativBen
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2418 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do beneficiário e do benefício
+        /// </summary>
         [XmlElement("ideBeneficio")]
         public IdeBeneficio2418 IdeBeneficio { get; set; }
 
+        /// <summary>
+        /// Informações da reativação do benefício
+        /// </summary>
         [XmlElement("infoReativ")]
         public InfoReativ InfoReativ { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2418")]
@@ -53,6 +80,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2418 : IdeEvento2205 { }
 
+    /// <summary>
+    /// Identificação do beneficiário e do benefício
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2418")]
@@ -60,6 +90,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeBeneficio2418 : IdeBeneficio2416 { }
 
+    /// <summary>
+    /// Informações da reativação do benefício
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoReativ")]
@@ -67,6 +100,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoReativ
     {
+        /// <summary>
+        /// Informar a data da efetiva reativação do benefício
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtEfetReativ { get; set; }
@@ -85,6 +121,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Data de início dos efeitos financeiros da reativação do benefício
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DtEfeito { get; set; }

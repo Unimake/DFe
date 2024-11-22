@@ -24,6 +24,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVTermino/v_S_01_02_00", IsNullable = false)]
     public class ESocial2399 : XMLBase
     {
+        /// <summary>
+        /// Evento Trabalhador Sem Vínculo de Emprego/Estatutário - Término
+        /// </summary>
         [XmlElement("evtTSVTermino")]
         public EvtTSVTermino EvtTSVTermino { get; set; }
 
@@ -47,12 +50,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento.
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2399 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE
+        /// </summary>
         [XmlElement("ideTrabSemVinculo")]
         public IdeTrabSemVinculo2399 IdeTrabSemVinculo { get; set; }
 
@@ -172,12 +184,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrProcTrab")]
         public string NrProcTrab { get; set; }
 
+        /// <summary>
+        /// Informação do novo CPF do trabalhador
+        /// </summary>
         [XmlElement("mudancaCPF")]
         public MudancaCPF2399 MudancaCPF { get; set; }
 
+        /// <summary>
+        /// Grupo onde são prestadas as informações relativas às verbas rescisórias do diretor não empregado, com FGTS
+        /// </summary>
         [XmlElement("verbasResc")]
         public VerbasResc2399 VerbasResc { get; set; }
 
+        /// <summary>
+        /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração.
+        /// </summary>
         [XmlElement("remunAposTerm")]
         public RemunAposTerm2399 RemunAposTerm { get; set; }
 
@@ -233,6 +254,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class VerbasResc2399
     {
+        /// <summary>
+        /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador
+        /// </summary>
         [XmlElement("dmDev")]
         public List<DmDev2399> DmDev { get; set; }
 
@@ -273,6 +297,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetDmDevCount => (DmDev != null ? DmDev.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações sobre a existência de processos judiciais do trabalhador com decisão favorável quanto à 
+        /// não incidência de contribuições sociais e/ou Imposto de Renda
+        /// </summary>
         [XmlElement("procJudTrab")]
         public List<ProcJudTrab2399> ProcJudTrab { get; set; }
 
@@ -313,11 +341,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetProcJudTrabCount => (ProcJudTrab != null ? ProcJudTrab.Count : 0);
 #endif
 
+        /// <summary>
+        /// Grupo preenchido exclusivamente em caso de trabalhador que possua outros vínculos/atividades nos quais já tenha ocorrido desconto de contribuição previdenciária
+        /// </summary>
         [XmlElement("infoMV")]
         public InfoMV2399 InfoMV { get; set; }
 
     }
 
+    /// <summary>
+    /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.DmDev2399")]
@@ -325,9 +359,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DmDev2399
     {
+        /// <summary>
+        /// Identificador atribuído pela empresa para o demonstrativo de valores devidos ao trabalhador relativo a verbas rescisórias
+        /// </summary>
         [XmlElement("ideDmDev")]
         public string IdeDmDev { get; set; }
 
+        /// <summary>
+        /// Indicativo de Rendimentos Recebidos Acumuladamente - RRA
+        /// </summary>
         [XmlElement("indRRA")]
 #if INTEROP
         public SimNaoLetra IndRRA { get; set; } = (SimNaoLetra)(-1);
@@ -335,9 +375,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? IndRRA { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA
+        /// </summary>
         [XmlElement("infoRRA")]
         public InfoRRA2399 InfoRRA { get; set; }
 
+        /// <summary>
+        /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração
+        /// </summary>
         [XmlElement("ideEstabLot")]
         public List<IdeEstabLot2399> IdeEstabLot { get; set; }
 #if INTEROP

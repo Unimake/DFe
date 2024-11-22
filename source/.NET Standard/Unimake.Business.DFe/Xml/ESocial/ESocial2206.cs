@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
-    /// Evento Alteração de Contrato de Trabalho/Relação Estatutária.
+    /// S-2206 - Evento Alteração de Contrato de Trabalho/Relação Estatutária.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -24,6 +24,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAltContratual/v_S_01_02_00", IsNullable = false)]
     public class ESocial2206 : XMLBase
     {
+        /// <summary>
+        /// Evento Alteração de Contrato de Trabalho
+        /// </summary>
         [XmlElement("evtAltContratual")]
         public EvtAltContratual EvtAltContratual { get; set; }
 
@@ -48,34 +51,40 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2206 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2206 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Alteração de dados contratuais
+        /// </summary>
         [XmlElement("altContratual")]
         public AltContratual AltContratual { get; set; }
     }
-
-    #region IdeEvento
 
     /// <summary>
     /// Informações de identificação do evento.
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-        [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2206")]
-        [ComVisible(true)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2206")]
+    [ComVisible(true)]
 #endif
     public class IdeEvento2206 : IdeEvento2190 { }
-
-    #endregion IdeEvento
-
-    #region IdeVinculo
 
     /// <summary>
     /// Informações de identificação do trabalhador e do vínculo.
@@ -99,10 +108,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("matricula")]
         public string Matricula { get; set; }
     }
-
-    #endregion IdeVinculo
-
-    #region altContratual
 
     /// <summary>
     /// Alteração de dados contratuais
@@ -180,6 +185,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dscAlt")]
         public string DscAlt { get; set; }
 
+        /// <summary>
+        /// Informações do vinculo
+        /// </summary>
         [XmlElement("vinculo")]
         public Vinculo Vinculo { get; set; }
 
@@ -190,8 +198,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-
-    #region Vinculo
 
     /// <summary>
     /// Grupo de informações do vínculo trabalhista.
@@ -205,14 +211,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpRegPrev")]
         public TpRegPrev TpRegPrev { get; set; }
 
+        /// <summary>
+        /// Informações do regime trabalhista
+        /// </summary>
         [XmlElement("infoRegimeTrab")]
         public InfoRegimeTrab InfoRegimeTrab { get; set; }
 
+        /// <summary>
+        /// Informações do contrato de trabalho
+        /// </summary>
         [XmlElement("infoContrato")]
         public InfoContrato InfoContrato { get; set; }
     }
-
-    #region InfoRegimeTrab
 
     /// <summary>
     /// Informações do regime trabalhista 
@@ -224,15 +234,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoRegimeTrab
     {
-
+        /// <summary>
+        /// Informações de trabalhador celetista
+        /// </summary>
         [XmlElement("infoCeletista")]
         public InfoCeletista InfoCeletista { get; set; }
 
+        /// <summary>
+        /// Informações de trabalhador estatutário
+        /// </summary>
         [XmlElement("infoEstatutario")]
         public InfoEstatutario InfoEstatutario { get; set; }
     }
-
-    #region InfoCeletista
 
     /// <summary>
     /// Informações de trabalhador celetista
@@ -275,19 +288,24 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cnpjSindCategProf")]
         public string CnpjSindCategProf { get; set; }
 
+        /// <summary>
+        /// Dados sobre trabalho temporário
+        /// </summary>
         [XmlElement("trabTemporario")]
         public TrabTemporario TrabTemporario { get; set; }
 
+        /// <summary>
+        /// Informações relacionadas ao aprendiz
+        /// </summary>
         [XmlElement("aprend")]
         public Aprend Aprend { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializeDtBase() => DtBase > 0;
 
         #endregion ShouldSerialize
     }
-
-    #region TrabTemporario
 
     /// <summary>
     /// Dados sobre trabalho temporário. Preenchimento
@@ -305,13 +323,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("justProrr")]
         public string JustProrr { get; set; }
-    }
-    #endregion TrabTemporario
 
-    #region Aprendiz
+    }
 
     /// <summary>
-    /// - Informações relacionadas ao aprendiz.
+    /// Informações relacionadas ao aprendiz
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -410,13 +426,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeCnpjPrat() => !string.IsNullOrEmpty(CnpjPrat);
 
         #endregion ShouldSerialize
-
     }
-    #endregion Aprendiz
-
-    #endregion InfoCeletista
-
-    #region InfoEstatutario
 
     /// <summary>
     /// Informações de trabalhador estatutário.
@@ -453,11 +463,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indAbonoPerm")]
         public SimNaoLetra IndAbonoPerm { get; set; }
     }
-    #endregion InfoEstatutario
-
-    #endregion InfoRegimeTrab
-
-    #region InfoContrato
 
     /// <summary>
     /// Informações do contrato de trabalho.
@@ -518,29 +523,49 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public SimNaoLetra? AcumCargo { get; set; }
 #endif
+
         /// <summary>
         /// Preencher com o código da categoria do trabalhador.
         /// </summary>
         [XmlElement("codCateg")]
         public CodCateg CodCateg { get; set; }
 
+        /// <summary>
+        /// Informações da remuneração e periodicidade de pagamento
+        /// </summary>
         [XmlElement("remuneracao")]
         public Remuneracao2206 Remuneracao { get; set; }
 
+        /// <summary>
+        /// Duração do contrato de trabalho
+        /// </summary>
         [XmlElement("duracao")]
         public Duracao Duracao { get; set; }
 
+        /// <summary>
+        /// Informações do local de trabalho
+        /// </summary>
         [XmlElement("localTrabalho")]
         public LocalTrabalho LocalTrabalho { get; set; }
 
+        /// <summary>
+        /// Informações do horário contratual do trabalhador
+        /// </summary>
         [XmlElement("horContratual")]
         public HorContratual HorContratual { get; set; }
 
+        /// <summary>
+        /// Dados do alvará judicial
+        /// </summary>
         [XmlElement("alvaraJudicial")]
         public AlvaraJudicial AlvaraJudicial { get; set; }
 
+        /// <summary>
+        /// Observações do contrato de trabalho
+        /// </summary>
         [XmlElement("observacoes")]
         public List<Observacoes2306> Observacoes { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -578,6 +603,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetObservacoesCount => (Observacoes != null ? Observacoes.Count : 0);
 #endif
 
+        /// <summary>
+        /// Treinamentos, capacitações, exercícios simulados e outras anotações
+        /// </summary>
         [XmlElement("treiCap")]
         public List<TreiCap> TreiCap { get; set; }
 #if INTEROP
@@ -617,6 +645,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetTreiCapCount => (TreiCap != null ? TreiCap.Count : 0);
 #endif
         #region ShouldSerialize
+
         public bool ShouldSerializeNmCargo() => !string.IsNullOrEmpty(NmCargo);
         public bool ShouldSerializeCBOCargo() => !string.IsNullOrEmpty(CBOCargo);
         public bool ShouldSerializeNmFuncao() => !string.IsNullOrEmpty(NmFuncao);
@@ -630,8 +659,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-
-    #region Remuneracao
 
     /// <summary>
     /// Informações da remuneração e periodicidade de pagamento.
@@ -679,9 +706,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion Remuneracao
-
-    #region Duracao
 
     /// <summary>
     /// Duração do contrato de trabalho.
@@ -723,17 +747,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset DtTerm { get; set; }
 #endif
 
-        /// <summary>
-        /// Data do término do contrato por prazo determinado.
-        /// Validação: O preenchimento é obrigatório se tpContr =
-        /// [2].Não informar se tpContr = [1]. Se preenchido, deve ser
-        /// igual ou posterior à data de admissão(no caso de
-        /// transferência ou mudança de CPF, igual ou posterior a
-        /// sucessaoVinc/dtTransf, transfDom/dtTransf ou dtAltCPF do
-        /// evento S-2200, conforme o caso).
-        /// Retornar alerta caso a data informada seja anterior a
-        /// dtAlteracao.
-        /// </summary>
         [XmlElement("dtTerm")]
         public string DtTermField
         {
@@ -755,14 +768,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string ObjDet { get; set; }
 
         #region ShouldSerialize
+
         public bool ShouldSerializeDtTermField() => !string.IsNullOrEmpty(DtTermField);
         public bool ShouldSerializeObjDet() => TipoDeContratoDeTrabalho == TipoDeContratoDeTrabalho.PrazoDeterminadoOcorrencia;
 
         #endregion ShouldSerialize
     }
-    #endregion Duracao
-
-    #region LocalTrabalho
 
     /// <summary>
     /// Informações do local de trabalho.
@@ -774,15 +785,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class LocalTrabalho
     {
-
+        /// <summary>
+        /// Estabelecimento onde o trabalhador exercerá suas atividades
+        /// </summary>
         [XmlElement("localTrabGeral")]
         public LocalTrabGeral2206 LocalTrabGeral { get; set; }
 
+        /// <summary>
+        /// Endereço de trabalho do trabalhador doméstico e trabalhador temporário
+        /// </summary>
         [XmlElement("localTempDom")]
         public LocalTempDom LocalTempDom { get; set; }
     }
-
-    #region LocalTrabGeral
 
     /// <summary>
     ///  Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador
@@ -828,10 +842,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
-    #endregion LocalTrabGeral
-
-    #region LocalTempDom
-
     /// <summary>
     /// Grupo preenchido exclusivamente em caso de trabalhador
     /// doméstico e trabalhador temporário, indicando o
@@ -843,12 +853,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     public class LocalTempDom : Brasil { }
-
-    #endregion LocalTempDom
-
-    #endregion LocalTrabalho
-
-    #region HorContratual
 
     /// <summary>
     /// Informações do horário contratual do trabalhador.
@@ -943,10 +947,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
     }
 
-    #endregion HorContratual
-
-    #region AlvaraJudicial
-
     /// <summary>
     /// Informações do alvará judicial em caso de contratação de
     /// menores de 14 anos, em qualquer categoria, e de maiores
@@ -967,9 +967,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string NrProcJud { get; set; }
 
     }
-    #endregion AlvaraJudicial
-
-    #region Observações
 
     /// <summary>
     /// Observações do contrato de trabalho.
@@ -987,9 +984,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("observacao")]
         public string Observacao { get; set; }
     }
-    #endregion Observações
-
-    #region TreiCap
 
     /// <summary>
     /// Treinamentos, capacitações, exercícios simulados,
@@ -1011,12 +1005,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("codTreiCap")]
         public CodTreiCap CodTreiCap { get; set; }
+
     }
-    #endregion TreiCap
-
-    #endregion InfoContrato
-
-    #endregion Vinculo
-
-    #endregion altContratual
 }

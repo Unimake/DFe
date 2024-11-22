@@ -72,6 +72,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public InfoBenTermino2420 InfoBenTermino { get; set; }
     }
 
+    /// <summary>
+    /// Informações de identificação do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento2420")]
@@ -79,6 +82,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEvento2420 : IdeEvento2206 { }
 
+    /// <summary>
+    /// Identificação do beneficiário e do benefício.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeBeneficio2420")]
