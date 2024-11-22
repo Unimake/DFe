@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCAT/v_S_01_02_00", IsNullable = false)]
     public class ESocial2210 : XMLBase
     {
+        /// <summary>
+        /// Evento Comunicação de Acidente de Trabalho
+        /// </summary>
         [XmlElement("evtCAT")]
         public EvtCAT EvtCAT { get; set; }
 
@@ -42,15 +45,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2210 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2210 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Comunicação de Acidente de Trabalho - CAT
+        /// </summary>
         [XmlElement("cat")]
         public Cat Cat { get; set; }
     }
@@ -246,18 +261,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra ? HouveAfast { get; set; }
 #endif
 
+        /// <summary>
+        /// Local do acidente
+        /// </summary>
         [XmlElement("localAcidente")]
         public LocalAcidente LocalAcidente { get; set; }
 
+        /// <summary>
+        /// Parte do corpo atingida
+        /// </summary>
         [XmlElement("parteAtingida")]
         public ParteAtingida ParteAtingida { get; set; }
 
+        /// <summary>
+        /// Agente causador
+        /// </summary>
         [XmlElement("agenteCausador")]
         public AgenteCausador AgenteCausador { get; set; }
 
+        /// <summary>
+        /// Atestado médico
+        /// </summary>
         [XmlElement("atestado")]
         public Atestado Atestado { get; set; }
 
+        /// <summary>
+        /// Grupo que indica a CAT anterior, no caso de CAT de reabertura ou de comunicação de óbito
+        /// </summary>
         [XmlElement("catOrigem")]
         public CatOrigem CatOrigem { get; set; }
 
@@ -368,6 +398,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codPostal")]
         public string CodPostal { get; set; }
 
+        /// <summary>
+        /// Identificação do local onde ocorreu o acidente ou do estabelecimento ao qual o trabalhador avulso está vinculado
+        /// </summary>
         [XmlElement("ideLocalAcid")]
         public IdeLocalAcid IdeLocalAcid { get; set; }
 
@@ -546,6 +579,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("observacao")]
         public string Observacao { get; set; }
 
+        /// <summary>
+        /// Médico/Dentista que emitiu o atestado
+        /// </summary>
         [XmlElement("emitente")]
         public Emitente Emitente { get; set; }
 

@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtDeslig/v_S_01_02_00", IsNullable = false)]
     public class ESocial2299 : XMLBase
     {
+        /// <summary>
+        /// Evento Desligamento
+        /// </summary>
         [XmlElement("evtDeslig")]
         public EvtDeslig EvtDeslig { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2299 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2299 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao desligamento do vínculo
+        /// </summary>
         [XmlElement("infoDeslig")]
         public InfoDeslig InfoDeslig { get; set; }
     }
@@ -270,6 +285,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? IndPDV { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações relativas ao trabalho intermitente
+        /// </summary>
         [XmlElement("infoInterm")]
         public List<InfoInterm2299> InfoInterm { get; set; }
 
@@ -310,6 +328,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoIntermCount => (InfoInterm != null ? InfoInterm.Count : 0);
 #endif
 
+        /// <summary>
+        /// Observações sobre o desligamento
+        /// </summary>
         [XmlElement("observacoes")]
         public List<Observacoes2299> Observacoes { get; set; }
 
@@ -350,21 +371,39 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetObservacoesCount => (Observacoes != null ? Observacoes.Count : 0);
 #endif
 
+        /// <summary>
+        /// Grupo preenchido exclusivamente nos casos de sucessão do vínculo trabalhista, com a identificação da empresa sucessora
+        /// </summary>
         [XmlElement("sucessaoVinc")]
         public SucessaoVinc2299 SucessaoVinc { get; set; }
 
+        /// <summary>
+        /// Transferência de titularidade do empregado doméstico para outro representante da mesma unidade familiar
+        /// </summary>
         [XmlElement("transfTit")]
         public TransfTit TransfTit { get; set; }
 
+        /// <summary>
+        /// Informação do novo CPF do trabalhador
+        /// </summary>
         [XmlElement("mudancaCPF")]
         public MudancaCPF2299 MudancaCPF { get; set; }
 
+        /// <summary>
+        /// Grupo onde são prestadas as informações relativas às verbas devidas ao trabalhador na rescisão contratual
+        /// </summary>
         [XmlElement("verbasResc")]
         public VerbasResc VerbasResc { get; set; }
 
+        /// <summary>
+        /// Informações sobre a "quarentena" remunerada de trabalhador desligado ou outra situação de desligamento com data anterior
+        /// </summary>
         [XmlElement("remunAposDeslig")]
         public RemunAposDeslig2299 RemunAposDeslig { get; set; }
 
+        /// <summary>
+        /// Informações sobre operação de crédito consignado com garantia de FGTS
+        /// </summary>
         [XmlElement("consigFGTS")]
         public List<ConsigFGTS> ConsigFGTS { get; set; }
 
@@ -461,9 +500,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class SucessaoVinc2299
     {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05
+        /// </summary>
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }
 
+        /// <summary>
+        /// Informar o número de inscrição do empregador sucessor, de acordo com o tipo de inscrição indicado no campo sucessaoVinc/tpInsc
+        /// </summary>
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
     }
@@ -533,6 +578,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class VerbasResc
     {
+        /// <summary>
+        /// Identificação de cada um dos demonstrativos de valores devidos ao trabalhador
+        /// </summary>
         [XmlElement("dmDev")]
         public List<DmDev2299> DmDev { get; set; }
 
@@ -573,6 +621,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetDmDevCount => (DmDev != null ? DmDev.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações sobre a existência de processos judiciais do trabalhador com decisão favorável 
+        /// quanto à não incidência de contribuições sociais e/ou Imposto de Renda
+        /// </summary>
         [XmlElement("procJudTrab")]
         public List<ProcJudTrab2299> ProcJudTrab { get; set; }
 
@@ -613,9 +665,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetProcJudTrabCount => (ProcJudTrab != null ? ProcJudTrab.Count : 0);
 #endif
 
+        /// <summary>
+        /// Grupo preenchido exclusivamente em caso de trabalhador que possua outros vínculos/atividades 
+        /// nos quais já tenha ocorrido desconto de contribuição previdenciária
+        /// </summary>
         [XmlElement("infoMV")]
         public InfoMV2299 InfoMV { get; set; }
 
+        /// <summary>
+        /// Informação sobre processo judicial que suspende a exigibilidade da Contribuição Social Rescisória
+        /// </summary>
         [XmlElement("procCS")]
         public ProcCS2299 ProcCS { get; set; }
     }
@@ -647,12 +706,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public SimNaoLetra? IndRRA { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações complementares relativas a Rendimentos Recebidos Acumuladamente - RRA
+        /// </summary>
         [XmlElement("infoRRA")]
         public InfoRRA2299 InfoRRA { get; set; }
 
+        /// <summary>
+        /// Verbas rescisórias relativas ao mês/ano da data do desligamento
+        /// </summary>
         [XmlElement("infoPerApur")]
         public InfoPerApur2299 InfoPerApur { get; set; }
 
+        /// <summary>
+        /// Remuneração relativa a períodos anteriores, devida em função de acordos coletivos, legislação específica, convenção coletiva de trabalho, 
+        /// dissídio ou conversão de licença saúde em acidente de trabalho
+        /// </summary>
         [XmlElement("infoPerAnt")]
         public InfoPerAnt2299 InfoPerAnt { get; set; }
 
@@ -687,6 +756,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoPerApur2299
     {
+        /// <summary>
+        /// Identificação do estabelecimento e da lotação nos quais o trabalhador possui remuneração no período de apuração
+        /// </summary>
         [XmlElement("ideEstabLot")]
         public List<IdeEstabLot2299> IdeEstabLot { get; set; }
 
@@ -756,6 +828,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codLotacao")]
         public string Codlotacao { get; set; }
 
+        /// <summary>
+        /// Detalhamento das verbas rescisórias devidas ao trabalhador. Deve haver pelo menos uma rubrica de folha, mesmo que o valor 
+        /// líquido a ser pago ao trabalhador seja 0 (zero) em função de descontos
+        /// </summary>
         [XmlElement("detVerbas")]
         public List<DetVerbas> DetVerbas { get; set; }
 
@@ -796,9 +872,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetDetVerbasCount => (DetVerbas != null ? DetVerbas.Count : 0);
 #endif
 
+        /// <summary>
+        /// Grupo referente ao detalhamento do grau de exposição do trabalhador aos agentes nocivos que ensejam a cobrança da 
+        /// contribuição adicional para financiamento dos benefícios de aposentadoria especial
+        /// </summary>
         [XmlElement("infoAgNocivo")]
         public InfoAgNocivo2299 InfoAgNocivo { get; set; }
 
+        /// <summary>
+        /// Informação relativa a empresas enquadradas no regime de tributação Simples Nacional
+        /// </summary>
         [XmlElement("infoSimples")]
         public InfoSimples InfoSimples { get; set; }
     }
@@ -941,6 +1024,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoPerAnt2299
     {
+        /// <summary>
+        /// Identificação do instrumento ou situação ensejadora da remuneração relativa a períodos de apuração anteriores
+        /// </summary>
         [XmlElement("ideADC")]
         public List<IdeADC2299> IdeADC { get; set; }
 
@@ -1025,6 +1111,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dsc")]
         public string Dsc { get; set; }
 
+        /// <summary>
+        /// Identificação do período ao qual se referem as diferenças de remuneração
+        /// </summary>
         [XmlElement("idePeriodo")]
         public List<IdePeriodo2299> IdePeriodo { get; set; }
 
@@ -1103,6 +1192,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Identificação do estabelecimento e da lotação aos quais se referem as diferenças de remuneração do mês identificado no grupo superior
+        /// </summary>
         [XmlElement("ideEstabLot")]
         public List<IdeEstabLot2299> IdeEstabLot { get; set; }
 

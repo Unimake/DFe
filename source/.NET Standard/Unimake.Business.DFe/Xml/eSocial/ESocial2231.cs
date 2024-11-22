@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCessao/v_S_01_02_00", IsNullable = false)]
     public class ESocial2231 : XMLBase
     {
+        /// <summary>
+        /// Evento Cessão/Exercício em Outro Órgão
+        /// </summary>
         [XmlElement("evtCessao")]
         public EvtCessao EvtCessao { get; set; }
 
@@ -42,15 +45,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2231 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2231 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações da cessão/exercício em outro órgão
+        /// </summary>
         [XmlElement("infoCessao")]
         public InfoCessao2231 InfoCessao { get; set; }
     }
@@ -85,9 +100,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoCessao2231
     {
+        /// <summary>
+        /// Informações de início da cessão/exercício em outro órgão
+        /// </summary>
         [XmlElement("iniCessao")]
         public IniCessao IniCessao { get; set; }
 
+        /// <summary>
+        /// Informação de término da cessão/exercício em outro órgão
+        /// </summary>
         [XmlElement("fimCessao")]
         public FimCessao FimCessao { get; set; }
     }

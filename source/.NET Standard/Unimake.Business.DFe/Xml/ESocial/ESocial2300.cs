@@ -21,6 +21,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVInicio/v_S_01_02_00", IsNullable = false)]
     public class ESocial2300 : XMLBase
     {
+        /// <summary>
+        /// Evento TSVE - Trabalhador Sem Vínculo de Emprego/Estatutário - Início
+        /// </summary>
         [XmlElement("evtTSVInicio")]
         public EvtTSVInicio EvtTSVInicio { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento.
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2300 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Grupo de informações do trabalhador
+        /// </summary>
         [XmlElement("trabalhador")]
         public Trabalhador2300 Trabalhador { get; set; }
 
+        /// <summary>
+        /// Trabalhador Sem Vínculo de Emprego/Estatutário - TSVE - Início. 
+        /// </summary>
         [XmlElement("infoTSVInicio")]
         public InfoTSVInicio InfoTSVInicio { get; set; }
 
@@ -170,15 +185,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public NatAtividade? NatAtividade { get; set; }
 #endif
 
+        /// <summary>
+        /// Grupo onde são fornecidas informações complementares, preenchidas conforme a categoria do TSVE
+        /// </summary>
         [XmlElement("infoComplementares")]
         public InfoComplem2300 InfoComplementares { get; set; }
 
+        /// <summary>
+        /// Informações de mudança de CPF do trabalhador
+        /// </summary>
         [XmlElement("mudancaCPF")]
         public MudancaCPF2300 MudancaCPF { get; set; }
 
+        /// <summary>
+        /// Informações de afastamento do TSVE
+        /// </summary>
         [XmlElement("afastamento")]
         public Afastamento2300 Afastamento { get; set; }
 
+        /// <summary>
+        /// Informação do término do TSVE
+        /// </summary>
         [XmlElement("termino")]
         public Termino Termino { get; set; }
 
@@ -229,28 +256,52 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoComplem2300
     {
-
+        /// <summary>
+        /// Grupo que apresenta o cargo e/ou função ocupada pelo TSVE
+        /// </summary>
         [XmlElement("cargoFuncao")]
         public CargoFuncao2300 CargoFuncao { get; set; }
 
+        /// <summary>
+        /// Informações da remuneração e periodicidade de pagamento
+        /// </summary>
         [XmlElement("remuneracao")]
         public Remuneracao2300 Remuneracao { get; set; }
 
+        /// <summary>
+        /// Informações do Fundo de Garantia do Tempo de Serviço - FGTS
+        /// </summary>
         [XmlElement("FGTS")]
         public FGTS2300 FGTS { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao dirigente sindical
+        /// </summary>
         [XmlElement("infoDirigenteSindical")]
         public InfoDirigenteSindical InfoDirigenteSindical { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao trabalhador cedido/em exercício em outro órgão ou servidor público indicado para conselho, 
+        /// preenchidas exclusivamente pelo cessionário/órgão de destino
+        /// </summary>
         [XmlElement("infoTrabCedido")]
         public InfoTrabCedido InfoTrabCedido { get; set; }
 
+        /// <summary>
+        /// Informações relativas a servidor público exercente de mandato eletivo
+        /// </summary>
         [XmlElement("infoMandElet")]
         public InfoMandElet2300 InfoMandElet { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao estagiário ou ao beneficiário do Programa Nacional de Prestação de Serviço Civil Voluntário
+        /// </summary>
         [XmlElement("infoEstagiario")]
         public InfoEstagiario2300 InfoEstagiario { get; set; }
 
+        /// <summary>
+        /// Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador exercerá suas atividades
+        /// </summary>
         [XmlElement("localTrabGeral")]
         public LocalTrabGeral2300 LocalTrabGeral { get; set; }
     }
@@ -726,12 +777,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Instituição de ensino ou entidade de formação/qualificação
+        /// </summary>
         [XmlElement("instEnsino")]
         public InstEnsino InstEnsino { get; set; }
 
+        /// <summary>
+        /// Agente de integração
+        /// </summary>
         [XmlElement("ageIntegracao")]
         public AgeIntegracao AgeIntegracao { get; set; }
 
+        /// <summary>
+        /// Supervisor do estágio
+        /// </summary>
         [XmlElement("supervisorEstagio")]
         public SupervisorEstagio SupervisorEstagio { get; set; }
 

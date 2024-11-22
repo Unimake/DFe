@@ -20,6 +20,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAltCadastral/v_S_01_02_00", IsNullable = false)]
     public class ESocial2205 : XMLBase
     {
+        /// <summary>
+        /// Evento Alteração de Dados Cadastrais do Trabalhador
+        /// </summary>
         [XmlElement("evtAltCadastral")]
         public EvtAltCadastral EvtAltCadastral { get; set; }
 
@@ -43,15 +46,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do 
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2205 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do trabalhador
+        /// </summary>
         [XmlElement("ideTrabalhador")]
         public IdeTrabalhador2205 IdeTrabalhador { get; set; }
 
+        /// <summary>
+        /// Alteração de dados cadastrais do trabalhador
+        /// </summary>
         [XmlElement("alteracao")]
         public Alteracao2205 Alteracao { get; set; }
     }
@@ -114,7 +129,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
-
+        /// <summary>
+        /// Informações pessoais do trabalhador
+        /// </summary>
         [XmlElement("dadosTrabalhador")]
         public DadosTrabalhador DadosTrabalhador { get; set; }
     }
@@ -175,15 +192,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("paisNac")]
         public string PaisNac { get; set; }
 
+        /// <summary>
+        /// Endereço do trabalhador
+        /// </summary>
         [XmlElement("endereco")]
         public Endereco2205 Endereco { get; set; }
 
+        /// <summary>
+        /// Informações do trabalhador imigrante
+        /// </summary>
         [XmlElement("trabImig")]
         public TrabImig2205 TrabImig { get; set; }
 
+        /// <summary>
+        /// Pessoa com deficiência
+        /// </summary>
         [XmlElement("infoDeficiencia")]
         public InfoDeficiencia2205 InfoDeficiencia { get; set; }
 
+        /// <summary>
+        /// Informações dos dependentes
+        /// </summary>
         [XmlElement("dependente")]
         public List<Dependente2205> Dependente { get; set; }
 
@@ -224,6 +253,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetDependenteCount => (Dependente != null ? Dependente.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações de contato
+        /// </summary>
         [XmlElement("contato")]
         public Contato2205 Contato { get; set; }
 
@@ -250,9 +282,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class Endereco2205
     {
+        /// <summary>
+        /// Endereço no Brasil
+        /// </summary>
         [XmlElement("brasil")]
         public Brasil Brasil { get; set; }
 
+        /// <summary>
+        /// Endereço no exterior
+        /// </summary>
         [XmlElement("exterior")]
         public Exterior Exterior { get; set; }
     }

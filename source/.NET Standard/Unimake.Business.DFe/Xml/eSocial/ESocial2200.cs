@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAdmissao/v_S_01_02_00", IsNullable = false)]
     public class ESocial2200 : XMLBase
     {
+        /// <summary>
+        /// Evento Cadastramento Inicial do Vínculo e Admissão/Ingresso de Trabalhador
+        /// </summary>
         [XmlElement("evtAdmissao")]
         public EvtAdmissao EvtAdmissao { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2200 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações pessoais do trabalhador
+        /// </summary>
         [XmlElement("trabalhador")]
         public Trabalhador2200 Trabalhador { get; set; }
 
+        /// <summary>
+        /// Informações do vínculo
+        /// </summary>
         [XmlElement("vinculo")]
         public Vinculo2200 Vinculo { get; set; }
     }
@@ -124,19 +139,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nmSoc")]
         public string NmSoc { get; set; }
 
+        /// <summary>
+        /// Grupo de informações do nascimento do trabalhador
+        /// </summary>
         [XmlElement("nascimento")]
         public Nascimento Nascimento { get; set; }
 
+        /// <summary>
+        /// Endereço do trabalhador
+        /// </summary>
         [XmlElement("endereco")]
         public Endereco2200 Endereco { get; set; }
 
+        /// <summary>
+        /// Informações do trabalhador imigrante
+        /// </summary>
         [XmlElement("trabImig")]
         public TrabImig2200 TrabImig { get; set; }
 
+        /// <summary>
+        /// Pessoa com deficiência
+        /// </summary>
         [XmlElement("infoDeficiencia")]
         public InfoDeficiencia2200 InfoDeficiencia { get; set; }
 
-
+        /// <summary>
+        /// Informações dos dependentes
+        /// </summary>
         [XmlElement("dependente")]
         public List<Dependente2200> Dependente { get; set; }
 
@@ -177,6 +206,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetDependenteCount => (Dependente != null ? Dependente.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações de contato
+        /// </summary>
         [XmlElement("contato")]
         public Contato Contato { get; set; }
 
@@ -347,27 +379,51 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cadIni")]
         public SimNaoLetra CadIni { get; set; }
 
+        /// <summary>
+        /// Informações do regime trabalhista
+        /// </summary>
         [XmlElement("infoRegimeTrab")]
         public InfoRegimeTrab2200 InfoRegimeTrab { get; set; }
 
+        /// <summary>
+        /// Informações do contrato de trabalho
+        /// </summary>
         [XmlElement("infoContrato")]
         public InfoContrato2200 InfoContrato { get; set; }
 
+        /// <summary>
+        /// Grupo de informações da sucessão de vínculo trabalhista/estatutário
+        /// </summary>
         [XmlElement("sucessaoVinc")]
         public SucessaoVinc2200 SucessaoVinc { get; set; }
 
+        /// <summary>
+        /// Informações do empregado doméstico transferido de outro representante da mesma unidade familiar
+        /// </summary>
         [XmlElement("transfDom")]
         public TransfDom TransfDom { get; set; }
 
+        /// <summary>
+        /// Informações de mudança de CPF do trabalhador
+        /// </summary>
         [XmlElement("mudancaCPF")]
         public MudancaCPF2200 MudancaCPF { get; set; }
 
+        /// <summary>
+        /// Informações de afastamento do trabalhador
+        /// </summary>
         [XmlElement("afastamento")]
         public Afastamento2200 Afastamento { get; set; }
 
+        /// <summary>
+        /// Informação do desligamento do trabalhador
+        /// </summary>
         [XmlElement("desligamento")]
         public Desligamento Desligamento { get; set; }
 
+        /// <summary>
+        /// Informação de cessão/exercício em outro órgão do trabalhador
+        /// </summary>
         [XmlElement("cessao")]
         public Cessao Cessao { get; set; }
     }
@@ -617,9 +673,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeEstabVinc
     {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05
+        /// </summary>
         [XmlElement("tpInsc")]
         public TiposInscricao TpInsc { get; set; }
 
+        /// <summary>
+        /// Informar o número de inscrição do contratante de serviços, de acordo com o tipo de inscrição informado em ideEstabVinc/tpInsc
+        /// </summary>
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
     }
@@ -634,6 +696,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class IdeTrabSubstituido
     {
+        /// <summary>
+        /// CPF do trabalhador substituído
+        /// </summary>
         [XmlElement("cpfTrabSubst")]
         public string CpfTrabSubst { get; set; }
     }
@@ -887,21 +952,40 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codCateg")]
         public CodCateg CodCateg { get; set; }
 
+        /// <summary>
+        /// Informações da remuneração e periodicidade de pagamento
+        /// </summary>
         [XmlElement("remuneracao")]
         public Remuneracao2200 Remuneracao { get; set; }
 
+        /// <summary>
+        /// Informações da remuneração e periodicidade de pagamento
+        /// </summary>
         [XmlElement("duracao")]
         public Duracao2200 Duracao { get; set; }
 
+        /// <summary>
+        /// Informações do local de trabalho
+        /// </summary>
         [XmlElement("localTrabalho")]
         public LocalTrabalho2200 LocalTrabalho { get; set; }
 
+        /// <summary>
+        /// Informações do horário contratual do trabalhador
+        /// </summary>
         [XmlElement("horContratual")]
         public HorContratual2200 HorContratual { get; set; }
 
+        /// <summary>
+        /// Informações do alvará judicial em caso de contratação de menores de 14 anos, em qualquer categoria, 
+        /// e de maiores de 14 e menores de 16, em categoria diferente de "Aprendiz"
+        /// </summary>
         [XmlElement("alvaraJudicial")]
         public AlvaraJudicial2200 AlvaraJudicial { get; set; }
 
+        /// <summary>
+        /// Observações do contrato de trabalho
+        /// </summary>
         [XmlElement("observacoes")]
         public List<Observacoes2200> Observacoes { get; set; }
 
@@ -942,6 +1026,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetObservacoesCount => (Observacoes != null ? Observacoes.Count : 0);
 #endif
 
+        /// <summary>
+        /// Treinamentos, capacitações, exercícios simulados, autorizações ou outras anotações que devam ser anotadas 
+        /// no registro de empregados e/ou na CTPS, por determinação de Norma Regulamentadora - NR
+        /// </summary>
         [XmlElement("treiCap")]
         public List<TreiCap2200> TreiCap { get; set; }
 
@@ -1124,9 +1212,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class LocalTrabalho2200
     {
+        /// <summary>
+        /// Estabelecimento (CNPJ, CNO, CAEPF) onde o trabalhador (exceto doméstico) exercerá suas atividades. Caso o trabalhador exerça 
+        /// suas atividades em instalações de terceiros, este campo deve ser preenchido com o estabelecimento do próprio empregador ao 
+        /// qual o trabalhador esteja vinculado
+        /// </summary>
         [XmlElement("localTrabGeral")]
         public LocalTrabGeral2200 LocalTrabGeral { get; set; }
 
+        /// <summary>
+        /// Grupo preenchido exclusivamente em caso de trabalhador doméstico e trabalhador temporário, indicando o endereço onde o 
+        /// trabalhador exerce suas atividades
+        /// </summary>
         [XmlElement("localTempDom")]
         public LocalTempDom2200 LocalTempDom { get; set; }
     }

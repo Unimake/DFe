@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtReintegr/v_S_01_02_00", IsNullable = false)]
     public class ESocial2298 : XMLBase
     {
+        /// <summary>
+        /// Evento Reintegração/Outros Provimentos
+        /// </summary>
         [XmlElement("evtReintegr")]
         public EvtReintegr EvtReintegr { get; set; }
 
@@ -42,15 +45,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2298 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2298 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações da reintegração
+        /// </summary>
         [XmlElement("infoReintegr")]
         public InfoReintegr InfoReintegr { get; set; }
     }

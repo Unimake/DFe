@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00", IsNullable = false)]
     public class ESocial2221 : XMLBase
     {
+        /// <summary>
+        /// Evento Exame Toxicológico do Motorista Profissional Empregado
+        /// </summary>
         [XmlElement("evtToxic")]
         public EvtToxic EvtToxic { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2221 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2221 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações do exame toxicológico do motorista profissional
+        /// </summary>
         [XmlElement("toxicologico")]
         public Toxicologico Toxicologico { get; set; }
     }
@@ -77,8 +92,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     public class IdeVinculo2221 : IdeVinculo2206 { }
-
-    #region Toxicologico
 
     /// <summary>
     /// Informações do exame toxicológico do motorista profissional.
@@ -173,8 +186,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeUfCRM() => UfCRM != null;
 #endif
 
-#endregion ShouldSerialize
+        #endregion ShouldSerialize
     }
 
-#endregion Toxicologico
 }

@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenefAlt/v_S_01_02_00", IsNullable = false)]
     public class ESocial2405 : XMLBase
     {
+        /// <summary>
+        /// Evento Cadastro de Beneficiário - Entes Públicos - Alteração.
+        /// </summary>
         [XmlElement("evtCdBenefAlt")]
         public EvtCdBenefAlt EvtCdBenefAlt { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento.
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2405 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do beneficiário.
+        /// </summary>
         [XmlElement("ideBenef")]
         public IdeBenef2405 IdeBenef { get; set; }
 
+        /// <summary>
+        /// Alteração de dados do beneficiário.
+        /// </summary>
         [XmlElement("alteracao")]
         public Alteracao2405 Alteracao { get; set; }
     }
@@ -173,9 +188,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("incFisMen")]
         public SimNaoLetra IncFisMen { get; set; }
 
+        /// <summary>
+        /// Endereço do beneficiário
+        /// </summary>
         [XmlElement("endereco")]
         public Endereco2405 Endereco { get; set; }
 
+        /// <summary>
+        /// Informações dos dependentes
+        /// </summary>
         [XmlElement("dependente")]
         public List<Dependente2405> Dependente { get; set; }
 #if INTEROP

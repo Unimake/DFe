@@ -20,6 +20,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtMonit/v_S_01_02_00", IsNullable = false)]
     public class ESocial2220 : XMLBase
     {
+        /// <summary>
+        /// Evento Monitoramento da Saúde do Trabalhador
+        /// </summary>
         [XmlElement("evtMonit")]
         public EvtMonit EvtMonit { get; set; }
 
@@ -43,15 +46,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2220 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo2220 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações do exame médico ocupacional
+        /// </summary>
         [XmlElement("exMedOcup")]
         public ExMedOcup ExMedOcup { get; set; }
     }
@@ -92,9 +107,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpExameOcup")]
         public TpExameOcup TpExameOcup { get; set; }
 
+        /// <summary>
+        /// Detalhamento das informações do Atestado de Saúde Ocupacional - ASO
+        /// </summary>
         [XmlElement("aso")]
         public Aso Aso { get; set; }
 
+        /// <summary>
+        /// Informações sobre o médico responsável/coordenador do PCMSO
+        /// </summary>
         [XmlElement("respMonit")]
         public RespMonit RespMonit { get; set; }
     }
@@ -140,9 +161,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public ResAso? ResAso { get; set; }
 #endif
 
+        /// <summary>
+        /// Grupo que detalha as avaliações clínicas e os exames complementares porventura realizados pelo trabalhador 
+        /// em virtude do determinado nos Anexos da NR-07, além de outros solicitados pelo médico e os referentes ao ASO
+        /// </summary>
         [XmlElement("exame")]
         public List<Exame> Exame { get; set; }
 
+        /// <summary>
+        /// Informações sobre o médico emitente do ASO
+        /// </summary>
         [XmlElement("medico")]
         public Medico Medico { get; set; }
 
@@ -320,7 +348,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeUfCRM() => UfCRM != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 
     /// <summary>

@@ -21,6 +21,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAdmPrelim/v_S_01_02_00", IsNullable = false)]
     public class ESocial2190 : XMLBase
     {
+        /// <summary>
+        /// Evento Registro Preliminar de Trabalhador
+        /// </summary>
         [XmlElement("evtAdmPrelim")]
         public EvtAdmPrelim EvtAdmPrelim { get; set; }
 
@@ -44,12 +47,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento2190 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações do registro preliminar do trabalhador
+        /// </summary>
         [XmlElement("infoRegPrelim")]
         public InfoRegPrelim InfoRegPrelim { get; set; }
     }
@@ -181,6 +193,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public NatAtividade ? NatAtividade { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações referentes ao registro e à CTPS Digital
+        /// </summary>
         [XmlElement("infoRegCTPS")]
         public InfoRegCTPS InfoRegCTPS { get; set; }
 
