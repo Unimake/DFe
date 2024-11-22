@@ -64,7 +64,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public string ChNF3e { get; set; }
 
         [XmlElement("tpEvento")]
-        public string TpEvento { get; set; }
+        public TipoEventoNF3e TpEvento { get; set; }
 
         [XmlElement("xEvento")]
         public string XEvento { get; set; }
