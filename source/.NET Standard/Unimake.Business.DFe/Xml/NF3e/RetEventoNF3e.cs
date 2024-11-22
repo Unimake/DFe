@@ -30,7 +30,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NF3e.InfEvento")]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.InfRetEvento")]
     [ComVisible(true)]
 #endif
     public class InfRetEvento
@@ -44,8 +44,15 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
 
+        [XmlIgnore]
+        public UFBrasil COrgao { get; set; }
+
         [XmlElement("cOrgao")]
-        public int COrgao { get; set; }
+        public int COrgaoField
+        {
+            get => (int)COrgao;
+            set => COrgao = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
+        }
 
         [XmlElement("cStat")]
         public int CStat { get; set; }
