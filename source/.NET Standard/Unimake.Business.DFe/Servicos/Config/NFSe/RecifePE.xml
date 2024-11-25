@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.01">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.recife.pe.gov.br/WSNacional/nfse_v01.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://nfse.recife.pe.gov.br/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="http://nfse.recife.pe.gov.br/"><inputXML>{xmlBodyScape}</inputXML></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="2.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.recife.pe.gov.br/WSNacional/nfse_v01.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://nfse.recife.pe.gov.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://nfse.recife.pe.gov.br/"><inputXML>{xmlBodyScape}</inputXML></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/WSNacional/XSD/1/nfse_municipal_v01.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.01">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.recife.pe.gov.br/WSNacional/nfse_v01.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://nfse.recife.pe.gov.br/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="http://nfse.recife.pe.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/WSNacional/XSD/1/nfse_municipal_v01.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.recife.pe.gov.br/WSNacional/nfse_v01.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://nfse.recife.pe.gov.br/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="http://nfse.recife.pe.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/WSNacional/XSD/1/nfse_municipal_v01.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="2.01">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.recife.pe.gov.br/WSNacional/nfse_v01.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://nfse.recife.pe.gov.br/ConsultarNfse</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRequest xmlns="http://nfse.recife.pe.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/WSNacional/XSD/1/nfse_municipal_v01.xsd</TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="2.01">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.recife.pe.gov.br/WSNacional/nfse_v01.asmx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>http://nfse.recife.pe.gov.br/ConsultarSituacaoLoteRps</WebActionProducao>
+			<SchemaArquivo>Tipos_NFSe_v01.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsRequest xmlns="http://nfse.recife.pe.gov.br/"><inputXML>{xmlBodyScape}</inputXML></ConsultarSituacaoLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<TargetNS>http://www.nfe.com.br/WSNacional/XSD/1/nfse_municipal_v01.xsd</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>
+

@@ -1572,9 +1572,15 @@
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4312906">
-		<Nome>Nova Bassano- RS</Nome>
+		<Nome>Nova Bassano - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>NovaBassanoRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2611606">
+		<Nome>Recife - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>RecifePE.xml</ArqConfig>
+		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

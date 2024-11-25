@@ -6716,7 +6716,13 @@ namespace Unimake.Business.DFe.Servicos
         /// PUBLICA
         /// </summary>
         [Description("PUBLICA")]
-        PUBLICA = 54
+        PUBLICA = 54,
+
+        /// <summary>
+        /// TIPLAN
+        /// </summary>
+        [Description("TIPLAN")]
+        TIPLAN = 55
     }
 
     #endregion
