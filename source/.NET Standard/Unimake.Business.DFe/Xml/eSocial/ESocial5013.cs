@@ -23,6 +23,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     public class ESocial5013 : XMLBase
     {
+        /// <summary>
+        /// Evento Informações do FGTS Consolidadas por Contribuinte
+        /// </summary>
         [XmlElement("evtFGTS")]
         public EvtFGTS EvtFGTS { get; set; }
 
@@ -46,12 +49,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Identificação do evento de retorno
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5013 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao Fundo de Garantia do Tempo de Serviço - FGTS
+        /// </summary>
         [XmlElement("infoFGTS")]
         public InfoFGTS5013 InfoFGTS { get; set; }
     }
@@ -88,6 +100,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indExistInfo")]
         public IndExistInfo IndExistInfo { get; set; }
 
+        /// <summary>
+        /// Identificação do estabelecimento ou obra de construção civil
+        /// </summary>
         [XmlElement("ideEstab")]
         public List<IdeEstab5013> IdeEstab { get; set; }
 
@@ -155,6 +170,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
+        /// <summary>
+        /// Identificação da lotação tributária
+        /// </summary>
         [XmlElement("ideLotacao")]
         public List<IdeLotacao5013> IdeLotacao { get; set; }
 
@@ -234,6 +252,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
+        /// <summary>
+        /// Informações referentes a bases de cálculo e valores do FGTS no estabelecimento/lotação
+        /// </summary>
         [XmlElement("infoBaseFGTS")]
         public InfoBaseFGTS5013 InfoBaseFGTS { get; set; }
 
@@ -260,6 +281,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class InfoBaseFGTS5013
     {
+        /// <summary>
+        /// Informações consolidadas das bases de cálculo e valores do FGTS do período de apuração e de períodos anteriores, exceto se {tpAcConv} = [E, H, I].
+        /// </summary>
         [XmlElement("basePerApur")]
         public List<BasePerApur5013> BasePerApur { get; set; }
 
@@ -300,6 +324,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetBasePerApurCount => (BasePerApur != null ? BasePerApur.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações referentes a bases de cálculo e valores do FGTS de períodos anteriores quando tpAcConv = [E, H, I]
+        /// </summary>
         [XmlElement("infoBasePerAntE")]
         public List<InfoBasePerAntE5013> InfoBasePerAntE { get; set; }
 
@@ -339,7 +366,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetInfoBasePerAntECount => (InfoBasePerAntE != null ? InfoBasePerAntE.Count : 0);
 #endif
-
 
     }
 
@@ -440,6 +466,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpAcConv")]
         public string TpAcConv { get; set; }
 
+        /// <summary>
+        /// Informações consolidadas das bases de cálculo e valores do FGTS de períodos anteriores quando tpAcConv = [E, H, I]
+        /// </summary>
         [XmlElement("basePerAntE")]
         public List<BasePerAntE5013> BasePerAntE { get; set; }
 

@@ -52,12 +52,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento.
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5501 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do processo
+        /// </summary>
         [XmlElement("ideProc")]
         public IdeProc5501 IdeProc { get; set; }
     }
@@ -121,6 +130,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Identificação do período e da base de cálculo dos tributos referentes ao processo trabalhista
+        /// </summary>
         [XmlElement("infoTributos")]
         public List<InfoTributos> InfoTributos { get; set; }
 #if INTEROP
@@ -160,6 +172,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoTributosCount => (InfoTributos != null ? InfoTributos.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações de Imposto de Renda Retido na Fonte, consolidadas por Código de Receita - CR
+        /// </summary>
         [XmlElement("infoCRIRRF")]
         public List<InfoCRIRRF5501> InfoCRIRRF { get; set; }
 #if INTEROP
@@ -231,6 +246,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        /// <summary>
+        /// Informações das contribuições sociais devidas à Previdência Social e Outras Entidades e Fundos, consolidadas por perRef e por Código de Receita - CR
+        /// </summary>
         [XmlElement("infoCRContrib")]
         public List<InfoCRContrib5501> InfoCRContrib { get; set; }
 #if INTEROP

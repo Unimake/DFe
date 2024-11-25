@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtFGTSProcTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial5503 : XMLBase
     {
+        /// <summary>
+        /// Evento Informações do FGTS por Trabalhador em Processo Trabalhista
+        /// </summary>
         [XmlElement("evtFGTSProcTrab")]
         public EvtFGTSProcTrab EvtFGTSProcTrab { get; set; }
 
@@ -45,18 +48,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5503 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador ou do contribuinte que prestou a informação
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do processo
+        /// </summary>
         [XmlElement("ideProc")]
         public IdeProc5503 IdeProc { get; set; }
 
+        /// <summary>
+        /// Identificação do trabalhador
+        /// </summary>
         [XmlElement("ideTrabalhador")]
         public IdeTrabalhador5003 IdeTrabalhador { get; set; }
 
+        /// <summary>
+        /// Informações relativas à matrícula e categoria do trabalhador
+        /// </summary>
         [XmlElement("infoTrabFGTS")]
         public List<InfoTrabFGTS5503> InfoTrabFGTS { get; set; }
 
@@ -191,6 +209,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("categOrig")]
         public string CategOrig { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao FGTS do processo trabalhista
+        /// </summary>
         [XmlElement("infoFGTSProcTrab")]
         public InfoFGTSProcTrab InfoFGTSProcTrab { get; set; }
 
@@ -232,6 +253,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => TotalFGTS = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Identificação do estabelecimento responsável pelo pagamento ao trabalhador dos valores informados
+        /// </summary>
         [XmlElement("ideEstab")]
         public IdeEstab5503 IdeEstab { get; set; }
     }
@@ -258,6 +282,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrInsc")]
         public string NrInsc { get; set; }
 
+        /// <summary>
+        /// Informações sobre bases de cálculo e valores do FGTS por período de referência
+        /// </summary>
         [XmlElement("basePerRef")]
         public List<BasePerRef> BasePerRef { get; set; }
 

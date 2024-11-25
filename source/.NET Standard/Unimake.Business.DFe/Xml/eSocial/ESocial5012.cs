@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrf/v_S_01_02_00", IsNullable = false)]
     public class ESocial5012 : XMLBase
     {
+        /// <summary>
+        /// Evento IRRF Consolidado por Contribuinte
+        /// </summary>
         [XmlElement("evtIrrf")]
         public EvtIrrf EvtIrrf { get; set; }
 
@@ -45,12 +48,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Identificação do evento de retorno
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5012 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações relativas ao Imposto de Renda
+        /// </summary>
         [XmlElement("infoIRRF")]
         public InfoIRRF InfoIRRF { get; set; }
     }
@@ -109,6 +121,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("indExistInfo")]
         public IndExistInfo IndExistInfo { get; set; }
 
+        /// <summary>
+        /// Informações consolidadas do IRRF, por Código de Receita - CR mensal
+        /// </summary>
         [XmlElement("infoCRMen")]
         public List<InfoCRMen> InfoCRMen { get; set; }
 
@@ -149,6 +164,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoCRMenCount => (InfoCRMen != null ? InfoCRMen.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações consolidadas do IRRF, por Código de Receita - CR diário
+        /// </summary>
         [XmlElement("infoCRDia")]
         public List<InfoCRDia> InfoCRDia { get; set; }
 
