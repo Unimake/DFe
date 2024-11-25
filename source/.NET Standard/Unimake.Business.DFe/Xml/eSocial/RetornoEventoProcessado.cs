@@ -3,13 +3,21 @@
 using System.Runtime.InteropServices;
 #endif
 
+using Org.BouncyCastle.Asn1.Cms;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
+using Unimake.Business.DFe.Xml.DARE;
+using Unimake.Business.DFe.Xml.EFDReinf;
+using Unimake.Business.DFe.Xml.GNRE;
+using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 {
+    /// <summary>
+    /// Contém o retorno dos eventos processados
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.ESocial")]
@@ -19,10 +27,17 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/retornoProcessamento/v1_3_0", IsNullable = true)]
     public class RetornoEventoProcessado : XMLBase
     {
+        /// <summary>
+        /// Contém o resultado da operação de processamento de um lote de eventos
+        /// </summary>
         [XmlElement("retornoProcessamentoLoteEventos")]
         public RetornoProcessamentoLoteEventos RetornoProcessamentoLoteEventos { get; set; }
     }
 
+    /// <summary>
+    /// Contém as ocorrências encontradas no lote quando o código de resposta
+    /// contido na tag status indicar que foram encontrados erros ou advertências no lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Ocorrencias")]
@@ -30,6 +45,10 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Ocorrencias
     {
+        /// <summary>
+        /// Contém cada uma das ocorrências encontradas no lote quando o código
+        /// de resposta contido na tag status indicar que foram encontrados erros ou advertências no lote.
+        /// </summary>
         [XmlElement("ocorrencia")]
         public List<Ocorrencia> Ocorrencia { get; set; }
 
@@ -71,6 +90,10 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     }
 
+    /// <summary>
+    /// Contém cada uma das ocorrências encontradas no lote quando o código
+    /// de resposta contido na tag status indicar que foram encontrados erros ou advertências no lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Ocorrencia")]
@@ -78,19 +101,34 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Ocorrencia
     {
+        /// <summary>
+        /// Contém o código do tipo de ocorrência.
+        /// </summary>
         [XmlElement("tipo")]
         public int Tipo { get; set; }
 
+        /// <summary>
+        /// Contém o código da ocorrência detectada em alguma das regras
+        /// </summary>
         [XmlElement("codigo")]
         public int Codigo { get; set; }
 
+        /// <summary>
+        /// Contém a descrição da ocorrência detectada em alguma das regras
+        /// </summary>
         [XmlElement("descricao")]
         public string Descricao { get; set; }
 
+        /// <summary>
+        /// Contém o caminho da tag  atributo em que ocorreu o erro.
+        /// </summary>
         [XmlElement("localizacao")]
         public string Localizacao { get; set; }
     }
 
+    /// <summary>
+    /// Contém os dados relativos a recepção de um lote
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.DadosRecepcaoLote")]
@@ -98,6 +136,9 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class DadosRecepcaoLote
     {
+        /// <summary>
+        /// Contém a data/hora de recepção do lote de eventos
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecepcao { get; set; }
@@ -114,16 +155,25 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #else
             set => DhRecepcao = DateTimeOffset.Parse(value);
 #endif
-
         }
 
+        /// <summary>
+        /// Contém a versão do aplicativo de recepção
+        /// </summary>
         [XmlElement("versaoAplicativoRecepcao")]
         public string VersaoAplicativoRecepcao { get; set; }
 
+        /// <summary>
+        /// Número sequencial único produzido no instante da recepção do lote de eventos
+        /// </summary>
         [XmlElement("protocoloEnvio")]
         public string ProtocoloEnvio { get; set; }
     }
 
+    /// <summary>
+    /// Contém o resultado do processamento do lote. É nesta tag que haverá a informação se o lote já foi 
+    /// processado e qual o resultado do processamento do lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Status")]
@@ -131,16 +181,30 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Status
     {
+        /// <summary>
+        /// Contém o código de resposta do processamento do lote. Caso o código seja 
+        /// de erro ou advertência, os detalhes do mesmo estarão na tag ocorrencias.
+        /// </summary>
         [XmlElement("cdResposta")]
         public int CdResposta { get; set; }
 
+        /// <summary>
+        /// Contém a descrição correspondente ao código de resposta
+        /// </summary>
         [XmlElement("descResposta")]
         public string DescResposta { get; set; }
 
+        /// <summary>
+        /// Contém as ocorrências encontradas no lote quando o código de resposta
+        /// contido na tag status indicar que foram encontrados erros ou advertências no lote.
+        /// </summary>
         [XmlElement("ocorrencias")]
         public Ocorrencias Ocorrencias { get; set; }
     }
 
+    /// <summary>
+    /// Contém os dados relativos ao processamento de um lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.DadosProcessamentoLote")]
@@ -148,10 +212,16 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class DadosProcessamentoLote
     {
+        /// <summary>
+        /// Contém a versão do aplicativo de processamento do lote
+        /// </summary>
         [XmlElement("versaoAplicativoProcessamentoLote")]
         public string VersaoAplicativoProcessamentoLote { get; set; }
     }
 
+    /// <summary>
+    /// Contém o resultado da operação de processamento de um lote de eventos
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoProcessamentoLoteEventos")]
@@ -159,18 +229,36 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class RetornoProcessamentoLoteEventos
     {
+        /// <summary>
+        /// Identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Identificação do transmissor (certificado digital)
+        /// </summary>
         [XmlElement("ideTransmissor")]
         public IdeTransmissor IdeTransmissor { get; set; }
 
+        /// <summary>
+        /// Contém o resultado do processamento do lote. É nesta tag que haverá a informação se o lote já foi 
+        /// processado e qual o resultado do processamento do lote.
+        /// </summary>
         [XmlElement("status")]
         public Status Status { get; set; }
 
+        /// <summary>
+        /// Contém os dados relativos a recepção de um lote
+        /// </summary>
         [XmlElement("dadosRecepcaoLote")]
         public DadosRecepcaoLote DadosRecepcaoLote { get; set; }
 
+        /// <summary>
+        /// /// <summary>
+        /// Contém os dados relativos ao processamento de um lote.
+        /// </summary>
+        /// </summary>
         [XmlElement("dadosProcessamentoLote")]
         public DadosProcessamentoLote DadosProcessamentoLote { get; set; }
 
@@ -178,6 +266,9 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         public RetornoEventos RetornoEventos { get; set; }
     }
 
+    /// <summary>
+    /// Contém o retorno com o resultado do processamento de cada um dos eventos contido no lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEventos")]
@@ -185,6 +276,10 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class RetornoEventos
     {
+        /// <summary>
+        /// Contém o resultado do processamento de cada evento contido no lote e  resultado do respectivo totalizador, 
+        /// caso o evento retorne algum dos totalizadores.
+        /// </summary>
         [XmlElement("evento")]
         public List<Evento> Evento { get; set; }
 
@@ -226,6 +321,10 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     }
 
+    /// <summary>
+    /// Contém o resultado do processamento de cada evento contido no lote e  resultado do respectivo totalizador, 
+    /// caso o evento retorne algum dos totalizadores.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Evento")]
@@ -233,16 +332,28 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Evento
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Contém o resultado do processamento de um evento contido no lote.
+        /// </summary>
         [XmlElement("retornoEvento")]
         public RetornoEvento RetornoEvento { get; set; }
 
+        /// <summary>
+        /// Contém o resultado do processamento do totalizador de um evento contido no lote.
+        /// </summary>
         [XmlElement("tot")]
         public Tot Tot { get; set; }
     }
 
+    /// <summary>
+    /// Contém o resultado do processamento do totalizador de um evento contido no lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Tot")]
@@ -250,22 +361,40 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Tot
     {
+        /// <summary>
+        /// Deve ser preenchido com os valores válidos para este campo.
+        /// </summary>
         [XmlAttribute(AttributeName = "tipo", DataType = "token")]
         public string Tipo { get; set; }
 
+        /// <summary>
+        /// S-5001 - Informações das Contribuições Sociais por Trabalhador
+        /// </summary>
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00")]
         public ESocial5001 ESocial5001 { get; set; }
 
+        /// <summary>
+        /// S-5002 - Imposto de Renda Retido na Fonte por Trabalhador
+        /// </summary>
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_02_00")]
         public ESocial5002 ESocial5002 { get; set; }
 
+        /// <summary>
+        /// S-5011 - Informações das Contribuições Sociais Consolidadas por Contribuinte
+        /// </summary>
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_02_00")]
         public ESocial5011 ESocial5011 { get; set; }
 
+        /// <summary>
+        /// S-5012 - Imposto de Renda Retido na Fonte Consolidado por Contribuinte
+        /// </summary>
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrf/v_S_01_02_00")]
         public ESocial5012 ESocial5012 { get; set; }
     }
 
+    /// <summary>
+    /// Contém o resultado do processamento de um evento contido no lote.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.RetornoEvento")]
@@ -273,6 +402,9 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class RetornoEvento
     {
+        /// <summary>
+        /// Contém a estrutura do evento de retorno
+        /// </summary>
         [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/retornoEvento/v1_2_1")]
         public RetornoEventoESocial ESocial { get; set; }
     }
@@ -284,6 +416,9 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class RetornoEventoESocial
     {
+        /// <summary>
+        /// Contém as informações do evento enviado (ID, dados de recepção)
+        /// </summary>
         [XmlElement("retornoEvento")]
         public EventoRetorno RetornoEvento { get; set; }
 
@@ -291,6 +426,9 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         public Signature Signature { get; set; }
     }
 
+    /// <summary>
+    /// Contém as informações do evento enviado (ID, dados de recepção)
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.EventoRetorno")]
@@ -298,22 +436,40 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class EventoRetorno
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Contém os dados de recepção do evento.
+        /// </summary>
         [XmlElement("recepcao")]
         public Recepcao Recepcao { get; set; }
 
+        /// <summary>
+        /// Contém os dados de processamento do evento.
+        /// </summary>
         [XmlElement("processamento")]
         public Processamento Processamento { get; set; }
 
+        /// <summary>
+        /// Contém os dados do recibo de entrega do evento
+        /// </summary>
         [XmlElement("recibo")]
         public Recibo Recibo { get; set; }
     }
 
+    /// <summary>
+    /// Contém os dados de recepção do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Recepcao")]
@@ -321,9 +477,15 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Recepcao
     {
+        /// <summary>
+        /// Tipo de ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Data/hora da recepção do lote
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecepcao { get; set; }
@@ -342,13 +504,22 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
         }
 
+        /// <summary>
+        /// Versão do aplicativo da recepção do lote
+        /// </summary>
         [XmlElement("versaoAppRecepcao")]
         public string VersaoAppRecepcao { get; set; }
 
+        /// <summary>
+        /// Protocolo do lote
+        /// </summary>
         [XmlElement("protocoloEnvioLote")]
         public string ProtocoloEnvioLote { get; set; }
     }
 
+    /// <summary>
+    /// Contém os dados de processamento do evento.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Processamento")]
@@ -356,15 +527,27 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Processamento
     {
+        /// <summary>
+        /// Código de resposta do processamento do evento conforme tabela
+        /// </summary>
         [XmlElement("cdResposta")]
         public int CdResposta { get; set; }
 
+        /// <summary>
+        /// Descrição da mensagem de retorno
+        /// </summary>
         [XmlElement("descResposta")]
         public string DescResposta { get; set; }
 
+        /// <summary>
+        /// Versão do aplicativo de processamento de evento
+        /// </summary>
         [XmlElement("versaoAppProcessamento")]
         public string VersaoAppProcessamento { get; set; }
 
+        /// <summary>
+        /// Data e horário do processamento do evento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhProcessamento { get; set; }
@@ -383,10 +566,17 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
         }
 
+        /// <summary>
+        /// Contém as ocorrências encontradas no lote quando o código de resposta
+        /// contido na tag status indicar que foram encontrados erros ou advertências no lote.
+        /// </summary>
         [XmlElement("ocorrencias")]
         public Ocorrencias Ocorrencias { get; set; }
     }
 
+    /// <summary>
+    /// Contém os dados do recibo de entrega do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.Retorno.Recibo")]
@@ -394,9 +584,15 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 #endif
     public class Recibo
     {
+        /// <summary>
+        /// Número de recibo do evento
+        /// </summary>
         [XmlElement("nrRecibo")]
         public string NrRecibo { get; set; }
 
+        /// <summary>
+        /// Hash do evento. Será considerado o hash utilizado na assinatura do conteúdo evento.
+        /// </summary>
         [XmlElement("hash")]
         public string Hash { get; set; }
     }

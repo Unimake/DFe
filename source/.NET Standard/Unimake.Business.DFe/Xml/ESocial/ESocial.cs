@@ -22,7 +22,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento")]
     [ComVisible(true)]
 #endif
-   
     [Serializable()]
     public abstract class IdeEvento
     {
@@ -96,6 +95,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     #endregion
 
     #region CultureInfoESocial
+
     /// <summary>
     /// Configurações Cultura para o ESocial
     /// </summary>
@@ -116,7 +116,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             }
         }
     }
-    #endregion
+    #endregion CultureInfoESocial
 
     #region ItensRemun
 
