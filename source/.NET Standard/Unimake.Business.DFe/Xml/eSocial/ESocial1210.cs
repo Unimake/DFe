@@ -610,7 +610,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// trabalhador referente a despesas médicas ou odontológicas pagas pelo trabalhador a prestadores de serviços de saúde
         /// </summary>
         [XmlElement("infoReembMed")]
-        public List<InfoReembMed> InfoReembMed { get; set; }
+        public List<InfoReembMed1210> InfoReembMed { get; set; }
 
 #if INTEROP
 
@@ -618,22 +618,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoReembMed(InfoReembMed item)
+        public void AddInfoReembMed(InfoReembMed1210 item)
         {
             if (InfoReembMed == null)
             {
-                InfoReembMed = new List<InfoReembMed>();
+                InfoReembMed = new List<InfoReembMed1210>();
             }
 
             InfoReembMed.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoReembMed (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoReembMed1210 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoReembMed</returns>
-        public InfoReembMed GetInfoReembMed(int index)
+        public InfoReembMed1210 GetInfoReembMed(int index)
         {
             if ((InfoReembMed?.Count ?? 0) == 0)
             {
@@ -889,7 +889,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de processos relacionados a não retenção de tributos ou a depósitos judiciais
         /// </summary>
         [XmlElement("infoProcRet")]
-        public List<InfoProcRet> InfoProcRet { get; set; }
+        public List<InfoProcRet1210> InfoProcRet { get; set; }
 
 #if INTEROP
 
@@ -897,22 +897,22 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Adicionar novo elemento a lista
         /// </summary>
         /// <param name="item">Elemento</param>
-        public void AddInfoProcRet(InfoProcRet item)
+        public void AddInfoProcRet(InfoProcRet1210 item)
         {
             if (InfoProcRet == null)
             {
-                InfoProcRet = new List<InfoProcRet>();
+                InfoProcRet = new List<InfoProcRet1210>();
             }
 
             InfoProcRet.Add(item);
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfoProcRet (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista InfoProcRet1210 (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
         /// </summary>
         /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
         /// <returns>Conteúdo do index passado por parâmetro da InfoProcRet</returns>
-        public InfoProcRet GetInfoProcRet(int index)
+        public InfoProcRet1210 GetInfoProcRet(int index)
         {
             if ((InfoProcRet?.Count ?? 0) == 0)
             {
@@ -1070,10 +1070,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcRet")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoProcRet1210")]
     [ComVisible(true)]
 #endif
-    public class InfoProcRet
+    public class InfoProcRet1210
     {
         /// <summary>
         /// Preencher com o código correspondente ao tipo de processo
@@ -1546,10 +1546,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoReembMed")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoReembMed1210")]
     [ComVisible(true)]
 #endif
-    public class InfoReembMed
+    public class InfoReembMed1210
     {
         /// <summary>
         /// Indicativo da origem do reembolso
