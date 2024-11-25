@@ -20,6 +20,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00", IsNullable = false)]
     public class ESocial8299 : XMLBase
     {
+        /// <summary>
+        /// Evento Baixa Judicial do Vínculo 
+        /// </summary>
         [XmlElement("evtBaixa")]
         public EvtBaixa EvtBaixa { get; set; }
 
@@ -43,15 +46,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento8299 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
-        
+
+        /// <summary>
+        /// Informações de identificação do trabalhador e do vínculo
+        /// </summary>
         [XmlElement("ideVinculo")]
         public IdeVinculo8299 IdeVinculo { get; set; }
 
+        /// <summary>
+        /// Informações relativas à baixa judicial do vínculo
+        /// </summary>
         [XmlElement("infoBaixa")]
         public InfoBaixa InfoBaixa { get; set; }
 

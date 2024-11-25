@@ -22,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAnotJud/v_S_01_02_00", IsNullable = false)]
     public class ESocial8200 : XMLBase
     {
+        /// <summary>
+        /// Evento Anotação Judicial do Vínculo
+        /// </summary>
         [XmlElement("evtAnotJud")]
         public EvtAnotJud EvtAnotJud { get; set; }
 
@@ -45,15 +48,27 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento8200 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informações do processo judicial
+        /// </summary>
         [XmlElement("infoProcesso")]
         public InfoProcesso8200 InfoProcesso { get; set; }
 
+        /// <summary>
+        /// Informações da anotação judicial do vínculo
+        /// </summary>
         [XmlElement("infoAnotJud")]
         public InfoAnotJud InfoAnotJud { get; set; }
     }
@@ -269,6 +284,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("tpRegPrev")]
         public TipoRegimePrevidenciario TpRegPrev { get; set; }
 
+        /// <summary>
+        /// Informações do cargo
+        /// </summary>
         [XmlElement("cargo")]
         public List<Cargo> Cargo { get; set; }
 
@@ -309,6 +327,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetCargoCount => (Cargo != null ? Cargo.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações da remuneração e periodicidade de pagamento
+        /// </summary>
         [XmlElement("remuneracao")]
         public List<Remuneracao8200> Remuneracao { get; set; }
 
@@ -349,6 +370,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetRemuneracaoCount => (Remuneracao != null ? Remuneracao.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informação do(s) vínculo(s)/contrato(s) já declarado(s) no eSocial e incorporado(s) ao vínculo ou sucedido(s) pelo vínculo reconhecido judicialmente
+        /// </summary>
         [XmlElement("incorporacao")]
         public List<Incorporacao> Incorporacao { get; set; }
 
@@ -389,9 +413,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetIncorporacaoCount => (Incorporacao != null ? Incorporacao.Count : 0);
 #endif
 
+        /// <summary>
+        /// Informações de afastamento do trabalhador
+        /// </summary>
         [XmlElement("afastamento")]
         public Afastamento8200 Afastamento { get; set; }
 
+        /// <summary>
+        /// Informações de desligamento do trabalhador
+        /// </summary>
         [XmlElement("desligamento")]
         public Desligamento8200 Desligamento { get; set; }
 
