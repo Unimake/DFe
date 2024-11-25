@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial3500 : XMLBase
     {
+        /// <summary>
+        /// Evento Exclusão de Eventos - Processo Trabalhista
+        /// </summary>
         [XmlElement("evtExcProcTrab")]
         public EvtExcProcTrab EvtExcProcTrab { get; set; }
 
@@ -28,7 +31,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
-    /// Evento Exclusão
+    /// Evento Exclusão de Eventos - Processo Trabalhista
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -43,12 +46,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento3500 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Grupo que identifica o evento objeto da exclusão
+        /// </summary>
         [XmlElement("infoExclusao")]
         public InfoExclusao3500 InfoExclusao { get; set; }
     }
@@ -90,6 +102,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrRecEvt")]
         public string NrRecEvt { get; set; }
 
+        /// <summary>
+        /// Identificação do processo, do trabalhador e do período a que se refere o evento que será excluído
+        /// </summary>
         [XmlElement("ideProcTrab")]
         public IdeProcTrab IdeProcTrab { get; set; }
     }
@@ -122,14 +137,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("cpfTrab")]
         public string CpfTrab { get; set; }
 
-
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApurPgto { get; set; }
-#else
-        public DateTimeOffset PerApurPgto { get; set; }
-#endif
-
         /// <summary>
         /// Mês/ano em que é devida a obrigação de pagar a parcelaprevista no acordo/sentença.
         /// Validação:
@@ -137,6 +144,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// tpEvento
         /// = [S - 2501].Deve ser o mesmo períodoinformado no evento S-2501 objeto da exclusão.
         /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime PerApurPgto { get; set; }
+#else
+        public DateTimeOffset PerApurPgto { get; set; }
+#endif
+
         [XmlElement("perApurPgto")]
         public string PerApurPgtoField
         {

@@ -19,6 +19,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_02_00", IsNullable = false)]
     public class ESocial3000 : XMLBase
     {
+        /// <summary>
+        /// Evento Exclusão de Eventos
+        /// </summary>
         [XmlElement("evtExclusao")]
         public EvtExclusao EvtExclusao { get; set; }
 
@@ -27,7 +30,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     }
 
     /// <summary>
-    /// Evento Exclusão
+    /// Evento Exclusão de Eventos
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -42,12 +45,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
         public string ID { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do evento
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento3000 IdeEvento { get; set; }
 
+        /// <summary>
+        /// Informações de identificação do empregador
+        /// </summary>
         [XmlElement("ideEmpregador")]
         public IdeEmpregador IdeEmpregador { get; set; }
 
+        /// <summary>
+        /// Informação do evento que será excluído
+        /// </summary>
         [XmlElement("infoExclusao")]
         public InfoExclusao InfoExclusao { get; set; }
     }
@@ -84,9 +96,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("nrRecEvt")]
         public string NrRecEvt { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [XmlElement("ideTrabalhador")]
         public IdeTrabalhador3000 IdeTrabalhador { get; set; }
 
+        /// <summary>
+        /// Identificação do período de apuração a que se refere o evento que será excluído
+        /// </summary>
         [XmlElement("ideFolhaPagto")]
         public IdeFolhaPagto IdeFolhaPagto { get; set; }
     }
@@ -157,6 +175,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndApuracao() => IndApuracao != null;
 #endif
 
-        #endregion
+        #endregion ShouldSerialize
     }
 }
