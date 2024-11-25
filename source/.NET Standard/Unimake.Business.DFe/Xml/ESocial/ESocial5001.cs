@@ -24,6 +24,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00", IsNullable = false)]
     public class ESocial5001 : XMLBase
     {
+        /// <summary>
+        /// Evento Informações das Contribuições Sociais por Trabalhador
+        /// </summary>
         [XmlElement("evtBasesTrab")]
         public EvtBasesTrab EvtBasesTrab { get; set; }
 
@@ -47,6 +50,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlAttribute(AttributeName = "Id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// Identificação do evento de retorno
+        /// </summary>
         [XmlElement("ideEvento")]
         public IdeEvento5001 IdeEvento { get; set; }
 
@@ -155,14 +161,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset PerApur { get; set; }
 #endif
 
-        /// <summary>
-        /// Informar o mês/ano (formato AAAA-MM) de referência
-        /// das informações, se indApuracao for igual a[1], ou apenas
-        /// o ano(formato AAAA), se indApuracao for igual a[2].
-        /// Validação: Deve ser um mês/ano ou ano válido, igual ou
-        /// posterior ao início da obrigatoriedade dos eventos
-        /// periódicos para o empregador.
-        /// </summary>
         [XmlElement("perApur")]
         public string PerApurField
         {
@@ -174,8 +172,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
     }
-
-    #region IdeTrabalhador
 
     /// <summary>
     /// Identificação do trabalhador.
@@ -244,8 +240,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetProcJudTrabCount => (ProcJudTrab != null ? ProcJudTrab.Count : 0);
 #endif
     }
-
-    #region InfoCompl5001
 
     /// <summary>
     /// Informações complementares do trabalhador e do contrato.
@@ -349,14 +343,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
+    /// <summary>
+    /// Informações relativas ao trabalho intermitente
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm5001")]
     [ComVisible(true)]
 #endif
     public class InfoInterm5001 : InfoInterm1200 { }
-
-    #region SucessaoVinc5001
 
     /// <summary>
     /// Grupo de informações da sucessão de vínculo trabalhista.
@@ -405,12 +400,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public DateTimeOffset DtAdm { get; set; }
 #endif
 
-        /// <summary>
-        /// Preencher com a data de admissão do trabalhador. No
-        /// caso de transferência do empregado, deve ser preenchida
-        /// a data inicial do vínculo no primeiro empregador(data de
-        /// início do vínculo).
-        /// </summary>
         [XmlElement("dtAdm")]
         public string DtAdmField
         {
@@ -424,11 +413,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
         public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(MatricAnt);
+
         #endregion ShouldSerialize
     }
-    #endregion SucessaoVinc5001
-
-    #region InfoComplCont5001
 
     /// <summary>
     /// Grupo preenchido exclusivamente quando o evento de remuneração se referir a 
@@ -485,11 +472,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #endregion ShouldSerialize
 
     }
-    #endregion InfoComplCont5001
-
-    #endregion InfoCompl5001
-
-    #region ProcJudTrab
 
     /// <summary>
     /// Informações sobre processos judiciais do trabalhador com decisão favorável quanto à não incidência ou alterações na incidência de contribuição previdenciária.
@@ -518,10 +500,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("codSusp")]
         public string CodSusp { get; set; }
     }
-    #endregion ProcJudTrab
-    #endregion IdeTrabalhador
-
-    #region InfoCpCalc
 
     /// <summary>
     /// Cálculo da contribuição previdenciária do segurado,
@@ -569,9 +547,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrDescSeg = Converter.ToDouble(value);
         }
     }
-    #endregion  InfoCpCalc
-
-    #region InfoCp
 
     /// <summary>
     /// Cálculo da contribuição previdenciária do segurado,
@@ -636,8 +611,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region IdeEstabLot5001
-
     /// <summary>
     /// Identificação do estabelecimento ou obra de construção civil e da lotação tributária.
     /// </summary>
@@ -676,6 +649,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("infoCategIncid")]
         public List<InfoCategIncid> InfoCategIncid { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -713,9 +687,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public int GetInfoCategIncidCount => (InfoCategIncid != null ? InfoCategIncid.Count : 0);
 #endif
     }
-    #endregion IdeEstabLot5001
-
-    #region InfoCategIncid
 
     /// <summary>
     /// Informações relativas à matrícula e categoria do trabalhador e tipos de incidências.
@@ -896,16 +867,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         #region ShouldSerialize
         public bool ShouldSerializeMatricula() => !string.IsNullOrEmpty(Matricula);
+
 #if INTEROP
         public bool ShouldSerializeIndSimples() => IndSimples != (IndSimples)(-1);
 #else
         public bool ShouldSerializeIndSimples() => IndSimples != null;
 
 #endif
+
         #endregion  ShouldSerialize
     }
-
-    #region InfoBaseCS
 
     /// <summary>
     /// Informações sobre bases de cálculo, descontos e
@@ -952,9 +923,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => Valor = Converter.ToDouble(value);
         }
     }
-    #endregion InfoBaseCS
-
-    #region CalcTerc
 
     /// <summary>
     /// Cálculo das contribuições sociais devidas a Outras Entidades e Fundos.
@@ -1004,9 +972,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrDescTerc = Converter.ToDouble(value);
         }
     }
-    #endregion CalcTerc
-
-    #region InfoPerRef
 
     /// <summary>
     /// Informações de remuneração por período de referência.
@@ -1141,8 +1106,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     }
 
-    #region IdeADC
-
     /// <summary>
     /// Identificação do instrumento ou situação ensejadora da
     /// remuneração relativa a períodos de apuração anteriores.
@@ -1243,7 +1206,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         #region ShouldSerialize
+
         public bool ShouldSerializeDtAcConvField() => DtAcConv > DateTimeOffset.MinValue;
+
 #if INTEROP
         public bool ShouldSerializeRemunSuc() => RemunSuc != (SimNaoLetra)(-1);
 #else
@@ -1252,9 +1217,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
     }
-    #endregion IdeADC
 
-    #region  DetInfoPerRef
     /// <summary>
     /// Detalhamento das informações de remuneração por
     /// período de referência.Deve ser preenchido com
@@ -1296,11 +1259,4 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VrPerRef = Converter.ToDouble(value);
         }
     }
-    #endregion DetInfoPerRef
-
-    #endregion InfoPerRef
-
-    #endregion InfoCategIncid
-
-    #endregion InfoCp
 }
