@@ -769,7 +769,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeDtTermField() => !string.IsNullOrEmpty(DtTermField);
+        public bool ShouldSerializeDtTermField() => DtTerm > DateTime.MinValue;
         public bool ShouldSerializeObjDet() => TipoDeContratoDeTrabalho == TipoDeContratoDeTrabalho.PrazoDeterminadoOcorrencia;
 
         #endregion ShouldSerialize
