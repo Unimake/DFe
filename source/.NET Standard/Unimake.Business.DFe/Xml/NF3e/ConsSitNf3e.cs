@@ -15,7 +15,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     [ComVisible(true)]
 #endif
     [XmlRoot("consSitNF3e", Namespace = "http://www.portalfiscal.inf.br/nf3e", IsNullable = false)]
-    public class ConsSitNf3e : XMLBase
+    public class ConsSitNF3e : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }

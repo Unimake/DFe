@@ -62,7 +62,7 @@ namespace Unimake.DFe.Test.NF3e
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<ConsSitNf3e>(doc);
+            var xml = XMLUtility.Deserializar<ConsSitNF3e>(doc);
 
             var doc2 = xml.GerarXML();
 
