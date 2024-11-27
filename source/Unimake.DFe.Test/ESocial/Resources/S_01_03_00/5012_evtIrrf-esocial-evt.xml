@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrf/v_S_01_03_00">
+	<evtIrrf Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<perApur>2022-05</perApur>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<infoIRRF>
+			<nrRecArqBase>1.1.1111111111111111111</nrRecArqBase>
+			<indExistInfo>1</indExistInfo>
+			<infoCRMen>
+				<CRMen>056107</CRMen>
+				<vrCRMen>1.00</vrCRMen>
+			</infoCRMen>
+			<infoCRMen>
+				<CRMen>056108</CRMen>
+				<vrCRMen>1234.56</vrCRMen>
+			</infoCRMen>
+			<infoCRMen>
+				<CRMen>056109</CRMen>
+				<vrCRMen>1234.56</vrCRMen>
+			</infoCRMen>
+			<infoCRDia>
+				<perApurDia>2022-05-15</perApurDia>
+				<CRDia>047301</CRDia>
+				<vrCRDia>1.00</vrCRDia>
+			</infoCRDia>
+			<infoCRDia>
+				<perApurDia>2022-05-10</perApurDia>
+				<CRDia>047301</CRDia>
+				<vrCRDia>1234.56</vrCRDia>
+			</infoCRDia>
+			<infoCRDia>
+				<perApurDia>2022-05-12</perApurDia>
+				<CRDia>047301</CRDia>
+				<vrCRDia>1234.56</vrCRDia>
+			</infoCRDia>
+		</infoIRRF>
+	</evtIrrf>
+</eSocial>

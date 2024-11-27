@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.ESocial;
-using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
 using Xunit;
 
@@ -51,7 +50,7 @@ namespace Unimake.DFe.Test.ESocial
                     {
                         Evento = new List<EventoESocial>
                         {
-                            new EventoESocial
+                            new()
                             {
                                 ID = "ID1061174730000002024081911021200001",
                                 ESocial1000 = new ESocial1000
@@ -156,8 +155,7 @@ namespace Unimake.DFe.Test.ESocial
                     {
                         Evento = new List<EventoESocial>
                         {
-                            new EventoESocial
-                            {
+                            new() {
                                 ID = "ID1061174730000002017102608080800001",
                                 ESocial1200 = new ESocial1200
                                 {
@@ -186,7 +184,7 @@ namespace Unimake.DFe.Test.ESocial
                                                 IndMV = IndMV.DescontoSobreRemuneracao,
                                                 RemunOutrEmpr = new List<RemunOutrEmpr>
                                                 {
-                                                    new RemunOutrEmpr
+                                                    new()
                                                     {
                                                         TpInsc = TiposInscricao.CNPJ,
                                                         NrInsc = "06117473",
@@ -202,7 +200,7 @@ namespace Unimake.DFe.Test.ESocial
                                             },
                                             ProcJudTrab = new List<ProcJudTrab1200>
                                             {
-                                               new ProcJudTrab1200
+                                               new()
                                                {
                                                    TpTrib = TpTrib.IRRF,
                                                    NrProcJud = "00000000000000000001",
@@ -212,7 +210,7 @@ namespace Unimake.DFe.Test.ESocial
                                         },
                                         DmDev = new List<DmDev>
                                         {
-                                            new DmDev
+                                            new()
                                             {
                                                 IdeDmDev = "teste",
                                                 CodCateg = CodCateg.EmpregadoAprendiz,
@@ -226,12 +224,12 @@ namespace Unimake.DFe.Test.ESocial
                                                         QtdDiasAv = "1",
                                                         RemunPerApur = new List<RemunPerApur1200>
                                                         {
-                                                            new RemunPerApur1200
+                                                            new()
                                                             {
                                                                 Matricula = "teste1",
                                                                 ItensRemun = new List<ItensRemun1200>
                                                                 {
-                                                                    new ItensRemun1200
+                                                                    new()
                                                                     {
                                                                         CodRubr = "123",
                                                                         IdeTabRubr = "teste1",
@@ -289,8 +287,8 @@ namespace Unimake.DFe.Test.ESocial
             var xml = new XmlDocument();
             xml.Load("..\\..\\..\\ESocial\\Resources\\EnvioLoteEventos-esocial-loteevt.xml");
 
-            var conteudoXML = new ESocialEnvioLoteEventos();
-            conteudoXML = XMLUtility.Deserializar<ESocialEnvioLoteEventos>(xml);
+            var eSocialEnvioLoteEventos = new ESocialEnvioLoteEventos();
+            var conteudoXML = eSocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(xml);
 
             var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoXML, configuracao);
             enviarLoteEventosESocial.Executar();

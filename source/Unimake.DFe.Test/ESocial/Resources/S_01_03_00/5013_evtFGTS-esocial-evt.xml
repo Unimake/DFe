@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtFGTS/v_S_01_03_00">
+	<evtFGTS Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<indApuracao>1</indApuracao>
+			<perApur>2005-01</perApur>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<infoFGTS>
+			<nrRecArqBase>1.1.1111111111111111111</nrRecArqBase>
+			<indExistInfo>1</indExistInfo>
+			<ideEstab>
+				<tpInsc>1</tpInsc>
+				<nrInsc>00000000000000</nrInsc>
+				<ideLotacao>
+					<codLotacao>codLotacao1</codLotacao>
+					<tpLotacao>03</tpLotacao>
+					<tpInsc>1</tpInsc>
+					<nrInsc>00000000000</nrInsc>
+					<infoBaseFGTS>
+						<basePerApur>
+							<tpValor>11</tpValor>
+							<indIncid>1</indIncid>
+							<baseFGTS>1.00</baseFGTS>
+							<vrFGTS>1.00</vrFGTS>
+						</basePerApur>
+						<infoBasePerAntE>
+							<perRef>2005-01</perRef>
+							<tpAcConv>E</tpAcConv>
+							<basePerAntE>
+								<tpValorE>13</tpValorE>
+								<indIncidE>1</indIncidE>
+								<baseFGTSE>1.00</baseFGTSE>
+								<vrFGTSE>1.00</vrFGTSE>
+							</basePerAntE>
+						</infoBasePerAntE>
+					</infoBaseFGTS>
+				</ideLotacao>
+			</ideEstab>
+		</infoFGTS>
+	</evtFGTS>
+</eSocial>

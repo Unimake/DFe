@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtCdBenAlt/v_S_01_03_00">
+	<evtCdBenAlt Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<indRetif>1</indRetif>
+			<nrRecibo>1.1.1111111111111111111</nrRecibo>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<ideBeneficio>
+			<cpfBenef>00000000000</cpfBenef>
+			<nrBeneficio>nrBeneficio1</nrBeneficio>
+		</ideBeneficio>
+		<infoBenAlteracao>
+			<dtAltBeneficio>1900-01-01</dtAltBeneficio>
+			<dadosBeneficio>
+				<tpBeneficio>0000</tpBeneficio>
+				<tpPlanRP>0</tpPlanRP>
+				<dsc>dsc1</dsc>
+				<indSuspensao>S</indSuspensao>
+				<infoPenMorte>
+					<tpPenMorte>1</tpPenMorte>
+				</infoPenMorte>
+				<suspensao>
+					<mtvSuspensao>01</mtvSuspensao>
+					<dscSuspensao>dscSuspensao1</dscSuspensao>
+				</suspensao>
+			</dadosBeneficio>
+		</infoBenAlteracao>
+	</evtCdBenAlt>
+</eSocial>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_03_00">
+	<evtExcProcTrab Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>nrInsc1</nrInsc>
+		</ideEmpregador>
+		<infoExclusao>
+			<tpEvento>S-2500</tpEvento>
+			<nrRecEvt>12345678901234567890123</nrRecEvt>
+			<ideProcTrab>
+				<nrProcTrab>123456789012345</nrProcTrab>
+				<cpfTrab>12345678</cpfTrab>
+				<perApurPgto>2024-08</perApurPgto>
+			</ideProcTrab>
+		</infoExclusao>
+	</evtExcProcTrab>
+</eSocial>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtTabRubrica/v_S_01_03_00">
+	<evtTabRubrica Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>str1234</verProc>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<infoRubrica>
+			<inclusao>
+				<ideRubrica>
+					<codRubr>str1234</codRubr>
+					<ideTabRubr>str1234</ideTabRubr>
+					<iniValid>2017-10</iniValid>
+					<fimValid>2017-10</fimValid>
+				</ideRubrica>
+				<dadosRubrica>
+					<dscRubr>str1234</dscRubr>
+					<natRubr>1234</natRubr>
+					<tpRubr>1</tpRubr>
+					<codIncCP>01</codIncCP>
+					<codIncIRRF>01</codIncIRRF>
+					<codIncFGTS>00</codIncFGTS>
+					<observacao>str1234</observacao>
+					<ideProcessoCP>
+						<tpProc>1</tpProc>
+						<nrProc>00000000000000000000</nrProc>
+						<extDecisao>1</extDecisao>
+						<codSusp>1234</codSusp>
+					</ideProcessoCP>
+					<ideProcessoIRRF>
+						<nrProc>00000000000000000000</nrProc>
+						<codSusp>1234</codSusp>
+					</ideProcessoIRRF>
+					<ideProcessoFGTS>
+						<nrProc>00000000000000000000</nrProc>
+					</ideProcessoFGTS>
+				</dadosRubrica>
+			</inclusao>
+		</infoRubrica>
+	</evtTabRubrica>
+</eSocial>

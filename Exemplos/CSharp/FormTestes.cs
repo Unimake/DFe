@@ -301,6 +301,16 @@ namespace TreinamentoDLL
 
         private void BtnEnviarEventoCCe_Click(object sender, EventArgs e)
         {
+            #region Exemplo de como criar o objeto do XML desserializando um XML já existente
+
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(@"C:\projetos\uninfe\exemplos\NFe e NFCe 4.00\Eventos\cce26111253420477000192550550000033071213028272_01-ped-eve.xml");
+
+            var xmlDesserializado = new XmlNFe.EnvEvento();
+            xmlDesserializado = xmlDesserializado.LerXML<XmlNFe.EnvEvento>(xmlDoc);
+
+            #endregion
+
             var xml = new XmlNFe.EnvEvento
             {
                 Versao = "1.00",

@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtContProc/v_S_01_03_00">
+	<evtContProc Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<indRetif>1</indRetif>
+			<nrRecibo>1.1.1111111111111111111</nrRecibo>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>verProc1</verProc>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<ideProc>
+			<nrProcTrab>00000000000000000000</nrProcTrab>
+			<perApurPgto>2020-05</perApurPgto>
+			<obs>obs1</obs>
+		</ideProc>
+		<ideTrab cpfTrab="00000000000">
+			<calcTrib perRef="2022-05" vrBcCpMensal="123.45" vrBcCp13="123.45">
+				<infoCRContrib tpCR="593656" vrCR="123456"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+			</calcTrib>
+			<calcTrib perRef="2022-05" vrBcCpMensal="123.45" vrBcCp13="123.45">
+				<infoCRContrib tpCR="593656" vrCR="123456"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+			</calcTrib>
+			<infoCRIRRF tpCR="593656" vrCR="0">
+				<infoIR vrRendTrib="0" vrRendTrib13="0" vrRendMoleGrave="0" vrRendIsen65="0" vrJurosMora="0" vrRendIsenNTrib="0" descIsenNTrib="descIsenNTrib1" vrPrevOficial="0"/>
+				<infoRRA descRRA="descRRA1" qtdMesesRRA="10">
+					<despProcJud vlrDespCustas="0" vlrDespAdvogados="0"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="0"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+				</infoRRA>
+				<dedDepen tpRend="11" cpfDep="00000000000" vlrDeducao="1"/>
+				<dedDepen tpRend="12" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="11" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<penAlim tpRend="11" cpfDep="00000000000" vlrPensao="1"/>
+				<penAlim tpRend="12" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="18" cpfDep="00000000000" vlrPensao="99.99"/>
+				<infoProcRet tpProcRet="1" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="1" vlrCmpAnoCal="1" vlrCmpAnoAnt="1" vlrRendSusp="1">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="1"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="2" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="1" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+			</infoCRIRRF>
+			<infoCRIRRF tpCR="188951" vrCR="99.99">
+				<infoIR vrRendTrib="99.99" vrRendTrib13="99.99" vrRendMoleGrave="99.99" vrRendIsen65="99.99" vrJurosMora="99.99" vrRendIsenNTrib="99.99" descIsenNTrib="descIsenNTrib2" vrPrevOficial="99.99"/>
+				<infoRRA descRRA="descRRA2" qtdMesesRRA="10">
+					<despProcJud vlrDespCustas="99.99" vlrDespAdvogados="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+				</infoRRA>
+				<dedDepen tpRend="12" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="11" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="12" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<penAlim tpRend="79" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="11" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="12" cpfDep="00000000000" vlrPensao="99.99"/>
+				<infoProcRet tpProcRet="2" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="1" nrProcRet="12345678901234567" codSusp="2">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="2" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+			</infoCRIRRF>
+		</ideTrab>
+		<ideTrab cpfTrab="00000000000">
+			<calcTrib perRef="2022-05" vrBcCpMensal="123.45" vrBcCp13="123.45">
+				<infoCRContrib tpCR="593656" vrCR="123456"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+			</calcTrib>
+			<calcTrib perRef="2022-05" vrBcCpMensal="123.45" vrBcCp13="123.45">
+				<infoCRContrib tpCR="593656" vrCR="123456"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+				<infoCRContrib tpCR="593656" vrCR="123.45"/>
+			</calcTrib>
+			<infoCRIRRF tpCR="188951" vrCR="99.99">
+				<infoIR vrRendTrib="99.99" vrRendTrib13="99.99" vrRendMoleGrave="99.99" vrRendIsen65="99.99" vrJurosMora="99.99" vrRendIsenNTrib="99.99" descIsenNTrib="descIsenNTrib4" vrPrevOficial="99.99"/>
+				<infoRRA descRRA="descRRA4" qtdMesesRRA="10">
+					<despProcJud vlrDespCustas="99.99" vlrDespAdvogados="99.99"/>
+					<ideAdv tpInsc="2" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="2" nrInsc="00000000000" vlrAdv="99.99"/>
+				</infoRRA>
+				<dedDepen tpRend="12" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="11" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="12" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<penAlim tpRend="12" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="18" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="79" cpfDep="00000000000" vlrPensao="99.99"/>
+				<infoProcRet tpProcRet="2" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="1" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="2" nrProcRet="12345678901234567" codSusp="2">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+			</infoCRIRRF>
+			<infoCRIRRF tpCR="593656" vrCR="99.99">
+				<infoIR vrRendTrib="99.99" vrRendTrib13="99.99" vrRendMoleGrave="99.99" vrRendIsen65="99.99" vrJurosMora="99.99" vrRendIsenNTrib="99.99" descIsenNTrib="descIsenNTrib5" vrPrevOficial="99.99"/>
+				<infoRRA descRRA="descRRA5" qtdMesesRRA="10">
+					<despProcJud vlrDespCustas="99.99" vlrDespAdvogados="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+					<ideAdv tpInsc="1" nrInsc="00000000000" vlrAdv="99.99"/>
+				</infoRRA>
+				<dedDepen tpRend="11" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="12" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<dedDepen tpRend="11" cpfDep="00000000000" vlrDeducao="99.99"/>
+				<penAlim tpRend="11" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="12" cpfDep="00000000000" vlrPensao="99.99"/>
+				<penAlim tpRend="18" cpfDep="00000000000" vlrPensao="99.99"/>
+				<infoProcRet tpProcRet="1" nrProcRet="12345678901234567" codSusp="4">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="2" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+				<infoProcRet tpProcRet="1" nrProcRet="12345678901234567" codSusp="1">
+					<infoValores indApuracao="1" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+					<infoValores indApuracao="2" vlrNRetido="99.99" vlrDepJud="99.99" vlrCmpAnoCal="99.99" vlrCmpAnoAnt="99.99" vlrRendSusp="99.99">
+						<dedSusp indTpDeducao="1" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="5" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+						<dedSusp indTpDeducao="7" vlrDedSusp="99.99">
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+							<benefPen cpfDep="00000000000" vlrDepenSusp="99.99"/>
+						</dedSusp>
+					</infoValores>
+				</infoProcRet>
+			</infoCRIRRF>
+			<infoIRComplem dtLaudo="2022-01-01">
+				<infoDep cpfDep="00000000000" dtNascto="2022-11-29" nome="nome4" depIRRF="S" tpDep="01" descrDep="descrDep4"/>
+				<infoDep cpfDep="00000000000" dtNascto="2022-03-06" nome="nome5" depIRRF="S" tpDep="01" descrDep="descrDep5"/>
+				<infoDep cpfDep="00000000000" dtNascto="2022-10-28" nome="nome6" depIRRF="S" tpDep="01" descrDep="descrDep6"/>
+			</infoIRComplem>
+		</ideTrab>
+	</evtContProc>
+</eSocial>
