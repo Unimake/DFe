@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS1591
-
-#if INTEROP
+﻿#if INTEROP
 using System.Runtime.InteropServices;
 #endif
 
@@ -8,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -28,10 +27,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class ESocialEnvioLoteEventos : XMLBase
     {
         /// <summary>
-        /// Versão do envio de lote de eventos
+        /// Versão do schema do XML de lote de eventos
         /// </summary>
         [XmlIgnore]
         public string Versao { get; set; } = "1.1.0";
+
+        /// <summary>
+        /// Versão do Schema dos XML dos eventos
+        /// </summary>
+        [XmlIgnore]
+        public string VersaoSchemaEvento { get; set; } = "v_S_01_02_00";
 
         /// <summary>
         /// Representa um lote de eventos do eSocial
@@ -57,6 +62,25 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <param name="xml">string do XML de lote de eventos do eSocial</param>
         /// <returns>Objeto do ESocialEnvioLoteEventos</returns>
         public ESocialEnvioLoteEventos LoadFromXML(string xml) => XMLUtility.Deserializar<ESocialEnvioLoteEventos>(xml);
+
+        /// <summary>
+        /// Serializa o objeto (Converte o objeto para XML)
+        /// </summary>
+        /// <returns>Conteúdo do XML</returns>
+        public override XmlDocument GerarXML()
+        {
+            var xml = base.GerarXML();
+
+            //Modificar a versão de schema nos namespaces, conforme a versão informada no VersaoSchemaEvento
+            var pattern = @"v_S_\d{2}_\d{2}_\d{2}"; // Expressão para identificar o formato v_S_??_??_??
+
+            var result = Regex.Replace(xml.OuterXml, pattern, VersaoSchemaEvento);
+
+            var doc = new XmlDocument();
+            doc.LoadXml(result);
+
+            return doc;
+        }
     }
 
     /// <summary>
@@ -492,7 +516,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             {
                 var propriedades = GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-                int tipoEvento = 0;
+                var tipoEvento = 0;
                 foreach (var propriedade in propriedades)
                 {
                     if (propriedade.PropertyType.Name.StartsWith("ESocial"))
