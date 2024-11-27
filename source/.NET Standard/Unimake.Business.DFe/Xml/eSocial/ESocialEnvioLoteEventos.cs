@@ -36,7 +36,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Versão do Schema dos XML dos eventos
         /// </summary>
         [XmlIgnore]
-        public string VersaoSchemaEvento { get; set; } = "v_S_01_02_00";
+        public string VersaoSchema { get; set; } = "v_S_01_02_00";
 
         /// <summary>
         /// Representa um lote de eventos do eSocial
@@ -71,10 +71,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
         {
             var xml = base.GerarXML();
 
-            //Modificar a versão de schema nos namespaces, conforme a versão informada no VersaoSchemaEvento
+            //Modificar a versão de schema nos namespaces, conforme a versão informada no VersaoSchema
             var pattern = @"v_S_\d{2}_\d{2}_\d{2}"; // Expressão para identificar o formato v_S_??_??_??
 
-            var result = Regex.Replace(xml.OuterXml, pattern, VersaoSchemaEvento);
+            var result = Regex.Replace(xml.OuterXml, pattern, VersaoSchema);
 
             var doc = new XmlDocument();
             doc.LoadXml(result);
