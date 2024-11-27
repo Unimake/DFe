@@ -29,7 +29,53 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <summary>
         /// Definir configurações
         /// </summary>
-        protected override void DefinirConfiguracao() { }
+        protected override void DefinirConfiguracao()
+        {
+            if (Configuracoes.PadraoNFSe == PadraoNFSe.MEMORY)
+            {
+                var element = default(XmlElement);
+                element = ConteudoXML.LastChild.FirstChild as XmlElement;
+
+                var codMunicipio = default(string);
+                var temp = element?.GetAttribute("codMunicipio");
+
+                if (!string.IsNullOrWhiteSpace(temp))
+                {
+                    codMunicipio = temp;
+                }
+                else
+                {
+                    codMunicipio = ConteudoXML.GetElementsByTagName("codMunicipio")[0].InnerText;
+                }
+
+                var CNPJ = default(string);
+                try
+                {
+                    CNPJ = ConteudoXML.GetElementsByTagName("Cnpj")[0].InnerText;
+                }
+                catch
+                {
+                    CNPJ = ConteudoXML.GetElementsByTagName("cnpjPrestador")[0].InnerText;
+                }
+
+                var numeroRPS = default(string);
+
+                numeroRPS = ConteudoXML.GetElementsByTagName("numeroRPS")[0]?.InnerText;
+
+                var numeroNFSE = default(string);
+                numeroNFSE = ConteudoXML.GetElementsByTagName("numeroNFSE")[0]?.InnerText;
+
+                var protocolo = default(string);
+                protocolo = ConteudoXML.GetElementsByTagName("protocolo")[0]?.InnerText;
+
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS);
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroNFSE}", numeroNFSE);
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{protocolo}", protocolo);
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{codMunicipio}", codMunicipio);
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{CNPJ}", CNPJ);
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{hashValidador}", Configuracoes.MunicipioSenha);
+            }
+        }
 
         /// <summary>
         /// Ajustes no XMLs, depois de assinado.
