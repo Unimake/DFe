@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Versao ID="1.00">
-	<WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
-	<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nf3="{ActionWeb}"><soap:Body><nf3:nf3eDadosMsg xmlns:nf3="{ActionWeb}">{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
-	<WebSoapVersion>soap12</WebSoapVersion>
-	<SchemaVersao>1.00</SchemaVersao>
-	<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
-</Versao>
+<ConfigPadrao>
+	<Versao ID="1.00">
+		<WebContentType>application/soap+xml; charset=utf-8;</WebContentType>
+		<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:nf3="{ActionWeb}"><soap:Body><nf3:nf3eDadosMsg xmlns:nf3="{ActionWeb}">{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		<WebSoapVersion>soap12</WebSoapVersion>
+		<SchemaVersao>1.00</SchemaVersao>
+		<TargetNS>http://www.portalfiscal.inf.br/nf3e</TargetNS>
+	</Versao>
+</ConfigPadrao>

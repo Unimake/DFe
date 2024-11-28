@@ -58,7 +58,8 @@
 			<TagAtributoID>infNF3e</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<WebTagRetorno>nf3eRecepcaoResult</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
 			<UrlQrCodeHomologacao>http://www.fazenda.pr.gov.br/nf3e/qrcode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>http://www.fazenda.pr.gov.br/nf3e/qrcode</UrlQrCodeProducao>
 			<UrlChaveHomologacao>http://www.fazenda.pr.gov.br</UrlChaveHomologacao>

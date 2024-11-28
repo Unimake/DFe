@@ -59,6 +59,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebTagRetorno>NF3eRecepcaoResult</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
 			<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeProducao>
 			<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnf3e</UrlChaveHomologacao>

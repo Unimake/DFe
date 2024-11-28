@@ -59,6 +59,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
 			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/nf3e/qrCode</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/nf3e/qrCode</UrlQrCodeProducao>
 			<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/nf3e/consulta</UrlChaveHomologacao>
