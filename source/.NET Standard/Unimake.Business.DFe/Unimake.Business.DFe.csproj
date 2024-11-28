@@ -4,8 +4,8 @@
 		<TargetFrameworks>netstandard2.0</TargetFrameworks>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<LangVersion>7.3</LangVersion>
-		<AssemblyVersion>2024.11.28.1023</AssemblyVersion>
-		<FileVersion>2024.11.28.1023</FileVersion>
+		<AssemblyVersion>2024.11.19.1003</AssemblyVersion>
+		<FileVersion>2024.11.19.1003</FileVersion>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<Configurations>Debug;Release;INTEROP_Release</Configurations>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -857,28 +857,7 @@
 		<None Remove="Xml\Schemas\MDFe\retMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\tiposGeralMDFe_v3.00.xsd" />
 		<None Remove="Xml\Schemas\MDFe\xmldsig-core-schema_v1.01.xsd" />
-		<None Remove="Xml\Schemas\NF3e\consReciNF3eTiposBasico_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\consReciNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\consSitNF3eTiposBasico_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\consSitNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\consStatServNF3eTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\consStatServNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\procNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\retConsReciNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\retConsSitNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\retConsStatServNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\retEnviNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\retEventoNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\retNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\tiposGeralNF3e_v1.00.xsd" />
-		<None Remove="Xml\Schemas\NF3e\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFe\110150_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\distDFeInt_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110130_v1.00.xsd" />
@@ -1793,28 +1772,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\xmldsig-core-schema.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\GNRE\retorno_gnre_v2.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consReciNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consReciNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3eTiposBasico_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\nf3eTiposBasico_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\nf3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\procEventoNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\procNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retConsReciNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retConsSitNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retConsStatServNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retEnviNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retEventoNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\retNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\tiposGeralNF3e_v1.00.xsd" />
-	  <EmbeddedResource Include="Xml\Schemas\NF3e\xmldsig-core-schema_v1.01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\110150_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
@@ -2776,9 +2734,9 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.2" />
-		<PackageReference Include="Unimake.Cryptography" Version="20241127.138.52" />
-		<PackageReference Include="Unimake.Extensions" Version="20241127.138.52" />
-		<PackageReference Include="Unimake.Utils" Version="20241127.138.52" />
+		<PackageReference Include="Unimake.Cryptography" Version="20241016.1016.27" />
+		<PackageReference Include="Unimake.Extensions" Version="20241016.1016.27" />
+		<PackageReference Include="Unimake.Utils" Version="20241016.1016.27" />
 	</ItemGroup>
 
 	<ItemGroup>

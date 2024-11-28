@@ -23,5 +23,8 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("xServ")]
         public string XServ { get; set; }
+
+        [XmlAttribute(AttributeName ="versao")]
+        public string versao {  get; set; }
     }
 }
