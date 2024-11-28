@@ -1545,7 +1545,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 9 - Contingência off-line da NFC-e
         /// </summary>
         [XmlEnum("9")]
-        ContingenciaOffLine = 9
+        ContingenciaOffLine = 9,
+
+        /// <summary>
+        /// 2 - Contingência off-line da NF3e
+        /// </summary>
+        [XmlEnum("2")]
+        ContingenciaOfflineNF3e = 10
     }
 
     #endregion
@@ -13791,28 +13797,6 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion FinNF3e
 
-    #region TpEmis
-
-    /// <summary>
-    /// Forma de emissão do Documento Fiscal
-    /// </summary>
-    public enum TipoEmissaoNF3e
-    {
-        /// <summary>
-        /// 1 - Normal.
-        /// </summary>
-        [XmlEnum("1")]
-        Normal = 1,
-
-        /// <summary>
-        /// 2 - ContingenciaOffLine.
-        /// </summary>
-        [XmlEnum("2")]
-        ContingenciaOffLine = 2,
-    }
-
-    #endregion TpEmisNF3e
-
     #region TipoAcessante
     /// <summary>
     /// Tipo de Acessante
@@ -13888,10 +13872,10 @@ namespace Unimake.Business.DFe.Servicos
         Comercial = 01,
 
         /// <summary>
-        /// 2 - ConsumoPropio.
+        /// 2 - ConsumoProprio.
         /// </summary>
         [XmlEnum("02")]
-        ConsumoPropio = 02,
+        ConsumoProprio = 02,
 
         /// <summary>
         /// 3 - IluminacaoPublica.
@@ -14647,7 +14631,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Unidade de Medida
     /// </summary>
-    public enum UMed
+    public enum UnidadeMedidaEnergia
     {
         /// <summary>
         /// 1 = kW (Aplica-se somente a TUSD)
@@ -14755,7 +14739,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Indicador da origem da quantidade faturada
     /// </summary>
-    public enum IndOrigemQtd
+    public enum IndicadorOrigemQuantidadeFaturada
     {
         /// <summary>
         /// 1 - Media.
@@ -14801,7 +14785,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Tipo de grandeza medida
     /// </summary>
-    public enum TipoGrMedida
+    public enum TipoGrandezaMedida
     {
         /// <summary>
         /// 01 - Demanda.
@@ -14869,7 +14853,7 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// classificação Tributária do PIS
     /// </summary>
-    public enum CST
+    public enum CSTPisCofins
     {
         /// <summary>
         /// 01 – Tributável com alíquota básica
@@ -14943,29 +14927,40 @@ namespace Unimake.Business.DFe.Servicos
     #endregion TpProc
 
     #region TipoLancamento
+
     /// <summary>
-    /// 
+    /// Tipo de lançamento contábil
     /// </summary>
     public enum TipoLancamento
     {
         /// <summary>
-        /// 
+        /// Débito
         /// </summary>
+        [XmlEnum("D")]
         D = 0,
+
         /// <summary>
-        /// 
+        /// Crédito
         /// </summary>
+        [XmlEnum("C")]
         C = 1,
     }
 
     #endregion TipoLancamento
 
     #region TipoEventoNF3e
+
     /// <summary>
-    /// 
+    /// Tipo de evento da NF3e
     /// </summary>
     public enum TipoEventoNF3e
-    {
+    { 
+        /// <summary>
+        /// 0 - Evento desconhecido
+        /// </summary>
+        [XmlEnum("0")]
+        Desconhecido = 0,
+
         /// <summary>
         /// Evento de cancelamento
         /// </summary>

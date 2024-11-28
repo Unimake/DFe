@@ -97,6 +97,11 @@ namespace Unimake.Business.DFe.Utility
             /// </summary>
             public UFBrasil UFEmissor { get; set; }
 
+            /// <summary>
+            /// Site do Autorizador que recepcionou a NF3e 
+            /// </summary>
+            public string NSiteAutoriz { get; set; }
+
             #endregion Public Properties
         }
 
@@ -560,6 +565,10 @@ namespace Unimake.Business.DFe.Utility
             {
                 tipoDFe = TipoDFe.CFe;
             }
+            else if (xml.Contains("<mod>66</mod>"))
+            {
+                tipoDFe = TipoDFe.NF3e;
+            }
 
             return tipoDFe;
         }
@@ -599,6 +608,10 @@ namespace Unimake.Business.DFe.Utility
 
                 case "65":
                     tipoDFe = TipoDFe.NFCe;
+                    break;
+
+                case "66":
+                    tipoDFe = TipoDFe.NF3e;
                     break;
 
                 case "67":
@@ -785,6 +798,35 @@ namespace Unimake.Business.DFe.Utility
             }
 
             return tipoEventoNFe;
+        }
+
+        /// <summary>
+        /// Detectar qual o tipo de evento do NF3e.
+        /// </summary>
+        /// <param name="xml">XML a ser analisado</param>
+        /// <returns>Retorna o tipo do evento do NF3e</returns>
+        public static TipoEventoNF3e DetectEventoNF3eType(XmlDocument xml) => DetectEventoNF3eType(xml.OuterXml);
+
+        /// <summary>
+        /// Detectar qual o tipo de evento do NF3e.
+        /// </summary>
+        /// <param name="xml">XML a ser analisado</param>
+        /// <returns>Retorna o tipo do evento do NF3e</returns>
+        public static TipoEventoNF3e DetectEventoNF3eType(string xml)
+        {
+            var tipoEventoNF3e = TipoEventoNF3e.Desconhecido;
+
+            if (DetectEventByDFeType(xml) == TipoDFe.Desconhecido)
+            {
+                return tipoEventoNF3e;
+            }
+
+            if (xml.Contains("<tpEvento>110111</tpEvento>"))
+            {
+                tipoEventoNF3e = TipoEventoNF3e.Cancelamento;
+            }
+
+            return tipoEventoNF3e;
         }
 
         /// <summary>
@@ -1015,6 +1057,31 @@ namespace Unimake.Business.DFe.Utility
         public static string MontarChaveCTe(ref ConteudoChaveDFe conteudoChaveDFe) => MontarChaveDFe(ref conteudoChaveDFe);
 
         /// <summary>
+        /// Monta a chave do NF3e com base nos valores informados
+        /// </summary>
+        /// <param name="conteudoChaveDFe">Conteúdos do NF3e necessários para montagem da chave</param>
+        /// <returns>Chave do NF3e</returns>
+        public static string MontarChaveNF3e(ref ConteudoChaveDFe conteudoChaveDFe)
+        {
+            var chave = ((int)conteudoChaveDFe.UFEmissor).ToString() +
+                conteudoChaveDFe.AnoEmissao +
+                conteudoChaveDFe.MesEmissao +
+                conteudoChaveDFe.CNPJCPFEmissor +
+                ((int)conteudoChaveDFe.Modelo).ToString().PadLeft(2, '0') +
+                conteudoChaveDFe.Serie.ToString().PadLeft(3, '0') +
+                conteudoChaveDFe.NumeroDoctoFiscal.ToString().PadLeft(9, '0') +
+                ((int)conteudoChaveDFe.TipoEmissao).ToString() +
+                conteudoChaveDFe.NSiteAutoriz.ToString() +
+                conteudoChaveDFe.CodigoNumerico.PadLeft(7, '0');
+
+            conteudoChaveDFe.DigitoVerificador = XMLUtility.CalcularDVChave(chave);
+
+            chave += conteudoChaveDFe.DigitoVerificador.ToString();
+
+            return chave;
+        }
+
+        /// <summary>
         /// Monta a chave do DFE com base nos valores informados
         /// </summary>
         /// <param name="conteudoChaveDFe">Conteúdos do DFe necessários para montagem da chave</param>
@@ -1092,6 +1159,10 @@ namespace Unimake.Business.DFe.Utility
 
                 case TipoDFe.CFe:
                     typeString = "CFe";
+                    break;
+
+                case TipoDFe.NF3e:
+                    typeString = "NF3e";
                     break;
             }
 
@@ -1271,6 +1342,35 @@ namespace Unimake.Business.DFe.Utility
 
                 case TipoEventoNFe.RespostaCancelamentoPedidoProrrogacaoPrazo2:
                     typeString = "411503";
+                    break;
+            }
+
+            var pedacinhos = xml.Split(new string[] { $"Id=\"ID{typeString}" }, StringSplitOptions.None);
+
+            return pedacinhos.Length < 1 ? default : pedacinhos[1].Substring(0, 44);
+        }
+
+        /// <summary>
+        /// Busca o número da chave do evento do NF3e
+        /// </summary>
+        /// <param name="xml">Conteúdo do XML para busca da chave</param>
+        /// <returns>Chave do evento do NF3e</returns>
+        public static string GetChaveEventoNF3e(string xml) => GetChaveEventoNF3e(xml, DetectEventoNF3eType(xml));
+
+        /// <summary>
+        /// Busca o número da chave do evento do NF3e
+        /// </summary>
+        /// <param name="xml">Conteúdo do XML para busca da chave</param>
+        /// <param name="typeEventoNF3e">Tipo do evento do NF3e</param>
+        /// <returns>Chave do evento do NF3e</returns>
+        public static string GetChaveEventoNF3e(string xml, TipoEventoNF3e typeEventoNF3e)
+        {
+            var typeString = "";
+
+            switch (typeEventoNF3e)
+            {
+                case TipoEventoNF3e.Cancelamento:
+                    typeString = "110111";
                     break;
             }
 
