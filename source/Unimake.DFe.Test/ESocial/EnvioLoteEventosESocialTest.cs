@@ -28,10 +28,10 @@ namespace Unimake.DFe.Test.ESocial
                 CertificadoDigital = PropConfig.CertificadoDigital,
             };
 
-            var conteudoXML = new Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos
+            var conteudoXML = new ESocialEnvioLoteEventos
             {
                 Versao = "1.1.0",
-                EnvioLoteEventos = new Business.DFe.Xml.ESocial.EnvioLoteEventosESocial
+                EnvioLoteEventos = new EnvioLoteEventosESocial
                 {
                     Grupo = "1",
                     IdeEmpregador = new IdeEmpregador
@@ -264,7 +264,6 @@ namespace Unimake.DFe.Test.ESocial
             var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoXML, configuracao);
             enviarLoteEventosESocial.Executar();
         }
-
 
         /// <summary>
         /// Testar o envio do evento S-1005
