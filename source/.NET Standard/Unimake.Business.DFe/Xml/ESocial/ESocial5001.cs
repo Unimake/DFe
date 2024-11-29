@@ -1330,14 +1330,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
     }
 
-
-
-
-
-
-
-
-
     /// <summary>
     /// Informações sobre bases de cálculo do PIS/PASEP informadas nos eventos S-1200, S-2299, S-2399 ou S-1202.
     /// </summary>
