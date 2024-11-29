@@ -9124,6 +9124,50 @@ namespace Unimake.Business.DFe.Servicos
 
     #region ESocial
 
+    #region 
+
+    /// <summary>
+    /// Tipo de valor que influi na apuração da contribuição devida
+    /// </summary>
+    public enum TipoValorApuracaoContribuicao
+    {
+        /// <summary>
+        /// Base de cálculo da contribuição para o PIS/PASEP
+        /// </summary>
+        [XmlEnum("11")]
+        BaseCalculoContribuicaoPISPASEP = 11,
+
+        /// <summary>
+        /// Incidência suspensa em decorrência de decisão judicial - BC PIS/PASEP
+        /// </summary>
+        [XmlEnum("91")]
+        IncidenciaSuspensaDecisaoJudicial = 91
+    }
+
+    #endregion
+
+    #region IndicativoDecimoTerceiro
+
+    /// <summary>
+    /// Indicativo de 13o Salário
+    /// </summary>
+    public enum IndicativoDecimoTerceiro
+    {
+        /// <summary>
+        /// Mensal
+        /// </summary>
+        [XmlEnum("0")]
+        Mensal = 0,
+
+        /// <summary>
+        /// 13º Salário
+        /// </summary>
+        [XmlEnum("1")]
+        DecimoTerceiroSalario = 1
+    }
+
+    #endregion
+
     #region Indicativo indCoop
 
     /// <summary>
@@ -9983,6 +10027,7 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("1")]
         Mensal = 1,
+
         /// <summary>
         /// Anual (13° salário)
         /// </summary>
@@ -14954,7 +14999,7 @@ namespace Unimake.Business.DFe.Servicos
     /// Tipo de evento da NF3e
     /// </summary>
     public enum TipoEventoNF3e
-    { 
+    {
         /// <summary>
         /// 0 - Evento desconhecido
         /// </summary>
@@ -14964,7 +15009,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Evento de cancelamento
         /// </summary>
-        [XmlEnum ("110111")]
+        [XmlEnum("110111")]
         Cancelamento = 110111,
     }
 

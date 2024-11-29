@@ -25,6 +25,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class ESocial5001 : XMLBase
     {
         /// <summary>
+        /// Versão do Schema dos XML dos eventos
+        /// </summary>
+        [XmlIgnore]
+        public string VersaoSchema { get; set; } = "v_S_01_02_00";
+
+        /// <summary>
         /// Evento Informações das Contribuições Sociais por Trabalhador
         /// </summary>
         [XmlElement("evtBasesTrab")]
@@ -32,6 +38,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
+
+        /// <summary>
+        /// Serializa o objeto (Converte o objeto para XML)
+        /// </summary>
+        /// <returns>Conteúdo do XML</returns>
+        public override XmlDocument GerarXML() => Utility.ReplaceVersionSchema(base.GerarXML(), VersaoSchema);
+
+        /// <summary>
+        /// Desserializar XML (Converte o XML para um objeto)
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto</typeparam>
+        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
+        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override T LerXML<T>(XmlDocument doc) => base.LerXML<T>(Utility.ReplaceVersionSchema(doc, VersaoSchema));
     }
 
     /// <summary>
@@ -44,6 +67,17 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class EvtBasesTrab
     {
+        /// <summary>
+        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
+        /// </summary>
+        [XmlIgnore]
+        public string VersaoSchema { get; set; } = "S_01_02_00";
+
+        /// <summary>
+        /// Retorna somente o valor inteiro da versão para facilitar comparações
+        /// </summary>
+        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
+
         /// <summary>
         /// ID
         /// </summary>
@@ -118,6 +152,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("infoCp")]
         public InfoCp InfoCp { get; set; }
+
+        /// <summary>
+        /// Informações sobre bases de cálculo do PIS/PASEP
+        /// </summary>
+        [XmlElement("infoPisPasep")]
+        public InfoPisPasep InfoPisPasep { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeInfoPisPasep() => VersaoSchemaInt >= 10300;
+
+        #endregion
     }
 
     /// <summary>
@@ -351,7 +397,31 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm5001")]
     [ComVisible(true)]
 #endif
-    public class InfoInterm5001 : InfoInterm1200 { }
+    public class InfoInterm5001 : InfoInterm1200
+    {
+        /// <summary>
+        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
+        /// </summary>
+        [XmlIgnore]
+        public string VersaoSchema { get; set; } = "S_01_02_00";
+
+        /// <summary>
+        /// Retorna somente o valor inteiro da versão para facilitar comparações
+        /// </summary>
+        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
+
+        /// <summary>
+        /// Horas trabalhadas no dia pelo empregado com contrato de trabalho intermitente, no formato HHMM.
+        /// </summary>
+        [XmlElement("hrsTrab")]
+        public string HrsTrab { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeMatricAnt() => !string.IsNullOrEmpty(HrsTrab) && VersaoSchemaInt >= 10300;
+
+        #endregion
+    }
 
     /// <summary>
     /// Grupo de informações da sucessão de vínculo trabalhista.
@@ -1257,6 +1327,221 @@ namespace Unimake.Business.DFe.Xml.ESocial
         {
             get => VrPerRef.ToString("F2", CultureInfo.InvariantCulture);
             set => VrPerRef = Converter.ToDouble(value);
+        }
+    }
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// Informações sobre bases de cálculo do PIS/PASEP informadas nos eventos S-1200, S-2299, S-2399 ou S-1202.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoPisPasep")]
+    [ComVisible(true)]
+#endif
+    public class InfoPisPasep
+    {
+        /// <summary>
+        /// Identificação do estabelecimento ou obra de construção civil.
+        /// </summary>
+        [XmlElement("ideEstab")]
+        public List<IdeEstab5001> IdeEstab { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento à lista.
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeEstab(IdeEstab5001 item)
+        {
+            if (IdeEstab == null)
+            {
+                IdeEstab = new List<IdeEstab5001>();
+            }
+
+            IdeEstab.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdeEstab (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista).
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero)).</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeEstab.</returns>
+        public IdeEstab5001 GetIdeEstab(int index)
+        {
+            if ((IdeEstab?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return IdeEstab[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdeEstab.
+        /// </summary>
+        public int GetIdeEstabCount => (IdeEstab != null ? IdeEstab.Count : 0);
+#endif
+    }
+
+    /// <summary>
+    /// Identificação do estabelecimento ou obra de construção civil.
+    /// </summary>
+    public class IdeEstab5001
+    {
+        /// <summary>
+        /// Preencher com o código correspondente ao tipo de inscrição, conforme Tabela 05.
+        /// </summary>
+        [XmlElement("tpInsc")]
+        public TipoInscricaoEstabelecimento TpInsc { get; set; }
+
+        /// <summary>
+        /// Informar o número de inscrição do contribuinte de acordo com o tipo de inscrição indicado.
+        /// </summary>
+        [XmlElement("nrInsc")]
+        public string NrInsc { get; set; }
+
+        /// <summary>
+        /// Informações relativas à matrícula e categoria do trabalhador.
+        /// </summary>
+        [XmlElement("infoCategPisPasep")]
+        public List<InfoCategPisPasep> InfoCategPisPasep { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento à lista.
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoCategPisPasep(InfoCategPisPasep item)
+        {
+            if (InfoCategPisPasep == null)
+            {
+                InfoCategPisPasep = new List<InfoCategPisPasep>();
+            }
+
+            InfoCategPisPasep.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoCategPisPasep.
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado.</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoCategPisPasep.</returns>
+        public InfoCategPisPasep GetInfoCategPisPasep(int index)
+        {
+            if ((InfoCategPisPasep?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return InfoCategPisPasep[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoCategPisPasep.
+        /// </summary>
+        public int GetInfoCategPisPasepCount => (InfoCategPisPasep != null ? InfoCategPisPasep.Count : 0);
+#endif
+    }
+
+    /// <summary>
+    /// Informações relativas à matrícula e categoria do trabalhador.
+    /// </summary>
+    public class InfoCategPisPasep
+    {
+        /// <summary>
+        /// Matrícula atribuída ao trabalhador pela empresa.
+        /// </summary>
+        [XmlElement("matricula")]
+        public string Matricula { get; set; }
+
+        /// <summary>
+        /// Preencher com o código da categoria do trabalhador, conforme Tabela 01.
+        /// </summary>
+        [XmlElement("codCateg")]
+        public CodCateg CodCateg { get; set; }
+
+        /// <summary>
+        /// Informações sobre bases de cálculo do PIS/PASEP.
+        /// </summary>
+        [XmlElement("infoBasePisPasep")]
+        public List<InfoBasePisPasep> InfoBasePisPasep { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento à lista.
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoBasePisPasep(InfoBasePisPasep item)
+        {
+            if (InfoBasePisPasep == null)
+            {
+                InfoBasePisPasep = new List<InfoBasePisPasep>();
+            }
+
+            InfoBasePisPasep.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoBasePisPasep.
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado.</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoBasePisPasep.</returns>
+        public InfoBasePisPasep GetInfoBasePisPasep(int index)
+        {
+            if ((InfoBasePisPasep?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return InfoBasePisPasep[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoBasePisPasep.
+        /// </summary>
+        public int GetInfoBasePisPasepCount => (InfoBasePisPasep != null ? InfoBasePisPasep.Count : 0);
+#endif
+    }
+
+    /// <summary>
+    /// Informações sobre bases de cálculo do PIS/PASEP.
+    /// </summary>
+    public class InfoBasePisPasep
+    {
+        /// <summary>
+        /// Indicativo de 13° salário.
+        /// </summary>
+        [XmlElement("ind13")]
+        public IndicativoDecimoTerceiro Ind13 { get; set; }
+
+        /// <summary>
+        /// Tipo de valor que influi na apuração da contribuição devida.
+        /// </summary>
+        [XmlElement("tpValorPisPasep")]
+        public TipoValorApuracaoContribuicao TpValorPisPasep { get; set; }
+
+        /// <summary>
+        /// Valor da base de cálculo, dedução ou desconto da contribuição social devida ao PIS/PASEP.
+        /// </summary>
+        [XmlIgnore]
+        public double ValorPisPasep { get; set; }
+
+        [XmlElement("valorPisPasep")]
+        public string ValorPisPasepField
+        {
+            get => ValorPisPasep.ToString("F2", CultureInfo.InvariantCulture);
+            set => ValorPisPasep = Converter.ToDouble(value);
         }
     }
 }
