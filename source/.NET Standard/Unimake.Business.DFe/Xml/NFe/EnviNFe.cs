@@ -2702,10 +2702,10 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string Dist { get; set; }
 
         [XmlElement("anoMod")]
-        public int AnoMod { get; set; }
+        public string AnoMod { get; set; }
 
         [XmlElement("anoFab")]
-        public int AnoFab { get; set; }
+        public string AnoFab { get; set; }
 
         [XmlElement("tpPint")]
         public string TpPint { get; set; }
