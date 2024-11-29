@@ -24,19 +24,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1", IsNullable = true)]
-    public class ESocialEnvioLoteEventos : XMLBase
+    public class ESocialEnvioLoteEventos : XMLBaseESocial
     {
         /// <summary>
         /// Versão do schema do XML de lote de eventos
         /// </summary>
         [XmlIgnore]
         public string Versao { get; set; } = "1.1.0";
-
-        /// <summary>
-        /// Versão do Schema dos XML dos eventos
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "v_S_01_02_00";
 
         /// <summary>
         /// Representa um lote de eventos do eSocial
@@ -53,7 +47,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
-            return XMLUtility.Deserializar<ESocialEnvioLoteEventos>(doc);
+            return base.LerXML<ESocialEnvioLoteEventos>(doc);
         }
 
         /// <summary>
@@ -61,26 +55,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="xml">string do XML de lote de eventos do eSocial</param>
         /// <returns>Objeto do ESocialEnvioLoteEventos</returns>
-        public ESocialEnvioLoteEventos LoadFromXML(string xml) => XMLUtility.Deserializar<ESocialEnvioLoteEventos>(xml);
-
-        /// <summary>
-        /// Serializa o objeto (Converte o objeto para XML)
-        /// </summary>
-        /// <returns>Conteúdo do XML</returns>
-        public override XmlDocument GerarXML()
-        {
-            var xml = base.GerarXML();
-
-            //Modificar a versão de schema nos namespaces, conforme a versão informada no VersaoSchema
-            var pattern = @"v_S_\d{2}_\d{2}_\d{2}"; // Expressão para identificar o formato v_S_??_??_??
-
-            var result = Regex.Replace(xml.OuterXml, pattern, VersaoSchema);
-
-            var doc = new XmlDocument();
-            doc.LoadXml(result);
-
-            return doc;
-        }
+        public ESocialEnvioLoteEventos LoadFromXML(string xml) => base.LerXML<ESocialEnvioLoteEventos>(ConvertStringXml(xml));
     }
 
     /// <summary>

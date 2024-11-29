@@ -22,14 +22,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00", IsNullable = false)]
-    public class ESocial5001 : XMLBase
+    public class ESocial5001 : XMLBaseESocial
     {
-        /// <summary>
-        /// Versão do Schema dos XML dos eventos
-        /// </summary>
-        [XmlIgnore]
-        public string VersaoSchema { get; set; } = "v_S_01_02_00";
-
         /// <summary>
         /// Evento Informações das Contribuições Sociais por Trabalhador
         /// </summary>
@@ -38,23 +32,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
-
-        /// <summary>
-        /// Serializa o objeto (Converte o objeto para XML)
-        /// </summary>
-        /// <returns>Conteúdo do XML</returns>
-        public override XmlDocument GerarXML() => Utility.ReplaceVersionSchema(base.GerarXML(), VersaoSchema);
-
-        /// <summary>
-        /// Desserializar XML (Converte o XML para um objeto)
-        /// </summary>
-        /// <typeparam name="T">Tipo do objeto</typeparam>
-        /// <param name="doc">Conteúdo do XML a ser desserializado</param>
-        /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
-#if INTEROP
-        [ComVisible(false)]
-#endif
-        public override T LerXML<T>(XmlDocument doc) => base.LerXML<T>(Utility.ReplaceVersionSchema(doc, VersaoSchema));
     }
 
     /// <summary>

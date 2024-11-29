@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
@@ -19,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBenPrRP/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1207 : XMLBase
+    public class ESocial1207 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Benefícios - Entes Públicos
