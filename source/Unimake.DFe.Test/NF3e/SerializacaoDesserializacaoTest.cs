@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.Servicos.NF3e;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NF3e;
-using Unimake.Business.DFe.Xml.NFe;
 using Xunit;
 
 namespace Unimake.DFe.Test.NF3e
@@ -82,7 +82,7 @@ namespace Unimake.DFe.Test.NF3e
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<RetConsSitNFe>(doc);
+            var xml = XMLUtility.Deserializar<RetConsSitNF3e>(doc);
 
             var doc2 = xml.GerarXML();
 
@@ -274,6 +274,5 @@ namespace Unimake.DFe.Test.NF3e
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
-
     }
 }
