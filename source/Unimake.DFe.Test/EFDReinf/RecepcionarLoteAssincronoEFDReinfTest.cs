@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.EFDReinf;
 using Xunit;
@@ -112,6 +113,31 @@ namespace Unimake.DFe.Test.EFDReinf
             };
 
             var recepcionarLoteAssincReinf = new Business.DFe.Servicos.EFDReinf.RecepcionarLoteAssincrono(conteudoXML, configuracao);
+            recepcionarLoteAssincReinf.Executar();
+        }
+
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void RecepcionarLoteAssincReinfXml(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.EFDReinfRecepcionarLoteAssincrono,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"..\..\..\EFDReinf\Resources\loteEventosAssincrono-Reinf-loteevt.xml");
+
+            var envioObjeto = new Business.DFe.Xml.EFDReinf.ReinfEnvioLoteEventos();
+            var xml = envioObjeto.LerXML<ReinfEnvioLoteEventos>(conteudoXML);
+
+            var recepcionarLoteAssincReinf = new Business.DFe.Servicos.EFDReinf.RecepcionarLoteAssincrono(xml, configuracao);
             recepcionarLoteAssincReinf.Executar();
         }
     }
