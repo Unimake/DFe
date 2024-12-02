@@ -19,9 +19,14 @@ namespace Unimake.Business.DFe.Servicos.ESocial
     public class ConsultarEvtsTabela : ServicoBase, IInteropService<ConsultarEvtsTabelaESocial>
     {
         /// <summary>
-        /// 
+        /// Construtor
         /// </summary>
-        public ConsultarEvtsTabela(ConsultarEvtsTabelaESocial consulta, Configuracao configuracao)
+        public ConsultarEvtsTabela() : base() { }
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public ConsultarEvtsTabela(ConsultarEvtsTabelaESocial consulta, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
@@ -30,6 +35,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
         }
+
 #if INTEROP
         /// <summary>
         /// 

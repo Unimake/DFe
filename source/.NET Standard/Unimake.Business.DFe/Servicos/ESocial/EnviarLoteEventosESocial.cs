@@ -4,7 +4,6 @@ using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Business.DFe.Xml.NFe;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
@@ -221,7 +220,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                             DescResposta = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado",
                         }
                     }
-                    
+
                 };
             }
         }

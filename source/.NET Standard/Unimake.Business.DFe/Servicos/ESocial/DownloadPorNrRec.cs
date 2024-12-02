@@ -20,9 +20,14 @@ namespace Unimake.Business.DFe.Servicos.ESocial
     public class DownloadPorNrRec : ServicoBase, IInteropService<DownloadEventosPorNrRec>
     {
         /// <summary>
-        /// 
+        /// Construtor
         /// </summary>
-        public DownloadPorNrRec(DownloadEventosPorNrRec consulta, Configuracao configuracao)
+        public DownloadPorNrRec() : base() { }
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public DownloadPorNrRec(DownloadEventosPorNrRec consulta, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {

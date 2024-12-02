@@ -90,6 +90,11 @@ namespace TreinamentoDLL
 
             MessageBox.Show(consultaCad.RetornoWSString);
             MessageBox.Show(consultaCad.Result.InfCons.XMotivo);
+
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(@"d:\teste\retconscad.xml");
+
+            var retConsCad = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.NFe.RetConsCad>(xmlDoc);
         }
 
         private void BtnConsultaSituacaoMDFe_Click(object sender, EventArgs e)

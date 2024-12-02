@@ -20,9 +20,14 @@ namespace Unimake.Business.DFe.Servicos.ESocial
     public class ConsultarEvtsTrabalhador : ServicoBase, IInteropService<ConsultarEvtsTrabalhadorESocial>
     {
         /// <summary>
-        /// 
+        /// Construtor
         /// </summary>
-        public ConsultarEvtsTrabalhador(ConsultarEvtsTrabalhadorESocial consulta, Configuracao configuracao)
+        public ConsultarEvtsTrabalhador() : base() { }
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public ConsultarEvtsTrabalhador(ConsultarEvtsTrabalhadorESocial consulta, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {

@@ -1,4 +1,9 @@
-﻿using System.Xml;
+﻿#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
+
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.ESocial

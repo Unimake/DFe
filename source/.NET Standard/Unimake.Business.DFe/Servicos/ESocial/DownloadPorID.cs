@@ -20,9 +20,14 @@ namespace Unimake.Business.DFe.Servicos.ESocial
     public class DownloadPorID : ServicoBase, IInteropService<DownloadEventosPorID>
     {
         /// <summary>
-        /// 
+        /// Construtor
         /// </summary>
-        public DownloadPorID(DownloadEventosPorID consulta, Configuracao configuracao)
+        public DownloadPorID() : base() { }
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        public DownloadPorID(DownloadEventosPorID consulta, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
