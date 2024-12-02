@@ -30,7 +30,7 @@ namespace Unimake.DFe.Test.ESocial
             {
                 ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
                 {
-                    Empregador = new IdeEmpregador
+                    IdeEmpregador = new IdeEmpregador
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "06117473000150"
@@ -69,7 +69,7 @@ namespace Unimake.DFe.Test.ESocial
             {
                 ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
                 {
-                    Empregador = new IdeEmpregador
+                    IdeEmpregador = new IdeEmpregador
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "06117473000150"
@@ -109,7 +109,7 @@ namespace Unimake.DFe.Test.ESocial
             {
                 ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
                 {
-                    Empregador = new IdeEmpregador
+                    IdeEmpregador = new IdeEmpregador
                     {
                         TpInsc = TiposInscricao.CNPJ,
                         NrInsc = "06117473000150"
