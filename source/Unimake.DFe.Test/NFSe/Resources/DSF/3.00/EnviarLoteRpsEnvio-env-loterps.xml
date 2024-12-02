@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.ginfes.com.br/servico_enviar_lote_rps_envio_v03.xsd">
+  <LoteRps Id="LOTE10" xmlns:tipos="http://www.ginfes.com.br/tipos_v03.xsd">
+    <tipos:NumeroLote>10</tipos:NumeroLote>
+    <tipos:Cnpj>01761135000132</tipos:Cnpj>
+    <tipos:InscricaoMunicipal>9021987090</tipos:InscricaoMunicipal>
+    <tipos:QuantidadeRps>1</tipos:QuantidadeRps>
+    <tipos:ListaRps>
+      <tipos:Rps>
+        <tipos:InfRps>
+          <tipos:IdentificacaoRps>
+            <tipos:Numero>10</tipos:Numero>
+            <tipos:Serie>NFSE</tipos:Serie>
+            <tipos:Tipo>1</tipos:Tipo>
+          </tipos:IdentificacaoRps>
+          <tipos:DataEmissao>2010-10-26T16:02:00</tipos:DataEmissao>
+          <tipos:NaturezaOperacao>1</tipos:NaturezaOperacao>
+          <tipos:RegimeEspecialTributacao>5</tipos:RegimeEspecialTributacao>
+          <tipos:OptanteSimplesNacional>1</tipos:OptanteSimplesNacional>
+          <tipos:IncentivadorCultural>2</tipos:IncentivadorCultural>
+          <tipos:Status>1</tipos:Status>
+          <tipos:Servico>
+            <tipos:Valores>
+              <tipos:ValorServicos>376.00</tipos:ValorServicos>
+              <tipos:ValorDeducoes>0.00</tipos:ValorDeducoes>
+              <tipos:ValorPis>0.00</tipos:ValorPis>
+              <tipos:ValorCofins>0.00</tipos:ValorCofins>
+              <tipos:ValorInss>0.00</tipos:ValorInss>
+              <tipos:ValorIr>0.00</tipos:ValorIr>
+              <tipos:ValorCsll>0.00</tipos:ValorCsll>
+              <tipos:IssRetido>2</tipos:IssRetido>
+              <tipos:ValorIss>15.68</tipos:ValorIss>
+              <tipos:ValorIssRetido>0.00</tipos:ValorIssRetido>
+              <tipos:OutrasRetencoes>0.00</tipos:OutrasRetencoes>
+              <tipos:BaseCalculo>313.68</tipos:BaseCalculo>
+              <tipos:Aliquota>0.0500</tipos:Aliquota>
+              <tipos:ValorLiquidoNfse>313.68</tipos:ValorLiquidoNfse>
+              <tipos:DescontoIncondicionado>62.32</tipos:DescontoIncondicionado>
+              <tipos:DescontoCondicionado>0.00</tipos:DescontoCondicionado>
+            </tipos:Valores>
+            <tipos:ItemListaServico>14.01</tipos:ItemListaServico>
+            <tipos:CodigoTributacaoMunicipio>4520001</tipos:CodigoTributacaoMunicipio>
+            <tipos:Discriminacao>01-REVISAO DOS 20.000 KM 02-SERVICOS DE MECANICA 03-ALINHAMENTO E BALANCIAMENTO 04-SERVICOS DE TERCEIROS 05-LAVAGEM HILUX</tipos:Discriminacao>
+            <tipos:CodigoMunicipio>4128104</tipos:CodigoMunicipio>
+          </tipos:Servico>
+          <tipos:Prestador>
+            <tipos:Cnpj>01761135000132</tipos:Cnpj>
+            <tipos:InscricaoMunicipal>10428</tipos:InscricaoMunicipal>
+          </tipos:Prestador>
+          <tipos:Tomador>
+            <tipos:IdentificacaoTomador>
+              <tipos:CpfCnpj>
+                <tipos:Cnpj>08166224000180</tipos:Cnpj>
+              </tipos:CpfCnpj>
+            </tipos:IdentificacaoTomador>
+            <tipos:RazaoSocial>ESTOFADOS STABULIS LTDA</tipos:RazaoSocial>
+            <tipos:Endereco>
+              <tipos:Endereco>R MACAPA</tipos:Endereco>
+              <tipos:Numero>3064</tipos:Numero>
+              <tipos:Bairro>CENTRO</tipos:Bairro>
+              <tipos:CodigoMunicipio>4128104</tipos:CodigoMunicipio>
+              <tipos:Uf>PR</tipos:Uf>
+              <tipos:Cep>87503390</tipos:Cep>
+            </tipos:Endereco>
+          </tipos:Tomador>
+        </tipos:InfRps>
+      </tipos:Rps>
+    </tipos:ListaRps>
+  </LoteRps>
+</EnviarLoteRpsEnvio>

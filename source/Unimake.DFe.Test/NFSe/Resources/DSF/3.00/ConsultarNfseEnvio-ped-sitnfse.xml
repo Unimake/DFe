@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseEnvio xmlns="http://www.ginfes.com.br/servico_consultar_nfse_envio_v03.xsd">
+	<Prestador>
+		<Cnpj xmlns="http://www.ginfes.com.br/tipos_v03.xsd">25326380000180</Cnpj>
+		<InscricaoMunicipal xmlns="http://www.ginfes.com.br/tipos_v03.xsd">3246001</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>0</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>1900-01-01</DataInicial>
+		<DataFinal>1900-01-01</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj xmlns="http://www.ginfes.com.br/tipos_v03.xsd">
+			<Cnpj>25326380000180</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal xmlns="http://www.ginfes.com.br/tipos_v03.xsd">3246001</InscricaoMunicipal>
+	</Tomador>
+	<IntermediarioServico>
+		<RazaoSocial xmlns="http://www.ginfes.com.br/tipos_v03.xsd">25326380000180</RazaoSocial>
+		<CpfCnpj xmlns="http://www.ginfes.com.br/tipos_v03.xsd">
+			<Cnpj>25326380000180</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal xmlns="http://www.ginfes.com.br/tipos_v03.xsd">3246001</InscricaoMunicipal>
+	</IntermediarioServico>
+</ConsultarNfseEnvio>

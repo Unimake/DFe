@@ -246,7 +246,8 @@ namespace Unimake.DFe.Test.NFSe
                 servico.HttpStatusCode == (HttpStatusCode)0 && servico.Configuracoes.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS ||
                 servico.HttpStatusCode == HttpStatusCode.BadRequest && 
                     (servico.Configuracoes.PadraoNFSe == PadraoNFSe.NACIONAL 
-                    || servico.Configuracoes.PadraoNFSe == PadraoNFSe.CENTI 
+                    || servico.Configuracoes.PadraoNFSe == PadraoNFSe.CENTI
+                    || servico.Configuracoes.PadraoNFSe == PadraoNFSe.DSF
                     || servico.Configuracoes.PadraoNFSe == PadraoNFSe.AGILI) ||
                 servico.HttpStatusCode == HttpStatusCode.Unauthorized && servico.Configuracoes.PadraoNFSe == PadraoNFSe.IPM)
             {

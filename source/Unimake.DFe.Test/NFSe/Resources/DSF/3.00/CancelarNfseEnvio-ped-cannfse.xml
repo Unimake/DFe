@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns="http://www.ginfes.com.br/servico_cancelar_nfse_envio_v03.xsd">
+	<Pedido xmlns="">
+		<InfPedidoCancelamento Id="Id1" xmlns="http://www.ginfes.com.br/tipos_v03.xsd">
+			<IdentificacaoNfse>
+				<Numero>30</Numero>
+				<Cnpj>01646956000128</Cnpj>
+				<InscricaoMunicipal>18715</InscricaoMunicipal>
+				<CodigoMunicipio>3132404</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>1</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>
