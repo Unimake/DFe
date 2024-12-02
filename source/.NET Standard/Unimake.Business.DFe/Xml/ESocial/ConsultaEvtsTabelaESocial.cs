@@ -15,7 +15,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultaEvtsTabelaESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultarEvtsEmpregadorESocial")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -43,7 +43,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultaEvtsTabelaESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultarEvtsTabelaESocial")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -71,7 +71,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultaEvtsTabelaESocial")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsultarEvtsTrabalhadorESocial")]
     [ComVisible(true)]
 #endif
     [Serializable()]
@@ -106,7 +106,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações de identificação do empregador
         /// </summary>
         [XmlElement("ideEmpregador")]
-        public IdeEmpregador Empregador { get; set; }
+        public IdeEmpregador IdeEmpregador { get; set; }
 
         /// <summary>
         /// Contém o filtro para consulta aos eventos de tabela.
@@ -165,7 +165,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtIni")]
         public string DtIniField
         {
-            get => DtIni.ToString("yyyy-MM-dd");
+            get => DtIni.ToString("yyyy-MM-ddTHH:mm:ss");
 #if INTEROP
             set => DtIni = DateTime.Parse(value);
 #else
@@ -185,7 +185,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtFim")]
         public string DtFimField
         {
-            get => DtFim.ToString("yyyy-MM-dd");
+            get => DtFim.ToString("yyyy-MM-ddTHH:mm:ss");
 #if INTEROP
             set => DtFim = DateTime.Parse(value);
 #else
