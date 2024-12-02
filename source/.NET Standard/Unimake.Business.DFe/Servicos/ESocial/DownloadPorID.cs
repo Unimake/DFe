@@ -27,14 +27,14 @@ namespace Unimake.Business.DFe.Servicos.ESocial
         /// <summary>
         /// Construtor
         /// </summary>
-        public DownloadPorID(DownloadEventosPorID consulta, Configuracao configuracao) : this()
+        public DownloadPorID(DownloadEventosPorID downloadEventosPorID, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
+            Inicializar(downloadEventosPorID?.GerarXML() ?? throw new ArgumentNullException(nameof(downloadEventosPorID)), configuracao);
         }
 
 #if INTEROP
@@ -125,7 +125,7 @@ namespace Unimake.Business.DFe.Servicos.ESocial
 
             if (!Configuracoes.Definida)
             {
-                Configuracoes.Servico = Servico.ESocialConsultaEvts;
+                Configuracoes.Servico = Servico.ESocialDownloadEvts;
                 Configuracoes.CodigoUF = (int)UFBrasil.AN;
                 Configuracoes.SchemaVersao = xml.Versao;
 

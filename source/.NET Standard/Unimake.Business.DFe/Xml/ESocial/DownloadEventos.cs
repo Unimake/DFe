@@ -24,16 +24,19 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class DownloadEventosPorID : XMLBase
     {
         /// <summary>
+        /// Versão do evento
+        /// </summary>
+        [XmlIgnore]
+        public string Versao { get; set; } = "1.1.0";
+
+        /// <summary>
         /// Contém as informações relativas ao download.
         /// </summary>
         [XmlElement("download")]
         public Download Download {  get; set; }
 
-        /// <summary>
-        /// Versão do evento
-        /// </summary>
-        [XmlIgnore]
-        public string Versao { get; set; } = "1.1.0";
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public Signature Signature { get; set; }
     }
 
     /// <summary>
@@ -54,8 +57,14 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("download")]
         public Download Download { get; set; }
 
+        /// <summary>
+        /// Versão do evento
+        /// </summary>
         [XmlIgnore]
         public string Versao { get; set; } = "1.1.0";
+
+        [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
+        public Signature Signature { get; set; }
     }
 
     /// <summary>

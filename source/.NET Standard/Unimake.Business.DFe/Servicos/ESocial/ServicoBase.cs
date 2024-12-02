@@ -70,25 +70,34 @@ namespace Unimake.Business.DFe.Servicos.ESocial
                 var eventoEspecifico = string.Empty;
                 var listEventos = ConteudoXML.GetElementsByTagName("evento");
 
-                foreach (XmlNode nodeEvento in listEventos)
+                if (listEventos.Count > 0)
                 {
-                    var elementEvento = (XmlElement)nodeEvento;
-                    var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
-
-                    var xmlEventoEspecifico = new XmlDocument();
-                    xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
-
-                    eventoEspecifico = esocialEvento.FirstChild.Name;
-
-                    if (!AssinaturaDigital.EstaAssinado(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura))
+                    foreach (XmlNode nodeEvento in listEventos)
                     {
-                        AssinaturaDigital.Assinar(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura,
-                            Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAtributoID,
-                            Configuracoes.CertificadoDigital, AlgorithmType.Sha256, false, "Id");
+                        var elementEvento = (XmlElement)nodeEvento;
+                        var esocialEvento = elementEvento.GetElementsByTagName("eSocial")[0];
 
-                        nodeEvento.RemoveChild(esocialEvento);
-                        nodeEvento.AppendChild(ConteudoXML.ImportNode(xmlEventoEspecifico.DocumentElement, true));
+                        var xmlEventoEspecifico = new XmlDocument();
+                        xmlEventoEspecifico.LoadXml(esocialEvento.OuterXml);
+
+                        eventoEspecifico = esocialEvento.FirstChild.Name;
+
+                        if (!AssinaturaDigital.EstaAssinado(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura))
+                        {
+                            AssinaturaDigital.Assinar(xmlEventoEspecifico, Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAssinatura,
+                                Configuracoes.TiposEventosEspecificos[eventoEspecifico.ToString()].TagAtributoID,
+                                Configuracoes.CertificadoDigital, AlgorithmType.Sha256, false, "Id");
+
+                            nodeEvento.RemoveChild(esocialEvento);
+                            nodeEvento.AppendChild(ConteudoXML.ImportNode(xmlEventoEspecifico.DocumentElement, true));
+                        }
                     }
+                }
+                else
+                {
+                    AssinaturaDigital.Assinar(ConteudoXML, tagAssinatura, tagAtributoID, Configuracoes.CertificadoDigital, AlgorithmType.Sha256, false, "");
+
+                    AjustarXMLAposAssinado();
                 }
             }
         }
