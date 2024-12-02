@@ -1583,4 +1583,10 @@
 		<ArqConfig>RecifePE.xml</ArqConfig>
 		<PadraoNFSe>TIPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2905701">
+		<Nome>Camaçari - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>CamacariBA.xml</ArqConfig>
+		<PadraoNFSe>PRODEB</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
