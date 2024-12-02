@@ -85,7 +85,7 @@
 				</Tipo>
 				<Tipo>
 					<Evento>evtAqProd</Evento>
-					<SchemaArquivoEvento>R-2055-evt2055AquisicaoProdRural/-v{0}-.xsd</SchemaArquivoEvento>
+					<SchemaArquivoEvento>R-2055-evt2055AquisicaoProdRural-v{0}-.xsd</SchemaArquivoEvento>
 					<TagAssinatura>Reinf</TagAssinatura>
 					<TagAtributoID>evtAqProd</TagAtributoID>
 					<TargetNS>http://www.reinf.esocial.gov.br/schemas/evt2055AquisicaoProdRural/v{0}</TargetNS>
