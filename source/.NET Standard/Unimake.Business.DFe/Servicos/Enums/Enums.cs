@@ -6728,7 +6728,13 @@ namespace Unimake.Business.DFe.Servicos
         /// TIPLAN
         /// </summary>
         [Description("TIPLAN")]
-        TIPLAN = 55
+        TIPLAN = 55,
+
+        /// <summary>
+        /// PRODEB
+        /// </summary>
+        [Description("PRODEB")]
+        PRODEB = 56
     }
 
     #endregion

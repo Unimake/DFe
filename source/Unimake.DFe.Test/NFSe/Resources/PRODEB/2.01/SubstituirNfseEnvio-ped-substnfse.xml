@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <SubstituicaoNfse Id="SNF1">
+    <Pedido>
+      <InfPedidoCancelamento Id="PDD1">
+        <IdentificacaoNfse>
+          <Numero>201500000010001</Numero>
+          <CpfCnpj>
+            <Cnpj>99999999999999</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>9.9.99999999</InscricaoMunicipal>
+          <CodigoMunicipio>3106200</CodigoMunicipio>
+        </IdentificacaoNfse>
+        <CodigoCancelamento>2</CodigoCancelamento>
+      </InfPedidoCancelamento>
+    </Pedido>
+    <Rps>
+      <InfDeclaracaoPrestacaoServico Id="RPS1">
+        <Rps>
+          <IdentificacaoRps>
+            <Numero>9999999994</Numero>
+            <Serie>UNICA</Serie>
+            <Tipo>1</Tipo>
+          </IdentificacaoRps>
+          <DataEmissao>2015-03-03</DataEmissao>
+          <Status>1</Status>
+        </Rps>
+        <Competencia>2015-03-03</Competencia>
+        <Servico>
+          <Valores>
+            <ValorServicos>100000.00</ValorServicos>
+            <ValorDeducoes>10.00</ValorDeducoes>
+            <ValorPis>40.00</ValorPis>
+            <ValorCofins>50.00</ValorCofins>
+            <ValorInss>60.00</ValorInss>
+            <ValorIr>70.00</ValorIr>
+            <ValorCsll>80.00</ValorCsll>
+            <OutrasRetencoes>30.00</OutrasRetencoes>
+            <ValorIss>2999.40</ValorIss>
+            <Aliquota>3.00</Aliquota>
+            <DescontoIncondicionado>10.00</DescontoIncondicionado>
+            <DescontoCondicionado>20.00</DescontoCondicionado>
+          </Valores>
+          <IssRetido>1</IssRetido>
+          <ResponsavelRetencao>1</ResponsavelRetencao>
+          <ItemListaServico>14.01</ItemListaServico>
+          <CodigoCnae>4520001</CodigoCnae>
+          <Discriminacao>teste</Discriminacao>
+          <CodigoMunicipio>3106200</CodigoMunicipio>
+          <CodigoPais>1058</CodigoPais>
+          <ExigibilidadeISS>1</ExigibilidadeISS>
+          <MunicipioIncidencia>3106200</MunicipioIncidencia>
+        </Servico>
+        <Prestador>
+          <CpfCnpj>
+            <Cnpj>99999999999999</Cnpj>
+          </CpfCnpj>
+          <InscricaoMunicipal>9.9.99999999</InscricaoMunicipal>
+        </Prestador>
+        <Tomador>
+          <IdentificacaoTomador>
+            <CpfCnpj>
+              <Cnpj>88888888888888</Cnpj>
+            </CpfCnpj>
+            <InscricaoMunicipal>8.8.88888888</InscricaoMunicipal>
+          </IdentificacaoTomador>
+          <RazaoSocial>Razao Social do Tomador</RazaoSocial>
+          <Endereco>
+            <Endereco>Endereco do Tomador</Endereco>
+            <Numero>1720</Numero>
+            <Bairro>Centro</Bairro>
+            <CodigoMunicipio>3106200</CodigoMunicipio>
+            <Uf>MG</Uf>
+            <CodigoPais>1058</CodigoPais>
+            <Cep>31000000</Cep>
+          </Endereco>
+          <Contato>
+            <Email>email_do_tomador@gmail.com</Email>
+          </Contato>
+        </Tomador>
+        <OptanteSimplesNacional>2</OptanteSimplesNacional>
+        <IncentivoFiscal>2</IncentivoFiscal>
+      </InfDeclaracaoPrestacaoServico>
+    </Rps>
+  </SubstituicaoNfse>
+</SubstituirNfseEnvio>
