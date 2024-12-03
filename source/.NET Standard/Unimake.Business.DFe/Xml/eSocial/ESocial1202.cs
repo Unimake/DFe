@@ -142,23 +142,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informar o mês/ano (formato AAAA-MM) de referência das informações, 
         /// se indApuracao for igual a [1], ou apenas o ano (formato AAAA), se indApuracao for igual a [2]
         /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur { get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
-#endif
-
         [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
+        public string PerApur { get; set; }
 
         /// <summary>
         /// Identificação do ambiente
