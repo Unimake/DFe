@@ -21,7 +21,7 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsulta/NF3eConsultaNF</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsulta/NF3eConsultaNF</WebActionProducao>
 			<SchemaArquivo>consSitNF3e_v{0}.xsd</SchemaArquivo>
-			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<WebTagRetorno>nf3eRecepcaoLoteResult</WebTagRetorno>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
