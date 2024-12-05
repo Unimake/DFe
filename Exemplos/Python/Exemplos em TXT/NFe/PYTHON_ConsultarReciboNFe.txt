@@ -1,0 +1,45 @@
+# type: ignore
+from config_dll import inicializar_DLL
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.NFe import *
+from Unimake.Business.DFe.Servicos.NFe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def consultar_recibo_nfe():
+    print("Consultando o recibo da NFe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() #Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFe
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    
+    # Criar o XML
+    oConsReciNFe = ConsReciNFe() #Unimake.Business.DFe.Xml.NFe.ConsReciNFe
+    oConsReciNFe.Versao = "4.00"
+    oConsReciNFe.TpAmb = TipoAmbiente.Producao
+    oConsReciNFe.NRec = "351016737272809"
+    
+    oExceptionInterop = ThrowHelper() #Unimake.Exceptions.ThrowHelper
+    
+    try:
+        oRetAutorizacao = RetAutorizacao(oConsReciNFe, oConfig) #Unimake.Business.DFe.Servicos.NFe.RetAutorizacao
+        oRetAutorizacao.Executar()
+        
+        if (oRetAutorizacao.Result.ProtNFe):
+            if (oRetAutorizacao.Result.ProtNFe[0].InfProt.CStat == 100):
+                # Pega o objeto de autorização da NFe
+                # Exemplo: oAutorizacaoEnviNFe
+                oAutorizacaoEnviNFe.RetConsReciNFe = oRetAutorizacao.Result
+                oAutorizacaoEnviNFe.GravarXmlDistribuicao("src\\NFe\\XMLs")
+            else:
+                return 0
+        else:
+            print("\nNota rejeitada!")
+            print("\nCStat: ", oRetAutorizacao.Result.CStat)
+            print("\nMotivo: ", oRetAutorizacao.Result.XMotivo)
+        
+    except Exception as e:
+        print("Erro ao consultar recibo da NFe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())

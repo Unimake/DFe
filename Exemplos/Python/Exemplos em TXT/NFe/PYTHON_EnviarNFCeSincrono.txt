@@ -1,0 +1,349 @@
+# type: ignore
+import clr, datetime, time
+
+from config_dll import inicializar_DLL
+
+from System import Decimal
+
+from Unimake.Business.DFe.Servicos import *
+from Unimake.Business.DFe.Xml.NFe import *
+from Unimake.Business.DFe.Servicos.NFCe import * 
+from Unimake.Exceptions import ThrowHelper
+
+def enviar_nfce():
+    print("Enviando a NFCe...")
+    
+    # Criar configuração básica para consumir o serviço
+    oConfig                    = Configuracao() # Unimake.Business.DFe.Servicos.Configuracao
+    oConfig.TipoDFe            = TipoDFe.NFCe
+    oConfig.TipoEmissao        = TipoEmissao.Normal
+    oConfig.CertificadoArquivo = "C:\\Projetos\\DLL com Python\\config\\Unimake_PV.pfx"
+    oConfig.CertificadoSenha   = "12345678"
+    oConfig.CSC                = "HCJBIRTWGCQ3HVQN7DCA0ZY0P2NYT6FVLPJG"
+    oConfig.CSCIDToken         = 2
+    
+    # Criar XML
+    oXml         = EnviNFe() # Unimake.Business.DFe.Xml.NFe.EnviNFe
+    oXml.Versao  = "4.00"
+    oXml.IdLote  = "000000000000001"
+    oXml.IndSinc = SimNao.Sim
+    
+    oNfe = NFe() # Unimake.Business.DFe.Xml.NFe.NFe
+    
+    # Criar tag InfNfe
+    oInfNFe        = InfNFe() # Unimake.Business.DFe.Xml.NFe.InfNFe
+    oInfNFe.Versao = "4.00"
+    
+    # Criar tag Ide
+    oIde = Ide() # Unimake.Business.DFe.Xml.NFe.Ide
+    oIde.CUF      = UFBrasil.PR
+    oIde.NatOp    = "VENDA PRODUC.DO ESTABELEC"
+    oIde.Mod      = ModeloDFe.NFCe
+    oIde.Serie    = 30
+    oIde.NNF      = 16
+    oIde.DhEmi    = clr.System.DateTime.Now
+    oIde.DhsaiEnt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime("yyyy-MM-ddTHH:mm:sszzz")
+    oIde.TpNF     = TipoOperacao.Saida
+    oIde.IdDest   = DestinoOperacao.OperacaoInterestadual
+    oIde.CMunFG   = 4118402
+    oIde.TpImp    = FormatoImpressaoDANFE.NFCe
+    oIde.TpEmis   = TipoEmissao.Normal
+    oIde.TpAmb    = TipoAmbiente.Homologacao
+    oIde.FinNFe   = FinalidadeNFe.Normal
+    oIde.IndFinal = SimNao.Sim
+    oIde.IndPres  = IndicadorPresenca.OperacaoPresencial
+    oIde.ProcEmi  = ProcessoEmissao.AplicativoContribuinte
+    oIde.VerProc  = "TESTE 1.00"
+    
+    # Adicionar a tag Ide dentro da tag InfNfe
+    oInfNFe.Ide = oIde
+    
+    # Criar tag Emit
+    oEmit = Emit() # Unimake.Business.DFe.Xml.NFe.Emit
+    oEmit.CNPJ = "06117473000150"
+    oEmit.XNome = "UNIMAKE SOLUCOES CORPORATIVAS LTDA"
+    oEmit.XFant = "UNIMAKE - PARANAVAI"
+    oEmit.IE    = "9032000301"
+    oEmit.IM    = "14018"
+    oEmit.CNAE  = "6202300"
+    oEmit.CRT   = CRT.SimplesNacional
+    
+    oEnderEmit = EnderEmit() # Unimake.Business.DFe.Xml.NFe.EnderEmit
+    oEnderEmit.XLgr    = "RUA PAULO ANTONIO COSTA"
+    oEnderEmit.Nro     = "575"
+    oEnderEmit.XBairro = "CENTRO"
+    oEnderEmit.CMun    = 4118402
+    oEnderEmit.XMun    = "PARANAVAI"
+    oEnderEmit.UF      = UFBrasil.PR
+    oEnderEmit.CEP     = "80010000"
+    oEnderEmit.Fone    = "04431421010"
+    
+    # Adicionar a tag EnderEmit dentro da tag Emit
+    oEmit.EnderEmit = oEnderEmit
+    
+    # Adicionar a tag Emit dentro da tag InfNfe
+    oInfNFe.Emit = oEmit
+    
+    # Criar tag Dest
+    oDest = Dest() # Unimake.Business.DFe.Xml.NFe.Dest
+    oDest.CNPJ       = "04218457000128"
+    oDest.XNome      = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+    oDest.IndIEDest  = IndicadorIEDestinatario.ContribuinteICMS
+    oDest.IE         = "582614838110"
+    oDest.Email      = "janelaorp@janelaorp.com.br"
+    
+    oEnderDest = EnderDest() # Unimake.Business.DFe.Xml.NFe.EnderDest
+    oEnderDest.XLgr    = "AVENIDA DA SAUDADE"
+    oEnderDest.Nro     = "1555"
+    oEnderDest.XBairro = "CAMPOS ELISEOS"
+    oEnderDest.CMun    = 3543402
+    oEnderDest.XMun    = "RIBEIRAO PRETO"
+    oEnderDest.UF      = UFBrasil.SP
+    oEnderDest.CEP     = "14080000"
+    oEnderDest.Fone    = "01639611500"
+    
+    # Adicionar a tag EnderDest dentro da tag Dest
+    oDest.EnderDest = oEnderDest
+    
+    # Adicionar a tag Dest dentor da tag InfNfe
+    oInfNFe.Dest = oDest
+    
+    for cont in range(1, 3):
+        # Criar tag Det
+        oDet = Det() # Unimake.Business.DFe.Xml.NFe.Det
+        oDet.NItem = cont
+        
+        oProd = Prod() # Unimake.Business.DFe.Xml.NFe.Prod
+        oProd.CProd    = str(cont)
+        oProd.CEAN     = "SEM GTIN"
+        oProd.XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+        oProd.NCM      = "84714900"
+        oProd.CFOP     = "6101"
+        oProd.UCom     = "LU"
+        oProd.QCom     = Decimal(1.00)
+        oProd.VUnCom   = Decimal(84.90)
+        oProd.VProd    = 84.90
+        oProd.CEANTrib = "SEM GTIN"
+        oProd.UTrib    = "LU"
+        oProd.QTrib    = Decimal(1.00)
+        oProd.VUnTrib  = Decimal(84.90)
+        oProd.IndTot   = SimNao.Sim
+        oProd.XPed     = "300474"
+        oProd.NItemPed = "0001"
+        
+        #adicionar a tag Prod dentro da tag Det
+        oDet.Prod = oProd
+	   
+        # criar tag Imposto
+        oImposto          = Imposto() # Unimake.Business.DFe.Xml.NFe.Imposto
+        oImposto.VTotTrib = 12.63
+        
+        # criar tag Icms
+        oICMS             = ICMS() # Unimake.Business.DFe.Xml.NFe.ICMS
+        
+        # criar tag ICMSSN101
+        oICMSSN101             = ICMSSN101() # Unimake.Business.DFe.Xml.NFe.ICMSSN101
+        oICMSSN101.Orig        = OrigemMercadoria.Nacional
+        oICMSSN101.PCredSN     = 2.8255
+        oICMSSN101.VCredICMSSN = 2.40
+        
+        # adicionar a tag ICMSSN101 dentro da tag ICMS
+        oICMS.ICMSSN101 = oICMSSN101
+        
+        oImposto.ICMS = oICMS
+        
+        # criar tag PIS
+        oPIS           = PIS() # Unimake.Business.DFe.Xml.NFe.PIS
+
+        # criar tag PISOutr
+        oPISOutr      = PISOutr() # Unimake.Business.DFe.Xml.NFe.PISOutr
+        oPISOutr.CST  = "99"
+        oPISOutr.VBC  = 0.00
+        oPISOutr.PPIS = 0.00
+        oPISOutr.VPIS = 0.00
+
+        # adicionar a PisOutr dentro da tag Pis
+        oPIS.PISOutr = oPISOutr 
+        
+        # adicionar a tag Pis dentro da tag Imposto
+        oImposto.PIS = oPIS
+        
+        # criar tag COFINS
+        oCOFINS      = COFINS() # Unimake.Business.DFe.Xml.NFe.COFINS
+ 
+        # criar tag COFINSOutr
+        oCOFINSOutr         = COFINSOutr() # Unimake.Business.DFe.Xml.NFe.COFINSOutr
+        oCOFINSOutr.CST     = "99"
+        oCOFINSOutr.VBC     = 0.00
+        oCOFINSOutr.PCOFINS = 0.00
+        oCOFINSOutr.VCOFINS = 0.00
+
+        # adicionar a COFINSOutr dentro da tag COFINS
+        oCOFINS.COFINSOutr = oCOFINSOutr
+        
+        # adicionar a tag COFINS dentro da tag Imposto
+        oImposto.COFINS = oCOFINS
+        
+        # adicionar a tag Imposto dentro da tag Det
+        oDet.Imposto = oImposto
+        
+        oInfNFe.AddDet(oDet)
+        
+    # Criar tag Total
+    oTotal = Total() # Unimake.Business.DFe.Xml.NFe.Total
+
+    # Criar tag ICMSTot
+    oICMSTot            = ICMSTot() # Unimake.Business.DFe.Xml.NFe.ICSMTot
+    oICMSTot.VBC        = 0
+    oICMSTot.VICMS      = 0
+    oICMSTot.VICMSDeson = 0
+    oICMSTot.VFCP       = 0
+    oICMSTot.VBCST      = 0
+    oICMSTot.VST        = 0
+    oICMSTot.VFCPST     = 0
+    oICMSTot.VFCPSTRet  = 0
+    oICMSTot.VProd      = 169.80
+    oICMSTot.VFrete     = 0
+    oICMSTot.VSeg       = 0
+    oICMSTot.VDesc      = 0
+    oICMSTot.VII        = 0
+    oICMSTot.VIPI       = 0
+    oICMSTot.VIPIDevol  = 0
+    oICMSTot.VPIS       = 0
+    oICMSTot.VCOFINS    = 0
+    oICMSTot.VOutro     = 0
+    oICMSTot.VNF        = 169.80
+    oICMSTot.VTotTrib   = 25.26  
+
+    # adicionar a tag ICMSTot dentro da tag Total
+    oTotal.ICMSTot = oICMSTot
+    
+    # adicionar a tag Total dentro da tag InfNfe
+    oInfNFe.Total = oTotal
+    
+    # Criar a tag Transp  
+    oTransp          = Transp() # Unimake.Business.DFe.Xml.NFe.Transp
+    oTransp.ModFrete = ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
+
+    # Criar a tag Vol
+    oVol       = Vol() # Unimake.Business.DFe.Xml.NFe.Vol
+    oVol.QVol  = 1
+    oVol.Esp   = "LU"
+    oVol.Marca = "UNIMAKE"
+    oVol.PesoL = 0.000
+    oVol.PesoB = 0.000
+
+    # adicionar a tag Vol na tag Transp
+    oTransp.AddVol(oVol)
+    
+    # Adicionar a tag Transp dentro da tag InfNfe
+    oInfNFe.Transp = oTransp
+
+    # Criar tag Cobr 
+    oCobr = Cobr() # Unimake.Business.DFe.Xml.NFe.Cobr
+
+    # Criar tag Fat 
+    oFat       = Fat() # Unimake.Business.DFe.Xml.NFe.Fat
+    oFat.NFat  = "057910"
+    oFat.VOrig = 169.80
+    oFat.VDesc = 0
+    oFat.VLiq  = 169.80
+    
+    # Criar tag Dup (parcela 1)
+    oDup       = Dup() # Unimake.Business.DFe.Xml.NFe.Dup
+    oDup.NDup  = "001"
+    oDup.DVenc = clr.System.DateTime.Now
+    oDup.VDup  = 84.90
+
+    # adicionar a tag Dup dentro da tag Cobr
+    oCobr.AddDup(oDup)
+    
+    # Criar tag Dup (parcela 2)
+    oDup       = Dup() # Unimake.Business.DFe.Xml.NFe.Dup
+    oDup.NDup  = "002"
+    oDup.DVenc = clr.System.DateTime.Now
+    oDup.VDup  = 84.90
+
+    # adicionar a tag Dup dentro da tag Cobr
+    oCobr.AddDup(oDup)
+
+    # adicionar a tag Fat dentro da tag Cobr
+    oCobr.Fat = oFat
+    
+    # adicionar a tag Cobr dentro da tag InfNfe
+    oInfNFe.Cobr = oCobr
+    
+    # criar tag Pag
+    oPag = Pag() # Unimake.Business.DFe.Xml.NFe.Pag
+
+    # criar tag DetPag (pode ter mais que uma, só foi criada uma como exemplo)
+    oDetPag        = DetPag() # Unimake.Business.DFe.Xml.NFe.DetPag
+    oDetPag.IndPag = IndicadorPagamento.PagamentoVista
+    oDetPag.TPag   = MeioPagamento.Dinheiro
+    oDetPag.VPag   = 169.80
+    
+    # adicionar a tag DetPag dentro da tag Tag
+    oPag.AddDetPag(oDetPag)
+
+    #adicionar a tag Pag dentro da InfNfe
+    oInfNFe.Pag = oPag
+
+    # criar tag InfAdic
+    oInfAdic        = InfAdic() # Unimake.Business.DFe.Xml.NFe.InfAdic
+    oInfAdic.InfCpl = ";CONTROLE: 0000241197;PEDIDO(S) ATENDIDO(S): 300474;Empresa optante pelo simples nacional, conforme lei compl. 128 de 19/12/2008;Permite o aproveitamento do credito de ICMS no valor de R$ 2,40, correspondente ao percentual de 2,83% . Nos termos do Art. 23 - LC 123/2006 (Resolucoes CGSN n. 10/2007 e 53/2008);Voce pagou aproximadamente: R$ 6,69 trib. federais / R$ 5,94 trib. estaduais / R$ 0,00 trib. municipais. Fonte: IBPT/empresometro.com.br 18.2.B A3S28F;"
+    
+    # adicionar a tag InfAdic dentro da tag InfNfe
+    oInfNFe.InfAdic = oInfAdic
+
+    # criar tag InfRespTec
+    oInfRespTec          = InfRespTec() # Unimake.Business.DFe.Xml.NFe.InfRespTec
+    oInfRespTec.CNPJ     = "06117473000150"
+    oInfRespTec.XContato = "Ze das Couves"
+    oInfRespTec.Email    = "zedascouves@gmail.com"
+    oInfRespTec.Fone     = "04430000000"
+
+    # adicionar a tag InfRespTec dentro da tag InfNfe
+    oInfNFe.InfRespTec = oInfRespTec
+
+    # adicionar a tag InfNfe dentro da tag Nfe
+    oNfe.AddInfNFe(oInfNFe)
+
+    # adiconar a tag nfe dentro da tag EnviNfe 
+    oXml.AddNFe(oNfe)
+    
+    oConteudoNFe = oXml.GetNFe(0)
+    oConteudoInfNFe = oConteudoNFe.GetInfNFe(0)
+    chaveNFe = oConteudoInfNFe.Chave
+    
+    time.sleep(2)
+    print("Chave do DFe: ", chaveNFe)
+    time.sleep(1)
+    
+    oAutorizacao      = Autorizacao() # Unimake.Business.DFe.Servicos.NFCe.Autorizacao
+    oExceptionInterop = ThrowHelper() # Unimake.Exceptions.ThrowHelper
+    oRetEnviNFe       = RetEnviNFe() # Unimake.Business.DFe.Xml.NFe.RetEnviNFe
+    
+    try:
+        # Consumir o serviço da SEFAZ
+        oAutorizacao.SetXMLConfiguracao(oXml, oConfig) 
+        notaAssinada = oAutorizacao.GetConteudoNFeAssinada(0)
+        print("NFCe assinada: ", notaAssinada)
+        
+        oAutorizacao.Executar(oXml, oConfig)
+        
+        if (oAutorizacao.Result.CStat == 104):
+            oRetEnviNFe = oAutorizacao.Result
+            
+            if (oRetEnviNFe.ProtNFe.InfProt.CStat == 100): # Uso autorizado
+                print("\nNota autorizada com sucesso! Disponível no caminho src\\NFe\\XMLs")
+                oAutorizacao.GravarXmlDistribuicao("src\\NFe\\XMLs")
+            else:
+                print("\nErro ao enviar a NFCe: ", oRetEnviNFe.XMotivo)            
+                
+        elif (oAutorizacao.Result.CStat != 104):
+            print("\nNFCe não autorizada")
+            print("\nRetorno: ", oAutorizacao.RetornoWSString)
+        
+    except Exception as e:
+        print("Erro ao enviar a NFCe: ", e)
+        print("Exceção do CSHARP: ", oExceptionInterop.GetMessage())
