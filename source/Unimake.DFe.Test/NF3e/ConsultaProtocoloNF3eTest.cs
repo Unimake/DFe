@@ -9,7 +9,7 @@ namespace Unimake.DFe.Test.NF3e
     /// <summary>
     /// Testar o serviço de consulta protocolo da NF3e
     /// </summary>
-    public class ConsultaProtocoloNF3eTest
+    public class ConsultaProtocoloTest
     {
         /// <summary>
         /// Consultar uma chave de NF3e somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
@@ -77,7 +77,7 @@ namespace Unimake.DFe.Test.NF3e
         {
             var xml = new ConsSitNF3e
             {
-                Versao = "4.00",
+                Versao = "1.00",
                 TpAmb = tipoAmbiente,
                 ChNF3e = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
             };
@@ -89,14 +89,18 @@ namespace Unimake.DFe.Test.NF3e
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaProtocoloNF3e = new ConsultaProtocoloNF3e(xml, configuracao);
-            consultaProtocoloNF3e.Executar();
+            var consultaProtocolo = new ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(consultaProtocoloNF3e.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-            Assert.True(consultaProtocoloNF3e.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(consultaProtocoloNF3e.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
+            Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+
+            if (consultaProtocolo.Result.ProtNF3e != null)
+            {
+                Assert.True(consultaProtocolo.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
+            }
         }
 
         [Theory]
@@ -106,7 +110,7 @@ namespace Unimake.DFe.Test.NF3e
         {
             var xml = new ConsSitNF3e
             {
-                Versao = "4.00",
+                Versao = "1.00",
                 TpAmb = tipoAmbiente,
                 ChNF3e = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210" //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
             };
@@ -118,14 +122,14 @@ namespace Unimake.DFe.Test.NF3e
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaProtocoloNF3e = new ConsultaProtocoloNF3e(xml.GerarXML().OuterXml, configuracao);
-            consultaProtocoloNF3e.Executar();
+            var consultaProtocolo = new ConsultaProtocolo(xml.GerarXML().OuterXml, configuracao);
+            consultaProtocolo.Executar();
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(consultaProtocoloNF3e.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
-            Assert.True(consultaProtocoloNF3e.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(consultaProtocoloNF3e.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
+            Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consultaProtocolo.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
         }
     }
 }

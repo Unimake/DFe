@@ -7625,8 +7625,13 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("placa")]
         public string Placa { get; set; }
 
+#if INTEROP
         [XmlElement("UF")]
-        public UFBrasil UF { get; set; }
+        public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
+#else
+        [XmlElement("UF")]
+        public UFBrasil? UF { get; set; }
+#endif
 
         [XmlElement("RNTC")]
         public string RNTC { get; set; }
@@ -7634,6 +7639,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         #region ShouldSerialize
 
         public bool ShouldSerializeRNTC() => !string.IsNullOrWhiteSpace(RNTC);
+
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 
         #endregion
     }
