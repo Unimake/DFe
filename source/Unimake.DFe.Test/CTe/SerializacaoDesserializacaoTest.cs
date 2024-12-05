@@ -132,6 +132,7 @@ namespace Unimake.DFe.Test.CTe
         [InlineData(@"..\..\..\CTe\Resources\4_00_retConsSitCTe.xml")]
         [InlineData(@"..\..\..\CTe\Resources\retConsSitCTe_2.xml")]
         [InlineData(@"..\..\..\CTe\Resources\retConsSitCTe_3.xml")]
+        [InlineData(@"..\..\..\CTe\Resources\retConsSitCTe_4.xml")]
         public void SerializacaoDesserializacaoRetConsSitCTe(string arqXML)
         {
             
