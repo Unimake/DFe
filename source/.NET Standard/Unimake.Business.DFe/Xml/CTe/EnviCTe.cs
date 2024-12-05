@@ -3019,7 +3019,6 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => QtdRat = Utility.Converter.ToDouble(value);
         }
 
-
 #if INTEROP
 
         /// <summary>

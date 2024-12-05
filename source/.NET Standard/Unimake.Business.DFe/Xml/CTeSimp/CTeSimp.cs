@@ -623,7 +623,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Documentos anteriores
         /// </summary>
         [XmlElement("infDocAnt")]
-        public InfDocAnt InfDocAnt { get; set; }
+        public List<InfDocAnt> InfDocAnt { get; set; }
 
 #if INTEROP
 
@@ -695,6 +695,40 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// </summary>
         public int GetInfNFeCount => (InfNFe != null ? InfNFe.Count : 0);
 
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infDocAnt">Elemento</param>
+        public void AddInfDocAnt(InfDocAnt infDocAnt)
+        {
+            if (InfDocAnt == null)
+            {
+                InfDocAnt = new List<InfDocAnt>();
+            }
+
+            InfDocAnt.Add(infDocAnt);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfDocAnt (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfDocAnt</returns>
+        public InfDocAnt GetInfDocAnt(int index)
+        {
+            if ((InfDocAnt?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfDocAnt[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfDocAnt
+        /// </summary>
+        public int GetInfDocAntCount => (InfDocAnt != null ? InfDocAnt.Count : 0);
+
 #endif
     }
 
@@ -725,6 +759,10 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         [XmlElement("infUnidCarga")]
         public List<CTe.InfUnidCarga> InfUnidCarga { get; set; }
+
+        [XmlElement("infUnidTransp")]
+        public List<CTe.InfUnidTransp> InfUnidTransp { get; set; }
+
 
 #if INTEROP
 
@@ -761,6 +799,40 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Retorna a quantidade de elementos existentes na lista InfUnidCarga
         /// </summary>
         public int GetInfUnidCargaCount => (InfUnidCarga != null ? InfUnidCarga.Count : 0);
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infUnidTransp">Elemento</param>
+        public void AddInfUnidTransp(CTe.InfUnidTransp infUnidTransp)
+        {
+            if (InfUnidTransp == null)
+            {
+                InfUnidTransp = new List<CTe.InfUnidTransp>();
+            }
+
+            InfUnidTransp.Add(infUnidTransp);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfUnidTransp (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfUnidTransp</returns>
+        public CTe.InfUnidTransp GetInfUnidTransp(int index)
+        {
+            if ((InfUnidTransp?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfUnidTransp[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfUnidTransp
+        /// </summary>
+        public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
 
 #endif
 
@@ -829,7 +901,45 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         /// Informando o tpPrest com “2 – Parcial” deve-se informar as chaves de acesso das NF-e que acobertam a carga transportada.
         /// </summary>
         [XmlElement("infNFeTranspParcial")]
-        public InfNFeTranspParcial InfNFeTranspParcial { get; set; }
+        public List<InfNFeTranspParcial> InfNFeTranspParcial { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="infNFeTranspParcial">Elemento</param>
+        public void AddInfNFeTranspParcial(InfNFeTranspParcial infNFeTranspParcial)
+        {
+            if (InfNFeTranspParcial == null)
+            {
+                InfNFeTranspParcial = new List<InfNFeTranspParcial>();
+            }
+
+            InfNFeTranspParcial.Add(infNFeTranspParcial);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfNFeTranspParcial (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfNFeTranspParcial</returns>
+        public InfNFeTranspParcial GetInfNFeTranspParcial(int index)
+        {
+            if ((InfNFeTranspParcial?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfNFeTranspParcial[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfNFeTranspParcial
+        /// </summary>
+        public int GetInfNFeTranspParcialCount => (InfNFeTranspParcial != null ? InfNFeTranspParcial.Count : 0);
+
+#endif
     }
 
     /// <summary>
