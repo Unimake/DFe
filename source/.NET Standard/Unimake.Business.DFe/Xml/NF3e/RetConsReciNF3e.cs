@@ -17,10 +17,10 @@ namespace Unimake.Business.DFe.Xml.NF3e
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("retConsReciNF3e", Namespace = "http://www.portalfiscal.inf.br/nf3e", IsNullable = false)]
+    [XmlRoot("retConsReciNF3e ", Namespace = "http://www.portalfiscal.inf.br/nf3e'", IsNullable = false)]
     public class RetConsReciNF3e : XMLBase
     {
-        [XmlAttribute(AttributeName = "versao", DataType = "token")]
+        [XmlAttribute(AttributeName = "versao", DataType = "string")]
         public string Versao { get; set; }
 
         [XmlElement("tpAmb")]
@@ -42,9 +42,9 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public UFBrasil CUF { get; set; }
 
         [XmlElement("cUF")]
-        public int CUFField
+        public string CUFField
         {
-            get => (int)CUF;
+            get => CUF.ToString();
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 

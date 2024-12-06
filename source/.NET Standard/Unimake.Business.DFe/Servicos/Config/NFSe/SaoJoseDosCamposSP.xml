@@ -22,8 +22,8 @@
     </RecepcionarLoteRps>
     <RecepcionarLoteRpsSincrono versao="2.03">
       <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+      <WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
@@ -41,7 +41,7 @@
     </RecepcionarLoteRpsSincrono>
     <GerarNfse versao="2.03">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+      <WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
       <WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
@@ -195,8 +195,8 @@
     </ConsultarNfseFaixa>
 	  <RecepcionarLoteRps versao="3.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -205,9 +205,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:RecepcionarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:RecepcionarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:RecepcionarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+		  <WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></RecepcionarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+		  <WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
@@ -215,8 +214,8 @@
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="3.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -225,38 +224,17 @@
 			<TagLoteAssinatura>Pedido</TagLoteAssinatura>
 			<TagLoteAtributoID>InfPedidoCancelamento</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:CancelarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:CancelarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:CancelarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></CancelarNfseV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
 			<TargetNS>http://www.ginfes.com.br/servico_cancelar_nfse_envio</TargetNS>
 		</CancelarNfse>
-		<CancelarNfse versao="2.00">
-			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
-			<TagAtributoID>NumeroNfse</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><arg0>{xmlBodyScape}</arg0></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><arg0>{xmlBodyScape}</arg0></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.00</SchemaVersao>
-			<TargetNS></TargetNS>
-		</CancelarNfse>
 		<ConsultarLoteRps versao="3.00">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -265,9 +243,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
@@ -275,8 +252,8 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="3.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -285,9 +262,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarNfsePorRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarNfsePorRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarNfsePorRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarNfsePorRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
@@ -295,8 +271,8 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfse versao="3.00">
 			<Descricao>Consulta de NFSe por Data</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -305,9 +281,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarNfseV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarNfseV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarNfseV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
@@ -315,8 +290,8 @@
 		</ConsultarNfse>
 		<ConsultarSituacaoLoteRps versao="3.00">
 			<Descricao>Consultar Situação Lote Rps</Descricao>
-			<WebEnderecoHomologacao>https://homolsod.dsfweb.com.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoProducao>
+			<WebEnderecoHomologacao>https://homol-notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://notajoseense.sjc.sp.gov.br/notafiscal-ws/NotaFiscalSoap</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -325,9 +300,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hom="http://homologacao.ginfes.com.br"><soapenv:Header/><soapenv:Body><hom:ConsultarSituacaoLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></hom:ConsultarSituacaoLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://producao.ginfes.com.br"><soapenv:Header/><soapenv:Body><prod:ConsultarSituacaoLoteRpsV3><arg0>&lt;ns2:cabecalho versao="3" xmlns:ns2="http://www.ginfes.com.br/cabecalho_v03.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/ns2:cabecalho&gt;</arg0><arg1>{xmlBodyScape}</arg1></prod:ConsultarSituacaoLoteRpsV3></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsV3 xmlns="http://www.abrasf.org.br/nfse.xsd"><arg0 xmlns="">&lt;cabecalho versao="3" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;3&lt;/versaoDados&gt;&lt;/cabecalho&gt;</arg0><arg1 xmlns="">{xmlBodyScape}</arg1></ConsultarSituacaoLoteRpsV3></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>3.00</SchemaVersao>
