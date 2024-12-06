@@ -103,36 +103,22 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         #region Public Properties
 
         /// <summary>
-        /// 
-        /// </summary>
-        public RetConsReciNF3e test {  get; private set; }
-
-        /// <summary>
         /// Conteúdo retornado pelo web-service depois do envio do XML
         /// </summary>
         public RetConsReciNF3e Result
         {
             get
             {
-                if (!test.IsNullOrEmpty())
+                if (!string.IsNullOrWhiteSpace(RetornoWSString))
                 {
-                    return test;
-                } else
-                {
-                    test = XMLUtility.Deserializar<RetConsReciNF3e>(RetornoWSXML);
+                    return XMLUtility.Deserializar<RetConsReciNF3e>(RetornoWSXML);
                 }
 
-                return test;
-                //if (!string.IsNullOrWhiteSpace(RetornoWSString))
-                //{
-                //    return XMLUtility.Deserializar<RetConsReciNF3e>(RetornoWSXML);
-                //}
-
-                //return new RetConsReciNF3e
-                //{
-                //    CStat = 0,
-                //    XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
-                //};
+                return new RetConsReciNF3e
+                {
+                    CStat = 0,
+                    XMotivo = "Ocorreu uma falha ao tentar criar o objeto a partir do XML retornado da SEFAZ."
+                };
             }
         }
 
