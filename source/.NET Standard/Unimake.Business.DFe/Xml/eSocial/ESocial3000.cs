@@ -1,7 +1,10 @@
 ﻿#pragma warning disable CS1591
 
-using System;
+#if INTEROP
 using System.Runtime.InteropServices;
+#endif
+
+using System;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -17,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExclusao/v_S_01_02_00", IsNullable = false)]
-    public class ESocial3000 : XMLBase
+    public class ESocial3000 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Exclusão de Eventos
