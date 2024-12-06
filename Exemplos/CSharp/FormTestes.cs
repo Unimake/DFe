@@ -6151,5 +6151,120 @@ namespace TreinamentoDLL
 
             var qq = consultaProtocolo.RetornoWSString;
         }
+
+        private void BtnEnviarNFSeNacional_Click(object sender, EventArgs e)
+        {
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"d:\testenfe\nacional\gerarNFSe.xml");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                Servico = Servico.NFSeGerarNfse,
+                SchemaVersao = "1.00",
+                CodigoMunicipio = 1001058
+            };
+
+            var gerarNFSe = new ServicoNFSe.GerarNfse(conteudoXML, configuracao);
+            gerarNFSe.Executar();
+
+            MessageBox.Show(gerarNFSe.RetornoWSString);
+        }
+
+        private void BtnCancelarNFSeNacional_Click(object sender, EventArgs e)
+        {
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"d:\testenfe\nacional\cancelarNFSe.xml");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                Servico = Servico.NFSeCancelarNfse,
+                SchemaVersao = "1.00",
+                CodigoMunicipio = 1001058
+            };
+
+            var cancelarNFSe = new ServicoNFSe.CancelarNfse(conteudoXML, configuracao);
+            cancelarNFSe.Executar();
+
+            MessageBox.Show(cancelarNFSe.RetornoWSString);
+        }
+
+        private void BtnConsultarNFSeRps_Click(object sender, EventArgs e)
+        {
+            // Consulta pela chave do DPS enviado
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"d:\testenfe\nacional\consultarNFSePorRps.xml");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                Servico = Servico.NFSeConsultarNfsePorRps,
+                SchemaVersao = "1.00",
+                CodigoMunicipio = 1001058
+            };
+
+            var consultarNfsePorRps = new ServicoNFSe.ConsultarNfsePorRps(conteudoXML, configuracao);
+            consultarNfsePorRps.Executar();
+
+            MessageBox.Show(consultarNfsePorRps.RetornoWSString);
+        }
+
+        private void BtnConsultarNFSe_Click(object sender, EventArgs e)
+        {
+            // Consulta pela chave da NFSe enviado
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"d:\testenfe\nacional\consultarNFSe.xml");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                Servico = Servico.NFSeConsultarNfse,
+                SchemaVersao = "1.00",
+                CodigoMunicipio = 1001058
+            };
+
+            var consultarNFSe = new ServicoNFSe.ConsultarNfse(conteudoXML, configuracao);
+            consultarNFSe.Executar();
+
+            MessageBox.Show(consultarNFSe.RetornoWSString);
+        }
+
+        private void BtnConsultarPdfNFSe_Click(object sender, EventArgs e)
+        {
+            // Consulta do PDF da NFSe pela chave
+            var conteudoXML = new XmlDocument();
+            conteudoXML.Load(@"d:\testenfe\nacional\consultarPdfNFSe.xml");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFSe,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado,
+                Servico = Servico.NFSeConsultarNfsePDF,
+                SchemaVersao = "1.00",
+                CodigoMunicipio = 1001058
+            };
+
+            var consultarNfsePDF = new ServicoNFSe.ConsultarNfsePDF(conteudoXML, configuracao);
+            consultarNfsePDF.Executar();
+
+            MessageBox.Show(consultarNfsePDF.RetornoWSString);
+
+            //Vou chamar o método para extrair o PDF do retorno
+            //Parâmetros:
+            // - Nome da pasta
+            // - Nome do arquivo PDF
+            // - Nome da tag para extração do PDF (para o NACIONAL, sempre será Base64Pdf)
+            consultarNfsePDF.ExtrairPDF(@"c:\projetos\teste\nacional\pdf", "NFSe emitida dia XX/XX/XX", "Base64Pdf");
+        }
     }
 }

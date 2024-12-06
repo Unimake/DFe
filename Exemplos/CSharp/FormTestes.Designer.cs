@@ -66,6 +66,8 @@ namespace TreinamentoDLL
             this.BtnConsultaSituacaoMDFe = new System.Windows.Forms.Button();
             this.BtnConsultaStatusMDFe = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnCancelarNFSeNacional = new System.Windows.Forms.Button();
+            this.BtnEnviarNFSeNacional = new System.Windows.Forms.Button();
             this.BtnCriarXmlNFSeCSharp = new System.Windows.Forms.Button();
             this.BtnSubstituirNFSe = new System.Windows.Forms.Button();
             this.BtnConsultarNFSePorRPS = new System.Windows.Forms.Button();
@@ -117,6 +119,9 @@ namespace TreinamentoDLL
             this.BtnEnviarReinf = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.BtnEnviarEConsultarESocial = new System.Windows.Forms.Button();
+            this.BtnConsultarNFSeRps = new System.Windows.Forms.Button();
+            this.BtnConsultarNFSe = new System.Windows.Forms.Button();
+            this.BtnConsultarPdfNFSe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -131,10 +136,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultaStatusNFe
             // 
-            this.BtnConsultaStatusNFe.Location = new System.Drawing.Point(9, 29);
-            this.BtnConsultaStatusNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaStatusNFe.Location = new System.Drawing.Point(6, 19);
             this.BtnConsultaStatusNFe.Name = "BtnConsultaStatusNFe";
-            this.BtnConsultaStatusNFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaStatusNFe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaStatusNFe.TabIndex = 0;
             this.BtnConsultaStatusNFe.Text = "Consulta Status";
             this.BtnConsultaStatusNFe.UseVisualStyleBackColor = true;
@@ -159,21 +163,18 @@ namespace TreinamentoDLL
             this.groupBox1.Controls.Add(this.BtnEnviarNFeSincrono);
             this.groupBox1.Controls.Add(this.BtnConsultaSituacaoNFe);
             this.groupBox1.Controls.Add(this.BtnConsultaStatusNFe);
-            this.groupBox1.Location = new System.Drawing.Point(18, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(315, 992);
+            this.groupBox1.Size = new System.Drawing.Size(210, 645);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NFe";
             // 
             // BtnAbrirTeleConfigUnidanfe
             // 
-            this.BtnAbrirTeleConfigUnidanfe.Location = new System.Drawing.Point(9, 535);
-            this.BtnAbrirTeleConfigUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAbrirTeleConfigUnidanfe.Location = new System.Drawing.Point(6, 348);
             this.BtnAbrirTeleConfigUnidanfe.Name = "BtnAbrirTeleConfigUnidanfe";
-            this.BtnAbrirTeleConfigUnidanfe.Size = new System.Drawing.Size(296, 37);
+            this.BtnAbrirTeleConfigUnidanfe.Size = new System.Drawing.Size(197, 24);
             this.BtnAbrirTeleConfigUnidanfe.TabIndex = 34;
             this.BtnAbrirTeleConfigUnidanfe.Text = "Abrir tela configuração UniDANFe";
             this.BtnAbrirTeleConfigUnidanfe.UseVisualStyleBackColor = true;
@@ -182,10 +183,9 @@ namespace TreinamentoDLL
             // BtnDesserializarNFeB2B
             // 
             this.BtnDesserializarNFeB2B.CausesValidation = false;
-            this.BtnDesserializarNFeB2B.Location = new System.Drawing.Point(11, 906);
-            this.BtnDesserializarNFeB2B.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDesserializarNFeB2B.Location = new System.Drawing.Point(7, 589);
             this.BtnDesserializarNFeB2B.Name = "BtnDesserializarNFeB2B";
-            this.BtnDesserializarNFeB2B.Size = new System.Drawing.Size(296, 62);
+            this.BtnDesserializarNFeB2B.Size = new System.Drawing.Size(197, 40);
             this.BtnDesserializarNFeB2B.TabIndex = 14;
             this.BtnDesserializarNFeB2B.Text = "Desserializacao do XML NFe para B2B";
             this.BtnDesserializarNFeB2B.UseVisualStyleBackColor = true;
@@ -193,10 +193,9 @@ namespace TreinamentoDLL
             // 
             // BtnAbrirTelaLicencaUnidanfe
             // 
-            this.BtnAbrirTelaLicencaUnidanfe.Location = new System.Drawing.Point(8, 582);
-            this.BtnAbrirTelaLicencaUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAbrirTelaLicencaUnidanfe.Location = new System.Drawing.Point(5, 378);
             this.BtnAbrirTelaLicencaUnidanfe.Name = "BtnAbrirTelaLicencaUnidanfe";
-            this.BtnAbrirTelaLicencaUnidanfe.Size = new System.Drawing.Size(296, 37);
+            this.BtnAbrirTelaLicencaUnidanfe.Size = new System.Drawing.Size(197, 24);
             this.BtnAbrirTelaLicencaUnidanfe.TabIndex = 35;
             this.BtnAbrirTelaLicencaUnidanfe.Text = "Abrir tela licenças UniDANFe";
             this.BtnAbrirTelaLicencaUnidanfe.UseVisualStyleBackColor = true;
@@ -205,10 +204,9 @@ namespace TreinamentoDLL
             // BtnRecuperarXMLNFeDistribuicao2
             // 
             this.BtnRecuperarXMLNFeDistribuicao2.CausesValidation = false;
-            this.BtnRecuperarXMLNFeDistribuicao2.Location = new System.Drawing.Point(10, 780);
-            this.BtnRecuperarXMLNFeDistribuicao2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnRecuperarXMLNFeDistribuicao2.Location = new System.Drawing.Point(7, 507);
             this.BtnRecuperarXMLNFeDistribuicao2.Name = "BtnRecuperarXMLNFeDistribuicao2";
-            this.BtnRecuperarXMLNFeDistribuicao2.Size = new System.Drawing.Size(296, 97);
+            this.BtnRecuperarXMLNFeDistribuicao2.Size = new System.Drawing.Size(197, 63);
             this.BtnRecuperarXMLNFeDistribuicao2.TabIndex = 13;
             this.BtnRecuperarXMLNFeDistribuicao2.Text = "Não tenho o recibo ou autorização da NFe, como faço para reconstruir ela e gerar " +
     "o arquivo de distribuição? - PARTE 2";
@@ -218,10 +216,9 @@ namespace TreinamentoDLL
             // BtnRecuperarXMLNFeDistribuicao
             // 
             this.BtnRecuperarXMLNFeDistribuicao.CausesValidation = false;
-            this.BtnRecuperarXMLNFeDistribuicao.Location = new System.Drawing.Point(9, 674);
-            this.BtnRecuperarXMLNFeDistribuicao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnRecuperarXMLNFeDistribuicao.Location = new System.Drawing.Point(6, 438);
             this.BtnRecuperarXMLNFeDistribuicao.Name = "BtnRecuperarXMLNFeDistribuicao";
-            this.BtnRecuperarXMLNFeDistribuicao.Size = new System.Drawing.Size(296, 97);
+            this.BtnRecuperarXMLNFeDistribuicao.Size = new System.Drawing.Size(197, 63);
             this.BtnRecuperarXMLNFeDistribuicao.TabIndex = 12;
             this.BtnRecuperarXMLNFeDistribuicao.Text = "Não tenho o recibo ou autorização da NFe, como faço para reconstruir ela e gerar " +
     "o arquivo de distribuição? - PARTE 1";
@@ -231,10 +228,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoEPEC
             // 
             this.BtnEnviarEventoEPEC.CausesValidation = false;
-            this.BtnEnviarEventoEPEC.Location = new System.Drawing.Point(10, 629);
-            this.BtnEnviarEventoEPEC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoEPEC.Location = new System.Drawing.Point(7, 409);
             this.BtnEnviarEventoEPEC.Name = "BtnEnviarEventoEPEC";
-            this.BtnEnviarEventoEPEC.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoEPEC.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEventoEPEC.TabIndex = 11;
             this.BtnEnviarEventoEPEC.Text = "Enviar o Evento de EPEC";
             this.BtnEnviarEventoEPEC.UseVisualStyleBackColor = true;
@@ -243,10 +239,9 @@ namespace TreinamentoDLL
             // BtnImprimirDANFe
             // 
             this.BtnImprimirDANFe.CausesValidation = false;
-            this.BtnImprimirDANFe.Location = new System.Drawing.Point(10, 497);
-            this.BtnImprimirDANFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImprimirDANFe.Location = new System.Drawing.Point(7, 323);
             this.BtnImprimirDANFe.Name = "BtnImprimirDANFe";
-            this.BtnImprimirDANFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnImprimirDANFe.Size = new System.Drawing.Size(197, 23);
             this.BtnImprimirDANFe.TabIndex = 4;
             this.BtnImprimirDANFe.Text = "Imprimir DANFe";
             this.BtnImprimirDANFe.UseVisualStyleBackColor = true;
@@ -255,10 +250,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoCCe
             // 
             this.BtnEnviarEventoCCe.CausesValidation = false;
-            this.BtnEnviarEventoCCe.Location = new System.Drawing.Point(10, 452);
-            this.BtnEnviarEventoCCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoCCe.Location = new System.Drawing.Point(7, 294);
             this.BtnEnviarEventoCCe.Name = "BtnEnviarEventoCCe";
-            this.BtnEnviarEventoCCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoCCe.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEventoCCe.TabIndex = 9;
             this.BtnEnviarEventoCCe.Text = "Enviar o Evento de CCe";
             this.BtnEnviarEventoCCe.UseVisualStyleBackColor = true;
@@ -267,10 +261,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoCancelamento
             // 
             this.BtnEnviarEventoCancelamento.CausesValidation = false;
-            this.BtnEnviarEventoCancelamento.Location = new System.Drawing.Point(10, 408);
-            this.BtnEnviarEventoCancelamento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoCancelamento.Location = new System.Drawing.Point(7, 265);
             this.BtnEnviarEventoCancelamento.Name = "BtnEnviarEventoCancelamento";
-            this.BtnEnviarEventoCancelamento.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoCancelamento.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEventoCancelamento.TabIndex = 8;
             this.BtnEnviarEventoCancelamento.Text = "Enviar o Evento de Cancelamento";
             this.BtnEnviarEventoCancelamento.UseVisualStyleBackColor = true;
@@ -279,10 +272,9 @@ namespace TreinamentoDLL
             // BtnEnviarNFeSerializacao
             // 
             this.BtnEnviarNFeSerializacao.CausesValidation = false;
-            this.BtnEnviarNFeSerializacao.Location = new System.Drawing.Point(10, 337);
-            this.BtnEnviarNFeSerializacao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFeSerializacao.Location = new System.Drawing.Point(7, 219);
             this.BtnEnviarNFeSerializacao.Name = "BtnEnviarNFeSerializacao";
-            this.BtnEnviarNFeSerializacao.Size = new System.Drawing.Size(296, 62);
+            this.BtnEnviarNFeSerializacao.Size = new System.Drawing.Size(197, 40);
             this.BtnEnviarNFeSerializacao.TabIndex = 7;
             this.BtnEnviarNFeSerializacao.Text = "Enviar NFe com Deserializacao do XML";
             this.BtnEnviarNFeSerializacao.UseVisualStyleBackColor = true;
@@ -291,10 +283,9 @@ namespace TreinamentoDLL
             // BtnEnviarNFeAssincronoLote
             // 
             this.BtnEnviarNFeAssincronoLote.CausesValidation = false;
-            this.BtnEnviarNFeAssincronoLote.Location = new System.Drawing.Point(9, 208);
-            this.BtnEnviarNFeAssincronoLote.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFeAssincronoLote.Location = new System.Drawing.Point(6, 135);
             this.BtnEnviarNFeAssincronoLote.Name = "BtnEnviarNFeAssincronoLote";
-            this.BtnEnviarNFeAssincronoLote.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarNFeAssincronoLote.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarNFeAssincronoLote.TabIndex = 6;
             this.BtnEnviarNFeAssincronoLote.Text = "Enviar NFe Assincrono em Lote";
             this.BtnEnviarNFeAssincronoLote.UseVisualStyleBackColor = true;
@@ -303,10 +294,9 @@ namespace TreinamentoDLL
             // BtnConsultaCadastroContribuinte
             // 
             this.BtnConsultaCadastroContribuinte.CausesValidation = false;
-            this.BtnConsultaCadastroContribuinte.Location = new System.Drawing.Point(10, 297);
-            this.BtnConsultaCadastroContribuinte.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaCadastroContribuinte.Location = new System.Drawing.Point(7, 193);
             this.BtnConsultaCadastroContribuinte.Name = "BtnConsultaCadastroContribuinte";
-            this.BtnConsultaCadastroContribuinte.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaCadastroContribuinte.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaCadastroContribuinte.TabIndex = 5;
             this.BtnConsultaCadastroContribuinte.Text = "Consulta cadastro contribuinte";
             this.BtnConsultaCadastroContribuinte.UseVisualStyleBackColor = true;
@@ -315,10 +305,9 @@ namespace TreinamentoDLL
             // BtnInutilizacaoNFe
             // 
             this.BtnInutilizacaoNFe.CausesValidation = false;
-            this.BtnInutilizacaoNFe.Location = new System.Drawing.Point(10, 252);
-            this.BtnInutilizacaoNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnInutilizacaoNFe.Location = new System.Drawing.Point(7, 164);
             this.BtnInutilizacaoNFe.Name = "BtnInutilizacaoNFe";
-            this.BtnInutilizacaoNFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnInutilizacaoNFe.Size = new System.Drawing.Size(197, 23);
             this.BtnInutilizacaoNFe.TabIndex = 4;
             this.BtnInutilizacaoNFe.Text = "Inutilização";
             this.BtnInutilizacaoNFe.UseVisualStyleBackColor = true;
@@ -327,10 +316,9 @@ namespace TreinamentoDLL
             // BtnEnviarNFeAssincrono
             // 
             this.BtnEnviarNFeAssincrono.CausesValidation = false;
-            this.BtnEnviarNFeAssincrono.Location = new System.Drawing.Point(10, 163);
-            this.BtnEnviarNFeAssincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFeAssincrono.Location = new System.Drawing.Point(7, 106);
             this.BtnEnviarNFeAssincrono.Name = "BtnEnviarNFeAssincrono";
-            this.BtnEnviarNFeAssincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarNFeAssincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarNFeAssincrono.TabIndex = 3;
             this.BtnEnviarNFeAssincrono.Text = "Enviar NFe Assincrono";
             this.BtnEnviarNFeAssincrono.UseVisualStyleBackColor = true;
@@ -339,10 +327,9 @@ namespace TreinamentoDLL
             // BtnEnviarNFeSincrono
             // 
             this.BtnEnviarNFeSincrono.CausesValidation = false;
-            this.BtnEnviarNFeSincrono.Location = new System.Drawing.Point(10, 118);
-            this.BtnEnviarNFeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFeSincrono.Location = new System.Drawing.Point(7, 77);
             this.BtnEnviarNFeSincrono.Name = "BtnEnviarNFeSincrono";
-            this.BtnEnviarNFeSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarNFeSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarNFeSincrono.TabIndex = 2;
             this.BtnEnviarNFeSincrono.Text = "Enviar NFe Sincrono";
             this.BtnEnviarNFeSincrono.UseVisualStyleBackColor = true;
@@ -351,10 +338,9 @@ namespace TreinamentoDLL
             // BtnConsultaSituacaoNFe
             // 
             this.BtnConsultaSituacaoNFe.CausesValidation = false;
-            this.BtnConsultaSituacaoNFe.Location = new System.Drawing.Point(9, 74);
-            this.BtnConsultaSituacaoNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaSituacaoNFe.Location = new System.Drawing.Point(6, 48);
             this.BtnConsultaSituacaoNFe.Name = "BtnConsultaSituacaoNFe";
-            this.BtnConsultaSituacaoNFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaSituacaoNFe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaSituacaoNFe.TabIndex = 1;
             this.BtnConsultaSituacaoNFe.Text = "Consulta Situação";
             this.BtnConsultaSituacaoNFe.UseVisualStyleBackColor = true;
@@ -370,11 +356,9 @@ namespace TreinamentoDLL
             this.groupBox2.Controls.Add(this.BtnEnviarNFCeSincrono);
             this.groupBox2.Controls.Add(this.BtnConsultaSituacaoNFCe);
             this.groupBox2.Controls.Add(this.BtnConsultaStatusNFCe);
-            this.groupBox2.Location = new System.Drawing.Point(342, 18);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(228, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(315, 443);
+            this.groupBox2.Size = new System.Drawing.Size(210, 288);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "NFCe";
@@ -382,10 +366,9 @@ namespace TreinamentoDLL
             // BtnInutilizacaoNFCe
             // 
             this.BtnInutilizacaoNFCe.CausesValidation = false;
-            this.BtnInutilizacaoNFCe.Location = new System.Drawing.Point(9, 391);
-            this.BtnInutilizacaoNFCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnInutilizacaoNFCe.Location = new System.Drawing.Point(6, 254);
             this.BtnInutilizacaoNFCe.Name = "BtnInutilizacaoNFCe";
-            this.BtnInutilizacaoNFCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnInutilizacaoNFCe.Size = new System.Drawing.Size(197, 23);
             this.BtnInutilizacaoNFCe.TabIndex = 14;
             this.BtnInutilizacaoNFCe.Text = "Inutilização";
             this.BtnInutilizacaoNFCe.UseVisualStyleBackColor = true;
@@ -394,10 +377,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoCancelamentoNFCe
             // 
             this.BtnEnviarEventoCancelamentoNFCe.CausesValidation = false;
-            this.BtnEnviarEventoCancelamentoNFCe.Location = new System.Drawing.Point(9, 346);
-            this.BtnEnviarEventoCancelamentoNFCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoCancelamentoNFCe.Location = new System.Drawing.Point(6, 225);
             this.BtnEnviarEventoCancelamentoNFCe.Name = "BtnEnviarEventoCancelamentoNFCe";
-            this.BtnEnviarEventoCancelamentoNFCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoCancelamentoNFCe.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEventoCancelamentoNFCe.TabIndex = 14;
             this.BtnEnviarEventoCancelamentoNFCe.Text = "Enviar o Evento de Cancelamento";
             this.BtnEnviarEventoCancelamentoNFCe.UseVisualStyleBackColor = true;
@@ -406,10 +388,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoCancSubstituicao
             // 
             this.BtnEnviarEventoCancSubstituicao.CausesValidation = false;
-            this.BtnEnviarEventoCancSubstituicao.Location = new System.Drawing.Point(10, 277);
-            this.BtnEnviarEventoCancSubstituicao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoCancSubstituicao.Location = new System.Drawing.Point(7, 180);
             this.BtnEnviarEventoCancSubstituicao.Name = "BtnEnviarEventoCancSubstituicao";
-            this.BtnEnviarEventoCancSubstituicao.Size = new System.Drawing.Size(296, 60);
+            this.BtnEnviarEventoCancSubstituicao.Size = new System.Drawing.Size(197, 39);
             this.BtnEnviarEventoCancSubstituicao.TabIndex = 5;
             this.BtnEnviarEventoCancSubstituicao.Text = "Enviar Evento Cancelamento por substituição";
             this.BtnEnviarEventoCancSubstituicao.UseVisualStyleBackColor = true;
@@ -418,10 +399,9 @@ namespace TreinamentoDLL
             // BtnEnviarNFCeGeradaContingenciaOFFLine
             // 
             this.BtnEnviarNFCeGeradaContingenciaOFFLine.CausesValidation = false;
-            this.BtnEnviarNFCeGeradaContingenciaOFFLine.Location = new System.Drawing.Point(9, 208);
-            this.BtnEnviarNFCeGeradaContingenciaOFFLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFCeGeradaContingenciaOFFLine.Location = new System.Drawing.Point(6, 135);
             this.BtnEnviarNFCeGeradaContingenciaOFFLine.Name = "BtnEnviarNFCeGeradaContingenciaOFFLine";
-            this.BtnEnviarNFCeGeradaContingenciaOFFLine.Size = new System.Drawing.Size(296, 60);
+            this.BtnEnviarNFCeGeradaContingenciaOFFLine.Size = new System.Drawing.Size(197, 39);
             this.BtnEnviarNFCeGeradaContingenciaOFFLine.TabIndex = 4;
             this.BtnEnviarNFCeGeradaContingenciaOFFLine.Text = "Enviar NFCe gerada em Contingência OFF-Line";
             this.BtnEnviarNFCeGeradaContingenciaOFFLine.UseVisualStyleBackColor = true;
@@ -430,10 +410,9 @@ namespace TreinamentoDLL
             // BtnGerarNFCeContingenciaOFFLine
             // 
             this.BtnGerarNFCeContingenciaOFFLine.CausesValidation = false;
-            this.BtnGerarNFCeContingenciaOFFLine.Location = new System.Drawing.Point(9, 163);
-            this.BtnGerarNFCeContingenciaOFFLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnGerarNFCeContingenciaOFFLine.Location = new System.Drawing.Point(6, 106);
             this.BtnGerarNFCeContingenciaOFFLine.Name = "BtnGerarNFCeContingenciaOFFLine";
-            this.BtnGerarNFCeContingenciaOFFLine.Size = new System.Drawing.Size(296, 35);
+            this.BtnGerarNFCeContingenciaOFFLine.Size = new System.Drawing.Size(197, 23);
             this.BtnGerarNFCeContingenciaOFFLine.TabIndex = 3;
             this.BtnGerarNFCeContingenciaOFFLine.Text = "Gerar NFCe em Contingência OFF-Line";
             this.BtnGerarNFCeContingenciaOFFLine.UseVisualStyleBackColor = true;
@@ -442,10 +421,9 @@ namespace TreinamentoDLL
             // BtnEnviarNFCeSincrono
             // 
             this.BtnEnviarNFCeSincrono.CausesValidation = false;
-            this.BtnEnviarNFCeSincrono.Location = new System.Drawing.Point(10, 118);
-            this.BtnEnviarNFCeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarNFCeSincrono.Location = new System.Drawing.Point(7, 77);
             this.BtnEnviarNFCeSincrono.Name = "BtnEnviarNFCeSincrono";
-            this.BtnEnviarNFCeSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarNFCeSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarNFCeSincrono.TabIndex = 2;
             this.BtnEnviarNFCeSincrono.Text = "Enviar NFCe Sincrono";
             this.BtnEnviarNFCeSincrono.UseVisualStyleBackColor = true;
@@ -454,10 +432,9 @@ namespace TreinamentoDLL
             // BtnConsultaSituacaoNFCe
             // 
             this.BtnConsultaSituacaoNFCe.CausesValidation = false;
-            this.BtnConsultaSituacaoNFCe.Location = new System.Drawing.Point(9, 74);
-            this.BtnConsultaSituacaoNFCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaSituacaoNFCe.Location = new System.Drawing.Point(6, 48);
             this.BtnConsultaSituacaoNFCe.Name = "BtnConsultaSituacaoNFCe";
-            this.BtnConsultaSituacaoNFCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaSituacaoNFCe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaSituacaoNFCe.TabIndex = 1;
             this.BtnConsultaSituacaoNFCe.Text = "Consulta Situação";
             this.BtnConsultaSituacaoNFCe.UseVisualStyleBackColor = true;
@@ -465,10 +442,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultaStatusNFCe
             // 
-            this.BtnConsultaStatusNFCe.Location = new System.Drawing.Point(9, 29);
-            this.BtnConsultaStatusNFCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaStatusNFCe.Location = new System.Drawing.Point(6, 19);
             this.BtnConsultaStatusNFCe.Name = "BtnConsultaStatusNFCe";
-            this.BtnConsultaStatusNFCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaStatusNFCe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaStatusNFCe.TabIndex = 0;
             this.BtnConsultaStatusNFCe.Text = "Consulta Status";
             this.BtnConsultaStatusNFCe.UseVisualStyleBackColor = true;
@@ -484,11 +460,9 @@ namespace TreinamentoDLL
             this.groupBox3.Controls.Add(this.BtnEnviarMDFeSincrono);
             this.groupBox3.Controls.Add(this.BtnConsultaSituacaoMDFe);
             this.groupBox3.Controls.Add(this.BtnConsultaStatusMDFe);
-            this.groupBox3.Location = new System.Drawing.Point(666, 18);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Location = new System.Drawing.Point(444, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(315, 832);
+            this.groupBox3.Size = new System.Drawing.Size(210, 541);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "MDFe";
@@ -496,10 +470,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoAlteracaoPagamentoServicoMDFe
             // 
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Location = new System.Drawing.Point(9, 368);
-            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Location = new System.Drawing.Point(6, 239);
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Name = "BtnEnviarEventoAlteracaoPagamentoServicoMDFe";
-            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Size = new System.Drawing.Size(296, 66);
+            this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Size = new System.Drawing.Size(197, 43);
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.TabIndex = 17;
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.Text = "Enviar Evento Alteração Pagamento Serviço MDFe";
             this.BtnEnviarEventoAlteracaoPagamentoServicoMDFe.UseVisualStyleBackColor = true;
@@ -508,10 +481,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoPagamentoOperacaoMDFe
             // 
             this.BtnEnviarEventoPagamentoOperacaoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoPagamentoOperacaoMDFe.Location = new System.Drawing.Point(9, 292);
-            this.BtnEnviarEventoPagamentoOperacaoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoPagamentoOperacaoMDFe.Location = new System.Drawing.Point(6, 190);
             this.BtnEnviarEventoPagamentoOperacaoMDFe.Name = "BtnEnviarEventoPagamentoOperacaoMDFe";
-            this.BtnEnviarEventoPagamentoOperacaoMDFe.Size = new System.Drawing.Size(296, 66);
+            this.BtnEnviarEventoPagamentoOperacaoMDFe.Size = new System.Drawing.Size(197, 43);
             this.BtnEnviarEventoPagamentoOperacaoMDFe.TabIndex = 16;
             this.BtnEnviarEventoPagamentoOperacaoMDFe.Text = "Enviar Evento de Pagamento da Operação MDFe";
             this.BtnEnviarEventoPagamentoOperacaoMDFe.UseVisualStyleBackColor = true;
@@ -520,10 +492,9 @@ namespace TreinamentoDLL
             // BtnConsultarMDFeNaoEncerrado
             // 
             this.BtnConsultarMDFeNaoEncerrado.CausesValidation = false;
-            this.BtnConsultarMDFeNaoEncerrado.Location = new System.Drawing.Point(9, 248);
-            this.BtnConsultarMDFeNaoEncerrado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarMDFeNaoEncerrado.Location = new System.Drawing.Point(6, 161);
             this.BtnConsultarMDFeNaoEncerrado.Name = "BtnConsultarMDFeNaoEncerrado";
-            this.BtnConsultarMDFeNaoEncerrado.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarMDFeNaoEncerrado.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarMDFeNaoEncerrado.TabIndex = 15;
             this.BtnConsultarMDFeNaoEncerrado.Text = "Consultar MDFe´s Não Encerrados";
             this.BtnConsultarMDFeNaoEncerrado.UseVisualStyleBackColor = true;
@@ -532,10 +503,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoEncerramentoMDFe
             // 
             this.BtnEnviarEventoEncerramentoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoEncerramentoMDFe.Location = new System.Drawing.Point(10, 203);
-            this.BtnEnviarEventoEncerramentoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoEncerramentoMDFe.Location = new System.Drawing.Point(7, 132);
             this.BtnEnviarEventoEncerramentoMDFe.Name = "BtnEnviarEventoEncerramentoMDFe";
-            this.BtnEnviarEventoEncerramentoMDFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoEncerramentoMDFe.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEventoEncerramentoMDFe.TabIndex = 14;
             this.BtnEnviarEventoEncerramentoMDFe.Text = "Enviar o Evento de Encerramento";
             this.BtnEnviarEventoEncerramentoMDFe.UseVisualStyleBackColor = true;
@@ -544,10 +514,9 @@ namespace TreinamentoDLL
             // BtnEnviarEventoCancelamentoMDFe
             // 
             this.BtnEnviarEventoCancelamentoMDFe.CausesValidation = false;
-            this.BtnEnviarEventoCancelamentoMDFe.Location = new System.Drawing.Point(10, 158);
-            this.BtnEnviarEventoCancelamentoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEventoCancelamentoMDFe.Location = new System.Drawing.Point(7, 103);
             this.BtnEnviarEventoCancelamentoMDFe.Name = "BtnEnviarEventoCancelamentoMDFe";
-            this.BtnEnviarEventoCancelamentoMDFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEventoCancelamentoMDFe.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEventoCancelamentoMDFe.TabIndex = 11;
             this.BtnEnviarEventoCancelamentoMDFe.Text = "Enviar o Evento de Cancelamento";
             this.BtnEnviarEventoCancelamentoMDFe.UseVisualStyleBackColor = true;
@@ -556,10 +525,9 @@ namespace TreinamentoDLL
             // BtnEnviarMDFeSincrono
             // 
             this.BtnEnviarMDFeSincrono.CausesValidation = false;
-            this.BtnEnviarMDFeSincrono.Location = new System.Drawing.Point(9, 114);
-            this.BtnEnviarMDFeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarMDFeSincrono.Location = new System.Drawing.Point(6, 74);
             this.BtnEnviarMDFeSincrono.Name = "BtnEnviarMDFeSincrono";
-            this.BtnEnviarMDFeSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarMDFeSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarMDFeSincrono.TabIndex = 3;
             this.BtnEnviarMDFeSincrono.Text = "Enviar MDFe Sincrono";
             this.BtnEnviarMDFeSincrono.UseVisualStyleBackColor = true;
@@ -568,10 +536,9 @@ namespace TreinamentoDLL
             // BtnConsultaSituacaoMDFe
             // 
             this.BtnConsultaSituacaoMDFe.CausesValidation = false;
-            this.BtnConsultaSituacaoMDFe.Location = new System.Drawing.Point(9, 74);
-            this.BtnConsultaSituacaoMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaSituacaoMDFe.Location = new System.Drawing.Point(6, 48);
             this.BtnConsultaSituacaoMDFe.Name = "BtnConsultaSituacaoMDFe";
-            this.BtnConsultaSituacaoMDFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaSituacaoMDFe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaSituacaoMDFe.TabIndex = 1;
             this.BtnConsultaSituacaoMDFe.Text = "Consulta Situação";
             this.BtnConsultaSituacaoMDFe.UseVisualStyleBackColor = true;
@@ -579,10 +546,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultaStatusMDFe
             // 
-            this.BtnConsultaStatusMDFe.Location = new System.Drawing.Point(9, 29);
-            this.BtnConsultaStatusMDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaStatusMDFe.Location = new System.Drawing.Point(6, 19);
             this.BtnConsultaStatusMDFe.Name = "BtnConsultaStatusMDFe";
-            this.BtnConsultaStatusMDFe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaStatusMDFe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaStatusMDFe.TabIndex = 0;
             this.BtnConsultaStatusMDFe.Text = "Consulta Status";
             this.BtnConsultaStatusMDFe.UseVisualStyleBackColor = true;
@@ -590,6 +556,11 @@ namespace TreinamentoDLL
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.BtnConsultarPdfNFSe);
+            this.groupBox4.Controls.Add(this.BtnConsultarNFSe);
+            this.groupBox4.Controls.Add(this.BtnConsultarNFSeRps);
+            this.groupBox4.Controls.Add(this.BtnCancelarNFSeNacional);
+            this.groupBox4.Controls.Add(this.BtnEnviarNFSeNacional);
             this.groupBox4.Controls.Add(this.BtnCriarXmlNFSeCSharp);
             this.groupBox4.Controls.Add(this.BtnSubstituirNFSe);
             this.groupBox4.Controls.Add(this.BtnConsultarNFSePorRPS);
@@ -598,21 +569,40 @@ namespace TreinamentoDLL
             this.groupBox4.Controls.Add(this.BtnEnvioLoteRPSSincrono);
             this.groupBox4.Controls.Add(this.BtnEnvioLoteRPSAssincrono);
             this.groupBox4.Controls.Add(this.BtnEnviarCancNFSe);
-            this.groupBox4.Location = new System.Drawing.Point(1008, 18);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox4.Location = new System.Drawing.Point(672, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox4.Size = new System.Drawing.Size(315, 408);
+            this.groupBox4.Size = new System.Drawing.Size(210, 501);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "NFSe";
             // 
+            // BtnCancelarNFSeNacional
+            // 
+            this.BtnCancelarNFSeNacional.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnCancelarNFSeNacional.Location = new System.Drawing.Point(7, 293);
+            this.BtnCancelarNFSeNacional.Name = "BtnCancelarNFSeNacional";
+            this.BtnCancelarNFSeNacional.Size = new System.Drawing.Size(197, 24);
+            this.BtnCancelarNFSeNacional.TabIndex = 26;
+            this.BtnCancelarNFSeNacional.Text = "NACIONAL - Cancelar NFSe";
+            this.BtnCancelarNFSeNacional.UseVisualStyleBackColor = true;
+            this.BtnCancelarNFSeNacional.Click += new System.EventHandler(this.BtnCancelarNFSeNacional_Click);
+            // 
+            // BtnEnviarNFSeNacional
+            // 
+            this.BtnEnviarNFSeNacional.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnEnviarNFSeNacional.Location = new System.Drawing.Point(6, 257);
+            this.BtnEnviarNFSeNacional.Name = "BtnEnviarNFSeNacional";
+            this.BtnEnviarNFSeNacional.Size = new System.Drawing.Size(197, 24);
+            this.BtnEnviarNFSeNacional.TabIndex = 25;
+            this.BtnEnviarNFSeNacional.Text = "NACIONAL - Enviar NFSe";
+            this.BtnEnviarNFSeNacional.UseVisualStyleBackColor = true;
+            this.BtnEnviarNFSeNacional.Click += new System.EventHandler(this.BtnEnviarNFSeNacional_Click);
+            // 
             // BtnCriarXmlNFSeCSharp
             // 
-            this.BtnCriarXmlNFSeCSharp.Location = new System.Drawing.Point(10, 342);
-            this.BtnCriarXmlNFSeCSharp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnCriarXmlNFSeCSharp.Location = new System.Drawing.Point(7, 222);
             this.BtnCriarXmlNFSeCSharp.Name = "BtnCriarXmlNFSeCSharp";
-            this.BtnCriarXmlNFSeCSharp.Size = new System.Drawing.Size(296, 37);
+            this.BtnCriarXmlNFSeCSharp.Size = new System.Drawing.Size(197, 24);
             this.BtnCriarXmlNFSeCSharp.TabIndex = 24;
             this.BtnCriarXmlNFSeCSharp.Text = "Criar XML de NFSe em C#";
             this.BtnCriarXmlNFSeCSharp.UseVisualStyleBackColor = true;
@@ -620,10 +610,9 @@ namespace TreinamentoDLL
             // 
             // BtnSubstituirNFSe
             // 
-            this.BtnSubstituirNFSe.Location = new System.Drawing.Point(9, 297);
-            this.BtnSubstituirNFSe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnSubstituirNFSe.Location = new System.Drawing.Point(6, 193);
             this.BtnSubstituirNFSe.Name = "BtnSubstituirNFSe";
-            this.BtnSubstituirNFSe.Size = new System.Drawing.Size(296, 35);
+            this.BtnSubstituirNFSe.Size = new System.Drawing.Size(197, 23);
             this.BtnSubstituirNFSe.TabIndex = 7;
             this.BtnSubstituirNFSe.Text = "Substituir NFSe";
             this.BtnSubstituirNFSe.UseVisualStyleBackColor = true;
@@ -631,10 +620,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultarNFSePorRPS
             // 
-            this.BtnConsultarNFSePorRPS.Location = new System.Drawing.Point(9, 252);
-            this.BtnConsultarNFSePorRPS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarNFSePorRPS.Location = new System.Drawing.Point(6, 164);
             this.BtnConsultarNFSePorRPS.Name = "BtnConsultarNFSePorRPS";
-            this.BtnConsultarNFSePorRPS.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarNFSePorRPS.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarNFSePorRPS.TabIndex = 5;
             this.BtnConsultarNFSePorRPS.Text = "Consultar NFSe por RPS";
             this.BtnConsultarNFSePorRPS.UseVisualStyleBackColor = true;
@@ -642,10 +630,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultarLoteRPS
             // 
-            this.BtnConsultarLoteRPS.Location = new System.Drawing.Point(10, 208);
-            this.BtnConsultarLoteRPS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarLoteRPS.Location = new System.Drawing.Point(7, 135);
             this.BtnConsultarLoteRPS.Name = "BtnConsultarLoteRPS";
-            this.BtnConsultarLoteRPS.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarLoteRPS.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarLoteRPS.TabIndex = 4;
             this.BtnConsultarLoteRPS.Text = "Consultar Lote RPS";
             this.BtnConsultarLoteRPS.UseVisualStyleBackColor = true;
@@ -653,10 +640,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnvioRPSSincrono
             // 
-            this.BtnEnvioRPSSincrono.Location = new System.Drawing.Point(10, 163);
-            this.BtnEnvioRPSSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnvioRPSSincrono.Location = new System.Drawing.Point(7, 106);
             this.BtnEnvioRPSSincrono.Name = "BtnEnvioRPSSincrono";
-            this.BtnEnvioRPSSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnvioRPSSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnvioRPSSincrono.TabIndex = 3;
             this.BtnEnvioRPSSincrono.Text = "Envio RPS Sincrono";
             this.BtnEnvioRPSSincrono.UseVisualStyleBackColor = true;
@@ -664,10 +650,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnvioLoteRPSSincrono
             // 
-            this.BtnEnvioLoteRPSSincrono.Location = new System.Drawing.Point(10, 118);
-            this.BtnEnvioLoteRPSSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnvioLoteRPSSincrono.Location = new System.Drawing.Point(7, 77);
             this.BtnEnvioLoteRPSSincrono.Name = "BtnEnvioLoteRPSSincrono";
-            this.BtnEnvioLoteRPSSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnvioLoteRPSSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnvioLoteRPSSincrono.TabIndex = 2;
             this.BtnEnvioLoteRPSSincrono.Text = "Envio Lote RPS Sincrono";
             this.BtnEnvioLoteRPSSincrono.UseVisualStyleBackColor = true;
@@ -675,10 +660,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnvioLoteRPSAssincrono
             // 
-            this.BtnEnvioLoteRPSAssincrono.Location = new System.Drawing.Point(10, 74);
-            this.BtnEnvioLoteRPSAssincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnvioLoteRPSAssincrono.Location = new System.Drawing.Point(7, 48);
             this.BtnEnvioLoteRPSAssincrono.Name = "BtnEnvioLoteRPSAssincrono";
-            this.BtnEnvioLoteRPSAssincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnvioLoteRPSAssincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnvioLoteRPSAssincrono.TabIndex = 1;
             this.BtnEnvioLoteRPSAssincrono.Text = "Envio Lote RPS Assincrono";
             this.BtnEnvioLoteRPSAssincrono.UseVisualStyleBackColor = true;
@@ -686,10 +670,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnviarCancNFSe
             // 
-            this.BtnEnviarCancNFSe.Location = new System.Drawing.Point(9, 29);
-            this.BtnEnviarCancNFSe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarCancNFSe.Location = new System.Drawing.Point(6, 19);
             this.BtnEnviarCancNFSe.Name = "BtnEnviarCancNFSe";
-            this.BtnEnviarCancNFSe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarCancNFSe.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarCancNFSe.TabIndex = 0;
             this.BtnEnviarCancNFSe.Text = "Cancelar NFSe";
             this.BtnEnviarCancNFSe.UseVisualStyleBackColor = true;
@@ -710,11 +693,9 @@ namespace TreinamentoDLL
             this.GroupCTe.Controls.Add(this.BtnEnviarCTeOSSincrono);
             this.GroupCTe.Controls.Add(this.BtnEnviarCTeSincrono);
             this.GroupCTe.Controls.Add(this.BtnConsultarStatusCTe);
-            this.GroupCTe.Location = new System.Drawing.Point(1332, 18);
-            this.GroupCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GroupCTe.Location = new System.Drawing.Point(888, 12);
             this.GroupCTe.Name = "GroupCTe";
-            this.GroupCTe.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.GroupCTe.Size = new System.Drawing.Size(315, 725);
+            this.GroupCTe.Size = new System.Drawing.Size(210, 471);
             this.GroupCTe.TabIndex = 8;
             this.GroupCTe.TabStop = false;
             this.GroupCTe.Text = "CTe e CTeOS";
@@ -722,10 +703,9 @@ namespace TreinamentoDLL
             // BtnConsultaSituacaoCTe
             // 
             this.BtnConsultaSituacaoCTe.CausesValidation = false;
-            this.BtnConsultaSituacaoCTe.Location = new System.Drawing.Point(12, 616);
-            this.BtnConsultaSituacaoCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaSituacaoCTe.Location = new System.Drawing.Point(8, 400);
             this.BtnConsultaSituacaoCTe.Name = "BtnConsultaSituacaoCTe";
-            this.BtnConsultaSituacaoCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaSituacaoCTe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultaSituacaoCTe.TabIndex = 28;
             this.BtnConsultaSituacaoCTe.Text = "Consulta Situação";
             this.BtnConsultaSituacaoCTe.UseVisualStyleBackColor = true;
@@ -733,10 +713,9 @@ namespace TreinamentoDLL
             // 
             // BtnEventoEPECCTe
             // 
-            this.BtnEventoEPECCTe.Location = new System.Drawing.Point(12, 571);
-            this.BtnEventoEPECCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoEPECCTe.Location = new System.Drawing.Point(8, 371);
             this.BtnEventoEPECCTe.Name = "BtnEventoEPECCTe";
-            this.BtnEventoEPECCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoEPECCTe.Size = new System.Drawing.Size(197, 23);
             this.BtnEventoEPECCTe.TabIndex = 27;
             this.BtnEventoEPECCTe.Text = "Evento de EPEC CTe";
             this.BtnEventoEPECCTe.UseVisualStyleBackColor = true;
@@ -744,10 +723,9 @@ namespace TreinamentoDLL
             // 
             // BtnEventoCTeEmDesacordo
             // 
-            this.BtnEventoCTeEmDesacordo.Location = new System.Drawing.Point(12, 526);
-            this.BtnEventoCTeEmDesacordo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoCTeEmDesacordo.Location = new System.Drawing.Point(8, 342);
             this.BtnEventoCTeEmDesacordo.Name = "BtnEventoCTeEmDesacordo";
-            this.BtnEventoCTeEmDesacordo.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoCTeEmDesacordo.Size = new System.Drawing.Size(197, 23);
             this.BtnEventoCTeEmDesacordo.TabIndex = 26;
             this.BtnEventoCTeEmDesacordo.Text = "Evento de CTe em Desacordo";
             this.BtnEventoCTeEmDesacordo.UseVisualStyleBackColor = true;
@@ -755,10 +733,9 @@ namespace TreinamentoDLL
             // 
             // BtnDesserializandoCTeOS
             // 
-            this.BtnDesserializandoCTeOS.Location = new System.Drawing.Point(12, 482);
-            this.BtnDesserializandoCTeOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDesserializandoCTeOS.Location = new System.Drawing.Point(8, 313);
             this.BtnDesserializandoCTeOS.Name = "BtnDesserializandoCTeOS";
-            this.BtnDesserializandoCTeOS.Size = new System.Drawing.Size(296, 35);
+            this.BtnDesserializandoCTeOS.Size = new System.Drawing.Size(197, 23);
             this.BtnDesserializandoCTeOS.TabIndex = 25;
             this.BtnDesserializandoCTeOS.Text = "Desserializando XML do CTeOS";
             this.BtnDesserializandoCTeOS.UseVisualStyleBackColor = true;
@@ -766,10 +743,9 @@ namespace TreinamentoDLL
             // 
             // BtnCancInsucessoEntregaCTe
             // 
-            this.BtnCancInsucessoEntregaCTe.Location = new System.Drawing.Point(12, 408);
-            this.BtnCancInsucessoEntregaCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnCancInsucessoEntregaCTe.Location = new System.Drawing.Point(8, 265);
             this.BtnCancInsucessoEntregaCTe.Name = "BtnCancInsucessoEntregaCTe";
-            this.BtnCancInsucessoEntregaCTe.Size = new System.Drawing.Size(296, 65);
+            this.BtnCancInsucessoEntregaCTe.Size = new System.Drawing.Size(197, 42);
             this.BtnCancInsucessoEntregaCTe.TabIndex = 24;
             this.BtnCancInsucessoEntregaCTe.Text = "Evento de Cancelamento do Insucesso da Entrega do CTe";
             this.BtnCancInsucessoEntregaCTe.UseVisualStyleBackColor = true;
@@ -777,10 +753,9 @@ namespace TreinamentoDLL
             // 
             // BtnInsucessoEntregaCTe
             // 
-            this.BtnInsucessoEntregaCTe.Location = new System.Drawing.Point(12, 337);
-            this.BtnInsucessoEntregaCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnInsucessoEntregaCTe.Location = new System.Drawing.Point(8, 219);
             this.BtnInsucessoEntregaCTe.Name = "BtnInsucessoEntregaCTe";
-            this.BtnInsucessoEntregaCTe.Size = new System.Drawing.Size(296, 62);
+            this.BtnInsucessoEntregaCTe.Size = new System.Drawing.Size(197, 40);
             this.BtnInsucessoEntregaCTe.TabIndex = 23;
             this.BtnInsucessoEntregaCTe.Text = "Evento de Insucesso na Entrega do CTe";
             this.BtnInsucessoEntregaCTe.UseVisualStyleBackColor = true;
@@ -788,10 +763,9 @@ namespace TreinamentoDLL
             // 
             // BtnEventoCCeCTeOS
             // 
-            this.BtnEventoCCeCTeOS.Location = new System.Drawing.Point(12, 297);
-            this.BtnEventoCCeCTeOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoCCeCTeOS.Location = new System.Drawing.Point(8, 193);
             this.BtnEventoCCeCTeOS.Name = "BtnEventoCCeCTeOS";
-            this.BtnEventoCCeCTeOS.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoCCeCTeOS.Size = new System.Drawing.Size(197, 23);
             this.BtnEventoCCeCTeOS.TabIndex = 22;
             this.BtnEventoCCeCTeOS.Text = "Evento de CCe CTeOS";
             this.BtnEventoCCeCTeOS.UseVisualStyleBackColor = true;
@@ -799,10 +773,9 @@ namespace TreinamentoDLL
             // 
             // BtnEventoCCeCTe
             // 
-            this.BtnEventoCCeCTe.Location = new System.Drawing.Point(10, 252);
-            this.BtnEventoCCeCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoCCeCTe.Location = new System.Drawing.Point(7, 164);
             this.BtnEventoCCeCTe.Name = "BtnEventoCCeCTe";
-            this.BtnEventoCCeCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoCCeCTe.Size = new System.Drawing.Size(197, 23);
             this.BtnEventoCCeCTe.TabIndex = 21;
             this.BtnEventoCCeCTe.Text = "Evento de CCe CTe";
             this.BtnEventoCCeCTe.UseVisualStyleBackColor = true;
@@ -810,10 +783,9 @@ namespace TreinamentoDLL
             // 
             // BtnEventoCancelamentoCTeOS
             // 
-            this.BtnEventoCancelamentoCTeOS.Location = new System.Drawing.Point(10, 208);
-            this.BtnEventoCancelamentoCTeOS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoCancelamentoCTeOS.Location = new System.Drawing.Point(7, 135);
             this.BtnEventoCancelamentoCTeOS.Name = "BtnEventoCancelamentoCTeOS";
-            this.BtnEventoCancelamentoCTeOS.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoCancelamentoCTeOS.Size = new System.Drawing.Size(197, 23);
             this.BtnEventoCancelamentoCTeOS.TabIndex = 20;
             this.BtnEventoCancelamentoCTeOS.Text = "Evento de Cancelamento CTeOS";
             this.BtnEventoCancelamentoCTeOS.UseVisualStyleBackColor = true;
@@ -821,10 +793,9 @@ namespace TreinamentoDLL
             // 
             // BtnEventoCancelamentoCTe
             // 
-            this.BtnEventoCancelamentoCTe.Location = new System.Drawing.Point(10, 163);
-            this.BtnEventoCancelamentoCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEventoCancelamentoCTe.Location = new System.Drawing.Point(7, 106);
             this.BtnEventoCancelamentoCTe.Name = "BtnEventoCancelamentoCTe";
-            this.BtnEventoCancelamentoCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEventoCancelamentoCTe.Size = new System.Drawing.Size(197, 23);
             this.BtnEventoCancelamentoCTe.TabIndex = 19;
             this.BtnEventoCancelamentoCTe.Text = "Evento de Cancelamento CTe";
             this.BtnEventoCancelamentoCTe.UseVisualStyleBackColor = true;
@@ -832,10 +803,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnviarCTeOSSincrono
             // 
-            this.BtnEnviarCTeOSSincrono.Location = new System.Drawing.Point(10, 118);
-            this.BtnEnviarCTeOSSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarCTeOSSincrono.Location = new System.Drawing.Point(7, 77);
             this.BtnEnviarCTeOSSincrono.Name = "BtnEnviarCTeOSSincrono";
-            this.BtnEnviarCTeOSSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarCTeOSSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarCTeOSSincrono.TabIndex = 18;
             this.BtnEnviarCTeOSSincrono.Text = "Enviar CTeOS Sincrono";
             this.BtnEnviarCTeOSSincrono.UseVisualStyleBackColor = true;
@@ -843,10 +813,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnviarCTeSincrono
             // 
-            this.BtnEnviarCTeSincrono.Location = new System.Drawing.Point(10, 74);
-            this.BtnEnviarCTeSincrono.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarCTeSincrono.Location = new System.Drawing.Point(7, 48);
             this.BtnEnviarCTeSincrono.Name = "BtnEnviarCTeSincrono";
-            this.BtnEnviarCTeSincrono.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarCTeSincrono.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarCTeSincrono.TabIndex = 17;
             this.BtnEnviarCTeSincrono.Text = "Enviar CTe Síncrono";
             this.BtnEnviarCTeSincrono.UseVisualStyleBackColor = true;
@@ -854,10 +823,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultarStatusCTe
             // 
-            this.BtnConsultarStatusCTe.Location = new System.Drawing.Point(9, 29);
-            this.BtnConsultarStatusCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarStatusCTe.Location = new System.Drawing.Point(6, 19);
             this.BtnConsultarStatusCTe.Name = "BtnConsultarStatusCTe";
-            this.BtnConsultarStatusCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarStatusCTe.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarStatusCTe.TabIndex = 16;
             this.BtnConsultarStatusCTe.Text = "Consulta Status";
             this.BtnConsultarStatusCTe.UseVisualStyleBackColor = true;
@@ -883,21 +851,18 @@ namespace TreinamentoDLL
             this.groupBox5.Controls.Add(this.BtnFormasTrabalharCertificado);
             this.groupBox5.Controls.Add(this.BtnImprimirDANFeEtiqueta);
             this.groupBox5.Controls.Add(this.BtnCarregarA3comPIN);
-            this.groupBox5.Location = new System.Drawing.Point(1656, 20);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox5.Location = new System.Drawing.Point(1104, 13);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.Size = new System.Drawing.Size(315, 1046);
+            this.groupBox5.Size = new System.Drawing.Size(210, 680);
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Diversos";
             // 
             // BtnDistribuicaoDFeChNFe
             // 
-            this.BtnDistribuicaoDFeChNFe.Location = new System.Drawing.Point(10, 920);
-            this.BtnDistribuicaoDFeChNFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDistribuicaoDFeChNFe.Location = new System.Drawing.Point(7, 598);
             this.BtnDistribuicaoDFeChNFe.Name = "BtnDistribuicaoDFeChNFe";
-            this.BtnDistribuicaoDFeChNFe.Size = new System.Drawing.Size(296, 37);
+            this.BtnDistribuicaoDFeChNFe.Size = new System.Drawing.Size(197, 24);
             this.BtnDistribuicaoDFeChNFe.TabIndex = 33;
             this.BtnDistribuicaoDFeChNFe.Text = "Distribuição DFe por chNFE";
             this.BtnDistribuicaoDFeChNFe.UseVisualStyleBackColor = true;
@@ -905,10 +870,9 @@ namespace TreinamentoDLL
             // 
             // BtnImprimirSAT
             // 
-            this.BtnImprimirSAT.Location = new System.Drawing.Point(10, 875);
-            this.BtnImprimirSAT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImprimirSAT.Location = new System.Drawing.Point(7, 569);
             this.BtnImprimirSAT.Name = "BtnImprimirSAT";
-            this.BtnImprimirSAT.Size = new System.Drawing.Size(296, 35);
+            this.BtnImprimirSAT.Size = new System.Drawing.Size(197, 23);
             this.BtnImprimirSAT.TabIndex = 32;
             this.BtnImprimirSAT.Text = "Imprimir SAT";
             this.BtnImprimirSAT.UseVisualStyleBackColor = true;
@@ -916,10 +880,9 @@ namespace TreinamentoDLL
             // 
             // BtnImprimirCCe
             // 
-            this.BtnImprimirCCe.Location = new System.Drawing.Point(10, 831);
-            this.BtnImprimirCCe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImprimirCCe.Location = new System.Drawing.Point(7, 540);
             this.BtnImprimirCCe.Name = "BtnImprimirCCe";
-            this.BtnImprimirCCe.Size = new System.Drawing.Size(296, 35);
+            this.BtnImprimirCCe.Size = new System.Drawing.Size(197, 23);
             this.BtnImprimirCCe.TabIndex = 31;
             this.BtnImprimirCCe.Text = "Imprimir CCe";
             this.BtnImprimirCCe.UseVisualStyleBackColor = true;
@@ -927,10 +890,9 @@ namespace TreinamentoDLL
             // 
             // BtnTestarConexaoInternet
             // 
-            this.BtnTestarConexaoInternet.Location = new System.Drawing.Point(10, 768);
-            this.BtnTestarConexaoInternet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnTestarConexaoInternet.Location = new System.Drawing.Point(7, 499);
             this.BtnTestarConexaoInternet.Name = "BtnTestarConexaoInternet";
-            this.BtnTestarConexaoInternet.Size = new System.Drawing.Size(296, 54);
+            this.BtnTestarConexaoInternet.Size = new System.Drawing.Size(197, 35);
             this.BtnTestarConexaoInternet.TabIndex = 30;
             this.BtnTestarConexaoInternet.Text = "Testar conexão com a internet";
             this.BtnTestarConexaoInternet.UseVisualStyleBackColor = true;
@@ -938,10 +900,9 @@ namespace TreinamentoDLL
             // 
             // BtnGetInfCertificadoDigital
             // 
-            this.BtnGetInfCertificadoDigital.Location = new System.Drawing.Point(10, 705);
-            this.BtnGetInfCertificadoDigital.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnGetInfCertificadoDigital.Location = new System.Drawing.Point(7, 458);
             this.BtnGetInfCertificadoDigital.Name = "BtnGetInfCertificadoDigital";
-            this.BtnGetInfCertificadoDigital.Size = new System.Drawing.Size(296, 54);
+            this.BtnGetInfCertificadoDigital.Size = new System.Drawing.Size(197, 35);
             this.BtnGetInfCertificadoDigital.TabIndex = 29;
             this.BtnGetInfCertificadoDigital.Text = "Resgatando Informações do Certificado Digital";
             this.BtnGetInfCertificadoDigital.UseVisualStyleBackColor = true;
@@ -949,10 +910,9 @@ namespace TreinamentoDLL
             // 
             // BtnTratamentoExcecao2
             // 
-            this.BtnTratamentoExcecao2.Location = new System.Drawing.Point(9, 652);
-            this.BtnTratamentoExcecao2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnTratamentoExcecao2.Location = new System.Drawing.Point(6, 424);
             this.BtnTratamentoExcecao2.Name = "BtnTratamentoExcecao2";
-            this.BtnTratamentoExcecao2.Size = new System.Drawing.Size(296, 43);
+            this.BtnTratamentoExcecao2.Size = new System.Drawing.Size(197, 28);
             this.BtnTratamentoExcecao2.TabIndex = 28;
             this.BtnTratamentoExcecao2.Text = "Tratamento de exceções na DLL 2";
             this.BtnTratamentoExcecao2.UseVisualStyleBackColor = true;
@@ -960,10 +920,9 @@ namespace TreinamentoDLL
             // 
             // BtnTratamentoExcecao
             // 
-            this.BtnTratamentoExcecao.Location = new System.Drawing.Point(8, 600);
-            this.BtnTratamentoExcecao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnTratamentoExcecao.Location = new System.Drawing.Point(5, 390);
             this.BtnTratamentoExcecao.Name = "BtnTratamentoExcecao";
-            this.BtnTratamentoExcecao.Size = new System.Drawing.Size(296, 43);
+            this.BtnTratamentoExcecao.Size = new System.Drawing.Size(197, 28);
             this.BtnTratamentoExcecao.TabIndex = 27;
             this.BtnTratamentoExcecao.Text = "Tratamento de exceções na DLL 1";
             this.BtnTratamentoExcecao.UseVisualStyleBackColor = true;
@@ -971,10 +930,9 @@ namespace TreinamentoDLL
             // 
             // BtnValidarXML
             // 
-            this.BtnValidarXML.Location = new System.Drawing.Point(9, 548);
-            this.BtnValidarXML.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnValidarXML.Location = new System.Drawing.Point(6, 356);
             this.BtnValidarXML.Name = "BtnValidarXML";
-            this.BtnValidarXML.Size = new System.Drawing.Size(296, 43);
+            this.BtnValidarXML.Size = new System.Drawing.Size(197, 28);
             this.BtnValidarXML.TabIndex = 26;
             this.BtnValidarXML.Text = "Validar XML com a DLL";
             this.BtnValidarXML.UseVisualStyleBackColor = true;
@@ -982,10 +940,9 @@ namespace TreinamentoDLL
             // 
             // BtnImprimirDANFeSemValorFiscal
             // 
-            this.BtnImprimirDANFeSemValorFiscal.Location = new System.Drawing.Point(9, 486);
-            this.BtnImprimirDANFeSemValorFiscal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImprimirDANFeSemValorFiscal.Location = new System.Drawing.Point(6, 316);
             this.BtnImprimirDANFeSemValorFiscal.Name = "BtnImprimirDANFeSemValorFiscal";
-            this.BtnImprimirDANFeSemValorFiscal.Size = new System.Drawing.Size(296, 52);
+            this.BtnImprimirDANFeSemValorFiscal.Size = new System.Drawing.Size(197, 34);
             this.BtnImprimirDANFeSemValorFiscal.TabIndex = 25;
             this.BtnImprimirDANFeSemValorFiscal.Text = "Imprimir DANFe sem valor fiscal para conferência";
             this.BtnImprimirDANFeSemValorFiscal.UseVisualStyleBackColor = true;
@@ -993,10 +950,9 @@ namespace TreinamentoDLL
             // 
             // BtnDistribuicaoDFeCTe
             // 
-            this.BtnDistribuicaoDFeCTe.Location = new System.Drawing.Point(9, 440);
-            this.BtnDistribuicaoDFeCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDistribuicaoDFeCTe.Location = new System.Drawing.Point(6, 286);
             this.BtnDistribuicaoDFeCTe.Name = "BtnDistribuicaoDFeCTe";
-            this.BtnDistribuicaoDFeCTe.Size = new System.Drawing.Size(296, 37);
+            this.BtnDistribuicaoDFeCTe.Size = new System.Drawing.Size(197, 24);
             this.BtnDistribuicaoDFeCTe.TabIndex = 23;
             this.BtnDistribuicaoDFeCTe.Text = "Distribuição DFe - CTe";
             this.BtnDistribuicaoDFeCTe.UseVisualStyleBackColor = true;
@@ -1004,10 +960,9 @@ namespace TreinamentoDLL
             // 
             // BtnDistribuicaoDFE135
             // 
-            this.BtnDistribuicaoDFE135.Location = new System.Drawing.Point(9, 394);
-            this.BtnDistribuicaoDFE135.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDistribuicaoDFE135.Location = new System.Drawing.Point(6, 256);
             this.BtnDistribuicaoDFE135.Name = "BtnDistribuicaoDFE135";
-            this.BtnDistribuicaoDFE135.Size = new System.Drawing.Size(296, 37);
+            this.BtnDistribuicaoDFE135.Size = new System.Drawing.Size(197, 24);
             this.BtnDistribuicaoDFE135.TabIndex = 22;
             this.BtnDistribuicaoDFE135.Text = "Distribuição DFe Versão 1.35";
             this.BtnDistribuicaoDFE135.UseVisualStyleBackColor = true;
@@ -1016,10 +971,9 @@ namespace TreinamentoDLL
             // BtnNFeComTagAutXml
             // 
             this.BtnNFeComTagAutXml.CausesValidation = false;
-            this.BtnNFeComTagAutXml.Location = new System.Drawing.Point(10, 323);
-            this.BtnNFeComTagAutXml.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnNFeComTagAutXml.Location = new System.Drawing.Point(7, 210);
             this.BtnNFeComTagAutXml.Name = "BtnNFeComTagAutXml";
-            this.BtnNFeComTagAutXml.Size = new System.Drawing.Size(296, 62);
+            this.BtnNFeComTagAutXml.Size = new System.Drawing.Size(197, 40);
             this.BtnNFeComTagAutXml.TabIndex = 14;
             this.BtnNFeComTagAutXml.Text = "Enviar NFe autorizando 3ºs a fazer download do XML";
             this.BtnNFeComTagAutXml.UseVisualStyleBackColor = true;
@@ -1027,18 +981,18 @@ namespace TreinamentoDLL
             // 
             // PbConsultaDFe
             // 
-            this.PbConsultaDFe.Location = new System.Drawing.Point(9, 229);
+            this.PbConsultaDFe.Location = new System.Drawing.Point(6, 149);
+            this.PbConsultaDFe.Margin = new System.Windows.Forms.Padding(2);
             this.PbConsultaDFe.Name = "PbConsultaDFe";
-            this.PbConsultaDFe.Size = new System.Drawing.Size(296, 35);
+            this.PbConsultaDFe.Size = new System.Drawing.Size(197, 23);
             this.PbConsultaDFe.TabIndex = 21;
             this.PbConsultaDFe.Visible = false;
             // 
             // BtnManifestacaoDestinatario
             // 
-            this.BtnManifestacaoDestinatario.Location = new System.Drawing.Point(9, 280);
-            this.BtnManifestacaoDestinatario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnManifestacaoDestinatario.Location = new System.Drawing.Point(6, 182);
             this.BtnManifestacaoDestinatario.Name = "BtnManifestacaoDestinatario";
-            this.BtnManifestacaoDestinatario.Size = new System.Drawing.Size(296, 34);
+            this.BtnManifestacaoDestinatario.Size = new System.Drawing.Size(197, 22);
             this.BtnManifestacaoDestinatario.TabIndex = 20;
             this.BtnManifestacaoDestinatario.Text = "Manifestação do destinatário";
             this.BtnManifestacaoDestinatario.UseVisualStyleBackColor = true;
@@ -1046,10 +1000,9 @@ namespace TreinamentoDLL
             // 
             // BtnDistribuicaoDFe
             // 
-            this.BtnDistribuicaoDFe.Location = new System.Drawing.Point(9, 185);
-            this.BtnDistribuicaoDFe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnDistribuicaoDFe.Location = new System.Drawing.Point(6, 120);
             this.BtnDistribuicaoDFe.Name = "BtnDistribuicaoDFe";
-            this.BtnDistribuicaoDFe.Size = new System.Drawing.Size(296, 37);
+            this.BtnDistribuicaoDFe.Size = new System.Drawing.Size(197, 24);
             this.BtnDistribuicaoDFe.TabIndex = 19;
             this.BtnDistribuicaoDFe.Text = "Distribuição DFe - NFe";
             this.BtnDistribuicaoDFe.UseVisualStyleBackColor = true;
@@ -1057,10 +1010,9 @@ namespace TreinamentoDLL
             // 
             // BtnFormasTrabalharCertificado
             // 
-            this.BtnFormasTrabalharCertificado.Location = new System.Drawing.Point(9, 117);
-            this.BtnFormasTrabalharCertificado.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnFormasTrabalharCertificado.Location = new System.Drawing.Point(6, 76);
             this.BtnFormasTrabalharCertificado.Name = "BtnFormasTrabalharCertificado";
-            this.BtnFormasTrabalharCertificado.Size = new System.Drawing.Size(296, 58);
+            this.BtnFormasTrabalharCertificado.Size = new System.Drawing.Size(197, 38);
             this.BtnFormasTrabalharCertificado.TabIndex = 18;
             this.BtnFormasTrabalharCertificado.Text = "Formas de trabalhar com o certificado digital";
             this.BtnFormasTrabalharCertificado.UseVisualStyleBackColor = true;
@@ -1068,10 +1020,9 @@ namespace TreinamentoDLL
             // 
             // BtnImprimirDANFeEtiqueta
             // 
-            this.BtnImprimirDANFeEtiqueta.Location = new System.Drawing.Point(9, 72);
-            this.BtnImprimirDANFeEtiqueta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImprimirDANFeEtiqueta.Location = new System.Drawing.Point(6, 47);
             this.BtnImprimirDANFeEtiqueta.Name = "BtnImprimirDANFeEtiqueta";
-            this.BtnImprimirDANFeEtiqueta.Size = new System.Drawing.Size(296, 35);
+            this.BtnImprimirDANFeEtiqueta.Size = new System.Drawing.Size(197, 23);
             this.BtnImprimirDANFeEtiqueta.TabIndex = 17;
             this.BtnImprimirDANFeEtiqueta.Text = "Imprimir DANFe no formato etiqueta";
             this.BtnImprimirDANFeEtiqueta.UseVisualStyleBackColor = true;
@@ -1079,10 +1030,9 @@ namespace TreinamentoDLL
             // 
             // BtnCarregarA3comPIN
             // 
-            this.BtnCarregarA3comPIN.Location = new System.Drawing.Point(9, 28);
-            this.BtnCarregarA3comPIN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnCarregarA3comPIN.Location = new System.Drawing.Point(6, 18);
             this.BtnCarregarA3comPIN.Name = "BtnCarregarA3comPIN";
-            this.BtnCarregarA3comPIN.Size = new System.Drawing.Size(296, 35);
+            this.BtnCarregarA3comPIN.Size = new System.Drawing.Size(197, 23);
             this.BtnCarregarA3comPIN.TabIndex = 16;
             this.BtnCarregarA3comPIN.Text = "Carregar certificado A3 com PIN";
             this.BtnCarregarA3comPIN.UseVisualStyleBackColor = true;
@@ -1093,21 +1043,18 @@ namespace TreinamentoDLL
             this.groupBox6.Controls.Add(this.BtnConsultarResultadoLoteGNRE);
             this.groupBox6.Controls.Add(this.BtnEnviarXMLGNRe);
             this.groupBox6.Controls.Add(this.BtnConsultarConfigUF);
-            this.groupBox6.Location = new System.Drawing.Point(1008, 426);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox6.Location = new System.Drawing.Point(672, 540);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox6.Size = new System.Drawing.Size(315, 426);
+            this.groupBox6.Size = new System.Drawing.Size(210, 117);
             this.groupBox6.TabIndex = 25;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "GNRE";
             // 
             // BtnConsultarResultadoLoteGNRE
             // 
-            this.BtnConsultarResultadoLoteGNRE.Location = new System.Drawing.Point(10, 118);
-            this.BtnConsultarResultadoLoteGNRE.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarResultadoLoteGNRE.Location = new System.Drawing.Point(7, 77);
             this.BtnConsultarResultadoLoteGNRE.Name = "BtnConsultarResultadoLoteGNRE";
-            this.BtnConsultarResultadoLoteGNRE.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarResultadoLoteGNRE.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarResultadoLoteGNRE.TabIndex = 2;
             this.BtnConsultarResultadoLoteGNRE.Text = "Consultar Resultado Lote GNRE";
             this.BtnConsultarResultadoLoteGNRE.UseVisualStyleBackColor = true;
@@ -1115,10 +1062,9 @@ namespace TreinamentoDLL
             // 
             // BtnEnviarXMLGNRe
             // 
-            this.BtnEnviarXMLGNRe.Location = new System.Drawing.Point(9, 74);
-            this.BtnEnviarXMLGNRe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarXMLGNRe.Location = new System.Drawing.Point(6, 48);
             this.BtnEnviarXMLGNRe.Name = "BtnEnviarXMLGNRe";
-            this.BtnEnviarXMLGNRe.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarXMLGNRe.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarXMLGNRe.TabIndex = 1;
             this.BtnEnviarXMLGNRe.Text = "Enviar XML GNRe";
             this.BtnEnviarXMLGNRe.UseVisualStyleBackColor = true;
@@ -1126,10 +1072,9 @@ namespace TreinamentoDLL
             // 
             // BtnConsultarConfigUF
             // 
-            this.BtnConsultarConfigUF.Location = new System.Drawing.Point(9, 29);
-            this.BtnConsultarConfigUF.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarConfigUF.Location = new System.Drawing.Point(6, 19);
             this.BtnConsultarConfigUF.Name = "BtnConsultarConfigUF";
-            this.BtnConsultarConfigUF.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarConfigUF.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarConfigUF.TabIndex = 0;
             this.BtnConsultarConfigUF.Text = "Consultar Config UF";
             this.BtnConsultarConfigUF.UseVisualStyleBackColor = true;
@@ -1138,21 +1083,18 @@ namespace TreinamentoDLL
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.BtnConsultarGTIN);
-            this.groupBox7.Location = new System.Drawing.Point(1330, 752);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox7.Location = new System.Drawing.Point(887, 489);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox7.Size = new System.Drawing.Size(315, 97);
+            this.groupBox7.Size = new System.Drawing.Size(210, 63);
             this.groupBox7.TabIndex = 26;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "CCG";
             // 
             // BtnConsultarGTIN
             // 
-            this.BtnConsultarGTIN.Location = new System.Drawing.Point(9, 29);
-            this.BtnConsultarGTIN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultarGTIN.Location = new System.Drawing.Point(6, 19);
             this.BtnConsultarGTIN.Name = "BtnConsultarGTIN";
-            this.BtnConsultarGTIN.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultarGTIN.Size = new System.Drawing.Size(197, 23);
             this.BtnConsultarGTIN.TabIndex = 0;
             this.BtnConsultarGTIN.Text = "Consultar GTIN";
             this.BtnConsultarGTIN.UseVisualStyleBackColor = true;
@@ -1161,21 +1103,18 @@ namespace TreinamentoDLL
             // reinf
             // 
             this.reinf.Controls.Add(this.BtnEnviarReinf);
-            this.reinf.Location = new System.Drawing.Point(342, 568);
-            this.reinf.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.reinf.Location = new System.Drawing.Point(228, 369);
             this.reinf.Name = "reinf";
-            this.reinf.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.reinf.Size = new System.Drawing.Size(315, 97);
+            this.reinf.Size = new System.Drawing.Size(210, 63);
             this.reinf.TabIndex = 27;
             this.reinf.TabStop = false;
             this.reinf.Text = "REINF";
             // 
             // BtnEnviarReinf
             // 
-            this.BtnEnviarReinf.Location = new System.Drawing.Point(9, 32);
-            this.BtnEnviarReinf.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarReinf.Location = new System.Drawing.Point(6, 21);
             this.BtnEnviarReinf.Name = "BtnEnviarReinf";
-            this.BtnEnviarReinf.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarReinf.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarReinf.TabIndex = 0;
             this.BtnEnviarReinf.Text = "Enviar e consulta REINF";
             this.BtnEnviarReinf.UseVisualStyleBackColor = true;
@@ -1184,31 +1123,61 @@ namespace TreinamentoDLL
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.BtnEnviarEConsultarESocial);
-            this.groupBox8.Location = new System.Drawing.Point(342, 682);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox8.Location = new System.Drawing.Point(228, 443);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox8.Size = new System.Drawing.Size(315, 97);
+            this.groupBox8.Size = new System.Drawing.Size(210, 63);
             this.groupBox8.TabIndex = 28;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "ESocial";
             // 
             // BtnEnviarEConsultarESocial
             // 
-            this.BtnEnviarEConsultarESocial.Location = new System.Drawing.Point(9, 32);
-            this.BtnEnviarEConsultarESocial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnEnviarEConsultarESocial.Location = new System.Drawing.Point(6, 21);
             this.BtnEnviarEConsultarESocial.Name = "BtnEnviarEConsultarESocial";
-            this.BtnEnviarEConsultarESocial.Size = new System.Drawing.Size(296, 35);
+            this.BtnEnviarEConsultarESocial.Size = new System.Drawing.Size(197, 23);
             this.BtnEnviarEConsultarESocial.TabIndex = 0;
             this.BtnEnviarEConsultarESocial.Text = "Enviar e consulta ESocial";
             this.BtnEnviarEConsultarESocial.UseVisualStyleBackColor = true;
             this.BtnEnviarEConsultarESocial.Click += new System.EventHandler(this.BtnEnviarEConsultarESocial_Click);
             // 
+            // BtnConsultarNFSeRps
+            // 
+            this.BtnConsultarNFSeRps.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConsultarNFSeRps.Location = new System.Drawing.Point(7, 327);
+            this.BtnConsultarNFSeRps.Name = "BtnConsultarNFSeRps";
+            this.BtnConsultarNFSeRps.Size = new System.Drawing.Size(197, 24);
+            this.BtnConsultarNFSeRps.TabIndex = 27;
+            this.BtnConsultarNFSeRps.Text = "NACIONAL - Consultar NFSe RPS";
+            this.BtnConsultarNFSeRps.UseVisualStyleBackColor = true;
+            this.BtnConsultarNFSeRps.Click += new System.EventHandler(this.BtnConsultarNFSeRps_Click);
+            // 
+            // BtnConsultarNFSe
+            // 
+            this.BtnConsultarNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConsultarNFSe.Location = new System.Drawing.Point(6, 361);
+            this.BtnConsultarNFSe.Name = "BtnConsultarNFSe";
+            this.BtnConsultarNFSe.Size = new System.Drawing.Size(197, 24);
+            this.BtnConsultarNFSe.TabIndex = 28;
+            this.BtnConsultarNFSe.Text = "NACIONAL - Consultar NFSe";
+            this.BtnConsultarNFSe.UseVisualStyleBackColor = true;
+            this.BtnConsultarNFSe.Click += new System.EventHandler(this.BtnConsultarNFSe_Click);
+            // 
+            // BtnConsultarPdfNFSe
+            // 
+            this.BtnConsultarPdfNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConsultarPdfNFSe.Location = new System.Drawing.Point(6, 396);
+            this.BtnConsultarPdfNFSe.Name = "BtnConsultarPdfNFSe";
+            this.BtnConsultarPdfNFSe.Size = new System.Drawing.Size(197, 24);
+            this.BtnConsultarPdfNFSe.TabIndex = 29;
+            this.BtnConsultarPdfNFSe.Text = "NACIONAL - Consultar PDF da NFSe";
+            this.BtnConsultarPdfNFSe.UseVisualStyleBackColor = true;
+            this.BtnConsultarPdfNFSe.Click += new System.EventHandler(this.BtnConsultarPdfNFSe_Click);
+            // 
             // FormTestes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1984, 1062);
+            this.ClientSize = new System.Drawing.Size(1323, 690);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.reinf);
             this.Controls.Add(this.groupBox7);
@@ -1219,7 +1188,6 @@ namespace TreinamentoDLL
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormTestes";
             this.Text = "Treinamento Unimake.DFe";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1327,6 +1295,11 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnAbrirTeleConfigUnidanfe;
         private System.Windows.Forms.Button BtnAbrirTelaLicencaUnidanfe;
         private System.Windows.Forms.Button BtnConsultaSituacaoCTe;
+        private System.Windows.Forms.Button BtnEnviarNFSeNacional;
+        private System.Windows.Forms.Button BtnCancelarNFSeNacional;
+        private System.Windows.Forms.Button BtnConsultarNFSeRps;
+        private System.Windows.Forms.Button BtnConsultarNFSe;
+        private System.Windows.Forms.Button BtnConsultarPdfNFSe;
     }
 }
 
