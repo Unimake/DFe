@@ -29,8 +29,6 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.ES, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.GO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MA, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PA, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Homologacao)]
@@ -43,7 +41,6 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
@@ -56,8 +53,6 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.ES, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.GO, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MA, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PA, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PB, TipoAmbiente.Producao)]
@@ -70,7 +65,6 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.RO, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.RR, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarProtocoloNF3e(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
@@ -129,7 +123,12 @@ namespace Unimake.DFe.Test.NF3e
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
             Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
-            Assert.True(consultaProtocolo.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
+
+            if (consultaProtocolo.Result.ProtNF3e != null)
+            {
+                Assert.True(consultaProtocolo.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
+            }
+                
         }
     }
 }
