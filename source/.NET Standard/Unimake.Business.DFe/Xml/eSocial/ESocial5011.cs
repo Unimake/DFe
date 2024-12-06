@@ -1,9 +1,12 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -20,7 +23,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_02_00", IsNullable = false)]
-    public class ESocial5011 : XMLBase
+    public class ESocial5011 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Informações das Contribuições Sociais Consolidadas por Contribuinte
@@ -334,6 +337,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
+        /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP.
+        /// </summary>
+        [XmlElement("indTribFolhaPisPasep")]
+#if INTEROP
+        public SimNaoLetra IndTribFolhaPisPasep { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndTribFolhaPisPasep { get; set; }
+#endif
+
+        /// <summary>
         /// Informações prestadas por empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária substituída e não substituída
         /// </summary>
         [XmlElement("infoAtConc")]
@@ -361,6 +374,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != (SimNaoLetra)(-1);
 #else
         public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != null;
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeIndTribFolhaPisPasep() => IndTribFolhaPisPasep != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndTribFolhaPisPasep() => IndTribFolhaPisPasep != null;
 #endif
 
         #endregion ShouldSerialize
@@ -573,6 +592,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("infoCREstab")]
         public List<InfoCREstab> InfoCREstab { get; set; }
+
+        /// <summary>
+        /// Bases da contribuição do PIS/PASEP
+        /// </summary>
+        [XmlElement("basesPisPasep")]
+        public BasesPisPasep BasesPisPasep { get; set; }
 
 #if INTEROP
 
@@ -1896,5 +1921,42 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeVrCRSuspField() => VrCRSusp > 0;
 
         #endregion ShouldSerialize
+    }
+
+    /// <summary>
+    /// Bases da contribuição do PIS/PASEP
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.BasesPisPasep")]
+    [ComVisible(true)]
+#endif
+    public class BasesPisPasep
+    {
+        /// <summary>
+        /// Preencher com a base da contribuição do PIS/PASEP.
+        /// </summary>
+        [XmlIgnore]
+        public double VrBcPisPasep { get; set; }
+
+        [XmlElement("vrBcPisPasep")]
+        public string VrBcPisPasepField
+        {
+            get => VrBcPisPasep.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcPisPasep = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Preencher com a base da contribuição do PIS/PASEP suspensa.
+        /// </summary>
+        [XmlIgnore]
+        public double VrBcPisPasepSusp { get; set; }
+
+        [XmlElement("vrBcPisPasepSusp")]
+        public string VrBcPisPasepSuspField
+        {
+            get => VrBcPisPasepSusp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcPisPasepSusp = Converter.ToDouble(value);
+        }
     }
 }
