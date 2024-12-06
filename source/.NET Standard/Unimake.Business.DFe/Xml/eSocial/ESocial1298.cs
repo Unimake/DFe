@@ -82,23 +82,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerApur { get; set; }
-#else
-        public DateTimeOffset PerApur { get; set; }
-#endif
-
         [XmlElement("perApur")]
-        public string PerApurField
-        {
-            get => PerApur.ToString("yyyy-MM");
-#if INTEROP
-            set => PerApur = DateTime.Parse(value);
-#else
-            set => PerApur = DateTimeOffset.Parse(value);
-#endif
-        }
+        public string PerApur { get; set; }
 
         /// <summary>
         /// Indicativo do tipo de guia.

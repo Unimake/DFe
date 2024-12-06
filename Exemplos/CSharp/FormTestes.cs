@@ -5855,7 +5855,7 @@ namespace TreinamentoDLL
                                     EvtInfoEmpregador = new XmlESocial.EvtInfoEmpregador
                                     {
                                         ID = "ID1235345346546234",
-                                        IdeEvento = new XmlESocial.IdeEvento
+                                        IdeEvento = new XmlESocial.IdeEvento1000
                                         {
                                             ProcEmi = ProcEmiESocial.AppDoEmpregador,
                                             TpAmb = TipoAmbiente.Homologacao,
@@ -6122,16 +6122,34 @@ namespace TreinamentoDLL
             }
         }
 
-        private void BtnAbrirTeleConfigUnidanfe_Click(object sender, EventArgs e)
-        {
+        private void BtnAbrirTeleConfigUnidanfe_Click(object sender, EventArgs e) =>
             //Abrir a tela de configuração do UNIDANFE
             UnidanfeServices.ShowConfigurationScreen(@"d:\testenfe\unidanfe");
-        }
 
-        private void BtnAbrirTelaLicencaUnidanfe_Click(object sender, EventArgs e)
-        {
+        private void BtnAbrirTelaLicencaUnidanfe_Click(object sender, EventArgs e) =>
             //Abrir a tela de licenças do UNIDANFE:
             UnidanfeServices.ShowLicencaScreen(@"d:\testenfe\unidanfe");
+
+        private void BtnConsultaSituacaoCTe_Click(object sender, EventArgs e)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.CTe,
+                CertificadoDigital = CertificadoSelecionado,
+                TipoEmissao = TipoEmissao.Normal
+            };
+
+            var consSitCTe = new ConsSitCTe
+            {
+                TpAmb = TipoAmbiente.Producao,
+                ChCTe = "11111111111111111111111111111111111111111111",
+                Versao = "4.00"
+            };
+
+            var consultaProtocolo = new ServicoCTe.ConsultaProtocolo(consSitCTe, configuracao);
+            consultaProtocolo.Executar();
+
+            var qq = consultaProtocolo.RetornoWSString;
         }
     }
 }

@@ -31,7 +31,9 @@ namespace TreinamentoDLL
         {
             this.BtnConsultaStatusNFe = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnAbrirTeleConfigUnidanfe = new System.Windows.Forms.Button();
             this.BtnDesserializarNFeB2B = new System.Windows.Forms.Button();
+            this.BtnAbrirTelaLicencaUnidanfe = new System.Windows.Forms.Button();
             this.BtnRecuperarXMLNFeDistribuicao2 = new System.Windows.Forms.Button();
             this.BtnRecuperarXMLNFeDistribuicao = new System.Windows.Forms.Button();
             this.BtnEnviarEventoEPEC = new System.Windows.Forms.Button();
@@ -73,6 +75,7 @@ namespace TreinamentoDLL
             this.BtnEnvioLoteRPSAssincrono = new System.Windows.Forms.Button();
             this.BtnEnviarCancNFSe = new System.Windows.Forms.Button();
             this.GroupCTe = new System.Windows.Forms.GroupBox();
+            this.BtnConsultaSituacaoCTe = new System.Windows.Forms.Button();
             this.BtnEventoEPECCTe = new System.Windows.Forms.Button();
             this.BtnEventoCTeEmDesacordo = new System.Windows.Forms.Button();
             this.BtnDesserializandoCTeOS = new System.Windows.Forms.Button();
@@ -114,8 +117,6 @@ namespace TreinamentoDLL
             this.BtnEnviarReinf = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.BtnEnviarEConsultarESocial = new System.Windows.Forms.Button();
-            this.BtnAbrirTeleConfigUnidanfe = new System.Windows.Forms.Button();
-            this.BtnAbrirTelaLicencaUnidanfe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -167,6 +168,17 @@ namespace TreinamentoDLL
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NFe";
             // 
+            // BtnAbrirTeleConfigUnidanfe
+            // 
+            this.BtnAbrirTeleConfigUnidanfe.Location = new System.Drawing.Point(9, 535);
+            this.BtnAbrirTeleConfigUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAbrirTeleConfigUnidanfe.Name = "BtnAbrirTeleConfigUnidanfe";
+            this.BtnAbrirTeleConfigUnidanfe.Size = new System.Drawing.Size(296, 37);
+            this.BtnAbrirTeleConfigUnidanfe.TabIndex = 34;
+            this.BtnAbrirTeleConfigUnidanfe.Text = "Abrir tela configuração UniDANFe";
+            this.BtnAbrirTeleConfigUnidanfe.UseVisualStyleBackColor = true;
+            this.BtnAbrirTeleConfigUnidanfe.Click += new System.EventHandler(this.BtnAbrirTeleConfigUnidanfe_Click);
+            // 
             // BtnDesserializarNFeB2B
             // 
             this.BtnDesserializarNFeB2B.CausesValidation = false;
@@ -178,6 +190,17 @@ namespace TreinamentoDLL
             this.BtnDesserializarNFeB2B.Text = "Desserializacao do XML NFe para B2B";
             this.BtnDesserializarNFeB2B.UseVisualStyleBackColor = true;
             this.BtnDesserializarNFeB2B.Click += new System.EventHandler(this.BtnDesserializarNFeB2B_Click);
+            // 
+            // BtnAbrirTelaLicencaUnidanfe
+            // 
+            this.BtnAbrirTelaLicencaUnidanfe.Location = new System.Drawing.Point(8, 582);
+            this.BtnAbrirTelaLicencaUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnAbrirTelaLicencaUnidanfe.Name = "BtnAbrirTelaLicencaUnidanfe";
+            this.BtnAbrirTelaLicencaUnidanfe.Size = new System.Drawing.Size(296, 37);
+            this.BtnAbrirTelaLicencaUnidanfe.TabIndex = 35;
+            this.BtnAbrirTelaLicencaUnidanfe.Text = "Abrir tela licenças UniDANFe";
+            this.BtnAbrirTelaLicencaUnidanfe.UseVisualStyleBackColor = true;
+            this.BtnAbrirTelaLicencaUnidanfe.Click += new System.EventHandler(this.BtnAbrirTelaLicencaUnidanfe_Click);
             // 
             // BtnRecuperarXMLNFeDistribuicao2
             // 
@@ -674,6 +697,7 @@ namespace TreinamentoDLL
             // 
             // GroupCTe
             // 
+            this.GroupCTe.Controls.Add(this.BtnConsultaSituacaoCTe);
             this.GroupCTe.Controls.Add(this.BtnEventoEPECCTe);
             this.GroupCTe.Controls.Add(this.BtnEventoCTeEmDesacordo);
             this.GroupCTe.Controls.Add(this.BtnDesserializandoCTeOS);
@@ -694,6 +718,18 @@ namespace TreinamentoDLL
             this.GroupCTe.TabIndex = 8;
             this.GroupCTe.TabStop = false;
             this.GroupCTe.Text = "CTe e CTeOS";
+            // 
+            // BtnConsultaSituacaoCTe
+            // 
+            this.BtnConsultaSituacaoCTe.CausesValidation = false;
+            this.BtnConsultaSituacaoCTe.Location = new System.Drawing.Point(12, 616);
+            this.BtnConsultaSituacaoCTe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnConsultaSituacaoCTe.Name = "BtnConsultaSituacaoCTe";
+            this.BtnConsultaSituacaoCTe.Size = new System.Drawing.Size(296, 35);
+            this.BtnConsultaSituacaoCTe.TabIndex = 28;
+            this.BtnConsultaSituacaoCTe.Text = "Consulta Situação";
+            this.BtnConsultaSituacaoCTe.UseVisualStyleBackColor = true;
+            this.BtnConsultaSituacaoCTe.Click += new System.EventHandler(this.BtnConsultaSituacaoCTe_Click);
             // 
             // BtnEventoEPECCTe
             // 
@@ -1168,28 +1204,6 @@ namespace TreinamentoDLL
             this.BtnEnviarEConsultarESocial.UseVisualStyleBackColor = true;
             this.BtnEnviarEConsultarESocial.Click += new System.EventHandler(this.BtnEnviarEConsultarESocial_Click);
             // 
-            // BtnAbrirTeleConfigUnidanfe
-            // 
-            this.BtnAbrirTeleConfigUnidanfe.Location = new System.Drawing.Point(9, 535);
-            this.BtnAbrirTeleConfigUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnAbrirTeleConfigUnidanfe.Name = "BtnAbrirTeleConfigUnidanfe";
-            this.BtnAbrirTeleConfigUnidanfe.Size = new System.Drawing.Size(296, 37);
-            this.BtnAbrirTeleConfigUnidanfe.TabIndex = 34;
-            this.BtnAbrirTeleConfigUnidanfe.Text = "Abrir tela configuração UniDANFe";
-            this.BtnAbrirTeleConfigUnidanfe.UseVisualStyleBackColor = true;
-            this.BtnAbrirTeleConfigUnidanfe.Click += new System.EventHandler(this.BtnAbrirTeleConfigUnidanfe_Click);
-            // 
-            // BtnAbrirTelaLicencaUnidanfe
-            // 
-            this.BtnAbrirTelaLicencaUnidanfe.Location = new System.Drawing.Point(8, 582);
-            this.BtnAbrirTelaLicencaUnidanfe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnAbrirTelaLicencaUnidanfe.Name = "BtnAbrirTelaLicencaUnidanfe";
-            this.BtnAbrirTelaLicencaUnidanfe.Size = new System.Drawing.Size(296, 37);
-            this.BtnAbrirTelaLicencaUnidanfe.TabIndex = 35;
-            this.BtnAbrirTelaLicencaUnidanfe.Text = "Abrir tela licenças UniDANFe";
-            this.BtnAbrirTelaLicencaUnidanfe.UseVisualStyleBackColor = true;
-            this.BtnAbrirTelaLicencaUnidanfe.Click += new System.EventHandler(this.BtnAbrirTelaLicencaUnidanfe_Click);
-            // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1312,6 +1326,7 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnEventoEPECCTe;
         private System.Windows.Forms.Button BtnAbrirTeleConfigUnidanfe;
         private System.Windows.Forms.Button BtnAbrirTelaLicencaUnidanfe;
+        private System.Windows.Forms.Button BtnConsultaSituacaoCTe;
     }
 }
 

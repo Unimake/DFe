@@ -166,7 +166,7 @@ namespace Unimake.DFe.Test.ESocial
                                         {
                                             IndRetif = IndicativoRetificacao.ArquivoOriginal,
                                             IndApuracao = IndApuracao.Mensal,
-                                            PerApur = DateTime.Parse("2017-10"),
+                                            PerApur = "2017-10",
                                             TpAmb = TipoAmbiente.Homologacao,
                                             ProcEmi = ProcEmiESocial.AppDoEmpregador,
                                             VerProc = "1.0",
