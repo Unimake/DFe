@@ -11,8 +11,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
 
-
-
 namespace Unimake.Business.DFe.Xml.ESocial
 {
     /// <summary>
