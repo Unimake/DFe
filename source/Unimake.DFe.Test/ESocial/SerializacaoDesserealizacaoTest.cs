@@ -693,15 +693,18 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2500_evtProcTrab-esocial-evt.xml")]
-        public void SerializacaoDesserializacaoESocial2500(string arqXML)
+        [InlineData(@"..\..\..\ESocial\Resources\2500_evtProcTrab-esocial-evt.xml", "v_S_01_02_00")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2500_evtProcTrab-esocial-evt.xml", "v_S_01_03_00")]
+        public void SerializacaoDesserializacaoESocial2500(string arqXML, string versaoSchema)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Unimake.Business.DFe.Xml.ESocial.ESocial2500>(doc);
+            var eSocial = new Business.DFe.Xml.ESocial.ESocial2500();
+            var xml = eSocial.LerXML<Business.DFe.Xml.ESocial.ESocial2500>(doc);
+            xml.VersaoSchema = versaoSchema;
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");

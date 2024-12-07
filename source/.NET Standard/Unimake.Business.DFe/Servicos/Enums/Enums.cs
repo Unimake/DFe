@@ -13111,10 +13111,22 @@ namespace Unimake.Business.DFe.Servicos
         DecisaoSemRepercussaoTributariaFgts = 2,
 
         /// <summary>
-        /// 3 - Decisão com repercussão exclusiva para declaração de rendimentos para fins de Imposto de Renda
+        /// 3 - Decisão com repercussão exclusiva para declaração de rendimentos para fins de Imposto de Renda com rendimentos informados em S-2501
         /// </summary>
         [XmlEnum("3")]
-        DecisaoRepercussaoDeclaracaoRendimentosIR = 3
+        DecisaoComRepercussaoExclusivaDeclaracaoRendimentosIR = 3,
+
+        /// <summary>
+        /// 4 - Decisão com repercussão exclusiva para declaração de rendimentos para fins de Imposto de Renda com pagamento através de depósito judicial
+        /// </summary>
+        [XmlEnum("4")]
+        DecisaoComRepercusaoExclusivaDeclaracaoRendimentoIRPagtoJudicial = 4,
+
+        /// <summary>
+        /// 5 - Decisão com repercussão tributária e/ou FGTS com pagamento através de depósito judicial
+        /// </summary>
+        [XmlEnum("5")]
+        DecisaoComRepercusaoTributariaFGTSPagtoJudicial = 5
     }
 
     #endregion

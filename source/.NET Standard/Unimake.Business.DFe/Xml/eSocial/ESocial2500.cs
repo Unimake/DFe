@@ -1,13 +1,15 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.EFDReinf;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -21,7 +23,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtProcTrab/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2500 : XMLBase
+    public class ESocial2500 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Processo Trabalhista
@@ -106,7 +108,42 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeResp")]
     [ComVisible(true)]
 #endif
-    public class IdeResp : IdeEmpregador { }
+    public class IdeResp : IdeEmpregador
+    {
+        /// <summary>
+        /// Preencher com a data de admissão do trabalhador no empregador de origem(responsável direto) quando se tratar de vínculo que não foi informado no eSocial. Em caso de TSVE sem informação de matrícula no evento S-2300, informar a data de início.
+        /// </summary>
+        [XmlIgnore]
+#if INTEROP
+        public DateTime DtAdmRespDir { get; set; }
+#else
+        public DateTimeOffset DtAdmRespDir { get; set; }
+#endif
+
+        [XmlElement("dtAdmRespDir")]
+        public string DtAdmRespDirField
+        {
+            get => DtAdmRespDir.ToString("yyyy-MM-dd");
+#if INTEROP
+            set => DtAdmRespDir = DateTime.Parse(value);
+#else
+            set => DtAdmRespDir = DateTimeOffset.Parse(value);
+#endif
+        }
+
+        /// <summary>
+        ///  Informar a matrícula no empregador de origem (responsável direto).
+        /// </summary>
+        [XmlElement("matRespDir")]
+        public string MatRespDir { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDtAdmRespDirField() => DtAdmRespDir > DateTime.MinValue;
+        public bool ShouldSerializeMatRespDir() => !string.IsNullOrEmpty(MatRespDir);
+
+        #endregion ShouldSerialize
+    }
 
     /// <summary>
     /// Informações do processo judicial ou de demanda submetida à CCP ou ao NINTER
@@ -1589,6 +1626,18 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("baseMudCateg")]
         public BaseMudCateg BaseMudCateg { get; set; }
+
+        /// <summary>
+        /// Informações relativas ao trabalho intermitente.
+        /// </summary>
+        [XmlElement("infoInterm")]
+        public string InfoInterm { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeInfoInterm() => !string.IsNullOrWhiteSpace(InfoInterm);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
