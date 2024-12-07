@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtAdmissao/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2200 : XMLBase
+    public class ESocial2200 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Cadastramento Inicial do Vínculo e Admissão/Ingresso de Trabalhador

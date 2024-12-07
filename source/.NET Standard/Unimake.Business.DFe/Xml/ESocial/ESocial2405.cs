@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCdBenefAlt/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2405 : XMLBase
+    public class ESocial2405 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Cadastro de Beneficiário - Entes Públicos - Alteração.

@@ -8,8 +8,8 @@
 		<consultaEvtsTabela>
 			<tpEvt>str123</tpEvt>
 			<chEvt>str1234</chEvt>
-			<dtIni>2018-10-02</dtIni>
-			<dtFim>2018-10-02</dtFim>
+			<dtIni>2018-10-02T00:00:00</dtIni>
+			<dtFim>2018-10-02T00:00:00</dtFim>
 		</consultaEvtsTabela>
 	</consultaIdentificadoresEvts>
 </eSocial>

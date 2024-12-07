@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtRmnRPPS/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1202 : XMLBase
+    public class ESocial1202 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Remuneração de Servidor vinculado ao RPPS

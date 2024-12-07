@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesFGTS/v_S_01_02_00", IsNullable = false)]
 
-    public class ESocial5003 : XMLBase
+    public class ESocial5003 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Informações do FGTS por Trabalhador

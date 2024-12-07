@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTabLotacao/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1020 : XMLBase
+    public class ESocial1020 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Tabela de Lotações Tributárias

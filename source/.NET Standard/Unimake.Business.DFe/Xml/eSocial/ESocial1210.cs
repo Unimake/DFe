@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtPgtos/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1210 : XMLBase
+    public class ESocial1210 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Pagamentos de Rendimentos do Trabalho

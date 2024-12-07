@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtComProd/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1260 : XMLBase
+    public class ESocial1260 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Comercialização da Produção Rural Pessoa Física

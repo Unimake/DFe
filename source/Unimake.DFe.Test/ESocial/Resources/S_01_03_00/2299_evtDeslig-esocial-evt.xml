@@ -21,7 +21,7 @@
 			<indPagtoAPI>S</indPagtoAPI>
 			<dtProjFimAPI>2012-12-13</dtProjFimAPI>
 			<pensAlim>1</pensAlim>
-			<percAliment>1</percAliment>
+			<percAliment>1.00</percAliment>
 			<vrAlim>123.45</vrAlim>
 			<nrProcTrab>00000000000000000000</nrProcTrab>
 			<infoInterm>

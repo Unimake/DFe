@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVAltContr/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2306 : XMLBase
+    public class ESocial2306 : XMLBaseESocial
     {
         /// <summary>
         /// Evento TSVE - Alteração Contratual

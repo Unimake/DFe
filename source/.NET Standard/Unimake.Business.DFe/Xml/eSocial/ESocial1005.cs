@@ -23,7 +23,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTabEstab/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1005 : XMLBase
+    public class ESocial1005 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Tabela de Estabelecimentos

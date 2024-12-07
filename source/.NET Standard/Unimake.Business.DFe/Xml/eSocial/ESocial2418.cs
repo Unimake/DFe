@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtReativBen/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2418 : XMLBase
+    public class ESocial2418 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Reativação de Benefício

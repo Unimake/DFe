@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_02_00", IsNullable = false)]
-    public class ESocial5002 : XMLBase
+    public class ESocial5002 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Imposto de Renda Retido na Fonte por Trabalhador

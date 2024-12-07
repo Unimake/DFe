@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtToxic/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2221 : XMLBase
+    public class ESocial2221 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Exame Toxicológico do Motorista Profissional Empregado

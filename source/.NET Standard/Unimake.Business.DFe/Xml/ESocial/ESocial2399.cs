@@ -22,7 +22,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTSVTermino/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2399 : XMLBase
+    public class ESocial2399 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Trabalhador Sem Vínculo de Emprego/Estatutário - Término

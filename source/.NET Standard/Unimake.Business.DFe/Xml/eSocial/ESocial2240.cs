@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExpRisco/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2240 : XMLBase
+    public class ESocial2240 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Condições Ambientais do Trabalho - Agentes Nocivos

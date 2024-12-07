@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBaixa/v_S_01_02_00", IsNullable = false)]
-    public class ESocial8299 : XMLBase
+    public class ESocial8299 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Baixa Judicial do Vínculo 

@@ -21,7 +21,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTabProcesso/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1070 : XMLBase
+    public class ESocial1070 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Tabela de Processos

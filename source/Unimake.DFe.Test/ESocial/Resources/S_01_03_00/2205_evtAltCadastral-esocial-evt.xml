@@ -47,18 +47,16 @@
 					<observacao>str1234</observacao>
 				</infoDeficiencia>
 				<dependente>
-					<tpDep>01</tpDep>
 					<nmDep>str1234</nmDep>
 					<dtNascto>2012-12-13</dtNascto>
 					<cpfDep>12345678901</cpfDep>
-					<sexoDep>M</sexoDep>
 					<depIRRF>S</depIRRF>
 					<depSF>S</depSF>
 					<incTrab>S</incTrab>
 				</dependente>
 				<contato>
-					<fonePrinc>str12340</fonePrinc>
-					<emailPrinc>str1234</emailPrinc>
+					<fonePrinc>12345678901</fonePrinc>
+					<emailPrinc>teste@teste.com</emailPrinc>
 				</contato>
 			</dadosTrabalhador>
 		</alteracao>

@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtMonit/v_S_01_02_00", IsNullable = false)]
-    public class ESocial2220 : XMLBase
+    public class ESocial2220 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Monitoramento da Saúde do Trabalhador

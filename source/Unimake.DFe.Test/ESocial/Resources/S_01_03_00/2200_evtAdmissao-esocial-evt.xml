@@ -93,7 +93,7 @@
 				</infoCeletista>
 			</infoRegimeTrab>
 			<infoContrato>
-				<codCateg>123</codCateg>
+				<codCateg>101</codCateg>
 				<remuneracao>
 					<vrSalFx>123.45</vrSalFx>
 					<undSalFixo>1</undSalFixo>

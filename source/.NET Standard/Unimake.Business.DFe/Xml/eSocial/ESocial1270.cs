@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtContratAvNP/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1270 : XMLBase
+    public class ESocial1270 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Contratação de Trabalhadores Avulsos Não Portuários
