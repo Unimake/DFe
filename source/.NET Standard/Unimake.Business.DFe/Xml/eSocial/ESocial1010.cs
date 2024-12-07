@@ -1,8 +1,11 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 
@@ -18,7 +21,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTabRubrica/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1010 : XMLBase
+    public class ESocial1010 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Tabela de Rubricas
@@ -255,6 +258,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
+        /// Código de incidência da rubrica para o PIS/PASEP sobre a folha de salários a ser utilizado quando indTribFolhaPisPasep = [S] em S-1000.
+        /// </summary>
+        [XmlElement("codIncPisPasep")]
+#if INTEROP
+        public CodigoIncidenciaDaRubrica? CodIncPisPasep { get; set; } = (CodigoIncidenciaDaRubrica)(-1);
+#else
+        public CodigoIncidenciaDaRubrica? CodIncPisPasep { get; set; }
+#endif
+
+        /// <summary>
         /// Informar se a rubrica compõe o teto remuneratório específico (art. 37, XI, da CF/1988).
         /// Validação: Preenchimento obrigatório se a natureza jurídica do declarante for Administração Pública (grupo [1]).
         /// </summary>
@@ -395,6 +408,50 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Retorna a quantidade de elementos existentes na lista IdeProcessoFGTS
         /// </summary>
         public int GetIdeProcessoFGTSCount => (IdeProcessoFGTS != null ? IdeProcessoFGTS.Count : 0);
+
+#endif
+
+        /// <summary>
+        /// Caso a empresa possua processo judicial com decisão/sentença favorável, determinando a não incidência de contribuição para o PIS/PASEP relativo à rubrica identificada no evento, as informações deverão ser incluídas neste grupo, e o detalhamento do processo deverá ser efetuado através de evento específico na Tabela de Processos(S-1070).
+        /// </summary>
+        [XmlElement("ideProcessoPisPasep")]
+        public List<IdeProcessoPisPasep> IdeProcessoPisPasep { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddIdeProcessoPisPasep(IdeProcessoPisPasep item)
+        {
+            if (IdeProcessoPisPasep == null)
+            {
+                IdeProcessoPisPasep = new List<IdeProcessoPisPasep>();
+            }
+
+            IdeProcessoPisPasep.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista IdeProcessoPisPasep (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da IdeProcessoPisPasep</returns>
+        public IdeProcessoPisPasep GetIdeProcessoPisPasep(int index)
+        {
+            if ((IdeProcessoPisPasep?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return IdeProcessoPisPasep[index];
+        }
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista IdeProcessoPisPasep
+        /// </summary>
+        public int GetIdeProcessoPisPasepCount => (IdeProcessoPisPasep != null ? IdeProcessoPisPasep.Count : 0);
+
 #endif
 
         #region ShouldSerialize
@@ -412,6 +469,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public bool ShouldSerializeTetoRemun() => TetoRemun != null;
 #endif
+
+#if INTEROP
+        public bool ShouldSerializeCodIncPisPasep() => CodIncPisPasep != (CodigoIncidenciaDaRubrica)(-1);
+#else
+        public bool ShouldSerializeCodIncPisPasep() => CodIncPisPasep != null;
+#endif
+
 
         #endregion
     }
@@ -544,5 +608,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("ideRubrica")]
         public IdeRubrica IdeRubrica { get; set; }
+    }
+
+    /// <summary>
+    /// Caso a empresa possua processo judicial com decisão/sentença favorável, determinando a não incidência de contribuição para o PIS/PASEP relativo à rubrica identificada no evento, as informações deverão ser incluídas neste grupo, e o detalhamento do processo deverá ser efetuado através de evento específico na Tabela de Processos(S-1070).
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeProcessoPisPasep")]
+    [ComVisible(true)]
+#endif
+    public class IdeProcessoPisPasep
+    {
+        /// <summary>
+        /// Informar um número de processo judicial cadastrado  através do evento S-1070, cujo indMatProc seja igual a [1].
+        /// </summary>
+        [XmlElement("nrProc")]
+        public string NrProc { get; set; }
+
+        /// <summary>
+        /// Código do indicativo da suspensão, atribuído pelo empregador em S-1070.
+        /// </summary>
+        [XmlElement("codSusp")]
+        public string CodSusp { get; set; }
     }
 }

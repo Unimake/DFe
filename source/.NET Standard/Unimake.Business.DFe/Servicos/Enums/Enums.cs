@@ -9128,9 +9128,9 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
-    #region ESocial
+    #region ESocial    
 
-    #region 
+    #region TipoValorApuracaoContribuicao
 
     /// <summary>
     /// Tipo de valor que influi na apuração da contribuição devida
