@@ -1,9 +1,11 @@
 ﻿#pragma warning disable CS1591
-using System;
-using System.Xml.Serialization;
+
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+
+using System;
+using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -17,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtExcProcTrab/v_S_01_02_00", IsNullable = false)]
-    public class ESocial3500 : XMLBase
+    public class ESocial3500 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Exclusão de Eventos - Processo Trabalhista
@@ -161,14 +163,21 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => PerApurPgto = DateTimeOffset.Parse(value);
 #endif
         }
+
+        /// <summary>
+        /// Número sequencial atribuído pela empresa a cada conjunto de dados de tributos decorrentes de processo trabalhista, quando for necessário enviar o mesmo processo em múltiplos S-2501, para o mesmo { perApurPgto }.
+        /// </summary>
+        [XmlElement("ideSeqProc")]
+        public string IdeSeqProc { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeCpfTrab() => !string.IsNullOrEmpty(CpfTrab);
 
         public bool ShouldSerializePerApurPgtoField() => PerApurPgto > DateTime.MinValue;
 
+        public bool ShouldSerializeIdeSeqProc() => !string.IsNullOrEmpty(IdeSeqProc);
+
         #endregion ShouldSerialize
-
     }
-
 }
