@@ -1,16 +1,17 @@
 ﻿#pragma warning disable CS1591
-using System;
-using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
-using System.Globalization;
-using Unimake.Business.DFe.Utility;
-
 
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Xml;
+using System.Xml.Serialization;
+using Unimake.Business.DFe.Utility;
+
+
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -24,7 +25,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtTribProcTrab/v_S_01_02_00", IsNullable = false)]
-    public class ESocial5501 : XMLBase
+    public class ESocial5501 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Informações Consolidadas de Tributos Decorrentes de Processo Trabalhista
