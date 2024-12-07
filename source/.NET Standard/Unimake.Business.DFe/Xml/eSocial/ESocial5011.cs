@@ -330,6 +330,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indicador de tributação sobre a folha de pagamento - PIS e 
         /// </summary>
         [XmlElement("indTribFolhaPisCofins")]
+        [Obsolete("Propriedade obsoleta, só é aceita na versão 01.02.00 do eSocial. Nas versões superiores ela foi substituída pela propriedade IndTribFolhaPisPasep.", false)]
 #if INTEROP
         public SimNaoLetra IndTribFolhaPisCofins { get; set; } = (SimNaoLetra)(-1);
 #else
@@ -337,7 +338,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
-        /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP.
+        /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP. Preenchimento exclusivo para o empregador em situação de tributação de PIS e PASEP sobre a folha de pagamento.
         /// </summary>
         [XmlElement("indTribFolhaPisPasep")]
 #if INTEROP

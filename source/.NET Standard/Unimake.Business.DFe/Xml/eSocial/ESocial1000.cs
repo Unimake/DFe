@@ -1,11 +1,12 @@
 ﻿#pragma warning disable CS1591
 
-using System;
-using System.Xml.Serialization;
-using Unimake.Business.DFe.Servicos;
 #if INTEROP
 using System.Runtime.InteropServices;
 #endif
+
+using System;
+using System.Xml.Serialization;
+using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -20,7 +21,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1000 : XMLBase
+    public class ESocial1000 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Informações do Empregador 
@@ -241,7 +242,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public IndicativoOpcaoProdutorRural IndOpcCP { get; set; } = (IndicativoOpcaoProdutorRural)(-1);
 #else
-        public IndicativoOpcaoProdutorRural? IndOpcCP {get; set; }
+        public IndicativoOpcaoProdutorRural? IndOpcCP { get; set; }
 #endif
         /// <summary>
         /// Indicativo de microempresa - ME ou empresa de pequeno porte - EPP para permissão de acesso ao módulo simplificado
@@ -275,10 +276,23 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP
         /// </summary>
         [XmlElement("indTribFolhaPisCofins")]
+        [Obsolete("Propriedade obsoleta, só é aceita na versão 01.02.00 do eSocial. Nas versões superiores ela foi substituída pela propriedade IndTribFolhaPisPasep.", false)]
+
 #if INTEROP
         public SimNaoLetra IndTribFolhaPisCofins { get; set; } = (SimNaoLetra)(-1);
 #else
         public SimNaoLetra? IndTribFolhaPisCofins { get; set; }
+#endif
+
+        /// <summary>
+        /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP. Preenchimento exclusivo para o empregador em situação de tributação de PIS e PASEP sobre a folha de pagamento.
+        /// </summary>
+        [XmlElement("indTribFolhaPisPasep")]
+
+#if INTEROP
+        public SimNaoLetra IndTribFolhaPisPasep { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndTribFolhaPisPasep { get; set; }
 #endif
 
         /// <summary>
@@ -323,6 +337,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != (SimNaoLetra)(-1);
 #else
         public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != null;
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeIndTribFolhaPisPasep() => IndTribFolhaPisPasep != (SimNaoLetra)(-1);
+#else
+        public bool ShouldSerializeIndTribFolhaPisPasep() => IndTribFolhaPisPasep != null;
 #endif
 
         #endregion ShouldSerialize
