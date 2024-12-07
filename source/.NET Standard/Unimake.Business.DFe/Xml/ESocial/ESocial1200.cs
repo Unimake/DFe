@@ -1,4 +1,9 @@
 ﻿#pragma warning disable CS1591
+
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,10 +11,6 @@ using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
-#if INTEROP
-using System.Runtime.InteropServices;
-#endif
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -23,7 +24,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     [Serializable()]
     [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtRemun/v_S_01_02_00", IsNullable = false)]
-    public class ESocial1200 : XMLBase
+    public class ESocial1200 : XMLBaseESocial
     {
         /// <summary>
         /// Evento Remuneração de Trabalhador vinculado ao RGPS
@@ -151,7 +152,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// posterior ao início da obrigatoriedade dos eventos
         /// periódicos para o empregador.
         /// </summary>
-        [XmlElement("perApur")]     
+        [XmlElement("perApur")]
         public string PerApur { get; set; }
 
         /// <summary>
@@ -956,7 +957,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.ItensRemun1200")]
     [ComVisible(true)]
 #endif
-    public class ItensRemun1200 : ItensRemun {}
+    public class ItensRemun1200 : ItensRemun { }
 
     /// <summary>
     /// Grau de exposição a agentes nocivos 
@@ -1258,7 +1259,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEstabLotAnt")]
     [ComVisible(true)]
-#endif    
+#endif
     public class IdeEstabLotAnt
     {
         /// <summary>
@@ -1437,7 +1438,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoComplCont")]
     [ComVisible(true)]
-#endif    
+#endif
     public class InfoComplCont
     {
         /// <summary>
