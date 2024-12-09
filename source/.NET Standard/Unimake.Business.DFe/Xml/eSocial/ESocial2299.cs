@@ -1,9 +1,12 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -966,6 +969,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndApurIR? IndApurIR { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações de desconto do empréstimo em folha
+        /// </summary>
+        [XmlElement("descFolha")]
+        public DescFolha DescFolha { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
@@ -979,6 +988,47 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
         #endregion ShouldSerialize
 
+    }
+
+    /// <summary>
+    /// Informações de desconto do empréstimo em folha
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DescFolha")]
+    [ComVisible(true)]
+#endif
+    public class DescFolha
+    {
+        /// <summary>
+        /// Indicativo do tipo de desconto
+        /// </summary>
+        [XmlElement("tpDesc")]
+        public TipoDesconto TpDesc { get; set; }
+
+        /// <summary>
+        /// Código da Instituição Financeira concedente do empréstimo
+        /// </summary>
+        [XmlElement("instFinanc")]
+        public string InstFinanc { get; set; }
+
+        /// <summary>
+        /// Número do contrato referente ao empréstimo
+        /// </summary>
+        [XmlElement("nrDoc")]
+        public string NrDoc { get; set; }
+
+        /// <summary>
+        /// Outras informações do desconto
+        /// </summary>
+        [XmlElement("observacao")]
+        public string Observacao { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeObservacao() => !string.IsNullOrEmpty(Observacao);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>

@@ -68,6 +68,12 @@
 								<fatorRubr>1.01</fatorRubr>
 								<vrRubr>1.01</vrRubr>
 								<indApurIR>0</indApurIR>
+								<descFolha>
+									<tpDesc>1</tpDesc>
+									<instFinanc>123</instFinanc>
+									<nrDoc>123456789</nrDoc>
+									<observacao>Teste do grupo novo</observacao>
+								</descFolha>
 							</detVerbas>
 							<detVerbas>
 								<codRubr>codRubr2</codRubr>
@@ -84,6 +90,12 @@
 								<fatorRubr>1.01</fatorRubr>
 								<vrRubr>1.01</vrRubr>
 								<indApurIR>0</indApurIR>
+								<descFolha>
+									<tpDesc>1</tpDesc>
+									<instFinanc>123</instFinanc>
+									<nrDoc>123456789</nrDoc>
+									<observacao>Teste do grupo novo</observacao>
+								</descFolha>
 							</detVerbas>
 							<infoAgNocivo>
 								<grauExp>1</grauExp>
