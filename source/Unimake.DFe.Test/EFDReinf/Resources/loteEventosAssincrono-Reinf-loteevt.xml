@@ -36,29 +36,29 @@
 									<contato>
 										<nmCtt>nmCtt1</nmCtt>
 										<cpfCtt>00000000000</cpfCtt>
-										<foneFixo>foneFixo1</foneFixo>
-										<foneCel>foneCel1</foneCel>
+										<foneFixo>4499999999</foneFixo>
+										<foneCel>4499999999</foneCel>
 										<email>email1</email>
 									</contato>
 									<softHouse>
 										<cnpjSoftHouse>00000000000000</cnpjSoftHouse>
 										<nmRazao>nmRazao1</nmRazao>
 										<nmCont>nmCont1</nmCont>
-										<telefone>telefone1</telefone>
+										<telefone>4499999999</telefone>
 										<email>email1</email>
 									</softHouse>
 									<softHouse>
 										<cnpjSoftHouse>00000000000000</cnpjSoftHouse>
 										<nmRazao>nmRazao2</nmRazao>
 										<nmCont>nmCont2</nmCont>
-										<telefone>telefone2</telefone>
+										<telefone>4499999999</telefone>
 										<email>email2</email>
 									</softHouse>
 									<softHouse>
 										<cnpjSoftHouse>00000000000000</cnpjSoftHouse>
 										<nmRazao>nmRazao3</nmRazao>
 										<nmCont>nmCont3</nmCont>
-										<telefone>telefone3</telefone>
+										<telefone>4499999999</telefone>
 										<email>email3</email>
 									</softHouse>
 									<infoEFR>
