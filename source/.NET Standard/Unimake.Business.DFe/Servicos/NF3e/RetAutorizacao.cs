@@ -178,7 +178,6 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         public override void Executar()
         {
             base.Executar();
-
             //MudarConteudoTagRetornoXMotivo();
         }
 
@@ -253,6 +252,20 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         {
             throw new NotImplementedException();
         }
+
+#if INTEROP
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="interopType"></param>
+        /// <param name="configuracao"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Executar(RetConsReciNF3e interopType, Configuracao configuracao)
+        {
+            base.Executar();
+        }
+
+#endif
 
         #endregion Public Methods
     }
