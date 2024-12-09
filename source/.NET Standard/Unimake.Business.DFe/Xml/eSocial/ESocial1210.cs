@@ -1,9 +1,12 @@
 ﻿#pragma warning disable CS1591
 
+#if INTEROP
+using System.Runtime.InteropServices;
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -75,7 +78,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.IdeEvento1210")]
     [ComVisible(true)]
 #endif
-    public class IdeEvento1210 
+    public class IdeEvento1210
     {
         /// <summary>
         /// Informe [1] para arquivo original ou [2] para arquivo de retificação.
@@ -102,7 +105,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlIgnore]
 #if INTEROP
         public DateTime PerApur { get; set; }
-#else        
+#else
         public DateTimeOffset PerApur { get; set; }
 #endif
 
@@ -224,7 +227,44 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// deduções e/ou isenções, etc., de acordo com a legislação aplicada ao imposto de renda
         /// </summary>
         [XmlElement("infoIRComplem")]
-        public InfoIRComplem InfoIRComplem { get; set; }
+        public List<InfoIRComplem> InfoIRComplem { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddInfoIRComplem(InfoIRComplem item)
+        {
+            if (InfoIRComplem == null)
+            {
+                InfoIRComplem = new List<InfoIRComplem>();
+            }
+
+            InfoIRComplem.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoIRComplem (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoIRComplem</returns>
+        public InfoIRComplem GetInfoIRComplem(int index)
+        {
+            if ((InfoIRComplem?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return InfoIRComplem[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoIRComplem
+        /// </summary>
+        public int GetInfoIRComplemCount => (InfoIRComplem != null ? InfoIRComplem.Count : 0);
+#endif
     }
 
 #if INTEROP
@@ -475,6 +515,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => DtLaudo = DateTimeOffset.Parse(value);
 #endif
         }
+
+        /// <summary>
+        /// Informações complementares de períodos anteriores
+        /// </summary>
+        [XmlElement("perAnt")]
+        public PerAnt PerAnt { get; set; }
 
         /// <summary>
         /// Informações de dependentes não cadastrados pelo S-2200/S-2205/S-2300/S-2400/S-2405
@@ -1030,17 +1076,29 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string CnpjEntidPC { get; set; }
 
         /// <summary>
-        /// Valor da dedução mensal relativa a previdência complementar.
-        /// Validação: Deve ser maior que 0 (zero).
+        /// Valor da dedução mensal relativa a previdência complementar. Validação: Deve ser maior que 0 (zero).
         /// </summary>
         [XmlIgnore]
         public double VlrDedPC { get; set; }
 
         [XmlElement("vlrDedPC")]
-        public string VlrDedPCEField
+        public string VlrDedPCField
         {
             get => VlrDedPC.ToString("F2", CultureInfo.InvariantCulture);
             set => VlrDedPC = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da dedução do 13º Salário relativa a previdência complementar.
+        /// </summary>
+        [XmlIgnore]
+        public double VlrDedPC13 { get; set; }
+
+        [XmlElement("vlrDedPC13")]
+        public string VlrDedPC13Field
+        {
+            get => VlrDedPC13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedPC13 = Converter.ToDouble(value);
         }
 
         /// <summary>
@@ -1058,9 +1116,28 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => VlrPatrocFunp = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor da contribuição do 13º Salário do ente público patrocinador da Fundação de Previdência Complementar do Servidor Público (Funpresp).        
+        /// </summary>
+        [XmlIgnore]
+        public double VlrPatrocFunp13 { get; set; }
+
+        [XmlElement("vlrPatrocFunp13")]
+        public string VlrPatrocFunp13Field
+        {
+            get => VlrPatrocFunp13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPatrocFunp13 = Converter.ToDouble(value);
+        }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeVlrPatrocFunpField() => VlrPatrocFunp > 0;
+
+        public bool ShouldSerializeVlrPatrocFunp13Field() => VlrPatrocFunp13 > 0;
+
+        public bool ShouldSerializeVlrDedPCFieldField() => VlrDedPC > 0;
+
+        public bool ShouldSerializeVlrDedPC13FieldField() => VlrDedPC13 > 0;
 
         #endregion ShouldSerialize
     }
@@ -1794,4 +1871,26 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
     public class DetReembDep : DetReembTit { }
 
+    /// <summary>
+    /// Informações complementares de períodos anteriores
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PerAnt")]
+    [ComVisible(true)]
+#endif
+    public class PerAnt
+    {
+        /// <summary>
+        /// Informar perApur do S-1210 cujo infoIRComplem será alterado.
+        /// </summary>
+        [XmlElement("perRefAjuste")]
+        public string PerRefAjuste { get; set; }
+
+        /// <summary>
+        /// Número do recibo do S-1210 original cujas informações de infoIRComplem serão alteradas.
+        /// </summary>
+        [XmlElement("nrRec1210Orig")]
+        public string NrRec1210Orig { get; set; }
+    }
 }
