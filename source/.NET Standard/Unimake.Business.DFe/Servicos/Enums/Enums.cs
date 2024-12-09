@@ -13828,6 +13828,22 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion tpValorProcTrab
 
+    #region TpDesc - eSocial
+
+    /// <summary>
+    /// Indicativo do tipo de desconto
+    /// </summary>
+    public enum TipoDesconto
+    {
+        /// <summary>
+        /// eConsignado 
+        /// </summary>
+        [XmlEnum("1")]
+        EConsignado = 1,
+    }
+
+    #endregion TpDesc - eSocial
+
     #endregion ESocial
 
     #region NF3e
