@@ -165,6 +165,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
         /// <summary>
+        /// Totalização dos demonstrativos de valores devidos
+        /// </summary>
+        [XmlElement("totInfoIR")]
+        public TotInfoIR TotInfoIR { get; set; }
+
+        /// <summary>
         /// Informações complementares para a DIRF ou para a DAA, com a legislação aplicada ao imposto de renda
         /// </summary>
         [XmlElement("infoIRComplem")]
@@ -414,6 +420,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         }
 
         /// <summary>
+        /// Descrição do rendimento não tributável ou isento do IRRF
+        /// </summary>
+        [XmlElement("descRendimento")]
+        public string DescRendimento { get; set; }
+
+        /// <summary>
         /// Informações complementares - Demais rendimentos com exigibilidade suspensa decorrentes de decisão judicial aplicável à rubrica
         /// </summary>
         [XmlElement("infoProcJudRub")]
@@ -455,6 +467,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         public int GetInfoProcJudRubCount => (InfoProcJudRub != null ? InfoProcJudRub.Count : 0);
 #endif
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDescRendimento() => !string.IsNullOrEmpty(DescRendimento);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -513,6 +531,58 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// na Fonte sobre rendimentos do trabalho.
         /// </summary>
         [XmlIgnore]
+        public double VlrRendTrib { get; set; }
+
+        [XmlElement("vlrRendTrib")]
+        public string VlrRendTribField
+        {
+            get => VlrRendTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRendTrib = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo ao rendimento do 13º salário
+        /// </summary>
+        [XmlIgnore]
+        public double VlrRendTrib13 { get; set; }
+
+        [XmlElement("vlrRendTrib13")]
+        public string VlrRendTrib13Field
+        {
+            get => VlrRendTrib13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRendTrib13 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo à previdência oficial sobre rendimentos do trabalho, mensal e férias
+        /// </summary>
+        [XmlIgnore]
+        public double VlrPrevOficial { get; set; }
+
+        [XmlElement("vlrPrevOficial")]
+        public string VlrPrevOficialField
+        {
+            get => VlrPrevOficial.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPrevOficial = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo à previdência oficial sobre o 13° salário
+        /// </summary>
+        [XmlIgnore]
+        public double VlrPrevOficial13 { get; set; }
+
+        [XmlElement("vlrPrevOficial13")]
+        public string VlrPrevOficial13Field
+        {
+            get => VlrPrevOficial13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPrevOficial13 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo ao imposto sobre a renda retido na fonte sobre rendimentos do trabalho, mensal e férias
+        /// </summary>
+        [XmlIgnore]
         public double VlrCRMen { get; set; }
 
         [XmlElement("vlrCRMen")]
@@ -521,6 +591,200 @@ namespace Unimake.Business.DFe.Xml.ESocial
             get => VlrCRMen.ToString("F2", CultureInfo.InvariantCulture);
             set => VlrCRMen = Converter.ToDouble(value);
         }
+
+        /// <summary>
+        /// Valor relativo ao imposto sobre a renda retido na fonte sobre rendimentos do trabalho, 13° salário
+        /// </summary>
+        [XmlIgnore]
+        public double VlrCRMen13 { get; set; }
+
+        [XmlElement("vlrCRMen13")]
+        public string VlrCRMen13Field
+        {
+            get => VlrCRMen13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrCRMen13 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo à parcela isenta de proventos de aposentadoria, reserva remunerada, reforma e pensão de beneficiário com 65 anos ou mais
+        /// </summary>
+        [XmlIgnore]
+        public double VlrParcIsenta65 { get; set; }
+
+        [XmlElement("vlrParcIsenta65")]
+        public string VlrParcIsenta65Field
+        {
+            get => VlrParcIsenta65.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrParcIsenta65 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo à parcela isenta de proventos de aposentadoria, reserva remunerada, reforma e pensão de beneficiário com 65 anos ou mais sobre o 13º salário
+        /// </summary>
+        [XmlIgnore]
+        public double VlrParcIsenta65Dec { get; set; }
+
+        [XmlElement("vlrParcIsenta65Dec")]
+        public string VlrParcIsenta65DecField
+        {
+            get => VlrParcIsenta65Dec.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrParcIsenta65Dec = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo a diárias
+        /// </summary>
+        [XmlIgnore]
+        public double VlrDiarias { get; set; }
+
+        [XmlElement("vlrDiarias")]
+        public string VlrDiariasField
+        {
+            get => VlrDiarias.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDiarias = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo a ajuda de custo
+        /// </summary>
+        [XmlIgnore]
+        public double VlrAjudaCusto { get; set; }
+
+        [XmlElement("vlrAjudaCusto")]
+        public string VlrAjudaCustoField
+        {
+            get => VlrAjudaCusto.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAjudaCusto = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo a indenização e rescisão de contrato, inclusive a título de PDV e acidentes de trabalho
+        /// </summary>
+        [XmlIgnore]
+        public double VlrIndResContrato { get; set; }
+
+        [XmlElement("vlrIndResContrato")]
+        public string VlrIndResContratoField
+        {
+            get => VlrIndResContrato.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrIndResContrato = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo ao abono pecuniário
+        /// </summary>
+        [XmlIgnore]
+        public double VlrAbonoPec { get; set; }
+
+        [XmlElement("vlrAbonoPec")]
+        public string VlrAbonoPecField
+        {
+            get => VlrAbonoPec.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAbonoPec = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo ao rendimento de beneficiário com moléstia grave ou acidente em serviço - remuneração mensal
+        /// </summary>
+        [XmlIgnore]
+        public double VlrRendMoleGrave { get; set; }
+
+        [XmlElement("vlrRendMoleGrave")]
+        public string VlrRendMoleGraveField
+        {
+            get => VlrRendMoleGrave.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRendMoleGrave = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo ao rendimento de beneficiário com moléstia grave ou acidente em serviço - 13º salário
+        /// </summary>
+        [XmlIgnore]
+        public double VlrRendMoleGrave13 { get; set; }
+
+        [XmlElement("vlrRendMoleGrave13")]
+        public string VlrRendMoleGrave13Field
+        {
+            get => VlrRendMoleGrave13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrRendMoleGrave13 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo ao auxílio moradia
+        /// </summary>
+        [XmlIgnore]
+        public double VlrAuxMoradia { get; set; }
+
+        [XmlElement("vlrAuxMoradia")]
+        public string VlrAuxMoradiaField
+        {
+            get => VlrAuxMoradia.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrAuxMoradia = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo a bolsa médico residente
+        /// </summary>
+        [XmlIgnore]
+        public double VlrBolsaMedico { get; set; }
+
+        [XmlElement("vlrBolsaMedico")]
+        public string VlrBolsaMedicoField
+        {
+            get => VlrBolsaMedico.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrBolsaMedico = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo a bolsa médico residente - 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VlrBolsaMedico13 { get; set; }
+
+        [XmlElement("vlrBolsaMedico13")]
+        public string VlrBolsaMedico13Field
+        {
+            get => VlrBolsaMedico13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrBolsaMedico13 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo aos juros de mora recebidos, devidos pelo atraso no pagamento de remuneração por exercício de emprego, cargo ou função
+        /// </summary>
+        [XmlIgnore]
+        public double VlrJurosMora { get; set; }
+
+        [XmlElement("vlrJurosMora")]
+        public string VlrJurosMoraField
+        {
+            get => VlrJurosMora.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrJurosMora = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor relativo aos rendimentos isentos - outros
+        /// </summary>
+        [XmlIgnore]
+        public double VlrIsenOutros { get; set; }
+
+        [XmlElement("vlrIsenOutros")]
+        public string VlrIsenOutrosField
+        {
+            get => VlrIsenOutros.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrIsenOutros = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Descrição do rendimento não tributável ou isento do IRRF
+        /// </summary>
+        [XmlElement("descRendimento")]
+        public string DescRendimento { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeDescRendimento() => !string.IsNullOrEmpty(DescRendimento);
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -534,31 +798,52 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class TotApurDia5002
     {
         /// <summary>
-        /// Período de apuração diário do Código de Receita - CR
+        /// Versão do schema XML - Utilizado somente em tempo de serialização/desserialização, mas não é gerado no XML. Somente de uso interno da DLL para fazer tratamentos entre versões de schemas.
         /// </summary>
         [XmlIgnore]
-#if INTEROP
-        public DateTime PerApurDia { get; set; }
-#else
-        public DateTimeOffset PerApurDia { get; set; }
-#endif
+        public string VersaoSchema { get; set; } = "S_01_02_00";
 
+        /// <summary>
+        /// Retorna somente o valor inteiro da versão para facilitar comparações
+        /// </summary>
+        private int VersaoSchemaInt => Convert.ToInt32(VersaoSchema.Replace("S_", "").Replace("_", ""));
+
+        /// <summary>
+        /// Período de apuração diário do Código de Receita - CR
+        /// </summary>
         [XmlElement("perApurDia")]
-        public string PerApurDiaField
-        {
-            get => PerApurDia.ToString("dd");
-#if INTEROP
-            set => PerApurDia = DateTime.Parse(value);
-#else
-            set => PerApurDia = DateTimeOffset.Parse(value);
-#endif
-        }
+        public string PerApurDia { get; set; }
 
         /// <summary>
         /// Código de Receita - CR relativo ao Imposto de Renda Retido na Fonte sobre rendimentos do trabalho pagos a residente no exterior para fins fiscais
         /// </summary>
         [XmlElement("CRDia")]
         public string CRDia { get; set; }
+
+        /// <summary>
+        /// Forma de tributação, conforme opções disponíveis na Tabela 30
+        /// </summary>
+        [XmlElement("frmTribut")]
+        public FrmTribut FrmTribut { get; set; }
+
+        /// <summary>
+        /// Código do país de residência para fins fiscais, quando no exterior, conforme Tabela 06.
+        /// </summary>
+        [XmlElement("paisResidExt")]
+        public string PaisResidExt { get; set; }
+
+        /// <summary>
+        /// Valor pago a residente ou domiciliado no exterior
+        /// </summary>
+        [XmlIgnore]
+        public double VlrPagoDia { get; set; }
+
+        [XmlElement("vlrPagoDia")]
+        public string VlrPagoDiaField
+        {
+            get => VlrPagoDia.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPagoDia = Converter.ToDouble(value);
+        }
 
         /// <summary>
         /// Valor relativo ao Imposto de Renda Retido na Fonte
@@ -574,6 +859,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
             get => VlrCRDia.ToString("F2", CultureInfo.InvariantCulture);
             set => VlrCRDia = Converter.ToDouble(value);
         }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeFrmTribut() => VersaoSchemaInt >= 10300;
+        
+        public bool ShouldSerializePaisResidExt() => VersaoSchemaInt >= 10300;
+
+        public bool ShouldSerializeVlrPagoDiaField() => VersaoSchemaInt >= 10300;
+
+        #endregion ShouldSerialize
     }
 
     /// <summary>
@@ -790,6 +1085,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class EndExt5002 : EndExt1210 { }
 
     /// <summary>
+    /// Totalização dos demonstrativos de valores devidos
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.TotInfoIR")]
+    [ComVisible(true)]
+#endif
+    public class TotInfoIR
+    {
+        /// <summary>
+        /// Totalizador de valores com período de apuração mensal
+        /// </summary>
+        [XmlElement("consolidApurMen")]
+        public ConsolidApurMen ConsolidApurMen { get; set; }
+    }
+
+    /// <summary>
+    /// Totalizador de valores com período de apuração mensal
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.ConsolidApurMen")]
+    [ComVisible(true)]
+#endif
+    public class ConsolidApurMen : TotApurMen5002 { }
+
+    /// <summary>
     /// Informações complementares para a DIRF ou para a DAA, com a legislação aplicada ao imposto de renda
     /// </summary>
 #if INTEROP
@@ -819,6 +1141,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
             set => DtLaudo = DateTimeOffset.Parse(value);
 #endif
         }
+
+        /// <summary>
+        /// Identificação do evento S-1210 original e perRef cujas informações de infoIRComplem serão alteradas
+        /// </summary>
+        [XmlElement("perAnt")]
+        public PerAnt5002 PerAnt { get; set; }
 
         /// <summary>
         /// Identificação dos dependentes
@@ -993,6 +1321,16 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
     }
+
+    /// <summary>
+    /// Identificação do evento S-1210 original e perRef cujas informações de infoIRComplem serão alteradas
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PerAnt5002")]
+    [ComVisible(true)]
+#endif
+    public class PerAnt5002 : PerAnt1210 { }
 
     /// <summary>
     /// Identificação dos dependentes
@@ -1356,7 +1694,87 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ProgId("Unimake.Business.DFe.Xml.ESocial.PrevidCompl5002")]
     [ComVisible(true)]
 #endif
-    public class PrevidCompl5002 : PrevidCompl1210 { }
+    public class PrevidCompl5002 
+    {
+        /// <summary>
+        /// Tipo de previdência complementar
+        /// </summary>
+        [XmlElement("tpPrev")]
+        public TipoDePrevidenciaComplementar TpPrev { get; set; }
+
+        /// <summary>
+        /// Número de inscrição da entidade de previdência complementar
+        /// </summary>
+        [XmlElement("cnpjEntidPC")]
+        public string CnpjEntidPC { get; set; }
+
+        /// <summary>
+        /// Valor da dedução mensal relativa a previdência complementar.
+        /// Validação: Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
+        public double VlrDedPC { get; set; }
+
+        [XmlElement("vlrDedPC")]
+        public string VlrDedPCField
+        {
+            get => VlrDedPC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedPC = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da dedução do 13º Salário relativa a previdência complementar
+        /// </summary>
+        [XmlIgnore]
+        public double VlrDedPC13 { get; set; }
+
+        [XmlElement("vlrDedPC13")]
+        public string VlrDedPC13Field
+        {
+            get => VlrDedPC13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrDedPC13 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da contribuição mensal do ente público patrocinador da Fundação de Previdência Complementar do Servidor Público (Funpresp).
+        /// Validação: Informação permitida apenas se tpPrev = [3].
+        /// Deve ser maior que 0 (zero).
+        /// </summary>
+        [XmlIgnore]
+        public double VlrPatrocFunp { get; set; }
+
+        [XmlElement("vlrPatrocFunp")]
+        public string VlrPatrocFunpField
+        {
+            get => VlrPatrocFunp.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPatrocFunp = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da contribuição do 13º Salário do ente público patrocinador da Fundação de Previdência Complementar do Servidor Público (Funpresp).
+        /// </summary>
+        [XmlIgnore]
+        public double VlrPatrocFunp13 { get; set; }
+
+        [XmlElement("vlrPatrocFunp13")]
+        public string VlrPatrocFunp13Field
+        {
+            get => VlrPatrocFunp13.ToString("F2", CultureInfo.InvariantCulture);
+            set => VlrPatrocFunp13 = Converter.ToDouble(value);
+        }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeVlrDedPCField() => VlrDedPC > 0;
+
+        public bool ShouldSerializeVlrDedPC13Field() => VlrDedPC13 > 0;
+
+        public bool ShouldSerializeVlrPatrocFunpField() => VlrPatrocFunp > 0;
+
+        public bool ShouldSerializeVlrPatrocFunp13Field() => VlrPatrocFunp13 > 0;
+
+        #endregion ShouldSerialize
+    }
 
     /// <summary>
     /// Informações de processos relacionados a não retenção de tributos ou a depósitos judiciais

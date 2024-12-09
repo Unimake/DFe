@@ -520,7 +520,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações complementares de períodos anteriores
         /// </summary>
         [XmlElement("perAnt")]
-        public PerAnt PerAnt { get; set; }
+        public PerAnt1210 PerAnt { get; set; }
 
         /// <summary>
         /// Informações de dependentes não cadastrados pelo S-2200/S-2205/S-2300/S-2400/S-2405
@@ -1876,10 +1876,10 @@ namespace Unimake.Business.DFe.Xml.ESocial
     /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.ESocial.PerAnt")]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.PerAnt1210")]
     [ComVisible(true)]
 #endif
-    public class PerAnt
+    public class PerAnt1210
     {
         /// <summary>
         /// Informar perApur do S-1210 cujo infoIRComplem será alterado.

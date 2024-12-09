@@ -48,6 +48,33 @@
 					<tpInfoIR>34</tpInfoIR>
 					<valor>123.12</valor>
 				</infoIR>
+				<totApurMen>
+					<CRMen>123</CRMen>
+					<vlrRendTrib>1.12</vlrRendTrib>
+					<vlrRendTrib13>1.14</vlrRendTrib13>
+					<vlrPrevOficial>1.15</vlrPrevOficial>
+					<vlrPrevOficial13>1.01</vlrPrevOficial13>
+					<vlrCRMen>1.74</vlrCRMen>
+					<vlrCRMen13>0.05</vlrCRMen13>
+					<vlrParcIsenta65>1.17</vlrParcIsenta65>
+					<vlrParcIsenta65Dec>1.18</vlrParcIsenta65Dec>
+					<vlrDiarias>1.15</vlrDiarias>
+					<vlrAjudaCusto>1.15</vlrAjudaCusto>
+					<vlrIndResContrato>1.17</vlrIndResContrato>
+					<vlrAbonoPec>1.17</vlrAbonoPec>
+					<vlrRendMoleGrave>1.11</vlrRendMoleGrave>
+					<vlrRendMoleGrave13>1.17</vlrRendMoleGrave13>
+					<vlrAuxMoradia>1.11</vlrAuxMoradia>
+					<vlrBolsaMedico>1.17</vlrBolsaMedico>
+					<vlrBolsaMedico13>1.17</vlrBolsaMedico13>
+					<vlrJurosMora>1.11</vlrJurosMora>
+					<vlrIsenOutros>1.11</vlrIsenOutros>
+				</totApurMen>
+				<totApurDia>
+					<perApurDia>15</perApurDia>
+					<CRDia>15</CRDia>
+					<vlrCRDia>1.15</vlrCRDia>
+				</totApurDia>
 			</dmDev>
 			<dmDev>
 				<perRef>2020-12</perRef>
@@ -66,8 +93,40 @@
 				<infoIR>
 					<tpInfoIR>46</tpInfoIR>
 					<valor>123.12</valor>
+					<descRendimento>Teste da tag nova</descRendimento>
 				</infoIR>
 			</dmDev>
+			<totInfoIR>
+				<consolidApurMen>
+					<CRMen>123</CRMen>
+					<vlrRendTrib>1.12</vlrRendTrib>
+					<vlrRendTrib13>1.14</vlrRendTrib13>
+					<vlrPrevOficial>1.15</vlrPrevOficial>
+					<vlrPrevOficial13>1.01</vlrPrevOficial13>
+					<vlrCRMen>1.74</vlrCRMen>
+					<vlrCRMen13>0.05</vlrCRMen13>
+					<vlrParcIsenta65>1.17</vlrParcIsenta65>
+					<vlrParcIsenta65Dec>1.18</vlrParcIsenta65Dec>
+					<vlrDiarias>1.15</vlrDiarias>
+					<vlrAjudaCusto>1.15</vlrAjudaCusto>
+					<vlrIndResContrato>1.17</vlrIndResContrato>
+					<vlrAbonoPec>1.17</vlrAbonoPec>
+					<vlrRendMoleGrave>1.11</vlrRendMoleGrave>
+					<vlrRendMoleGrave13>1.17</vlrRendMoleGrave13>
+					<vlrAuxMoradia>1.11</vlrAuxMoradia>
+					<vlrBolsaMedico>1.17</vlrBolsaMedico>
+					<vlrBolsaMedico13>1.17</vlrBolsaMedico13>
+					<vlrJurosMora>1.11</vlrJurosMora>
+					<vlrIsenOutros>1.11</vlrIsenOutros>
+				</consolidApurMen>
+			</totInfoIR>
+			<infoIRComplem>
+				<dtLaudo>2024-05-05</dtLaudo>
+				<perAnt>
+					<perRefAjuste>2024-05</perRefAjuste>
+					<nrRec1210Orig>123456789012345</nrRec1210Orig>
+				</perAnt>
+			</infoIRComplem>
 		</ideTrabalhador>
 	</evtIrrfBenef>
 </eSocial>
