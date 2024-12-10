@@ -34,19 +34,33 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         [ComVisible(false)]
 #endif
-        public override T LerXML<T>(XmlDocument doc) => base.LerXML<T>(Utility.ReplaceVersionSchema(doc, VersaoSchema));
+        public override T LerXML<T>(XmlDocument doc)
+        {
+            var result = base.LerXML<T>(Utility.ReplaceVersionSchema(doc, VersaoSchema));
+
+            DefinirVersaoSchema(doc.OuterXml);
+
+            var tipo = result.GetType();
+            var propriedade = tipo.GetProperty("VersaoSchema");
+
+            if (propriedade != null && propriedade.CanWrite)
+            {
+                propriedade.SetValue(result, VersaoSchema);
+            }
+
+            return result;
+        }
 
         /// <summary>
-        /// Converte uma string de XML para XmlDocument
+        /// Atualizar a propriedade com a versão do Schema que veio no XML
         /// </summary>
         /// <param name="xml">string do XML</param>
-        /// <returns>XML no formato XmlDocument</returns>
-        public XmlDocument ConvertStringXml(string xml)
+        private void DefinirVersaoSchema(string xml)
         {
-            var doc = new XmlDocument();
-            doc.LoadXml(xml);
-
-            return doc;
+            if (xml.IndexOf("/v_S_") > 0)
+            {
+                VersaoSchema = xml.Substring(xml.IndexOf("/v_S_") + 1, 12);
+            }
         }
     }
 }

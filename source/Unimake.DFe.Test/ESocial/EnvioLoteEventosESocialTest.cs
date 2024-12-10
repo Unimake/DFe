@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.ESocial;
@@ -291,6 +292,35 @@ namespace Unimake.DFe.Test.ESocial
 
             var enviarLoteEventosESocial = new EnviarLoteEventosESocial(conteudoXML, configuracao);
             enviarLoteEventosESocial.Executar();
+        }
+
+        /// <summary>
+        /// Testar o envio do evento S-1005
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(TipoAmbiente.Producao, "..\\..\\..\\ESocial\\Resources\\EnvioLoteEventos-esocial-loteevt.xml", "v_S_01_02_00")]
+        [InlineData(TipoAmbiente.Homologacao, "..\\..\\..\\ESocial\\Resources\\S_01_03_00\\EnvioLoteEventos-esocial-loteevt.xml", "v_S_01_03_00")]
+        public void ESocialEnvioLoteEventosLoadFrom(TipoAmbiente tipoAmbiente, string arqXML, string versaoSchema)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização do teste.");
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.ESocialEnviarLoteEventos,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var eSocialEnvioLoteEventos = new ESocialEnvioLoteEventos();
+            eSocialEnvioLoteEventos = eSocialEnvioLoteEventos.LoadFromFile(arqXML);
+
+            var enviarLoteEventosESocial = new EnviarLoteEventosESocial(eSocialEnvioLoteEventos, configuracao);
+            enviarLoteEventosESocial.Executar();
+
+            var xmlAssinado = enviarLoteEventosESocial.ConteudoXMLAssinado;
         }
     }
 }

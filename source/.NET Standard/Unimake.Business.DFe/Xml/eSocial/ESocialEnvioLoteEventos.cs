@@ -6,11 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.ESocial
 {
@@ -47,6 +45,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         {
             var doc = new XmlDocument();
             doc.LoadXml(System.IO.File.ReadAllText(filename, Encoding.UTF8));
+
             return base.LerXML<ESocialEnvioLoteEventos>(doc);
         }
 
@@ -55,7 +54,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         /// <param name="xml">string do XML de lote de eventos do eSocial</param>
         /// <returns>Objeto do ESocialEnvioLoteEventos</returns>
-        public ESocialEnvioLoteEventos LoadFromXML(string xml) => base.LerXML<ESocialEnvioLoteEventos>(ConvertStringXml(xml));
+        public ESocialEnvioLoteEventos LoadFromXML(string xml)
+        {
+            var doc = new XmlDocument();
+            doc.LoadXml(xml);
+
+            return base.LerXML<ESocialEnvioLoteEventos>(doc);
+        }
     }
 
     /// <summary>
