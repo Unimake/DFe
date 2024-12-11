@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Xml.ESocial;
 using Xunit;
@@ -9,7 +8,7 @@ namespace Unimake.DFe.Test.ESocial
     public class ConsultaEventosESocialTest
     {
         /// <summary>
-        /// Testar a consulta lote assincrono do eSocial
+        /// Testar a consulta lote assíncrono do eSocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
@@ -22,11 +21,11 @@ namespace Unimake.DFe.Test.ESocial
                 TipoDFe = TipoDFe.ESocial,
                 TipoEmissao = TipoEmissao.Normal,
                 TipoAmbiente = tipoAmbiente,
-                Servico = Servico.ESocialEnviarLoteEventos,
+                Servico = Servico.ESocialConsultaEvts,
                 CertificadoDigital = PropConfig.CertificadoDigital,
             };
 
-            var conteudoXML = new Business.DFe.Xml.ESocial.ConsultarEvtsEmpregadorESocial
+            var conteudoXML = new ConsultarEvtsEmpregadorESocial
             {
                 ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
                 {
@@ -48,7 +47,7 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
-        /// Testar a consulta lote assincrono do eSocial
+        /// Testar a consulta lote assíncrono do eSocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
@@ -61,11 +60,11 @@ namespace Unimake.DFe.Test.ESocial
                 TipoDFe = TipoDFe.ESocial,
                 TipoEmissao = TipoEmissao.Normal,
                 TipoAmbiente = tipoAmbiente,
-                Servico = Servico.ESocialEnviarLoteEventos,
+                Servico = Servico.ESocialConsultaEvts,
                 CertificadoDigital = PropConfig.CertificadoDigital,
             };
 
-            var conteudoXML = new Business.DFe.Xml.ESocial.ConsultarEvtsTrabalhadorESocial
+            var conteudoXML = new ConsultarEvtsTrabalhadorESocial
             {
                 ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
                 {
@@ -77,8 +76,8 @@ namespace Unimake.DFe.Test.ESocial
                     ConsultaEvtsTrabalhador = new ConsultaEvtsTrabalhador
                     {
                         CpfTrab = "07303304940",
-                        DtIniField = "2024-7-12",
-                        DtFimField = "2024-7-12",
+                        DtIniField = DateTime.Now.ToString(),
+                        DtFimField = DateTime.Now.AddDays(15).ToString(),
                     }
                 }
             };
@@ -88,7 +87,7 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
-        /// Testar a consulta lote assincrono do eSocial
+        /// Testar a consulta lote assíncrono do eSocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
@@ -101,11 +100,11 @@ namespace Unimake.DFe.Test.ESocial
                 TipoDFe = TipoDFe.ESocial,
                 TipoEmissao = TipoEmissao.Normal,
                 TipoAmbiente = tipoAmbiente,
-                Servico = Servico.ESocialEnviarLoteEventos,
+                Servico = Servico.ESocialConsultaEvts,
                 CertificadoDigital = PropConfig.CertificadoDigital,
             };
 
-            var conteudoXML = new Business.DFe.Xml.ESocial.ConsultarEvtsTabelaESocial
+            var conteudoXML = new ConsultarEvtsTabelaESocial
             {
                 ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
                 {
@@ -120,7 +119,6 @@ namespace Unimake.DFe.Test.ESocial
                         TpEvt = "1200",
                         DtIniField = DateTime.Now.ToString(),
                         DtFimField = DateTime.Now.AddDays(15).ToString(),
-
                     }
                 }
             };

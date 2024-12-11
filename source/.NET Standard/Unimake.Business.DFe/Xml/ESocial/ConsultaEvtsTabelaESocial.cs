@@ -223,10 +223,11 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public DateTimeOffset DtIni { get; set; }
 #endif
+
         [XmlElement("dtIni")]
         public string DtIniField
         {
-            get => DtIni.ToString("yyyy-MM-dd");
+            get => DtIni.ToString("yyyy-MM-ddTHH:mm:ss");
 #if INTEROP
             set => DtIni = DateTime.Parse(value);
 #else
@@ -246,14 +247,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("dtFim")]
         public string DtFimField
         {
-            get => DtFim.ToString("yyyy-MM-dd");
+            get => DtFim.ToString("yyyy-MM-ddTHH:mm:ss");
 #if INTEROP
             set => DtFim = DateTime.Parse(value);
 #else
             set => DtFim = DateTimeOffset.Parse(value);
 #endif
         }
-
     }
 
     #endregion Consulta Evts Trabalhador
