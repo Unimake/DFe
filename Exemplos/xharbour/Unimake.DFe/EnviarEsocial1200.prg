@@ -54,7 +54,7 @@ Function EnviarEsocial1200()
 	  oIdeEvento := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeEvento1200")
 	  oIdeEvento:indRetif := 1
 	  oIdeEvento:indApuracao := 1
-	  oIdeEvento:PerApurField := "2024-03"
+	  oIdeEvento:PerApur := "2024-03"
 	  oIdeEvento:TpAmb := 1 //TipoAmbiente.Homologacao
 	  oIdeEvento:ProcEmi := 1 //ProcEmiESocial.AppDoEmpregador 
 	  oIdeEvento:VerProc := "1.0"
@@ -80,7 +80,7 @@ Function EnviarEsocial1200()
 	  oIdeEstabLot:nrInsc := "11111111111111"
 	  oIdeEstabLot:codLotacao := "LOTA00015501"
 	  
-	  oRemunPerApur := CreateObject("Unimake.Business.DFe.Xml.ESocial.RemunPerApur")
+	  oRemunPerApur := CreateObject("Unimake.Business.DFe.Xml.ESocial.RemunPerApur1200")
 	  
 	  oItensRemun := CreateObject("Unimake.Business.DFe.Xml.ESocial.ItensRemun1200")
 	  oItensRemun:codRubr := "363"

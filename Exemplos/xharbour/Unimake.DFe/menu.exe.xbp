@@ -355,3 +355,33 @@ MYPRG_FLAGS =
 MYC_FLAGS = 
 MYDEFINES = 
 MYPRG_FLAGS = 
+
+[DownloadEventoESocialPorID.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[DownloadEventoESocialPorNRRec.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[ConsultarEvtsTabelaESocial.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[ConsultarEvtsTrabalhadorESocial.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[ConsultarEvtsEmpregadorESocial.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 
+
+[EnviarEsocial1200Desserializando.prg]
+MYC_FLAGS = 
+MYDEFINES = 
+MYPRG_FLAGS = 

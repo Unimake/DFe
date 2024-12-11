@@ -26,7 +26,8 @@ Function EnviarEsocial1010()
 
    Try         
     * Montando o XML do lote de eventos
-      oESocialEnvioLoteEventos := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos")      
+      oESocialEnvioLoteEventos := CreateObject("Unimake.Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos")     
+      oESocialEnvioLoteEventos:VersaoSchema = "v_S_01_03_00" // ou "v_S_01_02_00"
 
       oEnvioLoteEventosESocial := CreateObject("Unimake.Business.DFe.Xml.ESocial.EnvioLoteEventosESocial")
       oEnvioLoteEventosESocial:Grupo := "1"
