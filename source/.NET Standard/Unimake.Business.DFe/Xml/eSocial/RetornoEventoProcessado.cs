@@ -3,15 +3,10 @@
 using System.Runtime.InteropServices;
 #endif
 
-using Org.BouncyCastle.Asn1.Cms;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Xml.DARE;
-using Unimake.Business.DFe.Xml.EFDReinf;
-using Unimake.Business.DFe.Xml.GNRE;
-using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.ESocial.Retorno
 {
@@ -348,7 +343,44 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         /// Contém o resultado do processamento do totalizador de um evento contido no lote.
         /// </summary>
         [XmlElement("tot")]
-        public Tot Tot { get; set; }
+        public List<Tot> Tot { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddTot(Tot item)
+        {
+            if (Tot == null)
+            {
+                Tot = new List<Tot>();
+            }
+
+            Tot.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Tot (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Tot</returns>
+        public Tot GetTot(int index)
+        {
+            if ((Tot?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Tot[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Tot
+        /// </summary>
+        public int GetTotCount => (Tot != null ? Tot.Count : 0);
+#endif
     }
 
     /// <summary>

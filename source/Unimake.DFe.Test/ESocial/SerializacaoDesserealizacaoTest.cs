@@ -1065,6 +1065,7 @@ namespace Unimake.DFe.Test.ESocial
         [Trait("DFe", "ESocial")]
         [InlineData(@"..\..\..\ESocial\Resources\retorno_negativo-ret-esocial-consloteevt.xml")]
         [InlineData(@"..\..\..\ESocial\Resources\retornoProcessamentoLoteEventos1.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\retornoProcessamentoLoteEventos_tots.xml")]
         public void SerializacaoDesserializacaoRetornoProcessamentoLoteEventos(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");

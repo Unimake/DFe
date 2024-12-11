@@ -1,0 +1,194 @@
+﻿<eSocial xmlns="http://www.esocial.gov.br/schema/lote/eventos/envio/retornoProcessamento/v1_3_0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<retornoProcessamentoLoteEventos>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>12345678</nrInsc>
+		</ideEmpregador>
+		<ideTransmissor>
+			<tpInsc>1</tpInsc>
+			<nrInsc>12345678901234</nrInsc>
+		</ideTransmissor>
+		<status>
+			<cdResposta>201</cdResposta>
+			<descResposta>Lote processado com sucesso.</descResposta>
+		</status>
+		<dadosRecepcaoLote>
+			<dhRecepcao>2022-06-07T12:07:18.65</dhRecepcao>
+			<versaoAplicativoRecepcao>0.1.0.0</versaoAplicativoRecepcao>
+			<protocoloEnvio>1.1.202206.1234567890123456789</protocoloEnvio>
+		</dadosRecepcaoLote>
+		<dadosProcessamentoLote>
+			<versaoAplicativoProcessamentoLote>1.0.0.0</versaoAplicativoProcessamentoLote>
+		</dadosProcessamentoLote>
+		<retornoEventos>
+			<evento Id="ID1234567890123456789012345678901234">
+				<retornoEvento>
+					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/retornoEvento/v1_2_1">
+						<retornoEvento Id="ID1234567890123456789012345678901234">
+							<ideEmpregador>
+								<tpInsc>1</tpInsc>
+								<nrInsc>12345678</nrInsc>
+							</ideEmpregador>
+							<recepcao>
+								<tpAmb>1</tpAmb>
+								<dhRecepcao>2022-06-07T12:07:18.65</dhRecepcao>
+								<versaoAppRecepcao>0.1.0.0</versaoAppRecepcao>
+								<protocoloEnvioLote>1.1.202206.1234567890123456789</protocoloEnvioLote>
+							</recepcao>
+							<processamento>
+								<cdResposta>201</cdResposta>
+								<descResposta>Sucesso.</descResposta>
+								<versaoAppProcessamento>13.8.10</versaoAppProcessamento>
+								<dhProcessamento>2022-06-07T12:07:19.087</dhProcessamento>
+							</processamento>
+							<recibo>
+								<nrRecibo>1.1.1234567890123456789</nrRecibo>
+								<hash>bbfwefkjwbfbbwgbwrgbgwbgobwwsobrwbugdwefgsbw</hash>
+							</recibo>
+						</retornoEvento>
+						<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+							<SignedInfo>
+								<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+								<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+								<Reference URI="">
+									<Transforms>
+										<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+										<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+									</Transforms>
+									<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+									<DigestValue>aqbYBWUkiPa4Ve1u4kmVluIk12zRark7GWc9btMRS9Y=</DigestValue>
+								</Reference>
+							</SignedInfo>
+							<SignatureValue>CqMoB/biAjuLE8RbdXEO6KZ8dfOXIgTo5AQqDhaGsOWwwtfwtaYHGcES2b9SZDo1U16YxBrqr+GgOhFWZbO7kWI9ELRRo6nOosYbRGr1jCv8b2G3IMkzBeCRSlCf+HjjqtXEcOb5EB+j5Un4gpSn0ExHi0balkH4Uz/FRIE5cH3sj12ogwalOpncQ0KJegeDdLqPaKveQk3wJzK55blhhaYGqyLXkdQKH4ZE8mSVXQk7LcTmR6ya2zweJa1Cc/gG6UxiUSCYcdWTWkKsdnS6Iiggjeb1KsRJCr+tchtdfwP7qXisZMTosZjGLhreu81PDMFk36jGdEVPa0Q3ibus+g==</SignatureValue>
+							<KeyInfo>
+								<X509Data>
+									<X509Certificate>MIIHwDCCBaigAwIBAgINAMhMFrvop2FAD67JqjANBgkqhkiG9w0BAQsFADCBpzELMAkGA1UEBhMCQlIxEzARBgNVBAoMCklDUC1CcmFzaWwxDzANBgNVBAsMBkNTUEItMTE7MDkGA1UECwwyU2VydmljbyBGZWRlcmFsIGRlIFByb2Nlc3NhbWVudG8gZGUgRGFkb3MgLSBTRVJQUk8xNTAzBgNVBAMMLEF1dG9yaWRhZGUgQ2VydGlmaWNhZG9yYSBkbyBTRVJQUk8gRmluYWwgU1NMMB4XDTI0MDQzMDE0MDMxOVoXDTI1MDQzMDE0MDMxOVowgeIxCzAJBgNVBAYTAkJSMRMwEQYDVQQKDApJQ1AtQnJhc2lsMRkwFwYDVQQLDBB2aWRlb2NvbmZlcmVuY2lhMRcwFQYDVQQLDA4zMzY4MzExMTAwMDEwNzEVMBMGA1UECwwMQXBsaWNhY2FvIEExMREwDwYDVQQLDAhBUlNFUlBSTzE1MDMGA1UECwwsQXV0b3JpZGFkZSBDZXJ0aWZpY2Fkb3JhIGRvIFNFUlBSTyBGaW5hbCBTU0wxKTAnBgNVBAMMIEFQUDAwMDM0LlBST0RVQ0FPLkVTT0NJQUwuR09WLkJSMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4jRBusGKWY/qKHu5R7BDrg7HF5/JxY8UB2frhiVf0PA3lFEpbpg02CXvpmutbb2eGir/GENEU+jTXWUweDAwEuDz3NdzITxhphoFLGRDir4d52ej6VXAI3ndar6+iOV7mi52jygmF2uBayYmkextqkxulc5oa1pTC7tYvsZ/vHrE154tsdaiM5G5yy7cdiW3lsARIVxYXX2dgWjjCrG30T9yxLogermcSxHFAhLEUTNjmICPDLolsAnQPQj3hML8ipxKLakJLuJE0OzK8sU41IONqjFsYMuOb2FVQnStOKftl8/4vcBegnvFeosecXxREMfIoXHFDoIvIPCiuNUBrQIDAQABo4ICrDCCAqgwHwYDVR0jBBgwFoAU3QhZfk4WHSPSVIK9XFSHZMP6Az8wgYsGA1UdHwSBgzCBgDA9oDugOYY3aHR0cDovL3JlcG9zaXRvcmlvLnNlcnByby5nb3YuYnIvbGNyL2Fjc2VycHJvYWNmc3NsLmNybDA/oD2gO4Y5aHR0cDovL2NlcnRpZmljYWRvczIuc2VycHJvLmdvdi5ici9sY3IvYWNzZXJwcm9hY2Zzc2wuY3JsMIGOBggrBgEFBQcBAQSBgTB/MEcGCCsGAQUFBzAChjtodHRwOi8vcmVwb3NpdG9yaW8uc2VycHJvLmdvdi5ici9jYWRlaWFzL2Fjc2VycHJvYWNmc3NsLnA3YjA0BggrBgEFBQcwAYYoaHR0cDovL29jc3Auc2VycHJvLmdvdi5ici9BQ1NFUlBST0FDRlNTTDCB4AYDVR0RBIHYMIHVoDsGBWBMAQMIoDIEMFNFUlZJQ08gRkVERVJBTCBERSBQUk9DRVNTQU1FTlRPIERFIERBRE9TIFNFUlBST6AZBgVgTAEDA6AQBA4zMzY4MzExMTAwMDEwN6AiBgVgTAEDAqAZBBdFRFVBUkRPIFlPU0hJREEgU0FMT01BT6A4BgVgTAEDBKAvBC0xODAzMTk4MDI4NTYwMTY4ODAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDCBHWVkdWFyZG8ueW9zaGlkYUBzZXJwcm8uZ292LmJyMA4GA1UdDwEB/wQEAwIF4DATBgNVHSUEDDAKBggrBgEFBQcDAjBeBgNVHSAEVzBVMFMGBmBMAQIBWTBJMEcGCCsGAQUFBwIBFjtodHRwOi8vcmVwb3NpdG9yaW8uc2VycHJvLmdvdi5ici9kb2NzL2RwY2Fjc2VycHJvYWNmc3NsLnBkZjANBgkqhkiG9w0BAQsFAAOCAgEAssrDlJPJgQrUbywFKDSG5aby3/xYEwvP7FdYNBW5CyDeefvhFq3Vv/m+VoVWtlNB/Nmgbtttn7xZYrVV6gw3tmHPjkd3oBBfEQEIpWFyiFz6MgBBS3f9rHuXx3lplXCa15KnmygFJaVkLSuIdGlykJQkrIWzZc1wAw+/Nc7nEVphgBmj8GoEamb9pVRUZE9X/TW50RtJgOMnuhzAAsYq68Abak68z5Dl0ms9VpCa2dVXYN2VoZzUqR6dCQsOv1UAadx9fsIOuMeNo88t3EVEsHlsYGx9ftroJZeI4AAXqYKiaAWaWxfVIdwxBVbk/avDgEw3KHF70r4xlIlnb7e5CttBCSfBeNWxKXBUqdhv3Mo6E6dtmB65ETOuNu03L0hH+1e5243gR+gt5ajBqXtEaN4jif/5a3CzhJtQodG1AqPgb4p4O2TX+VnfmLo2uFf7SWC0cuLjQzRgJTQTWKgv8wstgKqUFmHbuadXNGJMPy/RaM5eyq3iHri4cAq824DqBg5SYr+70WdGIOFv9p/F6r1rAstB+xejKjoYFB6ngn45s0El8z5pZk8Z5Oi77+5U2CNJZ4Gj2reZcfNSusfs/R+Ga7dqsm8L6P0tFBxDaYeNldOxTwiEqmKGEcdVmTYqR2G/TXlnZj1KiuoShCQItu2RrwRU2M474Rb3kyh7XeU=</X509Certificate>
+								</X509Data>
+							</KeyInfo>
+						</Signature>
+					</eSocial>
+				</retornoEvento>
+				<tot tipo="S5002">
+					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_02_00">
+						<evtIrrfBenef Id="ID1234567890123456789012345678901234">
+							<ideEvento>
+								<nrRecArqBase>1.1.1234567890123456789</nrRecArqBase>
+								<perApur>2022-05</perApur>
+							</ideEvento>
+							<ideEmpregador>
+								<tpInsc>1</tpInsc>
+								<nrInsc>12345678</nrInsc>
+							</ideEmpregador>
+							<ideTrabalhador>
+								<cpfBenef>12345678901</cpfBenef>
+								<dmDev>
+									<perRef>2022-05</perRef>
+									<ideDmDev>1234567</ideDmDev>
+									<tpPgto>2</tpPgto>
+									<dtPgto>2022-05-30</dtPgto>
+									<codCateg>101</codCateg>
+									<infoIR>
+										<tpInfoIR>11</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+									<infoIR>
+										<tpInfoIR>7950</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+									<infoIR>
+										<tpInfoIR>41</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+									<infoIR>
+										<tpInfoIR>31</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+								</dmDev>
+							</ideTrabalhador>
+						</evtIrrfBenef>
+						<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+							<SignedInfo>
+								<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+								<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+								<Reference URI="">
+									<Transforms>
+										<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+										<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+									</Transforms>
+									<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+									<DigestValue>aqbYBWUkiPa4Ve1u4kmVluIk12zRark7GWc9btMRS9Y=</DigestValue>
+								</Reference>
+							</SignedInfo>
+							<SignatureValue>CqMoB/biAjuLE8RbdXEO6KZ8dfOXIgTo5AQqDhaGsOWwwtfwtaYHGcES2b9SZDo1U16YxBrqr+GgOhFWZbO7kWI9ELRRo6nOosYbRGr1jCv8b2G3IMkzBeCRSlCf+HjjqtXEcOb5EB+j5Un4gpSn0ExHi0balkH4Uz/FRIE5cH3sj12ogwalOpncQ0KJegeDdLqPaKveQk3wJzK55blhhaYGqyLXkdQKH4ZE8mSVXQk7LcTmR6ya2zweJa1Cc/gG6UxiUSCYcdWTWkKsdnS6Iiggjeb1KsRJCr+tchtdfwP7qXisZMTosZjGLhreu81PDMFk36jGdEVPa0Q3ibus+g==</SignatureValue>
+							<KeyInfo>
+								<X509Data>
+									<X509Certificate>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</X509Certificate>
+								</X509Data>
+							</KeyInfo>
+						</Signature>
+					</eSocial>
+				</tot>
+				<tot tipo="S5002">
+					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_02_00">
+						<evtIrrfBenef Id="ID1234567890123456789012345678901234">
+							<ideEvento>
+								<nrRecArqBase>1.1.1234567890123456789</nrRecArqBase>
+								<perApur>2022-05</perApur>
+							</ideEvento>
+							<ideEmpregador>
+								<tpInsc>1</tpInsc>
+								<nrInsc>12345678</nrInsc>
+							</ideEmpregador>
+							<ideTrabalhador>
+								<cpfBenef>12345678901</cpfBenef>
+								<dmDev>
+									<perRef>2022-05</perRef>
+									<ideDmDev>1234567</ideDmDev>
+									<tpPgto>2</tpPgto>
+									<dtPgto>2022-05-30</dtPgto>
+									<codCateg>101</codCateg>
+									<infoIR>
+										<tpInfoIR>11</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+									<infoIR>
+										<tpInfoIR>7950</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+									<infoIR>
+										<tpInfoIR>41</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+									<infoIR>
+										<tpInfoIR>31</tpInfoIR>
+										<valor>1.00</valor>
+									</infoIR>
+								</dmDev>
+							</ideTrabalhador>
+						</evtIrrfBenef>
+						<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+							<SignedInfo>
+								<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+								<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+								<Reference URI="">
+									<Transforms>
+										<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+										<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+									</Transforms>
+									<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+									<DigestValue>aqbYBWUkiPa4Ve1u4kmVluIk12zRark7GWc9btMRS9Y=</DigestValue>
+								</Reference>
+							</SignedInfo>
+							<SignatureValue>CqMoB/biAjuLE8RbdXEO6KZ8dfOXIgTo5AQqDhaGsOWwwtfwtaYHGcES2b9SZDo1U16YxBrqr+GgOhFWZbO7kWI9ELRRo6nOosYbRGr1jCv8b2G3IMkzBeCRSlCf+HjjqtXEcOb5EB+j5Un4gpSn0ExHi0balkH4Uz/FRIE5cH3sj12ogwalOpncQ0KJegeDdLqPaKveQk3wJzK55blhhaYGqyLXkdQKH4ZE8mSVXQk7LcTmR6ya2zweJa1Cc/gG6UxiUSCYcdWTWkKsdnS6Iiggjeb1KsRJCr+tchtdfwP7qXisZMTosZjGLhreu81PDMFk36jGdEVPa0Q3ibus+g==</SignatureValue>
+							<KeyInfo>
+								<X509Data>
+									<X509Certificate>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</X509Certificate>
+								</X509Data>
+							</KeyInfo>
+						</Signature>
+					</eSocial>
+				</tot>
+			</evento>
+		</retornoEventos>
+	</retornoProcessamentoLoteEventos>
+</eSocial>
