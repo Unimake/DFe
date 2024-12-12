@@ -6,20 +6,40 @@
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/recepcionarLoteRpsSincrono</WebActionProducao>
+			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/recepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>ListaRps</TagAssinatura>
-			<TagAtributoID>LoteRps</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><recepcionarLoteRpsSincrono xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</recepcionarLoteRpsSincrono></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:recepcionarLoteRps><ser:xml>{xmlBodyScapeRetorno}</ser:xml></ser:recepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>recepcionarLoteRpsResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
 		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.03">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/recepcionarLoteRpsSincrono</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>EnviarLoteRpsSincronoEnvio</TagAssinatura>
+			<TagAtributoID>LoteRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:recepcionarLoteRpsSincrono><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:recepcionarLoteRpsSincrono></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>recepcionarLoteRpsSincronoResult</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</RecepcionarLoteRpsSincrono>
 		<ConsultarLoteRps versao="2.03">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
@@ -27,15 +47,16 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/consultarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><consultarLoteRps xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</consultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:consultarLoteRps><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:consultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>consultarLoteRpsResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
@@ -44,17 +65,18 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/consultarNfsePorRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><consultarNfsePorRps xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</consultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:consultarNfsePorRps><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:consultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>consultarNfsePorRpsResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</ConsultarNfsePorRps>
 		<ConsultarNfseFaixa versao="2.03">
 			<Descricao>Consultar NFSe por Faixa</Descricao>
@@ -63,17 +85,18 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/consultarNfsePorFaixa</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><consultarNfsePorFaixa xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</consultarNfsePorFaixa></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:consultarNfsePorFaixa><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:consultarNfsePorFaixa></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>consultarNfsePorFaixaResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</ConsultarNfseFaixa>
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar NFSe</Descricao>
@@ -82,17 +105,18 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/cancelarNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><cancelarNfse xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</cancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:cancelarNfse><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:cancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>cancelarNfseResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</CancelarNfse>
 		<GerarNfse versao="2.03">
 			<Descricao>Gerar NFSe</Descricao>
@@ -101,17 +125,18 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/gerarNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><gerarNfse xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</gerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:gerarNfse><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:gerarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>gerarNfseResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</GerarNfse>
 		<ConsultarNfseServicoPrestado versao="2.03">
 			<Descricao>Consultar NFSe Servico Prestado</Descricao>
@@ -120,17 +145,18 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/consultarNfseServicoPrestado</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><consultarNfseServicoPrestado xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</consultarNfseServicoPrestado></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:consultarNfseServicoPrestado><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:consultarNfseServicoPrestado></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>consultarNfseServicoPrestadoResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</ConsultarNfseServicoPrestado>
 		<SubstituirNfse versao="2.03">
 			<Descricao>Substituir NFSe</Descricao>
@@ -139,17 +165,20 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/substituirNfse</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<TagExtraAssinatura>SubstituirNfseEnvio</TagExtraAssinatura>
+			<TagExtraAtributoID>SubstituicaoNfse</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><substituirNfse xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</substituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:substituirNfse><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:substituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>substituirNfseResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</SubstituirNfse>
 		<ConsultarNfseServicoTomado versao="2.03">
 			<Descricao>Consultar NFSe Servico consultarNfseServicoTomado</Descricao>
@@ -158,17 +187,18 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx/consultarNfseServicoTomado</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><consultarNfseServicoTomado xmlns="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx">{xmlBody}</consultarNfseServicoTomado></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx"><soap:Header/><soap:Body><ser:consultarNfseServicoTomado><ser:xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</ser:xml></ser:consultarNfseServicoTomado></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>consultarNfseServicoTomadoResult</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.03</SchemaVersao>
 			<TargetNS>https://www.fisco.net.br/wsnfseabrasf/ServicosNFSEAbrasf.asmx</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</ConsultarNfseServicoTomado>
 </Servicos>
 </Configuracoes>
