@@ -146,8 +146,8 @@
 		<ArqConfig>SVRS.xml</ArqConfig>
 	</Arquivo>
 	<!-- Nota Fiscal de Serviço Eletrônica - Prefeituras/Municípios -->
-	<!-- O nome do padrão tem que ficar identico ao enumerador PadraoNFSe, ou gera BUG e não vai funcionar (Case Sensitive) -->
-	<!--///////////////////////////////////////////////////////////// PADRÕES COM APENAS UM XML DE CONFIGURAÇÃO ///////////////////////////////////////////////////////////////-->
+	<!-- O nome do padrão da NFSe tem que ficar idêntico ao enumerador PadraoNFSe, ou gera BUG e não vai funcionar (Case Sensitive) -->
+	<!-- **** Início dos padrões com apenas um XML de configuração **** -->
 	<Arquivo ID="1001058">
 		<Nome>NACIONAL</Nome>
 		<UF>BR</UF>
@@ -190,7 +190,7 @@
 		<ArqConfig>Equiplano.xml</ArqConfig>
 		<PadraoNFSe>EQUIPLANO</PadraoNFSe>
 	</Arquivo>
-	<!--///////////////////////////////////////////////////////////// PADRÕES COM APENAS UM XML DE CONFIGURAÇÃO ///////////////////////////////////////////////////////////////-->
+	<!-- **** Fim dos padrões com apenas um XML de configuração **** -->
 	<Arquivo ID="3303203">
 		<Nome>Nilópolis - RJ</Nome>
 		<UF>RJ</UF>
@@ -534,7 +534,7 @@
 		<PadraoNFSe>CENTI</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5207402">
-		<Nome>	Edéia - GO</Nome>
+		<Nome>Edéia - GO</Nome>
 		<UF>GO</UF>
 		<ArqConfig>EdeiaGO.xml</ArqConfig>
 		<PadraoNFSe>CENTI</PadraoNFSe>
@@ -1320,7 +1320,7 @@
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5000609">
-		<Nome>Amambai - MS</Nome>
+		<Nome>Amambaí - MS</Nome>
 		<UF>MS</UF>
 		<ArqConfig>AmambaiMS.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
