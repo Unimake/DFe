@@ -7,8 +7,8 @@
 		</ideEmpregador>
 		<consultaEvtsTrabalhador>
 			<cpfTrab>00000000000</cpfTrab>
-			<dtIni>2018-10-02</dtIni>
-			<dtFim>2018-10-02</dtFim>
+			<dtIni>2018-10-02T13:12:30</dtIni>
+			<dtFim>2018-10-02T13:12:30</dtFim>
 		</consultaEvtsTrabalhador>
 	</consultaIdentificadoresEvts>
 </eSocial>
