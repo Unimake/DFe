@@ -6155,7 +6155,7 @@ namespace TreinamentoDLL
         private void BtnEnviarNFSeNacional_Click(object sender, EventArgs e)
         {
             var conteudoXML = new XmlDocument();
-            conteudoXML.Load(@"d:\testenfe\nacional\gerarNFSe.xml");
+            conteudoXML.Load(@"D:\projetos\uninfe\exemplos\NFSe\NACIONAL\1.00\GerarNFSeEnvio-env-loterps.xml");
 
             var configuracao = new Configuracao
             {
@@ -6164,7 +6164,8 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado,
                 Servico = Servico.NFSeGerarNfse,
                 SchemaVersao = "1.00",
-                CodigoMunicipio = 1001058
+                CodigoMunicipio = 1001058,
+                PadraoNFSe = PadraoNFSe.NACIONAL
             };
 
             var gerarNFSe = new ServicoNFSe.GerarNfse(conteudoXML, configuracao);
@@ -6185,7 +6186,8 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado,
                 Servico = Servico.NFSeCancelarNfse,
                 SchemaVersao = "1.00",
-                CodigoMunicipio = 1001058
+                CodigoMunicipio = 1001058,
+                PadraoNFSe = PadraoNFSe.NACIONAL
             };
 
             var cancelarNFSe = new ServicoNFSe.CancelarNfse(conteudoXML, configuracao);
@@ -6207,7 +6209,8 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado,
                 Servico = Servico.NFSeConsultarNfsePorRps,
                 SchemaVersao = "1.00",
-                CodigoMunicipio = 1001058
+                CodigoMunicipio = 1001058,
+                PadraoNFSe = PadraoNFSe.NACIONAL
             };
 
             var consultarNfsePorRps = new ServicoNFSe.ConsultarNfsePorRps(conteudoXML, configuracao);
@@ -6229,7 +6232,8 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado,
                 Servico = Servico.NFSeConsultarNfse,
                 SchemaVersao = "1.00",
-                CodigoMunicipio = 1001058
+                CodigoMunicipio = 1001058,
+                PadraoNFSe = PadraoNFSe.NACIONAL
             };
 
             var consultarNFSe = new ServicoNFSe.ConsultarNfse(conteudoXML, configuracao);
@@ -6251,7 +6255,8 @@ namespace TreinamentoDLL
                 CertificadoDigital = CertificadoSelecionado,
                 Servico = Servico.NFSeConsultarNfsePDF,
                 SchemaVersao = "1.00",
-                CodigoMunicipio = 1001058
+                CodigoMunicipio = 1001058,
+                PadraoNFSe = PadraoNFSe.NACIONAL
             };
 
             var consultarNfsePDF = new ServicoNFSe.ConsultarNfsePDF(conteudoXML, configuracao);
