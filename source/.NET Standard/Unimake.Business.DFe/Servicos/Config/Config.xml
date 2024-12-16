@@ -1589,4 +1589,10 @@
 		<ArqConfig>CamacariBA.xml</ArqConfig>
 		<PadraoNFSe>PRODEB</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2806701">
+		<Nome>São Cristóvão - SE</Nome>
+		<UF>SE</UF>
+		<ArqConfig>SaoCristovaoSE.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>		
+	</Arquivo>
 </Configuracoes>
