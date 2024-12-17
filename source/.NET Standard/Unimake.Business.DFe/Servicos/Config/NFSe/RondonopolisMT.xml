@@ -11,7 +11,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -27,7 +27,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>true</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -43,7 +43,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -58,7 +58,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -74,7 +74,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -90,7 +90,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
@@ -106,7 +106,7 @@
 			<TagAtributoID></TagAtributoID>
 			<WebSoapString></WebSoapString>
 			<WebContentType>application/xml</WebContentType>
-			<WebTagRetorno></WebTagRetorno>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<SchemaVersao></SchemaVersao>
 			<GZIPCompress>false</GZIPCompress>
 			<LoginConexao>false</LoginConexao>
