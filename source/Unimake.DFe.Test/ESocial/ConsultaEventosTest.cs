@@ -116,7 +116,7 @@ namespace Unimake.DFe.Test.ESocial
                     ConsultaEvtsTabela = new ConsultaEvtsTabela
                     {
                         ChEvt = "123123",
-                        TpEvt = "1200",
+                        TpEvt = "S-1200",
                         DtIniField = DateTime.Now.ToString(),
                         DtFimField = DateTime.Now.AddDays(15).ToString(),
                     }
