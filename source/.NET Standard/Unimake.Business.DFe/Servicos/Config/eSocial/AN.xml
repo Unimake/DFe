@@ -365,7 +365,7 @@
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0/ServicoConsultarIdentificadoresEventos/ConsultarIdentificadoresEventosEmpregador</WebActionProducao>
 			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0/ServicoConsultarIdentificadoresEventos/ConsultarIdentificadoresEventosEmpregador</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>ConsultarIdentificadoresEventosEmpregadorResult</WebTagRetorno>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarIdentificadoresEventosEmpregador xmlns="http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0"><consultaEventosEmpregador>{xmlBody}</consultaEventosEmpregador></ConsultarIdentificadoresEventosEmpregador></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -378,7 +378,7 @@
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0/ServicoConsultarIdentificadoresEventos/ConsultarIdentificadoresEventosTrabalhador</WebActionProducao>
 			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0/ServicoConsultarIdentificadoresEventos/ConsultarIdentificadoresEventosTrabalhador</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>ConsultarIdentificadoresEventosTrabalhadorResult</WebTagRetorno>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarIdentificadoresEventosTrabalhador xmlns="http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0"><consultaEventosTrabalhador>{xmlBody}</consultaEventosTrabalhador></ConsultarIdentificadoresEventosTrabalhador></soap:Body></soap:Envelope>]]></WebSoapString>
@@ -391,7 +391,7 @@
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0/ServicoConsultarIdentificadoresEventos/ConsultarIdentificadoresEventosTabela</WebActionProducao>
 			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0/ServicoConsultarIdentificadoresEventos/ConsultarIdentificadoresEventosTabela</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>ConsultarIdentificadoresEventosTabelaResult</WebTagRetorno>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>consultaIdentificadoresEvts</TagAtributoID>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarIdentificadoresEventosTabela xmlns="http://www.esocial.gov.br/servicos/empregador/consulta/identificadores-eventos/v1_0_0"><consultaEventosTabela>{xmlBody}</consultaEventosTabela></ConsultarIdentificadoresEventosTabela></soap:Body></soap:Envelope>]]></WebSoapString>
