@@ -404,7 +404,7 @@
 			<WebActionProducao>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0/ServicoSolicitarDownloadEventos/SolicitarDownloadEventosPorNrRecibo</WebActionProducao>
 			<WebActionHomologacao>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0/ServicoSolicitarDownloadEventos/SolicitarDownloadEventosPorNrRecibo</WebActionHomologacao>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>SolicitarDownloadEventosPorNrReciboResult</WebTagRetorno>
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>download</TagAtributoID>
 			<SchemaArquivo>SolicitacaoDownloadEventosPorNrRecibo-v1_0_0.xsd</SchemaArquivo>
@@ -420,7 +420,7 @@
 			<TagAssinatura>eSocial</TagAssinatura>
 			<TagAtributoID>download</TagAtributoID>
 			<WebContentType>text/xml</WebContentType>
-			<WebTagRetorno>s:Body</WebTagRetorno>
+			<WebTagRetorno>SolicitarDownloadEventosPorIdResult</WebTagRetorno>
 			<SchemaArquivo>SolicitacaoDownloadEventosPorId-v1_0_0.xsd</SchemaArquivo>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SolicitarDownloadEventosPorId xmlns="http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0"><solicitacao>{xmlBody}</solicitacao></SolicitarDownloadEventosPorId></soap:Body></soap:Envelope>]]></WebSoapString>
 			<TargetNS>http://www.esocial.gov.br/servicos/empregador/download/solicitacao/v1_0_0</TargetNS>
