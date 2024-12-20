@@ -86,10 +86,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 }
             }
         }
-
         private string GetXMLElementInnertext(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.InnerText;
-        private bool ExistTag(string tag) => ConteudoXML.GetElementsByTagName(tag)[0] != null;
-
 
         /// <summary>
         /// Ajustes no XMLs, depois de assinado.
