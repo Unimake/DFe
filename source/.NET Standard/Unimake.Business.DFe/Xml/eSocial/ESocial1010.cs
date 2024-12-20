@@ -571,6 +571,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
     public class Alteracao1010
     {
         /// <summary>
+        /// Identificação da rubrica e validade das informações
+        /// </summary>
+        [XmlElement("ideRubrica")]
+        public IdeRubrica IdeRubrica { get; set; }
+
+        /// <summary>
         /// Detalhamento das informações da rubrica
         /// </summary>
         [XmlElement("dadosRubrica")]
