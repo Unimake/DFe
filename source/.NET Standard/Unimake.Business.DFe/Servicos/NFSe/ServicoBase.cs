@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Exceptions;
+using System.Runtime.CompilerServices;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -30,52 +31,65 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// Definir configurações
         /// </summary>
         protected override void DefinirConfiguracao()
-        {
+        { 
             if (Configuracoes.PadraoNFSe == PadraoNFSe.MEMORY)
             {
                 var element = default(XmlElement);
                 element = ConteudoXML.LastChild.FirstChild as XmlElement;
 
-                var codMunicipio = default(string);
-                var temp = element?.GetAttribute("codMunicipio");
-
-                if (!string.IsNullOrWhiteSpace(temp))
-                {
-                    codMunicipio = temp;
-                }
-                else
-                {
-                    codMunicipio = ConteudoXML.GetElementsByTagName("codMunicipio")[0].InnerText;
-                }
-
                 var CNPJ = default(string);
                 try
                 {
-                    CNPJ = ConteudoXML.GetElementsByTagName("Cnpj")[0].InnerText;
+                    CNPJ = GetXMLElementInnertext("Cnpj");
                 }
                 catch
                 {
-                    CNPJ = ConteudoXML.GetElementsByTagName("cnpjPrestador")[0].InnerText;
+                    CNPJ = GetXMLElementInnertext("cnpjPrestador");
                 }
 
                 var numeroRPS = default(string);
-
-                numeroRPS = ConteudoXML.GetElementsByTagName("numeroRPS")[0]?.InnerText;
+                numeroRPS = GetXMLElementInnertext("numeroRPS");
 
                 var numeroNFSE = default(string);
-                numeroNFSE = ConteudoXML.GetElementsByTagName("numeroNFSE")[0]?.InnerText;
+                numeroNFSE = GetXMLElementInnertext("numeroNFSE");
 
                 var protocolo = default(string);
-                protocolo = ConteudoXML.GetElementsByTagName("protocolo")[0]?.InnerText;
+                protocolo = GetXMLElementInnertext("protocolo");
 
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS);
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroNFSE}", numeroNFSE);
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{protocolo}", protocolo);
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{codMunicipio}", codMunicipio);
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{CNPJ}", CNPJ);
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{hashValidador}", Configuracoes.MunicipioSenha);
+                // Replaces necessários para a comunicação com o webservice, deve estar antes da linha que altera o Codigo do Municipio
+                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS)
+                                                                         .Replace("{numeroNFSE}", numeroNFSE)
+                                                                         .Replace("{protocolo}", protocolo)
+                                                                         .Replace("{codMunicipio}", Configuracoes.CodigoMunicipio.ToString())
+                                                                         .Replace("{CNPJ}", CNPJ)
+                                                                         .Replace("{hashValidador}", Configuracoes.MunicipioSenha);
+
+                
+                Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
+
+            }
+
+            //Padrões com link unico, alteração para a dll buscar o arquivo de configuração em comum
+            if (Configuracoes.PadraoNFSe == PadraoNFSe.ABASE || 
+                Configuracoes.PadraoNFSe == PadraoNFSe.BETHA || 
+                Configuracoes.PadraoNFSe == PadraoNFSe.GINFES ||
+                Configuracoes.PadraoNFSe == PadraoNFSe.EQUIPLANO || 
+                Configuracoes.PadraoNFSe == PadraoNFSe.WEBFISCO)
+            {
+                //Municípios pontuais com configuração diferente:
+                //São José dos Pinhais - PR     |GINFES
+                //Varginha - MG                 |BETHA
+                //Fortaleza - CE                |GINFES
+                if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 3170701 || Configuracoes.CodigoMunicipio != 2304400)
+                {
+                    Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
+                }
             }
         }
+
+        private string GetXMLElementInnertext(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.InnerText;
+        private bool ExistTag(string tag) => ConteudoXML.GetElementsByTagName(tag)[0] != null;
+
 
         /// <summary>
         /// Ajustes no XMLs, depois de assinado.
@@ -228,19 +242,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
-            if (configuracao.PadraoNFSe == PadraoNFSe.ABASE || configuracao.PadraoNFSe == PadraoNFSe.BETHA || configuracao.PadraoNFSe == PadraoNFSe.GINFES ||
-                configuracao.PadraoNFSe == PadraoNFSe.MEMORY || configuracao.PadraoNFSe == PadraoNFSe.EQUIPLANO || configuracao.PadraoNFSe == PadraoNFSe.WEBFISCO)
-            {
-                //Municípios pontuais com configuração diferente:
-                //São José dos Pinhais - PR     |GINFES
-                //Varginha - MG                 |BETHA
-                //Fortaleza - CE                |GINFES
-                if (configuracao.CodigoMunicipio != 4125506 || configuracao.CodigoMunicipio != 3170701 || configuracao.CodigoMunicipio != 2304400)
-                {
-                    configuracao.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), configuracao.PadraoNFSe.ToString());
-                }
-            }
-
             base.Inicializar(conteudoXML, configuracao);
         }
 
