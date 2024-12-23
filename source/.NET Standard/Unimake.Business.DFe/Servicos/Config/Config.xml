@@ -1601,4 +1601,10 @@
 		<ArqConfig>CacoalRO.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3550605">
+		<Nome>São Roque - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoRoqueSP.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
