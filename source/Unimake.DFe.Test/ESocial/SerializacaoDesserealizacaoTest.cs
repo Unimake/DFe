@@ -1032,7 +1032,8 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos>(doc);
+            var eSocial = new Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos();
+            var xml = eSocial.LerXML<Business.DFe.Xml.ESocial.ESocialEnvioLoteEventos>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -1052,7 +1053,8 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Business.DFe.Xml.ESocial.Retorno.RetornoEnvioLote>(doc);
+            var eSocial = new Business.DFe.Xml.ESocial.Retorno.RetornoEnvioLote();
+            var xml = eSocial.LerXML<Business.DFe.Xml.ESocial.Retorno.RetornoEnvioLote>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
@@ -1073,7 +1075,8 @@ namespace Unimake.DFe.Test.ESocial
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var xml = XMLUtility.Deserializar<Business.DFe.Xml.ESocial.Retorno.RetornoEventoProcessado>(doc);
+            var eSocial = new Business.DFe.Xml.ESocial.Retorno.RetornoEventoProcessado();
+            var xml = eSocial.LerXML<Business.DFe.Xml.ESocial.Retorno.RetornoEventoProcessado>(doc);
             var doc2 = xml.GerarXML();
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
