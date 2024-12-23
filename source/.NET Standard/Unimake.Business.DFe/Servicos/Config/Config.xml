@@ -1595,4 +1595,10 @@
 		<ArqConfig>SaoCristovaoSE.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>		
 	</Arquivo>
+	<Arquivo ID="1100049">
+		<Nome>Cacoal - RO</Nome>
+		<UF>RO</UF>
+		<ArqConfig>CacoalRO.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

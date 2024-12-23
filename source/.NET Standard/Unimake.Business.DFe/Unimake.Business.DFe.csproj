@@ -1098,6 +1098,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CacoalRO.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <EmbeddedResource Include="Servicos\Config\DARE\AN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\DARE\Config.xml" />
 	  <EmbeddedResource Include="Servicos\Config\EFDReinf\AN.xml" />
