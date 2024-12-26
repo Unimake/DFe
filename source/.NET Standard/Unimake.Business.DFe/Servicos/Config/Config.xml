@@ -1607,4 +1607,10 @@
 		<ArqConfig>SaoRoqueSP.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4302352">
+		<Nome>Bom Princípio - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>BomPrincipioRS.xml</ArqConfig>
+		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
