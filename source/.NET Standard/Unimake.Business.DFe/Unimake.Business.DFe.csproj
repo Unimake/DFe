@@ -38,6 +38,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
 		<WarningsAsErrors>NU1605;CS1591</WarningsAsErrors>
+		<DefineConstants>$(DefineConstants);INTEROP</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
@@ -2815,7 +2816,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir)" IgnoreExitCode="true" />
+	  <Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir) $(OutputPath)" IgnoreExitCode="true" />
 	</Target>
 
 </Project>

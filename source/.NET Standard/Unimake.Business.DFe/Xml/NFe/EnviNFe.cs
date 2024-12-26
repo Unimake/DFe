@@ -914,7 +914,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeIEST() => !string.IsNullOrWhiteSpace(IEST);
 
-        public bool ShouldSerializeCNAE() => !string.IsNullOrWhiteSpace(CNAE);
+        public bool ShouldSerializeIM() =>!string.IsNullOrWhiteSpace(IM);
+
+        public bool ShouldSerializeCNAE() => !string.IsNullOrWhiteSpace(CNAE) && !string.IsNullOrWhiteSpace(IM);
 
         #endregion
     }
