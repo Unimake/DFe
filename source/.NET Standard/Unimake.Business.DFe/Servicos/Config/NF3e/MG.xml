@@ -72,12 +72,13 @@
 			<WebEnderecoProducao>https://nf3e.fazenda.mg.gov.br/nf3e/services/NF3eRetRecepcao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRetRecepcao/NF3eRetRecepcao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRetRecepcao/NF3eRetRecepcao</WebActionProducao>
-			<WebTagRetorno>NF3eRetRecepcaoResult</WebTagRetorno>
+			<WebTagRetorno>retConsReciNF3e</WebTagRetorno>
 			<SchemaArquivo>consReciNF3e_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nf3="http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRetRecepcao"><soap:Header/><soap:Body><nf3:nf3eDadosMsg>{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 		</RetAutorizacaoSinc>
 	</Servicos>
 </Configuracoes>

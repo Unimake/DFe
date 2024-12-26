@@ -128,7 +128,7 @@ namespace Unimake.DFe.Test.NF3e
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(retAutorizacao.Result.CUF.Equals(ufBrasil.ToString()), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(retAutorizacao.Result.CUF.ToString().Equals(ufBrasil.ToString()), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(retAutorizacao.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             if (retAutorizacao.Result.NRec != null && retAutorizacao.Result.NRec != "000000000000000" && retAutorizacao.Result.NRec != "0" && retAutorizacao.Result.NRec != "$numeroRecibo")
             {
