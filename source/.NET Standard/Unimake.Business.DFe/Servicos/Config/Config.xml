@@ -1613,4 +1613,10 @@
 		<ArqConfig>BomPrincipioRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3167202">
+		<Nome>Sete Lagoas - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SeteLagoasMG.xml</ArqConfig>
+		<PadraoNFSe>LIBRE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

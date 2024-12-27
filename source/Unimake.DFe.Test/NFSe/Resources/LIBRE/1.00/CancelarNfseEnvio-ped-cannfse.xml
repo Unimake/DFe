@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<Pedido>
+		<InfPedidoCancelamento>
+			<IdentificacaoNfse>
+				<Numero> tsNumeroNfse[Obrigatório] </Numero>
+				<CpfCnpj>
+					<Cpf> tsCpf[Obrigatório] </Cpf> 
+					<Cnpj> tsCnpj[Obrigatório] </Cnpj> 
+				</CpfCnpj>
+				<InscricaoMunicipal> tsInscricaoMunicipal[Opcional] </InscricaoMunicipal>
+				<CodigoMunicipio> tsCodigoMunicipioIbge[Obrigatório] </CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento> tsCodigoCancelamentoNfse[Obrigatório] </CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>

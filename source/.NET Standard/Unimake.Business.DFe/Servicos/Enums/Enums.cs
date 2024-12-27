@@ -6734,7 +6734,13 @@ namespace Unimake.Business.DFe.Servicos
         /// PRODEB
         /// </summary>
         [Description("PRODEB")]
-        PRODEB = 56
+        PRODEB = 56,
+
+        /// <summary>
+        /// LIBRE
+        /// </summary>
+        [Description("LIBRE")]
+        LIBRE =  57,
     }
 
     #endregion

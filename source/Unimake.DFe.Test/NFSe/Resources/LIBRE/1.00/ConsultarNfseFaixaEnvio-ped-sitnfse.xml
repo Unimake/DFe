@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<Prestador>
+		<CpfCnpj>
+			tcCpfCnpj[Obrigatório]
+			<Cpf>tsCpf[Obrigatório]</Cpf>
+			<Cnpj>tsCnpj[Obrigatório]</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+	</Prestador>
+	<Faixa>
+		<NumeroNfseInicial>tsNumeroNfse</NumeroNfseInicial>
+		<NumeroNfseFinal>tsNumeroNfse</NumeroNfseFinal>
+	</Faixa>
+</ConsultarNfseFaixaEnvio>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<IdentificacaoRps>
+		<Numero>12312312</Numero>
+		<Serie>1/Obrigatório</Serie>
+		<Tipo>tsTipoRps/Obrigatório</Tipo>
+	</IdentificacaoRps>
+	<Prestador>
+		<CpfCnpj>
+			<Cpf>tsCpf[Obrigatório]</Cpf> (Caso não haja CNPJ)
+			<Cnpj>tsCnpj[Obrigatório]</Cnpj> (Caso não haja CPF)
+		</CpfCnpj>
+		<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>

@@ -481,6 +481,7 @@
 		<None Remove="Servicos\Config\NFSe\SerafinaCorreaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SerraES.xml" />
 		<None Remove="Servicos\Config\NFSe\SertaozinhoSP.xml" />
+		<None Remove="Servicos\Config\NFSe\SeteLagoasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SimoesFilhoBA.xml" />
 		<None Remove="Servicos\Config\NFSe\SinopMT.xml" />
 		<None Remove="Servicos\Config\NFSe\SorocabaSP.xml" />
@@ -1186,6 +1187,9 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BomPrincipioRS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
