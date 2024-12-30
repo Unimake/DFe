@@ -422,6 +422,7 @@
 		<None Remove="Servicos\Config\NFSe\NovaSerranaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NovoHamburgoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\OlindaPE.xml" />
+		<None Remove="Servicos\Config\NFSe\OrizonaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\OuroFinoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PalmaresPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PantanoGrandeRS.xml" />
@@ -1190,6 +1191,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BomPrincipioRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\OrizonaGO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

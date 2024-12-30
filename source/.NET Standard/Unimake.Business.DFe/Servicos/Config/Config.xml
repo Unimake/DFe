@@ -1625,4 +1625,10 @@
 		<ArqConfig>SaoCarlosSP.xml</ArqConfig>
 		<PadraoNFSe>GIAP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5215306">
+		<Nome>Orizona - GO</Nome>
+		<UF>GO</UF>
+		<ArqConfig>OrizonaGO.xml</ArqConfig>
+		<PadraoNFSe>BSITBR</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
