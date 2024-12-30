@@ -1619,4 +1619,10 @@
 		<ArqConfig>SeteLagoasMG.xml</ArqConfig>
 		<PadraoNFSe>LIBRE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3548906">
+		<Nome>São Carlos - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoCarlosSP.xml</ArqConfig>
+		<PadraoNFSe>GIAP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
