@@ -34,34 +34,23 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         { 
             if (Configuracoes.PadraoNFSe == PadraoNFSe.MEMORY)
             {
-                var element = default(XmlElement);
-                element = ConteudoXML.LastChild.FirstChild as XmlElement;
+                var numeroRPS = GetXMLElementInnertext("numeroRPS");
+                var numeroNFSE = GetXMLElementInnertext("numeroNFSE");
+                var protocolo = GetXMLElementInnertext("protocolo");
+                var codMunicipio = GetXMLElementInnertext("codMunicipio");
 
-                var CNPJ = default(string);
-                try
+                if (codMunicipio == null && Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps)
                 {
-                    CNPJ = GetXMLElementInnertext("Cnpj");
+                    var nodeloteRps = ConteudoXML.GetElementsByTagName("LoteRps")?[0];
+                    codMunicipio = nodeloteRps.Attributes.GetNamedItem("codMunicipio").Value;
                 }
-                catch
-                {
-                    CNPJ = GetXMLElementInnertext("cnpjPrestador");
-                }
-
-                var numeroRPS = default(string);
-                numeroRPS = GetXMLElementInnertext("numeroRPS");
-
-                var numeroNFSE = default(string);
-                numeroNFSE = GetXMLElementInnertext("numeroNFSE");
-
-                var protocolo = default(string);
-                protocolo = GetXMLElementInnertext("protocolo");
 
                 // Replaces necessários para a comunicação com o webservice, deve estar antes da linha que altera o Codigo do Municipio
                 Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS)
                                                                          .Replace("{numeroNFSE}", numeroNFSE)
                                                                          .Replace("{protocolo}", protocolo)
-                                                                         .Replace("{codMunicipio}", Configuracoes.CodigoMunicipio.ToString())
-                                                                         .Replace("{CNPJ}", CNPJ)
+                                                                         .Replace("{codMunicipio}", codMunicipio)
+                                                                         .Replace("{cnpjPrestador}", Configuracoes.MunicipioUsuario)
                                                                          .Replace("{hashValidador}", Configuracoes.MunicipioSenha);
 
                 
@@ -86,6 +75,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 }
             }
         }
+
         private string GetXMLElementInnertext(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.InnerText;
 
         /// <summary>
