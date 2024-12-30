@@ -306,23 +306,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// no formato AAAA-MM (ou AAAA, se for relativa à folha de 13° salário). Se tpPgto = [2, 3], informar o mês/ano da 
         /// data de desligamento (ou de término), no formato AAAA-MM.
         /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerRef { get; set; }
-#else
-        public DateTimeOffset PerRef { get; set; }
-#endif
-
         [XmlElement("perRef")]
-        public string PerRefField
-        {
-            get => PerRef.ToString("yyyy-MM");
-#if INTEROP
-            set => PerRef = DateTime.Parse(value);
-#else
-            set => PerRef = DateTimeOffset.Parse(value);
-#endif
-        }
+        public string PerRef { get; set; }
 
         /// <summary>
         /// Identificador atribuído pela fonte pagadora para o demonstrativo de valores 

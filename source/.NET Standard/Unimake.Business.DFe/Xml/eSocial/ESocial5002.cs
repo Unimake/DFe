@@ -190,23 +190,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// <summary>
         /// Período de referência das informações, no formato AAAA-MM (ou AAAA, se for relativo a 13° salário)
         /// </summary>
-        [XmlIgnore]
-#if INTEROP
-        public DateTime PerRef { get; set; }
-#else
-        public DateTimeOffset PerRef { get; set; }
-#endif
-
         [XmlElement("perRef")]
-        public string PerRefField
-        {
-            get => PerRef.ToString("yyyy-MM");
-#if INTEROP
-            set => PerRef = DateTime.Parse(value);
-#else
-            set => PerRef = DateTimeOffset.Parse(value);
-#endif
-        }
+        public string PerRef { get; set; }
 
         /// <summary>
         /// Identificador atribuído pela fonte pagadora para o demonstrativo de valores devidos ao trabalhador
