@@ -21,6 +21,13 @@
 				<ideDmDev>str1234</ideDmDev>
 				<vrLiq>0.01</vrLiq>
 			</infoPgto>
+			<infoPgto>
+				<dtPgto>2022-01-01</dtPgto>
+				<tpPgto>1</tpPgto>
+				<perRef>2022</perRef>
+				<ideDmDev>str1234</ideDmDev>
+				<vrLiq>0.01</vrLiq>
+			</infoPgto>
 			<infoIRComplem>
 				<infoIRCR>
 					<tpCR>056107</tpCR>
