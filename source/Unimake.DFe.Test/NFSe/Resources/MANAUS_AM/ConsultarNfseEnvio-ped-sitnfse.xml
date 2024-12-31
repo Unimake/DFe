@@ -1,0 +1,24 @@
+<ConsultarNfseEnvio>
+	<Prestador>
+		<Cnpj>18575072000123</Cnpj>
+		<InscricaoMunicipal>854766</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>123456789</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2010-03-01</DataInicial>
+		<DataFinal>2010-03-25</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj>
+			<Cnpj>00584473000183</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>804104</InscricaoMunicipal>
+	</Tomador>
+	<IntermediarioServico>
+		<RazaoSocial>LAVA JATO CAMPEAO</RazaoSocial>
+		<CpfCnpj>
+			<Cnpj>00584473000183</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>804104</InscricaoMunicipal>
+	</IntermediarioServico>
+</ConsultarNfseEnvio>

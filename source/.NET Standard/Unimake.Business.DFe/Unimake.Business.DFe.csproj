@@ -397,6 +397,7 @@
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
+		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MaringaPR.xml" />
@@ -1013,6 +1014,8 @@
 		<None Remove="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
+		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
@@ -1185,6 +1188,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -2734,6 +2738,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\GINFES\xmldsig-core-schema_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\nfse_v2-04.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\ISSNET\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />

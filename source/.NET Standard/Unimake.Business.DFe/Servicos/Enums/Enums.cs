@@ -6741,6 +6741,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("LIBRE")]
         LIBRE =  57,
+
+        /// <summary>
+        /// MANAUS_AM
+        /// </summary>
+        [Description("MANAUS_AM")]
+        MANAUS_AM = 58,
     }
 
     #endregion

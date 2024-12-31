@@ -13,10 +13,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
 		<None Remove="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\EnviarLoteRPS-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 	</ItemGroup>
 
@@ -55,6 +63,7 @@
 
 	<ItemGroup>
 		<Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
+		<Folder Include="NFSe\Resources\NewFolder\" />
 	</ItemGroup>
 
 

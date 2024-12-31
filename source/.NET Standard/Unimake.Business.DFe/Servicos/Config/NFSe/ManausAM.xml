@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsev-prd.manaus.am.gov.br/nfsev/servlet/arecepcionarloterps</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse-prd.manaus.am.gov.br/nfse/servlet/arecepcionarloterps</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/ARECEPCIONARLOTERPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/ARECEPCIONARLOTERPS.Execute</WebActionProducao>
+			<SchemaArquivo>nfse_v2010.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRPS.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></RecepcionarLoteRPS.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRPS.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsev-prd.manaus.am.gov.br/nfsev/servlet/aconsultarloterps</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse-prd.manaus.am.gov.br/nfse/servlet/aconsultarloterps</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/ACONSULTARLOTERPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/ACONSULTARLOTERPS.Execute</WebActionProducao>
+			<SchemaArquivo>nfse_v2010.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarLoteRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRps.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfsev-prd.manaus.am.gov.br/nfsev/servlet/aconsultarnfseporrps</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse-prd.manaus.am.gov.br/nfse/servlet/aconsultarnfseporrps</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/ACONSULTARNFSEPORRPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/ACONSULTARNFSEPORRPS.Execute</WebActionProducao>
+			<SchemaArquivo>nfse_v2010.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfsePorRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRps.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao>https://nfsev-prd.manaus.am.gov.br/nfsev/servlet/aconsultarnfse</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse-prd.manaus.am.gov.br/nfse/servlet/aconsultarnfse</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/ACONSULTARNFSE.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/ACONSULTARNFSE.Execute</WebActionProducao>
+			<SchemaArquivo>nfse_v2010.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfse.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfse.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfse.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao>https://nfsev-prd.manaus.am.gov.br/nfsev/servlet/aconsultarsituacaoloterps</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse-prd.manaus.am.gov.br/nfse/servlet/aconsultarsituacaoloterps</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/ACONSULTARSITUACAOLOTERPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/ACONSULTARSITUACAOLOTERPS.Execute</WebActionProducao>
+			<SchemaArquivo>nfse_v2010.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho versao="201001"&gt;&lt;versaoDados&gt;V2010&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarSituacaoLoteRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarSituacaoLoteRps.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>

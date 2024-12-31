@@ -1631,4 +1631,10 @@
 		<ArqConfig>OrizonaGO.xml</ArqConfig>
 		<PadraoNFSe>BSITBR</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1302603">
+		<Nome>Manaus - AM</Nome>
+		<UF>AM</UF>
+		<ArqConfig>ManausAM.xml</ArqConfig>
+		<PadraoNFSe>MANAUS_AM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
