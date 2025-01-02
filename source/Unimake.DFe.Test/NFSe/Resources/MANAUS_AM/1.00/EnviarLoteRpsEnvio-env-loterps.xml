@@ -66,7 +66,7 @@
 							<Cep>78000000</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>99999999999999</Telefone>
+							<Telefone>99999999999</Telefone>
 							<Email>XXXXXXX@XXXXXXX.COM.BR</Email>
 						</Contato>
 					</Tomador>
@@ -132,7 +132,7 @@
 							<Cep>78000000</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>99999999999999</Telefone>
+							<Telefone>99999999999</Telefone>
 							<Email>XXXXXXX@XXXXXXX.COM.BR</Email>
 						</Contato>
 					</Tomador>
