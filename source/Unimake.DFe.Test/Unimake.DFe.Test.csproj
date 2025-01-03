@@ -20,11 +20,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarLoteRpsEnvio-ped-loterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarNfseEnvio-ped-sitnfse.xml" />
-		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
-		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\EnviarLoteRPS-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 	</ItemGroup>
 
