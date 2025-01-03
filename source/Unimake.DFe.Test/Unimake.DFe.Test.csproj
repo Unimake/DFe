@@ -7,8 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="NFSe\Resources\NewFolder\**" />
 		<Compile Remove="Properties\**" />
+		<EmbeddedResource Remove="NFSe\Resources\NewFolder\**" />
 		<EmbeddedResource Remove="Properties\**" />
+		<None Remove="NFSe\Resources\NewFolder\**" />
 		<None Remove="Properties\**" />
 	</ItemGroup>
 
@@ -58,7 +61,6 @@
 
 	<ItemGroup>
 		<Folder Include="NFSe\Resources\ADM_SISTEMAS\2.01\" />
-		<Folder Include="NFSe\Resources\NewFolder\" />
 	</ItemGroup>
 
 
