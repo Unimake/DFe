@@ -16,6 +16,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<None Remove="NFSe\Resources\MANAUS_AM\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
+		<None Remove="NFSe\Resources\MANAUS_AM\1.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarLoteRpsEnvio-ped-loterps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
 		<None Remove="NFSe\Resources\MANAUS_AM\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
@@ -23,6 +28,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\MANAUS_AM\1.00\EnviarLoteRpsEnvio-env-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\CancelarNfseEnvio-ped-cannfse.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\ConsultarLoteRpsEnvio-ped-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\ConsultarNfseEnvio-ped-sitnfse.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\ConsultarNfseRpsEnvio-ped-sitnfserps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\ConsultarSituacaoLoteRpsEnvio-ped-sitloterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\Exemplo-env-loterps.xml" />
+		<EmbeddedResource Include="NFSe\Resources\NATALENSE\1.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 		<EmbeddedResource Include="NFSe\Resources\SIMPLISS\3.00\EnviarLoteRpsEnvio-env-loterps.xml" />
 	</ItemGroup>
 

@@ -416,6 +416,7 @@
 		<None Remove="Servicos\Config\NFSe\MorrinhosGO.xml" />
 		<None Remove="Servicos\Config\NFSe\MossoroRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NACIONAL.xml" />
+		<None Remove="Servicos\Config\NFSe\NatalRN.xml" />
 		<None Remove="Servicos\Config\NFSe\NilopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaBassanoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
@@ -1018,6 +1019,8 @@
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<None Remove="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />
@@ -1191,6 +1194,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -2743,6 +2747,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\nfse_v2010.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\MANAUS_AM\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NACIONAL\tiposEventos_v1.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\NATALENSE\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOBESISTEMAS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\NOTAINTELIGENTE\nfse v2 02.xsd" />

@@ -1643,4 +1643,10 @@
 		<ArqConfig>FloresDaCunhaRS.xml</ArqConfig>
 		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2408102">
+		<Nome>Natal - RN</Nome>
+		<UF>RN</UF>
+		<ArqConfig>NatalRN.xml</ArqConfig>
+		<PadraoNFSe>NATALENSE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

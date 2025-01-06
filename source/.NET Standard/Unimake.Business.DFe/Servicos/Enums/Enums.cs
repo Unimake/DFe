@@ -6747,6 +6747,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("MANAUS_AM")]
         MANAUS_AM = 58,
+
+        /// <summary>
+        /// NATALENSE
+        /// </summary>
+        [Description("NATALENSE")]
+        NATALENSE = 59,
     }
 
     #endregion

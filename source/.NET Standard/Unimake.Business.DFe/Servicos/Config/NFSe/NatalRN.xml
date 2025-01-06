@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://wsnfsev1.natal.rn.gov.br:8444/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/RecepcionarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/RecepcionarLoteRpsRequest</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="https://wsnfsev1homologacao.natal.rn.gov.br:8443"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="https://wsnfsev1.natal.rn.gov.br:8444"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://wsnfsev1.natal.rn.gov.br:8444/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/CancelarNfseRequest</WebActionHomologacao>
+			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/CancelarNfseRequest</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="https://wsnfsev1homologacao.natal.rn.gov.br:8443"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="https://wsnfsev1.natal.rn.gov.br:8444"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://wsnfsev1.natal.rn.gov.br:8444/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/ConsultarLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/ConsultarLoteRpsRequest</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="https://wsnfsev1homologacao.natal.rn.gov.br:8443"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="https://wsnfsev1.natal.rn.gov.br:8444"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://wsnfsev1.natal.rn.gov.br:8444/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/ConsultarNfsePorRpsRequest</WebActionHomologacao>
+			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/ConsultarNfsePorRpsRequest</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="https://wsnfsev1homologacao.natal.rn.gov.br:8443"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="https://wsnfsev1.natal.rn.gov.br:8444"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<WebEnderecoHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://wsnfsev1.natal.rn.gov.br:8444/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/ConsultarNfseRequestRequest</WebActionHomologacao>
+			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/ConsultarNfseRequestRequest</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRequest xmlns="https://wsnfsev1homologacao.natal.rn.gov.br:8443"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRequest xmlns="https://wsnfsev1.natal.rn.gov.br:8444"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns2:ConsultarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consultar Situação Lote Rps</Descricao>
+			<WebEnderecoHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://wsnfsev1.natal.rn.gov.br:8444/axis2/services/NfseWSServiceV1?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/ConsultarSituacaoLoteRpsRequest</WebActionHomologacao>
+			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/ConsultarSituacaoLoteRpsRequest</WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsRequest xmlns="https://wsnfsev1homologacao.natal.rn.gov.br:8443"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarSituacaoLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsRequest xmlns="https://wsnfsev1.natal.rn.gov.br:8444"><Nfsecabecmsg xmlns="">&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="1" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"&gt;&lt;versaoDados&gt;1&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></ConsultarSituacaoLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns2:ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>
+
+
