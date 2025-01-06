@@ -345,6 +345,7 @@
 		<None Remove="Servicos\Config\NFSe\FeiraDeSantanaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\FernandopolisSP.xml" />
 		<None Remove="Servicos\Config\NFSe\FISCO.xml" />
+		<None Remove="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\FormosaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\FortalezaCE.xml" />
 		<None Remove="Servicos\Config\NFSe\FrancaSP.xml" />
@@ -1187,6 +1188,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
