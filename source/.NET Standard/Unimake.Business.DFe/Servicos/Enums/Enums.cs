@@ -7588,6 +7588,12 @@ namespace Unimake.Business.DFe.Servicos
     public enum ClassificacaoTributaria
     {
         /// <summary>
+        /// 00 - Utilizado para limpar a base de dados do contribuinte no ambiente produção restrita (homologação)
+        /// </summary>
+        [XmlEnum("00")]
+        RemoverContribuinte = 0,
+
+        /// <summary>
         /// 01 - Empresa enquadrada no regime de tributação Simples Nacional com tributação previdenciária substituída.
         /// </summary>
         [XmlEnum("01")]
