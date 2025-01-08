@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtConsolidContProc/v_S_01_03_00">
+	<evtConsolidContProc Id="ID1000000000000002017102608080800001">
+		<ideEvento>
+			<tpAmb>1</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>1.0</verProc>
+		</ideEvento>
+		<ideEmpregador>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideEmpregador>
+		<ideProc>
+			<nrProcTrab>123456789012345</nrProcTrab>
+			<perApurPgto>2025-01</perApurPgto>
+		</ideProc>
+	</evtConsolidContProc>
+</eSocial>

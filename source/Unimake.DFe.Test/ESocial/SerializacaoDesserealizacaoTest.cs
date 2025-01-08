@@ -789,6 +789,26 @@ namespace Unimake.DFe.Test.ESocial
         }
 
         /// <summary>
+        /// Testar a serialização e desserialização do Evento 2501 eSocial
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2555_evtConsolidContProc-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2555(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var eSocial = new Business.DFe.Xml.ESocial.ESocial2555();
+            var xml = eSocial.LerXML<Business.DFe.Xml.ESocial.ESocial2555>(doc);
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        /// <summary>
         /// Testar a serialização e desserialização do Evento 3000 eSocial
         /// </summary>
         [Theory]
