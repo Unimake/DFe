@@ -1081,6 +1081,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// </summary>
         [XmlElement("basesCp")]
         public BasesCp BasesCp { get; set; }
+
+        /// <summary>
+        /// Valores correspondentes às remunerações a título de 13º salário incluídas em folha mensal - Empresas desoneradas.
+        /// </summary>
+        [XmlElement("basesCp13")]
+        public BasesCp13 BasesCp13 { get; set; }
     }
 
     /// <summary>
@@ -1450,6 +1456,121 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeVrSuspBcCp25VAField() => VrSuspBcCp25VA > 0;
 
         #endregion ShouldSerialize
+    }
+
+    /// <summary>
+    /// Valores correspondentes às remunerações a título de 13º salário incluídas em folha mensal - Empresas desoneradas.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.BasesCp13")]
+    [ComVisible(true)]
+#endif
+    public class BasesCp13
+    {
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição previdenciária - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrBcCp00 { get; set; }
+
+        [XmlElement("vrBcCp00")]
+        public string VrBcCp00Field
+        {
+            get => VrBcCp00.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp00 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 15 anos de contribuição - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrBcCp15 { get; set; }
+
+        [XmlElement("vrBcCp15")]
+        public string VrBcCp15Field
+        {
+            get => VrBcCp15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp15 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 20 anos de contribuição - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrBcCp20 { get; set; }
+
+        [XmlElement("vrBcCp20")]
+        public string VrBcCp20FIeld
+        {
+            get => VrBcCp20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp20 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Preencher com a base de cálculo da contribuição adicional para o financiamento dos benefícios de aposentadoria especial após 25 anos de contribuição - Remuneração a título de 13º salário.        
+        /// </summary>
+        [XmlIgnore]
+        public double VrBcCp25 { get; set; }
+
+        [XmlElement("vrBcCp25")]
+        public string VrBcCp25Field
+        {
+            get => VrBcCp25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrBcCp25 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo com incidência suspensa em decorrência de decisão judicial - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrSuspBcCp00 { get; set; }
+
+        [XmlElement("vrSuspBcCp00")]
+        public string VrSuspBcCp00Field
+        {
+            get => VrSuspBcCp00.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp00 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial aos 15 anos de trabalho, com incidência suspensa em decorrência de decisão judicial - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrSuspBcCp15 { get; set; }
+
+        [XmlElement("vrSuspBcCp15")]
+        public string VrSuspBcCp15Field
+        {
+            get => VrSuspBcCp15.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp15 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador expectativa de aposentadoria especial aos 20 anos de trabalho, com incidência suspensa em decorrência de decisão judicial - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrSuspBcCp20 { get; set; }
+
+        [XmlElement("vrSuspBcCp20")]
+        public string VrSuspBcCp20Field
+        {
+            get => VrSuspBcCp20.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp20 = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor da base de cálculo da contribuição previdenciária adicional correspondente a exposição a agente nocivo que dá ao trabalhador direito a aposentadoria especial aos 25 anos de trabalho, com incidência suspensa em decorrência de decisão judicial - Remuneração a título de 13º salário.
+        /// </summary>
+        [XmlIgnore]
+        public double VrSuspBcCp25 { get; set; }
+
+        [XmlElement("vrSuspBcCp25")]
+        public string VrSuspBcCp25Field
+        {
+            get => VrSuspBcCp25.ToString("F2", CultureInfo.InvariantCulture);
+            set => VrSuspBcCp25 = Convert.ToDouble(value);
+        }
     }
 
     /// <summary>

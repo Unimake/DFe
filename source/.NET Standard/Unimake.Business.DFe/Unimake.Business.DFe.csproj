@@ -683,6 +683,7 @@
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtCdBenTerm.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtCessao.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtComProd.xsd" />
+		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtConsolidContProc.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtContProc.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtContratAvNP.xsd" />
 		<None Remove="Xml\Schemas\ESocial\S_01_03_00\evtCS.xsd" />
@@ -1788,6 +1789,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCdBenTerm.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCessao.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtComProd.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtConsolidContProc.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtContProc.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtContratAvNP.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\ESocial\S_01_03_00\evtCS.xsd" />
