@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Reinf xmlns="http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v2_01_02">
+	<evtInfoContri id="ID1000000000000002021052608080800001">
+		<ideEvento>
+			<tpAmb>2</tpAmb>
+			<procEmi>1</procEmi>
+			<verProc>RemoverContribuinte</verProc>
+		</ideEvento>
+		<ideContri>
+			<tpInsc>1</tpInsc>
+			<nrInsc>00000000000000</nrInsc>
+		</ideContri>
+		<infoContri>
+			<inclusao>
+				<idePeriodo>
+					<iniValid>2021-05</iniValid>
+				</idePeriodo>
+				<infoCadastro>
+					<classTrib>00</classTrib>
+					<indEscrituracao>1</indEscrituracao>
+					<indDesoneracao>1</indDesoneracao>
+					<indAcordoIsenMulta>1</indAcordoIsenMulta>
+					<contato>
+						<nmCtt>nmCtt1</nmCtt>
+						<cpfCtt>00000000000</cpfCtt>
+					</contato>
+					<softHouse>
+						<cnpjSoftHouse>00000000000000</cnpjSoftHouse>
+						<nmRazao>nmRazao1</nmRazao>
+						<nmCont>nmCont1</nmCont>
+					</softHouse>
+					<infoEFR>
+						<ideEFR>S</ideEFR>
+					</infoEFR>
+				</infoCadastro>
+			</inclusao>
+		</infoContri>
+	</evtInfoContri>
+</Reinf>
