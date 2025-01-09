@@ -186,6 +186,8 @@
 		<None Remove="Servicos\Config\NF3e\GO.xml" />
 		<None Remove="Servicos\Config\NF3e\MA.xml" />
 		<None Remove="Servicos\Config\NF3e\MG.xml" />
+		<None Remove="Servicos\Config\NF3e\MS.xml" />
+		<None Remove="Servicos\Config\NF3e\MT.xml" />
 		<None Remove="Servicos\Config\NF3e\PA.xml" />
 		<None Remove="Servicos\Config\NF3e\PB.xml" />
 		<None Remove="Servicos\Config\NF3e\PE.xml" />
@@ -1112,6 +1114,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\MS.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NF3e\MT.xml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CacoalRO.xml" />
 	</ItemGroup>
 

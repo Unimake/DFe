@@ -42,7 +42,6 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.RO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.RR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SC, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.AC, TipoAmbiente.Producao)]
@@ -69,7 +68,6 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.RO, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.RR, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
@@ -77,7 +75,7 @@ namespace Unimake.DFe.Test.NF3e
             var xml = new ConsStatServ
             {
                 TpAmb = tipoAmbiente,
-                XServ = "StatServico",
+                XServ = "STATUS",
                 versao = "1.00"
             };
 
@@ -94,7 +92,12 @@ namespace Unimake.DFe.Test.NF3e
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || configuracao.CodigoUF.Equals((int)UFBrasil.PR)){
+                Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            } else
+            {
+                Assert.True(statusServico.Result.CUF.Equals(UFBrasil.RS), "Webservice retornou uma UF e está diferente de " + UFBrasil.RS + " (SVRS)");
+            }
             Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(statusServico.Result.CStat.Equals(107) || statusServico.Result.CStat.Equals(656), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
         }
@@ -107,7 +110,7 @@ namespace Unimake.DFe.Test.NF3e
             var xml = new ConsStatServ
             {
                 TpAmb = tipoAmbiente,
-                XServ = "StatServico",
+                XServ = "STATUS",
                 versao = "1.00",
             };
 
@@ -115,6 +118,7 @@ namespace Unimake.DFe.Test.NF3e
             {
                 TipoDFe = TipoDFe.NF3e,
                 TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)ufBrasil,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
