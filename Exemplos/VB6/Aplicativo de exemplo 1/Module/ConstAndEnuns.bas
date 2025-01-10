@@ -169,3 +169,40 @@ Public Enum IndicadorIntermediario
     OperacaoSemIntermediador = 0
     OperacaoSitePlataformaTerceiro = 1
 End Enum
+
+Public Enum TipoIntegracaoPagamento
+    PagamentoIntegrado = 1
+    PagamentoNaoIntegrado = 2
+End Enum
+
+Public Enum BandeiraOperadoraCartao
+    Visa = 1 ' 01=Visa
+    Mastercard = 2 ' 02=Mastercard
+    AmericanExpress = 3 ' 03=American Express
+    Sorocred = 4 ' 04=Sorocred
+    DinersClub = 5 ' 05=Diners Club
+    Elo = 6 ' 06=Elo
+    Hipercard = 7 ' 07=Hipercard
+    Aura = 8 ' 08=Aura
+    Cabal = 9 ' 09=Cabal
+    Alelo = 10 ' 10=Alelo
+    BanesCard = 11 ' 11=Banes Card
+    CalCard = 12 ' 12=CalCard
+    Credz = 13 ' 13=Credz
+    Discover = 14 ' 14=Discover
+    GoodCard = 15 ' 15=GoodCard
+    GreenCard = 16 ' 16=GreenCard
+    Hiper = 17 ' 17=Hiper
+    JcB = 18 ' 18=JcB
+    Mais = 19 ' 19=Mais
+    MaxVan = 20 ' 20=MaxVan
+    Policard = 21 ' 21=Policard
+    RedeCompras = 22 ' 22=RedeCompras
+    Sodexo = 23 ' 23=Sodexo
+    ValeCard = 24 ' 24=ValeCard
+    Verocheque = 25 ' 25=Verocheque
+    VR = 26 ' 26=VR
+    Ticket = 27 ' 27=Ticket
+    Outros = 99 ' 99=Outros
+End Enum
+

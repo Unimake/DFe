@@ -227,9 +227,10 @@ Set GetCobr = result
 End Function
 
 Function GetPag()
-Dim result, DetPag
+Dim result, DetPag, oCard
 Set result = CreateObject("Unimake.Business.DFe.Xml.NFe.Pag")
 Set DetPag = CreateObject("Unimake.Business.DFe.Xml.NFe.DetPag")
+Set oCard = CreateObject("Unimake.Business.DFe.Xml.NFe.Card")
 
 With DetPag
     .TPag = 15
@@ -237,7 +238,20 @@ With DetPag
 End With
 DetPag.SetIndPag 1
 
+With oCard
+   .TpIntegra = TipoIntegracaoPagamento.PagamentoNaoIntegrado
+   '.CAut = ""
+   '.CNPJ = ""
+   '.TBand = BandeiraOperadoraCartao.Visa
+End With
+   
+DetPag.Card = oCard
+
 result.AddDetPag (DetPag)
+
+'Adicionar a tag de Troco
+result.vTroco = 0#
+
 Set GetPag = result
 End Function
 
