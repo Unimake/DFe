@@ -42,9 +42,9 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public UFBrasil CUF { get; set; }
 
         [XmlElement("cUF")]
-        public string CUFField
+        public int CUFField
         {
-            get => CUF.ToString();
+            get => (int)CUF;
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
