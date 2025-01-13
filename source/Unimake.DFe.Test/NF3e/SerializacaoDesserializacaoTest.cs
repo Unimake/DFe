@@ -35,7 +35,7 @@ namespace Unimake.DFe.Test.NF3e
         /// <param name="arqXML">Arquivo a ser desserializado</param>
         [Theory]
         [Trait("DFe", "NF3e")]
-        [InlineData(@"..\..\..\NF3e\Resources\nota_energia-ped-sta.xml")]
+        [InlineData(@"..\..\..\NF3e\Resources\consStatServ-ped-sta.xml")]
         public void SerializacaoDesserializacaoNF3eConsStatServ(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
