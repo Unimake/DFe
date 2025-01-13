@@ -1649,4 +1649,10 @@
 		<ArqConfig>NatalRN.xml</ArqConfig>
 		<PadraoNFSe>NATALENSE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2918407">
+		<Nome>Juazeiro - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>JuazeiroBA.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

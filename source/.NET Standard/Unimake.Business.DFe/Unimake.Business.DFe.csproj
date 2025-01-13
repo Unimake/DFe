@@ -393,6 +393,7 @@
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
 		<None Remove="Servicos\Config\NFSe\JoaoMonlevadeMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
+		<None Remove="Servicos\Config\NFSe\JuazeiroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
@@ -1201,6 +1202,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
