@@ -60,8 +60,9 @@
 			<TagAtributoID>infNF3e</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebTagRetorno>NF3eRecepcaoResult</WebTagRetorno>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
 			<GZIPCompress>true</GZIPCompress>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nf3="http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoSinc"><soap:Header/><soap:Body><nf3:nf3eDadosMsg>{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 			<UrlQrCodeHomologacao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
 			<UrlQrCodeProducao>https://portalsped.fazenda.mg.gov.br/portalnf3e/sistema/qrcode.xhtml</UrlQrCodeProducao>
 			<UrlChaveHomologacao>https://hportalsped.fazenda.mg.gov.br/portalnf3e</UrlChaveHomologacao>
