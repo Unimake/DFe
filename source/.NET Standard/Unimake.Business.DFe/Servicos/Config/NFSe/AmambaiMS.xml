@@ -46,10 +46,10 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura>Rps</TagLoteAssinatura>
-			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:gerarNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:gerarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ns3:gerarNfseResponse</WebTagRetorno>
