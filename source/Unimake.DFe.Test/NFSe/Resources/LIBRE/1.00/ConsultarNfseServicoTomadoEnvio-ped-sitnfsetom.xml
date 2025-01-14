@@ -2,45 +2,36 @@
 <ConsultarNfseServicoTomadoEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
 	<ConsultarNfseEnvio>
 		<Consulente>
-			tcIdentificacaoPessoaEmpresa
 			<CpfCnpj>
-				tcCpfCnpj[Obrigatório]
-				<Cpf>tsCpf[Obrigatório]</Cpf>
-				<Cnpj>tsCnpj[Obrigatório]</Cnpj>
+				<Cnpj>06117473000150</Cnpj>
 			</CpfCnpj>
-			<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+			<InscricaoMunicipal>123456</InscricaoMunicipal>
 		</Consulente>
-		<NumeroNfse>tsNumeroNfse/Obrigatório</NumeroNfse>
+		<NumeroNfse>1</NumeroNfse>
 		<PeriodoEmissao>
-			<DataInicial>date/Obrigatório</DataInicial>
-			<DataFinal></DataFinal>
+			<DataInicial>2024-01-15</DataInicial>
+			<DataFinal>2024-01-30</DataFinal>
 		</PeriodoEmissao>
 		<PeriodoCompetencia>
-			<DataInicial></DataInicial>
-			<DataFinal></DataFinal>
+			<DataInicial>2024-01-15</DataInicial>
+			<DataFinal>2024-01-30</DataFinal>
 			<Prestador>
 				<CpfCnpj>
-					tcCpfCnpj[Obrigatório]
-					<Cpf>tsCpf[Obrigatório]</Cpf>
-					<Cnpj>tsCnpj[Obrigatório]</Cnpj>
-				</CpfCnpj>
-				<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+				<Cnpj>06117473000150</Cnpj>
+			</CpfCnpj>
+			<InscricaoMunicipal>123456</InscricaoMunicipal>
 			</Prestador>
 			<Tomador>
 				<CpfCnpj>
-					tcCpfCnpj[Obrigatório]
-					<Cpf>tsCpf[Obrigatório]</Cpf>
-					<Cnpj>tsCnpj[Obrigatório]</Cnpj>
-				</CpfCnpj>
-				<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+				<Cnpj>06117473000150</Cnpj>
+			</CpfCnpj>
+			<InscricaoMunicipal>123456</InscricaoMunicipal>
 			</Tomador>
 			<Intermediario>
 				<CpfCnpj>
-					tcCpfCnpj[Obrigatório]
-					<Cpf>tsCpf[Obrigatório]</Cpf>
-					<Cnpj>tsCnpj[Obrigatório]</Cnpj>
-				</CpfCnpj>
-				<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+				<Cnpj>06117473000150</Cnpj>
+			</CpfCnpj>
+			<InscricaoMunicipal>123456</InscricaoMunicipal>
 			</Intermediario>
 		</PeriodoCompetencia>
 	</ConsultarNfseEnvio>

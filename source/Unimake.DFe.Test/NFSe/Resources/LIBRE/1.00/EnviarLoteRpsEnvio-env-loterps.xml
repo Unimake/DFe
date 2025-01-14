@@ -1,200 +1,84 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
 	<LoteRps>
-		[Obrigatório]
-		<NumeroLote> tsNumeroLote[Obrigatório]</NumeroLote>
+		<NumeroLote>1</NumeroLote>
 		<Prestador>
-			tcIdentificacaoPessoaEmpresa[Obrigatório]
 			<CpfCnpj>
-				tcCpfCnpj[Obrigatório]
-				<Cpf>tsCpf[Obrigatório]</Cpf>
-				<Cnpj>tsCnpj[Obrigatório]</Cnpj>
+				<Cnpj>06117473000150</Cnpj>
 			</CpfCnpj>
-			<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+			<InscricaoMunicipal>123456</InscricaoMunicipal>
 		</Prestador>
-		<QuantidadeRps>tsQuantidadeRps[Obrigatório]</QuantidadeRps>
+		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
 			<Rps>
-				tcDeclaracaoPrestacaoServico[Obrigatório]
 				<InfDeclaracaoPrestacaoServico>
-					tcInfDeclaracaoPrestacaoServico[Obrigatório]
 					<Rps>
-						tcInfRps[Opcional]
 						<IdentificacaoRps>
-							tcIdentificacaoRps[Opcional]
-							<Numero>tsNumeroRps[Obrigatório]</Numero>
-							<Serie>tsSerieRps[Obrigatório]</Serie>
-							<Tipo>tsTipoRps[Obrigatório]</Tipo>
+							<Numero>1</Numero>
+							<Serie>1</Serie>
+							<Tipo>T</Tipo>
 						</IdentificacaoRps>
-						<DataEmissao>Date[Obrigatório]</DataEmissao>
-						<Status>tsStatusRps[Obrigatório]</Status>
-						<RpsSubstituido>
-							tcIdentificacaoRps[Opcional]
-							<Numero>tsNumeroRps[Obrigatório]</Numero>
-							<Serie>tsSerieRps[Obrigatório]</Serie>
-							<Tipo>tsTipoRps[Obrigatório]</Tipo>
-						</RpsSubstituido>
+						<DataEmissao>2025-01-14</DataEmissao>
+						<Status>1</Status>
 					</Rps>
-					<Competencia>Date[Obrigatório]</Competencia>
+					<Competencia>2025-01-14</Competencia>
 					<Servico>
-						tcDadosServico[Obrigatório]
 						<Valores>
-							tcValoresDeclaracaoServico[Obrigatório]
-							<ValorServicos>tsValor[Obrigatório]</ValorServicos>
-							<ValorDeducoes>tsValor[Opcional]</ValorDeducoes>
-							<ValorPis>tsValor[Opcional]</ValorPis>
-							<ValorCofins>tsValor[Opcional]</ValorCofins>
-							<ValorInss>tsValor[Opcional]</ValorInss>
-							<ValorIr>tsValor[Opcional]</ValorIr>
-							<ValorCsll>tsValor[Opcional]</ValorCsll>
-							<OutrasRetencoes>tsValor[Opcional]</OutrasRetencoes>
-							<ValTotTributos>tsValor[Opcional]</ValTotTributos>
-							<ValorIss>tsValor[Opcional]</ValorIss>
-							<Aliquota>tsAliquota[Opcional]</Aliquota>
-							<DescontoIncondicionado>tsValor[Opcional]</DescontoIncondicionado>
-							<DescontoCondicionado>tsValor[Opcional]</DescontoCondicionado>
+							<ValorServicos>1.00</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<OutrasRetencoes>0.00</OutrasRetencoes>
+							<ValTotTributos>0.00</ValTotTributos>
+							<ValorIss>0.00</ValorIss>
+							<Aliquota>2.00</Aliquota>
+							<DescontoIncondicionado>0.00</DescontoIncondicionado>
+							<DescontoCondicionado>0.00</DescontoCondicionado>
 						</Valores>
-						<IssRetido>tsSimNao[Obrigatório]</IssRetido>
-						<ResponsavelRetencao>tsResponsavelRetencao[Opcional]</ResponsavelRetencao>
-						<ItemListaServico>tsItemListaServico[Obrigatório]</ItemListaServico>
-						<CodigoCnae>tsCodigoCnae[Opcional]</CodigoCnae>
-						<CodigoTributacaoMunicipio>
-							tsCodigoTributacao[Opcional]
-						</CodigoTributacaoMunicipio>
-						<CodigoNbs>tsCodigoNbs[Opcional]</CodigoNbs>
-						<Discriminacao>tsDiscriminacao[Obrigatório]</Discriminacao>
-						<CodigoMunicipio>tsCodigoMunicipioIbge[Obrigatório]</CodigoMunicipio>
-						<CodigoPais>tsCodigoPaisIbge[Opcional]</CodigoPais>
-						<ExigibilidadeISS>tsExigibilidadeISS[Obrigatório]</ExigibilidadeISS>
-						<IdentifNaoExigibilidade>
-							tsIdentifNaoExigibilidade[Opcional]
-						</IdentifNaoExigibilidade>
-						<MunicipioIncidencia>tsCodigoMunicipioIbge[Opcional]</MunicipioIncidencia>
-						<NumeroProcesso>tsNumeroProcesso[Opcional]</NumeroProcesso>
+						<IssRetido>1</IssRetido>
+						<ResponsavelRetencao>1</ResponsavelRetencao>
+						<ItemListaServico>12.11</ItemListaServico>
+						<CodigoCnae>1234567</CodigoCnae>
+						<CodigoTributacaoMunicipio>12345678901234567890</CodigoTributacaoMunicipio>
+						<CodigoNbs>123456789</CodigoNbs>
+						<Discriminacao>TESTE DE ENVIO (SEM CARACTERE ESPECIAL)</Discriminacao>
+						<CodigoMunicipio>1234567</CodigoMunicipio>
+						<CodigoPais>1058</CodigoPais>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
 					</Servico>
 					<Prestador>
-						tcIdentificacaoPessoaEmpresa[Obrigatório]
 						<CpfCnpj>
-							tcCpfCnpj[Obrigatório]
-							<Cpf>tsCpf[Obrigatório]</Cpf>
-							<Cnpj>tsCnpj[Obrigatório]</Cnpj>
+							<Cnpj>06117473000150</Cnpj>
 						</CpfCnpj>
-						<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+						<InscricaoMunicipal>123456</InscricaoMunicipal>
 					</Prestador>
 					<TomadorServico>
-						tcDadosTomador[Opcional]
 						<IdentificacaoTomador>
-							tcIdentificacaoPessoaEmpresa[Opcional]
 							<CpfCnpj>
-								tcCpfCnpj[Obrigatório]
-								<Cpf>tsCpf[Obrigatório]</Cpf>
-								<Cnpj>tsCnpj[Obrigatório]</Cnpj>
+								<Cnpj>12345678901234</Cnpj>
 							</CpfCnpj>
-							<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+							<InscricaoMunicipal>123456</InscricaoMunicipal>
 						</IdentificacaoTomador>
-						<NifTomador>tsNif[Opcional]</NifTomador>
-						<RazaoSocial>tsRazaoSocial[Obrigatório]</RazaoSocial>
+						<RazaoSocial>TESTE COM TOMADOR</RazaoSocial>
 						<Endereco>
-							tcEndereco[Obrigatório]
-							<Endereco>tsEndereco[Obrigatório]</Endereco>
-							<Numero>tsNumeroEndereco[Obrigatório]</Numero>
-							<Complemento>tsComplementoEndereco[Opcional]</Complemento>
-							<Bairro>tsBairro[Obrigatório]</Bairro>
-							<CodigoMunicipio>tsCodigoMunicipioIbge[Obrigatório]</CodigoMunicipio>
-							<Uf>tsUf[Obrigatório]</Uf>
-							<Cep>tsCep[Obrigatório]</Cep>
+							<Endereco>xxxxxxxxxxxxxxxxxxxxxxx</Endereco>
+							<Numero>xxxxxxxxxxxxxxxxxxxxxxx</Numero>
+							<Complemento>xxxxxxxxxxxxxxxxxxxxxxx</Complemento>
+							<Bairro>xxxxxxxxxxxxxxxxxxxxxxx</Bairro>
+							<CodigoMunicipio>1234567</CodigoMunicipio>
+							<Uf>PR</Uf>
+							<Cep>12345678</Cep>
 						</Endereco>
-						<EnderecoExterior>
-							tcEnderecoExterior[Obrigatório]
-							<CodigoPais>tsCodigoPaisIbge[Obrigatório]</CodigoPais>
-							<EnderecoCompletoExterior>
-								tsEnderecoCompletoExterior[Obrigatório]
-							</EnderecoCompletoExterior>
-						</EnderecoExterior>
 						<Contato>
-							tcContato[Opcional]
-							<Email>tsEmail[Obrigatório]</Email>
+							<Email>xxxxxxxxxxxxxx@zxxxxx.com</Email>
 						</Contato>
 					</TomadorServico>
-					<Intermediario>
-						tcDadosIntermediario[Opcional]
-						<IdentificacaoIntermediario>
-							tcIdentificacaoPessoaEmpresa[Obrigatório]
-							<CpfCnpj>
-								tcCpfCnpj[Obrigatório]
-								<Cpf>tsCpf[Obrigatório]</Cpf>
-								<Cnpj>tsCnpj[Obrigatório]</Cnpj>
-							</CpfCnpj>
-							<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
-						</IdentificacaoIntermediario>
-						<RazaoSocial>tsRazaoSocial[Obrigatório]</RazaoSocial>
-						<CodigoMunicipio>tsCodigoMunicipioIbge[Obrigatório]</CodigoMunicipio>
-					</Intermediario>
-					<ConstrucaoCivil>
-						tcDadosConstrucaoCivil[Opcional]
-						<CodigoObra>tsCodigoObra[Obrigatório]</CodigoObra>
-						<Art>tsArt[Opcional]</Art>
-					</ConstrucaoCivil>
-					<RegimeEspecialTributacao>
-						tsRegimeEspecialTributacao[Opcional]
-					</RegimeEspecialTributacao>
-					<OptanteSimplesNacional> tsSimNao[Obrigatório] </OptanteSimplesNacional>
-					<IncentivoFiscal> tsSimNao[Obrigatório] </IncentivoFiscal>
-					<Evento>
-						tcEvento[Opcional]
-						<IdentificacaoEvento> tsIdentificacaoEvento[Obrigatório] </IdentificacaoEvento>
-						<DescricaoEvento> tsDescricaoEvento[Opcional] </DescricaoEvento>
-					</Evento>
-					<InformacoesComplementares>
-						tsInformacoesComplementares[Opcional]
-					</InformacoesComplementares>
-					<Deducao>
-						tcDadosDeducao[Opcional]
-						<TipoDeducao>tsTipoDeducao[Obrigatório]</TipoDeducao>
-						<DescricaoDeducao>tsDescricaoDeducao[Opcional]</DescricaoDeducao>
-						<IdentificacaoDocumentoDeducao>
-							tcIdentificacaoDocumentoDeducao[Obrigatório]
-							<IdentificacaoNfse>
-								tcIdentificacaoNfseDeducao[Obrigatório]
-								<CodigoMunicipioGerador>
-									tsCodigoMunicipioIbge[Obrigatório]
-								</CodigoMunicipioGerador>
-								<NumeroNfse> tsNumeroNfse[Obrigatório] </NumeroNfse>
-								<CodigoVerificacao> tsCodigoVerificacao[Opcional] </CodigoVerificacao>
-							</IdentificacaoNfse>
-							<IdentificacaoNFe>
-								tcIdentificacaoNfeDeducao[Obrigatório]
-								<NumeroNfe>tsNumeroNfe[Obrigatório]</NumeroNfe>
-								<UfNfe>tsUf[Obrigatório]</UfNfe>
-								<ChaveAcessoNfe> tsChaveAcessoNfe[Opcional] </ChaveAcessoNfe>
-							</IdentificacaoNFe>
-							<OutroDocumento>
-								tcOutroDocumentoDeducao[Obrigatório]
-								<IdentificacaoDocumento>
-									tsIdentificacaoDocumento[Obrigatório]
-								</IdentificacaoDocumento>
-							</OutroDocumento>
-						</IdentificacaoDocumentoDeducao>
-						<DadosFornecedor>tcDadosFornecedor[Obrigatório]</DadosFornecedor>
-						<IdentificacaoFornecedor>
-							tcIdentificacaoFornecedor[Obrigatório] (se não
-							houver Fornecedor Exterior)
-							<CpfCnpj>
-								tcCpfCnpj[Obrigatório]
-								<Cpf>tsCpf[Obrigatório]</Cpf>
-								<Cnpj>tsCnpj[Obrigatório]</Cnpj>
-							</CpfCnpj>
-						</IdentificacaoFornecedor>
-						<FornecedorExterior>
-							tcFornecedorExterior[Obrigatório] (se não houver
-							Fornecedor Nacional)
-							<NifFornecedor>tsNif[Opcional]</NifFornecedor>
-							<CodigoPais> tsCodigoPaisIbge[Obrigatório]</CodigoPais>
-						</FornecedorExterior>
-						<DataEmissao> Date[Obrigatório] </DataEmissao>
-						<ValorDedutivel> tsValor[Obrigatório] </ValorDedutivel>
-						<ValorUtilizadoDeducao> tsValor[Obrigatório] </ValorUtilizadoDeducao>
-					</Deducao>
+					<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+					<OptanteSimplesNacional>1</OptanteSimplesNacional>
+					<IncentivoFiscal>1</IncentivoFiscal>
 				</InfDeclaracaoPrestacaoServico>
 			</Rps>
 		</ListaRps>

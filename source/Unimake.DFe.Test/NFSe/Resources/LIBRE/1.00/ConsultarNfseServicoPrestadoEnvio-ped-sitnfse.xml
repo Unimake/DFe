@@ -4,10 +4,10 @@ xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
 	<ConsultarNfseEnvio>
 		<Prestador>
 			<CpfCnpj>
-				<Cnpj>tsCnpj[Obrigatório]</Cnpj>
+				<Cnpj>06117473000150</Cnpj>
 			</CpfCnpj>
-			<InscricaoMunicipal>tsInscricaoMunicipal[Opcional]</InscricaoMunicipal>
+			<InscricaoMunicipal>123456</InscricaoMunicipal>
 		</Prestador>
-		<NumeroNfse>tsNumeroNfse[Obrigatório]</NumeroNfse>
+		<NumeroNfse>1</NumeroNfse>
 	</ConsultarNfseEnvio>
 </ConsultarNfseServicoPrestadoEnvio>

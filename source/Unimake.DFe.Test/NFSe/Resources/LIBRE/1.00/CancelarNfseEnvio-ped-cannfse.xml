@@ -3,15 +3,14 @@
 	<Pedido>
 		<InfPedidoCancelamento>
 			<IdentificacaoNfse>
-				<Numero> tsNumeroNfse[Obrigatório] </Numero>
+				<Numero>1</Numero>
 				<CpfCnpj>
-					<Cpf> tsCpf[Obrigatório] </Cpf> 
-					<Cnpj> tsCnpj[Obrigatório] </Cnpj> 
+					<Cnpj>06117473000150</Cnpj> 
 				</CpfCnpj>
-				<InscricaoMunicipal> tsInscricaoMunicipal[Opcional] </InscricaoMunicipal>
-				<CodigoMunicipio> tsCodigoMunicipioIbge[Obrigatório] </CodigoMunicipio>
+				<InscricaoMunicipal>123456</InscricaoMunicipal>
+				<CodigoMunicipio>1234567</CodigoMunicipio>
 			</IdentificacaoNfse>
-			<CodigoCancelamento> tsCodigoCancelamentoNfse[Obrigatório] </CodigoCancelamento>
+			<CodigoCancelamento>1</CodigoCancelamento>
 		</InfPedidoCancelamento>
 	</Pedido>
 </CancelarNfseEnvio>
