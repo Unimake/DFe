@@ -7,10 +7,10 @@
 	</IdentificacaoRps>
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>04642554000143</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>1570790</InscricaoMunicipal>
-		<Senha>12345678</Senha>
-		<FraseSecreta>123444sd654asd</FraseSecreta>
+		<InscricaoMunicipal>12345678</InscricaoMunicipal>
+		<Senha>1111111</Senha>
+		<FraseSecreta>sssssssss</FraseSecreta>
 	</Prestador>
 </ConsultarNfseRpsEnvio>

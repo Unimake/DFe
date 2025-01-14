@@ -3,9 +3,9 @@
 	<LoteRps Id="ID618" versao="2.01">
 		<NumeroLote>618</NumeroLote>
 		<CpfCnpj>
-			<Cnpj>24629230000182</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>1167700</InscricaoMunicipal>
+		<InscricaoMunicipal>12345678</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
 			<Rps>
@@ -43,27 +43,27 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>24629230000182</Cnpj>
+							<Cnpj>12345678901234</Cnpj>
 						</CpfCnpj>
-						<InscricaoMunicipal>1167700</InscricaoMunicipal>
-						<Senha>12345678</Senha>
-						<FraseSecreta>123444sd654asd</FraseSecreta>
+						<InscricaoMunicipal>12345678</InscricaoMunicipal>
+						<Senha>1111111</Senha>
+						<FraseSecreta>sssssssss</FraseSecreta>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cnpj>02446899000104</Cnpj>
+								<Cnpj>12345678901234</Cnpj>
 							</CpfCnpj>
 						</IdentificacaoTomador>
-						<RazaoSocial>TRANSPORTES BORGO S/A.</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxxxxxxxx.</RazaoSocial>
 						<Endereco>
-							<Endereco>AV. FAGUNDES FILHO, 141 - 1 ANDAR</Endereco>
+							<Endereco>xxxxxxxxxxxxxxx</Endereco>
 							<Numero>123</Numero>
-							<Bairro>SAO JUDAS</Bairro>
+							<Bairro>xxxxxxxxxxxxxxx</Bairro>
 							<CodigoMunicipio>3550308</CodigoMunicipio>
 							<Uf>SP</Uf>
 							<CodigoPais>1058</CodigoPais>
-							<Cep>87707010</Cep>
+							<Cep>12345678</Cep>
 						</Endereco>
 						<Contato>
 							<Telefone>.</Telefone>

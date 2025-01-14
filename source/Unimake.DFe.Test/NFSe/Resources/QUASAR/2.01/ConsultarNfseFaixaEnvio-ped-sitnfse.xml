@@ -2,11 +2,11 @@
 <ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>02446899000104</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>1167700</InscricaoMunicipal>
-		<Senha>Senha1</Senha>
-		<FraseSecreta>FraseSecreta1</FraseSecreta>
+		<InscricaoMunicipal>12345678</InscricaoMunicipal>
+		<Senha>1111111</Senha>
+		<FraseSecreta>sssssssss</FraseSecreta>
 	</Prestador>
 	<Faixa>
 		<NumeroNfseInicial>1</NumeroNfseInicial>

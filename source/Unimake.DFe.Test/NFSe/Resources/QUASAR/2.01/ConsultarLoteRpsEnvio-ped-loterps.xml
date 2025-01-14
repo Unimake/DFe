@@ -2,11 +2,11 @@
 <ConsultarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>04642554000143</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>1570790</InscricaoMunicipal>
-		<Senha>123456</Senha>
-		<FraseSecreta>123444sd654asd</FraseSecreta>
+		<InscricaoMunicipal>12345678</InscricaoMunicipal>
+		<Senha>1111111</Senha>
+		<FraseSecreta>sssssssss</FraseSecreta>
 	</Prestador>
-	<Protocolo>20170080450</Protocolo>
+	<Protocolo>1234567</Protocolo>
 </ConsultarLoteRpsEnvio>

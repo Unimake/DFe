@@ -46,18 +46,18 @@
 			</Servico>
 			<Prestador>
 				<CpfCnpj>
-					<Cnpj>24629230000182</Cnpj>
+					<Cnpj>12345678901234</Cnpj>
 				</CpfCnpj>
-				<InscricaoMunicipal>1167700</InscricaoMunicipal>
-				<Senha>Senha1</Senha>
-				<FraseSecreta>FraseSecreta1</FraseSecreta>
+				<InscricaoMunicipal>12345678</InscricaoMunicipal>
+				<Senha>1111111</Senha>
+				<FraseSecreta>sssssssss</FraseSecreta>
 			</Prestador>
 			<Tomador>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cnpj>02446899000104</Cnpj>
+						<Cnpj>12345678901234</Cnpj>
 					</CpfCnpj>
-					<InscricaoMunicipal>1167700</InscricaoMunicipal>
+					<InscricaoMunicipal>1234578</InscricaoMunicipal>
 				</IdentificacaoTomador>
 				<RazaoSocial>RazaoSocial1</RazaoSocial>
 				<Endereco>

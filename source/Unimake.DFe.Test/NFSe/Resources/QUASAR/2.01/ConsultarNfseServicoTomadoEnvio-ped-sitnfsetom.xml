@@ -2,7 +2,7 @@
 <ConsultarNfseServicoTomadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Consulente>
 		<CpfCnpj>
-			<Cnpj>06067665000107</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>000</InscricaoMunicipal>
 	</Consulente>
@@ -12,15 +12,15 @@
 	</PeriodoCompetencia>
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>60250776000191</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>000</InscricaoMunicipal>
-		<Senha>12345678</Senha>
-		<FraseSecreta>123444sd654asd</FraseSecreta>
+		<InscricaoMunicipal>12345678</InscricaoMunicipal>
+		<Senha>1111111</Senha>
+		<FraseSecreta>sssssssss</FraseSecreta>
 	</Prestador>
 	<Tomador>
 		<CpfCnpj>
-			<Cnpj>06067665000107</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>000</InscricaoMunicipal>
 	</Tomador>
