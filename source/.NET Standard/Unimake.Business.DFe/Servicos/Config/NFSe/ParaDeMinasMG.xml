@@ -3,7 +3,7 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="2.01">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -21,7 +21,7 @@
     </RecepcionarLoteRps>
     <RecepcionarLoteRpsSincrono versao="2.01">
       <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -39,7 +39,7 @@
     </RecepcionarLoteRpsSincrono>
     <GerarNfse versao="2.01">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -57,7 +57,7 @@
     </GerarNfse>
     <CancelarNfse versao="2.01">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -75,7 +75,7 @@
     </CancelarNfse>
     <SubstituirNfse versao="2.01">
       <Descricao>Substituir nota fiscal de Serviço</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -95,7 +95,7 @@
     </SubstituirNfse>
     <ConsultarLoteRps versao="2.01">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -113,7 +113,7 @@
     </ConsultarLoteRps>
     <ConsultarNfsePorRps versao="2.01">
       <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -131,7 +131,7 @@
     </ConsultarNfsePorRps>
     <ConsultarNfseServicoPrestado versao="2.01">
       <Descricao>Consulta NFSe de serviços prestados</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -149,7 +149,7 @@
     </ConsultarNfseServicoPrestado>
     <ConsultarNfseServicoTomado versao="2.01">
       <Descricao>Consulta NFSe de serviços tomados</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -167,7 +167,7 @@
     </ConsultarNfseServicoTomado>
     <ConsultarNfseFaixa versao="2.01">
       <Descricao>Consulta NFSe por Faixa</Descricao>
-      <WebEnderecoProducao>https://issqn.parademinas.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://parademinas.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
