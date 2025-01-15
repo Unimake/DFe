@@ -486,6 +486,30 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Autorização síncrona de NF3e")]
         NF3eAutorizacaoSinc = 79,
 
+        /// <summary>
+        /// 80 - Consulta status serviço NFCom (nota de comunicação)
+        /// </summary>
+        [Description("Consulta status do serviço da NFCom")]
+        NFComStatusServico = 80,
+
+        /// <summary>
+        /// 81 - Consulta protocolo da NFCom (nota de comunicação)
+        /// </summary>
+        [Description("Consulta situação da NFCom")]
+        NFComConsultaProtocolo = 81,
+
+        /// <summary>
+        /// 82 - Envio de Eventos da NFCom
+        /// </summary>
+        [Description("Envio de eventos da NFCom")]
+        NFComRecepcaoEvento = 82,
+
+        /// <summary>
+        /// 83 - Envio do XML de NFCom
+        /// </summary>d
+        [Description("Autorização síncrona de NFCom")]
+        NFComAutorizacaoSinc = 83,
+
         #endregion
 
         #region Gerais
@@ -571,6 +595,11 @@ namespace Unimake.Business.DFe.Servicos
         /// 14 - NF3e - Nota fiscal de energia eletrônica
         /// </summary>
         NF3e = 14,
+        /// <summary>
+        /// 15 - NFCom - Nota fiscal fatura de serviço de comunicação eletrônica
+        /// </summary>
+        NFCom = 15,
+
     }
 
     #endregion       
@@ -823,6 +852,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [XmlEnum("66")]
         NF3e = 66,
+
+        /// <summary>
+        /// NFCom (Modelo: 62)
+        /// </summary>
+        [XmlEnum("62")]
+        NFCom = 62,
     }
 
     #endregion
@@ -7070,6 +7105,34 @@ namespace Unimake.Business.DFe.Servicos
         NF3e = 32,
 
         #endregion NF3e
+
+        #region NFCom
+
+        /// <summary>
+        /// XML de consulta status do serviço da NFCom
+        /// </summary>
+        [Description("XML de consulta status do serviço da NFCom")]
+        NFComStatusServico = 33,
+
+        /// <summary>
+        /// XML de consulta situação da NFCom
+        /// </summary>
+        [Description("XML de consulta situação da NFCom")]
+        NFComConsultaSituacao = 34,
+
+        /// <summary>
+        /// XML de envio de evento da NFCom
+        /// </summary>
+        [Description("XML de envio de evento da NFCom")]
+        NFComEnvioEvento = 35,
+
+        /// <summary>
+        /// XML individual da NFCom
+        /// </summary>
+        [Description("XML individual da NFCom")]
+        NFCom = 36,
+
+        #endregion NFCom
 
         /// <summary>
         /// Não foi possível identificar o tipo do XML
