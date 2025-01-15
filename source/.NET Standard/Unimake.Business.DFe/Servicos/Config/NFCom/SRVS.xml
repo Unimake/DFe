@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFCom">
+		<StatusServico versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico/nfcomStatusServicoNF</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico/nfcomStatusServicoNF</WebActionProducao>
+			<SchemaArquivo>consStatServNFCom_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>Consulta situação da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta/nfcomConsultaNF</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta/nfcomConsultaNF</WebActionProducao>
+			<SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento/nfcomRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento/nfcomRecepcaoEvento</WebActionProducao>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancNFCom_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoNFCom</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RecepcaoEvento>
+		<AutorizacaoSinc versao="1.00">
+			<Descricao>Autorização síncrona da NFCom</Descricao>
+			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao/nfcomRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao/nfcomRecepcao</WebActionProducao>
+			<SchemaArquivo>NFCom_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>NFCom</TagAssinatura>
+			<TagAtributoID>infNFCom</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://dfe-portal.svrs.rs.gov.br/NFCom/qrCode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://dfe-portal.svrs.rs.gov.br/NFCom/qrCode</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://dfe-portal.svrs.rs.gov.br/NFCom/consulta</UrlChaveHomologacao>
+			<UrlChaveProducao>https://dfe-portal.svrs.rs.gov.br/NFCom/consulta</UrlChaveProducao>
+		</AutorizacaoSinc>
+	</Servicos>
+</Configuracoes>
