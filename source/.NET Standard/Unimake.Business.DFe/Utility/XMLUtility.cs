@@ -988,6 +988,27 @@ namespace Unimake.Business.DFe.Utility
 
                 #endregion NF3e
 
+                #region XML da NFCom
+
+                case "consStatServNFCom":
+                    tipoXML = TipoXML.NFComStatusServico;
+                    break;
+
+                case "consSitNFCom":
+                    tipoXML = TipoXML.NFComConsultaSituacao;
+                    break;
+
+                case "eventoNFCom":
+                    tipoXML = TipoXML.NFComEnvioEvento;
+                    break;
+
+                case "NFCom":
+                    tipoXML = TipoXML.NFCom;
+                    break;
+
+                #endregion XML da NFCom
+
+
                 default:
                     break;
             }
