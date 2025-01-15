@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<consSitNFCom versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<tpAmb>1</tpAmb>
+	<xServ>CONSULTAR</xServ>
+	<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+</consSitNFCom>
