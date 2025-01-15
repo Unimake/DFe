@@ -5,6 +5,9 @@ On Error GoTo erro
 Dim EnviNFe
 Dim Autorizacao
 Dim localConfig
+Dim ConteudoNFe
+Dim ConteudoInfNFe
+Dim chaveNFe
 
 Log.ClearLog
 
@@ -20,6 +23,11 @@ EnviNFe.AddNFe GetNFCe()
 
 Set Autorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFCe.Autorizacao")
 
+'Pegar a chave da nota fiscal
+Autorizacao.SetXMLConfiguracao (EnviNFe), (localConfig)
+Set ConteudoNFe = EnviNFe.GetNFe(0)
+Set ConteudoInfNFe = ConteudoNFe.GetInfNFe(0)
+chaveNFe = ConteudoInfNFe.Chave
 
 Autorizacao.Executar (EnviNFe), (localConfig)
 
