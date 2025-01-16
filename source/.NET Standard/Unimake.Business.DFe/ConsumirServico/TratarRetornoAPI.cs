@@ -34,6 +34,12 @@ namespace Unimake.Business.DFe
                 InternalServerError.LoadXml(StringToXml("O servidor retornou um erro (500) || Mensagem retornada:  " + responseString));
                 return InternalServerError;
             }
+            else if (Response.StatusCode == System.Net.HttpStatusCode.NotFound && Config.PadraoNFSe == PadraoNFSe.NACIONAL)
+            {
+                var naoEncontradoErro = new XmlDocument();
+                naoEncontradoErro.LoadXml(StringToXml("O servidor da Receita Federal retornou um erro (404) pois não encontrou a determinada nota no ambiente. " + responseString));
+                return naoEncontradoErro;
+            }
 
             var resultadoRetorno = new XmlDocument();
             var tipoRetorno = (string.IsNullOrWhiteSpace(Config.ResponseMediaType) ? Response.Content.Headers.ContentType.MediaType : Config.ResponseMediaType);
