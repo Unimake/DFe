@@ -33,7 +33,7 @@
 			<WebEnderecoProducao>https://nf3e.fazenda.pr.gov.br/nf3e/NF3eRecepcaoEvento?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento/NF3eRecepcaoEvento</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento/NF3eRecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<WebTagRetorno>nf3eRecepcaoEventoResult</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
 				<Tipo>

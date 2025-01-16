@@ -92,6 +92,9 @@ namespace Unimake.Business.DFe.Xml.NF3e
 #endif
     public class DetEvento
     {
+        [XmlAttribute("versaoEvento", DataType = "string")]
+        public string VersaoEvento { get; set; }
+
         [XmlElement("evCancNF3e", Namespace = "http://www.portalfiscal.inf.br/nf3e")]
         public EvCancNF3e EvCancNF3e { get; set; }
     }
