@@ -3,8 +3,7 @@
   <Servicos ID="NFSe">
     <RecepcionarLoteRps versao="2.01">
       <Descricao>Recepcionar Lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -22,8 +21,7 @@
     </RecepcionarLoteRps>
     <RecepcionarLoteRpsSincrono versao="2.01">
       <Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -41,8 +39,7 @@
     </RecepcionarLoteRpsSincrono>
     <GerarNfse versao="2.01">
       <Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -60,8 +57,7 @@
     </GerarNfse>
     <CancelarNfse versao="2.01">
       <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -79,8 +75,7 @@
     </CancelarNfse>
     <SubstituirNfse versao="2.01">
       <Descricao>Substituir nota fiscal de Serviço</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -100,8 +95,7 @@
     </SubstituirNfse>
     <ConsultarLoteRps versao="2.01">
       <Descricao>Consulta lote RPS</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -119,8 +113,7 @@
     </ConsultarLoteRps>
     <ConsultarNfsePorRps versao="2.01">
       <Descricao>Consulta NFSe por RPS</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -138,8 +131,7 @@
     </ConsultarNfsePorRps>
     <ConsultarNfseServicoPrestado versao="2.01">
       <Descricao>Consulta NFSe de serviços prestados</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -157,8 +149,7 @@
     </ConsultarNfseServicoPrestado>
     <ConsultarNfseServicoTomado versao="2.01">
       <Descricao>Consulta NFSe de serviços tomados</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
@@ -176,8 +167,7 @@
     </ConsultarNfseServicoTomado>
     <ConsultarNfseFaixa versao="2.01">
       <Descricao>Consulta NFSe por Faixa</Descricao>
-      <WebEnderecoHomologacao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://igarape.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
+      <WebEnderecoProducao>https://igarape.mg.issqn.quasar.srv.br/nfe/snissdigitalsvc</WebEnderecoProducao>
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse_v2_01.xsd</SchemaArquivo>
