@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abrasf.org.br/nfse.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico>
+			<Competencia>2018-07-07</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>1</ValorServicos>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ItemListaServico>1</ItemListaServico>
+				<Discriminacao>teste</Discriminacao>
+				<CodigoMunicipio>1</CodigoMunicipio>
+				<ExigibilidadeISS>3</ExigibilidadeISS>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>99999999999999</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>1</InscricaoMunicipal>
+			</Prestador>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>
