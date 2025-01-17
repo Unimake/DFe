@@ -2,9 +2,9 @@
 <ConsultarLoteRpsEnvio xmlns="http://nfse.abase.com.br/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cnpj>04642554000143</Cnpj>
+      <Cnpj>06117473000150</Cnpj>
     </CpfCnpj>
-    <InscricaoMunicipal>1570790</InscricaoMunicipal>
+    <InscricaoMunicipal>111</InscricaoMunicipal>
   </Prestador>
   <Protocolo>750</Protocolo>
 </ConsultarLoteRpsEnvio>

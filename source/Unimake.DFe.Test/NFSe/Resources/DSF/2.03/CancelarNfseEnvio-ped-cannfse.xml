@@ -5,9 +5,9 @@
 			<IdentificacaoNfse>
 				<Numero>63</Numero>
 				<CpfCnpj>
-					<Cnpj>0</Cnpj>
+					<Cnpj>12345678901234</Cnpj>
 				</CpfCnpj>
-				<InscricaoMunicipal>0</InscricaoMunicipal>
+				<InscricaoMunicipal>123456</InscricaoMunicipal>
 				<CodigoMunicipio>3552205</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>2</CodigoCancelamento>

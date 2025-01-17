@@ -4,9 +4,9 @@
 			<IdentificacaoNfse>
 				<Numero>42</Numero>
 				<CpfCnpj>
-					<Cnpj>10836254000106</Cnpj>
+					<Cnpj>12345678901234</Cnpj>
 				</CpfCnpj>
-				<InscricaoMunicipal>19497100</InscricaoMunicipal>
+				<InscricaoMunicipal>123456789</InscricaoMunicipal>
 				<CodigoMunicipio>3170206</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>2</CodigoCancelamento>

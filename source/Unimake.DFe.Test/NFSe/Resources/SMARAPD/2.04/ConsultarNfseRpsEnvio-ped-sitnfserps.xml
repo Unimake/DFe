@@ -8,9 +8,9 @@
 		</IdentificacaoRps>
 		<Prestador>
 			<CpfCnpj>
-				<Cnpj>12345678911144</Cnpj>
+				<Cnpj>06117473000150</Cnpj>
 			</CpfCnpj>
-			<InscricaoMunicipal>1541</InscricaoMunicipal>
+			<InscricaoMunicipal>22222</InscricaoMunicipal>
 		</Prestador>
 	</Pedido>
 </ConsultarNfseRpsEnvio>

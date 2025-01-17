@@ -6,7 +6,7 @@
     <tipos:Tipo>1</tipos:Tipo>
   </IdentificacaoRps>
   <Prestador>
-    <tipos:Cnpj>01234567890123</tipos:Cnpj>
+    <tipos:Cnpj>06117473000150</tipos:Cnpj>
     <tipos:InscricaoMunicipal>12345</tipos:InscricaoMunicipal>
   </Prestador>
 </ConsultarNfseRpsEnvio>

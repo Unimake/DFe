@@ -2,9 +2,9 @@
 <ConsultarLoteRpsEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cnpj>41941392000170</Cnpj>
+      <Cnpj>06117473000150</Cnpj>
     </CpfCnpj>
-    <InscricaoMunicipal>26177</InscricaoMunicipal>
+    <InscricaoMunicipal>11111</InscricaoMunicipal>
   </Prestador>
   <Protocolo>266835</Protocolo>
 </ConsultarLoteRpsEnvio>

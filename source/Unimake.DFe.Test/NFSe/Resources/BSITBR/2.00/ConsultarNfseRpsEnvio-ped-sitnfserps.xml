@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <p:ConsultarNfseRpsEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://www.abrasf.org.br/nfse.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abrasf.org.br/nfse.xsd nfse-v2.xsd ">
   <p:credenciais>
-    <p:usuario>11816286000102-302113401</p:usuario>
-    <p:senha>I8HCPss7</p:senha>
-    <p:chavePrivada>0358147c7d1814c7</p:chavePrivada>
+    <p:usuario>06117473000150-06117473000150</p:usuario>
+    <p:senha>wewewewewewewewe</p:senha>
+    <p:chavePrivada>115151515</p:chavePrivada>
   </p:credenciais>
   <p:IdentificacaoRps>
     <p:Numero>3</p:Numero>

@@ -2,9 +2,9 @@
 <ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cnpj>19900819000133</Cnpj>
+      <Cnpj>06117473000150</Cnpj>
     </CpfCnpj>
-    <InscricaoMunicipal>130305456</InscricaoMunicipal>
+    <InscricaoMunicipal>222222</InscricaoMunicipal>
   </Prestador>
   <Faixa>
     <NumeroNfseInicial>91</NumeroNfseInicial>

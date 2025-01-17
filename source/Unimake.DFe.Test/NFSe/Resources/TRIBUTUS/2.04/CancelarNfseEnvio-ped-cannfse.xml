@@ -3,11 +3,11 @@
 	<Pedido>
 		<InfPedidoCancelamento id="aadsgad">
 			<IdentificacaoNfse>
-				<Numero>190000000001030</Numero>
+				<Numero>1</Numero>
 				<CpfCnpj>
-					<Cnpj>49122386000101</Cnpj>
+					<Cnpj>06117473000150</Cnpj>
 				</CpfCnpj>
-				<InscricaoMunicipal>8472</InscricaoMunicipal>
+				<InscricaoMunicipal>123456</InscricaoMunicipal>
 				<CodigoMunicipio>4302105</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>1</CodigoCancelamento>

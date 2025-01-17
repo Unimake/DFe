@@ -5,8 +5,8 @@
 			<InfPedidoCancelamento Id="Id1">
 				<IdentificacaoNfse>
 					<Numero>1</Numero>
-					<Cnpj>38947884000169</Cnpj>
-					<InscricaoMunicipal>192285001</InscricaoMunicipal>
+					<Cnpj>12345678901234</Cnpj>
+					<InscricaoMunicipal>11111</InscricaoMunicipal>
 					<CodigoMunicipio>2925303</CodigoMunicipio>
 				</IdentificacaoNfse>
 				<CodigoCancelamento>1</CodigoCancelamento>

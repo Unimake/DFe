@@ -1,9 +1,9 @@
 <ConsultarLoteRpsEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>07568886000113</Cnpj>
+			<Cnpj>06117473000150</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
+		<InscricaoMunicipal>1111</InscricaoMunicipal>
 	</Prestador>
 	<Protocolo>37EAE2C7AC</Protocolo>
 </ConsultarLoteRpsEnvio>

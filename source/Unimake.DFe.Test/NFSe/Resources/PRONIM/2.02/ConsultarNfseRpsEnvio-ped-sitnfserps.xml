@@ -7,8 +7,8 @@
 	</IdentificacaoRps>
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>CNPJ_PRESTADOR</Cnpj>
+			<Cnpj>06117473000150</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>IM_PRESTADOR</InscricaoMunicipal>
+		<InscricaoMunicipal>123456</InscricaoMunicipal>
 	</Prestador>
 </ConsultarNfseRpsEnvio>

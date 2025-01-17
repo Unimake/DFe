@@ -10,9 +10,9 @@
   <IdentificacaoPrestador>
     <ChaveDigital>ChaveDigital___________________1</ChaveDigital>
     <CpfCnpj>
-      <Cpf>Cpf_______1</Cpf>
+      <Cpf>06117473000</Cpf>
     </CpfCnpj>
-    <InscricaoMunicipal>InscricaoMunicipal1</InscricaoMunicipal>
+    <InscricaoMunicipal>123456789</InscricaoMunicipal>
   </IdentificacaoPrestador>
   <Versao>Versao1</Versao>
 </ConsultarNfseRpsEnvio>

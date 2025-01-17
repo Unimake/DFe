@@ -3,11 +3,11 @@
   <Pedido xmlns="http://www.abrasf.org.br/nfse.xsd">
     <InfPedidoCancelamento Id="ID999999990001911733160024200900000000001">
       <IdentificacaoNfse>
-        <Numero>200900000000428</Numero>
+        <Numero>2</Numero>
         <CpfCnpj>
-          <Cnpj>99999999000191</Cnpj>
+          <Cnpj>12345678901234</Cnpj>
         </CpfCnpj>
-        <InscricaoMunicipal>1733160024</InscricaoMunicipal>
+        <InscricaoMunicipal>111111</InscricaoMunicipal>
         <CodigoMunicipio>3106200</CodigoMunicipio>
       </IdentificacaoNfse>
       <CodigoCancelamento>2</CodigoCancelamento>

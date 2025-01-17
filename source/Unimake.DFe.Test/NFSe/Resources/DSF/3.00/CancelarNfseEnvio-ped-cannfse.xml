@@ -4,8 +4,8 @@
 		<InfPedidoCancelamento Id="Id1" xmlns="http://www.ginfes.com.br/tipos_v03.xsd">
 			<IdentificacaoNfse>
 				<Numero>30</Numero>
-				<Cnpj>01646956000128</Cnpj>
-				<InscricaoMunicipal>18715</InscricaoMunicipal>
+				<Cnpj>12345678901234</Cnpj>
+				<InscricaoMunicipal>111111</InscricaoMunicipal>
 				<CodigoMunicipio>3132404</CodigoMunicipio>
 			</IdentificacaoNfse>
 			<CodigoCancelamento>1</CodigoCancelamento>

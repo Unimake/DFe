@@ -3,11 +3,11 @@
   <Pedido>
     <InfPedidoCancelamento Id="NFSE_202100000000041">
       <IdentificacaoNfse>
-        <Numero>202100000000041</Numero>
+        <Numero>1</Numero>
 		<CpfCnpj>
-		<Cnpj>41941392000170</Cnpj>
+		<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-        <InscricaoMunicipal>26177</InscricaoMunicipal>
+        <InscricaoMunicipal>111111</InscricaoMunicipal>
         <CodigoMunicipio>5100201</CodigoMunicipio>
       </IdentificacaoNfse>
       <CodigoCancelamento>4</CodigoCancelamento>
