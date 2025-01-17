@@ -24,7 +24,7 @@ namespace Unimake.DFe.Test.NFSe
         [Theory]
         [Trait("DFe", "NFSe")]
         [MemberData(nameof(Parametros))]
-        public void ConsultarNse(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
+        public void ConsultarNfse(TipoAmbiente tipoAmbiente, PadraoNFSe padraoNFSe, string versaoSchema, int codMunicipio)
         {
             var nomeXMLEnvio = "ConsultarNfseEnvio-ped-sitnfse.xml";
 
