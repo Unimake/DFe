@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <e:ConsultarNfseEnvio xmlns:e="http://www.betha.com.br/e-nota-contribuinte-ws">
   <Prestador>
-    <Cnpj>04642554000143</Cnpj>
-    <InscricaoMunicipal>1570790</InscricaoMunicipal>
+    <Cnpj>01234567890123</Cnpj>
+    <InscricaoMunicipal>22222</InscricaoMunicipal>
   </Prestador>
   <PeriodoEmissao>
     <DataInicial>2009-12-01</DataInicial>

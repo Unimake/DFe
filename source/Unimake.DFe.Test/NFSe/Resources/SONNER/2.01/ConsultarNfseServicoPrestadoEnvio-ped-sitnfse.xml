@@ -2,9 +2,9 @@
 <ConsultarNfseServicoPrestadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cnpj>01646956000128</Cnpj>
+      <Cnpj>06117473000150</Cnpj>
     </CpfCnpj>
-    <InscricaoMunicipal>18715</InscricaoMunicipal>
+    <InscricaoMunicipal>22222</InscricaoMunicipal>
   </Prestador>
   <NumeroNfse>1</NumeroNfse>
   <PeriodoEmissao>

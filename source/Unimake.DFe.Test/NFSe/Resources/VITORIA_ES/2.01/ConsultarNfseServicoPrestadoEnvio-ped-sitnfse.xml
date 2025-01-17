@@ -2,13 +2,10 @@
 <ConsultarNfseServicoPrestadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cnpj>06117473000150</Cnpj>
+      <Cnpj>99999999000199</Cnpj>
     </CpfCnpj>
+    <InscricaoMunicipal>123456</InscricaoMunicipal>
   </Prestador>
-  <NumeroNfse>61</NumeroNfse>
-  <PeriodoEmissao>
-    <DataInicial>2014-12-01</DataInicial>
-    <DataFinal>2014-12-31</DataFinal>
-  </PeriodoEmissao>
+  <NumeroNfse>000000000000000</NumeroNfse>
   <Pagina>1</Pagina>
 </ConsultarNfseServicoPrestadoEnvio>

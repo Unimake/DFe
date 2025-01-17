@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseRpsEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<IdentificacaoRps>
+		<Numero>000000</Numero>
+		<Serie>1</Serie>
+		<Tipo>1</Tipo>
+	</IdentificacaoRps>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+</ConsultarNfseRpsEnvio>

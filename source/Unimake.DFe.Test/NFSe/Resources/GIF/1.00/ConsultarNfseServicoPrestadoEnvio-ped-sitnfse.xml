@@ -1,9 +1,9 @@
 <ConsultarNfseServicoPrestadoEnvio>
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>91593376000102</Cnpj>
+			<Cnpj>06117473000150</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>31001042</InscricaoMunicipal>
+		<InscricaoMunicipal>22222</InscricaoMunicipal>
 	</Prestador>
 	<PeriodoEmissao>
 		<DataInicial>2011-01-01</DataInicial>

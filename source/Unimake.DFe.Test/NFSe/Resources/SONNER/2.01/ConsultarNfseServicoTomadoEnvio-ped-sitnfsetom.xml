@@ -2,7 +2,7 @@
 <ConsultarNfseServicoTomadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Consulente>
     <CpfCnpj>
-      <Cnpj>01646956000128</Cnpj>
+      <Cnpj>12345678901234</Cnpj>
     </CpfCnpj>
     <InscricaoMunicipal>18715</InscricaoMunicipal>
   </Consulente>

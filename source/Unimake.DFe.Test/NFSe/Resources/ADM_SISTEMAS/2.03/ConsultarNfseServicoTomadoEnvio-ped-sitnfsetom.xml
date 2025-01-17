@@ -1,7 +1,7 @@
 <ConsultarNfseServicoTomadoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Consulente>
 		<CpfCnpj>
-			<Cpf>72625701374</Cpf>
+			<Cpf>12345678901</Cpf>
 		</CpfCnpj>
 		<InscricaoMunicipal>999999</InscricaoMunicipal>
 	</Consulente>
@@ -12,7 +12,7 @@
 	</PeriodoEmissao>
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>31847389000139</Cnpj>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>111111</InscricaoMunicipal>
 	</Prestador>

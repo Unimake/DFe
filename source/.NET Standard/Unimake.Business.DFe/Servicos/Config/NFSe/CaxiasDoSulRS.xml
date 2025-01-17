@@ -137,7 +137,7 @@
 		</SolicitacaoInutilizacao>
 		<ConsultarNfseServicoTomado versao="1.00">
 			<Descricao>Consultar Lote Nota Fiscal Tomada</Descricao>
-			<WebEnderecoHomologacao>https://nfsehomol.caxias.rs.gov.br/portal/Servicos?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse.caxias.rs.gov.br/portal/Servicos?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>

@@ -2,20 +2,20 @@
 <ConsultarNfseServicoPrestadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cpf>09622412963</Cpf>
+      <Cpf>06117473000</Cpf>
     </CpfCnpj>
     <InscricaoMunicipal>12346</InscricaoMunicipal>
   </Prestador>
   <NumeroNfse>1</NumeroNfse>
   <Tomador>
     <CpfCnpj>
-      <Cpf>09622412943</Cpf>
+      <Cpf>06117473000</Cpf>
     </CpfCnpj>
     <InscricaoMunicipal>12344</InscricaoMunicipal>
   </Tomador>
   <Intermediario>
     <CpfCnpj>
-      <Cpf>09622412966</Cpf>
+      <Cpf>06117473000</Cpf>
     </CpfCnpj>
     <InscricaoMunicipal>12345</InscricaoMunicipal>
   </Intermediario>

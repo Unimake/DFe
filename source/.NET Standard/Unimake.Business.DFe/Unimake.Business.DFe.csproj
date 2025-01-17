@@ -541,6 +541,7 @@
 		<None Remove="Servicos\Config\NFSe\VeranopolisRS.xml" />
 		<None Remove="Servicos\Config\NFSe\VilaVelhaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VitoriaDaConquistaBA.xml" />
+		<None Remove="Servicos\Config\NFSe\VitoriaES.xml" />
 		<None Remove="Servicos\Config\NFSe\VoltaRedondaRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\Webfisco.xml" />
 		<None Remove="Servicos\Config\NFSe\XangriLaRS.xml" />
@@ -1116,6 +1117,8 @@
 		<None Remove="Xml\Schemas\NFSe\TRIBUTUS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\nfse_v202.xsd" />
 		<None Remove="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
+		<None Remove="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\procCCeNFe_v1.00.xsd" />
@@ -1491,6 +1494,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PiracicabaSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\VitoriaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\Webfisco.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -2894,6 +2898,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\VERSATEC\xmldsig-core-schema20020212.xsd">
 		  <SubType>Designer</SubType>
 		</EmbeddedResource>
+		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\nfse v2 01.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\VITORIA_ES\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\nfse_v2_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\WEBISS\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\SNCM\msgevtin_ver_0-01.xsd" />

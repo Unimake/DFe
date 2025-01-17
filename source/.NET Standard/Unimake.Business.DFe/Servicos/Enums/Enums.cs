@@ -6788,6 +6788,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("NATALENSE")]
         NATALENSE = 59,
+
+        /// <summary>
+        /// VITORIAS_ES
+        /// </summary>
+        [Description("VITORIA_ES")]
+        VITORIA_ES = 60,
     }
 
     #endregion
