@@ -7,25 +7,5 @@
 		<InscricaoMunicipal>1733160024</InscricaoMunicipal>
 	</Prestador>
 	<NumeroNfse>201700000000806</NumeroNfse>
-	<!--PeriodoEmissao>
-		<DataInicial>2009-09-28</DataInicial>
-		<DataFinal>2009-09-28</DataFinal>
-	</PeriodoEmissao>
-	<PeriodoCompetencia>
-		<DataInicial>2009-09-28</DataInicial>
-		<DataFinal>2009-09-28</DataFinal>
-	</PeriodoCompetencia>
-	<Tomador>
-		<CpfCnpj>
-			<Cpf>32934636810</Cpf>
-		</CpfCnpj>
-		<InscricaoMunicipal>1733160024</InscricaoMunicipal>
-	</Tomador>
-	<Intermediario>
-		<CpfCnpj>
-			<Cpf>32934636810</Cpf>
-		</CpfCnpj>
-		<InscricaoMunicipal>1733160024</InscricaoMunicipal>
-	</Intermediario-->
 	<Pagina>1</Pagina>
 </ConsultarNfseServicoPrestadoEnvio>

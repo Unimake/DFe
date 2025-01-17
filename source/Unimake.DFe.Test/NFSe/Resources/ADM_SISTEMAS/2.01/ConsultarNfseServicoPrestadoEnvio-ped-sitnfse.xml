@@ -1,7 +1,7 @@
 <ConsultarNfseServicoPrestadoEnvio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Prestador>
 		<CpfCnpj>
-			<Cnpj>31847389000139</Cnpj>
+			<Cnpj>06117473000150</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>111111</InscricaoMunicipal>
 	</Prestador>
@@ -12,7 +12,7 @@
 	</PeriodoEmissao>
 	<Tomador>
 		<CpfCnpj>
-			<Cpf>72625701374</Cpf>
+			<Cpf>06117473000</Cpf>
 		</CpfCnpj>
 		<InscricaoMunicipal>999999</InscricaoMunicipal>
 	</Tomador>

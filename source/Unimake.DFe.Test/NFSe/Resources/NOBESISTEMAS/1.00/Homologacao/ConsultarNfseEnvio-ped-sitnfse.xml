@@ -2,8 +2,8 @@
 <ConsultarNfse xmlns="https://portoseguro-ba.treino-issintegra.com.br/webservices/abrasf/api">
 	<ConsultarNfseEnvio xmlns="http:/www.abrasf.org.br/nfse.xsd">
 		<Prestador>
-			<Cnpj>38947884000169</Cnpj>
-			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+			<Cnpj>01234567890123</Cnpj>
+			<InscricaoMunicipal>012345678</InscricaoMunicipal>
 		</Prestador>
 		<NumeroNfse>1</NumeroNfse>
 		<PeriodoEmissao>
@@ -12,16 +12,16 @@
 		</PeriodoEmissao>
 		<Tomador>
 			<CpfCnpj>
-				<Cpf>86425048972</Cpf>
+				<Cpf>01234567890</Cpf>
 			</CpfCnpj>
-			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+			<InscricaoMunicipal>111111</InscricaoMunicipal>
 		</Tomador>
 		<IntermediarioServico>
 			<RazaoSocial>Teste</RazaoSocial>
 			<CpfCnpj>
-				<Cpf>86425048972</Cpf>
+				<Cpf>01234567890</Cpf>
 			</CpfCnpj>
-			<InscricaoMunicipal>192285001</InscricaoMunicipal>
+			<InscricaoMunicipal>3333333</InscricaoMunicipal>
 		</IntermediarioServico>
 	</ConsultarNfseEnvio>
 </ConsultarNfse>

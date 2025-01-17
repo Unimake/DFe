@@ -2,7 +2,7 @@
 <ConsultarNfseServicoPrestadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
   <Prestador>
     <CpfCnpj>
-      <Cnpj>45111111111100</Cnpj>
+      <Cnpj>06117473000150</Cnpj>
     </CpfCnpj>
   </Prestador>
   <NumeroNfse>61</NumeroNfse>

@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?><ConsultarNfseServicoTomadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abrasf.org.br/nfse.xsd nfse_v2.01.xsd "><Consulente><CpfCnpj><Cnpj>00000000000000</Cnpj></CpfCnpj><InscricaoMunicipal>0</InscricaoMunicipal></Consulente><NumeroNfse>0</NumeroNfse><PeriodoEmissao><DataInicial>2001-01-01</DataInicial><DataFinal>2001-01-01</DataFinal></PeriodoEmissao><Prestador><CpfCnpj><Cnpj>00000000000000</Cnpj></CpfCnpj><InscricaoMunicipal>0</InscricaoMunicipal></Prestador><Tomador><CpfCnpj><Cnpj>00000000000000</Cnpj></CpfCnpj><InscricaoMunicipal>0</InscricaoMunicipal></Tomador><Intermediario><CpfCnpj><Cnpj>00000000000000</Cnpj></CpfCnpj><InscricaoMunicipal>0</InscricaoMunicipal></Intermediario><Pagina>1</Pagina></ConsultarNfseServicoTomadoEnvio>
+<?xml version="1.0" encoding="UTF-8"?>
+<ConsultarNfseServicoTomadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abrasf.org.br/nfse.xsd nfse_v2.01.xsd ">
+	<Consulente>
+		<CpfCnpj>
+			<Cnpj>12345678901234</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+	</Consulente>
+	<NumeroNfse>0</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2001-01-01</DataInicial>
+		<DataFinal>2001-01-01</DataFinal>
+	</PeriodoEmissao>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>12345678901234</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+	</Prestador>
+	<Tomador>
+		<CpfCnpj>
+			<Cnpj>12345678901234</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+	</Tomador>
+	<Intermediario>
+		<CpfCnpj>
+			<Cnpj>12345678901234</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>0</InscricaoMunicipal>
+	</Intermediario>
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoTomadoEnvio>

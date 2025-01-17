@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConsultarNfseEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
   <Prestador>
-    <Cnpj>04642554000143</Cnpj>
+    <Cnpj>01234567890123</Cnpj>
     <InscricaoMunicipal>1570790</InscricaoMunicipal>
   </Prestador>
   <PeriodoEmissao>
@@ -12,7 +12,7 @@
     <Cnpj>99999999000191</Cnpj>
   </Tomador>
   <IntermediarioServico>
-    <Cpf>06783956911</Cpf>
+    <Cpf>01234567890</Cpf>
   </IntermediarioServico>
   <IdentificacaoRps>
     <Numero>00014</Numero>

@@ -1,7 +1,7 @@
 <ConsultarNfseEnvio>
 	<Prestador>
-		<Cnpj>18575072000123</Cnpj>
-		<InscricaoMunicipal>854766</InscricaoMunicipal>
+		<Cnpj>01234567890123</Cnpj>
+		<InscricaoMunicipal>123456</InscricaoMunicipal>
 	</Prestador>
 	<NumeroNfse>123456789</NumeroNfse>
 	<PeriodoEmissao>
@@ -10,15 +10,15 @@
 	</PeriodoEmissao>
 	<Tomador>
 		<CpfCnpj>
-			<Cnpj>00584473000183</Cnpj>
+			<Cnpj>01234567890123</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>804104</InscricaoMunicipal>
+		<InscricaoMunicipal>33333333</InscricaoMunicipal>
 	</Tomador>
 	<IntermediarioServico>
-		<RazaoSocial>LAVA JATO CAMPEAO</RazaoSocial>
+		<RazaoSocial>xxxxxxxxxxxxxx</RazaoSocial>
 		<CpfCnpj>
-			<Cnpj>00584473000183</Cnpj>
+			<Cnpj>01234567890123</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>804104</InscricaoMunicipal>
+		<InscricaoMunicipal>3333333</InscricaoMunicipal>
 	</IntermediarioServico>
 </ConsultarNfseEnvio>

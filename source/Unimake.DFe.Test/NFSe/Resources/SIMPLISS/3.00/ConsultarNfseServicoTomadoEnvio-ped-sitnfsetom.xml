@@ -13,11 +13,9 @@
 	</nfse:PeriodoCompetencia>
 	<nfse:Tomador>
 		<nfse:CpfCnpj>
-			<nfse:Cnpj>?</nfse:Cnpj>
-			<nfse:Cpf>?</nfse:Cpf>
+			<nfse:Cnpj>12345678901234</nfse:Cnpj>
 		</nfse:CpfCnpj>
-		<nfse:InscricaoMunicipal>?</nfse:InscricaoMunicipal>
-		<nfse:InscricaoEstadual>?</nfse:InscricaoEstadual>
+		<nfse:InscricaoMunicipal>12334</nfse:InscricaoMunicipal>
 	</nfse:Tomador>
-	<nfse:Pagina>?</nfse:Pagina>
+	<nfse:Pagina>1</nfse:Pagina>
 </sis:ConsultarNfseServicoTomadoEnvio>
