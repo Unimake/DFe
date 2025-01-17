@@ -3,10 +3,10 @@
   <Heranca>SVRS.xml</Heranca>
   <Servicos ID="NFCe">
     <Autorizacao versao="4.00">
-      <UrlQrCodeHomologacao>http://apps.sefaz.to.gov.br/portal-nfce-homologacao/qrcodeNFCe</UrlQrCodeHomologacao>
-      <UrlQrCodeProducao>http://apps.sefaz.to.gov.br/portal-nfce/qrcodeNFCe</UrlQrCodeProducao>
-      <UrlChaveHomologacao>http://homologacao.sefaz.to.gov.br/nfce/consulta.jsf</UrlChaveHomologacao>
-      <UrlChaveProducao>www.sefaz.to.gov.br/nfce/consulta</UrlChaveProducao>
+      <UrlQrCodeHomologacao>http://homologacao.sefaz.to.gov.br/nfce/qrcode</UrlQrCodeHomologacao>
+      <UrlQrCodeProducao>http://www.sefaz.to.gov.br/nfce/qrcode</UrlQrCodeProducao>
+      <UrlChaveHomologacao>http://homologacao.sefaz.to.gov.br/nfce/consulta</UrlChaveHomologacao>
+      <UrlChaveProducao>http://www.sefaz.to.gov.br/nfce/consulta</UrlChaveProducao>
     </Autorizacao>
   </Servicos>
 </Configuracoes>
