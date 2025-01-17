@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmMain 
    Caption         =   "Unimake.DFe Interop Tests"
    ClientHeight    =   11850
@@ -104,6 +104,9 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnuNFeValidarXML 
          Caption         =   "Validar XML"
+      End
+      Begin VB.Menu mnuNFeImportarXML 
+         Caption         =   "Importar XML NFe"
       End
    End
    Begin VB.Menu mnuNFCe 
@@ -365,6 +368,10 @@ End Sub
 
 Private Sub mnuNFe_Manifestar_Click()
 ManifestarNFe
+End Sub
+
+Private Sub mnuNFeImportarXML_Click()
+ImportarXMLNFe
 End Sub
 
 Private Sub mnuNFeValidarXML_Click()
