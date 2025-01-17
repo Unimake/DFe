@@ -180,10 +180,10 @@ namespace Unimake.DFe.Test.NFSe
         /// <summary>
         /// Analisa o resultado do testa para verificar se é satisfatório. Existem padrões com retornos negativos devido a sua autenticação de certificados digitais, autorização, etc..
         /// </summary>
-        /// <param name="o"> Objeto serviço a ser analisado </param>
-        public static void AnalisaResultado(object o)
+        /// <param name="item"> Objeto serviço a ser analisado </param>
+        public static void AnalisaResultado(object item)
         {
-            var servico = (ServicoBase)o;
+            var servico = (ServicoBase)item;
 
             // Precisei passar o executar aqui para dentro, por causa do padrão ADM_SISTEMAS.
             // O padrão necessita de autenticação de login e senha, porém a resposta em xml vem quebrada, gerando erro nos testes como estava antigamente.
@@ -191,26 +191,26 @@ namespace Unimake.DFe.Test.NFSe
             {
                 servico.Executar();
             }
-            catch
+            catch (Exception ex)
             {
-                //Este método irá analisar a comunicação HttpStatusCode,junto com os padrões...
-                //O padrão BAUHAUS (exemplo), retorna um código 500, porém com uma comunicação satisfatória.
-                //Caso queira verificar o motivo de algum erro ou comunicação não satisfatória (impedido por causa de autenticação de certificado ou login/senha),
-                //Comente as 4 linhas abaixo que irá gerar a mensagem
+                // Este método irá analisar a comunicação HttpStatusCode,junto com os padrões...
+                // O padrão BAUHAUS (exemplo), retorna um código 500, porém com uma comunicação satisfatória.
+                // Caso queira verificar o motivo de algum erro ou comunicação não satisfatória (impedido por causa de autenticação de certificado ou login/senha),
                 if (AnalisaComunicacao(servico))
                 {
                     return;
                 }
 
-                var message = string.Empty;//$"O padrão {servico.Configuracoes.PadraoNFSe}, no ambiente de {servico.Configuracoes.TipoAmbiente}, ";
+                var message = string.Empty;
 
-                if (servico.HttpStatusCode != HttpStatusCode.NotFound)
+                if (servico.HttpStatusCode != HttpStatusCode.NotFound &&
+                    !(ex.Message.Contains("404") || ex.Message.Contains("Not Found")))
                 {
-                    message = $"\nPadrão: {servico.Configuracoes.PadraoNFSe}\n" +
+                    message = $"\nMunicípio: {servico.Configuracoes.Nome}\n" +
+                              $"Código: {servico.Configuracoes.CodigoMunicipio}\n" +
                               $"Ambiente: {servico.Configuracoes.TipoAmbiente}\n" +
                               $"Utiliza autenticação: {servico.Configuracoes.LoginConexao} \n" +
-                              $"HttpCode: {(int)servico.HttpStatusCode} \n" +
-                              "Este contexto ";
+                              $"HttpCode: {(int)servico.HttpStatusCode} \n";
 
                     var result = VerificaContexto(servico);
 
@@ -221,8 +221,10 @@ namespace Unimake.DFe.Test.NFSe
                 }
                 else
                 {
-                    message = "Provavelmente este município mudou de padrão ou o link está errado! ";
+                    message = $"Provavelmente o município {servico.Configuracoes.Nome} mudou de padrão ou o link está errado! ";
                 }
+
+                message += $"\nErro original: {ex.Message}";
 
                 throw new Exception(message);
             }
@@ -231,21 +233,19 @@ namespace Unimake.DFe.Test.NFSe
 
         #region Private Methods
 
-        private static bool AnalisaComunicacao(ServicoBase o)
+        private static bool AnalisaComunicacao(ServicoBase servico)
         {
-            var servico = o;
-
             // Nesta parte, entendo que, alguns padrões retornam um HttpStatusCode diferente de 200 (OK), mesmo se a comunicação tenha sido satisfatória
             //Exemplo: BAUHAUS, precisa de um token válido
             if (servico.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return false;
             }
-            if (servico.HttpStatusCode == System.Net.HttpStatusCode.OK ||
+            else if (servico.HttpStatusCode == System.Net.HttpStatusCode.OK ||
                 (servico.HttpStatusCode == HttpStatusCode.InternalServerError && servico.Configuracoes.PadraoNFSe == PadraoNFSe.BAUHAUS) ||
                 servico.HttpStatusCode == (HttpStatusCode)0 && servico.Configuracoes.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS ||
-                servico.HttpStatusCode == HttpStatusCode.BadRequest && 
-                    (servico.Configuracoes.PadraoNFSe == PadraoNFSe.NACIONAL 
+                servico.HttpStatusCode == HttpStatusCode.BadRequest &&
+                    (servico.Configuracoes.PadraoNFSe == PadraoNFSe.NACIONAL
                     || servico.Configuracoes.PadraoNFSe == PadraoNFSe.CENTI
                     || servico.Configuracoes.PadraoNFSe == PadraoNFSe.DSF
                     || servico.Configuracoes.PadraoNFSe == PadraoNFSe.AGILI) ||
@@ -259,44 +259,41 @@ namespace Unimake.DFe.Test.NFSe
 
         private static string VerificaContexto(ServicoBase servicoBase)
         {
-            var servico = servicoBase;
-
             var message = string.Empty;
 
-            switch (servico.Configuracoes.PadraoNFSe, servico.Configuracoes.TipoAmbiente)
+            switch (servicoBase.Configuracoes.PadraoNFSe, servicoBase.Configuracoes.TipoAmbiente)
             {
                 case (PadraoNFSe.FIORILLI, TipoAmbiente.Producao):
                 case (PadraoNFSe.SYSTEMPRO, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.SYSTEMPRO, TipoAmbiente.Producao):
-                    message += "necessita de um certificado digital autorizado para consumir o Webservice";
+                    message += "Este contexto necessita de um certificado digital autorizado para consumir o Webservice\n";
                     break;
 
                 case (PadraoNFSe.BAUHAUS, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.BAUHAUS, TipoAmbiente.Producao):
                 case (PadraoNFSe.ADM_SISTEMAS, TipoAmbiente.Homologacao):
                 case (PadraoNFSe.AVMB, TipoAmbiente.Producao):
-                    message += "necessita de uma autenticação válida";
+                    message += "Este contexto necessita de uma autenticação válida\n";
                     break;
 
                 case (PadraoNFSe.TINUS, TipoAmbiente.Producao):
                 case (PadraoNFSe.TINUS, TipoAmbiente.Homologacao):
-                    if (servico.Configuracoes.Servico == Servico.NFSeCancelarNfse || servico.Configuracoes.Servico == Servico.NFSeConsultarNfse)
+                    if (servicoBase.Configuracoes.Servico == Servico.NFSeCancelarNfse || servicoBase.Configuracoes.Servico == Servico.NFSeConsultarNfse)
                     {
-                        message += "necessita de dados reais para retorno correto da prefeitura.";
+                        message += "Este contexto necessita de dados reais para retorno correto da prefeitura.\n";
                     }
 
                     break;
 
                 case (PadraoNFSe.WEBFISCO, TipoAmbiente.Producao):
-                    message += "retornou erro 500 do servidor, podendo ser problema de comunicação ou informação não real no XML.";
+                    message += "Este contexto retornou erro 500 do servidor, podendo ser problema de comunicação ou informação não real no XML.\n";
                     break;
 
-                default:
-                    message += "ainda não possui o erro catalogado!";
-                    break;
             }
+
             return message;
         }
+
         #endregion
     }
 
