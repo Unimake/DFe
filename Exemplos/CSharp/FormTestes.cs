@@ -1685,11 +1685,11 @@ namespace TreinamentoDLL
                                 Versao = "4.00",
                                 Ide = new XmlNFe.Ide
                                 {
-                                    CUF = UFBrasil.MG,
+                                    CUF = UFBrasil.PR,
                                     NatOp = "VENDA PRODUC.DO ESTABELEC",
                                     Mod = ModeloDFe.NFe,
-                                    Serie = 1,
-                                    NNF = 57990,
+                                    Serie = 59,
+                                    NNF = 1,
                                     DhEmi = DateTime.Now,
                                     DhSaiEnt = DateTime.Now,
                                     TpNF = TipoOperacao.Saida,
@@ -1849,7 +1849,7 @@ namespace TreinamentoDLL
 
 
             //Gravar o arquivo do conteúdo retornado em uma pasta qualquer para ter em segurança. Pode-se também gravar na base de dados. Fica a critério de cada um.
-            File.WriteAllText(@"c:\testenfe\retorno\nomearquivoretorno.xml", autorizacao.RetornoWSString);
+            File.WriteAllText(@"d:\testenfe\retorno\nomearquivoretorno.xml", autorizacao.RetornoWSString);
 
             if (autorizacao.Result.ProtNFe != null)
             {
@@ -1862,7 +1862,7 @@ namespace TreinamentoDLL
                     case 301: //Uso Denegado: Irregularidade fiscal do emitente
                     case 302: //Uso Denegado: Irregularidade fiscal do destinatário
                     case 303: //Uso Denegado: Destinatário não habilitado a operar na UF
-                        autorizacao.GravarXmlDistribuicao(@"c:\testenfe\");
+                        autorizacao.GravarXmlDistribuicao(@"D:\testenfe\");
                         var docProcNFe = autorizacao.NfeProcResult.GerarXML().OuterXml; //Gerar o Objeto para pegar a string e gravar em banco de dados
                         MessageBox.Show(autorizacao.NfeProcResult.NomeArquivoDistribuicao);
                         break;
@@ -2198,7 +2198,7 @@ namespace TreinamentoDLL
                         CProd = "01042",
                         CEAN = "SEM GTIN",
                         XProd = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",
-                        NCM = "184714900", //84714900
+                        NCM = "84714900", //84714900
                         CFOP = "6101",
                         UCom = "LU",
                         QCom = 1.00m,
@@ -2211,54 +2211,54 @@ namespace TreinamentoDLL
                         IndTot = SimNao.Sim,
                         XPed = "300474",
                         NItemPed = "1",
-                        DI = new List<DI>
-                        {
-                            new DI
-                            {
-                                Adi = new List<Adi>
-                                {
-                                    new Adi
-                                    {
-                                        CFabricante = "",
-                                        NDraw = ""
-                                    },
-                                    new Adi
-                                    {
-                                        CFabricante = "",
-                                        NDraw = ""
-                                    }
-                                },
-                                CExportador = "",
-                                CNPJ = "",
-                                DDesemb = DateTime.Now,
-                                DDI = DateTime.Now,
-                                TpViaTransp = ViaTransporteInternacional.Rodoviaria,
-                                TpIntermedio = FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
-                            },
-                            new DI
-                            {
-                                Adi = new List<Adi>
-                                {
-                                    new Adi
-                                    {
-                                        CFabricante = "",
-                                        NDraw = ""
-                                    },
-                                    new Adi
-                                    {
-                                        CFabricante = "",
-                                        NDraw = ""
-                                    }
-                                },
-                                CExportador = "",
-                                CNPJ = "00000000000000",
-                                NDI = "111",
-                                DDesemb = DateTime.Now,
-                                DDI = DateTime.Now,
-                                TpViaTransp = ViaTransporteInternacional.Rodoviaria,
-                                TpIntermedio = FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
-                            },
-                        }
+                        //DI = new List<DI>
+                        //{
+                        //    new DI
+                        //    {
+                        //        Adi = new List<Adi>
+                        //        {
+                        //            new Adi
+                        //            {
+                        //                CFabricante = "",
+                        //                NDraw = ""
+                        //            },
+                        //            new Adi
+                        //            {
+                        //                CFabricante = "",
+                        //                NDraw = ""
+                        //            }
+                        //        },
+                        //        CExportador = "",
+                        //        CNPJ = "",
+                        //        DDesemb = DateTime.Now,
+                        //        DDI = DateTime.Now,
+                        //        TpViaTransp = ViaTransporteInternacional.Rodoviaria,
+                        //        TpIntermedio = FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
+                        //    },
+                        //    new DI
+                        //    {
+                        //        Adi = new List<Adi>
+                        //        {
+                        //            new Adi
+                        //            {
+                        //                CFabricante = "",
+                        //                NDraw = ""
+                        //            },
+                        //            new Adi
+                        //            {
+                        //                CFabricante = "",
+                        //                NDraw = ""
+                        //            }
+                        //        },
+                        //        CExportador = "",
+                        //        CNPJ = "00000000000000",
+                        //        NDI = "111",
+                        //        DDesemb = DateTime.Now,
+                        //        DDI = DateTime.Now,
+                        //        TpViaTransp = ViaTransporteInternacional.Rodoviaria,
+                        //        TpIntermedio = FormaImportacaoIntermediacao.ImportacaoPorContaOrdem
+                        //    },
+                        //}
 
                     },
                     Imposto = new XmlNFe.Imposto
@@ -2272,14 +2272,14 @@ namespace TreinamentoDLL
                                 PCredSN = 2.8255,
                                 VCredICMSSN = 2.40
                             },
-                            ICMS02 = new XmlNFe.ICMS02
-                            {
-                                Orig = OrigemMercadoria.Nacional,
-                                CST = "02",
-                                QBCMono = 500,
-                                AdRemICMS = 1.1234,
-                                VICMSMono = 9.999
-                            }
+                            //ICMS02 = new XmlNFe.ICMS02
+                            //{
+                            //    Orig = OrigemMercadoria.Nacional,
+                            //    CST = "02",
+                            //    QBCMono = 500,
+                            //    AdRemICMS = 1.1234,
+                            //    VICMSMono = 9.999
+                            //}
                         },
                         PIS = new XmlNFe.PIS
                         {
