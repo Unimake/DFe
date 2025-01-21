@@ -186,8 +186,16 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF && Configuracoes.EncriptaTagAssinatura)
                 {
-                    var sh1 = Criptografia.GetSHA1HashData(ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText);
-                    ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                    var conteudoTagAssinatura = ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText;
+
+                    // O formato esperado do hash SHA-1 é 40 caracteres
+                    // Se vier encriptado, vamos fazer nada
+                    if (conteudoTagAssinatura.Length > 40)
+                    {
+                        var sh1 = Criptografia.GetSHA1HashData(conteudoTagAssinatura);
+
+                        ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                    }
                 }
 
                 VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
