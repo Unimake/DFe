@@ -25,5 +25,23 @@ namespace Unimake.DFe.Test.NFCom
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(@"..\..\..\NFCom\Resources\protNFCom.xml")]
+        public void SerializacaoDesserializacaoProtNFCom(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var nfCom = new Unimake.Business.DFe.Xml.NFCom.ProtNFCom();
+            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.ProtNFCom>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
     }
 }
