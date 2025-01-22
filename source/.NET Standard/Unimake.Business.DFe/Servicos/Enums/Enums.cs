@@ -1583,7 +1583,7 @@ namespace Unimake.Business.DFe.Servicos
         ContingenciaOffLine = 9,
 
         /// <summary>
-        /// 2 - Contingência off-line da NF3e
+        /// 2 - Contingência off-line da NF3e e da NFCom
         /// </summary>
         [XmlEnum("2")]
         ContingenciaOfflineNF3e = 10
@@ -15040,10 +15040,10 @@ namespace Unimake.Business.DFe.Servicos
         AliquotaDiferenciada = 02,
 
         /// <summary>
-        /// 06 – Tributável com alíquota erro
+        /// 06 – Tributável com alíquota zero
         /// </summary>
         [XmlEnum("06")]
-        AliquotaComErro = 06,
+        AliquotaZero = 06,
 
         /// <summary>
         /// 07 – Operação isenta de contribuição
@@ -15076,22 +15076,22 @@ namespace Unimake.Business.DFe.Servicos
     /// <summary>
     /// Tipo de Processo
     /// </summary>
-    public enum TipoProcessoNF3e
+    public enum TipoProcessoNF3eNFCom
     {
         /// <summary>
-        /// 
+        /// 0 - SEFAZ
         /// </summary>
         [XmlEnum("0")]
         SEFAZ = 0,
 
         /// <summary>
-        /// 
+        /// 1 - Justiça federal
         /// </summary>
         [XmlEnum("1")]
         JusticaFederal = 1,
 
         /// <summary>
-        /// 
+        /// 2 - Justiça estadual
         /// </summary>
         [XmlEnum("2")]
         JusticaEstadual = 2
@@ -15143,4 +15143,351 @@ namespace Unimake.Business.DFe.Servicos
     #endregion TipoEventoNF3e
 
     #endregion NF3e
+
+    #region NFCom
+
+    #region FinalidadeNFCom
+
+    /// <summary>
+    /// Finalidade de emissão da NFCom
+    /// </summary>
+    public enum FinalidadeNFCom
+    {
+        /// <summary>
+        /// 0 - NFCom normal
+        /// </summary>
+        [XmlEnum("0")]
+        Normal = 0,
+
+        /// <summary>
+        /// 3 - NFCom de substituição
+        /// </summary>
+        [XmlEnum("3")]
+        Substituicao = 3,
+
+        /// <summary>
+        /// 4 - NFCom de ajuste
+        /// </summary>
+        [XmlEnum("4")]
+        Ajuste = 4,
+    }
+
+    #endregion FinalidadeNFCom
+
+    #region TipoFaturamentoNFCom
+
+    /// <summary>
+    /// Tipo de faturamento da NFCom
+    /// </summary>
+    public enum TipoFaturamentoNFCom
+    {
+        /// <summary>
+        /// 0 - Faturamento normal
+        /// </summary>
+        [XmlEnum("0")]
+        FaturamentoNormal = 0,
+
+        /// <summary>
+        /// 1 - Faturamento centralizado
+        /// </summary>
+        [XmlEnum("1")]
+        FaturamentoCentralizado = 1,
+
+        /// <summary>
+        /// 2 - Cofaturamento
+        /// </summary>
+        [XmlEnum("2")]
+        Cofaturamento = 2
+    }
+
+    #endregion TipoFaturamentoNFCom
+
+    #region IndicativoPrePago
+
+    /// <summary>
+    /// Indicador de serviço pré-pago
+    /// </summary>
+    public enum IndicadorServicoPrePago
+    {
+        /// <summary>
+        /// 1 – Serviço pré-pago (informar a tag somente se a nota for referente a um 
+        /// serviço exclusivamente pré-pago)
+        /// </summary>
+        [XmlEnum("1")]
+        ServicoPrePago = 1
+    }
+
+    #endregion IndicativoPrePago
+
+    #region IndicadorSessaoMeiosDeRede 
+
+    /// <summary>
+    /// Indicador de sessão de meios de rede
+    /// </summary>
+    public enum IndicadorSessaoMeiosDeRede
+    {
+        /// <summary>
+        /// Uma vez informado (valor = 1), essa tag dispensa geração do grupo Fatura.
+        /// Apenas para notas dos tipos Normal e Substituição com tipo de faturamento normal
+        /// </summary>
+        [XmlEnum("1")]
+        IndicadorSessaoMeioDeRede = 1
+    }
+
+    #endregion IndicadorSessaoMeiosDeRede 
+
+    #region IndicadorNotaEntrada
+
+    /// <summary>
+    /// Indicador de nota de entrada
+    /// </summary>
+    public enum IndicadorNotaEntrada
+    {
+        /// <summary>
+        /// 1 – Informar quando for nota de ajuste e possuir itens com CFOP de entrada
+        /// </summary>
+        [XmlEnum("1")]
+        IndicaNotaEntradaAjuste = 1
+    }
+
+    #endregion
+
+    #region TipoAssinante
+
+    /// <summary>
+    /// Tipo de assinante
+    /// </summary>
+    public enum TipoAssinante
+    {
+        /// <summary>
+        /// 1 - Comercial
+        /// </summary>
+        [XmlEnum("1")]
+        Comercial = 1,
+
+        /// <summary>
+        /// 2 - Industrial
+        /// </summary>
+        [XmlEnum("2")]
+        Industrial = 2,
+
+        /// <summary>
+        /// 3 - Residencial/Pessoa Física
+        /// </summary>
+        [XmlEnum("3")]
+        ResidencialPF = 3,
+
+        /// <summary>
+        /// 4 - Produtor rural
+        /// </summary>
+        [XmlEnum("4")]
+        ProdutorRural = 4,
+
+        /// <summary>
+        /// 5 - Órgão da administração pública estadual direta e suas fundações e autarquias, quando mantidas pelo 
+        /// poder público estadual e regidas por normas de direito público, nos termos do Convênio ICMS 107/95
+        /// </summary>
+        [XmlEnum("5")]
+        OrgaoAdministracaoPublicaEstadual = 5,
+
+        /// <summary>
+        /// 6 - Prestador de serviço de telecomunicação responsável pelo recolhimento do imposto incidente sobre a cessão 
+        /// dos meios de rede do prestador do serviço ao usuário final, nos termos do Convênio ICMS 17/13
+        /// </summary>
+        [XmlEnum("6")]
+        PrestadorServicoTelecomunicacao = 6,
+
+        /// <summary>
+        /// 7 - Missões Diplomáticas, Repartições Consulares e Organismos Internacionais, nos termos do Convênio ICMS 158/94
+        /// </summary>
+        [XmlEnum("7")]
+        MissoesDiplomaticas = 7,
+
+        /// <summary>
+        /// 8 - Igrejas e Templos de qualquer natureza
+        /// </summary>
+        [XmlEnum("8")]
+        IgrejasTemplos = 8,
+
+        /// <summary>
+        /// 99 - Outros não especificados anteriormente
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    #endregion TipoAssinante
+
+    #region TipoServicoUtilizado 
+
+    /// <summary>
+    /// Tipo de serviço utilizado
+    /// </summary>
+    public enum TipoServicoUtilizado
+    {
+        /// <summary>
+        /// 1 - Telefonia
+        /// </summary>
+        [XmlEnum("1")]
+        Telefonia = 1,
+
+        /// <summary>
+        /// 2 - Comunicação de dados
+        /// </summary>
+        [XmlEnum("2")]
+        ComunicacaoDados = 2,
+
+        /// <summary>
+        /// 3 - TV por Assinatura
+        /// </summary>
+        [XmlEnum("3")]
+        TVPorAssinatura = 3,
+
+        /// <summary>
+        /// 4 - Provimento de acesso à Internet
+        /// </summary>
+        [XmlEnum("4")]
+        ProvimentoAcessoInternet = 4,
+
+        /// <summary>
+        /// 5 - Multimídia
+        /// </summary>
+        [XmlEnum("5")]
+        Multimidia = 5,
+
+        /// <summary>
+        /// 6 - Outros
+        /// </summary>
+        [XmlEnum("6")]
+        Outros = 6,
+
+        /// <summary>
+        /// 7 - Varios
+        /// </summary>
+        [XmlEnum("7")]
+        Varios = 7
+    }
+
+    #endregion TipoServicoUtilizado 
+
+    #region MotivoSubstituicaoNFCom
+
+    /// <summary>
+    /// Motivo da substituição
+    /// </summary>
+    public enum MotivoSubstituicaoNFCom
+    {
+        /// <summary>
+        /// 01 - Erro de preço
+        /// </summary>
+        [XmlEnum("01")]
+        ErroPreco = 1,
+
+        /// <summary>
+        /// 02 - Erro cadastral
+        /// </summary>
+        [XmlEnum("02")]
+        ErroCadastral = 2,
+
+        /// <summary>
+        /// 03 - Decisão judicial
+        /// </summary>
+        [XmlEnum("03")]
+        DecisaoJudicial = 3,
+
+        /// <summary>
+        /// 04 - Erro de tributação
+        /// </summary>
+        [XmlEnum("04")]
+        ErroTributacao = 4,
+
+        /// <summary>
+        /// 05 - Descontinuidade do serviço
+        /// </summary>
+        [XmlEnum("05")]
+        DescontinuidadeServico = 5
+
+    }
+
+    #endregion MotivoSubstituicaoNFCom
+
+    #region UnidadeBasicaMedida
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum UnidadeBasicaMedida
+    {
+        /// <summary>
+        /// 1 - Minuto
+        /// </summary>
+        [XmlEnum("1")]
+        Minuto = 1,
+
+        /// <summary>
+        /// 2 - MegaBytes
+        /// </summary>
+        [XmlEnum("2")]
+        MB = 2,
+
+        /// <summary>
+        /// 3 - GigaBytes
+        /// </summary>
+        [XmlEnum("3")]
+        GB = 3,
+
+        /// <summary>
+        /// 4 - Unidade
+        /// </summary>
+        [XmlEnum("4")]
+        UN = 4
+    }
+
+    #endregion UnidadeBasicaMedida
+
+    #region IndicadorDevolucao
+
+    /// <summary>
+    /// Indicador de devolução do valor do item
+    /// </summary>
+    public enum IndicadorDevolucao
+    {
+        /// <summary>
+        /// 1 - Devolução do valor do item
+        /// </summary>
+        [XmlEnum("1")]
+        DevolucaoValorItem = 1
+    }
+
+    #endregion IndicadorDevolucao
+
+    #region TipoRessarcimento
+
+    /// <summary>
+    /// Tipo de Ressarcimento
+    /// </summary>
+    public enum TipoRessarcimento
+    {
+        /// <summary>
+        /// 1 - Cobrança indevida
+        /// </summary>
+        [XmlEnum("1")]
+        CobrancaIndevida = 1,
+
+        /// <summary>
+        /// 2 - Interrupção
+        /// </summary>
+        [XmlEnum("2")]
+        Interrupcao = 2,
+
+        /// <summary>
+        /// 99 - Outros
+        /// </summary>
+        [XmlEnum("99")]
+        Outros = 99
+    }
+
+    #endregion TipoRessarcimento
+
+    #endregion NFCom
 }
