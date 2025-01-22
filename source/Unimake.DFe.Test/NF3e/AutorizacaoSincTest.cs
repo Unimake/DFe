@@ -373,7 +373,7 @@ namespace Unimake.DFe.Test.NF3e
                                             {
                                                 new GProc
                                                 {
-                                                    TpProc = TipoProcessoNF3e.JusticaEstadual,
+                                                    TpProc = TipoProcessoNF3eNFCom.JusticaEstadual,
                                                     NProcesso = "1222"
                                                 }
                                             }
