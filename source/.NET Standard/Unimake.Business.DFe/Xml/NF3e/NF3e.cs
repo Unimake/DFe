@@ -2895,7 +2895,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     public class GProc
     {
         [XmlElement("tpProc")]
-        public TipoProcessoNF3e TpProc { get; set; }
+        public TipoProcessoNF3eNFCom TpProc { get; set; }
 
         [XmlElement("nProcesso")]
         public string NProcesso { get; set; }
