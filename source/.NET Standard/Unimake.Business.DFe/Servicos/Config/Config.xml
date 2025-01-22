@@ -1655,4 +1655,10 @@
 		<ArqConfig>VitoriaES.xml</ArqConfig>
 		<PadraoNFSe>VITORIA_ES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3143302">
+		<Nome>Montes Claros - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>MontesClarosMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
