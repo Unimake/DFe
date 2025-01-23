@@ -1661,4 +1661,10 @@
 		<ArqConfig>MontesClarosMG.xml</ArqConfig>
 		<PadraoNFSe>PRONIM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3549409">
+		<Nome>São Joaquim da Barra - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>SaoJoaquimDaBarraSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
