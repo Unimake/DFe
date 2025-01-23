@@ -1,4 +1,4 @@
-<protNFCom versao="1.00" ipTransmissor="192.168.0.1" nPortaCon="1" dhConexao="2024-01-15T00:15:20" xmlns="http://www.portalfiscal.inf.br/nfcom">
+<protNFCom versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfcom">
 	<infProt Id="ID7">
 		<tpAmb>1</tpAmb>
 		<verAplic>verAplic1</verAplic>
