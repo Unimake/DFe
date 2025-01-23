@@ -21,30 +21,6 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
-        [XmlAttribute("ipTransmissor")]
-        public string IpTransmissor { get; set; }
-
-        [XmlAttribute("nPortaCon")]
-        public int NPortaCon { get; set; }
-
-        [XmlIgnore]
-#if INTEROP
-        public DateTime DhConexao { get; set; }
-#else
-        public DateTimeOffset DhConexao { get; set; }
-#endif
-
-        [XmlAttribute("dhConexao")]
-        public string DhConexaoField
-        {
-            get => DhConexao.ToString("yyyy-MM-ddTHH:mm:sszzz");
-#if INTEROP
-            set => DhConexao = DateTime.Parse(value);
-#else
-            set => DhConexao = DateTimeOffset.Parse(value);
-#endif
-        }
-
         [XmlElement("infProt")]
         public InfProt InfProt { get; set; }
 
