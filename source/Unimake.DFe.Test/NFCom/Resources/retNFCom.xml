@@ -3,46 +3,38 @@
 	<tpAmb>1</tpAmb>
 	<cUF>11</cUF>
 	<verAplic>verAplic1</verAplic>
-	<cStat>cStat1</cStat>
+	<cStat>100</cStat>
 	<xMotivo>xMotivo1</xMotivo>
-	<protNFCom versao="versao1">
-		<infProt Id="ID1">
+	<protNFCom versao="1.00">
+		<infProt Id="ID7">
 			<tpAmb>1</tpAmb>
 			<verAplic>verAplic1</verAplic>
-			<chNFCom>chNFCom1</chNFCom>
-			<dhRecbto>dhRecbto1</dhRecbto>
-			<nProt>nProt1</nProt>
+			<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
+			<dhRecbto>2025-01-15T15:00:22-03:00</dhRecbto>
+			<nProt>123456789012345</nProt>
 			<digVal>AAECAwQFBgcICQoLDA0ODw==</digVal>
-			<cStat>cStat1</cStat>
+			<cStat>100</cStat>
 			<xMotivo>xMotivo1</xMotivo>
 		</infProt>
 		<infFisco>
-			<cMsg>cMsg1</cMsg>
+			<cMsg>100</cMsg>
 			<xMsg>xMsg1</xMsg>
 		</infFisco>
-		<Signature Id="ID2" xmlns="http://www.w3.org/2000/09/xmldsig#">
-			<SignedInfo Id="ID3">
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
 				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
 				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-				<Reference Id="ID4" URI="http://uri1" Type="http://uri1">
+				<Reference URI="http://uri1">
 					<Transforms>
-						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature">
-							<XPath>XPath1</XPath>
-							<XPath>XPath2</XPath>
-							<XPath>XPath3</XPath>
-						</Transform>
-						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315">
-							<XPath>XPath4</XPath>
-							<XPath>XPath5</XPath>
-							<XPath>XPath6</XPath>
-						</Transform>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
 					</Transforms>
 					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
 					<DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
 				</Reference>
 			</SignedInfo>
-			<SignatureValue Id="ID5">AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
-			<KeyInfo Id="ID6">
+			<SignatureValue>AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
+			<KeyInfo>
 				<X509Data>
 					<X509Certificate>AAECAwQFBgcICQoLDA0ODw==</X509Certificate>
 				</X509Data>
