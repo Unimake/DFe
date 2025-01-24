@@ -834,7 +834,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #if INTEROP
         public DateTime DExpiracao { get; set; }
 #else
-        public DateTimeOffSet DExpiracao { get; set; }
+        public DateTimeOffset DExpiracao { get; set; }
 #endif
 
         [XmlElement("dExpiracao")]
@@ -1613,7 +1613,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #if INTEROP
         public DateTime DRefSaldoPts { get; set; }
 #else
-        public DateTimeOffSet DRefSaldoPts { get; set; }
+        public DateTimeOffset DRefSaldoPts { get; set; }
 #endif
 
         [XmlElement("dRefSaldoPts")]
@@ -1623,7 +1623,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #if INTEROP
             set => DRefSaldoPts = DateTime.Parse(value);
 #else
-            set => DRefSaldoPts = DateTimeOffSet.Parse(value);
+            set => DRefSaldoPts = DateTimeOffset.Parse(value);
 #endif
         }
 
@@ -1634,7 +1634,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #if INTEROP
         public DateTime DRefResgPts { get; set; }
 #else
-        public DateTimeOffSet DRefResgPts { get; set; }
+        public DateTimeOffset DRefResgPts { get; set; }
 #endif
 
         [XmlElement("dRefResgPts")]
@@ -1644,7 +1644,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #if INTEROP
             set => DRefResgPts = DateTime.Parse(value);
 #else
-            set => DRefResgPts = DateTimeOffSet.Parse(value);
+            set => DRefResgPts = DateTimeOffset.Parse(value);
 #endif
         }
 
