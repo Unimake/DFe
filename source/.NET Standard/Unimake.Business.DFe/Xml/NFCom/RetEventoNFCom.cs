@@ -36,7 +36,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
     public class InfRetEvento
     {
         [XmlAttribute(AttributeName = "Id", DataType = "token")]
-        public string Versao { get; set; }
+        public string Id { get; set; }
 
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
