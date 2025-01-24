@@ -5,7 +5,7 @@
    #xcommand TRY => BEGIN SEQUENCE WITH {| oErr | Break( oErr ) }
    #xcommand CATCH [<!oErr!>] => RECOVER [USING <oErr>] <-oErr->
 #endif
- 
+
 Function EnviarNfeAssincrono()
    Local oInicializarConfiguracao
    Local oXml, oNfe, oInfNFe, oIde, oEmit, oEnderEmit, oDest, oEnderDest
@@ -21,24 +21,22 @@ Function EnviarNfeAssincrono()
    Local oXmlConsSitNFe, oConteudoNFe, oConteudoInfNFe, chaveNFe, oConfigConsSitNFe, oConsultaProtocolo, nHandle
    Local oEntrega
 
- * Criar configuraçao básica para consumir o serviço
-
+   * Criar configura��o b�sica para consumir o servi�o
    oInicializarConfiguracao = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
-   
    oInicializarConfiguracao:TipoDfe = 0 // 0=nfe
    oInicializarConfiguracao:Servico = 6 // 6=Autorização Nfe
    oInicializarConfiguracao:TipoEmissao = 1 // 1=Normal
    oInicializarConfiguracao:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
    oInicializarConfiguracao:CertificadoSenha = "12345678"
-   
- * Criar XML   
+
+   * Criar XML   
    oXml = CreateObject("Unimake.Business.DFe.Xml.NFe.EnviNFe")
    oXml:Versao = "4.00"
    oXml:IdLote = "000000000000001"
    oXml:IndSinc = 0 // 1=Sim 0=Nao
-   
+
    onfe = CreateObject("Unimake.Business.DFe.Xml.NFe.NFe")
-   
+
    // criar tag InfNfe
    oInfNFe = CreateObject("Unimake.Business.DFe.Xml.NFe.InfNFe")
    oInfNFe:Versao = "4.00"
@@ -48,8 +46,8 @@ Function EnviarNfeAssincrono()
    oIde:CUF = 41 //Brasil.PR
    oIde:NatOp = "VENDA PRODUC.DO ESTABELEC"
    oIde:Mod = 55 //NFe
-   oIde:Serie    = 1
-   oIde:NNF      = 58026
+   oIde:Serie    = 59
+   oIde:NNF      = 6
    oIde:DhEmi    = DateTime() 
    oIde:DhSaiEnt = DateTime()
    oIde:TpNF     = 1 // Saida
@@ -63,13 +61,14 @@ Function EnviarNfeAssincrono()
    oIde:IndPres  = 1 // IndicadorPresenca.OperacaoPresencial
    oIde:ProcEmi  = 0 // ProcessoEmissao.AplicativoContribuinte
    oIde:VerProc  = "TESTE 1.00"
-   
+
+/*   
    //Criar o grupo de tag <NFRef>
    oNFref = CreateObject("Unimake.Business.DFe.Xml.NFe.NFref")
-   
+
    //Criar a tag RefNFe
    oNFRef:RefNFe = "00000000000000000000000chavenfedevolvida00000000000000"
-   
+
    //Criar a tag <refNF>
    oRefNF = CreateObject("Unimake.Business.DFe.Xml.NFe.RefNF")
    oRefNF:cUF = 41 //UFBrasil.PR
@@ -78,13 +77,14 @@ Function EnviarNfeAssincrono()
    oRefNF:Mod = "01"
    oRefNF:Serie = 1
    oRefNF:NNF = 102
-   
+
    //adicionar o grupo de tag <refNF> dentro da tag <NFRef>
    oNFRef:RefNF = oRefNF
-   
+
    //adicionar o grupo de tag <NFRef> dentro da tag <ide>
    oIde:AddNFRef(oNFRef)
-   
+*/
+
    //adicionar a tag Ide dentro da tag InfDfe
    oInfNFe:Ide = oIde
 
@@ -107,13 +107,13 @@ Function EnviarNfeAssincrono()
    oEnderEmit:UF      = 41 // UFBrasil.PR
    oEnderEmit:CEP     = "87707210"
    oEnderEmit:Fone    = "04431421010"
-   
+
    // adicionar a tag EnderEmit dentro da tag Emit 
    oEmit:EnderEmit = oEnderEmit
-   
+
    // adicionar a tag Emit dentro da tag InfNfe
    oInfNfe:Emit = oEmit
-   
+
    // criar tag Dest
    oDest = CreateObject("Unimake.Business.DFe.Xml.NFe.Dest")
    oDest:CNPJ      = "04218457000128"
@@ -121,7 +121,7 @@ Function EnviarNfeAssincrono()
    oDest:IndIEDest = 1 // IndicadorIEDestinatario.ContribuinteICMS,
    oDest:IE        = "582614838110"
    oDest:Email     = "janelaorp@janelaorp.com.br"
-   
+
    oEnderDest = CreateObject("Unimake.Business.DFe.Xml.NFe.EnderDest")
    oEnderDest:XLgr    = "AVENIDA DA SAUDADE"
    oEnderDest:Nro     = "1555"
@@ -137,7 +137,8 @@ Function EnviarNfeAssincrono()
 
    // adicionar a tag Emit dentro da tag InfNfe
    oInfNfe:Dest = oDest
-   
+
+/*
    // Criar tag <entrega>
    oEntrega = CreateObject("Unimake.Business.DFe.Xml.NFe.Entrega")
    oEntrega:CEP = "1408000"
@@ -153,94 +154,95 @@ Function EnviarNfeAssincrono()
    oEntrega:XNome = "teste nome"
    oEntrega:Nro = "S/N"
    oEntrega:IE = "0022336699"
-   
+
    //Adicionar a tag <entrega> dentro da tag <infNFe>
    oInfNFe:Entrega = oEntrega
-   
+*/
+
    For I = 1 To 3 // 3 produtos para teste    
-       // criar tag Det
-       oDet = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
-	   oDet:NItem = I
-	   
-       oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
-       oProd:CProd    = StrZero(I,5)
-       oProd:CEAN     = "SEM GTIN"
-       oProd:XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
-       oProd:NCM      = "84714900"
-       oProd:CFOP     = "6101"
-       oProd:UCom     = "LU"
-       oProd:QCom     = 1.00
-       oProd:VUnCom   = 84.90
-       oProd:VProd    = 84.90
-       oProd:CEANTrib = "SEM GTIN"
-       oProd:UTrib = "LU"
-       oProd:QTrib = 1.00
-       oProd:VUnTrib = 84.90
-       oProd:IndTot = 1 // SimNao.Sim
-       oProd:XPed = "300474"
-       oProd:NItemPed = 1
-	   
-    // adicionar a tag Prod dentro da tag Det
-       oDet:Prod = oProd
-	   
-    // criar tag Imposto
-       oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
-       oImposto:VTotTrib = 12.63
-	   
-    // criar tag Icms
-       oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
-	   
-    // criar tag ICMSSN101
-       oICMSSN101            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
-       oICMSSN101:Orig       = 0 // OrigemMercadoria.Nacional
-       oICMSSN101:PCredSN     = 2.8255
-       oICMSSN101:VCredICMSSN = 2.40
-	   
-    // adicionar a tag ICMSSN101 dentro da tag ICMS
-       oICMS:ICMSSN101 = oICMSSN101
-	   
-    // adicionar a tag ICMS dentro da tag Imposto
-       oImposto:ICMS = oICMS
-	   
-    // criar tag PIS
-       oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
+      // criar tag Det
+      oDet = CreateObject("Unimake.Business.DFe.Xml.NFe.Det")
+      oDet:NItem = I
 
-    // criar tag PISOutr
-       oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
-       oPISOutr:CST  = "99"
-       oPISOutr:VBC  = 0.00
-       oPISOutr:PPIS = 0.00
-       oPISOutr:VPIS = 0.00
+      oProd          = CreateObject("Unimake.Business.DFe.Xml.NFe.Prod")
+      oProd:CProd    = StrZero(I,5)
+      oProd:CEAN     = "SEM GTIN"
+      oProd:XProd    = "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL"
+      oProd:NCM      = "84714900"
+      oProd:CFOP     = "6101"
+      oProd:UCom     = "LU"
+      oProd:QCom     = 1.00
+      oProd:VUnCom   = 84.90
+      oProd:VProd    = 84.90
+      oProd:CEANTrib = "SEM GTIN"
+      oProd:UTrib = "LU"
+      oProd:QTrib = 1.00
+      oProd:VUnTrib = 84.90
+      oProd:IndTot = 1 // SimNao.Sim
+      oProd:XPed = "300474"
+      oProd:NItemPed = 1
 
-    // adicionar a PisOutr dentro da tag Pis
-       oPIS:PISOutr = oPISOutr   
+      // adicionar a tag Prod dentro da tag Det
+      oDet:Prod = oProd
 
-    // adicionar a tag Pis dentro da tag Imposto
-       oImposto:PIS = oPIS
+      // criar tag Imposto
+      oImposto          = CreateObject("Unimake.Business.DFe.Xml.NFe.Imposto")
+      oImposto:VTotTrib = 12.63
 
-    // criar tag COFINS
-       oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+      // criar tag Icms
+      oICMS             = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS")
 
-    // criar tag COFINSOutr
-       oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
-       oCOFINSOutr:CST     = "99"
-       oCOFINSOutr:VBC     = 0.00
-       oCOFINSOutr:PCOFINS = 0.00
-       oCOFINSOutr:VCOFINS = 0.00
+      // criar tag ICMSSN101
+      oICMSSN101            = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMSSN101")
+      oICMSSN101:Orig       = 0 // OrigemMercadoria.Nacional
+      oICMSSN101:PCredSN     = 2.8255
+      oICMSSN101:VCredICMSSN = 2.40
 
-    // adicionar a COFINSOutr dentro da tag COFINS
-       oCOFINS:COFINSOutr = oCOFINSOutr
+      // adicionar a tag ICMSSN101 dentro da tag ICMS
+      oICMS:ICMSSN101 = oICMSSN101
 
-    // adicionar a tag COFINS dentro da tag Imposto
-       oImposto:COFINS = oCOFINS
-	   
-    // adicionar a tag Imposto dentro da tag Det
-       oDet:Imposto = oImposto
-	  
-    // adicionar a tag Det dentro da tag InfNfe 
-       oInfNfe:AddDet(oDet)	  
+      // adicionar a tag ICMS dentro da tag Imposto
+      oImposto:ICMS = oICMS
+
+      // criar tag PIS
+      oPIS           = CreateObject("Unimake.Business.DFe.Xml.NFe.PIS")
+
+      // criar tag PISOutr
+      oPISOutr      = CreateObject("Unimake.Business.DFe.Xml.NFe.PISOutr")
+      oPISOutr:CST  = "99"
+      oPISOutr:VBC  = 0.00
+      oPISOutr:PPIS = 0.00
+      oPISOutr:VPIS = 0.00
+
+      // adicionar a PisOutr dentro da tag Pis
+      oPIS:PISOutr = oPISOutr   
+
+      // adicionar a tag Pis dentro da tag Imposto
+      oImposto:PIS = oPIS
+
+      // criar tag COFINS
+      oCOFINS      = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINS")
+
+      // criar tag COFINSOutr
+      oCOFINSOutr         = CreateObject("Unimake.Business.DFe.Xml.NFe.COFINSOutr")
+      oCOFINSOutr:CST     = "99"
+      oCOFINSOutr:VBC     = 0.00
+      oCOFINSOutr:PCOFINS = 0.00
+      oCOFINSOutr:VCOFINS = 0.00
+
+      // adicionar a COFINSOutr dentro da tag COFINS
+      oCOFINS:COFINSOutr = oCOFINSOutr
+
+      // adicionar a tag COFINS dentro da tag Imposto
+      oImposto:COFINS = oCOFINS
+
+      // adicionar a tag Imposto dentro da tag Det
+      oDet:Imposto = oImposto
+
+      // adicionar a tag Det dentro da tag InfNfe 
+      oInfNfe:AddDet(oDet)	  
    Next I
-   
+
    // Criar tag Total
    oTotal = CreateObject("Unimake.Business.DFe.Xml.NFe.Total")
 
@@ -267,17 +269,18 @@ Function EnviarNfeAssincrono()
    oICMSTot:VNF = 254.70
    oICMSTot:VTotTrib = 37.89  
 
-// adicionar a tag ICMSTot dentro da tag Total
+   // adicionar a tag ICMSTot dentro da tag Total
    oTotal:ICMSTot = oICMSTot
-   
-// adicionar a tag Total dentro da tag InfNfe
+
+   // adicionar a tag Total dentro da tag InfNfe
    oInfNfe:Total = oTotal
-   
-// Criar a tag Transp  
+
+   // Criar a tag Transp  
    oTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.Transp")
    oTransp:ModFrete = 0 // ModalidadeFrete.ContratacaoFretePorContaRemetente_CIF
-   
-// Criar tag <transporta>
+
+/*
+   // Criar tag <transporta>
    oTransporta = CreateObject("Unimake.Business.DFe.Xml.NFe.Transporta")
    oTransporta:CNPJ = "00000000000000"
    oTransporta:IE = "00000000"
@@ -285,20 +288,21 @@ Function EnviarNfeAssincrono()
    oTransporta:XMun = "Sao Paulo"
    oTransporta:XNome = "transportadora ltda"  
    oTransporta:UF = 31   
-   
-// Adicionar a tag <transporta> dentro da tag <transp>
+
+   // Adicionar a tag <transporta> dentro da tag <transp>
    oTransp:Transporta = oTransporta
-   
-// Criar tag <veicTransp>
+
+   // Criar tag <veicTransp>
    oVeicTransp = CreateObject("Unimake.Business.DFe.Xml.NFe.VeicTransp")
    oVeicTransp:Placa = "asdasdas"
    oVeicTransp:UF = 41 //UFBrasil.SP
    oVeicTransp:RNTC = "123343"   
-   
-// Adicionar a tag <veicTransp> dentro da tag <transp>
-   oTransp:VeicTransp = oVeicTransp
 
-// Criar a tag Vol
+   // Adicionar a tag <veicTransp> dentro da tag <transp>
+   oTransp:VeicTransp = oVeicTransp
+*/
+
+   // Criar a tag Vol
    oVol       = CreateObject("Unimake.Business.DFe.Xml.NFe.Vol")
    oVol:QVol  = 1
    oVol:Esp   = "LU"
@@ -342,7 +346,7 @@ Function EnviarNfeAssincrono()
 
    // adicionar a tag Fat dentro da tag Cobr
    oCobr:Fat = oFat
-   
+
    // adicionar a tag Cobr dentro da tag InfNfe
    oInfNfe:Cobr = oCobr
 
@@ -354,7 +358,7 @@ Function EnviarNfeAssincrono()
    oDetPag:IndPag = 0 // IndicadorPagamento.PagamentoVista
    oDetPag:TPag   = 1 // MeioPagamento.Dinheiro
    oDetPag:VPag   = 254.70
- 
+
    // adicionar a tag DetPag dentro da tag Tag
    oPag:AddDetPag(oDetPag)
 
@@ -383,168 +387,165 @@ Function EnviarNfeAssincrono()
 
    // adiconar a tag nfe dentro da tag EnviNfe 
    oXml:AddNfe(oNfe)   
-   
- * Recuperar a chave da NFe:
+
+   * Recuperar a chave da NFe:
    oConteudoNFe = oXml:GetNFe(0)
    oConteudoInfNFe = oConteudoNFe:GetInfNFe(0)
    chaveNFe = oConteudoInfNFe:Chave
-		 
+
    ? "Chave da NFe:", chaveNFe
    Wait
    Cls
 
- * Consumir o serviço (Enviar NFE para SEFAZ)
+   * Consumir o servi�o (Enviar NFE para SEFAZ)
    oAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.Autorizacao")
-   
-   // Criar objeto para pegar exceção do lado do CSHARP
+
+   // Criar objeto para pegar excecu��o do lado do CSHARP
    oExceptionInterop = CreateObject("Unimake.Exceptions.ThrowHelper")   
 
    Try
       oAutorizacao:SetXMLConfiguracao(oXml, oInicializarConfiguracao)      
-	  
+
       // Pode-se gravar o conteudo do XML assinado na base de dados antes do envio, caso queira recuperar para futuro tratamento, isso da garantias
-	  notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
+      notaAssinada = oAutorizacao:GetConteudoNFeAssinada(0)
       ? notaAssinada //Demonstrar o XML da nota assinada na tela
-	  
-	  //NEW - É importante salvar o conteúdo da variável "notaAssinada" na base de dados ou no HD antes de enviar o XML.
-	  //Tem que salvar antes de chamar o método "oAutorizacao:Executar()", caso não consiga pegar o retorno, temos o XML integro, com assinatura para podermos finalizar por uma consulta situação
+
+      //NEW - É importante salvar o conteúdo da variável "notaAssinada" na base de dados ou no HD antes de enviar o XML.
+      //Tem que salvar antes de chamar o método "oAutorizacao:Executar()", caso não consiga pegar o retorno, temos o XML integro, com assinatura para podermos finalizar por uma consulta situação
       nHandle := fCreate("d:\testenfe\" + chaveNFe + "-nfe.xml")
- 	  FWrite(nHandle, notaAssinada)
-	  FClose(nHandle)
-	  
+      FWrite(nHandle, notaAssinada)
+      FClose(nHandle)
+
       Wait
-	  cls
-	  
-	  oAutorizacao:Executar(oXml, oInicializarConfiguracao) 
-	  
-	  ? "XML Retornado pela SEFAZ"
+      cls
+
+      oAutorizacao:Executar(oXml, oInicializarConfiguracao) 
+
+      ? "XML Retornado pela SEFAZ"
       ? "========================"
       ? oAutorizacao:RetornoWSString
       ?
       ? "Codigo de Status e Motivo"
       ? "========================="
       ? AllTrim(Str(oAutorizacao:Result:CStat,5)), oAutorizacao:Result:XMotivo
-	  ?
-	  ?
-	  Wait
-	  cls
+      ?
+      ?
+      Wait
+      cls
 
       if oAutorizacao:Result:CStat == 103 // 103 = Lote Recebido com Sucesso.
-  	     //Fazer a consulta do Recibo para ver se a(s) nota(s) foram autorizadas
-		 ? "Consultando o recibo...."
-		 ?
-		 
+         //Fazer a consulta do Recibo para ver se a(s) nota(s) foram autorizadas
+         ? "Consultando o recibo...."
+         ?
+
          oXmlRec        = CreateObject("Unimake.Business.DFe.Xml.NFe.ConsReciNFe")
          oXmlRec:Versao = "4.00"
          oXmlRec:TpAmb  = 2 // TipoAmbiente.Homologacao,
          oXmlRec:NRec   = oAutorizacao:Result:InfRec:NRec
-		 
+
          oConfigRec                    = CreateObject("Unimake.Business.DFe.Servicos.Configuracao")
          oConfigRec:TipoDFe            = 0 // TipoDFe.NFe
          oConfigRec:CertificadoSenha   = "12345678"
          oConfigRec:CertificadoArquivo = "C:\Projetos\certificados\UnimakePV.pfx"
-		 
+
          oRetAutorizacao = CreateObject("Unimake.Business.DFe.Servicos.NFe.RetAutorizacao")
          oRetAutorizacao:Executar(oXmlRec, oConfigRec)
-		 
-		 If oRetAutorizacao:Result <> NIL
+
+         If oRetAutorizacao:Result <> NIL
             oAutorizacao:RetConsReciNFe = oRetAutorizacao:Result
-			
-          * Modelo para buscar o resultado de cada nota do lote enviado  
+
+            * Modelo para buscar o resultado de cada nota do lote enviado  
             ? "Codigo de Status e Motivo da Consulta Recibo"
             ? "============================================"
-			For I = 1 TO oRetAutorizacao:Result:GetProtNfeCount()
-			    oProtNfe = oRetAutorizacao:Result:GetProtNfe(I-1)
-				
-				? AllTrim(Str(oProtNfe:InfProt:CStat,5)), oProtNfe:InfProt:XMotivo
-				?
-				? "Proximo passo eh gravar o XML de distribuicao"
-				?
-				?
-				
-				Wait
-				
-              * Salvar XML de distribuicao das notas enviadas na pasta informada  
-			    Try
-                   if oProtNFe:InfProt:CStat == 100 //100=NFe Autorizada				
-				      oAutorizacao:GravarXmlDistribuicao("d:\testenfe")
-				
-				      ? oRetAutorizacao:RetornoWSString
-					  ?
-					  ?
-					  
-			          //Como gravar o XML de distribuição com outro nome
-					  ? oProtNFe:InfProt:chNFe
-					  ?
-					  ?
-					  Wait					  
-				  
-		              docProcNFe = oAutorizacao:GetNFeProcResults(oProtNFe:InfProt:chNFe)
-		
-			          ? docProcNFe			
-			          ?
-			          ?
-			          wait
+            For I = 1 TO oRetAutorizacao:Result:GetProtNfeCount()
+               oProtNfe = oRetAutorizacao:Result:GetProtNfe(I-1)
 
-			          // Nome do XML de distribuição gerado pela DLL segue o o seguinte padrão:
-			          //    41220606117473000150550010000580151230845956-procnfe.xml
-			          //
-			          // Vamos mudar e deixar ele assim:
-			          //    NFe41220606117473000150550010000580151230845956-ProcNFe.xml
-		              //
-			          NomeArqDistribuicao = "D:\testenfe\NFe" + oProtNFe:InfProt:chNFe + "-ProcNFe.xml"
-                      ?
-					  ?
-					  ? NomeArqDistribuicao
-					  ?
-					  ?
-					  Wait
-					  
-					  nHandle := fCreate(NomeArqDistribuicao)
-					  FWrite(nHandle, docProcNFe)
-					  FClose(nHandle)
-				   else
-                      //NFe rejeitada, fazer devidos tratamentos				   
-				   endif
-				Catch oErro
-				   ? "ERRO"
-				   ? "===="
-				   ? "Nao foi possivel gravar o XML de distribuicao, pois nao foi localizado o protocolo de autorizacao (NOTA NAO FOI AUTORIZADA)"
-				   ? oErro:Description
-				   ? oErro:Operation
-				   
-                   //Demonstrar a exceção do CSHARP
-				   ?
-				   ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
-                   ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()
- 				   ?
-				End
-			Next I
-		 Endif
-    	 ?
-		 
-	     Wait
-		 
-	     Cls
-	  endif
-	  
-	  
+               ? AllTrim(Str(oProtNfe:InfProt:CStat,5)), oProtNfe:InfProt:XMotivo
+               ?
+               ? "Proximo passo eh gravar o XML de distribuicao"
+               ?
+               ?
+
+               Wait
+
+               * Salvar XML de distribuicao das notas enviadas na pasta informada  
+               Try
+                  if oProtNFe:InfProt:CStat == 100 //100=NFe Autorizada				
+                     oAutorizacao:GravarXmlDistribuicao("d:\testenfe")
+
+                     ? oRetAutorizacao:RetornoWSString
+                     ?
+                     ?
+
+                     //Como gravar o XML de distribuição com outro nome
+                     ? oProtNFe:InfProt:chNFe
+                     ?
+                     ?
+                     Wait					  
+
+                     docProcNFe = oAutorizacao:GetNFeProcResults(oProtNFe:InfProt:chNFe)
+
+                     ? docProcNFe			
+                     ?
+                     ?
+                     wait
+
+                     // Nome do XML de distribuição gerado pela DLL segue o o seguinte padrão:
+                     //    41220606117473000150550010000580151230845956-procnfe.xml
+                     //
+                     // Vamos mudar e deixar ele assim:
+                     //    NFe41220606117473000150550010000580151230845956-ProcNFe.xml
+                     //
+                     NomeArqDistribuicao = "D:\testenfe\NFe" + oProtNFe:InfProt:chNFe + "-ProcNFe.xml"
+                     ?
+                     ?
+                     ? NomeArqDistribuicao
+                     ?
+                     ?
+                     Wait
+
+                     nHandle := fCreate(NomeArqDistribuicao)
+                     FWrite(nHandle, docProcNFe)
+                     FClose(nHandle)
+                  else
+                     //NFe rejeitada, fazer devidos tratamentos				   
+                  endif
+               Catch oErro
+                  ? "ERRO"
+                  ? "===="
+                  ? "Nao foi possivel gravar o XML de distribuicao, pois nao foi localizado o protocolo de autorizacao (NOTA NAO FOI AUTORIZADA)"
+                  ? oErro:Description
+                  ? oErro:Operation
+
+                  //Demonstrar a exceção do CSHARP
+                  ?
+                  ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
+                  ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()
+                  ?
+               End
+            Next I
+         Endif
+         ?
+
+         Wait
+
+         Cls
+      endif
    Catch oErro2
       //Demonstrar exceções geradas no proprio Harbour, se existir.
-	  ? "ERRO"
-	  ? "===="
-	  ? "Falha ao tentar consultar o status do servico."
+      ? "ERRO"
+      ? "===="
+      ? "Falha ao tentar consultar o status do servico."
       ? oErro2:Description
       ? oErro2:Operation
-	  
+
       //Demonstrar a exceção do CSHARP
-	  ?
+      ?
       ? "Excecao do CSHARP - Message: ", oExceptionInterop:GetMessage()
       ? "Excecao do CSHARP - Codigo: ", oExceptionInterop:GetErrorCode()
       ?     
-	  
-	  Wait
-	  cls   
+
+      Wait
+      cls   
    End
 Return
-
