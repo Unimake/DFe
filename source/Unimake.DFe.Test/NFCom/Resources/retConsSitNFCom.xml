@@ -29,7 +29,7 @@
 				<CNPJ>06117473000150</CNPJ>
 				<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
 				<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
-				<tpEvento>110111</tpEvento>
+				<tpEvento>240150</tpEvento>
 				<nSeqEvento>001</nSeqEvento>
 				<detEvento versaoEvento="1.00">
 					<descEvento>Cancelamento</descEvento>
@@ -37,34 +37,6 @@
 					<xJust>xJust_________1</xJust>
 				</detEvento>
 			</infEvento>
-			<Signature Id="ID2" xmlns="http://www.w3.org/2000/09/xmldsig#">
-				<SignedInfo Id="ID3">
-					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
-					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-					<Reference Id="ID4" URI="http://uri1" Type="http://uri1">
-						<Transforms>
-							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature">
-								<XPath>XPath1</XPath>
-								<XPath>XPath2</XPath>
-								<XPath>XPath3</XPath>
-							</Transform>
-							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315">
-								<XPath>XPath4</XPath>
-								<XPath>XPath5</XPath>
-								<XPath>XPath6</XPath>
-							</Transform>
-						</Transforms>
-						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-						<DigestValue>AAECAwQFBgcICQoLDA0ODw==</DigestValue>
-					</Reference>
-				</SignedInfo>
-				<SignatureValue Id="ID5">AAECAwQFBgcICQoLDA0ODw==</SignatureValue>
-				<KeyInfo Id="ID6">
-					<X509Data>
-						<X509Certificate>AAECAwQFBgcICQoLDA0ODw==</X509Certificate>
-					</X509Data>
-				</KeyInfo>
-			</Signature>
 		</eventoNFCom>
 		<retEventoNFCom versao="1.00">
 			<infEvento Id="ID7">
@@ -74,7 +46,7 @@
 				<cStat>100</cStat>
 				<xMotivo>xMotivo1</xMotivo>
 				<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
-				<tpEvento>11011</tpEvento>
+				<tpEvento>240150</tpEvento>
 				<xEvento>xEvento1</xEvento>
 				<nSeqEvento>001</nSeqEvento>
 				<dhRegEvento>2025-01-15T15:00:22-03:00</dhRegEvento>
