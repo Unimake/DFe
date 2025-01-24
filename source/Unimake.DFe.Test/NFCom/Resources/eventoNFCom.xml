@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eventoNFCom versao="versao1" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<infEvento Id="ID1">
+		<cOrgao>11</cOrgao>
+		<tpAmb>1</tpAmb>
+		<CNPJ>CNPJ1</CNPJ>
+		<chNFCom>chNFCom1</chNFCom>
+		<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
+		<tpEvento>240150</tpEvento>
+		<nSeqEvento>nSeqEvento1</nSeqEvento>
+		<detEvento versaoEvento="versaoEvento1">
+			<descEvento>Cancelamento</descEvento>
+			<nProt>nProt1</nProt>
+			<xJust>xJust_________1</xJust>
+		</detEvento>
+	</infEvento>
+</eventoNFCom>
