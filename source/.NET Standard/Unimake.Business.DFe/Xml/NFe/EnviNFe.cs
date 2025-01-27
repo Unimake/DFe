@@ -209,70 +209,150 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+#if INTEROP
+        [XmlElement("ide", Order = 1)]
+#else
         [XmlElement("ide")]
+#endif
         public Ide Ide { get; set; }
 
+#if INTEROP
+        [XmlElement("emit", Order = 2)]
+#else
         [XmlElement("emit")]
+#endif
         public Emit Emit { get; set; }
 
         /// <summary>
         /// Esta TAG é de uso exclusivo do FISCO, não precisa gerar nada, só temos ela para caso de alguma necessidade de desserialização.
         /// </summary>
+#if INTEROP
+        [XmlElement("avulsa", Order = 3)]
+#else
         [XmlElement("avulsa")]
+#endif
         public Avulsa Avulsa { get; set; }
 
+#if INTEROP
+        [XmlElement("dest", Order = 4)]
+#else
         [XmlElement("dest")]
+#endif
         public Dest Dest { get; set; }
 
+#if INTEROP
+        [XmlElement("retirada", Order = 5)]
+#else
         [XmlElement("retirada")]
+#endif
         public Retirada Retirada { get; set; }
 
+#if INTEROP
+        [XmlElement("entrega", Order = 6)]
+#else
         [XmlElement("entrega")]
+#endif
         public Entrega Entrega { get; set; }
 
+#if INTEROP
+        [XmlElement("autXML", Order = 7)]
+#else
         [XmlElement("autXML")]
+#endif
         public List<AutXML> AutXML { get; set; }
 
+#if INTEROP
+        [XmlElement("det", Order = 8)]
+#else
         [XmlElement("det")]
+#endif
         public List<Det> Det { get; set; }
 
+#if INTEROP
+        [XmlElement("total", Order = 9)]
+#else
         [XmlElement("total")]
+#endif
         public Total Total { get; set; }
 
+#if INTEROP
+        [XmlElement("transp", Order = 10)]
+#else
         [XmlElement("transp")]
+#endif
         public Transp Transp { get; set; }
 
+#if INTEROP
+        [XmlElement("cobr", Order = 11)]
+#else
         [XmlElement("cobr")]
+#endif
         public Cobr Cobr { get; set; }
 
+#if INTEROP
+        [XmlElement("pag", Order = 12)]
+#else
         [XmlElement("pag")]
+#endif
         public Pag Pag { get; set; }
 
+#if INTEROP
+        [XmlElement("infIntermed", Order = 13)]
+#else
         [XmlElement("infIntermed")]
+#endif
         public InfIntermed InfIntermed { get; set; }
 
+#if INTEROP
+        [XmlElement("infAdic", Order = 14)]
+#else
         [XmlElement("infAdic")]
+#endif
         public InfAdic InfAdic { get; set; }
 
+#if INTEROP
+        [XmlElement("exporta", Order = 15)]
+#else
         [XmlElement("exporta")]
+#endif
         public Exporta Exporta { get; set; }
 
+#if INTEROP
+        [XmlElement("compra", Order = 16)]
+#else
         [XmlElement("compra")]
+#endif
         public Compra Compra { get; set; }
 
+#if INTEROP
+        [XmlElement("cana", Order = 17)]
+#else
         [XmlElement("cana")]
+#endif
         public Cana Cana { get; set; }
 
+#if INTEROP
+        [XmlElement("infRespTec", Order = 18)]
+#else
         [XmlElement("infRespTec")]
+#endif
         public InfRespTec InfRespTec { get; set; }
 
+#if INTEROP
+        [XmlElement("infSolicNFF", Order = 19)]
+#else
         [XmlElement("infSolicNFF")]
+#endif
         public InfSolicNFF InfSolicNFF { get; set; }
 
         /// <summary>
         /// Grupo de tags de produtos agropecuários: animais, vegetais e florestais
         /// </summary>
+#if INTEROP
+        [XmlElement("agropecuario", Order = 20)]
+#else
         [XmlElement("agropecuario")]
+#endif
         public Agropecuario Agropecuario { get; set; }
 
         [XmlAttribute(AttributeName = "Id", DataType = "ID")]
@@ -914,7 +994,7 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         public bool ShouldSerializeIEST() => !string.IsNullOrWhiteSpace(IEST);
 
-        public bool ShouldSerializeIM() =>!string.IsNullOrWhiteSpace(IM);
+        public bool ShouldSerializeIM() => !string.IsNullOrWhiteSpace(IM);
 
         public bool ShouldSerializeCNAE() => !string.IsNullOrWhiteSpace(CNAE) && !string.IsNullOrWhiteSpace(IM);
 
