@@ -64,26 +64,16 @@ namespace Unimake.DFe.Test.NFCom
 
         [Theory]
         [Trait("DFe", "NFCom")]
-<<<<<<< HEAD
-        [InlineData(@"..\..\..\NFCom\Resources\consStatServNFCom-ped-sta.xml")]
-        public void SerializacaoDesserializacaoConsStatServNFCom(string arqXML)
-=======
         [InlineData(@"..\..\..\NFCom\Resources\eventoNFCom.xml")]
         public void SerializacaoDesserializacaoEventoNFCom(string arqXML)
->>>>>>> b9bcec7f6e11b5a61479e02d78345d04fb99611b
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-<<<<<<< HEAD
-            var nfCom = new Unimake.Business.DFe.Xml.NFCom.ConsStatServNFCom();
-            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.ConsStatServNFCom>(doc);
-=======
             var nfCom = new Unimake.Business.DFe.Xml.NFCom.EventoNFCom();
             var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.EventoNFCom>(doc);
->>>>>>> b9bcec7f6e11b5a61479e02d78345d04fb99611b
 
             var doc2 = xml.GerarXML();
 
@@ -92,23 +82,14 @@ namespace Unimake.DFe.Test.NFCom
 
         [Theory]
         [Trait("DFe", "NFCom")]
-<<<<<<< HEAD
-        [InlineData(@"..\..\..\NFCom\Resources\retConsStatServNFCom.xml")]
-        public void SerializacaoDesserializacaoRetConsStatServNFCom(string arqXML)
-=======
         [InlineData(@"..\..\..\NFCom\Resources\retEventoNFCom.xml")]
         public void SerializacaoDesserializacaoRetEventoNFCom(string arqXML)
->>>>>>> b9bcec7f6e11b5a61479e02d78345d04fb99611b
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-<<<<<<< HEAD
-            var nfCom = new Unimake.Business.DFe.Xml.NFCom.RetConsStatServNFCom();
-            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.RetConsStatServNFCom>(doc);
-=======
             var nfCom = new Unimake.Business.DFe.Xml.NFCom.RetEventoNFCom();
             var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.RetEventoNFCom>(doc);
 
@@ -147,7 +128,6 @@ namespace Unimake.DFe.Test.NFCom
 
             var nfCom = new Unimake.Business.DFe.Xml.NFCom.RetConsSitNFCom();
             var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.RetConsSitNFCom>(doc);
->>>>>>> b9bcec7f6e11b5a61479e02d78345d04fb99611b
 
             var doc2 = xml.GerarXML();
 
