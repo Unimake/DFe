@@ -1102,6 +1102,8 @@
 		<None Remove="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRONIM\2.03\nfse_v2-03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\PRONIM\2.03\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOGOIANIA\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOGOIANIA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
@@ -2885,6 +2887,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODATA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PRODEB\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\2.03\nfse_v2-03.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\PRONIM\2.03\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOGOIANIA\nfse_v02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOGOIANIA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\nfse_v2_04.xsd" />
