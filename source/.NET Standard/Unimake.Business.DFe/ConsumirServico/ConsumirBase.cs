@@ -310,6 +310,13 @@ namespace Unimake.Business.DFe
                         RetornoServicoString = retornoXml.OuterXml;
                     }
 
+                    // Padrão TECNOSISTEMAS às vezes retorna o InnerText sem formatação e gera o erro Dados nível raiz inválidos. Linha 1, posição 1
+                    // Para corrigir, pegamos o OuterXml e fazemos um replace nos scapes para ficar correto
+                    else if (soap.PadraoNFSe == PadraoNFSe.TECNOSISTEMAS)
+                    {
+                        RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Replace("&lt;", "<").Replace("&gt;", ">");
+                    }
+
                     else
                     {
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
