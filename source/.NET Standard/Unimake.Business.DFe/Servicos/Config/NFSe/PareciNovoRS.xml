@@ -14,7 +14,7 @@
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mEnvioLoteRPSSincrono xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mEnvioLoteRPSSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mEnvioLoteRPSSincronoResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mCancelamentoNFSe xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mCancelamentoNFSe></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mCancelamentoNFSeResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -52,7 +52,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSePorRPS xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSePorRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mConsultaNFSePorRPSResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -71,7 +71,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSeServicosPrestados xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSeServicosPrestados></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mConsultaNFSeServicosPrestadosResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -90,7 +90,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSePorFaixa xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mConsultaNFSePorFaixaResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -109,7 +109,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaSequenciaLoteNotaRPS xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaSequenciaLoteNotaRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mConsultaSequenciaLoteNotaRPSResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -128,7 +128,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaLoteRPS xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaLoteRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>soap:Body</WebTagRetorno>
+			<WebTagRetorno>mConsultaLoteRPSResult</WebTagRetorno>
 			<WebEncodingRetorno></WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
