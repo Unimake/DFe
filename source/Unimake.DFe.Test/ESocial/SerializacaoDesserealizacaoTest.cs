@@ -15,9 +15,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1000_evtInfoEmpregador-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1000_evtInfoEmpregador-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1000(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1000_evtInfoEmpregador-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1000_evtInfoEmpregador-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1000(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -36,9 +36,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1005_evtTabEstab-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1005_evtTabEstab-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1005(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1005_evtTabEstab-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1005_evtTabEstab-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1005(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -57,9 +57,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1010_evtTabRubrica-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1010_evtTabRubrica-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1010(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1010_evtTabRubrica-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1010_evtTabRubrica-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1010(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -78,9 +78,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "eSocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1020_evtTabLotacao-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1020_evtTabLotacao-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1020(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1020_evtTabLotacao-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1020_evtTabLotacao-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1020(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -99,9 +99,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "eSocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1070_evtTabProcesso-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1070_evtTabProcesso-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1070(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1070_evtTabProcesso-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1070_evtTabProcesso-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1070(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -120,9 +120,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1200_evtRemun-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1200_evtRemun-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1200(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1200_evtRemun-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1200_evtRemun-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1200(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -141,9 +141,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1202_evtRmnRPPS-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1202_evtRmnRPPS-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1202(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1202_evtRmnRPPS-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1202_evtRmnRPPS-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1202(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -162,9 +162,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1207_evtBenPrRP-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1207_evtBenPrRP-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1207(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1207_evtBenPrRP-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1207_evtBenPrRP-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1207(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -183,9 +183,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1210_evtPgtos-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1210_evtPgtos-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1210(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1210_evtPgtos-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1210_evtPgtos-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1210(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -204,9 +204,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1260_evtComProd-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1260_evtComProd-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1260(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1260_evtComProd-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1260_evtComProd-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1260(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -225,9 +225,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1270_evtContratAvNP-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1270_evtContratAvNP-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1270(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1270_evtContratAvNP-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1270_evtContratAvNP-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1270(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -246,9 +246,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1280_evtInfoComplPer-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1280_evtInfoComplPer-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1280(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1280_evtInfoComplPer-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1280_evtInfoComplPer-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1280(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -267,9 +267,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1298_evtReabreEvPer-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1298_evtReabreEvPer-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1298(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1298_evtReabreEvPer-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1298_evtReabreEvPer-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1298(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -289,9 +289,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\1299_evtFechaEvPer-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1299_evtFechaEvPer-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial1299(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\1299_evtFechaEvPer-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\1299_evtFechaEvPer-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial1299(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -310,9 +310,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2190_evtAdmPrelim-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2190_evtAdmPrelim-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2190(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2190_evtAdmPrelim-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2190_evtAdmPrelim-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2190(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -331,9 +331,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2200_evtAdmissao-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2200_evtAdmissao-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2200(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2200_evtAdmissao-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2200_evtAdmissao-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2200(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -352,9 +352,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2205_evtAltCadastral-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2205_evtAltCadastral-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2205(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2205_evtAltCadastral-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2205_evtAltCadastral-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2205(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -373,9 +373,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2206_evtAltContratual-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2206_evtAltContratual-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2206(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2206_evtAltContratual-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2206_evtAltContratual-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2206(string arqXML    )
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -394,9 +394,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2210_evtCAT-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2210_evtCAT-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2210(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2210_evtCAT-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2210_evtCAT-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2210(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -415,9 +415,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2220_evtMonit-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2220_evtMonit-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2220(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2220_evtMonit-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2220_evtMonit-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2220(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -436,9 +436,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2221_evtToxic-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2221_evtToxic-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2221(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2221_evtToxic-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2221_evtToxic-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2221(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -457,9 +457,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2230_evtAfastTemp-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2230_evtAfastTemp-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2230(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2230_evtAfastTemp-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2230_evtAfastTemp-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2230(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -478,9 +478,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2231_evtCessao-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2231_evtCessao-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2231(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2231_evtCessao-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2231_evtCessao-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2231(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -499,9 +499,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2240_evtExpRisco-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2240_evtExpRisco-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2240(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2240_evtExpRisco-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2240_evtExpRisco-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2240(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -520,9 +520,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2298_evtReintegr-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2298_evtReintegr-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2298(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2298_evtReintegr-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2298_evtReintegr-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2298(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -541,9 +541,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2299_evtDeslig-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2299_evtDeslig-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2299(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2299_evtDeslig-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2299_evtDeslig-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2299(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -562,9 +562,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2300_evtTSVInicio-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2300_evtTSVInicio-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2300(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2300_evtTSVInicio-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2300_evtTSVInicio-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2300(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -583,9 +583,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2306_evtTSVAltContr-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2306_evtTSVAltContr-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2306(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2306_evtTSVAltContr-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2306_evtTSVAltContr-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2306(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -604,9 +604,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2399_evtTSVTermino-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2399_evtTSVTermino-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2399(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2399_evtTSVTermino-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2399_evtTSVTermino-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2399(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -625,9 +625,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2400_evtCdBenefIn-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2400_evtCdBenefIn-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2400(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2400_evtCdBenefIn-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2400_evtCdBenefIn-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2400(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -646,9 +646,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2405_evtCdBenefAlt-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2405_evtCdBenefAlt-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2405(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2405_evtCdBenefAlt-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2405_evtCdBenefAlt-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2405(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -667,9 +667,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2410_evtCdBenIn-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2410_evtCdBenIn-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2410(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2410_evtCdBenIn-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2410_evtCdBenIn-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2410(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -688,9 +688,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2416_evtCdBenAlt-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2416_evtCdBenAlt-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2416(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2416_evtCdBenAlt-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2416_evtCdBenAlt-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2416(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -709,9 +709,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2418_evtReativBen-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2418_evtReativBen-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2418(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2418_evtReativBen-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2418_evtReativBen-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2418(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -730,9 +730,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2420_evtCdBenTerm-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2420_evtCdBenTerm-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2420(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2420_evtCdBenTerm-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2420_evtCdBenTerm-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2420(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -751,9 +751,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2500_evtProcTrab-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2500_evtProcTrab-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2500(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2500_evtProcTrab-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2500_evtProcTrab-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2500(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -772,9 +772,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\2501_evtContProc-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2501_evtContProc-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial2501(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\2501_evtContProc-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\2501_evtContProc-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial2501(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -813,9 +813,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\3000_evtExclusao-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\3000_evtExclusao-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial3000(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\3000_evtExclusao-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\3000_evtExclusao-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial3000(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -834,9 +834,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\3500_evtExcProcTrab-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\3500_evtExcProcTrab-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial3500(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\3500_evtExcProcTrab-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\3500_evtExcProcTrab-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial3500(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -855,9 +855,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5001_evtBasesTrab-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5001_evtBasesTrab-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5001(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5001_evtBasesTrab-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5001_evtBasesTrab-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5001(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -876,9 +876,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5002_evtIrrfBenef-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5002_evtIrrfBenef-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5002(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5002_evtIrrfBenef-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5002_evtIrrfBenef-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5002(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -897,9 +897,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5003_evtBasesFGTS-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5003_evtBasesFGTS-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5003(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5003_evtBasesFGTS-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5003_evtBasesFGTS-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5003(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -918,9 +918,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5011_evtCS-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5011_evtCS-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5011(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5011_evtCS-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5011_evtCS-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5011(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -939,9 +939,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5012_evtIrrf-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5012_evtIrrf-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5012(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5012_evtIrrf-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5012_evtIrrf-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5012(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -960,9 +960,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5013_evtFGTS-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5013_evtFGTS-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5013(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5013_evtFGTS-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5013_evtFGTS-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5013(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -981,9 +981,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5501_evtTribProcTrab-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5501_evtTribProcTrab-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5501(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5501_evtTribProcTrab-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5501_evtTribProcTrab-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5501(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -1002,9 +1002,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\5503-evtFGTSProcTrab-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5503-evtFGTSProcTrab-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial5503(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\5503-evtFGTSProcTrab-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\5503-evtFGTSProcTrab-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial5503(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
@@ -1023,9 +1023,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(@"..\..\..\ESocial\Resources\8200_evtAnotJud-esocial-evt.xml", "v_S_01_02_00")]
-        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\8200_evtAnotJud-esocial-evt.xml", "v_S_01_03_00")]
-        public void SerializacaoDesserializacaoESocial8200(string arqXML, string versaoSchema)
+        [InlineData(@"..\..\..\ESocial\Resources\8200_evtAnotJud-esocial-evt.xml")]
+        [InlineData(@"..\..\..\ESocial\Resources\S_01_03_00\8200_evtAnotJud-esocial-evt.xml")]
+        public void SerializacaoDesserializacaoESocial8200(string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
