@@ -5,11 +5,11 @@
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoProducao>http://saoroque.govbr.cloud/Nfse.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soapenv:Header><soapenv:Body><tem:RecepcionarLoteRps><tem:xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></tem:xmlEnvio></tem:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarLoteRpsResult</WebTagRetorno>
@@ -22,9 +22,9 @@
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao>http://saoroque.govbr.cloud/Nfse.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/CancelarNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
@@ -39,13 +39,13 @@
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoProducao>http://saoroque.govbr.cloud/Nfse.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEGeracao/SubstituirNfse</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<TagExtraAssinatura></TagExtraAssinatura>
-			<TagExtraAtributoID></TagExtraAtributoID>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Header><cabecalho versao="2.03" xmlns="http://tempuri.org/"><versaoDados>2.03</versaoDados></cabecalho></soap:Header><soap:Body><SubstituirNfse xmlns="http://tempuri.org/"><xmlEnvio><![CDATA[{xmlBodyScapeRetorno}]]]]><![CDATA[></xmlEnvio></SubstituirNfse></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
@@ -58,7 +58,7 @@
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoProducao>http://saoroque.govbr.cloud/Nfse.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarLoteRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
@@ -75,7 +75,7 @@
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoProducao>http://saoroque.govbr.cloud/Nfse.Portal.Integracao/Services.svc?wsdl</WebEnderecoProducao>
 			<WebActionProducao>http://tempuri.org/INFSEConsultas/ConsultarNfsePorRps</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<SchemaArquivo>nfse_v2-03.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
