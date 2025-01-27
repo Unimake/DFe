@@ -39,19 +39,39 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 try
                 {
-                    if (RetornoWSXML.GetElementsByTagName("xMotivo") != null)
+                    if (RetornoWSXML.GetElementsByTagName("xMotivo").Count > 0)
                     {
                         var xMotivo = RetornoWSXML.GetElementsByTagName("xMotivo")[0].InnerText;
-                        if (xMotivo.Contains("[nItem:"))
+                        if (!string.IsNullOrWhiteSpace(xMotivo))
                         {
-                            var nItem = Convert.ToInt32((xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Substring(0, (xMotivo.Substring(xMotivo.IndexOf("[nItem:") + 7)).Length - 1));
-                            RetornoWSString = RetornoWSString.Replace(xMotivo, xMotivo + " [cProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.CProd + "] [xProd:" + EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1].Prod.XProd + "]");
-
-                            RetornoWSXML = new XmlDocument
+                            var xMotivoLower = xMotivo.ToLower();
+                            if (xMotivoLower.Contains("[nitem:"))
                             {
-                                PreserveWhitespace = false
-                            };
-                            RetornoWSXML.LoadXml(RetornoWSString);
+                                var nItemIndex = xMotivoLower.IndexOf("[nitem:") + 7;
+                                var nItemString = xMotivo.Substring(nItemIndex).Split(']')[0];
+
+                                if (int.TryParse(nItemString, out var nItem) && nItem > 0)
+                                {
+                                    if (EnviNFe.NFe.Count > 0 &&
+                                        EnviNFe.NFe[0].InfNFe.Count > 0 &&
+                                        (nItem - 1) < EnviNFe.NFe[0].InfNFe[0].Det.Count)
+                                    {
+                                        var det = EnviNFe.NFe[0].InfNFe[0].Det[nItem - 1];
+                                        if (det?.Prod != null)
+                                        {
+                                            var cProd = det.Prod.CProd;
+                                            var xProd = det.Prod.XProd;
+
+                                            RetornoWSString = RetornoWSString.Replace(
+                                                xMotivo,
+                                                $"{xMotivo} [cProd:{cProd}] [xProd:{xProd}]"
+                                            );
+
+                                            RetornoWSXML.LoadXml(RetornoWSString); // Atualizar XML
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
