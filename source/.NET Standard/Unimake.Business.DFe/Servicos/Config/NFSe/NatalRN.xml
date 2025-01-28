@@ -28,8 +28,8 @@
 			<WebActionHomologacao>https://wsnfsev1homologacao.natal.rn.gov.br:8443/nfse/CancelarNfseRequest</WebActionHomologacao>
 			<WebActionProducao>https://wsnfsev1.natal.rn.gov.br:8444/nfse/CancelarNfseRequest</WebActionProducao>
 			<SchemaArquivo>nfse.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
