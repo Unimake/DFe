@@ -46,12 +46,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\**" />
-	  <EmbeddedResource Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\**" />
-	  <None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Remove="Exceptions\Exceptions.cs~RF1e809dd.TMP" />
 		<None Remove="Servicos\CCG\RS.xml" />
 		<None Remove="Servicos\Config\CCG\Config.xml" />
@@ -1111,6 +1105,8 @@
 		<None Remove="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
@@ -1299,6 +1295,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MontesClarosMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
@@ -2897,6 +2894,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\PROPRIOJOINVILLESC\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\nfse_v2_01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\QUASAR\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\RLZ_INFORMATICA\XSDRLZ_Informatica_02.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\nfse_v3-00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />

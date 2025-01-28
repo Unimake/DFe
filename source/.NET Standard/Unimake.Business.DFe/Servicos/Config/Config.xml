@@ -1673,4 +1673,10 @@
 		<ArqConfig>UmuaramaPR.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5107040">
+		<Nome>Primavera do Leste - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>PrimaveraDoLesteMT.xml</ArqConfig>
+		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -6794,6 +6794,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("VITORIA_ES")]
         VITORIA_ES = 60,
+
+        /// <summary>
+        /// RLZ_INFORMATICA
+        /// </summary>
+        [Description("RLZ_INFORMATICA")]
+        RLZ_INFORMATICA = 61,
     }
 
     #endregion
