@@ -1667,4 +1667,10 @@
 		<ArqConfig>SaoJoaquimDaBarraSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4128104">
+		<Nome>Umuarama - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>UmuaramaPR.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
