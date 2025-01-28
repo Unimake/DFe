@@ -302,9 +302,9 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(TipoAmbiente.Producao, "..\\..\\..\\ESocial\\Resources\\EnvioLoteEventos-esocial-loteevt.xml", "v_S_01_02_00")]
-        [InlineData(TipoAmbiente.Homologacao, "..\\..\\..\\ESocial\\Resources\\S_01_03_00\\EnvioLoteEventos-esocial-loteevt.xml", "v_S_01_03_00")]
-        public void ESocialEnvioLoteEventosLoadFrom(TipoAmbiente tipoAmbiente, string arqXML, string versaoSchema)
+        [InlineData(TipoAmbiente.Producao, "..\\..\\..\\ESocial\\Resources\\EnvioLoteEventos-esocial-loteevt.xml")]
+        [InlineData(TipoAmbiente.Homologacao, "..\\..\\..\\ESocial\\Resources\\S_01_03_00\\EnvioLoteEventos-esocial-loteevt.xml")]
+        public void ESocialEnvioLoteEventosLoadFrom(TipoAmbiente tipoAmbiente, string arqXML)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização do teste.");
 
