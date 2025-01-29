@@ -186,16 +186,33 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 if (Configuracoes.PadraoNFSe == PadraoNFSe.DSF && Configuracoes.EncriptaTagAssinatura)
                 {
-                    var conteudoTagAssinatura = ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText;
+                    var listLote = ConteudoXML.GetElementsByTagName("Lote");
 
-                    // O formato esperado do hash SHA-1 é 40 caracteres
-                    // Se vier encriptado, vamos fazer nada
-                    if (conteudoTagAssinatura.Length > 40)
+                    foreach (XmlNode nodeLote in listLote)
                     {
-                        var sh1 = Criptografia.GetSHA1HashData(conteudoTagAssinatura);
+                        var elementListLote = (XmlElement)nodeLote;
 
-                        ConteudoXML.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
-                    }
+                        foreach (XmlNode nodeRps in elementListLote.GetElementsByTagName("RPS"))
+                        {
+                            var elementRps = (XmlElement)nodeRps;
+
+                            var tagAssinatura = elementRps.GetElementsByTagName("Assinatura");
+
+                            if (tagAssinatura.Count > 0)
+                            {
+                                var conteudoTagAssinatura = tagAssinatura[0].InnerText;
+
+                                // O formato esperado do hash SHA-1 é 40 caracteres
+                                // Se vier encriptado, vamos fazer nada
+                                if (conteudoTagAssinatura.Length > 40)
+                                {
+                                    var sh1 = Criptografia.GetSHA1HashData(conteudoTagAssinatura);
+
+                                    elementRps.GetElementsByTagName("Assinatura")[0].InnerText = sh1;
+                                }
+                            }
+                        }
+                    }                    
                 }
 
                 VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
