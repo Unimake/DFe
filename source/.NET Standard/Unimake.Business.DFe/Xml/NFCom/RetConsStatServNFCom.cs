@@ -61,7 +61,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         }
 
         [XmlElement("tMed")]
-        public int TMed { get; set; }
+        public string TMed { get; set; }
 
         [XmlIgnore]
 #if INTEROP
@@ -84,5 +84,13 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("xObs")]
         public string XObs { get; set; }
+
+        #region ShoudSerialize
+
+        public bool ShouldSerializeTMed() => !string.IsNullOrWhiteSpace(TMed);
+        public bool ShouldSerializeDhRetornoField() => !string.IsNullOrWhiteSpace(DhRetornoField);
+        public bool ShouldSerializeXObs() => !string.IsNullOrWhiteSpace(XObs);
+
+        #endregion ShoudSerialize
     }
 }
