@@ -25,20 +25,20 @@
 			<Competencia>2014-02-13</Competencia>
 			<Prestador>
 				<CpfCnpj>
-					<Cnpj>90868787000109</Cnpj>
+					<Cnpj>99999999999999</Cnpj>
 				</CpfCnpj>
 				<InscricaoMunicipal>6038</InscricaoMunicipal>
 			</Prestador>
 			<Tomador>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cnpj>92639988000151</Cnpj>
+						<Cnpj>99999999999999</Cnpj>
 					</CpfCnpj>
 				</IdentificacaoTomador>
 				<RazaoSocial>Tomador Teste Ltda</RazaoSocial>
 				<Endereco>
-					<Endereco>Avenida Sete de Setembro</Endereco>
-					<Numero>825</Numero>
+					<Endereco>xxxxxxxxxxxxxxxxxx</Endereco>
+					<Numero>22222222</Numero>
 					<Bairro>Centro</Bairro>
 					<CodigoMunicipio>4307005</CodigoMunicipio>
 					<Uf>RS</Uf>

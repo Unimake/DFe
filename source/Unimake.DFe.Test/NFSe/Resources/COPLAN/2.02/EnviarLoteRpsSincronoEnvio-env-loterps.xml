@@ -3,7 +3,7 @@
             <LoteRps Id="ID0001" versao="2.04">
               <NumeroLote>0053</NumeroLote>
               <CpfCnpj>
-                <Cnpj>17673422000120</Cnpj>
+                <Cnpj>99999999999999</Cnpj>
               </CpfCnpj>
               <InscricaoMunicipal>6007</InscricaoMunicipal>
               <QuantidadeRps>1</QuantidadeRps>
@@ -46,14 +46,14 @@
                     </Servico>
                     <Prestador>
                       <CpfCnpj>
-                        <Cnpj>17673422000120</Cnpj>
+                        <Cnpj>99999999999999</Cnpj>
                       </CpfCnpj>
                       <InscricaoMunicipal>6007</InscricaoMunicipal>
                     </Prestador>
                     <Tomador>
                       <IdentificacaoTomador>
                         <CpfCnpj>
-                          <Cpf>87863804191</Cpf>
+                          <Cpf>99999999999</Cpf>
                         </CpfCnpj>
                       </IdentificacaoTomador>
                       <RazaoSocial>SANDRA REGINA VASCONCELOS</RazaoSocial>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <envioLote versao="1.0">
-	<CNPJ>49454600000119</CNPJ>
+	<CNPJ>06117473000150</CNPJ>
 	<dhTrans>2013-04-07 07:28:12</dhTrans>
 	<NFS-e>
 		<infNFSe versao="1.1">
@@ -12,14 +12,14 @@
 				<dEmi>2013-04-07</dEmi>
 				<hEmi>06:15</hEmi>
 				<tpNF>1</tpNF>
-				<refNF>43494546000001199000S000000976218736215</refNF>
+				<refNF>061174730001500611747300015006117473000</refNF>
 				<tpImp>1</tpImp>
 				<tpEmis>N</tpEmis>
 				<cancelada>N</cancelada>
 				<canhoto>1</canhoto>
 			</Id>
 			<prest>
-				<CNPJ>49454600000119</CNPJ>
+				<CNPJ>06117473000150</CNPJ>
 				<xNome>Silva e Silva Ltda</xNome>
 				<xFant>Silva e Silva</xFant>
 				<IM>23231</IM>
@@ -43,7 +43,7 @@
 				<regimeTrib>3</regimeTrib>
 			</prest>
 			<TomS>
-				<CNPJ>99882491000109</CNPJ>
+				<CNPJ>06117473000150</CNPJ>
 				<xNome>Empresa Tomadora</xNome>
 				<ender>
 					<xLgr>Av Silva</xLgr>
@@ -60,7 +60,7 @@
 				<xEmail>tomador@tomador.com.br</xEmail>
 				<IE>2132365544</IE>
 				<IM>64889</IM>
-				<fone>5435302020</fone>
+				<fone>12345678</fone>
 				<fone2>5499999999</fone2>
 			</TomS>
 			<dadosDaObra>
@@ -81,8 +81,8 @@
 			</dadosDaObra>
 			<transportadora>
 				<xNomeTrans>Transportadora Ficticia LTDA</xNomeTrans>
-				<xCpfCnpjTrans>26578334000130</xCpfCnpjTrans>
-				<xInscEstTrans>1232185494</xInscEstTrans>
+				<xCpfCnpjTrans>06117473000150</xCpfCnpjTrans>
+				<xInscEstTrans>123456789</xInscEstTrans>
 				<xPlacaTrans>IBB6962</xPlacaTrans>
 				<xEndTrans>Av. Carlos Gomes</xEndTrans>
 				<cMunTrans>4303905 </cMunTrans>

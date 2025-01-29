@@ -2,9 +2,9 @@
 <GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Rps>
 		<InfDeclaracaoPrestacaoServico id="Rps_5">
-			<Rps id="Rps_5">
+			<Rps id="Rps_1">
 				<IdentificacaoRps>
-					<Numero>0</Numero>
+					<Numero>1</Numero>
 					<Serie>A5</Serie>
 					<Tipo>1</Tipo>
 				</IdentificacaoRps>
@@ -40,14 +40,14 @@
 			</Servico>
 			<Prestador>
 				<CpfCnpj>
-					<Cnpj>49122386000101</Cnpj>
+					<Cnpj>99999999999999</Cnpj>
 				</CpfCnpj>
 				<InscricaoMunicipal>9.9.99999999</InscricaoMunicipal>
 			</Prestador>
 			<TomadorServico>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cnpj>94499233000124</Cnpj>
+						<Cnpj>99999999999999</Cnpj>
 					</CpfCnpj>
 					<InscricaoMunicipal>100000000005</InscricaoMunicipal>
 				</IdentificacaoTomador>
@@ -68,7 +68,7 @@
 			<Intermediario>
 				<IdentificacaoIntermediario>
 					<CpfCnpj>
-						<Cnpj>49122386000101</Cnpj>
+						<Cnpj>99999999999999</Cnpj>
 					</CpfCnpj>
 					<InscricaoMunicipal>22252</InscricaoMunicipal>
 				</IdentificacaoIntermediario>

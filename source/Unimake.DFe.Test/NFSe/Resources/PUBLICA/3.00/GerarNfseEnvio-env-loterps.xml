@@ -33,20 +33,20 @@
 				<CodigoMunicipio>3106200</CodigoMunicipio>
 			</Servico>
 			<Prestador>
-				<Cnpj>95836771000120</Cnpj>
+				<Cnpj>99999999999999</Cnpj>
 				<InscricaoMunicipal>56</InscricaoMunicipal>
 			</Prestador>
 			<Tomador>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cpf>04823071964</Cpf>
+						<Cpf>99999999999</Cpf>
 					</CpfCnpj>
 				</IdentificacaoTomador>
-				<RazaoSocial>HUGO HAROLDO</RazaoSocial>
+				<RazaoSocial>xxxxxxxxxxxx</RazaoSocial>
 				<Endereco>
-					<Endereco>DA BAHIA</Endereco>
+					<Endereco>xxxxxxxxxxxxx</Endereco>
 					<Numero>200</Numero>
-					<Complemento>ANDAR 14</Complemento>
+					<Complemento>xxxxxxxxxx</Complemento>
 					<Bairro>CENTRO</Bairro>
 					<CodigoMunicipio>3106200</CodigoMunicipio>
 					<Uf>MG</Uf>

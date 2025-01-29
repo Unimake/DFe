@@ -3,10 +3,10 @@
   <LoteRps Id="string" versao="2.02">
     <NumeroLote>1234</NumeroLote>
     <CpfCnpj>
-      <Cnpj>02221150000150</Cnpj>
+      <Cnpj>99999999999999</Cnpj>
     </CpfCnpj>
     <InscricaoMunicipal>123</InscricaoMunicipal>
-    <Token>141JQHhSH814YXP0rwhAt10ihg</Token>	
+    <Token>999999999999999999999999999999999999999999</Token>	
     <QuantidadeRps>2</QuantidadeRps>
     <ListaRps>
       <Rps>
@@ -49,14 +49,14 @@
           </Servico>
           <Prestador>
             <CpfCnpj>
-              <Cnpj>02221150000150</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>123</InscricaoMunicipal>
           </Prestador>
           <Tomador>
             <IdentificacaoTomador>
               <CpfCnpj>
-                <Cnpj>49432979000166</Cnpj>
+                <Cnpj>99999999999999</Cnpj>
               </CpfCnpj>
               <InscricaoMunicipal>456</InscricaoMunicipal>
             </IdentificacaoTomador>
@@ -82,10 +82,10 @@
         </InfDeclaracaoPrestacaoServico>
       </Rps>
       <Rps>
-        <InfDeclaracaoPrestacaoServico Id="string22">
-          <Rps Id="string33">
+        <InfDeclaracaoPrestacaoServico Id="string4">
+          <Rps Id="string5">
             <IdentificacaoRps>
-              <Numero>00002</Numero>
+              <Numero>00001</Numero>
               <Serie>NFSe</Serie>
               <Tipo>1</Tipo>
             </IdentificacaoRps>
@@ -121,14 +121,14 @@
           </Servico>
           <Prestador>
             <CpfCnpj>
-              <Cnpj>02221150000150</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>123</InscricaoMunicipal>
           </Prestador>
           <Tomador>
             <IdentificacaoTomador>
               <CpfCnpj>
-                <Cnpj>49432979000166</Cnpj>
+                <Cnpj>99999999999999</Cnpj>
               </CpfCnpj>
               <InscricaoMunicipal>456</InscricaoMunicipal>
             </IdentificacaoTomador>

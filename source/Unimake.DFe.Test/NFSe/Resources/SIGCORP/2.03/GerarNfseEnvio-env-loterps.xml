@@ -34,14 +34,14 @@
       </Servico>
       <Prestador>
         <CpfCnpj>
-          <Cnpj>55381246000142</Cnpj>
+          <Cnpj>99999999999999</Cnpj>
         </CpfCnpj>
         <InscricaoMunicipal>1111</InscricaoMunicipal>
       </Prestador>
       <Tomador>
         <IdentificacaoTomador>
           <CpfCnpj>
-            <Cnpj>76777579000165</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>1111</InscricaoMunicipal>
           <InscricaoEstadual>2222</InscricaoEstadual>

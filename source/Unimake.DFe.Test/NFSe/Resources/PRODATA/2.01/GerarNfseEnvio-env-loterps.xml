@@ -34,26 +34,26 @@
           </Servico>
           <Prestador>
             <CpfCnpj>
-              <Cnpj>04054421000237</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>1052</InscricaoMunicipal>
           </Prestador>
           <Tomador>
             <IdentificacaoTomador>
               <CpfCnpj>
-                <Cpf>28450230497</Cpf>
+                <Cpf>99999999999</Cpf>
               </CpfCnpj>
             </IdentificacaoTomador>
-            <RazaoSocial>GILVAN FERREIRA TESTE</RazaoSocial>
+            <RazaoSocial>xxxxxxxxxxxxx TESTE</RazaoSocial>
             <Endereco>
-              <Endereco>RUA INDEPENDENCIA,322</Endereco>
+              <Endereco>xxxxxxxxxxxxxxx</Endereco>
               <Bairro>VILA SUZANO</Bairro>
               <CodigoMunicipio>4304408</CodigoMunicipio>
               <Uf>RS</Uf>
               <Cep>95680000</Cep>
             </Endereco>
             <Contato>
-              <Email>gilfgfilho@gmail.com</Email>
+              <Email>xxxxx@gmail.com</Email>
             </Contato>
           </Tomador>
           <OptanteSimplesNacional>2</OptanteSimplesNacional>

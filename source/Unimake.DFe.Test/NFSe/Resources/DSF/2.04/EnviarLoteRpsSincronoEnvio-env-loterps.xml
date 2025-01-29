@@ -3,7 +3,7 @@
 		<NumeroLote>8983520</NumeroLote>
 		<Prestador>
 			<CpfCnpj>
-				<Cnpj>10836254000106</Cnpj>
+				<Cnpj>99999999999999</Cnpj>
 			</CpfCnpj>
 			<InscricaoMunicipal>19497100</InscricaoMunicipal>
 		</Prestador>
@@ -35,19 +35,19 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>10836254000106</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>19497100</InscricaoMunicipal>
 					</Prestador>
 					<TomadorServico>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>43260062009</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
-						<RazaoSocial>José Silva</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxx</RazaoSocial>
 						<Endereco>
-							<Endereco>RUA JOSÉ PASSOS</Endereco>
+							<Endereco>xxxxxxxxxxxxx</Endereco>
 							<Numero>564</Numero>
 							<Bairro>CENTRO</Bairro>
 							<CodigoMunicipio>3170206</CodigoMunicipio>

@@ -35,7 +35,7 @@
           </Servico>
           <Prestador>
             <CpfCnpj>
-              <Cnpj>05747016000186</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>1245091</InscricaoMunicipal>
           </Prestador>
@@ -45,11 +45,11 @@
                 <Cnpj>99999999999999</Cnpj>
               </CpfCnpj>
             </IdentificacaoTomador>
-            <RazaoSocial>MOINHOS CRUZEIRO DO SUL SA</RazaoSocial>
+            <RazaoSocial>xxxxxxxxxxxxxxxxx</RazaoSocial>
             <Endereco>
-              <Endereco>RUA BENEDITO OTTONI</Endereco>
+              <Endereco>xxxxxxxxxxxxxxxxx</Endereco>
               <Numero>24</Numero>
-              <Bairro>SAO CRISTOVAO</Bairro>
+              <Bairro>xxxxxxxx</Bairro>
               <CodigoMunicipio>3304557</CodigoMunicipio>
               <Uf>RJ</Uf>
               <Cep>20940180</Cep>

@@ -27,30 +27,30 @@
       </Servico>
       <Prestador>
         <CpfCnpj>
-          <Cpf>24329550130</Cpf>
+          <Cpf>99999999999</Cpf>
         </CpfCnpj>
-        <InscricaoMunicipal>1300687</InscricaoMunicipal>
+        <InscricaoMunicipal>123456</InscricaoMunicipal>
       </Prestador>
       <Tomador>
         <IdentificacaoTomador>
           <CpfCnpj>
-            <Cnpj>06926334000177</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>2118513</InscricaoMunicipal>
         </IdentificacaoTomador>
-        <RazaoSocial>GRAMADO EMPREENDIMENTOS</RazaoSocial>
+        <RazaoSocial>xxxxxxxxxxxxxxxxxxx</RazaoSocial>
         <Endereco>
-          <Endereco>RUA 3</Endereco>
+          <Endereco>xxxxxxxxxxx</Endereco>
           <Numero>1003</Numero>
           <Complemento>1003</Complemento>
-          <Bairro>CAPUAVA</Bairro>
+          <Bairro>xxxxxxxxxx</Bairro>
           <CodigoMunicipio>2530000</CodigoMunicipio>
           <Uf>GO</Uf>
           <CodigoPais>1058</CodigoPais>
-          <Cep>76280000</Cep>
+          <Cep>12345678</Cep>
         </Endereco>
         <Contato>
-          <Telefone>6232513735</Telefone>
+          <Telefone>1234567890</Telefone>
         </Contato>
       </Tomador>
       <RegimeEspecialTributacao>5</RegimeEspecialTributacao>

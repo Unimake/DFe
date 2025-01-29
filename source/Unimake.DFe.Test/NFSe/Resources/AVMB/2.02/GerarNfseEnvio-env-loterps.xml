@@ -41,15 +41,15 @@
       </Servico>
       <Prestador>
         <CpfCnpj>
-          <Cnpj>02221150000150</Cnpj>
+          <Cnpj>99999999999999</Cnpj>
         </CpfCnpj>
         <InscricaoMunicipal>123</InscricaoMunicipal>
-        <Token>141JQHhSH814YXP0rwhAt10ihg</Token>
+        <Token>999999999999999999999999999999999999999999</Token>
       </Prestador>
       <Tomador>
         <IdentificacaoTomador>
           <CpfCnpj>
-            <Cnpj>85351488000154</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>345</InscricaoMunicipal>
         </IdentificacaoTomador>
