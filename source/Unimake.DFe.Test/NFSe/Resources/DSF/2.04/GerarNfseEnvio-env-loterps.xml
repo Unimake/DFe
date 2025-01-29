@@ -25,24 +25,24 @@
 			</Servico>
 			<Prestador>
 				<CpfCnpj>
-					<Cnpj>10836254000106</Cnpj>
+					<Cnpj>99999999999999</Cnpj>
 				</CpfCnpj>
 				<InscricaoMunicipal>19497100</InscricaoMunicipal>
 			</Prestador>
 			<TomadorServico>
 				<IdentificacaoTomador>
 					<CpfCnpj>
-						<Cpf>07203408450</Cpf>
+						<Cpf>99999999999</Cpf>
 					</CpfCnpj>
 				</IdentificacaoTomador>
-				<RazaoSocial>José Silva</RazaoSocial>
+				<RazaoSocial>xxxxxxxxxx</RazaoSocial>
 				<Endereco>
-					<Endereco>RUA JOSÉ PASSOS</Endereco>
+					<Endereco>xxxxxxxxxxxx</Endereco>
 					<Numero>564</Numero>
 					<Bairro>CENTRO</Bairro>
 					<CodigoMunicipio>3170206</CodigoMunicipio>
 					<Uf>MG</Uf>
-					<Cep>35858555</Cep>
+					<Cep>12345678</Cep>
 				</Endereco>
 			</TomadorServico>
 			<OptanteSimplesNacional>2</OptanteSimplesNacional>

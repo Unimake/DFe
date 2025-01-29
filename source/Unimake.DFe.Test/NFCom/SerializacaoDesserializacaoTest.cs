@@ -133,5 +133,77 @@ namespace Unimake.DFe.Test.NFCom
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(@"..\..\..\NFCom\Resources\consSitNFCom-ped-sit.xml")]
+        public void SerializacaoDesserializacaoConsSitNFCom(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var nfCom = new Unimake.Business.DFe.Xml.NFCom.ConsSitNFCom();
+            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.ConsSitNFCom>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(@"..\..\..\NFCom\Resources\NFComProc.xml")]
+        public void SerializacaoDesserializacaoNFComProc(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var nfCom = new Unimake.Business.DFe.Xml.NFCom.NFComProc();
+            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.NFComProc>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(@"..\..\..\NFCom\Resources\consStatServNFCom-ped-sta.xml")]
+        public void SerializacaoDesserializacaoConsStatServNFCom(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var nfCom = new Unimake.Business.DFe.Xml.NFCom.ConsStatServNFCom();
+            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.ConsStatServNFCom>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
+
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(@"..\..\..\NFCom\Resources\retConsStatServNFCom.xml")]
+        public void SerializacaoDesserializacaoRetConsStatServNFCom(string arqXML)
+        {
+            Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
+
+            var doc = new XmlDocument();
+            doc.Load(arqXML);
+
+            var nfCom = new Unimake.Business.DFe.Xml.NFCom.RetConsStatServNFCom();
+            var xml = nfCom.LerXML<Unimake.Business.DFe.Xml.NFCom.RetConsStatServNFCom>(doc);
+
+            var doc2 = xml.GerarXML();
+
+            Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
+        }
     }
 }

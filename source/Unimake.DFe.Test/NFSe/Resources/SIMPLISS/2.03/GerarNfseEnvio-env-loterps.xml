@@ -34,22 +34,22 @@
       </Servico>
       <Prestador>
         <CpfCnpj>
-          <Cnpj>11402643000188</Cnpj>
+          <Cnpj>99999999999999</Cnpj>
         </CpfCnpj>
         <InscricaoMunicipal>1111</InscricaoMunicipal>
       </Prestador>
       <Tomador>
         <IdentificacaoTomador>
           <CpfCnpj>
-            <Cnpj>76777579000165</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>1111</InscricaoMunicipal>
         </IdentificacaoTomador>
         <RazaoSocial>Empresa LTDA</RazaoSocial>
         <Endereco>
-          <Endereco>Rua Brasil, Centro, Goiania - GO</Endereco>
+          <Endereco>xxxxxxxxxxxxxxxxxxxxxx</Endereco>
           <Numero>S/N</Numero>
-          <Complemento> esq/com Av. Goias</Complemento>
+          <Complemento>xxxxxxxxxxxxx</Complemento>
           <Bairro>Centro</Bairro>
           <CodigoMunicipio>5208707</CodigoMunicipio>
           <Cep>74000000</Cep>

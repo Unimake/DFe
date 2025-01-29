@@ -4,7 +4,7 @@
 		<NumeroLote>45454</NumeroLote>
 		<Prestador>
 			<CpfCnpj>
-				<Cpf>55555555555</Cpf>
+				<Cpf>99999999999</Cpf>
 			</CpfCnpj>
 		</Prestador>
 		<QuantidadeRps>1</QuantidadeRps>
@@ -40,7 +40,7 @@
 					<TomadorServico>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>32934636810</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>
@@ -53,8 +53,8 @@
 							<Cep>14030530</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>17981707756</Telefone>
-							<Email>ALANFRNK@GMAIL.COM</Email>
+							<Telefone>12345678</Telefone>
+							<Email>TESSTEEEEE@GMAIL.COM</Email>
 						</Contato>
 					</TomadorServico>
 					<OptanteSimplesNacional>1</OptanteSimplesNacional>
@@ -74,7 +74,7 @@
 						<DadosFornecedor>
 							<IdentificacaoFornecedor>
 								<CpfCnpj>
-									<Cpf>32934636810</Cpf>
+									<Cpf>99999999999</Cpf>
 								</CpfCnpj>
 							</IdentificacaoFornecedor>
 						</DadosFornecedor>

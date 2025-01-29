@@ -17,11 +17,11 @@
   </prestador>
   <tomador>
     <tipo>F</tipo>
-    <cpfcnpj>00622793942</cpfcnpj>
+    <cpfcnpj>12345678901</cpfcnpj>
     <ie></ie>
-    <nome_razao_social>RODRIGO MARCOLA</nome_razao_social>
+    <nome_razao_social>xxxxxxxxxxxxxxxx</nome_razao_social>
     <sobrenome_nome_fantasia></sobrenome_nome_fantasia>
-    <logradouro>Rua Jaco Finardi, 799</logradouro>
+    <logradouro>xxxxxxxxxxxxx, 799</logradouro>
     <email>email@dominio.com.br</email>
     <complemento></complemento>
     <ponto_referencia></ponto_referencia>

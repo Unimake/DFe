@@ -15502,39 +15502,10 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEventoNFCom
     {
         /// <summary>
-        /// 240150 - Autorizada NFCom De Ajuste
+        /// 110111 - Cancelamento NFCom
         /// </summary>
-        [XmlEnum("240150")]
-        AutorizadaNFComDeAjuste = 240150,
-
-        /// <summary>
-        /// 240151 - Cancelada NFCom de Ajuste 
-        /// </summary>
-        [XmlEnum("240151")]
-        CanceladaNFComDeAjuste = 240151,
-
-        /// <summary>
-        /// 240160 - Autorizada NFCom de Cofaturamento
-        /// </summary>
-        [XmlEnum("240160")]
-        AutorizadaNFComDeCofaturamento = 240160,
-
-        /// <summary>
-        /// 240161 - Cancelada NFCom de Cofaturamento
-        /// </summary>
-        [XmlEnum("240161")]
-        CanceladaNFComDeCofaturamento = 240161,
-
-        /// <summary>
-        ///  240162 - Substituída NFCom de Cofaturamento
-        /// </summary>
-        [XmlEnum("240162")]
-        SubstituídaNFComDeCofaturamento = 240162,
-
-        /// <summary>
-        /// 240170 - Liberação Prazo Cancelamento
-        /// </summary>
-        LiberaçãoPrazoCancelamento = 240170,
+        [XmlEnum("110111")]
+        Cancelamento = 110111,
     }
 
     #endregion TipoEventoNFCom

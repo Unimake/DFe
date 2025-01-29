@@ -31,30 +31,30 @@
       </Servico>
       <Prestador>
         <CpfCnpj>
-          <Cpf>43109227000182</Cpf>
+          <Cpf>99999999999</Cpf>
         </CpfCnpj>
       </Prestador>
       <Tomador>
         <IdentificacaoTomador>
           <CpfCnpj>
-            <Cpf>35027943000192</Cpf>
+            <Cpf>99999999999</Cpf>
           </CpfCnpj>
           <InscricaoMunicipal>54002930</InscricaoMunicipal>
         </IdentificacaoTomador>
-        <RazaoSocial>Acesso Informática Eireli</RazaoSocial>
+        <RazaoSocial>xxxxxxxxxxxxxx</RazaoSocial>
         <Endereco>
-          <Endereco>Avenida Alfredo Sá</Endereco>
+          <Endereco>xxxxxxxxxxxxxxxxxx</Endereco>
           <Numero>2221</Numero>
           <Complemento>Complemento1</Complemento>
-          <Bairro>Jardim das Acácias</Bairro>
+          <Bairro>xxxxxxxxxxxxxxxxxx</Bairro>
           <CodigoMunicipio>3168606</CodigoMunicipio>
           <Uf>MG</Uf>
           <CodigoPais>1058</CodigoPais>
-          <Cep>39801112</Cep>
+          <Cep>12345678</Cep>
         </Endereco>
         <Contato>
-          <Telefone>03335224291</Telefone>
-          <Email>thiago@amaralinfo.com.br</Email>
+          <Telefone>1234567890</Telefone>
+          <Email>xxxxxxxxxx@tttttt.com.br</Email>
         </Contato>
       </Tomador>
       <OptanteSimplesNacional>2</OptanteSimplesNacional>

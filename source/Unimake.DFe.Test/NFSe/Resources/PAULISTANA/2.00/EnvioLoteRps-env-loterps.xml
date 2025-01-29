@@ -2,7 +2,7 @@
 <PedidoEnvioLoteRPS xmlns="http://www.prefeitura.sp.gov.br/nfe">
   <Cabecalho Versao="1" xmlns="">
     <CPFCNPJRemetente>
-      <CNPJ>04642554000143</CNPJ>
+      <CNPJ>06117473000150</CNPJ>
     </CPFCNPJRemetente>
     <transacao>false</transacao>
     <dtInicio>2007-01-20</dtInicio>
@@ -28,20 +28,20 @@
     <AliquotaServicos>0.05</AliquotaServicos>
     <ISSRetido>false</ISSRetido>
     <CPFCNPJTomador>
-      <CPF>18564071878</CPF>
+      <CPF>12345678901</CPF>
     </CPFCNPJTomador>
-    <RazaoSocialTomador>PATRICIA TUPYNAMBA</RazaoSocialTomador>
+    <RazaoSocialTomador>xxxxxxxxxxxxxxxxxxxxx</RazaoSocialTomador>
     <EnderecoTomador>
       <TipoLogradouro>R</TipoLogradouro>
       <Logradouro>Guararapes</Logradouro>
-      <NumeroEndereco>495 A</NumeroEndereco>
-      <ComplementoEndereco>ap 102</ComplementoEndereco>
-      <Bairro>BROOKLIN PAULISTA</Bairro>
+      <NumeroEndereco>2</NumeroEndereco>
+      <ComplementoEndereco>xxxxxxxxxxxxxxx</ComplementoEndereco>
+      <Bairro>zxxxxxxxxxxxxxxxx</Bairro>
       <Cidade>3550308</Cidade>
       <UF>SP</UF>
       <CEP>4561000</CEP>
     </EnderecoTomador>
-    <EmailTomador>ptupynamba@prodam.sp.gov.br</EmailTomador>
+    <EmailTomador>teste@prodam.sp.gov.br</EmailTomador>
     <Discriminacao>Desenvolvimento de Web Site Pessoal</Discriminacao>
   </RPS>
 </PedidoEnvioLoteRPS>

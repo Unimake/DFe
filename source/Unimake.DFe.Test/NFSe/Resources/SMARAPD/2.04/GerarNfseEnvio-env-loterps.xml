@@ -41,14 +41,14 @@
       </Servico>
       <Prestador>
         <CpfCnpj>
-          <Cnpj>22636916000175</Cnpj>
+          <Cnpj>99999999999999</Cnpj>
         </CpfCnpj>
         <InscricaoMunicipal>281302</InscricaoMunicipal>
       </Prestador>
       <TomadorServico>
         <IdentificacaoTomador>
           <CpfCnpj>
-            <Cpf>32934636810</Cpf>
+            <Cpf>99999999999</Cpf>
           </CpfCnpj>
         </IdentificacaoTomador>
         <RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>

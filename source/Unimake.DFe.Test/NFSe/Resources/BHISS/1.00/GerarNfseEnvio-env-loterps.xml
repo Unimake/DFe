@@ -2,7 +2,7 @@
 <GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<LoteRps Id="Id1" versao="1.00">
 		<NumeroLote>1</NumeroLote>
-		<Cnpj>11402643000188</Cnpj>
+		<Cnpj>99999999999999</Cnpj>
 		<InscricaoMunicipal>1111</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps>
@@ -45,13 +45,13 @@
 						<CodigoMunicipio>1</CodigoMunicipio>
 					</Servico>
 					<Prestador>
-						<Cnpj>11402643000188</Cnpj>
+						<Cnpj>99999999999999</Cnpj>
 						<InscricaoMunicipal>1111</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cnpj>55381246000142</Cnpj>
+								<Cnpj>99999999999999</Cnpj>
 							</CpfCnpj>
 							<InscricaoMunicipal>1111</InscricaoMunicipal>
 						</IdentificacaoTomador>

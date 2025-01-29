@@ -22,9 +22,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public TipoAmbiente TpAmb { get; set; }
 
         [XmlElement("xServ")]
-        public string XServ { get; set; }
+        public string XServ { get; set; } = "STATUS";
 
         [XmlAttribute(AttributeName = "versao")]
-        public string versao { get; set; }
+        public string Versao { get; set; }
     }
 }
