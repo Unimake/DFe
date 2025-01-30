@@ -2,7 +2,7 @@
 	<LoteRps Id="Lote_16_07568886000113" versao="2.01">
 		<NumeroLote>16</NumeroLote>
 		<CpfCnpj>
-			<Cnpj>07568886000113</Cnpj>
+			<Cnpj>99999999999999</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
 		<QuantidadeRps>3</QuantidadeRps>
@@ -46,20 +46,20 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>07568886000113</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>93223064915</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 							<InscricaoMunicipal>00000000123456</InscricaoMunicipal>
 						</IdentificacaoTomador>
-						<RazaoSocial>Ricardo Amorim da Silva</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxxxxx</RazaoSocial>
 						<Endereco>
-							<Endereco>Rua Otávio do Patrocínio Medeiros</Endereco>
+							<Endereco>xxxxxxxxxxxxxxxx</Endereco>
 							<Numero>14</Numero>
 							<Complemento>AP 502B</Complemento>
 							<Bairro>Floresta</Bairro>
@@ -69,8 +69,8 @@
 							<Cep>88110612</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>4899717045</Telefone>
-							<Email>amorim1609@gmail.com</Email>
+							<Telefone>1234567890</Telefone>
+							<Email>xxxxxxxx@gmail.com</Email>
 						</Contato>
 					</Tomador>
 					<ConstrucaoCivil>
@@ -83,11 +83,11 @@
 				</InfDeclaracaoPrestacaoServico>
 			</Rps>
 			<Rps>
-				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000113">
-					<Rps Id="RPS6000861">
+				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000116">
+					<Rps Id="RPS6000844">
 						<IdentificacaoRps>
 							<Numero>6000</Numero>
-							<Serie>86</Serie>
+							<Serie>85</Serie>
 							<Tipo>1</Tipo>
 						</IdentificacaoRps>
 						<DataEmissao>2012-04-01</DataEmissao>
@@ -121,20 +121,20 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>07568886000113</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>93223064915</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 							<InscricaoMunicipal>00000000123456</InscricaoMunicipal>
 						</IdentificacaoTomador>
-						<RazaoSocial>Ricardo Amorim da Silva</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxxxxx</RazaoSocial>
 						<Endereco>
-							<Endereco>Rua Otávio do Patrocínio Medeiros</Endereco>
+							<Endereco>xxxxxxxxxxxxxxxx</Endereco>
 							<Numero>14</Numero>
 							<Complemento>AP 502B</Complemento>
 							<Bairro>Floresta</Bairro>
@@ -144,83 +144,8 @@
 							<Cep>88110612</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>4899717045</Telefone>
-							<Email>amorim1609@gmail.com</Email>
-						</Contato>
-					</Tomador>
-					<ConstrucaoCivil>
-						<CodigoObra>8888</CodigoObra>
-						<Art>9999</Art>
-					</ConstrucaoCivil>
-					<RegimeEspecialTributacao>3</RegimeEspecialTributacao>
-					<OptanteSimplesNacional>2</OptanteSimplesNacional>
-					<IncentivoFiscal>2</IncentivoFiscal>
-				</InfDeclaracaoPrestacaoServico>
-			</Rps>
-			<Rps>
-				<InfDeclaracaoPrestacaoServico Id="Declaracao_07568886000113">
-					<Rps Id="RPS6000871">
-						<IdentificacaoRps>
-							<Numero>6000</Numero>
-							<Serie>87</Serie>
-							<Tipo>1</Tipo>
-						</IdentificacaoRps>
-						<DataEmissao>2012-04-01</DataEmissao>
-						<Status>1</Status>
-					</Rps>
-					<Competencia>2012-04-01</Competencia>
-					<Servico>
-						<Valores>
-							<ValorServicos>100000.00</ValorServicos>
-							<ValorDeducoes>9999.99</ValorDeducoes>
-							<ValorPis>8888.88</ValorPis>
-							<ValorCofins>7777.77</ValorCofins>
-							<ValorInss>6666.66</ValorInss>
-							<ValorIr>5555.55</ValorIr>
-							<ValorCsll>4444.44</ValorCsll>
-							<OutrasRetencoes>3333.33</OutrasRetencoes>
-							<ValorIss>2222.22</ValorIss>
-							<Aliquota>6.3000000000</Aliquota>
-							<DescontoIncondicionado>1111.00</DescontoIncondicionado>
-							<DescontoCondicionado>1111.11</DescontoCondicionado>
-						</Valores>
-						<IssRetido>1</IssRetido>
-						<ResponsavelRetencao>1</ResponsavelRetencao>
-						<ItemListaServico>05.01</ItemListaServico>
-						<CodigoCnae>0</CodigoCnae>
-						<Discriminacao>Teste da Geração de NFSE</Discriminacao>
-						<CodigoMunicipio>4216602</CodigoMunicipio>
-						<CodigoPais>1058</CodigoPais>
-						<ExigibilidadeISS>1</ExigibilidadeISS>
-						<MunicipioIncidencia>1200179</MunicipioIncidencia>
-					</Servico>
-					<Prestador>
-						<CpfCnpj>
-							<Cnpj>07568886000113</Cnpj>
-						</CpfCnpj>
-						<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
-					</Prestador>
-					<Tomador>
-						<IdentificacaoTomador>
-							<CpfCnpj>
-								<Cpf>93223064915</Cpf>
-							</CpfCnpj>
-							<InscricaoMunicipal>00000000123456</InscricaoMunicipal>
-						</IdentificacaoTomador>
-						<RazaoSocial>Ricardo Amorim da Silva</RazaoSocial>
-						<Endereco>
-							<Endereco>Rua Otávio do Patrocínio Medeiros</Endereco>
-							<Numero>14</Numero>
-							<Complemento>AP 502B</Complemento>
-							<Bairro>Floresta</Bairro>
-							<CodigoMunicipio>4216602</CodigoMunicipio>
-							<Uf>SC</Uf>
-							<CodigoPais>1058</CodigoPais>
-							<Cep>88110612</Cep>
-						</Endereco>
-						<Contato>
-							<Telefone>4899717045</Telefone>
-							<Email>amorim1609@gmail.com</Email>
+							<Telefone>1234567890</Telefone>
+							<Email>xxxxxxxx@gmail.com</Email>
 						</Contato>
 					</Tomador>
 					<ConstrucaoCivil>

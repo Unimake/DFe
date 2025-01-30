@@ -4,9 +4,9 @@
     <Pedido>
       <InfPedidoCancelamento Id="Id1" versao="2.02">
         <IdentificacaoNfse>
-          <Numero>0</Numero>
+          <Numero>1</Numero>
           <CpfCnpj>
-            <Cpf>Cpf_______1</Cpf>
+            <Cpf>99999999999</Cpf>
           </CpfCnpj>
           <InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
           <CodigoMunicipio>1</CodigoMunicipio>
@@ -60,14 +60,14 @@
         </Servico>
         <Prestador>
           <CpfCnpj>
-            <Cpf>Cpf_______1</Cpf>
+            <Cpf>99999999999</Cpf>
           </CpfCnpj>
           <InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
         </Prestador>
         <Tomador>
           <IdentificacaoTomador>
             <CpfCnpj>
-              <Cpf>Cpf_______1</Cpf>
+              <Cpf>99999999999</Cpf>
             </CpfCnpj>
             <InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
           </IdentificacaoTomador>
@@ -80,7 +80,7 @@
             <CodigoMunicipio>1</CodigoMunicipio>
             <Uf>U1</Uf>
             <CodigoPais>Cod1</CodigoPais>
-            <Cep>Cep____1</Cep>
+            <Cep>12345678</Cep>
           </Endereco>
           <Contato>
             <Telefone>Telefone1</Telefone>
@@ -90,7 +90,7 @@
         <Intermediario>
           <IdentificacaoIntermediario>
             <CpfCnpj>
-              <Cpf>Cpf_______1</Cpf>
+              <Cpf>99999999999</Cpf>
             </CpfCnpj>
             <InscricaoMunicipal>InscricaoMunic1</InscricaoMunicipal>
           </IdentificacaoIntermediario>

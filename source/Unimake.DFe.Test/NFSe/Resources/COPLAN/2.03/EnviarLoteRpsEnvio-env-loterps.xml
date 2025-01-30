@@ -3,7 +3,7 @@
 	<LoteRps Id="Lote_124" versao="2.03">
 		<NumeroLote>124</NumeroLote>
 		<CpfCnpj>
-			<Cnpj>95621439001624</Cnpj>
+			<Cnpj>99999999999999</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>111111111</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>
@@ -46,21 +46,21 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>17673422000120</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>6007</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>87863804191</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>TESTE TESTE</RazaoSocial>
 						<Endereco>
-							<Endereco>RUA 106</Endereco>
+							<Endereco>xxxxxxxxxxx</Endereco>
 							<Numero>157</Numero>
-							<Bairro>SETOR SUL CENTRO</Bairro>
+							<Bairro>xxxxxxxxxxx</Bairro>
 							<CodigoMunicipio>5102637</CodigoMunicipio>
 							<Uf>MT</Uf>
 							<CodigoPais>1058</CodigoPais>

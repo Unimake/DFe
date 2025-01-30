@@ -67,16 +67,16 @@
 				<Tomador>
 					<IdentificacaoTomador>
 						<CpfCnpj>
-							<Cpf>92562772806</Cpf>
+							<Cpf>99999999999</Cpf>
 						</CpfCnpj>
 						<InscricaoMunicipal>0</InscricaoMunicipal>
 					</IdentificacaoTomador>
 					<RazaoSocial>TOMADOR TESTE 01</RazaoSocial>
 					<Endereco>
-						<Endereco>XV DE NOVEMBRO</Endereco>
+						<Endereco>xxxxxxxxxxx</Endereco>
 						<Numero>701</Numero>
-						<Complemento>PRIMEIRO ANDAR</Complemento>
-						<Bairro>CENTRO</Bairro>
+						<Complemento>xxxxxxxxxxxxxxx</Complemento>
+						<Bairro>xxxxxxxxxxxx</Bairro>
 						<CodigoMunicipio>4115200</CodigoMunicipio>
 						<Uf>PR</Uf>
 						<CodigoPais>1058</CodigoPais>
@@ -84,7 +84,7 @@
 					</Endereco>
 					<Contato>
 						<Telefone>449999999</Telefone>
-						<Email>mapaliari@gmail.com</Email>
+						<Email>xxxxxxxxxxxxx@gmail.com</Email>
 					</Contato>
 				</Tomador>
 				<ConstrucaoCivil>

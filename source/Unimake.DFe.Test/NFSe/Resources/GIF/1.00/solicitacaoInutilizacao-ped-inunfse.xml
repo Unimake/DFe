@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <solicitacaoInutilizacao versao="1.0">
 	<numeroSolicitacao>1</numeroSolicitacao>
-	<cnpjContribuinte>49454600000119</cnpjContribuinte>
+	<cnpjContribuinte>99999999999999</cnpjContribuinte>
 	<dataSolicitacao>2013-09-03</dataSolicitacao>
 	<horaSolicitacao>12:00</horaSolicitacao>
 	<numerosInutilizados>

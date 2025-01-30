@@ -2,7 +2,7 @@
 	<LoteRps Id="Lote_16_07568886000113" versao="2.01">
 		<NumeroLote>16</NumeroLote>
 		<CpfCnpj>
-			<Cnpj>07568886000113</Cnpj>
+			<Cnpj>99999999999999</Cnpj>
 		</CpfCnpj>
 		<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
 		<QuantidadeRps>3</QuantidadeRps>
@@ -46,20 +46,20 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>07568886000113</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>93223064915</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 							<InscricaoMunicipal>00000000123456</InscricaoMunicipal>
 						</IdentificacaoTomador>
-						<RazaoSocial>Ricardo Amorim da Silva</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxxxxx</RazaoSocial>
 						<Endereco>
-							<Endereco>Rua Otávio do Patrocínio Medeiros</Endereco>
+							<Endereco>xxxxxxxxxxxxxxxxx</Endereco>
 							<Numero>14</Numero>
 							<Complemento>AP 502B</Complemento>
 							<Bairro>Floresta</Bairro>
@@ -69,8 +69,8 @@
 							<Cep>88110612</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>4899717045</Telefone>
-							<Email>amorim1609@gmail.com</Email>
+							<Telefone>1234567890</Telefone>
+							<Email>xxxxxxxxxxxxxxxx@gmail.com</Email>
 						</Contato>
 					</Tomador>
 					<ConstrucaoCivil>
@@ -121,20 +121,20 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>07568886000113</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>00000000003012</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>93223064915</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 							<InscricaoMunicipal>00000000123456</InscricaoMunicipal>
 						</IdentificacaoTomador>
-						<RazaoSocial>Ricardo Amorim da Silva</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxxx</RazaoSocial>
 						<Endereco>
-							<Endereco>Rua Otávio do Patrocínio Medeiros</Endereco>
+							<Endereco>xxxxxxxxxxxxxxxx</Endereco>
 							<Numero>14</Numero>
 							<Complemento>AP 502B</Complemento>
 							<Bairro>Floresta</Bairro>
@@ -144,8 +144,8 @@
 							<Cep>88110612</Cep>
 						</Endereco>
 						<Contato>
-							<Telefone>4899717045</Telefone>
-							<Email>amorim1609@gmail.com</Email>
+							<Telefone>1234567890</Telefone>
+							<Email>xxxxxxxxxxxx@gmail.com</Email>
 						</Contato>
 					</Tomador>
 					<ConstrucaoCivil>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
 	<LoteRps id="L13032509575798">
-		<NumeroLote>13032509575798</NumeroLote>
+		<NumeroLote>99999999999999</NumeroLote>
 		<Cnpj>99999999999999</Cnpj>
 		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>

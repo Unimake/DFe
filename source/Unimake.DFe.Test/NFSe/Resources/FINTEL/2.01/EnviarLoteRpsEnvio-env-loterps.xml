@@ -9,7 +9,7 @@
 		<ListaRps>
 			<Rps>
 				<InfDeclaracaoPrestacaoServico>
-					<Rps Id="6">
+					<Rps Id="ID6">
 						<IdentificacaoRps>
 							<Numero>6</Numero>
 							<Serie>1</Serie>
