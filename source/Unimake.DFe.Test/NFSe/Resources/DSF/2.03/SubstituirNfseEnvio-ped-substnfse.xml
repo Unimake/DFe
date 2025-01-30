@@ -6,7 +6,7 @@
         <IdentificacaoNfse>
           <Numero>428</Numero>
           <CpfCnpj>
-            <Cnpj>11402643000188</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>12345</InscricaoMunicipal>
           <CodigoMunicipio>3306305</CodigoMunicipio>
@@ -59,14 +59,14 @@
         </Servico>
         <Prestador>
           <CpfCnpj>
-            <Cnpj>11402643000188</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>12345</InscricaoMunicipal>
         </Prestador>
         <Tomador>
           <IdentificacaoTomador>
             <CpfCnpj>
-              <Cpf>32934636810</Cpf>
+              <Cpf>99999999999</Cpf>
             </CpfCnpj>
           </IdentificacaoTomador>
           <RazaoSocial>SMARAPD INFORMATICA LTDA</RazaoSocial>

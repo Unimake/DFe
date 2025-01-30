@@ -50,12 +50,12 @@
           <tipos:Tomador>
             <tipos:IdentificacaoTomador>
               <tipos:CpfCnpj>
-                <tipos:Cnpj>08166224000180</tipos:Cnpj>
+                <tipos:Cnpj>99999999999999</tipos:Cnpj>
               </tipos:CpfCnpj>
             </tipos:IdentificacaoTomador>
-            <tipos:RazaoSocial>ESTOFADOS STABULIS LTDA</tipos:RazaoSocial>
+            <tipos:RazaoSocial>xxxxxxxxxxxx</tipos:RazaoSocial>
             <tipos:Endereco>
-              <tipos:Endereco>R MACAPA</tipos:Endereco>
+              <tipos:Endereco>xxxxxxxxxxx</tipos:Endereco>
               <tipos:Numero>3064</tipos:Numero>
               <tipos:Bairro>CENTRO</tipos:Bairro>
               <tipos:CodigoMunicipio>4128104</tipos:CodigoMunicipio>

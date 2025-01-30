@@ -60,7 +60,7 @@
         </Servico>
         <Prestador>
           <CpfCnpj>
-            <Cpf>ABCDEFGHIJK</Cpf>
+            <Cpf>99999999999</Cpf>
           </CpfCnpj>
           <InscricaoMunicipal>string</InscricaoMunicipal>
         </Prestador>

@@ -3,7 +3,7 @@
   <LoteRps Id="lote_20130807412" versao="2.01">
     <NumeroLote>20130807412</NumeroLote>
     <CpfCnpj>
-      <Cnpj>14414973000181</Cnpj>
+      <Cnpj>99999999999999</Cnpj>
     </CpfCnpj>
     <InscricaoMunicipal>0000000001</InscricaoMunicipal>
     <QuantidadeRps>1</QuantidadeRps>
@@ -46,14 +46,14 @@
           </Servico>
           <Prestador>
             <CpfCnpj>
-              <Cnpj>14414973000181</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>0000000001</InscricaoMunicipal>
           </Prestador>
           <Tomador>
             <IdentificacaoTomador>
               <CpfCnpj>
-                <Cnpj>42278291001791</Cnpj>
+                <Cnpj>99999999999999</Cnpj>
               </CpfCnpj>
               <InscricaoMunicipal>0017833001</InscricaoMunicipal>
             </IdentificacaoTomador>

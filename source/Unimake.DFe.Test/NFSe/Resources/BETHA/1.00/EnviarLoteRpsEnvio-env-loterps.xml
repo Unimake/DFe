@@ -2,7 +2,7 @@
 <EnviarLoteRpsEnvio xmlns="http://www.betha.com.br/e-nota-contribuinte-ws">
 	<LoteRps xmlns="" Id="AC25">
 		<NumeroLote>25</NumeroLote>
-		<Cnpj>83843920000107</Cnpj>
+		<Cnpj>99999999999999</Cnpj>
 		<InscricaoMunicipal>228</InscricaoMunicipal>
 		<QuantidadeRps>1</QuantidadeRps>
 		<ListaRps xmlns="">
@@ -44,20 +44,20 @@
 						<CodigoMunicipio>4217600</CodigoMunicipio>
 					</Servico>
 					<Prestador>
-						<Cnpj>83843920000107</Cnpj>
+						<Cnpj>99999999999999</Cnpj>
 						<InscricaoMunicipal>228</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cnpj>04263580000160</Cnpj>
+								<Cnpj>99999999999999</Cnpj>
 							</CpfCnpj>
 						</IdentificacaoTomador>
-						<RazaoSocial>MANFREDINI SCHIANCHI DO BRASIL LTDA</RazaoSocial>
+						<RazaoSocial>zzzzzzzzzzzzzzzzz</RazaoSocial>
 						<Endereco>
-							<Endereco>RODOVIA SC 445</Endereco>
-							<Numero>973</Numero>
-							<Bairro>PEDREIRAS</Bairro>
+							<Endereco>zzzzzzzzzzzzzzzzz</Endereco>
+							<Numero>1</Numero>
+							<Bairro>xxxxxxxxxxxxxxxx</Bairro>
 							<CodigoMunicipio>4220000</CodigoMunicipio>
 							<Uf>SC</Uf>
 							<Cep>88828000</Cep>

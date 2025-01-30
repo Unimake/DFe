@@ -6,7 +6,7 @@
         <IdentificacaoNfse>
           <Numero>87</Numero>
           <CpfCnpj>
-            <Cnpj>45111111111100</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>123498</InscricaoMunicipal>
           <CodigoMunicipio>4204608</CodigoMunicipio>
@@ -49,35 +49,35 @@
         </Servico>
         <Prestador>
           <CpfCnpj>
-            <Cnpj>45111111111100</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>123498</InscricaoMunicipal>
         </Prestador>
         <Tomador>
           <IdentificacaoTomador>
             <CpfCnpj>
-              <Cnpj>83787494000123</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
           </IdentificacaoTomador>
-          <RazaoSocial>INSTITUICAO FINANCEIRA</RazaoSocial>
+          <RazaoSocial>xxxxxxxxxxxxx</RazaoSocial>
           <Endereco>
-            <Endereco>AV. 7 DE SETEMBRO</Endereco>
+            <Endereco>xxxxxxxxxxxxxx</Endereco>
             <Numero>1505</Numero>
-            <Complemento>AO LADO DO JOAO AUTOMOVEIS</Complemento>
+            <Complemento>xxxxxxxxxxxxx</Complemento>
             <Bairro>CENTRO</Bairro>
             <CodigoMunicipio>4201406</CodigoMunicipio>
             <Uf>SC</Uf>
             <Cep>88900000</Cep>
           </Endereco>
           <Contato>
-            <Telefone>4835220026</Telefone>
-            <Email>bergman@tsmail.com</Email>
+            <Telefone>1234567890</Telefone>
+            <Email>xxxxxxxxxxxxxx@tsmail.com</Email>
           </Contato>
         </Tomador>
         <Intermediario>
           <IdentificacaoIntermediario>
             <CpfCnpj>
-              <Cnpj>06410987065144</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>22252</InscricaoMunicipal>
           </IdentificacaoIntermediario>

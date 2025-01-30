@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-	<LoteRps id="lote:1ABCDZ">
+	<LoteRps id="lote_1ABCDZ">
 		<NumeroLote>3425</NumeroLote>
 		<Prestador>
 			<CpfCnpj>
-				<Cnpj>49122386000101</Cnpj>
+				<Cnpj>99999999999999</Cnpj>
 			</CpfCnpj>
 			<InscricaoMunicipal>123493</InscricaoMunicipal>
 		</Prestador>
@@ -12,7 +12,7 @@
 		<ListaRps>
 			<Rps>
 				<InfDeclaracaoPrestacaoServico id="Rps_1">
-					<Rps id="Rps_1">
+					<Rps id="Rps_2">
 						<IdentificacaoRps>
 							<Numero>800</Numero>
 							<Serie>A1</Serie>
@@ -45,14 +45,14 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>94499233000124</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>123498</InscricaoMunicipal>
 					</Prestador>
 					<TomadorServico>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cnpj>94499233000124</Cnpj>
+								<Cnpj>99999999999999</Cnpj>
 							</CpfCnpj>
 							<InscricaoMunicipal>8.8.88888888</InscricaoMunicipal>
 						</IdentificacaoTomador>
@@ -72,7 +72,7 @@
 					<Intermediario>
 						<IdentificacaoIntermediario>
 							<CpfCnpj>
-								<Cnpj>94499233000124</Cnpj>
+								<Cnpj>99999999999999</Cnpj>
 							</CpfCnpj>
 							<InscricaoMunicipal>22252</InscricaoMunicipal>
 						</IdentificacaoIntermediario>

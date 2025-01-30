@@ -6,7 +6,7 @@
         <IdentificacaoNfse>
           <Numero>1</Numero>
           <CpfCnpj>
-            <Cnpj>02221150000150</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>123</InscricaoMunicipal>		  
 		  <Token>141JQHhSH814YXP0rwhAt10ihg</Token>
@@ -61,14 +61,14 @@
         </Servico>
         <Prestador>
           <CpfCnpj>
-            <Cpf>ABCDEFGHIJK</Cpf>
+            <Cpf>99999999999</Cpf>
           </CpfCnpj>
           <InscricaoMunicipal>string</InscricaoMunicipal>
         </Prestador>
         <Tomador>
           <IdentificacaoTomador>
             <CpfCnpj>
-              <Cnpj>23417010000122</Cnpj>
+              <Cnpj>99999999999999</Cnpj>
             </CpfCnpj>
             <InscricaoMunicipal>345</InscricaoMunicipal>
           </IdentificacaoTomador>

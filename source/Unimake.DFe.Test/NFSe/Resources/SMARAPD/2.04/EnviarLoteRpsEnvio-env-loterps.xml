@@ -4,7 +4,7 @@
 		<NumeroLote>2515974</NumeroLote>
 		<Prestador>
 			<CpfCnpj>
-				<Cnpj>11006293000130</Cnpj>
+				<Cnpj>99999999999999</Cnpj>
 			</CpfCnpj>
 			<InscricaoMunicipal>99999</InscricaoMunicipal>
 		</Prestador>
@@ -50,14 +50,14 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>11006293000130</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>99999</InscricaoMunicipal>
 					</Prestador>
 					<TomadorServico>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cnpj>11177786000133</Cnpj>
+								<Cnpj>99999999999999</Cnpj>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>TESTE TESTE</RazaoSocial>

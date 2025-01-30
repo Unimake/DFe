@@ -4,7 +4,7 @@
 		<NumeroLote>1</NumeroLote>
 		<Prestador>
 			<CpfCnpj>
-				<Cnpj>08578958000176</Cnpj>
+				<Cnpj>99999999999999</Cnpj>
 			</CpfCnpj>
 		</Prestador>
 		<QuantidadeRps>1</QuantidadeRps>
@@ -47,22 +47,22 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>08578958000176</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>0748352200137</InscricaoMunicipal>
 					</Prestador>
 					<TomadorServico>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cnpj>12768972000100</Cnpj>
+								<Cnpj>99999999999999</Cnpj>
 							</CpfCnpj>
-							<InscricaoMunicipal>0755717600175</InscricaoMunicipal>
+							<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
 						</IdentificacaoTomador>
-						<RazaoSocial>M A B CAVALCANTE GS.DATA</RazaoSocial>
+						<RazaoSocial>xxxxxxxxxxxxxxxxxxxxxxxx</RazaoSocial>
 						<Endereco>
-							<Endereco>TR 03. BLOCO A, SALA 104</Endereco>
+							<Endereco>xxxxxxxxxxxxxxxx</Endereco>
 							<Numero>S/N</Numero>
-							<Complemento>SETOR DE IND BERNADO SAYAO</Complemento>
+							<Complemento>xxxxxxxxxxxxxxxxxx</Complemento>
 							<Bairro>NUCLEO BANDEIRANTE</Bairro>
 							<CodigoMunicipio>5300108</CodigoMunicipio>
 							<Uf>DF</Uf>

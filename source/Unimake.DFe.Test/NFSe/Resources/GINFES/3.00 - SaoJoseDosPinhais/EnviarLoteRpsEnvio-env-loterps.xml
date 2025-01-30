@@ -2,7 +2,7 @@
 <EnviarLoteRpsEnvio xmlns="http://nfe.sjp.pr.gov.br/servico_enviar_lote_rps_envio_v03.xsd">
   <LoteRps Id="LOTE1">
     <NumeroLote xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">1</NumeroLote>
-    <Cnpj xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">01234567890123</Cnpj>
+    <Cnpj xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">99999999999999</Cnpj>
     <InscricaoMunicipal xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">12345</InscricaoMunicipal>
     <QuantidadeRps xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">1</QuantidadeRps>
     <ListaRps xmlns="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">
@@ -37,7 +37,7 @@
             <CodigoMunicipio>4125506</CodigoMunicipio>
           </Servico>
           <Prestador>
-            <Cnpj>01234567890123</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
             <InscricaoMunicipal>12345</InscricaoMunicipal>
           </Prestador>
           <Tomador>

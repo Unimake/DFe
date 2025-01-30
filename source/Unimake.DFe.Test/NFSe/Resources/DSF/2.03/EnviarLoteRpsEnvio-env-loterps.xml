@@ -37,14 +37,14 @@
 					</Servico>
 					<Prestador>
 						<CpfCnpj>
-							<Cnpj>0</Cnpj>
+							<Cnpj>99999999999999</Cnpj>
 						</CpfCnpj>
 						<InscricaoMunicipal>0</InscricaoMunicipal>
 					</Prestador>
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>0</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>TESTE</RazaoSocial>

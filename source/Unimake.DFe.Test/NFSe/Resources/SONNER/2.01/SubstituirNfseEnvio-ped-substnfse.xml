@@ -6,7 +6,7 @@
         <IdentificacaoNfse>
           <Numero>1</Numero>
           <CpfCnpj>
-            <Cnpj>01646956000128</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>18715</InscricaoMunicipal>
           <CodigoMunicipio>1</CodigoMunicipio>
@@ -51,14 +51,14 @@
         </Servico>
         <Prestador>
           <CpfCnpj>
-            <Cnpj>01646956000128</Cnpj>
+            <Cnpj>99999999999999</Cnpj>
           </CpfCnpj>
           <InscricaoMunicipal>18715</InscricaoMunicipal>
         </Prestador>
         <Tomador>
           <IdentificacaoTomador>
             <CpfCnpj>
-              <Cpf>00000000000</Cpf>
+              <Cpf>99999999999</Cpf>
             </CpfCnpj>
             <InscricaoMunicipal>1</InscricaoMunicipal>
           </IdentificacaoTomador>
