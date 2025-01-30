@@ -272,6 +272,25 @@ Function EnviarNfeAssincrono()
 *
 *    * adicionar a tag ICMS51 dentro da tag ICMS
 * 	   oICMS.ICMS51 = oICMS51
+
+*    * criar tag ICMS60
+*      oICMS60 = CreateObject("Unimake.Business.DFe.Xml.NFe.ICMS60")
+*      oICMS51.Orig = 0 && OrigemMercadoria.Nacional
+*      oICMS51.CST = "60"
+*      oICMS51.VBCSTRet = 0.00
+*      oICMS51.PST = 0.0000
+*      oICMS51.VICMSSubstituto = 0.00
+*      oICMS51.VICMSSTRet = 0.00
+*      oICMS51.VBCFCPSTRet = 0.00
+*      oICMS51.PFCPSTRet = 0.0000
+*      oICMS51.VFCPSTRet = 0.00
+*      oICMS51.PRedBCEfet = 0.0000
+*      oICMS51.VBCEfet = 0.00
+*      oICMS51.PICMSEfet = 0.0000
+*      oICMS51.VICMSEfet = 0.00
+
+*    * Adicionar a tag ICMS60 dentro da tag ICMS
+*      oICMS.ICMS60 = oICMS60
 	   
      * adicionar a tag ICMS dentro da tag Imposto
        oImposto.Icms = oICMS
