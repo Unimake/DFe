@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="2.04">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://testemogimirim.meumunicipio.online/abrasf/ws</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
+			<WebEnderecoProducao>https://mogimirim.meumunicipio.online/abrasf/ws</WebEnderecoProducao>
 			<WebActionHomologacao>https://testemogimirimabrasf.meumunicipio.online/ws#RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://mogimirim.meumunicipio.online/abrasf/ws#RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -14,12 +14,13 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://testemogimirimabrasf.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{xmlBody}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="https://abrasfmogimirim.meumunicipio.online/ws"><soapenv:Header/><soapenv:Body><ws:RecepcionarLoteRps><xml>{oCDATA}{xmlBody}{cCDATA}</xml></ws:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.04</SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
