@@ -5,6 +5,8 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Exceptions;
 using Unimake.Business.DFe.Xml.DARE;
+using System.Net.Http;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.DARE
 {
@@ -26,16 +28,9 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <exception cref="NotImplementedException"></exception>
         protected override void DefinirConfiguracao()
         {
-            var xml = new Unimake.Business.DFe.Xml.DARE.Receitas();
-            xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.Receitas>(ConteudoXML);
+            Configuracoes.Servico = Servico.DAREReceita;
 
-            if (!Configuracoes.Definida)
-            {
-                Configuracoes.Servico = Servico.DAREReceita;
-                Configuracoes.CodigoUF = (int)UFBrasil.AN;
-
-                base.DefinirConfiguracao();
-            }
+            base.DefinirConfiguracao();
         }
 
         #endregion Protected Methods
@@ -87,6 +82,16 @@ namespace Unimake.Business.DFe.Servicos.DARE
             {
                 ThrowHelper.Instance.Throw(ex);
             }
+        }
+
+        /// <summary>
+        /// Método utilizado para o EnvioDare / EnvioDareLote
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        protected override HttpContent GerarJSON()
+        {
+            throw new NotImplementedException();
         }
 #endif
 

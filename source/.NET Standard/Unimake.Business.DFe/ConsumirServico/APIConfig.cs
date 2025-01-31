@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Net.Http;
 using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe
@@ -29,6 +30,16 @@ namespace Unimake.Business.DFe
         private bool _UsaCertificadoDigital;
         private string _Host;
         private string _ApiKey;
+        private HttpContent _HttpContent;
+
+        /// <summary>
+        /// HttpContent - Usado para a comunicação web POST
+        /// </summary>
+        public HttpContent HttpContent
+        {
+            get => _HttpContent;
+            set => _HttpContent = value;
+        }
 
         /// <summary>
         /// Host - Header API

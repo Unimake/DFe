@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.CTe;
+using System.Net.Http;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -844,6 +844,11 @@ namespace Unimake.Business.DFe.Servicos
         /// Tipos de eventos específicos do REINF e eSocial
         /// </summary>
         public Dictionary<string, TiposEventosEspecificos> TiposEventosEspecificos = new Dictionary<string, TiposEventosEspecificos>();
+
+        /// <summary>
+        /// HttpContent utilizado para a comunicação
+        /// </summary>
+        public HttpContent HttpContent { get; set; }
 
         #endregion Public Fields
 

@@ -1,17 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml;
-using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
-using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.DARE;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe
@@ -52,18 +47,7 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                // Todo o processamento do Content irá ficar apenas no método POST
-                var Content = default(HttpContent);
-
-                if (apiConfig.Servico != Servico.DAREEnvio)
-                {
-                    Content = EnveloparXML(apiConfig, xml);
-                }
-                else
-                {
-                    Content = EnveloparJSON(apiConfig, xml);
-                }
-                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, Content).GetAwaiter().GetResult();
+                postData = httpWebRequest.PostAsync(apiConfig.RequestURI, apiConfig.HttpContent).GetAwaiter().GetResult();
             }
 
             httpWebRequest.Dispose();
@@ -225,172 +209,5 @@ namespace Unimake.Business.DFe
 
         #endregion Configuração da requisição - Certificado - Headers - Ajuste do Link de comunicação
 
-
-        /// <summary>
-        /// Método para envolopar o XML, formando o JSON para comunicação com a API
-        /// </summary>
-        /// <param name="apiConfig"></param>    Configurações básicas para consumo da API
-        /// <param name="xml"></param>          Arquivo XML que será enviado
-        /// <returns></returns>
-        private HttpContent EnveloparXML(APIConfig apiConfig, XmlDocument xml)
-        {
-            var xmlBody = xml.OuterXml;
-            if (apiConfig.GZipCompress)
-            {
-                xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
-                xmlBody = Compress.GZIPCompress(xml);
-            }
-
-            //No momento, somente IPM 2.04 está utilizando WebSoapString em comunicação API, ele precisa o login acima
-            if (!string.IsNullOrWhiteSpace(apiConfig.WebSoapString))
-            {
-                apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xml}", xmlBody);
-                HttpContent temp = new StringContent(apiConfig.WebSoapString, Encoding.UTF8, apiConfig.ContentType);
-                return temp;
-            }
-
-            if (apiConfig.ContentType == "application/json")
-            {
-                if (apiConfig.PadraoNFSe == PadraoNFSe.BAUHAUS)
-                {
-                    var json = JsonConvert.SerializeObject(xml);
-                    return new StringContent(json, Encoding.UTF8, apiConfig.ContentType);
-                }
-
-                var dicionario = new Dictionary<string, string>();
-
-                if (apiConfig.LoginConexao)
-                {
-                    dicionario.Add("usuario", apiConfig.MunicipioUsuario);
-                    dicionario.Add("senha", apiConfig.MunicipioSenha);
-                }
-
-                dicionario.Add((string.IsNullOrWhiteSpace(apiConfig.WebAction) ? "xml" : apiConfig.WebAction), xmlBody);
-
-                var Json = JsonConvert.SerializeObject(dicionario);
-
-                HttpContent temp = new StringContent(Json, Encoding.UTF8, apiConfig.ContentType);
-
-                return temp;
-            }
-            else if (apiConfig.ContentType == "multipart/form-data")
-            {
-                var path = string.Empty;
-
-                if (string.IsNullOrWhiteSpace(xml.BaseURI))
-                {
-                    path = "arquivo.xml";
-                }
-                else
-                {
-                    path = xml.BaseURI.Substring(8, xml.BaseURI.Length - 8);
-                }
-
-                var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
-
-                #region ENVIO EM BYTES
-                var xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
-                var xmlContent = new ByteArrayContent(xmlBytes);
-                xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
-                xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                {
-                    Name = "f1",
-                    FileName = path,
-
-                };
-                #endregion ENVIO EM BYTES
-
-                HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
-                {
-                    xmlContent,
-
-                };
-
-                if (!string.IsNullOrWhiteSpace(apiConfig.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
-                {
-                    var usuario = new StringContent(apiConfig.MunicipioUsuario);
-                    usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    usuario.Headers.ContentEncoding.Add("UTF-8");
-                    usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "login",
-                    };
-                    var senha = new StringContent(apiConfig.MunicipioSenha);
-                    senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    senha.Headers.ContentEncoding.Add("UTF-8");
-                    senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "senha",
-                    };
-                    var codigoTom = new StringContent(apiConfig.CodigoTom);
-                    codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    codigoTom.Headers.ContentEncoding.Add("UTF-8");
-                    codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "cidade",
-                    };
-                    var f1 = new StringContent(path);
-                    f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
-                    f1.Headers.ContentEncoding.Add("ISO-8859-1");
-                    f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
-                    {
-                        Name = "f1",
-                    };
-                    HttpContent MultiPartContent2 = new MultipartContent("form-data", boundary)
-                    {
-                        usuario,
-                        senha,
-                        codigoTom,
-                        f1,
-                        xmlContent
-                    };
-
-                    return MultiPartContent2;
-                }
-
-                return MultiPartContent;
-            }
-
-            return new StringContent(xmlBody, Encoding.UTF8, apiConfig.ContentType);
-        }
-
-        private HttpContent EnveloparJSON(APIConfig apiConfig, XmlDocument xml)
-        {
-            // Desserializar XML para o objeto Dare
-            XmlSerializer serializer = default(XmlSerializer);
-
-            if (xml.OuterXml.Contains("DareLote"))
-            {
-
-                serializer = new XmlSerializer(typeof(DARELote));
-                DARELote dareObj;
-
-                using (StringReader reader = new StringReader(xml.OuterXml))
-                {
-                    dareObj = (DARELote)serializer.Deserialize(reader);
-                }
-
-                // Serializar o objeto para JSON
-                string json = JsonConvert.SerializeObject(dareObj, Newtonsoft.Json.Formatting.Indented);
-
-                return new StringContent(json, Encoding.UTF8, apiConfig.ContentType);
-            }
-            else
-            {
-                serializer = new XmlSerializer(typeof(DARE));
-                DARE dareObj;
-
-                using (StringReader reader = new StringReader(xml.OuterXml))
-                {
-                    dareObj = (DARE)serializer.Deserialize(reader);
-                }
-
-                // Serializar o objeto para JSON
-                string json = JsonConvert.SerializeObject(dareObj, Newtonsoft.Json.Formatting.Indented);
-
-                return new StringContent(json, Encoding.UTF8, apiConfig.ContentType);
-            }
-        }
     }
 }

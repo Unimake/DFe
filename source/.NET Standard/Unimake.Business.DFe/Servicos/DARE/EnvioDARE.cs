@@ -9,6 +9,9 @@ using Unimake.Exceptions;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Servicos.DARE
 {
@@ -33,14 +36,12 @@ namespace Unimake.Business.DFe.Servicos.DARE
             var xml = new Unimake.Business.DFe.Xml.DARE.DARE();
             xml = xml.LerXML<Unimake.Business.DFe.Xml.DARE.DARE>(ConteudoXML);
 
-            if (!Configuracoes.Definida)
-            {
-                Configuracoes.Servico = Servico.DAREEnvio;
-                Configuracoes.CodigoUF = (int)UFBrasil.AN;
-                Configuracoes.SchemaVersao = xml.Versao;
+            Configuracoes.Servico = Servico.DAREEnvio;
+            Configuracoes.SchemaVersao = xml.Versao;
 
-                base.DefinirConfiguracao();
-            }
+            base.DefinirConfiguracao();
+
+            Configuracoes.HttpContent = GerarJSON();
         }
 
         #endregion Protected Methods
@@ -188,6 +189,32 @@ namespace Unimake.Business.DFe.Servicos.DARE
             {
                 ThrowHelper.Instance.Throw(ex);
             }
+        }
+
+        /// <summary>
+        /// Cria o HttpContent necessário para o serviço EnvioDARE
+        /// </summary>
+        /// <param name="apiConfig"></param>
+        /// <param name="xml"></param>
+        /// <returns></returns>
+        protected override HttpContent GerarJSON()
+        {
+            // Desserializar XML para o objeto Dare
+            XmlSerializer serializer = default(XmlSerializer);
+            serializer = new XmlSerializer(typeof(Unimake.Business.DFe.Xml.DARE.DARE));
+
+            Unimake.Business.DFe.Xml.DARE.DARE dareObj;
+
+            using (StringReader reader = new StringReader(ConteudoXML.OuterXml))
+            {
+                dareObj = (Unimake.Business.DFe.Xml.DARE.DARE)serializer.Deserialize(reader);
+            }
+
+            // Serializar o objeto para JSON
+            string json = JsonConvert.SerializeObject(dareObj, Newtonsoft.Json.Formatting.Indented);
+
+            return new StringContent(json, Encoding.UTF8, Configuracoes.WebContentType);
+
         }
 
         #endregion Public Methods

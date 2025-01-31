@@ -9,6 +9,11 @@ using Unimake.Business.DFe.Security;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Validator;
 using Unimake.Business.DFe.Xml;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Text;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -81,7 +86,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Defini o valor das propriedades do objeto "Configuracoes"
         /// </summary>
-        protected abstract void DefinirConfiguracao();
+        protected virtual void DefinirConfiguracao() { }
 
         /// <summary>
         /// Validar o schema do XML
@@ -103,7 +108,7 @@ namespace Unimake.Business.DFe.Servicos
 #endif
         protected virtual void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
-             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
+            Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
             ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
 
             if (!Configuracoes.Definida)
@@ -222,8 +227,8 @@ namespace Unimake.Business.DFe.Servicos
                     WebAction = Configuracoes.WebActionProducao,
                     MunicipioSenha = Configuracoes.MunicipioSenha,
                     MunicipioUsuario = Configuracoes.MunicipioUsuario,
-                    PadraoNFSe = Configuracoes.PadraoNFSe,
-                    LoginConexao = Configuracoes.LoginConexao,
+                    PadraoNFSe = Configuracoes.PadraoNFSe,              // NFSE
+                    LoginConexao = Configuracoes.LoginConexao,          // NFSE
                     ResponseMediaType = Configuracoes.ResponseMediaType,
                     CodigoTom = Configuracoes.CodigoTom,
                     Servico = Configuracoes.Servico,
@@ -231,6 +236,8 @@ namespace Unimake.Business.DFe.Servicos
                     Host = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.HostProducao : Configuracoes.HostHomologacao),
                     ApiKey = Configuracoes.ApiKey,
                 };
+
+                apiConfig.HttpContent = EnveloparXML(apiConfig);
 
                 var consumirAPI = new ConsumirAPI();
                 consumirAPI.ExecutarServico(ConteudoXML, apiConfig, Configuracoes.CertificadoDigital);
@@ -287,5 +294,135 @@ namespace Unimake.Business.DFe.Servicos
         [ComVisible(false)]
 #endif
         public abstract void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML);
+
+        /// <summary>
+        /// Método para envolopar o XML, formando o JSON para comunicação com a API
+        /// </summary>
+        /// <param name="apiConfig"></param>    Configurações básicas para consumo da API
+        /// <returns></returns>
+        private HttpContent EnveloparXML(APIConfig apiConfig)
+        {
+            var xmlBody = ConteudoXML.OuterXml;
+            if (apiConfig.GZipCompress)
+            {
+                xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
+                xmlBody = Compress.GZIPCompress(ConteudoXML);
+            }
+
+            //No momento, somente IPM 2.04 está utilizando WebSoapString em comunicação API, ele precisa o login acima
+            if (!string.IsNullOrWhiteSpace(apiConfig.WebSoapString))
+            {
+                apiConfig.WebSoapString = apiConfig.WebSoapString.Replace("{xml}", xmlBody);
+                HttpContent temp = new StringContent(apiConfig.WebSoapString, Encoding.UTF8, apiConfig.ContentType);
+                return temp;
+            }
+
+            if (apiConfig.ContentType == "application/json")
+            {
+                if (apiConfig.PadraoNFSe == PadraoNFSe.BAUHAUS)
+                {
+                    var json = JsonConvert.SerializeObject(ConteudoXML);
+                    return new StringContent(json, Encoding.UTF8, apiConfig.ContentType);
+                }
+
+                var dicionario = new Dictionary<string, string>();
+
+                if (apiConfig.LoginConexao)
+                {
+                    dicionario.Add("usuario", apiConfig.MunicipioUsuario);
+                    dicionario.Add("senha", apiConfig.MunicipioSenha);
+                }
+
+                dicionario.Add((string.IsNullOrWhiteSpace(apiConfig.WebAction) ? "xml" : apiConfig.WebAction), xmlBody);
+
+                var Json = JsonConvert.SerializeObject(dicionario);
+
+                HttpContent temp = new StringContent(Json, Encoding.UTF8, apiConfig.ContentType);
+
+                return temp;
+            }
+            else if (apiConfig.ContentType == "multipart/form-data")
+            {
+                var path = string.Empty;
+
+                if (string.IsNullOrWhiteSpace(ConteudoXML.BaseURI))
+                {
+                    path = "arquivo.xml";
+                }
+                else
+                {
+                    path = ConteudoXML.BaseURI.Substring(8, ConteudoXML.BaseURI.Length - 8);
+                }
+
+                var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+
+                #region ENVIO EM BYTES
+                var xmlBytes = Encoding.UTF8.GetBytes(xmlBody);
+                var xmlContent = new ByteArrayContent(xmlBytes);
+                xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
+                xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "f1",
+                    FileName = path,
+
+                };
+                #endregion ENVIO EM BYTES
+
+                HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
+                {
+                    xmlContent,
+
+                };
+
+                if (!string.IsNullOrWhiteSpace(apiConfig.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
+                {
+                    var usuario = new StringContent(apiConfig.MunicipioUsuario);
+                    usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    usuario.Headers.ContentEncoding.Add("UTF-8");
+                    usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "login",
+                    };
+                    var senha = new StringContent(apiConfig.MunicipioSenha);
+                    senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    senha.Headers.ContentEncoding.Add("UTF-8");
+                    senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "senha",
+                    };
+                    var codigoTom = new StringContent(apiConfig.CodigoTom);
+                    codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    codigoTom.Headers.ContentEncoding.Add("UTF-8");
+                    codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "cidade",
+                    };
+                    var f1 = new StringContent(path);
+                    f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                    f1.Headers.ContentEncoding.Add("ISO-8859-1");
+                    f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "f1",
+                    };
+                    HttpContent MultiPartContent2 = new MultipartContent("form-data", boundary)
+                    {
+                        usuario,
+                        senha,
+                        codigoTom,
+                        f1,
+                        xmlContent
+                    };
+
+                    return MultiPartContent2;
+                }
+
+                return MultiPartContent;
+            }
+
+            return new StringContent(xmlBody, Encoding.UTF8, apiConfig.ContentType);
+        }
+
+
     }
 }
