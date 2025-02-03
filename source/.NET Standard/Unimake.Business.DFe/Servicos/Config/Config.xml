@@ -1679,4 +1679,10 @@
 		<ArqConfig>PrimaveraDoLesteMT.xml</ArqConfig>
 		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2507507">
+		<Nome>João Pessoa - PB</Nome>
+		<UF>PB</UF>
+		<ArqConfig>JoaoPessoaPB.xml</ArqConfig>
+		<PadraoNFSe>SISPMJP</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

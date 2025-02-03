@@ -418,6 +418,7 @@
 		<None Remove="Servicos\Config\NFSe\JataiGO.xml" />
 		<None Remove="Servicos\Config\NFSe\JiParanaRO.xml" />
 		<None Remove="Servicos\Config\NFSe\JoaoMonlevadeMG.xml" />
+		<None Remove="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\JuazeiroBA.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
@@ -1112,6 +1113,8 @@
 		<None Remove="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\nfse_v2-03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
@@ -1281,6 +1284,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
@@ -2901,6 +2905,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIGCORP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SIMPLISS\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\nfse v2 02.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\SISPMJP\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\nfse_v2-03.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />

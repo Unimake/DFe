@@ -6800,6 +6800,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("RLZ_INFORMATICA")]
         RLZ_INFORMATICA = 61,
+
+        /// <summary>
+        /// SISPMJP
+        /// </summary>
+        [Description("SISPMJP")]
+        SISPMJP = 62,
     }
 
     #endregion
