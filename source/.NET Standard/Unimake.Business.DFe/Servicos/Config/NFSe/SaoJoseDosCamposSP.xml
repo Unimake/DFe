@@ -84,9 +84,9 @@
       <WebActionHomologacao></WebActionHomologacao>
       <WebActionProducao></WebActionProducao>
       <SchemaArquivo>nfse.xsd</SchemaArquivo>
-	  <TagAssinatura>Rps</TagAssinatura>
+	  <TagAssinatura></TagAssinatura>
 	  <TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
-	  <TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+	  <TagLoteAssinatura></TagLoteAssinatura>
 	  <TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
 	  <TagExtraAssinatura>Pedido</TagExtraAssinatura>
 	  <TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
