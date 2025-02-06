@@ -84,9 +84,9 @@
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAssinatura></TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura>Rps</TagLoteAssinatura>
+			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID>InfDeclaracaoPrestacaoServico</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.issweb.fiorilli.com.br/" xmlns:nfse="http://www.abrasf.org.br/nfse.xsd" xmlns:xd="http://www.w3.org/2000/09/xmldsig#"><soapenv:Header/><soapenv:Body><ws:substituirNfse>{xmlBody}<username>{MunicipioUsuario}</username><password>{MunicipioSenha}</password></ws:substituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>

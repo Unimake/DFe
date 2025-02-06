@@ -88,7 +88,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         #region ShoudSerialize
 
         public bool ShouldSerializeTMed() => !string.IsNullOrWhiteSpace(TMed);
-        public bool ShouldSerializeDhRetornoField() => !string.IsNullOrWhiteSpace(DhRetornoField);
+        public bool ShouldSerializeDhRetornoField() => DhRetorno > DateTime.MinValue;
         public bool ShouldSerializeXObs() => !string.IsNullOrWhiteSpace(XObs);
 
         #endregion ShoudSerialize
