@@ -3925,15 +3925,16 @@ namespace TreinamentoDLL
                         InfEvento = new XmlNFe.InfEvento(new XmlNFe.DetEventoManif
                         {
                             Versao = "1.00",
-                            DescEvento = "Operacao nao Realizada", //Pode ser: "Ciencia da Operacao" / "Confirmacao da Operacao" / "Desconhecimento da Operacao" / "Operacao nao Realizada"
-                            XJust = "Justificativa para manifestação da NFe de teste"
+                            DescEvento = "Ciencia da Operacao" //, //Pode ser: "Ciencia da Operacao" / "Confirmacao da Operacao" / "Desconhecimento da Operacao" / "Operacao nao Realizada"
+                            //XJust = "Justificativa para manifestação da NFe de teste"
                         })
                         {
                             COrgao = UFBrasil.AN,
                             ChNFe = "41200211111111111111111111111111111111111115",
-                            CNPJ = "06117473000150",
+                            //CNPJ = "06117473000150",
+                            CPF = "02138394905",
                             DhEvento = DateTime.Now,
-                            TpEvento = TipoEventoNFe.ManifestacaoOperacaoNaoRealizada,
+                            TpEvento = TipoEventoNFe.ManifestacaoCienciaOperacao,
                             NSeqEvento = 1,
                             VerEvento = "1.00",
                             TpAmb = TipoAmbiente.Homologacao
