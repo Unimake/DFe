@@ -11,7 +11,7 @@ namespace Unimake.DFe.Test.NF3e
     /// <summary>
     /// Testar o serviço de consulta recibo da NF3e
     /// </summary>
-    public class EnviarEventoTest
+    public class RecepcaoEventoTest
     {
         /// <summary>
         /// Consultar o recibo da NF3e somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
@@ -69,14 +69,16 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.SC, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.SE, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
-        public void EnviarEvento(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        public void RecepcaoEventoEstadosXml(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var xml = new XmlDocument();
             xml.Load("..\\..\\..\\NF3e\\Resources\\eventoNF3e.xml");
 
-            var evento = XMLUtility.Deserializar<EventoNF3e>(xml);
-            evento.InfEvento.COrgao = (UFBrasil)(int)ufBrasil;
-            evento.InfEvento.TpAmb = (TipoAmbiente)(int)tipoAmbiente;
+            var evento = new EventoNF3e();
+            var eventoObjeto = evento.LerXML<EventoNF3e>(xml);
+
+            eventoObjeto.InfEvento.COrgao = (UFBrasil)(int)ufBrasil;
+            eventoObjeto.InfEvento.TpAmb = (TipoAmbiente)(int)tipoAmbiente;
 
             var configuracao = new Configuracao
             {
@@ -87,7 +89,70 @@ namespace Unimake.DFe.Test.NF3e
                 TipoAmbiente = tipoAmbiente,
             };
 
-            var recepcaoEvento = new RecepcaoEvento(evento, configuracao);
+            var recepcaoEvento = new RecepcaoEvento(eventoObjeto, configuracao);
+            recepcaoEvento.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || configuracao.CodigoUF.Equals((int)UFBrasil.PR))
+            {
+                Assert.True(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            }
+            else
+            {
+                Assert.True(recepcaoEvento.Result.InfEvento.COrgao.Equals(UFBrasil.AC), "Webservice retornou uma UF e está diferente de " + UFBrasil.RS + " (SVRS)");
+            }
+
+            Assert.True(recepcaoEvento.Result.InfEvento.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+        }
+
+        /// <summary>
+        /// Consultar o recibo da NF3e somente para saber se a conexão com o webservice está ocorrendo corretamente e se quem está respondendo é o webservice correto.
+        /// Efetua uma consulta por estado + ambiente para garantir que todos estão funcionando.
+        /// </summary>
+        /// <param name="ufBrasil">UF para onde deve ser enviado a consulta recibo</param>
+        /// <param name="tipoAmbiente">Ambiente para onde deve ser enviado a consulta recibo</param>
+        [Theory]
+        [Trait("DFe", "NF3e")]
+        [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.RJ, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.RJ, TipoAmbiente.Producao)]
+        public void RecepcaoEventoObjeto(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var xmlEvento = new EventoNF3e
+            {
+                Versao = "1.00",
+                InfEvento = new InfEvento(new DetEventoCanc
+                {
+                    VersaoEvento = "1.00",
+                    DescEvento = "Cancelamento",
+                    NProt = "12345678",
+                    XJust = "Erro no valor do item 3"
+                })
+                {
+                    COrgao = ufBrasil,
+                    TpAmb = tipoAmbiente,
+                    CNPJ = "06117473000150",
+                    ChNF3e = "12345678901234567890123456789012345678901234",
+                    DhEvento = System.DateTime.Now,
+                    TpEvento = TipoEventoNF3e.Cancelamento,
+                    NSeqEvento = 1,
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoEmissao = TipoEmissao.Normal,
+                Servico = Servico.NF3eRecepcaoEvento,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+            };
+
+            var recepcaoEvento = new RecepcaoEvento(xmlEvento, configuracao);
             recepcaoEvento.Executar();
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
