@@ -33,6 +33,16 @@ namespace Unimake.Business.DFe.Servicos.DARE
             base.DefinirConfiguracao();
         }
 
+        /// <summary>
+        /// Método utilizado para o EnvioDare / EnvioDareLote
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        protected override HttpContent GerarJSON()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion Protected Methods
 
         #region Public Methods
