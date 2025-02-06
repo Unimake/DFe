@@ -7,9 +7,9 @@
 		<chNF3e>12345678901234567890123456789012345678901234</chNF3e>
 		<dhEvento>2024-12-03T15:30:00-03:00</dhEvento>
 		<tpEvento>110111</tpEvento>
-		<nSeqEvento>001</nSeqEvento>
+		<nSeqEvento>1</nSeqEvento>
 		<detEvento versaoEvento="1.00">
-			 <evCancNF3e xmlns="http://www.portalfiscal.inf.br/nf3e">
+			 <evCancNF3e>
 				<descEvento>Cancelamento</descEvento>
 				<nProt>456789</nProt>
 				<xJust>Erro na descrição dos produtos</xJust>

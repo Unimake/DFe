@@ -26,9 +26,9 @@
 				<chNF3e>chNF3e1</chNF3e>
 				<dhEvento>2022-08-17T21:51:41-03:00</dhEvento>
 				<tpEvento>110111</tpEvento>
-				<nSeqEvento>nSeqEvento1</nSeqEvento>
-				<detEvento versaoEvento="versaoEvento1">
-					<evCancNF3e xmlns="http://www.portalfiscal.inf.br/nf3e">
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="1.00">
+					<evCancNF3e>
 						<descEvento>Cancelamento</descEvento>
 						<nProt>nProt1</nProt>
 						<xJust>xJust_________1</xJust>
