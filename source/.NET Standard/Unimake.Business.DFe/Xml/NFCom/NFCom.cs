@@ -310,7 +310,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         [XmlElement("dhCont")]
         public string DhContField
         {
-            get => DhCont.ToString("yyyy-MM-ddTHH:mm:ss");
+            get => DhCont.ToString("yyyy-MM-ddTHH:mm:sszzz");
 #if INTEROP
             set => DhCont = DateTime.Parse(value);
 #else
