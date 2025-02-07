@@ -60,5 +60,28 @@ namespace Unimake.Business.DFe.Utility
                 return chave;
             }
         }
+
+        /// <summary>
+        /// Formatar a string da chave da NFCom em um formato com uma máscara
+        /// </summary>
+        /// <returns>Chave formatada, com uma mascara</returns>
+        /// <example>
+        /// var chave = "35220100000000000100580020000004351000005350";
+        /// MessageBox.Show(Format.ChaveDFe(chave)); //Resultado será: 35-2201-00000000000100-58-002-000000435-1-0-0000535-0
+        /// </example>
+        public static string ChaveNFComDFe(string chave)
+        {
+            var mask = new MaskedTextProvider("##-####-##############-##-###-#########-#-#-#######-#");
+            mask.Set(chave, out _, out var hint);
+
+            if (hint == MaskedTextResultHint.Success)
+            {
+                return mask.ToString();
+            }
+            else
+            {
+                return chave;
+            }
+        }
     }
 }

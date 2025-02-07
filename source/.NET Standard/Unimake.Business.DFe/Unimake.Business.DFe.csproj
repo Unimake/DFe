@@ -256,7 +256,7 @@
 		<None Remove="Servicos\Config\NFCom\SC.xml" />
 		<None Remove="Servicos\Config\NFCom\SE.xml" />
 		<None Remove="Servicos\Config\NFCom\SP.xml" />
-		<None Remove="Servicos\Config\NFCom\SRVS.xml" />
+		<None Remove="Servicos\Config\NFCom\SVRS.xml" />
 		<None Remove="Servicos\Config\NFCom\TO.xml" />
 		<None Remove="Servicos\Config\NFe\AC.xml" />
 		<None Remove="Servicos\Config\NFe\AL.xml" />
@@ -1201,7 +1201,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFCom\SRVS.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CacoalRO.xml" />
 	</ItemGroup>

@@ -53,7 +53,7 @@
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao/nfcomRecepcao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao/nfcomRecepcao</WebActionProducao>
-			<SchemaArquivo>NFCom_v{0}.xsd</SchemaArquivo>
+			<SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura>NFCom</TagAssinatura>
 			<TagAtributoID>infNFCom</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>

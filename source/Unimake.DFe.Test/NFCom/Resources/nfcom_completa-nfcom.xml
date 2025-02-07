@@ -20,6 +20,7 @@
 			<indCessaoMeiosRede>1</indCessaoMeiosRede>
 			<indNotaEntrada>1</indNotaEntrada>
 			<dhCont>2025-01-15T16:20:11</dhCont>
+			<!--AAAA-MM-DDTHH:MM:SS-->
 			<xJust>teste</xJust>
 		</ide>
 		<emit>
@@ -151,7 +152,7 @@
 					<cBenef>87</cBenef>
 				</ICMS51>
 				<ICMS90>
-					<CST>90</CST>
+					<CST>01</CST>
 					<vBC>1.11</vBC>
 					<pICMS>1.11</pICMS>
 					<vICMS>333.33</vICMS>
@@ -303,7 +304,7 @@
 					<cBenef>87</cBenef>
 				</ICMS51>
 				<ICMS90>
-					<CST>90</CST>
+					<CST>01</CST>
 					<vBC>1.11</vBC>
 					<pICMS>1.11</pICMS>
 					<vICMS>333.33</vICMS>
@@ -455,7 +456,7 @@
 					<cBenef>87</cBenef>
 				</ICMS51>
 				<ICMS90>
-					<CST>90</CST>
+					<CST>01</CST>
 					<vBC>1.11</vBC>
 					<pICMS>1.11</pICMS>
 					<vICMS>333.33</vICMS>
