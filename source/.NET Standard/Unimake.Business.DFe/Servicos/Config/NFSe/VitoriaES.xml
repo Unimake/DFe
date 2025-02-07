@@ -8,6 +8,8 @@
 			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo>nfse v2 01.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
@@ -63,8 +65,8 @@
 			<WebActionHomologacao>http://www.abrasf.org.br/nfse.xsd/CancelarNfse</WebActionHomologacao>
 			<WebActionProducao>http://www.abrasf.org.br/nfse.xsd/CancelarNfse</WebActionProducao>
 			<SchemaArquivo>nfse v2 01.xsd</SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
