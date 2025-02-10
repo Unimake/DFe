@@ -1526,7 +1526,6 @@ namespace Unimake.Business.DFe.Xml.CTe
                         _detEvento = new DetEventoCancelamentoInsucessoEntrega();
                         break;
 
-
                     case TipoEventoCTe.RegistroPassagem:
                         _detEvento = new DetEventoRegistroPassagem();
                         break;
@@ -1537,6 +1536,10 @@ namespace Unimake.Business.DFe.Xml.CTe
 
                     case TipoEventoCTe.RegistoPassagemAutomaticoOriginadoMDFe:
                         _detEvento = new DetEventoRegistroPassagemAutomaticoMDFe();
+                        break;
+
+                    case TipoEventoCTe.AutorizadoCTeComplementar:
+                        _detEvento = new DetEventoAutorizadoCTeComplementar();
                         break;
 
                     default:
@@ -2803,6 +2806,108 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na desserialização
+        /// </summary>
+        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        public void ReadXml(XmlDocument document)
+        {
+
+        }
+
+        /// <summary>
+        /// Executa o processamento do XMLReader recebido na serialização
+        /// </summary>
+        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        public void WriteXml(System.IO.StringWriter writer)
+        {
+
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoAutorizadoCTeComplementar")]
+    [ComVisible(true)]
+#endif
+    [XmlInclude(typeof(EventoDetalhe))]
+    [XmlRoot(ElementName = "detEvento")]
+    public class DetEventoAutorizadoCTeComplementar : EventoDetalhe
+    {
+        private EvCTeComplementar _evCTeComplementar;
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EvCTeComplementar.DescEvento;
+            set => EvCTeComplementar.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string ChCTeCompl
+        {
+            get => EvCTeComplementar.ChCTeCompl;
+            set => EvCTeComplementar.ChCTeCompl = value;
+        }
+
+        [XmlIgnore]
+        public string NProt
+        {
+            get => EvCTeComplementar.NProt;
+            set => EvCTeComplementar.NProt = value;
+        }
+
+        [XmlIgnore]
+        public string DhRecbto
+        {
+            get => EvCTeComplementar.DhRecbto;
+            set => EvCTeComplementar.DhRecbto = value;
+        }
+
+        [XmlIgnore]
+        public EvCTeComplementar EvCTeComplementar
+        {
+            get => _evCTeComplementar ?? (_evCTeComplementar = new EvCTeComplementar());
+            set => _evCTeComplementar = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evCTeComplementar>
+                <descEvento>{DescEvento}</descEvento>
+                <chCTeCompl>{ChCTeCompl}</chCTeCompl>
+                <dhRecbto>{DhRecbto}</dhRecbto>
+                <nProt>{NProt}</nProt>";
+
+            writeRaw += "</evCTeComplementar>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeComplementar")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot(ElementName = "evCTeComplementar")]
+    [XmlInclude(typeof(EventoDetalhe))]
+    public class EvCTeComplementar : Contract.Serialization.IXmlSerializable
+    {
+        [XmlElement("descEvento")]
+        public string DescEvento { get; set; } = "Autorizado CT-e Complementar";
+
+        [XmlElement("chCTeCompl")]
+        public string ChCTeCompl { get; set; }
+
+        [XmlElement("dhRecbto")]
+        public string DhRecbto { get; set; }
+
+        [XmlElement("nProt")]
+        public string NProt { get; set; }
 
         /// <summary>
         /// Executa o processamento do XMLReader recebido na desserialização

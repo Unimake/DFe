@@ -1234,6 +1234,12 @@ namespace Unimake.Business.DFe.Servicos
         CancelamentoInsucessoEntrega = 110191,
 
         /// <summary>
+        /// 240130 - Autorizado CT-e Complementar
+        /// </summary>
+        [XmlEnum("240130")]
+        AutorizadoCTeComplementar = 240130,
+
+        /// <summary>
         /// 510620 - Registro de Passagem Automático do CTe (Evento exclusivo do fisco)
         /// </summary>
         [XmlEnum("510620")]
