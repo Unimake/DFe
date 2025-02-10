@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<retConsSitMDFe  versao="3.00" xmlns="http://www.portalfiscal.inf.br/mdfe">
+	<tpAmb>1</tpAmb>
+	<verAplic>RS20240710093806</verAplic>
+	<cStat>132</cStat>
+	<xMotivo>Encerramento de MDF-e homologado</xMotivo>
+	<cUF>31</cUF>
+	<protMDFe versao="3.00">
+		<infProt Id="MDFe111111111111111">
+			<tpAmb>1</tpAmb>
+			<verAplic>RS20241029120943</verAplic>
+			<chMDFe>31111111111111111111111111111111111111111112</chMDFe>
+			<dhRecbto>2024-11-08T07:11:01-03:00</dhRecbto>
+			<nProt>999999999999999</nProt>
+			<digVal>xxxxxxxxxxxxxxxxxxxxxxxxxxx=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do MDF-e</xMotivo>
+		</infProt>
+	</protMDFe>
+	<procEventoMDFe versao="3.00">
+		<eventoMDFe versao="3.00">
+			<infEvento Id="ID31011231111111111111111111111111111111111111111112001">
+				<cOrgao>31</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>11111111111111</CNPJ>
+				<chMDFe>31111111111111111111111111111111111111111112</chMDFe>
+				<dhEvento>2025-01-07T09:11:17-03:00</dhEvento>
+				<tpEvento>310112</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evMDFeEncFisco>
+						<descEvento>Encerramento Fisco</descEvento>
+						<tpEnc>3</tpEnc>
+						<xJust>Encerramento do Fisco - Processo Automatizado</xJust>
+					</evMDFeEncFisco>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID3101123111111111111111111111111111111111111111111201">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>xxxxxxxxxxxxxxxxxxxxxxxxxxx=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>asdsadsadasdasdasdasda</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>asdadsadasdasdasdas</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe versao="3.00">
+			<infEvento Id="ID111111111111111">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20240710093829</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31111111111111111111111111111111111111111112</chMDFe>
+				<tpEvento>310112</tpEvento>
+				<xEvento>Encerramento Fisco</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2025-01-07T09:11:18-03:00</dhRegEvento>
+				<nProt>111111111111111</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+	<procEventoMDFe versao="3.00">
+		<eventoMDFe versao="3.00">
+			<infEvento Id="ID51062031111111111111111111111111111111111111111112001">
+				<cOrgao>93</cOrgao>
+				<tpAmb>1</tpAmb>
+				<CNPJ>11111111111111</CNPJ>
+				<chMDFe>31111111111111111111111111111111111111111112</chMDFe>
+				<dhEvento>2024-11-15T19:22:59-03:00</dhEvento>
+				<tpEvento>510620</tpEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<detEvento versaoEvento="3.00">
+					<evMDFeRegPassagemAuto>
+						<descEvento>Registro de Passagem Automático</descEvento>
+						<tpTransm>N</tpTransm>
+						<infPass>
+							<cUFTransito>52</cUFTransito>
+							<cIdEquip>000000000001261</cIdEquip>
+							<xIdEquip>1261 - P1 Ipameri - BR 050 KM 144</xIdEquip>
+							<tpEquip>2</tpEquip>
+							<placa>1111111</placa>
+							<tpSentido>I</tpSentido>
+							<dhPass>2024-11-15T19:23:00-03:00</dhPass>
+							<latitude>-17.120277</latitude>
+							<longitude>-47.721447</longitude>
+							<NSU>000001195655546</NSU>
+						</infPass>
+					</evMDFeRegPassagemAuto>
+				</detEvento>
+			</infEvento>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="#ID5106203111111111111111111111111111111111111111111201">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>111111111111111111111111111=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>sadksakdjaskjdaslkjdlkasdasd</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>asdkljasçldkjasldkjaslkdjaslkjdlaksda</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</eventoMDFe>
+		<retEventoMDFe versao="3.00">
+			<infEvento Id="ID111111111111111">
+				<tpAmb>1</tpAmb>
+				<verAplic>RS20240710093829</verAplic>
+				<cOrgao>31</cOrgao>
+				<cStat>135</cStat>
+				<xMotivo>Evento registrado e vinculado ao MDF-e</xMotivo>
+				<chMDFe>31111111111111111111111111111111111111111112</chMDFe>
+				<tpEvento>510620</tpEvento>
+				<xEvento>Registro de Passagem Automático</xEvento>
+				<nSeqEvento>1</nSeqEvento>
+				<dhRegEvento>2024-11-15T19:23:00-03:00</dhRegEvento>
+				<nProt>111111111111111</nProt>
+			</infEvento>
+		</retEventoMDFe>
+	</procEventoMDFe>
+	<procInfraSA>
+		<nProtDTe>000001111111111</nProtDTe>
+		<dhProt>2024-11-08T07:11:01-03:00</dhProt>
+	</procInfraSA>
+</retConsSitMDFe>

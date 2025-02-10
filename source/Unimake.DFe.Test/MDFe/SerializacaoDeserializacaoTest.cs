@@ -94,6 +94,7 @@ namespace Unimake.DFe.Test.MDFe
         [Trait("DFe", "MDFe")]
         [InlineData(@"..\..\..\MDFe\Resources\retConsSitMDFe-com-evento-de-cancelamento.xml")]
         [InlineData(@"..\..\..\MDFe\Resources\retConsSitMDFe-com-evento-de-encerramento.xml")]
+        [InlineData(@"..\..\..\MDFe\Resources\retConsSitMDFe-com-evento-de-encerramentofisco.xml")]
         [InlineData(@"..\..\..\MDFe\Resources\retConsSitMDFe-com-evento-510620.xml")]
         public void SerializacaoDeserializacaoRetConsSitMDFe(string arqXML)
         {

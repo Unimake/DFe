@@ -8,14 +8,10 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -65,21 +61,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("procInfraSA")]
         public ProcInfraSA ProcInfraSA { get; set; }
 
-
-
-        //public override void ReadXml(XmlDocument document)
-        //{
-        //    ProcEventoNFe.Clear();
-
-        //    var nodeListProcEventoNFe = document.GetElementsByTagName("procEventoNFe");
-
-        //    foreach (var item in nodeListProcEventoNFe)
-        //    {
-        //        ProcEventoNFe.Add(XMLUtility.Deserializar<ProcEventoNFe>(((XmlElement)item).OuterXml));
-        //    }
-        //}
-
-
         public override void ReadXml(XmlDocument document)
         {
             ProcEventoMDFe.Clear();
@@ -90,58 +71,6 @@ namespace Unimake.Business.DFe.Xml.MDFe
             {
                 ProcEventoMDFe.Add(XMLUtility.Deserializar<ProcEventoMDFe>(((XmlElement)item).OuterXml));
             }
-           
-            //base.ReadXml(document);
-            //var reader = XmlReader.Create(new StringReader(document.InnerXml));
-            //var nodes = XDocument.Parse(document.InnerXml)
-            //                     .DescendantNodes()
-            //                     .Where(w => w is XElement)
-            //                     .Cast<XElement>();
-            //var retEventos = nodes.Where(w => w.Name.LocalName.Equals(nameof(RetEventoMDFe), StringComparison.InvariantCultureIgnoreCase))
-            //                      .FirstOrDefault();
-
-            //if (retEventos != null)
-            //{
-            //    ProcEventoMDFe[0].Versao = nodes.Where(w => w.Name.LocalName == "procEventoMDFe" &&
-            //                                                w.GetAttributeValue("versao") != null)
-            //                                    .First()
-            //                                    .GetAttributeValue("versao");
-            //    ProcEventoMDFe[0].RetEventoMDFe = new RetEventoMDFe
-            //    {
-            //        Versao = retEventos.GetAttributeValue("versao"),
-            //        InfEvento = new RetEventoMDFeInfEvento
-            //        {
-            //            Id = retEventos.GetElement("infEvento").GetAttributeValue("Id"),
-            //            TpAmb = retEventos.GetValue<TipoAmbiente>("tpAmb"),
-            //            VerAplic = retEventos.GetValue("verAplic"),
-            //            COrgao = retEventos.GetValue<UFBrasil>("cOrgao"),
-            //            CStat = retEventos.GetValue<int>("cStat"),
-            //            XMotivo = retEventos.GetValue("xMotivo"),
-            //            ChMDFe = retEventos.GetValue("chMDFe"),
-            //            TpEvento = retEventos.GetValue<TipoEventoMDFe>("tpEvento"),
-            //            XEvento = retEventos.GetValue("xEvento"),
-            //            NSeqEvento = retEventos.GetValue<int>("nSeqEvento"),
-            //            DhRegEvento = retEventos.GetValue<DateTime>("dhRegEvento"),
-            //            NProt = retEventos.GetValue("nProt")
-            //        }
-            //    };
-            //}
-
-            //while (reader.Read())
-            //{
-            //    if (reader.NodeType != XmlNodeType.Element)
-            //    {
-            //        continue;
-            //    }
-
-            //    if (reader.Name != "Signature")
-            //    {
-            //        continue;
-            //    }
-
-            //    ProcEventoMDFe[0].EventoMDFe.Signature = reader.ToSignature();
-            //    break;
-            //}
         }
 
 #if INTEROP
@@ -153,13 +82,13 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// <returns>Conteúdo do index passado por parâmetro da ProcEventoMDFe</returns>
         public ProcEventoMDFe GetProcEventoMDFe(int index)
         {
-            if((ProcEventoMDFe?.Count ?? 0) == 0)
+            if ((ProcEventoMDFe?.Count ?? 0) == 0)
             {
                 return default;
             };
 
             return ProcEventoMDFe[index];
-        }        
+        }
 
         /// <summary>
         /// Retorna a quantidade de elementos existentes na lista ProcEventoMDFe

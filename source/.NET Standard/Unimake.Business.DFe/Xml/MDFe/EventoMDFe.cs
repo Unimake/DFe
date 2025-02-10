@@ -14,6 +14,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Xml.NFCom;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -1048,6 +1049,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
                     case TipoEventoMDFe.AlteracaoPagamentoServico:
                         _detEvento = value is DetEventoAlteracaoPagtoServMDFe ? value : new DetEventoAlteracaoPagtoServMDFe();
+                        break;
+
+                    case TipoEventoMDFe.EncerramentoFisco:
+                        _detEvento = value is DetEventoEncerramentoFisco ? value : new DetEventoEncerramentoFisco();
                         break;
 
                     default:
@@ -2102,5 +2107,80 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public string NProt { get; set; }
 
         #endregion Public Properties
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.DetEventoEncerramentoFisco")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "evMDFeEncFisco")]
+    public class DetEventoEncerramentoFisco : EventoDetalhe
+    {
+        private EventoEncerramentoFisco _eventoEncerramentoEvento;
+
+        internal override void SetValue(PropertyInfo pi) => base.SetValue(pi);
+
+        [XmlElement(ElementName = "evMDFeEncFisco", Order = 0)]
+        public EventoEncerramentoFisco EventoEncerramentoFisco
+        {
+            get => _eventoEncerramentoEvento ?? (_eventoEncerramentoEvento = new EventoEncerramentoFisco());
+            set => _eventoEncerramentoEvento = value;
+        }
+
+        [XmlIgnore]
+        public override string DescEvento
+        {
+            get => EventoEncerramentoFisco.DescEvento;
+            set => EventoEncerramentoFisco.DescEvento = value;
+        }
+
+        [XmlIgnore]
+        public string TpEnc
+        {
+            get => EventoEncerramentoFisco.TpEnc;
+            set => EventoEncerramentoFisco.TpEnc = value;
+        }
+
+        [XmlIgnore]
+        public string XJust
+        {
+            get => EventoEncerramentoFisco.XJust;
+            set => EventoEncerramentoFisco.XJust = value;
+        }
+
+        public override void WriteXml(XmlWriter writer)
+        {
+            base.WriteXml(writer);
+
+            var writeRaw = $@"<evMDFeEncFisco>
+                <descEvento>{DescEvento}</descEvento>
+                <tpEnc>{TpEnc}</tpEnc>
+                <xJust>{XJust}</xJust>";
+
+            writeRaw += $@"</evMDFeEncFisco>";
+
+            writer.WriteRaw(writeRaw);
+        }
+    }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.MDFe.EventoEncerramentoFisco")]
+    [ComVisible(true)]
+#endif
+    [Serializable]
+    [XmlRoot(ElementName = "evMDFeEncFisco")]
+    public class EventoEncerramentoFisco : EventoDetalhe
+    {
+        [XmlElement("descEvento", Order = 0)]
+        public override string DescEvento { get; set; } = "Encerramento Fisco";
+
+        [XmlElement("tpEnc", Order = 1)]
+        public string TpEnc { get; set; }
+
+        [XmlElement("xJust", Order = 2)]
+        public string XJust { get; set; }
     }
 }
