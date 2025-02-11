@@ -17,7 +17,7 @@ namespace Unimake.DFe.Test.NFe
         public void MontarChaveNFe()
         {
             var cUF = UFBrasil.PR;
-            var dhEmi = DateTime.Now;
+            var dhEmi = DateTime.Parse("2025-01-01");
             var cnpjOrCpf = "06117473000150";
             var mod = ModeloDFe.NFe;
             var serie = 1;
@@ -29,7 +29,7 @@ namespace Unimake.DFe.Test.NFe
 
             var chaveCorreta = "41250106117473000150550010000001231123456786";
 
-            Assert.True(chaveNFe.Equals(chaveCorreta), "Chave da NFe gerada está diferente! Chave gerada: " + chaveNFe + "Como deveria ser a chave: " + chaveCorreta);
+            Assert.True(chaveNFe.Equals(chaveCorreta), "Chave da NFe gerada está diferente! [Chave gerada: " + chaveNFe + "] [Como deveria ser a chave: " + chaveCorreta + "]");
         }
     }
 }
