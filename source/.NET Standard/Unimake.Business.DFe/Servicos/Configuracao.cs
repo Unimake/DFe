@@ -695,7 +695,7 @@ namespace Unimake.Business.DFe.Servicos
                 WebActionProducao = WebActionProducao.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
                 WebTagRetorno = WebTagRetorno.Replace("{TipoEventoEFDReinf}", TipoEventoEFDReinf);
             }
-            else if(Servico == Servico.EFDReinfConsultaLoteAssincrono)
+            else if (Servico == Servico.EFDReinfConsultaLoteAssincrono)
             {
                 RequestURIProducao = RequestURIProducao.Replace("{numeroProtocolo}", NumeroProtocolo);
                 RequestURIHomologacao = RequestURIHomologacao.Replace("{numeroProtocolo}", NumeroProtocolo);
@@ -849,6 +849,30 @@ namespace Unimake.Business.DFe.Servicos
         /// HttpContent utilizado para a comunicação
         /// </summary>
         public HttpContent HttpContent { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _RequestURI {  get; set; }
+        
+        /// <summary>
+        /// Request URI utilizado na comunicação por API
+        /// </summary>
+        public string RequestURI
+        {
+            get
+            {
+                if (_RequestURI == null)
+                {
+                    _RequestURI = TipoAmbiente == TipoAmbiente.Homologacao ? RequestURIHomologacao : RequestURIProducao;
+                }
+                return _RequestURI;
+            }
+            set 
+            {
+                _RequestURI = value;
+            }
+        }
 
         #endregion Public Fields
 
@@ -1319,7 +1343,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Número do protocolo retornado no envio do lote do REINF
         /// </summary>
-        public string NumeroProtocolo {  get; set; }
+        public string NumeroProtocolo { get; set; }
 
         /// <summary>
         /// Versão do schema do XML do evento

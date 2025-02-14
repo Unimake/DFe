@@ -194,8 +194,6 @@ namespace Unimake.Business.DFe.Servicos.DARE
         /// <summary>
         /// Cria o HttpContent necessário para o serviço EnvioDARE
         /// </summary>
-        /// <param name="apiConfig"></param>
-        /// <param name="xml"></param>
         /// <returns></returns>
         protected override HttpContent GerarJSON()
         {
@@ -217,7 +215,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
 
         }
 
-        #endregion Public Methods
+        #endregion Public Methods.
 
     }
 }
