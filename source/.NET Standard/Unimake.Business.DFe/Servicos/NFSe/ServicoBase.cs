@@ -7,7 +7,9 @@ using System.Text;
 using System.Xml;
 using Unimake.Business.DFe.Security;
 using Unimake.Exceptions;
-using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
+using System.Net.Http;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -28,51 +30,116 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
 
         /// <summary>
-        /// Definir configurações
+        /// Definir configurações específicas da NFSe
         /// </summary>
         protected override void DefinirConfiguracao()
-        { 
-            if (Configuracoes.PadraoNFSe == PadraoNFSe.MEMORY)
+        {
+            //Esta linha irá carregar as informações referêntes ao município.
+            Configuracoes.Load(GetType().Name);
+
+
+            switch (Configuracoes.PadraoNFSe)
             {
-                var numeroRPS = GetXMLElementInnertext("numeroRPS");
-                var numeroNFSE = GetXMLElementInnertext("numeroNFSE");
-                var protocolo = GetXMLElementInnertext("protocolo");
-                var codMunicipio = GetXMLElementInnertext("codMunicipio");
+                case PadraoNFSe.BAUHAUS:
+                    BAUHAUS();
+                    break;
 
-                if (codMunicipio == null && Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps)
-                {
-                    var nodeloteRps = ConteudoXML.GetElementsByTagName("LoteRps")?[0];
-                    codMunicipio = nodeloteRps.Attributes.GetNamedItem("codMunicipio").Value;
-                }
+                case PadraoNFSe.ABASE:
+                case PadraoNFSe.BETHA:
+                case PadraoNFSe.GINFES:
+                case PadraoNFSe.EQUIPLANO:
+                case PadraoNFSe.WEBFISCO:
+                    PadroesConfigUnica();
+                    break;
 
-                // Replaces necessários para a comunicação com o webservice, deve estar antes da linha que altera o Codigo do Municipio
-                Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS)
-                                                                         .Replace("{numeroNFSE}", numeroNFSE)
-                                                                         .Replace("{protocolo}", protocolo)
-                                                                         .Replace("{codMunicipio}", codMunicipio)
-                                                                         .Replace("{cnpjPrestador}", Configuracoes.MunicipioUsuario)
-                                                                         .Replace("{hashValidador}", Configuracoes.MunicipioSenha);
+                case PadraoNFSe.IPM:
+                    IPM();
+                    break;
 
-                
-                Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
-
+                case PadraoNFSe.NACIONAL:
+                    NACIONAL();
+                    break;
             }
+            Configuracoes.Definida = true;
+            base.DefinirConfiguracao();
+        }
 
-            //Padrões com link unico, alteração para a dll buscar o arquivo de configuração em comum
-            if (Configuracoes.PadraoNFSe == PadraoNFSe.ABASE || 
-                Configuracoes.PadraoNFSe == PadraoNFSe.BETHA || 
-                Configuracoes.PadraoNFSe == PadraoNFSe.GINFES ||
-                Configuracoes.PadraoNFSe == PadraoNFSe.EQUIPLANO || 
-                Configuracoes.PadraoNFSe == PadraoNFSe.WEBFISCO)
+        private void NACIONAL()
+        {
+            var URI = Configuracoes.RequestURI;// = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao);
+
+            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+        }
+
+        #region Configurações separadas por PadrãoNFSe
+
+        #region IPM
+
+        private void IPM()
+        {
+            AjusteTokenIPM();
+            //CriarHttpContentIPM();
+        }
+
+        //private void CriarHttpContentIPM()
+        //{
+            
+        //}
+
+        private void AjusteTokenIPM()
+        {
+            Configuracoes.MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuracoes.MunicipioUsuario}:{Configuracoes.MunicipioSenha}"));
+        }
+
+        #endregion IPM
+
+        #region Bauhaus
+
+        private void BAUHAUS()  //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5dasdasde4948f";
+        {
+            GerarContentBauhaus();
+            AjusteLinkBauhaus();
+        }
+
+        private void GerarContentBauhaus()
+        {
+            var json = JsonConvert.SerializeObject(ConteudoXML);
+            Configuracoes.HttpContent = new StringContent(json, Encoding.UTF8, Configuracoes.WebContentType);
+        }
+
+        private void AjusteLinkBauhaus()
+        {
+            Configuracoes.RequestURI = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao);
+
+            var chave = default(string);
+            if (Configuracoes.RequestURI.IndexOf("NumeroRps") > 0)
             {
-                //Municípios pontuais com configuração diferente:
-                //São José dos Pinhais - PR     |GINFES
-                //Varginha - MG                 |BETHA
-                //Fortaleza - CE                |GINFES
-                if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 3170701 || Configuracoes.CodigoMunicipio != 2304400)
-                {
-                    Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
-                }
+                chave = ConteudoXML.GetElementsByTagName("NumeroRps")[0].InnerText;
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+            else if (Configuracoes.RequestURI.IndexOf("NumeroNfse") > 0)
+            {
+                chave = ConteudoXML.GetElementsByTagName("NumeroNfse")[0].InnerText;
+                Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+            }
+        }
+
+        #endregion Bauhaus
+
+        #endregion Configurações separadas por PadrãoNFSe
+
+        private void PadroesConfigUnica()
+        {
+            //Municípios pontuais com configuração diferente:
+            //São José dos Pinhais - PR     |GINFES
+            //Varginha - MG                 |BETHA
+            //Fortaleza - CE                |GINFES
+            if (Configuracoes.CodigoMunicipio != 4125506 || Configuracoes.CodigoMunicipio != 3170701 || Configuracoes.CodigoMunicipio != 2304400)
+            {
+                Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
             }
         }
 
@@ -212,7 +279,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                                 }
                             }
                         }
-                    }                    
+                    }
                 }
 
                 VerificarAssinarXML(Configuracoes.TagAssinatura, Configuracoes.TagAtributoID);
@@ -254,7 +321,22 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 #endif
         protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
-            base.Inicializar(conteudoXML, configuracao);
+            Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
+            ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
+
+            if (!Configuracoes.Definida)
+            {
+                DefinirConfiguracao();
+            }
+
+            System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
+
+            //Forçar criar a tag QrCode bem como assinatura para que o usuário possa acessar o conteúdo no objeto do XML antes de enviar
+            _ = ConteudoXMLAssinado;
+
+            XmlValidar();
+
+            //base.Inicializar(conteudoXML, configuracao);
         }
 
         /// <summary>

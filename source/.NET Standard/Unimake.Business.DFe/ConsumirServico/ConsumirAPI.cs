@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Tls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -20,23 +21,15 @@ namespace Unimake.Business.DFe
         /// <summary>
         /// Estabelece conexão com o Webservice e faz o envio do XML e recupera o retorno. Conteúdo retornado pelo webservice pode ser recuperado através das propriedades RetornoServicoXML ou RetornoServicoString.
         /// </summary>
-        /// <param name="xml">XML a ser enviado para o webservice</param>
         /// <param name="apiConfig">Parâmetros para execução do serviço (parâmetros da API)</param>
         /// <param name="certificado">Certificado digital a ser utilizado na conexão com os serviços</param>
-        public void ExecutarServico(XmlDocument xml, APIConfig apiConfig, X509Certificate2 certificado)
+        public void ExecutarServico(APIConfig apiConfig, X509Certificate2 certificado)
         {
             if (certificado == null && apiConfig.UsaCertificadoDigital)
             {
                 throw new CertificadoDigitalException();
             }
-
-            // Este ajuste necessita ser antes de CriarRequest() pois existe ajustes:
-            //  - login de IPM 2.04
-            //  - Link do Padrão NACIONAL
-            //  - Link do Padrão BAUHAUS
-            AjustarLink(apiConfig, xml);
-
-            var httpWebRequest = CriarRequest(certificado, apiConfig);
+            var httpWebRequest = CriarAPIRequest(apiConfig, certificado);
 
             var postData = new HttpResponseMessage();
 
@@ -128,15 +121,11 @@ namespace Unimake.Business.DFe
             RetornoServicoXML.LoadXml(retornoXml.InnerXml);
         }
 
-        #region Configuração da requisição - Certificado - Headers - Ajuste do Link de comunicação
-        /// <summary>
-        /// Configurar a comunicação - Certificado - Headers - Ajuste do Link de comunicação
-        /// </summary>
-        private HttpClient CriarRequest(X509Certificate2 certificado, APIConfig config)
+        private HttpClient CriarAPIRequest(APIConfig configuracoes, X509Certificate2 certificado)
         {
             var httpClientHandler = new HttpClientHandler();
 
-            if (!config.UsaCertificadoDigital)
+            if (!configuracoes.UsaCertificadoDigital)
             {
                 httpClientHandler.ClientCertificateOptions = ClientCertificateOption.Automatic;
                 httpClientHandler.Credentials = CredentialCache.DefaultCredentials;
@@ -149,22 +138,22 @@ namespace Unimake.Business.DFe
 
             var client = new HttpClient(httpClientHandler)
             {
-                BaseAddress = new Uri(config.RequestURI),
+                BaseAddress = new Uri(configuracoes.RequestURI),
             };
 
-            if (!config.Token.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(configuracoes.Token))
             {
-                client.DefaultRequestHeaders.Add("Authorization", config.Token);
+                client.DefaultRequestHeaders.Add("Authorization", configuracoes.Token);
             }
 
-            if (!config.Host.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(configuracoes.Host))
             {
-                client.DefaultRequestHeaders.Add("Host", $"{config.Host}");
+                client.DefaultRequestHeaders.Add("Host", configuracoes.Host);
             }
 
-            if (!config.ApiKey.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(configuracoes.ApiKey))
             {
-                client.DefaultRequestHeaders.Add("api-key", $"{config.ApiKey}");
+                client.DefaultRequestHeaders.Add("api-key", $"{configuracoes.ApiKey}");
             }
 
             ServicePointManager.Expect100Continue = false;
@@ -173,41 +162,5 @@ namespace Unimake.Business.DFe
 
             return client;
         }
-
-        /// <summary>
-        /// Ajuste de links dinâmicos (com variáveis)  
-        /// </summary>
-        private void AjustarLink(APIConfig config, XmlDocument xml)
-        {
-            switch (config.PadraoNFSe)
-            {
-                case PadraoNFSe.NACIONAL:
-                    var startIndex = xml.OuterXml.IndexOf("Id=\"") + 7;
-                    var endIndex = xml.OuterXml.IndexOf("\"", startIndex);
-                    var chave = xml.OuterXml.Substring(startIndex, (endIndex - startIndex));
-                    config.RequestURI = config.RequestURI.Replace("{Chave}", chave);
-                    break;
-
-                case PadraoNFSe.IPM:
-                    config.Token = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{config.MunicipioUsuario}:{config.MunicipioSenha}"));
-                    break;
-
-                case PadraoNFSe.BAUHAUS:        //Authorization Homologação: apiConfig.Token = "9f16d93554dc1d93656e23bd4fc9d4566a4d76848517634d7bcabd5dasdasde4948f";
-                    if (config.RequestURI.IndexOf("NumeroRps") > 0)
-                    {
-                        chave = xml.GetElementsByTagName("NumeroRps")[0].InnerText;
-                        config.RequestURI = config.RequestURI.Replace("{Chave}", chave);
-                    }
-                    else if (config.RequestURI.IndexOf("NumeroNfse") > 0)
-                    {
-                        chave = xml.GetElementsByTagName("NumeroNfse")[0].InnerText;
-                        config.RequestURI = config.RequestURI.Replace("{Chave}", chave);
-                    }
-                    break;
-            }
-        }
-
-        #endregion Configuração da requisição - Certificado - Headers - Ajuste do Link de comunicação
-
     }
 }

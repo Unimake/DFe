@@ -198,7 +198,7 @@ namespace Unimake.Business.DFe.Servicos.DARE
             };
 
             var consumirAPI = new ConsumirAPI();
-            consumirAPI.ExecutarServico(ConteudoXML, apiConfig, Configuracoes.CertificadoDigital);
+            consumirAPI.ExecutarServico(apiConfig, Configuracoes.CertificadoDigital);
 
             RetornoWSString = consumirAPI.RetornoServicoString;
             RetornoWSXML = consumirAPI.RetornoServicoXML;
