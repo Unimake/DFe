@@ -52,8 +52,9 @@
 			<Descricao>Autorização síncrona da NFCom</Descricao>
 			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao/nfcomRecepcao</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao/nfcomRecepcao</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionProducao>
+			<WebSoapString><![CDATA[<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"><soap12:Body><nfcomDadosMsg xmlns="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao">{xmlBody}</nfcomDadosMsg></soap12:Body></soap12:Envelope>]]></WebSoapString>
 			<SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura>NFCom</TagAssinatura>
 			<TagAtributoID>infNFCom</TagAtributoID>
