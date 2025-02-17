@@ -1685,4 +1685,10 @@
 		<ArqConfig>JoaoPessoaPB.xml</ArqConfig>
 		<PadraoNFSe>SISPMJP</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2800308">
+		<Nome>Aracaju - SE</Nome>
+		<UF>SE</UF>
+		<ArqConfig>AracajuSE.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
