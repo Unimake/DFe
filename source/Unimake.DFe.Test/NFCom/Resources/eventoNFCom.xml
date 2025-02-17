@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <eventoNFCom versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfcom">
 	<infEvento Id="ID11011112345678901234567890123456789012345678901234001">
-		<cOrgao>11</cOrgao>
-		<tpAmb>1</tpAmb>
+		<cOrgao>41</cOrgao>
+		<tpAmb>2</tpAmb>
 		<CNPJ>06117473000150</CNPJ>
 		<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
 		<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
@@ -11,7 +11,7 @@
 		<detEvento versaoEvento="1.00">
 			<evCancNFCom>
 				<descEvento>Cancelamento</descEvento>
-				<nProt>nProt1</nProt>
+				<nProt>1234567890123456</nProt>
 				<xJust>xJust_________1</xJust>
 			</evCancNFCom>
 		</detEvento>
