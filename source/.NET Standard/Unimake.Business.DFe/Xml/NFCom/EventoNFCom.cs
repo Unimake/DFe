@@ -144,6 +144,10 @@ namespace Unimake.Business.DFe.Xml.NFCom
                 _detEvento.ProcessReader();
             }
         }
+
+        public InfEvento() { }
+
+        public InfEvento(EventoDetalhe detEvento) => DetEvento = detEvento ?? throw new ArgumentNullException(nameof(detEvento));
     }
 
 #if INTEROP
@@ -252,7 +256,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public override string VersaoEvento { get; set; }
 
         [XmlElement("descEvento")]
-        public override string DescEvento { get; set; }
+        public override string DescEvento { get; set; } = "Cancelamento";
 
         [XmlElement("nProt")]
         public string NProt { get; set; }
