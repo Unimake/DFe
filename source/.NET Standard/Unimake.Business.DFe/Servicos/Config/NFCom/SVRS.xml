@@ -32,8 +32,8 @@
 			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcaoEvento/NFComRecepcaoEvento.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento/nfcomRecepcaoEvento</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento/nfcomRecepcaoEvento</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionProducao>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
 			<SchemaArquivo></SchemaArquivo>
 			<SchemasEspecificos>
