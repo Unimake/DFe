@@ -21,7 +21,7 @@
 			<xMsg>xMsg1</xMsg>
 		</infFisco>
 	</protNFCom>
-	<procEventoNFCom versao="1.00" ipTransmissor="192.168.0.1" nPortaCon="1" dhConexao="2024-01-15T00:15:20" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<procEventoNFCom versao="1.00" ipTransmissor="ipTransmissor1" nPortaCon="nPortaCon1" dhConexao="2025-01-15T15:00:22-03:00" xmlns="http://www.portalfiscal.inf.br/nfcom">
 		<eventoNFCom versao="1.00">
 			<infEvento Id="ID1">
 				<cOrgao>11</cOrgao>
@@ -30,11 +30,13 @@
 				<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
 				<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
 				<tpEvento>110111</tpEvento>
-				<nSeqEvento>001</nSeqEvento>
+				<nSeqEvento>1</nSeqEvento>
 				<detEvento versaoEvento="1.00">
-					<descEvento>Cancelamento</descEvento>
-					<nProt>123456789012345</nProt>
-					<xJust>xJust_________1</xJust>
+					<evCancNFCom>
+						<descEvento>Cancelamento</descEvento>
+						<nProt>nProt1</nProt>
+						<xJust>xJust_________1</xJust>
+					</evCancNFCom>
 				</detEvento>
 			</infEvento>
 		</eventoNFCom>
@@ -48,9 +50,9 @@
 				<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
 				<tpEvento>110111</tpEvento>
 				<xEvento>xEvento1</xEvento>
-				<nSeqEvento>001</nSeqEvento>
+				<nSeqEvento>1</nSeqEvento>
 				<dhRegEvento>2025-01-15T15:00:22-03:00</dhRegEvento>
-				<nProt>123456789012345</nProt>
+				<nProt>nProt1</nProt>
 			</infEvento>
 		</retEventoNFCom>
 	</procEventoNFCom>

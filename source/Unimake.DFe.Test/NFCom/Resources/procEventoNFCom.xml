@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<procEventoNFCom versao="versao1" ipTransmissor="ipTransmissor1" nPortaCon="nPortaCon1" dhConexao="2025-01-15T15:00:22-03:00" xmlns="http://www.portalfiscal.inf.br/nfcom">
-	<eventoNFCom versao="versao1">
+<procEventoNFCom versao="1.00" ipTransmissor="ipTransmissor1" nPortaCon="nPortaCon1" dhConexao="2025-01-15T15:00:22-03:00" xmlns="http://www.portalfiscal.inf.br/nfcom">
+	<eventoNFCom versao="1.00">
 		<infEvento Id="ID1">
 			<cOrgao>11</cOrgao>
 			<tpAmb>1</tpAmb>
-			<CNPJ>CNPJ1</CNPJ>
-			<chNFCom>chNFCom1</chNFCom>
+			<CNPJ>06117473000150</CNPJ>
+			<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
 			<dhEvento>2025-01-15T15:00:22-03:00</dhEvento>
 			<tpEvento>110111</tpEvento>
-			<nSeqEvento>nSeqEvento1</nSeqEvento>
-			<detEvento versaoEvento="versaoEvento1">
-				<descEvento>Cancelamento</descEvento>
-				<nProt>nProt1</nProt>
-				<xJust>xJust_________1</xJust>
+			<nSeqEvento>1</nSeqEvento>
+			<detEvento versaoEvento="1.00">
+				<evCancNFCom>
+					<descEvento>Cancelamento</descEvento>
+					<nProt>nProt1</nProt>
+					<xJust>xJust_________1</xJust>
+				</evCancNFCom>
 			</detEvento>
 		</infEvento>
 	</eventoNFCom>
-	<retEventoNFCom versao="versao1">
+	<retEventoNFCom versao="1.00">
 		<infEvento Id="ID7">
 			<tpAmb>1</tpAmb>
 			<verAplic>verAplic1</verAplic>
 			<cOrgao>11</cOrgao>
 			<cStat>100</cStat>
 			<xMotivo>xMotivo1</xMotivo>
-			<chNFCom>chNFCom1</chNFCom>
+			<chNFCom>12345678901234567890123456789012345678901234</chNFCom>
 			<tpEvento>110111</tpEvento>
 			<xEvento>xEvento1</xEvento>
-			<nSeqEvento>nSeqEvento1</nSeqEvento>
+			<nSeqEvento>1</nSeqEvento>
 			<dhRegEvento>2025-01-15T15:00:22-03:00</dhRegEvento>
 			<nProt>nProt1</nProt>
 		</infEvento>
