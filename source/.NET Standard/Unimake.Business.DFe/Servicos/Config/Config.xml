@@ -1691,4 +1691,10 @@
 		<ArqConfig>AracajuSE.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3524303">
+		<Nome>Jaboticabal - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>JaboticabalSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
