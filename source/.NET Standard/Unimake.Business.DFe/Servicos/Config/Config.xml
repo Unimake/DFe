@@ -1697,4 +1697,10 @@
 		<ArqConfig>JaboticabalSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3511300">
+		<Nome>Cedral - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>CedralSP.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
