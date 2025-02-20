@@ -16,7 +16,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
 #endif
     [Serializable()]
     [XmlRoot("consStatServNF3e", Namespace = "http://www.portalfiscal.inf.br/nf3e", IsNullable = false)]
-    public class ConsStatServ : XMLBase
+    public class ConsStatServNF3e : XMLBase
     {
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
