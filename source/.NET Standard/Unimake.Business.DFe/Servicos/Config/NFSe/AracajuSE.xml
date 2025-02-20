@@ -157,9 +157,9 @@
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseServicoPrestado versao="2.02">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
@@ -176,9 +176,9 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseFaixa versao="2.02">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoHomologacao></WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://aracajuse.webiss.com.br/ws/nfse.asmx?wsdl</WebEnderecoProducao>
-			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
 			<SchemaArquivo>nfse_v2_02.xsd</SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
