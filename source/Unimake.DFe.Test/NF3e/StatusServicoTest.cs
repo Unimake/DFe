@@ -75,8 +75,7 @@ namespace Unimake.DFe.Test.NF3e
             var xml = new ConsStatServ
             {
                 TpAmb = tipoAmbiente,
-                XServ = "STATUS",
-                versao = "1.00"
+                Versao = "1.00"
             };
 
             var configuracao = new Configuracao
@@ -110,8 +109,7 @@ namespace Unimake.DFe.Test.NF3e
             var xml = new ConsStatServ
             {
                 TpAmb = tipoAmbiente,
-                XServ = "STATUS",
-                versao = "1.00",
+                Versao = "1.00",
             };
 
             var configuracao = new Configuracao
