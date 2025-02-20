@@ -67,8 +67,8 @@ namespace Unimake.DFe.Test.NF3e
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
-            var consultaStatus = new ConsStatServ();
-            var xml = consultaStatus.LerXML<ConsStatServ>(doc);
+            var consultaStatus = new ConsStatServNF3e();
+            var xml = consultaStatus.LerXML<ConsStatServNF3e>(doc);
 
             var doc2 = xml.GerarXML();
 
