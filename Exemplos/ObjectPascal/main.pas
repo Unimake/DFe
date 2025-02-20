@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComObj,
-  ConsultarStatusNFe, EnviarNFeSincrono;
+  ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDesserializacao;
 
 type
 
@@ -15,9 +15,11 @@ type
   TfrmPrincipal = class(TForm)
     btnConsultaStatusNFe: TButton;
     btnEnviarNFeSincrono: TButton;
+    btnEnviarNFeSincronoDesserializacao: TButton;
     GroupBox1: TGroupBox;
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
+    procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
   private
@@ -48,6 +50,16 @@ end;
 procedure TfrmPrincipal.btnEnviarNFeSincronoClick(Sender: TObject);
 var
   oServico: TEnviarNFeSincrono;
+begin
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
+var
+  oServico: TEnviarNFeSincronoDesserializacao;
 begin
   try
     oServico.Executar();

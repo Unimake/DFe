@@ -1,40 +1,50 @@
 object frmPrincipal: TfrmPrincipal
   Left = 955
-  Height = 437
+  Height = 656
   Top = 203
-  Width = 822
+  Width = 1233
   Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
-  ClientHeight = 437
-  ClientWidth = 822
+  ClientHeight = 656
+  ClientWidth = 1233
+  DesignTimePPI = 144
   OnCreate = FormCreate
   LCLVersion = '2.2.6.0'
   object GroupBox1: TGroupBox
-    Left = 8
-    Height = 416
-    Top = 8
-    Width = 238
+    Left = 12
+    Height = 624
+    Top = 12
+    Width = 357
     Caption = 'NF-e'
-    ClientHeight = 396
-    ClientWidth = 234
+    ClientHeight = 594
+    ClientWidth = 353
     TabOrder = 0
     OnClick = GroupBox1Click
     object btnConsultaStatusNFe: TButton
-      Left = 8
-      Height = 25
+      Left = 12
+      Height = 38
       Top = 0
-      Width = 216
+      Width = 324
       Caption = 'Consultar Status'
       OnClick = btnConsultaStatusNFeClick
       TabOrder = 0
     end
     object btnEnviarNFeSincrono: TButton
-      Left = 8
-      Height = 25
-      Top = 32
-      Width = 216
+      Left = 12
+      Height = 38
+      Top = 48
+      Width = 324
       Caption = 'Enviar NFe modo Síncrono'
       OnClick = btnEnviarNFeSincronoClick
       TabOrder = 1
+    end
+    object btnEnviarNFeSincronoDesserializacao: TButton
+      Left = 12
+      Height = 38
+      Top = 96
+      Width = 324
+      Caption = 'Enviar NFe Síncrono c/Desserialização'
+      OnClick = btnEnviarNFeSincronoDesserializacaoClick
+      TabOrder = 2
     end
   end
 end

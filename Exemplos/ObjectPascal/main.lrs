@@ -1,0 +1,20 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TfrmPrincipal','FORMDATA',[
+  'TPF0'#13'TfrmPrincipal'#12'frmPrincipal'#4'Left'#3#187#3#6'Height'#3#144#2#3
+  +'Top'#3#203#0#5'Width'#3#209#4#7'Caption'#6'BComo utilizar a DLL Unimake.DFe'
+  +' para envio de NFe, NFCe, CTe, etc.'#12'ClientHeight'#3#144#2#11'ClientWidt'
+  +'h'#3#209#4#13'DesignTimePPI'#3#144#0#8'OnCreate'#7#10'FormCreate'#10'LCLVer'
+  +'sion'#6#7'2.2.6.0'#0#9'TGroupBox'#9'GroupBox1'#4'Left'#2#12#6'Height'#3'p'#2
+  +#3'Top'#2#12#5'Width'#3'e'#1#7'Caption'#6#4'NF-e'#12'ClientHeight'#3'R'#2#11
+  +'ClientWidth'#3'a'#1#8'TabOrder'#2#0#7'OnClick'#7#14'GroupBox1Click'#0#7'TBu'
+  +'tton'#20'btnConsultaStatusNFe'#4'Left'#2#12#6'Height'#2'&'#3'Top'#2#0#5'Wid'
+  +'th'#3'D'#1#7'Caption'#6#16'Consultar Status'#7'OnClick'#7#25'btnConsultaSta'
+  +'tusNFeClick'#8'TabOrder'#2#0#0#0#7'TButton'#20'btnEnviarNFeSincrono'#4'Left'
+  +#2#12#6'Height'#2'&'#3'Top'#2'0'#5'Width'#3'D'#1#7'Caption'#6#25'Enviar NFe '
+  +'modo S'#195#173'ncrono'#7'OnClick'#7#25'btnEnviarNFeSincronoClick'#8'TabOrd'
+  +'er'#2#1#0#0#7'TButton'#21'btnEnviarNFeSincrono1'#4'Left'#2#12#6'Height'#2'&'
+  +#3'Top'#2'`'#5'Width'#3'D'#1#7'Caption'#6'(Enviar NFe S'#195#173'ncrono c/De'
+  +'sserializa'#195#167#195#163'o'#7'OnClick'#7#25'btnEnviarNFeSincronoClick'#8
+  +'TabOrder'#2#2#0#0#0#0
+]);
