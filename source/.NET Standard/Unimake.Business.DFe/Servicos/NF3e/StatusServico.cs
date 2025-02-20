@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Servicos.NF3e
     [ProgId("Unimake.Business.DFe.Servicos.NF3e.ConsultaStatusServicoNF3e")]
     [ComVisible(true)]
 #endif
-    public class StatusServico : ServicoBase, IInteropService<ConsStatServ>
+    public class StatusServico : ServicoBase, IInteropService<ConsStatServNF3e>
     {
         #region Protected Methods
 
@@ -27,8 +27,8 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         /// </summary>
         protected override void DefinirConfiguracao()
         {
-            var xml = new ConsStatServ();
-            xml = xml.LerXML<ConsStatServ>(ConteudoXML);
+            var xml = new ConsStatServNF3e();
+            xml = xml.LerXML<ConsStatServNF3e>(ConteudoXML);
 
             if (!Configuracoes.Definida)
             {
@@ -77,7 +77,7 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         /// </summary>
         /// <param name="ConsStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public StatusServico(ConsStatServ ConsStatServ, Configuracao configuracao) : this()
+        public StatusServico(ConsStatServNF3e ConsStatServ, Configuracao configuracao) : this()
         {
             if (configuracao is null)
             {
@@ -117,7 +117,7 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         /// <param name="ConsStatServ">Objeto contendo o XML a ser enviado</param>
         /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
         [ComVisible(true)]
-        public void Executar(ConsStatServ ConsStatServ, Configuracao configuracao)
+        public void Executar(ConsStatServNF3e ConsStatServ, Configuracao configuracao)
         {
             try
             {

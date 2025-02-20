@@ -72,7 +72,7 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.TO, TipoAmbiente.Producao)]
         public void ConsultarStatusServico(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            var xml = new ConsStatServ
+            var xml = new ConsStatServNF3e
             {
                 TpAmb = tipoAmbiente,
                 Versao = "1.00"
@@ -106,7 +106,7 @@ namespace Unimake.DFe.Test.NF3e
         [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
         public void ConsultarStatusServicoString(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
-            var xml = new ConsStatServ
+            var xml = new ConsStatServNF3e
             {
                 TpAmb = tipoAmbiente,
                 Versao = "1.00",
