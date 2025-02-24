@@ -1703,4 +1703,16 @@
 		<ArqConfig>CedralSP.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4314050">
+		<Nome>Parobé - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>ParobeRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="1100023">
+		<Nome>Ariquemes - RO</Nome>
+		<UF>RO</UF>
+		<ArqConfig>AriquemesRO.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
