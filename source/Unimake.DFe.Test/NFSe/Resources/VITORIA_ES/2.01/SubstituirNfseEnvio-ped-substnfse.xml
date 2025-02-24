@@ -2,84 +2,93 @@
 <SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<SubstituicaoNfse Id="Id1">
 		<Pedido>
-			<InfPedidoCancelamento Id="PDD1">
+			<InfPedidoCancelamento Id="Id2">
 				<IdentificacaoNfse>
-					<Numero>201500000010001</Numero>
+					<Numero>0</Numero>
 					<CpfCnpj>
-						<Cnpj>99999999999999</Cnpj>
+						<Cpf>12345678912</Cpf>
 					</CpfCnpj>
-					<InscricaoMunicipal>99999999</InscricaoMunicipal>
-					<CodigoMunicipio>3106200</CodigoMunicipio>
+					<InscricaoMunicipal>12345</InscricaoMunicipal>
+					<CodigoMunicipio>12345</CodigoMunicipio>
 				</IdentificacaoNfse>
-				<CodigoCancelamento>2</CodigoCancelamento>
+				<CodigoCancelamento>1</CodigoCancelamento>
 			</InfPedidoCancelamento>
 		</Pedido>
 		<Rps>
-			<InfDeclaracaoPrestacaoServico Id="RPS1">
-				<Rps>
+			<InfDeclaracaoPrestacaoServico Id="Id3">
+				<Rps Id="Id4">
 					<IdentificacaoRps>
-						<Numero>9999999994</Numero>
-						<Serie>UNICA</Serie>
+						<Numero>0</Numero>
+						<Serie>Seri1</Serie>
 						<Tipo>1</Tipo>
 					</IdentificacaoRps>
-					<DataEmissao>2015-03-03</DataEmissao>
+					<DataEmissao>1900-01-01</DataEmissao>
 					<Status>1</Status>
+					<RpsSubstituido>
+						<Numero>0</Numero>
+						<Serie>Seri1</Serie>
+						<Tipo>1</Tipo>
+					</RpsSubstituido>
 				</Rps>
-				<Competencia>2015-03-03</Competencia>
+				<Competencia>1900-01-01</Competencia>
 				<Servico>
 					<Valores>
-						<ValorServicos>100000.00</ValorServicos>
-						<ValorDeducoes>10.00</ValorDeducoes>
-						<ValorPis>40.00</ValorPis>
-						<ValorCofins>50.00</ValorCofins>
-						<ValorInss>60.00</ValorInss>
-						<ValorIr>70.00</ValorIr>
-						<ValorCsll>80.00</ValorCsll>
-						<OutrasRetencoes>30.00</OutrasRetencoes>
-						<ValorIss>2999.40</ValorIss>
-						<Aliquota>3.00</Aliquota>
-						<DescontoIncondicionado>10.00</DescontoIncondicionado>
-						<DescontoCondicionado>20.00</DescontoCondicionado>
+						<ValorServicos>0</ValorServicos>
+						<ValorDeducoes>0</ValorDeducoes>
+						<ValorPis>0</ValorPis>
+						<ValorCofins>0</ValorCofins>
+						<ValorInss>0</ValorInss>
+						<ValorIr>0</ValorIr>
+						<ValorCsll>0</ValorCsll>
+						<OutrasRetencoes>0</OutrasRetencoes>
+						<ValorIss>0</ValorIss>
+						<Aliquota>0</Aliquota>
+						<DescontoIncondicionado>0</DescontoIncondicionado>
+						<DescontoCondicionado>0</DescontoCondicionado>
 					</Valores>
 					<IssRetido>1</IssRetido>
 					<ResponsavelRetencao>1</ResponsavelRetencao>
 					<ItemListaServico>14.01</ItemListaServico>
-					<CodigoCnae>4520001</CodigoCnae>
-					<Discriminacao>teste</Discriminacao>
-					<CodigoMunicipio>3106200</CodigoMunicipio>
+					<CodigoCnae>1234567</CodigoCnae>
+					<CodigoTributacaoMunicipio>123</CodigoTributacaoMunicipio>
+					<Discriminacao>Discriminacao1</Discriminacao>
+					<CodigoMunicipio>12345</CodigoMunicipio>
 					<CodigoPais>1058</CodigoPais>
 					<ExigibilidadeISS>1</ExigibilidadeISS>
-					<MunicipioIncidencia>3106200</MunicipioIncidencia>
+					<MunicipioIncidencia>1234567</MunicipioIncidencia>
 				</Servico>
 				<Prestador>
 					<CpfCnpj>
-						<Cnpj>99999999999999</Cnpj>
+						<Cpf>12345678912</Cpf>
 					</CpfCnpj>
-					<InscricaoMunicipal>9.9.99999999</InscricaoMunicipal>
+					<InscricaoMunicipal>12345</InscricaoMunicipal>
 				</Prestador>
 				<Tomador>
 					<IdentificacaoTomador>
 						<CpfCnpj>
-							<Cnpj>88888888888888</Cnpj>
+							<Cpf>12345678912</Cpf>
 						</CpfCnpj>
-						<InscricaoMunicipal>8.8.88888888</InscricaoMunicipal>
+						<InscricaoMunicipal>12345</InscricaoMunicipal>
 					</IdentificacaoTomador>
-					<RazaoSocial>Razao Social do Tomador</RazaoSocial>
+					<RazaoSocial>RazaoSocial1</RazaoSocial>
 					<Endereco>
-						<Endereco>Endereco do Tomador</Endereco>
-						<Numero>1720</Numero>
-						<Bairro>Centro</Bairro>
-						<CodigoMunicipio>3106200</CodigoMunicipio>
-						<Uf>MG</Uf>
+						<Endereco>Endereco1</Endereco>
+						<Numero>Numero1</Numero>
+						<Complemento>Complemento1</Complemento>
+						<Bairro>Bairro1</Bairro>
+						<CodigoMunicipio>12345</CodigoMunicipio>
+						<Uf>MT</Uf>
 						<CodigoPais>1058</CodigoPais>
-						<Cep>31000000</Cep>
+						<Cep>12345678</Cep>
 					</Endereco>
 					<Contato>
-						<Email>email_do_tomador@gmail.com</Email>
+						<Telefone>1234567891</Telefone>
+						<Email>Email1@email.com</Email>
 					</Contato>
 				</Tomador>
-				<OptanteSimplesNacional>2</OptanteSimplesNacional>
-				<IncentivoFiscal>2</IncentivoFiscal>
+				<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+				<OptanteSimplesNacional>1</OptanteSimplesNacional>
+				<IncentivoFiscal>1</IncentivoFiscal>
 			</InfDeclaracaoPrestacaoServico>
 		</Rps>
 	</SubstituicaoNfse>
