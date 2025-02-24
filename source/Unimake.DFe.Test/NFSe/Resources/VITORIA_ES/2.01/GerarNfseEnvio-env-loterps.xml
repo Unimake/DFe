@@ -1,26 +1,75 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.abrasf.org.br/nfse.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Rps>
-		<InfDeclaracaoPrestacaoServico>
-			<Competencia>2018-07-07</Competencia>
+		<InfDeclaracaoPrestacaoServico Id="Id2">
+			<Rps Id="Id1">
+				<IdentificacaoRps>
+					<Numero>0</Numero>
+					<Serie>Seri1</Serie>
+					<Tipo>1</Tipo>
+				</IdentificacaoRps>
+				<DataEmissao>1900-01-01</DataEmissao>
+				<Status>1</Status>
+			</Rps>
+			<Competencia>1900-01-01</Competencia>
 			<Servico>
 				<Valores>
-					<ValorServicos>1</ValorServicos>
+					<ValorServicos>0</ValorServicos>
+					<ValorDeducoes>0</ValorDeducoes>
+					<ValorPis>0</ValorPis>
+					<ValorCofins>0</ValorCofins>
+					<ValorInss>0</ValorInss>
+					<ValorIr>0</ValorIr>
+					<ValorCsll>0</ValorCsll>
+					<OutrasRetencoes>0</OutrasRetencoes>
+					<ValorIss>0</ValorIss>
+					<Aliquota>0</Aliquota>
+					<DescontoIncondicionado>0</DescontoIncondicionado>
+					<DescontoCondicionado>0</DescontoCondicionado>
 				</Valores>
-				<IssRetido>2</IssRetido>
-				<ItemListaServico>1</ItemListaServico>
-				<Discriminacao>teste</Discriminacao>
-				<CodigoMunicipio>1</CodigoMunicipio>
-				<ExigibilidadeISS>3</ExigibilidadeISS>
+				<IssRetido>1</IssRetido>
+				<ResponsavelRetencao>1</ResponsavelRetencao>
+				<ItemListaServico>14.01</ItemListaServico>
+				<CodigoCnae>1234567</CodigoCnae>
+				<CodigoTributacaoMunicipio>123</CodigoTributacaoMunicipio>
+				<Discriminacao>Discriminacao1</Discriminacao>
+				<CodigoMunicipio>1234567</CodigoMunicipio>
+				<CodigoPais>1058</CodigoPais>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>1234567</MunicipioIncidencia>
 			</Servico>
 			<Prestador>
 				<CpfCnpj>
-					<Cnpj>99999999999999</Cnpj>
+					<Cpf>12345678912</Cpf>
 				</CpfCnpj>
-				<InscricaoMunicipal>1</InscricaoMunicipal>
+				<InscricaoMunicipal>12345</InscricaoMunicipal>
 			</Prestador>
-			<OptanteSimplesNacional>2</OptanteSimplesNacional>
-			<IncentivoFiscal>2</IncentivoFiscal>
+			<Tomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cpf>12345678912</Cpf>
+					</CpfCnpj>
+					<InscricaoMunicipal>12345</InscricaoMunicipal>
+				</IdentificacaoTomador>
+				<RazaoSocial>RazaoSocial1</RazaoSocial>
+				<Endereco>
+					<Endereco>Endereco1</Endereco>
+					<Numero>1</Numero>
+					<Complemento>Complemento1</Complemento>
+					<Bairro>Bairro1</Bairro>
+					<CodigoMunicipio>1234567</CodigoMunicipio>
+					<Uf>MT</Uf>
+					<CodigoPais>1058</CodigoPais>
+					<Cep>12345678</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>1234567891</Telefone>
+					<Email>Email1@email.com</Email>
+				</Contato>
+			</Tomador>
+			<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+			<OptanteSimplesNacional>1</OptanteSimplesNacional>
+			<IncentivoFiscal>1</IncentivoFiscal>
 		</InfDeclaracaoPrestacaoServico>
 	</Rps>
 </GerarNfseEnvio>
