@@ -466,6 +466,7 @@
 		<None Remove="Servicos\Config\NFSe\ParaDeMinasMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ParanavaiPR.xml" />
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
+		<None Remove="Servicos\Config\NFSe\ParobeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
 		<None Remove="Servicos\Config\NFSe\PaulistaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PauloBentoRS.xml" />
@@ -1329,6 +1330,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MontesClarosMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ParobeRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
