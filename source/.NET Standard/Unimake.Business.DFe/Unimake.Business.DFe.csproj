@@ -1031,6 +1031,8 @@
 		<None Remove="Xml\Schemas\NFSe\COPLAN\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\nfse_v02.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DIGIFRED\xmldsig-core-schema_v02.xsd" />
+		<None Remove="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
+		<None Remove="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
@@ -2032,6 +2034,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />
