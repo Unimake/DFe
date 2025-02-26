@@ -27,6 +27,7 @@
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 		</ConsultaProtocolo>
 		<RecepcaoEvento versao="1.00">
 			<Descricao>Recepção de eventos</Descricao>
