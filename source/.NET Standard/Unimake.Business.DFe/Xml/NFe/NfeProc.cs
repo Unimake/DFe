@@ -12,6 +12,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe da NFe/NFCe de distribuição
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.NfeProc")]
@@ -21,12 +24,21 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("nfeProc", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class NfeProc : XMLBase
     {
+        /// <summary>
+        /// Versão do schema do XML de distribuição da NFe/NFCe
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// NFe/NFCe
+        /// </summary>
         [XmlElement("NFe")]
         public NFe NFe { get; set; }
 
+        /// <summary>
+        /// Protocolo de autorização da NFe/NFCe
+        /// </summary>
         [XmlElement("protNFe")]
         public ProtNFe ProtNFe { get; set; }
 

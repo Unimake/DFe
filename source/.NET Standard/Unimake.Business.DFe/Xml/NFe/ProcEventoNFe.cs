@@ -11,6 +11,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe do protocolo de registro de evento da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ProcEventoNFe")]
@@ -22,6 +25,9 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Evento da NFe/NFCe
+        /// </summary>
         [XmlElement("evento", Order = 0, Namespace = "http://www.portalfiscal.inf.br/nfe")]
         public Evento Evento { get; set; }
 
@@ -31,9 +37,15 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlIgnore]
         public string NomeArquivoDistribuicao => Evento.InfEvento.ChNFe + "_" + ((int)Evento.InfEvento.TpEvento).ToString("000000") + "_" + Evento.InfEvento.NSeqEvento.ToString("00") + "-proceventonfe.xml";
 
+        /// <summary>
+        /// Retorno do evento da NFe/NFCe
+        /// </summary>
         [XmlElement("retEvento", Order = 1, Namespace = "http://www.portalfiscal.inf.br/nfe")]
         public RetEvento RetEvento { get; set; }
 
+        /// <summary>
+        /// Versão do schema do XML de distribuição do evento da NFe/NFCe
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 

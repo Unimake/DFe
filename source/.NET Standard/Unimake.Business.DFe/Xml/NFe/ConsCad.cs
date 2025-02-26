@@ -9,6 +9,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe da consulta de cadastro de contribuintes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ConsCad")]
@@ -19,6 +22,9 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
     }
 
+    /// <summary>
+    /// Classe da consulta de cadastro de contribuintes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ConsCadBase")]
@@ -26,13 +32,22 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     public class ConsCadBase : XMLBase
     {
+        /// <summary>
+        /// Versão do schema do XML de consulta cadastro de contribuinte
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Dados do pedido de consulta de cadastro de contribuintes
+        /// </summary>
         [XmlElement(ElementName = "infCons")]
         public InfCons InfCons = new InfCons();
     }
 
+    /// <summary>
+    /// Classe de dados do pedido de consulta de cadastro de contribuintes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.InfCons")]
@@ -40,18 +55,33 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     public class InfCons
     {
+        /// <summary>
+        /// Serviço solicitado. Padrão = CONS-CAD
+        /// </summary>
         [XmlElement("xServ")]
         public string XServ { get; set; } = "CONS-CAD";
 
+        /// <summary>
+        /// Sigla da UF consultada, utilizar SU para SUFRAMA
+        /// </summary>
         [XmlElement("UF")]
         public UFBrasil UF { get; set; }
 
+        /// <summary>
+        /// CNPJ do contribuinte
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do contribuinte
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Inscrição estadual do contribuinte
+        /// </summary>
         [XmlElement("IE")]
         public string IE { get; set; }
 
