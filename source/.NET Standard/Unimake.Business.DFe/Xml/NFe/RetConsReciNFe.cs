@@ -10,6 +10,9 @@ using Unimake.Business.DFe.Servicos;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe de retorno da consulta do recido do lote de NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.RetConsReciNFe")]
@@ -19,27 +22,51 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("retConsReciNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class RetConsReciNFe : XMLBase
     {
+        /// <summary>
+        /// Versão do schema do XML de retorno da consulta recibo da NFe/NFCe
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Tipo de ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Versão do Aplicativo que processou a NFe/NFCe
+        /// </summary>
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Número do recibo consultado
+        /// </summary>
         [XmlElement("nRec")]
         public string NRec { get; set; }
 
+        /// <summary>
+        /// Código do status da mensagem enviada
+        /// </summary>
         [XmlElement("cStat")]
         public int CStat { get; set; }
 
+        /// <summary>
+        /// Descrição literal do status do serviço solicitado
+        /// </summary>
         [XmlElement("xMotivo")]
         public string XMotivo { get; set; }
 
+        /// <summary>
+        /// Código da UF de atendimento
+        /// </summary>
         [XmlIgnore]
         public UFBrasil CUF { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade CUF para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cUF")]
         public int CUFField
         {
@@ -47,6 +74,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Data e hora de processamento, no formato AAAA-MM-DDTHH:MM:SSTZD. Em caso de rejeição, com data e hora do recebimento do Lote de NF-e enviado
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -54,6 +84,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhRecbto { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhRecbto para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
@@ -71,9 +104,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Código da mensagem
+        /// </summary>
         [XmlElement("cMsg")]
         public string CMsg { get; set; }
 
+        /// <summary>
+        /// Protocolo de status resultado do processamento da NFe/NFCe
+        /// </summary>
         [XmlElement("protNFe")]
         public List<ProtNFe> ProtNFe { get; set; }
 
