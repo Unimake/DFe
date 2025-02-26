@@ -554,6 +554,31 @@ namespace Unimake.Business.Security
         public void CarregarCertificadoDigitalA1(string caminho, string senha) => CertificadoSelecionado = Certificado.CarregarCertificadoDigitalA1(caminho, senha);
 
         /// <summary>
+        /// Converte a string Base64 no certificado
+        /// </summary>
+        /// <param name="base64">String base64 convertida pelo método <see cref="ToBase64(string)"/></param>
+        /// <param name="password">Senha do certificado</param>
+        /// <returns>Certificado digital</returns>
+        /// <example>
+        /// <code>
+        /// var certificado = new CertificadoDigital();
+        /// </code>
+        /// Criando um Base64 do arquivo do certificado para gravar em banco de dados (visando maior segurança) para resgatar o conteúdo da base de dados.
+        /// <code>
+        /// var certificadoBase64 = certificado.ToBase64(@"d:\projetos\UnimakePV.pfx");
+        /// </code>   
+        /// Recuperar o certificado para uso a partir de um Base64
+        /// <code>
+        /// var certificadoSelecionado = certificado.FromBase64(certificadoBase64, "12345678");
+        /// MessageBox.Show(certificadoSelecionado.Subject);
+        /// </code>
+        /// </example>
+        public void FromBase64(string base64, string password)
+        {
+            CertificadoSelecionado = Certificado.FromBase64(base64, password);
+        }
+
+        /// <summary>
         /// Verifica se o certificado digital selecionado está vencido
         /// </summary>
         /// <returns>true = vencido</returns>

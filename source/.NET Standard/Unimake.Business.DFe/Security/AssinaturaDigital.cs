@@ -1,18 +1,22 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
+using Unimake.Business.Security;
 using Unimake.Exceptions;
 
 namespace Unimake.Business.DFe.Security
 {
+
     /// <summary>
     /// Classe para realizar assinatura digital de XMLs
     /// </summary>
     public static class AssinaturaDigital
     {
-        #region Public Methods
+        #region Public Methods        
 
         /// <summary>
         /// Assinar digitalmente o XML
@@ -324,4 +328,70 @@ namespace Unimake.Business.DFe.Security
     /// <param name="sender">Sender</param>
     /// <param name="args">Argumentos</param>
     public delegate void CryptographicExceptionHandler(object sender, EventArgs args);
+
+#if INTEROP
+
+    /// <summary>
+    /// Classe para realizar assinatura digital de XMLs - Interop
+    /// </summary>
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Security.AssinaturaDigitalInterop")]
+    [ComVisible(true)]
+    public class AssinaturaDigitalInterop
+    {
+        // <summary>
+        /// Assinar digitalmente o XML
+        /// </summary>
+        /// <param name="conteudoXML">XML a ser assinado</param>
+        /// <param name="tagAssinatura">Nome da tag a ser assinada</param>
+        /// <param name="tagAtributoId">Nome da tag que possui o ID para referencia na URI da assinatura</param>
+        /// <param name="certificadoDigital">Certificado digital no formato .PFX ou Base64</param>
+        /// <param name="certificadoSenha">Senha do certificado digital</param>
+        /// <param name="algorithmType">Tipo de algorítimo a ser utilizado na assinatura</param>
+        /// <param name="definirURI">Define o Reference.URI na assinatura</param>
+        /// <param name="idAttributeName">Nome do atributo que tem o ID para assinatura. Se nada for passado o sistema vai tentar buscar o nome Id ou id, se não encontrar, não vai criar a URI Reference na assinatura com ID.</param>
+        /// <param name="verificaAssinatura">Verificar se já existe assinatura no XML, se sim e existir o método não vai assinar o XML.</param>
+        public string Assinar(string conteudoXML,
+            string tagAssinatura,
+            string tagAtributoId,
+            string certificadoDigital,
+            string certificadoSenha,
+            AlgorithmType algorithmType,
+            bool definirURI,
+            string idAttributeName,
+            bool verificaAssinatura)
+        {
+            var doc = new XmlDocument();
+
+            try
+            {
+                doc.LoadXml(conteudoXML);
+
+                var certificado = new CertificadoDigital();
+                X509Certificate2 x509Cert = null;
+
+                //Se o arquivo existir, é um .PFX
+                if (File.Exists(certificadoDigital))
+                {
+                    x509Cert = certificado.CarregarCertificadoDigitalA1(certificadoDigital, certificadoSenha);
+                }
+                else //Caso contrário é base64
+                {
+                    x509Cert = certificado.FromBase64(certificadoDigital, certificadoSenha);
+                }
+
+                AppDomain.CurrentDomain.AssemblyResolve += Xml.AssemblyResolver.AssemblyResolve;
+
+                AssinaturaDigital.Assinar(doc, tagAssinatura, tagAtributoId, x509Cert, algorithmType, definirURI, idAttributeName, verificaAssinatura);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+
+            return doc.OuterXml;
+        }
+    }
+
+#endif
 }
