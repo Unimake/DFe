@@ -434,6 +434,7 @@
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
+		<None Remove="Servicos\Config\NFSe\MarcolandiaPI.xml" />
 		<None Remove="Servicos\Config\NFSe\MariliaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\MaringaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\MassarandubaSC.xml" />
@@ -1323,6 +1324,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JuazeiroBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MarcolandiaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

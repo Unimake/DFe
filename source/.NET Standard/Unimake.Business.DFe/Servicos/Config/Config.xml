@@ -1715,4 +1715,10 @@
 		<ArqConfig>AriquemesRO.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2205953">
+		<Nome>Marcolândia - PI</Nome>
+		<UF>PI</UF>
+		<ArqConfig>MarcolandiaPI.xml</ArqConfig>
+		<PadraoNFSe>FIORILLI</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
