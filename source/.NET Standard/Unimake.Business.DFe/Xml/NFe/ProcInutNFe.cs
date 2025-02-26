@@ -10,6 +10,9 @@ using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe do XML da inutilização com o protocolo de autorização
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ProcInutNFe")]
@@ -21,12 +24,18 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Fields
 
+        /// <summary>
+        /// Extensão final do arquivo de distribuição da inutilização
+        /// </summary>
         public const string ExtensaoDoArquivo = "-procinutnfe.xml";
 
         #endregion Public Fields
 
         #region Public Properties
 
+        /// <summary>
+        /// Inutilização de números de notas fiscais (NFe/NFCe)
+        /// </summary>
         [XmlElement("inutNFe", Order = 0)]
         public InutNFe InutNFe { get; set; }
 
@@ -36,9 +45,15 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlIgnore]
         public string NomeArquivoDistribuicao => MontarNomeArquivo(InutNFe.InfInut.Id);
 
+        /// <summary>
+        /// Retorno da inutilização de número da NFe/NFCe
+        /// </summary>
         [XmlElement("retInutNFe", Order = 1)]
         public RetInutNFe RetInutNFe { get; set; }
 
+        /// <summary>
+        /// Versão do schema do XML de distribuição da inutilização da NFe/NFCe
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
