@@ -7,6 +7,9 @@ using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+    /// <summary>
+    /// Classe da consulta de cadastro de contribuintes
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.ConsCad")]
