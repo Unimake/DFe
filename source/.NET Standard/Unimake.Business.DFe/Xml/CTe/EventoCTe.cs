@@ -27,12 +27,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do Evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento";
 
+        /// <summary>
+        /// Número do Protocolo.
+        /// </summary>
         [XmlElement("nProt", Order = 1)]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Justificativa do Cancelamento.
+        /// </summary>
         [XmlElement("xJust", Order = 2)]
         public string XJust { get; set; }
 
@@ -55,6 +64,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         #endregion Public Methods
     }
 
+
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.DetEventoPrestDesacordo")]
@@ -66,12 +76,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do Evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Prestacao do Servico em Desacordo";
 
+        /// <summary>
+        /// Indicador de Desacordo na Operação.
+        /// </summary>
         [XmlElement("indDesacordoOper", Order = 1)]
         public string IndDesacordoOper { get; set; }
 
+        /// <summary>
+        /// Observações.
+        /// </summary>
         [XmlElement("xObs", Order = 2)]
         public string XObs { get; set; }
 
@@ -84,11 +103,11 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.WriteXml(writer);
 
             writer.WriteRaw($@"
-            <evPrestDesacordo>
-            <descEvento>{DescEvento}</descEvento>
-            <indDesacordoOper>{IndDesacordoOper}</indDesacordoOper>
-            <xObs>{XObs}</xObs>
-            </evPrestDesacordo>");
+                <evPrestDesacordo>
+                <descEvento>{DescEvento}</descEvento>
+                <indDesacordoOper>{IndDesacordoOper}</indDesacordoOper>
+                <xObs>{XObs}</xObs>
+                </evPrestDesacordo>");
         }
 
         #endregion Public Methods
@@ -103,9 +122,15 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoCancelamentoPrestDesacordo : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do Evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento Prestacao do Servico em Desacordo";
 
+        /// <summary>
+        /// Número do Protocolo do Evento de Prestação em Desacordo.
+        /// </summary>
         [XmlElement("nProtEvPrestDes", Order = 1)]
         public string NProtEvPrestDes { get; set; }
 
@@ -114,10 +139,10 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.WriteXml(writer);
 
             writer.WriteRaw($@"
-            <evCancPrestDesacordo>
-            <descEvento>{DescEvento}</descEvento>
-            <nProtEvPrestDes>{NProtEvPrestDes}</nProtEvPrestDes>
-            </evCancPrestDesacordo>");
+                <evCancPrestDesacordo>
+                <descEvento>{DescEvento}</descEvento>
+                <nProtEvPrestDes>{NProtEvPrestDes}</nProtEvPrestDes>
+                </evCancPrestDesacordo>");
         }
     }
 
@@ -133,12 +158,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do Evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento do Comprovante de Entrega do CT-e";
 
+        /// <summary>
+        /// Número do Protocolo.
+        /// </summary>
         [XmlElement("nProt", Order = 1)]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Número do Protocolo do Comprovante de Entrega.
+        /// </summary>
         [XmlElement("nProtCE", Order = 2)]
         public string NProtCE { get; set; }
 
@@ -151,15 +185,16 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.WriteXml(writer);
 
             writer.WriteRaw($@"
-            <evCancCECTe>
-            <descEvento>{DescEvento}</descEvento>
-            <nProt>{NProt}</nProt>
-            <nProtCE>{NProtCE}</nProtCE>
-            </evCancCECTe>");
+                <evCancCECTe>
+                <descEvento>{DescEvento}</descEvento>
+                <nProt>{NProt}</nProt>
+                <nProtCE>{NProtCE}</nProtCE>
+                </evCancCECTe>");
         }
 
         #endregion Public Methods
     }
+
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -206,6 +241,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Properties
 
+        /// <summary>
+        /// Obtém ou define a descrição do evento.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -213,6 +251,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCCeCTe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o evento de carta de correção do CT-e.
+        /// </summary>
         [XmlElement(ElementName = "evCCeCTe", Order = 0)]
         public EventoCCeCTe EventoCCeCTe
         {
@@ -220,6 +261,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => _eventoCCeCTe = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a lista de informações de correção.
+        /// </summary>
         [XmlIgnore]
         public List<InfCorrecao> InfCorrecao
         {
@@ -227,6 +271,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCCeCTe.InfCorrecao = value;
         }
 
+        /// <summary>
+        /// Obtém ou define as condições de uso da carta de correção.
+        /// </summary>
         [XmlIgnore]
         public string XCondUso
         {
@@ -274,6 +321,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private EvEPECCTe _evEPECCTe;
 
+        /// <summary>
+        /// Obtém ou define o evento de EPEC do CT-e.
+        /// </summary>
         [XmlElement(ElementName = "evEPECCTe", Order = 0)]
         public EvEPECCTe EvEPECCTe
         {
@@ -281,6 +331,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => _evEPECCTe = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a descrição do evento.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -288,6 +341,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a justificativa do EPEC.
+        /// </summary>
         [XmlIgnore]
         public string XJust
         {
@@ -295,6 +351,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.XJust = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o valor do ICMS.
+        /// </summary>
         [XmlIgnore]
         public double VICMS
         {
@@ -302,6 +361,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VICMS = value;
         }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VICMS" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string VICMSField
         {
@@ -309,6 +371,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VICMSField = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o valor do ICMS ST.
+        /// </summary>
         [XmlIgnore]
         public double VICMSST
         {
@@ -316,6 +381,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VICMSST = value;
         }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VICMSST" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string VICMSSTField
         {
@@ -323,6 +391,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VICMSSTField = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o valor total da prestação.
+        /// </summary>
         [XmlIgnore]
         public double VTPrest
         {
@@ -330,6 +401,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VTPrest = value;
         }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VTPrest" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string VTPrestField
         {
@@ -337,6 +411,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VTPrestField = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o valor da carga.
+        /// </summary>
         [XmlIgnore]
         public double VCarga
         {
@@ -344,6 +421,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VCarga = value;
         }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VCarga" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string VCargaField
         {
@@ -351,9 +431,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.VCargaField = value;
         }
 
+        /// <summary>
+        /// Obtém ou define as informações do tomador do serviço (tipo 4).
+        /// </summary>
         [XmlIgnore]
         public EvEPECCTeToma4 Toma4 { get; set; }
 
+        /// <summary>
+        /// Obtém ou define a modalidade do transporte.
+        /// </summary>
         [XmlIgnore]
         public ModalidadeTransporteCTe Modal
         {
@@ -361,6 +447,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.Modal = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a UF de início da prestação.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil UFIni
         {
@@ -368,6 +457,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.UFIni = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a UF de fim da prestação.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil UFFim
         {
@@ -375,6 +467,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.UFFim = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o tipo do CT-e.
+        /// </summary>
         [XmlIgnore]
         public TipoCTe TpCTe
         {
@@ -382,6 +477,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvEPECCTe.TpCTe = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a data e hora de emissão do CT-e.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi
@@ -397,6 +495,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEmi" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string DhEmiField
         {
@@ -574,15 +675,27 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvEPECCTe : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do Evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public string DescEvento { get; set; } = "EPEC";
 
+        /// <summary>
+        /// Justificativa do EPEC.
+        /// </summary>
         [XmlElement("xJust", Order = 1)]
         public string XJust { get; set; }
 
+        /// <summary>
+        /// Valor do ICMS.
+        /// </summary>
         [XmlIgnore]
         public double VICMS { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VICMS" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vICMS", Order = 2)]
         public string VICMSField
         {
@@ -590,9 +703,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VICMS = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor do ICMS ST.
+        /// </summary>
         [XmlIgnore]
         public double VICMSST { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VICMSST" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vICMSST", Order = 3)]
         public string VICMSSTField
         {
@@ -600,9 +719,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VICMSST = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor Total da Prestação.
+        /// </summary>
         [XmlIgnore]
         public double VTPrest { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VTPrest" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vTPrest", Order = 4)]
         public string VTPrestField
         {
@@ -610,9 +735,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VTPrest = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor da Carga.
+        /// </summary>
         [XmlIgnore]
         public double VCarga { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VCarga" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vCarga", Order = 5)]
         public string VCargaField
         {
@@ -620,21 +751,39 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => VCarga = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Informações do Tomador do Serviço (tipo 4).
+        /// </summary>
         [XmlElement("toma4", Order = 6)]
         public EvEPECCTeToma4 Toma4 { get; set; }
 
+        /// <summary>
+        /// Modalidade do Transporte.
+        /// </summary>
         [XmlElement("modal", Order = 7)]
         public ModalidadeTransporteCTe Modal { get; set; }
 
+        /// <summary>
+        /// UF de Início da Prestação.
+        /// </summary>
         [XmlElement("UFIni", Order = 8)]
         public UFBrasil UFIni { get; set; }
 
+        /// <summary>
+        /// UF de Fim da Prestação.
+        /// </summary>
         [XmlElement("UFFim", Order = 9)]
         public UFBrasil UFFim { get; set; }
 
+        /// <summary>
+        /// Tipo do CT-e.
+        /// </summary>
         [XmlElement("tpCTe", Order = 10)]
         public TipoCTe TpCTe { get; set; }
 
+        /// <summary>
+        /// Data e Hora de Emissão.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -643,6 +792,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
 
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEmi" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi", Order = 11)]
         public string DhEmiField
         {
@@ -655,18 +807,18 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na desserialização
+        /// Executa o processamento do XMLReader recebido na desserialização.
         /// </summary>
-        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        /// <param name="document">XmlDocument recebido durante o processo de desserialização.</param>
         public void ReadXml(XmlDocument document)
         {
 
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na serialização
+        /// Executa o processamento do XMLReader recebido na serialização.
         /// </summary>
-        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        /// <param name="writer">string XML recebido durante o processo de serialização.</param>
         public void WriteXml(System.IO.StringWriter writer)
         {
 
@@ -684,6 +836,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private TomadorServicoCTe TomaField;
 
+        /// <summary>
+        /// Tipo do tomador do serviço.
+        /// </summary>
         [XmlElement("toma", Order = 0)]
         public TomadorServicoCTe Toma
         {
@@ -691,24 +846,45 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => TomaField = value;
         }
 
+        /// <summary>
+        /// UF do tomador do serviço.
+        /// </summary>
         [XmlElement("UF", Order = 1)]
         public UFBrasil UF { get; set; }
 
+        /// <summary>
+        /// CNPJ do tomador do serviço.
+        /// </summary>
         [XmlElement("CNPJ", Order = 2)]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do tomador do serviço.
+        /// </summary>
         [XmlElement("CPF", Order = 3)]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Inscrição Estadual do tomador do serviço.
+        /// </summary>
         [XmlElement("IE", Order = 4)]
         public string IE { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se a propriedade CNPJ deve ser serializada.
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
+        /// <summary>
+        /// Verifica se a propriedade CPF deve ser serializada.
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
+        /// <summary>
+        /// Verifica se a propriedade IE deve ser serializada.
+        /// </summary>
         public bool ShouldSerializeIE() => !string.IsNullOrWhiteSpace(IE);
 
         #endregion
@@ -750,6 +926,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Properties
 
+        /// <summary>
+        /// Obtém ou define a descrição do evento.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -757,6 +936,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a data e hora da entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEntrega
@@ -772,6 +954,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string DhEntregaField
         {
@@ -779,6 +964,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.DhEntregaField = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a data e hora do hash da entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhHashEntrega
@@ -794,6 +982,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhHashEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string DhHashEntregaField
         {
@@ -801,6 +992,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.DhHashEntregaField = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o evento de comprovante de entrega do CT-e.
+        /// </summary>
         [XmlElement(ElementName = "evCECTe", Order = 0)]
         public EventoCECTe EventoCECTe
         {
@@ -808,6 +1002,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => _eventoCECTe = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o hash da entrega.
+        /// </summary>
         [XmlIgnore]
         public string HashEntrega
         {
@@ -815,6 +1012,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.HashEntrega = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a lista de informações de entrega.
+        /// </summary>
         [XmlIgnore]
         public List<InfEntrega> InfEntrega
         {
@@ -822,6 +1022,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.InfEntrega = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a latitude da entrega.
+        /// </summary>
         [XmlIgnore]
         public string Latitude
         {
@@ -829,6 +1032,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.Latitude = value;
         }
 
+        /// <summary>
+        /// Obtém ou define a longitude da entrega.
+        /// </summary>
         [XmlIgnore]
         public string Longitude
         {
@@ -836,6 +1042,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.Longitude = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o número do documento.
+        /// </summary>
         [XmlIgnore]
         public string NDoc
         {
@@ -843,6 +1052,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.NDoc = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o número do protocolo.
+        /// </summary>
         [XmlIgnore]
         public string NProt
         {
@@ -850,6 +1062,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoCECTe.NProt = value;
         }
 
+        /// <summary>
+        /// Obtém ou define o nome da pessoa que recebeu a entrega.
+        /// </summary>
         [XmlIgnore]
         public string XNome
         {
@@ -906,12 +1121,21 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento da carta de correção.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Carta de Correcao";
 
+        /// <summary>
+        /// Lista de informações de correção.
+        /// </summary>
         [XmlElement("infCorrecao", Order = 1)]
         public List<InfCorrecao> InfCorrecao { get; set; } = new List<InfCorrecao>();
 
+        /// <summary>
+        /// Condições de uso da carta de correção.
+        /// </summary>
         [XmlElement("xCondUso", Order = 2)]
         public string XCondUso
         {
@@ -924,9 +1148,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adiciona um novo elemento à lista de informações de correção.
         /// </summary>
-        /// <param name="infcorrecao">Elemento</param>
+        /// <param name="infcorrecao">Elemento a ser adicionado.</param>
         public void AddInfCorrecao(InfCorrecao infcorrecao)
         {
             if (InfCorrecao == null)
@@ -938,10 +1162,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfCorrecao (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista de informações de correção no índice especificado.
         /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfCorrecao</returns>
+        /// <param name="index">Índice do elemento a ser retornado.</param>
+        /// <returns>Elemento da lista no índice especificado.</returns>
         public InfCorrecao GetInfCorrecao(int index)
         {
             if ((InfCorrecao?.Count ?? 0) == 0)
@@ -953,7 +1177,7 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfCorrecao
+        /// Retorna o número de elementos na lista de informações de correção.
         /// </summary>
         public int GetInfCorrecaoCount => (InfCorrecao != null ? InfCorrecao.Count : 0);
 
@@ -971,9 +1195,15 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento de comprovante de entrega do CT-e.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Comprovante de Entrega do CT-e";
 
+        /// <summary>
+        /// Data e hora da entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEntrega { get; set; }
@@ -981,6 +1211,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEntrega", Order = 2)]
         public string DhEntregaField
         {
@@ -992,6 +1225,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Data e hora do hash da entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhHashEntrega { get; set; }
@@ -999,6 +1235,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhHashEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhHashEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhHashEntrega", Order = 8)]
         public string DhHashEntregaField
         {
@@ -1012,6 +1251,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         private string HashEntregaField;
 
+        /// <summary>
+        /// Hash da entrega (SHA1 Base64).
+        /// </summary>
         [XmlElement("hashEntrega", Order = 7)]
         public string HashEntrega
         {
@@ -1029,21 +1271,39 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
+        /// <summary>
+        /// Lista de informações de entrega.
+        /// </summary>
         [XmlElement("infEntrega", Order = 9)]
         public List<InfEntrega> InfEntrega { get; set; } = new List<InfEntrega>();
 
+        /// <summary>
+        /// Latitude da entrega.
+        /// </summary>
         [XmlElement("latitude", Order = 5)]
         public string Latitude { get; set; }
 
+        /// <summary>
+        /// Longitude da entrega.
+        /// </summary>
         [XmlElement("longitude", Order = 6)]
         public string Longitude { get; set; }
 
+        /// <summary>
+        /// Número do documento.
+        /// </summary>
         [XmlElement("nDoc", Order = 3)]
         public string NDoc { get; set; }
 
+        /// <summary>
+        /// Número do protocolo.
+        /// </summary>
         [XmlElement("nProt", Order = 1)]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Nome da pessoa que recebeu a entrega.
+        /// </summary>
         [XmlElement("xNome", Order = 4)]
         public string XNome { get; set; }
 
@@ -1052,9 +1312,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adiciona um novo elemento à lista de informações de entrega.
         /// </summary>
-        /// <param name="infentrega">Elemento</param>
+        /// <param name="infentrega">Elemento a ser adicionado.</param>
         public void AddInfEntrega(InfEntrega infentrega)
         {
             if (InfEntrega == null)
@@ -1066,10 +1326,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfEntrega (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista de informações de entrega no índice especificado.
         /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfEntrega</returns>
+        /// <param name="index">Índice do elemento a ser retornado (começa em 0).</param>
+        /// <returns>Elemento da lista no índice especificado.</returns>
         public InfEntrega GetInfEntrega(int index)
         {
             if ((InfEntrega?.Count ?? 0) == 0)
@@ -1081,10 +1341,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfEntrega
+        /// Retorna o número de elementos na lista de informações de entrega.
         /// </summary>
         public int GetInfEntregaCount => (InfEntrega != null ? InfEntrega.Count : 0);
-
 
 #endif
 
@@ -1117,12 +1376,21 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Properties
 
+        /// <summary>
+        /// Informações do evento.
+        /// </summary>
         [XmlElement("infEvento", Order = 0)]
         public InfEvento InfEvento { get; set; }
 
+        /// <summary>
+        /// Assinatura digital do evento.
+        /// </summary>
         [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#", Order = 1)]
         public Signature Signature { get; set; }
 
+        /// <summary>
+        /// Versão do leiaute do evento.
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
@@ -1130,6 +1398,10 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Methods
 
+        /// <summary>
+        /// Gera o XML do evento.
+        /// </summary>
+        /// <returns>Documento XML do evento.</returns>
         public override XmlDocument GerarXML()
         {
             var xmlDocument = base.GerarXML();
@@ -1149,6 +1421,12 @@ namespace Unimake.Business.DFe.Xml.CTe
             return xmlDocument;
         }
 
+        /// <summary>
+        /// Lê o XML do evento e o deserializa para o objeto EventoCTe.
+        /// </summary>
+        /// <typeparam name="T">Tipo do objeto a ser deserializado.</typeparam>
+        /// <param name="doc">Documento XML do evento.</param>
+        /// <returns>Objeto EventoCTe deserializado.</returns>
         public override T LerXML<T>(XmlDocument doc)
         {
             if (typeof(T) != typeof(EventoCTe))
@@ -1178,10 +1456,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Desserializar o XML no objeto EventoCTe
+        /// Desserializa o XML do eventoCTe a partir de um arquivo.
         /// </summary>
-        /// <param name="filename">Localização do arquivo XML do eventoCTe</param>
-        /// <returns>Objeto do EventoCTe</returns>
+        /// <param name="filename">Caminho do arquivo XML do eventoCTe.</param>
+        /// <returns>Objeto EventoCTe deserializado.</returns>
         public EventoCTe LoadFromFile(string filename)
         {
             var doc = new XmlDocument();
@@ -1190,10 +1468,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Desserializar o XML eventoCTe no objeto EventoCTe
+        /// Desserializa o XML do eventoCTe a partir de uma string XML.
         /// </summary>
-        /// <param name="xml">string do XML eventoCTe</param>
-        /// <returns>Objeto da EventoCTe</returns>
+        /// <param name="xml">String XML do eventoCTe.</param>
+        /// <returns>Objeto EventoCTe deserializado.</returns>
         public EventoCTe LoadFromXML(string xml) => XMLUtility.Deserializar<EventoCTe>(xml);
 
         #endregion Public Methods
@@ -1218,8 +1496,8 @@ namespace Unimake.Business.DFe.Xml.CTe
         #region Private Fields
 
         private static readonly BindingFlags bindingFlags = BindingFlags.Public |
-                                                            BindingFlags.Instance |
-                                                            BindingFlags.IgnoreCase;
+                                                                BindingFlags.Instance |
+                                                                BindingFlags.IgnoreCase;
 
         private static readonly List<string> hasField = new List<string>
         {
@@ -1280,8 +1558,8 @@ namespace Unimake.Business.DFe.Xml.CTe
         protected internal PropertyInfo GetPropertyInfo(Type type)
         {
             var pi = hasField.Exists(w => w.ToLower() == XmlReader.Name.ToLower()) ?
-                                type.GetProperty(XmlReader.Name + "Field", bindingFlags) :
-                                type.GetProperty(XmlReader.Name, bindingFlags);
+                         type.GetProperty(XmlReader.Name + "Field", bindingFlags) :
+                         type.GetProperty(XmlReader.Name, bindingFlags);
             return pi;
         }
 
@@ -1315,7 +1593,7 @@ namespace Unimake.Business.DFe.Xml.CTe
                 }
 
                 if (SetLocalValue(type) &&
-                   XmlReader.NodeType == XmlNodeType.Element)
+                    XmlReader.NodeType == XmlNodeType.Element)
                 {
                     SetLocalValue(type);
                 }
@@ -1328,9 +1606,15 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Properties
 
+        /// <summary>
+        /// Obtém ou define a descrição do evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public virtual string DescEvento { get; set; }
 
+        /// <summary>
+        /// Obtém ou define a versão do evento.
+        /// </summary>
         [XmlAttribute(AttributeName = "versaoEvento")]
         public virtual string VersaoEvento { get; set; }
 
@@ -1338,10 +1622,22 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Methods
 
+        /// <summary>
+        /// Obtém o esquema XML.
+        /// </summary>
+        /// <returns>O esquema XML.</returns>
         public XmlSchema GetSchema() => default;
 
+        /// <summary>
+        /// Lê o XML do leitor especificado.
+        /// </summary>
+        /// <param name="reader">O leitor XML.</param>
         public void ReadXml(XmlReader reader) => XmlReader = reader;
 
+        /// <summary>
+        /// Escreve o XML para o escritor especificado.
+        /// </summary>
+        /// <param name="writer">O escritor XML.</param>
         public virtual void WriteXml(XmlWriter writer) => writer.WriteAttributeString("versaoEvento", VersaoEvento);
 
         #endregion Public Methods
@@ -1358,15 +1654,27 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Obtém ou define o campo alterado.
+        /// </summary>
         [XmlElement("campoAlterado", Order = 1)]
         public string CampoAlterado { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o grupo alterado.
+        /// </summary>
         [XmlElement("grupoAlterado", Order = 0)]
         public string GrupoAlterado { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o número do item alterado.
+        /// </summary>
         [XmlElement("nroItemAlterado", Order = 3)]
         public string NroItemAlterado { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o valor alterado.
+        /// </summary>
         [XmlElement("valorAlterado", Order = 2)]
         public string ValorAlterado { get; set; }
 
@@ -1374,6 +1682,10 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Methods
 
+        /// <summary>
+        /// Verifica se a propriedade NroItemAlterado deve ser serializada.
+        /// </summary>
+        /// <returns>True se deve ser serializada, false caso contrário.</returns>
         public bool ShouldSerializeNroItemAlterado() => !string.IsNullOrWhiteSpace(NroItemAlterado);
 
         #endregion Public Methods
@@ -1390,6 +1702,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private string ChNFeField;
 
+        /// <summary>
+        /// Obtém ou define a chave da NF-e.
+        /// </summary>
         [XmlElement("chNFe")]
         public string ChNFe
         {
@@ -1423,9 +1738,15 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Properties
 
+        /// <summary>
+        /// Obtém ou define o órgão emissor.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil COrgao { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "COrgao" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgao", Order = 0)]
         public int COrgaoField
         {
@@ -1433,18 +1754,33 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => COrgao = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Obtém ou define o ambiente de processamento.
+        /// </summary>
         [XmlElement("tpAmb", Order = 1)]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o CNPJ do emitente.
+        /// </summary>
         [XmlElement("CNPJ", Order = 2)]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o CPF do emitente.
+        /// </summary>
         [XmlElement("CPF", Order = 3)]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Obtém ou define a chave do CT-e.
+        /// </summary>
         [XmlElement("chCTe", Order = 4)]
         public string ChCTe { get; set; }
 
+        /// <summary>
+        /// Obtém ou define a data e hora do evento.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEvento { get; set; }
@@ -1452,6 +1788,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhEvento { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEvento" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEvento", Order = 5)]
         public string DhEventoField
         {
@@ -1463,12 +1802,21 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Obtém ou define o tipo do evento.
+        /// </summary>
         [XmlElement("tpEvento", Order = 6)]
         public TipoEventoCTe TpEvento { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o número sequencial do evento.
+        /// </summary>
         [XmlElement("nSeqEvento", Order = 7)]
         public int NSeqEvento { get; set; }
 
+        /// <summary>
+        /// Obtém ou define os detalhes do evento.
+        /// </summary>
         [XmlElement("detEvento", Order = 8)]
         public EventoDetalhe DetEvento
         {
@@ -1504,7 +1852,6 @@ namespace Unimake.Business.DFe.Xml.CTe
                     case TipoEventoCTe.CancelamentoPrestDesacordo:
                         _detEvento = new DetEventoCancelamentoPrestDesacordo();
                         break;
-
 
                     case TipoEventoCTe.EPEC:
                         _detEvento = new DetEventoEPEC();
@@ -1551,9 +1898,15 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
+        /// <summary>
+        /// Obtém ou define as informações da solicitação da NFF.
+        /// </summary>
         [XmlElement("infSolicNFF", Order = 9)]
         public InfSolicNFF InfSolicNFF { get; set; }
 
+        /// <summary>
+        /// Obtém ou define o ID do evento.
+        /// </summary>
         [XmlAttribute(DataType = "ID", AttributeName = "Id")]
         public string Id
         {
@@ -1565,14 +1918,25 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         #region Public Constructors
 
+        /// <summary>
+        /// Inicializa uma nova instância da classe <see cref="InfEvento"/>.
+        /// </summary>
         public InfEvento() { }
 
+        /// <summary>
+        /// Inicializa uma nova instância da classe <see cref="InfEvento"/> com os detalhes do evento especificados.
+        /// </summary>
+        /// <param name="detEvento">Os detalhes do evento.</param>
         public InfEvento(EventoDetalhe detEvento) => DetEvento = detEvento ?? throw new ArgumentNullException(nameof(detEvento));
 
         #endregion Public Constructors
 
         #region Public Methods
 
+        /// <summary>
+        /// Verifica se a propriedade CNPJ deve ser serializada.
+        /// </summary>
+        /// <returns>True se deve ser serializada, false caso contrário.</returns>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
         #endregion Public Methods
@@ -1612,6 +1976,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.SetValue(pi);
         }
 
+        /// <summary>
+        /// Descrição do evento de insucesso de entrega.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -1619,6 +1986,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Número do protocolo do evento.
+        /// </summary>
         [XmlIgnore]
         public string NProt
         {
@@ -1626,6 +1996,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.NProt = value;
         }
 
+        /// <summary>
+        /// Data e hora da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhTentativaEntrega
@@ -1641,6 +2014,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhTentativaEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string DhTentativaEntregaField
         {
@@ -1648,7 +2024,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.DhTentativaEntregaField = value;
         }
 
-
+        /// <summary>
+        /// Número da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
         public int NTentativa
         {
@@ -1656,7 +2034,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.NTentativa = value;
         }
 
-
+        /// <summary>
+        /// Tipo do motivo do insucesso da entrega.
+        /// </summary>
         [XmlIgnore]
         public TipoMotivoInsucessoEntrega TpMotivo
         {
@@ -1664,6 +2044,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.TpMotivo = value;
         }
 
+        /// <summary>
+        /// Justificativa do motivo do insucesso da entrega (quando o motivo for "Outros").
+        /// </summary>
         [XmlIgnore]
         public string XJustMotivo
         {
@@ -1671,6 +2054,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.XJustMotivo = value;
         }
 
+        /// <summary>
+        /// Latitude da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
         public string Latitude
         {
@@ -1678,6 +2064,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.Latitude = value;
         }
 
+        /// <summary>
+        /// Longitude da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
         public string Longitude
         {
@@ -1685,6 +2074,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.Longitude = value;
         }
 
+        /// <summary>
+        /// Hash da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
         public string HashTentativaEntrega
         {
@@ -1692,6 +2084,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.HashTentativaEntrega = value;
         }
 
+        /// <summary>
+        /// Data e hora do hash da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhHashTentativaEntrega
@@ -1707,6 +2102,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhHashTentativaEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string DhHashTentativaEntregaField
         {
@@ -1714,7 +2112,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.DhHashTentativaEntregaField = value;
         }
 
-
+        /// <summary>
+        /// Lista de informações de entrega.
+        /// </summary>
         [XmlIgnore]
         public List<InfEntrega> InfEntrega
         {
@@ -1722,6 +2122,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EventoIECTe.InfEntrega = value;
         }
 
+        /// <summary>
+        /// Evento de insucesso de entrega do CT-e.
+        /// </summary>
         [XmlElement(ElementName = "evIECTe")]
         public EvIECTe EventoIECTe
         {
@@ -1761,7 +2164,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
 
             writeRaw += $@"<hashTentativaEntrega>{HashTentativaEntrega}</hashTentativaEntrega>
-                <dhHashTentativaEntrega>{DhHashTentativaEntregaField}</dhHashTentativaEntrega>";
+                    <dhHashTentativaEntrega>{DhHashTentativaEntregaField}</dhHashTentativaEntrega>";
 
             foreach (var infEntrega in InfEntrega)
             {
@@ -1787,6 +2190,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 
         internal override void SetValue(PropertyInfo pi) => base.SetValue(pi);
 
+        /// <summary>
+        /// Descrição do evento de cancelamento de insucesso de entrega.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -1794,6 +2200,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCancIECTe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Número do protocolo do evento de insucesso de entrega a ser cancelado.
+        /// </summary>
         [XmlIgnore]
         public string NProt
         {
@@ -1801,6 +2210,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCancIECTe.NProt = value;
         }
 
+        /// <summary>
+        /// Número do protocolo do evento de insucesso de entrega.
+        /// </summary>
         [XmlIgnore]
         public string NProtIE
         {
@@ -1808,6 +2220,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCancIECTe.NProtIE = value;
         }
 
+        /// <summary>
+        /// Evento de cancelamento de insucesso de entrega do CT-e.
+        /// </summary>
         [XmlElement(ElementName = "evCancIECTe")]
         public EvCancIECTe EvCancIECTe
         {
@@ -1838,12 +2253,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvIECTe : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de insucesso na entrega do CT-e.
+        /// </summary>
         [XmlElement("descEvento")]
         public string DescEvento { get; set; } = "Insucesso na Entrega do CT-e";
 
+        /// <summary>
+        /// Número do protocolo do evento.
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Data e hora da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhTentativaEntrega { get; set; }
@@ -1851,6 +2275,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhTentativaEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhTentativaEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhTentativaEntrega")]
         public string DhTentativaEntregaField
         {
@@ -1862,23 +2289,41 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Número da tentativa de entrega.
+        /// </summary>
         [XmlElement("nTentativa")]
         public int NTentativa { get; set; }
 
+        /// <summary>
+        /// Tipo do motivo do insucesso da entrega.
+        /// </summary>
         [XmlElement("tpMotivo")]
         public TipoMotivoInsucessoEntrega TpMotivo { get; set; }
 
+        /// <summary>
+        /// Justificativa do motivo do insucesso da entrega (quando o motivo for "Outros").
+        /// </summary>
         [XmlElement("xJustMotivo")]
         public string XJustMotivo { get; set; }
 
+        /// <summary>
+        /// Latitude da tentativa de entrega.
+        /// </summary>
         [XmlElement("latitude")]
         public string Latitude { get; set; }
 
+        /// <summary>
+        /// Longitude da tentativa de entrega.
+        /// </summary>
         [XmlElement("longitude")]
         public string Longitude { get; set; }
 
         private string HashTentativaEntregaField;
 
+        /// <summary>
+        /// Hash da tentativa de entrega (SHA1 Base64).
+        /// </summary>
         [XmlElement("hashTentativaEntrega")]
         public string HashTentativaEntrega
         {
@@ -1896,6 +2341,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             }
         }
 
+        /// <summary>
+        /// Data e hora do hash da tentativa de entrega.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhHashTentativaEntrega { get; set; }
@@ -1903,6 +2351,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhHashTentativaEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhHashTentativaEntrega" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhHashTentativaEntrega")]
         public string DhHashTentativaEntregaField
         {
@@ -1914,16 +2365,18 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Lista de informações de entrega.
+        /// </summary>
         [XmlElement("infEntrega")]
         public List<InfEntrega> InfEntrega { get; set; } = new List<InfEntrega>();
-
 
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adiciona um novo elemento à lista de informações de entrega.
         /// </summary>
-        /// <param name="infentrega">Elemento</param>
+        /// <param name="infentrega">Elemento a ser adicionado.</param>
         public void AddInfEntrega(InfEntrega infentrega)
         {
             if (InfEntrega == null)
@@ -1935,10 +2388,10 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Retorna o elemento da lista InfEntrega (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// Retorna o elemento da lista de informações de entrega no índice especificado.
         /// </summary>
-        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
-        /// <returns>Conteúdo do index passado por parâmetro da InfEntrega</returns>
+        /// <param name="index">Índice do elemento a ser retornado (começa em 0).</param>
+        /// <returns>Elemento da lista no índice especificado.</returns>
         public InfEntrega GetInfEntrega(int index)
         {
             if ((InfEntrega?.Count ?? 0) == 0)
@@ -1950,14 +2403,19 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 
         /// <summary>
-        /// Retorna a quantidade de elementos existentes na lista InfEntrega
+        /// Retorna o número de elementos na lista de informações de entrega.
         /// </summary>
         public int GetInfEntregaCount => (InfEntrega != null ? InfEntrega.Count : 0);
 
 #endif
+
+        /// <summary>
+        /// Lê o XML do documento especificado.
+        /// </summary>
+        /// <param name="document">Documento XML a ser lido.</param>
         public void ReadXml(XmlDocument document)
         {
-
+            
         }
 
         /// <summary>
@@ -1979,15 +2437,28 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCancIECTe : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de cancelamento do insucesso de entrega do CT-e.
+        /// </summary>
         [XmlElement("descEvento")]
         public string DescEvento { get; set; } = "Cancelamento do Insucesso de Entrega do CT-e";
 
+        /// <summary>
+        /// Número do protocolo do evento de insucesso de entrega a ser cancelado.
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Número do protocolo do evento de insucesso de entrega.
+        /// </summary>
         [XmlElement("nProtIE")]
         public string NProtIE { get; set; }
 
+        /// <summary>
+        /// Lê o XML do documento especificado.
+        /// </summary>
+        /// <param name="document">Documento XML a ser lido.</param>
         public void ReadXml(XmlDocument document) { }
 
         /// <summary>
@@ -2026,6 +2497,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.SetValue(pi);
         }
 
+        /// <summary>
+        /// Evento de cancelamento do MDFe relacionado ao CTe.
+        /// </summary>
         [XmlElement(ElementName = "evCTeCanceladoMDFe", Order = 0)]
         public EvCTeCanceladoMDFe EvCTeCanceladoMDFe
         {
@@ -2033,6 +2507,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => _evCTeCanceladoMDFe = value;
         }
 
+        /// <summary>
+        /// Descrição do evento de cancelamento do MDFe.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -2040,6 +2517,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeCanceladoMDFe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Informações do MDFe cancelado.
+        /// </summary>
         [XmlIgnore]
         public EvCTeCanceladoMDFeMDFe MDFe
         {
@@ -2074,28 +2554,32 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeCanceladoMDFe : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de MDFe cancelado.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public string DescEvento { get; set; } = "MDF-e Cancelado";
 
+        /// <summary>
+        /// Informações do MDFe cancelado.
+        /// </summary>
         [XmlElement("MDFe", Order = 6)]
         public EvCTeCanceladoMDFeMDFe MDFe { get; set; }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na desserialização
+        /// Executa o processamento do XMLReader recebido na desserialização.
         /// </summary>
-        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        /// <param name="document">XmlDocument recebido durante o processo de desserialização.</param>
         public void ReadXml(XmlDocument document)
         {
-
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na serialização
+        /// Executa o processamento do XMLReader recebido na serialização.
         /// </summary>
-        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        /// <param name="writer">string XML recebido durante o processo de serialização.</param>
         public void WriteXml(System.IO.StringWriter writer)
         {
-
         }
     }
 
@@ -2108,9 +2592,15 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EvCTeCanceladoMDFeMDFe
     {
+        /// <summary>
+        /// Chave de acesso do MDFe cancelado.
+        /// </summary>
         [XmlElement("chMDFe", Order = 0)]
         public string ChMDFe { get; set; }
 
+        /// <summary>
+        /// Número do protocolo de cancelamento do MDFe.
+        /// </summary>
         [XmlElement("nProtCanc", Order = 1)]
         public string NProtCanc { get; set; }
     }
@@ -2166,6 +2656,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.SetValue(pi);
         }
 
+        /// <summary>
+        /// Evento de autorização do MDFe relacionado ao CTe.
+        /// </summary>
         [XmlElement(ElementName = "evCTeAutorizadoMDFe", Order = 0)]
         public EvCTeAutorizadoMDFe EvCTeAutorizadoMDFe
         {
@@ -2173,6 +2666,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => _evCTeAutorizadoMDFe = value;
         }
 
+        /// <summary>
+        /// Descrição do evento de autorização do MDFe.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -2180,6 +2676,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeAutorizadoMDFe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Informações do MDFe autorizado.
+        /// </summary>
         [XmlIgnore]
         public EvCTeAutorizadoMDFeMDFe MDFe
         {
@@ -2187,6 +2686,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeAutorizadoMDFe.MDFe = value;
         }
 
+        /// <summary>
+        /// Informações do emitente do MDFe.
+        /// </summary>
         [XmlIgnore]
         public EvCTeAutorizadoMDFeEmit Emit
         {
@@ -2231,31 +2733,38 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeAutorizadoMDFe : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de MDFe autorizado.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public string DescEvento { get; set; } = "MDF-e Autorizado";
 
+        /// <summary>
+        /// Informações do MDFe autorizado.
+        /// </summary>
         [XmlElement("MDFe", Order = 1)]
         public EvCTeAutorizadoMDFeMDFe MDFe { get; set; }
 
+        /// <summary>
+        /// Informações do emitente do MDFe.
+        /// </summary>
         [XmlElement("emit", Order = 2)]
         public EvCTeAutorizadoMDFeEmit Emit { get; set; }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na desserialização
+        /// Executa o processamento do XMLReader recebido na desserialização.
         /// </summary>
-        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        /// <param name="document">XmlDocument recebido durante o processo de desserialização.</param>
         public void ReadXml(XmlDocument document)
         {
-
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na serialização
+        /// Executa o processamento do XMLReader recebido na serialização.
         /// </summary>
-        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        /// <param name="writer">string XML recebido durante o processo de serialização.</param>
         public void WriteXml(System.IO.StringWriter writer)
         {
-
         }
     }
 
@@ -2268,12 +2777,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EvCTeAutorizadoMDFeMDFe
     {
+        /// <summary>
+        /// Chave de acesso do MDFe autorizado.
+        /// </summary>
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
 
+        /// <summary>
+        /// Modalidade de transporte do MDFe.
+        /// </summary>
         [XmlElement("modal")]
         public ModalidadeTransporteCTe Modal { get; set; }
 
+        /// <summary>
+        /// Data e hora de emissão do MDFe.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -2281,6 +2799,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhEmi { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEmi" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
@@ -2292,9 +2813,15 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Número do protocolo de autorização do MDFe.
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Data e hora de recebimento da autorização do MDFe.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -2302,6 +2829,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhRecbto { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhRecbto" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
@@ -2324,12 +2854,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EvCTeAutorizadoMDFeEmit
     {
+        /// <summary>
+        /// CNPJ do emitente do MDFe.
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// Inscrição Estadual do emitente do MDFe.
+        /// </summary>
         [XmlElement("IE")]
         public string IE { get; set; }
 
+        /// <summary>
+        /// Nome ou razão social do emitente do MDFe.
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
     }
@@ -2372,6 +2911,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             base.SetValue(pi);
         }
 
+        /// <summary>
+        /// Descrição do evento de registro de passagem automático.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -2379,6 +2921,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagemAuto.DescEvento = value;
         }
 
+        /// <summary>
+        /// Tipo de transmissão do registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public string TpTransm
         {
@@ -2386,6 +2931,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagemAuto.TpTransm = value;
         }
 
+        /// <summary>
+        /// Informações do registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public EvCTeRegPassagemAutoInfPass InfPass
         {
@@ -2393,6 +2941,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagemAuto.InfPass = value;
         }
 
+        /// <summary>
+        /// Chave de acesso do MDFe relacionado ao registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public string ChMDFe
         {
@@ -2400,6 +2951,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagemAuto.ChMDFe = value;
         }
 
+        /// <summary>
+        /// Evento de registro de passagem automático do CT-e.
+        /// </summary>
         [XmlIgnore]
         public EvCTeRegPassagemAuto EvCTeRegPassagemAuto
         {
@@ -2438,7 +2992,6 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
-
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeRegPassagemAuto")]
@@ -2448,34 +3001,44 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeRegPassagemAuto : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de registro de passagem automático.
+        /// </summary>
         [XmlElement("descEvento")]
         public string DescEvento { get; set; } = "Registro de Passagem Automático";
 
+        /// <summary>
+        /// Tipo de transmissão do registro de passagem.
+        /// </summary>
         [XmlElement("tpTransm")]
         public string TpTransm { get; set; }
 
+        /// <summary>
+        /// Informações do registro de passagem.
+        /// </summary>
         [XmlElement("infPass")]
         public EvCTeRegPassagemAutoInfPass InfPass { get; set; }
 
+        /// <summary>
+        /// Chave de acesso do MDFe relacionado ao registro de passagem.
+        /// </summary>
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na desserialização
+        /// Executa o processamento do XMLReader recebido na desserialização.
         /// </summary>
-        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        /// <param name="document">XmlDocument recebido durante o processo de desserialização.</param>
         public void ReadXml(XmlDocument document)
         {
-
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na serialização
+        /// Executa o processamento do XMLReader recebido na serialização.
         /// </summary>
-        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        /// <param name="writer">string XML recebido durante o processo de serialização.</param>
         public void WriteXml(System.IO.StringWriter writer)
         {
-
         }
     }
 
@@ -2489,24 +3052,45 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class EvCTeRegPassagemAutoInfPass
     {
+        /// <summary>
+        /// Código da UF de trânsito.
+        /// </summary>
         [XmlElement("cUFTransito")]
         public string CUFTransito { get; set; }
 
+        /// <summary>
+        /// Código de identificação do equipamento.
+        /// </summary>
         [XmlElement("cIdEquip")]
         public string CIdEquip { get; set; }
 
+        /// <summary>
+        /// Descrição do equipamento.
+        /// </summary>
         [XmlElement("xIdEquip")]
         public string XIdEquip { get; set; }
 
+        /// <summary>
+        /// Tipo do equipamento.
+        /// </summary>
         [XmlElement("tpEquip")]
         public string TpEquip { get; set; }
 
+        /// <summary>
+        /// Placa do veículo.
+        /// </summary>
         [XmlElement("placa")]
         public string Placa { get; set; }
 
+        /// <summary>
+        /// Tipo de sentido do registro de passagem.
+        /// </summary>
         [XmlElement("tpSentido")]
         public string TpSentido { get; set; }
 
+        /// <summary>
+        /// Data e hora da passagem.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhPass { get; set; }
@@ -2514,6 +3098,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhPass { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhPass" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhPass")]
         public string DhPassField
         {
@@ -2525,12 +3112,21 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Latitude da passagem.
+        /// </summary>
         [XmlElement("latitude")]
         public string Latitude { get; set; }
 
+        /// <summary>
+        /// Longitude da passagem.
+        /// </summary>
         [XmlElement("longitude")]
         public string Longitude { get; set; }
 
+        /// <summary>
+        /// Número Sequencial Único do registro de passagem.
+        /// </summary>
         [XmlElement("NSU")]
         public string NSU { get; set; }
     }
@@ -2548,6 +3144,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private EvCTeRegPassagemAutoMDFe _evCTeRegPassagemAutoMDFe;
 
+        /// <summary>
+        /// Descrição do evento de registro de passagem automático originado no MDFe.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -2555,6 +3154,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagemAutoMDFe.DescEvento = value;
         }
 
+        /// <summary>
+        /// Chave de acesso do MDFe relacionado ao registro de passagem automático.
+        /// </summary>
         [XmlIgnore]
         public string ChMDFe
         {
@@ -2562,6 +3164,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagemAutoMDFe.ChMDFe = value;
         }
 
+        /// <summary>
+        /// Evento de registro de passagem automático originado no MDFe do CT-e.
+        /// </summary>
         [XmlIgnore]
         public EvCTeRegPassagemAutoMDFe EvCTeRegPassagemAutoMDFe
         {
@@ -2592,28 +3197,32 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeRegPassagemAutoMDFe : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de registro de passagem automático originado no MDFe.
+        /// </summary>
         [XmlElement("descEvento")]
         public string DescEvento { get; set; } = "Registro de Passagem Automatico Originado no MDFe";
 
+        /// <summary>
+        /// Chave de acesso do MDFe relacionado ao registro de passagem automático.
+        /// </summary>
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na desserialização
+        /// Executa o processamento do XMLReader recebido na desserialização.
         /// </summary>
-        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        /// <param name="document">XmlDocument recebido durante o processo de desserialização.</param>
         public void ReadXml(XmlDocument document)
         {
-
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na serialização
+        /// Executa o processamento do XMLReader recebido na serialização.
         /// </summary>
-        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        /// <param name="writer">string XML recebido durante o processo de serialização.</param>
         public void WriteXml(System.IO.StringWriter writer)
         {
-
         }
     }
 
@@ -2628,6 +3237,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private EvCTeRegPassagem _evCTeRegPassagem;
 
+        /// <summary>
+        /// Descrição do evento de registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -2635,6 +3247,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.DescEvento = value;
         }
 
+        /// <summary>
+        /// Código da UF de trânsito.
+        /// </summary>
         [XmlIgnore]
         public string CUFTransito
         {
@@ -2642,6 +3257,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.CUFTransito = value;
         }
 
+        /// <summary>
+        /// Código da unidade fiscal.
+        /// </summary>
         [XmlIgnore]
         public string CUnidFiscal
         {
@@ -2649,6 +3267,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.CUnidFiscal = value;
         }
 
+        /// <summary>
+        /// Descrição da unidade fiscal.
+        /// </summary>
         [XmlIgnore]
         public string XUnidFiscal
         {
@@ -2656,6 +3277,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.XUnidFiscal = value;
         }
 
+        /// <summary>
+        /// Data e hora da passagem.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhPass
@@ -2671,6 +3295,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhPass" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlIgnore]
         public string DhPassField
         {
@@ -2678,6 +3305,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.DhPassField = value;
         }
 
+        /// <summary>
+        /// CPF do funcionário que registrou a passagem.
+        /// </summary>
         [XmlIgnore]
         public string CPFFunc
         {
@@ -2685,6 +3315,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.CPFFunc = value;
         }
 
+        /// <summary>
+        /// Nome do funcionário que registrou a passagem.
+        /// </summary>
         [XmlIgnore]
         public string XFunc
         {
@@ -2692,6 +3325,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.XFunc = value;
         }
 
+        /// <summary>
+        /// Tipo de transmissão do registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public string TpTransm
         {
@@ -2699,6 +3335,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.TpTransm = value;
         }
 
+        /// <summary>
+        /// Tipo de sentido do registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public string TpSentido
         {
@@ -2706,6 +3345,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.TpSentido = value;
         }
 
+        /// <summary>
+        /// Placa do veículo.
+        /// </summary>
         [XmlIgnore]
         public string Placa
         {
@@ -2713,6 +3355,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.Placa = value;
         }
 
+        /// <summary>
+        /// Chave de acesso do MDFe relacionado ao registro de passagem.
+        /// </summary>
         [XmlIgnore]
         public string ChMDFe
         {
@@ -2720,7 +3365,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeRegPassagem.ChMDFe = value;
         }
 
-
+        /// <summary>
+        /// Evento de registro de passagem do CT-e.
+        /// </summary>
         [XmlIgnore]
         public EvCTeRegPassagem EvCTeRegPassagem
         {
@@ -2759,18 +3406,33 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeRegPassagem : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do evento de registro de passagem.
+        /// </summary>
         [XmlElement("descEvento")]
         public string DescEvento { get; set; } = "Registro de Passagem";
 
+        /// <summary>
+        /// Código da UF de trânsito.
+        /// </summary>
         [XmlElement("cUFTransito")]
         public string CUFTransito { get; set; }
 
+        /// <summary>
+        /// Código da unidade fiscal.
+        /// </summary>
         [XmlElement("cUnidFiscal")]
         public string CUnidFiscal { get; set; }
 
+        /// <summary>
+        /// Descrição da unidade fiscal.
+        /// </summary>
         [XmlElement("xUnidFiscal")]
         public string XUnidFiscal { get; set; }
 
+        /// <summary>
+        /// Data e hora da passagem.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhPass { get; set; }
@@ -2778,6 +3440,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhPass { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhPass" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhPass")]
         public string DhPassField
         {
@@ -2789,40 +3454,56 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// CPF do funcionário que registrou a passagem. 
+        /// </summary>
         [XmlElement("CPFFunc")]
         public string CPFFunc { get; set; }
 
+        /// <summary>
+        /// Nome do funcionário que registrou a passagem.
+        /// </summary>
         [XmlElement("xFunc")]
         public string XFunc { get; set; }
 
+        /// <summary>
+        /// Tipo de transmissão do registro de passagem.
+        /// </summary>
         [XmlElement("tpTransm")]
         public string TpTransm { get; set; }
 
+        /// <summary>
+        /// Tipo de sentido do registro de passagem.
+        /// </summary>
         [XmlElement("tpSentido")]
         public string TpSentido { get; set; }
 
+        /// <summary>
+        /// Placa do veículo.
+        /// </summary>
         [XmlElement("placa")]
         public string Placa { get; set; }
 
+        /// <summary>
+        /// Chave de acesso do MDFe relacionado ao registro de passagem.
+        /// </summary>
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na desserialização
+        /// Executa o processamento do XMLReader recebido na desserialização.
         /// </summary>
-        ///<param name="document">XmlDocument recebido durante o processo de desserialização</param>
+        /// <param name="document">XmlDocument recebido durante o processo de desserialização.</param>
         public void ReadXml(XmlDocument document)
         {
-
         }
 
         /// <summary>
-        /// Executa o processamento do XMLReader recebido na serialização
+        /// Executa o processamento do XMLReader recebido na serialização.
         /// </summary>
-        ///<param name="writer">string XML recebido durante o processo de serialização</param>
+        /// <param name="writer">string XML recebido durante o processo de serialização.</param>
         public void WriteXml(System.IO.StringWriter writer)
         {
-
         }
     }
 
@@ -2837,6 +3518,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     {
         private EvCTeComplementar _evCTeComplementar;
 
+        /// <summary>
+        /// Descrição do evento de autorização do CT-e complementar.
+        /// </summary>
         [XmlIgnore]
         public override string DescEvento
         {
@@ -2844,6 +3528,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeComplementar.DescEvento = value;
         }
 
+        /// <summary>
+        /// Chave de acesso do CT-e complementar.
+        /// </summary>
         [XmlIgnore]
         public string ChCTeCompl
         {
@@ -2851,6 +3538,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeComplementar.ChCTeCompl = value;
         }
 
+        /// <summary>
+        /// Número do protocolo de autorização do CT-e complementar.
+        /// </summary>
         [XmlIgnore]
         public string NProt
         {
@@ -2858,6 +3548,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeComplementar.NProt = value;
         }
 
+        /// <summary>
+        /// Data e hora de recebimento da autorização do CT-e complementar.
+        /// </summary>
         [XmlIgnore]
         public string DhRecbto
         {
@@ -2865,6 +3558,9 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => EvCTeComplementar.DhRecbto = value;
         }
 
+        /// <summary>
+        /// Evento de autorização do CT-e complementar.
+        /// </summary>
         [XmlIgnore]
         public EvCTeComplementar EvCTeComplementar
         {
@@ -2888,6 +3584,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         }
     }
 
+    /// <summary>
+    /// Evento CTe Complementar
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.EvCTeComplementar")]
@@ -2897,15 +3596,27 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlInclude(typeof(EventoDetalhe))]
     public class EvCTeComplementar : Contract.Serialization.IXmlSerializable
     {
+        /// <summary>
+        /// Descrição do Evento.
+        /// </summary>
         [XmlElement("descEvento")]
         public string DescEvento { get; set; } = "Autorizado CT-e Complementar";
 
+        /// <summary>
+        /// Chave de acesso do CT-e Complementar.
+        /// </summary>
         [XmlElement("chCTeCompl")]
         public string ChCTeCompl { get; set; }
 
+        /// <summary>
+        /// Data e Hora do Recebimento.
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbto { get; set; }
 
+        /// <summary>
+        /// Número do Protocolo.
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
