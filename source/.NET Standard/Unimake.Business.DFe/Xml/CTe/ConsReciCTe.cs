@@ -14,14 +14,23 @@ namespace Unimake.Business.DFe.Xml.CTe
     [ComVisible(true)]
 #endif
     [XmlRoot("consReciCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public class ConsReciCTe: XMLBase
+    public class ConsReciCTe : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute.
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Tipo do Ambiente.
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Número do Recibo.
+        /// </summary>
         [XmlElement("nRec")]
         public string NRec { get; set; }
     }
