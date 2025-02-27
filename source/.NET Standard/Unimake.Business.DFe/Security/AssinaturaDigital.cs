@@ -339,7 +339,7 @@ namespace Unimake.Business.DFe.Security
     [ComVisible(true)]
     public class AssinaturaDigitalInterop
     {
-        // <summary>
+        /// <summary>
         /// Assinar digitalmente o XML
         /// </summary>
         /// <param name="conteudoXML">XML a ser assinado</param>
