@@ -17,15 +17,27 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("consSitCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class ConsSitCTe : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute.
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Tipo do Ambiente.
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Serviço Solicitado.
+        /// </summary>
         [XmlElement("xServ")]
         public string XServ { get; set; } = "CONSULTAR";
 
+        /// <summary>
+        /// Chave de acesso do CT-e.
+        /// </summary>
         [XmlElement("chCTe")]
         public string ChCTe { get; set; }
     }
