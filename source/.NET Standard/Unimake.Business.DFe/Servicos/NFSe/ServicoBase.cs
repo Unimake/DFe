@@ -40,6 +40,10 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
             switch (Configuracoes.PadraoNFSe)
             {
+                case PadraoNFSe.MEMORY:
+                    MEMORY();
+                    break;
+
                 case PadraoNFSe.BAUHAUS:
                     BAUHAUS();
                     break;
@@ -64,17 +68,34 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             base.DefinirConfiguracao();
         }
 
-        private void NACIONAL()
-        {
-            var URI = Configuracoes.RequestURI;// = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao);
+        #region Configurações separadas por PadrãoNFSe
 
-            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
-            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
-            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
-            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+        #region MEMORY
+
+        private void MEMORY()
+        {
+            var numeroRPS = GetXMLElementInnertext("numeroRPS");
+            var numeroNFSE = GetXMLElementInnertext("numeroNFSE");
+            var protocolo = GetXMLElementInnertext("protocolo");
+            var codMunicipio = GetXMLElementInnertext("codMunicipio");
+
+            if (codMunicipio == null && Configuracoes.Servico == Servico.NFSeRecepcionarLoteRps)
+            {
+                var nodeloteRps = ConteudoXML.GetElementsByTagName("LoteRps")?[0];
+                codMunicipio = nodeloteRps.Attributes.GetNamedItem("codMunicipio").Value;
+            }
+
+            // Replaces necessários para a comunicação com o webservice, deve estar antes da linha que altera o Codigo do Municipio
+            Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{numeroRPS}", numeroRPS)
+                                                                     .Replace("{numeroNFSE}", numeroNFSE)
+                                                                     .Replace("{protocolo}", protocolo)
+                                                                     .Replace("{codMunicipio}", codMunicipio)
+                                                                     .Replace("{cnpjPrestador}", Configuracoes.MunicipioUsuario)
+                                                                     .Replace("{hashValidador}", Configuracoes.MunicipioSenha);
+            PadroesConfigUnica();
         }
 
-        #region Configurações separadas por PadrãoNFSe
+        #endregion MEMORY
 
         #region IPM
 
@@ -128,6 +149,20 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion Bauhaus
+
+        #region NACIONAL
+
+        private void NACIONAL()
+        {
+            var URI = Configuracoes.RequestURI;// = (Configuracoes.TipoAmbiente == TipoAmbiente.Producao ? Configuracoes.RequestURIProducao : Configuracoes.RequestURIHomologacao);
+
+            var startIndex = ConteudoXML.OuterXml.IndexOf("Id=\"") + 7;
+            var endIndex = ConteudoXML.OuterXml.IndexOf("\"", startIndex);
+            var chave = ConteudoXML.OuterXml.Substring(startIndex, (endIndex - startIndex));
+            Configuracoes.RequestURI = Configuracoes.RequestURI.Replace("{Chave}", chave);
+        }
+
+        #endregion NACIONAL
 
         #endregion Configurações separadas por PadrãoNFSe
 
