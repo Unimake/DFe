@@ -11,6 +11,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe de informações resumidas da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ResNFe")]
@@ -19,24 +22,45 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("resNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class ResNFe : XMLBase
     {
+        /// <summary>
+        /// Versão do schema do XML de resumo da NFe/NFCe
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Chave de acesso da NFe/NFCe
+        /// </summary>
         [XmlElement("chNFe")]
         public string ChNFe { get; set; }
 
+        /// <summary>
+        /// CNPJ do emitente
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do emitente
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Razão social ou nome do emitente
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// Inscrição estadual do emitente
+        /// </summary>
         [XmlElement("IE")]
         public string IE { get; set; }
 
+        /// <summary>
+        /// Data e hora de emissão do documento fiscal no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -44,6 +68,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEmi { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEmi para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
@@ -55,11 +82,21 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Tipo do documento fiscal
+        /// </summary>
         [XmlElement("tpNF")]
         public TipoOperacao TpNF { get; set; }
 
+        /// <summary>
+        /// Valor total da NFe/NFCe
+        /// </summary>
         [XmlIgnore]
         public double VNF { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VNF para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vNF")]
         public string VNFField
         {
@@ -67,9 +104,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VNF = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Digest Value da NFe/NFCe processada. Utilizado para conferir a integridade da NFe/NFCe original
+        /// </summary>
         [XmlElement("digVal")]
         public string DigVal { get; set; }
 
+        /// <summary>
+        /// Data e hora da autorização da NFe/NFCe no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -77,6 +120,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhRecbto { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhRecbto para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
@@ -88,9 +134,16 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Número do protocolo de status da NFe/NFCe
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Situação da NFe/NFCe.
+        /// 1 - Uso autorizado no momento da consulta; 2 - Uso denegado
+        /// </summary>
         [XmlElement("cSitNFe")]
         public string CSitNFe { get; set; }
 
