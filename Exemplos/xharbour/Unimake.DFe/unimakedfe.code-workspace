@@ -1,0 +1,43 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    },
+    {
+      "path": "d:/testenfe/xharbour/unimake.dfe"
+    }
+  ],
+  "settings": {
+    "files.encoding": "iso88591",
+    "svn.experimental.detect_encoding": true,
+    "svn.experimental.encoding_priority": [],
+    "todo-tree.tree.scanMode": "current file",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.8,
+    "editor.rulers": [80, 132],
+    "editor.tabSize": 3,
+    "editor.renderLineHighlight": "gutter",
+    "editor.fontLigatures": true,
+    "files.associations": {
+      "*.rel": "harbour",
+	    "*.frm": "harbour",
+      "*.cad": "harbour",
+      "*.card": "harbour",
+      "*.lbl": "harbour",
+      "*.lw": "harbour",
+      "*.api": "harbour"
+    },
+    "dotnet.defaultSolution": "disable",
+    "harbour.formatter.replace.asterisk": "ignore",
+    "harbour.formatter.indent.case": false,
+    "harbour.formatter.indent.cycle": false,
+    "harbour.formatter.indent.funcBody": false,
+    "harbour.formatter.indent.logical": false,
+    "harbour.formatter.indent.switch": false,
+    "harbour.formatter.indent.variables": false,
+    "harbour.formatter.replace.amp": "ignore",
+    "harbour.formatter.replace.not": "ignore",
+    "harbour.decorator": false
+  }
+}

@@ -94,9 +94,11 @@ Function Main()
    Aadd(aOpcoes, "eSocial - Evento 1000 - Enviar lote")
    Aadd(aOpcoes, "eSocial - Evento 1000 - Enviar lote - XML desserializado")
    
+   Aadd(aOpcoes, "Assinar XML")   
+   
    Do While .T.
       Cls
-
+      
       @ 1,2 Say "Unimake.Dfe DLL for " + Version()
 	  
       nOpcao := Achoice( 3, 2, 30, 80, aOpcoes)
@@ -112,230 +114,233 @@ Function Main()
 
          case nOpcao = 2
               ConsultaSituacaoNfe()
-			  
+
          case nOpcao = 3
               EnviarNfeSincrono()			  
-			  
+
          case nOpcao = 4
               EnviarNfeAssincrono()
-			  
+
          case nOpcao = 5
               EnviarNfeDeserializando()			  			  
-			  
+
          case nOpcao = 6
-			  TesteDiversoCertificado()
-			  
+              TesteDiversoCertificado()
+
          case nOpcao = 7
-		      CancelarNFe()
-			  
+              CancelarNFe()
+
          case nOpcao = 8
-		      CancelarNFeDesserializando()
-		 
-		 case nOpcao = 9
-		      GerarXmlDistribuicaoNomeDif()
-			  
-		 case nOpcao = 10
-		      ConsultaStatusMDFe()
-			  
+              CancelarNFeDesserializando()
+
+         case nOpcao = 9
+              GerarXmlDistribuicaoNomeDif()
+
+         case nOpcao = 10
+              ConsultaStatusMDFe()
+
          case nOpcao = 11
-		      EnviarMDFeAssincrono()
+              EnviarMDFeAssincrono()
 
          case nOpcao = 12
-		      EnviarMDFeAssincronoDesserializando()
-			  
+              EnviarMDFeAssincronoDesserializando()
+
          case nOpcao = 13
               EnviarNfceSincrono()			  
-			  
+
          case nOpcao = 14
               EnviarNFCeSincronoDesserializando()
-			  
+
          case nOpcao = 15
               EnviarMDFeSincrono()
-			  
+
          case nOpcao = 16
-		      ValidarXML()
-			  
+              ValidarXML()
+
          case nOpcao = 17
-		      CancelarNFCe()
-			  
-	     case nOpcao = 18
-		      ConsultarGTIN()
-			  
-	     case nOpcao = 19
-		      ImprimirDANFe()
-		 
-	     case nOpcao = 20
-		      ExecutarTelaUniDANFe()
-			  
-	     case nOpcao = 21
-		      CancelarMDFe()		 
-			  
-	     case nOpcao = 22
-		      EncerramentoMDFe()
-			  
-	     case nOpcao = 23
-		      FinalizarNFePelaConsultaSituacao()
-			  
-		 case nOpcao = 24
-		      EnviarNFCeSincronoOffline()
-			  
+              CancelarNFCe()
+
+         case nOpcao = 18
+              ConsultarGTIN()
+
+         case nOpcao = 19
+              ImprimirDANFe()
+
+         case nOpcao = 20
+              ExecutarTelaUniDANFe()
+
+         case nOpcao = 21
+              CancelarMDFe()		 
+
+         case nOpcao = 22
+              EncerramentoMDFe()
+
+         case nOpcao = 23
+              FinalizarNFePelaConsultaSituacao()
+
+         case nOpcao = 24
+              EnviarNFCeSincronoOffline()
+
          case nOpcao = 25
-		      EnviarCTeAssincrono()
-          		
-		 case nOpcao = 26
+              EnviarCTeAssincrono()
+
+         case nOpcao = 26
               EnviarLoteRPSAssincrono() 		 
-			  
-		 case nOpcao = 27
+
+         case nOpcao = 27
               EnviarConsultaLoteRPS() 		 
-			  
-		 case nOpcao = 28
+
+         case nOpcao = 28
               EnviarCancelamentoNFSe() 	
 
-		 case nOpcao = 29
+         case nOpcao = 29
               EnviarNFeContigenciaSVC()
 
-		 case nOpcao = 30
+         case nOpcao = 30
               EnviarCTeContigenciaSVC()
-			  
-		 case nOpcao = 31	  
-			  EncriptarAssinaturaSP()
-			  
-		 case nOpcao = 32
-		      EPECGerarXMLNFe()
-			  
-		 case nOpcao = 33	  
-		      EPECEnviarEventoEPEC()
-			  
-		 case nOpcao = 34	  
-		      EPECEnviarXMLNFe()
-			  
+
+         case nOpcao = 31	  
+              EncriptarAssinaturaSP()
+
+         case nOpcao = 32
+              EPECGerarXMLNFe()
+
+         case nOpcao = 33	  
+              EPECEnviarEventoEPEC()
+
+         case nOpcao = 34	  
+              EPECEnviarXMLNFe()
+
          case nOpcao = 35
-		      EnviarCTeAssincronoDesserializando()
-			  
+              EnviarCTeAssincronoDesserializando()
+
          case nOpcao = 36
-		      EnviarMDFeSincronoDesserializando()
-			  
+              EnviarMDFeSincronoDesserializando()
+
          case nOpcao = 37
-		      GerarXmlNFSe()
-			  
+              GerarXmlNFSe()
+
          case nOpcao = 38
-		      EnviarCancCTe()
-			  
+              EnviarCancCTe()
+
          case nOpcao = 39
-			  EnviarCancCTeDesserializando()
-			  
-	     case nOpcao = 40
+              EnviarCancCTeDesserializando()
+
+         case nOpcao = 40
               DesserializarXMLNFeCompra()
-			  
-	     case nOpcao = 41
-			  TesteDiversoCertificadoHarbour3x()
-			  
+
+         case nOpcao = 41
+              TesteDiversoCertificadoHarbour3x()
+
          case nOpcao = 42
-		      EnviarInutCTe()
-			  
+              EnviarInutCTe()
+
          case nOpcao = 43
-			  EnviarInutCTeDesserializacao()	  
-			  
+              EnviarInutCTeDesserializacao()	  
+
          case nOpcao = 44
-			  EnviarEventoCCeNFe()	  
-			  
+              EnviarEventoCCeNFe()	  
+
          case nOpcao = 45
-		      EnviarCTeAssincronoDesserializando2()
-			  
-		 case nOpcao = 46
-		      ConsultaDFe()
-			  
+              EnviarCTeAssincronoDesserializando2()
+
+         case nOpcao = 46
+              ConsultaDFe()
+
          case nOpcao = 47
-		      ConsultaStatusCTe()
-			  
+              ConsultaStatusCTe()
+
          case nOpcao = 48
-		      ConsultarURLNfse()
-			  
+              ConsultarURLNfse()
+
          case nOpcao = 49
-		      GerarXmlDistribuicaoEvento()
-			  
+              GerarXmlDistribuicaoEvento()
+
          case nOpcao = 50
-		      ConsultaMDFeNaoEnc()
-			  
+              ConsultaMDFeNaoEnc()
+
          case nOpcao = 51
-		      oInfoInterop = CreateObject("Unimake.Business.DFe.Utility.InfoInterop")
-			  Cls
-			  
-			  ? oInfoInterop:VersaoDLL
-			  ?
-			  ?
-			  Wait
-			  
-			  Cls		
-			  
+              oInfoInterop = CreateObject("Unimake.Business.DFe.Utility.InfoInterop")
+              Cls
+
+              ? oInfoInterop:VersaoDLL
+              ?
+              ?
+              Wait
+
+              Cls		
+
          case nOpcao = 52			  
-		      ExtrairEventoPedSitNFe()
-			  
+              ExtrairEventoPedSitNFe()
+
          case nOpcao = 53
-		      VerificarDLLInstalada()
-			  
-	     case nOpcao = 54
+              VerificarDLLInstalada()
+
+         case nOpcao = 54
               eSocialConsultaLoteAssincrono()		 
-		
+
          case nOpcao = 55
-		      EnviarEsocial2210()
-		
-	     case nOpcao = 56
-		      EnviarEsocial2210Desserializando()
-			  
+              EnviarEsocial2210()
+
+         case nOpcao = 56
+              EnviarEsocial2210Desserializando()
+
          case nOpcao = 57
-		      EnviarEsocial2221()			  
-			  
+              EnviarEsocial2221()			  
+
          case nOpcao = 58
-		      EnviarEsocial1010()			  
-			  
+              EnviarEsocial1010()			  
+
          case nOpcao = 59
-		      EnviarEsocial2220()			  
-			  
+              EnviarEsocial2220()			  
+
          case nOpcao = 60
-		      EnviarEsocial1200()			  
-			  
+              EnviarEsocial1200()			  
+
          case nOpcao = 61
-		      EnviarEsocial2240()			  
-			  
+              EnviarEsocial2240()			  
+
          case nOpcao = 62
-		      EnviarEsocial1210()			  
-			  
+              EnviarEsocial1210()			  
+
          case nOpcao = 63
-		      EnviarEsocial2220Desserializando()			  
-			  
+              EnviarEsocial2220Desserializando()			  
+
          case nOpcao = 64
-		      EnviarEsocial2200()		 
-			  
+              EnviarEsocial2200()		 
+
          case nOpcao = 65
-		      EnviarEsocial2230()		 
-			  
+              EnviarEsocial2230()		 
+
          case nOpcao = 66
-		      EnviarEsocial2299()		 
-			  
+              EnviarEsocial2299()		 
+
          case nOpcao = 67
-		      DownloadEventoESocialPorID()		 
-			  
+              DownloadEventoESocialPorID()		 
+
          case nOpcao = 68
-		      DownloadEventoESocialPorNRRec()
-			  
+              DownloadEventoESocialPorNRRec()
+
          case nOpcao = 69			
               ConsultarEvtsTabelaESocial()
-			  
-		 case nOpcao = 70
+
+         case nOpcao = 70
               ConsultarEvtsTrabalhadorESocial()
-			  
-		 case nOpcao = 71
+
+         case nOpcao = 71
               ConsultarEvtsEmpregadorESocial()		 
-			  
-		 case nOpcao = 72
+
+         case nOpcao = 72
               EnviarEsocial1200Desserializando()
-			  
-		 case nOpcao = 73
+
+         case nOpcao = 73
               EnviarEsocial1000()
-			  
-		 case nOpcao = 74
+
+         case nOpcao = 74
               EnviarEsocial1000Desserializando()
+
+         case nOpcao = 75
+              AssinarXML()
       endcase
    EndDo
 Return       
