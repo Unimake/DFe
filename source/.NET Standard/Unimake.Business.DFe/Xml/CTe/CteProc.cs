@@ -12,6 +12,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+    /// <summary>
+    /// Estrutura de distribuição de CT-e composto pelo CT-e e respectivo protocolo de autorização de uso.
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.CteProc")]
@@ -21,21 +24,39 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("cteProc", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class CteProc : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute.
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Dados do CT-e.
+        /// </summary>
         [XmlElement("CTe")]
         public CTe CTe { get; set; }
 
+        /// <summary>
+        /// Protocolo de autorização do CT-e.
+        /// </summary>
         [XmlElement("protCTe")]
         public ProtCTe ProtCTe { get; set; }
 
+        /// <summary>
+        /// IP do transmissor.
+        /// </summary>
         [XmlAttribute("ipTransmissor")]
         public string IpTransmissor { get; set; }
 
+        /// <summary>
+        /// Porta de conexão.
+        /// </summary>
         [XmlAttribute("nPortaCon")]
         public int NPortaCon { get; set; }
 
+        /// <summary>
+        /// Data e hora de conexão.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhConexao { get; set; }
@@ -43,6 +64,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhConexao { get; set; }
 #endif
 
+        /// <summary>
+        /// Data e hora de conexão (campo para serialização XML).
+        /// </summary>
         [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
@@ -53,6 +77,7 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => DhConexao = DateTimeOffset.Parse(value);
 #endif
         }
+
 
         /// <summary>
         /// Nome do arquivo de distribuição
