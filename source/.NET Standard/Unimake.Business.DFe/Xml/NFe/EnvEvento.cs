@@ -16,6 +16,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.NFe
 {
+    /// <summary>
+    /// Classe para envio dos eventos da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.EnvEvento")]
@@ -37,12 +40,21 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Eventos da NFe/NFCe
+        /// </summary>
         [XmlElement("evento", Order = 2)]
         public List<Evento> Evento { get; set; } = new List<Evento>();
 
+        /// <summary>
+        /// Número do lote de eventos
+        /// </summary>
         [XmlElement("idLote", Order = 1)]
         public string IdLote { get; set; }
 
+        /// <summary>
+        /// Versão schema do XML de lote de eventos
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
@@ -236,6 +248,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public EnvEvento LoadFromXML(string xml) => XMLUtility.Deserializar<EnvEvento>(xml);
     }
 
+    /// <summary>
+    /// Classe do evento da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.Evento")]
@@ -246,16 +261,25 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("evento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class Evento : XMLBase
     {
+        /// <summary>
+        /// Informações do evento
+        /// </summary>
         [XmlElement("infEvento", Order = 0)]
         public InfEvento InfEvento { get; set; }
 
         [XmlElement("Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#", Order = 1)]
         public Signature Signature { get; set; }
 
+        /// <summary>
+        /// Versão do schema do XML do evento
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
     }
 
+    /// <summary>
+    /// Classe de informações do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.InfEvento")]
@@ -273,15 +297,28 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region Public Properties
 
+        /// <summary>
+        /// Chave da NFe/NFCe vinculada ao evento
+        /// </summary>
         [XmlElement("chNFe", Order = 4)]
         public string ChNFe { get; set; }
 
+        /// <summary>
+        /// CNPJ do autor do evento
+        /// </summary>
         [XmlElement("CNPJ", Order = 2)]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// Código do órgão de recepção do Evento.
+        /// Utilizar a Tabela do IBGE extendida, utilizar 91 para identificar o Ambiente Nacional
+        /// </summary>
         [XmlIgnore]
         public UFBrasil COrgao { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgao para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgao", Order = 0)]
         public int COrgaoField
         {
@@ -289,9 +326,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => COrgao = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// CPF do autor do evento
+        /// </summary>
         [XmlElement("CPF", Order = 3)]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Detalhamento do evento
+        /// </summary>
         [XmlElement("detEvento", Order = 9)]
         public EventoDetalhe DetEvento
         {
@@ -409,6 +452,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Data e Hora do Evento, formato UTC (AAAA-MM-DDThh:mm:ssTZD, onde TZD = +hh:mm ou -hh:mm)
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEvento { get; set; }
@@ -416,6 +462,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEvento { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEvento para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEvento", Order = 5)]
         public string DhEventoField
         {
@@ -428,6 +477,10 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         }
 
+        /// <summary>
+        /// ID do evento.
+        /// Composto por: ID + chNFe + nSeqEvento
+        /// </summary>
         [XmlAttribute(DataType = "ID")]
         public string Id
         {
@@ -435,15 +488,29 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => _ = value;
         }
 
+        /// <summary>
+        /// Sequencial do evento para o mesmo tipo de evento.
+        /// Para maioria dos eventos será 1, nos casos em que possa existir mais de um evento, 
+        /// como é o caso da carta de correção, o autor do evento deve numerar de forma seqüencial
+        /// </summary>
         [XmlElement("nSeqEvento", Order = 7)]
         public int NSeqEvento { get; set; }
 
+        /// <summary>
+        /// Tipo de ambiente
+        /// </summary>
         [XmlElement("tpAmb", Order = 1)]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Tipo do evento da NFe/NFCe
+        /// </summary>
         [XmlElement("tpEvento", Order = 6)]
         public TipoEventoNFe TpEvento { get; set; }
 
+        /// <summary>
+        /// Versão do tipo do evento
+        /// </summary>
         [XmlElement("verEvento", Order = 8)]
         public string VerEvento { get; set; }
 
@@ -468,6 +535,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.EventoDetalhe")]
@@ -552,9 +622,15 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public virtual string DescEvento { get; set; }
 
+        /// <summary>
+        /// Versão do schema do XML do evento
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public virtual string Versao { get; set; }
 
@@ -571,6 +647,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCanc")]
@@ -582,12 +661,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Cancelamento
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento";
 
+        /// <summary>
+        /// Número do protocolo de status da NFe/NFCe
+        /// </summary>
         [XmlElement("nProt", Order = 1)]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Justificativa do cancelamento da NFe/NFCe
+        /// </summary>
         [XmlElement("xJust", Order = 2)]
         public string XJust { get; set; }
 
@@ -608,6 +697,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento por substituição da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancSubst")]
@@ -619,12 +711,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Cancelamento por substituicao
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento por substituicao";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public string COrgaoAutorField
         {
@@ -632,18 +734,33 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => COrgaoAutor = Converter.ToAny<UFBrasil>(value);
         }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public TipoAutor TpAutor { get; set; }
 
+        /// <summary>
+        /// Versão do aplicativo que recebeu o evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Número do protocolo de status da NFe/NFCe
+        /// </summary>
         [XmlElement("nProt", Order = 4)]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Justificativa do cancelamento por substituição
+        /// </summary>
         [XmlElement("xJust", Order = 5)]
         public string XJust { get; set; }
 
+        /// <summary>
+        /// Chave de acesso da NFe/NFCe vinculada
+        /// </summary>
         [XmlElement("chNFeRef", Order = 6)]
         public string ChNFeRef { get; set; }
 
@@ -667,6 +784,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento da carta de correção da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCCE")]
@@ -678,12 +798,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Carta de Correcao
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Carta de Correcao";
 
+        /// <summary>
+        /// Texto fixo com as condições de uso da Carta de Correção
+        /// </summary>
         [XmlElement("xCondUso", Order = 2)]
         public string XCondUso { get; set; } = "A Carta de Correcao e disciplinada pelo paragrafo 1o-A do art. 7o do Convenio S/N, de 15 de dezembro de 1970 e pode ser utilizada para regularizacao de erro ocorrido na emissao de documento fiscal, desde que o erro nao esteja relacionado com: I - as variaveis que determinam o valor do imposto tais como: base de calculo, aliquota, diferenca de preco, quantidade, valor da operacao ou da prestacao; II - a correcao de dados cadastrais que implique mudanca do remetente ou do destinatario; III - a data de emissao ou de saida.";
 
+        /// <summary>
+        /// Correção a ser considerada
+        /// </summary>
         [XmlElement("xCorrecao", Order = 1)]
         public string XCorrecao { get; set; }
 
@@ -710,6 +840,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de manifestação da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoManif")]
@@ -736,6 +869,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Justificativa da manifestação
+        /// </summary>
         [XmlElement("xJust", Order = 1)]
         public string XJust { get; set; }
 
@@ -762,6 +898,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de EPEC
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoEPEC")]
@@ -791,12 +930,22 @@ namespace Unimake.Business.DFe.Xml.NFe
             base.SetValue(pi);
         }
 
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = EPEC
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "EPEC";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public int COrgaoAutorField
         {
@@ -804,12 +953,21 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public TipoAutor TpAutor { get; set; }
 
+        /// <summary>
+        /// Versão do aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Data de emissão no formato UTC - AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -817,6 +975,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEmi { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEmi para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi", Order = 4)]
         public string DhEmiField
         {
@@ -828,12 +989,21 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Tipo do operação do documento fiscal
+        /// </summary>
         [XmlElement("tpNF", Order = 5)]
         public TipoOperacao TpNF { get; set; }
 
+        /// <summary>
+        /// IE do destinatário
+        /// </summary>
         [XmlElement("IE", Order = 6)]
         public string IE { get; set; }
 
+        /// <summary>
+        /// Destinatário do evento de EPEC
+        /// </summary>
         [XmlElement("dest", Order = 7)]
         public DetEventoEPECDest Dest { get; set; }
 
@@ -878,6 +1048,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do destinatário do evento de EPEC
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoEPECDest")]
@@ -887,24 +1060,45 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "dest")]
     public class DetEventoEPECDest
     {
+        /// <summary>
+        /// Código UF do destinatário
+        /// </summary>
         [XmlElement("UF", Order = 0)]
         public UFBrasil UF { get; set; }
 
+        /// <summary>
+        /// CNPJ do destinatário
+        /// </summary>
         [XmlElement("CNPJ", Order = 1)]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do destinatário
+        /// </summary>
         [XmlElement("CPF", Order = 1)]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Identificador do destinatário, em caso de comprador estrangeiro
+        /// </summary>
         [XmlElement("idEstrangeiro", Order = 2)]
         public string IdEstrangeiro { get; set; }
 
+        /// <summary>
+        /// IE do destinatário
+        /// </summary>
         [XmlElement("IE", Order = 3)]
         public string IE { get; set; }
 
+        /// <summary>
+        /// Valor total da NFe/NFCe
+        /// </summary>
         [XmlIgnore]
         public double VNF { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VNF para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vNF", Order = 4)]
         public string VNFField
         {
@@ -912,9 +1106,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VNF = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor total do ICMS
+        /// </summary>
         [XmlIgnore]
         public double VICMS { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VICMS para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vICMS", Order = 5)]
         public string VICMSField
         {
@@ -922,9 +1122,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => VICMS = Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Valor total do ICMS de substituição tributária
+        /// </summary>
         [XmlIgnore]
         public double VST { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VST para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vST", Order = 6)]
         public string VSTField
         {
@@ -945,6 +1151,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion ShouldSerialize
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de comprovante de entrega da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCompEntregaNFe")]
@@ -956,12 +1165,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Comprovante de Entrega da NF-e
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Comprovante de Entrega da NF-e";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public int COrgaoAutorField
         {
@@ -969,9 +1188,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlIgnore]
         public TipoAutor TpAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade TpAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public int TpAutorField
         {
@@ -987,9 +1212,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Versão ao aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Data e hora do final da entrega. Formato AAAA-MM-DDThh:mm:ss
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEntrega { get; set; }
@@ -997,6 +1228,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEntrega para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEntrega", Order = 4)]
         public string DhEntregaField
         {
@@ -1008,20 +1242,36 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Número do documento de identificação da pessoa que assinou o comprovante de entrega da NFe/NFCe
+        /// </summary>
         [XmlElement("nDoc", Order = 5)]
         public string NDoc { get; set; }
 
+        /// <summary>
+        /// Nome da pessoa que assinou o comprovante de entrega da NFe/NFCe
+        /// </summary>
         [XmlElement("xNome", Order = 6)]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// Latitude do ponto de entrega
+        /// </summary>
         [XmlElement("latGPS", Order = 7)]
         public string LatGPS { get; set; }
 
+        /// <summary>
+        /// Longitude do ponto de entrega
+        /// </summary>
         [XmlElement("longGPS", Order = 8)]
         public string LongGPS { get; set; }
 
         private string HashComprovanteField;
 
+        /// <summary>
+        /// Hash (SHA1) no formato Base64 resultante da concatenação:
+        /// Chave de acesso da NFe + Base64 da imagem capturada da entrega (Exemplo: imagem capturada da assinatura eletrônica, digital do recebedor, foto, etc)
+        /// </summary>
         [XmlElement("hashComprovante", Order = 9)]
         public string HashComprovante
         {
@@ -1039,6 +1289,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Data e hora da geração do hash do comprovante de entrega da NFe/NFCe no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhHashComprovante { get; set; }
@@ -1046,6 +1299,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhHashComprovante { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhHashComprovante para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhHashComprovante", Order = 10)]
         public string DhHashComprovanteField
         {
@@ -1088,6 +1344,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento do comprovante de entrega da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancCompEntregaNFe")]
@@ -1099,12 +1358,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         #region Public Properties
 
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Cancelamento Comprovante de Entrega da NF-e
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento Comprovante de Entrega da NF-e";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public int COrgaoAutorField
         {
@@ -1112,9 +1381,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => COrgaoAutor = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlIgnore]
         public TipoAutor TpAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade TpAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public int TpAutorField
         {
@@ -1130,9 +1405,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Versão do aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Número do protocolo de autorização do evento da NFe/NFCe a que se refere este cancelamento
+        /// </summary>
         [XmlElement("nProtEvento", Order = 4)]
         public string NProtEvento { get; set; }
 
@@ -1155,6 +1436,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         #endregion Public Methods
     }
 
+    /// <summary>
+    /// Classe do evento de pedido de prorrogação do prazo de ICMS da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoPedidoProrrogPrazoICMS")]
@@ -1164,12 +1448,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoPedidoProrrogPrazoICMS : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Pedido de Prorrogacao
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Pedido de Prorrogacao";
 
+        /// <summary>
+        /// Número do protocolo de autorização da NFe/NFCe a ser prorrogada
+        /// </summary>
         [XmlElement("nProt", Order = 1)]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Itens do pedido de prorrogação. Recomenda-se agrupar a maior quantidade de itens em cada pedido de prorrogação
+        /// </summary>
         [XmlElement("itemPedido", Order = 2)]
         public List<ItemPedidoProrrogPrazoICMS> ItemPedido { get; set; }
 
@@ -1231,6 +1525,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     }
 
+    /// <summary>
+    /// Classe do item do pedido de prorrogação
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.ItemPedidoProrrogPrazoICMS")]
@@ -1240,13 +1537,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento")]
     public class ItemPedidoProrrogPrazoICMS
     {
+        /// <summary>
+        /// Número do item da NFe/NFCe. O número do item deverá ser o mesmo número do item da NFe/NFCe
+        /// </summary>
         [XmlAttribute(AttributeName = "numItem", DataType = "token")]
         public int NumItem { get; set; }
 
+        /// <summary>
+        /// Quantidade do item que será solicitado a prorrogação de prazo
+        /// </summary>
         [XmlElement("qtdeItem", Order = 0)]
         public double QtdeItem { get; set; }
     }
 
+    /// <summary>
+    /// Classe do evento de cancelamento do pedido de prorrogação do prazo de ICMS da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancPedidoProrrogPrazoICMS")]
@@ -1256,12 +1562,23 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoCancPedidoProrrogPrazoICMS : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Cancelamento de Pedido de Prorrogacao
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento de Pedido de Prorrogacao";
 
+        /// <summary>
+        /// Identificador do evento a ser cancelado, a regra de formação é:
+        /// ID + tpEvento + chave da NFe/NFCe + nSeqEvento
+        /// </summary>
         [XmlElement("idPedidoCancelado", Order = 1)]
         public string IdPedidoCancelado { get; set; }
 
+        /// <summary>
+        /// Número do protocolo de autorização do pedido de prorrogação a ser cancelado
+        /// </summary>
         [XmlElement("nProt", Order = 2)]
         public string NProt { get; set; }
 
@@ -1276,6 +1593,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento da SEFAZ
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoSEFAZ")]
@@ -1285,10 +1605,16 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento")]
     public class DetEventoSEFAZ : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de CTe autorizado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCTeAutorizado")]
@@ -1298,12 +1624,19 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoCTeAutorizado : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = CT-e Autorizado
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "CT-e Autorizado";
 
         private DetEventoCTeAutorizadoCTe CTeField;
         private DetEventoCTeAutorizadoEmit EmitField;
 
+        /// <summary>
+        /// Evento do CTe autorizado
+        /// </summary>
         [XmlElement("CTe", Order = 1)]
         public DetEventoCTeAutorizadoCTe CTe
         {
@@ -1319,6 +1652,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Evento do emitente do CTe autorizado
+        /// </summary>
         [XmlElement("emit", Order = 2)]
         public DetEventoCTeAutorizadoEmit Emit
         {
@@ -1374,6 +1710,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento do CTe autorizado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCTeAutorizadoCTe")]
@@ -1383,12 +1722,21 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("CTe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoCTeAutorizadoCTe : XMLBase
     {
+        /// <summary>
+        /// Chave do CTe autorizado
+        /// </summary>
         [XmlElement("chCTe")]
         public string ChCTe { get; set; }
 
+        /// <summary>
+        /// Modalidade de transporte do CTe
+        /// </summary>
         [XmlElement("modal")]
         public ModalidadeTransporteCTe Modal { get; set; }
 
+        /// <summary>
+        /// Data e hora da autorização do CTe no formado AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -1396,6 +1744,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEmi { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEmi para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
@@ -1407,9 +1758,15 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Número do protocolo de autorização do CTe
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Data e hora do recebimento da autorização do CTe
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -1417,6 +1774,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhRecbto { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhRecbto para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
@@ -1429,6 +1789,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento do emitente do CTe autorizado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCTeAutorizadoEmit")]
@@ -1438,16 +1801,28 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("emit", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoCTeAutorizadoEmit
     {
+        /// <summary>
+        /// CNPJ do emitente
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// IE do emitente
+        /// </summary>
         [XmlElement("IE")]
         public string IE { get; set; }
 
+        /// <summary>
+        /// Nome do emitente
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento do MDFe autorizado com CTe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoMDFeAutorizadoComCTe")]
@@ -1457,21 +1832,37 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoMDFeAutorizadoComCTe : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = MDF-e Autorizado com CT-e
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "MDF-e Autorizado com CT-e";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public string COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public string TpAutor { get; set; }
 
+        /// <summary>
+        /// Versão do aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
         private DetEventoMDFeAutorizadoComCTeMDFe MDFeField;
         private DetEventoMDFeAutorizadoComCTeEmit EmitField;
 
+        /// <summary>
+        /// Evento do MDFe autorizado com CTe
+        /// </summary>
         [XmlElement("MDFe", Order = 4)]
         public DetEventoMDFeAutorizadoComCTeMDFe MDFe
         {
@@ -1487,6 +1878,9 @@ namespace Unimake.Business.DFe.Xml.NFe
             }
         }
 
+        /// <summary>
+        /// Evento com o emitente do MDFe autorizado com CTe
+        /// </summary>
         [XmlElement("emit", Order = 5)]
         public DetEventoMDFeAutorizadoComCTeEmit Emit
         {
@@ -1558,6 +1952,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento do MDFe autorizado com CTe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoMDFeAutorizadoComCTeMDFe")]
@@ -1567,15 +1964,27 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("MDFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoMDFeAutorizadoComCTeMDFe : XMLBase
     {
+        /// <summary>
+        /// Chave do MDFe
+        /// </summary>
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
 
+        /// <summary>
+        /// Chave do CTe
+        /// </summary>
         [XmlElement("chCTe")]
         public string ChCTe { get; set; }
 
+        /// <summary>
+        /// Modalidade do transporte do CTe
+        /// </summary>
         [XmlElement("modal")]
         public ModalidadeTransporteCTe Modal { get; set; }
 
+        /// <summary>
+        /// Data e hora de emissão do MDFe autorizado no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -1583,6 +1992,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEmi { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEmi para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
@@ -1594,9 +2006,15 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Número do protocolo de autorização do MDFe
+        /// </summary>
         [XmlElement("nProt")]
         public string NProt { get; set; }
 
+        /// <summary>
+        /// Data e hora do recebimento do MDFe autorizado no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -1604,6 +2022,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhRecbto { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhRecbto para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
@@ -1616,6 +2037,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe do detalhamento do emitente do MDFe autorizado com CTe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoMDFeAutorizadoComCTeEmit")]
@@ -1625,6 +2049,9 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("emit", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoMDFeAutorizadoComCTeEmit : DetEventoCTeAutorizadoEmit { }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de comprovante de entrega do CTe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoComprovanteEntregaCTe")]
@@ -1634,20 +2061,36 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoComprovanteEntregaCTe : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Comprovante de Entrega do CT-e
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Comprovante de Entrega do CT-e";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public string COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public string TpAutor { get; set; }
-
+        
+        /// <summary>
+        /// Versão do aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
         private DetEventoComprovanteEntregaCTeCTe CTeField;
 
+        /// <summary>
+        /// Evento do comprovante de entrega do CTe
+        /// </summary>
         [XmlElement("CTe", Order = 4)]
         public DetEventoComprovanteEntregaCTeCTe CTe
         {
@@ -1714,6 +2157,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do comprovante de entrega do CTe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoComprovanteEntregaCTeCTe")]
@@ -1723,12 +2169,21 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("CTe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoComprovanteEntregaCTeCTe
     {
+        /// <summary>
+        /// Chave do CTe
+        /// </summary>
         [XmlElement("chCTe")]
         public string ChCTe { get; set; }
 
+        /// <summary>
+        /// Número do protocolo do CTe
+        /// </summary>
         [XmlElement("nProtCTe")]
         public string NProtCTe { get; set; }
 
+        /// <summary>
+        /// Data e hora da entrega do CTe no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEntrega { get; set; }
@@ -1736,6 +2191,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEntrega para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEntrega")]
         public string DhEntregaField
         {
@@ -1747,16 +2205,28 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Número do documento da pessoa que assinou o comprovante de entrega
+        /// </summary>
         [XmlElement("nDoc")]
         public string NDoc { get; set; }
 
+        /// <summary>
+        /// Nome da pessoa que assinou o comprovante de entrega
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// Hash (SHA1) no formato Base64 resultante da concatenação:
+        /// Chave de acesso do CTe + Base64 da imagem capturada da entrega (Exemplo: imagem capturada da assinatura eletrônica, digital do recebedor, foto, etc)
+        /// </summary>
         [XmlElement("hashEntregaCTe")]
         public string HashEntregaCTe { get; set; }
 
-
+        /// <summary>
+        /// Data e hora da geração do hash do comprovante de entrega do CTe no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhHashEntregaCTe { get; set; }
@@ -1764,6 +2234,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhHashEntregaCTe { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhHashEntregaCTe para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhHashEntregaCTe")]
         public string DhHashEntregaCTeField
         {
@@ -1776,6 +2249,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento do comprovante de entrega do CTe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoComprovanteEntregaCTe")]
@@ -1785,21 +2261,40 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoCancelamentoComprovanteEntregaCTe : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Cancelamento Comprovante de Entrega do CT-e
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Cancelamento Comprovante de Entrega do CT-e";
 
+        /// <summary>
+        /// Código do órgão autor do evento. Informar o código da UF para este evento.
+        /// </summary>
         [XmlElement("cOrgaoAutor", Order = 1)]
         public string COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public string TpAutor { get; set; }
 
+        /// <summary>
+        /// Versão do aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Chave do CTe
+        /// </summary>
         [XmlElement("chCTe", Order = 4)]
         public string ChCTe { get; set; }
 
+        /// <summary>
+        /// Número do protocolo de autorização do evento do CTe a que se refere este cancelamento
+        /// </summary>
         [XmlElement("nProtCTeCanc", Order = 4)]
         public string NProtCTeCanc { get; set; }
 
@@ -1853,6 +2348,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de averbação da exportação
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAverbacaoExportacao")]
@@ -1862,15 +2360,28 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoAverbacaoExportacao : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Averbação para Exportação
+        /// </summary>
         [XmlElement("descEvento", Order = 0)]
         public override string DescEvento { get; set; } = "Averbação para Exportação";
 
+        /// <summary>
+        /// Tipo do autor
+        /// </summary>
         [XmlElement("tpAutor", Order = 2)]
         public string TpAutor { get; set; }
 
+        /// <summary>
+        /// Versão do aplicativo do autor do evento
+        /// </summary>
         [XmlElement("verAplic", Order = 3)]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Itens da NFe/NFCe do evento
+        /// </summary>
         [XmlElement("itensAverbados", Order = 4)]
         public List<DetEventoAverbacaoExportacaoItensAverbados> ItensAverbados { get; set; } = new List<DetEventoAverbacaoExportacaoItensAverbados>();
 
@@ -1948,6 +2459,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento dos itens averbados do evento de averbação e exportação
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAverbacaoExportacaoItensAverbados")]
@@ -1957,6 +2471,9 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot("itensAverbados", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoAverbacaoExportacaoItensAverbados
     {
+        /// <summary>
+        /// Data e hora do embarque no formado AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmbarque { get; set; }
@@ -1964,6 +2481,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhEmbarque { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhEmbarque para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmbarque")]
         public string DhEmbarqueField
         {
@@ -1975,6 +2495,9 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Data e hora da averbação no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhAverbacao { get; set; }
@@ -1982,6 +2505,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhAverbacao { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhAverbacao para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhAverbacao")]
         public string DhAverbacaoField
         {
@@ -1993,22 +2519,40 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Número identificar da declaração única do comércio exterior associada
+        /// </summary>
         [XmlElement("nDue")]
         public string NDue { get; set; }
 
+        /// <summary>
+        /// Número do item da NFe/NFCe averbada
+        /// </summary>
         [XmlElement("nItem")]
         public string NItem { get; set; }
 
+        /// <summary>
+        /// Número do item na declaração de exportação associada a averbação
+        /// </summary>
         [XmlElement("nItemDue")]
         public string NItemDue { get; set; }
 
+        /// <summary>
+        /// Quantidade averbada do item na unidade tributária
+        /// </summary>
         [XmlElement("qItem")]
         public string QItem { get; set; }
 
+        /// <summary>
+        /// Motivo da alteração
+        /// </summary>
         [XmlElement("motAlteracao")]
         public string MotAlteracao { get; set; }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de vistoria SUFRAMA - SEFAZ
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoVistoriaSuframaSEFAZ")]
@@ -2018,12 +2562,22 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoVistoriaSuframaSEFAZ : EventoDetalhe
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Vistoria SUFRAMA - SEFAZ
+        /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Vistoria SUFRAMA - SEFAZ";
 
+        /// <summary>
+        /// Número do PIN-e - protocolo de internalização de mercadoria nacional eletrônio
+        /// </summary>
         [XmlElement("PINe")]
         public string PINe { get; set; }
 
+        /// <summary>
+        /// Data de ocorrência da vistoria no formato AAAA-MM-DDThh:mm:ssTZD
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DVistoria { get; set; }
@@ -2031,6 +2585,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DVistoria { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DVistoria para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dVistoria")]
         public string DVistoriaField
         {
@@ -2042,12 +2599,21 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
         }
 
+        /// <summary>
+        /// Localidade onde ocorreu a vistoria
+        /// </summary>
         [XmlElement("locVistoria")]
         public string LocVistoria { get; set; }
 
+        /// <summary>
+        /// Nome do posto do ponto onde ocorre a vistoria
+        /// </summary>
         [XmlElement("postoVistoria")]
         public string PostoVistoria { get; set; }
 
+        /// <summary>
+        /// Histórico da ocorrência, se existir
+        /// </summary>
         [XmlElement("xHistorico")]
         public string XHistorico { get; set; }
 
@@ -2103,6 +2669,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de vistoria SUFRAMA
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoVistoriaSuframa")]
@@ -2112,10 +2681,17 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoVistoriaSuframa : DetEventoVistoriaSuframaSEFAZ
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Vistoria SUFRAMA
+        /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Vistoria SUFRAMA";
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de confirmação de internalização SUFRAMA
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoInternalizacaoSUFRAMA")]
@@ -2125,11 +2701,17 @@ namespace Unimake.Business.DFe.Xml.NFe
     [XmlRoot(ElementName = "detEvento", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class DetEventoInternalizacaoSUFRAMA : DetEventoVistoriaSuframaSEFAZ
     {
+        /// <summary>
+        /// Descrição do evento.
+        /// Padrão = Confirmacao de Internalizacao da Mercadoria na SUFRAMA
+        /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Confirmacao de Internalizacao da Mercadoria na SUFRAMA";
     }
 
-
+    /// <summary>
+    /// Classe de detalhamento do evento de insucesso na entrega da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoInsucessoEntregaNFe")]
@@ -2140,17 +2722,21 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class DetEventoInsucessoEntregaNFe : EventoDetalhe
     {
         /// <summary>
-        /// Descrição do evento
+        /// Descrição do evento.
+        /// Padrão = Insucesso na Entrega da NF-e
         /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Insucesso na Entrega da NF-e";
 
         /// <summary>
-        /// Código do Órgão Autor do Evento. Informar o Código da F da Chave de Acesso para este Evento.
+        /// Código do órgão autor do evento. Informar o código da UF da chave de acesso para este evento.
         /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgaoAutor")]
         public int COrgaoAutorField
         {
@@ -2165,8 +2751,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VerAplic { get; set; }
 
         /// <summary>
-        /// Data e hora da tentativa de entrega
-        /// Formato= AAAA-MM-DDTHH:MM:SS TZD
+        /// Data e hora da tentativa de entrega.
+        /// Formato = AAAA-MM-DDTHH:MM:SS TZD
         /// </summary>
         [XmlIgnore]
 #if INTEROP
@@ -2175,6 +2761,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhTentativaEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhTentativaEntrega para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhTentativaEntrega")]
         public string DhTentativaEntregaField
         {
@@ -2199,7 +2788,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public TipoMotivoInsucessoEntrega TpMotivo { get; set; }
 
         /// <summary>
-        /// Justificativa do motivo do insucesso. Informar apenas para TpMotivo=4-Outros
+        /// Justificativa do motivo do insucesso. Informar apenas para TpMotivo = 4-Outros
         /// </summary>
         [XmlElement("xJustMotivo")]
         public string XJustMotivo { get; set; }
@@ -2254,6 +2843,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public DateTimeOffset DhHashTentativaEntrega { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhHashTentativaEntrega para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhHashTentativaEntrega")]
         public string DhHashTentativaEntregaField
         {
@@ -2300,6 +2892,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de cancelamento do insucesso na entrega da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoInsucessoEntregaNFe")]
@@ -2310,13 +2905,14 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class DetEventoCancelamentoInsucessoEntregaNFe : EventoDetalhe
     {
         /// <summary>
-        /// Descrição do evento
+        /// Descrição do evento.
+        /// Padrão = Cancelamento Insucesso na Entrega da NF-e
         /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Cancelamento Insucesso na Entrega da NF-e";
 
         /// <summary>
-        /// Código do Órgão Autor do Evento. Informar o Código da F da Chave de Acesso para este Evento.
+        /// Código do órgão autor do evento. Informar o código da UF da chave de acesso para este evento.
         /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
@@ -2335,7 +2931,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public string VerAplic { get; set; }
 
         /// <summary>
-        /// Informar o número do Protocolo de Autorização do Evento da NF-e a que se refere este cancelamento.
+        /// Informar o número do Protocolo de Autorização do Evento da NFe/NFCe a que se refere este cancelamento.
         /// </summary>
         [XmlElement("nProtEvento")]
         public string NProtEvento { get; set; }
@@ -2353,7 +2949,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
-
+    /// <summary>
+    /// Classe de detalhamento do evento de ator interessado da NFe/NFCe
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoAtorInteressadoNFe")]
@@ -2364,17 +2962,21 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class DetEventoAtorInteressadoNFe : EventoDetalhe
     {
         /// <summary>
-        /// Descrição do evento
+        /// Descrição do evento.
+        /// Padrão = Ator interessado na NF-e
         /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Ator interessado na NF-e";
 
         /// <summary>
-        /// Código da UF do emitente do Evento
+        /// Código da UF do emitente do evento
         /// </summary>
         [XmlIgnore]
         public UFBrasil COrgaoAutor { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade COrgaoAutor para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cOrgaoAutor")]
         public int COrgaoAutorField
         {
@@ -2389,7 +2991,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         public TipoAutorGeradorEvento TpAutor { get; set; }
 
         /// <summary>
-        /// Versão do aplicativo do Autor do Evento. 
+        /// Versão do aplicativo do autor do evento. 
         /// </summary>
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
@@ -2509,6 +3111,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do evento de conciliação financeira
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoConciliacaoFinanceira")]
@@ -2519,13 +3124,14 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class DetEventoConciliacaoFinanceira : EventoDetalhe
     {
         /// <summary>
-        /// Descrição do evento
+        /// Descrição do evento.
+        /// Padrão = ECONF
         /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "ECONF";
 
         /// <summary>
-        /// Versão do aplicativo do Autor do Evento. 
+        /// Versão do aplicativo do autor do evento. 
         /// </summary>
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
@@ -2604,6 +3210,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
     }
 
+    /// <summary>
+    /// Classe de detalhamento do grupo de pagamento
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetPagECONF")]
@@ -2615,6 +3224,9 @@ namespace Unimake.Business.DFe.Xml.NFe
     {
         private string XPagField { get; set; }
 
+        /// <summary>
+        /// Indicador da forma de pagamento
+        /// </summary>
         [XmlElement("indPag")]
 #if INTEROP
         public IndicadorPagamento IndPag { get; set; } = (IndicadorPagamento)(-1);
@@ -2622,9 +3234,15 @@ namespace Unimake.Business.DFe.Xml.NFe
         public IndicadorPagamento? IndPag { get; set; }
 #endif
 
+        /// <summary>
+        /// Forma de pagamento
+        /// </summary>
         [XmlElement("tPag")]
         public MeioPagamento TPag { get; set; }
 
+        /// <summary>
+        /// Descrição do meio de pagamento
+        /// </summary>
         [XmlElement("xPag")]
         public string XPag
         {
@@ -2632,9 +3250,15 @@ namespace Unimake.Business.DFe.Xml.NFe
             set => XPagField = (value == null ? value : XMLUtility.UnescapeReservedCharacters(value).Truncate(60).Trim());
         }
 
+        /// <summary>
+        /// Valor do pagamento. Esta tag poderá ser omitida quando a tag tPag=90 (Sem Pagamento), caso contrário deverá ser preenchida.
+        /// </summary>
         [XmlIgnore]
         public double VPag { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VPag para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vPag")]
         public string VPagField
         {
@@ -2643,7 +3267,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         }
 
         /// <summary>
-        /// Data do pagamento
+        /// Data do pagamento no formato AAAA-MM-DD
         /// </summary>
         [XmlIgnore]
         public DateTime DPag { get; set; }
@@ -2702,6 +3326,9 @@ namespace Unimake.Business.DFe.Xml.NFe
         public UFBrasil UFReceb { get; set; }
     }
 
+    /// <summary>
+    /// Classe de detalhametno do evento de cancelamento da conciliação financeira
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.NFe.DetEventoCancelamentoConciliacaoFinanceira")]
@@ -2712,13 +3339,14 @@ namespace Unimake.Business.DFe.Xml.NFe
     public class DetEventoCancelamentoConciliacaoFinanceira : EventoDetalhe
     {
         /// <summary>
-        /// Descrição do evento
+        /// Descrição do evento.
+        /// Padrão = Cancelamento Conciliação Financeira
         /// </summary>
         [XmlElement("descEvento")]
         public override string DescEvento { get; set; } = "Cancelamento Conciliação Financeira";
 
         /// <summary>
-        /// Versão do aplicativo do Autor do Evento. 
+        /// Versão do aplicativo do autor do evento. 
         /// </summary>
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
