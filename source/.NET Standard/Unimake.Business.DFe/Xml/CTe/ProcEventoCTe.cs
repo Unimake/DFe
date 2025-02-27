@@ -11,6 +11,9 @@ using Unimake.Business.DFe.Utility;
 
 namespace Unimake.Business.DFe.Xml.CTe
 {
+    /// <summary>
+    /// Pedido de Registro de Eventos de CT-e processado
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.CTe.ProcEventoCTe")]
@@ -20,21 +23,39 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("procEventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class ProcEventoCTe : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute do schema
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Evento do CT-e
+        /// </summary>
         [XmlElement("eventoCTe")]
         public EventoCTe EventoCTe { get; set; }
 
+        /// <summary>
+        /// Retorno Evento do CT-e
+        /// </summary>
         [XmlElement("retEventoCTe")]
         public RetEventoCTe RetEventoCTe { get; set; }
 
+        /// <summary>
+        /// Ip do Transmissor
+        /// </summary>
         [XmlAttribute("ipTransmissor")]
         public string IpTransmissor { get; set; }
 
+        /// <summary>
+        /// Porta de origem utilizada na conexão (de 0 a. 65535).
+        /// </summary>
         [XmlAttribute("nPortaCon")]
         public int NPortaCon { get; set; }
 
+        /// <summary>
+        /// Data e Hora da conexão
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhConexao { get; set; }
@@ -42,6 +63,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhConexao { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade DhConexao para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
