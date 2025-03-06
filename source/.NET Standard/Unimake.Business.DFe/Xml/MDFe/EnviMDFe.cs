@@ -24,12 +24,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlRoot("enviMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
     public class EnviMDFe : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute XML
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Identificador de controle do lote
+        /// </summary>
         [XmlElement("idLote")]
         public string IdLote { get; set; }
 
+        /// <summary>
+        /// Manifesto de Documentos Fiscais Eletrônico
+        /// </summary>
         [XmlElement("MDFe")]
         public MDFe MDFe { get; set; }
 
@@ -64,12 +73,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlRoot("MDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
     public class MDFe : XMLBase
     {
+        /// <summary>
+        /// Informações do Manifesto de Documentos Fiscais Eletrônico
+        /// </summary>
         [XmlElement("infMDFe")]
         public InfMDFe InfMDFe { get; set; }
 
+        /// <summary>
+        /// Informações suplementares do Manifesto de Documentos Fiscais Eletrônico
+        /// </summary>
         [XmlElement("infMDFeSupl")]
         public InfMDFeSupl InfMDFeSupl { get; set; }
 
+        /// <summary>
+        /// Assinatura XML
+        /// </summary>
         [XmlElement(ElementName = "Signature", Namespace = "http://www.w3.org/2000/09/xmldsig#")]
         public Signature Signature { get; set; }
 
@@ -104,42 +122,81 @@ namespace Unimake.Business.DFe.Xml.MDFe
     {
         private string IdField;
 
+        /// <summary>
+        /// Versão do leiaute XML
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Identificação do MDFe
+        /// </summary>
         [XmlElement("ide")]
         public Ide Ide { get; set; }
 
+        /// <summary>
+        /// Identificação do Emitente do MDFe
+        /// </summary>
         [XmlElement("emit")]
         public Emit Emit { get; set; }
 
+        /// <summary>
+        /// Informações do Modal
+        /// </summary>
         [XmlElement("infModal")]
         public InfModal InfModal { get; set; }
 
+        /// <summary>
+        /// Informações dos Documentos
+        /// </summary>
         [XmlElement("infDoc")]
         public InfDocInfMDFe InfDoc { get; set; }
 
+        /// <summary>
+        /// Informações do Seguro
+        /// </summary>
         [XmlElement("seg")]
         public List<Seg> Seg { get; set; }
 
+        /// <summary>
+        /// Produto Predominante
+        /// </summary>
         [XmlElement("prodPred")]
         public ProdPred ProdPred { get; set; }
 
+        /// <summary>
+        /// Totais
+        /// </summary>
         [XmlElement("tot")]
         public Tot Tot { get; set; }
 
+        /// <summary>
+        /// Lacres
+        /// </summary>
         [XmlElement("lacres")]
         public List<Lacre> Lacres { get; set; }
 
+        /// <summary>
+        /// Autorizados para download do XML
+        /// </summary>
         [XmlElement("autXML")]
         public List<AutXML> AutXML { get; set; }
 
+        /// <summary>
+        /// Informações Adicionais
+        /// </summary>
         [XmlElement("infAdic")]
         public InfAdic InfAdic { get; set; }
 
+        /// <summary>
+        /// Informações do Responsável Técnico
+        /// </summary>
         [XmlElement("infRespTec")]
         public InfRespTec InfRespTec { get; set; }
 
+        /// <summary>
+        /// Identificador da TAG a ser assinada
+        /// </summary>
         [XmlAttribute(AttributeName = "Id", DataType = "ID")]
         public string Id
         {
@@ -153,6 +210,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         private string ChaveField;
 
+        /// <summary>
+        /// Chave de acesso do MDFe
+        /// </summary>
         [XmlIgnore]
         public string Chave
         {
@@ -177,14 +237,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
             set => throw new Exception("Não é permitido atribuir valor para a propriedade Chave. Ela é calculada automaticamente.");
         }
-
+    
 #if INTEROP
 
-        /// <summary>
-        /// Adicionar novo elemento a lista
-        /// </summary>
-        /// <param name="autxml">Elemento</param>
-        public void AddAutXML(AutXML autxml)
+    /// <summary>
+    /// Adicionar novo elemento a lista
+    /// </summary>
+    /// <param name="autxml">Elemento</param>
+    public void AddAutXML(AutXML autxml)
         {
             if (AutXML == null)
             {
@@ -298,9 +358,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
         private TipoEmissao TpEmisField;
         private ProcessoEmissao ProcEmiField;
 
+        /// <summary>
+        /// Código da UF do emitente do MDFe
+        /// </summary>
         [XmlIgnore]
         public UFBrasil CUF { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "CUF" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cUF")]
         public int CUFField
         {
@@ -308,12 +374,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Tipo do Ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Tipo do Emitente
+        /// </summary>
         [XmlElement("tpEmit")]
         public TipoEmitenteMDFe TpEmit { get; set; }
 
+        /// <summary>
+        /// Tipo do Transportador
+        /// </summary>
         [XmlElement("tpTransp")]
 #if INTEROP
         public TipoTransportadorMDFe TpTransp { get; set; } = (TipoTransportadorMDFe)(-1);
@@ -321,15 +396,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public TipoTransportadorMDFe? TpTransp { get; set; }
 #endif
 
+        /// <summary>
+        /// Modelo do Documento Fiscal
+        /// </summary>
         [XmlElement("mod")]
         public ModeloDFe Mod { get; set; }
 
+        /// <summary>
+        /// Série do MDFe
+        /// </summary>
         [XmlElement("serie")]
         public int Serie { get; set; }
 
+        /// <summary>
+        /// Número do MDFe
+        /// </summary>
         [XmlElement("nMDF")]
         public int NMDF { get; set; }
 
+        /// <summary>
+        /// Código Numérico que compõe a Chave de Acesso
+        /// </summary>
         [XmlElement("cMDF")]
         public string CMDF
         {
@@ -355,12 +442,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => CMDFField = value;
         }
 
+        /// <summary>
+        /// Dígito Verificador da Chave de Acesso
+        /// </summary>
         [XmlElement("cDV")]
         public int CDV { get; set; }
 
+        /// <summary>
+        /// Modalidade de Transporte
+        /// </summary>
         [XmlElement("modal")]
         public ModalidadeTransporteMDFe Modal { get; set; }
 
+        /// <summary>
+        /// Data e Hora de Emissão
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhEmi { get; set; }
@@ -368,6 +464,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public DateTimeOffset DhEmi { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhEmi" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhEmi")]
         public string DhEmiField
         {
@@ -379,6 +478,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
         }
 
+        /// <summary>
+        /// Tipo de Emissão
+        /// </summary>
         [XmlElement("tpEmis")]
         public TipoEmissao TpEmis
         {
@@ -396,6 +498,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        /// <summary>
+        /// Processo de Emissão do MDFe
+        /// </summary>
         [XmlElement("procEmi")]
         public ProcessoEmissao ProcEmi
         {
@@ -411,21 +516,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        /// <summary>
+        /// Versão do processo de emissão do MDFe
+        /// </summary>
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
+        /// <summary>
+        /// UF de Início da viagem
+        /// </summary>
         [XmlElement("UFIni")]
         public UFBrasil UFIni { get; set; }
 
+        /// <summary>
+        /// UF de Fim da viagem
+        /// </summary>
         [XmlElement("UFFim")]
         public UFBrasil UFFim { get; set; }
 
+        /// <summary>
+        /// Informações dos municípios de carregamento
+        /// </summary>
         [XmlElement("infMunCarrega")]
         public List<InfMunCarrega> InfMunCarrega { get; set; }
 
+        /// <summary>
+        /// Informações do percurso
+        /// </summary>
         [XmlElement("infPercurso")]
         public List<InfPercurso> InfPercurso { get; set; }
 
+        /// <summary>
+        /// Data e Hora de Início da Viagem
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhIniViagem { get; set; }
@@ -433,7 +556,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public DateTimeOffset DhIniViagem { get; set; }
 #endif
 
-
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhIniViagem" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhIniViagem")]
         public string DhIniViagemField
         {
@@ -445,20 +570,44 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
         }
 
+        /// <summary>
+        /// Indicador de Canal Verde (Sim/Não)
+        /// </summary>
         [XmlElement("indCanalVerde")]
         public SimNao IndCanalVerde { get; set; }
 
+        /// <summary>
+        /// Indicador de Carregamento Posterior (Sim/Não)
+        /// </summary>
         [XmlElement("indCarregaPosterior")]
         public SimNao IndCarregaPosterior { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo IndCanalVerde (Sim)
+        /// </summary>
         public bool ShouldSerializeIndCanalVerde() => IndCanalVerde == SimNao.Sim;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo IndCarregaPosterior (Sim)
+        /// </summary>
         public bool ShouldSerializeIndCarregaPosterior() => IndCarregaPosterior == SimNao.Sim;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo DhIniViagemField (data maior que DateTime.MinValue)
+        /// </summary>
         public bool ShouldSerializeDhIniViagemField() => DhIniViagem > DateTime.MinValue;
+
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo TpTransp para interop (diferente de -1)
+        /// </summary>
         public bool ShouldSerializeTpTransp() => TpTransp != (TipoTransportadorMDFe)(-1);
 #else
+        /// <summary>
+        /// Verifica se deve serializar o campo TpTransp (não nulo)
+        /// </summary>
         public bool ShouldSerializeTpTransp() => TpTransp != null;
 #endif
 
@@ -546,9 +695,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfMunCarrega
     {
+        /// <summary>
+        /// Código do Município de Carregamento
+        /// </summary>
         [XmlElement("cMunCarrega")]
         public long CMunCarrega { get; set; }
 
+        /// <summary>
+        /// Nome do Município de Carregamento
+        /// </summary>
         [XmlElement("xMunCarrega")]
         public string XMunCarrega { get; set; }
     }
@@ -562,6 +717,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfPercurso
     {
+        /// <summary>
+        /// UF do Percurso
+        /// </summary>
         [XmlElement("UFPer")]
         public UFBrasil UFPer { get; set; }
     }
@@ -575,30 +733,57 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Emit
     {
+        /// <summary>
+        /// CNPJ do Emitente
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do Emitente
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Inscrição Estadual do Emitente
+        /// </summary>
         [XmlElement("IE")]
         public string IE { get; set; }
 
+        /// <summary>
+        /// Razão Social ou Nome do Emitente
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// Nome Fantasia do Emitente
+        /// </summary>
         [XmlElement("xFant")]
         public string XFant { get; set; }
 
+        /// <summary>
+        /// Endereço do Emitente
+        /// </summary>
         [XmlElement("enderEmit")]
         public EnderEmit EnderEmit { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJ (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CPF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo XFant (não vazio)
+        /// </summary>
         public bool ShouldSerializeXFant() => !string.IsNullOrWhiteSpace(XFant);
 
         #endregion
@@ -613,44 +798,86 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class EnderEmit
     {
+        /// <summary>
+        /// Logradouro
+        /// </summary>
         [XmlElement("xLgr")]
         public string XLgr { get; set; }
 
+        /// <summary>
+        /// Número
+        /// </summary>
         [XmlElement("nro")]
         public string Nro { get; set; }
 
+        /// <summary>
+        /// Complemento
+        /// </summary>
         [XmlElement("xCpl")]
         public string XCpl { get; set; }
 
+        /// <summary>
+        /// Bairro
+        /// </summary>
         [XmlElement("xBairro")]
         public string XBairro { get; set; }
 
+        /// <summary>
+        /// Código do Município
+        /// </summary>
         [XmlElement("cMun")]
         public int CMun { get; set; }
 
+        /// <summary>
+        /// Nome do Município
+        /// </summary>
         [XmlElement("xMun")]
         public string XMun { get; set; }
 
+        /// <summary>
+        /// CEP
+        /// </summary>
         [XmlElement("CEP")]
         public string CEP { get; set; }
 
+        /// <summary>
+        /// UF
+        /// </summary>
         [XmlElement("UF")]
         public UFBrasil UF { get; set; }
 
+        /// <summary>
+        /// Telefone
+        /// </summary>
         [XmlElement("fone")]
         public string Fone { get; set; }
 
+        /// <summary>
+        /// Email
+        /// </summary>
         [XmlElement("email")]
         public string Email { get; set; }
 
-        #region ShouldSerialize               
+        #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo XCpl (não vazio)
+        /// </summary>
         public bool ShouldSerializeXCpl() => !string.IsNullOrWhiteSpace(XCpl);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CEP (não vazio)
+        /// </summary>
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo Fone (não vazio)
+        /// </summary>
         public bool ShouldSerializeFone() => !string.IsNullOrWhiteSpace(Fone);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo Email (não vazio)
+        /// </summary>
         public bool ShouldSerializeEmail() => !string.IsNullOrWhiteSpace(Email);
 
         #endregion
@@ -665,18 +892,33 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfModal
     {
+        /// <summary>
+        /// Versão do Modal
+        /// </summary>
         [XmlAttribute(AttributeName = "versaoModal", DataType = "token")]
         public string VersaoModal { get; set; }
 
+        /// <summary>
+        /// Informações do modal Rodoviário
+        /// </summary>
         [XmlElement("rodo")]
         public Rodo Rodo { get; set; }
 
+        /// <summary>
+        /// Informações do modal Aéreo
+        /// </summary>
         [XmlElement("aereo")]
         public Aereo Aereo { get; set; }
 
+        /// <summary>
+        /// Informações do modal Ferroviário
+        /// </summary>
         [XmlElement("ferrov")]
         public Ferrov Ferrov { get; set; }
 
+        /// <summary>
+        /// Informações do modal Aquaviário
+        /// </summary>
         [XmlElement("aquav")]
         public Aquav Aquav { get; set; }
     }
@@ -690,27 +932,42 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Rodo
     {
+        /// <summary>
+        /// Informações da ANTT
+        /// </summary>
         [XmlElement("infANTT")]
         public InfANTT InfANTT { get; set; }
 
+        /// <summary>
+        /// Informações do Veículo de Tração
+        /// </summary>
         [XmlElement("veicTracao")]
         public VeicTracao VeicTracao { get; set; }
 
+        /// <summary>
+        /// Informações dos Veículos de Reboque
+        /// </summary>
         [XmlElement("veicReboque")]
         public List<VeicReboque> VeicReboque { get; set; }
 
+        /// <summary>
+        /// Código do Agenciamento do Porto
+        /// </summary>
         [XmlElement("codAgPorto")]
         public string CodAgPorto { get; set; }
 
+        /// <summary>
+        /// Lacres do Modal Rodoviário
+        /// </summary>
         [XmlElement("lacRodo")]
         public List<LacRodo> LacRodo { get; set; }
 
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento a lista de Veículos de Reboque
         /// </summary>
-        /// <param name="veicreboque">Elemento</param>
+        /// <param name="veicreboque">Elemento VeicReboque a ser adicionado</param>
         public void AddVeicReboque(VeicReboque veicreboque)
         {
             if (VeicReboque == null)
@@ -742,9 +999,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetVeicReboqueCount => (VeicReboque != null ? VeicReboque.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento a lista de Lacres do Modal Rodoviário
         /// </summary>
-        /// <param name="lacrodo">Elemento</param>
+        /// <param name="lacrodo">Elemento LacRodo a ser adicionado</param>
         public void AddLacRodo(LacRodo lacrodo)
         {
             if (LacRodo == null)
@@ -779,6 +1036,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CodAgPorto (não vazio)
+        /// </summary>
         public bool ShouldSerializeCodAgPorto() => !string.IsNullOrWhiteSpace(CodAgPorto);
 
         #endregion
@@ -793,18 +1053,33 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfANTT
     {
+        /// <summary>
+        /// Registro Nacional de Transportadores Rodoviários de Carga
+        /// </summary>
         [XmlElement("RNTRC")]
         public string RNTRC { get; set; }
 
+        /// <summary>
+        /// Informações do CIOT
+        /// </summary>
         [XmlElement("infCIOT")]
         public List<InfCIOT> InfCIOT { get; set; }
 
+        /// <summary>
+        /// Informações do Vale Pedágio
+        /// </summary>
         [XmlElement("valePed")]
         public List<ValePed> ValePed { get; set; }
 
+        /// <summary>
+        /// Informações dos Contratantes
+        /// </summary>
         [XmlElement("infContratante")]
         public List<InfContratante> InfContratante { get; set; }
 
+        /// <summary>
+        /// Informações de Pagamento
+        /// </summary>
         [XmlElement("infPag")]
         public List<InfPag> InfPag { get; set; }
 
@@ -813,9 +1088,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de informações do CIOT
         /// </summary>
-        /// <param name="infciot">Elemento</param>
+        /// <param name="infciot">Elemento InfCIOT a ser adicionado</param>
         public void AddInfCIOT(InfCIOT infciot)
         {
             if (InfCIOT == null)
@@ -847,9 +1122,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfCIOTCount => (InfCIOT != null ? InfCIOT.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de informações do Vale Pedágio
         /// </summary>
-        /// <param name="valeped">Elemento</param>
+        /// <param name="valeped">Elemento ValePed a ser adicionado</param>
         public void AdValePed(ValePed valeped)
         {
             if (ValePed == null)
@@ -881,9 +1156,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetValePedCount => (ValePed != null ? ValePed.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de informações dos Contratantes
         /// </summary>
-        /// <param name="infcontratante">Elemento</param>
+        /// <param name="infcontratante">Elemento InfContratante a ser adicionado</param>
         public void AddInfContratante(InfContratante infcontratante)
         {
             if (InfContratante == null)
@@ -915,9 +1190,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfContratanteCount => (InfContratante != null ? InfContratante.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de informações de Pagamento
         /// </summary>
-        /// <param name="infpag">Elemento</param>
+        /// <param name="infpag">Elemento InfPag a ser adicionado</param>
         public void AddInfPag(InfPag infpag)
         {
             if (InfPag == null)
@@ -962,19 +1237,34 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfCIOT
     {
+        /// <summary>
+        /// Código Identificador da Operação de Transporte
+        /// </summary>
         [XmlElement("CIOT")]
         public string CIOT { get; set; }
 
+        /// <summary>
+        /// CNPJ do responsável pelo pagamento do frete
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do responsável pelo pagamento do frete
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJ (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CPF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
         #endregion
@@ -989,9 +1279,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class ValePed
     {
+        /// <summary>
+        /// Detalhamento do Vale Pedágio
+        /// </summary>
         [XmlElement("disp")]
         public List<Disp> Disp { get; set; }
 
+        /// <summary>
+        /// Categoria de Combinação Veicular
+        /// </summary>
         [XmlElement("categCombVeic")]
 #if INTEROP
         public CategoriaCombinacaoVeicular CategCombVeic { get; set; } = (CategoriaCombinacaoVeicular)(-1);
@@ -1001,8 +1297,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo CategCombVeic para interop (diferente de -1)
+        /// </summary>
         public bool ShouldSerializeCategCombVeic() => CategCombVeic != (CategoriaCombinacaoVeicular)(-1);
 #else
+        /// <summary>
+        /// Verifica se deve serializar o campo CategCombVeic (não nulo)
+        /// </summary>
         public bool ShouldSerializeCategCombVeic() => CategCombVeic != null;
 #endif
 
@@ -1011,9 +1313,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Detalhamento do Vale Pedágio
         /// </summary>
-        /// <param name="disp">Elemento</param>
+        /// <param name="disp">Elemento Disp a ser adicionado</param>
         public void AddDisp(Disp disp)
         {
             if (Disp == null)
@@ -1056,21 +1358,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Disp
     {
+        /// <summary>
+        /// CNPJ do Fornecedor
+        /// </summary>
         [XmlElement("CNPJForn")]
         public string CNPJForn { get; set; }
 
+        /// <summary>
+        /// CNPJ do Pagador
+        /// </summary>
         [XmlElement("CNPJPg")]
         public string CNPJPg { get; set; }
 
+        /// <summary>
+        /// CPF do Pagador
+        /// </summary>
         [XmlElement("CPFPg")]
         public string CPFPg { get; set; }
 
+        /// <summary>
+        /// Número da Compra
+        /// </summary>
         [XmlElement("nCompra")]
         public string NCompra { get; set; }
 
+        /// <summary>
+        /// Valor do Vale Pedágio
+        /// </summary>
         [XmlIgnore]
         public double VValePed { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VValePed" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vValePed")]
         public string VValePedField
         {
@@ -1078,6 +1398,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VValePed = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Tipo do Vale Pedágio
+        /// </summary>
         [XmlElement("tpValePed")]
 #if INTEROP
         public TipoValePedagio TpValePed { get; set; } = (TipoValePedagio)(-1);
@@ -1087,17 +1410,35 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJPg (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJPg() => !string.IsNullOrWhiteSpace(CNPJPg);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CPFPg (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPFPg() => !string.IsNullOrWhiteSpace(CPFPg);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo NCompra (não vazio) e se algum dos campos CNPJPg, CPFPg ou CNPJForn estiver preenchido
+        /// </summary>
         public bool ShouldSerializeNCompra() => (!string.IsNullOrWhiteSpace(CNPJPg) || !string.IsNullOrWhiteSpace(CPFPg) || !string.IsNullOrWhiteSpace(CNPJForn)) && !string.IsNullOrWhiteSpace(NCompra);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo VValePedField (CNPJForn não vazio)
+        /// </summary>
         public bool ShouldSerializeVValePedField() => !string.IsNullOrWhiteSpace(CNPJForn);
 
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo TpValePed para interop (diferente de -1)
+        /// </summary>
         public bool ShouldSerializeTpValePed() => TpValePed != (TipoValePedagio)(-1);
 #else
+        /// <summary>
+        /// Verifica se deve serializar o campo TpValePed (não nulo)
+        /// </summary>
         public bool ShouldSerializeTpValePed() => TpValePed != null;
 #endif
 
@@ -1114,15 +1455,27 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfContratante
     {
+        /// <summary>
+        /// Nome do Contratante
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// CNPJ do Contratante
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do Contratante
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// Identificação de Contratante Estrangeiro
+        /// </summary>
         [XmlElement("idEstrangeiro")]
         public string IdEstrangeiro { get; set; }
 
@@ -1134,12 +1487,24 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJ (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CPF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo XNome (não vazio)
+        /// </summary>
         public bool ShouldSerializeXNome() => !string.IsNullOrWhiteSpace(XNome);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo IdEstrangeiro (não vazio)
+        /// </summary>
         public bool ShouldSerializeIdEstrangeiro() => !string.IsNullOrWhiteSpace(IdEstrangeiro);
 
         #endregion
@@ -1170,7 +1535,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public double VContratoGlobal { get; set; }
 
         /// <summary>
-        /// Valor Global do Contrato (Utilize a propriedade VContratoGlobal para setar ou recuperar o conteúdo
+        /// Valor Global do Contrato (Utilize a propriedade VContratoGlobal para setar ou recuperar o conteúdo)
         /// </summary>
         [XmlElement("vContratoGlobal")]
         public string VContratoGlobalField
@@ -1192,12 +1557,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
         private int IndAltoDesempField;
         private int IndAntecipaAdiantField;
 
+        /// <summary>
+        /// Componentes do Valor a Pagar
+        /// </summary>
         [XmlElement("Comp")]
         public List<Comp> Comp { get; set; }
 
+        /// <summary>
+        /// Valor do Contrato
+        /// </summary>
         [XmlIgnore]
         public double VContrato { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VContrato" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vContrato")]
         public string VContratoField
         {
@@ -1205,6 +1579,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VContrato = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Indicador de Alto Desempenho
+        /// </summary>
         [XmlElement("indAltoDesemp")]
         public int IndAltoDesemp
         {
@@ -1220,12 +1597,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        /// <summary>
+        /// Indicador de Pagamento
+        /// </summary>
         [XmlElement("indPag")]
         public IndicadorPagamento IndPag { get; set; }
 
+        /// <summary>
+        /// Valor do Adiantamento
+        /// </summary>
         [XmlIgnore]
         public double VAdiant { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VAdiant" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vAdiant")]
         public string VAdiantField
         {
@@ -1251,10 +1637,13 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        /// <summary>
+        /// Informações dos Prazos
+        /// </summary>
         [XmlElement("infPrazo")]
         public List<InfPrazo> InfPrazo { get; set; }
 
-        /// <summary> 
+        /// <summary>
         /// Tipo de Permissão em relação a antecipação das parcelas
         /// </summary>
         [XmlElement("tpAntecip")]
@@ -1264,21 +1653,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public TipoPermissaoAtencipacaoParcela? TpAntecip { get; set; }
 #endif
 
+        /// <summary>
+        /// Informações Bancárias
+        /// </summary>
         [XmlElement("infBanc")]
         public InfBanc InfBanc { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo IndAntecipaAdiant (igual a 1)
+        /// </summary>
         public bool ShouldSerializeIndAntecipaAdiant() => IndAntecipaAdiant == 1;
 
+        /// <summary>
+        /// Verifica se deve serializar o campo VAdiantField (maior que 0)
+        /// </summary>
         public bool ShouldSerializeVAdiantField() => VAdiant > 0;
 
+        /// <summary>
+        /// Verifica se deve serializar o campo IndAltoDesemp (igual a 1)
+        /// </summary>
         public bool ShouldSerializeIndAltoDesemp() => IndAltoDesemp == 1;
 
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo TpAntecip para interop (diferente de -1)
+        /// </summary>
         public bool ShouldSerializeTpAntecip() => TpAntecip != (TipoPermissaoAtencipacaoParcela)(-1);
 #else
-        public bool ShouldSerializeTpAntecip() => TpAntecip  != null;
+        /// <summary>
+        /// Verifica se deve serializar o campo TpAntecip (não nulo)
+        /// </summary>
+        public bool ShouldSerializeTpAntecip() => TpAntecip != null;
 #endif
 
         #endregion
@@ -1286,9 +1693,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Componentes do Valor a Pagar
         /// </summary>
-        /// <param name="comp">Elemento</param>
+        /// <param name="comp">Elemento Comp a ser adicionado</param>
         public void AddComp(Comp comp)
         {
             if (Comp == null)
@@ -1320,9 +1727,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetCompCount => (Comp != null ? Comp.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações dos Prazos
         /// </summary>
-        /// <param name="infprazo">Elemento</param>
+        /// <param name="infprazo">Elemento InfPrazo a ser adicionado</param>
         public void AddInfPrazo(InfPrazo infprazo)
         {
             if (InfPrazo == null)
@@ -1365,12 +1772,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Comp
     {
+        /// <summary>
+        /// Tipo do Componente
+        /// </summary>
         [XmlElement("tpComp")]
         public TipoComponenteMDFe TpComp { get; set; }
 
+        /// <summary>
+        /// Valor do Componente
+        /// </summary>
         [XmlIgnore]
         public double VComp { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VComp" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vComp")]
         public string VCompField
         {
@@ -1378,9 +1794,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VComp = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Descrição do Componente
+        /// </summary>
         [XmlElement("xComp")]
         public string XComp { get; set; }
 
+        /// <summary>
+        /// Verifica se deve serializar o campo XComp (não vazio)
+        /// </summary>
         public bool ShouldSerializeXComp() => !string.IsNullOrWhiteSpace(XComp);
     }
 
@@ -1393,12 +1815,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfPrazo
     {
+        /// <summary>
+        /// Número da Parcela
+        /// </summary>
         [XmlElement("nParcela")]
         public string NParcela { get; set; }
 
+        /// <summary>
+        /// Data de Vencimento
+        /// </summary>
         [XmlIgnore]
         public DateTime DVenc { get; set; }
 
+        /// <summary>
+        /// Campo para serialização da Data de Vencimento
+        /// </summary>
         [XmlElement("dVenc")]
         public string DVencField
         {
@@ -1406,9 +1837,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => DVenc = DateTime.Parse(value);
         }
 
+        /// <summary>
+        /// Valor da Parcela
+        /// </summary>
         [XmlIgnore]
         public double VParcela { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VParcela" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("vParcela")]
         public string VParcelaField
         {
@@ -1431,23 +1868,50 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfBanc
     {
+        /// <summary>
+        /// Código do Banco
+        /// </summary>
         [XmlElement("codBanco")]
         public string CodBanco { get; set; }
 
+        /// <summary>
+        /// Código da Agência
+        /// </summary>
         [XmlElement("codAgencia")]
         public string CodAgencia { get; set; }
 
+        /// <summary>
+        /// CNPJ da Instituição de Pagamento Eletrônico de Frete
+        /// </summary>
         [XmlElement("CNPJIPEF")]
         public string CNPJIPEF { get; set; }
 
+        /// <summary>
+        /// Chave PIX
+        /// </summary>
         [XmlElement("PIX")]
         public string PIX { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CodBanco (não vazio)
+        /// </summary>
         public bool ShouldSerializeCodBanco() => !string.IsNullOrWhiteSpace(CodBanco);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CodAgencia (não vazio)
+        /// </summary>
         public bool ShouldSerializeCodAgencia() => !string.IsNullOrWhiteSpace(CodAgencia);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJIPEF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJIPEF() => !string.IsNullOrWhiteSpace(CNPJIPEF);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo PIX (não vazio)
+        /// </summary>
         public bool ShouldSerializePIX() => !string.IsNullOrWhiteSpace(PIX);
 
         #endregion
@@ -1462,38 +1926,70 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class VeicTracao
     {
+        /// <summary>
+        /// Código Interno do Veículo
+        /// </summary>
         [XmlElement("cInt")]
         public string CInt { get; set; }
 
+        /// <summary>
+        /// Placa do Veículo
+        /// </summary>
         [XmlElement("placa")]
         public string Placa { get; set; }
 
+        /// <summary>
+        /// RENAVAM do Veículo
+        /// </summary>
         [XmlElement("RENAVAM")]
         public string RENAVAM { get; set; }
 
+        /// <summary>
+        /// Tara em KG
+        /// </summary>
         [XmlElement("tara")]
         public int Tara { get; set; }
 
+        /// <summary>
+        /// Capacidade em KG
+        /// </summary>
         [XmlElement("capKG")]
         public int CapKG { get; set; }
 
+        /// <summary>
+        /// Capacidade em M3
+        /// </summary>
         [XmlElement("capM3")]
         public int CapM3 { get; set; }
 
+        /// <summary>
+        /// Proprietário do Veículo
+        /// </summary>
         [XmlElement("prop")]
         public Prop Prop { get; set; }
 
+        /// <summary>
+        /// Condutores do Veículo
+        /// </summary>
         [XmlElement("condutor")]
         public List<Condutor> Condutor { get; set; }
 
+        /// <summary>
+        /// Tipo do Rodado
+        /// </summary>
         [XmlElement("tpRod")]
         public TipoRodado TpRod { get; set; }
 
+        /// <summary>
+        /// Tipo da Carroceria
+        /// </summary>
         [XmlElement("tpCar")]
         public TipoCarroceriaMDFe TpCar { get; set; }
 
+        /// <summary>
+        /// UF do Veículo
+        /// </summary>
         [XmlElement("UF")]
-
 #if INTEROP
         public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
 #else
@@ -1504,9 +2000,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Condutores
         /// </summary>
-        /// <param name="condutor">Elemento</param>
+        /// <param name="condutor">Elemento Condutor a ser adicionado</param>
         public void AddCondutor(Condutor condutor)
         {
             if (Condutor == null)
@@ -1541,14 +2037,35 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CInt (não vazio)
+        /// </summary>
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo RENAVAM (não vazio)
+        /// </summary>
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CapM3 (maior que 0)
+        /// </summary>
         public bool ShouldSerializeCapM3() => CapM3 > 0;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CapKG (maior que 0)
+        /// </summary>
         public bool ShouldSerializeCapKG() => CapKG > 0;
 
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo UF para interop (diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
 #else
+        /// <summary>
+        /// Verifica se deve serializar o campo UF (não nulo)
+        /// </summary>
         public bool ShouldSerializeUF() => UF != null;
 #endif
 
@@ -1564,22 +2081,40 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Prop
     {
+        /// <summary>
+        /// CNPJ do Proprietário
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do Proprietário
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
+        /// <summary>
+        /// RNTRC do Proprietário
+        /// </summary>
         [XmlElement("RNTRC")]
         public string RNTRC { get; set; }
 
+        /// <summary>
+        /// Nome do Proprietário
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// Inscrição Estadual do Proprietário
+        /// </summary>
         [XmlElement("IE")]
         public string IE { get; set; }
 
 
+        /// <summary>
+        /// UF do Proprietário
+        /// </summary>
         [XmlElement("UF")]
 #if INTEROP
         public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
@@ -1587,6 +2122,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public UFBrasil? UF { get; set; }
 #endif
 
+        /// <summary>
+        /// Tipo do Proprietário
+        /// </summary>
         [XmlElement("tpProp")]
 #if INTEROP
         public TipoProprietarioMDFe TpProp { get; set; } = TipoProprietarioMDFe.NaoDefinido;
@@ -1596,13 +2134,35 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJ (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CPF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
+
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo UF para interop (diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo TpProp para interop (diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido;
 #else
+        /// <summary>
+        /// Verifica se deve serializar o campo UF (não nulo e diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo TpProp (não nulo e diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeTpProp() => TpProp != TipoProprietarioMDFe.NaoDefinido && TpProp != null;
 #endif
 
@@ -1618,9 +2178,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Condutor
     {
+        /// <summary>
+        /// Nome do Condutor
+        /// </summary>
         [XmlElement("xNome")]
         public string XNome { get; set; }
 
+        /// <summary>
+        /// CPF do Condutor
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
     }
@@ -1634,30 +2200,57 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class VeicReboque
     {
+        /// <summary>
+        /// Código Interno do Reboque
+        /// </summary>
         [XmlElement("cInt")]
         public string CInt { get; set; }
 
+        /// <summary>
+        /// Placa do Reboque
+        /// </summary>
         [XmlElement("placa")]
         public string Placa { get; set; }
 
+        /// <summary>
+        /// RENAVAM do Reboque
+        /// </summary>
         [XmlElement("RENAVAM")]
         public string RENAVAM { get; set; }
 
+        /// <summary>
+        /// Tara em KG
+        /// </summary>
         [XmlElement("tara")]
         public int Tara { get; set; }
 
+        /// <summary>
+        /// Capacidade em KG
+        /// </summary>
         [XmlElement("capKG")]
         public int CapKG { get; set; }
 
+        /// <summary>
+        /// Capacidade em M3
+        /// </summary>
         [XmlElement("capM3")]
         public int CapM3 { get; set; }
 
+        /// <summary>
+        /// Proprietário do Reboque
+        /// </summary>
         [XmlElement("prop")]
         public Prop Prop { get; set; }
 
+        /// <summary>
+        /// Tipo da Carroceria
+        /// </summary>
         [XmlElement("tpCar")]
         public TipoCarroceriaMDFe TpCar { get; set; }
 
+        /// <summary>
+        /// UF do Reboque
+        /// </summary>
         [XmlElement("UF")]
 #if INTEROP
         public UFBrasil UF { get; set; } = UFBrasil.NaoDefinido;
@@ -1667,18 +2260,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CInt (não vazio)
+        /// </summary>
         public bool ShouldSerializeCInt() => !string.IsNullOrWhiteSpace(CInt);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo RENAVAM (não vazio)
+        /// </summary>
         public bool ShouldSerializeRENAVAM() => !string.IsNullOrWhiteSpace(RENAVAM);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CapM3 (maior que 0)
+        /// </summary>
         public bool ShouldSerializeCapM3() => CapM3 > 0;
+
 #if INTEROP
+        /// <summary>
+        /// Verifica se deve serializar o campo UF para interop (diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeUF() => UF != UFBrasil.NaoDefinido;
 #else
+        /// <summary>
+        /// Verifica se deve serializar o campo UF (não nulo e diferente de NaoDefinido)
+        /// </summary>
         public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 #endif
 
         #endregion
     }
 
+    /// <summary>
+    /// Lacre Rodoviário
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.MDFe.LacRodo")]
@@ -1697,9 +2311,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Ferrov
     {
+        /// <summary>
+        /// Informações do Trem
+        /// </summary>
         [XmlElement("trem")]
         public Trem Trem { get; set; }
 
+        /// <summary>
+        /// Informações das Vagões
+        /// </summary>
         [XmlElement("vag")]
         public List<Vag> Vag { get; set; }
 
@@ -1708,9 +2328,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Vagões
         /// </summary>
-        /// <param name="vag">Elemento</param>
+        /// <param name="vag">Elemento Vag a ser adicionado</param>
         public void AddVag(Vag vag)
         {
             if (Vag == null)
@@ -1756,9 +2376,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Trem
     {
+        /// <summary>
+        /// Prefixo do Trem
+        /// </summary>
         [XmlElement("xPref")]
         public string XPref { get; set; }
 
+        /// <summary>
+        /// Data e Hora do Trem
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhTrem { get; set; }
@@ -1766,6 +2392,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public DateTimeOffset DhTrem { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhTrem" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhTrem")]
         public string DhTremField
         {
@@ -1777,17 +2406,29 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #endif
         }
 
+        /// <summary>
+        /// Origem do Trem
+        /// </summary>
         [XmlElement("xOri")]
         public string XOri { get; set; }
 
+        /// <summary>
+        /// Destino do Trem
+        /// </summary>
         [XmlElement("xDest")]
         public string XDest { get; set; }
 
+        /// <summary>
+        /// Quantidade de Vagões
+        /// </summary>
         [XmlElement("qVag")]
         public int QVag { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo DhTremField (maior que DateTime.MinValue)
+        /// </summary>
         public bool ShouldSerializeDhTremField() => DhTrem > DateTime.MinValue;
 
         #endregion
@@ -1802,9 +2443,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Vag
     {
+        /// <summary>
+        /// Peso Bruto Calculado
+        /// </summary>
         [XmlIgnore]
         public double PesoBC { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "PesoBC" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("pesoBC")]
         public string PesoBCField
         {
@@ -1812,9 +2459,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => PesoBC = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Peso Real
+        /// </summary>
         [XmlIgnore]
         public double PesoR { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "PesoR" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("pesoR")]
         public string PesoRField
         {
@@ -1822,21 +2475,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => PesoR = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Tipo da Vagão
+        /// </summary>
         [XmlElement("tpVag")]
         public string TpVag { get; set; }
 
+        /// <summary>
+        /// Série da Vagão
+        /// </summary>
         [XmlElement("serie")]
         public string Serie { get; set; }
 
+        /// <summary>
+        /// Número da Vagão
+        /// </summary>
         [XmlElement("nVag")]
         public long NVag { get; set; }
 
+        /// <summary>
+        /// Número Sequencial da Vagão
+        /// </summary>
         [XmlElement("nSeq")]
         public long NSeq { get; set; }
 
+        /// <summary>
+        /// Tara Útil
+        /// </summary>
         [XmlIgnore]
         public double TU { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "TU" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("TU")]
         public string TUField
         {
@@ -1846,7 +2517,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo TpVag (não vazio)
+        /// </summary>
         public bool ShouldSerializeTpVag() => !string.IsNullOrWhiteSpace(TpVag);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo NSeq (maior que 0)
+        /// </summary>
         public bool ShouldSerializeNSeq() => NSeq > 0;
 
         #endregion
@@ -1861,24 +2539,45 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Aereo
     {
+        /// <summary>
+        /// Nacionalidade da Aeronave
+        /// </summary>
         [XmlElement("nac")]
         public string Nac { get; set; }
 
+        /// <summary>
+        /// Matrícula da Aeronave
+        /// </summary>
         [XmlElement("matr")]
         public string Matr { get; set; }
 
+        /// <summary>
+        /// Número do Voo
+        /// </summary>
         [XmlElement("nVoo")]
         public string NVoo { get; set; }
 
+        /// <summary>
+        /// Código do Aeroporto de Embarque
+        /// </summary>
         [XmlElement("cAerEmb")]
         public string CAerEmb { get; set; }
 
+        /// <summary>
+        /// Código do Aeroporto de Desembarque
+        /// </summary>
         [XmlElement("cAerDes")]
         public string CAerDes { get; set; }
 
+        /// <summary>
+        /// Data do Voo
+        /// </summary>
         [XmlIgnore]
         public DateTime DVoo { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DVoo" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dVoo")]
         public string DVooField
         {
@@ -1896,45 +2595,87 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Aquav
     {
+        /// <summary>
+        /// Identificador do Registro de Informações da Navegação
+        /// </summary>
         [XmlElement("irin")]
         public string Irin { get; set; }
 
+        /// <summary>
+        /// Tipo da Embarcação
+        /// </summary>
         [XmlElement("tpEmb")]
         public string TpEmb { get; set; }
 
+        /// <summary>
+        /// Código da Embarcação
+        /// </summary>
         [XmlElement("cEmbar")]
         public string CEmbar { get; set; }
 
+        /// <summary>
+        /// Nome da Embarcação
+        /// </summary>
         [XmlElement("xEmbar")]
         public string XEmbar { get; set; }
 
+        /// <summary>
+        /// Número da Viagem
+        /// </summary>
         [XmlElement("nViag")]
         public long NViag { get; set; }
 
+        /// <summary>
+        /// Código do Porto de Embarque
+        /// </summary>
         [XmlElement("cPrtEmb")]
         public string CPrtEmb { get; set; }
 
+        /// <summary>
+        /// Código do Porto de Desembarque
+        /// </summary>
         [XmlElement("cPrtDest")]
         public string CPrtDest { get; set; }
 
+        /// <summary>
+        /// Porto de Transbordo
+        /// </summary>
         [XmlElement("prtTrans")]
         public string PrtTrans { get; set; }
 
+        /// <summary>
+        /// Tipo de Navegação
+        /// </summary>
         [XmlElement("tpNav")]
         public TipoNavegacao TpNav { get; set; }
 
+        /// <summary>
+        /// Informações do Terminal de Carregamento
+        /// </summary>
         [XmlElement("infTermCarreg")]
         public List<InfTermCarreg> InfTermCarreg { get; set; }
 
+        /// <summary>
+        /// Informações do Terminal de Descarregamento
+        /// </summary>
         [XmlElement("infTermDescarreg")]
         public List<InfTermDescarreg> InfTermDescarreg { get; set; }
 
+        /// <summary>
+        /// Informações da Embarcação de Combustível
+        /// </summary>
         [XmlElement("infEmbComb")]
         public List<InfEmbComb> InfEmbComb { get; set; }
 
+        /// <summary>
+        /// Informações da Unidade de Carga Vazia
+        /// </summary>
         [XmlElement("infUnidCargaVazia")]
         public List<InfUnidCargaVazia> InfUnidCargaVazia { get; set; }
 
+        /// <summary>
+        /// Informações da Unidade de Transporte Vazia
+        /// </summary>
         [XmlElement("infUnidTranspVazia")]
         public List<InfUnidTranspVazia> InfUnidTranspVazia { get; set; }
 
@@ -2130,9 +2871,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfTermCarreg
     {
+        /// <summary>
+        /// Código do Terminal de Carregamento
+        /// </summary>
         [XmlElement("cTermCarreg")]
         public string CTermCarreg { get; set; }
 
+        /// <summary>
+        /// Nome do Terminal de Carregamento
+        /// </summary>
         [XmlElement("xTermCarreg")]
         public string XTermCarreg { get; set; }
     }
@@ -2146,9 +2893,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfTermDescarreg
     {
+        /// <summary>
+        /// Código do Terminal de Descarregamento
+        /// </summary>
         [XmlElement("cTermDescarreg")]
         public string CTermDescarreg { get; set; }
 
+        /// <summary>
+        /// Nome do Terminal de Descarregamento
+        /// </summary>
         [XmlElement("xTermDescarreg")]
         public string XTermDescarreg { get; set; }
     }
@@ -2162,9 +2915,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfEmbComb
     {
+        /// <summary>
+        /// Código da Embarcação de Combustível
+        /// </summary>
         [XmlElement("cEmbComb")]
         public string CEmbComb { get; set; }
 
+        /// <summary>
+        /// Nome da Balsa
+        /// </summary>
         [XmlElement("xBalsa")]
         public string XBalsa { get; set; }
     }
@@ -2178,9 +2937,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfUnidCargaVazia
     {
+        /// <summary>
+        /// Identificador da Unidade de Carga Vazia
+        /// </summary>
         [XmlElement("idUnidCargaVazia")]
         public string IdUnidCargaVazia { get; set; }
 
+        /// <summary>
+        /// Tipo da Unidade de Carga Vazia
+        /// </summary>
         [XmlElement("tpUnidCargaVazia")]
         public TipoUnidadeCarga TpUnidCargaVazia { get; set; }
     }
@@ -2196,9 +2961,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     {
         private TipoUnidadeTransporte TpUnidTranspVaziaField;
 
+        /// <summary>
+        /// Identificador da Unidade de Transporte Vazia
+        /// </summary>
         [XmlElement("idUnidTranspVazia")]
         public string IdUnidTranspVazia { get; set; }
 
+        /// <summary>
+        /// Tipo da Unidade de Transporte Vazia
+        /// </summary>
         [XmlElement("tpUnidTranspVazia")]
         public TipoUnidadeTransporte TpUnidTranspVazia
         {
@@ -2224,6 +2995,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfDocInfMDFe
     {
+        /// <summary>
+        /// Informações dos Municípios de Descarregamento
+        /// </summary>
         [XmlElement("infMunDescarga")]
         public List<InfMunDescarga> InfMunDescarga { get; set; }
 
@@ -2232,9 +3006,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações dos Municípios de Descarregamento
         /// </summary>
-        /// <param name="infmundescarga">Elemento</param>
+        /// <param name="infmundescarga">Elemento InfMunDescarga a ser adicionado</param>
         public void AddInfMunDescarga(InfMunDescarga infmundescarga)
         {
             if (InfMunDescarga == null)
@@ -2279,18 +3053,33 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfMunDescarga
     {
+        /// <summary>
+        /// Código do Município de Descarregamento
+        /// </summary>
         [XmlElement("cMunDescarga")]
         public long CMunDescarga { get; set; }
 
+        /// <summary>
+        /// Nome do Município de Descarregamento
+        /// </summary>
         [XmlElement("xMunDescarga")]
         public string XMunDescarga { get; set; }
 
+        /// <summary>
+        /// Informações dos CTes
+        /// </summary>
         [XmlElement("infCTe")]
         public List<InfMunDescargaInfCTe> InfCTe { get; set; }
 
+        /// <summary>
+        /// Informações das NFes
+        /// </summary>
         [XmlElement("infNFe")]
         public List<InfMunDescargaInfNFe> InfNFe { get; set; }
 
+        /// <summary>
+        /// Informações dos MDFes de Transporte
+        /// </summary>
         [XmlElement("infMDFeTransp")]
         public List<InfMunDescargaInfMDFeTransp> InfMDFeTransp { get; set; }
 
@@ -2299,9 +3088,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações dos MDFes de Transporte
         /// </summary>
-        /// <param name="infMDFeTransp">Elemento</param>
+        /// <param name="infMDFeTransp">Elemento InfMunDescargaInfMDFeTransp a ser adicionado</param>
         public void AddInfMDFeTransp(InfMunDescargaInfMDFeTransp infMDFeTransp)
         {
             if (InfMDFeTransp == null)
@@ -2333,9 +3122,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfMDFeTranspCount => (InfMDFeTransp != null ? InfMDFeTransp.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações das NFes
         /// </summary>
-        /// <param name="infNFe">Elemento</param>
+        /// <param name="infNFe">Elemento InfMunDescargaInfNFe a ser adicionado</param>
         public void AddInfNFe(InfMunDescargaInfNFe infNFe)
         {
             if (InfNFe == null)
@@ -2367,9 +3156,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfNFeCount => (InfNFe != null ? InfNFe.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações dos CTes
         /// </summary>
-        /// <param name="infCTe">Elemento</param>
+        /// <param name="infCTe">Elemento InfMunDescargaInfCTe a ser adicionado</param>
         public void AddInfCTe(InfMunDescargaInfCTe infCTe)
         {
             if (InfCTe == null)
@@ -2414,21 +3203,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfMunDescargaInfCTe
     {
+        /// <summary>
+        /// Chave de acesso do CT-e
+        /// </summary>
         [XmlElement("chCTe")]
         public string ChCTe { get; set; }
 
+        /// <summary>
+        /// Segundo código de barras
+        /// </summary>
         [XmlElement("SegCodBarra")]
         public string SegCodBarra { get; set; }
 
+        /// <summary>
+        /// Indicador de Reentrega
+        /// </summary>
         [XmlElement("indReentrega")]
         public SimNao IndReentrega { get; set; }
 
+        /// <summary>
+        /// Informações das Unidades de Transporte
+        /// </summary>
         [XmlElement("infUnidTransp")]
         public List<InfUnidTransp> InfUnidTransp { get; set; }
 
+        /// <summary>
+        /// Período (Somente se informado o grupo de informações das Unidades de Transporte)
+        /// </summary>
         [XmlElement("peri")]
         public List<Peri> Peri { get; set; }
 
+        /// <summary>
+        /// Informações da Entrega Parcial
+        /// </summary>
         [XmlElement("infEntregaParcial")]
         public InfEntregaParcial InfEntregaParcial { get; set; }
 
@@ -2446,8 +3253,19 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo SegCodBarra (não vazio)
+        /// </summary>
         public bool ShouldSerializeSegCodBarra() => !string.IsNullOrWhiteSpace(SegCodBarra);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo IndReentrega (Sim)
+        /// </summary>
         public bool ShouldSerializeIndReentrega() => IndReentrega == SimNao.Sim;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo IndPrestacaoParcial (Sim)
+        /// </summary>
         public bool ShouldSerializeIndPrestacaoParcial() => IndPrestacaoParcial == SimNao.Sim;
 
         #endregion
@@ -2455,9 +3273,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações das Unidades de Transporte
         /// </summary>
-        /// <param name="infUnidTransp">Elemento</param>
+        /// <param name="infUnidTransp">Elemento InfUnidTransp a ser adicionado</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
             if (InfUnidTransp == null)
@@ -2489,9 +3307,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Períodos
         /// </summary>
-        /// <param name="peri">Elemento</param>
+        /// <param name="peri">Elemento Peri a ser adicionado</param>
         public void AddPeri(Peri peri)
         {
             if (Peri == null)
@@ -2523,17 +3341,17 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetPeriCount => (Peri != null ? Peri.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações das NFes de Prestação Parcial
         /// </summary>
-        /// <param name="elemento">Elemento</param>
-        public void AddInfNFePresParcial(Peri elemento)
+        /// <param name="elemento">Elemento InfNFePresParcial a ser adicionado</param>
+        public void AddInfNFePresParcial(InfNFePresParcial elemento)
         {
             if (InfNFePresParcial == null)
             {
                 InfNFePresParcial = new List<InfNFePresParcial>();
             }
 
-            Peri.Add(elemento);
+            InfNFePresParcial.Add(elemento);
         }
 
         /// <summary>
@@ -2568,21 +3386,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfUnidTransp
     {
+        /// <summary>
+        /// Tipo da Unidade de Transporte
+        /// </summary>
         [XmlElement("tpUnidTransp")]
         public TipoUnidadeTransporte TpUnidTransp { get; set; }
 
+        /// <summary>
+        /// Identificação da Unidade de Transporte
+        /// </summary>
         [XmlElement("idUnidTransp")]
         public string IdUnidTransp { get; set; }
 
+        /// <summary>
+        /// Lacres da Unidade de Transporte
+        /// </summary>
         [XmlElement("lacUnidTransp")]
         public List<LacUnidTransp> LacUnidTransp { get; set; }
 
+        /// <summary>
+        /// Informações das Unidades de Carga
+        /// </summary>
         [XmlElement("infUnidCarga")]
         public List<InfUnidCarga> InfUnidCarga { get; set; }
 
+        /// <summary>
+        /// Quantidade rateada
+        /// </summary>
         [XmlIgnore]
         public double QtdRat { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "QtdRat" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("qtdRat")]
         public string QtdRatField
         {
@@ -2593,6 +3429,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo QtdRatField (maior que 0)
+        /// </summary>
         public bool ShouldSerializeQtdRatField() => QtdRat > 0;
 
         #endregion
@@ -2600,9 +3439,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Lacres da Unidade de Transporte
         /// </summary>
-        /// <param name="lacUnidTransp">Elemento</param>
+        /// <param name="lacUnidTransp">Elemento LacUnidTransp a ser adicionado</param>
         public void AddLacUnidTransp(LacUnidTransp lacUnidTransp)
         {
             if (LacUnidTransp == null)
@@ -2634,9 +3473,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetLacUnidTranspCount => (LacUnidTransp != null ? LacUnidTransp.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações das Unidades de Carga
         /// </summary>
-        /// <param name="infUnidCarga">Elemento</param>
+        /// <param name="infUnidCarga">Elemento InfUnidCarga a ser adicionado</param>
         public void AddInfUnidCarga(InfUnidCarga infUnidCarga)
         {
             if (InfUnidCarga == null)
@@ -2688,18 +3527,33 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfUnidCarga
     {
+        /// <summary>
+        /// Tipo da Unidade de Carga
+        /// </summary>
         [XmlElement("tpUnidCarga")]
         public TipoUnidadeCarga TpUnidCarga { get; set; }
 
+        /// <summary>
+        /// Identificação da Unidade de Carga
+        /// </summary>
         [XmlElement("idUnidCarga")]
         public string IdUnidCarga { get; set; }
 
+        /// <summary>
+        /// Lacres da Unidade de Carga
+        /// </summary>
         [XmlElement("lacUnidCarga")]
         public List<LacUnidCarga> LacUnidCarga { get; set; }
 
+        /// <summary>
+        /// Quantidade rateada
+        /// </summary>
         [XmlIgnore]
         public double QtdRat { get; set; }
 
+        /// <summary>
+        /// Campo para serialização da Quantidade rateada
+        /// </summary>
         [XmlElement("qtdRat")]
         public string QtdRatField
         {
@@ -2709,6 +3563,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo QtdRatField (maior que 0)
+        /// </summary>
         public bool ShouldSerializeQtdRatField() => QtdRat > 0;
 
         #endregion
@@ -2716,9 +3573,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Lacres da Unidade de Carga
         /// </summary>
-        /// <param name="lacUnidCarga">Elemento</param>
+        /// <param name="lacUnidCarga">Elemento LacUnidCarga a ser adicionado</param>
         public void AddLacUnidCarga(LacUnidCarga lacUnidCarga)
         {
             if (LacUnidCarga == null)
@@ -2770,29 +3627,62 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Peri
     {
+        /// <summary>
+        /// Número ONU
+        /// </summary>
         [XmlElement("nONU")]
         public string NONU { get; set; }
 
+        /// <summary>
+        /// Nome apropriado para embarque
+        /// </summary>
         [XmlElement("xNomeAE")]
         public string XNomeAE { get; set; }
 
+        /// <summary>
+        /// Classe de risco
+        /// </summary>
         [XmlElement("xClaRisco")]
         public string XClaRisco { get; set; }
 
+        /// <summary>
+        /// Grupo de embalagem
+        /// </summary>
         [XmlElement("grEmb")]
         public string GrEmb { get; set; }
 
+        /// <summary>
+        /// Quantidade total do produto
+        /// </summary>
         [XmlElement("qTotProd")]
         public string QTotProd { get; set; }
 
+        /// <summary>
+        /// Quantidade e tipo de volumes
+        /// </summary>
         [XmlElement("qVolTipo")]
         public string QVolTipo { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo XNomeAE (não vazio)
+        /// </summary>
         public bool ShouldSerializeXNomeAE() => !string.IsNullOrWhiteSpace(XNomeAE);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo XClaRisco (não vazio)
+        /// </summary>
         public bool ShouldSerializeXClaRisco() => !string.IsNullOrWhiteSpace(XClaRisco);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo GrEmb (não vazio)
+        /// </summary>
         public bool ShouldSerializeGrEmb() => !string.IsNullOrWhiteSpace(GrEmb);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo QVolTipo (não vazio)
+        /// </summary>
         public bool ShouldSerializeQVolTipo() => !string.IsNullOrWhiteSpace(QVolTipo);
 
         #endregion
@@ -2807,9 +3697,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfEntregaParcial
     {
+        /// <summary>
+        /// Quantidade total
+        /// </summary>
         [XmlIgnore]
         public double QtdTotal { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "QtdTotal" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("qtdTotal")]
         public string QtdTotalField
         {
@@ -2817,9 +3713,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => QtdTotal = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Quantidade parcial
+        /// </summary>
         [XmlIgnore]
         public double QtdParcial { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "QtdParcial" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("qtdParcial")]
         public string QtdParcialField
         {
@@ -2837,24 +3739,46 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfMunDescargaInfNFe
     {
+        /// <summary>
+        /// Chave de acesso da NF-e
+        /// </summary>
         [XmlElement("chNFe")]
         public string ChNFe { get; set; }
 
+        /// <summary>
+        /// Segundo código de barras
+        /// </summary>
         [XmlElement("SegCodBarra")]
         public string SegCodBarra { get; set; }
 
+        /// <summary>
+        /// Indicador de Reentrega
+        /// </summary>
         [XmlElement("indReentrega")]
         public SimNao IndReentrega { get; set; }
 
+        /// <summary>
+        /// Informações das Unidades de Transporte
+        /// </summary>
         [XmlElement("infUnidTransp")]
         public List<InfUnidTransp> InfUnidTransp { get; set; }
 
+        /// <summary>
+        /// Período (Somente se informado o grupo de informações das Unidades de Transporte)
+        /// </summary>
         [XmlElement("peri")]
         public List<Peri> Peri { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo SegCodBarra (não vazio)
+        /// </summary>
         public bool ShouldSerializeSegCodBarra() => !string.IsNullOrWhiteSpace(SegCodBarra);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo IndReentrega (Sim)
+        /// </summary>
         public bool ShouldSerializeIndReentrega() => IndReentrega == SimNao.Sim;
 
         #endregion
@@ -2862,9 +3786,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações das Unidades de Transporte
         /// </summary>
-        /// <param name="infUnidTransp">Elemento</param>
+        /// <param name="infUnidTransp">Elemento InfUnidTransp a ser adicionado</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
             if (InfUnidTransp == null)
@@ -2896,9 +3820,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Períodos
         /// </summary>
-        /// <param name="peri">Elemento</param>
+        /// <param name="peri">Elemento Peri a ser adicionado</param>
         public void AddPeri(Peri peri)
         {
             if (Peri == null)
@@ -2941,24 +3865,46 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfMunDescargaInfMDFeTransp
     {
+        /// <summary>
+        /// Chave de acesso do MDF-e de transporte
+        /// </summary>
         [XmlElement("chMDFe")]
         public string ChMDFe { get; set; }
 
+        /// <summary>
+        /// Segundo código de barras
+        /// </summary>
         [XmlElement("SegCodBarra")]
         public string SegCodBarra { get; set; }
 
+        /// <summary>
+        /// Indicador de Reentrega
+        /// </summary>
         [XmlElement("indReentrega")]
         public SimNao IndReentrega { get; set; }
 
+        /// <summary>
+        /// Informações das Unidades de Transporte
+        /// </summary>
         [XmlElement("infUnidTransp")]
         public List<InfUnidTransp> InfUnidTransp { get; set; }
 
+        /// <summary>
+        /// Período (Somente se informado o grupo de informações das Unidades de Transporte)
+        /// </summary>
         [XmlElement("peri")]
         public List<Peri> Peri { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo SegCodBarra (não vazio)
+        /// </summary>
         public bool ShouldSerializeSegCodBarra() => !string.IsNullOrWhiteSpace(SegCodBarra);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo IndReentrega (Sim)
+        /// </summary>
         public bool ShouldSerializeIndReentrega() => IndReentrega == SimNao.Sim;
 
         #endregion
@@ -2966,9 +3912,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Informações das Unidades de Transporte
         /// </summary>
-        /// <param name="infUnidTransp">Elemento</param>
+        /// <param name="infUnidTransp">Elemento InfUnidTransp a ser adicionado</param>
         public void AddInfUnidTransp(InfUnidTransp infUnidTransp)
         {
             if (InfUnidTransp == null)
@@ -3000,9 +3946,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public int GetInfUnidTranspCount => (InfUnidTransp != null ? InfUnidTransp.Count : 0);
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Períodos
         /// </summary>
-        /// <param name="peri">Elemento</param>
+        /// <param name="peri">Elemento Peri a ser adicionado</param>
         public void AddPeri(Peri peri)
         {
             if (Peri == null)
@@ -3045,24 +3991,36 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Seg
     {
+        /// <summary>
+        /// Informações do Responsável pelo Seguro
+        /// </summary>
         [XmlElement("infResp")]
         public InfResp InfResp { get; set; }
 
+        /// <summary>
+        /// Informações do Seguro
+        /// </summary>
         [XmlElement("infSeg")]
         public InfSeg InfSeg { get; set; }
 
+        /// <summary>
+        /// Número da Apólice
+        /// </summary>
         [XmlElement("nApol")]
         public string NApol { get; set; }
 
+        /// <summary>
+        /// Números de Averbação
+        /// </summary>
         [XmlElement("nAver")]
         public List<string> NAver { get; set; }
 
 #if INTEROP
 
         /// <summary>
-        /// Adicionar novo elemento a lista
+        /// Adicionar novo elemento à lista de Números de Averbação
         /// </summary>
-        /// <param name="naver">Elemento</param>
+        /// <param name="naver">Elemento string a ser adicionado</param>
         public void AddNAver(string naver)
         {
             if (NAver == null)
@@ -3105,18 +4063,34 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfResp
     {
+        /// <summary>
+        /// Responsável pelo Seguro
+        /// </summary>
         [XmlElement("respSeg")]
         public ResponsavelSeguroMDFe RespSeg { get; set; }
 
+        /// <summary>
+        /// CNPJ do Responsável pelo Seguro
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// CPF do Responsável pelo Seguro
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJ (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CPF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
         #endregion
@@ -3131,9 +4105,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfSeg
     {
+        /// <summary>
+        /// Nome da Seguradora
+        /// </summary>
         [XmlElement("xSeg")]
         public string XSeg { get; set; }
 
+        /// <summary>
+        /// CNPJ da Seguradora
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
     }
@@ -3147,24 +4127,46 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class ProdPred
     {
+        /// <summary>
+        /// Tipo da Carga
+        /// </summary>
         [XmlElement("tpCarga")]
         public TipoCargaMDFe TpCarga { get; set; }
 
+        /// <summary>
+        /// Descrição do Produto Predominante
+        /// </summary>
         [XmlElement("xProd")]
         public string XProd { get; set; }
 
+        /// <summary>
+        /// Código de barras GTIN (Global Trade Item Number) do produto, antigo código EAN ou código de barras padrão da GS1
+        /// </summary>
         [XmlElement("cEAN")]
         public string CEAN { get; set; }
 
+        /// <summary>
+        /// Código NCM (Nomenclatura Comum do Mercosul)
+        /// </summary>
         [XmlElement("NCM")]
         public string NCM { get; set; }
 
+        /// <summary>
+        /// Informações da Lotacão
+        /// </summary>
         [XmlElement("infLotacao")]
         public InfLotacao InfLotacao { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CEAN (não vazio)
+        /// </summary>
         public bool ShouldSerializeCEAN() => !string.IsNullOrWhiteSpace(CEAN);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo NCM (não vazio)
+        /// </summary>
         public bool ShouldSerializeNCM() => !string.IsNullOrWhiteSpace(NCM);
 
         #endregion
@@ -3179,9 +4181,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfLotacao
     {
+        /// <summary>
+        /// Informações do Local de Carregamento
+        /// </summary>
         [XmlElement("infLocalCarrega")]
         public InfLocalCarrega InfLocalCarrega { get; set; }
 
+        /// <summary>
+        /// Informações do Local de Descarregamento
+        /// </summary>
         [XmlElement("infLocalDescarrega")]
         public InfLocalDescarrega InfLocalDescarrega { get; set; }
     }
@@ -3195,19 +4203,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfLocalCarrega
     {
+        /// <summary>
+        /// CEP do Local de Carregamento
+        /// </summary>
         [XmlElement("CEP")]
         public string CEP { get; set; }
 
+        /// <summary>
+        /// Latitude do Local de Carregamento
+        /// </summary>
         [XmlElement("latitude")]
         public string Latitude { get; set; }
 
+        /// <summary>
+        /// Longitude do Local de Carregamento
+        /// </summary>
         [XmlElement("longitude")]
         public string Longitude { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CEP (não vazio)
+        /// </summary>
         public bool ShouldSerializeCEP() => !string.IsNullOrWhiteSpace(CEP);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo Latitude (não vazio e CEP vazio)
+        /// </summary>
         public bool ShouldSerializeLatitude() => !string.IsNullOrWhiteSpace(Latitude) && string.IsNullOrWhiteSpace(CEP);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo Longitude (não vazio e CEP vazio)
+        /// </summary>
         public bool ShouldSerializeLongitude() => !string.IsNullOrWhiteSpace(Longitude) && string.IsNullOrWhiteSpace(CEP);
 
         #endregion
@@ -3231,18 +4259,33 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Tot
     {
+        /// <summary>
+        /// Quantidade de CT-e
+        /// </summary>
         [XmlElement("qCTe")]
         public int QCTe { get; set; }
 
+        /// <summary>
+        /// Quantidade de NF-e
+        /// </summary>
         [XmlElement("qNFe")]
         public int QNFe { get; set; }
 
+        /// <summary>
+        /// Quantidade de MDF-e
+        /// </summary>
         [XmlElement("qMDFe")]
         public int QMDFe { get; set; }
 
+        /// <summary>
+        /// Valor Total da Carga
+        /// </summary>
         [XmlIgnore]
         public double VCarga { get; set; }
 
+        /// <summary>
+        /// Campo para serialização do Valor Total da Carga
+        /// </summary>
         [XmlElement("vCarga")]
         public string VCargaField
         {
@@ -3250,12 +4293,21 @@ namespace Unimake.Business.DFe.Xml.MDFe
             set => VCarga = Utility.Converter.ToDouble(value);
         }
 
+        /// <summary>
+        /// Código da Unidade de Medida
+        /// </summary>
         [XmlElement("cUnid")]
         public CodigoUnidadeMedidaMDFe CUnid { get; set; }
 
+        /// <summary>
+        /// Quantidade Total da Carga
+        /// </summary>
         [XmlIgnore]
         public double QCarga { get; set; }
 
+        /// <summary>
+        /// Campo para serialização da Quantidade Total da Carga
+        /// </summary>
         [XmlElement("qCarga")]
         public string QCargaField
         {
@@ -3265,8 +4317,19 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo QCTe (maior que 0)
+        /// </summary>
         public bool ShouldSerializeQCTe() => QCTe > 0;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo QNFe (maior que 0)
+        /// </summary>
         public bool ShouldSerializeQNFe() => QNFe > 0;
+
+        /// <summary>
+        /// Verifica se deve serializar o campo QMDFe (maior que 0)
+        /// </summary>
         public bool ShouldSerializeQMDFe() => QMDFe > 0;
 
         #endregion
@@ -3281,6 +4344,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class Lacre
     {
+        /// <summary>
+        /// Número do Lacre
+        /// </summary>
         [XmlElement("nLacre")]
         public string NLacre { get; set; }
     }
@@ -3297,6 +4363,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         private string CNPJField;
         private string CPFField;
 
+        /// <summary>
+        /// CNPJ Autorizado
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ
         {
@@ -3312,6 +4381,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        /// <summary>
+        /// CPF Autorizado
+        /// </summary>
         [XmlElement("CPF")]
         public string CPF
         {
@@ -3329,7 +4401,14 @@ namespace Unimake.Business.DFe.Xml.MDFe
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CNPJ (não vazio)
+        /// </summary>
         public bool ShouldSerializeCNPJ() => !string.IsNullOrWhiteSpace(CNPJ);
+
+        /// <summary>
+        /// Verifica se deve serializar o campo CPF (não vazio)
+        /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
         #endregion
@@ -3344,9 +4423,15 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfAdic
     {
+        /// <summary>
+        /// Informações Adicionais de Interesse do Fisco
+        /// </summary>
         [XmlElement("infAdFisco")]
         public string InfAdFisco { get; set; }
 
+        /// <summary>
+        /// Informações Complementares de Interesse do Contribuinte
+        /// </summary>
         [XmlElement("infCpl")]
         public string InfCpl { get; set; }
     }
@@ -3360,28 +4445,52 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfRespTec
     {
+        /// <summary>
+        /// CNPJ do Responsável Técnico
+        /// </summary>
         [XmlElement("CNPJ")]
         public string CNPJ { get; set; }
 
+        /// <summary>
+        /// Nome da Pessoa a ser contatada
+        /// </summary>
         [XmlElement("xContato")]
         public string XContato { get; set; }
 
+        /// <summary>
+        /// Email do Responsável Técnico
+        /// </summary>
         [XmlElement("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// Telefone do Responsável Técnico
+        /// </summary>
         [XmlElement("fone")]
         public string Fone { get; set; }
 
+        /// <summary>
+        /// Identificador do CSRT
+        /// </summary>
         [XmlElement("idCSRT")]
         public string IdCSRT { get; set; }
 
+        /// <summary>
+        /// Hash do CSRT
+        /// </summary>
         [XmlElement("hashCSRT", DataType = "base64Binary")]
         public byte[] HashCSRT { get; set; }
 
         #region ShouldSerialize
 
+        /// <summary>
+        /// Verifica se deve serializar o campo IdCSRT (não vazio)
+        /// </summary>
         public bool ShouldSerializeIdCSRT() => !string.IsNullOrWhiteSpace(IdCSRT);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo HashCSRT (não nulo)
+        /// </summary>
         public bool ShouldSerializeHashCSRT() => HashCSRT != null;
 
         #endregion
@@ -3396,6 +4505,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlType(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public class InfMDFeSupl
     {
+        /// <summary>
+        /// Código QR do MDF-e
+        /// </summary>
         [XmlElement("qrCodMDFe")]
         public string QrCodMDFe { get; set; }
     }
