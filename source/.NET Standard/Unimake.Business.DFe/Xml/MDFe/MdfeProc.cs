@@ -9,10 +9,12 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
+    /// <summary>
+    /// MDFe Processado + Protocolo de autorização
+    /// </summary>
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ProgId("Unimake.Business.DFe.Xml.MDFe.MdfeProc")]
@@ -22,21 +24,39 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlRoot("mdfeProc", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
     public class MdfeProc : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute.
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Manifesto Eletrônico de Documentos Fiscais (MDFe).
+        /// </summary>
         [XmlElement("MDFe")]
         public MDFe MDFe { get; set; }
 
+        /// <summary>
+        /// Protocolo de autorização do MDFe.
+        /// </summary>
         [XmlElement("protMDFe")]
         public ProtMDFe ProtMDFe { get; set; }
 
+        /// <summary>
+        /// Endereço IP do transmissor.
+        /// </summary>
         [XmlAttribute("ipTransmissor")]
         public string IpTransmissor { get; set; }
 
+        /// <summary>
+        /// Número da porta de conexão.
+        /// </summary>
         [XmlAttribute("nPortaCon")]
         public int NPortaCon { get; set; }
 
+        /// <summary>
+        /// Data e hora da conexão.
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhConexao { get; set; }
@@ -44,6 +64,9 @@ namespace Unimake.Business.DFe.Xml.MDFe
         public DateTimeOffset DhConexao { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhConexao" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlAttribute("dhConexao")]
         public string DhConexaoField
         {
@@ -56,7 +79,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
 
         /// <summary>
-        /// Nome do arquivo de distribuição
+        /// Nome do arquivo de distribuição.
         /// </summary>
         [XmlIgnore]
         public string NomeArquivoDistribuicao
@@ -80,6 +103,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
             }
         }
 
+        /// <summary>
+        /// Gera o XML do objeto MdfeProc.
+        /// </summary>
+        /// <returns>XmlDocument contendo o XML gerado.</returns>
         public override XmlDocument GerarXML()
         {
             var xmlDocument = base.GerarXML();
@@ -94,7 +121,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         }
 
         /// <summary>
-        /// Deserializar o XML no objeto MdfeProc
+        /// Deserializar o XML no objeto MdfeProc.
         /// </summary>
         /// <param name="filename">Localização do arquivo XML de distribuição do MDFe</param>
         /// <returns>Objeto do XML de distribuição do MDFe</returns>
