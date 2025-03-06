@@ -21,21 +21,39 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("retDistDFeInt", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class RetDistDFeInt : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute XML
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Tipo do Ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Versão do Aplicativo
+        /// </summary>
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Código do status da resposta
+        /// </summary>
         [XmlElement("cStat")]
         public int CStat { get; set; }
 
+        /// <summary>
+        /// Descrição literal do status da resposta
+        /// </summary>
         [XmlElement("xMotivo")]
         public string XMotivo { get; set; }
 
+        /// <summary>
+        /// Data e hora da resposta
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhResp { get; set; }
@@ -43,6 +61,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhResp { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhResp" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhResp")]
         public string DhRespField
         {
@@ -54,12 +75,21 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Último NSU retornado
+        /// </summary>
         [XmlElement("ultNSU", DataType = "token")]
         public string UltNSU { get; set; }
 
+        /// <summary>
+        /// Maior NSU retornado
+        /// </summary>
         [XmlElement("maxNSU", DataType = "token")]
         public string MaxNSU { get; set; }
 
+        /// <summary>
+        /// Lote de documentos compactados
+        /// </summary>
         [XmlElement("loteDistDFeInt")]
         public LoteDistDFeInt LoteDistDFeInt { get; set; }
 
@@ -92,6 +122,9 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class LoteDistDFeInt
     {
+        /// <summary>
+        /// Documentos compactados
+        /// </summary>
         [XmlElement("docZip")]
         public List<DocZip> DocZip { get; set; }
 
@@ -128,12 +161,21 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
     public class DocZip
     {
+        /// <summary>
+        /// Número Sequencial Único
+        /// </summary>
         [XmlAttribute("NSU", DataType = "token")]
         public string NSU { get; set; }
 
+        /// <summary>
+        /// Schema do documento
+        /// </summary>
         [XmlAttribute("schema")]
         public string Schema { get; set; }
 
+        /// <summary>
+        /// Conteúdo do documento compactado em base64
+        /// </summary>
         [XmlText(DataType = "base64Binary")]
         public byte[] Value { get; set; }
 
