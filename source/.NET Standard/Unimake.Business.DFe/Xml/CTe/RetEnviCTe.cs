@@ -21,15 +21,27 @@ namespace Unimake.Business.DFe.Xml.CTe
     [XmlRoot("retEnviCte", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class RetEnviCTe : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute XML
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Tipo do Ambiente
+        /// </summary>
         [XmlElement("tpAmb")]
         public TipoAmbiente TpAmb { get; set; }
 
+        /// <summary>
+        /// Código da UF que atendeu a solicitação.
+        /// </summary>
         [XmlIgnore]
         public UFBrasil CUF { get; set; }
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "CUF" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("cUF")]
         public int CUFField
         {
@@ -37,15 +49,27 @@ namespace Unimake.Business.DFe.Xml.CTe
             set => CUF = (UFBrasil)Enum.Parse(typeof(UFBrasil), value.ToString());
         }
 
+        /// <summary>
+        /// Versão do Aplicativo
+        /// </summary>
         [XmlElement("verAplic")]
         public string VerAplic { get; set; }
 
+        /// <summary>
+        /// Código do status da resposta
+        /// </summary>
         [XmlElement("cStat")]
         public int CStat { get; set; }
 
+        /// <summary>
+        /// Descrição literal do status da resposta
+        /// </summary>
         [XmlElement("xMotivo")]
         public string XMotivo { get; set; }
 
+        /// <summary>
+        /// Informações do Recibo
+        /// </summary>
         [XmlElement("infRec")]
         public RetEnviCTeInfRec InfRec { get; set; }
 
@@ -65,9 +89,15 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
     public class RetEnviCTeInfRec
     {
+        /// <summary>
+        /// Número do Recibo Gerado
+        /// </summary>
         [XmlElement("nRec")]
         public string NRec { get; set; }
 
+        /// <summary>
+        /// Data e hora de recebimento
+        /// </summary>
         [XmlIgnore]
 #if INTEROP
         public DateTime DhRecbto { get; set; }
@@ -75,6 +105,9 @@ namespace Unimake.Business.DFe.Xml.CTe
         public DateTimeOffset DhRecbto { get; set; }
 #endif
 
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "DhRecbto" para atribuir ou resgatar o valor)
+        /// </summary>
         [XmlElement("dhRecbto")]
         public string DhRecbtoField
         {
@@ -86,6 +119,9 @@ namespace Unimake.Business.DFe.Xml.CTe
 #endif
         }
 
+        /// <summary>
+        /// Tempo médio de resposta (em segundos)
+        /// </summary>
         [XmlElement("tMed")]
         public string TMed { get; set; }
     }
