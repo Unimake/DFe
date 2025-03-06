@@ -5,8 +5,8 @@
 			<Descricao>Consulta situação do serviço da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
 			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComStatusServico/NFComStatusServico.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico/nfcomStatusServicoNF</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico/nfcomStatusServicoNF</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionProducao>
 			<SchemaArquivo>consStatServNFCom_v{0}.xsd</SchemaArquivo>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
 			<TagAssinatura></TagAssinatura>
@@ -19,15 +19,14 @@
 			<Descricao>Consulta situação da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
 			<WebEnderecoHomologacao>https://nfcom-homologacao.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComConsulta/NFComConsulta.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta/nfcomConsultaNF</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta/nfcomConsultaNF</WebActionProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionProducao>
 			<SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
 			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 		</ConsultaProtocolo>
 		<RecepcaoEvento versao="1.00">
 			<Descricao>Recepção de eventos</Descricao>
@@ -55,7 +54,7 @@
 			<WebEnderecoProducao>https://nfcom.svrs.rs.gov.br/WS/NFComRecepcao/NFComRecepcao.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionProducao>
-			<WebSoapString><![CDATA[<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"><soap12:Body><nfcomDadosMsg xmlns="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao">{xmlBody}</nfcomDadosMsg></soap12:Body></soap12:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
 			<SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
 			<TagAssinatura>NFCom</TagAssinatura>
 			<TagAtributoID>infNFCom</TagAtributoID>
