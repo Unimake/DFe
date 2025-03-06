@@ -93,4 +93,14 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         #endregion ShoudSerialize
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.RetConsStatServNFComMG")]
+    [ComVisible(true)]
+#endif
+    [XmlRoot("retConsStatServ", Namespace = "http://www.portalfiscal.inf.br/nfcom", IsNullable = false)]
+    public class RetConsStatServNFComMG : RetConsStatServNFCom
+    {
+    }
 }
