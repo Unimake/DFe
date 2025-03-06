@@ -27,7 +27,10 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         /// <summary>
         /// Definir configurações
         /// </summary>
-        protected override void DefinirConfiguracao() { }
+        protected override void DefinirConfiguracao()
+        {
+            Configuracoes.Load(GetType().Name);
+        }
 
         /// <summary>
         /// Validar o XML
