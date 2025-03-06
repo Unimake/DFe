@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Utility;
-using Unimake.Business.DFe.Xml.NFe;
 
 namespace Unimake.Business.DFe.Xml.MDFe
 {
@@ -21,21 +20,34 @@ namespace Unimake.Business.DFe.Xml.MDFe
     [XmlRoot("procEventoMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
     public class ProcEventoMDFe : XMLBase
     {
+        /// <summary>
+        /// Versão do leiaute.
+        /// </summary>
         [XmlAttribute(AttributeName = "versao", DataType = "token")]
         public string Versao { get; set; }
 
+        /// <summary>
+        /// Evento do MDFe.
+        /// </summary>
         [XmlElement("eventoMDFe")]
         public EventoMDFe EventoMDFe { get; set; }
 
+        /// <summary>
+        /// Retorno do evento do MDFe.
+        /// </summary>
         [XmlElement("retEventoMDFe")]
         public RetEventoMDFe RetEventoMDFe { get; set; }
-         
+
         /// <summary>
-        /// Nome do arquivo de distribuição
+        /// Nome do arquivo de distribuição.
         /// </summary>
         [XmlIgnore]
         public string NomeArquivoDistribuicao => EventoMDFe.InfEvento.ChMDFe + "_" + ((int)EventoMDFe.InfEvento.TpEvento).ToString("000000") + "_" + EventoMDFe.InfEvento.NSeqEvento.ToString("00") + "-proceventomdfe.xml";
 
+        /// <summary>
+        /// Gera o XML do objeto ProcEventoMDFe.
+        /// </summary>
+        /// <returns>XmlDocument contendo o XML gerado.</returns>
         public override XmlDocument GerarXML()
         {
             var xmlDocument = base.GerarXML();
@@ -54,6 +66,10 @@ namespace Unimake.Business.DFe.Xml.MDFe
             return xmlDocument;
         }
 
+        /// <summary>
+        /// Lê o XML e deserializa para o objeto ProcEventoMDFe.
+        /// </summary>
+        /// <param name="document">XmlDocument contendo o XML a ser lido.</param>
         public override void ReadXml(XmlDocument document)
         {
             var nodeListEvento = document.GetElementsByTagName("eventoMDFe");
