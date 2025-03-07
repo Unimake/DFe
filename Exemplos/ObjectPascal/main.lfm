@@ -46,5 +46,14 @@ object frmPrincipal: TfrmPrincipal
       OnClick = btnEnviarNFeSincronoDesserializacaoClick
       TabOrder = 2
     end
+    object btnEnviarNFeSincronoDuplicidade: TButton
+      Left = 12
+      Height = 38
+      Top = 144
+      Width = 324
+      Caption = 'Enviar NFe Síncrono - Duplicidade'
+      OnClick = btnEnviarNFeSincronoDuplicidadeClick
+      TabOrder = 3
+    end
   end
 end

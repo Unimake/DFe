@@ -8,10 +8,9 @@
       <Unit>
         <Filename Value="Treinamento.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="87" Y="13"/>
-        <UsageCount Value="63"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="64"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -20,10 +19,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="20"/>
-        <CursorPos X="46" Y="62"/>
-        <UsageCount Value="63"/>
+        <TopLine Value="33"/>
+        <CursorPos X="13" Y="33"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unimake_business_dfe_2023_7_tlb.pas"/>
@@ -32,38 +32,33 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ConsultarStatusNFe"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="7"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
         <CursorPos X="70" Y="47"/>
-        <UsageCount Value="52"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="53"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="135"/>
-        <CursorPos X="71" Y="308"/>
-        <UsageCount Value="51"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="34" Y="17"/>
+        <UsageCount Value="52"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
         <ComponentName Value="frmPrincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
-        <CursorPos X="7" Y="24"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="26" Y="6"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
@@ -81,134 +76,123 @@
       </Unit>
       <Unit>
         <Filename Value="D:\lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="30" Y="20"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincronodesserializacao.pas"/>
         <UnitName Value="EnviarNFeSincronoDesserializacao"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="36"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="30"/>
         <CursorPos X="20" Y="77"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <UnitName Value="EnviarNFeSincronoDuplicidade"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="286"/>
+        <CursorPos X="27" Y="303"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="27">
+    <JumpHistory HistoryIndex="23">
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="343" TopLine="305"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="62" Column="46" TopLine="20"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="344" TopLine="305"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="77" Column="32" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="343" TopLine="305"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="50" Column="22" TopLine="33"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="349" TopLine="314"/>
+        <Filename Value="main.pas"/>
+        <Caret Line="75" Column="34" TopLine="34"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="352" TopLine="314"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="237" Column="41" TopLine="227"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="353" TopLine="314"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="387" Column="7" TopLine="338"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="354" Column="15" TopLine="328"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="203" TopLine="164"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="381" Column="11" TopLine="329"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="326" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="392" Column="7" TopLine="361"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="327" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="70" TopLine="32"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="330" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="404" Column="20" TopLine="377"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="333" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="397" Column="35" TopLine="383"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="336" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="114" Column="33" TopLine="88"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="339" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="420" TopLine="374"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="342" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="389" TopLine="373"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="343" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="386" Column="12" TopLine="364"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="344" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="397" Column="18" TopLine="367"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="343" TopLine="296"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="73" Column="27" TopLine="38"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="349" TopLine="297"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="403" Column="25" TopLine="373"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="213" TopLine="171"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="74" Column="35" TopLine="35"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincrono.pas"/>
-        <Caret Line="308" Column="71" TopLine="276"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="405" Column="23" TopLine="374"/>
       </Position>
       <Position>
-        <Filename Value="Treinamento.lpr"/>
-        <Caret Line="7" Column="33"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="417" Column="22" TopLine="374"/>
       </Position>
       <Position>
-        <Filename Value="Treinamento.lpr"/>
-        <Caret Line="9" Column="40"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
       </Position>
       <Position>
-        <Filename Value="Treinamento.lpr"/>
-        <Caret Line="13" Column="53"/>
-      </Position>
-      <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="97" TopLine="72"/>
-      </Position>
-      <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="94" Column="5" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="75" Column="10" TopLine="44"/>
-      </Position>
-      <Position>
-        <Filename Value="enviarnfesincronodesserializacao.pas"/>
-        <Caret Line="90" Column="56" TopLine="60"/>
+        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Caret Line="326" TopLine="274"/>
       </Position>
     </JumpHistory>
     <RunParams>
