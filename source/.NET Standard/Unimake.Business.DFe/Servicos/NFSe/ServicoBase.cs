@@ -9,7 +9,7 @@ using Unimake.Business.DFe.Security;
 using Unimake.Exceptions;
 using Newtonsoft.Json;
 using System.Net.Http;
-using static Org.BouncyCastle.Math.EC.ECCurve;
+using System.Net.Http.Headers;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -102,13 +102,97 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         private void IPM()
         {
             AjusteTokenIPM();
-            //CriarHttpContentIPM();
+
+            if (Configuracoes.SchemaVersao == "2.80")
+            {
+                CriarHttpContentIPM();
+            }
+
         }
 
-        //private void CriarHttpContentIPM()
-        //{
-            
-        //}
+        private void CriarHttpContentIPM()
+        {
+            var path = string.Empty;
+
+            var xml = ConteudoXML.OuterXml.Replace("<", "&lt;")
+                                          .Replace(">", "&gt;")
+                                          .Replace("/", "")
+                                          .Replace("&", "&amp;")
+                                          .Replace("'", "&apos;")
+                                          .Replace("\"", "&quot;");
+
+            if (string.IsNullOrWhiteSpace(ConteudoXML.BaseURI))
+            {
+                path = "arquivo.xml";
+            }
+            else
+            {
+                path = ConteudoXML.BaseURI.Substring(8, ConteudoXML.BaseURI.Length - 8);
+            }
+
+            var boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+
+            #region ENVIO EM BYTES
+            var xmlBytes = Encoding.UTF8.GetBytes(xml);
+            var xmlContent = new ByteArrayContent(xmlBytes);
+            xmlContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+            xmlContent.Headers.ContentEncoding.Add("ISO-8859-1");
+            xmlContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            {
+                Name = "f1",
+                FileName = path,
+
+            };
+            #endregion ENVIO EM BYTES
+
+            HttpContent MultiPartContent = new MultipartContent("form-data", boundary)
+                {
+                    xmlContent,
+
+                };
+
+            if (!string.IsNullOrWhiteSpace(Configuracoes.CodigoTom))               //SERÁ USADO PARA IPM 1.00 / Campo Mourão - PR 
+            {
+                var usuario = new StringContent(Configuracoes.MunicipioUsuario);
+                usuario.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                usuario.Headers.ContentEncoding.Add("UTF-8");
+                usuario.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "login",
+                };
+                var senha = new StringContent(Configuracoes.MunicipioSenha);
+                senha.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                senha.Headers.ContentEncoding.Add("UTF-8");
+                senha.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "senha",
+                };
+                var codigoTom = new StringContent(Configuracoes.CodigoTom);
+                codigoTom.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                codigoTom.Headers.ContentEncoding.Add("UTF-8");
+                codigoTom.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "cidade",
+                };
+                var f1 = new StringContent(path);
+                f1.Headers.ContentType = MediaTypeHeaderValue.Parse("text/xml");
+                f1.Headers.ContentEncoding.Add("ISO-8859-1");
+                f1.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "f1",
+                };
+                HttpContent content = new MultipartContent("form-data", boundary)
+                    {
+                        usuario,
+                        senha,
+                        codigoTom,
+                        f1,
+                        xmlContent
+                    };
+
+                Configuracoes.HttpContent = content;
+            }
+        }
 
         private void AjusteTokenIPM()
         {

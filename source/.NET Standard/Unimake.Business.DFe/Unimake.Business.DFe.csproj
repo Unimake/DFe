@@ -327,6 +327,7 @@
 		<None Remove="Servicos\Config\NFSe\BotucatuSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BrasiliaDF.xml" />
 		<None Remove="Servicos\Config\NFSe\BrumadoBA.xml" />
+		<None Remove="Servicos\Config\NFSe\BrusqueSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
@@ -1317,6 +1318,7 @@
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CamacariBA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BrusqueSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CedralSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

@@ -9,6 +9,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
 using System.Net.Http;
+using System.Net;
+using Unimake.Business.DFe.Xml.CTe;
+using Unimake.Business.DFe.Xml.ESocial;
+using Unimake.Business.DFe.Xml.NFe;
+using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -853,8 +858,8 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 
         /// </summary>
-        private string _RequestURI {  get; set; }
-        
+        private string _RequestURI { get; set; }
+
         /// <summary>
         /// Request URI utilizado na comunicação por API
         /// </summary>
@@ -868,7 +873,7 @@ namespace Unimake.Business.DFe.Servicos
                 }
                 return _RequestURI;
             }
-            set 
+            set
             {
                 _RequestURI = value;
             }
@@ -1408,6 +1413,17 @@ namespace Unimake.Business.DFe.Servicos
         /// Formato deve ser conforme acima: ano com 4 dígitos + mês com 2 dígitos (zeros a esquerda) + dia com 2 dígitos (zeros a esquerda) + horas com 2 dígitos (zeros a esquerda) + minutos com 2 dígitos (zeros a esquerda)
         /// </summary>
         public string VersaoConfiguracao { get; set; }
+
+        /// <summary>
+        /// Cookie (caso exista)
+        /// IPM v2.8: Após efetuar a primeira requisição na aplicação (seja de emissão ou de cancelamento),
+        /// poderá ser obtida a informação referente à sessão.Em seguida, para as próximas requisições,
+        /// deve-se passar junto ao cabeçalho a informação de Cookie, juntamente com o identificador de
+        /// sessão.
+        /// Este parâmetro é de extrema importação, ele faz com que o tempo de emissão da NFS -e
+        /// reduza consideravelmente, pois não é necessário criar uma sessão para cada emissão.
+        /// </summary>
+        public string Cookie { get; set; }
 
         #endregion Public Properties
 

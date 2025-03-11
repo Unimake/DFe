@@ -1727,4 +1727,10 @@
 		<ArqConfig>EloiMendesMG.xml</ArqConfig>
 		<PadraoNFSe>BAUHAUS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4202909">
+		<Nome>Brusque - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>BrusqueSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -31,6 +31,16 @@ namespace Unimake.Business.DFe
         private string _Host;
         private string _ApiKey;
         private HttpContent _HttpContent;
+        private string _Cookie;
+
+        /// <summary>
+        /// Cookie - Header API
+        /// </summary>
+        public string Cookie
+        {
+            get => _Cookie;
+            set => _Cookie = value;
+        }
 
         /// <summary>
         /// HttpContent - Usado para a comunicação web POST

@@ -156,6 +156,12 @@ namespace Unimake.Business.DFe
                 client.DefaultRequestHeaders.Add("api-key", $"{configuracoes.ApiKey}");
             }
 
+            if (!string.IsNullOrEmpty(configuracoes.Cookie))
+            {
+                client.DefaultRequestHeaders.Add("Cookie: ", configuracoes.Cookie);
+            }
+
+
             ServicePointManager.Expect100Continue = false;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(RetornoValidacao);
