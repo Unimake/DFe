@@ -1721,4 +1721,10 @@
 		<ArqConfig>MarcolandiaPI.xml</ArqConfig>
 		<PadraoNFSe>FIORILLI</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3123601">
+		<Nome>Elói Mendes - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>EloiMendesMG.xml</ArqConfig>
+		<PadraoNFSe>BAUHAUS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
