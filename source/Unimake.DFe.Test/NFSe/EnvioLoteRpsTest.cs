@@ -42,7 +42,9 @@ namespace Unimake.DFe.Test.NFSe
                 CodigoMunicipio = codMunicipio,
                 Servico = Servico.NFSeEnvioLoteRps,
                 SchemaVersao = versaoSchema,
-                MunicipioToken = "99n0556af8e4218e05b88e266fhca55be17b14a4495c269d1db0af57f925f04e77c38f9870842g5g60b6827a9fje8ec9" //Tem município que exige token, então já vamos deixar algo definido para que utilize nos padrões necessários durante o teste unitário. Não é obrigatório para todos os padrões e será utilizado somente nos que solicitam.
+                MunicipioToken = "99n0556af8e4218e05b88e266fhca55be17b14a4495c269d1db0af57f925f04e77c38f9870842g5g60b6827a9fje8ec9", //Tem município que exige token, então já vamos deixar algo definido para que utilize nos padrões necessários durante o teste unitário. Não é obrigatório para todos os padrões e será utilizado somente nos que solicitam.
+                MunicipioSenha = "123456",
+                MunicipioUsuario = "01001001000113"
             };
 
             var envioLoteRps = new EnvioLoteRps(conteudoXML, configuracao);

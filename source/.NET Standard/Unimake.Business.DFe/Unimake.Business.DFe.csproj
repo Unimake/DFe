@@ -369,6 +369,7 @@
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
+		<None Remove="Servicos\Config\NFSe\EloiMendesMG.xml" />
 		<None Remove="Servicos\Config\NFSe\Equiplano.xml" />
 		<None Remove="Servicos\Config\NFSe\ErnestinaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\EstanciaVelhaRS.xml" />
@@ -1320,6 +1321,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CubataoSP.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
+	  <EmbeddedResource Include="Servicos\Config\NFSe\EloiMendesMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\FloresDaCunhaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JaboticabalSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
