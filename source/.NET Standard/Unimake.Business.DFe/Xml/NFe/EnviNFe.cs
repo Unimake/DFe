@@ -12577,13 +12577,52 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// Grupo de defensivo agrícola / agrotóxico
         /// </summary>
         [XmlElement("defensivo")]
-        public Defensivo Defensivo { get; set; }
+        public List<Defensivo> Defensivo { get; set; }
 
         /// <summary>
         /// Grupo de Guia de Trânsito
         /// </summary>
         [XmlElement("guiaTransito")]
         public GuiaTransito GuiaTransito { get; set; }
+
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="elemento">Elemento</param>
+        public void AddDefensivo(Defensivo elemento)
+        {
+            if (Defensivo == null)
+            {
+                Defensivo = new List<Defensivo>();
+            }
+
+            Defensivo.Add(elemento);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista Defensivo (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da Defensivo</returns>
+        public Defensivo GetDefensivo(int index)
+        {
+            if ((Defensivo?.Count ?? 0) == 0)
+            {
+                return default;
+            };
+
+            return Defensivo[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista Defensivo
+        /// </summary>
+        public int GetDefensivoCount => (Defensivo != null ? Defensivo.Count : 0);
+
+#endif
     }
 
     /// <summary>
@@ -12596,7 +12635,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 #endif
     [Serializable()]
     [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
-
     public class Defensivo
     {
         /// <summary>
@@ -12633,13 +12671,8 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// UF de emissão da guia
         /// </summary>
-#if INTEROP
         [XmlElement("UF")]
-        public UFBrasil UFGuia { get; set; } = UFBrasil.NaoDefinido;
-#else
-        [XmlElement("UF")]
-        public UFBrasil? UFGuia { get; set; }
-#endif
+        public UFBrasil UFGuia { get; set; }
 
         /// <summary>
         /// Informar sempre que houver a série da guia
@@ -12655,11 +12688,6 @@ namespace Unimake.Business.DFe.Xml.NFe
 
         #region ShouldSerialize
 
-#if INTEROP
-        public bool ShouldSerializeUFGuia() => UFGuia != UFBrasil.NaoDefinido;
-#else
-        public bool ShouldSerializeUFGuia() => UFGuia != null;
-#endif
         public bool ShouldSerializeSerieGuia() => !string.IsNullOrWhiteSpace(SerieGuia);
 
         #endregion
