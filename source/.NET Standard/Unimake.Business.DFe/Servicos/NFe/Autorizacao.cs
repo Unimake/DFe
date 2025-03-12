@@ -239,6 +239,14 @@ namespace Unimake.Business.DFe.Servicos.NFe
                                     autorizado = true;
 
                                     break;
+
+                                default: //Rejeitado
+                                    if (RetConsSitNFes.Count <= 0)
+                                    {
+                                        goto case 100;
+                                    }
+
+                                    break;
                             }
 
                             if (!autorizado)
