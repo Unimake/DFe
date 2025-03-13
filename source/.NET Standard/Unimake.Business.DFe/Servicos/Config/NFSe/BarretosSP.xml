@@ -1,81 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Servicos ID="NFSe">
-    <GerarNfse versao="3.00">
-      <Descricao>Envio de NFSe Síncrono</Descricao>
-      <WebEnderecoHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php</WebEnderecoProducao>
-      <WebActionHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php#GerarNota</WebActionHomologacao>
-      <WebActionProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php#GerarNota</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>3.00</SchemaVersao>
-      <TargetNS></TargetNS>
-    </GerarNfse>
-    <CancelarNfse versao="3.00">
-      <Descricao>Cancelar nota fiscal de serviço</Descricao>
-      <WebEnderecoHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php</WebEnderecoProducao>
-      <WebActionHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php#CancelarNfse</WebActionHomologacao>
-      <WebActionProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php#CancelarNfse</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>3.00</SchemaVersao>
-      <TargetNS></TargetNS>
-    </CancelarNfse>
-    <ConsultarNotaValida versao="3.00">
-      <Descricao>Consulta nota fiscal de serviço válida</Descricao>
-      <WebEnderecoHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php</WebEnderecoProducao>
-      <WebActionHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php#ConsultarNotaValida</WebActionHomologacao>
-      <WebActionProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php#ConsultarNotaValida</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>3.00</SchemaVersao>
-      <TargetNS></TargetNS>   
-    </ConsultarNotaValida>
-    <ConsultarNotaPrestador versao="3.00">
-      <Descricao>Consulta nota fiscal de serviço do prestador</Descricao>
-      <WebEnderecoHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php</WebEnderecoProducao>
-      <WebActionHomologacao>https://testebarretos.sigiss.com.br/testebarretos/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionHomologacao>
-      <WebActionProducao>https://barretos.sigiss.com.br/barretos/ws/sigiss_ws.php#ConsultarNotaPrestador</WebActionProducao>
-      <SchemaArquivo>nfse_v3-00.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-      <WebContentType>text/xml; charset=iso-8859-1</WebContentType>
-      <WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sigiss_ws"><soapenv:Header/><soapenv:Body>{xmlBody}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-      <WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
-      <WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-      <WebSoapVersion>soap12</WebSoapVersion>
-      <SchemaVersao>3.00</SchemaVersao>
-      <TargetNS></TargetNS>   
-    </ConsultarNotaPrestador>
-  </Servicos>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.03">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.03">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRpsSincrono</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincronoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsSincronoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.03">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/GerarNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/GerarNfse</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></GerarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:GerarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.03">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.03">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/SubstituirNfse</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>SubstituirNfseEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>SubstituicaoNfse</TagLoteAtributoID>
+			<TagExtraAssinatura>Pedido</TagExtraAssinatura>
+			<TagExtraAtributoID>InfPedidoCancelamento</TagExtraAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SubstituirNfseRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></SubstituirNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:SubstituirNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.03">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.03">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.03">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoPrestadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoPrestadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.03">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseServicoTomadoRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfseServicoTomadoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseFaixa versao="2.03">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://barretos.prefeitura.rlz.com.br/webservice/nfse?wsd  l</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://cidadaoonline.barretos.sp.gov.br/webservice/nfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorFaixa</WebActionProducao>
+			<SchemaArquivo>XSDRLZ_Informatica_02.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorFaixaRequest xmlns="http://nfse.abrasf.org.br"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.03&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorFaixaRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:ConsultarNfsePorFaixaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.03</SchemaVersao>
+			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
 </Configuracoes>

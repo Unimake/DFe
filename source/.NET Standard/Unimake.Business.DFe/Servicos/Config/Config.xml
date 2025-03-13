@@ -201,7 +201,7 @@
 		<Nome>Barretos - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>BarretosSP.xml</ArqConfig>
-		<PadraoNFSe>SIGCORP</PadraoNFSe>
+		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3305109">
 		<Nome>São João de Meriti - RJ</Nome>
