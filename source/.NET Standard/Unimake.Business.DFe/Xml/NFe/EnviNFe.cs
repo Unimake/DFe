@@ -12585,7 +12585,6 @@ namespace Unimake.Business.DFe.Xml.NFe
         [XmlElement("guiaTransito")]
         public GuiaTransito GuiaTransito { get; set; }
 
-
 #if INTEROP
 
         /// <summary>
@@ -12671,7 +12670,7 @@ namespace Unimake.Business.DFe.Xml.NFe
         /// <summary>
         /// UF de emissão da guia
         /// </summary>
-        [XmlElement("UF")]
+        [XmlElement("UFGuia")]
         public UFBrasil UFGuia { get; set; }
 
         /// <summary>
