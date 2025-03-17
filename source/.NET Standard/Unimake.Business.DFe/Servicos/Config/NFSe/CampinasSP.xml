@@ -1,101 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<CancelarNfse versao="1.00">
-			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:cancelar soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScapeEnvio}</mensagemXml></proc:cancelar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:cancelarResponse</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<TargetNS></TargetNS>
-		</CancelarNfse>
-		<ConsultarLoteRps versao="1.00">
-			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarLote soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:consultarLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:consultarLoteResponse</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<TargetNS></TargetNS>
-		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="1.00">
-			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarNFSeRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScapeEnvio}</mensagemXml></proc:consultarNFSeRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:consultarNFSeRpsResponse</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<TargetNS></TargetNS>
-		</ConsultarNfsePorRps>
-		<ConsultarNotaValida versao="1.00">
-			<Descricao></Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarNota soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScapeEnvio}</mensagemXml></proc:consultarNota></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:consultarNotaResponse</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<TargetNS></TargetNS>
-		</ConsultarNotaValida>
-		<ConsultarSequenciaLoteNotaRPS versao="1.00">
-			<Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarSequencialRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:consultarSequencialRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:consultarSequencialRpsResponse</WebTagRetorno>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<TargetNS></TargetNS>
-		</ConsultarSequenciaLoteNotaRPS>
-		<RecepcionarLoteRpsSincrono versao="1.00">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoProducao>https://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</WebEnderecoProducao>
-			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
-			<TagAtributoID>Lote</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:enviarSincrono soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:enviarSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns1:enviarSincronoResponse</WebTagRetorno>
-			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
-			<WebEncodingRetorno>iso-8859-1</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<TargetNS></TargetNS>
-		</RecepcionarLoteRpsSincrono>
 		<!--Nova versao de Campinas - 2.03-->
 		<RecepcionarLoteRps versao="2.03">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -114,7 +24,7 @@
 		<RecepcionarLoteRpsSincrono versao="2.03">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -133,7 +43,7 @@
 		<GerarNfse versao="2.03">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -152,7 +62,7 @@
 		<CancelarNfse versao="2.03">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -171,7 +81,7 @@
 		<SubstituirNfse versao="2.03">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -192,7 +102,7 @@
 		<ConsultarLoteRps versao="2.03">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -211,7 +121,7 @@
 		<ConsultarNfsePorRps versao="2.03">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -230,7 +140,7 @@
 		<ConsultarNfseServicoPrestado versao="2.03">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -249,7 +159,7 @@
 		<ConsultarNfseServicoTomado versao="2.03">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
@@ -268,7 +178,7 @@
 		<ConsultarNfseFaixa versao="2.03">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
 			<WebEnderecoHomologacao>https://homol-rps.ima.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap</WebEnderecoHomologacao>
-			<WebEnderecoProducao></WebEnderecoProducao>
+			<WebEnderecoProducao>https://novanfse.campinas.sp.gov.br/notafiscal-abrasfv203-ws/NotaFiscalSoap?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v2-03_ima.xsd</SchemaArquivo>
