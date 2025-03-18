@@ -9,11 +9,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Unimake.Business.DFe.Utility;
 using System.Net.Http;
-using System.Net;
-using Unimake.Business.DFe.Xml.CTe;
-using Unimake.Business.DFe.Xml.ESocial;
-using Unimake.Business.DFe.Xml.NFe;
-using Unimake.Business.DFe.Xml.SNCM;
 
 namespace Unimake.Business.DFe.Servicos
 {
