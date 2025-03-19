@@ -3012,7 +3012,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
 		<PackageReference Include="Unimake.Cryptography" Version="20250317.1126.0" />
-		<PackageReference Include="Unimake.Extensions" Version="20250317.1126.0" />
+		<PackageReference Include="Unimake.Extensions" Version="20250318.1457.1" />
 		<PackageReference Include="Unimake.Utils" Version="20250317.1126.0" />
 	</ItemGroup>
 
