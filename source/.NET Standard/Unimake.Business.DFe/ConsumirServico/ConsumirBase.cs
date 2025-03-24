@@ -325,6 +325,11 @@ namespace Unimake.Business.DFe
                 else
                 {
                     RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
+
+                    if (soap.PadraoNFSe == PadraoNFSe.DSF && tagRetorno == "soap:Fault")
+                    {
+                        RetornoServicoString = retornoXml.OuterXml;
+                    }
                 }
             }
             else
