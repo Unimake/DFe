@@ -8,8 +8,8 @@
 			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
 			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
+			<TagAssinatura>ns2:Rps</TagAssinatura>
+			<TagAtributoID>ns2:InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>ns4:EnviarLoteRpsEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>ns4:LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
