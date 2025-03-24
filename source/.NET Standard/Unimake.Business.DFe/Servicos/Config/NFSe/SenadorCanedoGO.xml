@@ -3,8 +3,8 @@
 	<Servicos ID="NFSe">
 		<RecepcionarLoteRps versao="2.01">
 			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -22,8 +22,8 @@
 		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.01">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -41,8 +41,8 @@
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.01">
 			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -60,8 +60,8 @@
 		</GerarNfse>
 		<CancelarNfse versao="2.01">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -79,8 +79,8 @@
 		</CancelarNfse>
 		<SubstituirNfse versao="2.01">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -98,8 +98,8 @@
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.01">
 			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -117,8 +117,8 @@
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.01">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -136,8 +136,8 @@
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.01">
 			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -155,8 +155,8 @@
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="2.01">
 			<Descricao>Consulta NFSe de serviços tomados</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
@@ -174,8 +174,8 @@
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseFaixa versao="2.01">
 			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://200.233.141.227:5661/IssWeb-ejb/IssWebWS/IssWebWS?wsdl</WebEnderecoProducao>
+			<WebEnderecoHomologacao>http://fi1.fiorilli.com.br:5663/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://servicosweb.senadorcanedo.go.gov.br/IssWeb-ejb/IssWebWS/IssWebWS</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo>nfse_v201.xsd</SchemaArquivo>
