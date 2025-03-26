@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 955
+  Left = 492
   Height = 656
-  Top = 203
+  Top = 484
   Width = 1233
   Caption = 'Como utilizar a DLL Unimake.DFe para envio de NFe, NFCe, CTe, etc.'
   ClientHeight = 656
@@ -54,6 +54,24 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Enviar NFe Síncrono - Duplicidade'
       OnClick = btnEnviarNFeSincronoDuplicidadeClick
       TabOrder = 3
+    end
+    object btnConsultarSituacaoNFe: TButton
+      Left = 12
+      Height = 38
+      Top = 191
+      Width = 324
+      Caption = 'Consulta Situação da NFe'
+      OnClick = btnConsultarSituacaoNFeClick
+      TabOrder = 4
+    end
+    object btnEventoCancelamentoNFe: TButton
+      Left = 12
+      Height = 38
+      Top = 240
+      Width = 324
+      Caption = 'Enviar o Evento de Cancelamento'
+      OnClick = btnEventoCancelamentoNFeClick
+      TabOrder = 5
     end
   end
 end

@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="87" Y="13"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="67"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -19,9 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Main"/>
-        <TopLine Value="33"/>
-        <CursorPos X="13" Y="33"/>
-        <UsageCount Value="64"/>
+        <TopLine Value="57"/>
+        <CursorPos X="80" Y="10"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,7 +32,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="26597"/>
         <CursorPos X="37" Y="26598"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="58"/>
       </Unit>
       <Unit>
         <Filename Value="consultarstatusnfe.pas"/>
@@ -41,7 +41,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="5"/>
         <CursorPos X="70" Y="47"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="56"/>
       </Unit>
       <Unit>
         <Filename Value="enviarnfesincrono.pas"/>
@@ -49,7 +49,7 @@
         <UnitName Value="EnviarNFeSincrono"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="34" Y="17"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="55"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
@@ -70,8 +70,8 @@
       <Unit>
         <Filename Value="D:\lazarus\lcl\include\application.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="924"/>
-        <CursorPos X="34" Y="1057"/>
+        <TopLine Value="1028"/>
+        <CursorPos Y="1072"/>
         <UsageCount Value="10"/>
       </Unit>
       <Unit>
@@ -91,108 +91,157 @@
       <Unit>
         <Filename Value="enviarnfesincronoduplicidade.pas"/>
         <UnitName Value="EnviarNFeSincronoDuplicidade"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="consultarsituacaonfe.pas"/>
+        <UnitName Value="ConsultarSituacaoNFe"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="13"/>
+        <CursorPos Y="33"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\lazarus\lcl\interfaces\win32\win32callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2478"/>
+        <CursorPos X="17" Y="2507"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <UnitName Value="EventoCancelamentoNFe"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="286"/>
-        <CursorPos X="27" Y="303"/>
+        <TopLine Value="75"/>
+        <CursorPos X="27" Y="88"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="23">
+    <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="62" Column="46" TopLine="20"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="86" Column="77" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="77" Column="32" TopLine="29"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="80" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="50" Column="22" TopLine="33"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="82" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="75" Column="34" TopLine="34"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="85" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="237" Column="41" TopLine="227"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="86" TopLine="60"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="387" Column="7" TopLine="338"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="49" Column="28" TopLine="23"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="81" TopLine="29"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="381" Column="11" TopLine="329"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="83" TopLine="31"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="392" Column="7" TopLine="361"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="71" Column="31" TopLine="34"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="70" TopLine="32"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="87" TopLine="35"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="404" Column="20" TopLine="377"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="89" TopLine="46"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="397" Column="35" TopLine="383"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="115" TopLine="61"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="114" Column="33" TopLine="88"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="83" Column="48" TopLine="61"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="420" TopLine="374"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="89" Column="27" TopLine="61"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="389" TopLine="373"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="84" TopLine="78"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="386" Column="12" TopLine="364"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="128" Column="9" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="397" Column="18" TopLine="367"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="92" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="73" Column="27" TopLine="38"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="95" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="403" Column="25" TopLine="373"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="96" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="74" Column="35" TopLine="35"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="97" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="405" Column="23" TopLine="374"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="98" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="417" Column="22" TopLine="374"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="97" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="103" TopLine="75"/>
       </Position>
       <Position>
-        <Filename Value="enviarnfesincronoduplicidade.pas"/>
-        <Caret Line="326" TopLine="274"/>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="92" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="95" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="96" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="97" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="98" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="97" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="eventocancelamentonfe.pas"/>
+        <Caret Line="103" TopLine="75"/>
       </Position>
     </JumpHistory>
     <RunParams>

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComObj,
   ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDuplicidade,
-  EnviarNFeSincronoDesserializacao;
+  EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe;
 
 type
 
@@ -18,11 +18,15 @@ type
     btnEnviarNFeSincrono: TButton;
     btnEnviarNFeSincronoDesserializacao: TButton;
     btnEnviarNFeSincronoDuplicidade: TButton;
+    btnConsultarSituacaoNFe: TButton;
+    btnEventoCancelamentoNFe: TButton;
     GroupBox1: TGroupBox;
+    procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
     procedure btnEnviarNFeSincronoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDuplicidadeClick(Sender: TObject);
+    procedure btnEventoCancelamentoNFeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
   private
@@ -43,6 +47,16 @@ implementation
 procedure TfrmPrincipal.btnConsultaStatusNFeClick(Sender: TObject);
 var
   oServico: TConsultarStatusNFe;
+begin
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
+
+procedure TfrmPrincipal.btnConsultarSituacaoNFeClick(Sender: TObject);
+var
+  oServico: TConsultarSituacaoNFe;
 begin
   try
     oServico.Executar();
@@ -80,6 +94,15 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.btnEventoCancelamentoNFeClick(Sender: TObject);
+var
+  oServico: TEventoCancelamentoNFe;
+begin
+  try
+    oServico.Executar();
+  finally
+  end;
+end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
