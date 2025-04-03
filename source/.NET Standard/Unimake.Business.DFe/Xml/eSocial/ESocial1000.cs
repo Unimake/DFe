@@ -20,7 +20,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
 
     [Serializable()]
-    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v_S_01_02_00", IsNullable = false)]
+    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v_S_01_03_00", IsNullable = false)]
     public class ESocial1000 : XMLBaseESocial
     {
         /// <summary>
@@ -273,18 +273,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public string DtTrans11096 { get; set; }
 
         /// <summary>
-        /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP
-        /// </summary>
-        [XmlElement("indTribFolhaPisCofins")]
-        [Obsolete("Propriedade obsoleta, só é aceita na versão 01.02.00 do eSocial. Nas versões superiores ela foi substituída pela propriedade IndTribFolhaPisPasep.", false)]
-
-#if INTEROP
-        public SimNaoLetra IndTribFolhaPisCofins { get; set; } = (SimNaoLetra)(-1);
-#else
-        public SimNaoLetra? IndTribFolhaPisCofins { get; set; }
-#endif
-
-        /// <summary>
         /// Indicador de tributação sobre a folha de pagamento - PIS e PASEP. Preenchimento exclusivo para o empregador em situação de tributação de PIS e PASEP sobre a folha de pagamento.
         /// </summary>
         [XmlElement("indTribFolhaPisPasep")]
@@ -331,12 +319,6 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndPorte() => IndPorte != (SimNaoLetra)(-1);
 #else
         public bool ShouldSerializeIndPorte() => IndPorte != null;
-#endif
-
-#if INTEROP
-        public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != (SimNaoLetra)(-1);
-#else
-        public bool ShouldSerializeIndTribFolhaPisCofins() => IndTribFolhaPisCofins != null;
 #endif
 
 #if INTEROP

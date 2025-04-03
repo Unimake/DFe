@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Versão do Schema dos XML dos eventos
         /// </summary>
         [XmlIgnore]
-        public string VersaoSchema { get; set; } = "v_S_01_02_00";
+        public string VersaoSchema { get; set; } = "v_S_01_03_00";
 
         /// <summary>
         /// Serializa o objeto (Converte o objeto para XML)
