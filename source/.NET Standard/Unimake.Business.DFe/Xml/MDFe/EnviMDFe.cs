@@ -2066,7 +2066,7 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// <summary>
         /// Verifica se deve serializar o campo UF (não nulo)
         /// </summary>
-        public bool ShouldSerializeUF() => UF != null;
+        public bool ShouldSerializeUF() => UF != null && UF != UFBrasil.NaoDefinido;
 #endif
 
         #endregion ShouldSerialize
