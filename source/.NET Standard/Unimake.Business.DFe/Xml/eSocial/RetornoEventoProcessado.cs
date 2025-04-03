@@ -402,25 +402,25 @@ namespace Unimake.Business.DFe.Xml.ESocial.Retorno
         /// <summary>
         /// S-5001 - Informações das Contribuições Sociais por Trabalhador
         /// </summary>
-        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_02_00")]
+        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtBasesTrab/v_S_01_03_00")]
         public ESocial5001 ESocial5001 { get; set; }
 
         /// <summary>
         /// S-5002 - Imposto de Renda Retido na Fonte por Trabalhador
         /// </summary>
-        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_02_00")]
+        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_03_00")]
         public ESocial5002 ESocial5002 { get; set; }
 
         /// <summary>
         /// S-5011 - Informações das Contribuições Sociais Consolidadas por Contribuinte
         /// </summary>
-        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_02_00")]
+        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtCS/v_S_01_03_00")]
         public ESocial5011 ESocial5011 { get; set; }
 
         /// <summary>
         /// S-5012 - Imposto de Renda Retido na Fonte Consolidado por Contribuinte
         /// </summary>
-        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrf/v_S_01_02_00")]
+        [XmlElement("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtIrrf/v_S_01_03_00")]
         public ESocial5012 ESocial5012 { get; set; }
     }
 

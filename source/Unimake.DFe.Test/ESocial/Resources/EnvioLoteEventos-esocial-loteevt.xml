@@ -11,7 +11,7 @@
 		</ideTransmissor>
 		<eventos>
 			<evento Id="ID1000000000000002017111710361100001">
-				<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v_S_01_02_00">
+				<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v_S_01_03_00">
 					<evtInfoEmpregador Id="ID1000000000000002017102608080800001">
 						<ideEvento>
 							<tpAmb>1</tpAmb>
@@ -54,7 +54,7 @@
 				</eSocial>
 			</evento>
 			<evento Id="ID1000000000000002017111710361200001">
-				<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtTabEstab/v_S_01_02_00">
+				<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtTabEstab/v_S_01_03_00">
 					<evtTabEstab Id="ID1000000000000002017102608080800001">
 						<ideEvento>
 							<tpAmb>1</tpAmb>

@@ -69,7 +69,7 @@
 					</eSocial>
 				</retornoEvento>
 				<tot tipo="S5002">
-					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_00_00">
+					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_03_00">
 						<evtIrrfBenef Id="ID1123456780000002022060711524600121">
 							<ideEvento>
 								<nrRecArqBase>1.1.1234567980123456789</nrRecArqBase>
@@ -177,7 +177,7 @@
 					</eSocial>
 				</retornoEvento>
 				<tot tipo="S5002">
-					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_00_00">
+					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_03_00">
 						<evtIrrfBenef Id="ID1123456780000002022060711524600123">
 							<ideEvento>
 								<nrRecArqBase>1.1.1234567980123456789</nrRecArqBase>

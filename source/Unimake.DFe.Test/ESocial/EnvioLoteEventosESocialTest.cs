@@ -16,8 +16,6 @@ namespace Unimake.DFe.Test.ESocial
         /// </summary>
         [Theory]
         [Trait("DFe", "ESocial")]
-        [InlineData(TipoAmbiente.Producao, "v_S_01_02_00")]
-        [InlineData(TipoAmbiente.Homologacao, "v_S_01_02_00")]
         [InlineData(TipoAmbiente.Producao, "v_S_01_03_00")]
         [InlineData(TipoAmbiente.Homologacao, "v_S_01_03_00")]
         public void ESocialEnvioLoteEventosS1000(TipoAmbiente tipoAmbiente, string versaoSchema)

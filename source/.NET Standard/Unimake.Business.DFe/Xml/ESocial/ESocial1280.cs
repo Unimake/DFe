@@ -21,7 +21,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtInfoComplPer/v_S_01_02_00", IsNullable = false)]
+    [XmlRoot("eSocial", Namespace = "http://www.esocial.gov.br/schema/evt/evtInfoComplPer/v_S_01_03_00", IsNullable = false)]
     public class ESocial1280 : XMLBaseESocial
     {
         /// <summary>
@@ -177,7 +177,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         [XmlElement("percRedContrib")]
         public string PercRedContribField
         {
-            get => PercRedContrib.ToString("F4", CultureInfo.InvariantCulture);
+            get => PercRedContrib.ToString("F2", CultureInfo.InvariantCulture);
             set => PercRedContrib = Converter.ToDouble(value);
         }
     }

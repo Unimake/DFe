@@ -115,6 +115,36 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             }
 
             Inicializar(eSocialEnviarLoteEventos?.GerarXML() ?? throw new ArgumentNullException(nameof(eSocialEnviarLoteEventos)), configuracao);
+
+            #region Limpar a assinatura do objeto para assinarmos novamente evitando problemas - Autor: Wesley Data: 03/04/25 Ticket: #172039
+
+            foreach (var evento in ESocialEnvioLoteEventos.EnvioLoteEventos.Eventos.Evento)
+            {
+                var propriedades = evento.GetType().GetProperties();
+
+                foreach (var propriedade in propriedades)
+                {
+                    var valorEvento = propriedade.GetValue(evento);
+
+                    if (valorEvento != null)
+                    {
+                        var propriedadeAssinatura = valorEvento.GetType().GetProperty("Signature");
+
+                        propriedadeAssinatura?.SetValue(valorEvento, null);
+                    }
+                }
+            }
+
+            // Atualiza o ConteudoXML sem as assinaturas que vieram no XML
+            ConteudoXML = ESocialEnvioLoteEventos.GerarXML();
+
+            // Força a assinatura agora da DLL
+            _ = ConteudoXMLAssinado;
+
+            // Atualiza o objeto ESocialEnvioLoteEventos com o novo ConteudoXML
+            ESocialEnvioLoteEventos = ESocialEnvioLoteEventos.LerXML<ESocialEnvioLoteEventos>(ConteudoXML);
+
+            #endregion Limpar a assinatura do objeto para assinarmos novamente evitando problemas - Autor: Wesley Data: 03/04/25 Ticket: #172039
         }
 
         #endregion Public Constructors
