@@ -69,7 +69,7 @@
 					</eSocial>
 				</retornoEvento>
 				<tot tipo="S5002">
-					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_02_00">
+					<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtIrrfBenef/v_S_01_03_00">
 						<evtIrrfBenef Id="ID0020000000000000000000014930463397">
 							<ideEvento>
 								<nrRecArqBase>1.1.0000000014930463397</nrRecArqBase>
