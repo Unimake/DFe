@@ -1733,4 +1733,10 @@
 		<ArqConfig>BrusqueSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3305802">
+		<Nome>Teresópolis - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>TeresopolisRJ.xml</ArqConfig>
+		<PadraoNFSe>WEBISS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
