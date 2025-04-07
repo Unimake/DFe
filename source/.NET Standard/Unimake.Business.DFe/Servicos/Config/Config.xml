@@ -1739,4 +1739,10 @@
 		<ArqConfig>TeresopolisRJ.xml</ArqConfig>
 		<PadraoNFSe>WEBISS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4318705">
+		<Nome>São Leopoldo - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SaoLeopoldoRS.xml</ArqConfig>
+		<PadraoNFSe>THEMA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

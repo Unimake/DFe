@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfehomologacao.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEremessa?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfe.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEremessa?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><recepcionarLoteRps><xml>{xmlBodyScapeEnvio}</xml></recepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfehomologacao.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEcancelamento?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfe.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEcancelamento?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura>CancelarNfseEnvio</TagAssinatura>
+			<TagAtributoID>Pedido</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><cancelarNfse><xml>{xmlBodyScapeEnvio}</xml></cancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consultar lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfehomologacao.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfe.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consultar NFS-e</Descricao>
+			<WebEnderecoHomologacao>https://nfehomologacao.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfe.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarNfse><xml>{xmlBodyScapeEnvio}</xml></consultarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfse>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consultar NFS-e por RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfehomologacao.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfe.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarNfsePorRps><xml>{xmlBodyScapeEnvio}</xml></consultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consultar da Situação do Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfehomologacao.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoHomologacao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebEnderecoProducao>https://nfe.saoleopoldo.rs.gov.br/thema-nfse/services/NFSEconsulta?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>nfse.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://server.nfse.thema.inf.br"><soapenv:Header/><soapenv:Body><consultarSituacaoLoteRps><xml>{xmlBodyScapeEnvio}</xml></consultarSituacaoLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>
