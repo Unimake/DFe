@@ -37,6 +37,7 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
         protected override void DefinirConfiguracao()
         {
             Configuracoes.Load(GetType().Name);
+            base.DefinirConfiguracao();
         }
 
         /// <summary>
