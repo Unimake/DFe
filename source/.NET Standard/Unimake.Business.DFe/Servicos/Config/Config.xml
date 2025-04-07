@@ -1745,4 +1745,10 @@
 		<ArqConfig>SaoLeopoldoRS.xml</ArqConfig>
 		<PadraoNFSe>THEMA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2932903">
+		<Nome>Valença - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>ValencaBA.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

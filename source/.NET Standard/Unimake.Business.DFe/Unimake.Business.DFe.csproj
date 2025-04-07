@@ -550,6 +550,7 @@
 		<None Remove="Servicos\Config\NFSe\UberlandiaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\UmuaramaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\UruguaianaRS.xml" />
+		<None Remove="Servicos\Config\NFSe\ValencaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\VarginhaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\VarzeaGrandeMT.xml" />
 		<None Remove="Servicos\Config\NFSe\VeraCruzRS.xml" />
@@ -1390,6 +1391,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TresArroiosRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TimboSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\UmuaramaPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ValencaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\VarzeaGrandeMT.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
