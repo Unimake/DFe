@@ -14,7 +14,6 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Text;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Unimake.Business.DFe.Servicos
 {
@@ -118,7 +117,8 @@ namespace Unimake.Business.DFe.Servicos
 
         private HttpContent EnveloparXML()
         {
-            var xmlBody = ConteudoXML.OuterXml;
+            var xmlBody = ConteudoXMLAssinado.OuterXml;
+
             if (Configuracoes.GZIPCompress)
             {
                 xmlBody = Convert.ToBase64String(Encoding.UTF8.GetBytes(xmlBody));
