@@ -2,7 +2,7 @@
 <GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
 	<Rps xmlns="http://www.abrasf.org.br/nfse.xsd">
 		<InfDeclaracaoPrestacaoServico Id="ID1999999990001911733160024200900000000001">
-			<Rps Id="RPS6">
+			<Rps Id="RPS7">
 				<IdentificacaoRps>
 					<Numero>6</Numero>
 					<Serie>A123</Serie>
