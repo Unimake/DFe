@@ -1155,6 +1155,8 @@
 		<None Remove="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
+		<None Remove="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<None Remove="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
@@ -1347,6 +1349,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PrimaveraDoLesteMT.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCarlosSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -2983,6 +2986,8 @@
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SMARAPD\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\nfse-v2-01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\SONNER\xmldsig-core-schema20020212.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\nfse.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\NFSe\THEMA\xmldsig-core-schema20020212.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TINUS\nfsetempuri.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\nfse_municipal_v01.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\NFSe\TIPLAN\Tipos_NFSe_v01.xsd" />
