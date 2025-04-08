@@ -1751,4 +1751,10 @@
 		<ArqConfig>ValencaBA.xml</ArqConfig>
 		<PadraoNFSe>EL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3154606">
+		<Nome>Ribeirão das Neves - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>RibeiraoDasNevesMG.xml</ArqConfig>
+		<PadraoNFSe>QUASAR</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
