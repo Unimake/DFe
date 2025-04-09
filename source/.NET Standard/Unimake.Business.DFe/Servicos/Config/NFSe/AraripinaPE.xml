@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<CancelarNfse versao="1.00">
+			<Descricao>Envio do cancelamento de NFSe</Descricao>
+			<RequestURIProducao>https://araripina.hm2solucoes.com.br/tributacao/CancelarNfse.rule?sys=TRB</RequestURIProducao>
+			<RequestURIHomologacao>http://hm2solucoes.com:8081/ws_nfe/CancelarNfse.rule?sys=TRB</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/x-www-form-urlencoded</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+			<UsaCertificadoDigital>true</UsaCertificadoDigital>
+		</CancelarNfse>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<RequestURIProducao>https://araripina.hm2solucoes.com.br/tributacao/RecepcionarLoteRps.rule?sys=TRB</RequestURIProducao>
+			<RequestURIHomologacao>http://hm2solucoes.com:8081/ws_nfe/RecepcionarLoteRps.rule?sys=TRB</RequestURIHomologacao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>application/x-www-form-urlencoded</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<WebEncodingRetorno></WebEncodingRetorno>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consultar NFSe</Descricao>
+			<RequestURIProducao>https://araripina.hm2solucoes.com.br/tributacao/ConsultarNfsePorRps.rule?sys=TRB</RequestURIProducao>
+			<RequestURIHomologacao>http://hm2solucoes.com:8081/ws_nfe/ConsultarNfsePorRps.rule?sys=TRB</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/x-www-form-urlencoded</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress></GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoTomado versao="1.00">
+			<Descricao>Consultar NFSe Servico Tomado</Descricao>
+			<RequestURIProducao>https://araripina.hm2solucoes.com.br/tributacao/CancelarNfse.rule?sys=TRB</RequestURIProducao>
+			<RequestURIHomologacao>http://hm2solucoes.com:8081/ws_nfe/CancelarNfse.rule?sys=TRB</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/x-www-form-urlencoded</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress></GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfseServicoTomado>
+		<ConsultarNfseServicoPrestado versao="1.00">
+			<Descricao>Consultar NFSe Servico Prestado</Descricao>
+			<RequestURIProducao>https://araripina.hm2solucoes.com.br/tributacao/ConsultarNfseServicoPrestado.rule?sys=TRB</RequestURIProducao>
+			<RequestURIHomologacao>http://hm2solucoes.com:8081/ws_nfe/ConsultarNfseServicoPrestado.rule?sys=TRB</RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString></WebSoapString>
+			<WebContentType>application/x-www-form-urlencoded</WebContentType>
+			<WebTagRetorno>prop:innertext</WebTagRetorno>
+			<SchemaVersao></SchemaVersao>
+			<GZIPCompress></GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfseServicoPrestado>
+	</Servicos>
+</Configuracoes>

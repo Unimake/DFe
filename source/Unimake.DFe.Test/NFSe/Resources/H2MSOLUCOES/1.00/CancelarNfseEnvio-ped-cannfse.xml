@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseServicoPrestado versao="1.00">
+	<Itemlistaservico></Itemlistaservico>
+	<Datainicial></Datainicial>
+	<Datafinal></Datafinal>
+</ConsultarNfseServicoPrestado>

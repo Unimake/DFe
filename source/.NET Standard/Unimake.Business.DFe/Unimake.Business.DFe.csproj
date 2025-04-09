@@ -1336,6 +1336,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\LontrasSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ManausAM.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MarcolandiaPI.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AraripinaPE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NatalRN.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaBassanoRS.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>

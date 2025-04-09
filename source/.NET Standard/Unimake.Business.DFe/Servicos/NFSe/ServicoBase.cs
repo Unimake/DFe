@@ -10,6 +10,8 @@ using Unimake.Exceptions;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace Unimake.Business.DFe.Servicos.NFSe
 {
@@ -63,9 +65,42 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.NACIONAL:
                     NACIONAL();
                     break;
+
+                case PadraoNFSe.H2MSOLUCOES:
+                    H2MSOLUCOES();
+                    AuthorizationBasic();
+
+                    break;
             }
             Configuracoes.Definida = true;
             base.DefinirConfiguracao();
+        }
+
+        private void H2MSOLUCOES()
+        {
+            if (!ConteudoXML.GetElementsByTagName("EnviarLoteRpsEnvio").IsNullOrEmpty())
+            {
+                _ = ConteudoXMLAssinado;
+
+                var parameters = new Dictionary<string, string>
+                {
+                    { "xml", ConteudoXMLAssinado.OuterXml }
+                };
+
+                Configuracoes.HttpContent = new FormUrlEncodedContent(parameters);
+            }
+            else
+            {
+                XDocument document = XDocument.Parse(ConteudoXML.OuterXml);
+                var dictionary = new Dictionary<string, string>();
+
+                foreach (var parameters in document.Descendants())
+                {
+                    dictionary.Add(parameters.Name.ToString(), parameters.Value);
+                }
+
+                Configuracoes.HttpContent = new FormUrlEncodedContent(dictionary);
+            }
         }
 
         #region Configurações separadas por PadrãoNFSe
@@ -101,7 +136,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void IPM()
         {
-            AjusteTokenIPM();
+            AuthorizationBasic();
 
             if (Configuracoes.SchemaVersao == "2.80")
             {
@@ -194,11 +229,6 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             }
         }
 
-        private void AjusteTokenIPM()
-        {
-            Configuracoes.MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuracoes.MunicipioUsuario}:{Configuracoes.MunicipioSenha}"));
-        }
-
         #endregion IPM
 
         #region Bauhaus
@@ -260,6 +290,12 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             {
                 Configuracoes.CodigoMunicipio = (int)(CodigoPadraoNFSe)Enum.Parse(typeof(CodigoPadraoNFSe), Configuracoes.PadraoNFSe.ToString());
             }
+        }
+
+        private void AuthorizationBasic()
+        {
+            // H2MSolucoes homologação:  11222333000181:S3nh@
+            Configuracoes.MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuracoes.MunicipioUsuario}:{Configuracoes.MunicipioSenha}"));
         }
 
         private string GetXMLElementInnertext(string tag) => ConteudoXML.GetElementsByTagName(tag)[0]?.InnerText;

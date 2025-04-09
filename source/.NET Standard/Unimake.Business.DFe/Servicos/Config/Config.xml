@@ -1757,4 +1757,10 @@
 		<ArqConfig>RibeiraoDasNevesMG.xml</ArqConfig>
 		<PadraoNFSe>QUASAR</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2601102">
+		<Nome>Araripina - PE</Nome>
+		<UF>PE</UF>
+		<ArqConfig>AraripinaPE.xml</ArqConfig>
+		<PadraoNFSe>H2MSOLUCOES</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

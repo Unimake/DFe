@@ -6812,6 +6812,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("SISPMJP")]
         SISPMJP = 62,
+
+        /// <summary>
+        /// H2MSOLUCOES
+        /// </summary>
+        [Description("H2MSOLUCOES")]
+        H2MSOLUCOES = 63,
     }
 
     #endregion
