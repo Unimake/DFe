@@ -63,13 +63,13 @@ Function EnviarEsocial2200()
 	  oIdeEmpregador:nrInsc := "11111111"
 	  oEvtAdmissao:IdeEmpregador := oIdeEmpregador
 	  
-	  oTrabalhador := CreateObject("Unimake.Business.DFe.Xml.ESocial.Trabalhador")
+	  oTrabalhador := CreateObject("Unimake.Business.DFe.Xml.ESocial.Trabalhador2200")
 	  oTrabalhador:cpfTrab := "11111111111"
       oTrabalhador:nmTrab := "XXXXXXXX XXX XXXXXXX"
       oTrabalhador:sexo := 1 //1=TipoSexo.Masculino 2=TipoSexo.Feminino
       oTrabalhador:racaCor := 3 //RacaCor.Parda
       oTrabalhador:estCiv :=  1 //EstadoCivil.Solteiro
-      oTrabalhador:grauInstr :=  7 //GrauDeInstrucao.EnsinoMedioCompleto
+      oTrabalhador:grauInstr :=  7 //GrauDeInstrucao.EnsinoMedioCompleto	  
 	  
 	  oNascimento := CreateObject("Unimake.Business.DFe.Xml.ESocial.Nascimento")
 	  oNascimento:dtNasctoField := "2004-04-29"
@@ -77,7 +77,7 @@ Function EnviarEsocial2200()
 	  oNascimento:paisNac := "105"
 	  oTrabalhador:Nascimento := oNascimento
 	  
-	  oEndereco := CreateObject("Unimake.Business.DFe.Xml.ESocial.Endereco")
+	  oEndereco := CreateObject("Unimake.Business.DFe.Xml.ESocial.Endereco2200")
 	  oBrasil := CreateObject("Unimake.Business.DFe.Xml.ESocial.Brasil")
 	  oBrasil:tpLograd := "R"
 	  oBrasil:dscLograd := "RUA XXXXXXXXXX"
@@ -89,7 +89,7 @@ Function EnviarEsocial2200()
 	  oEndereco:Brasil := oBrasil	  
 	  oTrabalhador:Endereco := oEndereco
 	  
-	  oInfoDeficiencia := CreateObject("Unimake.Business.DFe.Xml.ESocial.InfoDeficiencia")
+	  oInfoDeficiencia := CreateObject("Unimake.Business.DFe.Xml.ESocial.InfoDeficiencia2200")
 	  oInfoDeficiencia:defFisica := 0 //SimNaoLetra.Nao
 	  oInfoDeficiencia:defVisual := 0 //SimNaoLetra.Nao
 	  oInfoDeficiencia:defAuditiva := 0 //SimNaoLetra.Nao
@@ -125,7 +125,7 @@ Function EnviarEsocial2200()
 	  oInfoContrato:nmCargo := "AUX LOGISTICA"
 	  oInfoContrato:CBOCargo := "517220"
 	  oInfoContrato:acumCargo := 0 //SimNaoLetra.Nao
-	  oInfoContrato:codCateg := "101"
+	  oInfoContrato:codCateg := 101
 	  
 	  oRemuneracao := CreateObject("Unimake.Business.DFe.Xml.ESocial.Remuneracao2200")
 	  oRemuneracao:vrSalFx = 1966.00

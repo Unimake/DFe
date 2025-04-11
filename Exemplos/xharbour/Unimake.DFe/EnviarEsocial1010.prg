@@ -65,7 +65,7 @@ Function EnviarEsocial1010()
 
 	  oInfoRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.InfoRubrica")
 	  
-	  oInclusao := CreateObject("Unimake.Business.DFe.Xml.ESocial.Inclusao")
+	  oInclusao := CreateObject("Unimake.Business.DFe.Xml.ESocial.Inclusao1010")
 	  
 	  oIdeRubrica := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeRubrica")
 	  oIdeRubrica:CodRubr := "554"

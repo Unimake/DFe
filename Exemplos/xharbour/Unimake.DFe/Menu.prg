@@ -96,6 +96,8 @@ Function Main()
    
    Aadd(aOpcoes, "Assinar XML")   
    
+   Aadd(aOpcoes, "eSocial - Evento 2206 - Enviar lote")
+   
    Do While .T.
       Cls
       
@@ -341,6 +343,9 @@ Function Main()
 
          case nOpcao = 75
               AssinarXML()
+			  
+         case nOpcao = 76
+              EnviarEsocial2206()			  
       endcase
    EndDo
 Return       

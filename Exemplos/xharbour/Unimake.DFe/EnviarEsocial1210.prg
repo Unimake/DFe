@@ -60,14 +60,14 @@ Function EnviarEsocial1210()
 	  oEvtPgtos:IdeEvento := oIdeEvento
 	  
       oEvtPgtos:IdeEmpregador := oIdeEmpregador
-	  
+	  	  
 	  oIdeBenef := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeBenef")
 	  oIdeBenef:CpfBenef := "60361011393"
 	  
 	  oInfoPgto := CreateObject("Unimake.Business.DFe.Xml.ESocial.InfoPgto")
 	  oInfoPgto:dtPgtoField := "2024-08-05"
 	  oInfoPgto:tpPgto := 1 
-	  oInfoPgto:perRefField := "2024-08"
+	  oInfoPgto:perRef := "2024-08"
 	  oInfoPgto:ideDmDev := "P2408" 
 	  oInfoPgto:vrLiq := 1530.00
 	  oIdeBenef:AddInfoPgto(oInfoPgto)
@@ -75,7 +75,7 @@ Function EnviarEsocial1210()
 	  oInfoPgto := CreateObject("Unimake.Business.DFe.Xml.ESocial.InfoPgto")
 	  oInfoPgto:dtPgtoField := "2024-08-20"
 	  oInfoPgto:tpPgto := 1 
-	  oInfoPgto:perRefField := "2024-08"
+	  oInfoPgto:perRef := "2024-08"
 	  oInfoPgto:ideDmDev := "A2408" 
 	  oInfoPgto:vrLiq := 920.00
 	  oIdeBenef:AddInfoPgto(oInfoPgto)

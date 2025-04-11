@@ -690,7 +690,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Unidade de pagamento da parte fixa da remuneração.
         /// </summary>
         [XmlElement("undSalFixo")]
-        public UndSalFixo UnidadeSalarioFixo { get; set; }
+        public UndSalFixo UndSalFixo { get; set; }
 
         /// <summary>
         /// Descrição do salário por tarefa ou variável e como este é
@@ -727,7 +727,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// 04-22], deve ser informado[2].
         /// </summary>
         [XmlElement("tpContr")]
-        public TipoDeContratoDeTrabalho TipoDeContratoDeTrabalho { get; set; }
+        public TipoDeContratoDeTrabalho TpContr { get; set; }
 
         /// <summary>
         /// Data do término do contrato por prazo determinado.
@@ -770,7 +770,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
         public bool ShouldSerializeDtTermField() => DtTerm > DateTime.MinValue;
-        public bool ShouldSerializeObjDet() => TipoDeContratoDeTrabalho == TipoDeContratoDeTrabalho.PrazoDeterminadoOcorrencia;
+        public bool ShouldSerializeObjDet() => TpContr == TipoDeContratoDeTrabalho.PrazoDeterminadoOcorrencia;
 
         #endregion ShouldSerialize
     }

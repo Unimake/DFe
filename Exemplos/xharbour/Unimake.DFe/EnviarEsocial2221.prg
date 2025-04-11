@@ -63,7 +63,7 @@ Function EnviarEsocial2221()
       oIdeEmpregador:nrInsc:= "23098563"
       oEvtToxic:IdeEmpregador:= oIdeEmpregador
       
-      oIdeVinculo:= CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
+      oIdeVinculo:= CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2221")
       oIdeVinculo:cpfTrab  := "11111111111"
       oIdeVinculo:matricula:= "1111111111"
       oEvtToxic:IdeVinculo:= oIdeVinculo
