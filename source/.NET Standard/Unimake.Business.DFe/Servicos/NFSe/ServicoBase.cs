@@ -66,8 +66,8 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                     NACIONAL();
                     break;
 
-                case PadraoNFSe.H2MSOLUCOES:
-                    H2MSOLUCOES();
+                case PadraoNFSe.HM2SOLUCOES:
+                    HM2SOLUCOES();
                     AuthorizationBasic();
 
                     break;
@@ -76,7 +76,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
             base.DefinirConfiguracao();
         }
 
-        private void H2MSOLUCOES()
+        private void HM2SOLUCOES()
         {
             if (!ConteudoXML.GetElementsByTagName("EnviarLoteRpsEnvio").IsNullOrEmpty())
             {
@@ -294,7 +294,7 @@ namespace Unimake.Business.DFe.Servicos.NFSe
 
         private void AuthorizationBasic()
         {
-            // H2MSolucoes homologação:  11222333000181:S3nh@
+            // HM2SOLUCOES homologação:  11222333000181:S3nh@
             Configuracoes.MunicipioToken = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuracoes.MunicipioUsuario}:{Configuracoes.MunicipioSenha}"));
         }
 
