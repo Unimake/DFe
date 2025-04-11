@@ -60,7 +60,7 @@ Function EnviarEsocial2220()
 	  
       oEvtMonit:IdeEmpregador := oIdeEmpregador
 	  
-	  oIdeVinculo := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
+	  oIdeVinculo := CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2220")
 	  oIdeVinculo:CpfTrab := "11111111111"
 	  oIdeVinculo:Matricula := "73"
 	  oEvtMonit:IdeVinculo := oIdeVinculo
@@ -140,7 +140,7 @@ Function EnviarEsocial2220()
       
       oEvtMonit:IdeEmpregador:= oIdeEmpregador
       
-      oIdeVinculo:= CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo")
+      oIdeVinculo:= CreateObject("Unimake.Business.DFe.Xml.ESocial.IdeVinculo2220")
       oIdeVinculo:CpfTrab  := "22321798858"
       oIdeVinculo:Matricula:= "66"
       oEvtMonit:IdeVinculo := oIdeVinculo
