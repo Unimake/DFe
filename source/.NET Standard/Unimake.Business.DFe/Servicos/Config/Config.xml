@@ -867,7 +867,7 @@
 		<Nome>Estância Velha - RS</Nome>
 		<UF>RS</UF>
 		<ArqConfig>EstanciaVelhaRS.xml</ArqConfig>
-		<PadraoNFSe>TECNOSISTEMAS</PadraoNFSe>
+		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="5211909">
 		<Nome>Jataí - GO</Nome>

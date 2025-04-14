@@ -1,157 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRpsSincrono versao="1.00">
+		<GerarNfse versao="2.04">
+			<Descricao>Gerar NFSe</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>GerarNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</GerarNfse>
+		<RecepcionarLoteRpsSincrono versao="2.04">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9091/EnvioLoteRPSSincrono.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mEnvioLoteRPSSincrono</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mEnvioLoteRPSSincrono</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mEnvioLoteRPSSincrono xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mEnvioLoteRPSSincrono></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mEnvioLoteRPSSincronoResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>EnviarLoteRpsSincronoResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</RecepcionarLoteRpsSincrono>
-		<CancelarNfse versao="1.00">
-			<Descricao>Cancelar nota fiscal de serviço</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9098/CancelamentoNFSe.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mCancelamentoNFSe</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mCancelamentoNFSe</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura>Pedido</TagAssinatura>
-			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mCancelamentoNFSe xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mCancelamentoNFSe></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mCancelamentoNFSeResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</CancelarNfse>
-		<ConsultarNfsePorRps versao="1.00">
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>EnviarLoteRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</RecepcionarLoteRps>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>SubstituirNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
 			<Descricao>Consulta NFSe por RPS</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9095/ConsultaNFSePorRPS.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mConsultaNFSePorRPS</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mConsultaNFSePorRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSePorRPS xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSePorRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mConsultaNFSePorRPSResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarNfsePorRps>
-		<ConsultarNfseServicoPrestado versao="1.00">
-			<Descricao>Consulta NFSe de serviços prestados</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9094/ConsultaNFSeServicosPrestados.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9094/ConsultaNFSeServicosPrestados.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mConsultaNFSeServicosPrestados</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mConsultaNFSeServicosPrestados</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSeServicosPrestados xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSeServicosPrestados></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mConsultaNFSeServicosPrestadosResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarNfseServicoPrestado>
-		<ConsultarNfseFaixa versao="1.00">
-			<Descricao>Consulta NFSe por Faixa</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9096/ConsultaNFSePorFaixa.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9096/ConsultaNFSePorFaixa.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mConsultaNFSePorFaixa</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mConsultaNFSePorFaixa</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSePorFaixa xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSePorFaixa></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mConsultaNFSePorFaixaResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarNfseFaixa>
-		<ConsultarSequenciaLoteNotaRPS versao="1.00">
-			<Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9084/ConsultaSequenciaLoteNotaRPS.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9084/ConsultaSequenciaLoteNotaRPS.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mConsultaSequenciaLoteNotaRPS</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mConsultaSequenciaLoteNotaRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaSequenciaLoteNotaRPS xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaSequenciaLoteNotaRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mConsultaSequenciaLoteNotaRPSResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarSequenciaLoteNotaRPS>
-		<ConsultarLoteRps versao="1.00">
-			<Descricao>Consulta lote RPS</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9097/ConsultaLoteRPS.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9097/ConsultaLoteRPS.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mConsultaLoteRPS</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mConsultaLoteRPS</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
-			<TagAssinatura></TagAssinatura>
-			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaLoteRPS xmlns="http://tempuri.org/"><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaLoteRPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mConsultaLoteRPSResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarLoteRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
 		</ConsultarLoteRps>
-		<ConsultarNfseServicoTomado versao="1.00">
-			<Descricao>Consulta NFSe serviços tomados</Descricao>
-			<WebEnderecoHomologacao>http://homologaestan.nfse-tecnos.com.br:9093/ConsultaNFSeServicosTomadosIntermediados.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://estanciavelha.nfse-tecnos.com.br:9093/ConsultaNFSeServicosTomadosIntermediados.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://tempuri.org/mConsultaNFSeServicosTomadosIntermediados</WebActionHomologacao>
-			<WebActionProducao>http://tempuri.org/mConsultaNFSeServicosTomadosIntermediados</WebActionProducao>
-			<SchemaArquivo></SchemaArquivo>
+		<ConsultarNfseServicoPrestado versao="2.04">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
-			<TagLoteAssinatura></TagLoteAssinatura>
-			<TagLoteAtributoID></TagLoteAtributoID>
-			<WebContentType>text/xml</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><mConsultaNFSeServicosTomadosIntermediados><remessa>{xmlBodyScape}</remessa><cabecalho>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;cabecalho xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="20.01" xmlns="http://www.nfse-tecnos.com.br/nfse.xsd"&gt;&lt;versaoDados&gt;20.01&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho></mConsultaNFSeServicosTomadosIntermediados></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>mConsultaNFSeServicosTomadosIntermediadosResult</WebTagRetorno>
-			<WebEncodingRetorno></WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>1.00</SchemaVersao>
-			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</ConsultarNfseServicoTomado>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseServicoPrestadoResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseFaixa versao="2.04">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseFaixaResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfseFaixa>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar NFSe</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>CancelarNfseResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por Rps</Descricao>
+			<RequestURIProducao>https://estanciavelha.atende.net/?pg=services&amp;service=WNENotaFiscalEletronicaNfe&amp;cidade=padrao</RequestURIProducao>
+			<RequestURIHomologacao></RequestURIHomologacao>
+			<MetodoAPI>post</MetodoAPI>
+			<WebActionProducao></WebActionProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:net="net.atende"><soapenv:Header/><soapenv:Body>{xml}</soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebContentType>text/plain</WebContentType>
+			<WebTagRetorno>ConsultarNfseRpsResposta</WebTagRetorno>
+			<SchemaVersao>2.04</SchemaVersao>
+			<GZIPCompress>false</GZIPCompress>
+			<LoginConexao>true</LoginConexao>
+		</ConsultarNfsePorRps>
 	</Servicos>
 </Configuracoes>
