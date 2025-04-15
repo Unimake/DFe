@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Linq;
 using Unimake.Business.DFe.Validator.Contract;
@@ -9,7 +10,8 @@ using Unimake.Exceptions;
 namespace Unimake.Business.DFe.Validator
 {
     /// <summary>
-    /// Constrói
+    /// Classe responsável pela validação de XML utilizando o Unimake Validator.  
+    /// Realiza uma análise detalhada do conteúdo das tags, proporcionando validações mais precisas e mensagens de erro mais claras para desenvolvedores e usuários.
     /// </summary>
     public class ValidatorFactory
     {
@@ -71,6 +73,7 @@ namespace Unimake.Business.DFe.Validator
         /// </summary>
         /// <param name="xml">XML utilizado para validação</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Quando o XML está nulo</exception>
         public static IXmlValidator BuidValidator(string xml)
         {
             if (xml is null)

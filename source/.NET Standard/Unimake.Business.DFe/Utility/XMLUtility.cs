@@ -1636,6 +1636,15 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="chave">Chave do DFe (sem o dígito) que deve ser calculado o dígito verificador.</param>
         /// <returns>Dígito verificador</returns>
         public int CalcularDVChave(string chave) => XMLUtility.CalcularDVChave(chave);
+
+        /// <summary>
+        /// Validar o XML com o Unimake Validator
+        /// </summary>
+        /// <param name="xml">XML a ser validado</param>
+        /// <returns>true=validado com sucesso, ou uma exceção com o erro de validação.</returns>
+        /// <exception cref="ArgumentNullException">Quando o XML está nulo</exception>
+        /// <exception cref="Exception">Quando o validador encontra algum erro no XML</exception>
+        public bool Validate(string xml) => ValidatorFactory.BuidValidator(xml)?.Validate() ?? true;
     }
 
 #endif
