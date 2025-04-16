@@ -12,7 +12,7 @@
 			 <evCancNF3e>
 				<descEvento>Cancelamento</descEvento>
 				<nProt>456789</nProt>
-				<xJust>Erro na descrição dos produtos</xJust>
+				<xJust>Erro na descricao dos produtos</xJust>
             </evCancNF3e>
 		</detEvento>
 	</infEvento>
