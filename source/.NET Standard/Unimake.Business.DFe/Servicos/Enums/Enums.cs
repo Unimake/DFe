@@ -9995,7 +9995,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// 31 - Desconto eConsignado
         /// </summary>
-        [XmlEnum("31 ")]
+        [XmlEnum("31")]
         DescontoeConsignado = 31,
 
         /// <summary>
