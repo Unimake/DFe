@@ -91,12 +91,16 @@ namespace Unimake.DFe.Test.NF3e
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || configuracao.CodigoUF.Equals((int)UFBrasil.PR)){
+
+            if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || 
+                configuracao.CodigoUF.Equals((int)UFBrasil.PR) || 
+                configuracao.CodigoUF.Equals((int)UFBrasil.MT)) {
                 Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             } else
             {
                 Assert.True(statusServico.Result.CUF.Equals(UFBrasil.RS), "Webservice retornou uma UF e está diferente de " + UFBrasil.RS + " (SVRS)");
             }
+
             Assert.True(statusServico.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(statusServico.Result.CStat.Equals(107) || statusServico.Result.CStat.Equals(656), "Serviço não está em operação - <xMotivo>" + statusServico.Result.XMotivo + "<xMotivo>");
         }
