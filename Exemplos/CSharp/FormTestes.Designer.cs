@@ -66,6 +66,9 @@ namespace TreinamentoDLL
             this.BtnConsultaSituacaoMDFe = new System.Windows.Forms.Button();
             this.BtnConsultaStatusMDFe = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnConsultarPdfNFSe = new System.Windows.Forms.Button();
+            this.BtnConsultarNFSe = new System.Windows.Forms.Button();
+            this.BtnConsultarNFSeRps = new System.Windows.Forms.Button();
             this.BtnCancelarNFSeNacional = new System.Windows.Forms.Button();
             this.BtnEnviarNFSeNacional = new System.Windows.Forms.Button();
             this.BtnCriarXmlNFSeCSharp = new System.Windows.Forms.Button();
@@ -119,9 +122,11 @@ namespace TreinamentoDLL
             this.BtnEnviarReinf = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.BtnEnviarEConsultarESocial = new System.Windows.Forms.Button();
-            this.BtnConsultarNFSeRps = new System.Windows.Forms.Button();
-            this.BtnConsultarNFSe = new System.Windows.Forms.Button();
-            this.BtnConsultarPdfNFSe = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.BtnEnviarNFComSincrono = new System.Windows.Forms.Button();
+            this.BtnConsultaStatusNFCom = new System.Windows.Forms.Button();
+            this.BtnConsultaSituacaoNFCom = new System.Windows.Forms.Button();
+            this.BtnEnviarEventoCancelamentoNFCom = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -132,6 +137,7 @@ namespace TreinamentoDLL
             this.groupBox7.SuspendLayout();
             this.reinf.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConsultaStatusNFe
@@ -575,6 +581,39 @@ namespace TreinamentoDLL
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "NFSe";
+            // 
+            // BtnConsultarPdfNFSe
+            // 
+            this.BtnConsultarPdfNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConsultarPdfNFSe.Location = new System.Drawing.Point(6, 396);
+            this.BtnConsultarPdfNFSe.Name = "BtnConsultarPdfNFSe";
+            this.BtnConsultarPdfNFSe.Size = new System.Drawing.Size(197, 24);
+            this.BtnConsultarPdfNFSe.TabIndex = 29;
+            this.BtnConsultarPdfNFSe.Text = "NACIONAL - Consultar PDF da NFSe";
+            this.BtnConsultarPdfNFSe.UseVisualStyleBackColor = true;
+            this.BtnConsultarPdfNFSe.Click += new System.EventHandler(this.BtnConsultarPdfNFSe_Click);
+            // 
+            // BtnConsultarNFSe
+            // 
+            this.BtnConsultarNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConsultarNFSe.Location = new System.Drawing.Point(6, 361);
+            this.BtnConsultarNFSe.Name = "BtnConsultarNFSe";
+            this.BtnConsultarNFSe.Size = new System.Drawing.Size(197, 24);
+            this.BtnConsultarNFSe.TabIndex = 28;
+            this.BtnConsultarNFSe.Text = "NACIONAL - Consultar NFSe";
+            this.BtnConsultarNFSe.UseVisualStyleBackColor = true;
+            this.BtnConsultarNFSe.Click += new System.EventHandler(this.BtnConsultarNFSe_Click);
+            // 
+            // BtnConsultarNFSeRps
+            // 
+            this.BtnConsultarNFSeRps.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnConsultarNFSeRps.Location = new System.Drawing.Point(7, 327);
+            this.BtnConsultarNFSeRps.Name = "BtnConsultarNFSeRps";
+            this.BtnConsultarNFSeRps.Size = new System.Drawing.Size(197, 24);
+            this.BtnConsultarNFSeRps.TabIndex = 27;
+            this.BtnConsultarNFSeRps.Text = "NACIONAL - Consultar NFSe RPS";
+            this.BtnConsultarNFSeRps.UseVisualStyleBackColor = true;
+            this.BtnConsultarNFSeRps.Click += new System.EventHandler(this.BtnConsultarNFSeRps_Click);
             // 
             // BtnCancelarNFSeNacional
             // 
@@ -1103,7 +1142,7 @@ namespace TreinamentoDLL
             // reinf
             // 
             this.reinf.Controls.Add(this.BtnEnviarReinf);
-            this.reinf.Location = new System.Drawing.Point(228, 369);
+            this.reinf.Location = new System.Drawing.Point(228, 314);
             this.reinf.Name = "reinf";
             this.reinf.Size = new System.Drawing.Size(210, 63);
             this.reinf.TabIndex = 27;
@@ -1123,7 +1162,7 @@ namespace TreinamentoDLL
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.BtnEnviarEConsultarESocial);
-            this.groupBox8.Location = new System.Drawing.Point(228, 443);
+            this.groupBox8.Location = new System.Drawing.Point(228, 383);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(210, 63);
             this.groupBox8.TabIndex = 28;
@@ -1140,44 +1179,65 @@ namespace TreinamentoDLL
             this.BtnEnviarEConsultarESocial.UseVisualStyleBackColor = true;
             this.BtnEnviarEConsultarESocial.Click += new System.EventHandler(this.BtnEnviarEConsultarESocial_Click);
             // 
-            // BtnConsultarNFSeRps
+            // groupBox9
             // 
-            this.BtnConsultarNFSeRps.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnConsultarNFSeRps.Location = new System.Drawing.Point(7, 327);
-            this.BtnConsultarNFSeRps.Name = "BtnConsultarNFSeRps";
-            this.BtnConsultarNFSeRps.Size = new System.Drawing.Size(197, 24);
-            this.BtnConsultarNFSeRps.TabIndex = 27;
-            this.BtnConsultarNFSeRps.Text = "NACIONAL - Consultar NFSe RPS";
-            this.BtnConsultarNFSeRps.UseVisualStyleBackColor = true;
-            this.BtnConsultarNFSeRps.Click += new System.EventHandler(this.BtnConsultarNFSeRps_Click);
+            this.groupBox9.Controls.Add(this.BtnEnviarEventoCancelamentoNFCom);
+            this.groupBox9.Controls.Add(this.BtnConsultaSituacaoNFCom);
+            this.groupBox9.Controls.Add(this.BtnEnviarNFComSincrono);
+            this.groupBox9.Controls.Add(this.BtnConsultaStatusNFCom);
+            this.groupBox9.Location = new System.Drawing.Point(228, 452);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(210, 153);
+            this.groupBox9.TabIndex = 29;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "NFCom";
             // 
-            // BtnConsultarNFSe
+            // BtnEnviarNFComSincrono
             // 
-            this.BtnConsultarNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnConsultarNFSe.Location = new System.Drawing.Point(6, 361);
-            this.BtnConsultarNFSe.Name = "BtnConsultarNFSe";
-            this.BtnConsultarNFSe.Size = new System.Drawing.Size(197, 24);
-            this.BtnConsultarNFSe.TabIndex = 28;
-            this.BtnConsultarNFSe.Text = "NACIONAL - Consultar NFSe";
-            this.BtnConsultarNFSe.UseVisualStyleBackColor = true;
-            this.BtnConsultarNFSe.Click += new System.EventHandler(this.BtnConsultarNFSe_Click);
+            this.BtnEnviarNFComSincrono.Location = new System.Drawing.Point(7, 50);
+            this.BtnEnviarNFComSincrono.Name = "BtnEnviarNFComSincrono";
+            this.BtnEnviarNFComSincrono.Size = new System.Drawing.Size(197, 23);
+            this.BtnEnviarNFComSincrono.TabIndex = 1;
+            this.BtnEnviarNFComSincrono.Text = "Enviar NFCom Sincrono";
+            this.BtnEnviarNFComSincrono.UseVisualStyleBackColor = true;
+            this.BtnEnviarNFComSincrono.Click += new System.EventHandler(this.BtnEnviarNFComSincrono_Click);
             // 
-            // BtnConsultarPdfNFSe
+            // BtnConsultaStatusNFCom
             // 
-            this.BtnConsultarPdfNFSe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnConsultarPdfNFSe.Location = new System.Drawing.Point(6, 396);
-            this.BtnConsultarPdfNFSe.Name = "BtnConsultarPdfNFSe";
-            this.BtnConsultarPdfNFSe.Size = new System.Drawing.Size(197, 24);
-            this.BtnConsultarPdfNFSe.TabIndex = 29;
-            this.BtnConsultarPdfNFSe.Text = "NACIONAL - Consultar PDF da NFSe";
-            this.BtnConsultarPdfNFSe.UseVisualStyleBackColor = true;
-            this.BtnConsultarPdfNFSe.Click += new System.EventHandler(this.BtnConsultarPdfNFSe_Click);
+            this.BtnConsultaStatusNFCom.Location = new System.Drawing.Point(6, 21);
+            this.BtnConsultaStatusNFCom.Name = "BtnConsultaStatusNFCom";
+            this.BtnConsultaStatusNFCom.Size = new System.Drawing.Size(197, 23);
+            this.BtnConsultaStatusNFCom.TabIndex = 0;
+            this.BtnConsultaStatusNFCom.Text = "Consulta Status";
+            this.BtnConsultaStatusNFCom.UseVisualStyleBackColor = true;
+            this.BtnConsultaStatusNFCom.Click += new System.EventHandler(this.BtnConsultaStatusNFCom_Click);
+            // 
+            // BtnConsultaSituacaoNFCom
+            // 
+            this.BtnConsultaSituacaoNFCom.Location = new System.Drawing.Point(6, 79);
+            this.BtnConsultaSituacaoNFCom.Name = "BtnConsultaSituacaoNFCom";
+            this.BtnConsultaSituacaoNFCom.Size = new System.Drawing.Size(197, 23);
+            this.BtnConsultaSituacaoNFCom.TabIndex = 2;
+            this.BtnConsultaSituacaoNFCom.Text = "Consulta Situação";
+            this.BtnConsultaSituacaoNFCom.UseVisualStyleBackColor = true;
+            this.BtnConsultaSituacaoNFCom.Click += new System.EventHandler(this.BtnConsultaSituacaoNFCom_Click);
+            // 
+            // BtnEnviarEventoCancelamentoNFCom
+            // 
+            this.BtnEnviarEventoCancelamentoNFCom.Location = new System.Drawing.Point(7, 108);
+            this.BtnEnviarEventoCancelamentoNFCom.Name = "BtnEnviarEventoCancelamentoNFCom";
+            this.BtnEnviarEventoCancelamentoNFCom.Size = new System.Drawing.Size(197, 23);
+            this.BtnEnviarEventoCancelamentoNFCom.TabIndex = 3;
+            this.BtnEnviarEventoCancelamentoNFCom.Text = "Enviar o Evento de Cancelamento";
+            this.BtnEnviarEventoCancelamentoNFCom.UseVisualStyleBackColor = true;
+            this.BtnEnviarEventoCancelamentoNFCom.Click += new System.EventHandler(this.BtnEnviarEventoCancelamentoNFCom_Click);
             // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1323, 690);
+            this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.reinf);
             this.Controls.Add(this.groupBox7);
@@ -1201,6 +1261,7 @@ namespace TreinamentoDLL
             this.groupBox7.ResumeLayout(false);
             this.reinf.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1300,6 +1361,11 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnConsultarNFSeRps;
         private System.Windows.Forms.Button BtnConsultarNFSe;
         private System.Windows.Forms.Button BtnConsultarPdfNFSe;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button BtnConsultaStatusNFCom;
+        private System.Windows.Forms.Button BtnEnviarNFComSincrono;
+        private System.Windows.Forms.Button BtnEnviarEventoCancelamentoNFCom;
+        private System.Windows.Forms.Button BtnConsultaSituacaoNFCom;
     }
 }
 

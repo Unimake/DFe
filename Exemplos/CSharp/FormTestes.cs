@@ -27,6 +27,7 @@ using ServicoMDFe = Unimake.Business.DFe.Servicos.MDFe;
 using ServicoNFCe = Unimake.Business.DFe.Servicos.NFCe;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
+using ServicoNFCom = Unimake.Business.DFe.Servicos.NFCom;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
@@ -35,6 +36,7 @@ using XmlESocial = Unimake.Business.DFe.Xml.ESocial;
 using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
 using XmlMDFe = Unimake.Business.DFe.Xml.MDFe;
 using XmlNFe = Unimake.Business.DFe.Xml.NFe;
+using XmlNFCom = Unimake.Business.DFe.Xml.NFCom;
 
 namespace TreinamentoDLL
 {
@@ -6264,12 +6266,387 @@ namespace TreinamentoDLL
 
             MessageBox.Show(consultarNfsePDF.RetornoWSString);
 
-            //Vou chamar o método para extrair o PDF do retorno
-            //Parâmetros:
+            // Vou chamar o método para extrair o PDF do retorno
+            // Parâmetros:
             // - Nome da pasta
             // - Nome do arquivo PDF
             // - Nome da tag para extração do PDF (para o NACIONAL, sempre será Base64Pdf)
             consultarNfsePDF.ExtrairPDF(@"c:\projetos\teste\nacional\pdf", "NFSe emitida dia XX/XX/XX", "Base64Pdf");
+        }
+
+        private void BtnConsultaStatusNFCom_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNFCom.ConsStatServNFCom
+            {
+                TpAmb = TipoAmbiente.Homologacao,
+                Versao = "1.00"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                CertificadoDigital = CertificadoSelecionado,
+                CodigoUF = (int)UFBrasil.PR
+            };
+
+            var statusServico = new ServicoNFCom.StatusServico(xml, configuracao);
+            statusServico.Executar();
+
+            MessageBox.Show(statusServico.RetornoWSString);
+        }
+
+        private void BtnEnviarNFComSincrono_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNFCom.NFCom
+            {
+                InfNFCom = new XmlNFCom.InfNFCom
+                {
+                    Versao = "1.00",
+                    Ide = new XmlNFCom.Ide
+                    {
+                        CUF = UFBrasil.PR,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        Mod = ModeloDFe.NFCom,
+                        Serie = 1,
+                        NNF = 123,
+                        CNF = "1234567",
+                        DhEmi = System.DateTime.Now,
+                        TpEmis = TipoEmissao.Normal,
+                        NSiteAutoriz = "0",
+                        CMunFG = "1234567",
+                        FinNFCom = FinalidadeNFCom.Normal,
+                        TpFat = TipoFaturamentoNFCom.FaturamentoNormal,
+                        VerProc = "teste 1.0",
+                        IndPrePago = IndicadorServicoPrePago.ServicoPrePago,
+                        IndCessaoMeiosRede = IndicadorSessaoMeiosDeRede.IndicadorSessaoMeioDeRede,
+                        IndNotaEntrada = IndicadorNotaEntrada.IndicaNotaEntradaAjuste
+                    },
+                    Emit = new XmlNFCom.Emit
+                    {
+                        CNPJ = "06117473000150",
+                        IE = "12345678",
+                        CRT = CRT.SimplesNacional,
+                        XNome = "Unimake Solucoes Corporativas",
+                        XFant = "Unimake Software",
+                        EnderEmit = new XmlNFCom.EnderEmitNFCom
+                        {
+                            XLgr = "Rua",
+                            Nro = "11",
+                            XCpl = "Fundos",
+                            XBairro = "Vila Maria",
+                            CMun = "1234567",
+                            XMun = "Paranavai",
+                            CEP = "12345678",
+                            UF = UFBrasil.PR,
+                            Fone = "12345678",
+                            Email = "teste@test.com"
+                        }
+                    },
+                    Dest = new XmlNFCom.Dest
+                    {
+                        XNome = "Unifake Software",
+                        CNPJ = "06117473000150",
+                        IndIEDest = IndicadorIEDestinatario.ContribuinteICMS,
+                        IE = "12345678",
+                        EnderDest = new XmlNFCom.EnderDest
+                        {
+                            XLgr = "Rua",
+                            Nro = "11",
+                            XCpl = "Fundos",
+                            XBairro = "Vila Maria",
+                            CMun = "1234567",
+                            XMun = "Paranavai",
+                            CEP = "12345678",
+                            UF = UFBrasil.PR,
+                            CPais = "1058",
+                            XPais = "BRASIL",
+                            Fone = "12345678",
+                            Email = "teste@test.com"
+                        }
+                    },
+                    Assinante = new XmlNFCom.Assinante
+                    {
+                        ICodAssinante = "1",
+                        TpAssinante = TipoAssinante.ProdutorRural,
+                        TpServUtil = TipoServicoUtilizado.Outros,
+                        NContrato = "123",
+                        DContratoIni = System.DateTime.Today,
+                        DContratoFim = System.DateTime.Today,
+                        NroTermPrinc = "1234567",
+                        CUFPrinc = UFBrasil.PR
+                    },
+                    GSub = new XmlNFCom.GSub
+                    {
+                        ChNFCom = "12345678901234567890123456789012345678901234",
+                        MotSub = MotivoSubstituicaoNFCom.DecisaoJudicial
+                    },
+                    GCofat = new XmlNFCom.GCofat
+                    {
+                        ChNFComLocal = "12345678901234567890123456789012345678901234"
+                    },
+                    Det = new System.Collections.Generic.List<XmlNFCom.Det>
+                    {
+                        new XmlNFCom.Det
+                        {
+                            NItem = "1",
+                            Prod = new XmlNFCom.Prod
+                            {
+                                CProd = "1",
+                                XProd = "teste",
+                                CClass = "1234567",
+                                CFOP = "5120",
+                                CNPJLD = "06117473000150",
+                                UMed = UnidadeBasicaMedida.UN,
+                                QFaturada = 1.12,
+                                VItem = 1.123M,
+                                VDesc = 1.11,
+                                VOutro = 1.11,
+                                VProd = 1234.10M,
+                                DExpiracao = System.DateTime.Today,
+                                IndDevolucao = IndicadorDevolucao.DevolucaoValorItem
+                            },
+                            Imposto = new XmlNFCom.Imposto
+                            {
+                                ICMS00 = new XmlNFCom.ICMS00NFCom
+                                {
+                                    CST = "00",
+                                    VBC = 1.11,
+                                    PICMS = 1.15,
+                                    VICMS = 1.17,
+                                    PFCP = 1.190,
+                                    VFCP = 111.47
+                                },
+                                ICMSUFDest = new System.Collections.Generic.List<XmlNFCom.ICMSUFDest>
+                                {
+                                    new XmlNFCom.ICMSUFDest
+                                    {
+                                        CUFDest = UFBrasil.PR,
+                                        VBCUFDest = 158.55,
+                                        PFCPUFDest = 158.55,
+                                        PICMSUFDest = 158.55,
+                                        VFCPUFDest = 158.55,
+                                        VICMSUFDest = 158.55,
+                                        VICMSUFEmi = 158.55,
+                                        CBenefUFDest = "11"
+                                    }
+                                },
+                                PIS = new XmlNFCom.PISNFCom
+                                {
+                                    CST = CSTPisCofins.OperacaoComSuspensao,
+                                    VBC = 1587.45,
+                                    PPIS = 123.4500,
+                                    VPIS = 1587.45
+                                },
+                                COFINS = new XmlNFCom.COFINSNFCom
+                                {
+                                    CST = CSTPisCofins.AliquotaBasica,
+                                    VBC = 11.98,
+                                    PCOFINS = 11.9800,
+                                    VCOFINS = 11.98
+                                },
+                                FUST = new XmlNFCom.FUST
+                                {
+                                    VBC = 1879.88,
+                                    PFUST = 132.88,
+                                    VFUST = 1879.88
+                                },
+                                FUNTTEL = new XmlNFCom.FUNTTEL
+                                {
+                                    VBC = 1.47,
+                                    PFUNTTEL = 1.4700,
+                                    VFUNTTEL = 1.47
+                                },
+                                RetTribNFCom = new XmlNFCom.RetTribNFCom
+                                {
+                                    VRetPIS = 1444.85M,
+                                    VRetCofins = 1444.85M,
+                                    VRetCSLL = 1444.85M,
+                                    VBCIRRF = 1444.85M,
+                                    VIRRF = 1444.85M
+                                }
+                            },
+                            GProcRef = new XmlNFCom.GProcRef
+                            {
+                                VItem = 123.48M,
+                                QFaturada = 123.4800,
+                                VProd = 123.48M,
+                                VDesc = 123.48,
+                                VOutro = 123.48,
+                                IndDevolucao = IndicadorDevolucao.DevolucaoValorItem,
+                                VBC = 123.48,
+                                PICMS = 123.48,
+                                VICMS = 123.48,
+                                VPIS = 123.48,
+                                VCOFINS = 123.48,
+                                VFCP = 123.48,
+                                GProc = new System.Collections.Generic.List<XmlNFCom.GProc>
+                                {
+                                    new XmlNFCom.GProc
+                                    {
+                                        TpProc = TipoProcessoNF3eNFCom.JusticaFederal,
+                                        NProcesso = "12345678"
+                                    }
+                                }
+                            },
+                            GRessarc = new XmlNFCom.GRessarc
+                            {
+                                TpRessarc = TipoRessarcimento.CobrancaIndevida,
+                                DRef = System.DateTime.Today,
+                                NProcesso = "11222",
+                                NProtReclama = "1111",
+                                XObs = "Teste total da NFCom"
+                            }
+                        }
+                    },
+                    Total = new XmlNFCom.Total
+                    {
+                        VProd = 111.54,
+                        ICMSTot = new XmlNFCom.ICMSTot
+                        {
+                            VBC = 111.54,
+                            VICMS = 111.54,
+                            VICMSDeson = 111.54,
+                            VFCP = 111.54
+                        },
+                        VCOFINS = 111.54,
+                        VPIS = 111.54,
+                        VFUNTTEL = 111.54,
+                        VFUST = 111.54,
+                        VRetTribTot = new XmlNFCom.VRetTribTotNFCom
+                        {
+                            VRetPIS = 111.54,
+                            VRetCofins = 111.54,
+                            VRetCSLL = 111.54,
+                            VIRRF = 111.54
+                        },
+                        VDesc = 111.54,
+                        VOutro = 111.54,
+                        VNF = 111.54
+                    },
+                    AutXML = new System.Collections.Generic.List<XmlNFCom.AutXMLNFCom>
+                    {
+                        new XmlNFCom.AutXMLNFCom
+                        {
+                            CNPJ = "06117473000150"
+                        }
+                    },
+                    InfAdic = new XmlNFCom.InfAdicNFCom
+                    {
+                        InfAdFisco = "teste total da NFCom",
+                        InfCpl = new System.Collections.Generic.List<string>
+                        {
+                            "Informacao 1",
+                            "Informacao 2"
+                        }
+                    },
+                    GRespTec = new XmlNFCom.GRespTecNFCom
+                    {
+                        CNPJ = "06117473000150",
+                        XContato = "Fulano de tal",
+                        Email = "email_fulando@gmail.com",
+                        Fone = "12345678",
+                        IdCSRT = "123",
+                        HashCSRT = "oBbYbxIbKXRZhoJ2zEzYy458+YU="
+                    }
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                TipoEmissao = TipoEmissao.Normal,
+                CodigoUF = (int)UFBrasil.PR,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var autorizacaoSincNFCom = new ServicoNFCom.AutorizacaoSinc(xml, configuracao);
+            autorizacaoSincNFCom.Executar();
+
+            MessageBox.Show(autorizacaoSincNFCom.RetornoWSString);
+
+            if (autorizacaoSincNFCom.Result.CStat == 100)
+            {
+                if (autorizacaoSincNFCom.Result.ProtNFCom.InfProt.CStat == 100)
+                {
+                    MessageBox.Show(autorizacaoSincNFCom.Result.ProtNFCom.InfProt.NProt);
+                    var teste = autorizacaoSincNFCom.NFComProcResults[xml.InfNFCom.Chave].GerarXML();
+                }
+            }
+
+        }
+
+        private void BtnConsultaSituacaoNFCom_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNFCom.ConsSitNFCom
+            {
+                ChNFCom = "12345678901234567890123456789012345678901234",
+                TpAmb = TipoAmbiente.Homologacao,
+                Versao = "1.00"
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                CodigoUF = (int)UFBrasil.PR,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var consultaProtocolo = new ServicoNFCom.ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
+
+            MessageBox.Show(consultaProtocolo.RetornoWSString);
+        }
+
+        private void BtnEnviarEventoCancelamentoNFCom_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNFCom.EventoNFCom
+            {
+                Versao = "1.00",
+                InfEvento = 
+                new XmlNFCom.InfEvento(new XmlNFCom.DetEventoCanc
+                {
+                    VersaoEvento = "1.00",
+                    DescEvento = "Cancelamento",
+                    NProt = "1234567890123456",
+                    XJust = "Erro na criacao do produto"
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    TpAmb = TipoAmbiente.Homologacao,
+                    CNPJ = "06117473000150",
+                    ChNFCom = "12345678901234567890123456789012345678901234",
+                    DhEvento = System.DateTime.Now,
+                    TpEvento = TipoEventoNFCom.Cancelamento,
+                    NSeqEvento = 1
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado,
+            };
+
+            var recepcaoEvento = new ServicoNFCom.RecepcaoEvento(xml, configuracao);
+            recepcaoEvento.Executar();
+
+            MessageBox.Show(recepcaoEvento.RetornoWSString);
+            MessageBox.Show(recepcaoEvento.Result.InfEvento.CStat + " - " + recepcaoEvento.Result.InfEvento.XMotivo);
+
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134: // Recebido pelo Sistema de Registro de Eventos, com vinculação do evento na NFCom com situação diferente de Autorizada
+                case 135: // Recebido pelo Sistema de Registro de Eventos, com vinculação do evento na respectiva NFCom
+                case 136: // Recebido pelo Sistema de Registro de Eventos – vinculação do evento à respectiva NFCom prejudicado
+                    recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe");
+                    break;
+
+                default:
+                    // Evento rejeitado, fazer os devidos tratamentos.
+                    break;
+            }
         }
     }
 }
