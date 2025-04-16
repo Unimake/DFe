@@ -9966,7 +9966,7 @@ namespace Unimake.Business.DFe.Servicos
     /// Código de incidência da rubrica para o Fundo de Garantia do Tempo de Serviço - FGTS.
     /// Validação: Para utilização de código [91, 92, 93], é necessária a existência de grupo com informações relativas ao processo.
     /// </summary>
-    public enum CodIncFGTS
+    public enum CodigoIncidenciaRubricaFGTS
     {
         /// <summary>
         /// 00 - Não é base de cálculo do FGTS
