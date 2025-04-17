@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ConsultarNfseServicoTomado versao="1.00">
+<ConsultarNfseServicoTomadoEnvio versao="1.00">
 	<itemlistaservico>1</itemlistaservico>
 	<datainicial>01/01/2001</datainicial>
 	<datafinal>01/01/2001</datafinal>
-</ConsultarNfseServicoTomado>
+</ConsultarNfseServicoTomadoEnvio>
