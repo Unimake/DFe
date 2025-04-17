@@ -1,4 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-	<Heranca>SVRS.xml</Heranca>
+	<Servicos ID="NF3e">
+		<StatusServico versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fiscal de energia eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/nf3ews/services/NF3eStatusServico?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.sefaz.mt.gov.br/nf3ews/services/NF3eStatusServico?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico/nf3eStatusServicoNF</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico/nf3eStatusServicoNF</WebActionProducao>
+			<SchemaArquivo>consStatServNF3e_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nf3="http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eStatusServico"><soap:Header/><soap:Body><nf3:nf3eDadosMsg>{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>Consulta situação da nota fiscal de energia eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/nf3ews/services/NF3eConsultaNF?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.sefaz.mt.gov.br/nf3ews/services/NF3eConsultaNF?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsultaNF/nf3eConsultaNF</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsultaNF/nf3eConsultaNF</WebActionProducao>
+			<SchemaArquivo>consSitNF3e_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nf3="http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eConsulta"><soap:Header/><soap:Body><nf3:nf3eDadosMsg>{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/nf3ews/services/NF3eRecepcaoEvento?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.sefaz.mt.gov.br/nf3ews/services/NF3eRecepcaoEvento?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento/nf3eRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento/nf3eRecepcaoEvento</WebActionProducao>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoNF3e_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancNF3e_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoNF3e</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nf3="http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcaoEvento"><soap:Header/><soap:Body><nf3:nf3eDadosMsg>{xmlBody}</nf3:nf3eDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+		</RecepcaoEvento>
+		<AutorizacaoSinc versao="1.00">
+			<Descricao>Autorização síncrona da NF3e</Descricao>
+			<WebEnderecoHomologacao>https://homologacao.sefaz.mt.gov.br/nf3ews/services/NF3eRecepcao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfe.sefaz.mt.gov.br/nf3ews/services/NF3eRecepcao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcao/nf3eRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nf3e/wsdl/NF3eRecepcao/nf3eRecepcao</WebActionProducao>
+			<SchemaArquivo>nf3e_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>NF3e</TagAssinatura>
+			<TagAtributoID>infNF3e</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebTagRetorno>nf3eResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao></UrlQrCodeHomologacao>
+			<UrlQrCodeProducao></UrlQrCodeProducao>
+			<UrlChaveHomologacao></UrlChaveHomologacao>
+			<UrlChaveProducao></UrlChaveProducao>
+		</AutorizacaoSinc>
+	</Servicos>
 </Configuracoes>
