@@ -1645,6 +1645,23 @@ namespace Unimake.Business.DFe.Utility
         /// <exception cref="ArgumentNullException">Quando o XML está nulo</exception>
         /// <exception cref="Exception">Quando o validador encontra algum erro no XML</exception>
         public bool Validate(string xml) => ValidatorFactory.BuidValidator(xml)?.Validate() ?? true;
+
+        /// <summary>
+        /// Executa uma verificação simples para garantir que a chave do DFe (NFe, CTe, MDfe, NFCe, CTeOS) é valida, se tiver erros retorna exceção.
+        /// </summary>
+        /// <param name="chave">Chave do DFe a ser verificada</param>
+        /// <example>
+        /// try
+        /// {
+        ///     XMLUtility.ChecarChaveDFe("41201280568835000181570010000004841004185096");
+        /// }
+        /// catch(Exception ex)
+        /// {
+        ///     //Se chave tiver algum erro, vai retornar uma exceção.
+        ///     MessageBox.Show(ex.Message);
+        /// }
+        /// </example>
+        public void ChecarChaveDFe(string chave) => XMLUtility.ChecarChaveDFe(chave);
     }
 
 #endif
