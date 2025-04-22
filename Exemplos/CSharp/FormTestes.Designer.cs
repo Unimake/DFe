@@ -123,10 +123,15 @@ namespace TreinamentoDLL
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.BtnEnviarEConsultarESocial = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.BtnEnviarEventoCancelamentoNFCom = new System.Windows.Forms.Button();
+            this.BtnConsultaSituacaoNFCom = new System.Windows.Forms.Button();
             this.BtnEnviarNFComSincrono = new System.Windows.Forms.Button();
             this.BtnConsultaStatusNFCom = new System.Windows.Forms.Button();
-            this.BtnConsultaSituacaoNFCom = new System.Windows.Forms.Button();
-            this.BtnEnviarEventoCancelamentoNFCom = new System.Windows.Forms.Button();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.BtnEnviarEventoCancelamentoNF3e = new System.Windows.Forms.Button();
+            this.BtnConsultaSituacaoNF3e = new System.Windows.Forms.Button();
+            this.BtnEnviarNF3eSinc = new System.Windows.Forms.Button();
+            this.BtnConsultaStatusNF3e = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -138,6 +143,7 @@ namespace TreinamentoDLL
             this.reinf.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnConsultaStatusNFe
@@ -468,7 +474,7 @@ namespace TreinamentoDLL
             this.groupBox3.Controls.Add(this.BtnConsultaStatusMDFe);
             this.groupBox3.Location = new System.Drawing.Point(444, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(210, 541);
+            this.groupBox3.Size = new System.Drawing.Size(210, 297);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "MDFe";
@@ -1021,7 +1027,7 @@ namespace TreinamentoDLL
             // PbConsultaDFe
             // 
             this.PbConsultaDFe.Location = new System.Drawing.Point(6, 149);
-            this.PbConsultaDFe.Margin = new System.Windows.Forms.Padding(2);
+            this.PbConsultaDFe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PbConsultaDFe.Name = "PbConsultaDFe";
             this.PbConsultaDFe.Size = new System.Drawing.Size(197, 23);
             this.PbConsultaDFe.TabIndex = 21;
@@ -1192,6 +1198,26 @@ namespace TreinamentoDLL
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "NFCom";
             // 
+            // BtnEnviarEventoCancelamentoNFCom
+            // 
+            this.BtnEnviarEventoCancelamentoNFCom.Location = new System.Drawing.Point(7, 108);
+            this.BtnEnviarEventoCancelamentoNFCom.Name = "BtnEnviarEventoCancelamentoNFCom";
+            this.BtnEnviarEventoCancelamentoNFCom.Size = new System.Drawing.Size(197, 23);
+            this.BtnEnviarEventoCancelamentoNFCom.TabIndex = 3;
+            this.BtnEnviarEventoCancelamentoNFCom.Text = "Enviar o Evento de Cancelamento";
+            this.BtnEnviarEventoCancelamentoNFCom.UseVisualStyleBackColor = true;
+            this.BtnEnviarEventoCancelamentoNFCom.Click += new System.EventHandler(this.BtnEnviarEventoCancelamentoNFCom_Click);
+            // 
+            // BtnConsultaSituacaoNFCom
+            // 
+            this.BtnConsultaSituacaoNFCom.Location = new System.Drawing.Point(6, 79);
+            this.BtnConsultaSituacaoNFCom.Name = "BtnConsultaSituacaoNFCom";
+            this.BtnConsultaSituacaoNFCom.Size = new System.Drawing.Size(197, 23);
+            this.BtnConsultaSituacaoNFCom.TabIndex = 2;
+            this.BtnConsultaSituacaoNFCom.Text = "Consulta Situação";
+            this.BtnConsultaSituacaoNFCom.UseVisualStyleBackColor = true;
+            this.BtnConsultaSituacaoNFCom.Click += new System.EventHandler(this.BtnConsultaSituacaoNFCom_Click);
+            // 
             // BtnEnviarNFComSincrono
             // 
             this.BtnEnviarNFComSincrono.Location = new System.Drawing.Point(7, 50);
@@ -1212,31 +1238,65 @@ namespace TreinamentoDLL
             this.BtnConsultaStatusNFCom.UseVisualStyleBackColor = true;
             this.BtnConsultaStatusNFCom.Click += new System.EventHandler(this.BtnConsultaStatusNFCom_Click);
             // 
-            // BtnConsultaSituacaoNFCom
+            // groupBox10
             // 
-            this.BtnConsultaSituacaoNFCom.Location = new System.Drawing.Point(6, 79);
-            this.BtnConsultaSituacaoNFCom.Name = "BtnConsultaSituacaoNFCom";
-            this.BtnConsultaSituacaoNFCom.Size = new System.Drawing.Size(197, 23);
-            this.BtnConsultaSituacaoNFCom.TabIndex = 2;
-            this.BtnConsultaSituacaoNFCom.Text = "Consulta Situação";
-            this.BtnConsultaSituacaoNFCom.UseVisualStyleBackColor = true;
-            this.BtnConsultaSituacaoNFCom.Click += new System.EventHandler(this.BtnConsultaSituacaoNFCom_Click);
+            this.groupBox10.Controls.Add(this.BtnEnviarEventoCancelamentoNF3e);
+            this.groupBox10.Controls.Add(this.BtnConsultaSituacaoNF3e);
+            this.groupBox10.Controls.Add(this.BtnEnviarNF3eSinc);
+            this.groupBox10.Controls.Add(this.BtnConsultaStatusNF3e);
+            this.groupBox10.Location = new System.Drawing.Point(444, 329);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(210, 153);
+            this.groupBox10.TabIndex = 30;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "NF3e";
             // 
-            // BtnEnviarEventoCancelamentoNFCom
+            // BtnEnviarEventoCancelamentoNF3e
             // 
-            this.BtnEnviarEventoCancelamentoNFCom.Location = new System.Drawing.Point(7, 108);
-            this.BtnEnviarEventoCancelamentoNFCom.Name = "BtnEnviarEventoCancelamentoNFCom";
-            this.BtnEnviarEventoCancelamentoNFCom.Size = new System.Drawing.Size(197, 23);
-            this.BtnEnviarEventoCancelamentoNFCom.TabIndex = 3;
-            this.BtnEnviarEventoCancelamentoNFCom.Text = "Enviar o Evento de Cancelamento";
-            this.BtnEnviarEventoCancelamentoNFCom.UseVisualStyleBackColor = true;
-            this.BtnEnviarEventoCancelamentoNFCom.Click += new System.EventHandler(this.BtnEnviarEventoCancelamentoNFCom_Click);
+            this.BtnEnviarEventoCancelamentoNF3e.Location = new System.Drawing.Point(7, 108);
+            this.BtnEnviarEventoCancelamentoNF3e.Name = "BtnEnviarEventoCancelamentoNF3e";
+            this.BtnEnviarEventoCancelamentoNF3e.Size = new System.Drawing.Size(197, 23);
+            this.BtnEnviarEventoCancelamentoNF3e.TabIndex = 3;
+            this.BtnEnviarEventoCancelamentoNF3e.Text = "Enviar o Evento de Cancelamento";
+            this.BtnEnviarEventoCancelamentoNF3e.UseVisualStyleBackColor = true;
+            this.BtnEnviarEventoCancelamentoNF3e.Click += new System.EventHandler(this.BtnEnviarEventoCancelamentoNF3e_Click);
+            // 
+            // BtnConsultaSituacaoNF3e
+            // 
+            this.BtnConsultaSituacaoNF3e.Location = new System.Drawing.Point(6, 79);
+            this.BtnConsultaSituacaoNF3e.Name = "BtnConsultaSituacaoNF3e";
+            this.BtnConsultaSituacaoNF3e.Size = new System.Drawing.Size(197, 23);
+            this.BtnConsultaSituacaoNF3e.TabIndex = 2;
+            this.BtnConsultaSituacaoNF3e.Text = "Consulta Situação";
+            this.BtnConsultaSituacaoNF3e.UseVisualStyleBackColor = true;
+            this.BtnConsultaSituacaoNF3e.Click += new System.EventHandler(this.BtnConsultaSituacaoNF3e_Click);
+            // 
+            // BtnEnviarNF3eSinc
+            // 
+            this.BtnEnviarNF3eSinc.Location = new System.Drawing.Point(7, 50);
+            this.BtnEnviarNF3eSinc.Name = "BtnEnviarNF3eSinc";
+            this.BtnEnviarNF3eSinc.Size = new System.Drawing.Size(197, 23);
+            this.BtnEnviarNF3eSinc.TabIndex = 1;
+            this.BtnEnviarNF3eSinc.Text = "Enviar NF3e Sincrono";
+            this.BtnEnviarNF3eSinc.UseVisualStyleBackColor = true;
+            this.BtnEnviarNF3eSinc.Click += new System.EventHandler(this.BtnEnviarNF3eSinc_Click);
+            // 
+            // BtnConsultaStatusNF3e
+            // 
+            this.BtnConsultaStatusNF3e.Location = new System.Drawing.Point(6, 21);
+            this.BtnConsultaStatusNF3e.Name = "BtnConsultaStatusNF3e";
+            this.BtnConsultaStatusNF3e.Size = new System.Drawing.Size(197, 23);
+            this.BtnConsultaStatusNF3e.TabIndex = 0;
+            this.BtnConsultaStatusNF3e.Text = "Consulta Status";
+            this.BtnConsultaStatusNF3e.UseVisualStyleBackColor = true;
+            this.BtnConsultaStatusNF3e.Click += new System.EventHandler(this.BtnConsultaStatusNF3e_Click);
             // 
             // FormTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1323, 690);
+            this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.reinf);
@@ -1262,6 +1322,7 @@ namespace TreinamentoDLL
             this.reinf.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1366,6 +1427,11 @@ namespace TreinamentoDLL
         private System.Windows.Forms.Button BtnEnviarNFComSincrono;
         private System.Windows.Forms.Button BtnEnviarEventoCancelamentoNFCom;
         private System.Windows.Forms.Button BtnConsultaSituacaoNFCom;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button BtnEnviarEventoCancelamentoNF3e;
+        private System.Windows.Forms.Button BtnConsultaSituacaoNF3e;
+        private System.Windows.Forms.Button BtnEnviarNF3eSinc;
+        private System.Windows.Forms.Button BtnConsultaStatusNF3e;
     }
 }
 

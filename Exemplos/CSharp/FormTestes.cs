@@ -28,6 +28,7 @@ using ServicoNFCe = Unimake.Business.DFe.Servicos.NFCe;
 using ServicoNFe = Unimake.Business.DFe.Servicos.NFe;
 using ServicoNFSe = Unimake.Business.DFe.Servicos.NFSe;
 using ServicoNFCom = Unimake.Business.DFe.Servicos.NFCom;
+using ServicoNF3e = Unimake.Business.DFe.Servicos.NF3e;
 using XmlCCG = Unimake.Business.DFe.Xml.CCG;
 using XmlCTe = Unimake.Business.DFe.Xml.CTe;
 using XmlCTeOS = Unimake.Business.DFe.Xml.CTeOS;
@@ -37,6 +38,8 @@ using XmlGNRe = Unimake.Business.DFe.Xml.GNRE;
 using XmlMDFe = Unimake.Business.DFe.Xml.MDFe;
 using XmlNFe = Unimake.Business.DFe.Xml.NFe;
 using XmlNFCom = Unimake.Business.DFe.Xml.NFCom;
+using XmlNF3e = Unimake.Business.DFe.Xml.NF3e;
+using Unimake.Business.DFe.Xml.NF3e;
 
 namespace TreinamentoDLL
 {
@@ -6640,6 +6643,597 @@ namespace TreinamentoDLL
                 case 134: // Recebido pelo Sistema de Registro de Eventos, com vinculação do evento na NFCom com situação diferente de Autorizada
                 case 135: // Recebido pelo Sistema de Registro de Eventos, com vinculação do evento na respectiva NFCom
                 case 136: // Recebido pelo Sistema de Registro de Eventos – vinculação do evento à respectiva NFCom prejudicado
+                    recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe");
+                    break;
+
+                default:
+                    // Evento rejeitado, fazer os devidos tratamentos.
+                    break;
+            }
+        }
+
+        private void BtnConsultaStatusNF3e_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNF3e.ConsStatServNF3e
+            {
+                Versao = "1.00",
+                TpAmb = TipoAmbiente.Homologacao
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                CertificadoDigital = CertificadoSelecionado,
+                CodigoUF = (int)UFBrasil.PR
+            };
+
+            var statusServico = new ServicoNF3e.StatusServico(xml, configuracao);
+            statusServico.Executar();
+
+            MessageBox.Show(statusServico.RetornoWSString);
+        }
+
+        private void BtnEnviarNF3eSinc_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNF3e.NF3e
+            {
+                InfNF3e = new InfNF3e
+                {
+                    Versao = "1.00",
+                    Ide = new XmlNF3e.Ide
+                    {
+                        CUF = UFBrasil.PR,
+                        TpAmb = TipoAmbiente.Homologacao,
+                        Mod = ModeloDFe.NF3e,
+                        Serie = 123,
+                        NNF = 1,
+                        CNF = "1489657",
+                        DhEmi = DateTime.Now,
+                        TpEmis = TipoEmissao.Normal,
+                        NSiteAutoriz = "0",
+                        CMunFG = "1234567",
+                        FinNF3e = FinalidadeNF3e.Normal,
+                        VerProc = "verProc1"
+                    },
+                    Emit = new XmlNF3e.Emit
+                    {
+                        CNPJ = "06117473000150",
+                        IE = "9032000301",
+                        XNome = "Unimake Solucoes Corporativas",
+                        XFant = "Unimake Software",
+                        EnderEmit = new XmlNF3e.EnderEmit
+                        {
+                            XLgr = "Rua Paulo Antonio da Costa",
+                            Nro = "575",
+                            XBairro = "Jardim Simara",
+                            CMun = "4118402",
+                            XMun = "Paranavai",
+                            CEP = "87777000",
+                            UF = UFBrasil.PR,
+                            Email = "teste@teste.com.br"
+                        }
+                    },
+                    Dest = new XmlNF3e.Dest
+                    {
+                        XNome = "Empresa Teste",
+                        CNPJ = "12345678901234",
+                        IndIEDest = IndicadorIEDestinatario.NaoContribuinte,
+                        IE = "9876543",
+                        EnderDest = new XmlNF3e.EnderDest
+                        {
+                            XLgr = "Rua da Silva",
+                            Nro = "1",
+                            XBairro = "Jardim Ipe",
+                            CMun = "1234567",
+                            XMun = "Outro",
+                            CEP = "87777001",
+                            UF = UFBrasil.PR,
+                            Email = "1teste1@1teste1.com.br"
+                        }
+                    },
+                    Acessante = new Acessante
+                    {
+                        IdAcesso = "1",
+                        TpAcesso = TipoAcessante.Cativo,
+                        XNomeUC = "nome aleatorio",
+                        TpClasse = TipoClasseConsumidora.ConsumoProprio,
+                        TpSubClasse = TipoSubClasseConsumidora.Residencial,
+                        TpFase = TipoLigacao.Monofasico,
+                        TpGrpTensao = GrupoSubGrupoTensao.A1AltaTensao230kVMais,
+                        TpModTar = ModalidadeTarifaria.HorariaBranca,
+                        LatGPS = "45.123456",
+                        LongGPS = "12.345678",
+                        CodRoteiroLeitura = "85589"
+                    },
+                    GJudic = new GJudic
+                    {
+                        ChNF3e = "12345678901234567890123456789012345678901234"
+                    },
+                    GMed = new List<GMed>
+                    {
+                        new GMed
+                        {
+                            NMed = "01",
+                            IdMedidor = "AB1234",
+                            DMedAnt = DateTime.Now,
+                            DMedAtu = DateTime.Now,
+                        },
+                        new GMed
+                        {
+                            NMed = "02",
+                            IdMedidor = "DC98765",
+                            DMedAnt = DateTime.Now,
+                            DMedAtu = DateTime.Now,
+                        }
+                    },
+                    GSCEE = new GSCEE
+                    {
+                        TpPartComp = TipoParticipacaoCompensacao.AutoconsumoRemoto,
+                        GConsumidor = new List<GConsumidor>
+                        {
+                            new GConsumidor
+                            {
+                                IdAcessGer = "AB1234",
+                                VPotInst = 12789.014,
+                                TpFonteEnergia = TipoFonteEnergia.Hidraulica,
+                                EnerAloc = 14.19,
+                                TpPosTar = TipoPostoTarifario.Unico
+                            },
+                            new GConsumidor
+                            {
+                                IdAcessGer = "FVD9785",
+                                VPotInst = 174.17,
+                                TpFonteEnergia = TipoFonteEnergia.Eolica,
+                                EnerAloc = 189.256,
+                                TpPosTar = TipoPostoTarifario.ForaPonta
+                            }
+                        },
+                        GSaldoCred = new List<GSaldoCred>
+                        {
+                            new GSaldoCred
+                            {
+                                TpPosTar = TipoPostoTarifario.Ponta,
+                                VSaldAnt = 123.14,
+                                VCredExpirado = 14.589,
+                                VSaldAtual = 1.478
+                            }
+                        }
+                    },
+                    NFdet = new List<NFdet>
+                    {
+                        new NFdet
+                        {
+                            Det = new List<XmlNF3e.Det>
+                            {
+                                new XmlNF3e.Det
+                                {
+                                    NItem = "1",
+                                    DetItemAnt = new DetItemAnt
+                                    {
+                                        NItemAnt = "12",
+                                        VItem = 123456.12M,
+                                        QFaturada = 123.4,
+                                        VProd = 1.02M,
+                                        CClass = "1234567",
+                                        VBC = 1.34,
+                                        PICMS = 2.3,
+                                        VFCP = 2.44,
+                                        VBCST = 3.45,
+                                        VICMSST = 4.55,
+                                        VFCPST = 2.33,
+                                        VPIS = 2.3,
+                                        VPISEfet = 3.4,
+                                        VCOFINS = 3.22,
+                                        VCOFINSEfet = 4.5,
+                                        RetTribNF3e = new RetTribNF3e
+                                        {
+                                            VRetPIS = 123.45M,
+                                            VRetCofins = 44.42M,
+                                            VRetCSLL = 33M,
+                                            VIRRF = 33.42M
+                                        },
+                                        IndDevolucao = SimNao.Sim
+                                    }
+                                },
+                                new XmlNF3e.Det
+                                {
+                                    NItem = "2",
+                                    DetItem = new DetItem
+                                    {
+                                        NItemAnt = "1",
+                                        GTarif = new GTarif
+                                        {
+                                            DIniTarif = DateTime.Now,
+                                            DFimTarif = DateTime.Now,
+                                            TpAto = TipoAto.Despacho,
+                                            NAto = "1342",
+                                            AnoAto = "2024",
+                                            TpTarif = TipoTarifa.TUSD,
+                                            CPosTarif = TipoPostoTarifario.Intermediario,
+                                            UMed = UnidadeMedidaEnergia.KW,
+                                            VTarifHom = 0
+                                        },
+                                        GAdBand = new GAdBand
+                                        {
+                                            DIniAdBand = DateTime.Now,
+                                            DFimAdBand = DateTime.Now,
+                                            TpBand = TipoBandeira.EscassezHidrica,
+                                            VAdBand = 33.44M,
+                                            VAdBandAplic = 2.11,
+                                            MotDifBand = MotivoTarifaDiferente.DescontoTarifario
+                                        },
+                                        Prod = new XmlNF3e.Prod
+                                        {
+                                            IndOrigemQtd = IndicadorOrigemQuantidadeFaturada.Medido,
+                                            GMedicao = new GMedicao
+                                            {
+                                                NMed = "02",
+                                                NContrat = "03",
+                                                GMedida = new GMedida
+                                                {
+                                                    TpGrMed = TipoGrandezaMedida.Demanda,
+                                                    CPosTarif = TipoPostoTarifario.ForaPonta,
+                                                    UMed = UnidadeMedidaEnergia.KVArh,
+                                                    VMedAnt = 23.33,
+                                                    VMedAtu = 34.3,
+                                                    VConst = 333,
+                                                    VMed = 44,
+                                                    PPerdaTran = 22.344,
+                                                    VMedPerdaTran = 33,
+                                                    VMedPerdaTec = 3455
+                                                }
+                                            },
+                                            CProd = "12345",
+                                            XProd = "produto teste",
+                                            CClass = "1234567",
+                                            CFOP = "1234",
+                                            UMed = UnidadeMedidaEnergia.KW,
+                                            QFaturada = 2345.333,
+                                            VItem = 123.45M,
+                                            VProd = 23,
+                                            IndDevolucao = SimNao.Sim,
+                                            IndPrecoACL = SimNao.Sim
+                                        },
+                                        Imposto = new XmlNF3e.Imposto
+                                        {
+                                            ICMS00 = new XmlNF3e.ICMS00
+                                            {
+                                                CST = "00",
+                                                VBC = 123,
+                                                PICMS = 12.13,
+                                                VICMS = 23.33,
+                                                PFCP = 22.333,
+                                                VFCP = 33.4
+                                            },
+                                            PIS = new XmlNF3e.PIS
+                                            {
+                                                CST = CSTPisCofins.AliquotaBasica,
+                                                VBC = 22.22,
+                                                PPIS = 3,
+                                                VPIS = 4.44
+                                            },
+                                            COFINS = new XmlNF3e.COFINS
+                                            {
+                                                CST = CSTPisCofins.AliquotaBasica,
+                                                VBC = 22.22,
+                                                PCOFINS = 5.55,
+                                                VCOFINS = 33
+                                            },
+                                            RetTrib = new RetTribNF3e
+                                            {
+                                                VRetPIS = 23.13M,
+                                                VRetCofins = 33M,
+                                                VRetCSLL = 33,
+                                                VBCIRRF = 25,
+                                                VIRRF = 234.55M
+                                            }
+                                        },
+                                        GProcRef = new GProcRef
+                                        {
+                                            VItem = 2.33M,
+                                            QFaturada = 123.45,
+                                            VProd = 23.33M,
+                                            IndDevolucao = SimNao.Sim,
+                                            VBC = 23.2,
+                                            PICMS = 22.2,
+                                            VICMS = 2,
+                                            PFCP = 123.4,
+                                            VFCP = 22.22,
+                                            VBCST = 2.22,
+                                            PICMSST = 2.222,
+                                            VICMSST = 22.33,
+                                            PFCPST = 22.2,
+                                            VFCPST = 22.22,
+                                            VPIS = 2.2,
+                                            VPISEfet = 2.12,
+                                            VCOFINS = 2.22,
+                                            VCOFINSEfet = 2,
+                                            GProc = new List<GProc>
+                                            {
+                                                new GProc
+                                                {
+                                                    TpProc = TipoProcessoNF3eNFCom.JusticaEstadual,
+                                                    NProcesso = "1222"
+                                                }
+                                            }
+                                        },
+                                        InfAdProd = "TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    Total = new XmlNF3e.Total
+                    {
+                        VProd = 23151515.22,
+                        ICMSTot = new XmlNF3e.ICMSTot
+                        {
+                            VBC = 123.45,
+                            VICMS = 12.22,
+                            VICMSDeson = 1,
+                            VFCP = 22,
+                            VBCST = 123.45,
+                            VST = 1234.5,
+                            VFCPST = 11.1
+                        },
+                        VRetTribTot = new VRetTribTot
+                        {
+                            VRetPIS = 123.45,
+                            VRetCofins = 123.45,
+                            VRetCSLL = 11.11,
+                            VIRRF = 11.44
+                        },
+                        VCOFINS = 11.1,
+                        VCOFINSEfet = 11.1,
+                        VPIS = 14.11,
+                        VPISEfet = 14.11,
+                        VNF = 111111.45
+                    },
+                    GFat = new GFat
+                    {
+                        CompetFat = "202411",
+                        DVencFat = DateTime.Now,
+                        DApresFat = DateTime.Now,
+                        DProxLeitura = DateTime.Now,
+                        CodBarras = "12345678901234567890",
+                        CodDebAuto = "222",
+
+                        EnderCorresp = new EnderCorresp
+                        {
+                            XLgr = "Rua da Silva",
+                            Nro = "1",
+                            XBairro = "Jardim Ipe",
+                            CMun = "1234567",
+                            XMun = "Outro",
+                            CEP = "87777001",
+                            UF = UFBrasil.PR,
+                            Email = "1teste1@1teste1.com.br"
+                        }
+                    },
+                    GANEEL = new GANEEL
+                    {
+                        GHistFat = new List<GHistFat>
+                        {
+                            new GHistFat
+                            {
+                                XGrandFat = "TESTE UNICO",
+                                GGrandFat = new List<GGrandFat>
+                                {
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "01"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "02"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "03"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "04"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "05"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "06"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "07"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "08"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "09"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "10"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "11"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "12"
+                                    },
+                                    new GGrandFat
+                                    {
+                                        CompetFat = "202411",
+                                        VFat = 333.3,
+                                        UMed = UnidadeMedidaEnergia.KW,
+                                        QtdDias = "13"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    AutXML = new List<XmlNF3e.AutXML>
+                    {
+                        new XmlNF3e.AutXML
+                        {
+                            CNPJ = "06117473000150"
+                        },
+                        new XmlNF3e.AutXML
+                        {
+                            CPF = "12345678901"
+                        }
+                    },
+                    InfAdic = new InfAdicNF3e
+                    {
+                        InfAdFisco = "TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE",
+                        InfCpl = new List<string>
+                        {
+                            "TESTE do InfCpl",
+                            "TESTE2 do InfCpl"
+                        }
+                    },
+                    GRespTec = new GRespTec
+                    {
+                        CNPJ = "06117473000150",
+                        XContato = "Wandrey Mundin Ferreria",
+                        Email = "wandrey@unimake.com.br",
+                        Fone = "04431414900"
+                    }
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var autorizacaoSincNF3e = new ServicoNF3e.AutorizacaoSinc(xml, configuracao);
+            autorizacaoSincNF3e.Executar();
+
+            MessageBox.Show(autorizacaoSincNF3e.RetornoWSString);
+
+            if (autorizacaoSincNF3e.Result.CStat == 100)
+            {
+                if (autorizacaoSincNF3e.Result.ProtNF3e.InfProt.CStat == 100)
+                {
+                    MessageBox.Show(autorizacaoSincNF3e.Result.ProtNF3e.InfProt.NProt);
+                    var teste = autorizacaoSincNF3e.NF3eProcResults[xml.InfNF3e.Chave].GerarXML();
+                }
+            }
+        }
+
+        private void BtnConsultaSituacaoNF3e_Click(object sender, EventArgs e)
+        {
+            var xml = new XmlNF3e.ConsSitNF3e
+            {
+                Versao = "1.00",
+                ChNF3e = "12345678901234567890123456789012345678901234",
+                TpAmb = TipoAmbiente.Homologacao
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = CertificadoSelecionado
+            };
+
+            var consultaProtocolo = new ServicoNF3e.ConsultaProtocolo(xml, configuracao);
+            consultaProtocolo.Executar();
+
+            MessageBox.Show(consultaProtocolo.RetornoWSString);
+
+        }
+
+        private void BtnEnviarEventoCancelamentoNF3e_Click(object sender, EventArgs e)
+        {
+            var xmlEvento = new EventoNF3e
+            {
+                Versao = "1.00",
+                InfEvento = 
+                new XmlNF3e.InfEvento(new XmlNF3e.DetEventoCanc
+                {
+                    VersaoEvento = "1.00",
+                    DescEvento = "Cancelamento",
+                    NProt = "12345678",
+                    XJust = "Erro no valor do item 3"
+                })
+                {
+                    COrgao = UFBrasil.PR,
+                    TpAmb = TipoAmbiente.Homologacao,
+                    CNPJ = "06117473000150",
+                    ChNF3e = "12345678901234567890123456789012345678901234",
+                    DhEvento = System.DateTime.Now,
+                    TpEvento = TipoEventoNF3e.Cancelamento,
+                    NSeqEvento = 1,
+                }
+            };
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoEmissao = TipoEmissao.Normal,
+                Servico = Servico.NF3eRecepcaoEvento,
+                CertificadoDigital = CertificadoSelecionado,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+            };
+
+            var recepcaoEvento = new ServicoNF3e.RecepcaoEvento(xmlEvento, configuracao);
+            recepcaoEvento.Executar();
+
+            MessageBox.Show(recepcaoEvento.RetornoWSString);
+            MessageBox.Show(recepcaoEvento.Result.InfEvento.CStat + " - " + recepcaoEvento.Result.InfEvento.XMotivo);
+
+            switch (recepcaoEvento.Result.InfEvento.CStat)
+            {
+                case 134: // Recebido pelo Sistema de Registro de Eventos, com vinculação do evento na respectiva NF3e com situação diferente de Autorizada
+                case 135: // Recebido pelo Sistema de Registro de Eventos, com vinculação do evento na respectiva NF3e
+                case 136: // Recebido pelo Sistema de Registro de Eventos – vinculação do evento à NF3e prejudicado
                     recepcaoEvento.GravarXmlDistribuicao(@"d:\testenfe");
                     break;
 
