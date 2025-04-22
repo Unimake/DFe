@@ -282,6 +282,15 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #else
         public SimNaoLetra? IndTribFolhaPisPasep { get; set; }
 #endif
+        /// <summary>
+        /// Indicador de pertencimento do IRRF.
+        /// </summary>
+        [XmlElement("indPertIRRF")]
+#if INTEROP
+        public SimNaoLetra IndPertIRRF { get; set; } = (SimNaoLetra)(-1);
+#else
+        public SimNaoLetra? IndPertIRRF { get; set; }
+#endif
 
         /// <summary>
         /// Informações complementares - Empresas isentas - Dados da isenção.
@@ -325,6 +334,12 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeIndTribFolhaPisPasep() => IndTribFolhaPisPasep != (SimNaoLetra)(-1);
 #else
         public bool ShouldSerializeIndTribFolhaPisPasep() => IndTribFolhaPisPasep != null;
+#endif
+
+#if INTEROP
+        public bool ShouldSerializeIndPertIRRF() => IndPertIRRF != (SimNaoLetra)(-1) && IndPertIRRF == SimNaoLetra.Sim;
+#else
+        public bool ShouldSerializeIndPertIRRF() => IndPertIRRF != null && IndPertIRRF == SimNaoLetra.Sim;
 #endif
 
         #endregion ShouldSerialize
