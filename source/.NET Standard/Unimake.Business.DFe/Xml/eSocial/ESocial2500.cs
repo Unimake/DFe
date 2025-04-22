@@ -355,6 +355,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #endif
         }
 
+        [XmlElement("ideSeqTrab")]
+        public int IdeSeqTrab { get; set; }
+
         /// <summary>
         /// Informações do contrato de trabalho
         /// </summary>
@@ -387,7 +390,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((InfoContr?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfoContr[index];
         }
@@ -403,6 +406,8 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public bool ShouldSerializeNmTrab() => !string.IsNullOrEmpty(NmTrab);
 
         public bool ShouldSerializeDtNasctoField() => DtNascto > DateTime.MinValue;
+
+        public bool ShouldSerializeIdeSeqTrab() => IdeSeqTrab != 0;
 
         #endregion ShouldSerialize
     }
@@ -560,7 +565,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((MudCategAtiv?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return MudCategAtiv[index];
         }
@@ -603,7 +608,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((UnicContr?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return UnicContr[index];
         }
@@ -700,7 +705,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((Remuneracao?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Remuneracao[index];
         }
@@ -890,7 +895,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((Observacoes?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Observacoes[index];
         }
@@ -1488,7 +1493,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((Abono?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Abono[index];
         }
@@ -1531,7 +1536,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
             if ((IdePeriodo?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return IdePeriodo[index];
         }
@@ -1631,11 +1636,71 @@ namespace Unimake.Business.DFe.Xml.ESocial
         /// Informações relativas ao trabalho intermitente.
         /// </summary>
         [XmlElement("infoInterm")]
-        public string InfoInterm { get; set; }
+        public List<InfoInterm> InfoInterm { get; set; }
+
+#if INTEROP
+
+        /// <summary>
+        /// Adicionar novo elemento a lista
+        /// </summary>
+        /// <param name="item">Elemento</param>
+        public void AddAbono(InfoInterm item)
+        {
+            if (InfoInterm == null)
+            {
+                InfoInterm = new List<InfoInterm>();
+            }
+
+            InfoInterm.Add(item);
+        }
+
+        /// <summary>
+        /// Retorna o elemento da lista InfoInterm (Utilizado para linguagens diferentes do CSharp que não conseguem pegar o conteúdo da lista)
+        /// </summary>
+        /// <param name="index">Índice da lista a ser retornado (Começa com 0 (zero))</param>
+        /// <returns>Conteúdo do index passado por parâmetro da InfoInterm</returns>
+        public InfoInterm GetInfoInterm(int index)
+        {
+            if ((InfoInterm?.Count ?? 0) == 0)
+            {
+                return default;
+            }
+
+            return InfoInterm[index];
+        }
+
+        /// <summary>
+        /// Retorna a quantidade de elementos existentes na lista InfoInterm
+        /// </summary>
+        public int GetInfoIntermCount => (InfoInterm != null ? InfoInterm.Count : 0);
+#endif
+    }
+
+    /// <summary>
+    /// Informações relativas ao trabalho intermitente.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.InfoInterm")]
+    [ComVisible(true)]
+#endif
+    public class InfoInterm
+    {
+        /// <summary>
+        /// Dia do mês efetivamente trabalhado pelo empregado com contrato de trabalho intermitente. Caso não tenha havido trabalho no mês, informar 0 (zero).
+        /// </summary>
+        [XmlElement("dia")]
+        public int Dia { get; set; }
+
+        /// <summary>
+        /// Horas trabalhadas no dia pelo empregado com contrato de trabalho intermitente, no formato HHMM.
+        /// </summary>
+        [XmlElement("hrsTrab")]
+        public string HrsTrab { get; set; }
 
         #region ShouldSerialize
 
-        public bool ShouldSerializeInfoInterm() => !string.IsNullOrWhiteSpace(InfoInterm);
+        public bool ShouldSerializeHrsTrab() => !string.IsNullOrWhiteSpace(HrsTrab);
 
         #endregion ShouldSerialize
     }
