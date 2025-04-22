@@ -615,7 +615,7 @@
 		<Nome>Catanduva - SP</Nome>
 		<UF>SP</UF>
 		<ArqConfig>CatanduvaSP.xml</ArqConfig>
-		<PadraoNFSe>FIORILLI</PadraoNFSe>
+		<PadraoNFSe>RLZ_INFORMATICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="1502152">
 		<Nome>Canaã dos Carajás - PA</Nome>
