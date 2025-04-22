@@ -244,6 +244,7 @@
 		<None Remove="Servicos\Config\NFCom\GO.xml" />
 		<None Remove="Servicos\Config\NFCom\MA.xml" />
 		<None Remove="Servicos\Config\NFCom\MG.xml" />
+		<None Remove="Servicos\Config\NFCom\MS.xml" />
 		<None Remove="Servicos\Config\NFCom\PA.xml" />
 		<None Remove="Servicos\Config\NFCom\PB.xml" />
 		<None Remove="Servicos\Config\NFCom\PE.xml" />
@@ -1229,6 +1230,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\GO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\MA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\MG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFCom\MS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\PA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\PB.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\PE.xml" />

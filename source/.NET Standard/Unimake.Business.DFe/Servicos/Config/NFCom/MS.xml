@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFCom">
+		<StatusServico versao="1.00">
+			<Descricao>Consulta situação do serviço da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfcom.sefaz.ms.gov.br/ws/NFComStatusServico?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.sefaz.ms.gov.br/ws/NFComStatusServico?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico</WebActionProducao>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComStatusServico"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+			<SchemaArquivo>consStatServNFCom_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</StatusServico>
+		<ConsultaProtocolo versao="1.00">
+			<Descricao>Consulta situação da nota fisca fatura de serviço de comunicação eletrônica</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfcom.sefaz.ms.gov.br/ws/NFComConsulta?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.sefaz.ms.gov.br/ws/NFComConsulta?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta</WebActionProducao>
+			<SchemaArquivo>consSitNFCom_v{0}.xsd</SchemaArquivo>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComConsulta"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</ConsultaProtocolo>
+		<RecepcaoEvento versao="1.00">
+			<Descricao>Recepção de eventos</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfcom.sefaz.ms.gov.br/ws/NFComRecepcaoEvento?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.sefaz.ms.gov.br/ws/NFComRecepcaoEvento?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento</WebActionProducao>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcaoEvento"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+			<SchemaArquivo></SchemaArquivo>
+			<SchemasEspecificos>
+				<Tipo>
+					<ID>110111</ID>
+					<SchemaArquivo>eventoNFCom_v{0}.xsd</SchemaArquivo>
+					<SchemaArquivoEspecifico>evCancNFCom_v{0}.xsd</SchemaArquivoEspecifico>
+				</Tipo>
+			</SchemasEspecificos>
+			<TagAssinatura>eventoNFCom</TagAssinatura>
+			<TagAtributoID>infEvento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+		</RecepcaoEvento>
+		<AutorizacaoSinc versao="1.00">
+			<Descricao>Autorização síncrona da NFCom</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfcom.sefaz.ms.gov.br/ws/NFComRecepcao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfcom.sefaz.ms.gov.br/ws/NFComRecepcao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionHomologacao>
+			<WebActionProducao>http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao</WebActionProducao>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfc="http://www.portalfiscal.inf.br/nfcom/wsdl/NFComRecepcao"><soap:Header/><soap:Body><nfc:nfcomDadosMsg>{xmlBody}</nfc:nfcomDadosMsg></soap:Body></soap:Envelope>]]></WebSoapString>
+			<SchemaArquivo>nfcom_v{0}.xsd</SchemaArquivo>
+			<TagAssinatura>NFCom</TagAssinatura>
+			<TagAtributoID>infNFCom</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebTagRetorno>nfcomResultMsg</WebTagRetorno>
+			<GZIPCompress>true</GZIPCompress>
+			<UrlQrCodeHomologacao>https://www.dfe.ms.gov.br/nfcom/qrcode</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://www.dfe.ms.gov.br/nfcom/qrcode</UrlQrCodeProducao>
+			<UrlChaveHomologacao>https://www.dfe.ms.gov.br/nfcom/consulta</UrlChaveHomologacao>
+			<UrlChaveProducao>https://www.dfe.ms.gov.br/nfcom/consulta</UrlChaveProducao>
+		</AutorizacaoSinc>
+	</Servicos>
+</Configuracoes>
