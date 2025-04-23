@@ -1,18 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
-  <Heranca>SVRS.xml</Heranca>
-  <Servicos ID="CTe">
-    <ConsultaCadastro versao="2.00">
-      <Descricao>Consulta cadastro do contribuinte</Descricao>
-      <WebEnderecoHomologacao>https://cad.sefazrs.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro4.asmx</WebEnderecoHomologacao>
-      <WebEnderecoProducao>https://cad.sefazrs.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro4.asmx</WebEnderecoProducao>
-      <WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionHomologacao>
-      <WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/CadConsultaCadastro4</WebActionProducao>
-      <SchemaArquivo>consCad_v{0}.xsd</SchemaArquivo>
-      <TagAssinatura></TagAssinatura>
-      <TagAtributoID></TagAtributoID>
-      <TagLoteAssinatura></TagLoteAssinatura>
-      <TagLoteAtributoID></TagLoteAtributoID>
-    </ConsultaCadastro>
-  </Servicos>
+	<Heranca>SVRS.xml</Heranca>
 </Configuracoes>

@@ -50,7 +50,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 		</ConsultaCadastro>
 		<RecepcaoEvento versao="1.00">
-			<Descricao>Recepcao de eventos</Descricao>
+			<Descricao>Recepção de eventos</Descricao>
 			<WebEnderecoHomologacao>https://nfe-homologacao.svrs.rs.gov.br/ws/recepcaoevento/recepcaoevento4.asmx</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.svrs.rs.gov.br/ws/recepcaoevento/recepcaoevento4.asmx</WebEnderecoProducao>
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
