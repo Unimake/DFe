@@ -318,6 +318,7 @@
 		<None Remove="Servicos\Config\NFSe\BarueriSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BauruSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BeloHorizonteMG.xml" />
+		<None Remove="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 		<None Remove="Servicos\Config\NFSe\Betha.xml" />
 		<None Remove="Servicos\Config\NFSe\BiguacuSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BiriguiSP.xml" />
@@ -1043,6 +1044,7 @@
 		<None Remove="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\DSF\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\nfse_v2-04.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EL\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
@@ -1248,6 +1250,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CacoalRO.xml" />
 	</ItemGroup>
 
@@ -2056,6 +2059,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseEnvio_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esCancelarNfseResposta_v01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\EQUIPLANO\esConsultarLoteRpsEnvio_v01.xsd" />

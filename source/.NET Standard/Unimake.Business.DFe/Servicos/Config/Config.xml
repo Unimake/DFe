@@ -1763,4 +1763,10 @@
 		<ArqConfig>AraripinaPE.xml</ArqConfig>
 		<PadraoNFSe>HM2SOLUCOES</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4302105">
+		<Nome>Bento Gonçalves - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>BentoGoncalvesRS.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
