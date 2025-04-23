@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseServicoTomadoEnvio xmlns="http://shad.elotech.com.br/schemas/iss/nfse_v2_03.xsd">
+	<IdentificacaoRequerente>
+		<CpfCnpj>
+			<Cnpj>12345678901234</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>123</InscricaoMunicipal>
+		<Senha>111111</Senha>
+		<Homologa>true</Homologa>
+	</IdentificacaoRequerente>
+	<NumeroNfse>0</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2025-01-01</DataInicial>
+		<DataFinal>2025-01-31</DataFinal>
+	</PeriodoEmissao>
+	<Prestador>
+		<CpfCnpj>
+			<Cpf>12345678901</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal>123</InscricaoMunicipal>
+	</Prestador>
+	<Tomador>
+		<CpfCnpj>
+			<Cpf>12345678901</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal>123456</InscricaoMunicipal>
+	</Tomador>
+	<Intermediario>
+		<CpfCnpj>
+			<Cpf>12345678901</Cpf>
+		</CpfCnpj>
+		<InscricaoMunicipal>1234</InscricaoMunicipal>
+	</Intermediario>
+	<Pagina>1</Pagina>
+</ConsultarNfseServicoTomadoEnvio>

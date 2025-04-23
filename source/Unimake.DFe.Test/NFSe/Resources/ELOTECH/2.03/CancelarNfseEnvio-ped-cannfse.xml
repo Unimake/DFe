@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CancelarNfseEnvio xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://shad.elotech.com.br/schemas/iss/nfse_v2_03.xsd">
+	<IdentificacaoRequerente>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>00000000</InscricaoMunicipal>
+		<Senha>XXXXXXXX</Senha>
+		<Homologa>false</Homologa>
+	</IdentificacaoRequerente>
+	<Pedido>
+		<InfPedidoCancelamento>
+			<IdentificacaoNfse>
+				<Numero>418</Numero>
+				<CpfCnpj>
+					<Cnpj>00000000000000</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>XXXXXXXX</InscricaoMunicipal>
+				<CodigoMunicipio>00000000</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<ChaveAcesso>99999999999999999999999999999999</ChaveAcesso>
+			<CodigoCancelamento>1</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>
