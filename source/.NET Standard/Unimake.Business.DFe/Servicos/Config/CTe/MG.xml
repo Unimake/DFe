@@ -144,8 +144,8 @@
 			<TagAtributoID>infCte</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
-			<UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+			<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
 		</Autorizacao>
 		<RetAutorizacao versao="3.00">
 			<Descricao>Consulta recibo do conhecimento de transporte eletrônico</Descricao>
@@ -293,8 +293,8 @@
 			<TagAtributoID>infCte</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
-			<UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+			<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
 		</AutorizacaoSinc>
 		<AutorizacaoSimp versao="4.00">
 			<Descricao>Autorização do CTe Simplificado - Síncrono</Descricao>
@@ -340,8 +340,8 @@
 			<TagAtributoID>infCte</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
-			<UrlQrCodeHomologacao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
-			<UrlQrCodeProducao>https://cte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
+			<UrlQrCodeHomologacao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeHomologacao>
+			<UrlQrCodeProducao>https://portalcte.fazenda.mg.gov.br/portalcte/sistema/qrcode.xhtml</UrlQrCodeProducao>
 		</AutorizacaoSimp>
 	</Servicos>
 </Configuracoes>
