@@ -37,8 +37,9 @@ namespace Unimake.Business.DFe
         /// </summary>
         /// <param name="soap">Soap</param>
         /// <param name="xmlBody">string do XML a ser enviado no corpo do soap</param>
+        /// <param name="certificado">Objeto certificado</param>
         /// <returns>string do envelope (soap)</returns>
-        private string EnveloparXML(WSSoap soap, string xmlBody)
+        private string EnveloparXML(WSSoap soap, string xmlBody, X509Certificate2 certificado)
         {
             if (soap.GZIPCompress)
             {
@@ -97,6 +98,15 @@ namespace Unimake.Business.DFe
                     xmlBody = doc.OuterXml;
                 }
             }
+            else if (soap.PadraoNFSe == PadraoNFSe.ELOTECH)
+            {
+                xmlBody = xmlBody.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+
+                var soapAssinado = new XmlDocument();
+                soapAssinado = ELOTECH.AssinaSoapElotech(soap, xmlBody, certificado);
+
+                retorna = soapAssinado.OuterXml;
+            }
 
             if (soap.Servico == Servico.EFDReinfConsultaReciboEvento)
             {
@@ -129,12 +139,14 @@ namespace Unimake.Business.DFe
             }
             else
             {
-                retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
+                if (soap.PadraoNFSe != PadraoNFSe.ELOTECH)
+                {
+                    retorna += soap.SoapString.Replace("{xmlBody}", xmlBody);
+                }
             }
 
             return retorna;
         }
-
 
         #endregion Private Methods
 
@@ -199,7 +211,7 @@ namespace Unimake.Business.DFe
             }
 
             var urlpost = new Uri(soap.EnderecoWeb);
-            var soapXML = EnveloparXML(soap, xml.OuterXml);
+            var soapXML = EnveloparXML(soap, xml.OuterXml, certificado);
             var buffer2 = Encoding.UTF8.GetBytes(soapXML);
 
             ServicePointManager.Expect100Continue = false;

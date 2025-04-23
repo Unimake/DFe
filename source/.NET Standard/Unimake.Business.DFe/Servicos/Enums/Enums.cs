@@ -6818,6 +6818,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("HM2SOLUCOES")]
         HM2SOLUCOES = 63,
+
+        /// <summary>
+        /// ELOTECH
+        /// </summary>
+        [Description("ELOTECH")]
+        ELOTECH = 64,
     }
 
     #endregion

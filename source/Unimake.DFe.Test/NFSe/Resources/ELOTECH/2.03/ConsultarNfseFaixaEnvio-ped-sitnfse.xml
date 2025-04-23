@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseFaixaEnvio xmlns="http://shad.elotech.com.br/schemas/iss/nfse_v2_03.xsd">
+	<IdentificacaoRequerente>
+		<CpfCnpj>
+			<Cnpj>00000000000000</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>00000000</InscricaoMunicipal>
+		<Senha>XXXXXXXX</Senha>
+		<Homologa>false</Homologa>
+	</IdentificacaoRequerente>
+	<Faixa>
+		<NumeroNfseInicial>416</NumeroNfseInicial>
+		<NumeroNfseFinal>416</NumeroNfseFinal>
+	</Faixa>
+	<Pagina>1</Pagina>
+</ConsultarNfseFaixaEnvio>
