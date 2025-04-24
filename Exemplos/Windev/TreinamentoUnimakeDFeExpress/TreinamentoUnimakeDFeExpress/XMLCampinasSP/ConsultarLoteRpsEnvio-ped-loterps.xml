@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConsultarLoteRpsEnvio>
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>111111</InscricaoMunicipal>
+	</Prestador>
+	<Protocolo>1234567890</Protocolo>
+</ConsultarLoteRpsEnvio>
