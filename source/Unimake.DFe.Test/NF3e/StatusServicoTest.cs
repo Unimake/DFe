@@ -94,7 +94,8 @@ namespace Unimake.DFe.Test.NF3e
 
             if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || 
                 configuracao.CodigoUF.Equals((int)UFBrasil.PR) || 
-                configuracao.CodigoUF.Equals((int)UFBrasil.MT)) {
+                configuracao.CodigoUF.Equals((int)UFBrasil.MT) ||
+                configuracao.CodigoUF.Equals((int)UFBrasil.MS)) {
                 Assert.True(statusServico.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             } else
             {

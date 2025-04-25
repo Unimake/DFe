@@ -120,10 +120,12 @@ namespace Unimake.DFe.Test.NF3e
         [Theory]
         [Trait("DFe", "NF3e")]
         [InlineData(UFBrasil.MG, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.RJ, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.MG, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.MS, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.MT, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
         [InlineData(UFBrasil.RJ, TipoAmbiente.Producao)]
@@ -164,7 +166,8 @@ namespace Unimake.DFe.Test.NF3e
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || configuracao.CodigoUF.Equals((int)UFBrasil.PR))
+            if (configuracao.CodigoUF.Equals((int)UFBrasil.MG) || configuracao.CodigoUF.Equals((int)UFBrasil.PR) || 
+                configuracao.CodigoUF.Equals((int)UFBrasil.MT) || configuracao.CodigoUF.Equals((int)UFBrasil.MS))
             {
                 Assert.True(recepcaoEvento.Result.InfEvento.COrgao.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             }
