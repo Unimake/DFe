@@ -6824,6 +6824,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("ELOTECH")]
         ELOTECH = 64,
+
+        /// <summary>
+        /// CONAM
+        /// </summary>
+        [Description("CONAM")]
+        CONAM = 65,
     }
 
     #endregion

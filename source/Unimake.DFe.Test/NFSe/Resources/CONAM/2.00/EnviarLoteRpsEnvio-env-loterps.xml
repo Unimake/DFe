@@ -1,0 +1,81 @@
+﻿<nfe:Sdt_processarpsin xmlns:nfe="NFe">  
+<nfe:Login>  
+	<nfe:CodigoUsuario>12345</nfe:CodigoUsuario>  
+	<nfe:CodigoContribuinte>67890</nfe:CodigoContribuinte>  
+</nfe:Login>  
+<nfe:SDTRPS>  
+	<nfe:Ano>2023</nfe:Ano>  
+	<nfe:Mes>10</nfe:Mes>  
+	<nfe:CPFCNPJ>12345678901234</nfe:CPFCNPJ>  
+	<nfe:DTIni>2023-10-01</nfe:DTIni>  
+	<nfe:DTFin>2023-10-31</nfe:DTFin>  
+	<nfe:TipoTrib>1</nfe:TipoTrib>  
+	<nfe:DtAdeSN>2023-01-01</nfe:DtAdeSN>  
+	<nfe:AlqIssSN_IP>5.00</nfe:AlqIssSN_IP>  
+	<nfe:Versao>2.00</nfe:Versao>  
+	<nfe:Reg20>  
+		<nfe:Reg20Item>  
+			<nfe:TipoNFS>1</nfe:TipoNFS>  
+			<nfe:NumRps>1001</nfe:NumRps>  
+			<nfe:SerRps>A1</nfe:SerRps>  
+			<nfe:DtEmi>2023-10-15</nfe:DtEmi>  
+			<nfe:RetFonte>2.00</nfe:RetFonte>  
+			<nfe:CodSrv>101</nfe:CodSrv>  
+			<nfe:DiscrSrv>Consulting Services</nfe:DiscrSrv>  
+			<nfe:VlNFS>1500.00</nfe:VlNFS>  
+			<nfe:VlDed>100.00</nfe:VlDed>  
+			<nfe:DiscrDed>Discount</nfe:DiscrDed>  
+			<nfe:VlBasCalc>1400.00</nfe:VlBasCalc>  
+			<nfe:AlqIss>5.00</nfe:AlqIss>  
+			<nfe:VlIss>70.00</nfe:VlIss>  
+			<nfe:VlIssRet>0.00</nfe:VlIssRet>  
+			<nfe:CpfCnpTom>98765432109876</nfe:CpfCnpTom>  
+			<nfe:RazSocTom>Client Company</nfe:RazSocTom>  
+			<nfe:TipoLogtom>Rua</nfe:TipoLogtom>  
+			<nfe:LogTom>Main Street</nfe:LogTom>  
+			<nfe:NumEndTom>123</nfe:NumEndTom>  
+			<nfe:ComplEndTom>Suite 456</nfe:ComplEndTom>  
+			<nfe:BairroTom>Downtown</nfe:BairroTom>  
+			<nfe:MunTom>CityName</nfe:MunTom>  
+			<nfe:SiglaUFTom>SP</nfe:SiglaUFTom>  
+			<nfe:CepTom>12345678</nfe:CepTom>  
+			<nfe:Telefone>11987654321</nfe:Telefone>  
+			<nfe:InscricaoMunicipal>123456</nfe:InscricaoMunicipal>  
+			<nfe:TipoLogLocPre>Avenida</nfe:TipoLogLocPre>  
+			<nfe:LogLocPre>Business Avenue</nfe:LogLocPre>  
+			<nfe:NumEndLocPre>789</nfe:NumEndLocPre>  
+			<nfe:ComplEndLocPre>Office 101</nfe:ComplEndLocPre>  
+			<nfe:BairroLocPre>Business District</nfe:BairroLocPre>  
+			<nfe:MunLocPre>CityName</nfe:MunLocPre>  
+			<nfe:SiglaUFLocpre>SP</nfe:SiglaUFLocpre>  
+			<nfe:CepLocPre>87654321</nfe:CepLocPre>  
+			<nfe:Email1>client@example.com</nfe:Email1>  
+			<nfe:Email2>support@example.com</nfe:Email2>  
+			<nfe:Email3>billing@example.com</nfe:Email3>  
+			<nfe:Reg30>  
+				<nfe:Reg30Item>  
+					<nfe:TributoSigla>ISS</nfe:TributoSigla>  
+					<nfe:TributoAliquota>5.00</nfe:TributoAliquota>  
+					<nfe:TributoValor>70.00</nfe:TributoValor>  
+				</nfe:Reg30Item>  
+			</nfe:Reg30>  
+			<nfe:Reg40>  
+				<nfe:Reg40Item>  
+					<nfe:SiglaCpoAdc>OBS</nfe:SiglaCpoAdc>  
+					<nfe:ConteudoCpoAdc>Additional Information</nfe:ConteudoCpoAdc>  
+				</nfe:Reg40Item>  
+			</nfe:Reg40>  
+		</nfe:Reg20Item>  
+	</nfe:Reg20>  
+	<nfe:Reg90>  
+		<nfe:QtdRegNormal>1</nfe:QtdRegNormal>  
+		<nfe:ValorNFS>1500.00</nfe:ValorNFS>  
+		<nfe:ValorISS>70.00</nfe:ValorISS>  
+		<nfe:ValorDed>100.00</nfe:ValorDed>  
+		<nfe:ValorIssRetTom>0.00</nfe:ValorIssRetTom>  
+		<nfe:QtdReg30>1</nfe:QtdReg30>  
+		<nfe:ValorTributos>70.00</nfe:ValorTributos>  
+		<nfe:QtdReg40>1</nfe:QtdReg40>  
+	</nfe:Reg90>  
+</nfe:SDTRPS>  
+</nfe:Sdt_processarpsin>

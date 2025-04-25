@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<nfe:IMPRESSAOLINKNFSE xmlns:nfe="NFe">  
+<nfe:Login>  
+	<nfe:CodigoUsuario>DCD1515-RCCCD-</nfe:CodigoUsuario>  
+	<nfe:CodigoContribuinte>DCD1515-RCCCD-</nfe:CodigoContribuinte>  
+</nfe:Login>  
+<nfe:Nota>  
+	<nfe:Competencia_Mes>10</nfe:Competencia_Mes>  
+	<nfe:Competencia_Ano>2021</nfe:Competencia_Ano>  
+	<nfe:Nota_Serie>NFE</nfe:Nota_Serie>  
+	<nfe:Nota_Numero>00236</nfe:Nota_Numero>  
+</nfe:Nota>  
+</nfe:IMPRESSAOLINKNFSE>

@@ -1248,6 +1248,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BentoGoncalvesRS.xml" />

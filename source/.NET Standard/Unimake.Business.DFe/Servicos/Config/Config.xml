@@ -1769,4 +1769,10 @@
 		<ArqConfig>BentoGoncalvesRS.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3539806">
+		<Nome>Poá - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PoaSP.xml</ArqConfig>
+		<PadraoNFSe>CONAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
