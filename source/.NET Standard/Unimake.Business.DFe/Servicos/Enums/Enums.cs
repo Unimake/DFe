@@ -6830,6 +6830,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("CONAM")]
         CONAM = 65,
+
+        /// <summary>
+        /// EGOVERNE
+        /// </summary>
+        [Description("EGOVERNE")]
+        EGOVERNE = 66,
     }
 
     #endregion
