@@ -82,7 +82,7 @@ namespace Unimake.DFe.Test.NF3e
             var configuracao = new Configuracao
             {
                 TipoDFe = TipoDFe.NF3e,
-                TipoEmissao = TipoEmissao.ContingenciaOfflineNF3e,
+                TipoEmissao = TipoEmissao.ContingenciaOfflineNF3eNFCom,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
