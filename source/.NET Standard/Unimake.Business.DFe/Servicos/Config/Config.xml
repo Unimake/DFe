@@ -1775,4 +1775,10 @@
 		<ArqConfig>PoaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4106902">
+		<Nome>Curitiba - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CuritibaPR.xml</ArqConfig>
+		<PadraoNFSe>EGOVERNE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

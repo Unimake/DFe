@@ -370,6 +370,7 @@
 		<None Remove="Servicos\Config\NFSe\CruzAltaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CubataoSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CuiabaMT.xml" />
+		<None Remove="Servicos\Config\NFSe\CuritibaPR.xml" />
 		<None Remove="Servicos\Config\NFSe\DuartinaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\EdeiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\EloiMendesMG.xml" />
@@ -1248,6 +1249,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />
