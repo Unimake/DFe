@@ -957,6 +957,7 @@
 		<None Remove="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 		<None Remove="Xml\Schemas\NFe\110150_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\distDFeInt_v1.35.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110130_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NFe\e110131_v1.00.xsd" />
@@ -2027,6 +2028,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFCom\tiposGeralNFCom_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFCom\xmldsig-core-schema_v1.01.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\110150_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFe\DFeTiposBasicos_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110192_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110193_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\e110750_v1.00.xsd" />

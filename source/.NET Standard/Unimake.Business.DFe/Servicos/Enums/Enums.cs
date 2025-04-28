@@ -1626,7 +1626,109 @@ namespace Unimake.Business.DFe.Servicos
         /// 4 - Devolução de mercadoria
         /// </summary>
         [XmlEnum("4")]
-        Devolucao = 4
+        Devolucao = 4,
+
+        /// <summary>
+        /// 5 - Nota de crédito
+        /// </summary>
+        [XmlEnum("5")]
+        NotaCredito = 5,
+
+        /// <summary>
+        /// 6 - Nota de débito
+        /// </summary>
+        [XmlEnum("6")]
+        NotaDebito = 6
+    }
+
+    #endregion
+
+    #region TipoNFDebito
+
+    /// <summary>
+    /// Tipo de nota de débito
+    /// </summary>
+    public enum TipoNFDebito
+    {
+        /// <summary>
+        /// 01 - Transferência de créditos para Cooperativas
+        /// </summary>
+        [XmlEnum("01")]
+        TransferenciaCreditosCooperativas = 1,
+
+        /// <summary>
+        /// 02 - Anulação de Crédito por Saídas Imunes/Isentas
+        /// </summary>
+        [XmlEnum("02")]
+        AnulacaoCreditoSaidasImunesIsentas = 2,
+
+        /// <summary>
+        /// 03 - Débitos de notas fiscais não processadas na apuração
+        /// </summary>
+        [XmlEnum("03")]
+        DebitosNotasFiscaisNaoProcessadas = 3,
+
+        /// <summary>
+        /// 04 - Multa e juros
+        /// </summary>
+        [XmlEnum("04")]
+        MultaJuros = 4,
+
+        /// <summary>
+        /// 05 - Transferência de crédito de sucessão
+        /// </summary>
+        [XmlEnum("05")]
+        TransferenciaCreditoSucessao = 5
+    }
+
+    #endregion
+
+    #region TipoNFCredito
+
+    /// <summary>
+    /// Tipo de nota de crédito
+    /// </summary>
+    public enum TipoNFCredito
+    {
+        /// <summary>
+        /// 01 - A Definir (SEFAZ ainda não definiu esta tabela)
+        /// </summary>
+        [XmlEnum("01")]
+        ADefinir = 1
+    }
+
+    #endregion
+
+    #region TipoEnteGovernamental
+
+    /// <summary>
+    /// Tipo de Ente Governamental
+    /// </summary>
+    public enum TipoEnteGovernamental
+    {
+        /// <summary>
+        /// 0 - União
+        /// </summary>
+        [XmlEnum("1")]
+        Uniao = 1,
+
+        /// <summary>
+        /// 1 - Estado
+        /// </summary>
+        [XmlEnum("2")]
+        Estado = 2,
+
+        /// <summary>
+        /// 3 - Distrito Federal
+        /// </summary>
+        [XmlEnum("3")]
+        DistritoFederal = 3,
+
+        /// <summary>
+        /// 4 - Município
+        /// </summary>
+        [XmlEnum("4")]
+        Municipio = 4
     }
 
     #endregion

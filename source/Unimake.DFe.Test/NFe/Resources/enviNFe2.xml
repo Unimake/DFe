@@ -16,11 +16,13 @@
 				<tpNF>0</tpNF>
 				<idDest>1</idDest>
 				<cMunFG>4118402</cMunFG>
+				<cMunFGIBS>4118402</cMunFGIBS>
 				<tpImp>0</tpImp>
 				<tpEmis>1</tpEmis>
 				<cDV>1</cDV>
 				<tpAmb>1</tpAmb>
 				<finNFe>1</finNFe>
+				<tpNFDebito>01</tpNFDebito>
 				<indFinal>0</indFinal>
 				<indPres>1</indPres>
 				<indIntermed>0</indIntermed>
@@ -37,6 +39,10 @@
 				<NFref>
 					<refNFe>11170706117473000150550010000000011123456783</refNFe>
 				</NFref>
+				<gCompraGov>
+					<tpEnteGov>1</tpEnteGov>
+					<pRedutor>1.0000</pRedutor>
+				</gCompraGov>
 			</ide>
 			<emit>
 				<CNPJ>06117473000150</CNPJ>
@@ -451,6 +457,113 @@
 						<vICMSUFDest>1.00</vICMSUFDest>
 						<vICMSUFRemet>1.00</vICMSUFRemet>
 					</ICMSUFDest>
+					<IS>
+						<CSTIS>000</CSTIS>
+						<cClassTribIS>000001</cClassTribIS>
+						<vBCIS>2.00</vBCIS>
+						<pIS>1.0000</pIS>
+						<pISEspec>1.0000</pISEspec>
+						<uTrib>UN</uTrib>
+						<qTrib>10</qTrib>
+						<vIS>1.00</vIS>
+					</IS>
+					<IBSCBS>
+						<CST>01</CST>
+						<cClassTrib>12345678</cClassTrib>
+						<gIBSCBS>
+							<vBC>1000.00</vBC>
+							<gIBSUF>
+								<pIBSUF>1.5000</pIBSUF>
+								<gDif>
+									<pDif>0.5000</pDif>
+									<vDif>5.00</vDif>
+								</gDif>
+								<gDevTrib>
+									<vDevTrib>2.00</vDevTrib>
+								</gDevTrib>
+								<gRed>
+									<pRedAliq>10.0000</pRedAliq>
+									<pAliqEfet>1.3500</pAliqEfet>
+								</gRed>
+								<vIBSUF>15.00</vIBSUF>
+							</gIBSUF>
+							<gIBSMun>
+								<pIBSMun>0.7500</pIBSMun>
+								<gDif>
+									<pDif>0.2500</pDif>
+									<vDif>2.50</vDif>
+								</gDif>
+								<gDevTrib>
+									<vDevTrib>1.00</vDevTrib>
+								</gDevTrib>
+								<gRed>
+									<pRedAliq>5.0000</pRedAliq>
+									<pAliqEfet>0.7125</pAliqEfet>
+								</gRed>
+								<vIBSMun>7.50</vIBSMun>
+							</gIBSMun>
+							<gCBS>
+								<pCBS>2.5000</pCBS>
+								<gDif>
+									<pDif>0.3000</pDif>
+									<vDif>3.00</vDif>
+								</gDif>
+								<gDevTrib>
+									<vDevTrib>1.50</vDevTrib>
+								</gDevTrib>
+								<gRed>
+									<pRedAliq>8.0000</pRedAliq>
+									<pAliqEfet>2.3000</pAliqEfet>
+								</gRed>
+								<vCBS>25.00</vCBS>
+							</gCBS>
+							<gTribRegular>
+								<CSTReg>04</CSTReg>
+								<cClassTribReg>87654321</cClassTribReg>
+								<pAliqEfetRegIBSUF>1.6000</pAliqEfetRegIBSUF>
+								<vTribRegIBSUF>16.00</vTribRegIBSUF>
+								<pAliqEfetRegIBSMun>0.8000</pAliqEfetRegIBSMun>
+								<vTribRegIBSMun>8.00</vTribRegIBSMun>
+								<pAliqEfetRegCBS>2.7000</pAliqEfetRegCBS>
+								<vTribRegCBS>27.00</vTribRegCBS>
+							</gTribRegular>
+							<gIBSCredPres>
+								<cCredPres>1111</cCredPres>
+								<pCredPres>5.0000</pCredPres>
+								<vCredPres>50.00</vCredPres>
+								<vCredPresCondSus>10.00</vCredPresCondSus>
+							</gIBSCredPres>
+							<GCBSCredPres>
+								<cCredPres>2222</cCredPres>
+								<pCredPres>3.0000</pCredPres>
+								<vCredPres>30.00</vCredPres>
+								<vCredPresCondSus>5.00</vCredPresCondSus>
+							</GCBSCredPres>
+						</gIBSCBS>
+						<gIBSCBSMono>
+							<qBCMono>100.00</qBCMono>
+							<adRemIBS>0.5000</adRemIBS>
+							<adRemCBS>0.7500</adRemCBS>
+							<vIBSMono>50.00</vIBSMono>
+							<vCBSMono>75.00</vCBSMono>
+							<qBCMonoReten>50</qBCMonoReten>
+							<adRemIBSReten>0.2500</adRemIBSReten>
+							<vIBSMonoReten>12.50</vIBSMonoReten>
+							<adRemCBSReten>0.3750</adRemCBSReten>
+							<vCBSMonoReten>18.75</vCBSMonoReten>
+							<qBCMonoRet>30</qBCMonoRet>
+							<adRemIBSRet>0.2000</adRemIBSRet>
+							<vIBSMonoRet>6.00</vIBSMonoRet>
+							<adRemCBSRet>0.3000</adRemCBSRet>
+							<vCBSMonoRet>9.00</vCBSMonoRet>
+							<pDifIBS>1.5000</pDifIBS>
+							<vIBSMonoDif>3.00</vIBSMonoDif>
+							<pDifCBS>2.0000</pDifCBS>
+							<vCBSMonoDif>4.00</vCBSMonoDif>
+							<vTotIBSMonoItem>125.00</vTotIBSMonoItem>
+							<vTotCBSMonoItem>180.00</vTotCBSMonoItem>
+						</gIBSCBSMono>
+					</IBSCBS>
 				</imposto>
 				<impostoDevol>
 					<pDevol>1.00</pDevol>
@@ -467,6 +580,11 @@
 						<xTexto>xTexto1</xTexto>
 					</obsFisco>
 				</obsItem>
+				<vItem>1.00</vItem>
+				<DFeReferenciado>
+					<chaveAcesso>12345678901234567890123456789012345678901234</chaveAcesso>
+					<nItem>1</nItem>
+				</DFeReferenciado>
 			</det>
 			<det nItem="2">
 				<prod>
@@ -1129,6 +1247,43 @@
 					<vBCRetPrev>1.00</vBCRetPrev>
 					<vRetPrev>1.00</vRetPrev>
 				</retTrib>
+				<ISTot>
+					<vIS>500.00</vIS>
+				</ISTot>
+				<IBSCBSTot>
+					<vBCIBSCBS>10000.00</vBCIBSCBS>
+					<gIBS>
+						<gIBSUF>
+							<vDif>50.00</vDif>
+							<vDevTrib>20.00</vDevTrib>
+							<vIBSUF>500.00</vIBSUF>
+						</gIBSUF>
+						<gIBSMun>
+							<vDif>25.00</vDif>
+							<vDevTrib>10.00</vDevTrib>
+							<vIBSMun>250.00</vIBSMun>
+						</gIBSMun>
+						<vIBS>750.00</vIBS>
+						<vCredPres>30.00</vCredPres>
+						<vCredPresCondSus>5.00</vCredPresCondSus>
+					</gIBS>
+					<gCBS>
+						<vCredPres>40.00</vCredPres>
+						<vCredPresCondSus>8.00</vCredPresCondSus>
+						<vDif>15.00</vDif>
+						<vDevTrib>7.00</vDevTrib>
+						<vCBS>600.00</vCBS>
+					</gCBS>
+					<gMono>
+						<vIBSMono>200.00</vIBSMono>
+						<vCBSMono>300.00</vCBSMono>
+						<vIBSMonoReten>50.00</vIBSMonoReten>
+						<vCBSMonoReten>75.00</vCBSMonoReten>
+						<vIBSMonoRet>30.00</vIBSMonoRet>
+						<vCBSMonoRet>45.00</vCBSMonoRet>
+					</gMono>
+				</IBSCBSTot>
+				<vNFTot>100.00</vNFTot>
 			</total>
 			<transp>
 				<modFrete>0</modFrete>
