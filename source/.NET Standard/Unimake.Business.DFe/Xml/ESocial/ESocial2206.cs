@@ -419,7 +419,7 @@ namespace Unimake.Business.DFe.Xml.ESocial
 #if INTEROP
         public bool ShouldSerializeTpInsc() => TpInsc != (TpInsc)(-1);
 #else
-        public bool ShouldSerializeTpInsc() => TpInsc.IsNullOrEmpty();
+        public bool ShouldSerializeTpInsc() => TpInsc != null;
 #endif
         public bool ShouldSerializeNrInsc() => !string.IsNullOrEmpty(NrInsc);
 
