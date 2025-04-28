@@ -1,0 +1,13 @@
+<CancelarNfseEnvio>
+	<Pedido>
+		<InfPedidoCancelamento>
+			<IdentificacaoNfse>
+				<Numero>101010</Numero>
+				<Cnpj>99999999999999</Cnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+				<CodigoMunicipio>58885</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<CodigoCancelamento>?</CodigoCancelamento>
+		</InfPedidoCancelamento>
+	</Pedido>
+</CancelarNfseEnvio>
