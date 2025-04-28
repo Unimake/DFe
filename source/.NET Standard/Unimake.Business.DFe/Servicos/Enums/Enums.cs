@@ -6836,6 +6836,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("EGOVERNE")]
         EGOVERNE = 66,
+
+        /// <summary>
+        /// PORTAL_FACIL
+        /// </summary>
+        [Description("PORTAL_FACIL")]
+        PORTAL_FACIL = 67,
     }
 
     #endregion
