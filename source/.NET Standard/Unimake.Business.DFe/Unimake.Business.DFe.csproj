@@ -411,6 +411,7 @@
 		<None Remove="Servicos\Config\NFSe\IjuiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\IpatingaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabaianaSE.xml" />
+		<None Remove="Servicos\Config\NFSe\ItabiraMG.xml" />
 		<None Remove="Servicos\Config\NFSe\ItabunaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItaitubaPA.xml" />
 		<None Remove="Servicos\Config\NFSe\ItajubaMG.xml" />
@@ -1250,6 +1251,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />

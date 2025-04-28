@@ -1781,4 +1781,10 @@
 		<ArqConfig>CuritibaPR.xml</ArqConfig>
 		<PadraoNFSe>EGOVERNE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3131703">
+		<Nome>Itabira - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ItabiraMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
