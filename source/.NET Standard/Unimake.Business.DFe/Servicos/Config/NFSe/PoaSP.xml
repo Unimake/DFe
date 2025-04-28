@@ -56,9 +56,9 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
-	</ConsultarNfsePDF>
-		<ConsultarNfse versao="2.00">
-			<Descricao>Consulta NFSe por RPS</Descricao>
+	    </ConsultarNfsePDF>
+		<ConsultarLoteRps versao="2.00">
+			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.poa/webservice/aws_nfe.aspx</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.poa/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -74,6 +74,6 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
-	</ConsultarNfse>
+	     </ConsultarLoteRps>
 	</Servicos>
 </Configuracoes>
