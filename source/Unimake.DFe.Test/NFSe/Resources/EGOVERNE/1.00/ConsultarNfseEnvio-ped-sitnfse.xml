@@ -1,0 +1,23 @@
+<ConsultarNfseEnvio>
+	<Prestador>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+	<NumeroNfse>2</NumeroNfse>
+	<PeriodoEmissao>
+		<DataInicial>2010-08-09</DataInicial>
+		<DataFinal>2010-08-09</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<CpfCnpj>
+			<Cpf>06783956911</Cpf>
+		</CpfCnpj>
+	</Tomador>
+	<IntermediarioServico>
+		<RazaoSocial>UNIMAKE LTDA</RazaoSocial>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</IntermediarioServico>
+</ConsultarNfseEnvio>

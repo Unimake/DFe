@@ -205,12 +205,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeMtvDesligTsVField() => MtvDesligTSV != (MtvDesligTSV)(-1);
+        public bool ShouldSerializeMtvDesligTsV() => MtvDesligTSV != (MtvDesligTSV)(-1);
 #else
         public bool ShouldSerializeMtvDesligTsV() => MtvDesligTSV != null;
 #endif
+
 #if INTEROP
-        public bool ShouldSerializePensAlimField() => PensAlim != (PensAlim)(-1);
+        public bool ShouldSerializePensAlim() => PensAlim != (PensAlim)(-1);
 #else
         public bool ShouldSerializePensAlim() => PensAlim != null;
 #endif

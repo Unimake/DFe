@@ -1775,4 +1775,22 @@
 		<ArqConfig>PoaSP.xml</ArqConfig>
 		<PadraoNFSe>CONAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4106902">
+		<Nome>Curitiba - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CuritibaPR.xml</ArqConfig>
+		<PadraoNFSe>EGOVERNE</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3131703">
+		<Nome>Itabira - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ItabiraMG.xml</ArqConfig>
+		<PadraoNFSe>PRONIM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="2105302">
+		<Nome>Imperatriz - MA</Nome>
+		<UF>MA</UF>
+		<ArqConfig>ImperatrizMA.xml</ArqConfig>
+		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

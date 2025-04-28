@@ -288,9 +288,9 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
         [XmlElement("indCessaoMeiosRede")]
 #if INTEROP
-        public IndicadorSessaoMeiosDeRede IndCessaoMeiosRede { get; set; } = (IndicadorSessaoMeiosDeRede)(-1);
+        public IndicadorCessaoMeiosDeRede IndCessaoMeiosRede { get; set; } = (IndicadorCessaoMeiosDeRede)(-1);
 #else
-        public IndicadorSessaoMeiosDeRede? IndCessaoMeiosRede { get; set; }
+        public IndicadorCessaoMeiosDeRede? IndCessaoMeiosRede { get; set; }
 #endif
 
         [XmlElement("indNotaEntrada")]
@@ -330,7 +330,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
 #endif
 
 #if INTEROP
-        public bool ShouldSerializeIndCessaoMeiosRede() => IndCessaoMeiosRede != (IndicadorSessaoMeiosDeRede)(-1);
+        public bool ShouldSerializeIndCessaoMeiosRede() => IndCessaoMeiosRede != (IndicadorCessaoMeiosDeRede)(-1);
 #else
         public bool ShouldSerializeIndCessaoMeiosRede() => IndCessaoMeiosRede != null;
 #endif
@@ -374,7 +374,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
         public string XFant { get; set; }
 
         [XmlElement("enderEmit")]
-        public EnderEmitNFCom EnderEmit { get; set; }
+        public EnderEmit EnderEmit { get; set; }
 
         #region ShouldSerialize
 
@@ -385,10 +385,51 @@ namespace Unimake.Business.DFe.Xml.NFCom
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
-    [ProgId("Unimake.Business.DFe.Xml.NFCom.EnderEmitNFCom")]
+    [ProgId("Unimake.Business.DFe.Xml.NFCom.EnderEmit")]
     [ComVisible(true)]
 #endif
-    public class EnderEmitNFCom : EnderEmit { }
+    public class EnderEmit
+    {
+        [XmlElement("xLgr")]
+        public string XLgr { get; set; }
+
+        [XmlElement("nro")]
+        public string Nro { get; set; }
+
+        [XmlElement("xCpl")]
+        public string XCpl { get; set; }
+
+        [XmlElement("xBairro")]
+        public string XBairro { get; set; }
+
+        [XmlElement("cMun")]
+        public string CMun { get; set; }
+
+        [XmlElement("xMun")]
+        public string XMun { get; set; }
+
+        [XmlElement("CEP")]
+        public string CEP { get; set; }
+
+        [XmlElement("UF")]
+        public UFBrasil UF { get; set; }
+
+        [XmlElement("fone")]
+        public string Fone { get; set; }
+
+        [XmlElement("email")]
+        public string Email { get; set; }
+
+        #region ShouldSerialize
+
+        public bool ShouldSerializeXCpl() => !string.IsNullOrEmpty(XCpl);
+
+        public bool ShouldSerializeFone() => !string.IsNullOrEmpty(Fone);
+
+        public bool ShouldSerializeEmail() => !string.IsNullOrEmpty(Email);
+
+        #endregion ShouldSerialize
+    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -1752,7 +1793,7 @@ namespace Unimake.Business.DFe.Xml.NFCom
     [ProgId("Unimake.Business.DFe.Xml.NFCom.EnderCorresp")]
     [ComVisible(true)]
 #endif
-    public class EnderCorresp : EnderEmitNFCom { }
+    public class EnderCorresp : EnderEmit { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

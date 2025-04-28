@@ -1592,7 +1592,7 @@ namespace Unimake.Business.DFe.Servicos
         /// 2 - Contingência off-line da NF3e e da NFCom
         /// </summary>
         [XmlEnum("2")]
-        ContingenciaOfflineNF3e = 10
+        ContingenciaOfflineNF3eNFCom = 10
     }
 
     #endregion
@@ -6932,6 +6932,18 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("CONAM")]
         CONAM = 65,
+
+        /// <summary>
+        /// EGOVERNE
+        /// </summary>
+        [Description("EGOVERNE")]
+        EGOVERNE = 66,
+
+        /// <summary>
+        /// PORTAL_FACIL
+        /// </summary>
+        [Description("PORTAL_FACIL")]
+        PORTAL_FACIL = 67,
     }
 
     #endregion
@@ -15357,22 +15369,22 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion IndicativoPrePago
 
-    #region IndicadorSessaoMeiosDeRede 
+    #region IndicadorCessaoMeiosDeRede 
 
     /// <summary>
-    /// Indicador de sessão de meios de rede
+    /// Indicador de cessão de meios de rede
     /// </summary>
-    public enum IndicadorSessaoMeiosDeRede
+    public enum IndicadorCessaoMeiosDeRede
     {
         /// <summary>
         /// Uma vez informado (valor = 1), essa tag dispensa geração do grupo Fatura.
         /// Apenas para notas dos tipos Normal e Substituição com tipo de faturamento normal
         /// </summary>
         [XmlEnum("1")]
-        IndicadorSessaoMeioDeRede = 1
+        IndicadorCessaoMeioDeRede = 1
     }
 
-    #endregion IndicadorSessaoMeiosDeRede 
+    #endregion IndicadorCessaoMeiosDeRede 
 
     #region IndicadorNotaEntrada
 

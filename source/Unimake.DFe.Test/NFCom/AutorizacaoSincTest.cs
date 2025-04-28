@@ -147,7 +147,7 @@ namespace Unimake.DFe.Test.NFCom
                         TpFat = TipoFaturamentoNFCom.FaturamentoNormal,
                         VerProc = "teste 1.0",
                         IndPrePago = IndicadorServicoPrePago.ServicoPrePago,
-                        IndCessaoMeiosRede = IndicadorSessaoMeiosDeRede.IndicadorSessaoMeioDeRede,
+                        IndCessaoMeiosRede = IndicadorCessaoMeiosDeRede.IndicadorCessaoMeioDeRede,
                         IndNotaEntrada = IndicadorNotaEntrada.IndicaNotaEntradaAjuste
                     },
                     Emit = new Emit
@@ -157,7 +157,7 @@ namespace Unimake.DFe.Test.NFCom
                         CRT = CRT.SimplesNacional,
                         XNome = "Unimake Solucoes Corporativas",
                         XFant = "Unimake Software",
-                        EnderEmit = new EnderEmitNFCom
+                        EnderEmit = new EnderEmit
                         {
                             XLgr = "Rua",
                             Nro = "11",
