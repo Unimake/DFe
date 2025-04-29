@@ -65,7 +65,7 @@ namespace Unimake.Business.DFe.Security
             keyInfo.AddClause(keyInfoNode);
 
             // *** The actual key for signing - MAKE SURE THIS ISN'T NULL!
-            signedXml.SigningKey = certificado.PrivateKey;
+            signedXml.SigningKey = certificado.GetRSAPrivateKey();
 
             // *** provide the certficate info that gets embedded - note this is only
             // *** for specific formatting of the message to provide the cert info
