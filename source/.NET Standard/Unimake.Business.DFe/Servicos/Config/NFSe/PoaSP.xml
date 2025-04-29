@@ -12,7 +12,7 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><nfe:ws_nfe.PROCESSARPS></nfe:ws_nfe.PROCESSARPS>{xmlBody}</nfe:ws_nfe.PROCESSARPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="NFe"><soapenv:Header/><soapenv:Body><nfe:ws_nfe.PROCESSARPS>{xmlBody}</nfe:ws_nfe.PROCESSARPS></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>ws_nfe.PROCESSARPSResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -56,9 +56,9 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
-	    </ConsultarNfsePDF>
-		<ConsultarLoteRps versao="2.00">
-			<Descricao>Consulta lote RPS</Descricao>
+		</ConsultarNfsePDF>
+		<ConsultarNfse versao="2.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.poa/webservice/aws_nfe.aspx</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.poa/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -74,6 +74,6 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
-	     </ConsultarLoteRps>
+		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
