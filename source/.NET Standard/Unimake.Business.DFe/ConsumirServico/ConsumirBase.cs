@@ -317,7 +317,7 @@ namespace Unimake.Business.DFe
                     {
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
                     }
-                    else if (soap.PadraoNFSe == PadraoNFSe.GISSONLINE && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("faultcode"))
+                    else if (soap.PadraoNFSe == PadraoNFSe.GISSONLINE && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0] == null)
                     {
                         RetornoServicoString = retornoXml.ChildNodes[0].OuterXml;
                     }
@@ -325,7 +325,7 @@ namespace Unimake.Business.DFe
                     {
                         RetornoServicoString = retornoXml.OuterXml;
                     }
-                    else if (tagRetorno == "soap:Fault")
+                    else if (tagRetorno == "soap:Fault" || tagRetorno.Contains("faultcode"))
                     {
                         RetornoServicoString = retornoXml.OuterXml;
                     }
