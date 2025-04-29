@@ -100,12 +100,20 @@ namespace Unimake.Business.DFe
             }
             else if (soap.PadraoNFSe == PadraoNFSe.ELOTECH)
             {
-                xmlBody = xmlBody.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                // Se o ERP já enviar o XML com o SOAP assinado, vamos atribuir o valor do xmlBody para a propriedade "retorna"
+                if (xmlBody.Contains("SOAP-ENV:Envelope"))
+                {
+                    retorna = xmlBody;
+                }
+                else
+                {
+                    xmlBody = xmlBody.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
 
-                var soapAssinado = new XmlDocument();
-                soapAssinado = ELOTECH.AssinaSoapElotech(soap, xmlBody, certificado);
+                    var soapAssinado = new XmlDocument();
+                    soapAssinado = ELOTECH.AssinaSoapElotech(soap, xmlBody, certificado);
 
-                retorna = soapAssinado.OuterXml;
+                    retorna = soapAssinado.OuterXml;
+                }
             }
 
             if (soap.Servico == Servico.EFDReinfConsultaReciboEvento)
