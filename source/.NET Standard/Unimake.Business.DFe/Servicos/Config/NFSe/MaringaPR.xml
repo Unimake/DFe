@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.01">
-			<Descricao>Recepcionar Lote RPS</Descricao>
+		<RecepcionarLoteRpsSincrono versao="2.01">
+			<Descricao>Recepcionar Lote RPS síncrono</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
 			<WebActionHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01#RecepcionarLoteRpsSincrono</WebActionHomologacao>
@@ -13,13 +13,13 @@
 			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01" xmlns:types="https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><tns:EnviarLoteRps>{xmlBodyScapeEnvio}</tns:EnviarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01" xmlns:types="https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><tns:EnviarLoteRpsSincrono>{xmlBodyScapeEnvio}</tns:EnviarLoteRpsSincrono></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>prop:innertext</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao></SchemaVersao>
 			<TargetNS>http://www.abrasf.org.br/nfse.xsd</TargetNS>
-		</RecepcionarLoteRps>
+		</RecepcionarLoteRpsSincrono>
 		<ConsultarLoteRps versao="2.01">
 			<Descricao>Realiza a consulta do Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
@@ -100,8 +100,8 @@
 			<Descricao>Realiza a consulta da NFSe por faixa</Descricao>
 			<WebEnderecoHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/</WebEnderecoProducao>
-			<WebActionHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01#ConsultarNfseServicoPrestado</WebActionHomologacao>
-			<WebActionProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01#ConsultarNfseServicoPrestado</WebActionProducao>
+			<WebActionHomologacao>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01#ConsultarNfseFaixa</WebActionHomologacao>
+			<WebActionProducao>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01#ConsultarNfseFaixa</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
