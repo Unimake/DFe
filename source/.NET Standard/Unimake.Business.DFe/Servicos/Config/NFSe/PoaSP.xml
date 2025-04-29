@@ -18,6 +18,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</RecepcionarLoteRps>
 		<CancelarNfse versao="2.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
@@ -36,6 +37,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</CancelarNfse>
 		<ConsultarNfsePDF versao="2.00">
 			<Descricao>Consulta o link de download da nota fiscal de Serviço</Descricao>
@@ -56,6 +58,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePDF>
 		<ConsultarNfse versao="2.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
@@ -74,6 +77,7 @@
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfse>
 	</Servicos>
 </Configuracoes>
