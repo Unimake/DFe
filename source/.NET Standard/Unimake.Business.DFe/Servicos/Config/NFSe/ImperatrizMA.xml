@@ -1,26 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.02">
-			<Descricao>Recepcionar Lote RPS</Descricao>
-			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos</WebEnderecoProducao>
-			<WebActionHomologacao></WebActionHomologacao>
-			<WebActionProducao>http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/servicos#RecepcionarLoteRps</WebActionProducao>
-			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
-			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico"</TagAtributoID>
-			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
-			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
-			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
-			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
-		</RecepcionarLoteRps>
 		<RecepcionarLoteRpsSincrono versao="2.02">
 			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
@@ -38,7 +18,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</RecepcionarLoteRpsSincrono>
 		<GerarNfse versao="2.02">
@@ -58,7 +37,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</GerarNfse>
 		<CancelarNfse versao="2.02">
@@ -78,7 +56,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</CancelarNfse>
 		<SubstituirNfse versao="2.02">
@@ -100,7 +77,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</SubstituirNfse>
 		<ConsultarLoteRps versao="2.02">
@@ -120,7 +96,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</ConsultarLoteRps>
 		<ConsultarNfsePorRps versao="2.02">
@@ -140,7 +115,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</ConsultarNfsePorRps>
 		<ConsultarNfseServicoPrestado versao="2.02">
@@ -160,7 +134,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</ConsultarNfseServicoPrestado>
 		<ConsultarNfseServicoTomado versao="2.02">
@@ -180,7 +153,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</ConsultarNfseServicoTomado>
 		<ConsultarNfseFaixa versao="2.02">
@@ -200,7 +172,6 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.02</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfejf.portalfacil.com.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
 		</ConsultarNfseFaixa>
 	</Servicos>
