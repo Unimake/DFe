@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
-	<infNFe versao="4.00" Id="NFe41230200000000000000550010001111111001111114">
+	<infNFe versao="4.00" Id="NFe41230200000000000000550010001111111002222224">
 		<ide>
 			<cUF>41</cUF>
-			<cNF>00111111</cNF>
+			<cNF>00222222</cNF>
 			<natOp>SAIDA POR VENDAS</natOp>
 			<mod>55</mod>
 			<serie>1</serie>
