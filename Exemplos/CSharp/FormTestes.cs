@@ -6329,7 +6329,7 @@ namespace TreinamentoDLL
                         TpFat = TipoFaturamentoNFCom.FaturamentoNormal,
                         VerProc = "teste 1.0",
                         IndPrePago = IndicadorServicoPrePago.ServicoPrePago,
-                        IndCessaoMeiosRede = IndicadorSessaoMeiosDeRede.IndicadorSessaoMeioDeRede,
+                        IndCessaoMeiosRede = IndicadorCessaoMeiosDeRede.IndicadorCessaoMeioDeRede,
                         IndNotaEntrada = IndicadorNotaEntrada.IndicaNotaEntradaAjuste
                     },
                     Emit = new XmlNFCom.Emit
@@ -6339,7 +6339,7 @@ namespace TreinamentoDLL
                         CRT = CRT.SimplesNacional,
                         XNome = "Unimake Solucoes Corporativas",
                         XFant = "Unimake Software",
-                        EnderEmit = new XmlNFCom.EnderEmitNFCom
+                        EnderEmit = new XmlNFCom.EnderEmit
                         {
                             XLgr = "Rua",
                             Nro = "11",
