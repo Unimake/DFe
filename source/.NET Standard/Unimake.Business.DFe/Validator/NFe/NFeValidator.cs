@@ -684,6 +684,54 @@ namespace Unimake.Business.DFe.Validator.NFe
                     ThrowHelper.Instance.Throw(new ValidatorDFeException("O conteúdo da tag <CNPJ> das pessoas autorizadas a acessar o XML não é válido. Conteúdo informado: " + Tag.Value + "." +
                         " [TAG: <CNPJ> do grupo de tag <NFe><infNFe><autXML>]"));
                 }
+            }).ValidateTag(element => element.NameEquals(nameof(Ide.CNF)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
+            {
+                var cNF = Tag.Value;
+                var nNF = Tag.Parent.GetValue("nNF");
+
+                if (int.TryParse(cNF, out var cNFInt) && int.TryParse(nNF, out var nNFInt))
+                {
+                    if (cNFInt == nNFInt)
+                    {
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                            $"O código numérico <cNF> está igual ao número da nota fiscal <nNF>. Valor informado: {cNF}. " +
+                            "Evite usar o mesmo valor em ambas as tags, pois isso facilita a dedução da chave de acesso da NFe e pode permitir fraudes. " +
+                            "[TAGs: <cNF> e <nNF> do grupo de tag <NFe><infNFe><ide>]"));
+                    }
+                }
+            }).ValidateTag(element => element.NameEquals(nameof(Ide.DhSaiEnt)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
+            {
+                var mod = Tag.Parent.GetValue(nameof(Ide.Mod));
+
+                if (mod == "65")
+                {
+                    ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                        $"A data de entrada/saída, tag <dhSaiEnt>, não deve ser informada quando o modelo do documento fiscal, tag <mod>, for 65 (NFC-e). " +
+                        $"[TAG: <dhSaiEnt> do grupo de tag <NFe><infNFe><ide>]"));
+                }
+
+                var dhSaiEntStr = Tag.Value;
+                var dhEmiStr = Tag.Parent.GetValue(nameof(Ide.DhEmi));
+
+                if (!string.IsNullOrWhiteSpace(dhSaiEntStr) && !string.IsNullOrWhiteSpace(dhEmiStr))
+                {
+                    if (DateTime.TryParse(dhSaiEntStr, out var dhSaiEnt) && DateTime.TryParse(dhEmiStr, out var dhEmi))
+                    {
+                        if (dhSaiEnt < dhEmi)
+                        {
+                            ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                                $"A data/hora de saída/entrada <dhSaiEnt> não pode ser anterior à data/hora de emissão <dhEmi>. " +
+                                $"Valores informados: dhEmi = {dhEmi:O}, dhSaiEnt = {dhSaiEnt:O}. " +
+                                $"[TAGs: <dhEmi> e <dhSaiEnt> do grupo de tag <NFe><infNFe><ide>]"));
+                        }
+                    }
+                    else
+                    {
+                        ThrowHelper.Instance.Throw(new ValidatorDFeException(
+                            $"Erro ao interpretar as datas das tags <dhEmi> ou <dhSaiEnt>. Verifique se os valores estão em um formato de data/hora válido conforme o padrão ISO 8601. " +
+                            $"Valores encontrados: dhEmi = '{dhEmiStr}', dhSaiEnt = '{dhSaiEntStr}'"));
+                    }
+                }
             });
 
         #endregion Public Constructors
