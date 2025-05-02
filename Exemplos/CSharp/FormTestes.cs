@@ -2305,6 +2305,14 @@ namespace TreinamentoDLL
                                 PCOFINS = 0.00,
                                 VCOFINS = 0.00
                             }
+                        }                        
+                    },
+                    ImpostoDevol = new ImpostoDevol
+                    {
+                        PDevol = 100.00,
+                        IPI = new IPIDevol
+                        {
+                            VIPIDevol = 8.27
                         }
                     }
                 });
