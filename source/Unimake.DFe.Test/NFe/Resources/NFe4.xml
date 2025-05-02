@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <NFe xmlns="http://www.portalfiscal.inf.br/nfe">
-	<infNFe versao="4.00" Id="NFe41230200000000000000550010001111111002222224">
+	<infNFe versao="4.00" Id="NFe41230200000000000000550010001111111002222220">
 		<ide>
 			<cUF>41</cUF>
 			<cNF>00222222</cNF>
@@ -15,7 +15,7 @@
 			<cMunFG>4104303</cMunFG>
 			<tpImp>1</tpImp>
 			<tpEmis>1</tpEmis>
-			<cDV>4</cDV>
+			<cDV>0</cDV>
 			<tpAmb>1</tpAmb>
 			<finNFe>1</finNFe>
 			<indFinal>1</indFinal>

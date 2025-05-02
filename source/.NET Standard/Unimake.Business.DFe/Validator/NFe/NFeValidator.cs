@@ -701,7 +701,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 }
             }).ValidateTag(element => element.NameEquals(nameof(Ide.DhSaiEnt)) && element.Parent.NameEquals(nameof(Ide)), Tag =>
             {
-                var mod = Tag.Parent.GetValue(nameof(Ide.Mod));
+                var mod = Tag.Parent.GetValue("mod");
 
                 if (mod == "65")
                 {
@@ -711,7 +711,7 @@ namespace Unimake.Business.DFe.Validator.NFe
                 }
 
                 var dhSaiEntStr = Tag.Value;
-                var dhEmiStr = Tag.Parent.GetValue(nameof(Ide.DhEmi));
+                var dhEmiStr = Tag.Parent.GetValue("dhEmi");
 
                 if (!string.IsNullOrWhiteSpace(dhSaiEntStr) && !string.IsNullOrWhiteSpace(dhEmiStr))
                 {
