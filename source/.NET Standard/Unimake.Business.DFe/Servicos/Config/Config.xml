@@ -1793,4 +1793,10 @@
 		<ArqConfig>ImperatrizMA.xml</ArqConfig>
 		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1501402">
+		<Nome>Belém - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>BelemPA.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

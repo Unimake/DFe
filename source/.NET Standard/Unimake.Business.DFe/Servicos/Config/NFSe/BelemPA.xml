@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="1.00">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoProducao>http://siat.belem.pa.gov.br:8180/WsNFe/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
+			<TagAtributoID>Lote</TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:enviar><mensagemXml>{xmlBodyScape}</mensagemXml></lot:enviar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>tns:enviarResponse</WebTagRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+		</RecepcionarLoteRpsSincrono>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>http://siat.belem.pa.gov.br:8180/WsNFe/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqCancelamentoNFSe</TagAssinatura>
+			<TagAtributoID>Cabecalho</TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:cancelar><mensagemXml>{xmlBodyScape}</mensagemXml></lot:cancelar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>tns:cancelarResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoProducao>http://siat.belem.pa.gov.br:8180/WsNFe/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[pen<soapenv:Envelope xmlns:soav="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:consultarLote><mensagemXml>{xmlBodyScape}</mensagemXml></lot:consultarLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>tns:consultarLoteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarLoteRps>
+		<ConsultarNotaValida versao="1.00">
+			<Descricao>Consultar NFSe Valida</Descricao>
+			<WebEnderecoProducao>http://siat.belem.pa.gov.br:8180/WsNFe/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:consultarNota><mensagemXml>{xmlBodyScape}</mensagemXml></lot:consultarNota></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>tns:consultarNotaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarNotaValida>
+		<ConsultarSequenciaLoteNotaRPS versao="1.00">
+			<Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
+			<WebEnderecoProducao>http://siat.belem.pa.gov.br:8180/WsNFe/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:consultarSequencialRps><mensagemXml>{xmlBodyScape}</mensagemXml></lot:consultarSequencialRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>tns:consultarSequencialRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarSequenciaLoteNotaRPS>
+	</Servicos>
+</Configuracoes>
