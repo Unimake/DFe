@@ -7,8 +7,8 @@
 			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
 			<TagAtributoID>Lote</TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:enviar><mensagemXml>{xmlBodyScape}</mensagemXml></lot:enviar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>tns:enviarResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><enviar xmlns="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></enviar></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:enviarResponse</WebTagRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
@@ -20,8 +20,8 @@
 			<TagAssinatura>ns1:ReqCancelamentoNFSe</TagAssinatura>
 			<TagAtributoID>Cabecalho</TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:cancelar><mensagemXml>{xmlBodyScape}</mensagemXml></lot:cancelar></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>tns:cancelarResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><cancelar xmlns="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></cancelar></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:cancelarResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -32,8 +32,8 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[pen<soapenv:Envelope xmlns:soav="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:consultarLote><mensagemXml>{xmlBodyScape}</mensagemXml></lot:consultarLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>tns:consultarLoteResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarLote xmlns="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarLote></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarLoteResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -44,8 +44,8 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:consultarNota><mensagemXml>{xmlBodyScape}</mensagemXml></lot:consultarNota></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>tns:consultarNotaResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarNota xmlns="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarNota></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarNotaResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -56,8 +56,8 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><soapenv:Header/><soapenv:Body><lot:consultarSequencialRps><mensagemXml>{xmlBodyScape}</mensagemXml></lot:consultarSequencialRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
-			<WebTagRetorno>tns:consultarSequencialRpsResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarSequencialRps xmlns="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarSequencialRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarSequencialRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
