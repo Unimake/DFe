@@ -51,7 +51,9 @@ namespace Unimake.DFe.Test.NFSe
                 TipoAmbiente = tipoAmbiente,
                 CodigoMunicipio = codMunicipio,
                 Servico = Servico.NFSeConsultarSituacaoLoteRps,
-                SchemaVersao = versaoSchema
+                SchemaVersao = versaoSchema,
+                MunicipioSenha = "123456",
+                MunicipioUsuario = "01001001000113"
             };
 
             var consultarSituacaoLoteRps = new ConsultarSituacaoLoteRps(conteudoXML, configuracao);
