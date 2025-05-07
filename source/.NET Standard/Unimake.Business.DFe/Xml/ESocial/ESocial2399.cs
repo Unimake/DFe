@@ -205,9 +205,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         #region ShouldSerialize
 
 #if INTEROP
-        public bool ShouldSerializeMtvDesligTsV() => MtvDesligTSV != (MtvDesligTSV)(-1);
+        public bool ShouldSerializeMtvDesligTSV() => MtvDesligTSV != (MtvDesligTSV)(-1);
 #else
-        public bool ShouldSerializeMtvDesligTsV() => MtvDesligTSV != null;
+        public bool ShouldSerializeMtvDesligTSV() => MtvDesligTSV != null;
 #endif
 
 #if INTEROP
