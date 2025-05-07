@@ -1799,4 +1799,10 @@
 		<ArqConfig>BelemPA.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4124103">
+		<Nome>Santo Antônio da Platina - PR </Nome>
+		<UF>PR</UF>
+		<ArqConfig>SantoAntonioDaPlatina.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
