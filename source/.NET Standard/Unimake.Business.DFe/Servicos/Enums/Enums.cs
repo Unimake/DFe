@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Servicos
@@ -5087,7 +5088,13 @@ namespace Unimake.Business.DFe.Servicos
         /// 11 - Perigosa (carga geral)
         /// </summary>
         [XmlEnum("11")]
-        PerigosaCargaGeral = 11
+        PerigosaCargaGeral = 11,
+
+        /// <summary>
+        /// 12 - Granel pressurizada
+        /// </summary>
+        [XmlEnum("12")]
+        GranelPressurizada = 12
     }
 
     #endregion
@@ -5122,22 +5129,28 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoComponenteMDFe
     {
         /// <summary>
-        /// 01 = Vale Pedágio
+        /// 01 - Vale Pedágio
         /// </summary>
         [XmlEnum("01")]
         ValePedagio = 1,
 
         /// <summary>
-        /// 02 = Impostos, Taxas e Contribuições
+        /// 02 - Impostos, Taxas e Contribuições
         /// </summary>
         [XmlEnum("02")]
         ImpostosTaxasContribuicoes = 2,
 
         /// <summary>
-        /// 03 = Despesas (Bancárias, Meios de pagamento, Outras)
+        /// 03 - Despesas (Bancárias, Meios de pagamento, Outras)
         /// </summary>
         [XmlEnum("03")]
         Despesas = 3,
+
+        /// <summary>
+        /// 4 - Frete
+        /// </summary>
+        [XmlEnum("04")]
+        Frete = 4,
 
         /// <summary>
         /// 99 = Outras
@@ -6440,22 +6453,30 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoValePedagio
     {
         /// <summary>
-        /// TAG = 01
+        /// 01 - TAG
         /// </summary>
         [XmlEnum("01")]
         TAG = 1,
 
         /// <summary>
-        /// Cupom = 01
+        /// 02 - Cupom
         /// </summary>
+        [Obsolete("O tipo de Vale Pedágio 02 será eliminado em futuras atualizações da SEFAZ.", false)]
         [XmlEnum("02")]
         Cupom = 2,
 
         /// <summary>
-        /// Cartão = 01
+        /// 03 - Cartão
         /// </summary>
+        [Obsolete("O tipo de Vale Pedágio 03 será eliminado em futuras atualizações da SEFAZ.", false)]
         [XmlEnum("03")]
-        Cartao = 3
+        Cartao = 3,
+
+        /// <summary>
+        /// 04 - Leitura de placa (pela placa de identificação veicular)
+        /// </summary>
+        [XmlEnum("04")]
+        LeituraPlaca = 4
     }
 
     #endregion
@@ -6883,7 +6904,7 @@ namespace Unimake.Business.DFe.Servicos
         /// LIBRE
         /// </summary>
         [Description("LIBRE")]
-        LIBRE =  57,
+        LIBRE = 57,
 
         /// <summary>
         /// MANAUS_AM

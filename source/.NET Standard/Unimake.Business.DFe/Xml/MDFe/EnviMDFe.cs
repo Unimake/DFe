@@ -1267,6 +1267,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         /// </summary>
         public bool ShouldSerializeCPF() => !string.IsNullOrWhiteSpace(CPF);
 
+        /// <summary>
+        /// Verifica se deve serializar o campo CIOT (não vazio)
+        /// </summary>
+        public bool ShouldSerializeCIOT() => !string.IsNullOrWhiteSpace(CIOT);
+
         #endregion
     }
 
@@ -2679,6 +2684,11 @@ namespace Unimake.Business.DFe.Xml.MDFe
         [XmlElement("infUnidTranspVazia")]
         public List<InfUnidTranspVazia> InfUnidTranspVazia { get; set; }
 
+        /// <summary>
+        /// Maritime Mobile Service Identify (MMSI) - Preencher com o MMSI (Maritime Mobile Service Identify) fornecido pela ANATEL ou autoridade de telecomunicações de origem da embarcação
+        /// </summary>
+        [XmlElement("MMSI")]
+        public string MMSI { get; set; }
 
 #if INTEROP
 
@@ -2857,7 +2867,8 @@ namespace Unimake.Business.DFe.Xml.MDFe
         #region ShouldSerialize
 
         public bool ShouldSerializePrtTrans() => !string.IsNullOrWhiteSpace(PrtTrans);
-        public bool ShouldSerialize() => TpNav != TipoNavegacao.NaoDefinido;
+        public bool ShouldSerializeTpNav() => TpNav != TipoNavegacao.NaoDefinido;
+        public bool ShouldSerializeMMSI() => !string.IsNullOrWhiteSpace(MMSI);
 
         #endregion
     }
