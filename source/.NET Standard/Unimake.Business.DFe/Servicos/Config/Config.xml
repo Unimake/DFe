@@ -1805,4 +1805,10 @@
 		<ArqConfig>SantoAntonioDaPlatina.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3201506">
+		<Nome>Colatina - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>ColatinaES.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
