@@ -61,6 +61,20 @@ namespace Unimake.Exceptions
     }
 
     /// <summary>
+    /// Classe de exceção quando ocorre erros no XML de retorno da NFSe. Sem retorno, inválido e etc
+    /// </summary>
+    public class ValidarXMLRetornoException : Exception
+    {
+        /// <summary>
+        /// Exceção quando ocorre erros com o XML de retorno da NFSe
+        /// </summary>
+        /// <param name="message"></param>
+        public ValidarXMLRetornoException(string message)
+            : base(message) => HResult = (int)ErrorCodes.ValidacaoXMLRetorno;
+        
+    }
+
+    /// <summary>
     /// Códigos de erros das exceções geradas na DLL. Útil para outras linguagens (INTEROP)
     /// </summary>
     public enum ErrorCodes
@@ -83,7 +97,12 @@ namespace Unimake.Exceptions
         /// <summary>
         /// Senha do certificado digital está incorreta
         /// </summary>
-        SenhaCertificadoIncorreta = 4
+        SenhaCertificadoIncorreta = 4,
+
+        /// <summary>
+        /// Erro de validação do XML de retorno da NFSe
+        /// </summary>
+        ValidacaoXMLRetorno = 5,
     }
 
     /// <summary>

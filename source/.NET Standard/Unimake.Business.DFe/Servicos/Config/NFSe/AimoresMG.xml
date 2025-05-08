@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="2.02">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://nfse.aimores.mg.gov.br/homologacao/webservice/servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.aimores.mg.gov.br/webservice/servicos</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.aimores.mg.gov.br/homologacao/webservice/servicos#RecepcionarLoteRpsSincrono</WebActionHomologacao>
+			<WebActionProducao>http://nfse.aimores.mg.gov.br/webservice/servicos#RecepcionarLoteRpsSincrono</WebActionProducao>
+			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRpsSincronoRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></RecepcionarLoteRpsSincronoRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>RecepcionarLoteRpsSincronoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://nfse.aimores.mg.gov.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.02">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfse.aimores.mg.gov.br/homologacao/webservice/servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.aimores.mg.gov.br/webservice/servicos</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.aimores.mg.gov.br/homologacao/webservice/servicos#GerarNfse</WebActionHomologacao>
+			<WebActionProducao>https://nfse.aimores.mg.gov.br/webservice/servicos#GerarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GerarNfseRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></GerarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>GerarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://nfse.aimores.mg.gov.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		</GerarNfse>
+		<CancelarNfse versao="2.02">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfse.aimores.mg.gov.br/homologacao/webservice/servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.aimores.mg.gov.br/webservice/servicos</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.aimores.mg.gov.br/homologacao/webservice/servicos#CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>https://nfse.aimores.mg.gov.br/webservice/servicos#CancelarNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></CancelarNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://nfse.aimores.mg.gov.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.02">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://nfse.aimores.mg.gov.br/homologacao/webservice/servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.aimores.mg.gov.br/webservice/servicos</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.aimores.mg.gov.br/homologacao/webservice/servicos#SubstituirNfse</WebActionHomologacao>
+			<WebActionProducao>https://nfse.aimores.mg.gov.br/webservice/servicos#SubstituirNfse</WebActionProducao>
+			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>//
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>//
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><SubstituirNfseRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></SubstituirNfseRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>SubstituirNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://nfse.aimores.mg.gov.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.02">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfse.aimores.mg.gov.br/homologacao/webservice/servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.aimores.mg.gov.br/webservice/servicos</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.aimores.mg.gov.br/homologacao/webservice/servicos#ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>https://nfse.aimores.mg.gov.br/webservice/servicos#ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarLoteRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://nfse.aimores.mg.gov.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.02">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://nfse.aimores.mg.gov.br/homologacao/webservice/servicos</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.aimores.mg.gov.br/webservice/servicos</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.aimores.mg.gov.br/homologacao/webservice/servicos#ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>https://nfse.aimores.mg.gov.br/webservice/servicos#ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo>nfse_v202.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRpsRequest xmlns="http://nfse-ma-imperatriz.portalfacil.com.br/nfseserv/webservice/nfse.wsdl"><nfseCabecMsg xmlns="">&lt;cabecalho&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</nfseCabecMsg><nfseDadosMsg xmlns="">{xmlBodyScape}</nfseDadosMsg></ConsultarNfsePorRpsRequest></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.02</SchemaVersao>
+			<TargetNS>http://nfse.aimores.mg.gov.br/nfseserv/schema/nfse_v202.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>

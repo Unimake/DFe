@@ -298,6 +298,7 @@
 		<None Remove="Servicos\Config\NFSe\AguaBoaMT.xml" />
 		<None Remove="Servicos\Config\NFSe\AguasDeLindoiaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\AgudoRS.xml" />
+		<None Remove="Servicos\Config\NFSe\AimoresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AlegreteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
 		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
@@ -1255,6 +1256,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />

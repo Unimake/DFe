@@ -277,6 +277,12 @@ namespace Unimake.Business.DFe
             var retornoXml = new XmlDocument();
             try
             {
+                if (string.IsNullOrEmpty(conteudoRetorno)) 
+                    throw new ValidarXMLRetornoException($"O XML retornado pelo WebService está vazio. Conteúdo XML: {conteudoRetorno}");
+
+                if (!conteudoRetorno.TrimStart().StartsWith("<")) 
+                    throw new ValidarXMLRetornoException($"O conteúdo retornado pelo WebService não é um XML válido. Conteúdo XML: {conteudoRetorno}");
+
                 retornoXml.LoadXml(conteudoRetorno);
             }
             catch (XmlException ex)
