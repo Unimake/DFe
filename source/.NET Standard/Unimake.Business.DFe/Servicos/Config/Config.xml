@@ -1802,7 +1802,7 @@
 	<Arquivo ID="4124103">
 		<Nome>Santo Antônio da Platina - PR </Nome>
 		<UF>PR</UF>
-		<ArqConfig>SantoAntonioDaPlatinaPR.xml</ArqConfig>
+		<ArqConfig>SantoAntonioDaPlatina.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3201506">
