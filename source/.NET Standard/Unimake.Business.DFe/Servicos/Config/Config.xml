@@ -1793,4 +1793,10 @@
 		<ArqConfig>ImperatrizMA.xml</ArqConfig>
 		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3101102">
+		<Nome>Aimorés - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>AimoresMG.xml</ArqConfig>
+		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
