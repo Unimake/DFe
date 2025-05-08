@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConsultarNfseEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+	<Prestador>
+		<Cnpj>99999999999999</Cnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</Prestador>
+	<PeriodoEmissao>
+		<DataInicial>2009-12-01</DataInicial>
+		<DataFinal>2009-12-31</DataFinal>
+	</PeriodoEmissao>
+	<Tomador>
+		<Cnpj>99999999999999</Cnpj>
+	</Tomador>
+	<IntermediarioServico>
+		<Cpf>99999999999</Cpf>
+	</IntermediarioServico>
+	<IdentificacaoRps>
+		<Numero>00014</Numero>
+	</IdentificacaoRps>
+</ConsultarNfseEnvio>

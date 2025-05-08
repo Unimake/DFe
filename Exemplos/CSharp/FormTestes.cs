@@ -2216,6 +2216,31 @@ namespace TreinamentoDLL
                         IndTot = SimNao.Sim,
                         XPed = "300474",
                         NItemPed = "1",
+                        Rastro = new List<Rastro>
+                        {
+                            new Rastro
+                            {
+                                CAgreg = "12345678901234",
+                                DFab = DateTime.Now,
+                                DVal = DateTime.Now,
+                                NLote = "",
+                                QLote = 0.00
+                            },
+                            new Rastro
+                            {
+                                CAgreg = "12345678901234",
+                                DFab = DateTime.Now,
+                                DVal = DateTime.Now,
+                                NLote = "",
+                                QLote = 0.00
+                            },
+                        },
+                        Med = new Med
+                        {
+                            CProdANVISA = "",
+                            VPMC = 0.00,
+                            XMotivoIsencao = ""
+                        },
                         //DI = new List<DI>
                         //{
                         //    new DI
@@ -2305,7 +2330,7 @@ namespace TreinamentoDLL
                                 PCOFINS = 0.00,
                                 VCOFINS = 0.00
                             }
-                        }                        
+                        }
                     },
                     ImpostoDevol = new ImpostoDevol
                     {
@@ -2315,6 +2340,7 @@ namespace TreinamentoDLL
                             VIPIDevol = 8.27
                         }
                     }
+
                 });
             }
 
@@ -6614,7 +6640,7 @@ namespace TreinamentoDLL
             var xml = new XmlNFCom.EventoNFCom
             {
                 Versao = "1.00",
-                InfEvento = 
+                InfEvento =
                 new XmlNFCom.InfEvento(new XmlNFCom.DetEventoCanc
                 {
                     VersaoEvento = "1.00",
@@ -7203,7 +7229,7 @@ namespace TreinamentoDLL
             var xmlEvento = new EventoNF3e
             {
                 Versao = "1.00",
-                InfEvento = 
+                InfEvento =
                 new XmlNF3e.InfEvento(new XmlNF3e.DetEventoCanc
                 {
                     VersaoEvento = "1.00",

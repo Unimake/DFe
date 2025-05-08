@@ -1793,6 +1793,23 @@
 		<ArqConfig>ImperatrizMA.xml</ArqConfig>
 		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="1501402">
+		<Nome>Belém - PA</Nome>
+		<UF>PA</UF>
+		<ArqConfig>BelemPA.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4124103">
+		<Nome>Santo Antônio da Platina - PR </Nome>
+		<UF>PR</UF>
+		<ArqConfig>SantoAntonioDaPlatina.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3201506">
+		<Nome>Colatina - ES</Nome>
+		<UF>ES</UF>
+		<ArqConfig>ColatinaES.xml</ArqConfig>
+		<PadraoNFSe>EL</PadraoNFSe>
 	<Arquivo ID="3101102">
 		<Nome>Aimorés - MG</Nome>
 		<UF>MG</UF>

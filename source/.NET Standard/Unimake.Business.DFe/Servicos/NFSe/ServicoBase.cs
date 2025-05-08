@@ -69,6 +69,14 @@ namespace Unimake.Business.DFe.Servicos.NFSe
                 case PadraoNFSe.HM2SOLUCOES:
                     HM2SOLUCOES();
                     AuthorizationBasic();
+                    break;
+
+                case PadraoNFSe.EL:
+
+                    if (Configuracoes.SchemaVersao == "1.00")
+                    {
+                        EL();
+                    }
 
                     break;
             }
@@ -277,6 +285,56 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         }
 
         #endregion NACIONAL
+
+        #region EL
+
+        private void EL()
+        {
+            var protocolo = GetXMLElementInnertext("Protocolo");
+            var numeroNFSeRps = GetXMLElementInnertext("Numero");
+            var cnpjCpfTomador = string.Empty;
+            var cnpjCpfIntermediario = string.Empty;
+            var dataInicial = string.Empty;
+            var dataFinal = string.Empty;
+
+            if (Configuracoes.Servico == Servico.NFSeConsultarNfse)
+            {
+                dataInicial = GetXMLElementInnertext("DataInicial");
+                dataFinal = GetXMLElementInnertext("DataFinal");
+
+                var tomador = ConteudoXML.GetElementsByTagName("Tomador");
+                var intermediario = ConteudoXML.GetElementsByTagName("IntermediarioServico");
+
+                if (tomador.Count > 0)
+                {
+                    foreach (XmlNode nodeTomador in tomador)
+                    {
+                        cnpjCpfTomador = nodeTomador.FirstChild.InnerText;                        
+                    }
+                }
+
+                if (intermediario.Count > 0)
+                {
+                    foreach (XmlNode nodeIntermediario in intermediario)
+                    {
+                        cnpjCpfIntermediario = nodeIntermediario.FirstChild.InnerText;
+                    }
+                }
+            }
+
+
+            Configuracoes.WebSoapString = Configuracoes.WebSoapString.Replace("{MunicipioUsuario}", Configuracoes.MunicipioUsuario)
+                                                                     .Replace("{MunicipioSenha}", Configuracoes.MunicipioSenha)
+                                                                     .Replace("{numeroProtocolo}", protocolo)
+                                                                     .Replace("{numeroNFSeRps}", numeroNFSeRps)
+                                                                     .Replace("{dataInicial}", dataInicial)
+                                                                     .Replace("{dataFinal}", dataFinal)
+                                                                     .Replace("{cnpjCpfTomador}", cnpjCpfTomador)
+                                                                     .Replace("{cnpjCpfIntermediario}", cnpjCpfIntermediario);
+
+        }
+
+        #endregion EL
 
         #endregion Configurações separadas por PadrãoNFSe
 

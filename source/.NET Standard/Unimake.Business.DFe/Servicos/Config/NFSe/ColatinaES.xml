@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoProducao>https://es-colatina-pm-nfs.cloud.el.com.br/RpsServiceService?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><EnviarLoteRpsEnvio xmlns="http://des36.el.com.br:8080/el-issonline/"><identificacaoPrestador xmlns="">{MunicipioUsuario}</identificacaoPrestador><hashIdentificador xmlns="">{MunicipioSenha}</hashIdentificador><arquivo xmlns="">{xmlBodyScapeEnvio}</arquivo></EnviarLoteRpsEnvio></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.el.com.br/nfse/xsd/el-nfse.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>https://es-colatina-pm-nfs.cloud.el.com.br/RpsServiceService?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfseEnvio xmlns="http://des36.el.com.br:8080/el-issonline/"><identificacaoPrestador xmlns="">{MunicipioUsuario}</identificacaoPrestador><numeroNfse xmlns="">{numeroNFSe}</numeroNfse></CancelarNfseEnvio></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.el.com.br/nfse/xsd/el-nfse.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoProducao>https://es-colatina-pm-nfs.cloud.el.com.br/RpsServiceService?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRpsEnvio xmlns="http://des36.el.com.br:8080/el-issonline/"><identificacaoPrestador xmlns="">{MunicipioUsuario}</identificacaoPrestador><numeroProtocolo xmlns="">{numeroProtocolo}</numeroProtocolo></ConsultarLoteRpsEnvio></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.el.com.br/nfse/xsd/el-nfse.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoProducao>https://es-colatina-pm-nfs.cloud.el.com.br/RpsServiceService?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseRpsEnvio xmlns="http://des36.el.com.br:8080/el-issonline/"><identificacaoRps xmlns="">{numeroNFSeRps}</identificacaoRps><identificacaoPrestador xmlns="">{MunicipioUsuario}</identificacaoPrestador></ConsultarNfseRpsEnvio></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.el.com.br/nfse/xsd/el-nfse.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfse versao="1.00">
+			<Descricao>Consulta NFSe</Descricao>
+			<WebEnderecoProducao>https://es-colatina-pm-nfs.cloud.el.com.br/RpsServiceService?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseEnvio xmlns="http://des36.el.com.br:8080/el-issonline/"><identificacaoPrestador xmlns="">{MunicipioUsuario}</identificacaoPrestador><numeroNfse xmlns="">{numeroNFSeRps}</numeroNfse><dataInicial xmlns="">{dataInicial}</dataInicial><dataFinal xmlns="">{dataFinal}</dataFinal><identificacaoTomador xmlns="">{cnpjCpfTomador}</identificacaoTomador><identificacaoItermediarioServico xmlns="">{cnpjCpfIntermediario}</identificacaoItermediarioServico></ConsultarNfseEnvio></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.el.com.br/nfse/xsd/el-nfse.xsd</TargetNS>
+		</ConsultarNfse>
+		<ConsultarSituacaoLoteRps versao="1.00">
+			<Descricao>Consulta situação do lote RPS</Descricao>
+			<WebEnderecoProducao>https://es-colatina-pm-nfs.cloud.el.com.br/RpsServiceService?wsdl</WebEnderecoProducao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRpsEnvio xmlns="http://des36.el.com.br:8080/el-issonline/"><identificacaoPrestador xmlns="">{MunicipioUsuario}</identificacaoPrestador><numeroProtocolo xmlns="">{numeroProtocolo}</numeroProtocolo></ConsultarSituacaoLoteRpsEnvio></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>S:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+			<TargetNS>http://www.el.com.br/nfse/xsd/el-nfse.xsd</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>

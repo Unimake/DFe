@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LoteRps xmlns="http://www.el.com.br/nfse/xsd/el-nfse.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.el.com.br/nfse/xsd/el-nfse.xsd el-nfse.xsd ">
+	<Id>123456789112345</Id>
+	<NumeroLote>1</NumeroLote>
+	<QuantidadeRps>1</QuantidadeRps>
+	<IdentificacaoPrestador>
+		<CpfCnpj>99999999999999</CpfCnpj>
+		<IndicacaoCpfCnpj>2</IndicacaoCpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+	</IdentificacaoPrestador>
+	<ListaRps>
+		<Rps>
+			<Id>99999999999999</Id>
+			<LocalPrestacao>2</LocalPrestacao>
+			<IssRetido>2</IssRetido>
+			<DataEmissao>2011-09-20T00:00:00</DataEmissao>
+			<IdentificacaoRps>
+				<Numero>0000001</Numero>
+				<Serie>1</Serie>
+				<Tipo>1</Tipo>
+			</IdentificacaoRps>
+			<DadosPrestador>
+				<IdentificacaoPrestador>
+					<CpfCnpj>99999999000199</CpfCnpj>
+					<IndicacaoCpfCnpj>2</IndicacaoCpfCnpj>
+					<InscricaoMunicipal>9999999</InscricaoMunicipal>
+				</IdentificacaoPrestador>
+				<RazaoSocial>NOME RAZAO SOCIAL</RazaoSocial>
+				<NomeFantasia>NOME FANTASIA</NomeFantasia>
+				<IncentivadorCultural>2</IncentivadorCultural>
+				<OptanteSimplesNacional>2</OptanteSimplesNacional>
+				<NaturezaOperacao>1</NaturezaOperacao>
+				<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+				<Endereco>
+					<LogradouroTipo>Rua</LogradouroTipo>
+					<Logradouro>LOGRADOURO</Logradouro>
+					<LogradouroNumero>999</LogradouroNumero>
+					<LogradouroComplemento>Casa</LogradouroComplemento>
+					<Bairro>CENTRO</Bairro>
+					<CodigoMunicipio>9999999</CodigoMunicipio>
+					<Municipio>NOME MUNICIPIO</Municipio>
+					<Uf>ES</Uf>
+					<Cep>99999999</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>9999999999</Telefone>
+					<Email>email@email.com.br</Email>
+				</Contato>
+			</DadosPrestador>
+			<DadosTomador>
+				<IdentificacaoTomador>
+					<CpfCnpj>99999999999999</CpfCnpj>
+					<IndicacaoCpfCnpj>1</IndicacaoCpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>NOME RAZAO SOCIAL</RazaoSocial>
+				<NomeFantasia>NOME FANTASIA</NomeFantasia>
+				<Endereco>
+					<LogradouroTipo>Rua</LogradouroTipo>
+					<Logradouro>LOGRADOURO</Logradouro>
+					<LogradouroNumero>999</LogradouroNumero>
+					<LogradouroComplemento>Casa</LogradouroComplemento>
+					<Bairro>CENTRO</Bairro>
+					<CodigoMunicipio>9999999</CodigoMunicipio>
+					<Municipio>NOME MUNICIPIO</Municipio>
+					<Uf>ES</Uf>
+					<Cep>99999999</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>9999999999</Telefone>
+					<Email>email@email.com.br</Email>
+				</Contato>
+			</DadosTomador>
+			<Servicos>
+				<Servico>
+					<CodigoCnae>999999999</CodigoCnae>
+					<CodigoServico116>99.99</CodigoServico116>
+					<CodigoServicoMunicipal>99.99</CodigoServicoMunicipal>
+					<Quantidade>1</Quantidade>
+					<Unidade>UN</Unidade>
+					<Descricao>DESCRICAO SERVIÇO</Descricao>
+					<Aliquota>5.00</Aliquota>
+					<ValorServico>100.00</ValorServico>
+					<ValorIssqn>5.00</ValorIssqn>
+					<ValorDesconto>0.00</ValorDesconto>
+					<NumeroAlvara>0</NumeroAlvara>
+				</Servico>
+			</Servicos>
+			<Valores>
+				<ValorServicos>100.00</ValorServicos>
+				<ValorDeducoes>0.00</ValorDeducoes>
+				<ValorPis>0.00</ValorPis>
+				<ValorCofins>0.00</ValorCofins>
+				<ValorInss>0.00</ValorInss>
+				<ValorIr>0.00</ValorIr>
+				<ValorCsll>0.00</ValorCsll>
+				<ValorIss>5.00</ValorIss>
+				<ValorOutrasRetencoes>0.00</ValorOutrasRetencoes>
+				<ValorLiquidoNfse>100.02</ValorLiquidoNfse>
+				<ValorIssRetido>0.00</ValorIssRetido>
+			</Valores>
+			<Observacao>Observação</Observacao>
+			<Status>1</Status>
+		</Rps>
+	</ListaRps>
+</LoteRps>

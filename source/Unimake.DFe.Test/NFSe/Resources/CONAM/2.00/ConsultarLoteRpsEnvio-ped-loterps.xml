@@ -1,7 +1,8 @@
-﻿<nfe:Sdt_consultaprotocoloin xmlns:nfe="NFe">  
-<nfe:Protocolo>123456789</nfe:Protocolo>  
-<nfe:Login>  
-	<nfe:CodigoUsuario>987654</nfe:CodigoUsuario>  
-	<nfe:CodigoContribuinte>123456</nfe:CodigoContribuinte>  
-</nfe:Login>  
-</nfe:Sdt_consultaprotocoloin>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sdt_consultaprotocoloin xmlns="NFe">
+	<Protocolo>123456789012345678901234567890</Protocolo>
+	<Login>
+		<CodigoUsuario>1234567890</CodigoUsuario>
+		<CodigoContribuinte>1234567890</CodigoContribuinte>
+	</Login>
+</Sdt_consultaprotocoloin>
