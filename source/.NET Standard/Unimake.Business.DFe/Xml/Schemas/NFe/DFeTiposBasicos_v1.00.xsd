@@ -770,7 +770,7 @@
 					<xs:documentation>Percentual de redução de aliquota</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="pAliqEfet" type="nfe:TDec1302">
+			<xs:element name="pAliqEfet" type="nfe:TDec_0302_04">
 				<xs:annotation>
 					<xs:documentation>Aliquota Efetiva que será aplicada a Base de Calculo</xs:documentation>
 				</xs:annotation>
@@ -832,11 +832,6 @@ Preencher apenas para cCredPres com indicacao de Condição Suspensiva</xs:docum
 			<xs:element name="pDif" type="nfe:TDec_0302_04">
 				<xs:annotation>
 					<xs:documentation>Percentual do diferemento</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="vCBSOp" type="nfe:TDec1302">
-				<xs:annotation>
-					<xs:documentation>Valor da CBS Bruto na operação</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="vDif" type="nfe:TDec1302">
