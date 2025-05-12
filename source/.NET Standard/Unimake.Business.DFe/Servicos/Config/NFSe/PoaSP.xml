@@ -60,8 +60,8 @@
 			<TargetNS></TargetNS>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
 		</ConsultarNfsePDF>
-		<ConsultarNfse versao="2.00">
-			<Descricao>Consulta NFSe por RPS</Descricao>
+		<ConsultarLoteRps versao="2.00">
+			<Descricao>Consulta lote por RPS</Descricao>
 			<WebEnderecoProducao>https://nfe.etransparencia.com.br/sp.poa/webservice/aws_nfe.aspx</WebEnderecoProducao>
 			<WebEnderecoHomologacao>https://nfehomo.etransparencia.com.br/sp.poa/webservice/aws_nfe.aspx</WebEnderecoHomologacao>
 			<WebActionProducao></WebActionProducao>
@@ -78,6 +78,6 @@
 			<SchemaVersao>2.00</SchemaVersao>
 			<TargetNS></TargetNS>
 			<UsaCertificadoDigital>false</UsaCertificadoDigital>
-		</ConsultarNfse>
+		</ConsultarLoteRps>
 	</Servicos>
 </Configuracoes>

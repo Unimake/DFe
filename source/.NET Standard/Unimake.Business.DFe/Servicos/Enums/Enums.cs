@@ -6965,6 +6965,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("PORTAL_FACIL")]
         PORTAL_FACIL = 67,
+
+        /// <summary>
+        /// E_RECEITA
+        /// </summary>
+        [Description("E_RECEITA")]
+        E_RECEITA = 68,
     }
 
     #endregion
