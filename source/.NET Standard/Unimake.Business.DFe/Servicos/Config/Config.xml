@@ -1817,4 +1817,10 @@
 		<ArqConfig>AimoresMG.xml</ArqConfig>
 		<PadraoNFSe>PORTAL_FACIL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3132909">
+		<Nome>Itamogi - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>ItamogiMG.xml</ArqConfig>
+		<PadraoNFSe>E_RECEITA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
