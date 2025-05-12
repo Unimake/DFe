@@ -73,5 +73,14 @@ object frmPrincipal: TfrmPrincipal
       OnClick = btnEventoCancelamentoNFeClick
       TabOrder = 5
     end
+    object btnImprimirDANFEcomUniDANFE: TButton
+      Left = 8
+      Height = 38
+      Top = 288
+      Width = 328
+      Caption = 'Imprimir DANFE com UniDANFE'
+      OnClick = btnImprimirDANFEcomUniDANFEClick
+      TabOrder = 6
+    end
   end
 end

@@ -57,6 +57,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnviarNFeSincrono"/>
       </Unit>
+      <Unit>
+        <Filename Value="imprimirdanfecomunidanfe.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ImprimirDANFEcomUniDANFE"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

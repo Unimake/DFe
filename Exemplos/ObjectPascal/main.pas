@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComObj,
   ConsultarStatusNFe, EnviarNFeSincrono, EnviarNFeSincronoDuplicidade,
-  EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe;
+  EnviarNFeSincronoDesserializacao, ConsultarSituacaoNFe, EventoCancelamentoNFe,
+  ImprimirDANFEcomUniDANFE;
 
 type
 
@@ -20,6 +21,7 @@ type
     btnEnviarNFeSincronoDuplicidade: TButton;
     btnConsultarSituacaoNFe: TButton;
     btnEventoCancelamentoNFe: TButton;
+    btnImprimirDANFEcomUniDANFE: TButton;
     GroupBox1: TGroupBox;
     procedure btnConsultarSituacaoNFeClick(Sender: TObject);
     procedure btnConsultaStatusNFeClick(Sender: TObject);
@@ -27,6 +29,7 @@ type
     procedure btnEnviarNFeSincronoDesserializacaoClick(Sender: TObject);
     procedure btnEnviarNFeSincronoDuplicidadeClick(Sender: TObject);
     procedure btnEventoCancelamentoNFeClick(Sender: TObject);
+    procedure btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure GroupBox1Click(Sender: TObject);
   private
@@ -102,6 +105,13 @@ begin
     oServico.Executar();
   finally
   end;
+end;
+
+procedure TfrmPrincipal.btnImprimirDANFEcomUniDANFEClick(Sender: TObject);
+var
+  oServico: TImprimirDANFEcomUniDANFE;
+begin
+  oServico.Executar();
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
