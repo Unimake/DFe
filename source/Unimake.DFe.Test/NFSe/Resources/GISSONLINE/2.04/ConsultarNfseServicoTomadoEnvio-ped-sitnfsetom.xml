@@ -6,6 +6,14 @@
 		<ns2:InscricaoMunicipal>123456</ns2:InscricaoMunicipal>
 	</ns4:Consulente>
 	<ns4:NumeroNfse>0</ns4:NumeroNfse>
+	<ns4:PeriodoEmissao>
+		<ns2:DataInicial>2025-05-11</ns2:DataInicial>
+		<ns2:DataFinal>2025-05-13</ns2:DataFinal>
+	</ns4:PeriodoEmissao>
+	<ns4:PeriodoCompetencia>
+		<ns2:DataInicial>2025-05-11</ns2:DataInicial>
+		<ns2:DataFinal>2025-05-13</ns2:DataFinal>
+	</ns4:PeriodoCompetencia>
 	<ns4:Prestador>
 		<ns2:CpfCnpj>
 			<ns2:Cnpj>06117473000150</ns2:Cnpj>
