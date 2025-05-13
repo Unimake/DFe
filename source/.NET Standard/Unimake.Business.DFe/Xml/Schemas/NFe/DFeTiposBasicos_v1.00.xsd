@@ -605,7 +605,7 @@
 						<xs:documentation>Valor do IBS monofásico diferido</xs:documentation>
 					</xs:annotation>
 				</xs:element>
-				<xs:element name="pDifCBS" type="nfe:TDec1302">
+				<xs:element name="pDifCBS" type="nfe:TDec_0302_04">
 					<xs:annotation>
 						<xs:documentation>Percentual do diferimento do imposto monofásico</xs:documentation>
 					</xs:annotation>
