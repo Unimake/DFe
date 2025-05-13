@@ -1823,4 +1823,10 @@
 		<ArqConfig>ItamogiMG.xml</ArqConfig>
 		<PadraoNFSe>E_RECEITA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3536505">
+		<Nome>Paulínia - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>PauliniaSP.xml</ArqConfig>
+		<PadraoNFSe>GISSONLINE</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -482,6 +482,7 @@
 		<None Remove="Servicos\Config\NFSe\PareciNovoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\ParobeRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PassosMG.xml" />
+		<None Remove="Servicos\Config\NFSe\PauliniaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\PaulistaPE.xml" />
 		<None Remove="Servicos\Config\NFSe\PauloBentoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\PaveramaRS.xml" />
@@ -1266,6 +1267,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImperatrizMA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AriquemesRO.xml" />

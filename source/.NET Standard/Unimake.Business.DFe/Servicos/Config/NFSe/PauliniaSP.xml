@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws-paulinia.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/RecepcionarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ns2:Rps</TagAssinatura>
+			<TagAtributoID>ns2:InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>ns4:EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>ns4:LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:RecepcionarLoteRpsRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:RecepcionarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.giss.com.br/enviar-lote-rps-envio-v2_04.xsd</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws-paulinia.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/CancelarNfse</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/CancelarNfse</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>ns4:Pedido</TagLoteAssinatura>
+			<TagLoteAtributoID>ns2:InfPedidoCancelamento</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:CancelarNfseRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:CancelarNfseRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.giss.com.br/cancelar-nfse-envio-v2_04.xsd</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws-paulinia.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarLoteRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ns4:ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Protocolo</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarLoteRpsRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarLoteRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.giss.com.br/consultar-lote-rps-envio-v2_04.xsd</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws-paulinia.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfsePorRps</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ns4:ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfsePorRpsRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfsePorRpsRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.giss.com.br/consultar-nfse-rps-envio-v2_04.xsd</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseServicoPrestado versao="2.04">
+			<Descricao>Consulta NFSe de serviços prestados</Descricao>
+			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws-paulinia.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoPrestado</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ns4:ConsultarNfseServicoPrestadoEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoPrestadoRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfseServicoPrestadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseServicoPrestadoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.giss.com.br/consultar-nfse-servico-prestado-envio-v2_04.xsd</TargetNS>
+		</ConsultarNfseServicoPrestado>
+		<ConsultarNfseServicoTomado versao="2.04">
+			<Descricao>Consulta NFSe de serviços tomados</Descricao>
+			<WebEnderecoHomologacao>https://v2-ws-homologacao.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://ws-paulinia.giss.com.br/service-ws/nf/nfse-ws?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionHomologacao>
+			<WebActionProducao>http://nfse.abrasf.org.br/ConsultarNfseServicoTomado</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ns4:ConsultarNfseServicoTomadoEnvio</TagAssinatura>
+			<TagAtributoID>ns4:Consulente</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfse.abrasf.org.br"><soapenv:Header/><soapenv:Body><nfse:ConsultarNfseServicoTomadoRequest><nfseCabecMsg>&lt;p:cabecalho versao=&quot;2.00&quot; xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot; xmlns:p=&quot;http://www.giss.com.br/cabecalho-v2_04.xsd&quot; xmlns:p1=&quot;http://www.giss.com.br/tipos-v2_04.xsd&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt; &lt;p:versaoDados&gt;2.00&lt;/p:versaoDados&gt; &lt;/p:cabecalho&gt;</nfseCabecMsg><nfseDadosMsg>{xmlBodyScape}</nfseDadosMsg></nfse:ConsultarNfseServicoTomadoRequest></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseServicoTomadoResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://www.giss.com.br/consultar-nfse-servico-tomado-envio-v2_04.xsd</TargetNS>
+		</ConsultarNfseServicoTomado>
+	</Servicos>
+</Configuracoes>
