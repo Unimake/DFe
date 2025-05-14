@@ -118,7 +118,7 @@ namespace Unimake.DFe.Test.CTe
 
             var configuracao = new Configuracao
             {
-                TipoDFe = TipoDFe.NFe,
+                TipoDFe = TipoDFe.CTe,
                 TipoEmissao = TipoEmissao.Normal,
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
