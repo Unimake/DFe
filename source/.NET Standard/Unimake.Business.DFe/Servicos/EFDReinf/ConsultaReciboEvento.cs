@@ -6,6 +6,7 @@ using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.EFDReinf;
 using Unimake.Exceptions;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.EFDReinf
 {
@@ -137,6 +138,62 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             }
         }
 
+        ///<summary>
+        ///Construtor simplificado para API
+        /// </summary>
+        /// <param name="tipoEvento">Tipo do evento a ser consultado</param>
+        /// <param name="tipoInscricao">Tipo de incrição do contribuinte</param>
+        /// <param name="numInscricao">Número da inscrição do contribuinte</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultaReciboEvento(string tipoEvento, TiposInscricao tipoInscricao, string numInscricao, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrEmpty(tipoEvento))
+            {
+                throw new ArgumentNullException(nameof(tipoEvento));
+            }
+
+            if (string.IsNullOrEmpty(tipoInscricao.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoInscricao));
+            }
+
+            if (string.IsNullOrEmpty(numInscricao))
+            {
+                throw new ArgumentNullException(nameof(numInscricao));
+            }
+
+            if (string.IsNullOrEmpty(tipoAmbiente.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoAmbiente));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            configuracao.TipoEventoEFDReinf = tipoEvento;
+
+            var xml = new ReinfConsulta
+            {
+                Versao = "1.05.01",
+                ConsultaReciboEvento = new Xml.EFDReinf.ConsultaReciboEvento
+                {
+                    TipoEvento = tipoEvento,
+                    TpInsc = tipoInscricao,
+                    NrInsc = numInscricao,
+                    PerApurField = DateTime.Now.ToString("yyyy-MM")
+                }
+
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
         #endregion Public Methods
+
     }
 }

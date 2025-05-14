@@ -522,6 +522,47 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 #endif
         public override void GravarXmlDistribuicao(Stream stream, string value, Encoding encoding = null) => throw new Exception("Método não implementado! Utilize o GravarXmlDistribuicao(string pasta, string idEvento)");
 
+        ///<summary>
+        ///Construtor simplificado para API
+        /// </summary>
+        /// <param name="numProtocolo">Numero do protocolo do lote a ser consultado</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultaLoteAssincrono(string numProtocolo, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrEmpty(numProtocolo))
+            {
+                throw new ArgumentNullException(nameof(numProtocolo));
+            }
+
+            if(string.IsNullOrEmpty(tipoAmbiente.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoAmbiente));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            configuracao.NumeroProtocolo = numProtocolo;
+
+            var xml = new ReinfConsultaLoteAssincrono
+            {
+                Versao = "1.05.01",
+                ConsultaLoteAssincrono = new Xml.EFDReinf.ConsultaLoteAssincrono
+                {
+                    NumeroProtocolo = numProtocolo
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+
+        }
+
         #endregion Public Methods
     }
 }
