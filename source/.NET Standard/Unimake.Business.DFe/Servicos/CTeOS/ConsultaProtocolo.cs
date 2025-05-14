@@ -61,5 +61,13 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
                 throw new ValidarXMLException(validar.ErrorMessage);
             }
         }
+
+        ///<summary>
+        ///Constutor simplificado para API
+        /// </summary>
+        /// <param name="chaveCTe">Chave de Acesso do CTe</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        /// <param name="configuracao">Configuração para conexão e envio de XML</param>
+        public ConsultaProtocolo(string chaveCTe, TipoAmbiente tipoAmbiente, Configuracao configuracao) : base(chaveCTe, tipoAmbiente, configuracao) { }
     }
 }
