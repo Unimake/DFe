@@ -221,5 +221,36 @@ namespace Unimake.DFe.Test.EFDReinf
                 }
             }
         };
+
+        /// <summary>
+        /// Testar construtor simplificado para API
+        ///</summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultarLoteAssincronoConstrutor(TipoAmbiente tipoAmbiente)
+        {
+            var protocolo = "2.202402.5467550";
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            // Utilizando o novo construtor simplificado para API
+            var consultaLoteReinf = new Business.DFe.Servicos.EFDReinf.ConsultaLoteAssincrono(protocolo, tipoAmbiente, configuracao);
+            consultaLoteReinf.Executar();
+
+            // Verificar se as configurações foram definidas corretamente
+            Assert.Equal(Servico.EFDReinfConsultaLoteAssincrono, configuracao.Servico);
+            Assert.Equal((int)UFBrasil.AN, configuracao.CodigoUF);
+            Assert.Equal(tipoAmbiente, configuracao.TipoAmbiente);
+            Assert.Equal(protocolo, configuracao.NumeroProtocolo);
+
+        }
     }
 }

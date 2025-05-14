@@ -455,5 +455,50 @@ namespace Unimake.DFe.Test.EFDReinf
 
             Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"), "O código retornado é diferente de 3");
         }
+
+        /// <summary>
+        /// Teste Construtor simplificado para API
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "EFDReinf")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaReciboEventoConstrutor(TipoAmbiente tipoAmbiente)
+        {
+            var tipoEvento = "1000";
+            var tipoInscricao = TiposInscricao.CNPJ;
+            var numeroInscricao = "00000000";
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.EFDReinf,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+            };
+
+            var consultaReciboEvento = new Business.DFe.Servicos.EFDReinf.ConsultaReciboEvento(
+                tipoEvento,
+                tipoInscricao,
+                numeroInscricao,
+                tipoAmbiente,
+                configuracao);
+
+            consultaReciboEvento.Executar();
+
+            // Verificar se as configurações foram definidas corretamente
+            Assert.Equal(Servico.EFDReinfConsultaReciboEvento, configuracao.Servico);
+            Assert.Equal((int)UFBrasil.AN, configuracao.CodigoUF);
+            Assert.Equal(tipoAmbiente, configuracao.TipoAmbiente);
+            Assert.Equal(tipoEvento, configuracao.TipoEventoEFDReinf);
+
+            // Verificar se o XML foi gerado corretamente
+            Assert.Contains(tipoEvento, consultaReciboEvento.ConteudoXMLOriginal.InnerXml);
+            Assert.Contains(numeroInscricao, consultaReciboEvento.ConteudoXMLOriginal.InnerXml);
+
+            // Verificar se a chamada ao serviço retornou o código esperado
+            Assert.True(consultaReciboEvento.Result.IdeStatus.CdRetorno.Equals("3"),
+                "O código retornado é diferente de 3");
+        }
     }
 }
