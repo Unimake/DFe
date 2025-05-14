@@ -143,5 +143,41 @@ namespace Unimake.Business.DFe.Servicos.CTe
                 ThrowHelper.Instance.Throw(ex);
             }
         }
+
+        ///<summary>
+        ///Constutor simplificado para API
+        /// </summary>
+        /// <param name="chaveCTe">Chave de Acesso do CTe</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        /// <param name="configuracao">Configuração para conexão e envio de XML</param>
+        public ConsultaProtocolo(string chaveCTe, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrWhiteSpace(chaveCTe))
+            {
+                throw new ArgumentNullException(nameof(chaveCTe));
+            }
+
+            if (string.IsNullOrEmpty(tipoAmbiente.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoAmbiente));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new ConsSitCTe
+            {
+                ChCTe = chaveCTe,
+                TpAmb = tipoAmbiente,
+                Versao = "4.00"
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
     }
 }
