@@ -166,6 +166,43 @@ namespace Unimake.Business.DFe.Servicos.NFe
             }
         }
 
+        ///<summary>
+        ///Construtor simplificado para uso de API
+        /// </summary>
+        /// <param name="chaveNFe">Chave de acesso NFe</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        /// <param name="configuracao">Config para conexão e envio de XML</param>
+        public ConsultaProtocolo(string chaveNFe, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
+        {
+            if(chaveNFe.IsNullOrEmpty())
+            {
+                throw new ArgumentNullException(nameof(chaveNFe));
+            }
+
+            if (string.IsNullOrEmpty(tipoAmbiente.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoAmbiente));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new ConsSitNFe
+            {
+                Versao = "4.00",
+                TpAmb = tipoAmbiente,
+                ChNFe = chaveNFe,
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+
+        }
+
         #endregion Public Methods
     }
 }
