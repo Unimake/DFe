@@ -84,5 +84,38 @@ namespace Unimake.DFe.Test.ESocial
             consultaLoteAssincrono.GravarXmlDistribuicao(@"..\..\..\ESocial\Resources");
         }
 
+        /// <summary>
+        /// Teste construtor simplificado para uso de API
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "ESocial")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void ConsultaLoteAssincronoConstrutor(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.ESocial,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.ESocialDownloadEvts,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var protocolo = "1.8.11111111111111111111";
+
+            var consultaLoteAssincrono = new Business.DFe.Servicos.ESocial.ConsultaLoteAssincrono(protocolo, configuracao);
+            consultaLoteAssincrono.Executar();
+
+            Assert.Equal(Servico.ESocialConsultaEvts, configuracao.Servico);
+            Assert.Equal((int)UFBrasil.AN, configuracao.CodigoUF);
+            Assert.Equal(tipoAmbiente, configuracao.TipoAmbiente);
+            Assert.Contains(protocolo, consultaLoteAssincrono.ConteudoXMLOriginal.OuterXml);
+            Assert.NotNull(consultaLoteAssincrono.RetornoWSXML);
+            Assert.NotNull(consultaLoteAssincrono.RetornoWSString);
+
+
+        }
+
     }
 }
