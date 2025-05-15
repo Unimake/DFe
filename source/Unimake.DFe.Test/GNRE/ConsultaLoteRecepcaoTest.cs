@@ -58,5 +58,108 @@ namespace Unimake.DFe.Test.GNRE
             Assert.True(consultaLoteRecepcao.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") || consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"), "Código de retorno diferente de 100 e 102.");  //Lote de consulta de guia recebido com sucesso!
         }
+
+        /// <summary>
+        /// Teste do construtor que utiliza código de barras para consulta de lote da GNRE
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaLoteRecepcaoPorCodigoBarras(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaLoteRecepcao = new ConsultaLoteRecepcao(
+                UFBrasil.PR,
+                "07638784000127",
+                "12345678911234567891123456789112345678914444",
+                configuracao);
+
+            consultaLoteRecepcao.Executar();
+
+            Assert.NotNull(consultaLoteRecepcao.Result);
+            Assert.Equal(tipoAmbiente, consultaLoteRecepcao.Result.Ambiente);
+            Assert.True(
+                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") ||
+                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"),
+                "Código de retorno diferente de 100 e 102.");
+        }
+
+        /// <summary>
+        /// Teste do construtor que utiliza número de controle para consulta de lote da GNRE
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaLoteRecepcaoPorNumeroControle(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaLoteRecepcao = new ConsultaLoteRecepcao(
+                UFBrasil.PR,
+                "07638784000127",
+                "1234567891123456",
+                TipoConsultaGNRE.ConsultaPorNumeroControleGNRE,
+                configuracao);
+
+            consultaLoteRecepcao.Executar();
+
+            Assert.NotNull(consultaLoteRecepcao.Result);
+            Assert.Equal(tipoAmbiente, consultaLoteRecepcao.Result.Ambiente);
+            Assert.True(
+                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") ||
+                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"),
+                "Código de retorno diferente de 100 e 102.");
+        }
+
+        /// <summary>
+        /// Teste do construtor completo para consulta de lote da GNRE
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaLoteRecepcaoCompleta(TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaLoteRecepcao = new ConsultaLoteRecepcao(
+                UFBrasil.PR,
+                "07638784000127",
+                "12345678911234567891123456789112345678914444",
+                "1234567891123456",
+                "10", // tipo documento origem
+                "12", // valor documento origem
+                "10", // ID consulta
+                TipoConsultaGNRE.ConsultaPorCodigoBarra,
+                configuracao);
+
+            consultaLoteRecepcao.Executar();
+
+            Assert.NotNull(consultaLoteRecepcao.Result);
+            Assert.Equal(tipoAmbiente, consultaLoteRecepcao.Result.Ambiente);
+            Assert.True(
+                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("100") ||
+                consultaLoteRecepcao.Result.SituacaoRecepcao.Codigo.Equals("102"),
+                "Código de retorno diferente de 100 e 102.");
+        }
     }
+}
 }
