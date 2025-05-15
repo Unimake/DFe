@@ -5,6 +5,7 @@ using System;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Exceptions;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {
@@ -34,6 +35,64 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             }
 
             Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
+        }
+
+        /// <summary>
+        /// Construtor simplificado para API
+        /// </summary>
+        /// <param name="tpInsc">Tipo de inscrição do empregador (ex: 1=CNPJ, 2=CPF)</param>
+        /// <param name="nrInsc">Número de inscrição do empregador</param>
+        /// <param name="perApur">Período de apuração (formato: AAAA-MM)</param>
+        /// <param name="tpEvt">Tipo de evento (ex: S-1020)</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultarEvtsEmpregador(TiposInscricao tpInsc, string nrInsc, string perApur, string tpEvt, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrEmpty(tpInsc.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tpInsc));
+            }
+
+            if (string.IsNullOrWhiteSpace(nrInsc))
+            {
+                throw new ArgumentNullException(nameof(nrInsc));
+            }
+
+            if (string.IsNullOrWhiteSpace(perApur))
+            {
+                throw new ArgumentNullException(nameof(perApur));
+            }
+
+            if (string.IsNullOrWhiteSpace(tpEvt))
+            {
+                throw new ArgumentNullException(nameof(tpEvt));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new ConsultarEvtsEmpregadorESocial
+            {
+                ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
+                {
+                    IdeEmpregador = new IdeEmpregador
+                    {
+                        TpInsc = tpInsc,
+                        NrInsc = nrInsc
+                    },
+                    ConsultaEvtsEmpregador = new ConsultaEvtsEmpregador
+                    {
+                        PerApurField = perApur,
+                        TpEvt = tpEvt
+                    }
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
         }
 
 #if INTEROP

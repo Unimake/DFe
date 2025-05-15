@@ -8,6 +8,7 @@ using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Exceptions;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {
@@ -37,6 +38,37 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             }
 
             Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
+        }
+
+        ///<summary>
+        ///Construtor simplificado para uso de API
+        /// </summary>
+        /// <param name="protocolo">Número de protocolo do lote a ser consultado</param>
+        /// <param name="configuracao">Configuração para conexão e envio de XML</param>
+        public ConsultaLoteAssincrono(string protocolo, Configuracao configuracao)
+        {
+            if (string.IsNullOrEmpty(protocolo))
+            {
+                throw new ArgumentNullException(nameof(protocolo));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+             var xml = new ConsultarLoteEventos
+            {
+                ConsultaLoteEventos = new Xml.ESocial.ConsultaLoteEventos
+                {
+                    ProtocoloEnvio = protocolo
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
         }
 
 #if INTEROP

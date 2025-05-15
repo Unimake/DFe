@@ -6,6 +6,7 @@ using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Exceptions;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.ESocial
 {
@@ -37,14 +38,66 @@ namespace Unimake.Business.DFe.Servicos.ESocial
             Inicializar(consulta?.GerarXML() ?? throw new ArgumentNullException(nameof(consulta)), configuracao);
         }
 
-#if INTEROP
         /// <summary>
-        /// 
+        /// Construtor simplificado para consulta de eventos do trabalhador no eSocial
         /// </summary>
-        /// <param name="consultarEvtsTrabalhadorESocial"></param>
-        /// <param name="configuracao"></param>
-        /// <exception cref="NotImplementedException"></exception>
-        [ComVisible(true)]
+        /// <param name="tpInsc">Tipo de inscrição do empregador (ex: 1=CNPJ, 2=CPF)</param>
+        /// <param name="nrInsc">Número de inscrição do empregador</param>
+        /// <param name="cpfTrab">CPF do trabalhador</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultarEvtsTrabalhador(TiposInscricao tpInsc, string nrInsc, string cpfTrab, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrEmpty(tpInsc.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tpInsc));
+            }
+            
+            if (string.IsNullOrWhiteSpace(nrInsc))
+            {
+                throw new ArgumentNullException(nameof(nrInsc));
+            }
+
+            if (string.IsNullOrWhiteSpace(cpfTrab))
+            {
+                throw new ArgumentNullException(nameof(cpfTrab));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new ConsultarEvtsTrabalhadorESocial
+            {
+                ConsultaIdentificadoresEvts = new ConsultaIdentificadoresEvts
+                {
+                    IdeEmpregador = new IdeEmpregador
+                    {
+                        TpInsc = tpInsc,
+                        NrInsc = nrInsc
+                    },
+                    ConsultaEvtsTrabalhador = new Xml.ESocial.ConsultaEvtsTrabalhador
+                    {
+                        CpfTrab = cpfTrab
+                    }
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
+
+
+#if INTEROP
+                /// <summary>
+                /// 
+                /// </summary>
+                /// <param name="consultarEvtsTrabalhadorESocial"></param>
+                /// <param name="configuracao"></param>
+                /// <exception cref="NotImplementedException"></exception>
+                [ComVisible(true)]
         public void Executar([MarshalAs(UnmanagedType.IUnknown)] ConsultarEvtsTrabalhadorESocial consultarEvtsTrabalhadorESocial, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
             try
