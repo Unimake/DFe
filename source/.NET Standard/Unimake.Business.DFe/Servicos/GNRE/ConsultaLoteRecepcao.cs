@@ -6,6 +6,8 @@ using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Exceptions;
+using System.Collections.Generic;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.GNRE
 {
@@ -88,6 +90,229 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             }
 
             Inicializar(TLoteConsultaGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(TLoteConsultaGNRE)), configuracao);
+        }
+
+        /// <summary>
+        /// Construtor simplificado para consulta de lote da GNRE por código de barras
+        /// </summary>
+        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="cnpj">CNPJ do emitente</param>
+        /// <param name="codBarras">Código de barras</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultaLoteRecepcao(UFBrasil uf, string cnpj, string codBarras, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrWhiteSpace(uf.ToString()))
+            {
+                throw new ArgumentNullException(nameof(uf));
+            }
+            
+            if (string.IsNullOrWhiteSpace(cnpj))
+            {
+                throw new ArgumentNullException(nameof(cnpj));
+            }
+
+            if (string.IsNullOrWhiteSpace(codBarras))
+            {
+                throw new ArgumentNullException(nameof(codBarras));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new TLoteConsultaGNRE
+            {
+                Versao = "2.00",
+                Consulta = new List<Consulta>
+                {
+                    new Consulta
+                    {
+                        Uf = uf,
+                        EmitenteId = new EmitenteId
+                        {
+                            CNPJ = cnpj,
+                        },
+                        CodBarras = codBarras,
+                        NumControle = string.Empty,
+                        DocOrigem = new DocOrigem
+                        {
+                            Tipo = "10",
+                            Value = "12"
+                        },
+                        IdConsulta = "10",
+                        TipoConsulta = TipoConsultaGNRE.ConsultaPorCodigoBarra
+                    }
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
+
+        /// <summary>
+        /// Construtor simplificado para consulta de lote da GNRE por número de controle
+        /// </summary>
+        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="cnpj">CNPJ do emitente</param>
+        /// <param name="numControle">Número de controle</param>
+        /// <param name="tipoConsulta">Tipo de consulta</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultaLoteRecepcao(UFBrasil uf, string cnpj, string numControle, TipoConsultaGNRE tipoConsulta, Configuracao configuracao) : this()
+        {
+            if(string.IsNullOrEmpty(uf.ToString()))
+            {
+                throw new ArgumentNullException(nameof(uf));
+            }
+
+            if (string.IsNullOrWhiteSpace(cnpj))
+            {
+                throw new ArgumentNullException(nameof(cnpj));
+            }
+
+            if (string.IsNullOrWhiteSpace(numControle))
+            {
+                throw new ArgumentNullException(nameof(numControle));
+            }
+
+            if (string.IsNullOrWhiteSpace(tipoConsulta.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoConsulta));
+            }
+
+            if (tipoConsulta == TipoConsultaGNRE.ConsultaPorCodigoBarra)
+            {
+                throw new ArgumentException("Tipo de consulta inválido. Para consulta por número de controle, utilize o tipo TipoConsultaGNRE.ConsultaPorNumeroControle.");
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new TLoteConsultaGNRE
+            {
+                Versao = "2.00",
+                Consulta = new List<Consulta>
+                {
+                    new Consulta
+                    {
+                        Uf = uf,
+                        EmitenteId = new EmitenteId
+                        {
+                            CNPJ = cnpj,
+                        },
+                        NumControle = numControle,
+                        TipoConsulta = tipoConsulta
+                    }
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
+
+        /// <summary>
+        /// Construtor completo para consulta de lote da GNRE
+        /// </summary>
+        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="cnpj">CNPJ do emitente</param>
+        /// <param name="codBarras">Código de barras</param>
+        /// <param name="numControle">Número de controle</param>
+        /// <param name="tipoDocOrigem">Tipo do documento de origem</param>
+        /// <param name="valorDocOrigem">Valor do documento de origem</param>
+        /// <param name="idConsulta">ID da consulta</param>
+        /// <param name="tipoConsulta">Tipo de consulta</param>
+        /// <param name="configuracao">Configuração para conexão e envio do XML</param>
+        public ConsultaLoteRecepcao(
+            UFBrasil uf,
+            string cnpj,
+            string codBarras,
+            string numControle,
+            string tipoDocOrigem,
+            string valorDocOrigem,
+            string idConsulta,
+            TipoConsultaGNRE tipoConsulta,
+            Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrWhiteSpace(uf.ToString()))
+            {
+                throw new ArgumentNullException(nameof(uf));
+            }
+
+            if (string.IsNullOrWhiteSpace(cnpj))
+            {
+                throw new ArgumentNullException(nameof(cnpj));
+            }
+
+            if (string.IsNullOrWhiteSpace(codBarras))
+            {
+                throw new ArgumentNullException(nameof(codBarras));
+            }
+
+            if (string.IsNullOrWhiteSpace(numControle))
+            {
+                throw new ArgumentNullException(nameof(numControle));
+            }
+
+            if (string.IsNullOrWhiteSpace(tipoDocOrigem))
+            {
+                throw new ArgumentNullException(nameof(tipoDocOrigem));
+            }
+
+            if (string.IsNullOrWhiteSpace(valorDocOrigem))
+            {
+                throw new ArgumentNullException(nameof(valorDocOrigem));
+            }
+
+            if (string.IsNullOrWhiteSpace(idConsulta))
+            {
+                throw new ArgumentNullException(nameof(idConsulta));
+            }
+
+            if (string.IsNullOrWhiteSpace(tipoConsulta.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tipoConsulta));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new TLoteConsultaGNRE
+            {
+                Versao = "2.00",
+                Consulta = new List<Consulta>
+                {
+                    new Consulta
+                    {
+                        Uf = uf,
+                        EmitenteId = new EmitenteId
+                        {
+                            CNPJ = cnpj,
+                        },
+                        CodBarras = codBarras,
+                        NumControle = numControle,
+                        DocOrigem = new DocOrigem
+                        {
+                            Tipo = tipoDocOrigem,
+                            Value = valorDocOrigem
+                        },
+                        IdConsulta = idConsulta,
+                        TipoConsulta = tipoConsulta
+                    }
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
         }
 
         #endregion Public Constructors
