@@ -135,5 +135,78 @@ namespace Unimake.DFe.Test.GNRE
 
             return dados;
         }
+
+        ///<summary>
+        ///Teste construtor 2 parâmetros
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
+        public void ConsultaConfigUFConstrutor2Param(UFBrasil uf, TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaConfigUF = new ConsultaConfigUF(uf, tipoAmbiente, configuracao);
+            consultaConfigUF.Executar();
+
+            Assert.NotNull(consultaConfigUF.Result);
+            Assert.Equal(tipoAmbiente, consultaConfigUF.Result.Ambiente);
+            Assert.Equal(Servico.GNREConsultaConfigUF, configuracao.Servico);
+
+        }
+
+        ///<summary>
+        ///Teste construtor 3 parâmetros
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 100013)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, 100021)]
+        public void ConsultaConfigUFConstrutor3Param(UFBrasil uf, TipoAmbiente tipoAmbiente, int receita)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaConfigUF = new ConsultaConfigUF(uf, tipoAmbiente, receita, configuracao);
+            consultaConfigUF.Executar();
+
+            Assert.NotNull(consultaConfigUF.Result);
+            Assert.Equal(tipoAmbiente, consultaConfigUF.Result.Ambiente);
+            Assert.Equal(Servico.GNREConsultaConfigUF, configuracao.Servico);
+        }
+
+        ///<summary>
+        ///Teste construtor 4 parâmetros
+        ///</summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 100013, SimNaoLetra.Sim)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, 100021, SimNaoLetra.Nao)]
+        public void ConsultaConfigUFConstrutor4Param(UFBrasil uf, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            var consultaConfigUF = new ConsultaConfigUF(uf, tipoAmbiente, receita, courier, configuracao);
+            consultaConfigUF.Executar();
+            
+            Assert.NotNull(consultaConfigUF.Result);
+            Assert.Equal(tipoAmbiente, consultaConfigUF.Result.Ambiente);
+            Assert.Equal(Servico.GNREConsultaConfigUF, configuracao.Servico);
+        }
     }
 }
