@@ -7,6 +7,7 @@ using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.GNRE;
 using Unimake.Exceptions;
+using System.Xml;
 
 namespace Unimake.Business.DFe.Servicos.GNRE
 {
@@ -89,6 +90,42 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             }
 
             Inicializar(tConsLoteGNRE?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsLoteGNRE)), configuracao);
+        }
+
+        /// <summary>
+        /// Construtor simplificado para consulta de resultado de lote GNRE
+        ///</summary>
+        ///<param name="numRecibo">Número de recibo a ser consultado</param>
+        ///<param name="configuracao">Configuração para conexão e envio de XML</param>
+        public ConsultaResultadoLote(string numRecibo, Configuracao configuracao) : this()
+     {
+            if(string.IsNullOrEmpty(numRecibo))
+            {
+                throw new ArgumentNullException(nameof(numRecibo));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            configuracao.Servico = Servico.GNREConsultaResultadoLote;
+
+            var tipoAmbiente = configuracao.TipoAmbiente;
+
+            var xml = new TConsLoteGNRE
+            {
+                Ambiente = tipoAmbiente,
+                NumeroRecibo = numRecibo,
+                IncluirArquivoPagamento = SimNaoLetra.Sim,
+                IncluirNoticias = SimNaoLetra.Sim,
+                IncluirPDFGuias = SimNaoLetra.Sim
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
         }
 
         #endregion Public Constructors
