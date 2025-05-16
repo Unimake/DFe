@@ -1,6 +1,7 @@
 ﻿using System;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.NF3e;
+using Unimake.Business.DFe.Xml.ESocial;
 using Unimake.Business.DFe.Xml.NF3e;
 using Xunit;
 
@@ -131,6 +132,53 @@ namespace Unimake.DFe.Test.NF3e
                 Assert.True(consultaProtocolo.Result.ProtNF3e.InfProt.ChNF3e.Equals(xml.ChNF3e), "Webservice retornou uma chave da NF3e diferente da enviada na consulta.");
             }
                 
+        }
+
+        ///<summary>
+        ///Teste de consulta protocolo NF3e apenas com chave de acesso
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "NF3e")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
+        public void ConsultarProtocoloNF3eApenasComChave(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = tipoAmbiente,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            string chave = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210";
+
+            var consultaProtocoloNF3e = new ConsultaProtocolo(chave, configuracao);
+            consultaProtocoloNF3e.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil));
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente));
+            Assert.True(consultaProtocoloNF3e.Result.CUF.Equals(ufBrasil));
+            Assert.True(consultaProtocoloNF3e.Result.TpAmb.Equals(tipoAmbiente));
+        }
+
+        /// <summary>
+        /// Teste com chave inválida
+        /// </summary>
+        [Fact]
+        [Trait("DFe", "NF3e")]
+        public void ConsultarProtocoloNF3eChaveInvalida()
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NF3e,
+                TipoEmissao = TipoEmissao.Normal,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            // Chave com tamanho inválido (menos de 44 caracteres)
+            Assert.Throws<System.Xml.XmlException>(() => new ConsultaProtocolo("123456", configuracao));
         }
     }
 }
