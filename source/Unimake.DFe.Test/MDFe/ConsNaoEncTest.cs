@@ -1,4 +1,5 @@
-﻿using Unimake.Business.DFe.Servicos;
+﻿using System.Xml;
+using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Servicos.MDFe;
 using Unimake.Business.DFe.Xml.MDFe;
 using Xunit;
@@ -135,5 +136,49 @@ namespace Unimake.DFe.Test.MDFe
             Assert.True(consNaoEnc.Result.CStat.Equals(203) || consNaoEnc.Result.CStat.Equals(112) || consNaoEnc.Result.CStat.Equals(111), "Serviço não está em operação - <xMotivo>" + consNaoEnc.Result.XMotivo + "<xMotivo>");
         }
 
+        ///<summary>
+        ///Consulta MDFe não encerrado usando XML completo ou CPF
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "MDFe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
+        public void ConsultarMDFeNaoEncerradoCNPJ(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                CodigoUF = (int)ufBrasil,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente
+            };
+
+            var consNaoEnc = new ConsNaoEnc("06117473000150", configuracao);
+            consNaoEnc.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(consNaoEnc.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consNaoEnc.Result.CStat.Equals(203) ||
+                        consNaoEnc.Result.CStat.Equals(112) ||
+                        consNaoEnc.Result.CStat.Equals(111),
+                        "Serviço não está em operação - <xMotivo>" + consNaoEnc.Result.XMotivo + "<xMotivo>");
+        }
+
+        [Fact]
+        [Trait("DFe", "MDFe")]
+        public void ConsultarMDFeNaoEncerradoCNPJInvalido()
+        {
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.MDFe,
+                CodigoUF = (int)UFBrasil.PR,
+                TipoAmbiente = TipoAmbiente.Producao,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+            // CNPJ com formato inválido (menos de 14 caracteres)
+            Assert.Throws<XmlException>(() => new ConsNaoEnc("123456", configuracao));
+        }
     }
 }
