@@ -90,21 +90,45 @@ namespace Unimake.Business.DFe.Servicos.MDFe
 
 
         /// <summary>
-        /// Construtor
+        /// Construtor tanto para XML completo quanto para API
         /// </summary>
-        /// <param name="conteudoXML">String do XML a ser enviado</param>
+        /// <param name="conteudo">String do XML a ser enviado ou CNPJ do emitente</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
-        public ConsNaoEnc(string conteudoXML, Configuracao configuracao) : this()
+        public ConsNaoEnc(string conteudo, Configuracao configuracao) : this()
         {
+            if (string.IsNullOrEmpty(conteudo))
+            {
+                throw new ArgumentNullException(nameof(conteudo));
+            }
+
             if (configuracao is null)
             {
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            var doc = new XmlDocument();
-            doc.LoadXml(conteudoXML);
+            if (conteudo.Length == 14) //Stirng é o CNPJ, utilizado pela API
+            {
+                var xml = new ConsMDFeNaoEnc
+                {
+                    Versao = "3.00",
+                    TpAmb = configuracao.TipoAmbiente,
+                    XServ = "CONSULTAR NÃO ENCERRADOS",
+                    CNPJ = conteudo
+                };
 
-            Inicializar(doc, configuracao);
+                var doc = new XmlDocument();
+                doc.LoadXml(xml.GerarXML().OuterXml);
+
+                Inicializar(doc, configuracao);
+
+            }
+            else //String é um XML completo
+            {
+                var doc = new XmlDocument();
+                doc.LoadXml(conteudo);
+
+                Inicializar(doc, configuracao);
+            }
         }
 
         #endregion Public Constructors
