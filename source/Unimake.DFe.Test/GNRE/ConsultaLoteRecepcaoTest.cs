@@ -162,4 +162,4 @@ namespace Unimake.DFe.Test.GNRE
         }
     }
 }
-}
+

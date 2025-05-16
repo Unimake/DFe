@@ -41,5 +41,28 @@ namespace Unimake.DFe.Test.GNRE
             Assert.True(consultaResultadoLoteConsulta.Result != null);
             Assert.True(consultaResultadoLoteConsulta.Result.Ambiente.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
         }
+
+        /// <summary>
+        /// Teste construtor simplificado para API
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(TipoAmbiente.Homologacao)]
+        [InlineData(TipoAmbiente.Producao)]
+        public void ConsultaResultadoLoteConsultaConstrutor(TipoAmbiente tipoAmbiente){
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente
+            };
+
+            var consultaResultadoLoteConsulta = new ConsultaResultadoLoteConsulta("12345678901234567890", configuracao);
+            consultaResultadoLoteConsulta.Executar();
+
+            Assert.NotNull(consultaResultadoLoteConsulta.Result);
+            Assert.Equal(tipoAmbiente, consultaResultadoLoteConsulta.Result.Ambiente);
+        }
     }
 }

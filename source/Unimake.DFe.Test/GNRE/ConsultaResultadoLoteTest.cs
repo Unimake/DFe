@@ -43,5 +43,37 @@ namespace Unimake.DFe.Test.GNRE
             Assert.True(consultaResultadoLote.Result.Ambiente.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("100") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("102") || consultaResultadoLote.Result.SituacaoProcess.Codigo.Equals("602"), "Código retornado não era esperado: " + consultaResultadoLote.Result.SituacaoProcess.Codigo + "-" + consultaResultadoLote.Result.SituacaoProcess.Descricao);
         }
+
+        ///<summary>
+        ///Teste serviço consulta de lote GNRE construtor simplificado
+        /// </summary>
+        [Theory]
+        [Trait("DFe", "GNRE")]
+        [InlineData(TipoAmbiente.Producao)]
+        [InlineData(TipoAmbiente.Homologacao)]
+        public void ConsultarResultadoLoteConstrutor(TipoAmbiente tipoAmbiente)
+        {            
+            if (PropConfig.CertificadoDigital == null)
+            {
+                return;
+            }
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.GNRE,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+                TipoAmbiente = tipoAmbiente,
+                Servico = Servico.GNREConsultaResultadoLote,
+                CodigoUF = 41, // Adicione o código UF como no primeiro teste
+                UsaCertificadoDigital = PropConfig.CertificadoDigital != null, 
+            };
+
+            var consultaResultadoLote = new ConsultaResultadoLote("12345678901234567890", configuracao);
+            consultaResultadoLote.Executar();
+
+            Assert.NotNull(consultaResultadoLote.Result);
+            Assert.Equal(tipoAmbiente, consultaResultadoLote.Result.Ambiente);
+        }
     }
 }
