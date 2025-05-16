@@ -181,7 +181,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((AutXML?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return AutXML[index];
         }
@@ -388,6 +388,12 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         [XmlElement("xJust")]
         public string XJust { get; set; }
 
+        /// <summary>
+        /// Grupo de compra governamental
+        /// </summary>
+        [XmlElement("gCompraGov")]
+        public GCompraGov GCompraGov { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeDhContField() => DhCont > DateTime.MinValue;
@@ -398,6 +404,15 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeSimp.GCompraGov")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GCompraGov : CTe.GCompraGov { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -454,7 +469,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((ObsCont?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ObsCont[index];
         }
@@ -488,7 +503,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((ObsFisco?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ObsFisco[index];
         }
@@ -651,7 +666,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((Comp?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Comp[index];
         }
@@ -685,7 +700,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((InfNFe?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfNFe[index];
         }
@@ -719,7 +734,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((InfDocAnt?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfDocAnt[index];
         }
@@ -790,7 +805,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((InfUnidCarga?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfUnidCarga[index];
         }
@@ -824,7 +839,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((InfUnidTransp?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfUnidTransp[index];
         }
@@ -929,7 +944,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
             if ((InfNFeTranspParcial?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfNFeTranspParcial[index];
         }

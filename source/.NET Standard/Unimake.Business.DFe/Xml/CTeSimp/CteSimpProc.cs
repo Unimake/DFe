@@ -18,7 +18,7 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("cteProc", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
+    [XmlRoot("cteSimpProc", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
     public class CteSimpProc : XMLBase
     {
         [XmlAttribute(AttributeName = "versao", DataType = "token")]

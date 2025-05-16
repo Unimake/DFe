@@ -586,6 +586,11 @@
 					<vTar>1.000000</vTar>
 					<dIni>2021-11-01</dIni>
 					<dFim>2021-11-01</dFim>
+					<classDuto>1</classDuto>
+					<tpContratacao>0</tpContratacao>
+					<codPontoEntrada>123456</codPontoEntrada>
+					<codPontoSaida>123456</codPontoSaida>
+					<nContrato>123456</nContrato>
 				</duto>
 			</infModal>
 			<veicNovos>

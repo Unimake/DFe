@@ -184,7 +184,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((AutXML?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return AutXML[index];
         }
@@ -419,6 +419,12 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("xJust")]
         public string XJust { get; set; }
 
+        /// <summary>
+        /// Grupo de compra governamental
+        /// </summary>
+        [XmlElement("gCompraGov")]
+        public GCompraGov GCompraGov { get; set; }
+
 #if INTEROP
 
         /// <summary>
@@ -445,7 +451,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((InfPercurso?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfPercurso[index];
         }
@@ -477,6 +483,15 @@ namespace Unimake.Business.DFe.Xml.CTeOS
 
         #endregion
     }
+
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.CTeOS.GCompraGov")]
+    [ComVisible(true)]
+#endif
+    [Serializable()]
+    [XmlType(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
+    public class GCompraGov : CTe.GCompraGov { }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]
@@ -544,7 +559,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((ObsCont?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ObsCont[index];
         }
@@ -578,7 +593,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((ObsFisco?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return ObsFisco[index];
         }
@@ -891,7 +906,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((Comp?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Comp[index];
         }
@@ -959,11 +974,33 @@ namespace Unimake.Business.DFe.Xml.CTeOS
         [XmlElement("infTribFed")]
         public InfTribFed InfTribFed { get; set; }
 
+        /// <summary>
+        /// Grupo de informações da Tributação IBS/CBS
+        /// </summary>
+        [XmlElement("IBSCBS")]
+        public CTe.IBSCBS IBSCBS { get; set; }
+
+        /// <summary>
+        /// Valor total do documento fiscal
+        /// </summary>
+        [XmlIgnore]
+        public double VTotDFe { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade "VTotDFe" para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTotDFe")]
+        public string VTotDFeField
+        {
+            get => VTotDFe.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTotDFe = Utility.Converter.ToDouble(value);
+        }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeVTotTribField() => VTotTrib > 0;
-
         public bool ShouldSerializeInfAdFisco() => !string.IsNullOrWhiteSpace(InfAdFisco);
+        public bool ShouldSerializeVTotDFeField() => VTotDFe > 0;
 
         #endregion
     }
@@ -1545,7 +1582,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((InfDocRef?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfDocRef[index];
         }
@@ -1579,7 +1616,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((Seg?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Seg[index];
         }
@@ -1613,7 +1650,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((InfGTVe?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return InfGTVe[index];
         }
@@ -1892,7 +1929,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((Dup?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Dup[index];
         }
@@ -1946,7 +1983,7 @@ namespace Unimake.Business.DFe.Xml.CTeOS
             if ((Comp?.Count ?? 0) == 0)
             {
                 return default;
-            };
+            }
 
             return Comp[index];
         }

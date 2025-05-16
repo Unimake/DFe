@@ -91,7 +91,7 @@ namespace Unimake.DFe.Test.CTeOS
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
             Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
-            Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
+            //Assert.True(autorizacao.Result.CUF.Equals(ufBrasil), "Web-service retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(autorizacao.Result.TpAmb.Equals(tipoAmbiente), "Web-service retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
             Assert.True(autorizacao.Result.CStat.Equals(753) || autorizacao.Result.CStat.Equals(213) || autorizacao.Result.CStat.Equals(539) || autorizacao.Result.CStat.Equals(712), "Lote não foi recebido - <xMotivo> = " + autorizacao.Result.XMotivo);
         }

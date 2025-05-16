@@ -76,7 +76,7 @@ namespace Unimake.DFe.Test.CTe
         /// <summary>
         /// Testar a serialização e desserialização do XML CTeOS
         /// </summary>
-        [Theory]
+        [Theory]        
         [Trait("DFe", "CTeOS")]
         [InlineData(@"..\..\..\CTe\Resources\CTeOS_ModalRodoOS.xml")]
         [InlineData(@"..\..\..\CTe\Resources\4_00_CTeOS_ModalRodoOS.xml")]

@@ -594,6 +594,7 @@
 		<None Remove="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cte_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />
@@ -1825,6 +1826,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\cte_v4.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancCECTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancCTe_v4.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\CTe\evCancIECTe_v4.00.xsd" />

@@ -37,6 +37,10 @@
 			</toma3>
 			<dhCont>2020-12-04T08:00:29-03:00</dhCont>
 			<xJust>xJust_________1</xJust>
+			<gCompraGov>
+				<tpEnteGov>1</tpEnteGov>
+				<pRedutor>1.0000</pRedutor>
+			</gCompraGov>		
 		</ide>
 		<compl>
 			<xCaracAd>xCaracAd1</xCaracAd>
@@ -218,6 +222,81 @@
 				<vICMSUFFim>0.00</vICMSUFFim>
 				<vICMSUFIni>0.00</vICMSUFIni>
 			</ICMSUFFim>
+			<IBSCBS>
+				<CST>01</CST>
+				<cClassTrib>12345678</cClassTrib>
+				<gIBSCBS>
+					<vBC>1000.00</vBC>
+					<gIBSUF>
+						<pIBSUF>1.5000</pIBSUF>
+						<gDif>
+							<pDif>0.5000</pDif>
+							<vDif>5.00</vDif>
+						</gDif>
+						<gDevTrib>
+							<vDevTrib>2.00</vDevTrib>
+						</gDevTrib>
+						<gRed>
+							<pRedAliq>10.0000</pRedAliq>
+							<pAliqEfet>1.3500</pAliqEfet>
+						</gRed>
+						<vIBSUF>15.00</vIBSUF>
+					</gIBSUF>
+					<gIBSMun>
+						<pIBSMun>0.7500</pIBSMun>
+						<gDif>
+							<pDif>0.2500</pDif>
+							<vDif>2.50</vDif>
+						</gDif>
+						<gDevTrib>
+							<vDevTrib>1.00</vDevTrib>
+						</gDevTrib>
+						<gRed>
+							<pRedAliq>5.0000</pRedAliq>
+							<pAliqEfet>0.7125</pAliqEfet>
+						</gRed>
+						<vIBSMun>7.50</vIBSMun>
+					</gIBSMun>
+					<gCBS>
+						<pCBS>2.5000</pCBS>
+						<gDif>
+							<pDif>0.3000</pDif>
+							<vDif>3.00</vDif>
+						</gDif>
+						<gDevTrib>
+							<vDevTrib>1.50</vDevTrib>
+						</gDevTrib>
+						<gRed>
+							<pRedAliq>8.0000</pRedAliq>
+							<pAliqEfet>2.3000</pAliqEfet>
+						</gRed>
+						<vCBS>25.00</vCBS>
+					</gCBS>
+					<gTribRegular>
+						<CSTReg>04</CSTReg>
+						<cClassTribReg>87654321</cClassTribReg>
+						<pAliqEfetRegIBSUF>1.6000</pAliqEfetRegIBSUF>
+						<vTribRegIBSUF>16.00</vTribRegIBSUF>
+						<pAliqEfetRegIBSMun>0.8000</pAliqEfetRegIBSMun>
+						<vTribRegIBSMun>8.00</vTribRegIBSMun>
+						<pAliqEfetRegCBS>2.7000</pAliqEfetRegCBS>
+						<vTribRegCBS>27.00</vTribRegCBS>
+					</gTribRegular>
+					<gIBSCredPres>
+						<cCredPres>1111</cCredPres>
+						<pCredPres>5.0000</pCredPres>
+						<vCredPres>50.00</vCredPres>
+						<vCredPresCondSus>10.00</vCredPresCondSus>
+					</gIBSCredPres>
+					<GCBSCredPres>
+						<cCredPres>2222</cCredPres>
+						<pCredPres>3.0000</pCredPres>
+						<vCredPres>30.00</vCredPres>
+						<vCredPresCondSus>5.00</vCredPresCondSus>
+					</GCBSCredPres>
+				</gIBSCBS>
+			</IBSCBS>
+			<vTotDFe>1.00</vTotDFe>		
 		</imp>
 		<infCTeNorm>
 			<infCarga>
@@ -422,6 +501,9 @@
 						<qtdRat>9.00</qtdRat>
 					</infUnidCarga>
 				</infNF>
+				<infDCe>
+					<chave>12345678901234567890123456789012345678901234</chave>
+				</infDCe>
 			</infDoc>
 			<docAnt>
 				<emiDocAnt>

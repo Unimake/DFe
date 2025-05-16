@@ -1708,13 +1708,13 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoEnteGovernamental
     {
         /// <summary>
-        /// 0 - União
+        /// 1 - União
         /// </summary>
         [XmlEnum("1")]
         Uniao = 1,
 
         /// <summary>
-        /// 1 - Estado
+        /// 2 - Estado
         /// </summary>
         [XmlEnum("2")]
         Estado = 2,
@@ -4257,16 +4257,16 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoCTeSimp
     {
         /// <summary>
-        /// 5 - CTe Simplificado
+        /// 4 - CTe Simplificado
         /// </summary>
-        [XmlEnum("5")]
-        CTeSimplificado = 5,
+        [XmlEnum("4")]
+        CTeSimplificado = 4,
 
         /// <summary>
-        /// 6 - Substituição CTe Simplificado
+        /// 5 - Substituição CTe Simplificado
         /// </summary>
-        [XmlEnum("6")]
-        SubstituicaoCTeSimplificado = 6
+        [XmlEnum("5")]
+        SubstituicaoCTeSimplificado = 5
     }
 
     #endregion
@@ -4550,6 +4550,8 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion
 
+    #region TipoPrestacaoCTe
+
     /// <summary>
     /// Indica se a prestação é total ou parcial em relação as notas o documento anterior
     /// </summary>
@@ -4567,6 +4569,64 @@ namespace Unimake.Business.DFe.Servicos
         [XmlEnum("2")]
         Parcial = 2
     }
+
+    #endregion
+
+    #region ClassificacaoDutoviarioCTe
+
+    /// <summary>
+    /// Classiciação Dutoviário do CTe
+    /// </summary>
+    public enum ClassificacaoDutoviarioCTe
+    {
+        /// <summary>
+        /// 1 - Gasoduto
+        /// </summary>
+        [XmlEnum("1")]
+        Gasoduto = 1,
+
+        /// <summary>
+        /// 2 - Mineroduto
+        /// </summary>
+        [XmlEnum("2")]
+        Mineroduto = 2,
+
+        /// <summary>
+        /// 3 - Mineroduto
+        /// </summary>
+        [XmlEnum("3")] 
+        Oleoduto = 3
+    }
+
+    #endregion
+
+    #region TipoContratacaoTransporteCTe
+
+    /// <summary>
+    /// Tipo de Contratação do Serviço de Transporte (CTe)
+    /// </summary>
+    public enum TipoContratacaoTransporteCTe
+    {
+        /// <summary>
+        /// 0 - Ponto a Ponto
+        /// </summary>
+        [XmlEnum("0")]
+        PontoAPonto = 0,
+
+        /// <summary>
+        /// 1 - Capacidade de Entrada
+        /// </summary>
+        [XmlEnum("1")]
+        CapacidadeEntrada = 1,
+
+        /// <summary>
+        /// 2 - Capacidade de Saída
+        /// </summary>
+        [XmlEnum("2")]
+        CapacidadeSaida = 2
+    }
+
+    #endregion
 
     #region ModeloNF
 
