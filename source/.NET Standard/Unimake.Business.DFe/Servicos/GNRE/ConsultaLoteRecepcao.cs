@@ -164,7 +164,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         {
             if(string.IsNullOrEmpty(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(ufBrasil);
+                throw new ArgumentNullException(nameof(ufBrasil));
             }
 
             if (string.IsNullOrWhiteSpace(cnpj))

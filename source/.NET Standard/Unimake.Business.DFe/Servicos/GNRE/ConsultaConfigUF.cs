@@ -131,15 +131,15 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         ///<summary>
         ///Construtor simplificado API 3 parâmetros
         /// </summary>
-        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
         /// <param name="receita">Código da receita</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(UFBrasil uf, TipoAmbiente tipoAmbiente, int receita, Configuracao configuracao) : this()
+        public ConsultaConfigUF(int ufBrasil, TipoAmbiente tipoAmbiente, int receita, Configuracao configuracao) : this()
         {
-            if (string.IsNullOrEmpty(uf.ToString()))
+            if (string.IsNullOrEmpty(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(uf));
+                throw new ArgumentNullException(nameof(ufBrasil));
             }
 
             if (string.IsNullOrEmpty(tipoAmbiente.ToString()))
@@ -160,7 +160,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsultaConfigUf
             {
                 Ambiente = tipoAmbiente,
-                UF = uf,
+                UF = (UFBrasil)ufBrasil,
                 Receita = new Receita
                 {
                     Courier = SimNaoLetra.Nao,
@@ -178,16 +178,16 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         ///<summary>
         ///Construtor simplificado API 4 parâmetros
         /// </summary>
-        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
         /// <param name="receita">Código da receita</param>
         /// <param name="courier">Indicativo de courier</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(UFBrasil uf, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier, Configuracao configuracao) : this()
+        public ConsultaConfigUF(int ufBrasil, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier, Configuracao configuracao) : this()
         {
-            if (string.IsNullOrEmpty(uf.ToString()))
+            if (string.IsNullOrEmpty(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(uf));
+                throw new ArgumentNullException(nameof(ufBrasil));
             }
 
             if (string.IsNullOrEmpty(tipoAmbiente.ToString()))
@@ -213,7 +213,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsultaConfigUf
             {
                 Ambiente = tipoAmbiente,
-                UF = uf,
+                UF = (UFBrasil)ufBrasil,
                 Receita = new Receita
                 {
                     Courier = courier,
