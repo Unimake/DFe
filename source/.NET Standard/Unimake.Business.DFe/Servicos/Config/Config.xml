@@ -1829,4 +1829,10 @@
 		<ArqConfig>PauliniaSP.xml</ArqConfig>
 		<PadraoNFSe>GISSONLINE</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4202107">
+		<Nome>Barra Velha - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>BarraVelhaSC.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

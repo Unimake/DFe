@@ -314,6 +314,7 @@
 		<None Remove="Servicos\Config\NFSe\BarraDeSaoFranciscoES.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraDoGarcasMT.xml" />
 		<None Remove="Servicos\Config\NFSe\BarraMansaRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 		<None Remove="Servicos\Config\NFSe\BarreirasBA.xml" />
 		<None Remove="Servicos\Config\NFSe\BarretosSP.xml" />
 		<None Remove="Servicos\Config\NFSe\BarueriSP.xml" />
@@ -1262,6 +1263,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
