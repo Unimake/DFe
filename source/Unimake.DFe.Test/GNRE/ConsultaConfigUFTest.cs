@@ -143,7 +143,7 @@ namespace Unimake.DFe.Test.GNRE
         [Trait("DFe", "GNRE")]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
-        public void ConsultaConfigUFConstrutor2Param(UFBrasil uf, TipoAmbiente tipoAmbiente)
+        public void ConsultaConfigUFConstrutor2Param(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
         {
             var configuracao = new Configuracao
             {
@@ -152,7 +152,7 @@ namespace Unimake.DFe.Test.GNRE
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaConfigUF = new ConsultaConfigUF(uf, tipoAmbiente, configuracao);
+            var consultaConfigUF = new ConsultaConfigUF((int)ufBrasil, tipoAmbiente, configuracao);
             consultaConfigUF.Executar();
 
             Assert.NotNull(consultaConfigUF.Result);
@@ -168,7 +168,7 @@ namespace Unimake.DFe.Test.GNRE
         [Trait("DFe", "GNRE")]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 100013)]
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao, 100021)]
-        public void ConsultaConfigUFConstrutor3Param(UFBrasil uf, TipoAmbiente tipoAmbiente, int receita)
+        public void ConsultaConfigUFConstrutor3Param(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int receita)
         {
             var configuracao = new Configuracao
             {
@@ -177,7 +177,7 @@ namespace Unimake.DFe.Test.GNRE
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaConfigUF = new ConsultaConfigUF(uf, tipoAmbiente, receita, configuracao);
+            var consultaConfigUF = new ConsultaConfigUF((int)ufBrasil, tipoAmbiente, receita, configuracao);
             consultaConfigUF.Executar();
 
             Assert.NotNull(consultaConfigUF.Result);
@@ -192,7 +192,7 @@ namespace Unimake.DFe.Test.GNRE
         [Trait("DFe", "GNRE")]
         [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 100013, SimNaoLetra.Sim)]
         [InlineData(UFBrasil.SP, TipoAmbiente.Producao, 100021, SimNaoLetra.Nao)]
-        public void ConsultaConfigUFConstrutor4Param(UFBrasil uf, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier)
+        public void ConsultaConfigUFConstrutor4Param(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier)
         {
             var configuracao = new Configuracao
             {
@@ -201,7 +201,7 @@ namespace Unimake.DFe.Test.GNRE
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaConfigUF = new ConsultaConfigUF(uf, tipoAmbiente, receita, courier, configuracao);
+            var consultaConfigUF = new ConsultaConfigUF((int)ufBrasil, tipoAmbiente, receita, courier, configuracao);
             consultaConfigUF.Executar();
             
             Assert.NotNull(consultaConfigUF.Result);

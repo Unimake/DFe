@@ -76,7 +76,7 @@ namespace Unimake.DFe.Test.GNRE
             };
 
             var consultaLoteRecepcao = new ConsultaLoteRecepcao(
-                UFBrasil.PR,
+                (int)UFBrasil.PR,
                 "07638784000127",
                 "12345678911234567891123456789112345678914444",
                 configuracao);
@@ -108,7 +108,7 @@ namespace Unimake.DFe.Test.GNRE
             };
 
             var consultaLoteRecepcao = new ConsultaLoteRecepcao(
-                UFBrasil.PR,
+                (int)UFBrasil.PR,
                 "07638784000127",
                 "1234567891123456",
                 TipoConsultaGNRE.ConsultaPorNumeroControleGNRE,
@@ -141,7 +141,7 @@ namespace Unimake.DFe.Test.GNRE
             };
 
             var consultaLoteRecepcao = new ConsultaLoteRecepcao(
-                UFBrasil.PR,
+                (int)UFBrasil.PR,
                 "07638784000127",
                 "12345678911234567891123456789112345678914444",
                 "1234567891123456",
