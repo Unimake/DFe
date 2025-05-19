@@ -37,6 +37,14 @@ namespace Unimake.Business.DFe.Servicos.NFCe
         /// </summary>
         public ConsultaProtocolo() : base() { }
 
+        ///<summary>
+        ///Construtor simplificado para uso de API
+        /// </summary>
+        /// <param name="chaveNFe">Chave de acesso NFe</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        /// <param name="configuracao">Config para conexão e envio de XML</param>
+        public ConsultaProtocolo(string chaveNFe, TipoAmbiente tipoAmbiente, Configuracao configuracao) : base(chaveNFe, tipoAmbiente, configuracao) { }
+
         #endregion Public Constructors
 
         /// <summary>
