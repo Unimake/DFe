@@ -341,6 +341,7 @@
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
 		<None Remove="Servicos\Config\NFSe\CamacariBA.xml" />
 		<None Remove="Servicos\Config\NFSe\CamboriuSC.xml" />
+		<None Remove="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 		<None Remove="Servicos\Config\NFSe\CampinasSP.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoBomRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CampoGrandeMS.xml" />
@@ -1265,6 +1266,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CuritibaPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ImperatrizMA.xml" />

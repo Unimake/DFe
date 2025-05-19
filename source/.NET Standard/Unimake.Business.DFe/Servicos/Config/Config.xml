@@ -1835,4 +1835,10 @@
 		<ArqConfig>BarraVelhaSC.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4104006">
+		<Nome>Campina Grande do Sul - PR</Nome>
+		<UF>PR</UF>
+		<ArqConfig>CampinaGrandeDoSulPR.xml</ArqConfig>
+		<PadraoNFSe>ELOTECH</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
