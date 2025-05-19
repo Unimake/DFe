@@ -127,5 +127,29 @@ namespace Unimake.DFe.Test.NFCe
             Assert.True(consultaProtocolo.Result.ChNFe.Equals(xml.ChNFe), "Webservice retornou uma chave da NFCe diferente da enviada na consulta.");
         }
 
+        [Theory]
+        [Trait("DFe", "NFCe")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        public void ConsultaProtocoloConstrutor(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            var chave = "41345678901324567980123456789012345678901234";
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCe,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital
+            };
+
+
+            var consultaProtocolo = new ConsultaProtocolo(chave, tipoAmbiente, configuracao);
+            consultaProtocolo.Executar();
+
+            Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
+            Assert.True(configuracao.TipoAmbiente.Equals(tipoAmbiente), "Tipo de ambiente definido nas configurações diferente de " + tipoAmbiente.ToString());
+            Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
+            Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
+            Assert.True(consultaProtocolo.Result.ChNFe.Equals(chave), "Webservice retornou uma chave da NFe diferente da enviada na consulta.");
+        }
+
     }
 }
