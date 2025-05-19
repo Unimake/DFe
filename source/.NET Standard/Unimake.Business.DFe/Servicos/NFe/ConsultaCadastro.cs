@@ -112,6 +112,45 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// </summary>
         public ConsultaCadastro() : base() { }
 
+        ///<summary>
+        ///Construtor simplificado para uso de API
+        /// </summary>
+        /// <param name="ufBrasil">UF do contribuinte</param>
+        /// <param name="cnpj">CNPJ do contribuinte</param>
+        /// <param name="configuracao">Config para conexão e envio do XML</param>
+        public ConsultaCadastro(int ufBrasil, string cnpj, Configuracao configuracao) : this()
+        {
+            if (ufBrasil.IsNullOrEmpty())
+            {
+                throw new ArgumentNullException(nameof(ufBrasil));
+            }
+
+            if (cnpj.IsNullOrEmpty())
+            {
+                throw new ArgumentNullException(nameof(cnpj));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new ConsCad
+            {
+                Versao = "2.00",
+                InfCons = new InfCons
+                {
+                    CNPJ = cnpj,
+                    UF = (UFBrasil)ufBrasil
+                }
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
+
         #endregion Public Constructors
 
         #region Public Methods
@@ -197,45 +236,6 @@ namespace Unimake.Business.DFe.Servicos.NFe
             {
                 ThrowHelper.Instance.Throw(ex);
             }
-        }
-
-        ///<summary>
-        ///Construtor simplificado para uso de API
-        /// </summary>
-        /// <param name="ufBrasil">UF do contribuinte</param>
-        /// <param name="cnpj">CNPJ do contribuinte</param>
-        /// <param name="configuracao">Config para conexão e envio do XML</param>
-        public ConsultaCadastro(int ufBrasil, string cnpj, Configuracao configuracao) : this()
-        {
-            if (ufBrasil.IsNullOrEmpty())
-            {
-                throw new ArgumentNullException(nameof(ufBrasil));
-            }
-
-            if (cnpj.IsNullOrEmpty())
-            {
-                throw new ArgumentNullException(nameof(cnpj));
-            }
-
-            if(configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
-            var xml = new ConsCad
-            {
-                Versao = "2.00",
-                InfCons = new InfCons
-                {
-                    CNPJ = cnpj,
-                    UF = (UFBrasil)ufBrasil
-                }
-            };
-
-            var doc = new XmlDocument();
-            doc.LoadXml(xml?.GerarXML().OuterXml);
-
-            Inicializar(doc, configuracao);
         }
 
         #endregion Public Methods

@@ -35,6 +35,14 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public ConsultaCadastro(string conteudoXML, Configuracao configuracao) : base(conteudoXML, configuracao) { }
 
+        ///<summary>
+        ///Construtor simplificado para uso de API
+        /// </summary>
+        /// <param name="ufBrasil">UF do contribuinte</param>
+        /// <param name="cnpj">CNPJ do contribuinte</param>
+        /// <param name="configuracao">Config para conexão e envio do XML</param>
+        public ConsultaCadastro(int ufBrasil, string cnpj, Configuracao configuracao) : base(ufBrasil, cnpj, configuracao) { }
+
         /// <summary>
         /// Validar o XML
         /// </summary>
@@ -49,12 +57,6 @@ namespace Unimake.Business.DFe.Servicos.CTeOS
             }
         }
 
-        ///<summary>
-        ///Construtor simplificado para uso de API
-        /// </summary>
-        /// <param name="ufBrasil">UF do contribuinte</param>
-        /// <param name="cnpj">CNPJ do contribuinte</param>
-        /// <param name="configuracao">Config para conexão e envio do XML</param>
-        public ConsultaCadastro(int ufBrasil, string cnpj, Configuracao configuracao) : base(ufBrasil, cnpj, configuracao) { }
+        
     }
 }

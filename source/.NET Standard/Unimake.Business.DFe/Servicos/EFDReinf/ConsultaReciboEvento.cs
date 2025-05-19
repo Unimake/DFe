@@ -85,59 +85,6 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
             Inicializar(reinfConsulta?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfConsulta)), configuracao);
         }
 
-        #endregion Public Constructors
-
-        #region Public Methods
-
-#if INTEROP
-
-        /// <summary>
-        /// Executa o serviço: Assina o XML, valida e envia para o web-service
-        /// </summary>
-        /// <param name="reinfConsulta">Objeto contendo o XML a ser enviado</param>
-        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
-        [ComVisible(true)]
-        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ReinfConsulta reinfConsulta, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
-        {
-            try
-            {
-                if (configuracao is null)
-                {
-                    throw new ArgumentNullException(nameof(configuracao));
-                }
-
-                Inicializar(reinfConsulta?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfConsulta)), configuracao);
-                Executar();
-            }
-            catch (ValidarXMLException ex)
-            {
-                Exceptions.ThrowHelper.Instance.Throw(ex);
-            }
-            catch (CertificadoDigitalException ex)
-            {
-                ThrowHelper.Instance.Throw(ex);
-            }
-            catch (Exception ex)
-            {
-                ThrowHelper.Instance.Throw(ex);
-            }
-        }
-
-#endif
-
-        /// <inheritdoc />
-        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
-        {
-            try
-            {
-                throw new Exception("Não existe XML de distribuição para consulta status do serviço.");
-            }
-            catch (Exception ex)
-            {
-                ThrowHelper.Instance.Throw(ex);
-            }
-        }
-
         ///<summary>
         ///Construtor simplificado para API
         /// </summary>
@@ -193,6 +140,61 @@ namespace Unimake.Business.DFe.Servicos.EFDReinf
 
             Inicializar(doc, configuracao);
         }
+
+        #endregion Public Constructors
+
+        #region Public Methods
+
+#if INTEROP
+
+        /// <summary>
+        /// Executa o serviço: Assina o XML, valida e envia para o web-service
+        /// </summary>
+        /// <param name="reinfConsulta">Objeto contendo o XML a ser enviado</param>
+        /// <param name="configuracao">Configurações a serem utilizadas na conexão e envio do XML para o web-service</param>
+        [ComVisible(true)]
+        public void Executar([MarshalAs(UnmanagedType.IUnknown)] ReinfConsulta reinfConsulta, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
+        {
+            try
+            {
+                if (configuracao is null)
+                {
+                    throw new ArgumentNullException(nameof(configuracao));
+                }
+
+                Inicializar(reinfConsulta?.GerarXML() ?? throw new ArgumentNullException(nameof(reinfConsulta)), configuracao);
+                Executar();
+            }
+            catch (ValidarXMLException ex)
+            {
+                Exceptions.ThrowHelper.Instance.Throw(ex);
+            }
+            catch (CertificadoDigitalException ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+#endif
+
+        /// <inheritdoc />
+        public override void GravarXmlDistribuicao(string pasta, string nomeArquivo, string conteudoXML)
+        {
+            try
+            {
+                throw new Exception("Não existe XML de distribuição para consulta status do serviço.");
+            }
+            catch (Exception ex)
+            {
+                ThrowHelper.Instance.Throw(ex);
+            }
+        }
+
+        
         #endregion Public Methods
 
     }
