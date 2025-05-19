@@ -206,6 +206,9 @@ namespace Unimake.Business.DFe.Xml.ESocial
         public IndApurIR? IndApurIR { get; set; }
 #endif
 
+        [XmlElement("descFolha")]
+        public DescFolhaItensRemun DescFolha { get; set; }
+
         #region ShouldSerialize
 
         public bool ShouldSerializeQtdRubrField() => QtdRubr > 0;
@@ -222,4 +225,13 @@ namespace Unimake.Business.DFe.Xml.ESocial
 
     #endregion ItensRemun
 
+    /// <summary>
+    /// Informações de desconto do empréstimo em folha
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.ESocial.DescFolhaItensRemun")]
+    [ComVisible(true)]
+#endif
+    public class DescFolhaItensRemun : DescFolha { }
 }
