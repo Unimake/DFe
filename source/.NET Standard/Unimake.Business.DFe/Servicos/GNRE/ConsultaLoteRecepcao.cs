@@ -95,15 +95,15 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <summary>
         /// Construtor simplificado para consulta de lote da GNRE por código de barras
         /// </summary>
-        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="cnpj">CNPJ do emitente</param>
         /// <param name="codBarras">Código de barras</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
-        public ConsultaLoteRecepcao(UFBrasil uf, string cnpj, string codBarras, Configuracao configuracao) : this()
+        public ConsultaLoteRecepcao(int ufBrasil, string cnpj, string codBarras, Configuracao configuracao) : this()
         {
-            if (string.IsNullOrWhiteSpace(uf.ToString()))
+            if (string.IsNullOrWhiteSpace(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(uf));
+                throw new ArgumentNullException(nameof(ufBrasil));
             }
             
             if (string.IsNullOrWhiteSpace(cnpj))
@@ -128,7 +128,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 {
                     new Consulta
                     {
-                        Uf = uf,
+                        Uf = (UFBrasil)ufBrasil,
                         EmitenteId = new EmitenteId
                         {
                             CNPJ = cnpj,
@@ -155,16 +155,16 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <summary>
         /// Construtor simplificado para consulta de lote da GNRE por número de controle
         /// </summary>
-        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="cnpj">CNPJ do emitente</param>
         /// <param name="numControle">Número de controle</param>
         /// <param name="tipoConsulta">Tipo de consulta</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
-        public ConsultaLoteRecepcao(UFBrasil uf, string cnpj, string numControle, TipoConsultaGNRE tipoConsulta, Configuracao configuracao) : this()
+        public ConsultaLoteRecepcao(int ufBrasil, string cnpj, string numControle, TipoConsultaGNRE tipoConsulta, Configuracao configuracao) : this()
         {
-            if(string.IsNullOrEmpty(uf.ToString()))
+            if(string.IsNullOrEmpty(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(uf));
+                throw new ArgumentNullException(nameof(ufBrasil);
             }
 
             if (string.IsNullOrWhiteSpace(cnpj))
@@ -199,7 +199,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 {
                     new Consulta
                     {
-                        Uf = uf,
+                        Uf = (UFBrasil) ufBrasil,
                         EmitenteId = new EmitenteId
                         {
                             CNPJ = cnpj,
@@ -219,7 +219,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <summary>
         /// Construtor completo para consulta de lote da GNRE
         /// </summary>
-        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="cnpj">CNPJ do emitente</param>
         /// <param name="codBarras">Código de barras</param>
         /// <param name="numControle">Número de controle</param>
@@ -229,7 +229,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="tipoConsulta">Tipo de consulta</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
         public ConsultaLoteRecepcao(
-            UFBrasil uf,
+            int ufBrasil,
             string cnpj,
             string codBarras,
             string numControle,
@@ -239,9 +239,9 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             TipoConsultaGNRE tipoConsulta,
             Configuracao configuracao) : this()
         {
-            if (string.IsNullOrWhiteSpace(uf.ToString()))
+            if (string.IsNullOrWhiteSpace(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(uf));
+                throw new ArgumentNullException(nameof(ufBrasil));
             }
 
             if (string.IsNullOrWhiteSpace(cnpj))
@@ -291,7 +291,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 {
                     new Consulta
                     {
-                        Uf = uf,
+                        Uf = (UFBrasil) ufBrasil,
                         EmitenteId = new EmitenteId
                         {
                             CNPJ = cnpj,

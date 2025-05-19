@@ -95,14 +95,14 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         ///<summary>
         ///Construtor simplificado API 2 parâmetros
         /// </summary>
-        /// <param name="uf">Unidade Federativa</param>
+        /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(UFBrasil uf, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
+        public ConsultaConfigUF(int ufBrasil, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
         {
-            if(string.IsNullOrEmpty(uf.ToString()))
+            if(string.IsNullOrEmpty(ufBrasil.ToString()))
             {
-                throw new ArgumentNullException(nameof(uf));
+                throw new ArgumentNullException(nameof(ufBrasil));
             }
 
             if(string.IsNullOrEmpty(tipoAmbiente.ToString()))
@@ -118,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsultaConfigUf
             {
                 Ambiente = tipoAmbiente,
-                UF = uf,
+                UF = (UFBrasil)ufBrasil,
                 TiposGnre = SimNaoLetra.Sim
             };
 
