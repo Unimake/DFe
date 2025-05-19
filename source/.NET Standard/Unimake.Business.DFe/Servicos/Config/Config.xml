@@ -1841,4 +1841,10 @@
 		<ArqConfig>CampinaGrandeDoSulPR.xml</ArqConfig>
 		<PadraoNFSe>ELOTECH</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="5103205">
+		<Nome>Colíder - MT</Nome>
+		<UF>MT</UF>
+		<ArqConfig>ColiderMT.xml</ArqConfig>
+		<PadraoNFSe>COPLAN</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
