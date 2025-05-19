@@ -55,6 +55,11 @@
 							<fatorRubr>1.45</fatorRubr>
 							<vrRubr>1.45</vrRubr>
 							<indApurIR>0</indApurIR>
+							<descFolha>
+								<tpDesc>1</tpDesc>
+								<instFinanc>123</instFinanc>
+								<nrDoc>000000001234567</nrDoc>
+							</descFolha>
 						</itensRemun>
 						<itensRemun>
 							<codRubr>codRubr4</codRubr>
@@ -63,6 +68,11 @@
 							<fatorRubr>99.99</fatorRubr>
 							<vrRubr>12051.45</vrRubr>
 							<indApurIR>1</indApurIR>
+							<descFolha>
+								<tpDesc>1</tpDesc>
+								<instFinanc>123</instFinanc>
+								<nrDoc>000000001234567</nrDoc>
+							</descFolha>
 						</itensRemun>
 					</ideEstab>
 				</idePeriodo>

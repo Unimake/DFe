@@ -79,6 +79,11 @@
 								<fatorRubr>999.46</fatorRubr>
 								<vrRubr>9999947.00</vrRubr>
 								<indApurIR>1</indApurIR>
+								<descFolha>
+									<tpDesc>1</tpDesc>
+									<instFinanc>123</instFinanc>
+									<nrDoc>000000001234567</nrDoc>
+								</descFolha>
 							</itensRemun>
 						</remunPerAnt>
 					</ideEstab>
