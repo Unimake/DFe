@@ -110,6 +110,44 @@ namespace Unimake.Business.DFe.Servicos.NFCom
 
         #endregion Public Constructors
 
+        ///<summary>
+        ///Construtor simplificado para API
+        /// </summary>
+        /// <param name="chNFCom">Chave de acesso da NFCom</param>
+        /// <param name="tpAmb">Tipo de ambiente, Produção ou Homologação</param>
+        /// <param name="configuracao">Configuração para conexão e envio de XML</param>
+        public ConsultaProtocolo(string chNFCom, TipoAmbiente tpAmb, Configuracao configuracao) : this()
+        {
+            if (string.IsNullOrEmpty(chNFCom))
+            {
+                throw new ArgumentNullException(nameof(chNFCom));
+            }
+
+            if (string.IsNullOrEmpty(tpAmb.ToString()))
+            {
+                throw new ArgumentNullException(nameof(tpAmb));
+            }
+
+            if (configuracao is null)
+            {
+                throw new ArgumentNullException(nameof(configuracao));
+            }
+
+            var xml = new ConsSitNFCom
+            {
+                Versao = "1.00",
+                TpAmb = tpAmb,
+                ChNFCom = chNFCom,
+                XServ = "CONSULTAR"
+
+            };
+
+            var doc = new XmlDocument();
+            doc.LoadXml(xml?.GerarXML().OuterXml);
+
+            Inicializar(doc, configuracao);
+        }
+
         #region Public Methods
 
 #if INTEROP
