@@ -125,5 +125,33 @@ namespace Unimake.DFe.Test.NFCom
             Assert.True(consultaProtocolo.Result.CUF.Equals(ufBrasil), "Webservice retornou uma UF e está diferente de " + ufBrasil.ToString());
             Assert.True(consultaProtocolo.Result.TpAmb.Equals(tipoAmbiente), "Webservice retornou um Tipo de ambiente diferente " + tipoAmbiente.ToString());
         }
+
+        ///<summary>
+        ///Teste para construtor simplificado de API
+        /// </summary>
+        /// <param name="ufBRasil">UF de consulta</param>
+        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
+        [Theory]
+        [Trait("DFe", "NFCom")]
+        [InlineData(UFBrasil.PR, TipoAmbiente.Producao)]
+        [InlineData(UFBrasil.SP, TipoAmbiente.Homologacao)]
+        public void ConsultaProtocoloConstrutor(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
+        {
+            string chave = ((int)ufBrasil).ToString() + "200106117473000150550010000606641403753210"; //Chave qualquer somente para termos algum tipo de retorno para sabe se a conexão com a sefaz funcionou
+
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFCom,
+                TipoEmissao = TipoEmissao.Normal,
+                CertificadoDigital = PropConfig.CertificadoDigital,
+            };
+
+            var consultaProtocolo = new ConsultaProtocolo(chave, tipoAmbiente, configuracao);
+            consultaProtocolo.Executar();
+
+            Assert.Equal((int)ufBrasil, configuracao.CodigoUF);
+            Assert.Equal(tipoAmbiente, configuracao.TipoAmbiente);
+            Assert.Equal(tipoAmbiente, consultaProtocolo.Result.TpAmb);
+        }
     }
 }
