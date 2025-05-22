@@ -1847,4 +1847,10 @@
 		<ArqConfig>ColiderMT.xml</ArqConfig>
 		<PadraoNFSe>COPLAN</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3303500">
+		<Nome>Nova Iguaçu - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>NovaIguacuRJ.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
