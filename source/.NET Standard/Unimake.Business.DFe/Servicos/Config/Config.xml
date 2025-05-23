@@ -1853,4 +1853,10 @@
 		<ArqConfig>NovaIguacuRJ.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2111300">
+		<Nome>São Luís - MA</Nome>
+		<UF>MA</UF>
+		<ArqConfig>SaoLuisMA.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

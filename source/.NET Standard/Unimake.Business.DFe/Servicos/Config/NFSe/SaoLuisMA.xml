@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="1.00">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
+			<TagAtributoID>Lote</TagAtributoID>
+			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><enviar xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></enviar></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>enviarReturn</WebTagRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+		</RecepcionarLoteRpsSincrono>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqCancelamentoNFSe</TagAssinatura>
+			<TagAtributoID>Cabecalho</TagAtributoID>
+			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><cancelar xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></cancelar></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:cancelarResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarLote xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarLote></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarLoteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqConsultaNFSeRPS</TagAssinatura>
+			<TagAtributoID>Cabecalho</TagAtributoID>
+			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarNFSeRps xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarNFSeRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarNFSeRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarNfsePorRps>
+		<ConsultarNotaValida versao="1.00">
+			<Descricao>Consultar NFSe Valida</Descricao>
+			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarLote xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarLote></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarLoteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarNotaValida>
+		<ConsultarSequenciaLoteNotaRPS versao="1.00">
+			<Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
+			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarSequencialRps xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarSequencialRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarSequencialRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarSequenciaLoteNotaRPS>
+	</Servicos>
+</Configuracoes>
