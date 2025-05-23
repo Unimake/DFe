@@ -554,6 +554,7 @@
 		<None Remove="Servicos\Config\NFSe\TaubateSP.xml" />
 		<None Remove="Servicos\Config\NFSe\Template.xml" />
 		<None Remove="Servicos\Config\NFSe\TeofiloOtoniMG.xml" />
+		<None Remove="Servicos\Config\NFSe\TeresinaPI.xml" />
 		<None Remove="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\TerraDeAreiaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TimboSC.xml" />
@@ -1398,6 +1399,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\RecifePE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoCristovaoSE.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />

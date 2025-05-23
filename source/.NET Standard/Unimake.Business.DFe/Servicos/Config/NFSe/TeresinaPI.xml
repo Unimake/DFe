@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="1.00">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoProducao>http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
+			<TagAtributoID>Lote</TagAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws" xmlns:types="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:enviar xmlns:q1="http://proces.wsnfe2.dsfnet.com.br"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></q1:enviar></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>enviarReturn</WebTagRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+		</RecepcionarLoteRpsSincrono>
+		<CancelarNfse versao="1.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoProducao>http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqCancelamentoNFSe</TagAssinatura>
+			<TagAtributoID>Cabecalho</TagAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws" xmlns:types="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:cancelar xmlns:q1="http://proces.wsnfe2.dsfnet.com.br"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></q1:cancelar></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:cancelarResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="1.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoProducao>http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><ns1:consultarLoteResponse soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://proces.wsnfe2.dsfnet.com.br"><consultarLoteReturn xsi:type="xsd:string">{xmlBodyScape}</consultarLoteReturn></ns1:consultarLoteResponse></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soapenv:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="1.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoProducao>http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
+			<TagAssinatura>ns1:ReqConsultaNFSeRPS</TagAssinatura>
+			<TagAtributoID>Cabecalho</TagAtributoID>
+			<WebContentType>text/xml;charset=UTF-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws" xmlns:types="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:consultarNFSeRps xmlns:q1="http://proces.wsnfe2.dsfnet.com.br"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></q1:consultarNFSeRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:consultarNFSeRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarNfsePorRps>
+		<ConsultarNotaValida versao="1.00">
+			<Descricao>Consultar NFSe Valida</Descricao>
+			<WebEnderecoProducao>http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws" xmlns:types="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:consultarLote xmlns:q1="http://proces.wsnfe2.dsfnet.com.br"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></q1:consultarLote></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>soapenv:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarNotaValida>
+		<ConsultarSequenciaLoteNotaRPS versao="1.00">
+			<Descricao>Consulta Sequencia Lote Nota RPS</Descricao>
+			<WebEnderecoProducao>http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws" xmlns:types="http://www.issdigitalthe.com.br/WsNFe2/LoteRps.jws/encodedTypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><q1:consultarSequencialRps xmlns:q1="http://proces.wsnfe2.dsfnet.com.br"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></q1:consultarSequencialRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns1:consultarSequencialRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>1.00</SchemaVersao>
+		</ConsultarSequenciaLoteNotaRPS>
+	</Servicos>
+</Configuracoes>

@@ -1859,4 +1859,10 @@
 		<ArqConfig>SaoLuisMA.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2211001">
+		<Nome>Teresina - PI</Nome>
+		<UF>PI</UF>
+		<ArqConfig>TeresinaPI.xml</ArqConfig>
+		<PadraoNFSe>DSF</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
