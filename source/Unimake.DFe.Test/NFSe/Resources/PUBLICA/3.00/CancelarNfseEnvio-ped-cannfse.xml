@@ -3,7 +3,7 @@
 	<Pedido>
 		<InfPedidoCancelamento id="assinar">
 			<IdentificacaoNfse>
-				<Numero>99999999999999</Numero>
+				<Numero>999999999999990</Numero>
 				<Cnpj>99999999999999</Cnpj>
 				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
 				<CodigoMunicipio>15</CodigoMunicipio>

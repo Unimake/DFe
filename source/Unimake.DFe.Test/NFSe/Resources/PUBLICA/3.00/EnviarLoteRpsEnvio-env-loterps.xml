@@ -43,7 +43,7 @@
 					<Tomador>
 						<IdentificacaoTomador>
 							<CpfCnpj>
-								<Cpf>99999999999999</Cpf>
+								<Cpf>99999999999</Cpf>
 							</CpfCnpj>
 						</IdentificacaoTomador>
 						<RazaoSocial>TESTE TESTE</RazaoSocial>
@@ -53,11 +53,8 @@
 							<Bairro>CENTRO</Bairro>
 							<CodigoMunicipio>1111111</CodigoMunicipio>
 							<Uf>SC</Uf>
-							<Cep>99999999999999</Cep>
+							<Cep>12345678</Cep>
 						</Endereco>
-						<Contato>
-							<Telefone>99999999999999</Telefone>
-						</Contato>
 					</Tomador>
 				</InfRps>
 			</Rps>
