@@ -319,7 +319,8 @@ namespace Unimake.Business.DFe
 
                 if (TratarScapeRetorno)
                 {
-                    if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault"))
+                    if (soap.PadraoNFSe == PadraoNFSe.GIF && retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml.Contains("SOAP-ENV:Fault") || 
+                        soap.PadraoNFSe == PadraoNFSe.DBSELLER && soap.TagRetorno == "SOAP-ENV:Body")
                     {
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].OuterXml;
                     }
@@ -347,6 +348,7 @@ namespace Unimake.Business.DFe
                     {
                         RetornoServicoString = retornoXml.GetElementsByTagName(tagRetorno)[0].ChildNodes[0].InnerText;
                     }
+
                 }
                 else
                 {
