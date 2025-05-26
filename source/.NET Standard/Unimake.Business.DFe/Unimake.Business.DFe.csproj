@@ -538,6 +538,7 @@
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoRoqueSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml" />
+		<None Remove="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
 		<None Remove="Servicos\Config\NFSe\SenhorDoBonfimBA.xml" />
@@ -1393,6 +1394,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </EmbeddedResource>
@@ -2094,6 +2096,20 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cabecalho-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cancelar-nfse-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-lote-rps-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-faixa-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-rps-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-servico-prestado-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-nfse-servico-tomado-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\enviar-lote-rps-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\enviar-lote-rps-sincrono-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\gerar-nfse-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\nfse_v2-04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\substituir-nfse-envio-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\tipos-v2_04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\nfse_v2-03_ima.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DSF\2.03\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ELOTECH\nfse_v2_03.xsd" />

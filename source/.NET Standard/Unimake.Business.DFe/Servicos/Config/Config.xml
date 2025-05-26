@@ -1865,4 +1865,10 @@
 		<ArqConfig>TeresinaPI.xml</ArqConfig>
 		<PadraoNFSe>DSF</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4319901">
+		<Nome>Sapiranga - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SapirangaRS.xml</ArqConfig>
+		<PadraoNFSe>DBSELLER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
