@@ -7031,6 +7031,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("E_RECEITA")]
         E_RECEITA = 68,
+
+        ///<summary>
+        ///DBSELLER
+        /// </summary>
+        [Description("DBSELLER")]
+        DBSELLER = 69,
     }
 
     #endregion
