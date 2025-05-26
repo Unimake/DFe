@@ -1,0 +1,47 @@
+<CancelarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Pedido>
+		<InfPedidoCancelamento Id="s01">
+			<IdentificacaoNfse>
+				<!--Obrigatório. -->
+				<Numero>?</Numero>
+				<CpfCnpj>
+					<!--Obrigatório. CPF ou CNPJ. Não enviar ambas as tags. -->
+					<Cnpj>?</Cnpj>
+					<Cpf>?</Cpf>
+				</CpfCnpj>
+				<!--Obrigatório. -->
+				<InscricaoMunicipal>?</InscricaoMunicipal>
+				<!--Obrigatório. -->
+				<CodigoMunicipio>?</CodigoMunicipio>
+			</IdentificacaoNfse>
+			<!--Obrigatório. Código de cancelamento com base na tabela de Erros e alertas.
+			1 – Erro na emissão
+			2 – Serviço não prestado
+			3 – Erro de assinatura
+			4 – Duplicidade da nota
+			5 – Erro de processamento
+			Importante: Os códigos 3 (Erro de assinatura) e 5(Erro de processamento) são de uso restrito da Administração Tributária Municipal
+			-->
+			<CodigoCancelamento>?</CodigoCancelamento>
+		</InfPedidoCancelamento>
+		<Signature Id="s01" xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>?</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>?</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>?</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</Pedido>
+</CancelarNfseEnvio>

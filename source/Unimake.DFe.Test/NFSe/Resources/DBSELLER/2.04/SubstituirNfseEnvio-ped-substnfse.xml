@@ -1,0 +1,328 @@
+<SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<SubstituicaoNfse>
+		<Pedido>
+			<InfPedidoCancelamento Id="s01">
+				<IdentificacaoNfse>
+					<!--Obrigatório. -->
+					<Numero>?</Numero>
+					<CpfCnpj>
+						<!--Obrigatório. CPF ou CNPJ. Não enviar ambas as tags. -->
+						<Cnpj>?</Cnpj>
+						<Cpf>?</Cpf>
+					</CpfCnpj>
+					<!--Obrigatório. -->
+					<InscricaoMunicipal>?</InscricaoMunicipal>
+					<!--Obrigatório. -->
+					<CodigoMunicipio>?</CodigoMunicipio>
+				</IdentificacaoNfse>
+				<!--Obrigatório. Código de cancelamento com base na tabela de Erros e alertas.
+				1 – Erro na emissão
+				2 – Serviço não prestado
+				3 – Erro de assinatura
+				4 – Duplicidade da nota
+				5 – Erro de processamento
+				Importante: Os códigos 3 (Erro de assinatura) e 5(Erro de processamento) são de uso restrito da Administração Tributária Municipal
+				-->
+				<CodigoCancelamento>?</CodigoCancelamento>
+			</InfPedidoCancelamento>
+			<Signature Id="s01" xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>?</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>?</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>?</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</Pedido>
+		<Rps>
+			<InfDeclaracaoPrestacaoServico>
+				<!-- Representa dados informativos do Recibo Provisório de Serviço (RPS) -->
+				<Rps>
+					<IdentificacaoRps>
+						<!-- Número do RPS -->
+						<Numero>?</Numero>
+						<!-- Série do RPS -->
+						<Serie>?</Serie>
+						<!-- Tipo do RPS informar 1 – Recibo Provisório de Serviços; -->
+						<Tipo>1</Tipo>
+					</IdentificacaoRps>
+					<!-- Data de emissão do RPS. Formato:(AAAA-MM-DD) -->
+					<DataEmissao>?</DataEmissao>
+					<!-- Situação do RPS (1 – Normal ou 2 – Cancelado) -->
+					<Status>?</Status>
+					<!-- IDENTIFICAÇÃO DO RPS SUBSTITUÍDO (OPCIONAL) -->
+					<RpsSubstituido>
+						<!-- Número do RPS -->
+						<Numero>?</Numero>
+						<!-- Série do RPS -->
+						<Serie>?</Serie>
+						<!-- Tipo do RPS informar 1 – Recibo Provisório de Serviços; -->
+						<Tipo>1</Tipo>
+					</RpsSubstituido>
+				</Rps>
+				<!-- Dia, mês e ano da prestação de serviço. Formato: (AAAA-MM-DD) -->
+				<Competencia>?</Competencia>
+				<Servico>
+					<Valores>
+						<!-- Valor dos serviços em R$ -->
+						<ValorServicos>?</ValorServicos>
+						<!-- Valor das deduções para Redução da Base de Cálculo em R$ -->
+						<ValorDeducoes>?</ValorDeducoes>
+						<!-- Valor da retenção do PIS em R$ Informação declaratória -->
+						<ValorPis>?</ValorPis>
+						<!-- Valor da retenção do COFINS em R$ Informação declaratória -->
+						<ValorCofins>?</ValorCofins>
+						<!-- Valor da retenção do INSS em R$ Informação declaratória -->
+						<ValorInss>?</ValorInss>
+						<!-- Valor da retenção do IR em R$ Informação declaratória -->
+						<ValorIr>?</ValorIr>
+						<!-- Valor da retenção do CSLL em R$ Informação declaratória -->
+						<ValorCsll>?</ValorCsll>
+						<!-- Outras retenções na Fonte. Informação declaratória -->
+						<OutrasRetencoes>?</OutrasRetencoes>
+						<!-- Valor total aproximado dos tributos federais, estaduais e municipais, em conformidade com o artigo 1o da Lei no 12.741/2012 -->
+						<ValTotTributos>?</ValTotTributos>
+						<!-- Valor do ISS devido em R$ -->
+						<ValorIss>?</ValorIss>
+						<!-- Alíquota do serviço prestado -->
+						<Aliquota>?</Aliquota>
+						<!-- Valor do desconto incondicionado -->
+						<DescontoIncondicionado>?</DescontoIncondicionado>
+						<!-- Valor do desconto condicionado -->
+						<DescontoCondicionado>?</DescontoCondicionado>
+					</Valores>
+					<!-- ISS é retido na fonte
+					1 – Sim;
+					2 – Não. -->
+					<IssRetido>?</IssRetido>
+					<!-- Informado somente se IssRetido igual a "1 – Sim".
+					A opção "2 – Intermediário" somente poderá ser selecionada se "CpfCnpjIntermediario" informado.
+					1 – Tomador;
+					2 – Intermediário. -->
+					<ResponsavelRetencao>?</ResponsavelRetencao>
+					<!-- Subitem do serviço prestado conforme LC 116/2003. Formato NN.NN -->
+					<ItemListaServico>?</ItemListaServico>
+					<!-- Código CNAE -->
+					<CodigoCnae>?</CodigoCnae>
+					<!-- Código do serviço prestado próprio do município -->
+					<CodigoTributacaoMunicipio>?</CodigoTributacaoMunicipio>
+					<!-- CodigoNbs -->
+					<CodigoNbs>?</CodigoNbs>
+					<!-- Discriminação dos serviços. -->
+					<Discriminacao>?</Discriminacao>
+					<!-- Código do município onde o serviço foi prestado (tabela do IBGE), se exterior colocar 9999999 -->
+					<CodigoMunicipio>?</CodigoMunicipio>
+					<!-- Código do país onde o serviço foi prestado (Tabela de país do IBGE). Preencher somente se MunicipioPrestacaoServico igual 9999999 -->
+					<CodigoPais>?</CodigoPais>
+					<!-- Exigibilidades possíveis
+					1 – Exigível;
+					2 – Não incidência;
+					3 – Isenção;
+					4 – Exportação;
+					5 – Imunidade;
+					6 – Exigibilidade Suspensa por Decisão Judicial;
+					7 – Exigibilidade Suspensa por Processo Administrativo.-->
+					<ExigibilidadeISS>?</ExigibilidadeISS>
+					<!-- Identificação da não exigibilidade do ISSQN – somente para os casos de benefício fiscal -->
+					<IdentifNaoExigibilidade>?</IdentifNaoExigibilidade>
+					<!-- Código do município onde é a incidência do imposto (Tabela do IBGE) -->
+					<MunicipioIncidencia>?</MunicipioIncidencia>
+					<!-- Número do processo da suspensão da exigibilidade -->
+					<NumeroProcesso>?</NumeroProcesso>
+				</Servico>
+				<!-- Identificação do prestador do serviço -->
+				<Prestador>
+					<CpfCnpj>
+						<!-- CPF ou CNPJ da empresa/pessoa. Não enviar ambas as tags. -->
+						<Cnpj>?</Cnpj>
+						<Cpf>?</Cpf>
+					</CpfCnpj>
+					<!-- Número de inscrição municipal do prestador de serviço. Numérico de tamanho máximo 15. -->
+					<InscricaoMunicipal>?</InscricaoMunicipal>
+				</Prestador>
+				<!-- Dados do tomador do serviço -->
+				<TomadorServico>
+					<IdentificacaoTomador>
+						<CpfCnpj>
+							<!-- CPF ou CNPJ da empresa/pessoa. Não enviar ambas as tags. -->
+							<Cnpj>?</Cnpj>
+							<Cpf>?</Cpf>
+						</CpfCnpj>
+						<!-- Número de inscrição municipal do tomador de serviço. Numérico de tamanho máximo 15. -->
+						<InscricaoMunicipal>?</InscricaoMunicipal>
+					</IdentificacaoTomador>
+					<!-- Este elemento só deverá ser preenchido para tomadores não residentes no Brasil -->
+					<NifTomador>?</NifTomador>
+					<!-- Nome / Razão Social do tomador.-->
+					<RazaoSocial>?</RazaoSocial>
+					<!-- Informar apenas uma das Tags. Ou tag Endereco ou Tag EnderecoExterior. -->
+					<!-- Endereço de tomador de serviços do Brasil -->
+					<Endereco>
+						<!-- Tipo e nome do logradouro do tomador do serviço -->
+						<Endereco>?</Endereco>
+						<!-- Número do imóvel do tomador do serviço -->
+						<Numero>?</Numero>
+						<!-- Complemento do endereço do tomador do serviço (Opcional) -->
+						<Complemento>?</Complemento>
+						<!-- Bairro do tomador do serviço -->
+						<Bairro>?</Bairro>
+						<!-- Código do município do tomador do serviço (Tabela do IBGE) -->
+						<CodigoMunicipio>?</CodigoMunicipio>
+						<!-- Sigla da unidade da federação do tomador do serviço -->
+						<Uf>?</Uf>
+						<!-- Número do CEP do tomador do serviço -->
+						<Cep>?</Cep>
+					</Endereco>
+					<!-- Endereço de tomador de serviços do exterior -->
+					<EnderecoExterior>
+						<!-- Código do país do tomador do serviço (Tabela do de país do IBGE).-->
+						<CodigoPais>?</CodigoPais>
+						<!-- Descrição completa do endereço do exterior -->
+						<EnderecoCompletoExterior>?</EnderecoCompletoExterior>
+					</EnderecoExterior>
+					<!-- Opcional -->
+					<Contato>
+						<!-- Número do telefone do tomador (Opcional) -->
+						<Telefone>?</Telefone>
+						<!-- E-mail do tomador (Opcional) -->
+						<Email>?</Email>
+					</Contato>
+				</TomadorServico>
+				<Intermediario>
+					<IdentificacaoIntermediario>
+						<CpfCnpj>
+							<!-- CPF ou CNPJ da empresa/pessoa. Não enviar ambas as tags. -->
+							<Cnpj>?</Cnpj>
+							<Cpf>?</Cpf>
+						</CpfCnpj>
+						<!-- Número de inscrição municipal do intermediário de serviço. Numérico de tamanho máximo 15. -->
+						<InscricaoMunicipal>?</InscricaoMunicipal>
+					</IdentificacaoIntermediario>
+					<!-- Nome ou Razão Social de intermediário do serviço -->
+					<RazaoSocial>?</RazaoSocial>
+					<!-- Código do município onde o intermediário está estabelecido (Tabela do IBGE) -->
+					<CodigoMunicipio>?</CodigoMunicipio>
+				</Intermediario>
+				<ConstrucaoCivil>
+					<!-- Número de identificação da obra. Tamanho máximo 30. -->
+					<CodigoObra>?</CodigoObra>
+					<!-- Número da ART. Tamanho máximo 30. -->
+					<Art>?</Art>
+				</ConstrucaoCivil>
+				<!-- Tipos de Regimes especiais:
+				1 – Microempresa Municipal;
+				2 – Estimativa;
+				3 – Sociedade de Profissionais;
+				4 – Cooperativa;
+				5 – Microempresário Individual (MEI);
+				6 – Microempresa ou Empresa de Pequeno Porte (ME EPP). -->
+				<RegimeEspecialTributacao>?</RegimeEspecialTributacao>
+				<!--Prestador é optante pelo Simples Nacional: 
+				1 – Sim;
+				2 – Não .-->
+				<OptanteSimplesNacional>?</OptanteSimplesNacional>
+				<!--Prestador possui Incentivo Fiscal:
+				1 – Sim;
+				2 – Não.-->
+				<IncentivoFiscal>?</IncentivoFiscal>
+				<!-- Opcional -->
+				<Evento>
+					<!-- Identificação do evento (Obrigatório se DescricaoEvento não informado) -->
+					<IdentificacaoEvento>?</IdentificacaoEvento>
+					<!-- Descrição do evento (Obrigatório se IdentificacaoEvento não informado) -->
+					<DescricaoEvento>?</DescricaoEvento>
+				</Evento>
+				<InformacoesComplementares>?</InformacoesComplementares>
+				<Deducao>
+					<!-- Identificação da dedução
+					1 – Materiais;
+					2 – Subempreitada de mão de obra;
+					3 – Serviços;
+					4 – Produção externa;
+					5 – Alimentação e bebidas/frigobar;
+					6 – Reembolso de despesas;
+					7 – Repasse consorciado;
+					8 – Repasse plano de saúde
+					99 – Outras deduções -->
+					<TipoDeducao>?</TipoDeducao>
+					<!-- Informar o tipo da dedução no caso da opção 99 – Outras Deduções -->
+					<DescricaoDeducao>?</DescricaoDeducao>
+					<IdentificacaoDocumentoDeducao>
+						<IdentificacaoNfse>
+							<!-- Município de geração da NFS-e -->
+							<CodigoMunicipioGerador>?</CodigoMunicipioGerador>
+							<!-- Número da NFS-e -->
+							<NumeroNfse>?</NumeroNfse>
+							<!-- Código de verificação da NFS-e -->
+							<CodigoVerificacao>?</CodigoVerificacao>
+						</IdentificacaoNfse>
+						<IdentificacaoNfe>
+							<!-- Número da NF-e -->
+							<NumeroNfe>?</NumeroNfe>
+							<!-- Estado de geração da NF-e -->
+							<UfNfe>?</UfNfe>
+							<!-- Chave da NF-e -->
+							<ChaveAcessoNfe>?</ChaveAcessoNfe>
+						</IdentificacaoNfe>
+						<OutroDocumento>
+							<!-- Identificação de documento diferente de NFS-e e NF-e -->
+							<IdentificacaoDocumento>?</IdentificacaoDocumento>
+						</OutroDocumento>
+					</IdentificacaoDocumentoDeducao>
+					<DadosFornecedor>
+						<IdentificacaoFornecedor>
+							<!-- CNPJ ou CPF do fornecedor do Brasil. -->
+							<CpfCnpj>
+								<!-- CPF ou CNPJ da empresa/pessoa. Não enviar ambas as tags. -->
+								<Cnpj>?</Cnpj>
+								<Cpf>?</Cpf>
+							</CpfCnpj>
+						</IdentificacaoFornecedor>
+						<FornecedorExterior>
+							<!-- NIF do fornecedor do exterior -->
+							<NifFornecedor>?</NifFornecedor>
+							<!-- Código do país do fornecedor do exterior -->
+							<CodigoPais>?</CodigoPais>
+						</FornecedorExterior>
+					</DadosFornecedor>
+					<!-- Data de Emissão do Documento Fiscal -->
+					<DataEmissao>?</DataEmissao>
+					<!-- Valor dedutível do documento fiscal -->
+					<ValorDedutivel>?</ValorDedutivel>
+					<!-- Valor utilizado na dedução da NFS-e. Deve ser menor ou igual ao ValorDedutivel. -->
+					<ValorUtilizadoDeducao>?</ValorUtilizadoDeducao>
+				</Deducao>
+			</InfDeclaracaoPrestacaoServico>
+			<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+					<Reference URI="">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+						<DigestValue>?</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>?</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509Certificate>?</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+			</Signature>
+		</Rps>
+	</SubstituicaoNfse>
+</SubstituirNfseEnvio>
