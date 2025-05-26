@@ -1871,4 +1871,10 @@
 		<ArqConfig>SapirangaRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4202008">
+		<Nome>Balneário Camboriú - SC</Nome>
+		<UF>Sc</UF>
+		<ArqConfig>BalnearioCamboriuSC.xml</ArqConfig>
+		<PadraoNFSe>PUBLICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

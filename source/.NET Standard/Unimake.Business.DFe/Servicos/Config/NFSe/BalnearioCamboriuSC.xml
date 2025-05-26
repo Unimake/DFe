@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="3.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br:80/homologa_nfse_integracao/Services</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://nfse1.publica.inf.br/balneariocamboriu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfRps</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRps xmlns="http://service.nfse.integracao.ws.publica/"><XML xmlns="">{xmlBodyScape}</XML></RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://service.nfse.integracao.ws.publica/</TargetNS>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="3.00">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br:80/homologa_nfse_integracao/Services</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://nfse1.publica.inf.br/balneariocamboriu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>schema_nfse_v03.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNfse xmlns="http://service.nfse.integracao.ws.publica/"><XML xmlns="">{xmlBodyScape}</XML></CancelarNfse></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://service.nfse.integracao.ws.publica/</TargetNS>
+		</CancelarNfse>
+		<ConsultarLoteRps versao="3.00">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br:80/homologa_nfse_integracao/Services</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://nfse1.publica.inf.br/balneariocamboriu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarLoteRps xmlns="http://service.nfse.integracao.ws.publica/"><XML xmlns="">{xmlBodyScape}</XML></ConsultarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://service.nfse.integracao.ws.publica/</TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="3.00">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br:80/homologa_nfse_integracao/Services</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://nfse1.publica.inf.br/balneariocamboriu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>IdentificacaoRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfsePorRps xmlns="http://service.nfse.integracao.ws.publica/"><XML xmlns="">{xmlBodyScape}</XML></ConsultarNfsePorRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://service.nfse.integracao.ws.publica/</TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseFaixa versao="3.00">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br:80/homologa_nfse_integracao/Services</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://nfse1.publica.inf.br/balneariocamboriu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseFaixaEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarNfseFaixa xmlns="http://service.nfse.integracao.ws.publica/"><XML xmlns="">{xmlBodyScape}</XML></ConsultarNfseFaixa></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarNfseFaixaResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://service.nfse.integracao.ws.publica/</TargetNS>
+		</ConsultarNfseFaixa>
+		<ConsultarSituacaoLoteRps versao="3.00">
+			<Descricao>Consulta Situuação do Lote por RPS</Descricao>
+			<WebEnderecoHomologacao>http://nfse-teste.publica.inf.br:80/homologa_nfse_integracao/Services</WebEnderecoHomologacao>
+			<WebEnderecoProducao>http://nfse1.publica.inf.br/balneariocamboriu_nfse_integracao/Services?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarSituacaoLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><ConsultarSituacaoLoteRps xmlns="http://service.nfse.integracao.ws.publica/"><XML xmlns="">{xmlBodyScape}</XML></ConsultarSituacaoLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:ConsultarSituacaoLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>3.00</SchemaVersao>
+			<TargetNS>http://service.nfse.integracao.ws.publica/</TargetNS>
+		</ConsultarSituacaoLoteRps>
+	</Servicos>
+</Configuracoes>
