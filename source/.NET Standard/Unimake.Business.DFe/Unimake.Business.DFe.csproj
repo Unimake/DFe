@@ -337,6 +337,7 @@
 		<None Remove="Servicos\Config\NFSe\CabedeloPB.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboDeSantoAgostinhoPE.xml" />
 		<None Remove="Servicos\Config\NFSe\CaboFrioRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\CacadorSC.xml" />
 		<None Remove="Servicos\Config\NFSe\CacapavaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeiraDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\CachoeirodeItapemirimES.xml" />
@@ -1275,6 +1276,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\CacadorSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\CampinaGrandeDoSulPR.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColatinaES.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ColiderMT.xml" />

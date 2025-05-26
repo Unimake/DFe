@@ -1877,4 +1877,10 @@
 		<ArqConfig>BalnearioCamboriuSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4203006">
+		<Nome>Caçador - SC</Nome>
+		<UF>Sc</UF>
+		<ArqConfig>CacadorSC.xml</ArqConfig>
+		<PadraoNFSe>PUBLICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
