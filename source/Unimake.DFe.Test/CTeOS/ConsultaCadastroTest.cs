@@ -25,7 +25,7 @@ namespace Unimake.DFe.Test.CTeOS
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaCadastro = new ConsultaCadastro((int)ufBrasil, cnpj, configuracao);
+            var consultaCadastro = new ConsultaCadastro(ufBrasil, cnpj, configuracao);
             consultaCadastro.Executar();
 
             Assert.True(configuracao.CodigoUF.Equals((int)ufBrasil), "UF definida nas configurações diferente de " + ufBrasil.ToString());
