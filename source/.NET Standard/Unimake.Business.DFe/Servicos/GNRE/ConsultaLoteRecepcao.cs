@@ -99,7 +99,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="cnpj">CNPJ do emitente</param>
         /// <param name="codBarras">Código de barras</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
-        public ConsultaLoteRecepcao(int ufBrasil, string cnpj, string codBarras, Configuracao configuracao) : this()
+        public ConsultaLoteRecepcao(UFBrasil ufBrasil, string cnpj, string codBarras, Configuracao configuracao) : this()
         {
             if (string.IsNullOrWhiteSpace(ufBrasil.ToString()))
             {
@@ -128,7 +128,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 {
                     new Consulta
                     {
-                        Uf = (UFBrasil)ufBrasil,
+                        Uf = ufBrasil,
                         EmitenteId = new EmitenteId
                         {
                             CNPJ = cnpj,
@@ -160,7 +160,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="numControle">Número de controle</param>
         /// <param name="tipoConsulta">Tipo de consulta</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
-        public ConsultaLoteRecepcao(int ufBrasil, string cnpj, string numControle, TipoConsultaGNRE tipoConsulta, Configuracao configuracao) : this()
+        public ConsultaLoteRecepcao(UFBrasil ufBrasil, string cnpj, string numControle, TipoConsultaGNRE tipoConsulta, Configuracao configuracao) : this()
         {
             if(string.IsNullOrEmpty(ufBrasil.ToString()))
             {
@@ -199,7 +199,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 {
                     new Consulta
                     {
-                        Uf = (UFBrasil) ufBrasil,
+                        Uf = ufBrasil,
                         EmitenteId = new EmitenteId
                         {
                             CNPJ = cnpj,
@@ -229,7 +229,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="tipoConsulta">Tipo de consulta</param>
         /// <param name="configuracao">Configuração para conexão e envio do XML</param>
         public ConsultaLoteRecepcao(
-            int ufBrasil,
+            UFBrasil ufBrasil,
             string cnpj,
             string codBarras,
             string numControle,
@@ -291,7 +291,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
                 {
                     new Consulta
                     {
-                        Uf = (UFBrasil) ufBrasil,
+                        Uf = ufBrasil,
                         EmitenteId = new EmitenteId
                         {
                             CNPJ = cnpj,

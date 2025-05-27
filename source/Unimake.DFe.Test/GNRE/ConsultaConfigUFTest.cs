@@ -152,7 +152,7 @@ namespace Unimake.DFe.Test.GNRE
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaConfigUF = new ConsultaConfigUF((int)ufBrasil, tipoAmbiente, configuracao);
+            var consultaConfigUF = new ConsultaConfigUF(ufBrasil, tipoAmbiente, configuracao);
             consultaConfigUF.Executar();
 
             Assert.NotNull(consultaConfigUF.Result);
@@ -177,7 +177,7 @@ namespace Unimake.DFe.Test.GNRE
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaConfigUF = new ConsultaConfigUF((int)ufBrasil, tipoAmbiente, receita, configuracao);
+            var consultaConfigUF = new ConsultaConfigUF(ufBrasil, tipoAmbiente, receita, configuracao);
             consultaConfigUF.Executar();
 
             Assert.NotNull(consultaConfigUF.Result);
@@ -201,7 +201,7 @@ namespace Unimake.DFe.Test.GNRE
                 CertificadoDigital = PropConfig.CertificadoDigital
             };
 
-            var consultaConfigUF = new ConsultaConfigUF((int)ufBrasil, tipoAmbiente, receita, courier, configuracao);
+            var consultaConfigUF = new ConsultaConfigUF(ufBrasil, tipoAmbiente, receita, courier, configuracao);
             consultaConfigUF.Executar();
             
             Assert.NotNull(consultaConfigUF.Result);
