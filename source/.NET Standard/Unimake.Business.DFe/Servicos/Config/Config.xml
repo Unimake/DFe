@@ -1873,20 +1873,26 @@
 	</Arquivo>
 	<Arquivo ID="4202008">
 		<Nome>Balneário Camboriú - SC</Nome>
-		<UF>Sc</UF>
+		<UF>SC</UF>
 		<ArqConfig>BalnearioCamboriuSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4203006">
 		<Nome>Caçador - SC</Nome>
-		<UF>Sc</UF>
+		<UF>SC</UF>
 		<ArqConfig>CacadorSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4208203">
 		<Nome>Itajaí - SC</Nome>
-		<UF>Sc</UF>
+		<UF>SC</UF>
 		<ArqConfig>ItajaiSC.xml</ArqConfig>
+		<PadraoNFSe>PUBLICA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="4210100">
+		<Nome>Mafra - SC</Nome>
+		<UF>SC</UF>
+		<ArqConfig>MafraSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
 </Configuracoes>

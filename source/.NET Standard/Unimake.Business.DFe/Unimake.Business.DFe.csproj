@@ -450,6 +450,7 @@
 		<None Remove="Servicos\Config\NFSe\LontrasSC.xml" />
 		<None Remove="Servicos\Config\NFSe\LorenaSP.xml" />
 		<None Remove="Servicos\Config\NFSe\LuisEduardoMagalhaesBA.xml" />
+		<None Remove="Servicos\Config\NFSe\MafraSC.xml" />
 		<None Remove="Servicos\Config\NFSe\ManausAM.xml" />
 		<None Remove="Servicos\Config\NFSe\MarataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\MarcolandiaPI.xml" />
@@ -1286,6 +1287,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
