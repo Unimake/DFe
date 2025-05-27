@@ -1883,4 +1883,10 @@
 		<ArqConfig>CacadorSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4208203">
+		<Nome>Itajaí - SC</Nome>
+		<UF>Sc</UF>
+		<ArqConfig>ItajaiSC.xml</ArqConfig>
+		<PadraoNFSe>PUBLICA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
