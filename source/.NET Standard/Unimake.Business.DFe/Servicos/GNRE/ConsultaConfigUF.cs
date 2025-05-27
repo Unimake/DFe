@@ -98,7 +98,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(int ufBrasil, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
+        public ConsultaConfigUF(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
         {
             if(string.IsNullOrEmpty(ufBrasil.ToString()))
             {
@@ -118,7 +118,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsultaConfigUf
             {
                 Ambiente = tipoAmbiente,
-                UF = (UFBrasil)ufBrasil,
+                UF = ufBrasil,
                 TiposGnre = SimNaoLetra.Sim
             };
 
@@ -135,7 +135,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
         /// <param name="receita">Código da receita</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(int ufBrasil, TipoAmbiente tipoAmbiente, int receita, Configuracao configuracao) : this()
+        public ConsultaConfigUF(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int receita, Configuracao configuracao) : this()
         {
             if (string.IsNullOrEmpty(ufBrasil.ToString()))
             {
@@ -160,7 +160,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsultaConfigUf
             {
                 Ambiente = tipoAmbiente,
-                UF = (UFBrasil)ufBrasil,
+                UF = ufBrasil,
                 Receita = new Receita
                 {
                     Courier = SimNaoLetra.Nao,
@@ -183,7 +183,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
         /// <param name="receita">Código da receita</param>
         /// <param name="courier">Indicativo de courier</param>
         /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(int ufBrasil, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier, Configuracao configuracao) : this()
+        public ConsultaConfigUF(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int receita, SimNaoLetra courier, Configuracao configuracao) : this()
         {
             if (string.IsNullOrEmpty(ufBrasil.ToString()))
             {
@@ -213,7 +213,7 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             var xml = new TConsultaConfigUf
             {
                 Ambiente = tipoAmbiente,
-                UF = (UFBrasil)ufBrasil,
+                UF = ufBrasil,
                 Receita = new Receita
                 {
                     Courier = courier,

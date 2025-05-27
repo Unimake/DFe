@@ -40,7 +40,7 @@ namespace Unimake.Business.DFe.Servicos.CTe
         /// <param name="ufBrasil">UF do contribuinte</param>
         /// <param name="cnpj">CNPJ do contribuinte</param>
         /// <param name="configuracao">Config para conexão e envio do XML</param>
-        public ConsultaCadastro(int ufBrasil, string cnpj, Configuracao configuracao) : base(ufBrasil, cnpj, configuracao) { }
+        public ConsultaCadastro(UFBrasil ufBrasil, string cnpj, Configuracao configuracao) : base(ufBrasil, cnpj, configuracao) { }
 
 
 
