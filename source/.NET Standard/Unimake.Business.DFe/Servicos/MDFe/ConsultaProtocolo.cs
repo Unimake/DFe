@@ -107,30 +107,11 @@ namespace Unimake.Business.DFe.Servicos.MDFe
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            if (conteudo.Length == 44) //Chave de acesso MDFe
-            {
-                var xml = new ConsSitMDFe
-                {
-                    Versao = "3.00",
-                    TpAmb = configuracao.TipoAmbiente,
-                    ChMDFe = conteudo,
-                    XServ = "CONSULTAR"
-                };
+            var doc = new XmlDocument();
+            doc.LoadXml(conteudo);
 
-                var doc = new XmlDocument();
-                doc.LoadXml(xml?.GerarXML().OuterXml);
+            Inicializar(doc, configuracao);
 
-                Inicializar(doc, configuracao);
-            }
-            else //String XML completo
-            {
-                var doc = new XmlDocument();
-                doc.LoadXml(conteudo);
-
-                Inicializar(doc, configuracao);
-            }
-
-            
         }
 
         #endregion Public Constructors
