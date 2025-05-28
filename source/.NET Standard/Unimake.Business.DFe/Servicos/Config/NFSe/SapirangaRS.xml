@@ -40,8 +40,8 @@
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>2.04</SchemaVersao>
-			<UsaCertificadoDigital></UsaCertificadoDigital>
 			<TargetNS>http://nfse.sapiranga.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
 		</CancelarNfse>
 		<SubstituirNfse versao="2.04">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
