@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRpsSincrono versao="1.00">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoProducao>http://www.notamaisfacil.novaiguacu.rj.gov.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
 			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
 			<TagAtributoID>Lote</TagAtributoID>
@@ -13,7 +13,7 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-		</RecepcionarLoteRpsSincrono>
+		</RecepcionarLoteRps>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoProducao>http://www.notamaisfacil.novaiguacu.rj.gov.br/WsNFe2/LoteRps.jws?wsdl</WebEnderecoProducao>
