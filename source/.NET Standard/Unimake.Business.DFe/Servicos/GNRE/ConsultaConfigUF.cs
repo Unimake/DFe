@@ -92,91 +92,9 @@ namespace Unimake.Business.DFe.Servicos.GNRE
             Inicializar(tConsultaConfigUf?.GerarXML() ?? throw new ArgumentNullException(nameof(tConsultaConfigUf)), configuracao);
         }
 
+        
         ///<summary>
-        ///Construtor simplificado API 2 parâmetros
-        /// </summary>
-        /// <param name="ufBrasil">Unidade Federativa</param>
-        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, Configuracao configuracao) : this()
-        {
-            if(string.IsNullOrEmpty(ufBrasil.ToString()))
-            {
-                throw new ArgumentNullException(nameof(ufBrasil));
-            }
-
-            if(string.IsNullOrEmpty(tipoAmbiente.ToString()))
-            {
-                throw new ArgumentNullException(nameof(tipoAmbiente));
-            }
-
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
-            var xml = new TConsultaConfigUf
-            {
-                Ambiente = tipoAmbiente,
-                UF = ufBrasil,
-                TiposGnre = SimNaoLetra.Sim
-            };
-
-            var doc = new XmlDocument();
-            doc.LoadXml(xml?.GerarXML().OuterXml);
-
-            Inicializar(doc, configuracao);
-        }
-
-        ///<summary>
-        ///Construtor simplificado API 3 parâmetros
-        /// </summary>
-        /// <param name="ufBrasil">Unidade Federativa</param>
-        /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
-        /// <param name="receita">Código da receita</param>
-        /// <param name="configuracao">Configurações para conexão e envio do XML</param>
-        public ConsultaConfigUF(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int receita, Configuracao configuracao) : this()
-        {
-            if (string.IsNullOrEmpty(ufBrasil.ToString()))
-            {
-                throw new ArgumentNullException(nameof(ufBrasil));
-            }
-
-            if (string.IsNullOrEmpty(tipoAmbiente.ToString()))
-            {
-                throw new ArgumentNullException(nameof(tipoAmbiente));
-            }
-
-            if (receita.IsNullOrEmpty())
-            {
-                throw new ArgumentNullException(nameof(receita));
-            }
-
-            if (configuracao is null)
-            {
-                throw new ArgumentNullException(nameof(configuracao));
-            }
-
-            var xml = new TConsultaConfigUf
-            {
-                Ambiente = tipoAmbiente,
-                UF = ufBrasil,
-                Receita = new Receita
-                {
-                    Courier = SimNaoLetra.Nao,
-                    Value = receita
-                },
-                TiposGnre = SimNaoLetra.Sim
-            };
-
-            var doc = new XmlDocument();
-            doc.LoadXml(xml?.GerarXML().OuterXml);
-
-            Inicializar(doc, configuracao);
-        }
-
-        ///<summary>
-        ///Construtor simplificado API 4 parâmetros
+        ///Construtor simplificado API
         /// </summary>
         /// <param name="ufBrasil">Unidade Federativa</param>
         /// <param name="tipoAmbiente">Ambiente de Produção ou Homologação</param>
