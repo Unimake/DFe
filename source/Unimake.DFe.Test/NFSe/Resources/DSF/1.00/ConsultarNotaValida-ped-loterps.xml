@@ -5,7 +5,6 @@
 		<InscricaoMunicipalPrestador>0000000</InscricaoMunicipalPrestador>
 		<dtInicio>2009-01-01</dtInicio>
 		<dtFim>2010-12-30</dtFim>
-		<NotaInicial>1</NotaInicial>
 		<Versao>1</Versao>
 	</Cabecalho>
 </ns1:ReqConsultaNotas>
