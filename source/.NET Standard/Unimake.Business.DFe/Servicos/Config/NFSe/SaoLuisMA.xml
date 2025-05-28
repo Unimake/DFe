@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRpsSincrono versao="1.00">
-			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+		<RecepcionarLoteRps versao="1.00">
+			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://stm.semfaz.saoluis.ma.gov.br:443/WsNFe2/LoteRps?wsdl</WebEnderecoProducao>
 			<TagAssinatura>ns1:ReqEnvioLoteRPS</TagAssinatura>
@@ -14,7 +14,7 @@
 			<SchemaVersao>1.00</SchemaVersao>
 			<EncriptaTagAssinatura>true</EncriptaTagAssinatura>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
-		</RecepcionarLoteRpsSincrono>
+		</RecepcionarLoteRps>
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>http://homo.stm.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps?wsdl</WebEnderecoHomologacao>
@@ -61,8 +61,8 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=iso-8859-1</WebContentType>
-			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarLote xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarLote></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ns2:consultarLoteResponse</WebTagRetorno>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><consultarNota xmlns="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"><mensagemXml xmlns="">{xmlBodyScape}</mensagemXml></consultarNota></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>ns2:consultarNotaResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
