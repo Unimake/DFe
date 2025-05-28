@@ -32,7 +32,7 @@
 			<TagAssinatura></TagAssinatura>
 			<TagAtributoID></TagAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
-			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarNFSeRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:consultarNFSeRps></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br"><soapenv:Header/><soapenv:Body><proc:consultarLote soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><mensagemXml xsi:type="xsd:string">{xmlBodyScape}</mensagemXml></proc:consultarLote></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
 			<WebTagRetorno>soapenv:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
