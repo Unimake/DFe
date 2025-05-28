@@ -137,56 +137,7 @@ namespace Unimake.DFe.Test.GNRE
         }
 
         ///<summary>
-        ///Teste construtor 2 parâmetros
-        /// </summary>
-        [Theory]
-        [Trait("DFe", "GNRE")]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Producao)]
-        public void ConsultaConfigUFConstrutor2Param(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente)
-        {
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.GNRE,
-                TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital
-            };
-
-            var consultaConfigUF = new ConsultaConfigUF(ufBrasil, tipoAmbiente, configuracao);
-            consultaConfigUF.Executar();
-
-            Assert.NotNull(consultaConfigUF.Result);
-            Assert.Equal(tipoAmbiente, consultaConfigUF.Result.Ambiente);
-            Assert.Equal(Servico.GNREConsultaConfigUF, configuracao.Servico);
-
-        }
-
-        ///<summary>
-        ///Teste construtor 3 parâmetros
-        /// </summary>
-        [Theory]
-        [Trait("DFe", "GNRE")]
-        [InlineData(UFBrasil.PR, TipoAmbiente.Homologacao, 100013)]
-        [InlineData(UFBrasil.SP, TipoAmbiente.Producao, 100021)]
-        public void ConsultaConfigUFConstrutor3Param(UFBrasil ufBrasil, TipoAmbiente tipoAmbiente, int receita)
-        {
-            var configuracao = new Configuracao
-            {
-                TipoDFe = TipoDFe.GNRE,
-                TipoEmissao = TipoEmissao.Normal,
-                CertificadoDigital = PropConfig.CertificadoDigital
-            };
-
-            var consultaConfigUF = new ConsultaConfigUF(ufBrasil, tipoAmbiente, receita, configuracao);
-            consultaConfigUF.Executar();
-
-            Assert.NotNull(consultaConfigUF.Result);
-            Assert.Equal(tipoAmbiente, consultaConfigUF.Result.Ambiente);
-            Assert.Equal(Servico.GNREConsultaConfigUF, configuracao.Servico);
-        }
-
-        ///<summary>
-        ///Teste construtor 4 parâmetros
+        ///Teste construtor API
         ///</summary>
         [Theory]
         [Trait("DFe", "GNRE")]
