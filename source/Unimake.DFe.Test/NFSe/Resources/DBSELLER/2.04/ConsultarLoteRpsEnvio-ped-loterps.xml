@@ -1,13 +1,9 @@
 <ConsultarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
-	<!-- Obrigatório -->
 	<Prestador>
 		<CpfCnpj>
-			<!-- CPF ou CNPJ. Não enviar ambas as tags. -->
-			<Cnpj>?</Cnpj>
-			<Cpf>?</Cpf>
+			<Cnpj>12345678901234</Cnpj>
 		</CpfCnpj>
-		<InscricaoMunicipal>?</InscricaoMunicipal>
+		<InscricaoMunicipal>123456</InscricaoMunicipal>
 	</Prestador>
-	<!-- Obrigatório -->
-	<Protocolo>?</Protocolo>
+	<Protocolo>12345678</Protocolo>
 </ConsultarLoteRpsEnvio>
