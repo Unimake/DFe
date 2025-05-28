@@ -120,7 +120,7 @@ namespace Unimake.Business.DFe.Servicos.NFe
         /// <param name="configuracao">Config para conexão e envio do XML</param>
         public ConsultaCadastro(UFBrasil ufBrasil, string cnpj, Configuracao configuracao) : this()
         {
-            if (ufBrasil.IsNullOrEmpty())
+            if (!Enum.IsDefined(typeof(UFBrasil), ufBrasil))
             {
                 throw new ArgumentNullException(nameof(ufBrasil));
             }
