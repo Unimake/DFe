@@ -8064,16 +8064,22 @@ namespace Unimake.Business.DFe.Servicos
     public enum TipoProcesso
     {
         /// <summary>
-        /// 01 - Administrativo.
+        /// 1 - Administrativo.
         /// </summary>
         [XmlEnum("1")]
         Administrativo = 1,
 
         /// <summary>
-        /// 02 - Judicial.
+        /// 2 - Judicial.
         /// </summary>
         [XmlEnum("2")]
         Judicial = 2,
+
+        /// <summary>
+        /// 3 - Sem Processo
+        /// </summary>
+        [XmlEnum("3")]
+        SemProcesso = 3
     }
     #endregion
 
