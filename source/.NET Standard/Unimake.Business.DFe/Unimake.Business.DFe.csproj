@@ -301,6 +301,7 @@
 		<None Remove="Servicos\Config\NFSe\AimoresMG.xml" />
 		<None Remove="Servicos\Config\NFSe\AlegreteRS.xml" />
 		<None Remove="Servicos\Config\NFSe\AmambaiMS.xml" />
+		<None Remove="Servicos\Config\NFSe\AmargosaBA.xml" />
 		<None Remove="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />
 		<None Remove="Servicos\Config\NFSe\AracajuSE.xml" />
 		<None Remove="Servicos\Config\NFSe\AraguainaTO.xml" />
@@ -1038,6 +1039,8 @@
 		<None Remove="Xml\Schemas\NFSe\ABACO\2.04\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\AVMB\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\AVMB\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\BETHA\nfse_v01.xsd" />
@@ -1278,6 +1281,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFCom\SVRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFCom\TO.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AimoresMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\AmargosaBA.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BalnearioCamboriuSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BarraVelhaSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\BelemPA.xml" />
@@ -2112,6 +2116,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\2.04\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\nfse v2 03.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ADM_SISTEMAS\2.03\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cabecalho-v2_04.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cancelar-nfse-envio-v2_04.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\consultar-lote-rps-envio-v2_04.xsd" />

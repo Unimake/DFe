@@ -1901,4 +1901,10 @@
 		<ArqConfig>NovaLimaMG.xml</ArqConfig>
 		<PadraoNFSe>ABACO</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="2901007">
+		<Nome>Amargosa - BA</Nome>
+		<UF>BA</UF>
+		<ArqConfig>AmargosaBA.xml</ArqConfig>
+		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
