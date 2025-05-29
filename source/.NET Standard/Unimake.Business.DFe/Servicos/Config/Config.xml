@@ -1895,4 +1895,10 @@
 		<ArqConfig>MafraSC.xml</ArqConfig>
 		<PadraoNFSe>PUBLICA</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3144805">
+		<Nome>Nova Lima - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>NovaLimaMG.xml</ArqConfig>
+		<PadraoNFSe>ABACO</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_recepcionarloterps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_recepcionarloterps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPS.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><A24_RecepcionarLoteRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="201001"&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></A24_RecepcionarLoteRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_RecepcionarLoteRps.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRps>
+		<RecepcionarLoteRpsSincrono versao="2.04">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_recepcionarloterpssincrono?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_recepcionarloterpssincrono?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPSSINCRONO.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_RECEPCIONARLOTERPSSINCRONO.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsSincronoEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.e-nfs.com.br"><soapenv:Header/><soapenv:Body><e:A24_RecepcionarLoteRpsSincrono.Execute><e:Nfsecabecmsg>&lt;cabecalho xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;201001&quot;&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;</e:Nfsecabecmsg><e:Nfsedadosmsg>{xmlBodyScape}</e:Nfsedadosmsg></e:A24_RecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_RecepcionarLoteRpsSincrono.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</RecepcionarLoteRpsSincrono>
+		<GerarNfse versao="2.04">
+			<Descricao>Gerar Nota Fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_gerarnfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_gerarnfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_GERARNFSE.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_GERARNFSE.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><A24_GerarNfse.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="201001"&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></A24_GerarNfse.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_GerarNfse.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</GerarNfse>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_substituirnfse?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_substituirnfse?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_SUBSTITUIRNFSE.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_SUBSTITUIRNFSE.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.e-nfs.com.br"><soapenv:Header/><soapenv:Body><e:A24_SubstituirNfse.Execute><e:Nfsecabecmsg>&lt;cabecalho xmlns=&quot;http://www.abrasf.org.br/nfse.xsd&quot; versao=&quot;201001&quot;&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;</e:Nfsecabecmsg><e:Nfsedadosmsg>{xmlBodyScape}</e:Nfsedadosmsg></e:A24_SubstituirNfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_SubstituirNfse.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_consultarloterps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_consultarloterps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_CONSULTARLOTERPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_CONSULTARLOTERPS.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><A24_ConsultarLoteRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="201001"&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></A24_ConsultarLoteRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_ConsultarLoteRps.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_consultarnfseporrps?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_consultarnfseporrps?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEPORRPS.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEPORRPS.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><A24_ConsultarNfsePorRps.Execute xmlns="http://www.e-nfs.com.br"><Nfsecabecmsg>&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="201001"&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;&lt;/cabecalho&gt;</Nfsecabecmsg><Nfsedadosmsg>{xmlBodyScape}</Nfsedadosmsg></A24_ConsultarNfsePorRps.Execute></soap:Body></soap:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_ConsultarNfsePorRps.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfsePorRps>
+		<ConsultarNfseFaixa versao="2.04">
+			<Descricao>Consulta NFSe por Faixa</Descricao>
+			<WebEnderecoHomologacao>https://enfs-hom.abaco.com.br/novalima/servlet/aa24_consultarnfsefaixa?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://www.e-nfs.com.br/e-nfs_novalima/servlet/aa24_consultarnfsefaixa?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEFAIXA.Execute</WebActionHomologacao>
+			<WebActionProducao>http://www.e-nfs.com.braction/AA24_CONSULTARNFSEFAIXA.Execute</WebActionProducao>
+			<SchemaArquivo>schema nfse v2-04.xsd</SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapString><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:e="http://www.e-nfs.com.br"><soapenv:Header/><soapenv:Body><e:A24_ConsultarNfseFaixa.Execute><e:Nfsecabecmsg>&lt;cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="201001"&gt;&lt;versaoDados&gt;2.04&lt;/versaoDados&gt;&lt;/cabecalho&gt;</e:Nfsecabecmsg><e:Nfsedadosmsg>{xmlBodyScape}</e:Nfsedadosmsg></e:A24_ConsultarNfseFaixa.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapString>
+			<WebTagRetorno>A24_ConsultarNfseFaixa.ExecuteResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS></TargetNS>
+		</ConsultarNfseFaixa>
+	</Servicos>
+</Configuracoes>
