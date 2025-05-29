@@ -1,0 +1,62 @@
+<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Rps>
+		<InfDeclaracaoPrestacaoServico Id="Nota_1">
+			<Competencia>2020-07-10</Competencia>
+			<Servico>
+				<Valores>
+					<ValorServicos>123.13</ValorServicos>
+					<ValorDeducoes>0.00</ValorDeducoes>
+					<ValorPis>0.00</ValorPis>
+					<ValorCofins>0.00</ValorCofins>
+					<ValorInss>0.00</ValorInss>
+					<ValorIr>0.00</ValorIr>
+					<ValorCsll>0.00</ValorCsll>
+					<OutrasRetencoes>0.00</OutrasRetencoes>
+					<ValTotTributos>0.00</ValTotTributos>
+					<ValorIss>0.00</ValorIss>
+					<Aliquota>2.79</Aliquota>
+					<DescontoIncondicionado>0.00</DescontoIncondicionado>
+					<DescontoCondicionado>0.00</DescontoCondicionado>
+				</Valores>
+				<IssRetido>2</IssRetido>
+				<ItemListaServico>34.01</ItemListaServico>
+				<CodigoCnae>8030700</CodigoCnae>
+				<Discriminacao>Teste Emissao de NFSE Sem Valor Juridico ou Fiscal Abrasf 24</Discriminacao>
+				<CodigoMunicipio>3144805</CodigoMunicipio>
+				<ExigibilidadeISS>1</ExigibilidadeISS>
+				<MunicipioIncidencia>3144805</MunicipioIncidencia>
+			</Servico>
+			<Prestador>
+				<CpfCnpj>
+					<Cnpj>99999999999999</Cnpj>
+				</CpfCnpj>
+				<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+			</Prestador>
+			<TomadorServico>
+				<IdentificacaoTomador>
+					<CpfCnpj>
+						<Cnpj>99999999999999</Cnpj>
+					</CpfCnpj>
+				</IdentificacaoTomador>
+				<RazaoSocial>TESTE TESTE TESTE</RazaoSocial>
+				<Endereco>
+					<Endereco>NAO INFORM</Endereco>
+					<Numero>0</Numero>
+					<Complemento>KM 5</Complemento>
+					<Bairro>CENTRO</Bairro>
+					<CodigoMunicipio>2700300</CodigoMunicipio>
+					<Uf>AL</Uf>
+					<Cep>99999999</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>99999999</Telefone>
+					<Email>tomador@dominio.com</Email>
+				</Contato>
+			</TomadorServico>
+			<RegimeEspecialTributacao>1</RegimeEspecialTributacao>
+			<OptanteSimplesNacional>2</OptanteSimplesNacional>
+			<IncentivoFiscal>2</IncentivoFiscal>
+			<InformacoesComplementares>INFORMACAO EXTRA</InformacoesComplementares>
+		</InfDeclaracaoPrestacaoServico>
+	</Rps>
+</GerarNfseEnvio>

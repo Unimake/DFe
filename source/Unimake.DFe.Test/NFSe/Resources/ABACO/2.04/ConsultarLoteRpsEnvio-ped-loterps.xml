@@ -1,0 +1,8 @@
+<ConsultarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Prestador>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+	</Prestador>
+	<Protocolo>99999999999999AAAA99999999999999</Protocolo>
+</ConsultarLoteRpsEnvio>
