@@ -476,6 +476,7 @@
 		<None Remove="Servicos\Config\NFSe\NovaBassanoRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaFriburgoRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
+		<None Remove="Servicos\Config\NFSe\NovaLimaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaMutumMT.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaPrataRS.xml" />
 		<None Remove="Servicos\Config\NFSe\NovaSerranaMG.xml" />
@@ -1033,6 +1034,8 @@
 		<None Remove="Xml\Schemas\NFe\retEventoEPEC_v0.01.xsd" />
 		<None Remove="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
 		<None Remove="Xml\Schemas\nfe_v4.00.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ABACO\2.04\schema nfse v2-04.xsd" />
+		<None Remove="Xml\Schemas\NFSe\ABACO\2.04\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 		<None Remove="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 		<None Remove="Xml\Schemas\NFSe\AVMB\nfse.xsd" />
@@ -1289,6 +1292,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaLimaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PauliniaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\PoaSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AracajuSE.xml" />
@@ -2104,6 +2108,8 @@
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoCancInsucessoNFe_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoEConf_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFe\retEventoInsucessoNFe_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\2.04\schema nfse v2-04.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABACO\2.04\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\nfse.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\ABASE\xmldsig-core-schema20020212.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NFSe\DBSELLER\cabecalho-v2_04.xsd" />

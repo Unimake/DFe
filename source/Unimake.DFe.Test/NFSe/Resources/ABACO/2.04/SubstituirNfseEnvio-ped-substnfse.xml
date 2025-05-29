@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><SubstituirNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <SubstituicaoNfse Id="Substituicao_001">
+        <Pedido>
+            <InfPedidoCancelamento Id="Substituicao_Cancelamento_001">
+                <IdentificacaoNfse>
+                    <Numero>13</Numero>
+                    <CpfCnpj>
+                        <!-- <Cpf></Cpf> -->
+                        <Cnpj>12345678901234</Cnpj>
+                    </CpfCnpj>
+                    <InscricaoMunicipal>128327</InscricaoMunicipal>
+                    <CodigoMunicipio>3144805</CodigoMunicipio>
+                </IdentificacaoNfse>
+                <CodigoCancelamento>1</CodigoCancelamento>
+            </InfPedidoCancelamento>
+            <!-- Signature-->
+        </Pedido>
+        <Rps>
+            <InfDeclaracaoPrestacaoServico Id="Substituicao_Geracao_001">
+                <Rps Id="Substituicao_Geracao_RPS_001">
+                    <IdentificacaoRps>
+                        <Numero>14</Numero>
+                        <Serie>0001</Serie>
+                        <Tipo>1</Tipo>
+                    </IdentificacaoRps>
+                    <DataEmissao>2020-07-09</DataEmissao>
+                    <Status>1</Status>
+                    <!-- <RpsSubstituido>
+                        <Numero></Numero>
+                        <Serie></Serie>
+                        <Tipo></Tipo>
+                    </RpsSubstituido> -->
+                </Rps>
+                <Competencia>2020-07-09</Competencia>
+                <Servico>
+                    <Valores>
+                        <ValorServicos>1000000000.00</ValorServicos>
+                        <ValorDeducoes>0.00</ValorDeducoes>
+                        <ValorPis>0.00</ValorPis>
+                        <ValorCofins>0.00</ValorCofins>
+                        <ValorInss>0.00</ValorInss>
+                        <ValorIr>0.00</ValorIr>
+                        <ValorCsll>0.00</ValorCsll>
+                        <OutrasRetencoes>0.00</OutrasRetencoes>
+                        <ValTotTributos>0.00</ValTotTributos>
+                        <ValorIss>0.00</ValorIss>
+                        <Aliquota>0.00</Aliquota>
+                        <DescontoIncondicionado>0.00</DescontoIncondicionado>
+                        <DescontoCondicionado>0.00</DescontoCondicionado>
+                    </Valores>
+                    <IssRetido>2</IssRetido>
+                    <!-- <ResponsavelRetencao></ResponsavelRetencao> -->
+                    <ItemListaServico>34.01</ItemListaServico>
+                    <CodigoCnae>8030700</CodigoCnae>
+                    <!-- <CodigoTributacaoMunicipio></CodigoTributacaoMunicipio> -->
+                    <!-- <CodigoNbs></CodigoNbs> -->
+                    <Discriminacao>Teste do serviço de Substituicao de NFSE da ABRASF 2.04</Discriminacao>
+                    <CodigoMunicipio>3144805</CodigoMunicipio>
+                    <!-- <CodigoPais></CodigoPais> -->
+                    <ExigibilidadeISS>1</ExigibilidadeISS>
+                    <!-- <IdentifNaoExigibilidade></IdentifNaoExigibilidade> -->
+                    <MunicipioIncidencia>3144805</MunicipioIncidencia>
+                    <!-- <NumeroProcesso></NumeroProcesso> -->
+                </Servico>
+                <Prestador>
+                    <CpfCnpj>
+                        <!-- <Cpf></Cpf> -->
+                        <Cnpj>12345678901234</Cnpj>
+                    </CpfCnpj>
+                    <InscricaoMunicipal>128327</InscricaoMunicipal>
+                </Prestador>
+                <TomadorServico>
+                    <IdentificacaoTomador>
+                        <CpfCnpj>
+                            <Cpf>12345678901</Cpf>
+                            <!-- <Cnpj></Cnpj> -->
+                        </CpfCnpj>
+                        <!-- <InscricaoMunicipal>275554144</InscricaoMunicipal> -->
+                    </IdentificacaoTomador>
+                    <!-- <NifTomador></NifTomador> -->
+                    <RazaoSocial>OTÁVIO LUCAS PEDRO DA CRUZ</RazaoSocial>
+                    <Endereco>
+                        <Endereco>AVENIDA TORONTO</Endereco>
+                        <Numero>244</Numero>
+                        <!-- <Complemento></Complemento> -->
+                        <Bairro>JARDIM CANADÁ</Bairro>
+                        <CodigoMunicipio>3144805</CodigoMunicipio>
+                        <Uf>MG</Uf>
+                        <Cep>78120460</Cep>
+                    </Endereco>
+                    <!-- <EnderecoExterior>
+                        <CodigoPais></CodigoPais>
+                        <EnderecoCompletoExterior></EnderecoCompletoExterior>
+                    </EnderecoExterior> -->
+                    <Contato>
+                        <!-- <Telefone></Telefone> -->
+                        <Email>email@email.com</Email>
+                    </Contato>
+                </TomadorServico>
+                <!-- <Intermediario>
+                    <IdentificacaoIntermediario>
+                        <CpfCnpj>
+                            <Cpf></Cpf>
+                            <Cnpj></Cnpj>
+                        </CpfCnpj>
+                        <InscricaoMunicipal></InscricaoMunicipal>
+                    </IdentificacaoIntermediario>
+                    <RazaoSocial></RazaoSocial>
+                    <CodigoMunicipio></CodigoMunicipio>
+                </Intermediario> -->
+                <!-- <ConstrucaoCivil>
+                    <CodigoObra></CodigoObra>
+                    <Art></Art>
+                </ConstrucaoCivil> -->
+                <!-- <RegimeEspecialTributacao></RegimeEspecialTributacao> -->
+                <OptanteSimplesNacional>2</OptanteSimplesNacional>
+                <IncentivoFiscal>2</IncentivoFiscal>
+                <!-- <Evento>
+                    <IdentificacaoEvento></IdentificacaoEvento>
+                    <DescricaoEvento></DescricaoEvento>
+                </Evento> -->
+                <InformacoesComplementares>Informacoess Complementares do teste do serviço de Substituicao de NFSE da ABRASF 2.04</InformacoesComplementares>
+                <!-- <Deducao>
+                    <TipoDeducao></TipoDeducao>
+                    <DescricaoDeducao></DescricaoDeducao>
+                    <IdentificacaoDocumentoDeducao>
+                        <IdentificacaoNfse>
+                            <CodigoMunicipioGerador></CodigoMunicipioGerador>
+                            <NumeroNfse></NumeroNfse>
+                            <CodigoVerificacao></CodigoVerificacao>
+                        </IdentificacaoNfse>
+                        <IdentificacaoNfe>
+                            <NumeroNfe></NumeroNfe>
+                            <UfNfe></UfNfe>
+                            <ChaveAcessoNfe></ChaveAcessoNfe>
+                        </IdentificacaoNfe>
+                        <OutroDocumento>
+                            <IdentificacaoDocumento></IdentificacaoDocumento>
+                        </OutroDocumento>
+                    </IdentificacaoDocumentoDeducao>
+                    <DadosFornecedor>
+                        <IdentificacaoFornecedor>
+                            <CpfCnpj>
+                                <Cpf></Cpf>
+                                <Cnpj></Cnpj>
+                            </CpfCnpj>
+                        </IdentificacaoFornecedor>
+                        <FornecedorExterior>
+                            <NifFornecedor></NifFornecedor>
+                            <CodigoPais></CodigoPais>
+                        </FornecedorExterior>
+                    </DadosFornecedor>
+                    <DataEmissao></DataEmissao>
+                    <ValorDedutivel></ValorDedutivel>
+                    <ValorUtilizadoDeducao></ValorUtilizadoDeducao>
+                </Deducao> -->
+            </InfDeclaracaoPrestacaoServico>
+            <!-- Signature-->
+        </Rps>
+    </SubstituicaoNfse>
+    <!-- Signature-->
+</SubstituirNfseEnvio>

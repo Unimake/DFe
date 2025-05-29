@@ -92,9 +92,9 @@ namespace Unimake.Business.DFe.Servicos.NF3e
         }
 
         /// <summary>
-        /// Construtor tanto para XML completo quanto para APi
+        /// Construtor para XML
         /// </summary>
-        /// <param name="conteudo">String do XML ou chave de acesso NF3e</param>
+        /// <param name="conteudo">String do XML </param>
         /// <param name="configuracao">Configurações para conexão e envio do XML para o web-service</param>
         public ConsultaProtocolo(string conteudo, Configuracao configuracao) : this()
         {
@@ -108,28 +108,11 @@ namespace Unimake.Business.DFe.Servicos.NF3e
                 throw new ArgumentNullException(nameof(configuracao));
             }
 
-            if (conteudo.Length == 44)
-            {
-                var xml = new ConsSitNF3e
-                {
-                    Versao = "1.00",
-                    TpAmb = configuracao.TipoAmbiente,
-                    ChNF3e = conteudo,
-                    XServ = "CONSULTAR",
-                };
+           
+             var doc = new XmlDocument();
+             doc.LoadXml(conteudo);
 
-                var doc = new XmlDocument();
-                doc.LoadXml(xml?.GerarXML().OuterXml);
-
-                Inicializar(doc, configuracao);
-            }
-            else
-            {
-                var doc = new XmlDocument();
-                doc.LoadXml(conteudo);
-
-                Inicializar(doc, configuracao);
-            }
+             Inicializar(doc, configuracao);
         }
 
         #endregion Public Constructors
