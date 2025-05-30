@@ -1907,4 +1907,10 @@
 		<ArqConfig>AmargosaBA.xml</ArqConfig>
 		<PadraoNFSe>ADM_SISTEMAS</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4317103">
+		<Nome>Santana do Livramento - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>SantanaLivramentoRS.xml</ArqConfig>
+		<PadraoNFSe>DBSELLER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
