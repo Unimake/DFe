@@ -13,12 +13,19 @@
 		<Emissao>1900-01-01</Emissao>
 		<CNPJCPFTomador>99999999999999</CNPJCPFTomador>
 		<NomeTomador/>
+		<NomePrestador/>
 		<UFTomador>SP</UFTomador>
+		<UFPrestador>SP</UFPrestador>
 		<CidadeTomador>3552205</CidadeTomador>
+		<CidadePrestador>3552205</CidadePrestador>
 		<EnderecoTomador/>
+		<EnderecoPrestador/>
 		<NumeroTomador/>
+		<NumeroPrestador/>
 		<ComplementoTomador/>
+		<ComplementoPrestador/>
 		<BairroTomador/>
+		<BairroPrestador/>
 		<CEPTomador>99999-999</CEPTomador>
 		<EmailTomador>teste@teste.com.br</EmailTomador>
 		<Observacao/>

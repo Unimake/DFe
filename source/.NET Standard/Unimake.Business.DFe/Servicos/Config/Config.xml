@@ -1949,4 +1949,10 @@
 		<ArqConfig>JuquiaSP.xml</ArqConfig>
 		<PadraoNFSe>CECAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3523503">
+		<Nome>Itatinga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItatingaSP.xml</ArqConfig>
+		<PadraoNFSe>CECAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

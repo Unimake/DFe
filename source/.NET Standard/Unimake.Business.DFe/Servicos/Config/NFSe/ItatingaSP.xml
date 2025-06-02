@@ -4,7 +4,7 @@
 		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://iss.juquia.sp.gov.br:8081/CECAM.ISSWEB/webservices/wsisseletronico.asmx?WSDL</WebEnderecoProducao>
+			<WebEnderecoProducao>https://itatinga-prefeitura.cecam.com.br/ISSWeb/WebServices/wsisseletronico.asmx?WSDL</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/EnviarLoteNotaFiscal</WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
@@ -23,7 +23,7 @@
 		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://iss.juquia.sp.gov.br:8081/CECAM.ISSWEB/webservices/wsisseletronico.asmx?WSDL</WebEnderecoProducao>
+			<WebEnderecoProducao>https://itatinga-prefeitura.cecam.com.br/ISSWeb/WebServices/wsisseletronico.asmx?WSDL</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/CancelarNotaFiscalEletronica</WebActionProducao>
 			<SchemaArquivo>XSDISSECancelaNFe.xsd</SchemaArquivo>
@@ -33,7 +33,7 @@
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CancelarNotaFiscalEletronica xmlns="http://tempuri.org/"><xmlNotas>{xmlBodyScape}</xmlNotas><versao>004</versao></CancelarNotaFiscalEletronica></soap:Body></soap:Envelope>]]></WebSoapString>
-			<WebTagRetorno>ISSECancelaNFeRetorno</WebTagRetorno>
+			<WebTagRetorno>CancelarNotaFiscalEletronicaResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap12</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
@@ -42,7 +42,7 @@
 		<ConsultarNfse versao="1.00">
 			<Descricao>Consultar Nota Fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao></WebEnderecoHomologacao>
-			<WebEnderecoProducao>http://iss.juquia.sp.gov.br:8081/CECAM.ISSWEB/webservices/wsisseletronico.asmx?WSDL</WebEnderecoProducao>
+			<WebEnderecoProducao>https://itatinga-prefeitura.cecam.com.br/ISSWeb/WebServices/wsisseletronico.asmx?WSDL</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao>http://tempuri.org/ConsultarNotaFiscal</WebActionProducao>
 			<SchemaArquivo>XSDISSEConsultaNota.xsd</SchemaArquivo>
