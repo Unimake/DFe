@@ -1937,4 +1937,10 @@
 		<ArqConfig>JuizDeForaMG.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3303609">
+		<Nome>Paracambi - RJ</Nome>
+		<UF>RJ</UF>
+		<ArqConfig>ParacambiRJ.xml</ArqConfig>
+		<PadraoNFSe>FINTEL</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
