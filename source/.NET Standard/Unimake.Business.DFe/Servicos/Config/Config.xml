@@ -1919,4 +1919,16 @@
 		<ArqConfig>TramandaiRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3143104">
+		<Nome>Monte Carmelo - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>MonteCarmeloMG.xml</ArqConfig>
+		<PadraoNFSe>E_RECEITA</PadraoNFSe>
+	</Arquivo>
+	<Arquivo ID="3164704">
+		<Nome>São Sebastião do Paraíso - MG</Nome>
+		<UF>MG</UF>
+		<ArqConfig>SaoSebastiaoParaisoMG.xml</ArqConfig>
+		<PadraoNFSe>E_RECEITA</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
