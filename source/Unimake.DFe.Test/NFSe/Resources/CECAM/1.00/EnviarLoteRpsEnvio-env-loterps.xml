@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NFEEletronica xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDNFEletronica.xsd">
+	<Header>
+		<Versao>002</Versao>
+		<CNPJCPFPrestador>99999999999999</CNPJCPFPrestador>
+		<Chave>999999999999999999998888889999999999999999999999</Chave>
+	</Header>
+	<DadosNotaFiscal>
+		<ID>589780</ID>
+		<NumeroNF>0000000000</NumeroNF>
+		<SituacaoNF>N</SituacaoNF>
+		<TipoNF>P</TipoNF>
+		<Emissao>1900-01-01</Emissao>
+		<CNPJCPFTomador>99999999999999</CNPJCPFTomador>
+		<NomeTomador/>
+		<UFTomador>SP</UFTomador>
+		<CidadeTomador>3552205</CidadeTomador>
+		<EnderecoTomador/>
+		<NumeroTomador/>
+		<ComplementoTomador/>
+		<BairroTomador/>
+		<CEPTomador>99999-999</CEPTomador>
+		<EmailTomador>teste@teste.com.br</EmailTomador>
+		<Observacao/>
+		<NFSubstituta>0000000000</NFSubstituta>
+		<ValorAliquotaSimplesNacional>0</ValorAliquotaSimplesNacional>
+		<LocalPrestacao>1</LocalPrestacao>
+		<DescricaoLocalPrestacao/>
+		<DescricaoLocalPrestacaoComplementar/>
+		<InscricaoImovel>0</InscricaoImovel>
+		<UFLocalPrestacao>SP</UFLocalPrestacao>
+		<CidadeLocalPrestacao>0000000</CidadeLocalPrestacao>
+		<ValorAliquotaLocalPrestacao>0</ValorAliquotaLocalPrestacao>
+		<EnderecoLocalPrestacao/>
+		<NumeroLocalPrestacao/>
+		<ComplementoLocalPrestacao/>
+		<BairroLocalPrestacao/>
+		<CEPLocalPrestacao>00000-000</CEPLocalPrestacao>
+		<MotivoCancelamento/>
+		<TipoDocumento>003</TipoDocumento>
+		<DadosItensNotaFiscal>
+			<ItemAtividade>742</ItemAtividade>
+			<TextoItem>NOTA TESTE</TextoItem>
+			<ValorItem>15.99</ValorItem>
+			<ValorDeducao>0</ValorDeducao>
+			<Retido>N</Retido>
+			<Pais>Brasil</Pais>
+		</DadosItensNotaFiscal>
+	</DadosNotaFiscal>
+</NFEEletronica>

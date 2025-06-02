@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ISSECancelaNFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDISSECancelaNFe.xsd">
+	<Header>
+		<Versao>004</Versao>
+		<CNPJCPFPrestador>99999999999999</CNPJCPFPrestador>
+		<Chave>999999999999999999998888889999999999999999999999</Chave>
+	</Header>
+	<Filtro>
+		<NumeroNF>59</NumeroNF>
+		<ChaveValidacao>ABCD-12345</ChaveValidacao>
+		<MotivoCancelamento>TESTE DE CANCELAMENTO DE NOTAS FISCAIS</MotivoCancelamento>
+	</Filtro>
+</ISSECancelaNFe>

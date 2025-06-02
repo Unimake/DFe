@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ISSEConsultaNota xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDISSEConsultaNota.xsd">
+	<Header>
+		<Versao>003</Versao>
+		<CNPJCPFPrestador>99999999999999</CNPJCPFPrestador>
+		<Chave>999999999999999999998888889999999999999999999999</Chave>
+	</Header>
+	<Filtro>
+		<NumeroNFInicial>0</NumeroNFInicial>
+		<NumeroNFFinal>0</NumeroNFFinal>
+		<Referencia>000000</Referencia>
+		<Lote>0</Lote>
+		<TipoDocumento>003</TipoDocumento>
+	</Filtro>
+</ISSEConsultaNota>
