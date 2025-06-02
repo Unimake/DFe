@@ -444,6 +444,7 @@
 		<None Remove="Servicos\Config\NFSe\JoaoPessoaPB.xml" />
 		<None Remove="Servicos\Config\NFSe\JoinvilleSC.xml" />
 		<None Remove="Servicos\Config\NFSe\JuazeiroBA.xml" />
+		<None Remove="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 		<None Remove="Servicos\Config\NFSe\JundiaiSP.xml" />
 		<None Remove="Servicos\Config\NFSe\JuscimeiraMT.xml" />
 		<None Remove="Servicos\Config\NFSe\LimeiraSP.xml" />
@@ -1298,6 +1299,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItabiraMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItajaiSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\ItamogiMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\JuizDeForaMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MafraSC.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\MonteCarmeloMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\NovaIguacuRJ.xml" />
@@ -3140,6 +3142,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Servicos\MFE\" />
+	  <Folder Include="Xml\Schemas\NFSe\FINTEL\2.02\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

@@ -1,0 +1,1034 @@
+<!--
+
+
+                      Formatos e Padrões Utilizados
+                      
+Abaixo seguem algumas formatações de dados que devem ser seguidas para geração correta na estrutura dos arquivos.
+
+Data (date)
+    * Formato: AAAA-MM-DD
+    * onde:
+    * AAAA = ano com 4 caracteres MM = mês com 2 caracteres DD = dia com 2 caracteres
+Data/Hora (datetime)
+    * Formato AAAA-MM-DDTHH:mm:ss onde:
+    * AAAA = ano com 4 caracteres MM = mês com 2 caracteres DD = dia com 2 caracteres
+    * T = caractere de formatação que deve existir separando a data da hora
+    * HH = hora com 2 caracteres mm: minuto com 2 caracteres ss: segundo com 2 caracteres
+Valores Decimais (decimal)
+    * Formato: 0.00
+    * Não deve ser utilizado separador de milhar. O ponto (.) deve ser utilizado para separar a parte inteira da fracionária.
+    * Exemplo:
+    * 48.562,25 = 48562.25
+    * 1,00 = 1.00 ou 1
+    * 0,50 = 0.50 ou 0.5
+Valores Percentuais (decimal)
+    * Formato 0.0000
+    * O formato em percentual presume o valor percentual em sua forma fracionária, contendo 5 dígitos. O ponto (.) separa a parte inteira da fracionária.
+    * Exemplo:
+    * 62% = 62
+    * 150% = 15
+    * 25,32 = 25.32
+
+Para reduzir o tamanho final do arquivo XML da Cfs-e alguns cuidados de programação deverão ser assumidos:
+    * não incluir "zeros não significativos" para campos numéricos;
+    * não incluir "espaços" no início ou no final de campos numéricos e alfanuméricos;
+    * não incluir comentários no arquivo XML;
+    * não incluir anotação e documentação no arquivo XML (TAG annotation e TAG documentation);
+    * não incluir caracteres de formatação no arquivo XML ("line-feed", "carriage return", "tab", caractere de "espaço" entre as TAGs);
+    * Para quebra de linha na exibição para os campos contendo caracteres Discriminacao
+    * e Outrasinformacoes, utilizar a sequência “\s\n”.
+
+Não deve ser inserido caractere não significativo para preencher o tamanho completo do campo, ou seja, zeros antes de número ou espaço em branco após a cadeia de caracteres. 
+A posição do campo é definida na estrutura do documento XML através de TAGs (<tag>conteúdo</tag>).
+A regra constante do parágrafo anterior deverá estender-se para os campos para os quais não há indicação de obrigatoriedade e que, no entanto, 
+seu preenchimento torna-se obrigatório seja condicionado à legislação específica ou ao negócio do contribuinte. Nesse caso, 
+deverá constar a TAG com o valor correspondente e, para os demais campos, deverão ser eliminadas as TAGs.
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://iss.irati.pr.gov.br/Arquivos/cfse.xsd" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://iss.irati.pr.gov.br/Arquivos/cfse.xsd" attributeFormDefault="unqualified" elementFormDefault="qualified">
+<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema20020212.xsd"/>
+<!--
+ Definação de elementos simples, que serão utilizados para compor um elemento complexo 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsNumeroCfse">
+<xsd:restriction base="xsd:nonNegativeInteger">
+<xsd:totalDigits value="15"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCodigoVerificacao">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="50"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Código de autendicidade, composto por (ValorTotal + Data(aaaammdd) + número + Alvará + Terminal) convertido para hexadecimal. Deve seguir exatamente o exposto, pois dados incorretos serào invalidados. 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsStatusCfse">
+<xsd:restriction base="xsd:byte">
+<xsd:pattern value="1|2"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+  Código de status do cupom fiscal
+  1 – Normal
+  2 – Cancelado  
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsExigibilidadeISS">
+<xsd:restriction base="xsd:byte">
+<xsd:pattern value="1|2|3|4|5|6|7|8"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+
+  Código de natureza da operação
+  1 – Exigível;
+  2 – Não incidência;
+  3 – Isenção;
+  4 – Exportação;
+  5 – Imunidade;
+  6 – Exigibilidade Suspensa por Decisão Judicial;
+  7 – Exigibilidade Suspensa por Processo Administrativo;
+  8 – Pagamento por ISS Fixo; 
+-->
+<xsd:simpleType name="tsNumeroProcesso">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="30"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+
+  6 – Exigibilidade Suspensa por Decisão Judicial;
+  7 – Exigibilidade Suspensa por Processo Administrativo;
+  Para os dois itens acima de tsExigibilidadeISS é obrigatório a informação do tsNumeroProcesso.
+  
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsSimNao">
+<xsd:restriction base="xsd:byte">
+<xsd:pattern value="1|2"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!-- Para campos de escolha  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsPagina">
+<xsd:restriction base="xsd:nonNegativeInteger">
+<xsd:minInclusive value="1"/>
+<xsd:maxInclusive value="999999"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!-- Para consulta onde é necessário paginar  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsSerieCfse">
+<xsd:restriction base="xsd:nonNegativeInteger">
+<xsd:minInclusive value="1"/>
+<xsd:maxInclusive value="999999"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+Como possível ter mais de um terminal emissor para isso foi criado a serie de cupom 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsOutrasInformacoes">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="255"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Para observações de cupom fiscal  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsChaveTerminal">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="300"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="tsSerialHD">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="300"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="tsNumeroTerminal">
+<xsd:restriction base="xsd:nonNegativeInteger">
+<xsd:minInclusive value="1"/>
+<xsd:maxInclusive value="999999"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="tsNomeMaquina">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="255"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="tsMAC">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="300"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsValor">
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="15"/>
+<xsd:fractionDigits value="2" fixed="true"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!-- para campos do tipo valor  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsItemListaServico">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="5"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+Para expressar o item da lista de serviço utilizado: Padrão de 10.01; 10.02; 0.00; 1.02; 
+      Exemplo de utilização:  
+        * Errado: 1001; 10.1; 10,01
+        * Certo: 10.01 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCodigoCnae">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  A informação deve seguir o padrão de 6319-4/00 -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsAliquota">
+<xsd:restriction base="xsd:decimal">
+<xsd:totalDigits value="6"/>
+<xsd:fractionDigits value="4"/>
+<xsd:minInclusive value="0"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Seguir o padrão de valores percentuais  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsDiscriminacao">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="2000"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Seguir o padrão de valores percentuais  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCodigoMunicipioIbge">
+<xsd:restriction base="xsd:int">
+<xsd:totalDigits value="7"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Informação do código do municipio seguindo a tebela de múnicipios do IBGE 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsInscricaoMunicipal">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="15"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Informação do alvará ou iscrição municipal da empresa 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsRazaoSocial">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="150"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Razão Social da empresa   -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsNomeFantasia">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="60"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Nome Fantasia da empresa   -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCnpj">
+<xsd:restriction base="xsd:string">
+<xsd:length value="14" fixed="true"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  CNPJ da empresa   -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsEndereco">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="125"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ RUA da empresa.  avenidas, ruas, praças, jardins, parques, etc.  
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsNumeroEndereco">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="10"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Representação do número  de endereço da empresa, pode ser informado S/N, s/n 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsComplementoEndereco">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="60"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Representação do complemento de endereço da empresa
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsBairro">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="60"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Representação do bairro de endereço da empresa -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsUf">
+<xsd:restriction base="xsd:string">
+<xsd:length value="2" fixed="true"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Representação do uf (PR,SP,RJ, etc) de endereço da empresa
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCodigoPaisBacen">
+<xsd:restriction base="xsd:string">
+<xsd:length value="4"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Representação do codigo do pais seguindo a tabela do bacen
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCep">
+<xsd:restriction base="xsd:string">
+<xsd:length value="8"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Representação do CEP de endereço da empresa -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsEmail">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="80"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Representação de email com no maximo 80 caracteres  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsTelefone">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="20"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Representação de telefone  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCpf">
+<xsd:restriction base="xsd:string">
+<xsd:length value="11" fixed="true"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Representação de numeração de um documento CPF, este documento será validado pelo ws por isso não informar documentos invalidos 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsNumeroLote">
+<xsd:restriction base="xsd:nonNegativeInteger">
+<xsd:totalDigits value="15"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Representação do numero do lote a ser gerado  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsNumeroProtocolo">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="50"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+ Representação do número de protocolo gerado pela prefeitura a cada processamento 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsSituacaoLote">
+<xsd:restriction base="xsd:byte">
+<xsd:pattern value="1|2|3|4|5"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+Situações;
+  1 – Não Recebido
+  2 – Não Processado
+  3 – Processado com Erro
+  4 – Processado com Alerta
+  5 – Processado com Sucesso
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsQuantidade">
+<xsd:restriction base="xsd:int"></xsd:restriction>
+</xsd:simpleType>
+<!--  quantidade de cupom no lote -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCodigoMensagemAlerta">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="5"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="tsDescricaoMensagemAlerta">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="200"/>
+<xsd:minLength value="1"/>
+<xsd:whiteSpace value="collapse"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!-- utilizado para tratamento de alertas -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsCodigoCancelamento">
+<xsd:restriction base="xsd:byte">
+<xsd:pattern value="1|2|3|4|5"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--
+Código de cancelamento com base na tabela de  Erros e alertas.
+      1 – Erro na emissão
+      2 – Serviço não prestado
+      3 – Erro de assinatura
+      4 – Duplicidade da nota
+      5 – Erro de processamento 
+    Importante: Os códigos 3 (Erro de assinatura) e 5 (Erro de processamento) são de uso restrito da Administração Tributária Municipal 
+-->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsIdTag">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="255"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Atributos das tags para assinatura  -->
+<!--
+========================//===================//===================//
+-->
+<xsd:simpleType name="tsVersao">
+<xsd:restriction base="xsd:string">
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+<!--  Versão de dados  -->
+<!--
+========================//===================//===================//
+-->
+<!--  definição dos objetos complexos  -->
+<xsd:complexType name="tccfCpfCnpj">
+<xsd:choice>
+<xsd:element name="Cpf" type="tsCpf" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Cnpj" type="tsCnpj" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+<xsd:complexType name="tccfEndereco">
+<xsd:sequence>
+<xsd:element name="Endereco" type="tsEndereco" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Numero" type="tsNumeroEndereco" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Complemento" type="tsComplementoEndereco" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Bairro" type="tsBairro" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="CodigoMunicipio" type="tsCodigoMunicipioIbge" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Uf" type="tsUf" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="CodigoPais" type="tsCodigoPaisBacen" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Cep" type="tsCep" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="NomeCidade" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfContato">
+<xsd:sequence>
+<xsd:element name="Telefone" type="tsTelefone" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Email" type="tsEmail" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfIdentificacaoCfse">
+<xsd:sequence>
+<xsd:element name="Numero" type="tsNumeroCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Serie" type="tsSerieCfse" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfIdentificacaoPrestador">
+<xsd:sequence>
+<xsd:element name="CpfCnpj" type="tccfCpfCnpj" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="InscricaoMunicipal" type="tsInscricaoMunicipal" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfIdentificacaoTomador">
+<xsd:sequence>
+<xsd:element name="CpfCnpj" type="tccfCpfCnpj" minOccurs="1" maxOccurs="1"/>
+<!--
+<xsd:element name="InscricaoMunicipal" type="tsInscricaoMunicipal"	minOccurs="0" maxOccurs="1" />
+-->
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfDadosTomador">
+<xsd:sequence>
+<xsd:element name="IdentificacaoTomador" type="tccfIdentificacaoTomador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Nome" type="tsRazaoSocial" minOccurs="1" maxOccurs="1"/>
+<!--
+<xsd:element name="Endereco" type="tccfEndereco" minOccurs="0" maxOccurs="1" />
+-->
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfDadosPrestador">
+<xsd:sequence>
+<xsd:element name="IdentificacaoPrestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="RazaoSocial" type="tsRazaoSocial" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="NomeFantasia" type="tsNomeFantasia" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Endereco" type="tccfEndereco" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Contato" type="tccfContato" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfValoresDeclaracaoServico">
+<xsd:sequence>
+<xsd:element name="Aliquota" type="tsAliquota" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ValorServicos" type="tsValor" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ValorDeducoes" type="tsValor" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="BaseCalculo" type="tsValor" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ValorIss" type="tsValor" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfDadosServico">
+<xsd:sequence>
+<xsd:element name="ItemListaServico" type="tsItemListaServico" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="CodigoCnae" type="tsCodigoCnae" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Discriminacao" type="tsDiscriminacao" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ExigibilidadeISS" type="tsExigibilidadeISS" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="NumeroProcesso" type="tsNumeroProcesso" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Valores" type="tccfValoresDeclaracaoServico" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfCupomFiscal">
+<xsd:sequence>
+<xsd:element name="ValorServicos" type="tsValor" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="InfCfse" type="tccfInfCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="CodigoVerificacao" type="tsCodigoVerificacao" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfInfCfse">
+<xsd:sequence>
+<xsd:element name="IdentificacaoCfse" type="tccfIdentificacaoCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataEmissao" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Status" type="tsStatusCfse" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfInfDeclaracaoPrestacaoServico">
+<xsd:sequence>
+<xsd:element name="InfCfse" type="tccfInfCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ListaServicos" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Servico" type="tccfDadosServico" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="Prestador" type="tccfDadosPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="TomadorServico" type="tccfDadosTomador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="OptanteSimplesNacional" type="tsSimNao" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="CodigoVerificacao" type="tsCodigoVerificacao" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="OutrasInformacoes" type="tsOutrasInformacoes" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfDeclaracaoPrestacaoServico">
+<xsd:sequence>
+<xsd:element name="InfDeclaracaoPrestacaoServico" type="tccfInfDeclaracaoPrestacaoServico" minOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfInfPedidoCancelamento">
+<xsd:sequence>
+<xsd:element name="IdentificacaoCfs" type="tccfIdentificacaoCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="CodigoCancelamento" type="tsCodigoCancelamento" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfPedidoCancelamento">
+<xsd:sequence>
+<xsd:element name="InfPedidoCancelamento" type="tccfInfPedidoCancelamento" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Prestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfConfirmacaoCancelamento">
+<xsd:sequence>
+<xsd:element name="Pedido" type="tccfPedidoCancelamento" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataHora" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfCancelamentoCfse">
+<xsd:sequence>
+<xsd:element name="Confirmacao" type="tccfConfirmacaoCancelamento" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfCompCfse">
+<xsd:sequence>
+<xsd:element name="Cfse" type="tccfInfDeclaracaoPrestacaoServico" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="CfseCancelamento" type="tccfCancelamentoCfse" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfMensagemRetorno">
+<xsd:sequence>
+<xsd:element name="Codigo" type="tsCodigoMensagemAlerta" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Mensagem" type="tsDescricaoMensagemAlerta" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Correcao" type="tsDescricaoMensagemAlerta" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfMensagemRetornoLote">
+<xsd:sequence>
+<xsd:element name="IdentificacaoCfse" type="tccfIdentificacaoCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Codigo" type="tsCodigoMensagemAlerta" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Mensagem" type="tsDescricaoMensagemAlerta" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfPedidoManutencao">
+<xsd:sequence>
+<xsd:element name="Prestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Motivo" type="tsOutrasInformacoes" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="UltimoCupom" type="tsNumeroCfse" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfPedidoDeclaracaoSemMovimento">
+<xsd:sequence>
+<xsd:element name="Prestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataEmissao" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfConfirmacaoPedidoManutencao">
+<xsd:sequence>
+<xsd:element name="Pedido" type="tccfPedidoManutencao" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataHora" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfConfirmacaoPedidoSemMovimento">
+<xsd:sequence>
+<xsd:element name="Pedido" type="tccfPedidoDeclaracaoSemMovimento" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataHora" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfLoteCupom">
+<xsd:sequence>
+<xsd:element name="NumeroLote" type="tsNumeroLote" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ResponsavelArquivo" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="QuantidadeCfse" type="tsQuantidade" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ListaCupom" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Cupom" type="tccfDeclaracaoPrestacaoServico" minOccurs="1" maxOccurs="50"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:complexType name="tccfCNAE">
+<xsd:sequence>
+<xsd:element name="CodigoCNAE" type="tsCodigoCnae" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DescricaoCNAE" type="tsOutrasInformacoes" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfAtividade">
+<xsd:sequence>
+<xsd:element name="Preferencial" type="tsSimNao" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="CodigoServico" type="tsItemListaServico" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DescricaoServico" type="tsOutrasInformacoes" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ListaCNAE" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="CNAE" type="tccfCNAE" minOccurs="1" maxOccurs="50"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="Aliquota" type="tsAliquota" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfDadosTerminal">
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="NomeMaquina" type="tsNomeMaquina" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="SerialHD" type="tsSerialHD" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="MAC" type="tsMAC" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfDadosEmissaoDiariaTerminal">
+<xsd:sequence>
+<xsd:element name="DataConfiguracao" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="IdentificacaoTerminal" type="tccfDadosTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="NumeroRecibos" type="tsNumeroCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="NumeroTerminal" type="tsNumeroTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="IdentificacaoPrestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="tccfDadosCadastroPrestador">
+<xsd:sequence>
+<xsd:element name="InfPrestador" type="tccfDadosPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataCadastro" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataAtualizacao" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="OptanteSimples" type="tsSimNao" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="AliquotaSimplesNacional" type="tsAliquota" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="ListaAtividadesPrestadas" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="AtividadesPrestadas" type="tccfAtividade" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+<xsd:element name="ListaMensagemRetornoLote">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="MensagemRetorno" type="tccfMensagemRetornoLote" minOccurs="1" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ListaMensagemRetorno">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="MensagemRetorno" type="tccfMensagemRetorno" minOccurs="1" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ListaMensagemAlertaRetorno">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="MensagemRetorno" type="tccfMensagemRetorno" minOccurs="1" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="cabecalho">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="versaoDados" type="tsVersao" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:attribute name="versao" type="tsVersao" use="required"/>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="CompCfse" type="tccfCompCfse"/>
+<xsd:element name="EnviarLoteCupomEnvio">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="LoteCupom" type="tccfLoteCupom"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="EnviarLoteCupomResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="NumeroLote" type="tsNumeroLote" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DataRecebimento" type="xsd:dateTime" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Protocolo" type="tsNumeroProtocolo" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="EnviarLoteCupomSincronoEnvio">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="LoteCupom" type="tccfLoteCupom"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="EnviarLoteCupomSincronoResposta">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="NumeroLote" type="tsNumeroLote" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="DataRecebimento" type="xsd:dateTime" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="Protocolo" type="tsNumeroProtocolo" minOccurs="0" maxOccurs="1"/>
+<xsd:choice>
+<xsd:element name="ListaCfse" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="CompCfse" minOccurs="1" maxOccurs="unbounded"/>
+<xsd:element ref="ListaMensagemAlertaRetorno" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="ListaMensagemRetornoLote" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="CancelarCupomEnvio">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Pedido" type="tccfPedidoCancelamento"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="CancelarCupomResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="Confimacao" type="tccfConfirmacaoCancelamento" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultarLoteCupomEnvio">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Prestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Protocolo" type="tsNumeroProtocolo" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultarLoteCupomResposta">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Situacao" type="tsSituacaoLote" minOccurs="1" maxOccurs="1"/>
+<xsd:choice>
+<xsd:element name="ListaCfse" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="CompCfse" maxOccurs="50" minOccurs="1"/>
+<xsd:element ref="ListaMensagemAlertaRetorno" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="ListaMensagemRetornoLote" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultarCfseEnvio">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="IdentificacaoCfse" type="tccfIdentificacaoCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Prestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultarCfseResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:element ref="CompCfse" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="EnviarInformeManutencao">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Pedido" type="tccfPedidoManutencao" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="EnviarInformeManutencaoResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="Confirmacao" type="tccfConfirmacaoPedidoManutencao" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultarDadosCadastro">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConsultarDadosCadastroResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="DadosCadastroPrestador" type="tccfDadosCadastroPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConfigurarAtivarTerminal">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Terminal" type="tccfDadosTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Prestador" type="tccfIdentificacaoPrestador" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ConfigurarAtivarTerminalResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="InformacoesEmissao" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="DadosCadastroPrestador" type="tccfDadosCadastroPrestador" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="DadosEmissaoDiaria" type="tccfDadosEmissaoDiariaTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="ListaCupomFiscal" minOccurs="1" maxOccurs="1">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Cupom" type="tccfCupomFiscal" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+<xsd:attribute name="Id" type="tsIdTag"/>
+</xsd:complexType>
+</xsd:element>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="InformeTrasmissaoSemMovimento">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="ChaveTerminal" type="tsChaveTerminal" minOccurs="1" maxOccurs="1"/>
+<xsd:element name="Pedido" type="tccfPedidoDeclaracaoSemMovimento" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="InformeTrasmissaoSemMovimentoResposta">
+<xsd:complexType>
+<xsd:choice>
+<xsd:sequence>
+<xsd:element name="Confirmacao" type="tccfConfirmacaoPedidoSemMovimento" minOccurs="1" maxOccurs="1"/>
+<xsd:element ref="dsig:Signature" minOccurs="1" maxOccurs="1"/>
+</xsd:sequence>
+<xsd:element ref="ListaMensagemRetorno" minOccurs="1" maxOccurs="1"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
