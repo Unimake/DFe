@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<LoteRps Id="lote0" versao="2.02">
+		<NumeroLote>0</NumeroLote>
+		<CpfCnpj>
+			<Cnpj>99999999999999</Cnpj>
+		</CpfCnpj>
+		<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+		<QuantidadeRps>1</QuantidadeRps>
+		<ListaRps>
+			<Rps>
+				<InfDeclaracaoPrestacaoServico>
+					<Rps Id="Id1">
+						<IdentificacaoRps>
+							<Numero>10</Numero>
+							<Serie>A</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2011-05-01</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2011-05-01</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>1000.00</ValorServicos>
+							<ValorDeducoes>0</ValorDeducoes>
+							<ValorIss>30.00</ValorIss>
+							<Aliquota>3.00</Aliquota>
+						</Valores>
+						<IssRetido>1</IssRetido>
+						<ItemListaServico>10.1</ItemListaServico>
+						<Discriminacao>Descricao do Servico</Discriminacao>
+						<CodigoMunicipio>4119905</CodigoMunicipio>
+						<ExigibilidadeISS>2</ExigibilidadeISS>
+						<MunicipioIncidencia>4119905</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>99999999999999</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>99999999999999</InscricaoMunicipal>
+					</Prestador>
+					<Tomador>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>99999999999</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>RazaoSocial1</RazaoSocial>
+						<Endereco>
+							<Endereco>Rua dos testes</Endereco>
+							<Numero>01</Numero>
+							<Complemento>COMERCIO</Complemento>
+							<Bairro>Bairro1</Bairro>
+							<CodigoMunicipio>4119905</CodigoMunicipio>
+							<Uf>PR</Uf>
+							<CodigoPais>1058</CodigoPais>
+							<Cep>84063340</Cep>
+						</Endereco>
+					</Tomador>
+					<OptanteSimplesNacional>1</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+			</Rps>
+		</ListaRps>
+	</LoteRps>
+</EnviarLoteRpsSincronoEnvio>
