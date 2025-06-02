@@ -1943,4 +1943,10 @@
 		<ArqConfig>ParacambiRJ.xml</ArqConfig>
 		<PadraoNFSe>FINTEL</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3526100">
+		<Nome>Juquiá - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>JuquiaSP.xml</ArqConfig>
+		<PadraoNFSe>CECAM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

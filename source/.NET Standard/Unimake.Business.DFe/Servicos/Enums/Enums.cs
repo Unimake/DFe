@@ -7037,6 +7037,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("DBSELLER")]
         DBSELLER = 69,
+
+        ///<summary>
+        ///CECAM
+        /// </summary>
+        [Description("CECAM")]
+        CECAM = 70,
     }
 
     #endregion

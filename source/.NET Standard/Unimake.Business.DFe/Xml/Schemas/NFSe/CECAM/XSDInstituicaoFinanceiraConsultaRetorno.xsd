@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ConsultaLancamentoInstituicaoFinanceira">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Header" minOccurs="1" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="CNPJInstituicao">
+                <xsd:annotation>
+                  <xsd:documentation>CNPJ da Instituicao Financeira (sem mascara)</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:length fixed="true" value="14"></xsd:length>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Chave">
+                <xsd:annotation>
+                  <xsd:documentation>Chave identificadora da empresa adquirida pelo sistema de ISS ELetronico</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:length value="48"></xsd:length>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Filtro" minOccurs="1" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="NumeroDocumentoInicial" type="xsd:decimal">
+                <xsd:annotation>
+                  <xsd:documentation>Número do documento</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Data_Emissao" type="xsd:date">
+                <xsd:annotation>
+                  <xsd:documentation>Data do Lançamento</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Lote" type="xsd:decimal">
+                <xsd:annotation>
+                  <xsd:documentation>Numero do Lote</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

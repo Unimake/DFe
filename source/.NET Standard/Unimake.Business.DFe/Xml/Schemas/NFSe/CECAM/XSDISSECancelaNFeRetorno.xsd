@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ISSECancelaNFeRetorno">
+    <xsd:complexType>
+      <xsd:sequence>
+        
+        <xsd:element name="NotaFiscal" minOccurs="0" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="NumeroNF" type="xsd:decimal">
+                <xsd:annotation>
+                  <xsd:documentation>Número da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ChaveValidacao" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Chave de Validação da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CodigoResultado" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Código identificador do Resultado (0 = Não foi possível Cancelar a NF-e / 1 = Sucesso)</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="Erro" minOccurs="0" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ID" type="xsd:positiveInteger">
+                <xsd:annotation>
+                  <xsd:documentation>Identificador do Registro</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Erro" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Mensagem de Erro do Arquivo</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

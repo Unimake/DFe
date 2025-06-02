@@ -1,0 +1,73 @@
+﻿<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ISSECancelaNFe">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Header" minOccurs="1" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Versao" fixed="004">
+                <xsd:annotation>
+                  <xsd:documentation>Identifica a versão do layout - Fixo 004</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CNPJCPFPrestador">
+                <xsd:annotation>
+                  <xsd:documentation>CNPJ / CPF do emissor da Nota Fiscal (sem máscara)</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength fixed="true" value="11"></xsd:minLength>
+                    <xsd:maxLength fixed="true" value="14"></xsd:maxLength>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="Chave">
+                <xsd:annotation>
+                  <xsd:documentation>Chave identificadora da empresa adquirida pelo sistema de ISS ELetrônico</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:length value="48"></xsd:length>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Filtro" minOccurs="1" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="NumeroNF" type="xsd:decimal">
+                <xsd:annotation>
+                  <xsd:documentation>Número da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ChaveValidacao">
+                <xsd:annotation>
+                  <xsd:documentation>Chave de Validação da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="[0-9A-Z]{4}-[0-9A-Z]{5}"></xsd:pattern>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+              <xsd:element name="MotivoCancelamento">
+                <xsd:annotation>
+                  <xsd:documentation>Descrição do Motivo de Cancelamento da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:minLength value="10"></xsd:minLength>
+                    <xsd:maxLength value="200"></xsd:maxLength>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

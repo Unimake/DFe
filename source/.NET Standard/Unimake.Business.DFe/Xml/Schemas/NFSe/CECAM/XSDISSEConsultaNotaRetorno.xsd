@@ -1,0 +1,342 @@
+﻿<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="ISSEConsultaNotaRetorno">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Header" minOccurs="1" maxOccurs="1">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Versao" fixed="003">
+                <xsd:annotation>
+                  <xsd:documentation>Identifica a versão do layout - Fixo 003</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CNPJCPFPrestador">
+                <xsd:annotation>
+                  <xsd:documentation>CNPJ / CPF do emissor da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="DadosNotaFiscal" minOccurs="0" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="NumeroNF" type="xsd:decimal">
+                <xsd:annotation>
+                  <xsd:documentation>Número da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ChaveValidacao" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Chave de Validação da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Lote">
+                <xsd:annotation>
+                  <xsd:documentation>Número do Lote de Envio da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="SituacaoNF" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+                    Situação da Nota Fiscal
+                    N - para Nota Normal
+                    C - para Nota Cancelada
+                  </xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="TipoNF" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>
+                    Tipo da Nota Fiscal
+                    P - para Serviço Prestado
+                    T - para Serviço Tomado
+                  </xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Emissao">
+                <xsd:annotation>
+                  <xsd:documentation>Data de Emissão da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CNPJCPFTomador">
+                <xsd:annotation>
+                  <xsd:documentation>CNPJ / CPF do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="NomeTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Nome ou Razão Social do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="InscricaoMunicipalTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Inscricao municipal do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="InscricaoEstadualTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Inscricao Estadual do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>			  
+              <xsd:element name="UFTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Sigla do Estado do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CidadeTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Código do Município na Tabela IBGE do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="EnderecoTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Endereço do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="NumeroTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Número do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ComplementoTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Complemento do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="BairroTomador">
+                <xsd:annotation>
+                  <xsd:documentation>Bairro do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CEPTomador">
+                <xsd:annotation>
+                  <xsd:documentation>CEP do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="EmailTomador">
+                <xsd:annotation>
+                  <xsd:documentation>E-mail do Tomador de Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Observacao">
+                <xsd:annotation>
+                  <xsd:documentation>Observações da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="NFSubstituta">
+                <xsd:annotation>
+                  <xsd:documentation>Informar o número da Nota Fiscal Substituta de uma Nota Fiscal Cancelada.</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="LocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>
+                    Local da Prestação do Serviço
+                    1 - para serviço na sede do prestador
+                    2 - para serviço para imóvel (Construção Civil)
+                    3 - para serviço em via pública
+                    4 - para serviço fora do município
+                  </xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="DescricaoLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Dados do Local de Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="DescricaoLocalPrestacaoComplementar">
+                <xsd:annotation>
+                  <xsd:documentation>Dados complementares do Local de Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="InscricaoImovel">
+                <xsd:annotation>
+                  <xsd:documentation>Inscrição Cadastral do Imóvel</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="InscriçãoMunicipalPrestador">
+                <xsd:annotation>
+                  <xsd:documentation>Inscrição Municipal do Prestador do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>  
+			  <xsd:element name="InscriçãoEstadualPrestador">
+                <xsd:annotation>
+                  <xsd:documentation>Inscrição Estadual do Prestador do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="EmailPrestador">
+                <xsd:annotation>
+                  <xsd:documentation>Email do Prestador do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>  
+			  <xsd:element name="cepPrestador">
+                <xsd:annotation>
+                  <xsd:documentation>Cep do Prestador do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="UFLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Sigla do Estado da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CidadeLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Cidade da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="EnderecoLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Endereço da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="NumeroLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Número da localização do imóvel da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="ComplementoLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Complemento do imóvel da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="BairroLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>Bairro da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="CEPLocalPrestacao">
+                <xsd:annotation>
+                  <xsd:documentation>CEP da Prestação do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="MotivoCancelamento" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Descrição do Motivo de Cancelamento da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="TipoDocumento">
+                <xsd:annotation>
+                  <xsd:documentation>Código do Tipo de Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="ValorTotalNota">
+                <xsd:annotation>
+                  <xsd:documentation>Valor Total da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="ValorLiquidoNota">
+                <xsd:annotation>
+                  <xsd:documentation>Valor Liquido da Nota Fiscal</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="DadosItensNotaFiscal" minOccurs="1" maxOccurs="1">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ItemAtividade">
+                      <xsd:annotation>
+                        <xsd:documentation>Código do Item da Atividade prestado</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="TextoItem">
+                      <xsd:annotation>
+                        <xsd:documentation>Texto do Item da Nota Fiscal</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ValorItem">
+                      <xsd:annotation>
+                        <xsd:documentation>Valor do Item da Nota Fiscal</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ValorDeducao">
+                      <xsd:annotation>
+                        <xsd:documentation>Valor das Deduções da Nota Fiscal</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Retido">
+                      <xsd:annotation>
+                        <xsd:documentation>
+                          Identifica se o imposto do serviço foi retido na fonte pelo Tomador
+                          S - para Imposto Retido pelo Tomador
+                          N - para Imposto Não Retido pelo Tomador
+                        </xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="Pais">
+                    </xsd:element>
+			  <xsd:element name="CodigoServico">
+                <xsd:annotation>
+                  <xsd:documentation>Código do Serviço</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="ValorBaseCalculo">
+                <xsd:annotation>
+                  <xsd:documentation>Valor da Base de Calculo</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="ValorISS">
+                <xsd:annotation>
+                  <xsd:documentation>Valor do ISS</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+			  <xsd:element name="Aliquota">
+                <xsd:annotation>
+                  <xsd:documentation>Valor da Aliquota</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="DadosImpostosNotaFiscal" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Imposto">
+                      <xsd:annotation>
+                        <xsd:documentation>Sigla do Imposto utilizado na Dedução</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ValorImposto">
+                      <xsd:annotation>
+                        <xsd:documentation>Valor do Imposto utilizado na Dedução</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+			   <xsd:element name="OutrasInformacoes" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Informacao">
+                      <xsd:annotation>
+                        <xsd:documentation>Informações Adicionais, por exemplo: “Empresa optante do Simples Nacional.”.</xsd:documentation>
+                      </xsd:annotation>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="Erro" minOccurs="0" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="ID" type="xsd:positiveInteger">
+                <xsd:annotation>
+                  <xsd:documentation>Identificador do Registro</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+              <xsd:element name="Erro" type="xsd:string">
+                <xsd:annotation>
+                  <xsd:documentation>Mensagem de Erro do Arquivo</xsd:documentation>
+                </xsd:annotation>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
