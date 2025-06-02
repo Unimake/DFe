@@ -566,6 +566,7 @@
 		<None Remove="Servicos\Config\NFSe\TeresopolisRJ.xml" />
 		<None Remove="Servicos\Config\NFSe\TerraDeAreiaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TimboSC.xml" />
+		<None Remove="Servicos\Config\NFSe\TramandaiRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TremembeSP.xml" />
 		<None Remove="Servicos\Config\NFSe\TresArroiosRS.xml" />
 		<None Remove="Servicos\Config\NFSe\TresCachoeirasRS.xml" />
@@ -1423,6 +1424,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoRoqueSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresinaPI.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TeresopolisRJ.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\TramandaiRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\TriunfoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AgudoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\AparecidaDeGoianiaGO.xml" />

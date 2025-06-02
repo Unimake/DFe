@@ -1913,4 +1913,10 @@
 		<ArqConfig>SantanaLivramentoRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4321600">
+		<Nome>Tramandaí - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>TramandaiRS.xml</ArqConfig>
+		<PadraoNFSe>DBSELLER</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>

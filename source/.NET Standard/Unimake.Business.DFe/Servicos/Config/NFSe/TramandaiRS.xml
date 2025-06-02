@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRps versao="2.04">
+			<Descricao>Recepcionar Lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Rps</TagAssinatura>
+			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:RecepcionarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:RecepcionarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns1:RecepcionarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</RecepcionarLoteRps>
+		<CancelarNfse versao="2.04">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo>cancelar-nfse-envio-v2_04.xsd</SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</CancelarNfse>
+		<SubstituirNfse versao="2.04">
+			<Descricao>Substituir nota fiscal de Serviço</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>Pedido</TagAssinatura>
+			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<TagExtraAssinatura></TagExtraAssinatura>
+			<TagExtraAtributoID></TagExtraAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:SubstituirNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:SubstituirNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns1:SubstituirNfseResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</SubstituirNfse>
+		<ConsultarLoteRps versao="2.04">
+			<Descricao>Consulta lote RPS</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarLoteRpsEnvio</TagAssinatura>
+			<TagAtributoID>Prestador</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarLoteRps>
+		<ConsultarNfsePorRps versao="2.04">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao></WebActionHomologacao>
+			<WebActionProducao></WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura>ConsultarNfseRpsEnvio</TagAssinatura>
+			<TagAtributoID>IdentificacaoRps</TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfse.tramandai.rs.gov.br/webservice/index/homologacao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.04</SchemaVersao>
+			<TargetNS>http://nfse.tramandai.rs.gov.br/webservice/index/producao</TargetNS>
+			<TemCDATA>true</TemCDATA>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>
