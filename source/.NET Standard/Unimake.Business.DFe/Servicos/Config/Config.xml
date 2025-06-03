@@ -1955,4 +1955,10 @@
 		<ArqConfig>ItatingaSP.xml</ArqConfig>
 		<PadraoNFSe>CECAM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="4313375">
+		<Nome>Nova Santa Rita - RS</Nome>
+		<UF>RS</UF>
+		<ArqConfig>NovaSantaRitaRS.xml</ArqConfig>
+		<PadraoNFSe>IPM</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
