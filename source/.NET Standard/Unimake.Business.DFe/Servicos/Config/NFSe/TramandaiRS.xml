@@ -28,7 +28,7 @@
 			<WebEnderecoProducao>https://nfse.tramandai.rs.gov.br/webservice/index/producao?wsdl</WebEnderecoProducao>
 			<WebActionHomologacao></WebActionHomologacao>
 			<WebActionProducao></WebActionProducao>
-			<SchemaArquivo>cancelar-nfse-envio-v2_04.xsd</SchemaArquivo>
+			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Pedido</TagAssinatura>
 			<TagAtributoID>InfPedidoCancelamento</TagAtributoID>
 			<TagLoteAssinatura></TagLoteAssinatura>
