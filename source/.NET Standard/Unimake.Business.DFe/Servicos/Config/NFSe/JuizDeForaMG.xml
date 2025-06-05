@@ -11,7 +11,7 @@
 			<TagAssinatura>Rps</TagAssinatura>
 			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
-			<TagLoteAtributoID>EnviarLoteRpsEnvio</TagLoteAtributoID>
+			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml; charset=utf-8</WebContentType>
 			<WebSoapString><![CDATA[<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><RecepcionarLoteRps xmlns="http://www.fintel.com.br/WebService"><cabecalho>&lt;cabecalho versao="2.02" xmlns="http://www.abrasf.org.br/nfse.xsd"&gt;&lt;versaoDados&gt;2.02&lt;/versaoDados&gt;&lt;/cabecalho&gt;</cabecalho><xml>{xmlBodyScape}</xml></RecepcionarLoteRps></soap:Body></soap:Envelope>]]></WebSoapString>
 			<WebTagRetorno>RecepcionarLoteRpsResponse</WebTagRetorno>
