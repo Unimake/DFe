@@ -1928,7 +1928,7 @@
 	<Arquivo ID="3164704">
 		<Nome>São Sebastião do Paraíso - MG</Nome>
 		<UF>MG</UF>
-		<ArqConfig>SaoSebastiaoParaisoMG.xml</ArqConfig>
+		<ArqConfig>SaoSebastiaoDoParaisoMG.xml</ArqConfig>
 		<PadraoNFSe>E_RECEITA</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="3136702">

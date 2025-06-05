@@ -551,7 +551,6 @@
 		<None Remove="Servicos\Config\NFSe\SaoPauloSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoRoqueSP.xml" />
 		<None Remove="Servicos\Config\NFSe\SaoSebastiaoDoCaiRS.xml" />
-		<None Remove="Servicos\Config\NFSe\SaoSebastiaoParaisoMG.xml" />
 		<None Remove="Servicos\Config\NFSe\SapirangaRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SapucaiaDoSulRS.xml" />
 		<None Remove="Servicos\Config\NFSe\SenadorCanedoGO.xml" />
@@ -1428,7 +1427,7 @@
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoJoaquimDaBarraSP.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLeopoldoRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoLuisMA.xml" />
-	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoParaisoMG.xml" />
+	  <EmbeddedResource Include="Servicos\Config\NFSe\SaoSebastiaoDoParaisoMG.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SapirangaRS.xml" />
 	  <EmbeddedResource Include="Servicos\Config\NFSe\SeteLagoasMG.xml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
