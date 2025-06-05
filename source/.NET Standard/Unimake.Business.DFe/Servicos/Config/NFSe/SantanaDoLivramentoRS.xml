@@ -18,7 +18,7 @@
 			<WebTagRetorno>ns1:RecepcionarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</RecepcionarLoteRps>
@@ -39,7 +39,7 @@
 			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</CancelarNfse>
@@ -62,7 +62,7 @@
 			<WebTagRetorno>ns1:SubstituirNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</SubstituirNfse>
@@ -83,7 +83,7 @@
 			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarLoteRps>
@@ -104,7 +104,7 @@
 			<WebTagRetorno>ns1:ConsultarNfsePorRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
-			<SchemaVersao>2.04</SchemaVersao>
+			<SchemaVersao>1.00</SchemaVersao>
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarNfsePorRps>
