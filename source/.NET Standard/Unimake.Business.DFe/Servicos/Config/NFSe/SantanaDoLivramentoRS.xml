@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuracoes>
 	<Servicos ID="NFSe">
-		<RecepcionarLoteRps versao="2.04">
+		<RecepcionarLoteRps versao="1.00">
 			<Descricao>Recepcionar Lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
@@ -22,7 +22,7 @@
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</RecepcionarLoteRps>
-		<CancelarNfse versao="2.04">
+		<CancelarNfse versao="1.00">
 			<Descricao>Cancelar nota fiscal de serviço</Descricao>
 			<WebEnderecoHomologacao>https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
@@ -43,7 +43,7 @@
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</CancelarNfse>
-		<SubstituirNfse versao="2.04">
+		<SubstituirNfse versao="1.00">
 			<Descricao>Substituir nota fiscal de Serviço</Descricao>
 			<WebEnderecoHomologacao>https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
@@ -66,7 +66,7 @@
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</SubstituirNfse>
-		<ConsultarLoteRps versao="2.04">
+		<ConsultarLoteRps versao="1.00">
 			<Descricao>Consulta lote RPS</Descricao>
 			<WebEnderecoHomologacao>https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
@@ -87,7 +87,7 @@
 			<TargetNS>http://nfe.sdolivramento.com.br/webservice/index/producao</TargetNS>
 			<TemCDATA>true</TemCDATA>
 		</ConsultarLoteRps>
-		<ConsultarNfsePorRps versao="2.04">
+		<ConsultarNfsePorRps versao="1.00">
 			<Descricao>Consulta NFSe por RPS</Descricao>
 			<WebEnderecoHomologacao>https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoHomologacao>
 			<WebEnderecoProducao>https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl</WebEnderecoProducao>
