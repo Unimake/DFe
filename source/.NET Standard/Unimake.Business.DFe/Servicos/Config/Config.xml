@@ -1910,7 +1910,7 @@
 	<Arquivo ID="4317103">
 		<Nome>Santana do Livramento - RS</Nome>
 		<UF>RS</UF>
-		<ArqConfig>SantanaLivramentoRS.xml</ArqConfig>
+		<ArqConfig>SantanaDoLivramentoRS.xml</ArqConfig>
 		<PadraoNFSe>DBSELLER</PadraoNFSe>
 	</Arquivo>
 	<Arquivo ID="4321600">
