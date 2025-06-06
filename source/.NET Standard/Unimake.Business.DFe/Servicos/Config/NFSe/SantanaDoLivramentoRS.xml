@@ -9,7 +9,7 @@
 			<WebActionProducao></WebActionProducao>
 			<SchemaArquivo></SchemaArquivo>
 			<TagAssinatura>Rps</TagAssinatura>
-			<TagAtributoID>InfDeclaracaoPrestacaoServico</TagAtributoID>
+			<TagAtributoID>InfRps</TagAtributoID>
 			<TagLoteAssinatura>EnviarLoteRpsEnvio</TagLoteAssinatura>
 			<TagLoteAtributoID>LoteRps</TagLoteAtributoID>
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
@@ -101,7 +101,7 @@
 			<WebContentType>text/xml;charset=utf-8</WebContentType>
 			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://hom.nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
 			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="https://nfe.sdolivramento.com.br/webservice/index/producao?wsdl"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
-			<WebTagRetorno>ns1:ConsultarNfsePorRpsResponse</WebTagRetorno>
+			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
 			<SchemaVersao>1.00</SchemaVersao>
