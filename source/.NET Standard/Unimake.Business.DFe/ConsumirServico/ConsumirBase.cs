@@ -332,7 +332,7 @@ namespace Unimake.Business.DFe
                     {
                         RetornoServicoString = retornoXml.OuterXml;
                     }
-                    else if (tagRetorno == "soap:Fault" || tagRetorno.Contains("faultcode"))
+                    else if (tagRetorno == "soap:Fault" || tagRetorno.Contains("faultcode") || (soap.PadraoNFSe == PadraoNFSe.ADM_SISTEMAS && retornoXml.OuterXml.Contains("s:Fault")))
                     {
                         RetornoServicoString = retornoXml.OuterXml;
                     }
