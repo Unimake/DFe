@@ -353,6 +353,9 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("verProc")]
         public string VerProc { get; set; }
 
+        [XmlElement("gCompraGov")]
+        public GCompraGov GCompraGov { get; set; }
+
         [XmlIgnore]
 #if INTEROP
         public DateTime DhCont { get; set; }
@@ -381,6 +384,39 @@ namespace Unimake.Business.DFe.Xml.NF3e
         public bool ShouldSerializeXJust() => TpEmis != (TipoEmissao)1;
 
         #endregion ShouldSerialize
+    }
+
+    /// <summary>
+    /// Grupo de compras governamentais
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GCompraGov")]
+    [ComVisible(true)]
+#endif
+    public class GCompraGov
+    {
+        /// <summary>
+        /// Tipo de ente governamental
+        /// </summary>
+        [XmlElement("tpEnteGov")]
+        public TipoEnteGovernamental TpEnteGov { get; set; }
+
+        /// <summary>
+        /// Percentual de redução de alíquota em compra governamental
+        /// </summary>
+        [XmlIgnore]
+        public double PRedutor { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PRedutor para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pRedutor")]
+        public string PRedutorField
+        {
+            get => PRedutor.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedutor = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
@@ -889,6 +925,18 @@ namespace Unimake.Business.DFe.Xml.NF3e
         [XmlElement("tpPosTar")]
         public TipoPostoTarifario TpPosTar { get; set; }
 
+        [XmlIgnore]
+        public double EnerInjet {  get; set; }
+
+        [XmlElement("enerInjet")]
+        public string EnerInjetField
+        {
+            get => EnerInjet.ToString("F3", CultureInfo.InvariantCulture);
+            set => EnerInjet = Converter.ToDouble(value);
+        }
+
+        [XmlElement("tpPosTarInjet")]
+        public TipoPostoTarifario TpPosTarInjet { get; set; }
     }
 
 #if INTEROP
@@ -1064,7 +1112,7 @@ namespace Unimake.Business.DFe.Xml.NF3e
     public class GAjusteNF3eAnt
     {
         [XmlElement("tpAjuste")]
-        public TipoAjuste TpAjuste { get; set; }
+        public TipoAjusteNF3e TpAjuste { get; set; }
 
         [XmlElement("motAjuste")]
         public MotivoAjuste MotAjuste { get; set; }
@@ -1712,6 +1760,12 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("retTrib")]
         public RetTribNF3e RetTrib { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da Tributação IBS/CBS
+        /// </summary>
+        [XmlElement("IBSCBS")]
+        public IBSCBS IBSCBS { get; set; }
 
         #region ShouldSerialize
 
@@ -2417,6 +2471,653 @@ namespace Unimake.Business.DFe.Xml.NF3e
 
         [XmlElement("vIRRF")]
         public decimal VIRRF { get; set; }
+    }
+
+    /// <summary>
+    /// Grupo de informações da Tributação IBS/CBS
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.IBSCBS")]
+    [ComVisible(true)]
+#endif
+    public class IBSCBS
+    {
+        /// <summary>
+        /// Código da Situação Tributária do IBS/CBS
+        /// </summary>
+        [XmlElement("CST")]
+        public string CST { get; set; }
+
+        /// <summary>
+        /// Código da Classificação Tributária do IBS/CBS
+        /// </summary>
+        [XmlElement("CClassTrib")]
+        public string CClassTrib { get; set; }
+
+        /// <summary>
+        /// Grupo de informações específicas do IBS/CBS
+        /// </summary>
+        [XmlElement("gIBSCBS")]
+        public GIBSCBS GIBSCBS { get; set; }
+    }
+
+    /// <summary>
+    /// Grupo de informações específicas do IBS/CBS
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GIBSCBS")]
+    [ComVisible(true)]
+#endif
+    public class GIBSCBS
+    {
+        /// <summary>
+        /// Valor da Base de cálculo comum a IBS/CBS
+        /// </summary>
+        [XmlIgnore]
+        public double VBC {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VBC para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vBC")]
+        public string VBCField
+        {
+            get => VBC.ToString("F2", CultureInfo.InvariantCulture);
+            set => VBC = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Grupo de informações do IBS/CBS de competência das Unidades Federadas
+        /// </summary>
+        [XmlElement("gIBSUF")]
+        public GIBSUF GIBSUF {  get; set; }
+
+        /// <summary>
+        /// Grupo de informações do IBS/CBS de competência do municipio
+        /// </summary>
+        [XmlElement("gIBSMun")]
+        public GIBSMun GIBSMun { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da CBS
+        /// </summary>
+        [XmlElement("gCBS")]
+        public GCBS GCBS { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da Tributação Regular. 
+        /// Informar como seria a tributação caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlElement("gTribRegular")]
+        public GTribRegular GTribRegular { get; set; }
+
+        /// <summary>
+        /// Grupo de Informações do Crédito Presumido, quando aproveitado pelo emitente do documento.
+        /// </summary>
+        [XmlElement("gIBSCredPres")]
+        public GIBSCredPres GIBSCredPres { get; set; }
+
+        /// <summary>
+        /// Grupo de Informações do Crédito Presumido, quando aproveitado pelo emitente do documento.
+        /// </summary>
+        [XmlElement("gCBSCredPres")]
+        public GCBSCredPres GCBSCredPres { get; set; }
+    }
+
+    /// <summary>
+    /// Grupo de informações do IBS/CBS de competência das Unidades Federadas
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GIBSUF")]
+    [ComVisible(true)]
+#endif
+    public class GIBSUF
+    {
+        /// <summary>
+        /// Alíquota do IBS Estadual 
+        /// </summary>
+        [XmlIgnore]
+        public double PIBSUF {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PIBSUF para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pIBSUF")]
+        public string PIBSUFField
+        {
+            get => PIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PIBSUF = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Grupo de campos do diferimento 
+        /// </summary>
+        [XmlElement("gDif")]
+        public GDif GDif { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da devolução de tributos
+        /// </summary>
+        [XmlElement("gDevTrib")]
+        public GDevTrib GDevTrib {  get; set; }
+
+        /// <summary>
+        /// Grupo de informações da redução de Alíquota
+        /// </summary>
+        [XmlElement("gRed")]
+        public GRed GRed { get; set; }
+
+        /// <summary>
+        /// Valor do IBS de competência da UF
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSUF {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSUF para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBSUF")]
+        public string VIBSUFField
+        {
+            get => VIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSUF = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de campos do diferimento 
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GDif")]
+    [ComVisible(true)]
+#endif
+    public class GDif
+    {
+        /// <summary>
+        /// Percentual de diferimento
+        /// </summary>
+        [XmlIgnore]
+        public double PDif {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PDif para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pDif")]
+        public string PDifField
+        {
+            get => PDif.ToString("F4", CultureInfo.InvariantCulture);
+            set => PDif = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do diferimento
+        /// </summary>
+        [XmlIgnore]
+        public double VDif { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VDif para atribuir ou resgatar o valor)
+        /// </summary>
+        public string VDifField
+        {
+            get => VDif.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDif = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de informações da devolução de tributos
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GDevTrib")]
+    [ComVisible(true)]
+#endif
+    public class GDevTrib
+    {
+        /// <summary>
+        /// Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e gás natural e em outras hipóteses
+        /// definidas no regulamento
+        /// </summary>
+        [XmlIgnore]
+        public double VDevTrib { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VDevTrib para atribuir ou resgatar o valor)
+        /// </summary>
+        public string VDevTribField
+        {
+            get => VDevTrib.ToString("F2", CultureInfo.InvariantCulture);
+            set => VDevTrib = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de informações da redução de Alíquota
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GRed")]
+    [ComVisible(true)]
+#endif
+    public class GRed
+    {
+        /// <summary>
+        /// Percentual da redução de Alíquota do cClassTrib
+        /// </summary>
+        [XmlIgnore]
+        public double PRedAliq { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PRedAliq para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pRedAliq")]
+        public string PRedAliqField
+        {
+            get => PRedAliq.ToString("F4", CultureInfo.InvariantCulture);
+            set => PRedAliq = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Alíquota efetiva do IBS de competência das UF que será aplicada a base de cálculo, 
+        /// incluindo ogCompraGov/pRedutor, se houver pAliqEfet = pIBSUF * (1 – pRedAliq) * (1 - gCompraGov / pRedutor)
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqEfet { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfet para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqEfet")]
+        public string PAliqEfetField
+        {
+            get => PAliqEfet.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfet = Converter.ToDouble(value);
+        }
+    }
+
+
+    /// <summary>
+    /// Grupo de informações do IBS/CBS de competência do municipio
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GIBSMun")]
+    [ComVisible(true)]
+#endif
+    public class GIBSMun
+    {
+        /// <summary>
+        /// Alíquota do IBS Municipal 
+        /// </summary>
+        [XmlIgnore]
+        public double PIBSMun { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PIBSMun para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pIBSMun")]
+        public string PIBSMunField
+        {
+            get => PIBSMun.ToString("F4", CultureInfo.InvariantCulture);
+            set => PIBSMun = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Grupo de campos do diferimento 
+        /// </summary>
+        [XmlElement("gDif")]
+        public GDif GDif { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da devolução de tributos
+        /// </summary>
+        [XmlElement("gDevTrib")]
+        public GDevTrib GDevTrib { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da redução de Alíquota
+        /// </summary>
+        [XmlElement("gRed")]
+        public GRed GRed { get; set; }
+
+        /// <summary>
+        /// Valor do IBS de competência do município
+        /// </summary>
+        [XmlIgnore]
+        public double VIBSMun { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VIBSMun para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vIBSMun")]
+        public string VIBSMunField
+        {
+            get => VIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VIBSMun = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de informações da CBS
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GCBS")]
+    [ComVisible(true)]
+#endif
+    public class GCBS
+    {
+        /// <summary>
+        /// Alíquota da CBS
+        /// </summary>
+        [XmlIgnore]
+        public double PCBS { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pCBS")]
+        public string PCBSField
+        {
+            get => PCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => PCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Grupo de campos do diferimento 
+        /// </summary>
+        [XmlElement("gDif")]
+        public GDif GDif { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da devolução de tributos
+        /// </summary>
+        [XmlElement("gDevTrib")]
+        public GDevTrib GDevTrib { get; set; }
+
+        /// <summary>
+        /// Grupo de informações da redução de Alíquota
+        /// </summary>
+        [XmlElement("gRed")]
+        public GRed GRed { get; set; }
+
+        /// <summary>
+        /// Valor da CBS 
+        /// </summary>
+        [XmlIgnore]
+        public double VCBS {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCBS")]
+        public string VCBSField
+        {
+            get => VCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCBS = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de informações da Tributação Regular. 
+    /// Informar como seria a tributação caso não cumprida a condição resolutória/suspensiva
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GTribRegular")]
+    [ComVisible(true)]
+#endif
+    public class GTribRegular
+    {
+        /// <summary>
+        /// Código da Situação Tributária.
+        /// Informado como seria o CST caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlElement("CSTReg")]
+        public string CSTReg {  get; set; }
+
+        /// <summary>
+        /// Código de Classificação Tributária.
+        /// Informado como seria o cClassTrib caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlElement("cClassTribReg")]
+        public string CClassTribReg {  get; set; }
+
+        /// <summary>
+        /// Alíquota efetiva da UF.
+        /// Informado a Alíquota caso não cumprida a resolutória/suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqEfetRegIBSUF { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegIBSUF para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqEfetRegIBSUF")]
+        public string PAliqEfetRegIBSUFField
+        {
+            get => PAliqEfetRegIBSUF.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegIBSUF = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informado como seria o valor do Tributo da UF caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double VTribRegIBSUF { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribRegIBSUF para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribRegIBSUF")]
+        public string VTribRegIBSUFField
+        {
+            get => VTribRegIBSUF.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribRegIBSUF = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Alíquota efetiva do Município.
+        /// Informado a Alíquota caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqEfetRegIBSMun {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegIBSMun para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqEfetRegIBSMun")]
+        public string PAliqEfetRegIBSMunField
+        {
+            get => PAliqEfetRegIBSMun.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegIBSMun = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informado como seria o valor do Tributo do Município caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double VTribRegIBSMun { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribRegIBSMun para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribRegIBSMun")]
+        public string VTribRegIBSMunField
+        {
+            get => VTribRegIBSMun.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribRegIBSMun = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Alíquota efetiva da CBS.
+        /// Informado a Alíquota caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double PAliqEfetRegCBS {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PAliqEfetRegCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pAliqEfetRegCBS")]
+        public string PAliqEfetRegCBSField
+        {
+            get => PAliqEfetRegCBS.ToString("F4", CultureInfo.InvariantCulture);
+            set => PAliqEfetRegCBS = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Informado como seria o valor do Tributo CBS caso não cumprida a condição resolutória/suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double VTribRegCBS {  get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VTribRegCBS para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vTribRegCBS")]
+        public string VTribRegCBSField
+        {
+            get => VTribRegCBS.ToString("F2", CultureInfo.InvariantCulture);
+            set => VTribRegCBS = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de Informações do Crédito Presumido, quando aproveitado pelo emitente do documento.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GIBSCredPres")]
+    [ComVisible(true)]
+#endif
+    public class GIBSCredPres
+    {
+        /// <summary>
+        /// Código do Crédito Presumido 
+        /// </summary>
+        [XmlElement("cCredPres")]
+        public string CCredPres {  get; set; }
+
+        /// <summary>
+        /// Percentual de crédito presumido
+        /// </summary>
+        [XmlIgnore]
+        public double PCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PCredPres para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pCredPres")]
+        public string PCredPresField
+        {
+            get => PCredPres.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do crédito presumido
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPres para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do crédito presumido Condição Suspensiva.
+        /// Preencher apenas para cCredPres com indicação de Condição Suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPresCondSus para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
+    }
+
+    /// <summary>
+    /// Grupo de Informações do Crédito Presumido, quando aproveitado pelo emitente do documento.
+    /// </summary>
+#if INTEROP
+    [ClassInterface(ClassInterfaceType.AutoDual)]
+    [ProgId("Unimake.Business.DFe.Xml.NF3e.GCBSCredPres")]
+    [ComVisible(true)]
+#endif
+    public class GCBSCredPres
+    {
+        /// <summary>
+        /// Código do Crédito Presumido 
+        /// </summary>
+        [XmlElement("cCredPres")]
+        public string CCredPres { get; set; }
+
+        /// <summary>
+        /// Percentual de crédito presumido
+        /// </summary>
+        [XmlIgnore]
+        public double PCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade PCredPres para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("pCredPres")]
+        public string PCredPresField
+        {
+            get => PCredPres.ToString("F4", CultureInfo.InvariantCulture);
+            set => PCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do crédito presumido
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPres { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPres para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredPres")]
+        public string VCredPresField
+        {
+            get => VCredPres.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPres = Converter.ToDouble(value);
+        }
+
+        /// <summary>
+        /// Valor do crédito presumido Condição Suspensiva.
+        /// Preencher apenas para cCredPres com indicação de Condição Suspensiva
+        /// </summary>
+        [XmlIgnore]
+        public double VCredPresCondSus { get; set; }
+
+        /// <summary>
+        /// Propriedade auxiliar para serialização/desserialização do XML (Utilize sempre a propriedade VCredPresCondSus para atribuir ou resgatar o valor)
+        /// </summary>
+        [XmlElement("vCredPresCondSus")]
+        public string VCredPresCondSusField
+        {
+            get => VCredPresCondSus.ToString("F2", CultureInfo.InvariantCulture);
+            set => VCredPresCondSus = Converter.ToDouble(value);
+        }
     }
 
 #if INTEROP
