@@ -7043,6 +7043,12 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         [Description("CECAM")]
         CECAM = 70,
+
+        ///<summary>
+        ///JLSOFT
+        /// </summary>
+        [Description("JLSOFT")]
+        JLSOFT = 71,
     }
 
     #endregion

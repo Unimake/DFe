@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+	<Servicos ID="NFSe">
+		<RecepcionarLoteRpsSincrono versao="2.01">
+			<Descricao>Recepcionar Lote RPS Sincrono</Descricao>
+			<WebEnderecoHomologacao>https://itapetininga.jlsoft.com.br/abrasf/ahrecepcionarloterpssincrono.aspx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itapetininga.jlsoft.com.br/abrasf/arecepcionarloterpssincrono.aspx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Abrasf2action/AHRECEPCIONARLOTERPSSINCRONO.Execute</WebActionHomologacao>
+			<WebActionProducao>Abrasf2action/ARECEPCIONARLOTERPSSINCRONO.Execute</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:RecepcionarLoteRpsSincrono.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:RecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:hRecepcionarLoteRpsSincrono.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:hRecepcionarLoteRpsSincrono.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebTagRetorno>RecepcionarLoteRpsSincrono.ExecuteResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>hRecepcionarLoteRpsSincrono.ExecuteResponse</WebTagRetornoHomologacao>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</RecepcionarLoteRpsSincrono>
+		<CancelarNfse versao="2.01">
+			<Descricao>Cancelar nota fiscal de serviço</Descricao>
+			<WebEnderecoHomologacao>https://itapetininga.jlsoft.com.br/abrasf/ahcancelarnfse.aspx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itapetininga.jlsoft.com.br/abrasf/acancelarnfse.aspx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Abrasf2action/AHCANCELARNFSE.Execute</WebActionHomologacao>
+			<WebActionProducao>Abrasf2action/ACANCELARNFSE.Execute</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:CancelarNfse.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:CancelarNfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:hCancelarNfse.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:hCancelarNfse.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebTagRetorno>CancelarNfse.ExecuteResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>hCancelarNfse.ExecuteResponse</WebTagRetornoHomologacao>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</CancelarNfse>
+		<ConsultarNfsePorRps versao="2.01">
+			<Descricao>Consulta NFSe por RPS</Descricao>
+			<WebEnderecoHomologacao>https://itapetininga.jlsoft.com.br/abrasf/ahconsultarnfseporrps.aspx?wsdl</WebEnderecoHomologacao>
+			<WebEnderecoProducao>https://itapetininga.jlsoft.com.br/abrasf/aconsultarnfseporrps.aspx?wsdl</WebEnderecoProducao>
+			<WebActionHomologacao>Abrasf2action/AHCONSULTARNFSEPORRPS.Execute</WebActionHomologacao>
+			<WebActionProducao>Abrasf2action/ACONSULTARNFSEPORRPS.Execute</WebActionProducao>
+			<SchemaArquivo></SchemaArquivo>
+			<TagAssinatura></TagAssinatura>
+			<TagAtributoID></TagAtributoID>
+			<TagLoteAssinatura></TagLoteAssinatura>
+			<TagLoteAtributoID></TagLoteAtributoID>
+			<WebContentType>text/xml;charset=utf-8</WebContentType>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:ConsultarNfsePorRps.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:ConsultarNfsePorRps.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:abr="Abrasf2"><soapenv:Header/><soapenv:Body><abr:hConsultarNfsePorRps.Execute><abr:Entrada>{xmlBodyScape}</abr:Entrada></abr:hConsultarNfsePorRps.Execute></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebTagRetorno>ConsultarNfsePorRps.ExecuteResponse</WebTagRetorno>
+			<WebTagRetornoHomologacao>hConsultarNfsePorRps.ExecuteResponse</WebTagRetornoHomologacao>
+			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
+			<WebSoapVersion>soap11</WebSoapVersion>
+			<SchemaVersao>2.01</SchemaVersao>
+			<UsaCertificadoDigital>false</UsaCertificadoDigital>
+		</ConsultarNfsePorRps>
+	</Servicos>
+</Configuracoes>
