@@ -954,6 +954,7 @@
 		<None Remove="Xml\Schemas\NF3e\consSitNF3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\consStatServNF3eTiposBasico_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\consStatServNF3e_v1.00.xsd" />
+		<None Remove="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
 		<None Remove="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
@@ -2067,6 +2068,7 @@
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\consSitNF3e_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3eTiposBasico_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\consStatServNF3e_v1.00.xsd" />
+	  <EmbeddedResource Include="Xml\Schemas\NF3e\DFeTiposBasicos_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\enviNF3e_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\evCancNF3e_v1.00.xsd" />
 	  <EmbeddedResource Include="Xml\Schemas\NF3e\eventoNF3eTiposBasico_v1.00.xsd" />
