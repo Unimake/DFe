@@ -834,7 +834,9 @@ namespace Unimake.Business.DFe.Utility
         /// </summary>
         public static TipoXML DetectXMLType(XmlDocument xmlDoc)
         {
+            var primeiraTagFilha = xmlDoc.DocumentElement.ChildNodes[0].Name;
             var tipoXML = TipoXML.NaoIdentificado;
+
             switch(xmlDoc.DocumentElement.Name)
             {
                 #region XML NFe
@@ -1008,12 +1010,88 @@ namespace Unimake.Business.DFe.Utility
 
                 #endregion XML da NFCom
 
+                case "eSocial":
+                    tipoXML = ObterTipoXmlESocial(xmlDoc, primeiraTagFilha);
+                    break;
+
+                case "Reinf":
+                    tipoXML = ObterTipoXmlEFDReinf(primeiraTagFilha);
+                    break;
 
                 default:
                     break;
             }
 
             return tipoXML;
+        }
+
+        /// <summary>
+        /// Obtém o tipo de XML de eSocial baseado no conteúdo do XML
+        /// </summary>
+        /// <param name="xmlDoc">XML com o conteúdo do XML a ser analisado</param>
+        /// <param name="primeiraTagFilha">Primeira tag filha do XML</param>
+        /// <returns>Tipo do XML</returns>
+        private static TipoXML ObterTipoXmlESocial(XmlDocument xmlDoc, string primeiraTagFilha)
+        {
+            switch (primeiraTagFilha)
+            {
+                case "envioLoteEventos":
+                    return TipoXML.ESocialEnvioLoteEventos;
+
+                case "consultaLoteEventos":
+                    return TipoXML.ESocialConsultaLoteAssincrono;
+
+                default:
+
+                    if (xmlDoc.GetElementsByTagName("consultaEvtsEmpregador").Count > 0)
+                    {
+                        return TipoXML.ESocialConsultaEvtsEmpregador;
+                    }
+                    else if (xmlDoc.GetElementsByTagName("consultaEvtsTrabalhador").Count > 0)
+                    {
+                        return TipoXML.ESocialConsultaEvtsTrabalhador;
+                    }
+                    else if (xmlDoc.GetElementsByTagName("consultaEvtsTabela").Count > 0)
+                    {
+                        return TipoXML.ESocialConsultaEvtsTabela;
+                    }
+                    else if (xmlDoc.GetElementsByTagName("solicDownloadEvtsPorId").Count > 0)
+                    {
+                        return TipoXML.ESocialDownloadPorID;
+                    }
+                    else if (xmlDoc.GetElementsByTagName("solicDownloadEventosPorNrRecibo").Count > 0)
+                    {
+                        return TipoXML.ESocialDownloadPorNrRec;
+                    }
+
+                    else
+                    {
+                        return TipoXML.NaoIdentificado;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Obtém o tipo de XML de EFD Reinf baseado no conteúdo do XML
+        /// </summary>
+        /// <param name="primeiraTagFilha">Primeira tag filha do XML</param>
+        /// <returns>Tipo do XML</returns>
+        private static TipoXML ObterTipoXmlEFDReinf(string primeiraTagFilha)
+        {
+            switch (primeiraTagFilha)
+            {
+                case "envioLoteEventos":
+                    return TipoXML.EFDReinfEnvioLoteEventos;
+
+                case "ConsultaLoteAssincrono":
+                    return TipoXML.EFDReinfConsultaLoteAssincrono;
+
+                case "ConsultaReciboEvento":
+                    return TipoXML.EFDReinfConsultaReciboEvento;
+
+                default:
+                    return TipoXML.NaoIdentificado;
+            }
         }
 
         /// <summary>
