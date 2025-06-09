@@ -7389,6 +7389,74 @@ namespace Unimake.Business.DFe.Servicos
 
         #endregion NFCom
 
+        #region eSocial
+
+        /// <summary>
+        /// XML de envio de lote de eSocial
+        /// </summary>
+        [Description("XML de envio de lote de eSocial")]
+        ESocialEnvioLoteEventos = 37,
+
+        /// <summary>
+        /// XML de consulta lote assincrono de eSocial
+        /// </summary>
+        [Description("XML de consulta lote assincrono de eSocial")]
+        ESocialConsultaLoteAssincrono = 38,
+
+        /// <summary>
+        /// XML de consulta eventos do empregador
+        /// </summary>
+        [Description("XML de consulta eventos do empregador")]
+        ESocialConsultaEvtsEmpregador = 39,
+
+        /// <summary>
+        /// XML de consulta eventos de tabela
+        /// </summary>
+        [Description("XML de consulta eventos de tabela")]
+        ESocialConsultaEvtsTabela = 40,
+
+        /// <summary>
+        /// XML de consulta eventos do trabalhador
+        /// </summary>
+        [Description("XML de consulta eventos do trabalhador")]
+        ESocialConsultaEvtsTrabalhador = 41,
+
+        /// <summary>
+        /// XML de download de evento por ID
+        /// </summary>
+        [Description("XML de download de evento por ID")]
+        ESocialDownloadPorID = 42,
+
+        /// <summary>
+        /// XML de download de evento por número do recibo
+        /// </summary>
+        [Description("XML de download de evento por número do recibo")]
+        ESocialDownloadPorNrRec = 43,
+
+        #endregion eSocial
+
+        #region EFD Reinf
+
+        /// <summary>
+        /// XML de envio de lote de EFD Reinf
+        /// </summary>
+        [Description("XML de envio de lote de EFD Reinf")]
+        EFDReinfEnvioLoteEventos = 44,
+
+        /// <summary>
+        /// XML de consulta lote assincrono de EFD Reinf
+        /// </summary>
+        [Description("XML de consulta lote assincrono de EFD Reinf")]
+        EFDReinfConsultaLoteAssincrono = 45,
+
+        /// <summary>
+        /// XML de consulta recibo do evento de EFD Reinf
+        /// </summary>
+        [Description("XML de consulta recibo do evento de EFD Reinf")]
+        EFDReinfConsultaReciboEvento = 46,
+
+        #endregion EFD Reinf
+
         /// <summary>
         /// Não foi possível identificar o tipo do XML
         /// </summary>
@@ -14933,12 +15001,12 @@ namespace Unimake.Business.DFe.Servicos
 
     #endregion TipoFonteEnergia
 
-    #region TipoAjuste
+    #region TipoAjusteNF3e
 
     /// <summary>
     /// Tipo de ajuste a ser aplicado ao item
     /// </summary>
-    public enum TipoAjuste
+    public enum TipoAjusteNF3e
     {
         /// <summary>
         /// 1 - Item a ser substituído (deve informar detItemAnt)
@@ -14965,7 +15033,7 @@ namespace Unimake.Business.DFe.Servicos
         ItemASerIncluidoReferenteANF3eAnterior = 4,
     }
 
-    #endregion TipoAjuste
+    #endregion TipoAjusteNF3e
 
     #region MotivoAjuste
 
