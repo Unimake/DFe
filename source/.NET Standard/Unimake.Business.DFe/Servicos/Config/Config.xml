@@ -1961,4 +1961,10 @@
 		<ArqConfig>NovaSantaRitaRS.xml</ArqConfig>
 		<PadraoNFSe>IPM</PadraoNFSe>
 	</Arquivo>
+	<Arquivo ID="3522307">
+		<Nome>Itapetininga - SP</Nome>
+		<UF>SP</UF>
+		<ArqConfig>ItapetingaSP.xml</ArqConfig>
+		<PadraoNFSe>JLSOFT</PadraoNFSe>
+	</Arquivo>
 </Configuracoes>
