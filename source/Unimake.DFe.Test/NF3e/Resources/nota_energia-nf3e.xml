@@ -15,6 +15,10 @@
 			<cMunFG>1234567</cMunFG>
 			<finNF3e>1</finNF3e>
 			<verProc>verProc1</verProc>
+			<gCompraGov>
+				<tpEnteGov>1</tpEnteGov>
+				<pRedutor>1.2200</pRedutor>
+			</gCompraGov>
 		</ide>
 		<emit>
 			<CNPJ>06117473000150</CNPJ>
@@ -82,6 +86,12 @@
 				<tpFonteEnergia>1</tpFonteEnergia>
 				<enerAloc>14.190</enerAloc>
 				<tpPosTar>0</tpPosTar>
+				<enerAloc>15.202</enerAloc>
+				<tpPosTar>0</tpPosTar>
+				<enerInjet>1155.501</enerInjet>
+				<tpPosTarInjet>0</tpPosTarInjet>
+				<enerInjet>2.669</enerInjet>
+				<tpPosTarInjet>1</tpPosTarInjet>
 			</gConsumidor>
 			<gConsumidor>
 				<idAcessGer>FVD9785</idAcessGer>
@@ -203,6 +213,80 @@
 							<vBCIRRF>25</vBCIRRF>
 							<vIRRF>234.55</vIRRF>
 						</retTrib>
+						<IBSCBS>
+							<CST>01</CST>
+							<cClassTrib>12345678</cClassTrib>
+							<gIBSCBS>
+								<vBC>1000.00</vBC>
+								<gIBSUF>
+									<pIBSUF>1.5000</pIBSUF>
+									<gDif>
+										<pDif>0.5000</pDif>
+										<vDif>5.00</vDif>
+									</gDif>
+									<gDevTrib>
+										<vDevTrib>2.00</vDevTrib>
+									</gDevTrib>
+									<gRed>
+										<pRedAliq>10.0000</pRedAliq>
+										<pAliqEfet>1.3500</pAliqEfet>
+									</gRed>
+									<vIBSUF>15.00</vIBSUF>
+								</gIBSUF>
+								<gIBSMun>
+									<pIBSMun>0.7500</pIBSMun>
+									<gDif>
+										<pDif>0.2500</pDif>
+										<vDif>2.50</vDif>
+									</gDif>
+									<gDevTrib>
+										<vDevTrib>1.00</vDevTrib>
+									</gDevTrib>
+									<gRed>
+										<pRedAliq>5.0000</pRedAliq>
+										<pAliqEfet>0.7125</pAliqEfet>
+									</gRed>
+									<vIBSMun>7.50</vIBSMun>
+								</gIBSMun>
+								<gCBS>
+									<pCBS>2.5000</pCBS>
+									<gDif>
+										<pDif>0.3000</pDif>
+										<vDif>3.00</vDif>
+									</gDif>
+									<gDevTrib>
+										<vDevTrib>1.50</vDevTrib>
+									</gDevTrib>
+									<gRed>
+										<pRedAliq>8.0000</pRedAliq>
+										<pAliqEfet>2.3000</pAliqEfet>
+									</gRed>
+									<vCBS>25.00</vCBS>
+								</gCBS>
+								<gTribRegular>
+									<CSTReg>04</CSTReg>
+									<cClassTribReg>87654321</cClassTribReg>
+									<pAliqEfetRegIBSUF>1.6000</pAliqEfetRegIBSUF>
+									<vTribRegIBSUF>16.00</vTribRegIBSUF>
+									<pAliqEfetRegIBSMun>0.8000</pAliqEfetRegIBSMun>
+									<vTribRegIBSMun>8.00</vTribRegIBSMun>
+									<pAliqEfetRegCBS>2.7000</pAliqEfetRegCBS>
+									<vTribRegCBS>27.00</vTribRegCBS>
+								</gTribRegular>
+								<gIBSCredPres>
+									<cCredPres>1111</cCredPres>
+									<pCredPres>5.0000</pCredPres>
+									<vCredPres>50.00</vCredPres>
+									<vCredPresCondSus>10.00</vCredPresCondSus>
+								</gIBSCredPres>
+								<gCBSCredPres>
+									<cCredPres>2222</cCredPres>
+									<pCredPres>3.0000</pCredPres>
+									<vCredPres>30.00</vCredPres>
+									<vCredPresCondSus>5.00</vCredPresCondSus>
+								</gCBSCredPres>
+							</gIBSCBS>
+						</IBSCBS>
 					</imposto>
 					<gProcRef>
 						<vItem>2.33</vItem>
@@ -254,6 +338,32 @@
 			<vPIS>14.11</vPIS>
 			<vPISEfet>14.11</vPISEfet>
 			<vNF>111111.45</vNF>
+			<IBSCBSTot>
+				<vBCIBSCBS>vBCIBSCBS1</vBCIBSCBS>
+				<gIBS>
+					<gIBSUF>
+						<vDif>1.22</vDif>
+						<vDevTrib>1.29</vDevTrib>
+						<vIBSUF>11.58</vIBSUF>
+					</gIBSUF>
+					<gIBSMun>
+						<vDif>1.77</vDif>
+						<vDevTrib>1.99</vDevTrib>
+						<vIBSMun>155.89</vIBSMun>
+					</gIBSMun>
+					<vIBS>1.17</vIBS>
+					<vCredPres>117.40</vCredPres>
+					<vCredPresCondSus>1.59</vCredPresCondSus>
+				</gIBS>
+				<gCBS>
+					<vDif>22.22</vDif>
+					<vDevTrib>23.33</vDevTrib>
+					<vCBS>44.44</vCBS>
+					<vCredPres>55.55</vCredPres>
+					<vCredPresCondSus>66.66</vCredPresCondSus>
+				</gCBS>
+			</IBSCBSTot>
+			<vTotDFe>1000.55</vTotDFe>
 		</total>
 		<gFat>
 			<CompetFat>202411</CompetFat>
