@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 (http://www.altova.com) by sas-softwares@procergs.rs.gov.br (PROCERGS) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nf3e="http://www.portalfiscal.inf.br/nf3e" targetNamespace="http://www.portalfiscal.inf.br/nf3e" elementFormDefault="qualified" attributeFormDefault="unqualified">	
+	<xs:simpleType name="TStringRTC">
+		<xs:annotation>
+			<xs:documentation>Tipo string genérico</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="[!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TCST">
+		<xs:annotation>
+			<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TcClassTrib">
+		<xs:annotation>
+			<xs:documentation>Código de Classificação Tributária do IBS e da CBS</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="\d{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TDec1104">
+		<xs:annotation>
+			<xs:documentation>Tipo Decimal com 15 dígitos, sendo 11 de corpo e 4 decimais</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="0|0\.[0-9]{4}|[1-9]{1}[0-9]{0,10}(\.[0-9]{4})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TDec_1104Op">
+		<xs:annotation>
+			<xs:documentation>Tipo Decimal com 11 inteiros, podendo ter 4 decimais (utilizado em tags opcionais)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="0\.[1-9]{1}[0-9]{3}|0\.[0-9]{3}[1-9]{1}|0\.[0-9]{2}[1-9]{1}[0-9]{1}|0\.[0-9]{1}[1-9]{1}[0-9]{2}|[1-9]{1}[0-9]{0,10}(\.[0-9]{4})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TDec1302">
+		<xs:annotation>
+			<xs:documentation>Tipo Decimal com 15 dígitos, sendo 13 de corpo e 2 decimais</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,12}(\.[0-9]{2})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TDec_0302_04">
+		<xs:annotation>
+			<xs:documentation>Tipo Decimal com até 3 dígitos inteiros, podendo ter de 2 até 4 decimais</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:pattern value="0|0\.[0-9]{2,4}|[1-9]{1}[0-9]{0,2}(\.[0-9]{2,4})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TEnteGov">
+		<xs:annotation>
+			<xs:documentation>Tipo de Ente Governamental</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TTribNFCom">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações da Tributação da NFCom</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTrib" type="nf3e:TcClassTrib"/>
+			<xs:element name="gIBSCBS" type="nf3e:TCIBS" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTribNF3e">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações da Tributação da NF3e</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTrib" type="nf3e:TcClassTrib"/>
+			<xs:element name="gIBSCBS" type="nf3e:TCIBS" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTribCTe">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações da Tributação do CTe</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTrib" type="nf3e:TcClassTrib"/>
+			<xs:element name="gIBSCBS" type="nf3e:TCIBS" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTribBPe">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações da Tributação do BPe</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTrib" type="nf3e:TcClassTrib"/>
+			<xs:element name="gIBSCBS" type="nf3e:TCIBS" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTribNFCe">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações da Tributação da NFCe</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTrib" type="nf3e:TcClassTrib"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="gIBSCBS" type="nf3e:TCIBS"/>
+				<xs:element name="gIBSCBSMono" type="nf3e:TMonofasia"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTribNFe">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações da Tributação da NFe</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CST" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do IBS/CBS</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTrib" type="nf3e:TcClassTrib"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="gIBSCBS" type="nf3e:TCIBS"/>
+				<xs:element name="gIBSCBSMono" type="nf3e:TMonofasia">
+					<xs:annotation>
+						<xs:documentation>Informar essa opção da Choice para Monofasia</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="gTransfCred" type="nf3e:TTransfCred">
+					<xs:annotation>
+						<xs:documentation>Informar essa opção da Choice para o CST 800</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TIS">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações do Imposto Seletivo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CSTIS" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código Situação Tributária do Imposto Seletivo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTribIS" type="nf3e:TcClassTrib"/>
+			<xs:sequence minOccurs="0">
+				<xs:element name="vBCIS" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do BC</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="pIS" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota do Imposto Seletivo (percentual)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="pISEspec" type="nf3e:TDec_0302_04" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Alíquota do Imposto Seletivo (por valor)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:sequence minOccurs="0">
+					<xs:element name="uTrib">
+						<xs:annotation>
+							<xs:documentation>Unidade de medida apropriada especificada em Lei Ordinaria para fins de apuração do Imposto Seletivo</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="nf3e:TStringRTC">
+								<xs:minLength value="1"/>
+								<xs:maxLength value="6"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="qTrib" type="nf3e:TDec_1104Op">
+						<xs:annotation>
+							<xs:documentation>Quantidade com abse no campo uTrib informado</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="vIS" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do Imposto Seletivo calculado</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TISTot">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações de totais do Imposto Seletivo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vIS" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor Total do Imposto Seletivo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TIBSCBSTot">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações de totais da CBS/IBS</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vBCIBSCBS" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Total Base de Calculo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gIBS">
+				<xs:annotation>
+					<xs:documentation>Totalização do IBS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="gIBSUF">
+							<xs:annotation>
+								<xs:documentation>Totalização do IBS de competência da UF</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="vDif" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total do Diferimento</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vDevTrib" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total de devoluções de tributos</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vIBSUF" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Valor total do IBS Estadual</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="gIBSMun">
+							<xs:annotation>
+								<xs:documentation>Totalização do IBS de competência Municipal</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="vDif" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total do Diferimento</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vDevTrib" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total de devoluções de tributos</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vIBSMun" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Valor total do IBS Municipal</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="vIBS" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total do IBS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPres" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPresCondSus" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gCBS">
+				<xs:annotation>
+					<xs:documentation>Totalização da CBS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vDif" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Diferimento</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vDevTrib" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total de devoluções de tributos</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBS" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total da CBS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPres" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPresCondSus" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido Condição Suspensiva</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TIBSCBSMonoTot">
+		<xs:annotation>
+			<xs:documentation>Grupo de informações de totais da CBS/IBS com monofasia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vBCIBSCBS" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Total Base de Calculo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gIBS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Totalização do IBS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="gIBSUF">
+							<xs:annotation>
+								<xs:documentation>Totalização do IBS de competência da UF</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="vDif" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total do Diferimento</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vDevTrib" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total de devoluções de tributos</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vIBSUF" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Valor total do IBS Estadual</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="gIBSMun">
+							<xs:annotation>
+								<xs:documentation>Totalização do IBS de competência Municipal</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="vDif" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total do Diferimento</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vDevTrib" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Total de devoluções de tributos</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="vIBSMun" type="nf3e:TDec1302">
+										<xs:annotation>
+											<xs:documentation>Valor total do IBS Municipal</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="vIBS" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total do IBS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPres" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gCBS" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Totalização da CBS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vDif" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Diferimento</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vDevTrib" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total de devoluções de tributos</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBS" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total da CBS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCredPres" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Total do Crédito Presumido</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gMono" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Totais da Monofasia</xs:documentation>
+					<xs:documentation>Só deverá ser utilizado para DFe modelos 55 e 65</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="vIBSMono" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total do IBS monofásico</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBSMono" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total da CBS monofásica</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vIBSMonoReten" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total do IBS monofásico sujeito a retenção</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBSMonoReten" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor total da CBS monofásica sujeita a retenção</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vIBSMonoRet" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor do IBS monofásico retido anteriormente</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBSMonoRet" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor da CBS monofásica retida anteriormente</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TMonofasia">
+		<xs:annotation>
+			<xs:documentation>Tipo Monofasia</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>Monofasia</xs:documentation>
+			</xs:annotation>
+			<xs:element name="qBCMono" type="nf3e:TDec_1104Op">
+				<xs:annotation>
+					<xs:documentation>Quantidade tributada.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adRemIBS" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Alíquota específica do IBS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="adRemCBS" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Alíquota específiac da CBS.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vIBSMono" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS monofásico</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vCBSMono" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor da CBS monofásica</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:sequence minOccurs="0">
+				<xs:element name="qBCMonoReten" type="nf3e:TDec_1104Op">
+					<xs:annotation>
+						<xs:documentation>Quantidade tributada sujeita a retenção.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemIBSReten" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota ad rem do IBS sujeito a retenção</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vIBSMonoReten" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do IBS monofásico sujeito a retenção</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemCBSReten" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota ad rem da CBS sujeita a retenção</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vCBSMonoReten" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor da CBS monofásica sujeita a retenção</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence minOccurs="0">
+				<xs:element name="qBCMonoRet" type="nf3e:TDec_1104Op">
+					<xs:annotation>
+						<xs:documentation>Quantidade tributada retida anteriormente</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemIBSRet" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota ad rem do IBS retido anteriormente</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vIBSMonoRet" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do IBS retido anteriormente</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="adRemCBSRet" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Alíquota ad rem da CBS retida anteriormente</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vCBSMonoRet" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor da CBS retida anteriormente</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence minOccurs="0">
+				<xs:element name="pDifIBS" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Percentual do diferimento do imposto monofásico</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vIBSMonoDif" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do IBS monofásico diferido</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="pDifCBS" type="nf3e:TDec_0302_04">
+					<xs:annotation>
+						<xs:documentation>Percentual do diferimento do imposto monofásico</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vCBSMonoDif" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor da CBS monofásica diferida</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:element name="vTotIBSMonoItem" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Total de IBS monofásico do item</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vTotCBSMonoItem" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Total da CBS monofásica do item</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TCIBS">
+		<xs:annotation>
+			<xs:documentation>Tipo CBS IBS Completo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>IBS / CBS</xs:documentation>
+			</xs:annotation>
+			<xs:element name="vBC" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do BC</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gIBSUF">
+				<xs:annotation>
+					<xs:documentation>Grupo de informações do IBS na UF</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="pIBSUF" type="nf3e:TDec_0302_04">
+							<xs:annotation>
+								<xs:documentation>Aliquota do IBS de competência das UF</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gDif" type="nf3e:TDifIBS" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gDevTrib" type="nf3e:TDevTrib" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de Informações da devolução de tributos</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gRed" type="nf3e:TRed" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de campos da redução de aliquota</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vIBSUF" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor do IBS de competência das UF</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gIBSMun">
+				<xs:annotation>
+					<xs:documentation>Grupo de Informações do IBS no Município</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="pIBSMun" type="nf3e:TDec_0302_04">
+							<xs:annotation>
+								<xs:documentation>Aliquota do IBS Municipal</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gDif" type="nf3e:TDifIBS" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gDevTrib" type="nf3e:TDevTrib" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de Informações da devolução de tributos</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gRed" type="nf3e:TRed" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de campos da redução de aliquota</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vIBSMun" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor do IBS Municipal</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gCBS">
+				<xs:annotation>
+					<xs:documentation>Grupo de Tributação da CBS</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="pCBS" type="nf3e:TDec_0302_04">
+							<xs:annotation>
+								<xs:documentation>Aliquota da CBS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gDif" type="nf3e:TDifCBS" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de campos do Diferimento</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gDevTrib" type="nf3e:TDevTrib" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de Informações da devolução de tributos</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="gRed" type="nf3e:TRed" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Grupo de campos da redução de aliquota</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="vCBS" type="nf3e:TDec1302">
+							<xs:annotation>
+								<xs:documentation>Valor da CBS</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="gTribRegular" type="nf3e:TTribRegular" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de informações da Tributação Regular. Informar como seria a tributação caso não cumprida a condição resolutória/suspensiva. Exemplo 1: Art. 442, §4. Operações com ZFM e ALC. Exemplo 2: Operações com suspensão do tributo.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gIBSCredPres" type="nf3e:TCredPres" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de Informações do Crédito Presumido referente ao IBS, quando aproveitado pelo emitente do documento. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="gCBSCredPres" type="nf3e:TCredPres" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Grupo de Informações do Crédito Presumido referente a CBS, quando aproveitado pelo emitente do documento. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TRed">
+		<xs:annotation>
+			<xs:documentation>Tipo Redução Base de Cálculo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pRedAliq" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Percentual de redução de aliquota</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pAliqEfet" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Aliquota Efetiva que será aplicada a Base de Calculo</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TCredPres">
+		<xs:annotation>
+			<xs:documentation>Tipo Crédito Presumido</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cCredPres">
+				<xs:annotation>
+					<xs:documentation>Usar tabela Cred Presumido, para o emitente da nota.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pCredPres" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Percentual do Crédito Presumido</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="vCredPres" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do Crédito Presumido</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="vCredPresCondSus" type="nf3e:TDec1302">
+					<xs:annotation>
+						<xs:documentation>Valor do Crédito Presumido Condição Suspensiva, preencher apenas para cCredPres que possui indicação de Condição Suspensiva</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TDifIBS">
+		<xs:annotation>
+			<xs:documentation>Tipo Diferimento</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pDif" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Percentual do diferimento</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vDif" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do diferimento</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TDifCBS">
+		<xs:annotation>
+			<xs:documentation>Tipo Diferimento</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pDif" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Percentual do diferimento</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vDif" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do diferimento</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TDevTrib">
+		<xs:annotation>
+			<xs:documentation>Tipo Devolução Tributo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vDevTrib" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do tributo devolvido. No fornecimento de energia elétrica, água, esgoto e
+gás natural e em outras hipóteses definidas no regulamento</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTribRegular">
+		<xs:annotation>
+			<xs:documentation>Tipo Tributação Regular</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CSTReg" type="nf3e:TCST">
+				<xs:annotation>
+					<xs:documentation>Código da Situação Tributária do IBS e CBS</xs:documentation>
+					<xs:documentation>Informar qual seria o CST caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cClassTribReg" type="nf3e:TcClassTrib">
+				<xs:annotation>
+					<xs:documentation>Informar qual seria o cClassTrib caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pAliqEfetRegIBSUF" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Alíquota do IBS da UF</xs:documentation>
+					<xs:documentation>Informar como seria a Alíquota caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vTribRegIBSUF" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS da UF</xs:documentation>
+					<xs:documentation>Informar como seria o valor do Tributo caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pAliqEfetRegIBSMun" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Alíquota do IBS do Município</xs:documentation>
+					<xs:documentation>Informar como seria a Alíquota caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vTribRegIBSMun" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS do Município</xs:documentation>
+					<xs:documentation>Informar como seria o valor do Tributo caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pAliqEfetRegCBS" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Alíquota da CBS</xs:documentation>
+					<xs:documentation>Informar como seria a Alíquota caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vTribRegCBS" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor da CBS</xs:documentation>
+					<xs:documentation>Informar como seria o valor do Tributo caso não cumprida a condição resolutória/suspensiva</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TCompraGov">
+		<xs:annotation>
+			<xs:documentation>Tipo Compras Governamentais</xs:documentation>
+			<xs:documentation>Cada DFe que utilizar deverá utilizar esses tipo no grupo ide</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="tpEnteGov" type="nf3e:TEnteGov">
+				<xs:annotation>
+					<xs:documentation>Para administração pública direta e suas autarquias e fundações:
+1=União
+2=Estados
+3=Distrito Federal
+4=Municípios</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pRedutor" type="nf3e:TDec_0302_04">
+				<xs:annotation>
+					<xs:documentation>Percentual de redução de aliquota em compra goverrnamental</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TTransfCred">
+		<xs:annotation>
+			<xs:documentation>Tipo Transferência de Credito</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vIBS" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do IBS </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vCBS" type="nf3e:TDec1302">
+				<xs:annotation>
+					<xs:documentation>Valor do CBS </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
