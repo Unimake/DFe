@@ -34,8 +34,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:CancelarNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:CancelarNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>ns1:CancelarNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -57,8 +57,8 @@
 			<TagExtraAssinatura></TagExtraAssinatura>
 			<TagExtraAtributoID></TagExtraAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:SubstituirNfse><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:SubstituirNfse><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:SubstituirNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:SubstituirNfse><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:SubstituirNfse></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>ns1:SubstituirNfseResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -78,8 +78,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarLoteRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarLoteRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>ns1:ConsultarLoteRpsResponse</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
@@ -99,8 +99,8 @@
 			<TagLoteAssinatura></TagLoteAssinatura>
 			<TagLoteAtributoID></TagLoteAtributoID>
 			<WebContentType>text/xml;charset=UTF-8</WebContentType>
-			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
-			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScape}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
+			<WebSoapStringHomologacao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://hom.nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringHomologacao>
+			<WebSoapStringProducao><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://nfse.sapiranga.rs.gov.br/webservice/index/producao"><soapenv:Header/><soapenv:Body><prod:ConsultarNfsePorRps><xml>{oCDATA}{xmlBodyScapeRetorno}{cCDATA}</xml></prod:ConsultarNfsePorRps></soapenv:Body></soapenv:Envelope>]]></WebSoapStringProducao>
 			<WebTagRetorno>SOAP-ENV:Body</WebTagRetorno>
 			<WebEncodingRetorno>UTF-8</WebEncodingRetorno>
 			<WebSoapVersion>soap11</WebSoapVersion>
