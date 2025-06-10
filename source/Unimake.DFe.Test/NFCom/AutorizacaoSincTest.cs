@@ -148,7 +148,12 @@ namespace Unimake.DFe.Test.NFCom
                         VerProc = "teste 1.0",
                         IndPrePago = IndicadorServicoPrePago.ServicoPrePago,
                         IndCessaoMeiosRede = IndicadorCessaoMeiosDeRede.IndicadorCessaoMeioDeRede,
-                        IndNotaEntrada = IndicadorNotaEntrada.IndicaNotaEntradaAjuste
+                        IndNotaEntrada = IndicadorNotaEntrada.IndicaNotaEntradaAjuste,
+                        GCompraGov = new GCompraGov
+                        {
+                            TpEnteGov = TipoEnteGovernamental.Estado,
+                            PRedutor = 5.0000
+                        }
                     },
                     Emit = new Emit
                     {
@@ -202,7 +207,13 @@ namespace Unimake.DFe.Test.NFCom
                         DContratoIni = System.DateTime.Today,
                         DContratoFim = System.DateTime.Today,
                         NroTermPrinc = "1234567",
-                        CUFPrinc = ufBrasil
+                        CUFPrinc = ufBrasil,
+                        TerminaisAdicionais =
+                        {
+                            new TerminalAdicional {NroTermAdic = "1324567", CUFAdic = ufBrasil},
+                            new TerminalAdicional {NroTermAdic = "7654321", CUFAdic = ufBrasil},
+                            new TerminalAdicional {NroTermAdic = "7894561", CUFAdic = ufBrasil}
+                        }
                     },
                     GSub = new GSub
                     {
@@ -292,6 +303,103 @@ namespace Unimake.DFe.Test.NFCom
                                     VRetCSLL = 1444.85M,
                                     VBCIRRF = 1444.85M,
                                     VIRRF = 1444.85M
+                                },
+                                IBSCBS = new IBSCBS
+                                {
+                                    CST = "123",
+                                    CClassTrib = "123456",
+                                    GIBSCBS = new GIBSCBS
+                                    {
+                                        VBC = 1.00,
+                                        GIBSUF = new GIBSUF
+                                        {
+                                            PIBSUF = 2.1234,
+                                            GDif = new GDif
+                                            {
+                                                PDif = 3.1234,
+                                                VDif = 4.12
+                                            },
+                                            GDevTrib = new GDevTrib
+                                            {
+                                                VDevTrib = 6.12
+                                            },
+                                            GRed = new GRed
+                                            {
+                                                PRedAliq = 7.1234,
+                                                PAliqEfet = 8.1234,
+                                            },
+                                            VIBSUF = 9.12
+                                        },
+                                        GIBSMun = new GIBSMun
+                                        {
+                                            PIBSMun = 10.1234,
+                                            GDif = new GDif
+                                            {
+                                                PDif = 3.1234,
+                                                VDif = 4.12
+                                            },
+                                            GDevTrib = new GDevTrib
+                                            {
+                                                VDevTrib = 6.12
+                                            },
+                                            GRed = new GRed
+                                            {
+                                                PRedAliq = 7.1234,
+                                                PAliqEfet = 8.1234,
+                                            },
+                                            VIBSMun = 11.12
+                                        },
+                                        GCBS = new GCBS
+                                        {
+                                            PCBS = 12.1234,
+                                            GDif = new GDif
+                                            {
+                                                PDif = 3.1234,
+                                                VDif = 4.12
+                                            },
+                                            GDevTrib = new GDevTrib
+                                            {
+                                                VDevTrib = 6.12
+                                            },
+                                            GRed = new GRed
+                                            {
+                                                PRedAliq = 7.1234,
+                                                PAliqEfet = 8.1234,
+                                            },
+                                            VCBS = 13.12
+                                        },
+                                        GTribRegular = new GTribRegular
+                                        {
+                                            CSTReg = "123",
+                                            CClassTribReg = "123456",
+                                            PAliqEfetRegIBSUF = 14.1234,
+                                            VtribRegIBSUF = 15.12,
+                                            PAliqEfetRegIBSMun = 16.1234,
+                                            VtribRegIBSMun = 17.12,
+                                            VTribRegCBS = 8.12
+                                        },
+                                        GIBSCredPres = new GIBSCredPres
+                                        {
+                                            CCredPres = "123456",
+                                            PCredPres = 18.1234,
+                                            VCredPres = 19.12
+                                        },
+                                        GCBSCredPres = new GCBSCredPres
+                                        {
+                                            CCredPres = "123456",
+                                            PCredPres = 18.1234,
+                                            VCredPres = 19.12
+                                        },
+                                        GTribCompraGov = new GTribCompraGov
+                                        {
+                                            PAliqIBSUF = 20.1234,
+                                            VTribIBSUF = 21.12,
+                                            PAliqIBSMun = 22.1234,
+                                            VTribIBSMun = 23.12,
+                                            PAliqCBS = 24.1234,
+                                            VTribCBS = 25.12
+                                        }
+                                    }
                                 }
                             },
                             GProcRef = new GProcRef
@@ -329,28 +437,59 @@ namespace Unimake.DFe.Test.NFCom
                     },
                     Total = new Total
                     {
-                        VProd = 111.54,
+                        VProd = 1.54,
                         ICMSTot = new ICMSTot
                         {
-                            VBC = 111.54,
-                            VICMS = 111.54,
-                            VICMSDeson = 111.54,
-                            VFCP = 111.54
+                            VBC = 1.54,
+                            VICMS = 1.54,
+                            VICMSDeson = 1.54,
+                            VFCP = 1.54
                         },
-                        VCOFINS = 111.54, 
-                        VPIS = 111.54,
-                        VFUNTTEL = 111.54,
-                        VFUST = 111.54,
+                        VCOFINS = 1.54, 
+                        VPIS = 1.54,
+                        VFUNTTEL = 1.54,
+                        VFUST = 1.54,
                         VRetTribTot = new VRetTribTotNFCom
                         {
-                            VRetPIS = 111.54,
-                            VRetCofins = 111.54,
-                            VRetCSLL = 111.54,
-                            VIRRF = 111.54
+                            VRetPIS = 1.54,
+                            VRetCofins = 1.54,
+                            VRetCSLL = 1.54,
+                            VIRRF = 1.54
                         },
-                        VDesc = 111.54,
-                        VOutro = 111.54,
-                        VNF = 111.54
+                        VDesc = 1.54,
+                        VOutro = 1.54,
+                        VNF = 1.54,
+                        IBSCBSTot = new IBSCBSTot
+                        {
+                            VBCIBSCBS = 1.54,
+                            GIBSTot = new GIBSTot
+                            {
+                                GIBSUFTot = new GIBSUFTot
+                                {
+                                    VDif = 1.54,
+                                    VDevTrib = 1.54,
+                                    VIBSUF = 1.54,
+                                },
+                                GIBSMunTot = new GIBSMunTot
+                                {
+                                    VDif = 1.54,
+                                    VDevTrib = 1.54,
+                                    VIBSMun = 1.54,
+                                },
+                                VIBS = 1.54,
+                                VCredPres = 1.54,
+                                VCredPresCondSus = 1.54,
+                            },
+                            GCBSTot = new GCBSTot
+                            {
+                                VDif = 1.54,
+                                VDevTrib = 1.54,
+                                VCBS = 1.54,
+                                VCredPres = 1.54,
+                                VCredPresCondSus = 1.54
+                            }
+                        },
+                        VTotDFe = 1.54
                     },
                     AutXML = new System.Collections.Generic.List<AutXMLNFCom>
                     {
